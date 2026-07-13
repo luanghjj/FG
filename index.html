@@ -62,6 +62,28 @@ a{color:inherit;text-decoration:none}
 .hero h1{font-size:1.7em;font-weight:800;letter-spacing:-.01em}
 .hero p{color:var(--muted);margin-top:6px;font-size:.96em}
 
+/* ===== Exam banner (Hauptziel) ===== */
+.exam-banner{display:flex;align-items:center;gap:20px;cursor:pointer;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#6d28d9,#7c3aed 55%,#a855f7);color:#fff;border-radius:20px;
+  padding:26px 30px;margin-bottom:30px;box-shadow:0 12px 34px rgba(124,58,237,.32);
+  transition:transform .18s,box-shadow .18s}
+.exam-banner:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(124,58,237,.42)}
+.exam-banner::after{content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;
+  background:radial-gradient(circle,rgba(255,255,255,.18),transparent 70%);pointer-events:none}
+.exam-ic{font-size:2.6em;flex-shrink:0;filter:drop-shadow(0 3px 6px rgba(0,0,0,.2))}
+.exam-txt{flex:1;min-width:0}
+.exam-kicker{font-size:.72em;font-weight:800;letter-spacing:.1em;text-transform:uppercase;opacity:.85;margin-bottom:3px}
+.exam-txt h2{font-size:1.55em;font-weight:800;line-height:1.1}
+.exam-txt p{font-size:.9em;opacity:.92;margin-top:6px;line-height:1.45}
+.exam-go{flex-shrink:0;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);
+  border-radius:12px;padding:11px 18px;font-weight:700;font-size:.9em;white-space:nowrap}
+.fach-label{font-size:.78em;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 14px 2px}
+@media (max-width:640px){
+  .exam-banner{flex-direction:column;align-items:flex-start;gap:12px;padding:22px}
+  .exam-go{align-self:stretch;text-align:center}
+}
+
 /* ===== Card grids ===== */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
 .tile{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;cursor:pointer;
@@ -218,6 +240,19 @@ h3.sub{font-size:1em;color:#334155;margin:14px 0 6px;font-weight:700}
     <h1>Fachkraft für Gastronomie</h1>
     <p>Wähle ein Fach · Chọn một môn để bắt đầu ôn tập.</p>
   </div>
+
+  <!-- Banner Abschlussprüfung (mục tiêu chính) -->
+  <div class="exam-banner" onclick="go('#/abschluss')">
+    <div class="exam-ic">🎯</div>
+    <div class="exam-txt">
+      <div class="exam-kicker">Hauptziel · Mục tiêu chính</div>
+      <h2>Abschlussprüfung</h2>
+      <p>Luyện thi tốt nghiệp — Aufbau der Prüfung &amp; alle Lernthemen an einem Ort.</p>
+    </div>
+    <div class="exam-go">Los geht's →</div>
+  </div>
+
+  <div class="fach-label">Fächer · Các môn học</div>
   <div class="grid" id="subjectGrid"></div>
 </section>
 
@@ -683,7 +718,6 @@ renderAbschlussThemen();
 /* ============ FÄCHER & THEMEN ============ */
 const SUBJECTS = [
   {code:"BFK", name:"Berufsfachkunde", icon:"🍳", accent:"#dc2626", soft:"#fef2f2", desc:"Lebensmittel, Fleisch & Küche.", route:"#/bfk", ready:true},
-  {code:"Abschluss", name:"Abschlussprüfung", icon:"🎯", accent:"#7c3aed", soft:"#f5f3ff", desc:"Luyện thi tốt nghiệp — cấu trúc & các chủ đề.", route:"#/abschluss", ready:true},
   {code:"Wiko", name:"Wirtschaftskunde", icon:"📊", accent:"#2563eb", soft:"#eff6ff", desc:"Wirtschaft, Kaufvertrag & Recht.", route:"#/wiko", ready:false},
   {code:"GK", name:"Gemeinschaftskunde", icon:"🏛️", accent:"#16a34a", soft:"#f0fdf4", desc:"Politik, Gesellschaft & Recht.", route:"#/gk", ready:false},
 ];
