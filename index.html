@@ -103,6 +103,8 @@ a{color:inherit;text-decoration:none}
 .tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
 .panel{display:none}
 .panel.active{display:block;animation:fade .25s}
+.apanel{display:none}
+.apanel.active{display:block;animation:fade .25s}
 
 /* Image chart + hotspots */
 .diagram-wrap{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start}
@@ -436,6 +438,63 @@ h3.sub{font-size:1em;color:#334155;margin:14px 0 6px;font-weight:700}
   </div>
 </section>
 
+<!-- ===== THEME: ABSCHLUSSPRÜFUNG ===== -->
+<section class="view bfk-scope" id="v-abschluss">
+  <div class="back" onclick="go('#/bfk')">← BFK-Themen</div>
+  <div class="section-head">
+    <h2>🎯 Abschlussprüfung</h2>
+    <p>Fachkraft für Gastronomie · Aufbau der Prüfung und alle Lernthemen an einem Ort.</p>
+  </div>
+  <div class="tabs">
+    <div class="tab active" data-atab="struktur">📋 Struktur</div>
+    <div class="tab" data-atab="themen">📚 Themen</div>
+  </div>
+
+  <!-- STRUKTUR -->
+  <div class="apanel active" id="a-struktur">
+    <div class="card">
+      <h2>📋 Gestreckte Abschlussprüfung (GAP)</h2>
+      <div class="hint">Die Prüfung besteht aus zwei zeitlich getrennten Teilen. Teil 1 findet in der Mitte der Ausbildung statt, Teil 2 am Ende.</div>
+      <table>
+        <tr><th>Teil</th><th>Zeitpunkt</th><th>Form</th><th>Gewichtung</th></tr>
+        <tr><td><strong>Teil 1</strong></td><td>Mitte der Ausbildung (ca. nach dem 1. Jahr)</td><td>schriftlich + praktisch</td><td>ca. 25 %</td></tr>
+        <tr><td><strong>Teil 2</strong></td><td>Ende der Ausbildung</td><td>schriftlich + praktisch</td><td>ca. 75 %</td></tr>
+      </table>
+      <div class="note">⚠️ Prozentwerte, Dauer und genaue Prüfungsbereiche bitte mit deiner <strong>IHK</strong> bzw. dem <strong>Ausbildungsrahmenplan (GastAusbV)</strong> abgleichen — je nach Fachrichtung unterschiedlich. Wir aktualisieren die Zahlen, sobald du sie hast.</div>
+    </div>
+
+    <div class="card">
+      <h2>🧭 Fachrichtungen</h2>
+      <div class="hint">Die Fachkraft für Gastronomie wird in einer von zwei Fachrichtungen geprüft.</div>
+      <div class="grid2">
+        <div class="mini"><h4>🍽️ Restaurantservice</h4><p>Gäste empfangen &amp; beraten, Speisen und Getränke servieren, Veranstaltungen begleiten.</p></div>
+        <div class="mini"><h4>⚙️ Systemgastronomie</h4><p>Standardisierte Abläufe, Warenwirtschaft, Gästekommunikation im Systembetrieb.</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🗂️ Prüfungsbereiche (Übersicht)</h2>
+      <div class="hint">Typische Bereiche der GAP — Details folgen beim schrittweisen Ausbau.</div>
+      <table>
+        <tr><th>Prüfungsbereich</th><th>Inhalt (Beispiele)</th></tr>
+        <tr><td><strong>Arbeiten in der Gastronomie</strong></td><td>Warenannahme, Lagerung, Hygiene (HACCP), Arbeitssicherheit</td></tr>
+        <tr><td><strong>Speisen &amp; Getränke</strong></td><td>Zubereitung, Garverfahren, Produktkunde, Service</td></tr>
+        <tr><td><strong>Gäste beraten &amp; betreuen</strong></td><td>Kommunikation, Verkauf, Reklamation</td></tr>
+        <tr><td><strong>Wirtschafts- &amp; Sozialkunde</strong></td><td>Kaufvertrag, Rechte &amp; Pflichten, Arbeitsrecht</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- THEMEN -->
+  <div class="apanel" id="a-themen">
+    <div class="card">
+      <h2>📚 Lernthemen</h2>
+      <div class="hint">Sammlung aller prüfungsrelevanten Themen. Inhalte werden Schritt für Schritt ergänzt.</div>
+      <div class="grid" id="abschlussThemen"></div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== THEME: QUIZ ===== -->
 <section class="view bfk-scope" id="v-quiz">
   <div class="back" onclick="go('#/bfk')">← BFK-Themen</div>
@@ -588,6 +647,38 @@ function fleischShowAnimal(animal){
   if(tab) tab.click();
 }
 
+/* Abschlussprüfung tabs */
+document.querySelectorAll('#v-abschluss .tab').forEach(t=>t.addEventListener("click",()=>{
+  document.querySelectorAll('#v-abschluss .tab').forEach(x=>x.classList.remove("active"));
+  document.querySelectorAll('#v-abschluss .apanel').forEach(x=>x.classList.remove("active"));
+  t.classList.add("active");
+  document.getElementById("a-"+t.getAttribute("data-atab")).classList.add("active");
+}));
+function abschlussShowTab(tab){
+  const el=document.querySelector('#v-abschluss .tab[data-atab="'+tab+'"]');
+  if(el) el.click();
+}
+/* Abschluss-Themen (wird schrittweise erweitert) */
+const ABSCHLUSS_THEMEN=[
+  {icon:"🥩", name:"Fleisch & Produktkunde", desc:"Fleischteile, Gerichte, Garverfahren.", route:"#/bfk/fleisch", ready:true},
+  {icon:"🍳", name:"Küche & Ernährung", desc:"Nährwert, Eier, biologische Wertigkeit.", route:"#/bfk/kueche", ready:true},
+  {icon:"📦", name:"Warenwirtschaft", desc:"Bestellung, Annahme, Lagerung, Kennzahlen.", route:null, ready:false},
+  {icon:"🧼", name:"Hygiene (HACCP)", desc:"Lebensmittelhygiene & Arbeitssicherheit.", route:null, ready:false},
+  {icon:"🍽️", name:"Service & Gäste", desc:"Beratung, Verkauf, Reklamation.", route:null, ready:false},
+  {icon:"⚖️", name:"Wirtschaft & Recht", desc:"Kaufvertrag, Mängel, Lieferverzug.", route:null, ready:false},
+];
+function renderAbschlussThemen(){
+  const g=document.getElementById("abschlussThemen");
+  if(!g) return;
+  g.innerHTML=ABSCHLUSS_THEMEN.map(t=>{
+    const pill=t.ready?'<span class="pill ready">Verfügbar</span>':'<span class="pill soon">Bald</span>';
+    const cls=t.ready?"tile":"tile soon";
+    const click=t.ready&&t.route?'onclick="go(\''+t.route+'\')"':'';
+    return '<div class="'+cls+'" '+click+'><div class="ic">'+t.icon+'</div><h3>'+t.name+'</h3><p>'+t.desc+'</p><div class="meta">'+pill+'</div></div>';
+  }).join("");
+}
+renderAbschlussThemen();
+
 /* ============ FÄCHER & THEMEN ============ */
 const SUBJECTS = [
   {code:"BFK", name:"Berufsfachkunde", icon:"🍳", accent:"#dc2626", soft:"#fef2f2", desc:"Lebensmittel, Fleisch & Küche.", route:"#/bfk", ready:true},
@@ -597,6 +688,7 @@ const SUBJECTS = [
 const BFK_THEMES = [
   {icon:"🥩", name:"Fleisch", desc:"Fleischteile (Rind/Schwein/Schaf) · Gerichte · Grundlagen.", route:"#/bfk/fleisch"},
   {icon:"🍳", name:"Küche & Ernährung", desc:"Nährwert, Eiercode, biologische Wertigkeit.", route:"#/bfk/kueche"},
+  {icon:"🎯", name:"Abschlussprüfung", desc:"Luyện thi tốt nghiệp — cấu trúc & các chủ đề.", route:"#/bfk/abschluss"},
   {icon:"📝", name:"Quiz", desc:"Trắc nghiệm tự kiểm tra.", route:"#/bfk/quiz"},
   {icon:"🗂️", name:"Prüfungen", desc:"Đề mẫu, đáp án & tóm tắt KA2.", route:"#/bfk/pruefungen"},
 ];
@@ -631,6 +723,7 @@ const ROUTES = {
   "#/bfk":         {view:"v-bfk",    crumbs:[["BFK","#/bfk"]]},
   "#/bfk/fleisch": {view:"v-fleisch",crumbs:[["BFK","#/bfk"],["Fleisch","#/bfk/fleisch"]]},
   "#/bfk/kueche":  {view:"v-kueche", crumbs:[["BFK","#/bfk"],["Küche & Ernährung","#/bfk/kueche"]]},
+  "#/bfk/abschluss":{view:"v-abschluss",crumbs:[["BFK","#/bfk"],["Abschlussprüfung","#/bfk/abschluss"]]},
   "#/bfk/quiz":    {view:"v-quiz",   crumbs:[["BFK","#/bfk"],["Quiz","#/bfk/quiz"]]},
   "#/bfk/pruefungen":{view:"v-pruefungen",crumbs:[["BFK","#/bfk"],["Prüfungen","#/bfk/pruefungen"]]},
 };
@@ -674,6 +767,10 @@ BFK_THEMES.forEach(t=>idx(t.name,"BFK · "+t.desc,"Thema",t.route,null));
 // Grundlagen → Tab in Fleisch
 ["Muskelgewebe","Bindegewebe","Fettgewebe","Kollagen","Zusammensetzung","Garverfahren","Schmoren","Kurzbraten"].forEach(name=>
    idx(name,"Fleisch · Grundlagen","Basis","#/bfk/fleisch",()=>fleischShowAnimal("grundlagen")));
+// Abschlussprüfung
+idx("Abschlussprüfung","Aufbau · Teil 1 & Teil 2 · Prüfungsbereiche","Prüfung","#/bfk/abschluss",()=>abschlussShowTab("struktur"));
+[["Gestreckte Abschlussprüfung","Teil 1 & Teil 2 · Gewichtung"],["Restaurantservice","Fachrichtung"],["Systemgastronomie","Fachrichtung"],["Prüfungsbereiche","Übersicht der Bereiche"]].forEach(([t,s])=>
+   idx(t,"Abschlussprüfung · "+s,"Prüfung","#/bfk/abschluss",()=>abschlussShowTab("struktur")));
 
 function flashDetail(animal){ const el=document.querySelector('[data-detail="'+animal+'"]'); if(el){el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash");el.scrollIntoView({behavior:"smooth",block:"center"});} }
 function flashEl(id){ const el=document.getElementById(id); if(el){el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash");el.scrollIntoView({behavior:"smooth",block:"center"});} }
