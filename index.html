@@ -3,103 +3,162 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🥩 Fleischteile lernen – BfK2 (Rind, Schwein, Schaf, Kalb)</title>
+<title>Lern-App · Fachkraft für Gastronomie</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root{
+  --bg:#f1f5f9; --surface:#fff; --ink:#0f172a; --muted:#64748b; --line:#e2e8f0;
+  --accent:#4f46e5; --accent-soft:#eef2ff;
+  --shadow:0 1px 3px rgba(15,23,42,.06),0 8px 24px rgba(15,23,42,.06);
+}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',sans-serif;background:#fef2f2;color:#1a202c;padding:18px}
-.page{max-width:1000px;margin:0 auto}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+a{color:inherit;text-decoration:none}
+.page{max-width:1040px;margin:0 auto;padding:0 18px 60px}
 
-.header{background:linear-gradient(135deg,#7f1d1d,#dc2626);color:#fff;padding:24px 30px;border-radius:16px;box-shadow:0 6px 28px rgba(0,0,0,.18);margin-bottom:18px}
-.header h1{font-size:1.5em;font-weight:800;margin-bottom:6px}
-.header .sub{opacity:.9;font-size:.92em;line-height:1.5}
-.header .tip{margin-top:12px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:10px;padding:8px 14px;font-size:.85em}
+/* ===== Top nav ===== */
+.nav{position:sticky;top:0;z-index:50;background:rgba(241,245,249,.85);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);margin:0 -18px 22px;padding:12px 18px}
+.nav-row{max-width:1040px;margin:0 auto;display:flex;align-items:center;gap:14px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:1.02em;cursor:pointer;white-space:nowrap}
+.brand .logo{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--accent),#7c3aed);
+  color:#fff;display:flex;align-items:center;justify-content:center;font-size:.9em}
+.crumbs{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:.86em;font-weight:600;flex:1;min-width:0;overflow:hidden}
+.crumbs span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crumbs a{cursor:pointer}
+.crumbs a:hover{color:var(--accent)}
+.crumbs .sep{opacity:.5}
 
-/* Tabs */
+/* ===== Search ===== */
+.search{position:relative;width:min(340px,42vw)}
+.search input{width:100%;padding:9px 14px 9px 36px;border:1px solid var(--line);border-radius:11px;
+  background:var(--surface);font:inherit;font-size:.88em;color:var(--ink);box-shadow:var(--shadow)}
+.search input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.search .mag{position:absolute;left:12px;top:50%;transform:translateY(-50%);opacity:.5;font-size:.9em;pointer-events:none}
+.search .kbd{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:.7em;color:var(--muted);
+  border:1px solid var(--line);border-radius:5px;padding:1px 6px;background:var(--bg)}
+.results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--surface);border:1px solid var(--line);
+  border-radius:12px;box-shadow:0 12px 40px rgba(15,23,42,.16);overflow:hidden;max-height:min(60vh,420px);overflow-y:auto;display:none}
+.results.show{display:block}
+.res{display:flex;align-items:center;gap:10px;padding:9px 13px;cursor:pointer;border-bottom:1px solid var(--line)}
+.res:last-child{border-bottom:none}
+.res:hover,.res.active{background:var(--accent-soft)}
+.res .badge{font-size:.66em;font-weight:800;padding:2px 7px;border-radius:6px;background:var(--bg);color:var(--muted);white-space:nowrap;text-transform:uppercase;letter-spacing:.03em}
+.res .txt{min-width:0}
+.res .t{font-weight:600;font-size:.9em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.res .s{font-size:.76em;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.res .empty{color:var(--muted);font-size:.86em;padding:6px}
+
+/* ===== Views ===== */
+.view{display:none;animation:fade .28s ease}
+.view.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.hero{margin:6px 0 26px}
+.hero h1{font-size:1.7em;font-weight:800;letter-spacing:-.01em}
+.hero p{color:var(--muted);margin-top:6px;font-size:.96em}
+
+/* ===== Card grids ===== */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;cursor:pointer;
+  box-shadow:var(--shadow);transition:transform .16s,box-shadow .16s,border-color .16s;position:relative;overflow:hidden}
+.tile:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(15,23,42,.12);border-color:transparent}
+.tile::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--tile-accent,var(--accent))}
+.tile .ic{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4em;
+  background:var(--tile-soft,var(--accent-soft));margin-bottom:14px}
+.tile h3{font-size:1.12em;font-weight:700}
+.tile .code{font-size:.72em;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--tile-accent,var(--accent));margin-bottom:3px}
+.tile p{color:var(--muted);font-size:.86em;margin-top:6px}
+.tile .meta{margin-top:14px;font-size:.78em;font-weight:600;color:var(--muted);display:flex;align-items:center;gap:6px}
+.tile.soon{cursor:not-allowed;opacity:.72}
+.tile.soon:hover{transform:none;box-shadow:var(--shadow);border-color:var(--line)}
+.pill{display:inline-block;font-size:.68em;font-weight:800;padding:3px 9px;border-radius:20px;text-transform:uppercase;letter-spacing:.04em}
+.pill.ready{background:#dcfce7;color:#166534}
+.pill.soon{background:#fef3c7;color:#92400e}
+
+.back{display:inline-flex;align-items:center;gap:6px;color:var(--muted);font-weight:600;font-size:.86em;cursor:pointer;margin-bottom:14px}
+.back:hover{color:var(--accent)}
+
+.section-head{margin:4px 0 18px}
+.section-head h2{font-size:1.35em;font-weight:800}
+.section-head p{color:var(--muted);font-size:.9em;margin-top:4px}
+
+/* ===== BFK accent scope ===== */
+.bfk-scope{--accent:#dc2626;--accent-soft:#fef2f2}
+
+/* ===== Theme content shared ===== */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:22px;margin-bottom:16px}
+.card h2{color:var(--accent);font-size:1.12em;margin-bottom:4px}
+.card .hint{color:var(--muted);font-size:.85em;margin-bottom:14px}
+
+/* Tabs (inside Fleisch/others) */
 .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
-.tab{background:#fff;border:2px solid #fecaca;color:#991b1b;border-radius:12px;padding:10px 16px;font-weight:700;font-size:.9em;cursor:pointer;transition:.15s;flex:1;min-width:120px;text-align:center}
-.tab:hover{border-color:#f87171}
-.tab.active{background:#dc2626;color:#fff;border-color:#dc2626}
-
+.tab{background:var(--surface);border:1px solid var(--line);color:var(--muted);border-radius:11px;padding:9px 15px;
+  font-weight:600;font-size:.88em;cursor:pointer;transition:.15s}
+.tab:hover{border-color:var(--accent)}
+.tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
 .panel{display:none}
 .panel.active{display:block;animation:fade .25s}
-@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
-.card{background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.08);padding:22px;margin-bottom:16px}
-.card h2{color:#991b1b;font-size:1.15em;margin-bottom:4px}
-.card .hint{color:#6b7280;font-size:.85em;margin-bottom:14px}
-
-/* SVG diagram */
+/* Image chart + hotspots */
 .diagram-wrap{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start}
-.svg-box{flex:1;min-width:300px;background:#fafafa;border:2px solid #f3f4f6;border-radius:14px;padding:10px}
-svg{width:100%;height:auto;display:block}
-.cut{fill:#fca5a5;stroke:#fff;stroke-width:2.5;cursor:pointer;transition:.15s}
-.cut:hover{fill:#f87171}
-.cut.sel{fill:#dc2626}
-.cut-label{font-size:22px;font-weight:800;fill:#fff;pointer-events:none;text-anchor:middle;dominant-baseline:middle;paint-order:stroke;stroke:#7f1d1d;stroke-width:1px}
-.body-line{fill:none;stroke:#7f1d1d;stroke-width:2.5;pointer-events:none}
-
-/* image-based chart (con bò tách nền) */
+.svg-box{flex:1;min-width:300px;background:#f8fafc;border:1px solid var(--line);border-radius:14px;padding:10px}
 .img-wrap{position:relative;width:100%;line-height:0}
 .img-wrap img{width:100%;height:auto;display:block;border-radius:10px}
-.hotspot{position:absolute;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;
-  background:rgba(220,38,38,.28);border:2px solid #dc2626;color:#7f1d1d;font-weight:800;font-size:.95em;
+.hotspot{position:absolute;transform:translate(-50%,-50%);width:32px;height:32px;border-radius:50%;
+  background:rgba(220,38,38,.26);border:2px solid #dc2626;color:#7f1d1d;font-weight:800;font-size:.9em;
   display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.15s;user-select:none}
 .hotspot:hover{background:rgba(220,38,38,.55);color:#fff;transform:translate(-50%,-50%) scale(1.12)}
-.hotspot.sel{background:#dc2626;color:#fff;box-shadow:0 0 0 4px rgba(220,38,38,.25)}
-
-/* detail panel */
+.hotspot.sel{background:#dc2626;color:#fff;box-shadow:0 0 0 4px rgba(220,38,38,.22)}
 .detail{flex:1;min-width:280px}
-.detail-empty{color:#9ca3af;font-style:italic;padding:20px;text-align:center;border:2px dashed #e5e7eb;border-radius:12px}
+.detail-empty{color:#9ca3af;font-style:italic;padding:20px;text-align:center;border:2px dashed var(--line);border-radius:12px}
 .detail-box{border-left:5px solid #dc2626;background:#fef2f2;border-radius:0 12px 12px 0;padding:16px 18px}
 .detail-box .num{display:inline-block;background:#dc2626;color:#fff;border-radius:50%;width:30px;height:30px;line-height:30px;text-align:center;font-weight:800;margin-right:8px}
-.detail-box h3{display:inline;color:#7f1d1d;font-size:1.15em}
+.detail-box h3{display:inline;color:#7f1d1d;font-size:1.12em}
 .detail-box .viet{color:#dc2626;font-weight:700;font-size:.92em;margin:8px 0 12px}
 .detail-box dl{font-size:.9em;line-height:1.55}
 .detail-box dt{font-weight:700;color:#991b1b;margin-top:8px}
 .detail-box dd{margin-left:0;color:#374151}
+.legend{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:var(--surface);border:1px solid var(--line);color:#991b1b;border-radius:20px;padding:4px 11px;font-size:.8em;font-weight:600;cursor:pointer}
+.chip:hover{background:#fee2e2}
+.chip.sel{background:#dc2626;color:#fff;border-color:#dc2626}
+
 .tag{display:inline-block;background:#dcfce7;color:#166534;border:1px solid #86efac;border-radius:8px;padding:2px 8px;font-size:.78em;font-weight:700;margin:2px 4px 2px 0}
 .tag.blue{background:#dbeafe;color:#1e40af;border-color:#93c5fd}
 .tag.amber{background:#fef3c7;color:#92400e;border-color:#fcd34d}
 
-/* legend chips under diagram */
-.legend{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px}
-.chip{background:#fff;border:1.5px solid #fecaca;color:#991b1b;border-radius:20px;padding:4px 11px;font-size:.8em;font-weight:600;cursor:pointer}
-.chip:hover{background:#fee2e2}
-.chip.sel{background:#dc2626;color:#fff;border-color:#dc2626}
-
-/* generic tables */
 table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.88em}
-th{background:#dc2626;color:#fff;padding:9px 11px;text-align:left}
-td{padding:9px 11px;border:1px solid #fee2e2;vertical-align:top}
-tr:nth-child(even) td{background:#fef2f2}
-td strong{color:#991b1b}
+th{background:var(--accent);color:#fff;padding:9px 11px;text-align:left}
+td{padding:9px 11px;border:1px solid var(--line);vertical-align:top}
+tr:nth-child(even) td{background:#f8fafc}
+td strong{color:var(--accent)}
 
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-.mini{background:#fef2f2;border-radius:12px;padding:14px;border-left:4px solid #dc2626}
-.mini h4{color:#7f1d1d;margin-bottom:6px;font-size:1em}
+.mini{background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:14px;border-left:4px solid var(--accent)}
+.mini h4{color:var(--accent);margin-bottom:6px;font-size:1em}
 .mini p,.mini li{font-size:.87em;line-height:1.55;color:#374151}
 .mini ul{padding-left:18px;margin-top:4px}
-
 .note{background:#fef3c7;border-left:4px solid #f59e0b;border-radius:0 8px 8px 0;padding:10px 14px;font-size:.85em;color:#92400e;margin:10px 0}
-
-.footer{text-align:center;color:#dc2626;font-weight:600;font-size:.85em;padding:14px}
+.formula{background:#fff7ed;border-left:4px solid #ea580c;padding:10px 14px;border-radius:6px;font-family:ui-monospace,monospace;font-weight:600;font-size:.85em;margin:10px 0;line-height:1.7}
+blockquote{background:var(--accent-soft);border-left:4px solid var(--accent);padding:8px 14px;border-radius:4px;font-style:italic;margin:10px 0;font-size:.9em}
+ul,ol{padding-left:20px;margin:6px 0}
+li{margin-bottom:4px;font-size:.9em}
+h3.sub{font-size:1em;color:#334155;margin:14px 0 6px;font-weight:700}
 
 /* Quiz */
 .quiz-start{text-align:center;padding:20px}
 .quiz-start p{color:#374151;font-size:.92em;line-height:1.6;margin-bottom:14px}
-.btn{background:#dc2626;color:#fff;border:none;border-radius:12px;padding:12px 26px;font-size:1em;font-weight:700;cursor:pointer;transition:.15s;font-family:inherit}
-.btn:hover{background:#b91c1c;transform:translateY(-1px)}
-.btn.ghost{background:#fff;color:#dc2626;border:2px solid #fecaca}
-.btn.ghost:hover{background:#fee2e2}
-.quiz-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:.85em;color:#6b7280;font-weight:600}
-.quiz-bar .score{color:#dc2626}
-.progress{height:8px;background:#fee2e2;border-radius:10px;overflow:hidden;margin-bottom:18px}
-.progress > div{height:100%;background:#dc2626;transition:width .3s;width:0}
+.btn{background:var(--accent);color:#fff;border:none;border-radius:12px;padding:12px 26px;font-size:1em;font-weight:700;cursor:pointer;transition:.15s;font-family:inherit}
+.btn:hover{filter:brightness(.92);transform:translateY(-1px)}
+.quiz-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:.85em;color:var(--muted);font-weight:600}
+.quiz-bar .score{color:var(--accent)}
+.progress{height:8px;background:var(--accent-soft);border-radius:10px;overflow:hidden;margin-bottom:18px}
+.progress > div{height:100%;background:var(--accent);transition:width .3s;width:0}
 .q-text{font-size:1.1em;font-weight:700;color:#7f1d1d;margin-bottom:6px;line-height:1.4}
 .q-cat{display:inline-block;background:#fef3c7;color:#92400e;border-radius:8px;padding:2px 10px;font-size:.72em;font-weight:700;margin-bottom:14px}
 .q-opts{display:flex;flex-direction:column;gap:10px}
-.opt{background:#fff;border:2px solid #e5e7eb;border-radius:12px;padding:13px 16px;font-size:.92em;cursor:pointer;transition:.12s;text-align:left;font-family:inherit;color:#1f2937;line-height:1.4}
+.opt{background:var(--surface);border:2px solid var(--line);border-radius:12px;padding:13px 16px;font-size:.92em;cursor:pointer;transition:.12s;text-align:left;font-family:inherit;color:#1f2937;line-height:1.4}
 .opt:hover:not(.locked){border-color:#f87171;background:#fef2f2}
 .opt.correct{border-color:#16a34a;background:#dcfce7;color:#166534;font-weight:700}
 .opt.wrong{border-color:#dc2626;background:#fee2e2;color:#991b1b}
@@ -110,95 +169,116 @@ td strong{color:#991b1b}
 .q-feedback.no{background:#fef2f2;color:#991b1b;border-left:4px solid #dc2626}
 .q-nav{margin-top:18px;text-align:right}
 .quiz-result{text-align:center;padding:20px}
-.quiz-result .big{font-size:2.4em;font-weight:800;color:#dc2626;margin:10px 0}
+.quiz-result .big{font-size:2.4em;font-weight:800;color:var(--accent);margin:10px 0}
 .quiz-result .msg{color:#374151;font-size:1em;margin-bottom:18px}
-@media (max-width:640px){.detail{min-width:100%}}
+
+.flash{animation:flash 1.6s ease}
+@keyframes flash{0%,100%{box-shadow:none}18%{box-shadow:0 0 0 4px var(--accent-soft),0 0 0 6px var(--accent)}}
+
+.footer{text-align:center;color:var(--muted);font-size:.82em;padding:24px 14px 0}
+
+@media (max-width:640px){
+  .search{width:44vw}
+  .detail{min-width:100%}
+  .crumbs{font-size:.8em}
+  .hero h1{font-size:1.4em}
+}
 </style>
 </head>
 <body>
 <div class="page">
 
-<div class="header">
-  <h1>🥩 Fleischteile & Gerichte – Lernbogen BfK2</h1>
-  <div class="sub">Fachkraft für Gastronomie · Rind · Schwein · Schaf/Lamm · Kalb</div>
-  <div class="tip">👆 Tipp: Klicke im Tierbild auf ein Fleischstück (hoặc bấm vào tên bên dưới) → thông tin, đặc điểm và cách chế biến sẽ hiện ra bên phải.</div>
-</div>
-
-<div class="tabs">
-  <div class="tab active" data-tab="rind">🐄 Rind</div>
-  <div class="tab" data-tab="schwein">🐖 Schwein</div>
-  <div class="tab" data-tab="schaf">🐑 Schaf/Lamm</div>
-  <div class="tab" data-tab="kalb">🐮 Kalb-Gerichte</div>
-  <div class="tab" data-tab="basis">📚 Grundlagen</div>
-  <div class="tab" data-tab="quiz">📝 Quiz</div>
-</div>
-
-<!-- ═══════════ RIND ═══════════ -->
-<div class="panel active" id="rind">
-  <div class="card">
-    <h2>🐄 Rind – Fleischteile (Bò)</h2>
-    <div class="hint">Klicke auf ein Teil im Bild oder auf einen Namen unten.</div>
-    <div class="diagram-wrap">
-      <div class="svg-box">
-        <div class="img-wrap" data-imgchart="rind"></div>
-        <div class="legend" data-legend="rind"></div>
-      </div>
-      <div class="detail" data-detail="rind">
-        <div class="detail-empty">Kein Teil ausgewählt.<br>Chọn một bộ phận để xem chi tiết.</div>
-      </div>
+<!-- ===== NAV ===== -->
+<div class="nav">
+  <div class="nav-row">
+    <div class="brand" onclick="go('#/')"><span class="logo">🎓</span><span>Lern-App</span></div>
+    <div class="crumbs" id="crumbs"></div>
+    <div class="search">
+      <span class="mag">🔍</span>
+      <input id="searchInput" type="text" placeholder="Suchen / Tìm kiếm…" autocomplete="off">
+      <span class="kbd">/</span>
+      <div class="results" id="results"></div>
     </div>
   </div>
 </div>
 
-<!-- ═══════════ SCHWEIN ═══════════ -->
-<div class="panel" id="schwein">
-  <div class="card">
-    <h2>🐖 Schwein – Fleischteile (Lợn)</h2>
-    <div class="hint">Klicke auf ein Teil im Bild oder auf einen Namen unten.</div>
-    <div class="diagram-wrap">
-      <div class="svg-box">
-        <div class="img-wrap" data-imgchart="schwein"></div>
-        <div class="legend" data-legend="schwein"></div>
-      </div>
-      <div class="detail" data-detail="schwein">
-        <div class="detail-empty">Kein Teil ausgewählt.<br>Chọn một bộ phận để xem chi tiết.</div>
+<!-- ===== HOME: Fächer ===== -->
+<section class="view" id="v-home">
+  <div class="hero">
+    <h1>Fachkraft für Gastronomie</h1>
+    <p>Wähle ein Fach · Chọn một môn để bắt đầu ôn tập.</p>
+  </div>
+  <div class="grid" id="subjectGrid"></div>
+</section>
+
+<!-- ===== BFK: Themen ===== -->
+<section class="view bfk-scope" id="v-bfk">
+  <div class="back" onclick="go('#/')">← Fächer / Các môn</div>
+  <div class="section-head">
+    <h2>🍳 BFK – Berufsfachkunde</h2>
+    <p>Fachwissen rund um Lebensmittel, Fleisch & Küche. Chọn một chủ đề.</p>
+  </div>
+  <div class="grid" id="bfkGrid"></div>
+</section>
+
+<!-- ===== THEME: FLEISCHTEILE ===== -->
+<section class="view bfk-scope" id="v-fleisch">
+  <div class="back" onclick="go('#/bfk')">← BFK-Themen</div>
+  <div class="section-head">
+    <h2>🥩 Fleisch (Thịt)</h2>
+    <p>Fleischteile · Gerichte · Grundlagen — alles rund ums Fleisch an einem Ort.</p>
+  </div>
+  <div class="tabs">
+    <div class="tab active" data-tab="rind">🐄 Rind</div>
+    <div class="tab" data-tab="schwein">🐖 Schwein</div>
+    <div class="tab" data-tab="schaf">🐑 Schaf/Lamm</div>
+    <div class="tab" data-tab="gerichte">🍽️ Gerichte</div>
+    <div class="tab" data-tab="grundlagen">🧬 Grundlagen</div>
+  </div>
+
+  <div class="panel active" id="rind">
+    <div class="card"><h2>🐄 Rind – Fleischteile (Bò)</h2>
+      <div class="hint">Klicke auf ein Teil im Bild oder auf einen Namen unten.</div>
+      <div class="diagram-wrap">
+        <div class="svg-box"><div class="img-wrap" data-imgchart="rind"></div><div class="legend" data-legend="rind"></div></div>
+        <div class="detail" data-detail="rind"><div class="detail-empty">Kein Teil ausgewählt.<br>Chọn một bộ phận để xem chi tiết.</div></div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- ═══════════ SCHAF ═══════════ -->
-<div class="panel" id="schaf">
-  <div class="card">
-    <h2>🐑 Schaf / Lamm – Fleischteile (Cừu)</h2>
-    <div class="hint">Klicke auf ein Teil im Bild oder auf einen Namen unten.</div>
-    <div class="diagram-wrap">
-      <div class="svg-box">
-        <div class="img-wrap" data-imgchart="schaf"></div>
-        <div class="legend" data-legend="schaf"></div>
-      </div>
-      <div class="detail" data-detail="schaf">
-        <div class="detail-empty">Kein Teil ausgewählt.<br>Chọn một bộ phận để xem chi tiết.</div>
+  <div class="panel" id="schwein">
+    <div class="card"><h2>🐖 Schwein – Fleischteile (Lợn)</h2>
+      <div class="hint">Klicke auf ein Teil im Bild oder auf einen Namen unten.</div>
+      <div class="diagram-wrap">
+        <div class="svg-box"><div class="img-wrap" data-imgchart="schwein"></div><div class="legend" data-legend="schwein"></div></div>
+        <div class="detail" data-detail="schwein"><div class="detail-empty">Kein Teil ausgewählt.<br>Chọn một bộ phận để xem chi tiết.</div></div>
       </div>
     </div>
   </div>
-  <div class="card">
-    <h2>📖 Alterseinteilung Schaf (Phân loại theo tuổi)</h2>
-    <table>
-      <tr><th>Bezeichnung</th><th>Bedeutung</th></tr>
-      <tr><td><strong>Lamm</strong></td><td>bis 1 Jahr (đến 1 tuổi)</td></tr>
-      <tr><td><strong>Schaf</strong></td><td>weiblich, ab 1 Jahr (con cái, trên 1 tuổi)</td></tr>
-      <tr><td><strong>Bock</strong></td><td>männlich, ab 1 Jahr (con đực, trên 1 tuổi)</td></tr>
-      <tr><td><strong>Hammel</strong></td><td>kastriert / verschnitten (con đã thiến)</td></tr>
-    </table>
-  </div>
-</div>
 
-<!-- ═══════════ KALB GERICHTE ═══════════ -->
-<div class="panel" id="kalb">
+  <div class="panel" id="schaf">
+    <div class="card"><h2>🐑 Schaf / Lamm – Fleischteile (Cừu)</h2>
+      <div class="hint">Klicke auf ein Teil im Bild oder auf einen Namen unten.</div>
+      <div class="diagram-wrap">
+        <div class="svg-box"><div class="img-wrap" data-imgchart="schaf"></div><div class="legend" data-legend="schaf"></div></div>
+        <div class="detail" data-detail="schaf"><div class="detail-empty">Kein Teil ausgewählt.<br>Chọn một bộ phận để xem chi tiết.</div></div>
+      </div>
+    </div>
+    <div class="card"><h2>📖 Alterseinteilung Schaf (Phân loại theo tuổi)</h2>
+      <table>
+        <tr><th>Bezeichnung</th><th>Bedeutung</th></tr>
+        <tr><td><strong>Lamm</strong></td><td>bis 1 Jahr (đến 1 tuổi)</td></tr>
+        <tr><td><strong>Schaf</strong></td><td>weiblich, ab 1 Jahr (con cái, trên 1 tuổi)</td></tr>
+        <tr><td><strong>Bock</strong></td><td>männlich, ab 1 Jahr (con đực, trên 1 tuổi)</td></tr>
+        <tr><td><strong>Hammel</strong></td><td>kastriert / verschnitten (con đã thiến)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="panel" id="gerichte">
   <div class="card">
     <h2>🐮 Gerichte vom Kalb (Món ăn từ thịt bê)</h2>
-    <div class="hint">Ordne Gericht ↔ Beschreibung. Zuordnung ist häufige Prüfungsaufgabe!</div>
+    <div class="hint">Ordne Gericht ↔ Beschreibung.</div>
     <table>
       <tr><th>Gericht</th><th>Beschreibung / Zubereitung</th></tr>
       <tr><td><strong>Vitello tonnato</strong></td><td>Kalbfleisch in Thunfischsoße, <strong>kalt</strong> serviert. (Thịt bê sốt cá ngừ, ăn lạnh)</td></tr>
@@ -213,7 +293,6 @@ td strong{color:#991b1b}
       <tr><td><strong>Kutteln</strong></td><td>Oberbegriff für die verzehrbaren Teile des <strong>Magen-Darm-Traktes</strong> von Rind und Kalb. (Lòng/dạ dày bò và bê)</td></tr>
     </table>
   </div>
-
   <div class="card">
     <h2>🐖🐑 Gerichte vom Schwein & Schaf/Lamm</h2>
     <div class="grid2">
@@ -239,10 +318,9 @@ td strong{color:#991b1b}
       </div>
     </div>
   </div>
-</div>
+  </div>
 
-<!-- ═══════════ GRUNDLAGEN ═══════════ -->
-<div class="panel" id="basis">
+  <div class="panel" id="grundlagen">
   <div class="card">
     <h2>🧬 Zusammensetzung von Schlachtfleisch</h2>
     <div class="hint">Inhaltsstoffe mit ungefähren %-Angaben (thành phần thịt).</div>
@@ -257,51 +335,129 @@ td strong{color:#991b1b}
     </table>
     <div class="note">💡 Die 4 wichtigsten Schlacht-Säugetiere in Deutschland: <strong>Rind, Schwein, Schaf, Ziege</strong>. Als „Schlachtfleisch" bezeichnet man die verzehrbaren Muskel-, Binde- und Fettgewebe.</div>
   </div>
-
   <div class="card">
     <h2>🔬 Gewebearten & Verhalten beim Erhitzen</h2>
     <div class="hint">Sehr wichtig: welches Gewebe → welches Garverfahren!</div>
     <table>
       <tr><th>Gewebeart</th><th>Zusammensetzung</th><th>Verhalten beim Erhitzen</th><th>Garverfahren</th></tr>
-      <tr>
-        <td><strong>Muskelgewebe</strong><br>(Cơ)</td>
-        <td>Muskelzellen, Eiweiß, Wasser</td>
-        <td>Eiweiß <strong>gerinnt</strong>, Fleisch wird fest und verliert Wasser</td>
-        <td><span class="tag">Kurzbraten</span><span class="tag">Grillen</span><span class="tag">Frittieren</span><br><em>(wenig Bindegewebe)</em></td>
-      </tr>
-      <tr>
-        <td><strong>Bindegewebe</strong><br>(Mô liên kết)</td>
-        <td>Kollagen + Elastin</td>
-        <td>Kollagen wird bei <strong>langem Garen zu Gelatine</strong> (Fleisch wird zart). <strong>Elastin bleibt zäh.</strong></td>
-        <td><span class="tag blue">Schmoren</span><span class="tag blue">Kochen</span><span class="tag blue">Dünsten</span></td>
-      </tr>
-      <tr>
-        <td><strong>Fettgewebe</strong><br>(Mô mỡ)</td>
-        <td>Fettzellen, Fett</td>
-        <td><strong>Schmilzt</strong> und macht das Fleisch <strong>saftig und aromatisch</strong></td>
-        <td><span class="tag amber">Braten</span><span class="tag amber">Grillen</span></td>
-      </tr>
+      <tr><td><strong>Muskelgewebe</strong><br>(Cơ)</td><td>Muskelzellen, Eiweiß, Wasser</td><td>Eiweiß <strong>gerinnt</strong>, Fleisch wird fest und verliert Wasser</td><td><span class="tag">Kurzbraten</span><span class="tag">Grillen</span><span class="tag">Frittieren</span><br><em>(wenig Bindegewebe)</em></td></tr>
+      <tr><td><strong>Bindegewebe</strong><br>(Mô liên kết)</td><td>Kollagen + Elastin</td><td>Kollagen wird bei <strong>langem Garen zu Gelatine</strong> (Fleisch wird zart). <strong>Elastin bleibt zäh.</strong></td><td><span class="tag blue">Schmoren</span><span class="tag blue">Kochen</span><span class="tag blue">Dünsten</span></td></tr>
+      <tr><td><strong>Fettgewebe</strong><br>(Mô mỡ)</td><td>Fettzellen, Fett</td><td><strong>Schmilzt</strong> und macht das Fleisch <strong>saftig und aromatisch</strong></td><td><span class="tag amber">Braten</span><span class="tag amber">Grillen</span></td></tr>
     </table>
     <div class="note">⚖️ Merksatz: <strong>Viel Bindegewebe → langsam & feucht garen</strong> (schmoren/kochen). <strong>Wenig Bindegewebe → schnell & heiß</strong> (kurzbraten/grillen).</div>
   </div>
-</div>
-
-<div class="panel" id="quiz">
-  <div class="card">
-    <h2>📝 Quiz – Teste dein Wissen</h2>
-    <div class="hint">Trắc nghiệm ôn tập toàn bộ nội dung. Bấm đáp án để kiểm tra ngay.</div>
-    <div id="quizArea"></div>
   </div>
-</div>
+</section>
 
-<div style="text-align:center;padding:6px 14px 0">
-  <a href="ka2.html" style="color:#6b7280;font-size:.85em;text-decoration:none;border-bottom:1px dotted #9ca3af">← Lernzusammenfassung KA2 (LF2 & LF3)</a>
-</div>
-<div class="footer">🍀 Lernbogen Fleischteile · BfK2 Fachkraft für Gastronomie 🍀</div>
+<!-- ===== THEME: KÜCHE & ERNÄHRUNG (LF3) ===== -->
+<section class="view bfk-scope" id="v-kueche">
+  <div class="back" onclick="go('#/bfk')">← BFK-Themen</div>
+  <div class="section-head">
+    <h2>🍳 Küche & Ernährung (Bếp & Dinh dưỡng)</h2>
+    <p>Nährwertberechnung · Eier & Eiercode · Biologische Wertigkeit.</p>
+  </div>
+
+  <div class="card" id="k-naehrwert">
+    <h2>1️⃣ Nährwertberechnung (Tính toán năng lượng)</h2>
+    <table>
+      <tr><th>Nährstoff (Chất dinh dưỡng)</th><th>Brennwert</th></tr>
+      <tr><td>1g Eiweiß – Protein (Đạm)</td><td><strong>17 kJ = 4 kcal</strong></td></tr>
+      <tr><td>1g Kohlenhydrate – KH (Carbohydrate)</td><td><strong>17 kJ = 4 kcal</strong></td></tr>
+      <tr><td>1g Fett – Chất béo</td><td><strong>37 kJ = 9 kcal</strong></td></tr>
+    </table>
+    <div class="formula">Energiewert = (g EW × 17) + (g KH × 17) + (g Fett × 37) → kJ<br>
+    Umrechnung (Đổi): 1 kcal = 4,2 kJ<br>
+    Grundumsatz (GU) = 24h × kg Körpergewicht × 1<br>
+    Gesamtbedarf = GU × PAL-Wert (sitzend=1,2 | Büro=1,6 | schwer=2,4)</div>
+    <p style="font-size:.9em"><strong>Beispiel:</strong> 150g Schweinefleisch mager (EW 19%, Fett 7%)</p>
+    <ul>
+      <li>EW: 28,5g × 17 = 484,5 kJ</li>
+      <li>Fett: 10,5g × 37 = 388,5 kJ → <strong>Gesamt: 873 kJ</strong></li>
+    </ul>
+  </div>
+
+  <div class="card" id="k-eiercode">
+    <h2>2️⃣ Eiercode (Mã trứng) 🥚</h2>
+    <p style="font-size:.9em">Format: <strong>Haltungsform – Land – Betriebsnummer</strong> &nbsp;|&nbsp; z.B. <span class="tag">2-DE-0812345</span></p>
+    <table>
+      <tr><th>Ziffer (Số)</th><th>Haltungsform (Hình thức)</th></tr>
+      <tr><td><strong>0</strong></td><td>🌿 Bio / Ökologisch (Hữu cơ)</td></tr>
+      <tr><td><strong>1</strong></td><td>🐔 Freilandhaltung (Thả tự do)</td></tr>
+      <tr><td><strong>2</strong></td><td>🏠 Bodenhaltung (Chuồng lớn)</td></tr>
+      <tr><td><strong>3</strong></td><td>🔒 Kleingruppenhaltung (Lồng nhỏ)</td></tr>
+    </table>
+    <p style="font-size:.9em">Gewichtsklassen: <span class="tag">S &lt;53g</span><span class="tag">M 53–63g</span><span class="tag">L 63–73g</span><span class="tag">XL ≥73g</span> → Rezepte nutzen Größe <strong>M</strong></p>
+    <h3 class="sub">Hygiene bei Eiern (Vệ sinh trứng) 🦠</h3>
+    <ul>
+      <li>Lagerung bei <strong>ca. 5°C</strong> (Bảo quản 5°C)</li>
+      <li>MHD = <strong>28 Tage</strong> nach Legedatum (hạn 28 ngày)</li>
+      <li>Nach MHD: nur <strong>durcherhitzt</strong> verwenden (chỉ dùng khi nấu chín)</li>
+      <li>Speisen mit rohen Eiern max. <strong>24 Stunden</strong> bei 5°C</li>
+      <li>Salmonellen abgetötet bei <strong>5 Min. Kochen</strong></li>
+    </ul>
+    <table>
+      <tr><th>Test</th><th>Frisch (Tươi)</th><th>Alt (Cũ)</th></tr>
+      <tr><td>Schwimmtest</td><td>Sinkt (chìm)</td><td>Steigt auf (nổi)</td></tr>
+      <tr><td>Schütteltest</td><td>Kein Geräusch (im lặng)</td><td>Klackert (tiếng lóc cóc)</td></tr>
+      <tr><td>Aufschlagtest</td><td>Dotter hoch, Eiklar fest</td><td>Dotter flach, Eiklar dünn</td></tr>
+    </table>
+    <h3 class="sub">Eierspeisen (Các món trứng) 🍳</h3>
+    <table>
+      <tr><th>Speise (Món)</th><th>Zubereitung (Cách làm)</th></tr>
+      <tr><td><strong>Gekochtes Ei</strong> (Luộc)</td><td>weich: 3–5 Min | wachsweich: 5–7 Min | hart: 8–10 Min</td></tr>
+      <tr><td><strong>Spiegelei</strong> (Ốp la)</td><td>Ganzes Ei, mäßige Hitze, Eigelb flüssig lassen</td></tr>
+      <tr><td><strong>Rührei</strong> (Bác)</td><td>Mit Milch/Sahne verquirlen, cremig & saftig</td></tr>
+      <tr><td><strong>Omelett</strong> (Cuộn)</td><td>Verquirlt stocken lassen, zigarrenförmig einschlagen</td></tr>
+      <tr><td><strong>Pochiertes Ei</strong> (Chần)</td><td>In siedendes Essigwasser gleiten, Eigelb flüssig</td></tr>
+      <tr><td><strong>Eier Benedikt</strong></td><td>Pochiertes Ei + Toast + Schinken + Hollandaise</td></tr>
+    </table>
+  </div>
+
+  <div class="card" id="k-wertigkeit">
+    <h2>3️⃣ Biologische Wertigkeit & Ergänzungswert</h2>
+    <blockquote>Biologische Wertigkeit (BW) = wie viel g Körpereiweiß aus 100g Nahrungseiweiß gebildet wird (Giá trị sinh học)</blockquote>
+    <table>
+      <tr><th>Lebensmittel</th><th>BW (%)</th><th>Lebensmittel</th><th>BW (%)</th></tr>
+      <tr><td>🥚 <strong>Hühnerei</strong></td><td><strong>100</strong></td><td>🌿 Soja</td><td>84</td></tr>
+      <tr><td>🥔 Kartoffeln</td><td>95</td><td>🍚 Reis</td><td>83</td></tr>
+      <tr><td>🥩 Rindfleisch</td><td>87</td><td>🐟 Fischfilet</td><td>80</td></tr>
+      <tr><td>🥛 Kuhmilch</td><td>86</td><td>🌽 Mais</td><td>74</td></tr>
+      <tr><td>🍞 Weizenmehl</td><td>35</td><td>🫘 Bohne</td><td>73</td></tr>
+    </table>
+    <div class="formula">Körpereiweiß aus 100g = Eiweißanteil(g) × BW(%)<br>Beispiel: 100g Ei → 13g × 100% = 13g Körpereiweiß</div>
+    <p style="font-size:.9em"><strong>Ergänzungswert (Giá trị bổ sung):</strong> Kombination → BW steigt! z.B. Kartoffeln + Ei · Getreide + Milch · Linsen + Spätzle · Reis + Ei + Hühnchen.</p>
+  </div>
+</section>
+
+<!-- ===== THEME: QUIZ ===== -->
+<section class="view bfk-scope" id="v-quiz">
+  <div class="back" onclick="go('#/bfk')">← BFK-Themen</div>
+  <div class="section-head">
+    <h2>📝 Quiz – Teste dein Wissen</h2>
+    <p>Trắc nghiệm ôn tập toàn bộ nội dung. Bấm đáp án để kiểm tra ngay.</p>
+  </div>
+  <div class="card"><div id="quizArea"></div></div>
+</section>
+
+<!-- ===== THEME: PRÜFUNGEN ===== -->
+<section class="view bfk-scope" id="v-pruefungen">
+  <div class="back" onclick="go('#/bfk')">← BFK-Themen</div>
+  <div class="section-head">
+    <h2>🗂️ Prüfungen (Đề thi)</h2>
+    <p>Musterprüfung, Lösungsbogen und Zusammenfassung der KA2.</p>
+  </div>
+  <div class="grid">
+    <a class="tile" href="kiemtra_mau.html"><div class="ic">📄</div><h3>Musterprüfung</h3><p>Đề thi mẫu Klassenarbeit Nr. 2.</p><div class="meta">Öffnen →</div></a>
+    <a class="tile" href="loiGiai_mau.html"><div class="ic">✅</div><h3>Lösungsbogen</h3><p>Đáp án chi tiết đề mẫu.</p><div class="meta">Öffnen →</div></a>
+    <a class="tile" href="ka2.html"><div class="ic">📚</div><h3>Zusammenfassung KA2</h3><p>LF2 (Waren & Lieferung) + LF3.</p><div class="meta">Öffnen →</div></a>
+  </div>
+</section>
+
+<div class="footer">🍀 Lern-App · Fachkraft für Gastronomie · Viel Erfolg! 🍀</div>
 </div>
 
 <script>
-/* ============ DATEN ============ */
+/* ============ DATEN (Fleischteile) ============ */
 const DATA = {
   rind: {
     parts: {
@@ -318,28 +474,13 @@ const DATA = {
       keule:     {n:11, name:"Keule (Ober-/Unterschale, Nuss, Hüfte)", viet:"Đùi sau", besch:"Mageres, leicht durchwachsenes Fleisch.", verw:"Braten, Rouladen, Schnitzel, Fondue."},
       hesse:     {n:12, name:"Hesse / Wade (Beinscheibe)", viet:"Bắp chân", besch:"Sehr bindegewebsreich (Kollagen).", verw:"Kraftbrühe, Suppenfleisch, Beinscheibe, Schmoren (Ossobuco-Art)."},
     },
-    imageChart: {
-      src: "rind.png",
-      hotspots: [
-        {key:"kopf",       x:17, y:25},
-        {key:"hals",       x:25, y:29},
-        {key:"querrippe",  x:35, y:21},
-        {key:"hochrippe",  x:51, y:23},
-        {key:"roastbeef",  x:60, y:19},
-        {key:"filet",      x:71, y:23},
-        {key:"keule",      x:77, y:41},
-        {key:"bug",        x:39, y:41},
-        {key:"spannrippe", x:29, y:42},
-        {key:"spannrippe", x:50, y:41},
-        {key:"brust",      x:32, y:54},
-        {key:"brust",      x:50, y:53},
-        {key:"bauch",      x:62, y:44},
-        {key:"hesse",      x:40, y:68},
-        {key:"hesse",      x:76, y:62}
-      ]
-    }
+    imageChart: { src:"rind.png", hotspots:[
+      {key:"kopf",x:17,y:25},{key:"hals",x:25,y:29},{key:"querrippe",x:35,y:21},{key:"hochrippe",x:51,y:23},
+      {key:"roastbeef",x:60,y:19},{key:"filet",x:71,y:23},{key:"keule",x:77,y:41},{key:"bug",x:39,y:41},
+      {key:"spannrippe",x:29,y:42},{key:"spannrippe",x:50,y:41},{key:"brust",x:32,y:54},{key:"brust",x:50,y:53},
+      {key:"bauch",x:62,y:44},{key:"hesse",x:40,y:68},{key:"hesse",x:76,y:62}
+    ]}
   },
-
   schwein: {
     parts: {
       kopf:    {n:1, name:"Kopf / Backe", viet:"Đầu / má", besch:"Bindegewebsreich, fett.", verw:"Sülze, Backe schmoren, Kopffleisch, Wurst."},
@@ -352,24 +493,12 @@ const DATA = {
       eisbein: {n:8, name:"Eisbein / Haxe", viet:"Giò heo (bắp giò)", besch:"Sehr bindegewebsreich.", verw:"Kochen (Eisbein), Schmoren, Grillhaxe."},
       spitzbein:{n:9, name:"Spitzbein / Pfötchen", viet:"Chân giò (móng)", besch:"Haut, Knochen, Gelatine.", verw:"Sülze, Kraftbrühe, Aspik."},
     },
-    imageChart: {
-      src: "schwein.png",
-      hotspots: [
-        {key:"kopf",      x:20, y:45},
-        {key:"nacken",    x:33, y:22},
-        {key:"kotelett",  x:48, y:20},
-        {key:"ruecken",   x:63, y:21},
-        {key:"schinken",  x:74, y:40},
-        {key:"schulter",  x:43, y:42},
-        {key:"bauch",     x:60, y:43},
-        {key:"eisbein",   x:34, y:61},
-        {key:"eisbein",   x:74, y:61},
-        {key:"spitzbein", x:35, y:78},
-        {key:"spitzbein", x:82, y:80}
-      ]
-    }
+    imageChart: { src:"schwein.png", hotspots:[
+      {key:"kopf",x:20,y:45},{key:"nacken",x:33,y:22},{key:"kotelett",x:48,y:20},{key:"ruecken",x:63,y:21},
+      {key:"schinken",x:74,y:40},{key:"schulter",x:43,y:42},{key:"bauch",x:60,y:43},{key:"eisbein",x:34,y:61},
+      {key:"eisbein",x:74,y:61},{key:"spitzbein",x:35,y:78},{key:"spitzbein",x:82,y:80}
+    ]}
   },
-
   schaf: {
     parts: {
       kopf:    {n:1, name:"Kopf", viet:"Đầu", besch:"Wenig Fleisch, bindegewebsreich.", verw:"Zunge, Schafskopf."},
@@ -382,37 +511,23 @@ const DATA = {
       hachse:  {n:8, name:"Hachse (Beinscheibe)", viet:"Bắp chân", besch:"Sehr bindegewebsreich.", verw:"Geschmorte Lammhachse, Kraftbrühe."},
       fuss:    {n:9, name:"Fuß", viet:"Chân / móng", besch:"Haut, Knochen, Gelatine.", verw:"Fond (Kraftbrühe), Aspik."},
     },
-    imageChart: {
-      src: "kraft.png",
-      hotspots: [
-        {key:"kopf",     x:31, y:33},
-        {key:"hals",     x:39, y:36},
-        {key:"kotelett", x:49, y:32},
-        {key:"lende",    x:60, y:32},
-        {key:"keule",    x:68, y:41},
-        {key:"schulter", x:41, y:49},
-        {key:"brust",    x:54, y:54},
-        {key:"hachse",   x:40, y:67},
-        {key:"hachse",   x:67, y:67},
-        {key:"fuss",     x:42, y:84},
-        {key:"fuss",     x:69, y:85}
-      ]
-    }
+    imageChart: { src:"kraft.png", hotspots:[
+      {key:"kopf",x:31,y:33},{key:"hals",x:39,y:36},{key:"kotelett",x:49,y:32},{key:"lende",x:60,y:32},
+      {key:"keule",x:68,y:41},{key:"schulter",x:41,y:49},{key:"brust",x:54,y:54},{key:"hachse",x:40,y:67},
+      {key:"hachse",x:67,y:67},{key:"fuss",x:42,y:84},{key:"fuss",x:69,y:85}
+    ]}
   }
 };
 
-/* ============ RENDER ============ */
+/* ============ RENDER Fleischteile ============ */
 function renderAnimal(animal){
-  const cfg = DATA[animal];
-  const svg = document.querySelector('svg[data-animal="'+animal+'"]');
-  const NS="http://www.w3.org/2000/svg";
-
-  if(cfg.imageChart){
-    // dùng ảnh con bò tách nền của người dùng + nút bấm trong suốt
+  const cfg=DATA[animal];
+  const wrap=document.querySelector('.img-wrap[data-imgchart="'+animal+'"]');
+  if(wrap && !wrap.dataset.built){
+    wrap.dataset.built="1";
     const ic=cfg.imageChart;
-    const wrap=document.querySelector('.img-wrap[data-imgchart="'+animal+'"]');
     const img=document.createElement("img");
-    img.src=ic.src; img.alt="Fleischteile "+animal;
+    img.src=ic.src; img.alt="Fleischteile "+animal; img.loading="lazy";
     wrap.appendChild(img);
     ic.hotspots.forEach(h=>{
       const b=document.createElement("div");
@@ -422,64 +537,9 @@ function renderAnimal(animal){
       b.addEventListener("click",()=>select(animal,h.key));
       wrap.appendChild(b);
     });
-    buildLegend(animal,cfg);
-    return;
   }
-
-  if(cfg.silhouette){
-    // realistic body outline
-    const sil = cfg.silhouette;
-    svg.setAttribute("viewBox", sil.viewBox);
-    const body=document.createElementNS(NS,"path");
-    body.setAttribute("d", sil.bodyPath);
-    body.setAttribute("class","body-line");
-    svg.appendChild(body);
-    // clickable cut regions
-    sil.regions.forEach(r=>{
-      const p=document.createElementNS(NS,"polygon");
-      p.setAttribute("points",r.points);
-      p.setAttribute("class","cut");
-      p.setAttribute("data-key",r.key);
-      svg.appendChild(p);
-      const t=document.createElementNS(NS,"text");
-      t.setAttribute("x",r.labelX); t.setAttribute("y",r.labelY);
-      t.setAttribute("class","cut-label");
-      t.textContent=cfg.parts[r.key].n;
-      svg.appendChild(t);
-    });
-    // redraw body outline on top so it stays visible over region fills
-    const bodyTop=document.createElementNS(NS,"path");
-    bodyTop.setAttribute("d", sil.bodyPath);
-    bodyTop.setAttribute("class","body-line");
-    svg.appendChild(bodyTop);
-    // decorative extras (horns, eye, hooves)
-    (sil.extraPaths||[]).forEach(str=>{
-      const g=document.createElementNS(NS,"g");
-      g.innerHTML=str;
-      svg.appendChild(g);
-    });
-  } else {
-  // clickable cut shapes (rechteckiges Schema)
-  cfg.shapes.forEach(s=>{
-    const [key,,coords,lx,ly]=s;
-    const p=document.createElementNS(NS,"polygon");
-    p.setAttribute("points",coords);
-    p.setAttribute("class","cut");
-    p.setAttribute("data-key",key);
-    svg.appendChild(p);
-    const t=document.createElementNS(NS,"text");
-    t.setAttribute("x",lx); t.setAttribute("y",ly);
-    t.setAttribute("class","cut-label");
-    t.textContent=cfg.parts[key].n;
-    svg.appendChild(t);
-  });
-  }
-  // legend chips
   buildLegend(animal,cfg);
-  // click handlers auf SVG-Formen
-  svg.querySelectorAll(".cut").forEach(el=>el.addEventListener("click",()=>select(animal,el.getAttribute("data-key"))));
 }
-
 function buildLegend(animal,cfg){
   const leg=document.querySelector('[data-legend="'+animal+'"]');
   if(!leg||leg.dataset.built) return;
@@ -493,14 +553,8 @@ function buildLegend(animal,cfg){
     leg.appendChild(c);
   });
 }
-
 function select(animal,key){
   const cfg=DATA[animal], pt=cfg.parts[key];
-  // highlight polygons (SVG-Schema)
-  document.querySelectorAll('svg[data-animal="'+animal+'"] .cut').forEach(el=>{
-    el.classList.toggle("sel", el.getAttribute("data-key")===key);
-  });
-  // highlight hotspots (Bild-Schema)
   document.querySelectorAll('.img-wrap[data-imgchart="'+animal+'"] .hotspot').forEach(el=>{
     el.classList.toggle("sel", el.getAttribute("data-key")===key);
   });
@@ -508,22 +562,150 @@ function select(animal,key){
     el.classList.toggle("sel", el.getAttribute("data-key")===key);
   });
   const box=document.querySelector('[data-detail="'+animal+'"]');
-  box.innerHTML='<div class="detail-box">'
-    +'<span class="num">'+pt.n+'</span><h3>'+pt.name+'</h3>'
+  box.innerHTML='<div class="detail-box"><span class="num">'+pt.n+'</span><h3>'+pt.name+'</h3>'
     +'<div class="viet">🇻🇳 '+pt.viet+'</div>'
     +'<dl><dt>Beschaffenheit (đặc điểm):</dt><dd>'+pt.besch+'</dd>'
     +'<dt>Verwendung (cách dùng):</dt><dd>'+pt.verw+'</dd></dl></div>';
 }
-
 ["rind","schwein","schaf"].forEach(renderAnimal);
 
-/* tabs */
-document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>{
-  document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
-  document.querySelectorAll(".panel").forEach(x=>x.classList.remove("active"));
+/* Fleisch tabs */
+document.querySelectorAll('#v-fleisch .tab').forEach(t=>t.addEventListener("click",()=>{
+  document.querySelectorAll('#v-fleisch .tab').forEach(x=>x.classList.remove("active"));
+  document.querySelectorAll('#v-fleisch .panel').forEach(x=>x.classList.remove("active"));
   t.classList.add("active");
   document.getElementById(t.getAttribute("data-tab")).classList.add("active");
 }));
+function fleischShowAnimal(animal){
+  const tab=document.querySelector('#v-fleisch .tab[data-tab="'+animal+'"]');
+  if(tab) tab.click();
+}
+
+/* ============ FÄCHER & THEMEN ============ */
+const SUBJECTS = [
+  {code:"BFK", name:"Berufsfachkunde", icon:"🍳", accent:"#dc2626", soft:"#fef2f2", desc:"Lebensmittel, Fleisch & Küche.", route:"#/bfk", ready:true},
+  {code:"Wiko", name:"Wirtschaftskunde", icon:"📊", accent:"#2563eb", soft:"#eff6ff", desc:"Wirtschaft, Kaufvertrag & Recht.", route:"#/wiko", ready:false},
+  {code:"GK", name:"Gemeinschaftskunde", icon:"🏛️", accent:"#16a34a", soft:"#f0fdf4", desc:"Politik, Gesellschaft & Recht.", route:"#/gk", ready:false},
+];
+const BFK_THEMES = [
+  {icon:"🥩", name:"Fleisch", desc:"Fleischteile (Rind/Schwein/Schaf) · Gerichte · Grundlagen.", route:"#/bfk/fleisch"},
+  {icon:"🍳", name:"Küche & Ernährung", desc:"Nährwert, Eiercode, biologische Wertigkeit.", route:"#/bfk/kueche"},
+  {icon:"📝", name:"Quiz", desc:"Trắc nghiệm tự kiểm tra.", route:"#/bfk/quiz"},
+  {icon:"🗂️", name:"Prüfungen", desc:"Đề mẫu, đáp án & tóm tắt KA2.", route:"#/bfk/pruefungen"},
+];
+
+function renderSubjects(){
+  const g=document.getElementById("subjectGrid");
+  g.innerHTML=SUBJECTS.map(s=>{
+    const style='--tile-accent:'+s.accent+';--tile-soft:'+s.soft;
+    const pill=s.ready?'<span class="pill ready">Verfügbar</span>':'<span class="pill soon">Bald</span>';
+    const cls=s.ready?"tile":"tile soon";
+    const click=s.ready?'onclick="go(\''+s.route+'\')"':'';
+    return '<div class="'+cls+'" style="'+style+'" '+click+'>'
+      +'<div class="ic">'+s.icon+'</div>'
+      +'<div class="code">'+s.code+'</div>'
+      +'<h3>'+s.name+'</h3><p>'+s.desc+'</p>'
+      +'<div class="meta">'+pill+'</div></div>';
+  }).join("");
+}
+function renderBfkThemes(){
+  const g=document.getElementById("bfkGrid");
+  g.innerHTML=BFK_THEMES.map(t=>
+    '<div class="tile" onclick="go(\''+t.route+'\')">'
+    +'<div class="ic">'+t.icon+'</div><h3>'+t.name+'</h3><p>'+t.desc+'</p>'
+    +'<div class="meta">Öffnen →</div></div>'
+  ).join("");
+}
+renderSubjects(); renderBfkThemes();
+
+/* ============ ROUTING ============ */
+const ROUTES = {
+  "#/":            {view:"v-home",   crumbs:[]},
+  "#/bfk":         {view:"v-bfk",    crumbs:[["BFK","#/bfk"]]},
+  "#/bfk/fleisch": {view:"v-fleisch",crumbs:[["BFK","#/bfk"],["Fleisch","#/bfk/fleisch"]]},
+  "#/bfk/kueche":  {view:"v-kueche", crumbs:[["BFK","#/bfk"],["Küche & Ernährung","#/bfk/kueche"]]},
+  "#/bfk/quiz":    {view:"v-quiz",   crumbs:[["BFK","#/bfk"],["Quiz","#/bfk/quiz"]]},
+  "#/bfk/pruefungen":{view:"v-pruefungen",crumbs:[["BFK","#/bfk"],["Prüfungen","#/bfk/pruefungen"]]},
+};
+function go(hash){ if(location.hash===hash){ router(); } else { location.hash=hash; } }
+function router(){
+  let hash=location.hash||"#/";
+  const r=ROUTES[hash]||ROUTES["#/"];
+  document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
+  const view=document.getElementById(r.view);
+  if(view) view.classList.add("active");
+  // crumbs
+  const cb=document.getElementById("crumbs");
+  let html='<a onclick="go(\'#/\')">Fächer</a>';
+  r.crumbs.forEach(c=>{ html+='<span class="sep">›</span><a onclick="go(\''+c[1]+'\')">'+c[0]+'</a>'; });
+  cb.innerHTML=html;
+  if(r.view==="v-quiz" && !window._quizStarted) quizIntro();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+window.addEventListener("hashchange",router);
+
+/* ============ SEARCH INDEX ============ */
+const INDEX=[];
+function idx(title,sub,badge,route,action){ INDEX.push({title,sub,badge,route,action,hay:(title+" "+sub).toLowerCase()}); }
+// Fleischteile
+[["rind","🐄 Rind"],["schwein","🐖 Schwein"],["schaf","🐑 Schaf/Lamm"]].forEach(([animal,label])=>{
+  Object.keys(DATA[animal].parts).forEach(key=>{
+    const pt=DATA[animal].parts[key];
+    idx(pt.name, label+" · "+pt.viet, "Fleisch", "#/bfk/fleisch", ()=>{ fleischShowAnimal(animal); setTimeout(()=>{select(animal,key); flashDetail(animal);},60); });
+  });
+});
+// Themen selbst
+BFK_THEMES.forEach(t=>idx(t.name,"BFK · "+t.desc,"Thema",t.route,null));
+// Küche Abschnitte
+[["Nährwertberechnung","kJ · kcal · Grundumsatz · PAL","k-naehrwert"],
+ ["Eiercode","Haltungsform 0-3 · Eierspeisen · Hygiene","k-eiercode"],
+ ["Biologische Wertigkeit","BW % · Ergänzungswert","k-wertigkeit"]].forEach(([t,s,id])=>
+   idx(t,"Küche & Ernährung · "+s,"Küche","#/bfk/kueche",()=>flashEl(id)));
+// Gerichte (Kalb Schlagwörter) → Tab in Fleisch
+["Wiener Schnitzel","Cordon bleu","Saltimbocca","Osso Buco","Vitello tonnato","Zürcher Geschnetzeltes","Kalbsfrikassee","Schäufele","Szegediner Gulasch","Spanferkel","Irish Stew","Navarin","Moussaka","Lammcurry","Mutton Chops"].forEach(name=>
+   idx(name,"Fleisch · Gerichte","Gericht","#/bfk/fleisch",()=>fleischShowAnimal("gerichte")));
+// Grundlagen → Tab in Fleisch
+["Muskelgewebe","Bindegewebe","Fettgewebe","Kollagen","Zusammensetzung","Garverfahren","Schmoren","Kurzbraten"].forEach(name=>
+   idx(name,"Fleisch · Grundlagen","Basis","#/bfk/fleisch",()=>fleischShowAnimal("grundlagen")));
+
+function flashDetail(animal){ const el=document.querySelector('[data-detail="'+animal+'"]'); if(el){el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash");el.scrollIntoView({behavior:"smooth",block:"center"});} }
+function flashEl(id){ const el=document.getElementById(id); if(el){el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash");el.scrollIntoView({behavior:"smooth",block:"center"});} }
+
+/* ============ SEARCH UI ============ */
+const sInput=document.getElementById("searchInput"), sBox=document.getElementById("results");
+let sActive=-1, sHits=[];
+function runSearch(q){
+  q=q.trim().toLowerCase();
+  if(!q){ sBox.classList.remove("show"); sBox.innerHTML=""; return; }
+  const terms=q.split(/\s+/);
+  sHits=INDEX.filter(it=>terms.every(t=>it.hay.includes(t))).slice(0,12);
+  sActive=-1;
+  if(!sHits.length){ sBox.innerHTML='<div class="res"><span class="empty">Keine Treffer / Không tìm thấy.</span></div>'; sBox.classList.add("show"); return; }
+  sBox.innerHTML=sHits.map((h,i)=>'<div class="res" data-i="'+i+'"><span class="badge">'+h.badge+'</span><div class="txt"><div class="t">'+h.title+'</div><div class="s">'+h.sub+'</div></div></div>').join("");
+  sBox.classList.add("show");
+  sBox.querySelectorAll(".res").forEach(el=>{ const i=+el.getAttribute("data-i"); if(!isNaN(i)) el.addEventListener("click",()=>pickHit(i)); });
+}
+function pickHit(i){
+  const h=sHits[i]; if(!h) return;
+  sBox.classList.remove("show"); sInput.value=""; sInput.blur();
+  go(h.route);
+  if(h.action) setTimeout(h.action,180);
+}
+sInput.addEventListener("input",()=>runSearch(sInput.value));
+sInput.addEventListener("keydown",e=>{
+  if(!sBox.classList.contains("show")) return;
+  const items=sBox.querySelectorAll(".res[data-i]");
+  if(e.key==="ArrowDown"){ e.preventDefault(); sActive=Math.min(sActive+1,items.length-1); }
+  else if(e.key==="ArrowUp"){ e.preventDefault(); sActive=Math.max(sActive-1,0); }
+  else if(e.key==="Enter"){ e.preventDefault(); if(sActive>=0) pickHit(sActive); else if(sHits.length) pickHit(0); return; }
+  else if(e.key==="Escape"){ sBox.classList.remove("show"); sInput.blur(); return; }
+  items.forEach((el,k)=>el.classList.toggle("active",k===sActive));
+  if(sActive>=0&&items[sActive]) items[sActive].scrollIntoView({block:"nearest"});
+});
+document.addEventListener("click",e=>{ if(!e.target.closest(".search")) sBox.classList.remove("show"); });
+document.addEventListener("keydown",e=>{
+  if(e.key==="/" && document.activeElement!==sInput){ e.preventDefault(); sInput.focus(); }
+});
 
 /* ============ QUIZ ============ */
 const QUIZ = [
@@ -547,25 +729,13 @@ const QUIZ = [
   {cat:"Schaf", q:"Was ist Irish Stew?", opts:["Lammtopf mit Zwiebeln & Kartoffelwürfeln","Hammelragout mit Auberginen","Lammcurry mit Mango","gegrillte Koteletts"], a:0, ex:"Irish Stew = Lammtopf auf irische Art mit Zwiebeln und Kartoffelwürfeln."},
   {cat:"Schaf", q:"Moussaka wird zubereitet mit …", opts:["Lammhackfleisch, gebackenen Auberginen & Tomatensauce","Kalbsfilet & Pilzen","Schweinebauch & Sauerkraut","Rindfleisch & Rösti"], a:0, ex:"Moussaka: Hammelhackfleisch mit gebackenen Auberginen und Tomatensauce."},
   {cat:"Grundlagen", q:"Welche 4 Tiere sind die wichtigsten Schlacht-Säugetiere in Deutschland?", opts:["Rind, Schwein, Schaf, Ziege","Rind, Pferd, Huhn, Ente","Schwein, Kaninchen, Reh, Gans","Rind, Schwein, Wildschwein, Hirsch"], a:0, ex:"Rind, Schwein, Schaf und Ziege sind die 4 wichtigsten Schlacht-Säugetiere."},
+  {cat:"Küche", q:"Wie viel kJ liefert 1g Fett?", opts:["17 kJ","4 kJ","37 kJ","9 kJ"], a:2, ex:"1g Fett = 37 kJ (= 9 kcal). Eiweiß & KH je 17 kJ (4 kcal)."},
+  {cat:"Küche", q:"Was bedeutet die erste Ziffer '0' im Eiercode?", opts:["Bodenhaltung","Freilandhaltung","Bio / Ökologisch","Kleingruppenhaltung"], a:2, ex:"0 = Bio/Öko, 1 = Freiland, 2 = Boden, 3 = Kleingruppe."},
+  {cat:"Küche", q:"Welches Lebensmittel hat die biologische Wertigkeit 100 (Referenz)?", opts:["Rindfleisch","Hühnerei","Soja","Kartoffeln"], a:1, ex:"Das Hühnerei ist die Referenz mit BW 100."},
 ];
-
 let qOrder=[], qIndex=0, qScore=0;
-
-function shuffle(arr){
-  const a=arr.slice();
-  for(let i=a.length-1;i>0;i--){
-    const j=Math.floor(Math.random()*(i+1));
-    [a[i],a[j]]=[a[j],a[i]];
-  }
-  return a;
-}
-
-function quizStart(){
-  qOrder=shuffle(QUIZ.map((_,i)=>i));
-  qIndex=0; qScore=0;
-  renderQuestion();
-}
-
+function shuffle(arr){ const a=arr.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function quizStart(){ window._quizStarted=true; qOrder=shuffle(QUIZ.map((_,i)=>i)); qIndex=0; qScore=0; renderQuestion(); }
 function renderQuestion(){
   const area=document.getElementById("quizArea");
   if(qIndex>=qOrder.length){ return quizResult(); }
@@ -573,65 +743,40 @@ function renderQuestion(){
   const pct=Math.round((qIndex/qOrder.length)*100);
   let html='<div class="quiz-bar"><span>Frage '+(qIndex+1)+' / '+qOrder.length+'</span><span class="score">Điểm: '+qScore+'</span></div>';
   html+='<div class="progress"><div style="width:'+pct+'%"></div></div>';
-  html+='<div class="q-cat">'+q.cat+'</div>';
-  html+='<div class="q-text">'+q.q+'</div>';
-  html+='<div class="q-opts">';
+  html+='<div class="q-cat">'+q.cat+'</div><div class="q-text">'+q.q+'</div><div class="q-opts">';
   q.opts.forEach((o,i)=>{ html+='<button class="opt" data-i="'+i+'">'+o+'</button>'; });
-  html+='</div>';
-  html+='<div class="q-feedback" id="qfb"></div>';
-  html+='<div class="q-nav" id="qnav"></div>';
+  html+='</div><div class="q-feedback" id="qfb"></div><div class="q-nav" id="qnav"></div>';
   area.innerHTML=html;
   area.querySelectorAll(".opt").forEach(btn=>btn.addEventListener("click",()=>answer(parseInt(btn.getAttribute("data-i")),q)));
 }
-
 function answer(chosen,q){
   const area=document.getElementById("quizArea");
-  const opts=area.querySelectorAll(".opt");
-  opts.forEach((b,i)=>{
-    b.classList.add("locked");
-    if(i===q.a) b.classList.add("correct");
-    if(i===chosen && chosen!==q.a) b.classList.add("wrong");
-  });
+  area.querySelectorAll(".opt").forEach((b,i)=>{ b.classList.add("locked"); if(i===q.a) b.classList.add("correct"); if(i===chosen&&chosen!==q.a) b.classList.add("wrong"); });
   const fb=document.getElementById("qfb");
-  if(chosen===q.a){
-    qScore++;
-    fb.className="q-feedback ok show";
-    fb.innerHTML="✅ Richtig! "+q.ex;
-  } else {
-    fb.className="q-feedback no show";
-    fb.innerHTML="❌ Leider falsch. "+q.ex;
-  }
-  const nav=document.getElementById("qnav");
+  if(chosen===q.a){ qScore++; fb.className="q-feedback ok show"; fb.innerHTML="✅ Richtig! "+q.ex; }
+  else { fb.className="q-feedback no show"; fb.innerHTML="❌ Leider falsch. "+q.ex; }
   const last=qIndex===qOrder.length-1;
-  nav.innerHTML='<button class="btn" id="qnext">'+(last?'Ergebnis ansehen →':'Nächste Frage →')+'</button>';
+  document.getElementById("qnav").innerHTML='<button class="btn" id="qnext">'+(last?'Ergebnis ansehen →':'Nächste Frage →')+'</button>';
   document.getElementById("qnext").addEventListener("click",()=>{ qIndex++; renderQuestion(); });
 }
-
 function quizResult(){
   const area=document.getElementById("quizArea");
-  const total=qOrder.length;
-  const pct=Math.round((qScore/total)*100);
+  const total=qOrder.length, pct=Math.round((qScore/total)*100);
   let msg;
   if(pct>=90) msg="🏆 Ausgezeichnet! Rất giỏi, bạn nắm chắc bài rồi!";
   else if(pct>=70) msg="👍 Gut gemacht! Khá tốt, ôn thêm vài chỗ là ổn.";
   else if(pct>=50) msg="🙂 Nicht schlecht. Xem lại các thẻ rồi làm lại nhé.";
   else msg="📚 Weiter üben! Ôn lại phần lý thuyết rồi thử lại.";
-  area.innerHTML='<div class="quiz-result">'
-    +'<div class="msg">Kết quả của bạn:</div>'
-    +'<div class="big">'+qScore+' / '+total+'</div>'
-    +'<div class="msg">('+pct+'%) '+msg+'</div>'
-    +'<button class="btn" id="qrestart">🔄 Nochmal / Làm lại</button></div>';
+  area.innerHTML='<div class="quiz-result"><div class="msg">Kết quả của bạn:</div><div class="big">'+qScore+' / '+total+'</div><div class="msg">('+pct+'%) '+msg+'</div><button class="btn" id="qrestart">🔄 Nochmal / Làm lại</button></div>';
   document.getElementById("qrestart").addEventListener("click",quizStart);
 }
-
 function quizIntro(){
-  document.getElementById("quizArea").innerHTML=
-    '<div class="quiz-start"><p>'+QUIZ.length+' câu hỏi trắc nghiệm về: bộ phận thịt (bò/lợn/cừu), món ăn, loại mô và thành phần thịt.<br>'
-    +'Mỗi câu có giải thích ngay sau khi chọn. Câu hỏi được xáo trộn mỗi lần.</p>'
-    +'<button class="btn" id="qbegin">▶️ Quiz starten / Bắt đầu</button></div>';
+  document.getElementById("quizArea").innerHTML='<div class="quiz-start"><p>'+QUIZ.length+' câu hỏi trắc nghiệm về: bộ phận thịt (bò/lợn/cừu), món ăn, loại mô, thành phần thịt và dinh dưỡng.<br>Mỗi câu có giải thích ngay sau khi chọn. Câu hỏi được xáo trộn mỗi lần.</p><button class="btn" id="qbegin">▶️ Quiz starten / Bắt đầu</button></div>';
   document.getElementById("qbegin").addEventListener("click",quizStart);
 }
-quizIntro();
+
+/* ============ INIT ============ */
+router();
 </script>
 </body>
 </html>
