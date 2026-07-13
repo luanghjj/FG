@@ -1,0 +1,12 @@
+# Giáo trình PDF (nặng, có bản quyền — không đẩy lên)
+*.pdf
+
+# Ảnh scan sách giáo khoa (nguồn OCR, không cần cho web)
+page-*.png
+out.txt
+
+# macOS
+.DS_Store
+
+# Claude
+.claude/

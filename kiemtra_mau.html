@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Klassenarbeit Nr. 2 – Musterprüfung</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#eef2f7;color:#1a202c;padding:24px}
+.page{max-width:840px;margin:0 auto;background:#fff;border-radius:16px;box-shadow:0 6px 32px rgba(0,0,0,.13);overflow:hidden}
+
+/* HEADER */
+.header{background:linear-gradient(135deg,#1a365d 0%,#2b6cb0 100%);color:#fff;padding:28px 40px 22px}
+.school{font-size:.78em;opacity:.75;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:6px}
+.header h1{font-size:1.65em;font-weight:700;margin-bottom:3px}
+.header .sub{opacity:.85;font-size:.93em;margin-bottom:18px}
+.info-row{display:flex;gap:14px;flex-wrap:wrap}
+.ibox{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:9px 14px;flex:1;min-width:140px}
+.ibox label{font-size:.68em;opacity:.7;text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:5px}
+.ibox input{background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.4);color:#fff;font-size:.9em;width:100%;outline:none;font-family:'Inter',sans-serif;padding:1px 0}
+.ibox input::placeholder{color:rgba(255,255,255,.45)}
+.ibox span{font-size:.95em;font-weight:700}
+
+/* HINTS */
+.hints{background:#fffbeb;border-bottom:1px solid #fde68a;padding:11px 40px;display:flex;gap:24px;flex-wrap:wrap;font-size:.83em;color:#78350f}
+.hints span{display:flex;align-items:center;gap:5px}
+
+/* BODY */
+.body{padding:30px 40px 20px}
+
+/* AUFGABE */
+.aufgabe{margin-bottom:32px}
+.a-head{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #e2e8f0}
+.a-nr{background:#1a365d;color:#fff;border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1em;flex-shrink:0}
+.a-title{font-size:1.05em;font-weight:700;color:#1a365d;flex:1}
+.a-pts{background:#ebf8ff;color:#2b6cb0;border:1px solid #bee3f8;border-radius:20px;padding:3px 14px;font-size:.8em;font-weight:700}
+
+/* SITUATION */
+.sit{background:#f0f9ff;border:1px solid #bae6fd;border-radius:10px;padding:16px 20px;margin-bottom:18px;position:relative;padding-top:22px}
+.sit::before{content:"📋 SITUATION";position:absolute;top:-11px;left:16px;background:#0369a1;color:#fff;font-size:.7em;font-weight:700;padding:3px 12px;border-radius:20px;letter-spacing:.8px}
+.sit p{font-size:.9em;line-height:1.75;color:#0c4a6e}
+.sit p+p{margin-top:8px}
+.sit strong{color:#075985}
+
+/* FRAGE */
+.frage{margin-bottom:14px}
+.f-top{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px}
+.f-nr{background:#e2e8f0;border-radius:6px;padding:2px 9px;font-size:.79em;font-weight:700;color:#4a5568;flex-shrink:0;margin-top:1px}
+.f-text{font-size:.91em;line-height:1.65;color:#2d3748;flex:1}
+.f-pts{font-size:.77em;color:#718096;flex-shrink:0;margin-top:2px}
+.lines{padding-left:16px}
+.l{border:none;border-bottom:1px solid #cbd5e0;width:100%;height:26px;display:block;margin-bottom:9px;background:transparent}
+.l.lg{height:32px}
+
+/* CALC TABLE */
+.ct{width:100%;border-collapse:collapse;margin:10px 0 4px 16px;font-size:.86em;width:calc(100% - 16px)}
+.ct th{background:#1a365d;color:#fff;padding:7px 10px;text-align:left;font-weight:600}
+.ct td{padding:7px 10px;border:1px solid #e2e8f0}
+.ct tr:nth-child(even) td{background:#f7fafc}
+.ct .sum td{background:#dbeafe;font-weight:700;color:#1e40af}
+
+/* DIVIDER */
+hr{border:none;border-top:2px dashed #e2e8f0;margin:26px 0}
+
+/* FOOTER */
+.footer{background:#f7fafc;border-top:2px solid #e2e8f0;padding:16px 40px;display:flex;justify-content:space-between;align-items:center;font-size:.88em}
+.footer strong{color:#1a365d;font-size:1em}
+.sig{border:1px solid #cbd5e0;border-radius:6px;padding:6px 20px;color:#4a5568}
+
+@media print{body{background:#fff;padding:0}.page{box-shadow:none;border-radius:0}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="school">Berufsschule – Hotellerie &amp; Gastronomie</div>
+  <h1>Klassenarbeit Nr. 2 – Musterprüfung</h1>
+  <div class="sub">Lernfeld 2 (Waren &amp; Lieferung) + Lernfeld 3 (Küche &amp; Ernährung)</div>
+  <div class="info-row">
+    <div class="ibox"><label>Name</label><input type="text" placeholder="Vor- und Nachname"></div>
+    <div class="ibox"><label>Klasse</label><input type="text" placeholder="z.B. HG11a"></div>
+    <div class="ibox"><label>Datum</label><input type="text" placeholder="TT.MM.JJJJ"></div>
+    <div class="ibox"><label>Gesamtpunkte</label><span>60 Punkte</span></div>
+  </div>
+</div>
+
+<!-- HINTS -->
+<div class="hints">
+  <span>⏱ <b>Zeit: 60 Minuten</b></span>
+  <span>🧮 <b>Taschenrechner erlaubt</b></span>
+  <span>✏️ <b>Alle Aufgaben in vollständigen Sätzen</b></span>
+  <span>📌 <b>Rechenweg immer angeben</b></span>
+</div>
+
+<!-- BODY -->
+<div class="body">
+
+<!-- ══════════ AUFGABE 1 ══════════ -->
+<div class="aufgabe">
+  <div class="a-head">
+    <div class="a-nr">1</div>
+    <div class="a-title">Warenbestellung &amp; Kaufvertrag</div>
+    <div class="a-pts">14 Punkte</div>
+  </div>
+
+  <div class="sit">
+    <p>Die Restaurantleiterin Frau Nguyen möchte für das Wochenende Waren bestellen. Sie schickt zunächst eine <strong>Anfrage</strong> an den Lieferanten „Frischmarkt GmbH" wegen 80 Flaschen Mineralwasser und 30 kg Kartoffeln. Der Lieferant antwortet mit einem schriftlichen <strong>Angebot</strong>: Mineralwasser à 0,89 €, Kartoffeln à 1,20 €/kg, Liefertermin: <strong>Freitag, 23. Mai</strong>, Lieferbedingung: <strong>frei Haus</strong>. Frau Nguyen bestellt daraufhin schriftlich.</p>
+  </div>
+
+  <div class="frage">
+    <div class="f-top"><div class="f-nr">1a</div><div class="f-text">Nennen Sie die <strong>4 Schritte des Kaufvertrags</strong> in der richtigen Reihenfolge und erklären Sie, wer bei welchem Schritt rechtlich gebunden ist.</div><div class="f-pts">(6 Pkt.)</div></div>
+    <div class="lines"><div class="l"></div><div class="l"></div><div class="l"></div><div class="l"></div><div class="l"></div><div class="l"></div></div>
+  </div>
+
+  <div class="frage">
+    <div class="f-top"><div class="f-nr">1b</div><div class="f-text">Was bedeutet die Lieferbedingung <strong>„frei Haus"</strong>? Was wäre anders bei <strong>„ab Werk"</strong>?</div><div class="f-pts">(3 Pkt.)</div></div>
+    <div class="lines"><div class="l"></div><div class="l"></div><div class="l"></div></div>
+  </div>
+
+  <div class="frage">
+    <div class="f-top"><div class="f-nr">1c</div><div class="f-text">Nennen Sie <strong>5 Pflichtangaben</strong>, die eine schriftliche Bestellung enthalten muss.</div><div class="f-pts">(5 Pkt.)</div></div>
+    <div class="lines"><div class="l"></div><div class="l"></div><div class="l"></div><div class="l"></div><div class="l"></div></div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ══════════ AUFGABE 2 ══════════ -->
+<div class="aufgabe">
+  <div class="a-head">
+    <div class="a-nr">2</div>
+    <div class="a-title">Warenannahme, Lagerung &amp; Lagerkennzahlen</div>
+    <div class="a-pts">14 Punkte</div>
+  </div>
+
+  <div class="sit">
+    <p>Am Freitag kommt die Lieferung von „Frischmarkt GmbH" an. Die Auszubildende Linh soll die Ware annehmen und einlagern. Im Lager gibt es folgende Bestände: Das Restaurant verbraucht täglich <strong>5 kg Kartoffeln</strong>. Der <strong>Mindestbestand</strong> beträgt 10 kg, der <strong>Höchstbestand</strong> 60 kg, die <strong>Lieferzeit</strong> beträgt 3 Tage. Der aktuelle Lagerbestand ist <strong>18 kg</strong>.</p>
+  </div>
+
+  <div class="frage">
+    <div class="f-top"><div class="f-nr">2a</div><div class="f-text">Nennen Sie <strong>6 Schritte</strong> der Warenannahme-Checkliste, die Linh beachten muss.</div><div class="f-pts">(6 Pkt.)</div></div>
+    <div class="lines"><div class="l"></div><div class="l"></div><div class="l"></div><div class="l"></div><div class="l"></div><div class="l"></div></div>
+  </div>
+
+  <div class="frage">
+    <div class="f-top"><div class="f-nr">2b</div><div class="f-text">Berechnen Sie den <strong>Meldebestand</strong> und die <strong>Bestellmenge</strong> für Kartoffeln. Zeigen Sie den Rechenweg.</div><div class="f-pts">(4 Pkt.)</div></div>
+    <table class="ct">
+      <tr><th>Formel</th><th>Berechnung</th><th>Ergebnis</th></tr>
+      <tr><td>Meldebestand = Mindestbestand + (Tagesverbrauch × Lieferzeit)</td><td></td><td></td></tr>
+      <tr><td>Bestellmenge = Höchstbestand − aktueller Lagerbestand</td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="frage">
+    <div class="f-top"><div class="f-nr">2c</div><div class="f-text">In welchem <strong>Lagerbereich</strong> werden Fleisch &amp; Fisch, Mehl &amp; Reis sowie Reinigungsmittel gelagert? Nennen Sie jeweils die Temperatur.</div><div class="f-pts">(4 Pkt.)</div></div>
+    <div class="lines"><div class="l"></div><div class="l"></div><div class="l"></div><div class="l"></div></div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ══════════ AUFGABE 3 ══════════ -->
+<div class="aufgabe">
+  <div class="a-head">
+    <div class="a-nr">3</div>
+    <div class="a-title">Schlechtleistung &amp; Lieferverzug</div>
+    <div class="a-pts">14 Punkte</div>
+  </div>
+
+  <div class="sit">
+    <p>Beim Kontrollieren der Lieferung stellt Linh fest: <strong>Problem 1:</strong> Statt 80 Flaschen Mineralwasser wurden nur <strong>60 Flaschen</strong> geliefert. <strong>Problem 2:</strong> 5 Flaschen sind <strong>gebrochen und ausgelaufen</strong> (Verpackungsschaden, erst beim Öffnen des Kartons erkennbar). <strong>Problem 3:</strong> Die bestellten Küchenhandtücher (vereinbarter Fixkauf-Termin: 23. Mai) wurden nicht geliefert – der Lieferant begründet dies mit einem <strong>Streik</strong> seiner Mitarbeiter.</p>
+  </div>
+
+  <div class="frage">
+    <div class="f-top"><div class="f-nr">3a</div><div class="f-text">Bestimmen Sie für <strong>Problem 1 und Problem 2</strong> jeweils: Mängelart, Erkennbarkeit (offen/versteckt) und Rügefrist.</div><div class="f-pts">(6 Pkt.)</div></div>
+    <div class="lines"><div class="l"></div><div class="l"></div><div class="l"></div><div class="l"></div><div class="l"></div><div class="l"></div></div>
+  </div>
+
+  <div class="frage">
+    <div class="f-top"><div class="f-nr">3b</div><div class="f-text">Welche <strong>Rechte (Stufe 1 und Stufe 2)</strong> hat das Restaurant bei mangelhafter Ware? Wann darf man zu Stufe 2 wechseln?</div><div class="f-pts">(4 Pkt.)</div></div>
+    <div class="lines"><div class="l"></div><div class="l"></div><div class="l"></div><div class="l"></div></div>
+  </div>
+
+  <div class="frage">
+    <div class="f-top"><div class="f-nr">3c</div><div class="f-text"><strong>Problem 3 – Küchenhandtücher:</strong> Liegt ein Lieferverzug vor? Begründen Sie mit den Voraussetzungen des Lieferverzugs (§286 BGB) und dem Begriff „Höhere Gewalt". Welche 4 Rechte hätte das Restaurant, wenn ein Verschulden vorliegen würde?</div><div class="f-pts">(4 Pkt.)</div></div>
+    <div class="lines"><div class="l"></div><div class="l"></div><div class="l"></div><div class="l"></div></div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ══════════ AUFGABE 4 ══════════ -->
+<div class="aufgabe">
+  <div class="a-head">
+    <div class="a-nr">4</div>
+    <div class="a-title">Eiercode, Frischetest &amp; Hygiene</div>
+    <div class="a-pts">10 Punkte</div>
+  </div>
+
+  <div class="sit">
+    <p>Am nächsten Morgen bereitet Koch Stefan das Frühstücksbuffet vor. Er findet im Kühlhaus Eier mit dem Aufdruck: <strong>0-DE-0612345</strong>. Das MHD dieser Eier läuft <strong>heute</strong> ab. Ein Ei macht beim Schütteln ein <strong>Klackergeräusch</strong>. Stefan möchte damit pochierte Eier und ein großes Rührei machen.</p>
+  </div>
+
+  <div class="frage">
+    <div class="f-top"><div class="f-nr">4a</div><div class="f-text">Erklären Sie den Code <strong>0-DE-0612345</strong> vollständig: Was bedeuten Ziffer 0, DE, 06 und 12345?</div><div class="f-pts">(4 Pkt.)</div></div>
+    <div class="lines"><div class="l"></div><div class="l"></div><div class="l"></div><div class="l"></div></div>
+  </div>
+
+  <div class="frage">
+    <div class="f-top"><div class="f-nr">4b</div><div class="f-text">Das Ei klappert beim Schütteln. Ist es frisch oder alt? Beschreiben Sie außerdem das Ergebnis des <strong>Schwimmtests</strong> und des <strong>Aufschlagtests</strong> bei einem alten Ei.</div><div class="f-pts">(3 Pkt.)</div></div>
+    <div class="lines"><div class="l"></div><div class="l"></div><div class="l"></div></div>
+  </div>
+
+  <div class="frage">
+    <div class="f-top"><div class="f-nr">4c</div><div class="f-text">Das MHD läuft heute ab. Darf Stefan die Eier noch verwenden? Unter welcher Bedingung? Wie lange dürfen fertige Eierspeisen (mit rohen Eiern) bei welcher Temperatur gelagert werden?</div><div class="f-pts">(3 Pkt.)</div></div>
+    <div class="lines"><div class="l"></div><div class="l"></div><div class="l"></div></div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ══════════ AUFGABE 5 ══════════ -->
+<div class="aufgabe">
+  <div class="a-head">
+    <div class="a-nr">5</div>
+    <div class="a-title">Eierspeisen &amp; Zubereitung</div>
+    <div class="a-pts">4 Punkte</div>
+  </div>
+
+  <div class="sit">
+    <p>Stefan soll heute folgende Eierspeisen für das Buffet zubereiten: <strong>Pochiertes Ei, Rührei, Spiegelei</strong> und <strong>Omelett</strong>. Der Chef fragt ihn nach der richtigen Zubereitung jeder Speise.</p>
+  </div>
+
+  <div class="frage">
+    <div class="f-top"><div class="f-nr">5a</div><div class="f-text">Beschreiben Sie die Zubereitung der 4 genannten Eierspeisen kurz und präzise.</div><div class="f-pts">(4 Pkt.)</div></div>
+    <table class="ct">
+      <tr><th>Eierspeise</th><th>Zubereitung (Beschreibung)</th></tr>
+      <tr><td><strong>Pochiertes Ei</strong></td><td><div class="l lg"></div></td></tr>
+      <tr><td><strong>Rührei</strong></td><td><div class="l lg"></div></td></tr>
+      <tr><td><strong>Spiegelei</strong></td><td><div class="l lg"></div></td></tr>
+      <tr><td><strong>Omelett</strong></td><td><div class="l lg"></div></td></tr>
+    </table>
+  </div>
+</div>
+
+<hr>
+
+<!-- ══════════ AUFGABE 6 ══════════ -->
+<div class="aufgabe">
+  <div class="a-head">
+    <div class="a-nr">6</div>
+    <div class="a-title">Nährwertberechnung &amp; Biologische Wertigkeit</div>
+    <div class="a-pts">18 Punkte</div>
+  </div>
+
+  <div class="sit">
+    <p>Das Mittagsmenü heute: <strong>200g Schweineschnitzel mager</strong> (Eiweiß: 22%, Fett: 5%, Kohlenhydrate: 0%) und als Dessert <strong>150g Apfelstrudel</strong> (Eiweiß: 2%, Fett: 10%, Kohlenhydrate: 28%). Ein Gast fragt, wie viel Energie die gesamte Mahlzeit hat. Außerdem möchte er wissen, ob er mit diesem Menü seinen Tagesbedarf als Büroangestellter (75 kg Körpergewicht, PAL 1,6) decken kann.</p>
+  </div>
+
+  <div class="frage">
+    <div class="f-top"><div class="f-nr">6a</div><div class="f-text">Berechnen Sie den <strong>Brennwert in kJ</strong> für das <strong>Schweineschnitzel (200g)</strong>. Rechenweg vollständig angeben.</div><div class="f-pts">(6 Pkt.)</div></div>
+    <table class="ct">
+      <tr><th>Nährstoff</th><th>% → Gramm (× 2)</th><th>× Brennwert</th><th>= kJ</th></tr>
+      <tr><td>Eiweiß (22%)</td><td></td><td>× 17 kJ/g</td><td></td></tr>
+      <tr><td>Fett (5%)</td><td></td><td>× 37 kJ/g</td><td></td></tr>
+      <tr><td>KH (0%)</td><td>0g</td><td>× 17 kJ/g</td><td>0 kJ</td></tr>
+      <tr class="sum"><td colspan="3">Gesamt Schnitzel</td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="frage">
+    <div class="f-top"><div class="f-nr">6b</div><div class="f-text">Berechnen Sie den <strong>Brennwert in kJ</strong> für den <strong>Apfelstrudel (150g)</strong>.</div><div class="f-pts">(6 Pkt.)</div></div>
+    <table class="ct">
+      <tr><th>Nährstoff</th><th>% → Gramm (× 1,5)</th><th>× Brennwert</th><th>= kJ</th></tr>
+      <tr><td>Eiweiß (2%)</td><td></td><td>× 17 kJ/g</td><td></td></tr>
+      <tr><td>Fett (10%)</td><td></td><td>× 37 kJ/g</td><td></td></tr>
+      <tr><td>KH (28%)</td><td></td><td>× 17 kJ/g</td><td></td></tr>
+      <tr class="sum"><td colspan="3">Gesamt Strudel</td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="frage">
+    <div class="f-top"><div class="f-nr">6c</div><div class="f-text">Berechnen Sie den <strong>Gesamtbedarf</strong> des Gastes (75 kg, PAL 1,6). Reicht das Menü aus? (Grundumsatz = 24 × kg × 1 kcal, dann umrechnen in kJ: × 4,2)</div><div class="f-pts">(4 Pkt.)</div></div>
+    <div class="lines"><div class="l"></div><div class="l"></div><div class="l"></div><div class="l"></div></div>
+  </div>
+
+  <div class="frage">
+    <div class="f-top"><div class="f-nr">6d</div><div class="f-text">Erklären Sie den Begriff <strong>„Biologische Wertigkeit"</strong>. Welches Lebensmittel hat BW = 100 und warum? Nennen Sie <strong>2 gute Lebensmittelkombinationen</strong> zur Steigerung des Ergänzungswerts.</div><div class="f-pts">(4 Pkt.)</div></div>
+    <div class="lines"><div class="l"></div><div class="l"></div><div class="l"></div><div class="l"></div></div>
+  </div>
+
+  <div class="frage">
+    <div class="f-top"><div class="f-nr">6e</div><div class="f-text">Nennen Sie die <strong>Brennwerte</strong> der 3 Hauptnährstoffe (Eiweiß, Fett, Kohlenhydrate) in kJ und kcal.</div><div class="f-pts">(3 Pkt.)</div></div>
+    <table class="ct">
+      <tr><th>Nährstoff</th><th>kJ pro Gramm</th><th>kcal pro Gramm</th></tr>
+      <tr><td>Eiweiß</td><td></td><td></td></tr>
+      <tr><td>Fett</td><td></td><td></td></tr>
+      <tr><td>Kohlenhydrate</td><td></td><td></td></tr>
+    </table>
+  </div>
+
+</div>
+</div><!-- /body -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <strong>Gesamtpunkte: ________ / 60</strong>
+  <span>Note: ________</span>
+  <div class="sig">Unterschrift: __________________________</div>
+</div>
+
+</div>
+</body>
+</html>
