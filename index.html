@@ -3,195 +3,635 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lernzusammenfassung – Klassenarbeit Nr. 2</title>
+<title>🥩 Fleischteile lernen – BfK2 (Rind, Schwein, Schaf, Kalb)</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',sans-serif;background:#f0f4f8;color:#2d3748;padding:20px}
-.container{max-width:900px;margin:0 auto;background:white;border-radius:16px;padding:40px;box-shadow:0 4px 24px rgba(0,0,0,.1)}
-h1.main{text-align:center;font-size:2em;color:#1a202c;padding-bottom:10px;border-bottom:4px solid #4299e1;margin-bottom:30px}
-.subtitle{text-align:center;color:#718096;margin-bottom:30px;font-size:.95em}
-.section{background:#f7fafc;border-radius:12px;padding:20px;margin-bottom:24px;border-left:5px solid #4299e1}
-.section.yellow{border-left-color:#ecc94b;background:#fffff0}
-h2{font-size:1.3em;color:#2b6cb0;margin-bottom:12px}
-h2.yellow{color:#b7791f}
-h3{font-size:1em;color:#4a5568;margin:12px 0 6px;font-weight:600}
+body{font-family:'Inter',sans-serif;background:#fef2f2;color:#1a202c;padding:18px}
+.page{max-width:1000px;margin:0 auto}
+
+.header{background:linear-gradient(135deg,#7f1d1d,#dc2626);color:#fff;padding:24px 30px;border-radius:16px;box-shadow:0 6px 28px rgba(0,0,0,.18);margin-bottom:18px}
+.header h1{font-size:1.5em;font-weight:800;margin-bottom:6px}
+.header .sub{opacity:.9;font-size:.92em;line-height:1.5}
+.header .tip{margin-top:12px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:10px;padding:8px 14px;font-size:.85em}
+
+/* Tabs */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.tab{background:#fff;border:2px solid #fecaca;color:#991b1b;border-radius:12px;padding:10px 16px;font-weight:700;font-size:.9em;cursor:pointer;transition:.15s;flex:1;min-width:120px;text-align:center}
+.tab:hover{border-color:#f87171}
+.tab.active{background:#dc2626;color:#fff;border-color:#dc2626}
+
+.panel{display:none}
+.panel.active{display:block;animation:fade .25s}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+.card{background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.08);padding:22px;margin-bottom:16px}
+.card h2{color:#991b1b;font-size:1.15em;margin-bottom:4px}
+.card .hint{color:#6b7280;font-size:.85em;margin-bottom:14px}
+
+/* SVG diagram */
+.diagram-wrap{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start}
+.svg-box{flex:1;min-width:300px;background:#fafafa;border:2px solid #f3f4f6;border-radius:14px;padding:10px}
+svg{width:100%;height:auto;display:block}
+.cut{fill:#fca5a5;stroke:#fff;stroke-width:2.5;cursor:pointer;transition:.15s}
+.cut:hover{fill:#f87171}
+.cut.sel{fill:#dc2626}
+.cut-label{font-size:22px;font-weight:800;fill:#fff;pointer-events:none;text-anchor:middle;dominant-baseline:middle;paint-order:stroke;stroke:#7f1d1d;stroke-width:1px}
+.body-line{fill:none;stroke:#7f1d1d;stroke-width:2.5;pointer-events:none}
+
+/* image-based chart (con bò tách nền) */
+.img-wrap{position:relative;width:100%;line-height:0}
+.img-wrap img{width:100%;height:auto;display:block;border-radius:10px}
+.hotspot{position:absolute;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;
+  background:rgba(220,38,38,.28);border:2px solid #dc2626;color:#7f1d1d;font-weight:800;font-size:.95em;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.15s;user-select:none}
+.hotspot:hover{background:rgba(220,38,38,.55);color:#fff;transform:translate(-50%,-50%) scale(1.12)}
+.hotspot.sel{background:#dc2626;color:#fff;box-shadow:0 0 0 4px rgba(220,38,38,.25)}
+
+/* detail panel */
+.detail{flex:1;min-width:280px}
+.detail-empty{color:#9ca3af;font-style:italic;padding:20px;text-align:center;border:2px dashed #e5e7eb;border-radius:12px}
+.detail-box{border-left:5px solid #dc2626;background:#fef2f2;border-radius:0 12px 12px 0;padding:16px 18px}
+.detail-box .num{display:inline-block;background:#dc2626;color:#fff;border-radius:50%;width:30px;height:30px;line-height:30px;text-align:center;font-weight:800;margin-right:8px}
+.detail-box h3{display:inline;color:#7f1d1d;font-size:1.15em}
+.detail-box .viet{color:#dc2626;font-weight:700;font-size:.92em;margin:8px 0 12px}
+.detail-box dl{font-size:.9em;line-height:1.55}
+.detail-box dt{font-weight:700;color:#991b1b;margin-top:8px}
+.detail-box dd{margin-left:0;color:#374151}
+.tag{display:inline-block;background:#dcfce7;color:#166534;border:1px solid #86efac;border-radius:8px;padding:2px 8px;font-size:.78em;font-weight:700;margin:2px 4px 2px 0}
+.tag.blue{background:#dbeafe;color:#1e40af;border-color:#93c5fd}
+.tag.amber{background:#fef3c7;color:#92400e;border-color:#fcd34d}
+
+/* legend chips under diagram */
+.legend{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:#fff;border:1.5px solid #fecaca;color:#991b1b;border-radius:20px;padding:4px 11px;font-size:.8em;font-weight:600;cursor:pointer}
+.chip:hover{background:#fee2e2}
+.chip.sel{background:#dc2626;color:#fff;border-color:#dc2626}
+
+/* generic tables */
 table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.88em}
-th{background:#4299e1;color:white;padding:8px 10px;text-align:left}
-.yellow th{background:#ecc94b;color:#744210}
-td{padding:8px 10px;border:1px solid #e2e8f0}
-tr:nth-child(even) td{background:#f7fafc}
-.formula{background:#fff3cd;border-left:4px solid #e74c3c;padding:10px 14px;border-radius:6px;font-family:monospace;font-weight:bold;font-size:.9em;margin:10px 0}
-ul,ol{padding-left:18px;margin:6px 0}
-li{margin-bottom:4px;font-size:.9em}
-blockquote{background:#ebf8ff;border-left:4px solid #4299e1;padding:8px 14px;border-radius:4px;font-style:italic;margin:10px 0;font-size:.9em;color:#2c5282}
-.tag{display:inline-block;background:#ebf8ff;color:#2b6cb0;border-radius:20px;padding:2px 10px;font-size:.8em;font-weight:600;margin:2px}
-.tag.red{background:#fff5f5;color:#c53030}
-.tag.green{background:#f0fff4;color:#276749}
-.footer{text-align:center;margin-top:30px;color:#48bb78;font-weight:700;font-size:1.1em}
-strong{color:#2d3748}
-@media print{body{background:white;padding:0}.container{box-shadow:none;padding:20px}}
+th{background:#dc2626;color:#fff;padding:9px 11px;text-align:left}
+td{padding:9px 11px;border:1px solid #fee2e2;vertical-align:top}
+tr:nth-child(even) td{background:#fef2f2}
+td strong{color:#991b1b}
+
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.mini{background:#fef2f2;border-radius:12px;padding:14px;border-left:4px solid #dc2626}
+.mini h4{color:#7f1d1d;margin-bottom:6px;font-size:1em}
+.mini p,.mini li{font-size:.87em;line-height:1.55;color:#374151}
+.mini ul{padding-left:18px;margin-top:4px}
+
+.note{background:#fef3c7;border-left:4px solid #f59e0b;border-radius:0 8px 8px 0;padding:10px 14px;font-size:.85em;color:#92400e;margin:10px 0}
+
+.footer{text-align:center;color:#dc2626;font-weight:600;font-size:.85em;padding:14px}
+
+/* Quiz */
+.quiz-start{text-align:center;padding:20px}
+.quiz-start p{color:#374151;font-size:.92em;line-height:1.6;margin-bottom:14px}
+.btn{background:#dc2626;color:#fff;border:none;border-radius:12px;padding:12px 26px;font-size:1em;font-weight:700;cursor:pointer;transition:.15s;font-family:inherit}
+.btn:hover{background:#b91c1c;transform:translateY(-1px)}
+.btn.ghost{background:#fff;color:#dc2626;border:2px solid #fecaca}
+.btn.ghost:hover{background:#fee2e2}
+.quiz-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:.85em;color:#6b7280;font-weight:600}
+.quiz-bar .score{color:#dc2626}
+.progress{height:8px;background:#fee2e2;border-radius:10px;overflow:hidden;margin-bottom:18px}
+.progress > div{height:100%;background:#dc2626;transition:width .3s;width:0}
+.q-text{font-size:1.1em;font-weight:700;color:#7f1d1d;margin-bottom:6px;line-height:1.4}
+.q-cat{display:inline-block;background:#fef3c7;color:#92400e;border-radius:8px;padding:2px 10px;font-size:.72em;font-weight:700;margin-bottom:14px}
+.q-opts{display:flex;flex-direction:column;gap:10px}
+.opt{background:#fff;border:2px solid #e5e7eb;border-radius:12px;padding:13px 16px;font-size:.92em;cursor:pointer;transition:.12s;text-align:left;font-family:inherit;color:#1f2937;line-height:1.4}
+.opt:hover:not(.locked){border-color:#f87171;background:#fef2f2}
+.opt.correct{border-color:#16a34a;background:#dcfce7;color:#166534;font-weight:700}
+.opt.wrong{border-color:#dc2626;background:#fee2e2;color:#991b1b}
+.opt.locked{cursor:default}
+.q-feedback{margin-top:14px;padding:12px 16px;border-radius:10px;font-size:.88em;line-height:1.5;display:none}
+.q-feedback.show{display:block}
+.q-feedback.ok{background:#dcfce7;color:#166534;border-left:4px solid #16a34a}
+.q-feedback.no{background:#fef2f2;color:#991b1b;border-left:4px solid #dc2626}
+.q-nav{margin-top:18px;text-align:right}
+.quiz-result{text-align:center;padding:20px}
+.quiz-result .big{font-size:2.4em;font-weight:800;color:#dc2626;margin:10px 0}
+.quiz-result .msg{color:#374151;font-size:1em;margin-bottom:18px}
+@media (max-width:640px){.detail{min-width:100%}}
 </style>
 </head>
 <body>
-<div class="container">
-<h1 class="main">📚 Lernzusammenfassung – Klassenarbeit Nr. 2</h1>
-<p class="subtitle">Tổng hợp ôn thi – Bài kiểm tra số 2 | Hotellerie & Gastronomie</p>
+<div class="page">
 
-<a href="fleisch_lernen.html" style="display:block;text-decoration:none;background:linear-gradient(135deg,#7f1d1d,#dc2626);color:#fff;padding:18px 24px;border-radius:14px;margin:0 0 24px;box-shadow:0 4px 18px rgba(220,38,38,.25)">
-  <div style="font-size:1.15em;font-weight:800;margin-bottom:4px">🥩 NEU: Fleischteile lernen (BfK2) →</div>
-  <div style="opacity:.9;font-size:.9em">Bò · Lợn · Cừu · Bê — bấm vào bộ phận để xem thông tin + Quiz. Nhấn để mở.</div>
-</a>
-
-<!-- LF3 -->
-<div class="section">
-<h2>🔵 LERNFELD 3 – Küche &amp; Ernährung (Bếp &amp; Dinh dưỡng)</h2>
-
-<h3>1️⃣ Nährwertberechnung (Tính toán năng lượng)</h3>
-<table>
-<tr><th>Nährstoff (Chất dinh dưỡng)</th><th>Brennwert</th></tr>
-<tr><td>1g Eiweiß – Protein (Đạm)</td><td><strong>17 kJ = 4 kcal</strong></td></tr>
-<tr><td>1g Kohlenhydrate – KH (Carbohydrate)</td><td><strong>17 kJ = 4 kcal</strong></td></tr>
-<tr><td>1g Fett – Chất béo</td><td><strong>37 kJ = 9 kcal</strong></td></tr>
-</table>
-<div class="formula">Energiewert = (g EW × 17) + (g KH × 17) + (g Fett × 37) → kJ<br>
-Umrechnung (Đổi): 1 kcal = 4,2 kJ<br>
-Grundumsatz (GU) = 24h × kg Körpergewicht × 1<br>
-Gesamtbedarf = GU × PAL-Wert (sitzend=1,2 | Büro=1,6 | schwer=2,4)</div>
-<p><strong>Beispiel:</strong> 150g Schweinefleisch mager (EW 19%, Fett 7%)</p>
-<ul>
-<li>EW: 28,5g × 17 = 484,5 kJ</li>
-<li>Fett: 10,5g × 37 = 388,5 kJ → <strong>Gesamt: 873 kJ</strong></li>
-</ul>
-
-<h3>2️⃣ Eiercode (Mã trứng) 🥚</h3>
-<p>Format: <strong>Haltungsform – Land – Betriebsnummer</strong> &nbsp;|&nbsp; z.B. <span class="tag">2-DE-0812345</span></p>
-<table>
-<tr><th>Ziffer (Số)</th><th>Haltungsform (Hình thức)</th></tr>
-<tr><td><strong>0</strong></td><td>🌿 Bio / Ökologisch (Hữu cơ)</td></tr>
-<tr><td><strong>1</strong></td><td>🐔 Freilandhaltung (Thả tự do)</td></tr>
-<tr><td><strong>2</strong></td><td>🏠 Bodenhaltung (Chuồng lớn)</td></tr>
-<tr><td><strong>3</strong></td><td>🔒 Kleingruppenhaltung (Lồng nhỏ)</td></tr>
-</table>
-<p>Gewichtsklassen: <span class="tag">S &lt;53g</span><span class="tag">M 53–63g</span><span class="tag">L 63–73g</span><span class="tag">XL ≥73g</span> → Rezepte nutzen Größe <strong>M</strong></p>
-
-<h3>Hygiene bei Eiern (Vệ sinh trứng) 🦠</h3>
-<ul>
-<li>Lagerung bei <strong>ca. 5°C</strong> (Bảo quản 5°C)</li>
-<li>MHD = <strong>28 Tage</strong> nach Legedatum (hạn 28 ngày)</li>
-<li>Nach MHD: nur <strong>durcherhitzt</strong> verwenden (chỉ dùng khi nấu chín)</li>
-<li>Speisen mit rohen Eiern max. <strong>24 Stunden</strong> bei 5°C</li>
-<li>Hände &amp; Flächen nach Eierarbeit <strong>reinigen + desinfizieren</strong></li>
-<li>Salmonellen abgetötet bei <strong>5 Min. Kochen</strong></li>
-</ul>
-<table>
-<tr><th>Test</th><th>Frisch (Tươi)</th><th>Alt (Cũ)</th></tr>
-<tr><td>Schwimmtest</td><td>Sinkt (chìm)</td><td>Steigt auf (nổi)</td></tr>
-<tr><td>Schütteltest</td><td>Kein Geräusch (im lặng)</td><td>Klackert (tiếng lóc cóc)</td></tr>
-<tr><td>Aufschlagtest</td><td>Dotter hoch, Eiklar fest</td><td>Dotter flach, Eiklar dünn</td></tr>
-</table>
-
-<h3>Eierspeisen (Các món trứng) 🍳</h3>
-<table>
-<tr><th>Speise (Món)</th><th>Zubereitung (Cách làm)</th></tr>
-<tr><td><strong>Gekochtes Ei</strong> (Luộc)</td><td>weich: 3–5 Min | wachsweich: 5–7 Min | hart: 8–10 Min</td></tr>
-<tr><td><strong>Spiegelei</strong> (Ốp la)</td><td>Ganzes Ei, mäßige Hitze, Eigelb flüssig lassen</td></tr>
-<tr><td><strong>Rührei</strong> (Bác)</td><td>Mit Milch/Sahne verquirlen, cremig &amp; saftig</td></tr>
-<tr><td><strong>Ländliches Rührei</strong></td><td>Eiklar + Eigelb leicht vermischen, fleckig gelb-weiß</td></tr>
-<tr><td><strong>Omelett</strong> (Cuộn)</td><td>Verquirlt stocken lassen, zigarrenförmig einschlagen</td></tr>
-<tr><td><strong>Pochiertes Ei</strong> (Chần)</td><td>In siedendes Essigwasser gleiten, Eigelb flüssig</td></tr>
-<tr><td><strong>Ei im Glas</strong></td><td>Geschältes Ei in Becherglas, mit Würze serviert</td></tr>
-<tr><td><strong>Eier Benedikt</strong></td><td>Pochiertes Ei + Toast + Schinken + Hollandaise</td></tr>
-<tr><td><strong>Pfannkuchen</strong> (Crepe)</td><td>Eiweiß als Schnee, locker, in Pfanne backen</td></tr>
-</table>
-
-<h3>3️⃣ Biologische Wertigkeit &amp; Ergänzungswert</h3>
-<blockquote>Biologische Wertigkeit (BW) = wie viel g Körpereiweiß aus 100g Nahrungseiweiß gebildet wird<br>(Giá trị sinh học = bao nhiêu g protein cơ thể từ 100g protein thực phẩm)</blockquote>
-<table>
-<tr><th>Lebensmittel</th><th>BW (%)</th><th>Lebensmittel</th><th>BW (%)</th></tr>
-<tr><td>🥚 <strong>Hühnerei</strong></td><td><strong>100</strong></td><td>🌿 Soja</td><td>84</td></tr>
-<tr><td>🥔 Kartoffeln</td><td>95</td><td>🍚 Reis</td><td>83</td></tr>
-<tr><td>🥩 Rindfleisch</td><td>87</td><td>🐟 Fischfilet</td><td>80</td></tr>
-<tr><td>🥛 Kuhmilch</td><td>86</td><td>🌽 Mais</td><td>74</td></tr>
-<tr><td>🍞 Weizenmehl</td><td>35</td><td>🫘 Bohne</td><td>73</td></tr>
-</table>
-<div class="formula">Körpereiweiß aus 100g = Eiweißanteil(g) × BW(%)<br>
-Beispiel: 100g Ei → 13g × 100% = 13g Körpereiweiß</div>
-<p><strong>Ergänzungswert (Giá trị bổ sung):</strong> Kombination → BW steigt!</p>
-<ul>
-<li>Kartoffeln + Ei / Milch / Fisch / Fleisch</li>
-<li>Hülsenfrüchte + Ei / Fleisch / Getreide</li>
-<li>Getreide + Ei / Fleisch / Fisch / Milch</li>
-</ul>
-<p>Beispiele: Linsen + Spätzle | Reis + Ei + Hühnchen | Dorade + Salzkartoffeln + Spiegelei</p>
+<div class="header">
+  <h1>🥩 Fleischteile & Gerichte – Lernbogen BfK2</h1>
+  <div class="sub">Fachkraft für Gastronomie · Rind · Schwein · Schaf/Lamm · Kalb</div>
+  <div class="tip">👆 Tipp: Klicke im Tierbild auf ein Fleischstück (hoặc bấm vào tên bên dưới) → thông tin, đặc điểm và cách chế biến sẽ hiện ra bên phải.</div>
 </div>
 
-<!-- LF2 -->
-<div class="section yellow">
-<h2 class="yellow">🟡 LERNFELD 2 – Waren &amp; Lieferung (Hàng hóa &amp; Giao hàng)</h2>
-
-<h3>4️⃣ Waren bestellen – Ablauf Kaufvertrag (Đặt hàng)</h3>
-<ol>
-<li><strong>Anfrage</strong> (Yêu cầu báo giá) → <span class="tag">keine Bindung (không ràng buộc)</span></li>
-<li><strong>Angebot</strong> (Báo giá) → <span class="tag red">Verkäufer gebunden (người bán bị ràng buộc)</span></li>
-<li><strong>Bestellung</strong> (Đặt hàng) → <span class="tag red">Käufer gebunden (người mua bị ràng buộc)</span></li>
-<li><strong>Bestellungsannahme</strong> (Xác nhận) → <span class="tag green">Kaufvertrag abgeschlossen!</span></li>
-</ol>
-<p>Lieferbed.: <strong>frei Haus</strong> = Verkäufer zahlt Transport | <strong>ab Werk</strong> = Käufer zahlt</p>
-
-<h3>5️⃣ Waren annehmen &amp; lagern (Nhận &amp; bảo quản hàng)</h3>
-<table class="yellow">
-<tr><th>Lager (Kho)</th><th>Temp.</th><th>Waren (Hàng)</th></tr>
-<tr><td>Kühlhaus (Kho lạnh)</td><td>0–4°C</td><td>Fleisch, Fisch, Milch, Eier</td></tr>
-<tr><td>Tiefkühlhaus (Đông lạnh)</td><td>max. -18°C</td><td>Tiefkühlprodukte</td></tr>
-<tr><td>Trockenlager (Kho khô)</td><td>kühl, dunkel</td><td>Mehl, Reis, Konserven</td></tr>
-<tr><td>Non-Food-Lager</td><td>keine</td><td>Reinigungsmittel</td></tr>
-</table>
-<div class="formula">Meldebestand = Mindestbestand + (Tagesverbrauch × Lieferzeit)<br>
-Bestellmenge = Höchstbestand − aktueller Lagerbestand</div>
-
-<h3>6️⃣ Schlechtleistung – Mängelarten (Hàng kém chất lượng)</h3>
-<table class="yellow">
-<tr><th>Mängelart (Loại lỗi)</th><th>Beispiel (Ví dụ)</th><th>Erkennbar</th></tr>
-<tr><td>Mangel in der Art (Sai loại)</td><td>Johannisbeere statt Apfel</td><td>Offen (rõ ràng)</td></tr>
-<tr><td>Mangel in der Menge (Sai số)</td><td>40 statt 50 Flaschen</td><td>Offen</td></tr>
-<tr><td>Qualitätsmangel (Lỗi chất lượng)</td><td>verdorbene Ware</td><td>Offen/Versteckt</td></tr>
-<tr><td>Montagefehler (Lỗi lắp ráp)</td><td>fehlerhafte Anleitung</td><td>Versteckt</td></tr>
-<tr><td>Werbeversprechen (Sai quảng cáo)</td><td>Fettlöser unwirksam</td><td>Versteckt</td></tr>
-</table>
-<p>Rügefristen: Offener Mangel = <strong>sofort</strong> | Versteckt = <strong>6 Monate</strong> | Arglistig = <strong>30 Jahre</strong></p>
-<p><strong>Stufe 1 (ưu tiên):</strong> Nachbesserung (sửa) → Ersatzlieferung (đổi hàng) [max. 2×]</p>
-<p><strong>Stufe 2 (nếu Stufe 1 thất bại):</strong> Minderung (giảm giá) | Rücktritt (hủy hợp đồng) | Schadensersatz (bồi thường)</p>
-
-<h3>7️⃣ Nicht-rechtzeitige Lieferung – Lieferverzug §286 (Giao hàng trễ)</h3>
-<blockquote>Voraussetzungen: 1. Termin überschritten &amp; 2. Verschulden des Lieferanten<br>
-Kein Verschulden bei Höherer Gewalt: Streik, Brand, Hochwasser (Bất khả kháng)</blockquote>
-<table class="yellow">
-<tr><th>Typ (Loại)</th><th>Bedeutung</th><th>Mahnung nötig?</th></tr>
-<tr><td><strong>Fixkauf</strong> (Cố định)</td><td>Genaues Datum: "22. Juni"</td><td>❌ Nein</td></tr>
-<tr><td><strong>Zweckkauf</strong> (Theo mục đích)</td><td>"zu Weihnachten"</td><td>❌ Nein</td></tr>
-<tr><td><strong>Terminkauf</strong> (Theo kỳ hạn)</td><td>"circa in 4 Wochen"</td><td>✅ Ja – erst mahnen!</td></tr>
-</table>
-<p><strong>Rechte (4 Möglichkeiten):</strong></p>
-<ol>
-<li>Erfüllung (yêu cầu giao hàng)</li>
-<li>Erfüllung + Schadensersatz wegen Verzögerung</li>
-<li>Rücktritt vom Vertrag (hủy hợp đồng)</li>
-<li>Rücktritt + Schadensersatz wegen Nichterfüllung</li>
-</ol>
-
-<h3>🎯 Situation-Beispiele (Các tình huống hay gặp)</h3>
-<blockquote><strong>S1 – Schlechtleistung:</strong> Johannisbeere statt Apfelschorle<br>
-→ Mangel in der Art (offener Mangel) → sofort rügen → Ersatzlieferung fordern</blockquote>
-<blockquote><strong>S2 – Lieferverzug mit Verschulden:</strong> Schürzen für Fixkauf nicht geliefert<br>
-→ Fixkauf: keine Mahnung nötig → Rücktritt + Schadensersatz möglich</blockquote>
-<blockquote><strong>S3 – Höhere Gewalt:</strong> Hochwasser → Metzger kann nicht liefern<br>
-→ Kein Verschulden → kein Lieferverzug → nur Vertragsrücktritt, kein Schadensersatz</blockquote>
-<blockquote><strong>S4 – Nährwert:</strong> 160g Apfelstrudel (EW 2%, Fett 10%, KH 28%)<br>
-→ 54,4 + 592 + 761,6 = <strong>1408 kJ</strong></blockquote>
+<div class="tabs">
+  <div class="tab active" data-tab="rind">🐄 Rind</div>
+  <div class="tab" data-tab="schwein">🐖 Schwein</div>
+  <div class="tab" data-tab="schaf">🐑 Schaf/Lamm</div>
+  <div class="tab" data-tab="kalb">🐮 Kalb-Gerichte</div>
+  <div class="tab" data-tab="basis">📚 Grundlagen</div>
+  <div class="tab" data-tab="quiz">📝 Quiz</div>
 </div>
 
-<div class="footer">🍀 Viel Erfolg bei der Klassenarbeit! – Chúc thi tốt! 🍀</div>
+<!-- ═══════════ RIND ═══════════ -->
+<div class="panel active" id="rind">
+  <div class="card">
+    <h2>🐄 Rind – Fleischteile (Bò)</h2>
+    <div class="hint">Klicke auf ein Teil im Bild oder auf einen Namen unten.</div>
+    <div class="diagram-wrap">
+      <div class="svg-box">
+        <div class="img-wrap" data-imgchart="rind"></div>
+        <div class="legend" data-legend="rind"></div>
+      </div>
+      <div class="detail" data-detail="rind">
+        <div class="detail-empty">Kein Teil ausgewählt.<br>Chọn một bộ phận để xem chi tiết.</div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- ═══════════ SCHWEIN ═══════════ -->
+<div class="panel" id="schwein">
+  <div class="card">
+    <h2>🐖 Schwein – Fleischteile (Lợn)</h2>
+    <div class="hint">Klicke auf ein Teil im Bild oder auf einen Namen unten.</div>
+    <div class="diagram-wrap">
+      <div class="svg-box">
+        <div class="img-wrap" data-imgchart="schwein"></div>
+        <div class="legend" data-legend="schwein"></div>
+      </div>
+      <div class="detail" data-detail="schwein">
+        <div class="detail-empty">Kein Teil ausgewählt.<br>Chọn một bộ phận để xem chi tiết.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ SCHAF ═══════════ -->
+<div class="panel" id="schaf">
+  <div class="card">
+    <h2>🐑 Schaf / Lamm – Fleischteile (Cừu)</h2>
+    <div class="hint">Klicke auf ein Teil im Bild oder auf einen Namen unten.</div>
+    <div class="diagram-wrap">
+      <div class="svg-box">
+        <div class="img-wrap" data-imgchart="schaf"></div>
+        <div class="legend" data-legend="schaf"></div>
+      </div>
+      <div class="detail" data-detail="schaf">
+        <div class="detail-empty">Kein Teil ausgewählt.<br>Chọn một bộ phận để xem chi tiết.</div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <h2>📖 Alterseinteilung Schaf (Phân loại theo tuổi)</h2>
+    <table>
+      <tr><th>Bezeichnung</th><th>Bedeutung</th></tr>
+      <tr><td><strong>Lamm</strong></td><td>bis 1 Jahr (đến 1 tuổi)</td></tr>
+      <tr><td><strong>Schaf</strong></td><td>weiblich, ab 1 Jahr (con cái, trên 1 tuổi)</td></tr>
+      <tr><td><strong>Bock</strong></td><td>männlich, ab 1 Jahr (con đực, trên 1 tuổi)</td></tr>
+      <tr><td><strong>Hammel</strong></td><td>kastriert / verschnitten (con đã thiến)</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════ KALB GERICHTE ═══════════ -->
+<div class="panel" id="kalb">
+  <div class="card">
+    <h2>🐮 Gerichte vom Kalb (Món ăn từ thịt bê)</h2>
+    <div class="hint">Ordne Gericht ↔ Beschreibung. Zuordnung ist häufige Prüfungsaufgabe!</div>
+    <table>
+      <tr><th>Gericht</th><th>Beschreibung / Zubereitung</th></tr>
+      <tr><td><strong>Vitello tonnato</strong></td><td>Kalbfleisch in Thunfischsoße, <strong>kalt</strong> serviert. (Thịt bê sốt cá ngừ, ăn lạnh)</td></tr>
+      <tr><td><strong>Osso Buco</strong></td><td>Geschmorte <strong>Kalbshaxenscheiben</strong> (ca. 200–300 g) alla milanese mit Tomatensoße, Karotten-Sellerie-Gemüse. (Khoanh bắp bê hầm kiểu Milan)</td></tr>
+      <tr><td><strong>Wiener Schnitzel</strong></td><td>Dünn geschnittenes, flach ausgeklopftes Kalbsschnitzel, <strong>paniert mit Mehl, Ei und Semmelbrösel</strong>. (Bê tẩm bột chiên kiểu Wien)</td></tr>
+      <tr><td><strong>Saltimbocca alla romana</strong></td><td>Kalbsschnitzel mit <strong>rohem Schinken (Parmaschinken)</strong> und <strong>Salbeiblatt</strong> umhüllt. (Bê cuộn giăm bông sống + lá xô thơm)</td></tr>
+      <tr><td><strong>Cordon bleu</strong></td><td>Kalbsschnitzel mit <strong>gekochtem Schinken und Käse gefüllt</strong>, paniert wie Wiener Schnitzel. (Bê nhồi giăm bông + phô mai, tẩm bột chiên)</td></tr>
+      <tr><td><strong>Zürcher Geschnetzeltes</strong></td><td>Kalbfleisch<strong>streifen</strong> in <strong>Pilzrahmsoße</strong>, dazu Rösti. (Bê thái sợi sốt kem nấm)</td></tr>
+      <tr><td><strong>Medaillons</strong></td><td>Kleine <strong>Kalbssteaks vom Filet</strong> in Champignonsoße, mit Spätzle. (Steak nhỏ từ thăn bê)</td></tr>
+      <tr><td><strong>Kalbsfrikassee</strong></td><td>Fleischwürfel <strong>in weißem Fond gedünstet</strong>. (Bê thái hạt lựu om nước dùng trắng)</td></tr>
+      <tr><td><strong>Kalbsblankett</strong></td><td>Gekochte Fleischwürfel in <strong>heller Soße</strong>. (Bê luộc sốt trắng)</td></tr>
+      <tr><td><strong>Kutteln</strong></td><td>Oberbegriff für die verzehrbaren Teile des <strong>Magen-Darm-Traktes</strong> von Rind und Kalb. (Lòng/dạ dày bò và bê)</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>🐖🐑 Gerichte vom Schwein & Schaf/Lamm</h2>
+    <div class="grid2">
+      <div class="mini">
+        <h4>🐖 Schwein</h4>
+        <ul>
+          <li><strong>Schäufele:</strong> gepökelte & geräucherte Schweineschulter (badisch), mit Meerrettich & Kartoffelsalat.</li>
+          <li><strong>Schweinepfeffer:</strong> Fleischwürfel in Rotwein-Fond, geschmort, mit Blut gebunden.</li>
+          <li><strong>Rückensteak Tessiner Art:</strong> überbacken mit Schinken, Tomaten und Käse.</li>
+          <li><strong>Szegediner Gulasch:</strong> Fleischwürfel mit Knoblauch, Kümmel, <strong>Sauerkraut</strong> & saurer Sahne.</li>
+          <li><strong>Spanferkel:</strong> junges, noch säugendes Ferkel (6–8 Wochen, bis ~20 kg).</li>
+        </ul>
+      </div>
+      <div class="mini">
+        <h4>🐑 Schaf / Lamm</h4>
+        <ul>
+          <li><strong>Irish Stew:</strong> Lammtopf auf irische Art mit Zwiebeln & Kartoffelwürfeln.</li>
+          <li><strong>Navarin:</strong> Hammelragout mit glasierten Zwiebeln, weißen Rüben (Navets) & Kartoffeln.</li>
+          <li><strong>Mutton Chops:</strong> Scheiben vom Hammelsattel (Filet + Bauchlappen), am Spieß gegrillt.</li>
+          <li><strong>Moussaka:</strong> Hammelhackfleisch mit gebackenen Auberginen & Tomatensauce.</li>
+          <li><strong>Lammcurry:</strong> gebratene Fleischwürfel, Äpfel, Zwiebeln, Curry, Mango-Chutney.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ GRUNDLAGEN ═══════════ -->
+<div class="panel" id="basis">
+  <div class="card">
+    <h2>🧬 Zusammensetzung von Schlachtfleisch</h2>
+    <div class="hint">Inhaltsstoffe mit ungefähren %-Angaben (thành phần thịt).</div>
+    <table>
+      <tr><th>Inhaltsstoff</th><th>Anteil (ca.)</th><th>Vietnamesisch</th></tr>
+      <tr><td><strong>Wasser</strong></td><td>ca. 70 %</td><td>Nước</td></tr>
+      <tr><td><strong>Eiweiß</strong></td><td>ca. 20 %</td><td>Protein (chất đạm)</td></tr>
+      <tr><td><strong>Fett</strong></td><td>ca. 3–8 %</td><td>Chất béo</td></tr>
+      <tr><td><strong>Mineralstoffe</strong></td><td>ca. 1 %</td><td>Khoáng chất</td></tr>
+      <tr><td><strong>Vitamine</strong></td><td>unter 1 %</td><td>Vitamin</td></tr>
+      <tr><td><strong>Kohlenhydrate</strong></td><td>unter 1 %</td><td>Tinh bột/đường</td></tr>
+    </table>
+    <div class="note">💡 Die 4 wichtigsten Schlacht-Säugetiere in Deutschland: <strong>Rind, Schwein, Schaf, Ziege</strong>. Als „Schlachtfleisch" bezeichnet man die verzehrbaren Muskel-, Binde- und Fettgewebe.</div>
+  </div>
+
+  <div class="card">
+    <h2>🔬 Gewebearten & Verhalten beim Erhitzen</h2>
+    <div class="hint">Sehr wichtig: welches Gewebe → welches Garverfahren!</div>
+    <table>
+      <tr><th>Gewebeart</th><th>Zusammensetzung</th><th>Verhalten beim Erhitzen</th><th>Garverfahren</th></tr>
+      <tr>
+        <td><strong>Muskelgewebe</strong><br>(Cơ)</td>
+        <td>Muskelzellen, Eiweiß, Wasser</td>
+        <td>Eiweiß <strong>gerinnt</strong>, Fleisch wird fest und verliert Wasser</td>
+        <td><span class="tag">Kurzbraten</span><span class="tag">Grillen</span><span class="tag">Frittieren</span><br><em>(wenig Bindegewebe)</em></td>
+      </tr>
+      <tr>
+        <td><strong>Bindegewebe</strong><br>(Mô liên kết)</td>
+        <td>Kollagen + Elastin</td>
+        <td>Kollagen wird bei <strong>langem Garen zu Gelatine</strong> (Fleisch wird zart). <strong>Elastin bleibt zäh.</strong></td>
+        <td><span class="tag blue">Schmoren</span><span class="tag blue">Kochen</span><span class="tag blue">Dünsten</span></td>
+      </tr>
+      <tr>
+        <td><strong>Fettgewebe</strong><br>(Mô mỡ)</td>
+        <td>Fettzellen, Fett</td>
+        <td><strong>Schmilzt</strong> und macht das Fleisch <strong>saftig und aromatisch</strong></td>
+        <td><span class="tag amber">Braten</span><span class="tag amber">Grillen</span></td>
+      </tr>
+    </table>
+    <div class="note">⚖️ Merksatz: <strong>Viel Bindegewebe → langsam & feucht garen</strong> (schmoren/kochen). <strong>Wenig Bindegewebe → schnell & heiß</strong> (kurzbraten/grillen).</div>
+  </div>
+</div>
+
+<div class="panel" id="quiz">
+  <div class="card">
+    <h2>📝 Quiz – Teste dein Wissen</h2>
+    <div class="hint">Trắc nghiệm ôn tập toàn bộ nội dung. Bấm đáp án để kiểm tra ngay.</div>
+    <div id="quizArea"></div>
+  </div>
+</div>
+
+<div style="text-align:center;padding:6px 14px 0">
+  <a href="ka2.html" style="color:#6b7280;font-size:.85em;text-decoration:none;border-bottom:1px dotted #9ca3af">← Lernzusammenfassung KA2 (LF2 & LF3)</a>
+</div>
+<div class="footer">🍀 Lernbogen Fleischteile · BfK2 Fachkraft für Gastronomie 🍀</div>
+</div>
+
+<script>
+/* ============ DATEN ============ */
+const DATA = {
+  rind: {
+    parts: {
+      kopf:      {n:1, name:"Kopf", viet:"Đầu", besch:"Wenig Fleisch, sehr bindegewebsreich.", verw:"Zunge, Ochsenmaul – im Ganzen gekocht, z.B. mit Meerrettich."},
+      hals:      {n:2, name:"Hals / Kamm (Nacken)", viet:"Cổ / gáy", besch:"Stark durchwachsenes Fleisch, viel Bindegewebe.", verw:"Suppenfleisch, Eintopf, Gulasch, Schmoren."},
+      querrippe: {n:3, name:"Querrippe (Fehlrippe)", viet:"Sườn ngang", besch:"Durchwachsenes Fleisch mit Bindegewebe.", verw:"Suppenfleisch, Eintopf, Schmorgerichte."},
+      bug:       {n:4, name:"Bug / Schulter", viet:"Vai (chân trước trên)", besch:"Mageres, leicht durchwachsenes Fleisch.", verw:"Braten, Gulasch, Rouladen, Sauerbraten."},
+      brust:     {n:5, name:"Brust", viet:"Ức", besch:"Durchwachsenes, fettes Fleisch mit Bindegewebe.", verw:"Suppenfleisch, Kochen, Schmoren (Tafelspitz-Bereich)."},
+      hochrippe: {n:6, name:"Hochrippe", viet:"Sườn cao", besch:"Durchwachsenes, saftiges Fleisch.", verw:"Braten, Rib-Eye kurzbraten, Kochen."},
+      spannrippe:{n:7, name:"Spannrippe (Querrippe unten)", viet:"Sườn / ba chỉ trên", besch:"Durchwachsenes Fleisch.", verw:"Suppenfleisch, Eintopf, Schmorgerichte."},
+      roastbeef: {n:8, name:"Roastbeef (Rücken)", viet:"Thăn lưng", besch:"Zartes, bindegewebsarmes Edelstück.", verw:"Kurzbraten & Grillen: Steaks, Rostbraten, Roastbeef."},
+      bauch:     {n:9, name:"Bauch / Dünnung (Bauchlappen)", viet:"Ba chỉ / bụng", besch:"Durchwachsenes, sehniges Fleisch.", verw:"Suppenfleisch, Hackfleisch, Rollbraten."},
+      filet:     {n:10, name:"Filet", viet:"Thăn nội (thăn chuột)", besch:"Zartestes, bindegewebsärmstes Stück des Rindes.", verw:"Edel-Kurzbraten: Filetsteak, Medaillons, Tournedos."},
+      keule:     {n:11, name:"Keule (Ober-/Unterschale, Nuss, Hüfte)", viet:"Đùi sau", besch:"Mageres, leicht durchwachsenes Fleisch.", verw:"Braten, Rouladen, Schnitzel, Fondue."},
+      hesse:     {n:12, name:"Hesse / Wade (Beinscheibe)", viet:"Bắp chân", besch:"Sehr bindegewebsreich (Kollagen).", verw:"Kraftbrühe, Suppenfleisch, Beinscheibe, Schmoren (Ossobuco-Art)."},
+    },
+    imageChart: {
+      src: "rind.png",
+      hotspots: [
+        {key:"kopf",       x:17, y:25},
+        {key:"hals",       x:25, y:29},
+        {key:"querrippe",  x:35, y:21},
+        {key:"hochrippe",  x:51, y:23},
+        {key:"roastbeef",  x:60, y:19},
+        {key:"filet",      x:71, y:23},
+        {key:"keule",      x:77, y:41},
+        {key:"bug",        x:39, y:41},
+        {key:"spannrippe", x:29, y:42},
+        {key:"spannrippe", x:50, y:41},
+        {key:"brust",      x:32, y:54},
+        {key:"brust",      x:50, y:53},
+        {key:"bauch",      x:62, y:44},
+        {key:"hesse",      x:40, y:68},
+        {key:"hesse",      x:76, y:62}
+      ]
+    }
+  },
+
+  schwein: {
+    parts: {
+      kopf:    {n:1, name:"Kopf / Backe", viet:"Đầu / má", besch:"Bindegewebsreich, fett.", verw:"Sülze, Backe schmoren, Kopffleisch, Wurst."},
+      nacken:  {n:2, name:"Nacken / Kamm", viet:"Cổ / gáy", besch:"Saftig, gut durchwachsen (marmoriert).", verw:"Braten, Kammkotelett, Grillen (Nackensteak), Gulasch."},
+      kotelett:{n:3, name:"Kotelett (Rücken vorne)", viet:"Sườn cốt lết", besch:"Mager, zart, mit Knochen.", verw:"Kurzbraten & Grillen: Kotelett, Schnitzel."},
+      ruecken: {n:4, name:"Rücken / Lachs (hinten)", viet:"Thăn lưng sau (chứa thăn nội)", besch:"Zartes, mageres Rückenstück; darunter liegt das Filet.", verw:"Braten, Schnitzel, Kurzbraten, Filet/Medaillons."},
+      schinken:{n:5, name:"Schinken / Keule", viet:"Đùi sau (giăm bông)", besch:"Mager, wenig Bindegewebe.", verw:"Braten, Schnitzel, Roh-/Kochschinken, Fondue."},
+      schulter:{n:6, name:"Schulter / Bug", viet:"Vai", besch:"Leicht durchwachsen.", verw:"Braten, Gulasch, Hackfleisch, Schäufele."},
+      bauch:   {n:7, name:"Bauch (Bauchspeck)", viet:"Ba chỉ", besch:"Fett, durchwachsen (Speckschichten).", verw:"Speck, Grillbauch, gerollter Bauch, Eintopf, Wurst."},
+      eisbein: {n:8, name:"Eisbein / Haxe", viet:"Giò heo (bắp giò)", besch:"Sehr bindegewebsreich.", verw:"Kochen (Eisbein), Schmoren, Grillhaxe."},
+      spitzbein:{n:9, name:"Spitzbein / Pfötchen", viet:"Chân giò (móng)", besch:"Haut, Knochen, Gelatine.", verw:"Sülze, Kraftbrühe, Aspik."},
+    },
+    imageChart: {
+      src: "schwein.png",
+      hotspots: [
+        {key:"kopf",      x:20, y:45},
+        {key:"nacken",    x:33, y:22},
+        {key:"kotelett",  x:48, y:20},
+        {key:"ruecken",   x:63, y:21},
+        {key:"schinken",  x:74, y:40},
+        {key:"schulter",  x:43, y:42},
+        {key:"bauch",     x:60, y:43},
+        {key:"eisbein",   x:34, y:61},
+        {key:"eisbein",   x:74, y:61},
+        {key:"spitzbein", x:35, y:78},
+        {key:"spitzbein", x:82, y:80}
+      ]
+    }
+  },
+
+  schaf: {
+    parts: {
+      kopf:    {n:1, name:"Kopf", viet:"Đầu", besch:"Wenig Fleisch, bindegewebsreich.", verw:"Zunge, Schafskopf."},
+      hals:    {n:2, name:"Hals", viet:"Cổ", besch:"Durchwachsen, bindegewebsreich.", verw:"Ragout, Hackfleisch."},
+      kotelett:{n:3, name:"Kotelettstück (Rücken)", viet:"Sườn / thăn lưng", besch:"Zart, mager – Edelstück.", verw:"Lammkrone, Lammkoteletts, Lammrücken, Lammkarree (Kurzbraten/Grillen)."},
+      lende:   {n:4, name:"Lendenstück mit Filet", viet:"Thăn lưng dưới + thăn nội", besch:"Zartestes, mageres Stück (mit Filet).", verw:"Schmetterlingssteak, Mutton Chops, Lammfilet Madras."},
+      keule:   {n:5, name:"Keule", viet:"Đùi cừu", besch:"Mager, saftig.", verw:"Geschmorte Lammkeule, Beinscheiben, Lamm-Tajine."},
+      schulter:{n:6, name:"Schulter", viet:"Vai", besch:"Leicht durchwachsen, Bindegewebe.", verw:"Lammcurry, Köfte, Ragout, Schmoren."},
+      brust:   {n:7, name:"Bauch / Brust", viet:"Bụng / ức", besch:"Fett, durchwachsen, sehnig.", verw:"Navarin, Rollbraten, Eintopf, gefüllte Lammbrust."},
+      hachse:  {n:8, name:"Hachse (Beinscheibe)", viet:"Bắp chân", besch:"Sehr bindegewebsreich.", verw:"Geschmorte Lammhachse, Kraftbrühe."},
+      fuss:    {n:9, name:"Fuß", viet:"Chân / móng", besch:"Haut, Knochen, Gelatine.", verw:"Fond (Kraftbrühe), Aspik."},
+    },
+    imageChart: {
+      src: "kraft.png",
+      hotspots: [
+        {key:"kopf",     x:31, y:33},
+        {key:"hals",     x:39, y:36},
+        {key:"kotelett", x:49, y:32},
+        {key:"lende",    x:60, y:32},
+        {key:"keule",    x:68, y:41},
+        {key:"schulter", x:41, y:49},
+        {key:"brust",    x:54, y:54},
+        {key:"hachse",   x:40, y:67},
+        {key:"hachse",   x:67, y:67},
+        {key:"fuss",     x:42, y:84},
+        {key:"fuss",     x:69, y:85}
+      ]
+    }
+  }
+};
+
+/* ============ RENDER ============ */
+function renderAnimal(animal){
+  const cfg = DATA[animal];
+  const svg = document.querySelector('svg[data-animal="'+animal+'"]');
+  const NS="http://www.w3.org/2000/svg";
+
+  if(cfg.imageChart){
+    // dùng ảnh con bò tách nền của người dùng + nút bấm trong suốt
+    const ic=cfg.imageChart;
+    const wrap=document.querySelector('.img-wrap[data-imgchart="'+animal+'"]');
+    const img=document.createElement("img");
+    img.src=ic.src; img.alt="Fleischteile "+animal;
+    wrap.appendChild(img);
+    ic.hotspots.forEach(h=>{
+      const b=document.createElement("div");
+      b.className="hotspot"; b.setAttribute("data-key",h.key);
+      b.style.left=h.x+"%"; b.style.top=h.y+"%";
+      b.textContent=cfg.parts[h.key].n;
+      b.addEventListener("click",()=>select(animal,h.key));
+      wrap.appendChild(b);
+    });
+    buildLegend(animal,cfg);
+    return;
+  }
+
+  if(cfg.silhouette){
+    // realistic body outline
+    const sil = cfg.silhouette;
+    svg.setAttribute("viewBox", sil.viewBox);
+    const body=document.createElementNS(NS,"path");
+    body.setAttribute("d", sil.bodyPath);
+    body.setAttribute("class","body-line");
+    svg.appendChild(body);
+    // clickable cut regions
+    sil.regions.forEach(r=>{
+      const p=document.createElementNS(NS,"polygon");
+      p.setAttribute("points",r.points);
+      p.setAttribute("class","cut");
+      p.setAttribute("data-key",r.key);
+      svg.appendChild(p);
+      const t=document.createElementNS(NS,"text");
+      t.setAttribute("x",r.labelX); t.setAttribute("y",r.labelY);
+      t.setAttribute("class","cut-label");
+      t.textContent=cfg.parts[r.key].n;
+      svg.appendChild(t);
+    });
+    // redraw body outline on top so it stays visible over region fills
+    const bodyTop=document.createElementNS(NS,"path");
+    bodyTop.setAttribute("d", sil.bodyPath);
+    bodyTop.setAttribute("class","body-line");
+    svg.appendChild(bodyTop);
+    // decorative extras (horns, eye, hooves)
+    (sil.extraPaths||[]).forEach(str=>{
+      const g=document.createElementNS(NS,"g");
+      g.innerHTML=str;
+      svg.appendChild(g);
+    });
+  } else {
+  // clickable cut shapes (rechteckiges Schema)
+  cfg.shapes.forEach(s=>{
+    const [key,,coords,lx,ly]=s;
+    const p=document.createElementNS(NS,"polygon");
+    p.setAttribute("points",coords);
+    p.setAttribute("class","cut");
+    p.setAttribute("data-key",key);
+    svg.appendChild(p);
+    const t=document.createElementNS(NS,"text");
+    t.setAttribute("x",lx); t.setAttribute("y",ly);
+    t.setAttribute("class","cut-label");
+    t.textContent=cfg.parts[key].n;
+    svg.appendChild(t);
+  });
+  }
+  // legend chips
+  buildLegend(animal,cfg);
+  // click handlers auf SVG-Formen
+  svg.querySelectorAll(".cut").forEach(el=>el.addEventListener("click",()=>select(animal,el.getAttribute("data-key"))));
+}
+
+function buildLegend(animal,cfg){
+  const leg=document.querySelector('[data-legend="'+animal+'"]');
+  if(!leg||leg.dataset.built) return;
+  leg.dataset.built="1";
+  Object.keys(cfg.parts).forEach(key=>{
+    const pt=cfg.parts[key];
+    const c=document.createElement("span");
+    c.className="chip"; c.setAttribute("data-key",key);
+    c.textContent=pt.n+". "+pt.name.split(" / ")[0].split(" (")[0];
+    c.addEventListener("click",()=>select(animal,key));
+    leg.appendChild(c);
+  });
+}
+
+function select(animal,key){
+  const cfg=DATA[animal], pt=cfg.parts[key];
+  // highlight polygons (SVG-Schema)
+  document.querySelectorAll('svg[data-animal="'+animal+'"] .cut').forEach(el=>{
+    el.classList.toggle("sel", el.getAttribute("data-key")===key);
+  });
+  // highlight hotspots (Bild-Schema)
+  document.querySelectorAll('.img-wrap[data-imgchart="'+animal+'"] .hotspot').forEach(el=>{
+    el.classList.toggle("sel", el.getAttribute("data-key")===key);
+  });
+  document.querySelectorAll('[data-legend="'+animal+'"] .chip').forEach(el=>{
+    el.classList.toggle("sel", el.getAttribute("data-key")===key);
+  });
+  const box=document.querySelector('[data-detail="'+animal+'"]');
+  box.innerHTML='<div class="detail-box">'
+    +'<span class="num">'+pt.n+'</span><h3>'+pt.name+'</h3>'
+    +'<div class="viet">🇻🇳 '+pt.viet+'</div>'
+    +'<dl><dt>Beschaffenheit (đặc điểm):</dt><dd>'+pt.besch+'</dd>'
+    +'<dt>Verwendung (cách dùng):</dt><dd>'+pt.verw+'</dd></dl></div>';
+}
+
+["rind","schwein","schaf"].forEach(renderAnimal);
+
+/* tabs */
+document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>{
+  document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+  document.querySelectorAll(".panel").forEach(x=>x.classList.remove("active"));
+  t.classList.add("active");
+  document.getElementById(t.getAttribute("data-tab")).classList.add("active");
+}));
+
+/* ============ QUIZ ============ */
+const QUIZ = [
+  {cat:"Rind", q:"Welches ist das zarteste, bindegewebsärmste Stück des Rindes?", opts:["Filet","Hesse","Brust","Hals"], a:0, ex:"Das Filet (thăn nội) ist am zartesten – ideal zum Kurzbraten (Filetsteak, Medaillons)."},
+  {cat:"Rind", q:"Wofür verwendet man die Hesse (Beinscheibe) vom Rind?", opts:["Steak zum Kurzbraten","Kraftbrühe & Schmoren","Rohschinken","Carpaccio"], a:1, ex:"Die Hesse ist sehr bindegewebsreich (Kollagen) → Kraftbrühe, Schmoren, Ossobuco-Art."},
+  {cat:"Rind", q:"Aus welchem Teil schneidet man Rostbraten/Steaks?", opts:["Bauch","Roastbeef (Rücken)","Hals","Querrippe"], a:1, ex:"Roastbeef ist ein zartes Edelstück am Rücken → Steaks, Rostbraten."},
+  {cat:"Gewebe", q:"Was passiert mit Kollagen (Bindegewebe) bei langem, feuchtem Garen?", opts:["Es bleibt zäh","Es wird zu Gelatine","Es schmilzt zu Fett","Es gerinnt sofort"], a:1, ex:"Kollagen wird bei langem Garen zu Gelatine → Fleisch wird zart. Elastin bleibt aber zäh."},
+  {cat:"Gewebe", q:"Fleisch mit VIEL Bindegewebe gart man am besten wie?", opts:["Kurzbraten / Grillen","Schmoren / Kochen (langsam & feucht)","Frittieren","Roh servieren"], a:1, ex:"Viel Bindegewebe → langsam & feucht garen (schmoren/kochen). Wenig → kurzbraten."},
+  {cat:"Gewebe", q:"Welche Aufgabe hat das Fettgewebe beim Erhitzen?", opts:["Es wird zäh","Es gerinnt","Es schmilzt und macht saftig & aromatisch","Es wird zu Gelatine"], a:2, ex:"Fett schmilzt beim Garen und macht das Fleisch saftig und aromatisch."},
+  {cat:"Zusammensetzung", q:"Wie viel Prozent Wasser enthält Schlachtfleisch ungefähr?", opts:["ca. 20 %","ca. 50 %","ca. 70 %","ca. 90 %"], a:2, ex:"Fleisch besteht zu ca. 70 % aus Wasser, ca. 20 % Eiweiß, 3–8 % Fett."},
+  {cat:"Zusammensetzung", q:"Wie hoch ist der Eiweißanteil (Protein) im Fleisch ungefähr?", opts:["ca. 5 %","ca. 20 %","ca. 40 %","ca. 70 %"], a:1, ex:"Eiweiß (chất đạm) ca. 20 %."},
+  {cat:"Kalb", q:"Was ist typisch für ein 'Wiener Schnitzel'?", opts:["In Thunfischsoße kalt serviert","Paniert mit Mehl, Ei und Semmelbröseln","Mit Käse gefüllt","In Pilzrahmsoße"], a:1, ex:"Wiener Schnitzel = dünnes Kalbsschnitzel, paniert mit Mehl, Ei und Semmelbröseln."},
+  {cat:"Kalb", q:"Cordon bleu ist ein Kalbsschnitzel, gefüllt mit …", opts:["Thunfisch","gekochtem Schinken und Käse","Salbei und Rohschinken","Pilzen"], a:1, ex:"Cordon bleu: mit gekochtem Schinken und Käse gefüllt, dann paniert."},
+  {cat:"Kalb", q:"Saltimbocca alla romana wird umhüllt mit …", opts:["rohem Schinken (Parma) + Salbeiblatt","Käse + Ei","Speck + Zwiebeln","Semmelbröseln"], a:0, ex:"Saltimbocca: Kalbsschnitzel mit rohem Parmaschinken und einem Salbeiblatt."},
+  {cat:"Kalb", q:"Was ist Osso Buco?", opts:["Kalbsfilet roh","Geschmorte Kalbshaxenscheiben (alla milanese)","Kalbszunge gekocht","Panierte Leber"], a:1, ex:"Osso Buco = geschmorte Kalbshaxenscheiben mit Tomaten & Gemüse, milanesische Art."},
+  {cat:"Kalb", q:"Vitello tonnato wird serviert …", opts:["heiß mit Soße","kalt in Thunfischsoße","frittiert","gegrillt"], a:1, ex:"Vitello tonnato = Kalbfleisch in Thunfischsoße, KALT serviert."},
+  {cat:"Schwein", q:"Welches Schweineteil ist gut durchwachsen (marmoriert) und eignet sich für Nackensteaks?", opts:["Filet","Nacken / Kamm","Eisbein","Schinken"], a:1, ex:"Der Nacken/Kamm ist saftig & marmoriert → Nackensteak, Kammkotelett, Grillen."},
+  {cat:"Schwein", q:"Was ist Szegediner Gulasch?", opts:["Gulasch mit Sauerkraut & saurer Sahne","Lammtopf","Fischeintopf","Gulasch mit Äpfeln"], a:0, ex:"Szegediner Gulasch: Fleischwürfel mit Knoblauch, Kümmel, Sauerkraut und saurer Sahne."},
+  {cat:"Schwein", q:"Ein Spanferkel ist …", opts:["ein altes Mutterschwein","ein junges, noch säugendes Ferkel","gepökelte Schulter","geräucherter Bauch"], a:1, ex:"Spanferkel = junges, noch säugendes Ferkel (6–8 Wochen, bis ~20 kg)."},
+  {cat:"Schaf", q:"Ein 'Hammel' ist ein Schaf, das …", opts:["unter 1 Jahr alt ist","weiblich und über 1 Jahr ist","kastriert (verschnitten) ist","männlich und über 1 Jahr ist"], a:2, ex:"Hammel = kastriertes (verschnittenes) Schaf. Lamm = bis 1 Jahr, Bock = männlich, Schaf = weiblich."},
+  {cat:"Schaf", q:"Was ist Irish Stew?", opts:["Lammtopf mit Zwiebeln & Kartoffelwürfeln","Hammelragout mit Auberginen","Lammcurry mit Mango","gegrillte Koteletts"], a:0, ex:"Irish Stew = Lammtopf auf irische Art mit Zwiebeln und Kartoffelwürfeln."},
+  {cat:"Schaf", q:"Moussaka wird zubereitet mit …", opts:["Lammhackfleisch, gebackenen Auberginen & Tomatensauce","Kalbsfilet & Pilzen","Schweinebauch & Sauerkraut","Rindfleisch & Rösti"], a:0, ex:"Moussaka: Hammelhackfleisch mit gebackenen Auberginen und Tomatensauce."},
+  {cat:"Grundlagen", q:"Welche 4 Tiere sind die wichtigsten Schlacht-Säugetiere in Deutschland?", opts:["Rind, Schwein, Schaf, Ziege","Rind, Pferd, Huhn, Ente","Schwein, Kaninchen, Reh, Gans","Rind, Schwein, Wildschwein, Hirsch"], a:0, ex:"Rind, Schwein, Schaf und Ziege sind die 4 wichtigsten Schlacht-Säugetiere."},
+];
+
+let qOrder=[], qIndex=0, qScore=0;
+
+function shuffle(arr){
+  const a=arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+function quizStart(){
+  qOrder=shuffle(QUIZ.map((_,i)=>i));
+  qIndex=0; qScore=0;
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const area=document.getElementById("quizArea");
+  if(qIndex>=qOrder.length){ return quizResult(); }
+  const q=QUIZ[qOrder[qIndex]];
+  const pct=Math.round((qIndex/qOrder.length)*100);
+  let html='<div class="quiz-bar"><span>Frage '+(qIndex+1)+' / '+qOrder.length+'</span><span class="score">Điểm: '+qScore+'</span></div>';
+  html+='<div class="progress"><div style="width:'+pct+'%"></div></div>';
+  html+='<div class="q-cat">'+q.cat+'</div>';
+  html+='<div class="q-text">'+q.q+'</div>';
+  html+='<div class="q-opts">';
+  q.opts.forEach((o,i)=>{ html+='<button class="opt" data-i="'+i+'">'+o+'</button>'; });
+  html+='</div>';
+  html+='<div class="q-feedback" id="qfb"></div>';
+  html+='<div class="q-nav" id="qnav"></div>';
+  area.innerHTML=html;
+  area.querySelectorAll(".opt").forEach(btn=>btn.addEventListener("click",()=>answer(parseInt(btn.getAttribute("data-i")),q)));
+}
+
+function answer(chosen,q){
+  const area=document.getElementById("quizArea");
+  const opts=area.querySelectorAll(".opt");
+  opts.forEach((b,i)=>{
+    b.classList.add("locked");
+    if(i===q.a) b.classList.add("correct");
+    if(i===chosen && chosen!==q.a) b.classList.add("wrong");
+  });
+  const fb=document.getElementById("qfb");
+  if(chosen===q.a){
+    qScore++;
+    fb.className="q-feedback ok show";
+    fb.innerHTML="✅ Richtig! "+q.ex;
+  } else {
+    fb.className="q-feedback no show";
+    fb.innerHTML="❌ Leider falsch. "+q.ex;
+  }
+  const nav=document.getElementById("qnav");
+  const last=qIndex===qOrder.length-1;
+  nav.innerHTML='<button class="btn" id="qnext">'+(last?'Ergebnis ansehen →':'Nächste Frage →')+'</button>';
+  document.getElementById("qnext").addEventListener("click",()=>{ qIndex++; renderQuestion(); });
+}
+
+function quizResult(){
+  const area=document.getElementById("quizArea");
+  const total=qOrder.length;
+  const pct=Math.round((qScore/total)*100);
+  let msg;
+  if(pct>=90) msg="🏆 Ausgezeichnet! Rất giỏi, bạn nắm chắc bài rồi!";
+  else if(pct>=70) msg="👍 Gut gemacht! Khá tốt, ôn thêm vài chỗ là ổn.";
+  else if(pct>=50) msg="🙂 Nicht schlecht. Xem lại các thẻ rồi làm lại nhé.";
+  else msg="📚 Weiter üben! Ôn lại phần lý thuyết rồi thử lại.";
+  area.innerHTML='<div class="quiz-result">'
+    +'<div class="msg">Kết quả của bạn:</div>'
+    +'<div class="big">'+qScore+' / '+total+'</div>'
+    +'<div class="msg">('+pct+'%) '+msg+'</div>'
+    +'<button class="btn" id="qrestart">🔄 Nochmal / Làm lại</button></div>';
+  document.getElementById("qrestart").addEventListener("click",quizStart);
+}
+
+function quizIntro(){
+  document.getElementById("quizArea").innerHTML=
+    '<div class="quiz-start"><p>'+QUIZ.length+' câu hỏi trắc nghiệm về: bộ phận thịt (bò/lợn/cừu), món ăn, loại mô và thành phần thịt.<br>'
+    +'Mỗi câu có giải thích ngay sau khi chọn. Câu hỏi được xáo trộn mỗi lần.</p>'
+    +'<button class="btn" id="qbegin">▶️ Quiz starten / Bắt đầu</button></div>';
+  document.getElementById("qbegin").addEventListener("click",quizStart);
+}
+quizIntro();
+</script>
 </body>
 </html>
