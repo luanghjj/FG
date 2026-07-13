@@ -89,6 +89,7 @@ a{color:inherit;text-decoration:none}
 
 /* ===== BFK accent scope ===== */
 .bfk-scope{--accent:#dc2626;--accent-soft:#fef2f2}
+.abschluss-scope{--accent:#7c3aed;--accent-soft:#f5f3ff}
 
 /* ===== Theme content shared ===== */
 .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:22px;margin-bottom:16px}
@@ -439,8 +440,8 @@ h3.sub{font-size:1em;color:#334155;margin:14px 0 6px;font-weight:700}
 </section>
 
 <!-- ===== THEME: ABSCHLUSSPRÜFUNG ===== -->
-<section class="view bfk-scope" id="v-abschluss">
-  <div class="back" onclick="go('#/bfk')">← BFK-Themen</div>
+<section class="view abschluss-scope" id="v-abschluss">
+  <div class="back" onclick="go('#/')">← Fächer / Các môn</div>
   <div class="section-head">
     <h2>🎯 Abschlussprüfung</h2>
     <p>Fachkraft für Gastronomie · Aufbau der Prüfung und alle Lernthemen an einem Ort.</p>
@@ -682,13 +683,13 @@ renderAbschlussThemen();
 /* ============ FÄCHER & THEMEN ============ */
 const SUBJECTS = [
   {code:"BFK", name:"Berufsfachkunde", icon:"🍳", accent:"#dc2626", soft:"#fef2f2", desc:"Lebensmittel, Fleisch & Küche.", route:"#/bfk", ready:true},
+  {code:"Abschluss", name:"Abschlussprüfung", icon:"🎯", accent:"#7c3aed", soft:"#f5f3ff", desc:"Luyện thi tốt nghiệp — cấu trúc & các chủ đề.", route:"#/abschluss", ready:true},
   {code:"Wiko", name:"Wirtschaftskunde", icon:"📊", accent:"#2563eb", soft:"#eff6ff", desc:"Wirtschaft, Kaufvertrag & Recht.", route:"#/wiko", ready:false},
   {code:"GK", name:"Gemeinschaftskunde", icon:"🏛️", accent:"#16a34a", soft:"#f0fdf4", desc:"Politik, Gesellschaft & Recht.", route:"#/gk", ready:false},
 ];
 const BFK_THEMES = [
   {icon:"🥩", name:"Fleisch", desc:"Fleischteile (Rind/Schwein/Schaf) · Gerichte · Grundlagen.", route:"#/bfk/fleisch"},
   {icon:"🍳", name:"Küche & Ernährung", desc:"Nährwert, Eiercode, biologische Wertigkeit.", route:"#/bfk/kueche"},
-  {icon:"🎯", name:"Abschlussprüfung", desc:"Luyện thi tốt nghiệp — cấu trúc & các chủ đề.", route:"#/bfk/abschluss"},
   {icon:"📝", name:"Quiz", desc:"Trắc nghiệm tự kiểm tra.", route:"#/bfk/quiz"},
   {icon:"🗂️", name:"Prüfungen", desc:"Đề mẫu, đáp án & tóm tắt KA2.", route:"#/bfk/pruefungen"},
 ];
@@ -723,7 +724,7 @@ const ROUTES = {
   "#/bfk":         {view:"v-bfk",    crumbs:[["BFK","#/bfk"]]},
   "#/bfk/fleisch": {view:"v-fleisch",crumbs:[["BFK","#/bfk"],["Fleisch","#/bfk/fleisch"]]},
   "#/bfk/kueche":  {view:"v-kueche", crumbs:[["BFK","#/bfk"],["Küche & Ernährung","#/bfk/kueche"]]},
-  "#/bfk/abschluss":{view:"v-abschluss",crumbs:[["BFK","#/bfk"],["Abschlussprüfung","#/bfk/abschluss"]]},
+  "#/abschluss":   {view:"v-abschluss",crumbs:[["Abschlussprüfung","#/abschluss"]]},
   "#/bfk/quiz":    {view:"v-quiz",   crumbs:[["BFK","#/bfk"],["Quiz","#/bfk/quiz"]]},
   "#/bfk/pruefungen":{view:"v-pruefungen",crumbs:[["BFK","#/bfk"],["Prüfungen","#/bfk/pruefungen"]]},
 };
@@ -768,9 +769,9 @@ BFK_THEMES.forEach(t=>idx(t.name,"BFK · "+t.desc,"Thema",t.route,null));
 ["Muskelgewebe","Bindegewebe","Fettgewebe","Kollagen","Zusammensetzung","Garverfahren","Schmoren","Kurzbraten"].forEach(name=>
    idx(name,"Fleisch · Grundlagen","Basis","#/bfk/fleisch",()=>fleischShowAnimal("grundlagen")));
 // Abschlussprüfung
-idx("Abschlussprüfung","Aufbau · Teil 1 & Teil 2 · Prüfungsbereiche","Prüfung","#/bfk/abschluss",()=>abschlussShowTab("struktur"));
+idx("Abschlussprüfung","Aufbau · Teil 1 & Teil 2 · Prüfungsbereiche","Prüfung","#/abschluss",()=>abschlussShowTab("struktur"));
 [["Gestreckte Abschlussprüfung","Teil 1 & Teil 2 · Gewichtung"],["Restaurantservice","Fachrichtung"],["Systemgastronomie","Fachrichtung"],["Prüfungsbereiche","Übersicht der Bereiche"]].forEach(([t,s])=>
-   idx(t,"Abschlussprüfung · "+s,"Prüfung","#/bfk/abschluss",()=>abschlussShowTab("struktur")));
+   idx(t,"Abschlussprüfung · "+s,"Prüfung","#/abschluss",()=>abschlussShowTab("struktur")));
 
 function flashDetail(animal){ const el=document.querySelector('[data-detail="'+animal+'"]'); if(el){el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash");el.scrollIntoView({behavior:"smooth",block:"center"});} }
 function flashEl(id){ const el=document.getElementById(id); if(el){el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash");el.scrollIntoView({behavior:"smooth",block:"center"});} }
