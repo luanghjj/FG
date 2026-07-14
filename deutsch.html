@@ -187,10 +187,15 @@ table.t tr:nth-child(even) td{background:#f8fafc}
 .tu-step-body .mm-mini h5{color:#60a5fa;font-size:.82em;margin-bottom:6px;text-align:center}
 .tu-step-body .mm-mini ul{padding-left:14px;font-size:.8em;color:#cbd5e1}
 .tu-step-body .mm-mini li{margin:3px 0}
-.stichwort-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.stichwort-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;align-items:flex-start}
 .stw{background:#dbeafe;color:#1e40af;border:1px solid #93c5fd;border-radius:999px;padding:3px 10px;font-size:.78em;font-weight:700}
+button.stw{font:inherit;cursor:pointer;border-bottom:1.5px dashed #60a5fa}
+button.stw:hover{filter:brightness(.97);box-shadow:0 0 0 2px #dbeafe}
+button.stw.open{box-shadow:0 0 0 2px #93c5fd}
 .stw.orange{background:#fff7ed;color:#c2410c;border-color:#fdba74}
 .stw.green{background:#dcfce7;color:#166534;border-color:#86efac}
+.stw-wrap{display:inline-flex;flex-direction:column;align-items:flex-start;gap:2px;max-width:100%}
+.stw-wrap .vi-pop{margin:0;max-width:220px}
 .form-badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;border-radius:10px;padding:8px 14px;font-weight:800;font-size:.92em;margin:6px 0}
 .steps-nav{display:flex;gap:8px;margin-top:4px}
 .steps-nav button{border:1px solid var(--line);background:#fff;border-radius:8px;padding:7px 12px;font:inherit;font-size:.82em;font-weight:700;cursor:pointer;flex:1}
@@ -591,7 +596,7 @@ table.t tr:nth-child(even) td{background:#f8fafc}
 
   <!-- ========== ÜBEN ========== -->
   <div class="view" id="v-ueben">
-    <div class="hint-bar">✏️ Üben — Texte lesen · Thema &amp; Stichworte · Form wählen · Muster ansehen</div>
+    <div class="hint-bar">✏️ Üben — Texte lesen · bấm từ gạch chấm xanh → nghĩa VI · Thema · Form · Quiz</div>
 
     <!-- Textübungen -->
     <div id="tuList"></div>
@@ -810,24 +815,27 @@ table.t tr:nth-child(even) td{background:#f8fafc}
 </div>
 
 <script>
-/* ===== VI toggle ===== */
+/* ===== VI toggle (Lernen + Üben) ===== */
 document.addEventListener('click', (e)=>{
   const btn = e.target.closest('.vi-btn');
   if(!btn) return;
   e.preventDefault();
   e.stopPropagation();
   const vi = btn.getAttribute('data-vi') || '';
-  // find next .vi-pop sibling (skip text nodes)
-  let pop = btn.nextElementSibling;
-  while(pop && !pop.classList.contains('vi-pop')) pop = pop.nextElementSibling;
-  // if inside parent with dedicated pop right after group – fallback: create after btn
+  // prefer dedicated pop in .stw-wrap parent, else next sibling, else create
+  let pop = btn.parentElement?.classList.contains('stw-wrap')
+    ? btn.parentElement.querySelector('.vi-pop')
+    : null;
+  if(!pop){
+    pop = btn.nextElementSibling;
+    while(pop && !pop.classList.contains('vi-pop')) pop = pop.nextElementSibling;
+  }
   if(!pop){
     pop = document.createElement('div');
     pop.className = 'vi-pop';
     btn.insertAdjacentElement('afterend', pop);
   }
   const open = pop.classList.contains('show');
-  // close others in same card? optional – keep simple: toggle this one
   if(open){
     pop.classList.remove('show');
     pop.textContent = '';
@@ -973,6 +981,104 @@ const QUIZ = [
   {cat:'Praxis', q:'Teufelskreis negatives Denken → Form?',
    opts:['Strukturbild','Kreisdiagramm','Tabelle','Kurvendiagramm'],
    a:0, ex:'Ursache–Wirkung → Strukturbild.'},
+
+  /* ===== more questions ===== */
+  {cat:'Formen', q:'Tabelle eignet sich besonders für …',
+   opts:['exakte Zahlen mit mehreren Spalten','nur Bilder malen','nur Hierarchie','nur Teufelskreise'],
+   a:0, ex:'Tabelle = genauer Zahlenvergleich.'},
+  {cat:'Formen', q:'Wann nimmst du KEIN Kreisdiagramm?',
+   opts:['Anteile ergeben 100%','Werte steigen über 10 Jahre','Teile eines Ganzen','Prozentverteilung'],
+   a:1, ex:'Zeitreihe → Kurve, nicht Kreis.'},
+  {cat:'Formen', q:'Balkendiagramm und Säulendiagramm dienen vor allem dem …',
+   opts:['Vergleich','Sprachlernen','Organigramm','Gedichtschreiben'],
+   a:0, ex:'Balken/Säule = Vergleich mehrerer Größen.'},
+  {cat:'Schritte', q:'Was machst du NACH dem Lesen?',
+   opts:['Sofort bunt malen','Wichtige Aussagen / Schlüsselwörter markieren','Nur die letzte Zeile abschreiben','Form vergessen'],
+   a:1, ex:'Nach dem Lesen: markieren und ordnen.'},
+  {cat:'Schritte', q:'Wann wählst du die Darstellungsform?',
+   opts:['Bevor du die Aufgabe liest','Nach dem Markieren der wichtigen Infos','Erst nach der Abgabe','Nie'],
+   a:1, ex:'Erst Inhalt klären, dann Form wählen.'},
+  {cat:'Tipps', q:'Was bedeutet „schlagwortartig"?',
+   opts:['Mit ganzen Sätzen','Nur mit Stichworten / Schlüsselwörtern','Nur mit Zahlen','Ohne Überschrift'],
+   a:1, ex:'schlagwortartig = stichwortartig, keine ganzen Sätze.'},
+  {cat:'Tipps', q:'Warum mit Lineal zeichnen?',
+   opts:['Weil es verboten ist ohne','Für ein sauberes, übersichtliches Schaubild','Nur für Mathe','Nur für Farbe'],
+   a:1, ex:'Sauberkeit zählt in der Bewertung.'},
+  {cat:'Tipps', q:'Gleichwertige Aussagen sollen …',
+   opts:['unterschiedlich groß und bunt chaotisch sein','gleiche Farbe, Schriftgröße, Bildanteile haben','immer in ganzen Sätzen stehen','ohne Verbindung bleiben'],
+   a:1, ex:'Gleiche Wichtigkeit → gleiche Darstellung.'},
+  {cat:'Vokabel', q:'Was heißt „Schlüsselwörter"?',
+   opts:['Từ khóa','Câu đầy đủ','Tiêu đề phụ','Màu sắc'],
+   a:0, ex:'Schlüsselwörter = từ khóa quan trọng.'},
+  {cat:'Vokabel', q:'Was heißt „Überschrift"?',
+   opts:['Chú thích','Tiêu đề','Trục Y','Mũi tên'],
+   a:1, ex:'Überschrift = tiêu đề của đồ họa.'},
+  {cat:'Vokabel', q:'Was heißt „Teufelskreis"?',
+   opts:['Vòng luẩn quẩn','Biểu đồ tròn','Sơ đồ tổ chức','Bảng số'],
+   a:0, ex:'Teufelskreis = vòng luẩn quẩn (Ursache–Wirkung).'},
+  {cat:'Vokabel', q:'Was heißt „Hierarchie"?',
+   opts:['Cấp bậc','Tỷ lệ %','Xu hướng','Từ khóa'],
+   a:0, ex:'Hierarchie = hệ thống cấp bậc (Organigramm).'},
+  {cat:'Vokabel', q:'Was heißt „Anteile"?',
+   opts:['Các phần / tỷ lệ','Chỉ tiêu đề','Chỉ mũi tên','Chỉ màu đỏ'],
+   a:0, ex:'Anteile = các phần (thường %).'},
+  {cat:'Vokabel', q:'Was heißt „Entwicklung"?',
+   opts:['Sự phát triển / xu hướng theo thời gian','Cấp trên','Bảng','Chỉ 1 số cố định'],
+   a:0, ex:'Entwicklung → oft Kurvendiagramm.'},
+  {cat:'Praxis', q:'Getränke: Wasser 42, Softdrinks 28, Kaffee 18 … → Form?',
+   opts:['Säulen-/Balkendiagramm','Organigramm','Mindmap','Strukturbild'],
+   a:0, ex:'Vergleich mehrerer Kategorien → Säule/Balken.'},
+  {cat:'Praxis', q:'Strommix 52% · 26% · 15% · 1% · 6% → Form?',
+   opts:['Kreisdiagramm','Kurvendiagramm','Organigramm','Mindmap'],
+   a:0, ex:'Anteile = 100% → Kreis.'},
+  {cat:'Praxis', q:'Temperaturen mehrerer Städte in Juli und Juni → Form?',
+   opts:['Tabelle','Kreisdiagramm','Organigramm','Strukturbild'],
+   a:0, ex:'Exakte Zahlen + 2 Spalten → Tabelle.'},
+  {cat:'Praxis', q:'Wartezeit → Unzufriedenheit → Beschwerde → Stress → … → Form?',
+   opts:['Strukturbild','Tabelle','Kurvendiagramm','Kreisdiagramm'],
+   a:0, ex:'Teufelskreis → Strukturbild.'},
+  {cat:'Praxis', q:'Nachhaltigkeit: Einkauf, Energie, Mehrweg, Verschwendung → Form?',
+   opts:['Mindmap','Kreisdiagramm','Organigramm','Tabelle'],
+   a:0, ex:'Viele Aspekte → Mindmap.'},
+  {cat:'Praxis', q:'Gästezahlen Mo–Fr (45, 52, 48, 61, 78) → beste Form?',
+   opts:['Kurvendiagramm','Organigramm','Mindmap','Strukturbild'],
+   a:0, ex:'Entwicklung über Tage → Kurve.'},
+  {cat:'KA', q:'Was sollst du am Ende der Mindmap-KA tun?',
+   opts:['Wörter zählen','Nur schlafen','Nur Farbe mischen','Text abschreiben 1:1'],
+   a:0, ex:'Hinweis: Anzahl der Wörter zählen.'},
+  {cat:'KA', q:'Welche 3 Aspekte sind im Fleischkonsum-Text zentral?',
+   opts:['Gesundheit, Umweltschutz, Tierwohl','Preis, Werbung, Parkplatz','Salz, Zucker, Fett','Import, Zoll, Euro'],
+   a:0, ex:'Gesundheit · Umwelt · Tierwohl.'},
+  {cat:'Hirn', q:'Körpersprache (Gestik + Mimik) steuert vor allem die …',
+   opts:['rechte Hirnhälfte','linke Hirnhälfte','Leber','Tabelle'],
+   a:0, ex:'Rechts: kreativ, Bilder, Körpersprache.'},
+  {cat:'Hirn', q:'Mathematik und logisches Denken gehören eher zur …',
+   opts:['linken Hirnhälfte','rechten Hirnhälfte','nur rechten Hand','Mindmap-Mitte'],
+   a:0, ex:'Links: analytisch, Logik, Sprache, Mathe.'},
+  {cat:'Tipps', q:'Welche Achse trägt beim Kurvendiagramm meist die Zeit?',
+   opts:['X-Achse (waagerecht)','nur die Legende','gar keine','nur der Titel'],
+   a:0, ex:'Zeit auf der X-Achse, Menge auf der Y-Achse.'},
+  {cat:'Tipps', q:'Was gehört in die Mitte einer Mindmap?',
+   opts:['Das Thema','Ein zufälliges Verb','Nur die Quelle','20 ganze Sätze'],
+   a:0, ex:'Thema in die Mitte, Äste = Aspekte.'},
+  {cat:'Formen', q:'Geschäftsführer → Küchenchef / Restaurantleiter → Mitarbeiter: Form?',
+   opts:['Organigramm','Kreisdiagramm','Kurvendiagramm','Tabelle'],
+   a:0, ex:'Hierarchie von Personen → Organigramm.'},
+  {cat:'Vokabel', q:'Was heißt „Massentierhaltung"?',
+   opts:['Chăn nuôi công nghiệp quy mô lớn','Ăn chay','Tiêu đề phụ','Biểu đồ đường'],
+   a:0, ex:'Massentierhaltung = chăn nuôi công nghiệp lớn.'},
+  {cat:'Vokabel', q:'Was heißt „artgerechte Haltung"?',
+   opts:['Chăn nuôi phù hợp với loài / nhân đạo','Chỉ đông lạnh','Chỉ xuất khẩu','Chỉ quảng cáo'],
+   a:0, ex:'artgerecht = phù hợp tập tính loài.'},
+  {cat:'Vokabel', q:'Was heißt „Lebensmittelverschwendung"?',
+   opts:['Lãng phí thực phẩm','Tiết kiệm điện','Vẽ mindmap','Đếm từ'],
+   a:0, ex:'Lebensmittelverschwendung = lãng phí đồ ăn.'},
+  {cat:'Definition', q:'Visualisierung bedeutet vor allem …',
+   opts:['Text als Grafik/Schaubild darstellen','Text lauter vorlesen','Text ins Englische übersetzen','Text löschen'],
+   a:0, ex:'Von Text → Darstellung/Grafik.'},
+  {cat:'Tipps', q:'Welche Aussage ist FALSCH?',
+   opts:['Immer Überschrift schreiben','Nur Stichworte verwenden','Möglichst viele ganze Sätze in die Grafik','Mit Lineal sauber zeichnen'],
+   a:2, ex:'Keine ganzen Sätze in der Grafik.'},
 ];
 
 /* ===== TEXTÜBUNGEN ===== */
@@ -1253,6 +1359,168 @@ Die Zahlen steigen zum Wochenende hin deutlich an.`,
   }
 ];
 
+/* ===== DE → VI dictionary for Üben texts ===== */
+const VI_DICT = {
+  'Social Media':'mạng xã hội',
+  'Jugendliche':'thanh thiếu niên',
+  'Plattformen':'nền tảng',
+  'durchschnittlich':'trung bình',
+  'Vorteile':'ưu điểm / lợi ích',
+  'Nachteile':'nhược điểm',
+  'Kommunikation':'giao tiếp',
+  'Unterhaltung':'giải trí',
+  'Informationen':'thông tin',
+  'Information':'thông tin',
+  'Cybermobbing':'bắt nạt trên mạng',
+  'Schlafmangel':'thiếu ngủ',
+  'Selbstbild':'hình ảnh bản thân',
+  'Medienkompetenz':'năng lực truyền thông / dùng media',
+  'Ausbildungsverträge':'hợp đồng đào tạo nghề',
+  'Ausbildung':'đào tạo nghề',
+  'abgeschlossen':'đã ký kết / hoàn tất',
+  'Rückgang':'sự giảm',
+  'Pandemie':'đại dịch',
+  'steigt':'tăng',
+  'sank':'đã giảm',
+  'Hierarchie':'cấp bậc / hệ thống cấp trên–dưới',
+  'Geschäftsführer':'giám đốc / người điều hành',
+  'Küchenchef':'bếp trưởng',
+  'Restaurantleiter':'trưởng nhà hàng / quản lý phục vụ',
+  'unterstellt':'cấp dưới / thuộc quyền',
+  'Servicekräfte':'nhân viên phục vụ',
+  'Azubis':'học viên nghề (Auszubildende)',
+  'Mitarbeiter':'nhân viên',
+  'Umfrage':'khảo sát',
+  'Gäste':'khách',
+  'Getränk':'đồ uống',
+  'Getränke':'đồ uống',
+  'Softdrinks':'nước ngọt',
+  'Vergleich':'so sánh',
+  'Strommix':'cơ cấu nguồn điện',
+  'Erneuerbare Energien':'năng lượng tái tạo',
+  'Anteil':'tỷ lệ / phần',
+  'Anteile':'các phần / tỷ lệ',
+  'Kohle':'than',
+  'Erdgas':'khí đốt tự nhiên',
+  'Kernenergie':'năng lượng hạt nhân',
+  'sonstige Quellen':'nguồn khác',
+  'Durchschnitt':'trung bình',
+  'Tagestemperaturen':'nhiệt độ ban ngày',
+  'Temperaturen':'nhiệt độ',
+  'Vormonats':'tháng trước',
+  'unzufrieden':'không hài lòng',
+  'beschweren':'khiếu nại / phàn nàn',
+  'Beschwerde':'lời phàn nàn',
+  'Servicepersonal':'nhân viên phục vụ',
+  'Stress':'căng thẳng',
+  'Fehler':'lỗi / sai sót',
+  'Wartezeiten':'thời gian chờ',
+  'Wartezeit':'thời gian chờ',
+  'Teufelskreis':'vòng luẩn quẩn',
+  'Unzufriedenheit':'sự không hài lòng',
+  'Nachhaltigkeit':'tính bền vững',
+  'Gastronomie':'ngành nhà hàng / ẩm thực',
+  'regional':'địa phương / vùng',
+  'saisonal':'theo mùa',
+  'Produkte':'sản phẩm',
+  'Transportwege':'đường vận chuyển',
+  'Lebensmittelverschwendung':'lãng phí thực phẩm',
+  'Planung':'kế hoạch',
+  'Portionen':'khẩu phần',
+  'Energieverbrauch':'mức tiêu thụ năng lượng',
+  'Mehrwegsysteme':'hệ thống dùng lại / tái sử dụng',
+  'Verpackungen':'bao bì',
+  'Gästezahlen':'số lượng khách',
+  'Wochenende':'cuối tuần',
+  'Entwicklung':'sự phát triển / xu hướng',
+  'Visualisiere':'hãy trực quan hóa',
+  'Mindmap':'sơ đồ tư duy',
+  'Kurvendiagramm':'biểu đồ đường',
+  'Organigramm':'sơ đồ tổ chức',
+  'Säulen':'biểu đồ cột',
+  'Balkendiagramm':'biểu đồ cột ngang',
+  'Kreisdiagramm':'biểu đồ tròn',
+  'Tabelle':'bảng',
+  'Strukturbild':'sơ đồ cấu trúc',
+  'Überschrift':'tiêu đề',
+  'Stichworte':'từ khóa',
+  'Schlüsselwörter':'từ khóa',
+  'Achse':'trục',
+  'Einheiten':'đơn vị',
+  'Massentierhaltung':'chăn nuôi công nghiệp quy mô lớn',
+  'artgerechte Haltung':'chăn nuôi phù hợp loài',
+  'Tierwohl':'phúc lợi động vật',
+  'Umweltschutz':'bảo vệ môi trường',
+  'Gesundheit':'sức khỏe',
+  'Wohlstand':'sự giàu có',
+  'Lebensstandard':'mức sống',
+  'Arbeitslosenquote':'tỷ lệ thất nghiệp',
+  'Ausstattung':'mức trang bị / trang thiết bị',
+  'Haushalte':'các hộ gia đình',
+  'Wochenarbeitszeit':'thời gian làm việc trong tuần',
+  'Erwerbstätigen':'người có việc làm',
+  'Ausfuhr':'xuất khẩu',
+  'Warenwert':'giá trị hàng hóa',
+  'Negatives Denken':'suy nghĩ tiêu cực',
+  'Angst':'sợ hãi',
+  'Misserfolge':'thất bại',
+  'Kritik':'phê bình / chỉ trích',
+  'Fleischkonsum':'mức tiêu thụ thịt',
+  'Aspekte':'các khía cạnh',
+  'exakte Zahlen':'số liệu chính xác',
+  'exakte Prozentwerte':'giá trị phần trăm chính xác',
+  'Vergleich':'so sánh',
+  'Ursache–Wirkung':'nguyên nhân – kết quả',
+  'Ursache-Wirkung':'nguyên nhân – kết quả',
+  'Ideensammlung':'thu thập ý tưởng',
+  'Betrieb':'doanh nghiệp / cơ sở',
+  'Kategorien':'các hạng mục',
+  'Spalten':'các cột',
+  'Wochentage':'các ngày trong tuần',
+  'Trend':'xu hướng',
+  'Treibhausgase':'khí nhà kính',
+  'Waldrodung':'phá rừng',
+  'Lebensräume':'môi trường sống',
+  'beschweren sich':'khiếu nại',
+  'unbekannte Aufgaben':'nhiệm vụ lạ / chưa biết',
+  'übervorsichtig':'quá thận trọng',
+  'Handeln':'hành động',
+  'Versagens':'sự thất bại / cảm giác thất bại',
+  'Unfähigkeit':'sự bất lực / không đủ khả năng',
+};
+
+// longer phrases first so multi-word keys win
+const VI_KEYS = Object.keys(VI_DICT).sort((a,b)=>b.length-a.length);
+const VI_RE = new RegExp('(' + VI_KEYS.map(k=>k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|') + ')','gi');
+
+function escAttr(s){
+  return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+}
+function lookupVI(word){
+  if(!word) return '';
+  if(VI_DICT[word]) return VI_DICT[word];
+  const hit = Object.keys(VI_DICT).find(k=>k.toLowerCase()===String(word).toLowerCase());
+  return hit ? VI_DICT[hit] : '';
+}
+function wrapTextWithVI(html){
+  if(!html) return html;
+  // only transform text outside existing tags
+  return html.replace(/(<[^>]+>)|([^<]+)/g, (all, tag, text)=>{
+    if(tag) return tag;
+    return text.replace(VI_RE, (m)=>{
+      const vi = lookupVI(m);
+      if(!vi) return m;
+      return `<button class="vi-btn" data-vi="${escAttr(vi)}">${m}</button><span class="vi-pop"></span>`;
+    });
+  });
+}
+function stichwortBtn(s){
+  // strip numbers / symbols for lookup, keep full label
+  const core = String(s.text).replace(/\s*[:：].*$/,'').replace(/\s*\d.*$/,'').replace(/[↑↓%°]/g,'').trim();
+  const vi = s.vi || lookupVI(core) || lookupVI(s.text) || ('từ khóa: ' + s.text);
+  return `<span class="stw-wrap"><button type="button" class="vi-btn stw ${s.cls||''}" data-vi="${escAttr(vi)}">${s.text}</button><span class="vi-pop"></span></span>`;
+}
+
 function renderTU(){
   const el = document.getElementById('tuList');
   if(!el) return;
@@ -1260,7 +1528,8 @@ function renderTU(){
 }
 
 function buildTU(tu, i){
-  const stw = tu.stichworte.map(s=>`<span class="stw ${s.cls}">${s.text}</span>`).join('');
+  const stw = tu.stichworte.map(stichwortBtn).join('');
+  const textVI = wrapTextWithVI(tu.text);
 
   // Step 2 answer: thema
   const themaAns = `<div class="answer" id="${tu.id}-thema-ans">
@@ -1270,7 +1539,7 @@ function buildTU(tu, i){
 
   // Step 3: stichworte
   const stwAns = `<div class="answer" id="${tu.id}-stw-ans">
-    <b>Stichworte (từ khóa):</b>
+    <b>Stichworte (từ khóa)</b> <span class="muted">— bấm để xem nghĩa VI</span>:
     <div class="stichwort-list">${stw}</div>
   </div>`;
 
@@ -1319,8 +1588,9 @@ function buildTU(tu, i){
     </div>
   </div>
   <div class="tu-body">
-    <div class="box info" style="margin-bottom:12px">📋 <b>Aufgabe:</b> ${tu.aufgabe}</div>
-    <div class="tu-text">${tu.text}</div>
+    <div class="box info" style="margin-bottom:12px">📋 <b>Aufgabe:</b> ${wrapTextWithVI(tu.aufgabe)}</div>
+    <div class="muted" style="font-size:.8em;margin:-4px 0 8px">💡 Bấm từ <span style="border-bottom:1.5px dashed #93c5fd">gạch chấm xanh</span> → nghĩa tiếng Việt</div>
+    <div class="tu-text">${textVI}</div>
 
     <div class="tu-steps">
       <!-- Schritt 1: Aufgabe verstehen -->
@@ -1461,8 +1731,8 @@ function renderPraxis(){
   const label=id=>(FORMEN.find(f=>f.id===id)||{}).name||id;
   document.getElementById('praxisList').innerHTML = PRAXIS.map((p,i)=>`
     <div class="prac">
-      <div style="font-weight:800;font-size:.9em">${i+1}. ${p.title}</div>
-      <div class="src">${p.text}</div>
+      <div style="font-weight:800;font-size:.9em">${i+1}. ${wrapTextWithVI(p.title)}</div>
+      <div class="src">${wrapTextWithVI(p.text)}</div>
       <div class="choice" id="pb-${i}">
         ${p.options.map(o=>`<button onclick="ansPraxis(${i},'${o}')">${label(o)}</button>`).join('')}
       </div>
