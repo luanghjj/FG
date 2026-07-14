@@ -222,6 +222,7 @@ button.stw.open{box-shadow:0 0 0 2px #93c5fd}
     <div class="nav-inner">
       <div class="brand" onclick="go('home')"><div class="logo">🇩🇪</div> Visualisierung</div>
       <span class="ka">KA 16.07.26</span>
+      <span id="deUserChip" class="home-link" style="cursor:default">👤 …</span>
       <a class="home-link" href="./index.html">← Fächer</a>
       <div class="tabs">
         <button class="tab active" data-v="home" onclick="go('home')">Start</button>
@@ -1773,29 +1774,42 @@ function ansPraxis(i,opt){
 let qOrder=[], qIndex=0, qScore=0;
 function quizIntro(){
   const name = (window.LearnDB && LearnDB.getPlayer()) || '';
+  if(!name){
+    document.getElementById('quizArea').innerHTML=`
+      <div class="center">
+        <p class="muted" style="margin-bottom:12px">Cần nickname để làm quiz &amp; lưu điểm.</p>
+        <a class="btn" href="./index.html">← Về trang chính nhập nickname</a>
+      </div>`;
+    return;
+  }
   document.getElementById('quizArea').innerHTML=`
     <div class="center">
       <p class="muted" style="margin-bottom:10px">${QUIZ.length} Fragen · gemischt · mit Erklärung</p>
-      <p class="muted" style="margin-bottom:8px;font-size:.84em">☁️ Điểm lưu trên Supabase (bảng <code>config</code>)</p>
-      <div class="player-bar" style="max-width:360px;margin:0 auto 12px">
-        <input id="playerName" type="text" maxlength="32" placeholder="Tên của bạn / Dein Name" value="${name.replace(/"/g,'&quot;')}">
-        <button class="btn sm" type="button" onclick="savePlayerName()">Lưu tên</button>
-      </div>
+      <p class="muted" style="margin-bottom:8px;font-size:.84em">☁️ Đang chơi với nickname <b>${name.replace(/</g,'&lt;')}</b></p>
       <div class="db-status" id="dbStatus">Đang kiểm tra kết nối…</div>
       <div style="margin-top:12px">
         <button class="btn" onclick="quizStart()">Quiz starten</button>
         <button class="btn ghost sm" style="margin-left:8px" type="button" onclick="showLeaderboard()">🏆 BXH</button>
       </div>
       <div id="lbBox" class="lb"></div>
+      <div id="myHistBox" class="lb"></div>
     </div>`;
   checkDb();
   showLeaderboard();
+  showMyHistory();
 }
-function savePlayerName(){
-  const el=document.getElementById('playerName');
-  const n=LearnDB.setPlayer(el ? el.value : '');
-  const st=document.getElementById('dbStatus');
-  if(st){ st.className='db-status ok'; st.textContent = n ? ('Xin chào, '+n+' — điểm sẽ lưu khi xong quiz') : 'Chưa có tên — nhập tên để lưu điểm'; }
+async function showMyHistory(){
+  const box=document.getElementById('myHistBox');
+  if(!box || !window.LearnDB) return;
+  try{
+    const data=await LearnDB.loadPlayerHistory();
+    const de=(data.quizzes||[]).filter(q=>String(q.subject).toUpperCase()==='DE');
+    if(!de.length){ box.innerHTML=''; return; }
+    box.innerHTML=`<h4>📜 Lịch sử Deutsch của bạn</h4>
+      <table><tr><th>Quiz</th><th>Điểm</th><th>Lần</th><th>Ngày</th></tr>
+      ${de.map(q=>`<tr><td>${q.quiz}</td><td>${q.correct}/${q.total} (${q.pct}%)</td><td>${q.attempts}</td><td>${(q.at||'').slice(0,10)}</td></tr>`).join('')}
+      </table>`;
+  }catch(_){ box.innerHTML=''; }
 }
 async function checkDb(){
   const st=document.getElementById('dbStatus');
@@ -1829,8 +1843,7 @@ async function showLeaderboard(){
   }
 }
 function quizStart(){
-  const el=document.getElementById('playerName');
-  if(el && el.value.trim()) LearnDB.setPlayer(el.value);
+  if(!window.LearnDB || !LearnDB.getPlayer()){ location.href='./index.html'; return; }
   qOrder=shuffle(QUIZ.map((_,i)=>i)); qIndex=0; qScore=0; renderQ();
 }
 function renderQ(){
@@ -1863,30 +1876,24 @@ function quizResult(){
   const name=(window.LearnDB && LearnDB.getPlayer()) || '';
   document.getElementById('quizArea').innerHTML=`
     <div class="center">
-      <div class="muted">Ergebnis</div>
+      <div class="muted">Ergebnis · ${name.replace(/</g,'&lt;')||'?'}</div>
       <div class="big">${qScore} / ${t}</div>
       <div class="muted" style="margin-bottom:8px">${pct}% · ${msg}</div>
-      <div class="player-bar" style="max-width:360px;margin:0 auto 8px">
-        <input id="playerName" type="text" maxlength="32" placeholder="Tên để lưu điểm" value="${name.replace(/"/g,'&quot;')}">
-        <button class="btn sm" type="button" onclick="saveAndShowScore()">Lưu điểm ☁️</button>
-      </div>
-      <div class="db-status" id="dbStatus">${name ? 'Nhấn «Lưu điểm» để ghi lên Supabase' : 'Nhập tên rồi lưu điểm'}</div>
+      <div class="db-status" id="dbStatus">Đang lưu điểm…</div>
       <div id="lbBox" class="lb"></div>
+      <div id="myHistBox" class="lb"></div>
       <div style="margin-top:12px">
         <button class="btn" onclick="quizStart()">Nochmal</button>
         <button class="btn ghost" style="margin-left:8px" onclick="go('lernen')">Zum Lernen</button>
       </div>
     </div>`;
-  // auto-save if name already known
-  if(name) saveAndShowScore();
-  else showLeaderboard();
+  saveAndShowScore();
 }
 async function saveAndShowScore(){
-  const el=document.getElementById('playerName');
   const st=document.getElementById('dbStatus');
   if(!window.LearnDB){ if(st){ st.className='db-status err'; st.textContent='supabase.js chưa load'; } return; }
-  const name=LearnDB.setPlayer(el ? el.value : '');
-  if(!name){ if(st){ st.className='db-status err'; st.textContent='Hãy nhập tên trước'; } return; }
+  const name=LearnDB.getPlayer();
+  if(!name){ if(st){ st.className='db-status err'; st.textContent='Chưa có nickname — về trang chính'; } return; }
   if(st){ st.className='db-status'; st.textContent='Đang lưu…'; }
   try{
     const saved=await LearnDB.saveQuizScore({
@@ -1894,6 +1901,7 @@ async function saveAndShowScore(){
     });
     if(st){ st.className='db-status ok'; st.textContent='✅ Đã lưu: '+saved.correct+'/'+saved.total+' ('+saved.pct+'%)'; }
     await showLeaderboard();
+    await showMyHistory();
   }catch(e){
     if(st){ st.className='db-status err'; st.textContent='❌ Lưu thất bại: '+(e.message||e); }
   }
@@ -1902,6 +1910,15 @@ async function saveAndShowScore(){
 function shuffle(a){const arr=[...a];for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}return arr;}
 
 /* init */
+(function(){
+  const chip=document.getElementById('deUserChip');
+  const name=window.LearnDB && LearnDB.getPlayer();
+  if(chip){
+    if(name){ chip.textContent='👤 '+name; }
+    else { chip.innerHTML='<a href="./index.html" style="color:inherit;text-decoration:none">👤 Login</a>'; }
+  }
+  // Optional soft gate: allow browsing theory without nick, but quiz needs nick
+})();
 renderFormen();
 renderTU();
 </script>

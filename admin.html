@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin · Lern-App H2FO3T</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root{
+  --bg:#0f172a; --card:#111827; --line:#1f2937; --ink:#e5e7eb; --muted:#94a3b8;
+  --accent:#818cf8; --ok:#34d399; --warn:#fbbf24; --bad:#f87171;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;min-height:100vh}
+.wrap{max-width:1100px;margin:0 auto;padding:20px 16px 60px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.brand{font-weight:800;font-size:1.15em;display:flex;align-items:center;gap:8px}
+.brand a{color:var(--muted);font-size:.82em;font-weight:600;text-decoration:none}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:14px}
+.card h2{font-size:1em;margin-bottom:10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:14px}
+.stat{background:linear-gradient(145deg,#1e293b,#111827);border:1px solid var(--line);border-radius:14px;padding:16px}
+.stat .n{font-size:1.8em;font-weight:800;color:var(--accent)}
+.stat .l{font-size:.78em;color:var(--muted);margin-top:2px}
+input,button{font:inherit}
+input[type=password],input[type=text]{width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--line);
+  background:#0b1220;color:var(--ink);margin:8px 0 12px}
+button{border:none;background:var(--accent);color:#0f172a;font-weight:800;border-radius:10px;padding:11px 16px;cursor:pointer}
+button.ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.err{display:none;background:rgba(248,113,113,.12);color:var(--bad);border:1px solid rgba(248,113,113,.35);border-radius:10px;padding:8px 10px;font-size:.86em;margin-bottom:10px}
+.err.show{display:block}
+table{width:100%;border-collapse:collapse;font-size:.84em}
+th,td{padding:8px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--muted);font-size:.75em;text-transform:uppercase;letter-spacing:.04em}
+.muted{color:var(--muted);font-size:.86em}
+.tag{display:inline-block;background:#1e293b;border:1px solid var(--line);border-radius:999px;padding:1px 8px;font-size:.72em;color:var(--muted)}
+.row-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+#dash{display:none}
+#loginBox{max-width:400px;margin:10vh auto 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="brand">🛡️ Admin · H2FO3T <a href="index.html">← App</a></div>
+    <button class="ghost" id="btnRefresh" style="display:none" type="button">↻ Refresh</button>
+  </div>
+
+  <div class="card" id="loginBox">
+    <h2>Đăng nhập admin</h2>
+    <p class="muted">Xem số người vào, lượt visit và điểm quiz.</p>
+    <div class="err" id="err"></div>
+    <label class="muted" for="pass">Mật khẩu</label>
+    <input id="pass" type="password" placeholder="Admin password" autocomplete="current-password">
+    <button type="button" id="btnLogin">Vào dashboard</button>
+    <p class="muted" style="margin-top:10px">Mặc định lớp: <code>H2FO3T</code> (đổi trong <code>supabase.js</code>)</p>
+  </div>
+
+  <div id="dash">
+    <div class="grid" id="statsGrid"></div>
+
+    <div class="card">
+      <div class="row-actions">
+        <h2 style="flex:1;margin:0">👥 Người dùng (nickname)</h2>
+      </div>
+      <div class="muted" id="playersMeta"></div>
+      <div style="overflow:auto;margin-top:8px">
+        <table>
+          <thead><tr><th>Nickname</th><th>Visits</th><th>Quiz attempts</th><th>Lần cuối</th><th>Tạo lúc</th></tr></thead>
+          <tbody id="playersBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📊 Điểm quiz (mới nhất)</h2>
+      <div style="overflow:auto">
+        <table>
+          <thead><tr><th>Player</th><th>Môn</th><th>Quiz</th><th>Điểm</th><th>%</th><th>Lần</th><th>Thời điểm</th></tr></thead>
+          <tbody id="quizBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📈 Tổng hợp theo quiz</h2>
+      <div style="overflow:auto">
+        <table>
+          <thead><tr><th>Quiz</th><th>Người</th><th>Lượt attempt</th><th>TB %</th></tr></thead>
+          <tbody id="aggBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🚪 Lượt vào gần đây</h2>
+      <div style="overflow:auto">
+        <table>
+          <thead><tr><th>Player</th><th>Thời điểm</th></tr></thead>
+          <tbody id="visitBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="./supabase.js"></script>
+<script>
+const AUTH_KEY='learn_admin_ok';
+function showErr(m){
+  const el=document.getElementById('err');
+  if(!m){ el.classList.remove('show'); el.textContent=''; return; }
+  el.textContent=m; el.classList.add('show');
+}
+function fmt(ts){
+  if(!ts) return '—';
+  try{ return new Date(ts).toLocaleString(); }catch(_){ return String(ts).slice(0,19); }
+}
+function unlock(){
+  document.getElementById('loginBox').style.display='none';
+  document.getElementById('dash').style.display='block';
+  document.getElementById('btnRefresh').style.display='inline-block';
+  load();
+}
+async function load(){
+  if(!window.LearnDB){ alert('supabase.js missing'); return; }
+  const g=document.getElementById('statsGrid');
+  g.innerHTML='<div class="stat"><div class="l">Loading…</div></div>';
+  try{
+    const s=await LearnDB.getAdminStats();
+    g.innerHTML=`
+      <div class="stat"><div class="n">${s.unique_players}</div><div class="l">Người (unique nick)</div></div>
+      <div class="stat"><div class="n">${s.total_visits}</div><div class="l">Tổng lượt vào</div></div>
+      <div class="stat"><div class="n">${s.total_quiz_rows}</div><div class="l">Bản ghi điểm quiz</div></div>
+      <div class="stat"><div class="n">${s.total_quiz_attempts}</div><div class="l">Tổng attempts quiz</div></div>
+    `;
+    document.getElementById('playersMeta').textContent = s.players.length + ' profiles';
+    document.getElementById('playersBody').innerHTML = s.players.map(p=>
+      `<tr><td><b>${p.player}</b></td><td>${p.visits}</td><td>${p.quiz_attempts}</td><td>${fmt(p.last_seen)}</td><td>${fmt(p.created_at)}</td></tr>`
+    ).join('') || '<tr><td colspan="5" class="muted">Chưa có ai vào</td></tr>';
+
+    document.getElementById('quizBody').innerHTML = s.quizzes.slice(0,80).map(q=>
+      `<tr><td>${q.player||''}</td><td><span class="tag">${q.subject||''}</span></td><td>${q.quiz||''}</td><td><b>${q.correct||0}/${q.total||0}</b></td><td>${q.pct||0}%</td><td>${q.attempts||1}</td><td>${fmt(q.at||q.updated_at)}</td></tr>`
+    ).join('') || '<tr><td colspan="7" class="muted">Chưa có điểm</td></tr>';
+
+    document.getElementById('aggBody').innerHTML = (s.quizAgg||[]).map(a=>
+      `<tr><td>${a.label}</td><td>${a.players}</td><td>${a.attempts}</td><td>${a.avgPct}%</td></tr>`
+    ).join('') || '<tr><td colspan="4" class="muted">—</td></tr>';
+
+    document.getElementById('visitBody').innerHTML = (s.visits||[]).slice(0,50).map(v=>
+      `<tr><td>${v.player||''}</td><td>${fmt(v.at)}</td></tr>`
+    ).join('') || '<tr><td colspan="2" class="muted">Chưa ghi visit event</td></tr>';
+  }catch(e){
+    g.innerHTML='<div class="stat"><div class="l" style="color:var(--bad)">Lỗi: '+(e.message||e)+'</div></div>';
+  }
+}
+
+document.getElementById('btnLogin').onclick=()=>{
+  const pass=document.getElementById('pass').value;
+  showErr('');
+  if(!window.LearnDB){ showErr('supabase.js missing'); return; }
+  if(!LearnDB.checkAdminPassword(pass)){ showErr('Sai mật khẩu'); return; }
+  try{ sessionStorage.setItem(AUTH_KEY,'1'); }catch(_){}
+  unlock();
+};
+document.getElementById('pass').addEventListener('keydown', e=>{ if(e.key==='Enter') document.getElementById('btnLogin').click(); });
+document.getElementById('btnRefresh').onclick=load;
+
+try{
+  if(sessionStorage.getItem(AUTH_KEY)==='1') unlock();
+}catch(_){}
+</script>
+</body>
+</html>

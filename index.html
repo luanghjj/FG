@@ -220,6 +220,39 @@ h3.sub{font-size:1em;color:#334155;margin:14px 0 6px;font-weight:700}
 
 .footer{text-align:center;color:var(--muted);font-size:.82em;padding:24px 14px 0}
 
+/* ===== Login gate ===== */
+#loginGate{position:fixed;inset:0;z-index:200;background:linear-gradient(145deg,#0f172a 0%,#1e3a8a 55%,#4f46e5 100%);
+  display:flex;align-items:center;justify-content:center;padding:18px}
+#loginGate.hidden{display:none}
+.login-card{width:min(420px,100%);background:#fff;border-radius:20px;padding:28px 24px;box-shadow:0 20px 60px rgba(0,0,0,.35);color:#0f172a}
+.login-card .logo-big{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:1.6em;margin:0 auto 14px}
+.login-card h1{font-size:1.35em;font-weight:800;text-align:center;margin-bottom:4px}
+.login-card .sub{text-align:center;color:#64748b;font-size:.9em;margin-bottom:18px}
+.login-card label{display:block;font-size:.78em;font-weight:700;color:#64748b;margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em}
+.login-card input[type=text]{width:100%;padding:12px 14px;border:1.5px solid #e2e8f0;border-radius:12px;font:inherit;font-size:1em;margin-bottom:10px}
+.login-card input:focus{outline:none;border-color:#4f46e5;box-shadow:0 0 0 3px #eef2ff}
+.login-card .btn-go{width:100%;border:none;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;border-radius:12px;
+  padding:13px;font:inherit;font-weight:800;font-size:1em;cursor:pointer;margin-top:4px}
+.login-card .btn-go:disabled{opacity:.6;cursor:wait}
+.login-err{display:none;background:#fef2f2;color:#b91c1c;border:1px solid #fecaca;border-radius:10px;padding:8px 10px;font-size:.84em;margin-bottom:10px}
+.login-err.show{display:block}
+.login-hist{display:none;margin-top:14px;border-top:1px solid #e2e8f0;padding-top:12px;text-align:left}
+.login-hist.show{display:block}
+.login-hist h3{font-size:.88em;margin-bottom:8px}
+.login-hist .hrow{font-size:.8em;padding:6px 0;border-bottom:1px solid #f1f5f9;display:flex;justify-content:space-between;gap:8px}
+.login-hist .hrow:last-child{border-bottom:none}
+.user-chip{display:inline-flex;align-items:center;gap:6px;background:#eef2ff;color:#3730a3;border:1px solid #c7d2fe;
+  border-radius:999px;padding:4px 10px;font-size:.78em;font-weight:700;cursor:pointer;white-space:nowrap}
+.user-chip:hover{background:#e0e7ff}
+.page.locked .nav,.page.locked .klasse,.page.locked .view,.page.locked .footer{visibility:hidden}
+.hist-panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;margin:16px 0 8px;box-shadow:var(--shadow)}
+.hist-panel h3{font-size:1em;margin-bottom:8px}
+.hist-panel .muted{color:var(--muted);font-size:.86em}
+.hist-table{width:100%;border-collapse:collapse;font-size:.84em;margin-top:8px}
+.hist-table th,.hist-table td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:left}
+.hist-table th{color:var(--muted);font-size:.78em}
+
 @media (max-width:640px){
   .search{width:44vw}
   .detail{min-width:100%}
@@ -229,7 +262,24 @@ h3.sub{font-size:1em;color:#334155;margin:14px 0 6px;font-weight:700}
 </style>
 </head>
 <body>
-<div class="page">
+<!-- ===== LOGIN GATE ===== -->
+<div id="loginGate">
+  <div class="login-card">
+    <div class="logo-big">🎓</div>
+    <h1>Lern-App H2FO3T</h1>
+    <p class="sub">Nhập nickname để vào ôn tập.<br>Nickname bất kỳ — nếu đã dùng sẽ hiện lịch sử quiz.</p>
+    <div class="login-err" id="loginErr"></div>
+    <label for="nickInput">Nickname</label>
+    <input id="nickInput" type="text" maxlength="32" placeholder="vd. Linh, Alex, Phuc…" autocomplete="username">
+    <button class="btn-go" id="loginBtn" type="button">Vào học →</button>
+    <div class="login-hist" id="loginHist"></div>
+    <p style="text-align:center;margin-top:14px;font-size:.78em;color:#94a3b8">
+      <a href="admin.html" style="color:#64748b;text-decoration:underline">Admin</a>
+    </p>
+  </div>
+</div>
+
+<div class="page locked" id="appPage">
 
 <!-- ===== KLASSE ===== -->
 <div class="klasse">Klasse H2FO3T</div>
@@ -239,6 +289,7 @@ h3.sub{font-size:1em;color:#334155;margin:14px 0 6px;font-weight:700}
   <div class="nav-row">
     <div class="brand" onclick="go('#/')"><span class="logo">🎓</span><span>Lern-App</span></div>
     <div class="crumbs" id="crumbs"></div>
+    <span class="user-chip" id="userChip" title="Đổi nickname" style="display:none">👤 —</span>
     <div class="search">
       <span class="mag">🔍</span>
       <input id="searchInput" type="text" placeholder="Suchen / Tìm kiếm…" autocomplete="off">
@@ -268,6 +319,12 @@ h3.sub{font-size:1em;color:#334155;margin:14px 0 6px;font-weight:700}
 
   <div class="fach-label">Fächer · Các môn học</div>
   <div class="grid" id="subjectGrid"></div>
+
+  <div class="hist-panel" id="homeHistPanel" style="display:none">
+    <h3>📜 Lịch sử quiz của <span id="homeHistName">—</span></h3>
+    <p class="muted">Các lần làm quiz đã lưu trên Supabase.</p>
+    <div id="homeHistBody"></div>
+  </div>
 </section>
 
 <!-- ===== BFK: Themen ===== -->
@@ -935,38 +992,27 @@ function quizResult(){
   else if(pct>=50) msg="🙂 Nicht schlecht. Xem lại các thẻ rồi làm lại nhé.";
   else msg="📚 Weiter üben! Ôn lại phần lý thuyết rồi thử lại.";
   const name=(window.LearnDB && LearnDB.getPlayer()) || '';
-  area.innerHTML='<div class="quiz-result"><div class="msg">Kết quả của bạn:</div><div class="big">'+qScore+' / '+total+'</div><div class="msg">('+pct+'%) '+msg+'</div>'
-    +'<div class="player-bar" style="max-width:380px;margin:12px auto 6px"><input id="playerName" type="text" maxlength="32" placeholder="Tên để lưu điểm" value="'+name.replace(/"/g,'&quot;')+'">'
-    +'<button class="btn" id="qsave" type="button">Lưu điểm ☁️</button></div>'
-    +'<div class="db-status" id="dbStatus">'+(name?'Nhấn «Lưu điểm» hoặc chờ tự lưu…':'Nhập tên rồi lưu điểm')+'</div>'
+  area.innerHTML='<div class="quiz-result"><div class="msg">Kết quả · '+(name.replace(/</g,'&lt;')||'?')+'</div><div class="big">'+qScore+' / '+total+'</div><div class="msg">('+pct+'%) '+msg+'</div>'
+    +'<div class="db-status" id="dbStatus">Đang lưu điểm…</div>'
     +'<div id="lbBox" class="lb"></div>'
     +'<button class="btn" id="qrestart">🔄 Nochmal / Làm lại</button></div>';
   document.getElementById("qrestart").addEventListener("click",quizStart);
-  document.getElementById("qsave").addEventListener("click",()=>saveBfkScore());
-  if(name) saveBfkScore();
-  else loadBfkLeaderboard();
+  saveBfkScore();
 }
 function quizIntro(){
   const name=(window.LearnDB && LearnDB.getPlayer()) || '';
+  if(!name){
+    document.getElementById("quizArea").innerHTML='<div class="quiz-start"><p>Cần nickname để làm quiz. Hãy đăng nhập ở màn hình chính.</p><button class="btn" id="qbackLogin">← Nhập nickname</button></div>';
+    document.getElementById("qbackLogin").onclick=()=>{ LearnDB && LearnDB.clearPlayer(); location.reload(); };
+    return;
+  }
   document.getElementById("quizArea").innerHTML='<div class="quiz-start"><p>'+QUIZ.length+' câu hỏi trắc nghiệm về: bộ phận thịt (bò/lợn/cừu), món ăn, loại mô, thành phần thịt và dinh dưỡng.<br>Mỗi câu có giải thích ngay sau khi chọn. Câu hỏi được xáo trộn mỗi lần.</p>'
-    +'<p class="muted" style="font-size:.84em;margin:8px 0">☁️ Điểm lưu trên Supabase</p>'
-    +'<div class="player-bar" style="max-width:380px;margin:0 auto 8px"><input id="playerName" type="text" maxlength="32" placeholder="Tên của bạn / Dein Name" value="'+name.replace(/"/g,'&quot;')+'">'
-    +'<button class="btn" id="qsaveName" type="button">Lưu tên</button></div>'
+    +'<p class="muted" style="font-size:.84em;margin:8px 0">☁️ Nickname: <b>'+name.replace(/</g,'&lt;')+'</b> · điểm lưu Supabase</p>'
     +'<div class="db-status" id="dbStatus">Đang kiểm tra kết nối…</div>'
     +'<button class="btn" id="qbegin">▶️ Quiz starten / Bắt đầu</button> '
     +'<button class="btn" id="qboard" type="button" style="background:#0f172a">🏆 BXH</button>'
     +'<div id="lbBox" class="lb"></div></div>';
-  document.getElementById("qbegin").addEventListener("click",()=>{
-    const el=document.getElementById("playerName");
-    if(window.LearnDB && el && el.value.trim()) LearnDB.setPlayer(el.value);
-    quizStart();
-  });
-  document.getElementById("qsaveName").addEventListener("click",()=>{
-    const el=document.getElementById("playerName");
-    const n=window.LearnDB ? LearnDB.setPlayer(el?el.value:'') : '';
-    const st=document.getElementById("dbStatus");
-    if(st){ st.className="db-status ok"; st.textContent=n?('Xin chào, '+n):'Chưa có tên'; }
-  });
+  document.getElementById("qbegin").addEventListener("click",quizStart);
   document.getElementById("qboard").addEventListener("click",loadBfkLeaderboard);
   checkBfkDb();
   loadBfkLeaderboard();
@@ -979,16 +1025,16 @@ async function checkBfkDb(){
   catch(e){ st.className="db-status err"; st.textContent="⚠️ Không kết nối được DB: "+(e.message||e); }
 }
 async function saveBfkScore(){
-  const el=document.getElementById("playerName");
   const st=document.getElementById("dbStatus");
   if(!window.LearnDB){ if(st){ st.className="db-status err"; st.textContent="supabase.js chưa load"; } return; }
-  const name=LearnDB.setPlayer(el?el.value:"");
-  if(!name){ if(st){ st.className="db-status err"; st.textContent="Hãy nhập tên trước"; } return; }
+  const name=LearnDB.getPlayer();
+  if(!name){ if(st){ st.className="db-status err"; st.textContent="Chưa có nickname"; } return; }
   if(st){ st.className="db-status"; st.textContent="Đang lưu…"; }
   try{
     const saved=await LearnDB.saveQuizScore({subject:"BFK", quiz:"fleisch", correct:qScore, total:qOrder.length, player:name});
     if(st){ st.className="db-status ok"; st.textContent="✅ Đã lưu: "+saved.correct+"/"+saved.total+" ("+saved.pct+"%)"; }
     await loadBfkLeaderboard();
+    loadHomeHistory(name);
   }catch(e){
     if(st){ st.className="db-status err"; st.textContent="❌ Lưu thất bại: "+(e.message||e); }
   }
@@ -1007,8 +1053,103 @@ async function loadBfkLeaderboard(){
   }catch(e){ box.innerHTML='<div class="db-status err">Không tải được BXH: '+(e.message||e)+'</div>'; }
 }
 
+/* ============ AUTH / NICKNAME GATE ============ */
+function showLoginError(msg){
+  const el=document.getElementById('loginErr');
+  if(!el) return;
+  if(!msg){ el.classList.remove('show'); el.textContent=''; return; }
+  el.textContent=msg; el.classList.add('show');
+}
+function renderLoginHistory(history){
+  const box=document.getElementById('loginHist');
+  if(!box) return;
+  const quizzes=(history && history.quizzes) || [];
+  if(!quizzes.length){ box.classList.remove('show'); box.innerHTML=''; return; }
+  box.innerHTML='<h3>📜 Lịch sử quiz của bạn</h3>'+quizzes.slice(0,6).map(q=>{
+    const when=(q.at||'').slice(0,10);
+    return '<div class="hrow"><span><b>'+(q.subject||'?')+'</b> · '+(q.quiz||'')+'</span><span>'+q.correct+'/'+q.total+' ('+q.pct+'%) · '+when+'</span></div>';
+  }).join('');
+  box.classList.add('show');
+}
+function unlockApp(player){
+  const gate=document.getElementById('loginGate');
+  const page=document.getElementById('appPage');
+  if(gate) gate.classList.add('hidden');
+  if(page) page.classList.remove('locked');
+  const chip=document.getElementById('userChip');
+  if(chip){
+    chip.style.display='inline-flex';
+    chip.textContent='👤 '+player;
+    chip.onclick=()=>{ if(confirm('Đổi nickname? Bạn sẽ đăng nhập lại.')){ LearnDB.clearPlayer(); location.reload(); } };
+  }
+  loadHomeHistory(player);
+}
+async function loadHomeHistory(player){
+  const panel=document.getElementById('homeHistPanel');
+  const body=document.getElementById('homeHistBody');
+  const nameEl=document.getElementById('homeHistName');
+  if(!panel||!body||!window.LearnDB) return;
+  if(nameEl) nameEl.textContent=player||'—';
+  try{
+    const data=await LearnDB.loadPlayerHistory(player);
+    const qs=data.quizzes||[];
+    if(!qs.length){
+      panel.style.display='block';
+      body.innerHTML='<p class="muted">Chưa có quiz nào. Vào BFK hoặc Deutsch để làm bài nhé.</p>';
+      return;
+    }
+    panel.style.display='block';
+    body.innerHTML='<table class="hist-table"><tr><th>Môn</th><th>Quiz</th><th>Điểm</th><th>Lần</th><th>Ngày</th></tr>'
+      +qs.map(q=>'<tr><td>'+(q.subject||'')+'</td><td>'+(q.quiz||'')+'</td><td><b>'+q.correct+'/'+q.total+'</b> ('+q.pct+'%)</td><td>'+q.attempts+'</td><td>'+(q.at||'').slice(0,10)+'</td></tr>').join('')
+      +'</table>';
+  }catch(e){
+    panel.style.display='block';
+    body.innerHTML='<p class="muted">Không tải được lịch sử: '+(e.message||e)+'</p>';
+  }
+}
+async function doLogin(){
+  const input=document.getElementById('nickInput');
+  const btn=document.getElementById('loginBtn');
+  const nick=(input && input.value || '').trim();
+  showLoginError('');
+  if(!window.LearnDB){ showLoginError('Không tải được supabase.js'); return; }
+  if(!nick){ showLoginError('Hãy nhập nickname'); return; }
+  if(btn){ btn.disabled=true; btn.textContent='Đang vào…'; }
+  try{
+    const res=await LearnDB.loginOrRegister(nick);
+    renderLoginHistory(res.history);
+    // short pause so user can glance history if returning
+    if(!res.isNew && res.history && res.history.quizzes && res.history.quizzes.length){
+      if(btn) btn.textContent='Chào mừng lại, '+res.player+'!';
+      setTimeout(()=>unlockApp(res.player), 700);
+    }else{
+      unlockApp(res.player);
+    }
+  }catch(e){
+    showLoginError(e.message||String(e));
+    if(btn){ btn.disabled=false; btn.textContent='Vào học →'; }
+  }
+}
+function initAuthGate(){
+  const input=document.getElementById('nickInput');
+  const btn=document.getElementById('loginBtn');
+  if(btn) btn.addEventListener('click', doLogin);
+  if(input){
+    input.addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); doLogin(); } });
+    const known=window.LearnDB && LearnDB.getPlayer();
+    if(known) input.value=known;
+  }
+  // auto-login if nickname already saved
+  const known=window.LearnDB && LearnDB.getPlayer();
+  if(known){
+    // still count visit + load history
+    doLogin();
+  }
+}
+
 /* ============ INIT ============ */
 router();
+initAuthGate();
 </script>
 </body>
 </html>
