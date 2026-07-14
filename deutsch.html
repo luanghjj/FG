@@ -886,6 +886,30 @@ const PRAXIS = [
    text:'Hierarchie in einem Betrieb.',
    answer:'organi', options:['organi','struktur','tabelle','saeule'],
    explain:'Hierarchie von Personen → Organigramm.'},
+  {title:'Beliebteste Getränke: Wasser 42 · Softdrinks 28 · Kaffee 18 …',
+   text:'Mehrere Kategorien mit je einem Wert zum Vergleich.',
+   answer:'saeule', options:['saeule','kreis','kurve','tabelle'],
+   explain:'Vergleich mehrerer Getränke → Säulen-/Balkendiagramm.'},
+  {title:'Strommix: Erneuerbare 52% · Kohle 26% · Gas 15% · …',
+   text:'Anteile ergeben zusammen 100%.',
+   answer:'kreis', options:['kreis','saeule','tabelle','mindmap'],
+   explain:'Anteile eines Ganzen → Kreisdiagramm.'},
+  {title:'Temperaturen Berlin/Hamburg/… im Juli und Juni (°C)',
+   text:'Exakte Werte, zwei Spalten (Juli/Juni), mehrere Städte.',
+   answer:'tabelle', options:['tabelle','saeule','kurve','kreis'],
+   explain:'Viele exakte Zahlen + mehrere Spalten → Tabelle.'},
+  {title:'Wartezeit → Unzufriedenheit → Beschwerde → Stress → Fehler → …',
+   text:'Teufelskreis im Service.',
+   answer:'struktur', options:['struktur','kreis','organi','mindmap'],
+   explain:'Ursache–Wirkung / Teufelskreis → Strukturbild.'},
+  {title:'Nachhaltigkeit: Einkauf · Energie · Mehrweg · Verschwendung',
+   text:'Langer Sachtext mit mehreren Aspekten.',
+   answer:'mindmap', options:['mindmap','tabelle','kurve','organi'],
+   explain:'Viele Aspekte ordnen → Mindmap.'},
+  {title:'Gästezahlen Mo 45 · Di 52 · Mi 48 · Do 61 · Fr 78',
+   text:'Ein Wert verändert sich über Wochentage.',
+   answer:'kurve', options:['kurve','saeule','kreis','tabelle'],
+   explain:'Entwicklung über Zeit → Kurvendiagramm (Säule ginge auch, Kurve zeigt Trend besser).'},
 ];
 
 const QUIZ = [
@@ -1044,6 +1068,188 @@ Alle Mitarbeiter arbeiten zusammen, um den Gästen einen guten Service zu bieten
       'Überschrift: Betriebshierarchie – Restaurant',
     ],
     muster:null
+  },
+  {
+    id:'tu4',
+    title:'Beliebte Getränke im Restaurant',
+    form:'saeule', formLabel:'Säulen-/Balkendiagramm', formIco:'📊',
+    aufgabe:'Visualisiere die Angaben als <b>Säulen- oder Balkendiagramm</b>.',
+    text:`Eine Umfrage unter Gästen eines Restaurants ergab folgende Ergebnisse zum beliebtesten Getränk:
+<span class="mark">Wasser</span> wählten <span class="mark">42</span> von 100 Gästen,
+<span class="mark">Softdrinks</span> <span class="mark">28</span>,
+<span class="mark">Kaffee/Tee</span> <span class="mark">18</span>,
+<span class="mark">Bier</span> <span class="mark">8</span> und
+<span class="mark">Wein</span> <span class="mark">4</span>.
+Die Zahlen zeigen einen klaren Vergleich zwischen den Getränkearten.`,
+    thema:'Beliebteste Getränke im Restaurant (von 100 Gästen)',
+    themaVI:'Đồ uống được ưa chuộng nhất trong nhà hàng (trên 100 khách)',
+    stichworte:[
+      {text:'Wasser: 42',cls:'green'},
+      {text:'Softdrinks: 28',cls:''},
+      {text:'Kaffee/Tee: 18',cls:''},
+      {text:'Bier: 8',cls:'orange'},
+      {text:'Wein: 4',cls:'orange'},
+    ],
+    zeichenTipps:[
+      'Überschrift: Beliebteste Getränke (von 100 Gästen)',
+      'X-Achse: Getränkearten (Wasser, Softdrinks, …)',
+      'Y-Achse: Anzahl Gäste (0–50)',
+      'Fünf Säulen mit unterschiedlichen Höhen',
+      'Achsen beschriften + Einheit angeben',
+    ],
+    muster:null
+  },
+  {
+    id:'tu5',
+    title:'Energiequellen in Deutschland',
+    form:'kreis', formLabel:'Kreis-/Tortendiagramm', formIco:'🥧',
+    aufgabe:'Stelle die Anteile als <b>Kreisdiagramm</b> dar.',
+    text:`Im Jahr 2023 setzte sich der Strommix in Deutschland ungefähr so zusammen:
+<span class="mark">Erneuerbare Energien</span> hatten einen Anteil von <span class="mark">52&nbsp;%</span>,
+<span class="mark">Kohle</span> <span class="mark">26&nbsp;%</span>,
+<span class="mark">Erdgas</span> <span class="mark">15&nbsp;%</span>,
+<span class="mark">Kernenergie</span> <span class="mark">1&nbsp;%</span> und
+<span class="mark">sonstige Quellen</span> <span class="mark">6&nbsp;%</span>.
+Alle Anteile ergeben zusammen 100&nbsp;%.`,
+    thema:'Strommix Deutschland 2023 (Anteile in %)',
+    themaVI:'Cơ cấu nguồn điện Đức 2023 (tỷ lệ %)',
+    stichworte:[
+      {text:'Erneuerbare: 52%',cls:'green'},
+      {text:'Kohle: 26%',cls:'orange'},
+      {text:'Erdgas: 15%',cls:''},
+      {text:'Kernenergie: 1%',cls:''},
+      {text:'Sonstige: 6%',cls:''},
+      {text:'Summe = 100%',cls:''},
+    ],
+    zeichenTipps:[
+      'Überschrift: Strommix Deutschland 2023',
+      'Kreis zeichnen (mit Zirkel / Lineal)',
+      'Sektoren nach % aufteilen (Farben oder Schraffuren)',
+      'Legende mit Prozentangaben',
+      'Kontrolle: alle Anteile zusammen 100%',
+    ],
+    muster:null
+  },
+  {
+    id:'tu6',
+    title:'Temperaturen in fünf Städten',
+    form:'tabelle', formLabel:'Tabelle', formIco:'📋',
+    aufgabe:'Stelle die exakten Werte in einer <b>Tabelle</b> dar.',
+    text:`Die durchschnittlichen Tagestemperaturen im Juli betrugen:
+in <span class="mark">Berlin</span> <span class="mark">24,1&nbsp;°C</span> (Juni: 21,3&nbsp;°C),
+in <span class="mark">Hamburg</span> <span class="mark">22,0&nbsp;°C</span> (Juni: 19,8&nbsp;°C),
+in <span class="mark">München</span> <span class="mark">23,5&nbsp;°C</span> (Juni: 20,4&nbsp;°C),
+in <span class="mark">Köln</span> <span class="mark">25,2&nbsp;°C</span> (Juni: 22,1&nbsp;°C) und
+in <span class="mark">Stuttgart</span> <span class="mark">24,8&nbsp;°C</span> (Juni: 21,7&nbsp;°C).
+Die Werte des Vormonats stehen jeweils in Klammern.`,
+    thema:'Durchschnittstemperaturen Juli (und Juni) in °C',
+    themaVI:'Nhiệt độ trung bình tháng 7 (và tháng 6) theo °C',
+    stichworte:[
+      {text:'Berlin 24,1 (21,3)',cls:''},
+      {text:'Hamburg 22,0 (19,8)',cls:''},
+      {text:'München 23,5 (20,4)',cls:''},
+      {text:'Köln 25,2 (22,1)',cls:'green'},
+      {text:'Stuttgart 24,8 (21,7)',cls:''},
+      {text:'Einheit: °C',cls:'orange'},
+    ],
+    zeichenTipps:[
+      'Überschrift: Durchschnittstemperaturen in °C',
+      'Spalten: Stadt | Juli | Juni',
+      'Fünf Zeilen für die Städte',
+      'Maßeinheit (°C) in der Überschrift oder Spaltenkopf',
+      'Exakte Zahlen übernehmen – keine Rundung nötig',
+    ],
+    muster:null
+  },
+  {
+    id:'tu7',
+    title:'Beschwerde im Service (Teufelskreis)',
+    form:'struktur', formLabel:'Strukturbild', formIco:'🔀',
+    aufgabe:'Stelle den Ablauf als <b>Strukturbild</b> (Ursache–Wirkung) dar.',
+    text:`Wenn Gäste im Restaurant lange warten müssen, werden sie oft unzufrieden.
+Unzufriedene Gäste beschweren sich beim Servicepersonal.
+Das Personal gerät unter Stress und macht mehr Fehler.
+Durch die Fehler verlängern sich die Wartezeiten weiter.
+So entsteht ein <span class="mark">Teufelskreis</span>: lange Wartezeit → Unzufriedenheit → Beschwerde → Stress → mehr Fehler → noch längere Wartezeit.`,
+    thema:'Teufelskreis: lange Wartezeit im Service',
+    themaVI:'Vòng luẩn quẩn: chờ lâu trong phục vụ',
+    stichworte:[
+      {text:'lange Wartezeit',cls:'orange'},
+      {text:'Unzufriedenheit',cls:'orange'},
+      {text:'Beschwerde',cls:''},
+      {text:'Stress beim Personal',cls:''},
+      {text:'mehr Fehler',cls:''},
+      {text:'Wartezeit ↑ (Kreis schließt sich)',cls:'orange'},
+    ],
+    zeichenTipps:[
+      'Überschrift: Teufelskreis – Wartezeit im Service',
+      '5–6 Kästen im Kreis anordnen',
+      'Pfeile: Wartezeit → Unzufriedenheit → Beschwerde → Stress → Fehler → Wartezeit',
+      'Schluss-Pfeil zurück zum Anfang (↻)',
+      'nur Stichworte in den Kästen',
+    ],
+    muster:null
+  },
+  {
+    id:'tu8',
+    title:'Nachhaltigkeit in der Gastronomie',
+    form:'mindmap', formLabel:'Mindmap', formIco:'🧠',
+    aufgabe:'Visualisiere den Text in Form einer <b>Mindmap</b>.',
+    text:`Nachhaltigkeit spielt in der Gastronomie eine immer größere Rolle.
+Restaurants achten auf <span class="mark">regionale und saisonale Produkte</span>, um Transportwege zu verkürzen.
+Viele Betriebe reduzieren <span class="mark">Lebensmittelverschwendung</span>, z.&nbsp;B. durch bessere Planung und kleinere Portionen.
+Auch der <span class="mark">Energieverbrauch</span> wird gesenkt: LED-Lampen, sparsame Geräte und weniger Wasser.
+Im Service gewinnen <span class="mark">Mehrwegsysteme</span> und plastikfreie Verpackungen an Bedeutung.
+Langfristig sollen Gäste, Umwelt und Betrieb gleichermaßen profitieren.`,
+    thema:'Nachhaltigkeit in der Gastronomie',
+    themaVI:'Phát triển bền vững trong ngành nhà hàng',
+    stichworte:[
+      {text:'regional & saisonal',cls:'green'},
+      {text:'kurze Transportwege',cls:'green'},
+      {text:'weniger Verschwendung',cls:'orange'},
+      {text:'Portionen planen',cls:''},
+      {text:'Energie sparen (LED, Geräte)',cls:''},
+      {text:'Wasser sparen',cls:''},
+      {text:'Mehrweg / plastikfrei',cls:''},
+      {text:'Gewinn für Gäste · Umwelt · Betrieb',cls:'green'},
+    ],
+    muster:[
+      {color:'g', title:'Einkauf', items:['regional & saisonal','kurze Transportwege']},
+      {color:'o', title:'Lebensmittel', items:['weniger Verschwendung','bessere Planung','kleinere Portionen']},
+      {color:'l', title:'Energie & Wasser', items:['LED-Lampen','sparsame Geräte','weniger Wasser']},
+      {color:'p', title:'Service / Verpackung', items:['Mehrwegsysteme','plastikfreie Verpackung']},
+      {color:'r', title:'Ziel', items:['Gäste + Umwelt + Betrieb','langfristig nachhaltig']},
+    ]
+  },
+  {
+    id:'tu9',
+    title:'Gästezahlen im Café (Mo–Fr)',
+    form:'kurve', formLabel:'Kurvendiagramm', formIco:'📈',
+    aufgabe:'Stelle die Entwicklung der Gästezahlen als <b>Kurvendiagramm</b> dar.',
+    text:`Ein Café hat in einer Woche folgende Gästezahlen notiert:
+<span class="mark">Montag</span> <span class="mark">45</span> Gäste,
+<span class="mark">Dienstag</span> <span class="mark">52</span>,
+<span class="mark">Mittwoch</span> <span class="mark">48</span>,
+<span class="mark">Donnerstag</span> <span class="mark">61</span> und
+<span class="mark">Freitag</span> <span class="mark">78</span>.
+Die Zahlen steigen zum Wochenende hin deutlich an.`,
+    thema:'Gästezahlen im Café (Mo–Fr)',
+    themaVI:'Số khách trong quán cà phê (T2–T6)',
+    stichworte:[
+      {text:'Mo: 45',cls:''},
+      {text:'Di: 52',cls:''},
+      {text:'Mi: 48',cls:''},
+      {text:'Do: 61',cls:''},
+      {text:'Fr: 78 ↑',cls:'green'},
+    ],
+    zeichenTipps:[
+      'Überschrift: Gästezahlen im Café (Mo–Fr)',
+      'X-Achse: Wochentage (Mo–Fr)',
+      'Y-Achse: Anzahl Gäste (0–80)',
+      'Punkte eintragen und mit Linie verbinden',
+      'Anstieg freitags beschriften',
+    ],
+    muster:null
   }
 ];
 
@@ -1069,13 +1275,18 @@ function buildTU(tu, i){
   </div>`;
 
   // Step 4: form
+  const formWhy = {
+    mindmap: '→ Langer Text mit vielen Aspekten → <b>Mindmap</b> (Thema Mitte + Äste)',
+    kurve: '→ Werte ändern sich über Zeit (Tage/Jahre) → <b>Kurvendiagramm</b> (X=Zeit, Y=Menge)',
+    organi: '→ Wer ist wem unterstellt? → <b>Organigramm</b> (Hierarchie)',
+    saeule: '→ Mehrere Dinge vergleichen → <b>Säulen-/Balkendiagramm</b>',
+    kreis: '→ Anteile in % (Summe 100%) → <b>Kreis-/Tortendiagramm</b>',
+    tabelle: '→ Viele exakte Zahlen, mehrere Spalten → <b>Tabelle</b>',
+    struktur: '→ Ursache–Wirkung / Ablauf / Teufelskreis → <b>Strukturbild</b> (Pfeile)',
+  }[tu.form] || '';
   const formAns = `<div class="answer" id="${tu.id}-form-ans">
     <div class="form-badge">${tu.formIco} ${tu.formLabel}</div>
-    <div style="font-size:.84em;color:#374151;margin-top:6px">
-      ${tu.form==='mindmap'?'→ Langer Text mit vielen Aspekten → <b>Mindmap</b> (Thema Mitte + Äste)':''}
-      ${tu.form==='kurve'?'→ Werte ändern sich über <b>Jahre</b> → <b>Kurvendiagramm</b> (X=Zeit, Y=Menge)':''}
-      ${tu.form==='organi'?'→ Wer ist wem unterstellt? → <b>Organigramm</b> (Hierarchie)':''}
-    </div>
+    <div style="font-size:.84em;color:#374151;margin-top:6px">${formWhy}</div>
   </div>`;
 
   // Step 5: Zeichnen tips + optional mindmap muster
