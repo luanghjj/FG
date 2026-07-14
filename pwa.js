@@ -42,15 +42,15 @@
 #pwaBanner.show{display:block}
 @keyframes pwaIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 #pwaBanner .row{display:flex;gap:12px;align-items:flex-start}
-#pwaBanner .ico{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#4f46e5,#7c3aed);
-  color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.2em;flex-shrink:0}
-#pwaBanner h3{font-size:.95em;margin:0 0 4px;font-weight:800}
-#pwaBanner p{margin:0;font-size:.82em;color:#64748b;line-height:1.4}
+#pwaBanner .ico{width:42px;height:42px;border-radius:999px;background:#f0ebe6;
+  color:#2d2d2d;display:flex;align-items:center;justify-content:center;font-size:1.2em;flex-shrink:0}
+#pwaBanner h3{font-size:.95em;margin:0 0 4px;font-weight:600}
+#pwaBanner p{margin:0;font-size:.82em;color:#6b6b6b;line-height:1.4}
 #pwaBanner .actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
-#pwaBanner button{border:none;border-radius:11px;padding:10px 14px;font:inherit;font-weight:700;font-size:.85em;cursor:pointer}
+#pwaBanner button{border:none;border-radius:11px;padding:10px 14px;font:inherit;font-weight:500;font-size:.85em;cursor:pointer}
 #pwaBanner .yes{background:#2d2d2d;color:#fff;flex:1;min-width:120px}
-#pwaBanner .no{background:#f1f5f9;color:#475569}
-#pwaBanner .ios{background:#eef2ff;border:1px solid #c7d2fe;border-radius:12px;padding:10px;margin-top:10px;font-size:.8em;color:#3730a3;line-height:1.45;display:none}
+#pwaBanner .no{background:#f0ebe6;color:#5c5c5c}
+#pwaBanner .ios{background:#faf7f4;border:1px solid #e8e4df;border-radius:12px;padding:10px;margin-top:10px;font-size:.8em;color:#5c5c5c;line-height:1.45;display:none}
 #pwaBanner .ios.show{display:block}
 @media(min-width:720px){#pwaBanner{left:auto;right:18px;width:360px;bottom:18px}}
 `;

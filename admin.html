@@ -3,78 +3,94 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#0f172a">
+<meta name="theme-color" content="#2d2d2d">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
 <title>Admin · Lern-App H2FO3T</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 :root{
-  --bg:#0f172a; --card:#111827; --line:#1f2937; --ink:#e5e7eb; --muted:#94a3b8;
-  --accent:#818cf8; --ok:#34d399; --warn:#fbbf24; --bad:#f87171;
+  --bg:#f8f5f2; --card:#ffffff; --line:#e8e4df; --ink:#2d2d2d; --muted:#6b6b6b;
+  --accent:#2d2d2d; --soft:#f0ebe6; --ok:#3f6f4e; --bad:#a33b3b;
+  --shadow:0 1px 2px rgba(45,45,45,.04),0 8px 28px rgba(45,45,45,.05);
   --safe-bottom:env(safe-area-inset-bottom,0px);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
 body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;min-height:100vh;overflow-x:hidden}
 .wrap{max-width:1100px;margin:0 auto;padding:20px 16px calc(48px + var(--safe-bottom));min-width:0}
-.card{animation:aIn .4s cubic-bezier(.22,1,.36,1) both}
-.grid .stat{animation:aIn .45s cubic-bezier(.22,1,.36,1) both}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.brand{font-weight:600;font-size:1.1em;display:flex;align-items:center;gap:8px;letter-spacing:-.01em}
+.brand a{color:var(--muted);font-size:.82em;font-weight:500;text-decoration:none}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:14px;box-shadow:none;
+  animation:aIn .4s cubic-bezier(.22,1,.36,1) both}
+.card h2{font-size:1em;margin-bottom:10px;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:14px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;
+  animation:aIn .45s cubic-bezier(.22,1,.36,1) both}
+.stat .n{font-size:1.55em;font-weight:500;color:var(--ink);letter-spacing:-.02em}
+.stat .l{font-size:.78em;color:var(--muted);margin-top:3px}
 .grid .stat:nth-child(2){animation-delay:.05s}.grid .stat:nth-child(3){animation-delay:.1s}
 .grid .stat:nth-child(4){animation-delay:.15s}.grid .stat:nth-child(5){animation-delay:.2s}
+.grid .stat:nth-child(6){animation-delay:.25s}
 @keyframes aIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+input,button{font:inherit}
+input[type=password],input[type=text]{width:100%;padding:12px 4px;border:none;border-bottom:1px solid #d4d4d4;
+  background:transparent;color:var(--ink);margin:8px 0 12px}
+input:focus{outline:none;border-bottom-color:#2d2d2d}
+button{border:none;background:var(--accent);color:#fff;font-weight:500;border-radius:12px;padding:12px 16px;cursor:pointer}
+button.ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+button:hover{background:#1a1a1a}
+button.ghost:hover{background:var(--soft);color:var(--ink)}
+.err{display:none;background:#fceded;color:var(--bad);border:1px solid #f0c9c9;border-radius:10px;padding:8px 10px;font-size:.86em;margin-bottom:10px}
+.err.show{display:block}
+table{width:100%;border-collapse:collapse;font-size:.84em}
+th,td{padding:8px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--muted);font-size:.72em;text-transform:uppercase;letter-spacing:.04em;font-weight:600}
+.muted{color:var(--muted);font-size:.86em}
+.tag{display:inline-block;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:1px 8px;font-size:.72em;color:var(--muted)}
+.row-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+#dash{display:none}
+#loginBox{max-width:400px;margin:10vh auto 0;text-align:left}
+#loginBox h2{font-weight:500;font-size:1.25em;letter-spacing:-.01em}
+.bars{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.bar-row{display:grid;grid-template-columns:72px 1fr 48px;gap:8px;align-items:center;font-size:.82em}
+.bar-track{height:8px;background:var(--soft);border-radius:99px;overflow:hidden}
+.bar-fill{height:100%;background:#2d2d2d;border-radius:99px}
 @media (max-width:640px){
   .wrap{padding:14px 12px calc(40px + var(--safe-bottom))}
   .brand{font-size:1em}
   table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
   button{min-height:44px}
+  .bar-row{grid-template-columns:56px 1fr 40px}
 }
-.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}
-.brand{font-weight:800;font-size:1.15em;display:flex;align-items:center;gap:8px}
-.brand a{color:var(--muted);font-size:.82em;font-weight:600;text-decoration:none}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:14px}
-.card h2{font-size:1em;margin-bottom:10px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:14px}
-.stat{background:linear-gradient(145deg,#1e293b,#111827);border:1px solid var(--line);border-radius:14px;padding:16px}
-.stat .n{font-size:1.8em;font-weight:800;color:var(--accent)}
-.stat .l{font-size:.78em;color:var(--muted);margin-top:2px}
-input,button{font:inherit}
-input[type=password],input[type=text]{width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--line);
-  background:#0b1220;color:var(--ink);margin:8px 0 12px}
-button{border:none;background:var(--accent);color:#0f172a;font-weight:800;border-radius:10px;padding:11px 16px;cursor:pointer}
-button.ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
-.err{display:none;background:rgba(248,113,113,.12);color:var(--bad);border:1px solid rgba(248,113,113,.35);border-radius:10px;padding:8px 10px;font-size:.86em;margin-bottom:10px}
-.err.show{display:block}
-table{width:100%;border-collapse:collapse;font-size:.84em}
-th,td{padding:8px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-th{color:var(--muted);font-size:.75em;text-transform:uppercase;letter-spacing:.04em}
-.muted{color:var(--muted);font-size:.86em}
-.tag{display:inline-block;background:#1e293b;border:1px solid var(--line);border-radius:999px;padding:1px 8px;font-size:.72em;color:var(--muted)}
-.row-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
-#dash{display:none}
-#loginBox{max-width:400px;margin:10vh auto 0}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="top">
-    <div class="brand">🛡️ Admin · H2FO3T <a href="index.html">← App</a></div>
+    <div class="brand">Admin · H2FO3T <a href="index.html">← App</a></div>
     <button class="ghost" id="btnRefresh" style="display:none" type="button">↻ Aktualisieren</button>
   </div>
 
   <div class="card" id="loginBox">
     <h2>Admin-Login</h2>
-    <p class="muted">Besucher, Besuche und Quiz-Punkte anzeigen.</p>
+    <p class="muted">Besucher, Lernzeit und Quiz-Punkte anzeigen.</p>
     <div class="err" id="err"></div>
     <label class="muted" for="pass">Passwort</label>
     <input id="pass" type="password" placeholder="Admin-Passwort" autocomplete="current-password">
     <button type="button" id="btnLogin">Zum Dashboard</button>
-    <p class="muted" style="margin-top:10px">Klassenpasswort: <code>H2FO3T</code> (änderbar in <code>supabase.js</code>)</p>
+    <p class="muted" style="margin-top:10px">Klassenpasswort: <code>H2FO3T</code></p>
   </div>
 
   <div id="dash">
     <div class="grid" id="statsGrid"></div>
+
+    <div class="card">
+      <h2>📅 Aktivität (letzte 14 Tage)</h2>
+      <div class="bars" id="dayBars"></div>
+    </div>
 
     <div class="card">
       <div class="row-actions">
@@ -83,7 +99,7 @@ th{color:var(--muted);font-size:.75em;text-transform:uppercase;letter-spacing:.0
       <div class="muted" id="playersMeta"></div>
       <div style="overflow:auto;margin-top:8px">
         <table>
-          <thead><tr><th>Nickname</th><th>Besuche</th><th>Quiz-Versuche</th><th>Zeit gesamt</th><th>Letzte Session</th><th>Zuletzt</th><th>Erstellt</th></tr></thead>
+          <thead><tr><th>Nickname</th><th>Besuche</th><th>Quiz</th><th>Zeit gesamt</th><th>Letzte Session</th><th>Zuletzt</th><th>Erstellt</th></tr></thead>
           <tbody id="playersBody"></tbody>
         </table>
       </div>
@@ -111,7 +127,7 @@ th{color:var(--muted);font-size:.75em;text-transform:uppercase;letter-spacing:.0
 
     <div class="card">
       <h2>🚪 Letzte Besuche (mit Dauer)</h2>
-      <p class="muted" style="margin-bottom:8px">Dauer wird per Heartbeat (~30s) und beim Schließen der Seite aktualisiert.</p>
+      <p class="muted" style="margin-bottom:8px">Dauer via Heartbeat (~30s) und pagehide.</p>
       <div style="overflow:auto">
         <table>
           <thead><tr><th>Spieler</th><th>Start</th><th>Ende / zuletzt</th><th>Dauer</th><th>Status</th></tr></thead>
@@ -141,21 +157,49 @@ function unlock(){
   document.getElementById('btnRefresh').style.display='inline-block';
   load();
 }
+function dayKey(iso){
+  if(!iso) return '';
+  return String(iso).slice(0,10);
+}
+function buildDayBars(visits){
+  const map={};
+  const now=new Date();
+  for(let i=13;i>=0;i--){
+    const d=new Date(now.getTime()-i*86400000);
+    const k=d.toISOString().slice(0,10);
+    map[k]=0;
+  }
+  (visits||[]).forEach(v=>{
+    const k=dayKey(v.started_at||v.at);
+    if(k in map) map[k]+=1;
+  });
+  const max=Math.max(1, ...Object.values(map));
+  const box=document.getElementById('dayBars');
+  box.innerHTML=Object.keys(map).map(k=>{
+    const n=map[k];
+    const pct=Math.round(n/max*100);
+    const label=k.slice(5); // MM-DD
+    return `<div class="bar-row"><span class="muted">${label}</span><div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div><span>${n}</span></div>`;
+  }).join('');
+}
 async function load(){
   if(!window.LearnDB){ alert('supabase.js fehlt'); return; }
   const g=document.getElementById('statsGrid');
   g.innerHTML='<div class="stat"><div class="l">Lädt…</div></div>';
   try{
+    // flush offline queue if any
+    if(LearnDB.flushScoreQueue) try{ await LearnDB.flushScoreQueue(); }catch(_){}
     const s=await LearnDB.getAdminStats();
-    const fd = (sec)=> (window.LearnDB && LearnDB.formatDuration ? LearnDB.formatDuration(sec) : (sec||0)+'s');
+    const fd = (sec)=> (LearnDB.formatDuration ? LearnDB.formatDuration(sec) : (sec||0)+'s');
     g.innerHTML=`
-      <div class="stat"><div class="n">${s.unique_players}</div><div class="l">Nutzer (eindeutig)</div></div>
-      <div class="stat"><div class="n">${s.total_visits}</div><div class="l">Besuche gesamt</div></div>
+      <div class="stat"><div class="n">${s.unique_players}</div><div class="l">Nutzer</div></div>
+      <div class="stat"><div class="n">${s.total_visits}</div><div class="l">Besuche</div></div>
       <div class="stat"><div class="n">${fd(s.total_duration_sec)}</div><div class="l">Lernzeit gesamt</div></div>
       <div class="stat"><div class="n">${fd(s.avg_duration_sec)}</div><div class="l">Ø Dauer / Besuch</div></div>
       <div class="stat"><div class="n">${s.total_quiz_rows}</div><div class="l">Quiz-Einträge</div></div>
-      <div class="stat"><div class="n">${s.total_quiz_attempts}</div><div class="l">Quiz-Versuche gesamt</div></div>
+      <div class="stat"><div class="n">${s.total_quiz_attempts}</div><div class="l">Quiz-Versuche</div></div>
     `;
+    buildDayBars(s.visits);
     document.getElementById('playersMeta').textContent = s.players.length + ' Profile';
     document.getElementById('playersBody').innerHTML = s.players.map(p=>
       `<tr><td><b>${p.player}</b></td><td>${p.visits}</td><td>${p.quiz_attempts}</td><td>${fd(p.total_duration_sec)}</td><td>${fd(p.last_session_sec)}</td><td>${fmt(p.last_seen)}</td><td>${fmt(p.created_at)}</td></tr>`
@@ -171,7 +215,7 @@ async function load(){
 
     document.getElementById('visitBody').innerHTML = (s.visits||[]).slice(0,80).map(v=>{
       const open = !v.ended_at;
-      const status = open ? '<span class="tag">aktiv/offen</span>' : '<span class="tag">beendet</span>';
+      const status = open ? '<span class="tag">offen</span>' : '<span class="tag">beendet</span>';
       return `<tr><td>${v.player||''}</td><td>${fmt(v.started_at||v.at)}</td><td>${fmt(v.ended_at||v.last_seen)}</td><td><b>${fd(v.duration_sec)}</b></td><td>${status}</td></tr>`;
     }).join('') || '<tr><td colspan="5" class="muted">Noch keine Besuche</td></tr>';
   }catch(e){

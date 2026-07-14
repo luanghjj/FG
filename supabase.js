@@ -124,13 +124,28 @@
     );
   }
 
-  async function saveQuizScore({ subject, quiz, correct, total, player }) {
+  const QUEUE_KEY = 'learn_score_queue_v1';
+
+  function readQueue() {
+    try {
+      return JSON.parse(localStorage.getItem(QUEUE_KEY) || '[]');
+    } catch (_) {
+      return [];
+    }
+  }
+  function writeQueue(list) {
+    try {
+      localStorage.setItem(QUEUE_KEY, JSON.stringify((list || []).slice(-40)));
+    } catch (_) {}
+  }
+
+  async function saveQuizScoreOnline({ subject, quiz, correct, total, player, at }) {
     const p = String(player || getPlayer() || '').trim();
     if (!p) throw new Error('Bitte Nickname eingeben');
     const t = Number(total) || 0;
     const c = Number(correct) || 0;
     const pct = t ? Math.round((c / t) * 100) : 0;
-    const at = new Date().toISOString();
+    const when = at || new Date().toISOString();
     const key = scoreKey(subject, quiz, p);
 
     let history = [];
@@ -141,7 +156,7 @@
       }
     } catch (_) {}
 
-    history.push({ at: at, correct: c, total: t, pct: pct });
+    history.push({ at: when, correct: c, total: t, pct: pct });
 
     const value = {
       player: p,
@@ -150,20 +165,76 @@
       correct: c,
       total: t,
       pct: pct,
-      at: at,
+      at: when,
       history: history,
       attempts: history.length,
       app: 'on-thi',
     };
 
     await upsertConfig(key, value);
-
-    // also mirror into player profile quiz summary
     try {
-      await touchPlayerQuiz(p, { subject, quiz, correct: c, total: t, pct, at });
+      await touchPlayerQuiz(p, { subject, quiz, correct: c, total: t, pct, at: when });
     } catch (_) {}
-
     return value;
+  }
+
+  async function flushScoreQueue() {
+    const q = readQueue();
+    if (!q.length) return { flushed: 0, left: 0 };
+    const left = [];
+    let flushed = 0;
+    for (const item of q) {
+      try {
+        await saveQuizScoreOnline(item);
+        flushed++;
+      } catch (_) {
+        left.push(item);
+      }
+    }
+    writeQueue(left);
+    return { flushed, left: left.length };
+  }
+
+  async function saveQuizScore(opts) {
+    // Always try online first; queue if offline / network error
+    try {
+      if (typeof navigator !== 'undefined' && navigator.onLine === false) {
+        throw new Error('offline');
+      }
+      const saved = await saveQuizScoreOnline(opts);
+      // also flush any backlog
+      flushScoreQueue().catch(() => {});
+      return saved;
+    } catch (e) {
+      const p = String((opts && opts.player) || getPlayer() || '').trim();
+      if (!p) throw e;
+      const t = Number(opts.total) || 0;
+      const c = Number(opts.correct) || 0;
+      const pct = t ? Math.round((c / t) * 100) : 0;
+      const item = {
+        subject: opts.subject,
+        quiz: opts.quiz,
+        correct: c,
+        total: t,
+        player: p,
+        at: new Date().toISOString(),
+        pct: pct,
+      };
+      const q = readQueue();
+      q.push(item);
+      writeQueue(q);
+      const err = new Error('Offline gespeichert — wird später synchronisiert');
+      err.queued = true;
+      err.value = item;
+      throw err;
+    }
+  }
+
+  // Auto-flush when back online
+  if (typeof window !== 'undefined') {
+    window.addEventListener('online', () => {
+      flushScoreQueue().catch(() => {});
+    });
   }
 
   async function loadLeaderboard({ subject, quiz, limit }) {
@@ -619,6 +690,7 @@
     setPlayer,
     clearPlayer,
     saveQuizScore,
+    flushScoreQueue,
     loadLeaderboard,
     loadPlayerHistory,
     getPlayerProfile,
