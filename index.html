@@ -126,12 +126,36 @@ button,input,.tile,.tab,.btn{touch-action:manipulation;-webkit-tap-highlight-col
 .tile h3{font-size:1.05em;font-weight:600;letter-spacing:-.01em}
 .tile .code{font-size:.7em;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
 .tile p{color:var(--muted);font-size:.86em;margin-top:6px;font-weight:400}
-.tile .meta{margin-top:14px;font-size:.78em;font-weight:500;color:var(--muted);display:flex;align-items:center;gap:6px}
-.tile.soon{cursor:not-allowed;opacity:.62}
+.tile .meta{margin-top:14px;font-size:.78em;font-weight:500;color:var(--muted);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.tile.soon{cursor:not-allowed;opacity:.72}
 .tile.soon:hover{transform:none;box-shadow:none;border-color:var(--line)}
 .pill{display:inline-block;font-size:.68em;font-weight:600;padding:3px 9px;border-radius:20px;text-transform:uppercase;letter-spacing:.04em}
 .pill.ready{background:var(--okbg);color:var(--ok)}
 .pill.soon{background:var(--warnbg);color:var(--warn)}
+.topic-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.topic-chip{display:inline-flex;align-items:center;gap:4px;font-size:.72em;font-weight:600;padding:4px 9px;border-radius:999px;background:var(--tile-soft,var(--accent-soft));color:var(--ink);border:1px solid color-mix(in srgb, var(--tile-accent,var(--accent)) 18%, #fff)}
+.subject-group{margin:0 0 22px}
+.subject-group .group-head{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;margin:0 0 12px;flex-wrap:wrap}
+.subject-group .group-head h3{font-size:1.05em;font-weight:700;letter-spacing:-.01em}
+.subject-group .group-head p{color:var(--muted);font-size:.84em}
+.subject-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.subject-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;cursor:pointer;position:relative;overflow:hidden;transition:transform .18s,box-shadow .18s,border-color .18s}
+.subject-card:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:#bfdbfe}
+.subject-card.soon{cursor:not-allowed;opacity:.78}
+.subject-card.soon:hover{transform:none;box-shadow:none;border-color:var(--line)}
+.subject-card::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--tile-accent,var(--accent))}
+.subject-card .top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:10px}
+.subject-card .ic{width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.3em;background:var(--tile-soft,var(--accent-soft));flex-shrink:0}
+.subject-card .code{font-size:.72em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--tile-accent,var(--accent));margin-bottom:3px}
+.subject-card h4{font-size:1.02em;font-weight:700;letter-spacing:-.01em;line-height:1.25}
+.subject-card .desc{color:var(--muted);font-size:.86em;line-height:1.45;margin-top:6px}
+.subject-card .foot{margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:.78em;font-weight:600;color:var(--muted)}
+.subject-card .foot .go{color:var(--tile-accent,var(--accent))}
+.subject-note{font-size:.82em;color:var(--muted);margin:0 0 14px;line-height:1.45}
+@media (max-width:640px){
+  .subject-grid{grid-template-columns:1fr}
+  .topic-chips{gap:5px}
+}
 
 .back{display:inline-flex;align-items:center;gap:6px;color:var(--muted);font-weight:500;font-size:.86em;cursor:pointer;margin-bottom:14px}
 .back:hover{color:var(--ink)}
@@ -508,24 +532,25 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
     <div class="exam-go">Los geht's →</div>
   </div>
 
-  <div class="fach-label">Fächer</div>
-  <div class="grid" id="subjectGrid"></div>
+  <div class="fach-label">Fächer · Stundenplan H2FO3T</div>
+  <p class="subject-note">Aufgebaut nach deinem Stundenplan: BfK ist in Stufen unterteilt. <b>BfK-2</b> enthält bereits Fleischteile, Gerichte &amp; Grundlagen.</p>
+  <div id="subjectGroups"></div>
 
   <div class="fach-label">Heute üben</div>
   <div class="today-grid">
-    <div class="today-card" onclick="go('#/bfk/quiz');setTimeout(()=>{try{quizStart('quick')}catch(e){}},120)">
+    <div class="today-card" onclick="go('#/bfk/2/quiz');setTimeout(()=>{try{quizStart('quick')}catch(e){}},120)">
       <div class="ic">⚡</div>
-      <b>BFK · 10 Fragen</b>
-      <span>Schneller Selbsttest vor der KA</span>
+      <b>BfK-2 · 10 Fragen</b>
+      <span>Fleisch-Quiz vor der KA</span>
     </div>
     <div class="today-card" onclick="location.href='deutsch.html'">
       <div class="ic">🇩🇪</div>
       <b>Deutsch Visualisierung</b>
       <span>Mindmap, Diagramme &amp; Üben</span>
     </div>
-    <div class="today-card" onclick="go('#/bfk/fleisch')">
+    <div class="today-card" onclick="go('#/bfk/2/fleisch')">
       <div class="ic">🥩</div>
-      <b>Fleischteile</b>
+      <b>BfK-2 · Fleischteile</b>
       <span>Rind · Schwein · Schaf interaktiv</span>
     </div>
   </div>
@@ -547,22 +572,46 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
   </div>
 </section>
 
-<!-- ===== BFK: Themen ===== -->
+<!-- ===== BFK Hub: alle Stufen ===== -->
 <section class="view bfk-scope" id="v-bfk">
   <div class="back" onclick="go('#/')">← Fächer</div>
   <div class="section-head">
-    <h2>🍳 BFK – Berufsfachkunde</h2>
-    <p>Fachwissen rund um Lebensmittel, Fleisch &amp; Küche. Wähle ein Thema.</p>
+    <h2>🍳 BfK – Berufsfachliche Kompetenz</h2>
+    <p>Wähle eine BfK-Stufe aus dem Stundenplan. BfK-2 (Fleisch) ist bereits verfügbar.</p>
   </div>
-  <div class="grid" id="bfkGrid"></div>
+  <div class="subject-grid" id="bfkHubGrid"></div>
 </section>
 
-<!-- ===== THEME: FLEISCHTEILE ===== -->
-<section class="view bfk-scope" id="v-fleisch">
-  <div class="back" onclick="go('#/bfk')">← BFK-Themen</div>
+<!-- ===== BFK level detail ===== -->
+<section class="view bfk-scope" id="v-bfk-level">
+  <div class="back" onclick="go('#/bfk')">← Alle BfK-Stufen</div>
   <div class="section-head">
-    <h2>🥩 Fleisch</h2>
-    <p>Fleischteile · Gerichte · Grundlagen — alles rund ums Fleisch an einem Ort.</p>
+    <h2 id="bfkLevelTitle">BfK</h2>
+    <p id="bfkLevelDesc">Themen dieser Stufe</p>
+  </div>
+  <div class="grid" id="bfkLevelGrid"></div>
+</section>
+
+<!-- ===== Placeholder fach ===== -->
+<section class="view" id="v-placeholder">
+  <div class="back" onclick="go('#/')">← Fächer</div>
+  <div class="section-head">
+    <h2 id="phTitle">Fach</h2>
+    <p id="phDesc">Inhalte folgen bald.</p>
+  </div>
+  <div class="card">
+    <h2>📌 Geplante Themen</h2>
+    <div class="topic-chips" id="phTopics"></div>
+    <p class="muted" style="margin-top:14px" id="phNote">Dieses Fach ist im Stundenplan vorhanden und wird schrittweise ergänzt.</p>
+  </div>
+</section>
+
+<!-- ===== THEME: FLEISCHTEILE (BfK-2) ===== -->
+<section class="view bfk-scope" id="v-fleisch">
+  <div class="back" onclick="go('#/bfk/2')">← BfK-2 Themen</div>
+  <div class="section-head">
+    <h2>🥩 BfK-2 · Fleisch</h2>
+    <p>Fleischteile · Gerichte · Grundlagen — BfK-2 laut Stundenplan.</p>
   </div>
   <div class="tabs">
     <div class="tab active" data-tab="rind">🐄 Rind</div>
@@ -687,9 +736,9 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 
 <!-- ===== THEME: KÜCHE & ERNÄHRUNG (LF3) ===== -->
 <section class="view bfk-scope" id="v-kueche">
-  <div class="back" onclick="go('#/bfk')">← BFK-Themen</div>
+  <div class="back" onclick="go('#/bfk/2')">← BfK-2 Themen</div>
   <div class="section-head">
-    <h2>🍳 Küche &amp; Ernährung</h2>
+    <h2>🍳 BfK-2 · Küche &amp; Ernährung</h2>
     <p>Nährwertberechnung · Eier & Eiercode · Biologische Wertigkeit.</p>
   </div>
 
@@ -824,7 +873,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 
 <!-- ===== THEME: QUIZ ===== -->
 <section class="view bfk-scope" id="v-quiz">
-  <div class="back" onclick="go('#/bfk')">← BFK-Themen</div>
+  <div class="back" onclick="go('#/bfk/2')">← BfK-2 Themen</div>
   <div class="section-head">
     <h2>📝 Quiz – Teste dein Wissen</h2>
     <p>Multiple-Choice zum Selbsttest. Nach der Auswahl erscheint die Erklärung.</p>
@@ -834,7 +883,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 
 <!-- ===== THEME: PRÜFUNGEN ===== -->
 <section class="view bfk-scope" id="v-pruefungen">
-  <div class="back" onclick="go('#/bfk')">← BFK-Themen</div>
+  <div class="back" onclick="go('#/bfk/2')">← BfK-2 Themen</div>
   <div class="section-head">
     <h2>🗂️ Prüfungen</h2>
     <p>Musterprüfung, Lösungsbogen und Zusammenfassung der KA2.</p>
@@ -854,7 +903,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
   <button type="button" data-nav="#/" class="active"><span class="bi">🏠</span>Start</button>
   <button type="button" data-nav="#/bfk"><span class="bi">🍳</span>BFK</button>
   <button type="button" data-nav="deutsch.html"><span class="bi">🇩🇪</span>Deutsch</button>
-  <button type="button" data-nav="#/bfk/quiz"><span class="bi">📝</span>Quiz</button>
+  <button type="button" data-nav="#/bfk/2/quiz"><span class="bi">📝</span>Quiz</button>
   <button type="button" data-nav="#profile"><span class="bi">👤</span>Profil</button>
 </nav>
 
@@ -1028,8 +1077,8 @@ function abschlussShowTab(tab){
 }
 /* Abschluss-Themen (wird schrittweise erweitert) */
 const ABSCHLUSS_THEMEN=[
-  {icon:"🥩", name:"Fleisch & Produktkunde", desc:"Fleischteile, Gerichte, Garverfahren.", route:"#/bfk/fleisch", ready:true},
-  {icon:"🍳", name:"Küche & Ernährung", desc:"Nährwert, Eier, biologische Wertigkeit.", route:"#/bfk/kueche", ready:true},
+  {icon:"🥩", name:"Fleisch & Produktkunde", desc:"Fleischteile, Gerichte, Garverfahren.", route:"#/bfk/2/fleisch", ready:true},
+  {icon:"🍳", name:"Küche & Ernährung", desc:"Nährwert, Eier, biologische Wertigkeit.", route:"#/bfk/2/kueche", ready:true},
   {icon:"📦", name:"Warenwirtschaft", desc:"Bestellung, Annahme, Lagerung, Kennzahlen.", route:null, ready:false},
   {icon:"🧼", name:"Hygiene (HACCP)", desc:"Lebensmittelhygiene & Arbeitssicherheit.", route:null, ready:false},
   {icon:"🍽️", name:"Service & Gäste", desc:"Beratung, Verkauf, Reklamation.", route:null, ready:false},
@@ -1047,57 +1096,195 @@ function renderAbschlussThemen(){
 }
 renderAbschlussThemen();
 
-/* ============ FÄCHER & THEMEN ============ */
-const SUBJECTS = [
-  {code:"BFK", name:"Berufsfachkunde", icon:"🍳", accent:"#2563eb", soft:"#eff6ff", desc:"Lebensmittel, Fleisch & Küche.", route:"#/bfk", ready:true},
-  {code:"Wiko", name:"Wirtschaftskunde", icon:"📊", accent:"#5c5c5c", soft:"#eff6ff", desc:"Wirtschaft, Kaufvertrag & Recht.", route:"#/wiko", ready:false},
-  {code:"DE", name:"Deutsch · Visualisierung", icon:"🇩🇪", accent:"#3d3d3d", soft:"#eff6ff", desc:"KA 16.07.26 – Visualisierung von Texten.", route:"deutsch.html", ready:true, external:true},
-  {code:"GK", name:"Gemeinschaftskunde", icon:"🏛️", accent:"#6b6b6b", soft:"#eff6ff", desc:"Politik, Gesellschaft & Recht.", route:"#/gk", ready:false},
-];
-const BFK_THEMES = [
-  {icon:"🥩", name:"Fleisch", desc:"Fleischteile (Rind/Schwein/Schaf) · Gerichte · Grundlagen.", route:"#/bfk/fleisch"},
-  {icon:"🍳", name:"Küche & Ernährung", desc:"Nährwert, Eiercode, biologische Wertigkeit.", route:"#/bfk/kueche"},
-  {icon:"📝", name:"Quiz", desc:"Multiple-Choice zum Selbsttest.", route:"#/bfk/quiz"},
-  {icon:"🗂️", name:"Prüfungen", desc:"Musterprüfung, Lösungen &amp; Zusammenfassung KA2.", route:"#/bfk/pruefungen"},
+/* ============ FÄCHER laut Stundenplan H2FO3T ============ */
+const BFK_LEVELS = [
+  {
+    id:"1", code:"BfK-1", icon:"🍳", accent:"#2563eb", soft:"#eff6ff", ready:false,
+    name:"BfK-1 · Grundlagen Gastronomie",
+    desc:"Theorie mit SLA – Waren, Hygiene, Küchengrundlagen.",
+    teacher:"SLA (Schuster)",
+    topics:["Warenkunde","Hygiene / HACCP","Küchengrundlagen","Arbeitsabläufe"],
+  },
+  {
+    id:"2", code:"BfK-2", icon:"🥩", accent:"#dc2626", soft:"#fef2f2", ready:true,
+    name:"BfK-2 · Fleisch & Produkte",
+    desc:"Fleischteile, Gerichte, Garverfahren, Nährwert, Eiercode.",
+    teacher:"IM (Imhof)",
+    topics:["Fleischteile","Gerichte","Grundlagen","Küche & Ernährung","Quiz","Prüfungen"],
+    themes:[
+      {icon:"🥩", name:"Fleischteile", desc:"Rind / Schwein / Schaf · Gerichte · Grundlagen.", route:"#/bfk/2/fleisch"},
+      {icon:"🍳", name:"Küche & Ernährung", desc:"Nährwert, Eiercode, biologische Wertigkeit.", route:"#/bfk/2/kueche"},
+      {icon:"📝", name:"Quiz", desc:"Multiple-Choice zum Selbsttest.", route:"#/bfk/2/quiz"},
+      {icon:"🗂️", name:"Prüfungen", desc:"Musterprüfung, Lösungen & Zusammenfassung KA2.", route:"#/bfk/2/pruefungen"},
+    ],
+  },
+  {
+    id:"5", code:"BfK-5", icon:"🍽️", accent:"#7c3aed", soft:"#f5f3ff", ready:false,
+    name:"BfK-5 · Service Praxis",
+    desc:"Service-Praxis mit BSI – Gerichte & Getränke servieren.",
+    teacher:"BSI (Brunnenkant)",
+    topics:["Serviceablauf","Gedeck","Gästekommunikation","Menüservice"],
+  },
+  {
+    id:"6", code:"BfK-6", icon:"🥂", accent:"#0891b2", soft:"#ecfeff", ready:false,
+    name:"BfK-6 · Getränke & Ausschank",
+    desc:"Getränke anbieten/servieren und am Ausschank arbeiten.",
+    teacher:"RO (Roth)",
+    topics:["Getränkekunde","Ausschank","Mise en place Bar","Gästeberatung"],
+  },
+  {
+    id:"s", code:"BfK-S", icon:"🛎️", accent:"#ea580c", soft:"#fff7ed", ready:false,
+    name:"BfK-S · Service (Schwerpunkt)",
+    desc:"Service-Schwerpunkt – Restaurantservice / Systemgastronomie.",
+    teacher:"BSI (Brunnenkant)",
+    topics:["Restaurantservice","Systemgastronomie","Reklamation","Verkauf"],
+  },
 ];
 
+const SUBJECT_GROUPS = [
+  {
+    id:"bfk",
+    title:"BfK · Berufsfachliche Kompetenz",
+    subtitle:"Stufen aus dem Stundenplan · Noten fließen in die berufsfachliche Kompetenz ein",
+    items: BFK_LEVELS.map(l=>({
+      code:l.code, name:l.name, icon:l.icon, accent:l.accent, soft:l.soft, ready:l.ready,
+      desc:l.desc, route: l.ready ? ("#/bfk/"+l.id) : ("#/bfk/"+l.id),
+      topics:l.topics, meta:l.teacher, group:"bfk", levelId:l.id,
+    })),
+  },
+  {
+    id:"allgemein",
+    title:"Weitere Fächer",
+    subtitle:"Laut Stundenplan H2FO3T",
+    items:[
+      {code:"WiKO", name:"Wirtschaftskompetenz", icon:"📊", accent:"#0ea5e9", soft:"#e0f2fe", ready:false, route:"#/fach/wiko",
+        desc:"Wirtschaft, Kaufvertrag, Rechte & Pflichten im Betrieb.",
+        topics:["Kaufvertrag","Angebot & Nachfrage","Mängel / Lieferverzug","Arbeitsrecht Basics"], meta:"RM (Remsing)"},
+      {code:"D", name:"Deutsch", icon:"🇩🇪", accent:"#2563eb", soft:"#eff6ff", ready:true, route:"deutsch.html", external:true,
+        desc:"KA Visualisierung: Mindmap, Diagramme, Text → Grafik.",
+        topics:["Visualisierung","Mindmap","Diagramme","Quiz"], meta:"KOL (Kling)"},
+      {code:"GK", name:"Gemeinschaftskunde", icon:"🏛️", accent:"#16a34a", soft:"#f0fdf4", ready:false, route:"#/fach/gk",
+        desc:"Politik, Gesellschaft, Demokratie und Recht.",
+        topics:["Politik","Gesellschaft","Demokratie","Aktuelle Themen"], meta:"BS (Buß-Schroeder)"},
+      {code:"E", name:"Englisch", icon:"🇬🇧", accent:"#7c3aed", soft:"#f5f3ff", ready:false, route:"#/fach/e",
+        desc:"Fachbezogenes Englisch für Gastronomie & Service.",
+        topics:["Service English","Gastkommunikation","Vokabeln","Dialoge"], meta:"HAL (Hoffmann)"},
+    ],
+  },
+];
+
+// Flat list for search / placeholders
+const SUBJECTS = SUBJECT_GROUPS.flatMap(g=>g.items);
+const PLACEHOLDERS = {};
+BFK_LEVELS.forEach(l=>{
+  if(!l.ready){
+    PLACEHOLDERS["#/bfk/"+l.id] = {
+      title:l.code+" · "+l.name.replace(/^BfK-\w+ · /,""),
+      desc:l.desc+" · Lehrkraft: "+l.teacher,
+      topics:l.topics,
+      note:"BfK-Stufe laut Stundenplan. Inhalte werden schrittweise ergänzt. BfK-2 (Fleisch) ist bereits verfügbar.",
+    };
+  }
+});
+PLACEHOLDERS["#/fach/wiko"] = {title:"WiKO · Wirtschaftskompetenz", desc:"Wirtschaftliche Zusammenhänge im Ausbildungsbetrieb.", topics:["Kaufvertrag","Mängel","Lieferverzug","Rechnung"], note:"Lehrkraft: Remsing (RM). Inhalte folgen bald."};
+PLACEHOLDERS["#/fach/gk"] = {title:"GK · Gemeinschaftskunde", desc:"Politik und Gesellschaft.", topics:["Demokratie","Grundrechte","Aktuelle Themen"], note:"Lehrkraft: Buß-Schroeder (BS). Inhalte folgen bald."};
+PLACEHOLDERS["#/fach/e"] = {title:"E · Englisch", desc:"Englisch für Gastronomie.", topics:["Service English","Dialoge","Vokabeln"], note:"Lehrkraft: Hoffmann (HAL). Inhalte folgen bald."};
+
+function subjectCardHTML(s){
+  const style='--tile-accent:'+s.accent+';--tile-soft:'+s.soft;
+  const pill=s.ready?'<span class="pill ready">Verfügbar</span>':'<span class="pill soon">Bald</span>';
+  const cls='subject-card'+(s.ready?'':' soon');
+  const chips=(s.topics||[]).slice(0,5).map(t=>'<span class="topic-chip">'+t+'</span>').join('');
+  const goTxt=s.ready?'Öffnen →':'Demnächst';
+  const inner='<div class="top"><div class="ic">'+s.icon+'</div>'+pill+'</div>'
+    +'<div class="code">'+s.code+(s.meta?' · '+s.meta:'')+'</div>'
+    +'<h4>'+s.name+'</h4>'
+    +'<p class="desc">'+s.desc+'</p>'
+    +(chips?'<div class="topic-chips">'+chips+'</div>':'')
+    +'<div class="foot"><span>'+(s.ready?'Inhalte bereit':'In Planung')+'</span><span class="go">'+goTxt+'</span></div>';
+  if(s.ready && s.external){
+    return '<a class="'+cls+'" style="'+style+';display:block;color:inherit;text-decoration:none" href="'+s.route+'">'+inner+'</a>';
+  }
+  const click=s.ready ? 'onclick="go(\''+s.route+'\')"' : 'onclick="go(\''+s.route+'\')"';
+  return '<div class="'+cls+'" style="'+style+'" '+click+'>'+inner+'</div>';
+}
+
 function renderSubjects(){
-  const g=document.getElementById("subjectGrid");
-  g.innerHTML=SUBJECTS.map(s=>{
-    const style='--tile-accent:'+s.accent+';--tile-soft:'+s.soft;
-    const pill=s.ready?'<span class="pill ready">Verfügbar</span>':'<span class="pill soon">Bald</span>';
-    const cls=s.ready?"tile":"tile soon";
-    const inner='<div class="ic">'+s.icon+'</div>'
-      +'<div class="code">'+s.code+'</div>'
-      +'<h3>'+s.name+'</h3><p>'+s.desc+'</p>'
-      +'<div class="meta">'+pill+'</div>';
-    // External pages (e.g. deutsch.html) use a real <a href> so navigation always works
-    if(s.ready && s.external){
-      return '<a class="'+cls+'" style="'+style+';display:block;color:inherit;text-decoration:none" href="'+s.route+'">'+inner+'</a>';
-    }
-    const click=s.ready?'onclick="go(\''+s.route+'\')"':'';
-    return '<div class="'+cls+'" style="'+style+'" '+click+'>'+inner+'</div>';
-  }).join("");
+  const host=document.getElementById("subjectGroups");
+  if(!host) return;
+  host.innerHTML = SUBJECT_GROUPS.map(g=>{
+    return '<div class="subject-group">'
+      +'<div class="group-head"><div><h3>'+g.title+'</h3><p>'+g.subtitle+'</p></div></div>'
+      +'<div class="subject-grid">'+g.items.map(subjectCardHTML).join('')+'</div>'
+      +'</div>';
+  }).join('');
 }
-function renderBfkThemes(){
-  const g=document.getElementById("bfkGrid");
-  g.innerHTML=BFK_THEMES.map(t=>
-    '<div class="tile" onclick="go(\''+t.route+'\')">'
-    +'<div class="ic">'+t.icon+'</div><h3>'+t.name+'</h3><p>'+t.desc+'</p>'
-    +'<div class="meta">Öffnen →</div></div>'
-  ).join("");
+
+function renderBfkHub(){
+  const g=document.getElementById("bfkHubGrid");
+  if(!g) return;
+  g.innerHTML = BFK_LEVELS.map(l=>{
+    const item={
+      code:l.code, name:l.name, icon:l.icon, accent:l.accent, soft:l.soft, ready:l.ready,
+      desc:l.desc, route:"#/bfk/"+l.id, topics:l.topics, meta:l.teacher
+    };
+    return subjectCardHTML(item);
+  }).join('');
 }
-renderSubjects(); renderBfkThemes();
+
+function renderBfkLevel(levelId){
+  const level=BFK_LEVELS.find(l=>l.id===levelId) || BFK_LEVELS[1];
+  const title=document.getElementById("bfkLevelTitle");
+  const desc=document.getElementById("bfkLevelDesc");
+  const grid=document.getElementById("bfkLevelGrid");
+  if(title) title.textContent = level.code+" · "+level.name.replace(/^BfK-\w+ · /,'');
+  if(desc) desc.textContent = level.desc + (level.teacher?(" · "+level.teacher):"");
+  if(!grid) return;
+  if(level.ready && level.themes){
+    grid.innerHTML = level.themes.map(t=>
+      '<div class="tile" onclick="go(\''+t.route+'\')">'
+      +'<div class="ic">'+t.icon+'</div><h3>'+t.name+'</h3><p>'+t.desc+'</p>'
+      +'<div class="meta">Öffnen →</div></div>'
+    ).join('');
+  }else{
+    // fallback: open placeholder via route
+    go('#/bfk/'+level.id);
+  }
+}
+
+function showPlaceholder(hash){
+  const ph=PLACEHOLDERS[hash] || {title:"Fach", desc:"Inhalte folgen bald.", topics:[], note:""};
+  const t=document.getElementById("phTitle"); if(t) t.textContent=ph.title;
+  const d=document.getElementById("phDesc"); if(d) d.textContent=ph.desc;
+  const n=document.getElementById("phNote"); if(n) n.textContent=ph.note||"";
+  const chips=document.getElementById("phTopics");
+  if(chips) chips.innerHTML=(ph.topics||[]).map(x=>'<span class="topic-chip">'+x+'</span>').join('') || '<span class="muted">Noch keine Themenliste.</span>';
+}
+
+renderSubjects(); renderBfkHub();
 
 /* ============ ROUTING ============ */
 const ROUTES = {
   "#/":            {view:"v-home",   crumbs:[]},
-  "#/bfk":         {view:"v-bfk",    crumbs:[["BFK","#/bfk"]]},
-  "#/bfk/fleisch": {view:"v-fleisch",crumbs:[["BFK","#/bfk"],["Fleisch","#/bfk/fleisch"]]},
-  "#/bfk/kueche":  {view:"v-kueche", crumbs:[["BFK","#/bfk"],["Küche & Ernährung","#/bfk/kueche"]]},
+  "#/bfk":         {view:"v-bfk",    crumbs:[["BfK","#/bfk"]]},
+  "#/bfk/1":       {view:"v-placeholder", crumbs:[["BfK","#/bfk"],["BfK-1","#/bfk/1"]], placeholder:true},
+  "#/bfk/2":       {view:"v-bfk-level", crumbs:[["BfK","#/bfk"],["BfK-2","#/bfk/2"]], level:"2"},
+  "#/bfk/5":       {view:"v-placeholder", crumbs:[["BfK","#/bfk"],["BfK-5","#/bfk/5"]], placeholder:true},
+  "#/bfk/6":       {view:"v-placeholder", crumbs:[["BfK","#/bfk"],["BfK-6","#/bfk/6"]], placeholder:true},
+  "#/bfk/s":       {view:"v-placeholder", crumbs:[["BfK","#/bfk"],["BfK-S","#/bfk/s"]], placeholder:true},
+  "#/bfk/2/fleisch": {view:"v-fleisch",crumbs:[["BfK","#/bfk"],["BfK-2","#/bfk/2"],["Fleisch","#/bfk/2/fleisch"]]},
+  "#/bfk/2/kueche":  {view:"v-kueche", crumbs:[["BfK","#/bfk"],["BfK-2","#/bfk/2"],["Küche","#/bfk/2/kueche"]]},
+  "#/bfk/2/quiz":    {view:"v-quiz",   crumbs:[["BfK","#/bfk"],["BfK-2","#/bfk/2"],["Quiz","#/bfk/2/quiz"]]},
+  "#/bfk/2/pruefungen":{view:"v-pruefungen",crumbs:[["BfK","#/bfk"],["BfK-2","#/bfk/2"],["Prüfungen","#/bfk/2/pruefungen"]]},
+  // legacy redirects handled in router
+  "#/bfk/fleisch": {view:"v-fleisch",crumbs:[["BfK","#/bfk"],["BfK-2","#/bfk/2"],["Fleisch","#/bfk/2/fleisch"]], redirect:"#/bfk/2/fleisch"},
+  "#/bfk/kueche":  {view:"v-kueche", crumbs:[["BfK","#/bfk"],["BfK-2","#/bfk/2"],["Küche","#/bfk/2/kueche"]], redirect:"#/bfk/2/kueche"},
+  "#/bfk/quiz":    {view:"v-quiz",   crumbs:[["BfK","#/bfk"],["BfK-2","#/bfk/2"],["Quiz","#/bfk/2/quiz"]], redirect:"#/bfk/2/quiz"},
+  "#/bfk/pruefungen":{view:"v-pruefungen",crumbs:[["BfK","#/bfk"],["BfK-2","#/bfk/2"],["Prüfungen","#/bfk/2/pruefungen"]], redirect:"#/bfk/2/pruefungen"},
   "#/abschluss":   {view:"v-abschluss",crumbs:[["Abschlussprüfung","#/abschluss"]]},
-  "#/bfk/quiz":    {view:"v-quiz",   crumbs:[["BFK","#/bfk"],["Quiz","#/bfk/quiz"]]},
-  "#/bfk/pruefungen":{view:"v-pruefungen",crumbs:[["BFK","#/bfk"],["Prüfungen","#/bfk/pruefungen"]]},
+  "#/fach/wiko":   {view:"v-placeholder", crumbs:[["WiKO","#/fach/wiko"]], placeholder:true},
+  "#/fach/gk":     {view:"v-placeholder", crumbs:[["GK","#/fach/gk"]], placeholder:true},
+  "#/fach/e":      {view:"v-placeholder", crumbs:[["Englisch","#/fach/e"]], placeholder:true},
 };
 function go(hash){
   // External HTML pages (e.g. deutsch.html) – leave SPA routing
@@ -1106,16 +1293,20 @@ function go(hash){
 }
 function router(){
   let hash=location.hash||"#/";
-  const r=ROUTES[hash]||ROUTES["#/"];
+  let r=ROUTES[hash];
+  if(r && r.redirect){ location.hash=r.redirect; return; }
+  r=r||ROUTES["#/"];
   document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
   const view=document.getElementById(r.view);
   if(view) view.classList.add("active");
   // crumbs
   const cb=document.getElementById("crumbs");
   let html='<a onclick="go(\'#/\')">Fächer</a>';
-  r.crumbs.forEach(c=>{ html+='<span class="sep">›</span><a onclick="go(\''+c[1]+'\')">'+c[0]+'</a>'; });
+  (r.crumbs||[]).forEach(c=>{ html+='<span class="sep">›</span><a onclick="go(\''+c[1]+'\')">'+c[0]+'</a>'; });
   cb.innerHTML=html;
   if(r.view==="v-quiz" && !window._quizStarted) quizIntro();
+  if(r.view==="v-bfk-level" && r.level) renderBfkLevel(r.level);
+  if(r.view==="v-placeholder" || r.placeholder) showPlaceholder(hash);
   setBottomNav(hash);
   window.scrollTo({top:0,behavior:"smooth"});
 }
@@ -1141,7 +1332,11 @@ idx("Lösungsbogen","Lösungen zur Musterprüfung","Prüfung","loiGiai_mau.html"
 idx("Zusammenfassung KA2","LF2 Waren & Lieferung · LF3","Prüfung","ka2.html",null,"zusammenfassung lernzettel");
 
 // BFK-Themen
-BFK_THEMES.forEach(t=>idx(t.name,"BFK · "+t.desc,"Thema",t.route,null,"bfk thema "+t.name));
+// BfK-Stufen + Themen von BfK-2
+BFK_LEVELS.forEach(l=>{
+  idx(l.code+" · "+l.name, l.desc+" · "+(l.teacher||""), "BfK", "#/bfk/"+l.id, null, "bfk stufe "+l.code+" "+(l.topics||[]).join(" "));
+  (l.themes||[]).forEach(t=>idx(t.name, l.code+" · "+t.desc, "BfK-2", t.route, null, "bfk thema "+t.name));
+});
 
 // Fleischteile (Name + VI + Beschreibung + Verwendung)
 [["rind","🐄 Rind"],["schwein","🐖 Schwein"],["schaf","🐑 Schaf/Lamm"]].forEach(([animal,label])=>{
@@ -1151,12 +1346,12 @@ BFK_THEMES.forEach(t=>idx(t.name,"BFK · "+t.desc,"Thema",t.route,null,"bfk them
       pt.name,
       label+" · "+pt.viet,
       "Fleisch",
-      "#/bfk/fleisch",
+      "#/bfk/2/fleisch",
       ()=>{ fleischShowAnimal(animal); setTimeout(()=>{select(animal,key); flashDetail(animal);},60); },
       animal+" "+pt.besch+" "+pt.verw+" "+pt.viet+" teil "+pt.n
     );
   });
-  idx(label.replace(/^.. /,""),"Fleischteile · Übersicht","Fleisch","#/bfk/fleisch",
+  idx(label.replace(/^.. /,""),"Fleischteile · Übersicht","Fleisch","#/bfk/2/fleisch",
     ()=>fleischShowAnimal(animal), animal+" fleischteile teile");
 });
 
@@ -1183,7 +1378,7 @@ const GERICHTE_IDX=[
   ["Mutton Chops","Hammelsattel am Spieß"],
 ];
 GERICHTE_IDX.forEach(([name,info])=>
-  idx(name,"Gericht · "+info,"Gericht","#/bfk/fleisch",()=>fleischShowAnimal("gerichte"), info+" gerichte speise rezept")
+  idx(name,"Gericht · "+info,"Gericht","#/bfk/2/fleisch",()=>fleischShowAnimal("gerichte"), info+" gerichte speise rezept")
 );
 
 // Grundlagen / Gewebe / Garverfahren
@@ -1199,7 +1394,7 @@ GERICHTE_IDX.forEach(([name,info])=>
   ["Schlacht-Säugetiere","Rind, Schwein, Schaf, Ziege","schlachtfleisch"],
   ["Alterseinteilung Schaf","Lamm · Schaf · Bock · Hammel","lamm hammel"],
 ].forEach(([t,s,extra])=>
-  idx(t,"Fleisch · Grundlagen · "+s,"Basis","#/bfk/fleisch",()=>fleischShowAnimal("grundlagen"), extra)
+  idx(t,"Fleisch · Grundlagen · "+s,"Basis","#/bfk/2/fleisch",()=>fleischShowAnimal("grundlagen"), extra)
 );
 
 // Küche & Ernährung
@@ -1211,13 +1406,13 @@ GERICHTE_IDX.forEach(([name,info])=>
   ["Biologische Wertigkeit","BW % · Hühnerei = 100 · Ergänzungswert","k-wertigkeit","eiweiß bw ergänzung"],
   ["Ergänzungswert","Kombination steigert BW (z. B. Kartoffel+Ei)","k-wertigkeit","eiweiß kombination"],
 ].forEach(([t,s,id,extra])=>
-  idx(t,"Küche & Ernährung · "+s,"Küche","#/bfk/kueche",()=>flashEl(id), extra)
+  idx(t,"Küche & Ernährung · "+s,"Küche","#/bfk/2/kueche",()=>flashEl(id), extra)
 );
 ["Eiweiß 17 kJ","Kohlenhydrate 17 kJ","Fett 37 kJ","Grundumsatz","PAL-Wert"].forEach(t=>
-  idx(t,"Nährwertberechnung","Küche","#/bfk/kueche",()=>flashEl("k-naehrwert"), "brennwert")
+  idx(t,"Nährwertberechnung","Küche","#/bfk/2/kueche",()=>flashEl("k-naehrwert"), "brennwert")
 );
 ["Bio 0","Freiland 1","Bodenhaltung 2","Kleingruppe 3","Gewichtsklasse S M L XL"].forEach(t=>
-  idx(t,"Eiercode / Eier","Küche","#/bfk/kueche",()=>flashEl("k-eiercode"), "eier")
+  idx(t,"Eiercode / Eier","Küche","#/bfk/2/kueche",()=>flashEl("k-eiercode"), "eier")
 );
 
 // Abschlussprüfung
@@ -1238,7 +1433,7 @@ ABSCHLUSS_THEMEN.forEach(t=>{
 });
 
 // BFK Quiz (Fragen werden nach QUIZ-Definition indexiert)
-idx("BFK Quiz","Multiple-Choice Fleisch · Gerichte · Gewebe · Ernährung","Quiz","#/bfk/quiz",()=>{ if(!window._quizStarted) quizIntro(); },"test fragen üben");
+idx("BFK Quiz","Multiple-Choice Fleisch · Gerichte · Gewebe · Ernährung","Quiz","#/bfk/2/quiz",()=>{ if(!window._quizStarted) quizIntro(); },"test fragen üben");
 
 // Deutsch / Visualisierung
 [
@@ -1256,7 +1451,7 @@ idx("BFK Quiz","Multiple-Choice Fleisch · Gerichte · Gewebe · Ernährung","Qu
 ].forEach(([t,s,extra])=>idx(t,"Deutsch · "+s,"DE","deutsch.html",null,extra));
 
 // Prüfungen BFK
-idx("Prüfungen","Musterprüfung · Lösungsbogen · KA2-Zusammenfassung","Prüfung","#/bfk/pruefungen",null,"ka2 prüfung");
+idx("Prüfungen","Musterprüfung · Lösungsbogen · KA2-Zusammenfassung","Prüfung","#/bfk/2/pruefungen",null,"ka2 prüfung");
 
 function flashDetail(animal){ const el=document.querySelector('[data-detail="'+animal+'"]'); if(el){el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash");el.scrollIntoView({behavior:"smooth",block:"center"});} }
 function flashEl(id){ const el=document.getElementById(id); if(el){el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash");el.scrollIntoView({behavior:"smooth",block:"center"});} }
@@ -1357,7 +1552,7 @@ QUIZ.forEach((q,i)=>{
     q.q.length>72 ? q.q.slice(0,70)+"…" : q.q,
     "Quiz · "+q.cat+(q.opts&&q.opts[q.a] ? " · Antwort: "+q.opts[q.a] : ""),
     "Quiz",
-    "#/bfk/quiz",
+    "#/bfk/2/quiz",
     ()=>{ if(!window._quizStarted) quizIntro(); },
     q.cat+" "+q.q+" "+(q.opts||[]).join(" ")+" "+(q.ex||"")
   );
