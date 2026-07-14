@@ -184,6 +184,20 @@ h3.sub{font-size:1em;color:#334155;margin:14px 0 6px;font-weight:700}
 .quiz-bar .score{color:var(--accent)}
 .progress{height:8px;background:var(--accent-soft);border-radius:10px;overflow:hidden;margin-bottom:18px}
 .progress > div{height:100%;background:var(--accent);transition:width .3s;width:0}
+
+/* Supabase / score UI */
+.player-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0 12px}
+.player-bar input{flex:1;min-width:140px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;font:inherit;font-size:.88em;background:var(--surface);color:var(--ink)}
+.player-bar input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.db-status{font-size:.78em;color:var(--muted);margin:4px 0 8px}
+.db-status.ok{color:#166534}
+.db-status.err{color:#b91c1c}
+.lb{margin-top:12px;text-align:left}
+.lb h4{font-size:.9em;margin-bottom:6px}
+.lb table{width:100%;border-collapse:collapse;font-size:.82em}
+.lb th,.lb td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left}
+.lb th{color:var(--muted);font-weight:700}
+.lb tr.me td{background:var(--accent-soft);font-weight:700}
 .q-text{font-size:1.1em;font-weight:700;color:#7f1d1d;margin-bottom:6px;line-height:1.4}
 .q-cat{display:inline-block;background:#fef3c7;color:#92400e;border-radius:8px;padding:2px 10px;font-size:.72em;font-weight:700;margin-bottom:14px}
 .q-opts{display:flex;flex-direction:column;gap:10px}
@@ -557,7 +571,7 @@ h3.sub{font-size:1em;color:#334155;margin:14px 0 6px;font-weight:700}
 
 <div class="footer">🍀 Lern-App · Fachkraft für Gastronomie · Viel Erfolg! 🍀</div>
 </div>
-
+<script src="./supabase.js"></script>
 <script>
 /* ============ DATEN (Fleischteile) ============ */
 const DATA = {
@@ -920,12 +934,77 @@ function quizResult(){
   else if(pct>=70) msg="👍 Gut gemacht! Khá tốt, ôn thêm vài chỗ là ổn.";
   else if(pct>=50) msg="🙂 Nicht schlecht. Xem lại các thẻ rồi làm lại nhé.";
   else msg="📚 Weiter üben! Ôn lại phần lý thuyết rồi thử lại.";
-  area.innerHTML='<div class="quiz-result"><div class="msg">Kết quả của bạn:</div><div class="big">'+qScore+' / '+total+'</div><div class="msg">('+pct+'%) '+msg+'</div><button class="btn" id="qrestart">🔄 Nochmal / Làm lại</button></div>';
+  const name=(window.LearnDB && LearnDB.getPlayer()) || '';
+  area.innerHTML='<div class="quiz-result"><div class="msg">Kết quả của bạn:</div><div class="big">'+qScore+' / '+total+'</div><div class="msg">('+pct+'%) '+msg+'</div>'
+    +'<div class="player-bar" style="max-width:380px;margin:12px auto 6px"><input id="playerName" type="text" maxlength="32" placeholder="Tên để lưu điểm" value="'+name.replace(/"/g,'&quot;')+'">'
+    +'<button class="btn" id="qsave" type="button">Lưu điểm ☁️</button></div>'
+    +'<div class="db-status" id="dbStatus">'+(name?'Nhấn «Lưu điểm» hoặc chờ tự lưu…':'Nhập tên rồi lưu điểm')+'</div>'
+    +'<div id="lbBox" class="lb"></div>'
+    +'<button class="btn" id="qrestart">🔄 Nochmal / Làm lại</button></div>';
   document.getElementById("qrestart").addEventListener("click",quizStart);
+  document.getElementById("qsave").addEventListener("click",()=>saveBfkScore());
+  if(name) saveBfkScore();
+  else loadBfkLeaderboard();
 }
 function quizIntro(){
-  document.getElementById("quizArea").innerHTML='<div class="quiz-start"><p>'+QUIZ.length+' câu hỏi trắc nghiệm về: bộ phận thịt (bò/lợn/cừu), món ăn, loại mô, thành phần thịt và dinh dưỡng.<br>Mỗi câu có giải thích ngay sau khi chọn. Câu hỏi được xáo trộn mỗi lần.</p><button class="btn" id="qbegin">▶️ Quiz starten / Bắt đầu</button></div>';
-  document.getElementById("qbegin").addEventListener("click",quizStart);
+  const name=(window.LearnDB && LearnDB.getPlayer()) || '';
+  document.getElementById("quizArea").innerHTML='<div class="quiz-start"><p>'+QUIZ.length+' câu hỏi trắc nghiệm về: bộ phận thịt (bò/lợn/cừu), món ăn, loại mô, thành phần thịt và dinh dưỡng.<br>Mỗi câu có giải thích ngay sau khi chọn. Câu hỏi được xáo trộn mỗi lần.</p>'
+    +'<p class="muted" style="font-size:.84em;margin:8px 0">☁️ Điểm lưu trên Supabase</p>'
+    +'<div class="player-bar" style="max-width:380px;margin:0 auto 8px"><input id="playerName" type="text" maxlength="32" placeholder="Tên của bạn / Dein Name" value="'+name.replace(/"/g,'&quot;')+'">'
+    +'<button class="btn" id="qsaveName" type="button">Lưu tên</button></div>'
+    +'<div class="db-status" id="dbStatus">Đang kiểm tra kết nối…</div>'
+    +'<button class="btn" id="qbegin">▶️ Quiz starten / Bắt đầu</button> '
+    +'<button class="btn" id="qboard" type="button" style="background:#0f172a">🏆 BXH</button>'
+    +'<div id="lbBox" class="lb"></div></div>';
+  document.getElementById("qbegin").addEventListener("click",()=>{
+    const el=document.getElementById("playerName");
+    if(window.LearnDB && el && el.value.trim()) LearnDB.setPlayer(el.value);
+    quizStart();
+  });
+  document.getElementById("qsaveName").addEventListener("click",()=>{
+    const el=document.getElementById("playerName");
+    const n=window.LearnDB ? LearnDB.setPlayer(el?el.value:'') : '';
+    const st=document.getElementById("dbStatus");
+    if(st){ st.className="db-status ok"; st.textContent=n?('Xin chào, '+n):'Chưa có tên'; }
+  });
+  document.getElementById("qboard").addEventListener("click",loadBfkLeaderboard);
+  checkBfkDb();
+  loadBfkLeaderboard();
+}
+async function checkBfkDb(){
+  const st=document.getElementById("dbStatus");
+  if(!st) return;
+  if(!window.LearnDB){ st.className="db-status err"; st.textContent="Không tải được supabase.js"; return; }
+  try{ await LearnDB.ping(); st.className="db-status ok"; st.textContent="✅ Đã kết nối Supabase"; }
+  catch(e){ st.className="db-status err"; st.textContent="⚠️ Không kết nối được DB: "+(e.message||e); }
+}
+async function saveBfkScore(){
+  const el=document.getElementById("playerName");
+  const st=document.getElementById("dbStatus");
+  if(!window.LearnDB){ if(st){ st.className="db-status err"; st.textContent="supabase.js chưa load"; } return; }
+  const name=LearnDB.setPlayer(el?el.value:"");
+  if(!name){ if(st){ st.className="db-status err"; st.textContent="Hãy nhập tên trước"; } return; }
+  if(st){ st.className="db-status"; st.textContent="Đang lưu…"; }
+  try{
+    const saved=await LearnDB.saveQuizScore({subject:"BFK", quiz:"fleisch", correct:qScore, total:qOrder.length, player:name});
+    if(st){ st.className="db-status ok"; st.textContent="✅ Đã lưu: "+saved.correct+"/"+saved.total+" ("+saved.pct+"%)"; }
+    await loadBfkLeaderboard();
+  }catch(e){
+    if(st){ st.className="db-status err"; st.textContent="❌ Lưu thất bại: "+(e.message||e); }
+  }
+}
+async function loadBfkLeaderboard(){
+  const box=document.getElementById("lbBox");
+  if(!box || !window.LearnDB) return;
+  box.innerHTML='<div class="muted" style="font-size:.82em">Đang tải bảng xếp hạng…</div>';
+  try{
+    const rows=await LearnDB.loadLeaderboard({subject:"BFK", quiz:"fleisch", limit:8});
+    if(!rows.length){ box.innerHTML='<div class="muted" style="font-size:.82em;margin-top:8px">Chưa có điểm BFK — làm quiz để lên BXH.</div>'; return; }
+    const me=(LearnDB.getPlayer()||"").toLowerCase();
+    box.innerHTML='<h4>🏆 Bảng xếp hạng · BFK Fleisch</h4><table><tr><th>#</th><th>Tên</th><th>Điểm</th><th>%</th></tr>'
+      +rows.map((r,i)=>'<tr class="'+(String(r.player).toLowerCase()===me?'me':'')+'"><td>'+(i+1)+'</td><td>'+r.player+'</td><td>'+r.correct+'/'+r.total+'</td><td>'+r.pct+'%</td></tr>').join('')
+      +'</table>';
+  }catch(e){ box.innerHTML='<div class="db-status err">Không tải được BXH: '+(e.message||e)+'</div>'; }
 }
 
 /* ============ INIT ============ */

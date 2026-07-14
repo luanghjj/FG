@@ -155,6 +155,20 @@ table.t tr:nth-child(even) td{background:#f8fafc}
 .cl{border:1px solid var(--line);border-radius:10px;padding:10px;background:#f8fafc;font-size:.82em}
 .cl b{display:block;margin-bottom:4px;color:#1e40af}
 
+/* Supabase / score UI */
+.player-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0 12px}
+.player-bar input{flex:1;min-width:140px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;font:inherit;font-size:.88em}
+.player-bar input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--soft)}
+.db-status{font-size:.78em;color:var(--muted)}
+.db-status.ok{color:#166534}
+.db-status.err{color:#b91c1c}
+.lb{margin-top:12px;text-align:left}
+.lb h4{font-size:.9em;margin-bottom:6px}
+.lb table{width:100%;border-collapse:collapse;font-size:.82em}
+.lb th,.lb td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left}
+.lb th{color:var(--muted);font-weight:700}
+.lb tr.me td{background:#eff6ff;font-weight:700}
+
 /* accordion sections inside Lernen */
 .acc{border:1px solid var(--line);border-radius:12px;margin-bottom:8px;overflow:hidden;background:#fff}
 .acc>summary{list-style:none;cursor:pointer;padding:12px 14px;font-weight:800;font-size:.95em;display:flex;justify-content:space-between;align-items:center;user-select:none}
@@ -814,6 +828,7 @@ button.stw.open{box-shadow:0 0 0 2px #93c5fd}
   <div class="footer">Visualisierung · KA 16.07.26 · Viel Erfolg!</div>
 </div>
 
+<script src="./supabase.js"></script>
 <script>
 /* ===== VI toggle (Lernen + Üben) ===== */
 document.addEventListener('click', (e)=>{
@@ -1757,13 +1772,67 @@ function ansPraxis(i,opt){
 /* ===== QUIZ ===== */
 let qOrder=[], qIndex=0, qScore=0;
 function quizIntro(){
+  const name = (window.LearnDB && LearnDB.getPlayer()) || '';
   document.getElementById('quizArea').innerHTML=`
     <div class="center">
-      <p class="muted" style="margin-bottom:12px">${QUIZ.length} Fragen · gemischt · mit Erklärung</p>
-      <button class="btn" onclick="quizStart()">Quiz starten</button>
+      <p class="muted" style="margin-bottom:10px">${QUIZ.length} Fragen · gemischt · mit Erklärung</p>
+      <p class="muted" style="margin-bottom:8px;font-size:.84em">☁️ Điểm lưu trên Supabase (bảng <code>config</code>)</p>
+      <div class="player-bar" style="max-width:360px;margin:0 auto 12px">
+        <input id="playerName" type="text" maxlength="32" placeholder="Tên của bạn / Dein Name" value="${name.replace(/"/g,'&quot;')}">
+        <button class="btn sm" type="button" onclick="savePlayerName()">Lưu tên</button>
+      </div>
+      <div class="db-status" id="dbStatus">Đang kiểm tra kết nối…</div>
+      <div style="margin-top:12px">
+        <button class="btn" onclick="quizStart()">Quiz starten</button>
+        <button class="btn ghost sm" style="margin-left:8px" type="button" onclick="showLeaderboard()">🏆 BXH</button>
+      </div>
+      <div id="lbBox" class="lb"></div>
     </div>`;
+  checkDb();
+  showLeaderboard();
 }
-function quizStart(){ qOrder=shuffle(QUIZ.map((_,i)=>i)); qIndex=0; qScore=0; renderQ(); }
+function savePlayerName(){
+  const el=document.getElementById('playerName');
+  const n=LearnDB.setPlayer(el ? el.value : '');
+  const st=document.getElementById('dbStatus');
+  if(st){ st.className='db-status ok'; st.textContent = n ? ('Xin chào, '+n+' — điểm sẽ lưu khi xong quiz') : 'Chưa có tên — nhập tên để lưu điểm'; }
+}
+async function checkDb(){
+  const st=document.getElementById('dbStatus');
+  if(!st || !window.LearnDB){ if(st){ st.className='db-status err'; st.textContent='Không tải được supabase.js'; } return; }
+  try{
+    await LearnDB.ping();
+    st.className='db-status ok';
+    st.textContent='✅ Đã kết nối Supabase';
+  }catch(e){
+    st.className='db-status err';
+    st.textContent='⚠️ Không kết nối được DB: '+(e.message||e);
+  }
+}
+async function showLeaderboard(){
+  const box=document.getElementById('lbBox');
+  if(!box || !window.LearnDB) return;
+  box.innerHTML='<div class="muted" style="font-size:.82em">Đang tải bảng xếp hạng…</div>';
+  try{
+    const rows=await LearnDB.loadLeaderboard({subject:'DE', quiz:'visualisierung', limit:8});
+    if(!rows.length){
+      box.innerHTML='<div class="muted" style="font-size:.82em;margin-top:8px">Chưa có điểm nào — làm quiz để lên BXH.</div>';
+      return;
+    }
+    const me=(LearnDB.getPlayer()||'').toLowerCase();
+    box.innerHTML=`<h4>🏆 Bảng xếp hạng · Deutsch</h4>
+      <table><tr><th>#</th><th>Tên</th><th>Điểm</th><th>%</th></tr>
+      ${rows.map((r,i)=>`<tr class="${String(r.player).toLowerCase()===me?'me':''}"><td>${i+1}</td><td>${r.player}</td><td>${r.correct}/${r.total}</td><td>${r.pct}%</td></tr>`).join('')}
+      </table>`;
+  }catch(e){
+    box.innerHTML='<div class="db-status err">Không tải được BXH: '+(e.message||e)+'</div>';
+  }
+}
+function quizStart(){
+  const el=document.getElementById('playerName');
+  if(el && el.value.trim()) LearnDB.setPlayer(el.value);
+  qOrder=shuffle(QUIZ.map((_,i)=>i)); qIndex=0; qScore=0; renderQ();
+}
 function renderQ(){
   if(qIndex>=qOrder.length) return quizResult();
   const q=QUIZ[qOrder[qIndex]];
@@ -1791,14 +1860,43 @@ function answerQ(chosen){
 function quizResult(){
   const t=qOrder.length, pct=Math.round(qScore/t*100);
   const msg=pct>=90?'Sehr gut!':pct>=70?'Gut!':pct>=50?'Weiter üben.':'Nochmal Lernen lesen.';
+  const name=(window.LearnDB && LearnDB.getPlayer()) || '';
   document.getElementById('quizArea').innerHTML=`
     <div class="center">
       <div class="muted">Ergebnis</div>
       <div class="big">${qScore} / ${t}</div>
-      <div class="muted" style="margin-bottom:12px">${pct}% · ${msg}</div>
-      <button class="btn" onclick="quizStart()">Nochmal</button>
-      <button class="btn ghost" style="margin-left:8px" onclick="go('lernen')">Zum Lernen</button>
+      <div class="muted" style="margin-bottom:8px">${pct}% · ${msg}</div>
+      <div class="player-bar" style="max-width:360px;margin:0 auto 8px">
+        <input id="playerName" type="text" maxlength="32" placeholder="Tên để lưu điểm" value="${name.replace(/"/g,'&quot;')}">
+        <button class="btn sm" type="button" onclick="saveAndShowScore()">Lưu điểm ☁️</button>
+      </div>
+      <div class="db-status" id="dbStatus">${name ? 'Nhấn «Lưu điểm» để ghi lên Supabase' : 'Nhập tên rồi lưu điểm'}</div>
+      <div id="lbBox" class="lb"></div>
+      <div style="margin-top:12px">
+        <button class="btn" onclick="quizStart()">Nochmal</button>
+        <button class="btn ghost" style="margin-left:8px" onclick="go('lernen')">Zum Lernen</button>
+      </div>
     </div>`;
+  // auto-save if name already known
+  if(name) saveAndShowScore();
+  else showLeaderboard();
+}
+async function saveAndShowScore(){
+  const el=document.getElementById('playerName');
+  const st=document.getElementById('dbStatus');
+  if(!window.LearnDB){ if(st){ st.className='db-status err'; st.textContent='supabase.js chưa load'; } return; }
+  const name=LearnDB.setPlayer(el ? el.value : '');
+  if(!name){ if(st){ st.className='db-status err'; st.textContent='Hãy nhập tên trước'; } return; }
+  if(st){ st.className='db-status'; st.textContent='Đang lưu…'; }
+  try{
+    const saved=await LearnDB.saveQuizScore({
+      subject:'DE', quiz:'visualisierung', correct:qScore, total:qOrder.length, player:name
+    });
+    if(st){ st.className='db-status ok'; st.textContent='✅ Đã lưu: '+saved.correct+'/'+saved.total+' ('+saved.pct+'%)'; }
+    await showLeaderboard();
+  }catch(e){
+    if(st){ st.className='db-status err'; st.textContent='❌ Lưu thất bại: '+(e.message||e); }
+  }
 }
 
 function shuffle(a){const arr=[...a];for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}return arr;}
