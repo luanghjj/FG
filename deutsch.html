@@ -2,7 +2,12 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#2563eb">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="H2FO3T">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
 <title>Deutsch · Visualisierung – KA 16.07.26</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
@@ -12,10 +17,17 @@
   --ok:#16a34a; --okbg:#dcfce7; --bad:#dc2626; --badbg:#fee2e2;
   --warn:#d97706; --warnbg:#fef3c7;
   --shadow:0 1px 3px rgba(15,23,42,.06),0 8px 24px rgba(15,23,42,.06);
+  --safe-bottom:env(safe-area-inset-bottom,0px);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
-.page{max-width:860px;margin:0 auto;padding:0 14px 80px}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;overflow-x:hidden}
+.page{max-width:860px;margin:0 auto;padding:0 14px calc(72px + var(--safe-bottom));min-width:0}
+button,input,.tile,.tab,.btn{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.view{display:none}.view.active{display:block;animation:deIn .35s cubic-bezier(.22,1,.36,1)}
+@keyframes deIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.card,.acc,.tu-card{animation:deIn .4s cubic-bezier(.22,1,.36,1) both}
+@media (prefers-reduced-motion:reduce){.view.active,.card,.acc,.tu-card{animation:none!important}}
 
 /* NAV – only 4 tabs */
 .nav{position:sticky;top:0;z-index:40;background:rgba(241,245,249,.92);backdrop-filter:blur(10px);
@@ -42,7 +54,20 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--i
 .card h3{font-size:.95em;margin:12px 0 6px;color:#1e40af}
 .muted{color:var(--muted);font-size:.88em}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-@media(max-width:640px){.grid2{grid-template-columns:1fr}.tabs{margin-left:0;width:100%}}
+@media(max-width:640px){
+  .page{padding:0 12px calc(80px + var(--safe-bottom))}
+  .grid2{grid-template-columns:1fr}
+  .tabs{margin-left:0;width:100%;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
+  .tab{flex:0 0 auto}
+  .nav{margin:0 -12px 12px;padding:10px 12px}
+  .nav-inner{gap:8px}
+  .hero{padding:16px;border-radius:14px}
+  .hero h1{font-size:1.2em}
+  .card{padding:14px;border-radius:14px}
+  .btn{width:100%}
+  .btn.ghost{width:auto}
+  table.t{display:block;overflow-x:auto;font-size:.8em}
+}
 
 ul,ol{padding-left:18px} li{margin:4px 0;font-size:.92em}
 .box{padding:10px 12px;border-radius:10px;font-size:.88em;margin:8px 0}
@@ -829,6 +854,7 @@ button.stw.open{box-shadow:0 0 0 2px #93c5fd}
   <div class="footer">Visualisierung · KA 16.07.26 · Viel Erfolg!</div>
 </div>
 
+<script src="./pwa.js" defer></script>
 <script src="./supabase.js"></script>
 <script>
 /* ===== VI toggle (Lernen + Üben) ===== */
