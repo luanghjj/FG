@@ -394,15 +394,40 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 #searchSheet .sheet-close{border:none;background:var(--accent-soft);border-radius:10px;padding:10px 12px;font:inherit;cursor:pointer;font-weight:600;color:var(--accent)}
 #searchSheet .sheet-body{overflow:auto;padding:6px 0 max(12px,var(--safe-bottom))}
 
-/* ===== Bottom nav ===== */
-.bottom-nav{display:none;position:fixed;left:0;right:0;bottom:0;z-index:80;background:rgba(255,255,255,.96);
-  backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:6px 8px calc(6px + var(--safe-bottom));
-  justify-content:space-around;gap:4px}
-.bottom-nav button{flex:1;border:none;background:transparent;color:var(--muted);font:inherit;font-size:.68em;font-weight:600;
-  padding:6px 2px;border-radius:12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;min-height:48px}
-.bottom-nav button .bi{font-size:1.15em;line-height:1}
+/* ===== Bottom nav (compact, center = Fächer) ===== */
+.bottom-nav{display:none;position:fixed;left:12px;right:12px;bottom:calc(10px + var(--safe-bottom));z-index:80;
+  background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border:1px solid var(--line);
+  border-radius:18px;padding:6px 8px;justify-content:space-between;align-items:center;gap:4px;
+  box-shadow:0 10px 30px rgba(15,23,42,.12)}
+.bottom-nav button{flex:1;border:none;background:transparent;color:var(--muted);font:inherit;font-size:.65em;font-weight:600;
+  padding:6px 2px;border-radius:12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:1px;min-height:42px}
+.bottom-nav button .bi{font-size:1.05em;line-height:1}
 .bottom-nav button.active{color:var(--accent);background:var(--accent-soft)}
+.bottom-nav .nav-center{flex:0 0 auto;width:58px;height:58px;margin-top:-22px;border-radius:999px;border:3px solid #fff;
+  background:linear-gradient(135deg,#2563eb,#3b82f6);color:#fff!important;box-shadow:0 8px 18px rgba(37,99,235,.35);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;font-size:.62em;font-weight:700}
+.bottom-nav .nav-center .bi{font-size:1.2em}
+.bottom-nav .nav-center.active,.bottom-nav .nav-center:active{filter:brightness(.96)}
 .page.locked ~ .bottom-nav{display:none!important}
+
+/* Fächer picker sheet */
+#fachSheet{position:fixed;inset:0;z-index:275;background:rgba(15,23,42,.4);display:none;align-items:flex-end;justify-content:center}
+#fachSheet.show{display:flex}
+#fachSheet .fs-card{width:min(520px,100%);background:#fff;border-radius:18px 18px 0 0;padding:12px 14px calc(14px + var(--safe-bottom));
+  max-height:78vh;overflow:auto;animation:sheetUp .28s ease;box-shadow:0 -10px 40px rgba(15,23,42,.18)}
+#fachSheet .fs-handle{width:42px;height:4px;border-radius:99px;background:#cbd5e1;margin:0 auto 10px}
+#fachSheet .fs-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
+#fachSheet .fs-head h3{font-size:1em;font-weight:700}
+#fachSheet .fs-close{border:none;background:var(--accent-soft);border-radius:10px;padding:8px 12px;font:inherit;cursor:pointer;color:var(--accent);font-weight:600}
+.fach-list{display:flex;flex-direction:column;gap:8px}
+.fach-list .group-label{font-size:.72em;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:6px 2px 2px}
+.fach-item{display:flex;align-items:center;gap:10px;padding:11px 12px;border:1px solid var(--line);border-radius:14px;background:#fff;cursor:pointer;text-align:left}
+.fach-item:active{background:var(--accent-soft)}
+.fach-item .ic{width:36px;height:36px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:var(--soft,#eff6ff);flex-shrink:0}
+.fach-item .txt{flex:1;min-width:0}
+.fach-item .code{font-weight:800;font-size:.95em}
+.fach-item .teacher{font-size:.75em;color:var(--muted)}
+.fach-item .pill{margin-left:auto}
 
 /* ===== Fleisch sheet ===== */
 #fleischSheet{position:fixed;inset:0;z-index:270;background:rgba(15,23,42,.4);display:none;align-items:flex-end;justify-content:center}
@@ -901,14 +926,24 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 <div class="footer">🍀 Lern-App · Fachkraft für Gastronomie · Viel Erfolg! 🍀</div>
 </div>
 
-<!-- Bottom nav (mobile) -->
+<!-- Bottom nav (mobile): compact, center opens Fächer picker -->
 <nav class="bottom-nav" id="bottomNav" aria-label="Hauptnavigation">
   <button type="button" data-nav="#/" class="active"><span class="bi">🏠</span>Start</button>
-  <button type="button" data-nav="#/bfk"><span class="bi">🍳</span>BFK</button>
-  <button type="button" data-nav="deutsch.html"><span class="bi">🇩🇪</span>Deutsch</button>
-  <button type="button" data-nav="#/bfk/2/quiz"><span class="bi">📝</span>Quiz</button>
+  <button type="button" class="nav-center" id="fachNavBtn" data-nav="#faecher"><span class="bi">📚</span>Fächer</button>
   <button type="button" data-nav="#profile"><span class="bi">👤</span>Profil</button>
 </nav>
+
+<!-- Fächer picker sheet -->
+<div id="fachSheet" aria-hidden="true">
+  <div class="fs-card">
+    <div class="fs-handle"></div>
+    <div class="fs-head">
+      <h3>Fächer wählen</h3>
+      <button type="button" class="fs-close" id="fachSheetClose">Schließen</button>
+    </div>
+    <div class="fach-list" id="fachSheetList"></div>
+  </div>
+</div>
 
 <!-- Fullscreen search sheet -->
 <div id="searchSheet" aria-hidden="true">
@@ -1733,10 +1768,50 @@ function setBottomNav(hash){
     const t=btn.getAttribute('data-nav')||'';
     let on=false;
     if(t==='#/') on=(h==='#/' || h==='' || h==='#');
+    else if(t==='#faecher') on=h.startsWith('#/bfk') || h.startsWith('#/fach') || h.startsWith('#/abschluss');
+    else if(t==='#profile') on=false;
     else if(t.startsWith('#')) on=h===t || (t!=='#/' && h.startsWith(t));
-    else on=false;
     btn.classList.toggle('active', on);
   });
+}
+function openFachSheet(){
+  const sheet=document.getElementById('fachSheet');
+  const list=document.getElementById('fachSheetList');
+  if(!sheet||!list) return;
+  // Build compact subject list from SUBJECT_GROUPS
+  let html='';
+  (typeof SUBJECT_GROUPS!=='undefined' ? SUBJECT_GROUPS : []).forEach(g=>{
+    html+='<div class="group-label">'+g.title+'</div>';
+    (g.items||[]).forEach(s=>{
+      const pill=s.ready?'<span class="pill ready">OK</span>':'<span class="pill soon">Bald</span>';
+      const teacher=s.meta||s.teacher||'';
+      const style='--soft:'+(s.soft||'#eff6ff');
+      html+='<button type="button" class="fach-item" data-route="'+s.route+'" data-external="'+(s.external?1:0)+'" style="'+style+'">'
+        +'<div class="ic" style="background:'+(s.soft||'#eff6ff')+'">'+s.icon+'</div>'
+        +'<div class="txt"><div class="code">'+s.code+'</div><div class="teacher">'+(teacher||s.name)+'</div></div>'
+        +pill
+        +'</button>';
+    });
+  });
+  list.innerHTML=html||'<div class="empty-state">Keine Fächer</div>';
+  list.querySelectorAll('.fach-item').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const route=btn.getAttribute('data-route');
+      const external=btn.getAttribute('data-external')==='1';
+      closeFachSheet();
+      if(!route) return;
+      if(external || route.endsWith('.html') || !route.startsWith('#')) location.href=route;
+      else go(route);
+    });
+  });
+  sheet.classList.add('show');
+  sheet.setAttribute('aria-hidden','false');
+}
+function closeFachSheet(){
+  const sheet=document.getElementById('fachSheet');
+  if(!sheet) return;
+  sheet.classList.remove('show');
+  sheet.setAttribute('aria-hidden','true');
 }
 function initBottomNav(){
   const nav=document.getElementById('bottomNav'); if(!nav) return;
@@ -1744,6 +1819,7 @@ function initBottomNav(){
     btn.addEventListener('click',()=>{
       const t=btn.getAttribute('data-nav');
       if(!t) return;
+      if(t==='#faecher'){ openFachSheet(); return; }
       if(t==='#profile'){
         const p=window.LearnDB && LearnDB.getPlayer();
         if(!p){ toast('Bitte zuerst einloggen','info'); return; }
@@ -1757,6 +1833,10 @@ function initBottomNav(){
       go(t);
     });
   });
+  const fachSheet=document.getElementById('fachSheet');
+  const fachClose=document.getElementById('fachSheetClose');
+  if(fachClose) fachClose.addEventListener('click', closeFachSheet);
+  if(fachSheet) fachSheet.addEventListener('click', e=>{ if(e.target===fachSheet) closeFachSheet(); });
   setBottomNav(location.hash||'#/');
 }
 function initSearchSheet(){
