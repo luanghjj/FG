@@ -25,7 +25,10 @@
   }
 
   async function sbFetch(path, opts) {
-    const res = await fetch(SB_URL + path, opts);
+    const options = opts ? Object.assign({}, opts) : {};
+    // Always send apikey + Authorization (GET calls were missing this before)
+    options.headers = headers(options.headers || {});
+    const res = await fetch(SB_URL + path, options);
     const text = await res.text();
     let data = null;
     try {
