@@ -719,6 +719,7 @@ renderAbschlussThemen();
 const SUBJECTS = [
   {code:"BFK", name:"Berufsfachkunde", icon:"🍳", accent:"#dc2626", soft:"#fef2f2", desc:"Lebensmittel, Fleisch & Küche.", route:"#/bfk", ready:true},
   {code:"Wiko", name:"Wirtschaftskunde", icon:"📊", accent:"#2563eb", soft:"#eff6ff", desc:"Wirtschaft, Kaufvertrag & Recht.", route:"#/wiko", ready:false},
+  {code:"DE", name:"Deutsch · Visualisierung", icon:"🇩🇪", accent:"#0ea5e9", soft:"#e0f2fe", desc:"KA 16.07.26 – Visualisierung von Texten.", route:"deutsch.html", ready:true, external:true},
   {code:"GK", name:"Gemeinschaftskunde", icon:"🏛️", accent:"#16a34a", soft:"#f0fdf4", desc:"Politik, Gesellschaft & Recht.", route:"#/gk", ready:false},
 ];
 const BFK_THEMES = [
@@ -734,7 +735,12 @@ function renderSubjects(){
     const style='--tile-accent:'+s.accent+';--tile-soft:'+s.soft;
     const pill=s.ready?'<span class="pill ready">Verfügbar</span>':'<span class="pill soon">Bald</span>';
     const cls=s.ready?"tile":"tile soon";
-    const click=s.ready?'onclick="go(\''+s.route+'\')"':'';
+    let click='';
+    if(s.ready){
+      click=s.external
+        ? 'onclick="location.href=\''+s.route+'\'"'
+        : 'onclick="go(\''+s.route+'\')"';
+    }
     return '<div class="'+cls+'" style="'+style+'" '+click+'>'
       +'<div class="ic">'+s.icon+'</div>'
       +'<div class="code">'+s.code+'</div>'

@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deutsch · Visualisierung – KA 16.07.26</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root{
+  --bg:#f1f5f9; --surface:#fff; --ink:#0f172a; --muted:#64748b; --line:#e2e8f0;
+  --accent:#2563eb; --accent2:#7c3aed; --soft:#eff6ff;
+  --ok:#16a34a; --okbg:#dcfce7; --bad:#dc2626; --badbg:#fee2e2;
+  --warn:#d97706; --warnbg:#fef3c7;
+  --shadow:0 1px 3px rgba(15,23,42,.06),0 8px 24px rgba(15,23,42,.06);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+.page{max-width:860px;margin:0 auto;padding:0 14px 80px}
+
+/* NAV – only 4 tabs */
+.nav{position:sticky;top:0;z-index:40;background:rgba(241,245,249,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);margin:0 -14px 16px;padding:10px 14px}
+.nav-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.brand{font-weight:800;display:flex;align-items:center;gap:8px;cursor:pointer}
+.brand .logo{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#fff;display:flex;align-items:center;justify-content:center}
+.ka{background:#fef2f2;color:#b91c1c;border:1px solid #fecaca;border-radius:999px;padding:3px 10px;font-size:.72em;font-weight:800}
+.tabs{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
+.tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 13px;font:inherit;
+  font-size:.82em;font-weight:700;color:var(--muted);cursor:pointer}
+.tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+.view{display:none}.view.active{display:block}
+.hero{background:linear-gradient(135deg,#1e3a8a,#2563eb 60%,#7c3aed);color:#fff;border-radius:16px;padding:22px;margin-bottom:14px}
+.hero h1{font-size:1.4em;font-weight:800;margin-bottom:6px}
+.hero p{opacity:.93;font-size:.92em}
+.pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:3px 10px;font-size:.75em;font-weight:700}
+
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px;box-shadow:var(--shadow)}
+.card h2{font-size:1.05em;margin-bottom:10px}
+.card h3{font-size:.95em;margin:12px 0 6px;color:#1e40af}
+.muted{color:var(--muted);font-size:.88em}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:640px){.grid2{grid-template-columns:1fr}.tabs{margin-left:0;width:100%}}
+
+ul,ol{padding-left:18px} li{margin:4px 0;font-size:.92em}
+.box{padding:10px 12px;border-radius:10px;font-size:.88em;margin:8px 0}
+.box.tip{background:var(--warnbg);border-left:4px solid var(--warn);color:#92400e}
+.box.info{background:var(--soft);border-left:4px solid var(--accent);color:#1e3a8a}
+.box.ok{background:var(--okbg);border-left:4px solid var(--ok);color:#166534}
+.formula{background:#fff7ed;border-left:4px solid #ea580c;padding:10px 12px;border-radius:8px;font-weight:700;font-size:.9em;margin:8px 0}
+
+table.t{width:100%;border-collapse:collapse;font-size:.86em;margin:8px 0}
+table.t th{background:#1e40af;color:#fff;padding:8px;text-align:left}
+table.t td{padding:8px;border:1px solid var(--line)}
+table.t tr:nth-child(even) td{background:#f8fafc}
+
+/* DE word → click for VI */
+.vi-btn{
+  display:inline;border:none;background:transparent;color:inherit;font:inherit;
+  border-bottom:1.5px dashed #93c5fd;cursor:pointer;padding:0 1px;border-radius:2px;
+}
+.vi-btn:hover{background:#dbeafe}
+.vi-btn.open{background:#dbeafe;border-bottom-color:var(--accent);font-weight:600}
+.vi-pop{
+  display:none;margin:4px 0 8px;padding:7px 10px;border-radius:8px;
+  background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;font-size:.84em;line-height:1.4;
+}
+.vi-pop.show{display:block}
+.vi-inline{
+  display:none;margin-left:6px;padding:1px 7px;border-radius:6px;
+  background:#ecfdf5;color:#065f46;font-size:.78em;font-weight:600;white-space:nowrap;
+}
+.vi-inline.show{display:inline}
+
+.tile{border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff;cursor:pointer;transition:.12s}
+.tile:hover{border-color:var(--accent);box-shadow:0 0 0 3px var(--soft)}
+.tile .ico{font-size:1.3em}
+.tile .name{font-weight:800;font-size:.92em;margin:4px 0}
+.tile .zweck{display:inline-block;background:#dbeafe;color:#1e40af;border-radius:999px;padding:2px 8px;font-size:.7em;font-weight:800}
+
+.step{display:flex;gap:10px;align-items:flex-start;background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:8px}
+.step .n{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;font-size:.85em;display:flex;align-items:center;justify-content:center}
+.step b{display:block;font-size:.92em}
+.step .d{font-size:.84em;color:var(--muted)}
+
+/* Match */
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:560px){.match-grid{grid-template-columns:1fr}}
+.m-item{border:2px solid var(--line);border-radius:11px;padding:11px;cursor:pointer;background:#fff;font-size:.88em;user-select:none;margin-bottom:7px}
+.m-item.sel{border-color:var(--accent);background:var(--soft)}
+.m-item.done{border-color:var(--ok);background:var(--okbg);opacity:.8;pointer-events:none}
+.m-item.bad{border-color:var(--bad);background:var(--badbg)}
+
+/* Quiz */
+.qprog{height:7px;background:#e2e8f0;border-radius:99px;overflow:hidden;margin-bottom:12px}
+.qprog>div{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:.3s}
+.qmeta{display:flex;justify-content:space-between;font-size:.8em;color:var(--muted);font-weight:700;margin-bottom:8px}
+.qcat{display:inline-block;background:#fef3c7;color:#92400e;border-radius:7px;padding:2px 8px;font-size:.7em;font-weight:800;margin-bottom:8px}
+.qtext{font-size:1.02em;font-weight:700;margin-bottom:12px}
+.opt{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:11px;
+  padding:11px 12px;margin-bottom:7px;font:inherit;font-size:.9em;cursor:pointer}
+.opt:hover:not(.locked){border-color:#93c5fd;background:var(--soft)}
+.opt.correct{border-color:var(--ok);background:var(--okbg);color:#166534;font-weight:700}
+.opt.wrong{border-color:var(--bad);background:var(--badbg);color:#991b1b}
+.opt.locked{cursor:default}
+.fb{display:none;margin-top:10px;padding:10px 12px;border-radius:9px;font-size:.86em}
+.fb.show{display:block}
+.fb.ok{background:var(--okbg);color:#166534;border-left:4px solid var(--ok)}
+.fb.no{background:var(--badbg);color:#991b1b;border-left:4px solid var(--bad)}
+.btn{border:none;background:var(--accent);color:#fff;border-radius:11px;padding:10px 16px;font:inherit;font-weight:800;cursor:pointer;font-size:.9em}
+.btn.ghost{background:#fff;color:var(--accent);border:1px solid #bfdbfe}
+.btn.sm{padding:7px 12px;font-size:.82em}
+.row{margin-top:12px}
+.center{text-align:center;padding:18px 8px}
+.big{font-size:2.4em;font-weight:800;color:var(--accent);margin:8px 0}
+
+/* Mindmap */
+.mm{background:#0f172a;color:#e2e8f0;border-radius:14px;padding:16px}
+.mm-c{text-align:center;margin-bottom:12px}
+.mm-c span{display:inline-block;background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;padding:10px 16px;border-radius:999px;font-weight:800}
+.mm-g{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:640px){.mm-g{grid-template-columns:1fr}}
+.mm-b{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:10px}
+.mm-b h4{font-size:.88em;margin-bottom:6px}
+.mm-b.r h4{color:#fbbf24}.mm-b.l h4{color:#60a5fa}.mm-b.g h4{color:#4ade80}
+.mm-b.p h4{color:#c084fc}.mm-b.o h4{color:#fb923c}
+.mm-b ul{padding-left:15px;font-size:.82em}
+.mm-b li{margin:2px 0;color:#cbd5e1}
+
+/* Praxis mini */
+.prac{border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:10px;background:#f8fafc}
+.prac .src{font-size:.86em;background:#fff;border-left:3px solid var(--accent);padding:8px 10px;border-radius:6px;margin:8px 0;color:#334155}
+.choice{display:flex;flex-wrap:wrap;gap:6px}
+.choice button{border:2px solid var(--line);background:#fff;border-radius:9px;padding:7px 11px;font:inherit;font-size:.82em;font-weight:700;cursor:pointer}
+.choice button.ok{border-color:var(--ok);background:var(--okbg);color:#166534}
+.choice button.no{border-color:var(--bad);background:var(--badbg);color:#991b1b}
+.choice button:disabled{cursor:default}
+
+.hint-bar{background:#ecfdf5;border:1px solid #a7f3d0;border-radius:10px;padding:8px 12px;font-size:.82em;color:#065f46;margin-bottom:12px}
+.footer{text-align:center;color:var(--muted);font-size:.8em;padding:20px 0 8px}
+.home-link{font-size:.78em;font-weight:700;color:var(--muted);border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 10px;text-decoration:none;white-space:nowrap}
+.home-link:hover{color:var(--accent);border-color:#93c5fd}
+.check{margin:6px 0 0;padding-left:16px;font-size:.8em;color:#475569}
+.check li{margin:2px 0}
+.ka-text{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:12px 14px;font-size:.88em;line-height:1.55;color:#334155;max-height:280px;overflow:auto}
+.ka-text p{margin:0 0 8px}
+.ka-text .mark{background:#fef08a;padding:0 2px;border-radius:2px}
+.cycle{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;margin:10px 0}
+.cycle .node{background:#fff7ed;border:2px solid #fb923c;border-radius:12px;padding:8px 12px;font-size:.82em;font-weight:700;text-align:center;max-width:150px}
+.cycle .arr{color:#ea580c;font-weight:800;font-size:1.1em}
+.checklist-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+@media(max-width:640px){.checklist-grid{grid-template-columns:1fr}}
+.cl{border:1px solid var(--line);border-radius:10px;padding:10px;background:#f8fafc;font-size:.82em}
+.cl b{display:block;margin-bottom:4px;color:#1e40af}
+
+/* accordion sections inside Lernen */
+.acc{border:1px solid var(--line);border-radius:12px;margin-bottom:8px;overflow:hidden;background:#fff}
+.acc>summary{list-style:none;cursor:pointer;padding:12px 14px;font-weight:800;font-size:.95em;display:flex;justify-content:space-between;align-items:center;user-select:none}
+.acc>summary::-webkit-details-marker{display:none}
+.acc>summary::after{content:'▸';color:var(--muted);font-size:.9em;transition:.15s}
+.acc[open]>summary::after{transform:rotate(90deg)}
+.acc .body{padding:0 14px 14px}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="brand" onclick="go('home')"><div class="logo">🇩🇪</div> Visualisierung</div>
+      <span class="ka">KA 16.07.26</span>
+      <a class="home-link" href="index.html">← Fächer</a>
+      <div class="tabs">
+        <button class="tab active" data-v="home" onclick="go('home')">Start</button>
+        <button class="tab" data-v="lernen" onclick="go('lernen')">Lernen</button>
+        <button class="tab" data-v="ueben" onclick="go('ueben')">Üben</button>
+        <button class="tab" data-v="ka" onclick="go('ka')">KA-Mindmap</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== START ========== -->
+  <div class="view active" id="v-home">
+    <div class="hero">
+      <h1>Klassenarbeit Deutsch: Visualisierung</h1>
+      <p>Alles auf Deutsch. Tippe auf ein Wort mit blauer Linie, um die vietnamesische Bedeutung zu sehen.</p>
+      <div class="pills">
+        <span class="pill">16.07.2026</span>
+        <span class="pill">Mindmap · Diagramme</span>
+        <span class="pill">Arbeitsschritte</span>
+      </div>
+    </div>
+
+    <div class="hint-bar">💡 <b>Tipp:</b> Wörter mit <span style="border-bottom:1.5px dashed #93c5fd">gestrichelter Linie</span> antippen → Bedeutung auf Vietnamesisch.</div>
+
+    <div class="grid2">
+      <div class="tile" onclick="go('lernen')">
+        <div class="ico">📘</div>
+        <div class="name">Lernen</div>
+        <div class="muted">Theorie · 7 Formen · Tipps</div>
+      </div>
+      <div class="tile" onclick="go('ueben')">
+        <div class="ico">✏️</div>
+        <div class="name">Üben</div>
+        <div class="muted">Zuordnen · Text→Form · Quiz</div>
+      </div>
+      <div class="tile" onclick="go('ka')">
+        <div class="ico">🥩</div>
+        <div class="name">KA-Mindmap</div>
+        <div class="muted">Fleischkonsum – Musterlösung</div>
+      </div>
+      <div class="tile" onclick="go('ueben');setTimeout(()=>document.getElementById('quizBox')?.scrollIntoView({behavior:'smooth'}),80)">
+        <div class="ico">📝</div>
+        <div class="name">Quiz starten</div>
+        <div class="muted">Direkt zum Test</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>⚡ Schnell merken</h2>
+      <div class="formula">
+        <button class="vi-btn" data-vi="Hình ảnh nói nhiều hơn ngàn lời.">Bilder sagen mehr als tausend Worte.</button>
+        <div class="vi-pop"></div>
+      </div>
+      <ol>
+        <li>
+          <button class="vi-btn" data-vi="Đọc → Gạch ý → Sắp xếp → Chọn dạng → Vẽ">Lesen → Markieren → Ordnen → Form wählen → Zeichnen</button>
+          <div class="vi-pop"></div>
+        </li>
+        <li>
+          <button class="vi-btn" data-vi="Không viết cả câu – chỉ từ khóa">Keine ganzen Sätze – nur Stichworte</button>
+          <div class="vi-pop"></div>
+        </li>
+        <li>
+          <button class="vi-btn" data-vi="Luôn có tiêu đề + đơn vị / trục / %">Immer Überschrift + Einheiten / Achsen / %</button>
+          <div class="vi-pop"></div>
+        </li>
+        <li>
+          <button class="vi-btn" data-vi="Chỉ danh từ (và đầu câu) viết hoa">Nur Substantive großschreiben</button>
+          <div class="vi-pop"></div>
+        </li>
+        <li>
+          <button class="vi-btn" data-vi="Vẽ sạch bằng thước kẻ">Mit Lineal sauber zeichnen</button>
+          <div class="vi-pop"></div>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- ========== LERNEN ========== -->
+  <div class="view" id="v-lernen">
+    <div class="hint-bar">📘 Lernen — antippe gestrichelte Wörter für Vietnamesisch.</div>
+
+    <details class="acc" open>
+      <summary>1. Was ist Visualisierung?</summary>
+      <div class="body">
+        <p>
+          <button class="vi-btn" data-vi="Trực quan hóa văn bản = biến nội dung thành biểu đồ / sơ đồ.">Visualisierung von Texten</button>
+          <span class="vi-pop"></span>
+          = einen Texttext oder literarischen Text als
+          <button class="vi-btn" data-vi="đồ họa / hình minh họa">Grafik / Schaubild</button>
+          <span class="vi-pop"></span> darstellen.
+        </p>
+        <div class="box info">
+          <button class="vi-btn" data-vi="Rút gọn văn bản còn phần cốt lõi, làm lộ mạch chính và các ý trung tâm qua đồ họa để dễ hiểu.">Text auf das Wesentliche reduzieren und den roten Faden sowie zentrale Aussagen durch eine Grafik sichtbar und verständlich machen.</button>
+          <div class="vi-pop"></div>
+        </div>
+        <h3>Ziel</h3>
+        <ul>
+          <li><button class="vi-btn" data-vi="Rút gọn còn cốt lõi">auf das Wesentliche reduzieren</button><div class="vi-pop"></div></li>
+          <li><button class="vi-btn" data-vi="Làm lộ mạch chính">roten Faden sichtbar machen</button><div class="vi-pop"></div></li>
+          <li><button class="vi-btn" data-vi="Minh họa / làm dễ hiểu">Veranschaulichung</button><div class="vi-pop"></div></li>
+          <li><button class="vi-btn" data-vi="Trợ giúp ghi nhớ">Merkhilfe</button><div class="vi-pop"></div>: Bilder sagen mehr als tausend Worte.</li>
+        </ul>
+        <h3>Vorteile</h3>
+        <ul>
+          <li><button class="vi-btn" data-vi="Nhìn tổng quan nhanh">Schneller Überblick</button><div class="vi-pop"></div></li>
+          <li><button class="vi-btn" data-vi="Rất dễ hiểu">Sehr verständlich</button><div class="vi-pop"></div></li>
+          <li><button class="vi-btn" data-vi="Nhớ lâu hơn trong đầu">Bleibt besser im Kopf</button><div class="vi-pop"></div></li>
+          <li><button class="vi-btn" data-vi="Đơn giản hơn cho não bộ">Einfacher für das Gehirn</button><div class="vi-pop"></div></li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="acc" open>
+      <summary>2. Fünf Arbeitsschritte</summary>
+      <div class="body">
+        <div class="step"><div class="n">1</div><div>
+          <b><button class="vi-btn" data-vi="Phân tích đề bài: hỏi cái gì?">Fragestellung analysieren</button></b>
+          <div class="vi-pop"></div>
+          <div class="d">Was ist gefragt? Unterstreichen oder in eigenen Worten formulieren.</div>
+        </div></div>
+        <div class="step"><div class="n">2</div><div>
+          <b><button class="vi-btn" data-vi="Đọc văn bản ít nhất một lần">Text mindestens einmal lesen</button></b>
+          <div class="vi-pop"></div>
+        </div></div>
+        <div class="step"><div class="n">3</div><div>
+          <b><button class="vi-btn" data-vi="Gạch các ý được hỏi / từ khóa">Wichtige Aussagen unterstreichen</button></b>
+          <div class="vi-pop"></div>
+          <div class="d">Auf <button class="vi-btn" data-vi="từ khóa">Schlüsselwörter</button><span class="vi-pop"></span> achten · markieren · ordnen.</div>
+        </div></div>
+        <div class="step"><div class="n">4</div><div>
+          <b><button class="vi-btn" data-vi="Chọn dạng biểu diễn phù hợp">Geeignete Darstellungsform wählen</button></b>
+          <div class="vi-pop"></div>
+          <div class="d">Manchmal sind zwei ergänzende Grafiken nötig.</div>
+        </div></div>
+        <div class="step"><div class="n">5</div><div>
+          <b><button class="vi-btn" data-vi="Phác thảo / vẽ đồ họa">Grafik entwerfen</button></b>
+          <div class="vi-pop"></div>
+          <div class="d">Sauber, mit Überschrift, Einheiten – mit Lineal!</div>
+        </div></div>
+      </div>
+    </details>
+
+    <details class="acc" open>
+      <summary>3. Sieben Darstellungsformen</summary>
+      <div class="body">
+        <div class="box info" style="margin-bottom:12px">
+          <b>Schnellwahl — Was steht im Text?</b>
+          <table class="t" style="margin-top:8px">
+            <tr><th>Im Text siehst du …</th><th>→ nimm</th></tr>
+            <tr>
+              <td><button class="vi-btn" data-vi="Số % cộng thành 100% / các phần của một tổng">% · Anteile · „von 100“ · Teile eines Ganzen</button><div class="vi-pop"></div></td>
+              <td><b>Kreisdiagramm</b></td>
+            </tr>
+            <tr>
+              <td><button class="vi-btn" data-vi="Cùng một đại lượng thay đổi theo năm/tháng">Jahre / Monate · stieg · sank · von … bis …</button><div class="vi-pop"></div></td>
+              <td><b>Kurvendiagramm</b></td>
+            </tr>
+            <tr>
+              <td><button class="vi-btn" data-vi="Nhiều thứ để so sánh (A nhiều hơn B)">mehrere Dinge vergleichen · A hat mehr als B</button><div class="vi-pop"></div></td>
+              <td><b>Säulen-/Balkendiagramm</b></td>
+            </tr>
+            <tr>
+              <td><button class="vi-btn" data-vi="Nhiều số chính xác, cần đọc đúng từng ô">viele exakte Zahlen · mehrere Spalten/Orte</button><div class="vi-pop"></div></td>
+              <td><b>Tabelle</b></td>
+            </tr>
+            <tr>
+              <td><button class="vi-btn" data-vi="Văn bản dài, nhiều ý, đề bảo Mindmap">langer Sachtext · viele Aspekte · „Mindmap“</button><div class="vi-pop"></div></td>
+              <td><b>Mindmap</b></td>
+            </tr>
+            <tr>
+              <td><button class="vi-btn" data-vi="Chuỗi nguyên nhân–kết quả, vòng lặp, quy trình">weil → deshalb · führt zu · Teufelskreis · Ablauf</button><div class="vi-pop"></div></td>
+              <td><b>Strukturbild</b></td>
+            </tr>
+            <tr>
+              <td><button class="vi-btn" data-vi="Cấp trên–cấp dưới, ai quản ai">Chef · Abteilung · wer ist wem unterstellt</button><div class="vi-pop"></div></td>
+              <td><b>Organigramm</b></td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="grid2" id="formenGrid"></div>
+
+        <table class="t" style="margin-top:12px">
+          <tr><th>Form</th><th>Zweck</th><th>Tipp (kurz)</th></tr>
+          <tr>
+            <td>Kurvendiagramm</td>
+            <td><button class="vi-btn" data-vi="Xu hướng theo thời gian">Entwicklung</button><div class="vi-pop"></div></td>
+            <td><button class="vi-btn" data-vi="Có trục thời gian → vẽ đường">Zeitachse → Linie</button><div class="vi-pop"></div></td>
+          </tr>
+          <tr>
+            <td>Balken-/Säulendiagramm</td>
+            <td><button class="vi-btn" data-vi="So sánh">Vergleich</button><div class="vi-pop"></div></td>
+            <td><button class="vi-btn" data-vi="So sánh trực quan nhiều cột">visuell vergleichen</button><div class="vi-pop"></div></td>
+          </tr>
+          <tr>
+            <td>Kreis-/Tortendiagramm</td>
+            <td><button class="vi-btn" data-vi="Tỷ lệ %">Anteile (%)</button><div class="vi-pop"></div></td>
+            <td><button class="vi-btn" data-vi="Thấy % và tổng 100% → tròn">% + 100% → Kreis</button><div class="vi-pop"></div></td>
+          </tr>
+          <tr>
+            <td>Organigramm</td>
+            <td><button class="vi-btn" data-vi="Cấp bậc / quan hệ người">Hierarchie</button><div class="vi-pop"></div></td>
+            <td><button class="vi-btn" data-vi="Người + cấp trên/dưới">Personen + Ebenen</button><div class="vi-pop"></div></td>
+          </tr>
+          <tr>
+            <td>Strukturbild</td>
+            <td><button class="vi-btn" data-vi="Quy trình / nhân–quả">Ablauf / Ursache–Wirkung</button><div class="vi-pop"></div></td>
+            <td><button class="vi-btn" data-vi="Dùng mũi tên: A → B → C">Pfeile: A → B → C</button><div class="vi-pop"></div></td>
+          </tr>
+          <tr>
+            <td>Tabelle</td>
+            <td><button class="vi-btn" data-vi="So sánh số chính xác">Vergleich (exakt)</button><div class="vi-pop"></div></td>
+            <td><button class="vi-btn" data-vi="Nhiều số lẻ, cần chính xác → bảng">viele genaue Zahlen</button><div class="vi-pop"></div></td>
+          </tr>
+          <tr>
+            <td>Mindmap</td>
+            <td><button class="vi-btn" data-vi="Thu thập & sắp ý">Ideensammlung</button><div class="vi-pop"></div></td>
+            <td><button class="vi-btn" data-vi="Chủ đề giữa + nhánh từ khóa">Mitte + Äste, Stichworte</button><div class="vi-pop"></div></td>
+          </tr>
+        </table>
+
+        <div class="box tip">
+          <b>Merksatz:</b>
+          <button class="vi-btn" data-vi="% → tròn · thời gian → đường · so sánh → cột · số chính xác → bảng · chữ/ý nhiều → mindmap · nhân–quả → sơ đồ cấu trúc · cấp bậc → organigramm">
+            % → Kreis · Zeit → Kurve · Vergleich → Säule · exakte Zahlen → Tabelle · viele Ideen/Text → Mindmap · Ursache/Ablauf → Strukturbild · Hierarchie → Organigramm
+          </button>
+          <div class="vi-pop"></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>4. Tipps (Bewertung)</summary>
+      <div class="body">
+        <ul>
+          <li><button class="vi-btn" data-vi="Không viết cả câu – chỉ từ khóa">Keine ganzen Sätze (schlagwortartig, Schlüsselwörter)</button><div class="vi-pop"></div></li>
+          <li><button class="vi-btn" data-vi="Ý ngang hàng → cùng màu, cỡ chữ, khối">Gleichwertige Aussagen → gleiche Farbe, Schriftgröße, Bildanteile</button><div class="vi-pop"></div></li>
+          <li><button class="vi-btn" data-vi="Dùng hợp lý: ký hiệu, mũi tên, khung, gạch chân, hình">Sinnvolle Verwendung von Symbolen, Pfeilen, Umrahmungen, Unterstreichungen, Bildern</button><div class="vi-pop"></div></li>
+          <li><button class="vi-btn" data-vi="Sơ đồ sạch, rõ – chỉ vẽ bằng thước">Sauberes, übersichtliches Schaubild (nur mit Lineal!)</button><div class="vi-pop"></div></li>
+          <li><button class="vi-btn" data-vi="Không quên tiêu đề và ghi đơn vị / kích thước">Überschrift und Bezeichnung der Größen nicht vergessen</button><div class="vi-pop"></div></li>
+          <li><button class="vi-btn" data-vi="Đọc kỹ đề: phải trực quan hóa cái gì?">Aufgabenstellung genau durchlesen: was soll visualisiert werden?</button><div class="vi-pop"></div></li>
+          <li><button class="vi-btn" data-vi="Chỉ danh từ và đầu câu viết hoa">Großschreibung: nur Substantive und Satzanfänge</button><div class="vi-pop"></div>
+            <div class="muted">Sonne → scheint hell / brennt heiß / ist rund</div>
+          </li>
+        </ul>
+
+        <h3>Checkliste pro Form (aus dem Übungsblatt)</h3>
+        <div class="checklist-grid">
+          <div class="cl">
+            <b>📈 Kurvendiagramm</b>
+            <ul class="check">
+              <li>Thema als Überschrift</li>
+              <li>Entwicklung über Zeitraum</li>
+              <li>Zeit auf X-Achse</li>
+              <li>Menge auf Y-Achse</li>
+            </ul>
+          </div>
+          <div class="cl">
+            <b>📊 Säulen-/Balkendiagramm</b>
+            <ul class="check">
+              <li>Thema als Überschrift</li>
+              <li>Mehrere Größen im Vergleich</li>
+              <li>Sinnvolle Achsenbeschriftung</li>
+            </ul>
+          </div>
+          <div class="cl">
+            <b>🥧 Kreis-/Tortendiagramm</b>
+            <ul class="check">
+              <li>Thema als Überschrift</li>
+              <li>Ganzes + Teile in %</li>
+              <li>Farben/Schraffuren trennen</li>
+            </ul>
+          </div>
+          <div class="cl">
+            <b>📋 Tabelle</b>
+            <ul class="check">
+              <li>Thema als Überschrift</li>
+              <li>Angabe der Maßeinheiten</li>
+              <li>Vergleiche &amp; Entwicklungen</li>
+            </ul>
+          </div>
+          <div class="cl">
+            <b>🔀 Strukturbild</b>
+            <ul class="check">
+              <li>Thema als Überschrift</li>
+              <li>Beziehungen / Abhängigkeiten</li>
+              <li>Ursache und Wirkung (Pfeile)</li>
+            </ul>
+          </div>
+          <div class="cl">
+            <b>🧠 Mindmap</b>
+            <ul class="check">
+              <li>Thema in der Mitte</li>
+              <li>Hauptäste = Aspekte</li>
+              <li>nur Stichworte · Wörter zählen</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>5. Beispiel: Hirnhälften (Mindmap)</summary>
+      <div class="body">
+        <div class="box info">
+          <button class="vi-btn" data-vi="Bài tập mẫu: đọc văn bản → hoàn thiện mindmap về bán cầu não.">Übungsblatt: Text lesen → Mindmap ergänzen (rechte / linke Hirnhälfte).</button>
+          <div class="vi-pop"></div>
+        </div>
+        <div class="mm">
+          <div class="mm-c"><span>🧠 Gehirn</span></div>
+          <div class="mm-g">
+            <div class="mm-b r">
+              <h4>Rechte Hirnhälfte
+                <button class="vi-btn" data-vi="Bán cầu não phải" style="color:#fbbf24">?</button>
+              </h4>
+              <div class="vi-pop"></div>
+              <ul>
+                <li>arbeitet <b>analog</b></li>
+                <li><button class="vi-btn" data-vi="nhìn tổng thể, nắm mối liên hệ" style="color:#e2e8f0">ganzheitlich · Zusammenhänge</button><div class="vi-pop"></div></li>
+                <li>fasst Teile zusammen (nicht einzeln)</li>
+                <li>denkt in <b>Bildern</b></li>
+                <li>Personen · Gefühle · Erlebtes · Schauplätze</li>
+                <li>kreativ: Musikalität · Kunstverständnis</li>
+                <li>zeichnen · malen</li>
+                <li>Körpersprache: <b>Gestik + Mimik</b></li>
+              </ul>
+            </div>
+            <div class="mm-b l">
+              <h4>Linke Hirnhälfte
+                <button class="vi-btn" data-vi="Bán cầu não trái" style="color:#60a5fa">?</button>
+              </h4>
+              <div class="vi-pop"></div>
+              <ul>
+                <li>arbeitet <b>analytisch / digital</b> (wie Computer)</li>
+                <li>speichert abstrakte Infos: <b>Texte · Tabellen</b></li>
+                <li><b>logisches Denken</b></li>
+                <li>Mathematik &amp; Naturwissenschaften</li>
+                <li>Gliedern · Strukturieren · Planen</li>
+                <li>Sprache lernen &amp; behalten</li>
+                <li>Wort in Buchstaben zerlegen</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="box tip" style="margin-top:10px">
+          <b>Merke:</b>
+          <button class="vi-btn" data-vi="Phải = hình ảnh, cảm xúc, sáng tạo · Trái = logic, ngôn ngữ, số liệu.">rechts = Bilder / kreativ · links = Logik / Sprache / Zahlen</button>
+          <div class="vi-pop"></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>6. Definition kurz (Whiteboard)</summary>
+      <div class="body">
+        <div class="mm">
+          <div class="mm-c"><span>Visualisierungen</span></div>
+          <div class="mm-g">
+            <div class="mm-b l">
+              <h4>Was?</h4>
+              <ul>
+                <li>Von einem Text zu einer Darstellung / Grafik</li>
+              </ul>
+            </div>
+            <div class="mm-b g">
+              <h4>Wozu?</h4>
+              <ul>
+                <li>Überblick über wichtige Informationen</li>
+              </ul>
+            </div>
+            <div class="mm-b o">
+              <h4>Arten</h4>
+              <ul>
+                <li>Kurvendiagramm</li>
+                <li>Säulendiagramm</li>
+                <li>Mindmap</li>
+                <li>Strukturbild · usw.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- ========== ÜBEN ========== -->
+  <div class="view" id="v-ueben">
+    <div class="hint-bar">✏️ Üben — Form ↔ Zweck · Text → Form · Quiz</div>
+
+    <!-- Match -->
+    <div class="card">
+      <h2>🔗 Zuordnen: Form ↔ Zweck</h2>
+      <p class="muted">Links eine Form, rechts einen Zweck antippen.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin:8px 0 12px">
+        <span class="muted" id="matchScore">0 / 7</span>
+        <button class="btn ghost sm" onclick="initMatch()">Neu</button>
+      </div>
+      <div class="match-grid">
+        <div id="matchLeft"></div>
+        <div id="matchRight"></div>
+      </div>
+    </div>
+
+    <!-- Praxis -->
+    <div class="card">
+      <h2>📄 Text → Darstellungsform</h2>
+      <p class="muted">Welche Form passt am besten?</p>
+      <div id="praxisList"></div>
+    </div>
+
+    <!-- Quiz -->
+    <div class="card" id="quizBox">
+      <h2>📝 Quiz</h2>
+      <div id="quizArea"></div>
+    </div>
+  </div>
+
+  <!-- ========== KA ========== -->
+  <div class="view" id="v-ka">
+    <div class="hint-bar">🥩 Klassenarbeit-Muster: Mindmap zum Text „Fleischkonsum in Deutschland“</div>
+
+    <div class="card">
+      <h2>Aufgabe</h2>
+      <p><b>Visualisiere den Text „Fleischkonsum in Deutschland“ in Form einer Mindmap.</b></p>
+      <div class="box tip">
+        <ul style="margin:0;padding-left:16px">
+          <li>Extra-Blatt für Aufschriebe nutzen</li>
+          <li>Alle wichtigen Informationen übernehmen</li>
+          <li>Am Ende die Anzahl der Wörter zählen</li>
+        </ul>
+      </div>
+      <div class="box info" style="margin-top:8px">
+        <b>5 Schritte in der KA:</b>
+        <ol style="margin:6px 0 0;padding-left:18px;font-size:.88em">
+          <li>Fragestellung: Mindmap zu <i>Fleischkonsum</i></li>
+          <li>Text lesen</li>
+          <li>Schlüsselwörter markieren (Vergangenheit · Wandel · 3 Aspekte · Entwicklungen)</li>
+          <li>Form = Mindmap</li>
+          <li>Zeichnen: Mitte + Äste · nur Stichworte · Wörter zählen</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📄 Originaltext (zum Markieren üben)</h2>
+      <p class="muted" style="margin-bottom:8px">Gelb = mögliche Hauptäste · tippe gestrichelte Wörter für VI.</p>
+      <div class="ka-text">
+        <p><b class="mark">Fleischkonsum in Deutschland</b></p>
+        <p>
+          In der <span class="mark">Vergangenheit</span> galt Fleisch in Deutschland als
+          <button class="vi-btn" data-vi="biểu tượng của sự giàu có">Zeichen von Wohlstand</button><span class="vi-pop"></span>.
+          Nur Menschen mit ausreichend Geld konnten es sich leisten, regelmäßig Fleisch zu essen.
+          Mit dem steigenden <span class="mark">Lebensstandard</span> wurde Fleisch jedoch immer günstiger und für fast alle Menschen verfügbar.
+          Heute gehört es für viele zum Alltag, sei es zu Hause, in der Kantine oder unterwegs.
+        </p>
+        <p>
+          In den letzten Jahren hat sich die Einstellung zum Fleischkonsum jedoch verändert.
+          Immer mehr Menschen beschäftigen sich mit den Folgen ihres Essverhaltens.
+          Dabei spielen vor allem <b>drei Aspekte</b> eine wichtige Rolle:
+          die <span class="mark">Gesundheit</span>, der <span class="mark">Umweltschutz</span> und das <span class="mark">Tierwohl</span>.
+        </p>
+        <p>
+          <b>Gesundheit:</b> Aus gesundheitlicher Sicht liefert Fleisch wichtige Nährstoffe wie
+          <button class="vi-btn" data-vi="protein / chất đạm">Eiweiß</button><span class="vi-pop"></span>
+          und Eisen. Ein mäßiger Verzehr kann daher sinnvoll sein.
+          Zu viel rotes oder verarbeitetes Fleisch kann jedoch das Risiko für verschiedene Krankheiten erhöhen.
+          Ernährungsexperten empfehlen deshalb, den Fleischkonsum zu reduzieren und häufiger pflanzliche Lebensmittel wie Gemüse, Obst oder
+          <button class="vi-btn" data-vi="đậu đỗ / họ đậu">Hülsenfrüchte</button><span class="vi-pop"></span> zu essen.
+        </p>
+        <p>
+          <b>Umwelt:</b> Auch die Umwelt wird durch die Fleischproduktion stark belastet.
+          Für die Tierhaltung werden große Mengen an Wasser, Energie und Anbauflächen benötigt.
+          Zudem entstehen <button class="vi-btn" data-vi="khí nhà kính">Treibhausgase</button><span class="vi-pop"></span>,
+          die zur Klimaerwärmung beitragen. Häufig werden Wälder gerodet, um Platz für Futtermittel zu schaffen.
+          Dadurch gehen wichtige Lebensräume verloren und das Klima wird weiter geschädigt.
+        </p>
+        <p>
+          <b>Tierwohl:</b> Ein weiterer wichtiger Punkt ist das Tierwohl.
+          In der <button class="vi-btn" data-vi="chăn nuôi công nghiệp quy mô lớn">Massentierhaltung</button><span class="vi-pop"></span>
+          leben viele Tiere auf engem Raum und unter schlechten Bedingungen.
+          Deshalb achten immer mehr Verbraucher auf die Herkunft des Fleisches und bevorzugen Produkte aus
+          <button class="vi-btn" data-vi="chăn nuôi phù hợp loài / nhân đạo">artgerechter Haltung</button><span class="vi-pop"></span>.
+        </p>
+        <p>
+          Diese <span class="mark">Entwicklungen</span> führen zu einem veränderten Ernährungsverhalten.
+          Viele Menschen essen heute bewusster und reduzieren Fleischkonsum.
+          Andere verzichten ganz auf tierische Produkte und ernähren sich vegetarisch oder vegan.
+          Langfristig könnte ein geringerer Fleischkonsum dazu beitragen, die Umwelt zu schützen, die Gesundheit zu verbessern und das Leben der Tiere zu erleichtern.
+        </p>
+        <p class="muted" style="margin:0;font-size:.8em">Quelle: Müller, T. &amp; Schneider, A. (2023)</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Kernaussagen (Stichworte)</h2>
+      <ul>
+        <li><b>Vergangenheit:</b>
+          <button class="vi-btn" data-vi="Thịt = biểu tượng của sự giàu có">Fleisch = Zeichen von Wohlstand</button>
+          <div class="vi-pop"></div>
+          · nur mit genug Geld regelmäßig
+        </li>
+        <li><b>Wandel / Alltag:</b>
+          <button class="vi-btn" data-vi="Mức sống tăng → thịt rẻ hơn, hầu như ai cũng mua được">steigender Lebensstandard → günstiger, für fast alle verfügbar</button>
+          <div class="vi-pop"></div>
+          · Haus · Kantine · unterwegs
+        </li>
+        <li><b>3 Aspekte heute:</b>
+          <button class="vi-btn" data-vi="Sức khỏe · Bảo vệ môi trường · Phúc lợi động vật">Gesundheit · Umweltschutz · Tierwohl</button>
+          <div class="vi-pop"></div>
+        </li>
+        <li><b>Gesundheit:</b> Eiweiß + Eisen (mäßig) · zu viel rot/verarbeitet → Risiko ↑ · mehr Gemüse/Obst/Hülsenfrüchte</li>
+        <li><b>Umwelt:</b> Wasser, Energie, Flächen · Treibhausgase · Waldrodung · Lebensräume verloren</li>
+        <li><b>Tierwohl:</b> Massentierhaltung · Herkunft prüfen · artgerechte Haltung</li>
+        <li><b>Entwicklungen:</b> bewusster essen · reduzieren · vegetarisch/vegan · langfristig: Umwelt + Gesundheit + Tiere</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>✅ Muster-Mindmap</h2>
+      <div class="mm">
+        <div class="mm-c"><span>🥩 Fleischkonsum in Deutschland</span></div>
+        <div class="mm-g">
+          <div class="mm-b o">
+            <h4>Vergangenheit</h4>
+            <ul>
+              <li>Zeichen von Wohlstand</li>
+              <li>nur mit genug Geld regelmäßig</li>
+            </ul>
+          </div>
+          <div class="mm-b g">
+            <h4>Wandel / Alltag</h4>
+            <ul>
+              <li>steigender Lebensstandard</li>
+              <li>günstiger &amp; verfügbar</li>
+              <li>Alltag · Kantine · unterwegs</li>
+            </ul>
+          </div>
+          <div class="mm-b r">
+            <h4>Gesundheit</h4>
+            <ul>
+              <li>+ Eiweiß, Eisen (mäßig)</li>
+              <li>zu viel rot/verarbeitet → Risiko ↑</li>
+              <li>Konsum ↓ · pflanzlich ↑</li>
+            </ul>
+          </div>
+          <div class="mm-b l">
+            <h4>Umwelt</h4>
+            <ul>
+              <li>Wasser · Energie · Flächen</li>
+              <li>Treibhausgase · Klima</li>
+              <li>Waldrodung · Lebensräume</li>
+            </ul>
+          </div>
+          <div class="mm-b p">
+            <h4>Tierwohl</h4>
+            <ul>
+              <li>Massentierhaltung</li>
+              <li>Herkunft prüfen</li>
+              <li>artgerechte Haltung</li>
+            </ul>
+          </div>
+          <div class="mm-b g">
+            <h4>Entwicklungen</h4>
+            <ul>
+              <li>bewusster essen</li>
+              <li>reduzieren · veggie/vegan</li>
+              <li>langfristig: Umwelt + Gesundheit + Tiere</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="box ok" style="margin-top:10px">
+        <button class="vi-btn" data-vi="Viết chủ đề giữa trang → 5–6 nhánh lớn → chỉ từ khóa → có thể tô màu → cuối bài đếm từ.">Thema in die Mitte · 5–6 Hauptäste · nur Stichworte · ggf. Farben · Wörter zählen.</button>
+        <div class="vi-pop"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Strukturbild-Beispiel: Teufelskreis</h2>
+      <p class="muted" style="margin-bottom:8px">Aus dem Übungsblatt „Negatives Denken bei Azubis“ → Form: <b>Strukturbild</b></p>
+      <div class="cycle">
+        <div class="node">Negatives Denken<br><span class="muted" style="font-weight:600">„Das kann ich nicht.“</span></div>
+        <div class="arr">→</div>
+        <div class="node">Angst + übervorsichtiges Handeln</div>
+        <div class="arr">→</div>
+        <div class="node">Fehler / Misserfolge</div>
+        <div class="arr">→</div>
+        <div class="node">Kritik vom Chef</div>
+        <div class="arr">→</div>
+        <div class="node">Gefühl des Versagens + eigene Unfähigkeit ↑</div>
+        <div class="arr">↻</div>
+      </div>
+      <div class="box tip">
+        <button class="vi-btn" data-vi="Vòng luẩn quẩn: suy nghĩ tiêu cực → sợ → lỗi → bị chê → càng thấy mình dở → suy nghĩ tiêu cực mạnh hơn.">Teufelskreis: negatives Denken verstärkt sich (negatives Feedback).</button>
+        <div class="vi-pop"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">Visualisierung · KA 16.07.26 · Viel Erfolg!</div>
+</div>
+
+<script>
+/* ===== VI toggle ===== */
+document.addEventListener('click', (e)=>{
+  const btn = e.target.closest('.vi-btn');
+  if(!btn) return;
+  e.preventDefault();
+  e.stopPropagation();
+  const vi = btn.getAttribute('data-vi') || '';
+  // find next .vi-pop sibling (skip text nodes)
+  let pop = btn.nextElementSibling;
+  while(pop && !pop.classList.contains('vi-pop')) pop = pop.nextElementSibling;
+  // if inside parent with dedicated pop right after group – fallback: create after btn
+  if(!pop){
+    pop = document.createElement('div');
+    pop.className = 'vi-pop';
+    btn.insertAdjacentElement('afterend', pop);
+  }
+  const open = pop.classList.contains('show');
+  // close others in same card? optional – keep simple: toggle this one
+  if(open){
+    pop.classList.remove('show');
+    pop.textContent = '';
+    btn.classList.remove('open');
+  }else{
+    pop.textContent = '🇻🇳 ' + vi;
+    pop.classList.add('show');
+    btn.classList.add('open');
+  }
+});
+
+/* ===== DATA ===== */
+const FORMEN = [
+  {id:'kurve', ico:'📈', name:'Kurvendiagramm', zweck:'Entwicklung',
+   desc:'Zeit auf der X-Achse, Menge auf der Y-Achse.', vi:'Biểu đồ đường – xu hướng theo thời gian'},
+  {id:'saeule', ico:'📊', name:'Balken-/Säulendiagramm', zweck:'Vergleich',
+   desc:'Mehrere Größen im Vergleich.', vi:'Biểu đồ cột – so sánh'},
+  {id:'kreis', ico:'🥧', name:'Kreis-/Tortendiagramm', zweck:'Anteile (%)',
+   desc:'Teile eines Ganzen in Prozent.', vi:'Biểu đồ tròn – tỷ lệ %'},
+  {id:'organi', ico:'🏢', name:'Organigramm', zweck:'Hierarchie, Personen',
+   desc:'Hierarchie und Beziehungen von Personen.', vi:'Sơ đồ tổ chức'},
+  {id:'struktur', ico:'🔀', name:'Strukturbild', zweck:'Abläufe, Ursache–Wirkung',
+   desc:'Abläufe, Abhängigkeiten, Teufelskreis.', vi:'Sơ đồ cấu trúc – quy trình, nhân–quả'},
+  {id:'tabelle', ico:'📋', name:'Tabelle', zweck:'Vergleich (Zahlen)',
+   desc:'Genauer Zahlenvergleich mit Einheiten.', vi:'Bảng số liệu'},
+  {id:'mindmap', ico:'🧠', name:'Mindmap', zweck:'Ideensammlung',
+   desc:'Thema in der Mitte, Äste = Aspekte.', vi:'Mindmap – thu thập & sắp ý'},
+];
+
+const PRAXIS = [
+  {title:'Arbeitslosenquote mehrerer Städte (Mai/April 2010)',
+   text:'Viele exakte Prozentwerte zum Vergleich.',
+   answer:'tabelle', options:['tabelle','saeule','kurve','kreis'],
+   explain:'Exakte Zahlen mehrerer Orte → Tabelle.'},
+  {title:'Ausstattung der Haushalte (TV 95,9 · Video 65,9 · …)',
+   text:'Mehrere Produkte mit je einem Wert.',
+   answer:'saeule', options:['saeule','kreis','kurve','mindmap'],
+   explain:'Vergleich mehrerer Größen → Säulen-/Balkendiagramm.'},
+  {title:'Wochenarbeitszeit (6,6% · 7,2% · 12,4% · 58,9% · 14,9%)',
+   text:'Anteile ergeben zusammen 100%.',
+   answer:'kreis', options:['kreis','saeule','tabelle','struktur'],
+   explain:'Anteile eines Ganzen → Kreisdiagramm.'},
+  {title:'Ausfuhr 1992–2000 (685 → 700 → 790 → 950 → 1180)',
+   text:'Ein Wert verändert sich über Jahre.',
+   answer:'kurve', options:['kurve','kreis','organi','mindmap'],
+   explain:'Entwicklung über Zeit → Kurvendiagramm.'},
+  {title:'Negatives Denken → Angst → Fehler → Kritik → …',
+   text:'Ursache–Wirkung, Teufelskreis.',
+   answer:'struktur', options:['struktur','tabelle','kreis','kurve'],
+   explain:'Ablauf / Ursache–Wirkung → Strukturbild.'},
+  {title:'Sachtext „Fleischkonsum“ mit vielen Aspekten',
+   text:'Ideen aus einem Text ordnen.',
+   answer:'mindmap', options:['mindmap','organi','kurve','kreis'],
+   explain:'Ideensammlung/-ordnung → Mindmap.'},
+  {title:'Geschäftsführer → Abteilungsleiter → Mitarbeiter',
+   text:'Hierarchie in einem Betrieb.',
+   answer:'organi', options:['organi','struktur','tabelle','saeule'],
+   explain:'Hierarchie von Personen → Organigramm.'},
+];
+
+const QUIZ = [
+  {cat:'Definition', q:'Was bedeutet Visualisierung von Texten?',
+   opts:['Text auswendig lernen','Text als Grafik/Schaubild darstellen','Nur die Überschrift abschreiben','Text übersetzen'],
+   a:1, ex:'Visualisierung = Text als Grafik darstellen, Wesentliches sichtbar machen.'},
+  {cat:'Ziel', q:'Was ist KEIN Ziel der Visualisierung?',
+   opts:['Wesentliches reduzieren','Roten Faden sichtbar machen','Möglichst viele ganze Sätze schreiben','Verständlichkeit erhöhen'],
+   a:2, ex:'Keine ganzen Sätze – nur Stichworte!'},
+  {cat:'Merkhilfe', q:'Welche Merkhilfe gilt?',
+   opts:['Zeit ist Geld','Bilder sagen mehr als tausend Worte','Übung macht den Meister','Aller Anfang ist schwer'],
+   a:1, ex:'Bilder sagen mehr als tausend Worte.'},
+  {cat:'Schritte', q:'Was ist der 1. Arbeitsschritt?',
+   opts:['Grafik entwerfen','Fragestellung analysieren','Farbe wählen','Wörter zählen'],
+   a:1, ex:'Zuerst die Fragestellung analysieren.'},
+  {cat:'Schritte', q:'Richtige Reihenfolge?',
+   opts:['Zeichnen → Lesen','Lesen → Markieren → Form wählen → Zeichnen','Form wählen → Lesen','Nur zeichnen'],
+   a:1, ex:'Lesen → Markieren → Form wählen → Zeichnen.'},
+  {cat:'Formen', q:'Kurvendiagramm eignet sich für …',
+   opts:['Anteile in %','Entwicklung über Zeit','Hierarchie','Ideensammlung'],
+   a:1, ex:'Kurve = Entwicklung (Zeitachse).'},
+  {cat:'Formen', q:'Kreisdiagramm eignet sich für …',
+   opts:['Anteile (%)','Nur Hierarchie','Nur Zeitreihen','Nur Teufelskreise'],
+   a:0, ex:'Kreis = Anteile in Prozent.'},
+  {cat:'Formen', q:'Säulendiagramm eignet sich für …',
+   opts:['Vergleich','Nur Ursache–Wirkung','Nur Personen','Gedichte'],
+   a:0, ex:'Säule/Balken = Vergleich.'},
+  {cat:'Formen', q:'Mindmap eignet sich für …',
+   opts:['Ideensammlung und -ordnung','Exakte Kreisanteile','Börsenkurse','Nur Organigramme'],
+   a:0, ex:'Mindmap = Ideensammlung/-ordnung.'},
+  {cat:'Formen', q:'Strukturbild eignet sich für …',
+   opts:['Abläufe, Ursache–Wirkung','Nur Prozent','Nur Jahreskurven','Wortlisten'],
+   a:0, ex:'Strukturbild = Abläufe / Ursache–Wirkung.'},
+  {cat:'Formen', q:'Organigramm zeigt vor allem …',
+   opts:['Hierarchie von Personen','Wetter','Rezepte','Kreisanteile'],
+   a:0, ex:'Organigramm = Hierarchie / Personen.'},
+  {cat:'Tipps', q:'Warum keine ganzen Sätze?',
+   opts:['Weil Lesen verboten ist','Weil Stichworte übersichtlicher sind','Weil Sätze immer falsch sind','Weil es zu bunt wird'],
+   a:1, ex:'Stichworte sind klarer und prüfungsgerecht.'},
+  {cat:'Tipps', q:'Großschreibung in Schaubildern?',
+   opts:['Alles groß','Nur Substantive und Satzanfänge','Nur Verben','Keine Regel'],
+   a:1, ex:'Nur Substantive + Satzanfang groß.'},
+  {cat:'Tipps', q:'Was braucht jede Grafik?',
+   opts:['Nur Farben','Überschrift (und Einheiten/Achsen)','20 ganze Sätze','Kein Titel'],
+   a:1, ex:'Überschrift und Größenbezeichnung nicht vergessen.'},
+  {cat:'Hirn', q:'Die rechte Hirnhälfte arbeitet vor allem …',
+   opts:['digital wie ein Computer','analog und ganzheitlich','nur mit Tabellen','nur mit Grammatik'],
+   a:1, ex:'Rechts: analog, ganzheitlich, Bilder, kreativ.'},
+  {cat:'Hirn', q:'Die linke Hirnhälfte ist zuständig für …',
+   opts:['nur Musik','Sprache, Logik, Mathe, Texte/Tabellen','nur Gefühle','nur Malen'],
+   a:1, ex:'Links: analytisch, Sprache, Logik, Struktur.'},
+  {cat:'KA', q:'Drei zentrale Aspekte beim Fleischkonsum heute?',
+   opts:['Preis, Werbung, Transport','Gesundheit, Umweltschutz, Tierwohl','Salz, Zucker, Fett','Import, Export, Zoll'],
+   a:1, ex:'Gesundheit · Umwelt · Tierwohl.'},
+  {cat:'KA', q:'Welche Form verlangt die Muster-KA?',
+   opts:['Kurvendiagramm','Mindmap','Kreisdiagramm','Organigramm'],
+   a:1, ex:'Aufgabe: in Form einer Mindmap.'},
+  {cat:'Praxis', q:'Exportzahlen 1992–2000 → beste Form?',
+   opts:['Kurvendiagramm','Organigramm','Kreisdiagramm','Mindmap'],
+   a:0, ex:'Zeitreihe → Kurve.'},
+  {cat:'Praxis', q:'Teufelskreis negatives Denken → Form?',
+   opts:['Strukturbild','Kreisdiagramm','Tabelle','Kurvendiagramm'],
+   a:0, ex:'Ursache–Wirkung → Strukturbild.'},
+];
+
+/* ===== NAV ===== */
+function go(name){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active', t.dataset.v===name));
+  document.getElementById('v-'+name)?.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(name==='ueben'){ initMatch(); renderPraxis(); quizIntro(); }
+  if(name==='lernen') renderFormen();
+}
+
+/* ===== FORMEN ===== */
+function renderFormen(){
+  const g=document.getElementById('formenGrid');
+  if(!g) return;
+  g.innerHTML = FORMEN.map(f=>`
+    <div class="tile" style="cursor:default">
+      <div class="ico">${f.ico}</div>
+      <div class="name">${f.name}</div>
+      <div class="zweck">${f.zweck}</div>
+      <div class="muted" style="margin-top:6px;font-size:.82em">${f.desc}</div>
+      <button class="vi-btn" data-vi="${f.vi}" style="margin-top:6px;font-size:.8em">Nghĩa 🇻🇳</button>
+      <div class="vi-pop"></div>
+    </div>`).join('');
+}
+
+/* ===== MATCH ===== */
+let matchSel=null, matchDone=0;
+function initMatch(){
+  matchSel=null; matchDone=0;
+  const forms=shuffle([...FORMEN]);
+  const zwecke=shuffle(FORMEN.map(f=>({id:f.id,text:f.zweck})));
+  document.getElementById('matchLeft').innerHTML =
+    '<div class="muted" style="margin-bottom:6px;font-weight:700">Form</div>'+
+    forms.map(f=>`<div class="m-item" data-side="L" data-id="${f.id}" onclick="pickMatch(this)">${f.ico} ${f.name}</div>`).join('');
+  document.getElementById('matchRight').innerHTML =
+    '<div class="muted" style="margin-bottom:6px;font-weight:700">Zweck</div>'+
+    zwecke.map(z=>`<div class="m-item" data-side="R" data-id="${z.id}" onclick="pickMatch(this)">${z.text}</div>`).join('');
+  document.getElementById('matchScore').textContent='0 / 7';
+}
+function pickMatch(el){
+  if(el.classList.contains('done')) return;
+  if(!matchSel){ document.querySelectorAll('.m-item.sel').forEach(x=>x.classList.remove('sel')); el.classList.add('sel'); matchSel=el; return; }
+  if(matchSel===el){ el.classList.remove('sel'); matchSel=null; return; }
+  if(matchSel.dataset.side===el.dataset.side){ matchSel.classList.remove('sel'); el.classList.add('sel'); matchSel=el; return; }
+  const a=matchSel,b=el;
+  if(a.dataset.id===b.dataset.id){
+    a.classList.add('done'); b.classList.add('done'); a.classList.remove('sel'); b.classList.remove('sel');
+    matchDone++; matchSel=null;
+    document.getElementById('matchScore').textContent=matchDone+' / 7';
+  }else{
+    a.classList.add('bad'); b.classList.add('bad');
+    setTimeout(()=>{a.classList.remove('bad','sel'); b.classList.remove('bad'); matchSel=null;},400);
+  }
+}
+
+/* ===== PRAXIS ===== */
+function renderPraxis(){
+  const label=id=>(FORMEN.find(f=>f.id===id)||{}).name||id;
+  document.getElementById('praxisList').innerHTML = PRAXIS.map((p,i)=>`
+    <div class="prac">
+      <div style="font-weight:800;font-size:.9em">${i+1}. ${p.title}</div>
+      <div class="src">${p.text}</div>
+      <div class="choice" id="pb-${i}">
+        ${p.options.map(o=>`<button onclick="ansPraxis(${i},'${o}')">${label(o)}</button>`).join('')}
+      </div>
+      <div class="fb" id="pf-${i}"></div>
+    </div>`).join('');
+}
+function ansPraxis(i,opt){
+  const p=PRAXIS[i];
+  const btns=[...document.querySelectorAll('#pb-'+i+' button')];
+  btns.forEach(b=>{
+    b.disabled=true;
+    const f=FORMEN.find(x=>x.name===b.textContent);
+    if(f?.id===p.answer) b.classList.add('ok');
+    else if(f?.id===opt) b.classList.add('no');
+  });
+  const fb=document.getElementById('pf-'+i);
+  const ok=opt===p.answer;
+  fb.className='fb show '+(ok?'ok':'no');
+  fb.textContent=(ok?'✅ Richtig! ':'❌ Falsch. ')+p.explain;
+}
+
+/* ===== QUIZ ===== */
+let qOrder=[], qIndex=0, qScore=0;
+function quizIntro(){
+  document.getElementById('quizArea').innerHTML=`
+    <div class="center">
+      <p class="muted" style="margin-bottom:12px">${QUIZ.length} Fragen · gemischt · mit Erklärung</p>
+      <button class="btn" onclick="quizStart()">Quiz starten</button>
+    </div>`;
+}
+function quizStart(){ qOrder=shuffle(QUIZ.map((_,i)=>i)); qIndex=0; qScore=0; renderQ(); }
+function renderQ(){
+  if(qIndex>=qOrder.length) return quizResult();
+  const q=QUIZ[qOrder[qIndex]];
+  const pct=Math.round(qIndex/qOrder.length*100);
+  let html=`<div class="qprog"><div style="width:${pct}%"></div></div>
+    <div class="qmeta"><span>Frage ${qIndex+1} / ${qOrder.length}</span><span>Punkte: ${qScore}</span></div>
+    <div class="qcat">${q.cat}</div><div class="qtext">${q.q}</div><div id="qopts">`;
+  q.opts.forEach((o,i)=>{ html+=`<button class="opt" onclick="answerQ(${i})">${o}</button>`; });
+  html+=`</div><div class="fb" id="qfb"></div><div id="qnav"></div>`;
+  document.getElementById('quizArea').innerHTML=html;
+}
+function answerQ(chosen){
+  const q=QUIZ[qOrder[qIndex]];
+  [...document.querySelectorAll('#qopts .opt')].forEach((b,i)=>{
+    b.classList.add('locked'); b.onclick=null;
+    if(i===q.a) b.classList.add('correct');
+    if(i===chosen && chosen!==q.a) b.classList.add('wrong');
+  });
+  const fb=document.getElementById('qfb');
+  if(chosen===q.a){ qScore++; fb.className='fb show ok'; fb.textContent='✅ Richtig! '+q.ex; }
+  else { fb.className='fb show no'; fb.textContent='❌ Falsch. '+q.ex; }
+  const last=qIndex===qOrder.length-1;
+  document.getElementById('qnav').innerHTML=`<button class="btn row" onclick="qIndex++;renderQ()">${last?'Ergebnis':'Weiter →'}</button>`;
+}
+function quizResult(){
+  const t=qOrder.length, pct=Math.round(qScore/t*100);
+  const msg=pct>=90?'Sehr gut!':pct>=70?'Gut!':pct>=50?'Weiter üben.':'Nochmal Lernen lesen.';
+  document.getElementById('quizArea').innerHTML=`
+    <div class="center">
+      <div class="muted">Ergebnis</div>
+      <div class="big">${qScore} / ${t}</div>
+      <div class="muted" style="margin-bottom:12px">${pct}% · ${msg}</div>
+      <button class="btn" onclick="quizStart()">Nochmal</button>
+      <button class="btn ghost" style="margin-left:8px" onclick="go('lernen')">Zum Lernen</button>
+    </div>`;
+}
+
+function shuffle(a){const arr=[...a];for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}return arr;}
+
+/* init */
+renderFormen();
+</script>
+</body>
+</html>
