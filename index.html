@@ -497,6 +497,20 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
     <p>Wähle ein Fach, um mit dem Lernen zu beginnen.</p>
   </div>
 
+  <!-- Banner Abschlussprüfung -->
+  <div class="exam-banner" onclick="go('#/abschluss')">
+    <div class="exam-ic">🎯</div>
+    <div class="exam-txt">
+      <div class="exam-kicker">Hauptziel</div>
+      <h2>Abschlussprüfung</h2>
+      <p>Aufbau der Prüfung &amp; alle Lernthemen an einem Ort.</p>
+    </div>
+    <div class="exam-go">Los geht's →</div>
+  </div>
+
+  <div class="fach-label">Fächer</div>
+  <div class="grid" id="subjectGrid"></div>
+
   <div class="fach-label">Heute üben</div>
   <div class="today-grid">
     <div class="today-card" onclick="go('#/bfk/quiz');setTimeout(()=>{try{quizStart('quick')}catch(e){}},120)">
@@ -525,20 +539,6 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
     </div>
     <div id="homeProgressHint" class="muted" style="margin-top:10px;font-size:.82em">Nach dem Login erscheinen hier deine Daten.</div>
   </div>
-
-  <!-- Banner Abschlussprüfung -->
-  <div class="exam-banner" onclick="go('#/abschluss')">
-    <div class="exam-ic">🎯</div>
-    <div class="exam-txt">
-      <div class="exam-kicker">Hauptziel</div>
-      <h2>Abschlussprüfung</h2>
-      <p>Aufbau der Prüfung &amp; alle Lernthemen an einem Ort.</p>
-    </div>
-    <div class="exam-go">Los geht's →</div>
-  </div>
-
-  <div class="fach-label">Fächer</div>
-  <div class="grid" id="subjectGrid"></div>
 
   <div class="hist-panel" id="homeHistPanel" style="display:none">
     <h3>📜 Quiz-Historie von <span id="homeHistName">—</span></h3>
