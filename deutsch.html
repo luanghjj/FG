@@ -162,6 +162,39 @@ table.t tr:nth-child(even) td{background:#f8fafc}
 .acc>summary::after{content:'▸';color:var(--muted);font-size:.9em;transition:.15s}
 .acc[open]>summary::after{transform:rotate(90deg)}
 .acc .body{padding:0 14px 14px}
+
+/* Textübungen */
+.tu-card{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:16px;overflow:hidden;box-shadow:var(--shadow)}
+.tu-head{background:linear-gradient(135deg,#1e3a8a,#2563eb);color:#fff;padding:14px 16px;display:flex;align-items:center;gap:10px}
+.tu-head .num{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.9em;flex-shrink:0}
+.tu-head .info{flex:1}
+.tu-head h3{font-size:1em;margin-bottom:2px}
+.tu-head .tag2{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:2px 9px;font-size:.7em;font-weight:800}
+.tu-body{padding:14px 16px}
+.tu-text{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:12px 14px;font-size:.88em;line-height:1.65;color:#334155;margin-bottom:14px}
+.tu-text .mark{background:#fef08a;padding:0 2px;border-radius:2px;font-weight:700}
+.tu-steps{counter-reset:step}
+.tu-step{counter-increment:step;border:1px solid var(--line);border-radius:10px;margin-bottom:8px;overflow:hidden}
+.tu-step-head{display:flex;align-items:center;gap:10px;padding:10px 12px;background:#f8fafc;cursor:pointer;user-select:none;font-weight:700;font-size:.88em}
+.tu-step-head::before{content:counter(step);width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.8em;font-weight:800;flex-shrink:0}
+.tu-step-body{display:none;padding:10px 14px;font-size:.86em;line-height:1.6;border-top:1px solid var(--line)}
+.tu-step-body.show{display:block}
+.tu-step-body .reveal-btn{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:6px 12px;font:inherit;font-size:.82em;font-weight:700;cursor:pointer;margin-bottom:8px}
+.tu-step-body .answer{display:none;background:#ecfdf5;border:1px solid #a7f3d0;border-radius:8px;padding:10px 12px;color:#065f46;margin-top:8px}
+.tu-step-body .answer.show{display:block}
+.tu-step-body .mm-mini{background:#0f172a;color:#e2e8f0;border-radius:10px;padding:12px;display:none;margin-top:8px}
+.tu-step-body .mm-mini.show{display:block}
+.tu-step-body .mm-mini h5{color:#60a5fa;font-size:.82em;margin-bottom:6px;text-align:center}
+.tu-step-body .mm-mini ul{padding-left:14px;font-size:.8em;color:#cbd5e1}
+.tu-step-body .mm-mini li{margin:3px 0}
+.stichwort-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.stw{background:#dbeafe;color:#1e40af;border:1px solid #93c5fd;border-radius:999px;padding:3px 10px;font-size:.78em;font-weight:700}
+.stw.orange{background:#fff7ed;color:#c2410c;border-color:#fdba74}
+.stw.green{background:#dcfce7;color:#166534;border-color:#86efac}
+.form-badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;border-radius:10px;padding:8px 14px;font-weight:800;font-size:.92em;margin:6px 0}
+.steps-nav{display:flex;gap:8px;margin-top:4px}
+.steps-nav button{border:1px solid var(--line);background:#fff;border-radius:8px;padding:7px 12px;font:inherit;font-size:.82em;font-weight:700;cursor:pointer;flex:1}
+.steps-nav button:hover{border-color:var(--accent);color:var(--accent)}
 </style>
 </head>
 <body>
@@ -170,7 +203,7 @@ table.t tr:nth-child(even) td{background:#f8fafc}
     <div class="nav-inner">
       <div class="brand" onclick="go('home')"><div class="logo">🇩🇪</div> Visualisierung</div>
       <span class="ka">KA 16.07.26</span>
-      <a class="home-link" href="index.html">← Fächer</a>
+      <a class="home-link" href="./index.html">← Fächer</a>
       <div class="tabs">
         <button class="tab active" data-v="home" onclick="go('home')">Start</button>
         <button class="tab" data-v="lernen" onclick="go('lernen')">Lernen</button>
@@ -558,7 +591,10 @@ table.t tr:nth-child(even) td{background:#f8fafc}
 
   <!-- ========== ÜBEN ========== -->
   <div class="view" id="v-ueben">
-    <div class="hint-bar">✏️ Üben — Form ↔ Zweck · Text → Form · Quiz</div>
+    <div class="hint-bar">✏️ Üben — Texte lesen · Thema &amp; Stichworte · Form wählen · Muster ansehen</div>
+
+    <!-- Textübungen -->
+    <div id="tuList"></div>
 
     <!-- Match -->
     <div class="card">
@@ -915,13 +951,252 @@ const QUIZ = [
    a:0, ex:'Ursache–Wirkung → Strukturbild.'},
 ];
 
+/* ===== TEXTÜBUNGEN ===== */
+const TEXTUBUNGEN = [
+  {
+    id:'tu1',
+    title:'Jugendliche und Social Media',
+    form:'mindmap', formLabel:'Mindmap', formIco:'🧠',
+    aufgabe:'Visualisiere den folgenden Text in Form einer <b>Mindmap</b>.',
+    text:`In Deutschland nutzen fast alle Jugendlichen zwischen 12 und 19 Jahren täglich Social Media.
+Die beliebtesten Plattformen sind Instagram, TikTok und YouTube.
+Jugendliche verbringen durchschnittlich <span class="mark">drei Stunden</span> täglich online.
+Social Media hat sowohl <span class="mark">Vorteile</span> als auch <span class="mark">Nachteile</span>.
+Zu den Vorteilen zählen Kommunikation mit Freunden, Unterhaltung und das schnelle Finden von Informationen.
+Als Nachteile gelten Cybermobbing, Schlafmangel und ein verzerrtes Selbstbild durch gefilterte Fotos.
+Viele Eltern und Lehrer fordern daher mehr <span class="mark">Medienkompetenz</span> in der Schule.`,
+    thema:'Social Media und Jugendliche',
+    themaVI:'Mạng xã hội và giới trẻ',
+    stichworte:[
+      {text:'3 Std./Tag',cls:''},
+      {text:'Instagram · TikTok · YouTube',cls:''},
+      {text:'Kommunikation',cls:'green'},
+      {text:'Unterhaltung',cls:'green'},
+      {text:'Information',cls:'green'},
+      {text:'Cybermobbing',cls:'orange'},
+      {text:'Schlafmangel',cls:'orange'},
+      {text:'verzerrtes Selbstbild',cls:'orange'},
+      {text:'Medienkompetenz',cls:''},
+    ],
+    muster:[
+      {color:'g', title:'Nutzung', items:['fast alle 12–19 Jährigen','3 Std./Tag','Instagram · TikTok · YouTube']},
+      {color:'l', title:'Vorteile', items:['Kommunikation mit Freunden','Unterhaltung','schnelle Information']},
+      {color:'r', title:'Nachteile', items:['Cybermobbing','Schlafmangel','verzerrtes Selbstbild']},
+      {color:'p', title:'Forderung', items:['Medienkompetenz in Schule','Eltern + Lehrer']},
+    ]
+  },
+  {
+    id:'tu2',
+    title:'Berufsausbildung in Deutschland (2015–2023)',
+    form:'kurve', formLabel:'Kurvendiagramm', formIco:'📈',
+    aufgabe:'Visualisiere die folgende Entwicklung als <b>Kurvendiagramm</b>.',
+    text:`Die Zahl der neu abgeschlossenen Ausbildungsverträge in Deutschland hat sich in den letzten Jahren verändert.
+Im Jahr <span class="mark">2015</span> wurden rund <span class="mark">522.000</span> neue Verträge abgeschlossen.
+Bis <span class="mark">2019</span> sank die Zahl leicht auf <span class="mark">499.000</span>.
+Im Jahr <span class="mark">2020</span> gab es einen starken Rückgang auf <span class="mark">422.000</span> – bedingt durch die Corona-Pandemie.
+Seitdem steigt die Zahl wieder: <span class="mark">2022</span> wurden <span class="mark">473.000</span> Verträge gezählt, <span class="mark">2023</span> rund <span class="mark">490.000</span>.`,
+    thema:'Entwicklung der Ausbildungsverträge 2015–2023',
+    themaVI:'Sự thay đổi số hợp đồng đào tạo nghề 2015–2023',
+    stichworte:[
+      {text:'2015: 522.000',cls:'green'},
+      {text:'2019: 499.000',cls:''},
+      {text:'2020: 422.000 ↓ (Corona)',cls:'orange'},
+      {text:'2022: 473.000 ↑',cls:''},
+      {text:'2023: 490.000 ↑',cls:'green'},
+    ],
+    zeichenTipps:[
+      'X-Achse: Jahre (2015, 2019, 2020, 2022, 2023)',
+      'Y-Achse: Anzahl Verträge (in Tausend)',
+      'Überschrift: Neu abgeschlossene Ausbildungsverträge in Deutschland',
+      'Einheit angeben: in Tsd.',
+      'Tiefpunkt 2020 markieren/beschriften (Corona)',
+    ],
+    muster:null
+  },
+  {
+    id:'tu3',
+    title:'Organisation im Restaurant',
+    form:'organi', formLabel:'Organigramm', formIco:'🏢',
+    aufgabe:'Erstelle ein <b>Organigramm</b> der Betriebshierarchie.',
+    text:`In einem Restaurant gibt es eine klare <span class="mark">Hierarchie</span>.
+An der Spitze steht der <span class="mark">Geschäftsführer</span>.
+Ihm direkt unterstellt sind der <span class="mark">Küchenchef</span> und der <span class="mark">Restaurantleiter</span>.
+Dem Küchenchef unterstehen die <span class="mark">Köche</span> und die <span class="mark">Azubis in der Küche</span>.
+Dem Restaurantleiter unterstehen die <span class="mark">Servicekräfte</span> und die <span class="mark">Azubis im Service</span>.
+Alle Mitarbeiter arbeiten zusammen, um den Gästen einen guten Service zu bieten.`,
+    thema:'Betriebshierarchie im Restaurant',
+    themaVI:'Cơ cấu tổ chức nhà hàng',
+    stichworte:[
+      {text:'Geschäftsführer',cls:''},
+      {text:'Küchenchef',cls:''},
+      {text:'Restaurantleiter',cls:''},
+      {text:'Köche',cls:'green'},
+      {text:'Azubis Küche',cls:'green'},
+      {text:'Servicekräfte',cls:'green'},
+      {text:'Azubis Service',cls:'green'},
+    ],
+    zeichenTipps:[
+      'Ganz oben: Geschäftsführer (Rechteck)',
+      'Darunter 2 Äste: Küchenchef | Restaurantleiter',
+      'Küchenchef → Köche, Azubis (Küche)',
+      'Restaurantleiter → Servicekräfte, Azubis (Service)',
+      'Verbindungslinien nach unten zeichnen (kein Pfeil)',
+      'Überschrift: Betriebshierarchie – Restaurant',
+    ],
+    muster:null
+  }
+];
+
+function renderTU(){
+  const el = document.getElementById('tuList');
+  if(!el) return;
+  el.innerHTML = TEXTUBUNGEN.map((tu,i) => buildTU(tu,i)).join('');
+}
+
+function buildTU(tu, i){
+  const stw = tu.stichworte.map(s=>`<span class="stw ${s.cls}">${s.text}</span>`).join('');
+
+  // Step 2 answer: thema
+  const themaAns = `<div class="answer" id="${tu.id}-thema-ans">
+    🎯 <b>Thema:</b> ${tu.thema}<br>
+    🇻🇳 <span style="color:#065f46">${tu.themaVI}</span>
+  </div>`;
+
+  // Step 3: stichworte
+  const stwAns = `<div class="answer" id="${tu.id}-stw-ans">
+    <b>Stichworte (từ khóa):</b>
+    <div class="stichwort-list">${stw}</div>
+  </div>`;
+
+  // Step 4: form
+  const formAns = `<div class="answer" id="${tu.id}-form-ans">
+    <div class="form-badge">${tu.formIco} ${tu.formLabel}</div>
+    <div style="font-size:.84em;color:#374151;margin-top:6px">
+      ${tu.form==='mindmap'?'→ Langer Text mit vielen Aspekten → <b>Mindmap</b> (Thema Mitte + Äste)':''}
+      ${tu.form==='kurve'?'→ Werte ändern sich über <b>Jahre</b> → <b>Kurvendiagramm</b> (X=Zeit, Y=Menge)':''}
+      ${tu.form==='organi'?'→ Wer ist wem unterstellt? → <b>Organigramm</b> (Hierarchie)':''}
+    </div>
+  </div>`;
+
+  // Step 5: Zeichnen tips + optional mindmap muster
+  let drawContent = '';
+  if(tu.muster){
+    const branches = tu.muster.map(b=>`
+      <div class="mm-b ${b.color}" style="margin-bottom:8px">
+        <h4 style="font-size:.82em">${b.title}</h4>
+        <ul>${b.items.map(it=>`<li>${it}</li>`).join('')}</ul>
+      </div>`).join('');
+    drawContent = `<div class="mm-mini" id="${tu.id}-muster">
+      <h5>✅ Muster-${tu.formLabel} (Lösung)</h5>
+      <div style="font-size:.78em;color:#94a3b8;margin-bottom:8px;text-align:center">Thema in die Mitte · Äste = Hauptpunkte · nur Stichworte</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">${branches}</div>
+    </div>`;
+  } else {
+    const tips = tu.zeichenTipps.map(t=>`<li>${t}</li>`).join('');
+    drawContent = `<div class="answer" id="${tu.id}-muster">
+      <b>✏️ Tipps zum Zeichnen:</b>
+      <ul style="margin:6px 0 0;padding-left:16px">${tips}</ul>
+    </div>`;
+  }
+
+  return `<div class="tu-card">
+  <div class="tu-head">
+    <div class="num">${i+1}</div>
+    <div class="info">
+      <h3>📄 ${tu.title}</h3>
+      <span class="tag2">${tu.formIco} ${tu.formLabel}</span>
+    </div>
+  </div>
+  <div class="tu-body">
+    <div class="box info" style="margin-bottom:12px">📋 <b>Aufgabe:</b> ${tu.aufgabe}</div>
+    <div class="tu-text">${tu.text}</div>
+
+    <div class="tu-steps">
+      <!-- Schritt 1: Aufgabe verstehen -->
+      <div class="tu-step">
+        <div class="tu-step-head" onclick="toggleStep('${tu.id}-s1')">
+          Aufgabe verstehen (Hiểu đề bài) — Was soll ich machen?
+        </div>
+        <div class="tu-step-body" id="${tu.id}-s1">
+          <div class="box info">📌 <b>Đọc đề bài:</b> Finde das Schlüsselwort in der Aufgabe.<br>
+          Hier: <b>„${tu.formLabel}"</b> = Darstellungsform ist vorgegeben.</div>
+          <div class="box tip">🇻🇳 <b>Ghi nhớ:</b> Đọc đề trước tiên → xác định dạng vẽ yêu cầu. Đề thường có từ như: <i>"Visualisiere … als Mindmap / als Diagramm …"</i></div>
+        </div>
+      </div>
+
+      <!-- Schritt 2: Thema -->
+      <div class="tu-step">
+        <div class="tu-step-head" onclick="toggleStep('${tu.id}-s2')">
+          Thema bestimmen (Xác định chủ đề chính)
+        </div>
+        <div class="tu-step-body" id="${tu.id}-s2">
+          <p>Lies den Text. Was ist das Hauptthema? (= Mitte der Mindmap / Titel des Diagramms)</p>
+          <div class="box tip">🇻🇳 Chủ đề = ý trung tâm của văn bản. Thường nằm ở câu đầu hoặc tiêu đề.</div>
+          <button class="reveal-btn" onclick="revealAns('${tu.id}-thema-ans')">→ Lösung zeigen</button>
+          ${themaAns}
+        </div>
+      </div>
+
+      <!-- Schritt 3: Stichworte -->
+      <div class="tu-step">
+        <div class="tu-step-head" onclick="toggleStep('${tu.id}-s3')">
+          Stichworte markieren (Gạch từ khóa)
+        </div>
+        <div class="tu-step-body" id="${tu.id}-s3">
+          <p>Markiere wichtige Wörter und Zahlen im Text. <b>Keine ganzen Sätze!</b></p>
+          <div class="box tip">🇻🇳 Gạch chỉ từ khóa, số liệu, tên gọi. Không chép nguyên câu!</div>
+          <button class="reveal-btn" onclick="revealAns('${tu.id}-stw-ans')">→ Stichworte zeigen</button>
+          ${stwAns}
+        </div>
+      </div>
+
+      <!-- Schritt 4: Form wählen -->
+      <div class="tu-step">
+        <div class="tu-step-head" onclick="toggleStep('${tu.id}-s4')">
+          Darstellungsform wählen (Chọn dạng vẽ)
+        </div>
+        <div class="tu-step-body" id="${tu.id}-s4">
+          <p>Welche Form passt zu diesem Text? Warum?</p>
+          <div class="box tip">🇻🇳 Nhìn nội dung: có số liệu theo năm? → đường. Có tỷ lệ %? → tròn. Có cấp bậc? → organigramm. Có nhiều ý? → mindmap.</div>
+          <button class="reveal-btn" onclick="revealAns('${tu.id}-form-ans')">→ Antwort zeigen</button>
+          ${formAns}
+        </div>
+      </div>
+
+      <!-- Schritt 5: Zeichnen -->
+      <div class="tu-step">
+        <div class="tu-step-head" onclick="toggleStep('${tu.id}-s5')">
+          Zeichnen / Muster ansehen (Vẽ / Xem đáp án)
+        </div>
+        <div class="tu-step-body" id="${tu.id}-s5">
+          <button class="reveal-btn" onclick="revealAns('${tu.id}-muster')">→ Muster / Tipps zeigen</button>
+          ${drawContent}
+          <div class="box ok" style="margin-top:10px">✅ <b>Checkliste:</b> Überschrift ✓ · nur Stichworte ✓ · Einheiten/Achsen ✓ · sauber mit Lineal ✓ · Wörter zählen ✓</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`;
+}
+
+function toggleStep(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.classList.toggle('show');
+}
+function revealAns(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.classList.add('show');
+}
+
 /* ===== NAV ===== */
 function go(name){
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active', t.dataset.v===name));
   document.getElementById('v-'+name)?.classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
-  if(name==='ueben'){ initMatch(); renderPraxis(); quizIntro(); }
+  if(name==='ueben'){ renderTU(); initMatch(); renderPraxis(); quizIntro(); }
   if(name==='lernen') renderFormen();
 }
 
@@ -1049,6 +1324,7 @@ function shuffle(a){const arr=[...a];for(let i=arr.length-1;i>0;i--){const j=Mat
 
 /* init */
 renderFormen();
+renderTU();
 </script>
 </body>
 </html>
