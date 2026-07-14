@@ -327,6 +327,70 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 .q-feedback.no{background:var(--badbg)!important;color:var(--bad)!important;border-left-color:var(--bad)!important}
 .quiz-result .big{color:var(--ink)!important}
 .lb tr.me td{background:var(--accent-soft)!important}
+
+/* ===== UX: Today CTA / progress ===== */
+.today-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 0 18px}
+.today-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;cursor:pointer;transition:.18s;text-align:left}
+.today-card:hover{border-color:#93c5fd;box-shadow:var(--shadow);transform:translateY(-2px)}
+.today-card .ic{font-size:1.35em;margin-bottom:8px}
+.today-card b{display:block;font-size:.92em;font-weight:600;margin-bottom:4px}
+.today-card span{display:block;font-size:.78em;color:var(--muted);line-height:1.35}
+.progress-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;margin:0 0 18px}
+.progress-card h3{font-size:.95em;font-weight:600;margin-bottom:10px}
+.progress-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.pstat{background:var(--accent-soft);border-radius:12px;padding:10px;text-align:center}
+.pstat .n{font-size:1.15em;font-weight:600;color:var(--accent)}
+.pstat .l{font-size:.72em;color:var(--muted);margin-top:2px}
+.empty-state{text-align:center;padding:18px 10px;color:var(--muted);font-size:.9em}
+.empty-state .big-ic{font-size:1.8em;margin-bottom:6px}
+.skeleton{background:linear-gradient(90deg,#dbeafe,#f8fafc,#dbeafe);background-size:200% 100%;animation:sk 1.1s infinite;border-radius:8px;height:14px;margin:8px 0}
+@keyframes sk{0%{background-position:100% 0}100%{background-position:-100% 0}}
+
+/* ===== Toast ===== */
+#toastHost{position:fixed;left:50%;bottom:calc(18px + var(--safe-bottom));transform:translateX(-50%);z-index:400;display:flex;flex-direction:column;gap:8px;width:min(420px,92vw);pointer-events:none}
+.toast{background:#0f172a;color:#fff;border-radius:14px;padding:12px 14px;font-size:.88em;font-weight:500;
+  box-shadow:0 12px 30px rgba(15,23,42,.2);animation:toastIn .28s ease;pointer-events:auto}
+.toast.ok{background:#166534}.toast.err{background:#991b1b}.toast.info{background:#1e3a8a}
+@keyframes toastIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media(max-width:640px){#toastHost{bottom:calc(72px + var(--safe-bottom))}}
+
+/* ===== Search sheet ===== */
+.search-toggle{display:none;border:1px solid var(--line);background:#fff;border-radius:999px;width:40px;height:40px;
+  align-items:center;justify-content:center;cursor:pointer;font-size:1em;flex-shrink:0}
+#searchSheet{position:fixed;inset:0;z-index:260;background:rgba(15,23,42,.35);display:none;padding:max(12px,var(--safe-top)) 12px 12px}
+#searchSheet.show{display:block}
+#searchSheet .sheet{background:#fff;border-radius:18px;max-width:640px;margin:0 auto;max-height:min(88vh,720px);
+  display:flex;flex-direction:column;overflow:hidden;box-shadow:var(--shadow);animation:popIn .25s ease}
+#searchSheet .sheet-head{display:flex;gap:8px;align-items:center;padding:12px;border-bottom:1px solid var(--line)}
+#searchSheet input{flex:1;border:1px solid var(--line);border-radius:12px;padding:11px 12px;font:inherit}
+#searchSheet input:focus{outline:none;border-color:#93c5fd;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+#searchSheet .sheet-close{border:none;background:var(--accent-soft);border-radius:10px;padding:10px 12px;font:inherit;cursor:pointer;font-weight:600;color:var(--accent)}
+#searchSheet .sheet-body{overflow:auto;padding:6px 0 max(12px,var(--safe-bottom))}
+
+/* ===== Bottom nav ===== */
+.bottom-nav{display:none;position:fixed;left:0;right:0;bottom:0;z-index:80;background:rgba(255,255,255,.96);
+  backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:6px 8px calc(6px + var(--safe-bottom));
+  justify-content:space-around;gap:4px}
+.bottom-nav button{flex:1;border:none;background:transparent;color:var(--muted);font:inherit;font-size:.68em;font-weight:600;
+  padding:6px 2px;border-radius:12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;min-height:48px}
+.bottom-nav button .bi{font-size:1.15em;line-height:1}
+.bottom-nav button.active{color:var(--accent);background:var(--accent-soft)}
+.page.locked ~ .bottom-nav{display:none!important}
+
+/* ===== Fleisch sheet ===== */
+#fleischSheet{position:fixed;inset:0;z-index:270;background:rgba(15,23,42,.4);display:none;align-items:flex-end;justify-content:center}
+#fleischSheet.show{display:flex}
+#fleischSheet .fs-card{width:min(560px,100%);background:#fff;border-radius:18px 18px 0 0;padding:14px 16px calc(16px + var(--safe-bottom));
+  max-height:78vh;overflow:auto;animation:sheetUp .28s ease;box-shadow:0 -10px 40px rgba(15,23,42,.18)}
+@keyframes sheetUp{from{transform:translateY(24px);opacity:.6}to{transform:none;opacity:1}}
+#fleischSheet .fs-handle{width:42px;height:4px;border-radius:99px;background:#cbd5e1;margin:0 auto 12px}
+#fleischSheet .fs-close{border:none;background:var(--accent-soft);border-radius:10px;padding:8px 12px;font:inherit;cursor:pointer;float:right;color:var(--accent);font-weight:600}
+.wrong-list{text-align:left;margin:12px 0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.wrong-list .wi{padding:10px 12px;border-bottom:1px solid var(--line);font-size:.84em}
+.wrong-list .wi:last-child{border-bottom:none}
+.wrong-list .wi b{display:block;margin-bottom:3px}
+.wrong-list .wi .ans{color:var(--ok);font-weight:600}
+
 .page.locked .nav,.page.locked .klasse,.page.locked .view,.page.locked .footer{visibility:hidden}
 .hist-panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;margin:16px 0 8px;box-shadow:var(--shadow)}
 .hist-panel h3{font-size:1em;margin-bottom:8px}
@@ -336,14 +400,17 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 .hist-table th{color:var(--muted);font-size:.78em}
 
 @media (max-width:640px){
-  .page{padding:0 12px calc(84px + var(--safe-bottom))}
+  .page{padding:0 12px calc(92px + var(--safe-bottom))}
   .nav{margin:0 -12px 14px;padding:10px 12px}
   .nav-row{gap:8px}
   .brand span:last-child{display:none}
-  .crumbs{order:3;flex:1 1 100%;font-size:.78em;margin-top:2px}
-  .search{width:100%;flex:1 1 auto;min-width:0}
-  .search .kbd{display:none}
-  .user-chip{margin-left:auto}
+  .crumbs{display:none}
+  .search{display:none}
+  .search-toggle{display:inline-flex;margin-left:auto}
+  .user-chip{order:2}
+  .bottom-nav{display:flex}
+  .today-grid{grid-template-columns:1fr;gap:8px}
+  .progress-stats{grid-template-columns:repeat(3,1fr)}
   .hero{margin:2px 0 16px}
   .hero h1{font-size:1.35em}
   .hero p{font-size:.9em}
@@ -355,9 +422,10 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
   .tile h3{font-size:.98em}
   .tile p{font-size:.78em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
   .detail{min-width:100%}
+  .detail-empty{display:none}
   .diagram-wrap{flex-direction:column}
   .svg-box{min-width:0;width:100%}
-  .hotspot{width:36px;height:36px;font-size:.85em;border-width:2px}
+  .hotspot{width:38px;height:38px;font-size:.9em;border-width:2px}
   .tabs{gap:6px;overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px;-webkit-overflow-scrolling:touch}
   .tab{flex:0 0 auto;padding:8px 12px;font-size:.82em}
   table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;font-size:.82em}
@@ -365,7 +433,8 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
   .hist-panel{padding:12px;border-radius:14px}
   .hist-table{font-size:.78em}
   .btn{width:100%;padding:12px 16px}
-  .quiz-start .btn,.quiz-result .btn{width:auto;min-width:44%}
+  .quiz-start .btn,.quiz-result .btn,.quiz-modes .btn{width:auto;min-width:44%}
+  .quiz-modes{gap:8px}
   .player-bar{flex-direction:column;align-items:stretch}
   .player-bar input,.player-bar .btn{width:100%}
   .footer{padding-bottom:calc(18px + var(--safe-bottom))}
@@ -374,6 +443,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 @media (max-width:380px){
   .grid{grid-template-columns:1fr}
   .hero h1{font-size:1.25em}
+  .progress-stats{grid-template-columns:1fr 1fr 1fr}
 }
 </style>
 <script src="./pwa.js" defer></script>
@@ -410,6 +480,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
     <div class="brand" onclick="go('#/')"><span class="logo">🎓</span><span>Lern-App</span></div>
     <div class="crumbs" id="crumbs"></div>
     <span class="user-chip" id="userChip" title="Nickname wechseln" style="display:none">👤 —</span>
+    <button type="button" class="search-toggle" id="searchToggle" aria-label="Suche öffnen">🔍</button>
     <div class="search">
       <span class="mag">🔍</span>
       <input id="searchInput" type="text" placeholder="Alles suchen: Filet, Mindmap, Eiercode…" autocomplete="off">
@@ -424,6 +495,35 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
   <div class="hero">
     <h1>Fachkraft für Gastronomie</h1>
     <p>Wähle ein Fach, um mit dem Lernen zu beginnen.</p>
+  </div>
+
+  <div class="fach-label">Heute üben</div>
+  <div class="today-grid">
+    <div class="today-card" onclick="go('#/bfk/quiz');setTimeout(()=>{try{quizStart('quick')}catch(e){}},120)">
+      <div class="ic">⚡</div>
+      <b>BFK · 10 Fragen</b>
+      <span>Schneller Selbsttest vor der KA</span>
+    </div>
+    <div class="today-card" onclick="location.href='deutsch.html'">
+      <div class="ic">🇩🇪</div>
+      <b>Deutsch Visualisierung</b>
+      <span>Mindmap, Diagramme &amp; Üben</span>
+    </div>
+    <div class="today-card" onclick="go('#/bfk/fleisch')">
+      <div class="ic">🥩</div>
+      <b>Fleischteile</b>
+      <span>Rind · Schwein · Schaf interaktiv</span>
+    </div>
+  </div>
+
+  <div class="progress-card" id="homeProgressCard">
+    <h3>📈 Dein Lernstand</h3>
+    <div class="progress-stats" id="homeProgressStats">
+      <div class="pstat"><div class="n" id="hpVisits">—</div><div class="l">Besuche</div></div>
+      <div class="pstat"><div class="n" id="hpQuizzes">—</div><div class="l">Quiz</div></div>
+      <div class="pstat"><div class="n" id="hpLast">—</div><div class="l">Letzte %</div></div>
+    </div>
+    <div id="homeProgressHint" class="muted" style="margin-top:10px;font-size:.82em">Nach dem Login erscheinen hier deine Daten.</div>
   </div>
 
   <!-- Banner Abschlussprüfung -->
@@ -748,6 +848,40 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 
 <div class="footer">🍀 Lern-App · Fachkraft für Gastronomie · Viel Erfolg! 🍀</div>
 </div>
+
+<!-- Bottom nav (mobile) -->
+<nav class="bottom-nav" id="bottomNav" aria-label="Hauptnavigation">
+  <button type="button" data-nav="#/" class="active"><span class="bi">🏠</span>Start</button>
+  <button type="button" data-nav="#/bfk"><span class="bi">🍳</span>BFK</button>
+  <button type="button" data-nav="deutsch.html"><span class="bi">🇩🇪</span>Deutsch</button>
+  <button type="button" data-nav="#/bfk/quiz"><span class="bi">📝</span>Quiz</button>
+  <button type="button" data-nav="#profile"><span class="bi">👤</span>Profil</button>
+</nav>
+
+<!-- Fullscreen search sheet -->
+<div id="searchSheet" aria-hidden="true">
+  <div class="sheet">
+    <div class="sheet-head">
+      <input id="searchSheetInput" type="search" placeholder="Suchen: Filet, Mindmap, Eiercode…" autocomplete="off">
+      <button type="button" class="sheet-close" id="searchSheetClose">Schließen</button>
+    </div>
+    <div class="sheet-body" id="searchSheetBody">
+      <div class="empty-state"><div class="big-ic">🔍</div>Tippe einen Begriff, um alles zu durchsuchen.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Fleisch detail sheet (mobile) -->
+<div id="fleischSheet" aria-hidden="true">
+  <div class="fs-card">
+    <div class="fs-handle"></div>
+    <button type="button" class="fs-close" id="fleischSheetClose">Schließen</button>
+    <div id="fleischSheetBody"></div>
+  </div>
+</div>
+
+<div id="toastHost" aria-live="polite"></div>
+
 <script src="./supabase.js"></script>
 <script>
 /* ============ DATEN (Fleischteile) ============ */
@@ -854,11 +988,18 @@ function select(animal,key){
   document.querySelectorAll('[data-legend="'+animal+'"] .chip').forEach(el=>{
     el.classList.toggle("sel", el.getAttribute("data-key")===key);
   });
-  const box=document.querySelector('[data-detail="'+animal+'"]');
-  box.innerHTML='<div class="detail-box"><span class="num">'+pt.n+'</span><h3>'+pt.name+'</h3>'
+  const html='<div class="detail-box"><span class="num">'+pt.n+'</span><h3>'+pt.name+'</h3>'
     +'<div class="viet">🇻🇳 '+pt.viet+'</div>'
     +'<dl><dt>Beschaffenheit:</dt><dd>'+pt.besch+'</dd>'
     +'<dt>Verwendung:</dt><dd>'+pt.verw+'</dd></dl></div>';
+  const box=document.querySelector('[data-detail="'+animal+'"]');
+  if(box) box.innerHTML=html;
+  // Mobile: open bottom sheet for easier reading
+  if(window.matchMedia('(max-width:640px)').matches){
+    const body=document.getElementById('fleischSheetBody');
+    const sheet=document.getElementById('fleischSheet');
+    if(body&&sheet){ body.innerHTML=html; sheet.classList.add('show'); sheet.setAttribute('aria-hidden','false'); }
+  }
 }
 ["rind","schwein","schaf"].forEach(renderAnimal);
 
@@ -975,6 +1116,7 @@ function router(){
   r.crumbs.forEach(c=>{ html+='<span class="sep">›</span><a onclick="go(\''+c[1]+'\')">'+c[0]+'</a>'; });
   cb.innerHTML=html;
   if(r.view==="v-quiz" && !window._quizStarted) quizIntro();
+  setBottomNav(hash);
   window.scrollTo({top:0,behavior:"smooth"});
 }
 window.addEventListener("hashchange",router);
@@ -1285,7 +1427,16 @@ function quizResult(){
   else msg="📚 Weiter üben! Lies die Theorie noch einmal.";
   const name=(window.LearnDB && LearnDB.getPlayer()) || '';
   const wrongN=loadWrong().length;
+  const sessionWrong=[...new Set(qWrong)].slice(0,5);
+  let review='';
+  if(sessionWrong.length){
+    review='<div class="wrong-list">'+sessionWrong.map(qi=>{
+      const q=QUIZ[qi]; if(!q) return '';
+      return '<div class="wi"><b>'+q.q+'</b><span class="ans">✓ '+(q.opts[q.a]||'')+'</span><div class="muted" style="margin-top:3px">'+q.ex+'</div></div>';
+    }).join('')+'</div>';
+  }
   area.innerHTML='<div class="quiz-result"><div class="msg">Ergebnis · '+(name.replace(/</g,'&lt;')||'?')+'</div><div class="big">'+qScore+' / '+total+'</div><div class="msg">('+pct+'%) '+msg+'</div>'
+    +(sessionWrong.length?'<p class="muted" style="margin:0 0 6px">Kurz-Review der Fehler:</p>'+review:'')
     +'<div class="db-status" id="dbStatus">Punkte werden gespeichert…</div>'
     +'<div id="lbBox" class="lb"></div>'
     +'<div class="quiz-modes">'
@@ -1340,26 +1491,120 @@ async function saveBfkScore(){
     if(LearnDB.flushScoreQueue) try{ await LearnDB.flushScoreQueue(); }catch(_){}
     const saved=await LearnDB.saveQuizScore({subject:"BFK", quiz:"fleisch", correct:qScore, total:qOrder.length, player:name});
     if(st){ st.className="db-status ok"; st.textContent="✅ Gespeichert: "+saved.correct+"/"+saved.total+" ("+saved.pct+"%)"; }
+    toast("Gespeichert: "+saved.correct+"/"+saved.total+" ("+saved.pct+"%)","ok");
     await loadBfkLeaderboard();
     loadHomeHistory(name);
   }catch(e){
     if(e && e.queued){
       if(st){ st.className="db-status ok"; st.textContent="📦 Offline gespeichert — Sync später"; }
-    }else if(st){ st.className="db-status err"; st.textContent="❌ Speichern fehlgeschlagen: "+(e.message||e); }
+      toast("Offline gespeichert — Sync später","info");
+    }else{
+      if(st){ st.className="db-status err"; st.textContent="❌ Speichern fehlgeschlagen: "+(e.message||e); }
+      toast("Speichern fehlgeschlagen","err");
+    }
   }
 }
 async function loadBfkLeaderboard(){
   const box=document.getElementById("lbBox");
   if(!box || !window.LearnDB) return;
-  box.innerHTML='<div class="muted" style="font-size:.82em">Rangliste wird geladen…</div>';
+  box.innerHTML='<div class="skeleton"></div><div class="skeleton" style="width:70%"></div><div class="skeleton" style="width:55%"></div>';
   try{
     const rows=await LearnDB.loadLeaderboard({subject:"BFK", quiz:"fleisch", limit:8});
-    if(!rows.length){ box.innerHTML='<div class="muted" style="font-size:.82em;margin-top:8px">Noch keine BFK-Punkte — starte ein Quiz.</div>'; return; }
+    if(!rows.length){
+      box.innerHTML='<div class="empty-state"><div class="big-ic">🏆</div>Noch keine BFK-Punkte.<br>Starte ein Quiz und steige in die Rangliste ein.</div>';
+      return;
+    }
     const me=(LearnDB.getPlayer()||"").toLowerCase();
     box.innerHTML='<h4>🏆 Rangliste · BFK Fleisch</h4><table><tr><th>#</th><th>Name</th><th>Punkte</th><th>%</th></tr>'
       +rows.map((r,i)=>'<tr class="'+(String(r.player).toLowerCase()===me?'me':'')+'"><td>'+(i+1)+'</td><td>'+r.player+'</td><td>'+r.correct+'/'+r.total+'</td><td>'+r.pct+'%</td></tr>').join('')
       +'</table>';
   }catch(e){ box.innerHTML='<div class="db-status err">Rangliste nicht ladbar: '+(e.message||e)+'</div>'; }
+}
+
+/* ============ UX HELPERS ============ */
+function toast(msg, type){
+  const host=document.getElementById('toastHost'); if(!host) return;
+  const el=document.createElement('div');
+  el.className='toast '+(type||'info');
+  el.textContent=msg;
+  host.appendChild(el);
+  setTimeout(()=>{ el.style.opacity='0'; el.style.transition='opacity .25s'; setTimeout(()=>el.remove(),280); }, 2600);
+}
+function setBottomNav(hash){
+  const nav=document.getElementById('bottomNav'); if(!nav) return;
+  const h=hash||location.hash||'#/';
+  nav.querySelectorAll('button').forEach(btn=>{
+    const t=btn.getAttribute('data-nav')||'';
+    let on=false;
+    if(t==='#/') on=(h==='#/' || h==='' || h==='#');
+    else if(t.startsWith('#')) on=h===t || (t!=='#/' && h.startsWith(t));
+    else on=false;
+    btn.classList.toggle('active', on);
+  });
+}
+function initBottomNav(){
+  const nav=document.getElementById('bottomNav'); if(!nav) return;
+  nav.querySelectorAll('button').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const t=btn.getAttribute('data-nav');
+      if(!t) return;
+      if(t==='#profile'){
+        const p=window.LearnDB && LearnDB.getPlayer();
+        if(!p){ toast('Bitte zuerst einloggen','info'); return; }
+        const panel=document.getElementById('homeHistPanel');
+        go('#/');
+        setTimeout(()=>{ if(panel) panel.scrollIntoView({behavior:'smooth',block:'start'}); }, 180);
+        toast('Profil · '+p,'info');
+        return;
+      }
+      if(t.endsWith('.html') || (t && !t.startsWith('#'))){ location.href=t; return; }
+      go(t);
+    });
+  });
+  setBottomNav(location.hash||'#/');
+}
+function initSearchSheet(){
+  const toggle=document.getElementById('searchToggle');
+  const sheet=document.getElementById('searchSheet');
+  const input=document.getElementById('searchSheetInput');
+  const body=document.getElementById('searchSheetBody');
+  const close=document.getElementById('searchSheetClose');
+  if(!toggle||!sheet||!input||!body) return;
+  const open=()=>{ sheet.classList.add('show'); sheet.setAttribute('aria-hidden','false'); input.focus(); renderSheetResults(input.value); };
+  const hide=()=>{ sheet.classList.remove('show'); sheet.setAttribute('aria-hidden','true'); input.value=''; };
+  toggle.addEventListener('click', open);
+  close && close.addEventListener('click', hide);
+  sheet.addEventListener('click', e=>{ if(e.target===sheet) hide(); });
+  input.addEventListener('input',()=>renderSheetResults(input.value));
+  function renderSheetResults(q0){
+    const q=norm(q0).trim();
+    if(!q){ body.innerHTML='<div class="empty-state"><div class="big-ic">🔍</div>Tippe einen Begriff, um alles zu durchsuchen.</div>'; return; }
+    const terms=q.split(/\s+/).filter(Boolean);
+    const hits=INDEX
+      .filter(it=>terms.every(t=>(it.hay||'').includes(t) || norm(it.raw||'').includes(t)))
+      .map(it=>({it, sc:scoreHit(it,terms,q)}))
+      .sort((a,b)=>b.sc-a.sc)
+      .slice(0,40)
+      .map(x=>x.it);
+    if(!hits.length){ body.innerHTML='<div class="empty-state"><div class="big-ic">😕</div>Keine Treffer für „'+q0.replace(/[<>&]/g,'')+'“.</div>'; return; }
+    body.innerHTML=hits.map((h,i)=>'<div class="res" data-si="'+i+'"><span class="badge">'+h.badge+'</span><div class="txt"><div class="t">'+h.title+'</div><div class="s">'+h.sub+'</div></div></div>').join('');
+    body.querySelectorAll('.res[data-si]').forEach(el=>{
+      el.addEventListener('click',()=>{
+        const i=+el.getAttribute('data-si'); const h=hits[i]; if(!h) return;
+        hide();
+        if(h.route && !String(h.route).startsWith('#')){ location.href=h.route; return; }
+        go(h.route); if(h.action) setTimeout(h.action,180);
+      });
+    });
+  }
+}
+function initFleischSheet(){
+  const sheet=document.getElementById('fleischSheet');
+  const close=document.getElementById('fleischSheetClose');
+  if(!sheet) return;
+  const hide=()=>{ sheet.classList.remove('show'); sheet.setAttribute('aria-hidden','true'); };
+  close && close.addEventListener('click', hide);
+  sheet.addEventListener('click', e=>{ if(e.target===sheet) hide(); });
 }
 
 /* ============ AUTH / NICKNAME GATE ============ */
@@ -1395,6 +1640,7 @@ function unlockApp(player){
     chip.onclick=()=>{ if(confirm('Nickname wechseln? Du meldest dich neu an.')){ LearnDB.clearPlayer(); location.reload(); } };
   }
   loadHomeHistory(player);
+  toast('Willkommen, '+player+'!','ok');
   // After login, gently remind to install PWA (if available)
   setTimeout(()=>{ try{ window.dispatchEvent(new Event('learn-ready-install')); }catch(_){} }, 2200);
 }
@@ -1402,23 +1648,37 @@ async function loadHomeHistory(player){
   const panel=document.getElementById('homeHistPanel');
   const body=document.getElementById('homeHistBody');
   const nameEl=document.getElementById('homeHistName');
-  if(!panel||!body||!window.LearnDB) return;
+  const hint=document.getElementById('homeProgressHint');
   if(nameEl) nameEl.textContent=player||'—';
+  if(body) body.innerHTML='<div class="skeleton"></div><div class="skeleton" style="width:80%"></div><div class="skeleton" style="width:60%"></div>';
+  if(panel) panel.style.display='block';
+  if(!window.LearnDB) return;
   try{
     const data=await LearnDB.loadPlayerHistory(player);
     const qs=data.quizzes||[];
+    const profile=data.profile||{};
+    // progress stats
+    const visits=Number(profile.visits)||0;
+    const quizN=qs.length || Number(profile.quiz_attempts)||0;
+    const last=qs[0];
+    const lastPct=last ? (last.pct+'%') : '—';
+    const elV=document.getElementById('hpVisits'); if(elV) elV.textContent=visits||'0';
+    const elQ=document.getElementById('hpQuizzes'); if(elQ) elQ.textContent=quizN||'0';
+    const elL=document.getElementById('hpLast'); if(elL) elL.textContent=lastPct;
+    if(hint){
+      if(!qs.length) hint.textContent='Noch keine Quiz-Daten — starte mit „BFK · 10 Fragen“.';
+      else hint.textContent='Zuletzt: '+(last.subject||'')+' / '+(last.quiz||'')+' · '+(last.at||'').slice(0,10);
+    }
     if(!qs.length){
-      panel.style.display='block';
-      body.innerHTML='<p class="muted">Noch keine Quizzes. Starte BFK oder Deutsch.</p>';
+      body.innerHTML='<div class="empty-state"><div class="big-ic">📘</div>Noch keine Quizzes.<br>Starte BFK oder Deutsch oben.</div>';
       return;
     }
-    panel.style.display='block';
     body.innerHTML='<table class="hist-table"><tr><th>Fach</th><th>Quiz</th><th>Punkte</th><th>Versuche</th><th>Datum</th></tr>'
       +qs.map(q=>'<tr><td>'+(q.subject||'')+'</td><td>'+(q.quiz||'')+'</td><td><b>'+q.correct+'/'+q.total+'</b> ('+q.pct+'%)</td><td>'+q.attempts+'</td><td>'+(q.at||'').slice(0,10)+'</td></tr>').join('')
       +'</table>';
   }catch(e){
-    panel.style.display='block';
-    body.innerHTML='<p class="muted">Historie nicht ladbar: '+(e.message||e)+'</p>';
+    if(panel) panel.style.display='block';
+    if(body) body.innerHTML='<div class="empty-state">Historie nicht ladbar: '+(e.message||e)+'</div>';
   }
 }
 async function doLogin(){
@@ -1464,9 +1724,11 @@ function initAuthGate(){
 /* ============ INIT ============ */
 router();
 initAuthGate();
+initBottomNav();
+initSearchSheet();
+initFleischSheet();
 // If already logged in earlier this tab session, keep duration tracking alive
 if(window.LearnDB && LearnDB.resumeVisitTracking){
-  // only resume if gate will auto-login; otherwise loginOrRegister starts a new visit
   try{
     if(LearnDB.getPlayer() && sessionStorage.getItem('learn_active_visit')){
       // loginOrRegister will run via auto-login; skip double-start
