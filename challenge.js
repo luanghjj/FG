@@ -179,6 +179,64 @@
     return (r && r.settings && r.settings.mode) || 'classic';
   }
 
+  function roomInviteUrl(code) {
+    const c = String(code || '').toUpperCase();
+    // absolute URL so Telegram/mobile open correctly
+    try {
+      return new URL('challenge.html?code=' + encodeURIComponent(c), location.href).href;
+    } catch (_) {
+      return location.origin + location.pathname.replace(/[^/]*$/, '') + 'challenge.html?code=' + encodeURIComponent(c);
+    }
+  }
+
+  function roomShareText(code) {
+    const c = String(code || (room && room.code) || '').toUpperCase();
+    const st = (room && room.settings) || {};
+    const mode = MODE_LABEL[st.mode || 'classic'] || 'Challenge';
+    const url = roomInviteUrl(c);
+    return (
+      '⚔️ H2FO3T Challenge!\n' +
+      'Code: ' + c + '\n' +
+      mode + '\n' +
+      'Mitspielen: ' + url + '\n' +
+      '(Zuerst Nickname in der App setzen, dann Link öffnen)'
+    );
+  }
+
+  function openTelegramShare(code) {
+    const text = roomShareText(code);
+    // https://t.me/share/url?url=...&text=...
+    const url = roomInviteUrl(code);
+    const tg =
+      'https://t.me/share/url?url=' +
+      encodeURIComponent(url) +
+      '&text=' +
+      encodeURIComponent(text);
+    window.open(tg, '_blank', 'noopener,noreferrer');
+  }
+
+  async function nativeShare(code) {
+    const text = roomShareText(code);
+    const url = roomInviteUrl(code);
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: 'H2FO3T Challenge ' + code, text: text, url: url });
+        return true;
+      } catch (e) {
+        // user cancelled or share failed
+        if (e && e.name === 'AbortError') return false;
+      }
+    }
+    // fallback: copy full invite
+    try {
+      await navigator.clipboard.writeText(text);
+      return 'copied';
+    } catch (_) {
+      prompt('Einladungslink kopieren:', url);
+      return false;
+    }
+  }
+
   function sortPlayers(r) {
     const scores = (r && r.scores) || {};
     const mode = modeOf(r);
@@ -238,6 +296,8 @@
       (st.count || 10) +
       ' Fragen · ' +
       (t ? t + 's / Frage' : 'ohne Zeitlimit');
+    const linkEl = $('lobbyLink');
+    if (linkEl) linkEl.textContent = roomInviteUrl(room.code);
 
     const players = room.players || {};
     $('lobbyPlayers').innerHTML = Object.keys(players)
@@ -684,15 +744,35 @@
     $('btnCopy').onclick = async () => {
       if (!room) return;
       try {
-        await navigator.clipboard.writeText(room.code);
+        await navigator.clipboard.writeText(room.code + '\n' + roomInviteUrl(room.code));
         $('btnCopy').textContent = 'Kopiert!';
         setTimeout(() => {
           $('btnCopy').textContent = 'Code kopieren';
         }, 1200);
       } catch (_) {
-        prompt('Code kopieren:', room.code);
+        prompt('Code / Link kopieren:', roomInviteUrl(room.code));
       }
     };
+    const btnTg = $('btnTelegram');
+    if (btnTg) {
+      btnTg.onclick = () => {
+        if (!room) return;
+        openTelegramShare(room.code);
+      };
+    }
+    const btnShare = $('btnShare');
+    if (btnShare) {
+      btnShare.onclick = async () => {
+        if (!room) return;
+        const res = await nativeShare(room.code);
+        if (res === 'copied') {
+          btnShare.textContent = 'Link kopiert!';
+          setTimeout(() => {
+            btnShare.textContent = 'Teilen';
+          }, 1200);
+        }
+      };
+    }
     $('btnAgain').onclick = leaveToHub;
     $('btnHome').onclick = () => {
       location.href = 'index.html';
