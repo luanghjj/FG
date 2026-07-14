@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#2d2d2d">
+<meta name="theme-color" content="#2563eb">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="H2FO3T">
 <link rel="manifest" href="./manifest.webmanifest">
@@ -12,11 +12,11 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 :root{
-  --bg:#f8f5f2; --surface:#fff; --ink:#2d2d2d; --muted:#6b6b6b; --line:#e8e4df;
-  --accent:#2d2d2d; --accent2:#5c5c5c; --soft:#f0ebe6;
-  --ok:#3f6f4e; --okbg:#eaf3ec; --bad:#a33b3b; --badbg:#fceded;
-  --warn:#9a6b2f; --warnbg:#f8f0e4;
-  --shadow:0 1px 2px rgba(45,45,45,.04),0 8px 28px rgba(45,45,45,.05);
+  --bg:#f5f9ff; --surface:#fff; --ink:#0f172a; --muted:#64748b; --line:#e2e8f0;
+  --accent:#2563eb; --accent2:#3b82f6; --soft:#eff6ff;
+  --ok:#15803d; --okbg:#dcfce7; --bad:#dc2626; --badbg:#fee2e2;
+  --warn:#d97706; --warnbg:#fef3c7;
+  --shadow:0 1px 3px rgba(15,23,42,.05),0 10px 28px rgba(37,99,235,.08);
   --safe-bottom:env(safe-area-inset-bottom,0px);
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -30,20 +30,20 @@ button,input,.tile,.tab,.btn{touch-action:manipulation;-webkit-tap-highlight-col
 @media (prefers-reduced-motion:reduce){.view.active,.card,.acc,.tu-card{animation:none!important}}
 
 /* NAV – only 4 tabs */
-.nav{position:sticky;top:0;z-index:40;background:rgba(248,245,242,.92);backdrop-filter:blur(12px);
+.nav{position:sticky;top:0;z-index:40;background:rgba(245,249,255,.92);backdrop-filter:blur(12px);
   border-bottom:1px solid var(--line);margin:0 -14px 16px;padding:10px 14px}
 .nav-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .brand{font-weight:600;display:flex;align-items:center;gap:8px;cursor:pointer}
-.brand .logo{width:30px;height:30px;border-radius:9px;background:#f0ebe6;color:var(--ink);
+.brand .logo{width:30px;height:30px;border-radius:9px;background:#eff6ff;color:var(--ink);
   color:#fff;display:flex;align-items:center;justify-content:center}
-.ka{background:#f0ebe6;color:#2d2d2d;border:1px solid #ddd6cf;border-radius:999px;padding:3px 10px;font-size:.72em;font-weight:600}
+.ka{background:#dbeafe;color:#1d4ed8;border:1px solid #93c5fd;border-radius:999px;padding:3px 10px;font-size:.72em;font-weight:600}
 .tabs{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
 .tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 13px;font:inherit;
   font-size:.82em;font-weight:500;color:var(--muted);cursor:pointer}
 .tab.active{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:500}
 
 .view{display:none}.view.active{display:block}
-.hero{background:#2d2d2d;color:#fff;border-radius:18px;padding:22px;margin-bottom:14px;box-shadow:var(--shadow)}
+.hero{background:linear-gradient(135deg,#1d4ed8,#2563eb 60%,#3b82f6);color:#fff;border-radius:18px;padding:22px;margin-bottom:14px;box-shadow:var(--shadow)}
 .hero h1{font-size:1.35em;font-weight:500;margin-bottom:6px;letter-spacing:-.01em}
 .hero p{opacity:.93;font-size:.92em}
 .pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
@@ -84,10 +84,10 @@ table.t tr:nth-child(even) td{background:#f8fafc}
 /* DE word → click for VI */
 .vi-btn{
   display:inline;border:none;background:transparent;color:inherit;font:inherit;
-  border-bottom:1.5px dashed #c4b8aa;cursor:pointer;padding:0 1px;border-radius:2px;
+  border-bottom:1.5px dashed #93c5fd;cursor:pointer;padding:0 1px;border-radius:2px;
 }
-.vi-btn:hover{background:#f0ebe6}
-.vi-btn.open{background:#f0ebe6;border-bottom-color:var(--accent);font-weight:600}
+.vi-btn:hover{background:#eff6ff}
+.vi-btn.open{background:#eff6ff;border-bottom-color:var(--accent);font-weight:600}
 .vi-pop{
   display:none;margin:4px 0 8px;padding:7px 10px;border-radius:8px;
   background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;font-size:.84em;line-height:1.4;
@@ -103,7 +103,7 @@ table.t tr:nth-child(even) td{background:#f8fafc}
 .tile:hover{border-color:var(--accent);box-shadow:0 0 0 3px var(--soft)}
 .tile .ico{font-size:1.3em}
 .tile .name{font-weight:800;font-size:.92em;margin:4px 0}
-.tile .zweck{display:inline-block;background:#f0ebe6;color:#2d2d2d;border-radius:999px;padding:2px 8px;font-size:.7em;font-weight:600}
+.tile .zweck{display:inline-block;background:#eff6ff;color:#2563eb;border-radius:999px;padding:2px 8px;font-size:.7em;font-weight:600}
 
 .step{display:flex;gap:10px;align-items:flex-start;background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:8px}
 .step .n{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;font-weight:600;font-size:.85em;display:flex;align-items:center;justify-content:center}
@@ -144,7 +144,7 @@ table.t tr:nth-child(even) td{background:#f8fafc}
 /* Mindmap */
 .mm{background:#0f172a;color:#e2e8f0;border-radius:14px;padding:16px}
 .mm-c{text-align:center;margin-bottom:12px}
-.mm-c span{display:inline-block;background:#2d2d2d;color:#fff;padding:10px 16px;border-radius:999px;font-weight:600}
+.mm-c span{display:inline-block;background:#2563eb;color:#fff;padding:10px 16px;border-radius:999px;font-weight:600}
 .mm-g{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 @media(max-width:640px){.mm-g{grid-template-columns:1fr}}
 .mm-b{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:10px}
@@ -163,7 +163,7 @@ table.t tr:nth-child(even) td{background:#f8fafc}
 .choice button.no{border-color:var(--bad);background:var(--badbg);color:#991b1b}
 .choice button:disabled{cursor:default}
 
-.hint-bar{background:#f0ebe6;border:1px solid #ddd6cf;border-radius:10px;padding:8px 12px;font-size:.82em;color:#5c5c5c;margin-bottom:12px}
+.hint-bar{background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:8px 12px;font-size:.82em;color:#1e40af;margin-bottom:12px}
 .footer{text-align:center;color:var(--muted);font-size:.8em;padding:20px 0 8px}
 .home-link{font-size:.78em;font-weight:500;color:var(--muted);border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 10px;text-decoration:none;white-space:nowrap}
 .home-link:hover{color:var(--ink);border-color:#cfc8c0}
@@ -204,7 +204,7 @@ table.t tr:nth-child(even) td{background:#f8fafc}
 
 /* Textübungen */
 .tu-card{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:16px;overflow:hidden;box-shadow:var(--shadow)}
-.tu-head{background:#2d2d2d;color:#fff;padding:14px 16px;display:flex;align-items:center;gap:10px}
+.tu-head{background:#2563eb;color:#fff;padding:14px 16px;display:flex;align-items:center;gap:10px}
 .tu-head .num{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.9em;flex-shrink:0}
 .tu-head .info{flex:1}
 .tu-head h3{font-size:1em;margin-bottom:2px}
@@ -235,7 +235,7 @@ button.stw.open{box-shadow:0 0 0 2px #93c5fd}
 .stw.green{background:#dcfce7;color:#166534;border-color:#86efac}
 .stw-wrap{display:inline-flex;flex-direction:column;align-items:flex-start;gap:2px;max-width:100%}
 .stw-wrap .vi-pop{margin:0;max-width:220px}
-.form-badge{display:inline-flex;align-items:center;gap:6px;background:#2d2d2d;color:#fff;border-radius:10px;padding:8px 14px;font-weight:600;font-size:.92em;margin:6px 0}
+.form-badge{display:inline-flex;align-items:center;gap:6px;background:#2563eb;color:#fff;border-radius:10px;padding:8px 14px;font-weight:600;font-size:.92em;margin:6px 0}
 .steps-nav{display:flex;gap:8px;margin-top:4px}
 .steps-nav button{border:1px solid var(--line);background:#fff;border-radius:8px;padding:7px 12px;font:inherit;font-size:.82em;font-weight:700;cursor:pointer;flex:1}
 .steps-nav button:hover{border-color:var(--accent);color:var(--accent)}
@@ -270,7 +270,7 @@ button.stw.open{box-shadow:0 0 0 2px #93c5fd}
       </div>
     </div>
 
-    <div class="hint-bar">💡 <b>Tipp:</b> Wörter mit <span style="border-bottom:1.5px dashed #c4b8aa">gestrichelter Linie</span> antippen → Bedeutung auf Vietnamesisch.</div>
+    <div class="hint-bar">💡 <b>Tipp:</b> Wörter mit <span style="border-bottom:1.5px dashed #93c5fd">gestrichelter Linie</span> antippen → Bedeutung auf Vietnamesisch.</div>
 
     <div class="grid2">
       <div class="tile" onclick="go('lernen')">
@@ -1631,7 +1631,7 @@ function buildTU(tu, i){
   </div>
   <div class="tu-body">
     <div class="box info" style="margin-bottom:12px">📋 <b>Aufgabe:</b> ${wrapTextWithVI(tu.aufgabe)}</div>
-    <div class="muted" style="font-size:.8em;margin:-4px 0 8px">💡 Wörter mit <span style="border-bottom:1.5px dashed #c4b8aa">gestrichelter Linie</span> antippen → vietnamesische Bedeutung</div>
+    <div class="muted" style="font-size:.8em;margin:-4px 0 8px">💡 Wörter mit <span style="border-bottom:1.5px dashed #93c5fd">gestrichelter Linie</span> antippen → vietnamesische Bedeutung</div>
     <div class="tu-text">${textVI}</div>
 
     <div class="tu-steps">
