@@ -10,9 +10,25 @@
   let hostTicker = null;
   let uiTicker = null;
   let savedResult = false;
+  let qShownAt = 0; // performance.now when question rendered
 
   // settings draft for create
-  const draft = { subjects: ['bfk2'], count: 10, secondsPerQ: 15 };
+  const draft = { subjects: ['bfk2'], count: 10, secondsPerQ: 15, mode: 'classic' };
+
+  const MODE_HELP = {
+    classic: 'Classic: Alle spielen dieselben Fragen. Meiste richtige Antworten gewinnt.',
+    speed: 'Speed: Nur 8s/Frage (empfohlen). Schnelle richtige Antworten geben Bonuspunkte.',
+    sudden: 'Sudden Death: Ein Fehler = ausgeschieden. Letzte Person gewinnt.',
+    streak: 'Streak: Längste Serie richtiger Antworten zählt am meisten.',
+    survival: 'Survival: 3 Leben. Jeder Fehler kostet 1 Leben. Wer übrig bleibt, gewinnt.',
+  };
+  const MODE_LABEL = {
+    classic: '🎯 Classic',
+    speed: '⚡ Speed',
+    sudden: '💀 Sudden Death',
+    streak: '🔥 Streak',
+    survival: '🛡️ Survival',
+  };
 
   function showErr(msg) {
     if (!errEl) return;
@@ -127,6 +143,79 @@
     });
   }
 
+  function bindModePick() {
+    const box = $('modePick');
+    if (!box) return;
+    box.querySelectorAll('.chip').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        box.querySelectorAll('.chip').forEach((b) => b.classList.remove('on'));
+        btn.classList.add('on');
+        draft.mode = btn.getAttribute('data-mode') || 'classic';
+        const help = $('modeHelp');
+        if (help) help.textContent = MODE_HELP[draft.mode] || MODE_HELP.classic;
+        // speed default timer
+        if (draft.mode === 'speed' && draft.secondsPerQ === 15) {
+          draft.secondsPerQ = 8;
+          const timeBox = $('timePick');
+          if (timeBox) {
+            // if no 8s chip, select 10s closest
+            let best = null;
+            timeBox.querySelectorAll('.chip').forEach((c) => {
+              c.classList.remove('on');
+              const v = Number(c.getAttribute('data-v'));
+              if (v === 10) best = c;
+            });
+            if (best) {
+              best.classList.add('on');
+              draft.secondsPerQ = 10;
+            }
+          }
+        }
+      });
+    });
+  }
+
+  function modeOf(r) {
+    return (r && r.settings && r.settings.mode) || 'classic';
+  }
+
+  function sortPlayers(r) {
+    const scores = (r && r.scores) || {};
+    const mode = modeOf(r);
+    return Object.keys((r && r.players) || {})
+      .map((p) => {
+        const s = scores[p] || {};
+        return {
+          p,
+          correct: Number(s.correct) || 0,
+          answered: Number(s.answered) || 0,
+          streak: Number(s.streak) || 0,
+          bestStreak: Number(s.bestStreak) || 0,
+          points: Number(s.points) || 0,
+          lives: s.lives == null ? null : Number(s.lives),
+          eliminated: !!s.eliminated,
+        };
+      })
+      .sort((a, b) => {
+        // eliminated last
+        if (a.eliminated !== b.eliminated) return a.eliminated ? 1 : -1;
+        if (mode === 'streak') return b.bestStreak - a.bestStreak || b.correct - a.correct || a.p.localeCompare(b.p);
+        if (mode === 'speed' || mode === 'classic' || mode === 'sudden' || mode === 'survival') {
+          return b.points - a.points || b.correct - a.correct || b.bestStreak - a.bestStreak || a.p.localeCompare(b.p);
+        }
+        return b.correct - a.correct || a.p.localeCompare(b.p);
+      });
+  }
+
+  function scoreLabel(row, mode) {
+    if (row.eliminated) return 'OUT';
+    if (mode === 'streak') return '🔥 ' + row.bestStreak + ' (best) · ' + row.correct + '✓';
+    if (mode === 'speed') return row.points + ' Pkt · ' + row.correct + '✓';
+    if (mode === 'survival') return '❤'.repeat(Math.max(0, row.lives || 0)) + ' · ' + row.correct + '✓';
+    if (mode === 'sudden') return row.correct + '✓';
+    return row.correct + '✓ · ' + row.answered + ' antw.';
+  }
+
   /* ===== Lobby ===== */
   function renderLobby() {
     if (!room) return;
@@ -140,7 +229,10 @@
       })
       .join(' + ');
     const t = Number(st.secondsPerQ) || 0;
+    const mode = st.mode || 'classic';
     $('lobbySettings').textContent =
+      (MODE_LABEL[mode] || mode) +
+      ' · ' +
       subs +
       ' · ' +
       (st.count || 10) +
@@ -193,15 +285,8 @@
   function renderScoreboard(elId) {
     const el = $(elId);
     if (!el || !room) return;
-    const scores = room.scores || {};
-    const rows = Object.keys(room.players || {})
-      .map((p) => ({
-        p,
-        correct: Number((scores[p] && scores[p].correct) || 0),
-        answered: Number((scores[p] && scores[p].answered) || 0),
-        streak: Number((scores[p] && scores[p].streak) || 0),
-      }))
-      .sort((a, b) => b.correct - a.correct || b.streak - a.streak || a.p.localeCompare(b.p));
+    const mode = modeOf(room);
+    const rows = sortPlayers(room);
     el.innerHTML = rows
       .map((r, i) => {
         const meCls = r.p === me ? ' me' : '';
@@ -213,10 +298,8 @@
           ' <b>' +
           r.p +
           '</b></span><span>' +
-          r.correct +
-          ' ✓ · ' +
-          r.answered +
-          ' antw.</span></div>'
+          scoreLabel(r, mode) +
+          '</span></div>'
         );
       })
       .join('');
@@ -237,12 +320,37 @@
     view('live');
     $('countdownCard').classList.add('hidden');
     $('questionCard').classList.remove('hidden');
+    const mode = modeOf(room);
+    // mode banner
+    let banner = document.getElementById('modeBanner');
+    if (!banner) {
+      banner = document.createElement('div');
+      banner.id = 'modeBanner';
+      banner.className = 'mode-banner';
+      const live = $('view-live');
+      if (live) live.insertBefore(banner, live.firstChild);
+    }
+    banner.innerHTML = '<b>' + (MODE_LABEL[mode] || mode) + '</b><span class="muted">' + (MODE_HELP[mode] || '') + '</span>';
+
     const q = currentQ();
     const total = (room.question_ids && room.question_ids.length) || localQuestions.length || 0;
     const qi = Number(room.q_index) || 0;
     $('liveQnum').textContent = qi + 1 + '/' + total;
-    const mySc = (room.scores && room.scores[me]) || { correct: 0 };
-    $('liveMyScore').textContent = String(mySc.correct || 0);
+    const mySc = (room.scores && room.scores[me]) || { correct: 0, points: 0, lives: null, eliminated: false };
+    if (mode === 'speed') $('liveMyScore').textContent = String(mySc.points || 0) + 'P';
+    else if (mode === 'streak') $('liveMyScore').textContent = '🔥' + (mySc.bestStreak || mySc.streak || 0);
+    else if (mode === 'survival') $('liveMyScore').textContent = '❤' + (mySc.lives == null ? 3 : mySc.lives);
+    else $('liveMyScore').textContent = String(mySc.correct || 0);
+
+    if (mySc.eliminated) {
+      $('liveQuestion').textContent = 'Du bist ausgeschieden.';
+      $('liveOpts').innerHTML = '';
+      $('liveWait').textContent = 'Warte auf das Ende der Runde…';
+      renderScoreboard('liveBoard');
+      startUiTicker();
+      return;
+    }
+
     if (!q) {
       $('liveQuestion').textContent = 'Frage wird geladen…';
       $('liveOpts').innerHTML = '';
@@ -254,6 +362,7 @@
     const mine = myAnswerFor(qi);
     answeredThisQ = !!mine;
     const locked = answeredThisQ;
+    if (!locked) qShownAt = performance.now();
     $('liveOpts').innerHTML = (q.opts || [])
       .map((o, i) => {
         let cls = 'opt';
@@ -375,13 +484,16 @@
 
   async function onAnswer(choice) {
     if (!room || room.status !== 'live' || answeredThisQ) return;
+    const mySc = (room.scores && room.scores[me]) || {};
+    if (mySc.eliminated) return;
     const q = currentQ();
     if (!q) return;
     const qi = Number(room.q_index) || 0;
     const correct = choice === q.a;
+    const ms = Math.max(0, Math.round(performance.now() - (qShownAt || performance.now())));
     answeredThisQ = true;
     try {
-      const updated = await LearnDB.submitChallengeAnswer(room.code, me, qi, choice, correct);
+      const updated = await LearnDB.submitChallengeAnswer(room.code, me, qi, choice, correct, { ms: ms });
       applyRoom(updated);
     } catch (e) {
       answeredThisQ = false;
@@ -394,18 +506,20 @@
     view('finish');
     stopTimers();
     renderScoreboard('finishBoard');
-    const scores = room.scores || {};
-    const rows = Object.keys(room.players || {})
-      .map((p) => ({
-        p,
-        correct: Number((scores[p] && scores[p].correct) || 0),
-      }))
-      .sort((a, b) => b.correct - a.correct || a.p.localeCompare(b.p));
+    const mode = modeOf(room);
+    const rows = sortPlayers(room);
     const myRank = Math.max(1, rows.findIndex((r) => r.p === me) + 1);
-    const my = rows.find((r) => r.p === me) || { correct: 0 };
+    const my = rows.find((r) => r.p === me) || { correct: 0, points: 0, bestStreak: 0, lives: 0, eliminated: false };
     const total = (room.question_ids || []).length || 0;
-    $('finishRank').textContent = '#' + myRank;
-    $('finishSummary').textContent = my.correct + ' / ' + total + ' richtig · Raum ' + room.code;
+    $('finishRank').textContent = my.eliminated && (mode === 'sudden' || mode === 'survival') ? 'OUT' : '#' + myRank;
+    let summary = (MODE_LABEL[mode] || mode) + ' · ';
+    if (mode === 'speed') summary += my.points + ' Punkte · ' + my.correct + '/' + total + ' richtig';
+    else if (mode === 'streak') summary += 'Beste Serie 🔥 ' + my.bestStreak + ' · ' + my.correct + '/' + total;
+    else if (mode === 'survival') summary += (my.eliminated ? 'Ausgeschieden' : 'Überlebt') + ' · ' + my.correct + '/' + total;
+    else if (mode === 'sudden') summary += (my.eliminated ? 'Ausgeschieden' : 'Überlebt') + ' · ' + my.correct + '✓';
+    else summary += my.correct + ' / ' + total + ' richtig';
+    summary += ' · Raum ' + room.code;
+    $('finishSummary').textContent = summary;
     if (!savedResult) {
       savedResult = true;
       try {
@@ -452,9 +566,11 @@
       const room0 = await LearnDB.createChallengeRoom({
         host: me,
         settings: {
+          mode: draft.mode || 'classic',
           subjects: draft.subjects.slice(),
           count: draft.count,
           secondsPerQ: draft.secondsPerQ,
+          lives: draft.mode === 'survival' ? 3 : null,
         },
       });
       // pre-pick questions and store ids
@@ -545,6 +661,7 @@
     }
 
     renderSubjectPick();
+    bindModePick();
     bindSeg('countPick', 'count', (v) => Number(v));
     bindSeg('timePick', 'secondsPerQ', (v) => Number(v));
 

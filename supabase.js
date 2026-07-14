@@ -733,11 +733,13 @@
       created_at: now,
       updated_at: now,
       settings: {
+        mode: st.mode || 'classic',
         subjects: st.subjects && st.subjects.length ? st.subjects : ['bfk2'],
         count: Number(st.count) || 10,
         secondsPerQ: st.secondsPerQ == null ? 15 : Number(st.secondsPerQ),
         mixed: !!(st.subjects && st.subjects.length > 1),
         seed: Number(st.seed) || (Date.now() % 1000000000),
+        lives: st.mode === 'survival' ? (Number(st.lives) || 3) : null,
       },
       players: {},
       question_ids: [],
@@ -745,11 +747,20 @@
       q_started_at: null,
       scores: {},
       answers: {},
+      eliminated: {},
       finished_at: null,
       app: 'on-thi',
     };
     room.players[player] = { ready: true, joined_at: now };
-    room.scores[player] = { correct: 0, answered: 0, streak: 0 };
+    room.scores[player] = {
+      correct: 0,
+      answered: 0,
+      streak: 0,
+      bestStreak: 0,
+      points: 0,
+      lives: room.settings.mode === 'survival' ? (room.settings.lives || 3) : null,
+      eliminated: false,
+    };
     await saveChallengeRoom(code, room);
     return room;
   }
@@ -771,7 +782,18 @@
       if (Object.keys(room.players).length >= 6) throw new Error('Raum ist voll (max 6)');
       room.players[player] = { ready: false, joined_at: now };
     }
-    if (!room.scores[player]) room.scores[player] = { correct: 0, answered: 0, streak: 0 };
+    if (!room.scores[player]) {
+      const mode = (room.settings && room.settings.mode) || 'classic';
+      room.scores[player] = {
+        correct: 0,
+        answered: 0,
+        streak: 0,
+        bestStreak: 0,
+        points: 0,
+        lives: mode === 'survival' ? ((room.settings && room.settings.lives) || 3) : null,
+        eliminated: false,
+      };
+    }
     room.players[player].last_seen = now;
     await saveChallengeRoom(c, room);
     return room;
@@ -813,10 +835,21 @@
     if (!ids.length) throw new Error('Keine Fragen gewählt');
     const now = new Date().toISOString();
     // reset scores for live run
+    const mode = (room.settings && room.settings.mode) || 'classic';
+    const lives = mode === 'survival' ? ((room.settings && room.settings.lives) || 3) : null;
     room.scores = room.scores || {};
     Object.keys(room.players || {}).forEach((p) => {
-      room.scores[p] = { correct: 0, answered: 0, streak: 0 };
+      room.scores[p] = {
+        correct: 0,
+        answered: 0,
+        streak: 0,
+        bestStreak: 0,
+        points: 0,
+        lives: lives,
+        eliminated: false,
+      };
     });
+    room.eliminated = {};
     room.answers = {};
     room.question_ids = ids;
     room.q_index = 0;
@@ -843,7 +876,7 @@
     return room;
   }
 
-  async function submitChallengeAnswer(code, playerName, qIndex, choiceIndex, isCorrect) {
+  async function submitChallengeAnswer(code, playerName, qIndex, choiceIndex, isCorrect, meta) {
     const player = String(playerName || getPlayer() || '').trim();
     const row = await getChallengeRoom(code);
     if (!row || !row.value) throw new Error('Raum nicht gefunden');
@@ -851,6 +884,13 @@
     if (room.status !== 'live') throw new Error('Spiel nicht aktiv');
     const qi = Number(qIndex);
     if (qi !== Number(room.q_index)) throw new Error('Frage bereits vorbei');
+    room.scores = room.scores || {};
+    room.scores[player] = room.scores[player] || {
+      correct: 0, answered: 0, streak: 0, bestStreak: 0, points: 0, lives: null, eliminated: false,
+    };
+    // eliminated players cannot answer
+    if (room.scores[player].eliminated) return room;
+
     room.answers = room.answers || {};
     const key = String(qi);
     room.answers[key] = room.answers[key] || {};
@@ -858,23 +898,70 @@
     if (room.answers[key][player] != null && room.answers[key][player].choice != null) {
       return room; // already answered
     }
+    const nowIso = new Date().toISOString();
+    const ms = meta && meta.ms != null ? Number(meta.ms) : null;
     room.answers[key][player] = {
       choice: Number(choiceIndex),
       correct: !!isCorrect,
-      at: new Date().toISOString(),
+      at: nowIso,
+      ms: ms,
     };
-    room.scores = room.scores || {};
-    room.scores[player] = room.scores[player] || { correct: 0, answered: 0, streak: 0 };
     room.scores[player].answered = (Number(room.scores[player].answered) || 0) + 1;
+    const mode = (room.settings && room.settings.mode) || 'classic';
+    const sec = Number((room.settings && room.settings.secondsPerQ) || 0);
+
     if (isCorrect) {
       room.scores[player].correct = (Number(room.scores[player].correct) || 0) + 1;
-      room.scores[player].streak = (Number(room.scores[player].streak) || 0) + 1;
+      const streak = (Number(room.scores[player].streak) || 0) + 1;
+      room.scores[player].streak = streak;
+      room.scores[player].bestStreak = Math.max(Number(room.scores[player].bestStreak) || 0, streak);
+
+      // points by mode
+      let pts = 1;
+      if (mode === 'speed') {
+        // faster answer => more points (max +2 bonus)
+        if (sec > 0 && ms != null) {
+          const left = Math.max(0, sec * 1000 - ms);
+          pts = 1 + Math.min(2, Math.floor((left / (sec * 1000)) * 3));
+        } else {
+          pts = 1;
+        }
+      } else if (mode === 'streak') {
+        pts = streak; // growing streak points
+      } else if (mode === 'sudden' || mode === 'survival') {
+        pts = 1;
+      }
+      room.scores[player].points = (Number(room.scores[player].points) || 0) + pts;
     } else {
       room.scores[player].streak = 0;
+      if (mode === 'sudden') {
+        room.scores[player].eliminated = true;
+        room.eliminated = room.eliminated || {};
+        room.eliminated[player] = true;
+      } else if (mode === 'survival') {
+        const lives = Math.max(0, (Number(room.scores[player].lives) || 0) - 1);
+        room.scores[player].lives = lives;
+        if (lives <= 0) {
+          room.scores[player].eliminated = true;
+          room.eliminated = room.eliminated || {};
+          room.eliminated[player] = true;
+        }
+      }
     }
     if (room.players && room.players[player]) {
-      room.players[player].last_seen = new Date().toISOString();
+      room.players[player].last_seen = nowIso;
     }
+
+    // Auto-finish if only one player remains (sudden/survival)
+    if (mode === 'sudden' || mode === 'survival') {
+      const alive = Object.keys(room.players || {}).filter((p) => !(room.scores[p] && room.scores[p].eliminated));
+      if (alive.length <= 1 && Object.keys(room.players || {}).length > 1) {
+        room.status = 'finished';
+        room.finished_at = nowIso;
+        room.q_started_at = null;
+      }
+    }
+
     await saveChallengeRoom(code, room);
     return room;
   }
@@ -917,7 +1004,7 @@
   async function saveChallengeResult(code, playerName, room) {
     const player = String(playerName || getPlayer() || '').trim();
     if (!player || !room) return null;
-    const sc = (room.scores && room.scores[player]) || { correct: 0, answered: 0 };
+    const sc = (room.scores && room.scores[player]) || { correct: 0, answered: 0, points: 0, bestStreak: 0 };
     const total = (room.question_ids || []).length || sc.answered || 0;
     const correct = Number(sc.correct) || 0;
     const pct = total ? Math.round((correct / total) * 100) : 0;
@@ -928,6 +1015,9 @@
       correct: correct,
       total: total,
       pct: pct,
+      points: Number(sc.points) || correct,
+      bestStreak: Number(sc.bestStreak) || 0,
+      mode: (room.settings && room.settings.mode) || 'classic',
       subjects: (room.settings && room.settings.subjects) || [],
       at: new Date().toISOString(),
       app: 'on-thi',
