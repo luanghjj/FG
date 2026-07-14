@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#2563eb">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+<title>Challenge · H2FO3T</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root{
+  --bg:#f5f9ff; --surface:#fff; --ink:#0f172a; --muted:#64748b; --line:#e2e8f0;
+  --accent:#2563eb; --soft:#eff6ff; --ok:#15803d; --okbg:#dcfce7; --bad:#dc2626; --badbg:#fee2e2;
+  --shadow:0 1px 3px rgba(15,23,42,.05),0 10px 28px rgba(37,99,235,.08);
+  --safe-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;min-height:100vh}
+.wrap{max-width:560px;margin:0 auto;padding:16px 14px calc(28px + var(--safe-bottom))}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.brand{font-weight:700;display:flex;align-items:center;gap:8px}
+.brand a{color:var(--muted);font-size:.82em;font-weight:500;text-decoration:none}
+.nick{font-size:.8em;font-weight:600;color:var(--accent);background:var(--soft);border:1px solid #bfdbfe;border-radius:999px;padding:4px 10px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:12px;box-shadow:var(--shadow)}
+.card h1{font-size:1.25em;font-weight:700;letter-spacing:-.01em;margin-bottom:6px}
+.card h2{font-size:1em;font-weight:700;margin-bottom:10px}
+.muted{color:var(--muted);font-size:.88em}
+.btn{border:none;background:var(--accent);color:#fff;border-radius:12px;padding:12px 16px;font:inherit;font-weight:600;cursor:pointer}
+.btn:disabled{opacity:.55;cursor:wait}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn.block{width:100%}
+.btn.ok{background:var(--ok)}
+.btn.bad{background:var(--bad)}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.row .btn{flex:1;min-width:120px}
+input[type=text]{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;font:inherit;margin:8px 0 12px}
+input:focus{outline:none;border-color:#93c5fd;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+label{font-size:.75em;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.seg{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px}
+.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 12px;font:inherit;font-size:.85em;font-weight:600;cursor:pointer;color:var(--muted)}
+.chip.on{background:var(--soft);border-color:#93c5fd;color:var(--accent)}
+.code-big{font-size:2em;font-weight:800;letter-spacing:.18em;text-align:center;padding:10px;background:var(--soft);border-radius:14px;margin:10px 0;color:var(--accent)}
+.players{display:flex;flex-direction:column;gap:8px}
+.player{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:#fff}
+.player b{font-weight:700}
+.tag{font-size:.72em;font-weight:700;padding:3px 8px;border-radius:999px;background:var(--soft);color:var(--accent)}
+.tag.host{background:#fef3c7;color:#92400e}
+.tag.ready{background:var(--okbg);color:var(--ok)}
+.tag.wait{background:#f1f5f9;color:var(--muted)}
+.scoreboard{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.sb-row{display:flex;justify-content:space-between;gap:8px;font-size:.9em;padding:8px 10px;border-radius:10px;background:#f8fafc;border:1px solid var(--line)}
+.sb-row.me{background:var(--soft);border-color:#bfdbfe}
+.timer{height:8px;background:#e2e8f0;border-radius:99px;overflow:hidden;margin:10px 0}
+.timer > i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#2563eb,#3b82f6);transition:width .2s linear}
+.timer.low > i{background:linear-gradient(90deg,#dc2626,#f97316)}
+.q-meta{display:flex;justify-content:space-between;font-size:.8em;color:var(--muted);font-weight:600;margin-bottom:8px}
+.q-text{font-size:1.05em;font-weight:700;margin-bottom:12px;line-height:1.4}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:12px;font:inherit;font-size:.92em;cursor:pointer}
+.opt:hover:not(:disabled){border-color:#93c5fd;background:var(--soft)}
+.opt.correct{border-color:var(--ok);background:var(--okbg);color:var(--ok);font-weight:700}
+.opt.wrong{border-color:var(--bad);background:var(--badbg);color:var(--bad)}
+.opt:disabled{cursor:default}
+.countdown{font-size:3.5em;font-weight:800;text-align:center;color:var(--accent);padding:30px 0}
+.podium{text-align:center;padding:10px 0 6px}
+.podium .rank{font-size:2.4em;font-weight:800;color:var(--accent)}
+.err{display:none;background:var(--badbg);color:var(--bad);border:1px solid #fecaca;border-radius:10px;padding:8px 10px;font-size:.86em;margin:8px 0}
+.err.show{display:block}
+.hidden{display:none!important}
+.center{text-align:center}
+.mt{margin-top:10px}
+.live-top{display:flex;gap:8px;align-items:stretch;margin-bottom:10px}
+.live-top .card{flex:1;margin:0;padding:10px}
+@media(max-width:420px){.row .btn{min-width:100%}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="brand">⚔️ Challenge <a href="index.html">← App</a></div>
+    <div class="nick" id="nickLabel">—</div>
+  </div>
+  <div class="err" id="err"></div>
+
+  <!-- HUB -->
+  <section id="view-hub">
+    <div class="card">
+      <h1>Klassen-Challenge</h1>
+      <p class="muted">Realtime-Duell mit Freunden. Erstelle einen Raum oder tritt mit Code bei.</p>
+      <div class="row mt">
+        <button class="btn" id="btnShowCreate">Raum erstellen</button>
+        <button class="btn ghost" id="btnShowJoin">Code eingeben</button>
+      </div>
+    </div>
+
+    <div class="card hidden" id="createBox">
+      <h2>Raum erstellen</h2>
+      <label>Fächer (mehrere möglich)</label>
+      <div class="seg" id="subjectPick"></div>
+      <label>Anzahl Fragen</label>
+      <div class="seg" id="countPick">
+        <button type="button" class="chip on" data-v="10">10</button>
+        <button type="button" class="chip" data-v="15">15</button>
+        <button type="button" class="chip" data-v="20">20</button>
+      </div>
+      <label>Sekunden pro Frage</label>
+      <div class="seg" id="timePick">
+        <button type="button" class="chip" data-v="10">10s</button>
+        <button type="button" class="chip on" data-v="15">15s</button>
+        <button type="button" class="chip" data-v="20">20s</button>
+        <button type="button" class="chip" data-v="0">∞</button>
+      </div>
+      <button class="btn block" id="btnCreate">Raum starten</button>
+    </div>
+
+    <div class="card hidden" id="joinBox">
+      <h2>Raum beitreten</h2>
+      <label for="joinCode">Code</label>
+      <input id="joinCode" type="text" maxlength="8" placeholder="z. B. A3K9Q" autocomplete="off">
+      <button class="btn block" id="btnJoin">Beitreten</button>
+    </div>
+  </section>
+
+  <!-- LOBBY -->
+  <section id="view-lobby" class="hidden">
+    <div class="card">
+      <h2>Lobby</h2>
+      <div class="muted center">Raumcode teilen</div>
+      <div class="code-big" id="lobbyCode">————</div>
+      <p class="muted center" id="lobbySettings">—</p>
+      <div class="row mt">
+        <button class="btn ghost" id="btnCopy">Code kopieren</button>
+        <button class="btn ghost" id="btnLeaveLobby">Verlassen</button>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Spieler</h2>
+      <div class="players" id="lobbyPlayers"></div>
+      <div class="row mt">
+        <button class="btn ghost" id="btnReady">Bereit</button>
+        <button class="btn" id="btnStart">Spiel starten</button>
+      </div>
+      <p class="muted mt" id="lobbyHint">Host startet, sobald alle bereit sind (Solo-Test erlaubt).</p>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN / LIVE -->
+  <section id="view-live" class="hidden">
+    <div class="live-top">
+      <div class="card"><div class="muted">Frage</div><div id="liveQnum" style="font-weight:800">1/10</div></div>
+      <div class="card"><div class="muted">Zeit</div><div id="liveTime" style="font-weight:800">—</div></div>
+      <div class="card"><div class="muted">Punkte</div><div id="liveMyScore" style="font-weight:800">0</div></div>
+    </div>
+    <div class="card hidden" id="countdownCard">
+      <div class="countdown" id="countdownNum">3</div>
+      <p class="muted center">Gleich geht’s los…</p>
+    </div>
+    <div class="card" id="questionCard">
+      <div class="q-meta"><span id="liveCat">—</span><span id="liveSub">—</span></div>
+      <div class="timer" id="timerBar"><i id="timerFill"></i></div>
+      <div class="q-text" id="liveQuestion">—</div>
+      <div class="opts" id="liveOpts"></div>
+      <p class="muted mt" id="liveWait"></p>
+    </div>
+    <div class="card">
+      <h2>Live-Score</h2>
+      <div class="scoreboard" id="liveBoard"></div>
+    </div>
+  </section>
+
+  <!-- FINISH -->
+  <section id="view-finish" class="hidden">
+    <div class="card">
+      <div class="podium">
+        <div class="muted">Ergebnis</div>
+        <div class="rank" id="finishRank">#1</div>
+        <p id="finishSummary" class="muted">—</p>
+      </div>
+      <div class="scoreboard" id="finishBoard"></div>
+      <div class="row mt">
+        <button class="btn" id="btnAgain">Neuer Raum</button>
+        <button class="btn ghost" id="btnHome">Zur App</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script src="./pwa.js" defer></script>
+<script src="./supabase.js"></script>
+<script src="./challenge-data.js"></script>
+<script src="./challenge.js"></script>
+</body>
+</html>

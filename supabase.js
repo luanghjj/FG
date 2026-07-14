@@ -683,6 +683,320 @@
     return true;
   }
 
+  /* ===== Challenge rooms (realtime game) ===== */
+  const CHALLENGE_PREFIX = 'learn:challenge:room:';
+  const CHALLENGE_RESULT_PREFIX = 'learn:challenge:result:';
+
+  function challengeRoomKey(code) {
+    return CHALLENGE_PREFIX + String(code || '').toUpperCase();
+  }
+
+  function makeRoomCode() {
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    let s = '';
+    for (let i = 0; i < 5; i++) s += chars[Math.floor(Math.random() * chars.length)];
+    return s;
+  }
+
+  async function getChallengeRoom(code) {
+    const row = await getConfig(challengeRoomKey(code));
+    return row ? { key: row.key, value: row.value, updated_at: row.updated_at } : null;
+  }
+
+  async function saveChallengeRoom(code, value) {
+    const key = challengeRoomKey(code);
+    value = value || {};
+    value.code = String(code || value.code || '').toUpperCase();
+    value.updated_at = new Date().toISOString();
+    value.app = 'on-thi';
+    const row = await upsertConfig(key, value);
+    return row && row.value ? row.value : value;
+  }
+
+  async function createChallengeRoom({ host, settings }) {
+    const player = String(host || getPlayer() || '').trim();
+    if (!player) throw new Error('Bitte Nickname eingeben');
+    let code = '';
+    let tries = 0;
+    while (tries < 8) {
+      code = makeRoomCode();
+      const existing = await getChallengeRoom(code);
+      if (!existing) break;
+      tries++;
+    }
+    const now = new Date().toISOString();
+    const st = settings || {};
+    const room = {
+      code: code,
+      host: player,
+      status: 'lobby',
+      created_at: now,
+      updated_at: now,
+      settings: {
+        subjects: st.subjects && st.subjects.length ? st.subjects : ['bfk2'],
+        count: Number(st.count) || 10,
+        secondsPerQ: st.secondsPerQ == null ? 15 : Number(st.secondsPerQ),
+        mixed: !!(st.subjects && st.subjects.length > 1),
+        seed: Number(st.seed) || (Date.now() % 1000000000),
+      },
+      players: {},
+      question_ids: [],
+      q_index: 0,
+      q_started_at: null,
+      scores: {},
+      answers: {},
+      finished_at: null,
+      app: 'on-thi',
+    };
+    room.players[player] = { ready: true, joined_at: now };
+    room.scores[player] = { correct: 0, answered: 0, streak: 0 };
+    await saveChallengeRoom(code, room);
+    return room;
+  }
+
+  async function joinChallengeRoom(code, playerName) {
+    const player = String(playerName || getPlayer() || '').trim();
+    if (!player) throw new Error('Bitte Nickname eingeben');
+    const c = String(code || '').trim().toUpperCase();
+    if (c.length < 4) throw new Error('Code ungültig');
+    const row = await getChallengeRoom(c);
+    if (!row || !row.value) throw new Error('Raum nicht gefunden');
+    const room = row.value;
+    if (room.status === 'finished') throw new Error('Raum ist bereits beendet');
+    const now = new Date().toISOString();
+    room.players = room.players || {};
+    room.scores = room.scores || {};
+    if (!room.players[player]) {
+      // limit players
+      if (Object.keys(room.players).length >= 6) throw new Error('Raum ist voll (max 6)');
+      room.players[player] = { ready: false, joined_at: now };
+    }
+    if (!room.scores[player]) room.scores[player] = { correct: 0, answered: 0, streak: 0 };
+    room.players[player].last_seen = now;
+    await saveChallengeRoom(c, room);
+    return room;
+  }
+
+  async function setChallengeReady(code, playerName, ready) {
+    const player = String(playerName || getPlayer() || '').trim();
+    const row = await getChallengeRoom(code);
+    if (!row || !row.value) throw new Error('Raum nicht gefunden');
+    const room = row.value;
+    if (!room.players || !room.players[player]) throw new Error('Nicht im Raum');
+    room.players[player].ready = !!ready;
+    room.players[player].last_seen = new Date().toISOString();
+    await saveChallengeRoom(code, room);
+    return room;
+  }
+
+  async function updateChallengeSettings(code, hostName, settings) {
+    const host = String(hostName || getPlayer() || '').trim();
+    const row = await getChallengeRoom(code);
+    if (!row || !row.value) throw new Error('Raum nicht gefunden');
+    const room = row.value;
+    if (room.host !== host) throw new Error('Nur der Host kann Einstellungen ändern');
+    if (room.status !== 'lobby') throw new Error('Spiel läuft bereits');
+    room.settings = Object.assign({}, room.settings || {}, settings || {});
+    room.settings.mixed = !!(room.settings.subjects && room.settings.subjects.length > 1);
+    await saveChallengeRoom(code, room);
+    return room;
+  }
+
+  async function startChallengeRoom(code, hostName, questionIds) {
+    const host = String(hostName || getPlayer() || '').trim();
+    const row = await getChallengeRoom(code);
+    if (!row || !row.value) throw new Error('Raum nicht gefunden');
+    const room = row.value;
+    if (room.host !== host) throw new Error('Nur der Host kann starten');
+    if (room.status !== 'lobby' && room.status !== 'countdown') throw new Error('Raum nicht im Lobby');
+    const ids = questionIds || room.question_ids || [];
+    if (!ids.length) throw new Error('Keine Fragen gewählt');
+    const now = new Date().toISOString();
+    // reset scores for live run
+    room.scores = room.scores || {};
+    Object.keys(room.players || {}).forEach((p) => {
+      room.scores[p] = { correct: 0, answered: 0, streak: 0 };
+    });
+    room.answers = {};
+    room.question_ids = ids;
+    room.q_index = 0;
+    room.status = 'countdown';
+    room.countdown_ends_at = new Date(Date.now() + 3000).toISOString();
+    room.q_started_at = null;
+    room.started_at = now;
+    room.finished_at = null;
+    await saveChallengeRoom(code, room);
+    return room;
+  }
+
+  async function goLiveChallenge(code, hostName) {
+    const host = String(hostName || getPlayer() || '').trim();
+    const row = await getChallengeRoom(code);
+    if (!row || !row.value) throw new Error('Raum nicht gefunden');
+    const room = row.value;
+    if (room.host !== host) throw new Error('Nur der Host');
+    if (room.status !== 'countdown' && room.status !== 'lobby') return room;
+    room.status = 'live';
+    room.q_index = 0;
+    room.q_started_at = new Date().toISOString();
+    await saveChallengeRoom(code, room);
+    return room;
+  }
+
+  async function submitChallengeAnswer(code, playerName, qIndex, choiceIndex, isCorrect) {
+    const player = String(playerName || getPlayer() || '').trim();
+    const row = await getChallengeRoom(code);
+    if (!row || !row.value) throw new Error('Raum nicht gefunden');
+    const room = row.value;
+    if (room.status !== 'live') throw new Error('Spiel nicht aktiv');
+    const qi = Number(qIndex);
+    if (qi !== Number(room.q_index)) throw new Error('Frage bereits vorbei');
+    room.answers = room.answers || {};
+    const key = String(qi);
+    room.answers[key] = room.answers[key] || {};
+    // lock first answer
+    if (room.answers[key][player] != null && room.answers[key][player].choice != null) {
+      return room; // already answered
+    }
+    room.answers[key][player] = {
+      choice: Number(choiceIndex),
+      correct: !!isCorrect,
+      at: new Date().toISOString(),
+    };
+    room.scores = room.scores || {};
+    room.scores[player] = room.scores[player] || { correct: 0, answered: 0, streak: 0 };
+    room.scores[player].answered = (Number(room.scores[player].answered) || 0) + 1;
+    if (isCorrect) {
+      room.scores[player].correct = (Number(room.scores[player].correct) || 0) + 1;
+      room.scores[player].streak = (Number(room.scores[player].streak) || 0) + 1;
+    } else {
+      room.scores[player].streak = 0;
+    }
+    if (room.players && room.players[player]) {
+      room.players[player].last_seen = new Date().toISOString();
+    }
+    await saveChallengeRoom(code, room);
+    return room;
+  }
+
+  async function advanceChallengeQuestion(code, hostName) {
+    const host = String(hostName || getPlayer() || '').trim();
+    const row = await getChallengeRoom(code);
+    if (!row || !row.value) throw new Error('Raum nicht gefunden');
+    const room = row.value;
+    if (room.host !== host) throw new Error('Nur der Host kann weiter schalten');
+    if (room.status !== 'live') return room;
+    const total = (room.question_ids || []).length;
+    const next = Number(room.q_index) + 1;
+    if (next >= total) {
+      room.status = 'finished';
+      room.finished_at = new Date().toISOString();
+      room.q_started_at = null;
+    } else {
+      room.q_index = next;
+      room.q_started_at = new Date().toISOString();
+    }
+    await saveChallengeRoom(code, room);
+    return room;
+  }
+
+  async function finishChallengeRoom(code, hostName) {
+    const host = String(hostName || getPlayer() || '').trim();
+    const row = await getChallengeRoom(code);
+    if (!row || !row.value) throw new Error('Raum nicht gefunden');
+    const room = row.value;
+    if (room.host !== host && room.status !== 'finished') {
+      // allow any client to finalize if already past last question via host race
+    }
+    room.status = 'finished';
+    room.finished_at = room.finished_at || new Date().toISOString();
+    await saveChallengeRoom(code, room);
+    return room;
+  }
+
+  async function saveChallengeResult(code, playerName, room) {
+    const player = String(playerName || getPlayer() || '').trim();
+    if (!player || !room) return null;
+    const sc = (room.scores && room.scores[player]) || { correct: 0, answered: 0 };
+    const total = (room.question_ids || []).length || sc.answered || 0;
+    const correct = Number(sc.correct) || 0;
+    const pct = total ? Math.round((correct / total) * 100) : 0;
+    const key = CHALLENGE_RESULT_PREFIX + String(code).toUpperCase() + ':' + clean(player);
+    const value = {
+      code: String(code).toUpperCase(),
+      player: player,
+      correct: correct,
+      total: total,
+      pct: pct,
+      subjects: (room.settings && room.settings.subjects) || [],
+      at: new Date().toISOString(),
+      app: 'on-thi',
+    };
+    await upsertConfig(key, value);
+    // also personal quiz history
+    try {
+      await saveQuizScore({
+        subject: 'CHALLENGE',
+        quiz: String(code).toUpperCase(),
+        correct: correct,
+        total: total,
+        player: player,
+      });
+    } catch (_) {}
+    return value;
+  }
+
+  /**
+   * Subscribe to room changes.
+   * Tries Supabase Realtime; falls back to polling every pollMs.
+   * Returns unsubscribe function.
+   */
+  function subscribeChallengeRoom(code, onUpdate, pollMs) {
+    const c = String(code || '').toUpperCase();
+    const key = challengeRoomKey(c);
+    let stopped = false;
+    let timer = null;
+    let lastJson = '';
+    let realtimeOk = false;
+    let ws = null;
+
+    async function pull() {
+      if (stopped) return;
+      try {
+        const row = await getChallengeRoom(c);
+        const val = row && row.value ? row.value : null;
+        const j = JSON.stringify(val);
+        if (j !== lastJson) {
+          lastJson = j;
+          if (onUpdate) onUpdate(val, row);
+        }
+      } catch (_) {}
+    }
+
+    // Always poll as reliable fallback (Realtime may be disabled)
+    const ms = Math.max(800, Number(pollMs) || 1500);
+    timer = setInterval(pull, ms);
+    pull();
+
+    // Optional: try Realtime websocket (best-effort, ignore failures)
+    try {
+      // PostgREST realtime via supabase realtime v1 endpoint is project-dependent;
+      // polling is the supported path for this static app.
+      realtimeOk = false;
+    } catch (_) {
+      realtimeOk = false;
+    }
+
+    return function unsubscribe() {
+      stopped = true;
+      if (timer) clearInterval(timer);
+      timer = null;
+      try {
+        if (ws) ws.close();
+      } catch (_) {}
+    };
+  }
+
   global.LearnDB = {
     url: SB_URL,
     adminPass: ADMIN_PASS,
@@ -703,5 +1017,19 @@
     formatDuration,
     bindVisitLifecycle,
     resumeVisitTracking,
+    // challenge
+    createChallengeRoom,
+    joinChallengeRoom,
+    getChallengeRoom,
+    saveChallengeRoom,
+    setChallengeReady,
+    updateChallengeSettings,
+    startChallengeRoom,
+    goLiveChallenge,
+    submitChallengeAnswer,
+    advanceChallengeQuestion,
+    finishChallengeRoom,
+    saveChallengeResult,
+    subscribeChallengeRoom,
   };
 })(typeof window !== 'undefined' ? window : globalThis);

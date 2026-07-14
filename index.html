@@ -581,6 +581,11 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
       <b>BfK-2 · Fleischteile</b>
       <span>Rind · Schwein · Schaf interaktiv</span>
     </div>
+    <div class="today-card" onclick="location.href='challenge.html'">
+      <div class="ic">⚔️</div>
+      <b>Klassen-Challenge</b>
+      <span>Realtime-Duell · Raumcode teilen</span>
+    </div>
   </div>
 
   <div class="progress-card" id="homeProgressCard">
@@ -1362,6 +1367,7 @@ SUBJECTS.forEach(s=>{
   idx(s.name, s.desc||s.code, s.code, s.route, null, s.code+" "+(s.ready?"verfügbar":"bald"));
 });
 idx("Startseite / Fächer","Alle Fächer der Lern-App","App","#/",null,"home start fächer menü");
+idx("Klassen-Challenge","Realtime Duell · Raumcode · Live-Score","Game","challenge.html",null,"challenge game duell multiplayer");
 idx("Admin Dashboard","Nutzer · Besuche · Quiz-Punkte","Admin","admin.html",null,"admin statistik rangliste besuche");
 idx("Musterprüfung","Klassenarbeit Nr. 2 · Prüfungsbogen","Prüfung","kiemtra_mau.html",null,"prüfung ka ka2 test");
 idx("Lösungsbogen","Lösungen zur Musterprüfung","Prüfung","loiGiai_mau.html",null,"lösung antworten");
