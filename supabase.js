@@ -9,8 +9,13 @@
   const PLAYER_PREFIX = 'learn:player:';
   const GLOBAL_STATS_KEY = 'learn:stats:global';
   const VISIT_PREFIX = 'learn:visit:';
+  const SESSION_VISIT_KEY = 'learn_active_visit';
   // Simple admin password for school dashboard (change if needed)
   const ADMIN_PASS = 'H2FO3T';
+  const HEARTBEAT_MS = 30000; // 30s
+
+  let _hbTimer = null;
+  let _activeVisit = null; // { key, player, startedAt, lastBeatAt }
 
   function headers(extra) {
     return Object.assign(
@@ -267,6 +272,168 @@
     return profile;
   }
 
+  function readActiveVisit() {
+    try {
+      const raw = sessionStorage.getItem(SESSION_VISIT_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function writeActiveVisit(v) {
+    _activeVisit = v;
+    try {
+      if (v) sessionStorage.setItem(SESSION_VISIT_KEY, JSON.stringify(v));
+      else sessionStorage.removeItem(SESSION_VISIT_KEY);
+    } catch (_) {}
+  }
+
+  function durationSec(fromIso, toIso) {
+    const a = Date.parse(fromIso || '');
+    const b = Date.parse(toIso || '');
+    if (!a || !b || b < a) return 0;
+    return Math.max(0, Math.round((b - a) / 1000));
+  }
+
+  function formatDuration(sec) {
+    const s = Math.max(0, Number(sec) || 0);
+    const h = Math.floor(s / 3600);
+    const m = Math.floor((s % 3600) / 60);
+    const r = s % 60;
+    if (h > 0) return h + 'h ' + String(m).padStart(2, '0') + 'm';
+    if (m > 0) return m + 'm ' + String(r).padStart(2, '0') + 's';
+    return r + 's';
+  }
+
+  async function persistVisitDuration(visit, ended, reason) {
+    if (!visit || !visit.key || !visit.startedAt) return null;
+    const endIso = ended || new Date().toISOString();
+    const sec = durationSec(visit.startedAt, endIso);
+    const value = {
+      player: visit.player,
+      at: visit.startedAt,
+      started_at: visit.startedAt,
+      last_seen: endIso,
+      ended_at: endIso,
+      duration_sec: sec,
+      day: String(visit.startedAt).slice(0, 10),
+      reason: reason || 'update',
+      app: 'on-thi',
+    };
+    await upsertConfig(visit.key, value);
+
+    // roll into player profile total duration (best-effort)
+    try {
+      const pk = playerKey(visit.player);
+      const row = await getConfig(pk);
+      const profile = (row && row.value) || { player: visit.player, app: 'on-thi' };
+      // store last session duration + accumulate if this beat is higher than previous last
+      const prevLast = Number(profile.last_session_sec) || 0;
+      const prevTotal = Number(profile.total_duration_sec) || 0;
+      // approximate total: replace last contribution with latest known duration
+      profile.total_duration_sec = Math.max(0, prevTotal - prevLast) + sec;
+      profile.last_session_sec = sec;
+      profile.last_seen = endIso;
+      await upsertConfig(pk, profile);
+    } catch (_) {}
+
+    return value;
+  }
+
+  function stopHeartbeat() {
+    if (_hbTimer) {
+      clearInterval(_hbTimer);
+      _hbTimer = null;
+    }
+  }
+
+  function startHeartbeat() {
+    stopHeartbeat();
+    _hbTimer = setInterval(() => {
+      heartbeat('timer');
+    }, HEARTBEAT_MS);
+  }
+
+  /** Resume duration tracking after navigation (same tab sessionStorage). */
+  function resumeVisitTracking() {
+    const visit = readActiveVisit();
+    if (!visit || !visit.key) return false;
+    _activeVisit = visit;
+    bindVisitLifecycle();
+    startHeartbeat();
+    heartbeat('resume');
+    return true;
+  }
+
+  async function heartbeat(reason) {
+    const visit = _activeVisit || readActiveVisit();
+    if (!visit) return null;
+    const now = new Date().toISOString();
+    visit.lastBeatAt = now;
+    writeActiveVisit(visit);
+    try {
+      return await persistVisitDuration(visit, now, reason || 'heartbeat');
+    } catch (_) {
+      return null;
+    }
+  }
+
+  async function endVisit(reason) {
+    stopHeartbeat();
+    const visit = _activeVisit || readActiveVisit();
+    if (!visit) return null;
+    try {
+      const saved = await persistVisitDuration(visit, new Date().toISOString(), reason || 'end');
+      writeActiveVisit(null);
+      return saved;
+    } catch (_) {
+      writeActiveVisit(null);
+      return null;
+    }
+  }
+
+  function bindVisitLifecycle() {
+    if (global.__learnVisitBound) return;
+    global.__learnVisitBound = true;
+    const flush = () => {
+      // best-effort synchronous beacon-like update via sendBeacon is hard with headers;
+      // use keepalive fetch instead
+      const visit = _activeVisit || readActiveVisit();
+      if (!visit) return;
+      const endIso = new Date().toISOString();
+      const sec = durationSec(visit.startedAt, endIso);
+      const body = JSON.stringify({
+        key: visit.key,
+        value: {
+          player: visit.player,
+          at: visit.startedAt,
+          started_at: visit.startedAt,
+          last_seen: endIso,
+          ended_at: endIso,
+          duration_sec: sec,
+          day: String(visit.startedAt).slice(0, 10),
+          reason: 'pagehide',
+          app: 'on-thi',
+        },
+      });
+      try {
+        fetch(SB_URL + '/rest/v1/config?on_conflict=key', {
+          method: 'POST',
+          headers: headers({ Prefer: 'resolution=merge-duplicates' }),
+          body: body,
+          keepalive: true,
+        });
+      } catch (_) {}
+    };
+    global.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'hidden') heartbeat('hidden');
+      else if (document.visibilityState === 'visible') heartbeat('visible');
+    });
+    global.addEventListener('pagehide', flush);
+    global.addEventListener('beforeunload', flush);
+  }
+
   async function loginOrRegister(nickname) {
     const p = String(nickname || '').trim().slice(0, 32);
     if (!p) throw new Error('Nickname darf nicht leer sein');
@@ -287,24 +454,44 @@
       last_seen: now,
       visits: 0,
       quiz_attempts: 0,
+      total_duration_sec: 0,
+      last_session_sec: 0,
       quizzes: {},
       app: 'on-thi',
     };
     profile.player = p;
     profile.last_seen = now;
     profile.visits = (Number(profile.visits) || 0) + 1;
+    if (profile.total_duration_sec == null) profile.total_duration_sec = 0;
     await upsertConfig(key, profile);
 
-    // visit log (one row per visit event, capped key by timestamp)
+    // close previous open session in this tab (if any)
+    try { await endVisit('relogin'); } catch (_) {}
+
+    // visit log (one row per visit event) with duration tracking
     const visitKey = VISIT_PREFIX + now.slice(0, 10) + ':' + clean(p) + ':' + Date.now();
+    const visit = {
+      key: visitKey,
+      player: p,
+      startedAt: now,
+      lastBeatAt: now,
+    };
     try {
       await upsertConfig(visitKey, {
         player: p,
         at: now,
+        started_at: now,
+        last_seen: now,
+        ended_at: null,
+        duration_sec: 0,
         day: now.slice(0, 10),
+        reason: 'start',
         app: 'on-thi',
       });
     } catch (_) {}
+    writeActiveVisit(visit);
+    bindVisitLifecycle();
+    startHeartbeat();
 
     // global counters
     try {
@@ -322,7 +509,7 @@
     } catch (_) {}
 
     const history = await loadPlayerHistory(p);
-    return { player: p, isNew: isNew, profile: profile, history: history };
+    return { player: p, isNew: isNew, profile: profile, history: history, visitKey: visitKey };
   }
 
   async function getAdminStats() {
@@ -340,6 +527,8 @@
         player: v.player,
         visits: Number(v.visits) || 0,
         quiz_attempts: Number(v.quiz_attempts) || 0,
+        total_duration_sec: Number(v.total_duration_sec) || 0,
+        last_session_sec: Number(v.last_session_sec) || 0,
         created_at: v.created_at || '',
         last_seen: v.last_seen || '',
         quizzes: v.quizzes || {},
@@ -352,7 +541,24 @@
       .sort((a, b) => String(b.at || b.updated_at || '').localeCompare(String(a.at || a.updated_at || '')));
 
     const visitList = (visits || [])
-      .map((r) => r.value || {})
+      .map((r) => {
+        const v = r.value || {};
+        const started = v.started_at || v.at || '';
+        const ended = v.ended_at || v.last_seen || '';
+        let sec = Number(v.duration_sec);
+        if (!sec && started) sec = durationSec(started, ended || new Date().toISOString());
+        return {
+          key: r.key,
+          player: v.player,
+          at: started || v.at || '',
+          started_at: started,
+          ended_at: v.ended_at || '',
+          last_seen: v.last_seen || ended || '',
+          duration_sec: sec || 0,
+          day: v.day || String(started || '').slice(0, 10),
+          reason: v.reason || '',
+        };
+      })
       .filter((v) => v && v.player)
       .sort((a, b) => String(b.at || '').localeCompare(String(a.at || '')));
 
@@ -363,6 +569,8 @@
       (s, q) => s + (Number(q.attempts) || (Array.isArray(q.history) ? q.history.length : 1)),
       0
     );
+    const totalDurationSec = visitList.reduce((s, v) => s + (Number(v.duration_sec) || 0), 0);
+    const avgDurationSec = visitList.length ? Math.round(totalDurationSec / visitList.length) : 0;
 
     // by subject/quiz aggregates
     const byQuiz = {};
@@ -385,6 +593,8 @@
       visit_events: visitList.length,
       total_quiz_rows: quizList.length,
       total_quiz_attempts: totalQuizAttempts,
+      total_duration_sec: totalDurationSec,
+      avg_duration_sec: avgDurationSec,
       global: (globalRow && globalRow.value) || null,
       players: playerList,
       quizzes: quizList,
@@ -416,5 +626,10 @@
     getAdminStats,
     checkAdminPassword,
     ping,
+    heartbeat,
+    endVisit,
+    formatDuration,
+    bindVisitLifecycle,
+    resumeVisitTracking,
   };
 })(typeof window !== 'undefined' ? window : globalThis);

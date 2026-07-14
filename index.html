@@ -1294,6 +1294,15 @@ function initAuthGate(){
 /* ============ INIT ============ */
 router();
 initAuthGate();
+// If already logged in earlier this tab session, keep duration tracking alive
+if(window.LearnDB && LearnDB.resumeVisitTracking){
+  // only resume if gate will auto-login; otherwise loginOrRegister starts a new visit
+  try{
+    if(LearnDB.getPlayer() && sessionStorage.getItem('learn_active_visit')){
+      // loginOrRegister will run via auto-login; skip double-start
+    }
+  }catch(_){}
+}
 </script>
 </body>
 </html>

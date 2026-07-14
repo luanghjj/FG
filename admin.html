@@ -66,7 +66,7 @@ th{color:var(--muted);font-size:.75em;text-transform:uppercase;letter-spacing:.0
       <div class="muted" id="playersMeta"></div>
       <div style="overflow:auto;margin-top:8px">
         <table>
-          <thead><tr><th>Nickname</th><th>Besuche</th><th>Quiz-Versuche</th><th>Zuletzt</th><th>Erstellt</th></tr></thead>
+          <thead><tr><th>Nickname</th><th>Besuche</th><th>Quiz-Versuche</th><th>Zeit gesamt</th><th>Letzte Session</th><th>Zuletzt</th><th>Erstellt</th></tr></thead>
           <tbody id="playersBody"></tbody>
         </table>
       </div>
@@ -93,10 +93,11 @@ th{color:var(--muted);font-size:.75em;text-transform:uppercase;letter-spacing:.0
     </div>
 
     <div class="card">
-      <h2>🚪 Letzte Besuche</h2>
+      <h2>🚪 Letzte Besuche (mit Dauer)</h2>
+      <p class="muted" style="margin-bottom:8px">Dauer wird per Heartbeat (~30s) und beim Schließen der Seite aktualisiert.</p>
       <div style="overflow:auto">
         <table>
-          <thead><tr><th>Spieler</th><th>Zeitpunkt</th></tr></thead>
+          <thead><tr><th>Spieler</th><th>Start</th><th>Ende / zuletzt</th><th>Dauer</th><th>Status</th></tr></thead>
           <tbody id="visitBody"></tbody>
         </table>
       </div>
@@ -128,16 +129,19 @@ async function load(){
   g.innerHTML='<div class="stat"><div class="l">Lädt…</div></div>';
   try{
     const s=await LearnDB.getAdminStats();
+    const fd = (sec)=> (window.LearnDB && LearnDB.formatDuration ? LearnDB.formatDuration(sec) : (sec||0)+'s');
     g.innerHTML=`
       <div class="stat"><div class="n">${s.unique_players}</div><div class="l">Nutzer (eindeutig)</div></div>
       <div class="stat"><div class="n">${s.total_visits}</div><div class="l">Besuche gesamt</div></div>
+      <div class="stat"><div class="n">${fd(s.total_duration_sec)}</div><div class="l">Lernzeit gesamt</div></div>
+      <div class="stat"><div class="n">${fd(s.avg_duration_sec)}</div><div class="l">Ø Dauer / Besuch</div></div>
       <div class="stat"><div class="n">${s.total_quiz_rows}</div><div class="l">Quiz-Einträge</div></div>
       <div class="stat"><div class="n">${s.total_quiz_attempts}</div><div class="l">Quiz-Versuche gesamt</div></div>
     `;
     document.getElementById('playersMeta').textContent = s.players.length + ' Profile';
     document.getElementById('playersBody').innerHTML = s.players.map(p=>
-      `<tr><td><b>${p.player}</b></td><td>${p.visits}</td><td>${p.quiz_attempts}</td><td>${fmt(p.last_seen)}</td><td>${fmt(p.created_at)}</td></tr>`
-    ).join('') || '<tr><td colspan="5" class="muted">Noch keine Nutzer</td></tr>';
+      `<tr><td><b>${p.player}</b></td><td>${p.visits}</td><td>${p.quiz_attempts}</td><td>${fd(p.total_duration_sec)}</td><td>${fd(p.last_session_sec)}</td><td>${fmt(p.last_seen)}</td><td>${fmt(p.created_at)}</td></tr>`
+    ).join('') || '<tr><td colspan="7" class="muted">Noch keine Nutzer</td></tr>';
 
     document.getElementById('quizBody').innerHTML = s.quizzes.slice(0,80).map(q=>
       `<tr><td>${q.player||''}</td><td><span class="tag">${q.subject||''}</span></td><td>${q.quiz||''}</td><td><b>${q.correct||0}/${q.total||0}</b></td><td>${q.pct||0}%</td><td>${q.attempts||1}</td><td>${fmt(q.at||q.updated_at)}</td></tr>`
@@ -147,9 +151,11 @@ async function load(){
       `<tr><td>${a.label}</td><td>${a.players}</td><td>${a.attempts}</td><td>${a.avgPct}%</td></tr>`
     ).join('') || '<tr><td colspan="4" class="muted">—</td></tr>';
 
-    document.getElementById('visitBody').innerHTML = (s.visits||[]).slice(0,50).map(v=>
-      `<tr><td>${v.player||''}</td><td>${fmt(v.at)}</td></tr>`
-    ).join('') || '<tr><td colspan="2" class="muted">Noch keine Besuche</td></tr>';
+    document.getElementById('visitBody').innerHTML = (s.visits||[]).slice(0,80).map(v=>{
+      const open = !v.ended_at;
+      const status = open ? '<span class="tag">aktiv/offen</span>' : '<span class="tag">beendet</span>';
+      return `<tr><td>${v.player||''}</td><td>${fmt(v.started_at||v.at)}</td><td>${fmt(v.ended_at||v.last_seen)}</td><td><b>${fd(v.duration_sec)}</b></td><td>${status}</td></tr>`;
+    }).join('') || '<tr><td colspan="5" class="muted">Noch keine Besuche</td></tr>';
   }catch(e){
     g.innerHTML='<div class="stat"><div class="l" style="color:var(--bad)">Fehler: '+(e.message||e)+'</div></div>';
   }

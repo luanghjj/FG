@@ -1917,7 +1917,8 @@ function shuffle(a){const arr=[...a];for(let i=arr.length-1;i>0;i--){const j=Mat
     if(name){ chip.textContent='👤 '+name; }
     else { chip.innerHTML='<a href="./index.html" style="color:inherit;text-decoration:none">👤 Login</a>'; }
   }
-  // Optional soft gate: allow browsing theory without nick, but quiz needs nick
+  // Continue session duration tracking after navigating from index
+  if(window.LearnDB && LearnDB.resumeVisitTracking) LearnDB.resumeVisitTracking();
 })();
 renderFormen();
 renderTU();
