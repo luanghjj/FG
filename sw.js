@@ -1,5 +1,5 @@
 /* Service Worker – Lern-App H2FO3T (offline shell + static assets) */
-const CACHE = 'h2fo3t-v2';
+const CACHE = 'h2fo3t-v3';
 const PRECACHE = [
   './',
   './index.html',
@@ -57,7 +57,23 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // static: cache-first
+  // JS/CSS: network-first so API updates (e.g. LearnDB challenge methods) are not stuck
+  if (url.pathname.endsWith('.js') || url.pathname.endsWith('.css') || url.pathname.endsWith('.webmanifest')) {
+    event.respondWith(
+      fetch(req)
+        .then((res) => {
+          if (res && res.status === 200) {
+            const copy = res.clone();
+            caches.open(CACHE).then((c) => c.put(req, copy));
+          }
+          return res;
+        })
+        .catch(() => caches.match(req))
+    );
+    return;
+  }
+
+  // other static: cache-first
   event.respondWith(
     caches.match(req).then((cached) => {
       if (cached) return cached;

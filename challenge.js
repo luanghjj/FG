@@ -33,7 +33,12 @@
   }
 
   function needPlayer() {
-    if (!window.LearnDB) throw new Error('supabase.js fehlt');
+    if (!window.LearnDB) throw new Error('supabase.js fehlt — bitte Hard-Refresh (Cache leeren)');
+    if (typeof LearnDB.createChallengeRoom !== 'function' || typeof LearnDB.joinChallengeRoom !== 'function') {
+      throw new Error(
+        'Challenge-API fehlt (alte Cache). Bitte Hard-Refresh: Cmd+Shift+R / Cache leeren, dann Seite neu laden.'
+      );
+    }
     me = LearnDB.getPlayer();
     if (!me) {
       alert('Bitte zuerst in der App mit Nickname einloggen.');
@@ -528,11 +533,16 @@
   function init() {
     try {
       needPlayer();
-    } catch (_) {
+    } catch (e) {
+      if (e && e.message && e.message !== 'no player') showErr(e.message);
       return;
     }
     $('nickLabel').textContent = '👤 ' + me;
     if (LearnDB.resumeVisitTracking) LearnDB.resumeVisitTracking();
+    // unregister stale SW caches once if challenge API was missing before
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations?.().then(() => {});
+    }
 
     renderSubjectPick();
     bindSeg('countPick', 'count', (v) => Number(v));
