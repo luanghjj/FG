@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,17 +43,17 @@ th{color:var(--muted);font-size:.75em;text-transform:uppercase;letter-spacing:.0
 <div class="wrap">
   <div class="top">
     <div class="brand">🛡️ Admin · H2FO3T <a href="index.html">← App</a></div>
-    <button class="ghost" id="btnRefresh" style="display:none" type="button">↻ Refresh</button>
+    <button class="ghost" id="btnRefresh" style="display:none" type="button">↻ Aktualisieren</button>
   </div>
 
   <div class="card" id="loginBox">
-    <h2>Đăng nhập admin</h2>
-    <p class="muted">Xem số người vào, lượt visit và điểm quiz.</p>
+    <h2>Admin-Login</h2>
+    <p class="muted">Besucher, Besuche und Quiz-Punkte anzeigen.</p>
     <div class="err" id="err"></div>
-    <label class="muted" for="pass">Mật khẩu</label>
-    <input id="pass" type="password" placeholder="Admin password" autocomplete="current-password">
-    <button type="button" id="btnLogin">Vào dashboard</button>
-    <p class="muted" style="margin-top:10px">Mặc định lớp: <code>H2FO3T</code> (đổi trong <code>supabase.js</code>)</p>
+    <label class="muted" for="pass">Passwort</label>
+    <input id="pass" type="password" placeholder="Admin-Passwort" autocomplete="current-password">
+    <button type="button" id="btnLogin">Zum Dashboard</button>
+    <p class="muted" style="margin-top:10px">Klassenpasswort: <code>H2FO3T</code> (änderbar in <code>supabase.js</code>)</p>
   </div>
 
   <div id="dash">
@@ -61,42 +61,42 @@ th{color:var(--muted);font-size:.75em;text-transform:uppercase;letter-spacing:.0
 
     <div class="card">
       <div class="row-actions">
-        <h2 style="flex:1;margin:0">👥 Người dùng (nickname)</h2>
+        <h2 style="flex:1;margin:0">👥 Nutzer (Nickname)</h2>
       </div>
       <div class="muted" id="playersMeta"></div>
       <div style="overflow:auto;margin-top:8px">
         <table>
-          <thead><tr><th>Nickname</th><th>Visits</th><th>Quiz attempts</th><th>Lần cuối</th><th>Tạo lúc</th></tr></thead>
+          <thead><tr><th>Nickname</th><th>Besuche</th><th>Quiz-Versuche</th><th>Zuletzt</th><th>Erstellt</th></tr></thead>
           <tbody id="playersBody"></tbody>
         </table>
       </div>
     </div>
 
     <div class="card">
-      <h2>📊 Điểm quiz (mới nhất)</h2>
+      <h2>📊 Quiz-Punkte (neueste)</h2>
       <div style="overflow:auto">
         <table>
-          <thead><tr><th>Player</th><th>Môn</th><th>Quiz</th><th>Điểm</th><th>%</th><th>Lần</th><th>Thời điểm</th></tr></thead>
+          <thead><tr><th>Spieler</th><th>Fach</th><th>Quiz</th><th>Punkte</th><th>%</th><th>Versuche</th><th>Zeitpunkt</th></tr></thead>
           <tbody id="quizBody"></tbody>
         </table>
       </div>
     </div>
 
     <div class="card">
-      <h2>📈 Tổng hợp theo quiz</h2>
+      <h2>📈 Übersicht nach Quiz</h2>
       <div style="overflow:auto">
         <table>
-          <thead><tr><th>Quiz</th><th>Người</th><th>Lượt attempt</th><th>TB %</th></tr></thead>
+          <thead><tr><th>Quiz</th><th>Personen</th><th>Versuche</th><th>Ø %</th></tr></thead>
           <tbody id="aggBody"></tbody>
         </table>
       </div>
     </div>
 
     <div class="card">
-      <h2>🚪 Lượt vào gần đây</h2>
+      <h2>🚪 Letzte Besuche</h2>
       <div style="overflow:auto">
         <table>
-          <thead><tr><th>Player</th><th>Thời điểm</th></tr></thead>
+          <thead><tr><th>Spieler</th><th>Zeitpunkt</th></tr></thead>
           <tbody id="visitBody"></tbody>
         </table>
       </div>
@@ -114,7 +114,7 @@ function showErr(m){
 }
 function fmt(ts){
   if(!ts) return '—';
-  try{ return new Date(ts).toLocaleString(); }catch(_){ return String(ts).slice(0,19); }
+  try{ return new Date(ts).toLocaleString('de-DE'); }catch(_){ return String(ts).slice(0,19); }
 }
 function unlock(){
   document.getElementById('loginBox').style.display='none';
@@ -123,25 +123,25 @@ function unlock(){
   load();
 }
 async function load(){
-  if(!window.LearnDB){ alert('supabase.js missing'); return; }
+  if(!window.LearnDB){ alert('supabase.js fehlt'); return; }
   const g=document.getElementById('statsGrid');
-  g.innerHTML='<div class="stat"><div class="l">Loading…</div></div>';
+  g.innerHTML='<div class="stat"><div class="l">Lädt…</div></div>';
   try{
     const s=await LearnDB.getAdminStats();
     g.innerHTML=`
-      <div class="stat"><div class="n">${s.unique_players}</div><div class="l">Người (unique nick)</div></div>
-      <div class="stat"><div class="n">${s.total_visits}</div><div class="l">Tổng lượt vào</div></div>
-      <div class="stat"><div class="n">${s.total_quiz_rows}</div><div class="l">Bản ghi điểm quiz</div></div>
-      <div class="stat"><div class="n">${s.total_quiz_attempts}</div><div class="l">Tổng attempts quiz</div></div>
+      <div class="stat"><div class="n">${s.unique_players}</div><div class="l">Nutzer (eindeutig)</div></div>
+      <div class="stat"><div class="n">${s.total_visits}</div><div class="l">Besuche gesamt</div></div>
+      <div class="stat"><div class="n">${s.total_quiz_rows}</div><div class="l">Quiz-Einträge</div></div>
+      <div class="stat"><div class="n">${s.total_quiz_attempts}</div><div class="l">Quiz-Versuche gesamt</div></div>
     `;
-    document.getElementById('playersMeta').textContent = s.players.length + ' profiles';
+    document.getElementById('playersMeta').textContent = s.players.length + ' Profile';
     document.getElementById('playersBody').innerHTML = s.players.map(p=>
       `<tr><td><b>${p.player}</b></td><td>${p.visits}</td><td>${p.quiz_attempts}</td><td>${fmt(p.last_seen)}</td><td>${fmt(p.created_at)}</td></tr>`
-    ).join('') || '<tr><td colspan="5" class="muted">Chưa có ai vào</td></tr>';
+    ).join('') || '<tr><td colspan="5" class="muted">Noch keine Nutzer</td></tr>';
 
     document.getElementById('quizBody').innerHTML = s.quizzes.slice(0,80).map(q=>
       `<tr><td>${q.player||''}</td><td><span class="tag">${q.subject||''}</span></td><td>${q.quiz||''}</td><td><b>${q.correct||0}/${q.total||0}</b></td><td>${q.pct||0}%</td><td>${q.attempts||1}</td><td>${fmt(q.at||q.updated_at)}</td></tr>`
-    ).join('') || '<tr><td colspan="7" class="muted">Chưa có điểm</td></tr>';
+    ).join('') || '<tr><td colspan="7" class="muted">Noch keine Punkte</td></tr>';
 
     document.getElementById('aggBody').innerHTML = (s.quizAgg||[]).map(a=>
       `<tr><td>${a.label}</td><td>${a.players}</td><td>${a.attempts}</td><td>${a.avgPct}%</td></tr>`
@@ -149,17 +149,17 @@ async function load(){
 
     document.getElementById('visitBody').innerHTML = (s.visits||[]).slice(0,50).map(v=>
       `<tr><td>${v.player||''}</td><td>${fmt(v.at)}</td></tr>`
-    ).join('') || '<tr><td colspan="2" class="muted">Chưa ghi visit event</td></tr>';
+    ).join('') || '<tr><td colspan="2" class="muted">Noch keine Besuche</td></tr>';
   }catch(e){
-    g.innerHTML='<div class="stat"><div class="l" style="color:var(--bad)">Lỗi: '+(e.message||e)+'</div></div>';
+    g.innerHTML='<div class="stat"><div class="l" style="color:var(--bad)">Fehler: '+(e.message||e)+'</div></div>';
   }
 }
 
 document.getElementById('btnLogin').onclick=()=>{
   const pass=document.getElementById('pass').value;
   showErr('');
-  if(!window.LearnDB){ showErr('supabase.js missing'); return; }
-  if(!LearnDB.checkAdminPassword(pass)){ showErr('Sai mật khẩu'); return; }
+  if(!window.LearnDB){ showErr('supabase.js fehlt'); return; }
+  if(!LearnDB.checkAdminPassword(pass)){ showErr('Falsches Passwort'); return; }
   try{ sessionStorage.setItem(AUTH_KEY,'1'); }catch(_){}
   unlock();
 };

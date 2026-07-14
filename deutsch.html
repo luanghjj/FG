@@ -611,7 +611,7 @@ button.stw.open{box-shadow:0 0 0 2px #93c5fd}
 
   <!-- ========== ÜBEN ========== -->
   <div class="view" id="v-ueben">
-    <div class="hint-bar">✏️ Üben — Texte lesen · bấm từ gạch chấm xanh → nghĩa VI · Thema · Form · Quiz</div>
+    <div class="hint-bar">✏️ Üben — Texte lesen · gestrichelte Wörter antippen → VI-Bedeutung · Thema · Form · Quiz</div>
 
     <!-- Textübungen -->
     <div id="tuList"></div>
@@ -672,7 +672,7 @@ button.stw.open{box-shadow:0 0 0 2px #93c5fd}
 
     <div class="card">
       <h2>📄 Originaltext (zum Markieren üben)</h2>
-      <p class="muted" style="margin-bottom:8px">Gelb = mögliche Hauptäste · tippe gestrichelte Wörter für VI.</p>
+      <p class="muted" style="margin-bottom:8px">Gelb = mögliche Hauptäste · gestrichelte Wörter antippen für VI.</p>
       <div class="ka-text">
         <p><b class="mark">Fleischkonsum in Deutschland</b></p>
         <p>
@@ -1023,23 +1023,23 @@ const QUIZ = [
   {cat:'Tipps', q:'Gleichwertige Aussagen sollen …',
    opts:['unterschiedlich groß und bunt chaotisch sein','gleiche Farbe, Schriftgröße, Bildanteile haben','immer in ganzen Sätzen stehen','ohne Verbindung bleiben'],
    a:1, ex:'Gleiche Wichtigkeit → gleiche Darstellung.'},
-  {cat:'Vokabel', q:'Was heißt „Schlüsselwörter"?',
-   opts:['Từ khóa','Câu đầy đủ','Tiêu đề phụ','Màu sắc'],
-   a:0, ex:'Schlüsselwörter = từ khóa quan trọng.'},
-  {cat:'Vokabel', q:'Was heißt „Überschrift"?',
-   opts:['Chú thích','Tiêu đề','Trục Y','Mũi tên'],
-   a:1, ex:'Überschrift = tiêu đề của đồ họa.'},
-  {cat:'Vokabel', q:'Was heißt „Teufelskreis"?',
-   opts:['Vòng luẩn quẩn','Biểu đồ tròn','Sơ đồ tổ chức','Bảng số'],
-   a:0, ex:'Teufelskreis = vòng luẩn quẩn (Ursache–Wirkung).'},
-  {cat:'Vokabel', q:'Was heißt „Hierarchie"?',
-   opts:['Cấp bậc','Tỷ lệ %','Xu hướng','Từ khóa'],
-   a:0, ex:'Hierarchie = hệ thống cấp bậc (Organigramm).'},
-  {cat:'Vokabel', q:'Was heißt „Anteile"?',
-   opts:['Các phần / tỷ lệ','Chỉ tiêu đề','Chỉ mũi tên','Chỉ màu đỏ'],
-   a:0, ex:'Anteile = các phần (thường %).'},
-  {cat:'Vokabel', q:'Was heißt „Entwicklung"?',
-   opts:['Sự phát triển / xu hướng theo thời gian','Cấp trên','Bảng','Chỉ 1 số cố định'],
+  {cat:'Vokabel', q:'Was sind „Schlüsselwörter"?',
+   opts:['Wichtige Stichworte im Text','Ganze Sätze','Nur die Fußnote','Nur Farben'],
+   a:0, ex:'Schlüsselwörter = wichtige Stichworte im Text.'},
+  {cat:'Vokabel', q:'Was ist die „Überschrift" einer Grafik?',
+   opts:['Die Achsenbeschriftung','Der Titel der Grafik','Nur die Y-Achse','Nur die Pfeile'],
+   a:1, ex:'Überschrift = Titel der Grafik.'},
+  {cat:'Vokabel', q:'Was ist ein „Teufelskreis"?',
+   opts:['Eine sich verstärkende Ursache–Wirkung-Schleife','Ein Kreisdiagramm','Ein Organigramm','Eine Tabelle'],
+   a:0, ex:'Teufelskreis = sich verstärkende Ursache–Wirkung (Schleife).'},
+  {cat:'Vokabel', q:'Was bedeutet „Hierarchie"?',
+   opts:['Rangordnung / Über- und Unterordnung','Anteile in %','Zeitliche Entwicklung','Nur Stichworte'],
+   a:0, ex:'Hierarchie = Rangordnung (z. B. Organigramm).'},
+  {cat:'Vokabel', q:'Wofür stehen „Anteile" typischerweise?',
+   opts:['Teile eines Ganzen (oft in %)','Nur die Überschrift','Nur Pfeile','Nur die Farbe Rot'],
+   a:0, ex:'Anteile = Teile eines Ganzen, oft in Prozent.'},
+  {cat:'Vokabel', q:'Was zeigt eine „Entwicklung" meist?',
+   opts:['Veränderung über die Zeit','Nur die Hierarchie','Nur eine Tabelle ohne Zeit','Nur einen festen Einzelwert'],
    a:0, ex:'Entwicklung → oft Kurvendiagramm.'},
   {cat:'Praxis', q:'Getränke: Wasser 42, Softdrinks 28, Kaffee 18 … → Form?',
    opts:['Säulen-/Balkendiagramm','Organigramm','Mindmap','Strukturbild'],
@@ -1080,15 +1080,15 @@ const QUIZ = [
   {cat:'Formen', q:'Geschäftsführer → Küchenchef / Restaurantleiter → Mitarbeiter: Form?',
    opts:['Organigramm','Kreisdiagramm','Kurvendiagramm','Tabelle'],
    a:0, ex:'Hierarchie von Personen → Organigramm.'},
-  {cat:'Vokabel', q:'Was heißt „Massentierhaltung"?',
-   opts:['Chăn nuôi công nghiệp quy mô lớn','Ăn chay','Tiêu đề phụ','Biểu đồ đường'],
-   a:0, ex:'Massentierhaltung = chăn nuôi công nghiệp lớn.'},
-  {cat:'Vokabel', q:'Was heißt „artgerechte Haltung"?',
-   opts:['Chăn nuôi phù hợp với loài / nhân đạo','Chỉ đông lạnh','Chỉ xuất khẩu','Chỉ quảng cáo'],
-   a:0, ex:'artgerecht = phù hợp tập tính loài.'},
-  {cat:'Vokabel', q:'Was heißt „Lebensmittelverschwendung"?',
-   opts:['Lãng phí thực phẩm','Tiết kiệm điện','Vẽ mindmap','Đếm từ'],
-   a:0, ex:'Lebensmittelverschwendung = lãng phí đồ ăn.'},
+  {cat:'Vokabel', q:'Was bedeutet „Massentierhaltung"?',
+   opts:['Tierhaltung in sehr großer Zahl / engem Raum','Vegetarische Ernährung','Eine Unterüberschrift','Ein Kurvendiagramm'],
+   a:0, ex:'Massentierhaltung = Haltung vieler Tiere auf engem Raum.'},
+  {cat:'Vokabel', q:'Was bedeutet „artgerechte Haltung"?',
+   opts:['Haltung, die den Bedürfnissen der Tierart entspricht','Nur Tiefkühlware','Nur Export','Nur Werbung'],
+   a:0, ex:'artgerecht = den Bedürfnissen der Tierart entsprechend.'},
+  {cat:'Vokabel', q:'Was ist „Lebensmittelverschwendung"?',
+   opts:['Wegwerfen / Verschwenden von Lebensmitteln','Strom sparen','Eine Mindmap zeichnen','Wörter zählen'],
+   a:0, ex:'Lebensmittelverschwendung = Wegwerfen von Lebensmitteln.'},
   {cat:'Definition', q:'Visualisierung bedeutet vor allem …',
    opts:['Text als Grafik/Schaubild darstellen','Text lauter vorlesen','Text ins Englische übersetzen','Text löschen'],
    a:0, ex:'Von Text → Darstellung/Grafik.'},
@@ -1555,7 +1555,7 @@ function buildTU(tu, i){
 
   // Step 3: stichworte
   const stwAns = `<div class="answer" id="${tu.id}-stw-ans">
-    <b>Stichworte (từ khóa)</b> <span class="muted">— bấm để xem nghĩa VI</span>:
+    <b>Stichworte</b> <span class="muted">— antippen für VI-Bedeutung</span>:
     <div class="stichwort-list">${stw}</div>
   </div>`;
 
@@ -1605,30 +1605,30 @@ function buildTU(tu, i){
   </div>
   <div class="tu-body">
     <div class="box info" style="margin-bottom:12px">📋 <b>Aufgabe:</b> ${wrapTextWithVI(tu.aufgabe)}</div>
-    <div class="muted" style="font-size:.8em;margin:-4px 0 8px">💡 Bấm từ <span style="border-bottom:1.5px dashed #93c5fd">gạch chấm xanh</span> → nghĩa tiếng Việt</div>
+    <div class="muted" style="font-size:.8em;margin:-4px 0 8px">💡 Wörter mit <span style="border-bottom:1.5px dashed #93c5fd">gestrichelter Linie</span> antippen → vietnamesische Bedeutung</div>
     <div class="tu-text">${textVI}</div>
 
     <div class="tu-steps">
       <!-- Schritt 1: Aufgabe verstehen -->
       <div class="tu-step">
         <div class="tu-step-head" onclick="toggleStep('${tu.id}-s1')">
-          Aufgabe verstehen (Hiểu đề bài) — Was soll ich machen?
+          Aufgabe verstehen — Was soll ich machen?
         </div>
         <div class="tu-step-body" id="${tu.id}-s1">
-          <div class="box info">📌 <b>Đọc đề bài:</b> Finde das Schlüsselwort in der Aufgabe.<br>
+          <div class="box info">📌 <b>Aufgabenstellung lesen:</b> Finde das Schlüsselwort in der Aufgabe.<br>
           Hier: <b>„${tu.formLabel}"</b> = Darstellungsform ist vorgegeben.</div>
-          <div class="box tip">🇻🇳 <b>Ghi nhớ:</b> Đọc đề trước tiên → xác định dạng vẽ yêu cầu. Đề thường có từ như: <i>"Visualisiere … als Mindmap / als Diagramm …"</i></div>
+          <div class="box tip">💡 <b>Tipp:</b> Zuerst die Aufgabe lesen → geforderte Form erkennen. Oft steht dort: <i>„Visualisiere … als Mindmap / als Diagramm …"</i></div>
         </div>
       </div>
 
       <!-- Schritt 2: Thema -->
       <div class="tu-step">
         <div class="tu-step-head" onclick="toggleStep('${tu.id}-s2')">
-          Thema bestimmen (Xác định chủ đề chính)
+          Thema bestimmen
         </div>
         <div class="tu-step-body" id="${tu.id}-s2">
           <p>Lies den Text. Was ist das Hauptthema? (= Mitte der Mindmap / Titel des Diagramms)</p>
-          <div class="box tip">🇻🇳 Chủ đề = ý trung tâm của văn bản. Thường nằm ở câu đầu hoặc tiêu đề.</div>
+          <div class="box tip">💡 Das Thema ist die zentrale Aussage — oft im ersten Satz oder in der Überschrift.</div>
           <button class="reveal-btn" onclick="revealAns('${tu.id}-thema-ans')">→ Lösung zeigen</button>
           ${themaAns}
         </div>
@@ -1637,11 +1637,11 @@ function buildTU(tu, i){
       <!-- Schritt 3: Stichworte -->
       <div class="tu-step">
         <div class="tu-step-head" onclick="toggleStep('${tu.id}-s3')">
-          Stichworte markieren (Gạch từ khóa)
+          Stichworte markieren
         </div>
         <div class="tu-step-body" id="${tu.id}-s3">
           <p>Markiere wichtige Wörter und Zahlen im Text. <b>Keine ganzen Sätze!</b></p>
-          <div class="box tip">🇻🇳 Gạch chỉ từ khóa, số liệu, tên gọi. Không chép nguyên câu!</div>
+          <div class="box tip">💡 Nur Schlüsselwörter, Zahlen und Namen markieren — keine ganzen Sätze abschreiben!</div>
           <button class="reveal-btn" onclick="revealAns('${tu.id}-stw-ans')">→ Stichworte zeigen</button>
           ${stwAns}
         </div>
@@ -1650,11 +1650,11 @@ function buildTU(tu, i){
       <!-- Schritt 4: Form wählen -->
       <div class="tu-step">
         <div class="tu-step-head" onclick="toggleStep('${tu.id}-s4')">
-          Darstellungsform wählen (Chọn dạng vẽ)
+          Darstellungsform wählen
         </div>
         <div class="tu-step-body" id="${tu.id}-s4">
           <p>Welche Form passt zu diesem Text? Warum?</p>
-          <div class="box tip">🇻🇳 Nhìn nội dung: có số liệu theo năm? → đường. Có tỷ lệ %? → tròn. Có cấp bậc? → organigramm. Có nhiều ý? → mindmap.</div>
+          <div class="box tip">💡 Inhalt prüfen: Zeitreihe? → Kurve. Anteile %? → Kreis. Hierarchie? → Organigramm. Viele Aspekte? → Mindmap.</div>
           <button class="reveal-btn" onclick="revealAns('${tu.id}-form-ans')">→ Antwort zeigen</button>
           ${formAns}
         </div>
@@ -1663,7 +1663,7 @@ function buildTU(tu, i){
       <!-- Schritt 5: Zeichnen -->
       <div class="tu-step">
         <div class="tu-step-head" onclick="toggleStep('${tu.id}-s5')">
-          Zeichnen / Muster ansehen (Vẽ / Xem đáp án)
+          Zeichnen / Muster ansehen
         </div>
         <div class="tu-step-body" id="${tu.id}-s5">
           <button class="reveal-btn" onclick="revealAns('${tu.id}-muster')">→ Muster / Tipps zeigen</button>
@@ -1707,7 +1707,7 @@ function renderFormen(){
       <div class="name">${f.name}</div>
       <div class="zweck">${f.zweck}</div>
       <div class="muted" style="margin-top:6px;font-size:.82em">${f.desc}</div>
-      <button class="vi-btn" data-vi="${f.vi}" style="margin-top:6px;font-size:.8em">Nghĩa 🇻🇳</button>
+      <button class="vi-btn" data-vi="${f.vi}" style="margin-top:6px;font-size:.8em">VI 🇻🇳</button>
       <div class="vi-pop"></div>
     </div>`).join('');
 }
@@ -1777,19 +1777,19 @@ function quizIntro(){
   if(!name){
     document.getElementById('quizArea').innerHTML=`
       <div class="center">
-        <p class="muted" style="margin-bottom:12px">Cần nickname để làm quiz &amp; lưu điểm.</p>
-        <a class="btn" href="./index.html">← Về trang chính nhập nickname</a>
+        <p class="muted" style="margin-bottom:12px">Nickname nötig, um das Quiz zu spielen und Punkte zu speichern.</p>
+        <a class="btn" href="./index.html">← Zur Startseite (Nickname)</a>
       </div>`;
     return;
   }
   document.getElementById('quizArea').innerHTML=`
     <div class="center">
       <p class="muted" style="margin-bottom:10px">${QUIZ.length} Fragen · gemischt · mit Erklärung</p>
-      <p class="muted" style="margin-bottom:8px;font-size:.84em">☁️ Đang chơi với nickname <b>${name.replace(/</g,'&lt;')}</b></p>
-      <div class="db-status" id="dbStatus">Đang kiểm tra kết nối…</div>
+      <p class="muted" style="margin-bottom:8px;font-size:.84em">☁️ Nickname: <b>${name.replace(/</g,'&lt;')}</b></p>
+      <div class="db-status" id="dbStatus">Verbindung wird geprüft…</div>
       <div style="margin-top:12px">
         <button class="btn" onclick="quizStart()">Quiz starten</button>
-        <button class="btn ghost sm" style="margin-left:8px" type="button" onclick="showLeaderboard()">🏆 BXH</button>
+        <button class="btn ghost sm" style="margin-left:8px" type="button" onclick="showLeaderboard()">🏆 Rangliste</button>
       </div>
       <div id="lbBox" class="lb"></div>
       <div id="myHistBox" class="lb"></div>
@@ -1805,41 +1805,41 @@ async function showMyHistory(){
     const data=await LearnDB.loadPlayerHistory();
     const de=(data.quizzes||[]).filter(q=>String(q.subject).toUpperCase()==='DE');
     if(!de.length){ box.innerHTML=''; return; }
-    box.innerHTML=`<h4>📜 Lịch sử Deutsch của bạn</h4>
-      <table><tr><th>Quiz</th><th>Điểm</th><th>Lần</th><th>Ngày</th></tr>
+    box.innerHTML=`<h4>📜 Deine Deutsch-Historie</h4>
+      <table><tr><th>Quiz</th><th>Punkte</th><th>Versuche</th><th>Datum</th></tr>
       ${de.map(q=>`<tr><td>${q.quiz}</td><td>${q.correct}/${q.total} (${q.pct}%)</td><td>${q.attempts}</td><td>${(q.at||'').slice(0,10)}</td></tr>`).join('')}
       </table>`;
   }catch(_){ box.innerHTML=''; }
 }
 async function checkDb(){
   const st=document.getElementById('dbStatus');
-  if(!st || !window.LearnDB){ if(st){ st.className='db-status err'; st.textContent='Không tải được supabase.js'; } return; }
+  if(!st || !window.LearnDB){ if(st){ st.className='db-status err'; st.textContent='supabase.js konnte nicht geladen werden'; } return; }
   try{
     await LearnDB.ping();
     st.className='db-status ok';
-    st.textContent='✅ Đã kết nối Supabase';
+    st.textContent='✅ Mit Supabase verbunden';
   }catch(e){
     st.className='db-status err';
-    st.textContent='⚠️ Không kết nối được DB: '+(e.message||e);
+    st.textContent='⚠️ Keine DB-Verbindung: '+(e.message||e);
   }
 }
 async function showLeaderboard(){
   const box=document.getElementById('lbBox');
   if(!box || !window.LearnDB) return;
-  box.innerHTML='<div class="muted" style="font-size:.82em">Đang tải bảng xếp hạng…</div>';
+  box.innerHTML='<div class="muted" style="font-size:.82em">Rangliste wird geladen…</div>';
   try{
     const rows=await LearnDB.loadLeaderboard({subject:'DE', quiz:'visualisierung', limit:8});
     if(!rows.length){
-      box.innerHTML='<div class="muted" style="font-size:.82em;margin-top:8px">Chưa có điểm nào — làm quiz để lên BXH.</div>';
+      box.innerHTML='<div class="muted" style="font-size:.82em;margin-top:8px">Noch keine Punkte — starte ein Quiz.</div>';
       return;
     }
     const me=(LearnDB.getPlayer()||'').toLowerCase();
-    box.innerHTML=`<h4>🏆 Bảng xếp hạng · Deutsch</h4>
-      <table><tr><th>#</th><th>Tên</th><th>Điểm</th><th>%</th></tr>
+    box.innerHTML=`<h4>🏆 Rangliste · Deutsch</h4>
+      <table><tr><th>#</th><th>Name</th><th>Punkte</th><th>%</th></tr>
       ${rows.map((r,i)=>`<tr class="${String(r.player).toLowerCase()===me?'me':''}"><td>${i+1}</td><td>${r.player}</td><td>${r.correct}/${r.total}</td><td>${r.pct}%</td></tr>`).join('')}
       </table>`;
   }catch(e){
-    box.innerHTML='<div class="db-status err">Không tải được BXH: '+(e.message||e)+'</div>';
+    box.innerHTML='<div class="db-status err">Rangliste nicht ladbar: '+(e.message||e)+'</div>';
   }
 }
 function quizStart(){
@@ -1879,7 +1879,7 @@ function quizResult(){
       <div class="muted">Ergebnis · ${name.replace(/</g,'&lt;')||'?'}</div>
       <div class="big">${qScore} / ${t}</div>
       <div class="muted" style="margin-bottom:8px">${pct}% · ${msg}</div>
-      <div class="db-status" id="dbStatus">Đang lưu điểm…</div>
+      <div class="db-status" id="dbStatus">Punkte werden gespeichert…</div>
       <div id="lbBox" class="lb"></div>
       <div id="myHistBox" class="lb"></div>
       <div style="margin-top:12px">
@@ -1891,19 +1891,19 @@ function quizResult(){
 }
 async function saveAndShowScore(){
   const st=document.getElementById('dbStatus');
-  if(!window.LearnDB){ if(st){ st.className='db-status err'; st.textContent='supabase.js chưa load'; } return; }
+  if(!window.LearnDB){ if(st){ st.className='db-status err'; st.textContent='supabase.js noch nicht geladen'; } return; }
   const name=LearnDB.getPlayer();
-  if(!name){ if(st){ st.className='db-status err'; st.textContent='Chưa có nickname — về trang chính'; } return; }
-  if(st){ st.className='db-status'; st.textContent='Đang lưu…'; }
+  if(!name){ if(st){ st.className='db-status err'; st.textContent='Kein Nickname — zurück zur Startseite'; } return; }
+  if(st){ st.className='db-status'; st.textContent='Speichern…'; }
   try{
     const saved=await LearnDB.saveQuizScore({
       subject:'DE', quiz:'visualisierung', correct:qScore, total:qOrder.length, player:name
     });
-    if(st){ st.className='db-status ok'; st.textContent='✅ Đã lưu: '+saved.correct+'/'+saved.total+' ('+saved.pct+'%)'; }
+    if(st){ st.className='db-status ok'; st.textContent='✅ Gespeichert: '+saved.correct+'/'+saved.total+' ('+saved.pct+'%)'; }
     await showLeaderboard();
     await showMyHistory();
   }catch(e){
-    if(st){ st.className='db-status err'; st.textContent='❌ Lưu thất bại: '+(e.message||e); }
+    if(st){ st.className='db-status err'; st.textContent='❌ Speichern fehlgeschlagen: '+(e.message||e); }
   }
 }
 

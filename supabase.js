@@ -121,7 +121,7 @@
 
   async function saveQuizScore({ subject, quiz, correct, total, player }) {
     const p = String(player || getPlayer() || '').trim();
-    if (!p) throw new Error('Bitte Nickname eingeben / Hãy nhập nickname');
+    if (!p) throw new Error('Bitte Nickname eingeben');
     const t = Number(total) || 0;
     const c = Number(correct) || 0;
     const pct = t ? Math.round((c / t) * 100) : 0;
@@ -269,8 +269,8 @@
 
   async function loginOrRegister(nickname) {
     const p = String(nickname || '').trim().slice(0, 32);
-    if (!p) throw new Error('Nickname không được trống');
-    if (p.length < 2) throw new Error('Nickname tối thiểu 2 ký tự');
+    if (!p) throw new Error('Nickname darf nicht leer sein');
+    if (p.length < 2) throw new Error('Nickname: mindestens 2 Zeichen');
     setPlayer(p);
     const key = playerKey(p);
     const now = new Date().toISOString();

@@ -267,11 +267,11 @@ h3.sub{font-size:1em;color:#334155;margin:14px 0 6px;font-weight:700}
   <div class="login-card">
     <div class="logo-big">🎓</div>
     <h1>Lern-App H2FO3T</h1>
-    <p class="sub">Nhập nickname để vào ôn tập.<br>Nickname bất kỳ — nếu đã dùng sẽ hiện lịch sử quiz.</p>
+    <p class="sub">Gib einen Nickname ein, um zu starten.<br>Beliebiger Name — bei Wiederkehr siehst du deine Quiz-Historie.</p>
     <div class="login-err" id="loginErr"></div>
     <label for="nickInput">Nickname</label>
     <input id="nickInput" type="text" maxlength="32" placeholder="vd. Linh, Alex, Phuc…" autocomplete="username">
-    <button class="btn-go" id="loginBtn" type="button">Vào học →</button>
+    <button class="btn-go" id="loginBtn" type="button">Los geht's →</button>
     <div class="login-hist" id="loginHist"></div>
     <p style="text-align:center;margin-top:14px;font-size:.78em;color:#94a3b8">
       <a href="admin.html" style="color:#64748b;text-decoration:underline">Admin</a>
@@ -289,10 +289,10 @@ h3.sub{font-size:1em;color:#334155;margin:14px 0 6px;font-weight:700}
   <div class="nav-row">
     <div class="brand" onclick="go('#/')"><span class="logo">🎓</span><span>Lern-App</span></div>
     <div class="crumbs" id="crumbs"></div>
-    <span class="user-chip" id="userChip" title="Đổi nickname" style="display:none">👤 —</span>
+    <span class="user-chip" id="userChip" title="Nickname wechseln" style="display:none">👤 —</span>
     <div class="search">
       <span class="mag">🔍</span>
-      <input id="searchInput" type="text" placeholder="Suchen / Tìm kiếm…" autocomplete="off">
+      <input id="searchInput" type="text" placeholder="Suchen…" autocomplete="off">
       <span class="kbd">/</span>
       <div class="results" id="results"></div>
     </div>
@@ -303,36 +303,36 @@ h3.sub{font-size:1em;color:#334155;margin:14px 0 6px;font-weight:700}
 <section class="view" id="v-home">
   <div class="hero">
     <h1>Fachkraft für Gastronomie</h1>
-    <p>Wähle ein Fach · Chọn một môn để bắt đầu ôn tập.</p>
+    <p>Wähle ein Fach, um mit dem Lernen zu beginnen.</p>
   </div>
 
-  <!-- Banner Abschlussprüfung (mục tiêu chính) -->
+  <!-- Banner Abschlussprüfung -->
   <div class="exam-banner" onclick="go('#/abschluss')">
     <div class="exam-ic">🎯</div>
     <div class="exam-txt">
-      <div class="exam-kicker">Hauptziel · Mục tiêu chính</div>
+      <div class="exam-kicker">Hauptziel</div>
       <h2>Abschlussprüfung</h2>
-      <p>Luyện thi tốt nghiệp — Aufbau der Prüfung &amp; alle Lernthemen an einem Ort.</p>
+      <p>Aufbau der Prüfung &amp; alle Lernthemen an einem Ort.</p>
     </div>
     <div class="exam-go">Los geht's →</div>
   </div>
 
-  <div class="fach-label">Fächer · Các môn học</div>
+  <div class="fach-label">Fächer</div>
   <div class="grid" id="subjectGrid"></div>
 
   <div class="hist-panel" id="homeHistPanel" style="display:none">
-    <h3>📜 Lịch sử quiz của <span id="homeHistName">—</span></h3>
-    <p class="muted">Các lần làm quiz đã lưu trên Supabase.</p>
+    <h3>📜 Quiz-Historie von <span id="homeHistName">—</span></h3>
+    <p class="muted">Gespeicherte Quiz-Ergebnisse (Supabase).</p>
     <div id="homeHistBody"></div>
   </div>
 </section>
 
 <!-- ===== BFK: Themen ===== -->
 <section class="view bfk-scope" id="v-bfk">
-  <div class="back" onclick="go('#/')">← Fächer / Các môn</div>
+  <div class="back" onclick="go('#/')">← Fächer</div>
   <div class="section-head">
     <h2>🍳 BFK – Berufsfachkunde</h2>
-    <p>Fachwissen rund um Lebensmittel, Fleisch & Küche. Chọn một chủ đề.</p>
+    <p>Fachwissen rund um Lebensmittel, Fleisch &amp; Küche. Wähle ein Thema.</p>
   </div>
   <div class="grid" id="bfkGrid"></div>
 </section>
@@ -341,7 +341,7 @@ h3.sub{font-size:1em;color:#334155;margin:14px 0 6px;font-weight:700}
 <section class="view bfk-scope" id="v-fleisch">
   <div class="back" onclick="go('#/bfk')">← BFK-Themen</div>
   <div class="section-head">
-    <h2>🥩 Fleisch (Thịt)</h2>
+    <h2>🥩 Fleisch</h2>
     <p>Fleischteile · Gerichte · Grundlagen — alles rund ums Fleisch an einem Ort.</p>
   </div>
   <div class="tabs">
@@ -353,60 +353,60 @@ h3.sub{font-size:1em;color:#334155;margin:14px 0 6px;font-weight:700}
   </div>
 
   <div class="panel active" id="rind">
-    <div class="card"><h2>🐄 Rind – Fleischteile (Bò)</h2>
+    <div class="card"><h2>🐄 Rind – Fleischteile</h2>
       <div class="hint">Klicke auf ein Teil im Bild oder auf einen Namen unten.</div>
       <div class="diagram-wrap">
         <div class="svg-box"><div class="img-wrap" data-imgchart="rind"></div><div class="legend" data-legend="rind"></div></div>
-        <div class="detail" data-detail="rind"><div class="detail-empty">Kein Teil ausgewählt.<br>Chọn một bộ phận để xem chi tiết.</div></div>
+        <div class="detail" data-detail="rind"><div class="detail-empty">Kein Teil ausgewählt.<br>Tippe auf eine Nummer für Details.</div></div>
       </div>
     </div>
   </div>
 
   <div class="panel" id="schwein">
-    <div class="card"><h2>🐖 Schwein – Fleischteile (Lợn)</h2>
+    <div class="card"><h2>🐖 Schwein – Fleischteile</h2>
       <div class="hint">Klicke auf ein Teil im Bild oder auf einen Namen unten.</div>
       <div class="diagram-wrap">
         <div class="svg-box"><div class="img-wrap" data-imgchart="schwein"></div><div class="legend" data-legend="schwein"></div></div>
-        <div class="detail" data-detail="schwein"><div class="detail-empty">Kein Teil ausgewählt.<br>Chọn một bộ phận để xem chi tiết.</div></div>
+        <div class="detail" data-detail="schwein"><div class="detail-empty">Kein Teil ausgewählt.<br>Tippe auf eine Nummer für Details.</div></div>
       </div>
     </div>
   </div>
 
   <div class="panel" id="schaf">
-    <div class="card"><h2>🐑 Schaf / Lamm – Fleischteile (Cừu)</h2>
+    <div class="card"><h2>🐑 Schaf / Lamm – Fleischteile</h2>
       <div class="hint">Klicke auf ein Teil im Bild oder auf einen Namen unten.</div>
       <div class="diagram-wrap">
         <div class="svg-box"><div class="img-wrap" data-imgchart="schaf"></div><div class="legend" data-legend="schaf"></div></div>
-        <div class="detail" data-detail="schaf"><div class="detail-empty">Kein Teil ausgewählt.<br>Chọn một bộ phận để xem chi tiết.</div></div>
+        <div class="detail" data-detail="schaf"><div class="detail-empty">Kein Teil ausgewählt.<br>Tippe auf eine Nummer für Details.</div></div>
       </div>
     </div>
-    <div class="card"><h2>📖 Alterseinteilung Schaf (Phân loại theo tuổi)</h2>
+    <div class="card"><h2>📖 Alterseinteilung Schaf</h2>
       <table>
         <tr><th>Bezeichnung</th><th>Bedeutung</th></tr>
-        <tr><td><strong>Lamm</strong></td><td>bis 1 Jahr (đến 1 tuổi)</td></tr>
-        <tr><td><strong>Schaf</strong></td><td>weiblich, ab 1 Jahr (con cái, trên 1 tuổi)</td></tr>
-        <tr><td><strong>Bock</strong></td><td>männlich, ab 1 Jahr (con đực, trên 1 tuổi)</td></tr>
-        <tr><td><strong>Hammel</strong></td><td>kastriert / verschnitten (con đã thiến)</td></tr>
+        <tr><td><strong>Lamm</strong></td><td>bis 1 Jahr</td></tr>
+        <tr><td><strong>Schaf</strong></td><td>weiblich, ab 1 Jahr</td></tr>
+        <tr><td><strong>Bock</strong></td><td>männlich, ab 1 Jahr</td></tr>
+        <tr><td><strong>Hammel</strong></td><td>kastriert / verschnitten</td></tr>
       </table>
     </div>
   </div>
 
   <div class="panel" id="gerichte">
   <div class="card">
-    <h2>🐮 Gerichte vom Kalb (Món ăn từ thịt bê)</h2>
+    <h2>🐮 Gerichte vom Kalb</h2>
     <div class="hint">Ordne Gericht ↔ Beschreibung.</div>
     <table>
       <tr><th>Gericht</th><th>Beschreibung / Zubereitung</th></tr>
-      <tr><td><strong>Vitello tonnato</strong></td><td>Kalbfleisch in Thunfischsoße, <strong>kalt</strong> serviert. (Thịt bê sốt cá ngừ, ăn lạnh)</td></tr>
-      <tr><td><strong>Osso Buco</strong></td><td>Geschmorte <strong>Kalbshaxenscheiben</strong> (ca. 200–300 g) alla milanese mit Tomatensoße, Karotten-Sellerie-Gemüse. (Khoanh bắp bê hầm kiểu Milan)</td></tr>
-      <tr><td><strong>Wiener Schnitzel</strong></td><td>Dünn geschnittenes, flach ausgeklopftes Kalbsschnitzel, <strong>paniert mit Mehl, Ei und Semmelbrösel</strong>. (Bê tẩm bột chiên kiểu Wien)</td></tr>
-      <tr><td><strong>Saltimbocca alla romana</strong></td><td>Kalbsschnitzel mit <strong>rohem Schinken (Parmaschinken)</strong> und <strong>Salbeiblatt</strong> umhüllt. (Bê cuộn giăm bông sống + lá xô thơm)</td></tr>
-      <tr><td><strong>Cordon bleu</strong></td><td>Kalbsschnitzel mit <strong>gekochtem Schinken und Käse gefüllt</strong>, paniert wie Wiener Schnitzel. (Bê nhồi giăm bông + phô mai, tẩm bột chiên)</td></tr>
-      <tr><td><strong>Zürcher Geschnetzeltes</strong></td><td>Kalbfleisch<strong>streifen</strong> in <strong>Pilzrahmsoße</strong>, dazu Rösti. (Bê thái sợi sốt kem nấm)</td></tr>
-      <tr><td><strong>Medaillons</strong></td><td>Kleine <strong>Kalbssteaks vom Filet</strong> in Champignonsoße, mit Spätzle. (Steak nhỏ từ thăn bê)</td></tr>
-      <tr><td><strong>Kalbsfrikassee</strong></td><td>Fleischwürfel <strong>in weißem Fond gedünstet</strong>. (Bê thái hạt lựu om nước dùng trắng)</td></tr>
-      <tr><td><strong>Kalbsblankett</strong></td><td>Gekochte Fleischwürfel in <strong>heller Soße</strong>. (Bê luộc sốt trắng)</td></tr>
-      <tr><td><strong>Kutteln</strong></td><td>Oberbegriff für die verzehrbaren Teile des <strong>Magen-Darm-Traktes</strong> von Rind und Kalb. (Lòng/dạ dày bò và bê)</td></tr>
+      <tr><td><strong>Vitello tonnato</strong></td><td>Kalbfleisch in Thunfischsoße, <strong>kalt</strong> serviert.</td></tr>
+      <tr><td><strong>Osso Buco</strong></td><td>Geschmorte <strong>Kalbshaxenscheiben</strong> (ca. 200–300 g) alla milanese mit Tomatensoße, Karotten-Sellerie-Gemüse.</td></tr>
+      <tr><td><strong>Wiener Schnitzel</strong></td><td>Dünn geschnittenes, flach ausgeklopftes Kalbsschnitzel, <strong>paniert mit Mehl, Ei und Semmelbrösel</strong>.</td></tr>
+      <tr><td><strong>Saltimbocca alla romana</strong></td><td>Kalbsschnitzel mit <strong>rohem Schinken (Parmaschinken)</strong> und <strong>Salbeiblatt</strong> umhüllt.</td></tr>
+      <tr><td><strong>Cordon bleu</strong></td><td>Kalbsschnitzel mit <strong>gekochtem Schinken und Käse gefüllt</strong>, paniert wie Wiener Schnitzel.</td></tr>
+      <tr><td><strong>Zürcher Geschnetzeltes</strong></td><td>Kalbfleisch<strong>streifen</strong> in <strong>Pilzrahmsoße</strong>, dazu Rösti.</td></tr>
+      <tr><td><strong>Medaillons</strong></td><td>Kleine <strong>Kalbssteaks vom Filet</strong> in Champignonsoße, mit Spätzle.</td></tr>
+      <tr><td><strong>Kalbsfrikassee</strong></td><td>Fleischwürfel <strong>in weißem Fond gedünstet</strong>.</td></tr>
+      <tr><td><strong>Kalbsblankett</strong></td><td>Gekochte Fleischwürfel in <strong>heller Soße</strong>.</td></tr>
+      <tr><td><strong>Kutteln</strong></td><td>Oberbegriff für die verzehrbaren Teile des <strong>Magen-Darm-Traktes</strong> von Rind und Kalb.</td></tr>
     </table>
   </div>
   <div class="card">
@@ -439,15 +439,15 @@ h3.sub{font-size:1em;color:#334155;margin:14px 0 6px;font-weight:700}
   <div class="panel" id="grundlagen">
   <div class="card">
     <h2>🧬 Zusammensetzung von Schlachtfleisch</h2>
-    <div class="hint">Inhaltsstoffe mit ungefähren %-Angaben (thành phần thịt).</div>
+    <div class="hint">Inhaltsstoffe mit ungefähren %-Angaben.</div>
     <table>
       <tr><th>Inhaltsstoff</th><th>Anteil (ca.)</th><th>Vietnamesisch</th></tr>
-      <tr><td><strong>Wasser</strong></td><td>ca. 70 %</td><td>Nước</td></tr>
-      <tr><td><strong>Eiweiß</strong></td><td>ca. 20 %</td><td>Protein (chất đạm)</td></tr>
-      <tr><td><strong>Fett</strong></td><td>ca. 3–8 %</td><td>Chất béo</td></tr>
-      <tr><td><strong>Mineralstoffe</strong></td><td>ca. 1 %</td><td>Khoáng chất</td></tr>
+      <tr><td><strong>Wasser</strong></td><td>ca. 70 %</td><td>Wasser</td></tr>
+      <tr><td><strong>Eiweiß</strong></td><td>ca. 20 %</td></tr>
+      <tr><td><strong>Fett</strong></td><td>ca. 3–8 %</td></tr>
+      <tr><td><strong>Mineralstoffe</strong></td><td>ca. 1 %</td></tr>
       <tr><td><strong>Vitamine</strong></td><td>unter 1 %</td><td>Vitamin</td></tr>
-      <tr><td><strong>Kohlenhydrate</strong></td><td>unter 1 %</td><td>Tinh bột/đường</td></tr>
+      <tr><td><strong>Kohlenhydrate</strong></td><td>unter 1 %</td></tr>
     </table>
     <div class="note">💡 Die 4 wichtigsten Schlacht-Säugetiere in Deutschland: <strong>Rind, Schwein, Schaf, Ziege</strong>. Als „Schlachtfleisch" bezeichnet man die verzehrbaren Muskel-, Binde- und Fettgewebe.</div>
   </div>
@@ -456,9 +456,9 @@ h3.sub{font-size:1em;color:#334155;margin:14px 0 6px;font-weight:700}
     <div class="hint">Sehr wichtig: welches Gewebe → welches Garverfahren!</div>
     <table>
       <tr><th>Gewebeart</th><th>Zusammensetzung</th><th>Verhalten beim Erhitzen</th><th>Garverfahren</th></tr>
-      <tr><td><strong>Muskelgewebe</strong><br>(Cơ)</td><td>Muskelzellen, Eiweiß, Wasser</td><td>Eiweiß <strong>gerinnt</strong>, Fleisch wird fest und verliert Wasser</td><td><span class="tag">Kurzbraten</span><span class="tag">Grillen</span><span class="tag">Frittieren</span><br><em>(wenig Bindegewebe)</em></td></tr>
-      <tr><td><strong>Bindegewebe</strong><br>(Mô liên kết)</td><td>Kollagen + Elastin</td><td>Kollagen wird bei <strong>langem Garen zu Gelatine</strong> (Fleisch wird zart). <strong>Elastin bleibt zäh.</strong></td><td><span class="tag blue">Schmoren</span><span class="tag blue">Kochen</span><span class="tag blue">Dünsten</span></td></tr>
-      <tr><td><strong>Fettgewebe</strong><br>(Mô mỡ)</td><td>Fettzellen, Fett</td><td><strong>Schmilzt</strong> und macht das Fleisch <strong>saftig und aromatisch</strong></td><td><span class="tag amber">Braten</span><span class="tag amber">Grillen</span></td></tr>
+      <tr><td><strong>Muskelgewebe</strong></td><td>Muskelzellen, Eiweiß, Wasser</td><td>Eiweiß <strong>gerinnt</strong>, Fleisch wird fest und verliert Wasser</td><td><span class="tag">Kurzbraten</span><span class="tag">Grillen</span><span class="tag">Frittieren</span><br><em>(wenig Bindegewebe)</em></td></tr>
+      <tr><td><strong>Bindegewebe</strong></td><td>Kollagen + Elastin</td><td>Kollagen wird bei <strong>langem Garen zu Gelatine</strong> (Fleisch wird zart). <strong>Elastin bleibt zäh.</strong></td><td><span class="tag blue">Schmoren</span><span class="tag blue">Kochen</span><span class="tag blue">Dünsten</span></td></tr>
+      <tr><td><strong>Fettgewebe</strong></td><td>Fettzellen, Fett</td><td><strong>Schmilzt</strong> und macht das Fleisch <strong>saftig und aromatisch</strong></td><td><span class="tag amber">Braten</span><span class="tag amber">Grillen</span></td></tr>
     </table>
     <div class="note">⚖️ Merksatz: <strong>Viel Bindegewebe → langsam & feucht garen</strong> (schmoren/kochen). <strong>Wenig Bindegewebe → schnell & heiß</strong> (kurzbraten/grillen).</div>
   </div>
@@ -469,20 +469,20 @@ h3.sub{font-size:1em;color:#334155;margin:14px 0 6px;font-weight:700}
 <section class="view bfk-scope" id="v-kueche">
   <div class="back" onclick="go('#/bfk')">← BFK-Themen</div>
   <div class="section-head">
-    <h2>🍳 Küche & Ernährung (Bếp & Dinh dưỡng)</h2>
+    <h2>🍳 Küche &amp; Ernährung</h2>
     <p>Nährwertberechnung · Eier & Eiercode · Biologische Wertigkeit.</p>
   </div>
 
   <div class="card" id="k-naehrwert">
-    <h2>1️⃣ Nährwertberechnung (Tính toán năng lượng)</h2>
+    <h2>1️⃣ Nährwertberechnung</h2>
     <table>
-      <tr><th>Nährstoff (Chất dinh dưỡng)</th><th>Brennwert</th></tr>
-      <tr><td>1g Eiweiß – Protein (Đạm)</td><td><strong>17 kJ = 4 kcal</strong></td></tr>
+      <tr><th>Nährstoff</th><th>Brennwert</th></tr>
+      <tr><td>1g Eiweiß (Protein)</td><td><strong>17 kJ = 4 kcal</strong></td></tr>
       <tr><td>1g Kohlenhydrate – KH (Carbohydrate)</td><td><strong>17 kJ = 4 kcal</strong></td></tr>
-      <tr><td>1g Fett – Chất béo</td><td><strong>37 kJ = 9 kcal</strong></td></tr>
+      <tr><td>1g Fett</td><td><strong>37 kJ = 9 kcal</strong></td></tr>
     </table>
     <div class="formula">Energiewert = (g EW × 17) + (g KH × 17) + (g Fett × 37) → kJ<br>
-    Umrechnung (Đổi): 1 kcal = 4,2 kJ<br>
+    Umrechnung: 1 kcal = 4,2 kJ<br>
     Grundumsatz (GU) = 24h × kg Körpergewicht × 1<br>
     Gesamtbedarf = GU × PAL-Wert (sitzend=1,2 | Büro=1,6 | schwer=2,4)</div>
     <p style="font-size:.9em"><strong>Beispiel:</strong> 150g Schweinefleisch mager (EW 19%, Fett 7%)</p>
@@ -493,45 +493,45 @@ h3.sub{font-size:1em;color:#334155;margin:14px 0 6px;font-weight:700}
   </div>
 
   <div class="card" id="k-eiercode">
-    <h2>2️⃣ Eiercode (Mã trứng) 🥚</h2>
+    <h2>2️⃣ Eiercode 🥚</h2>
     <p style="font-size:.9em">Format: <strong>Haltungsform – Land – Betriebsnummer</strong> &nbsp;|&nbsp; z.B. <span class="tag">2-DE-0812345</span></p>
     <table>
-      <tr><th>Ziffer (Số)</th><th>Haltungsform (Hình thức)</th></tr>
-      <tr><td><strong>0</strong></td><td>🌿 Bio / Ökologisch (Hữu cơ)</td></tr>
-      <tr><td><strong>1</strong></td><td>🐔 Freilandhaltung (Thả tự do)</td></tr>
-      <tr><td><strong>2</strong></td><td>🏠 Bodenhaltung (Chuồng lớn)</td></tr>
-      <tr><td><strong>3</strong></td><td>🔒 Kleingruppenhaltung (Lồng nhỏ)</td></tr>
+      <tr><th>Ziffer</th><th>Haltungsform</th></tr>
+      <tr><td><strong>0</strong></td><td>🌿 Bio / Ökologisch</td></tr>
+      <tr><td><strong>1</strong></td><td>🐔 Freilandhaltung</td></tr>
+      <tr><td><strong>2</strong></td><td>🏠 Bodenhaltung</td></tr>
+      <tr><td><strong>3</strong></td><td>🔒 Kleingruppenhaltung</td></tr>
     </table>
     <p style="font-size:.9em">Gewichtsklassen: <span class="tag">S &lt;53g</span><span class="tag">M 53–63g</span><span class="tag">L 63–73g</span><span class="tag">XL ≥73g</span> → Rezepte nutzen Größe <strong>M</strong></p>
-    <h3 class="sub">Hygiene bei Eiern (Vệ sinh trứng) 🦠</h3>
+    <h3 class="sub">Hygiene bei Eiern 🦠</h3>
     <ul>
-      <li>Lagerung bei <strong>ca. 5°C</strong> (Bảo quản 5°C)</li>
-      <li>MHD = <strong>28 Tage</strong> nach Legedatum (hạn 28 ngày)</li>
-      <li>Nach MHD: nur <strong>durcherhitzt</strong> verwenden (chỉ dùng khi nấu chín)</li>
+      <li>Lagerung bei <strong>ca. 5°C</strong></li>
+      <li>MHD = <strong>28 Tage</strong> nach Legedatum</li>
+      <li>Nach MHD: nur <strong>durcherhitzt</strong> verwenden</li>
       <li>Speisen mit rohen Eiern max. <strong>24 Stunden</strong> bei 5°C</li>
       <li>Salmonellen abgetötet bei <strong>5 Min. Kochen</strong></li>
     </ul>
     <table>
-      <tr><th>Test</th><th>Frisch (Tươi)</th><th>Alt (Cũ)</th></tr>
-      <tr><td>Schwimmtest</td><td>Sinkt (chìm)</td><td>Steigt auf (nổi)</td></tr>
-      <tr><td>Schütteltest</td><td>Kein Geräusch (im lặng)</td><td>Klackert (tiếng lóc cóc)</td></tr>
+      <tr><th>Test</th><th>Frisch</th><th>Alt</th></tr>
+      <tr><td>Schwimmtest</td><td>Sinkt</td><td>Steigt auf</td></tr>
+      <tr><td>Schütteltest</td><td>Kein Geräusch</td><td>Klackert</td></tr>
       <tr><td>Aufschlagtest</td><td>Dotter hoch, Eiklar fest</td><td>Dotter flach, Eiklar dünn</td></tr>
     </table>
-    <h3 class="sub">Eierspeisen (Các món trứng) 🍳</h3>
+    <h3 class="sub">Eierspeisen 🍳</h3>
     <table>
-      <tr><th>Speise (Món)</th><th>Zubereitung (Cách làm)</th></tr>
-      <tr><td><strong>Gekochtes Ei</strong> (Luộc)</td><td>weich: 3–5 Min | wachsweich: 5–7 Min | hart: 8–10 Min</td></tr>
-      <tr><td><strong>Spiegelei</strong> (Ốp la)</td><td>Ganzes Ei, mäßige Hitze, Eigelb flüssig lassen</td></tr>
-      <tr><td><strong>Rührei</strong> (Bác)</td><td>Mit Milch/Sahne verquirlen, cremig & saftig</td></tr>
-      <tr><td><strong>Omelett</strong> (Cuộn)</td><td>Verquirlt stocken lassen, zigarrenförmig einschlagen</td></tr>
-      <tr><td><strong>Pochiertes Ei</strong> (Chần)</td><td>In siedendes Essigwasser gleiten, Eigelb flüssig</td></tr>
+      <tr><th>Speise</th><th>Zubereitung</th></tr>
+      <tr><td><strong>Gekochtes Ei</strong></td><td>weich: 3–5 Min | wachsweich: 5–7 Min | hart: 8–10 Min</td></tr>
+      <tr><td><strong>Spiegelei</strong></td><td>Ganzes Ei, mäßige Hitze, Eigelb flüssig lassen</td></tr>
+      <tr><td><strong>Rührei</strong></td><td>Mit Milch/Sahne verquirlen, cremig & saftig</td></tr>
+      <tr><td><strong>Omelett</strong></td><td>Verquirlt stocken lassen, zigarrenförmig einschlagen</td></tr>
+      <tr><td><strong>Pochiertes Ei</strong></td><td>In siedendes Essigwasser gleiten, Eigelb flüssig</td></tr>
       <tr><td><strong>Eier Benedikt</strong></td><td>Pochiertes Ei + Toast + Schinken + Hollandaise</td></tr>
     </table>
   </div>
 
   <div class="card" id="k-wertigkeit">
     <h2>3️⃣ Biologische Wertigkeit & Ergänzungswert</h2>
-    <blockquote>Biologische Wertigkeit (BW) = wie viel g Körpereiweiß aus 100g Nahrungseiweiß gebildet wird (Giá trị sinh học)</blockquote>
+    <blockquote>Biologische Wertigkeit (BW) = wie viel g Körpereiweiß aus 100g Nahrungseiweiß gebildet wird</blockquote>
     <table>
       <tr><th>Lebensmittel</th><th>BW (%)</th><th>Lebensmittel</th><th>BW (%)</th></tr>
       <tr><td>🥚 <strong>Hühnerei</strong></td><td><strong>100</strong></td><td>🌿 Soja</td><td>84</td></tr>
@@ -541,13 +541,13 @@ h3.sub{font-size:1em;color:#334155;margin:14px 0 6px;font-weight:700}
       <tr><td>🍞 Weizenmehl</td><td>35</td><td>🫘 Bohne</td><td>73</td></tr>
     </table>
     <div class="formula">Körpereiweiß aus 100g = Eiweißanteil(g) × BW(%)<br>Beispiel: 100g Ei → 13g × 100% = 13g Körpereiweiß</div>
-    <p style="font-size:.9em"><strong>Ergänzungswert (Giá trị bổ sung):</strong> Kombination → BW steigt! z.B. Kartoffeln + Ei · Getreide + Milch · Linsen + Spätzle · Reis + Ei + Hühnchen.</p>
+    <p style="font-size:.9em"><strong>Ergänzungswert:</strong> Kombination → BW steigt! z.B. Kartoffeln + Ei · Getreide + Milch · Linsen + Spätzle · Reis + Ei + Hühnchen.</p>
   </div>
 </section>
 
 <!-- ===== THEME: ABSCHLUSSPRÜFUNG ===== -->
 <section class="view abschluss-scope" id="v-abschluss">
-  <div class="back" onclick="go('#/')">← Fächer / Các môn</div>
+  <div class="back" onclick="go('#/')">← Fächer</div>
   <div class="section-head">
     <h2>🎯 Abschlussprüfung</h2>
     <p>Fachkraft für Gastronomie · Aufbau der Prüfung und alle Lernthemen an einem Ort.</p>
@@ -607,7 +607,7 @@ h3.sub{font-size:1em;color:#334155;margin:14px 0 6px;font-weight:700}
   <div class="back" onclick="go('#/bfk')">← BFK-Themen</div>
   <div class="section-head">
     <h2>📝 Quiz – Teste dein Wissen</h2>
-    <p>Trắc nghiệm ôn tập toàn bộ nội dung. Bấm đáp án để kiểm tra ngay.</p>
+    <p>Multiple-Choice zum Selbsttest. Nach der Auswahl erscheint die Erklärung.</p>
   </div>
   <div class="card"><div id="quizArea"></div></div>
 </section>
@@ -616,12 +616,12 @@ h3.sub{font-size:1em;color:#334155;margin:14px 0 6px;font-weight:700}
 <section class="view bfk-scope" id="v-pruefungen">
   <div class="back" onclick="go('#/bfk')">← BFK-Themen</div>
   <div class="section-head">
-    <h2>🗂️ Prüfungen (Đề thi)</h2>
+    <h2>🗂️ Prüfungen</h2>
     <p>Musterprüfung, Lösungsbogen und Zusammenfassung der KA2.</p>
   </div>
   <div class="grid">
-    <a class="tile" href="kiemtra_mau.html"><div class="ic">📄</div><h3>Musterprüfung</h3><p>Đề thi mẫu Klassenarbeit Nr. 2.</p><div class="meta">Öffnen →</div></a>
-    <a class="tile" href="loiGiai_mau.html"><div class="ic">✅</div><h3>Lösungsbogen</h3><p>Đáp án chi tiết đề mẫu.</p><div class="meta">Öffnen →</div></a>
+    <a class="tile" href="kiemtra_mau.html"><div class="ic">📄</div><h3>Musterprüfung</h3><p>Musterprüfung Klassenarbeit Nr. 2.</p><div class="meta">Öffnen →</div></a>
+    <a class="tile" href="loiGiai_mau.html"><div class="ic">✅</div><h3>Lösungsbogen</h3><p>Lösungsbogen zur Musterprüfung.</p><div class="meta">Öffnen →</div></a>
     <a class="tile" href="ka2.html"><div class="ic">📚</div><h3>Zusammenfassung KA2</h3><p>LF2 (Waren & Lieferung) + LF3.</p><div class="meta">Öffnen →</div></a>
   </div>
 </section>
@@ -737,8 +737,8 @@ function select(animal,key){
   const box=document.querySelector('[data-detail="'+animal+'"]');
   box.innerHTML='<div class="detail-box"><span class="num">'+pt.n+'</span><h3>'+pt.name+'</h3>'
     +'<div class="viet">🇻🇳 '+pt.viet+'</div>'
-    +'<dl><dt>Beschaffenheit (đặc điểm):</dt><dd>'+pt.besch+'</dd>'
-    +'<dt>Verwendung (cách dùng):</dt><dd>'+pt.verw+'</dd></dl></div>';
+    +'<dl><dt>Beschaffenheit:</dt><dd>'+pt.besch+'</dd>'
+    +'<dt>Verwendung:</dt><dd>'+pt.verw+'</dd></dl></div>';
 }
 ["rind","schwein","schaf"].forEach(renderAnimal);
 
@@ -796,8 +796,8 @@ const SUBJECTS = [
 const BFK_THEMES = [
   {icon:"🥩", name:"Fleisch", desc:"Fleischteile (Rind/Schwein/Schaf) · Gerichte · Grundlagen.", route:"#/bfk/fleisch"},
   {icon:"🍳", name:"Küche & Ernährung", desc:"Nährwert, Eiercode, biologische Wertigkeit.", route:"#/bfk/kueche"},
-  {icon:"📝", name:"Quiz", desc:"Trắc nghiệm tự kiểm tra.", route:"#/bfk/quiz"},
-  {icon:"🗂️", name:"Prüfungen", desc:"Đề mẫu, đáp án & tóm tắt KA2.", route:"#/bfk/pruefungen"},
+  {icon:"📝", name:"Quiz", desc:"Multiple-Choice zum Selbsttest.", route:"#/bfk/quiz"},
+  {icon:"🗂️", name:"Prüfungen", desc:"Musterprüfung, Lösungen &amp; Zusammenfassung KA2.", route:"#/bfk/pruefungen"},
 ];
 
 function renderSubjects(){
@@ -903,7 +903,7 @@ function runSearch(q){
   const terms=q.split(/\s+/);
   sHits=INDEX.filter(it=>terms.every(t=>it.hay.includes(t))).slice(0,12);
   sActive=-1;
-  if(!sHits.length){ sBox.innerHTML='<div class="res"><span class="empty">Keine Treffer / Không tìm thấy.</span></div>'; sBox.classList.add("show"); return; }
+  if(!sHits.length){ sBox.innerHTML='<div class="res"><span class="empty">Keine Treffer.</span></div>'; sBox.classList.add("show"); return; }
   sBox.innerHTML=sHits.map((h,i)=>'<div class="res" data-i="'+i+'"><span class="badge">'+h.badge+'</span><div class="txt"><div class="t">'+h.title+'</div><div class="s">'+h.sub+'</div></div></div>').join("");
   sBox.classList.add("show");
   sBox.querySelectorAll(".res").forEach(el=>{ const i=+el.getAttribute("data-i"); if(!isNaN(i)) el.addEventListener("click",()=>pickHit(i)); });
@@ -933,14 +933,14 @@ document.addEventListener("keydown",e=>{
 
 /* ============ QUIZ ============ */
 const QUIZ = [
-  {cat:"Rind", q:"Welches ist das zarteste, bindegewebsärmste Stück des Rindes?", opts:["Filet","Hesse","Brust","Hals"], a:0, ex:"Das Filet (thăn nội) ist am zartesten – ideal zum Kurzbraten (Filetsteak, Medaillons)."},
+  {cat:"Rind", q:"Welches ist das zarteste, bindegewebsärmste Stück des Rindes?", opts:["Filet","Hesse","Brust","Hals"], a:0, ex:"Das Filet ist am zartesten – ideal zum Kurzbraten (Filetsteak, Medaillons)."},
   {cat:"Rind", q:"Wofür verwendet man die Hesse (Beinscheibe) vom Rind?", opts:["Steak zum Kurzbraten","Kraftbrühe & Schmoren","Rohschinken","Carpaccio"], a:1, ex:"Die Hesse ist sehr bindegewebsreich (Kollagen) → Kraftbrühe, Schmoren, Ossobuco-Art."},
   {cat:"Rind", q:"Aus welchem Teil schneidet man Rostbraten/Steaks?", opts:["Bauch","Roastbeef (Rücken)","Hals","Querrippe"], a:1, ex:"Roastbeef ist ein zartes Edelstück am Rücken → Steaks, Rostbraten."},
   {cat:"Gewebe", q:"Was passiert mit Kollagen (Bindegewebe) bei langem, feuchtem Garen?", opts:["Es bleibt zäh","Es wird zu Gelatine","Es schmilzt zu Fett","Es gerinnt sofort"], a:1, ex:"Kollagen wird bei langem Garen zu Gelatine → Fleisch wird zart. Elastin bleibt aber zäh."},
   {cat:"Gewebe", q:"Fleisch mit VIEL Bindegewebe gart man am besten wie?", opts:["Kurzbraten / Grillen","Schmoren / Kochen (langsam & feucht)","Frittieren","Roh servieren"], a:1, ex:"Viel Bindegewebe → langsam & feucht garen (schmoren/kochen). Wenig → kurzbraten."},
   {cat:"Gewebe", q:"Welche Aufgabe hat das Fettgewebe beim Erhitzen?", opts:["Es wird zäh","Es gerinnt","Es schmilzt und macht saftig & aromatisch","Es wird zu Gelatine"], a:2, ex:"Fett schmilzt beim Garen und macht das Fleisch saftig und aromatisch."},
   {cat:"Zusammensetzung", q:"Wie viel Prozent Wasser enthält Schlachtfleisch ungefähr?", opts:["ca. 20 %","ca. 50 %","ca. 70 %","ca. 90 %"], a:2, ex:"Fleisch besteht zu ca. 70 % aus Wasser, ca. 20 % Eiweiß, 3–8 % Fett."},
-  {cat:"Zusammensetzung", q:"Wie hoch ist der Eiweißanteil (Protein) im Fleisch ungefähr?", opts:["ca. 5 %","ca. 20 %","ca. 40 %","ca. 70 %"], a:1, ex:"Eiweiß (chất đạm) ca. 20 %."},
+  {cat:"Zusammensetzung", q:"Wie hoch ist der Eiweißanteil (Protein) im Fleisch ungefähr?", opts:["ca. 5 %","ca. 20 %","ca. 40 %","ca. 70 %"], a:1, ex:"Eiweiß ca. 20 %."},
   {cat:"Kalb", q:"Was ist typisch für ein 'Wiener Schnitzel'?", opts:["In Thunfischsoße kalt serviert","Paniert mit Mehl, Ei und Semmelbröseln","Mit Käse gefüllt","In Pilzrahmsoße"], a:1, ex:"Wiener Schnitzel = dünnes Kalbsschnitzel, paniert mit Mehl, Ei und Semmelbröseln."},
   {cat:"Kalb", q:"Cordon bleu ist ein Kalbsschnitzel, gefüllt mit …", opts:["Thunfisch","gekochtem Schinken und Käse","Salbei und Rohschinken","Pilzen"], a:1, ex:"Cordon bleu: mit gekochtem Schinken und Käse gefüllt, dann paniert."},
   {cat:"Kalb", q:"Saltimbocca alla romana wird umhüllt mit …", opts:["rohem Schinken (Parma) + Salbeiblatt","Käse + Ei","Speck + Zwiebeln","Semmelbröseln"], a:0, ex:"Saltimbocca: Kalbsschnitzel mit rohem Parmaschinken und einem Salbeiblatt."},
@@ -965,7 +965,7 @@ function renderQuestion(){
   if(qIndex>=qOrder.length){ return quizResult(); }
   const q=QUIZ[qOrder[qIndex]];
   const pct=Math.round((qIndex/qOrder.length)*100);
-  let html='<div class="quiz-bar"><span>Frage '+(qIndex+1)+' / '+qOrder.length+'</span><span class="score">Điểm: '+qScore+'</span></div>';
+  let html='<div class="quiz-bar"><span>Frage '+(qIndex+1)+' / '+qOrder.length+'</span><span class="score">Punkte: '+qScore+'</span></div>';
   html+='<div class="progress"><div style="width:'+pct+'%"></div></div>';
   html+='<div class="q-cat">'+q.cat+'</div><div class="q-text">'+q.q+'</div><div class="q-opts">';
   q.opts.forEach((o,i)=>{ html+='<button class="opt" data-i="'+i+'">'+o+'</button>'; });
@@ -987,30 +987,30 @@ function quizResult(){
   const area=document.getElementById("quizArea");
   const total=qOrder.length, pct=Math.round((qScore/total)*100);
   let msg;
-  if(pct>=90) msg="🏆 Ausgezeichnet! Rất giỏi, bạn nắm chắc bài rồi!";
-  else if(pct>=70) msg="👍 Gut gemacht! Khá tốt, ôn thêm vài chỗ là ổn.";
-  else if(pct>=50) msg="🙂 Nicht schlecht. Xem lại các thẻ rồi làm lại nhé.";
-  else msg="📚 Weiter üben! Ôn lại phần lý thuyết rồi thử lại.";
+  if(pct>=90) msg="🏆 Ausgezeichnet! Du beherrschst den Stoff!";
+  else if(pct>=70) msg="👍 Gut gemacht! Gut — ein bisschen nacharbeiten genügt.";
+  else if(pct>=50) msg="🙂 Nicht schlecht. Schau dir die Karten nochmal an und versuche es erneut.";
+  else msg="📚 Weiter üben! Lies die Theorie noch einmal und versuche es erneut.";
   const name=(window.LearnDB && LearnDB.getPlayer()) || '';
-  area.innerHTML='<div class="quiz-result"><div class="msg">Kết quả · '+(name.replace(/</g,'&lt;')||'?')+'</div><div class="big">'+qScore+' / '+total+'</div><div class="msg">('+pct+'%) '+msg+'</div>'
-    +'<div class="db-status" id="dbStatus">Đang lưu điểm…</div>'
+  area.innerHTML='<div class="quiz-result"><div class="msg">Ergebnis · '+(name.replace(/</g,'&lt;')||'?')+'</div><div class="big">'+qScore+' / '+total+'</div><div class="msg">('+pct+'%) '+msg+'</div>'
+    +'<div class="db-status" id="dbStatus">Punkte werden gespeichert…</div>'
     +'<div id="lbBox" class="lb"></div>'
-    +'<button class="btn" id="qrestart">🔄 Nochmal / Làm lại</button></div>';
+    +'<button class="btn" id="qrestart">🔄 Nochmal</button></div>';
   document.getElementById("qrestart").addEventListener("click",quizStart);
   saveBfkScore();
 }
 function quizIntro(){
   const name=(window.LearnDB && LearnDB.getPlayer()) || '';
   if(!name){
-    document.getElementById("quizArea").innerHTML='<div class="quiz-start"><p>Cần nickname để làm quiz. Hãy đăng nhập ở màn hình chính.</p><button class="btn" id="qbackLogin">← Nhập nickname</button></div>';
+    document.getElementById("quizArea").innerHTML='<div class="quiz-start"><p>Nickname nötig. Bitte zuerst auf der Startseite anmelden.</p><button class="btn" id="qbackLogin">← Nickname eingeben</button></div>';
     document.getElementById("qbackLogin").onclick=()=>{ LearnDB && LearnDB.clearPlayer(); location.reload(); };
     return;
   }
-  document.getElementById("quizArea").innerHTML='<div class="quiz-start"><p>'+QUIZ.length+' câu hỏi trắc nghiệm về: bộ phận thịt (bò/lợn/cừu), món ăn, loại mô, thành phần thịt và dinh dưỡng.<br>Mỗi câu có giải thích ngay sau khi chọn. Câu hỏi được xáo trộn mỗi lần.</p>'
-    +'<p class="muted" style="font-size:.84em;margin:8px 0">☁️ Nickname: <b>'+name.replace(/</g,'&lt;')+'</b> · điểm lưu Supabase</p>'
-    +'<div class="db-status" id="dbStatus">Đang kiểm tra kết nối…</div>'
-    +'<button class="btn" id="qbegin">▶️ Quiz starten / Bắt đầu</button> '
-    +'<button class="btn" id="qboard" type="button" style="background:#0f172a">🏆 BXH</button>'
+  document.getElementById("quizArea").innerHTML='<div class="quiz-start"><p>'+QUIZ.length+' Multiple-Choice zu: Fleischteilen (Rind/Schwein/Schaf), Gerichten, Geweben, Zusammensetzung und Ernährung.<br>Nach jeder Antwort erscheint eine Erklärung. Die Fragen werden gemischt.</p>'
+    +'<p class="muted" style="font-size:.84em;margin:8px 0">☁️ Nickname: <b>'+name.replace(/</g,'&lt;')+'</b> · Punkte werden in Supabase gespeichert</p>'
+    +'<div class="db-status" id="dbStatus">Verbindung wird geprüft…</div>'
+    +'<button class="btn" id="qbegin">▶️ Quiz starten</button> '
+    +'<button class="btn" id="qboard" type="button" style="background:#0f172a">🏆 Rangliste</button>'
     +'<div id="lbBox" class="lb"></div></div>';
   document.getElementById("qbegin").addEventListener("click",quizStart);
   document.getElementById("qboard").addEventListener("click",loadBfkLeaderboard);
@@ -1020,37 +1020,37 @@ function quizIntro(){
 async function checkBfkDb(){
   const st=document.getElementById("dbStatus");
   if(!st) return;
-  if(!window.LearnDB){ st.className="db-status err"; st.textContent="Không tải được supabase.js"; return; }
-  try{ await LearnDB.ping(); st.className="db-status ok"; st.textContent="✅ Đã kết nối Supabase"; }
-  catch(e){ st.className="db-status err"; st.textContent="⚠️ Không kết nối được DB: "+(e.message||e); }
+  if(!window.LearnDB){ st.className="db-status err"; st.textContent="supabase.js konnte nicht geladen werden"; return; }
+  try{ await LearnDB.ping(); st.className="db-status ok"; st.textContent="✅ Mit Supabase verbunden"; }
+  catch(e){ st.className="db-status err"; st.textContent="⚠️ Keine DB-Verbindung: "+(e.message||e); }
 }
 async function saveBfkScore(){
   const st=document.getElementById("dbStatus");
-  if(!window.LearnDB){ if(st){ st.className="db-status err"; st.textContent="supabase.js chưa load"; } return; }
+  if(!window.LearnDB){ if(st){ st.className="db-status err"; st.textContent="supabase.js noch nicht geladen"; } return; }
   const name=LearnDB.getPlayer();
-  if(!name){ if(st){ st.className="db-status err"; st.textContent="Chưa có nickname"; } return; }
-  if(st){ st.className="db-status"; st.textContent="Đang lưu…"; }
+  if(!name){ if(st){ st.className="db-status err"; st.textContent="Kein Nickname"; } return; }
+  if(st){ st.className="db-status"; st.textContent="Speichern…"; }
   try{
     const saved=await LearnDB.saveQuizScore({subject:"BFK", quiz:"fleisch", correct:qScore, total:qOrder.length, player:name});
-    if(st){ st.className="db-status ok"; st.textContent="✅ Đã lưu: "+saved.correct+"/"+saved.total+" ("+saved.pct+"%)"; }
+    if(st){ st.className="db-status ok"; st.textContent="✅ Gespeichert: "+saved.correct+"/"+saved.total+" ("+saved.pct+"%)"; }
     await loadBfkLeaderboard();
     loadHomeHistory(name);
   }catch(e){
-    if(st){ st.className="db-status err"; st.textContent="❌ Lưu thất bại: "+(e.message||e); }
+    if(st){ st.className="db-status err"; st.textContent="❌ Speichern fehlgeschlagen: "+(e.message||e); }
   }
 }
 async function loadBfkLeaderboard(){
   const box=document.getElementById("lbBox");
   if(!box || !window.LearnDB) return;
-  box.innerHTML='<div class="muted" style="font-size:.82em">Đang tải bảng xếp hạng…</div>';
+  box.innerHTML='<div class="muted" style="font-size:.82em">Rangliste wird geladen…</div>';
   try{
     const rows=await LearnDB.loadLeaderboard({subject:"BFK", quiz:"fleisch", limit:8});
-    if(!rows.length){ box.innerHTML='<div class="muted" style="font-size:.82em;margin-top:8px">Chưa có điểm BFK — làm quiz để lên BXH.</div>'; return; }
+    if(!rows.length){ box.innerHTML='<div class="muted" style="font-size:.82em;margin-top:8px">Noch keine BFK-Punkte — starte ein Quiz.</div>'; return; }
     const me=(LearnDB.getPlayer()||"").toLowerCase();
-    box.innerHTML='<h4>🏆 Bảng xếp hạng · BFK Fleisch</h4><table><tr><th>#</th><th>Tên</th><th>Điểm</th><th>%</th></tr>'
+    box.innerHTML='<h4>🏆 Rangliste · BFK Fleisch</h4><table><tr><th>#</th><th>Name</th><th>Punkte</th><th>%</th></tr>'
       +rows.map((r,i)=>'<tr class="'+(String(r.player).toLowerCase()===me?'me':'')+'"><td>'+(i+1)+'</td><td>'+r.player+'</td><td>'+r.correct+'/'+r.total+'</td><td>'+r.pct+'%</td></tr>').join('')
       +'</table>';
-  }catch(e){ box.innerHTML='<div class="db-status err">Không tải được BXH: '+(e.message||e)+'</div>'; }
+  }catch(e){ box.innerHTML='<div class="db-status err">Rangliste nicht ladbar: '+(e.message||e)+'</div>'; }
 }
 
 /* ============ AUTH / NICKNAME GATE ============ */
@@ -1065,7 +1065,7 @@ function renderLoginHistory(history){
   if(!box) return;
   const quizzes=(history && history.quizzes) || [];
   if(!quizzes.length){ box.classList.remove('show'); box.innerHTML=''; return; }
-  box.innerHTML='<h3>📜 Lịch sử quiz của bạn</h3>'+quizzes.slice(0,6).map(q=>{
+  box.innerHTML='<h3>📜 Deine Quiz-Historie</h3>'+quizzes.slice(0,6).map(q=>{
     const when=(q.at||'').slice(0,10);
     return '<div class="hrow"><span><b>'+(q.subject||'?')+'</b> · '+(q.quiz||'')+'</span><span>'+q.correct+'/'+q.total+' ('+q.pct+'%) · '+when+'</span></div>';
   }).join('');
@@ -1080,7 +1080,7 @@ function unlockApp(player){
   if(chip){
     chip.style.display='inline-flex';
     chip.textContent='👤 '+player;
-    chip.onclick=()=>{ if(confirm('Đổi nickname? Bạn sẽ đăng nhập lại.')){ LearnDB.clearPlayer(); location.reload(); } };
+    chip.onclick=()=>{ if(confirm('Nickname wechseln? Du meldest dich neu an.')){ LearnDB.clearPlayer(); location.reload(); } };
   }
   loadHomeHistory(player);
 }
@@ -1095,16 +1095,16 @@ async function loadHomeHistory(player){
     const qs=data.quizzes||[];
     if(!qs.length){
       panel.style.display='block';
-      body.innerHTML='<p class="muted">Chưa có quiz nào. Vào BFK hoặc Deutsch để làm bài nhé.</p>';
+      body.innerHTML='<p class="muted">Noch keine Quizzes. Starte BFK oder Deutsch.</p>';
       return;
     }
     panel.style.display='block';
-    body.innerHTML='<table class="hist-table"><tr><th>Môn</th><th>Quiz</th><th>Điểm</th><th>Lần</th><th>Ngày</th></tr>'
+    body.innerHTML='<table class="hist-table"><tr><th>Fach</th><th>Quiz</th><th>Punkte</th><th>Versuche</th><th>Datum</th></tr>'
       +qs.map(q=>'<tr><td>'+(q.subject||'')+'</td><td>'+(q.quiz||'')+'</td><td><b>'+q.correct+'/'+q.total+'</b> ('+q.pct+'%)</td><td>'+q.attempts+'</td><td>'+(q.at||'').slice(0,10)+'</td></tr>').join('')
       +'</table>';
   }catch(e){
     panel.style.display='block';
-    body.innerHTML='<p class="muted">Không tải được lịch sử: '+(e.message||e)+'</p>';
+    body.innerHTML='<p class="muted">Historie nicht ladbar: '+(e.message||e)+'</p>';
   }
 }
 async function doLogin(){
@@ -1112,22 +1112,22 @@ async function doLogin(){
   const btn=document.getElementById('loginBtn');
   const nick=(input && input.value || '').trim();
   showLoginError('');
-  if(!window.LearnDB){ showLoginError('Không tải được supabase.js'); return; }
-  if(!nick){ showLoginError('Hãy nhập nickname'); return; }
-  if(btn){ btn.disabled=true; btn.textContent='Đang vào…'; }
+  if(!window.LearnDB){ showLoginError('supabase.js konnte nicht geladen werden'); return; }
+  if(!nick){ showLoginError('Bitte Nickname eingeben'); return; }
+  if(btn){ btn.disabled=true; btn.textContent='Wird angemeldet…'; }
   try{
     const res=await LearnDB.loginOrRegister(nick);
     renderLoginHistory(res.history);
     // short pause so user can glance history if returning
     if(!res.isNew && res.history && res.history.quizzes && res.history.quizzes.length){
-      if(btn) btn.textContent='Chào mừng lại, '+res.player+'!';
+      if(btn) btn.textContent='Willkommen zurück, '+res.player+'!';
       setTimeout(()=>unlockApp(res.player), 700);
     }else{
       unlockApp(res.player);
     }
   }catch(e){
     showLoginError(e.message||String(e));
-    if(btn){ btn.disabled=false; btn.textContent='Vào học →'; }
+    if(btn){ btn.disabled=false; btn.textContent='Los geht's →'; }
   }
 }
 function initAuthGate(){
