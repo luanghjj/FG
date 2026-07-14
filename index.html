@@ -42,7 +42,8 @@ a{color:inherit;text-decoration:none}
 .search .kbd{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:.7em;color:var(--muted);
   border:1px solid var(--line);border-radius:5px;padding:1px 6px;background:var(--bg)}
 .results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--surface);border:1px solid var(--line);
-  border-radius:12px;box-shadow:0 12px 40px rgba(15,23,42,.16);overflow:hidden;max-height:min(60vh,420px);overflow-y:auto;display:none}
+  border-radius:12px;box-shadow:0 12px 40px rgba(15,23,42,.16);overflow:hidden;max-height:min(70vh,560px);overflow-y:auto;display:none;min-width:min(420px,80vw)}
+@media(max-width:640px){.results{position:fixed;left:12px;right:12px;top:58px;min-width:0;max-height:70vh}}
 .results.show{display:block}
 .res{display:flex;align-items:center;gap:10px;padding:9px 13px;cursor:pointer;border-bottom:1px solid var(--line)}
 .res:last-child{border-bottom:none}
@@ -292,7 +293,7 @@ h3.sub{font-size:1em;color:#334155;margin:14px 0 6px;font-weight:700}
     <span class="user-chip" id="userChip" title="Nickname wechseln" style="display:none">👤 —</span>
     <div class="search">
       <span class="mag">🔍</span>
-      <input id="searchInput" type="text" placeholder="Suchen…" autocomplete="off">
+      <input id="searchInput" type="text" placeholder="Alles suchen: Filet, Mindmap, Eiercode…" autocomplete="off">
       <span class="kbd">/</span>
       <div class="results" id="results"></div>
     </div>
@@ -859,37 +860,142 @@ function router(){
 }
 window.addEventListener("hashchange",router);
 
-/* ============ SEARCH INDEX ============ */
+/* ============ SEARCH INDEX (alles durchsuchbar) ============ */
 const INDEX=[];
-function idx(title,sub,badge,route,action){ INDEX.push({title,sub,badge,route,action,hay:(title+" "+sub).toLowerCase()}); }
-// Fleischteile
+function idx(title, sub, badge, route, action, extra){
+  const hay = [title, sub, extra||"", badge||""].join(" ").toLowerCase()
+    .normalize("NFD").replace(/[̀-ͯ]/g,""); // ä/ö/ü-tolerant via plain text still kept; accents stripped from hay only for matching
+  INDEX.push({title, sub, badge, route, action, hay, raw:(title+" "+sub+" "+(extra||"")).toLowerCase()});
+}
+function idxMany(items){ items.forEach(a=>idx.apply(null,a)); }
+
+// Fächer / Seiten
+SUBJECTS.forEach(s=>{
+  idx(s.name, s.desc||s.code, s.code, s.route, null, s.code+" "+(s.ready?"verfügbar":"bald"));
+});
+idx("Startseite / Fächer","Alle Fächer der Lern-App","App","#/",null,"home start fächer menü");
+idx("Admin Dashboard","Nutzer · Besuche · Quiz-Punkte","Admin","admin.html",null,"admin statistik rangliste besuche");
+idx("Musterprüfung","Klassenarbeit Nr. 2 · Prüfungsbogen","Prüfung","kiemtra_mau.html",null,"prüfung ka ka2 test");
+idx("Lösungsbogen","Lösungen zur Musterprüfung","Prüfung","loiGiai_mau.html",null,"lösung antworten");
+idx("Zusammenfassung KA2","LF2 Waren & Lieferung · LF3","Prüfung","ka2.html",null,"zusammenfassung lernzettel");
+
+// BFK-Themen
+BFK_THEMES.forEach(t=>idx(t.name,"BFK · "+t.desc,"Thema",t.route,null,"bfk thema "+t.name));
+
+// Fleischteile (Name + VI + Beschreibung + Verwendung)
 [["rind","🐄 Rind"],["schwein","🐖 Schwein"],["schaf","🐑 Schaf/Lamm"]].forEach(([animal,label])=>{
   Object.keys(DATA[animal].parts).forEach(key=>{
     const pt=DATA[animal].parts[key];
-    idx(pt.name, label+" · "+pt.viet, "Fleisch", "#/bfk/fleisch", ()=>{ fleischShowAnimal(animal); setTimeout(()=>{select(animal,key); flashDetail(animal);},60); });
+    idx(
+      pt.name,
+      label+" · "+pt.viet,
+      "Fleisch",
+      "#/bfk/fleisch",
+      ()=>{ fleischShowAnimal(animal); setTimeout(()=>{select(animal,key); flashDetail(animal);},60); },
+      animal+" "+pt.besch+" "+pt.verw+" "+pt.viet+" teil "+pt.n
+    );
   });
+  idx(label.replace(/^.. /,""),"Fleischteile · Übersicht","Fleisch","#/bfk/fleisch",
+    ()=>fleischShowAnimal(animal), animal+" fleischteile teile");
 });
-// Themen selbst
-BFK_THEMES.forEach(t=>idx(t.name,"BFK · "+t.desc,"Thema",t.route,null));
-// Küche Abschnitte
-[["Nährwertberechnung","kJ · kcal · Grundumsatz · PAL","k-naehrwert"],
- ["Eiercode","Haltungsform 0-3 · Eierspeisen · Hygiene","k-eiercode"],
- ["Biologische Wertigkeit","BW % · Ergänzungswert","k-wertigkeit"]].forEach(([t,s,id])=>
-   idx(t,"Küche & Ernährung · "+s,"Küche","#/bfk/kueche",()=>flashEl(id)));
-// Gerichte (Kalb Schlagwörter) → Tab in Fleisch
-["Wiener Schnitzel","Cordon bleu","Saltimbocca","Osso Buco","Vitello tonnato","Zürcher Geschnetzeltes","Kalbsfrikassee","Schäufele","Szegediner Gulasch","Spanferkel","Irish Stew","Navarin","Moussaka","Lammcurry","Mutton Chops"].forEach(name=>
-   idx(name,"Fleisch · Gerichte","Gericht","#/bfk/fleisch",()=>fleischShowAnimal("gerichte")));
-// Grundlagen → Tab in Fleisch
-["Muskelgewebe","Bindegewebe","Fettgewebe","Kollagen","Zusammensetzung","Garverfahren","Schmoren","Kurzbraten"].forEach(name=>
-   idx(name,"Fleisch · Grundlagen","Basis","#/bfk/fleisch",()=>fleischShowAnimal("grundlagen")));
+
+// Gerichte
+const GERICHTE_IDX=[
+  ["Wiener Schnitzel","Kalb · paniert mit Mehl, Ei, Semmelbrösel"],
+  ["Cordon bleu","Kalb · mit Schinken und Käse gefüllt"],
+  ["Saltimbocca","Kalb · Parmaschinken + Salbei"],
+  ["Osso Buco","Kalbshaxe geschmort alla milanese"],
+  ["Vitello tonnato","Kalbfleisch kalt in Thunfischsoße"],
+  ["Zürcher Geschnetzeltes","Kalbsstreifen in Pilzrahmsoße"],
+  ["Kalbsfrikassee","Fleischwürfel in weißem Fond"],
+  ["Kalbsblankett","Gekochte Würfel in heller Soße"],
+  ["Medaillons","Kalbsfilet-Steaks"],
+  ["Kutteln","Magen-Darm-Trakt Rind/Kalb"],
+  ["Schäufele","gepökelte Schweineschulter (badisch)"],
+  ["Schweinepfeffer","Rotwein-Fond, mit Blut gebunden"],
+  ["Szegediner Gulasch","Sauerkraut & saure Sahne"],
+  ["Spanferkel","junges säugendes Ferkel"],
+  ["Irish Stew","Lammtopf mit Zwiebeln & Kartoffeln"],
+  ["Navarin","Hammelragout mit Navets"],
+  ["Moussaka","Lammhack · Aubergine · Tomate"],
+  ["Lammcurry","Curry · Apfel · Mango-Chutney"],
+  ["Mutton Chops","Hammelsattel am Spieß"],
+];
+GERICHTE_IDX.forEach(([name,info])=>
+  idx(name,"Gericht · "+info,"Gericht","#/bfk/fleisch",()=>fleischShowAnimal("gerichte"), info+" gerichte speise rezept")
+);
+
+// Grundlagen / Gewebe / Garverfahren
+[
+  ["Muskelgewebe","Eiweiß gerinnt · Kurzbraten/Grillen","gewebe muskel"],
+  ["Bindegewebe","Kollagen → Gelatine · Schmoren/Kochen","kollagen elastin"],
+  ["Fettgewebe","Fett schmilzt · saftig & aromatisch","fett marmorierung"],
+  ["Kollagen","wird bei langem Garen zu Gelatine","bindegewebe"],
+  ["Zusammensetzung des Fleisches","ca. 70% Wasser · 20% Eiweiß · 3–8% Fett","wasser eiweiß mineralstoffe"],
+  ["Garverfahren","Kurzbraten · Schmoren · Kochen · Grillen","garen hitze"],
+  ["Schmoren","langsam & feucht · viel Bindegewebe","garverfahren"],
+  ["Kurzbraten","schnell & heiß · wenig Bindegewebe","garverfahren steak"],
+  ["Schlacht-Säugetiere","Rind, Schwein, Schaf, Ziege","schlachtfleisch"],
+  ["Alterseinteilung Schaf","Lamm · Schaf · Bock · Hammel","lamm hammel"],
+].forEach(([t,s,extra])=>
+  idx(t,"Fleisch · Grundlagen · "+s,"Basis","#/bfk/fleisch",()=>fleischShowAnimal("grundlagen"), extra)
+);
+
+// Küche & Ernährung
+[
+  ["Nährwertberechnung","kJ · kcal · EW/KH/Fett · Grundumsatz · PAL","k-naehrwert","brennwert energie 17 37"],
+  ["Eiercode","Haltungsform 0–3 · Bio Freiland Boden Käfig","k-eiercode","eier code haltung"],
+  ["Eierspeisen","Spiegelei · Rührei · Omelett · pochiert · gekocht","k-eiercode","eier speisen zubereitung"],
+  ["Eier-Hygiene","5°C · MHD 28 Tage · Salmonellen","k-eiercode","hygiene lagerung"],
+  ["Biologische Wertigkeit","BW % · Hühnerei = 100 · Ergänzungswert","k-wertigkeit","eiweiß bw ergänzung"],
+  ["Ergänzungswert","Kombination steigert BW (z. B. Kartoffel+Ei)","k-wertigkeit","eiweiß kombination"],
+].forEach(([t,s,id,extra])=>
+  idx(t,"Küche & Ernährung · "+s,"Küche","#/bfk/kueche",()=>flashEl(id), extra)
+);
+["Eiweiß 17 kJ","Kohlenhydrate 17 kJ","Fett 37 kJ","Grundumsatz","PAL-Wert"].forEach(t=>
+  idx(t,"Nährwertberechnung","Küche","#/bfk/kueche",()=>flashEl("k-naehrwert"), "brennwert")
+);
+["Bio 0","Freiland 1","Bodenhaltung 2","Kleingruppe 3","Gewichtsklasse S M L XL"].forEach(t=>
+  idx(t,"Eiercode / Eier","Küche","#/bfk/kueche",()=>flashEl("k-eiercode"), "eier")
+);
+
 // Abschlussprüfung
-idx("Abschlussprüfung","Aufbau · Teil 1 & Teil 2 · Prüfungsbereiche","Prüfung","#/abschluss",()=>abschlussShowTab("struktur"));
-[["Gestreckte Abschlussprüfung","Teil 1 & Teil 2 · Gewichtung"],["Restaurantservice","Fachrichtung"],["Systemgastronomie","Fachrichtung"],["Prüfungsbereiche","Übersicht der Bereiche"]].forEach(([t,s])=>
-   idx(t,"Abschlussprüfung · "+s,"Prüfung","#/abschluss",()=>abschlussShowTab("struktur")));
-// Deutsch (external page)
-idx("Deutsch · Visualisierung","KA 16.07.26 · Mindmap · Diagramme","DE","deutsch.html",null);
-idx("Visualisierung","Deutsch · Formen · Arbeitsschritte · Quiz","DE","deutsch.html",null);
-idx("Fleischkonsum","Deutsch · KA Mindmap Muster","DE","deutsch.html",null);
+idx("Abschlussprüfung","Aufbau · Teil 1 & Teil 2 · Prüfungsbereiche","Prüfung","#/abschluss",()=>abschlussShowTab("struktur"),"gap ihk ausbildung");
+[
+  ["Gestreckte Abschlussprüfung","Teil 1 & Teil 2 · Gewichtung"],
+  ["Restaurantservice","Fachrichtung · Gäste & Service"],
+  ["Systemgastronomie","Fachrichtung · standardisierte Abläufe"],
+  ["Prüfungsbereiche","Speisen & Getränke · Gäste beraten · …"],
+].forEach(([t,s])=>idx(t,"Abschlussprüfung · "+s,"Prüfung","#/abschluss",()=>abschlussShowTab("struktur"), s));
+ABSCHLUSS_THEMEN.forEach(t=>{
+  idx(t.name,"Abschluss · "+t.desc, t.ready?"Prüfung":"Bald", t.route||"#/abschluss",
+    t.ready&&t.route?null:null, t.desc+" abschluss");
+  // if ready with route, go there on click via route field
+  if(t.ready && t.route){
+    INDEX[INDEX.length-1].route = t.route;
+  }
+});
+
+// BFK Quiz (Fragen werden nach QUIZ-Definition indexiert)
+idx("BFK Quiz","Multiple-Choice Fleisch · Gerichte · Gewebe · Ernährung","Quiz","#/bfk/quiz",()=>{ if(!window._quizStarted) quizIntro(); },"test fragen üben");
+
+// Deutsch / Visualisierung
+[
+  ["Deutsch · Visualisierung","KA 16.07.26 · Mindmap · Diagramme · Quiz","deutsch visualisierung ka"],
+  ["Mindmap","Thema in der Mitte · Äste · Stichworte","mindmap ideensammlung"],
+  ["Kurvendiagramm","Entwicklung über Zeit · X=Zeit Y=Menge","kurve zeitreihe"],
+  ["Säulen-/Balkendiagramm","Vergleich mehrerer Größen","säule balken vergleich"],
+  ["Kreisdiagramm / Torte","Anteile in % · Summe 100%","kreis anteile prozent"],
+  ["Tabelle","exakte Zahlen · mehrere Spalten","tabelle zahlen"],
+  ["Strukturbild","Ursache–Wirkung · Ablauf · Teufelskreis","struktur pfeile"],
+  ["Organigramm","Hierarchie · Personen · Abteilungen","hierarchie chef"],
+  ["Arbeitsschritte Visualisierung","Lesen · Markieren · Form wählen · Zeichnen","schritte visualisieren"],
+  ["Fleischkonsum in Deutschland","KA-Muster · Mindmap Gesundheit Umwelt Tierwohl","fleischkonsum ka text"],
+  ["Teufelskreis","negatives Denken · Feedback-Schleife","strukturbild"],
+].forEach(([t,s,extra])=>idx(t,"Deutsch · "+s,"DE","deutsch.html",null,extra));
+
+// Prüfungen BFK
+idx("Prüfungen","Musterprüfung · Lösungsbogen · KA2-Zusammenfassung","Prüfung","#/bfk/pruefungen",null,"ka2 prüfung");
 
 function flashDetail(animal){ const el=document.querySelector('[data-detail="'+animal+'"]'); if(el){el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash");el.scrollIntoView({behavior:"smooth",block:"center"});} }
 function flashEl(id){ const el=document.getElementById(id); if(el){el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash");el.scrollIntoView({behavior:"smooth",block:"center"});} }
@@ -897,16 +1003,43 @@ function flashEl(id){ const el=document.getElementById(id); if(el){el.classList.
 /* ============ SEARCH UI ============ */
 const sInput=document.getElementById("searchInput"), sBox=document.getElementById("results");
 let sActive=-1, sHits=[];
-function runSearch(q){
-  q=q.trim().toLowerCase();
+function norm(s){
+  return String(s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+}
+function scoreHit(it, terms, q){
+  let sc=0;
+  const title=norm(it.title), sub=norm(it.sub), hay=it.hay||"";
+  if(title.startsWith(q)) sc+=50;
+  if(title.includes(q)) sc+=25;
+  terms.forEach(t=>{
+    if(title.includes(t)) sc+=12;
+    if(sub.includes(t)) sc+=6;
+    if(hay.includes(t)) sc+=3;
+  });
+  // prefer shorter exact-ish titles
+  sc += Math.max(0, 20 - Math.min(20, title.length/3));
+  return sc;
+}
+function runSearch(q0){
+  const q=norm(q0).trim();
   if(!q){ sBox.classList.remove("show"); sBox.innerHTML=""; return; }
-  const terms=q.split(/\s+/);
-  sHits=INDEX.filter(it=>terms.every(t=>it.hay.includes(t))).slice(0,12);
+  const terms=q.split(/\s+/).filter(Boolean);
+  sHits=INDEX
+    .filter(it=>terms.every(t=>(it.hay||"").includes(t) || norm(it.raw||"").includes(t)))
+    .map(it=>({it, sc:scoreHit(it,terms,q)}))
+    .sort((a,b)=>b.sc-a.sc)
+    .slice(0,40)
+    .map(x=>x.it);
   sActive=-1;
-  if(!sHits.length){ sBox.innerHTML='<div class="res"><span class="empty">Keine Treffer.</span></div>'; sBox.classList.add("show"); return; }
-  sBox.innerHTML=sHits.map((h,i)=>'<div class="res" data-i="'+i+'"><span class="badge">'+h.badge+'</span><div class="txt"><div class="t">'+h.title+'</div><div class="s">'+h.sub+'</div></div></div>').join("");
+  if(!sHits.length){
+    sBox.innerHTML='<div class="res"><span class="empty">Keine Treffer für „'+q0.replace(/[<>&]/g,"")+'“.</span></div>';
+    sBox.classList.add("show"); return;
+  }
+  sBox.innerHTML =
+    '<div class="res" style="pointer-events:none;opacity:.75"><span class="empty">'+sHits.length+' Treffer'+(sHits.length>=40?' (Top 40)':'')+'</span></div>'+
+    sHits.map((h,i)=>'<div class="res" data-i="'+i+'"><span class="badge">'+h.badge+'</span><div class="txt"><div class="t">'+h.title+'</div><div class="s">'+h.sub+'</div></div></div>').join("");
   sBox.classList.add("show");
-  sBox.querySelectorAll(".res").forEach(el=>{ const i=+el.getAttribute("data-i"); if(!isNaN(i)) el.addEventListener("click",()=>pickHit(i)); });
+  sBox.querySelectorAll(".res[data-i]").forEach(el=>{ const i=+el.getAttribute("data-i"); if(!isNaN(i)) el.addEventListener("click",()=>pickHit(i)); });
 }
 function pickHit(i){
   const h=sHits[i]; if(!h) return;
@@ -957,6 +1090,17 @@ const QUIZ = [
   {cat:"Küche", q:"Was bedeutet die erste Ziffer '0' im Eiercode?", opts:["Bodenhaltung","Freilandhaltung","Bio / Ökologisch","Kleingruppenhaltung"], a:2, ex:"0 = Bio/Öko, 1 = Freiland, 2 = Boden, 3 = Kleingruppe."},
   {cat:"Küche", q:"Welches Lebensmittel hat die biologische Wertigkeit 100 (Referenz)?", opts:["Rindfleisch","Hühnerei","Soja","Kartoffeln"], a:1, ex:"Das Hühnerei ist die Referenz mit BW 100."},
 ];
+// Quiz-Fragen in die Suche aufnehmen
+QUIZ.forEach((q,i)=>{
+  idx(
+    q.q.length>72 ? q.q.slice(0,70)+"…" : q.q,
+    "Quiz · "+q.cat+(q.opts&&q.opts[q.a] ? " · Antwort: "+q.opts[q.a] : ""),
+    "Quiz",
+    "#/bfk/quiz",
+    ()=>{ if(!window._quizStarted) quizIntro(); },
+    q.cat+" "+q.q+" "+(q.opts||[]).join(" ")+" "+(q.ex||"")
+  );
+});
 let qOrder=[], qIndex=0, qScore=0;
 function shuffle(arr){ const a=arr.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
 function quizStart(){ window._quizStarted=true; qOrder=shuffle(QUIZ.map((_,i)=>i)); qIndex=0; qScore=0; renderQuestion(); }
