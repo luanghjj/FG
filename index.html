@@ -270,7 +270,7 @@ h3.sub{font-size:1em;color:#334155;margin:14px 0 6px;font-weight:700}
     <p class="sub">Gib einen Nickname ein, um zu starten.<br>Beliebiger Name — bei Wiederkehr siehst du deine Quiz-Historie.</p>
     <div class="login-err" id="loginErr"></div>
     <label for="nickInput">Nickname</label>
-    <input id="nickInput" type="text" maxlength="32" placeholder="vd. Linh, Alex, Phuc…" autocomplete="username">
+    <input id="nickInput" type="text" maxlength="32" placeholder="z. B. Linh, Alex, Phuc…" autocomplete="username">
     <button class="btn-go" id="loginBtn" type="button">Los geht's →</button>
     <div class="login-hist" id="loginHist"></div>
     <p style="text-align:center;margin-top:14px;font-size:.78em;color:#94a3b8">
@@ -1127,7 +1127,7 @@ async function doLogin(){
     }
   }catch(e){
     showLoginError(e.message||String(e));
-    if(btn){ btn.disabled=false; btn.textContent='Los geht's →'; }
+    if(btn){ btn.disabled=false; btn.textContent="Los geht's →"; }
   }
 }
 function initAuthGate(){
