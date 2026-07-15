@@ -1110,6 +1110,38 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
   <div class="card" id="bfk1ThemeBody"></div>
 </section>
 
+
+<!-- ===== STANDARD FACH HUB (alle Fächer) ===== -->
+<section class="view" id="v-fach">
+  <div class="back" onclick="go('#/')">← Start</div>
+  <div class="section-head">
+    <h2 id="fachHubTitle">Fach</h2>
+    <p id="fachHubSub"></p>
+  </div>
+  <div class="theme-quiz-bar" id="fachHubActions"></div>
+  <div id="fachHubGroups"></div>
+</section>
+
+<!-- ===== STANDARD THEMA ===== -->
+<section class="view" id="v-fach-theme">
+  <div class="back" id="fachThemeBack">← Fach</div>
+  <div class="section-head">
+    <h2 id="fachThemeTitle">Thema</h2>
+    <p id="fachThemeSub"></p>
+  </div>
+  <div class="card" id="fachThemeBody"></div>
+</section>
+
+<!-- ===== STANDARD QUIZ ===== -->
+<section class="view" id="v-fach-quiz">
+  <div class="back" id="fachQuizBack">← Fach</div>
+  <div class="section-head">
+    <h2 id="fachQuizTitle">Quiz</h2>
+    <p>Themen wählen · Fragen werden gemischt</p>
+  </div>
+  <div class="card"><div id="fachQuizArea"></div></div>
+</section>
+
 <div class="footer">🍀 Lern-App · Fachkraft für Gastronomie · Viel Erfolg! 🍀</div>
 </div>
 
@@ -1172,8 +1204,9 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 <div id="toastHost" aria-live="polite"></div>
 
 <script src="./supabase.js?v=4"></script>
-<script src="./bfk1-data.js?v=6"></script>
-<script src="./bfk1-quiz.js?v=1"></script>
+<script src="./bfk1-data.js?v=7"></script>
+<script src="./bfk1-quiz.js?v=2"></script>
+<script src="./faecher.js?v=1"></script>
 <script>
 /* ============ DATEN (Fleischteile) ============ */
 const DATA = {
@@ -1418,7 +1451,7 @@ const EXAMS = [
     id:"deutsch", code:"Deutsch", name:"Klassenarbeit Deutsch",
     date:"2026-07-16", teacher:"Herrn Kling",
     icon:"🇩🇪", accent:"#2563eb", soft:"#eff6ff",
-    route:"#/exam/deutsch", studyRoute:"deutsch.html", external:true,
+    route:"#/exam/deutsch", studyRoute:"#/fach/deutsch",
     topics:["Visualisierung","Mindmap","Diagramme","Text → Grafik"],
   },
   {
@@ -1441,7 +1474,7 @@ const EXAMS = [
     id:"englisch", code:"Englisch", name:"Klassenarbeit Englisch",
     date:"2026-07-21", teacher:"HAL (Hoffmann)",
     icon:"🇬🇧", accent:"#7c3aed", soft:"#f5f3ff",
-    route:"#/exam/englisch", studyRoute:"#/fach/e",
+    route:"#/exam/englisch", studyRoute:"#/fach/englisch",
     topics:["Service English","Gastkommunikation","Vokabeln","Dialoge"],
   },
   {
@@ -1588,6 +1621,250 @@ function renderExamDetail(examId){
   }
   body.innerHTML=html;
   bindTerms(body);
+}
+
+
+
+/* ============ STANDARD FACH FORM (alle Fächer) ============ */
+function ensureFachRegistry(){
+  if(!window.FachForm) return [];
+  if(!FachForm.FAECHER.length) FachForm.buildRegistry();
+  return FachForm.FAECHER;
+}
+function fachRoute(fach, part, themeId){
+  // Prefer standard routes
+  if(part==='hub') return '#/fach/'+fach.id;
+  if(part==='quiz') return '#/fach/'+fach.id+'/quiz';
+  if(part==='theme') return '#/fach/'+fach.id+'/theme/'+themeId;
+  return '#/fach/'+fach.id;
+}
+function renderFachHub(fachId){
+  ensureFachRegistry();
+  const fach = FachForm.findFach(fachId);
+  if(!fach){ go('#/'); return; }
+  // Legacy BfK-1/2 still have dedicated UIs – optional redirect keep bfk1
+  const title=document.getElementById('fachHubTitle');
+  const sub=document.getElementById('fachHubSub');
+  const actions=document.getElementById('fachHubActions');
+  const groups=document.getElementById('fachHubGroups');
+  if(title) title.textContent=(fach.icon||'')+' '+(fach.code||'')+' · '+(fach.name||'');
+  if(sub){
+    let s=(fach.teacher||'');
+    if(fach.examDate) s += (s?' · ':'')+'KA '+formatDeDate(fach.examDate);
+    if(fach.desc) s += (s?' · ':'')+fach.desc;
+    sub.textContent=s;
+  }
+  if(actions){
+    let a='';
+    if((fach.quiz&&fach.quiz.length) || (fach.id==='bfk1') || (fach.id==='bfk2')){
+      const qRoute = fach.id==='bfk1' ? '#/bfk/1/quiz' : fach.id==='bfk2' ? '#/bfk/2/quiz' : fachRoute(fach,'quiz');
+      a+='<button type="button" class="btn" onclick="go(\''+qRoute+'\')">📝 Quiz üben →</button>';
+    }
+    if(fach.external){
+      a+='<a class="btn ghost" href="'+fach.external+'">App öffnen →</a>';
+    }
+    if(fach.examDate){
+      // try exam route
+      const exId = fach.id;
+      a+='<button type="button" class="btn ghost" onclick="go(\'#/exam/'+exId+'\')">📅 KA</button>';
+    }
+    actions.innerHTML=a;
+  }
+  if(!groups) return;
+  // BfK-2: show legacy theme tiles if present
+  if(fach.legacyRoutes && fach.legacyRoutes.themes){
+    groups.innerHTML = '<div class="grid">'+fach.legacyRoutes.themes.map(t=>
+      '<div class="tile" onclick="go(\''+t.route+'\')"><div class="ic">'+t.icon+'</div><h3>'+t.name+'</h3><p>'+t.desc+'</p><div class="meta">Öffnen →</div></div>'
+    ).join('')+'</div>';
+    return;
+  }
+  let html='';
+  (fach.groups||[]).forEach(g=>{
+    html+='<div class="lf-block"><h3><span class="lf-badge">'+(g.badge||'')+'</span> '+g.title+'</h3><div class="theme-list">';
+    (g.items||[]).forEach((it,i)=>{
+      const route = it.route || fachRoute(fach,'theme',it.id);
+      // external full page?
+      if(it.route && it.route.endsWith('.html')){
+        html+='<a class="theme-item" href="'+it.route+'" style="color:inherit;text-decoration:none">';
+      }else{
+        html+='<div class="theme-item" onclick="go(\''+route+'\')">';
+      }
+      html+='<div class="num">'+(i+1)+'</div><div class="tt"><b>'+(it.icon||'')+' '+it.name+'</b><span>'+(it.desc||'')+'</span></div><div class="arrow">→</div>';
+      html+=(it.route&&it.route.endsWith('.html')?'</a>':'</div>');
+    });
+    html+='</div></div>';
+  });
+  if(!(fach.groups||[]).length){
+    html='<div class="card"><p class="muted">Noch keine Themen – Form ist vorbereitet.</p></div>';
+  }
+  groups.innerHTML=html;
+}
+function renderFachTheme(fachId, themeId){
+  ensureFachRegistry();
+  const fach=FachForm.findFach(fachId);
+  const theme=FachForm.findTheme(fachId, themeId);
+  const title=document.getElementById('fachThemeTitle');
+  const sub=document.getElementById('fachThemeSub');
+  const body=document.getElementById('fachThemeBody');
+  const back=document.getElementById('fachThemeBack');
+  if(back){ back.onclick=()=>go(fachRoute(fach,'hub')); back.textContent='← '+(fach?fach.code:'Fach'); }
+  if(!fach||!theme){ go(fach?fachRoute(fach,'hub'):'#/'); return; }
+  if(title) title.textContent=(theme.icon||'')+' '+theme.name;
+  if(sub) sub.textContent=(fach.code||'')+' · '+(theme.groupBadge||'')+(fach.teacher?(' · '+fach.teacher):'');
+  if(!body) return;
+  let html = theme.content || ('<p>'+(theme.desc||'')+'</p>');
+  const pages = FachForm.pageList(theme.pages);
+  if(pages.length){
+    window._bfk1Pages = pages; // reuse lightbox
+    html += '<div class="src-pages"><h3>📄 Arbeitsblätter</h3>'
+      + '<div class="hint">Tippen zum Vergrößern · '+pages.length+' Seiten</div><div class="src-grid">';
+    pages.forEach((src,i)=>{
+      html += '<button type="button" class="src-thumb" onclick="openPageLightbox('+i+')">'
+        + '<img src="'+src+'" alt="Seite '+(i+1)+'" loading="lazy">'
+        + '<div class="cap">S. '+(i+1)+' / '+pages.length+'</div></button>';
+    });
+    html += '</div></div>';
+  }
+  // quiz CTA if questions exist for theme
+  const hasQ = (fach.quiz||[]).some(q=>q.theme===themeId) || (fach.id==='bfk1');
+  if(hasQ){
+    html += '<div class="theme-quiz-bar">'
+      + '<button type="button" class="btn" id="fachThemeDrill">📝 Dieses Thema üben</button>'
+      + '<button type="button" class="btn ghost" id="fachThemeQuiz">Themen-Quiz</button></div>';
+  }
+  body.innerHTML=html;
+  bindTerms(body);
+  const drill=document.getElementById('fachThemeDrill');
+  if(drill) drill.onclick=()=>{
+    if(fach.id==='bfk1') bfk1QuizStartThemes([themeId]);
+    else fachQuizStart(fach.id, [themeId], 'all');
+  };
+  const qbtn=document.getElementById('fachThemeQuiz');
+  if(qbtn) qbtn.onclick=()=>go(fach.id==='bfk1'?'#/bfk/1/quiz':fachRoute(fach,'quiz'));
+}
+
+/* Generic quiz (same UX as BfK-1) */
+let fQuiz={fachId:null, pool:[], order:[], index:0, score:0, wrong:[], started:false};
+function fachQuizIntro(fachId, preselect){
+  ensureFachRegistry();
+  const fach=FachForm.findFach(fachId);
+  const area=document.getElementById('fachQuizArea');
+  const title=document.getElementById('fachQuizTitle');
+  const back=document.getElementById('fachQuizBack');
+  if(back){ back.onclick=()=>go(fachRoute(fach,'hub')); back.textContent='← '+(fach?fach.code:'Fach'); }
+  if(title) title.textContent='📝 '+(fach?fach.code+' · ':'')+'Quiz';
+  if(!area||!fach) return;
+  fQuiz.started=false; fQuiz.fachId=fach.id;
+  const quiz=fach.quiz||[];
+  if(!quiz.length){
+    area.innerHTML='<p class="muted">Für dieses Fach gibt es noch keine Quiz-Fragen. Themen-Form ist vorbereitet.</p>';
+    return;
+  }
+  const meta=FachForm.themeMeta(fach);
+  const counts={}; quiz.forEach(q=>{ counts[q.theme]=(counts[q.theme]||0)+1; });
+  const pre=new Set(preselect||[]);
+  let html='<div class="quiz-start"><p><b>'+quiz.length+'</b> Fragen · Themen wählen, dann mischen.</p>';
+  html+='<div class="quiz-actions" style="margin-bottom:10px">';
+  html+='<button type="button" class="btn ghost" id="fqAll">Alle</button>';
+  html+='<button type="button" class="btn ghost" id="fqNone">Keine</button></div>';
+  html+='<div class="theme-pick" id="fqPick">';
+  Object.keys(meta).forEach(id=>{
+    const m=meta[id]; const n=counts[id]||0;
+    if(!n) return;
+    const checked=pre.size?pre.has(id):true;
+    html+='<label><input type="checkbox" value="'+id+'" '+(checked?'checked':'')+'>'
+      +'<div><b>'+(m.icon||'')+' '+m.name+'</b><span>'+(m.lf||'')+' · '+n+' Fragen</span></div></label>';
+  });
+  html+='</div><div class="quiz-actions">';
+  html+='<button type="button" class="btn" id="fqStart">▶ Gemischt starten</button>';
+  html+='<button type="button" class="btn ghost" id="fqQuick">⚡ 10 Fragen</button></div></div>';
+  area.innerHTML=html;
+  const pick=()=>[...area.querySelectorAll('#fqPick input:checked')].map(x=>x.value);
+  document.getElementById('fqAll').onclick=()=>area.querySelectorAll('#fqPick input').forEach(i=>i.checked=true);
+  document.getElementById('fqNone').onclick=()=>area.querySelectorAll('#fqPick input').forEach(i=>i.checked=false);
+  document.getElementById('fqStart').onclick=()=>fachQuizStart(fach.id, pick(), 'all');
+  document.getElementById('fqQuick').onclick=()=>fachQuizStart(fach.id, pick(), 'quick');
+}
+function fachQuizStart(fachId, themeIds, mode){
+  ensureFachRegistry();
+  const fach=FachForm.findFach(fachId);
+  if(!fach) return;
+  const ids=themeIds&&themeIds.length?themeIds:Object.keys(FachForm.themeMeta(fach));
+  if((location.hash||'') !== fachRoute(fach,'quiz')){
+    window._fachQPending={fachId:fach.id, ids, mode:mode||'all'};
+    go(fachRoute(fach,'quiz')); return;
+  }
+  const pool=FachForm.quizByThemes(fach, ids).slice();
+  if(!pool.length){ if(window.toast) toast('Keine Fragen','info'); return; }
+  fQuiz.fachId=fach.id;
+  fQuiz.pool=pool;
+  fQuiz.order=shuffle(pool.map((_,i)=>i));
+  if(mode==='quick') fQuiz.order=fQuiz.order.slice(0, Math.min(10,fQuiz.order.length));
+  fQuiz.index=0; fQuiz.score=0; fQuiz.wrong=[]; fQuiz.started=true;
+  fachRenderQuestion();
+}
+function fachRenderQuestion(){
+  const area=document.getElementById('fachQuizArea');
+  if(!area) return;
+  if(fQuiz.index>=fQuiz.order.length) return fachQuizResult();
+  const q=fQuiz.pool[fQuiz.order[fQuiz.index]];
+  const fach=FachForm.findFach(fQuiz.fachId);
+  const meta=FachForm.themeMeta(fach)[q.theme]||{};
+  const pct=Math.round((fQuiz.index/fQuiz.order.length)*100);
+  const order=shuffle([0,1,2,3].filter(i=>q.opts[i]!=null));
+  const correctPos=order.indexOf(q.a);
+  let html='<div class="quiz-bar"><span>'+(meta.icon||'')+' '+(meta.name||q.cat)+' · '+(fQuiz.index+1)+'/'+fQuiz.order.length+'</span>';
+  html+='<span class="score">'+fQuiz.score+' richtig</span></div>';
+  html+='<div class="progress"><div style="width:'+pct+'%"></div></div>';
+  html+='<div class="q-cat">'+(q.cat||fach.code)+'</div>';
+  html+='<div class="q-text">'+q.q+'</div><div class="q-opts">';
+  order.forEach((oi, displayIdx)=>{
+    html+='<button type="button" class="opt" data-i="'+displayIdx+'">'+q.opts[oi]+'</button>';
+  });
+  html+='</div><div class="q-feedback" id="fqFb"></div><div class="q-nav" id="fqNav" style="display:none">';
+  html+='<button type="button" class="btn" id="fqNext">Weiter →</button></div>';
+  area.innerHTML=html;
+  let locked=false;
+  area.querySelectorAll('.opt').forEach(btn=>{
+    btn.onclick=()=>{
+      if(locked) return; locked=true;
+      const di=+btn.getAttribute('data-i');
+      const ok=di===correctPos;
+      area.querySelectorAll('.opt').forEach((b,i)=>{
+        b.classList.add('locked');
+        if(i===correctPos) b.classList.add('correct');
+        else if(i===di && !ok) b.classList.add('wrong');
+      });
+      const fb=document.getElementById('fqFb');
+      if(ok){ fQuiz.score++; fb.className='q-feedback show ok'; fb.textContent='✓ Richtig. '+(q.ex||''); }
+      else { fQuiz.wrong.push(q); fb.className='q-feedback show no'; fb.textContent='✗ Falsch. Richtig: '+q.opts[q.a]+'. '+(q.ex||''); }
+      document.getElementById('fqNav').style.display='block';
+    };
+  });
+  document.getElementById('fqNext').onclick=()=>{ fQuiz.index++; fachRenderQuestion(); };
+}
+function fachQuizResult(){
+  const area=document.getElementById('fachQuizArea');
+  if(!area) return;
+  const total=fQuiz.order.length;
+  const pct=total?Math.round((fQuiz.score/total)*100):0;
+  let html='<div class="quiz-result"><div class="big">'+pct+'%</div>';
+  html+='<div class="msg">'+fQuiz.score+' / '+total+' richtig</div><div class="quiz-actions">';
+  html+='<button type="button" class="btn" id="fqAgain">Nochmal</button>';
+  html+='<button type="button" class="btn ghost" id="fqPick">Themen wählen</button>';
+  html+='<button type="button" class="btn ghost" id="fqBack">← Fach</button></div>';
+  if(fQuiz.wrong.length){
+    html+='<div class="wrong-list" style="margin-top:16px">';
+    fQuiz.wrong.slice(0,12).forEach(q=>{ html+='<div class="wi"><b>'+q.q+'</b><span class="ans">→ '+q.opts[q.a]+'</span></div>'; });
+    html+='</div>';
+  }
+  html+='</div>';
+  area.innerHTML=html;
+  const last=[...new Set(fQuiz.pool.map(q=>q.theme))];
+  const fachId=fQuiz.fachId;
+  document.getElementById('fqAgain').onclick=()=>fachQuizStart(fachId,last,'all');
+  document.getElementById('fqPick').onclick=()=>fachQuizIntro(fachId,last);
+  document.getElementById('fqBack').onclick=()=>go(fachRoute(FachForm.findFach(fachId),'hub'));
 }
 
 
@@ -1856,17 +2133,17 @@ const SUBJECT_GROUPS = [
     subtitle:"Laut Stundenplan H2FO3T",
     items:[
       {code:"WiKO", name:"Wirtschaftskompetenz", icon:"📊", accent:"#0ea5e9", soft:"#e0f2fe", ready:false, route:"#/fach/wiko",
-        desc:"Wirtschaft, Kaufvertrag, Rechte & Pflichten im Betrieb.",
-        topics:["Kaufvertrag","Angebot & Nachfrage","Mängel / Lieferverzug","Arbeitsrecht Basics"], meta:"RM (Remsing)"},
-      {code:"D", name:"Deutsch", icon:"🇩🇪", accent:"#2563eb", soft:"#eff6ff", ready:true, route:"deutsch.html", external:true,
-        desc:"KA Visualisierung: Mindmap, Diagramme, Text → Grafik.",
-        topics:["Visualisierung","Mindmap","Diagramme","Quiz"], meta:"Herrn Kling", examDate:"2026-07-16"},
+        desc:"Kaufvertrag · Mängel · Rechnung (Standard-Form).",
+        topics:["Kaufvertrag","Angebot","Annahme","Mangel","Lieferverzug","Rechnung"], meta:"RM (Remsing)"},
+      {code:"D", name:"Deutsch", icon:"🇩🇪", accent:"#2563eb", soft:"#eff6ff", ready:true, route:"#/fach/deutsch",
+        desc:"Visualisierung · Mindmap · Diagramme (Standard-Form).",
+        topics:["Visualisierung","Mindmap","Diagramme","Sachtext"], meta:"Herrn Kling", examDate:"2026-07-16"},
       {code:"GK", name:"Gemeinschaftskunde", icon:"🏛️", accent:"#16a34a", soft:"#f0fdf4", ready:false, route:"#/fach/gk",
-        desc:"Politik, Gesellschaft, Demokratie und Recht.",
-        topics:["Politik","Gesellschaft","Demokratie","Aktuelle Themen"], meta:"BS (Buß-Schroeder)", examDate:"2026-07-22"},
-      {code:"E", name:"Englisch", icon:"🇬🇧", accent:"#7c3aed", soft:"#f5f3ff", ready:false, route:"#/fach/e",
-        desc:"Fachbezogenes Englisch für Gastronomie & Service.",
-        topics:["Service English","Gastkommunikation","Vokabeln","Dialoge"], meta:"HAL (Hoffmann)", examDate:"2026-07-21"},
+        desc:"Demokratie · Grundrechte (Standard-Form).",
+        topics:["Demokratie","Gewaltenteilung","Grundrechte","Wahlen"], meta:"BS (Buß-Schroeder)", examDate:"2026-07-22"},
+      {code:"E", name:"Englisch", icon:"🇬🇧", accent:"#7c3aed", soft:"#f5f3ff", ready:false, route:"#/fach/englisch",
+        desc:"Service English · Orders · Payment (Standard-Form).",
+        topics:["Greeting","Ordering","Bill & payment","Vokabeln"], meta:"HAL (Hoffmann)", examDate:"2026-07-21"},
     ],
   },
 ];
@@ -1885,8 +2162,12 @@ BFK_LEVELS.forEach(l=>{
   }
 });
 PLACEHOLDERS["#/fach/wiko"] = {title:"WiKO · Wirtschaftskompetenz", desc:"Wirtschaftliche Zusammenhänge im Ausbildungsbetrieb.", topics:["Kaufvertrag","Mängel","Lieferverzug","Rechnung"], note:"Lehrkraft: Remsing (RM). Inhalte folgen bald."};
+/* standard fach aliases */
 PLACEHOLDERS["#/fach/gk"] = {title:"GK · Gemeinschaftskunde", desc:"Politik und Gesellschaft · KA 22.07.2026.", topics:["Demokratie","Grundrechte","Aktuelle Themen"], note:"Lehrkraft: Buß-Schroeder (BS). Themen folgen bald — Termin KA: 22.07."};
-PLACEHOLDERS["#/fach/e"] = {title:"E · Englisch", desc:"Englisch für Gastronomie · KA 21.07.2026.", topics:["Service English","Dialoge","Vokabeln"], note:"Lehrkraft: Hoffmann (HAL). Themen folgen bald — Termin KA: 21.07."};
+
+PLACEHOLDERS["#/fach/e"] = {title:"E · Englisch", desc:"Service English · KA 21.07.2026.", topics:["Greeting","Ordering","Payment"], note:"Standard-Form · HAL."};
+PLACEHOLDERS["#/fach/englisch"] = PLACEHOLDERS["#/fach/e"];
+PLACEHOLDERS["#/fach/deutsch"] = {title:"D · Deutsch", desc:"Visualisierung · KA 16.07.", topics:["Mindmap","Diagramme"], note:"Standard-Form · Kling."};
 
 function subjectCardHTML(s){
   const style='--tile-accent:'+s.accent+';--tile-soft:'+s.soft;
@@ -1958,6 +2239,7 @@ function showPlaceholder(hash){
   if(chips) chips.innerHTML=(ph.topics||[]).map(x=>'<span class="topic-chip">'+x+'</span>').join('') || '<span class="muted">Noch keine Themenliste.</span>';
 }
 
+try{ensureFachRegistry();}catch(e){}
 renderSubjects(); renderBfkHub(); renderHomeExams(); renderBfk1Hub();
 
 /* ============ ROUTING ============ */
@@ -1997,6 +2279,46 @@ function go(hash){
 }
 function router(){
   let hash=location.hash||"#/";
+
+  // Standard-Form: #/fach/:id , #/fach/:id/quiz , #/fach/:id/theme/:tid
+  if(hash.startsWith("#/fach/")){
+    ensureFachRegistry();
+    const parts=hash.replace("#/fach/","").split("/").filter(Boolean);
+    const fachId=parts[0];
+    const fach=window.FachForm && FachForm.findFach(fachId);
+    // legacy shortcuts
+    if(fach && fach.id==="bfk1" && parts.length===1){ location.hash="#/bfk/1"; return; }
+    if(fach && fach.id==="bfk1" && parts[1]==="quiz"){ location.hash="#/bfk/1/quiz"; return; }
+    if(fach && fach.id==="bfk1" && parts[1]==="theme" && parts[2]){ location.hash="#/bfk/1/theme/"+parts[2]; return; }
+    if(fach && fach.id==="bfk2" && parts.length===1){ location.hash="#/bfk/2"; return; }
+    if(fach && fach.external && parts.length===1){ location.href=fach.external; return; }
+
+    document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
+    const cb=document.getElementById("crumbs");
+    if(parts[1]==="theme" && parts[2]){
+      const view=document.getElementById("v-fach-theme");
+      if(view) view.classList.add("active");
+      if(cb) cb.innerHTML='<a onclick="go(\'#/\')">Start</a><span class="sep">›</span><a onclick="go(\'#/fach/'+fachId+'\')">'+(fach?fach.code:fachId)+'</a><span class="sep">›</span><span>Thema</span>';
+      renderFachTheme(fachId, parts[2]);
+      setBottomNav(hash); window.scrollTo({top:0,behavior:"smooth"}); return;
+    }
+    if(parts[1]==="quiz"){
+      const view=document.getElementById("v-fach-quiz");
+      if(view) view.classList.add("active");
+      if(cb) cb.innerHTML='<a onclick="go(\'#/\')">Start</a><span class="sep">›</span><a onclick="go(\'#/fach/'+fachId+'\')">'+(fach?fach.code:fachId)+'</a><span class="sep">›</span><span>Quiz</span>';
+      if(window._fachQPending && window._fachQPending.fachId===fachId){
+        const p=window._fachQPending; window._fachQPending=null;
+        setTimeout(()=>fachQuizStart(p.fachId,p.ids,p.mode||"all"),0);
+      } else fachQuizIntro(fachId);
+      setBottomNav(hash); window.scrollTo({top:0,behavior:"smooth"}); return;
+    }
+    // hub
+    const view=document.getElementById("v-fach");
+    if(view) view.classList.add("active");
+    if(cb) cb.innerHTML='<a onclick="go(\'#/\')">Start</a><span class="sep">›</span><span>'+(fach?fach.code:fachId)+'</span>';
+    renderFachHub(fachId);
+    setBottomNav(hash); window.scrollTo({top:0,behavior:"smooth"}); return;
+  }
 
   // dynamic BfK-1 theme routes
   if(hash.startsWith("#/bfk/1/theme/")){
@@ -2142,6 +2464,33 @@ EXAMS.forEach(ex=>{
 
 // BfK-1: Themen + voller Inhalt + DE/VI-Begriffe
 idxBfk1Deep();
+
+// Standard-Form: alle Fächer / Themen / Begriffe / Quiz
+try{
+  ensureFachRegistry();
+  (FachForm.FAECHER||[]).forEach(fach=>{
+    idx(fach.code+" · "+fach.name, fach.desc||"", fach.code, fachRoute(fach,'hub'), null,
+      fach.code+" "+fach.name+" "+(fach.teacher||"")+" "+(fach.desc||"")+" fach");
+    FachForm.allThemes(fach).forEach(t=>{
+      const route = t.route || fachRoute(fach,'theme',t.id);
+      const plain=(t.content||"").replace(/<[^>]+>/g," ");
+      const des=[...(t.content||"").matchAll(/data-de="([^"]+)"/g)].map(m=>m[1]);
+      const vis=[...(t.content||"").matchAll(/data-vi="([^"]+)"/g)].map(m=>m[1]);
+      idx(t.name, fach.code+" · "+(t.desc||""), fach.code, route, null,
+        fach.code+" "+t.name+" "+plain+" "+des.join(" ")+" "+vis.join(" "));
+      des.forEach((de,i)=>{
+        const vi=vis[i]||"";
+        idx(de, vi?("VI: "+vi):(fach.code+" · "+t.name), "Begriff", route, null, de+" "+vi+" "+fach.code);
+        if(vi) idx(vi, "DE: "+de, "Begriff", route, null, vi+" "+de);
+      });
+    });
+    (fach.quiz||[]).forEach(q=>{
+      idx(q.q, fach.code+" Quiz", "Quiz", fachRoute(fach,'quiz'), null,
+        fach.code+" quiz "+q.theme+" "+q.q+" "+(q.opts||[]).join(" ")+" "+(q.ex||""));
+    });
+  });
+}catch(e){}
+
 
 // Häufige Suchbegriffe / Synonyme → Lernseiten
 [
