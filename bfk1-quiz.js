@@ -19,12 +19,12 @@ window.BFK1_QUIZ = [
   {theme:"ernaehrungsformen", cat:"Ernährung", q:"Bei Allergien/Unverträglichkeiten gilt …", opts:["Raten ist ok","Immer Küche fragen, nie raten","Nur Gast googeln lassen","Allergene ignorieren"], a:1, ex:"Sicherheit geht vor – bei Unsicherheit Küche fragen."},
 
   /* ===== Speisen-Regeln ===== */
-  {theme:"speisen-regeln", cat:"Speisen", q:"Typische Speisenkomponenten eines Gerichts?", opts:["Nur Dessert","Hauptkomponente + Soße + Gemüse + Sättigungsbeilage","Nur Getränk","Nur Brot"], a:1, ex:"Schema: Hauptstück, Soße, Gemüse, Sättigungsbeilage, ggf. kalt."},
-  {theme:"speisen-regeln", cat:"Speisen", q:"Was ist eine Sättigungsbeilage?", opts:["Salat","Reis, Nudeln, Kartoffeln","Nur Soße","Nur Deko"], a:1, ex:"Sättigungsbeilage = stärkehaltige Beilage."},
-  {theme:"speisen-regeln", cat:"Speisen", q:"Menüregel: Wiederholung von gleicher Garart …", opts:["Ist ideal","Sollte vermieden werden","Ist Pflicht","Gilt nur für Desserts"], a:1, ex:"Keine Wiederholung von Zutat, Soße oder Garverfahren."},
-  {theme:"speisen-regeln", cat:"Speisen", q:"Klassische Speisekarten-Reihenfolge beginnt oft mit …", opts:["Desserts","Empfehlungen / Vorspeisen","Nur Getränke","Hauptgänge ganz oben ohne Struktur"], a:1, ex:"Empfehlungen → Vorspeisen/Suppen → Hauptgänge → Desserts."},
-  {theme:"speisen-regeln", cat:"Speisen", q:"Leicht → kräftig → leicht bedeutet …", opts:["Alles gleich schwer","Belastung im Menü steuern","Nur frittieren","Keine Suppe"], a:1, ex:"Schwere Gänge nicht hintereinander stapeln."},
-  {theme:"speisen-regeln", cat:"Speisen", q:"Saisonale Produkte nutzen, weil …", opts:["Sie immer teurer sind","Frischer, oft günstiger, nachhaltiger","Sie verboten sind","Sie kein Geschmack haben"], a:1, ex:"Saison = Qualität, Preis, Nachhaltigkeit."},
+  {theme:"ernaehrungsformen", cat:"Speisen", q:"Typische Speisenkomponenten eines Gerichts?", opts:["Nur Dessert","Hauptkomponente + Soße + Gemüse + Sättigungsbeilage","Nur Getränk","Nur Brot"], a:1, ex:"Schema: Hauptstück, Soße, Gemüse, Sättigungsbeilage, ggf. kalt."},
+  {theme:"ernaehrungsformen", cat:"Speisen", q:"Was ist eine Sättigungsbeilage?", opts:["Salat","Reis, Nudeln, Kartoffeln","Nur Soße","Nur Deko"], a:1, ex:"Sättigungsbeilage = stärkehaltige Beilage."},
+  {theme:"ernaehrungsformen", cat:"Speisen", q:"Menüregel: Wiederholung von gleicher Garart …", opts:["Ist ideal","Sollte vermieden werden","Ist Pflicht","Gilt nur für Desserts"], a:1, ex:"Keine Wiederholung von Zutat, Soße oder Garverfahren."},
+  {theme:"ernaehrungsformen", cat:"Speisen", q:"Klassische Speisekarten-Reihenfolge beginnt oft mit …", opts:["Desserts","Empfehlungen / Vorspeisen","Nur Getränke","Hauptgänge ganz oben ohne Struktur"], a:1, ex:"Empfehlungen → Vorspeisen/Suppen → Hauptgänge → Desserts."},
+  {theme:"ernaehrungsformen", cat:"Speisen", q:"Leicht → kräftig → leicht bedeutet …", opts:["Alles gleich schwer","Belastung im Menü steuern","Nur frittieren","Keine Suppe"], a:1, ex:"Schwere Gänge nicht hintereinander stapeln."},
+  {theme:"ernaehrungsformen", cat:"Speisen", q:"Saisonale Produkte nutzen, weil …", opts:["Sie immer teurer sind","Frischer, oft günstiger, nachhaltiger","Sie verboten sind","Sie kein Geschmack haben"], a:1, ex:"Saison = Qualität, Preis, Nachhaltigkeit."},
 
   /* ===== Obst ===== */
   {theme:"obst", cat:"Obst", q:"Hauptbestandteil der meisten Obstsorten?", opts:["Fett","Wasser","Eiweiß","Salz"], a:1, ex:"Obst besteht größtenteils aus Wasser (ca. 60–90 %)."},
@@ -101,15 +101,14 @@ window.BFK1_QUIZ = [
 ];
 
 window.BFK1_THEME_META = {
-  gaestebewertungen: { icon:"⭐", name:"Gästebedarfe", lf:"LF6" },
-  ernaehrungsformen: { icon:"🥗", name:"Ernährungsformen", lf:"LF6" },
-  "speisen-regeln": { icon:"📋", name:"Ernährung & Karte", lf:"LF6" },
+  gaestebewertungen: { icon:"⭐", name:"Gästebedarfe & Auswertung", lf:"LF6" },
+  ernaehrungsformen: { icon:"🥗", name:"Ernährung & Speisekarte", lf:"LF6" },
   obst: { icon:"🍎", name:"Obst", lf:"LF6" },
   huelsenfruechte: { icon:"🫘", name:"Hülsenfrüchte", lf:"LF6" },
   getreide: { icon:"🌾", name:"Getreide", lf:"LF6" },
-  "menues-erstellen": { icon:"🍽️", name:"Menüregeln", lf:"LF6" },
+  "menues-erstellen": { icon:"🍽️", name:"Menüregeln & Sprache", lf:"LF6" },
   "betriebsarten-zahlung": { icon:"💳", name:"Betriebsarten & Zahlung", lf:"LF9" },
-  "rechtliche-zahlungsabwicklung": { icon:"⚖️", name:"Recht & Zahlung", lf:"LF9" },
+  "rechtliche-zahlungsabwicklung": { icon:"⚖️", name:"Bewirtungsvertrag & USt", lf:"LF9" },
 };
 
 window.bfk1QuizByThemes = function(themeIds){
