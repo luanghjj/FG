@@ -19,7 +19,11 @@ window.BFK1_QUIZ = [
   {theme:"ernaehrungsformen", cat:"Ernährung", q:"Bei Allergien/Unverträglichkeiten gilt …", opts:["Raten ist ok","Immer Küche fragen, nie raten","Nur Gast googeln lassen","Allergene ignorieren"], a:1, ex:"Sicherheit geht vor – bei Unsicherheit Küche fragen."},
 
   /* ===== Speisen-Regeln ===== */
-  {theme:"ernaehrungsformen", cat:"Speisen", q:"Typische Speisenkomponenten eines Gerichts?", opts:["Nur Dessert","Hauptkomponente + Soße + Gemüse + Sättigungsbeilage","Nur Getränk","Nur Brot"], a:1, ex:"Schema: Hauptstück, Soße, Gemüse, Sättigungsbeilage, ggf. kalt."},
+  {theme:"ernaehrungsformen", cat:"Speisen", q:"Was gehört fest zum Gerichtsschema und fehlt oft in der reinen Beilagenliste?", opts:["Nur Dessert","Zubereitungsart (z. B. gebraten, geschmort)","Nur Getränk","Aktienkurs"], a:1, ex:"Zubereitungsart + Hauptrohstoff (+ Garnitur) + Soße + Gemüse + Sättigung + ggf. Salat."},
+  {theme:"ernaehrungsformen", cat:"Speisen", q:"Richtige Reihenfolge / Bausteine eines Gerichts?", opts:["Nur Soße + Dessert","Zubereitungsart + Hauptrohstoff (+ Garnitur) + Soße + Gemüsebeilage + Sättigungsbeilage + ggf. Salat","Nur Salat","Nur Getränke"], a:1, ex:"Mindmap: Zubereitungsart, Hauptrohstoff, Garnitur, Soße, Gemüse, Sättigung, Salat."},
+  {theme:"ernaehrungsformen", cat:"Speisen", q:"Welches ist eine Zubereitungsart?", opts:["Spätzle","gebraten / geschmort / gegrillt / gedünstet","Kopfsalat","Hollandaise"], a:1, ex:"Zubereitungsarten beschreiben, WIE der Hauptrohstoff gegart wird."},
+  {theme:"ernaehrungsformen", cat:"Speisen", q:"„Müllerin-Art“ oder „Wellington“ sind Beispiele für …", opts:["Sättigungsbeilage","Garnitur","Zubereitungsart gegrillt","Barzahlung"], a:1, ex:"Garnitur = stilistische Zubereitungs-/Anrichtungsform des Gerichts."},
+
   {theme:"ernaehrungsformen", cat:"Speisen", q:"Was ist eine Sättigungsbeilage?", opts:["Salat","Reis, Nudeln, Kartoffeln","Nur Soße","Nur Deko"], a:1, ex:"Sättigungsbeilage = stärkehaltige Beilage."},
   {theme:"ernaehrungsformen", cat:"Speisen", q:"Menüregel: Wiederholung von gleicher Garart …", opts:["Ist ideal","Sollte vermieden werden","Ist Pflicht","Gilt nur für Desserts"], a:1, ex:"Keine Wiederholung von Zutat, Soße oder Garverfahren."},
   {theme:"ernaehrungsformen", cat:"Speisen", q:"Klassische Speisekarten-Reihenfolge beginnt oft mit …", opts:["Desserts","Empfehlungen / Vorspeisen","Nur Getränke","Hauptgänge ganz oben ohne Struktur"], a:1, ex:"Empfehlungen → Vorspeisen/Suppen → Hauptgänge → Desserts."},

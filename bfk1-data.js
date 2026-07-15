@@ -75,13 +75,35 @@ window.BFK1_THEMES = {
           </table>
           <div class="note">Allergene nie raten — bei Unsicherheit Küche fragen. Kreuzkontamination vermeiden.</div>
 
-          <h3 class="sub">Gericht = Komponenten</h3>
+          <h3 class="sub">Gericht = Komponenten (+ Zubereitungsart!)</h3>
+          <p>Ein Gericht wird nicht nur aus Beilagen zusammengesetzt — zuerst kommt die
+          <span class="term" data-de="Zubereitungsart" data-vi="cách chế biến / phương pháp nấu">Zubereitungsart</span>
+          und der <span class="term" data-de="Hauptrohstoff" data-vi="nguyên liệu chính">Hauptrohstoff</span>.</p>
           <div class="formula">
-            <span class="term" data-de="Hauptkomponente" data-vi="thành phần chính">Hauptkomponente</span> +
+            <span class="term" data-de="Zubereitungsart" data-vi="cách chế biến">Zubereitungsart</span> +
+            <span class="term" data-de="Hauptrohstoff" data-vi="nguyên liệu chính">Hauptrohstoff</span>
+            (+ ggf. <span class="term" data-de="Garnitur" data-vi="cách trang trí / kiểu món (…-Art)">Garnitur</span>) +
             <span class="term" data-de="Soße" data-vi="sốt">Soße</span> +
             <span class="term" data-de="Gemüsebeilage" data-vi="rau kèm">Gemüsebeilage</span> +
-            <span class="term" data-de="Sättigungsbeilage" data-vi="món no">Sättigungsbeilage</span> + ggf. kalte Beilage
+            <span class="term" data-de="Sättigungsbeilage" data-vi="món no">Sättigungsbeilage</span> +
+            ggf. <span class="term" data-de="Salat" data-vi="salad / món salad">Salat</span> (kalte Beilage)
           </div>
+
+          <table>
+            <tr><th>Baustein</th><th>Beispiele (Mindmap)</th></tr>
+            <tr><td><b>Zubereitungsart</b></td><td><span class="term" data-de="gebraten" data-vi="chiên/rán">gebraten</span>,
+              <span class="term" data-de="geschmort" data-vi="om / hầm">geschmort</span>,
+              <span class="term" data-de="gegrillt" data-vi="nướng vỉ">gegrillt</span>,
+              <span class="term" data-de="gedünstet" data-vi="hấp / om nhẹ">gedünstet</span></td></tr>
+            <tr><td><b>Hauptrohstoff</b></td><td>Gänsekeule, Schweinehals, Lammrückensteak, Tofu…</td></tr>
+            <tr><td><b>Garnitur</b> (optional)</td><td>Müllerin-Art, Baden-Baden, Colbert, Wellington…</td></tr>
+            <tr><td><b>Soße</b></td><td>Käsesoße, Béchamelsoße, Pfifferlingrahmsoße, Hollandaise</td></tr>
+            <tr><td><b>Gemüsebeilage</b></td><td>Speckbohnen, Rotkohl, Karotten-Julienne, sautierte Rosenkohlblätter</td></tr>
+            <tr><td><b>Sättigungsbeilage</b></td><td>Bratkartoffeln, Reisköpfchen, Spätzle, Käsenocken</td></tr>
+            <tr><td><b>Salat</b></td><td>Gurkensalat, Kopfsalat, Krautsalat, Rote-Bete-Salat</td></tr>
+          </table>
+          <div class="formula">Beispiel: <b>Gebratene</b> Gänsekeule · Rotkohl · Spätzle · Käsesoße</div>
+          <div class="note">💡 Ohne <b>Zubereitungsart</b> ist die Gerichtsangabe unvollständig — sie gehört fest zum Gerichtsschema (nicht nur Beilagen!).</div>
 
           <h3 class="sub">Aufbau einer Speisekarte</h3>
           <ol>
