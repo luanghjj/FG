@@ -1209,9 +1209,10 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 <div id="toastHost" aria-live="polite"></div>
 
 <script src="./supabase.js?v=4"></script>
-<script src="./bfk1-data.js?v=10"></script>
-<script src="./bfk1-quiz.js?v=5"></script>
-<script src="./faecher.js?v=1"></script>
+<script src="./vocab.js?v=1"></script>
+<script src="./bfk1-data.js?v=11"></script>
+<script src="./bfk1-quiz.js?v=6"></script>
+<script src="./faecher.js?v=2"></script>
 <script>
 /* ============ DATEN (Fleischteile) ============ */
 const DATA = {
@@ -1645,7 +1646,7 @@ function fachRoute(fach, part, themeId){
 }
 function renderFachHub(fachId){
   ensureFachRegistry();
-  const fach = window.window.FachForm.findFach(fachId);
+  const fach = window.FachForm.findFach(fachId);
   if(!fach){ go('#/'); return; }
   // Legacy BfK-1/2 still have dedicated UIs – optional redirect keep bfk1
   const title=document.getElementById('fachHubTitle');
@@ -1706,7 +1707,7 @@ function renderFachHub(fachId){
 }
 function renderFachTheme(fachId, themeId){
   ensureFachRegistry();
-  const fach=window.window.FachForm.findFach(fachId);
+  const fach=window.FachForm.findFach(fachId);
   const theme=window.FachForm.findTheme(fachId, themeId);
   const title=document.getElementById('fachThemeTitle');
   const sub=document.getElementById('fachThemeSub');
@@ -1752,7 +1753,7 @@ function renderFachTheme(fachId, themeId){
 let fQuiz={fachId:null, pool:[], order:[], index:0, score:0, wrong:[], started:false};
 function fachQuizIntro(fachId, preselect){
   ensureFachRegistry();
-  const fach=window.window.FachForm.findFach(fachId);
+  const fach=window.FachForm.findFach(fachId);
   const area=document.getElementById('fachQuizArea');
   const title=document.getElementById('fachQuizTitle');
   const back=document.getElementById('fachQuizBack');
@@ -1792,7 +1793,7 @@ function fachQuizIntro(fachId, preselect){
 }
 function fachQuizStart(fachId, themeIds, mode){
   ensureFachRegistry();
-  const fach=window.window.FachForm.findFach(fachId);
+  const fach=window.FachForm.findFach(fachId);
   if(!fach) return;
   const ids=themeIds&&themeIds.length?themeIds:Object.keys(window.FachForm.themeMeta(fach));
   if((location.hash||'') !== fachRoute(fach,'quiz')){
@@ -2360,188 +2361,19 @@ function router(){
   if(r.view==="v-exam-detail" && r.examId) renderExamDetail(r.examId);
   if(r.view==="v-placeholder" || r.placeholder) showPlaceholder(hash);
   setBottomNav(hash);
+  // DE→VI vocabulary on every Fach/view
+  try{
+    const active=document.querySelector('.view.active');
+    if(active && window.enableVocabOn) enableVocabOn(active);
+    else if(window.enableVocabOn) enableVocabOn(document.body);
+  }catch(e){}
   window.scrollTo({top:0,behavior:"smooth"});
 }
 window.addEventListener("hashchange",router);
 
 
 /* ============ DE terms → VI on tap ============ */
-/* DE → VI: bấm từ (VI) để hiện nghĩa tiếng Việt ngay cạnh từ */
-const B1_VOCAB = {
-  "Atmosphäre":"không khí / bầu không khí","Preisempfinden":"cảm nhận về giá","Sauberkeit":"sạch sẽ",
-  "Service":"phục vụ","Hygiene":"vệ sinh","Garstufe":"độ chín (thịt)","Anrichtung":"cách bày món",
-  "Reinigungsplan":"kế hoạch vệ sinh","Teamschulung":"đào tạo nhóm","Geschäftsleitung":"ban giám đốc",
-  "Restaurantleitung":"ban quản lý nhà hàng","Umsatzzahlen":"doanh số","Gästekommentare":"nhận xét khách",
-  "Verbesserungsvorschläge":"đề xuất cải thiện","Feedbackbogen":"phiếu góp ý","Internetbewertungen":"đánh giá online",
-  "Vegetarisch":"ăn chay","Vegan":"thuần chay","Flexitarier":"ăn chay linh hoạt","Pescetarier":"ăn cá, không thịt",
-  "Pescetarisch":"ăn cá, không thịt","Laktosefrei":"không lactose","Glutenfrei":"không gluten","Gluten":"gluten",
-  "Zöliakie":"bệnh không dung nạp gluten","Halal":"hợp chuẩn Hồi giáo","Koscher":"hợp chuẩn Do Thái",
-  "Low-Carb":"ít carb","Keto":"chế độ keto","Allergene":"chất gây dị ứng","Gelatine":"gelatin",
-  "Kreuzkontamination":"lây nhiễm chéo","Hauptkomponente":"thành phần chính","Hauptrohstoff":"nguyên liệu chính",
-  "Zubereitungsart":"cách chế biến","Garnitur":"kiểu trang trí / …-Art","Soße":"nước sốt","Gemüsebeilage":"rau kèm",
-  "Sättigungsbeilage":"món no (cơm/khoai/mì)","Salat":"salad","Vorspeisen":"khai vị","Hauptgänge":"món chính",
-  "Desserts":"tráng miệng","Getränke":"đồ uống","Sättigung":"no bụng","Lebensmittel":"thực phẩm",
-  "Obst":"trái cây","Südfrüchte":"trái cây nhiệt đới","Schalenobst":"quả hạch","Beerenobst":"quả mọng",
-  "Kernobst":"quả có hạt (táo/lê)","Steinobst":"quả có hột cứng","Kohlenhydrate":"tinh bột / carbohydrate",
-  "Ballaststoffe":"chất xơ","Pektin":"pectin","Mineralstoffe":"khoáng chất","Folsäure":"axit folic",
-  "Sekundäre Pflanzenstoffe":"hợp chất thực vật thứ cấp","Carotinoide":"carotenoid","Polyphenole":"polyphenol",
-  "Durchfall":"tiêu chảy","Pürieren":"xay nhuyễn","Backen":"nướng lò","Pochieren":"om nhẹ dưới sôi",
-  "Sautieren":"xào nhanh","Karamellisieren":"caramel hóa","Frittieren":"chiên ngập dầu","Mazerieren":"ngâm/ướp",
-  "Röstaromen":"hương vị rang","Convenience":"thực phẩm tiện lợi","Kompott":"quả om / mứt","Bratapfel":"táo nướng",
-  "Hülsenfrüchte":"họ đậu","Leguminosen":"cây họ đậu","Linsen":"đậu lăng","Bohnen":"đậu","Erbsen":"đậu Hà Lan",
-  "Kichererbsen":"đậu gà","Einweichen":"ngâm nước","Einweichwasser":"nước ngâm","Hämagglutinine":"hemagglutinin",
-  "Phasin":"độc tố đậu (phasin)","Aquafaba":"nước đậu gà (thay lòng trắng trứng)","Giftstoffe":"chất độc",
-  "pflanzliches Eiweiß":"đạm thực vật","Stärke":"tinh bột","Getreide":"ngũ cốc","Mehlkörper":"phần lõi bột",
-  "Keimling":"mầm hạt","Randschichten":"lớp vỏ/cám","Weizen":"lúa mì","Roggen":"lúa mạch đen","Gerste":"lúa mạch",
-  "Dinkel":"lúa mì spelt","Grünkern":"lúa mì xanh","Buchweizen":"kiều mạch","Amaranth":"amaranth","Quinoa":"quinoa",
-  "Pseudo-Getreide":"ngũ cốc giả","Ausmahlungsgrad":"tỷ lệ xay xát","Vollkorn":"nguyên cám","Schrot":"bột thô",
-  "Grieß":"bột gries/semolina","Dunst":"bột mịn trung gian","Mehl":"bột mì","Couscous":"couscous",
-  "Menü":"set menu / thực đơn nhiều món","Vorspeise":"khai vị","Suppe":"súp","Hauptgericht":"món chính",
-  "Nachspeise":"món tráng miệng","Dessert":"tráng miệng","Kalte Vorspeise":"khai vị nguội",
-  "Warmes Zwischengericht":"món nóng xen giữa","Saisonale Produkte":"sản phẩm theo mùa","Bindestriche":"dấu gạch nối",
-  "Franchise":"nhượng quyền","Franchisegeber":"bên nhượng quyền","Franchisenehmer":"bên nhận quyền",
-  "Beherbergung":"lưu trú","Stadthotel":"khách sạn nội đô","Kurhotel":"khách sạn dưỡng bệnh",
-  "Hotel garni":"KS chỉ phục vụ sáng","Motel":"motel (khách đi ô tô)","Systemgastronomie":"nhà hàng hệ thống",
-  "Quickservice":"phục vụ nhanh","Fullservice":"phục vụ đầy đủ tại bàn","Gemeinschaftsverpflegung":"suất ăn tập thể",
-  "Barzahlung":"trả tiền mặt","Debitkarte":"thẻ ghi nợ","Kreditkarte":"thẻ tín dụng","Mobile Payment":"thanh toán di động",
-  "Überweisung":"chuyển khoản","Prepaid-Karte":"thẻ trả trước","Bewirtungsvertrag":"hợp đồng phục vụ",
-  "gemischter Vertrag":"hợp đồng hỗn hợp","Kaufvertrag":"hợp đồng mua bán","Zechprellerei":"ăn quỵt",
-  "Vorsatz":"cố ý","Betrug":"lừa đảo","Zahlungsverzug":"chậm thanh toán","Annahmeverzug":"chậm nhận hàng",
-  "Schlechtleistung":"hàng/dịch vụ kém","Nacherfüllung":"giao lại / làm lại","Preisminderung":"giảm giá",
-  "Lieferverzug":"chậm phục vụ","Umsatzsteuer":"thuế GTGT / VAT","Außerhaus":"mang về / giao đi",
-  "Trinkgeld":"tiền boa","Bedienungsgeld":"phụ phí phục vụ","Belegausgabepflicht":"nghĩa vụ xuất biên lai",
-  "Speisekarte":"thực đơn","Reservierung":"đặt bàn","gebraten":"chiên/rán","geschmort":"om/hầm",
-  "gegrillt":"nướng vỉ","gedünstet":"hấp/om nhẹ","Saison":"mùa vụ","Zielgruppe":"nhóm khách mục tiêu",
-  "Konsistenz":"kết cấu (giòn/mềm)","Garart":"cách chế biến","Briefing":"họp giao ban","Ausgabe-Check":"kiểm trước khi mang ra",
-  "Preis-Leistung":"tỷ lệ giá–chất lượng","Speisenqualität":"chất lượng món","vegetarische Alternativen":"món chay thay thế",
-  "vegane Optionen":"món thuần chay","Besondere Empfehlungen":"món đề xuất","Fructose":"đường quả",
-  "Erdnüsse":"đậu phộng","Sojabohnen":"đậu nành","getrocknete reife Samen":"hạt chín sấy khô",
-  "Aleuronschicht":"lớp aleuron","Vitamin E":"vitamin E","Vitamin C":"vitamin C","Wasser":"nước",
-  "Gebühr":"phí","Counter":"quầy order","bezahlen":"thanh toán","Bestellung":"đặt món","Annahme":"chấp nhận"
-};
-
-function lookupVi(de){
-  if(!de) return '';
-  if(B1_VOCAB[de]) return B1_VOCAB[de];
-  // case-insensitive
-  const k=Object.keys(B1_VOCAB).find(x=>x.toLowerCase()===String(de).toLowerCase());
-  return k?B1_VOCAB[k]:'';
-}
-
-function enrichTermsInHtml(html){
-  if(!html) return html;
-  // sort long keys first to avoid partial overlaps
-  const keys=Object.keys(B1_VOCAB).sort((a,b)=>b.length-a.length);
-  // only wrap plain text outside existing tags / existing .term
-  // simple approach: skip if already has many terms; wrap remaining plain occurrences
-  let out=html;
-  keys.forEach(de=>{
-    const vi=B1_VOCAB[de];
-    // don't double-wrap
-    const re=new RegExp('(?<!data-de=")(?<!>)(\\b'+de.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\b)(?![^<]*>)(?![^<]*</span>)','g');
-    // safer: only replace in text nodes via DOM if available - for string, avoid inside tags
-    out=out.replace(re, (m, p1, offset, s)=>{
-      // if already inside a term span nearby, skip
-      const before=s.slice(Math.max(0,offset-80), offset);
-      if(before.includes('class="term"') && !before.includes('</span>')) return m;
-      if(before.lastIndexOf('<span class="term"')>before.lastIndexOf('</span>')) return m;
-      if(before.includes('data-de="'+de+'"')) return m;
-      return '<span class="term" data-de="'+de+'" data-vi="'+vi.replace(/"/g,'&quot;')+'">'+de+'</span>';
-    });
-  });
-  return out;
-}
-
-function bindTerms(root){
-  const scope = root || document;
-  // enrich plain B1 vocab that wasn't marked yet
-  try{
-    if(scope && scope.querySelectorAll){
-      // if root is element with innerHTML content blocks
-      if(scope !== document && scope.innerHTML && !scope.dataset.enriched){
-        scope.dataset.enriched='1';
-        scope.innerHTML = enrichTermsInHtml(scope.innerHTML);
-      }
-    }
-  }catch(e){}
-  scope.querySelectorAll('.term').forEach(el=>{
-    if(el.dataset.bound) return;
-    el.dataset.bound='1';
-    // ensure data-vi
-    if(!el.getAttribute('data-vi')){
-      const vi=lookupVi(el.getAttribute('data-de')||el.textContent.trim());
-      if(vi) el.setAttribute('data-vi', vi);
-    }
-    // prepare inline VI chip (hidden)
-    if(!el.nextElementSibling || !el.nextElementSibling.classList || !el.nextElementSibling.classList.contains('term-vi')){
-      const chip=document.createElement('span');
-      chip.className='term-vi hidden';
-      chip.textContent=el.getAttribute('data-vi')||'';
-      el.insertAdjacentElement('afterend', chip);
-    }
-    el.addEventListener('click', e=>{
-      e.preventDefault(); e.stopPropagation();
-      toggleTermVi(el);
-    });
-  });
-}
-function toggleTermVi(el){
-  const vi=el.getAttribute('data-vi') || lookupVi(el.getAttribute('data-de')||el.textContent.trim()) || '—';
-  el.setAttribute('data-vi', vi);
-  let chip=el.nextElementSibling;
-  if(!chip || !chip.classList.contains('term-vi')){
-    chip=document.createElement('span');
-    chip.className='term-vi hidden';
-    el.insertAdjacentElement('afterend', chip);
-  }
-  chip.textContent='🇻🇳 '+vi;
-  const open=chip.classList.contains('hidden');
-  // close others
-  document.querySelectorAll('.term-vi').forEach(c=>{ if(c!==chip) c.classList.add('hidden'); });
-  document.querySelectorAll('.term.open').forEach(t=>{ if(t!==el) t.classList.remove('open'); });
-  if(open){
-    chip.classList.remove('hidden');
-    el.classList.add('open');
-    showTermPop(el);
-  }else{
-    chip.classList.add('hidden');
-    el.classList.remove('open');
-    hideTermPop();
-  }
-}
-function showTermPop(el){
-  const pop=document.getElementById('termPop');
-  if(!pop) return;
-  const de=el.getAttribute('data-de') || el.textContent.replace(/\s*VI\s*$/,'').trim();
-  const vi=el.getAttribute('data-vi') || lookupVi(de) || '—';
-  const deEl=pop.querySelector('.de'); const viEl=pop.querySelector('.vi');
-  if(deEl) deEl.textContent='🇩🇪 '+de;
-  if(viEl) viEl.textContent='🇻🇳 '+vi;
-  pop.classList.add('show');
-  pop.setAttribute('aria-hidden','false');
-  const r=el.getBoundingClientRect();
-  const pw=Math.min(300, window.innerWidth*0.88);
-  let left=r.left + r.width/2 - pw/2;
-  left=Math.max(10, Math.min(left, window.innerWidth-pw-10));
-  let top=r.top - 72;
-  if(top<8) top=r.bottom+10;
-  pop.style.left=left+'px';
-  pop.style.top=top+'px';
-  pop.style.width=pw+'px';
-}
-function hideTermPop(){
-  const pop=document.getElementById('termPop');
-  if(!pop) return;
-  pop.classList.remove('show');
-  pop.setAttribute('aria-hidden','true');
-}
-document.addEventListener('click', e=>{
-  if(e.target.closest && (e.target.closest('.term') || e.target.closest('.term-vi') || e.target.closest('#termPop'))) return;
-  document.querySelectorAll('.term-vi').forEach(c=>c.classList.add('hidden'));
-  document.querySelectorAll('.term.open').forEach(t=>t.classList.remove('open'));
-  hideTermPop();
-});
-document.addEventListener('scroll', ()=>{ hideTermPop(); }, true);
+/* Vocab: loaded from vocab.js (all Fächer) */
 
 /* ============ SEARCH INDEX (alles durchsuchbar) ============ */
 const INDEX=[];
@@ -3115,6 +2947,7 @@ function toast(msg, type){
   setTimeout(()=>{ el.style.opacity='0'; el.style.transition='opacity .25s'; setTimeout(()=>el.remove(),280); }, 2600);
 }
 function setBottomNav(hash){
+  try{ const active=document.querySelector('.view.active'); if(active && window.enableVocabOn) setTimeout(()=>enableVocabOn(active), 0); }catch(e){}
   const nav=document.getElementById('bottomNav'); if(!nav) return;
   const h=hash||location.hash||'#/';
   nav.querySelectorAll('button').forEach(btn=>{
@@ -3352,6 +3185,7 @@ function initAuthGate(){
 
 /* ============ INIT ============ */
 router();
+try{if(window.enableVocabOn) enableVocabOn(document.querySelector(".view.active")||document.body);}catch(e){}
 initAuthGate();
 initBottomNav();
 initSearchSheet();

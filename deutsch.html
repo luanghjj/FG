@@ -856,6 +856,7 @@ button.stw.open{box-shadow:0 0 0 2px #93c5fd}
 
 <script src="./pwa.js?v=3" defer></script>
 <script src="./supabase.js?v=3"></script>
+<script src="./vocab.js?v=1"></script>
 <script>
 /* ===== VI toggle (Lernen + Üben) ===== */
 document.addEventListener('click', (e)=>{
@@ -1952,5 +1953,24 @@ function shuffle(a){const arr=[...a];for(let i=arr.length-1;i>0;i--){const j=Mat
 renderFormen();
 renderTU();
 </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  try{
+    if(window.enableVocabOn){
+      enableVocabOn(document.body);
+      // re-run when views change
+      document.querySelectorAll('.view, .tab, [data-tab], .btn').forEach(el=>{
+        el.addEventListener('click', function(){ setTimeout(function(){ enableVocabOn(document.querySelector('.view.active')||document.body); }, 50); });
+      });
+      // observe class changes on views
+      document.querySelectorAll('.view').forEach(function(v){
+        new MutationObserver(function(){ if(v.classList.contains('active')) enableVocabOn(v); }).observe(v,{attributes:true,attributeFilter:['class']});
+      });
+    }
+  }catch(e){}
+});
+</script>
+
 </body>
 </html>
