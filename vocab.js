@@ -74,6 +74,20 @@
     "Omelett":"trứng omelette","pochiert":"trứng chần","Gewichtsklasse":"hạng cân",
     // Deutsch / Visualisierung
     "Mindmap":"sơ đồ tư duy","Diagramm":"biểu đồ","Visualisierung":"trực quan hóa","Sachtext":"văn bản thông tin",
+    // Deutsch Visualisierung – 7 Formen
+    "Kreisdiagramm":"biểu đồ tròn / bánh","Tortendiagramm":"biểu đồ bánh",
+    "Kurvendiagramm":"biểu đồ đường","Liniendiagramm":"biểu đồ đường",
+    "Säulendiagramm":"biểu đồ cột","Balkendiagramm":"biểu đồ thanh",
+    "Säulen-/Balkendiagramm":"biểu đồ cột / thanh","Balken-/Säulendiagramm":"biểu đồ cột / thanh",
+    "Kreis-/Tortendiagramm":"biểu đồ tròn / bánh",
+    "Strukturbild":"sơ đồ cấu trúc","Organigramm":"sơ đồ tổ chức",
+    "Anteile":"tỷ lệ / phần trăm","Anteile (%)":"tỷ lệ (%)",
+    "Entwicklung":"sự phát triển / xu hướng","Vergleich":"so sánh",
+    "Hierarchie":"cấp bậc","Ablauf":"quy trình","Ursache–Wirkung":"nhân–quả",
+    "Teufelskreis":"vòng xoáy tiêu cực","Zeitachse":"trục thời gian",
+    "Ideensammlung":"thu thập ý tưởng","Stichworte":"từ khóa",
+    "stieg":"đã tăng","sank":"đã giảm","exakte Zahlen":"số liệu chính xác",
+
     "Überschrift":"tiêu đề","Stichpunkte":"gạch đầu dòng","Tabelle":"bảng","Fließtext":"văn xuôi liên tục",
     "Zusammenfassung":"tóm tắt","Argument":"lập luận","Beispiel":"ví dụ","Vergleich":"so sánh",
     // WiKO / GK
