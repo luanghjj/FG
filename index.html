@@ -430,6 +430,16 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 .next-exam-chip .cd.today{background:var(--warnbg);color:var(--warn)}
 .next-exam-chip .cd.soon{background:var(--okbg);color:var(--ok)}
 
+
+/* ===== BfK-1 quiz picker ===== */
+.theme-pick{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px;margin:12px 0;text-align:left}
+.theme-pick label{display:flex;align-items:flex-start;gap:8px;border:1px solid var(--line);border-radius:12px;padding:10px;cursor:pointer;background:#fff;font-size:.82em;line-height:1.3}
+.theme-pick label:has(input:checked){border-color:var(--accent);background:var(--accent-soft)}
+.theme-pick input{margin-top:2px;flex-shrink:0}
+.theme-pick b{display:block;font-size:.9em}
+.theme-pick span{display:block;color:var(--muted);font-size:.75em;margin-top:2px}
+.quiz-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:12px}
+.theme-quiz-bar{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
 /* ===== Term (DE → VI) ===== */
 .term{border-bottom:1.5px dashed color-mix(in srgb, var(--accent) 55%, #94a3b8);color:inherit;cursor:pointer;
   font-weight:650;padding:0 1px;border-radius:3px;transition:background .12s,color .12s}
@@ -1065,7 +1075,11 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
     <h2>🍳 BfK-1</h2>
     <p>Fr. Schuster · KA 20.07 · LF6 + LF9</p>
   </div>
-  <div class="lf-block">
+  <div class="theme-quiz-bar">
+    <button type="button" class="btn" onclick="go('#/bfk/1/quiz')">📝 Quiz üben →</button>
+    <button type="button" class="btn ghost" onclick="go('#/exam/bfk1')">📅 KA-Themen</button>
+  </div>
+  <div class="lf-block" style="margin-top:18px">
     <h3><span class="lf-badge">LF 6</span> Speisen · Ernährung · Menüs</h3>
     <div class="theme-list" id="bfk1Lf6"></div>
   </div>
@@ -1073,6 +1087,17 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
     <h3><span class="lf-badge">LF 9</span> Zahlung · Recht</h3>
     <div class="theme-list" id="bfk1Lf9"></div>
   </div>
+</section>
+
+
+<!-- ===== BFK-1 QUIZ ===== -->
+<section class="view bfk-scope" id="v-bfk1-quiz">
+  <div class="back" onclick="go('#/bfk/1')">← BfK-1</div>
+  <div class="section-head">
+    <h2>📝 BfK-1 · Quiz</h2>
+    <p>Themen wählen · Fragen werden gemischt</p>
+  </div>
+  <div class="card"><div id="bfk1QuizArea"></div></div>
 </section>
 
 <!-- ===== BFK-1 THEME DETAIL ===== -->
@@ -1147,7 +1172,8 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 <div id="toastHost" aria-live="polite"></div>
 
 <script src="./supabase.js?v=4"></script>
-<script src="./bfk1-data.js?v=5"></script>
+<script src="./bfk1-data.js?v=6"></script>
+<script src="./bfk1-quiz.js?v=1"></script>
 <script>
 /* ============ DATEN (Fleischteile) ============ */
 const DATA = {
@@ -1335,8 +1361,9 @@ const BFK_LEVELS = [
     examDate:"2026-07-20",
     topics:["Gästebewertungen","Ernährungsformen","Speisen-Zusammenstellung","Obst/Hülsenfrüchte/Getreide","Menüs","Zahlung","Bewirtungsvertrag"],
     themes:[
-      {icon:"⭐", name:"LF6 · Gäste & Speisen", desc:"Bewertungen, Ernährungsformen, Speisenregeln, Obst, Hülsenfrüchte, Getreide, Menüs.", route:"#/bfk/1"},
-      {icon:"💳", name:"LF9 · Zahlung & Recht", desc:"Betriebsarten, Zahlung, Bewirtungsvertrag, USt 7/19 %, Trinkgeld, Beleg · Fälle.", route:"#/bfk/1"},
+      {icon:"⭐", name:"LF6 · Gäste & Speisen", desc:"Bewertungen, Ernährung, Speisen, Obst, Hülsenfrüchte, Getreide, Menüs.", route:"#/bfk/1"},
+      {icon:"💳", name:"LF9 · Zahlung & Recht", desc:"Betriebsarten, USt, Trinkgeld, Beleg · Fälle.", route:"#/bfk/1"},
+      {icon:"📝", name:"Quiz BfK-1", desc:"Themen wählen · Fragen mischen · üben.", route:"#/bfk/1/quiz"},
       {icon:"📅", name:"KA BfK-1", desc:"20.07 · Fr. Schuster", route:"#/exam/bfk1"},
     ],
   },
@@ -1563,6 +1590,160 @@ function renderExamDetail(examId){
   bindTerms(body);
 }
 
+
+/* ============ BfK-1 QUIZ ENGINE ============ */
+let b1Pool=[], b1Order=[], b1Index=0, b1Score=0, b1Wrong=[], b1Started=false;
+function bfk1QuizIntro(preselect){
+  const area=document.getElementById('bfk1QuizArea');
+  if(!area) return;
+  b1Started=false;
+  const meta=window.BFK1_THEME_META||{};
+  const quiz=window.BFK1_QUIZ||[];
+  if(!quiz.length){
+    area.innerHTML='<p class="muted">Quiz-Daten nicht geladen. Bitte Seite neu laden.</p>';
+    return;
+  }
+  const counts={};
+  quiz.forEach(q=>{ counts[q.theme]=(counts[q.theme]||0)+1; });
+  const pre=new Set(preselect||[]);
+  let html='<div class="quiz-start">';
+  html+='<p><b>'+quiz.length+'</b> Fragen · Themen auswählen, dann mischen &amp; üben.</p>';
+  html+='<div class="quiz-actions" style="margin-bottom:10px">';
+  html+='<button type="button" class="btn ghost" id="b1all">Alle Themen</button>';
+  html+='<button type="button" class="btn ghost" id="b1none">Keine</button>';
+  html+='<button type="button" class="btn ghost" id="b1lf6">Nur LF6</button>';
+  html+='<button type="button" class="btn ghost" id="b1lf9">Nur LF9</button>';
+  html+='</div>';
+  html+='<div class="theme-pick" id="b1ThemePick">';
+  Object.keys(meta).forEach(id=>{
+    const m=meta[id];
+    const n=counts[id]||0;
+    const checked = pre.size? pre.has(id) : true;
+    html+='<label><input type="checkbox" value="'+id+'" '+(checked?'checked':'')+'>'
+      +'<div><b>'+(m.icon||'')+' '+m.name+'</b><span>'+m.lf+' · '+n+' Fragen</span></div></label>';
+  });
+  html+='</div>';
+  html+='<div class="quiz-actions">';
+  html+='<button type="button" class="btn" id="b1start">▶ Gemischt starten</button>';
+  html+='<button type="button" class="btn ghost" id="b1quick">⚡ 10 Fragen</button>';
+  html+='</div></div>';
+  area.innerHTML=html;
+  const pick=()=>[...area.querySelectorAll('#b1ThemePick input:checked')].map(x=>x.value);
+  const setGroup=(pred)=>{
+    area.querySelectorAll('#b1ThemePick input').forEach(inp=>{
+      const m=meta[inp.value];
+      inp.checked = pred(inp.value, m);
+    });
+  };
+  document.getElementById('b1all').onclick=()=>setGroup(()=>true);
+  document.getElementById('b1none').onclick=()=>setGroup(()=>false);
+  document.getElementById('b1lf6').onclick=()=>setGroup((id,m)=>m && m.lf==='LF6');
+  document.getElementById('b1lf9').onclick=()=>setGroup((id,m)=>m && m.lf==='LF9');
+  document.getElementById('b1start').onclick=()=>bfk1QuizStartThemes(pick(), 'all');
+  document.getElementById('b1quick').onclick=()=>bfk1QuizStartThemes(pick(), 'quick');
+}
+function bfk1QuizStartThemes(themeIds, mode){
+  const ids=themeIds && themeIds.length ? themeIds : (window.bfk1QuizAllThemes? window.bfk1QuizAllThemes():[]);
+  if(!ids.length){ toast && toast('Bitte mindestens 1 Thema wählen','info'); return; }
+  // navigate to quiz view if needed
+  if((location.hash||'') !== '#/bfk/1/quiz'){
+    // stash selection
+    window._b1Pending = {ids, mode: mode||'all'};
+    go('#/bfk/1/quiz');
+    return;
+  }
+  const pool = (window.bfk1QuizByThemes? window.bfk1QuizByThemes(ids):[]).slice();
+  if(!pool.length){ toast && toast('Keine Fragen für diese Themen','info'); return; }
+  b1Pool = pool;
+  // shuffle
+  b1Order = shuffle(pool.map((_,i)=>i));
+  if(mode==='quick') b1Order = b1Order.slice(0, Math.min(10, b1Order.length));
+  b1Index=0; b1Score=0; b1Wrong=[]; b1Started=true;
+  bfk1RenderQuestion();
+}
+function bfk1RenderQuestion(){
+  const area=document.getElementById('bfk1QuizArea');
+  if(!area) return;
+  if(b1Index>=b1Order.length) return bfk1QuizResult();
+  const q=b1Pool[b1Order[b1Index]];
+  const meta=(window.BFK1_THEME_META||{})[q.theme]||{};
+  const pct=Math.round((b1Index/b1Order.length)*100);
+  // shuffle options but keep correct mapping
+  const order=shuffle([0,1,2,3].filter(i=>q.opts[i]!=null));
+  const correctPos=order.indexOf(q.a);
+  let html='<div class="quiz-bar"><span>'+(meta.icon||'')+' '+(meta.name||q.cat)+' · '+(b1Index+1)+'/'+b1Order.length+'</span>';
+  html+='<span class="score">'+b1Score+' richtig</span></div>';
+  html+='<div class="progress"><div style="width:'+pct+'%"></div></div>';
+  html+='<div class="q-cat">'+(q.cat||'BfK-1')+'</div>';
+  html+='<div class="q-text">'+q.q+'</div>';
+  html+='<div class="q-opts">';
+  order.forEach((oi, displayIdx)=>{
+    html+='<button type="button" class="opt" data-i="'+displayIdx+'" data-oi="'+oi+'">'+q.opts[oi]+'</button>';
+  });
+  html+='</div><div class="q-feedback" id="b1fb"></div><div class="q-nav" id="b1nav" style="display:none">';
+  html+='<button type="button" class="btn" id="b1next">Weiter →</button></div>';
+  area.innerHTML=html;
+  let locked=false;
+  area.querySelectorAll('.opt').forEach(btn=>{
+    btn.onclick=()=>{
+      if(locked) return; locked=true;
+      const di=+btn.getAttribute('data-i');
+      const ok = di===correctPos;
+      area.querySelectorAll('.opt').forEach((b,i)=>{
+        b.classList.add('locked');
+        if(i===correctPos) b.classList.add('correct');
+        else if(i===di && !ok) b.classList.add('wrong');
+      });
+      const fb=document.getElementById('b1fb');
+      if(ok){ b1Score++; fb.className='q-feedback show ok'; fb.textContent='✓ Richtig. '+(q.ex||''); }
+      else {
+        b1Wrong.push(q);
+        fb.className='q-feedback show no';
+        fb.textContent='✗ Falsch. Richtig: '+q.opts[q.a]+'. '+(q.ex||'');
+      }
+      document.getElementById('b1nav').style.display='block';
+    };
+  });
+  document.getElementById('b1next').onclick=()=>{ b1Index++; bfk1RenderQuestion(); };
+}
+function bfk1QuizResult(){
+  const area=document.getElementById('bfk1QuizArea');
+  if(!area) return;
+  const total=b1Order.length;
+  const pct=total? Math.round((b1Score/total)*100):0;
+  let msg=pct>=90?'Stark!':pct>=70?'Gut – noch einmal die Fehler ansehen.':pct>=50?'Weiter üben!':'Nochmal Themen wiederholen.';
+  let html='<div class="quiz-result"><div class="big">'+pct+'%</div>';
+  html+='<div class="msg">'+b1Score+' / '+total+' richtig · '+msg+'</div>';
+  html+='<div class="quiz-actions">';
+  html+='<button type="button" class="btn" id="b1again">Nochmal (gleiche Themen)</button>';
+  html+='<button type="button" class="btn ghost" id="b1pick">Themen wählen</button>';
+  html+='<button type="button" class="btn ghost" id="b1back">← BfK-1</button>';
+  html+='</div>';
+  if(b1Wrong.length){
+    html+='<div class="wrong-list" style="margin-top:16px">';
+    b1Wrong.slice(0,12).forEach(q=>{
+      html+='<div class="wi"><b>'+q.q+'</b><span class="ans">→ '+q.opts[q.a]+'</span></div>';
+    });
+    html+='</div>';
+  }
+  html+='</div>';
+  area.innerHTML=html;
+  const lastThemes=[...new Set(b1Pool.map(q=>q.theme))];
+  document.getElementById('b1again').onclick=()=>bfk1QuizStartThemes(lastThemes,'all');
+  document.getElementById('b1pick').onclick=()=>bfk1QuizIntro(lastThemes);
+  document.getElementById('b1back').onclick=()=>go('#/bfk/1');
+}
+// After entering quiz route, apply pending start
+const _bfk1QuizBoot = (function(){
+  const old = window.__afterBfk1QuizRoute;
+  return function(){
+    if(window._b1Pending){
+      const p=window._b1Pending; window._b1Pending=null;
+      bfk1QuizStartThemes(p.ids, p.mode||'all');
+    }
+  };
+})();
+
 function renderBfk1Hub(){
   const lf6=document.getElementById("bfk1Lf6");
   const lf9=document.getElementById("bfk1Lf9");
@@ -1603,7 +1784,16 @@ function renderBfk1Theme(themeId){
     });
     html += '</div></div>';
   }
+  // Quiz CTA
+  html += '<div class="theme-quiz-bar">'
+    + '<button type="button" class="btn" id="b1ThemeDrill">📝 Dieses Thema üben</button>'
+    + '<button type="button" class="btn ghost" id="b1ThemePickBtn">Themen wählen</button>'
+    + '</div>';
   body.innerHTML = html;
+  const drill=document.getElementById('b1ThemeDrill');
+  if(drill) drill.onclick=()=>bfk1QuizStartThemes([themeId]);
+  const pickBtn=document.getElementById('b1ThemePickBtn');
+  if(pickBtn) pickBtn.onclick=()=>go('#/bfk/1/quiz');
   bindTerms(body);
 }
 function openPageLightbox(i){
@@ -1781,6 +1971,7 @@ const ROUTES = {
   "#/exam/gk":     {view:"v-exam-detail", crumbs:[["KA","#/on-thi"],["GK","#/exam/gk"]], examId:"gk"},
   "#/bfk":         {view:"v-bfk",    crumbs:[["BfK","#/bfk"]]},
   "#/bfk/1":       {view:"v-bfk1",   crumbs:[["BfK","#/bfk"],["BfK-1","#/bfk/1"]], bfk1:true},
+  "#/bfk/1/quiz":  {view:"v-bfk1-quiz", crumbs:[["BfK","#/bfk"],["BfK-1","#/bfk/1"],["Quiz","#/bfk/1/quiz"]], bfk1quiz:true},
   "#/bfk/2":       {view:"v-bfk-level", crumbs:[["BfK","#/bfk"],["BfK-2","#/bfk/2"]], level:"2"},
   "#/bfk/5":       {view:"v-placeholder", crumbs:[["BfK","#/bfk"],["BfK-5","#/bfk/5"]], placeholder:true},
   "#/bfk/6":       {view:"v-placeholder", crumbs:[["BfK","#/bfk"],["BfK-6","#/bfk/6"]], placeholder:true},
@@ -1837,6 +2028,7 @@ function router(){
   if(r.view==="v-quiz" && !window._quizStarted) quizIntro();
   if(r.view==="v-bfk-level" && r.level) renderBfkLevel(r.level);
   if(r.view==="v-bfk1" || r.bfk1) renderBfk1Hub();
+  if(r.view==="v-bfk1-quiz" || r.bfk1quiz){ if(window._b1Pending){ const p=window._b1Pending; window._b1Pending=null; setTimeout(()=>bfk1QuizStartThemes(p.ids,p.mode||"all"),0); } else if(!b1Started) bfk1QuizIntro(); }
   if(r.view==="v-on-thi" || r.exams) renderFullExams();
   if(r.view==="v-exam-detail" && r.examId) renderExamDetail(r.examId);
   if(r.view==="v-placeholder" || r.placeholder) showPlaceholder(hash);
@@ -2241,6 +2433,21 @@ const QUIZ = [
     });
   }catch(e){}
 })();
+
+// BfK-1 Quiz-Fragen suchbar
+(function indexBfk1Quiz(){
+  try{
+    (window.BFK1_QUIZ||[]).forEach(item=>{
+      const opts=(item.opts||[]).join(" ");
+      const ans=(item.opts&&item.opts[item.a])||"";
+      const meta=(window.BFK1_THEME_META||{})[item.theme]||{};
+      idx(item.q, (meta.name||item.cat||"BfK-1")+(ans?(" · "+ans):""), "Quiz", "#/bfk/1/quiz", null,
+        "bfk1 quiz "+item.theme+" "+(item.cat||"")+" "+item.q+" "+opts+" "+(item.ex||"")+" "+ans);
+    });
+    idx("BfK-1 Quiz","Themen wählen und mischen","Quiz","#/bfk/1/quiz",null,"bfk1 quiz üben training lf6 lf9");
+  }catch(e){}
+})();
+
 
 // Quiz-Fragen in die Suche aufnehmen
 QUIZ.forEach((q,i)=>{
