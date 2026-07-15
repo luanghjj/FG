@@ -239,6 +239,17 @@ button.stw.open{box-shadow:0 0 0 2px #93c5fd}
 .steps-nav{display:flex;gap:8px;margin-top:4px}
 .steps-nav button{border:1px solid var(--line);background:#fff;border-radius:8px;padding:7px 12px;font:inherit;font-size:.82em;font-weight:700;cursor:pointer;flex:1}
 .steps-nav button:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Diagram illustrations */
+.diag-fig{width:100%;height:110px;margin:8px 0 4px;border-radius:12px;background:linear-gradient(180deg,#f8fafc,#eff6ff);
+  border:1px solid var(--line,#e2e8f0);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.diag-fig svg{width:100%;height:100%;display:block}
+.tile .diag-fig{height:120px}
+.diag-mini{width:56px;height:40px;flex-shrink:0;border-radius:8px;background:#f8fafc;border:1px solid #e2e8f0;
+  display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;margin-right:8px}
+.diag-mini svg{width:48px;height:34px}
+.form-row{display:flex;align-items:center;gap:8px}
+
 </style>
 </head>
 <body>
@@ -400,31 +411,31 @@ button.stw.open{box-shadow:0 0 0 2px #93c5fd}
             <tr><th>Im Text siehst du …</th><th>→ nimm</th></tr>
             <tr>
               <td><button class="vi-btn" data-vi="% · tỷ lệ · “trong 100” · các phần của một tổng → Biểu đồ tròn (Kreisdiagramm)">% · Anteile · „von 100“ · Teile eines Ganzen</button><div class="vi-pop"></div></td>
-              <td><button class="vi-btn" data-vi="Biểu đồ tròn / bánh (tỷ lệ % của tổng 100%)"><b>Kreisdiagramm</b></button><div class="vi-pop"></div></td>
+              <td><div class="form-row"><span class="diag-mini" data-diag="kreis"></span><div><button class="vi-btn" data-vi="Biểu đồ tròn / bánh (tỷ lệ % của tổng 100%)"><b>Kreisdiagramm</b></button><div class="vi-pop"></div></div></div></td>
             </tr>
             <tr>
               <td><button class="vi-btn" data-vi="Năm/tháng · tăng · giảm · từ … đến … → Biểu đồ đường (Kurvendiagramm)">Jahre / Monate · stieg · sank · von … bis …</button><div class="vi-pop"></div></td>
-              <td><button class="vi-btn" data-vi="Biểu đồ đường (xu hướng theo thời gian)"><b>Kurvendiagramm</b></button><div class="vi-pop"></div></td>
+              <td><div class="form-row"><span class="diag-mini" data-diag="kurve"></span><div><button class="vi-btn" data-vi="Biểu đồ đường (xu hướng theo thời gian)"><b>Kurvendiagramm</b></button><div class="vi-pop"></div></div></div></td>
             </tr>
             <tr>
               <td><button class="vi-btn" data-vi="So sánh nhiều thứ · A nhiều hơn B → Biểu đồ cột/thanh (Säulen-/Balkendiagramm)">mehrere Dinge vergleichen · A hat mehr als B</button><div class="vi-pop"></div></td>
-              <td><button class="vi-btn" data-vi="Biểu đồ cột / thanh (so sánh nhiều đối tượng)"><b>Säulen-/Balkendiagramm</b></button><div class="vi-pop"></div></td>
+              <td><div class="form-row"><span class="diag-mini" data-diag="saeule"></span><div><button class="vi-btn" data-vi="Biểu đồ cột / thanh (so sánh nhiều đối tượng)"><b>Säulen-/Balkendiagramm</b></button><div class="vi-pop"></div></div></div></td>
             </tr>
             <tr>
               <td><button class="vi-btn" data-vi="Nhiều số chính xác · nhiều cột/địa điểm → Bảng (Tabelle)">viele exakte Zahlen · mehrere Spalten/Orte</button><div class="vi-pop"></div></td>
-              <td><button class="vi-btn" data-vi="Bảng (số liệu chính xác, nhiều cột)"><b>Tabelle</b></button><div class="vi-pop"></div></td>
+              <td><div class="form-row"><span class="diag-mini" data-diag="tabelle"></span><div><button class="vi-btn" data-vi="Bảng (số liệu chính xác, nhiều cột)"><b>Tabelle</b></button><div class="vi-pop"></div></div></div></td>
             </tr>
             <tr>
               <td><button class="vi-btn" data-vi="Văn bản dài · nhiều khía cạnh · “Mindmap” → Sơ đồ tư duy (Mindmap)">langer Sachtext · viele Aspekte · „Mindmap“</button><div class="vi-pop"></div></td>
-              <td><button class="vi-btn" data-vi="Sơ đồ tư duy (chủ đề giữa + nhánh)"><b>Mindmap</b></button><div class="vi-pop"></div></td>
+              <td><div class="form-row"><span class="diag-mini" data-diag="mindmap"></span><div><button class="vi-btn" data-vi="Sơ đồ tư duy (chủ đề giữa + nhánh)"><b>Mindmap</b></button><div class="vi-pop"></div></div></div></td>
             </tr>
             <tr>
               <td><button class="vi-btn" data-vi="vì → do đó · dẫn đến · vòng xoáy · quy trình → Sơ đồ cấu trúc (Strukturbild)">weil → deshalb · führt zu · Teufelskreis · Ablauf</button><div class="vi-pop"></div></td>
-              <td><button class="vi-btn" data-vi="Sơ đồ cấu trúc (nhân–quả, quy trình, vòng lặp)"><b>Strukturbild</b></button><div class="vi-pop"></div></td>
+              <td><div class="form-row"><span class="diag-mini" data-diag="struktur"></span><div><button class="vi-btn" data-vi="Sơ đồ cấu trúc (nhân–quả, quy trình, vòng lặp)"><b>Strukturbild</b></button><div class="vi-pop"></div></div></div></td>
             </tr>
             <tr>
               <td><button class="vi-btn" data-vi="Sếp · phòng ban · ai dưới ai → Sơ đồ tổ chức (Organigramm)">Chef · Abteilung · wer ist wem unterstellt</button><div class="vi-pop"></div></td>
-              <td><button class="vi-btn" data-vi="Sơ đồ tổ chức (cấp bậc, ai quản ai)"><b>Organigramm</b></button><div class="vi-pop"></div></td>
+              <td><div class="form-row"><span class="diag-mini" data-diag="organi"></span><div><button class="vi-btn" data-vi="Sơ đồ tổ chức (cấp bậc, ai quản ai)"><b>Organigramm</b></button><div class="vi-pop"></div></div></div></td>
             </tr>
           </table>
         </div>
@@ -434,37 +445,37 @@ button.stw.open{box-shadow:0 0 0 2px #93c5fd}
         <table class="t" style="margin-top:12px">
           <tr><th>Form</th><th>Zweck</th><th>Tipp (kurz)</th></tr>
           <tr>
-            <td><button class="vi-btn" data-vi="Biểu đồ đường"><b>Kurvendiagramm</b></button><div class="vi-pop"></div></td>
+            <td><div class="form-row"><span class="diag-mini" data-diag="kurve"></span><div><button class="vi-btn" data-vi="Biểu đồ đường"><b>Kurvendiagramm</b></button><div class="vi-pop"></div></div></div></td>
             <td><button class="vi-btn" data-vi="Xu hướng theo thời gian">Entwicklung</button><div class="vi-pop"></div></td>
             <td><button class="vi-btn" data-vi="Có trục thời gian → vẽ đường">Zeitachse → Linie</button><div class="vi-pop"></div></td>
           </tr>
           <tr>
-            <td><button class="vi-btn" data-vi="Biểu đồ cột / thanh"><b>Balken-/Säulendiagramm</b></button><div class="vi-pop"></div></td>
+            <td><div class="form-row"><span class="diag-mini" data-diag="saeule"></span><div><button class="vi-btn" data-vi="Biểu đồ cột / thanh"><b>Balken-/Säulendiagramm</b></button><div class="vi-pop"></div></div></div></td>
             <td><button class="vi-btn" data-vi="So sánh">Vergleich</button><div class="vi-pop"></div></td>
             <td><button class="vi-btn" data-vi="So sánh trực quan nhiều cột">visuell vergleichen</button><div class="vi-pop"></div></td>
           </tr>
           <tr>
-            <td><button class="vi-btn" data-vi="Biểu đồ tròn / bánh"><b>Kreis-/Tortendiagramm</b></button><div class="vi-pop"></div></td>
+            <td><div class="form-row"><span class="diag-mini" data-diag="kreis"></span><div><button class="vi-btn" data-vi="Biểu đồ tròn / bánh"><b>Kreis-/Tortendiagramm</b></button><div class="vi-pop"></div></div></div></td>
             <td><button class="vi-btn" data-vi="Tỷ lệ %">Anteile (%)</button><div class="vi-pop"></div></td>
             <td><button class="vi-btn" data-vi="Thấy % và tổng 100% → tròn">% + 100% → Kreis</button><div class="vi-pop"></div></td>
           </tr>
           <tr>
-            <td><button class="vi-btn" data-vi="Sơ đồ tổ chức"><b>Organigramm</b></button><div class="vi-pop"></div></td>
+            <td><div class="form-row"><span class="diag-mini" data-diag="organi"></span><div><button class="vi-btn" data-vi="Sơ đồ tổ chức"><b>Organigramm</b></button><div class="vi-pop"></div></div></div></td>
             <td><button class="vi-btn" data-vi="Cấp bậc / quan hệ người">Hierarchie</button><div class="vi-pop"></div></td>
             <td><button class="vi-btn" data-vi="Người + cấp trên/dưới">Personen + Ebenen</button><div class="vi-pop"></div></td>
           </tr>
           <tr>
-            <td><button class="vi-btn" data-vi="Sơ đồ cấu trúc"><b>Strukturbild</b></button><div class="vi-pop"></div></td>
+            <td><div class="form-row"><span class="diag-mini" data-diag="struktur"></span><div><button class="vi-btn" data-vi="Sơ đồ cấu trúc"><b>Strukturbild</b></button><div class="vi-pop"></div></div></div></td>
             <td><button class="vi-btn" data-vi="Quy trình / nhân–quả">Ablauf / Ursache–Wirkung</button><div class="vi-pop"></div></td>
             <td><button class="vi-btn" data-vi="Dùng mũi tên: A → B → C">Pfeile: A → B → C</button><div class="vi-pop"></div></td>
           </tr>
           <tr>
-            <td><button class="vi-btn" data-vi="Bảng số liệu"><b>Tabelle</b></button><div class="vi-pop"></div></td>
+            <td><div class="form-row"><span class="diag-mini" data-diag="tabelle"></span><div><button class="vi-btn" data-vi="Bảng số liệu"><b>Tabelle</b></button><div class="vi-pop"></div></div></div></td>
             <td><button class="vi-btn" data-vi="So sánh số chính xác">Vergleich (exakt)</button><div class="vi-pop"></div></td>
             <td><button class="vi-btn" data-vi="Nhiều số lẻ, cần chính xác → bảng">viele genaue Zahlen</button><div class="vi-pop"></div></td>
           </tr>
           <tr>
-            <td><button class="vi-btn" data-vi="Sơ đồ tư duy"><b>Mindmap</b></button><div class="vi-pop"></div></td>
+            <td><div class="form-row"><span class="diag-mini" data-diag="mindmap"></span><div><button class="vi-btn" data-vi="Sơ đồ tư duy"><b>Mindmap</b></button><div class="vi-pop"></div></div></div></td>
             <td><button class="vi-btn" data-vi="Thu thập & sắp ý">Ideensammlung</button><div class="vi-pop"></div></td>
             <td><button class="vi-btn" data-vi="Chủ đề giữa + nhánh từ khóa">Mitte + Äste, Stichworte</button><div class="vi-pop"></div></td>
           </tr>
@@ -1729,18 +1740,159 @@ function go(name){
 }
 
 /* ===== FORMEN ===== */
+
+const DIAG_SVG = {
+  kurve: `<svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="200" height="120" fill="#f8fafc"/>
+    <line x1="28" y1="12" x2="28" y2="100" stroke="#94a3b8" stroke-width="1.5"/>
+    <line x1="28" y1="100" x2="188" y2="100" stroke="#94a3b8" stroke-width="1.5"/>
+    <polyline fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+      points="36,88 60,70 84,76 108,48 132,40 156,28 178,22"/>
+    <circle cx="36" cy="88" r="3" fill="#2563eb"/><circle cx="84" cy="76" r="3" fill="#2563eb"/>
+    <circle cx="132" cy="40" r="3" fill="#2563eb"/><circle cx="178" cy="22" r="3" fill="#2563eb"/>
+    <text x="100" y="114" text-anchor="middle" font-size="9" fill="#64748b">Zeit →</text>
+  </svg>`,
+  saeule: `<svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="200" height="120" fill="#f8fafc"/>
+    <line x1="28" y1="12" x2="28" y2="100" stroke="#94a3b8" stroke-width="1.5"/>
+    <line x1="28" y1="100" x2="188" y2="100" stroke="#94a3b8" stroke-width="1.5"/>
+    <rect x="44" y="58" width="22" height="42" rx="3" fill="#3b82f6"/>
+    <rect x="78" y="36" width="22" height="64" rx="3" fill="#2563eb"/>
+    <rect x="112" y="48" width="22" height="52" rx="3" fill="#60a5fa"/>
+    <rect x="146" y="24" width="22" height="76" rx="3" fill="#1d4ed8"/>
+    <text x="55" y="112" text-anchor="middle" font-size="8" fill="#64748b">A</text>
+    <text x="89" y="112" text-anchor="middle" font-size="8" fill="#64748b">B</text>
+    <text x="123" y="112" text-anchor="middle" font-size="8" fill="#64748b">C</text>
+    <text x="157" y="112" text-anchor="middle" font-size="8" fill="#64748b">D</text>
+  </svg>`,
+  kreis: `<svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="200" height="120" fill="#f8fafc"/>
+    <!-- pie via paths -->
+    <circle cx="100" cy="58" r="40" fill="#dbeafe"/>
+    <path d="M100,58 L100,18 A40,40 0 0,1 134.6,38 Z" fill="#1d4ed8"/>
+    <path d="M100,58 L134.6,38 A40,40 0 0,1 128.3,90 Z" fill="#3b82f6"/>
+    <path d="M100,58 L128.3,90 A40,40 0 0,1 70,90 Z" fill="#60a5fa"/>
+    <path d="M100,58 L70,90 A40,40 0 0,1 100,18 Z" fill="#93c5fd"/>
+    <text x="100" y="112" text-anchor="middle" font-size="9" fill="#64748b">100%</text>
+  </svg>`,
+  organi: `<svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="200" height="120" fill="#f8fafc"/>
+    <rect x="70" y="10" width="60" height="22" rx="5" fill="#1d4ed8"/>
+    <text x="100" y="25" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">Chef</text>
+    <line x1="100" y1="32" x2="100" y2="48" stroke="#94a3b8" stroke-width="1.5"/>
+    <line x1="50" y1="48" x2="150" y2="48" stroke="#94a3b8" stroke-width="1.5"/>
+    <line x1="50" y1="48" x2="50" y2="58" stroke="#94a3b8" stroke-width="1.5"/>
+    <line x1="100" y1="48" x2="100" y2="58" stroke="#94a3b8" stroke-width="1.5"/>
+    <line x1="150" y1="48" x2="150" y2="58" stroke="#94a3b8" stroke-width="1.5"/>
+    <rect x="22" y="58" width="56" height="20" rx="4" fill="#3b82f6"/>
+    <rect x="72" y="58" width="56" height="20" rx="4" fill="#3b82f6"/>
+    <rect x="122" y="58" width="56" height="20" rx="4" fill="#3b82f6"/>
+    <text x="50" y="72" text-anchor="middle" font-size="8" fill="#fff">Abt. A</text>
+    <text x="100" y="72" text-anchor="middle" font-size="8" fill="#fff">Abt. B</text>
+    <text x="150" y="72" text-anchor="middle" font-size="8" fill="#fff">Abt. C</text>
+    <line x1="50" y1="78" x2="50" y2="90" stroke="#94a3b8" stroke-width="1.2"/>
+    <line x1="100" y1="78" x2="100" y2="90" stroke="#94a3b8" stroke-width="1.2"/>
+    <rect x="28" y="90" width="44" height="16" rx="3" fill="#93c5fd"/>
+    <rect x="78" y="90" width="44" height="16" rx="3" fill="#93c5fd"/>
+    <text x="50" y="101" text-anchor="middle" font-size="7" fill="#1e3a8a">MA</text>
+    <text x="100" y="101" text-anchor="middle" font-size="7" fill="#1e3a8a">MA</text>
+  </svg>`,
+  struktur: `<svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="200" height="120" fill="#f8fafc"/>
+    <rect x="14" y="44" width="48" height="28" rx="6" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="38" y="62" text-anchor="middle" font-size="9" fill="#1e40af">A</text>
+    <path d="M64,58 H88" stroke="#2563eb" stroke-width="2" marker-end="url(#arr)"/>
+    <rect x="90" y="44" width="48" height="28" rx="6" fill="#bfdbfe" stroke="#2563eb"/>
+    <text x="114" y="62" text-anchor="middle" font-size="9" fill="#1e40af">B</text>
+    <path d="M140,58 H160" stroke="#2563eb" stroke-width="2"/>
+    <rect x="158" y="44" width="30" height="28" rx="6" fill="#93c5fd" stroke="#2563eb"/>
+    <text x="173" y="62" text-anchor="middle" font-size="9" fill="#1e40af">C</text>
+    <!-- cycle back -->
+    <path d="M173,72 Q173,100 100,100 Q38,100 38,72" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 3"/>
+    <polygon points="34,76 42,72 42,80" fill="#f59e0b"/>
+    <text x="100" y="114" text-anchor="middle" font-size="8" fill="#b45309">Teufelskreis / Ablauf</text>
+    <defs><marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#2563eb"/></marker></defs>
+  </svg>`,
+  tabelle: `<svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="200" height="120" fill="#f8fafc"/>
+    <rect x="30" y="18" width="140" height="84" rx="4" fill="#fff" stroke="#94a3b8"/>
+    <rect x="30" y="18" width="140" height="20" fill="#2563eb"/>
+    <line x1="30" y1="58" x2="170" y2="58" stroke="#e2e8f0"/>
+    <line x1="30" y1="78" x2="170" y2="78" stroke="#e2e8f0"/>
+    <line x1="76" y1="18" x2="76" y2="102" stroke="#cbd5e1"/>
+    <line x1="122" y1="18" x2="122" y2="102" stroke="#cbd5e1"/>
+    <text x="53" y="32" text-anchor="middle" font-size="8" fill="#fff" font-weight="700">Ort</text>
+    <text x="99" y="32" text-anchor="middle" font-size="8" fill="#fff" font-weight="700">Mai</text>
+    <text x="146" y="32" text-anchor="middle" font-size="8" fill="#fff" font-weight="700">Apr</text>
+    <text x="53" y="52" text-anchor="middle" font-size="8" fill="#334155">A</text>
+    <text x="99" y="52" text-anchor="middle" font-size="8" fill="#334155">7,2</text>
+    <text x="146" y="52" text-anchor="middle" font-size="8" fill="#334155">6,8</text>
+    <text x="53" y="72" text-anchor="middle" font-size="8" fill="#334155">B</text>
+    <text x="99" y="72" text-anchor="middle" font-size="8" fill="#334155">5,1</text>
+    <text x="146" y="72" text-anchor="middle" font-size="8" fill="#334155">5,4</text>
+    <text x="53" y="92" text-anchor="middle" font-size="8" fill="#334155">C</text>
+    <text x="99" y="92" text-anchor="middle" font-size="8" fill="#334155">9,0</text>
+    <text x="146" y="92" text-anchor="middle" font-size="8" fill="#334155">8,7</text>
+  </svg>`,
+  mindmap: `<svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="200" height="120" fill="#f8fafc"/>
+    <circle cx="100" cy="58" r="22" fill="#1d4ed8"/>
+    <text x="100" y="62" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">Thema</text>
+    <line x1="100" y1="36" x2="100" y2="16" stroke="#64748b" stroke-width="1.5"/>
+    <line x1="82" y1="48" x2="48" y2="28" stroke="#64748b" stroke-width="1.5"/>
+    <line x1="118" y1="48" x2="152" y2="28" stroke="#64748b" stroke-width="1.5"/>
+    <line x1="82" y1="70" x2="48" y2="92" stroke="#64748b" stroke-width="1.5"/>
+    <line x1="118" y1="70" x2="152" y2="92" stroke="#64748b" stroke-width="1.5"/>
+    <rect x="78" y="6" width="44" height="14" rx="4" fill="#93c5fd"/>
+    <rect x="18" y="18" width="40" height="14" rx="4" fill="#bfdbfe"/>
+    <rect x="142" y="18" width="40" height="14" rx="4" fill="#bfdbfe"/>
+    <rect x="18" y="88" width="40" height="14" rx="4" fill="#bfdbfe"/>
+    <rect x="142" y="88" width="40" height="14" rx="4" fill="#bfdbfe"/>
+    <text x="100" y="16" text-anchor="middle" font-size="7" fill="#1e3a8a">Aspekt</text>
+    <text x="38" y="28" text-anchor="middle" font-size="7" fill="#1e3a8a">Ast 1</text>
+    <text x="162" y="28" text-anchor="middle" font-size="7" fill="#1e3a8a">Ast 2</text>
+    <text x="38" y="98" text-anchor="middle" font-size="7" fill="#1e3a8a">Ast 3</text>
+    <text x="162" y="98" text-anchor="middle" font-size="7" fill="#1e3a8a">Ast 4</text>
+  </svg>`
+};
+
+
+function fillSchnellwahlMinis(){
+  try{
+    document.querySelectorAll('[data-diag]').forEach(el=>{
+      const id=el.getAttribute('data-diag');
+      if(id && DIAG_SVG[id] && !el.dataset.filled){
+        el.dataset.filled='1';
+        el.innerHTML = DIAG_SVG[id];
+      }
+    });
+  }catch(e){}
+}
+
+function diagFig(id, mini){
+  const svg = DIAG_SVG[id] || '';
+  if(!svg) return '';
+  return mini
+    ? `<span class="diag-mini" title="Beispiel">${svg}</span>`
+    : `<div class="diag-fig" role="img" aria-label="Beispielabbildung">${svg}</div>`;
+}
+
+
 function renderFormen(){
   const g=document.getElementById('formenGrid');
   if(!g) return;
+  fillSchnellwahlMinis();
   g.innerHTML = FORMEN.map(f=>`
     <div class="tile" style="cursor:default">
       <div class="ico">${f.ico}</div>
       <div class="name">${f.name}</div>
       <div class="zweck">${f.zweck}</div>
-      <div class="muted" style="margin-top:6px;font-size:.82em">${f.desc}</div>
+      ${diagFig(f.id, false)}
+      <div class="muted" style="margin-top:4px;font-size:.82em">${f.desc}</div>
       <button class="vi-btn" data-vi="${f.vi}" style="margin-top:6px;font-size:.8em">VI 🇻🇳</button>
       <div class="vi-pop"></div>
     </div>`).join('');
+  fillSchnellwahlMinis();
 }
 
 /* ===== MATCH ===== */
@@ -1959,6 +2111,7 @@ renderTU();
 </script>
 
 <script>
+document.addEventListener('DOMContentLoaded', function(){ try{ fillSchnellwahlMinis(); }catch(e){} });
 document.addEventListener('DOMContentLoaded', function(){
   try{
     if(window.enableVocabOn){
