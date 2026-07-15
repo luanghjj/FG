@@ -1933,9 +1933,13 @@ function renderPraxis(){
       <div style="font-weight:800;font-size:.9em">${i+1}. ${wrapTextWithVI(p.title)}</div>
       <div class="src">${wrapTextWithVI(p.text)}</div>
       <div class="choice" id="pb-${i}">
-        ${p.options.map(o=>`<button onclick="ansPraxis(${i},'${o}')">${label(o)}</button>`).join('')}
+        ${p.options.map(o=>`<button type="button" onclick="ansPraxis(${i},'${o}')">${label(o)}</button>`).join('')}
       </div>
       <div class="fb" id="pf-${i}"></div>
+      <div class="praxis-diag" id="pd-${i}" style="display:none" data-open-diag="${p.answer}">
+        <span class="cap">Lösung-Beispiel · tippen für Zahlen</span>
+        <div class="pd-svg"></div>
+      </div>
     </div>`).join('');
 }
 function ansPraxis(i,opt){
@@ -1943,14 +1947,27 @@ function ansPraxis(i,opt){
   const btns=[...document.querySelectorAll('#pb-'+i+' button')];
   btns.forEach(b=>{
     b.disabled=true;
-    const f=FORMEN.find(x=>x.name===b.textContent);
-    if(f?.id===p.answer) b.classList.add('ok');
-    else if(f?.id===opt) b.classList.add('no');
+    b.classList.remove('ok','no');
+    const name=b.textContent.trim();
+    const fid=(FORMEN.find(x=>x.name===name)||{}).id;
+    if(fid===p.answer) b.classList.add('ok');
+    else if(fid===opt) b.classList.add('no');
   });
   const fb=document.getElementById('pf-'+i);
   const ok=opt===p.answer;
+  const ansName=(FORMEN.find(f=>f.id===p.answer)||{}).name||p.answer;
   fb.className='fb show '+(ok?'ok':'no');
-  fb.textContent=(ok?'✅ Richtig! ':'❌ Falsch. ')+p.explain;
+  fb.innerHTML=(ok?'✅ Richtig! ':'❌ Falsch. Richtig: <b>'+ansName+'</b>. ')+p.explain
+    + ' <button type="button" class="vi-btn" data-open-diag="'+p.answer+'">🔍 Beispiel mit Zahlen</button>';
+  const box=document.getElementById('pd-'+i);
+  if(box && DIAG_SVG[p.answer]){
+    box.style.display='block';
+    box.setAttribute('data-open-diag', p.answer);
+    const hold=box.querySelector('.pd-svg');
+    if(hold) hold.innerHTML=DIAG_SVG[p.answer];
+    const cap=box.querySelector('.cap');
+    if(cap) cap.textContent=(DIAG_META[p.answer]&&DIAG_META[p.answer].title?DIAG_META[p.answer].title:ansName)+' · tippen für Details';
+  }
 }
 
 /* ===== QUIZ ===== */
