@@ -868,6 +868,7 @@ button.stw.open{box-shadow:0 0 0 2px #93c5fd}
 <script src="./pwa.js?v=3" defer></script>
 <script src="./supabase.js?v=3"></script>
 <script src="./vocab.js?v=2"></script>
+<script src="./diagrams.js?v=1"></script>
 <script>
 /* ===== VI toggle (Lernen + Üben) ===== */
 document.addEventListener('click', (e)=>{
@@ -1741,142 +1742,7 @@ function go(name){
 
 /* ===== FORMEN ===== */
 
-const DIAG_SVG = {
-  kurve: `<svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect width="200" height="120" fill="#f8fafc"/>
-    <line x1="28" y1="12" x2="28" y2="100" stroke="#94a3b8" stroke-width="1.5"/>
-    <line x1="28" y1="100" x2="188" y2="100" stroke="#94a3b8" stroke-width="1.5"/>
-    <polyline fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
-      points="36,88 60,70 84,76 108,48 132,40 156,28 178,22"/>
-    <circle cx="36" cy="88" r="3" fill="#2563eb"/><circle cx="84" cy="76" r="3" fill="#2563eb"/>
-    <circle cx="132" cy="40" r="3" fill="#2563eb"/><circle cx="178" cy="22" r="3" fill="#2563eb"/>
-    <text x="100" y="114" text-anchor="middle" font-size="9" fill="#64748b">Zeit →</text>
-  </svg>`,
-  saeule: `<svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect width="200" height="120" fill="#f8fafc"/>
-    <line x1="28" y1="12" x2="28" y2="100" stroke="#94a3b8" stroke-width="1.5"/>
-    <line x1="28" y1="100" x2="188" y2="100" stroke="#94a3b8" stroke-width="1.5"/>
-    <rect x="44" y="58" width="22" height="42" rx="3" fill="#3b82f6"/>
-    <rect x="78" y="36" width="22" height="64" rx="3" fill="#2563eb"/>
-    <rect x="112" y="48" width="22" height="52" rx="3" fill="#60a5fa"/>
-    <rect x="146" y="24" width="22" height="76" rx="3" fill="#1d4ed8"/>
-    <text x="55" y="112" text-anchor="middle" font-size="8" fill="#64748b">A</text>
-    <text x="89" y="112" text-anchor="middle" font-size="8" fill="#64748b">B</text>
-    <text x="123" y="112" text-anchor="middle" font-size="8" fill="#64748b">C</text>
-    <text x="157" y="112" text-anchor="middle" font-size="8" fill="#64748b">D</text>
-  </svg>`,
-  kreis: `<svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect width="200" height="120" fill="#f8fafc"/>
-    <!-- pie via paths -->
-    <circle cx="100" cy="58" r="40" fill="#dbeafe"/>
-    <path d="M100,58 L100,18 A40,40 0 0,1 134.6,38 Z" fill="#1d4ed8"/>
-    <path d="M100,58 L134.6,38 A40,40 0 0,1 128.3,90 Z" fill="#3b82f6"/>
-    <path d="M100,58 L128.3,90 A40,40 0 0,1 70,90 Z" fill="#60a5fa"/>
-    <path d="M100,58 L70,90 A40,40 0 0,1 100,18 Z" fill="#93c5fd"/>
-    <text x="100" y="112" text-anchor="middle" font-size="9" fill="#64748b">100%</text>
-  </svg>`,
-  organi: `<svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect width="200" height="120" fill="#f8fafc"/>
-    <rect x="70" y="10" width="60" height="22" rx="5" fill="#1d4ed8"/>
-    <text x="100" y="25" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">Chef</text>
-    <line x1="100" y1="32" x2="100" y2="48" stroke="#94a3b8" stroke-width="1.5"/>
-    <line x1="50" y1="48" x2="150" y2="48" stroke="#94a3b8" stroke-width="1.5"/>
-    <line x1="50" y1="48" x2="50" y2="58" stroke="#94a3b8" stroke-width="1.5"/>
-    <line x1="100" y1="48" x2="100" y2="58" stroke="#94a3b8" stroke-width="1.5"/>
-    <line x1="150" y1="48" x2="150" y2="58" stroke="#94a3b8" stroke-width="1.5"/>
-    <rect x="22" y="58" width="56" height="20" rx="4" fill="#3b82f6"/>
-    <rect x="72" y="58" width="56" height="20" rx="4" fill="#3b82f6"/>
-    <rect x="122" y="58" width="56" height="20" rx="4" fill="#3b82f6"/>
-    <text x="50" y="72" text-anchor="middle" font-size="8" fill="#fff">Abt. A</text>
-    <text x="100" y="72" text-anchor="middle" font-size="8" fill="#fff">Abt. B</text>
-    <text x="150" y="72" text-anchor="middle" font-size="8" fill="#fff">Abt. C</text>
-    <line x1="50" y1="78" x2="50" y2="90" stroke="#94a3b8" stroke-width="1.2"/>
-    <line x1="100" y1="78" x2="100" y2="90" stroke="#94a3b8" stroke-width="1.2"/>
-    <rect x="28" y="90" width="44" height="16" rx="3" fill="#93c5fd"/>
-    <rect x="78" y="90" width="44" height="16" rx="3" fill="#93c5fd"/>
-    <text x="50" y="101" text-anchor="middle" font-size="7" fill="#1e3a8a">MA</text>
-    <text x="100" y="101" text-anchor="middle" font-size="7" fill="#1e3a8a">MA</text>
-  </svg>`,
-  struktur: `<svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect width="200" height="120" fill="#f8fafc"/>
-    <rect x="14" y="44" width="48" height="28" rx="6" fill="#dbeafe" stroke="#2563eb"/>
-    <text x="38" y="62" text-anchor="middle" font-size="9" fill="#1e40af">A</text>
-    <path d="M64,58 H88" stroke="#2563eb" stroke-width="2" marker-end="url(#arr)"/>
-    <rect x="90" y="44" width="48" height="28" rx="6" fill="#bfdbfe" stroke="#2563eb"/>
-    <text x="114" y="62" text-anchor="middle" font-size="9" fill="#1e40af">B</text>
-    <path d="M140,58 H160" stroke="#2563eb" stroke-width="2"/>
-    <rect x="158" y="44" width="30" height="28" rx="6" fill="#93c5fd" stroke="#2563eb"/>
-    <text x="173" y="62" text-anchor="middle" font-size="9" fill="#1e40af">C</text>
-    <!-- cycle back -->
-    <path d="M173,72 Q173,100 100,100 Q38,100 38,72" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 3"/>
-    <polygon points="34,76 42,72 42,80" fill="#f59e0b"/>
-    <text x="100" y="114" text-anchor="middle" font-size="8" fill="#b45309">Teufelskreis / Ablauf</text>
-    <defs><marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#2563eb"/></marker></defs>
-  </svg>`,
-  tabelle: `<svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect width="200" height="120" fill="#f8fafc"/>
-    <rect x="30" y="18" width="140" height="84" rx="4" fill="#fff" stroke="#94a3b8"/>
-    <rect x="30" y="18" width="140" height="20" fill="#2563eb"/>
-    <line x1="30" y1="58" x2="170" y2="58" stroke="#e2e8f0"/>
-    <line x1="30" y1="78" x2="170" y2="78" stroke="#e2e8f0"/>
-    <line x1="76" y1="18" x2="76" y2="102" stroke="#cbd5e1"/>
-    <line x1="122" y1="18" x2="122" y2="102" stroke="#cbd5e1"/>
-    <text x="53" y="32" text-anchor="middle" font-size="8" fill="#fff" font-weight="700">Ort</text>
-    <text x="99" y="32" text-anchor="middle" font-size="8" fill="#fff" font-weight="700">Mai</text>
-    <text x="146" y="32" text-anchor="middle" font-size="8" fill="#fff" font-weight="700">Apr</text>
-    <text x="53" y="52" text-anchor="middle" font-size="8" fill="#334155">A</text>
-    <text x="99" y="52" text-anchor="middle" font-size="8" fill="#334155">7,2</text>
-    <text x="146" y="52" text-anchor="middle" font-size="8" fill="#334155">6,8</text>
-    <text x="53" y="72" text-anchor="middle" font-size="8" fill="#334155">B</text>
-    <text x="99" y="72" text-anchor="middle" font-size="8" fill="#334155">5,1</text>
-    <text x="146" y="72" text-anchor="middle" font-size="8" fill="#334155">5,4</text>
-    <text x="53" y="92" text-anchor="middle" font-size="8" fill="#334155">C</text>
-    <text x="99" y="92" text-anchor="middle" font-size="8" fill="#334155">9,0</text>
-    <text x="146" y="92" text-anchor="middle" font-size="8" fill="#334155">8,7</text>
-  </svg>`,
-  mindmap: `<svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect width="200" height="120" fill="#f8fafc"/>
-    <circle cx="100" cy="58" r="22" fill="#1d4ed8"/>
-    <text x="100" y="62" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">Thema</text>
-    <line x1="100" y1="36" x2="100" y2="16" stroke="#64748b" stroke-width="1.5"/>
-    <line x1="82" y1="48" x2="48" y2="28" stroke="#64748b" stroke-width="1.5"/>
-    <line x1="118" y1="48" x2="152" y2="28" stroke="#64748b" stroke-width="1.5"/>
-    <line x1="82" y1="70" x2="48" y2="92" stroke="#64748b" stroke-width="1.5"/>
-    <line x1="118" y1="70" x2="152" y2="92" stroke="#64748b" stroke-width="1.5"/>
-    <rect x="78" y="6" width="44" height="14" rx="4" fill="#93c5fd"/>
-    <rect x="18" y="18" width="40" height="14" rx="4" fill="#bfdbfe"/>
-    <rect x="142" y="18" width="40" height="14" rx="4" fill="#bfdbfe"/>
-    <rect x="18" y="88" width="40" height="14" rx="4" fill="#bfdbfe"/>
-    <rect x="142" y="88" width="40" height="14" rx="4" fill="#bfdbfe"/>
-    <text x="100" y="16" text-anchor="middle" font-size="7" fill="#1e3a8a">Aspekt</text>
-    <text x="38" y="28" text-anchor="middle" font-size="7" fill="#1e3a8a">Ast 1</text>
-    <text x="162" y="28" text-anchor="middle" font-size="7" fill="#1e3a8a">Ast 2</text>
-    <text x="38" y="98" text-anchor="middle" font-size="7" fill="#1e3a8a">Ast 3</text>
-    <text x="162" y="98" text-anchor="middle" font-size="7" fill="#1e3a8a">Ast 4</text>
-  </svg>`
-};
-
-
-function fillSchnellwahlMinis(){
-  try{
-    document.querySelectorAll('[data-diag]').forEach(el=>{
-      const id=el.getAttribute('data-diag');
-      if(id && DIAG_SVG[id] && !el.dataset.filled){
-        el.dataset.filled='1';
-        el.innerHTML = DIAG_SVG[id];
-      }
-    });
-  }catch(e){}
-}
-
-function diagFig(id, mini){
-  const svg = DIAG_SVG[id] || '';
-  if(!svg) return '';
-  return mini
-    ? `<span class="diag-mini" title="Beispiel">${svg}</span>`
-    : `<div class="diag-fig" role="img" aria-label="Beispielabbildung">${svg}</div>`;
-}
-
+/* Diagrams loaded from diagrams.js */
 
 function renderFormen(){
   const g=document.getElementById('formenGrid');
@@ -1960,13 +1826,12 @@ function ansPraxis(i,opt){
   fb.innerHTML=(ok?'✅ Richtig! ':'❌ Falsch. Richtig: <b>'+ansName+'</b>. ')+p.explain
     + ' <button type="button" class="vi-btn" data-open-diag="'+p.answer+'">🔍 Beispiel mit Zahlen</button>';
   const box=document.getElementById('pd-'+i);
-  if(box && DIAG_SVG[p.answer]){
+  if(box && window.showPraxisDiag) showPraxisDiag(box, p.answer);
+  else if(box && window.DIAG_SVG && DIAG_SVG[p.answer]){
     box.style.display='block';
     box.setAttribute('data-open-diag', p.answer);
     const hold=box.querySelector('.pd-svg');
     if(hold) hold.innerHTML=DIAG_SVG[p.answer];
-    const cap=box.querySelector('.cap');
-    if(cap) cap.textContent=(DIAG_META[p.answer]&&DIAG_META[p.answer].title?DIAG_META[p.answer].title:ansName)+' · tippen für Details';
   }
 }
 
@@ -2146,5 +2011,7 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 </script>
 
+
+<script>document.addEventListener('DOMContentLoaded',function(){try{if(window.fillSchnellwahlMinis)fillSchnellwahlMinis(); if(window.fillDiagSlots)fillDiagSlots(document);}catch(e){}});</script>
 </body>
 </html>

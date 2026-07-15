@@ -1,5 +1,5 @@
 /* Service Worker – Lern-App H2FO3T (offline shell + static assets) */
-const CACHE = 'h2fo3t-v16';
+const CACHE = 'h2fo3t-v17';
 const PRECACHE = [
   './',
   './index.html',
@@ -10,6 +10,7 @@ const PRECACHE = [
   './challenge-data.js',
   './supabase.js',
   './vocab.js',
+  './diagrams.js',
   './bfk1-data.js',
   './bfk1-quiz.js',
   './faecher.js',
