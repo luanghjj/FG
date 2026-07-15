@@ -414,25 +414,6 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 #pageLightbox .lb-cap{color:#e2e8f0;font-size:.86em;font-weight:600}
 
 
-
-/* ===== Learn catalog ===== */
-.learn-list{display:flex;flex-direction:column;gap:8px;margin:0 0 22px}
-.learn-item{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);
-  border-radius:14px;padding:12px 14px;cursor:pointer;text-align:left;transition:border-color .15s,box-shadow .15s,transform .15s}
-.learn-item:hover{border-color:#bfdbfe;box-shadow:var(--shadow);transform:translateY(-1px)}
-.learn-item .ic{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;
-  background:var(--tile-soft,var(--accent-soft));font-size:1.15em;flex-shrink:0}
-.learn-item .txt{flex:1;min-width:0}
-.learn-item .txt b{display:block;font-size:.95em;font-weight:700;line-height:1.2}
-.learn-item .txt span{display:block;font-size:.78em;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.learn-item .go{color:var(--accent);font-weight:700;font-size:.9em;flex-shrink:0}
-.learn-item .tag{font-size:.65em;font-weight:700;padding:2px 7px;border-radius:999px;background:var(--accent-soft);color:var(--accent);margin-left:6px;vertical-align:middle}
-.link-row{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px}
-.link-row a,.link-row button{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 12px;
-  font:inherit;font-size:.8em;font-weight:600;color:var(--muted);cursor:pointer}
-.link-row a:hover,.link-row button:hover{border-color:#bfdbfe;color:var(--accent)}
-.section-mini{font-size:.72em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:4px 0 10px 2px}
-
 /* ===== Compact next-exam chip ===== */
 .next-exam-chip{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);
   border-radius:14px;padding:12px 14px;margin:0 0 18px;cursor:pointer;transition:border-color .15s,box-shadow .15s}
@@ -611,7 +592,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
   .progress-stats{grid-template-columns:1fr 1fr 1fr}
 }
 </style>
-<script src="./pwa.js?v=6" defer></script>
+<script src="./pwa.js?v=5" defer></script>
 </head>
 <body>
 <!-- ===== LOGIN GATE ===== -->
@@ -655,38 +636,60 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
   </div>
 </div>
 
-<!-- ===== HOME ===== -->
+<!-- ===== HOME: Fächer ===== -->
 <section class="view" id="v-home">
   <div class="hero">
-    <h1>Lernen</h1>
-    <p>Nächste Prüfung · Themen · Suchen</p>
+    <h1>Fachkraft für Gastronomie</h1>
+    <p>Wähle ein Fach, um mit dem Lernen zu beginnen.</p>
   </div>
 
-  <!-- 1) Next exam only -->
-  <div class="section-mini">Nächste Prüfung</div>
-  <div class="next-exam-chip" id="homeExamChip" title="Zur Vorbereitung">
+  <!-- Compact next KA -->
+  <div class="next-exam-chip" id="homeExamChip" onclick="go('#/on-thi')" title="Klassenarbeiten">
     <div class="date-box"><div class="d" id="homeExamDay">—</div><div class="m" id="homeExamMon">—</div></div>
     <div class="body">
       <b id="homeExamTitle">Nächste Klassenarbeit</b>
-      <span id="homeExamSub">Tippen zum Lernen</span>
+      <span id="homeExamSub">Termine &amp; Themen</span>
     </div>
     <span class="cd" id="homeExamCd">…</span>
   </div>
 
-  <!-- 2) Main learn paths (flat, no deep nesting) -->
-  <div class="section-mini">Jetzt lernen</div>
-  <div class="learn-list" id="homeLearnList"></div>
-
-  <div class="link-row">
-    <button type="button" onclick="go('#/lernen')">Alle Inhalte</button>
-    <button type="button" onclick="go('#/on-thi')">KA-Termine</button>
-    <button type="button" onclick="go('#/abschluss')">Abschlussprüfung</button>
-    <button type="button" onclick="location.href='challenge.html'">Challenge</button>
+  <!-- Banner Abschlussprüfung -->
+  <div class="exam-banner" onclick="go('#/abschluss')">
+    <div class="exam-ic">🎯</div>
+    <div class="exam-txt">
+      <div class="exam-kicker">Hauptziel</div>
+      <h2>Abschlussprüfung</h2>
+      <p>Aufbau der Prüfung &amp; Lernthemen.</p>
+    </div>
+    <div class="exam-go">Los →</div>
   </div>
 
-  <!-- 3) Fächer compact (secondary) -->
-  <div class="section-mini">Fächer</div>
+  <div class="fach-label">Fächer · Stundenplan H2FO3T</div>
   <div id="subjectGroups"></div>
+
+  <div class="fach-label">Heute üben</div>
+  <div class="today-grid">
+    <div class="today-card" onclick="go('#/bfk/2/quiz');setTimeout(()=>{try{quizStart('quick')}catch(e){}},120)">
+      <div class="ic">⚡</div>
+      <b>BfK-2 · Quiz</b>
+      <span>10 Fragen · Fleisch</span>
+    </div>
+    <div class="today-card" onclick="location.href='deutsch.html'">
+      <div class="ic">🇩🇪</div>
+      <b>Deutsch</b>
+      <span>Visualisierung üben</span>
+    </div>
+    <div class="today-card" onclick="go('#/bfk/1')">
+      <div class="ic">🍳</div>
+      <b>BfK-1</b>
+      <span>LF6 · LF9</span>
+    </div>
+    <div class="today-card" onclick="location.href='challenge.html'">
+      <div class="ic">⚔️</div>
+      <b>Challenge</b>
+      <span>Klassen-Duell</span>
+    </div>
+  </div>
 
   <div class="progress-card" id="homeProgressCard">
     <h3>📈 Dein Lernstand</h3>
@@ -949,7 +952,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 
 <!-- ===== THEME: ABSCHLUSSPRÜFUNG ===== -->
 <section class="view abschluss-scope" id="v-abschluss">
-  <div class="back" onclick="go('#/')">← Start</div>
+  <div class="back" onclick="go('#/')">← Fächer</div>
   <div class="section-head">
     <h2>🎯 Abschlussprüfung</h2>
     <p>Fachkraft für Gastronomie · Aufbau der Prüfung und alle Lernthemen an einem Ort.</p>
@@ -1029,20 +1032,9 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 </section>
 
 
-
-<!-- ===== LERNEN (flat catalog) ===== -->
-<section class="view" id="v-lernen">
-  <div class="back" onclick="go('#/')">← Start</div>
-  <div class="section-head">
-    <h2>📚 Alle Lerninhalte</h2>
-    <p>Alles auf einer Liste · auch über Suche findbar</p>
-  </div>
-  <div class="learn-list" id="fullLearnList"></div>
-</section>
-
 <!-- ===== KLASSENARBEITEN ===== -->
 <section class="view" id="v-on-thi">
-  <div class="back" onclick="go('#/')">← Start</div>
+  <div class="back" onclick="go('#/')">← Fächer</div>
   <div class="section-head">
     <h2>📅 Klassenarbeiten</h2>
     <p>Termine · Themen antippen zum Lernen</p>
@@ -1114,8 +1106,8 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 <!-- Bottom nav (mobile): compact, center opens Fächer picker -->
 <nav class="bottom-nav" id="bottomNav" aria-label="Hauptnavigation">
   <button type="button" data-nav="#/" class="active"><span class="bi">🏠</span>Start</button>
-  <button type="button" class="nav-center" id="fachNavBtn" data-nav="#/lernen"><span class="bi">📚</span>Lernen</button>
-  <button type="button" data-nav="#search"><span class="bi">🔍</span>Suche</button>
+  <button type="button" class="nav-center" id="fachNavBtn" data-nav="#faecher"><span class="bi">📚</span>Fächer</button>
+  <button type="button" data-nav="#profile"><span class="bi">👤</span>Profil</button>
 </nav>
 
 <!-- Fächer picker sheet -->
@@ -1134,11 +1126,11 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 <div id="searchSheet" aria-hidden="true">
   <div class="sheet">
     <div class="sheet-head">
-      <input id="searchSheetInput" type="search" placeholder="Suchen: Bewirtungsvertrag, Filet, Gluten…" autocomplete="off">
+      <input id="searchSheetInput" type="search" placeholder="Suchen: Filet, Mindmap, Eiercode…" autocomplete="off">
       <button type="button" class="sheet-close" id="searchSheetClose">Schließen</button>
     </div>
     <div class="sheet-body" id="searchSheetBody">
-      <div class="empty-state"><div class="big-ic">🔍</div>Tippe z.B. <b>Gluten</b>, <b>Bewirtungsvertrag</b>, <b>Filet</b>…</div>
+      <div class="empty-state"><div class="big-ic">🔍</div>Tippe einen Begriff, um alles zu durchsuchen.</div>
     </div>
   </div>
 </div>
@@ -1154,8 +1146,8 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 
 <div id="toastHost" aria-live="polite"></div>
 
-<script src="./supabase.js?v=5"></script>
-<script src="./bfk1-data.js?v=4"></script>
+<script src="./supabase.js?v=4"></script>
+<script src="./bfk1-data.js?v=3"></script>
 <script>
 /* ============ DATEN (Fleischteile) ============ */
 const DATA = {
@@ -1489,66 +1481,6 @@ function examCardHTML(ex, compact){
     +'<div class="ka-side"><span class="ka-countdown '+(cd.cls||'')+'">'+cd.text+'</span></div>'
     +'</div>';
 }
-
-/* ============ LERN-KATALOG (flach, suchbar) ============ */
-function getLearnCatalog(){
-  const items = [
-    {id:'bfk2-fleisch', icon:'🥩', title:'BfK-2 · Fleischteile', sub:'Rind · Schwein · Schaf · Gerichte', route:'#/bfk/2/fleisch', badge:'BfK-2', accent:'#dc2626', soft:'#fef2f2', keywords:'fleisch rinde schwein schaf lamm filet steak'},
-    {id:'bfk2-kueche', icon:'🍳', title:'BfK-2 · Küche & Ernährung', sub:'Nährwert · Eiercode · Wertigkeit', route:'#/bfk/2/kueche', badge:'BfK-2', accent:'#ea580c', soft:'#fff7ed', keywords:'nährwert eier eiercode kcal biologische wertigkeit'},
-    {id:'bfk2-quiz', icon:'📝', title:'BfK-2 · Quiz', sub:'Multiple-Choice Selbsttest', route:'#/bfk/2/quiz', badge:'Quiz', accent:'#2563eb', soft:'#eff6ff', keywords:'quiz test fragen üben'},
-    {id:'bfk2-pruef', icon:'🗂️', title:'BfK-2 · Prüfungen', sub:'Muster · Lösungen · KA2', route:'#/bfk/2/pruefungen', badge:'KA', accent:'#7c3aed', soft:'#f5f3ff', keywords:'musterprüfung lösung ka2 zusammenfassung'},
-    {id:'bfk1', icon:'🍳', title:'BfK-1 · Alle Themen', sub:'LF6 Speisen · LF9 Zahlung', route:'#/bfk/1', badge:'BfK-1', accent:'#2563eb', soft:'#eff6ff', keywords:'bfk1 schuster lf6 lf9 hotel wind palmero'},
-    {id:'deutsch', icon:'🇩🇪', title:'Deutsch', sub:'Visualisierung · Mindmap · Diagramme', route:'deutsch.html', external:true, badge:'D', accent:'#2563eb', soft:'#eff6ff', keywords:'deutsch kling mindmap diagramm visualisierung'},
-    {id:'ka', icon:'📅', title:'Klassenarbeiten', sub:'Termine & Themenlisten', route:'#/on-thi', badge:'KA', accent:'#0f172a', soft:'#f1f5f9', keywords:'klassenarbeit termin prüfung ka'},
-    {id:'abschluss', icon:'🎯', title:'Abschlussprüfung', sub:'Struktur · Themen', route:'#/abschluss', badge:'GAP', accent:'#7c3aed', soft:'#f5f3ff', keywords:'abschlussprüfung gap ihk teil1 teil2'},
-    {id:'challenge', icon:'⚔️', title:'Klassen-Challenge', sub:'Realtime-Duell', route:'challenge.html', external:true, badge:'Game', accent:'#dc2626', soft:'#fef2f2', keywords:'challenge duell multiplayer'},
-  ];
-  // BfK-1 Einzelthemen flach anhängen
-  try{
-    (bfk1AllItems()||[]).forEach(t=>{
-      const lf = (BFK1_THEMES.lf6.items||[]).some(x=>x.id===t.id) ? 'LF6' : 'LF9';
-      items.push({
-        id:'bfk1-'+t.id, icon:t.icon||'📘', title:t.name, sub:'BfK-1 · '+lf+(t.desc?(' · '+t.desc):''),
-        route:'#/bfk/1/theme/'+t.id, badge:'BfK-1', accent:'#2563eb', soft:'#eff6ff',
-        keywords: ('bfk1 '+lf+' '+t.name+' '+(t.desc||'')).toLowerCase()
-      });
-    });
-  }catch(e){}
-  return items;
-}
-function learnItemHTML(it){
-  const style='--tile-accent:'+(it.accent||'#2563eb')+';--tile-soft:'+(it.soft||'#eff6ff');
-  const tag=it.badge?('<span class="tag">'+it.badge+'</span>'):'';
-  const click = it.external
-    ? "location.href='"+it.route+"'"
-    : "go('"+it.route+"')";
-  return '<div class="learn-item" style="'+style+'" onclick="'+click+'">'
-    +'<div class="ic">'+it.icon+'</div>'
-    +'<div class="txt"><b>'+it.title+tag+'</b><span>'+it.sub+'</span></div>'
-    +'<div class="go">→</div></div>';
-}
-function renderHomeLearnList(){
-  const host=document.getElementById('homeLearnList');
-  if(!host) return;
-  // Priority: next exams' study routes first, then core modules
-  const priorityIds=['bfk2-fleisch','bfk2-kueche','bfk1','deutsch','bfk2-quiz'];
-  const cat=getLearnCatalog();
-  const map=Object.fromEntries(cat.map(x=>[x.id,x]));
-  const list=priorityIds.map(id=>map[id]).filter(Boolean);
-  host.innerHTML=list.map(learnItemHTML).join('');
-}
-function renderFullLearnList(){
-  const host=document.getElementById('fullLearnList');
-  if(!host) return;
-  const cat=getLearnCatalog();
-  // group-ish: core first then bfk1 themes
-  const core=cat.filter(x=>!x.id.startsWith('bfk1-') || x.id==='bfk1');
-  const themes=cat.filter(x=>x.id.startsWith('bfk1-'));
-  host.innerHTML =
-    '<div class="section-mini">Module</div>'+core.map(learnItemHTML).join('')+
-    (themes.length?('<div class="section-mini" style="margin-top:16px">BfK-1 Themen</div>'+themes.map(learnItemHTML).join('')):'');
-}
-
 function renderHomeExams(){
   const sorted=[...EXAMS].sort((a,b)=>a.date.localeCompare(b.date));
   const upcoming=sorted.filter(e=>daysUntil(e.date)>=0);
@@ -1567,12 +1499,7 @@ function renderHomeExams(){
   if(subEl) subEl.textContent=next.teacher+" · "+formatDeDateLong(next.date)+(upcoming.length>1?(" · +"+(upcoming.length-1)+" weitere"):"");
   if(cdEl){ cdEl.textContent=cd.text; cdEl.className="cd "+(cd.cls||""); }
   const chip=document.getElementById("homeExamChip");
-  if(chip){
-    // Direkt lernen (Inhalt), nicht nur Terminliste
-    const dest = next.studyRoute || next.route || "#/on-thi";
-    chip.onclick=()=>{ if(next.external) location.href=dest; else go(dest); };
-  }
-  renderHomeLearnList();
+  if(chip) chip.onclick=()=>go(next.route||"#/on-thi");
 }
 function renderFullExams(){
   const host=document.getElementById("examFullList");
@@ -1792,9 +1719,12 @@ function subjectCardHTML(s){
 function renderSubjects(){
   const host=document.getElementById("subjectGroups");
   if(!host) return;
-  // Home: nur kompakte Fächer-Kacheln (ready zuerst)
-  const items=SUBJECTS.slice().sort((a,b)=>(b.ready?1:0)-(a.ready?1:0));
-  host.innerHTML = '<div class="subject-grid">'+items.map(subjectCardHTML).join('')+'</div>';
+  host.innerHTML = SUBJECT_GROUPS.map(g=>{
+    return '<div class="subject-group">'
+      +'<div class="group-head"><div><h3>'+g.title+'</h3><p>'+g.subtitle+'</p></div></div>'
+      +'<div class="subject-grid">'+g.items.map(subjectCardHTML).join('')+'</div>'
+      +'</div>';
+  }).join('');
 }
 
 function renderBfkHub(){
@@ -1838,7 +1768,7 @@ function showPlaceholder(hash){
   if(chips) chips.innerHTML=(ph.topics||[]).map(x=>'<span class="topic-chip">'+x+'</span>').join('') || '<span class="muted">Noch keine Themenliste.</span>';
 }
 
-renderSubjects(); renderBfkHub(); renderHomeExams(); renderBfk1Hub(); renderHomeLearnList();
+renderSubjects(); renderBfkHub(); renderHomeExams(); renderBfk1Hub();
 
 /* ============ ROUTING ============ */
 const ROUTES = {
@@ -1908,7 +1838,6 @@ function router(){
   if(r.view==="v-bfk-level" && r.level) renderBfkLevel(r.level);
   if(r.view==="v-bfk1" || r.bfk1) renderBfk1Hub();
   if(r.view==="v-on-thi" || r.exams) renderFullExams();
-  if(r.view==="v-lernen" || r.lernen) renderFullLearnList();
   if(r.view==="v-exam-detail" && r.examId) renderExamDetail(r.examId);
   if(r.view==="v-placeholder" || r.placeholder) showPlaceholder(hash);
   setBottomNav(hash);
@@ -1966,53 +1895,24 @@ document.addEventListener('scroll', hideTermPop, true);
 /* ============ SEARCH INDEX (alles durchsuchbar) ============ */
 const INDEX=[];
 function idx(title, sub, badge, route, action, extra){
-  const raw=(title+" "+sub+" "+(extra||"")+" "+(badge||"")).toLowerCase();
-  const hay = norm(raw);
-  INDEX.push({title, sub, badge, route, action, hay, raw});
+  const hay = [title, sub, extra||"", badge||""].join(" ").toLowerCase()
+    .normalize("NFD").replace(/[̀-ͯ]/g,""); // ä/ö/ü-tolerant via plain text still kept; accents stripped from hay only for matching
+  INDEX.push({title, sub, badge, route, action, hay, raw:(title+" "+sub+" "+(extra||"")).toLowerCase()});
 }
 function idxMany(items){ items.forEach(a=>idx.apply(null,a)); }
 
 // Fächer / Seiten
 SUBJECTS.forEach(s=>{
-  idx(s.name, s.desc||s.code, s.code, s.route, null, s.code+" "+(s.topics||[]).join(" ")+" "+(s.meta||"")+" "+(s.examDate||"")+" "+(s.ready?"verfügbar":"bald"));
+  idx(s.name, s.desc||s.code, s.code, s.route, null, s.code+" "+(s.ready?"verfügbar":"bald")+" "+(s.examDate||""));
 });
-idx("Startseite","Lernen · Fächer · Suche","App","#/",null,"home start lernen menü");
-idx("Alle Lerninhalte","Flache Liste aller Module & Themen","App","#/lernen",null,"lernen katalog inhalte übersicht");
+idx("Startseite / Fächer","Alle Fächer der Lern-App","App","#/",null,"home start fächer menü");
 idx("Klassenarbeiten","Termine und Themen","KA","#/on-thi",null,"klassenarbeit prüfung ka termine");
-idx("Abschlussprüfung","Struktur · Themen · GAP","Prüfung","#/abschluss",null,"abschlussprüfung gap ihk teil1 teil2");
 EXAMS.forEach(ex=>{
-  idx(ex.name, ex.teacher+" · "+formatDeDateLong(ex.date), "KA", ex.route, null, ex.code+" "+(ex.topics||[]).join(" ")+" klassenarbeit "+(ex.studyRoute||""));
-  (ex.topics||[]).forEach(topic=>{
-    idx(topic, ex.code+" · "+ex.name, "KA", ex.studyRoute||ex.route, null, ex.code+" thema "+topic);
-  });
+  idx(ex.name, ex.teacher+" · "+formatDeDateLong(ex.date), "KA", ex.route, null, ex.code+" "+(ex.topics||[]).join(" ")+" klassenarbeit");
 });
-// Flacher Lernkatalog (alles klickbar in Suche)
-try{
-  getLearnCatalog().forEach(it=>{
-    idx(it.title, it.sub, it.badge||"Lernen", it.route, null, (it.keywords||"")+" "+it.title+" "+it.sub);
-  });
-}catch(e){}
-
-// BfK-1 Themen + Inhaltstext + VI-Übersetzungen
 (bfk1AllItems()||[]).forEach(t=>{
-  const route="#/bfk/1/theme/"+t.id;
-  const plain=(t.content||"").replace(/<[^>]+>/g," ");
-  const vis=[...(t.content||"").matchAll(/data-vi="([^"]+)"/g)].map(m=>m[1]).join(" ");
-  const des=[...(t.content||"").matchAll(/data-de="([^"]+)"/g)].map(m=>m[1]).join(" ");
-  idx(t.name, "BfK-1 · "+(t.desc||""), "BfK-1", route, null, "lf6 lf9 bfk1 "+t.name+" "+plain+" "+vis+" "+des);
-  // einzelne Fachbegriffe
-  const re=/data-de="([^"]+)"[^>]*data-vi="([^"]+)"|data-vi="([^"]+)"[^>]*data-de="([^"]+)"/g;
-  let m;
-  const html=t.content||"";
-  // simpler pair extract
-  const des2=[...html.matchAll(/data-de="([^"]+)"/g)].map(x=>x[1]);
-  const vis2=[...html.matchAll(/data-vi="([^"]+)"/g)].map(x=>x[1]);
-  des2.forEach((de,i)=>{
-    const vi=vis2[i]||"";
-    idx(de, vi?("VI: "+vi):"BfK-1 Begriff", "Begriff", route, null, de+" "+vi+" glossar vokabel");
-  });
+  idx(t.name, "BfK-1 · "+t.desc, "BfK-1", "#/bfk/1/theme/"+t.id, null, "lf6 lf9 bfk1 "+t.name);
 });
-
 idx("Klassen-Challenge","Realtime Duell · Raumcode · Live-Score","Game","challenge.html",null,"challenge game duell multiplayer");
 idx("Admin Dashboard","Nutzer · Besuche · Quiz-Punkte","Admin","admin.html",null,"admin statistik rangliste besuche");
 idx("Musterprüfung","Klassenarbeit Nr. 2 · Prüfungsbogen","Prüfung","kiemtra_mau.html",null,"prüfung ka ka2 test");
@@ -2148,9 +2048,7 @@ function flashEl(id){ const el=document.getElementById(id); if(el){el.classList.
 const sInput=document.getElementById("searchInput"), sBox=document.getElementById("results");
 let sActive=-1, sHits=[];
 function norm(s){
-  return String(s||"").toLowerCase()
-    .replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss")
-    .normalize("NFD").replace(/[̀-ͯ]/g,"");
+  return String(s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
 }
 function scoreHit(it, terms, q){
   let sc=0;
@@ -2166,17 +2064,6 @@ function scoreHit(it, terms, q){
   sc += Math.max(0, 20 - Math.min(20, title.length/3));
   return sc;
 }
-
-// Deduplizieren (gleiche title+route)
-(function(){
-  const seen=new Set(); const out=[];
-  INDEX.forEach(it=>{
-    const k=(it.title||"")+"|"+(it.route||"")+"|"+(it.badge||"");
-    if(seen.has(k)) return; seen.add(k); out.push(it);
-  });
-  INDEX.length=0; out.forEach(x=>INDEX.push(x));
-})();
-
 function runSearch(q0){
   const q=norm(q0).trim();
   if(!q){ sBox.classList.remove("show"); sBox.innerHTML=""; return; }
@@ -2185,7 +2072,7 @@ function runSearch(q0){
     .filter(it=>terms.every(t=>(it.hay||"").includes(t) || norm(it.raw||"").includes(t)))
     .map(it=>({it, sc:scoreHit(it,terms,q)}))
     .sort((a,b)=>b.sc-a.sc)
-    .slice(0,60)
+    .slice(0,40)
     .map(x=>x.it);
   sActive=-1;
   if(!sHits.length){
@@ -2433,8 +2320,8 @@ function setBottomNav(hash){
     const t=btn.getAttribute('data-nav')||'';
     let on=false;
     if(t==='#/') on=(h==='#/' || h==='' || h==='#');
-    else if(t==='#/lernen') on = h==='#/lernen' || h.startsWith('#/bfk') || h.startsWith('#/fach') || h.startsWith('#/exam') || h==='#/on-thi' || h==='#/abschluss';
-    else if(t==='#search') on=false;
+    else if(t==='#faecher') on=h.startsWith('#/bfk') || h.startsWith('#/fach') || h.startsWith('#/abschluss');
+    else if(t==='#profile') on=false;
     else if(t.startsWith('#')) on=h===t || (t!=='#/' && h.startsWith(t));
     btn.classList.toggle('active', on);
   });
@@ -2484,7 +2371,7 @@ function initBottomNav(){
     btn.addEventListener('click',()=>{
       const t=btn.getAttribute('data-nav');
       if(!t) return;
-      if(t==='#search' || t==='#faecher'){ openSearchSheet(); return; }
+      if(t==='#faecher'){ openFachSheet(); return; }
       if(t==='#profile'){
         const p=window.LearnDB && LearnDB.getPlayer();
         if(!p){ toast('Bitte zuerst einloggen','info'); return; }
@@ -2504,24 +2391,6 @@ function initBottomNav(){
   if(fachSheet) fachSheet.addEventListener('click', e=>{ if(e.target===fachSheet) closeFachSheet(); });
   setBottomNav(location.hash||'#/');
 }
-
-function openSearchSheet(){
-  const sheet=document.getElementById('searchSheet');
-  const input=document.getElementById('searchSheetInput');
-  if(!sheet) return;
-  sheet.classList.add('show');
-  sheet.setAttribute('aria-hidden','false');
-  if(input){ input.focus(); try{ renderSheetResults(input.value||''); }catch(e){} }
-}
-function closeSearchSheet(){
-  const sheet=document.getElementById('searchSheet');
-  const input=document.getElementById('searchSheetInput');
-  if(!sheet) return;
-  sheet.classList.remove('show');
-  sheet.setAttribute('aria-hidden','true');
-  if(input) input.value='';
-}
-
 function initSearchSheet(){
   const toggle=document.getElementById('searchToggle');
   const sheet=document.getElementById('searchSheet');
@@ -2537,13 +2406,13 @@ function initSearchSheet(){
   input.addEventListener('input',()=>renderSheetResults(input.value));
   function renderSheetResults(q0){
     const q=norm(q0).trim();
-    if(!q){ body.innerHTML='<div class="empty-state"><div class="big-ic">🔍</div>Tippe z.B. <b>Gluten</b>, <b>Bewirtungsvertrag</b>, <b>Filet</b>…</div>'; return; }
+    if(!q){ body.innerHTML='<div class="empty-state"><div class="big-ic">🔍</div>Tippe einen Begriff, um alles zu durchsuchen.</div>'; return; }
     const terms=q.split(/\s+/).filter(Boolean);
     const hits=INDEX
       .filter(it=>terms.every(t=>(it.hay||'').includes(t) || norm(it.raw||'').includes(t)))
       .map(it=>({it, sc:scoreHit(it,terms,q)}))
       .sort((a,b)=>b.sc-a.sc)
-      .slice(0,60)
+      .slice(0,40)
       .map(x=>x.it);
     if(!hits.length){ body.innerHTML='<div class="empty-state"><div class="big-ic">😕</div>Keine Treffer für „'+q0.replace(/[<>&]/g,'')+'“.</div>'; return; }
     body.innerHTML=hits.map((h,i)=>'<div class="res" data-si="'+i+'"><span class="badge">'+h.badge+'</span><div class="txt"><div class="t">'+h.title+'</div><div class="s">'+h.sub+'</div></div></div>').join('');
