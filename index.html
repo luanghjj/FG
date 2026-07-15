@@ -413,7 +413,35 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 #pageLightbox button{border:none;background:#fff;color:#0f172a;border-radius:10px;padding:10px 14px;font:inherit;font-weight:600;cursor:pointer}
 #pageLightbox .lb-cap{color:#e2e8f0;font-size:.86em;font-weight:600}
 
-/* ===== Exam schedule / Ôn thi ===== */
+
+/* ===== Compact next-exam chip ===== */
+.next-exam-chip{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);
+  border-radius:14px;padding:12px 14px;margin:0 0 18px;cursor:pointer;transition:border-color .15s,box-shadow .15s}
+.next-exam-chip:hover{border-color:#bfdbfe;box-shadow:var(--shadow)}
+.next-exam-chip .date-box{flex:0 0 auto;min-width:54px;text-align:center;background:var(--accent-soft);color:var(--accent);
+  border-radius:10px;padding:8px 6px;line-height:1.05}
+.next-exam-chip .date-box .d{font-size:1.15em;font-weight:800}
+.next-exam-chip .date-box .m{font-size:.65em;font-weight:700;text-transform:uppercase;letter-spacing:.04em;opacity:.85}
+.next-exam-chip .body{flex:1;min-width:0}
+.next-exam-chip .body b{display:block;font-size:.95em;font-weight:700}
+.next-exam-chip .body span{display:block;font-size:.78em;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.next-exam-chip .cd{flex:0 0 auto;font-size:.72em;font-weight:700;padding:4px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.next-exam-chip .cd.urgent{background:var(--badbg);color:var(--bad)}
+.next-exam-chip .cd.today{background:var(--warnbg);color:var(--warn)}
+.next-exam-chip .cd.soon{background:var(--okbg);color:var(--ok)}
+
+/* ===== Term (DE → VI) ===== */
+.term{border-bottom:1.5px dashed color-mix(in srgb, var(--accent) 55%, #94a3b8);color:inherit;cursor:pointer;
+  font-weight:650;padding:0 1px;border-radius:3px;transition:background .12s,color .12s}
+.term:hover,.term.open{background:var(--accent-soft);color:var(--accent)}
+#termPop{position:fixed;z-index:320;max-width:min(280px,86vw);background:#0f172a;color:#fff;border-radius:12px;
+  padding:10px 12px;font-size:.84em;line-height:1.4;box-shadow:0 12px 32px rgba(15,23,42,.28);display:none;pointer-events:none}
+#termPop.show{display:block}
+#termPop .de{font-weight:700;margin-bottom:3px}
+#termPop .vi{opacity:.92;font-weight:500}
+#termPop .arrow{position:absolute;left:50%;bottom:-6px;width:12px;height:12px;background:#0f172a;transform:translateX(-50%) rotate(45deg);border-radius:2px}
+
+/* ===== Exam schedule ===== */
 .exam-schedule{margin:0 0 28px}
 .exam-schedule .head-row{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;margin:0 0 12px;flex-wrap:wrap}
 .exam-schedule .head-row h3{font-size:1em;font-weight:700;letter-spacing:-.01em}
@@ -564,7 +592,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
   .progress-stats{grid-template-columns:1fr 1fr 1fr}
 }
 </style>
-<script src="./pwa.js?v=4" defer></script>
+<script src="./pwa.js?v=5" defer></script>
 </head>
 <body>
 <!-- ===== LOGIN GATE ===== -->
@@ -615,53 +643,51 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
     <p>Wähle ein Fach, um mit dem Lernen zu beginnen.</p>
   </div>
 
-  <!-- Banner Ôn thi / Klassenarbeiten -->
-  <div class="exam-banner" onclick="go('#/on-thi')">
-    <div class="exam-ic">📅</div>
-    <div class="exam-txt">
-      <div class="exam-kicker">Nächste Prüfungen · Juli 2026</div>
-      <h2>Ôn thi · Klassenarbeiten</h2>
-      <p id="examBannerSub">Nächste KA + Themen je Fach — sortiert nach Datum.</p>
+  <!-- Compact next KA -->
+  <div class="next-exam-chip" id="homeExamChip" onclick="go('#/on-thi')" title="Klassenarbeiten">
+    <div class="date-box"><div class="d" id="homeExamDay">—</div><div class="m" id="homeExamMon">—</div></div>
+    <div class="body">
+      <b id="homeExamTitle">Nächste Klassenarbeit</b>
+      <span id="homeExamSub">Termine &amp; Themen</span>
     </div>
-    <div class="exam-go">Lịch thi →</div>
+    <span class="cd" id="homeExamCd">…</span>
   </div>
 
-  <div class="exam-schedule">
-    <div class="head-row">
-      <div>
-        <h3>📅 Lịch thi sắp tới</h3>
-        <p>Nhấn vào môn để xem Themen ôn</p>
-      </div>
-      <a onclick="go('#/on-thi')" style="font-size:.82em;font-weight:600;color:var(--accent);cursor:pointer">Xem tất cả →</a>
+  <!-- Banner Abschlussprüfung -->
+  <div class="exam-banner" onclick="go('#/abschluss')">
+    <div class="exam-ic">🎯</div>
+    <div class="exam-txt">
+      <div class="exam-kicker">Hauptziel</div>
+      <h2>Abschlussprüfung</h2>
+      <p>Aufbau der Prüfung &amp; Lernthemen.</p>
     </div>
-    <div class="ka-list" id="homeExamList"></div>
+    <div class="exam-go">Los →</div>
   </div>
 
   <div class="fach-label">Fächer · Stundenplan H2FO3T</div>
-  <p class="subject-note">Mỗi <b>Fach</b> tách thành các <b>Themen</b>. Phần <b>Ôn thi</b> gom theo ngày thi. <b>BfK-1</b> (LF6+LF9) và <b>BfK-2</b> (Fleisch) đã có Themen.</p>
   <div id="subjectGroups"></div>
 
   <div class="fach-label">Heute üben</div>
   <div class="today-grid">
-    <div class="today-card" onclick="go('#/bfk/1')">
-      <div class="ic">🍳</div>
-      <b>BfK-1 · KA 20.07</b>
-      <span>LF6 Ernährung · LF9 Zahlung</span>
+    <div class="today-card" onclick="go('#/bfk/2/quiz');setTimeout(()=>{try{quizStart('quick')}catch(e){}},120)">
+      <div class="ic">⚡</div>
+      <b>BfK-2 · Quiz</b>
+      <span>10 Fragen · Fleisch</span>
     </div>
     <div class="today-card" onclick="location.href='deutsch.html'">
       <div class="ic">🇩🇪</div>
-      <b>Deutsch · KA 16.07</b>
-      <span>Herrn Kling · Visualisierung</span>
+      <b>Deutsch</b>
+      <span>Visualisierung üben</span>
     </div>
-    <div class="today-card" onclick="go('#/bfk/2')">
-      <div class="ic">🥩</div>
-      <b>BfK-2 · KA 14.07</b>
-      <span>Fleisch · Küche · Quiz</span>
+    <div class="today-card" onclick="go('#/bfk/1')">
+      <div class="ic">🍳</div>
+      <b>BfK-1</b>
+      <span>LF6 · LF9</span>
     </div>
-    <div class="today-card" onclick="go('#/on-thi')">
-      <div class="ic">📅</div>
-      <b>Lịch ôn thi</b>
-      <span>Tất cả KA + Themen theo ngày</span>
+    <div class="today-card" onclick="location.href='challenge.html'">
+      <div class="ic">⚔️</div>
+      <b>Challenge</b>
+      <span>Klassen-Duell</span>
     </div>
   </div>
 
@@ -1006,24 +1032,19 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 </section>
 
 
-<!-- ===== ÔN THI / KLASSENARBEITEN ===== -->
+<!-- ===== KLASSENARBEITEN ===== -->
 <section class="view" id="v-on-thi">
   <div class="back" onclick="go('#/')">← Fächer</div>
   <div class="section-head">
-    <h2>📅 Ôn thi · Klassenarbeiten</h2>
-    <p>Các môn thi sắp tới — bấm vào môn để xem Themen ôn theo Lernfeld.</p>
+    <h2>📅 Klassenarbeiten</h2>
+    <p>Termine · Themen antippen zum Lernen</p>
   </div>
   <div class="ka-list" id="examFullList"></div>
-  <div class="card" style="margin-top:18px">
-    <h2>🎯 Abschlussprüfung (lâu dài)</h2>
-    <div class="hint">Ngoài KA lớp, có thể xem cấu trúc Abschlussprüfung.</div>
-    <button class="btn" type="button" onclick="go('#/abschluss')">Mở Abschlussprüfung →</button>
-  </div>
 </section>
 
-<!-- ===== EXAM DETAIL (one KA) ===== -->
+<!-- ===== EXAM DETAIL ===== -->
 <section class="view" id="v-exam-detail">
-  <div class="back" onclick="go('#/on-thi')">← Lịch ôn thi</div>
+  <div class="back" onclick="go('#/on-thi')">← Klassenarbeiten</div>
   <div class="exam-detail-banner" id="examDetailBanner">
     <div>
       <div class="big-date" id="examDetailDate">—</div>
@@ -1032,27 +1053,20 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
   </div>
   <div class="section-head">
     <h2 id="examDetailTitle">Klassenarbeit</h2>
-    <p id="examDetailDesc">Themen zur Vorbereitung</p>
+    <p id="examDetailDesc">Themen</p>
   </div>
   <div id="examDetailBody"></div>
 </section>
 
-<!-- ===== BFK-1 THEMEN HUB (LF6 + LF9) ===== -->
+<!-- ===== BFK-1 THEMEN HUB ===== -->
 <section class="view bfk-scope" id="v-bfk1">
   <div class="back" onclick="go('#/bfk')">← Alle BfK-Stufen</div>
   <div class="section-head">
-    <h2>🍳 BfK-1 · Klassenarbeit</h2>
-    <p>Fr. Schuster · <b>20.07.2026</b> · LF6 (Hotel Wind) + LF9 (Palmero) · Nội dung từ Arbeitsblätter scan</p>
+    <h2>🍳 BfK-1</h2>
+    <p>Fr. Schuster · KA 20.07 · LF6 + LF9</p>
   </div>
-  <div class="exam-detail-banner" onclick="go('#/exam/bfk1')" style="cursor:pointer">
-    <div>
-      <div class="big-date">20.07</div>
-      <div class="meta">Klassenarbeit BfK-1 · Fr. Schuster · Xem chi tiết ôn thi →</div>
-    </div>
-  </div>
-
   <div class="lf-block">
-    <h3><span class="lf-badge">LF 6</span> Küche · Ernährung · Menüs</h3>
+    <h3><span class="lf-badge">LF 6</span> Speisen · Ernährung · Menüs</h3>
     <div class="theme-list" id="bfk1Lf6"></div>
   </div>
   <div class="lf-block">
@@ -1063,7 +1077,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 
 <!-- ===== BFK-1 THEME DETAIL ===== -->
 <section class="view bfk-scope" id="v-bfk1-theme">
-  <div class="back" onclick="go('#/bfk/1')">← BfK-1 Themen</div>
+  <div class="back" onclick="go('#/bfk/1')">← BfK-1</div>
   <div class="section-head">
     <h2 id="bfk1ThemeTitle">Thema</h2>
     <p id="bfk1ThemeSub">Lernfeld</p>
@@ -1075,6 +1089,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 </div>
 
 
+<div id="termPop" role="tooltip" aria-hidden="true"><div class="de"></div><div class="vi"></div><div class="arrow"></div></div>
 <!-- Page lightbox for scanned worksheets -->
 <div id="pageLightbox" aria-hidden="true">
   <div class="lb-inner">
@@ -1132,7 +1147,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 <div id="toastHost" aria-live="polite"></div>
 
 <script src="./supabase.js?v=4"></script>
-<script src="./bfk1-data.js?v=2"></script>
+<script src="./bfk1-data.js?v=3"></script>
 <script>
 /* ============ DATEN (Fleischteile) ============ */
 const DATA = {
@@ -1322,7 +1337,7 @@ const BFK_LEVELS = [
     themes:[
       {icon:"⭐", name:"LF6 · Gäste & Speisen", desc:"Bewertungen, Ernährungsformen, Speisenregeln, Obst, Hülsenfrüchte, Getreide, Menüs.", route:"#/bfk/1"},
       {icon:"💳", name:"LF9 · Zahlung & Recht", desc:"Betriebsarten, Zahlung, Bewirtungsvertrag, USt 7/19 %, Trinkgeld, Beleg · Fälle.", route:"#/bfk/1"},
-      {icon:"📅", name:"Ôn thi BfK-1", desc:"Klassenarbeit 20.07 · Fr. Schuster · Themen + Scan-Seiten.", route:"#/exam/bfk1"},
+      {icon:"📅", name:"KA BfK-1", desc:"20.07 · Fr. Schuster", route:"#/exam/bfk1"},
     ],
   },
   {
@@ -1337,7 +1352,7 @@ const BFK_LEVELS = [
       {icon:"🍳", name:"Küche & Ernährung", desc:"Nährwert, Eiercode, biologische Wertigkeit.", route:"#/bfk/2/kueche"},
       {icon:"📝", name:"Quiz", desc:"Multiple-Choice zum Selbsttest.", route:"#/bfk/2/quiz"},
       {icon:"🗂️", name:"Prüfungen", desc:"Musterprüfung, Lösungen & Zusammenfassung KA2.", route:"#/bfk/2/pruefungen"},
-      {icon:"📅", name:"Ôn thi BfK-2", desc:"Klassenarbeit 14.07 · Themen & Materialien.", route:"#/exam/bfk2"},
+      {icon:"📅", name:"KA BfK-2", desc:"14.07 · Themen & Materialien", route:"#/exam/bfk2"},
     ],
   },
   {
@@ -1363,7 +1378,7 @@ const BFK_LEVELS = [
   },
 ];
 
-/* ============ EXAM SCHEDULE (Ôn thi) ============ */
+/* ============ EXAM SCHEDULE ============ */
 const EXAMS = [
   {
     id:"bfk2", code:"BfK-2", name:"Klassenarbeit BfK-2",
@@ -1436,12 +1451,12 @@ function formatDeDateLong(iso){
 }
 function countdownLabel(iso){
   const d=daysUntil(iso);
-  if(d<0) return {text: (d===-1?"Hôm qua": Math.abs(d)+" ngày trước"), cls:"past"};
-  if(d===0) return {text:"Hôm nay!", cls:"today"};
-  if(d===1) return {text:"Ngày mai", cls:"urgent"};
-  if(d<=3) return {text:"Còn "+d+" ngày", cls:"urgent"};
-  if(d<=7) return {text:"Còn "+d+" ngày", cls:"soon"};
-  return {text:"Còn "+d+" ngày", cls:""};
+  if(d<0) return {text: (d===-1?"Gestern": "vor "+Math.abs(d)+" T."), cls:"past"};
+  if(d===0) return {text:"Heute", cls:"today"};
+  if(d===1) return {text:"Morgen", cls:"urgent"};
+  if(d<=3) return {text:"in "+d+" T.", cls:"urgent"};
+  if(d<=7) return {text:"in "+d+" T.", cls:"soon"};
+  return {text:"in "+d+" T.", cls:""};
 }
 function examCardHTML(ex, compact){
   const cd=countdownLabel(ex.date);
@@ -1467,22 +1482,24 @@ function examCardHTML(ex, compact){
     +'</div>';
 }
 function renderHomeExams(){
-  const host=document.getElementById("homeExamList");
-  if(!host) return;
-  // show upcoming first (incl. today), then recently past; max 4 on home
   const sorted=[...EXAMS].sort((a,b)=>a.date.localeCompare(b.date));
   const upcoming=sorted.filter(e=>daysUntil(e.date)>=0);
-  const past=sorted.filter(e=>daysUntil(e.date)<0).reverse();
-  const list=(upcoming.length?upcoming:past).slice(0,4);
-  host.innerHTML=list.map(e=>examCardHTML(e,true)).join("");
-  const sub=document.getElementById("examBannerSub");
-  if(sub){
-    const next=upcoming[0] || past[0];
-    if(next){
-      const cd=countdownLabel(next.date);
-      sub.textContent = next.code+" · "+formatDeDate(next.date)+" · "+next.teacher+" · "+cd.text;
-    }
-  }
+  const next=upcoming[0] || sorted[sorted.length-1];
+  if(!next) return;
+  const cd=countdownLabel(next.date);
+  const dt=parseExamDate(next.date);
+  const dayEl=document.getElementById("homeExamDay");
+  const monEl=document.getElementById("homeExamMon");
+  const titleEl=document.getElementById("homeExamTitle");
+  const subEl=document.getElementById("homeExamSub");
+  const cdEl=document.getElementById("homeExamCd");
+  if(dayEl) dayEl.textContent=String(dt.getDate()).padStart(2,"0");
+  if(monEl) monEl.textContent=dt.toLocaleDateString("de-DE",{month:"short"});
+  if(titleEl) titleEl.textContent=next.icon+" "+next.code+" · KA";
+  if(subEl) subEl.textContent=next.teacher+" · "+formatDeDateLong(next.date)+(upcoming.length>1?(" · +"+(upcoming.length-1)+" weitere"):"");
+  if(cdEl){ cdEl.textContent=cd.text; cdEl.className="cd "+(cd.cls||""); }
+  const chip=document.getElementById("homeExamChip");
+  if(chip) chip.onclick=()=>go(next.route||"#/on-thi");
 }
 function renderFullExams(){
   const host=document.getElementById("examFullList");
@@ -1502,18 +1519,18 @@ function renderExamDetail(examId){
   if(dateEl) dateEl.textContent=formatDeDate(ex.date)+" · "+cd.text;
   if(metaEl) metaEl.textContent=ex.teacher+" · "+formatDeDateLong(ex.date);
   if(titleEl) titleEl.textContent=ex.icon+" "+ex.name;
-  if(descEl) descEl.textContent="Themen ôn tập · "+ex.code;
+  if(descEl) descEl.textContent="Themen · "+ex.code;
   if(!body) return;
 
   let html='';
-  html+='<div class="card"><h2>📌 Themen cho bài thi</h2><div class="hint">Ôn theo danh sách dưới. Bấm "Học ngay" để vào nội dung.</div><ul>';
+  html+='<div class="card"><h2>📌 Themen</h2><ul>';
   (ex.topics||[]).forEach(t=>{ html+='<li>'+t+'</li>'; });
   html+='</ul>';
   if(ex.studyRoute){
     if(ex.external){
-      html+='<p style="margin-top:12px"><a class="btn" href="'+ex.studyRoute+'">Học ngay →</a></p>';
+      html+='<p style="margin-top:12px"><a class="btn" href="'+ex.studyRoute+'">Lernen →</a></p>';
     }else{
-      html+='<p style="margin-top:12px"><button class="btn" type="button" onclick="go(\''+ex.studyRoute+'\')">Học ngay →</button></p>';
+      html+='<p style="margin-top:12px"><button class="btn" type="button" onclick="go(\''+ex.studyRoute+'\')">Lernen →</button></p>';
     }
   }
   html+='</div>';
@@ -1540,9 +1557,10 @@ function renderExamDetail(examId){
     html+='</div>';
   }
   if(ex.id==="deutsch"){
-    html+='<div class="card"><h2>🇩🇪 Deutsch · Herrn Kling</h2><p class="muted">KA Visualisierung — Mindmap, Diagramme, Text → Grafik.</p><p style="margin-top:12px"><a class="btn" href="deutsch.html">Mở Deutsch-App →</a></p></div>';
+    html+='<div class="card"><h2>🇩🇪 Deutsch</h2><p class="muted">Visualisierung · Mindmap · Diagramme</p><p style="margin-top:12px"><a class="btn" href="deutsch.html">Öffnen →</a></p></div>';
   }
   body.innerHTML=html;
+  bindTerms(body);
 }
 
 function renderBfk1Hub(){
@@ -1575,8 +1593,8 @@ function renderBfk1Theme(themeId){
   const pages = (window.bfk1PageList && item.pages) ? window.bfk1PageList(item.pages) : [];
   if(pages.length){
     window._bfk1Pages = pages;
-    html += '<div class="src-pages"><h3>📄 Trang gốc từ giáo trình / Arbeitsblätter</h3>'
-      + '<div class="hint">Bấm vào trang để phóng to · '+pages.length+' trang (scan)</div>'
+    html += '<div class="src-pages"><h3>📄 Arbeitsblätter</h3>'
+      + '<div class="hint">Tippen zum Vergrößern · '+pages.length+' Seiten</div>'
       + '<div class="src-grid">';
     pages.forEach((src,i)=>{
       html += '<button type="button" class="src-thumb" onclick="openPageLightbox('+i+')">'
@@ -1586,6 +1604,7 @@ function renderBfk1Theme(themeId){
     html += '</div></div>';
   }
   body.innerHTML = html;
+  bindTerms(body);
 }
 function openPageLightbox(i){
   const pages=window._bfk1Pages||[];
@@ -1634,7 +1653,7 @@ const SUBJECT_GROUPS = [
   {
     id:"bfk",
     title:"BfK · Berufsfachliche Kompetenz",
-    subtitle:"Mỗi Stufe có Themen riêng · Noten fließen in die berufsfachliche Kompetenz ein",
+    subtitle:"Themen je Stufe",
     items: BFK_LEVELS.map(l=>({
       code:l.code, name:l.name, icon:l.icon, accent:l.accent, soft:l.soft, ready:l.ready,
       desc:l.desc, route: "#/bfk/"+l.id,
@@ -1644,7 +1663,7 @@ const SUBJECT_GROUPS = [
   {
     id:"allgemein",
     title:"Weitere Fächer",
-    subtitle:"Laut Stundenplan H2FO3T · bấm vào Fach để xem Themen",
+    subtitle:"Laut Stundenplan H2FO3T",
     items:[
       {code:"WiKO", name:"Wirtschaftskompetenz", icon:"📊", accent:"#0ea5e9", soft:"#e0f2fe", ready:false, route:"#/fach/wiko",
         desc:"Wirtschaft, Kaufvertrag, Rechte & Pflichten im Betrieb.",
@@ -1754,12 +1773,12 @@ renderSubjects(); renderBfkHub(); renderHomeExams(); renderBfk1Hub();
 /* ============ ROUTING ============ */
 const ROUTES = {
   "#/":            {view:"v-home",   crumbs:[]},
-  "#/on-thi":      {view:"v-on-thi", crumbs:[["Ôn thi","#/on-thi"]], exams:true},
-  "#/exam/bfk1":   {view:"v-exam-detail", crumbs:[["Ôn thi","#/on-thi"],["BfK-1","#/exam/bfk1"]], examId:"bfk1"},
-  "#/exam/bfk2":   {view:"v-exam-detail", crumbs:[["Ôn thi","#/on-thi"],["BfK-2","#/exam/bfk2"]], examId:"bfk2"},
-  "#/exam/deutsch":{view:"v-exam-detail", crumbs:[["Ôn thi","#/on-thi"],["Deutsch","#/exam/deutsch"]], examId:"deutsch"},
-  "#/exam/englisch":{view:"v-exam-detail", crumbs:[["Ôn thi","#/on-thi"],["Englisch","#/exam/englisch"]], examId:"englisch"},
-  "#/exam/gk":     {view:"v-exam-detail", crumbs:[["Ôn thi","#/on-thi"],["GK","#/exam/gk"]], examId:"gk"},
+  "#/on-thi":      {view:"v-on-thi", crumbs:[["KA","#/on-thi"]], exams:true},
+  "#/exam/bfk1":   {view:"v-exam-detail", crumbs:[["KA","#/on-thi"],["BfK-1","#/exam/bfk1"]], examId:"bfk1"},
+  "#/exam/bfk2":   {view:"v-exam-detail", crumbs:[["KA","#/on-thi"],["BfK-2","#/exam/bfk2"]], examId:"bfk2"},
+  "#/exam/deutsch":{view:"v-exam-detail", crumbs:[["KA","#/on-thi"],["Deutsch","#/exam/deutsch"]], examId:"deutsch"},
+  "#/exam/englisch":{view:"v-exam-detail", crumbs:[["KA","#/on-thi"],["Englisch","#/exam/englisch"]], examId:"englisch"},
+  "#/exam/gk":     {view:"v-exam-detail", crumbs:[["KA","#/on-thi"],["GK","#/exam/gk"]], examId:"gk"},
   "#/bfk":         {view:"v-bfk",    crumbs:[["BfK","#/bfk"]]},
   "#/bfk/1":       {view:"v-bfk1",   crumbs:[["BfK","#/bfk"],["BfK-1","#/bfk/1"]], bfk1:true},
   "#/bfk/2":       {view:"v-bfk-level", crumbs:[["BfK","#/bfk"],["BfK-2","#/bfk/2"]], level:"2"},
@@ -1826,6 +1845,53 @@ function router(){
 }
 window.addEventListener("hashchange",router);
 
+
+/* ============ DE terms → VI on tap ============ */
+function bindTerms(root){
+  const scope = root || document;
+  scope.querySelectorAll('.term').forEach(el=>{
+    if(el.dataset.bound) return;
+    el.dataset.bound='1';
+    el.addEventListener('click', e=>{
+      e.preventDefault(); e.stopPropagation();
+      showTermPop(el);
+    });
+  });
+}
+function showTermPop(el){
+  const pop=document.getElementById('termPop');
+  if(!pop) return;
+  const de=el.getAttribute('data-de') || el.textContent.trim();
+  const vi=el.getAttribute('data-vi') || '';
+  pop.querySelector('.de').textContent=de;
+  pop.querySelector('.vi').textContent=vi || '—';
+  pop.classList.add('show');
+  pop.setAttribute('aria-hidden','false');
+  document.querySelectorAll('.term.open').forEach(t=>t.classList.remove('open'));
+  el.classList.add('open');
+  const r=el.getBoundingClientRect();
+  const pw=pop.offsetWidth||200, ph=pop.offsetHeight||60;
+  let left=r.left + r.width/2 - pw/2;
+  left=Math.max(10, Math.min(left, window.innerWidth-pw-10));
+  let top=r.top - ph - 12;
+  if(top<8) top=r.bottom+10;
+  pop.style.left=left+'px';
+  pop.style.top=top+'px';
+}
+function hideTermPop(){
+  const pop=document.getElementById('termPop');
+  if(!pop) return;
+  pop.classList.remove('show');
+  pop.setAttribute('aria-hidden','true');
+  document.querySelectorAll('.term.open').forEach(t=>t.classList.remove('open'));
+}
+document.addEventListener('click', e=>{
+  if(e.target.closest && e.target.closest('.term')) return;
+  if(e.target.closest && e.target.closest('#termPop')) return;
+  hideTermPop();
+});
+document.addEventListener('scroll', hideTermPop, true);
+
 /* ============ SEARCH INDEX (alles durchsuchbar) ============ */
 const INDEX=[];
 function idx(title, sub, badge, route, action, extra){
@@ -1840,7 +1906,7 @@ SUBJECTS.forEach(s=>{
   idx(s.name, s.desc||s.code, s.code, s.route, null, s.code+" "+(s.ready?"verfügbar":"bald")+" "+(s.examDate||""));
 });
 idx("Startseite / Fächer","Alle Fächer der Lern-App","App","#/",null,"home start fächer menü");
-idx("Ôn thi · Klassenarbeiten","Lịch thi + Themen theo ngày","KA","#/on-thi",null,"on thi prüfung ka klassenarbeit lịch thi");
+idx("Klassenarbeiten","Termine und Themen","KA","#/on-thi",null,"klassenarbeit prüfung ka termine");
 EXAMS.forEach(ex=>{
   idx(ex.name, ex.teacher+" · "+formatDeDateLong(ex.date), "KA", ex.route, null, ex.code+" "+(ex.topics||[]).join(" ")+" klassenarbeit");
 });
