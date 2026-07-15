@@ -1747,18 +1747,18 @@ function go(name){
 function renderFormen(){
   const g=document.getElementById('formenGrid');
   if(!g) return;
-  fillSchnellwahlMinis();
+  if(typeof fillSchnellwahlMinis==='function') if(typeof fillSchnellwahlMinis==='function') fillSchnellwahlMinis();
   g.innerHTML = FORMEN.map(f=>`
     <div class="tile" style="cursor:default">
       <div class="ico">${f.ico}</div>
       <div class="name">${f.name}</div>
       <div class="zweck">${f.zweck}</div>
-      ${diagFig(f.id, false)}
+      ${typeof diagFig==='function'?diagFig(f.id,false):''}
       <div class="muted" style="margin-top:4px;font-size:.82em">${f.desc}</div>
       <button class="vi-btn" data-vi="${f.vi}" style="margin-top:6px;font-size:.8em">VI 🇻🇳</button>
       <div class="vi-pop"></div>
     </div>`).join('');
-  fillSchnellwahlMinis();
+  if(typeof fillSchnellwahlMinis==='function') if(typeof fillSchnellwahlMinis==='function') fillSchnellwahlMinis();
 }
 
 /* ===== MATCH ===== */
@@ -1993,7 +1993,7 @@ renderTU();
 </script>
 
 <script>
-document.addEventListener('DOMContentLoaded', function(){ try{ fillSchnellwahlMinis(); }catch(e){} });
+document.addEventListener('DOMContentLoaded', function(){ try{ if(typeof fillSchnellwahlMinis==='function') if(typeof fillSchnellwahlMinis==='function') fillSchnellwahlMinis(); }catch(e){} });
 document.addEventListener('DOMContentLoaded', function(){
   try{
     if(window.enableVocabOn){
@@ -2012,6 +2012,6 @@ document.addEventListener('DOMContentLoaded', function(){
 </script>
 
 
-<script>document.addEventListener('DOMContentLoaded',function(){try{if(window.fillSchnellwahlMinis)fillSchnellwahlMinis(); if(window.fillDiagSlots)fillDiagSlots(document);}catch(e){}});</script>
+<script>document.addEventListener('DOMContentLoaded',function(){try{if(window.fillSchnellwahlMinis)if(typeof fillSchnellwahlMinis==='function') if(typeof fillSchnellwahlMinis==='function') fillSchnellwahlMinis(); if(window.fillDiagSlots)fillDiagSlots(document);}catch(e){}});</script>
 </body>
 </html>
