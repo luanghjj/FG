@@ -1147,7 +1147,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 <div id="toastHost" aria-live="polite"></div>
 
 <script src="./supabase.js?v=4"></script>
-<script src="./bfk1-data.js?v=3"></script>
+<script src="./bfk1-data.js?v=5"></script>
 <script>
 /* ============ DATEN (Fleischteile) ============ */
 const DATA = {
@@ -1895,24 +1895,98 @@ document.addEventListener('scroll', hideTermPop, true);
 /* ============ SEARCH INDEX (alles durchsuchbar) ============ */
 const INDEX=[];
 function idx(title, sub, badge, route, action, extra){
-  const hay = [title, sub, extra||"", badge||""].join(" ").toLowerCase()
-    .normalize("NFD").replace(/[̀-ͯ]/g,""); // ä/ö/ü-tolerant via plain text still kept; accents stripped from hay only for matching
-  INDEX.push({title, sub, badge, route, action, hay, raw:(title+" "+sub+" "+(extra||"")).toLowerCase()});
+  const raw = [title, sub, extra||"", badge||""].join(" ").toLowerCase();
+  // hay: umlaut-tolerant + accent-stripped for matching
+  const hay = raw
+    .replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss")
+    .normalize("NFD").replace(/[̀-ͯ]/g,"");
+  INDEX.push({title, sub, badge, route, action, hay, raw});
 }
 function idxMany(items){ items.forEach(a=>idx.apply(null,a)); }
+function stripHtml(html){
+  return String(html||"").replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim();
+}
+function idxBfk1Deep(){
+  (bfk1AllItems()||[]).forEach(t=>{
+    const route = "#/bfk/1/theme/"+t.id;
+    const html = t.content || "";
+    const plain = stripHtml(html);
+    const des = [...html.matchAll(/data-de="([^"]+)"/g)].map(m=>m[1]);
+    const vis = [...html.matchAll(/data-vi="([^"]+)"/g)].map(m=>m[1]);
+    // Thema + voller Lehrtext (alle Stichworte suchbar)
+    idx(t.name, "BfK-1 · "+(t.desc||""), "BfK-1", route, null,
+      "bfk1 lf6 lf9 "+t.id+" "+t.name+" "+(t.desc||"")+" "+plain+" "+des.join(" ")+" "+vis.join(" "));
+    // DE/VI-Begriffe
+    des.forEach((de,i)=>{
+      const vi = vis[i] || "";
+      idx(de, vi?("VI: "+vi):("BfK-1 · "+t.name), "Begriff", route, null, de+" "+vi+" "+t.name+" glossar");
+      if(vi) idx(vi, "DE: "+de, "Begriff", route, null, vi+" "+de+" dich");
+    });
+  });
+}
+
+
 
 // Fächer / Seiten
 SUBJECTS.forEach(s=>{
-  idx(s.name, s.desc||s.code, s.code, s.route, null, s.code+" "+(s.ready?"verfügbar":"bald")+" "+(s.examDate||""));
+  idx(s.name, s.desc||s.code, s.code, s.route, null,
+    s.code+" "+(s.topics||[]).join(" ")+" "+(s.meta||"")+" "+(s.examDate||"")+" "+(s.ready?"verfügbar":"bald")+" "+(s.desc||""));
 });
-idx("Startseite / Fächer","Alle Fächer der Lern-App","App","#/",null,"home start fächer menü");
-idx("Klassenarbeiten","Termine und Themen","KA","#/on-thi",null,"klassenarbeit prüfung ka termine");
+idx("Startseite / Fächer","Alle Fächer der Lern-App","App","#/",null,"home start fächer menü lernen");
+idx("Klassenarbeiten","Termine und Themen","KA","#/on-thi",null,"klassenarbeit prüfung ka termine on thi");
+idx("Abschlussprüfung","Struktur · Themen · GAP","Prüfung","#/abschluss",null,"abschlussprüfung gap ihk teil1 teil2");
+try{(ABSCHLUSS_THEMEN||[]).forEach(t=>{
+  idx(t.name, t.desc||"Abschlussprüfung", "GAP", t.route||"#/abschluss", null, "abschluss "+t.name+" "+(t.desc||""));
+});}catch(e){}
+
+// KA-Termine + jedes Thema der Prüfung
 EXAMS.forEach(ex=>{
-  idx(ex.name, ex.teacher+" · "+formatDeDateLong(ex.date), "KA", ex.route, null, ex.code+" "+(ex.topics||[]).join(" ")+" klassenarbeit");
+  idx(ex.name, ex.teacher+" · "+formatDeDateLong(ex.date), "KA", ex.route, null,
+    ex.code+" "+(ex.topics||[]).join(" ")+" klassenarbeit "+(ex.studyRoute||"")+" "+(ex.teacher||""));
+  (ex.topics||[]).forEach(topic=>{
+    idx(topic, ex.code+" · "+ex.name, "KA", ex.studyRoute||ex.route, null, ex.code+" thema topic "+topic);
+  });
 });
-(bfk1AllItems()||[]).forEach(t=>{
-  idx(t.name, "BfK-1 · "+t.desc, "BfK-1", "#/bfk/1/theme/"+t.id, null, "lf6 lf9 bfk1 "+t.name);
+
+// BfK-1: Themen + voller Inhalt + DE/VI-Begriffe
+idxBfk1Deep();
+
+// Häufige Suchbegriffe / Synonyme → Lernseiten
+[
+  ["Umsatzsteuer","MwSt USt Steuer 7% 19% brutto netto","#/bfk/1/theme/rechtliche-zahlungsabwicklung"],
+  ["MwSt","Umsatzsteuer USt","#/bfk/1/theme/rechtliche-zahlungsabwicklung"],
+  ["Bewirtungsvertrag","Vertrag Gast Wirt Bestellung","#/bfk/1/theme/rechtliche-zahlungsabwicklung"],
+  ["Trinkgeld","Tip Service steuerfrei","#/bfk/1/theme/rechtliche-zahlungsabwicklung"],
+  ["Beleg","Belegausgabepflicht Kassenbon Rechnung","#/bfk/1/theme/rechtliche-zahlungsabwicklung"],
+  ["Zechprellerei","nicht zahlen Betrug","#/bfk/1/theme/rechtliche-zahlungsabwicklung"],
+  ["Franchise","Franchisegeber Franchisenehmer Palmero","#/bfk/1/theme/betriebsarten-zahlung"],
+  ["Systemgastronomie","Quickservice Counter McDonalds","#/bfk/1/theme/betriebsarten-zahlung"],
+  ["Debitkarte","EC Karte pay now","#/bfk/1/theme/betriebsarten-zahlung"],
+  ["Kreditkarte","pay later","#/bfk/1/theme/betriebsarten-zahlung"],
+  ["Mobile Payment","Apple Pay Google Pay NFC","#/bfk/1/theme/betriebsarten-zahlung"],
+  ["Gluten","Zöliakie glutenfrei Weizen","#/bfk/1/theme/getreide"],
+  ["Vollkorn","Mehlkörper Keimling Aleuron","#/bfk/1/theme/getreide"],
+  ["Hülsenfrüchte","Linsen Bohnen Erbsen Leguminosen","#/bfk/1/theme/huelsenfruechte"],
+  ["Einweichen","Hülsenfrüchte garen","#/bfk/1/theme/huelsenfruechte"],
+  ["Pektin","Ballaststoff Obst gelieren","#/bfk/1/theme/obst"],
+  ["Mazerieren","Obst marinieren","#/bfk/1/theme/obst"],
+  ["Pochieren","Kompott Obst garen","#/bfk/1/theme/obst"],
+  ["Vegetarisch","vegan flexitarier pescetarisch","#/bfk/1/theme/ernaehrungsformen"],
+  ["Vegan","pflanzlich keine tierischen Produkte","#/bfk/1/theme/ernaehrungsformen"],
+  ["Halal","Koscher Speiseregeln","#/bfk/1/theme/ernaehrungsformen"],
+  ["Menüregeln","Zusammenstellung Speisen Wiederholung","#/bfk/1/theme/speisen-regeln"],
+  ["Sättigungsbeilage","Gemüsebeilage Soße Gericht","#/bfk/1/theme/speisen-regeln"],
+  ["Gästebewertung","Feedback Umfrage Verbesserungsvorschläge","#/bfk/1/theme/gaestebewertungen"],
+  ["Eiercode","Haltungsform Bio Freiland","#/bfk/2/kueche"],
+  ["Nährwert","Brennwert kcal kJ PAL Grundumsatz","#/bfk/2/kueche"],
+  ["Biologische Wertigkeit","Eiweiß BW Ergänzungswert","#/bfk/2/kueche"],
+  ["Kollagen","Bindegewebe Gelatine schmoren","#/bfk/2/fleisch"],
+  ["Filet","zartestes Stück Rind","#/bfk/2/fleisch"],
+].forEach(([title, extra, route])=>{
+  idx(title, "Lernbegriff", "Begriff", route, null, extra+" "+title);
 });
+
+
 idx("Klassen-Challenge","Realtime Duell · Raumcode · Live-Score","Game","challenge.html",null,"challenge game duell multiplayer");
 idx("Admin Dashboard","Nutzer · Besuche · Quiz-Punkte","Admin","admin.html",null,"admin statistik rangliste besuche");
 idx("Musterprüfung","Klassenarbeit Nr. 2 · Prüfungsbogen","Prüfung","kiemtra_mau.html",null,"prüfung ka ka2 test");
@@ -2048,7 +2122,9 @@ function flashEl(id){ const el=document.getElementById(id); if(el){el.classList.
 const sInput=document.getElementById("searchInput"), sBox=document.getElementById("results");
 let sActive=-1, sHits=[];
 function norm(s){
-  return String(s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+  return String(s||"").toLowerCase()
+    .replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss")
+    .normalize("NFD").replace(/[̀-ͯ]/g,"");
 }
 function scoreHit(it, terms, q){
   let sc=0;
@@ -2064,6 +2140,18 @@ function scoreHit(it, terms, q){
   sc += Math.max(0, 20 - Math.min(20, title.length/3));
   return sc;
 }
+
+// Deduplizieren (title+route+badge)
+(function(){
+  const seen=new Set(), out=[];
+  INDEX.forEach(it=>{
+    const k=(it.title||"")+"|"+(it.route||"")+"|"+(it.badge||"");
+    if(seen.has(k)) return;
+    seen.add(k); out.push(it);
+  });
+  INDEX.length=0; out.forEach(x=>INDEX.push(x));
+})();
+
 function runSearch(q0){
   const q=norm(q0).trim();
   if(!q){ sBox.classList.remove("show"); sBox.innerHTML=""; return; }
@@ -2072,7 +2160,7 @@ function runSearch(q0){
     .filter(it=>terms.every(t=>(it.hay||"").includes(t) || norm(it.raw||"").includes(t)))
     .map(it=>({it, sc:scoreHit(it,terms,q)}))
     .sort((a,b)=>b.sc-a.sc)
-    .slice(0,40)
+    .slice(0,80)
     .map(x=>x.it);
   sActive=-1;
   if(!sHits.length){
@@ -2134,6 +2222,26 @@ const QUIZ = [
   {cat:"Küche", q:"Was bedeutet die erste Ziffer '0' im Eiercode?", opts:["Bodenhaltung","Freilandhaltung","Bio / Ökologisch","Kleingruppenhaltung"], a:2, ex:"0 = Bio/Öko, 1 = Freiland, 2 = Boden, 3 = Kleingruppe."},
   {cat:"Küche", q:"Welches Lebensmittel hat die biologische Wertigkeit 100 (Referenz)?", opts:["Rindfleisch","Hühnerei","Soja","Kartoffeln"], a:1, ex:"Das Hühnerei ist die Referenz mit BW 100."},
 ];
+
+// Quiz-Fragen suchbar machen
+(function indexQuiz(){
+  try{
+    (QUIZ||[]).forEach((item, i)=>{
+      const opts = (item.opts||[]).join(" ");
+      const ans = (item.opts&&item.opts[item.a]) || "";
+      idx(
+        item.q,
+        (item.cat||"Quiz")+(ans?(" · "+ans):""),
+        "Quiz",
+        "#/bfk/2/quiz",
+        null,
+        "quiz frage "+(item.cat||"")+" "+item.q+" "+opts+" "+(item.ex||"")+" "+ans
+      );
+      if(item.cat) idx(item.cat, "Quiz-Kategorie", "Quiz", "#/bfk/2/quiz", null, "quiz kat "+item.cat);
+    });
+  }catch(e){}
+})();
+
 // Quiz-Fragen in die Suche aufnehmen
 QUIZ.forEach((q,i)=>{
   idx(
@@ -2412,7 +2520,7 @@ function initSearchSheet(){
       .filter(it=>terms.every(t=>(it.hay||'').includes(t) || norm(it.raw||'').includes(t)))
       .map(it=>({it, sc:scoreHit(it,terms,q)}))
       .sort((a,b)=>b.sc-a.sc)
-      .slice(0,40)
+      .slice(0,80)
       .map(x=>x.it);
     if(!hits.length){ body.innerHTML='<div class="empty-state"><div class="big-ic">😕</div>Keine Treffer für „'+q0.replace(/[<>&]/g,'')+'“.</div>'; return; }
     body.innerHTML=hits.map((h,i)=>'<div class="res" data-si="'+i+'"><span class="badge">'+h.badge+'</span><div class="txt"><div class="t">'+h.title+'</div><div class="s">'+h.sub+'</div></div></div>').join('');
