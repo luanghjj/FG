@@ -446,7 +446,7 @@
   }
 
   // Public API
-  w.FachForm = {
+  w.FachForm = w.FachForm || {
     FAECHER,
     buildRegistry,
     pageList,
@@ -475,3 +475,5 @@
     // bfk1-data may load after this file – build later via index.html
   }
 })(window);
+try{ if(typeof window!=="undefined" && window.FachForm){ /* global alias for classic scripts */ } }catch(e){}
+

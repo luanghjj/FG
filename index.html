@@ -1628,8 +1628,8 @@ function renderExamDetail(examId){
 /* ============ STANDARD FACH FORM (alle Fächer) ============ */
 function ensureFachRegistry(){
   if(!window.FachForm) return [];
-  if(!FachForm.FAECHER.length) FachForm.buildRegistry();
-  return FachForm.FAECHER;
+  if(!window.FachForm.FAECHER.length) window.FachForm.buildRegistry();
+  return window.FachForm.FAECHER;
 }
 function fachRoute(fach, part, themeId){
   // Prefer standard routes
@@ -1640,7 +1640,7 @@ function fachRoute(fach, part, themeId){
 }
 function renderFachHub(fachId){
   ensureFachRegistry();
-  const fach = FachForm.findFach(fachId);
+  const fach = window.window.FachForm.findFach(fachId);
   if(!fach){ go('#/'); return; }
   // Legacy BfK-1/2 still have dedicated UIs – optional redirect keep bfk1
   const title=document.getElementById('fachHubTitle');
@@ -1701,8 +1701,8 @@ function renderFachHub(fachId){
 }
 function renderFachTheme(fachId, themeId){
   ensureFachRegistry();
-  const fach=FachForm.findFach(fachId);
-  const theme=FachForm.findTheme(fachId, themeId);
+  const fach=window.window.FachForm.findFach(fachId);
+  const theme=window.FachForm.findTheme(fachId, themeId);
   const title=document.getElementById('fachThemeTitle');
   const sub=document.getElementById('fachThemeSub');
   const body=document.getElementById('fachThemeBody');
@@ -1713,7 +1713,7 @@ function renderFachTheme(fachId, themeId){
   if(sub) sub.textContent=(fach.code||'')+' · '+(theme.groupBadge||'')+(fach.teacher?(' · '+fach.teacher):'');
   if(!body) return;
   let html = theme.content || ('<p>'+(theme.desc||'')+'</p>');
-  const pages = FachForm.pageList(theme.pages);
+  const pages = window.FachForm.pageList(theme.pages);
   if(pages.length){
     window._bfk1Pages = pages; // reuse lightbox
     html += '<div class="src-pages"><h3>📄 Arbeitsblätter</h3>'
@@ -1747,7 +1747,7 @@ function renderFachTheme(fachId, themeId){
 let fQuiz={fachId:null, pool:[], order:[], index:0, score:0, wrong:[], started:false};
 function fachQuizIntro(fachId, preselect){
   ensureFachRegistry();
-  const fach=FachForm.findFach(fachId);
+  const fach=window.window.FachForm.findFach(fachId);
   const area=document.getElementById('fachQuizArea');
   const title=document.getElementById('fachQuizTitle');
   const back=document.getElementById('fachQuizBack');
@@ -1760,7 +1760,7 @@ function fachQuizIntro(fachId, preselect){
     area.innerHTML='<p class="muted">Für dieses Fach gibt es noch keine Quiz-Fragen. Themen-Form ist vorbereitet.</p>';
     return;
   }
-  const meta=FachForm.themeMeta(fach);
+  const meta=window.FachForm.themeMeta(fach);
   const counts={}; quiz.forEach(q=>{ counts[q.theme]=(counts[q.theme]||0)+1; });
   const pre=new Set(preselect||[]);
   let html='<div class="quiz-start"><p><b>'+quiz.length+'</b> Fragen · Themen wählen, dann mischen.</p>';
@@ -1787,14 +1787,14 @@ function fachQuizIntro(fachId, preselect){
 }
 function fachQuizStart(fachId, themeIds, mode){
   ensureFachRegistry();
-  const fach=FachForm.findFach(fachId);
+  const fach=window.window.FachForm.findFach(fachId);
   if(!fach) return;
-  const ids=themeIds&&themeIds.length?themeIds:Object.keys(FachForm.themeMeta(fach));
+  const ids=themeIds&&themeIds.length?themeIds:Object.keys(window.FachForm.themeMeta(fach));
   if((location.hash||'') !== fachRoute(fach,'quiz')){
     window._fachQPending={fachId:fach.id, ids, mode:mode||'all'};
     go(fachRoute(fach,'quiz')); return;
   }
-  const pool=FachForm.quizByThemes(fach, ids).slice();
+  const pool=window.FachForm.quizByThemes(fach, ids).slice();
   if(!pool.length){ if(window.toast) toast('Keine Fragen','info'); return; }
   fQuiz.fachId=fach.id;
   fQuiz.pool=pool;
@@ -1808,8 +1808,8 @@ function fachRenderQuestion(){
   if(!area) return;
   if(fQuiz.index>=fQuiz.order.length) return fachQuizResult();
   const q=fQuiz.pool[fQuiz.order[fQuiz.index]];
-  const fach=FachForm.findFach(fQuiz.fachId);
-  const meta=FachForm.themeMeta(fach)[q.theme]||{};
+  const fach=window.FachForm.findFach(fQuiz.fachId);
+  const meta=window.FachForm.themeMeta(fach)[q.theme]||{};
   const pct=Math.round((fQuiz.index/fQuiz.order.length)*100);
   const order=shuffle([0,1,2,3].filter(i=>q.opts[i]!=null));
   const correctPos=order.indexOf(q.a);
@@ -1864,7 +1864,7 @@ function fachQuizResult(){
   const fachId=fQuiz.fachId;
   document.getElementById('fqAgain').onclick=()=>fachQuizStart(fachId,last,'all');
   document.getElementById('fqPick').onclick=()=>fachQuizIntro(fachId,last);
-  document.getElementById('fqBack').onclick=()=>go(fachRoute(FachForm.findFach(fachId),'hub'));
+  document.getElementById('fqBack').onclick=()=>go(fachRoute(window.FachForm.findFach(fachId),'hub'));
 }
 
 
@@ -2285,7 +2285,7 @@ function router(){
     ensureFachRegistry();
     const parts=hash.replace("#/fach/","").split("/").filter(Boolean);
     const fachId=parts[0];
-    const fach=window.FachForm && FachForm.findFach(fachId);
+    const fach=window.FachForm && window.FachForm.findFach(fachId);
     // legacy shortcuts
     if(fach && fach.id==="bfk1" && parts.length===1){ location.hash="#/bfk/1"; return; }
     if(fach && fach.id==="bfk1" && parts[1]==="quiz"){ location.hash="#/bfk/1/quiz"; return; }
@@ -2468,10 +2468,10 @@ idxBfk1Deep();
 // Standard-Form: alle Fächer / Themen / Begriffe / Quiz
 try{
   ensureFachRegistry();
-  (FachForm.FAECHER||[]).forEach(fach=>{
+  (window.FachForm.FAECHER||[]).forEach(fach=>{
     idx(fach.code+" · "+fach.name, fach.desc||"", fach.code, fachRoute(fach,'hub'), null,
       fach.code+" "+fach.name+" "+(fach.teacher||"")+" "+(fach.desc||"")+" fach");
-    FachForm.allThemes(fach).forEach(t=>{
+    window.FachForm.allThemes(fach).forEach(t=>{
       const route = t.route || fachRoute(fach,'theme',t.id);
       const plain=(t.content||"").replace(/<[^>]+>/g," ");
       const des=[...(t.content||"").matchAll(/data-de="([^"]+)"/g)].map(m=>m[1]);
