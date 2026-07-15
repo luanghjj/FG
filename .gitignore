@@ -5,6 +5,10 @@
 page-*.png
 out.txt
 
+# Zip nguồn / OCR tạm (app dùng folder ảnh đã giải nén)
+*.zip
+_ocr/
+
 # macOS
 .DS_Store
 
