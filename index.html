@@ -564,7 +564,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
   .progress-stats{grid-template-columns:1fr 1fr 1fr}
 }
 </style>
-<script src="./pwa.js?v=3" defer></script>
+<script src="./pwa.js?v=4" defer></script>
 </head>
 <body>
 <!-- ===== LOGIN GATE ===== -->
@@ -1131,8 +1131,8 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 
 <div id="toastHost" aria-live="polite"></div>
 
-<script src="./supabase.js?v=3"></script>
-<script src="./bfk1-data.js"></script>
+<script src="./supabase.js?v=4"></script>
+<script src="./bfk1-data.js?v=2"></script>
 <script>
 /* ============ DATEN (Fleischteile) ============ */
 const DATA = {
@@ -1298,10 +1298,17 @@ function renderAbschlussThemen(){
 renderAbschlussThemen();
 
 /* ============ FÄCHER laut Stundenplan H2FO3T ============ */
-/* BfK-1 Themen: geladen aus bfk1-data.js */
-const BFK1_THEMES = window.BFK1_THEMES;
+/* BfK-1 Themen: geladen aus bfk1-data.js (fallback nếu file chưa load) */
+const BFK1_THEMES = window.BFK1_THEMES || {
+  lf6: { id:"lf6", label:"Lernfeld 6", badge:"LF 6", title:"Gerichte, Menüs und Produkte", items:[] },
+  lf9: { id:"lf9", label:"Lernfeld 9", badge:"LF 9", title:"Zahlungen mit dem Gast abwickeln", items:[] }
+};
 function bfk1AllItems(){
-  return window.bfk1AllItems ? window.bfk1AllItems() : [...BFK1_THEMES.lf6.items, ...BFK1_THEMES.lf9.items];
+  try{
+    if(window.bfk1AllItems && window.bfk1AllItems !== bfk1AllItems) return window.bfk1AllItems() || [];
+    const t = window.BFK1_THEMES || BFK1_THEMES;
+    return [...((t.lf6&&t.lf6.items)||[]), ...((t.lf9&&t.lf9.items)||[])];
+  }catch(e){ return []; }
 }
 
 const BFK_LEVELS = [
@@ -1614,7 +1621,8 @@ document.addEventListener("DOMContentLoaded",()=>{
   if(close) close.addEventListener("click",closePageLightbox);
   if(box) box.addEventListener("click",e=>{ if(e.target===box) closePageLightbox(); });
   document.addEventListener("keydown",e=>{
-    if(!document.getElementById("pageLightbox")?.classList.contains("show")) return;
+    const _lb=document.getElementById("pageLightbox");
+    if(!_lb || !_lb.classList.contains("show")) return;
     if(e.key==="Escape") closePageLightbox();
     if(e.key==="ArrowLeft") stepPageLightbox(-1);
     if(e.key==="ArrowRight") stepPageLightbox(1);
@@ -1836,7 +1844,7 @@ idx("Ôn thi · Klassenarbeiten","Lịch thi + Themen theo ngày","KA","#/on-thi
 EXAMS.forEach(ex=>{
   idx(ex.name, ex.teacher+" · "+formatDeDateLong(ex.date), "KA", ex.route, null, ex.code+" "+(ex.topics||[]).join(" ")+" klassenarbeit");
 });
-bfk1AllItems().forEach(t=>{
+(bfk1AllItems()||[]).forEach(t=>{
   idx(t.name, "BfK-1 · "+t.desc, "BfK-1", "#/bfk/1/theme/"+t.id, null, "lf6 lf9 bfk1 "+t.name);
 });
 idx("Klassen-Challenge","Realtime Duell · Raumcode · Live-Score","Game","challenge.html",null,"challenge game duell multiplayer");
