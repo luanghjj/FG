@@ -613,9 +613,6 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
   .progress-stats{grid-template-columns:1fr 1fr 1fr}
 }
 
-.vocab-tip{display:flex;align-items:flex-start;gap:8px;margin:0 0 14px;padding:10px 12px;border-radius:12px;
-  background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af;font-size:.84em;line-height:1.4}
-.vocab-tip b{font-weight:800}
 </style>
 <script src="./pwa.js?v=5" defer></script>
 </head>
@@ -667,9 +664,6 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
     <h1>Fachkraft für Gastronomie</h1>
     <p>Wähle ein Fach, um mit dem Lernen zu beginnen.</p>
   </div>
-  <div class="vocab-tip" id="vocabTip">
-    <span>🇻🇳</span>
-    <div><b>Từ vựng:</b> Bôi đen bất kỳ từ tiếng Đức để xem nghĩa tiếng Việt.</div>
   </div>
 
 
@@ -1095,7 +1089,6 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
     <h2>🍳 BfK-1</h2>
     <p>Fr. Schuster · KA 20.07 · LF6 + LF9</p>
   </div>
-  <div class="vocab-tip"><span>🇻🇳</span><div><b>Từ vựng:</b> Bôi đen từ tiếng Đức trong bài để xem nghĩa tiếng Việt.</div></div>
   <div class="theme-quiz-bar">
     <button type="button" class="btn" onclick="go('#/bfk/1/quiz')">📝 Quiz üben →</button>
     <button type="button" class="btn ghost" onclick="go('#/exam/bfk1')">📅 KA-Themen</button>
@@ -1128,7 +1121,6 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
     <h2 id="bfk1ThemeTitle">Thema</h2>
     <p id="bfk1ThemeSub">Lernfeld</p>
   </div>
-  <div class="vocab-tip"><span>🇻🇳</span><div><b>Từ vựng:</b> Bôi đen từ bất kỳ để tra nghĩa tiếng Việt.</div></div>
   <div class="card" id="bfk1ThemeBody"></div>
 </section>
 
@@ -1226,7 +1218,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 <div id="toastHost" aria-live="polite"></div>
 
 <script src="./supabase.js?v=4"></script>
-<script src="./vocab.js?v=7"></script>
+<script src="./vocab.js?v=8"></script>
 <script src="./bfk1-data.js?v=12"></script>
 <script src="./bfk1-quiz.js?v=7"></script>
 <script src="./faecher.js?v=2"></script>
