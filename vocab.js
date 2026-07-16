@@ -1,24 +1,8 @@
-/* Shared DE→VI vocabulary for ALL pages (Themen, Quiz, Deutsch, …) */
+/* Select-to-translate DE→VI for the whole Lern-App */
 (function (w) {
   "use strict";
 
   const B1_VOCAB = {
-    
-    "Gästebedarfe":"nhu cầu của khách","Gästebedarf":"nhu cầu khách","Auswertung":"phân tích / đánh giá",
-    "Bewertungskriterien":"tiêu chí đánh giá","Kritikpunkte":"điểm phê bình","Zufriedenheit":"sự hài lòng",
-    "Umsatz":"doanh thu","Umsatzrückgang":"sụt giảm doanh thu","Steakrestaurant":"nhà hàng steak",
-    "Ambiente":"không gian / bầu không khí","Gemütlichkeit":"sự ấm cúng","Geschmack":"hương vị",
-    "Temperatur":"nhiệt độ","Toiletten":"nhà vệ sinh","Arbeitskleidung":"đồng phục làm việc",
-    "HACCP":"HACCP (vệ sinh an toàn thực phẩm)","Schulung":"đào tạo","Kompetenz":"năng lực",
-    "Freundlichkeit":"sự thân thiện","arrogantes":"kiêu ngạo","unfreundlich":"không thân thiện",
-    "unsaubere":"không sạch","mangelnde":"thiếu","durchgebraten":"chín kỹ / cháy hết",
-    "kaltes Essen":"đồ ăn nguội","konkrete Maßnahmen":"biện pháp cụ thể","Lernfeld":"lĩnh vực học",
-    "Klassenarbeit":"bài kiểm tra","Fr. Schuster":"cô Schuster","Grundlagen":"cơ sở / nền tảng",
-    "Gastronomie":"ngành F&B / nhà hàng khách sạn","Sammeln":"thu thập","Kategorisieren":"phân loại",
-    "Häufigkeit":"tần suất","Schwere":"mức độ nghiêm trọng","Kontrolle":"kiểm tra / kiểm soát",
-    "Betreff":"tiêu đề email","Anrede":"cách xưng hô","Anlass":"lý do / dịp","Gruß":"lời chào kết",
-    "Problem":"vấn đề","Maßnahme":"biện pháp","E-Mail":"email","Fragebögen":"phiếu hỏi",
-    "Sterne":"sao (đánh giá)","Positiv":"tích cực","Negativ":"tiêu cực","Neutral":"trung lập",
     "Atmosphäre":"không khí / bầu không khí","Preisempfinden":"cảm nhận về giá","Sauberkeit":"sạch sẽ",
     "Service":"phục vụ","Hygiene":"vệ sinh","Garstufe":"độ chín (thịt)","Anrichtung":"cách bày món",
     "Reinigungsplan":"kế hoạch vệ sinh","Teamschulung":"đào tạo nhóm","Geschäftsleitung":"ban giám đốc",
@@ -26,6 +10,17 @@
     "Verbesserungsvorschläge":"đề xuất cải thiện","Feedbackbogen":"phiếu góp ý","Internetbewertungen":"đánh giá online",
     "Briefing":"họp giao ban","Ausgabe-Check":"kiểm trước khi mang ra","Preis-Leistung":"tỷ lệ giá–chất lượng",
     "Speisenqualität":"chất lượng món","vegetarische Alternativen":"món chay thay thế","vegane Optionen":"món thuần chay",
+    "Gästebedarfe":"nhu cầu của khách","Gästebedarf":"nhu cầu khách","Auswertung":"phân tích / đánh giá",
+    "Bewertungskriterien":"tiêu chí đánh giá","Kritikpunkte":"điểm phê bình","Zufriedenheit":"sự hài lòng",
+    "Umsatz":"doanh thu","Umsatzrückgang":"sụt giảm doanh thu","Steakrestaurant":"nhà hàng steak",
+    "Ambiente":"không gian / bầu không khí","Gemütlichkeit":"sự ấm cúng","Geschmack":"hương vị",
+    "Temperatur":"nhiệt độ","Toiletten":"nhà vệ sinh","Arbeitskleidung":"đồng phục làm việc",
+    "HACCP":"HACCP (vệ sinh an toàn thực phẩm)","Schulung":"đào tạo","Kompetenz":"năng lực",
+    "Freundlichkeit":"sự thân thiện","Sammeln":"thu thập","Kategorisieren":"phân loại",
+    "Häufigkeit":"tần suất","Schwere":"mức độ nghiêm trọng","Kontrolle":"kiểm tra / kiểm soát",
+    "Betreff":"tiêu đề email","Anrede":"cách xưng hô","Anlass":"lý do / dịp","Gruß":"lời chào kết",
+    "Problem":"vấn đề","Maßnahme":"biện pháp","Maßnahmen":"các biện pháp","E-Mail":"email",
+    "Fragebögen":"phiếu hỏi","Sterne":"sao (đánh giá)","Positiv":"tích cực","Negativ":"tiêu cực","Neutral":"trung lập",
     "Vegetarisch":"ăn chay","Vegan":"thuần chay","Flexitarier":"ăn chay linh hoạt","Pescetarier":"ăn cá, không thịt",
     "Pescetarisch":"ăn cá, không thịt","Laktosefrei":"không lactose","Glutenfrei":"không gluten","Gluten":"gluten",
     "Zöliakie":"bệnh không dung nạp gluten","Halal":"hợp chuẩn Hồi giáo","Koscher":"hợp chuẩn Do Thái",
@@ -96,21 +91,49 @@
     "Welcome":"chào mừng","Reservation":"đặt bàn","Starter":"khai vị","Main course":"món chính",
     "Allergy":"dị ứng","Tip":"tiền boa","Receipt":"biên lai","Cash or card?":"tiền mặt hay thẻ?",
     "Frage":"câu hỏi","richtig":"đúng","Falsch":"sai","Erklärung":"giải thích","Thema":"chủ đề",
-    "Themen":"các chủ đề","Fragen":"câu hỏi","Punkte":"điểm","Ergebnis":"kết quả"
+    "Themen":"các chủ đề","Fragen":"câu hỏi","Punkte":"điểm","Ergebnis":"kết quả",
+    "Lernfeld":"lĩnh vực học","Klassenarbeit":"bài kiểm tra","Gastronomie":"ngành F&B",
+    "Kriterien":"tiêu chí","Kritik":"phê bình","Formulierung":"cách diễn đạt","Rechtschreibung":"chính tả",
+    "Speisenfolge":"thứ tự món","Inhaltsstoffe":"thành phần dinh dưỡng","Zubereitung":"cách chế biến",
+    "Einteilung":"phân loại","Nährstoffe":"chất dinh dưỡng","Gararten":"các cách làm chín",
+    "Pseudogetreide":"ngũ cốc giả","Mahlgrade":"cấp độ xay","Korn":"hạt ngũ cốc",
+    "Essformen":"hình thức ăn uống","Kartenstruktur":"cấu trúc thực đơn"
   };
 
-  // longest keys first for matching
-  const VOCAB_KEYS = Object.keys(B1_VOCAB).sort((a,b)=>b.length-a.length);
-  const VOCAB_RE = new RegExp(
-    VOCAB_KEYS.map(k=>k.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")).join("|"),
-    "g"
-  );
+  const KEYS = Object.keys(B1_VOCAB).sort((a,b)=>b.length-a.length);
 
-  function lookupVi(de){
-    if(!de) return "";
-    if(B1_VOCAB[de]) return B1_VOCAB[de];
-    const k = VOCAB_KEYS.find(x=>x.toLowerCase()===String(de).toLowerCase());
-    return k ? B1_VOCAB[k] : "";
+  function normKey(s){
+    return String(s||"").trim().replace(/\s+/g," ");
+  }
+
+  function lookupVi(raw){
+    const s = normKey(raw);
+    if(!s) return "";
+    if(B1_VOCAB[s]) return B1_VOCAB[s];
+    // case-insensitive exact
+    let hit = KEYS.find(k=>k.toLowerCase()===s.toLowerCase());
+    if(hit) return B1_VOCAB[hit];
+    // strip punctuation edges
+    const stripped = s.replace(/^[„“"'\(\)\[\]\.,;:!?]+|[„“"'\(\)\[\]\.,;:!?]+$/g,"");
+    if(stripped!==s){
+      if(B1_VOCAB[stripped]) return B1_VOCAB[stripped];
+      hit = KEYS.find(k=>k.toLowerCase()===stripped.toLowerCase());
+      if(hit) return B1_VOCAB[hit];
+    }
+    // try without trailing plural s / n (very light)
+    const variants = [stripped];
+    if(/e$/.test(stripped)) variants.push(stripped.slice(0,-1));
+    if(/en$/.test(stripped)) variants.push(stripped.slice(0,-2));
+    if(/n$/.test(stripped)) variants.push(stripped.slice(0,-1));
+    for(const v of variants){
+      if(B1_VOCAB[v]) return B1_VOCAB[v];
+      hit = KEYS.find(k=>k.toLowerCase()===v.toLowerCase());
+      if(hit) return B1_VOCAB[hit];
+    }
+    // contains longest key (for short compounds)
+    hit = KEYS.find(k=>stripped.toLowerCase().includes(k.toLowerCase()) && k.length>=5);
+    if(hit && Math.abs(hit.length-stripped.length)<=4) return B1_VOCAB[hit];
+    return "";
   }
 
   function ensureStyles(){
@@ -118,23 +141,16 @@
     const s=document.createElement("style");
     s.id="vocab-style";
     s.textContent = `
-.term{display:inline!important;border-bottom:1.5px dashed #60a5fa;color:#2563eb;cursor:pointer;font-weight:650;padding:0 1px;border-radius:3px;white-space:inherit;line-height:inherit}
-.term:hover,.term.open{background:#eff6ff;color:#1d4ed8}
-.term::after{content:"VI";display:inline;font-size:.55em;font-weight:800;margin-left:2px;vertical-align:super;color:#93c5fd;letter-spacing:0}
-.term-vi{display:inline;margin-left:4px;padding:1px 7px;border-radius:999px;background:#ecfdf5;color:#047857;border:1px solid #a7f3d0;font-size:.78em;font-weight:650;white-space:normal}
-.term-vi.hidden{display:none!important}
-/* never decorate navigation lists */
-.theme-item .term, .theme-list .term, .subject-card .term, .tile .term,
-.learn-item .term, .ka-card .term, .fach-item .term, .bottom-nav .term, .nav .term {
-  all: unset; cursor: inherit; color: inherit; font-weight: inherit;
-}
-.theme-item .term::after, .theme-list .term::after, .subject-card .term::after, .tile .term::after { content: none !important; }
-.theme-item .term-vi, .theme-list .term-vi, .subject-card .term-vi, .tile .term-vi { display:none !important; }
-#termPop{position:fixed;z-index:9999;max-width:min(300px,88vw);background:#0f172a;color:#fff;border-radius:14px;padding:12px 14px;font-size:.88em;line-height:1.45;box-shadow:0 12px 32px rgba(15,23,42,.32);display:none}
+#termPop{position:fixed;z-index:10000;max-width:min(320px,90vw);background:#0f172a;color:#fff;border-radius:14px;
+  padding:12px 14px;font-size:.9em;line-height:1.45;box-shadow:0 14px 36px rgba(15,23,42,.35);display:none}
 #termPop.show{display:block}
-#termPop .de{font-weight:700;margin-bottom:4px}
-#termPop .vi{font-weight:600;color:#86efac;font-size:1.02em}
-#termPop .hint{margin-top:6px;font-size:.72em;opacity:.65}
+#termPop .de{font-weight:700;margin-bottom:4px;font-size:.95em}
+#termPop .vi{font-weight:700;color:#86efac;font-size:1.05em}
+#termPop .hint{margin-top:7px;font-size:.72em;opacity:.7}
+#termPop .miss{color:#fca5a5;font-weight:600}
+.vocab-tip{display:flex;align-items:flex-start;gap:8px;margin:0 0 14px;padding:10px 12px;border-radius:12px;
+  background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af;font-size:.84em;line-height:1.4}
+.vocab-tip b{font-weight:800}
 `;
     document.head.appendChild(s);
   }
@@ -145,273 +161,143 @@
     pop=document.createElement("div");
     pop.id="termPop";
     pop.setAttribute("role","tooltip");
-    pop.innerHTML='<div class="de"></div><div class="vi"></div><div class="hint">Nghĩa tiếng Việt · bấm lại để ẩn</div>';
+    pop.innerHTML='<div class="de"></div><div class="vi"></div><div class="hint">Bôi đen từ bất kỳ để tra tiếng Việt</div>';
     document.body.appendChild(pop);
     return pop;
   }
 
-  function showTermPop(el){
-    ensureStyles(); const pop=ensurePop();
-    const de=el.getAttribute("data-de") || el.textContent.trim();
-    const vi=el.getAttribute("data-vi") || lookupVi(de) || "—";
-    pop.querySelector(".de").textContent="🇩🇪 "+de;
-    pop.querySelector(".vi").textContent="🇻🇳 "+vi;
-    pop.classList.add("show");
-    const r=el.getBoundingClientRect();
-    const pw=Math.min(300, window.innerWidth*0.88);
-    let left=r.left + r.width/2 - pw/2;
-    left=Math.max(10, Math.min(left, window.innerWidth-pw-10));
-    let top=r.top - 76; if(top<8) top=r.bottom+10;
-    pop.style.left=left+"px"; pop.style.top=top+"px"; pop.style.width=pw+"px";
-  }
-  function hideTermPop(){
+  function hidePop(){
     const pop=document.getElementById("termPop");
     if(pop) pop.classList.remove("show");
   }
 
-  function toggleTermVi(el){
+  function showPopAt(de, vi, rect){
     ensureStyles();
-    const vi=el.getAttribute("data-vi") || lookupVi(el.getAttribute("data-de")||el.textContent.trim()) || "—";
-    el.setAttribute("data-vi", vi);
-    let chip=el.nextElementSibling;
-    if(!chip || !chip.classList || !chip.classList.contains("term-vi")){
-      chip=document.createElement("span");
-      chip.className="term-vi hidden";
-      el.insertAdjacentElement("afterend", chip);
+    const pop=ensurePop();
+    pop.querySelector(".de").textContent = "🇩🇪 " + de;
+    const viEl=pop.querySelector(".vi");
+    if(vi){
+      viEl.className="vi";
+      viEl.textContent = "🇻🇳 " + vi;
+    }else{
+      viEl.className="vi miss";
+      viEl.textContent = "Chưa có trong từ điển ôn thi";
     }
-    chip.textContent="🇻🇳 "+vi;
-    const willOpen=chip.classList.contains("hidden");
-    document.querySelectorAll(".term-vi").forEach(c=>{ if(c!==chip) c.classList.add("hidden"); });
-    document.querySelectorAll(".term.open").forEach(t=>{ if(t!==el) t.classList.remove("open"); });
-    if(willOpen){ chip.classList.remove("hidden"); el.classList.add("open"); showTermPop(el); }
-    else { chip.classList.add("hidden"); el.classList.remove("open"); hideTermPop(); }
+    pop.classList.add("show");
+    const pw=Math.min(320, window.innerWidth*0.9);
+    let left = rect.left + rect.width/2 - pw/2;
+    left = Math.max(8, Math.min(left, window.innerWidth - pw - 8));
+    let top = rect.top - 12;
+    // measure after show
+    pop.style.width = pw+"px";
+    pop.style.left = left+"px";
+    pop.style.top = "0px";
+    const ph = pop.offsetHeight || 70;
+    top = rect.top - ph - 10;
+    if(top < 8) top = rect.bottom + 10;
+    pop.style.top = top+"px";
   }
 
-  function shouldSkipNode(node){
-    if(!node || node.nodeType!==1) return true;
-    const tag=(node.tagName||"").toLowerCase();
-    if(tag==="script"||tag==="style"||tag==="textarea"||tag==="input"||tag==="select"||tag==="option"||tag==="code"||tag==="pre"||tag==="svg"||tag==="path"||tag==="button"||tag==="a"||tag==="label") return true;
-    if(node.classList && (node.classList.contains("term") || node.classList.contains("term-vi") || node.classList.contains("vi-btn") || node.classList.contains("vi-pop"))) return true;
-    // Never wrap navigation / list chrome (breaks layout like "Gäste bedarfe und Auswertung")
-    if(node.closest){
-      const skipSel = [
-        ".term", "script", "style", "svg", ".img-wrap", ".hotspot",
-        ".theme-item", ".theme-list", ".subject-card", ".subject-grid", ".tile",
-        ".learn-item", ".learn-list", ".fach-item", ".fach-list", ".ka-card", ".ka-list",
-        ".next-exam-chip", ".exam-banner", ".today-card", ".today-grid",
-        ".bottom-nav", ".nav", ".crumbs", ".brand", ".user-chip",
-        ".theme-quiz-bar", ".quiz-actions", ".src-thumb", ".src-grid",
-        "#loginGate", ".login-card", ".btn", "button", "a.label", "nav"
-      ].join(",");
-      if(node.closest(skipSel)) return true;
-    }
-    return false;
-  }
-
-  // Only wrap inside real content surfaces
-  function isContentRoot(el){
-    if(!el || !el.matches) return false;
-    return el.matches([
-      "#bfk1ThemeBody", "#fachThemeBody", "#bfk1QuizArea", "#fachQuizArea", "#quizArea",
-      ".detail-box", ".detail", ".panel.active", ".apanel.active",
-      "#a-struktur", "#a-themen", ".hist-panel",
-      // deutsch content cards
-      ".box", ".prac", ".fb", "#formenGrid .tile .muted", ".acc .body",
-      // generic content
-      ".card .content", "[data-vocab-content]"
-    ].join(","));
-  }
-
-  function contentRoots(scope){
-    const s = scope || document;
-    const list = [];
-    const sels = [
-      "#bfk1ThemeBody", "#fachThemeBody",
-      "#bfk1QuizArea .q-text", "#bfk1QuizArea .q-feedback", "#bfk1QuizArea .q-cat",
-      "#fachQuizArea .q-text", "#fachQuizArea .q-feedback",
-      "#quizArea .q-text", "#quizArea .q-feedback", "#quizArea .q-cat",
-      "#v-kueche .card", "#v-fleisch .card", "#v-fleisch .detail-box",
-      "#v-pruefungen .card", "#v-abschluss .card", "#v-abschluss .mini",
-      "#v-fach-theme #fachThemeBody",
-      ".view.active #bfk1ThemeBody", ".view.active .detail-box",
-      // deutsch
-      ".view.active .card", ".view.active .box", ".view.active .prac",
-      ".view.active .acc .body", ".view.active .hint-bar",
-      "[data-vocab-content]"
-    ];
-    sels.forEach(sel=>{
-      try{ s.querySelectorAll(sel).forEach(n=>{ if(list.indexOf(n)<0) list.push(n); }); }catch(e){}
-    });
-    // if scope itself is a content body
-    if(scope && scope!==document && scope.id && /ThemeBody|QuizArea|quizArea/.test(scope.id)){
-      if(list.indexOf(scope)<0) list.push(scope);
-    }
-    return list;
-  }
-
-  /** Safe wrap: walk text nodes only — does NOT destroy event handlers on buttons */
-  function wrapTextNodes(root){
-    if(!root || !root.querySelectorAll) return 0;
-    ensureStyles();
-    let count=0;
-    const walker=document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
-      acceptNode(node){
-        if(!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
-        const p=node.parentElement;
-        if(!p || shouldSkipNode(p)) return NodeFilter.FILTER_REJECT;
-        // avoid breaking pure control labels that are only UI chrome? still allow quiz question text
-        return NodeFilter.FILTER_ACCEPT;
-      }
-    });
-    const nodes=[];
-    while(walker.nextNode()) nodes.push(walker.currentNode);
-    nodes.forEach(textNode=>{
-      const text=textNode.nodeValue;
-      VOCAB_RE.lastIndex=0;
-      if(!VOCAB_RE.test(text)) return;
-      VOCAB_RE.lastIndex=0;
-      const frag=document.createDocumentFragment();
-      let last=0, m;
-      while((m=VOCAB_RE.exec(text))!==null){
-        // word boundary soft check: avoid mid-word if letter adjacent
-        const start=m.index, end=start+m[0].length;
-        const before=text[start-1]||"";
-        const after=text[end]||"";
-        // unicode-aware boundary (äöüß and combining)
-        const letter = /[A-Za-zÀ-ÿÄÖÜäöüß]/;
-        if(letter.test(before) || letter.test(after)) continue;
-        if(start>last) frag.appendChild(document.createTextNode(text.slice(last,start)));
-        const de=m[0];
-        const vi=lookupVi(de);
-        const span=document.createElement("span");
-        span.className="term";
-        span.setAttribute("data-de", de);
-        if(vi) span.setAttribute("data-vi", vi);
-        span.textContent=de;
-        frag.appendChild(span);
-        count++;
-        last=end;
-      }
-      if(last===0) return; // nothing safe matched
-      if(last<text.length) frag.appendChild(document.createTextNode(text.slice(last)));
-      textNode.parentNode.replaceChild(frag, textNode);
-    });
-    return count;
-  }
-
-  // keep string enrich for offline HTML builders (optional)
-  function enrichTermsInHtml(html){
-    if(!html || typeof html!=="string") return html;
-    // only used for static theme HTML strings before insert
-    let out=html;
-    VOCAB_KEYS.forEach(de=>{
-      const vi=B1_VOCAB[de];
-      const esc=de.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
-      const re=new RegExp("("+esc+")","g");
-      let result="", last=0, m;
-      while((m=re.exec(out))!==null){
-        const offset=m.index;
-        const before=out.slice(Math.max(0,offset-100), offset);
-        const lt=before.lastIndexOf("<"), gt=before.lastIndexOf(">");
-        if(lt>gt) continue;
-        if(before.lastIndexOf('class="term"')>before.lastIndexOf("</span>")) continue;
-        if(before.includes('data-de="'+de+'"')) continue;
-        result += out.slice(last, offset);
-        result += '<span class="term" data-de="'+de+'" data-vi="'+String(vi).replace(/"/g,"&quot;")+'">'+de+"</span>";
-        last = offset + m[0].length;
-      }
-      result += out.slice(last);
-      out=result;
-    });
-    return out;
-  }
-
-  function bindTerms(root){
-    ensureStyles(); ensurePop();
-    const scope = root || document;
-    // IMPORTANT: never rewrite whole interactive containers via innerHTML
-    scope.querySelectorAll(".term").forEach(el=>{
-      if(el.dataset.bound) return;
-      el.dataset.bound="1";
-      if(!el.getAttribute("data-vi")){
-        const vi=lookupVi(el.getAttribute("data-de")||el.textContent.trim());
-        if(vi) el.setAttribute("data-vi", vi);
-      }
-      el.addEventListener("click", e=>{
-        e.preventDefault();
-        e.stopPropagation();
-        toggleTermVi(el);
-      });
-    });
-  }
-
-  /** Enable on any root: Themen, Quiz, Deutsch, … */
-
-  function unwrapTermsInLists(root){
+  function getSelectionInfo(){
+    const sel = window.getSelection && window.getSelection();
+    if(!sel || sel.isCollapsed || !sel.rangeCount) return null;
+    const text = normKey(sel.toString());
+    if(!text || text.length > 60) return null; // avoid whole paragraphs
+    // ignore pure numbers / tiny
+    if(text.length < 2) return null;
+    let rect = null;
     try{
-      const scope=root||document;
-      scope.querySelectorAll('.theme-item .term, .theme-list .term, .subject-card .term, .tile .term, .learn-item .term, .ka-card .term, .fach-item .term, .bottom-nav .term').forEach(term=>{
-        const text=document.createTextNode(term.getAttribute('data-de')||term.textContent||'');
-        const parent=term.parentNode;
-        if(!parent) return;
-        // remove following term-vi chip
-        const next=term.nextSibling;
-        if(next && next.classList && next.classList.contains('term-vi')) next.remove();
-        parent.replaceChild(text, term);
-        parent.normalize && parent.normalize();
-      });
+      const range = sel.getRangeAt(0);
+      const r = range.getBoundingClientRect();
+      if(r && (r.width || r.height)) rect = r;
+      else {
+        const rects = range.getClientRects();
+        if(rects && rects.length) rect = rects[0];
+      }
     }catch(e){}
+    if(!rect) return null;
+    return { text, rect };
   }
 
-  function enableVocabOn(root){
-    const el = typeof root==="string" ? document.querySelector(root) : (root||document.body);
-    if(!el) return;
-    unwrapTermsInLists(el);
-    try{
-      // Prefer wrapping only content surfaces — never theme lists / hubs
-      const roots = contentRoots(el);
-      if(roots.length){
-        roots.forEach(r=>{
-          wrapTextNodes(r);
-          bindTerms(r);
-        });
-      } else if(el.id==="bfk1ThemeBody" || el.id==="fachThemeBody" || /ThemeBody|QuizArea|quizArea/.test(el.id||"")){
-        wrapTextNodes(el);
-        bindTerms(el);
-      } else {
-        // fallback: wrap only existing .term bindings, do NOT scan whole hub lists
-        bindTerms(el);
-      }
-    }catch(e){ console.warn("enableVocabOn", e); }
+  function handleSelection(){
+    const info = getSelectionInfo();
+    if(!info){ hidePop(); return; }
+    // don't trigger inside inputs
+    const ae = document.activeElement;
+    if(ae && /^(INPUT|TEXTAREA|SELECT)$/.test(ae.tagName)) { hidePop(); return; }
+    const vi = lookupVi(info.text);
+    showPopAt(info.text, vi, info.rect);
   }
 
-  // Global delegation: works everywhere (Thema, Quiz, static HTML) even after re-render
-  document.addEventListener("click", e=>{
-    const termEl = e.target && e.target.closest && e.target.closest(".term");
-    if(termEl){
-      e.preventDefault();
-      e.stopPropagation();
-      toggleTermVi(termEl);
-      return;
-    }
-    if(e.target.closest && (e.target.closest(".term-vi")||e.target.closest("#termPop"))) return;
-    document.querySelectorAll(".term-vi").forEach(c=>c.classList.add("hidden"));
-    document.querySelectorAll(".term.open").forEach(t=>t.classList.remove("open"));
-    hideTermPop();
-  }, true); // capture phase so it wins over other handlers
-  document.addEventListener("scroll", hideTermPop, true);
+  // Primary UX: select text → translate
+  document.addEventListener("mouseup", ()=> setTimeout(handleSelection, 0));
+  document.addEventListener("touchend", ()=> setTimeout(handleSelection, 30), {passive:true});
+  document.addEventListener("keyup", (e)=>{
+    if(e.key==="Shift" || e.key.startsWith("Arrow")) setTimeout(handleSelection, 0);
+  });
+  document.addEventListener("scroll", hidePop, true);
+  document.addEventListener("mousedown", (e)=>{
+    if(e.target && e.target.closest && e.target.closest("#termPop")) return;
+    // delay hide so mouseup selection can run
+  });
+  document.addEventListener("click", (e)=>{
+    if(e.target && e.target.closest && e.target.closest("#termPop")) return;
+    const sel = window.getSelection && window.getSelection();
+    if(!sel || sel.isCollapsed) hidePop();
+  });
+
+  // Keep tiny compatibility stubs so old calls don't crash
+  function noop(){}
+  function enableVocabOn(){ /* selection mode: no auto-wrap */ ensureStyles(); ensurePop(); }
+  function bindTerms(){ ensureStyles(); ensurePop(); }
+  function enrichTermsInHtml(html){ return html; }
+  function wrapTextNodes(){ return 0; }
+
+  // Optional: still allow explicit .term spans if present in content
+  document.addEventListener("click", (e)=>{
+    const term = e.target && e.target.closest && e.target.closest(".term");
+    if(!term) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const de = term.getAttribute("data-de") || term.textContent.trim();
+    const vi = term.getAttribute("data-vi") || lookupVi(de);
+    const r = term.getBoundingClientRect();
+    showPopAt(de, vi, r);
+  }, true);
+
+  // Legacy CSS for any remaining .term marks (inline, non-breaking)
+  function legacyTermCss(){
+    if(document.getElementById("vocab-term-legacy")) return;
+    const s=document.createElement("style");
+    s.id="vocab-term-legacy";
+    s.textContent = `.term{display:inline;border-bottom:1px dashed #93c5fd;cursor:pointer}
+.term::after{content:none}
+.theme-item .term,.theme-list .term,.subject-card .term,.tile .term{all:unset}`;
+    document.head.appendChild(s);
+  }
+  legacyTermCss();
 
   w.Vocab = {
-    B1_VOCAB, lookupVi, enrichTermsInHtml, bindTerms, enableVocabOn,
-    showTermPop, hideTermPop, toggleTermVi, wrapTextNodes
+    B1_VOCAB, lookupVi, enableVocabOn, bindTerms, enrichTermsInHtml, wrapTextNodes,
+    showSelection: handleSelection, hidePop
   };
   w.B1_VOCAB = B1_VOCAB;
   w.lookupVi = lookupVi;
-  w.enrichTermsInHtml = enrichTermsInHtml;
-  w.bindTerms = bindTerms;
   w.enableVocabOn = enableVocabOn;
-  w.showTermPop = showTermPop;
-  w.hideTermPop = hideTermPop;
-  w.toggleTermVi = toggleTermVi;
+  w.bindTerms = bindTerms;
+  w.enrichTermsInHtml = enrichTermsInHtml;
   w.wrapTextNodes = wrapTextNodes;
+  w.showTermPop = function(el){
+    if(!el) return;
+    const de=el.getAttribute && (el.getAttribute("data-de")||el.textContent);
+    const vi=lookupVi(de);
+    showPopAt(de, vi, el.getBoundingClientRect());
+  };
+  w.hideTermPop = hidePop;
+  w.toggleTermVi = function(el){ w.showTermPop(el); };
+
+  // boot
+  if(document.readyState==="loading"){
+    document.addEventListener("DOMContentLoaded", ()=>{ ensureStyles(); ensurePop(); });
+  } else { ensureStyles(); ensurePop(); }
 })(window);
