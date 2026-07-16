@@ -509,18 +509,30 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 .luyen-tabs{display:flex;gap:6px;overflow-x:auto;padding:0 0 12px;margin:0 0 8px;-webkit-overflow-scrolling:touch}
 .luyen-tabs button{flex:0 0 auto;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 12px;font:inherit;font-size:.78em;font-weight:650;color:var(--muted);cursor:pointer}
 .luyen-tabs button.active{background:var(--accent);border-color:var(--accent);color:#fff}
-/* Freitext Übungen (GK) */
+/* Freitext Übungen (GK) – form giống đề FS1 */
 .ueb-set{border:1px solid var(--line);border-radius:14px;background:#fff;padding:14px;margin:0 0 12px;box-shadow:var(--shadow)}
 .ueb-set .ueb-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap}
 .ueb-set h3{margin:0;font-size:1em}
 .ueb-set .meta{font-size:.78em;color:var(--muted);margin-top:4px}
 .ueb-set .pts{font-size:.78em;font-weight:700;padding:4px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
-.ueb-task{border-top:1px solid var(--line);padding:14px 0 4px;margin-top:12px}
-.ueb-task:first-of-type{border-top:0;margin-top:8px}
-.ueb-task .head{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:8px}
-.ueb-task .badge{font-size:.72em;font-weight:700;padding:3px 8px;border-radius:999px;background:#f1f5f9;color:#334155}
-.ueb-task .q{font-size:.95em;line-height:1.5;font-weight:600;margin:0 0 8px}
-.ueb-task .tip{font-size:.8em;color:var(--muted);background:#f8fafc;border-left:3px solid #93c5fd;padding:8px 10px;border-radius:0 10px 10px 0;margin:0 0 10px}
+.ueb-paper{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 16px 20px;box-shadow:var(--shadow);margin-bottom:14px}
+.ueb-paper .sheet-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:10px;flex-wrap:wrap}
+.ueb-paper .teacher{font-size:.82em;font-weight:650;color:#334155}
+.ueb-paper .datum{font-size:.8em;color:var(--muted)}
+.ueb-paper .sheet-title{text-align:center;font-size:1.25em;font-weight:800;text-decoration:underline;margin:8px 0 14px;letter-spacing:-.01em}
+.ueb-paper .hinweis{font-size:.9em;line-height:1.5;margin:0 0 8px}
+.ueb-paper .hinweis b{font-weight:700}
+.ueb-paper .total-pts{text-align:right;font-size:1.05em;font-weight:800;color:var(--accent);margin:0 0 14px}
+.ueb-aufg{padding:12px 0;border-top:1px solid #e2e8f0}
+.ueb-aufg:first-of-type{border-top:0;padding-top:0}
+.ueb-aufg .ah{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin:0 0 8px}
+.ueb-aufg .ah .aname{font-size:1em;font-weight:800;color:#b91c1c}
+.ueb-aufg .ah .apts{font-size:.95em;font-weight:800;color:#0f172a;min-width:1.5em;text-align:right}
+.ueb-aufg .aline{font-size:.95em;line-height:1.55;margin:0 0 6px;color:#0f172a}
+.ueb-aufg .aintro{font-size:.92em;line-height:1.55;margin:0 0 10px;color:#334155}
+.ueb-part{margin:10px 0 6px;padding-left:2px}
+.ueb-part .ph{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:6px}
+.ueb-part .pno{font-weight:800;color:#b91c1c;min-width:2.2em}
 .ueb-sol{display:none;margin-top:10px;padding:12px;border-radius:12px;background:#f0fdf4;border:1px solid #bbf7d0}
 .ueb-sol.open{display:block}
 .ueb-sol h4{margin:10px 0 6px;font-size:.9em}
@@ -1331,7 +1343,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 <script src="./bfk1-data.js?v=13"></script>
 <script src="./bfk1-quiz.js?v=9"></script>
 <script src="./faecher.js?v=4"></script>
-<script src="./gk-uebungen.js?v=1"></script>
+<script src="./gk-uebungen.js?v=2"></script>
 <script>
 /* ============ DATEN (Fleischteile) ============ */
 const DATA = {
@@ -1834,28 +1846,34 @@ function renderGkUebung(setId){
   const list=window.GK_UEBUNGEN||[];
   if(!body) return;
   if(!list.length){
-    if(title) title.textContent='✍️ Übungsaufgaben GK';
+    if(title) title.textContent='✍️ Übungsaufgaben';
     body.innerHTML='<div class="card"><p class="muted">Chưa tải được đề. Hard-reload (Cmd+Shift+R).</p></div>';
     return;
   }
 
+  const solIdsOf=set=>{
+    const ids=[];
+    (set.blocks||[]).forEach(b=>{
+      if(b.parts&&b.parts.length) b.parts.forEach((p,i)=>ids.push('b'+b.no+'-'+p.no.replace('.','')+'-'+i));
+      else ids.push('b'+b.no);
+    });
+    return ids;
+  };
+
   // List view
   if(!setId){
-    if(title) title.textContent='✍️ Übungsaufgaben GK';
-    if(sub) sub.textContent='Form FS1 · tự luận · '+list.length+' đề · bật Musterlösung sau khi tự làm';
-    let html='<div class="ueb-toolbar"><span class="hint">Làm như đề thật: viết cả câu tiếng Đức. Xong mới mở lời giải.</span></div>';
+    if(title) title.textContent='✍️ Übungsaufgaben';
+    if(sub) sub.textContent='Form FS1 · in ganzen Sätzen · '+list.length+' đề · Musterlösung ẩn mặc định';
+    let html='<div class="ueb-toolbar"><span class="hint">Làm như tờ đề: đọc Aufgabe → tự viết → mới mở lời giải.</span></div>';
     list.forEach((set,i)=>{
+      const nBlocks=(set.blocks||[]).length;
       html+='<div class="ueb-set">';
-      html+='<div class="ueb-top"><div><h3>'+(i+1)+'. '+set.title+'</h3>';
-      html+='<div class="meta">'+(set.short||'')+'</div>';
-      html+='<div class="meta">'+(set.source||'')+' · '+(set.tasks||[]).length+' Aufgaben · '+set.totalPoints+' Punkte</div></div>';
-      html+='<span class="pts">'+set.totalPoints+' P</span></div>';
-      if(set.themes&&set.themes.length){
-        html+='<div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px">'
-          +set.themes.map(t=>'<span class="topic-chip">'+t+'</span>').join('')+'</div>';
-      }
-      html+='<div class="practice-actions"><button type="button" class="btn" data-open-ueb="'+set.id+'">Làm đề →</button>';
-      html+='<button type="button" class="btn ghost" data-open-ueb-sol="'+set.id+'">Xem nhanh lời giải</button></div></div>';
+      html+='<div class="ueb-top"><div><h3>'+(i+1)+'. '+(set.title||'Übungsaufgaben')+'</h3>';
+      html+='<div class="meta">'+(set.subtitle||'')+'</div>';
+      html+='<div class="meta">'+(set.teacher||'')+(set.source?(' · '+set.source):'')+' · '+nBlocks+' Aufgabe(n) · <b>'+set.totalPoints+'</b> Punkte</div></div>';
+      html+='<span class="pts">'+set.totalPoints+'</span></div>';
+      html+='<div class="practice-actions"><button type="button" class="btn" data-open-ueb="'+set.id+'">Mở đề →</button>';
+      html+='<button type="button" class="btn ghost" data-open-ueb-sol="'+set.id+'">Xem lời giải</button></div></div>';
     });
     body.innerHTML=html;
     body.querySelectorAll('[data-open-ueb]').forEach(b=>b.onclick=()=>go('#/exam/gk/uebung/'+b.getAttribute('data-open-ueb')));
@@ -1868,38 +1886,66 @@ function renderGkUebung(setId){
 
   const set=(window.GkUebung&&GkUebung.findSet? GkUebung.findSet(setId): list.find(s=>s.id===setId));
   if(!set){ go('#/exam/gk/uebung'); return; }
-  if(title) title.textContent='✍️ '+set.title;
-  if(sub) sub.textContent=(set.source||'FS1')+' · '+set.totalPoints+' Punkte · '+(set.tasks||[]).length+' Aufgaben';
+  if(title) title.textContent='✍️ '+(set.title||'Übungsaufgaben');
+  if(sub) sub.textContent=(set.teacher||'Gk / FS 1')+(set.subtitle?(' · '+set.subtitle):'')+' · '+set.totalPoints+' Punkte';
 
+  // Build paper form like PDF
   let html='';
-  html+='<div class="card" style="margin-bottom:14px">';
-  html+='<div class="hint">'+(set.hint||'Antworten Sie in ganzen Sätzen.')+'</div>';
-  html+='<div class="ueb-toolbar" style="margin-top:10px;margin-bottom:0">';
-  html+='<button type="button" class="btn ghost" id="uebShowAll">Hiện tất cả lời giải</button>';
+  html+='<div class="ueb-toolbar">';
+  html+='<button type="button" class="btn ghost" id="uebShowAll">Hiện tất cả Musterlösung</button>';
   html+='<button type="button" class="btn ghost" id="uebHideAll">Ẩn lời giải</button>';
   html+='<button type="button" class="btn ghost" id="uebBackList">← Đề khác</button>';
-  html+='<span class="hint">'+set.totalPoints+' Pkt</span></div></div>';
+  html+='</div>';
 
-  (set.tasks||[]).forEach((t,idx)=>{
-    html+='<div class="card ueb-task" id="ueb-'+t.id+'">';
-    html+='<div class="head"><span class="badge">Aufgabe '+t.no+(t.op?(' · '+t.op):'')+'</span>';
-    html+='<span class="pts">'+t.points+' P</span></div>';
-    html+='<p class="q">'+t.q+'</p>';
-    if(t.tip) html+='<div class="tip">💡 Gợi ý: '+t.tip+'</div>';
-    html+='<div class="ueb-actions">';
-    html+='<button type="button" class="btn" data-sol="'+t.id+'">📖 Musterlösung</button>';
+  html+='<div class="ueb-paper">';
+  html+='<div class="sheet-head"><div class="teacher">'+(set.teacher||'Buß-Schroeder - Gk / FS 1')+'</div><div class="datum">Datum: ________</div></div>';
+  html+='<div class="sheet-title">'+(set.title||'Übungsaufgaben')+'</div>';
+  html+='<p class="hinweis"><b>Hinweis:</b><br>'+(set.hint||'Alle Aufgaben sind, sofern nicht anders angegeben, in ganzen Sätzen zu beantworten.')+'</p>';
+  html+='<div class="total-pts">'+set.totalPoints+'</div>';
+
+  const allSolIds=[];
+  (set.blocks||[]).forEach(block=>{
+    html+='<div class="ueb-aufg">';
+    html+='<div class="ah"><div class="aname">Aufgabe '+block.no+'</div>';
+    if(block.points!=null) html+='<div class="apts">'+block.points+'</div>';
+    else html+='<div class="apts"></div>';
     html+='</div>';
-    html+='<div class="ueb-sol" id="sol-'+t.id+'"><b>Musterlösung</b>'+(t.solution||'<p class="muted">Chưa có.</p>')+'</div>';
+
+    if(block.intro){
+      String(block.intro).split(/\n+/).forEach(line=>{
+        if(line.trim()) html+='<p class="aintro">'+line.trim()+'</p>';
+      });
+    }
+
+    if(block.parts && block.parts.length){
+      block.parts.forEach((part, pi)=>{
+        const sid='sol-'+set.id+'-'+block.no+'-'+part.no.replace(/\./g,'_');
+        allSolIds.push(sid);
+        html+='<div class="ueb-part">';
+        html+='<div class="ph"><div class="pno">'+part.no+'</div><div class="apts">'+(part.points!=null?part.points:'')+'</div></div>';
+        (part.lines||[]).forEach(line=>{ html+='<p class="aline">'+line+'</p>'; });
+        html+='<div class="ueb-actions"><button type="button" class="btn ghost" data-sol="'+sid+'">📖 Musterlösung '+part.no+'</button></div>';
+        html+='<div class="ueb-sol" id="'+sid+'"><b>Musterlösung '+part.no+'</b>'+(part.solution||'')+'</div>';
+        html+='</div>';
+      });
+    } else {
+      const sid='sol-'+set.id+'-'+block.no;
+      allSolIds.push(sid);
+      (block.lines||[]).forEach(line=>{ html+='<p class="aline">'+line+'</p>'; });
+      html+='<div class="ueb-actions"><button type="button" class="btn ghost" data-sol="'+sid+'">📖 Musterlösung</button></div>';
+      html+='<div class="ueb-sol" id="'+sid+'"><b>Musterlösung Aufgabe '+block.no+'</b>'+(block.solution||'')+'</div>';
+    }
     html+='</div>';
   });
+  html+='</div>'; // paper
 
-  html+='<div class="card" style="margin-top:8px"><p class="muted" style="font-size:.85em">Lời giải mang tính <b>mẫu / định hướng</b> theo kiến thức trong app (Partizipation, GG, Gewaltenteilung…). Khi chấm, giáo viên chấp nhận cách diễn đạt khác nếu đúng ý và đủ điểm.</p>';
-  html+='<div class="practice-actions"><button type="button" class="btn" onclick="go(\'#/fach/gk\')">📚 Ôn lại Themen GK</button>';
+  html+='<div class="card"><p class="muted" style="font-size:.85em">Form giống đề FS1. Lời giải là <b>Musterlösung định hướng</b> theo kiến thức đã học (Partizipation, GG, Gewaltenteilung…). Cách viết khác vẫn được nếu đúng ý.</p>';
+  html+='<div class="practice-actions"><button type="button" class="btn" onclick="go(\'#/fach/gk\')">📚 Ôn Themen GK</button>';
   html+='<button type="button" class="btn ghost" onclick="go(\'#/fach/gk/quiz\')">📝 Quiz MC</button></div></div>';
 
   body.innerHTML=html;
   const toggleSol=(id, force)=>{
-    const el=document.getElementById('sol-'+id);
+    const el=document.getElementById(id);
     if(!el) return;
     if(force===true) el.classList.add('open');
     else if(force===false) el.classList.remove('open');
@@ -1911,8 +1957,8 @@ function renderGkUebung(setId){
   const showAll=document.getElementById('uebShowAll');
   const hideAll=document.getElementById('uebHideAll');
   const backList=document.getElementById('uebBackList');
-  if(showAll) showAll.onclick=()=> (set.tasks||[]).forEach(t=>toggleSol(t.id,true));
-  if(hideAll) hideAll.onclick=()=> (set.tasks||[]).forEach(t=>toggleSol(t.id,false));
+  if(showAll) showAll.onclick=()=> allSolIds.forEach(id=>toggleSol(id,true));
+  if(hideAll) hideAll.onclick=()=> allSolIds.forEach(id=>toggleSol(id,false));
   if(backList) backList.onclick=()=>go('#/exam/gk/uebung');
 }
 window.renderGkUebung = renderGkUebung;
@@ -1992,10 +2038,11 @@ function renderExamDetail(examId){
     html+='<div class="card practice-section"><h3>✍️ Đề tự luận (form FS1)</h3>';
     html+='<p class="muted" style="font-size:.85em;margin:0 0 10px">Giống đề Buß-Schroeder: Erläutern / Beurteilen / Begründen… Tự làm trước, rồi mở lời giải.</p>';
     GK_UEBUNGEN.forEach(set=>{
+      const n=(set.blocks||[]).length;
       html+='<div class="ueb-set" style="margin-bottom:10px">';
-      html+='<div class="ueb-top"><div><h3 style="font-size:.95em">'+set.title+'</h3>';
-      html+='<div class="meta">'+(set.short||'')+' · '+(set.tasks?set.tasks.length:0)+' Aufgaben · '+set.totalPoints+' Pkt</div></div>';
-      html+='<span class="pts">'+set.totalPoints+' P</span></div>';
+      html+='<div class="ueb-top"><div><h3 style="font-size:.95em">'+(set.title||'Übungsaufgaben')+(set.subtitle?(' · '+set.subtitle):'')+'</h3>';
+      html+='<div class="meta">'+(set.teacher||'FS1')+' · '+n+' Aufgabe(n) · '+set.totalPoints+' Punkte</div></div>';
+      html+='<span class="pts">'+set.totalPoints+'</span></div>';
       html+='<div class="practice-actions"><button type="button" class="btn" data-ueb="'+set.id+'">Mở đề →</button></div>';
       html+='</div>';
     });
