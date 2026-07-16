@@ -1268,7 +1268,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 <div id="toastHost" aria-live="polite"></div>
 
 <script src="./supabase.js?v=4"></script>
-<script src="./vocab.js?v=10"></script>
+<script src="./vocab.js?v=11"></script>
 <script src="./bfk1-data.js?v=13"></script>
 <script src="./bfk1-quiz.js?v=9"></script>
 <script src="./faecher.js?v=3"></script>
@@ -1806,20 +1806,24 @@ function renderFachTheme(fachId, themeId){
     });
     html += '</div></div>';
   }
+  // Vocab flashcards host (must exist before renderThemeFlashcards)
+  html += '<div class="flash-wrap" id="themeFlash"></div>';
   // quiz CTA if questions exist for theme
   const hasQ = (fach.quiz||[]).some(q=>q.theme===themeId) || (fach.id==='bfk1');
-  if(hasQ){
-    html += '<div class="theme-quiz-bar">'
-      + '<button type="button" class="btn" id="fachThemeDrill">📝 Dieses Thema üben</button>'
-      + '<button type="button" class="btn ghost" id="fachThemeQuiz">Themen-Quiz</button></div>';
-  }
-  html += '<div class="flash-wrap" id="themeFlash"></div>';
+  html += '<div class="theme-quiz-bar">'
+    + (hasQ
+      ? '<button type="button" class="btn" id="fachThemeDrill">📝 Dieses Thema üben</button>'
+        + '<button type="button" class="btn ghost" id="fachThemeQuiz">Themen-Quiz</button>'
+      : '')
+    + '<button type="button" class="btn ghost" id="fachThemeFlashFocus">🃏 Karteikarten</button>'
+    + '</div>';
   body.innerHTML = html;
   try{
     const view=document.getElementById('v-fach-theme');
     if(window.enableVocabOn){ enableVocabOn(body); if(view) enableVocabOn(view); }
     else if(window.bindTerms){ bindTerms(body); if(view) bindTerms(view); }
   }catch(e){}
+  try{ renderThemeFlashcards(themeId, theme, fach); }catch(e){ console.warn('flash', e); }
   const drill=document.getElementById('fachThemeDrill');
   if(drill) drill.onclick=()=>{
     if(fach.id==='bfk1') bfk1QuizStartThemes([themeId]);
@@ -1827,11 +1831,12 @@ function renderFachTheme(fachId, themeId){
   };
   const qbtn=document.getElementById('fachThemeQuiz');
   if(qbtn) qbtn.onclick=()=>go(fach.id==='bfk1'?'#/bfk/1/quiz':fachRoute(fach,'quiz'));
+  const flashFocus=document.getElementById('fachThemeFlashFocus');
+  if(flashFocus) flashFocus.onclick=()=>{ const el=document.getElementById('themeFlash'); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); };
 }
 
 /* Generic quiz (same UX as BfK-1) */
 let fQuiz={fachId:null, pool:[], order:[], index:0, score:0, wrong:[], started:false};
-  try{ renderThemeFlashcards(themeId, theme); }catch(e){}
 
 function fachQuizIntro(fachId, preselect){
   ensureFachRegistry();
@@ -2305,7 +2310,7 @@ function extractTermsFromHtml(html){
   }
   return out;
 }
-function renderThemeFlashcards(themeId, item){
+function renderThemeFlashcards(themeId, item, fach){
   const host=document.getElementById('themeFlash');
   if(!host) return;
   let cards=extractTermsFromHtml((item&&item.content)||'');
@@ -2329,7 +2334,7 @@ function renderThemeFlashcards(themeId, item){
     const c=cards[order[pos]];
     host.innerHTML =
       '<h3>🃏 Karteikarten · Vokabeln</h3>'
-      + '<div class="hint">Tippen auf die Karte · DE → VI</div>'
+      + '<div class="hint">Tippen auf die Karte · DE → VI · '+cards.length+' Karten</div>'
       + '<div class="flash-stage"><div class="flash-card'+(flipped?' flipped':'')+'" id="flashCard">'
       +   '<div class="flash-face front"><div class="flash-kicker">Deutsch</div><div class="flash-de">'+c.de+'</div><div class="flash-meta">Bấm để lật</div></div>'
       +   '<div class="flash-face back"><div class="flash-kicker">Tiếng Việt</div><div class="flash-vi">'+c.vi+'</div><div class="flash-meta">'+c.de+'</div></div>'
@@ -2354,7 +2359,15 @@ function renderThemeFlashcards(themeId, item){
       for(let i=order.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); const t=order[i]; order[i]=order[j]; order[j]=t; }
       pos=0; flipped=false; paint();
     };
-    const q=document.getElementById('flashQuiz'); if(q) q.onclick=()=>bfk1QuizStartThemes([themeId],'quick');
+    const q=document.getElementById('flashQuiz'); if(q) q.onclick=()=>{
+      const fid = fach && fach.id;
+      if(fid==='bfk1' || !fid){
+        if(typeof bfk1QuizStartThemes==='function') bfk1QuizStartThemes([themeId],'quick');
+        else go('#/bfk/1/quiz');
+      } else {
+        fachQuizStart(fid, [themeId], 'all');
+      }
+    };
   };
   paint();
 }

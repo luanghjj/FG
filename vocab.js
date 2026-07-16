@@ -64,7 +64,38 @@
     "Balkendiagramm":"biểu đồ thanh","Strukturbild":"sơ đồ cấu trúc","Organigramm":"sơ đồ tổ chức",
     "Anteile":"tỷ lệ","Entwicklung":"xu hướng","Hierarchie":"cấp bậc","Ablauf":"quy trình","Teufelskreis":"vòng xoáy",
     "Angebot":"chào hàng","Mangel":"lỗi hàng","Rechnung":"hóa đơn","Demokratie":"dân chủ",
-    "Gewaltenteilung":"phân quyền","Grundrechte":"quyền cơ bản","Grundgesetz":"luật cơ bản"
+    "Gewaltenteilung":"phân quyền","Grundrechte":"quyền cơ bản","Grundgesetz":"luật cơ bản",
+    /* Englisch · Service / Telephoning / Grammar */
+    "Information call":"cuộc gọi hỏi thông tin","Problem call":"cuộc gọi về sự cố",
+    "Complaint call":"cuộc gọi khiếu nại","… speaking":"… đây ạ / speaking",
+    "put you through":"chuyển máy / chuyển cuộc gọi","hold on":"giữ máy / chờ một chút",
+    "I'm afraid":"tôi e rằng…","leave a message":"để lại lời nhắn","call back":"gọi lại",
+    "Allergy":"dị ứng","I'm terribly sorry about that":"tôi thực sự rất xin lỗi",
+    "apologize":"xin lỗi / xin lỗi chân thành","inconvenience":"sự bất tiện",
+    "understand":"hiểu","fix":"xử lý / sửa","immediately":"ngay lập tức",
+    "many":"nhiều (đếm được)","much":"nhiều (không đếm được)",
+    "a few":"một vài (đếm được, tích cực)","a little":"một ít (không đếm được)",
+    "Simple present":"thì hiện tại đơn","Present progressive":"thì hiện tại tiếp diễn",
+    "going to-future":"tương lai gần (be going to)","currently":"hiện đang",
+    "at the moment":"ngay lúc này",
+    /* GK · Demokratie / Partizipation */
+    "Partizipation":"sự tham gia / tham chính","Wahlen":"bầu cử","Partei":"đảng",
+    "Demonstration":"biểu tình","Leserbrief":"thư bạn đọc",
+    "Bürgerentscheid":"trưng cầu dân ý cấp địa phương","Volksentscheid":"trưng cầu / quyết định của dân",
+    "Bürgerinitiative":"sáng kiến công dân","Bürgerforum":"diễn đàn công dân","Verein":"hội / hiệp hội",
+    "Internetforum":"diễn đàn internet","Online-Petition":"kiến nghị trực tuyến",
+    "Direkte Demokratie":"dân chủ trực tiếp","Volksinitiative":"sáng kiến dân sự",
+    "Volksbegehren":"thỉnh nguyện / yêu cầu trưng cầu",
+    "Einleitung":"mở bài","Beschreibung":"mô tả","Interpretation":"phân tích / diễn giải",
+    "Fazit":"kết luận","politische Beteiligung":"sự tham gia chính trị","Karikatur":"tranh biếm họa",
+    "Legislative":"lập pháp","Exekutive":"hành pháp","Judikative":"tư pháp",
+    "Gewaltenverschränkung":"đan xen quyền lực",
+    "konstruktives Misstrauensvotum":"bỏ phiếu bất tín nhiệm xây dựng",
+    "Bundesverfassungsgericht":"Tòa án Hiến pháp Liên bang",
+    "Bundeskanzler":"Thủ tướng Liên bang","vierte Gewalt":"quyền lực thứ tư",
+    "Volkssouveränität":"chủ quyền nhân dân","Repräsentative Demokratie":"dân chủ đại diện",
+    "Mehrheitsprinzip":"nguyên tắc đa số","Volksherrschaft":"chính thể dân chủ / quyền lực thuộc về nhân dân",
+    "Menschenwürde":"nhân phẩm","Menschenrechte":"nhân quyền","Bürgerrechte":"quyền công dân"
   };
 
   function lookupVi(de){
@@ -97,6 +128,12 @@
 #v-fleisch .term::after, #v-abschluss .term::after, #quizArea .term::after,
 #bfk1QuizArea .term::after, #fachQuizArea .term::after, [data-vocab-content] .term::after {
   content:"VI"; font-size:.55em; font-weight:800; margin-left:2px; vertical-align:super; color:#93c5fd;
+}
+#bfk1ThemeBody .term.open, #fachThemeBody .term.open, #v-kueche .term.open, #v-fleisch .term.open,
+#v-abschluss .term.open, #quizArea .term.open, #bfk1QuizArea .term.open, #fachQuizArea .term.open,
+[data-vocab-content] .term.open {
+  background:#dbeafe;
+  box-shadow:0 0 0 2px rgba(37,99,235,.18);
 }
 .term-vi{display:inline;margin-left:4px;padding:1px 7px;border-radius:999px;background:#ecfdf5;color:#047857;border:1px solid #a7f3d0;font-size:.78em;font-weight:650}
 .term-vi.hidden{display:none!important}
