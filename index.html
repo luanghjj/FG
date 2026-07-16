@@ -1029,7 +1029,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
     <h2>📝 Quiz – Teste dein Wissen</h2>
     <p>Multiple-Choice zum Selbsttest. Nach der Auswahl erscheint die Erklärung.</p>
   </div>
-  <div class="card" data-no-vocab="1"><div id="quizArea" data-no-vocab="1"></div></div>
+  <div class="card"><div id="quizArea"></div></div>
 </section>
 
 <!-- ===== THEME: PRÜFUNGEN ===== -->
@@ -1102,7 +1102,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
     <h2>📝 BfK-1 · Quiz</h2>
     <p>Themen wählen · Fragen werden gemischt</p>
   </div>
-  <div class="card" data-no-vocab="1"><div id="bfk1QuizArea" data-no-vocab="1"></div></div>
+  <div class="card"><div id="bfk1QuizArea"></div></div>
 </section>
 
 <!-- ===== BFK-1 THEME DETAIL ===== -->
@@ -1144,7 +1144,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
     <h2 id="fachQuizTitle">Quiz</h2>
     <p>Themen wählen · Fragen werden gemischt</p>
   </div>
-  <div class="card" data-no-vocab="1"><div id="fachQuizArea" data-no-vocab="1"></div></div>
+  <div class="card"><div id="fachQuizArea"></div></div>
 </section>
 
 <div class="footer">🍀 Lern-App · Fachkraft für Gastronomie · Viel Erfolg! 🍀</div>
@@ -1209,7 +1209,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 <div id="toastHost" aria-live="polite"></div>
 
 <script src="./supabase.js?v=4"></script>
-<script src="./vocab.js?v=3"></script>
+<script src="./vocab.js?v=4"></script>
 <script src="./bfk1-data.js?v=11"></script>
 <script src="./bfk1-quiz.js?v=7"></script>
 <script src="./faecher.js?v=2"></script>
@@ -1830,6 +1830,8 @@ function fachRenderQuestion(){
   html+='</div><div class="q-feedback" id="fqFb"></div><div class="q-nav" id="fqNav" style="display:none">';
   html+='<button type="button" class="btn" id="fqNext">Weiter →</button></div>';
   area.innerHTML=html;
+  try{ if(window.enableVocabOn) enableVocabOn(area); }catch(e){}
+
   let locked=false;
   area.querySelectorAll('.opt').forEach(btn=>{
     btn.onclick=()=>{
@@ -1899,7 +1901,7 @@ function bfk1QuizIntro(preselect){
   const counts={};
   quiz.forEach(q=>{ counts[q.theme]=(counts[q.theme]||0)+1; });
   const pre=new Set(preselect||[]);
-  let html='<div class="quiz-start" data-no-vocab="1">';
+  let html='<div class="quiz-start">';
   html+='<p><b>'+quiz.length+'</b> Fragen · Themen auswählen, dann mischen &amp; üben.</p>';
   html+='<div class="quiz-actions" style="margin-bottom:10px">';
   html+='<button type="button" class="btn ghost" data-b1="all">Alle Themen</button>';
@@ -1922,6 +1924,8 @@ function bfk1QuizIntro(preselect){
   html+='<button type="button" class="btn ghost" data-b1="quick">⚡ 10 Fragen</button>';
   html+='</div></div>';
   area.innerHTML=html;
+  try{ if(window.enableVocabOn) enableVocabOn(area); }catch(e){}
+
 
   const pick=()=>[...area.querySelectorAll('#b1ThemePick input:checked')].map(x=>x.value);
   const setGroup=(pred)=>{
@@ -1994,6 +1998,8 @@ function bfk1RenderQuestion(){
   html+='</div><div class="q-feedback" id="b1fb"></div><div class="q-nav" id="b1nav" style="display:none">';
   html+='<button type="button" class="btn" id="b1next">Weiter →</button></div>';
   area.innerHTML=html;
+  try{ if(window.enableVocabOn) enableVocabOn(area); }catch(e){}
+
   let locked=false;
   area.querySelectorAll('.opt').forEach(btn=>{
     btn.onclick=()=>{
@@ -2852,6 +2858,8 @@ function renderQuestion(){
   q.opts.forEach((o,i)=>{ html+='<button class="opt" data-i="'+i+'">'+o+'</button>'; });
   html+='</div><div class="q-feedback" id="qfb"></div><div class="q-nav" id="qnav"></div>';
   area.innerHTML=html;
+  try{ const qa=document.getElementById("quizArea"); if(qa&&window.enableVocabOn) enableVocabOn(qa); }catch(e){}
+
   area.querySelectorAll(".opt").forEach(btn=>btn.addEventListener("click",()=>answer(parseInt(btn.getAttribute("data-i")),q,qi)));
 }
 function answer(chosen,q,qi){
@@ -2985,9 +2993,7 @@ function toast(msg, type){
 function setBottomNav(hash){
   try{
     const active=document.querySelector('.view.active');
-    const h=hash||location.hash||'';
-    const skipVocab = !active || /quiz/i.test(active.id||'') || h.indexOf('/quiz')>=0 || h.indexOf('bfk/1/quiz')>=0;
-    if(active && window.enableVocabOn && !skipVocab) setTimeout(()=>enableVocabOn(active), 0);
+    if(active && window.enableVocabOn) setTimeout(function(){ enableVocabOn(active); }, 0);
   }catch(e){}
   const nav=document.getElementById('bottomNav'); if(!nav) return;
   const h=hash||location.hash||'#/';
