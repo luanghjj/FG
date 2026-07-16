@@ -1271,7 +1271,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 <script src="./vocab.js?v=10"></script>
 <script src="./bfk1-data.js?v=13"></script>
 <script src="./bfk1-quiz.js?v=9"></script>
-<script src="./faecher.js?v=2"></script>
+<script src="./faecher.js?v=3"></script>
 <script>
 /* ============ DATEN (Fleischteile) ============ */
 const DATA = {
@@ -1540,14 +1540,26 @@ const EXAMS = [
     date:"2026-07-21", teacher:"HAL (Hoffmann)",
     icon:"🇬🇧", accent:"#7c3aed", soft:"#f5f3ff",
     route:"#/exam/englisch", studyRoute:"#/fach/englisch",
-    topics:["Service English","Gastkommunikation","Vokabeln","Dialoge"],
+    topics:[
+      "Telephoning: call types, phrases, polite language",
+      "Restaurant complaints & role plays",
+      "much / many / a little / a few",
+      "Present & future tenses (business)",
+    ],
   },
   {
     id:"gk", code:"GK", name:"Klassenarbeit Gemeinschaftskunde",
     date:"2026-07-22", teacher:"BS (Buß-Schroeder)",
     icon:"🏛️", accent:"#16a34a", soft:"#f0fdf4",
     route:"#/exam/gk", studyRoute:"#/fach/gk",
-    topics:["Politik","Gesellschaft","Demokratie","Aktuelle Themen"],
+    topics:[
+      "Partizipation (traditionell + digital)",
+      "Direkte Demokratie · Volksinitiative/Begehren/Entscheid",
+      "Karikatur-Methode (Beteiligung)",
+      "Gewaltenteilung · WRV vs GG",
+      "Vertrauensfrage / konstruktives Misstrauensvotum",
+      "Demokratie nach GG · Grundrechte · Medien",
+    ],
   },
 ];
 
@@ -2471,12 +2483,12 @@ const SUBJECT_GROUPS = [
       {code:"D", name:"Deutsch", icon:"🇩🇪", accent:"#2563eb", soft:"#eff6ff", ready:true, route:"#/fach/deutsch",
         desc:"Visualisierung · Mindmap · Diagramme (Standard-Form).",
         topics:["Visualisierung","Mindmap","Diagramme","Sachtext"], meta:"Herrn Kling", examDate:"2026-07-16"},
-      {code:"GK", name:"Gemeinschaftskunde", icon:"🏛️", accent:"#16a34a", soft:"#f0fdf4", ready:false, route:"#/fach/gk",
-        desc:"Demokratie · Grundrechte (Standard-Form).",
-        topics:["Demokratie","Gewaltenteilung","Grundrechte","Wahlen"], meta:"BS (Buß-Schroeder)", examDate:"2026-07-22"},
-      {code:"E", name:"Englisch", icon:"🇬🇧", accent:"#7c3aed", soft:"#f5f3ff", ready:false, route:"#/fach/englisch",
-        desc:"Service English · Orders · Payment (Standard-Form).",
-        topics:["Greeting","Ordering","Bill & payment","Vokabeln"], meta:"HAL (Hoffmann)", examDate:"2026-07-21"},
+      {code:"GK", name:"Gemeinschaftskunde", icon:"🏛️", accent:"#16a34a", soft:"#f0fdf4", ready:true, route:"#/fach/gk",
+        desc:"Partizipation · Demokratie GG · Gewaltenteilung · Karikatur.",
+        topics:["Partizipation","Direkte Demokratie","Gewaltenteilung","Vertrauensfrage","Grundrechte"], meta:"BS (Buß-Schroeder)", examDate:"2026-07-22"},
+      {code:"E", name:"Englisch", icon:"🇬🇧", accent:"#7c3aed", soft:"#f5f3ff", ready:true, route:"#/fach/englisch",
+        desc:"Telephoning · Complaints · Quantifiers · Tenses.",
+        topics:["Telephoning","Restaurant complaints","much/many/a few","Present & future"], meta:"HAL (Hoffmann)", examDate:"2026-07-21"},
     ],
   },
 ];
@@ -2496,10 +2508,7 @@ BFK_LEVELS.forEach(l=>{
 });
 PLACEHOLDERS["#/fach/wiko"] = {title:"WiKO · Wirtschaftskompetenz", desc:"Wirtschaftliche Zusammenhänge im Ausbildungsbetrieb.", topics:["Kaufvertrag","Mängel","Lieferverzug","Rechnung"], note:"Lehrkraft: Remsing (RM). Inhalte folgen bald."};
 /* standard fach aliases */
-PLACEHOLDERS["#/fach/gk"] = {title:"GK · Gemeinschaftskunde", desc:"Politik und Gesellschaft · KA 22.07.2026.", topics:["Demokratie","Grundrechte","Aktuelle Themen"], note:"Lehrkraft: Buß-Schroeder (BS). Themen folgen bald — Termin KA: 22.07."};
-
-PLACEHOLDERS["#/fach/e"] = {title:"E · Englisch", desc:"Service English · KA 21.07.2026.", topics:["Greeting","Ordering","Payment"], note:"Standard-Form · HAL."};
-PLACEHOLDERS["#/fach/englisch"] = PLACEHOLDERS["#/fach/e"];
+/* GK + Englisch now use standard FachForm hubs (#/fach/gk, #/fach/englisch) */
 PLACEHOLDERS["#/fach/deutsch"] = {title:"D · Deutsch", desc:"Visualisierung · KA 16.07.", topics:["Mindmap","Diagramme"], note:"Standard-Form · Kling."};
 
 function subjectCardHTML(s){
@@ -2602,8 +2611,7 @@ const ROUTES = {
   "#/bfk/pruefungen":{view:"v-pruefungen",crumbs:[["BfK","#/bfk"],["BfK-2","#/bfk/2"],["Prüfungen","#/bfk/2/pruefungen"]], redirect:"#/bfk/2/pruefungen"},
   "#/abschluss":   {view:"v-abschluss",crumbs:[["Abschlussprüfung","#/abschluss"]]},
   "#/fach/wiko":   {view:"v-placeholder", crumbs:[["WiKO","#/fach/wiko"]], placeholder:true},
-  "#/fach/gk":     {view:"v-placeholder", crumbs:[["GK","#/fach/gk"]], placeholder:true},
-  "#/fach/e":      {view:"v-placeholder", crumbs:[["Englisch","#/fach/e"]], placeholder:true},
+  "#/fach/e":      {view:"v-placeholder", crumbs:[["Englisch","#/fach/e"]], placeholder:true}, // alias → router uses FachForm for englisch
 };
 function go(hash){
   // External HTML pages (e.g. deutsch.html) – leave SPA routing
