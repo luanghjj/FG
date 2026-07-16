@@ -1209,8 +1209,8 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 <div id="toastHost" aria-live="polite"></div>
 
 <script src="./supabase.js?v=4"></script>
-<script src="./vocab.js?v=4"></script>
-<script src="./bfk1-data.js?v=11"></script>
+<script src="./vocab.js?v=5"></script>
+<script src="./bfk1-data.js?v=12"></script>
 <script src="./bfk1-quiz.js?v=7"></script>
 <script src="./faecher.js?v=2"></script>
 <script>
@@ -1625,8 +1625,12 @@ function renderExamDetail(examId){
   if(ex.id==="deutsch"){
     html+='<div class="card"><h2>🇩🇪 Deutsch</h2><p class="muted">Visualisierung · Mindmap · Diagramme</p><p style="margin-top:12px"><a class="btn" href="deutsch.html">Öffnen →</a></p></div>';
   }
-  body.innerHTML=enrichTermsInHtml(html);
-  bindTerms(body);
+  body.innerHTML = html;
+  try{
+    const view=document.getElementById('v-fach-theme');
+    if(window.enableVocabOn){ enableVocabOn(body); if(view) enableVocabOn(view); }
+    else if(window.bindTerms){ bindTerms(body); if(view) bindTerms(view); }
+  }catch(e){}
 }
 
 
@@ -1738,8 +1742,12 @@ function renderFachTheme(fachId, themeId){
       + '<button type="button" class="btn" id="fachThemeDrill">📝 Dieses Thema üben</button>'
       + '<button type="button" class="btn ghost" id="fachThemeQuiz">Themen-Quiz</button></div>';
   }
-  body.innerHTML=enrichTermsInHtml(html);
-  bindTerms(body);
+  body.innerHTML = html;
+  try{
+    const view=document.getElementById('v-fach-theme');
+    if(window.enableVocabOn){ enableVocabOn(body); if(view) enableVocabOn(view); }
+    else if(window.bindTerms){ bindTerms(body); if(view) bindTerms(view); }
+  }catch(e){}
   const drill=document.getElementById('fachThemeDrill');
   if(drill) drill.onclick=()=>{
     if(fach.id==='bfk1') bfk1QuizStartThemes([themeId]);
@@ -2111,7 +2119,17 @@ function renderBfk1Theme(themeId){
   if(drill) drill.onclick=()=>bfk1QuizStartThemes([themeId]);
   const pickBtn=document.getElementById('b1ThemePickBtn');
   if(pickBtn) pickBtn.onclick=()=>go('#/bfk/1/quiz');
-  bindTerms(body);
+  // Activate DE→VI on content + title/subtitle of this theme view
+  try{
+    const view=document.getElementById('v-bfk1-theme');
+    if(window.enableVocabOn){
+      enableVocabOn(body);
+      if(view) enableVocabOn(view);
+    } else if(window.bindTerms){
+      bindTerms(body);
+      if(view) bindTerms(view);
+    }
+  }catch(e){ console.warn('theme vocab', e); }
 }
 function openPageLightbox(i){
   const pages=window._bfk1Pages||[];
@@ -2371,6 +2389,7 @@ function router(){
       cb.innerHTML='<a onclick="go(\'#/\')">Fächer</a><span class="sep">›</span><a onclick="go(\'#/bfk\')">BfK</a><span class="sep">›</span><a onclick="go(\'#/bfk/1\')">BfK-1</a><span class="sep">›</span><a onclick="go(\''+hash+'\')">Thema</a>';
     }
     renderBfk1Theme(tid);
+    try{ const v=document.getElementById("v-bfk1-theme"); if(v&&window.enableVocabOn) enableVocabOn(v); }catch(e){}
     setBottomNav(hash);
     window.scrollTo({top:0,behavior:"smooth"});
     return;

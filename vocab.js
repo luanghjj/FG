@@ -3,6 +3,22 @@
   "use strict";
 
   const B1_VOCAB = {
+    
+    "Gästebedarfe":"nhu cầu của khách","Gästebedarf":"nhu cầu khách","Auswertung":"phân tích / đánh giá",
+    "Bewertungskriterien":"tiêu chí đánh giá","Kritikpunkte":"điểm phê bình","Zufriedenheit":"sự hài lòng",
+    "Umsatz":"doanh thu","Umsatzrückgang":"sụt giảm doanh thu","Steakrestaurant":"nhà hàng steak",
+    "Ambiente":"không gian / bầu không khí","Gemütlichkeit":"sự ấm cúng","Geschmack":"hương vị",
+    "Temperatur":"nhiệt độ","Toiletten":"nhà vệ sinh","Arbeitskleidung":"đồng phục làm việc",
+    "HACCP":"HACCP (vệ sinh an toàn thực phẩm)","Schulung":"đào tạo","Kompetenz":"năng lực",
+    "Freundlichkeit":"sự thân thiện","arrogantes":"kiêu ngạo","unfreundlich":"không thân thiện",
+    "unsaubere":"không sạch","mangelnde":"thiếu","durchgebraten":"chín kỹ / cháy hết",
+    "kaltes Essen":"đồ ăn nguội","konkrete Maßnahmen":"biện pháp cụ thể","Lernfeld":"lĩnh vực học",
+    "Klassenarbeit":"bài kiểm tra","Fr. Schuster":"cô Schuster","Grundlagen":"cơ sở / nền tảng",
+    "Gastronomie":"ngành F&B / nhà hàng khách sạn","Sammeln":"thu thập","Kategorisieren":"phân loại",
+    "Häufigkeit":"tần suất","Schwere":"mức độ nghiêm trọng","Kontrolle":"kiểm tra / kiểm soát",
+    "Betreff":"tiêu đề email","Anrede":"cách xưng hô","Anlass":"lý do / dịp","Gruß":"lời chào kết",
+    "Problem":"vấn đề","Maßnahme":"biện pháp","E-Mail":"email","Fragebögen":"phiếu hỏi",
+    "Sterne":"sao (đánh giá)","Positiv":"tích cực","Negativ":"tiêu cực","Neutral":"trung lập",
     "Atmosphäre":"không khí / bầu không khí","Preisempfinden":"cảm nhận về giá","Sauberkeit":"sạch sẽ",
     "Service":"phục vụ","Hygiene":"vệ sinh","Garstufe":"độ chín (thịt)","Anrichtung":"cách bày món",
     "Reinigungsplan":"kế hoạch vệ sinh","Teamschulung":"đào tạo nhóm","Geschäftsleitung":"ban giám đốc",
@@ -201,7 +217,9 @@
         const start=m.index, end=start+m[0].length;
         const before=text[start-1]||"";
         const after=text[end]||"";
-        if(/[A-Za-zÄÖÜäöüß]/.test(before) || /[A-Za-zÄÖÜäöüß]/.test(after)) continue;
+        // unicode-aware boundary (äöüß and combining)
+        const letter = /[A-Za-zÀ-ÿÄÖÜäöüß]/;
+        if(letter.test(before) || letter.test(after)) continue;
         if(start>last) frag.appendChild(document.createTextNode(text.slice(last,start)));
         const de=m[0];
         const vi=lookupVi(de);
@@ -277,12 +295,20 @@
     }catch(e){ console.warn("enableVocabOn", e); }
   }
 
+  // Global delegation: works everywhere (Thema, Quiz, static HTML) even after re-render
   document.addEventListener("click", e=>{
-    if(e.target.closest && (e.target.closest(".term")||e.target.closest(".term-vi")||e.target.closest("#termPop"))) return;
+    const termEl = e.target && e.target.closest && e.target.closest(".term");
+    if(termEl){
+      e.preventDefault();
+      e.stopPropagation();
+      toggleTermVi(termEl);
+      return;
+    }
+    if(e.target.closest && (e.target.closest(".term-vi")||e.target.closest("#termPop"))) return;
     document.querySelectorAll(".term-vi").forEach(c=>c.classList.add("hidden"));
     document.querySelectorAll(".term.open").forEach(t=>t.classList.remove("open"));
     hideTermPop();
-  });
+  }, true); // capture phase so it wins over other handlers
   document.addEventListener("scroll", hideTermPop, true);
 
   w.Vocab = {
