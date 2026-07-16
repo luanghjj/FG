@@ -118,11 +118,18 @@
     const s=document.createElement("style");
     s.id="vocab-style";
     s.textContent = `
-.term{border-bottom:1.5px dashed #60a5fa;color:#2563eb;cursor:pointer;font-weight:650;padding:0 2px;border-radius:4px}
+.term{display:inline!important;border-bottom:1.5px dashed #60a5fa;color:#2563eb;cursor:pointer;font-weight:650;padding:0 1px;border-radius:3px;white-space:inherit;line-height:inherit}
 .term:hover,.term.open{background:#eff6ff;color:#1d4ed8}
-.term::after{content:"VI";font-size:.58em;font-weight:800;margin-left:3px;vertical-align:super;color:#93c5fd}
-.term-vi{display:inline;margin-left:4px;padding:1px 7px;border-radius:999px;background:#ecfdf5;color:#047857;border:1px solid #a7f3d0;font-size:.78em;font-weight:650}
+.term::after{content:"VI";display:inline;font-size:.55em;font-weight:800;margin-left:2px;vertical-align:super;color:#93c5fd;letter-spacing:0}
+.term-vi{display:inline;margin-left:4px;padding:1px 7px;border-radius:999px;background:#ecfdf5;color:#047857;border:1px solid #a7f3d0;font-size:.78em;font-weight:650;white-space:normal}
 .term-vi.hidden{display:none!important}
+/* never decorate navigation lists */
+.theme-item .term, .theme-list .term, .subject-card .term, .tile .term,
+.learn-item .term, .ka-card .term, .fach-item .term, .bottom-nav .term, .nav .term {
+  all: unset; cursor: inherit; color: inherit; font-weight: inherit;
+}
+.theme-item .term::after, .theme-list .term::after, .subject-card .term::after, .tile .term::after { content: none !important; }
+.theme-item .term-vi, .theme-list .term-vi, .subject-card .term-vi, .tile .term-vi { display:none !important; }
 #termPop{position:fixed;z-index:9999;max-width:min(300px,88vw);background:#0f172a;color:#fff;border-radius:14px;padding:12px 14px;font-size:.88em;line-height:1.45;box-shadow:0 12px 32px rgba(15,23,42,.32);display:none}
 #termPop.show{display:block}
 #termPop .de{font-weight:700;margin-bottom:4px}
@@ -183,10 +190,63 @@
   function shouldSkipNode(node){
     if(!node || node.nodeType!==1) return true;
     const tag=(node.tagName||"").toLowerCase();
-    if(tag==="script"||tag==="style"||tag==="textarea"||tag==="input"||tag==="select"||tag==="option"||tag==="code"||tag==="pre"||tag==="svg"||tag==="path") return true;
+    if(tag==="script"||tag==="style"||tag==="textarea"||tag==="input"||tag==="select"||tag==="option"||tag==="code"||tag==="pre"||tag==="svg"||tag==="path"||tag==="button"||tag==="a"||tag==="label") return true;
     if(node.classList && (node.classList.contains("term") || node.classList.contains("term-vi") || node.classList.contains("vi-btn") || node.classList.contains("vi-pop"))) return true;
-    if(node.closest && (node.closest(".term") || node.closest("script") || node.closest("style") || node.closest("svg") || node.closest(".img-wrap") || node.closest(".hotspot"))) return true;
+    // Never wrap navigation / list chrome (breaks layout like "Gäste bedarfe und Auswertung")
+    if(node.closest){
+      const skipSel = [
+        ".term", "script", "style", "svg", ".img-wrap", ".hotspot",
+        ".theme-item", ".theme-list", ".subject-card", ".subject-grid", ".tile",
+        ".learn-item", ".learn-list", ".fach-item", ".fach-list", ".ka-card", ".ka-list",
+        ".next-exam-chip", ".exam-banner", ".today-card", ".today-grid",
+        ".bottom-nav", ".nav", ".crumbs", ".brand", ".user-chip",
+        ".theme-quiz-bar", ".quiz-actions", ".src-thumb", ".src-grid",
+        "#loginGate", ".login-card", ".btn", "button", "a.label", "nav"
+      ].join(",");
+      if(node.closest(skipSel)) return true;
+    }
     return false;
+  }
+
+  // Only wrap inside real content surfaces
+  function isContentRoot(el){
+    if(!el || !el.matches) return false;
+    return el.matches([
+      "#bfk1ThemeBody", "#fachThemeBody", "#bfk1QuizArea", "#fachQuizArea", "#quizArea",
+      ".detail-box", ".detail", ".panel.active", ".apanel.active",
+      "#a-struktur", "#a-themen", ".hist-panel",
+      // deutsch content cards
+      ".box", ".prac", ".fb", "#formenGrid .tile .muted", ".acc .body",
+      // generic content
+      ".card .content", "[data-vocab-content]"
+    ].join(","));
+  }
+
+  function contentRoots(scope){
+    const s = scope || document;
+    const list = [];
+    const sels = [
+      "#bfk1ThemeBody", "#fachThemeBody",
+      "#bfk1QuizArea .q-text", "#bfk1QuizArea .q-feedback", "#bfk1QuizArea .q-cat",
+      "#fachQuizArea .q-text", "#fachQuizArea .q-feedback",
+      "#quizArea .q-text", "#quizArea .q-feedback", "#quizArea .q-cat",
+      "#v-kueche .card", "#v-fleisch .card", "#v-fleisch .detail-box",
+      "#v-pruefungen .card", "#v-abschluss .card", "#v-abschluss .mini",
+      "#v-fach-theme #fachThemeBody",
+      ".view.active #bfk1ThemeBody", ".view.active .detail-box",
+      // deutsch
+      ".view.active .card", ".view.active .box", ".view.active .prac",
+      ".view.active .acc .body", ".view.active .hint-bar",
+      "[data-vocab-content]"
+    ];
+    sels.forEach(sel=>{
+      try{ s.querySelectorAll(sel).forEach(n=>{ if(list.indexOf(n)<0) list.push(n); }); }catch(e){}
+    });
+    // if scope itself is a content body
+    if(scope && scope!==document && scope.id && /ThemeBody|QuizArea|quizArea/.test(scope.id)){
+      if(list.indexOf(scope)<0) list.push(scope);
+    }
+    return list;
   }
 
   /** Safe wrap: walk text nodes only — does NOT destroy event handlers on buttons */
@@ -286,12 +346,42 @@
   }
 
   /** Enable on any root: Themen, Quiz, Deutsch, … */
+
+  function unwrapTermsInLists(root){
+    try{
+      const scope=root||document;
+      scope.querySelectorAll('.theme-item .term, .theme-list .term, .subject-card .term, .tile .term, .learn-item .term, .ka-card .term, .fach-item .term, .bottom-nav .term').forEach(term=>{
+        const text=document.createTextNode(term.getAttribute('data-de')||term.textContent||'');
+        const parent=term.parentNode;
+        if(!parent) return;
+        // remove following term-vi chip
+        const next=term.nextSibling;
+        if(next && next.classList && next.classList.contains('term-vi')) next.remove();
+        parent.replaceChild(text, term);
+        parent.normalize && parent.normalize();
+      });
+    }catch(e){}
+  }
+
   function enableVocabOn(root){
     const el = typeof root==="string" ? document.querySelector(root) : (root||document.body);
     if(!el) return;
+    unwrapTermsInLists(el);
     try{
-      wrapTextNodes(el);
-      bindTerms(el);
+      // Prefer wrapping only content surfaces — never theme lists / hubs
+      const roots = contentRoots(el);
+      if(roots.length){
+        roots.forEach(r=>{
+          wrapTextNodes(r);
+          bindTerms(r);
+        });
+      } else if(el.id==="bfk1ThemeBody" || el.id==="fachThemeBody" || /ThemeBody|QuizArea|quizArea/.test(el.id||"")){
+        wrapTextNodes(el);
+        bindTerms(el);
+      } else {
+        // fallback: wrap only existing .term bindings, do NOT scan whole hub lists
+        bindTerms(el);
+      }
     }catch(e){ console.warn("enableVocabOn", e); }
   }
 

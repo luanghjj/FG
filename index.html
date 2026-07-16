@@ -448,6 +448,12 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 .term-vi{display:inline;margin-left:4px;padding:1px 7px;border-radius:999px;background:#ecfdf5;color:#047857;
   border:1px solid #a7f3d0;font-size:.78em;font-weight:650;white-space:nowrap}
 .term-vi.hidden{display:none}
+.term{display:inline!important;white-space:inherit}
+.theme-item .term, .theme-list .term, .subject-card .term, .tile .term, .learn-item .term, .ka-card .term, .fach-item .term {
+  all: unset; cursor: inherit; color: inherit; font-weight: inherit;
+}
+.theme-item .term::after, .theme-list .term::after, .subject-card .term::after, .tile .term::after { content: none !important; }
+.theme-item .term-vi, .theme-list .term-vi { display:none !important; }
 #termPop{position:fixed;z-index:320;max-width:min(300px,88vw);background:#0f172a;color:#fff;border-radius:14px;
   padding:12px 14px;font-size:.88em;line-height:1.45;box-shadow:0 12px 32px rgba(15,23,42,.32);display:none;pointer-events:auto}
 #termPop.show{display:block}
@@ -1209,7 +1215,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 <div id="toastHost" aria-live="polite"></div>
 
 <script src="./supabase.js?v=4"></script>
-<script src="./vocab.js?v=5"></script>
+<script src="./vocab.js?v=6"></script>
 <script src="./bfk1-data.js?v=12"></script>
 <script src="./bfk1-quiz.js?v=7"></script>
 <script src="./faecher.js?v=2"></script>
