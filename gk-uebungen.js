@@ -1,12 +1,12 @@
 /**
- * GK · Übungsaufgaben – form giống đề FS1 (Buß-Schroeder)
+ * GK · Übungsaufgaben – FS1-Form (Buß-Schroeder)
  * Layout: Übungsaufgaben → Hinweis → Punkte → Aufgabe 1… + Musterlösung
- * Nội dung: tiếng Đức; thuật ngữ B1 trong Musterlösung có .term (DE→VI)
+ * Inhalt: Deutsch; B1-Fachbegriffe in Musterlösung als .term (DE→VI)
  */
 (function (w) {
   "use strict";
 
-  /** helper: đánh dấu thuật ngữ B1 (tap → nghĩa VI) */
+  /** Helper: B1-Begriff markieren (tippen → VI-Bedeutung) */
   function t(de, vi) {
     const v = vi ? ' data-vi="' + vi.replace(/"/g, "&quot;") + '"' : "";
     return '<span class="term" data-de="' + de.replace(/"/g, "&quot;") + '"' + v + ">" + de + "</span>";

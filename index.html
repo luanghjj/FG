@@ -486,7 +486,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 .exam-detail-banner{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#1d4ed8,#2563eb 55%,#3b82f6);color:#fff;border-radius:16px;padding:18px 20px;margin-bottom:18px}
 .exam-detail-banner .big-date{font-size:1.6em;font-weight:800;line-height:1}
 .exam-detail-banner .meta{font-size:.86em;opacity:.88;margin-top:4px}
-/* ===== Luyện thi / practice hub ===== */
+/* ===== Prüfungstraining / practice hub ===== */
 .practice-modes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 18px}
 @media (max-width:420px){.practice-modes{grid-template-columns:1fr}}
 .practice-mode{display:flex;flex-direction:column;gap:4px;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:14px;padding:14px 14px 12px;cursor:pointer;font:inherit;color:inherit;transition:.15s;box-shadow:var(--shadow)}
@@ -509,7 +509,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 .luyen-tabs{display:flex;gap:6px;overflow-x:auto;padding:0 0 12px;margin:0 0 8px;-webkit-overflow-scrolling:touch}
 .luyen-tabs button{flex:0 0 auto;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 12px;font:inherit;font-size:.78em;font-weight:650;color:var(--muted);cursor:pointer}
 .luyen-tabs button.active{background:var(--accent);border-color:var(--accent);color:#fff}
-/* Freitext Übungen (GK) – form giống đề FS1 */
+/* Freitext Übungen (GK) – FS1-Form */
 .ueb-set{border:1px solid var(--line);border-radius:14px;background:#fff;padding:14px;margin:0 0 12px;box-shadow:var(--shadow)}
 .ueb-set .ueb-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap}
 .ueb-set h3{margin:0;font-size:1em}
@@ -773,7 +773,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
   </div>
 
   <!-- Compact next KA -->
-  <div class="next-exam-chip" id="homeExamChip" onclick="go('#/on-thi')" title="Luyện thi · Klassenarbeiten">
+  <div class="next-exam-chip" id="homeExamChip" onclick="go('#/on-thi')" title="Prüfungstraining · Klassenarbeiten">
     <div class="date-box"><div class="d" id="homeExamDay">—</div><div class="m" id="homeExamMon">—</div></div>
     <div class="body">
       <b id="homeExamTitle">Nächste Klassenarbeit</b>
@@ -1165,20 +1165,20 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 <section class="view" id="v-on-thi">
   <div class="back" onclick="go('#/')">← Start</div>
   <div class="section-head">
-    <h2>🎯 Luyện thi</h2>
-    <p>Chọn kỳ thi · luyện đúng Thema được giao</p>
+    <h2>🎯 Prüfungstraining</h2>
+    <p>Klassenarbeit wählen · passende Themen üben</p>
   </div>
-  <div class="luyen-tabs" id="luyenTabs" role="tablist" aria-label="Lọc kỳ thi">
-    <button type="button" class="active" data-filter="all">Tất cả</button>
-    <button type="button" data-filter="upcoming">Sắp tới</button>
-    <button type="button" data-filter="ready">Có quiz</button>
+  <div class="luyen-tabs" id="luyenTabs" role="tablist" aria-label="Prüfungen filtern">
+    <button type="button" class="active" data-filter="all">Alle</button>
+    <button type="button" data-filter="upcoming">Bevorstehend</button>
+    <button type="button" data-filter="ready">Mit Quiz</button>
   </div>
   <div class="ka-list" id="examFullList"></div>
 </section>
 
 <!-- ===== EXAM DETAIL / PRACTICE HUB ===== -->
 <section class="view" id="v-exam-detail">
-  <div class="back" onclick="go('#/on-thi')">← Luyện thi</div>
+  <div class="back" onclick="go('#/on-thi')">← Prüfungstraining</div>
   <div class="exam-detail-banner" id="examDetailBanner">
     <div>
       <div class="big-date" id="examDetailDate">—</div>
@@ -1187,7 +1187,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
   </div>
   <div class="section-head">
     <h2 id="examDetailTitle">Klassenarbeit</h2>
-    <p id="examDetailDesc">Luyện theo Thema · Quiz · Flashcards</p>
+    <p id="examDetailDesc">Themen · Quiz · Karteikarten</p>
   </div>
   <div id="examDetailBody"></div>
 </section>
@@ -1280,7 +1280,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 </div>
 
 
-<div id="termPop" role="tooltip" aria-hidden="true"><div class="de"></div><div class="vi"></div><div class="hint">Nghĩa tiếng Việt · bấm lại để ẩn</div><div class="arrow"></div></div>
+<div id="termPop" role="tooltip" aria-hidden="true"><div class="de"></div><div class="vi"></div><div class="hint">Vietnamesische Bedeutung · erneut tippen zum Schließen</div><div class="arrow"></div></div>
 <!-- Page lightbox for scanned worksheets -->
 <div id="pageLightbox" aria-hidden="true">
   <div class="lb-inner">
@@ -1297,7 +1297,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 <!-- Bottom nav (mobile): compact, center opens Fächer picker -->
 <nav class="bottom-nav" id="bottomNav" aria-label="Hauptnavigation">
   <button type="button" data-nav="#/" class="active"><span class="bi">🏠</span>Start</button>
-  <button type="button" data-nav="#/on-thi"><span class="bi">🎯</span>Luyện thi</button>
+  <button type="button" data-nav="#/on-thi"><span class="bi">🎯</span>Training</button>
   <button type="button" class="nav-center" id="fachNavBtn" data-nav="#faecher"><span class="bi">📚</span>Fächer</button>
   <button type="button" data-nav="#profile"><span class="bi">👤</span>Profil</button>
 </nav>
@@ -1339,11 +1339,11 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 <div id="toastHost" aria-live="polite"></div>
 
 <script src="./supabase.js?v=4"></script>
-<script src="./vocab.js?v=13"></script>
+<script src="./vocab.js?v=14"></script>
 <script src="./bfk1-data.js?v=13"></script>
 <script src="./bfk1-quiz.js?v=9"></script>
-<script src="./faecher.js?v=4"></script>
-<script src="./gk-uebungen.js?v=3"></script>
+<script src="./faecher.js?v=5"></script>
+<script src="./gk-uebungen.js?v=4"></script>
 <script>
 /* ============ DATEN (Fleischteile) ============ */
 const DATA = {
@@ -1509,7 +1509,7 @@ function renderAbschlussThemen(){
 renderAbschlussThemen();
 
 /* ============ FÄCHER laut Stundenplan H2FO3T ============ */
-/* BfK-1 Themen: geladen aus bfk1-data.js (fallback nếu file chưa load) */
+/* BfK-1 Themen: geladen aus bfk1-data.js (Fallback, falls Datei fehlt) */
 const BFK1_THEMES = window.BFK1_THEMES || {
   lf6: { id:"lf6", label:"Lernfeld 6", badge:"LF 6", title:"Gerichte, Menüs und Produkte", items:[] },
   lf9: { id:"lf9", label:"Lernfeld 9", badge:"LF 9", title:"Zahlungen mit dem Gast abwickeln", items:[] }
@@ -1975,17 +1975,17 @@ function renderFullExams(){
   if(_luyenFilter==='upcoming') sorted=sorted.filter(e=>daysUntil(e.date)>=0);
   if(_luyenFilter==='ready') sorted=sorted.filter(e=>examHasQuiz(e));
   if(!sorted.length){
-    host.innerHTML='<div class="card"><p class="muted">Không có kỳ thi trong bộ lọc này.</p></div>';
+    host.innerHTML='<div class="card"><p class="muted">Keine Prüfung in diesem Filter.</p></div>';
     return;
   }
   host.innerHTML=sorted.map(e=>{
     const n=examQuizCount(e);
-    const badge=n? (n+' câu quiz') : (examHasQuiz(e)?'có quiz':'học liệu');
+    const badge=n? (n+' Quizfragen') : (examHasQuiz(e)?'mit Quiz':'Lernstoff');
     const base=examCardHTML(e,false);
     // inject practice badge under name
     return base.replace(
       '<div class="name">'+e.name+'</div>',
-      '<div class="name">'+e.name+'</div><div class="teacher" style="margin-top:2px;color:var(--accent)">🎯 Luyện · '+badge+'</div>'
+      '<div class="name">'+e.name+'</div><div class="teacher" style="margin-top:2px;color:var(--accent)">🎯 Training · '+badge+'</div>'
     );
   }).join("");
 }
@@ -2001,7 +2001,7 @@ function renderExamDetail(examId){
   if(dateEl) dateEl.textContent=formatDeDate(ex.date)+" · "+cd.text;
   if(metaEl) metaEl.textContent=ex.teacher+" · "+formatDeDateLong(ex.date);
   if(titleEl) titleEl.textContent=ex.icon+" "+ex.name;
-  if(descEl) descEl.textContent="Luyện thi · "+ex.code+" · chọn dạng bài bên dưới";
+  if(descEl) descEl.textContent="Prüfungstraining · "+ex.code+" · Übungsform wählen";
   if(!body) return;
 
   const themes=examThemeCatalog(ex);
@@ -2011,15 +2011,15 @@ function renderExamDetail(examId){
   let html='';
 
   // Practice modes
-  html+='<div class="practice-section"><h3>🎯 Dạng luyện tập</h3>';
+  html+='<div class="practice-section"><h3>🎯 Übungsformen</h3>';
   html+='<div class="practice-modes">';
-  html+='<button type="button" class="practice-mode" data-mode="mixed"><span class="pm-ic">🎲</span><b>Quiz trộn Thema</b><span>Trộn câu hỏi các Thema đã chọn</span></button>';
-  html+='<button type="button" class="practice-mode" data-mode="quick"><span class="pm-ic">⚡</span><b>10 câu nhanh</b><span>Warm-up trước giờ thi</span></button>';
-  html+='<button type="button" class="practice-mode" data-mode="exam"><span class="pm-ic">📝</span><b>Thi thử</b><span>'+(ex.id==='bfk1'?'Có timer · mô phỏng KA':'Làm full theo Thema chọn')+'</span></button>';
-  html+='<button type="button" class="practice-mode" data-mode="flash"><span class="pm-ic">🃏</span><b>Flashcards</b><span>Lật DE ↔ VI theo Thema</span></button>';
-  html+='<button type="button" class="practice-mode" data-mode="learn"><span class="pm-ic">📖</span><b>Học nội dung</b><span>Tóm tắt + scan bài</span></button>';
+  html+='<button type="button" class="practice-mode" data-mode="mixed"><span class="pm-ic">🎲</span><b>Quiz gemischt</b><span>Fragen aus gewählten Themen mischen</span></button>';
+  html+='<button type="button" class="practice-mode" data-mode="quick"><span class="pm-ic">⚡</span><b>10 schnelle Fragen</b><span>Warm-up vor der KA</span></button>';
+  html+='<button type="button" class="practice-mode" data-mode="exam"><span class="pm-ic">📝</span><b>Probeklausur</b><span>'+(ex.id==='bfk1'?'Mit Timer · KA-Simulation':'Alle Fragen der gewählten Themen')+'</span></button>';
+  html+='<button type="button" class="practice-mode" data-mode="flash"><span class="pm-ic">🃏</span><b>Karteikarten</b><span>DE ↔ VI nach Thema</span></button>';
+  html+='<button type="button" class="practice-mode" data-mode="learn"><span class="pm-ic">📖</span><b>Inhalt lernen</b><span>Zusammenfassung + Scans</span></button>';
   if(ex.id==='bfk2'){
-    html+='<button type="button" class="practice-mode" data-mode="muster"><span class="pm-ic">🗂️</span><b>Đề mẫu</b><span>Musterprüfung + lời giải</span></button>';
+    html+='<button type="button" class="practice-mode" data-mode="muster"><span class="pm-ic">🗂️</span><b>Musterprüfung</b><span>Musterprüfung + Lösung</span></button>';
   }
   if(ex.id==='gk'){
     html+='<button type="button" class="practice-mode" data-mode="freitext"><span class="pm-ic">✍️</span><b>Freitext FS1</b><span>Übungsaufgaben + Musterlösung</span></button>';
@@ -2044,12 +2044,12 @@ function renderExamDetail(examId){
 
   // Theme picker for focused practice
   html+='<div class="card practice-section">';
-  html+='<h3>📌 Thema được giao <span class="count">'+(themes.length|| (ex.topics||[]).length)+'</span></h3>';
+  html+='<h3>📌 Gegebene Themen <span class="count">'+(themes.length|| (ex.topics||[]).length)+'</span></h3>';
   if(themes.length){
     html+='<div class="practice-actions" style="margin-top:0;margin-bottom:10px">';
-    html+='<button type="button" class="btn ghost" id="exAllThemes">Chọn tất cả</button>';
-    html+='<button type="button" class="btn ghost" id="exNoThemes">Bỏ chọn</button>';
-    if(qTotal) html+='<span class="muted" style="font-size:.78em;align-self:center">'+qTotal+' câu quiz sẵn</span>';
+    html+='<button type="button" class="btn ghost" id="exAllThemes">Alle auswählen</button>';
+    html+='<button type="button" class="btn ghost" id="exNoThemes">Auswahl aufheben</button>';
+    if(qTotal) html+='<span class="muted" style="font-size:.78em;align-self:center">'+qTotal+' Quizfragen bereit</span>';
     html+='</div>';
     html+='<div class="theme-check-list" id="exThemePick">';
     themes.forEach(t=>{
@@ -2057,27 +2057,27 @@ function renderExamDetail(examId){
       html+='<label class="theme-check">'
         +'<input type="checkbox" value="'+t.id+'" checked>'
         +'<div class="tt"><b>'+(t.icon||'')+' '+t.name+'</b><span>'+(t.group? (t.group+' · '):'')+(t.desc||'')+'</span></div>'
-        +(n? '<div class="n">'+n+' câu</div>':'<div class="n" style="color:var(--muted)">học</div>')
+        +(n? '<div class="n">'+n+' Fragen</div>':'<div class="n" style="color:var(--muted)">lernen</div>')
         +'</label>';
     });
     html+='</div>';
     html+='<div class="practice-actions">';
-    html+='<button type="button" class="btn" id="exStartMixed">▶ Luyện Thema đã chọn</button>';
-    html+='<button type="button" class="btn ghost" id="exOpenStudy">Mở học liệu →</button>';
+    html+='<button type="button" class="btn" id="exStartMixed">▶ Gewählte Themen üben</button>';
+    html+='<button type="button" class="btn ghost" id="exOpenStudy">Lernstoff öffnen →</button>';
     html+='</div>';
   } else {
     html+='<ul>';
     (ex.topics||[]).forEach(t=>{ html+='<li>'+t+'</li>'; });
     html+='</ul>';
     if(ex.studyRoute){
-      html+='<p style="margin-top:12px"><button class="btn" type="button" id="exOpenStudy">Học →</button></p>';
+      html+='<p style="margin-top:12px"><button class="btn" type="button" id="exOpenStudy">Lernen →</button></p>';
     }
   }
   html+='</div>';
 
   // Quick open themes list
   if(themes.length){
-    html+='<div class="practice-section"><h3>📚 Mở từng Thema</h3><div class="theme-list">';
+    html+='<div class="practice-section"><h3>📚 Themen einzeln öffnen</h3><div class="theme-list">';
     themes.forEach((t,i)=>{
       if(t.external){
         html+='<a class="theme-item" href="'+t.route+'" style="color:inherit;text-decoration:none">'
@@ -2091,7 +2091,7 @@ function renderExamDetail(examId){
   }
 
   if(!hasQ && ex.id!=='deutsch' && ex.id!=='bfk2'){
-    html+='<div class="card"><p class="muted">Quiz cho môn này đang được bổ sung. Bạn vẫn học được nội dung + flashcards trong từng Thema.</p></div>';
+    html+='<div class="card"><p class="muted">Quiz für dieses Fach wird noch ergänzt. Inhalt und Karteikarten in den Themen sind nutzbar.</p></div>';
   }
 
   body.innerHTML = html;
@@ -2109,7 +2109,7 @@ function renderExamDetail(examId){
       if(mode==='freitext'){ go('#/exam/gk/uebung'); return; }
       const ids=pickIds();
       if((mode==='mixed'||mode==='quick'||mode==='exam') && themes.length && !ids.length){
-        if(window.toast) toast('Chọn ít nhất 1 Thema','info');
+        if(window.toast) toast('Bitte mindestens 1 Thema wählen','info');
         return;
       }
       if(mode==='mixed') startExamPractice(ex.id, 'all', ids);
@@ -2122,7 +2122,7 @@ function renderExamDetail(examId){
   const startMixed=document.getElementById('exStartMixed');
   if(startMixed) startMixed.onclick=()=>{
     const ids=pickIds();
-    if(themes.length && !ids.length){ if(window.toast) toast('Chọn ít nhất 1 Thema','info'); return; }
+    if(themes.length && !ids.length){ if(window.toast) toast('Bitte mindestens 1 Thema wählen','info'); return; }
     if(hasQ) startExamPractice(ex.id, 'all', ids);
     else startExamPractice(ex.id, 'learn', ids);
   };
@@ -2765,8 +2765,8 @@ function renderThemeFlashcards(themeId, item, fach){
       '<h3>🃏 Karteikarten · Vokabeln</h3>'
       + '<div class="hint">Tippen auf die Karte · DE → VI · '+cards.length+' Karten</div>'
       + '<div class="flash-stage"><div class="flash-card'+(flipped?' flipped':'')+'" id="flashCard">'
-      +   '<div class="flash-face front"><div class="flash-kicker">Deutsch</div><div class="flash-de">'+c.de+'</div><div class="flash-meta">Bấm để lật</div></div>'
-      +   '<div class="flash-face back"><div class="flash-kicker">Tiếng Việt</div><div class="flash-vi">'+c.vi+'</div><div class="flash-meta">'+c.de+'</div></div>'
+      +   '<div class="flash-face front"><div class="flash-kicker">Deutsch</div><div class="flash-de">'+c.de+'</div><div class="flash-meta">Tippen zum Umdrehen</div></div>'
+      +   '<div class="flash-face back"><div class="flash-kicker">Vietnamesisch</div><div class="flash-vi">'+c.vi+'</div><div class="flash-meta">'+c.de+'</div></div>'
       + '</div></div>'
       + '<div class="flash-controls">'
       +   '<div class="flash-nav">'
@@ -3218,7 +3218,7 @@ SUBJECTS.forEach(s=>{
     s.code+" "+(s.topics||[]).join(" ")+" "+(s.meta||"")+" "+(s.examDate||"")+" "+(s.ready?"verfügbar":"bald")+" "+(s.desc||""));
 });
 idx("Startseite / Fächer","Alle Fächer der Lern-App","App","#/",null,"home start fächer menü lernen");
-idx("Luyện thi","Kỳ thi · Quiz · Thema luyện","KA","#/on-thi",null,"klassenarbeit prüfung ka termine on thi luyen thi quiz");
+idx("Prüfungstraining","Klassenarbeiten · Quiz · Themen","KA","#/on-thi",null,"klassenarbeit prüfung ka termine training quiz");
 idx("GK Freitext FS1","Übungsaufgaben + Musterlösung · B1-Begriffe DE→VI","GK","#/exam/gk/uebung",null,"freitext erlaeutern beurteilen grundgesetz partizipation musterlosung");
 idx("Abschlussprüfung","Struktur · Themen · GAP","Prüfung","#/abschluss",null,"abschlussprüfung gap ihk teil1 teil2");
 try{(ABSCHLUSS_THEMEN||[]).forEach(t=>{

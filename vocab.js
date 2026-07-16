@@ -1,4 +1,4 @@
-/* DE→VI: bấm từ đã đánh dấu (.term) để xem nghĩa. Không auto-bọc list/UI. */
+/* DE→VI: markierte .term antippen für Bedeutung. Kein Auto-Wrap in Listen/UI. */
 (function (w) {
   "use strict";
 
@@ -566,7 +566,7 @@
     if(pop) return pop;
     pop=document.createElement("div");
     pop.id="termPop";
-    pop.innerHTML='<div class="de"></div><div class="vi"></div><div class="hint">Bấm từ có VI để xem nghĩa</div>';
+    pop.innerHTML='<div class="de"></div><div class="vi"></div><div class="hint">Begriff mit VI antippen = Bedeutung</div>';
     document.body.appendChild(pop);
     return pop;
   }
@@ -590,7 +590,7 @@
     if(vi) el.setAttribute("data-vi", vi);
     const pop=ensurePop();
     pop.querySelector(".de").textContent = "🇩🇪 " + de;
-    pop.querySelector(".vi").textContent = vi ? ("🇻🇳 " + vi) : "Chưa có trong từ điển";
+    pop.querySelector(".vi").textContent = vi ? ("🇻🇳 " + vi) : "Noch nicht im Wörterbuch";
     pop.classList.add("show");
     el.classList.add("open");
     // inline chip

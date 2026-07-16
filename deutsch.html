@@ -1576,7 +1576,7 @@ function wrapTextWithVI(html){
 function stichwortBtn(s){
   // strip numbers / symbols for lookup, keep full label
   const core = String(s.text).replace(/\s*[:：].*$/,'').replace(/\s*\d.*$/,'').replace(/[↑↓%°]/g,'').trim();
-  const vi = s.vi || lookupVI(core) || lookupVI(s.text) || ('từ khóa: ' + s.text);
+  const vi = s.vi || lookupVI(core) || lookupVI(s.text) || ('Stichwort: ' + s.text);
   return `<span class="stw-wrap"><button type="button" class="vi-btn stw ${s.cls||''}" data-vi="${escAttr(vi)}">${s.text}</button><span class="vi-pop"></span></span>`;
 }
 
