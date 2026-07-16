@@ -1194,12 +1194,12 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 
 <!-- ===== GK FREITEXT ÜBUNGEN ===== -->
 <section class="view" id="v-gk-uebung">
-  <div class="back" id="gkUebungBack" onclick="go('#/exam/gk')">← GK · Luyện thi</div>
+  <div class="back" id="gkUebungBack" onclick="go('#/exam/gk')">← GK · Prüfungstraining</div>
   <div class="section-head">
     <h2 id="gkUebungTitle">✍️ Übungsaufgaben GK</h2>
-    <p id="gkUebungSub">Tự luận · form FS1 · bật Musterlösung sau khi tự làm</p>
+    <p id="gkUebungSub">Freitext · FS1-Form · Musterlösung erst nach dem Schreiben öffnen</p>
   </div>
-  <div id="gkUebungBody"></div>
+  <div id="gkUebungBody" data-vocab-content></div>
 </section>
 
 <!-- ===== BFK-1 THEMEN HUB ===== -->
@@ -1339,11 +1339,11 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 <div id="toastHost" aria-live="polite"></div>
 
 <script src="./supabase.js?v=4"></script>
-<script src="./vocab.js?v=12"></script>
+<script src="./vocab.js?v=13"></script>
 <script src="./bfk1-data.js?v=13"></script>
 <script src="./bfk1-quiz.js?v=9"></script>
 <script src="./faecher.js?v=4"></script>
-<script src="./gk-uebungen.js?v=2"></script>
+<script src="./gk-uebungen.js?v=3"></script>
 <script>
 /* ============ DATEN (Fleischteile) ============ */
 const DATA = {
@@ -1842,29 +1842,20 @@ function renderGkUebung(setId){
   const title=document.getElementById('gkUebungTitle');
   const sub=document.getElementById('gkUebungSub');
   const back=document.getElementById('gkUebungBack');
-  if(back){ back.onclick=()=>go(setId? '#/exam/gk/uebung' : '#/exam/gk'); back.textContent=setId? '← Tất cả đề tự luận' : '← GK · Luyện thi'; }
+  if(back){ back.onclick=()=>go(setId? '#/exam/gk/uebung' : '#/exam/gk'); back.textContent=setId? '← Alle Freitext-Aufgaben' : '← GK · Prüfungstraining'; }
   const list=window.GK_UEBUNGEN||[];
   if(!body) return;
   if(!list.length){
     if(title) title.textContent='✍️ Übungsaufgaben';
-    body.innerHTML='<div class="card"><p class="muted">Chưa tải được đề. Hard-reload (Cmd+Shift+R).</p></div>';
+    body.innerHTML='<div class="card"><p class="muted">Aufgaben konnten nicht geladen werden. Hard-Reload (Cmd+Shift+R).</p></div>';
     return;
   }
-
-  const solIdsOf=set=>{
-    const ids=[];
-    (set.blocks||[]).forEach(b=>{
-      if(b.parts&&b.parts.length) b.parts.forEach((p,i)=>ids.push('b'+b.no+'-'+p.no.replace('.','')+'-'+i));
-      else ids.push('b'+b.no);
-    });
-    return ids;
-  };
 
   // List view
   if(!setId){
     if(title) title.textContent='✍️ Übungsaufgaben';
-    if(sub) sub.textContent='Form FS1 · in ganzen Sätzen · '+list.length+' đề · Musterlösung ẩn mặc định';
-    let html='<div class="ueb-toolbar"><span class="hint">Làm như tờ đề: đọc Aufgabe → tự viết → mới mở lời giải.</span></div>';
+    if(sub) sub.textContent='FS1-Form · in ganzen Sätzen · '+list.length+' Sätze · Musterlösung standardmäßig verborgen';
+    let html='<div class="ueb-toolbar"><span class="hint">Wie im Prüfungsbogen: Aufgabe lesen → selbst schreiben → erst dann Musterlösung öffnen. Begriffe mit <b>VI</b> antippen = Bedeutung.</span></div>';
     list.forEach((set,i)=>{
       const nBlocks=(set.blocks||[]).length;
       html+='<div class="ueb-set">';
@@ -1872,8 +1863,8 @@ function renderGkUebung(setId){
       html+='<div class="meta">'+(set.subtitle||'')+'</div>';
       html+='<div class="meta">'+(set.teacher||'')+(set.source?(' · '+set.source):'')+' · '+nBlocks+' Aufgabe(n) · <b>'+set.totalPoints+'</b> Punkte</div></div>';
       html+='<span class="pts">'+set.totalPoints+'</span></div>';
-      html+='<div class="practice-actions"><button type="button" class="btn" data-open-ueb="'+set.id+'">Mở đề →</button>';
-      html+='<button type="button" class="btn ghost" data-open-ueb-sol="'+set.id+'">Xem lời giải</button></div></div>';
+      html+='<div class="practice-actions"><button type="button" class="btn" data-open-ueb="'+set.id+'">Aufgabe öffnen →</button>';
+      html+='<button type="button" class="btn ghost" data-open-ueb-sol="'+set.id+'">Musterlösung anzeigen</button></div></div>';
     });
     body.innerHTML=html;
     body.querySelectorAll('[data-open-ueb]').forEach(b=>b.onclick=()=>go('#/exam/gk/uebung/'+b.getAttribute('data-open-ueb')));
@@ -1881,6 +1872,7 @@ function renderGkUebung(setId){
       go('#/exam/gk/uebung/'+b.getAttribute('data-open-ueb-sol'));
       setTimeout(()=>{ const btn=document.getElementById('uebShowAll'); if(btn) btn.click(); }, 80);
     });
+    try{ if(window.enableVocabOn) enableVocabOn(body); }catch(e){}
     return;
   }
 
@@ -1892,9 +1884,9 @@ function renderGkUebung(setId){
   // Build paper form like PDF
   let html='';
   html+='<div class="ueb-toolbar">';
-  html+='<button type="button" class="btn ghost" id="uebShowAll">Hiện tất cả Musterlösung</button>';
-  html+='<button type="button" class="btn ghost" id="uebHideAll">Ẩn lời giải</button>';
-  html+='<button type="button" class="btn ghost" id="uebBackList">← Đề khác</button>';
+  html+='<button type="button" class="btn ghost" id="uebShowAll">Alle Musterlösungen anzeigen</button>';
+  html+='<button type="button" class="btn ghost" id="uebHideAll">Lösungen ausblenden</button>';
+  html+='<button type="button" class="btn ghost" id="uebBackList">← Andere Aufgaben</button>';
   html+='</div>';
 
   html+='<div class="ueb-paper">';
@@ -1918,7 +1910,7 @@ function renderGkUebung(setId){
     }
 
     if(block.parts && block.parts.length){
-      block.parts.forEach((part, pi)=>{
+      block.parts.forEach((part)=>{
         const sid='sol-'+set.id+'-'+block.no+'-'+part.no.replace(/\./g,'_');
         allSolIds.push(sid);
         html+='<div class="ueb-part">';
@@ -1939,8 +1931,8 @@ function renderGkUebung(setId){
   });
   html+='</div>'; // paper
 
-  html+='<div class="card"><p class="muted" style="font-size:.85em">Form giống đề FS1. Lời giải là <b>Musterlösung định hướng</b> theo kiến thức đã học (Partizipation, GG, Gewaltenteilung…). Cách viết khác vẫn được nếu đúng ý.</p>';
-  html+='<div class="practice-actions"><button type="button" class="btn" onclick="go(\'#/fach/gk\')">📚 Ôn Themen GK</button>';
+  html+='<div class="card"><p class="muted" style="font-size:.85em">FS1-Form. Die Lösungen sind <b>Orientierungs-Musterlösungen</b> zum Lernstoff (Partizipation, GG, Gewaltenteilung…). Andere Formulierungen sind in Ordnung, wenn der Inhalt stimmt. <b>Begriffe mit VI antippen</b> → vietnamesische Bedeutung.</p>';
+  html+='<div class="practice-actions"><button type="button" class="btn" onclick="go(\'#/fach/gk\')">📚 Themen GK lernen</button>';
   html+='<button type="button" class="btn ghost" onclick="go(\'#/fach/gk/quiz\')">📝 Quiz MC</button></div></div>';
 
   body.innerHTML=html;
@@ -1960,6 +1952,7 @@ function renderGkUebung(setId){
   if(showAll) showAll.onclick=()=> allSolIds.forEach(id=>toggleSol(id,true));
   if(hideAll) hideAll.onclick=()=> allSolIds.forEach(id=>toggleSol(id,false));
   if(backList) backList.onclick=()=>go('#/exam/gk/uebung');
+  try{ if(window.enableVocabOn) enableVocabOn(body); }catch(e){}
 }
 window.renderGkUebung = renderGkUebung;
 
@@ -2029,21 +2022,21 @@ function renderExamDetail(examId){
     html+='<button type="button" class="practice-mode" data-mode="muster"><span class="pm-ic">🗂️</span><b>Đề mẫu</b><span>Musterprüfung + lời giải</span></button>';
   }
   if(ex.id==='gk'){
-    html+='<button type="button" class="practice-mode" data-mode="freitext"><span class="pm-ic">✍️</span><b>Tự luận FS1</b><span>Übungsaufgaben + Musterlösung</span></button>';
+    html+='<button type="button" class="practice-mode" data-mode="freitext"><span class="pm-ic">✍️</span><b>Freitext FS1</b><span>Übungsaufgaben + Musterlösung</span></button>';
   }
   html+='</div></div>';
 
   // GK freitext sets preview on exam hub
   if(ex.id==='gk' && window.GK_UEBUNGEN && GK_UEBUNGEN.length){
-    html+='<div class="card practice-section"><h3>✍️ Đề tự luận (form FS1)</h3>';
-    html+='<p class="muted" style="font-size:.85em;margin:0 0 10px">Giống đề Buß-Schroeder: Erläutern / Beurteilen / Begründen… Tự làm trước, rồi mở lời giải.</p>';
+    html+='<div class="card practice-section"><h3>✍️ Freitext-Aufgaben (FS1-Form)</h3>';
+    html+='<p class="muted" style="font-size:.85em;margin:0 0 10px">Wie bei Buß-Schroeder: Erläutern / Beurteilen / Begründen… Zuerst selbst schreiben, dann Musterlösung öffnen. B1-Begriffe mit VI-Tag = vietnamesische Bedeutung.</p>';
     GK_UEBUNGEN.forEach(set=>{
       const n=(set.blocks||[]).length;
       html+='<div class="ueb-set" style="margin-bottom:10px">';
       html+='<div class="ueb-top"><div><h3 style="font-size:.95em">'+(set.title||'Übungsaufgaben')+(set.subtitle?(' · '+set.subtitle):'')+'</h3>';
       html+='<div class="meta">'+(set.teacher||'FS1')+' · '+n+' Aufgabe(n) · '+set.totalPoints+' Punkte</div></div>';
       html+='<span class="pts">'+set.totalPoints+'</span></div>';
-      html+='<div class="practice-actions"><button type="button" class="btn" data-ueb="'+set.id+'">Mở đề →</button></div>';
+      html+='<div class="practice-actions"><button type="button" class="btn" data-ueb="'+set.id+'">Aufgabe öffnen →</button></div>';
       html+='</div>';
     });
     html+='</div>';
@@ -3042,7 +3035,7 @@ const ROUTES = {
   "#/exam/deutsch":{view:"v-exam-detail", crumbs:[["KA","#/on-thi"],["Deutsch","#/exam/deutsch"]], examId:"deutsch"},
   "#/exam/englisch":{view:"v-exam-detail", crumbs:[["KA","#/on-thi"],["Englisch","#/exam/englisch"]], examId:"englisch"},
   "#/exam/gk":     {view:"v-exam-detail", crumbs:[["KA","#/on-thi"],["GK","#/exam/gk"]], examId:"gk"},
-  "#/exam/gk/uebung": {view:"v-gk-uebung", crumbs:[["Luyện","#/on-thi"],["GK","#/exam/gk"],["Tự luận","#/exam/gk/uebung"]], gkUebung:true},
+  "#/exam/gk/uebung": {view:"v-gk-uebung", crumbs:[["Training","#/on-thi"],["GK","#/exam/gk"],["Freitext","#/exam/gk/uebung"]], gkUebung:true},
   "#/bfk":         {view:"v-bfk",    crumbs:[["BfK","#/bfk"]]},
   "#/bfk/1":       {view:"v-bfk1",   crumbs:[["BfK","#/bfk"],["BfK-1","#/bfk/1"]], bfk1:true},
   "#/bfk/1/quiz":  {view:"v-bfk1-quiz", crumbs:[["BfK","#/bfk"],["BfK-1","#/bfk/1"],["Quiz","#/bfk/1/quiz"]], bfk1quiz:true},
@@ -3079,7 +3072,7 @@ function router(){
     const cb=document.getElementById("crumbs");
     const parts=hash.replace("#/","").split("/").filter(Boolean);
     const setId=parts[3]||null;
-    if(cb) cb.innerHTML='<a onclick="go(\'#/\')">Start</a><span class="sep">›</span><a onclick="go(\'#/on-thi\')">Luyện thi</a><span class="sep">›</span><a onclick="go(\'#/exam/gk\')">GK</a><span class="sep">›</span><span>Tự luận</span>';
+    if(cb) cb.innerHTML='<a onclick="go(\'#/\')">Start</a><span class="sep">›</span><a onclick="go(\'#/on-thi\')">Prüfungstraining</a><span class="sep">›</span><a onclick="go(\'#/exam/gk\')">GK</a><span class="sep">›</span><span>Freitext FS1</span>';
     renderGkUebung(setId);
     setBottomNav(hash); window.scrollTo({top:0,behavior:"smooth"}); return;
   }
@@ -3226,7 +3219,7 @@ SUBJECTS.forEach(s=>{
 });
 idx("Startseite / Fächer","Alle Fächer der Lern-App","App","#/",null,"home start fächer menü lernen");
 idx("Luyện thi","Kỳ thi · Quiz · Thema luyện","KA","#/on-thi",null,"klassenarbeit prüfung ka termine on thi luyen thi quiz");
-idx("GK Tự luận FS1","Übungsaufgaben + Musterlösung","GK","#/exam/gk/uebung",null,"freitext erlaeutern beurteilen grundgesetz partizipation");
+idx("GK Freitext FS1","Übungsaufgaben + Musterlösung · B1-Begriffe DE→VI","GK","#/exam/gk/uebung",null,"freitext erlaeutern beurteilen grundgesetz partizipation musterlosung");
 idx("Abschlussprüfung","Struktur · Themen · GAP","Prüfung","#/abschluss",null,"abschlussprüfung gap ihk teil1 teil2");
 try{(ABSCHLUSS_THEMEN||[]).forEach(t=>{
   idx(t.name, t.desc||"Abschlussprüfung", "GAP", t.route||"#/abschluss", null, "abschluss "+t.name+" "+(t.desc||""));
