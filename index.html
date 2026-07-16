@@ -625,6 +625,27 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 .mode-pill .mp{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 10px;font-size:.78em;font-weight:700;cursor:pointer}
 .mode-pill .mp.active{background:var(--accent);color:#fff;border-color:var(--accent)}
 
+
+/* ===== Vocab flashcards (flip) ===== */
+.flash-wrap{margin-top:18px}
+.flash-wrap h3{font-size:1.02em;font-weight:700;margin:0 0 6px}
+.flash-wrap .hint{margin-bottom:10px}
+.flash-stage{perspective:1000px;margin:0 auto 12px;max-width:420px}
+.flash-card{position:relative;width:100%;height:200px;cursor:pointer;transform-style:preserve-3d;
+  transition:transform .45s cubic-bezier(.22,1,.36,1);border-radius:18px}
+.flash-card.flipped{transform:rotateY(180deg)}
+.flash-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;border:1px solid var(--line);
+  background:#fff;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:18px;text-align:center}
+.flash-face.front{background:linear-gradient(180deg,#fff,#f8fafc)}
+.flash-face.back{transform:rotateY(180deg);background:linear-gradient(180deg,#ecfdf5,#f0fdf4);border-color:#a7f3d0}
+.flash-kicker{font-size:.72em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.flash-de{font-size:1.45em;font-weight:800;color:var(--ink);line-height:1.25}
+.flash-vi{font-size:1.25em;font-weight:800;color:#047857;line-height:1.3}
+.flash-meta{margin-top:10px;font-size:.8em;color:var(--muted)}
+.flash-controls{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.flash-progress{text-align:center;font-size:.8em;color:var(--muted);margin:8px 0 0}
+
 </style>
 <script src="./pwa.js?v=5" defer></script>
 </head>
@@ -1228,9 +1249,9 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 <div id="toastHost" aria-live="polite"></div>
 
 <script src="./supabase.js?v=4"></script>
-<script src="./vocab.js?v=9"></script>
-<script src="./bfk1-data.js?v=12"></script>
-<script src="./bfk1-quiz.js?v=8"></script>
+<script src="./vocab.js?v=10"></script>
+<script src="./bfk1-data.js?v=13"></script>
+<script src="./bfk1-quiz.js?v=9"></script>
 <script src="./faecher.js?v=2"></script>
 <script>
 /* ============ DATEN (Fleischteile) ============ */
@@ -1761,6 +1782,7 @@ function renderFachTheme(fachId, themeId){
       + '<button type="button" class="btn" id="fachThemeDrill">📝 Dieses Thema üben</button>'
       + '<button type="button" class="btn ghost" id="fachThemeQuiz">Themen-Quiz</button></div>';
   }
+  html += '<div class="flash-wrap" id="themeFlash"></div>';
   body.innerHTML = html;
   try{
     const view=document.getElementById('v-fach-theme');
@@ -1778,6 +1800,8 @@ function renderFachTheme(fachId, themeId){
 
 /* Generic quiz (same UX as BfK-1) */
 let fQuiz={fachId:null, pool:[], order:[], index:0, score:0, wrong:[], started:false};
+  try{ renderThemeFlashcards(themeId, theme); }catch(e){}
+
 function fachQuizIntro(fachId, preselect){
   ensureFachRegistry();
   const fach=window.FachForm.findFach(fachId);
@@ -2228,6 +2252,81 @@ const _bfk1QuizBoot = (function(){
   };
 })();
 
+
+/* ============ THEME FLASHCARDS ============ */
+function extractTermsFromHtml(html){
+  const out=[]; const seen=new Set();
+  const re=/data-de="([^"]+)"[^>]*data-vi="([^"]+)"|data-vi="([^"]+)"[^>]*data-de="([^"]+)"/g;
+  let m;
+  while((m=re.exec(html||''))!==null){
+    const de=(m[1]||m[4]||'').trim();
+    const vi=(m[2]||m[3]||'').trim();
+    if(!de||!vi) continue;
+    const key=de.toLowerCase();
+    if(seen.has(key)) continue;
+    seen.add(key); out.push({de,vi});
+  }
+  // also simple ordered pairs
+  if(!out.length){
+    const des=[...(html||'').matchAll(/data-de="([^"]+)"/g)].map(x=>x[1]);
+    const vis=[...(html||'').matchAll(/data-vi="([^"]+)"/g)].map(x=>x[1]);
+    des.forEach((de,i)=>{ if(vis[i] && !seen.has(de.toLowerCase())){ seen.add(de.toLowerCase()); out.push({de,vi:vis[i]}); }});
+  }
+  return out;
+}
+function renderThemeFlashcards(themeId, item){
+  const host=document.getElementById('themeFlash');
+  if(!host) return;
+  let cards=extractTermsFromHtml((item&&item.content)||'');
+  // fallback from global vocab for theme keywords in desc/name
+  if(cards.length<4 && window.lookupVi){
+    const bag=((item&&item.name)||'')+' '+((item&&item.desc)||'')+' '+((item&&item.content)||'').replace(/<[^>]+>/g,' ');
+    Object.keys(window.B1_VOCAB||{}).forEach(de=>{
+      if(bag.includes(de) && cards.length<24){
+        const vi=lookupVi(de); if(vi && !cards.some(c=>c.de===de)) cards.push({de,vi});
+      }
+    });
+  }
+  if(!cards.length){
+    host.innerHTML='';
+    return;
+  }
+  // shuffle copy for learning
+  let order=cards.map((_,i)=>i);
+  let pos=0, flipped=false;
+  const paint=()=>{
+    const c=cards[order[pos]];
+    host.innerHTML =
+      '<h3>🃏 Karteikarten · Vokabeln</h3>'
+      + '<div class="hint">Tippen zum Umdrehen · DE → VI</div>'
+      + '<div class="flash-stage"><div class="flash-card'+(flipped?' flipped':'')+'" id="flashCard">'
+      +   '<div class="flash-face front"><div class="flash-kicker">Deutsch</div><div class="flash-de">'+c.de+'</div><div class="flash-meta">Tippen = Bedeutung</div></div>'
+      +   '<div class="flash-face back"><div class="flash-kicker">Tiếng Việt</div><div class="flash-vi">'+c.vi+'</div><div class="flash-meta">'+c.de+'</div></div>'
+      + '</div></div>'
+      + '<div class="flash-controls">'
+      +   '<button type="button" class="btn ghost" id="flashPrev">←</button>'
+      +   '<button type="button" class="btn" id="flashFlip">Umdrehen</button>'
+      +   '<button type="button" class="btn ghost" id="flashNext">→</button>'
+      +   '<button type="button" class="btn ghost" id="flashShuffle">Mischen</button>'
+      +   '<button type="button" class="btn ghost" id="flashQuiz">📝 Quiz Thema</button>'
+      + '</div>'
+      + '<div class="flash-progress">'+(pos+1)+' / '+cards.length+' Karten</div>';
+    const card=document.getElementById('flashCard');
+    const flip=()=>{ flipped=!flipped; if(card) card.classList.toggle('flipped', flipped); };
+    if(card) card.onclick=flip;
+    const fbtn=document.getElementById('flashFlip'); if(fbtn) fbtn.onclick=flip;
+    const prev=document.getElementById('flashPrev'); if(prev) prev.onclick=()=>{ pos=(pos-1+cards.length)%cards.length; flipped=false; paint(); };
+    const next=document.getElementById('flashNext'); if(next) next.onclick=()=>{ pos=(pos+1)%cards.length; flipped=false; paint(); };
+    const sh=document.getElementById('flashShuffle'); if(sh) sh.onclick=()=>{
+      for(let i=order.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); const t=order[i]; order[i]=order[j]; order[j]=t; }
+      pos=0; flipped=false; paint();
+    };
+    const q=document.getElementById('flashQuiz'); if(q) q.onclick=()=>bfk1QuizStartThemes([themeId],'quick');
+  };
+  paint();
+}
+
+
 function renderBfk1Hub(){
   const lf6=document.getElementById("bfk1Lf6");
   const lf9=document.getElementById("bfk1Lf9");
@@ -2268,17 +2367,23 @@ function renderBfk1Theme(themeId){
     });
     html += '</div></div>';
   }
+  // Vocab flashcards
+  html += '<div class="flash-wrap" id="themeFlash"></div>';
   // Quiz CTA
   html += '<div class="theme-quiz-bar">'
     + '<button type="button" class="btn" id="b1ThemeDrill">📝 Dieses Thema üben</button>'
     + '<button type="button" class="btn ghost" id="b1ThemePickBtn">Themen wählen</button>'
+    + '<button type="button" class="btn ghost" id="b1ThemeFlashFocus">🃏 Karteikarten</button>'
     + '</div>';
   body.innerHTML = html;
   const drill=document.getElementById('b1ThemeDrill');
   if(drill) drill.onclick=()=>bfk1QuizStartThemes([themeId]);
   const pickBtn=document.getElementById('b1ThemePickBtn');
   if(pickBtn) pickBtn.onclick=()=>go('#/bfk/1/quiz');
+  const flashFocus=document.getElementById('b1ThemeFlashFocus');
+  if(flashFocus) flashFocus.onclick=()=>{ const el=document.getElementById('themeFlash'); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); };
   try{ if(window.bindTerms) bindTerms(body); }catch(e){}
+  try{ renderThemeFlashcards(themeId, item); }catch(e){ console.warn('flash', e); }
 }
 function openPageLightbox(i){
   const pages=window._bfk1Pages||[];
