@@ -224,26 +224,40 @@
   }
 
   /** Enrich + bind a whole view/page (all Fächer) */
+  function isInteractiveVocabSkip(node){
+    if(!node || !node.closest) return false;
+    return !!(node.closest('#bfk1QuizArea') || node.closest('#fachQuizArea') || node.closest('#quizArea')
+      || node.closest('.quiz-start') || node.closest('.q-opts') || node.closest('.theme-pick')
+      || node.closest('.choice') || node.closest('#loginGate') || node.closest('.img-wrap')
+      || node.closest('.svg-box') || node.closest('.hotspot') || node.closest('[data-no-vocab="1"]')
+      || node.getAttribute && node.getAttribute('data-no-vocab')==='1');
+  }
+
   function enableVocabOn(root){
     const el = typeof root==='string' ? document.querySelector(root) : (root||document.body);
     if(!el) return;
-    // For large static views: mark terms without rewriting whole interactive SVG if data-no-vocab
     if(el.getAttribute && el.getAttribute('data-no-vocab')==='1') return;
+    // Never rewrite interactive quiz UIs (destroys button handlers)
+    if(el.id==='bfk1QuizArea' || el.id==='fachQuizArea' || el.id==='quizArea' || el.id==='v-bfk1-quiz' || el.id==='v-fach-quiz' || el.id==='v-quiz'){
+      // still bind existing .term if any, but do not rewrite HTML
+      bindTerms(el);
+      return;
+    }
     if(!el.dataset.vocabEnriched){
-      // Prefer enriching content cards only
       const cards=el.querySelectorAll('.card, .mini, .panel, .apanel, .section-head, #fachThemeBody, #bfk1ThemeBody, .detail-box, table, .formula, .note, .hint, li, p, td, th, h2, h3, h4');
       if(cards.length){
         cards.forEach(c=>{
           if(c.dataset.vocabEnriched) return;
-          // skip scripty interactive image wraps
-          if(c.closest && (c.closest('.img-wrap') || c.closest('.svg-box') || c.closest('.hotspot'))) return;
+          if(isInteractiveVocabSkip(c)) return;
+          // skip cards that currently host live quiz controls
+          if(c.querySelector && (c.querySelector('#bfk1QuizArea') || c.querySelector('#b1start') || c.querySelector('#b1ThemePick') || c.querySelector('.q-opts') || c.querySelector('#fachQuizArea') || c.querySelector('#quizArea'))) return;
           try{
             c.dataset.vocabEnriched='1';
             c.innerHTML = enrichTermsInHtml(c.innerHTML);
           }catch(e){}
         });
         el.dataset.vocabEnriched='1';
-      }else if(el!==document.body){
+      }else if(el!==document.body && !isInteractiveVocabSkip(el)){
         try{ el.dataset.vocabEnriched='1'; el.innerHTML=enrichTermsInHtml(el.innerHTML);}catch(e){}
       }
     }

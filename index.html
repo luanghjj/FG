@@ -1029,7 +1029,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
     <h2>📝 Quiz – Teste dein Wissen</h2>
     <p>Multiple-Choice zum Selbsttest. Nach der Auswahl erscheint die Erklärung.</p>
   </div>
-  <div class="card"><div id="quizArea"></div></div>
+  <div class="card" data-no-vocab="1"><div id="quizArea" data-no-vocab="1"></div></div>
 </section>
 
 <!-- ===== THEME: PRÜFUNGEN ===== -->
@@ -1102,7 +1102,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
     <h2>📝 BfK-1 · Quiz</h2>
     <p>Themen wählen · Fragen werden gemischt</p>
   </div>
-  <div class="card"><div id="bfk1QuizArea"></div></div>
+  <div class="card" data-no-vocab="1"><div id="bfk1QuizArea" data-no-vocab="1"></div></div>
 </section>
 
 <!-- ===== BFK-1 THEME DETAIL ===== -->
@@ -1144,7 +1144,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
     <h2 id="fachQuizTitle">Quiz</h2>
     <p>Themen wählen · Fragen werden gemischt</p>
   </div>
-  <div class="card"><div id="fachQuizArea"></div></div>
+  <div class="card" data-no-vocab="1"><div id="fachQuizArea" data-no-vocab="1"></div></div>
 </section>
 
 <div class="footer">🍀 Lern-App · Fachkraft für Gastronomie · Viel Erfolg! 🍀</div>
@@ -1209,9 +1209,9 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 <div id="toastHost" aria-live="polite"></div>
 
 <script src="./supabase.js?v=4"></script>
-<script src="./vocab.js?v=2"></script>
+<script src="./vocab.js?v=3"></script>
 <script src="./bfk1-data.js?v=11"></script>
-<script src="./bfk1-quiz.js?v=6"></script>
+<script src="./bfk1-quiz.js?v=7"></script>
 <script src="./faecher.js?v=2"></script>
 <script>
 /* ============ DATEN (Fleischteile) ============ */
@@ -1817,7 +1817,7 @@ function fachRenderQuestion(){
   const fach=window.FachForm.findFach(fQuiz.fachId);
   const meta=window.FachForm.themeMeta(fach)[q.theme]||{};
   const pct=Math.round((fQuiz.index/fQuiz.order.length)*100);
-  const order=shuffle([0,1,2,3].filter(i=>q.opts[i]!=null));
+  const order=b1Shuffle([0,1,2,3].filter(i=>q.opts && q.opts[i]!=null));
   const correctPos=order.indexOf(q.a);
   let html='<div class="quiz-bar"><span>'+(meta.icon||'')+' '+(meta.name||q.cat)+' · '+(fQuiz.index+1)+'/'+fQuiz.order.length+'</span>';
   html+='<span class="score">'+fQuiz.score+' richtig</span></div>';
@@ -1876,73 +1876,101 @@ function fachQuizResult(){
 
 /* ============ BfK-1 QUIZ ENGINE ============ */
 let b1Pool=[], b1Order=[], b1Index=0, b1Score=0, b1Wrong=[], b1Started=false;
+function b1Notify(msg, type){
+  try{ if(typeof toast==='function') toast(msg, type||'info'); else console.log(msg); }catch(e){ console.log(msg); }
+}
+function b1Shuffle(arr){
+  if(typeof shuffle==='function') return shuffle(arr);
+  const a=arr.slice();
+  for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); const t=a[i]; a[i]=a[j]; a[j]=t; }
+  return a;
+}
 function bfk1QuizIntro(preselect){
   const area=document.getElementById('bfk1QuizArea');
   if(!area) return;
   b1Started=false;
+  area.setAttribute('data-no-vocab','1');
   const meta=window.BFK1_THEME_META||{};
   const quiz=window.BFK1_QUIZ||[];
   if(!quiz.length){
-    area.innerHTML='<p class="muted">Quiz-Daten nicht geladen. Bitte Seite neu laden.</p>';
+    area.innerHTML='<p class="muted">Quiz-Daten nicht geladen. Bitte Hard-Reload (Cmd+Shift+R).</p>';
     return;
   }
   const counts={};
   quiz.forEach(q=>{ counts[q.theme]=(counts[q.theme]||0)+1; });
   const pre=new Set(preselect||[]);
-  let html='<div class="quiz-start">';
+  let html='<div class="quiz-start" data-no-vocab="1">';
   html+='<p><b>'+quiz.length+'</b> Fragen · Themen auswählen, dann mischen &amp; üben.</p>';
   html+='<div class="quiz-actions" style="margin-bottom:10px">';
-  html+='<button type="button" class="btn ghost" id="b1all">Alle Themen</button>';
-  html+='<button type="button" class="btn ghost" id="b1none">Keine</button>';
-  html+='<button type="button" class="btn ghost" id="b1lf6">Nur LF6</button>';
-  html+='<button type="button" class="btn ghost" id="b1lf9">Nur LF9</button>';
+  html+='<button type="button" class="btn ghost" data-b1="all">Alle Themen</button>';
+  html+='<button type="button" class="btn ghost" data-b1="none">Keine</button>';
+  html+='<button type="button" class="btn ghost" data-b1="lf6">Nur LF6</button>';
+  html+='<button type="button" class="btn ghost" data-b1="lf9">Nur LF9</button>';
   html+='</div>';
   html+='<div class="theme-pick" id="b1ThemePick">';
   Object.keys(meta).forEach(id=>{
-    const m=meta[id];
+    const m=meta[id]||{icon:'📘',name:id,lf:''};
     const n=counts[id]||0;
+    if(!n) return; // only themes with questions
     const checked = pre.size? pre.has(id) : true;
     html+='<label><input type="checkbox" value="'+id+'" '+(checked?'checked':'')+'>'
-      +'<div><b>'+(m.icon||'')+' '+m.name+'</b><span>'+m.lf+' · '+n+' Fragen</span></div></label>';
+      +'<div><b>'+(m.icon||'')+' '+(m.name||id)+'</b><span>'+(m.lf||'')+' · '+n+' Fragen</span></div></label>';
   });
   html+='</div>';
   html+='<div class="quiz-actions">';
-  html+='<button type="button" class="btn" id="b1start">▶ Gemischt starten</button>';
-  html+='<button type="button" class="btn ghost" id="b1quick">⚡ 10 Fragen</button>';
+  html+='<button type="button" class="btn" data-b1="start">▶ Gemischt starten</button>';
+  html+='<button type="button" class="btn ghost" data-b1="quick">⚡ 10 Fragen</button>';
   html+='</div></div>';
   area.innerHTML=html;
+
   const pick=()=>[...area.querySelectorAll('#b1ThemePick input:checked')].map(x=>x.value);
   const setGroup=(pred)=>{
     area.querySelectorAll('#b1ThemePick input').forEach(inp=>{
       const m=meta[inp.value];
-      inp.checked = pred(inp.value, m);
+      inp.checked = !!pred(inp.value, m);
     });
   };
-  document.getElementById('b1all').onclick=()=>setGroup(()=>true);
-  document.getElementById('b1none').onclick=()=>setGroup(()=>false);
-  document.getElementById('b1lf6').onclick=()=>setGroup((id,m)=>m && m.lf==='LF6');
-  document.getElementById('b1lf9').onclick=()=>setGroup((id,m)=>m && m.lf==='LF9');
-  document.getElementById('b1start').onclick=()=>bfk1QuizStartThemes(pick(), 'all');
-  document.getElementById('b1quick').onclick=()=>bfk1QuizStartThemes(pick(), 'quick');
+  // event delegation so vocab enrich / re-render cannot easily break controls
+  area.onclick=function(ev){
+    const btn=ev.target.closest('[data-b1]');
+    if(!btn || !area.contains(btn)) return;
+    const act=btn.getAttribute('data-b1');
+    if(act==='all') setGroup(()=>true);
+    else if(act==='none') setGroup(()=>false);
+    else if(act==='lf6') setGroup((id,m)=>m && String(m.lf||'').indexOf('LF6')===0);
+    else if(act==='lf9') setGroup((id,m)=>m && String(m.lf||'').indexOf('LF9')===0);
+    else if(act==='start') bfk1QuizStartThemes(pick(), 'all');
+    else if(act==='quick') bfk1QuizStartThemes(pick(), 'quick');
+  };
 }
 function bfk1QuizStartThemes(themeIds, mode){
-  const ids=themeIds && themeIds.length ? themeIds : (window.bfk1QuizAllThemes? window.bfk1QuizAllThemes():[]);
-  if(!ids.length){ toast && toast('Bitte mindestens 1 Thema wählen','info'); return; }
-  // navigate to quiz view if needed
-  if((location.hash||'') !== '#/bfk/1/quiz'){
-    // stash selection
-    window._b1Pending = {ids, mode: mode||'all'};
-    go('#/bfk/1/quiz');
-    return;
+  try{
+    let ids = (themeIds && themeIds.length) ? themeIds.slice() : (window.bfk1QuizAllThemes? window.bfk1QuizAllThemes():[]);
+    if(!ids.length && window.BFK1_THEME_META) ids=Object.keys(window.BFK1_THEME_META);
+    if(!ids.length){ b1Notify('Bitte mindestens 1 Thema wählen','info'); return; }
+    // navigate to quiz view if needed
+    const hash=location.hash||'';
+    if(hash !== '#/bfk/1/quiz'){
+      window._b1Pending = {ids:ids, mode: mode||'all'};
+      go('#/bfk/1/quiz');
+      return;
+    }
+    let pool = (window.bfk1QuizByThemes? window.bfk1QuizByThemes(ids):[]);
+    if((!pool || !pool.length) && window.BFK1_QUIZ){
+      const set=new Set(ids);
+      pool = window.BFK1_QUIZ.filter(q=>set.has(q.theme));
+    }
+    pool = (pool||[]).slice();
+    if(!pool.length){ b1Notify('Keine Fragen für diese Themen','info'); return; }
+    b1Pool = pool;
+    b1Order = b1Shuffle(pool.map((_,i)=>i));
+    if(mode==='quick') b1Order = b1Order.slice(0, Math.min(10, b1Order.length));
+    b1Index=0; b1Score=0; b1Wrong=[]; b1Started=true;
+    bfk1RenderQuestion();
+  }catch(err){
+    console.error('bfk1QuizStartThemes', err);
+    b1Notify('Quiz-Fehler: '+(err && err.message ? err.message : err),'bad');
   }
-  const pool = (window.bfk1QuizByThemes? window.bfk1QuizByThemes(ids):[]).slice();
-  if(!pool.length){ toast && toast('Keine Fragen für diese Themen','info'); return; }
-  b1Pool = pool;
-  // shuffle
-  b1Order = shuffle(pool.map((_,i)=>i));
-  if(mode==='quick') b1Order = b1Order.slice(0, Math.min(10, b1Order.length));
-  b1Index=0; b1Score=0; b1Wrong=[]; b1Started=true;
-  bfk1RenderQuestion();
 }
 function bfk1RenderQuestion(){
   const area=document.getElementById('bfk1QuizArea');
@@ -1952,7 +1980,7 @@ function bfk1RenderQuestion(){
   const meta=(window.BFK1_THEME_META||{})[q.theme]||{};
   const pct=Math.round((b1Index/b1Order.length)*100);
   // shuffle options but keep correct mapping
-  const order=shuffle([0,1,2,3].filter(i=>q.opts[i]!=null));
+  const order=b1Shuffle([0,1,2,3].filter(i=>q.opts && q.opts[i]!=null));
   const correctPos=order.indexOf(q.a);
   let html='<div class="quiz-bar"><span>'+(meta.icon||'')+' '+(meta.name||q.cat)+' · '+(b1Index+1)+'/'+b1Order.length+'</span>';
   html+='<span class="score">'+b1Score+' richtig</span></div>';
@@ -2356,7 +2384,15 @@ function router(){
   if(r.view==="v-quiz" && !window._quizStarted) quizIntro();
   if(r.view==="v-bfk-level" && r.level) renderBfkLevel(r.level);
   if(r.view==="v-bfk1" || r.bfk1) renderBfk1Hub();
-  if(r.view==="v-bfk1-quiz" || r.bfk1quiz){ if(window._b1Pending){ const p=window._b1Pending; window._b1Pending=null; setTimeout(()=>bfk1QuizStartThemes(p.ids,p.mode||"all"),0); } else if(!b1Started) bfk1QuizIntro(); }
+  if(r.view==="v-bfk1-quiz" || r.bfk1quiz){
+    const area=document.getElementById("bfk1QuizArea");
+    if(window._b1Pending){
+      const p=window._b1Pending; window._b1Pending=null;
+      setTimeout(()=>bfk1QuizStartThemes(p.ids,p.mode||"all"),0);
+    } else if(!b1Started || !area || !area.innerHTML || !area.innerHTML.trim()){
+      bfk1QuizIntro();
+    }
+  }
   if(r.view==="v-on-thi" || r.exams) renderFullExams();
   if(r.view==="v-exam-detail" && r.examId) renderExamDetail(r.examId);
   if(r.view==="v-placeholder" || r.placeholder) showPlaceholder(hash);
@@ -2947,7 +2983,12 @@ function toast(msg, type){
   setTimeout(()=>{ el.style.opacity='0'; el.style.transition='opacity .25s'; setTimeout(()=>el.remove(),280); }, 2600);
 }
 function setBottomNav(hash){
-  try{ const active=document.querySelector('.view.active'); if(active && window.enableVocabOn) setTimeout(()=>enableVocabOn(active), 0); }catch(e){}
+  try{
+    const active=document.querySelector('.view.active');
+    const h=hash||location.hash||'';
+    const skipVocab = !active || /quiz/i.test(active.id||'') || h.indexOf('/quiz')>=0 || h.indexOf('bfk/1/quiz')>=0;
+    if(active && window.enableVocabOn && !skipVocab) setTimeout(()=>enableVocabOn(active), 0);
+  }catch(e){}
   const nav=document.getElementById('bottomNav'); if(!nav) return;
   const h=hash||location.hash||'#/';
   nav.querySelectorAll('button').forEach(btn=>{
