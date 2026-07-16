@@ -651,9 +651,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
   font:inherit;font-size:1em;font-weight:700;line-height:1;transition:background .15s,color .15s,transform .12s}
 .flash-btn:hover{background:var(--accent-soft);color:var(--accent)}
 .flash-btn:active{transform:scale(.96)}
-.flash-btn.flip{width:auto;min-width:96px;padding:0 14px;background:var(--accent);color:#fff;
-  font-size:.82em;font-weight:700;letter-spacing:.01em}
-.flash-btn.flip:hover{background:#1d4ed8;color:#fff}
+.flash-count{min-width:52px;text-align:center;font-size:.78em;font-weight:700;color:var(--muted);padding:0 4px;user-select:none}
 .flash-btn .ico{font-size:1.05em;line-height:1}
 .flash-sub{display:inline-flex;gap:6px;align-items:center}
 .flash-mini{appearance:none;border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;
@@ -664,7 +662,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
   .flash-stage{max-width:100%}
   .flash-card{height:168px}
   .flash-btn{width:36px;height:36px}
-  .flash-btn.flip{min-width:88px;padding:0 12px;font-size:.78em}
+  .flash-count{min-width:46px;font-size:.74em}
 }
 
 </style>
@@ -2319,27 +2317,25 @@ function renderThemeFlashcards(themeId, item){
     const c=cards[order[pos]];
     host.innerHTML =
       '<h3>🃏 Karteikarten · Vokabeln</h3>'
-      + '<div class="hint">Tippen oder Umdrehen · DE → VI</div>'
+      + '<div class="hint">Tippen auf die Karte · DE → VI</div>'
       + '<div class="flash-stage"><div class="flash-card'+(flipped?' flipped':'')+'" id="flashCard">'
-      +   '<div class="flash-face front"><div class="flash-kicker">Deutsch</div><div class="flash-de">'+c.de+'</div><div class="flash-meta">Tippen = lật thẻ</div></div>'
+      +   '<div class="flash-face front"><div class="flash-kicker">Deutsch</div><div class="flash-de">'+c.de+'</div><div class="flash-meta">Bấm để lật</div></div>'
       +   '<div class="flash-face back"><div class="flash-kicker">Tiếng Việt</div><div class="flash-vi">'+c.vi+'</div><div class="flash-meta">'+c.de+'</div></div>'
       + '</div></div>'
       + '<div class="flash-controls">'
       +   '<div class="flash-nav">'
       +     '<button type="button" class="flash-btn" id="flashPrev" aria-label="Vorherige" title="Vorherige"><span class="ico">‹</span></button>'
-      +     '<button type="button" class="flash-btn flip" id="flashFlip" aria-label="Umdrehen" title="Umdrehen">Umdrehen</button>'
+      +     '<span class="flash-count" id="flashCount">'+(pos+1)+' / '+cards.length+'</span>'
       +     '<button type="button" class="flash-btn" id="flashNext" aria-label="Nächste" title="Nächste"><span class="ico">›</span></button>'
       +   '</div>'
       +   '<div class="flash-sub">'
       +     '<button type="button" class="flash-mini" id="flashShuffle">Mischen</button>'
       +     '<button type="button" class="flash-mini" id="flashQuiz">Quiz</button>'
       +   '</div>'
-      + '</div>'
-      + '<div class="flash-progress">'+(pos+1)+' / '+cards.length+'</div>';
+      + '</div>';
     const card=document.getElementById('flashCard');
     const flip=()=>{ flipped=!flipped; if(card) card.classList.toggle('flipped', flipped); };
     if(card) card.onclick=flip;
-    const fbtn=document.getElementById('flashFlip'); if(fbtn) fbtn.onclick=flip;
     const prev=document.getElementById('flashPrev'); if(prev) prev.onclick=()=>{ pos=(pos-1+cards.length)%cards.length; flipped=false; paint(); };
     const next=document.getElementById('flashNext'); if(next) next.onclick=()=>{ pos=(pos+1)%cards.length; flipped=false; paint(); };
     const sh=document.getElementById('flashShuffle'); if(sh) sh.onclick=()=>{
