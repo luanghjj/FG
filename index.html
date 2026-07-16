@@ -486,6 +486,29 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 .exam-detail-banner{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#1d4ed8,#2563eb 55%,#3b82f6);color:#fff;border-radius:16px;padding:18px 20px;margin-bottom:18px}
 .exam-detail-banner .big-date{font-size:1.6em;font-weight:800;line-height:1}
 .exam-detail-banner .meta{font-size:.86em;opacity:.88;margin-top:4px}
+/* ===== Luyện thi / practice hub ===== */
+.practice-modes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 18px}
+@media (max-width:420px){.practice-modes{grid-template-columns:1fr}}
+.practice-mode{display:flex;flex-direction:column;gap:4px;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:14px;padding:14px 14px 12px;cursor:pointer;font:inherit;color:inherit;transition:.15s;box-shadow:var(--shadow)}
+.practice-mode:hover,.practice-mode:active{border-color:color-mix(in srgb,var(--accent) 35%, #fff);transform:translateY(-1px)}
+.practice-mode .pm-ic{font-size:1.35em;line-height:1}
+.practice-mode b{font-size:.92em;font-weight:700;letter-spacing:-.01em}
+.practice-mode span{font-size:.75em;color:var(--muted);line-height:1.35}
+.practice-section{margin:0 0 18px}
+.practice-section h3{font-size:.95em;font-weight:700;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+.practice-section h3 .count{font-size:.72em;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.theme-check-list{display:flex;flex-direction:column;gap:8px}
+.theme-check{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:pointer}
+.theme-check:has(input:checked){border-color:color-mix(in srgb,var(--accent) 40%, #fff);background:var(--accent-soft)}
+.theme-check input{margin-top:3px;accent-color:var(--accent)}
+.theme-check .tt{flex:1;min-width:0}
+.theme-check .tt b{display:block;font-size:.9em}
+.theme-check .tt span{display:block;font-size:.75em;color:var(--muted);margin-top:2px}
+.theme-check .n{font-size:.72em;font-weight:700;color:var(--accent);white-space:nowrap}
+.practice-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.luyen-tabs{display:flex;gap:6px;overflow-x:auto;padding:0 0 12px;margin:0 0 8px;-webkit-overflow-scrolling:touch}
+.luyen-tabs button{flex:0 0 auto;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 12px;font:inherit;font-size:.78em;font-weight:650;color:var(--muted);cursor:pointer}
+.luyen-tabs button.active{background:var(--accent);border-color:var(--accent);color:#fff}
 @media (max-width:640px){
   .ka-date{flex:0 0 64px}
   .ka-date .day{font-size:1.25em}
@@ -718,7 +741,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
   </div>
 
   <!-- Compact next KA -->
-  <div class="next-exam-chip" id="homeExamChip" onclick="go('#/on-thi')" title="Klassenarbeiten">
+  <div class="next-exam-chip" id="homeExamChip" onclick="go('#/on-thi')" title="Luyện thi · Klassenarbeiten">
     <div class="date-box"><div class="d" id="homeExamDay">—</div><div class="m" id="homeExamMon">—</div></div>
     <div class="body">
       <b id="homeExamTitle">Nächste Klassenarbeit</b>
@@ -1108,17 +1131,22 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 
 <!-- ===== KLASSENARBEITEN ===== -->
 <section class="view" id="v-on-thi">
-  <div class="back" onclick="go('#/')">← Fächer</div>
+  <div class="back" onclick="go('#/')">← Start</div>
   <div class="section-head">
-    <h2>📅 Klassenarbeiten</h2>
-    <p>Termine · Themen antippen zum Lernen</p>
+    <h2>🎯 Luyện thi</h2>
+    <p>Chọn kỳ thi · luyện đúng Thema được giao</p>
+  </div>
+  <div class="luyen-tabs" id="luyenTabs" role="tablist" aria-label="Lọc kỳ thi">
+    <button type="button" class="active" data-filter="all">Tất cả</button>
+    <button type="button" data-filter="upcoming">Sắp tới</button>
+    <button type="button" data-filter="ready">Có quiz</button>
   </div>
   <div class="ka-list" id="examFullList"></div>
 </section>
 
-<!-- ===== EXAM DETAIL ===== -->
+<!-- ===== EXAM DETAIL / PRACTICE HUB ===== -->
 <section class="view" id="v-exam-detail">
-  <div class="back" onclick="go('#/on-thi')">← Klassenarbeiten</div>
+  <div class="back" onclick="go('#/on-thi')">← Luyện thi</div>
   <div class="exam-detail-banner" id="examDetailBanner">
     <div>
       <div class="big-date" id="examDetailDate">—</div>
@@ -1127,7 +1155,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
   </div>
   <div class="section-head">
     <h2 id="examDetailTitle">Klassenarbeit</h2>
-    <p id="examDetailDesc">Themen</p>
+    <p id="examDetailDesc">Luyện theo Thema · Quiz · Flashcards</p>
   </div>
   <div id="examDetailBody"></div>
 </section>
@@ -1227,6 +1255,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 <!-- Bottom nav (mobile): compact, center opens Fächer picker -->
 <nav class="bottom-nav" id="bottomNav" aria-label="Hauptnavigation">
   <button type="button" data-nav="#/" class="active"><span class="bi">🏠</span>Start</button>
+  <button type="button" data-nav="#/on-thi"><span class="bi">🎯</span>Luyện thi</button>
   <button type="button" class="nav-center" id="fachNavBtn" data-nav="#faecher"><span class="bi">📚</span>Fächer</button>
   <button type="button" data-nav="#profile"><span class="bi">👤</span>Profil</button>
 </nav>
@@ -1638,11 +1667,164 @@ function renderHomeExams(){
   const chip=document.getElementById("homeExamChip");
   if(chip) chip.onclick=()=>go(next.route||"#/on-thi");
 }
+function examHasQuiz(ex){
+  if(!ex) return false;
+  if(ex.id==='bfk1') return !!(window.BFK1_QUIZ&&BFK1_QUIZ.length);
+  if(ex.id==='bfk2') return true;
+  if(ex.id==='deutsch') return false;
+  try{
+    ensureFachRegistry();
+    const fach=window.FachForm && window.FachForm.findFach(ex.id);
+    return !!(fach && fach.quiz && fach.quiz.length);
+  }catch(e){ return false; }
+}
+function examQuizCount(ex){
+  if(!ex) return 0;
+  if(ex.id==='bfk1') return (window.BFK1_QUIZ||[]).length;
+  if(ex.id==='bfk2') return (typeof QUIZ!=='undefined' && QUIZ.length)? QUIZ.length : 0;
+  try{
+    ensureFachRegistry();
+    const fach=window.FachForm && window.FachForm.findFach(ex.id);
+    return (fach && fach.quiz && fach.quiz.length) || 0;
+  }catch(e){ return 0; }
+}
+function examThemeCatalog(ex){
+  // returns [{id, icon, name, desc, route, qCount}]
+  if(!ex) return [];
+  if(ex.id==='bfk1'){
+    const quiz=window.BFK1_QUIZ||[];
+    const counts={}; quiz.forEach(q=>{ counts[q.theme]=(counts[q.theme]||0)+1; });
+    const items=[];
+    (window.BFK1_THEMES? [BFK1_THEMES.lf6, BFK1_THEMES.lf9]:[]).forEach(g=>{
+      (g.items||[]).forEach(it=>{
+        items.push({
+          id:it.id, icon:it.icon||'📘', name:it.name, desc:it.desc||g.badge||'',
+          route:'#/bfk/1/theme/'+it.id, qCount:counts[it.id]||0, group:g.badge||g.title||''
+        });
+      });
+    });
+    return items;
+  }
+  if(ex.id==='bfk2'){
+    return [
+      {id:'fleisch', icon:'🥩', name:'Fleischteile', desc:'Rind · Schwein · Schaf', route:'#/bfk/2/fleisch', qCount:0, group:'Modul'},
+      {id:'kueche', icon:'🍳', name:'Küche & Ernährung', desc:'Nährwert · Eier · BW', route:'#/bfk/2/kueche', qCount:0, group:'Modul'},
+      {id:'quiz', icon:'📝', name:'Quiz BfK-2', desc:'MC Selbsttest', route:'#/bfk/2/quiz', qCount:examQuizCount(ex), group:'Üben'},
+      {id:'pruefungen', icon:'🗂️', name:'Prüfungen', desc:'Muster + Lösungen', route:'#/bfk/2/pruefungen', qCount:0, group:'KA'},
+    ];
+  }
+  if(ex.id==='deutsch'){
+    return [
+      {id:'visualisierung', icon:'🧠', name:'Visualisierung', desc:'Mindmap · Diagramme', route:'deutsch.html', qCount:0, group:'KA', external:true},
+    ];
+  }
+  try{
+    ensureFachRegistry();
+    const fach=window.FachForm && window.FachForm.findFach(ex.id);
+    if(!fach) return [];
+    const quiz=fach.quiz||[];
+    const counts={}; quiz.forEach(q=>{ counts[q.theme]=(counts[q.theme]||0)+1; });
+    return window.FachForm.allThemes(fach).map(t=>({
+      id:t.id, icon:t.icon||'📘', name:t.name, desc:t.desc||t.groupBadge||'',
+      route:'#/fach/'+fach.id+'/theme/'+t.id,
+      qCount:counts[t.id]||0, group:t.groupBadge||t.groupTitle||''
+    }));
+  }catch(e){ return []; }
+}
+function examQuizRoute(ex){
+  if(!ex) return '#/on-thi';
+  if(ex.id==='bfk1') return '#/bfk/1/quiz';
+  if(ex.id==='bfk2') return '#/bfk/2/quiz';
+  if(ex.id==='deutsch') return 'deutsch.html';
+  return '#/fach/'+ex.id+'/quiz';
+}
+function examStudyRoute(ex){
+  if(!ex) return '#/on-thi';
+  return ex.studyRoute || examQuizRoute(ex);
+}
+function startExamPractice(examId, mode, themeIds){
+  const ex=EXAMS.find(e=>e.id===examId);
+  if(!ex){ go('#/on-thi'); return; }
+  const ids=(themeIds&&themeIds.length)? themeIds : null;
+  if(ex.id==='bfk1'){
+    if(mode==='learn'){ go(ids&&ids[0]? '#/bfk/1/theme/'+ids[0] : '#/bfk/1'); return; }
+    if(mode==='flash'){
+      const first=(ids&&ids[0]) || ((window.BFK1_THEMES&&BFK1_THEMES.lf6.items[0]&&BFK1_THEMES.lf6.items[0].id)||null);
+      if(first) go('#/bfk/1/theme/'+first);
+      else go('#/bfk/1');
+      return;
+    }
+    // quiz modes
+    if(typeof bfk1QuizStartThemes==='function'){
+      const allIds = ids || Object.keys(window.BFK1_THEME_META||{});
+      if(mode==='exam'){
+        bfk1QuizStartThemes(allIds, 'exam', {exam:true, seconds:20*60, filter:'mix'});
+      } else if(mode==='quick'){
+        bfk1QuizStartThemes(allIds, 'quick', {filter:'mix'});
+      } else {
+        bfk1QuizStartThemes(allIds, 'all', {filter:'mix'});
+      }
+    } else go('#/bfk/1/quiz');
+    return;
+  }
+  if(ex.id==='bfk2'){
+    if(mode==='learn'){ go('#/bfk/2'); return; }
+    if(mode==='flash'){ go('#/bfk/2/fleisch'); return; }
+    go('#/bfk/2/quiz');
+    setTimeout(()=>{ try{ if(mode==='quick' && typeof quizStart==='function') quizStart('quick'); else if(typeof quizStart==='function') quizStart('all'); }catch(e){} }, 120);
+    return;
+  }
+  if(ex.id==='deutsch'){
+    location.href='deutsch.html'; return;
+  }
+  // standard FachForm exams (englisch, gk, …)
+  if(mode==='learn'){
+    go(ids&&ids[0] ? '#/fach/'+ex.id+'/theme/'+ids[0] : examStudyRoute(ex));
+    return;
+  }
+  if(mode==='flash'){
+    const cat=examThemeCatalog(ex);
+    const first=(ids&&ids[0]) || (cat[0]&&cat[0].id);
+    go(first? '#/fach/'+ex.id+'/theme/'+first : examStudyRoute(ex));
+    return;
+  }
+  // quiz
+  fachQuizStart(ex.id, ids, mode==='quick'?'quick':'all');
+}
+window.startExamPractice = startExamPractice;
+
+let _luyenFilter='all';
 function renderFullExams(){
   const host=document.getElementById("examFullList");
   if(!host) return;
-  const sorted=[...EXAMS].sort((a,b)=>a.date.localeCompare(b.date));
-  host.innerHTML=sorted.map(e=>examCardHTML(e,false)).join("");
+  const tabs=document.getElementById('luyenTabs');
+  if(tabs && !tabs._bound){
+    tabs._bound=true;
+    tabs.querySelectorAll('button').forEach(btn=>{
+      btn.onclick=()=>{
+        _luyenFilter=btn.getAttribute('data-filter')||'all';
+        tabs.querySelectorAll('button').forEach(b=>b.classList.toggle('active', b===btn));
+        renderFullExams();
+      };
+    });
+  }
+  let sorted=[...EXAMS].sort((a,b)=>a.date.localeCompare(b.date));
+  if(_luyenFilter==='upcoming') sorted=sorted.filter(e=>daysUntil(e.date)>=0);
+  if(_luyenFilter==='ready') sorted=sorted.filter(e=>examHasQuiz(e));
+  if(!sorted.length){
+    host.innerHTML='<div class="card"><p class="muted">Không có kỳ thi trong bộ lọc này.</p></div>';
+    return;
+  }
+  host.innerHTML=sorted.map(e=>{
+    const n=examQuizCount(e);
+    const badge=n? (n+' câu quiz') : (examHasQuiz(e)?'có quiz':'học liệu');
+    const base=examCardHTML(e,false);
+    // inject practice badge under name
+    return base.replace(
+      '<div class="name">'+e.name+'</div>',
+      '<div class="name">'+e.name+'</div><div class="teacher" style="margin-top:2px;color:var(--accent)">🎯 Luyện · '+badge+'</div>'
+    );
+  }).join("");
 }
 function renderExamDetail(examId){
   const ex=EXAMS.find(e=>e.id===examId);
@@ -1656,52 +1838,113 @@ function renderExamDetail(examId){
   if(dateEl) dateEl.textContent=formatDeDate(ex.date)+" · "+cd.text;
   if(metaEl) metaEl.textContent=ex.teacher+" · "+formatDeDateLong(ex.date);
   if(titleEl) titleEl.textContent=ex.icon+" "+ex.name;
-  if(descEl) descEl.textContent="Themen · "+ex.code;
+  if(descEl) descEl.textContent="Luyện thi · "+ex.code+" · chọn dạng bài bên dưới";
   if(!body) return;
 
+  const themes=examThemeCatalog(ex);
+  const qTotal=examQuizCount(ex);
+  const hasQ=examHasQuiz(ex) || themes.some(t=>t.qCount>0);
+
   let html='';
-  html+='<div class="card"><h2>📌 Themen</h2><ul>';
-  (ex.topics||[]).forEach(t=>{ html+='<li>'+t+'</li>'; });
-  html+='</ul>';
-  if(ex.studyRoute){
-    if(ex.external){
-      html+='<p style="margin-top:12px"><a class="btn" href="'+ex.studyRoute+'">Lernen →</a></p>';
-    }else{
-      html+='<p style="margin-top:12px"><button class="btn" type="button" onclick="go(\''+ex.studyRoute+'\')">Lernen →</button></p>';
+
+  // Practice modes
+  html+='<div class="practice-section"><h3>🎯 Dạng luyện tập</h3>';
+  html+='<div class="practice-modes">';
+  html+='<button type="button" class="practice-mode" data-mode="mixed"><span class="pm-ic">🎲</span><b>Quiz trộn Thema</b><span>Trộn câu hỏi các Thema đã chọn</span></button>';
+  html+='<button type="button" class="practice-mode" data-mode="quick"><span class="pm-ic">⚡</span><b>10 câu nhanh</b><span>Warm-up trước giờ thi</span></button>';
+  html+='<button type="button" class="practice-mode" data-mode="exam"><span class="pm-ic">📝</span><b>Thi thử</b><span>'+(ex.id==='bfk1'?'Có timer · mô phỏng KA':'Làm full theo Thema chọn')+'</span></button>';
+  html+='<button type="button" class="practice-mode" data-mode="flash"><span class="pm-ic">🃏</span><b>Flashcards</b><span>Lật DE ↔ VI theo Thema</span></button>';
+  html+='<button type="button" class="practice-mode" data-mode="learn"><span class="pm-ic">📖</span><b>Học nội dung</b><span>Tóm tắt + scan bài</span></button>';
+  if(ex.id==='bfk2'){
+    html+='<button type="button" class="practice-mode" data-mode="muster"><span class="pm-ic">🗂️</span><b>Đề mẫu</b><span>Musterprüfung + lời giải</span></button>';
+  }
+  html+='</div></div>';
+
+  // Theme picker for focused practice
+  html+='<div class="card practice-section">';
+  html+='<h3>📌 Thema được giao <span class="count">'+(themes.length|| (ex.topics||[]).length)+'</span></h3>';
+  if(themes.length){
+    html+='<div class="practice-actions" style="margin-top:0;margin-bottom:10px">';
+    html+='<button type="button" class="btn ghost" id="exAllThemes">Chọn tất cả</button>';
+    html+='<button type="button" class="btn ghost" id="exNoThemes">Bỏ chọn</button>';
+    if(qTotal) html+='<span class="muted" style="font-size:.78em;align-self:center">'+qTotal+' câu quiz sẵn</span>';
+    html+='</div>';
+    html+='<div class="theme-check-list" id="exThemePick">';
+    themes.forEach(t=>{
+      const n=t.qCount||0;
+      html+='<label class="theme-check">'
+        +'<input type="checkbox" value="'+t.id+'" checked>'
+        +'<div class="tt"><b>'+(t.icon||'')+' '+t.name+'</b><span>'+(t.group? (t.group+' · '):'')+(t.desc||'')+'</span></div>'
+        +(n? '<div class="n">'+n+' câu</div>':'<div class="n" style="color:var(--muted)">học</div>')
+        +'</label>';
+    });
+    html+='</div>';
+    html+='<div class="practice-actions">';
+    html+='<button type="button" class="btn" id="exStartMixed">▶ Luyện Thema đã chọn</button>';
+    html+='<button type="button" class="btn ghost" id="exOpenStudy">Mở học liệu →</button>';
+    html+='</div>';
+  } else {
+    html+='<ul>';
+    (ex.topics||[]).forEach(t=>{ html+='<li>'+t+'</li>'; });
+    html+='</ul>';
+    if(ex.studyRoute){
+      html+='<p style="margin-top:12px"><button class="btn" type="button" id="exOpenStudy">Học →</button></p>';
     }
   }
   html+='</div>';
 
-  // Extra detail for BfK-1
-  if(ex.id==="bfk1"){
-    html+='<div class="lf-block"><h3><span class="lf-badge">LF 6</span> '+BFK1_THEMES.lf6.title+'</h3><div class="theme-list">';
-    BFK1_THEMES.lf6.items.forEach((it,i)=>{
-      html+='<div class="theme-item" onclick="go(\'#/bfk/1/theme/'+it.id+'\')"><div class="num">'+(i+1)+'</div><div class="tt"><b>'+it.icon+' '+it.name+'</b><span>'+it.desc+'</span></div><div class="arrow">→</div></div>';
+  // Quick open themes list
+  if(themes.length){
+    html+='<div class="practice-section"><h3>📚 Mở từng Thema</h3><div class="theme-list">';
+    themes.forEach((t,i)=>{
+      if(t.external){
+        html+='<a class="theme-item" href="'+t.route+'" style="color:inherit;text-decoration:none">'
+          +'<div class="num">'+(i+1)+'</div><div class="tt"><b>'+(t.icon||'')+' '+t.name+'</b><span>'+(t.desc||'')+'</span></div><div class="arrow">→</div></a>';
+      }else{
+        html+='<div class="theme-item" data-route="'+t.route+'">'
+          +'<div class="num">'+(i+1)+'</div><div class="tt"><b>'+(t.icon||'')+' '+t.name+'</b><span>'+(t.desc||'')+(t.qCount?(' · '+t.qCount+' quiz'):'')+'</span></div><div class="arrow">→</div></div>';
+      }
     });
     html+='</div></div>';
-    html+='<div class="lf-block"><h3><span class="lf-badge">LF 9</span> '+BFK1_THEMES.lf9.title+'</h3><div class="theme-list">';
-    BFK1_THEMES.lf9.items.forEach((it,i)=>{
-      html+='<div class="theme-item" onclick="go(\'#/bfk/1/theme/'+it.id+'\')"><div class="num">'+(i+1)+'</div><div class="tt"><b>'+it.icon+' '+it.name+'</b><span>'+it.desc+'</span></div><div class="arrow">→</div></div>';
-    });
-    html+='</div></div>';
   }
-  if(ex.id==="bfk2"){
-    html+='<div class="grid" style="margin-top:8px">';
-    html+='<div class="tile" onclick="go(\'#/bfk/2/fleisch\')"><div class="ic">🥩</div><h3>Fleischteile</h3><p>Rind · Schwein · Schaf</p><div class="meta">Öffnen →</div></div>';
-    html+='<div class="tile" onclick="go(\'#/bfk/2/kueche\')"><div class="ic">🍳</div><h3>Küche & Ernährung</h3><p>Nährwert · Eier · BW</p><div class="meta">Öffnen →</div></div>';
-    html+='<div class="tile" onclick="go(\'#/bfk/2/quiz\')"><div class="ic">📝</div><h3>Quiz</h3><p>Selbsttest</p><div class="meta">Öffnen →</div></div>';
-    html+='<div class="tile" onclick="go(\'#/bfk/2/pruefungen\')"><div class="ic">🗂️</div><h3>Prüfungen</h3><p>Muster + Lösungen</p><div class="meta">Öffnen →</div></div>';
-    html+='</div>';
+
+  if(!hasQ && ex.id!=='deutsch' && ex.id!=='bfk2'){
+    html+='<div class="card"><p class="muted">Quiz cho môn này đang được bổ sung. Bạn vẫn học được nội dung + flashcards trong từng Thema.</p></div>';
   }
-  if(ex.id==="deutsch"){
-    html+='<div class="card"><h2>🇩🇪 Deutsch</h2><p class="muted">Visualisierung · Mindmap · Diagramme</p><p style="margin-top:12px"><a class="btn" href="deutsch.html">Öffnen →</a></p></div>';
-  }
+
   body.innerHTML = html;
-  try{
-    const view=document.getElementById('v-fach-theme');
-    if(window.enableVocabOn){ enableVocabOn(body); if(view) enableVocabOn(view); }
-    else if(window.bindTerms){ bindTerms(body); if(view) bindTerms(view); }
-  }catch(e){}
+
+  const pickIds=()=>[...body.querySelectorAll('#exThemePick input:checked')].map(x=>x.value);
+  const allBtn=document.getElementById('exAllThemes');
+  const noBtn=document.getElementById('exNoThemes');
+  if(allBtn) allBtn.onclick=()=>body.querySelectorAll('#exThemePick input').forEach(i=>i.checked=true);
+  if(noBtn) noBtn.onclick=()=>body.querySelectorAll('#exThemePick input').forEach(i=>i.checked=false);
+
+  body.querySelectorAll('.practice-mode').forEach(btn=>{
+    btn.onclick=()=>{
+      const mode=btn.getAttribute('data-mode');
+      if(mode==='muster'){ go('#/bfk/2/pruefungen'); return; }
+      const ids=pickIds();
+      if((mode==='mixed'||mode==='quick'||mode==='exam') && themes.length && !ids.length){
+        if(window.toast) toast('Chọn ít nhất 1 Thema','info');
+        return;
+      }
+      if(mode==='mixed') startExamPractice(ex.id, 'all', ids);
+      else startExamPractice(ex.id, mode, ids);
+    };
+  });
+  const startMixed=document.getElementById('exStartMixed');
+  if(startMixed) startMixed.onclick=()=>{
+    const ids=pickIds();
+    if(themes.length && !ids.length){ if(window.toast) toast('Chọn ít nhất 1 Thema','info'); return; }
+    if(hasQ) startExamPractice(ex.id, 'all', ids);
+    else startExamPractice(ex.id, 'learn', ids);
+  };
+  const openStudy=document.getElementById('exOpenStudy');
+  if(openStudy) openStudy.onclick=()=>go(examStudyRoute(ex));
+  body.querySelectorAll('.theme-item[data-route]').forEach(el=>{
+    el.onclick=()=>go(el.getAttribute('data-route'));
+  });
 }
 
 
@@ -2775,7 +3018,7 @@ SUBJECTS.forEach(s=>{
     s.code+" "+(s.topics||[]).join(" ")+" "+(s.meta||"")+" "+(s.examDate||"")+" "+(s.ready?"verfügbar":"bald")+" "+(s.desc||""));
 });
 idx("Startseite / Fächer","Alle Fächer der Lern-App","App","#/",null,"home start fächer menü lernen");
-idx("Klassenarbeiten","Termine und Themen","KA","#/on-thi",null,"klassenarbeit prüfung ka termine on thi");
+idx("Luyện thi","Kỳ thi · Quiz · Thema luyện","KA","#/on-thi",null,"klassenarbeit prüfung ka termine on thi luyen thi quiz");
 idx("Abschlussprüfung","Struktur · Themen · GAP","Prüfung","#/abschluss",null,"abschlussprüfung gap ihk teil1 teil2");
 try{(ABSCHLUSS_THEMEN||[]).forEach(t=>{
   idx(t.name, t.desc||"Abschlussprüfung", "GAP", t.route||"#/abschluss", null, "abschluss "+t.name+" "+(t.desc||""));
@@ -3322,6 +3565,7 @@ function setBottomNav(hash){
     const t=btn.getAttribute('data-nav')||'';
     let on=false;
     if(t==='#/') on=(h==='#/' || h==='' || h==='#');
+    else if(t==='#/on-thi') on=h==='#/on-thi' || h.startsWith('#/exam/');
     else if(t==='#faecher') on=h.startsWith('#/bfk') || h.startsWith('#/fach') || h.startsWith('#/abschluss');
     else if(t==='#profile') on=false;
     else if(t.startsWith('#')) on=h===t || (t!=='#/' && h.startsWith(t));
