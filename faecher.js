@@ -528,37 +528,79 @@
                   <div class="hint">KA 22.07.26 · Möglichkeiten der Partizipation</div>
 
                   <h3 class="sub">1. Was ist politische Partizipation?</h3>
-                  <p><span class="term" data-de="Partizipation" data-vi="sự tham gia / tham chính">Partizipation</span> = Teilhabe der Bürgerinnen und Bürger am politischen Willensbildungs- und Entscheidungsprozess.</p>
+                  <p><span class="term" data-de="Partizipation" data-vi="sự tham gia / tham chính">Partizipation</span> =
+                  <span class="term" data-de="Teilhabe" data-vi="sự tham dự / tham gia">Teilhabe</span>
+                  der <span class="term" data-de="Bürgerinnen und Bürger" data-vi="công dân (nam và nữ)">Bürgerinnen und Bürger</span>
+                  am politischen
+                  <span class="term" data-de="Willensbildungsprozess" data-vi="quá trình hình thành ý chí chính trị">Willensbildungsprozess</span>
+                  und <span class="term" data-de="Entscheidungsprozess" data-vi="quá trình ra quyết định">Entscheidungsprozess</span>.</p>
 
                   <h3 class="sub">2. Traditionelle Formen</h3>
                   <table>
                     <tr><th>Form</th><th>Kurz</th></tr>
-                    <tr><td><span class="term" data-de="Wahlen" data-vi="bầu cử">Wahlen</span></td><td>wichtigste demokratische Kontrolle; Macht auf Zeit an Vertreter</td></tr>
-                    <tr><td><span class="term" data-de="Partei" data-vi="đảng">Partei</span></td><td>Mitwirkung über Parteiarbeit</td></tr>
-                    <tr><td><span class="term" data-de="Demonstration" data-vi="biểu tình">Demonstration</span></td><td>Kundgebung, Marsch, Mahnwache, Flashmob… oft via Social Media</td></tr>
-                    <tr><td><span class="term" data-de="Leserbrief" data-vi="thư bạn đọc">Leserbrief</span></td><td>Meinung in Medien</td></tr>
-                    <tr><td><span class="term" data-de="Bürgerentscheid" data-vi="trưng cầu dân ý cấp địa phương">Bürgerentscheid</span> / <span class="term" data-de="Volksentscheid" data-vi="trưng cầu / quyết định của dân">Volksentscheid</span></td><td>direkte Abstimmung über Sachfragen (Kommune/Land; nicht Bund in DE)</td></tr>
-                    <tr><td><span class="term" data-de="Bürgerinitiative" data-vi="sáng kiến công dân">Bürgerinitiative</span></td><td>Zusammenschluss zu einem Thema, parteiunabhängig</td></tr>
-                    <tr><td><span class="term" data-de="Bürgerforum" data-vi="diễn đàn công dân">Bürgerforum</span></td><td>Diskussion; Auftrag oft von Institutionen/Parteien/Verbänden</td></tr>
-                    <tr><td><span class="term" data-de="Verein" data-vi="hội / hiệp hội">Verein</span></td><td>Interessen bündeln</td></tr>
+                    <tr><td><span class="term" data-de="Wahlen" data-vi="bầu cử">Wahlen</span></td><td>wichtigste <span class="term" data-de="demokratische Kontrolle" data-vi="sự kiểm soát dân chủ">demokratische Kontrolle</span>;
+                    <span class="term" data-de="Macht auf Zeit" data-vi="quyền lực có thời hạn">Macht auf Zeit</span> an
+                    <span class="term" data-de="Vertreter" data-vi="đại diện">Vertreter</span></td></tr>
+                    <tr><td><span class="term" data-de="Partei" data-vi="đảng">Partei</span></td><td><span class="term" data-de="Mitwirkung" data-vi="sự tham gia / đồng hành">Mitwirkung</span> über Parteiarbeit</td></tr>
+                    <tr><td><span class="term" data-de="Demonstration" data-vi="biểu tình">Demonstration</span></td><td>
+                    <span class="term" data-de="Kundgebung" data-vi="buổi mít tinh / biểu dương">Kundgebung</span>, Marsch,
+                    <span class="term" data-de="Mahnwache" data-vi="canh thức / tuần hành im lặng">Mahnwache</span>,
+                    <span class="term" data-de="Flashmob" data-vi="flashmob (tụ tập nhanh)">Flashmob</span>… oft via
+                    <span class="term" data-de="soziale Medien" data-vi="mạng xã hội">soziale Medien</span></td></tr>
+                    <tr><td><span class="term" data-de="Leserbrief" data-vi="thư bạn đọc">Leserbrief</span></td><td>Meinung in
+                    <span class="term" data-de="Medien" data-vi="truyền thông">Medien</span></td></tr>
+                    <tr><td><span class="term" data-de="Bürgerentscheid" data-vi="trưng cầu dân ý cấp địa phương">Bürgerentscheid</span> /
+                    <span class="term" data-de="Volksentscheid" data-vi="trưng cầu / quyết định của dân">Volksentscheid</span></td>
+                    <td><span class="term" data-de="direkte Abstimmung" data-vi="bỏ phiếu trực tiếp">direkte Abstimmung</span> über
+                    <span class="term" data-de="Sachfragen" data-vi="vấn đề nội dung / vấn đề cụ thể">Sachfragen</span>
+                    (<span class="term" data-de="Kommune" data-vi="cấp địa phương / xã-thị">Kommune</span>/
+                    <span class="term" data-de="Land" data-vi="bang">Land</span>; nicht
+                    <span class="term" data-de="Bund" data-vi="liên bang">Bund</span> in DE)</td></tr>
+                    <tr><td><span class="term" data-de="Bürgerinitiative" data-vi="sáng kiến công dân">Bürgerinitiative</span></td>
+                    <td><span class="term" data-de="Zusammenschluss" data-vi="sự liên kết / liên minh">Zusammenschluss</span> zu einem Thema,
+                    <span class="term" data-de="parteiunabhängig" data-vi="độc lập với đảng">parteiunabhängig</span></td></tr>
+                    <tr><td><span class="term" data-de="Bürgerforum" data-vi="diễn đàn công dân">Bürgerforum</span></td>
+                    <td>Diskussion; Auftrag oft von
+                    <span class="term" data-de="Institutionen" data-vi="các thể chế / cơ quan">Institutionen</span>/Parteien/
+                    <span class="term" data-de="Verbände" data-vi="hiệp hội / liên đoàn">Verbänden</span></td></tr>
+                    <tr><td><span class="term" data-de="Verein" data-vi="hội / hiệp hội">Verein</span></td>
+                    <td><span class="term" data-de="Interessen" data-vi="lợi ích / quan tâm">Interessen</span> bündeln</td></tr>
                   </table>
 
                   <h3 class="sub">3. Digitale Partizipation</h3>
                   <p>Beispiele: <span class="term" data-de="Internetforum" data-vi="diễn đàn internet">Internetforum</span>,
                   <span class="term" data-de="Online-Petition" data-vi="kiến nghị trực tuyến">Online-Petition</span>,
-                  E-Mail, Blog, Podcast.</p>
+                  <span class="term" data-de="E-Mail" data-vi="email">E-Mail</span>,
+                  <span class="term" data-de="Blog" data-vi="blog">Blog</span>,
+                  <span class="term" data-de="Podcast" data-vi="podcast">Podcast</span>.</p>
                   <table>
                     <tr><th>Pro digital</th><th>Kontra digital</th></tr>
-                    <tr><td>leichter, weltweiter Zugang</td><td>Anonymität → unqualifizierte Beiträge</td></tr>
-                    <tr><td>direktere Kommunikation Sender↔Empfänger</td><td>Informationsflut verdeckt Wichtiges</td></tr>
-                    <tr><td>Interaktivität</td><td>unübersichtlich, schwer zu filtern</td></tr>
+                    <tr><td>leichter, <span class="term" data-de="weltweiter Zugang" data-vi="tiếp cận toàn cầu">weltweiter Zugang</span></td>
+                    <td><span class="term" data-de="Anonymität" data-vi="tính ẩn danh">Anonymität</span> →
+                    <span class="term" data-de="unqualifizierte Beiträge" data-vi="bài viết kém chất lượng">unqualifizierte Beiträge</span></td></tr>
+                    <tr><td>direktere <span class="term" data-de="Kommunikation" data-vi="giao tiếp">Kommunikation</span>
+                    <span class="term" data-de="Sender" data-vi="người gửi">Sender</span>↔
+                    <span class="term" data-de="Empfänger" data-vi="người nhận">Empfänger</span></td>
+                    <td><span class="term" data-de="Informationsflut" data-vi="lũ thông tin">Informationsflut</span> verdeckt Wichtiges</td></tr>
+                    <tr><td><span class="term" data-de="Interaktivität" data-vi="tính tương tác">Interaktivität</span></td>
+                    <td>unübersichtlich, schwer zu filtern</td></tr>
                   </table>
 
                   <h3 class="sub">4. Direkte Demokratie – Definition</h3>
-                  <p><span class="term" data-de="Direkte Demokratie" data-vi="dân chủ trực tiếp">Direkte (plebiszitäre) Demokratie</span>:
-                  politische Entscheidungen möglichst unverfälscht durch das Volk; Behörde setzt um.
-                  Ideal: Regierte = Regierende in Abstimmungen.</p>
-                  <div class="note">In DE: Volksentscheide v. a. kommunal/landesweit; auf Bundesebene nicht wie in der Schweiz.</div>
+                  <p><span class="term" data-de="Direkte Demokratie" data-vi="dân chủ trực tiếp">Direkte (plebiszitäre) Demokratie</span>
+                  / <span class="term" data-de="plebiszitäre Demokratie" data-vi="dân chủ trưng cầu / dân chủ trực tiếp">plebiszitäre Demokratie</span>:
+                  politische Entscheidungen möglichst
+                  <span class="term" data-de="unverfälscht" data-vi="không bị bóp méo">unverfälscht</span> durch das
+                  <span class="term" data-de="Volk" data-vi="nhân dân">Volk</span>;
+                  <span class="term" data-de="Behörde" data-vi="cơ quan hành chính">Behörde</span> setzt um.
+                  Ideal: <span class="term" data-de="Regierte" data-vi="người bị cai trị / công dân">Regierte</span> =
+                  <span class="term" data-de="Regierende" data-vi="người cai trị">Regierende</span> in
+                  <span class="term" data-de="Abstimmungen" data-vi="các cuộc bỏ phiếu">Abstimmungen</span>.</p>
+                  <div class="note">In DE: Volksentscheide v. a.
+                  <span class="term" data-de="kommunal" data-vi="cấp địa phương">kommunal</span>/
+                  <span class="term" data-de="landesweit" data-vi="toàn bang">landesweit</span>; auf
+                  <span class="term" data-de="Bundesebene" data-vi="cấp liên bang">Bundesebene</span> nicht wie in der
+                  <span class="term" data-de="Schweiz" data-vi="Thụy Sĩ">Schweiz</span>.</div>
 
                   <h3 class="sub">5. Weg einer Volksabstimmung (Modell)</h3>
                   <div class="formula">
@@ -570,19 +612,34 @@
                     (Mehrheit entscheidet)
                   </div>
                   <ul>
-                    <li>Bürger erarbeiten Gesetzesentwurf</li>
-                    <li>Parlament behandelt Vorschlag (ggf. Alternativvorschlag)</li>
-                    <li>Abstimmungsbuch / Info an Haushalte → Abstimmung</li>
+                    <li>Bürger erarbeiten
+                    <span class="term" data-de="Gesetzesentwurf" data-vi="dự thảo luật">Gesetzesentwurf</span></li>
+                    <li><span class="term" data-de="Parlament" data-vi="quốc hội / nghị viện">Parlament</span> behandelt
+                    <span class="term" data-de="Vorschlag" data-vi="đề xuất">Vorschlag</span>
+                    (ggf. <span class="term" data-de="Alternativvorschlag" data-vi="đề xuất thay thế">Alternativvorschlag</span>)</li>
+                    <li><span class="term" data-de="Abstimmungsbuch" data-vi="sổ / tài liệu bỏ phiếu">Abstimmungsbuch</span> / Info an
+                    <span class="term" data-de="Haushalte" data-vi="các hộ gia đình">Haushalte</span> →
+                    <span class="term" data-de="Abstimmung" data-vi="cuộc bỏ phiếu">Abstimmung</span></li>
                   </ul>
 
                   <h3 class="sub">6. Schweiz vs. Deutschland (Zusatz)</h3>
                   <ul>
-                    <li><b>Referendum</b> ≈ Notbremse gegen ein Gesetz</li>
-                    <li><b>Initiative</b> ≈ Gaspedal: Thema auf die Agenda</li>
-                    <li>Gefahren: Populismus, komplexe Themen, Minderheitsrechte</li>
-                    <li>In DE: Prüfung auf Verfassungsmäßigkeit vor Zulassung (z. B. keine Todesstrafe per Volksentscheid)</li>
+                    <li><span class="term" data-de="Referendum" data-vi="trưng cầu / trưng cầu dân ý">Referendum</span> ≈
+                    <span class="term" data-de="Notbremse" data-vi="phanh khẩn cấp">Notbremse</span> gegen ein Gesetz</li>
+                    <li><span class="term" data-de="Initiative" data-vi="sáng kiến">Initiative</span> ≈
+                    <span class="term" data-de="Gaspedal" data-vi="bàn đạp ga">Gaspedal</span>: Thema auf die
+                    <span class="term" data-de="Agenda" data-vi="chương trình nghị sự">Agenda</span></li>
+                    <li>Gefahren: <span class="term" data-de="Populismus" data-vi="chủ nghĩa dân túy">Populismus</span>,
+                    komplexe Themen, <span class="term" data-de="Minderheitsrechte" data-vi="quyền của thiểu số">Minderheitsrechte</span></li>
+                    <li>In DE: Prüfung auf
+                    <span class="term" data-de="Verfassungsmäßigkeit" data-vi="tính hợp hiến">Verfassungsmäßigkeit</span> vor
+                    <span class="term" data-de="Zulassung" data-vi="sự cho phép / chấp thuận">Zulassung</span>
+                    (z. B. keine <span class="term" data-de="Todesstrafe" data-vi="án tử hình">Todesstrafe</span> per Volksentscheid)</li>
                   </ul>
-                  <div class="note">💡 Wahlen bleiben Kern der repräsentativen Demokratie; direkte Formen ergänzen.</div>
+                  <div class="note">💡 Wahlen bleiben Kern der
+                  <span class="term" data-de="repräsentative Demokratie" data-vi="dân chủ đại diện">repräsentativen Demokratie</span>;
+                  direkte Formen ergänzen.</div>
+                  <div class="note">🃏 Mehr Vokabeln: Teilhabe · Willensbildung · Volksinitiative · Volksbegehren · Referendum · Populismus</div>
                 `
               },
               {
@@ -606,13 +663,26 @@
 
                   <h3 class="sub">Beispiel: „Beteiligung“ (Gerhard Mester, bpb 2023)</h3>
                   <ul>
-                    <li><b>Thema:</b> Demokratie / Beteiligung der Bürger</li>
-                    <li><b>Bildidee:</b> Kuh mit Aufschrift „Demokratie“; Milch = Beteiligung</li>
-                    <li><b>Deutung:</b> fast leerer Eimer → nur wenige beteiligen sich (Nichtwähler, Desinteresse)</li>
-                    <li><b>Aussage:</b> Demokratie funktioniert nur, wenn Menschen aktiv mitmachen</li>
+                    <li><b>Thema:</b> <span class="term" data-de="Demokratie" data-vi="dân chủ">Demokratie</span> /
+                    <span class="term" data-de="Beteiligung" data-vi="sự tham gia">Beteiligung</span> der Bürger</li>
+                    <li><b><span class="term" data-de="Bildidee" data-vi="ý tưởng hình ảnh">Bildidee</span>:</b>
+                    Kuh mit <span class="term" data-de="Aufschrift" data-vi="dòng chữ trên hình">Aufschrift</span> „Demokratie“;
+                    Milch = Beteiligung</li>
+                    <li><b><span class="term" data-de="Deutung" data-vi="cách diễn giải / giải nghĩa">Deutung</span>:</b>
+                    fast leerer <span class="term" data-de="Eimer" data-vi="xô / thùng">Eimer</span> → nur wenige beteiligen sich
+                    (<span class="term" data-de="Nichtwähler" data-vi="người không đi bầu">Nichtwähler</span>,
+                    <span class="term" data-de="Desinteresse" data-vi="sự thờ ơ">Desinteresse</span>)</li>
+                    <li><b><span class="term" data-de="Aussage" data-vi="thông điệp / luận điểm">Aussage</span>:</b>
+                    Demokratie funktioniert nur, wenn Menschen
+                    <span class="term" data-de="aktiv mitmachen" data-vi="tích cực tham gia">aktiv mitmachen</span></li>
                   </ul>
+                  <p>Quelle oft: <span class="term" data-de="bpb" data-vi="Cục Giáo dục Chính trị Liên bang (Đức)">bpb</span>
+                  · <span class="term" data-de="Karikaturist" data-vi="họa sĩ biếm họa">Karikaturist</span>: Gerhard Mester</p>
                   <div class="formula">Fazit-Satz: Meiner Meinung nach …, weil …. Ich denke, dass …, weil ….</div>
-                  <div class="note">💡 Immer Belege aus dem Bild nennen (Figuren, Schrift, Kontraste) — nicht nur Allgemeinplätze.</div>
+                  <div class="note">💡 Immer
+                  <span class="term" data-de="Belege" data-vi="bằng chứng / dẫn chứng">Belege</span> aus dem Bild nennen
+                  (<span class="term" data-de="Figuren" data-vi="nhân vật / hình tượng">Figuren</span>, Schrift,
+                  <span class="term" data-de="Kontraste" data-vi="sự tương phản">Kontraste</span>) — nicht nur Allgemeinplätze.</div>
                 `
               }
             ]
@@ -638,25 +708,47 @@
                     <tr><td><span class="term" data-de="Exekutive" data-vi="hành pháp">Exekutive</span></td><td>ausführende Gewalt</td><td>Bundesregierung, Verwaltung; Bundespräsident (teilw.)</td></tr>
                     <tr><td><span class="term" data-de="Judikative" data-vi="tư pháp">Judikative</span></td><td>richterliche Gewalt</td><td>Gerichte, u. a. BVerfG</td></tr>
                   </table>
-                  <p><span class="term" data-de="Gewaltenteilung" data-vi="phân quyền">Gewaltenteilung</span> teilt Macht auf, damit sich die Gewalten
-                  <b>gegenseitig kontrollieren</b> und Macht begrenzen (Lehre aus NS: keine Machtkonzentration).</p>
+                  <p><span class="term" data-de="Gewaltenteilung" data-vi="phân quyền">Gewaltenteilung</span> teilt
+                  <span class="term" data-de="Macht" data-vi="quyền lực">Macht</span> auf, damit sich die Gewalten
+                  <b><span class="term" data-de="gegenseitige Kontrolle" data-vi="kiểm soát lẫn nhau">gegenseitig kontrollieren</span></b>
+                  und Macht begrenzen (Lehre aus
+                  <span class="term" data-de="Nationalsozialismus" data-vi="chủ nghĩa Quốc xã">NS</span>: keine
+                  <span class="term" data-de="Machtkonzentration" data-vi="tập trung quyền lực">Machtkonzentration</span>).</p>
                   <p><span class="term" data-de="Gewaltenverschränkung" data-vi="đan xen quyền lực">Gewaltenverschränkung</span>:
-                  die Gewalten greifen ineinander (z. B. Bundestag wählt Kanzler; wählt Richterhälften).</p>
+                  die Gewalten greifen ineinander (z. B.
+                  <span class="term" data-de="Bundestag" data-vi="Quốc hội Liên bang Đức">Bundestag</span> wählt
+                  <span class="term" data-de="Bundeskanzler" data-vi="Thủ tướng Liên bang">Kanzler</span>; wählt
+                  <span class="term" data-de="Richter" data-vi="thẩm phán">Richter</span>hälften).</p>
 
                   <h3 class="sub">2. Horizontal + vertikal</h3>
                   <ul>
-                    <li><b>horizontal:</b> Legislative · Exekutive · Judikative</li>
-                    <li><b>vertikal:</b> Bund · Länder · Kommunen</li>
+                    <li><b><span class="term" data-de="horizontal" data-vi="theo chiều ngang">horizontal</span>:</b> Legislative · Exekutive · Judikative</li>
+                    <li><b><span class="term" data-de="vertikal" data-vi="theo chiều dọc">vertikal</span>:</b>
+                    <span class="term" data-de="Bund" data-vi="liên bang">Bund</span> ·
+                    <span class="term" data-de="Länder" data-vi="các bang">Länder</span> ·
+                    <span class="term" data-de="Kommunen" data-vi="các đơn vị địa phương">Kommunen</span></li>
                   </ul>
-                  <div class="formula">Art. 20 Abs. 2 GG: Alle Staatsgewalt geht vom Volke aus — Wahlen und Abstimmungen; durch besondere Organe.</div>
+                  <div class="formula"><span class="term" data-de="Art. 20 Abs. 2 GG" data-vi="Điều 20 khoản 2 Luật cơ bản">Art. 20 Abs. 2 GG</span>:
+                  Alle <span class="term" data-de="Staatsgewalt" data-vi="quyền lực nhà nước">Staatsgewalt</span> geht vom Volke aus —
+                  Wahlen und Abstimmungen; durch besondere
+                  <span class="term" data-de="Organe" data-vi="cơ quan / cơ cấu">Organe</span>.</div>
 
                   <h3 class="sub">3. Weimarer Reichsverfassung vs. Grundgesetz (Überblick)</h3>
                   <table>
-                    <tr><th></th><th>WRV</th><th>GG</th></tr>
-                    <tr><td>Staatsoberhaupt</td><td>Reichspräsident stark (u. a. Art. 48 Notverordnung)</td><td>Bundespräsident eher repräsentativ</td></tr>
-                    <tr><td>Regierung</td><td>leichter stürzbar (einfaches Misstrauen)</td><td><span class="term" data-de="konstruktives Misstrauensvotum" data-vi="bỏ phiếu bất tín nhiệm xây dựng">konstruktives Misstrauensvotum</span></td></tr>
-                    <tr><td>Wahlalter damals/heute</td><td>ab 20 (WRV-Schema im Material)</td><td>ab 18</td></tr>
-                    <tr><td>Verfassungsgericht</td><td>Reichsgericht u. a.</td><td><span class="term" data-de="Bundesverfassungsgericht" data-vi="Tòa án Hiến pháp Liên bang">Bundesverfassungsgericht</span></td></tr>
+                    <tr><th></th><th><span class="term" data-de="Weimarer Reichsverfassung" data-vi="Hiến pháp Weimar">WRV</span></th>
+                    <th><span class="term" data-de="Grundgesetz" data-vi="Luật cơ bản / Hiến pháp CHLB Đức">GG</span></th></tr>
+                    <tr><td><span class="term" data-de="Staatsoberhaupt" data-vi="nguyên thủ quốc gia">Staatsoberhaupt</span></td>
+                    <td><span class="term" data-de="Reichspräsident" data-vi="Tổng thống Đế chế (Weimar)">Reichspräsident</span> stark
+                    (u. a. Art. 48 <span class="term" data-de="Notverordnung" data-vi="sắc lệnh khẩn cấp">Notverordnung</span>)</td>
+                    <td><span class="term" data-de="Bundespräsident" data-vi="Tổng thống Liên bang">Bundespräsident</span> eher
+                    <span class="term" data-de="repräsentativ" data-vi="mang tính đại diện / nghi lễ">repräsentativ</span></td></tr>
+                    <tr><td><span class="term" data-de="Regierung" data-vi="chính phủ">Regierung</span></td>
+                    <td>leichter stürzbar (<span class="term" data-de="einfaches Misstrauensvotum" data-vi="bỏ phiếu bất tín nhiệm đơn thuần">einfaches Misstrauen</span>)</td>
+                    <td><span class="term" data-de="konstruktives Misstrauensvotum" data-vi="bỏ phiếu bất tín nhiệm xây dựng">konstruktives Misstrauensvotum</span></td></tr>
+                    <tr><td><span class="term" data-de="Wahlalter" data-vi="tuổi bầu cử">Wahlalter</span></td><td>ab 20 (Material)</td><td>ab 18</td></tr>
+                    <tr><td><span class="term" data-de="Verfassungsgericht" data-vi="tòa án hiến pháp">Verfassungsgericht</span></td>
+                    <td><span class="term" data-de="Reichsgericht" data-vi="Tòa án Đế chế">Reichsgericht</span> u. a.</td>
+                    <td><span class="term" data-de="Bundesverfassungsgericht" data-vi="Tòa án Hiến pháp Liên bang">Bundesverfassungsgericht</span></td></tr>
                   </table>
                   <div class="note">💡 Merksatz: Gewaltenteilung sichert Demokratie — Kontrolle statt Machtkonzentration.</div>
                 `
@@ -679,22 +771,38 @@
                     <li>Bundespräsident ernennt den neu Gewählten / entlässt den bisherigen</li>
                   </ul>
 
-                  <h3 class="sub">2. Vertrauensfrage (Art. 68 GG)</h3>
-                  <p>Der <b>Kanzler</b> stellt den Antrag, ihm das Vertrauen auszusprechen.</p>
+                  <h3 class="sub">2. <span class="term" data-de="Vertrauensfrage" data-vi="câu hỏi tín nhiệm">Vertrauensfrage</span> (Art. 68 GG)</h3>
+                  <p>Der <b>Kanzler</b> stellt den
+                  <span class="term" data-de="Antrag" data-vi="đơn / đề nghị">Antrag</span>, ihm das
+                  <span class="term" data-de="Vertrauen" data-vi="sự tín nhiệm">Vertrauen</span> auszusprechen.</p>
                   <ul>
-                    <li>Findet er <b>nicht</b> die Mehrheit der Mitglieder → er kann den Bundespräsidenten ersuchen, den Bundestag aufzulösen</li>
-                    <li>Auflösung binnen 21 Tagen möglich — <b>außer</b> der Bundestag wählt in der Frist einen neuen Kanzler</li>
-                    <li>Alternative: Kanzler ersucht um eigene Entlassung</li>
+                    <li>Findet er <b>nicht</b> die
+                    <span class="term" data-de="Mehrheit der Mitglieder" data-vi="đa số thành viên (tuyệt đối)">Mehrheit der Mitglieder</span>
+                    → er kann den
+                    <span class="term" data-de="Bundespräsident" data-vi="Tổng thống Liên bang">Bundespräsidenten</span>
+                    <span class="term" data-de="ersuchen" data-vi="yêu cầu / thỉnh cầu">ersuchen</span>, den Bundestag
+                    <span class="term" data-de="Auflösung des Bundestages" data-vi="giải tán Bundestag">aufzulösen</span></li>
+                    <li><span class="term" data-de="Auflösung" data-vi="sự giải tán">Auflösung</span> binnen 21 Tagen möglich —
+                    <b>außer</b> der Bundestag wählt in der
+                    <span class="term" data-de="Frist" data-vi="thời hạn">Frist</span> einen neuen Kanzler</li>
+                    <li>Alternative: Kanzler ersucht um eigene
+                    <span class="term" data-de="Entlassung" data-vi="miễn nhiệm / sa thải">Entlassung</span></li>
                   </ul>
 
                   <h3 class="sub">3. Vergleich (Prüfungsfrage)</h3>
                   <table>
                     <tr><th></th><th>Vertrauensfrage</th><th>konstr. Misstrauensvotum</th></tr>
-                    <tr><td>Wer startet?</td><td>Bundeskanzler</td><td>Bundestag / Opposition</td></tr>
+                    <tr><td>Wer startet?</td><td>Bundeskanzler</td>
+                    <td>Bundestag / <span class="term" data-de="Opposition" data-vi="phe đối lập">Opposition</span></td></tr>
                     <tr><td>Kern</td><td>Vertrauen zum Kanzler?</td><td>neuen Kanzler wählen</td></tr>
-                    <tr><td>Risiko Partei</td><td>eher auf Person Kanzler bezogen</td><td>Muss Mehrheitsalternative stehen</td></tr>
+                    <tr><td>Risiko Partei</td><td>eher auf Person Kanzler bezogen</td>
+                    <td>Muss <span class="term" data-de="Mehrheitsalternative" data-vi="phương án đa số thay thế">Mehrheitsalternative</span> stehen</td></tr>
                   </table>
-                  <div class="note">💡 Laut Material: Vertrauensfrage oft „weniger nachteilig“ für die Partei, weil Fokus auf dem Kanzler liegt — nicht automatisch auf der ganzen Partei.</div>
+                  <p>Artikel: <span class="term" data-de="Art. 67 GG" data-vi="Điều 67 Luật cơ bản">Art. 67 GG</span> (Misstrauen) ·
+                  <span class="term" data-de="Art. 68 GG" data-vi="Điều 68 Luật cơ bản">Art. 68 GG</span> (Vertrauensfrage)</p>
+                  <div class="note">💡 Laut Material: Vertrauensfrage oft „weniger
+                  <span class="term" data-de="nachteilig" data-vi="bất lợi">nachteilig</span>“ für die
+                  <span class="term" data-de="Partei" data-vi="đảng">Partei</span>, weil Fokus auf dem Kanzler liegt — nicht automatisch auf der ganzen Partei.</div>
                 `
               },
               {
@@ -705,17 +813,31 @@
                 pages: { folder: "2-GK", from: 11, to: 11, prefix: "2-GK" },
                 content: `
                   <h2>📰 Medien als „vierte Gewalt“</h2>
-                  <p>Neben Legislative, Exekutive, Judikative gelten freie Medien oft als
+                  <p>Neben <span class="term" data-de="Legislative" data-vi="lập pháp">Legislative</span>,
+                  <span class="term" data-de="Exekutive" data-vi="hành pháp">Exekutive</span>,
+                  <span class="term" data-de="Judikative" data-vi="tư pháp">Judikative</span> gelten freie
+                  <span class="term" data-de="Medien" data-vi="truyền thông">Medien</span> oft als
                   <span class="term" data-de="vierte Gewalt" data-vi="quyền lực thứ tư">vierte Gewalt</span>.</p>
 
                   <h3 class="sub">Warum?</h3>
                   <table>
                     <tr><th>Funktion</th><th>Beispiel</th></tr>
-                    <tr><td><b>Informieren</b> die Bürger</td><td>TV/Zeitung berichtet über Bundestagswahl, Gesetze, Debatten</td></tr>
-                    <tr><td><b>Kontrollieren</b> Politik und Staat</td><td>Bericht über Fehler, Skandale, Missstände</td></tr>
-                    <tr><td>Meinungsbildung / Öffentlichkeit</td><td>Diskussion, Kritik, Vielfalt der Positionen</td></tr>
+                    <tr><td><b><span class="term" data-de="Informieren" data-vi="thông tin / cung cấp tin">Informieren</span></b> die Bürger</td>
+                    <td>TV/<span class="term" data-de="Zeitung" data-vi="báo">Zeitung</span> berichtet über
+                    <span class="term" data-de="Bundestagswahl" data-vi="bầu cử Bundestag">Bundestagswahl</span>,
+                    <span class="term" data-de="Gesetze" data-vi="luật">Gesetze</span>,
+                    <span class="term" data-de="Debatten" data-vi="các cuộc tranh luận">Debatten</span></td></tr>
+                    <tr><td><b><span class="term" data-de="Kontrollieren" data-vi="kiểm soát">Kontrollieren</span></b> Politik und Staat</td>
+                    <td>Bericht über Fehler, <span class="term" data-de="Skandale" data-vi="bê bối">Skandale</span>,
+                    <span class="term" data-de="Missstände" data-vi="tình trạng sai trái">Missstände</span></td></tr>
+                    <tr><td><span class="term" data-de="Meinungsbildung" data-vi="hình thành dư luận / ý kiến">Meinungsbildung</span> /
+                    <span class="term" data-de="Öffentlichkeit" data-vi="công chúng / không gian công">Öffentlichkeit</span></td>
+                    <td>Diskussion, <span class="term" data-de="Kritik" data-vi="phê bình">Kritik</span>,
+                    <span class="term" data-de="Vielfalt" data-vi="sự đa dạng">Vielfalt</span> der Positionen</td></tr>
                   </table>
-                  <div class="note">💡 Medien ersetzen keine Staatsgewalt — sie üben öffentliche Kontrolle und Information aus (Pressefreiheit Art. 5 GG).</div>
+                  <div class="note">💡 Medien ersetzen keine Staatsgewalt — sie üben öffentliche Kontrolle und Information aus
+                  (<span class="term" data-de="Pressefreiheit" data-vi="tự do báo chí">Pressefreiheit</span>
+                  <span class="term" data-de="Art. 5 GG" data-vi="Điều 5 Luật cơ bản">Art. 5 GG</span>).</div>
                 `
               },
               {
@@ -736,12 +858,20 @@
                     <tr><td><span class="term" data-de="Volksherrschaft" data-vi="chính thể dân chủ / quyền lực thuộc về nhân dân">Volksherrschaft</span></td><td>Herrschaft des Volkes</td><td>Demokratie-Idee</td></tr>
                   </table>
 
-                  <h3 class="sub">Menschenbild im GG</h3>
+                  <h3 class="sub"><span class="term" data-de="Menschenbild" data-vi="quan niệm về con người">Menschenbild</span> im GG</h3>
                   <ul>
-                    <li><span class="term" data-de="Menschenwürde" data-vi="nhân phẩm">Menschenwürde</span> ist unantastbar (Art. 1 GG)</li>
-                    <li>Recht auf freie Entfaltung der Persönlichkeit (Art. 2 GG)</li>
-                    <li>aber: Rechte anderer dürfen nicht verletzt werden</li>
+                    <li><span class="term" data-de="Menschenwürde" data-vi="nhân phẩm">Menschenwürde</span> ist
+                    <span class="term" data-de="unantastbar" data-vi="bất khả xâm phạm">unantastbar</span>
+                    (<span class="term" data-de="Art. 1 GG" data-vi="Điều 1 Luật cơ bản">Art. 1 GG</span></li>
+                    <li>Recht auf
+                    <span class="term" data-de="freie Entfaltung der Persönlichkeit" data-vi="tự do phát triển nhân cách">freie Entfaltung der Persönlichkeit</span>
+                    <span class="term" data-de="Art. 2 GG" data-vi="Điều 2 Luật cơ bản">Art. 2 GG</span></li>
+                    <li>aber: <span class="term" data-de="Rechte anderer" data-vi="quyền của người khác">Rechte anderer</span> dürfen nicht verletzt werden</li>
                   </ul>
+                  <p>Weitere Begriffe:
+                  <span class="term" data-de="Abgeordnete" data-vi="đại biểu quốc hội">Abgeordnete</span> ·
+                  <span class="term" data-de="Staatsgewalt" data-vi="quyền lực nhà nước">Staatsgewalt</span> ·
+                  <span class="term" data-de="Grundgesetz" data-vi="Luật cơ bản / Hiến pháp Đức">Grundgesetz</span></p>
                   <div class="formula">Volk besitzt Macht → wählt Vertreter → Mehrheit entscheidet · Würde schützt jeden Menschen</div>
                   <div class="note">💡 DE = vor allem repräsentative Demokratie; direkte Elemente ergänzen (v. a. Länder/Kommunen).</div>
                 `
@@ -765,24 +895,38 @@
                   <h3 class="sub">2. Wichtige Artikel (Beispiele)</h3>
                   <table>
                     <tr><th>Art.</th><th>Inhalt</th></tr>
-                    <tr><td>1</td><td>Menschenwürde unantastbar</td></tr>
-                    <tr><td>2</td><td>Persönliche Freiheitsrechte / Entfaltung</td></tr>
-                    <tr><td>3</td><td>Gleichheit vor dem Gesetz</td></tr>
-                    <tr><td>4</td><td>Glaubens- und Gewissensfreiheit</td></tr>
-                    <tr><td>5</td><td>Meinungs-, Presse-, Kunst-, Wissenschaftsfreiheit</td></tr>
-                    <tr><td>8</td><td>Versammlungsfreiheit</td></tr>
-                    <tr><td>9</td><td>Vereinigungsfreiheit</td></tr>
-                    <tr><td>10</td><td>Brief-, Post- und Fernmeldegeheimnis</td></tr>
-                    <tr><td>11</td><td>Freizügigkeit</td></tr>
-                    <tr><td>12</td><td>Berufsfreiheit</td></tr>
-                    <tr><td>13</td><td>Unverletzlichkeit der Wohnung</td></tr>
-                    <tr><td>16</td><td>Staatsangehörigkeit / Auslieferung (Ausschnitt Material)</td></tr>
+                    <tr><td>1</td><td><span class="term" data-de="Menschenwürde" data-vi="nhân phẩm">Menschenwürde</span>
+                    <span class="term" data-de="unantastbar" data-vi="bất khả xâm phạm">unantastbar</span></td></tr>
+                    <tr><td>2</td><td><span class="term" data-de="Persönliche Freiheitsrechte" data-vi="các quyền tự do cá nhân">Persönliche Freiheitsrechte</span> / Entfaltung</td></tr>
+                    <tr><td>3</td><td><span class="term" data-de="Gleichheit vor dem Gesetz" data-vi="bình đẳng trước pháp luật">Gleichheit vor dem Gesetz</span></td></tr>
+                    <tr><td>4</td><td><span class="term" data-de="Glaubens- und Gewissensfreiheit" data-vi="tự do tín ngưỡng và lương tâm">Glaubens- und Gewissensfreiheit</span></td></tr>
+                    <tr><td>5</td><td><span class="term" data-de="Meinungsfreiheit" data-vi="tự do ngôn luận">Meinungsfreiheit</span>,
+                    <span class="term" data-de="Pressefreiheit" data-vi="tự do báo chí">Pressefreiheit</span>,
+                    Kunst-, Wissenschaftsfreiheit</td></tr>
+                    <tr><td>8</td><td><span class="term" data-de="Versammlungsfreiheit" data-vi="tự do hội họp / tụ tập">Versammlungsfreiheit</span></td></tr>
+                    <tr><td>9</td><td><span class="term" data-de="Vereinigungsfreiheit" data-vi="tự do lập hội">Vereinigungsfreiheit</span></td></tr>
+                    <tr><td>10</td><td><span class="term" data-de="Brief-, Post- und Fernmeldegeheimnis" data-vi="bí mật thư tín, bưu chính và viễn thông">Brief-, Post- und Fernmeldegeheimnis</span></td></tr>
+                    <tr><td>11</td><td><span class="term" data-de="Freizügigkeit" data-vi="tự do đi lại / cư trú">Freizügigkeit</span></td></tr>
+                    <tr><td>12</td><td><span class="term" data-de="Berufsfreiheit" data-vi="tự do nghề nghiệp">Berufsfreiheit</span></td></tr>
+                    <tr><td>13</td><td><span class="term" data-de="Unverletzlichkeit der Wohnung" data-vi="bất khả xâm phạm chỗ ở">Unverletzlichkeit der Wohnung</span></td></tr>
+                    <tr><td>16</td><td><span class="term" data-de="Staatsangehörigkeit" data-vi="quốc tịch">Staatsangehörigkeit</span> /
+                    <span class="term" data-de="Auslieferung" data-vi="dẫn độ">Auslieferung</span> (Ausschnitt Material)</td></tr>
                   </table>
 
                   <h3 class="sub">3. Karikatur-Aussage (Material S.17–18)</h3>
-                  <p>Grundrechte gelten <b>für alle Menschen</b> — unabhängig von Meinung oder Verhalten
-                  (auch wenn jemand Demokratie ablehnt). Der Staat schützt Würde und Rechte universell im Rahmen des GG.</p>
-                  <div class="note">💡 Art. 1 = Fundament. Grundrechte binden Gesetzgebung, vollziehende Gewalt und Rechtsprechung (Art. 1 Abs. 3 GG).</div>
+                  <p><span class="term" data-de="Grundrechte" data-vi="các quyền cơ bản">Grundrechte</span> gelten <b>für alle Menschen</b> —
+                  <span class="term" data-de="unabhängig" data-vi="độc lập / không phụ thuộc">unabhängig</span> von
+                  <span class="term" data-de="Meinung" data-vi="ý kiến">Meinung</span> oder
+                  <span class="term" data-de="Verhalten" data-vi="hành vi">Verhalten</span>
+                  (auch wenn jemand Demokratie
+                  <span class="term" data-de="ablehnen" data-vi="từ chối / bác bỏ">ablehnt</span>).
+                  Der Staat schützt Würde und Rechte
+                  <span class="term" data-de="universell" data-vi="phổ quát">universell</span> im Rahmen des GG.</p>
+                  <div class="note">💡 Art. 1 = Fundament. Grundrechte binden
+                  <span class="term" data-de="Gesetzgebung" data-vi="lập pháp">Gesetzgebung</span>,
+                  <span class="term" data-de="vollziehende Gewalt" data-vi="quyền lực hành pháp">vollziehende Gewalt</span> und
+                  <span class="term" data-de="Rechtsprechung" data-vi="tư pháp / xét xử">Rechtsprechung</span>
+                  (<span class="term" data-de="Art. 1 Abs. 3 GG" data-vi="Điều 1 khoản 3 Luật cơ bản">Art. 1 Abs. 3 GG</span>).</div>
                 `
               }
             ]
