@@ -171,8 +171,51 @@
                 name: "Fleischteile",
                 desc: "Rind · Schwein · Schaf · Gerichte",
                 route: "#/bfk/2/fleisch",
-                content: `<h2>🥩 Fleischteile</h2><p>Interaktive Übersicht – öffne das Modul.</p>
-                  <p><button class="btn" type="button" onclick="go('#/bfk/2/fleisch')">Öffnen →</button></p>`,
+                content: `<h2>🥩 Fleischteile</h2>
+<div class="hint">Rind · Schwein · Schaf/Lamm · Gerichte · Gewebe. Interaktive Karten im Modul.</div>
+<p><button class="btn" type="button" onclick="go('#/bfk/2/fleisch')">Interaktives Modul öffnen →</button></p>
+<h3 class="sub">1. Wichtige Rind-Teile</h3>
+<table>
+  <tr><th>Teil</th><th>Eigenschaft / Verwendung</th></tr>
+  <tr><td><span class="term" data-de="Filet" data-vi="thăn nội">Filet</span></td><td>zartestes, bindegewebsärmstes Stück → Kurzbraten, Medaillons</td></tr>
+  <tr><td><span class="term" data-de="Roastbeef" data-vi="thăn ngoại / roastbeef">Roastbeef</span> (Rücken)</td><td>Steaks, Rostbraten</td></tr>
+  <tr><td><span class="term" data-de="Hesse" data-vi="bắp giò / ống chân">Hesse</span> (Beinscheibe)</td><td>viel Kollagen → Kraftbrühe, Schmoren, Osso-Buco-Art</td></tr>
+</table>
+<h3 class="sub">2. Gewebe & Garverfahren</h3>
+<table>
+  <tr><th>Gewebe</th><th>Beim Erhitzen</th><th>Garen</th></tr>
+  <tr><td><span class="term" data-de="Muskelgewebe" data-vi="mô cơ">Muskelgewebe</span></td><td>Eiweiß gerinnt, Wasserverlust</td><td>Kurzbraten / Grillen (wenig Bindegewebe)</td></tr>
+  <tr><td><span class="term" data-de="Bindegewebe" data-vi="mô liên kết">Bindegewebe</span> (Kollagen)</td><td>Kollagen → <span class="term" data-de="Gelatine" data-vi="gelatin">Gelatine</span>; Elastin bleibt zäh</td><td>Schmoren / Kochen (langsam & feucht)</td></tr>
+  <tr><td><span class="term" data-de="Fettgewebe" data-vi="mô mỡ">Fettgewebe</span></td><td>schmilzt → saftig & aromatisch</td><td>Braten / Grillen</td></tr>
+</table>
+<div class="note">💡 Merksatz: <b>Viel Bindegewebe → langsam & feucht</b>. <b>Wenig Bindegewebe → schnell & heiß</b>.</div>
+<h3 class="sub">3. Zusammensetzung Schlachtfleisch</h3>
+<table>
+  <tr><th>Stoff</th><th>ca.</th></tr>
+  <tr><td>Wasser</td><td>70 %</td></tr>
+  <tr><td><span class="term" data-de="Eiweiß" data-vi="đạm / protein">Eiweiß</span></td><td>20 %</td></tr>
+  <tr><td>Fett</td><td>3–8 %</td></tr>
+</table>
+<div class="formula">4 wichtigste Schlacht-Säugetiere DE: Rind, Schwein, Schaf, Ziege</div>
+<h3 class="sub">4. Gerichte (merken!)</h3>
+<ul>
+  <li><span class="term" data-de="Wiener Schnitzel" data-vi="schnitzel kiểu Wien">Wiener Schnitzel</span>: paniert Mehl–Ei–Semmelbrösel</li>
+  <li><span class="term" data-de="Cordon bleu" data-vi="cordon bleu">Cordon bleu</span>: gefüllt mit gekochtem Schinken + Käse</li>
+  <li><span class="term" data-de="Saltimbocca" data-vi="saltimbocca">Saltimbocca</span>: Parmaschinken + Salbei</li>
+  <li><span class="term" data-de="Osso Buco" data-vi="osso buco">Osso Buco</span>: geschmorte Kalbshaxenscheiben</li>
+  <li><span class="term" data-de="Vitello tonnato" data-vi="thịt bê sốt cá ngừ">Vitello tonnato</span>: kalt in Thunfischsoße</li>
+  <li><span class="term" data-de="Szegediner Gulasch" data-vi="gulasch Szeged">Szegediner Gulasch</span>: Sauerkraut + saure Sahne</li>
+  <li><span class="term" data-de="Irish Stew" data-vi="stew Ireland">Irish Stew</span>: Lamm + Zwiebeln + Kartoffel</li>
+  <li><span class="term" data-de="Moussaka" data-vi="moussaka">Moussaka</span>: Lammhack + Aubergine + Tomate</li>
+</ul>
+<h3 class="sub">5. Schaf – Alter</h3>
+<table>
+  <tr><th>Name</th><th>Bedeutung</th></tr>
+  <tr><td>Lamm</td><td>bis 1 Jahr</td></tr>
+  <tr><td>Schaf</td><td>weiblich, ab 1 Jahr</td></tr>
+  <tr><td>Bock</td><td>männlich, ab 1 Jahr</td></tr>
+  <tr><td><span class="term" data-de="Hammel" data-vi="cừu thiến">Hammel</span></td><td>kastriert / verschnitten</td></tr>
+</table>`,
               },
               {
                 id: "kueche",
@@ -180,13 +223,45 @@
                 name: "Küche & Ernährung",
                 desc: "Nährwert · Eiercode · Wertigkeit",
                 route: "#/bfk/2/kueche",
-                content: `<h2>🍳 Küche & Ernährung</h2><p>Nährwert, Eiercode, biologische Wertigkeit.</p>
-                  <p><button class="btn" type="button" onclick="go('#/bfk/2/kueche')">Öffnen →</button></p>`,
+                content: `<h2>🍳 Küche & Ernährung</h2>
+<div class="hint">Nährwert · Eiercode · biologische Wertigkeit</div>
+<p><button class="btn" type="button" onclick="go('#/bfk/2/kueche')">Modul öffnen →</button></p>
+<h3 class="sub">1. Brennwerte</h3>
+<table>
+  <tr><th>Nährstoff</th><th>pro 1 g</th></tr>
+  <tr><td>Eiweiß / Kohlenhydrate</td><td><strong>17 kJ = 4 kcal</strong></td></tr>
+  <tr><td>Fett</td><td><strong>37 kJ = 9 kcal</strong></td></tr>
+</table>
+<div class="formula">Energiewert (kJ) = (g EW × 17) + (g KH × 17) + (g Fett × 37)<br>1 kcal = 4,2 kJ</div>
+<h3 class="sub">2. Eiercode</h3>
+<p>Format: <b>Haltungsform – Land – Betriebsnr.</b> z.B. 2-DE-0812345</p>
+<table>
+  <tr><th>Ziffer</th><th>Haltung</th></tr>
+  <tr><td><strong>0</strong></td><td><span class="term" data-de="Bio / Ökologisch" data-vi="hữu cơ">Bio / Ökologisch</span></td></tr>
+  <tr><td><strong>1</strong></td><td><span class="term" data-de="Freilandhaltung" data-vi="nuôi thả vườn">Freilandhaltung</span></td></tr>
+  <tr><td><strong>2</strong></td><td><span class="term" data-de="Bodenhaltung" data-vi="nuôi trên nền">Bodenhaltung</span></td></tr>
+  <tr><td><strong>3</strong></td><td><span class="term" data-de="Kleingruppenhaltung" data-vi="nuôi nhóm nhỏ / lồng">Kleingruppenhaltung</span></td></tr>
+</table>
+<ul>
+  <li>Lagerung ca. <b>5 °C</b> · MHD <b>28 Tage</b> nach Legedatum</li>
+  <li>Nach MHD nur <b>durcherhitzt</b> · Salmonellen: 5 Min. kochen</li>
+</ul>
+<h3 class="sub">3. Biologische Wertigkeit (BW)</h3>
+<div class="formula"><span class="term" data-de="Biologische Wertigkeit" data-vi="giá trị sinh học (protein)">Biologische Wertigkeit</span> = wie viel g Körpereiweiß aus 100 g Nahrungseiweiß</div>
+<table>
+  <tr><th>Lebensmittel</th><th>BW</th></tr>
+  <tr><td><span class="term" data-de="Hühnerei" data-vi="trứng gà">Hühnerei</span> (Referenz)</td><td><strong>100</strong></td></tr>
+  <tr><td>Kartoffeln</td><td>95</td></tr>
+  <tr><td>Rindfleisch</td><td>87</td></tr>
+  <tr><td>Kuhmilch</td><td>86</td></tr>
+  <tr><td>Soja</td><td>84</td></tr>
+</table>
+<div class="note">💡 Ergänzungswert: Kombination hebt BW (z.B. Kartoffel + Ei, Getreide + Milch).</div>`,
               },
             ],
           },
         ],
-        quiz: [], // uses existing BfK-2 QUIZ bank in index.html
+        quiz: (w.BFK2_QUIZ || []).slice(), // themed bank from bfk2-quiz.js
       },
       {
         id: "deutsch",
@@ -212,9 +287,18 @@
                 name: "Visualisierung",
                 desc: "Mindmap, Diagramme, Text → Grafik",
                 content: `<h2>🇩🇪 Visualisierung</h2>
-                  <p>Hauptseite für Deutsch-Übungen (Mindmap, Diagramme, Text → Grafik).</p>
-                  <p><a class="btn" href="deutsch.html">Deutsch-App öffnen →</a></p>
-                  <h3 class="sub">Begriffe</h3>
+                  <div class="hint">Text → Grafik · Mindmap · Diagrammtypen · KA-Training</div>
+                  <p><a class="btn" href="deutsch.html">Deutsch-App öffnen (Theorie + Üben) →</a></p>
+                  <h3 class="sub">1. Was ist Visualisierung?</h3>
+                  <p><span class="term" data-de="Visualisierung" data-vi="trực quan hóa">Visualisierung</span> von Texten = Wesentliches als Grafik/Schaubild darstellen (nicht nur abschreiben).</p>
+                  <h3 class="sub">2. Häufige Formen</h3>
+                  <ul>
+                    <li><span class="term" data-de="Mindmap" data-vi="sơ đồ tư duy">Mindmap</span> – Ideen/Struktur vom Zentrum aus</li>
+                    <li><span class="term" data-de="Diagramm" data-vi="biểu đồ">Diagramm</span> – Kurve, Balken, Kreis, Fluss…</li>
+                    <li><span class="term" data-de="Sachtext" data-vi="văn bản thông tin">Sachtext</span> → Kernaussagen markieren → passende Form wählen</li>
+                  </ul>
+                  <div class="note">💡 In der App: Theorie, Matching, Praxis &amp; 50+ Quizfragen zur KA.</div>
+                  <h3 class="sub">3. Begriffe</h3>
                   <ul>
                     <li><span class="term" data-de="Mindmap" data-vi="sơ đồ tư duy">Mindmap</span></li>
                     <li><span class="term" data-de="Diagramm" data-vi="biểu đồ">Diagramm</span></li>
@@ -225,7 +309,7 @@
             ],
           },
         ],
-        quiz: [],
+        quiz: (w.DEUTSCH_QUIZ || []).slice(),
       },
       {
         id: "englisch",
@@ -1048,6 +1132,12 @@
     scaffoldOthers().forEach((f) => {
       // don't duplicate bfk1
       if (FAECHER.some((x) => x.id === f.id)) return;
+      if (f.id === "bfk2" && (!f.quiz || !f.quiz.length) && w.BFK2_QUIZ) {
+        f.quiz = w.BFK2_QUIZ.slice();
+      }
+      if (f.id === "deutsch" && (!f.quiz || !f.quiz.length) && w.DEUTSCH_QUIZ) {
+        f.quiz = w.DEUTSCH_QUIZ.slice();
+      }
       FAECHER.push(f);
     });
     return FAECHER;

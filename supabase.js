@@ -381,12 +381,14 @@
     if (!visit || !visit.key || !visit.startedAt) return null;
     const endIso = ended || new Date().toISOString();
     const sec = durationSec(visit.startedAt, endIso);
+    const isEnd = reason === 'end' || reason === 'pagehide' || reason === 'relogin' || reason === 'logout';
     const value = {
       player: visit.player,
       at: visit.startedAt,
       started_at: visit.startedAt,
       last_seen: endIso,
-      ended_at: endIso,
+      // only mark ended_at when the session really closes – keeps open sessions honest
+      ended_at: isEnd ? endIso : null,
       duration_sec: sec,
       day: String(visit.startedAt).slice(0, 10),
       reason: reason || 'update',
@@ -394,22 +396,36 @@
     };
     await upsertConfig(visit.key, value);
 
-    // roll into player profile total duration (best-effort)
+    // roll into player profile total duration (best-effort, monotonic per open visit)
     try {
       const pk = playerKey(visit.player);
       const row = await getConfig(pk);
       const profile = (row && row.value) || { player: visit.player, app: 'on-thi' };
-      // store last session duration + accumulate if this beat is higher than previous last
       const prevLast = Number(profile.last_session_sec) || 0;
       const prevTotal = Number(profile.total_duration_sec) || 0;
-      // approximate total: replace last contribution with latest known duration
-      profile.total_duration_sec = Math.max(0, prevTotal - prevLast) + sec;
+      const lastVisitKey = profile.last_visit_key || '';
+      // Same open visit: replace previous contribution of this visit only.
+      // New visit key: add full sec on top of previous total (do not subtract old last).
+      if (lastVisitKey && lastVisitKey === visit.key) {
+        profile.total_duration_sec = Math.max(0, prevTotal - prevLast) + sec;
+      } else {
+        // first heartbeat of a new session – add delta only if we had already counted something for this key (shouldn't)
+        profile.total_duration_sec = Math.max(0, prevTotal) + Math.max(0, sec - 0);
+        // if previous session never closed cleanly, prevLast still belongs to old key and must stay in total
+      }
       profile.last_session_sec = sec;
+      profile.last_visit_key = visit.key;
       profile.last_seen = endIso;
       await upsertConfig(pk, profile);
     } catch (_) {}
 
     return value;
+  }
+
+  function getActiveVisitDurationSec() {
+    const visit = _activeVisit || readActiveVisit();
+    if (!visit || !visit.startedAt) return 0;
+    return durationSec(visit.startedAt, new Date().toISOString());
   }
 
   function stopHeartbeat() {
@@ -518,6 +534,15 @@
       existing = row && row.value ? row.value : null;
     } catch (_) {}
 
+    // Reuse active visit in this tab (auto-login / re-render) so we don't inflate visits & reset timer
+    const active = _activeVisit || readActiveVisit();
+    const sameOpenSession =
+      active &&
+      active.player &&
+      clean(active.player) === clean(p) &&
+      active.key &&
+      active.startedAt;
+
     const isNew = !existing;
     const profile = existing || {
       player: p,
@@ -532,9 +557,20 @@
     };
     profile.player = p;
     profile.last_seen = now;
-    profile.visits = (Number(profile.visits) || 0) + 1;
+    if (!sameOpenSession) {
+      profile.visits = (Number(profile.visits) || 0) + 1;
+    }
     if (profile.total_duration_sec == null) profile.total_duration_sec = 0;
     await upsertConfig(key, profile);
+
+    if (sameOpenSession) {
+      _activeVisit = active;
+      bindVisitLifecycle();
+      startHeartbeat();
+      try { await heartbeat('relogin-resume'); } catch (_) {}
+      const history = await loadPlayerHistory(p);
+      return { player: p, isNew: isNew, profile: profile, history: history, visitKey: active.key, resumed: true };
+    }
 
     // close previous open session in this tab (if any)
     try { await endVisit('relogin'); } catch (_) {}
@@ -1105,6 +1141,7 @@
     heartbeat,
     endVisit,
     formatDuration,
+    getActiveVisitDurationSec,
     bindVisitLifecycle,
     resumeVisitTracking,
     // challenge

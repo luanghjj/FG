@@ -367,7 +367,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 }
 .progress-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;margin:0 0 18px}
 .progress-card h3{font-size:.95em;font-weight:600;margin-bottom:10px}
-.progress-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.progress-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .pstat{background:var(--accent-soft);border-radius:12px;padding:10px;text-align:center}
 .pstat .n{font-size:1.15em;font-weight:600;color:var(--accent)}
 .pstat .l{font-size:.72em;color:var(--muted);margin-top:2px}
@@ -618,7 +618,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
   .today-card{padding:11px 10px}
   .today-card b{font-size:.84em}
   .today-card span{font-size:.72em}
-  .progress-stats{grid-template-columns:repeat(3,1fr)}
+  .progress-stats{grid-template-columns:repeat(4,1fr)}
   .hero{margin:2px 0 16px}
   .hero h1{font-size:1.35em}
   .hero p{font-size:.9em}
@@ -651,7 +651,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 @media (max-width:380px){
   .grid{grid-template-columns:1fr}
   .hero h1{font-size:1.25em}
-  .progress-stats{grid-template-columns:1fr 1fr 1fr}
+  .progress-stats{grid-template-columns:repeat(2,1fr)}
 }
 
 
@@ -824,6 +824,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
     <h3>📈 Dein Lernstand</h3>
     <div class="progress-stats" id="homeProgressStats">
       <div class="pstat"><div class="n" id="hpVisits">—</div><div class="l">Besuche</div></div>
+      <div class="pstat"><div class="n" id="hpTime">—</div><div class="l">Lernzeit</div></div>
       <div class="pstat"><div class="n" id="hpQuizzes">—</div><div class="l">Quiz</div></div>
       <div class="pstat"><div class="n" id="hpLast">—</div><div class="l">Letzte %</div></div>
     </div>
@@ -1338,11 +1339,13 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 
 <div id="toastHost" aria-live="polite"></div>
 
-<script src="./supabase.js?v=4"></script>
+<script src="./supabase.js?v=5"></script>
 <script src="./vocab.js?v=14"></script>
 <script src="./bfk1-data.js?v=13"></script>
 <script src="./bfk1-quiz.js?v=9"></script>
-<script src="./faecher.js?v=5"></script>
+<script src="./bfk2-quiz.js?v=1"></script>
+<script src="./deutsch-quiz.js?v=1"></script>
+<script src="./faecher.js?v=6"></script>
 <script src="./gk-uebungen.js?v=4"></script>
 <script>
 /* ============ DATEN (Fleischteile) ============ */
@@ -1714,8 +1717,8 @@ function renderHomeExams(){
 function examHasQuiz(ex){
   if(!ex) return false;
   if(ex.id==='bfk1') return !!(window.BFK1_QUIZ&&BFK1_QUIZ.length);
-  if(ex.id==='bfk2') return true;
-  if(ex.id==='deutsch') return false;
+  if(ex.id==='bfk2') return !!(window.BFK2_QUIZ&&BFK2_QUIZ.length) || (typeof QUIZ!=='undefined' && QUIZ.length);
+  if(ex.id==='deutsch') return !!(window.DEUTSCH_QUIZ&&DEUTSCH_QUIZ.length);
   try{
     ensureFachRegistry();
     const fach=window.FachForm && window.FachForm.findFach(ex.id);
@@ -1725,7 +1728,11 @@ function examHasQuiz(ex){
 function examQuizCount(ex){
   if(!ex) return 0;
   if(ex.id==='bfk1') return (window.BFK1_QUIZ||[]).length;
-  if(ex.id==='bfk2') return (typeof QUIZ!=='undefined' && QUIZ.length)? QUIZ.length : 0;
+  if(ex.id==='bfk2'){
+    if(window.BFK2_QUIZ&&BFK2_QUIZ.length) return BFK2_QUIZ.length;
+    return (typeof QUIZ!=='undefined' && QUIZ.length)? QUIZ.length : 0;
+  }
+  if(ex.id==='deutsch') return (window.DEUTSCH_QUIZ||[]).length;
   try{
     ensureFachRegistry();
     const fach=window.FachForm && window.FachForm.findFach(ex.id);
@@ -1750,16 +1757,22 @@ function examThemeCatalog(ex){
     return items;
   }
   if(ex.id==='bfk2'){
+    const quiz=window.BFK2_QUIZ||[];
+    const counts={}; quiz.forEach(q=>{ counts[q.theme]=(counts[q.theme]||0)+1; });
+    const nFleisch=counts.fleischteile||0;
+    const nKueche=counts.kueche||0;
+    const total=examQuizCount(ex);
     return [
-      {id:'fleisch', icon:'🥩', name:'Fleischteile', desc:'Rind · Schwein · Schaf', route:'#/bfk/2/fleisch', qCount:0, group:'Modul'},
-      {id:'kueche', icon:'🍳', name:'Küche & Ernährung', desc:'Nährwert · Eier · BW', route:'#/bfk/2/kueche', qCount:0, group:'Modul'},
-      {id:'quiz', icon:'📝', name:'Quiz BfK-2', desc:'MC Selbsttest', route:'#/bfk/2/quiz', qCount:examQuizCount(ex), group:'Üben'},
+      {id:'fleischteile', icon:'🥩', name:'Fleischteile', desc:'Rind · Schwein · Schaf · Gerichte', route:'#/bfk/2/fleisch', qCount:nFleisch, group:'Modul'},
+      {id:'kueche', icon:'🍳', name:'Küche & Ernährung', desc:'Nährwert · Eier · BW', route:'#/bfk/2/kueche', qCount:nKueche, group:'Modul'},
       {id:'pruefungen', icon:'🗂️', name:'Prüfungen', desc:'Muster + Lösungen', route:'#/bfk/2/pruefungen', qCount:0, group:'KA'},
-    ];
+    ].concat(total && !nFleisch && !nKueche ? [{id:'quiz', icon:'📝', name:'Quiz BfK-2', desc:'MC Selbsttest', route:'#/bfk/2/quiz', qCount:total, group:'Üben'}] : []);
   }
   if(ex.id==='deutsch'){
+    const n=(window.DEUTSCH_QUIZ||[]).length;
     return [
-      {id:'visualisierung', icon:'🧠', name:'Visualisierung', desc:'Mindmap · Diagramme', route:'deutsch.html', qCount:0, group:'KA', external:true},
+      {id:'visualisierung', icon:'🧠', name:'Visualisierung', desc:'Mindmap · Diagramme · Quiz', route:'#/fach/deutsch/theme/visualisierung', qCount:n, group:'KA'},
+      {id:'deutsch-app', icon:'🇩🇪', name:'Deutsch-App', desc:'Theorie + Üben (Vollansicht)', route:'deutsch.html', qCount:0, group:'KA', external:true},
     ];
   }
   try{
@@ -1779,7 +1792,7 @@ function examQuizRoute(ex){
   if(!ex) return '#/on-thi';
   if(ex.id==='bfk1') return '#/bfk/1/quiz';
   if(ex.id==='bfk2') return '#/bfk/2/quiz';
-  if(ex.id==='deutsch') return 'deutsch.html';
+  if(ex.id==='deutsch') return '#/fach/deutsch/quiz';
   return '#/fach/'+ex.id+'/quiz';
 }
 function examStudyRoute(ex){
@@ -1812,14 +1825,44 @@ function startExamPractice(examId, mode, themeIds){
     return;
   }
   if(ex.id==='bfk2'){
-    if(mode==='learn'){ go('#/bfk/2'); return; }
-    if(mode==='flash'){ go('#/bfk/2/fleisch'); return; }
+    if(mode==='learn'){
+      const first=(ids&&ids[0])||'fleischteile';
+      if(first==='kueche') go('#/bfk/2/kueche');
+      else if(first==='pruefungen') go('#/bfk/2/pruefungen');
+      else go('#/bfk/2/fleisch');
+      return;
+    }
+    if(mode==='flash'){
+      const first=(ids&&ids[0])||'fleischteile';
+      // flashcards live on standard Fach theme pages
+      go('#/fach/bfk2/theme/'+(first==='pruefungen'?'fleischteile':first));
+      return;
+    }
+    // Prefer FachForm quiz (theme-filterable). Fallback: legacy QUIZ bank.
+    if(window.BFK2_QUIZ && BFK2_QUIZ.length){
+      const themeIds=(ids&&ids.length)? ids.filter(x=>x==='fleischteile'||x==='kueche') : ['fleischteile','kueche'];
+      fachQuizStart('bfk2', themeIds.length?themeIds:['fleischteile','kueche'], mode==='quick'?'quick':'all');
+      return;
+    }
     go('#/bfk/2/quiz');
     setTimeout(()=>{ try{ if(mode==='quick' && typeof quizStart==='function') quizStart('quick'); else if(typeof quizStart==='function') quizStart('all'); }catch(e){} }, 120);
     return;
   }
   if(ex.id==='deutsch'){
-    location.href='deutsch.html'; return;
+    if(mode==='learn' || mode==='flash'){
+      const first=(ids&&ids[0] && ids[0]!=='deutsch-app') ? ids[0] : 'visualisierung';
+      if(first==='deutsch-app'){ location.href='deutsch.html'; return; }
+      go('#/fach/deutsch/theme/'+first);
+      return;
+    }
+    // quiz modes via FachForm + DEUTSCH_QUIZ
+    const themeIds=(ids&&ids.length)? ids.filter(x=>x!=='deutsch-app') : ['visualisierung'];
+    if(window.DEUTSCH_QUIZ && DEUTSCH_QUIZ.length){
+      fachQuizStart('deutsch', themeIds.length?themeIds:['visualisierung'], mode==='quick'?'quick':'all');
+      return;
+    }
+    location.href='deutsch.html';
+    return;
   }
   // standard FachForm exams (englisch, gk, …)
   if(mode==='learn'){
@@ -3937,12 +3980,31 @@ async function loadHomeHistory(player){
     const quizN=qs.length || Number(profile.quiz_attempts)||0;
     const last=qs[0];
     const lastPct=last ? (last.pct+'%') : '—';
+    let totalSec=Number(profile.total_duration_sec)||0;
+    // live session (same tab) – add current open visit on top of committed total
+    try{
+      if(window.LearnDB && LearnDB.getActiveVisitDurationSec){
+        const live=Number(LearnDB.getActiveVisitDurationSec())||0;
+        // total_duration_sec already includes last_session snapshot of this visit via heartbeat;
+        // prefer the larger of profile total vs (total - last + live) when last_session matches active visit.
+        const lastSess=Number(profile.last_session_sec)||0;
+        if(live>0){
+          if(lastSess>0 && live>=lastSess) totalSec = Math.max(0, totalSec - lastSess) + live;
+          else if(!lastSess) totalSec = totalSec + live;
+        }
+      }
+    }catch(_){}
+    const timeLabel=(window.LearnDB && LearnDB.formatDuration)
+      ? LearnDB.formatDuration(totalSec)
+      : (totalSec ? (Math.round(totalSec/60)+'m') : '0s');
     const elV=document.getElementById('hpVisits'); if(elV) elV.textContent=visits||'0';
+    const elT=document.getElementById('hpTime'); if(elT) elT.textContent=totalSec? timeLabel : '0s';
     const elQ=document.getElementById('hpQuizzes'); if(elQ) elQ.textContent=quizN||'0';
     const elL=document.getElementById('hpLast'); if(elL) elL.textContent=lastPct;
     if(hint){
-      if(!qs.length) hint.textContent='Noch keine Quiz-Daten — starte mit „BFK · 10 Fragen“.';
-      else hint.textContent='Zuletzt: '+(last.subject||'')+' / '+(last.quiz||'')+' · '+(last.at||'').slice(0,10);
+      if(!qs.length && !totalSec) hint.textContent='Noch keine Quiz-Daten — starte mit „BFK · 10 Fragen“.';
+      else if(!qs.length) hint.textContent='Lernzeit: '+timeLabel+' · Noch keine Quiz-Ergebnisse.';
+      else hint.textContent='Lernzeit: '+timeLabel+' · Zuletzt: '+(last.subject||'')+' / '+(last.quiz||'')+' · '+(last.at||'').slice(0,10);
     }
     if(!qs.length){
       body.innerHTML='<div class="empty-state"><div class="big-ic">📘</div>Noch keine Quizzes.<br>Starte BFK oder Deutsch oben.</div>';
@@ -4011,6 +4073,17 @@ if(window.LearnDB && LearnDB.resumeVisitTracking){
     }
   }catch(_){}
 }
+// Refresh Lernzeit on home every 30s while tab is open
+setInterval(()=>{
+  try{
+    if(!window.LearnDB || !LearnDB.getPlayer) return;
+    const p=LearnDB.getPlayer();
+    if(!p) return;
+    if((location.hash||'#/')==='#' || (location.hash||'#/')==='#/' || (location.hash||'')===''){
+      loadHomeHistory(p);
+    }
+  }catch(_){}
+}, 30000);
 </script>
 </body>
 </html>
