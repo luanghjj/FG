@@ -98,7 +98,7 @@ th{color:var(--muted);font-size:.72em;text-transform:uppercase;letter-spacing:.0
       <div class="muted" id="playersMeta"></div>
       <div style="overflow:auto;margin-top:8px">
         <table>
-          <thead><tr><th>Nickname</th><th>Besuche</th><th>Quiz</th><th>Zeit gesamt</th><th>Letzte Session</th><th>Zuletzt</th><th>Erstellt</th></tr></thead>
+          <thead><tr><th>Nickname</th><th>Besuche</th><th>Quiz</th><th>Zeit gesamt</th><th>Gelernte Fächer</th><th>Letzte Session</th><th>Zuletzt</th></tr></thead>
           <tbody id="playersBody"></tbody>
         </table>
       </div>
@@ -106,6 +106,7 @@ th{color:var(--muted);font-size:.72em;text-transform:uppercase;letter-spacing:.0
 
     <div class="card">
       <h2>📊 Quiz-Punkte (neueste)</h2>
+      <div class="muted" style="margin-bottom:8px">Klicke auf eine Zeile für Details.</div>
       <div style="overflow:auto">
         <table>
           <thead><tr><th>Spieler</th><th>Fach</th><th>Quiz</th><th>Punkte</th><th>%</th><th>Versuche</th><th>Zeitpunkt</th></tr></thead>
@@ -200,13 +201,38 @@ async function load(){
     `;
     buildDayBars(s.visits);
     document.getElementById('playersMeta').textContent = s.players.length + ' Profile';
-    document.getElementById('playersBody').innerHTML = s.players.map(p=>
-      `<tr><td><b>${p.player}</b></td><td>${p.visits}</td><td>${p.quiz_attempts}</td><td>${fd(p.total_duration_sec)}</td><td>${fd(p.last_session_sec)}</td><td>${fmt(p.last_seen)}</td><td>${fmt(p.created_at)}</td></tr>`
-    ).join('') || '<tr><td colspan="7" class="muted">Noch keine Nutzer</td></tr>';
+    document.getElementById('playersBody').innerHTML = s.players.map(p=>{
+      const subs = p.quizzes ? Object.keys(p.quizzes) : [];
+      const subList = subs.map(k => {
+        const q = p.quizzes[k];
+        const label = (q.subject || k).slice(0, 14);
+        const pct = q.best_pct != null ? q.best_pct + '%' : '';
+        return '<span class="tag" title="Bester Versuch: '+pct+', Versuche: '+(q.attempts||1)+'">'+label+'</span>';
+      }).join(' ') || '<span class="muted">—</span>';
+      return `<tr><td><b>${p.player}</b></td><td>${p.visits}</td><td>${p.quiz_attempts}</td><td>${fd(p.total_duration_sec)}</td><td style="max-width:200px;white-space:normal;word-break:break-word;line-height:1.6">${subList}</td><td>${fd(p.last_session_sec)}</td><td>${fmt(p.last_seen)}</td></tr>`;
+    }).join('') || '<tr><td colspan="7" class="muted">Noch keine Nutzer</td></tr>';
 
-    document.getElementById('quizBody').innerHTML = s.quizzes.slice(0,80).map(q=>
-      `<tr><td>${q.player||''}</td><td><span class="tag">${q.subject||''}</span></td><td>${q.quiz||''}</td><td><b>${q.correct||0}/${q.total||0}</b></td><td>${q.pct||0}%</td><td>${q.attempts||1}</td><td>${fmt(q.at||q.updated_at)}</td></tr>`
-    ).join('') || '<tr><td colspan="7" class="muted">Noch keine Punkte</td></tr>';
+    document.getElementById('quizBody').innerHTML = s.quizzes.slice(0,80).map((q,i)=>{
+      const hasHist = q.history && q.history.length > 1;
+      const detailId = 'qd_'+i;
+      return `<tr class="qrow" data-idx="${i}" style="cursor:pointer">
+        <td>${q.player||''}</td>
+        <td><span class="tag">${q.subject||''}</span></td>
+        <td>${q.quiz||''}</td>
+        <td><b>${q.correct||0}/${q.total||0}</b></td>
+        <td>${q.pct||0}%</td>
+        <td>${q.attempts||1}</td>
+        <td>${fmt(q.at||q.updated_at)}</td>
+      </tr>${hasHist ? '<tr id="'+detailId+'" style="display:none"><td colspan="7" style="padding:4px 8px 12px"><div class="muted" style="font-size:.78em">Verlauf: '+q.history.map(h => h.pct+'% ('+h.correct+'/'+h.total+') am '+fmt(h.at)).join(' → ')+'</div></td></tr>' : ''}`;
+    }).join('') || '<tr><td colspan="7" class="muted">Noch keine Punkte</td></tr>';
+    // Click to toggle history
+    document.querySelectorAll('.qrow').forEach(el => {
+      el.addEventListener('click', ()=>{
+        const idx = el.dataset.idx;
+        const detail = document.getElementById('qd_'+idx);
+        if(detail) detail.style.display = detail.style.display === 'none' ? 'table-row' : 'none';
+      });
+    });
 
     document.getElementById('aggBody').innerHTML = (s.quizAgg||[]).map(a=>
       `<tr><td>${a.label}</td><td>${a.players}</td><td>${a.attempts}</td><td>${a.avgPct}%</td></tr>`

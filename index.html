@@ -654,6 +654,33 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
   .progress-stats{grid-template-columns:repeat(2,1fr)}
 }
 
+/* ===== Timer Bubble ===== */
+.timer-bubble{position:fixed;bottom:80px;right:16px;z-index:9999;cursor:grab;user-select:none;
+  background:var(--surface);border:1px solid var(--line);border-radius:999px;
+  box-shadow:0 4px 20px rgba(15,23,42,.12);overflow:hidden;touch-action:none;
+  transition:all .3s cubic-bezier(.22,1,.36,1);min-width:52px;height:52px}
+.timer-bubble:hover{box-shadow:0 6px 28px rgba(37,99,235,.18)}
+.timer-bubble.collapsed .tb-body{display:flex;align-items:center;gap:6px;height:52px;padding:0 14px}
+.timer-bubble.collapsed .tb-progress{position:absolute;bottom:0;left:0;height:3px;background:var(--accent);border-radius:0 0 999px 999px;width:0%;transition:width 1s linear}
+.timer-bubble.collapsed .tb-tooltip{display:none}
+.timer-bubble.expanded{width:auto;min-width:160px;height:auto;border-radius:20px;padding:14px 18px;cursor:default}
+.timer-bubble.expanded .tb-body{display:flex;flex-direction:column;align-items:center;gap:4px}
+.timer-bubble.expanded .tb-icon{font-size:1.4em}
+.timer-bubble.expanded .tb-time{font-size:1.3em;font-weight:600}
+.timer-bubble.expanded .tb-progress{height:4px;border-radius:4px;background:var(--soft);margin-top:8px;overflow:hidden;position:relative}
+.timer-bubble.expanded .tb-progress span{display:block;height:100%;background:linear-gradient(90deg,#2563eb,#3b82f6);border-radius:4px;width:0%;transition:width 1s linear}
+.timer-bubble.expanded .tb-tooltip{display:none}
+.tb-body{display:flex;align-items:center;gap:8px;padding:0 14px;height:52px;transition:all .3s}
+.tb-icon{font-size:1.1em}
+.tb-time{font-size:.9em;font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+.tb-tooltip{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);
+  background:var(--ink);color:#fff;font-size:.72em;padding:4px 10px;border-radius:8px;white-space:nowrap;
+  opacity:0;transition:opacity .2s;pointer-events:none}
+.tb-tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:var(--ink)}
+.timer-bubble:hover .tb-tooltip{opacity:1}
+.timer-bubble.complete .tb-progress{background:var(--okbg);border-radius:0 0 999px 999px}
+.timer-bubble.complete .tb-time{color:var(--ok)}
+
 
 /* today-grid final compact */
 .today-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
@@ -1338,6 +1365,16 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 </div>
 
 <div id="toastHost" aria-live="polite"></div>
+
+<!-- Floating timer bubble -->
+<div id="timerBubble" class="timer-bubble collapsed" style="display:none">
+  <div class="tb-body" id="tbBody">
+    <span class="tb-icon">⏱</span>
+    <span class="tb-time" id="tbTime">0s</span>
+  </div>
+  <div class="tb-progress" id="tbProgress"></div>
+  <div class="tb-tooltip" id="tbTooltip">Lernzeit heute</div>
+</div>
 
 <script src="./supabase.js?v=5"></script>
 <script src="./vocab.js?v=14"></script>
@@ -4084,6 +4121,135 @@ setInterval(()=>{
     }
   }catch(_){}
 }, 30000);
+
+/* ============ TIMER BUBBLE ============ */
+(function(){
+  const GOAL_SEC = 3600;
+  let _tbTimer = null, _tbElapsed = 0, _tbNotified = false;
+  let _tbDrag = false, _tbStartX, _tbStartY, _tbMoved = false;
+  let _tbInitialized = false;
+
+  function tbInit(){
+    if(_tbInitialized) return;
+    _tbInitialized = true;
+    const el = document.getElementById('timerBubble');
+    if(!el) return;
+    // Restore position
+    try{
+      const x = localStorage.getItem('tb_x');
+      const y = localStorage.getItem('tb_y');
+      if(x && !isNaN(Number(x))){ el.style.left = x+'px'; el.style.right = 'auto'; }
+      if(y && !isNaN(Number(y))){ el.style.top = y+'px'; el.style.bottom = 'auto'; }
+    }catch(_){}
+    // Today's elapsed
+    const today = new Date().toISOString().slice(0,10);
+    const savedDay = localStorage.getItem('tb_today_date');
+    const raw = localStorage.getItem('tb_today_sec');
+    if(savedDay === today && raw) {
+      _tbElapsed = Number(raw)||0;
+    } else {
+      _tbElapsed = 0;
+      localStorage.setItem('tb_today_date', today);
+      localStorage.setItem('tb_today_sec', '0');
+    }
+    _tbNotified = localStorage.getItem('tb_done_'+today) === '1';
+    if(_tbNotified) el.classList.add('complete');
+    el.style.display = 'flex';
+    tbUpdateDisplay();
+    if(_tbTimer) clearInterval(_tbTimer);
+    _tbTimer = setInterval(tbTick, 1000);
+    tbTick();
+    // Drag
+    el.addEventListener('pointerdown', e => {
+      if(el.classList.contains('expanded')) return;
+      _tbDrag = true; _tbMoved = false;
+      _tbStartX = e.clientX; _tbStartY = e.clientY;
+      el.setPointerCapture(e.pointerId);
+    });
+    el.addEventListener('pointermove', e => {
+      if(!_tbDrag) return;
+      _tbMoved = true;
+      const dx = e.clientX - _tbStartX;
+      const dy = e.clientY - _tbStartY;
+      const rect = el.getBoundingClientRect();
+      el.style.left = (rect.left + dx) + 'px';
+      el.style.top = (rect.top + dy) + 'px';
+      el.style.right = 'auto'; el.style.bottom = 'auto';
+      _tbStartX = e.clientX; _tbStartY = e.clientY;
+    });
+    el.addEventListener('pointerup', e => {
+      if(!_tbDrag) return;
+      _tbDrag = false;
+      el.releasePointerCapture(e.pointerId);
+      const rect = el.getBoundingClientRect();
+      localStorage.setItem('tb_x', String(Math.round(rect.left)));
+      localStorage.setItem('tb_y', String(Math.round(rect.top)));
+    });
+    el.addEventListener('click', () => {
+      if(_tbMoved) return;
+      el.classList.toggle('expanded');
+      el.classList.toggle('collapsed');
+      tbUpdateDisplay();
+    });
+  }
+
+  function tbTick(){
+    if(window.LearnDB && LearnDB.getActiveVisitDurationSec){
+      const live = Number(LearnDB.getActiveVisitDurationSec())||0;
+      const saved = Number(localStorage.getItem('tb_today_sec'))||0;
+      _tbElapsed = Math.max(saved, live);
+      if(_tbElapsed > saved) localStorage.setItem('tb_today_sec', String(Math.round(_tbElapsed)));
+    } else {
+      _tbElapsed = Number(localStorage.getItem('tb_today_sec'))||0;
+    }
+    tbUpdateDisplay();
+  }
+
+  function tbUpdateDisplay(){
+    const el = document.getElementById('timerBubble');
+    const timeEl = document.getElementById('tbTime');
+    if(!el || !timeEl) return;
+    const s = Math.max(0, Math.round(_tbElapsed));
+    timeEl.textContent = tbFormat(s);
+    const pct = Math.min(100, (s / GOAL_SEC) * 100);
+    const prog = el.querySelector('.tb-progress');
+    if(prog){
+      if(el.classList.contains('expanded')){
+        let bar = prog.querySelector('span');
+        if(!bar){ bar = document.createElement('span'); prog.appendChild(bar); }
+        bar.style.width = pct+'%';
+      } else {
+        prog.style.width = pct+'%';
+      }
+    }
+    if(s >= GOAL_SEC && !_tbNotified){
+      _tbNotified = true;
+      localStorage.setItem('tb_done_'+new Date().toISOString().slice(0,10), '1');
+      el.classList.add('complete');
+      showToast('🎉 Ziel erreicht! Du hast heute 1 Stunde gelernt.','success',5000);
+    }
+  }
+
+  function tbFormat(s){
+    s = Math.max(0, Math.round(s));
+    const h = Math.floor(s / 3600);
+    const m = Math.floor((s % 3600) / 60);
+    const r = s % 60;
+    if(h > 0) return h+'h '+String(m).padStart(2,'0')+'m';
+    if(m > 0) return m+'m '+String(r).padStart(2,'0')+'s';
+    return r+'s';
+  }
+
+  // Poll for login and init
+  const _poll = setInterval(() => {
+    if(!window.LearnDB || !document.getElementById('timerBubble')) return;
+    if(LearnDB.getPlayer && LearnDB.getPlayer()){
+      tbInit();
+      clearInterval(_poll);
+    }
+  }, 800);
+})();
+</script>
 </script>
 </body>
 </html>
