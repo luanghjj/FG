@@ -189,27 +189,53 @@
    a:2, ex:'Keine ganzen Sätze in der Grafik.'},
 ];
 
+  /** Challenge unterstützt nur Multiple-Choice. Fill-Fragen bleiben im normalen Fach-Quiz. */
   function normalize(list, prefix){
     return (list||[]).map((q,i)=>({
       id: prefix + ':' + i,
       subject: prefix,
       cat: q.cat || '',
       q: q.q || '',
-      opts: q.opts || [],
-      a: typeof q.a === 'number' ? q.a : 0,
+      opts: Array.isArray(q.opts) ? q.opts.slice() : [],
+      a: typeof q.a === 'number' ? q.a : -1,
       ex: q.ex || ''
-    }));
+    })).filter(q => q.q && q.opts.length >= 2 && q.a >= 0 && q.a < q.opts.length);
+  }
+
+  // Challenge-Pools direkt aus den Fach-Daten bauen, damit neue Quizfragen
+  // automatisch auch im Challenge verfügbar sind.
+  let registry = [];
+  try{
+    if(global.FachForm && typeof global.FachForm.buildRegistry === 'function'){
+      registry = global.FachForm.buildRegistry() || [];
+    }
+  }catch(_){ registry = []; }
+
+  function fachQuiz(id, fallback){
+    if(id === 'bfk1' && Array.isArray(global.BFK1_QUIZ) && global.BFK1_QUIZ.length) return global.BFK1_QUIZ;
+    if(id === 'bfk2' && Array.isArray(global.BFK2_QUIZ) && global.BFK2_QUIZ.length) return global.BFK2_QUIZ;
+    if(id === 'deutsch' && Array.isArray(global.DEUTSCH_QUIZ) && global.DEUTSCH_QUIZ.length) return global.DEUTSCH_QUIZ;
+    const fach = registry.find(f => f && f.id === id);
+    return fach && Array.isArray(fach.quiz) && fach.quiz.length ? fach.quiz : (fallback || []);
   }
 
   const POOLS = {
-    bfk2: normalize(BFK2, 'bfk2'),
-    deutsch: normalize(DEUTSCH, 'deutsch')
+    bfk1: normalize(fachQuiz('bfk1'), 'bfk1'),
+    bfk2: normalize(fachQuiz('bfk2', BFK2), 'bfk2'),
+    deutsch: normalize(fachQuiz('deutsch', DEUTSCH), 'deutsch'),
+    englisch: normalize(fachQuiz('englisch'), 'englisch'),
+    gk: normalize(fachQuiz('gk'), 'gk'),
+    wiko: normalize(fachQuiz('wiko'), 'wiko')
   };
 
   const SUBJECT_META = [
+    { id:'bfk1', label:'BfK-1 · Gastronomie', icon:'🍳', count: POOLS.bfk1.length },
     { id:'bfk2', label:'BfK-2 · Fleisch', icon:'🥩', count: POOLS.bfk2.length },
-    { id:'deutsch', label:'Deutsch · Visualisierung', icon:'🇩🇪', count: POOLS.deutsch.length }
-  ];
+    { id:'deutsch', label:'Deutsch · Visualisierung', icon:'🇩🇪', count: POOLS.deutsch.length },
+    { id:'englisch', label:'Englisch', icon:'🇬🇧', count: POOLS.englisch.length },
+    { id:'gk', label:'Gemeinschaftskunde', icon:'🏛️', count: POOLS.gk.length },
+    { id:'wiko', label:'WiKO', icon:'📊', count: POOLS.wiko.length }
+  ].filter(s => s.count > 0);
 
   function mulberry32(a){
     return function(){
