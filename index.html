@@ -4160,26 +4160,26 @@ setInterval(()=>{
     _tbTimer = setInterval(tbTick, 1000);
     tbTick();
     // Drag
+    let _tbOrigRect = null;
     el.addEventListener('pointerdown', e => {
       if(el.classList.contains('expanded')) return;
       _tbDrag = true; _tbMoved = false;
       _tbStartX = e.clientX; _tbStartY = e.clientY;
+      _tbOrigRect = el.getBoundingClientRect();
       el.setPointerCapture(e.pointerId);
     });
     el.addEventListener('pointermove', e => {
-      if(!_tbDrag) return;
+      if(!_tbDrag || !_tbOrigRect) return;
       _tbMoved = true;
       const dx = e.clientX - _tbStartX;
       const dy = e.clientY - _tbStartY;
-      const rect = el.getBoundingClientRect();
-      el.style.left = (rect.left + dx) + 'px';
-      el.style.top = (rect.top + dy) + 'px';
+      el.style.left = (_tbOrigRect.left + dx) + 'px';
+      el.style.top = (_tbOrigRect.top + dy) + 'px';
       el.style.right = 'auto'; el.style.bottom = 'auto';
-      _tbStartX = e.clientX; _tbStartY = e.clientY;
     });
     el.addEventListener('pointerup', e => {
       if(!_tbDrag) return;
-      _tbDrag = false;
+      _tbDrag = false; _tbOrigRect = null;
       el.releasePointerCapture(e.pointerId);
       const rect = el.getBoundingClientRect();
       localStorage.setItem('tb_x', String(Math.round(rect.left)));
