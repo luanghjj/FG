@@ -125,6 +125,7 @@
   }
 
   const QUEUE_KEY = 'learn_score_queue_v1';
+  const QUEUE_CAP = 200;
 
   function readQueue() {
     try {
@@ -135,8 +136,21 @@
   }
   function writeQueue(list) {
     try {
-      localStorage.setItem(QUEUE_KEY, JSON.stringify((list || []).slice(-40)));
+      const arr = list || [];
+      const overflow = arr.length > QUEUE_CAP ? arr.length - QUEUE_CAP : 0;
+      const trimmed = arr.slice(-QUEUE_CAP);
+      if (overflow > 0) {
+        // remember how many were dropped so the UI can warn the user
+        localStorage.setItem('learn_score_queue_overflow', String(overflow));
+      }
+      localStorage.setItem(QUEUE_KEY, JSON.stringify(trimmed));
     } catch (_) {}
+  }
+  function getQueueOverflow() {
+    return Number(localStorage.getItem('learn_score_queue_overflow')) || 0;
+  }
+  function clearQueueOverflow() {
+    try { localStorage.removeItem('learn_score_queue_overflow'); } catch (_) {}
   }
 
   async function saveQuizScoreOnline({ subject, quiz, correct, total, player, at }) {
@@ -192,6 +206,8 @@
       }
     }
     writeQueue(left);
+    // All queued items synced — clear the overflow warning (items were recovered)
+    if (left.length === 0) clearQueueOverflow();
     return { flushed, left: left.length };
   }
 
@@ -380,15 +396,18 @@
   async function persistVisitDuration(visit, ended, reason) {
     if (!visit || !visit.key || !visit.startedAt) return null;
     const endIso = ended || new Date().toISOString();
-    const sec = durationSec(visit.startedAt, endIso);
+    // While paused (tab hidden), cap the recorded duration at the pause moment
+    // so heartbeat/flush don't inflate Lernzeit with idle time.
+    const effectiveEnd = visit._pausedAt || endIso;
+    const sec = durationSec(visit.startedAt, effectiveEnd);
     const isEnd = reason === 'end' || reason === 'pagehide' || reason === 'relogin' || reason === 'logout';
     const value = {
       player: visit.player,
       at: visit.startedAt,
       started_at: visit.startedAt,
-      last_seen: endIso,
+      last_seen: effectiveEnd,
       // only mark ended_at when the session really closes – keeps open sessions honest
-      ended_at: isEnd ? endIso : null,
+      ended_at: isEnd ? effectiveEnd : null,
       duration_sec: sec,
       day: String(visit.startedAt).slice(0, 10),
       reason: reason || 'update',
@@ -426,6 +445,12 @@
     const visit = _activeVisit || readActiveVisit();
     if (!visit || !visit.startedAt) return 0;
     return durationSec(visit.startedAt, new Date().toISOString());
+  }
+
+  /** startedAt (ISO) of the currently active visit, or null. Used to detect visit changes. */
+  function getActiveVisitStartedAt() {
+    const visit = _activeVisit || readActiveVisit();
+    return (visit && visit.startedAt) || null;
   }
 
   function stopHeartbeat() {
@@ -489,7 +514,12 @@
       const visit = _activeVisit || readActiveVisit();
       if (!visit) return;
       const endIso = new Date().toISOString();
-      const sec = durationSec(visit.startedAt, endIso);
+      // If the tab was hidden (paused), only count active time up to the pause
+      // moment — not the idle span until now.
+      const sec = visit._pausedAt
+        ? durationSec(visit.startedAt, visit._pausedAt)
+        : durationSec(visit.startedAt, endIso);
+      const bodyStartedAt = visit.startedAt;
       const body = JSON.stringify({
         key: visit.key,
         value: {
@@ -514,8 +544,35 @@
       } catch (_) {}
     };
     global.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'hidden') heartbeat('hidden');
-      else if (document.visibilityState === 'visible') heartbeat('visible');
+      const visit = _activeVisit || readActiveVisit();
+      if (document.visibilityState === 'hidden') {
+        // Pause: remember when the tab was hidden so we can subtract the idle
+        // span from the visit duration on resume. The Lernzeit counter should
+        // only advance while the learner is actually looking at the app.
+        if (visit && visit.startedAt && !visit._pausedAt) {
+          visit._pausedAt = new Date().toISOString();
+          writeActiveVisit(visit);
+        }
+        heartbeat('hidden');
+      } else if (document.visibilityState === 'visible') {
+        // Resume: shift startedAt forward by the idle span so that
+        // getActiveVisitDurationSec() = now - startedAt excludes the time the
+        // tab was hidden. Falls back to a plain heartbeat if no pause recorded.
+        if (visit && visit._pausedAt && visit.startedAt) {
+          const idleMs = Date.parse(new Date().toISOString()) - Date.parse(visit._pausedAt);
+          if (idleMs > 0) {
+            const newStart = new Date(Date.parse(visit.startedAt) + idleMs).toISOString();
+            visit.startedAt = newStart;
+            visit.lastBeatAt = new Date().toISOString();
+            visit._pausedAt = null;
+            writeActiveVisit(visit);
+          } else {
+            visit._pausedAt = null;
+            writeActiveVisit(visit);
+          }
+        }
+        heartbeat('visible');
+      }
     });
     global.addEventListener('pagehide', flush);
     global.addEventListener('beforeunload', flush);
@@ -749,6 +806,46 @@
     return row && row.value ? row.value : value;
   }
 
+  /**
+   * Optimistic-concurrency read-modify-write for a challenge room.
+   * Supabase config rows are last-write-wins on the JSON `value` column, so a
+   * plain get→mutate→save loses updates when two players write within the same
+   * ~1s. This helper:
+   *   1. reads the room,
+   *   2. lets `mutator(room)` apply a per-player patch and ALSO record what it
+   *      changed via `mark(path)` so we can verify it survived,
+   *   3. saves,
+   *   4. re-reads and checks every marked patch is still present; if any was
+   *      clobbered, re-reads the latest room, re-applies the mutator, and retries.
+   * `mutator` MUST be side-effect-free w.r.t. its inputs and deterministic so
+   * re-applying on a fresher room is safe. Returns the final saved room.
+   */
+  async function withChallengeRoom(code, mutator, opts) {
+    const attempts = (opts && opts.attempts) || 5;
+    let row = await getChallengeRoom(code);
+    if (!row || !row.value) throw new Error('Raum nicht gefunden');
+    for (let i = 0; i < attempts; i++) {
+      const room = row.value;
+      const marks = [];
+      const mark = (fn) => marks.push(fn); // fn(room) -> true if the patch is still present
+      const patch = mutator(room, mark);
+      if (patch === false) return room; // mutator chose not to write
+      await saveChallengeRoom(code, room);
+      // verify: re-read and ensure every marked patch survived
+      const after = await getChallengeRoom(code);
+      if (!after || !after.value) return room;
+      const ok = marks.every((fn) => {
+        try { return fn(after.value); } catch (_) { return false; }
+      });
+      if (ok) return after.value;
+      // clobbered — adopt the freshest room and retry the mutation on it
+      row = after;
+    }
+    // gave up verifying; return whatever we last saw
+    const last = await getChallengeRoom(code);
+    return last && last.value ? last.value : row.value;
+  }
+
   async function createChallengeRoom({ host, settings }) {
     const player = String(host || getPlayer() || '').trim();
     if (!player) throw new Error('Bitte Nickname eingeben');
@@ -806,45 +903,44 @@
     if (!player) throw new Error('Bitte Nickname eingeben');
     const c = String(code || '').trim().toUpperCase();
     if (c.length < 4) throw new Error('Code ungültig');
-    const row = await getChallengeRoom(c);
-    if (!row || !row.value) throw new Error('Raum nicht gefunden');
-    const room = row.value;
-    if (room.status === 'finished') throw new Error('Raum ist bereits beendet');
     const now = new Date().toISOString();
-    room.players = room.players || {};
-    room.scores = room.scores || {};
-    if (!room.players[player]) {
-      // limit players
-      if (Object.keys(room.players).length >= 6) throw new Error('Raum ist voll (max 6)');
-      room.players[player] = { ready: false, joined_at: now };
-    }
-    if (!room.scores[player]) {
-      const mode = (room.settings && room.settings.mode) || 'classic';
-      room.scores[player] = {
-        correct: 0,
-        answered: 0,
-        streak: 0,
-        bestStreak: 0,
-        points: 0,
-        lives: mode === 'survival' ? ((room.settings && room.settings.lives) || 3) : null,
-        eliminated: false,
-      };
-    }
-    room.players[player].last_seen = now;
-    await saveChallengeRoom(c, room);
-    return room;
+    return withChallengeRoom(c, (room, mark) => {
+      if (room.status === 'finished') throw new Error('Raum ist bereits beendet');
+      room.players = room.players || {};
+      room.scores = room.scores || {};
+      if (!room.players[player]) {
+        // limit players
+        if (Object.keys(room.players).length >= 6) throw new Error('Raum ist voll (max 6)');
+        room.players[player] = { ready: false, joined_at: now };
+      }
+      if (!room.scores[player]) {
+        const mode = (room.settings && room.settings.mode) || 'classic';
+        room.scores[player] = {
+          correct: 0,
+          answered: 0,
+          streak: 0,
+          bestStreak: 0,
+          points: 0,
+          lives: mode === 'survival' ? ((room.settings && room.settings.lives) || 3) : null,
+          eliminated: false,
+        };
+      }
+      room.players[player].last_seen = now;
+      // verify this player's membership survives a concurrent join/leave
+      mark((r) => !!(r && r.players && r.players[player]));
+    }, { attempts: 6 });
   }
 
   async function setChallengeReady(code, playerName, ready) {
     const player = String(playerName || getPlayer() || '').trim();
-    const row = await getChallengeRoom(code);
-    if (!row || !row.value) throw new Error('Raum nicht gefunden');
-    const room = row.value;
-    if (!room.players || !room.players[player]) throw new Error('Nicht im Raum');
-    room.players[player].ready = !!ready;
-    room.players[player].last_seen = new Date().toISOString();
-    await saveChallengeRoom(code, room);
-    return room;
+    const readyVal = !!ready;
+    const now = new Date().toISOString();
+    return withChallengeRoom(code, (room, mark) => {
+      if (!room.players || !room.players[player]) throw new Error('Nicht im Raum');
+      room.players[player].ready = readyVal;
+      room.players[player].last_seen = now;
+      mark((r) => !!(r && r.players && r.players[player] && r.players[player].ready === readyVal));
+    });
   }
 
   async function updateChallengeSettings(code, hostName, settings) {
@@ -914,127 +1010,141 @@
 
   async function submitChallengeAnswer(code, playerName, qIndex, choiceIndex, isCorrect, meta) {
     const player = String(playerName || getPlayer() || '').trim();
-    const row = await getChallengeRoom(code);
-    if (!row || !row.value) throw new Error('Raum nicht gefunden');
-    const room = row.value;
-    if (room.status !== 'live') throw new Error('Spiel nicht aktiv');
     const qi = Number(qIndex);
-    if (qi !== Number(room.q_index)) throw new Error('Frage bereits vorbei');
-    room.scores = room.scores || {};
-    room.scores[player] = room.scores[player] || {
-      correct: 0, answered: 0, streak: 0, bestStreak: 0, points: 0, lives: null, eliminated: false,
-    };
-    // eliminated players cannot answer
-    if (room.scores[player].eliminated) return room;
-
-    room.answers = room.answers || {};
-    const key = String(qi);
-    room.answers[key] = room.answers[key] || {};
-    // lock first answer
-    if (room.answers[key][player] != null && room.answers[key][player].choice != null) {
-      return room; // already answered
-    }
     const nowIso = new Date().toISOString();
     const ms = meta && meta.ms != null ? Number(meta.ms) : null;
-    room.answers[key][player] = {
-      choice: Number(choiceIndex),
-      correct: !!isCorrect,
-      at: nowIso,
-      ms: ms,
-    };
-    room.scores[player].answered = (Number(room.scores[player].answered) || 0) + 1;
-    const mode = (room.settings && room.settings.mode) || 'classic';
-    const sec = Number((room.settings && room.settings.secondsPerQ) || 0);
+    const choice = Number(choiceIndex);
+    const correct = !!isCorrect;
 
-    if (isCorrect) {
-      room.scores[player].correct = (Number(room.scores[player].correct) || 0) + 1;
-      const streak = (Number(room.scores[player].streak) || 0) + 1;
-      room.scores[player].streak = streak;
-      room.scores[player].bestStreak = Math.max(Number(room.scores[player].bestStreak) || 0, streak);
+    return withChallengeRoom(code, (room, mark) => {
+      if (room.status !== 'live') throw new Error('Spiel nicht aktiv');
+      if (qi !== Number(room.q_index)) throw new Error('Frage bereits vorbei');
+      room.scores = room.scores || {};
+      room.scores[player] = room.scores[player] || {
+        correct: 0, answered: 0, streak: 0, bestStreak: 0, points: 0, lives: null, eliminated: false,
+      };
+      // eliminated players cannot answer
+      if (room.scores[player].eliminated) return false;
 
-      // points by mode
-      let pts = 1;
-      if (mode === 'speed') {
-        // faster answer => more points (max +2 bonus)
-        if (sec > 0 && ms != null) {
-          const left = Math.max(0, sec * 1000 - ms);
-          pts = 1 + Math.min(2, Math.floor((left / (sec * 1000)) * 3));
-        } else {
+      room.answers = room.answers || {};
+      const key = String(qi);
+      room.answers[key] = room.answers[key] || {};
+      // lock first answer
+      if (room.answers[key][player] != null && room.answers[key][player].choice != null) {
+        return false; // already answered
+      }
+      const ansEntry = { choice: choice, correct: correct, at: nowIso, ms: ms };
+      room.answers[key][player] = ansEntry;
+      // verify this player's answer survives any concurrent write
+      mark((r) => {
+        const a = r && r.answers && r.answers[key] && r.answers[key][player];
+        return !!a && a.choice === choice && !!a.correct === correct;
+      });
+
+      room.scores[player].answered = (Number(room.scores[player].answered) || 0) + 1;
+      const mode = (room.settings && room.settings.mode) || 'classic';
+      const sec = Number((room.settings && room.settings.secondsPerQ) || 0);
+
+      let newCorrect = Number(room.scores[player].correct) || 0;
+      let newPoints = Number(room.scores[player].points) || 0;
+      let newStreak = Number(room.scores[player].streak) || 0;
+      let newBest = Number(room.scores[player].bestStreak) || 0;
+      let newLives = room.scores[player].lives;
+      let nowEliminated = !!room.scores[player].eliminated;
+
+      if (correct) {
+        newCorrect += 1;
+        newStreak += 1;
+        newBest = Math.max(newBest, newStreak);
+        let pts = 1;
+        if (mode === 'speed') {
+          if (sec > 0 && ms != null) {
+            const left = Math.max(0, sec * 1000 - ms);
+            pts = 1 + Math.min(2, Math.floor((left / (sec * 1000)) * 3));
+          } else {
+            pts = 1;
+          }
+        } else if (mode === 'streak') {
+          pts = newStreak;
+        } else if (mode === 'sudden' || mode === 'survival') {
           pts = 1;
         }
-      } else if (mode === 'streak') {
-        pts = streak; // growing streak points
-      } else if (mode === 'sudden' || mode === 'survival') {
-        pts = 1;
-      }
-      room.scores[player].points = (Number(room.scores[player].points) || 0) + pts;
-    } else {
-      room.scores[player].streak = 0;
-      if (mode === 'sudden') {
-        room.scores[player].eliminated = true;
-        room.eliminated = room.eliminated || {};
-        room.eliminated[player] = true;
-      } else if (mode === 'survival') {
-        const lives = Math.max(0, (Number(room.scores[player].lives) || 0) - 1);
-        room.scores[player].lives = lives;
-        if (lives <= 0) {
-          room.scores[player].eliminated = true;
+        newPoints += pts;
+      } else {
+        newStreak = 0;
+        if (mode === 'sudden') {
+          nowEliminated = true;
           room.eliminated = room.eliminated || {};
           room.eliminated[player] = true;
+        } else if (mode === 'survival') {
+          newLives = Math.max(0, (Number(room.scores[player].lives) || 0) - 1);
+          if (newLives <= 0) {
+            nowEliminated = true;
+            room.eliminated = room.eliminated || {};
+            room.eliminated[player] = true;
+          }
         }
       }
-    }
-    if (room.players && room.players[player]) {
-      room.players[player].last_seen = nowIso;
-    }
+      room.scores[player].correct = newCorrect;
+      room.scores[player].streak = newStreak;
+      room.scores[player].bestStreak = newBest;
+      room.scores[player].points = newPoints;
+      room.scores[player].lives = newLives;
+      room.scores[player].eliminated = nowEliminated;
+      // verify the score deltas survive (guard against a concurrent answer for the
+      // same player from a double-tap, and against clobber by another player's write)
+      mark((r) => {
+        const s = r && r.scores && r.scores[player];
+        return !!s && Number(s.answered) >= (Number(room.scores[player].answered) || 0)
+          && Number(s.correct) >= newCorrect;
+      });
 
-    // Auto-finish if only one player remains (sudden/survival)
-    if (mode === 'sudden' || mode === 'survival') {
-      const alive = Object.keys(room.players || {}).filter((p) => !(room.scores[p] && room.scores[p].eliminated));
-      if (alive.length <= 1 && Object.keys(room.players || {}).length > 1) {
-        room.status = 'finished';
-        room.finished_at = nowIso;
-        room.q_started_at = null;
+      if (room.players && room.players[player]) {
+        room.players[player].last_seen = nowIso;
       }
-    }
 
-    await saveChallengeRoom(code, room);
-    return room;
+      // Auto-finish if only one player remains (sudden/survival)
+      if (mode === 'sudden' || mode === 'survival') {
+        const alive = Object.keys(room.players || {}).filter((p) => !(room.scores[p] && room.scores[p].eliminated));
+        if (alive.length <= 1 && Object.keys(room.players || {}).length > 1) {
+          room.status = 'finished';
+          room.finished_at = nowIso;
+          room.q_started_at = null;
+        }
+      }
+    });
   }
 
   async function advanceChallengeQuestion(code, hostName) {
     const host = String(hostName || getPlayer() || '').trim();
-    const row = await getChallengeRoom(code);
-    if (!row || !row.value) throw new Error('Raum nicht gefunden');
-    const room = row.value;
-    if (room.host !== host) throw new Error('Nur der Host kann weiter schalten');
-    if (room.status !== 'live') return room;
-    const total = (room.question_ids || []).length;
-    const next = Number(room.q_index) + 1;
-    if (next >= total) {
-      room.status = 'finished';
-      room.finished_at = new Date().toISOString();
-      room.q_started_at = null;
-    } else {
-      room.q_index = next;
-      room.q_started_at = new Date().toISOString();
-    }
-    await saveChallengeRoom(code, room);
-    return room;
+    return withChallengeRoom(code, (room, mark) => {
+      if (room.host !== host) throw new Error('Nur der Host kann weiter schalten');
+      if (room.status !== 'live') return false;
+      const total = (room.question_ids || []).length;
+      const next = Number(room.q_index) + 1;
+      if (next >= total) {
+        room.status = 'finished';
+        room.finished_at = new Date().toISOString();
+        room.q_started_at = null;
+        mark((r) => r && r.status === 'finished');
+      } else {
+        room.q_index = next;
+        room.q_started_at = new Date().toISOString();
+        mark((r) => r && Number(r.q_index) === next);
+      }
+    });
   }
 
   async function finishChallengeRoom(code, hostName) {
     const host = String(hostName || getPlayer() || '').trim();
-    const row = await getChallengeRoom(code);
-    if (!row || !row.value) throw new Error('Raum nicht gefunden');
-    const room = row.value;
-    if (room.host !== host && room.status !== 'finished') {
+    return withChallengeRoom(code, (room, mark) => {
       // allow any client to finalize if already past last question via host race
-    }
-    room.status = 'finished';
-    room.finished_at = room.finished_at || new Date().toISOString();
-    await saveChallengeRoom(code, room);
-    return room;
+      // (host check intentionally permissive — see comment above the call site)
+      room.status = 'finished';
+      room.finished_at = room.finished_at || new Date().toISOString();
+      room.q_started_at = null;
+      mark((r) => r && r.status === 'finished');
+    });
   }
 
   async function saveChallengeResult(code, playerName, room) {
@@ -1131,6 +1241,8 @@
     clearPlayer,
     saveQuizScore,
     flushScoreQueue,
+    getQueueOverflow,
+    clearQueueOverflow,
     loadLeaderboard,
     loadPlayerHistory,
     getPlayerProfile,
@@ -1142,6 +1254,7 @@
     endVisit,
     formatDuration,
     getActiveVisitDurationSec,
+    getActiveVisitStartedAt,
     bindVisitLifecycle,
     resumeVisitTracking,
     // challenge

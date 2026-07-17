@@ -866,7 +866,7 @@ button.stw.open{box-shadow:0 0 0 2px #93c5fd}
 </div>
 
 <script src="./pwa.js?v=3" defer></script>
-<script src="./supabase.js?v=3"></script>
+<script src="./supabase.js?v=7"></script>
 <script src="./vocab.js?v=9"></script>
 <script src="./diagrams.js?v=1"></script>
 <script>
@@ -1555,6 +1555,7 @@ const VI_RE = new RegExp('(' + VI_KEYS.map(k=>k.replace(/[.*+?^${}()|[\]\\]/g,'\
 function escAttr(s){
   return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
 }
+function escH(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 function lookupVI(word){
   if(!word) return '';
   if(VI_DICT[word]) return VI_DICT[word];
@@ -1872,7 +1873,7 @@ async function showMyHistory(){
     if(!de.length){ box.innerHTML=''; return; }
     box.innerHTML=`<h4>📜 Deine Deutsch-Historie</h4>
       <table><tr><th>Quiz</th><th>Punkte</th><th>Versuche</th><th>Datum</th></tr>
-      ${de.map(q=>`<tr><td>${q.quiz}</td><td>${q.correct}/${q.total} (${q.pct}%)</td><td>${q.attempts}</td><td>${(q.at||'').slice(0,10)}</td></tr>`).join('')}
+      ${de.map(q=>`<tr><td>${escH(q.quiz)}</td><td>${q.correct}/${q.total} (${q.pct}%)</td><td>${q.attempts}</td><td>${(q.at||'').slice(0,10)}</td></tr>`).join('')}
       </table>`;
   }catch(_){ box.innerHTML=''; }
 }
@@ -1901,7 +1902,7 @@ async function showLeaderboard(){
     const me=(LearnDB.getPlayer()||'').toLowerCase();
     box.innerHTML=`<h4>🏆 Rangliste · Deutsch</h4>
       <table><tr><th>#</th><th>Name</th><th>Punkte</th><th>%</th></tr>
-      ${rows.map((r,i)=>`<tr class="${String(r.player).toLowerCase()===me?'me':''}"><td>${i+1}</td><td>${r.player}</td><td>${r.correct}/${r.total}</td><td>${r.pct}%</td></tr>`).join('')}
+      ${rows.map((r,i)=>`<tr class="${String(r.player).toLowerCase()===me?'me':''}"><td>${i+1}</td><td>${escH(r.player)}</td><td>${r.correct}/${r.total}</td><td>${r.pct}%</td></tr>`).join('')}
       </table>`;
   }catch(e){
     box.innerHTML='<div class="db-status err">Rangliste nicht ladbar: '+(e.message||e)+'</div>';

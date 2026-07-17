@@ -102,7 +102,6 @@ window.BFK1_QUIZ = [
   {theme:"rechtliche-zahlungsabwicklung", cat:"USt", q:"Speisen im Restaurant vor Ort — USt laut Lernzettel?", opts:["7 %","19 %","1 %","nur Trinkgeld"], a:1, ex:"Vor-Ort-Speisen 19 % laut Lernzettel."},
   {theme:"rechtliche-zahlungsabwicklung", cat:"Recht", q:"Gast vergisst den Geldbeutel. Ist das Betrug?", opts:["Ja, immer","Nein — ohne Vorsatz kein Betrug","Nur bei Vegan","Nur bei Motel"], a:1, ex:"Betrug braucht Vorsatz von Anfang an."},
   {theme:"betriebsarten-zahlung", cat:"System", q:"McDonald’s ist typischerweise …", opts:["Kurhotel","Quickservice-Systemgastronomie","Gemeinschaftsverpflegung Krankenhaus","Nur Hotel garni"], a:1, ex:"Standardisiert, schnell = Quickservice."},
-,
 
   /* ===== FILL-IN (Freitext, case-insensitive) ===== */
   {type:"fill", theme:"gaestebewertungen", cat:"3S", q:"Nenne die 3 „S“ der Gästezufriedenheit (mit Komma).",

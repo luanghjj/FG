@@ -17,7 +17,7 @@
 
   const MODE_HELP = {
     classic: 'Classic: Alle spielen dieselben Fragen. Meiste richtige Antworten gewinnt.',
-    speed: 'Speed: Nur 8s/Frage (empfohlen). Schnelle richtige Antworten geben Bonuspunkte.',
+    speed: 'Speed: Nur 10s/Frage (empfohlen). Schnelle richtige Antworten geben Bonuspunkte.',
     sudden: 'Sudden Death: Ein Fehler = ausgeschieden. Letzte Person gewinnt.',
     streak: 'Streak: Längste Serie richtiger Antworten zählt am meisten.',
     survival: 'Survival: 3 Leben. Jeder Fehler kostet 1 Leben. Wer übrig bleibt, gewinnt.',
@@ -153,12 +153,10 @@
         draft.mode = btn.getAttribute('data-mode') || 'classic';
         const help = $('modeHelp');
         if (help) help.textContent = MODE_HELP[draft.mode] || MODE_HELP.classic;
-        // speed default timer
+        // speed default timer: 10s/question (no 8s chip available)
         if (draft.mode === 'speed' && draft.secondsPerQ === 15) {
-          draft.secondsPerQ = 8;
           const timeBox = $('timePick');
           if (timeBox) {
-            // if no 8s chip, select 10s closest
             let best = null;
             timeBox.querySelectorAll('.chip').forEach((c) => {
               c.classList.remove('on');

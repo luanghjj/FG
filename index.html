@@ -1376,10 +1376,10 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
   <div class="tb-tooltip" id="tbTooltip">Lernzeit heute</div>
 </div>
 
-<script src="./supabase.js?v=5"></script>
+<script src="./supabase.js?v=7"></script>
 <script src="./vocab.js?v=14"></script>
 <script src="./bfk1-data.js?v=13"></script>
-<script src="./bfk1-quiz.js?v=9"></script>
+<script src="./bfk1-quiz.js?v=10"></script>
 <script src="./bfk2-quiz.js?v=1"></script>
 <script src="./deutsch-quiz.js?v=1"></script>
 <script src="./faecher.js?v=6"></script>
@@ -1701,6 +1701,7 @@ function formatDeDateLong(iso){
 }
 function countdownLabel(iso){
   const d=daysUntil(iso);
+  if(isNaN(d)) return {text:"—", cls:"past"};
   if(d<0) return {text: (d===-1?"Gestern": "vor "+Math.abs(d)+" T."), cls:"past"};
   if(d===0) return {text:"Heute", cls:"today"};
   if(d===1) return {text:"Morgen", cls:"urgent"};
@@ -3799,6 +3800,14 @@ async function saveBfkScore(){
     if(e && e.queued){
       if(st){ st.className="db-status ok"; st.textContent="📦 Offline gespeichert — Sync später"; }
       toast("Offline gespeichert — Sync später","info");
+      // Warn if the offline queue has dropped scores due to the cap
+      try{
+        const ov = (LearnDB.getQueueOverflow && LearnDB.getQueueOverflow()) || 0;
+        if(ov > 0){
+          toast("⚠️ Offline-Warteschlange voll: "+ov+" Ergebnisse konnten nicht gespeichert werden. Bitte online synchronisieren.","err");
+          if(st){ st.className="db-status err"; st.textContent="⚠️ Warteschlange voll — "+ov+" Ergebnisse verloren. Bald online synchronisieren."; }
+        }
+      }catch(_){}
     }else{
       if(st){ st.className="db-status err"; st.textContent="❌ Speichern fehlgeschlagen: "+(e.message||e); }
       toast("Speichern fehlgeschlagen","err");
@@ -3817,12 +3826,13 @@ async function loadBfkLeaderboard(){
     }
     const me=(LearnDB.getPlayer()||"").toLowerCase();
     box.innerHTML='<h4>🏆 Rangliste · BFK Fleisch</h4><table><tr><th>#</th><th>Name</th><th>Punkte</th><th>%</th></tr>'
-      +rows.map((r,i)=>'<tr class="'+(String(r.player).toLowerCase()===me?'me':'')+'"><td>'+(i+1)+'</td><td>'+r.player+'</td><td>'+r.correct+'/'+r.total+'</td><td>'+r.pct+'%</td></tr>').join('')
+      +rows.map((r,i)=>'<tr class="'+(String(r.player).toLowerCase()===me?'me':'')+'"><td>'+(i+1)+'</td><td>'+escHtml(r.player)+'</td><td>'+r.correct+'/'+r.total+'</td><td>'+r.pct+'%</td></tr>').join('')
       +'</table>';
   }catch(e){ box.innerHTML='<div class="db-status err">Rangliste nicht ladbar: '+(e.message||e)+'</div>'; }
 }
 
 /* ============ UX HELPERS ============ */
+function escHtml(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 function toast(msg, type){
   const host=document.getElementById('toastHost'); if(!host) return;
   const el=document.createElement('div');
@@ -3976,7 +3986,7 @@ function renderLoginHistory(history){
   if(!quizzes.length){ box.classList.remove('show'); box.innerHTML=''; return; }
   box.innerHTML='<h3>📜 Deine Quiz-Historie</h3>'+quizzes.slice(0,6).map(q=>{
     const when=(q.at||'').slice(0,10);
-    return '<div class="hrow"><span><b>'+(q.subject||'?')+'</b> · '+(q.quiz||'')+'</span><span>'+q.correct+'/'+q.total+' ('+q.pct+'%) · '+when+'</span></div>';
+    return '<div class="hrow"><span><b>'+escHtml(q.subject||'?')+'</b> · '+escHtml(q.quiz||'')+'</span><span>'+q.correct+'/'+q.total+' ('+q.pct+'%) · '+when+'</span></div>';
   }).join('');
   box.classList.add('show');
 }
@@ -4128,6 +4138,35 @@ setInterval(()=>{
   let _tbTimer = null, _tbElapsed = 0, _tbNotified = false;
   let _tbDrag = false, _tbStartX, _tbStartY, _tbMoved = false;
   let _tbInitialized = false;
+  // Baseline: time already banked for today BEFORE the current visit started.
+  // live = current visit's wall-clock duration. Display = baseline + live.
+  let _tbBaseline = 0, _tbVisitKey = null;
+
+  // Local YYYY-MM-DD (so "today" rolls over at local midnight, not 00:00 UTC)
+  function localDay(d){
+    const x = d || new Date();
+    const y = x.getFullYear();
+    const m = String(x.getMonth()+1).padStart(2,'0');
+    const day = String(x.getDate()).padStart(2,'0');
+    return y+'-'+m+'-'+day;
+  }
+
+  function tbRolloverIfNewDay(){
+    const today = localDay();
+    const savedDay = localStorage.getItem('tb_today_date');
+    if(savedDay !== today){
+      localStorage.setItem('tb_today_date', today);
+      localStorage.setItem('tb_today_sec', '0');
+      _tbBaseline = 0;
+      _tbElapsed = 0;
+      _tbNotified = localStorage.getItem('tb_done_'+today) === '1';
+      const el = document.getElementById('timerBubble');
+      if(el){
+        if(_tbNotified) el.classList.add('complete');
+        else el.classList.remove('complete');
+      }
+    }
+  }
 
   function tbInit(){
     if(_tbInitialized) return;
@@ -4141,18 +4180,10 @@ setInterval(()=>{
       if(x && !isNaN(Number(x))){ el.style.left = x+'px'; el.style.right = 'auto'; }
       if(y && !isNaN(Number(y))){ el.style.top = y+'px'; el.style.bottom = 'auto'; }
     }catch(_){}
-    // Today's elapsed
-    const today = new Date().toISOString().slice(0,10);
-    const savedDay = localStorage.getItem('tb_today_date');
-    const raw = localStorage.getItem('tb_today_sec');
-    if(savedDay === today && raw) {
-      _tbElapsed = Number(raw)||0;
-    } else {
-      _tbElapsed = 0;
-      localStorage.setItem('tb_today_date', today);
-      localStorage.setItem('tb_today_sec', '0');
-    }
-    _tbNotified = localStorage.getItem('tb_done_'+today) === '1';
+    // Today's elapsed baseline
+    tbRolloverIfNewDay();
+    _tbBaseline = Number(localStorage.getItem('tb_today_sec'))||0;
+    _tbNotified = localStorage.getItem('tb_done_'+localDay()) === '1';
     if(_tbNotified) el.classList.add('complete');
     el.style.display = 'flex';
     tbUpdateDisplay();
@@ -4166,27 +4197,34 @@ setInterval(()=>{
       _tbDrag = true; _tbMoved = false;
       _tbStartX = e.clientX; _tbStartY = e.clientY;
       _tbOrigRect = el.getBoundingClientRect();
-      el.setPointerCapture(e.pointerId);
+      try{ el.setPointerCapture(e.pointerId); }catch(_){}
     });
     el.addEventListener('pointermove', e => {
       if(!_tbDrag || !_tbOrigRect) return;
-      _tbMoved = true;
       const dx = e.clientX - _tbStartX;
       const dy = e.clientY - _tbStartY;
+      // Mark moved only beyond a small tolerance so a jittery tap still counts as a click
+      if(Math.abs(dx) > 3 || Math.abs(dy) > 3) _tbMoved = true;
+      if(!_tbMoved) return;
       el.style.left = (_tbOrigRect.left + dx) + 'px';
       el.style.top = (_tbOrigRect.top + dy) + 'px';
       el.style.right = 'auto'; el.style.bottom = 'auto';
     });
-    el.addEventListener('pointerup', e => {
+    function endDrag(e){
       if(!_tbDrag) return;
       _tbDrag = false; _tbOrigRect = null;
-      el.releasePointerCapture(e.pointerId);
-      const rect = el.getBoundingClientRect();
-      localStorage.setItem('tb_x', String(Math.round(rect.left)));
-      localStorage.setItem('tb_y', String(Math.round(rect.top)));
-    });
+      try{ el.releasePointerCapture(e.pointerId); }catch(_){}
+      // Persist geometry only when the bubble was actually dragged, not on a plain click
+      if(_tbMoved){
+        const rect = el.getBoundingClientRect();
+        localStorage.setItem('tb_x', String(Math.round(rect.left)));
+        localStorage.setItem('tb_y', String(Math.round(rect.top)));
+      }
+    }
+    el.addEventListener('pointerup', endDrag);
+    el.addEventListener('pointercancel', endDrag);
     el.addEventListener('click', () => {
-      if(_tbMoved) return;
+      if(_tbMoved) { _tbMoved = false; return; }
       el.classList.toggle('expanded');
       el.classList.toggle('collapsed');
       tbUpdateDisplay();
@@ -4194,11 +4232,20 @@ setInterval(()=>{
   }
 
   function tbTick(){
+    // Day rollover (app kept open past local midnight)
+    tbRolloverIfNewDay();
     if(window.LearnDB && LearnDB.getActiveVisitDurationSec){
       const live = Number(LearnDB.getActiveVisitDurationSec())||0;
-      const saved = Number(localStorage.getItem('tb_today_sec'))||0;
-      _tbElapsed = Math.max(saved, live);
-      if(_tbElapsed > saved) localStorage.setItem('tb_today_sec', String(Math.round(_tbElapsed)));
+      const visitKey = (LearnDB.getActiveVisitStartedAt && LearnDB.getActiveVisitStartedAt()) || 'none';
+      // When a new visit starts (e.g. re-login, fresh tab), bank whatever we had
+      // accumulated as the new baseline, so the counter CONTINUES from there
+      // instead of freezing at the old max.
+      if(visitKey !== _tbVisitKey){
+        _tbVisitKey = visitKey;
+        _tbBaseline = Number(localStorage.getItem('tb_today_sec'))||0;
+      }
+      _tbElapsed = _tbBaseline + live;
+      if(_tbElapsed > _tbBaseline) localStorage.setItem('tb_today_sec', String(Math.round(_tbElapsed)));
     } else {
       _tbElapsed = Number(localStorage.getItem('tb_today_sec'))||0;
     }
@@ -4224,7 +4271,7 @@ setInterval(()=>{
     }
     if(s >= GOAL_SEC && !_tbNotified){
       _tbNotified = true;
-      localStorage.setItem('tb_done_'+new Date().toISOString().slice(0,10), '1');
+      localStorage.setItem('tb_done_'+localDay(), '1');
       el.classList.add('complete');
       showToast('🎉 Ziel erreicht! Du hast heute 1 Stunde gelernt.','success',5000);
     }
@@ -4249,7 +4296,6 @@ setInterval(()=>{
     }
   }, 800);
 })();
-</script>
 </script>
 </body>
 </html>

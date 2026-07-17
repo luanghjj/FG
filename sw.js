@@ -1,5 +1,5 @@
 /* Service Worker – Lern-App H2FO3T (offline shell + static assets) */
-const CACHE = 'h2fo3t-v36';
+const CACHE = 'h2fo3t-v37';
 const PRECACHE = [
   './',
   './index.html',
@@ -76,14 +76,19 @@ self.addEventListener('fetch', (event) => {
           }
           return res;
         })
-        .catch(() => caches.match(req))
+        // ignoreSearch so a precached bare URL (./supabase.js) still serves a
+        // versioned request (./supabase.js?v=7) when offline and that exact
+        // version was never fetched — keeps the offline shell working across
+        // releases instead of failing with no cache hit.
+        .catch(() => caches.match(req, { ignoreSearch: true }).then((r) => r || Response.error()))
     );
     return;
   }
 
-  // other static: cache-first
+  // other static: cache-first (ignoreSearch so precached icons/images are found
+  // even if requested with a query string)
   event.respondWith(
-    caches.match(req).then((cached) => {
+    caches.match(req, { ignoreSearch: true }).then((cached) => {
       if (cached) return cached;
       return fetch(req).then((res) => {
         if (!res || res.status !== 200 || res.type === 'opaque') return res;
