@@ -61,17 +61,23 @@ window.BFK1_THEMES = {
         content: `
           <h2>🥗 Thema 2 · Ernährungsgewohnheiten &amp; Speisekarte</h2>
 
-          <h3 class="sub">Ernährungsformen</h3>
+          <h3 class="sub">Ernährungsgewohnheiten in Deutschland</h3>
+          <p>Die häufigsten Ernährungsformen — mit Anteil der Bevölkerung (DGE-/VML-Studie):</p>
           <table>
-            <tr><th>Form</th><th>Regel</th></tr>
-            <tr><td><span class="term" data-de="Vegan" data-vi="thuần chay">Vegan</span></td><td>Verzicht auf <b>alle</b> tierischen Produkte (auch Ei, Milch, Honig, Gelatine)</td></tr>
-            <tr><td><span class="term" data-de="Vegetarisch" data-vi="ăn chay">Vegetarisch</span></td><td>Verzicht auf Fleisch (Fisch oft auch nicht; Ei/Milch oft ok)</td></tr>
-            <tr><td><span class="term" data-de="Flexitarier" data-vi="ăn chay linh hoạt">Flexitarier</span></td><td>wenig Fleischkonsum</td></tr>
-            <tr><td><span class="term" data-de="Laktosefrei" data-vi="không lactose">Laktosefrei</span></td><td>ohne Milchzucker / Milchprodukte je nach Verträglichkeit</td></tr>
-            <tr><td><span class="term" data-de="Glutenfrei" data-vi="không gluten">Glutenfrei</span></td><td>ohne Klebereiweiß Gluten (z. B. <span class="term" data-de="Zöliakie" data-vi="bệnh Celiac">Zöliakie</span>)</td></tr>
-            <tr><td><span class="term" data-de="Halal" data-vi="halal">Halal</span> / <span class="term" data-de="Koscher" data-vi="kosher">Koscher</span></td><td>islamische bzw. jüdische Speisegesetze</td></tr>
-            <tr><td><span class="term" data-de="Low-Carb" data-vi="ít carb">Low-Carb</span> / <span class="term" data-de="Keto" data-vi="keto">Keto</span></td><td>sehr wenig Kohlenhydrate; Keto viel Fett</td></tr>
-            <tr><td><span class="term" data-de="Pescetarier" data-vi="ăn cá không thịt">Pescetarier</span></td><td>Fisch erlaubt, Fleisch nicht</td></tr>
+            <tr><th>Form</th><th>%</th><th>Regel</th></tr>
+            <tr><td><b>Keine bestimmte Ernährung</b> <span class="term" data-de="isst alles" data-vi="ăn mọi thứ">(isst alles)</span></td><td>68 %</td><td>keine Einschränkung, kein Verzicht — die Mehrheit der Bevölkerung</td></tr>
+            <tr><td><span class="term" data-de="Vegetarisch" data-vi="ăn chay">Vegetarisch</span></td><td>9 %</td><td><b>kein Fleisch</b> (Ei/Milch meist erlaubt)</td></tr>
+            <tr><td><span class="term" data-de="Flexitarier" data-vi="ăn chay linh hoạt">Flexitarier</span></td><td>7 %</td><td>überwiegend pflanzlich, <b>wenig Fleisch</b> gelegentlich</td></tr>
+            <tr><td><span class="term" data-de="Vegan" data-vi="thuần chay">Vegan</span></td><td>4 %</td><td><b>keine tierischen Produkte</b> (auch Ei, Milch, Honig, Gelatine)</td></tr>
+            <tr><td><span class="term" data-de="Laktosefrei" data-vi="không lactose">Laktosefrei</span></td><td>4 %</td><td><b>ohne Milch(zucker)</b> — je nach Verträglichkeit</td></tr>
+            <tr><td><span class="term" data-de="Low-Carb" data-vi="ít carb">Low-Carb</span> / <span class="term" data-de="No-Carb" data-vi="không carb">No-Carb</span></td><td>4 %</td><td><b>wenig / keine Kohlenhydrate</b></td></tr>
+            <tr><td><span class="term" data-de="Halal" data-vi="halal">Halal</span></td><td>3 %</td><td>nach <b>islamischen Regeln</b> (v. a. Schlachtung)</td></tr>
+            <tr><td><span class="term" data-de="Mediterran" data-vi="Địa Trung Hải">Mediterran</span></td><td>3 %</td><td><b>viel Gemüse, Fisch, Olivenöl</b></td></tr>
+            <tr><td><span class="term" data-de="Ausschließlich bio" data-vi="thuần hữu cơ">Ausschließlich bio</span></td><td>2 %</td><td><b>nur Bio-Produkte</b></td></tr>
+            <tr><td><span class="term" data-de="Glutenfrei" data-vi="không gluten">Glutenfrei</span></td><td>2 %</td><td><b>ohne Gluten</b> (z. B. <span class="term" data-de="Zöliakie" data-vi="bệnh Celiac">Zöliakie</span>) → Mais, Reis, Hafer, Hirse</td></tr>
+            <tr><td><span class="term" data-de="Keto" data-vi="keto">Keto</span></td><td>1 %</td><td><b>sehr wenig KH, viel Fett</b></td></tr>
+            <tr><td><span class="term" data-de="Pescetarier" data-vi="ăn cá không thịt">Pescetarier</span></td><td>1 %</td><td><b>Fisch erlaubt, Fleisch nicht</b></td></tr>
+            <tr><td><span class="term" data-de="Koscher" data-vi="kosher">Koscher</span></td><td>1 %</td><td>nach <b>jüdischen Speisegesetzen</b></td></tr>
           </table>
           <div class="note">Allergene nie raten — bei Unsicherheit Küche fragen. Kreuzkontamination vermeiden.</div>
 
