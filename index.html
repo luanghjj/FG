@@ -851,7 +851,8 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
     <h3>📈 Dein Lernstand</h3>
     <div class="progress-stats" id="homeProgressStats">
       <div class="pstat"><div class="n" id="hpVisits">—</div><div class="l">Besuche</div></div>
-      <div class="pstat"><div class="n" id="hpTime">—</div><div class="l">Lernzeit</div></div>
+      <div class="pstat"><div class="n" id="hpToday">—</div><div class="l">Heute</div></div>
+      <div class="pstat"><div class="n" id="hpTime">—</div><div class="l">Gesamt</div></div>
       <div class="pstat"><div class="n" id="hpQuizzes">—</div><div class="l">Quiz</div></div>
       <div class="pstat"><div class="n" id="hpLast">—</div><div class="l">Letzte %</div></div>
     </div>
@@ -4049,6 +4050,7 @@ async function loadHomeHistory(player){
     const last=qs[0];
     const lastPct=last ? (last.pct+'%') : '—';
     let totalSec=Number(profile.total_duration_sec)||0;
+    let dailySec=Number(profile.daily_duration_sec)||0;
     // live session (same tab) – add current open visit on top of committed total
     try{
       if(window.LearnDB && LearnDB.getActiveVisitDurationSec){
@@ -4059,20 +4061,28 @@ async function loadHomeHistory(player){
         if(live>0){
           if(lastSess>0 && live>=lastSess) totalSec = Math.max(0, totalSec - lastSess) + live;
           else if(!lastSess) totalSec = totalSec + live;
+          // daily mirrors the same monotonic logic as total (profile.daily already
+          // holds the last_session contribution of this visit via heartbeat)
+          if(lastSess>0 && live>=lastSess) dailySec = Math.max(0, dailySec - lastSess) + live;
+          else if(!lastSess) dailySec = dailySec + live;
         }
       }
     }catch(_){}
     const timeLabel=(window.LearnDB && LearnDB.formatDuration)
       ? LearnDB.formatDuration(totalSec)
       : (totalSec ? (Math.round(totalSec/60)+'m') : '0s');
+    const todayLabel=(window.LearnDB && LearnDB.formatDuration)
+      ? LearnDB.formatDuration(dailySec)
+      : (dailySec ? (Math.round(dailySec/60)+'m') : '0s');
     const elV=document.getElementById('hpVisits'); if(elV) elV.textContent=visits||'0';
+    const elToday=document.getElementById('hpToday'); if(elToday) elToday.textContent=dailySec? todayLabel : '0s';
     const elT=document.getElementById('hpTime'); if(elT) elT.textContent=totalSec? timeLabel : '0s';
     const elQ=document.getElementById('hpQuizzes'); if(elQ) elQ.textContent=quizN||'0';
     const elL=document.getElementById('hpLast'); if(elL) elL.textContent=lastPct;
     if(hint){
       if(!qs.length && !totalSec) hint.textContent='Noch keine Quiz-Daten — starte mit „BFK · 10 Fragen“.';
-      else if(!qs.length) hint.textContent='Lernzeit: '+timeLabel+' · Noch keine Quiz-Ergebnisse.';
-      else hint.textContent='Lernzeit: '+timeLabel+' · Zuletzt: '+(last.subject||'')+' / '+(last.quiz||'')+' · '+(last.at||'').slice(0,10);
+      else if(!qs.length) hint.textContent='Heute: '+todayLabel+' · Gesamt: '+timeLabel+' · Noch keine Quiz-Ergebnisse.';
+      else hint.textContent='Heute: '+todayLabel+' · Zuletzt: '+(last.subject||'')+' / '+(last.quiz||'')+' · '+(last.at||'').slice(0,10);
     }
     if(!qs.length){
       body.innerHTML='<div class="empty-state"><div class="big-ic">📘</div>Noch keine Quizzes.<br>Starte BFK oder Deutsch oben.</div>';
@@ -4163,8 +4173,11 @@ setInterval(()=>{
   // live = current visit's wall-clock duration. Display = baseline + live.
   let _tbBaseline = 0, _tbVisitKey = null;
 
-  // Local YYYY-MM-DD (so "today" rolls over at local midnight, not 00:00 UTC)
+  // Local YYYY-MM-DD in Europe/Berlin (so "today" matches the admin dashboard
+  // and rolls over at Berlin midnight, not the device's local clock). Falls back
+  // to device-local only if LearnDB isn't loaded yet.
   function localDay(d){
+    if(window.LearnDB && LearnDB.berlinDay) return LearnDB.berlinDay(d);
     const x = d || new Date();
     const y = x.getFullYear();
     const m = String(x.getMonth()+1).padStart(2,'0');

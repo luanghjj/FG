@@ -87,6 +87,18 @@ th{color:var(--muted);font-size:.72em;text-transform:uppercase;letter-spacing:.0
     <div class="grid" id="statsGrid"></div>
 
     <div class="card">
+      <h2>🎯 Tagesziel (für alle)</h2>
+      <div class="muted" id="goalMeta">Ziel pro Tag in Minuten — gilt für alle Nutzer.</div>
+      <div style="display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;margin-top:8px">
+        <div style="flex:0 0 180px">
+          <label class="muted" for="goalMin">Minuten / Tag</label>
+          <input id="goalMin" type="text" inputmode="numeric" placeholder="z.B. 60">
+        </div>
+        <button type="button" id="btnSaveGoal">Speichern</button>
+      </div>
+    </div>
+
+    <div class="card">
       <h2>📅 Aktivität (letzte 14 Tage)</h2>
       <div class="bars" id="dayBars"></div>
     </div>
@@ -98,8 +110,19 @@ th{color:var(--muted);font-size:.72em;text-transform:uppercase;letter-spacing:.0
       <div class="muted" id="playersMeta"></div>
       <div style="overflow:auto;margin-top:8px">
         <table>
-          <thead><tr><th>Nickname</th><th>Besuche</th><th>Quiz</th><th>Zeit gesamt</th><th>Gelernte Fächer</th><th>Letzte Session</th><th>Zuletzt</th></tr></thead>
+          <thead><tr><th>Nickname</th><th>Besuche</th><th>Quiz</th><th>Heute</th><th>Zeit gesamt</th><th>Gelernte Fächer</th><th>Letzte Session</th><th>Zuletzt</th></tr></thead>
           <tbody id="playersBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card" id="underGoalCard">
+      <h2>⚠️ Nutzer unter Ziel heute</h2>
+      <div class="muted" id="underGoalMeta" style="margin-bottom:8px">Aktiv heute (Berlin), aber noch nicht beim Tagesziel.</div>
+      <div style="overflow:auto">
+        <table>
+          <thead><tr><th>Nickname</th><th>Heute gelernt</th><th>Fehlt zum Ziel</th><th>Zuletzt gesehen</th></tr></thead>
+          <tbody id="underGoalBody"></tbody>
         </table>
       </div>
     </div>
@@ -139,7 +162,7 @@ th{color:var(--muted);font-size:.72em;text-transform:uppercase;letter-spacing:.0
 </div>
 
 <script src="./pwa.js?v=3" defer></script>
-<script src="./supabase.js?v=7"></script>
+<script src="./supabase.js?v=8"></script>
 <script>
 const AUTH_KEY='learn_admin_ok';
 function showErr(m){
@@ -202,6 +225,19 @@ async function load(){
     `;
     buildDayBars(s.visits);
     document.getElementById('playersMeta').textContent = s.players.length + ' Profile';
+
+    // Tagesziel
+    const goalSec = Number(s.daily_goal_sec)||3600;
+    const goalMin = Math.round(goalSec/60);
+    const goalMeta=document.getElementById('goalMeta');
+    if(goalMeta) goalMeta.textContent='Aktuelles Ziel: '+goalMin+' Min/Tag ('+fd(goalSec)+') für alle Nutzer.';
+    const goalInput=document.getElementById('goalMin');
+    if(goalInput && !goalInput.value) goalInput.placeholder=String(goalMin);
+
+    // "Heute" pro Nutzer + Warnung unter Ziel
+    const berlinToday = (LearnDB.berlinDay ? LearnDB.berlinDay() : new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Berlin'}).format());
+    const seenToday = (iso)=>{ try{ return LearnDB.berlinDay ? (LearnDB.berlinDay(iso)===berlinToday) : (String(iso||'').slice(0,10)===berlinToday); }catch(_){ return false; } };
+
     document.getElementById('playersBody').innerHTML = s.players.map(p=>{
       const subs = p.quizzes ? Object.keys(p.quizzes) : [];
       const subList = subs.map(k => {
@@ -210,8 +246,32 @@ async function load(){
         const pct = q.best_pct != null ? q.best_pct + '%' : '';
         return '<span class="tag" title="Bester Versuch: '+pct+', Versuche: '+(q.attempts||1)+'">'+label+'</span>';
       }).join(' ') || '<span class="muted">—</span>';
-      return `<tr><td><b>${escH(p.player)}</b></td><td>${p.visits}</td><td>${p.quiz_attempts}</td><td>${fd(p.total_duration_sec)}</td><td style="max-width:200px;white-space:normal;word-break:break-word;line-height:1.6">${subList}</td><td>${fd(p.last_session_sec)}</td><td>${fmt(p.last_seen)}</td></tr>`;
-    }).join('') || '<tr><td colspan="7" class="muted">Noch keine Nutzer</td></tr>';
+      const daily = Number(p.daily_duration_sec)||0;
+      const dailyCell = seenToday(p.last_seen)
+        ? (daily>=goalSec ? '<span class="tag" style="color:var(--ok);border-color:#bbf7d0">✓ '+fd(daily)+'</span>' : '<span style="color:var(--bad)">'+fd(daily)+'</span>')
+        : '<span class="muted">—</span>';
+      return `<tr><td><b>${escH(p.player)}</b></td><td>${p.visits}</td><td>${p.quiz_attempts}</td><td>${dailyCell}</td><td>${fd(p.total_duration_sec)}</td><td style="max-width:200px;white-space:normal;word-break:break-word;line-height:1.6">${subList}</td><td>${fd(p.last_session_sec)}</td><td>${fmt(p.last_seen)}</td></tr>`;
+    }).join('') || '<tr><td colspan="8" class="muted">Noch keine Nutzer</td></tr>';
+
+    // ⚠️ Nutzer unter Ziel heute
+    const under = s.players
+      .filter(p => seenToday(p.last_seen) && (Number(p.daily_duration_sec)||0) < goalSec)
+      .sort((a,b)=>(Number(a.daily_duration_sec)||0)-(Number(b.daily_duration_sec)||0));
+    const underBody=document.getElementById('underGoalBody');
+    const underMeta=document.getElementById('underGoalMeta');
+    const underCard=document.getElementById('underGoalCard');
+    if(underMeta) underMeta.textContent='Ziel: '+goalMin+' Min/Tag · Berlin-Tag: '+berlinToday+' · '+under.length+' unter Ziel.';
+    if(!under.length){
+      underBody.innerHTML='<tr><td colspan="4" class="muted">✅ Alle heute aktiven Nutzer haben das Ziel erreicht (oder niemand war heute aktiv).</td></tr>';
+      if(underCard) underCard.style.opacity='.65';
+    } else {
+      if(underCard) underCard.style.opacity='1';
+      underBody.innerHTML = under.map(p=>{
+        const daily=Number(p.daily_duration_sec)||0;
+        const fehlt=Math.max(0, goalSec-daily);
+        return `<tr><td><b>${escH(p.player)}</b></td><td>${fd(daily)}</td><td><span style="color:var(--bad);font-weight:600">${fd(fehlt)}</span></td><td>${fmt(p.last_seen)}</td></tr>`;
+      }).join('');
+    }
 
     document.getElementById('quizBody').innerHTML = s.quizzes.slice(0,80).map((q,i)=>{
       const hasHist = q.history && q.history.length > 1;
@@ -259,6 +319,18 @@ document.getElementById('btnLogin').onclick=()=>{
 };
 document.getElementById('pass').addEventListener('keydown', e=>{ if(e.key==='Enter') document.getElementById('btnLogin').click(); });
 document.getElementById('btnRefresh').onclick=load;
+document.getElementById('btnSaveGoal').onclick=async()=>{
+  const raw=document.getElementById('goalMin').value;
+  const m=Number(String(raw).replace(',','.'))||0;
+  if(m<=0){ alert('Bitte eine gültige Minutenzahl eingeben (z.B. 60).'); return; }
+  const btn=document.getElementById('btnSaveGoal');
+  if(btn){ btn.disabled=true; btn.textContent='Speichert…'; }
+  try{
+    await LearnDB.setAdminGoal(Math.round(m*60), 'admin');
+    await load();
+  }catch(e){ alert('Speichern fehlgeschlagen: '+(e.message||e)); }
+  finally{ if(btn){ btn.disabled=false; btn.textContent='Speichern'; } }
+};
 
 try{
   if(sessionStorage.getItem(AUTH_KEY)==='1') unlock();
