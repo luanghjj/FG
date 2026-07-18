@@ -88,6 +88,20 @@
     try {
       localStorage.removeItem(PLAYER_KEY);
     } catch (_) {}
+    // Reset the per-device timer-bubble daily counter so a different nickname
+    // starts at 0 instead of inheriting the previous user's accumulated time.
+    try {
+      localStorage.removeItem('tb_today_sec');
+      localStorage.removeItem('tb_today_date');
+      localStorage.removeItem('tb_player');
+      // remove any tb_done_<day> flags
+      const toDel = [];
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i);
+        if (k && k.indexOf('tb_done_') === 0) toDel.push(k);
+      }
+      toDel.forEach((k) => localStorage.removeItem(k));
+    } catch (_) {}
   }
 
   function scoreKey(subject, quiz, player) {
@@ -610,6 +624,22 @@
     const p = String(nickname || '').trim().slice(0, 32);
     if (!p) throw new Error('Nickname darf nicht leer sein');
     if (p.length < 2) throw new Error('Nickname: mindestens 2 Zeichen');
+    // If the nickname changes, reset the per-device timer-bubble daily counter
+    // so the new user starts at 0 instead of inheriting the previous user's time.
+    try {
+      const prev = localStorage.getItem('tb_player') || '';
+      if (prev && prev !== p) {
+        localStorage.removeItem('tb_today_sec');
+        localStorage.removeItem('tb_today_date');
+        const toDel = [];
+        for (let i = 0; i < localStorage.length; i++) {
+          const k = localStorage.key(i);
+          if (k && k.indexOf('tb_done_') === 0) toDel.push(k);
+        }
+        toDel.forEach((k) => localStorage.removeItem(k));
+      }
+      localStorage.setItem('tb_player', p);
+    } catch (_) {}
     setPlayer(p);
     const key = playerKey(p);
     const now = new Date().toISOString();
