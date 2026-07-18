@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Klassenarbeit Nr. 5 – BfK-1</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#eef2f7;color:#1a202c;padding:24px}
+.page{max-width:840px;margin:0 auto;background:#fff;border-radius:16px;box-shadow:0 6px 32px rgba(0,0,0,.13);overflow:hidden}
+.header{background:linear-gradient(135deg,#1a365d 0%,#2b6cb0 100%);color:#fff;padding:28px 40px 22px}
+.school{font-size:.78em;opacity:.75;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:6px}
+.header h1{font-size:1.65em;font-weight:700;margin-bottom:3px}
+.header .ka-date{opacity:.9;font-size:.95em;margin-bottom:14px}
+.header .bfk-tag{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:4px 14px;font-size:.9em;font-weight:700;margin-bottom:14px}
+.header .name-line{font-size:.95em;opacity:.92;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:4px;display:inline-block;min-width:300px}
+.hints{background:#fffbeb;border-bottom:1px solid #fde68a;padding:11px 40px;display:flex;gap:24px;flex-wrap:wrap;font-size:.83em;color:#78350f}
+.hints span{display:flex;align-items:center;gap:5px}
+.body{padding:30px 40px 20px}
+.lf{margin-bottom:34px}
+.lf-head{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #e2e8f0}
+.lf-nr{background:#1a365d;color:#fff;border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9em;flex-shrink:0}
+.lf-title{font-size:1.05em;font-weight:700;color:#1a365d;flex:1}
+.lf-pts{background:#ebf8ff;color:#2b6cb0;border:1px solid #bee3f8;border-radius:20px;padding:3px 14px;font-size:.8em;font-weight:700}
+.sit{background:#f0f9ff;border:1px solid #bae6fd;border-radius:10px;padding:16px 20px;margin-bottom:18px;position:relative;padding-top:22px}
+.sit::before{content:"📋 SITUATION";position:absolute;top:-11px;left:16px;background:#0369a1;color:#fff;font-size:.7em;font-weight:700;padding:3px 12px;border-radius:20px;letter-spacing:.8px}
+.sit p{font-size:.9em;line-height:1.75;color:#0c4a6e}
+.sit p+p{margin-top:8px}
+.sit strong{color:#075985}
+.frage{margin-bottom:16px}
+.f-top{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px}
+.f-nr{background:#e2e8f0;border-radius:6px;padding:2px 9px;font-size:.79em;font-weight:700;color:#4a5568;flex-shrink:0;margin-top:1px}
+.f-text{font-size:.91em;line-height:1.65;color:#2d3748;flex:1}
+.f-pts{font-size:.77em;color:#718096;flex-shrink:0;margin-top:2px}
+.lines{padding-left:16px}
+.l{border:none;border-bottom:1px solid #cbd5e0;width:100%;height:26px;display:block;margin-bottom:9px;background:transparent}
+.l.lg{height:32px}
+.anlage{background:#f7fafc;border:1px dashed #cbd5e0;border-radius:10px;padding:16px 20px;margin:14px 0 18px 16px}
+.anlage-h{font-size:.78em;font-weight:700;color:#4a5568;text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px;border-bottom:1px solid #e2e8f0;padding-bottom:6px}
+.anlage p,.anlage li{font-size:.85em;line-height:1.7;color:#2d3748}
+.anlage ul,.anlage ol{padding-left:18px}
+.anlage table{width:100%;border-collapse:collapse;margin:6px 0;font-size:.83em}
+.anlage th{background:#edf2f7;padding:6px 8px;text-align:left;border:1px solid #e2e8f0}
+.anlage td{padding:6px 8px;border:1px solid #e2e8f0}
+.ct{width:calc(100% - 16px);border-collapse:collapse;margin:10px 0 4px 16px;font-size:.86em}
+.ct th{background:#1a365d;color:#fff;padding:7px 10px;text-align:left;font-weight:600}
+.ct td{padding:7px 10px;border:1px solid #e2e8f0}
+.ct tr:nth-child(even) td{background:#f7fafc}
+.ct .sum td{background:#dbeafe;font-weight:700;color:#1e40af}
+hr{border:none;border-top:2px dashed #e2e8f0;margin:26px 0}
+.footer{background:#f7fafc;border-top:2px solid #e2e8f0;padding:16px 40px;display:flex;justify-content:space-between;align-items:center;font-size:.9em}
+.footer strong{color:#1a365d;font-size:1.05em}
+.footer .viel{color:#2b6cb0;font-weight:700;font-style:italic}
+@media print{body{background:#fff;padding:0}.page{box-shadow:none;border-radius:0}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="header">
+  <div class="school">JGDS – Landesberufsschule für Hotellerie und Gastronomie</div>
+  <h1>Klassenarbeit Nr. 5</h1>
+  <div class="ka-date">18.07.2026</div>
+  <div class="bfk-tag">BfK-1</div>
+  <div>Name: <span class="name-line">&nbsp;</span></div>
+</div>
+
+<div class="hints">
+  <span>⏱ <b>Hilfsmittel: zugelassen</b></span>
+  <span>✏️ <b>In vollständigen Sätzen antworten</b></span>
+  <span>📌 <b>Rechenweg angeben</b></span>
+</div>
+
+<div class="body">
+
+<!-- ══════════ LERNFELD 6 ══════════ -->
+<div class="lf">
+  <div class="lf-head">
+    <div class="lf-nr">6</div>
+    <div class="lf-title">Lernfeld 6: Gerichte, Menüs und Produkte anbieten</div>
+    <div class="lf-pts">18 P.</div>
+  </div>
+
+  <div class="sit">
+    <p>Im <strong>Hotel-Restaurant „Stadtkrone"</strong> soll eine neue <strong>Getreide-Aktionswoche</strong> durchgeführt werden. Sie sollen Getreidesorten einkaufen, ein Menü nach <strong>Menüregeln</strong> planen und die Speisekarte sprachlich überarbeiten.</p>
+  </div>
+
+  <div class="frage">
+    <div class="f-top"><div class="f-nr">1.1</div><div class="f-text">Nennen Sie die <strong>3 Teile des Kornaufbaus</strong> und jeweils den wichtigsten <strong>Inhaltsstoff</strong>.</div><div class="f-pts">(3 P.)</div></div>
+    <table class="ct">
+      <tr><th>Kornteil</th><th>Wichtigster Inhalt</th></tr>
+      <tr><td></td><td></td></tr>
+      <tr><td></td><td></td></tr>
+      <tr><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="frage">
+    <div class="f-top"><div class="f-nr">1.2</div><div class="f-text">Eine Gastgruppe mit <strong>Zöliakie</strong> meldet sich an. Erläutern Sie, was <strong>Gluten</strong> ist, und nennen Sie <strong>3 glutenhaltige Getreidesorten</strong>, die für diese Gäste tabu sind.</div><div class="f-pts">(3 P.)</div></div>
+    <div class="lines"><div class="l"></div><div class="l"></div><div class="l"></div><div class="l"></div></div>
+  </div>
+
+  <div class="frage">
+    <div class="f-top"><div class="f-nr">1.3</div><div class="f-text">Nennen Sie <strong>3 glutenfreie Alternativen</strong> (Getreide oder Pseudo-Getreide), die Sie für diese Gäste einsetzen können.</div><div class="f-pts">(2 P.)</div></div>
+    <div class="lines"><div class="l"></div><div class="l"></div><div class="l"></div></div>
+  </div>
+
+  <div class="frage">
+    <div class="f-top"><div class="f-nr">1.4</div><div class="f-text">Erklären Sie den Begriff <strong>Ausmahlungsgrad</strong> und beschreiben Sie den Unterschied zwischen <strong>Vollkornmehl</strong> und <strong>hellem Mehl</strong> (je 1 Merkmal Gesundheit + Haltbarkeit).</div><div class="f-pts">(3 P.)</div></div>
+    <div class="lines"><div class="l"></div><div class="l"></div><div class="l"></div><div class="l"></div></div>
+  </div>
+
+  <div class="frage">
+    <div class="f-top"><div class="f-nr">1.5</div><div class="f-text">Nennen Sie die <strong>Mahlgrade</strong> in der Reihenfolge <strong>grob → fein</strong>.</div><div class="f-pts">(2 P.)</div></div>
+    <div class="lines"><div class="l"></div><div class="l"></div></div>
+  </div>
+
+  <div class="frage">
+    <div class="f-top"><div class="f-nr">1.6</div><div class="f-text">Sie planen ein <strong>3-Gang-Menü</strong>. Nennen Sie <strong>3 Menüregeln</strong> zur Abwechslung, die Sie beachten müssen.</div><div class="f-pts">(3 P.)</div></div>
+    <div class="lines"><div class="l"></div><div class="l"></div><div class="l"></div></div>
+  </div>
+
+  <div class="frage">
+    <div class="f-top"><div class="f-nr">1.7</div><div class="f-text">Formulieren Sie <strong>1 Speisekarten-Gericht</strong> nach den sprachlichen Regeln (keine Abkürzungen, Adjektiv voran, Bindestrich bei 3+ Wörtern). Beginnen Sie mit der falschen Version <strong>„Rinderzunge, gepökelt"</strong> und korrigieren Sie diese.</div><div class="f-pts">(2 P.)</div></div>
+    <div class="lines"><div class="l"></div><div class="l"></div><div class="l"></div></div>
+  </div>
+
+  <!-- ANLAGE 1 -->
+  <div class="anlage">
+    <div class="anlage-h">Anlage 1 · Kornaufbau &amp; Gluten-Übersicht</div>
+    <table>
+      <tr><th>Kornteil</th><th>Inhalt</th></tr>
+      <tr><td>Randschichten / Aleuron</td><td>Ballaststoffe, Mineralien, B-Vitamine</td></tr>
+      <tr><td>Mehlkörper</td><td>Stärke + Eiweiß (Hauptanteil)</td></tr>
+      <tr><td>Keimling</td><td>Fett, Vitamin E – lagerempfindlich</td></tr>
+    </table>
+    <p style="margin-top:6px"><b>Glutenhaltig:</b> Weizen, Dinkel, Grünkern, Roggen, Gerste.<br>
+    <b>Glutenfrei:</b> Reis, Mais, Hirse · Pseudo-Getreide: Buchweizen, Amaranth, Quinoa.</p>
+  </div>
+</div>
+
+<hr>
+
+<!-- ══════════ LERNFELD 9 ══════════ -->
+<div class="lf">
+  <div class="lf-head">
+    <div class="lf-nr">9</div>
+    <div class="lf-title">Lernfeld 9: Zahlungen mit dem Gast abwickeln</div>
+    <div class="lf-pts">17 P.</div>
+  </div>
+
+  <div class="sit">
+    <p>Am Wochenende kommt es im Hotel-Restaurant „Stadtkrone" zu mehreren <strong>Vorfällen</strong>: <strong>Fall 1:</strong> Ein Gast verzehrt, hat aber seinen <strong>Geldbeutel vergessen</strong> und kann nicht bezahlen. <strong>Fall 2:</strong> Ein anderer Gast verweigert die Zahlung, weil das Steak <strong>komplett durch</strong> statt „medium" geliefert wurde. <strong>Fall 3:</strong> Ein dritter Gast möchte <strong>vor Ort essen</strong> und fragt nach dem Steuersatz.</p>
+  </div>
+
+  <div class="frage">
+    <div class="f-top"><div class="f-nr">2.1</div><div class="f-text"><strong>Fall 1 – vergessener Geldbeutel:</strong> Liegt <strong>Zechprellerei/Betrug</strong> vor? Begründen Sie mit dem Begriff <strong>Vorsatz</strong>.</div><div class="f-pts">(3 P.)</div></div>
+    <div class="lines"><div class="l"></div><div class="l"></div><div class="l"></div></div>
+  </div>
+
+  <div class="frage">
+    <div class="f-top"><div class="f-nr">2.2</div><div class="f-text"><strong>Fall 2 – falsche Garstufe:</strong> Welche primäre Leistung (Stufe 1) muss der Gastronom erbringen? Begründen Sie, warum der Gast <strong>nicht sofort</strong> die Zahlung verweigern darf.</div><div class="f-pts">(4 P.)</div></div>
+    <div class="lines"><div class="l"></div><div class="l"></div><div class="l"></div><div class="l"></div></div>
+  </div>
+
+  <div class="frage">
+    <div class="f-top"><div class="f-nr">2.3</div><div class="f-text"><strong>Fall 3 – Steuersatz vor Ort:</strong> Welcher <strong>Mehrwertsteuersatz</strong> gilt für Speisen vor Ort und für Getränke (Regelfall)? Berechnen Sie die USt für ein vor-Ort-Gericht mit <strong>Brutto 23,80 €</strong> (Rechenweg).</div><div class="f-pts">(5 P.)</div></div>
+    <table class="ct">
+      <tr><th>Formel</th><th>Berechnung</th><th>Ergebnis</th></tr>
+      <tr><td>Netto = Brutto ÷ 1,19</td><td></td><td></td></tr>
+      <tr><td>USt = Brutto − Netto</td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="frage">
+    <div class="f-top"><div class="f-nr">2.4</div><div class="f-text">Nennen Sie <strong>2 Arten der Gemeinschaftsverpflegung</strong> und je <strong>1 Merkmal</strong>.</div><div class="f-pts">(3 P.)</div></div>
+    <div class="lines"><div class="l"></div><div class="l"></div><div class="l"></div><div class="l"></div></div>
+  </div>
+
+  <div class="frage">
+    <div class="f-top"><div class="f-nr">2.5</div><div class="f-text">Ein Gast hinterlässt <strong>Trinkgeld</strong> an der Rezeption über die Rechnung. Erläutern Sie, ob Trinkgeld <strong>Pflicht</strong> ist und wie hoch es üblicherweise ausfällt.</div><div class="f-pts">(2 P.)</div></div>
+    <div class="lines"><div class="l"></div><div class="l"></div></div>
+  </div>
+</div>
+
+</div><!-- /body -->
+
+<div class="footer">
+  <strong>Gesamtpunktzahl: 35 P.</strong>
+  <span class="viel">Viel Erfolg!</span>
+</div>
+
+</div>
+</body>
+</html>
