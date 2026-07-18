@@ -789,6 +789,62 @@
       .filter((v) => v && v.player)
       .sort((a, b) => String(b.at || '').localeCompare(String(a.at || '')));
 
+    // Derive per-player daily Lernzeit directly from visit rows (Berlin day) so
+    // the admin "unter Ziel" view stays correct even when a profile is missing
+    // the daily_duration_sec field (e.g. created before the field existed, or a
+    // visit row exists without a matching profile). Sum the duration of every
+    // visit whose Berlin day equals today.
+    const todayB = berlinDay();
+    const dailyFromVisits = {};
+    const lastSeenFromVisits = {};
+    for (const v of visitList) {
+      if (!v.player) continue;
+      // visit day stored as UTC YYYY-MM-DD (started_at slice) — recompute in Berlin
+      const vDay = berlinDay(v.started_at || v.at || v.last_seen);
+      if (vDay === todayB) {
+        dailyFromVisits[v.player] = (Number(dailyFromVisits[v.player]) || 0) + (Number(v.duration_sec) || 0);
+      }
+      const ls = v.last_seen || v.started_at || '';
+      if (ls && (!lastSeenFromVisits[v.player] || String(ls) > String(lastSeenFromVisits[v.player]))) {
+        lastSeenFromVisits[v.player] = ls;
+      }
+    }
+
+    // Merge visit-derived daily + any "phantom" players that have visits but no
+    // profile row into playerList so nobody is missed in the admin views.
+    const byName = {};
+    for (const p of playerList) byName[p.player] = p;
+    for (const name of Object.keys(dailyFromVisits)) {
+      if (!byName[name]) {
+        byName[name] = {
+          player: name,
+          visits: 0,
+          quiz_attempts: 0,
+          total_duration_sec: 0,
+          last_session_sec: 0,
+          daily_duration_sec: 0,
+          daily_day: '',
+          created_at: '',
+          last_seen: lastSeenFromVisits[name] || '',
+          quizzes: {},
+        };
+        playerList.push(byName[name]);
+      }
+      // Prefer the larger of profile-recorded daily vs visit-derived daily, so an
+      // open visit (still counting) is not underreported.
+      const visitDaily = Number(dailyFromVisits[name]) || 0;
+      const profDaily = Number(byName[name].daily_duration_sec) || 0;
+      if (visitDaily > profDaily) {
+        byName[name].daily_duration_sec = visitDaily;
+        byName[name].daily_day = todayB;
+      }
+      // last_seen: take the most recent of profile vs visits
+      const lsV = lastSeenFromVisits[name] || '';
+      const lsP = byName[name].last_seen || '';
+      if (lsV && (!lsP || String(lsV) > String(lsP))) byName[name].last_seen = lsV;
+    }
+    playerList.sort((a, b) => String(b.last_seen).localeCompare(String(a.last_seen)));
+
     // unique visitors from player profiles (more reliable than global counter races)
     const unique = playerList.length;
     const totalVisits = playerList.reduce((s, p) => s + (Number(p.visits) || 0), 0);
