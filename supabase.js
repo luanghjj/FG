@@ -9,6 +9,8 @@
   const PLAYER_PREFIX = 'learn:player:';
   const GLOBAL_STATS_KEY = 'learn:stats:global';
   const VISIT_PREFIX = 'learn:visit:';
+  const ADMIN_GOAL_KEY = 'learn:admin:goal';
+  const DEFAULT_DAILY_GOAL_SEC = 3600;
   const SESSION_VISIT_KEY = 'learn_active_visit';
   // Simple admin password for school dashboard (change if needed)
   const ADMIN_PASS = 'H2FO3T';
@@ -335,6 +337,8 @@
         last_seen: now,
         visits: 0,
         quiz_attempts: 0,
+        daily_duration_sec: 0,
+        last_day: '',
         quizzes: {},
         app: 'on-thi',
       };
@@ -381,6 +385,13 @@
     const b = Date.parse(toIso || '');
     if (!a || !b || b < a) return 0;
     return Math.max(0, Math.round((b - a) / 1000));
+  }
+
+  /** Local YYYY-MM-DD in Europe/Berlin (DST-safe). Input: Date or ISO string. */
+  function berlinDay(d) {
+    const x = d instanceof Date ? d : (d ? new Date(d) : new Date());
+    if (isNaN(x.getTime())) return '';
+    return new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Berlin' }).format(x);
   }
 
   function formatDuration(sec) {
@@ -431,6 +442,23 @@
         // first heartbeat of a new session – add delta only if we had already counted something for this key (shouldn't)
         profile.total_duration_sec = Math.max(0, prevTotal) + Math.max(0, sec - 0);
         // if previous session never closed cleanly, prevLast still belongs to old key and must stay in total
+      }
+      // Daily Lernzeit (Berlin day) — reset when the day changes.
+      // Use the effective end moment (pause-capped) so a visit crossing local
+      // midnight counts its tail into the new day. Monotonic per visit key
+      // like total_duration_sec above.
+      const todayB = berlinDay(effectiveEnd);
+      const prevDaily = Number(profile.daily_duration_sec) || 0;
+      if (profile.last_day !== todayB) {
+        // new Berlin day (or first ever, or stale field) → start fresh
+        profile.daily_duration_sec = (lastVisitKey && lastVisitKey === visit.key)
+          ? sec
+          : Math.max(0, sec);
+        profile.last_day = todayB;
+      } else if (lastVisitKey && lastVisitKey === visit.key) {
+        profile.daily_duration_sec = Math.max(0, prevDaily - prevLast) + sec;
+      } else {
+        profile.daily_duration_sec = prevDaily + Math.max(0, sec);
       }
       profile.last_session_sec = sec;
       profile.last_visit_key = visit.key;
@@ -609,6 +637,8 @@
       quiz_attempts: 0,
       total_duration_sec: 0,
       last_session_sec: 0,
+      daily_duration_sec: 0,
+      last_day: '',
       quizzes: {},
       app: 'on-thi',
     };
@@ -677,11 +707,12 @@
   }
 
   async function getAdminStats() {
-    const [players, quizzes, visits, globalRow] = await Promise.all([
+    const [players, quizzes, visits, globalRow, goalRow] = await Promise.all([
       listConfig(PLAYER_PREFIX + '%', 500),
       listConfig(PREFIX + '%', 500),
       listConfig(VISIT_PREFIX + '%', 500),
       getConfig(GLOBAL_STATS_KEY),
+      getConfig(ADMIN_GOAL_KEY),
     ]);
 
     const playerList = (players || [])
@@ -693,6 +724,8 @@
         quiz_attempts: Number(v.quiz_attempts) || 0,
         total_duration_sec: Number(v.total_duration_sec) || 0,
         last_session_sec: Number(v.last_session_sec) || 0,
+        daily_duration_sec: Number(v.daily_duration_sec) || 0,
+        daily_day: v.last_day || '',
         created_at: v.created_at || '',
         last_seen: v.last_seen || '',
         quizzes: v.quizzes || {},
@@ -759,12 +792,34 @@
       total_quiz_attempts: totalQuizAttempts,
       total_duration_sec: totalDurationSec,
       avg_duration_sec: avgDurationSec,
+      daily_goal_sec: (goalRow && goalRow.value && Number(goalRow.value.goal_sec)) || DEFAULT_DAILY_GOAL_SEC,
       global: (globalRow && globalRow.value) || null,
       players: playerList,
       quizzes: quizList,
       visits: visitList.slice(0, 100),
       quizAgg: quizAgg,
     };
+  }
+
+  async function getAdminGoal() {
+    try {
+      const row = await getConfig(ADMIN_GOAL_KEY);
+      const v = row && row.value;
+      const g = v && Number(v.goal_sec);
+      return g > 0 ? g : DEFAULT_DAILY_GOAL_SEC;
+    } catch (_) {
+      return DEFAULT_DAILY_GOAL_SEC;
+    }
+  }
+
+  async function setAdminGoal(goalSec, by) {
+    const g = Math.max(60, Math.round(Number(goalSec) || DEFAULT_DAILY_GOAL_SEC));
+    await upsertConfig(ADMIN_GOAL_KEY, {
+      goal_sec: g,
+      updated_at: new Date().toISOString(),
+      by: by || 'admin',
+    });
+    return g;
   }
 
   function checkAdminPassword(pass) {
@@ -1248,6 +1303,8 @@
     getPlayerProfile,
     loginOrRegister,
     getAdminStats,
+    getAdminGoal,
+    setAdminGoal,
     checkAdminPassword,
     ping,
     heartbeat,
@@ -1255,6 +1312,7 @@
     formatDuration,
     getActiveVisitDurationSec,
     getActiveVisitStartedAt,
+    berlinDay,
     bindVisitLifecycle,
     resumeVisitTracking,
     // challenge
