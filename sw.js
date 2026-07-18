@@ -1,5 +1,5 @@
 /* Service Worker – Lern-App H2FO3T (offline shell + static assets) */
-const CACHE = 'h2fo3t-v37';
+const CACHE = 'h2fo3t-v38';
 const PRECACHE = [
   './',
   './index.html',
@@ -27,6 +27,12 @@ const PRECACHE = [
   './ka2.html',
   './kiemtra_mau.html',
   './loiGiai_mau.html',
+  './bfk1-ka3.html',
+  './bfk1-ka3-loesung.html',
+  './bfk1-ka4.html',
+  './bfk1-ka4-loesung.html',
+  './bfk1-ka5.html',
+  './bfk1-ka5-loesung.html',
 ];
 
 self.addEventListener('install', (event) => {
