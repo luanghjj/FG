@@ -740,7 +740,7 @@
     const [players, quizzes, visits, globalRow, goalRow] = await Promise.all([
       listConfig(PLAYER_PREFIX + '%', 500),
       listConfig(PREFIX + '%', 500),
-      listConfig(VISIT_PREFIX + '%', 500),
+      listConfig(VISIT_PREFIX + '%', 1000),
       getConfig(GLOBAL_STATS_KEY),
       getConfig(ADMIN_GOAL_KEY),
     ]);
@@ -789,17 +789,16 @@
       .filter((v) => v && v.player)
       .sort((a, b) => String(b.at || '').localeCompare(String(a.at || '')));
 
-    // Derive per-player daily Lernzeit directly from visit rows (Berlin day) so
-    // the admin "unter Ziel" view stays correct even when a profile is missing
-    // the daily_duration_sec field (e.g. created before the field existed, or a
-    // visit row exists without a matching profile). Sum the duration of every
-    // visit whose Berlin day equals today.
+    // Derive per-player daily Lernzeit AUTHORITATIVELY from visit rows (Berlin
+    // day). The profile.daily_duration_sec field can drift (race conditions,
+    // cross-midnight visits, profiles created before the field) — the visit log
+    // is the reliable source for "how long did this player learn today". Sum the
+    // duration of every visit whose Berlin day equals today.
     const todayB = berlinDay();
     const dailyFromVisits = {};
     const lastSeenFromVisits = {};
     for (const v of visitList) {
       if (!v.player) continue;
-      // visit day stored as UTC YYYY-MM-DD (started_at slice) — recompute in Berlin
       const vDay = berlinDay(v.started_at || v.at || v.last_seen);
       if (vDay === todayB) {
         dailyFromVisits[v.player] = (Number(dailyFromVisits[v.player]) || 0) + (Number(v.duration_sec) || 0);
@@ -810,11 +809,13 @@
       }
     }
 
-    // Merge visit-derived daily + any "phantom" players that have visits but no
-    // profile row into playerList so nobody is missed in the admin views.
+    // Overwrite each player's daily with the visit-derived value so the admin
+    // view is always correct, and add "phantom" players that have visits but no
+    // profile row.
     const byName = {};
     for (const p of playerList) byName[p.player] = p;
-    for (const name of Object.keys(dailyFromVisits)) {
+    const allNames = new Set([...Object.keys(byName), ...Object.keys(dailyFromVisits)]);
+    for (const name of allNames) {
       if (!byName[name]) {
         byName[name] = {
           player: name,
@@ -830,14 +831,18 @@
         };
         playerList.push(byName[name]);
       }
-      // Prefer the larger of profile-recorded daily vs visit-derived daily, so an
-      // open visit (still counting) is not underreported.
+      // Authoritative daily from visits (today, Berlin). Falls back to the
+      // profile value only if the player has NO visits today but the profile
+      // claims today's day (keeps a just-started, not-yet-heartbeated visit
+      // visible). We deliberately do NOT take max() — a stale/inflated profile
+      // daily must not override the real visit sum.
       const visitDaily = Number(dailyFromVisits[name]) || 0;
       const profDaily = Number(byName[name].daily_duration_sec) || 0;
-      if (visitDaily > profDaily) {
-        byName[name].daily_duration_sec = visitDaily;
-        byName[name].daily_day = todayB;
-      }
+      const profDayIsToday = byName[name].daily_day === todayB;
+      byName[name].daily_duration_sec = visitDaily > 0
+        ? visitDaily
+        : (profDayIsToday ? profDaily : 0);
+      if (visitDaily > 0) byName[name].daily_day = todayB;
       // last_seen: take the most recent of profile vs visits
       const lsV = lastSeenFromVisits[name] || '';
       const lsP = byName[name].last_seen || '';
