@@ -1239,6 +1239,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
   </div>
   <div class="theme-quiz-bar">
     <button type="button" class="btn" onclick="go('#/bfk/1/quiz')">📝 Quiz üben →</button>
+    <button type="button" class="btn ghost" onclick="go('#/bfk/1/pruefungen')">🗂️ Prüfungen →</button>
     <button type="button" class="btn ghost" onclick="go('#/exam/bfk1')">📅 KA-Themen</button>
   </div>
   <div class="lf-block" style="margin-top:18px">
@@ -1260,6 +1261,24 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
     <p>Themen wählen · Fragen werden gemischt</p>
   </div>
   <div class="card"><div id="bfk1QuizArea"></div></div>
+</section>
+
+<!-- ===== BFK-1 PRÜFUNGEN (3 Klassenarbeiten im Stil der Lehrkraft) ===== -->
+<section class="view bfk-scope" id="v-bfk1-pruefungen">
+  <div class="back" onclick="go('#/bfk/1')">← BfK-1</div>
+  <div class="section-head">
+    <h2>🗂️ BfK-1 · Prüfungen</h2>
+    <p>3 Klassenarbeiten (LF6 + LF9) im Stil von Fr. Schuster · mit Lösungsbogen</p>
+  </div>
+  <div class="hint" style="margin-bottom:14px">Jede Prüfung deckt Lernfeld 6 (Speisen/Menüs) und Lernfeld 9 (Zahlung/Recht) ab. Anlagen sind inline in der Prüfung enthalten. Lösungsbogen DE + VI zur Selbstkontrolle.</div>
+  <div class="grid">
+    <a class="tile" href="bfk1-ka3.html"><div class="ic">📄</div><h3>KA Nr. 3</h3><p>Froher Seeblick · Gästebewertungen, Obst, Systemgastronomie, Beleg.</p><div class="meta">35 P. · Öffnen →</div></a>
+    <a class="tile" href="bfk1-ka3-loesung.html"><div class="ic">✅</div><h3>Lösung KA 3</h3><p>Lösungsbogen DE + VI zur Selbstkontrolle.</p><div class="meta">Öffnen →</div></a>
+    <a class="tile" href="bfk1-ka4.html"><div class="ic">📄</div><h3>KA Nr. 4</h3><p>Sonnenblick · vegane Woche, Hülsenfrüchte, Bewirtungsvertrag, USt.</p><div class="meta">35 P. · Öffnen →</div></a>
+    <a class="tile" href="bfk1-ka4-loesung.html"><div class="ic">✅</div><h3>Lösung KA 4</h3><p>Lösungsbogen DE + VI zur Selbstkontrolle.</p><div class="meta">Öffnen →</div></a>
+    <a class="tile" href="bfk1-ka5.html"><div class="ic">📄</div><h3>KA Nr. 5</h3><p>Stadtkrone · Getreide/Gluten, Menüregeln, Zechprellerei, USt vor Ort.</p><div class="meta">35 P. · Öffnen →</div></a>
+    <a class="tile" href="bfk1-ka5-loesung.html"><div class="ic">✅</div><h3>Lösung KA 5</h3><p>Lösungsbogen DE + VI zur Selbstkontrolle.</p><div class="meta">Öffnen →</div></a>
+  </div>
 </section>
 
 <!-- ===== BFK-1 THEME DETAIL ===== -->
@@ -1574,6 +1593,7 @@ const BFK_LEVELS = [
       {icon:"⭐", name:"LF6 · Gäste & Speisen", desc:"Bewertungen, Ernährung, Speisen, Obst, Hülsenfrüchte, Getreide, Menüs.", route:"#/bfk/1"},
       {icon:"💳", name:"LF9 · Zahlung & Recht", desc:"Betriebsarten, USt, Trinkgeld, Beleg · Fälle.", route:"#/bfk/1"},
       {icon:"📝", name:"Quiz BfK-1", desc:"Themen wählen · Fragen mischen · üben.", route:"#/bfk/1/quiz"},
+      {icon:"🗂️", name:"Prüfungen BfK-1", desc:"3 Klassenarbeiten (LF6+LF9) + Lösungen.", route:"#/bfk/1/pruefungen"},
       {icon:"📅", name:"KA BfK-1", desc:"20.07 · Fr. Schuster", route:"#/exam/bfk1"},
     ],
   },
@@ -3120,6 +3140,7 @@ const ROUTES = {
   "#/bfk":         {view:"v-bfk",    crumbs:[["BfK","#/bfk"]]},
   "#/bfk/1":       {view:"v-bfk1",   crumbs:[["BfK","#/bfk"],["BfK-1","#/bfk/1"]], bfk1:true},
   "#/bfk/1/quiz":  {view:"v-bfk1-quiz", crumbs:[["BfK","#/bfk"],["BfK-1","#/bfk/1"],["Quiz","#/bfk/1/quiz"]], bfk1quiz:true},
+  "#/bfk/1/pruefungen":{view:"v-bfk1-pruefungen",crumbs:[["BfK","#/bfk"],["BfK-1","#/bfk/1"],["Prüfungen","#/bfk/1/pruefungen"]]},
   "#/bfk/2":       {view:"v-bfk-level", crumbs:[["BfK","#/bfk"],["BfK-2","#/bfk/2"]], level:"2"},
   "#/bfk/5":       {view:"v-placeholder", crumbs:[["BfK","#/bfk"],["BfK-5","#/bfk/5"]], placeholder:true},
   "#/bfk/6":       {view:"v-placeholder", crumbs:[["BfK","#/bfk"],["BfK-6","#/bfk/6"]], placeholder:true},
