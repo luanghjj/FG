@@ -134,11 +134,11 @@ window.BFK1_THEMES = {
           <h3 class="sub">Einteilung des Obstes</h3>
           <table>
             <tr><th>Gruppe</th><th>Beispiele</th></tr>
-            <tr><td><span class="term" data-de="Südfrüchte" data-vi="trái cây nhiệt đới / miền nam">Südfrüchte</span></td><td>Banane, Zitrone, Orange, Ananas…</td></tr>
-            <tr><td><span class="term" data-de="Schalenobst" data-vi="quả hạch / hạt có vỏ">Schalenobst</span></td><td>Nüsse (Walnuss, Haselnuss…)</td></tr>
-            <tr><td><span class="term" data-de="Beerenobst" data-vi="quả mọng">Beerenobst</span></td><td>Erdbeere, Himbeere, Johannisbeere…</td></tr>
-            <tr><td><span class="term" data-de="Kernobst" data-vi="quả có hạt (táo, lê)">Kernobst</span></td><td>Apfel, Birne, Quitte</td></tr>
-            <tr><td><span class="term" data-de="Steinobst" data-vi="quả có hột cứng">Steinobst</span></td><td>Kirsche, Pflaume, Pfirsich, Aprikose</td></tr>
+            <tr><td><span class="term" data-de="Südfrüchte" data-vi="trái cây nhiệt đới / miền nam">Südfrüchte</span></td><td><span class="term" data-de="Orange" data-vi="cam">Orange</span>, <span class="term" data-de="Zitrone" data-vi="chanh">Zitrone</span>, <span class="term" data-de="Banane" data-vi="chuối">Banane</span>, <span class="term" data-de="Ananas" data-vi="dứa/thơm">Ananas</span>, <span class="term" data-de="Grapefruit" data-vi="bưởi tây">Grapefruit</span>, <span class="term" data-de="Dattel" data-vi="chà là">Dattel</span></td></tr>
+            <tr><td><span class="term" data-de="Schalenobst" data-vi="quả hạch / quả có vỏ cứng">Schalenobst</span></td><td><span class="term" data-de="Mandel" data-vi="hạnh nhân">Mandel</span>, <span class="term" data-de="Walnuss" data-vi="óc chó">Walnuss</span>, <span class="term" data-de="Erdnuss" data-vi="lạc/đậu phộng">Erdnuss</span>, <span class="term" data-de="Pistazie" data-vi="hạt dẻ cười">Pistazie</span></td></tr>
+            <tr><td><span class="term" data-de="Beerenobst" data-vi="quả mọng">Beerenobst</span></td><td><span class="term" data-de="Erdbeere" data-vi="dâu tây">Erdbeere</span>, <span class="term" data-de="Himbeere" data-vi="mâm xôi">Himbeere</span>, <span class="term" data-de="Heidelbeere" data-vi="việt quất">Heidelbeere</span>, <span class="term" data-de="Weintraube" data-vi="nho">Weintraube</span></td></tr>
+            <tr><td><span class="term" data-de="Kernobst" data-vi="quả có lõi hạt (táo, lê)">Kernobst</span></td><td><span class="term" data-de="Apfel" data-vi="táo">Apfel</span>, <span class="term" data-de="Birne" data-vi="lê">Birne</span>, <span class="term" data-de="Quitte" data-vi="mộc qua">Quitte</span></td></tr>
+            <tr><td><span class="term" data-de="Steinobst" data-vi="quả hạch cứng / có hột">Steinobst</span></td><td><span class="term" data-de="Kirsche" data-vi="anh đào/cherries">Kirsche</span>, <span class="term" data-de="Pflaume" data-vi="mận">Pflaume</span>, <span class="term" data-de="Aprikose" data-vi="mơ">Aprikose</span>, <span class="term" data-de="Pfirsich" data-vi="đào">Pfirsich</span></td></tr>
           </table>
 
           <h3 class="sub">Nährstoffe</h3>
