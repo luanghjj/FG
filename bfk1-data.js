@@ -403,15 +403,18 @@ window.BFK1_THEMES = {
           Vergessener Geldbeutel ≠ Betrug (kein Vorsatz).</div>
 
           <h3 class="sub"><span class="term" data-de="Umsatzsteuer" data-vi="thuế GTGT / VAT">Umsatzsteuer</span> (MwSt) — merken für KA</h3>
+          <div class="note">⚠️ <b>Neu ab 01.01.2026</b> (Steueränderungsgesetz 2025, Bundesrat 19.12.2025): <b>alle Speisen 7 %</b> — egal ob vor Ort oder Außerhaus. Unterschieden wird jetzt nach <b>Speise (7 %) vs. Getränk (19 %)</b>, nicht mehr nach dem Ort.</div>
           <table>
             <tr><th>Leistung</th><th>Satz</th></tr>
-            <tr><td>Speisen <b>vor Ort</b> (Verzehr im Restaurant)</td><td><b>19 %</b></td></tr>
-            <tr><td>Speisen <span class="term" data-de="Außerhaus" data-vi="mang về / giao đi">Außerhaus</span> (Mitnehmen/Lieferung)</td><td><b>7 %</b></td></tr>
+            <tr><td>Speisen <b>vor Ort</b> (Verzehr an Ort und Stelle)</td><td><b>7 %</b></td></tr>
+            <tr><td>Speisen <span class="term" data-de="Außerhaus" data-vi="mang về / giao đi">Außerhaus</span> (Imbiss, Lieferung, Abholung)</td><td><b>7 %</b></td></tr>
             <tr><td>Getränke (Regelfall)</td><td><b>19 %</b></td></tr>
-            <tr><td>Milchgetränke mit mind. 75 % Milch (o. Alkohol) / best. Ausnahmen</td><td>oft <b>7 %</b></td></tr>
+            <tr><td>Milch/Milchmischgetränke ≥ 75 % Milch (o. Alkohol), Leitungswasser (Außerhaus)</td><td><b>7 %</b></td></tr>
+            <tr><td><span class="term" data-de="Übernachtung" data-vi="lưu trú qua đêm">Übernachtung</span></td><td><b>7 %</b></td></tr>
           </table>
           <div class="formula">Netto = Brutto ÷ (1 + Satz) · USt = Brutto − Netto<br>
-          Beispiel 19 %: Brutto 119 € → Netto 100 € · USt 19 €</div>
+          Beispiel Speise 7 %: Brutto 10,70 € → Netto 10,00 € · USt 0,70 €<br>
+          Beispiel Getränk 19 %: Brutto 11,90 € → Netto 10,00 € · USt 1,90 €</div>
 
           <h3 class="sub">Trinkgeld &amp; Beleg</h3>
           <ul>
