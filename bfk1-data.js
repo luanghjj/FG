@@ -327,42 +327,56 @@ window.BFK1_THEMES = {
           <h2>💳 Thema 6 · Betriebsarten und Zahlungsabwicklung</h2>
           <div class="hint">Fallbetrieb <b>PALMERO</b> · <span class="term" data-de="Franchise" data-vi="nhượng quyền">Franchise</span></div>
 
-          <h3 class="sub">Beherbergungsbetriebe</h3>
+          <p>Betriebe teilen sich nach <b>Dienstleistung, Bedienform und Zielgruppe</b> in <b>5 Gruppen</b>.</p>
+
+          <h3 class="sub">A · <span class="term" data-de="Beherbergungsbetriebe" data-vi="cơ sở lưu trú">Beherbergungsbetriebe</span></h3>
+          <p>Übernachtung mit Verpflegung. Einteilung nach Gästegruppe/Zweck:</p>
           <ul>
-            <li><span class="term" data-de="Stadthotel" data-vi="khách sạn nội đô">Stadthotel</span>, <span class="term" data-de="Kurhotel" data-vi="khách sạn nghỉ dưỡng chữa bệnh">Kurhotel</span>, Ferienhotel</li>
-            <li><span class="term" data-de="Hotel garni" data-vi="khách sạn chỉ phục vụ sáng">Hotel garni</span> — Beherbergung + Frühstück (+ kleine Speisen/Getränke)</li>
-            <li><span class="term" data-de="Motel" data-vi="motel (cho khách đi ô tô)">Motel</span> — Auto-Tourismus (Lage, Bauart, Zufahrt)</li>
-            <li>Pension / Hotel-Pension — eingeschränkte Dienstleistungen</li>
+            <li><span class="term" data-de="Stadthotel" data-vi="khách sạn nội đô">Stadthotel</span> — Geschäftsreisende, Tagungen, Kultur/Events</li>
+            <li><span class="term" data-de="Kurhotel" data-vi="khách sạn nghỉ dưỡng/trị liệu">Kurhotel</span> — im Kurort, medizinische Betreuung, Diätküche</li>
+            <li><span class="term" data-de="Ferienhotel" data-vi="khách sạn kỳ nghỉ">Ferienhotel</span> — Familien-, Sporthotel, <span class="term" data-de="Aparthotel" data-vi="khách sạn căn hộ">Aparthotel</span></li>
+            <li><span class="term" data-de="Hotel garni" data-vi="khách sạn chỉ phục vụ sáng">Hotel garni</span> — nur Zimmer, Frühstück, Getränke, kleine Speisen</li>
+            <li><span class="term" data-de="Hotel-Pension" data-vi="nhà nghỉ">Hotel-Pension</span> / Fremdenheim — eingeschränkter Service, günstig, oft Langzeitgäste</li>
+            <li><span class="term" data-de="Motel" data-vi="motel (cho khách đi ô tô)">Motel</span> — an Verkehrswegen, für Autoreisende (Lage, Zufahrt)</li>
           </ul>
 
-          <h3 class="sub">Gastronomiebetriebe</h3>
+          <h3 class="sub">B · <span class="term" data-de="Gastronomiebetriebe" data-vi="cơ sở ăn uống truyền thống">Gastronomiebetriebe</span></h3>
           <ul>
-            <li>Klassische Restaurants (Service am Tisch)</li>
-            <li>Kneipen/Bars (Getränkefokus)</li>
-            <li>Cafés/Bistros</li>
-            <li>Steakhäuser / internationale Küche</li>
+            <li>Restaurants mit <b>deutscher Küche</b> — Gäste mittleres bis höheres Alter</li>
+            <li>Restaurants mit <b>internationaler Küche</b> / Steakhäuser — ca. 25–50 Jahre</li>
+            <li><span class="term" data-de="Selbstbedienungsrestaurant" data-vi="nhà hàng tự phục vụ">Selbstbedienungsrestaurants</span> — gehoben, für eilige, gesundheitsbewusste Gäste</li>
+            <li><span class="term" data-de="Kneipe" data-vi="quán rượu">Kneipen</span> / Bars — Getränke am Tresen, Musik, Atmosphäre</li>
+            <li>Cafés / Bistros — alle Altersgruppen, einfache Karte, moderate Preise</li>
           </ul>
 
-          <h3 class="sub"><span class="term" data-de="Systemgastronomie" data-vi="nhà hàng hệ thống">Systemgastronomie</span></h3>
-          <p>Stark <b>standardisierte</b> Abläufe und Angebote — überall vergleichbar.</p>
+          <h3 class="sub">C · <span class="term" data-de="Systemgastronomie" data-vi="chuỗi nhà hàng hệ thống">Systemgastronomie</span></h3>
+          <p>Stark <b>standardisierte</b> Abläufe und Produkte — überall vergleichbar.</p>
           <table>
             <tr><th>Segment</th><th>Merkmal / Beispiel</th></tr>
-            <tr><td><span class="term" data-de="Quickservice" data-vi="phục vụ nhanh">Quickservice</span></td><td>sehr schnell (oft &lt; 45 Min.), straffes Sortiment · McDonald’s, Burger King, Nordsee</td></tr>
-            <tr><td><span class="term" data-de="Fullservice" data-vi="phục vụ đầy đủ tại bàn">Fullservice</span></td><td>Service am Tisch · z. B. Block House</td></tr>
-            <tr><td>Verkehrs-/Handelsgastronomie</td><td>Bahnhof, Raststätte, IKEA…</td></tr>
+            <tr><td><span class="term" data-de="Quickservice" data-vi="thức ăn nhanh">Quickservice</span></td><td>sehr schnell (&lt; 45 Min.), <span class="term" data-de="Counterservice" data-vi="đặt tại quầy">Counterservice</span> · McDonald’s, Burger King</td></tr>
+            <tr><td>Verkehrs-/Messegastronomie</td><td>Bahnhof, Flughafen, Raststätte, Zug, Flugzeug</td></tr>
+            <tr><td><span class="term" data-de="Handelsgastronomie" data-vi="ăn uống trong TTTM">Handelsgastronomie</span></td><td>Gastro im Einkaufszentrum · Dinea, IKEA</td></tr>
+            <tr><td><span class="term" data-de="Fullservicegastronomie" data-vi="phục vụ đầy đủ tại bàn">Fullservice</span></td><td>Service am Tisch, standardisiert · Block House</td></tr>
           </table>
 
-          <h3 class="sub"><span class="term" data-de="Gemeinschaftsverpflegung" data-vi="suất ăn tập thể">Gemeinschaftsverpflegung</span></h3>
-          <p>Kantinen, Schulen, Krankenhäuser, Seniorenheime, Mensen — viele Personen, regelmäßig, wirtschaftlich.</p>
+          <h3 class="sub">D · <span class="term" data-de="Veranstaltungs- und Cateringbetriebe" data-vi="dịch vụ sự kiện & catering">Veranstaltungs- &amp; Cateringbetriebe</span></h3>
+          <ul>
+            <li><span class="term" data-de="Event-Catering" data-vi="tiệc sự kiện">Event-Catering</span> — Feiern, Weihnachts-/Firmenfeiern</li>
+            <li><span class="term" data-de="Sport-Catering" data-vi="catering thể thao">Sport-Catering</span> — Stadien / Arenen</li>
+          </ul>
 
-          <h3 class="sub">Zahlungsmöglichkeiten</h3>
+          <h3 class="sub">E · <span class="term" data-de="Gemeinschaftsverpflegung" data-vi="suất ăn tập thể">Gemeinschaftsverpflegung</span></h3>
+          <p>Kantinen, Schulen, Krankenhäuser, Seniorenheime, Mensen — viele Personen, regelmäßig, nährstoffgerecht &amp; wirtschaftlich.</p>
+
+          <h3 class="sub">Zahlungsmöglichkeiten (4 Arten)</h3>
           <table>
             <tr><th>Art</th><th>Vorteile</th><th>Nachteile</th></tr>
-            <tr><td><span class="term" data-de="Barzahlung" data-vi="tiền mặt">Barzahlung</span></td><td>keine Gebühren, anonym, sofort</td><td>Diebstahlrisiko, Zählfehler, Wechselgeld</td></tr>
-            <tr><td><span class="term" data-de="Debitkarte" data-vi="thẻ ghi nợ">Debit</span> / <span class="term" data-de="Kreditkarte" data-vi="thẻ tín dụng">Kreditkarte</span></td><td>schnell, hygienisch, sicher</td><td>Terminalgebühren, Strom/Internet</td></tr>
-            <tr><td><span class="term" data-de="Mobile Payment" data-vi="thanh toán di động">Mobile Payment</span></td><td>sehr schnell, kontaktlos</td><td>Smartphone/Akku, nicht alle Gäste</td></tr>
+            <tr><td><span class="term" data-de="Barzahlung" data-vi="tiền mặt">Barzahlung</span></td><td>einfach, anonym, keine Gebühren, Geld sofort, gute Ausgabenkontrolle</td><td>persönlicher Kontakt, Diebstahl-/Verlustrisiko, Wechselgeld/Zählzeit</td></tr>
+            <tr><td><span class="term" data-de="Zahlungskarten" data-vi="thẻ thanh toán">Zahlungskarten</span>: <span class="term" data-de="Debitkarte" data-vi="thẻ ghi nợ (trả ngay)">Debit</span>, <span class="term" data-de="Kreditkarte" data-vi="thẻ tín dụng (trả sau)">Kredit</span>, <span class="term" data-de="Prepaid-Karte" data-vi="thẻ trả trước">Prepaid</span></td><td>schnell, hygienisch, sicher (PIN/kontaktlos)</td><td>Terminal + Strom nötig, Gebühren, techn. Störungen, nicht jeder hat Karte</td></tr>
+            <tr><td><span class="term" data-de="Überweisung" data-vi="chuyển khoản">Zahlung per Überweisung</span></td><td>sicher, bargeldlos, gute Belegablage, für große Beträge (z. B. Catering)</td><td>Geldeingang später, Risiko dass Gast nicht zahlt</td></tr>
+            <tr><td><span class="term" data-de="Mobile Payment" data-vi="thanh toán di động">Mobile Payment</span> (M-Payment)</td><td>sehr schnell, kontaktlos, hygienisch · Smartphone/Smartwatch</td><td>Smartphone + Akku nötig, nicht alle Gäste, techn. Störungen</td></tr>
           </table>
-          <div class="note">💡 <b>Schnellmerk:</b> Systemgastronomie = standardisiert &amp; überall gleich.<br>McDonald’s = Quickservice.</div>
+          <div class="note">💡 <b>5 Betriebsarten:</b> Beherbergung · Gastronomie · System · Catering · Gemeinschaftsverpflegung.<br>Systemgastronomie = standardisiert; McDonald’s = Quickservice.</div>
         `
       },
       {
@@ -374,32 +388,49 @@ window.BFK1_THEMES = {
           <h2>⚖️ Thema 7 · Rechtliche Grundlagen – Bewirtungsvertrag</h2>
 
           <h3 class="sub">Vertragsart</h3>
-          <p>Der <span class="term" data-de="Bewirtungsvertrag" data-vi="hợp đồng phục vụ">Bewirtungsvertrag</span> ist ein
+          <p>Der <span class="term" data-de="Bewirtungsvertrag" data-vi="hợp đồng phục vụ ăn uống">Bewirtungsvertrag</span> ist im BGB nicht eigens geregelt, sondern ein
           <span class="term" data-de="gemischter Vertrag" data-vi="hợp đồng hỗn hợp">gemischter Vertrag</span>
-          (Elemente aus Kauf-, Werk-, Dienst- und Mietvertrag).</p>
+          (Elemente aus <span class="term" data-de="Kaufvertrag" data-vi="hợp đồng mua bán">Kauf-</span>, <span class="term" data-de="Werkvertrag" data-vi="hợp đồng gia công">Werk-</span>, <span class="term" data-de="Dienstvertrag" data-vi="hợp đồng dịch vụ">Dienst-</span> und <span class="term" data-de="Mietvertrag" data-vi="hợp đồng thuê">Mietvertrag</span>). Je nach Teil gelten andere Rechtsnormen.</p>
+          <p>Die <b>größte Ähnlichkeit</b> besteht mit dem <b>Kaufvertrag</b> (Ware gegen Geld).</p>
+
+          <h3 class="sub">Vertragsabschluss</h3>
           <div class="formula">Entsteht durch <b>Bestellung des Gastes</b> + <b>Bestellungsannahme</b> durch den Wirt</div>
+          <p>Es genügt, dass sich Käufer und Verkäufer über <b>Art, Menge und Preis</b> der Ware einig sind.</p>
           <ul>
-            <li>Speisekarte / Außenverzeichnis = in der Regel <b>kein</b> verbindliches Angebot</li>
-            <li>Wirt: Speisen/Getränke in einwandfreier Qualität in angemessener Zeit</li>
-            <li>Gast: annehmen und bezahlen</li>
+            <li>Speisekarte / Außenverzeichnis = in der Regel <b>kein verbindliches Angebot</b> — bei Ablehnung (z. B. ausverkauft) hat der Gast <b>keinen Anspruch</b> auf das Gericht</li>
+            <li>Wirt: Speisen/Getränke in <b>einwandfreier Qualität</b> in <b>angemessener Zeit</b></li>
+            <li>Gast: ordnungsgemäß Serviertes <b>annehmen und bezahlen</b> (bei einwandfreier Lieferung Zahlungspflicht)</li>
+            <li>Gast darf <b>keine eigenen Speisen</b> mitbringen/verzehren (außer mit Erlaubnis)</li>
+          </ul>
+
+          <h3 class="sub">Tisch- &amp; Essensbestellungen</h3>
+          <ul>
+            <li><b>Nur Tisch reserviert</b>: meist <span class="term" data-de="vorvertraglicher Bereich" data-vi="giai đoạn tiền hợp đồng">vorvertraglicher Bereich</span> — Vertrag erst beim Bestellen am Tisch</li>
+            <li><b>Feste Speisen zu fester Zeit bestellt &amp; angenommen</b>: bei <span class="term" data-de="Nichtinanspruchnahme" data-vi="không đến / không sử dụng">Nichtinanspruchnahme</span> darf der Wirt den <b>vollen Preis</b> verlangen, <b>abzüglich ersparter Aufwendungen</b> (z. B. anderweitig verwertbare Zutaten)</li>
           </ul>
 
           <h3 class="sub">Störungen durch den Gast</h3>
           <table>
             <tr><th>Fall</th><th>Regel</th></tr>
-            <tr><td><span class="term" data-de="Zechprellerei" data-vi="ăn quỵt">Zechprellerei</span> / Betrug</td><td>strafrechtlich relevant nur bei <span class="term" data-de="Vorsatz" data-vi="cố ý">Vorsatz</span> — Gast wollte von Anfang an nicht zahlen</td></tr>
+            <tr><td><span class="term" data-de="Zechprellerei" data-vi="ăn quỵt">Zechprellerei</span> / <span class="term" data-de="Betrug" data-vi="lừa đảo">Betrug</span></td><td>an sich <b>keine</b> Straftat — strafbar nur bei <span class="term" data-de="Vorsatz" data-vi="cố ý">Vorsatz</span> (wollte von Anfang an nicht zahlen)</td></tr>
             <tr><td>Vergessener Geldbeutel</td><td><b>kein Betrug</b> (kein Vorsatz) — zivil klären, Anschrift hinterlassen</td></tr>
-            <tr><td><span class="term" data-de="Zahlungsverzug" data-vi="chậm thanh toán">Zahlungsverzug</span></td><td>Gastronom: Polizei rufen (im Rahmen des Zulässigen), klagen, Schadensersatz fordern</td></tr>
+            <tr><td>Rechte des Wirtes</td><td>Gast <b>festhalten</b> bis Polizei kommt, <span class="term" data-de="verklagen" data-vi="khởi kiện">verklagen</span>, Beitreibungskosten (z. B. Anwalt) fordern</td></tr>
           </table>
 
           <h3 class="sub">Störungen durch den Gastronomen</h3>
+          <p><b>Lieferverzug:</b></p>
           <ul>
-            <li><span class="term" data-de="Schlechtleistung" data-vi="hàng/dịch vụ kém">Schlechtleistung</span> (falsches/mangelhaftes Gericht, z. B. versalzene Suppe, falsche Garstufe):
-              primär <span class="term" data-de="Nacherfüllung" data-vi="giao lại / làm lại">Nacherfüllung</span>/Nachbesserung.
-              Sonst Rücktritt oder <span class="term" data-de="Preisminderung" data-vi="giảm giá">Preisminderung</span></li>
-            <li><span class="term" data-de="Lieferverzug" data-vi="chậm phục vụ">Lieferverzug</span> (unangemessen lange Wartezeit): Rücktritt oder Preisminderung möglich</li>
+            <li><span class="term" data-de="Nichtlieferung" data-vi="không giao món">Nichtlieferung</span>: Gast kann <span class="term" data-de="Schadensersatz" data-vi="bồi thường thiệt hại">Schadensersatz</span> verlangen</li>
+            <li><span class="term" data-de="lange Wartezeit" data-vi="chờ quá lâu">Lange Wartezeit</span> (z. B. 1,5 Std.): Gericht ablehnen oder <span class="term" data-de="Preisminderung" data-vi="giảm giá">Preisminderung</span></li>
           </ul>
-          <div class="note">💡 Falsches Essen → <b>zuerst Nacherfüllung (Austausch)</b>, dann erst Preis mindern.<br>
+          <p><b><span class="term" data-de="Schlechtleistung" data-vi="giao hàng kém / sai món">Schlechtleistung</span></b> (mangelhaft, falsch, Fremdkörper — z. B. versalzene Suppe, falsche Garstufe) → Gast hat <b>4 Rechte</b>:</p>
+          <ol>
+            <li><span class="term" data-de="Nacherfüllung" data-vi="làm lại / đổi món">Nacherfüllung</span>/Nachbesserung — neues Gericht gratis (<b>Vorrang</b>)</li>
+            <li><span class="term" data-de="Rücktritt vom Vertrag" data-vi="rút khỏi hợp đồng">Rücktritt</span> — wenn Austausch nicht möglich, Gericht ablehnen</li>
+            <li><span class="term" data-de="Preisminderung" data-vi="giảm giá">Preisminderung</span> — Gericht behalten, weniger zahlen</li>
+            <li><span class="term" data-de="Schadensersatz statt Leistung" data-vi="bồi thường thay thế">Schadensersatz</span> — z. B. Getränk/Dessert „<span class="term" data-de="Kosten des Hauses" data-vi="nhà hàng mời">auf Kosten des Hauses</span>“</li>
+          </ol>
+          <div class="note">💡 Falsches Essen → <b>zuerst Nacherfüllung (Austausch)</b>, dann Rücktritt/Preisminderung.<br>
           Vergessener Geldbeutel ≠ Betrug (kein Vorsatz).</div>
 
           <h3 class="sub"><span class="term" data-de="Umsatzsteuer" data-vi="thuế GTGT / VAT">Umsatzsteuer</span> (MwSt) — merken für KA</h3>
