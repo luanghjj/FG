@@ -3531,6 +3531,16 @@ idx("BFK Quiz","Multiple-Choice Fleisch · Gerichte · Gewebe · Ernährung","Qu
 // Prüfungen BFK
 idx("Prüfungen","Musterprüfung · Lösungsbogen · KA2-Zusammenfassung","Prüfung","#/bfk/2/pruefungen",null,"ka2 prüfung");
 
+// BfK-1 Klassenarbeiten (eigenständige Prüfungsseiten)
+try{[
+  ["Klassenarbeit Nr. 3 – BfK-1","Froher Seeblick · Gästebewertungen, Obst, Systemgastronomie, Beleg","bfk1-ka3.html","ka3 klassenarbeit nr 3 bfk1 lf6 lf9 froher seeblick gästebewertungen obst systemgastronomie beleg 35 punkte prüfung"],
+  ["Lösung KA Nr. 3 – BfK-1","Lösungsbogen DE + VI zur Selbstkontrolle","bfk1-ka3-loesung.html","ka3 lösung loesungsbogen nr 3 bfk1 antworten de vi"],
+  ["Klassenarbeit Nr. 4 – BfK-1","Sonnenblick · vegane Woche, Hülsenfrüchte, Bewirtungsvertrag, USt","bfk1-ka4.html","ka4 klassenarbeit nr 4 bfk1 lf6 lf9 sonnenblick vegan hülsenfrüchte bewirtungsvertrag umsatzsteuer ust 35 punkte prüfung"],
+  ["Lösung KA Nr. 4 – BfK-1","Lösungsbogen DE + VI zur Selbstkontrolle","bfk1-ka4-loesung.html","ka4 lösung loesungsbogen nr 4 bfk1 antworten de vi"],
+  ["Klassenarbeit Nr. 5 – BfK-1","Stadtkrone · Getreide/Gluten, Menüregeln, Zechprellerei, USt","bfk1-ka5.html","ka5 klassenarbeit nr 5 bfk1 lf6 lf9 stadtkrone getreide gluten menüregeln zechprellerei umsatzsteuer ust 35 punkte prüfung"],
+  ["Lösung KA Nr. 5 – BfK-1","Lösungsbogen DE + VI zur Selbstkontrolle","bfk1-ka5-loesung.html","ka5 lösung loesungsbogen nr 5 bfk1 antworten de vi"],
+].forEach(([t,s,route,extra])=>idx(t,s,"Prüfung",route,null,extra));}catch(e){}
+
 function flashDetail(animal){ const el=document.querySelector('[data-detail="'+animal+'"]'); if(el){el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash");el.scrollIntoView({behavior:"smooth",block:"center"});} }
 function flashEl(id){ const el=document.getElementById(id); if(el){el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash");el.scrollIntoView({behavior:"smooth",block:"center"});} }
 
