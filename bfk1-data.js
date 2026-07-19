@@ -222,52 +222,69 @@ window.BFK1_THEMES = {
         content: `
           <h2>🌾 Thema 5 · Getreide und Pseudogetreide</h2>
 
-          <h3 class="sub">Kornaufbau</h3>
+          <h3 class="sub">Aufbau des Getreidekorns (3 Teile + Wasser)</h3>
           <table>
-            <tr><th>Teil</th><th>Inhalt</th></tr>
-            <tr><td><span class="term" data-de="Randschichten" data-vi="lớp vỏ / cám">Randschichten</span> / Aleuron</td><td>Ballaststoffe, Mineralien, B-Vitamine</td></tr>
-            <tr><td><span class="term" data-de="Mehlkörper" data-vi="phần lõi bột">Mehlkörper</span></td><td>Hauptanteil <span class="term" data-de="Stärke" data-vi="tinh bột">Stärke</span> + Eiweiß</td></tr>
-            <tr><td><span class="term" data-de="Keimling" data-vi="mầm">Keimling</span></td><td>Fett, Vitamine (E) — lagerempfindlich</td></tr>
+            <tr><th>Teil</th><th>Inhaltsstoffe</th></tr>
+            <tr><td><span class="term" data-de="Randschichten" data-vi="lớp vỏ cám">Randschichten</span> (Schale)</td><td><b>2–8 % Ballaststoffe</b> (<span class="term" data-de="Zellulose" data-vi="xenlulozơ">Zellulose</span>), viele Mineralstoffe (Calcium, Eisen, Kalium, Magnesium) + Vitamine</td></tr>
+            <tr><td><span class="term" data-de="Mehlkörper" data-vi="lõi hạt">Mehlkörper</span> (Hauptanteil)</td><td><b>60–70 % <span class="term" data-de="Stärke" data-vi="tinh bột">Stärke</span></b> + <b>8–12 % Eiweiß</b> (v. a. <span class="term" data-de="Gliadin" data-vi="gliadin">Gliadin</span> + <span class="term" data-de="Glutenin" data-vi="glutenin">Glutenin</span> = <span class="term" data-de="Gluten" data-vi="gluten / chất kết dính">Gluten/Kleber</span>)</td></tr>
+            <tr><td><span class="term" data-de="Keimling" data-vi="phôi / mầm">Keimling</span></td><td><b>2–4 % Fett</b>, Mineralstoffe, reich an <b>B-Vitaminen + Vitamin E</b> — lagerempfindlich</td></tr>
+          </table>
+          <p>Dazu ca. <b>10–15 % Wasser</b> im Korn.</p>
+
+          <h3 class="sub">Getreidearten — nach Gluten</h3>
+          <p><span class="term" data-de="Gluten" data-vi="gluten">Gluten</span> (Kleber) ist nötig zum Kneten &amp; Backen, aber schädlich bei <span class="term" data-de="Zöliakie" data-vi="bệnh không dung nạp gluten">Zöliakie</span>.</p>
+          <table>
+            <tr><th>Glutenhaltig</th><th>Verwendung</th></tr>
+            <tr><td><span class="term" data-de="Weizen" data-vi="lúa mì">Weizen</span></td><td>höchster Glutenanteil · Brot, Gebäck, <span class="term" data-de="Nudeln" data-vi="mì/bún">Nudeln</span></td></tr>
+            <tr><td><span class="term" data-de="Dinkel" data-vi="lúa mì cổ (spelt)">Dinkel</span></td><td>Brot, Gebäck</td></tr>
+            <tr><td><span class="term" data-de="Grünkern" data-vi="lúa mì non">Grünkern</span></td><td>unreif geernteter, getrockneter Dinkel · Suppen, <span class="term" data-de="Bratlinge" data-vi="chả rán">Bratlinge</span></td></tr>
+            <tr><td><span class="term" data-de="Roggen" data-vi="lúa mạch đen">Roggen</span></td><td><span class="term" data-de="Sauerteigbrot" data-vi="bánh mì men chua">Sauerteigbrot</span></td></tr>
+            <tr><td><span class="term" data-de="Gerste" data-vi="lúa mạch">Gerste</span></td><td>Bier, Suppen, <span class="term" data-de="Graupen" data-vi="hạt lúa mạch xát tròn">Graupen</span></td></tr>
+          </table>
+          <table>
+            <tr><th>Glutenfrei</th><th>Verwendung</th></tr>
+            <tr><td><span class="term" data-de="Reis" data-vi="gạo">Reis</span></td><td>Beilage, Reismehl, <span class="term" data-de="Puffreis" data-vi="gạo nổ">Puffreis</span></td></tr>
+            <tr><td><span class="term" data-de="Mais" data-vi="ngô/bắp">Mais</span></td><td><span class="term" data-de="Polenta" data-vi="polenta">Polenta</span>, <span class="term" data-de="Maisstärke" data-vi="bột bắp">Maisstärke</span></td></tr>
+            <tr><td><span class="term" data-de="Hirse" data-vi="kê">Hirse</span></td><td>sehr mineralstoffreich · Salat, <span class="term" data-de="Aufläufe" data-vi="món đút lò">Aufläufe</span>, Bratlinge</td></tr>
+            <tr><td><span class="term" data-de="Hafer" data-vi="yến mạch">Hafer</span></td><td><span class="term" data-de="Hafermilch" data-vi="sữa yến mạch">Hafermilch</span>, <span class="term" data-de="Flocken" data-vi="ngũ cốc mảnh">Flocken</span> · von Natur glutenfrei, „glutenfrei“ nur ohne Kontamination beim Anbau/Mahlen</td></tr>
           </table>
 
-          <h3 class="sub">Gluten</h3>
-          <div class="grid2">
-            <div class="mini"><h4>Glutenhaltig (Zöliakie-Gefahr)</h4>
-              <p><span class="term" data-de="Weizen" data-vi="lúa mì">Weizen</span>,
-              <span class="term" data-de="Dinkel" data-vi="spelt">Dinkel</span>,
-              <span class="term" data-de="Grünkern" data-vi="lúa mì xanh">Grünkern</span>,
-              <span class="term" data-de="Roggen" data-vi="lúa mạch đen">Roggen</span>,
-              <span class="term" data-de="Gerste" data-vi="lúa mạch">Gerste</span></p>
-            </div>
-            <div class="mini"><h4>Glutenfrei</h4>
-              <p>Reis, Mais, Hirse; Hafer nur bei sicherer Trennung (Kontamination!)</p>
-            </div>
-          </div>
+          <h3 class="sub"><span class="term" data-de="Pseudo-Getreide" data-vi="giả ngũ cốc">Pseudo-Getreide</span></h3>
+          <p>Samen/Früchte von Pflanzen, die <b>botanisch kein Getreide</b> sind, aber ähnliche Nährstoffe haben und wie Getreide verwendet werden. <b>Von Natur aus glutenfrei</b> → ideal bei Zöliakie und für vegane/vegetarische Küche.</p>
+          <table>
+            <tr><th>Art</th><th>Familie / Merkmal · Verwendung</th></tr>
+            <tr><td><span class="term" data-de="Buchweizen" data-vi="kiều mạch">Buchweizen</span></td><td>Knöterichgewächs · <span class="term" data-de="Galettes" data-vi="bánh xèo kiều mạch">Galettes</span>, Blinis, Mehl</td></tr>
+            <tr><td><span class="term" data-de="Amaranth" data-vi="hạt dền">Amaranth</span></td><td>Fuchsschwanzgewächs · gelbe Körner · Beilage, Salat, <span class="term" data-de="gepufft" data-vi="dạng nổ">gepufft</span></td></tr>
+            <tr><td><span class="term" data-de="Quinoa" data-vi="diêm mạch">Quinoa</span></td><td>Fuchsschwanzgewächs · sehr eiweiß-, mineral- &amp; eisenreich · Salat, Gemüsefüllung</td></tr>
+          </table>
+          <div class="note">💡 Kochen wie Reis in Wasser/<span class="term" data-de="Brühe" data-vi="nước dùng">Brühe</span> (Verhältnis <b>1 : 2</b>). Kurz anrösten verstärkt das nussige Aroma.</div>
 
-          <h3 class="sub"><span class="term" data-de="Pseudo-Getreide" data-vi="ngũ cốc giả">Pseudo-Getreide</span></h3>
-          <p><span class="term" data-de="Buchweizen" data-vi="kiều mạch">Buchweizen</span>,
-          <span class="term" data-de="Amaranth" data-vi="amaranth">Amaranth</span>,
-          <span class="term" data-de="Quinoa" data-vi="quinoa">Quinoa</span> —
-          botanisch kein Getreide, ähnlich verwendet, <b>von Natur aus glutenfrei</b>.</p>
-
-          <h3 class="sub"><span class="term" data-de="Ausmahlungsgrad" data-vi="tỷ lệ xay xát">Ausmahlungsgrad</span></h3>
+          <h3 class="sub"><span class="term" data-de="Ausmahlungsgrad" data-vi="mức độ xay xát">Ausmahlungsgrad</span></h3>
           <p>Gibt an, wie viel Prozent des Korns vermahlen wurden.</p>
           <table>
             <tr><th>Grad</th><th>Bedeutung</th></tr>
-            <tr><td><b>Hoch</b> (Vollkornmehl)</td><td>ganzes Korn · gesünder · verdirbt schneller (Fett im Keimling)</td></tr>
-            <tr><td><b>Niedrig</b> (helles Mehl)</td><td>fast nur Mehlkörper · bessere Backeigenschaften · länger haltbar</td></tr>
+            <tr><td><b>Hoch</b> (z. B. 98 %, <span class="term" data-de="Vollkornmehl" data-vi="bột nguyên cám">Vollkornmehl</span>)</td><td>ganzes Korn (Schale + Keim) · dunkel · meiste Nährstoffe &amp; Ballaststoffe · verdirbt schneller (Fett im Keim)</td></tr>
+            <tr><td><b>Niedrig</b> (helles Mehl)</td><td>nur Mehlkörper · länger haltbar · gute Backeigenschaften (viel Gluten) · weniger Nährstoffe</td></tr>
           </table>
 
-          <h3 class="sub">Mahlgrade (grob → fein)</h3>
-          <div class="formula">
-            <span class="term" data-de="Schrot" data-vi="bột thô">Schrot</span> →
-            <span class="term" data-de="Grieß" data-vi="semolina / bột gries">Grieß</span> →
-            <span class="term" data-de="Dunst" data-vi="bột mịn trung gian (dunst)">Dunst</span> →
-            <span class="term" data-de="Mehl" data-vi="bột mì">Mehl</span>
-          </div>
+          <h3 class="sub"><span class="term" data-de="Mahlgrad" data-vi="độ thô/mịn">Mahlgrade</span> (grob → fein)</h3>
+          <table>
+            <tr><th>Stufe</th><th>Verwendung</th></tr>
+            <tr><td><span class="term" data-de="Schrot" data-vi="bột thô (nghiền vỡ)">Schrot</span></td><td>grob zerkleinert · dunkles Brot</td></tr>
+            <tr><td><span class="term" data-de="Grieß" data-vi="bột gries (semolina)">Grieß</span></td><td>fein zerkleinert · Brei, Desserts</td></tr>
+            <tr><td><span class="term" data-de="Dunst" data-vi="bột trung gian">Dunst</span></td><td>zwischen Grieß und Mehl · Nudeln, <span class="term" data-de="Spätzle" data-vi="mì spätzle">Spätzle</span></td></tr>
+            <tr><td><span class="term" data-de="Mehl" data-vi="bột mịn">Mehl</span></td><td>fein · Kuchen, Gebäck</td></tr>
+          </table>
+
+          <h3 class="sub">Besondere Produkte</h3>
+          <ul>
+            <li><span class="term" data-de="Graupen" data-vi="lúa mạch xát tròn">Graupen</span>: geschälte, rund geschliffene Gerstenkörner</li>
+            <li><span class="term" data-de="Couscous" data-vi="couscous">Couscous</span>: Hartweizengrieß, befeuchtet, gedämpft &amp; getrocknet</li>
+            <li><span class="term" data-de="Bulgur" data-vi="lúa mì vỡ (bulgur)">Bulgur</span>: Hartweizen vorgekocht &amp; geschrotet · z. B. <span class="term" data-de="Taboulé" data-vi="salad taboulé">Taboulé</span></li>
+          </ul>
 
           <div class="note">💡 <b>Schnellmerk:</b> Zöliakie-Gefahr = Weizen, Roggen, Dinkel, Gerste (+ Grünkern).<br>
-          Rettung = Reis, Mais, Hirse &amp; Pseudo-Getreide (Quinoa…)</div>
+          Glutenfrei = Reis, Mais, Hirse, Hafer* &amp; Pseudo-Getreide (Buchweizen, Amaranth, Quinoa).</div>
         `
       },
       {
