@@ -646,12 +646,84 @@
       }
     });
   }
-  function enableVocabOn(root){
-    // DO NOT rewrite HTML / wrap text nodes — only prepare existing .term
-    bindTerms(root);
+  // Content containers where auto-wrapping is allowed (matches the CSS scope above,
+  // so every wrapped .term is styled and behaves consistently — never in nav/lists).
+  var CONTENT_SEL = "#bfk1ThemeBody,#fachThemeBody,#v-kueche,#v-fleisch,#v-abschluss,#quizArea,#bfk1QuizArea,#fachQuizArea,[data-vocab-content]";
+  var SKIP_TAGS = { SCRIPT:1, STYLE:1, TEXTAREA:1, INPUT:1, SELECT:1, OPTION:1, BUTTON:1, A:1, CODE:1, PRE:1 };
+  var SKIP_CLOSEST = ".term,.theme-item,.theme-list,.subject-card,.tile,.learn-item,.ka-card,.fach-item,.bottom-nav,.nav,.crumbs,.section-head,button,a,input,textarea,select,code,pre,[data-no-vocab]";
+
+  var MATCH_RE = null;
+  function buildMatcher(){
+    if(MATCH_RE) return MATCH_RE;
+    try{
+      var keys = Object.keys(B1_VOCAB)
+        .filter(function(k){ return k && k.length >= 2; })
+        .sort(function(a,b){ return b.length - a.length; }) // longest first → multi-word & specific terms win
+        .map(function(k){ return k.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); });
+      if(!keys.length) return null;
+      // leading boundary captured (older-Safari safe, no lookbehind); trailing boundary via lookahead
+      MATCH_RE = new RegExp("(^|[^\\p{L}\\p{N}])(" + keys.join("|") + ")(?![\\p{L}\\p{N}])", "gu");
+    }catch(e){ MATCH_RE = null; }
+    return MATCH_RE;
   }
-  function enrichTermsInHtml(html){ return html; } // never auto-mutate strings that could affect lists
-  function wrapTextNodes(){ return 0; }
+
+  // Auto-wrap every dictionary term inside content containers so ALL A2 vocab is
+  // tappable on every Thema — not only manually marked <span class="term">.
+  function wrapTextNodes(root){
+    var scope = root || document;
+    ensureStyles();
+    var re = buildMatcher();
+    if(!re) return 0;
+    // Restrict to content containers (styled + safe). Collect the roots to scan.
+    var roots = [];
+    if(scope.matches && scope.matches(CONTENT_SEL)) roots.push(scope);
+    if(scope.querySelectorAll) scope.querySelectorAll(CONTENT_SEL).forEach(function(el){ roots.push(el); });
+    if(!roots.length) return 0;
+    var count = 0;
+    roots.forEach(function(container){
+      var walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, {
+        acceptNode: function(node){
+          if(!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+          var p = node.parentElement;
+          if(!p || SKIP_TAGS[p.tagName]) return NodeFilter.FILTER_REJECT;
+          if(p.closest && p.closest(SKIP_CLOSEST)) return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+      var targets = [], n;
+      while((n = walker.nextNode())) targets.push(n);
+      targets.forEach(function(node){
+        var text = node.nodeValue;
+        re.lastIndex = 0;
+        if(!re.test(text)) return;
+        re.lastIndex = 0;
+        var frag = document.createDocumentFragment(), last = 0, m;
+        while((m = re.exec(text))){
+          var lead = m[1] || "", word = m[2];
+          var start = m.index + lead.length;
+          if(start > last) frag.appendChild(document.createTextNode(text.slice(last, start)));
+          var span = document.createElement("span");
+          span.className = "term";
+          span.setAttribute("data-de", word);
+          var vi = lookupVi(word); if(vi) span.setAttribute("data-vi", vi);
+          span.textContent = word;
+          frag.appendChild(span);
+          last = start + word.length;
+          count++;
+          if(re.lastIndex <= m.index) re.lastIndex = m.index + 1; // guard against zero-length loops
+        }
+        if(last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+        if(frag.childNodes.length && node.parentNode) node.parentNode.replaceChild(frag, node);
+      });
+    });
+    return count;
+  }
+
+  function enableVocabOn(root){
+    bindTerms(root);              // fill data-vi on existing manual .term
+    try{ wrapTextNodes(root); }catch(e){}  // auto-wrap all remaining dictionary terms
+  }
+  function enrichTermsInHtml(html){ return html; } // never auto-mutate raw strings (lists/nav safety)
 
   w.Vocab = { B1_VOCAB, lookupVi, bindTerms, enableVocabOn, enrichTermsInHtml, wrapTextNodes, hidePop };
   w.B1_VOCAB = B1_VOCAB;
