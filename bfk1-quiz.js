@@ -173,6 +173,28 @@ window.BFK1_QUIZ = [
     answer:"Brutto ÷ (1 + Steuersatz)",
     ex:"USt = Brutto − Netto."},
 
+  /* ===== Ergänzung: neue Inhalte (Getreide, Hülsenfrüchte, Betriebsarten, Bewirtungsvertrag) ===== */
+  {theme:"getreide", cat:"Kornaufbau", q:"Welcher Kornteil enthält die meiste Stärke (60–70 %) und das Gluten?", opts:["Randschichten","Mehlkörper","Keimling","Schale"], a:1, ex:"Der Mehlkörper: 60–70 % Stärke + 8–12 % Eiweiß (Gliadin+Glutenin = Gluten)."},
+  {theme:"getreide", cat:"Kornaufbau", q:"Wo sitzen im Getreidekorn v. a. Fett und Vitamin E?", opts:["Randschichten","Mehlkörper","Keimling","überall gleich"], a:2, ex:"Der Keimling: 2–4 % Fett, B-Vitamine + Vitamin E — deshalb verdirbt Vollkorn schneller."},
+  {theme:"getreide", cat:"Arten", q:"Was ist Grünkern?", opts:["eine Hirseart","unreif geernteter, getrockneter Dinkel","glutenfreies Pseudogetreide","geschälte Gerste"], a:1, ex:"Grünkern = unreif geernteter, getrockneter Dinkel · für Suppen, Bratlinge."},
+  {theme:"getreide", cat:"Produkte", q:"Was ist Bulgur?", opts:["rund geschliffene Gerste","Hartweizen vorgekocht & geschrotet","gedämpfter Hartweizengrieß","Maismehl"], a:1, ex:"Bulgur = vorgekochter, geschroteter Hartweizen (z. B. für Taboulé). Couscous = gedämpfter Grieß, Graupen = geschliffene Gerste."},
+  {theme:"getreide", cat:"Pseudo", q:"Zu welcher Familie gehört Buchweizen?", opts:["Süßgräser","Knöterichgewächs","Fuchsschwanzgewächs","Hülsenfrüchtler"], a:1, ex:"Buchweizen = Knöterichgewächs. Amaranth & Quinoa = Fuchsschwanzgewächse. Alle glutenfrei."},
+
+  {theme:"huelsenfruechte", cat:"Botanik", q:"Zu welcher Pflanzenfamilie gehören Hülsenfrüchte?", opts:["Nachtschattengewächse","Schmetterlingsblütler (Leguminosen)","Kreuzblütler","Süßgräser"], a:1, ex:"Hülsenfrüchte = Schmetterlingsblütler / Leguminosen."},
+  {theme:"huelsenfruechte", cat:"Fett", q:"Welche Hülsenfrüchte enthalten VIEL Fett (Ausnahme)?", opts:["Linsen & Erbsen","Erdnüsse & Sojabohnen","Kidneybohnen","Kichererbsen"], a:1, ex:"Nur Erdnüsse & Sojabohnen sind fettreich; sonst sind Hülsenfrüchte fettarm."},
+  {theme:"huelsenfruechte", cat:"Quellen", q:"Um wie viel quellen Hülsenfrüchte beim Einweichen/Kochen etwa auf?", opts:["kaum","ca. das 2-Fache","ca. das 4-Fache","das 10-Fache"], a:2, ex:"Ca. das 4-Fache → reichlich Wasser verwenden."},
+  {theme:"huelsenfruechte", cat:"Aquafaba", q:"Wofür nutzt man Aquafaba (Kochwasser von Kichererbsen/Bohnen)?", opts:["als Klebstoff","als veganer Eischnee-/Sahne-Ersatz","zum Entkalken","als Dünger"], a:1, ex:"Mit Salz & Zucker aufgeschlagen ersetzt Aquafaba Eischnee oder Sahne."},
+  {theme:"huelsenfruechte", cat:"Sorten", q:"Welche Bohne passt durch würzigen Geschmack ideal zu Chili?", opts:["Wachtelbohnen","Rote Kidney-Bohnen","Sojabohnen","Süßlupine"], a:1, ex:"Kidney-Bohnen: nierenförmig, würzig → Chili, Eintopf, Salat."},
+
+  {theme:"betriebsarten-zahlung", cat:"Systematik", q:"In wie viele Gruppen teilt man die Betriebsarten im Gastgewerbe?", opts:["3","5","7","2"], a:1, ex:"5: Beherbergung, Gastronomie, Systemgastronomie, Catering, Gemeinschaftsverpflegung."},
+  {theme:"betriebsarten-zahlung", cat:"System", q:"Gastronomie in einem Einkaufszentrum (z. B. IKEA, Dinea) nennt man …", opts:["Handelsgastronomie","Verkehrsgastronomie","Quickservice","Gemeinschaftsverpflegung"], a:0, ex:"Handelsgastronomie = Gastro im Handel/Einkaufszentrum."},
+  {theme:"betriebsarten-zahlung", cat:"Zahlung", q:"Welche Zahlungsart eignet sich am besten für große Beträge (z. B. Catering-Rechnung)?", opts:["Barzahlung","Zahlung per Überweisung","Trinkgeld","Mobile Payment"], a:1, ex:"Überweisung: sicher, bargeldlos, gute Belegablage — passt für große Beträge."},
+  {theme:"betriebsarten-zahlung", cat:"Zahlung", q:"Debit-, Kredit- und Prepaid-Karte gehören zu den …", opts:["Barzahlungen","Zahlungskarten","Überweisungen","Gutscheinen"], a:1, ex:"Zahlungskarten: Debit (sofort), Kredit (später), Prepaid (vorher aufgeladen)."},
+
+  {theme:"rechtliche-zahlungsabwicklung", cat:"Vertrag", q:"Mit welchem Vertragstyp hat der Bewirtungsvertrag die größte Ähnlichkeit?", opts:["Mietvertrag","Kaufvertrag","Werkvertrag","Arbeitsvertrag"], a:1, ex:"Größte Ähnlichkeit mit dem Kaufvertrag (Ware gegen Geld) — insgesamt ein gemischter Vertrag."},
+  {theme:"rechtliche-zahlungsabwicklung", cat:"Störung", q:"Bei einem mangelhaften Gericht (Schlechtleistung) — was hat VORRANG?", opts:["Preisminderung","Nacherfüllung (Austausch/neu kochen)","Rücktritt","Schadensersatz"], a:1, ex:"Zuerst Nacherfüllung; erst wenn das scheitert: Rücktritt, Preisminderung oder Schadensersatz."},
+  {theme:"rechtliche-zahlungsabwicklung", cat:"Bestellung", q:"Fest bestellte Speisen zu fester Zeit, Gast kommt nicht (Nichtinanspruchnahme) — der Wirt darf …", opts:["nichts verlangen","vollen Preis abzüglich ersparter Aufwendungen","nur Trinkgeld","den Gast anzeigen"], a:1, ex:"Bei angenommener Bestellung: voller Preis minus ersparte Aufwendungen (z. B. anderweitig verwertbare Zutaten)."},
+
 ];
 
 window.BFK1_THEME_META = {
