@@ -179,38 +179,58 @@ window.BFK1_THEMES = {
         content: `
           <h2>🫘 Thema 4 · Hülsenfrüchte</h2>
 
-          <h3 class="sub">Vertreter</h3>
-          <ul>
-            <li><span class="term" data-de="Linsen" data-vi="đậu lăng">Linsen</span>: Tellerlinsen, rote Linsen…</li>
-            <li><span class="term" data-de="Bohnen" data-vi="đậu">Bohnen</span>: Kidney, Sojabohnen…</li>
-            <li><span class="term" data-de="Erbsen" data-vi="đậu Hà Lan">Erbsen</span>: grüne Erbsen, <span class="term" data-de="Kichererbsen" data-vi="đậu gà / chickpea">Kichererbsen</span></li>
-          </ul>
-
-          <h3 class="sub">Eigenschaften</h3>
-          <ul>
-            <li><b>höchster pflanzlicher Eiweißgehalt</b> (ca. 20–34 %) → extrem wichtig für Vegetarier/Veganer</li>
-            <li>viel Stärke, Ballaststoffe, Eisen, Vitamine</li>
-            <li>wenig Fett (Ausnahme Erdnuss/Soja)</li>
-          </ul>
+          <h3 class="sub">Definition</h3>
+          <p><span class="term" data-de="Hülsenfrüchte" data-vi="các loại đậu">Hülsenfrüchte</span> sind die reifen, getrockneten Samen, die in <span class="term" data-de="Fruchthülsen" data-vi="vỏ quả">Fruchthülsen</span> wachsen — Pflanzenfamilie <span class="term" data-de="Schmetterlingsblütler" data-vi="họ đậu (cánh bướm)">Schmetterlingsblütler</span> (<span class="term" data-de="Leguminosen" data-vi="cây họ đậu">Leguminosen</span>).</p>
 
           <h3 class="sub">⚠️ Giftstoffe – wichtigste Regel</h3>
-          <p>Rohe Hülsenfrüchte enthalten natürliche Giftstoffe
-          (<span class="term" data-de="Hämagglutinine" data-vi="hemagglutinin">Hämagglutinine</span> /
-          <span class="term" data-de="Phasin" data-vi="phasin (độc tố đậu)">Phasin</span>).
-          Sie werden erst durch <b>Garen</b> zerstört. <b>Niemals roh verzehren!</b></p>
+          <p>Roh enthalten sie natürliche Giftstoffe (<span class="term" data-de="Hämagglutinine" data-vi="hemagglutinin">Hämagglutinine</span> / <span class="term" data-de="Phasin" data-vi="phasin (độc tố đậu)">Phasin</span>). Sie werden erst durch <b>Garen</b> vollständig zerstört. <b>Niemals roh verzehren!</b></p>
+
+          <h3 class="sub">Inhaltsstoffe</h3>
+          <ul>
+            <li><b>höchster pflanzlicher Eiweißgehalt</b> (ca. <b>20–34 %</b>) → idealer Fleischersatz für <span class="term" data-de="Vegetarier" data-vi="người ăn chay">Vegetarier</span></li>
+            <li><b>wenig Fett</b> — Ausnahme: <span class="term" data-de="Erdnüsse" data-vi="đậu phộng">Erdnüsse</span> &amp; <span class="term" data-de="Sojabohnen" data-vi="đậu nành">Sojabohnen</span></li>
+            <li>reich an Stärke, Ballaststoffen, Mineralstoffen (Eisen, Calcium, Phosphor, Magnesium) + Vitaminen B1, B2, C, E, K</li>
+          </ul>
+
+          <h3 class="sub">Wichtige Hülsenfrüchte</h3>
+          <p><b><span class="term" data-de="Linsen" data-vi="đậu lăng">Linsen</span></b> (nach Größe eingeteilt · aus USA, Kanada, Naher Osten, Türkei, Chile):</p>
+          <table>
+            <tr><th>Art</th><th>Merkmal · Verwendung</th></tr>
+            <tr><td><span class="term" data-de="Tellerlinsen" data-vi="đậu lăng to">Tellerlinsen</span></td><td>groß (6–7 mm), gelbbraun–braun · aromatisch nussig · Suppen, Eintöpfe</td></tr>
+            <tr><td><span class="term" data-de="Rote Linsen" data-vi="đậu lăng đỏ">Rote Linsen</span></td><td>geschält → sehr schnell gar · mild · exotische Gerichte, Suppen, Salat, Pfannkuchen</td></tr>
+            <tr><td><span class="term" data-de="Pardina-Linsen" data-vi="đậu lăng Pardina">Pardina-Linsen</span></td><td>graubraune Schale, gelber Kern (4–5 mm) · bissfest, aromatisch · Suppen, Eintopf, Salat</td></tr>
+          </table>
+          <p><b><span class="term" data-de="Bohnen" data-vi="các loại đậu hạt">Bohnen</span></b> (Ursprung Anden · sehr farbenreich):</p>
+          <table>
+            <tr><th>Art</th><th>Merkmal · Verwendung</th></tr>
+            <tr><td><span class="term" data-de="Kidney-Bohnen" data-vi="đậu tây (hình quả thận)">Rote Kidney-Bohnen</span></td><td>nierenförmig, feste Schale, mehliger Kern · würzig · Chili, Eintopf, Salat</td></tr>
+            <tr><td><span class="term" data-de="Wachtelbohnen" data-vi="đậu cút (đốm)">Wachtelbohnen</span></td><td>gesprenkelt wie Wachteleier · nussartig · Salatdeko</td></tr>
+            <tr><td><span class="term" data-de="Sojabohnen" data-vi="đậu nành">Sojabohnen</span></td><td>sehr hoher Eiweißgehalt · selten als Korn → Sojamilch, <span class="term" data-de="Tofu" data-vi="đậu phụ">Tofu</span>, Sojamehl, Sojaquark</td></tr>
+          </table>
+          <p><b><span class="term" data-de="Erbsen" data-vi="đậu Hà Lan & đậu gà">Erbsen</span></b> (nach Größe, Form, Farbe):</p>
+          <table>
+            <tr><th>Art</th><th>Merkmal · Verwendung</th></tr>
+            <tr><td>Grüne &amp; Gelbe Erbsen</td><td>stärkereich · geschält (gelb) = <span class="term" data-de="wenig blähend" data-vi="ít gây đầy hơi">wenig blähend</span> · Püree, Suppe, Gemüsebeilage</td></tr>
+            <tr><td><span class="term" data-de="Kichererbsen" data-vi="đậu gà">Kichererbsen</span></td><td>haselnussgroß, nussig · Suppe, Eintopf, <span class="term" data-de="Falafel" data-vi="falafel">Falafel</span>, <span class="term" data-de="Hummus" data-vi="hummus">Hummus</span></td></tr>
+            <tr><td><span class="term" data-de="Süßlupine" data-vi="đậu lupin ngọt">Süßlupine</span></td><td>mild, nussig · Mehl, Getränke, Aufstriche</td></tr>
+          </table>
 
           <h3 class="sub">Küchentechnischer Umgang</h3>
-          <ol>
-            <li><span class="term" data-de="Einweichen" data-vi="ngâm nước">Einweichen</span> (getrocknet)</li>
-            <li><span class="term" data-de="Einweichwasser" data-vi="nước ngâm">Einweichwasser</span> <b>weggießen</b></li>
-            <li>Kochen / garen (ca. 4× Wasser; kontrollieren, schäumen oft)</li>
-          </ol>
-          <div class="note">Salz im Einweich-/Kochwasser kann den Garprozess beeinflussen (Schale/Pektin) — Unterrichtsregel beachten.</div>
-          <p><b>Ausnahme / Tipp:</b> Kochwasser von Kichererbsen =
-          <span class="term" data-de="Aquafaba" data-vi="nước đậu gà (thay lòng trắng trứng thuần chay)">Aquafaba</span>
-          → veganer Eischnee-Ersatz.</p>
+          <ul>
+            <li><b>Lagerung:</b> sehr wasserarm → ca. <b>1 Jahr</b> haltbar</li>
+            <li><b><span class="term" data-de="Einweichen" data-vi="ngâm nước">Einweichen</span></b> nötig: in Salzwasser (schwächt das <span class="term" data-de="Pektin" data-vi="pectin ở vỏ">Pektin</span> der Schale) oder mit kochendem Wasser übergießen (verkürzt die Zeit)</li>
+            <li><b><span class="term" data-de="Einweichwasser" data-vi="nước ngâm">Einweichwasser weggießen</span></b> (Pflicht)</li>
+            <li>quellen auf ca. <b>das 4-Fache</b> → reichlich Kochwasser; schäumt stark → kontrollieren</li>
+          </ul>
+          <p><b><span class="term" data-de="Aquafaba" data-vi="nước luộc đậu (thay lòng trắng trứng)">Aquafaba</span>:</b> Kochwasser von Bohnen/Kichererbsen lässt sich mit Salz &amp; Zucker aufschlagen → veganer Ersatz für <span class="term" data-de="Eischnee" data-vi="lòng trắng trứng đánh bông">Eischnee</span> oder Sahne.</p>
 
-          <div class="note">💡 <b>Schnellmerk:</b> Hülsenfrüchte = Eiweiß-Weltmeister.<br>
+          <h3 class="sub">Menü-Anwendung (Rote Linsen)</h3>
+          <ul>
+            <li><b>Vorspeise:</b> Rote-Linsen-Cremesuppe mit Karotten &amp; Curry</li>
+            <li><b>Hauptspeise:</b> Rote-Linsen-Curry mit Karotten, Zucchini, Gemüse · Basmatireis &amp; Salat</li>
+          </ul>
+
+          <div class="note">💡 <b>Schnellmerk:</b> Hülsenfrüchte = Eiweiß-Weltmeister (20–34 %).<br>
           Regel: <b>Einweichen → Wasser weg → Kochen (nie roh!)</b></div>
         `
       },
