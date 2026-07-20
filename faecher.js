@@ -767,6 +767,38 @@
                   <span class="term" data-de="Belege" data-vi="bằng chứng / dẫn chứng">Belege</span> aus dem Bild nennen
                   (<span class="term" data-de="Figuren" data-vi="nhân vật / hình tượng">Figuren</span>, Schrift,
                   <span class="term" data-de="Kontraste" data-vi="sự tương phản">Kontraste</span>) — nicht nur Allgemeinplätze.</div>
+
+                  <h3 class="sub">🗣️ Redemittel · Satzbausteine (für jede Karikatur)</h3>
+                  <p class="muted" style="font-size:.85em">Fertige Satzanfänge – auf jede Karikatur anwendbar. VN antippen.</p>
+
+                  <p><b>1. Einleitung</b></p>
+                  <ul>
+                    <li><span class="term" data-de="Die Karikatur „…“ von … aus dem Jahr … thematisiert …" data-vi="Bức biếm họa „…“ của … năm … nói về chủ đề …">Die Karikatur „…“ von … aus dem Jahr … thematisiert …</span></li>
+                    <li><span class="term" data-de="Bei der vorliegenden Karikatur handelt es sich um …" data-vi="Bức biếm họa này là …">Bei der vorliegenden Karikatur handelt es sich um …</span></li>
+                    <li><span class="term" data-de="Sie wurde … (Quelle) veröffentlicht." data-vi="Nó được đăng tại … (nguồn).">Sie wurde … (Quelle) veröffentlicht.</span></li>
+                  </ul>
+
+                  <p><b>2. Beschreibung</b> <span class="muted">(nur beschreiben, noch nicht deuten)</span></p>
+                  <ul>
+                    <li><span class="term" data-de="Im Vordergrund / im Hintergrund ist … zu sehen." data-vi="Ở tiền cảnh / hậu cảnh thấy …">Im Vordergrund / im Hintergrund ist … zu sehen.</span></li>
+                    <li><span class="term" data-de="In der Mitte / auf der linken Seite befindet sich …" data-vi="Ở giữa / bên trái có …">In der Mitte / auf der linken Seite befindet sich …</span></li>
+                    <li><span class="term" data-de="Die Figur trägt die Aufschrift „…“." data-vi="Nhân vật mang dòng chữ „…“.">Die Figur trägt die Aufschrift „…“.</span></li>
+                    <li><span class="term" data-de="Man erkennt … / Dargestellt ist …" data-vi="Nhận ra … / Được vẽ là …">Man erkennt … / Dargestellt ist …</span></li>
+                  </ul>
+
+                  <p><b>3. Deutung / Interpretation</b></p>
+                  <ul>
+                    <li><span class="term" data-de="Die Figur / das Symbol steht für … / symbolisiert …" data-vi="Nhân vật / biểu tượng tượng trưng cho …">Die Figur / das Symbol steht für … / symbolisiert …</span></li>
+                    <li><span class="term" data-de="Der Karikaturist möchte ausdrücken, dass …" data-vi="Họa sĩ biếm họa muốn diễn đạt rằng …">Der Karikaturist möchte ausdrücken, dass …</span></li>
+                    <li><span class="term" data-de="Damit kritisiert er … / Die Übertreibung verdeutlicht …" data-vi="Qua đó ông phê phán … / Sự phóng đại làm rõ …">Damit kritisiert er … / Die Übertreibung verdeutlicht …</span></li>
+                  </ul>
+
+                  <p><b>4. Fazit / Stellungnahme</b></p>
+                  <ul>
+                    <li><span class="term" data-de="Meiner Meinung nach …, weil …" data-vi="Theo ý tôi …, vì …">Meiner Meinung nach …, weil …</span></li>
+                    <li><span class="term" data-de="Ich stimme der Aussage (nicht) zu, weil …" data-vi="Tôi (không) đồng ý với luận điểm, vì …">Ich stimme der Aussage (nicht) zu, weil …</span></li>
+                    <li><span class="term" data-de="Abschließend lässt sich sagen, dass …" data-vi="Cuối cùng có thể nói rằng …">Abschließend lässt sich sagen, dass …</span></li>
+                  </ul>
                 `
               }
             ]
@@ -1011,6 +1043,99 @@
                   <span class="term" data-de="vollziehende Gewalt" data-vi="quyền lực hành pháp">vollziehende Gewalt</span> und
                   <span class="term" data-de="Rechtsprechung" data-vi="tư pháp / xét xử">Rechtsprechung</span>
                   (<span class="term" data-de="Art. 1 Abs. 3 GG" data-vi="Điều 1 khoản 3 Luật cơ bản">Art. 1 Abs. 3 GG</span>).</div>
+                `
+              }
+            ]
+          },
+          {
+            id: "methode",
+            badge: "Methode",
+            title: "Redemittel · Schreibaufgaben",
+            items: [
+              {
+                id: "redemittel",
+                icon: "🗣️",
+                name: "Redemittel · Satzbausteine",
+                desc: "Für jede Schreibaufgabe: Erläutern · Beurteilen · Vergleichen · Stellung nehmen",
+                content: `
+                  <h2>🗣️ Redemittel für Schreibaufgaben</h2>
+                  <div class="hint">Fertige Satzanfänge für die KA – passend zu jedem Thema. Begriffe mit VI antippen.</div>
+
+                  <h3 class="sub">🧭 Operatoren verstehen (was ist gefragt?)</h3>
+                  <table>
+                    <tr><th>Operator</th><th>Was tun?</th></tr>
+                    <tr><td><span class="term" data-de="Nennen / Aufzählen" data-vi="Nêu / Liệt kê">Nennen / Aufzählen</span></td><td>nur Stichpunkte, keine Erklärung</td></tr>
+                    <tr><td><span class="term" data-de="Beschreiben" data-vi="Mô tả">Beschreiben</span></td><td>sachlich darstellen, wie etwas ist</td></tr>
+                    <tr><td><span class="term" data-de="Erläutern / Erklären" data-vi="Trình bày / Giải thích">Erläutern / Erklären</span></td><td>mit eigenen Worten + Beispiel verständlich machen</td></tr>
+                    <tr><td><span class="term" data-de="Begründen" data-vi="Lập luận / Nêu lý do">Begründen</span></td><td>Warum? – Gründe mit „weil / da“ geben</td></tr>
+                    <tr><td><span class="term" data-de="Vergleichen" data-vi="So sánh">Vergleichen</span></td><td>Gemeinsamkeiten + Unterschiede</td></tr>
+                    <tr><td><span class="term" data-de="Beurteilen" data-vi="Đánh giá (có lý lẽ)">Beurteilen</span></td><td>Vor- und Nachteile abwägen → sachliches Urteil</td></tr>
+                    <tr><td><span class="term" data-de="Stellung nehmen" data-vi="Nêu quan điểm">Stellung nehmen</span></td><td>eigene Meinung + Begründung</td></tr>
+                  </table>
+
+                  <h3 class="sub">1. Einleitung · einen Text/ein Thema einführen</h3>
+                  <ul>
+                    <li><span class="term" data-de="In der Aufgabe geht es um …" data-vi="Bài tập nói về …">In der Aufgabe geht es um …</span></li>
+                    <li><span class="term" data-de="Im Folgenden erläutere ich …" data-vi="Sau đây tôi trình bày …">Im Folgenden erläutere ich …</span></li>
+                    <li><span class="term" data-de="Zunächst möchte ich … darstellen." data-vi="Trước tiên tôi muốn trình bày …">Zunächst möchte ich … darstellen.</span></li>
+                  </ul>
+
+                  <h3 class="sub">2. Erläutern / Erklären</h3>
+                  <ul>
+                    <li><span class="term" data-de="Unter … versteht man …" data-vi="… được hiểu là …">Unter … versteht man …</span></li>
+                    <li><span class="term" data-de="Das bedeutet, dass …" data-vi="Điều đó có nghĩa là …">Das bedeutet, dass …</span></li>
+                    <li><span class="term" data-de="Ein Beispiel dafür ist …" data-vi="Một ví dụ cho điều đó là …">Ein Beispiel dafür ist …</span></li>
+                    <li><span class="term" data-de="Konkret heißt das, …" data-vi="Cụ thể là …">Konkret heißt das, …</span></li>
+                  </ul>
+
+                  <h3 class="sub">3. Begründen · Ursache & Folge</h3>
+                  <ul>
+                    <li><span class="term" data-de="…, weil / da …" data-vi="…, vì / bởi …">…, weil / da …</span></li>
+                    <li><span class="term" data-de="Der Grund dafür ist, dass …" data-vi="Lý do cho điều đó là …">Der Grund dafür ist, dass …</span></li>
+                    <li><span class="term" data-de="Das führt dazu, dass …" data-vi="Điều đó dẫn đến việc …">Das führt dazu, dass …</span></li>
+                    <li><span class="term" data-de="Deshalb / Daher / Folglich …" data-vi="Vì vậy / Do đó / Suy ra …">Deshalb / Daher / Folglich …</span></li>
+                  </ul>
+
+                  <h3 class="sub">4. Vergleichen · Gegenüberstellen</h3>
+                  <ul>
+                    <li><span class="term" data-de="Im Vergleich zu … ist …" data-vi="So với … thì …">Im Vergleich zu … ist …</span></li>
+                    <li><span class="term" data-de="Beide haben gemeinsam, dass …" data-vi="Cả hai có điểm chung là …">Beide haben gemeinsam, dass …</span></li>
+                    <li><span class="term" data-de="Ein Unterschied besteht darin, dass …" data-vi="Một khác biệt nằm ở chỗ …">Ein Unterschied besteht darin, dass …</span></li>
+                    <li><span class="term" data-de="Während … , ist / hat …" data-vi="Trong khi … thì …">Während … , ist / hat …</span></li>
+                  </ul>
+
+                  <h3 class="sub">5. Beurteilen · Vor- und Nachteile abwägen</h3>
+                  <ul>
+                    <li><span class="term" data-de="Einerseits … , andererseits …" data-vi="Một mặt … , mặt khác …">Einerseits … , andererseits …</span></li>
+                    <li><span class="term" data-de="Ein Vorteil ist … , ein Nachteil ist …" data-vi="Một ưu điểm là … , một nhược điểm là …">Ein Vorteil ist … , ein Nachteil ist …</span></li>
+                    <li><span class="term" data-de="Dafür spricht … , dagegen spricht …" data-vi="Ủng hộ điều này là … , phản đối là …">Dafür spricht … , dagegen spricht …</span></li>
+                    <li><span class="term" data-de="Insgesamt überwiegen die Vorteile / Nachteile, weil …" data-vi="Nhìn chung ưu / nhược điểm chiếm ưu thế, vì …">Insgesamt überwiegen die Vorteile / Nachteile, weil …</span></li>
+                  </ul>
+
+                  <h3 class="sub">6. Stellung nehmen · eigene Meinung</h3>
+                  <ul>
+                    <li><span class="term" data-de="Meiner Meinung nach …, weil …" data-vi="Theo ý tôi …, vì …">Meiner Meinung nach …, weil …</span></li>
+                    <li><span class="term" data-de="Ich bin der Ansicht, dass …" data-vi="Tôi cho rằng …">Ich bin der Ansicht, dass …</span></li>
+                    <li><span class="term" data-de="Ich stimme (nicht) zu, weil …" data-vi="Tôi (không) đồng ý, vì …">Ich stimme (nicht) zu, weil …</span></li>
+                  </ul>
+
+                  <h3 class="sub">7. Schluss / Fazit</h3>
+                  <ul>
+                    <li><span class="term" data-de="Zusammenfassend lässt sich sagen, dass …" data-vi="Tóm lại có thể nói rằng …">Zusammenfassend lässt sich sagen, dass …</span></li>
+                    <li><span class="term" data-de="Abschließend …" data-vi="Cuối cùng …">Abschließend …</span></li>
+                    <li><span class="term" data-de="Aus den genannten Gründen …" data-vi="Vì những lý do đã nêu …">Aus den genannten Gründen …</span></li>
+                  </ul>
+
+                  <h3 class="sub">🔗 Nützliche Verbindungswörter</h3>
+                  <p><span class="term" data-de="außerdem" data-vi="ngoài ra">außerdem</span> ·
+                  <span class="term" data-de="zudem" data-vi="hơn nữa">zudem</span> ·
+                  <span class="term" data-de="jedoch" data-vi="tuy nhiên">jedoch</span> ·
+                  <span class="term" data-de="trotzdem" data-vi="mặc dù vậy">trotzdem</span> ·
+                  <span class="term" data-de="dagegen" data-vi="ngược lại">dagegen</span> ·
+                  <span class="term" data-de="zum Beispiel" data-vi="ví dụ">zum Beispiel</span> ·
+                  <span class="term" data-de="im Gegensatz dazu" data-vi="trái lại">im Gegensatz dazu</span></p>
+
+                  <div class="note">💡 Tipp: In der KA immer <b>in ganzen Sätzen</b> antworten und die Redemittel passend zum <b>Operator</b> wählen (Erläutern ≠ Beurteilen).</div>
                 `
               }
             ]
