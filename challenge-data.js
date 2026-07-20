@@ -189,6 +189,37 @@
    a:2, ex:'Keine ganzen Sätze in der Grafik.'},
 ];
 
+  /** Deterministischer String-Hash (FNV-1a) → 32-bit seed für die Optionsmischung. */
+  function hashSeed(str){
+    let h = 2166136261 >>> 0;
+    for(let i=0;i<str.length;i++){
+      h ^= str.charCodeAt(i);
+      h = Math.imul(h, 16777619) >>> 0;
+    }
+    return h >>> 0;
+  }
+
+  /**
+   * Mischt die Antwortoptionen deterministisch anhand der Frage-id, damit die
+   * richtige Antwort nicht immer auf derselben Position steht (Position-Bias).
+   * Alle Clients berechnen dieselbe Reihenfolge, weil der Seed nur von der id abhängt.
+   */
+  function shuffleOptions(q){
+    const opts = q.opts;
+    if(!Array.isArray(opts) || opts.length < 2) return q;
+    const idx = opts.map((_,i)=>i);
+    const rnd = mulberry32(hashSeed(q.id + '|' + q.q));
+    for(let i=idx.length-1;i>0;i--){
+      const j = Math.floor(rnd()*(i+1));
+      const t=idx[i]; idx[i]=idx[j]; idx[j]=t;
+    }
+    const newOpts = idx.map(i => opts[i]);
+    const newA = idx.indexOf(q.a);
+    q.opts = newOpts;
+    q.a = newA >= 0 ? newA : q.a;
+    return q;
+  }
+
   /** Challenge unterstützt nur Multiple-Choice. Fill-Fragen bleiben im normalen Fach-Quiz. */
   function normalize(list, prefix){
     return (list||[]).map((q,i)=>({
@@ -199,7 +230,8 @@
       opts: Array.isArray(q.opts) ? q.opts.slice() : [],
       a: typeof q.a === 'number' ? q.a : -1,
       ex: q.ex || ''
-    })).filter(q => q.q && q.opts.length >= 2 && q.a >= 0 && q.a < q.opts.length);
+    })).filter(q => q.q && q.opts.length >= 2 && q.a >= 0 && q.a < q.opts.length)
+       .map(shuffleOptions);
   }
 
   // Challenge-Pools direkt aus den Fach-Daten bauen, damit neue Quizfragen

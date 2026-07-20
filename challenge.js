@@ -11,6 +11,8 @@
   let uiTicker = null;
   let savedResult = false;
   let qShownAt = 0; // performance.now when question rendered
+  let qShownForQi = -1; // welche Frage-Nr. qShownAt zuletzt gesetzt hat
+  let renderedKey = ''; // signatur der zuletzt gebauten Frage-DOM (qi + locked-state)
 
   // settings draft for create
   const draft = { subjects: ['bfk2'], count: 10, secondsPerQ: 15, mode: 'classic' };
@@ -72,10 +74,23 @@
     return room && room.players ? Object.keys(room.players).length : 0;
   }
 
+  // Nur Spieler zählen, die noch aktiv mitspielen (nicht ausgeschieden).
+  // Ausgeschiedene (sudden/survival) senden nie eine Antwort → sonst wartet
+  // der Host jede Runde bis zum vollen Timeout ("lag, nhảy câu hỏi").
+  function activePlayers() {
+    if (!room || !room.players) return [];
+    return Object.keys(room.players).filter((p) => {
+      const sc = room.scores && room.scores[p];
+      return !(sc && sc.eliminated);
+    });
+  }
+
   function allAnswered(qi) {
     if (!room || !room.players) return false;
     const ans = (room.answers && room.answers[String(qi)]) || {};
-    return Object.keys(room.players).every((p) => ans[p] != null);
+    const active = activePlayers();
+    if (!active.length) return true;
+    return active.every((p) => ans[p] != null);
   }
 
   function stopTimers() {
@@ -414,38 +429,53 @@
       $('liveOpts').innerHTML = '';
       return;
     }
-    $('liveCat').textContent = q.cat || '—';
-    $('liveSub').textContent = q.subject === 'deutsch' ? 'Deutsch' : 'BfK-2';
-    $('liveQuestion').textContent = q.q;
     const mine = myAnswerFor(qi);
     answeredThisQ = !!mine;
     const locked = answeredThisQ;
-    if (!locked) qShownAt = performance.now();
-    $('liveOpts').innerHTML = (q.opts || [])
-      .map((o, i) => {
-        let cls = 'opt';
-        if (locked) {
-          if (i === q.a) cls += ' correct';
-          if (mine && Number(mine.choice) === i && i !== q.a) cls += ' wrong';
-        }
-        return (
-          '<button type="button" class="' +
-          cls +
-          '" data-i="' +
-          i +
-          '"' +
-          (locked ? ' disabled' : '') +
-          '>' +
-          o +
-          '</button>'
-        );
-      })
-      .join('');
-    if (!locked) {
-      $('liveOpts').querySelectorAll('.opt').forEach((btn) => {
-        btn.addEventListener('click', () => onAnswer(Number(btn.getAttribute('data-i'))));
-      });
+
+    // Zeitmessung nur EINMAL pro Frage setzen (nicht bei jedem Poll-Re-Render),
+    // sonst ist die Speed-Bonuszeit immer ~0.
+    if (qShownForQi !== qi) {
+      qShownAt = performance.now();
+      qShownForQi = qi;
     }
+
+    // Optionen-DOM nur neu bauen, wenn sich Frage-Nr. oder Lock-Status ändert.
+    // Sonst flackert es bei jedem Poll (1x/Sek.) und jeder Gegner-Antwort.
+    const key = qi + '|' + (locked ? 'L' : 'U') + '|' + (mine ? mine.choice : '');
+    if (key !== renderedKey) {
+      renderedKey = key;
+      $('liveCat').textContent = q.cat || '—';
+      $('liveSub').textContent = q.subject === 'deutsch' ? 'Deutsch' : 'BfK-2';
+      $('liveQuestion').textContent = q.q;
+      $('liveOpts').innerHTML = (q.opts || [])
+        .map((o, i) => {
+          let cls = 'opt';
+          if (locked) {
+            if (i === q.a) cls += ' correct';
+            if (mine && Number(mine.choice) === i && i !== q.a) cls += ' wrong';
+          }
+          return (
+            '<button type="button" class="' +
+            cls +
+            '" data-i="' +
+            i +
+            '"' +
+            (locked ? ' disabled' : '') +
+            '>' +
+            o +
+            '</button>'
+          );
+        })
+        .join('');
+      if (!locked) {
+        $('liveOpts').querySelectorAll('.opt').forEach((btn) => {
+          btn.addEventListener('click', () => onAnswer(Number(btn.getAttribute('data-i'))));
+        });
+      }
+    }
+
+    // Statuszeile + Scoreboard sind billig und dürfen jedes Mal aktualisiert werden.
     $('liveWait').textContent = locked
       ? allAnswered(qi)
         ? 'Alle haben geantwortet…'
@@ -459,6 +489,7 @@
     view('live');
     $('countdownCard').classList.remove('hidden');
     $('questionCard').classList.add('hidden');
+    renderedKey = ''; // nächste Frage muss frisch gebaut werden
     startUiTicker();
   }
 
@@ -612,7 +643,7 @@
     cleanupSub();
     unsub = LearnDB.subscribeChallengeRoom(code, (val) => {
       if (val) applyRoom(val);
-    }, 1200);
+    }, 700);
   }
 
   /* ===== Actions ===== */

@@ -1282,6 +1282,24 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
   </div>
 </section>
 
+<!-- ===== GK PRÜFUNGEN (Übungsaufgaben im Stil Buß-Schroeder) ===== -->
+<section class="view" id="v-gk-pruefungen">
+  <div class="back" onclick="go('#/exam/gk')">← GK · Prüfungstraining</div>
+  <div class="section-head">
+    <h2>🗂️ GK · Prüfungen</h2>
+    <p>3 Übungsaufgaben (FS1-Form) im Stil von Buß-Schroeder · mit Lösungsbogen</p>
+  </div>
+  <div class="hint" style="margin-bottom:14px">Wie im Prüfungsbogen: Aufgabe lesen → in ganzen Sätzen selbst schreiben → erst dann Lösungsbogen öffnen. Themen: Partizipation, Grundgesetz, Gewaltenteilung, direkte Demokratie, Karikatur, Grundrechte. Lösungen DE + VI (Begriffe antippen).</div>
+  <div class="grid">
+    <a class="tile" href="gk-ka1.html"><div class="ic">📄</div><h3>Übung Nr. 1</h3><p>Partizipation · Grundgesetz · Gleichberechtigung (Art. 3).</p><div class="meta">30 P. · Öffnen →</div></a>
+    <a class="tile" href="gk-ka1-loesung.html"><div class="ic">✅</div><h3>Lösung Nr. 1</h3><p>Musterlösung DE + VI zur Selbstkontrolle.</p><div class="meta">Öffnen →</div></a>
+    <a class="tile" href="gk-ka2.html"><div class="ic">📄</div><h3>Übung Nr. 2</h3><p>Gewaltenteilung · Gewaltenverschränkung · Medien · Vertrauensfrage.</p><div class="meta">30 P. · Öffnen →</div></a>
+    <a class="tile" href="gk-ka2-loesung.html"><div class="ic">✅</div><h3>Lösung Nr. 2</h3><p>Musterlösung DE + VI zur Selbstkontrolle.</p><div class="meta">Öffnen →</div></a>
+    <a class="tile" href="gk-ka3.html"><div class="ic">📄</div><h3>Übung Nr. 3</h3><p>Direkte Demokratie · Karikatur · Menschen-/Bürgerrechte · Mehrheitsprinzip.</p><div class="meta">30 P. · Öffnen →</div></a>
+    <a class="tile" href="gk-ka3-loesung.html"><div class="ic">✅</div><h3>Lösung Nr. 3</h3><p>Musterlösung DE + VI zur Selbstkontrolle.</p><div class="meta">Öffnen →</div></a>
+  </div>
+</section>
+
 <!-- ===== BFK-1 THEME DETAIL ===== -->
 <section class="view bfk-scope" id="v-bfk1-theme">
   <div class="back" onclick="go('#/bfk/1')">← BfK-1</div>
@@ -2124,9 +2142,17 @@ function renderExamDetail(examId){
     html+='<button type="button" class="practice-mode" data-mode="muster"><span class="pm-ic">🗂️</span><b>Musterprüfung</b><span>Musterprüfung + Lösung</span></button>';
   }
   if(ex.id==='gk'){
+    html+='<button type="button" class="practice-mode" data-mode="pruefungen"><span class="pm-ic">🗂️</span><b>Prüfungen</b><span>3 Übungsblätter (FS1) + Lösung</span></button>';
     html+='<button type="button" class="practice-mode" data-mode="freitext"><span class="pm-ic">✍️</span><b>Freitext FS1</b><span>Übungsaufgaben + Musterlösung</span></button>';
   }
   html+='</div></div>';
+
+  // GK Prüfungsbögen (statische KA-Seiten wie BfK-1)
+  if(ex.id==='gk'){
+    html+='<div class="card practice-section"><h3>🗂️ Prüfungsbögen (Buß-Schroeder-Stil)</h3>';
+    html+='<p class="muted" style="font-size:.85em;margin:0 0 10px">Wie bei BfK-1: fertige Prüfungsblätter zum Ausdrucken/Selbstschreiben, Lösungsbogen DE + VI zur Selbstkontrolle.</p>';
+    html+='<div class="practice-actions"><button type="button" class="btn" onclick="go(\'#/exam/gk/pruefungen\')">🗂️ Alle Prüfungen öffnen →</button></div></div>';
+  }
 
   // GK freitext sets preview on exam hub
   if(ex.id==='gk' && window.GK_UEBUNGEN && GK_UEBUNGEN.length){
@@ -2208,6 +2234,7 @@ function renderExamDetail(examId){
     btn.onclick=()=>{
       const mode=btn.getAttribute('data-mode');
       if(mode==='muster'){ go('#/bfk/2/pruefungen'); return; }
+      if(mode==='pruefungen'){ go('#/exam/gk/pruefungen'); return; }
       if(mode==='freitext'){ go('#/exam/gk/uebung'); return; }
       const ids=pickIds();
       if((mode==='mixed'||mode==='quick'||mode==='exam') && themes.length && !ids.length){
@@ -3138,6 +3165,7 @@ const ROUTES = {
   "#/exam/englisch":{view:"v-exam-detail", crumbs:[["KA","#/on-thi"],["Englisch","#/exam/englisch"]], examId:"englisch"},
   "#/exam/gk":     {view:"v-exam-detail", crumbs:[["KA","#/on-thi"],["GK","#/exam/gk"]], examId:"gk"},
   "#/exam/gk/uebung": {view:"v-gk-uebung", crumbs:[["Training","#/on-thi"],["GK","#/exam/gk"],["Freitext","#/exam/gk/uebung"]], gkUebung:true},
+  "#/exam/gk/pruefungen": {view:"v-gk-pruefungen", crumbs:[["Training","#/on-thi"],["GK","#/exam/gk"],["Prüfungen","#/exam/gk/pruefungen"]]},
   "#/bfk":         {view:"v-bfk",    crumbs:[["BfK","#/bfk"]]},
   "#/bfk/1":       {view:"v-bfk1",   crumbs:[["BfK","#/bfk"],["BfK-1","#/bfk/1"]], bfk1:true},
   "#/bfk/1/quiz":  {view:"v-bfk1-quiz", crumbs:[["BfK","#/bfk"],["BfK-1","#/bfk/1"],["Quiz","#/bfk/1/quiz"]], bfk1quiz:true},
@@ -3323,6 +3351,15 @@ SUBJECTS.forEach(s=>{
 idx("Startseite / Fächer","Alle Fächer der Lern-App","App","#/",null,"home start fächer menü lernen");
 idx("Prüfungstraining","Klassenarbeiten · Quiz · Themen","KA","#/on-thi",null,"klassenarbeit prüfung ka termine training quiz");
 idx("GK Freitext FS1","Übungsaufgaben + Musterlösung · B1-Begriffe DE→VI","GK","#/exam/gk/uebung",null,"freitext erlaeutern beurteilen grundgesetz partizipation musterlosung");
+idx("GK Prüfungen","3 Übungsblätter (FS1) + Lösungsbogen","GK","#/exam/gk/pruefungen",null,"gk prüfung klassenarbeit übungsaufgaben buß-schroeder demokratie gewaltenteilung grundrechte karikatur");
+try{[
+  ["Übung Nr. 1 – GK","Partizipation · Grundgesetz · Gleichberechtigung · 30 P.","gk-ka1.html","gk ka1 partizipation grundgesetz gleichberechtigung grundrechte instagram einflussnahme"],
+  ["Lösung GK Übung 1","Musterlösung DE + VI","gk-ka1-loesung.html","loesung gk ka1 partizipation grundgesetz gleichberechtigung"],
+  ["Übung Nr. 2 – GK","Gewaltenteilung · Gewaltenverschränkung · Medien · Vertrauensfrage · 30 P.","gk-ka2.html","gk ka2 gewaltenteilung gewaltenverschraenkung legislative exekutive judikative medien vierte gewalt vertrauensfrage misstrauensvotum"],
+  ["Lösung GK Übung 2","Musterlösung DE + VI","gk-ka2-loesung.html","loesung gk ka2 gewaltenteilung medien vertrauensfrage"],
+  ["Übung Nr. 3 – GK","Direkte Demokratie · Karikatur · Menschen-/Bürgerrechte · Mehrheitsprinzip · 30 P.","gk-ka3.html","gk ka3 volksabstimmung volksinitiative volksbegehren volksentscheid karikatur menschenrechte buergerrechte volkssouveraenitaet repraesentative demokratie mehrheitsprinzip"],
+  ["Lösung GK Übung 3","Musterlösung DE + VI","gk-ka3-loesung.html","loesung gk ka3 karikatur grundrechte demokratie"],
+].forEach(a=>idx(a[0],a[1],"Prüfung",a[2],null,a[3]));}catch(e){}
 idx("Abschlussprüfung","Struktur · Themen · GAP","Prüfung","#/abschluss",null,"abschlussprüfung gap ihk teil1 teil2");
 try{(ABSCHLUSS_THEMEN||[]).forEach(t=>{
   idx(t.name, t.desc||"Abschlussprüfung", "GAP", t.route||"#/abschluss", null, "abschluss "+t.name+" "+(t.desc||""));
