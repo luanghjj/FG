@@ -831,12 +831,36 @@
                   <span class="term" data-de="Nationalsozialismus" data-vi="chủ nghĩa Quốc xã">NS</span>: keine
                   <span class="term" data-de="Machtkonzentration" data-vi="tập trung quyền lực">Machtkonzentration</span>).</p>
                   <p><span class="term" data-de="Gewaltenverschränkung" data-vi="đan xen quyền lực">Gewaltenverschränkung</span>:
-                  die Gewalten greifen ineinander (z. B.
-                  <span class="term" data-de="Bundestag" data-vi="Quốc hội Liên bang Đức">Bundestag</span> wählt
-                  <span class="term" data-de="Bundeskanzler" data-vi="Thủ tướng Liên bang">Kanzler</span>; wählt
-                  <span class="term" data-de="Richter" data-vi="thẩm phán">Richter</span>hälften).</p>
+                  die Gewalten sind nicht völlig getrennt, sondern
+                  <b>greifen ineinander</b> und kontrollieren sich gegenseitig.</p>
 
-                  <h3 class="sub">2. Horizontal + vertikal</h3>
+                  <h3 class="sub">2. Beispiele der Gewaltenverschränkung</h3>
+                  <table>
+                    <tr><th>Organ (Gewalt)</th><th>Handlung</th><th>Organ (Gewalt)</th></tr>
+                    <tr>
+                      <td><span class="term" data-de="Bundestag" data-vi="Quốc hội Liên bang Đức">Bundestag</span> (<span class="term" data-de="Legislative" data-vi="lập pháp">Legislative</span>)</td>
+                      <td><span class="term" data-de="wählt und kann abwählen" data-vi="bầu và có thể bãi nhiệm">wählt und kann abwählen</span> (Art. 63 / 67 GG)</td>
+                      <td><span class="term" data-de="Bundeskanzler" data-vi="Thủ tướng Liên bang">Bundeskanzler</span> (<span class="term" data-de="Exekutive" data-vi="hành pháp">Exekutive</span>)</td>
+                    </tr>
+                    <tr>
+                      <td><span class="term" data-de="Bundespräsident" data-vi="Tổng thống Liên bang">Bundespräsident</span> (Exekutive)</td>
+                      <td><span class="term" data-de="ernennt" data-vi="bổ nhiệm">ernennt</span></td>
+                      <td>die 16 <span class="term" data-de="Bundesverfassungsrichter" data-vi="thẩm phán Tòa án Hiến pháp Liên bang">Bundesverfassungsrichter</span> (<span class="term" data-de="Judikative" data-vi="tư pháp">Judikative</span>)</td>
+                    </tr>
+                    <tr>
+                      <td><span class="term" data-de="Landesregierungen" data-vi="chính phủ các bang">Landesregierungen</span> (Exekutive)</td>
+                      <td><span class="term" data-de="entsenden Mitglieder" data-vi="cử thành viên">entsenden Mitglieder</span></td>
+                      <td><span class="term" data-de="Bundesrat" data-vi="Hội đồng Liên bang">Bundesrat</span> (Legislative)</td>
+                    </tr>
+                    <tr>
+                      <td>Bundestag + Bundesrat (Legislative)</td>
+                      <td><span class="term" data-de="wählen je zur Hälfte" data-vi="mỗi bên bầu một nửa">wählen je zur Hälfte</span></td>
+                      <td>Bundesverfassungsrichter (Judikative)</td>
+                    </tr>
+                  </table>
+                  <div class="note" style="background:#fef2f2;border-left-color:#dc2626;color:#b91c1c">⚠️ <b>Achtung:</b> Der <b>Bundesrat</b> gehört zur <b>Legislative</b>, obwohl seine Mitglieder aus den <b>Landesregierungen (Exekutive)</b> kommen — genau <b>das</b> ist Gewaltenverschränkung. Nicht mit <b>Gewaltenteilung</b> (= Trennung) verwechseln!<br><span style="font-size:.92em">🇻🇳 Bundesrat thuộc <b>lập pháp</b> dù thành viên đến từ chính phủ các bang (hành pháp) — đó chính là sự đan xen quyền lực; đừng nhầm với phân quyền (= tách rời).</span></div>
+
+                  <h3 class="sub">3. Horizontal + vertikal</h3>
                   <ul>
                     <li><b><span class="term" data-de="horizontal" data-vi="theo chiều ngang">horizontal</span>:</b> Legislative · Exekutive · Judikative</li>
                     <li><b><span class="term" data-de="vertikal" data-vi="theo chiều dọc">vertikal</span>:</b>
@@ -849,7 +873,7 @@
                   Wahlen und Abstimmungen; durch besondere
                   <span class="term" data-de="Organe" data-vi="cơ quan / cơ cấu">Organe</span>.</div>
 
-                  <h3 class="sub">3. Weimarer Reichsverfassung vs. Grundgesetz (Überblick)</h3>
+                  <h3 class="sub">4. Weimarer Reichsverfassung vs. Grundgesetz (Überblick)</h3>
                   <table>
                     <tr><th></th><th><span class="term" data-de="Weimarer Reichsverfassung" data-vi="Hiến pháp Weimar">WRV</span></th>
                     <th><span class="term" data-de="Grundgesetz" data-vi="Luật cơ bản / Hiến pháp CHLB Đức">GG</span></th></tr>
