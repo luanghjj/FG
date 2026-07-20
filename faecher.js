@@ -1148,7 +1148,9 @@
       ],
     },
     gk: {
-      examThemes: [],
+      // KA 1: Volksabstimmung, repräsentative Demokratie, Mehrheitsprinzip,
+      // Gewaltenteilung + Gewaltenverschränkung, Menschen-/Bürgerrechte, Karikatur
+      examThemes: ["partizipation", "demokratie-gg", "gewaltenteilung", "grundrechte", "karikatur-methode"],
       pruefungen: [
         { title: "Übung Nr. 1", desc: "Partizipation · Grundgesetz · Gleichberechtigung", exam: "gk-ka1.html", loesung: "gk-ka1-loesung.html" },
         { title: "Übung Nr. 2", desc: "Gewaltenteilung · Gewaltenverschränkung · Medien · Vertrauensfrage", exam: "gk-ka2.html", loesung: "gk-ka2-loesung.html" },
