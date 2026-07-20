@@ -581,6 +581,33 @@
             answers: ["apologize", "apologise", "say sorry", "apology"],
             answer: "Apologize",
             ex: "Always apologize before/while solving."
+          },
+          { theme:"telephoning", cat:"Phrases", q:"How do you politely answer a business call?", opts:["Yeah, what?","Good morning, Tech Solutions. Anna speaking.","Who is this?","Wait."], a:1, ex:"Company + name is professional." },
+          { theme:"telephoning", cat:"Message", q:"The person is not available. What do you offer?", opts:["Nothing, hang up","Would you like to leave a message?","Call again in a year","Shout the name"], a:1, ex:"Offer to take a message or a callback." },
+          { theme:"telephoning", cat:"Call type", q:"A customer asks about your opening hours. This is a(n) …", opts:["complaint call","information call","problem call","private call"], a:1, ex:"Asking for information = information call." },
+          { theme:"complaints-restaurant", cat:"Service", q:"Best reaction to „My soup is cold.“?", opts:["That's normal.","I'm terribly sorry. I'll bring you a fresh one right away.","Not my problem.","Pay first."], a:1, ex:"Apologize + solve immediately." },
+          { theme:"complaints-restaurant", cat:"Attitude", q:"What should you NEVER do with a complaining guest?", opts:["Listen","Argue with the guest","Apologize","Offer a solution"], a:1, ex:"Never argue — stay calm and polite." },
+          { theme:"quantifiers", cat:"Grammar", q:"How ___ customers are waiting?", opts:["much","many","a little","less"], a:1, ex:"customers = countable plural → many." },
+          { theme:"quantifiers", cat:"Grammar", q:"We only have ___ time before we open.", opts:["many","a few","a little","few ones"], a:2, ex:"time = uncountable → a little." },
+          { theme:"present-future-tenses", cat:"Tenses", q:"„Look at the queue — we ___ a busy day.“", opts:["have had","are going to have","had","have been having"], a:1, ex:"Visible evidence → going-to future." },
+          { theme:"present-future-tenses", cat:"Tenses", q:"„The shop ___ at 8 a.m. every morning.“", opts:["is opening","opens","is going to open","opened"], a:1, ex:"Routine/timetable → simple present (+s)." },
+          {
+            type: "fill",
+            theme: "present-future-tenses",
+            cat: "Tenses",
+            q: "Now / at the moment → am/is/are + verb-___",
+            answers: ["ing", "-ing", "ing form"],
+            answer: "ing",
+            ex: "Present progressive = am/is/are + verb-ing."
+          },
+          {
+            type: "fill",
+            theme: "telephoning",
+            cat: "Polite",
+            q: "Polite request to wait: „Could you ___ on, please?“",
+            answers: ["hold", "hold on"],
+            answer: "hold",
+            ex: "hold on = warten / am Apparat bleiben."
           }
         ]
       },
@@ -724,6 +751,7 @@
                   <span class="term" data-de="repräsentative Demokratie" data-vi="dân chủ đại diện">repräsentativen Demokratie</span>;
                   direkte Formen ergänzen.</div>
                   <div class="note">🃏 Mehr Vokabeln: Teilhabe · Willensbildung · Volksinitiative · Volksbegehren · Referendum · Populismus</div>
+                  <div class="note" style="background:#fef2f2;border-left-color:#dc2626;color:#b91c1c">⚠️ <b>Häufiger Fehler:</b> In Deutschland gibt es <b>keinen bundesweiten Volksentscheid</b> über Sachfragen wie in der Schweiz — direkte Abstimmungen nur auf <b>Kommunal-</b> und <b>Landesebene</b>. Reihenfolge merken: <b>Volksinitiative → Volksbegehren → Volksentscheid</b>.<br><span style="font-size:.92em">🇻🇳 Ở Đức <b>không có</b> trưng cầu dân ý toàn liên bang như Thụy Sĩ — chỉ ở cấp địa phương/bang. Nhớ thứ tự: sáng kiến → thỉnh nguyện → trưng cầu.</span></div>
                 `
               },
               {
@@ -938,6 +966,13 @@
                   <div class="note">💡 Laut Material: Vertrauensfrage oft „weniger
                   <span class="term" data-de="nachteilig" data-vi="bất lợi">nachteilig</span>“ für die
                   <span class="term" data-de="Partei" data-vi="đảng">Partei</span>, weil Fokus auf dem Kanzler liegt — nicht automatisch auf der ganzen Partei.</div>
+
+                  <h3 class="sub">4. Beispiele aus der Geschichte</h3>
+                  <ul>
+                    <li><b>Art. 67 (Misstrauensvotum):</b> 1982 wurde <span class="term" data-de="Helmut Kohl" data-vi="Helmut Kohl (Thủ tướng CDU)">Helmut Kohl</span> (CDU) durch ein konstruktives Misstrauensvotum zum Kanzler gewählt und löste <span class="term" data-de="Helmut Schmidt" data-vi="Helmut Schmidt (Thủ tướng SPD)">Helmut Schmidt</span> (SPD) ab — bisher das <b>einzige erfolgreiche</b>. <span class="term" data-de="1972" data-vi="năm 1972">1972</span> scheiterte ein Versuch gegen <span class="term" data-de="Willy Brandt" data-vi="Willy Brandt (Thủ tướng SPD)">Willy Brandt</span>.</li>
+                    <li><b>Art. 68 (Vertrauensfrage):</b> 2005 stellte <span class="term" data-de="Gerhard Schröder" data-vi="Gerhard Schröder (Thủ tướng SPD)">Gerhard Schröder</span> die Vertrauensfrage und verlor sie <b>absichtlich</b> → <span class="term" data-de="Neuwahlen" data-vi="bầu cử lại / bầu cử sớm">Neuwahlen</span>. 2024 tat <span class="term" data-de="Olaf Scholz" data-vi="Olaf Scholz (Thủ tướng SPD)">Olaf Scholz</span> dasselbe → Neuwahlen 2025.</li>
+                  </ul>
+                  <div class="note" style="background:#fef2f2;border-left-color:#dc2626;color:#b91c1c">⚠️ <b>Nicht verwechseln:</b> Die <b>Vertrauensfrage</b> stellt der <b>Kanzler selbst</b> (Art. 68). Das <b>Misstrauensvotum</b> geht vom <b>Parlament/der Opposition</b> aus (Art. 67).<br><span style="font-size:.92em">🇻🇳 Vertrauensfrage do <b>chính Thủ tướng</b> đặt ra; Misstrauensvotum do <b>Quốc hội / phe đối lập</b> khởi xướng.</span></div>
                 `
               },
               {
@@ -1062,6 +1097,8 @@
                   <span class="term" data-de="vollziehende Gewalt" data-vi="quyền lực hành pháp">vollziehende Gewalt</span> und
                   <span class="term" data-de="Rechtsprechung" data-vi="tư pháp / xét xử">Rechtsprechung</span>
                   (<span class="term" data-de="Art. 1 Abs. 3 GG" data-vi="Điều 1 khoản 3 Luật cơ bản">Art. 1 Abs. 3 GG</span>).</div>
+
+                  <div class="note" style="background:#fef2f2;border-left-color:#dc2626;color:#b91c1c">⚠️ <b>Nicht verwechseln:</b> Am <b>Wortlaut</b> erkennen — <b>Menschenrechte</b> stehen für <b>alle</b> („Jeder…“, „Niemand…“, „Alle Menschen…“), <b>Bürgerrechte</b> nur für Deutsche („Alle Deutschen…“, z. B. Art. 8, 11, 12). Grundrechte gelten <b>auch für Menschen, die die Demokratie ablehnen</b> — sie sind nicht an „richtiges“ Verhalten geknüpft.<br><span style="font-size:.92em">🇻🇳 Nhìn <b>cách diễn đạt</b>: „Jeder/Alle Menschen“ = nhân quyền (cho mọi người); „Alle Deutschen“ = quyền công dân (chỉ người Đức). Quyền cơ bản áp dụng cho <b>cả</b> người phản đối dân chủ.</span></div>
                 `
               }
             ]
@@ -1216,7 +1253,16 @@
             answers: ["unantastbar", "unantastbar.", "unantasbar"],
             answer: "unantastbar",
             ex: "Kern des Menschenbildes im GG."
-          }
+          },
+          { theme:"gewaltenteilung", cat:"Verschränkung", q:"Welches Beispiel zeigt Gewaltenverschränkung?", opts:["Ein Gericht kocht das Mittagessen","Der Bundestag (Legislative) wählt den Bundeskanzler (Exekutive)","Ein Richter fährt Bus","Ein Bürger zahlt Steuern"], a:1, ex:"Legislative und Exekutive greifen ineinander (Art. 63 GG)." },
+          { theme:"gewaltenteilung", cat:"Verschränkung", q:"Zu welcher Gewalt gehört der Bundesrat?", opts:["Judikative","Legislative","Exekutive","Zu keiner"], a:1, ex:"Legislative — obwohl die Mitglieder aus den Landesregierungen (Exekutive) kommen." },
+          { theme:"gewaltenteilung", cat:"BVerfG", q:"Wer wählt die 16 Bundesverfassungsrichter?", opts:["Nur der Bundespräsident allein","Bundestag und Bundesrat je zur Hälfte","Nur die Bundesregierung","Das Volk direkt"], a:1, ex:"Je zur Hälfte von Bundestag und Bundesrat; der Bundespräsident ernennt sie." },
+          { theme:"demokratie-gg", cat:"Mehrheitsprinzip", q:"Was bedeutet das Mehrheitsprinzip?", opts:["Der Stärkste entscheidet allein","Die Mehrheit entscheidet, Minderheitenrechte bleiben geschützt","Nur Einstimmigkeit zählt","Nur der Kanzler entscheidet"], a:1, ex:"Mehrheit entscheidet, aber Grund- und Minderheitsrechte gelten weiter." },
+          { theme:"vertrauensfrage-misstrauen", cat:"Geschichte", q:"Wer wurde 1982 durch ein konstruktives Misstrauensvotum Kanzler?", opts:["Willy Brandt","Helmut Kohl","Gerhard Schröder","Olaf Scholz"], a:1, ex:"Kohl (CDU) löste Helmut Schmidt (SPD) ab — bisher das einzige erfolgreiche." },
+          { theme:"vertrauensfrage-misstrauen", cat:"Geschichte", q:"Warum stellte Schröder 2005 (und Scholz 2024) die Vertrauensfrage?", opts:["Um mehr Gehalt zu bekommen","Um sie absichtlich zu verlieren und Neuwahlen zu erreichen","Um Richter zu ernennen","Um den Bundesrat aufzulösen"], a:1, ex:"Verlorene Vertrauensfrage (Art. 68) → Auflösung des Bundestages → Neuwahlen." },
+          { theme:"karikatur-methode", cat:"Methode", q:"In welcher Reihenfolge interpretiert man eine Karikatur?", opts:["Fazit → Beschreibung → Einleitung","Einleitung → Beschreibung → Deutung → Fazit","Nur Deutung","Nur eigene Meinung"], a:1, ex:"Erst beschreiben, dann deuten, dann werten." },
+          { theme:"karikatur-methode", cat:"Redemittel", q:"Welcher Satzanfang passt zur Beschreibung (nicht zur Deutung)?", opts:["Der Karikaturist möchte ausdrücken, dass …","Im Vordergrund ist … zu sehen.","Damit kritisiert er …","Meiner Meinung nach …"], a:1, ex:"Beschreibung = was man sieht; Deutung/Kritik kommt später." },
+          { theme:"partizipation", cat:"Digital", q:"Ein Vorteil digitaler Partizipation ist …", opts:["Anonymität","weltweiter, schneller Zugang","Informationsflut","unqualifizierte Beiträge"], a:1, ex:"Schneller, breiter Zugang; Nachteile sind Anonymität und Informationsflut." }
         ]
       },
       {
@@ -1295,7 +1341,9 @@
       // KA: alle Themen (Telephoning, Present/Future tenses, Complaints, Quantifiers)
       examThemes: ["telephoning", "present-future-tenses", "complaints-restaurant", "quantifiers"],
       pruefungen: [
-        { title: "Class Test (Mock)", desc: "Telephoning · Complaints · Quantifiers · Tenses · 50 P.", exam: "englisch-ka1.html", loesung: "englisch-ka1-loesung.html" },
+        { title: "Class Test 1 (Mock)", desc: "Telephoning · Complaints · Quantifiers · Tenses · 50 P.", exam: "englisch-ka1.html", loesung: "englisch-ka1-loesung.html" },
+        { title: "Class Test 2 (Mock)", desc: "Problem call · complaints · few/little · tenses · 50 P.", exam: "englisch-ka2.html", loesung: "englisch-ka2-loesung.html" },
+        { title: "Class Test 3 (Mock)", desc: "Dialogue writing · C/U nouns · error correction · tenses · 50 P.", exam: "englisch-ka3.html", loesung: "englisch-ka3-loesung.html" },
       ],
     },
     gk: {

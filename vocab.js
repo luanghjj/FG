@@ -523,10 +523,10 @@
 #v-abschluss .term, #quizArea .term, #bfk1QuizArea .term, #fachQuizArea .term,
 [data-vocab-content] .term {
   display:inline !important;
-  border-bottom:1.5px dashed #60a5fa;
-  color:#2563eb;
+  border-bottom:1.5px dotted #dc2626;
+  color:inherit;
   cursor:pointer;
-  font-weight:650;
+  font-weight:600;
   padding:0 1px;
   border-radius:3px;
   white-space:inherit;
@@ -534,13 +534,13 @@
 #bfk1ThemeBody .term::after, #fachThemeBody .term::after, #v-kueche .term::after,
 #v-fleisch .term::after, #v-abschluss .term::after, #quizArea .term::after,
 #bfk1QuizArea .term::after, #fachQuizArea .term::after, [data-vocab-content] .term::after {
-  content:"VI"; font-size:.55em; font-weight:800; margin-left:2px; vertical-align:super; color:#93c5fd;
+  content:"VI"; font-size:.55em; font-weight:800; margin-left:2px; vertical-align:super; color:#f87171;
 }
 #bfk1ThemeBody .term.open, #fachThemeBody .term.open, #v-kueche .term.open, #v-fleisch .term.open,
 #v-abschluss .term.open, #quizArea .term.open, #bfk1QuizArea .term.open, #fachQuizArea .term.open,
 [data-vocab-content] .term.open {
-  background:#dbeafe;
-  box-shadow:0 0 0 2px rgba(37,99,235,.18);
+  background:#fef2f2;
+  box-shadow:0 0 0 2px rgba(220,38,38,.18);
 }
 .term-vi{display:inline;margin-left:4px;padding:1px 7px;border-radius:999px;background:#ecfdf5;color:#047857;border:1px solid #a7f3d0;font-size:.78em;font-weight:650}
 .term-vi.hidden{display:none!important}
