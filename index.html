@@ -1397,7 +1397,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 </div>
 
 <script src="./supabase.js?v=12"></script>
-<script src="./vocab.js?v=15"></script>
+<script src="./vocab.js?v=20"></script>
 <script src="./bfk1-data.js?v=17"></script>
 <script src="./bfk1-quiz.js?v=12"></script>
 <script src="./bfk2-quiz.js?v=1"></script>
@@ -2738,7 +2738,7 @@ function bfk1RenderQuestion(){
     const sk=document.getElementById('b1skip'); if(sk) sk.onclick=()=>{ b1Wrong.push(q); b1Record(q,false); b1Index++; bfk1RenderQuestion(); };
     if(input) input.addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); finish(); }});
     const next=document.getElementById('b1next'); if(next) next.onclick=()=>{ b1Index++; bfk1RenderQuestion(); };
-    try{ if(window.bindTerms) bindTerms(area); }catch(e){}
+    try{ if(window.enableVocabOn) enableVocabOn(area); else if(window.bindTerms) bindTerms(area); }catch(e){}
     return;
   }
 
@@ -2775,7 +2775,7 @@ function bfk1RenderQuestion(){
     };
   });
   document.getElementById('b1next').onclick=()=>{ b1Index++; bfk1RenderQuestion(); };
-  try{ if(window.bindTerms) bindTerms(area); }catch(e){}
+  try{ if(window.enableVocabOn) enableVocabOn(area); else if(window.bindTerms) bindTerms(area); }catch(e){}
 }
 function bfk1QuizResult(){
   b1StopTimer();
@@ -2959,7 +2959,7 @@ function renderBfk1Theme(themeId){
   if(pickBtn) pickBtn.onclick=()=>go('#/bfk/1/quiz');
   const flashFocus=document.getElementById('b1ThemeFlashFocus');
   if(flashFocus) flashFocus.onclick=()=>{ const el=document.getElementById('themeFlash'); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); };
-  try{ if(window.bindTerms) bindTerms(body); }catch(e){}
+  try{ if(window.enableVocabOn) enableVocabOn(body); else if(window.bindTerms) bindTerms(body); }catch(e){}
   try{ renderThemeFlashcards(themeId, item); }catch(e){ console.warn('flash', e); }
 }
 function openPageLightbox(i){
@@ -3876,9 +3876,10 @@ function toast(msg, type){
 function setBottomNav(hash){
   try{
     // only content bodies — never whole hub views
-    if(window.bindTerms){
+    var vfn = window.enableVocabOn || window.bindTerms;
+    if(vfn){
       ['bfk1ThemeBody','fachThemeBody','quizArea','bfk1QuizArea','fachQuizArea'].forEach(function(id){
-        var n=document.getElementById(id); if(n) bindTerms(n);
+        var n=document.getElementById(id); if(n) vfn(n);
       });
     }
   }catch(e){}

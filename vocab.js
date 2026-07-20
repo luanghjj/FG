@@ -679,49 +679,63 @@
     if(scope.matches && scope.matches(CONTENT_SEL)) roots.push(scope);
     if(scope.querySelectorAll) scope.querySelectorAll(CONTENT_SEL).forEach(function(el){ roots.push(el); });
     if(!roots.length) return 0;
-    var count = 0;
-    roots.forEach(function(container){
-      var walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, {
-        acceptNode: function(node){
-          if(!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
-          var p = node.parentElement;
-          if(!p || SKIP_TAGS[p.tagName]) return NodeFilter.FILTER_REJECT;
-          if(p.closest && p.closest(SKIP_CLOSEST)) return NodeFilter.FILTER_REJECT;
-          return NodeFilter.FILTER_ACCEPT;
-        }
+    // A single sweep can leave some terms unwrapped (adjacent matches, boundary
+    // chars shared between neighbours). Repeat until a pass wraps nothing new, so
+    // ONE enableVocabOn() call (e.g. on SPA navigation) reaches full coverage.
+    // Already-wrapped .term nodes are skipped (SKIP_CLOSEST), so this converges
+    // and never double-wraps. Capped to avoid any pathological loop.
+    function onePass(){
+      var wrapped = 0;
+      // Fresh regex per pass: the shared MATCH_RE carries stateful lastIndex (g-flag).
+      // Re-entrant calls (e.g. MutationObserver firing while we mutate the DOM) would
+      // corrupt lastIndex mid-exec and skip matches. A local clone is immune.
+      var pre = new RegExp(re.source, re.flags);
+      roots.forEach(function(container){
+        var walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, {
+          acceptNode: function(node){
+            if(!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+            var p = node.parentElement;
+            if(!p || SKIP_TAGS[p.tagName]) return NodeFilter.FILTER_REJECT;
+            if(p.closest && p.closest(SKIP_CLOSEST)) return NodeFilter.FILTER_REJECT;
+            return NodeFilter.FILTER_ACCEPT;
+          }
+        });
+        var targets = [], n;
+        while((n = walker.nextNode())) targets.push(n);
+        targets.forEach(function(node){
+          var text = node.nodeValue;
+          pre.lastIndex = 0;
+          if(!pre.test(text)) return;
+          pre.lastIndex = 0;
+          var frag = document.createDocumentFragment(), last = 0, m;
+          while((m = pre.exec(text))){
+            var lead = m[1] || "", word = m[2];
+            var start = m.index + lead.length;
+            if(start > last) frag.appendChild(document.createTextNode(text.slice(last, start)));
+            var span = document.createElement("span");
+            span.className = "term";
+            span.setAttribute("data-de", word);
+            var vi = lookupVi(word); if(vi) span.setAttribute("data-vi", vi);
+            span.textContent = word;
+            frag.appendChild(span);
+            last = start + word.length;
+            wrapped++;
+            if(pre.lastIndex <= m.index) pre.lastIndex = m.index + 1; // guard against zero-length loops
+          }
+          if(last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+          if(frag.childNodes.length && node.parentNode) node.parentNode.replaceChild(frag, node);
+        });
       });
-      var targets = [], n;
-      while((n = walker.nextNode())) targets.push(n);
-      targets.forEach(function(node){
-        var text = node.nodeValue;
-        re.lastIndex = 0;
-        if(!re.test(text)) return;
-        re.lastIndex = 0;
-        var frag = document.createDocumentFragment(), last = 0, m;
-        while((m = re.exec(text))){
-          var lead = m[1] || "", word = m[2];
-          var start = m.index + lead.length;
-          if(start > last) frag.appendChild(document.createTextNode(text.slice(last, start)));
-          var span = document.createElement("span");
-          span.className = "term";
-          span.setAttribute("data-de", word);
-          var vi = lookupVi(word); if(vi) span.setAttribute("data-vi", vi);
-          span.textContent = word;
-          frag.appendChild(span);
-          last = start + word.length;
-          count++;
-          if(re.lastIndex <= m.index) re.lastIndex = m.index + 1; // guard against zero-length loops
-        }
-        if(last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
-        if(frag.childNodes.length && node.parentNode) node.parentNode.replaceChild(frag, node);
-      });
-    });
-    return count;
+      return wrapped;
+    }
+    var total = 0, passes = 0, w;
+    do { w = onePass(); total += w; passes++; } while(w > 0 && passes < 6);
+    return total;
   }
 
   function enableVocabOn(root){
     bindTerms(root);              // fill data-vi on existing manual .term
-    try{ wrapTextNodes(root); }catch(e){}  // auto-wrap all remaining dictionary terms
+    try{ wrapTextNodes(root); }catch(e){}  // auto-wrap all remaining dictionary terms (fixpoint loop → full coverage in one call)
   }
   function enrichTermsInHtml(html){ return html; } // never auto-mutate raw strings (lists/nav safety)
 
