@@ -1299,7 +1299,9 @@
     englisch: {
       // KA: alle Themen (Telephoning, Present/Future tenses, Complaints, Quantifiers)
       examThemes: ["telephoning", "present-future-tenses", "complaints-restaurant", "quantifiers"],
-      pruefungen: [],
+      pruefungen: [
+        { title: "Class Test (Mock)", desc: "Telephoning · Complaints · Quantifiers · Tenses · 50 P.", exam: "englisch-ka1.html", loesung: "englisch-ka1-loesung.html" },
+      ],
     },
     gk: {
       // KA 1: Volksabstimmung, repräsentative Demokratie, Mehrheitsprinzip,
