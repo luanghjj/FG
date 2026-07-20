@@ -2615,6 +2615,41 @@ function fachRenderQuestion(){
   const fach=window.FachForm.findFach(fQuiz.fachId);
   const meta=window.FachForm.themeMeta(fach)[q.theme]||{};
   const pct=Math.round((fQuiz.index/fQuiz.order.length)*100);
+  const isFill = (typeof b1IsFill==='function') ? b1IsFill(q) : (q.type==='fill' || (!q.opts && (q.answer||q.answers)));
+
+  // ── Freitext / Lückentext (type:"fill") ──
+  if(isFill){
+    let fhtml='<div class="quiz-bar"><span>'+(meta.icon||'')+' '+(meta.name||q.cat)+' · '+(fQuiz.index+1)+'/'+fQuiz.order.length+' · Freitext</span>';
+    fhtml+='<span class="score">'+fQuiz.score+' richtig</span></div>';
+    fhtml+='<div class="progress"><div style="width:'+pct+'%"></div></div>';
+    fhtml+='<div class="q-cat">'+(q.cat||fach.code)+' · ✍️ Freitext</div>';
+    fhtml+='<div class="q-text">'+q.q+'</div>';
+    fhtml+='<div class="q-opts"><input class="fill-input" id="fqFill" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Antwort eingeben… (Groß/Klein egal)">';
+    fhtml+='<div class="fill-actions"><button type="button" class="btn" id="fqCheck">Prüfen</button><button type="button" class="btn ghost" id="fqSkip">Überspringen</button></div></div>';
+    fhtml+='<div class="q-feedback" id="fqFb"></div><div class="q-nav" id="fqNav" style="display:none"><button type="button" class="btn" id="fqNext">Weiter →</button></div>';
+    area.innerHTML=fhtml;
+    try{ if(window.enableVocabOn) enableVocabOn(area); }catch(e){}
+    const input=document.getElementById('fqFill');
+    if(input) setTimeout(()=>input.focus(),30);
+    let fLocked=false;
+    const finish=()=>{
+      if(fLocked) return; fLocked=true;
+      const user=(document.getElementById('fqFill')||{}).value||'';
+      const ok=(typeof b1CheckAnswer==='function') ? b1CheckAnswer(q, user) : false;
+      const correct=(typeof b1CorrectText==='function') ? b1CorrectText(q) : (q.answer||((q.answers&&q.answers[0])||''));
+      const fb=document.getElementById('fqFb');
+      if(ok){ fQuiz.score++; fb.className='q-feedback show ok'; fb.textContent='✓ Richtig. '+(q.ex||''); }
+      else { fQuiz.wrong.push(q); fb.className='q-feedback show no'; fb.textContent='✗ Falsch. Richtig: '+correct+'. '+(q.ex||''); }
+      if(input) input.disabled=true;
+      document.getElementById('fqNav').style.display='block';
+    };
+    const chk=document.getElementById('fqCheck'); if(chk) chk.onclick=finish;
+    const sk=document.getElementById('fqSkip'); if(sk) sk.onclick=()=>{ fQuiz.wrong.push(q); fQuiz.index++; fachRenderQuestion(); };
+    if(input) input.addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); finish(); }});
+    document.getElementById('fqNext').onclick=()=>{ fQuiz.index++; fachRenderQuestion(); };
+    return;
+  }
+
   const order=b1Shuffle([0,1,2,3].filter(i=>q.opts && q.opts[i]!=null));
   const correctPos=order.indexOf(q.a);
   let html='<div class="quiz-bar"><span>'+(meta.icon||'')+' '+(meta.name||q.cat)+' · '+(fQuiz.index+1)+'/'+fQuiz.order.length+'</span>';
