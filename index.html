@@ -2299,6 +2299,9 @@ function renderFachHub(fachId){
       const qRoute = fach.id==='bfk1' ? '#/bfk/1/quiz' : fach.id==='bfk2' ? '#/bfk/2/quiz' : fachRoute(fach,'quiz');
       a+='<button type="button" class="btn" onclick="go(\''+qRoute+'\')">📝 Quiz üben →</button>';
     }
+    if(fach.id==='gk'){
+      a+='<button type="button" class="btn ghost" onclick="go(\'#/exam/gk/pruefungen\')">🗂️ Prüfungen →</button>';
+    }
     if(fach.external){
       a+='<a class="btn ghost" href="'+fach.external+'">App öffnen →</a>';
     }
