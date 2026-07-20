@@ -1147,6 +1147,11 @@
         { title: "Zusammenfassung KA2", desc: "LF2 Waren & Lieferung · LF3", exam: "ka2.html", loesung: null },
       ],
     },
+    englisch: {
+      // KA: alle Themen (Telephoning, Present/Future tenses, Complaints, Quantifiers)
+      examThemes: ["telephoning", "present-future-tenses", "complaints-restaurant", "quantifiers"],
+      pruefungen: [],
+    },
     gk: {
       // KA 1: Volksabstimmung, repräsentative Demokratie, Mehrheitsprinzip,
       // Gewaltenteilung + Gewaltenverschränkung, Menschen-/Bürgerrechte, Karikatur
