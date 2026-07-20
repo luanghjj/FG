@@ -1125,10 +1125,49 @@
     ];
   }
 
+  /**
+   * Prüfungs-Metadaten pro Fach (einheitlich, auch für ingest-basiertes bfk1):
+   * - examThemes: theme-item-ids der NÄCHSTEN KA (leer → Training zeigt alle Themen + Hinweis)
+   * - pruefungen: statische Prüfungsbögen [{title, desc, exam, loesung}]
+   * examThemes bleibt leer, bis der Nutzer die konkrete Themenliste je Fach liefert.
+   */
+  const FACH_EXAM_META = {
+    bfk1: {
+      examThemes: [],
+      pruefungen: [
+        { title: "Klassenarbeit Nr. 3", desc: "Froher Seeblick · Gästebewertungen, Obst, Systemgastronomie, Beleg", exam: "bfk1-ka3.html", loesung: "bfk1-ka3-loesung.html" },
+        { title: "Klassenarbeit Nr. 4", desc: "Sonnenblick · vegane Woche, Hülsenfrüchte, Bewirtungsvertrag, USt", exam: "bfk1-ka4.html", loesung: "bfk1-ka4-loesung.html" },
+        { title: "Klassenarbeit Nr. 5", desc: "Stadtkrone · Getreide/Gluten, Menüregeln, Zechprellerei, USt vor Ort", exam: "bfk1-ka5.html", loesung: "bfk1-ka5-loesung.html" },
+      ],
+    },
+    bfk2: {
+      examThemes: [],
+      pruefungen: [
+        { title: "Musterprüfung", desc: "Klassenarbeit Nr. 2 · Prüfungsbogen", exam: "kiemtra_mau.html", loesung: "loiGiai_mau.html" },
+        { title: "Zusammenfassung KA2", desc: "LF2 Waren & Lieferung · LF3", exam: "ka2.html", loesung: null },
+      ],
+    },
+    gk: {
+      examThemes: [],
+      pruefungen: [
+        { title: "Übung Nr. 1", desc: "Partizipation · Grundgesetz · Gleichberechtigung", exam: "gk-ka1.html", loesung: "gk-ka1-loesung.html" },
+        { title: "Übung Nr. 2", desc: "Gewaltenteilung · Gewaltenverschränkung · Medien · Vertrauensfrage", exam: "gk-ka2.html", loesung: "gk-ka2-loesung.html" },
+        { title: "Übung Nr. 3", desc: "Direkte Demokratie · Karikatur · Menschen-/Bürgerrechte · Mehrheitsprinzip", exam: "gk-ka3.html", loesung: "gk-ka3-loesung.html" },
+      ],
+    },
+  };
+
+  function applyExamMeta(f) {
+    const meta = FACH_EXAM_META[f.id] || {};
+    if (!Array.isArray(f.examThemes)) f.examThemes = (meta.examThemes || []).slice();
+    if (!Array.isArray(f.pruefungen)) f.pruefungen = (meta.pruefungen || []).slice();
+    return f;
+  }
+
   function buildRegistry() {
     FAECHER.length = 0;
     const bfk1 = ingestBfk1FromWindow();
-    if (bfk1) FAECHER.push(bfk1);
+    if (bfk1) FAECHER.push(applyExamMeta(bfk1));
     scaffoldOthers().forEach((f) => {
       // don't duplicate bfk1
       if (FAECHER.some((x) => x.id === f.id)) return;
@@ -1138,7 +1177,7 @@
       if (f.id === "deutsch" && (!f.quiz || !f.quiz.length) && w.DEUTSCH_QUIZ) {
         f.quiz = w.DEUTSCH_QUIZ.slice();
       }
-      FAECHER.push(f);
+      FAECHER.push(applyExamMeta(f));
     });
     return FAECHER;
   }
