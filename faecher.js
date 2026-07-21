@@ -1379,6 +1379,7 @@
     gk: {
       // KA 1: Volksabstimmung, repräsentative Demokratie, Mehrheitsprinzip,
       // Gewaltenteilung + Gewaltenverschränkung, Menschen-/Bürgerrechte, Karikatur
+      zusammenfassung: "gk-zusammenfassung.html",
       examThemes: ["partizipation", "demokratie-gg", "gewaltenteilung", "grundrechte", "karikatur-methode"],
       examChecklist: [
         "Volksabstimmung (Initiative → Begehren → Entscheid)",
@@ -1402,6 +1403,7 @@
     if (!Array.isArray(f.examThemes)) f.examThemes = (meta.examThemes || []).slice();
     if (!Array.isArray(f.pruefungen)) f.pruefungen = (meta.pruefungen || []).slice();
     if (!Array.isArray(f.examChecklist)) f.examChecklist = (meta.examChecklist || []).slice();
+    if (!f.zusammenfassung) f.zusammenfassung = meta.zusammenfassung || null;
     return f;
   }
 

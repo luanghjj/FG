@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GK – Super-Zusammenfassung (Buß-Schroeder)</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#eef2f7;color:#1a202c;padding:24px;line-height:1.65}
+.page{max-width:880px;margin:0 auto;background:#fff;border-radius:16px;box-shadow:0 6px 32px rgba(0,0,0,.13);overflow:hidden}
+.header{background:linear-gradient(135deg,#4c1d95 0%,#7c3aed 100%);color:#fff;padding:30px 40px 24px}
+.header h1{font-size:1.55em;font-weight:700;margin-bottom:4px}
+.header .sub{opacity:.88;font-size:.92em}
+.header .badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:4px 14px;font-size:.82em;font-weight:700;margin-top:12px}
+.toc{background:#f5f3ff;border-bottom:1px solid #e9d5ff;padding:12px 40px;display:flex;flex-wrap:wrap;gap:8px;font-size:.82em}
+.toc a{background:#ede9fe;color:#5b21b6;border-radius:20px;padding:4px 12px;text-decoration:none;font-weight:600;white-space:nowrap}
+.toc a:hover{background:#ddd6fe}
+.body{padding:28px 40px 24px}
+.sec{margin-bottom:30px}
+.sec-h{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #e9d5ff}
+.sec-nr{background:#4c1d95;color:#fff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9em;flex-shrink:0}
+.sec-title{font-size:1.08em;font-weight:700;color:#4c1d95;flex:1}
+h3.sub{font-size:.95em;font-weight:700;color:#5b21b6;margin:16px 0 8px}
+p{font-size:.92em;margin-bottom:6px}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.88em}
+th{background:#4c1d95;color:#fff;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border:1px solid #e2e8f0;vertical-align:top}
+tr:nth-child(even) td{background:#f7fafc}
+.de{font-size:.93em}
+.vi{color:#6b7280;font-size:.85em;font-style:italic;margin:2px 0 8px}
+.vi::before{content:"➡ "}
+.example{background:#f5f3ff;border-left:3px solid #a78bfa;border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0}
+.example .label{font-size:.78em;font-weight:700;color:#7c3aed;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.note{background:#fef3c7;border-left:3px solid #f59e0b;border-radius:0 6px 6px 0;padding:8px 14px;margin:10px 0;font-size:.85em;color:#92400e}
+.warn{background:#fef2f2;border-left:3px solid #dc2626;border-radius:0 6px 6px 0;padding:8px 14px;margin:10px 0;font-size:.85em;color:#b91c1c}
+.formula{background:#f8fafc;border-left:3px solid #4c1d95;padding:9px 14px;border-radius:6px;font-size:.88em;font-weight:600;margin:10px 0}
+.mchip,.bchip{display:inline-block;border-radius:20px;padding:2px 11px;font-size:.8em;font-weight:700;margin:3px 4px 3px 0}
+.mchip{background:#dcfce7;color:#15803d}
+.bchip{background:#dbeafe;color:#1d4ed8}
+.aufg{background:#f7fafc;border:1px solid #e2e8f0;border-radius:12px;padding:14px 18px;margin:14px 0}
+.aufg .ah{display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
+.aufg .anr{background:#4c1d95;color:#fff;border-radius:6px;padding:2px 10px;font-size:.78em;font-weight:700;flex-shrink:0}
+.aufg .atitle{font-weight:700;color:#4c1d95;flex:1}
+.aufg .apts{font-size:.78em;color:#7c3aed;font-weight:700;background:#f3e8ff;border-radius:12px;padding:1px 10px}
+.aufg .aq{font-size:.86em;color:#374151;margin-bottom:8px;font-style:italic}
+.aufg ol,.aufg ul{padding-left:20px;font-size:.9em}
+.aufg li{margin-bottom:4px}
+.aufg .h-vo{font-size:.84em;font-weight:700;color:#15803d;margin:6px 0 2px}
+.aufg .h-na{font-size:.84em;font-weight:700;color:#b91c1c;margin:6px 0 2px}
+.footer{background:#f7fafc;border-top:2px solid #e2e8f0;padding:16px 40px;font-size:.82em;color:#6b7280;text-align:center}
+@media print{body{background:#fff;padding:0}.page{box-shadow:none;border-radius:0}.toc{display:none}}
+</style>
+</head>
+<body data-vocab-content>
+<div class="page">
+
+<div class="header">
+  <h1>📚 GK · Super-Zusammenfassung</h1>
+  <div class="sub">Chú ý của cô Buß-Schroeder · 6 chủ đề KA + mẫu trả lời Aufgaben · DE ➡ VN</div>
+  <div class="badge">Gemeinschaftskunde · KA 1</div>
+</div>
+
+<div class="toc">
+  <a href="#s1">1. Gewaltenteilung</a>
+  <a href="#s2">2. Medien</a>
+  <a href="#s3">3. Vertrauensfrage</a>
+  <a href="#s4">4. Grundrechte</a>
+  <a href="#s5">5. Volksabstimmung</a>
+  <a href="#s6">6. Repr. Demokratie</a>
+  <a href="#s7">7. Volksherrschaft</a>
+  <a href="#s8">8. Menschenbild</a>
+  <a href="#aufg">Mẫu trả lời Aufgaben</a>
+</div>
+
+<div class="body">
+
+<!-- ══════════ 1. GEWALTENTEILUNG ══════════ -->
+<div class="sec" id="s1">
+  <div class="sec-h"><div class="sec-nr">1</div><div class="sec-title">Gewaltenteilung &amp; Gewaltenverschränkung</div></div>
+
+  <h3 class="sub">Gewaltenteilung (Phân chia quyền lực)</h3>
+  <p class="de">Der deutsche Staat teilt die Macht in <b>3 Gewalten</b>, damit niemand die ganze Macht hat.</p>
+  <p class="vi">Nhà nước Đức chia quyền lực thành 3 nhánh để không ai nắm toàn bộ quyền lực.</p>
+  <table>
+    <tr><th>Gewalt</th><th>Organe</th><th>Funktion</th></tr>
+    <tr><td><b>Legislative</b></td><td>Bundestag, Bundesrat</td><td>Gesetze machen</td></tr>
+    <tr><td><b>Exekutive</b></td><td>Bundesregierung, Bundeskanzler, Bundespräsident</td><td>Gesetze ausführen</td></tr>
+    <tr><td><b>Judikative</b></td><td>Gerichte, Bundesverfassungsgericht</td><td>Recht sprechen, Verfassung schützen</td></tr>
+  </table>
+
+  <h3 class="sub">Gewaltenverschränkung (Sự đan xen quyền lực)</h3>
+  <p class="de">Die drei Gewalten <b>arbeiten zusammen und kontrollieren sich gegenseitig</b>.</p>
+  <p class="vi">Ba nhánh quyền lực hợp tác và kiểm soát lẫn nhau.</p>
+
+  <div class="example">
+    <div class="label">Ví dụ 1 · Bundespräsident → Judikative</div>
+    <p class="de">Der Bundespräsident ernennt nach der Wahl die 16 Richterinnen und Richter des Bundesverfassungsgerichts.</p>
+    <p class="vi">Sau khi được bầu, Tổng thống Liên bang bổ nhiệm 16 thẩm phán của Tòa án Hiến pháp Liên bang.</p>
+  </div>
+
+  <div class="example">
+    <div class="label">Ví dụ 2 · Bundestag → Bundeskanzler</div>
+    <p class="de">Der Bundestag wählt den Bundeskanzler.</p>
+    <p class="vi">Quốc hội Liên bang bầu Thủ tướng.</p>
+    <p class="de">Der Bundestag kann den Bundeskanzler durch ein <b>konstruktives Misstrauensvotum</b> abwählen.</p>
+    <p class="vi">Quốc hội cũng có thể bãi nhiệm Thủ tướng bằng bỏ phiếu bất tín nhiệm mang tính xây dựng.</p>
+  </div>
+
+  <div class="example">
+    <div class="label">Ví dụ 3 · Landesregierungen → Bundesrat</div>
+    <p class="de">Die Landesregierungen entsenden ihre Vertreter in den Bundesrat.</p>
+    <p class="vi">Chính quyền các bang cử đại diện vào Bundesrat.</p>
+    <div class="warn">❌ Nicht: Abgeordnete &nbsp; ✅ Sondern: <b>Vertreter der Landesregierungen</b><br><span style="font-size:.92em">❌ Không phải đại biểu quốc hội &nbsp; ✅ Mà là đại diện chính quyền các bang</span></div>
+  </div>
+
+  <div class="example">
+    <div class="label">Ví dụ 4 · Bundestag + Bundesrat → Bundesverfassungsgericht</div>
+    <p class="de">Bundestag und Bundesrat wählen <b>jeweils zur Hälfte</b> die Richterinnen und Richter des Bundesverfassungsgerichts.</p>
+    <p class="vi">Bundestag và Bundesrat mỗi bên bầu một nửa số thẩm phán.</p>
+  </div>
+</div>
+
+<!-- ══════════ 2. MEDIEN ══════════ -->
+<div class="sec" id="s2">
+  <div class="sec-h"><div class="sec-nr">2</div><div class="sec-title">Medien – Die vierte Gewalt</div></div>
+
+  <h3 class="sub">Warum sind Medien die vierte Gewalt?</h3>
+
+  <p class="de"><b>1. Medien informieren die Bürger.</b></p>
+  <p class="vi">Truyền thông cung cấp thông tin cho người dân.</p>
+  <p class="de" style="background:#f7fafc;border-radius:6px;padding:6px 10px">Beispiel: Das Fernsehen berichtet über die Bundestagswahl.</p>
+
+  <p class="de" style="margin-top:10px"><b>2. Medien kontrollieren Politik und Staat.</b></p>
+  <p class="vi">Truyền thông giám sát chính trị và Nhà nước.</p>
+  <p class="de" style="background:#f7fafc;border-radius:6px;padding:6px 10px">Beispiel: Eine Zeitung berichtet über Fehler des Staates.</p>
+
+  <div class="formula">Câu trả lời trong bài thi:<br>Medien gelten als <b>vierte Gewalt</b>, weil sie die Bürger <b>informieren</b> und Politik sowie Staat <b>kontrollieren</b>.</div>
+</div>
+
+<!-- ══════════ 3. VERTRAUENSFRAGE ══════════ -->
+<div class="sec" id="s3">
+  <div class="sec-h"><div class="sec-nr">3</div><div class="sec-title">Vertrauensfrage</div></div>
+
+  <div class="formula">Prüfungsaufgabe: Geben Sie an, welches Verfahren für die Partei weniger schädigend ist.</div>
+  <p class="de"><b>Antwort:</b> Die <b>Vertrauensfrage</b> wäre weniger nachteilig, weil sich die Unzufriedenheit nur auf den <b>Bundeskanzler</b> und nicht auf die <b>ganze Partei</b> bezieht.</p>
+  <p class="vi">Câu hỏi tín nhiệm ít hại hơn, vì sự bất mãn chỉ đổ dồn vào Thủ tướng chứ không phải cả đảng.</p>
+</div>
+
+<!-- ══════════ 4. GRUNDRECHTE ══════════ -->
+<div class="sec" id="s4">
+  <div class="sec-h"><div class="sec-nr">4</div><div class="sec-title">Grundrechte</div></div>
+  <p class="de">Es gibt <b>2 Gruppen</b>.</p>
+
+  <h3 class="sub">Menschenrechte (M)</h3>
+  <div class="mchip">Alle Menschen</div><div class="mchip">Jeder</div><div class="mchip">Niemand</div>
+  <p class="vi">Mọi người.</p>
+  <table>
+    <tr><th>Artikel</th><th>Inhalt</th></tr>
+    <tr><td>Art. 2</td><td>Persönliche Freiheit</td></tr>
+    <tr><td>Art. 3</td><td>Gleichheit vor dem Gesetz</td></tr>
+    <tr><td>Art. 4</td><td>Glaubens- und Gewissensfreiheit</td></tr>
+    <tr><td>Art. 5</td><td>Meinungs-, Kunst- und Wissenschaftsfreiheit</td></tr>
+    <tr><td>Art. 10</td><td>Brief-, Post- und Fernmeldegeheimnis</td></tr>
+    <tr><td>Art. 13</td><td>Unverletzlichkeit der Wohnung</td></tr>
+  </table>
+
+  <h3 class="sub">Bürgerrechte (B)</h3>
+  <div class="bchip">Alle Deutschen</div>
+  <p class="vi">Chỉ công dân Đức.</p>
+  <table>
+    <tr><th>Artikel</th><th>Inhalt</th></tr>
+    <tr><td>Art. 8</td><td>Versammlungsfreiheit</td></tr>
+    <tr><td>Art. 9</td><td>Vereinigungsfreiheit</td></tr>
+    <tr><td>Art. 11</td><td>Freizügigkeit</td></tr>
+    <tr><td>Art. 12</td><td>Berufsfreiheit</td></tr>
+    <tr><td>Art. 16</td><td>Staatsangehörigkeit / Auslieferung</td></tr>
+  </table>
+
+  <div class="note">💡 <b>Mẹo nhớ:</b> <span class="mchip">Alle Menschen</span><span class="mchip">Jeder</span><span class="mchip">Niemand</span> → <b>Menschenrechte</b> &nbsp;|&nbsp; <span class="bchip">Alle Deutschen</span> → <b>Bürgerrechte</b></div>
+</div>
+
+<!-- ══════════ 5. VOLKSABSTIMMUNG ══════════ -->
+<div class="sec" id="s5">
+  <div class="sec-h"><div class="sec-nr">5</div><div class="sec-title">Die Volksabstimmung (Volksentscheid)</div></div>
+
+  <h3 class="sub">Definition</h3>
+  <p class="de">Eine Volksabstimmung ist eine Abstimmung, bei der das <b>Volk direkt</b> über einen Gesetzentwurf entscheidet.</p>
+  <p class="vi">Người dân trực tiếp bỏ phiếu quyết định một dự luật (không phải Quốc hội).</p>
+
+  <h3 class="sub">Geltungsbereich in Deutschland</h3>
+  <p class="de">Volksentscheide über normale Gesetze gibt es in Deutschland vor allem auf <b>Landes- und Kommunalebene</b>; einen <b>allgemeinen bundesweiten Volksentscheid</b> über Gesetze gibt es <b>nicht</b>.</p>
+  <p class="vi">Chỉ có ở cấp xã/thành phố (Kommunalebene) và bang (Landesebene), không có ở cấp Liên bang (Bundesebene).</p>
+
+  <h3 class="sub">Ablauf (3 Schritte)</h3>
+  <p class="de"><b>1. Volksinitiative:</b> Die Bürger erarbeiten einen Gesetzentwurf und sammeln Unterschriften. Die nötige Zahl ist <b>je nach Bundesland</b> verschieden.</p>
+  <p class="vi">Người dân soạn dự luật và thu thập 100.000 chữ ký.</p>
+  <p class="de"><b>2. Volksbegehren:</b> Auch die hier nötige Zahl der Unterschriften hängt vom jeweiligen Bundesland ab. Der Vorschlag geht an den <b>Landtag</b>.</p>
+  <p class="vi">Cần 1 triệu chữ ký, sau đó đề xuất được gửi tới Quốc hội.</p>
+  <p class="de"><b>3. Volksentscheid:</b> Das Volk stimmt direkt ab. Die Mehrheit entscheidet.</p>
+  <p class="vi">Người dân trực tiếp bỏ phiếu, đa số quyết định.</p>
+  <div class="formula">Volksinitiative → Volksbegehren → Volksentscheid (Zahlen je nach Bundesland)</div>
+
+  <h3 class="sub">Vorteile</h3>
+  <p class="de">1. Die Bürger haben <b>mehr Einfluss</b> auf die Politik.</p>
+  <p class="vi">Người dân có nhiều ảnh hưởng hơn đến chính trị.</p>
+  <p class="de">2. Die <b>Demokratie wird gestärkt</b>.</p>
+  <p class="vi">Nền dân chủ được củng cố.</p>
+
+  <h3 class="sub">Schutz vor Risiken</h3>
+  <p class="de">Alle Volksentscheide werden vor der Abstimmung auf ihre <b>Verfassungsmäßigkeit</b> geprüft.</p>
+  <p class="vi">Trước khi bỏ phiếu, mọi cuộc trưng cầu dân ý đều được kiểm tra xem có phù hợp với Hiến pháp hay không.</p>
+  <p class="de">Beispiel: Die <b>Todesstrafe darf nicht eingeführt werden</b>.</p>
+  <p class="vi">Ví dụ: Không được phép đưa vấn đề khôi phục án tử hình ra trưng cầu nếu trái với Hiến pháp.</p>
+</div>
+
+<!-- ══════════ 6. REPRÄSENTATIVE DEMOKRATIE ══════════ -->
+<div class="sec" id="s6">
+  <div class="sec-h"><div class="sec-nr">6</div><div class="sec-title">Repräsentative Demokratie</div></div>
+
+  <h3 class="sub">Definition</h3>
+  <p class="de">Gewählte <b>Abgeordnete</b> üben die Staatsgewalt aus. (<b>Art. 38 GG</b>)</p>
+  <p class="vi">Các đại biểu được bầu thay mặt nhân dân thực hiện quyền lực nhà nước.</p>
+
+  <h3 class="sub">Wie funktioniert sie?</h3>
+  <p class="de">Die Bürger wählen ihre Abgeordneten.</p>
+  <p class="vi">Người dân bầu đại biểu.</p>
+  <p class="de">Die Abgeordneten vertreten das Volk.</p>
+  <p class="vi">Đại biểu đại diện cho nhân dân.</p>
+  <p class="de">Sie <b>beschließen Gesetze und kontrollieren die Regierung</b>.</p>
+  <p class="vi">Đại biểu làm luật và kiểm soát Chính phủ.</p>
+
+  <h3 class="sub">Zusammenhang mit der Demokratie – 3 Grundprinzipien</h3>
+  <p class="de">1. <b>Volkssouveränität</b>: Das Volk ist Inhaber der Staatsgewalt. (<b>Art. 20 Abs. 2 GG</b>)</p>
+  <p class="vi">Nhân dân là chủ thể quyền lực nhà nước.</p>
+  <p class="de">2. <b>Repräsentative Demokratie</b>: Gewählte Abgeordnete üben die Staatsgewalt aus. (<b>Art. 38 GG</b>)</p>
+  <p class="vi">Đại biểu được bầu thực hiện quyền lực nhà nước.</p>
+  <p class="de">3. <b>Mehrheitsprinzip</b>: Die Mehrheit entscheidet. (<b>Art. 42 Abs. 2 und Art. 63 Abs. 2 GG</b>)</p>
+  <p class="vi">Đa số quyết định.</p>
+
+  <h3 class="sub">Unterschied zur direkten Demokratie</h3>
+  <table>
+    <tr><th>Repräsentative Demokratie</th><th>Direkte Demokratie (Volksabstimmung)</th></tr>
+    <tr>
+      <td>Die Bürger wählen <b>Abgeordnete</b>. → Người dân bầu đại biểu.<br>Die <b>Abgeordneten</b> entscheiden. → Đại biểu là người đưa ra quyết định.</td>
+      <td>Das <b>Volk</b> entscheidet direkt über einen Gesetzentwurf. → Người dân trực tiếp quyết định dự luật.</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ══════════ 7. VOLKSHERRSCHAFT ══════════ -->
+<div class="sec" id="s7">
+  <div class="sec-h"><div class="sec-nr">7</div><div class="sec-title">Volksherrschaft</div></div>
+
+  <h3 class="sub">Volkssouveränität</h3>
+  <p class="de"><b>Art. 20 Abs. 2 GG:</b> Das Volk ist Inhaber der Staatsgewalt.</p>
+  <p class="vi">Nhân dân là chủ thể quyền lực nhà nước.</p>
+  <p class="de">Từ khóa: <b>unabhängig · selbstbestimmt</b>.</p>
+
+  <h3 class="sub">Repräsentative Demokratie</h3>
+  <p class="de"><b>Art. 38 GG:</b> Gewählte Abgeordnete üben die Staatsgewalt aus.</p>
+  <p class="vi">Đại biểu do nhân dân bầu thay mặt nhân dân thực hiện quyền lực nhà nước.</p>
+
+  <h3 class="sub">Mehrheitsprinzip</h3>
+  <p class="de"><b>Art. 42 Abs. 2 GG · Art. 63 Abs. 2 GG:</b> Die Mehrheit entscheidet.</p>
+  <p class="vi">Đa số quyết định.</p>
+</div>
+
+<!-- ══════════ 8. MENSCHENBILD ══════════ -->
+<div class="sec" id="s8">
+  <div class="sec-h"><div class="sec-nr">8</div><div class="sec-title">Menschenbild</div></div>
+
+  <h3 class="sub">Art. 1 GG</h3>
+  <p class="de">Die <b>Würde des Menschen ist unantastbar</b>.</p>
+  <p class="vi">Phẩm giá con người là bất khả xâm phạm.</p>
+
+  <h3 class="sub">Art. 2 GG</h3>
+  <p class="de">Recht auf <b>freie Entfaltung der Persönlichkeit</b>.</p>
+  <p class="vi">Quyền phát triển tự do nhân cách.</p>
+
+  <div class="warn">Aber: Rechte anderer dürfen <b>nicht verletzt</b> werden.<br><span style="font-size:.92em">Nhưng: không được xâm phạm quyền của người khác.</span></div>
+</div>
+
+<!-- ══════════ MẪU TRẢ LỜI AUSGABEN ══════════ -->
+<div class="sec" id="aufg">
+  <div class="sec-h"><div class="sec-nr">✍️</div><div class="sec-title">Mẫu trả lời Aufgaben (lớp KA 1)</div></div>
+
+  <div class="aufg">
+    <div class="ah"><div class="anr">Aufgabe 1</div><div class="atitle">4 Möglichkeiten der politischen Einflussnahme</div><div class="apts">4 P.</div></div>
+    <div class="aq">Erläutern Sie vier Möglichkeiten der politischen Einflussnahme!</div>
+    <ol>
+      <li>Ich kann an <b>Wahlen</b> teilnehmen und die Politik mitbestimmen.</li>
+      <li>Ich kann an <b>Demonstrationen</b> teilnehmen und meine Meinung zeigen.</li>
+      <li>Ich kann einer <b>Partei</b> beitreten und politisch mitarbeiten.</li>
+      <li>Ich kann eine <b>Petition</b> unterschreiben und politische Veränderungen unterstützen.</li>
+    </ol>
+  </div>
+
+  <div class="aufg">
+    <div class="ah"><div class="anr">Aufgabe 2</div><div class="atitle">Instagram beurteilen – je 2 Vor-/Nachteile</div><div class="apts">6 P.</div></div>
+    <div class="aq">Beurteilen Sie diese Art der Informationsverbreitung. Gehen Sie auf je zwei Vorteile und Nachteile ein!</div>
+    <div class="h-vo">Vorteile</div>
+    <ol>
+      <li>Ein Vorteil ist, dass über Instagram <b>viele Menschen schnell</b> erreicht werden können.</li>
+      <li>Ein weiterer Vorteil ist, dass Informationen <b>einfach geteilt</b> werden können.</li>
+    </ol>
+    <div class="h-na">Nachteile</div>
+    <ol>
+      <li>Ein Nachteil ist, dass sich <b>falsche Informationen</b> schnell verbreiten können.</li>
+      <li>Ein weiterer Nachteil ist, dass <b>nicht alle</b> Menschen Instagram nutzen.</li>
+    </ol>
+  </div>
+
+  <div class="aufg">
+    <div class="ah"><div class="anr">Aufgabe 3.1</div><div class="atitle">Warum Grundrechte wichtig sind</div><div class="apts">4 P.</div></div>
+    <div class="aq">Begründen Sie, warum diese Rechte für ein demokratisches Zusammenleben wichtig sind!</div>
+    <ul>
+      <li>Grundrechte sind wichtig, weil sie die <b>Freiheit und die Menschenwürde</b> schützen.</li>
+      <li>Sie sichern die <b>Gleichheit aller Menschen</b> vor dem Gesetz.</li>
+      <li>Sie schützen die Menschen vor <b>staatlicher Willkür</b>.</li>
+      <li>Sie ermöglichen ein <b>friedliches Zusammenleben</b>.</li>
+    </ul>
+  </div>
+
+  <div class="aufg">
+    <div class="ah"><div class="anr">Aufgabe 3.2</div><div class="atitle">Warum der Staat Grenzen setzt</div><div class="apts">6 P.</div></div>
+    <div class="aq">Erklären Sie, warum es angemessen ist, dass der Staat Grenzen setzt.</div>
+    <ul>
+      <li>Der Staat setzt Grenzen, damit die <b>Sicherheit</b> gewährleistet wird.</li>
+      <li>Er schützt die <b>Rechte anderer Menschen</b>.</li>
+      <li>Außerdem verhindert er <b>Straftaten und Missbrauch</b>.</li>
+    </ul>
+  </div>
+
+  <div class="aufg">
+    <div class="ah"><div class="anr">Aufgabe 4.1</div><div class="atitle">Gleichberechtigung – 3 Aspekte</div><div class="apts">6 P.</div></div>
+    <div class="aq">Sind Frauen und Männer in Deutschland wirklich gleichberechtigt? Zeigen Sie anhand von drei Aspekten …</div>
+    <p class="de" style="margin-bottom:6px">Frauen und Männer sind <b>rechtlich gleichberechtigt</b>. Trotzdem gibt es noch Unterschiede:</p>
+    <ol>
+      <li>Frauen verdienen in manchen Berufen <b>weniger als Männer</b>.</li>
+      <li>Frauen übernehmen oft mehr <b>Hausarbeit und Kinderbetreuung</b>.</li>
+      <li>Frauen sind <b>seltener in Führungspositionen</b> vertreten.</li>
+    </ol>
+  </div>
+
+  <div class="aufg">
+    <div class="ah"><div class="anr">Aufgabe 4.2</div><div class="atitle">Zwei Maßnahmen + Begründung</div><div class="apts">4 P.</div></div>
+    <div class="aq">Entwickeln Sie zwei weitere Maßnahmen und begründen Sie diese.</div>
+    <ol>
+      <li>Der Staat soll <b>mehr Kinderbetreuungsplätze</b> schaffen. Dadurch können Frauen und Männer <b>Beruf und Familie</b> besser vereinbaren.</li>
+      <li>Der Staat soll die <b>gleiche Bezahlung stärker kontrollieren</b>. Dadurch werden Frauen und Männer <b>gleich bezahlt</b>.</li>
+    </ol>
+  </div>
+</div>
+
+</div><!-- /body -->
+
+<div class="footer">GK Super-Zusammenfassung · KA 1 · Chú ý của cô Buß-Schroeder · DE ➡ VN (chạm từ để xem nghĩa)</div>
+
+</div>
+<script src="./vocab.js?v=20"></script>
+<script>document.addEventListener("DOMContentLoaded",function(){try{if(window.enableVocabOn)enableVocabOn(document.body);}catch(e){}});</script>
+</body>
+</html>

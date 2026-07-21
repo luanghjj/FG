@@ -1,5 +1,5 @@
 /* Service Worker – Lern-App H2FO3T (offline shell + static assets) */
-const CACHE = 'h2fo3t-v65';
+const CACHE = 'h2fo3t-v66';
 const PRECACHE = [
   './',
   './index.html',
@@ -39,6 +39,7 @@ const PRECACHE = [
   './gk-ka2-loesung.html',
   './gk-ka3.html',
   './gk-ka3-loesung.html',
+  './gk-zusammenfassung.html',
   './englisch-ka1.html',
   './englisch-ka1-loesung.html',
   './englisch-ka2.html',

@@ -2470,6 +2470,9 @@ function renderFachHub(fachId){
       a+='<button type="button" class="btn" onclick="go(\''+qRoute+'\')">📝 Quiz üben →</button>';
     }
     a+='<button type="button" class="btn ghost" onclick="go(\'#/fach/'+fach.id+'/training\')">🎯 Training →</button>';
+    if(fach.zusammenfassung){
+      a+='<a class="btn ghost" href="'+fach.zusammenfassung+'">📚 Zusammenfassung →</a>';
+    }
     if((fach.pruefungen||[]).length){
       a+='<button type="button" class="btn ghost" onclick="go(\'#/fach/'+fach.id+'/pruefungen\')">🗂️ Prüfungen →</button>';
     }
