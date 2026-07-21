@@ -2035,17 +2035,33 @@ function renderTraining(fachId){
   html+='<button type="button" class="btn ghost" id="trAll">🎲 Alle üben</button>';
   html+='</div></div>';
 
+  // KA-Themen-Checkliste (falls für dieses Fach gepflegt)
+  const checklist=(fach.examChecklist||[]).filter(Boolean);
+  if(checklist.length){
+    html+='<div class="card"><h3 style="margin:0 0 8px">📋 KA-Themen im Überblick <span class="count">'+checklist.length+'</span></h3>';
+    html+='<ul style="margin:0;padding-left:2px;list-style:none;font-size:.9em;line-height:1.7">';
+    checklist.forEach(c=>{ html+='<li>✅ '+c+'</li>'; });
+    html+='</ul></div>';
+  }
+
   html+='<div class="lf-block"><h3>📌 Themen für die nächste KA <span class="count">'+themes.length+'</span></h3>';
   if(!themes.length){
     html+='<div class="card"><p class="muted">Keine Themen gefunden.</p></div>';
   }
   themes.forEach(t=>{
     const item=trainingThemeItem(fachId, t.id);
+    const keyPoints=(item && Array.isArray(item.keyPoints)) ? item.keyPoints.filter(Boolean) : [];
     const summ=themeSummary(item, t.desc);
     const isExternal = t.external || (t.route && t.route.endsWith('.html'));
     html+='<div class="train-card" style="border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:12px;box-shadow:var(--shadow)">';
     html+='<div style="font-weight:700">'+(t.icon||'📘')+' '+t.name+(t.qCount?' <span class="muted" style="font-weight:400;font-size:.8em">· '+t.qCount+' Fragen</span>':'')+'</div>';
-    if(summ) html+='<div class="muted" style="font-size:.85em;margin:6px 0 10px;line-height:1.55">'+summ+'</div>';
+    if(keyPoints.length){
+      html+='<ul style="margin:8px 0 10px;padding-left:18px;font-size:.86em;line-height:1.6">';
+      keyPoints.forEach(kp=>{ html+='<li style="margin-bottom:3px">'+kp+'</li>'; });
+      html+='</ul>';
+    } else if(summ){
+      html+='<div class="muted" style="font-size:.85em;margin:6px 0 10px;line-height:1.55">'+summ+'</div>';
+    }
     html+='<div class="practice-actions" style="margin-top:0">';
     if(isExternal){
       html+='<a class="btn ghost" href="'+t.route+'">📖 Lernen →</a>';

@@ -633,6 +633,12 @@
                 icon: "🗳️",
                 name: "Partizipation & direkte Demokratie",
                 desc: "Formen · digital · Volksinitiative/Begehren/Entscheid",
+                keyPoints: [
+                  "<b>Partizipation</b> = Teilhabe der Bürger am politischen Willensbildungs- und Entscheidungsprozess.",
+                  "Formen: Wahlen, Partei, Demonstration, Bürgerinitiative, Petition + digital (Online-Petition, Blog).",
+                  "<b>Volksabstimmung</b> (Reihenfolge!): <b>Volksinitiative → Volksbegehren → Volksentscheid</b>.",
+                  "In DE <b>kein bundesweiter Volksentscheid</b> über Sachfragen — nur auf Kommunal-/Landesebene.",
+                ],
                 pages: { folder: "2-GK", from: 2, to: 5, prefix: "2-GK" },
                 content: `
                   <h2>🗳️ Partizipation &amp; direkte Demokratie</h2>
@@ -759,6 +765,12 @@
                 icon: "🖼️",
                 name: "Karikatur interpretieren",
                 desc: "Einleitung · Beschreibung · Deutung · Fazit",
+                keyPoints: [
+                  "4 Schritte: <b>Einleitung → Beschreibung → Deutung → Fazit</b>.",
+                  "Erst <b>beschreiben</b> (was man sieht), dann <b>deuten</b> (was gemeint ist) — nicht vermischen.",
+                  "Immer <b>Belege aus dem Bild</b> nennen (Figuren, Aufschrift, Übertreibung, Symbole).",
+                  "Fazit = eigene Meinung mit sachlicher Begründung („Meiner Meinung nach …, weil …“).",
+                ],
                 pages: { folder: "2-GK", from: 6, to: 7, prefix: "2-GK" },
                 content: `
                   <h2>🖼️ Arbeitsmethode · Karikatur</h2>
@@ -841,6 +853,12 @@
                 icon: "⚖️",
                 name: "Gewaltenteilung & Institutionen",
                 desc: "WRV vs GG · horizontal · Kontrolle",
+                keyPoints: [
+                  "3 Gewalten: <b>Legislative</b> (Gesetze), <b>Exekutive</b> (ausführen), <b>Judikative</b> (Recht sprechen).",
+                  "Ziel: <b>Kontrolle statt Machtkonzentration</b> (Lehre aus dem NS).",
+                  "<b>Gewaltenverschränkung</b> = Gewalten greifen ineinander (nicht völlig getrennt).",
+                  "4 Beispiele: Bundestag→Kanzler · Bundespräsident→16 Richter · Landesregierungen→Bundesrat · Bundestag+Bundesrat→BVerfG (je zur Hälfte).",
+                ],
                 pages: { folder: "2-GK", from: 8, to: 10, prefix: "2-GK" },
                 content: `
                   <h2>⚖️ Gewaltenteilung &amp; Gewaltenverschränkung</h2>
@@ -1015,6 +1033,12 @@
                 icon: "📜",
                 name: "Demokratie nach dem GG",
                 desc: "Volkssouveränität · repräsentativ · Mehrheit · Menschenbild",
+                keyPoints: [
+                  "<b>Volkssouveränität</b>: Das Volk ist Inhaber der Staatsgewalt (Art. 20 Abs. 2 GG).",
+                  "<b>Repräsentative Demokratie</b>: gewählte Abgeordnete üben die Staatsgewalt aus (Art. 38 GG).",
+                  "<b>Mehrheitsprinzip</b>: die Mehrheit entscheidet, aber Minderheiten- und Grundrechte bleiben geschützt.",
+                  "DE = vor allem repräsentativ; direkte Elemente ergänzen nur.",
+                ],
                 pages: { folder: "2-GK", from: 14, to: 15, prefix: "2-GK" },
                 content: `
                   <h2>📜 Demokratie nach dem Grundgesetz</h2>
@@ -1051,6 +1075,12 @@
                 icon: "🛡️",
                 name: "Grundrechte",
                 desc: "Menschen- vs Bürgerrechte · Geltung für alle",
+                keyPoints: [
+                  "<b>Menschenrechte</b> = für alle („Jeder…“, „Alle Menschen…“, „Niemand…“).",
+                  "<b>Bürgerrechte</b> = nur für Deutsche („Alle Deutschen…“, z. B. Art. 8, 11, 12).",
+                  "Grundrechte gelten <b>auch für Demokratie-Gegner</b> — nicht an Verhalten geknüpft.",
+                  "Art. 1: die <b>Würde des Menschen ist unantastbar</b> (Fundament, bindet alle Staatsgewalt).",
+                ],
                 pages: { folder: "2-GK", from: 16, to: 18, prefix: "2-GK" },
                 content: `
                   <h2>🛡️ Grundrechte</h2>
@@ -1350,6 +1380,15 @@
       // KA 1: Volksabstimmung, repräsentative Demokratie, Mehrheitsprinzip,
       // Gewaltenteilung + Gewaltenverschränkung, Menschen-/Bürgerrechte, Karikatur
       examThemes: ["partizipation", "demokratie-gg", "gewaltenteilung", "grundrechte", "karikatur-methode"],
+      examChecklist: [
+        "Volksabstimmung (Initiative → Begehren → Entscheid)",
+        "Repräsentative Demokratie",
+        "Mehrheitsprinzip",
+        "Gewaltenteilung",
+        "Gewaltenverschränkung + Beispiele",
+        "Menschen- und Bürgerrechte",
+        "Karikatur interpretieren",
+      ],
       pruefungen: [
         { title: "Übung Nr. 1", desc: "Partizipation · Grundgesetz · Gleichberechtigung", exam: "gk-ka1.html", loesung: "gk-ka1-loesung.html" },
         { title: "Übung Nr. 2", desc: "Gewaltenteilung · Gewaltenverschränkung · Medien · Vertrauensfrage", exam: "gk-ka2.html", loesung: "gk-ka2-loesung.html" },
@@ -1362,6 +1401,7 @@
     const meta = FACH_EXAM_META[f.id] || {};
     if (!Array.isArray(f.examThemes)) f.examThemes = (meta.examThemes || []).slice();
     if (!Array.isArray(f.pruefungen)) f.pruefungen = (meta.pruefungen || []).slice();
+    if (!Array.isArray(f.examChecklist)) f.examChecklist = (meta.examChecklist || []).slice();
     return f;
   }
 
