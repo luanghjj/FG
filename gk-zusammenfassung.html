@@ -5,51 +5,66 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GK – Super-Zusammenfassung (Buß-Schroeder)</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',sans-serif;background:#eef2f7;color:#1a202c;padding:24px;line-height:1.65}
-.page{max-width:880px;margin:0 auto;background:#fff;border-radius:16px;box-shadow:0 6px 32px rgba(0,0,0,.13);overflow:hidden}
-.header{background:linear-gradient(135deg,#4c1d95 0%,#7c3aed 100%);color:#fff;padding:30px 40px 24px}
-.header h1{font-size:1.55em;font-weight:700;margin-bottom:4px}
-.header .sub{opacity:.88;font-size:.92em}
-.header .badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:4px 14px;font-size:.82em;font-weight:700;margin-top:12px}
-.toc{background:#f5f3ff;border-bottom:1px solid #e9d5ff;padding:12px 40px;display:flex;flex-wrap:wrap;gap:8px;font-size:.82em}
-.toc a{background:#ede9fe;color:#5b21b6;border-radius:20px;padding:4px 12px;text-decoration:none;font-weight:600;white-space:nowrap}
-.toc a:hover{background:#ddd6fe}
-.body{padding:28px 40px 24px}
-.sec{margin-bottom:30px}
-.sec-h{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #e9d5ff}
-.sec-nr{background:#4c1d95;color:#fff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9em;flex-shrink:0}
-.sec-title{font-size:1.08em;font-weight:700;color:#4c1d95;flex:1}
-h3.sub{font-size:.95em;font-weight:700;color:#5b21b6;margin:16px 0 8px}
-p{font-size:.92em;margin-bottom:6px}
-table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.88em}
-th{background:#4c1d95;color:#fff;padding:7px 10px;text-align:left}
-td{padding:7px 10px;border:1px solid #e2e8f0;vertical-align:top}
-tr:nth-child(even) td{background:#f7fafc}
-.de{font-size:.93em}
-.vi{color:#6b7280;font-size:.85em;font-style:italic;margin:2px 0 8px}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif;background:#F2F2F7;color:#000;padding:20px 16px 40px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.page{max-width:760px;margin:0 auto}
+
+/* Large title header */
+.header{padding:12px 4px 18px}
+.header h1{font-size:2.1em;font-weight:700;letter-spacing:-.02em;margin-bottom:6px;color:#000}
+.header .sub{color:#8E8E93;font-size:.95em;line-height:1.4}
+.header .badge{display:inline-block;background:#E5E5EA;color:#3C3C43;border-radius:8px;padding:5px 12px;font-size:.8em;font-weight:600;margin-top:14px}
+
+/* TOC pills */
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px;padding:0 4px}
+.toc a{background:#fff;color:#007AFF;border-radius:20px;padding:7px 14px;text-decoration:none;font-weight:600;font-size:.82em;white-space:nowrap;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.toc a:active{background:#E5E5EA}
+
+/* Section card (grouped list) */
+.sec{background:#fff;border-radius:16px;padding:18px 18px 8px;margin-bottom:16px}
+.sec-h{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.sec-nr{background:#007AFF;color:#fff;border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85em;flex-shrink:0}
+.sec-title{font-size:1.12em;font-weight:700;color:#000;flex:1;letter-spacing:-.01em}
+
+h3.sub{font-size:.76em;font-weight:600;color:#8E8E93;text-transform:uppercase;letter-spacing:.03em;margin:16px 0 8px}
+p{font-size:.95em;margin-bottom:6px;color:#000}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.88em;background:#F2F2F7;border-radius:10px;overflow:hidden}
+th{background:#E5E5EA;color:#3C3C43;padding:9px 12px;text-align:left;font-weight:600}
+td{padding:9px 12px;border-top:1px solid #E5E5EA;vertical-align:top;color:#000}
+
+.de{font-size:.95em}
+.vi{color:#8E8E93;font-size:.86em;margin:2px 0 8px}
 .vi::before{content:"➡ "}
-.example{background:#f5f3ff;border-left:3px solid #a78bfa;border-radius:0 8px 8px 0;padding:10px 16px;margin:10px 0}
-.example .label{font-size:.78em;font-weight:700;color:#7c3aed;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
-.note{background:#fef3c7;border-left:3px solid #f59e0b;border-radius:0 6px 6px 0;padding:8px 14px;margin:10px 0;font-size:.85em;color:#92400e}
-.warn{background:#fef2f2;border-left:3px solid #dc2626;border-radius:0 6px 6px 0;padding:8px 14px;margin:10px 0;font-size:.85em;color:#b91c1c}
-.formula{background:#f8fafc;border-left:3px solid #4c1d95;padding:9px 14px;border-radius:6px;font-size:.88em;font-weight:600;margin:10px 0}
-.mchip,.bchip{display:inline-block;border-radius:20px;padding:2px 11px;font-size:.8em;font-weight:700;margin:3px 4px 3px 0}
-.mchip{background:#dcfce7;color:#15803d}
-.bchip{background:#dbeafe;color:#1d4ed8}
-.aufg{background:#f7fafc;border:1px solid #e2e8f0;border-radius:12px;padding:14px 18px;margin:14px 0}
-.aufg .ah{display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
-.aufg .anr{background:#4c1d95;color:#fff;border-radius:6px;padding:2px 10px;font-size:.78em;font-weight:700;flex-shrink:0}
-.aufg .atitle{font-weight:700;color:#4c1d95;flex:1}
-.aufg .apts{font-size:.78em;color:#7c3aed;font-weight:700;background:#f3e8ff;border-radius:12px;padding:1px 10px}
-.aufg .aq{font-size:.86em;color:#374151;margin-bottom:8px;font-style:italic}
-.aufg ol,.aufg ul{padding-left:20px;font-size:.9em}
-.aufg li{margin-bottom:4px}
-.aufg .h-vo{font-size:.84em;font-weight:700;color:#15803d;margin:6px 0 2px}
-.aufg .h-na{font-size:.84em;font-weight:700;color:#b91c1c;margin:6px 0 2px}
-.footer{background:#f7fafc;border-top:2px solid #e2e8f0;padding:16px 40px;font-size:.82em;color:#6b7280;text-align:center}
-@media print{body{background:#fff;padding:0}.page{box-shadow:none;border-radius:0}.toc{display:none}}
+
+/* callouts */
+.example{background:#F2F2F7;border-radius:12px;padding:12px 14px;margin:10px 0}
+.example .label{font-size:.72em;font-weight:700;color:#007AFF;text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px}
+.note{background:#FFF9E6;border-radius:12px;padding:10px 14px;margin:10px 0;font-size:.88em;color:#8A6D00}
+.warn{background:#FFF0F0;border-radius:12px;padding:10px 14px;margin:10px 0;font-size:.88em;color:#C4342B}
+.formula{background:#EAF3FF;border-radius:12px;padding:11px 14px;font-size:.9em;font-weight:500;margin:10px 0;color:#004B99}
+.formula b{color:#003A75}
+
+.mchip,.bchip{display:inline-block;border-radius:20px;padding:3px 12px;font-size:.8em;font-weight:600;margin:3px 4px 3px 0}
+.mchip{background:#E3F7E8;color:#248A3D}
+.bchip{background:#E4EEFF;color:#0A5BD3}
+
+/* Aufgabe cards */
+.aufg{background:#F2F2F7;border-radius:12px;padding:14px 16px;margin:12px 0}
+.aufg .ah{display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+.aufg .anr{background:#007AFF;color:#fff;border-radius:7px;padding:3px 10px;font-size:.76em;font-weight:700;flex-shrink:0}
+.aufg .atitle{font-weight:700;color:#000;flex:1;font-size:.95em}
+.aufg .apts{font-size:.76em;color:#007AFF;font-weight:700;background:#E4EEFF;border-radius:12px;padding:2px 10px}
+.aufg .aq{font-size:.88em;color:#8E8E93;margin-bottom:8px}
+.aufg ol,.aufg ul{padding-left:20px;font-size:.92em}
+.aufg li{margin-bottom:5px}
+.aufg .h-vo{font-size:.76em;font-weight:700;color:#248A3D;text-transform:uppercase;letter-spacing:.03em;margin:8px 0 4px}
+.aufg .h-na{font-size:.76em;font-weight:700;color:#C4342B;text-transform:uppercase;letter-spacing:.03em;margin:8px 0 4px}
+
+.footer{padding:20px 4px 0;font-size:.82em;color:#8E8E93;text-align:center}
+
+@media print{body{background:#fff;padding:0}.toc{display:none}}
 </style>
 </head>
 <body data-vocab-content>
@@ -129,11 +144,11 @@ tr:nth-child(even) td{background:#f7fafc}
 
   <p class="de"><b>1. Medien informieren die Bürger.</b></p>
   <p class="vi">Truyền thông cung cấp thông tin cho người dân.</p>
-  <p class="de" style="background:#f7fafc;border-radius:6px;padding:6px 10px">Beispiel: Das Fernsehen berichtet über die Bundestagswahl.</p>
+  <p class="de" style="background:#F2F2F7;border-radius:8px;padding:8px 12px">Beispiel: Das Fernsehen berichtet über die Bundestagswahl.</p>
 
   <p class="de" style="margin-top:10px"><b>2. Medien kontrollieren Politik und Staat.</b></p>
   <p class="vi">Truyền thông giám sát chính trị và Nhà nước.</p>
-  <p class="de" style="background:#f7fafc;border-radius:6px;padding:6px 10px">Beispiel: Eine Zeitung berichtet über Fehler des Staates.</p>
+  <p class="de" style="background:#F2F2F7;border-radius:8px;padding:8px 12px">Beispiel: Eine Zeitung berichtet über Fehler des Staates.</p>
 
   <div class="formula">Câu trả lời trong bài thi:<br>Medien gelten als <b>vierte Gewalt</b>, weil sie die Bürger <b>informieren</b> und Politik sowie Staat <b>kontrollieren</b>.</div>
 </div>

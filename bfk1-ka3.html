@@ -5,21 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Klassenarbeit Nr. 3 – BfK-1</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',sans-serif;background:#eef2f7;color:#1a202c;padding:24px}
-.page{max-width:840px;margin:0 auto;background:#fff;border-radius:16px;box-shadow:0 6px 32px rgba(0,0,0,.13);overflow:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif;background:#F2F2F7;color:#000;padding:24px;-webkit-font-smoothing:antialiased}
+.page{max-width:840px;margin:0 auto;background:#fff;border-radius:16px;box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06);overflow:hidden}
 
 /* HEADER (phong cách cô giáo: school + KA-Nr + Datum + BfK-1 + Name) */
-.header{background:linear-gradient(135deg,#1a365d 0%,#2b6cb0 100%);color:#fff;padding:28px 40px 22px}
-.school{font-size:.78em;opacity:.75;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:6px}
+.header{background:#007AFF;color:#fff;padding:28px 40px 22px}
+.school{font-size:.78em;opacity:.85;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:6px}
 .header h1{font-size:1.65em;font-weight:700;margin-bottom:3px}
 .header .ka-date{opacity:.9;font-size:.95em;margin-bottom:14px}
 .header .bfk-tag{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:4px 14px;font-size:.9em;font-weight:700;margin-bottom:14px}
 .header .name-line{font-size:.95em;opacity:.92;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:4px;display:inline-block;min-width:300px}
 
 /* HINTS */
-.hints{background:#fffbeb;border-bottom:1px solid #fde68a;padding:11px 40px;display:flex;gap:24px;flex-wrap:wrap;font-size:.83em;color:#78350f}
+.hints{background:#FFF9E6;border-bottom:1px solid #E5E5EA;padding:11px 40px;display:flex;gap:24px;flex-wrap:wrap;font-size:.83em;color:#8A6D00}
 .hints span{display:flex;align-items:center;gap:5px}
 
 /* BODY */
@@ -27,50 +26,50 @@ body{font-family:'Inter',sans-serif;background:#eef2f7;color:#1a202c;padding:24p
 
 /* LERNFELD (thay cho AUFGABE – theo style cô giáo) */
 .lf{margin-bottom:34px}
-.lf-head{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #e2e8f0}
-.lf-nr{background:#1a365d;color:#fff;border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9em;flex-shrink:0}
-.lf-title{font-size:1.05em;font-weight:700;color:#1a365d;flex:1}
-.lf-pts{background:#ebf8ff;color:#2b6cb0;border:1px solid #bee3f8;border-radius:20px;padding:3px 14px;font-size:.8em;font-weight:700}
+.lf-head{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #E5E5EA}
+.lf-nr{background:#007AFF;color:#fff;border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9em;flex-shrink:0}
+.lf-title{font-size:1.05em;font-weight:700;color:#000;flex:1}
+.lf-pts{background:#EAF3FF;color:#007AFF;border:1px solid #EAF3FF;border-radius:20px;padding:3px 14px;font-size:.8em;font-weight:700}
 
 /* SITUATION */
-.sit{background:#f0f9ff;border:1px solid #bae6fd;border-radius:10px;padding:16px 20px;margin-bottom:18px;position:relative;padding-top:22px}
-.sit::before{content:"📋 SITUATION";position:absolute;top:-11px;left:16px;background:#0369a1;color:#fff;font-size:.7em;font-weight:700;padding:3px 12px;border-radius:20px;letter-spacing:.8px}
-.sit p{font-size:.9em;line-height:1.75;color:#0c4a6e}
+.sit{background:#EAF3FF;border-radius:12px;padding:16px 20px;margin-bottom:18px;position:relative;padding-top:22px}
+.sit::before{content:"📋 SITUATION";position:absolute;top:-11px;left:16px;background:#007AFF;color:#fff;font-size:.7em;font-weight:700;padding:3px 12px;border-radius:20px;letter-spacing:.8px}
+.sit p{font-size:.9em;line-height:1.75;color:#004B99}
 .sit p+p{margin-top:8px}
-.sit strong{color:#075985}
+.sit strong{color:#003A75}
 
 /* FRAGE */
 .frage{margin-bottom:16px}
 .f-top{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px}
-.f-nr{background:#e2e8f0;border-radius:6px;padding:2px 9px;font-size:.79em;font-weight:700;color:#4a5568;flex-shrink:0;margin-top:1px}
-.f-text{font-size:.91em;line-height:1.65;color:#2d3748;flex:1}
-.f-pts{font-size:.77em;color:#718096;flex-shrink:0;margin-top:2px}
+.f-nr{background:#E5E5EA;border-radius:6px;padding:2px 9px;font-size:.79em;font-weight:700;color:#3C3C43;flex-shrink:0;margin-top:1px}
+.f-text{font-size:.91em;line-height:1.65;color:#000;flex:1}
+.f-pts{font-size:.77em;color:#8E8E93;flex-shrink:0;margin-top:2px}
 .lines{padding-left:16px}
-.l{border:none;border-bottom:1px solid #cbd5e0;width:100%;height:26px;display:block;margin-bottom:9px;background:transparent}
+.l{border:none;border-bottom:1px solid #C7C7CC;width:100%;height:26px;display:block;margin-bottom:9px;background:transparent}
 .l.lg{height:32px}
 
 /* ANLAGE (inline trong đề) */
-.anlage{background:#f7fafc;border:1px dashed #cbd5e0;border-radius:10px;padding:16px 20px;margin:14px 0 18px 16px}
-.anlage-h{font-size:.78em;font-weight:700;color:#4a5568;text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px;border-bottom:1px solid #e2e8f0;padding-bottom:6px}
-.anlage p,.anlage li{font-size:.85em;line-height:1.7;color:#2d3748}
+.anlage{background:#F2F2F7;border-radius:12px;padding:16px 20px;margin:14px 0 18px 16px}
+.anlage-h{font-size:.78em;font-weight:700;color:#8E8E93;text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px;border-bottom:1px solid #E5E5EA;padding-bottom:6px}
+.anlage p,.anlage li{font-size:.85em;line-height:1.7;color:#000}
 .anlage ul,.anlage ol{padding-left:18px}
-.anlage table{width:100%;border-collapse:collapse;margin:6px 0;font-size:.83em}
-.anlage th{background:#edf2f7;padding:6px 8px;text-align:left;border:1px solid #e2e8f0}
-.anlage td{padding:6px 8px;border:1px solid #e2e8f0}
+.anlage table{width:100%;border-collapse:collapse;margin:6px 0;font-size:.83em;background:#fff;border-radius:10px;overflow:hidden}
+.anlage th{background:#E5E5EA;color:#3C3C43;padding:6px 8px;text-align:left;border-top:1px solid #E5E5EA}
+.anlage td{padding:6px 8px;border-top:1px solid #E5E5EA}
 
 /* CALC TABLE */
-.ct{width:calc(100% - 16px);border-collapse:collapse;margin:10px 0 4px 16px;font-size:.86em}
-.ct th{background:#1a365d;color:#fff;padding:7px 10px;text-align:left;font-weight:600}
-.ct td{padding:7px 10px;border:1px solid #e2e8f0}
-.ct tr:nth-child(even) td{background:#f7fafc}
-.ct .sum td{background:#dbeafe;font-weight:700;color:#1e40af}
+.ct{width:calc(100% - 16px);border-collapse:collapse;margin:10px 0 4px 16px;font-size:.86em;background:#F2F2F7;border-radius:10px;overflow:hidden}
+.ct th{background:#E5E5EA;color:#3C3C43;padding:7px 10px;text-align:left;font-weight:600}
+.ct td{padding:7px 10px;border-top:1px solid #E5E5EA}
+.ct tr:nth-child(even) td{background:#EAEAEF}
+.ct .sum td{background:#EAF3FF;font-weight:700;color:#007AFF}
 
-hr{border:none;border-top:2px dashed #e2e8f0;margin:26px 0}
+hr{border:none;border-top:2px dashed #E5E5EA;margin:26px 0}
 
 /* FOOTER */
-.footer{background:#f7fafc;border-top:2px solid #e2e8f0;padding:16px 40px;display:flex;justify-content:space-between;align-items:center;font-size:.9em}
-.footer strong{color:#1a365d;font-size:1.05em}
-.footer .viel{color:#2b6cb0;font-weight:700;font-style:italic}
+.footer{background:#F2F2F7;border-top:1px solid #E5E5EA;padding:16px 40px;display:flex;justify-content:space-between;align-items:center;font-size:.9em}
+.footer strong{color:#000;font-size:1.05em}
+.footer .viel{color:#007AFF;font-weight:700;font-style:italic}
 
 @media print{body{background:#fff;padding:0}.page{box-shadow:none;border-radius:0}}
 </style>

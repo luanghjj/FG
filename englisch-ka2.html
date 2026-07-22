@@ -5,46 +5,45 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Class Test 2 – Englisch (Telephoning · Complaints · Grammar)</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',sans-serif;background:#eef2f7;color:#1a202c;padding:24px}
-.page{max-width:840px;margin:0 auto;background:#fff;border-radius:16px;box-shadow:0 6px 32px rgba(0,0,0,.13);overflow:hidden}
-.header{background:linear-gradient(135deg,#0f3d6e 0%,#2563eb 100%);color:#fff;padding:28px 40px 22px}
-.school{font-size:.78em;opacity:.8;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:6px}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif;background:#F2F2F7;color:#000;padding:24px;-webkit-font-smoothing:antialiased}
+.page{max-width:840px;margin:0 auto;background:#fff;border-radius:16px;box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06);overflow:hidden}
+.header{background:#007AFF;color:#fff;padding:28px 40px 22px}
+.school{font-size:.78em;opacity:.85;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:6px}
 .header h1{font-size:1.55em;font-weight:700;margin-bottom:3px}
 .header .ka-date{opacity:.9;font-size:.95em;margin-bottom:14px}
 .header .en-tag{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:4px 14px;font-size:.9em;font-weight:700;margin-bottom:14px}
 .header .name-line{font-size:.95em;opacity:.92;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:4px;display:inline-block;min-width:300px}
-.hints{background:#eff6ff;border-bottom:1px solid #bfdbfe;padding:11px 40px;display:flex;gap:24px;flex-wrap:wrap;font-size:.83em;color:#1e40af}
+.hints{background:#FFF9E6;border-bottom:1px solid #E5E5EA;padding:11px 40px;display:flex;gap:24px;flex-wrap:wrap;font-size:.83em;color:#8A6D00}
 .hints span{display:flex;align-items:center;gap:5px}
-.total{background:#f5f9ff;border-bottom:1px solid #bfdbfe;padding:9px 40px;font-size:.85em;color:#1e40af;font-weight:700;text-align:right}
+.total{background:#EAF3FF;border-bottom:1px solid #E5E5EA;padding:9px 40px;font-size:.85em;color:#007AFF;font-weight:700;text-align:right}
 .body{padding:26px 40px 20px}
 .part{margin-bottom:30px}
-.part-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #e2e8f0}
-.part-nr{background:#0f3d6e;color:#fff;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9em;flex-shrink:0}
-.part-title{font-size:1.02em;font-weight:700;color:#0f3d6e;flex:1}
-.part-pts{background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe;border-radius:20px;padding:3px 14px;font-size:.8em;font-weight:700}
-.sit{background:#f0f9ff;border:1px solid #bae6fd;border-radius:10px;padding:16px 20px;margin-bottom:16px;position:relative;padding-top:22px}
-.sit::before{content:"📋 SITUATION";position:absolute;top:-11px;left:16px;background:#0369a1;color:#fff;font-size:.7em;font-weight:700;padding:3px 12px;border-radius:20px;letter-spacing:.8px}
-.sit p{font-size:.9em;line-height:1.7;color:#0c4a6e}
+.part-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #E5E5EA}
+.part-nr{background:#007AFF;color:#fff;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9em;flex-shrink:0}
+.part-title{font-size:1.02em;font-weight:700;color:#000;flex:1}
+.part-pts{background:#EAF3FF;color:#007AFF;border:1px solid #EAF3FF;border-radius:20px;padding:3px 14px;font-size:.8em;font-weight:700}
+.sit{background:#EAF3FF;border-radius:12px;padding:16px 20px;margin-bottom:16px;position:relative;padding-top:22px}
+.sit::before{content:"📋 SITUATION";position:absolute;top:-11px;left:16px;background:#007AFF;color:#fff;font-size:.7em;font-weight:700;padding:3px 12px;border-radius:20px;letter-spacing:.8px}
+.sit p{font-size:.9em;line-height:1.7;color:#004B99}
 .task{margin-bottom:16px}
 .t-top{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px}
-.t-nr{background:#e2e8f0;border-radius:6px;padding:2px 9px;font-size:.79em;font-weight:700;color:#4a5568;flex-shrink:0;margin-top:1px}
-.t-text{font-size:.91em;line-height:1.6;color:#2d3748;flex:1}
-.t-pts{font-size:.77em;color:#718096;flex-shrink:0;margin-top:2px}
+.t-nr{background:#E5E5EA;border-radius:6px;padding:2px 9px;font-size:.79em;font-weight:700;color:#3C3C43;flex-shrink:0;margin-top:1px}
+.t-text{font-size:.91em;line-height:1.6;color:#000;flex:1}
+.t-pts{font-size:.77em;color:#8E8E93;flex-shrink:0;margin-top:2px}
 .lines{padding-left:16px}
-.l{border:none;border-bottom:1px solid #cbd5e0;width:100%;height:26px;display:block;margin-bottom:9px;background:transparent}
-.tbl{width:calc(100% - 16px);border-collapse:collapse;margin:8px 0 4px 16px;font-size:.86em}
-.tbl th{background:#0f3d6e;color:#fff;padding:7px 10px;text-align:left;font-weight:600}
-.tbl td{padding:7px 10px;border:1px solid #e2e8f0;vertical-align:top}
-.tbl tr:nth-child(even) td{background:#f7fafc}
-.fillbox{display:inline-block;min-width:90px;border-bottom:1.5px solid #94a3b8;height:20px}
-.anlage{background:#f7fafc;border:1px dashed #cbd5e0;border-radius:10px;padding:14px 18px;margin:12px 0 16px 16px;font-size:.86em;line-height:1.7}
-.anlage-h{font-size:.78em;font-weight:700;color:#4a5568;text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px;border-bottom:1px solid #e2e8f0;padding-bottom:6px}
-hr{border:none;border-top:2px dashed #e2e8f0;margin:24px 0}
-.footer{background:#f7fafc;border-top:2px solid #e2e8f0;padding:16px 40px;display:flex;justify-content:space-between;align-items:center;font-size:.9em}
-.footer strong{color:#0f3d6e;font-size:1.05em}
-.footer .viel{color:#2563eb;font-weight:700;font-style:italic}
+.l{border:none;border-bottom:1px solid #C7C7CC;width:100%;height:26px;display:block;margin-bottom:9px;background:transparent}
+.tbl{width:calc(100% - 16px);border-collapse:collapse;margin:8px 0 4px 16px;font-size:.86em;background:#F2F2F7;border-radius:10px;overflow:hidden}
+.tbl th{background:#E5E5EA;color:#3C3C43;padding:7px 10px;text-align:left;font-weight:600}
+.tbl td{padding:7px 10px;border-top:1px solid #E5E5EA;vertical-align:top}
+.tbl tr:nth-child(even) td{background:#EAEAEF}
+.fillbox{display:inline-block;min-width:90px;border-bottom:1.5px solid #8E8E93;height:20px}
+.anlage{background:#F2F2F7;border-radius:12px;padding:14px 18px;margin:12px 0 16px 16px;font-size:.86em;line-height:1.7}
+.anlage-h{font-size:.78em;font-weight:700;color:#8E8E93;text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px;border-bottom:1px solid #E5E5EA;padding-bottom:6px}
+hr{border:none;border-top:2px dashed #E5E5EA;margin:24px 0}
+.footer{background:#F2F2F7;border-top:1px solid #E5E5EA;padding:16px 40px;display:flex;justify-content:space-between;align-items:center;font-size:.9em}
+.footer strong{color:#000;font-size:1.05em}
+.footer .viel{color:#007AFF;font-weight:700;font-style:italic}
 @media print{body{background:#fff;padding:0}.page{box-shadow:none;border-radius:0}}
 </style>
 </head>
