@@ -58,6 +58,25 @@ td{border-top:1px solid var(--line);color:var(--ink)}
 .bar-row{display:grid;grid-template-columns:72px 1fr 48px;gap:8px;align-items:center;font-size:.82em}
 .bar-track{height:8px;background:#E5E5EA;border-radius:99px;overflow:hidden}
 .bar-fill{height:100%;background:#007AFF;border-radius:99px}
+/* ===== Zugriffsstufen ===== */
+select{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;
+  color:var(--ink);font:inherit;margin:8px 0 12px;-webkit-appearance:none;appearance:none}
+select:focus{outline:none;border-color:#007AFF}
+.tier-form{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
+.tier-form>div{min-width:0}
+.tier-form button{flex:0 0 auto;margin-bottom:12px}
+.t-badge{display:inline-block;border-radius:999px;padding:2px 10px;font-size:.72em;font-weight:600}
+.t-badge.free{background:#E5E5EA;color:#6C6C70}
+.t-badge.paid{background:#E3F7E8;color:#248A3D}
+.t-badge.super{background:#F6EDFC;color:#8944AB}
+.mini{border:none;background:#E5E5EA;color:var(--accent);border-radius:9px;padding:6px 10px;
+  font-size:.86em;font-weight:500;cursor:pointer;min-height:0}
+.mini:hover{background:var(--soft)}
+.mani-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.mani-row{display:flex;align-items:center;gap:10px;background:#F2F2F7;border-radius:12px;padding:10px 12px}
+.mani-row .lbl{flex:1;min-width:0;font-size:.86em;line-height:1.35}
+.mani-row .lbl small{display:block;color:var(--muted);font-size:.86em}
+.mani-row select{width:104px;margin:0;padding:7px 9px;font-size:.86em}
 @media (max-width:640px){
   .wrap{padding:14px 12px calc(40px + var(--safe-bottom))}
   .brand{font-size:1em}
@@ -86,6 +105,77 @@ td{border-top:1px solid var(--line);color:var(--ink)}
   <div id="dash">
     <div class="grid" id="statsGrid"></div>
 
+    <!-- ===== Zugriffsstufen ===== -->
+    <div class="card">
+      <h2>Zugriffsstufen · Phân tầng</h2>
+      <p class="muted" style="margin-bottom:12px">
+        <b>Basic</b> = alle Themen, nur Grundwissen · <b>Pro</b> = volle Inhalte, Quiz, Zusammenfassung, Prüfungen · <b>Admin</b> = alles + dieses Dashboard.
+      </p>
+
+      <div class="tier-form">
+        <div style="flex:1 1 200px;min-width:0">
+          <label class="muted" for="roleNick">Nickname</label>
+          <input id="roleNick" type="text" list="nickList" placeholder="z. B. linh" autocomplete="off">
+          <datalist id="nickList"></datalist>
+        </div>
+        <div style="flex:0 0 130px">
+          <label class="muted" for="roleTier">Stufe</label>
+          <select id="roleTier">
+            <option value="free">Basic</option>
+            <option value="paid">Pro</option>
+            <option value="super">Admin</option>
+          </select>
+        </div>
+        <div style="flex:1 1 160px;min-width:0">
+          <label class="muted" for="roleNote">Notiz (optional)</label>
+          <input id="roleNote" type="text" placeholder="z. B. bezahlt 07/26" autocomplete="off">
+        </div>
+        <button type="button" id="btnSetRole">Speichern</button>
+      </div>
+      <div class="err" id="roleErr"></div>
+
+      <div style="overflow:auto;margin-top:14px">
+        <table>
+          <thead><tr><th>Nickname</th><th>Stufe</th><th>Vergeben von</th><th>Wann</th><th>Notiz</th><th>Aktion</th></tr></thead>
+          <tbody id="rolesBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ===== Pro-Code + Admin-Passwort ===== -->
+    <div class="card">
+      <h2>Pro-Code &amp; Admin-Passwort</h2>
+      <p class="muted" style="margin-bottom:12px">
+        Wer den Pro-Code in der App eingibt, wird automatisch auf <b>Pro</b> gesetzt.<br>
+        <i>Ai nhập đúng code trong app thì tự lên tầng Pro.</i>
+      </p>
+      <div class="tier-form">
+        <div style="flex:1 1 180px;min-width:0">
+          <label class="muted" for="paidCode">Pro-Code</label>
+          <input id="paidCode" type="text" placeholder="Code" autocomplete="off">
+        </div>
+        <button type="button" id="btnSavePaid">Code speichern</button>
+      </div>
+      <div class="tier-form" style="margin-top:4px">
+        <div style="flex:1 1 180px;min-width:0">
+          <label class="muted" for="newAdminPass">Neues Admin-Passwort</label>
+          <input id="newAdminPass" type="password" placeholder="mind. 4 Zeichen" autocomplete="new-password">
+        </div>
+        <button type="button" class="ghost" id="btnSavePass">Passwort ändern</button>
+      </div>
+      <div class="err" id="codeErr"></div>
+      <div class="muted" id="codeMsg" style="margin-top:6px"></div>
+    </div>
+
+    <!-- ===== Feature-Matrix ===== -->
+    <div class="card">
+      <h2>Welche Inhalte in welcher Stufe?</h2>
+      <p class="muted" style="margin-bottom:10px">Mindeststufe pro Bereich. Änderungen gelten sofort für alle.</p>
+      <div id="manifestBox" class="mani-grid"></div>
+      <button type="button" id="btnSaveManifest" style="margin-top:12px">Matrix speichern</button>
+      <div class="muted" id="maniMsg" style="margin-top:6px"></div>
+    </div>
+
     <div class="card">
       <h2>🎯 Tagesziel (für alle)</h2>
       <div class="muted" id="goalMeta">Ziel pro Tag in Minuten — gilt für alle Nutzer.</div>
@@ -110,7 +200,7 @@ td{border-top:1px solid var(--line);color:var(--ink)}
       <div class="muted" id="playersMeta"></div>
       <div style="overflow:auto;margin-top:8px">
         <table>
-          <thead><tr><th>Nickname</th><th>Besuche</th><th>Quiz</th><th>Heute</th><th>Zeit gesamt</th><th>Gelernte Fächer</th><th>Letzte Session</th><th>Zuletzt</th></tr></thead>
+          <thead><tr><th>Nickname</th><th>Stufe</th><th>Besuche</th><th>Quiz</th><th>Heute</th><th>Zeit gesamt</th><th>Gelernte Fächer</th><th>Letzte Session</th><th>Zuletzt</th></tr></thead>
           <tbody id="playersBody"></tbody>
         </table>
       </div>
@@ -162,7 +252,8 @@ td{border-top:1px solid var(--line);color:var(--ink)}
 </div>
 
 <script src="./pwa.js?v=3" defer></script>
-<script src="./supabase.js?v=12"></script>
+<script src="./supabase.js?v=13"></script>
+<script src="./access.js?v=1"></script>
 <script>
 const AUTH_KEY='learn_admin_ok';
 function showErr(m){
@@ -226,6 +317,11 @@ async function load(){
     buildDayBars(s.visits);
     document.getElementById('playersMeta').textContent = s.players.length + ' Profile';
 
+    // Zugriffsstufen: Nickname-Vorschläge + Rollen-Tabelle + Code + Matrix
+    await loadRoles(s.players || []);
+    await loadPaidCode();
+    await loadManifestUI();
+
     // Tagesziel
     const goalSec = Number(s.daily_goal_sec)||3600;
     const goalMin = Math.round(goalSec/60);
@@ -250,8 +346,9 @@ async function load(){
       const dailyCell = seenToday(p.last_seen)
         ? (daily>=goalSec ? '<span class="tag" style="color:var(--ok);border-color:#E3F7E8">✓ '+fd(daily)+'</span>' : '<span style="color:var(--bad)">'+fd(daily)+'</span>')
         : '<span class="muted">—</span>';
-      return `<tr><td><b>${escH(p.player)}</b></td><td>${p.visits}</td><td>${p.quiz_attempts}</td><td>${dailyCell}</td><td>${fd(p.total_duration_sec)}</td><td style="max-width:200px;white-space:normal;word-break:break-word;line-height:1.6">${subList}</td><td>${fd(p.last_session_sec)}</td><td>${fmt(p.last_seen)}</td></tr>`;
-    }).join('') || '<tr><td colspan="8" class="muted">Noch keine Nutzer</td></tr>';
+      const tCell = tierTag(_roleMap[String(p.player||'').toLowerCase()] || 'free');
+      return `<tr><td><b>${escH(p.player)}</b></td><td>${tCell}</td><td>${p.visits}</td><td>${p.quiz_attempts}</td><td>${dailyCell}</td><td>${fd(p.total_duration_sec)}</td><td style="max-width:200px;white-space:normal;word-break:break-word;line-height:1.6">${subList}</td><td>${fd(p.last_session_sec)}</td><td>${fmt(p.last_seen)}</td></tr>`;
+    }).join('') || '<tr><td colspan="9" class="muted">Noch keine Nutzer</td></tr>';
 
     // ⚠️ Nutzer unter Ziel heute
     const under = s.players
@@ -309,13 +406,155 @@ async function load(){
   }
 }
 
-document.getElementById('btnLogin').onclick=()=>{
+/* ===== Zugriffsstufen ===== */
+const TIER_LABEL={free:'Basic',paid:'Pro',super:'Admin'};
+let _roleMap={};   // nickname (lowercase) → tier
+function tierTag(t){
+  t=TIER_LABEL[t]?t:'free';
+  const col=t==='super'?'#8944AB':t==='paid'?'#248A3D':'#6C6C70';
+  const bg=t==='super'?'#F6EDFC':t==='paid'?'#E3F7E8':'#E5E5EA';
+  return '<span class="tag" style="background:'+bg+';color:'+col+'">'+TIER_LABEL[t]+'</span>';
+}
+function showRoleErr(m){
+  const el=document.getElementById('roleErr');
+  if(!m){ el.classList.remove('show'); el.textContent=''; return; }
+  el.textContent=m; el.classList.add('show');
+}
+async function loadRoles(players){
+  if(!window.Access) return;
+  const body=document.getElementById('rolesBody');
+  const list=document.getElementById('nickList');
+  if(list && players){
+    list.innerHTML=players.map(p=>'<option value="'+escH(p.player)+'">').join('');
+  }
+  let roles=[];
+  try{ roles=await Access.listRoles(); }catch(_){}
+  // Nutzer ohne Rollen-Eintrag = Basic
+  const known=new Set(roles.map(r=>String(r.player||'').toLowerCase()));
+  const extra=(players||[])
+    .filter(p=>!known.has(String(p.player||'').toLowerCase()))
+    .map(p=>({player:p.player,tier:'free',granted_by:'—',granted_at:'',note:'(Standard)'}));
+  const all=roles.concat(extra).sort((a,b)=>{
+    const rank={super:0,paid:1,free:2};
+    const d=(rank[a.tier]??2)-(rank[b.tier]??2);
+    return d || String(a.player).localeCompare(String(b.player));
+  });
+  // Für die Nutzer-Tabelle: Nickname → Stufe
+  _roleMap={};
+  all.forEach(r=>{ _roleMap[String(r.player||'').toLowerCase()]=TIER_LABEL[r.tier]?r.tier:'free'; });
+  if(!body) return;
+  body.innerHTML=all.map(r=>{
+    const t=TIER_LABEL[r.tier]?r.tier:'free';
+    const act=t==='free'
+      ? '<button type="button" class="ghost mini" data-grant="'+escH(r.player)+'">→ Pro</button>'
+      : '<button type="button" class="ghost mini" data-revoke="'+escH(r.player)+'">→ Basic</button>';
+    return '<tr><td><b>'+escH(r.player)+'</b></td><td>'+tierTag(t)+'</td><td class="muted">'+escH(r.granted_by||'—')
+      +'</td><td class="muted">'+(r.granted_at?fmt(r.granted_at):'—')+'</td><td class="muted">'+escH(r.note||'')
+      +'</td><td>'+act+'</td></tr>';
+  }).join('') || '<tr><td colspan="6" class="muted">Noch keine Nutzer</td></tr>';
+  body.querySelectorAll('[data-grant]').forEach(b=>b.onclick=()=>quickRole(b.getAttribute('data-grant'),'paid'));
+  body.querySelectorAll('[data-revoke]').forEach(b=>b.onclick=()=>quickRole(b.getAttribute('data-revoke'),'free'));
+}
+async function quickRole(player,tier){
+  showRoleErr('');
+  try{
+    await Access.setRole(player,tier,'super:dashboard','');
+    await load();
+  }catch(e){ showRoleErr(e.message||String(e)); }
+}
+async function loadPaidCode(){
+  if(!window.Access) return;
+  try{
+    const c=await Access.getPaidCode();
+    const inp=document.getElementById('paidCode');
+    if(inp && !inp.value) inp.value=c||'';
+  }catch(_){}
+}
+const MANI_LABEL={
+  'theme:list':'Themenliste','theme:basic':'Grundwissen im Thema','theme:full':'Volle Inhalte im Thema',
+  'theme:pages':'Arbeitsblätter (Scans)','theme:flashcards':'Karteikarten',
+  'quiz:demo':'Quiz (Demo)','quiz:full':'Quiz (voll)','training':'Prüfungstraining',
+  'zusammenfassung':'Zusammenfassung','pruefungen':'Prüfungsbögen + Lösungen',
+  'challenge':'Challenge','admin':'Admin-Dashboard',
+};
+async function loadManifestUI(){
+  if(!window.Access) return;
+  try{ await Access.loadManifest(); }catch(_){}
+  const m=Access.manifest();
+  const box=document.getElementById('manifestBox');
+  if(!box) return;
+  box.innerHTML=Object.keys(Access.DEFAULT_MANIFEST).map(k=>{
+    const cur=m[k]||'free';
+    const dis=k==='admin'?' disabled':'';
+    return '<div class="mani-row"><span>'+escH(MANI_LABEL[k]||k)+'</span>'
+      +'<select data-mani="'+k+'"'+dis+'>'
+      +['free','paid','super'].map(t=>'<option value="'+t+'"'+(t===cur?' selected':'')+'>'+TIER_LABEL[t]+'</option>').join('')
+      +'</select></div>';
+  }).join('');
+}
+
+document.getElementById('btnSetRole').onclick=async()=>{
+  const nick=(document.getElementById('roleNick').value||'').trim();
+  const tier=document.getElementById('roleTier').value;
+  const note=(document.getElementById('roleNote').value||'').trim();
+  showRoleErr('');
+  if(!nick){ showRoleErr('Bitte Nickname eingeben'); return; }
+  const btn=document.getElementById('btnSetRole');
+  btn.disabled=true; btn.textContent='Speichert…';
+  try{
+    await Access.setRole(nick,tier,'super:dashboard',note);
+    document.getElementById('roleNote').value='';
+    await load();
+  }catch(e){ showRoleErr(e.message||String(e)); }
+  finally{ btn.disabled=false; btn.textContent='Speichern'; }
+};
+document.getElementById('btnSavePaid').onclick=async()=>{
+  const code=(document.getElementById('paidCode').value||'').trim();
+  const err=document.getElementById('codeErr');
+  const msg=document.getElementById('codeMsg');
+  err.classList.remove('show'); msg.textContent='';
+  try{
+    await Access.setPaidCode(code,'super:dashboard');
+    msg.textContent='Pro-Code gespeichert.';
+  }catch(e){ err.textContent=e.message||String(e); err.classList.add('show'); }
+};
+document.getElementById('btnSavePass').onclick=async()=>{
+  const pw=document.getElementById('newAdminPass').value||'';
+  const err=document.getElementById('codeErr');
+  const msg=document.getElementById('codeMsg');
+  err.classList.remove('show'); msg.textContent='';
+  try{
+    await Access.setSuperPassword(pw,'super:dashboard');
+    document.getElementById('newAdminPass').value='';
+    msg.textContent='Admin-Passwort geändert.';
+  }catch(e){ err.textContent=e.message||String(e); err.classList.add('show'); }
+};
+document.getElementById('btnSaveManifest').onclick=async()=>{
+  const msg=document.getElementById('maniMsg');
+  const patch={};
+  document.querySelectorAll('[data-mani]').forEach(s=>{ patch[s.getAttribute('data-mani')]=s.value; });
+  msg.textContent='Speichert…';
+  try{
+    await Access.saveManifest(patch,'super:dashboard');
+    msg.textContent='Matrix gespeichert.';
+  }catch(e){ msg.textContent='Fehler: '+(e.message||e); }
+};
+
+document.getElementById('btnLogin').onclick=async()=>{
   const pass=document.getElementById('pass').value;
+  const btn=document.getElementById('btnLogin');
   showErr('');
   if(!window.LearnDB){ showErr('supabase.js fehlt'); return; }
-  if(!LearnDB.checkAdminPassword(pass)){ showErr('Falsches Passwort'); return; }
-  try{ sessionStorage.setItem(AUTH_KEY,'1'); }catch(_){}
-  unlock();
+  if(!window.Access){ showErr('access.js fehlt'); return; }
+  btn.disabled=true; btn.textContent='Prüfe…';
+  try{
+    const ok = await Access.checkSuperPassword(pass);
+    if(!ok){ showErr('Falsches Passwort'); return; }
+    try{ sessionStorage.setItem(AUTH_KEY,'1'); }catch(_){}
+    if(window.Access) Access.markSuperVerified(true);
+    unlock();
+  }catch(e){ showErr(e.message||String(e)); }
+  finally{ btn.disabled=false; btn.textContent='Zum Dashboard'; }
 };
 document.getElementById('pass').addEventListener('keydown', e=>{ if(e.key==='Enter') document.getElementById('btnLogin').click(); });
 document.getElementById('btnRefresh').onclick=load;

@@ -337,6 +337,93 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 .login-admin{margin-top:28px}
 .login-admin a{color:#64748b;font-size:.82em;text-decoration:none;letter-spacing:.04em;transition:color .15s}
 .login-admin a:hover{color:#0f172a}
+.login-card input[type=password]{
+  width:100%;height:52px;padding:10px 4px;border:none;border-bottom:1px solid #d4d4d4;
+  border-radius:0;background:transparent;font:inherit;font-size:1em;color:#0f172a;margin:0 0 8px
+}
+.login-card input[type=password]::placeholder{color:rgba(163,163,163,.7)}
+.login-skip{background:none;border:none;color:#8E8E93;font:inherit;font-size:.82em;
+  padding:10px 0 0;cursor:pointer;text-align:center;width:100%}
+.login-skip:hover{color:#0f172a}
+
+/* ===== Tier / Zugriffsstufen ===== */
+.tier-badge{display:inline-flex;align-items:center;gap:4px;border-radius:999px;
+  padding:1px 7px;font-size:.86em;font-weight:600;letter-spacing:.01em;line-height:1.5}
+.tier-badge.t-free{background:#E5E5EA;color:#6C6C70}
+.tier-badge.t-paid{background:#E3F7E8;color:#248A3D}
+.tier-badge.t-super{background:#F6EDFC;color:#8944AB}
+
+.pro-lock{display:flex;align-items:flex-start;gap:12px;background:#fff;border:1px solid var(--line);
+  border-radius:16px;padding:16px;margin:18px 0 6px;box-shadow:var(--shadow)}
+.pro-lock-ic{flex:0 0 34px;height:34px;border-radius:10px;background:var(--accent-soft);
+  color:var(--accent);display:flex;align-items:center;justify-content:center}
+.pro-lock-ic svg{width:20px;height:20px}
+.pro-lock-tx{flex:1;min-width:0;font-size:.88em;line-height:1.5}
+.pro-lock-tx b{display:block;font-size:1.02em;margin-bottom:3px}
+.pro-lock-tx span{color:var(--muted);font-size:.94em}
+.pro-lock-tx i{color:var(--muted);font-style:italic}
+.pro-lock-btn{flex:0 0 auto;align-self:center;padding:9px 14px;font-size:.86em}
+@media (max-width:520px){
+  .pro-lock{flex-wrap:wrap}
+  .pro-lock-btn{width:100%;margin-top:4px}
+}
+
+/* gesperrte Kacheln / Listeneinträge */
+.tile.tier-locked,.theme-item.tier-locked,a.tile.tier-locked{position:relative;opacity:.62}
+.tile.tier-locked:after,.theme-item.tier-locked:after{content:"";position:absolute;inset:0;border-radius:inherit}
+.lock-pill{display:inline-flex;align-items:center;gap:4px;background:#E5E5EA;color:#6C6C70;
+  border-radius:999px;padding:2px 8px;font-size:.72em;font-weight:600;white-space:nowrap}
+.lock-pill svg{width:11px;height:11px}
+
+/* Account-/Paywall-Sheet */
+.sheet{position:fixed;inset:0;z-index:280;background:rgba(0,0,0,.4);display:none;
+  align-items:flex-end;justify-content:center}
+.sheet.show{display:flex}
+.sheet-card{width:min(520px,100%);background:#fff;border-radius:18px 18px 0 0;
+  padding:16px 18px calc(20px + var(--safe-bottom));max-height:88vh;overflow:auto;
+  animation:sheetUp .28s cubic-bezier(.22,1,.36,1) both}
+@keyframes sheetUp{from{transform:translateY(22px);opacity:.6}to{transform:none;opacity:1}}
+.sheet-head{display:flex;align-items:center;gap:8px;margin:0 0 4px}
+.sheet-head b{font-size:1.05em;font-weight:600}
+.sheet-x{margin-left:auto;border:none;background:var(--accent-soft);color:var(--accent);
+  border-radius:10px;padding:6px 11px;font:inherit;font-weight:600;cursor:pointer}
+.acct-code{display:flex;flex-direction:column;gap:8px;background:#F2F2F7;border-radius:14px;
+  padding:14px;margin:0 0 12px}
+.acct-code label{font-size:.72em;font-weight:600;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.06em}
+.acct-code input{border:1px solid var(--line);border-radius:10px;padding:11px 12px;font:inherit;background:#fff}
+.acct-code input:focus{outline:none;border-color:#7FBBFF;box-shadow:0 0 0 3px rgba(0,122,255,.12)}
+.acct-msg{font-size:.84em;min-height:1.2em}
+.acct-msg.ok{color:var(--ok)}
+.acct-msg.bad{color:var(--bad)}
+@media (min-width:640px){
+  .sheet{align-items:center}
+  .sheet-card{border-radius:20px;max-height:82vh}
+}
+.lock-pill svg{width:12px;height:12px}
+.tile .lock-pill{position:absolute;top:12px;right:12px}
+.theme-item .lock-pill{margin-left:auto}
+
+/* Paywall-Ansicht */
+.paywall{max-width:520px;margin:0 auto;text-align:center}
+.paywall .pw-ic{width:60px;height:60px;border-radius:18px;background:var(--accent-soft);color:var(--accent);
+  display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.paywall .pw-ic svg{width:30px;height:30px}
+.paywall h2{font-size:1.3em;font-weight:600;letter-spacing:-.01em;margin:0 0 8px}
+.paywall p{color:var(--muted);font-size:.92em;line-height:1.6;margin:0 0 6px}
+.paywall .pw-vi{font-style:italic;font-size:.88em;margin-bottom:18px}
+.pw-code{display:flex;gap:8px;margin:16px 0 4px}
+.pw-code input{flex:1;min-width:0;height:46px;padding:0 14px;border:1px solid var(--line);
+  border-radius:12px;background:#fff;font:inherit;font-size:.95em;color:var(--ink)}
+.pw-code input:focus{outline:none;border-color:var(--accent)}
+.pw-code button{flex:0 0 auto;height:46px}
+.pw-msg{font-size:.86em;margin-top:10px;min-height:1.2em}
+.pw-msg.ok{color:var(--ok)}
+.pw-msg.no{color:var(--bad)}
+.pw-list{text-align:left;background:#fff;border:1px solid var(--line);border-radius:16px;
+  padding:14px 16px;margin-top:18px;box-shadow:var(--shadow)}
+.pw-list h3{font-size:.88em;font-weight:600;margin:0 0 8px}
+.pw-list ul{margin:0;padding-left:18px;font-size:.86em;line-height:1.75;color:var(--muted)}
 @media (max-width:480px){
   .login-card{padding:36px 22px;border-radius:20px}
 }
@@ -770,10 +857,17 @@ h2 svg,h3 svg,b svg{width:1em;height:1em;display:inline-block;vertical-align:-.1
     <p class="sub">Gib deinen Nickname ein, um zu starten.</p>
     <p class="sub-cap">Die Lernzeit wird ab sofort gezählt — bei Wiederkehr siehst du deine Quiz-Historie.</p>
     <div class="login-err" id="loginErr"></div>
-    <div class="login-form">
+    <div class="login-form" id="loginForm">
       <label for="nickInput">Nickname</label>
       <input id="nickInput" type="text" maxlength="32" placeholder="z. B. Linh, Alex, Phuc…" autocomplete="username">
       <button class="btn-go" id="loginBtn" type="button">Los geht's <span class="arrow">→</span></button>
+    </div>
+    <!-- Schritt 2: nur für Super-Admin-Nicknames -->
+    <div class="login-form" id="superForm" style="display:none">
+      <label for="superPass">Admin-Passwort</label>
+      <input id="superPass" type="password" maxlength="64" placeholder="Passwort für Admin-Stufe" autocomplete="current-password">
+      <button class="btn-go" id="superBtn" type="button">Als Admin öffnen <span class="arrow">→</span></button>
+      <button type="button" class="login-skip" id="superSkip">Ohne Admin-Rechte fortfahren</button>
     </div>
     <div class="login-hist" id="loginHist"></div>
     <div class="login-admin">
@@ -851,7 +945,7 @@ h2 svg,h3 svg,b svg{width:1em;height:1em;display:inline-block;vertical-align:-.1
       <b>BfK-1</b>
       <span>LF6 · LF9</span>
     </div>
-    <div class="today-card" onclick="location.href='challenge.html'">
+    <div class="today-card" id="tcChallenge" onclick="if(requireTier('challenge')) location.href='challenge.html'">
       <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5 14.5 11.5l-3 3-8-8z"/><path d="M17.5 3.5 9.5 11.5l3 3 8-8z"/><path d="M4 20l3-3"/><path d="M20 20l-3-3"/></svg></div>
       <b>Challenge</b>
       <span>Klassen-Duell</span>
@@ -1445,7 +1539,8 @@ h2 svg,h3 svg,b svg{width:1em;height:1em;display:inline-block;vertical-align:-.1
   <div class="tb-tooltip" id="tbTooltip">Lernzeit heute</div>
 </div>
 
-<script src="./supabase.js?v=12"></script>
+<script src="./supabase.js?v=13"></script>
+<script src="./access.js?v=1"></script>
 <script src="./vocab.js?v=20"></script>
 <script src="./bfk1-data.js?v=17"></script>
 <script src="./bfk1-quiz.js?v=12"></script>
@@ -2013,6 +2108,15 @@ function renderTraining(fachId){
   ensureFachRegistry();
   const fach=window.FachForm.findFach(fachId);
   if(!fach){ go('#/'); return; }
+  if(!requireTier('training')){
+    const b=document.getElementById('fachTrainingBody');
+    if(b) b.innerHTML=lockedCard('training');
+    const bk=document.getElementById('fachTrainingBack');
+    if(bk){ bk.onclick=()=>go(fachHubRoute(fachId)); bk.textContent='← '+(fach.code||'Fach'); }
+    const ti=document.getElementById('fachTrainingTitle');
+    if(ti) ti.textContent='🎯 Training · '+(fach.code||'');
+    return;
+  }
   const back=document.getElementById('fachTrainingBack');
   if(back){ back.onclick=()=>go(fachHubRoute(fachId)); back.textContent='← '+(fach.code||'Fach'); }
   const title=document.getElementById('fachTrainingTitle');
@@ -2108,6 +2212,15 @@ function renderPruefungen(fachId){
   ensureFachRegistry();
   const fach=window.FachForm.findFach(fachId);
   if(!fach){ go('#/'); return; }
+  if(!requireTier('pruefungen')){
+    const b=document.getElementById('fachPruefBody');
+    if(b) b.innerHTML=lockedCard('pruefungen');
+    const bk=document.getElementById('fachPruefBack');
+    if(bk){ bk.onclick=()=>go(fachHubRoute(fachId)); bk.textContent='← '+(fach.code||'Fach'); }
+    const ti=document.getElementById('fachPruefTitle');
+    if(ti) ti.textContent='🗂️ '+(fach.code||'')+' · Prüfungen';
+    return;
+  }
   const back=document.getElementById('fachPruefBack');
   if(back){ back.onclick=()=>go(fachHubRoute(fachId)); back.textContent='← '+(fach.code||'Fach'); }
   const title=document.getElementById('fachPruefTitle');
@@ -2480,12 +2593,21 @@ function renderFachHub(fachId){
       const qRoute = fach.id==='bfk1' ? '#/bfk/1/quiz' : fach.id==='bfk2' ? '#/bfk/2/quiz' : fachRoute(fach,'quiz');
       a+='<button type="button" class="btn" onclick="go(\''+qRoute+'\')">📝 Quiz üben →</button>';
     }
-    a+='<button type="button" class="btn ghost" onclick="go(\'#/fach/'+fach.id+'/training\')">🎯 Training →</button>';
+    const okTr=!window.Access||Access.can('training');
+    a+='<button type="button" class="btn ghost"'+(okTr
+      ? ' onclick="go(\'#/fach/'+fach.id+'/training\')"'
+      : ' onclick="openPaywall(\'training\')"')+'>🎯 Training →'+(okTr?'':' '+lockPill('Pro'))+'</button>';
     if(fach.zusammenfassung){
-      a+='<a class="btn ghost" href="'+fach.zusammenfassung+'">📚 Zusammenfassung →</a>';
+      const okZu=!window.Access||Access.can('zusammenfassung');
+      a+=okZu
+        ? '<a class="btn ghost" href="'+fach.zusammenfassung+'">📚 Zusammenfassung →</a>'
+        : '<button type="button" class="btn ghost" onclick="openPaywall(\'zusammenfassung\')">📚 Zusammenfassung '+lockPill('Pro')+'</button>';
     }
     if((fach.pruefungen||[]).length){
-      a+='<button type="button" class="btn ghost" onclick="go(\'#/fach/'+fach.id+'/pruefungen\')">🗂️ Prüfungen →</button>';
+      const okPr=!window.Access||Access.can('pruefungen');
+      a+='<button type="button" class="btn ghost"'+(okPr
+        ? ' onclick="go(\'#/fach/'+fach.id+'/pruefungen\')"'
+        : ' onclick="openPaywall(\'pruefungen\')"')+'>🗂️ Prüfungen →'+(okPr?'':' '+lockPill('Pro'))+'</button>';
     }
     if(fach.external){
       a+='<a class="btn ghost" href="'+fach.external+'">App öffnen →</a>';
@@ -2535,7 +2657,15 @@ function renderFachTheme(fachId, themeId){
   if(sub) sub.textContent=(fach.code||'')+' · '+(theme.groupBadge||'')+(fach.teacher?(' · '+fach.teacher):'');
   if(!body) return;
   let html = theme.content || ('<p>'+(theme.desc||'')+'</p>');
-  const pages = window.FachForm.pageList(theme.pages);
+  // Stufe 1 (Basic): nur Grundwissen – Detailteile werden ausgeblendet
+  try{ if(window.Access) html = Access.filterContent(html, {what:'theme:full'}); }catch(e){}
+  const canPages = !window.Access || Access.can('theme:pages');
+  const pages = canPages ? window.FachForm.pageList(theme.pages) : [];
+  if(!canPages && (theme.pages)){
+    html += '<div class="src-pages"><h3>Arbeitsblätter '+lockPill('Pro')+'</h3>'
+      + '<div class="hint">Die Original-Seiten sind in der Pro-Stufe. <i>Ảnh trang sách thuộc tầng Pro.</i></div>'
+      + '<button type="button" class="btn ghost" data-unlock="1" style="margin-top:8px">Freischalten</button></div>';
+  }
   if(pages.length){
     window._bfk1Pages = pages; // reuse lightbox
     html += '<div class="src-pages"><h3>📄 Arbeitsblätter</h3>'
@@ -2634,6 +2764,7 @@ function fachQuizStart(fachId, themeIds, mode){
   fQuiz.pool=pool;
   fQuiz.order=shuffle(pool.map((_,i)=>i));
   if(mode==='quick') fQuiz.order=fQuiz.order.slice(0, Math.min(10,fQuiz.order.length));
+  fQuiz.order=limitQuizOrder(fQuiz.order);
   fQuiz.index=0; fQuiz.score=0; fQuiz.wrong=[]; fQuiz.started=true;
   fachRenderQuestion();
 }
@@ -2896,7 +3027,7 @@ function bfk1QuizStartSpecial(kind){
   if((location.hash||'') !== '#/bfk/1/quiz'){ window._b1Pending={special:kind}; go('#/bfk/1/quiz'); return; }
   b1SelectedThemes=[...new Set(pool.map(q=>q.theme))];
   b1Pool=b1Shuffle(pool);
-  b1Order=b1Pool.map((_,i)=>i);
+  b1Order=limitQuizOrder(b1Pool.map((_,i)=>i));
   b1Index=0; b1Score=0; b1Wrong=[]; b1Started=true; b1Exam=false; b1StopTimer();
   bfk1RenderQuestion();
 }
@@ -2928,6 +3059,7 @@ function bfk1QuizStartThemes(themeIds, mode, opts){
       b1Exam=true;
       b1StartTimer(opts.seconds||20*60);
     } else { b1Exam=false; b1StopTimer(); }
+    b1Order = limitQuizOrder(b1Order);
     b1Index=0; b1Score=0; b1Wrong=[]; b1Started=true;
     bfk1RenderQuestion();
   }catch(err){
@@ -3984,7 +4116,7 @@ function buildQuizOrder(mode){
 }
 function quizStart(mode){
   window._quizStarted=true;
-  qOrder=buildQuizOrder(mode||qMode||'all');
+  qOrder=limitQuizOrder(buildQuizOrder(mode||qMode||'all'));
   qIndex=0; qScore=0; qWrong=[];
   renderQuestion();
 }
@@ -4292,6 +4424,20 @@ function renderLoginHistory(history){
   }).join('');
   box.classList.add('show');
 }
+function tierBadgeHtml(t){
+  const label=(window.Access&&Access.tierLabel)?Access.tierLabel(t):'Basic';
+  return '<i class="tier-badge t-'+(t||'free')+'">'+label+'</i>';
+}
+function renderUserChip(player){
+  const chip=document.getElementById('userChip');
+  if(!chip) return;
+  const t=(window.Access&&Access.tier)?Access.tier():'free';
+  chip.style.display='inline-flex';
+  chip.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px"><circle cx="12" cy="8" r="3.4"/><path d="M5 20a7 7 0 0 1 14 0"/></svg>'
+    +'<span>'+escHtml(player)+'</span>'+tierBadgeHtml(t);
+  chip.title='Stufe: '+((window.Access&&Access.tierLabel)?Access.tierLabel(t):'Basic')+' · tippen für Optionen';
+  chip.onclick=()=>openAccountSheet(player);
+}
 function unlockApp(player){
   const gate=document.getElementById('loginGate');
   const page=document.getElementById('appPage');
@@ -4300,14 +4446,11 @@ function unlockApp(player){
     page.classList.remove('locked');
     page.classList.add('anim-in');
   }
-  const chip=document.getElementById('userChip');
-  if(chip){
-    chip.style.display='inline-flex';
-    chip.textContent='👤 '+player;
-    chip.onclick=()=>{ if(confirm('Nickname wechseln? Du meldest dich neu an.')){ LearnDB.clearPlayer(); location.reload(); } };
-  }
+  renderUserChip(player);
   loadHomeHistory(player);
-  toast('Willkommen, '+player+'!','ok');
+  const t=(window.Access&&Access.tier)?Access.tier():'free';
+  const lbl=(window.Access&&Access.tierLabel)?Access.tierLabel(t):'Basic';
+  toast('Willkommen, '+player+'! ('+lbl+')','ok');
   // After login, gently remind to install PWA (if available)
   setTimeout(()=>{ try{ window.dispatchEvent(new Event('learn-ready-install')); }catch(_){} }, 2200);
 }
@@ -4376,6 +4519,46 @@ async function loadHomeHistory(player){
     if(body) body.innerHTML='<div class="empty-state">Historie nicht ladbar: '+(e.message||e)+'</div>';
   }
 }
+/* Schritt 2 im Login: Passwort für Super-Admin-Nicknames */
+let _pendingSuper=null;
+function showSuperStep(player){
+  _pendingSuper=player;
+  const form=document.getElementById('loginStep1');
+  const step=document.getElementById('loginStep2');
+  const who=document.getElementById('superWho');
+  const btn=document.getElementById('loginBtn');
+  if(btn){ btn.disabled=false; btn.innerHTML="Los geht's <span class=\"arrow\">→</span>"; }
+  if(form) form.style.display='none';
+  if(step) step.style.display='flex';
+  if(who) who.textContent=player;
+  const pw=document.getElementById('superPass');
+  if(pw){ pw.value=''; setTimeout(()=>pw.focus(),50); }
+}
+function hideSuperStep(){
+  _pendingSuper=null;
+  const form=document.getElementById('loginStep1');
+  const step=document.getElementById('loginStep2');
+  if(form) form.style.display='flex';
+  if(step) step.style.display='none';
+}
+async function submitSuperPass(){
+  const pw=document.getElementById('superPass');
+  const btn=document.getElementById('superBtn');
+  const pass=(pw&&pw.value)||'';
+  showLoginError('');
+  if(!pass){ showLoginError('Bitte Passwort eingeben'); return; }
+  if(btn){ btn.disabled=true; btn.textContent='Prüfe…'; }
+  try{
+    await Access.elevateSuper(pass);
+    const p=_pendingSuper;
+    hideSuperStep();
+    unlockApp(p);
+  }catch(e){
+    showLoginError(e.message||String(e));
+  }finally{
+    if(btn){ btn.disabled=false; btn.textContent='Als Admin anmelden'; }
+  }
+}
 async function doLogin(){
   const input=document.getElementById('nickInput');
   const btn=document.getElementById('loginBtn');
@@ -4387,6 +4570,10 @@ async function doLogin(){
   try{
     const res=await LearnDB.loginOrRegister(nick);
     renderLoginHistory(res.history);
+    // Stufe (free / paid / super) laden
+    let info={tier:'free',needsSuperPass:false};
+    try{ if(window.Access) info=await Access.loadTier(res.player); }catch(_){}
+    if(info.needsSuperPass){ showSuperStep(res.player); return; }
     // short pause so user can glance history if returning
     if(!res.isNew && res.history && res.history.quizzes && res.history.quizzes.length){
       if(btn) btn.innerHTML='Willkommen zurück, '+res.player+'!';
@@ -4408,6 +4595,17 @@ function initAuthGate(){
     const known=window.LearnDB && LearnDB.getPlayer();
     if(known) input.value=known;
   }
+  const sBtn=document.getElementById('superBtn');
+  if(sBtn) sBtn.addEventListener('click', submitSuperPass);
+  const sPw=document.getElementById('superPass');
+  if(sPw) sPw.addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); submitSuperPass(); } });
+  const sSkip=document.getElementById('superSkip');
+  if(sSkip) sSkip.addEventListener('click', ()=>{
+    const p=_pendingSuper;
+    showLoginError('');
+    hideSuperStep();
+    if(p) unlockApp(p);   // bleibt in der Basic-Stufe
+  });
   // auto-login if nickname already saved
   const known=window.LearnDB && LearnDB.getPlayer();
   if(known){
@@ -4415,6 +4613,184 @@ function initAuthGate(){
     doLogin();
   }
 }
+
+/* ============ ACCOUNT-SHEET (Stufe / Code einlösen) ============ */
+function openAccountSheet(player){
+  const t=(window.Access&&Access.tier)?Access.tier():'free';
+  const lbl=(window.Access&&Access.tierLabel)?Access.tierLabel(t):'Basic';
+  let sheet=document.getElementById('acctSheet');
+  if(!sheet){
+    sheet=document.createElement('div');
+    sheet.id='acctSheet';
+    sheet.className='sheet';
+    document.body.appendChild(sheet);
+  }
+  const desc = t==='super'
+    ? 'Vollzugriff + Admin-Dashboard.'
+    : t==='paid'
+      ? 'Vollzugriff auf alle Inhalte, Quiz und Zusammenfassungen.'
+      : 'Alle Themen mit Grundwissen. Volle Inhalte, Quiz und Zusammenfassungen sind in Pro.';
+  sheet.innerHTML='<div class="sheet-card">'
+    +'<div class="sheet-head"><b>'+escHtml(player)+'</b>'+tierBadgeHtml(t)
+    +'<button type="button" class="sheet-x" id="acctX" aria-label="Schließen">✕</button></div>'
+    +'<p class="muted" style="font-size:.85em;margin:0 0 14px">Stufe: <b>'+lbl+'</b> · '+desc+'</p>'
+    +(t==='free'
+      ? '<div class="acct-code"><label for="acctCode">Pro-Code</label>'
+        +'<input id="acctCode" type="text" placeholder="Code eingeben" autocomplete="off">'
+        +'<button type="button" class="btn" id="acctRedeem">Freischalten</button>'
+        +'<div class="acct-msg" id="acctMsg"></div></div>'
+      : '')
+    +(t==='super' ? '<a class="btn ghost" href="admin.html" style="width:100%;text-align:center;margin-bottom:8px">Admin-Dashboard →</a>' : '')
+    +'<button type="button" class="btn ghost" id="acctSwitch" style="width:100%">Nickname wechseln</button>'
+    +'</div>';
+  sheet.classList.add('show');
+  const close=()=>sheet.classList.remove('show');
+  sheet.onclick=e=>{ if(e.target===sheet) close(); };
+  const x=document.getElementById('acctX'); if(x) x.onclick=close;
+  const sw=document.getElementById('acctSwitch');
+  if(sw) sw.onclick=()=>{
+    if(confirm('Nickname wechseln? Du meldest dich neu an.')){
+      try{ if(window.Access) Access.reset(); }catch(_){}
+      LearnDB.clearPlayer(); location.reload();
+    }
+  };
+  const rd=document.getElementById('acctRedeem');
+  if(rd) rd.onclick=async()=>{
+    const inp=document.getElementById('acctCode');
+    const msg=document.getElementById('acctMsg');
+    const code=(inp&&inp.value||'').trim();
+    if(msg){ msg.className='acct-msg'; msg.textContent=''; }
+    if(!code){ if(msg){ msg.className='acct-msg bad'; msg.textContent='Bitte Code eingeben'; } return; }
+    rd.disabled=true; rd.textContent='Prüfe…';
+    try{
+      await Access.redeemPaidCode(player, code);
+      if(msg){ msg.className='acct-msg ok'; msg.textContent='Pro freigeschaltet!'; }
+      renderUserChip(player);
+      toast('Pro freigeschaltet','ok');
+      setTimeout(()=>{ close(); router(); }, 800);
+    }catch(e){
+      if(msg){ msg.className='acct-msg bad'; msg.textContent=e.message||String(e); }
+      rd.disabled=false; rd.textContent='Freischalten';
+    }
+  };
+}
+window.openAccountSheet=openAccountSheet;
+
+/* ============ PAYWALL ============ */
+const PAYWALL_TEXT = {
+  'theme:full':      ['Vollständiger Inhalt','Beispiele, Detailtabellen und Prüfungstipps.','Nội dung đầy đủ: ví dụ, bảng chi tiết, mẹo thi.'],
+  'theme:pages':     ['Arbeitsblätter (Scans)','Original-Seiten aus dem Unterricht.','Ảnh scan trang sách trong lớp.'],
+  'quiz:full':       ['Vollständiges Quiz','Alle Fragen statt nur '+((window.Access&&Access.FREE_QUIZ_LIMIT)||3)+' Demo-Fragen.','Toàn bộ câu hỏi, không giới hạn.'],
+  'training':        ['Prüfungstraining','Themenliste, Probeklausur, gezieltes Üben.','Luyện thi theo chủ đề + đề thử.'],
+  'zusammenfassung': ['Zusammenfassung','Kompakte Lernzettel zu jedem Fach.','Bản tóm tắt kiến thức từng môn.'],
+  'pruefungen':      ['Prüfungsbögen + Lösungen','Alte Klassenarbeiten mit Musterlösung.','Đề KA cũ kèm lời giải mẫu.'],
+  'challenge':       ['Challenge-Modus','Gegen Mitschüler antreten.','Đấu quiz với bạn cùng lớp.'],
+};
+/** Ganzseitige Sperre (statt Inhalt) für Pro-Bereiche */
+function lockedCard(feature){
+  const info=PAYWALL_TEXT[feature]||['Pro-Inhalt','Dieser Bereich ist in der Pro-Stufe.','Phần này thuộc tầng Pro.'];
+  return '<div class="pro-lock" data-lock="'+feature+'" style="margin:0">'
+    +'<div class="pro-lock-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+    +'<rect x="4.5" y="10.5" width="15" height="9.5" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg></div>'
+    +'<div class="pro-lock-tx"><b>'+escHtml(info[0])+' · Pro</b>'
+    +'<span>'+escHtml(info[1])+'<br><i>'+escHtml(info[2])+'</i></span></div>'
+    +'<button type="button" class="btn pro-lock-btn" data-unlock="1">Freischalten</button></div>';
+}
+window.lockedCard=lockedCard;
+/** Quiz-Länge nach Stufe begrenzen: Basic = nur Demo-Fragen. */
+function limitQuizOrder(order){
+  if(!Array.isArray(order)) return order;
+  if(!window.Access || Access.can('quiz:full')) return order;
+  const n=Access.FREE_QUIZ_LIMIT||3;
+  return order.slice(0, Math.min(n, order.length));
+}
+window.limitQuizOrder=limitQuizOrder;
+/** true = Basic-Nutzer, Quiz wurde gekürzt */
+function quizIsDemo(){
+  return !!(window.Access && !Access.can('quiz:full'));
+}
+window.quizIsDemo=quizIsDemo;
+/** Hinweis-Balken am Ende eines gekürzten Quiz */
+function demoQuizBar(){
+  if(!quizIsDemo()) return '';
+  const n=(window.Access&&Access.FREE_QUIZ_LIMIT)||3;
+  return '<div class="pro-lock" data-lock="quiz:full" style="margin:14px 0 0">'
+    +'<div class="pro-lock-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+    +'<rect x="4.5" y="10.5" width="15" height="9.5" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg></div>'
+    +'<div class="pro-lock-tx"><b>Demo-Quiz · '+n+' Fragen</b>'
+    +'<span>In der Pro-Stufe läuft das Quiz mit allen Fragen.<br>'
+    +'<i>Tầng Pro có toàn bộ câu hỏi.</i></span></div>'
+    +'<button type="button" class="btn pro-lock-btn" data-unlock="1">Freischalten</button></div>';
+}
+window.demoQuizBar=demoQuizBar;
+function lockPill(label){
+  return '<span class="lock-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+    +'<rect x="4.5" y="10.5" width="15" height="9.5" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg>'
+    +(label||'Pro')+'</span>';
+}
+function openPaywall(feature){
+  const t=(window.Access&&Access.tier)?Access.tier():'free';
+  const info=PAYWALL_TEXT[feature]||['Pro-Inhalt','Dieser Bereich ist in der Pro-Stufe.','Phần này thuộc tầng Pro.'];
+  let sheet=document.getElementById('paySheet');
+  if(!sheet){
+    sheet=document.createElement('div');
+    sheet.id='paySheet'; sheet.className='sheet';
+    document.body.appendChild(sheet);
+  }
+  sheet.innerHTML='<div class="sheet-card">'
+    +'<div class="sheet-head"><b>'+escHtml(info[0])+'</b>'+lockPill('Pro')
+    +'<button type="button" class="sheet-x" id="payX" aria-label="Schließen">✕</button></div>'
+    +'<p class="muted" style="font-size:.88em;margin:0 0 4px">'+escHtml(info[1])+'</p>'
+    +'<p class="muted" style="font-size:.84em;font-style:italic;margin:0 0 14px">'+escHtml(info[2])+'</p>'
+    +'<div class="acct-code"><label for="payCode">Pro-Code</label>'
+    +'<input id="payCode" type="text" placeholder="Code eingeben" autocomplete="off">'
+    +'<button type="button" class="btn" id="payRedeem">Freischalten</button>'
+    +'<div class="acct-msg" id="payMsg"></div></div>'
+    +'<p class="muted" style="font-size:.8em;margin:0 0 10px">Code bekommst du von H2FO3T.<br>'
+    +'<i>Xin code từ lớp/giáo viên.</i></p>'
+    +'<button type="button" class="btn ghost" id="payClose" style="width:100%">Weiter mit Basic</button>'
+    +'</div>';
+  sheet.classList.add('show');
+  const close=()=>sheet.classList.remove('show');
+  sheet.onclick=e=>{ if(e.target===sheet) close(); };
+  const x=document.getElementById('payX'); if(x) x.onclick=close;
+  const c=document.getElementById('payClose'); if(c) c.onclick=close;
+  const rd=document.getElementById('payRedeem');
+  if(rd) rd.onclick=async()=>{
+    const inp=document.getElementById('payCode');
+    const msg=document.getElementById('payMsg');
+    const code=(inp&&inp.value||'').trim();
+    if(msg){ msg.className='acct-msg'; msg.textContent=''; }
+    if(!code){ if(msg){ msg.className='acct-msg bad'; msg.textContent='Bitte Code eingeben'; } return; }
+    rd.disabled=true; rd.textContent='Prüfe…';
+    try{
+      await Access.redeemPaidCode(LearnDB.getPlayer(), code);
+      if(msg){ msg.className='acct-msg ok'; msg.textContent='Pro freigeschaltet!'; }
+      renderUserChip(LearnDB.getPlayer());
+      toast('Pro freigeschaltet','ok');
+      setTimeout(()=>{ close(); router(); }, 800);
+    }catch(e){
+      if(msg){ msg.className='acct-msg bad'; msg.textContent=e.message||String(e); }
+      rd.disabled=false; rd.textContent='Freischalten';
+    }
+  };
+  return t;
+}
+window.openPaywall=openPaywall;
+/** true = darf, false = gesperrt (Paywall wurde gezeigt) */
+function requireTier(feature){
+  if(!window.Access || Access.can(feature)) return true;
+  openPaywall(feature);
+  return false;
+}
+window.requireTier=requireTier;
+/* Klicks auf „Freischalten“ in gefiltertem Inhalt */
+document.addEventListener('click', e=>{
+  const b=e.target.closest && e.target.closest('[data-unlock]');
+  if(!b) return;
+  const host=b.closest('.pro-lock');
+  openPaywall((host && host.getAttribute('data-lock')) || 'theme:full');
+});
 
 /* ============ INIT ============ */
 router();

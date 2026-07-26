@@ -12,8 +12,8 @@
   const ADMIN_GOAL_KEY = 'learn:admin:goal';
   const DEFAULT_DAILY_GOAL_SEC = 3600;
   const SESSION_VISIT_KEY = 'learn_active_visit';
-  // Simple admin password for school dashboard (change if needed)
-  const ADMIN_PASS = 'H2FO3T';
+  // Admin-Passwort liegt NICHT mehr im Quellcode.
+  // Prüfung: Access.checkSuperPassword() → SHA-256-Hash aus `config`.
   const HEARTBEAT_MS = 30000; // 30s
 
   let _hbTimer = null;
@@ -913,8 +913,11 @@
     return g;
   }
 
-  function checkAdminPassword(pass) {
-    return String(pass || '') === ADMIN_PASS;
+  // Veraltet. Die Passwortprüfung läuft jetzt über Access.checkSuperPassword()
+  // (SHA-256-Hash aus `config`) – hier steht absichtlich kein Klartext mehr.
+  // Gibt immer false zurück, damit alter Code nicht versehentlich öffnet.
+  function checkAdminPassword() {
+    return false;
   }
 
   async function ping() {
@@ -1381,7 +1384,6 @@
 
   global.LearnDB = {
     url: SB_URL,
-    adminPass: ADMIN_PASS,
     getPlayer,
     setPlayer,
     clearPlayer,
