@@ -1384,6 +1384,9 @@
 
   global.LearnDB = {
     url: SB_URL,
+    getConfig,
+    upsertConfig,
+    listConfig,
     getPlayer,
     setPlayer,
     clearPlayer,
