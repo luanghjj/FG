@@ -150,6 +150,21 @@ button,input,.tile,.tab,.btn{touch-action:manipulation;-webkit-tap-highlight-col
 .subject-card .bottom{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:10px}
 .subject-card .pill{font-size:.62em}
 .subject-note{font-size:.82em;color:var(--muted);margin:0 0 12px;line-height:1.45}
+
+/* ===== Pro-Theme (Basic=weiß, Pro/Admin=beige) ===== */
+/* Basic bleibt Standard (#F2F2F7). Pro/Admin: warmer Beige-Hintergrund. */
+body.tier-paid,body.tier-super{
+  --bg:#F3EEE4; --surface:#FBF8F1; --line:#E6DECF; --accent-soft:#F1E9DA;
+}
+body.tier-paid .nav,body.tier-super .nav{background:rgba(243,238,228,.92)}
+/* Pro-Badge auf allen Fach-Karten (nur wenn freigeschaltet) */
+.pro-flag{display:none}
+body.tier-paid .pro-flag,body.tier-super .pro-flag{
+  display:inline-flex;align-items:center;gap:3px;
+  background:#E7D9BE;color:#8A6D1E;border-radius:999px;
+  padding:1px 7px;font-size:.62em;font-weight:700;letter-spacing:.03em;line-height:1.5;
+  position:absolute;top:9px;right:9px;z-index:2}
+.pro-flag svg{width:9px;height:9px}
 @media (max-width:640px){
   .subject-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
   .subject-card{min-height:86px;padding:11px}
@@ -3438,7 +3453,8 @@ function subjectCardHTML(s){
   const cls='subject-card'+(s.ready?'':' soon');
   const teacher=s.meta || s.teacher || '';
   const exam = s.examDate ? '<div class="exam-date">KA '+formatDeDate(s.examDate)+'</div>' : '';
-  const inner='<div class="row"><div class="ic">'+s.icon+'</div><div>'
+  const proFlag='<span class="pro-flag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l3.5-9 3.5 5 2.5-6 2.5 6 3.5-5 3 9z"/></svg>Pro</span>';
+  const inner=proFlag+'<div class="row"><div class="ic">'+s.icon+'</div><div>'
     +'<div class="code">'+s.code+'</div>'
     +'<div class="teacher">'+(teacher || (s.ready?'Verfügbar':'Bald'))+'</div>'
     +exam
