@@ -4523,8 +4523,8 @@ async function loadHomeHistory(player){
 let _pendingSuper=null;
 function showSuperStep(player){
   _pendingSuper=player;
-  const form=document.getElementById('loginStep1');
-  const step=document.getElementById('loginStep2');
+  const form=document.getElementById('loginForm');
+  const step=document.getElementById('superForm');
   const who=document.getElementById('superWho');
   const btn=document.getElementById('loginBtn');
   if(btn){ btn.disabled=false; btn.innerHTML="Los geht's <span class=\"arrow\">→</span>"; }
@@ -4536,8 +4536,8 @@ function showSuperStep(player){
 }
 function hideSuperStep(){
   _pendingSuper=null;
-  const form=document.getElementById('loginStep1');
-  const step=document.getElementById('loginStep2');
+  const form=document.getElementById('loginForm');
+  const step=document.getElementById('superForm');
   if(form) form.style.display='flex';
   if(step) step.style.display='none';
 }
