@@ -584,6 +584,63 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 .theme-item .tt b{display:block;font-size:.95em;font-weight:650;line-height:1.3}
 .theme-item .tt span{display:block;font-size:.8em;color:var(--muted);margin-top:3px;line-height:1.4}
 .theme-item .arrow{color:var(--muted);font-size:.9em;align-self:center}
+.lf-vi{font-weight:500;color:var(--muted);font-size:.82em}
+/* ===== BfK-1: Fortschritt (Lernstatus) ===== */
+.lf-progress{display:flex;align-items:center;gap:10px;margin:0 0 12px}
+.lf-progress-bar{flex:1;height:8px;border-radius:999px;background:var(--line);overflow:hidden}
+.lf-progress-bar span{display:block;height:100%;border-radius:999px;background:var(--ok);transition:width .3s}
+.lf-progress-txt{font-size:.76em;color:var(--muted);font-weight:600;white-space:nowrap}
+.st-tick{flex:0 0 auto;align-self:center;border:1px solid var(--line);background:var(--surface);border-radius:999px;
+  width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:1.05em;cursor:pointer;transition:.15s;padding:0}
+.st-tick:hover{border-color:var(--accent)}
+.st-tick.st-todo{opacity:.5}
+.st-tick.st-learning{background:var(--warnbg);border-color:#EBD48A}
+.st-tick.st-done{background:var(--okbg);border-color:#A8E0B8}
+.st-tick.big{width:auto;height:auto;gap:7px;padding:9px 16px;font-size:.92em;font-weight:700}
+.st-tick.big span{font-size:.92em}
+.theme-status-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.theme-status-hint{font-size:.76em;color:var(--muted)}
+.bfk1-hub-tools{display:flex;justify-content:flex-end;margin-top:6px}
+.bfk1-hub-tools .btn.link{background:none;border:none;color:var(--muted);font-size:.8em;cursor:pointer;padding:4px 6px;text-decoration:underline}
+/* ===== BfK-1: Theme-Tabs Inhalte ===== */
+.src-note{background:var(--accent-soft);border:1px solid #CDE3FF;border-radius:12px;padding:10px 13px;margin-bottom:16px;font-size:.83em;color:#0058B0;line-height:1.5}
+.b1tab-panel{min-height:60px}
+/* Q&A */
+.qa-item{border:1px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden;background:var(--surface)}
+.qa-q{width:100%;display:flex;align-items:flex-start;gap:11px;text-align:left;background:none;border:none;font:inherit;color:inherit;cursor:pointer;padding:13px 15px}
+.qa-n{flex:0 0 26px;height:26px;border-radius:8px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:.78em;font-weight:800}
+.qa-qtext{flex:1;min-width:0}
+.qa-qtext b{display:block;font-weight:650;font-size:.93em;line-height:1.4}
+.qa-vi{display:block;color:var(--muted);font-size:.85em;margin-top:3px;font-weight:400}
+.qa-caret{color:var(--muted);transition:transform .2s;align-self:center}
+.qa-item.open .qa-caret{transform:rotate(180deg)}
+.qa-a{display:none;padding:0 15px 14px 52px;font-size:.9em;line-height:1.55}
+.qa-item.open .qa-a{display:block}
+.qa-ade{white-space:pre-line;background:var(--okbg);border-radius:10px;padding:9px 12px;margin-bottom:6px}
+.qa-avi{white-space:pre-line;color:#3a3a3c;margin-bottom:6px}
+.qa-why{background:var(--warnbg);border-radius:10px;padding:8px 12px;font-size:.9em;color:#6b5400;margin-bottom:6px}
+.qa-src{font-size:.8em;color:var(--muted);border-top:1px dashed var(--line);padding-top:6px;margin-top:6px}
+/* Theme-Quiz (inline) */
+.tq-list{display:flex;flex-direction:column;gap:14px}
+.tq-item{border:1px solid var(--line);border-radius:14px;padding:14px 15px;background:var(--surface)}
+.tq-q{font-size:.93em;font-weight:600;margin-bottom:10px;line-height:1.45}
+.tq-opts{display:flex;flex-direction:column;gap:7px}
+.tq-opt{text-align:left;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:10px 13px;font:inherit;font-size:.88em;color:inherit;cursor:pointer;transition:.12s}
+.tq-opt:hover:not(:disabled){border-color:var(--accent)}
+.tq-opt:disabled{cursor:default}
+.tq-opt.right{background:var(--okbg);border-color:#A8E0B8;color:var(--ok);font-weight:600}
+.tq-opt.wrong{background:var(--badbg);border-color:#F0B4AE;color:var(--bad)}
+.tq-explain{display:none;margin-top:10px;font-size:.85em;color:#6b5400;background:var(--warnbg);border-radius:10px;padding:9px 12px;line-height:1.5}
+.tq-explain.show{display:block}
+/* Vokabeln */
+.vk-list{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media (max-width:520px){.vk-list{grid-template-columns:1fr}}
+.vk-item{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:11px 13px;font:inherit;color:inherit;cursor:pointer;transition:.12s}
+.vk-item:hover{border-color:var(--accent)}
+.vk-de{display:block;font-weight:650;font-size:.9em}
+.vk-vi{display:none;font-size:.85em;color:var(--accent);margin-top:4px}
+.vk-item.open .vk-vi{display:block}
+.vk-item.open{background:var(--accent-soft)}
 .exam-detail-banner{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#0062CC,#007AFF 55%,#4DA2FF);color:#fff;border-radius:16px;padding:18px 20px;margin-bottom:18px}
 .exam-detail-banner .big-date{font-size:1.6em;font-weight:800;line-height:1}
 .exam-detail-banner .meta{font-size:.86em;opacity:.88;margin-top:4px}
@@ -1356,21 +1413,15 @@ h2 svg,h3 svg,b svg{width:1em;height:1em;display:inline-block;vertical-align:-.1
   <div class="back" onclick="go('#/bfk')">← Alle BfK-Stufen</div>
   <div class="section-head">
     <h2>🍳 BfK-1</h2>
-    <p>Fr. Schuster · KA 20.07 · LF6 + LF9</p>
+    <p>Fr. Schuster · LF2 + LF6 + LF9 · Abschluss (Gast+Pro)</p>
   </div>
   <div class="theme-quiz-bar">
     <button type="button" class="btn" onclick="go('#/bfk/1/quiz')">📝 Quiz üben →</button>
     <button type="button" class="btn ghost" onclick="go('#/fach/bfk1/training')">🎯 Training →</button>
     <button type="button" class="btn ghost" onclick="go('#/fach/bfk1/pruefungen')">🗂️ Prüfungen →</button>
+    <button type="button" class="btn ghost" onclick="bfk1ResetProgress()">↺ Tiến độ</button>
   </div>
-  <div class="lf-block" style="margin-top:18px">
-    <h3><span class="lf-badge">LF 6</span> Speisen · Ernährung · Menüs</h3>
-    <div class="theme-list" id="bfk1Lf6"></div>
-  </div>
-  <div class="lf-block">
-    <h3><span class="lf-badge">LF 9</span> Zahlung · Recht</h3>
-    <div class="theme-list" id="bfk1Lf9"></div>
-  </div>
+  <div id="bfk1Groups" style="margin-top:18px"></div>
 </section>
 
 
@@ -1557,11 +1608,35 @@ h2 svg,h3 svg,b svg{width:1em;height:1em;display:inline-block;vertical-align:-.1
 <script src="./supabase.js?v=14"></script>
 <script src="./access.js?v=2"></script>
 <script src="./vocab.js?v=20"></script>
-<script src="./bfk1-data.js?v=17"></script>
+<script src="./bfk1-lf2-p1.js?v=1"></script>
+<script src="./bfk1-lf2-p2.js?v=1"></script>
+<script src="./bfk1-lf2-p3.js?v=1"></script>
+<script src="./bfk1-lf2-p4.js?v=1"></script>
+<script src="./bfk1-lf2-p5.js?v=1"></script>
+<script src="./bfk1-lf2-data.js?v=2"></script>
+<script src="./bfk1-lf6-p1.js?v=1"></script>
+<script src="./bfk1-lf6-p2.js?v=1"></script>
+<script src="./bfk1-lf6-p3.js?v=1"></script>
+<script src="./bfk1-lf6-p4.js?v=1"></script>
+<script src="./bfk1-lf6-p5.js?v=1"></script>
+<script src="./bfk1-lf6-p6.js?v=1"></script>
+<script src="./bfk1-lf6-p7.js?v=1"></script>
+<script src="./bfk1-lf6-data.js?v=2"></script>
+<script src="./bfk1-lf9-p1.js?v=1"></script>
+<script src="./bfk1-lf9-p2.js?v=1"></script>
+<script src="./bfk1-lf9-p3.js?v=1"></script>
+<script src="./bfk1-lf9-data.js?v=1"></script>
+<script src="./bfk1-extra-p1.js?v=1"></script>
+<script src="./bfk1-extra-p2.js?v=1"></script>
+<script src="./bfk1-extra-p3.js?v=1"></script>
+<script src="./bfk1-extra-p4.js?v=1"></script>
+<script src="./bfk1-extra-p5.js?v=1"></script>
+<script src="./bfk1-extra-data.js?v=1"></script>
+<script src="./bfk1-data.js?v=19"></script>
 <script src="./bfk1-quiz.js?v=12"></script>
 <script src="./bfk2-quiz.js?v=1"></script>
 <script src="./deutsch-quiz.js?v=1"></script>
-<script src="./faecher.js?v=6"></script>
+<script src="./faecher.js?v=7"></script>
 <script src="./gk-uebungen.js?v=4"></script>
 <script>
 /* ============ DATEN (Fleischteile) ============ */
@@ -1730,14 +1805,22 @@ renderAbschlussThemen();
 /* ============ FÄCHER laut Stundenplan H2FO3T ============ */
 /* BfK-1 Themen: geladen aus bfk1-data.js (Fallback, falls Datei fehlt) */
 const BFK1_THEMES = window.BFK1_THEMES || {
+  lf2: { id:"lf2", label:"Lernfeld 2", badge:"LF 2", title:"Beschaffung und Lagerung", items:[] },
   lf6: { id:"lf6", label:"Lernfeld 6", badge:"LF 6", title:"Gerichte, Menüs und Produkte", items:[] },
   lf9: { id:"lf9", label:"Lernfeld 9", badge:"LF 9", title:"Zahlungen mit dem Gast abwickeln", items:[] }
 };
+/* Nhóm để render hub + gom item: dùng BFK1_GROUPS từ bfk1-data.js (lf2, lf6, lf9, extra) */
+function bfk1Groups(){
+  if(window.BFK1_GROUPS && window.BFK1_GROUPS.length) return window.BFK1_GROUPS;
+  const t=window.BFK1_THEMES||BFK1_THEMES;
+  return [t.lf2, t.lf6, t.lf9, window.BFK1_EXTRA].filter(Boolean);
+}
 function bfk1AllItems(){
   try{
     if(window.bfk1AllItems && window.bfk1AllItems !== bfk1AllItems) return window.bfk1AllItems() || [];
-    const t = window.BFK1_THEMES || BFK1_THEMES;
-    return [...((t.lf6&&t.lf6.items)||[]), ...((t.lf9&&t.lf9.items)||[])];
+    const out=[];
+    bfk1Groups().forEach(g=>{ ((g&&g.items)||[]).forEach(it=>out.push(it)); });
+    return out;
   }catch(e){ return []; }
 }
 
@@ -1964,7 +2047,7 @@ function examThemeCatalog(ex){
     const quiz=window.BFK1_QUIZ||[];
     const counts={}; quiz.forEach(q=>{ counts[q.theme]=(counts[q.theme]||0)+1; });
     const items=[];
-    (window.BFK1_THEMES? [BFK1_THEMES.lf6, BFK1_THEMES.lf9]:[]).forEach(g=>{
+    bfk1Groups().forEach(g=>{
       (g.items||[]).forEach(it=>{
         items.push({
           id:it.id, icon:it.icon||'📘', name:it.name, desc:it.desc||g.badge||'',
@@ -2024,7 +2107,7 @@ function startExamPractice(examId, mode, themeIds){
   if(ex.id==='bfk1'){
     if(mode==='learn'){ go(ids&&ids[0]? '#/bfk/1/theme/'+ids[0] : '#/bfk/1'); return; }
     if(mode==='flash'){
-      const first=(ids&&ids[0]) || ((window.BFK1_THEMES&&BFK1_THEMES.lf6.items[0]&&BFK1_THEMES.lf6.items[0].id)||null);
+      const _all=bfk1AllItems(); const first=(ids&&ids[0]) || ((_all[0]&&_all[0].id)||null);
       if(first) go('#/bfk/1/theme/'+first);
       else go('#/bfk/1');
       return;
@@ -2107,8 +2190,8 @@ function fachHubRoute(fachId){
 // Lern-Item eines Themas holen (für Zusammenfassung im Training)
 function trainingThemeItem(fachId, themeId){
   if(fachId==='bfk1' && window.BFK1_THEMES){
-    for(const g of [BFK1_THEMES.lf6, BFK1_THEMES.lf9]){
-      const it=(g.items||[]).find(x=>x.id===themeId); if(it) return it;
+    for(const g of bfk1Groups()){
+      const it=((g&&g.items)||[]).find(x=>x.id===themeId); if(it) return it;
     }
   }
   try{ if(window.FachForm){ const t=window.FachForm.findTheme(fachId, themeId); if(t) return t; } }catch(e){}
@@ -3296,33 +3379,91 @@ function renderThemeFlashcards(themeId, item, fach){
 }
 
 
-function renderBfk1Hub(){
-  const lf6=document.getElementById("bfk1Lf6");
-  const lf9=document.getElementById("bfk1Lf9");
-  if(lf6){
-    lf6.innerHTML=BFK1_THEMES.lf6.items.map((it,i)=>
-      '<div class="theme-item" onclick="go(\'#/bfk/1/theme/'+it.id+'\')">'
-      +'<div class="num">'+(i+1)+'</div><div class="tt"><b>'+it.icon+' '+it.name+'</b><span>'+it.desc+'</span></div><div class="arrow">→</div></div>'
-    ).join("");
-  }
-  if(lf9){
-    lf9.innerHTML=BFK1_THEMES.lf9.items.map((it,i)=>
-      '<div class="theme-item" onclick="go(\'#/bfk/1/theme/'+it.id+'\')">'
-      +'<div class="num">'+(i+1)+'</div><div class="tt"><b>'+it.icon+' '+it.name+'</b><span>'+it.desc+'</span></div><div class="arrow">→</div></div>'
-    ).join("");
-  }
+/* ===== BfK-1 · Lernfortschritt (localStorage) =====
+ * 3 trạng thái mỗi LS/Thema: 0=chưa học ⬜ · 1=đang ôn 🟡 · 2=đã thuộc ✅
+ */
+const BFK1_PROGRESS_KEY = "bfk1_progress";
+const BFK1_STATUS = [
+  { cls:"st-todo",  icon:"⬜", label:"Chưa học" },
+  { cls:"st-learning", icon:"🟡", label:"Đang ôn" },
+  { cls:"st-done",  icon:"✅", label:"Đã thuộc" },
+];
+function bfk1LoadProgress(){
+  try{ return JSON.parse(localStorage.getItem(BFK1_PROGRESS_KEY)||"{}")||{}; }catch(e){ return {}; }
 }
-function renderBfk1Theme(themeId){
-  const item=bfk1AllItems().find(t=>t.id===themeId);
-  const title=document.getElementById("bfk1ThemeTitle");
-  const sub=document.getElementById("bfk1ThemeSub");
-  const body=document.getElementById("bfk1ThemeBody");
-  if(!item){ go("#/bfk/1"); return; }
-  const lf=BFK1_THEMES.lf6.items.some(t=>t.id===themeId)?"Lernfeld 6":"Lernfeld 9";
-  if(title) title.innerHTML=item.icon+" "+item.name;
-  if(sub) sub.textContent="BfK-1 · "+lf+" · KA 20.07 · Fr. Schuster";
-  if(!body) return;
-  let html = item.content || ("<p>"+item.desc+"</p>");
+function bfk1SaveProgress(p){
+  try{ localStorage.setItem(BFK1_PROGRESS_KEY, JSON.stringify(p)); }catch(e){}
+}
+function bfk1Status(id){ const p=bfk1LoadProgress(); return p[id]|0; }
+function bfk1SetStatus(id, val){
+  const p=bfk1LoadProgress(); p[id]=((val%3)+3)%3; bfk1SaveProgress(p);
+}
+function bfk1CycleStatus(id){
+  const cur=bfk1Status(id); bfk1SetStatus(id, cur+1); return bfk1Status(id);
+}
+function bfk1GroupPercent(group){
+  const items=(group&&group.items)||[];
+  if(!items.length) return { done:0, total:0, pct:0 };
+  const p=bfk1LoadProgress();
+  let done=0; items.forEach(it=>{ if((p[it.id]|0)===2) done++; });
+  return { done:done, total:items.length, pct:Math.round(done/items.length*100) };
+}
+function bfk1ResetProgress(){
+  if(!confirm("Xoá toàn bộ tiến độ học BfK-1?")) return;
+  try{ localStorage.removeItem(BFK1_PROGRESS_KEY); }catch(e){}
+  renderBfk1Hub();
+}
+
+function renderBfk1Hub(){
+  const host=document.getElementById("bfk1Groups");
+  if(!host) return;
+  const groups=bfk1Groups();
+  let html="";
+  groups.forEach(g=>{
+    if(!g) return;
+    const items=g.items||[];
+    const pr=bfk1GroupPercent(g);
+    const gid=g.id||"";
+    html += '<div class="lf-block">'
+      + '<h3><span class="lf-badge">'+(g.badge||"")+'</span> '+(g.title||"")
+        + (g.titleVi?' <span class="lf-vi">· '+g.titleVi+'</span>':'')+'</h3>'
+      + '<div class="lf-progress"><div class="lf-progress-bar"><span style="width:'+pr.pct+'%"></span></div>'
+        + '<div class="lf-progress-txt">'+pr.done+'/'+pr.total+' ✅ · '+pr.pct+'%</div></div>';
+    if(!items.length){
+      html += '<div class="hint" style="padding:10px 2px">Nội dung đang được xây dựng…</div>';
+    } else {
+      html += '<div class="theme-list">' + items.map((it,i)=>{
+        const st=BFK1_STATUS[bfk1Status(it.id)]||BFK1_STATUS[0];
+        return '<div class="theme-item" onclick="go(\'#/bfk/1/theme/'+it.id+'\')">'
+          + '<div class="num">'+(i+1)+'</div>'
+          + '<div class="tt"><b>'+(it.icon||"")+' '+it.name+'</b><span>'+(it.desc||"")+'</span></div>'
+          + '<button type="button" class="st-tick '+st.cls+'" title="'+st.label+'" '
+            + 'onclick="event.stopPropagation();bfk1TickFromHub(\''+it.id+'\',this)">'+st.icon+'</button>'
+          + '</div>';
+      }).join("") + '</div>';
+    }
+    html += '</div>';
+  });
+  host.innerHTML = html;
+}
+function bfk1TickFromHub(id, btn){
+  const v=bfk1CycleStatus(id);
+  const st=BFK1_STATUS[v]||BFK1_STATUS[0];
+  if(btn){ btn.className="st-tick "+st.cls; btn.title=st.label; btn.textContent=st.icon; }
+  // cập nhật thanh % của nhóm chứa item
+  renderBfk1Hub();
+}
+function bfk1EscAttr(s){ return String(s==null?"":s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function bfk1EscHtml(s){ return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function bfk1NlBr(s){ return bfk1EscHtml(s).replace(/\n/g,"<br>"); }
+
+/* Tab 📖 Lý thuyết */
+function bfk1TheoryHtml(item){
+  let html="";
+  if(item.source){
+    html += '<div class="src-note">📄 <b>Nguồn:</b> '+bfk1EscHtml(item.source)+'</div>';
+  }
+  html += (item.theory || item.content || ("<p>"+bfk1EscHtml(item.desc||"")+"</p>"));
   const pages = (window.bfk1PageList && item.pages) ? window.bfk1PageList(item.pages) : [];
   if(pages.length){
     window._bfk1Pages = pages;
@@ -3335,24 +3476,153 @@ function renderBfk1Theme(themeId){
         + '<div class="cap">S. '+(i+1)+' / '+pages.length+'</div></button>';
     });
     html += '</div></div>';
+  } else {
+    window._bfk1Pages = [];
   }
-  // Vocab flashcards
-  html += '<div class="flash-wrap" id="themeFlash"></div>';
-  // Quiz CTA
-  html += '<div class="theme-quiz-bar">'
-    + '<button type="button" class="btn" id="b1ThemeDrill">📝 Dieses Thema üben</button>'
-    + '<button type="button" class="btn ghost" id="b1ThemePickBtn">Themen wählen</button>'
-    + '<button type="button" class="btn ghost" id="b1ThemeFlashFocus">🃏 Karteikarten</button>'
+  return html;
+}
+
+/* Tab ❓ Câu hỏi (Q&A từ fk_exel) */
+function bfk1QaHtml(item){
+  const qa=item.qa||[];
+  let html="";
+  if(item.qaNote){
+    html += '<div class="hint" style="margin-bottom:12px">'+bfk1EscHtml(item.qaNote)+'</div>';
+  }
+  if(!qa.length){
+    if(!item.qaNote) html += '<div class="hint">Chưa có câu hỏi luyện tập cho phần này.</div>';
+    return html;
+  }
+  qa.forEach((q,i)=>{
+    html += '<div class="qa-item">'
+      + '<button type="button" class="qa-q" onclick="this.parentNode.classList.toggle(\'open\')">'
+        + '<span class="qa-n">'+(i+1)+'</span>'
+        + '<span class="qa-qtext"><b>'+bfk1NlBr(q.q||"")+'</b>'
+        + (q.qVi?'<span class="qa-vi">'+bfk1NlBr(q.qVi)+'</span>':'')+'</span>'
+        + '<span class="qa-caret">▾</span></button>'
+      + '<div class="qa-a">'
+        + (q.a?'<div class="qa-ade">'+bfk1NlBr(q.a)+'</div>':'')
+        + (q.aVi?'<div class="qa-avi">'+bfk1NlBr(q.aVi)+'</div>':'')
+        + (q.why?'<div class="qa-why">💡 '+bfk1NlBr(q.why)+'</div>':'')
+        + (q.src?'<div class="qa-src">📄 '+bfk1EscHtml(q.src)+'</div>':'')
+      + '</div></div>';
+  });
+  return html;
+}
+
+/* Tab 📝 Quiz (trắc nghiệm inline) */
+function bfk1ThemeQuizHtml(item){
+  const quiz=item.quiz||[];
+  if(!quiz.length) return '<div class="hint">Chưa có câu hỏi trắc nghiệm cho phần này.</div>';
+  let html='<div class="tq-list">';
+  quiz.forEach((q,qi)=>{
+    html += '<div class="tq-item" data-answer="'+(q.answer|0)+'"><div class="tq-q"><b>'+(qi+1)+'.</b> '+bfk1EscHtml(q.q||"")+'</div><div class="tq-opts">';
+    (q.options||[]).forEach((op,oi)=>{
+      html += '<button type="button" class="tq-opt" onclick="bfk1ThemeQuizPick(this,'+oi+')">'+bfk1EscHtml(op)+'</button>';
+    });
+    html += '</div>'+(q.explain?'<div class="tq-explain">💡 '+bfk1EscHtml(q.explain)+'</div>':'')+'</div>';
+  });
+  html += '</div>';
+  return html;
+}
+function bfk1ThemeQuizPick(btn, oi){
+  const item=btn.closest('.tq-item'); if(!item) return;
+  const ans=item.getAttribute('data-answer')|0;
+  item.querySelectorAll('.tq-opt').forEach((b,i)=>{
+    b.classList.remove('right','wrong');
+    if(i===ans) b.classList.add('right');
+    else if(i===oi) b.classList.add('wrong');
+    b.disabled=true;
+  });
+  const ex=item.querySelector('.tq-explain'); if(ex) ex.classList.add('show');
+}
+
+/* Tab 🔤 Từ vựng (click-to-reveal) */
+function bfk1VokabelnHtml(item){
+  const vk=item.vokabeln||[];
+  if(!vk.length) return '<div class="hint">Chưa có danh sách từ vựng cho phần này.</div>';
+  let html='<div class="hint" style="margin-bottom:10px">Bấm vào từ để hiện nghĩa tiếng Việt.</div><div class="vk-list">';
+  vk.forEach(v=>{
+    html += '<button type="button" class="vk-item" onclick="this.classList.toggle(\'open\')">'
+      + '<span class="vk-de">'+bfk1EscHtml(v.de||"")+'</span>'
+      + '<span class="vk-vi">'+bfk1EscHtml(v.vi||"")+'</span></button>';
+  });
+  html += '</div>';
+  return html;
+}
+
+const BFK1_TABS=[
+  {id:"theory", label:"📖 Lý thuyết"},
+  {id:"qa",     label:"❓ Câu hỏi"},
+  {id:"quiz",   label:"📝 Quiz"},
+  {id:"vokabeln",label:"🔤 Từ vựng"},
+];
+let _bfk1ThemeTab="theory";
+function renderBfk1Theme(themeId){
+  const item=bfk1AllItems().find(t=>t.id===themeId);
+  const title=document.getElementById("bfk1ThemeTitle");
+  const sub=document.getElementById("bfk1ThemeSub");
+  const body=document.getElementById("bfk1ThemeBody");
+  if(!item){ go("#/bfk/1"); return; }
+  const grp=(window.bfk1GroupOf&&window.bfk1GroupOf(themeId))||null;
+  const lfLabel=grp?(grp.label||grp.title||""):"";
+  if(title) title.innerHTML=(item.icon||"")+" "+item.name;
+  if(sub) sub.textContent="BfK-1"+(lfLabel?" · "+lfLabel:"")+(grp&&grp.titleVi?" · "+grp.titleVi:"");
+  if(!body) return;
+  window._bfk1CurTheme=themeId;
+  _bfk1ThemeTab="theory";
+
+  // Nút trạng thái tiến độ (đầu trang)
+  const st=BFK1_STATUS[bfk1Status(themeId)]||BFK1_STATUS[0];
+  let head='<div class="theme-status-bar">'
+    + '<button type="button" class="st-tick big '+st.cls+'" id="b1ThemeStatus" '
+      + 'onclick="bfk1TickTheme(\''+themeId+'\')">'+st.icon+' <span>'+st.label+'</span></button>'
+    + '<span class="theme-status-hint">Bấm để đổi: Chưa học → Đang ôn → Đã thuộc</span>'
     + '</div>';
-  body.innerHTML = html;
+
+  // Thanh tab
+  let tabs='<div class="tabs bfk1-theme-tabs">';
+  BFK1_TABS.forEach(t=>{
+    tabs += '<button type="button" class="tab'+(t.id==="theory"?" active":"")+'" data-b1tab="'+t.id+'" '
+      + 'onclick="bfk1ThemeSetTab(\''+t.id+'\')">'+t.label+'</button>';
+  });
+  tabs += '</div>';
+
+  body.innerHTML = head + tabs
+    + '<div class="b1tab-panel" id="b1TabPanel"></div>'
+    + '<div class="theme-quiz-bar" style="margin-top:18px">'
+      + '<button type="button" class="btn" id="b1ThemeDrill">📝 Ôn thi trắc nghiệm (mix)</button>'
+      + '<button type="button" class="btn ghost" id="b1ThemePickBtn">Chọn nhiều Thema</button>'
+    + '</div>';
   const drill=document.getElementById('b1ThemeDrill');
   if(drill) drill.onclick=()=>bfk1QuizStartThemes([themeId]);
   const pickBtn=document.getElementById('b1ThemePickBtn');
   if(pickBtn) pickBtn.onclick=()=>go('#/bfk/1/quiz');
-  const flashFocus=document.getElementById('b1ThemeFlashFocus');
-  if(flashFocus) flashFocus.onclick=()=>{ const el=document.getElementById('themeFlash'); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); };
-  try{ if(window.enableVocabOn) enableVocabOn(body); else if(window.bindTerms) bindTerms(body); }catch(e){}
-  try{ renderThemeFlashcards(themeId, item); }catch(e){ console.warn('flash', e); }
+  bfk1ThemeSetTab("theory");
+}
+function bfk1TickTheme(themeId){
+  const v=bfk1CycleStatus(themeId);
+  const st=BFK1_STATUS[v]||BFK1_STATUS[0];
+  const btn=document.getElementById('b1ThemeStatus');
+  if(btn){ btn.className="st-tick big "+st.cls; btn.innerHTML=st.icon+' <span>'+st.label+'</span>'; }
+}
+function bfk1ThemeSetTab(tabId){
+  _bfk1ThemeTab=tabId;
+  const item=bfk1AllItems().find(t=>t.id===window._bfk1CurTheme);
+  const panel=document.getElementById("b1TabPanel");
+  if(!item||!panel) return;
+  document.querySelectorAll('.bfk1-theme-tabs .tab').forEach(t=>{
+    t.classList.toggle('active', t.getAttribute('data-b1tab')===tabId);
+  });
+  let html="";
+  if(tabId==="theory")   html=bfk1TheoryHtml(item);
+  else if(tabId==="qa")  html=bfk1QaHtml(item);
+  else if(tabId==="quiz")html=bfk1ThemeQuizHtml(item);
+  else if(tabId==="vokabeln") html=bfk1VokabelnHtml(item);
+  panel.innerHTML=html;
+  if(tabId==="theory"){
+    try{ if(window.enableVocabOn) enableVocabOn(panel); else if(window.bindTerms) bindTerms(panel); }catch(e){}
+  }
 }
 function openPageLightbox(i){
   const pages=window._bfk1Pages||[];

@@ -116,22 +116,16 @@
       teacher: "Fr. Schuster (SLA)",
       examDate: "2026-07-20",
       ready: true,
-      desc: "LF6 Speisen/Ernährung/Menüs · LF9 Zahlung/Recht",
+      desc: "LF2 Beschaffung/Lagerung · LF6 Speisen/Menüs · LF9 Zahlung/Recht",
       legacyRoutes: { hub: "#/bfk/1", quiz: "#/bfk/1/quiz", exam: "#/exam/bfk1" },
-      groups: [
-        {
-          id: themes.lf6.id,
-          badge: themes.lf6.badge || "LF 6",
-          title: themes.lf6.title,
-          items: (themes.lf6.items || []).map((it) => ({ ...it })),
-        },
-        {
-          id: themes.lf9.id,
-          badge: themes.lf9.badge || "LF 9",
-          title: themes.lf9.title,
-          items: (themes.lf9.items || []).map((it) => ({ ...it })),
-        },
-      ],
+      groups: (w.BFK1_GROUPS || [themes.lf2, themes.lf6, themes.lf9, w.BFK1_EXTRA])
+        .filter(Boolean)
+        .map((g) => ({
+          id: g.id,
+          badge: g.badge || "",
+          title: g.title || "",
+          items: (g.items || []).map((it) => ({ ...it })),
+        })),
       quiz: quiz.slice(),
     };
   }
