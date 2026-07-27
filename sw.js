@@ -1,5 +1,5 @@
 /* Service Worker – Lern-App H2FO3T (offline shell + static assets) */
-const CACHE = 'h2fo3t-v78';
+const CACHE = 'h2fo3t-v79';
 const PRECACHE = [
   './',
   './index.html',

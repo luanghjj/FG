@@ -48,6 +48,10 @@ table{width:100%;border-collapse:collapse;font-size:.84em;background:#F2F2F7;bor
 th,td{padding:9px 12px;text-align:left;vertical-align:top}
 th{background:#E5E5EA;color:#3C3C43;font-size:.72em;text-transform:uppercase;letter-spacing:.04em;font-weight:600}
 td{border-top:1px solid var(--line);color:var(--ink)}
+/* Bảng giới hạn ~5 hàng rồi cuộn dọc trong bảng; header dính khi cuộn. */
+.tscroll{max-height:236px;overflow:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:10px}
+.tscroll table{border-radius:0}
+.tscroll thead th{position:sticky;top:0;z-index:2}
 .muted{color:var(--muted);font-size:.86em}
 .tag{display:inline-block;background:var(--soft);border:none;border-radius:20px;padding:2px 10px;font-size:.72em;color:var(--accent);font-weight:600}
 .row-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
@@ -87,7 +91,7 @@ select:focus{outline:none;border-color:#007AFF}
 .mx-key{width:14px;height:14px;border-radius:4px;border:1px solid var(--line);display:inline-block}
 .mx-k-done{background:#248A3D}.mx-k-learn{background:#F0A020}.mx-k-seen{background:#BcD4F5;background:#BCD4F5}
 .mx-k-none{background:#F2F2F7}
-.mx-scroll{overflow:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:12px}
+.mx-scroll{max-height:280px;overflow:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:12px}
 table.mx{border-collapse:separate;border-spacing:0;font-size:.8em;background:#fff;min-width:max-content}
 table.mx th,table.mx td{padding:0;text-align:center;border:0}
 table.mx thead th{background:#fff;position:sticky;top:0;z-index:2;padding:6px 3px;font-size:.9em}
@@ -164,7 +168,7 @@ table.mx tbody tr:hover .mx-namecol{background:#EAF3FF}
       </div>
       <div class="err" id="roleErr"></div>
 
-      <div style="overflow:auto;margin-top:14px">
+      <div class="tscroll" style="margin-top:14px">
         <table>
           <thead><tr><th>Nickname</th><th>Stufe</th><th>Vergeben von</th><th>Wann</th><th>Notiz</th><th>Aktion</th></tr></thead>
           <tbody id="rolesBody"></tbody>
@@ -228,7 +232,7 @@ table.mx tbody tr:hover .mx-namecol{background:#EAF3FF}
         <h2 style="flex:1;margin:0">👥 Nutzer (Nickname)</h2>
       </div>
       <div class="muted" id="playersMeta"></div>
-      <div style="overflow:auto;margin-top:8px">
+      <div class="tscroll" style="margin-top:8px">
         <table>
           <thead><tr><th>Nickname</th><th>Stufe</th><th>Besuche</th><th>Quiz</th><th>Heute</th><th>Zeit gesamt</th><th>LS-Fortschritt</th><th>Gelernte Fächer</th><th>Letzte Session</th><th>Zuletzt</th></tr></thead>
           <tbody id="playersBody"></tbody>
@@ -256,7 +260,7 @@ table.mx tbody tr:hover .mx-namecol{background:#EAF3FF}
     <div class="card" id="underGoalCard">
       <h2>⚠️ Nutzer unter Ziel heute</h2>
       <div class="muted" id="underGoalMeta" style="margin-bottom:8px">Aktiv heute (Berlin), aber noch nicht beim Tagesziel.</div>
-      <div style="overflow:auto">
+      <div class="tscroll">
         <table>
           <thead><tr><th>Nickname</th><th>Heute gelernt</th><th>Fehlt zum Ziel</th><th>Zuletzt gesehen</th></tr></thead>
           <tbody id="underGoalBody"></tbody>
@@ -267,7 +271,7 @@ table.mx tbody tr:hover .mx-namecol{background:#EAF3FF}
     <div class="card">
       <h2>📊 Quiz-Punkte (neueste)</h2>
       <div class="muted" style="margin-bottom:8px">Klicke auf eine Zeile für Details.</div>
-      <div style="overflow:auto">
+      <div class="tscroll">
         <table>
           <thead><tr><th>Spieler</th><th>Fach</th><th>Quiz</th><th>Punkte</th><th>%</th><th>Versuche</th><th>Zeitpunkt</th></tr></thead>
           <tbody id="quizBody"></tbody>
@@ -277,7 +281,7 @@ table.mx tbody tr:hover .mx-namecol{background:#EAF3FF}
 
     <div class="card">
       <h2>📈 Übersicht nach Quiz</h2>
-      <div style="overflow:auto">
+      <div class="tscroll">
         <table>
           <thead><tr><th>Quiz</th><th>Personen</th><th>Versuche</th><th>Ø %</th></tr></thead>
           <tbody id="aggBody"></tbody>
@@ -288,7 +292,7 @@ table.mx tbody tr:hover .mx-namecol{background:#EAF3FF}
     <div class="card">
       <h2>🚪 Letzte Besuche (mit Dauer)</h2>
       <p class="muted" style="margin-bottom:8px">Dauer via Heartbeat (~30s) und pagehide.</p>
-      <div style="overflow:auto">
+      <div class="tscroll">
         <table>
           <thead><tr><th>Spieler</th><th>Start</th><th>Ende / zuletzt</th><th>Dauer</th><th>Status</th></tr></thead>
           <tbody id="visitBody"></tbody>
