@@ -1,6 +1,16 @@
 # Giáo trình PDF (nặng, có bản quyền — không đẩy lên)
 *.pdf
 
+# Ảnh scan tài liệu (nặng, chỉ dùng làm nguồn OCR — không cần cho web)
+*.jpg
+*.jpeg
+2-D/
+2-Bfk1-lf6/
+_bfk_1_notes/
+
+# Excel nguồn câu hỏi (đã convert sang .js — không cần đẩy)
+*.xlsx
+
 # Ảnh scan sách giáo khoa (nguồn OCR, không cần cho web)
 page-*.png
 out.txt
