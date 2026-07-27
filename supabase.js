@@ -377,6 +377,72 @@
     return profile;
   }
 
+  /**
+   * LS-/Thema-Lernfortschritt im Nutzerprofil festhalten.
+   *  done === true  → als "erledigt" markieren (grüner Haken im Dashboard)
+   *  done === false → Haken entfernen, bleibt aber "angesehen"
+   *  done === undefined → nur als "angesehen" markieren (beim Öffnen)
+   * Ein bereits erledigtes Thema wird durch bloßes Öffnen NICHT herabgestuft.
+   */
+  async function markThemeProgress(player, opts) {
+    const o = opts || {};
+    const p = String(player || getPlayer() || '').trim();
+    const themeId = String(o.theme || '').trim();
+    if (!p || !themeId) return null;
+    const key = playerKey(p);
+    let profile = null;
+    try {
+      const row = await getConfig(key);
+      profile = row && row.value ? row.value : null;
+    } catch (_) {}
+    const now = new Date().toISOString();
+    if (!profile) {
+      profile = {
+        player: p,
+        created_at: now,
+        last_seen: now,
+        visits: 0,
+        quiz_attempts: 0,
+        total_duration_sec: 0,
+        last_session_sec: 0,
+        daily_duration_sec: 0,
+        last_day: '',
+        quizzes: {},
+        themes: {},
+        app: 'on-thi',
+      };
+    }
+    profile.themes = profile.themes || {};
+    const tk = clean(o.fach || '') + ':' + clean(themeId);
+    const prev = profile.themes[tk] || {};
+    // Status ableiten: explizites o.status (seen|learning|done) hat Vorrang,
+    // dann der bool o.done (Kompatibilität), sonst der bisherige Wert.
+    const VALID = { seen: 1, learning: 1, done: 1 };
+    let status;
+    if (o.status && VALID[String(o.status).toLowerCase()]) {
+      status = String(o.status).toLowerCase();
+    } else if (o.done === true) {
+      status = 'done';
+    } else if (o.done === false) {
+      status = 'seen';
+    } else {
+      status = prev.status || 'seen';
+    }
+    const isDone = status === 'done';
+    const entry = {
+      fach: o.fach || prev.fach || '',
+      theme: themeId,
+      name: o.name || prev.name || themeId,
+      status: status,
+      seen_at: prev.seen_at || now,
+      done_at: isDone ? (prev.done_at || now) : null,
+    };
+    profile.themes[tk] = entry;
+    profile.last_seen = now;
+    await upsertConfig(key, profile);
+    return entry;
+  }
+
   function readActiveVisit() {
     try {
       const raw = sessionStorage.getItem(SESSION_VISIT_KEY);
@@ -759,6 +825,7 @@
         created_at: v.created_at || '',
         last_seen: v.last_seen || '',
         quizzes: v.quizzes || {},
+        themes: v.themes || {},
       }))
       .sort((a, b) => String(b.last_seen).localeCompare(String(a.last_seen)));
 
@@ -828,6 +895,7 @@
           created_at: '',
           last_seen: lastSeenFromVisits[name] || '',
           quizzes: {},
+          themes: {},
         };
         playerList.push(byName[name]);
       }
@@ -1391,6 +1459,7 @@
     setPlayer,
     clearPlayer,
     saveQuizScore,
+    markThemeProgress,
     flushScoreQueue,
     getQueueOverflow,
     clearQueueOverflow,

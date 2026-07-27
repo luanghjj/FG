@@ -544,6 +544,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 .theme-pick span{display:block;color:var(--muted);font-size:.75em;margin-top:2px}
 .quiz-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:12px}
 .theme-quiz-bar{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
+.btn.btn-done{background:#E3F7E8;border-color:#248A3D;color:#248A3D}
 /* Term styles moved to vocab.js */
 
 /* ===== Exam schedule ===== */
@@ -1605,7 +1606,7 @@ h2 svg,h3 svg,b svg{width:1em;height:1em;display:inline-block;vertical-align:-.1
   <div class="tb-tooltip" id="tbTooltip">Lernzeit heute</div>
 </div>
 
-<script src="./supabase.js?v=14"></script>
+<script src="./supabase.js?v=15"></script>
 <script src="./access.js?v=2"></script>
 <script src="./vocab.js?v=20"></script>
 <script src="./bfk1-lf2-p1.js?v=2"></script>
@@ -1823,6 +1824,14 @@ function bfk1AllItems(){
     bfk1Groups().forEach(g=>{ ((g&&g.items)||[]).forEach(it=>out.push(it)); });
     return out;
   }catch(e){ return []; }
+}
+/* Extra (Abschlussprüfung Gast + Produktion) chỉ mở cho Pro/Admin. */
+function bfk1CanExtra(){
+  try{ return !window.Access || Access.can('theme:full'); }catch(e){ return true; }
+}
+/* true nếu themeId thuộc nhóm Extra. */
+function bfk1IsExtraTheme(themeId){
+  try{ const g=window.bfk1GroupOf && window.bfk1GroupOf(themeId); return !!(g && g.id==='extra'); }catch(e){ return false; }
 }
 
 const BFK_LEVELS = [
@@ -2786,8 +2795,13 @@ function renderFachTheme(fachId, themeId){
         + '<button type="button" class="btn ghost" id="fachThemeQuiz">Themen-Quiz</button>'
       : '')
     + '<button type="button" class="btn ghost" id="fachThemeFlashFocus">🃏 Karteikarten</button>'
+    + '<button type="button" class="btn ghost" id="fachThemeDone" aria-pressed="false">✓ Als erledigt markieren</button>'
     + '</div>';
   body.innerHTML = html;
+  // Fortschritt: Öffnen = „gesehen", Button = „erledigt" (toggle). Für alle Fächer mit LS/Thema.
+  try{ if(window.LearnDB && LearnDB.markThemeProgress && LearnDB.getPlayer && LearnDB.getPlayer()){
+    LearnDB.markThemeProgress(LearnDB.getPlayer(), {fach:fach.id, theme:themeId, name:theme.name}).catch(function(){});
+  }}catch(e){}
   try{
     const view=document.getElementById('v-fach-theme');
     if(window.enableVocabOn){ enableVocabOn(body); if(view) enableVocabOn(view); }
@@ -2803,6 +2817,35 @@ function renderFachTheme(fachId, themeId){
   if(qbtn) qbtn.onclick=()=>go(fach.id==='bfk1'?'#/bfk/1/quiz':fachRoute(fach,'quiz'));
   const flashFocus=document.getElementById('fachThemeFlashFocus');
   if(flashFocus) flashFocus.onclick=()=>{ const el=document.getElementById('themeFlash'); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); };
+  // „Als erledigt markieren" – Toggle. Startzustand aus dem Profil laden.
+  const doneBtn=document.getElementById('fachThemeDone');
+  if(doneBtn){
+    const setDoneUI=(isDone)=>{
+      doneBtn.setAttribute('aria-pressed', isDone?'true':'false');
+      doneBtn.classList.toggle('btn-done', !!isDone);
+      doneBtn.textContent = isDone ? '✓ Erledigt' : '✓ Als erledigt markieren';
+    };
+    let _done=false;
+    const tk=(String(fach.id||'').toLowerCase())+':'+(String(themeId||'').toLowerCase());
+    setDoneUI(false);
+    try{ if(window.LearnDB && LearnDB.getPlayerProfile && LearnDB.getPlayer && LearnDB.getPlayer()){
+      LearnDB.getPlayerProfile(LearnDB.getPlayer()).then(function(res){
+        const t=res && res.profile && res.profile.themes && res.profile.themes[tk];
+        _done = !!(t && t.status==='done');
+        setDoneUI(_done);
+      }).catch(function(){});
+    }}catch(e){}
+    doneBtn.onclick=()=>{
+      const player=window.LearnDB && LearnDB.getPlayer && LearnDB.getPlayer();
+      if(!player){ if(window.toast) toast('Bitte zuerst anmelden','info'); return; }
+      _done=!_done;
+      setDoneUI(_done);
+      try{ LearnDB.markThemeProgress(player, {fach:fach.id, theme:themeId, name:theme.name, done:_done})
+        .then(function(){ if(window.toast) toast(_done?'Als erledigt gespeichert':'Wieder als offen markiert','ok'); })
+        .catch(function(){ _done=!_done; setDoneUI(_done); if(window.toast) toast('Speichern fehlgeschlagen','bad'); });
+      }catch(e){}
+    };
+  }
 }
 
 /* Generic quiz (same UX as BfK-1) */
@@ -3396,8 +3439,24 @@ function bfk1SaveProgress(p){
   try{ localStorage.setItem(BFK1_PROGRESS_KEY, JSON.stringify(p)); }catch(e){}
 }
 function bfk1Status(id){ const p=bfk1LoadProgress(); return p[id]|0; }
+/* Sync trạng thái 1 Thema bfk1 lên Supabase (để admin xem tiến trình Pro).
+ * Map: val 1 = "learning", val 2 = "done", còn lại (mở xem) = "seen". */
+function bfk1SyncProgress(id, statusStr){
+  try{
+    if(!(window.LearnDB && LearnDB.markThemeProgress && LearnDB.getPlayer)) return;
+    const player=LearnDB.getPlayer(); if(!player) return;
+    const it=(bfk1AllItems()||[]).find(t=>t.id===id);
+    LearnDB.markThemeProgress(player, {
+      fach:'bfk1', theme:id,
+      name:(it&&it.name)||id,
+      status:statusStr
+    }).catch(function(){});
+  }catch(e){}
+}
 function bfk1SetStatus(id, val){
-  const p=bfk1LoadProgress(); p[id]=((val%3)+3)%3; bfk1SaveProgress(p);
+  const v=((val%3)+3)%3;
+  const p=bfk1LoadProgress(); p[id]=v; bfk1SaveProgress(p);
+  bfk1SyncProgress(id, v===2?'done':v===1?'learning':'seen');
 }
 function bfk1CycleStatus(id){
   const cur=bfk1Status(id); bfk1SetStatus(id, cur+1); return bfk1Status(id);
@@ -3420,11 +3479,14 @@ function renderBfk1Hub(){
   if(!host) return;
   const groups=bfk1Groups();
   let html="";
+  const extraLocked = !bfk1CanExtra();
   groups.forEach(g=>{
     if(!g) return;
     const items=g.items||[];
-    const pr=bfk1GroupPercent(g);
     const gid=g.id||"";
+    // Basic: ẩn hoàn toàn Extra (Abschlussprüfung Gast + Produktion).
+    if(gid==="extra" && extraLocked) return;
+    const pr=bfk1GroupPercent(g);
     html += '<div class="lf-block">'
       + '<h3><span class="lf-badge">'+(g.badge||"")+'</span> '+(g.title||"")
         + (g.titleVi?' <span class="lf-vi">· '+g.titleVi+'</span>':'')+'</h3>'
@@ -3566,12 +3628,22 @@ function renderBfk1Theme(themeId){
   const body=document.getElementById("bfk1ThemeBody");
   if(!item){ go("#/bfk/1"); return; }
   const grp=(window.bfk1GroupOf&&window.bfk1GroupOf(themeId))||null;
+  // Extra (Abschlussprüfung) chỉ cho Pro/Admin: Basic vào thẳng route → về hub + paywall.
+  if(grp && grp.id==="extra" && !bfk1CanExtra()){
+    go("#/bfk/1");
+    try{ if(window.openPaywall) openPaywall('theme:full'); }catch(e){}
+    return;
+  }
   const lfLabel=grp?(grp.label||grp.title||""):"";
   if(title) title.innerHTML=(item.icon||"")+" "+item.name;
   if(sub) sub.textContent="BfK-1"+(lfLabel?" · "+lfLabel:"")+(grp&&grp.titleVi?" · "+grp.titleVi:"");
   if(!body) return;
   window._bfk1CurTheme=themeId;
   _bfk1ThemeTab="theory";
+
+  // Mở LS = ít nhất "đã xem" (không hạ cấp nếu đã Đang ôn/Đã thuộc).
+  try{ const _cur=bfk1Status(themeId);
+    bfk1SyncProgress(themeId, _cur===2?'done':_cur===1?'learning':'seen'); }catch(e){}
 
   // Nút trạng thái tiến độ (đầu trang)
   const st=BFK1_STATUS[bfk1Status(themeId)]||BFK1_STATUS[0];

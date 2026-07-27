@@ -200,7 +200,7 @@ select:focus{outline:none;border-color:#007AFF}
       <div class="muted" id="playersMeta"></div>
       <div style="overflow:auto;margin-top:8px">
         <table>
-          <thead><tr><th>Nickname</th><th>Stufe</th><th>Besuche</th><th>Quiz</th><th>Heute</th><th>Zeit gesamt</th><th>Gelernte Fächer</th><th>Letzte Session</th><th>Zuletzt</th></tr></thead>
+          <thead><tr><th>Nickname</th><th>Stufe</th><th>Besuche</th><th>Quiz</th><th>Heute</th><th>Zeit gesamt</th><th>LS-Fortschritt</th><th>Gelernte Fächer</th><th>Letzte Session</th><th>Zuletzt</th></tr></thead>
           <tbody id="playersBody"></tbody>
         </table>
       </div>
@@ -252,7 +252,7 @@ select:focus{outline:none;border-color:#007AFF}
 </div>
 
 <script src="./pwa.js?v=3" defer></script>
-<script src="./supabase.js?v=14"></script>
+<script src="./supabase.js?v=15"></script>
 <script src="./access.js?v=2"></script>
 <script>
 const AUTH_KEY='learn_admin_ok';
@@ -346,9 +346,11 @@ async function load(){
       const dailyCell = seenToday(p.last_seen)
         ? (daily>=goalSec ? '<span class="tag" style="color:var(--ok);border-color:#E3F7E8">✓ '+fd(daily)+'</span>' : '<span style="color:var(--bad)">'+fd(daily)+'</span>')
         : '<span class="muted">—</span>';
-      const tCell = tierTag(_roleMap[String(p.player||'').toLowerCase()] || 'free');
-      return `<tr><td><b>${escH(p.player)}</b></td><td>${tCell}</td><td>${p.visits}</td><td>${p.quiz_attempts}</td><td>${dailyCell}</td><td>${fd(p.total_duration_sec)}</td><td style="max-width:200px;white-space:normal;word-break:break-word;line-height:1.6">${subList}</td><td>${fd(p.last_session_sec)}</td><td>${fmt(p.last_seen)}</td></tr>`;
-    }).join('') || '<tr><td colspan="9" class="muted">Noch keine Nutzer</td></tr>';
+      const tier = _roleMap[String(p.player||'').toLowerCase()] || 'free';
+      const tCell = tierTag(tier);
+      const lsCell = themeSummary(p.themes, tier);
+      return `<tr><td><b>${escH(p.player)}</b></td><td>${tCell}</td><td>${p.visits}</td><td>${p.quiz_attempts}</td><td>${dailyCell}</td><td>${fd(p.total_duration_sec)}</td><td style="max-width:230px;white-space:normal;word-break:break-word;line-height:1.7">${lsCell}</td><td style="max-width:200px;white-space:normal;word-break:break-word;line-height:1.6">${subList}</td><td>${fd(p.last_session_sec)}</td><td>${fmt(p.last_seen)}</td></tr>`;
+    }).join('') || '<tr><td colspan="10" class="muted">Noch keine Nutzer</td></tr>';
 
     // ⚠️ Nutzer unter Ziel heute
     const under = s.players
@@ -409,6 +411,27 @@ async function load(){
 /* ===== Zugriffsstufen ===== */
 const TIER_LABEL={free:'Basic',paid:'Pro',super:'Admin'};
 let _roleMap={};   // nickname (lowercase) → tier
+/** LS-Fortschritt pro Nutzer. Pro/Admin: Detail je Fach (erledigt/gesehen).
+ *  Basic: kein Detail – nur Lernzeit zählt (siehe eigene Spalte). */
+function themeSummary(themes, tier){
+  if(tier!=='paid' && tier!=='super') return '<span class="muted" title="Nur für Pro sichtbar">— nur Zeit</span>';
+  const list=themes?Object.keys(themes).map(k=>themes[k]):[];
+  if(!list.length) return '<span class="muted">—</span>';
+  // nach Fach gruppieren
+  const byFach={};
+  list.forEach(t=>{
+    const f=(t.fach||'?');
+    if(!byFach[f]) byFach[f]={done:0,seen:0};
+    if(t.status==='done') byFach[f].done++; else byFach[f].seen++;
+  });
+  return Object.keys(byFach).sort().map(f=>{
+    const g=byFach[f];
+    const total=g.done+g.seen;
+    const label=escH(f.toUpperCase());
+    return '<span class="tag" title="'+label+': '+g.done+' erledigt, '+g.seen+' nur gesehen">'
+      +label+' <b style="color:var(--ok)">✓'+g.done+'</b>/'+total+'</span>';
+  }).join(' ');
+}
 function tierTag(t){
   t=TIER_LABEL[t]?t:'free';
   const col=t==='super'?'#8944AB':t==='paid'?'#248A3D':'#6C6C70';
