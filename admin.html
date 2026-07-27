@@ -77,6 +77,36 @@ select:focus{outline:none;border-color:#007AFF}
 .mani-row .lbl{flex:1;min-width:0;font-size:.86em;line-height:1.35}
 .mani-row .lbl small{display:block;color:var(--muted);font-size:.86em}
 .mani-row select{width:104px;margin:0;padding:7px 9px;font-size:.86em}
+/* ===== Fortschritts-Matrix ===== */
+.mx-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.mx-tab{background:#E5E5EA;color:#3C3C43;border-radius:99px;padding:6px 14px;font-size:.82em;
+  font-weight:600;cursor:pointer;border:none;min-height:0}
+.mx-tab.active{background:var(--accent);color:#fff}
+.mx-legend{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:10px;font-size:.76em;color:var(--muted)}
+.mx-legend span{display:inline-flex;align-items:center;gap:5px}
+.mx-key{width:14px;height:14px;border-radius:4px;border:1px solid var(--line);display:inline-block}
+.mx-k-done{background:#248A3D}.mx-k-learn{background:#F0A020}.mx-k-seen{background:#BcD4F5;background:#BCD4F5}
+.mx-k-none{background:#F2F2F7}
+.mx-scroll{overflow:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:12px}
+table.mx{border-collapse:separate;border-spacing:0;font-size:.8em;background:#fff;min-width:max-content}
+table.mx th,table.mx td{padding:0;text-align:center;border:0}
+table.mx thead th{background:#fff;position:sticky;top:0;z-index:2;padding:6px 3px;font-size:.9em}
+table.mx thead th.mx-name{text-align:left}
+table.mx .mx-namecol{position:sticky;left:0;z-index:1;background:#fff;text-align:left;
+  padding:6px 10px;min-width:120px;max-width:150px;border-right:1px solid var(--line);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+table.mx thead th.mx-namecol{z-index:3}
+table.mx .mx-cell{width:26px;height:26px;min-width:26px}
+table.mx .mx-dot{width:20px;height:20px;border-radius:6px;margin:2px auto;display:block;border:1px solid rgba(0,0,0,.05)}
+.d-done{background:#248A3D}.d-learn{background:#F0A020}.d-seen{background:#BCD4F5}.d-none{background:#F2F2F7}
+table.mx tbody tr:nth-child(even) .mx-namecol{background:#FAFAFC}
+table.mx tbody tr:hover td{background:#F5F9FF}
+table.mx tbody tr:hover .mx-namecol{background:#EAF3FF}
+.mx-vh{font-size:.7em;color:var(--muted);writing-mode:vertical-rl;transform:rotate(180deg);
+  white-space:nowrap;max-height:120px;line-height:1.1;margin:0 auto}
+.mx-pct{font-weight:700;font-size:.78em}
+.mx-pct.hi{color:var(--ok)}.mx-pct.mid{color:#B26A00}.mx-pct.lo{color:var(--muted)}
+.mx-empty{padding:16px;text-align:center;color:var(--muted);font-size:.86em}
 @media (max-width:640px){
   .wrap{padding:14px 12px calc(40px + var(--safe-bottom))}
   .brand{font-size:1em}
@@ -206,6 +236,23 @@ select:focus{outline:none;border-color:#007AFF}
       </div>
     </div>
 
+    <!-- ===== Fortschritts-Matrix (Pro) ===== -->
+    <div class="card">
+      <h2>🗺️ Lern-Matrix · Pro-Nutzer</h2>
+      <p class="muted" style="margin-bottom:10px">
+        Jede Zeile = ein Pro-Nutzer, jede Spalte = ein LS/Thema. Farbe = Status.<br>
+        <i>Mỗi hàng = 1 học viên Pro, mỗi cột = 1 LS. Màu thể hiện trạng thái.</i>
+      </p>
+      <div class="mx-legend">
+        <span><i class="mx-key mx-k-done"></i> Đã thuộc / erledigt</span>
+        <span><i class="mx-key mx-k-learn"></i> Đang ôn / lernt</span>
+        <span><i class="mx-key mx-k-seen"></i> Đã xem / gesehen</span>
+        <span><i class="mx-key mx-k-none"></i> Chưa mở / offen</span>
+      </div>
+      <div class="mx-tabs" id="mxTabs"></div>
+      <div class="mx-scroll" id="mxScroll"><div class="mx-empty">Lädt…</div></div>
+    </div>
+
     <div class="card" id="underGoalCard">
       <h2>⚠️ Nutzer unter Ziel heute</h2>
       <div class="muted" id="underGoalMeta" style="margin-bottom:8px">Aktiv heute (Berlin), aber noch nicht beim Tagesziel.</div>
@@ -254,6 +301,7 @@ select:focus{outline:none;border-color:#007AFF}
 <script src="./pwa.js?v=3" defer></script>
 <script src="./supabase.js?v=15"></script>
 <script src="./access.js?v=2"></script>
+<script src="./bfk1-catalog.js?v=1"></script>
 <script>
 const AUTH_KEY='learn_admin_ok';
 function showErr(m){
@@ -333,6 +381,9 @@ async function load(){
     // "Heute" pro Nutzer + Warnung unter Ziel
     const berlinToday = (LearnDB.berlinDay ? LearnDB.berlinDay() : new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Berlin'}).format());
     const seenToday = (iso)=>{ try{ return LearnDB.berlinDay ? (LearnDB.berlinDay(iso)===berlinToday) : (String(iso||'').slice(0,10)===berlinToday); }catch(_){ return false; } };
+
+    // Lern-Matrix (nur Pro/Admin) – braucht _roleMap aus loadRoles()
+    try{ renderMatrix(s.players||[]); }catch(_){}
 
     document.getElementById('playersBody').innerHTML = s.players.map(p=>{
       const subs = p.quizzes ? Object.keys(p.quizzes) : [];
@@ -437,6 +488,78 @@ function tierTag(t){
   const col=t==='super'?'#8944AB':t==='paid'?'#248A3D':'#6C6C70';
   const bg=t==='super'?'#F6EDFC':t==='paid'?'#E3F7E8':'#E5E5EA';
   return '<span class="tag" style="background:'+bg+';color:'+col+'">'+TIER_LABEL[t]+'</span>';
+}
+
+/* ===== Lern-Matrix (Pro) ===== */
+let _mxPlayers=[];      // [{player, themes}]
+let _mxTab='all';       // 'all' | group id
+const MX_STATUS_CLS={done:'mx-k-done',learning:'mx-k-learn',seen:'mx-k-seen'};
+const MX_STATUS_LBL={done:'Đã thuộc',learning:'Đang ôn',seen:'Đã xem'};
+/** Status eines LS für einen Nutzer (aus profile.themes). fach fest = bfk1. */
+function mxStatusOf(themes, itemId){
+  if(!themes) return '';
+  const t=themes['bfk1:'+String(itemId).toLowerCase()] || themes['bfk1:'+itemId];
+  return (t && t.status) || '';
+}
+/** Sichtbare LS-Spalten je nach Tab. */
+function mxColumns(){
+  const cat=window.BFK1_CATALOG||[];
+  if(_mxTab==='all') { const out=[]; cat.forEach(g=>(g.items||[]).forEach(it=>out.push(Object.assign({_g:g.badge},it)))); return out; }
+  const g=cat.find(x=>x.id===_mxTab);
+  return g?(g.items||[]).map(it=>Object.assign({_g:g.badge},it)):[];
+}
+function mxRenderTabs(){
+  const cat=window.BFK1_CATALOG||[];
+  const tabs=[{id:'all',label:'Alle ('+cat.reduce((n,g)=>n+(g.items||[]).length,0)+')'}]
+    .concat(cat.map(g=>({id:g.id,label:g.badge+' ('+(g.items||[]).length+')'})));
+  const box=document.getElementById('mxTabs');
+  if(!box) return;
+  box.innerHTML=tabs.map(t=>'<button type="button" class="mx-tab'+(t.id===_mxTab?' active':'')+'" data-mxtab="'+t.id+'">'+escH(t.label)+'</button>').join('');
+  box.querySelectorAll('[data-mxtab]').forEach(b=>b.onclick=()=>{ _mxTab=b.getAttribute('data-mxtab'); mxRenderTabs(); mxRenderTable(); });
+}
+function mxRenderTable(){
+  const host=document.getElementById('mxScroll');
+  if(!host) return;
+  const cols=mxColumns();
+  if(!_mxPlayers.length){ host.innerHTML='<div class="mx-empty">Noch keine Pro-Nutzer mit Fortschritt.<br><i>Chưa có học viên Pro nào có tiến trình.</i></div>'; return; }
+  if(!cols.length){ host.innerHTML='<div class="mx-empty">Keine LS in dieser Gruppe.</div>'; return; }
+  // Kopf
+  let head='<tr><th class="mx-namecol mx-name">Nutzer</th><th class="mx-pctcol">%</th>';
+  cols.forEach(c=>{
+    head+='<th class="mx-cell" title="'+escH(c.name)+'"><span class="mx-vh">'+escH((c.name||c.id).replace(/·.*$/,'').trim().slice(0,16))+'</span></th>';
+  });
+  head+='</tr>';
+  // Zeilen: nach % erledigt absteigend
+  const rows=_mxPlayers.map(p=>{
+    let done=0;
+    cols.forEach(c=>{ if(mxStatusOf(p.themes,c.id)==='done') done++; });
+    const pct=cols.length?Math.round(done/cols.length*100):0;
+    return {p,done,pct};
+  }).sort((a,b)=>b.pct-a.pct);
+  const body=rows.map(r=>{
+    const pctCls=r.pct>=67?'hi':r.pct>=34?'mid':'lo';
+    let tds='<td class="mx-namecol"><b>'+escH(r.p.player)+'</b></td>'
+      +'<td class="mx-pctcol"><span class="mx-pct '+pctCls+'">'+r.pct+'%</span><br><span class="muted" style="font-size:.68em">'+r.done+'/'+cols.length+'</span></td>';
+    cols.forEach(c=>{
+      const st=mxStatusOf(r.p.themes,c.id);
+      const cls=MX_STATUS_CLS[st]||'mx-k-none';
+      const lbl=MX_STATUS_LBL[st]||'Chưa mở';
+      tds+='<td class="mx-cell"><span class="mx-dot '+cls+'" title="'+escH(r.p.player)+' · '+escH(c.name)+' · '+lbl+'"></span></td>';
+    });
+    return '<tr>'+tds+'</tr>';
+  }).join('');
+  host.innerHTML='<table class="mx"><thead>'+head+'</thead><tbody>'+body+'</tbody></table>';
+}
+/** Aus getAdminStats-Spielern die Pro/Admin-Nutzer mit Themen ziehen. */
+function renderMatrix(players){
+  _mxPlayers=(players||[])
+    .filter(p=>{
+      const t=_roleMap[String(p.player||'').toLowerCase()]||'free';
+      return t==='paid'||t==='super';
+    })
+    .map(p=>({player:p.player, themes:p.themes||{}}));
+  mxRenderTabs();
+  mxRenderTable();
 }
 function showRoleErr(m){
   const el=document.getElementById('roleErr');
