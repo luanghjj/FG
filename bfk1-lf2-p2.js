@@ -110,8 +110,12 @@ window.__LF2 = (window.__LF2||[]).concat([
 <b>Warenart → Qualität/Material → Farbe → Sonderwunsch (bedrucken) → Lieferzeit → Zuverlässigkeit → Herkunft</b><br>
 → loại hàng → chất liệu → màu → yêu cầu đặc biệt → thời gian giao → độ tin cậy → xuất xứ.</div>
 `,
-    qa: [],
-    qaNote: "Câu hỏi luyện tập sẽ bổ sung từ fk_exel.",
+    qa: [
+      { q: "Sie erhalten auf eine Anfrage bei einem Lieferanten ein Angebot. Ist dadurch ein Kaufvertrag zustande gekommen?", qVi: "Bạn gửi hỏi hàng (Anfrage) và nhận được báo giá (Angebot). Vậy hợp đồng mua bán đã hình thành chưa?", a: "Nein. Ein Kaufvertrag kommt erst zustande, wenn das Angebot angenommen wird (Antrag + Annahme).", aVi: "Chưa. Hợp đồng chỉ hình thành khi báo giá được chấp nhận (đề nghị + chấp nhận).", why: "Anfrage và Angebot mới là bước tìm/so sánh nguồn cung; chưa ràng buộc.", src: "fk_exel · Aufgabe Thema 15 · Frage 12" },
+      { q: "Was bedeutet der Vermerk „freibleibend“ auf einem Angebot?", qVi: "Ghi chú „freibleibend“ trên báo giá nghĩa là gì?", a: "Das Angebot ist unverbindlich — der Anbieter kann Preis oder Bedingungen noch ändern.", aVi: "Báo giá không ràng buộc — người bán vẫn có thể đổi giá/điều kiện.", why: "Quan trọng khi so sánh chào giá của nhiều Bezugsquellen.", src: "fk_exel · Aufgabe Thema 15 · Frage 11" },
+      { q: "Wo können Sie Informationen über andere (neue) Lieferanten bekommen?", qVi: "Tìm thông tin về nhà cung cấp khác ở đâu?", a: "In Fachzeitschriften, im Internet, auf Messen oder durch Kollegen.", aVi: "Tạp chí chuyên ngành, Internet, hội chợ (Messen) hoặc đồng nghiệp.", why: "Đúng phần außerbetriebliche Informationsquellen của LS03.", src: "fk_exel · Aufgabe Thema 15 · Frage 10" }
+    ],
+    qaNote: "Nguồn: fk_exel Aufgabe Thema 15 (Warenwirtschaft II) — Lieferanten/Angebot khớp LS03.",
     quiz: [
       {
         q: "Bezugsquelle (nguồn cung) được định nghĩa là gì?",
@@ -271,8 +275,13 @@ window.__LF2 = (window.__LF2||[]).concat([
 <li><b>A8 Meldebestand:</b> (2 × 14) + 10 = 38 Flaschen</li>
 </ul>
 `,
-    qa: [],
-    qaNote: "Câu hỏi luyện tập sẽ bổ sung từ fk_exel.",
+    qa: [
+      { q: "Sie rechnen mit 180 g Roastbeef pro Person auf dem Teller. Wie viel kg brauchen Sie für 20 Personen bei 15 % Parierverlust und 8 % Bratverlust?", qVi: "Cần 180 g Roastbeef/người trên đĩa. Với 15% hao sơ chế + 8% hao nướng, cần bao nhiêu kg cho 20 người?", a: "180 g ÷ (1 − 0,15 − 0,08) = 180 ÷ 0,77 = 234 g/Person → 234 g × 20 = 4,68 kg.", aVi: "180 g ÷ 0,77 = 234 g/người → × 20 = 4,68 kg thịt sống.", why: "Công thức chuẩn: Rohgewicht = Endgewicht ÷ (1 − Gesamtverlust%).", src: "fk_exel · Aufgabe Thema 15 · Frage 2" },
+      { q: "Für Bratkartoffeln braucht man 300 g fertige Kartoffeln pro Portion. Wie viel kg roh bei 5 % Koch- und 20 % Schälverlust (20 Portionen)?", qVi: "Mỗi phần cần 300 g khoai thành phẩm. Với 5% hao luộc + 20% hao gọt, cần bao nhiêu kg khoai sống cho 20 phần?", a: "300 g ÷ (1 − 0,05 − 0,20) = 300 ÷ 0,75 = 400 g/Portion → 400 g × 20 = 8 kg.", aVi: "300 g ÷ 0,75 = 400 g/phần → × 20 = 8 kg khoai tươi.", why: "Cùng công thức Endgewicht ÷ (1 − Verlust%) như thịt.", src: "fk_exel · Aufgabe Thema 15 · Frage 3" },
+      { q: "Ein Gast will für 10 Personen max. 650 € ausgeben. Wie hoch dürfen die Materialkosten bei Kalkulationsfaktor 4,5 sein?", qVi: "Khách chi tối đa 650 € cho 10 người. Với hệ số định giá 4,5, chi phí nguyên liệu tối đa là bao nhiêu?", a: "650 € ÷ 4,5 = 144,44 €.", aVi: "650 ÷ 4,5 = 144,44 € (Wareneinsatz).", why: "Verkaufspreis ÷ Kalkulationsfaktor = Materialkosten/Wareneinsatz.", src: "fk_exel · Aufgabe Thema 16 · Frage 2" },
+      { q: "Was gehört zu den Bezugskosten bei der Warenkalkulation?", qVi: "Chi phí nào thuộc Bezugskosten (chi phí mua hàng)?", a: "Verpackung und Fracht. Rabatt und Skonto sind Preisnachlässe, keine Bezugskosten.", aVi: "Bao bì (Verpackung) và vận chuyển (Fracht). Rabatt/Skonto là khoản giảm giá, không phải Bezugskosten.", why: "Bezugskosten cộng vào giá vốn khi tính Bezugspreis.", src: "fk_exel · Aufgabe Thema 16 · Frage 1" }
+    ],
+    qaNote: "Nguồn: fk_exel Aufgabe Thema 15+16 — Bedarf/Verluste/Kalkulation khớp LS04.",
     quiz: [
       {
         q: "Công thức Meldebestand là gì?",

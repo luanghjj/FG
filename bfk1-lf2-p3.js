@@ -54,8 +54,12 @@ window.__LF2 = (window.__LF2||[]).concat([
   <tr><td><b>Nachteile</b><br>Nhược điểm</td><td>hoher Verwaltungs-/Kontrollaufwand (tốn công kiểm tra thường xuyên); hohe Lagerbestände; Höchstbestand kann überschritten werden</td><td>Bestellmenge muss jedes Mal neu berechnet werden (phải tính lại mỗi lần); Gefahr von Fehlmengen größer; Lagervorräte könnten eher ausgehen; für unregelmäßigen Absatz nicht anwendbar</td></tr>
 </table>
 <div class="note">⚠️ <b>HỌC THUỘC:</b> Sicherheitsbestand (eiserne Reserve) bù cho biến động tiêu thụ — <b>chỉ Leitung F&amp;B mới được phép giải phóng</b>.</div>`,
-    qa: [],
-    qaNote: "Câu hỏi luyện tập sẽ bổ sung từ fk_exel.",
+    qa: [
+      { q: "Welche Aussagen zum Lieferverzug sind richtig?", qVi: "Phát biểu nào về giao hàng trễ (Lieferverzug) là đúng?", a: "1) Ist der Liefertermin kalendermäßig festgelegt, kommt der Lieferant nach Fristablauf automatisch in Verzug. 2) Erklärt der Lieferant, dass er nicht liefern kann, kommt er auch ohne Mahnung in Verzug.", aVi: "1) Nếu ngày giao ấn định rõ theo lịch → quá hạn là tự động Verzug. 2) Nếu nhà cung cấp tuyên bố không giao được → không cần Mahnung vẫn tính Verzug.", why: "Fixkauf/Zweckkauf tự động; tuyên bố từ chối giao = ohne Mahnung. Khớp LS09 về Lieferverzug.", src: "fk_exel · Aufgabe Thema 15 · Frage 13" },
+      { q: "Was bedeutet der Vermerk „freibleibend“ auf einem Angebot?", qVi: "Ghi chú „freibleibend“ trên báo giá nghĩa là gì?", a: "Das Angebot ist unverbindlich — der Anbieter kann den Preis noch ändern.", aVi: "Báo giá không ràng buộc — người bán vẫn có thể đổi giá/điều kiện.", why: "„freibleibend“ = unverbindliches Angebot; quan trọng khi chốt thời điểm đặt.", src: "fk_exel · Aufgabe Thema 15 · Frage 11" },
+      { q: "Sie fragen bei einem Lieferanten an und erhalten ein Angebot. Ist damit ein Kaufvertrag zustande gekommen?", qVi: "Bạn hỏi hàng và nhận được báo giá. Hợp đồng mua bán đã hình thành chưa?", a: "Nein — ein Kaufvertrag kommt erst zustande, wenn das Angebot angenommen wird.", aVi: "Chưa — hợp đồng chỉ hình thành khi bên mua chấp nhận (Annahme) báo giá.", why: "Anfrage → Angebot → Annahme mới thành Kaufvertrag.", src: "fk_exel · Aufgabe Thema 15 · Frage 12" }
+    ],
+    qaNote: "Nguồn: fk_exel Aufgabe Thema 15 — Lieferverzug/Angebot khớp LS05.",
     quiz: [
       {
         q: "Beim Bestellpunktverfahren wird bestellt, wenn …",
@@ -188,8 +192,12 @@ window.__LF2 = (window.__LF2||[]).concat([
   <tr><td><b>ab Werk</b></td><td>Käufer (Abholung im Werk) → người mua trả, lấy tại nhà máy</td></tr>
   <tr><td><b>ab Lager</b></td><td>Käufer (Abholung im Lager) → người mua trả, lấy tại kho</td></tr>
 </table>`,
-    qa: [],
-    qaNote: "Câu hỏi luyện tập sẽ bổ sung từ fk_exel.",
+    qa: [
+      { q: "Welche Kosten gehören bei der Warenkalkulation zu den Bezugskosten?", qVi: "Chi phí nào thuộc chi phí mua hàng (Bezugskosten) khi tính giá?", a: "Verpackung und Fracht. (Rabatt und Skonto sind Preisabzüge, keine Bezugskosten.)", aVi: "Bao bì (Verpackung) và cước vận chuyển (Fracht). Rabatt/Skonto là khoản giảm giá, không phải Bezugskosten.", why: "Bezugskosten cộng vào giá vốn khi đặt hàng; phân biệt với chiết khấu.", src: "fk_exel · Aufgabe Thema 16 · Frage 1" },
+      { q: "Ein Paket kostet 4,50 € netto. Ab 10 Paketen 15 % Rabatt, bei Zahlung in 7 Tagen 3 % Skonto. Preis pro Paket bei 15 Paketen und Zahlung in 7 Tagen?", qVi: "Gói 4,50 € netto. Từ 10 gói giảm 15%, trả trong 7 ngày giảm thêm 3% Skonto. Giá 1 gói khi đặt 15 gói, trả trong 7 ngày?", a: "4,50 € × 0,85 × 0,97 = 3,71 € pro Paket.", aVi: "4,50 × 0,85 (Rabatt) = 3,83 €; × 0,97 (Skonto) = 3,71 €/gói.", why: "Rabatt = giảm theo số lượng; Skonto = giảm khi trả sớm. Áp dụng lần lượt.", src: "fk_exel · Aufgabe Thema 16 · Frage 9" },
+      { q: "Ein Gast will für 10 Personen max. 650 € ausgeben. Wie hoch dürfen die Materialkosten sein, wenn der Kalkulationsfaktor 4,5 beträgt?", qVi: "Khách chi tối đa 650 € cho 10 người. Nếu Kalkulationsfaktor = 4,5 thì chi phí nguyên liệu tối đa là bao nhiêu?", a: "650 € ÷ 4,5 = 144,44 € (Wareneinsatz = Verkaufspreis ÷ Kalkulationsfaktor).", aVi: "650 ÷ 4,5 = 144,44 €. Công thức: giá bán ÷ hệ số định giá = chi phí nguyên liệu.", why: "Bestellmenge/-wert phải nằm trong ngân sách nguyên liệu tính ngược từ giá bán.", src: "fk_exel · Aufgabe Thema 16 · Frage 2" }
+    ],
+    qaNote: "Nguồn: fk_exel Aufgabe Thema 16 — Bezugskosten/Rabatt-Skonto/Kalkulation khớp LS06.",
     quiz: [
       {
         q: "Wodurch kommt ein Kaufvertrag zustande?",

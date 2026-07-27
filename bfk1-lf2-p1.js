@@ -26,8 +26,13 @@ window.__LF2 = (window.__LF2||[]).concat([
 <p>💡 Bản viết tay (trang 04) tách bước 4/5 và 6/7 → thành 7 ô: Bedarfsermittlung · Lieferantenauswahl & Angebotsvergleich · Bestellung · Warenannahme · Wareneingangskontrolle · Einlagerung · Lagerung und Bestandskontrolle. Nội dung như 6 bước, chỉ chia nhỏ hơn.</p>
 <p><b>FIFO</b> („first in – first out“) = hàng nhập trước dùng trước — nguyên tắc khi einlagern.</p>
 `,
-    qa: [],
-    qaNote: "fk_exel: quy trình tổng khớp Thema 4 + 14–16, nhưng chưa có câu hỏi riêng cho LS01. Học kỹ 6 bước ở tab Lý thuyết.",
+    qa: [
+      { q: "Welche Ziele werden mit einem Warenwirtschaftssystem verfolgt?", qVi: "Hệ thống quản lý hàng hóa (Warenwirtschaftssystem) nhằm mục tiêu gì?", a: "Optimierung des Sortiments, Überwachung der Bestände und Überwachung der Lagerkosten. NICHT: Optimierung der Einkommenssteuer.", aVi: "Tối ưu danh mục hàng, giám sát tồn kho và chi phí lưu kho. KHÔNG phải tối ưu thuế thu nhập.", why: "Warenwirtschaftssystem điều phối cả quy trình mua–lưu–bán, đúng tinh thần 6 bước của LS01.", src: "fk_exel · Aufgabe Thema 14 · Frage 12" },
+      { q: "Was ist der Zweck der Inventur?", qVi: "Mục đích của kiểm kê (Inventur) là gì?", a: "Sie ist eine wichtige Grundlage für den Jahresabschluss eines Unternehmens.", aVi: "Là cơ sở quan trọng để lập báo cáo tài chính cuối năm (Jahresabschluss).", why: "Inventur = bước Bestandskontrolle trong quy trình; xác định giá trị tồn kho thực tế.", src: "fk_exel · Aufgabe Thema 14 · Frage 13" },
+      { q: "Bringen Sie die Arbeitsschritte einer Inventur in die richtige Reihenfolge.", qVi: "Sắp xếp các bước kiểm kê (Inventur) theo đúng thứ tự.", a: "1) Zählen/Messen/Wiegen 2) Inventurbelege erstellen 3) an Mitarbeiter verteilen 4) Ergebnisse eintragen 5) Bestandskorrekturen bei Differenzen 6) im Warenwirtschaftsprogramm speichern.", aVi: "1) Đếm/đo/cân 2) Lập biên bản kiểm kê 3) Phân cho nhân viên 4) Ghi kết quả 5) Chỉnh sai lệch 6) Lưu vào hệ thống.", why: "Trình tự chuẩn của bước Warenbestand erfassen.", src: "fk_exel · Aufgabe Thema 14 · Frage 14" },
+      { q: "Wie hoch darf die Temperatur in Tiefkühlräumen höchstens sein?", qVi: "Nhiệt độ tối đa trong kho đông (Tiefkühlraum)?", a: "höchstens −18 °C.", aVi: "Tối đa −18 °C.", why: "Chuẩn HACCP bắt buộc khi einlagern ở bước 6 của quy trình.", src: "fk_exel · Aufgabe Thema 14 · Frage 8" }
+    ],
+    qaNote: "Nguồn: fk_exel Aufgabe Thema 14 (Warenwirtschaft I) — khớp quy trình tổng LS01.",
     quiz: [
       { q: "Welcher Schritt steht am Anfang des Beschaffungsprozesses?", options: ["Bestellung", "Bedarfsermittlung", "Warenannahme", "Einlagerung"], answer: 1, explain: "Zuerst wird ermittelt, welche Ware wann und in welcher Menge gebraucht wird." },
       { q: "Wobei helfen die Lagerkennzahlen?", options: ["Bei der Bestandskontrolle / Bestellmenge", "Beim Kochen", "Bei der Reklamation", "Beim Servieren"], answer: 0, explain: "Bestandskontrolle: aktueller Bestand ↔ Bedarf → über Lagerkennzahlen die Bestellmenge bestimmen." },
