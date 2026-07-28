@@ -97,7 +97,8 @@
             q: q.q,
             opts: q.options,
             a: q.answer,
-            ex: q.explain || ''
+            ex: q.explain || '',
+            bank: (q.bank==='excel' || /fk[_ -]?exel/i.test(String(q.source||'')) || /fk[_ -]?exel/i.test(String(it.source||'')) || /fk[_ -]?exel/i.test(String(it.qaNote||''))) ? 'excel' : 'app'
           });
         });
       });
@@ -109,16 +110,27 @@
   // Freitext nur anhängen, wenn der Ziel-LS wirklich existiert
   const fill = FILL.filter(function(f){ return built.meta[f.theme]; });
 
+  function quizAllowed(q){
+    if(!q) return false;
+    const group=(W.bfk1GroupOf&&W.bfk1GroupOf(q.theme))||null;
+    if(group && group.id==='extra' && W.Access && !W.Access.can('theme:full')) return false;
+    if(q.bank==='excel' && W.Access && !W.Access.can('questionbank:excel')) return false;
+    return true;
+  }
+
   W.BFK1_QUIZ = built.quiz.concat(fill);
   W.BFK1_THEME_META = built.meta;
+  W.bfk1QuestionAllowed = quizAllowed;
 
   W.bfk1QuizByThemes = function(themeIds){
     const set = new Set(themeIds || []);
-    return (W.BFK1_QUIZ || []).filter(function(q){ return set.has(q.theme); });
+    return (W.BFK1_QUIZ || []).filter(function(q){ return set.has(q.theme) && quizAllowed(q); });
   };
 
   W.bfk1QuizAllThemes = function(){
-    return Object.keys(W.BFK1_THEME_META || {});
+    const ids = new Set();
+    (W.BFK1_QUIZ || []).forEach(function(q){ if(quizAllowed(q)) ids.add(q.theme); });
+    return Array.from(ids);
   };
 })();
 
@@ -176,7 +188,7 @@ window.BfK1Study = {
     list.unshift({
       key: window.bfk1QuestionKey(q),
       theme: q.theme, cat:q.cat, q:q.q, type:q.type||'mc',
-      opts:q.opts||null, a:q.a, answer:q.answer||null, answers:q.answers||null, ex:q.ex||'',
+      opts:q.opts||null, a:q.a, answer:q.answer||null, answers:q.answers||null, ex:q.ex||'', bank:q.bank||'app',
       ts: Date.now()
     });
     this.save(this.ERR_KEY, list.slice(0,100));
@@ -219,7 +231,7 @@ window.BfK1Study = {
     }
     cur.due = Date.now() + cur.interval*day;
     cur.theme=q.theme; cur.q=q.q; cur.type=q.type||'mc';
-    cur.opts=q.opts||null; cur.a=q.a; cur.answer=q.answer||null; cur.answers=q.answers||null; cur.ex=q.ex||''; cur.cat=q.cat||'';
+    cur.opts=q.opts||null; cur.a=q.a; cur.answer=q.answer||null; cur.answers=q.answers||null; cur.ex=q.ex||''; cur.cat=q.cat||''; cur.bank=q.bank||'app';
     all[key]=cur; this.save(this.SPACE_KEY, all);
   },
   dueReviews(){

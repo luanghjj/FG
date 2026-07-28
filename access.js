@@ -50,6 +50,8 @@
     'theme:full': 'paid', // phần nội dung sâu (ví dụ, bảng chi tiết, mẹo thi)
     'theme:pages': 'paid', // ảnh scan trang sách
     'theme:flashcards': 'free',
+    // Ngân hàng câu hỏi Excel (QA trong các Lernfeld; độc lập với Extra)
+    'questionbank:excel': 'paid',
     // Luyện tập
     'quiz:demo': 'free', // quiz giới hạn số câu
     'quiz:full': 'paid', // quiz đầy đủ

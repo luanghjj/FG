@@ -623,6 +623,7 @@ async function loadPaidCode(){
 const MANI_LABEL={
   'theme:list':'Themenliste','theme:basic':'Grundwissen im Thema','theme:full':'Volle Inhalte im Thema',
   'theme:pages':'Arbeitsblätter (Scans)','theme:flashcards':'Karteikarten',
+  'questionbank:excel':'Excel-Fragenbank · Câu hỏi từ Excel',
   'quiz:demo':'Quiz (Demo)','quiz:full':'Quiz (voll)','training':'Prüfungstraining',
   'zusammenfassung':'Zusammenfassung','pruefungen':'Prüfungsbögen + Lösungen',
   'challenge':'Challenge','admin':'Admin-Dashboard',
@@ -686,7 +687,9 @@ document.getElementById('btnSaveManifest').onclick=async()=>{
   msg.textContent='Speichert…';
   try{
     await Access.saveManifest(patch,'super:dashboard');
-    msg.textContent='Matrix gespeichert.';
+    const excelTier=patch['questionbank:excel']||'paid';
+    const excelName=excelTier==='free'?'Basic':excelTier==='super'?'Admin':'Pro';
+    msg.textContent='Matrix gespeichert · Excel-Fragenbank ab '+excelName+'.';
   }catch(e){ msg.textContent='Fehler: '+(e.message||e); }
 };
 

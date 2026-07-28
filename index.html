@@ -1635,7 +1635,7 @@ h2 svg,h3 svg,b svg{width:1em;height:1em;display:inline-block;vertical-align:-.1
 <script src="./bfk1-extra-p6.js?v=1"></script>
 <script src="./bfk1-extra-data.js?v=1"></script>
 <script src="./bfk1-data.js?v=20"></script>
-<script src="./bfk1-quiz.js?v=14"></script>
+<script src="./bfk1-quiz.js?v=15"></script>
 <script src="./bfk2-quiz.js?v=1"></script>
 <script src="./deutsch-quiz.js?v=1"></script>
 <script src="./faecher.js?v=7"></script>
@@ -2027,7 +2027,7 @@ function renderHomeExams(){
 }
 function examHasQuiz(ex){
   if(!ex) return false;
-  if(ex.id==='bfk1') return !!(window.BFK1_QUIZ&&BFK1_QUIZ.length);
+  if(ex.id==='bfk1') return (window.BFK1_QUIZ||[]).some(q=>!window.bfk1QuestionAllowed||window.bfk1QuestionAllowed(q));
   if(ex.id==='bfk2') return !!(window.BFK2_QUIZ&&BFK2_QUIZ.length) || (typeof QUIZ!=='undefined' && QUIZ.length);
   if(ex.id==='deutsch') return !!(window.DEUTSCH_QUIZ&&DEUTSCH_QUIZ.length);
   try{
@@ -2038,7 +2038,7 @@ function examHasQuiz(ex){
 }
 function examQuizCount(ex){
   if(!ex) return 0;
-  if(ex.id==='bfk1') return (window.BFK1_QUIZ||[]).length;
+  if(ex.id==='bfk1') return (window.BFK1_QUIZ||[]).filter(q=>!window.bfk1QuestionAllowed||window.bfk1QuestionAllowed(q)).length;
   if(ex.id==='bfk2'){
     if(window.BFK2_QUIZ&&BFK2_QUIZ.length) return BFK2_QUIZ.length;
     return (typeof QUIZ!=='undefined' && QUIZ.length)? QUIZ.length : 0;
@@ -2054,10 +2054,11 @@ function examThemeCatalog(ex){
   // returns [{id, icon, name, desc, route, qCount}]
   if(!ex) return [];
   if(ex.id==='bfk1'){
-    const quiz=window.BFK1_QUIZ||[];
+    const quiz=(window.BFK1_QUIZ||[]).filter(q=>!window.bfk1QuestionAllowed||window.bfk1QuestionAllowed(q));
     const counts={}; quiz.forEach(q=>{ counts[q.theme]=(counts[q.theme]||0)+1; });
     const items=[];
     bfk1Groups().forEach(g=>{
+      if(g && g.id==='extra' && !bfk1CanExtra()) return;
       (g.items||[]).forEach(it=>{
         items.push({
           id:it.id, icon:it.icon||'📘', name:it.name, desc:it.desc||g.badge||'',
@@ -3077,7 +3078,7 @@ function bfk1QuizIntro(preselect){
   if(!area) return;
   b1Started=false; b1StopTimer(); b1Exam=false;
   const meta=window.BFK1_THEME_META||{};
-  const quiz=window.BFK1_QUIZ||[];
+  const quiz=(window.BFK1_QUIZ||[]).filter(q=>!window.bfk1QuestionAllowed||window.bfk1QuestionAllowed(q));
   if(!quiz.length){
     area.innerHTML='<p class="muted">Quiz-Daten nicht geladen. Bitte Hard-Reload (Cmd+Shift+R).</p>';
     return;
@@ -3160,11 +3161,12 @@ function bfk1QuizStartSpecial(kind){
   const st=b1Study();
   let pool=[];
   if(kind==='errors') pool=(st? st.getErrors():[]).map(e=>({
-    theme:e.theme, cat:e.cat, q:e.q, type:e.type, opts:e.opts, a:e.a, answer:e.answer, answers:e.answers, ex:e.ex
+    theme:e.theme, cat:e.cat, q:e.q, type:e.type, opts:e.opts, a:e.a, answer:e.answer, answers:e.answers, ex:e.ex, bank:e.bank||'app'
   }));
   if(kind==='due') pool=(st? st.dueReviews():[]).map(e=>({
-    theme:e.theme, cat:e.cat, q:e.q, type:e.type, opts:e.opts, a:e.a, answer:e.answer, answers:e.answers, ex:e.ex
+    theme:e.theme, cat:e.cat, q:e.q, type:e.type, opts:e.opts, a:e.a, answer:e.answer, answers:e.answers, ex:e.ex, bank:e.bank||'app'
   }));
+  pool=pool.filter(q=>!window.bfk1QuestionAllowed||window.bfk1QuestionAllowed(q));
   if(!pool.length){ b1Notify(kind==='errors'?'Error deck ist leer':'Keine fälligen Reviews','info'); return; }
   if((location.hash||'') !== '#/bfk/1/quiz'){ window._b1Pending={special:kind}; go('#/bfk/1/quiz'); return; }
   b1SelectedThemes=[...new Set(pool.map(q=>q.theme))];
@@ -3185,9 +3187,10 @@ function bfk1QuizStartThemes(themeIds, mode, opts){
       go('#/bfk/1/quiz'); return;
     }
     let pool = (window.bfk1QuizByThemes? window.bfk1QuizByThemes(ids):[]);
+    pool = (pool||[]).filter(q=>!window.bfk1QuestionAllowed||window.bfk1QuestionAllowed(q));
     if((!pool || !pool.length) && window.BFK1_QUIZ){
       const set=new Set(ids);
-      pool = window.BFK1_QUIZ.filter(q=>set.has(q.theme));
+      pool = window.BFK1_QUIZ.filter(q=>set.has(q.theme) && (!window.bfk1QuestionAllowed||window.bfk1QuestionAllowed(q)));
     }
     pool = b1FilterPool(pool||[], opts.filter||'mix');
     if(!pool.length){ b1Notify('Keine Fragen für Filter/Themen','info'); return; }
@@ -3546,17 +3549,34 @@ function bfk1TheoryHtml(item){
 }
 
 /* Tab ❓ Câu hỏi (Q&A từ fk_exel) */
+function isExcelQaQuestion(q,item){
+  const src=String((q&&q.src)||'');
+  const note=String((item&&item.qaNote)||'');
+  return /fk[_ -]?exel/i.test(src)||/fk[_ -]?exel/i.test(note);
+}
 function bfk1QaHtml(item){
   const qa=item.qa||[];
+  const excelQa=qa.filter(q=>isExcelQaQuestion(q,item));
+  const otherQa=qa.filter(q=>!isExcelQaQuestion(q,item));
+  // Ngân hàng Q&A Excel có quyền riêng; không đưa nội dung bị khóa vào DOM.
+  if(excelQa.length && window.Access && !Access.can('questionbank:excel')){
+    if(!otherQa.length) return lockedCard('questionbank:excel');
+  }
+  const visibleQa=(window.Access && !Access.can('questionbank:excel'))?otherQa:qa;
   let html="";
-  if(item.qaNote){
+  const excelLocked=excelQa.length && window.Access && !Access.can('questionbank:excel');
+  if(item.qaNote && !excelLocked){
     html += '<div class="hint" style="margin-bottom:12px">'+bfk1EscHtml(item.qaNote)+'</div>';
   }
-  if(!qa.length){
+  if(!visibleQa.length){
+    if(excelLocked) return lockedCard('questionbank:excel');
     if(!item.qaNote) html += '<div class="hint">Chưa có câu hỏi luyện tập cho phần này.</div>';
     return html;
   }
-  qa.forEach((q,i)=>{
+  if(excelLocked){
+    html += lockedCard('questionbank:excel');
+  }
+  visibleQa.forEach((q,i)=>{
     html += '<div class="qa-item">'
       + '<button type="button" class="qa-q" onclick="this.parentNode.classList.toggle(\'open\')">'
         + '<span class="qa-n">'+(i+1)+'</span>'
@@ -4033,13 +4053,14 @@ window.addEventListener("hashchange",router);
 
 /* ============ SEARCH INDEX (alles durchsuchbar) ============ */
 const INDEX=[];
-function idx(title, sub, badge, route, action, extra){
+function idx(title, sub, badge, route, action, extra, feature){
   const raw = [title, sub, extra||"", badge||""].join(" ").toLowerCase();
   // hay: umlaut-tolerant + accent-stripped for matching
   const hay = raw
     .replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss")
     .normalize("NFD").replace(/[̀-ͯ]/g,"");
-  INDEX.push({title, sub, badge, route, action, hay, raw});
+  const features=Array.isArray(feature)?feature:(feature?[feature]:[]);
+  INDEX.push({title, sub, badge, route, action, hay, raw, features});
 }
 function idxMany(items){ items.forEach(a=>idx.apply(null,a)); }
 function stripHtml(html){
@@ -4047,6 +4068,7 @@ function stripHtml(html){
 }
 function idxBfk1Deep(){
   (bfk1AllItems()||[]).forEach(t=>{
+    const group=(window.bfk1GroupOf&&window.bfk1GroupOf(t.id))||null;
     const route = "#/bfk/1/theme/"+t.id;
     const html = t.content || "";
     const plain = stripHtml(html);
@@ -4054,7 +4076,15 @@ function idxBfk1Deep(){
     const vis = [...html.matchAll(/data-vi="([^"]+)"/g)].map(m=>m[1]);
     // Thema + voller Lehrtext (alle Stichworte suchbar)
     idx(t.name, "BfK-1 · "+(t.desc||""), "BfK-1", route, null,
-      "bfk1 lf6 lf9 "+t.id+" "+t.name+" "+(t.desc||"")+" "+plain+" "+des.join(" ")+" "+vis.join(" "));
+      "bfk1 lf6 lf9 "+t.id+" "+t.name+" "+(t.desc||"")+" "+plain+" "+des.join(" ")+" "+vis.join(" "),
+      group&&group.id==='extra'?['theme:full']:[]);
+    // Excel-Q&A separat indexieren; per Manifest vor Basic/Pro verbergen.
+    (t.qa||[]).forEach(q=>{
+      if(!isExcelQaQuestion(q,t)) return;
+      idx(q.q||t.name, q.qVi||('BfK-1 · '+t.name), 'Excel-Q&A', route, null,
+        (q.q||'')+' '+(q.qVi||'')+' '+(q.a||'')+' '+(q.aVi||'')+' '+(q.why||'')+' '+(q.src||''),
+        group&&group.id==='extra'?['theme:full','questionbank:excel']:['questionbank:excel']);
+    });
     // DE/VI-Begriffe
     des.forEach((de,i)=>{
       const vi = vis[i] || "";
@@ -4343,6 +4373,7 @@ function runSearch(q0){
   if(!q){ sBox.classList.remove("show"); sBox.innerHTML=""; return; }
   const terms=q.split(/\s+/).filter(Boolean);
   sHits=INDEX
+    .filter(it=>!(it.features||[]).some(f=>window.Access&&!Access.can(f)))
     .filter(it=>terms.every(t=>(it.hay||"").includes(t) || norm(it.raw||"").includes(t)))
     .map(it=>({it, sc:scoreHit(it,terms,q)}))
     .sort((a,b)=>b.sc-a.sc)
@@ -4436,7 +4467,8 @@ const QUIZ = [
       const ans=(item.opts&&item.opts[item.a])||"";
       const meta=(window.BFK1_THEME_META||{})[item.theme]||{};
       idx(item.q, (meta.name||item.cat||"BfK-1")+(ans?(" · "+ans):""), "Quiz", "#/bfk/1/quiz", null,
-        "bfk1 quiz "+item.theme+" "+(item.cat||"")+" "+item.q+" "+opts+" "+(item.ex||"")+" "+ans);
+        "bfk1 quiz "+item.theme+" "+(item.cat||"")+" "+item.q+" "+opts+" "+(item.ex||"")+" "+ans,
+        (String(item.theme||'').indexOf('extra-')===0)?['theme:full'].concat(item.bank==='excel'?['questionbank:excel']:[]):(item.bank==='excel'?['questionbank:excel']:[]));
     });
     idx("BfK-1 Quiz","Themen wählen und mischen","Quiz","#/bfk/1/quiz",null,"bfk1 quiz üben training lf6 lf9");
   }catch(e){}
@@ -5039,6 +5071,7 @@ window.openAccountSheet=openAccountSheet;
 const PAYWALL_TEXT = {
   'theme:full':      ['Vollständiger Inhalt','Beispiele, Detailtabellen und Prüfungstipps.','Nội dung đầy đủ: ví dụ, bảng chi tiết, mẹo thi.'],
   'theme:pages':     ['Arbeitsblätter (Scans)','Original-Seiten aus dem Unterricht.','Ảnh scan trang sách trong lớp.'],
+  'questionbank:excel':['Excel-Fragenbank','Fragen und Antworten aus dem Excel-Prüfungsmaterial.','Ngân hàng câu hỏi và đáp án từ tài liệu Excel.'],
   'quiz:full':       ['Vollständiges Quiz','Alle Fragen statt nur '+((window.Access&&Access.FREE_QUIZ_LIMIT)||3)+' Demo-Fragen.','Toàn bộ câu hỏi, không giới hạn.'],
   'training':        ['Prüfungstraining','Themenliste, Probeklausur, gezieltes Üben.','Luyện thi theo chủ đề + đề thử.'],
   'zusammenfassung': ['Zusammenfassung','Kompakte Lernzettel zu jedem Fach.','Bản tóm tắt kiến thức từng môn.'],
@@ -5048,12 +5081,15 @@ const PAYWALL_TEXT = {
 /** Ganzseitige Sperre (statt Inhalt) für Pro-Bereiche */
 function lockedCard(feature){
   const info=PAYWALL_TEXT[feature]||['Pro-Inhalt','Dieser Bereich ist in der Pro-Stufe.','Phần này thuộc tầng Pro.'];
+  const need=(window.Access&&Access.needFor)?Access.needFor(feature):'paid';
+  const level=(window.Access&&Access.tierLabel)?Access.tierLabel(need):(need==='super'?'Admin':'Pro');
+  const canRedeem=need==='paid';
   return '<div class="pro-lock" data-lock="'+feature+'" style="margin:0">'
     +'<div class="pro-lock-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
     +'<rect x="4.5" y="10.5" width="15" height="9.5" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg></div>'
-    +'<div class="pro-lock-tx"><b>'+escHtml(info[0])+' · Pro</b>'
+    +'<div class="pro-lock-tx"><b>'+escHtml(info[0])+' · '+level+'</b>'
     +'<span>'+escHtml(info[1])+'<br><i>'+escHtml(info[2])+'</i></span></div>'
-    +'<button type="button" class="btn pro-lock-btn" data-unlock="1">Freischalten</button></div>';
+    +(canRedeem?'<button type="button" class="btn pro-lock-btn" data-unlock="1">Freischalten</button>':'<span class="muted">Admin-Freigabe erforderlich</span>')+'</div>';
 }
 window.lockedCard=lockedCard;
 /** Quiz-Länge nach Stufe begrenzen: Basic = nur Demo-Fragen. */
