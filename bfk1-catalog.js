@@ -69,6 +69,74 @@ window.BFK1_CATALOG = [
     ]
   },
   {
+    "id": "lf3",
+    "badge": "LF 3",
+    "title": "Küche und Ernährung",
+    "titleVi": "Bếp & Dinh dưỡng",
+    "items": [
+      {
+        "id": "lf3-ls01",
+        "icon": "🧼",
+        "name": "LS01/03 · Hygienebereiche & HACCP",
+        "nameVi": "3 Lĩnh vực vệ sinh, HACCP & Xử lý rác"
+      },
+      {
+        "id": "lf3-ls02",
+        "icon": "🧪",
+        "name": "LS02 · Reinigungsmittel & Arbeitsschutz",
+        "nameVi": "Chất tẩy rửa, Piktogramm & An toàn lao động"
+      },
+      {
+        "id": "lf3-ls04",
+        "icon": "🥦",
+        "name": "LS04 · Obst, Gemüse & Kartoffeltypen",
+        "nameVi": "Rau củ, Trái cây & Các loại khoai tây"
+      },
+      {
+        "id": "lf3-ls06",
+        "icon": "🥗",
+        "name": "LS06 · Ernährungsphysiologie & Nährwerte",
+        "nameVi": "Dinh dưỡng học, DGE & Tính toán năng lượng"
+      },
+      {
+        "id": "lf3-ls07",
+        "icon": "🔥",
+        "name": "LS07 · Küchentechnologie: KH, Fett, Protein",
+        "nameVi": "Đặc tính kỹ thuật bếp của KH, Fett & Protein"
+      },
+      {
+        "id": "lf3-ls08",
+        "icon": "🥚",
+        "name": "LS08 · Eiercode, Hygiene & Eierspeisen",
+        "nameVi": "Mã trứng, Vệ sinh trứng & Món ăn từ trứng"
+      },
+      {
+        "id": "lf3-ls09",
+        "icon": "🧬",
+        "name": "LS09 · Biologische Wertigkeit & Ergänzungswert",
+        "nameVi": "Giá trị sinh học, Giá trị bổ sung & Protein"
+      },
+      {
+        "id": "lf3-ls10",
+        "icon": "🍳",
+        "name": "LS10 · Küchentechnologische Wirkung von Eiern",
+        "nameVi": "Tác dụng kỹ thuật bếp của trứng"
+      },
+      {
+        "id": "lf3-ls15",
+        "icon": "📋",
+        "name": "LS15 · Rezepturauswahl & Speisekarte",
+        "nameVi": "Lựa chọn công thức, Tiêu chí & Ma trận quyết định"
+      },
+      {
+        "id": "lf3-ls16",
+        "icon": "🧮",
+        "name": "LS16 · Wareneinsatz & Kalkulation",
+        "nameVi": "Tính toán lượng nguyên liệu & Giá thành"
+      }
+    ]
+  },
+  {
     "id": "lf6",
     "badge": "LF 6",
     "title": "Gerichte, Menüs und Produkte anbieten",

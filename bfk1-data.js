@@ -15,15 +15,16 @@
   }
 
   var lf2 = window.BFK1_LF2 || emptyGroup("lf2", "LF 2", "Beschaffung und Lagerung");
+  var lf3 = window.BFK1_LF3 || emptyGroup("lf3", "LF 3", "Küche und Ernährung");
   var lf6 = window.BFK1_LF6 || emptyGroup("lf6", "LF 6", "Gerichte, Menüs und Produkte anbieten");
   var lf9 = window.BFK1_LF9 || emptyGroup("lf9", "LF 9", "Zahlungen mit dem Gast abwickeln");
 
-  window.BFK1_THEMES = { lf2: lf2, lf6: lf6, lf9: lf9 };
-  // Khu học song song (Abschlussprüfung Gast+Produktion) – không nằm trong 3 LF của KA
+  window.BFK1_THEMES = { lf2: lf2, lf3: lf3, lf6: lf6, lf9: lf9 };
+  // Khu học song song (Abschlussprüfung Gast+Produktion) – không nằm trong các LF của KA
   window.BFK1_EXTRA = window.BFK1_EXTRA || emptyGroup("extra", "EXTRA", "Abschlussprüfung · Gast + Produktion");
 
   // Thứ tự nhóm để render hub + gom item
-  window.BFK1_GROUPS = [lf2, lf6, lf9, window.BFK1_EXTRA];
+  window.BFK1_GROUPS = [lf2, lf3, lf6, lf9, window.BFK1_EXTRA];
 
   // Alias content = theory cho mỗi item, để code cũ (flashcards, training,
   // search-vocab) đọc .content vẫn chạy mà không phải sửa nhiều chỗ.
