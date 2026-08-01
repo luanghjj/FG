@@ -2806,6 +2806,64 @@ function renderFachHub(fachId){
   }
   groups.innerHTML=html;
 }
+let _fachThemeTab = "theory";
+let _fachCurFachId = null;
+let _fachCurThemeId = null;
+
+function fachThemeSetTab(tabId){
+  _fachThemeTab = tabId;
+  const fach = window.FachForm.findFach(_fachCurFachId);
+  const theme = window.FachForm.findTheme(_fachCurFachId, _fachCurThemeId);
+  const panel = document.getElementById("fachTabPanel");
+  if(!fach || !theme || !panel) return;
+
+  document.querySelectorAll('.fach-theme-tabs .tab').forEach(t=>{
+    t.classList.toggle('active', t.getAttribute('data-ftab')===tabId);
+  });
+
+  let html = "";
+  if(tabId === "theory"){
+    html = theme.content || ('<p>'+(theme.desc||'')+'</p>');
+    try{ if(window.Access) html = Access.filterContent(html, {what:'theme:full'}); }catch(e){}
+    const canPages = !window.Access || Access.can('theme:pages');
+    const pages = canPages ? window.FachForm.pageList(theme.pages) : [];
+    if(!canPages && theme.pages){
+      html += '<div class="src-pages"><h3>Arbeitsblätter '+lockPill('Pro')+'</h3>'
+        + '<div class="hint">Die Original-Seiten sind in der Pro-Stufe. <i>Ảnh trang sách thuộc tầng Pro.</i></div>'
+        + '<button type="button" class="btn ghost" data-unlock="1" style="margin-top:8px">Freischalten</button></div>';
+    }
+    if(pages.length){
+      window._bfk1Pages = pages;
+      html += '<div class="src-pages"><h3>📄 Arbeitsblätter</h3>'
+        + '<div class="hint">Tippen zum Vergrößern · '+pages.length+' Seiten</div><div class="src-grid">';
+      pages.forEach((src,i)=>{
+        html += '<button type="button" class="src-thumb" onclick="openPageLightbox('+i+')">'
+          + '<img src="'+src+'" alt="Seite '+(i+1)+'" loading="lazy">'
+          + '<div class="cap">S. '+(i+1)+' / '+pages.length+'</div></button>';
+      });
+      html += '</div></div>';
+    }
+  } else if(tabId === "qa"){
+    html = bfk1QaHtml(theme);
+  } else if(tabId === "quiz"){
+    const themeQuiz = (theme.quiz && theme.quiz.length) ? theme.quiz : (fach.quiz||[]).filter(q=>q.theme===_fachCurThemeId);
+    html = bfk1ThemeQuizHtml({ quiz: themeQuiz });
+  } else if(tabId === "vokabeln"){
+    html = '<div class="flash-wrap" id="themeFlash"></div>';
+    setTimeout(()=>{
+      try{ renderThemeFlashcards(_fachCurThemeId, theme, fach); }catch(e){}
+    }, 0);
+  }
+
+  panel.innerHTML = html;
+  if(tabId === "theory"){
+    try{
+      if(window.enableVocabOn) enableVocabOn(panel);
+      else if(window.bindTerms) bindTerms(panel);
+    }catch(e){}
+  }
+}
+
 function renderFachTheme(fachId, themeId){
   ensureFachRegistry();
   const fach=window.FachForm.findFach(fachId);
@@ -2817,90 +2875,55 @@ function renderFachTheme(fachId, themeId){
   if(back){ back.onclick=()=>go(fachRoute(fach,'hub')); back.textContent='← '+(fach?fach.code:'Fach'); }
   if(!fach||!theme){ go(fach?fachRoute(fach,'hub'):'#/'); return; }
   if(title) title.innerHTML=(theme.icon||'')+' '+theme.name;
-  if(sub) sub.textContent=(fach.code||'')+' · '+(theme.groupBadge||'')+(fach.teacher?(' · '+fach.teacher):'');
+  if(sub) sub.textContent=(fach.code||'')+' · '+(theme.groupBadge||theme.badge||'')+(fach.teacher?(' · '+fach.teacher):'');
   if(!body) return;
-  let html = theme.content || ('<p>'+(theme.desc||'')+'</p>');
-  // Stufe 1 (Basic): nur Grundwissen – Detailteile werden ausgeblendet
-  try{ if(window.Access) html = Access.filterContent(html, {what:'theme:full'}); }catch(e){}
-  const canPages = !window.Access || Access.can('theme:pages');
-  const pages = canPages ? window.FachForm.pageList(theme.pages) : [];
-  if(!canPages && (theme.pages)){
-    html += '<div class="src-pages"><h3>Arbeitsblätter '+lockPill('Pro')+'</h3>'
-      + '<div class="hint">Die Original-Seiten sind in der Pro-Stufe. <i>Ảnh trang sách thuộc tầng Pro.</i></div>'
-      + '<button type="button" class="btn ghost" data-unlock="1" style="margin-top:8px">Freischalten</button></div>';
-  }
-  if(pages.length){
-    window._bfk1Pages = pages; // reuse lightbox
-    html += '<div class="src-pages"><h3>📄 Arbeitsblätter</h3>'
-      + '<div class="hint">Tippen zum Vergrößern · '+pages.length+' Seiten</div><div class="src-grid">';
-    pages.forEach((src,i)=>{
-      html += '<button type="button" class="src-thumb" onclick="openPageLightbox('+i+')">'
-        + '<img src="'+src+'" alt="Seite '+(i+1)+'" loading="lazy">'
-        + '<div class="cap">S. '+(i+1)+' / '+pages.length+'</div></button>';
-    });
-    html += '</div></div>';
-  }
-  // Vocab flashcards host (must exist before renderThemeFlashcards)
-  html += '<div class="flash-wrap" id="themeFlash"></div>';
-  // quiz CTA if questions exist for theme
-  const hasQ = (fach.quiz||[]).some(q=>q.theme===themeId) || (fach.id==='bfk1');
-  html += '<div class="theme-quiz-bar">'
-    + (hasQ
-      ? '<button type="button" class="btn" id="fachThemeDrill">📝 Dieses Thema üben</button>'
-        + '<button type="button" class="btn ghost" id="fachThemeQuiz">Themen-Quiz</button>'
-      : '')
-    + '<button type="button" class="btn ghost" id="fachThemeFlashFocus">🃏 Karteikarten</button>'
-    + '<button type="button" class="btn ghost" id="fachThemeDone" aria-pressed="false">✓ Als erledigt markieren</button>'
+
+  _fachCurFachId = fachId;
+  _fachCurThemeId = themeId;
+  _fachThemeTab = "theory";
+
+  // Status Check Tick button đầu trang
+  const st = BFK1_STATUS[fachStatus(fachId, themeId)] || BFK1_STATUS[0];
+  let head = '<div class="theme-status-bar">'
+    + '<button type="button" class="st-tick big '+st.cls+'" id="fachThemeStatusBtn" '
+      + 'onclick="fachTickTheme(\''+fachId+'\', \''+themeId+'\')">'+st.icon+' <span>'+st.label+'</span></button>'
+    + '<span class="theme-status-hint">Bấm để đổi: Chưa học → Đang ôn → Đã thuộc</span>'
     + '</div>';
-  body.innerHTML = html;
-  // Fortschritt: Öffnen = „gesehen", Button = „erledigt" (toggle). Für alle Fächer mit LS/Thema.
-  try{ if(window.LearnDB && LearnDB.markThemeProgress && LearnDB.getPlayer && LearnDB.getPlayer()){
-    LearnDB.markThemeProgress(LearnDB.getPlayer(), {fach:fach.id, theme:themeId, name:theme.name}).catch(function(){});
-  }}catch(e){}
-  try{
-    const view=document.getElementById('v-fach-theme');
-    if(window.enableVocabOn){ enableVocabOn(body); if(view) enableVocabOn(view); }
-    else if(window.bindTerms){ bindTerms(body); if(view) bindTerms(view); }
-  }catch(e){}
-  try{ renderThemeFlashcards(themeId, theme, fach); }catch(e){ console.warn('flash', e); }
-  const drill=document.getElementById('fachThemeDrill');
-  if(drill) drill.onclick=()=>{
-    if(fach.id==='bfk1') bfk1QuizStartThemes([themeId]);
-    else fachQuizStart(fach.id, [themeId], 'all');
-  };
-  const qbtn=document.getElementById('fachThemeQuiz');
-  if(qbtn) qbtn.onclick=()=>go(fach.id==='bfk1'?'#/bfk/1/quiz':fachRoute(fach,'quiz'));
-  const flashFocus=document.getElementById('fachThemeFlashFocus');
-  if(flashFocus) flashFocus.onclick=()=>{ const el=document.getElementById('themeFlash'); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); };
-  // „Als erledigt markieren" – Toggle. Startzustand aus dem Profil laden.
-  const doneBtn=document.getElementById('fachThemeDone');
-  if(doneBtn){
-    const setDoneUI=(isDone)=>{
-      doneBtn.setAttribute('aria-pressed', isDone?'true':'false');
-      doneBtn.classList.toggle('btn-done', !!isDone);
-      doneBtn.textContent = isDone ? '✓ Erledigt' : '✓ Als erledigt markieren';
-    };
-    let _done=false;
-    const tk=(String(fach.id||'').toLowerCase())+':'+(String(themeId||'').toLowerCase());
-    setDoneUI(false);
-    try{ if(window.LearnDB && LearnDB.getPlayerProfile && LearnDB.getPlayer && LearnDB.getPlayer()){
-      LearnDB.getPlayerProfile(LearnDB.getPlayer()).then(function(res){
-        const t=res && res.profile && res.profile.themes && res.profile.themes[tk];
-        _done = !!(t && t.status==='done');
-        setDoneUI(_done);
-      }).catch(function(){});
-    }}catch(e){}
-    doneBtn.onclick=()=>{
-      const player=window.LearnDB && LearnDB.getPlayer && LearnDB.getPlayer();
-      if(!player){ if(window.toast) toast('Bitte zuerst anmelden','info'); return; }
-      _done=!_done;
-      setDoneUI(_done);
-      try{ LearnDB.markThemeProgress(player, {fach:fach.id, theme:themeId, name:theme.name, done:_done})
-        .then(function(){ if(window.toast) toast(_done?'Als erledigt gespeichert':'Wieder als offen markiert','ok'); })
-        .catch(function(){ _done=!_done; setDoneUI(_done); if(window.toast) toast('Speichern fehlgeschlagen','bad'); });
-      }catch(e){}
-    };
-  }
+
+  // Thanh 4 tab giống BfK-1
+  const FACH_TABS = [
+    {id:"theory", label:"📖 Lý thuyết"},
+    {id:"qa",     label:"❓ Câu hỏi"},
+    {id:"quiz",   label:"📝 Quiz"},
+    {id:"vokabeln",label:"🔤 Từ vựng"},
+  ];
+  let tabs = '<div class="tabs fach-theme-tabs">';
+  FACH_TABS.forEach(t=>{
+    tabs += '<button type="button" class="tab'+(t.id==="theory"?" active":"")+'" data-ftab="'+t.id+'" '
+      + 'onclick="fachThemeSetTab(\''+t.id+'\')">'+t.label+'</button>';
+  });
+  tabs += '</div>';
+
+  body.innerHTML = head + tabs
+    + '<div class="b1tab-panel" id="fachTabPanel"></div>'
+    + '<div class="theme-quiz-bar" style="margin-top:18px">'
+      + '<button type="button" class="btn" id="fachThemeDrill">📝 Ôn tập chủ đề này</button>'
+      + '<button type="button" class="btn ghost" id="fachThemeQuiz">Tất cả Quiz '+(fach.code||'')+'</button>'
+    + '</div>';
+
+  const drill = document.getElementById('fachThemeDrill');
+  if(drill) drill.onclick = ()=>fachQuizStart(fachId, [themeId], 'all');
+  const qbtn = document.getElementById('fachThemeQuiz');
+  if(qbtn) qbtn.onclick = ()=>go(fachRoute(fach,'quiz'));
+
+  fachThemeSetTab("theory");
+}
+
+function fachTickTheme(fachId, themeId){
+  const v = fachCycleStatus(fachId, themeId);
+  const st = BFK1_STATUS[v] || BFK1_STATUS[0];
+  const btn = document.getElementById('fachThemeStatusBtn');
+  if(btn){ btn.className = "st-tick big "+st.cls; btn.innerHTML = st.icon+' <span>'+st.label+'</span>'; }
 }
 
 /* Generic quiz (same UX as BfK-1) */
