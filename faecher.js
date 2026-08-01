@@ -1612,19 +1612,19 @@
   "teacher": "Fr. Leyh & RM (Remsing) / WiKO-Leyh",
   "examDate": null,
   "ready": true,
-  "desc": "Năm 1: Duales System · BBiG · Arbeitsschutz · Bewerbung | Năm 2: Kündigung · Betriebsrat · Tarif · Lohn & Steuern · Kaufvertrag",
+  "desc": "Giáo trình Wiko-Leyh (Trang 01–48 / LF 1 Năm 1) & Modul Kaufvertrag (Năm 2)",
   "groups": [
     {
       "id": "lf1-duales-system",
       "badge": "LF 1 (Năm 1)",
-      "title": "Duales System & Luật đào tạo nghề BBiG",
+      "title": "LF 1 (Năm 1) · Duales System & Đào tạo nghề (LS01–LS05, LS11–LS12)",
       "items": [
         {
           "id": "wiko-duales-system",
           "icon": "🏢",
-          "name": "Das duale System der Berufsausbildung",
+          "name": "LS01 · Das duale System der Berufsausbildung",
           "desc": "Ausbildungsbetrieb (BBiG) vs. Berufsschule (Schulgesetz) · Ưu điểm 2 bên",
-          "content": "<h2>🏢 Das duale System der Berufsausbildung (Hệ thống đào tạo kép)</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 01) · Mô hình kết hợp Trường - Doanh nghiệp</div>\n            <h3>1. 2 Địa điểm đào tạo (Lernorte)</h3>\n            <ul>\n              <li><b>Der Ausbildungsbetrieb (Doanh nghiệp đào tạo):</b> Đào tạo kỹ năng thực hành nghề (<i>praktische Ausbildung</i>). Cơ sở pháp lý: Luật <span class=\"term\" data-de=\"Berufsbildungsgesetz (BBiG)\" data-vi=\"Luật đào tạo nghề\">BBiG</span> & Quy chế <span class=\"term\" data-de=\"Ausbildungsordnung\" data-vi=\"Quy chế đào tạo\">Ausbildungsordnung</span>. Doanh nghiệp chi trả <span class=\"term\" data-de=\"Ausbildungsvergütung\" data-vi=\"Lương trợ cấp học nghề\">Ausbildungsvergütung</span>.</li>\n              <li><b>Die Berufsschule (Trường nghề):</b> Giảng dạy lý thuyết chuyên môn (<i>fachtheoretische Ausbildung</i>) & Kiến thức chung (Wirtschaft, Deutsch, Englisch). Cơ sở pháp lý: Luật giáo dục của Bang (<i>Schulgesetz des Bundeslandes</i>).</li>\n            </ul>\n            <h3>2. Ưu điểm của Hệ thống kép (Vorteile)</h3>\n            <ul>\n              <li><b>Cho Azubi:</b> Nhận lương trợ cấp hàng tháng, va chạm thực tế ngay từ đầu, cơ hội được nhận làm chính thức (<i>Übernahme</i>) cao.</li>\n              <li><b>Cho Doanh nghiệp:</b> Đào tạo nhân sự theo đúng tiêu chuẩn và văn hóa công ty, chủ động nguồn lao động tay nghề cao.</li>\n            </ul>",
+          "content": "<h2>🏢 LS01 · Das duale System der Berufsausbildung (Hệ thống đào tạo kép)</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 01 / LF 01-LS01) · Mô hình kết hợp Trường - Doanh nghiệp</div>\n            <h3>1. 2 Địa điểm đào tạo (Lernorte)</h3>\n            <ul>\n              <li><b>Der Ausbildungsbetrieb (Doanh nghiệp đào tạo):</b> Đào tạo kỹ năng thực hành nghề (<i>praktische Ausbildung</i>). Cơ sở pháp lý: Luật <span class=\"term\" data-de=\"Berufsbildungsgesetz (BBiG)\" data-vi=\"Luật đào tạo nghề\">BBiG</span> & Quy chế <span class=\"term\" data-de=\"Ausbildungsordnung\" data-vi=\"Quy chế đào tạo\">Ausbildungsordnung</span>. Doanh nghiệp chi trả <span class=\"term\" data-de=\"Ausbildungsvergütung\" data-vi=\"Lương trợ cấp học nghề\">Ausbildungsvergütung</span>.</li>\n              <li><b>Die Berufsschule (Trường nghề):</b> Giảng dạy lý thuyết chuyên môn (<i>fachtheoretische Ausbildung</i>) & Kiến thức chung (Wirtschaft, Deutsch, Englisch). Cơ sở pháp lý: Luật giáo dục của Bang (<i>Schulgesetz des Bundeslandes</i>).</li>\n            </ul>\n            <h3>2. Ưu điểm của Hệ thống kép (Vorteile)</h3>\n            <ul>\n              <li><b>Cho Azubi:</b> Nhận lương trợ cấp hàng tháng, va chạm thực tế ngay từ đầu, cơ hội được nhận làm chính thức (<i>Übernahme</i>) cao.</li>\n              <li><b>Cho Doanh nghiệp:</b> Đào tạo nhân sự theo đúng tiêu chuẩn và văn hóa công ty, chủ động nguồn lao động tay nghề cao.</li>\n            </ul>",
           "qa": [
             {
               "q": "Mô hình đào tạo kép (Duales System) kết hợp 2 địa điểm nào?",
@@ -1653,9 +1653,9 @@
         {
           "id": "wiko-rechte-pflichten",
           "icon": "⚖️",
-          "name": "Rechte und Pflichten des Auszubildenden",
+          "name": "LS02 · Rechte und Pflichten des Auszubildenden",
           "desc": "Nghĩa vụ Azubi (Lernpflicht, Berichtsheft) vs. Quyền lợi (Freistellung, Fürsorge)",
-          "content": "<h2>⚖️ Rechte und Pflichten des Auszubildenden (Quyền & Nghĩa vụ)</h2>\n            <div class=\"hint\">BBiG § 13 & § 14 · Quan hệ pháp lý đối ứng giữa Azubi và Betrieb</div>\n            <h3>1. Nghĩa vụ của Học viên (Pflichten des Azubis)</h3>\n            <ul>\n              <li><span class=\"term\" data-de=\"Lernpflicht\" data-vi=\"Nghĩa vụ học tập\">Lernpflicht</span>: Nỗ lực học tập đạt mục tiêu khóa học.</li>\n              <li><span class=\"term\" data-de=\"Berufsschulbesuch\" data-vi=\"Đi học trường nghề\">Berufsschulbesuch</span>: Bắt buộc tham gia đầy đủ tiết học.</li>\n              <li><span class=\"term\" data-de=\"Berichtsheftführung\" data-vi=\"Ghi nhật ký học nghề\">Berichtsheftführung</span>: Viết báo cáo học nghề thường xuyên (điều kiện dự thi).</li>\n              <li><span class=\"term\" data-de=\"Schweigepflicht\" data-vi=\"Nghĩa vụ bảo mật\">Schweigepflicht</span> & <span class=\"term\" data-de=\"Sorgfaltspflicht\" data-vi=\"Nghĩa vụ cẩn trọng\">Sorgfaltspflicht</span>: Bảo mật thông tin kinh doanh & giữ gìn dụng cụ.</li>\n              <li><span class=\"term\" data-de=\"Benachrichtigungspflicht\" data-vi=\"Nghĩa vụ thông báo nghỉ\">Benachrichtigungspflicht</span>: Báo ngay cho công ty khi ốm và nộp giấy AU.</li>\n            </ul>\n            <h3>2. Quyền của Azubi / Nghĩa vụ Doanh nghiệp</h3>\n            <ul>\n              <li><span class=\"term\" data-de=\"Ausbildungspflicht\" data-vi=\"Nghĩa vụ đào tạo\">Ausbildungspflicht</span>: Phân công Ausbilder có bằng cấp đào tạo đúng chuyên môn.</li>\n              <li><span class=\"term\" data-de=\"Freistellung\" data-vi=\"Cho phép nghỉ đi học/thi\">Freistellung</span>: Cho phép nghỉ làm đến trường nghề/đi thi vẫn hưởng nguyên lương.</li>\n              <li><span class=\"term\" data-de=\"Ausbildungsmittel\" data-vi=\"Dụng cụ đào tạo miễn phí\">Ausbildungsmittel</span>: Cung cấp miễn phí dụng cụ, trang thiết bị bảo hộ.</li>\n              <li><span class=\"term\" data-de=\"Fürsorgepflicht\" data-vi=\"Nghĩa vụ chăm sóc an toàn\">Fürsorgepflicht</span>: Đảm bảo an toàn lao động và sức khỏe cho Azubi.</li>\n            </ul>",
+          "content": "<h2>⚖️ LS02 · Rechte und Pflichten des Auszubildenden (Quyền & Nghĩa vụ)</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 02 / LF 01-LS02) · BBiG § 13 & § 14</div>\n            <h3>1. Nghĩa vụ của Học viên (Pflichten des Azubis)</h3>\n            <ul>\n              <li><span class=\"term\" data-de=\"Lernpflicht\" data-vi=\"Nghĩa vụ học tập\">Lernpflicht</span>: Nỗ lực học tập đạt mục tiêu khóa học.</li>\n              <li><span class=\"term\" data-de=\"Berufsschulbesuch\" data-vi=\"Đi học trường nghề\">Berufsschulbesuch</span>: Bắt buộc tham gia đầy đủ tiết học.</li>\n              <li><span class=\"term\" data-de=\"Berichtsheftführung\" data-vi=\"Ghi nhật ký học nghề\">Berichtsheftführung</span>: Viết báo cáo học nghề thường xuyên (điều kiện dự thi).</li>\n              <li><span class=\"term\" data-de=\"Schweigepflicht\" data-vi=\"Nghĩa vụ bảo mật\">Schweigepflicht</span> & <span class=\"term\" data-de=\"Sorgfaltspflicht\" data-vi=\"Nghĩa vụ cẩn trọng\">Sorgfaltspflicht</span>: Bảo mật thông tin kinh doanh & giữ gìn dụng cụ.</li>\n              <li><span class=\"term\" data-de=\"Benachrichtigungspflicht\" data-vi=\"Nghĩa vụ thông báo nghỉ\">Benachrichtigungspflicht</span>: Báo ngay cho công ty khi ốm và nộp giấy AU.</li>\n            </ul>\n            <h3>2. Quyền của Azubi / Nghĩa vụ Doanh nghiệp</h3>\n            <ul>\n              <li><span class=\"term\" data-de=\"Ausbildungspflicht\" data-vi=\"Nghĩa vụ đào tạo\">Ausbildungspflicht</span>: Phân công Ausbilder có bằng cấp đào tạo đúng chuyên môn.</li>\n              <li><span class=\"term\" data-de=\"Freistellung\" data-vi=\"Cho phép nghỉ đi học/thi\">Freistellung</span>: Cho phép nghỉ làm đến trường nghề/đi thi vẫn hưởng nguyên lương.</li>\n              <li><span class=\"term\" data-de=\"Ausbildungsmittel\" data-vi=\"Dụng cụ đào tạo miễn phí\">Ausbildungsmittel</span>: Cung cấp miễn phí dụng cụ, trang thiết bị bảo hộ.</li>\n              <li><span class=\"term\" data-de=\"Fürsorgepflicht\" data-vi=\"Nghĩa vụ chăm sóc an toàn\">Fürsorgepflicht</span>: Đảm bảo an toàn lao động và sức khỏe cho Azubi.</li>\n            </ul>",
           "qa": [
             {
               "q": "Học viên học nghề có bắt buộc phải viết Berichtsheft (Sổ báo cáo) không?",
@@ -1684,9 +1684,9 @@
         {
           "id": "wiko-ausbildungsvertrag",
           "icon": "📜",
-          "name": "Der Berufsausbildungsvertrag (BAV)",
-          "desc": "Hình thức Schriftform · 10 nội dung bắt buộc BBiG § 11",
-          "content": "<h2>📜 Der Berufsausbildungsvertrag (Hợp đồng đào tạo nghề)</h2>\n            <div class=\"hint\">BBiG § 10 - § 12 · Văn bản pháp lý chính thức điều chỉnh học nghề</div>\n            <h3>1. Hình thức & Ký kết</h3>\n            <ul>\n              <li>Bắt buộc bằng <b>văn bản (Schriftform)</b> và phải ký <b>trước khi bắt đầu đào tạo</b>.</li>\n              <li>Nếu Azubi dưới 18 tuổi: Bắt buộc có chữ ký của <span class=\"term\" data-de=\"gesetzlicher Vertreter\" data-vi=\"người giám hộ hợp pháp\">gesetzlicher Vertreter</span> (cha/mẹ/người giám hộ).</li>\n            </ul>\n            <h3>2. 10 Nội dung tối thiểu bắt buộc (Mindestinhalte BBiG § 11)</h3>\n            <ol>\n              <li>Chuyên ngành & kế hoạch lộ trình đào tạo (Gliederung).</li>\n              <li>Ngày bắt đầu & thời gian khóa học (thường 3 - 3.5 năm).</li>\n              <li>Địa điểm & các đợt đào tạo ngoài doanh nghiệp.</li>\n              <li>Thời gian làm việc hàng ngày/tuần.</li>\n              <li>Thời gian thử việc (<b>Probezeit: tối thiểu 1 tháng, tối đa 4 tháng</b>).</li>\n              <li>Mức lương trợ cấp (Ausbildungsvergütung) & thời hạn trả.</li>\n              <li>Số ngày nghỉ phép năm (Urlaub).</li>\n              <li>Điều kiện hủy hợp đồng (Kündigung).</li>\n              <li>Quy chiếu thỏa ước tập thể (Tarifvertrag / Betriebsvereinbarung).</li>\n              <li>Hình thức ghi nhật ký học nghề (Berichtsheft).</li>\n            </ol>",
+          "name": "LS03 · Der Berufsausbildungsvertrag (BAV)",
+          "desc": "Hình thức Schriftform · 10 nội dung bắt buộc BBiG § 11 · Giám hộ (<18t)",
+          "content": "<h2>📜 LS03 · Der Berufsausbildungsvertrag (Hợp đồng đào tạo nghề)</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 03 / LF 01-LS03) · BBiG § 10 - § 12</div>\n            <h3>1. Hình thức & Ký kết</h3>\n            <ul>\n              <li>Bắt buộc bằng <b>văn bản (Schriftform)</b> và phải ký <b>trước khi bắt đầu đào tạo</b>.</li>\n              <li>Nếu Azubi dưới 18 tuổi: Bắt buộc có chữ ký của <span class=\"term\" data-de=\"gesetzlicher Vertreter\" data-vi=\"người giám hộ hợp pháp\">gesetzlicher Vertreter</span> (cha/mẹ/người giám hộ).</li>\n            </ul>\n            <h3>2. 10 Nội dung tối thiểu bắt buộc (Mindestinhalte BBiG § 11)</h3>\n            <ol>\n              <li>Chuyên ngành & kế hoạch lộ trình đào tạo (Gliederung).</li>\n              <li>Ngày bắt đầu & thời gian khóa học (thường 3 - 3.5 năm).</li>\n              <li>Địa điểm & các đợt đào tạo ngoài doanh nghiệp.</li>\n              <li>Thời gian làm việc hàng ngày/tuần.</li>\n              <li>Thời gian thử việc (<b>Probezeit: tối thiểu 1 tháng, tối đa 4 tháng</b>).</li>\n              <li>Mức lương trợ cấp (Ausbildungsvergütung) & thời hạn trả.</li>\n              <li>Số ngày nghỉ phép năm (Urlaub).</li>\n              <li>Điều kiện hủy hợp đồng (Kündigung).</li>\n              <li>Quy chiếu thỏa ước tập thể (Tarifvertrag / Betriebsvereinbarung).</li>\n              <li>Hình thức ghi nhật ký học nghề (Berichtsheft).</li>\n            </ol>",
           "qa": [
             {
               "q": "Thời gian thử việc (Probezeit) trong Hợp đồng đào tạo nghề là bao lâu?",
@@ -1711,9 +1711,9 @@
         {
           "id": "wiko-probezeit-ueberwachung",
           "icon": "🔍",
-          "name": "Probezeit & Überwachung durch IHK/HWK",
+          "name": "LS04 & LS12 · Probezeit & Giám sát IHK/HWK",
           "desc": "Thử việc (Kündigung ohne Frist) · 6 nhiệm vụ giám sát của IHK/HWK",
-          "content": "<h2>🔍 Probezeit & Überwachung durch die zuständige Stelle</h2>\n            <div class=\"hint\">Quy định Kündigung trong thử việc & Vai trò giám sát của IHK / HWK</div>\n            <h3>1. Kündigung in der Probezeit (Trong thử việc)</h3>\n            <ul>\n              <li>Có thể hủy hợp đồng bất kỳ lúc nào.</li>\n              <li><b>Không cần thời hạn báo trước (ohne Frist)</b> và <b>không cần nêu lý do (ohne Angabe von Gründen)</b>.</li>\n              <li>Bắt buộc phải lập bằng <b>văn bản (schriftlich)</b>.</li>\n            </ul>\n            <h3>2. Kündigung nach der Probezeit (Sau thử việc)</h3>\n            <ul>\n              <li><b>Fristlose Kündigung aus wichtigem Grund:</b> Sa thải ngay lập tức vì lý do đặc biệt nghiêm trọng (trộm cắp, bạo lực, cố ý phá hoại). Phải thông báo bằng văn bản trong 2 tuần từ khi phát hiện.</li>\n              <li><b>Ordentliche Kündigung durch Azubi:</b> Azubi muốn bỏ hẳn nghề báo trước <b>4 tuần (Frist von 4 Wochen)</b>.</li>\n            </ul>\n            <h3>3. 6 Nhiệm vụ giám sát của IHK / HWK (Zuständige Stelle)</h3>\n            <ol>\n              <li>Quản lý danh sách & lưu trữ hợp đồng nghề (Führung des Verzeichnisses).</li>\n              <li>Duyệt đơn rút ngắn / kéo dài thời gian học (Kürzung / Verlängerung).</li>\n              <li>Kiểm tra cơ sở vật chất & bằng cấp của Ausbilder.</li>\n              <li>Giám sát doanh nghiệp đào tạo đúng khung Ausbildungsordnung.</li>\n              <li>Thành lập hội đồng thi & tổ chức kỳ thi (Zwischen- & Abschlussprüfung).</li>\n              <li>Tổ chức các khóa đào tạo nâng cao chuyên môn (Fortbildung).</li>\n            </ol>",
+          "content": "<h2>🔍 LS04 & LS12 · Probezeit & Überwachung durch die zuständige Stelle</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 04 & 12 / LF 01-LS04, LS12) · Vai trò IHK/HWK</div>\n            <h3>1. Kündigung in der Probezeit (Trong thử việc)</h3>\n            <ul>\n              <li>Có thể hủy hợp đồng bất kỳ lúc nào.</li>\n              <li><b>Không cần thời hạn báo trước (ohne Frist)</b> và <b>không cần nêu lý do (ohne Angabe von Gründen)</b>.</li>\n              <li>Bắt buộc phải lập bằng <b>văn bản (schriftlich)</b>.</li>\n            </ul>\n            <h3>2. Kündigung nach der Probezeit (Sau thử việc)</h3>\n            <ul>\n              <li><b>Fristlose Kündigung aus wichtigem Grund:</b> Sa thải ngay lập tức vì lý do đặc biệt nghiêm trọng (trộm cắp, bạo lực, cố ý phá hoại). Phải thông báo bằng văn bản trong 2 tuần từ khi phát hiện.</li>\n              <li><b>Ordentliche Kündigung durch Azubi:</b> Azubi muốn bỏ hẳn nghề báo trước <b>4 tuần (Frist von 4 Wochen)</b>.</li>\n            </ul>\n            <h3>3. 6 Nhiệm vụ giám sát của IHK / HWK (Zuständige Stelle - LS12)</h3>\n            <ol>\n              <li>Quản lý danh sách & lưu trữ hợp đồng nghề (Führung des Verzeichnisses).</li>\n              <li>Duyệt đơn rút ngắn / kéo dài thời gian học (Kürzung / Verlängerung).</li>\n              <li>Kiểm tra cơ sở vật chất & bằng cấp của Ausbilder.</li>\n              <li>Giám sát doanh nghiệp đào tạo đúng khung Ausbildungsordnung.</li>\n              <li>Thành lập hội đồng thi & tổ chức kỳ thi (Zwischen- & Abschlussprüfung).</li>\n              <li>Tổ chức các khóa đào tạo nâng cao chuyên môn (Fortbildung).</li>\n            </ol>",
           "qa": [
             {
               "q": "Trong thời gian thử việc, việc sa thải/thôi học diễn ra như thế nào?",
@@ -1734,20 +1734,38 @@
               "src": "fk_exel"
             }
           ]
+        },
+        {
+          "id": "wiko-fall-klara",
+          "icon": "📑",
+          "name": "LS05 & LS11 · Tình huống vi phạm & Lịch sử BBiG",
+          "desc": "Fallbeispiel Klara Korte (Metzgerei Wolf) · So sánh HĐLĐ 1864 vs. BBiG hiện đại",
+          "content": "<h2>📑 LS05 & LS11 · Tình huống Klara Korte & Sự tiến hóa của BBiG</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 05 & 11 / LF 01-LS05, LS11)</div>\n            <h3>1. Tình huống Klara Korte (Metzgerei Wolf)</h3>\n            <p>Học viên Klara Korte bị chủ tiệm thịt giao làm việc dọn dẹp nhà riêng và không cho nghỉ đi học trường nghề ➔ Vi phạm BBiG § 14 (Ausbildungsfremde Tätigkeiten) và nghĩa vụ Freistellung.</p>\n            <h3>2. So sánh Hợp đồng học nghề năm 1864 vs. Luật BBiG hiện đại (LS11)</h3>\n            <ul>\n              <li><b>Năm 1864 (Lịch sử):</b> Học viên phải nộp tiền học cho chủ (Lehrgeld), bị đánh đập, không có ngày nghỉ phép, làm việc không giới hạn giờ.</li>\n              <li><b>Hiện đại (BBiG):</b> Được nhận lương (Ausbildungsvergütung), cấm trừng phạt thể xác, có ngày nghỉ phép (Urlaub), được bảo hộ giờ làm việc (Arbeitszeitgesetz / JArbSchG).</li>\n            </ul>",
+          "qa": [
+            {
+              "q": "Điểm khác biệt căn bản giữa Hợp đồng học nghề năm 1864 và Luật BBiG hiện đại là gì?",
+              "a": "Học nghề năm 1864 học viên phải trả tiền Lehrgeld và không được bảo vệ; BBiG hiện đại Azubi được nhận lương và được bảo vệ toàn diện."
+            },
+            {
+              "q": "[IHK Exam] Việc chủ doanh nghiệp ép Azubi làm việc nhà riêng bị cấm theo điều khoản nào của BBiG?",
+              "a": "BBiG § 14 (Cấm giao việc không phục vụ mục tiêu đào tạo nghề - Ausbildungsfremde Tätigkeiten).",
+              "src": "fk_exel"
+            }
+          ]
         }
       ]
     },
     {
       "id": "lf1-arbeitsschutz",
       "badge": "LF 1 (Năm 1)",
-      "title": "Luật Bảo hộ Lao động (Arbeitsschutzgesetze)",
+      "title": "LF 1 (Năm 1) · Bảo hộ Lao động & Luật Lao động (LS06–LS10, LS13–LS16)",
       "items": [
         {
           "id": "wiko-arbeitsschutz",
           "icon": "🛡️",
-          "name": "Arbeitsschutzgesetz & Sozialer Arbeitsschutz",
-          "desc": "Technischer vs. Sozialer Arbeitsschutz · Arbeitszeit, BUrlG, JArbSchG, Mutterschutz",
-          "content": "<h2>🛡️ Arbeitsschutzgesetz & Sozialer Arbeitsschutz</h2>\n            <div class=\"hint\">Bảo hộ kỹ thuật (Technisch) vs. Bảo hộ xã hội (Sozial)</div>\n            <h3>1. Phân loại Luật Bảo hộ Lao động</h3>\n            <ul>\n              <li><b>Technischer Arbeitsschutz (Kỹ thuật):</b> Ngăn ngừa tai nạn máy móc, an toàn vệ sinh (UVV, Arbeitssicherheitsgesetz, Arbeitsstättenverordnung).</li>\n              <li><b>Sozialer Arbeitsschutz (Xã hội):</b> Bảo vệ con người về giờ làm, nghỉ phép, thai sản, vị thành niên.</li>\n            </ul>\n            <h3>2. Các đạo luật bảo hộ xã hội cốt lõi</h3>\n            <ul>\n              <li><b>Arbeitszeitgesetz (Giờ làm việc):</b> Tối đa <b>8h/ngày</b> (tối đa 10h nếu trung bình 6 tháng vẫn đạt 8h). Thời gian nghỉ giữa 2 ca (<span class=\"term\" data-de=\"Ruhezeit\" data-vi=\"Nghỉ giữa 2 ca\">Ruhezeit</span>) tối thiểu <b>11 giờ</b>. Nghỉ giải lao (<span class=\"term\" data-de=\"Ruhepause\" data-vi=\"Nghỉ giải lao\">Ruhepause</span>): 30 phút (ca 6-9h), 45 phút (ca > 9h).</li>\n              <li><b>Bundesurlaubsgesetz (Nghỉ phép):</b> Tối thiểu <b>24 ngày làm việc (Werktage)</b>/năm (tính tuần 6 ngày) = 20 ngày (tính tuần 5 ngày).</li>\n              <li><b>Mutterschutzgesetz (Thai sản):</b> Cấm làm việc (<span class=\"term\" data-de=\"Beschäftigungsverbot\" data-vi=\"Cấm lao động\">Beschäftigungsverbot</span>) <b>6 tuần trước sinh</b> và <b>8 tuần sau sinh</b>.</li>\n              <li><b>Jugendarbeitsschutzgesetz (JArbSchG - Dưới 18 tuổi):</b> Tối đa <b>8h/ngày, 40h/tuần, 5 ngày/tuần</b>. Ruhezeit tối thiểu <b>12 giờ</b>. Cấm làm ca đêm sau 20:00 (Gastronomie trên 16t được làm đến 22:00). Nộp giấy khám sức khỏe định kỳ (Erstuntersuchung).</li>\n            </ul>",
+          "name": "LS06 · Arbeitsschutzgesetz & Sozialer Arbeitsschutz",
+          "desc": "Technischer vs. Sozialer Arbeitsschutz · Arbeitszeit, BUrlG, JArbSchG (<18t), Mutterschutz",
+          "content": "<h2>🛡️ LS06 · Arbeitsschutzgesetz & Sozialer Arbeitsschutz</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 06 / LF 01-LS06) · Bảo hộ kỹ thuật vs. Bảo hộ xã hội</div>\n            <h3>1. Phân loại Luật Bảo hộ Lao động</h3>\n            <ul>\n              <li><b>Technischer Arbeitsschutz (Kỹ thuật):</b> Ngăn ngừa tai nạn máy móc, an toàn vệ sinh (UVV, Arbeitssicherheitsgesetz, Arbeitsstättenverordnung).</li>\n              <li><b>Sozialer Arbeitsschutz (Xã hội):</b> Bảo vệ con người về giờ làm, nghỉ phép, thai sản, vị thành niên.</li>\n            </ul>\n            <h3>2. Các đạo luật bảo hộ xã hội cốt lõi</h3>\n            <ul>\n              <li><b>Arbeitszeitgesetz (Giờ làm việc):</b> Tối đa <b>8h/ngày</b> (tối đa 10h nếu trung bình 6 tháng vẫn đạt 8h). Thời gian nghỉ giữa 2 ca (<span class=\"term\" data-de=\"Ruhezeit\" data-vi=\"Nghỉ giữa 2 ca\">Ruhezeit</span>) tối thiểu <b>11 giờ</b>. Nghỉ giải lao (<span class=\"term\" data-de=\"Ruhepause\" data-vi=\"Nghỉ giải lao\">Ruhepause</span>): 30 phút (ca 6-9h), 45 phút (ca > 9h).</li>\n              <li><b>Bundesurlaubsgesetz (Nghỉ phép):</b> Tối thiểu <b>24 ngày làm việc (Werktage)</b>/năm (tính tuần 6 ngày) = 20 ngày (tính tuần 5 ngày).</li>\n              <li><b>Mutterschutzgesetz (Thai sản):</b> Cấm làm việc (<span class=\"term\" data-de=\"Beschäftigungsverbot\" data-vi=\"Cấm lao động\">Beschäftigungsverbot</span>) <b>6 tuần trước sinh</b> và <b>8 tuần sau sinh</b>.</li>\n              <li><b>Jugendarbeitsschutzgesetz (JArbSchG - Dưới 18 tuổi):</b> Tối đa <b>8h/ngày, 40h/tuần, 5 ngày/tuần</b>. Ruhezeit tối thiểu <b>12 giờ</b>. Cấm làm ca đêm sau 20:00 (Gastronomie trên 16t được làm đến 22:00). Nộp giấy khám sức khỏe định kỳ (Erstuntersuchung).</li>\n            </ul>",
           "qa": [
             {
               "q": "Thời gian nghỉ giữa 2 ca làm việc (Ruhezeit) theo Luật Arbeitszeitgesetz tối thiểu là bao nhiêu?",
@@ -1772,20 +1790,13 @@
               "src": "fk_exel"
             }
           ]
-        }
-      ]
-    },
-    {
-      "id": "lf1-bewerbung-vertrag",
-      "badge": "LF 1 (Năm 1/2)",
-      "title": "Hồ sơ Xin việc, Phỏng vấn & Hợp đồng Lao động",
-      "items": [
+        },
         {
           "id": "wiko-bewerbung-vorstellung",
           "icon": "👔",
-          "name": "Bewerbungsunterlagen & Vorstellungsgespräch",
-          "desc": "Bộ hồ sơ chuẩn (Anschreiben, CV, Zeugnisse) · 6 Phasen của buổi phỏng vấn",
-          "content": "<h2>👔 Bewerbungsunterlagen & Vorstellungsgespräch</h2>\n            <div class=\"hint\">Chuẩn bị hồ sơ & Tiêu chí đánh giá trong phỏng vấn tuyển dụng</div>\n            <h3>1. Bộ hồ sơ xin việc tiêu chuẩn (Bewerbungsunterlagen)</h3>\n            <ol>\n              <li><b>Das Anschreiben:</b> Thư xin việc (1 trang A4 thể hiện động lực & sự phù hợp).</li>\n              <li><b>Der Lebenslauf:</b> Sơ yếu lý lịch trình bày dạng bảng (CV).</li>\n              <li><b>Die Zeugnisse:</b> Bằng tốt nghiệp phổ thông/nghề, chứng nhận làm việc cũ (Arbeitszeugnis).</li>\n              <li><b>Nachweise & Zertifikate:</b> Chứng nhận thực tập, kỹ năng.</li>\n              <li><b>Gesundheitszeugnis (§ 43 IfSG):</b> Giấy khám sức khỏe / Vệ sinh an toàn thực phẩm ( Gastronomie).</li>\n            </ol>\n            <h3>2. 6 Giai đoạn của Buổi phỏng vấn (Die 6 Phasen)</h3>\n            <ul>\n              <li><b>1. Einstieg:</b> Smalltalk, chào hỏi, tư thế, ngôn ngữ cơ thể.</li>\n              <li><b>2. Fachliche Kompetenz:</b> Trình bày CV, kinh nghiệm, năng lực thực tế.</li>\n              <li><b>3. Unternehmensdarstellung:</b> Nhà tuyển dụng giới thiệu vị trí công việc.</li>\n              <li><b>4. Fragen des Bewerbers:</b> Ứng viên đặt câu hỏi thể hiện sự chủ động.</li>\n              <li><b>5. Konditionen:</b> Trao đổi mức lương, ngày bắt đầu, ca làm việc.</li>\n              <li><b>6. Abschluss:</b> Thống nhất bước tiếp theo, chào tạm biệt lịch sự.</li>\n            </ul>",
+          "name": "LS07, LS08 & LS10 · Hồ sơ Xin việc & Phỏng vấn",
+          "desc": "Anschreiben, CV, Zeugnisse, IfSG § 43 · 6 Phasen des Vorstellungsgesprächs",
+          "content": "<h2>👔 LS07, LS08 & LS10 · Hồ sơ Xin việc & Phỏng vấn tuyển dụng</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 07, 08, 10 / LF 01-LS07, LS08, LS10)</div>\n            <h3>1. Bộ hồ sơ xin việc tiêu chuẩn (Bewerbungsunterlagen)</h3>\n            <ol>\n              <li><b>Das Anschreiben:</b> Thư xin việc (1 trang A4 thể hiện động lực & sự phù hợp).</li>\n              <li><b>Der Lebenslauf:</b> Sơ yếu lý lịch trình bày dạng bảng (CV).</li>\n              <li><b>Die Zeugnisse:</b> Bằng tốt nghiệp phổ thông/nghề, chứng nhận làm việc cũ (Arbeitszeugnis).</li>\n              <li><b>Nachweise & Zertifikate:</b> Chứng nhận thực tập, kỹ năng.</li>\n              <li><b>Gesundheitszeugnis (§ 43 IfSG):</b> Giấy khám sức khỏe / Vệ sinh an toàn thực phẩm (Gastronomie).</li>\n            </ol>\n            <h3>2. 6 Giai đoạn của Buổi phỏng vấn (Die 6 Phasen - LS08)</h3>\n            <ul>\n              <li><b>1. Einstieg:</b> Smalltalk, chào hỏi, tư thế, ngôn ngữ cơ thể.</li>\n              <li><b>2. Fachliche Kompetenz:</b> Trình bày CV, kinh nghiệm, năng lực thực tế.</li>\n              <li><b>3. Unternehmensdarstellung:</b> Nhà tuyển dụng giới thiệu vị trí công việc.</li>\n              <li><b>4. Fragen des Bewerbers:</b> Ứng viên đặt câu hỏi thể hiện sự chủ động.</li>\n              <li><b>5. Konditionen:</b> Trao đổi mức lương, ngày bắt đầu, ca làm việc.</li>\n              <li><b>6. Abschluss:</b> Thống nhất bước tiếp theo, chào tạm biệt lịch sự.</li>\n            </ul>",
           "qa": [
             {
               "q": "Bộ hồ sơ xin việc tiêu chuẩn tại Đức bao gồm những thành phần chính nào?",
@@ -1805,9 +1816,9 @@
         {
           "id": "wiko-fragen-agg",
           "icon": "🛑",
-          "name": "Zulässige & Unzulässige Fragen (AGG)",
+          "name": "LS09 · Zulässige & Unzulässige Fragen (AGG)",
           "desc": "Luật bình đẳng AGG · Quyền được nói dối (Recht zur Lüge) · Stellenrelevanz",
-          "content": "<h2>🛑 Zulässige & Unzulässige Fragen im Vorstellungsgespräch</h2>\n            <div class=\"hint\">Luật AGG (Allgemeines Gleichbehandlungsgesetz) & Quyền bảo vệ ứng viên</div>\n            <h3>1. Nguyên tắc vàng về Câu hỏi phỏng vấn</h3>\n            <ul>\n              <li><span class=\"term\" data-de=\"Recht zur Lüge\" data-vi=\"Quyền được nói dối\">Recht zur Lüge</span>: Nếu nhà tuyển dụng đặt câu hỏi bị cấm (<i>nicht zulässige Frage</i>), ứng viên <b>được quyền nói dối mà không chịu bất kỳ hậu quả pháp lý nào</b>.</li>\n              <li>Nếu nhà tuyển dụng đặt câu hỏi hợp pháp mà ứng viên khai gian dối: Nhà tuyển dụng có quyền hủy HĐLĐ do lừa dối cố ý (<i>Anfechtung wegen arglistiger Täuschung</i>).</li>\n            </ul>\n            <h3>2. Danh mục câu hỏi BỊ CẤM vs. HỢP PHÁP</h3>\n            <ul>\n              <li><b>CÂU HỎI BỊ CẤM (Được nói dối):</b> Mang thai/kế hoạch sinh con (Schwangerschaft), Tôn giáo (Religion), Xu hướng giới tính, Tình trạng hôn nhân, Quan điểm chính trị, Tài chính nợ nần cá nhân, Nguồn gốc chủng tộc.</li>\n              <li><b>CÂU HỎI HỢP PHÁP (Phải trả lời thật):</b> Chỉ hợp pháp khi liên quan trực tiếp đến vị trí công việc (<i>Stellenrelevanz</i>) — ví dụ: Tiền án tiền sự (Vorstrafen) đối với vị trí Thu ngân/Thủ quỹ; Bệnh truyền nhiễm đối với Đầu bếp/Nhân viên nhà hàng.</li>\n            </ul>",
+          "content": "<h2>🛑 LS09 · Zulässige & Unzulässige Fragen im Vorstellungsgespräch</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 09 / LF 01-LS09) · Luật AGG & Quyền bảo vệ ứng viên</div>\n            <h3>1. Nguyên tắc vàng về Câu hỏi phỏng vấn</h3>\n            <ul>\n              <li><span class=\"term\" data-de=\"Recht zur Lüge\" data-vi=\"Quyền được nói dối\">Recht zur Lüge</span>: Nếu nhà tuyển dụng đặt câu hỏi bị cấm (<i>nicht zulässige Frage</i>), ứng viên <b>được quyền nói dối mà không chịu bất kỳ hậu quả pháp lý nào</b>.</li>\n              <li>Nếu nhà tuyển dụng đặt câu hỏi hợp pháp mà ứng viên khai gian dối: Nhà tuyển dụng có quyền hủy HĐLĐ do lừa dối cố ý (<i>Anfechtung wegen arglistiger Täuschung</i>).</li>\n            </ul>\n            <h3>2. Danh mục câu hỏi BỊ CẤM vs. HỢP PHÁP</h3>\n            <ul>\n              <li><b>CÂU HỎI BỊ CẤM (Được nói dối):</b> Mang thai/kế hoạch sinh con (Schwangerschaft), Tôn giáo (Religion), Xu hướng giới tính, Tình trạng hôn nhân, Quan điểm chính trị, Tài chính nợ nần cá nhân, Nguồn gốc chủng tộc.</li>\n              <li><b>CÂU HỎI HỢP PHÁP (Phải trả lời thật):</b> Chỉ hợp pháp khi liên quan trực tiếp đến vị trí công việc (<i>Stellenrelevanz</i>) — ví dụ: Tiền án tiền sự (Vorstrafen) đối với vị trí Thu ngân/Thủ quỹ; Bệnh truyền nhiễm đối với Đầu bếp/Nhân viên nhà hàng.</li>\n            </ul>",
           "qa": [
             {
               "q": "Nếu nhà tuyển dụng hỏi ứng viên nữ: 'Bạn có kế hoạch sinh con trong 2 năm tới không?', ứng viên có quyền gì?",
@@ -1827,17 +1838,17 @@
         {
           "id": "wiko-arbeitsvertrag",
           "icon": "📝",
-          "name": "Der Arbeitsvertrag & Nachweisgesetz",
-          "desc": "Hợp đồng cá nhân (Einzelarbeitsvertrag) · Luật Nachweisgesetz (4 tuần) · Pflichten",
-          "content": "<h2>📝 Der Arbeitsvertrag & Nachweisgesetz</h2>\n            <div class=\"hint\">Giao kết HĐLĐ cá nhân & Nghĩa vụ văn bản theo Nachweisgesetz</div>\n            <h3>1. Hình thức của Hợp đồng Lao động</h3>\n            <ul>\n              <li>Hợp đồng lao động cá nhân (Einzelarbeitsvertrag) có thể được giao kết bằng lời nói (<i>mündlich</i>) hoặc văn bản.</li>\n              <li><b>Luật Nachweisgesetz (1995):</b> Chủ lao động bắt buộc phải lập văn bản tóm tắt các điều khoản chính và trao cho NLĐ chậm nhất <b>4 tuần (1 tháng)</b> kể từ ngày bắt đầu làm việc.</li>\n            </ul>\n            <h3>2. Nghĩa vụ đối ứng giữa 2 bên</h3>\n            <ul>\n              <li><b>Arbeitnehmer (Người lao động):</b> <span class=\"term\" data-de=\"Arbeitspflicht\" data-vi=\"Nghĩa vụ làm việc\">Arbeitspflicht</span> (trực tiếp thực hiện công việc), <span class=\"term\" data-de=\"Gehorsamspflicht\" data-vi=\"Tuân thủ chỉ đạo\">Gehorsamspflicht</span>, Sorgfaltspflicht, Schweigepflicht, <span class=\"term\" data-de=\"Wettbewerbsverbot\" data-vi=\"Cấm làm cho đối thủ\">Wettbewerbsverbot</span>.</li>\n              <li><b>Arbeitgeber (Chủ lao động):</b> <span class=\"term\" data-de=\"Entlohnung\" data-vi=\"Trả thù lao/lương\">Entlohnung</span> (đầy đủ đúng hạn), Beschäftigungspflicht (giao việc), Fürsorgepflicht (an toàn sức khỏe), Cấp Arbeitszeugnis.</li>\n            </ul>",
+          "name": "LS13 & LS16 · Der Arbeitsvertrag & Loại hình HĐLĐ",
+          "desc": "Hợp đồng cá nhân · Nachweisgesetz (4 tuần) · Befristet (Thời hạn) & Teilzeit (Bán thời gian)",
+          "content": "<h2>📝 LS13 & LS16 · Der Arbeitsvertrag & Loại hình HĐLĐ</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 13 & 16 / LF 01-LS13, LS16)</div>\n            <h3>1. Hình thức của Hợp đồng Lao động</h3>\n            <ul>\n              <li>Hợp đồng lao động cá nhân (Einzelarbeitsvertrag) có thể được giao kết bằng lời nói (<i>mündlich</i>) hoặc văn bản.</li>\n              <li><b>Luật Nachweisgesetz (1995):</b> Chủ lao động bắt buộc phải lập văn bản tóm tắt các điều khoản chính và trao cho NLĐ chậm nhất <b>4 tuần (1 tháng)</b> kể từ ngày bắt đầu làm việc.</li>\n            </ul>\n            <h3>2. Các loại hình Hợp đồng đặc thù (LS16)</h3>\n            <ul>\n              <li><b>Befristeter Arbeitsvertrag (HĐ xác định thời hạn):</b> Tự động kết thúc khi hết hạn mà không cần sa thải (Kündigung). Tối đa 2 năm không cần lý do (mit/ohne Sachgrund).</li>\n              <li><b>Teilzeitarbeitsvertrag (HĐ bán thời gian):</b> Làm việc ít giờ hơn ca chuẩn fulltime. Bình đẳng quyền lợi theo Teilzeit- und Befristungsgesetz (TzBfG).</li>\n            </ul>",
           "qa": [
             {
               "q": "Hợp đồng lao động cá nhân giao kết bằng lời nói (mündlich) có hiệu lực không?",
               "a": "Có hiệu lực, nhưng theo Luật Nachweisgesetz chủ lao động phải trao văn bản tóm tắt điều khoản trong vòng 4 tuần."
             },
             {
-              "q": "Nghĩa vụ cấm làm thêm cho đối thủ cạnh tranh của NLĐ gọi là gì?",
-              "a": "Wettbewerbsverbot."
+              "q": "Hợp đồng xác định thời hạn (Befristeter Arbeitsvertrag) kết thúc như thế nào?",
+              "a": "Tự động chấm dứt khi hết thời hạn ghi trong hợp đồng mà không cần ra quyết định sa thải (Kündigung)."
             },
             {
               "q": "[IHK Exam] Thời gian thử việc tối đa đối với Hợp đồng lao động thông thường theo § 622 BGB là bao lâu?",
@@ -1849,9 +1860,9 @@
         {
           "id": "wiko-arbeitszeugnis",
           "icon": "📄",
-          "name": "Das Arbeitszeugnis & Zeugnissprache",
+          "name": "LS14 & LS15 · Das Arbeitszeugnis & Zeugnissprache",
           "desc": "Einfaches vs. Qualifiziertes Zeugnis · Wohlwollensgebot · Thang điểm mã hóa 1–6",
-          "content": "<h2>📄 Das Arbeitszeugnis: Einfaches vs. Qualifiziertes</h2>\n            <div class=\"hint\">Nguyên tắc thiện chí (Wohlwollensgebot) & Mã hóa ngôn ngữ nhận xét</div>\n            <h3>1. Phân loại Chứng nhận làm việc</h3>\n            <ul>\n              <li><b>Einfaches Arbeitszeugnis:</b> Chỉ xác nhận Loại công việc (Art) và Thời gian làm việc (Dauer). Không chứa lời nhận xét.</li>\n              <li><b>Qualifiziertes Arbeitszeugnis:</b> Bao gồm Art + Dauer + Nhận xét Thái độ/Ứng xử (Führung/Verhalten) + Nhận xét Hiệu suất công việc (Leistung).</li>\n            </ul>\n            <h3>2. Thang điểm mã hóa (Zeugnissprache)</h3>\n            <ul>\n              <li><b>Note 1 (Sehr gut):</b> <i>\"...stets zur vollsten Zufriedenheit erledigt.\"</i></li>\n              <li><b>Note 2 (Gut):</b> <i>\"...stets zur vollen Zufriedenheit erledigt.\"</i></li>\n              <li><b>Note 3 (Befriedigend):</b> <i>\"...zur vollen Zufriedenheit erledigt.\"</i></li>\n              <li><b>Note 4 (Ausreichend):</b> <i>\"...zur Zufriedenheit erledigt.\"</i></li>\n              <li><b>Note 5 (Mangelhaft):</b> <i>\"...im Großen und Ganzen zur Zufriedenheit erledigt.\"</i></li>\n              <li><b>Note 6 (Ungenügend):</b> <i>\"...hat sich bemüht, die Aufgaben zu unserer Zufriedenheit zu erledigen.\"</i> (Có cố gắng nhưng thất bại).</li>\n            </ul>",
+          "content": "<h2>📄 LS14 & LS15 · Das Arbeitszeugnis: Einfaches vs. Qualifiziertes</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 14 & 15 / LF 01-LS14, LS15) · Mã hóa nhận xét</div>\n            <h3>1. Phân loại Chứng nhận làm việc (LS14)</h3>\n            <ul>\n              <li><b>Einfaches Arbeitszeugnis:</b> Chỉ xác nhận Loại công việc (Art) và Thời gian làm việc (Dauer). Không chứa lời nhận xét.</li>\n              <li><b>Qualifiziertes Arbeitszeugnis:</b> Bao gồm Art + Dauer + Nhận xét Thái độ/Ứng xử (Führung/Verhalten) + Nhận xét Hiệu suất công việc (Leistung).</li>\n            </ul>\n            <h3>2. Thang điểm mã hóa (Zeugnissprache - LS15)</h3>\n            <ul>\n              <li><b>Note 1 (Sehr gut):</b> <i>\"...stets zur vollsten Zufriedenheit erledigt.\"</i></li>\n              <li><b>Note 2 (Gut):</b> <i>\"...stets zur vollen Zufriedenheit erledigt.\"</i></li>\n              <li><b>Note 3 (Befriedigend):</b> <i>\"...zur vollen Zufriedenheit erledigt.\"</i></li>\n              <li><b>Note 4 (Ausreichend):</b> <i>\"...zur Zufriedenheit erledigt.\"</i></li>\n              <li><b>Note 5 (Mangelhaft):</b> <i>\"...im Großen und Ganzen zur Zufriedenheit erledigt.\"</i></li>\n              <li><b>Note 6 (Ungenügend):</b> <i>\"...hat sich bemüht, die Aufgaben zu unserer Zufriedenheit zu erledigen.\"</i> (Có cố gắng nhưng thất bại).</li>\n            </ul>",
           "qa": [
             {
               "q": "Sự khác biệt giữa Einfaches Arbeitszeugnis và Qualifiziertes Arbeitszeugnis là gì?",
@@ -1871,16 +1882,16 @@
       ]
     },
     {
-      "id": "lf2-kuendigung",
-      "badge": "Modul Năm 2",
-      "title": "Sa thải & Bảo vệ Chống Sa thải (Kündigungsschutz)",
+      "id": "lf1-kuendigung",
+      "badge": "LF 1 (Năm 1)",
+      "title": "LF 1 (Năm 1) · Sa thải & Bảo vệ Chống Sa thải (LS17–LS20)",
       "items": [
         {
           "id": "wiko-kuendigung-frist",
           "icon": "⚠️",
-          "name": "Ordentliche Kündigung & Kündigungsfristen",
-          "desc": "§ 622 BGB · Thời hạn báo trước 4 tuần · Điều kiện văn bản § 623 BGB",
-          "content": "<h2>⚠️ Ordentliche Kündigung & Kündigungsfristen (§ 622 BGB)</h2>\n            <div class=\"hint\">Thôi việc thông thường & Thời hạn báo trước theo thâm niên</div>\n            <h3>1. Thời hạn báo trước khi thôi việc (Kündigungsfristen)</h3>\n            <ul>\n              <li><b>Quy định chung cho NLĐ & Chủ:</b> Báo trước <b>4 tuần</b> tính đến ngày 15 hoặc cuối tháng dương lịch.</li>\n              <li><b>Trong thử việc (Probezeit max 6 tháng):</b> Báo trước <b>2 tuần</b> bất kỳ ngày nào.</li>\n              <li><b>Thời hạn báo của Chủ lao động gia tăng theo thâm niên:</b> 2 năm (1 tháng), 5 năm (2 tháng), 8 năm (3 tháng), 10 năm (4 tháng), 12 năm (5 tháng), 15 năm (6 tháng), 20 năm thâm niên (7 tháng tính đến cuối tháng).</li>\n            </ul>\n            <h3>2. Điều kiện hình thức bắt buộc</h3>\n            <ol>\n              <li><b>Schriftform (§ 623 BGB):</b> Văn bản giấy có chữ ký tay. Email/SMS/Fax đều vô hiệu.</li>\n              <li><b>Zugang:</b> Đã giao đến tay/hòm thư người nhận.</li>\n              <li><b>Anhörung des Betriebsrates (§ 102 BetrVG):</b> Bắt buộc tham vấn Hội đồng công nhân trước khi phát đơn.</li>\n            </ol>",
+          "name": "LS17 · Ordentliche Kündigung & Kündigungsfristen",
+          "desc": "§ 622 BGB · Thời hạn báo trước 4 tuần · Điều kiện văn bản Schriftform § 623 BGB",
+          "content": "<h2>⚠️ LS17 · Ordentliche Kündigung & Kündigungsfristen (§ 622 BGB)</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 17 / LF 01-LS17) · Thôi việc thông thường</div>\n            <h3>1. Thời hạn báo trước khi thôi việc (Kündigungsfristen)</h3>\n            <ul>\n              <li><b>Quy định chung cho NLĐ & Chủ:</b> Báo trước <b>4 tuần</b> tính đến ngày 15 hoặc cuối tháng dương lịch.</li>\n              <li><b>Trong thử việc (Probezeit max 6 tháng):</b> Báo trước <b>2 tuần</b> bất kỳ ngày nào.</li>\n              <li><b>Thời hạn báo của Chủ lao động gia tăng theo thâm niên:</b> 2 năm (1 tháng), 5 năm (2 tháng), 8 năm (3 tháng), 10 năm (4 tháng), 12 năm (5 tháng), 15 năm (6 tháng), 20 năm thâm niên (7 tháng tính đến cuối tháng).</li>\n            </ul>\n            <h3>2. Điều kiện hình thức bắt buộc</h3>\n            <ol>\n              <li><b>Schriftform (§ 623 BGB):</b> Văn bản giấy có chữ ký tay. Email/SMS/Fax đều vô hiệu.</li>\n              <li><b>Zugang:</b> Đã giao đến tay/hòm thư người nhận.</li>\n              <li><b>Anhörung des Betriebsrates (§ 102 BetrVG):</b> Bắt buộc tham vấn Hội đồng công nhân trước khi phát đơn.</li>\n            </ol>",
           "qa": [
             {
               "q": "Thời hạn báo trước khi thôi việc thông thường theo § 622 BGB là bao lâu?",
@@ -1900,9 +1911,9 @@
         {
           "id": "wiko-kuendigungsschutz",
           "icon": "🛡️",
-          "name": "Besonderer & Allgemeiner Kündigungsschutz (KSchG)",
+          "name": "LS18 & LS19 · Kündigungsschutzgesetz (KSchG) & Tòa lao động",
           "desc": "Nhóm đối tượng cấm sa thải · 3 lý do sa thải hợp pháp · Klagefrist 3 tuần",
-          "content": "<h2>🛡️ Kündigungsschutzgesetz (KSchG) & Klage vor dem Arbeitsgericht</h2>\n            <div class=\"hint\">Luật bảo vệ sa thải chung & đặc biệt · Thời hạn khởi kiện Tòa lao động</div>\n            <h3>1. Besonderer Kündigungsschutz (Cấm sa thải thông thường)</h3>\n            <ul>\n              <li>Thành viên Hội đồng công nhân (Betriebsrat / JAV).</li>\n              <li>Phụ nữ mang thai & 4 tháng sau sinh (Mutterschutz).</li>\n              <li>Cha mẹ trong thời gian nghỉ nuôi con (Elternzeit).</li>\n              <li>Người khuyết tật nặng (Schwerbehinderte - phải qua Integrationsamt).</li>\n              <li>Học viên học nghề (Azubi) sau thời gian thử việc.</li>\n            </ul>\n            <h3>2. Allgemeiner Kündigungsschutz (§ 1 KSchG)</h3>\n            <ul>\n              <li>Áp dụng khi làm việc > 6 tháng VÀ công ty > 10 nhân viên.</li>\n              <li><b>3 lý do sa thải hợp pháp:</b>\n                <br>1. <i>Personenbedingt:</i> Lý do cá nhân/sức khỏe mãn tính (\"Er/Sie will, kann aber nicht\").\n                <br>2. <i>Verhaltensbedingt:</i> Vi phạm kỷ luật/đi muộn/cãi chỉ đạo (\"Er/Sie kann, will aber nicht\") -> Cần Cảnh cáo (Abmahnung) trước.\n                <br>3. <i>Betriebsbedingt:</i> Cắt giảm vị trí do vận hành -> Bắt buộc chọn lọc xã hội (<span class=\"term\" data-de=\"Sozialauswahl\" data-vi=\"Lựa chọn xã hội\">Sozialauswahl</span>: tuổi, thâm niên, nghĩa vụ nuôi con).\n              </li>\n            </ul>\n            <h3>3. Thời hạn khởi kiện (Klagefrist § 4 KSchG)</h3>\n            <p>Bắt buộc nộp đơn kiện lên Tòa án Lao động (Arbeitsgericht) trong vòng <b>3 tuần</b> kể từ khi nhận đơn sa thải bằng văn bản!</p>",
+          "content": "<h2>🛡️ LS18 & LS19 · Kündigungsschutzgesetz (KSchG) & Klage vor dem Arbeitsgericht</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 18 & 19 / LF 01-LS18, LS19) · Bảo vệ sa thải chung & đặc biệt</div>\n            <h3>1. Besonderer Kündigungsschutz (Cấm sa thải thông thường - LS18)</h3>\n            <ul>\n              <li>Thành viên Hội đồng công nhân (Betriebsrat / JAV).</li>\n              <li>Phụ nữ mang thai & 4 tháng sau sinh (Mutterschutz).</li>\n              <li>Cha mẹ trong thời gian nghỉ nuôi con (Elternzeit).</li>\n              <li>Người khuyết tật nặng (Schwerbehinderte - phải qua Integrationsamt).</li>\n              <li>Học viên học nghề (Azubi) sau thời gian thử việc.</li>\n            </ul>\n            <h3>2. Allgemeiner Kündigungsschutz (§ 1 KSchG) & 3 Lý do Sa thải (LS19)</h3>\n            <ul>\n              <li>Áp dụng khi làm việc > 6 tháng VÀ công ty > 10 nhân viên.</li>\n              <li><b>3 lý do sa thải hợp pháp:</b>\n                <br>1. <i>Personenbedingt:</i> Lý do cá nhân/sức khỏe mãn tính (\"Er/Sie will, kann aber nicht\").\n                <br>2. <i>Verhaltensbedingt:</i> Vi phạm kỷ luật/đi muộn/cãi chỉ đạo (\"Er/Sie kann, will aber nicht\") -> Cần Cảnh cáo (Abmahnung) trước.\n                <br>3. <i>Betriebsbedingt:</i> Cắt giảm vị trí do vận hành -> Bắt buộc chọn lọc xã hội (<span class=\"term\" data-de=\"Sozialauswahl\" data-vi=\"Lựa chọn xã hội\">Sozialauswahl</span>: tuổi, thâm niên, nghĩa vụ nuôi con).\n              </li>\n            </ul>\n            <h3>3. Thời hạn khởi kiện (Klagefrist § 4 KSchG)</h3>\n            <p>Bắt buộc nộp đơn kiện lên Tòa án Lao động (Arbeitsgericht) trong vòng <b>3 tuần</b> kể từ khi nhận đơn sa thải bằng văn bản!</p>",
           "qa": [
             {
               "q": "Thời hạn bắt buộc để người lao động nộp đơn kiện sa thải lên Tòa án Lao động (Arbeitsgericht) là bao lâu?",
@@ -1922,9 +1933,9 @@
         {
           "id": "wiko-kuendigung-fristlos",
           "icon": "⚡",
-          "name": "Außerordentliche Kündigung (Fristlos § 626 BGB)",
+          "name": "LS20 · Außerordentliche Kündigung (Fristlos § 626 BGB)",
           "desc": "Sa thải ngay lập tức · Wichtiger Grund · 2-Wochen-Erklärungsfrist",
-          "content": "<h2>⚡ Außerordentliche Kündigung (Fristlos § 626 BGB)</h2>\n            <div class=\"hint\">Sa thải bất thường không cần thời hạn báo trước vì lý do đặc biệt nghiêm trọng</div>\n            <h3>1. Điều kiện cốt lõi (Wichtiger Grund)</h3>\n            <ul>\n              <li>Bắt buộc phải có lý do đặc biệt nghiêm trọng khiến hai bên không thể tiếp tục hợp đồng dù chỉ 1 ngày.</li>\n              <li><b>Lý do từ phía Chủ:</b> Trộm cắp (Diebstahl), hành hung/bạo lực (Tätlichkeiten), cố ý bỏ việc (Arbeitsverweigerung), giả ốm (erschlichene Krankmeldung), gian lận giờ làm.</li>\n              <li><b>Lý do từ phía NLĐ:</b> Nợ lương kéo dài (Nichtzahlung des Lohns), quấy rối tình dục (sexuelle Belästigung), ép làm việc phạm pháp.</li>\n            </ul>\n            <h3>2. Điều kiện hình thức đặc thù</h3>\n            <ol>\n              <li><b>2-Wochen-Frist (§ 626 Abs. 2 BGB):</b> Đơn sa thải phải được phát trong vòng <b>2 tuần kể từ khi phát hiện vi phạm</b>.</li>\n              <li><b>Schriftform (§ 623 BGB):</b> Bắt buộc văn bản giấy chữ ký tay.</li>\n              <li><b>Anhörung des Betriebsrates:</b> Phải tham vấn Hội đồng công nhân.</li>\n            </ol>",
+          "content": "<h2>⚡ LS20 · Außerordentliche Kündigung (Fristlos § 626 BGB)</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 20 / LF 01-LS20) · Sa thải bất thường aus wichtigem Grund</div>\n            <h3>1. Điều kiện cốt lõi (Wichtiger Grund)</h3>\n            <ul>\n              <li>Bắt buộc phải có lý do đặc biệt nghiêm trọng khiến hai bên không thể tiếp tục hợp đồng dù chỉ 1 ngày.</li>\n              <li><b>Lý do từ phía Chủ:</b> Trộm cắp (Diebstahl), hành hung/bạo lực (Tätlichkeiten), cố ý bỏ việc (Arbeitsverweigerung), giả ốm (erschlichene Krankmeldung), gian lận giờ làm.</li>\n              <li><b>Lý do từ phía NLĐ:</b> Nợ lương kéo dài (Nichtzahlung des Lohns), quấy rối tình dục (sexuelle Belästigung), ép làm việc phạm pháp.</li>\n            </ul>\n            <h3>2. Điều kiện hình thức đặc thù</h3>\n            <ol>\n              <li><b>2-Wochen-Frist (§ 626 Abs. 2 BGB):</b> Đơn sa thải phải được phát trong vòng <b>2 tuần kể từ khi phát hiện vi phạm</b>.</li>\n              <li><b>Schriftform (§ 623 BGB):</b> Bắt buộc văn bản giấy chữ ký tay.</li>\n              <li><b>Anhörung des Betriebsrates:</b> Phải tham vấn Hội đồng công nhân.</li>\n            </ol>",
           "qa": [
             {
               "q": "Thời hạn tối đa để chủ lao động đưa ra quyết định sa thải fristlos kể từ khi phát hiện hành vi vi phạm là bao lâu?",
@@ -1944,16 +1955,16 @@
       ]
     },
     {
-      "id": "lf2-betriebsrat-tarif",
-      "badge": "Modul Năm 2",
-      "title": "Hội đồng Công nhân (Betriebsrat) & Thỏa ước Tập thể (Tarifrecht)",
+      "id": "lf1-betriebsrat-tarif",
+      "badge": "LF 1 (Năm 1)",
+      "title": "LF 1 (Năm 1) · Betriebsrat, JAV & Tarifrecht (LS21–LS34)",
       "items": [
         {
           "id": "wiko-betriebsrat-mitbestimmung",
           "icon": "🏛️",
-          "name": "Betriebsrat & Mitbestimmung",
+          "name": "LS21, LS22 & LS23 · Betriebsrat & Mitbestimmung",
           "desc": "BetrVG · 4 Stufen der Mitbestimmung (Information, Anhörung, Echte Mitbestimmung)",
-          "content": "<h2>🏛️ Betriebsverfassungsgesetz & Mitbestimmung des Betriebsrates</h2>\n            <div class=\"hint\">Luật BetrVG & Quyền tham gia quản trị doanh nghiệp của Hội đồng công nhân</div>\n            <h3>1. Điều kiện thành lập Hội đồng công nhân (Betriebsrat)</h3>\n            <p>Được thành lập tại doanh nghiệp có ít nhất <b>5 nhân viên thường xuyên có quyền bầu cử</b>.</p>\n            <h3>2. 4 Cấp độ Mitbestimmung của Betriebsrat</h3>\n            <ol>\n              <li><b>Reine Information:</b> Doanh nghiệp thông tin kịp thời (quy hoạch nhân sự, kinh tế).</li>\n              <li><b>Mitwirkung / Anhörung:</b> Tham vấn lắng nghe ý kiến (bắt buộc trước mỗi quyết định sa thải Kündigung).</li>\n              <li><b>Zustimmungsverweigerung:</b> Từ chối chốt nhân sự (tuyển dụng Einstellung, chuyển công tác Versetzung).</li>\n              <li><b>Echte Mitbestimmung:</b> Bắt buộc đồng quyết định 2 bên mới có hiệu lực (lịch làm việc Dienstplan, lịch nghỉ phép Urlaubsplan, lắp camera giám sát).</li>\n            </ol>",
+          "content": "<h2>🏛️ LS21, LS22 & LS23 · Betriebsverfassungsgesetz & Mitbestimmung des Betriebsrates</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 21, 22, 23 / LF 01-LS21, LS22, LS23)</div>\n            <h3>1. Điều kiện thành lập Hội đồng công nhân (Betriebsrat)</h3>\n            <p>Được thành lập tại doanh nghiệp có ít nhất <b>5 nhân viên thường xuyên có quyền bầu cử</b>.</p>\n            <h3>2. 4 Cấp độ Mitbestimmung của Betriebsrat (LS22 & LS23)</h3>\n            <ol>\n              <li><b>Reine Information:</b> Doanh nghiệp thông tin kịp thời (quy hoạch nhân sự, kinh tế).</li>\n              <li><b>Mitwirkung / Anhörung:</b> Tham vấn lắng nghe ý kiến (bắt buộc trước mỗi quyết định sa thải Kündigung).</li>\n              <li><b>Zustimmungsverweigerung:</b> Từ chối chốt nhân sự (tuyển dụng Einstellung, chuyển công tác Versetzung).</li>\n              <li><b>Echte Mitbestimmung:</b> Bắt buộc đồng quyết định 2 bên mới có hiệu lực (lịch làm việc Dienstplan, lịch nghỉ phép Urlaubsplan, lắp camera giám sát).</li>\n            </ol>",
           "qa": [
             {
               "q": "Doanh nghiệp có ít nhất bao nhiêu nhân viên thì có quyền thành lập Betriebsrat?",
@@ -1973,9 +1984,9 @@
         {
           "id": "wiko-jav",
           "icon": "👥",
-          "name": "Jugend- und Auszubildendenvertretung (JAV)",
+          "name": "LS24 · Jugend- und Auszubildendenvertretung (JAV)",
           "desc": "Đại diện thanh thiếu niên < 18t & Azubi < 25t · Phối hợp với Betriebsrat",
-          "content": "<h2>👥 Jugend- und Auszubildendenvertretung (JAV)</h2>\n            <div class=\"hint\">Đại diện quyền lợi đặc thù cho Học viên học nghề & Thanh thiếu niên</div>\n            <h3>1. Điều kiện thành lập JAV</h3>\n            <p>Tại doanh nghiệp có ít nhất <b>5 nhân viên dưới 18 tuổi</b> hoặc <b>học viên học nghề (Azubi) dưới 25 tuổi</b>, và đã có Betriebsrat.</p>\n            <h3>2. Nhiệm vụ & Quyền hạn của JAV</h3>\n            <ul>\n              <li>Đại diện quyền lợi học tập, làm việc và an toàn cho Azubi.</li>\n              <li>Đề xuất các biện pháp cải thiện điều kiện đào tạo lên Betriebsrat.</li>\n              <li>Có quyền cử đại diện tham dự các phiên họp của Betriebsrat khi bàn thảo vấn đề liên quan đến Azubi.</li>\n            </ul>",
+          "content": "<h2>👥 LS24 · Jugend- und Auszubildendenvertretung (JAV)</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 24 / LF 01-LS24) · Đại diện Azubi & Thanh thiếu niên</div>\n            <h3>1. Điều kiện thành lập JAV</h3>\n            <p>Tại doanh nghiệp có ít nhất <b>5 nhân viên dưới 18 tuổi</b> hoặc <b>học viên học nghề (Azubi) dưới 25 tuổi</b>, và đã có Betriebsrat.</p>\n            <h3>2. Nhiệm vụ & Quyền hạn của JAV</h3>\n            <ul>\n              <li>Đại diện quyền lợi học tập, làm việc và an toàn cho Azubi.</li>\n              <li>Đề xuất các biện pháp cải thiện điều kiện đào tạo lên Betriebsrat.</li>\n              <li>Có quyền cử đại diện tham dự các phiên họp của Betriebsrat khi bàn thảo vấn đề liên quan đến Azubi.</li>\n            </ul>",
           "qa": [
             {
               "q": "JAV đại diện cho nhóm đối tượng nào trong doanh nghiệp?",
@@ -1991,9 +2002,9 @@
         {
           "id": "wiko-tarifvertrag",
           "icon": "🤝",
-          "name": "Tarifvertrag, Tarifautonomie & 4 Grundsätze",
-          "desc": "Manteltarif vs. Lohntarif · NGG vs. DEHOGA · Günstigkeitsprinzip § 4 Abs. 3 TVG",
-          "content": "<h2>🤝 Tarifvertrag & Tarifautonomie</h2>\n            <div class=\"hint\">Thỏa ước lao động tập thể giữa Công đoàn (Gewerkschaft) & Hiệp hội chủ (Arbeitgeberverband)</div>\n            <h3>1. Đơn vị ký kết & Tarifautonomie</h3>\n            <ul>\n              <li>Ký kết giữa <b>Công đoàn (Gewerkschaft - z.B. NGG)</b> và <b>Hiệp hội chủ (Arbeitgeberverband - z.B. DEHOGA)</b>.</li>\n              <li><span class=\"term\" data-de=\"Tarifautonomie\" data-vi=\"Tự chủ thỏa ước\">Tarifautonomie</span> (Art. 9 Abs. 3 GG): Quyền tự do đàm phán thù lao & điều kiện làm việc <b>không có sự can thiệp của Nhà nước</b>.</li>\n            </ul>\n            <h3>2. Phân loại Tarifvertrag</h3>\n            <ul>\n              <li><b>Manteltarifvertrag (Thỏa ước khung):</b> Điều kiện làm việc chung (giờ làm, phép năm, thời hạn sa thải). Hiệu lực dài hạn (nhiều năm).</li>\n              <li><b>Lohntarifvertrag (Thỏa ước lương):</b> Chi tiết mức lương từng bậc (Lohngruppen). Hiệu lực ngắn hạn (1-2 năm).</li>\n            </ul>\n            <h3>3. 4 Nguyên tắc vàng của Luật Thỏa ước</h3>\n            <ol>\n              <li><i>Tarifautonomie:</i> Tự do đàm phán.</li>\n              <li><i>Unabdingbarkeit:</i> Mức chuẩn thỏa ước là tiêu chuẩn tối thiểu bắt buộc.</li>\n              <li><i>Günstigkeitsprinzip (§ 4 Abs. 3 TVG):</i> HĐLĐ cá nhân chỉ được khác Tarif nếu <b>có lợi hơn cho NLĐ</b>.</li>\n              <li><i>Friedenspflicht:</i> Nghĩa vụ hòa bình (cấm đình công khi thỏa ước còn hiệu lực).</li>\n            </ol>",
+          "name": "LS25, LS26, LS27, LS28 & LS31 · Luật Thỏa ước tập thể",
+          "desc": "Manteltarif vs. Lohntarif · 4 Grundsätze · Günstigkeitsprinzip § 4 Abs. 3 TVG",
+          "content": "<h2>🤝 LS25, LS26, LS27, LS28 & LS31 · Tarifvertrag & Tarifautonomie</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 25, 26, 27, 28, 31 / LF 01-LS25 đến LS31)</div>\n            <h3>1. Đơn vị ký kết & Tarifautonomie (LS25)</h3>\n            <ul>\n              <li>Ký kết giữa <b>Công đoàn (Gewerkschaft - z.B. NGG)</b> và <b>Hiệp hội chủ (Arbeitgeberverband - z.B. DEHOGA)</b>.</li>\n              <li><span class=\"term\" data-de=\"Tarifautonomie\" data-vi=\"Tự chủ thỏa ước\">Tarifautonomie</span> (Art. 9 Abs. 3 GG): Quyền tự do đàm phán thù lao & điều kiện làm việc <b>không có sự can thiệp của Nhà nước</b>.</li>\n            </ul>\n            <h3>2. Phân loại Tarifvertrag (LS26)</h3>\n            <ul>\n              <li><b>Manteltarifvertrag (Thỏa ước khung):</b> Điều kiện làm việc chung (giờ làm, phép năm, thời hạn sa thải). Hiệu lực dài hạn (nhiều năm).</li>\n              <li><b>Lohntarifvertrag (Thỏa ước lương):</b> Chi tiết mức lương từng bậc (Lohngruppen). Hiệu lực ngắn hạn (1-2 năm).</li>\n            </ul>\n            <h3>3. 4 Nguyên tắc vàng của Luật Thỏa ước (LS27, LS31)</h3>\n            <ol>\n              <li><i>Tarifautonomie:</i> Tự do đàm phán.</li>\n              <li><i>Unabdingbarkeit:</i> Mức chuẩn thỏa ước là tiêu chuẩn tối thiểu bắt buộc.</li>\n              <li><i>Günstigkeitsprinzip (§ 4 Abs. 3 TVG):</i> HĐLĐ cá nhân chỉ được khác Tarif nếu <b>có lợi hơn cho NLĐ</b>.</li>\n              <li><i>Friedenspflicht:</i> Nghĩa vụ hòa bình (cấm đình công khi thỏa ước còn hiệu lực).</li>\n            </ol>",
           "qa": [
             {
               "q": "Nguyên tắc Günstigkeitsprinzip quy định điều gì khi so sánh HĐLĐ cá nhân và Thỏa ước tập thể?",
@@ -2017,9 +2028,9 @@
         {
           "id": "wiko-arbeitskampf",
           "icon": "📢",
-          "name": "Schlichtung, Streik & Arbeitskampf",
-          "desc": "Quy trình giải quyết bế tắc · Urabstimmung (>= 75%) · Streik vs. Aussperrung",
-          "content": "<h2>📢 Schlichtung, Streik & Arbeitskampf</h2>\n            <div class=\"hint\">Các biện pháp đấu tranh lao động khi đàm phán thỏa ước bế tắc</div>\n            <h3>1. Quy trình giải quyết bế tắc đàm phán</h3>\n            <p>Bế tắc (Scheitern) ➡️ Hòa giải (Schlichtung) ➡️ Bỏ phiếu trưng cầu (Urabstimmung >= 75%) ➡️ Đình công (Streik) / Bãi công (Aussperrung) ➡️ Thỏa thuận mới.</p>\n            <h3>2. Chi tiết các hình thức Đấu tranh lao động</h3>\n            <ul>\n              <li><b>Schlichtung (Hòa giải):</b> Trọng tài độc lập đứng ra tìm giải pháp trung hòa.</li>\n              <li><b>Urabstimmung (Bỏ phiếu):</b> Cần ít nhất <b>75% đoàn viên công đoàn</b> bỏ phiếu đồng ý để khởi động đình công.</li>\n              <li><b>Streik (Đình công):</b> NLĐ ngừng làm việc tập thể do Công đoàn tổ chức. Công đoàn chi trả tiền hỗ trợ (<span class=\"term\" data-de=\"Streikgeld\" data-vi=\"Tiền hỗ trợ đình công\">Streikgeld</span>).</li>\n              <li><b>Aussperrung (Bãi công / Khóa cửa):</b> Biện pháp đáp trả của Chủ (tạm thời không cho NLĐ vào làm và không trả lương).</li>\n              <li><span class=\"term\" data-de=\"Wilder Streik\" data-vi=\"Đình công tự phát\">Wilder Streik</span>: Đình công không do Công đoàn tổ chức 🚫 <b>TRÁI PHÁP LUẬT</b> -> NLĐ có thể bị sa thải fristlos ngay lập tức!</li>\n            </ul>",
+          "name": "LS29, LS30, LS32, LS33 & LS34 · Đấu tranh lao động",
+          "desc": "NGG vs. DEHOGA · Schlichtung · Urabstimmung (>= 75%) · Streik vs. Aussperrung · Wilder Streik",
+          "content": "<h2>📢 LS29, LS30, LS32, LS33 & LS34 · Schlichtung, Streik & Arbeitskampf</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 29, 30, 32, 33, 34 / LF 01-LS29 đến LS34)</div>\n            <h3>1. Quy trình giải quyết bế tắc đàm phán</h3>\n            <p>Bế tắc (Scheitern) ➡️ Hòa giải (Schlichtung) ➡️ Bỏ phiếu trưng cầu (Urabstimmung >= 75%) ➡️ Đình công (Streik) / Bãi công (Aussperrung) ➡️ Thỏa thuận mới.</p>\n            <h3>2. Chi tiết các hình thức Đấu tranh lao động</h3>\n            <ul>\n              <li><b>Schlichtung (Hòa giải):</b> Trọng tài độc lập đứng ra tìm giải pháp trung hòa.</li>\n              <li><b>Urabstimmung (Bỏ phiếu):</b> Cần ít nhất <b>75% đoàn viên công đoàn</b> bỏ phiếu đồng ý để khởi động đình công.</li>\n              <li><b>Streik (Đình công):</b> NLĐ ngừng làm việc tập thể do Công đoàn tổ chức. Công đoàn chi trả tiền hỗ trợ (<span class=\"term\" data-de=\"Streikgeld\" data-vi=\"Tiền hỗ trợ đình công\">Streikgeld</span>).</li>\n              <li><b>Aussperrung (Bãi công / Khóa cửa):</b> Biện pháp đáp trả của Chủ (tạm thời không cho NLĐ vào làm và không trả lương).</li>\n              <li><span class=\"term\" data-de=\"Wilder Streik\" data-vi=\"Đình công tự phát\">Wilder Streik</span>: Đình công không do Công đoàn tổ chức 🚫 <b>TRÁI PHÁP LUẬT</b> -> NLĐ có thể bị sa thải fristlos ngay lập tức!</li>\n            </ul>",
           "qa": [
             {
               "q": "Cần bao nhiêu % đoàn viên công đoàn bỏ phiếu đồng ý trong cuộc Urabstimmung để khởi động đình công?",
@@ -2039,16 +2050,16 @@
       ]
     },
     {
-      "id": "lf2-lohn-kaufvertrag",
-      "badge": "Modul Năm 2",
-      "title": "Lohnabrechnung, Steuern & Kaufvertrag",
+      "id": "lf1-lohn-steuern",
+      "badge": "LF 1 (Năm 1)",
+      "title": "LF 1 (Năm 1) · Lohnabrechnung, BHXH & Thuế (LS35–LS48)",
       "items": [
         {
           "id": "wiko-lohnabrechnung-sozial",
           "icon": "💰",
-          "name": "Lohnabrechnung & Sozialversicherung",
-          "desc": "5 Säulen der Sozialversicherung (Kranken, Pflege, Rente, ALV, Unfall) · Brutto zu Netto",
-          "content": "<h2>💰 Lohnabrechnung & 5 Säulen der Sozialversicherung</h2>\n            <div class=\"hint\">Bảng tính lương & Tỷ lệ đóng BHXH 50/50 giữa Chủ và NLĐ</div>\n            <h3>1. 5 Trụ cột Bảo hiểm Xã hội (Sozialversicherung)</h3>\n            <ol>\n              <li><b>Krankenversicherung (BH Y tế):</b> Chi trả khám chữa bệnh.</li>\n              <li><b>Pflegeversicherung (BH Chăm sóc dài hạn):</b> Chi trả khi tàn tật/già yếu.</li>\n              <li><b>Rentenversicherung (BH Hưu trí):</b> Trả lương hưu khi về già.</li>\n              <li><b>Arbeitslosenversicherung (BH Thất nghiệp):</b> Hỗ trợ tài chính khi mất việc.</li>\n              <li><b>Unfallversicherung (BH Tai nạn lao động):</b> 100% do Chủ chi trả (Berufsgenossenschaft).</li>\n            </ol>\n            <p><i>Lưu ý: 4 quỹ đầu đóng chia đều 50/50 giữa Chủ và NLĐ. Quỹ Unfallversicherung do Chủ trả 100%.</i></p>\n            <h3>2. Khấu trừ Lương (Brutto zu Netto)</h3>\n            <p>Bruttolohn ➖ (Lohnsteuer + Solidaritätszuschlag + Kirchensteuer) ➖ Sozialversicherungsbeiträge = <b>Nettolohn</b>.</p>",
+          "name": "LS35–LS41 & LS43 · Lohnabrechnung & Sozialversicherung",
+          "desc": "5 Säulen der Sozialversicherung · Tỷ lệ đóng 50/50 · Pflege 2025 · Brutto zu Netto (Leo Scienca & Frau Wolters)",
+          "content": "<h2>💰 LS35–LS41 & LS43 · Lohnabrechnung & 5 Säulen der Sozialversicherung</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 35–41, 43 / LF 01-LS35 đến LS43) · Tỷ lệ đóng BHXH 50/50</div>\n            <h3>1. 5 Trụ cột Bảo hiểm Xã hội (Sozialversicherung)</h3>\n            <ol>\n              <li><b>Krankenversicherung (BH Y tế):</b> Chi trả khám chữa bệnh.</li>\n              <li><b>Pflegeversicherung (BH Chăm sóc dài hạn):</b> Chi trả khi tàn tật/già yếu (Cập nhật quy định 2025 theo số con).</li>\n              <li><b>Rentenversicherung (BH Hưu trí):</b> Trả lương hưu khi về già.</li>\n              <li><b>Arbeitslosenversicherung (BH Thất nghiệp):</b> Hỗ trợ tài chính khi mất việc.</li>\n              <li><b>Unfallversicherung (BH Tai nạn lao động):</b> 100% do Chủ chi trả (Berufsgenossenschaft).</li>\n            </ol>\n            <p><i>Lưu ý: 4 quỹ đầu đóng chia đều 50/50 giữa Chủ và NLĐ. Quỹ Unfallversicherung do Chủ trả 100%.</i></p>\n            <h3>2. Khấu trừ Lương (Brutto zu Netto - Bài tập Leo Scienca LS40/41 & Frau Wolters LS43)</h3>\n            <p>Bruttolohn ➖ (Lohnsteuer + Solidaritätszuschlag + Kirchensteuer) ➖ Sozialversicherungsbeiträge = <b>Nettolohn</b>.</p>",
           "qa": [
             {
               "q": "5 Trụ cột của Bảo hiểm Xã hội (Sozialversicherung) tại Đức là gì?",
@@ -2068,9 +2079,9 @@
         {
           "id": "wiko-steuerklassen",
           "icon": "📊",
-          "name": "Die 6 Steuerklassen in Deutschland",
-          "desc": "Phân loại 6 bậc thuế thu nhập cá nhân · Kết hợp bậc thuế III/V vs. IV/IV cho vợ chồng",
-          "content": "<h2>📊 Die 6 Steuerklassen in Deutschland</h2>\n            <div class=\"hint\">6 Bậc thuế thu nhập cá nhân tại Đức & Phân loại đối tượng</div>\n            <h3>1. Bảng phân loại 6 Bậc Thuế (Steuerklassen)</h3>\n            <ul>\n              <li><b>Steuerklasse I:</b> Độc thân (Ledig), ly hôn, sống ly thân.</li>\n              <li><b>Steuerklasse II:</b> Bố/mẹ đơn thân nuôi con (Alleinerziehend).</li>\n              <li><b>Steuerklasse III:</b> Đã kết hôn, người có thu nhập cao hơn chọn (vợ/chồng làm lớp V).</li>\n              <li><b>Steuerklasse IV:</b> Đã kết hôn, hai vợ chồng có thu nhập ngang nhau.</li>\n              <li><b>Steuerklasse V:</b> Đã kết hôn, người có thu nhập thấp hơn chọn (vợ/chồng làm lớp III).</li>\n              <li><b>Steuerklasse VI:</b> Người làm công việc thứ 2 (Zweitjob / Công việc làm thêm thứ hai).</li>\n            </ul>\n            <h3>2. Lựa chọn bậc thuế cho vợ chồng</h3>\n            <p>Cặp đôi kết hôn có thể chọn kết hợp <b>IV / IV</b> (nếu thu nhập tương đương) hoặc <b>III / V</b> (nếu một người thu nhập cao vượt trội hơn hẳn).</p>",
+          "name": "LS42 & LS44–LS48 · Steuerklassen & Lạm phát",
+          "desc": "6 Steuerklassen · Lựa chọn IV/IV vs. III/V · Lạm phát (Inflation) & Bài tập tra bảng thuế",
+          "content": "<h2>📊 LS42 & LS44–LS48 · Die 6 Steuerklassen in Deutschland & Inflation</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 42, 44–48 / LF 01-LS42, LS44 đến LS48)</div>\n            <h3>1. Bảng phân loại 6 Bậc Thuế (Steuerklassen - LS44)</h3>\n            <ul>\n              <li><b>Steuerklasse I:</b> Độc thân (Ledig), ly hôn, sống ly thân.</li>\n              <li><b>Steuerklasse II:</b> Bố/mẹ đơn thân nuôi con (Alleinerziehend).</li>\n              <li><b>Steuerklasse III:</b> Đã kết hôn, người có thu nhập cao hơn chọn (vợ/chồng làm lớp V).</li>\n              <li><b>Steuerklasse IV:</b> Đã kết hôn, hai vợ chồng có thu nhập ngang nhau.</li>\n              <li><b>Steuerklasse V:</b> Đã kết hôn, người có thu nhập thấp hơn chọn (vợ/chồng làm lớp III).</li>\n              <li><b>Steuerklasse VI:</b> Người làm công việc thứ 2 (Zweitjob / Công việc làm thêm thứ hai).</li>\n            </ul>\n            <h3>2. Khái niệm Lạm phát (Inflation - LS42)</h3>\n            <p>Lạm phát là sự gia tăng mức giá chung kéo dài làm giảm sức mua (Kaufkraftverlust) của tiền tệ. Các loại lạm phát: Nachfrageinflation (do cầu tăng), Kostendruckinflation (do chi phí đầu vào tăng).</p>",
           "qa": [
             {
               "q": "Người làm thêm công việc thứ 2 (Zweitjob) tại Đức bắt buộc phải chịu bậc thuế nào?",
@@ -2086,13 +2097,20 @@
               "src": "fk_exel"
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "id": "modul-nam2-kaufvertrag",
+      "badge": "Modul Năm 2",
+      "title": "Modul Năm 2 · Kaufvertrag, Mängel & Leistungsstörungen",
+      "items": [
         {
           "id": "kaufvertrag",
           "icon": "🛒",
-          "name": "Kaufvertrag, Mängel & Leistungsstörungen",
-          "desc": "Angebot & Annahme · Sachmangel vs. Rechtsmangel · Nacherfüllung & Minderung",
-          "content": "<h2>🛒 Kaufvertrag, Mängel & Leistungsstörungen</h2>\n            <div class=\"hint\">Cơ sở pháp lý Hợp đồng mua bán (§ 433 BGB) & Xử lý vi phạm/hàng lỗi</div>\n            <h3>1. Sự hình thành Kaufvertrag</h3>\n            <p>Hình thành khi có <b>2 Tuyên bố ý chí phù hợp (zwei übereinstimmende Willenserklärungen)</b>: <span class=\"term\" data-de=\"Angebot\" data-vi=\"Chào hàng / Đề nghị\">Angebot</span> + <span class=\"term\" data-de=\"Annahme\" data-vi=\"Chấp nhận\">Annahme</span>.</p>\n            <h3>2. Nghĩa vụ hai bên (§ 433 BGB)</h3>\n            <ul>\n              <li><b>Verkäufer (Người bán):</b> Giao hàng đúng hạn, không có lỗi (mängelfrei), chuyển giao sở hữu.</li>\n              <li><b>Käufer (Người mua):</b> Nhận hàng (Abnahme) và trả tiền đúng thỏa thuận (Zahlung des Kaufpreises).</li>\n            </ul>\n            <h3>3. Quyền của Người mua khi hàng bị lỗi (Mangel)</h3>\n            <ol>\n              <li><b>Nacherfüllung (Ưu tiên số 1):</b> Yêu cầu sửa chữa (Nachbesserung) hoặc giao hàng mới thay thế (Neulieferung).</li>\n              <li><b>Nếu Nacherfüllung thất bại (sau 2 lần sửa không được):</b> Có quyền Giảm giá (Minderung), Hủy hợp đồng trả hàng (Rücktritt), hoặc Yêu cầu bồi thường thiệt hại (Schadensersatz).</li>\n            </ol>",
+          "name": "Kaufvertrag, Mängel & Leistungsstörungen (Năm 2)",
+          "desc": "Angebot & Annahme · Sachmangel vs. Rechtsmangel · Nacherfüllung & Minderung · Lieferverzug",
+          "content": "<h2>🛒 Kaufvertrag, Mängel & Leistungsstörungen (Chủ đề Năm 2)</h2>\n            <div class=\"hint\">Cơ sở pháp lý Hợp đồng mua bán (§ 433 BGB) & Xử lý vi phạm/hàng lỗi (Chủ đề Năm 2)</div>\n            <h3>1. Sự hình thành Kaufvertrag</h3>\n            <p>Hình thành khi có <b>2 Tuyên bố ý chí phù hợp (zwei übereinstimmende Willenserklärungen)</b>: <span class=\"term\" data-de=\"Angebot\" data-vi=\"Chào hàng / Đề nghị\">Angebot</span> + <span class=\"term\" data-de=\"Annahme\" data-vi=\"Chấp nhận\">Annahme</span>.</p>\n            <h3>2. Nghĩa vụ hai bên (§ 433 BGB)</h3>\n            <ul>\n              <li><b>Verkäufer (Người bán):</b> Giao hàng đúng hạn, không có lỗi (mängelfrei), chuyển giao sở hữu.</li>\n              <li><b>Käufer (Người mua):</b> Nhận hàng (Abnahme) và trả tiền đúng thỏa thuận (Zahlung des Kaufpreises).</li>\n            </ul>\n            <h3>3. Quyền của Người mua khi hàng bị lỗi (Mangel)</h3>\n            <ol>\n              <li><b>Nacherfüllung (Ưu tiên số 1):</b> Yêu cầu sửa chữa (Nachbesserung) hoặc giao hàng mới thay thế (Neulieferung).</li>\n              <li><b>Nếu Nacherfüllung thất bại (sau 2 lần sửa không được):</b> Có quyền Giảm giá (Minderung), Hủy hợp đồng trả hàng (Rücktritt), hoặc Yêu cầu bồi thường thiệt hại (Schadensersatz).</li>\n            </ol>",
           "qa": [
             {
               "q": "Hợp đồng mua bán (Kaufvertrag) được hình thành như thế nào?",
