@@ -136,28 +136,357 @@
       {
         id: "bfk2",
         code: "BfK-2",
-        name: "Fleisch & Produkte",
-        icon: "🥩",
+        name: "Service & Vận hành Nhà hàng (BfK2-ED)",
+        icon: "🍽️",
         accent: "#dc2626",
         soft: "#fef2f2",
-        teacher: "IM (Imhof)",
+        teacher: "Fr. Herrmann / BfK2-ED",
         examDate: "2026-07-14",
         ready: true,
-        desc: "Fleischteile · Küche · Quiz · Prüfungen",
+        desc: "Năm 1: LF1 Beruf/Kommunikation · LF5 Service, Getränke, Bier/Wein, POS, Buffet | Năm 2: Fleisch & Produkte",
         legacyRoutes: {
           hub: "#/bfk/2",
           themes: [
-            { icon: "🥩", name: "Fleischteile", desc: "Rind · Schwein · Schaf", route: "#/bfk/2/fleisch" },
-            { icon: "🍳", name: "Küche & Ernährung", desc: "Nährwert · Eier · BW", route: "#/bfk/2/kueche" },
-            { icon: "📝", name: "Quiz", desc: "Multiple-Choice", route: "#/bfk/2/quiz" },
-            { icon: "🗂️", name: "Prüfungen", desc: "Muster · Lösungen", route: "#/bfk/2/pruefungen" },
+            { icon: "🛈", name: "Berufsbilder", desc: "7 Chân dung nghề 2022", route: "#/fach/bfk2/theme/bfk2-berufsbilder" },
+            { icon: "🤝", name: "Gastgeber & Team", desc: "Mindmap & 5 Tình huống", route: "#/fach/bfk2/theme/bfk2-gastgeber-team" },
+            { icon: "💬", name: "Kommunikation", desc: "3 Dạng giao tiếp & Cornell", route: "#/fach/bfk2/theme/bfk2-kommunikation" },
+            { icon: "🥪", name: "Snacks", desc: "3 Nhóm & 5 Tiêu chuẩn", route: "#/fach/bfk2/theme/bfk2-snacks" },
+            { icon: "🥤", name: "Kaltgetränke", desc: "Wasser & Fruchtsaft", route: "#/fach/bfk2/theme/bfk2-kaltgetraenke" },
+            { icon: "☕", name: "Heißgetränke", desc: "Kaffee, Kakao, Tee", route: "#/fach/bfk2/theme/bfk2-heissgetraenke" },
+            { icon: "🍺", name: "Bierkunde", desc: "Reinheitsgebot & Men nổi/chìm", route: "#/fach/bfk2/theme/bfk2-bierkunde" },
+            { icon: "🍷", name: "Weinkunde", desc: "Baden/Württemberg & Maischegärung", route: "#/fach/bfk2/theme/bfk2-weinkunde" },
+            { icon: "🥗", name: "Buffetregeln", desc: "Sơ đồ & Quy định 7°C/65°C", route: "#/fach/bfk2/theme/bfk2-buffetregeln" },
+            { icon: "🧮", name: "Bedarf & Kosten", desc: "Tiệc 72 khách & Giá vốn", route: "#/fach/bfk2/theme/bfk2-kalkulation" },
+            { icon: "💻", name: "Kassensysteme", desc: "Orderfix vs Gastrohero & TSE", route: "#/fach/bfk2/theme/bfk2-kassensysteme" },
+            { icon: "📣", name: "Verkaufsförderung", desc: "Sales promotion & 7 Nguyên tắc", route: "#/fach/bfk2/theme/bfk2-verkaufsfoerderung" },
+            { icon: "🥩", name: "Fleischteile (Năm 2)", desc: "Rind · Schwein · Schaf", route: "#/fach/bfk2/theme/fleischteile" },
+            { icon: "🍳", name: "Küche & Ernährung (Năm 2)", desc: "Nährwert · Eier · BW", route: "#/fach/bfk2/theme/kueche" },
           ],
         },
         groups: [
           {
+            id: "lf1-orientierung",
+            badge: "LF 1 (Năm 1)",
+            title: "Orientierung & Kommunikation",
+            items: [
+              {
+                id: "bfk2-berufsbilder",
+                icon: "🛈",
+                name: "LS01 · Berufsbilder im Gastgewerbe",
+                desc: "7 Chân dung nghề 2022 · Fachkraft für Gastronomie · Key facts",
+                content: `<h2>🛈 Berufsbilder im Gastgewerbe (Trang 04 - 11)</h2>
+<div class="hint">LS01 · 7 Chân dung nghề nghiệp Gastronomie (2022) · Fachkraft für Gastronomie · Key facts</div>
+<h3 class="sub">1. Tình huống học tập (Lernsituation)</h3>
+<p>Bạn là học viên (Azubi) tại <strong>Hotel &amp; Restaurant Schwarzwaldblick</strong> (Bad Wildbad). Nhân dịp <em>Tag der offenen Tür</em>, bạn có nhiệm vụ thiết kế Poster/Profile giới thiệu 7 khối nghề đào tạo Gastronomie cho học sinh sắp tốt nghiệp.</p>
+<h3 class="sub">2. 7 Chân dung Nghề nghiệp trong Ngành (2022)</h3>
+<ul>
+  <li><strong>Gruppe 1:</strong> <span class="term" data-de="Fachkraft für Gastronomie" data-vi="chuyên viên dịch vụ ẩm thực (2 năm)">Fachkraft für Gastronomie</span> (hệ 2 năm)</li>
+  <li><strong>Gruppe 2:</strong> <span class="term" data-de="Fachmann/-frau für Systemgastronomie" data-vi="chuyên viên ẩm thực hệ thống/chuỗi">Fachmann/-frau für Systemgastronomie</span></li>
+  <li><strong>Gruppe 3:</strong> <span class="term" data-de="Fachmann/-frau für Restaurants und Veranstaltungsgastronomie" data-vi="chuyên viên nhà hàng &amp; sự kiện">Fachmann/-frau für Restaurants und Veranstaltungsgastronomie</span></li>
+  <li><strong>Gruppe 4:</strong> <span class="term" data-de="Fachkraft Küche" data-vi="chuyên viên bếp (2 năm)">Fachkraft Küche</span> (hệ 2 năm)</li>
+  <li><strong>Gruppe 5:</strong> <span class="term" data-de="Koch/Köchin" data-vi="đầu bếp chuyên nghiệp (3 năm)">Koch/Köchin</span> (hệ 3 năm)</li>
+  <li><strong>Gruppe 6:</strong> <span class="term" data-de="Hotelfachmann/-frau" data-vi="chuyên viên quản trị khách sạn">Hotelfachmann/-frau</span></li>
+  <li><strong>Gruppe 7:</strong> <span class="term" data-de="Kaufmann/-frau für Hotelmanagement" data-vi="chuyên viên quản lý kinh doanh khách sạn">Kaufmann/-frau für Hotelmanagement</span></li>
+</ul>
+<h3 class="sub">3. Chi tiết nghề "Fachkraft für Gastronomie"</h3>
+<table>
+  <tr><th>Tiêu chí</th><th>Thông tin chi tiết</th></tr>
+  <tr><td><span class="term" data-de="Berufsbild" data-vi="mô tả nghề nghiệp">Berufsbild</span></td><td>Chào đón, tư vấn khách, phục vụ đồ ăn/thức uống, <span class="term" data-de="kassieren" data-vi="thu tiền / thanh toán">kassieren</span> — là gương mặt và giọng nói đại diện cho doanh nghiệp.</td></tr>
+  <tr><td><span class="term" data-de="Beschäftigungsbetrieb" data-vi="nơi làm việc">Beschäftigungsbetrieb</span></td><td>Nhà hàng, quán café, Gasthof, Systemgastronomie, Khách sạn, Catering, Kantine.</td></tr>
+  <tr><td><span class="term" data-de="Ausbildungsdauer" data-vi="thời gian đào tạo">Ausbildungsdauer</span></td><td><strong>2 năm</strong> (có thể học thêm 1 năm chuyển tiếp lên bằng 3 năm).</td></tr>
+  <tr><td><span class="term" data-de="Anforderungsprofil" data-vi="hồ sơ yêu cầu năng lực">Anforderungsprofil</span></td><td>Thân thiện, thích làm việc nhóm, giao tiếp &amp; bán hàng tốt, có kỹ năng tổ chức.</td></tr>
+</table>
+<div class="note">💡 <b>Das Gastronomie-Einmaleins:</b> Kiến thức nền tảng bắt buộc gồm phục vụ, tư vấn và thanh toán hóa đơn.</div>
+<h3 class="sub">4. Bảng từ vựng LS01 (Phần 1)</h3>
+<table>
+  <tr><th>Thuật ngữ Đức</th><th>Ý nghĩa Việt</th></tr>
+  <tr><td><span class="term" data-de="die Fachkraft, "-e" data-vi="chuyên viên / nhân lực lành nghề">die Fachkraft</span></td><td>Nhân viên đã qua đào tạo chuyên môn</td></tr>
+  <tr><td><span class="term" data-de="das Gastgewerbe" data-vi="ngành dịch vụ khách sạn &amp; nhà hàng">das Gastgewerbe</span></td><td>Ngành hospitality nói chung</td></tr>
+  <tr><td><span class="term" data-de="die Systemgastronomie" data-vi="ẩm thực hệ thống / chuỗi">die Systemgastronomie</span></td><td>Chuỗi nhà hàng chuẩn hóa (Vapiano, McDonald's...)</td></tr>
+  <tr><td><span class="term" data-de="die Veranstaltungsgastronomie" data-vi="ẩm thực sự kiện / tiệc mừng">die Veranstaltungsgastronomie</span></td><td>Dịch vụ catering tiệc cưới, hội nghị</td></tr>
+  <tr><td><span class="term" data-de="das Einmaleins" data-vi="bảng cửu chương / kiến thức cơ bản">das Einmaleins</span></td><td>Kiến thức nền tảng bắt buộc</td></tr>
+  <tr><td><span class="term" data-de="der Nachwuchskraft, "-e" data-vi="nhân lực trẻ tiềm năng / Azubi">der Nachwuchskraft</span></td><td>Thế hệ học viên mới</td></tr>
+</table>`
+              },
+              {
+                id: "bfk2-gastgeber-team",
+                icon: "🤝",
+                name: "LS01 · Rolle als Gastgeber & im Team",
+                desc: "Mindmap Anforderungen · Phản hồi đồng nghiệp · 5 Tình huống phục vụ",
+                content: `<h2>🤝 Yêu cầu Vai trò Gastgeber & im Team (Trang 12 - 16)</h2>
+<div class="hint">LS01 · Vai trò Gastgeber & Đồng đội · Mindmap · 5 Tình huống phục vụ thực tế</div>
+<h3 class="sub">1. Sơ đồ tư duy (Mindmap Anforderungen)</h3>
+<table>
+  <tr><th>Vai trò</th><th>Yêu cầu năng lực cốt lõi</th></tr>
+  <tr><td><span class="term" data-de="als Gastgeber/in" data-vi="với vai trò chủ nhà">Als Gastgeber/in</span></td><td><span class="term" data-de="Freundlichkeit" data-vi="sự thân thiện">Freundlichkeit</span>, <span class="term" data-de="Kommunikation" data-vi="giao tiếp">Kommunikation</span>, <span class="term" data-de="Servicequalität" data-vi="chất lượng dịch vụ">Servicequalität</span>, <span class="term" data-de="Problemlösung" data-vi="giải quyết vấn đề">Problemlösung</span>.</td></tr>
+  <tr><td><span class="term" data-de="im Team" data-vi="trong đội ngũ đồng đội">Im Team</span></td><td><span class="term" data-de="Teamfähigkeit" data-vi="khả năng làm việc nhóm">Teamfähigkeit</span>, <span class="term" data-de="Zuverlässigkeit" data-vi="sự tin cậy">Zuverlässigkeit</span>, <span class="term" data-de="Respekt" data-vi="sự tôn trọng">Respekt</span>, <span class="term" data-de="Flexibilität" data-vi="sự linh hoạt">Flexibilität</span> &amp; Ordnung.</td></tr>
+</table>
+<h3 class="sub">2. Góc nhìn từ Đồng nghiệp (Aussagen der Kolleg/innen)</h3>
+<ul>
+  <li><em>"Freundlichkeit und ein souveränes Auftreten sind das A und O."</em> (Thân thiện &amp; tự tin là cốt lõi).</li>
+  <li><em>"Ein gepflegtes Äußeres ist wichtig für die Gäste."</em> (Ngoại hình chỉn chu tươm tất).</li>
+  <li><em>"Kritikfähig sein und konstruktives Feedback anzunehmen."</em> (Tiếp thu góp ý xây dựng).</li>
+  <li><em>"In schwierigen Situationen diplomatisch und schlagfertig sein."</em> (Khéo léo &amp; ứng biến nhanh trí).</li>
+  <li><em>"Ohne Vertrauen geht es nicht. Abmachungen einhalten."</em> (Tin tưởng &amp; giữ đúng cam kết).</li>
+</ul>
+<h3 class="sub">3. 5 Tình huống Giải quyết Phục vụ Thực tế</h3>
+<table>
+  <tr><th>Tình huống</th><th>Cách xử lý chuẩn (Gute Reaktion)</th></tr>
+  <tr><td><strong>1. Khách muốn nói chuyện phiếm lúc đông</strong></td><td>Trả lời ngắn gọn, giải thích nhà hàng đông, hẹn quay lại sau khi vơi việc.</td></tr>
+  <tr><td><strong>2. Hết phòng / xếp sai phòng khách đặt</strong></td><td>Chân thành xin lỗi, giải thích <span class="term" data-de="ausgebucht" data-vi="cháy phòng / kín chỗ">ausgebucht</span>, đền bù voucher/đồ uống miễn phí.</td></tr>
+  <tr><td><strong>3. Bếp trưởng chê xốt salad loãng (<span class="term" data-de="wässrig" data-vi="bị loãng / nhạt nhòa">wässrig</span>)</strong></td><td>Vui vẻ tiếp thu chỉ trích, xin lỗi và lập tức điều chỉnh/pha lại xốt mới.</td></tr>
+  <tr><td><strong>4. Đồng nghiệp bối rối trước khách giận</strong></td><td>Chủ động tới hỗ trợ, điềm tĩnh tiếp quản cuộc trò chuyện và xoa dịu khách.</td></tr>
+  <tr><td><strong>5. 2 Azubi tranh công việc dễ</strong></td><td>Trao đổi ngắn gọn, chia đôi công việc công bằng và cam kết luôn luôn luân chuyển ca sau.</td></tr>
+</table>
+<div class="note">💡 <b>Merksatz:</b> Phân công trách nhiệm rõ ràng tạo nên vận hành trơn tru (reibungslose Zusammenarbeit).</div>`
+              },
+              {
+                id: "bfk2-kommunikation",
+                icon: "💬",
+                name: "LS04 · Angemessen kommunizieren",
+                desc: "3 Dạng giao tiếp · Phương pháp Cornell · Xử lý nhiễu giao tiếp",
+                content: `<h2>💬 Angemessen kommunizieren (Trang 17 - 20)</h2>
+<div class="hint">LS04 · 3 Dạng giao tiếp · Phương pháp ghi chú Cornell · Xử lý nhiễu giao tiếp</div>
+<h3 class="sub">1. 3 Dạng Giao tiếp trong Service</h3>
+<table>
+  <tr><th>Hình thức</th><th>Nội dung &amp; Đặc điểm</th></tr>
+  <tr><td><span class="term" data-de="verbale Kommunikation" data-vi="giao tiếp bằng lời nói">Verbale Kommunikation</span></td><td>Từ ngữ phát ra, cấu trúc câu, vốn từ chuyên ngành lịch sự.</td></tr>
+  <tr><td><span class="term" data-de="paraverbale Kommunikation" data-vi="giao tiếp qua giọng điệu">Paraverbale Kommunikation</span></td><td>Ngữ điệu, âm lượng, <span class="term" data-de="das Sprechtempo" data-vi="tốc độ nói">Sprechtempo</span>, độ nhấn nhá. Giọng ấm tạo niềm tin.</td></tr>
+  <tr><td><span class="term" data-de="nonverbale Kommunikation" data-vi="giao tiếp phi ngôn ngữ">Nonverbale Kommunikation</span></td><td><span class="term" data-de="die Körpersprache" data-vi="ngôn ngữ cơ thể">Körpersprache</span>: Dáng đứng, nét mặt (Mimik), điệu bộ (Gestik), ánh mắt.</td></tr>
+</table>
+<h3 class="sub">2. Nhiễu Giao tiếp (<span class="term" data-de="die Kommunikationsstörung" data-vi="sự nhiễu / rủi ro giao tiếp">Kommunikationsstörung</span>)</h3>
+<ul>
+  <li><strong>Nguyên nhân:</strong> Nói mập mờ, tiếng ồn nhà bếp/khách sạn, áp lực thời gian, rào cản ngôn ngữ, tâm lý mệt mỏi/giận dữ.</li>
+  <li><strong>Biện pháp khắc phục:</strong> Nói rõ ràng ngắn gọn, thực hiện <span class="term" data-de="aktives Zuhören" data-vi="lắng nghe chủ động">aktives Zuhören</span> (gật đầu, ghi chép), đặt <span class="term" data-de="die Rückfrage, -n" data-vi="câu hỏi xác nhận lại">Rückfragen</span> xác nhận đơn hàng, giữ thái độ <span class="term" data-de="die Wertschätzung" data-vi="sự tôn trọng khách hàng">Wertschätzung</span>.</li>
+</ul>
+<div class="formula">Giao tiếp hoàn hảo = Lời nói chuẩn + Ngữ điệu ấm + Thân thể cởi mở</div>`
+              }
+            ]
+          },
+          {
+            id: "lf5-speisen-getraenke",
+            badge: "LF 5 (Năm 1)",
+            title: "Speisen & Getränke",
+            items: [
+              {
+                id: "bfk2-snacks",
+                icon: "🥪",
+                name: "LS05 · Snacks und einfache Speisen",
+                desc: "3 Nhóm Snack · 5 Tiêu chuẩn chất lượng · Kühlkette & Allergen",
+                content: `<h2>🥪 Snacks und einfache Speisen zubereiten und servieren (Trang 21 - 24)</h2>
+<div class="hint">LS05 · 3 Nhóm Món ăn nhẹ · 5 Tiêu chuẩn chất lượng · Kühlkette & Allergen</div>
+<h3 class="sub">1. 3 Nhóm Món ăn nhẹ (Snack-Kategorien)</h3>
+<table>
+  <tr><th>Nhóm</th><th>Ví dụ món ăn tiêu biểu</th></tr>
+  <tr><td><strong>Kalte Snacks</strong> (Món lạnh)</td><td>Belegte Brötchen, Sandwiches, Canapés, Wrap-Variationen, Salad hũ, <span class="term" data-de="das Fingerfood" data-vi="đồ ăn bốc tay">Fingerfood</span>.</td></tr>
+  <tr><td><strong>Warme Snacks</strong> (Món nóng)</td><td>Toast Hawaii, Strammer Max, Panini <span class="term" data-de="überbacken" data-vi="nướng phô mai / bỏ lò">überbacken</span>, Súp ngày, Flammkuchen.</td></tr>
+  <tr><td><strong>Süße Snacks</strong> (Món ngọt)</td><td>Waffeln/Crêpes tươi, Muffins, Blechkuchen, Sữa chua/Quark trái cây.</td></tr>
+</table>
+<h3 class="sub">2. 5 Tiêu chuẩn chất lượng vàng của Snack</h3>
+<ul>
+  <li><strong>Zubereitungszeit:</strong> Chế biến cực nhanh (5 – 10 phút).</li>
+  <li><strong>Frische &amp; Qualität:</strong> Nguyên liệu tươi ngon, trình bày bắt mắt.</li>
+  <li><strong>Kalkulierbarkeit:</strong> Định lượng chuẩn xác, dễ chuẩn bị trước (Mise en place).</li>
+  <li><strong>Handhabung:</strong> Khách dễ ăn nhanh (dùng tay hoặc dụng cụ đơn giản).</li>
+  <li><strong>Hygiene &amp; Sicherheit:</strong> Tuân thủ strictly quy tắc an toàn thực phẩm HACCP.</li>
+</ul>
+<h3 class="sub">3. Bảo quản lạnh &amp; Khái niệm Dị ứng</h3>
+<p>Luôn duy trì <span class="term" data-de="die Kühlkette" data-vi="chuỗi bảo quản lạnh">Kühlkette</span> liên tục (2°C – 7°C đối với thịt, sữa, trứng). Đảm bảo <span class="term" data-de="die Allergenkennzeichnung" data-vi="ghi nhãn chất gây dị ứng">Allergenkennzeichnung</span> cho 14 nhóm dị ứng bắt buộc trên thực đơn.</p>`
+              },
+              {
+                id: "bfk2-kaltgetraenke",
+                icon: "🥤",
+                name: "LS06 · Alkoholfreie Kaltgetränke",
+                desc: "Mineralwasser, Quellwasser, Tafelwasser · Fruchtsaft & Schorle",
+                content: `<h2>🥤 Alkoholfreie Kaltgetränke bereitstellen (Trang 25 - 27)</h2>
+<div class="hint">LS06 · Phân loại Nước khoáng & Nước hoa quả · Quy tắc phục vụ</div>
+<h3 class="sub">1. Phân loại Nước khoáng & Nước uống</h3>
+<table>
+  <tr><th>Loại nước</th><th>Đặc điểm pháp lý &amp; Sản xuất</th></tr>
+  <tr><td><span class="term" data-de="das Mineralwasser" data-vi="nước khoáng thiên nhiên">Mineralwasser</span></td><td>Nguồn ngầm bảo vệ, thành phần khoáng ổn định, đóng chai tại nguồn, <span class="term" data-de="amtlich anerkannt" data-vi="được nhà nước kiểm định chứng nhận">amtlich anerkannt</span>.</td></tr>
+  <tr><td><span class="term" data-de="das Tafelwasser" data-vi="nước uống pha chế công nghiệp">Tafelwasser</span></td><td>Pha chế công nghiệp từ nước máy + khoáng/muối/CO2, chiết từ vòi kẹp.</td></tr>
+  <tr><td>Quellwasser / Heilwasser</td><td>Nước nguồn thiên nhiên / Nước chữa bệnh tuân theo Luật Dược phẩm.</td></tr>
+</table>
+<h3 class="sub">2. Nước trái cây &amp; Đồ uống hoa quả</h3>
+<table>
+  <tr><th>Loại đồ uống</th><th>Tỷ lệ trái cây (Fruchtgehalt)</th><th>Đặc điểm</th></tr>
+  <tr><td><span class="term" data-de="der Direktsaft" data-vi="nước ép trực tiếp 100%">Fruchtsaft (Direktsaft)</span></td><td><strong>100%</strong></td><td>Ép tươi trực tiếp, không pha nước, không thêm đường.</td></tr>
+  <tr><td>Fruchtnektar</td><td><strong>25% – 50%</strong></td><td>Dành cho quả nhiều axit/xốp, pha thêm nước &amp; đường (tối đa 20%).</td></tr>
+  <tr><td><span class="term" data-de="die Fruchtsaftschorle" data-vi="nước ép trái cây pha sủi soda">Fruchtsaftschorle</span></td><td><strong>ca. 50% Saft + 50% Wasser</strong></td><td>Hỗn hợp nước ép quả + nước khoáng sủi (Apfelschorle).</td></tr>
+</table>
+<div class="note">💡 <b>Servierregel:</b> Nhiệt độ phục vụ chuẩn 8°C – 10°C. Chai nguyên tem phải mở trước mặt khách (vor dem Gast öffnen).</div>`
+              },
+              {
+                id: "bfk2-heissgetraenke",
+                icon: "☕",
+                name: "LS07 · Alkoholfreie Heißgetränke",
+                desc: "Arabica vs Robusta · Kakao & Heiße Schokolade · Tee Fermentation & Ziehzeit",
+                content: `<h2>☕ Alkoholfreie Heißgetränke (Trang 28 - 38)</h2>
+<div class="hint">LS07 · Cà phê Arabica/Robusta · Ca cao & Socola nóng · Trà Fermentation & Ziehzeit</div>
+<h3 class="sub">1. Cà phê: Arabica vs. Robusta</h3>
+<table>
+  <tr><th>Tiêu chí</th><th>Arabica (Coffea Arabica)</th><th>Robusta (Coffea Canephora)</th></tr>
+  <tr><td>Độ cao &amp; Vùng trồng</td><td>600m – 2000m (Brasilien, Kolumbien)</td><td>Dưới 600m (Vietnam - xuất khẩu #1 thế giới)</td></tr>
+  <tr><td>Hương vị &amp; Koffein</td><td>Thơm ngậy, chua thanh (feine Säure), 1-1,5% Koffein</td><td>Đậm đà, đắng thanh (erdig, kräftig), 2-4,5% Koffein</td></tr>
+</table>
+<p>Rang cà phê (Röstung): 200°C – 250°C tạo hơn 800 hợp chất hương thơm. Pha Espresso chuẩn dùng <span class="term" data-de="die Dampfdruckverfahren" data-vi="phương pháp ép áp suất hơi nước">Dampfdruckverfahren</span>.</p>
+
+<h3 class="sub">2. Ca cao vs. Socola nóng</h3>
+<p>Ca cao chứa <span class="term" data-de="Theobromin" data-vi="chất kích thích dịu êm theobromin">Theobromin</span> kích thích nhẹ nhàng. Kakaogetränk pha từ bột ca cao + sữa; <strong>Heiße Schokolade</strong> chế biến bằng cách đun chảy socola miếng vào sữa nóng.</p>
+
+<h3 class="sub">3. Trà (Tee): Lên men, Cấp độ lá &amp; Thời gian hãm</h3>
+<ul>
+  <li><span class="term" data-de="die Fermentation" data-vi="quá trình lên men trà">Fermentation</span>: Grüntee (nicht fermentiert), Oolong (halbfermentiert), Schwarztee (voll fermentiert).</li>
+  <li><span class="term" data-de="der Blattgrad" data-vi="cấp độ / kích thước lá trà">Blattgrad</span>: Blatt-Tee (nguyên lá), Broken [B] (lá gãy), Fannings [F] (trà vụn túi lọc), Dust [D] (bụi trà).</li>
+  <li><span class="term" data-de="die Ziehzeit" data-vi="thời gian hãm trà">Ziehzeit</span>: <strong>3 phút</strong> = <span class="term" data-de="anregend" data-vi="kích thích tỉnh táo">anregend</span> (giải phóng Koffein nhanh); <strong>5 phút</strong> = <span class="term" data-de="beruhigend" data-vi="thư giãn / dịu dạ dày">beruhigend</span> (giải phóng <span class="term" data-de="die Gerbstoffe" data-vi="chất chát Tanin">Gerbstoffe</span>).</li>
+</ul>`
+              }
+            ]
+          },
+          {
+            id: "lf5-bier-wein",
+            badge: "LF 5 (Năm 1)",
+            title: "Bierkunde & Weinkunde",
+            items: [
+              {
+                id: "bfk2-bierkunde",
+                icon: "🍺",
+                name: "LS08 · Bierkunde und Bierausschank",
+                desc: "Reinheitsgebot 1516 · 4 Rohstoffe · Obergärig vs Untergärig · Zapfanlage",
+                content: `<h2>🍺 Bierkunde und Bierausschank (Trang 39 - 45)</h2>
+<div class="hint">LS08 · Reinheitsgebot 1516 · 4 Rohstoffe · Obergärig vs Untergärig · Zapfanlage</div>
+<h3 class="sub">1. Luật tinh khiết Đức (<span class="term" data-de="das Reinheitsgebot" data-vi="luật tinh khiết nấu bia 1516">Reinheitsgebot</span> von 1516)</h3>
+<p>Bia chỉ được phép nấu từ 4 nguyên liệu chính: <strong>Wasser (Nước)</strong>, <strong>Gerstenmalz (Mạch nha đại mạch)</strong>, <strong>Hopfen (Hoa bia)</strong> và <strong>Hefe (Men bia)</strong>.</p>
+
+<h3 class="sub">2. So sánh Men nổi (<span class="term" data-de="obergärig" data-vi="lên men nổi">obergärig</span>) vs Men chìm (<span class="term" data-de="untergärig" data-vi="lên men chìm">untergärig</span>)</h3>
+<table>
+  <tr><th>Tiêu chí</th><th>Lên men nổi (Obergärig)</th><th>Lên men chìm (Untergärig)</th></tr>
+  <tr><td>Nhiệt độ lên men</td><td>15°C – 22°C (Ấm)</td><td>6°C – 12°C (Mát/Lạnh)</td></tr>
+  <tr><td>Đặc tính hương vị</td><td>Hương hoa quả phong phú</td><td>Thanh khiết, đắng tròn vị</td></tr>
+  <tr><td>Dòng bia tiêu biểu</td><td>Weizenbier (<span class="term" data-de="hefetrüb" data-vi="đục tự nhiên do men">hefetrüb</span>), Altbier, Kölsch</td><td>Pils (Pilsener), Märzen, Bockbier</td></tr>
+</table>
+<div class="formula">Nấu bia: Maische (mạch nha+nước) → Würze (dịch cốt đun hoa bia) → Gärung (lên men)</div>
+<p>Vận hành vòi rót tươi (<span class="term" data-de="die Zapfanlage, -n" data-vi="hệ thống vòi rót bia tươi">Zapfanlage</span>): Duy trì áp suất CO2 và vệ sinh định kỳ.</p>`
+              },
+              {
+                id: "bfk2-weinkunde",
+                icon: "🍷",
+                name: "LS09 · Weinarten darstellen und empfehlen",
+                desc: "Baden & Württemberg · Fließschema Gärung · Weißwein, Rosé, Rotwein · Weißherbst",
+                content: `<h2>🍷 Weinarten darstellen und empfehlen (Trang 46 - 55)</h2>
+<div class="hint">LS09 · Baden & Württemberg · Fließschema · Weißwein, Rosé, Rotwein · Weißherbst</div>
+<h3 class="sub">1. Hai Vùng trồng Nho trọng điểm</h3>
+<ul>
+  <li><strong>Baden:</strong> Vùng dài nhất Đức, >50% diện tích trồng dòng Burgunder (Spätburgunder, Grauburgunder, Weißburgunder, Chardonnay). Nổi tiếng vùng Kaiserstuhl.</li>
+  <li><strong>Württemberg:</strong> Nổi tiếng vang đỏ (Trollinger, Lemberger, Schwarzriesling) và Riesling trắng. Vườn nho sườn dốc Steillagen.</li>
+</ul>
+
+<h3 class="sub">2. Sơ đồ Sản xuất &amp; Phân loại Rượu vang</h3>
+<table>
+  <tr><th>Loại rượu</th><th>Nguyên liệu nho</th><th>Quy trình sản xuất</th></tr>
+  <tr><td><strong>Weißwein</strong> (Vang trắng)</td><td>Nho trắng</td><td><span class="term" data-de="die Mostgärung" data-vi="lên men nước ép nho đã lọc">Mostgärung</span> (Lên men nước ép nho)</td></tr>
+  <tr><td><strong>Rotwein</strong> (Vang đỏ)</td><td>Nho đỏ</td><td><span class="term" data-de="die Maischegärung" data-vi="lên men cả vỏ và hạt nho">Maischegärung</span> (Lên men vỏ nho để chiết xuất màu &amp; tannin)</td></tr>
+  <tr><td><strong>Roséwein</strong> (Vang hồng)</td><td>Nho đỏ</td><td>Mostgärung hoặc Maischegärung ngắn vài giờ.</td></tr>
+  <tr><td><span class="term" data-de="der Rotling" data-vi="vang hồng lai">Rotling</span></td><td>Nho trắng + Nho đỏ ép chung</td><td>Ép chung cả 2 loại nho rồi lên men.</td></tr>
+</table>
+<div class="note">🍇 <b>Weißherbst:</b> Roséwein làm từ 100% MỘT giống nho đỏ duy nhất, đạt chuẩn Qualitätswein/Prädikatswein.</div>`
+              }
+            ]
+          },
+          {
+            id: "lf5-service-betrieb",
+            badge: "LF 5 (Năm 1)",
+            title: "Service, Buffet & POS",
+            items: [
+              {
+                id: "bfk2-buffetregeln",
+                icon: "🥗",
+                name: "LS04 · Buffetregeln & Vệ sinh",
+                desc: "Sơ đồ bày bàn rechts nach links · Kühlkette <=7°C & Warmhalten >=65°C · Hustenschutz",
+                content: `<h2>🥗 Buffetregeln & Vệ sinh an toàn thực phẩm (Trang 56 - 59)</h2>
+<div class="hint">LS04 · Sơ đồ dựng bàn Buffet · Vệ sinh an toàn HACCP · Quy định Nhiệt độ 7°C / 65°C</div>
+<h3 class="sub">1. Quy tắc dựng bàn Buffet (Aufbau)</h3>
+<ul>
+  <li>Chiều sâu bàn tối thiểu <strong>70 cm</strong>; phủ khăn quây (<span class="term" data-de="das Skirting, -s" data-vi="vải quây chân bàn buffet">Skirting</span>) sát đất.</li>
+  <li>Trình tự món ăn (<span class="term" data-de="die Menüfolge" data-vi="trình tự món ăn thực đơn">Menüfolge</span>) xếp từ <strong>PHẢI sang TRÁI (von rechts nach links)</strong>: Đĩa → Khai vị → Súp → Món chính lạnh → Món chính nóng → Tráng miệng → Bánh mì/Besteck.</li>
+  <li>Dụng cụ gắp (<span class="term" data-de="das Vorlagebesteck" data-vi="dụng cụ gắp thức ăn chung">Vorlagebesteck</span>) đặt ở mép dưới đĩa, cán hướng sang phải.</li>
+</ul>
+
+<h3 class="sub">2. Quy định Nhiệt độ &amp; An toàn Vệ sinh</h3>
+<table>
+  <tr><th>Tiêu chí</th><th>Quy định bắt buộc</th></tr>
+  <tr><td>Món lạnh (Kältebereich)</td><td>Giữ ở nhiệt độ <strong>&le; 7°C</strong>.</td></tr>
+  <tr><td>Món nóng (Warmhaltebereich)</td><td>Khay Chafing Dishes giữ liên tục <strong>&ge; 65°C</strong>.</td></tr>
+  <tr><td>Quy tắc 2 giờ</td><td>Thức ăn bày 2–3 tiếng ở nhiệt độ phòng bắt buộc phải <span class="term" data-de="entsorgen" data-vi="tiêu hủy / bỏ đi">entsorgen</span> (tiêu hủy).</td></tr>
+  <tr><td>Thiết bị chắn vi khuẩn</td><td>Bắt buộc lắp vách kính chắn ho (<span class="term" data-de="der Hustenschutz" data-vi="vách kính chắn ho / bắn vi khuẩn">Hustenschutz / Spuckschutz</span>).</td></tr>
+</table>`
+              },
+              {
+                id: "bfk2-kalkulation",
+                icon: "🧮",
+                name: "LS13 · Bedarfe und Materialkosten berechnen",
+                desc: "Tiệc Brunch 72 khách · Standardrezepturen · Faktor-Formel & Giá vốn",
+                content: `<h2>🧮 Bedarfe und Materialkosten berechnen (Trang 60 - 64)</h2>
+<div class="hint">LS13 · Tính toán lượng nguyên liệu & Chi phí cho Tiệc Buffet / Brunch 72 khách</div>
+<h3 class="sub">1. Tình huống &amp; Công thức tính Hệ số</h3>
+<p>Nhà hàng tổ chức <em>Sonntagsbrunch</em> cho <strong>72 khách</strong>. Tính lượng nguyên liệu dựa theo công thức tiêu chuẩn (<span class="term" data-de="die Standardrezeptur" data-vi="công thức chế biến tiêu chuẩn">Standardrezeptur</span>).</p>
+<div class="formula">
+  \text{Hệ số (Faktor)} = \frac{\text{Số khách thực tế (72)}}{\text{Số khách gốc trong công thức}}<br>
+  \text{Ví dụ cho 6 người} \rightarrow \text{Faktor} = \frac{72}{6} = 12
+</div>
+
+<h3 class="sub">2. Công thức tính Giá vốn 1 Suất ăn</h3>
+<div class="formula">
+  <span class="term" data-de="der Materialpreis" data-vi="chi phí nguyên vật liệu / giá vốn">Materialpreis je Portion</span> = \frac{\text{Tổng chi phí nguyên liệu cho 72 khách}}{72}
+</div>
+<p>Ví dụ các món ăn chuẩn: Rührei mit Speck (dùng <span class="term" data-de="der Schnittlauch" data-vi="hành hoa / hành lá">Schnittlauch</span>), <span class="term" data-de="die Kirschkaltschale" data-vi="súp anh đào chua lạnh">Kirschkaltschale</span>, <span class="term" data-de="der Rinderschmorbraten" data-vi="món thịt bò om kiểu Đức">Rinderschmorbraten</span>.</p>`
+              },
+              {
+                id: "bfk2-kassensysteme",
+                icon: "💻",
+                name: "LS10 · Kassensysteme im Gastgewerbe (POS)",
+                desc: "Stakeholder Anforderungen · Orderfix vs Gastrohero · TSE & Kassenbuch",
+                content: `<h2>💻 Kassensysteme im Gastgewerbe / POS (Trang 65 - 67)</h2>
+<div class="hint">LS10 · Hệ thống máy tính tiền POS · Orderfix vs. Gastrohero · TSE & Kassenbuch</div>
+<h3 class="sub">1. Nhu cầu các bên (Stakeholder Requirements)</h3>
+<ul>
+  <li><strong>Chefin:</strong> Xem báo cáo doanh thu tức thì.</li>
+  <li><strong>Küchenchef:</strong> Nhập đơn (<span class="term" data-de="die Bonierung" data-vi="việc nhập đơn hàng / in bon bếp">Bonierung</span>) nhanh &amp; chính xác xuống bếp.</li>
+  <li><strong>Finanzamt:</strong> Bắt buộc có thiết bị an toàn kỹ thuật <span class="term" data-de="die Technische Sicherheitseinrichtung (TSE)" data-vi="thiết bị an toàn kỹ thuật chống gian lận thuế">TSE</span>.</li>
+  <li><strong>Steuerberater:</strong> Xuất dữ liệu sổ quỹ điện tử (<span class="term" data-de="das Kassenbuch" data-vi="sổ quỹ tiền mặt">Kassenbuch</span>).</li>
+</ul>
+
+<h3 class="sub">2. So sánh POS Orderfix vs. Gastrohero</h3>
+<table>
+  <tr><th>Hệ thống</th><th>Điểm mạnh nổi bật</th></tr>
+  <tr><td><strong>Orderfix</strong></td><td>Order di động, tách hóa đơn bàn ăn, tích hợp điểm thưởng &amp; khuyến mãi coupons.</td></tr>
+  <tr><td><strong>Gastrohero</strong></td><td>Màn hình bếp (<span class="term" data-de="der Küchenmonitor" data-vi="màn hình hiển thị order trong bếp">Küchenmonitor</span>) real-time, chấm công <span class="term" data-de="die Zeiterfassung" data-vi="chấm công giờ làm việc">Zeiterfassung</span> nhân viên.</td></tr>
+</table>`
+              },
+              {
+                id: "bfk2-verkaufsfoerderung",
+                icon: "📣",
+                name: "LS19 · Verkaufsfördernde Maßnahmen im Service",
+                desc: "Sales Promotion · Corporate Design · Eye-Catcher · Tischaufsteller & Digital",
+                content: `<h2>📣 Verkaufsfördernde Maßnahmen im Service (Trang 68 - 69)</h2>
+<div class="hint">LS19 · Biện pháp xúc tiến bán hàng · Corporate Design · Eye-Catcher · Analog & Digital</div>
+<h3 class="sub">1. Khái niệm Xúc tiến Bán hàng (<span class="term" data-de="die Verkaufsförderung" data-vi="xúc tiến bán hàng / sales promotion">Verkaufsförderung</span>)</h3>
+<p>Các hoạt động ngắn hạn nhằm kích cầu doanh số nhà hàng (ví dụ: Tuần lễ món măng tây Spargel, Tuần lễ món chay <span class="term" data-de="die Aktionswoche" data-vi="tuần lễ chương trình khuyến mãi/chủ đề">Aktionswoche</span>, minigame dự thưởng <span class="term" data-de="das Gewinnspiel" data-vi="trò chơi dự thưởng / minigame">Gewinnspiel</span>).</p>
+
+<h3 class="sub">2. 7 Nguyên tắc thiết kế Ấn phẩm Quảng cáo</h3>
+<ol>
+  <li><strong>Der Kern:</strong> Chủ đề chiến dịch phải là điểm nhấn thu hút (<span class="term" data-de="der Eye-Catcher" data-vi="điểm nhấn thu hút ánh nhìn">Eye-Catcher</span>) ngay trong vài giây đầu.</li>
+  <li><strong>Corporate Design:</strong> Đảm bảo bộ nhận diện màu sắc, logo của nhà hàng.</li>
+  <li><strong>Sprachstil &amp; Slogan:</strong> Chọn phông văn phong xưng hô "Du" hoặc "Sie" phù hợp.</li>
+  <li><strong>Analog vs. Digital:</strong> Kết hợp menu dựng bàn (<span class="term" data-de="der Tischaufsteller" data-vi="menu/biển quảng cáo dựng trên bàn">Tischaufsteller</span>), tờ rơi (<span class="term" data-de="der Flyer" data-vi="tờ rơi quảng cáo">Flyer</span>), nghệ thuật viết chữ bảng phấn (<span class="term" data-de="das Handlettering" data-vi="nghệ thuật viết chữ bằng tay">Handlettering</span>) với mã QR Code trực tuyến.</li>
+</ol>`
+              }
+            ]
+          },
+          {
             id: "fleisch",
-            badge: "Modul",
-            title: "Fleisch & Küche",
+            badge: "Modul (Năm 2)",
+            title: "Fleisch & Küche (Năm 2)",
             items: [
               {
                 id: "fleischteile",
@@ -209,7 +538,7 @@
   <tr><td>Schaf</td><td>weiblich, ab 1 Jahr</td></tr>
   <tr><td>Bock</td><td>männlich, ab 1 Jahr</td></tr>
   <tr><td><span class="term" data-de="Hammel" data-vi="cừu thiến">Hammel</span></td><td>kastriert / verschnitten</td></tr>
-</table>`,
+</table>`
               },
               {
                 id: "kueche",
@@ -250,10 +579,10 @@
   <tr><td>Kuhmilch</td><td>86</td></tr>
   <tr><td>Soja</td><td>84</td></tr>
 </table>
-<div class="note">💡 Ergänzungswert: Kombination hebt BW (z.B. Kartoffel + Ei, Getreide + Milch).</div>`,
-              },
-            ],
-          },
+<div class="note">💡 Ergänzungswert: Kombination hebt BW (z.B. Kartoffel + Ei, Getreide + Milch).</div>`
+              }
+            ]
+          }
         ],
         quiz: (w.BFK2_QUIZ || []).slice(), // themed bank from bfk2-quiz.js
       },
