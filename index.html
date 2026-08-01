@@ -2685,11 +2685,45 @@ function fachRoute(fach, part, themeId){
   if(part==='theme') return '#/fach/'+fach.id+'/theme/'+themeId;
   return '#/fach/'+fach.id;
 }
+function fachLoadProgress(fachId){
+  const key = (fachId || "general") + "_progress";
+  try{ return JSON.parse(localStorage.getItem(key)||"{}")||{}; }catch(e){ return {}; }
+}
+function fachSaveProgress(fachId, p){
+  const key = (fachId || "general") + "_progress";
+  try{ localStorage.setItem(key, JSON.stringify(p)); }catch(e){}
+}
+function fachStatus(fachId, id){ const p=fachLoadProgress(fachId); return p[id]|0; }
+function fachSetStatus(fachId, id, val){
+  const v=((val%3)+3)%3;
+  const p=fachLoadProgress(fachId); p[id]=v; fachSaveProgress(fachId, p);
+  try{
+    if(window.LearnDB && LearnDB.markThemeProgress && LearnDB.getPlayer){
+      const player=LearnDB.getPlayer();
+      if(player) LearnDB.markThemeProgress(player, {fach:fachId, theme:id, status: v===2?'done':v===1?'learning':'seen'});
+    }
+  }catch(e){}
+}
+function fachCycleStatus(fachId, id){
+  const cur=fachStatus(fachId, id); fachSetStatus(fachId, id, cur+1); return fachStatus(fachId, id);
+}
+function fachGroupPercent(fachId, group){
+  const items=(group&&group.items)||[];
+  if(!items.length) return { done:0, total:0, pct:0 };
+  const p=fachLoadProgress(fachId);
+  let done=0; items.forEach(it=>{ if((p[it.id]|0)===2) done++; });
+  return { done:done, total:items.length, pct:Math.round(done/items.length*100) };
+}
+function fachTickFromHub(fachId, id, btn){
+  const v=fachCycleStatus(fachId, id);
+  const st=BFK1_STATUS[v]||BFK1_STATUS[0];
+  if(btn){ btn.className="st-tick "+st.cls; btn.title=st.label; btn.textContent=st.icon; }
+  renderFachHub(fachId);
+}
 function renderFachHub(fachId){
   ensureFachRegistry();
   const fach = window.FachForm.findFach(fachId);
   if(!fach){ go('#/'); return; }
-  // Legacy BfK-1/2 still have dedicated UIs – optional redirect keep bfk1
   const title=document.getElementById('fachHubTitle');
   const sub=document.getElementById('fachHubSub');
   const actions=document.getElementById('fachHubActions');
@@ -2739,19 +2773,33 @@ function renderFachHub(fachId){
   }
   let html='';
   (fach.groups||[]).forEach(g=>{
-    html+='<div class="lf-block"><h3><span class="lf-badge">'+(g.badge||'')+'</span> '+g.title+'</h3><div class="theme-list">';
-    (g.items||[]).forEach((it,i)=>{
-      const route = it.route || fachRoute(fach,'theme',it.id);
-      // external full page?
-      if(it.route && it.route.endsWith('.html')){
-        html+='<a class="theme-item" href="'+it.route+'" style="color:inherit;text-decoration:none">';
-      }else{
-        html+='<div class="theme-item" onclick="go(\''+route+'\')">';
-      }
-      html+='<div class="num">'+(i+1)+'</div><div class="tt"><b>'+(it.icon||'')+' '+it.name+'</b><span>'+(it.desc||'')+'</span></div><div class="arrow">→</div>';
-      html+=(it.route&&it.route.endsWith('.html')?'</a>':'</div>');
-    });
-    html+='</div></div>';
+    const items = g.items || [];
+    const pr = fachGroupPercent(fach.id, g);
+    html+='<div class="lf-block"><h3><span class="lf-badge">'+(g.badge||'')+'</span> '+g.title+'</h3>'
+      + '<div class="lf-progress"><div class="lf-progress-bar"><span style="width:'+pr.pct+'%"></span></div>'
+      + '<div class="lf-progress-txt">'+pr.done+'/'+pr.total+' ✅ · '+pr.pct+'%</div></div>';
+
+    if(!items.length){
+      html+='<div class="hint" style="padding:10px 2px">Nội dung đang được xây dựng…</div>';
+    }else{
+      html+='<div class="theme-list">'+items.map((it,i)=>{
+        const route = it.route || fachRoute(fach,'theme',it.id);
+        const st = BFK1_STATUS[fachStatus(fach.id, it.id)] || BFK1_STATUS[0];
+        if(it.route && it.route.endsWith('.html')){
+          return '<a class="theme-item" href="'+it.route+'" style="color:inherit;text-decoration:none">'
+            + '<div class="num">'+(i+1)+'</div>'
+            + '<div class="tt"><b>'+(it.icon||'')+' '+it.name+'</b><span>'+(it.desc||'')+'</span></div>'
+            + '<div class="arrow">→</div></a>';
+        }
+        return '<div class="theme-item" onclick="go(\''+route+'\')">'
+          + '<div class="num">'+(i+1)+'</div>'
+          + '<div class="tt"><b>'+(it.icon||'')+' '+it.name+'</b><span>'+(it.desc||'')+'</span></div>'
+          + '<button type="button" class="st-tick '+st.cls+'" title="'+st.label+'" '
+            + 'onclick="event.stopPropagation();fachTickFromHub(\''+fach.id+'\',\''+it.id+'\',this)">'+st.icon+'</button>'
+          + '</div>';
+      }).join('')+'</div>';
+    }
+    html+='</div>';
   });
   if(!(fach.groups||[]).length){
     html='<div class="card"><p class="muted">Noch keine Themen – Form ist vorbereitet.</p></div>';
@@ -3825,9 +3873,9 @@ const SUBJECT_GROUPS = [
     title:"Weitere Fächer",
     subtitle:"Laut Stundenplan H2FO3T",
     items:[
-      {code:"WiKO", name:"Wirtschaftskompetenz", icon:"<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M4 4v16h16'/><path d='M8 17v-4'/><path d='M12.5 17V9'/><path d='M17 17v-6'/></svg>", accent:"#32ADE6", soft:"#E4F4FD", ready:false, route:"#/fach/wiko",
-        desc:"Kaufvertrag · Mängel · Rechnung (Standard-Form).",
-        topics:["Kaufvertrag","Angebot","Annahme","Mangel","Lieferverzug","Rechnung"], meta:"RM (Remsing)"},
+      {code:"WiKO", name:"Wirtschaftskompetenz", icon:"<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M4 4v16h16'/><path d='M8 17v-4'/><path d='M12.5 17V9'/><path d='M17 17v-6'/></svg>", accent:"#32ADE6", soft:"#E4F4FD", ready:true, route:"#/fach/wiko",
+        desc:"Duales System · BBiG · Arbeitsschutz · Kündigung · Betriebsrat · Lohn & Steuern.",
+        topics:["Duales System","BBiG","Arbeitsschutz","Kündigung","Betriebsrat","Tarifvertrag","Lohn","Kaufvertrag"], meta:"Fr. Leyh & RM (Remsing)"},
       {code:"D", name:"Deutsch", icon:"<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M6 3v18'/><path d='M6 4h11l-2.6 3.6L17 11.2H6z'/></svg>", accent:"#007AFF", soft:"#EAF3FF", ready:true, route:"#/fach/deutsch",
         desc:"Visualisierung · Mindmap · Diagramme (Standard-Form).",
         topics:["Visualisierung","Mindmap","Diagramme","Sachtext"], meta:"Herrn Kling", examDate:"2026-07-16"},
