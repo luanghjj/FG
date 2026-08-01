@@ -145,23 +145,7 @@
         ready: true,
         desc: "Năm 1: LF1 Beruf/Kommunikation · LF5 Service, Getränke, Bier/Wein, POS, Buffet | Năm 2: Fleisch & Produkte",
         legacyRoutes: {
-          hub: "#/bfk/2",
-          themes: [
-            { icon: "🛈", name: "Berufsbilder", desc: "7 Chân dung nghề 2022", route: "#/fach/bfk2/theme/bfk2-berufsbilder" },
-            { icon: "🤝", name: "Gastgeber & Team", desc: "Mindmap & 5 Tình huống", route: "#/fach/bfk2/theme/bfk2-gastgeber-team" },
-            { icon: "💬", name: "Kommunikation", desc: "3 Dạng giao tiếp & Cornell", route: "#/fach/bfk2/theme/bfk2-kommunikation" },
-            { icon: "🥪", name: "Snacks", desc: "3 Nhóm & 5 Tiêu chuẩn", route: "#/fach/bfk2/theme/bfk2-snacks" },
-            { icon: "🥤", name: "Kaltgetränke", desc: "Wasser & Fruchtsaft", route: "#/fach/bfk2/theme/bfk2-kaltgetraenke" },
-            { icon: "☕", name: "Heißgetränke", desc: "Kaffee, Kakao, Tee", route: "#/fach/bfk2/theme/bfk2-heissgetraenke" },
-            { icon: "🍺", name: "Bierkunde", desc: "Reinheitsgebot & Men nổi/chìm", route: "#/fach/bfk2/theme/bfk2-bierkunde" },
-            { icon: "🍷", name: "Weinkunde", desc: "Baden/Württemberg & Maischegärung", route: "#/fach/bfk2/theme/bfk2-weinkunde" },
-            { icon: "🥗", name: "Buffetregeln", desc: "Sơ đồ & Quy định 7°C/65°C", route: "#/fach/bfk2/theme/bfk2-buffetregeln" },
-            { icon: "🧮", name: "Bedarf & Kosten", desc: "Tiệc 72 khách & Giá vốn", route: "#/fach/bfk2/theme/bfk2-kalkulation" },
-            { icon: "💻", name: "Kassensysteme", desc: "Orderfix vs Gastrohero & TSE", route: "#/fach/bfk2/theme/bfk2-kassensysteme" },
-            { icon: "📣", name: "Verkaufsförderung", desc: "Sales promotion & 7 Nguyên tắc", route: "#/fach/bfk2/theme/bfk2-verkaufsfoerderung" },
-            { icon: "🥩", name: "Fleischteile (Năm 2)", desc: "Rind · Schwein · Schaf", route: "#/fach/bfk2/theme/fleischteile" },
-            { icon: "🍳", name: "Küche & Ernährung (Năm 2)", desc: "Nährwert · Eier · BW", route: "#/fach/bfk2/theme/kueche" },
-          ],
+          hub: "#/bfk/2"
         },
         groups: [
           {

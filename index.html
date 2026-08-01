@@ -3859,6 +3859,40 @@ function renderBfkHub(){
 }
 
 function renderBfkLevel(levelId){
+  if(levelId === "2"){
+    ensureFachRegistry();
+    const fach = window.FachForm && window.FachForm.findFach('bfk2');
+    if(fach){
+      const title=document.getElementById("bfkLevelTitle");
+      const desc=document.getElementById("bfkLevelDesc");
+      const grid=document.getElementById("bfkLevelGrid");
+      if(title) title.textContent = fach.code + " · " + fach.name;
+      if(desc) desc.textContent = (fach.teacher? fach.teacher + " · " : "") + fach.desc;
+      if(!grid) return;
+
+      let html = '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;width:100%">'
+        + '<button type="button" class="btn" onclick="go(\'#/bfk/2/quiz\')">📝 Quiz üben →</button>'
+        + '<button type="button" class="btn ghost" onclick="go(\'#/fach/bfk2/training\')">🎯 Training →</button>'
+        + '<button type="button" class="btn ghost" onclick="go(\'#/fach/bfk2/pruefungen\')">🗂️ Prüfungen →</button>'
+        + '</div>';
+
+      (fach.groups||[]).forEach(g=>{
+        html += '<div class="lf-block" style="width:100%"><h3><span class="lf-badge">'+(g.badge||'')+'</span> '+g.title+'</h3><div class="theme-list">';
+        (g.items||[]).forEach((it,i)=>{
+          const route = it.route || ('#/fach/bfk2/theme/' + it.id);
+          html += '<div class="theme-item" onclick="go(\''+route+'\')">'
+            + '<div class="num">'+(i+1)+'</div>'
+            + '<div class="tt"><b>'+(it.icon||'')+' '+it.name+'</b><span>'+(it.desc||'')+'</span></div>'
+            + '<button type="button" class="st-tick st-todo" title="Öffnen">→</button>'
+            + '</div>';
+        });
+        html += '</div></div>';
+      });
+      grid.innerHTML = html;
+      return;
+    }
+  }
+
   const level=BFK_LEVELS.find(l=>l.id===levelId) || BFK_LEVELS[1];
   const title=document.getElementById("bfkLevelTitle");
   const desc=document.getElementById("bfkLevelDesc");
