@@ -928,8 +928,9 @@
         teacher: "BS (Buß-Schroeder)",
         examDate: "2026-07-22",
         ready: true,
-        desc: "Năm 1: KA 1 Grundwissen & Schreibaufgaben | Năm 2: 2-GK Partizipation, Grundgesetz, Gewaltenteilung, Karikatur",
+        desc: "Năm 1: GK-GLE 49 trang (Große - Stoltenberg) & KA 1 | Năm 2: 2-GK Partizipation, Grundgesetz, Gewaltenteilung",
         groups: [
+          ...(window.GK_GLE_GROUPS || []),
           {
             id: "jahr1-ka1",
             badge: "Năm 1 (KA 1)",
