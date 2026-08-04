@@ -827,6 +827,8 @@ Trong bảng tính lương hàng tháng, từ lương thô (**Bruttolohn**) sẽ
 
 ## Trang 36 [LF01-LS36]: Lernsituation 15 - Gesetzliche Lohnabzüge & Sozialversicherungsbeiträge
 
+> **🏷️ Mã hiệu PWA Index:** `[LF01-LS36]` | **📚 Mã bài học Berufsschule:** `Lernsituation 15 (Lohnabrechnung)`
+
 ### 📊 1. Các khoản thuế luật định (Gesetzliche Lohnabzüge)
 - **Lohnsteuer:** Lũy tiến từ **14% đến 42%** (tối đa 45% *Reichensteuer*) - phụ thuộc vào mức thu nhập (*abhängig von Lohnhöhe*) và bậc thuế (*Steuerklasse I - VI*).
 - **Kirchensteuer:** **8%** của tiền thuế Lohnsteuer (ở Bayern & Baden-Württemberg); **9%** ở các bang còn lại.
@@ -936,6 +938,8 @@ Trong bảng tính lương hàng tháng, từ lương thô (**Bruttolohn**) sẽ
 ---
 
 ## Trang 43 [LF01-LS43]: Lernsituation 14 - Lohnabrechnung Frau Wolters
+
+> **🏷️ Mã hiệu PWA Index:** `[LF01-LS43]` | **📚 Mã bài học Berufsschule:** `Lernsituation 14 (Lohnabrechnung Frau Wolters)`
 
 ### 🏢 Tình huống học tập 14 (Lohnabrechnung Frau Wolters)
 - **Thông tin nhân sự:** Quản lý ca (*Schichtleiterin*) **Frau Wolters** tại doanh nghiệp *Schälchenstube*.

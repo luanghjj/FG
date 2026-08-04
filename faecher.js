@@ -928,12 +928,84 @@
         teacher: "BS (Buß-Schroeder)",
         examDate: "2026-07-22",
         ready: true,
-        desc: "Partizipation · Demokratie GG · Gewaltenteilung · Karikatur",
+        desc: "Năm 1: KA 1 Grundwissen & Schreibaufgaben | Năm 2: 2-GK Partizipation, Grundgesetz, Gewaltenteilung, Karikatur",
         groups: [
           {
-            id: "partizipation-block",
-            badge: "KA",
-            title: "Politische Partizipation",
+            id: "jahr1-ka1",
+            badge: "Năm 1 (KA 1)",
+            title: "Năm 1 · KA 1 Grundwissen & Schreibaufgaben",
+            items: [
+              {
+                id: "gk-ka1-themen",
+                icon: "📌",
+                name: "Năm 1 · 4 Formen & Grundrechte (KA 1)",
+                desc: "4 Möglichkeiten · Instagram Vor/Nachteile · Grundrechte & Gleichberechtigung",
+                keyPoints: [
+                  "<b>4 Möglichkeiten der politischen Einflussnahme:</b> Wahlen, Demonstrationen, Partei, Petition.",
+                  "<b>Instagram / Social Media:</b> Vorteile (schnell, Reichweite) vs. Nachteile (Falschinformationen, nicht alle Nutzer).",
+                  "<b>Grundrechte:</b> Schützen Freiheit, Menschenwürde & Gleichheit vor staatlicher Willkür.",
+                  "<b>Gleichberechtigung:</b> Rechtlich gleich, aber Lohnlücke, Sorgearbeit & Führungspositionen.",
+                ],
+                content: `
+                  <h2>📌 Năm 1 · KA 1 Grundwissen &amp; Schreibaufgaben</h2>
+                  <div class="hint">Năm 1 · Chú ý của cô Buß-Schroeder · 6 chủ đề KA + Mẫu trả lời FS1</div>
+
+                  <h3 class="sub">1. 4 Möglichkeiten der politischen Einflussnahme</h3>
+                  <p>Mỗi người dân có 4 phương thức chính để tham gia định hình chính trị:</p>
+                  <ol>
+                    <li><span class="term" data-de="Wahlen" data-vi="bầu cử">Wahlen</span>: Bầu cử đại biểu Quốc hội/Hội đồng để tham gia quyết định chính sách.</li>
+                    <li><span class="term" data-de="Demonstration" data-vi="biểu tình">Demonstrationen</span>: Tham gia biểu tình, tuần hành để công khai bày tỏ quan điểm.</li>
+                    <li><span class="term" data-de="Partei" data-vi="đảng chính trị">Partei</span>: Gia nhập một đảng chính trị để trực tiếp hoạt động và xây dựng đường lối.</li>
+                    <li><span class="term" data-de="Petition" data-vi="thỉnh nguyện / kiến nghị">Petition</span>: Ký thỉnh nguyện thư gửi cơ quan thẩm quyền để đề nghị thay đổi luật/chính sách.</li>
+                  </ol>
+
+                  <h3 class="sub">2. Instagram als Informationsquelle (Beurteilen)</h3>
+                  <p>Đánh giá việc lan truyền thông tin qua mạng xã hội (Instagram, TikTok):</p>
+                  <table>
+                    <tr><th>Vorteile (Ưu điểm)</th><th>Nachteile (Nhược điểm)</th></tr>
+                    <tr>
+                      <td>1. <span class="term" data-de="viele Menschen schnell erreichen" data-vi="tiếp cận nhiều người nhanh chóng">viele Menschen schnell erreichen</span>.<br>2. <span class="term" data-de="einfach geteilt werden" data-vi="chia sẻ thông tin dễ dàng">einfach geteilt werden</span>.</td>
+                      <td>1. <span class="term" data-de="falsche Informationen" data-vi="thông tin sai lệch / tin giả">falsche Informationen</span> verbreiten sich schnell.<br>2. <span class="term" data-de="nicht alle Menschen" data-vi="không phải ai cũng dùng">nicht alle Menschen</span> nutzen Instagram.</td>
+                    </tr>
+                  </table>
+
+                  <h3 class="sub">3. Wichtigkeit der Grundrechte &amp; Grenzen des Staates</h3>
+                  <ul>
+                    <li><strong>Tại sao Grundrechte quan trọng:</strong> Bảo vệ quyền tự do, nhân phẩm (<span class="term" data-de="Menschenwürde" data-vi="nhân phẩm con người">Menschenwürde</span>) và bình đẳng trước pháp luật, chống lại sự độc đoán của nhà nước (<span class="term" data-de="staatliche Willkür" data-vi="sự độc đoán của nhà nước">staatliche Willkür</span>).</li>
+                    <li><strong>Tại sao Nhà nước đặt ra giới hạn:</strong> Đảm bảo an ninh trật tự (<span class="term" data-de="Sicherheit" data-vi="an ninh">Sicherheit</span>), bảo vệ quyền lợi của người khác và ngăn chặn hành vi phạm tội (<span class="term" data-de="Straftaten und Missbrauch" data-vi="tội phạm và lạm dụng">Straftaten</span>).</li>
+                  </ul>
+
+                  <h3 class="sub">4. Gleichberechtigung von Frauen und Männern</h3>
+                  <p>Mặc dù bình đẳng về mặt pháp lý (<span class="term" data-de="rechtlich gleichberechtigt" data-vi="bình đẳng về mặt pháp lý">rechtlich gleichberechtigt</span>), thực tế vẫn còn tồn tại khoảng cách:</p>
+                  <ol>
+                    <li>Phụ nữ ở một số ngành nghề vẫn nhận lương thấp hơn nam giới (<span class="term" data-de="Gender Pay Gap" data-vi="khoảng cách chênh lệch tiền lương">Lohnlücke</span>).</li>
+                    <li>Phụ nữ thường đảm nhận nhiều công việc nhà và chăm sóc con cái hơn (<span class="term" data-de="Hausarbeit und Kinderbetreuung" data-vi="việc nhà và chăm sóc trẻ">Sorgearbeit</span>).</li>
+                    <li>Phụ nữ ít xuất hiện hơn ở các vị trí lãnh đạo (<span class="term" data-de="Führungspositionen" data-vi="vị trí lãnh đạo">Führungspositionen</span>).</li>
+                  </ol>
+                  <div class="formula"><b>2 Maßnahmen:</b> 1. Thêm chỗ chăm sóc trẻ (Kinderbetreuung) để cân bằng gia đình &amp; công việc. 2. Kiểm soát chặt chẽ trả lương bình đẳng (Lohngleichheit).</div>
+                `,
+                qa: [
+                  { q: "Nennen Sie vier Möglichkeiten der politischen Einflussnahme!", a: "1. An Wahlen teilnehmen. 2. An Demonstrationen teilnehmen. 3. Einer Partei beitreten. 4. Eine Petition unterschreiben." },
+                  { q: "Nennen Sie je zwei Vor- und Nachteile von Instagram zur Informationsverbreitung!", a: "Vorteile: 1. Viele Menschen schnell erreichen. 2. Informationen einfach teilen.\nNachteile: 1. Falsche Informationen (Fake News) verbreiten sich schnell. 2. Nicht alle Menschen nutzen Instagram." },
+                  { q: "Warum sind Grundrechte für ein demokratisches Zusammenleben wichtig?", a: "Grundrechte schützen die Freiheit und Menschenwürde aller Menschen, sichern die Gleichheit vor dem Gesetz und schützen vor staatlicher Willkür." },
+                  { q: "Warum setzt der Staat Grenzen für Grundrechte?", a: "Der Staat setzt Grenzen, um die Sicherheit zu gewährleisten, die Rechte anderer Menschen zu schützen und Straftaten sowie Missbrauch zu verhindern." }
+                ],
+                vokabeln: [
+                  { de: "politische Einflussnahme", vi: "sự ảnh hưởng / tham gia chính trị" },
+                  { de: "Petition", vi: "kiến nghị / thỉnh nguyện thư" },
+                  { de: "Demonstration", vi: "cuộc biểu tình" },
+                  { de: "staatliche Willkür", vi: "sự độc đoán của nhà nước" },
+                  { de: "Gleichberechtigung", vi: "bình đẳng quyền" },
+                  { de: "Lohnlücke", vi: "chênh lệch tiền lương (Gender Pay Gap)" },
+                  { de: "Führungsposition", vi: "vị trí lãnh đạo" }
+                ]
+              }
+            ]
+          },
+          {
+            id: "jahr2-partizipation",
+            badge: "Năm 2 (2-GK)",
+            title: "Năm 2 · Partizipation & Direkte Demokratie",
             items: [
               {
                 id: "partizipation",
@@ -1152,8 +1224,8 @@
           },
           {
             id: "staat-gg",
-            badge: "GG",
-            title: "Demokratie nach dem Grundgesetz",
+            badge: "Năm 2 (GG)",
+            title: "Năm 2 · Demokratie nach dem Grundgesetz",
             items: [
               {
                 id: "gewaltenteilung",
