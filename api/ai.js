@@ -145,7 +145,7 @@ export default async function handler(req, res) {
         }
       }
       if (text) return json(200, { parts: [{ type: 'text', text: stripThought(text) || '' }] });
-    return json(502, { error: 'AI đọc ảnh: ' + (triedErr || 'không có model khả dụng'), debug: { vbase: vbaseRaw, dbg } });
+    return json(502, { error: 'AI đọc ảnh: ' + (triedErr || 'không có model khả dụng') });
   } else if (anthropic) {
       headers['x-api-key'] = token;
       headers['anthropic-version'] = '2023-06-01';
