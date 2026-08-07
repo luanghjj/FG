@@ -9,6 +9,7 @@
   'use strict';
 
   var AI_BASE_KEY = 'chat_ai_base';
+  var AI_TOKEN_KEY = 'chat_ai_token';
   var AI_DEFAULT_BASE = 'http://127.0.0.1:4096';
   var AI_SESSION_KEY = 'chat_ai_session';
   var AI_HIST_KEY = 'chat_ai_history';
@@ -131,6 +132,16 @@
     var v = lsGet(AI_BASE_KEY);
     return (v && v.trim()) || AI_DEFAULT_BASE;
   }
+  function aiToken() {
+    var t = lsGet(AI_TOKEN_KEY);
+    return (t && String(t).trim()) || '';
+  }
+  function aiHeaders() {
+    var h = { 'Content-Type': 'application/json' };
+    var t = aiToken();
+    if (t) h['Authorization'] = 'Basic ' + btoa('opencode:' + t);
+    return h;
+  }
   function aiHistory() {
     try { return JSON.parse(lsGet(AI_HIST_KEY) || '[]') || []; } catch (_) { return []; }
   }
@@ -143,7 +154,7 @@
     if (!sid) {
       var cr = await fetch(base + '/session', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: aiHeaders(),
         body: JSON.stringify({ title: 'Lern-Chat' }),
       });
       if (!cr.ok) throw new Error('AI server: ' + cr.status);
@@ -163,11 +174,12 @@
     parts.push({ type: 'text', text: text });
     var res = await fetch(base + '/session/' + encodeURIComponent(sid) + '/message', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: aiHeaders(),
       body: JSON.stringify({ system: system, parts: parts }),
     });
     if (!res.ok) {
       if (res.status === 404) lsDel(AI_SESSION_KEY);
+      if (res.status === 401) throw new Error('Mật khẩu sai — sửa lại trong ⚙ Cấu hình AI');
       throw new Error('AI server: ' + res.status);
     }
     var j = await res.json();
@@ -480,8 +492,11 @@
       }
       timer = setTimeout(function () { finish(false, 'timeout'); }, 3500);
       try {
-        fetch(base + '/global/health', { signal: ctrl ? ctrl.signal : undefined })
-          .then(function (r) { finish(!!(r && r.ok)); })
+        fetch(base + '/global/health', {
+          signal: ctrl ? ctrl.signal : undefined,
+          headers: aiHeaders(),
+        })
+          .then(function (r) { finish(!!(r && r.ok), r && r.status === 401 ? 'auth' : ''); })
           .catch(function (e) { finish(false, (e && e.message) || 'err'); });
       } catch (_) { finish(false, ''); }
     });
@@ -497,6 +512,13 @@
       if (activeRoom !== 'ai' || !el) return;
       if (h.ok) {
         el.innerHTML = '<span class="cbx-ai-ok">● AI sẵn sàng</span><code>' + esc(h.base) + '</code>';
+      } else if (h.extra === 'auth') {
+        el.innerHTML =
+          '<span class="cbx-ai-err">🔑 Server yêu cầu token</span>' +
+          '<div class="cbx-ai-help">Nhập mật khẩu trong <button class="cbx-ai-gear" id="cbxAiGearHint">⚙ Cấu hình AI</button> — ' +
+          'script in token khi chạy <code>bash start-ai-server.command public</code>.</div>';
+        var g = $('cbxAiGearHint');
+        if (g) g.addEventListener('click', aiSetBase);
       } else {
         var originTxt = detectOrigin() || 'file://';
         el.innerHTML =
@@ -522,7 +544,12 @@
 
   function aiSetBase() {
     var cur = aiBase();
-    var v = window.prompt('AI server (base URL) — ví dụ: http://127.0.0.1:4096', cur);
+    var v = window.prompt(
+        'AI base URL của thiết bị này.\n' +
+        '• Máy tính: http://127.0.0.1:4096\n' +
+        '• Điện thoại: URL công khai do script in ra (…trycloudflare.com)\n' +
+        'Mật khẩu = token script in ra (user opencode)',
+        cur);
     if (v == null) return;
     v = String(v || '').trim().replace(/\/+$/, '');
     if (!/^https?:\/\//.test(v)) {
@@ -530,8 +557,13 @@
       return;
     }
     lsSet(AI_BASE_KEY, v);
+    var t = window.prompt('Mật khẩu server (chạy script public để lấy) — bỏ trống để xóa', aiToken());
+    if (t != null) {
+      t = String(t).trim();
+      if (t) lsSet(AI_TOKEN_KEY, t); else lsDel(AI_TOKEN_KEY);
+    }
     aiHealthRender();
-    cbxToast('Đã lưu AI base: ' + v, 'ok');
+    cbxToast('Đã lưu AI server: ' + v, 'ok');
   }
 
   /* ---------- Composer ---------- */
