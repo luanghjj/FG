@@ -257,28 +257,42 @@ export default async function handler(req, res) {
       if (ans.error) return json(502, { error: 'AI gateway: ' + ans.error });
       text = ans.text;
       if (wantsJson && text) text = extractJson(text) || text;
+      let o = null;
+      try { o = JSON.parse(text); } catch (_) {}
+      if (wantsJson && (!o || !o.answer)) {
+        const ans1 = await chatAsk(messages, true);
+        if (!ans1.error && ans1.text) {
+          const t1 = extractJson(ans1.text);
+          if (t1) {
+            try { o = JSON.parse(t1); text = t1; } catch (_) {}
+          }
+        }
+      }
 
-      // Nếu câu trả lời báo "không có trong tài liệu" → tìm kiếm ngoài rồi trả lời lại
+      // Nếu không có trong tài liệu (marker) hoặc trả lời không có nguồn → tìm kiếm ngoài
       const webOn = (process.env.AI_WEBSEARCH || '').trim() !== '0';
-      if (webOn && wantsJson && text) {
-        let o = null;
-        try { o = JSON.parse(text); } catch (_) {}
-        if (o && /không có trong tài liệu|ngoài tài liệu|không nằm trong tài liệu|không thuộc tài liệu|không có trong tài liệu ôn thi|nicht in den unterlagen|outside the (study )?documents/i.test(JSON.stringify(o))) {
-          const lastUser = messages.filter((m) => m.role === 'user').pop() || { role: 'user', content: '' };
-          const q = String(o.question || lastUser.content || '').replace(/^[-*#>\s]+/, '').slice(0, 200);
-          const hits = await webSearch(q);
-          if (hits.length) {
-            const sysMsg = messages.filter((m) => m.role === 'system').slice(-1);
-            const msgs2 = sysMsg.concat([lastUser, {
-              role: 'user',
-              content: '=== KẾT QUẢ TÌM KIẾM NGOÀI (bên ngoài tài liệu) ===\n' +
-                hits.join('\n\n') +
-                '\n\nHãy trả lời câu hỏi trên dựa vào kết quả tìm kiếm này, đưa nguồn (tên trang) vào references.',
-            }]);
-            const ans2 = await chatAsk(msgs2, true);
-            if (!ans2.error && ans2.text) {
-              const t2 = extractJson(ans2.text);
-              if (t2) text = t2;
+      const hasDocs = /TÀI LIỆU/.test(String(body.system || ''));
+      const noSource = o && o.answer && (!Array.isArray(o.references) || !o.references.length);
+      if (webOn && wantsJson && o && o.answer &&
+          (hasDocs && noSource || /không có trong tài liệu|ngoài tài liệu|không nằm trong tài liệu|không thuộc tài liệu|không có trong tài liệu ôn thi|nicht in den unterlagen|outside the (study )?documents/i.test(JSON.stringify(o)))) {
+        const lastUser = messages.filter((m) => m.role === 'user').pop() || { role: 'user', content: '' };
+        const q = String(o.question || lastUser.content || '').replace(/^[-*#>\s]+/, '').slice(0, 200);
+        const hits = await webSearch(q);
+        if (hits.length) {
+          const sysMsg = messages.filter((m) => m.role === 'system').slice(-1);
+          const msgs2 = sysMsg.concat([lastUser, {
+            role: 'user',
+            content: '=== KẾT QUẢ TÌM KIẾM NGOÀI (bên ngoài tài liệu) ===\n' +
+              hits.join('\n\n') +
+              '\n\nHãy trả lời câu hỏi trên dựa vào kết quả tìm kiếm này, đưa nguồn (tên trang) vào references.',
+          }]);
+          const ans2 = await chatAsk(msgs2, true);
+          if (!ans2.error && ans2.text) {
+            const t2 = extractJson(ans2.text);
+            if (t2) {
+              let o2 = null;
+              try { o2 = JSON.parse(t2); } catch (_) {}
+              if (o2 && o2.answer) text = t2;
             }
           }
         }
