@@ -162,12 +162,16 @@ export default async function handler(req, res) {
       }
       text = (j.content || []).filter((c) => c && c.type === 'text').map((c) => c.text).join('\n');
     } else {
-      const r = await fetch(base + '/chat/completions', {
-        method: 'POST',
-        headers,
-        body: JSON.stringify({ model, max_tokens: 2048, messages }),
-      });
-      const j = await r.json().catch(() => ({}));
+      const wantsJson = !!body.system && /\bJSON\b/.test(String(body.system));
+      let payload = { model, max_tokens: 2048, messages };
+      if (wantsJson) payload.response_format = { type: 'json_object' };
+      let r = await fetch(base + '/chat/completions', { method: 'POST', headers, body: JSON.stringify(payload) });
+      let j = await r.json().catch(() => ({}));
+      if (!r.ok && wantsJson && (r.status === 400 || r.status === 404 || r.status === 422)) {
+        try { delete payload.response_format; } catch (_) {}
+        r = await fetch(base + '/chat/completions', { method: 'POST', headers, body: JSON.stringify(payload) });
+        j = await r.json().catch(() => ({}));
+      }
       if (!r.ok) {
         const msg = (j && j.error && (j.error.message || JSON.stringify(j.error))) || ('gateway HTTP ' + r.status);
         return json(502, { error: 'AI gateway: ' + msg });
