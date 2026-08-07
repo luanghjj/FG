@@ -16,6 +16,7 @@
   var POS_X_KEY = 'chat_x';
   var POS_Y_KEY = 'chat_y';
   var UNREAD_KEY = 'chat_unread';
+  var NOTIF_KEY = 'chat_notif_on';
   var VOICE_MAX_MS = 60000;
   var VOICE_MAX_BYTES = 1500000;
 var AI_SYSTEM =
@@ -112,6 +113,8 @@ var AI_SYSTEM =
     trash: '<path d="M4 7h16M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M6 7l1 13h10l1-13"/>',
     gear: '<path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/>',
     image: '<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-9 9"/>',
+    bell: '<path d="M12 3a6 6 0 0 0-6 6v4l-2 3h16l-2-3V9a6 6 0 0 0-6-6z"/><path d="M10 19a2 2 0 0 0 4 0"/>',
+    pill_notif_on: '<path d="M12 3a6 6 0 0 0-6 6v4l-2 3h16l-2-3V9a6 6 0 0 0-6-6z"/><path d="M10 19a2 2 0 0 0 4 0"/><circle cx="19" cy="5" r="3" fill="currentColor" stroke="none"/>',
   };
 
   /* ---------- Toast ---------- */
@@ -512,6 +515,7 @@ var AI_SYSTEM =
         if (!panelOpen || activeRoom !== m.room) {
           unread[m.room] = (unread[m.room] || 0) + 1;
         }
+        fireNotif(m.room, m.sender, m.kind === 'voice' ? '[voice]' : (m.image ? '(ảnh)' : m.text));
       }
       changed = true;
     }
@@ -712,18 +716,20 @@ function aiSetBase() {
     if (!val) return;
     input.value = '';
     autoGrow();
-    var aiMatch = /^\/ai\b[\s\S]*$/.exec(val);
+    var aiMatch = /^\/ai\b/i.exec(val);
+    var aiText = aiMatch ? String(val).replace(/^\/ai\b[\s,]*/i, '').trim() : '';
     if (activeRoom === 'ai') {
-      sendToAI(val);
+      sendToAI(aiText || val);
       return;
     }
     if (aiMatch) {
       openAIThread();
-      setTimeout(function () { sendToAI(val.replace(/^\/ai\s*/, '')); }, 50);
+      if (aiText) setTimeout(function () { sendToAI(aiText); }, 60);
+      else cbxToast('Đã mở hội thoại AI — hãy gõ câu hỏi bên dưới', 'ok');
       return;
     }
     if (!activeRoom) {
-      cbxToast('Hãy chọn một phòng trước', 'warn');
+      cbxToast('Hãy chọn một đoạn hội thoại trước', 'warn');
       return;
     }
     var slug = activeRoom;
@@ -962,6 +968,68 @@ function aiSetBase() {
     }
   }
 
+  /* ---------- Browser notifications ---------- */
+  function notifEnabled() { return lsGet(NOTIF_KEY) === '1'; }
+  function notifSupported() { return typeof Notification !== 'undefined' && 'Notification' in window; }
+  function notifOn() {
+    if (!notifSupported()) {
+      cbxToast('Trình duyệt không hỗ trợ thông báo', 'warn');
+      return;
+    }
+    if (Notification.permission === 'denied') {
+      cbxToast('Thông báo đang bị chặn — mở trong cài đặt trình duyệt', 'warn');
+      return;
+    }
+    if (Notification.permission === 'default') {
+      Notification.requestPermission().then(function (p) {
+        if (p === 'granted') {
+          lsSet(NOTIF_KEY, '1');
+          refreshNotifBtn();
+          cbxToast('Đã bật thông báo tin nhắn mới', 'ok');
+        } else {
+          cbxToast('Chưa bật được thông báo', 'warn');
+        }
+      });
+      return;
+    }
+    lsSet(NOTIF_KEY, '1');
+    refreshNotifBtn();
+    cbxToast('Đã bật thông báo tin nhắn mới', 'ok');
+  }
+  function notifOff() {
+    lsDel(NOTIF_KEY);
+    refreshNotifBtn();
+    cbxToast('Đã tắt thông báo', 'ok');
+  }
+  function refreshNotifBtn() {
+    var b = $('cbxNotifBtn');
+    if (!b) return;
+    var on = notifEnabled();
+    b.title = on ? 'Tắt thông báo tin nhắn' : 'Bật thông báo tin nhắn mới';
+    b.innerHTML = on ? icon('pill_notif_on', 18) : icon('bell', 18);
+    b.classList.toggle('cbx-notif-on', on);
+  }
+  function fireNotif(room, sender, text) {
+    if (!notifEnabled()) return;
+    if (panelOpen && activeRoom === room) return;
+    if (document.hasFocus && document.hasFocus()) {
+      // don't toast-notify while the user is actively using the page in this bubble room
+      if (panelOpen) return;
+    }
+    try {
+      var title = '💬 ' + (roomName(room) || room) + ' · ' + sender;
+      var body = String(text || '').slice(0, 140) || 'Tin nhắn mới';
+      var n = new Notification(title, { body: body, tag: 'cbx-' + room, requireInteraction: false });
+      if (n.onclick) {}
+      n.onclick = function () {
+        try { window.focus(); } catch (_) {}
+        if (rootEl) {
+          openRoom(room);
+        }
+      };
+    } catch (_) {}
+  }
+
   function autoGrow() {
     var ta = $('cbxInput');
     ta.style.height = 'auto';
@@ -982,6 +1050,7 @@ function aiSetBase() {
       '<button id="cbxBackBtn" class="cbx-iconbtn" style="display:none">' + icon('back', 20) + '</button>' +
       '<div id="cbxTitle" class="cbx-title">Chat</div>' +
       '<div class="cbx-hr">' +
+      '<button id="cbxNotifBtn" class="cbx-iconbtn" title="Bật thông báo tin nhắn mới">' + icon('bell', 18) + '</button>' +
       '<button id="cbxAiBtn" class="cbx-iconbtn" title="AI">' + icon('sparkle', 20) + '</button>' +
       '<button id="cbxAiReset" class="cbx-iconbtn" title="Xoá hội thoại AI" style="display:none">' + icon('trash', 18) + '</button>' +
       '<button id="cbxAiGear" class="cbx-iconbtn" title="Cấu hình AI server" style="display:none">' + icon('gear', 19) + '</button>' +
@@ -1014,7 +1083,12 @@ function aiSetBase() {
     $('cbxAiBtn').addEventListener('click', openAIThread);
     $('cbxAiReset').addEventListener('click', resetAI);
     $('cbxAiGear').addEventListener('click', aiSetBase);
+    $('cbxNotifBtn').addEventListener('click', function () {
+      if (notifEnabled()) notifOff();
+      else notifOn();
+    });
     $('cbxSend').addEventListener('click', sendCurrent);
+    refreshNotifBtn();
     $('cbxMic').addEventListener('click', function () {
       if (recording) stopRec();
       else startRec();
@@ -1179,6 +1253,7 @@ function aiSetBase() {
     '.cbx-iconbtn:hover{background:var(--cbx-soft)}' +
     '.cbx-iconbtn:active{transform:scale(.9)}' +
     '.cbx-mic{color:var(--cbx-accent)}' +
+    '.cbx-notif-on{color:var(--cbx-ok) !important}' +
     '.cbx-mic.cbx-rec{color:#fff;background:var(--cbx-bad);border-radius:50%}' +
     /* room list */
     '.cbx-roomlist{flex:1;overflow-y:auto;padding:6px 8px 10px}' +
