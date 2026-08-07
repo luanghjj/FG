@@ -239,11 +239,12 @@ export default async function handler(req, res) {
       const chatAsk = async (msgsArr, wantJson) => {
         let payload = { model: textModel, max_tokens: 1600, messages: msgsArr };
         if (wantJson) payload.response_format = { type: 'json_object' };
-        let r = await fetch(textBase + '/chat/completions', { method: 'POST', headers, body: JSON.stringify(payload) });
+        const textHeaders = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + textToken };
+        let r = await fetch(textBase + '/chat/completions', { method: 'POST', headers: textHeaders, body: JSON.stringify(payload) });
         let j = await r.json().catch(() => ({}));
         if (!r.ok && wantJson && (r.status === 400 || r.status === 404 || r.status === 422)) {
           try { delete payload.response_format; } catch (_) {}
-          r = await fetch(textBase + '/chat/completions', { method: 'POST', headers, body: JSON.stringify(payload) });
+          r = await fetch(textBase + '/chat/completions', { method: 'POST', headers: textHeaders, body: JSON.stringify(payload) });
           j = await r.json().catch(() => ({}));
         }
         if (!r.ok) {
