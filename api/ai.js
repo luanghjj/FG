@@ -72,26 +72,34 @@ export default async function handler(req, res) {
         return json(200, { error: 'AI chưa hỗ trợ đọc ảnh trên thiết bị này — chủ app cần thêm AI_VISION_BASE_URL / AI_VISION_AUTH_TOKEN.', parts: [] });
       }
       const vbase = (process.env.AI_VISION_BASE_URL || '').trim().replace(/\/+$/, '');
-      const vmodel = (process.env.AI_VISION_MODEL || '').trim() || model;
-      const vOpenAI = (process.env.AI_VISION_OPENAI || '').trim() === '1';
+      const vmodels = [];
+    const vm1 = (process.env.AI_VISION_MODEL || '').trim();
+    if (vm1) vmodels.push(vm1);
+    if (vmodels.indexOf('google/gemini-2.5-flash') === -1) vmodels.push('google/gemini-2.5-flash');
+    const vOpenAI = (process.env.AI_VISION_OPENAI || '').trim() === '1';
+    let triedErr = '';
+    for (const vmodel of vmodels) {
       if (vOpenAI) {
         const content = [];
         for (const p of parts) {
           if (p && p.image) content.push({ type: 'image_url', image_url: { url: String(p.image) } });
           else if (p && p.text) content.push({ type: 'text', text: String(p.text) });
         }
-        const vr = await fetch(vbase + '/chat/completions', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + vtoken },
-          body: JSON.stringify({ model: vmodel, max_tokens: 2048, messages: [{ role: 'user', content }] }),
-        });
-        const vj = await vr.json().catch(() => ({}));
-        if (!vr.ok) {
-          const msg = (vj && vj.error && (vj.error.message || JSON.stringify(vj.error))) || ('gateway HTTP ' + vr.status);
-          return json(502, { error: 'AI đọc ảnh: ' + msg });
-        }
-        const vc0 = vj.choices && vj.choices[0] && vj.choices[0].message;
-        text = (vc0 && vc0.content) || (vc0 && vc0.reasoning_content) || '';
+        try {
+          const vr = await fetch(vbase + '/chat/completions', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + vtoken },
+            body: JSON.stringify({ model: vmodel, max_tokens: 2048, messages: [{ role: 'user', content }] }),
+          });
+          const vj = await vr.json().catch(() => ({}));
+          if (!vr.ok) {
+            triedErr = (vj && vj.error && (vj.error.message || JSON.stringify(vj.error))) || ('gateway HTTP ' + vr.status);
+            continue;
+          }
+          const vc0 = vj.choices && vj.choices[0] && vj.choices[0].message;
+          text = (vc0 && vc0.content) || (vc0 && vc0.reasoning_content) || '';
+          break;
+        } catch (e) { triedErr = String((e && e.message) || e); continue; }
       } else {
         const content = [];
         for (const p of parts) {
@@ -104,26 +112,31 @@ export default async function handler(req, res) {
             content.push({ type: 'text', text: String(p.text) });
           }
         }
-        const vr = await fetch(vbase + '/v1/messages', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'x-api-key': vtoken,
-            'Authorization': 'Bearer ' + vtoken,
-            'anthropic-version': '2023-06-01',
-            'anthropic-dangerous-direct-browser-access': 'true',
-          },
-          body: JSON.stringify({ model: vmodel, max_tokens: 2048, messages: [{ role: 'user', content }] }),
-        });
-        const vj = await vr.json().catch(() => ({}));
-        if (!vr.ok) {
-          const msg = (vj && vj.error && (vj.error.message || JSON.stringify(vj.error))) || ('gateway HTTP ' + vr.status);
-          return json(502, { error: 'AI đọc ảnh: ' + msg });
-        }
-        text = (vj.content || []).filter((c) => c && c.type === 'text').map((c) => c.text).join('\n');
+        try {
+          const vr = await fetch(vbase + '/v1/messages', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'x-api-key': vtoken,
+              'Authorization': 'Bearer ' + vtoken,
+              'anthropic-version': '2023-06-01',
+              'anthropic-dangerous-direct-browser-access': 'true',
+            },
+            body: JSON.stringify({ model: vmodel, max_tokens: 2048, messages: [{ role: 'user', content }] }),
+          });
+          const vj = await vr.json().catch(() => ({}));
+          if (!vr.ok) {
+            triedErr = (vj && vj.error && (vj.error.message || JSON.stringify(vj.error))) || ('gateway HTTP ' + vr.status);
+            continue;
+          }
+          text = (vj.content || []).filter((c) => c && c.type === 'text').map((c) => c.text).join('\n');
+          break;
+        } catch (e) { triedErr = String((e && e.message) || e); continue; }
       }
-      return json(200, { parts: [{ type: 'text', text: stripThought(text) || '' }] });
-    } else if (anthropic) {
+    }
+    if (text) return json(200, { parts: [{ type: 'text', text: stripThought(text) || '' }] });
+    return json(502, { error: 'AI đọc ảnh: ' + (triedErr || 'không có model khả dụng') });
+  } else if (anthropic) {
       headers['x-api-key'] = token;
       headers['anthropic-version'] = '2023-06-01';
       headers['anthropic-dangerous-direct-browser-access'] = 'true';
