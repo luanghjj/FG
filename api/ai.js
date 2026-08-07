@@ -71,16 +71,25 @@ export default async function handler(req, res) {
       if (!(process.env.AI_VISION_BASE_URL || '').trim() || !vtoken) {
         return json(200, { error: 'AI chưa hỗ trợ đọc ảnh trên thiết bị này — chủ app cần thêm AI_VISION_BASE_URL / AI_VISION_AUTH_TOKEN.', parts: [] });
       }
-      const vbase = (process.env.AI_VISION_BASE_URL || '').trim().replace(/\/+$/, '');
+      const vbaseRaw = (process.env.AI_VISION_BASE_URL || '').trim().replace(/\/+$/, '');
+      const root = (vbaseRaw.replace(/\/(api\/)?v1(\/(chat\/completions|v1\/messages))?$/, '').replace(/\/+$/, '') || vbaseRaw);
       const vmodels = [];
       const vm1 = ((process.env.AI_VISION_MODEL || '').trim() || model || '').trim();
       if (vm1) vmodels.push(vm1);
       if (vmodels.indexOf('google/gemini-2.5-flash') === -1) vmodels.push('google/gemini-2.5-flash');
-      const modes = ((process.env.AI_VISION_MODE || '').trim() === 'anthropic') ? ['anthropic', 'openai'] : ['openai', 'anthropic'];
       const tries = [];
-      for (const m of modes) for (const v of vmodels) if (!tries.some((t) => t[0] === m && t[1] === v)) tries.push([m, v]);
+      const addT = (mode, url) => { if (!tries.some((t) => t[0] === mode && t[1] === url)) tries.push([mode, url]); };
+      if (((process.env.AI_VISION_MODE || '').trim() === 'anthropic')) {
+        for (const u of [vbaseRaw + '/v1/messages', root + '/v1/messages', root + '/api/v1/messages']) addT('anthropic', u);
+        for (const u of [vbaseRaw + '/chat/completions', root + '/api/v1/chat/completions', root + '/v1/chat/completions']) addT('openai', u);
+      } else {
+        for (const u of [vbaseRaw + '/chat/completions', root + '/api/v1/chat/completions', root + '/v1/chat/completions']) addT('openai', u);
+        for (const u of [vbaseRaw + '/v1/messages', root + '/v1/messages', root + '/api/v1/messages']) addT('anthropic', u);
+      }
       let triedErr = '';
-      for (const [vMode, vmodel] of tries) {
+      outer:
+      for (const [vMode, vurl] of tries) {
+        for (const vmodel of vmodels) {
         const content = [];
         if (vMode === 'anthropic') {
           for (const p of parts) {
@@ -99,7 +108,7 @@ export default async function handler(req, res) {
         }
         try {
           const vr = vMode === 'anthropic'
-            ? await fetch(vbase + '/v1/messages', {
+            ? await fetch(vurl, {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
@@ -110,7 +119,7 @@ export default async function handler(req, res) {
                 },
                 body: JSON.stringify({ model: vmodel, max_tokens: 2048, messages: [{ role: 'user', content }] }),
               })
-            : await fetch(vbase + '/chat/completions', {
+            : await fetch(vurl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + vtoken },
                 body: JSON.stringify({ model: vmodel, max_tokens: 2048, messages: [{ role: 'user', content }] }),
@@ -126,8 +135,9 @@ export default async function handler(req, res) {
             const vc0 = vj.choices && vj.choices[0] && vj.choices[0].message;
             text = (vc0 && vc0.content) || (vc0 && vc0.reasoning_content) || '';
           }
-          break;
+          break outer;
         } catch (e) { triedErr = String((e && e.message) || e); continue; }
+        }
       }
       if (text) return json(200, { parts: [{ type: 'text', text: stripThought(text) || '' }] });
     return json(502, { error: 'AI đọc ảnh: ' + (triedErr || 'không có model khả dụng') });
