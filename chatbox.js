@@ -91,50 +91,6 @@ var AI_SYSTEM =
   function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (_) {} }
   function lsDel(k) { try { localStorage.removeItem(k); } catch (_) {} }
 
-  /* ---------- Emoji đơn sắc (grayscale toàn app) ---------- */
-  var EMOJI_TEST = null;
-  try { EMOJI_TEST = new RegExp('\\p{Extended_Pictographic}', 'u'); } catch (_) { EMOJI_TEST = null; }
-  function hasEmoji(s) {
-    if (EMOJI_TEST) return EMOJI_TEST.test(s);
-    return /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{1F000}-\u{1F0FF}\u{FE0F}]/u.test(s);
-  }
-  var monoScanned = new WeakSet();
-  function monoify(el) {
-    if (!el || el.nodeType !== 1) return;
-    if (monoScanned.has(el)) return;
-    try {
-      if (el.closest('script,style,code,pre,svg,textarea,input,select')) return;
-    } catch (_) {}
-    if (el.childElementCount === 0 && hasEmoji(el.textContent || '')) {
-      el.style.filter = 'grayscale(1)';
-      monoScanned.add(el);
-    }
-  }
-  function monoScanRoot() {
-    if (!document.body) return;
-    var all = document.body.querySelectorAll('*');
-    for (var i = 0; i < all.length; i++) monoify(all[i]);
-  }
-  function monoStart() {
-    monoScanRoot();
-    if (window.MutationObserver) {
-      var obs = new MutationObserver(function (muts) {
-        var need = false;
-        for (var i = 0; i < muts.length; i++) if (muts[i].type === 'childList' && muts[i].addedNodes && muts[i].addedNodes.length) { need = true; break; }
-        if (need) {
-          clearTimeout(monoStart.t);
-          monoStart.t = setTimeout(monoScanRoot, 150);
-        }
-      });
-      try { obs.observe(document.documentElement, { childList: true, subtree: true }); } catch (_) {}
-    }
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function () { setTimeout(monoStart, 60); });
-  } else {
-    setTimeout(monoStart, 60);
-  }
-
   /* ---------- SF-style icons ---------- */
   function icon(name, size) {
     var svg = ICONS[name] || ICONS.bubble;
