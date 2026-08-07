@@ -1,7 +1,9 @@
 /* Service Worker – Lern-App H2FO3T (offline shell + static assets) */
-const CACHE = 'h2fo3t-v89';
+const CACHE = 'h2fo3t-v91';
 const PRECACHE = [
   './',
+  './wissen.js',
+  './chatbox.js',
   './index.html',
   './deutsch.html',
   './admin.html',

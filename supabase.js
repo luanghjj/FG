@@ -1450,6 +1450,204 @@
     };
   }
 
+  /* ===== Chat rooms (realtime chat) ===== */
+  const CHAT_ROOM_PREFIX = 'learn:chat:room:';
+  const CHAT_MSG_PREFIX = 'learn:chat:msg:';
+  const CHAT_DEFAULT_ROOMS = [
+    { slug: 'tong-hop', name: 'Tổng hợp', icon: '💬' },
+    { slug: 'bfk1', name: 'BfK-1 · LF6/LF9', icon: '🍳' },
+    { slug: 'englisch', name: 'Englisch · KA', icon: '🇬🇧' },
+    { slug: 'gk', name: 'GK · Zusammenfassung', icon: '📚' },
+  ];
+
+  function chatRoomKey(slug) {
+    return CHAT_ROOM_PREFIX + clean(slug);
+  }
+  function chatMsgKey(slug, id) {
+    return CHAT_MSG_PREFIX + clean(slug) + ':' + id;
+  }
+
+  async function chatGetRoom(slug) {
+    const row = await getConfig(chatRoomKey(slug));
+    return row && row.value ? row.value : null;
+  }
+
+  async function chatSaveRoom(slug, value) {
+    const key = chatRoomKey(slug);
+    value = value || {};
+    value.slug = String(slug || value.slug || '').toLowerCase();
+    value.updated_at = new Date().toISOString();
+    value.app = 'on-thi';
+    const row = await upsertConfig(key, value);
+    return row && row.value ? row.value : value;
+  }
+
+  async function chatEnsureDefaults() {
+    for (const d of CHAT_DEFAULT_ROOMS) {
+      try {
+        const existing = await chatGetRoom(d.slug);
+        if (!existing) {
+          const now = new Date().toISOString();
+          await chatSaveRoom(d.slug, {
+            slug: d.slug,
+            name: d.name,
+            icon: d.icon || '💬',
+            owner: 'system',
+            members: {},
+            created_at: now,
+            updated_at: now,
+          });
+        }
+      } catch (_) {}
+    }
+  }
+
+  async function chatListRooms() {
+    const rows = (await listConfig(CHAT_ROOM_PREFIX + '%')) || [];
+    return rows
+      .map((r) => (r && r.value ? r.value : null))
+      .filter(Boolean)
+      .sort((a, b) => (a.created_at || '').localeCompare(b.created_at || ''));
+  }
+
+  async function chatCreateRoom(name, player) {
+    const raw = String(name || '').trim().slice(0, 40);
+    if (!raw) throw new Error('Tên phòng không được để trống');
+    let slug = clean(raw);
+    if (!slug) slug = 'phong';
+    let room = await chatGetRoom(slug);
+    if (!room) {
+      const now = new Date().toISOString();
+      room = await chatSaveRoom(slug, {
+        slug: slug,
+        name: raw,
+        icon: '💬',
+        owner: player || 'system',
+        members: {},
+        created_at: now,
+        updated_at: now,
+      });
+    }
+    return room;
+  }
+
+  /**
+   * Optimistic-concurrency read-modify-write for a chat room (presence, …).
+   * Mirrors withChallengeRoom: mutator(room, mark) applies a patch and records
+   * verification fns; retries if a concurrent write clobbered the patch.
+   */
+  async function withChatRoom(slug, mutator, opts) {
+    const attempts = (opts && opts.attempts) || 5;
+    let room = await chatGetRoom(slug);
+    if (!room) throw new Error('Phòng không tồn tại');
+    for (let i = 0; i < attempts; i++) {
+      const marks = [];
+      const mark = (fn) => marks.push(fn);
+      const patch = mutator(room, mark);
+      if (patch === false) return room;
+      const saved = await chatSaveRoom(slug, room);
+      const after = await chatGetRoom(slug);
+      if (!after) return saved;
+      const ok = marks.every((fn) => {
+        try {
+          return fn(after);
+        } catch (_) {
+          return false;
+        }
+      });
+      if (ok) return after;
+      room = after;
+    }
+    return (await chatGetRoom(slug)) || room;
+  }
+
+  async function chatTouchPresence(slug, player) {
+    if (!slug || !player) return null;
+    return withChatRoom(slug, (room, mark) => {
+      const now = new Date().toISOString();
+      room.members = room.members || {};
+      room.members[player] = room.members[player] || {};
+      room.members[player].last_seen = now;
+      if (!room.members[player].joined_at) room.members[player].joined_at = now;
+      const ts = now;
+      mark((r) => !!(r.members && r.members[player] && r.members[player].last_seen === ts));
+    });
+  }
+
+  async function chatSendMessage(slug, sender, msg) {
+    const id = Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
+    const m = {
+      id: id,
+      room: clean(slug),
+      sender: sender || '?',
+      kind: (msg && msg.kind) || 'text',
+      at: new Date().toISOString(),
+    };
+    if (m.kind === 'voice') {
+      m.audio = msg.audio;
+      m.audioDur = Number(msg.audioDur) || 0;
+    } else if (msg && msg.text !== undefined) {
+      m.text = String(msg.text).slice(0, 4000);
+    }
+    const row = await upsertConfig(chatMsgKey(slug, id), m);
+    return row && row.value ? row.value : m;
+  }
+
+  async function chatListMessages(slug, limit) {
+    const lim = Math.min(500, Number(limit) || 200);
+    const like = CHAT_MSG_PREFIX + clean(slug) + ':%';
+    const rows =
+      (await sbFetch(
+        '/rest/v1/config?key=like.' +
+          encodeURIComponent(like) +
+          '&select=key,value,updated_at&order=updated_at.asc&limit=' +
+          lim
+      )) || [];
+    return rows.map((r) => (r && r.value ? r.value : null)).filter(Boolean);
+  }
+
+  /**
+   * Subscribe to new chat messages (polling, mirrors subscribeChallengeRoom).
+   * First pull reports the existing history via onMessages(msgs, true);
+   * later pulls only deliver fresh messages.
+   * Returns unsubscribe function.
+   */
+  function subscribeChatRoom(slug, onMessages, pollMs) {
+    const s = clean(slug);
+    let stopped = false;
+    let timer = null;
+    let first = true;
+    const seen = {};
+    async function pull() {
+      if (stopped) return;
+      try {
+        const msgs = await chatListMessages(s, 200);
+        if (first) {
+          first = false;
+          for (const m of msgs) seen[m.id] = true;
+          if (onMessages) onMessages(msgs, true);
+          return;
+        }
+        const fresh = [];
+        for (const m of msgs) {
+          if (m && !seen[m.id]) {
+            seen[m.id] = true;
+            fresh.push(m);
+          }
+        }
+        if (fresh.length && onMessages) onMessages(fresh, false);
+      } catch (_) {}
+    }
+    const ms = Math.max(800, Number(pollMs) || 1000);
+    timer = setInterval(pull, ms);
+    pull();
+    return function unsubscribe() {
+      stopped = true;
+      if (timer) clearInterval(timer);
+      timer = null;
+    };
+  }
+
   global.LearnDB = {
     url: SB_URL,
     getConfig,
@@ -1494,5 +1692,14 @@
     finishChallengeRoom,
     saveChallengeResult,
     subscribeChallengeRoom,
+    // chat
+    chatEnsureDefaults,
+    chatListRooms,
+    chatCreateRoom,
+    chatGetRoom,
+    chatTouchPresence,
+    chatSendMessage,
+    chatListMessages,
+    subscribeChatRoom,
   };
 })(typeof window !== 'undefined' ? window : globalThis);
