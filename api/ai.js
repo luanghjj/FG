@@ -135,9 +135,11 @@ export default async function handler(req, res) {
             text = (vj.content || []).filter((c) => c && c.type === 'text').map((c) => c.text).join('\n');
           } else {
             const vc0 = vj.choices && vj.choices[0] && vj.choices[0].message;
-            text = (vc0 && vc0.content) || (vc0 && vc0.reasoning_content) || '';
+            text = (vc0 && vc0.content) || (vc0 && vc0.reasoning_content) || (vj.error && vj.error.message) || '';
           }
-          break outer;
+          if (text) break outer;
+          dbg.push({ m: vmodel, u: vurl, s: vr.status, e: 'no-content', raw: JSON.stringify(vj).slice(0, 160) });
+          continue;
         } catch (e) { triedErr = String((e && e.message) || e); continue; }
         }
       }
