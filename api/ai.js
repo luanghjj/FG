@@ -73,68 +73,63 @@ export default async function handler(req, res) {
       }
       const vbase = (process.env.AI_VISION_BASE_URL || '').trim().replace(/\/+$/, '');
       const vmodels = [];
-    const vm1 = (process.env.AI_VISION_MODEL || '').trim();
-    if (vm1) vmodels.push(vm1);
-    if (vmodels.indexOf('google/gemini-2.5-flash') === -1) vmodels.push('google/gemini-2.5-flash');
-    const vOpenAI = (process.env.AI_VISION_OPENAI || '').trim() === '1';
-    let triedErr = '';
-    for (const vmodel of vmodels) {
-      if (vOpenAI) {
+      const vm1 = ((process.env.AI_VISION_MODEL || '').trim() || model || '').trim();
+      if (vm1) vmodels.push(vm1);
+      if (vmodels.indexOf('google/gemini-2.5-flash') === -1) vmodels.push('google/gemini-2.5-flash');
+      const modes = ((process.env.AI_VISION_MODE || '').trim() === 'anthropic') ? ['anthropic', 'openai'] : ['openai', 'anthropic'];
+      const tries = [];
+      for (const m of modes) for (const v of vmodels) if (!tries.some((t) => t[0] === m && t[1] === v)) tries.push([m, v]);
+      let triedErr = '';
+      for (const [vMode, vmodel] of tries) {
         const content = [];
-        for (const p of parts) {
-          if (p && p.image) content.push({ type: 'image_url', image_url: { url: String(p.image) } });
-          else if (p && p.text) content.push({ type: 'text', text: String(p.text) });
+        if (vMode === 'anthropic') {
+          for (const p of parts) {
+            if (p && p.image) {
+              const mm = /^data:([^;,]+);base64,(.+)$/.exec(String(p.image));
+              const mt = mm ? mm[1] : 'image/jpeg';
+              const data = mm ? mm[2] : String(p.image);
+              content.push({ type: 'image', source: { type: 'base64', media_type: mt, data } });
+            } else if (p && p.text) content.push({ type: 'text', text: String(p.text) });
+          }
+        } else {
+          for (const p of parts) {
+            if (p && p.image) content.push({ type: 'image_url', image_url: { url: String(p.image) } });
+            else if (p && p.text) content.push({ type: 'text', text: String(p.text) });
+          }
         }
         try {
-          const vr = await fetch(vbase + '/chat/completions', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + vtoken },
-            body: JSON.stringify({ model: vmodel, max_tokens: 2048, messages: [{ role: 'user', content }] }),
-          });
-          const vj = await vr.json().catch(() => ({}));
+          const vr = vMode === 'anthropic'
+            ? await fetch(vbase + '/v1/messages', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'x-api-key': vtoken,
+                  'Authorization': 'Bearer ' + vtoken,
+                  'anthropic-version': '2023-06-01',
+                  'anthropic-dangerous-direct-browser-access': 'true',
+                },
+                body: JSON.stringify({ model: vmodel, max_tokens: 2048, messages: [{ role: 'user', content }] }),
+              })
+            : await fetch(vbase + '/chat/completions', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + vtoken },
+                body: JSON.stringify({ model: vmodel, max_tokens: 2048, messages: [{ role: 'user', content }] }),
+              });
+          const vj = await vr.json && vr.json().catch(() => ({}));
           if (!vr.ok) {
             triedErr = (vj && vj.error && (vj.error.message || JSON.stringify(vj.error))) || ('gateway HTTP ' + vr.status);
             continue;
           }
-          const vc0 = vj.choices && vj.choices[0] && vj.choices[0].message;
-          text = (vc0 && vc0.content) || (vc0 && vc0.reasoning_content) || '';
-          break;
-        } catch (e) { triedErr = String((e && e.message) || e); continue; }
-      } else {
-        const content = [];
-        for (const p of parts) {
-          if (p && p.image) {
-            const m = /^data:([^;,]+);base64,(.+)$/.exec(String(p.image));
-            const mt = m ? m[1] : 'image/jpeg';
-            const data = m ? m[2] : String(p.image);
-            content.push({ type: 'image', source: { type: 'base64', media_type: mt, data } });
-          } else if (p && p.text) {
-            content.push({ type: 'text', text: String(p.text) });
+          if (vMode === 'anthropic') {
+            text = (vj.content || []).filter((c) => c && c.type === 'text').map((c) => c.text).join('\n');
+          } else {
+            const vc0 = vj.choices && vj.choices[0] && vj.choices[0].message;
+            text = (vc0 && vc0.content) || (vc0 && vc0.reasoning_content) || '';
           }
-        }
-        try {
-          const vr = await fetch(vbase + '/v1/messages', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'x-api-key': vtoken,
-              'Authorization': 'Bearer ' + vtoken,
-              'anthropic-version': '2023-06-01',
-              'anthropic-dangerous-direct-browser-access': 'true',
-            },
-            body: JSON.stringify({ model: vmodel, max_tokens: 2048, messages: [{ role: 'user', content }] }),
-          });
-          const vj = await vr.json().catch(() => ({}));
-          if (!vr.ok) {
-            triedErr = (vj && vj.error && (vj.error.message || JSON.stringify(vj.error))) || ('gateway HTTP ' + vr.status);
-            continue;
-          }
-          text = (vj.content || []).filter((c) => c && c.type === 'text').map((c) => c.text).join('\n');
           break;
         } catch (e) { triedErr = String((e && e.message) || e); continue; }
       }
-    }
-    if (text) return json(200, { parts: [{ type: 'text', text: stripThought(text) || '' }] });
+      if (text) return json(200, { parts: [{ type: 'text', text: stripThought(text) || '' }] });
     return json(502, { error: 'AI đọc ảnh: ' + (triedErr || 'không có model khả dụng') });
   } else if (anthropic) {
       headers['x-api-key'] = token;
