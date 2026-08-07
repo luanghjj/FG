@@ -29,15 +29,11 @@ const stripTags = (s) =>
     .trim();
 
 const webSearch = async (q) => {
-  try {
-    const url = 'https://www.bing.com/search?q=' + encodeURIComponent(String(q || '').slice(0, 200)) + '&format=rss&count=6';
-    const r = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
-    if (!r.ok) return [];
-    const xml = await r.text();
+  const grab = (xml, n) => {
     const items = [];
     const re = /<item>([\s\S]*?)<\/item>/g;
     let m;
-    while ((m = re.exec(xml)) && items.length < 4) {
+    while ((m = re.exec(xml)) && items.length < n) {
       const t = /<title>([\s\S]*?)<\/title>/.exec(m[1]);
       const d = /<description>([\s\S]*?)<\/description>/.exec(m[1]);
       const l = /<link>([\s\S]*?)<\/link>/.exec(m[1]);
@@ -47,7 +43,31 @@ const webSearch = async (q) => {
       if (title || desc) items.push([title || desc.slice(0, 60), desc, link].filter(Boolean).join(' — '));
     }
     return items;
-  } catch (_) { return []; }
+  };
+  try {
+    const qq = encodeURIComponent(String(q || '').slice(0, 200));
+    const r = await fetch('https://www.bing.com/search?q=' + qq + '&format=rss&count=6', { headers: { 'User-Agent': 'Mozilla/5.0' } });
+    if (r.ok) {
+      const items = grab(await r.text(), 4);
+      if (items.length) return items;
+    }
+  } catch (_) {}
+  try {
+    const qq = encodeURIComponent(String(q || '').slice(0, 200));
+    const r = await fetch('https://api.duckduckgo.com/?q=' + qq + '&format=json&no_html=1&skip_disambig=1', { headers: { 'User-Agent': 'Mozilla/5.0' } });
+    if (r.ok) {
+      const j = await r.json().catch(() => ({}));
+      const items = [];
+      if (j.AbstractText) items.push((j.Heading ? j.Heading + ' — ' : '') + j.AbstractText);
+      (j.RelatedTopics || []).forEach((rt) => {
+        if (items.length >= 4) return;
+        if (rt && rt.Text) items.push(rt.Text);
+        else if (rt && rt.Topics) rt.Topics.forEach((t2) => { if (items.length < 4 && t2 && t2.Text) items.push(t2.Text); });
+      });
+      if (items.length) return items;
+    }
+  } catch (_) {}
+  return [];
 };
 
 const extractJson = (text) => {
@@ -208,14 +228,22 @@ export default async function handler(req, res) {
       text = (j.content || []).filter((c) => c && c.type === 'text').map((c) => c.text).join('\n');
     } else {
       const wantsJson = !!body.system && /\bJSON\b/.test(String(body.system));
+      let textBase = (process.env.AI_TEXT_BASE_URL || '').trim() || base;
+      let textToken = (process.env.AI_TEXT_AUTH_TOKEN || '').trim() || token;
+      let textModel = (process.env.AI_TEXT_MODEL || '').trim() || model;
+      if (!(process.env.AI_TEXT_BASE_URL || '').trim() && !anthropic && (process.env.AI_VISION_AUTH_TOKEN || '').trim()) {
+        textBase = 'https://openrouter.ai/api/v1';
+        textToken = (process.env.AI_VISION_AUTH_TOKEN || '').trim();
+        textModel = 'google/gemini-2.5-flash';
+      }
       const chatAsk = async (msgsArr, wantJson) => {
-        let payload = { model, max_tokens: 1600, messages: msgsArr };
+        let payload = { model: textModel, max_tokens: 1600, messages: msgsArr };
         if (wantJson) payload.response_format = { type: 'json_object' };
-        let r = await fetch(base + '/chat/completions', { method: 'POST', headers, body: JSON.stringify(payload) });
+        let r = await fetch(textBase + '/chat/completions', { method: 'POST', headers, body: JSON.stringify(payload) });
         let j = await r.json().catch(() => ({}));
         if (!r.ok && wantJson && (r.status === 400 || r.status === 404 || r.status === 422)) {
           try { delete payload.response_format; } catch (_) {}
-          r = await fetch(base + '/chat/completions', { method: 'POST', headers, body: JSON.stringify(payload) });
+          r = await fetch(textBase + '/chat/completions', { method: 'POST', headers, body: JSON.stringify(payload) });
           j = await r.json().catch(() => ({}));
         }
         if (!r.ok) {
