@@ -19,10 +19,24 @@
   var VOICE_MAX_MS = 60000;
   var VOICE_MAX_BYTES = 1500000;
   var AI_SYSTEM =
-    'Bạn là trợ lý học tập (Lernassistent) của app ôn thi nghề Fachkraft für Gastronomie (Việt – Đức). ' +
+    'Bạn là một trợ lý giáo dục cho app ôn thi nghề Fachkraft für Gastronomie (Việt – Đức). ' +
     'Trả lời bằng tiếng Việt, giữ thuật ngữ chuyên ngành tiếng Đức (kèm nghĩa VI). ' +
-    'Khi có mục "TÀI LIỆU ÔN THI" bên dưới: câu hỏi thuộc nội dung đó thì trả lời DỰA TRÊN tài liệu đó trước, ' +
-    'không bịa thông tin. Nếu tài liệu không có, trả lời kiến thức chung ngắn gọn và ghi rõ là ngoài tài liệu.';
+    'Khi có mục "TÀI LIỆU ÔN THI" bên dưới: câu hỏi thuộc nội dung đó thì trả lời DỰA TRÊN tài liệu đó trước, không bịa thông tin. ' +
+    'Nếu tài liệu không có, trả lời kiến thức chung ngắn gọn và ghi rõ là ngoài tài liệu. ' +
+    '\n\nMọi câu trả lời phải được xuất ra dưới dạng JSON hợp lệ theo đúng cấu trúc sau:\n' +
+    '{\n  "question": "",\n  "answer": "",\n  "explanation": "",\n  "example": "",\n  "references": []\n}\n\n' +
+    'Quy tắc từng trường:\n' +
+    '- question: lặp lại hoặc diễn đạt ngắn gọn câu hỏi của người dùng, không thêm thông tin mới.\n' +
+    '- answer: trả lời trực tiếp, viết thành nhiều đoạn ngắn; nếu nhiều ý thì dùng danh sách gạch đầu dòng; không lan man; ưu tiên câu ngắn, rõ ràng; xuống dòng hợp lý để dễ đọc.\n' +
+    '- explanation: giải thích chi tiết hơn câu trả lời, chia thành đoạn hoặc mục nhỏ, dùng danh sách gạch đầu dòng nếu có nhiều nguyên nhân hoặc bước thực hiện; có thể dùng tiêu đề nhỏ khi dài; trình bày giúp người học hiểu bản chất.\n' +
+    '- example: đưa ra ít nhất một ví dụ thực tế ngắn gọn sát nội dung; nếu không có ví dụ phù hợp để chuỗi rỗng "".\n' +
+    '- references: là mảng, chỉ thêm nguồn khi thực sự có nguồn đáng tin cậy; nếu không có thì trả về []; không tự tạo nguồn giả.\n\n' +
+    'Quy tắc trình bày:\n' +
+    '- Luôn dùng Markdown bên trong các chuỗi để dễ đọc, được phép xuống dòng.\n' +
+    '- Được phép dùng: danh sách gạch đầu dòng (-), danh sách đánh số (1. 2. 3.), chữ in đậm (**...**) và tiêu đề nhỏ (#).\n' +
+    '- Không dùng emoji, không dùng ký tự trang trí.\n' +
+    '- Không thêm bất kỳ trường nào ngoài schema.\n' +
+    '- Luôn trả về JSON hợp lệ, không viết bất kỳ nội dung nào ngoài JSON.';
 
   var player = '';
   var rooms = [];
@@ -113,6 +127,19 @@
       setTimeout(function () { if (t.parentNode) t.parentNode.removeChild(t); }, 300);
     }, 3200);
   }
+
+  window.cbxCopyJson = function (btn) {
+    if (!btn) return;
+    var raw = btn.getAttribute('data-raw') || '';
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(raw).then(
+        function () { cbxToast('Đã copy JSON'); },
+        function () { cbxToast('Không copy được', 'warn'); }
+      );
+    } else {
+      cbxToast('Không copy được', 'warn');
+    }
+  };
 
   /* ---------- Unread ---------- */
   function loadUnread() {
@@ -310,6 +337,70 @@
     if (scrollToBottom !== false) box.scrollTop = box.scrollHeight;
   }
 
+  function tryAiJson(s) {
+    if (!s || typeof s !== 'string') return null;
+    var t = String(s).trim();
+    var m = /```(?:json)?\s*([\s\S]*?)```/i.exec(t);
+    if (m) t = m[1].trim();
+    var obj = null;
+    try { obj = JSON.parse(t); } catch (_) {}
+    if (!obj) {
+      var a = t.indexOf('{'), b = t.lastIndexOf('}');
+      if (a >= 0 && b > a) {
+        try { obj = JSON.parse(t.slice(a, b + 1)); } catch (_) {}
+      }
+    }
+    if (obj && typeof obj === 'object' && !Array.isArray(obj)) {
+      var hasAny = obj.answer != null || obj.question != null || obj.explanation != null;
+      if (hasAny) return obj;
+    }
+    return null;
+  }
+
+  function mdLite(s) {
+    s = String(s == null ? '' : s)
+      .replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>')
+      .replace(/^#{1,6}\s+(.+)$/gm, '<b class="cbx-mh">$1</b>');
+    var out = [];
+    var lines = s.split(/\r?\n/);
+    var i = 0;
+    while (i < lines.length) {
+      var L = lines[i].trim();
+      if (/^[-*]\s+/.test(L)) {
+        var ul = [];
+        while (i < lines.length && /^[-*]\s+/.test(lines[i].trim())) { ul.push('<li>' + lines[i].replace(/^[-*]\s+/, '') + '</li>'); i++; }
+        out.push('<ul>' + ul.join('') + '</ul>');
+      } else if (/^\d+[.)]\s+/.test(L)) {
+        var ol = [];
+        while (i < lines.length && /^\d+[.)]\s+/.test(lines[i].trim())) { ol.push('<li>' + lines[i].replace(/^\d+[.)]\s+/, '') + '</li>'); i++; }
+        out.push('<ol>' + ol.join('') + '</ol>');
+      } else {
+        var block = [];
+        while (i < lines.length && !/^[-*]\s+/.test(lines[i].trim()) && !/^\d+[.)]\s+/.test(lines[i].trim())) { block.push(lines[i]); i++; }
+        out.push(block.join('<br>'));
+      }
+    }
+    return out.join('<br>');
+  }
+
+  function aiCardHtml(obj, raw) {
+    function sec(label, html) {
+      return html ? '<div class="cbx-ai-sec"><div class="cbx-ai-sec-l">' + label + '</div><div class="cbx-ai-sec-b">' + html + '</div></div>' : '';
+    }
+    var refs = Array.isArray(obj.references) ? obj.references.filter(function (r) { return r != null && String(r).trim(); }) : [];
+    var refHtml = refs.length ?
+      '<ul class="cbx-ai-refs">' + refs.map(function (r) { return '<li>' + mdLite(r) + '</li>'; }).join('') + '</ul>' : '';
+    return '' +
+      '<div class="cbx-ai-card">' +
+      '<button type="button" class="cbx-ai-copy" title="Copy JSON" data-raw="' + esc(raw) + '" onclick="window.cbxCopyJson&&window.cbxCopyJson(this)">Copy JSON</button>' +
+      sec('Câu hỏi', mdLite(obj.question)) +
+      sec('Trả lời', mdLite(obj.answer)) +
+      sec('Giải thích', mdLite(obj.explanation)) +
+      sec('Ví dụ', mdLite(obj.example)) +
+      (refHtml ? sec('Nguồn', refHtml) : '') +
+      '</div>';
+  }
+
   function bubbleContent(m) {
     if (m.kind === 'voice') {
       var dur = fmtDur(m.audioDur);
@@ -323,6 +414,10 @@
     if (m.image) {
       return '<img class="cbx-ai-img" alt="ảnh" src="' + esc(m.image) + '">' +
         (m.text && m.text !== '(ảnh đã gửi)' ? '<span class="cbx-text">' + esc(m.text) + '</span>' : '');
+    }
+    if (m.sender === 'AI' || m.sender === 'ai') {
+      var j = tryAiJson(m.text);
+      if (j) return aiCardHtml(j, String(m.text || '').trim());
     }
     return '<span class="cbx-text">' + esc(m.text || '') + '</span>';
   }
@@ -1087,7 +1182,21 @@ function aiSetBase() {
     '.cbx-voice-bar{display:inline-flex;align-items:center;gap:2px;height:14px}' +
     '.cbx-voice-bar i{width:2px;background:currentColor;border-radius:2px}' +
     '.cbx-voice-dur{font-size:12px;font-weight:600}' +
+    '.cbx-voice-dur{font-size:12px;font-weight:600}' +
     '.cbx-voice.cbx-playing{opacity:.6}' +
+    /* ai structured card */
+    '.cbx-ai-card{border:1px solid var(--cbx-line);border-radius:14px;padding:10px 12px;background:#fafaff;max-width:100%;min-width:220px}' +
+    '.cbx-ai-card .cbx-ai-sec{margin:8px 0 0}' +
+    '.cbx-ai-card .cbx-ai-sec:first-of-type{margin-top:2px}' +
+    '.cbx-ai-sec-l{font-size:10px;font-weight:700;letter-spacing:.06em;color:var(--cbx-muted);text-transform:uppercase;margin-bottom:3px}' +
+    '.cbx-ai-sec-b{font-size:13.5px;line-height:1.55;color:#1c1c1e;word-break:break-word}' +
+    '.cbx-ai-sec-b ul,.cbx-ai-sec-b ol{margin:4px 0;padding-left:18px}' +
+    '.cbx-ai-sec-b li{margin:2px 0}' +
+    '.cbx-ai-sec-b .cbx-mh{font-weight:700;display:block;margin:6px 0 2px}' +
+    '.cbx-ai-refs li{font-size:12px;color:var(--cbx-muted);word-break:break-word}' +
+    '.cbx-ai-copy{float:right;border:none;background:var(--cbx-soft);color:var(--cbx-accent);font-size:11px;font-weight:600;' +
+    'border-radius:8px;padding:3px 8px;cursor:pointer}' +
+    '.cbx-ai-copy:active{transform:scale(.95)}' +
     /* composer */
     '.cbx-composer{display:flex;align-items:flex-end;gap:6px;padding:8px 10px 10px;border-top:1px solid var(--cbx-line)}' +
     '.cbx-input{flex:1;resize:none;border:1px solid var(--cbx-line);border-radius:18px;padding:9px 13px;' +
