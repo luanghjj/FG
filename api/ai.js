@@ -231,11 +231,6 @@ export default async function handler(req, res) {
       let textBase = (process.env.AI_TEXT_BASE_URL || '').trim() || base;
       let textToken = (process.env.AI_TEXT_AUTH_TOKEN || '').trim() || token;
       let textModel = (process.env.AI_TEXT_MODEL || '').trim() || model;
-      if (!(process.env.AI_TEXT_BASE_URL || '').trim() && !anthropic && (process.env.AI_VISION_AUTH_TOKEN || '').trim()) {
-        textBase = 'https://openrouter.ai/api/v1';
-        textToken = (process.env.AI_VISION_AUTH_TOKEN || '').trim();
-        textModel = 'google/gemini-2.5-flash';
-      }
       const chatAsk = async (msgsArr, wantJson) => {
         for (let attempt = 0; attempt < 3; attempt++) {
           const payload = { model: textModel, max_tokens: 1600, messages: msgsArr };
