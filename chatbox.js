@@ -386,8 +386,12 @@
   }
 
   function onRoomMessages(newMsgs, isFirst) {
+    var have = {};
+    for (var j = 0; j < msgs.length; j++) have[msgs[j].id] = true;
     for (var i = 0; i < newMsgs.length; i++) {
       var m = newMsgs[i];
+      if (!m || !m.id || have[m.id]) continue;
+      have[m.id] = true;
       msgs.push(m);
       if (!isFirst && m.sender !== player) {
         // count as unread unless the panel is open on this exact room
