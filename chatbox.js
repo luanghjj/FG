@@ -267,7 +267,7 @@ var AI_SYSTEM =
     var list = $('cbxRoomList');
     if (!list) return;
     list.innerHTML = '';
-    list.appendChild(el('div', 'cbx-section-label', 'TRÒ CHUYỆN'));
+    list.appendChild(el('div', 'cbx-section-label', 'ĐOẠN HỘI THOẠI'));
     var aiItem = el('div', 'cbx-room-item' + (activeRoom === 'ai' ? ' cbx-active' : ''), '');
     aiItem.innerHTML =
       '<span class="cbx-avatar cbx-avatar-ai">' + icon('sparkle', 18) + '</span>' +
@@ -276,24 +276,20 @@ var AI_SYSTEM =
     aiItem.addEventListener('click', function () { openAIThread(); });
     list.appendChild(aiItem);
 
-    rooms.forEach(function (r) {
-      var online = countOnline(r);
-      var un = unread[r.slug] || 0;
-      var item = el('div', 'cbx-room-item' + (activeRoom === r.slug ? ' cbx-active' : ''), '');
+    var chung = null;
+    for (var i = 0; i < rooms.length; i++) if (rooms[i].slug === 'chung') { chung = rooms[i]; break; }
+    if (chung) {
+      var online = countOnline(chung);
+      var un = unread['chung'] || 0;
+      var item = el('div', 'cbx-room-item' + (activeRoom === 'chung' ? ' cbx-active' : ''), '');
       item.innerHTML =
-        '<span class="cbx-avatar" style="background:' + hashColor(r.slug) + '">' + esc((r.icon || '💬').slice(0, 2)) + '</span>' +
-        '<span class="cbx-room-name">' + esc(r.name) + '</span>' +
-        '<span class="cbx-room-meta">' + (online ? online + ' online' : '—') + '</span>' +
+        '<span class="cbx-avatar" style="background:' + hashColor('chung') + '">' + esc((chung.icon || '💬').slice(0, 2)) + '</span>' +
+        '<span class="cbx-room-name">' + esc(chung.name || 'Chung') + '</span>' +
+        '<span class="cbx-room-meta">' + (online ? online + ' online' : '') + '</span>' +
         (un > 0 ? '<span class="cbx-badge-sm">' + (un > 99 ? '99+' : un) + '</span>' : '');
-      (function (slug) {
-        item.addEventListener('click', function () { openRoom(slug); });
-      })(r.slug);
+      item.addEventListener('click', function () { openRoom('chung'); });
       list.appendChild(item);
-    });
-
-    var add = el('div', 'cbx-room-add', '+' + esc(' Tạo phòng mới'));
-    add.addEventListener('click', onCreateRoom);
-    list.appendChild(add);
+    }
     list.appendChild(el('div', 'cbx-hint', 'Gõ <b>/ai</b> trước tin nhắn để hỏi AI'));
   }
 
@@ -330,7 +326,9 @@ var AI_SYSTEM =
           ? '<div class="cbx-msg-sender">' + esc(isAI ? 'AI' : m.sender) + '</div>'
           : '') +
         '<div class="cbx-msg-bubble">' + bubbleContent(m) + '</div>' +
-        '<div class="cbx-msg-time">' + fmtTime(m.at) + '</div>';
+        '<div class="cbx-msg-time">' + fmtTime(m.at) +
+        (own ? ' <button type="button" class="cbx-unsend" data-id="' + esc(m.id) + '" title="Huỷ gửi">' + icon('trash', 10) + '</button>' : '') +
+        '</div>';
       row.innerHTML = avatar + '<div class="cbx-msg-main">' + body + '</div>';
       box.appendChild(row);
       lastSender = m.sender;
@@ -496,23 +494,31 @@ var AI_SYSTEM =
 
   function onRoomMessages(newMsgs, isFirst) {
     var have = {};
+    var changed = false;
     for (var j = 0; j < msgs.length; j++) have[msgs[j].id] = true;
     for (var i = 0; i < newMsgs.length; i++) {
       var m = newMsgs[i];
-      if (!m || !m.id || have[m.id]) continue;
+      if (!m || !m.id) continue;
+      if (m.deleted) {
+        msgs = msgs.filter(function (x) { return x.id !== m.id; });
+        delete have[m.id];
+        changed = true;
+        continue;
+      }
+      if (have[m.id]) continue;
       have[m.id] = true;
       msgs.push(m);
       if (!isFirst && m.sender !== player) {
-        // count as unread unless the panel is open on this exact room
         if (!panelOpen || activeRoom !== m.room) {
           unread[m.room] = (unread[m.room] || 0) + 1;
         }
       }
+      changed = true;
     }
     if (msgs.length > 300) msgs = msgs.slice(-300);
     saveUnread();
     updateBadge();
-    if (panelOpen && activeRoom && activeRoom !== 'ai' && activeRoom === subscribedSlug) {
+    if (panelOpen && activeRoom && activeRoom !== 'ai' && activeRoom === subscribedSlug && changed) {
       renderMessages();
     }
   }
@@ -734,6 +740,45 @@ function aiSetBase() {
       });
   }
 
+  function unsendMessage(id) {
+    if (!id) return;
+    var isAi = /^ai-/.test(id);
+    if (isAi) {
+      var idx = Number(String(id).replace('ai-', ''));
+      var h = aiHistory();
+      if (!(idx >= 0 && idx < h.length)) return;
+      h.splice(idx, 1);
+      saveAiHistory(h);
+      renderAiMessages();
+      cbxToast('Đã huỷ gửi', 'ok');
+      return;
+    }
+    if (!activeRoom || activeRoom === 'ai') return;
+    var slug = activeRoom;
+    LearnDB.chatDeleteMessage(slug, id)
+      .then(function () {
+        msgs = msgs.filter(function (x) { return x.id !== id; });
+        renderMessages();
+        cbxToast('Đã huỷ gửi', 'ok');
+      })
+      .catch(function (err) {
+        cbxToast(err && err.message ? err.message : 'Huỷ gửi thất bại', 'warn');
+      });
+  }
+
+    function sendImageToRoom(slug, caption, image) {
+    LearnDB.chatSendMessage(slug, player, { image: image, text: caption || '' })
+      .then(function (m) {
+        msgs.push(m);
+        if (msgs.length > 300) msgs = msgs.slice(-300);
+        renderMessages();
+        LearnDB.chatTouchPresence(slug, player).catch(function () {});
+      })
+      .catch(function (err) {
+        cbxToast(err && err.message ? err.message : 'Gửi ảnh thất bại', 'warn');
+      });
+  }
+
   /* ---------- Voice ---------- */
   function pickMime() {
     if (window.MediaRecorder) {
@@ -819,19 +864,6 @@ function aiSetBase() {
   }
 
   /* ---------- Rooms mgmt ---------- */
-  function onCreateRoom() {
-    var name = window.prompt('Tên phòng mới:');
-    if (!name || !name.trim()) return;
-    LearnDB.chatCreateRoom(name, player)
-      .then(function (r) {
-        refreshRooms().then(function () {
-          openRoom(r.slug);
-        });
-      })
-      .catch(function (err) {
-        cbxToast(err && err.message ? err.message : 'Tạo phòng thất bại', 'warn');
-      });
-  }
   function refreshRooms() {
     return LearnDB.chatListRooms().then(function (list) {
       rooms = list;
@@ -953,7 +985,6 @@ function aiSetBase() {
       '<button id="cbxAiBtn" class="cbx-iconbtn" title="AI">' + icon('sparkle', 20) + '</button>' +
       '<button id="cbxAiReset" class="cbx-iconbtn" title="Xoá hội thoại AI" style="display:none">' + icon('trash', 18) + '</button>' +
       '<button id="cbxAiGear" class="cbx-iconbtn" title="Cấu hình AI server" style="display:none">' + icon('gear', 19) + '</button>' +
-      '<button id="cbxNewRoom" class="cbx-iconbtn" title="Tạo phòng">' + icon('plus', 20) + '</button>' +
       '<button id="cbxClose" class="cbx-iconbtn" title="Đóng">' + icon('close', 20) + '</button>' +
       '</div>' +
       '</div>' +
@@ -983,15 +1014,14 @@ function aiSetBase() {
     $('cbxAiBtn').addEventListener('click', openAIThread);
     $('cbxAiReset').addEventListener('click', resetAI);
     $('cbxAiGear').addEventListener('click', aiSetBase);
-    $('cbxNewRoom').addEventListener('click', onCreateRoom);
     $('cbxSend').addEventListener('click', sendCurrent);
     $('cbxMic').addEventListener('click', function () {
       if (recording) stopRec();
       else startRec();
     });
     $('cbxImgBtn').addEventListener('click', function () {
-      if (activeRoom !== 'ai') {
-        cbxToast('Gửi ảnh chỉ dùng trong hội thoại AI', 'warn');
+      if (!activeRoom) {
+        cbxToast('Chọn một đoạn hội thoại trước', 'warn');
         return;
       }
       $('cbxImgFile').click();
@@ -1011,7 +1041,13 @@ function aiSetBase() {
           var inp = $('cbxInput');
           if (inp) inp.value = '';
           autoGrow();
-          sendToAI(caption, small);
+          if (activeRoom === 'ai') {
+            sendToAI(caption, small);
+          } else if (activeRoom) {
+            sendImageToRoom(activeRoom, caption, small);
+          } else {
+            cbxToast('Chọn một đoạn hội thoại trước', 'warn');
+          }
         });
       };
       fr.onerror = function () { cbxToast('Không đọc được ảnh', 'warn'); };
@@ -1051,7 +1087,12 @@ function aiSetBase() {
     });
     $('cbxMsgs').addEventListener('click', function (e) {
       var v = e.target.closest('.cbx-voice');
-      if (v) playVoice(v.getAttribute('data-id'));
+      if (v) { playVoice(v.getAttribute('data-id')); return; }
+      var u = e.target.closest('.cbx-unsend');
+      if (u) {
+        unsendMessage(u.getAttribute('data-id'));
+        return;
+      }
     });
     document.addEventListener('visibilitychange', function () {
       if (document.visibilityState === 'visible') {
@@ -1084,6 +1125,12 @@ function aiSetBase() {
     updateBadge();
     LearnDB.chatEnsureDefaults().catch(function () {});
     refreshRooms();
+    if (!lsGet('chat_purged_v1')) {
+      LearnDB.chatPurgeNonDefault().then(function () {
+        lsSet('chat_purged_v1', '1');
+        refreshRooms();
+      }).catch(function () {});
+    }
   }
 
   var prevPlayer = '';
@@ -1176,6 +1223,11 @@ function aiSetBase() {
     '.cbx-ai-img{display:block;max-width:min(260px,100%);max-height:240px;border-radius:12px;' +
     'margin:0 0 6px;object-fit:cover}' +
     '.cbx-msg-time{font-size:9.5px;color:#b0b0b5;padding:2px 5px}' +
+    '.cbx-unsend{display:inline-flex;align-items:center;justify-content:center;border:none;background:transparent;' +
+    'color:#b0b0b5;cursor:pointer;padding:0;vertical-align:middle;opacity:.75}' +
+    '.cbx-unsend:hover{color:var(--cbx-bad);opacity:1}' +
+    '.cbx-own .cbx-unsend{color:rgba(255,255,255,.55)}' +
+    '.cbx-own .cbx-unsend:hover{color:#fff}' +
     '.cbx-sys{font-size:11px;color:var(--cbx-muted);text-align:center;display:block}' +
     '.cbx-voice{display:inline-flex;align-items:center;gap:6px;background:rgba(0,122,255,.12);color:var(--cbx-accent);' +
     'border:none;border-radius:14px;padding:6px 10px;cursor:pointer}' +

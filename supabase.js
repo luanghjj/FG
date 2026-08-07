@@ -128,6 +128,12 @@
     return (rows && rows[0]) || { key: key, value: value };
   }
 
+  async function deleteConfig(key) {
+    return sbFetch('/rest/v1/config?key=eq.' + encodeURIComponent(key), {
+      method: 'DELETE',
+    });
+  }
+
   async function listConfig(like, limit) {
     const lim = limit || 200;
     return (
@@ -1454,10 +1460,7 @@
   const CHAT_ROOM_PREFIX = 'learn:chat:room:';
   const CHAT_MSG_PREFIX = 'learn:chat:msg:';
   const CHAT_DEFAULT_ROOMS = [
-    { slug: 'tong-hop', name: 'Tổng hợp', icon: '💬' },
-    { slug: 'bfk1', name: 'BfK-1 · LF6/LF9', icon: '🍳' },
-    { slug: 'englisch', name: 'Englisch · KA', icon: '🇬🇧' },
-    { slug: 'gk', name: 'GK · Zusammenfassung', icon: '📚' },
+    { slug: 'chung', name: 'Chung', icon: '💬' },
   ];
 
   function chatRoomKey(slug) {
@@ -1586,11 +1589,47 @@
     if (m.kind === 'voice') {
       m.audio = msg.audio;
       m.audioDur = Number(msg.audioDur) || 0;
+    } else if (msg && msg.image) {
+      m.image = msg.image;
+      if (msg.text) m.text = String(msg.text).slice(0, 4000);
     } else if (msg && msg.text !== undefined) {
       m.text = String(msg.text).slice(0, 4000);
     }
     const row = await upsertConfig(chatMsgKey(slug, id), m);
     return row && row.value ? row.value : m;
+  }
+
+  async function chatDeleteMessage(slug, id) {
+    if (!slug || !id) return false;
+    await deleteConfig(chatMsgKey(slug, id));
+    return true;
+  }
+
+  async function chatClearAll(slug) {
+    const s = clean(slug);
+    let page = 0;
+    for (;;) {
+      const msgs = await chatListMessages(s, 500);
+      if (!msgs.length) break;
+      for (const m of msgs) {
+        if (m && m.id) await deleteConfig(chatMsgKey(s, m.id));
+      }
+      if (msgs.length < 500) break;
+      page++;
+      if (page > 50) break;
+    }
+    return true;
+  }
+
+  async function chatPurgeNonDefault() {
+    const rooms = await chatListRooms();
+    for (const r of rooms) {
+      const slug = clean(r.slug);
+      if (slug === 'chung') continue;
+      await chatClearAll(slug);
+      await deleteConfig(chatRoomKey(slug));
+    }
+    return true;
   }
 
   async function chatListMessages(slug, limit) {
@@ -1618,24 +1657,41 @@
     let timer = null;
     let first = true;
     const seen = {};
+    let have = null;
     async function pull() {
       if (stopped) return;
       try {
         const msgs = await chatListMessages(s, 200);
         if (first) {
           first = false;
-          for (const m of msgs) seen[m.id] = true;
+          have = {};
+          for (const m of msgs) {
+            if (m && m.id) {
+              seen[m.id] = true;
+              have[m.id] = true;
+            }
+          }
           if (onMessages) onMessages(msgs, true);
           return;
         }
-        const fresh = [];
+        const next = {};
         for (const m of msgs) {
-          if (m && !seen[m.id]) {
-            seen[m.id] = true;
-            fresh.push(m);
+          if (m && m.id) {
+            next[m.id] = true;
+            if (!seen[m.id]) {
+              seen[m.id] = true;
+              if (onMessages) onMessages([m], false);
+            }
           }
         }
-        if (fresh.length && onMessages) onMessages(fresh, false);
+        if (have) {
+          const gone = [];
+          for (const id in have) {
+            if (!next[id]) gone.push({ id: id, deleted: true });
+          }
+          if (gone.length && onMessages) onMessages(gone, false);
+        }
+        have = next;
       } catch (_) {}
     }
     const ms = Math.max(800, Number(pollMs) || 1000);
@@ -1700,6 +1756,9 @@
     chatTouchPresence,
     chatSendMessage,
     chatListMessages,
+    chatDeleteMessage,
+    chatClearAll,
+    chatPurgeNonDefault,
     subscribeChatRoom,
   };
 })(typeof window !== 'undefined' ? window : globalThis);
