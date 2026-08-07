@@ -7,6 +7,16 @@
 //   AI_AUTH_TOKEN  = token gateway (open code: key "opencode" trong ~/.local/share/opencode/auth.json)
 //   AI_MODEL       = e.g. deepseek-v4-flash-free
 //   AI_ANTHROPIC   = "1" khi base là Anthropic-compatible (tùy chọn)
+// Vision (đọc ảnh — mặc định dùng Anthropic /v1/messages với gateway hhtech/anthropic):
+//   AI_VISION_BASE_URL   = https://hhtechapi.net
+//   AI_VISION_AUTH_TOKEN = token hhtech
+//   AI_VISION_MODEL      = e.g. claude-sonnet-5
+
+const stripThought = (t) =>
+  String(t || '')
+    .replace(/^\+?\s*Thought:\s*[\d.]+\s*ms\s*$/gim, '')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
 
 export default async function handler(req, res) {
   const base = (process.env.AI_BASE_URL || '').trim().replace(/\/+$/, '');
@@ -55,7 +65,65 @@ export default async function handler(req, res) {
       'Authorization': 'Bearer ' + token,
     };
     let text = '';
-    if (anthropic) {
+    const hasImage = parts.some((p) => p && p.image);
+    if (hasImage) {
+      const vtoken = (process.env.AI_VISION_AUTH_TOKEN || '').trim() || token;
+      if (!(process.env.AI_VISION_BASE_URL || '').trim() || !vtoken) {
+        return json(200, { error: 'AI chưa hỗ trợ đọc ảnh trên thiết bị này — chủ app cần thêm AI_VISION_BASE_URL / AI_VISION_AUTH_TOKEN.', parts: [] });
+      }
+      const vbase = (process.env.AI_VISION_BASE_URL || '').trim().replace(/\/+$/, '');
+      const vmodel = (process.env.AI_VISION_MODEL || '').trim() || model;
+      const vOpenAI = (process.env.AI_VISION_OPENAI || '').trim() === '1';
+      if (vOpenAI) {
+        const content = [];
+        for (const p of parts) {
+          if (p && p.image) content.push({ type: 'image_url', image_url: { url: String(p.image) } });
+          else if (p && p.text) content.push({ type: 'text', text: String(p.text) });
+        }
+        const vr = await fetch(vbase + '/chat/completions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + vtoken },
+          body: JSON.stringify({ model: vmodel, max_tokens: 2048, messages: [{ role: 'user', content }] }),
+        });
+        const vj = await vr.json().catch(() => ({}));
+        if (!vr.ok) {
+          const msg = (vj && vj.error && (vj.error.message || JSON.stringify(vj.error))) || ('gateway HTTP ' + vr.status);
+          return json(502, { error: 'AI đọc ảnh: ' + msg });
+        }
+        const vc0 = vj.choices && vj.choices[0] && vj.choices[0].message;
+        text = (vc0 && vc0.content) || (vc0 && vc0.reasoning_content) || '';
+      } else {
+        const content = [];
+        for (const p of parts) {
+          if (p && p.image) {
+            const m = /^data:([^;,]+);base64,(.+)$/.exec(String(p.image));
+            const mt = m ? m[1] : 'image/jpeg';
+            const data = m ? m[2] : String(p.image);
+            content.push({ type: 'image', source: { type: 'base64', media_type: mt, data } });
+          } else if (p && p.text) {
+            content.push({ type: 'text', text: String(p.text) });
+          }
+        }
+        const vr = await fetch(vbase + '/v1/messages', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': vtoken,
+            'Authorization': 'Bearer ' + vtoken,
+            'anthropic-version': '2023-06-01',
+            'anthropic-dangerous-direct-browser-access': 'true',
+          },
+          body: JSON.stringify({ model: vmodel, max_tokens: 2048, messages: [{ role: 'user', content }] }),
+        });
+        const vj = await vr.json().catch(() => ({}));
+        if (!vr.ok) {
+          const msg = (vj && vj.error && (vj.error.message || JSON.stringify(vj.error))) || ('gateway HTTP ' + vr.status);
+          return json(502, { error: 'AI đọc ảnh: ' + msg });
+        }
+        text = (vj.content || []).filter((c) => c && c.type === 'text').map((c) => c.text).join('\n');
+      }
+      return json(200, { parts: [{ type: 'text', text: stripThought(text) || '' }] });
+    } else if (anthropic) {
       headers['x-api-key'] = token;
       headers['anthropic-version'] = '2023-06-01';
       headers['anthropic-dangerous-direct-browser-access'] = 'true';
@@ -84,7 +152,7 @@ export default async function handler(req, res) {
       const c0 = j.choices && j.choices[0] && j.choices[0].message;
       text = (c0 && c0.content) || (c0 && c0.reasoning_content) || '';
     }
-    return json(200, { parts: [{ type: 'text', text: text || '' }] });
+    return json(200, { parts: [{ type: 'text', text: stripThought(text) || '' }] });
   } catch (e) {
     return json(502, { error: 'AI proxy: ' + String((e && e.message) || e) });
   }

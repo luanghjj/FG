@@ -96,6 +96,7 @@
     stop: '<path d="M7 7h10v10H7z"/>',
     trash: '<path d="M4 7h16M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M6 7l1 13h10l1-13"/>',
     gear: '<path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/>',
+    image: '<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-9 9"/>',
   };
 
   /* ---------- Toast ---------- */
@@ -146,14 +147,22 @@
     try { return JSON.parse(lsGet(AI_HIST_KEY) || '[]') || []; } catch (_) { return []; }
   }
   function saveAiHistory(h) {
-    lsSet(AI_HIST_KEY, JSON.stringify(h.slice(-40)));
+    try { localStorage.setItem(AI_HIST_KEY, JSON.stringify(h.slice(-40))); } catch (_) {}
   }
-  async function aiCloudAsk(text, system) {
+  async function aiCloudAsk(text, system, image) {
     var hist = aiHistory();
-    var parts = hist.map(function (m) {
-      return { type: 'text', role: m.role === 'assistant' ? 'assistant' : 'user', text: m.text };
-    });
-    parts.push({ type: 'text', role: 'user', text: text });
+    var parts = [];
+    for (var i = 0; i < hist.length; i++) {
+      var h = hist[i];
+      var role = h.role === 'assistant' ? 'assistant' : 'user';
+      if (h.image && role === 'user') {
+        parts.push({ type: 'text', role: role, text: h.text || '(ảnh đã gửi)' });
+      } else {
+        parts.push({ type: 'text', role: role, text: h.text });
+      }
+    }
+    if (image) parts.push({ type: 'image', role: 'user', image: image });
+    else parts.push({ type: 'text', role: 'user', text: text });
     var res = await fetch('api/ai', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -206,14 +215,14 @@
     }
     return reply;
   }
-  async function aiAsk(text, onDelta) {
+  async function aiAsk(text, onDelta, image) {
     var system = AI_SYSTEM;
     if (window.Wissen) {
       var context = window.Wissen.searchContext(text, 4);
       if (context && context.length) system += '\n\n=== TÀI LIỆU ÔN THI (nguồn nội bộ app — hãy ưu tiên) ===\n' + context.join('\n\n');
     }
     try {
-      var cloudReply = await aiCloudAsk(text, system);
+      var cloudReply = await aiCloudAsk(text, system, image);
       return cloudReply || '(AI không trả lời)';
     } catch (eCloud) {
       try {
@@ -310,6 +319,10 @@
     }
     if (m.kind === 'system') {
       return '<span class="cbx-sys">' + esc(m.text || '') + '</span>';
+    }
+    if (m.image) {
+      return '<img class="cbx-ai-img" alt="ảnh" src="' + esc(m.image) + '">' +
+        (m.text && m.text !== '(ảnh đã gửi)' ? '<span class="cbx-text">' + esc(m.text) + '</span>' : '');
     }
     return '<span class="cbx-text">' + esc(m.text || '') + '</span>';
   }
@@ -435,6 +448,7 @@
         sender: h.role === 'assistant' ? 'AI' : player,
         kind: 'text',
         text: h.text,
+        image: h.image || '',
         at: new Date().toISOString(),
       };
       if (fake.sender === player) fake.sender = player;
@@ -453,16 +467,16 @@
     renderMessages();
   }
 
-  function sendToAI(raw) {
+  function sendToAI(raw, image) {
     var text = String(raw || '').trim();
-    if (!text || aiBusy) return;
+    if ((!text && !image) || aiBusy) return;
     var hist = aiHistory();
-    hist.push({ role: 'user', text: text });
+    hist.push({ role: 'user', text: text || '(ảnh đã gửi)', image: image || undefined });
     saveAiHistory(hist);
     renderAiMessages();
     aiBusy = true;
     renderAiMessages();
-    aiAsk(text, null)
+    aiAsk(text, null, image)
       .then(function (reply) {
         aiBusy = false;
         var h = aiHistory();
@@ -476,6 +490,8 @@
         var msg = '⚠️ AI chưa phản hồi. Vui lòng thử lại sau ít phút.';
         if (raw && raw.indexOf('chưa cấu hình') !== -1) {
           msg = '⚠️ AI chưa được kích hoạt — vui lòng liên hệ quản trị viên.';
+        } else if (raw && raw.indexOf('đọc ảnh') !== -1) {
+          msg = '⚠️ AI chưa hỗ trợ đọc ảnh trên thiết bị này.';
         }
         var h = aiHistory();
         h.push({ role: 'assistant', text: msg });
@@ -849,12 +865,14 @@ function aiSetBase() {
       '<div id="cbxThread" class="cbx-thread" style="display:none">' +
       '<div id="cbxAiStatus" class="cbx-ai-status" style="display:none"></div>' +
       '<div id="cbxMsgs" class="cbx-msgs"></div>' +
-      '<div class="cbx-composer">' +
-      '<button id="cbxMic" class="cbx-iconbtn cbx-mic" title="Ghi âm">' + icon('mic', 20) + '</button>' +
-      '<span id="cbxRecLabel" class="cbx-reclabel" style="display:none"></span>' +
-      '<textarea id="cbxInput" class="cbx-input" rows="1" placeholder="Tin nhắn…  (/ai để hỏi AI)"></textarea>' +
-      '<button id="cbxSend" class="cbx-send" title="Gửi">' + icon('send', 18) + '</button>' +
-      '</div>' +
+       '<div class="cbx-composer">' +
+       '<button id="cbxMic" class="cbx-iconbtn cbx-mic" title="Ghi âm">' + icon('mic', 20) + '</button>' +
+       '<button id="cbxImgBtn" class="cbx-iconbtn" title="Gửi ảnh cho AI">' + icon('image', 20) + '</button>' +
+       '<input type="file" id="cbxImgFile" accept="image/*" style="display:none">' +
+       '<span id="cbxRecLabel" class="cbx-reclabel" style="display:none"></span>' +
+       '<textarea id="cbxInput" class="cbx-input" rows="1" placeholder="Tin nhắn…  (/ai để hỏi AI)"></textarea>' +
+       '<button id="cbxSend" class="cbx-send" title="Gửi">' + icon('send', 18) + '</button>' +
+       '</div>' +
       '</div>' +
       '</div>';
     document.body.appendChild(rootEl);
@@ -875,6 +893,51 @@ function aiSetBase() {
       if (recording) stopRec();
       else startRec();
     });
+    $('cbxImgBtn').addEventListener('click', function () {
+      if (activeRoom !== 'ai') {
+        cbxToast('Gửi ảnh chỉ dùng trong hội thoại AI', 'warn');
+        return;
+      }
+      $('cbxImgFile').click();
+    });
+    $('cbxImgFile').addEventListener('change', function (e) {
+      var f = e.target && e.target.files && e.target.files[0];
+      e.target.value = '';
+      if (!f) return;
+      if (f.size > 15 * 1024 * 1024) {
+        cbxToast('Ảnh quá lớn (tối đa 15MB)', 'warn');
+        return;
+      }
+      var fr = new FileReader();
+      fr.onload = function () {
+        shrinkImage(String(fr.result), 1280, function (small) {
+          var caption = ($('cbxInput') || {}).value ? String($('cbxInput').value).trim() : '';
+          var inp = $('cbxInput');
+          if (inp) inp.value = '';
+          autoGrow();
+          sendToAI(caption, small);
+        });
+      };
+      fr.onerror = function () { cbxToast('Không đọc được ảnh', 'warn'); };
+      fr.readAsDataURL(f);
+    });
+    function shrinkImage(dataUrl, maxSide, cb) {
+      var img = new Image();
+      img.onload = function () {
+        var scale = Math.min(1, maxSide / Math.max(img.width, img.height));
+        var w = Math.max(1, Math.round(img.width * scale));
+        var h = Math.max(1, Math.round(img.height * scale));
+        var cv = document.createElement('canvas');
+        cv.width = w; cv.height = h;
+        var ctx = cv.getContext('2d');
+        ctx.fillStyle = '#fff';
+        ctx.fillRect(0, 0, w, h);
+        ctx.drawImage(img, 0, 0, w, h);
+        cb(cv.toDataURL('image/jpeg', 0.82));
+      };
+      img.onerror = function () { cb(dataUrl); };
+      img.src = dataUrl;
+    }
     var input = $('cbxInput');
     input.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' && !e.shiftKey) {
@@ -1014,6 +1077,8 @@ function aiSetBase() {
     'font-size:14px;line-height:1.45;word-break:break-word;border:1px solid var(--cbx-line)}' +
     '.cbx-own .cbx-msg-bubble{background:var(--cbx-accent);color:#fff;border:none;border-bottom-right-radius:5px}' +
     '.cbx-msg:not(.cbx-own) .cbx-msg-bubble{border-bottom-left-radius:5px}' +
+    '.cbx-ai-img{display:block;max-width:min(260px,100%);max-height:240px;border-radius:12px;' +
+    'margin:0 0 6px;object-fit:cover}' +
     '.cbx-msg-time{font-size:9.5px;color:#b0b0b5;padding:2px 5px}' +
     '.cbx-sys{font-size:11px;color:var(--cbx-muted);text-align:center;display:block}' +
     '.cbx-voice{display:inline-flex;align-items:center;gap:6px;background:rgba(0,122,255,.12);color:var(--cbx-accent);' +
