@@ -178,6 +178,16 @@ export default async function handler(req, res) {
       }
       const c0 = j.choices && j.choices[0] && j.choices[0].message;
       text = (c0 && c0.content) || (c0 && c0.reasoning_content) || '';
+      if (wantsJson && text) {
+        let tt = String(text).replace(/```json?\s*([\s\S]*?)```/i, '$1').trim();
+        let tj = null;
+        try { tj = JSON.parse(tt); } catch (_) {}
+        if (!tj) {
+          const a = tt.indexOf('{'), b = tt.lastIndexOf('}');
+          if (a >= 0 && b > a) { try { tj = JSON.parse(tt.slice(a, b + 1)); } catch (_) {} }
+        }
+        if (tj && typeof tj === 'object' && !Array.isArray(tj)) text = JSON.stringify(tj);
+      }
     }
     return json(200, { parts: [{ type: 'text', text: stripThought(text) || '' }] });
   } catch (e) {
