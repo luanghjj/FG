@@ -125,7 +125,8 @@ export default async function handler(req, res) {
                 headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + vtoken },
                 body: JSON.stringify({ model: vmodel, max_tokens: 2048, messages: [{ role: 'user', content }] }),
               });
-          const vj = await vr.json && vr.json().catch(() => ({}));
+          const vraw = await vr.text().catch(() => '');
+          const vj = (() => { try { return JSON.parse(vraw); } catch (e) { return {}; } })();
           if (!vr.ok) {
             triedErr = (vj && vj.error && (vj.error.message || JSON.stringify(vj.error))) || ('gateway HTTP ' + vr.status);
             dbg.push({ m: vmodel, u: vurl, s: vr.status, e: (vj && vj.error && (vj.error.message || vj.error.code || JSON.stringify(vj.error))) || '' });
@@ -138,7 +139,7 @@ export default async function handler(req, res) {
             text = (vc0 && vc0.content) || (vc0 && vc0.reasoning_content) || (vj.error && vj.error.message) || '';
           }
           if (text) break outer;
-          dbg.push({ m: vmodel, u: vurl, s: vr.status, e: 'no-content', raw: JSON.stringify(vj).slice(0, 160) });
+          dbg.push({ m: vmodel, u: vurl, s: vr.status, e: 'no-content', raw: vraw.slice(0, 200) });
           continue;
         } catch (e) { triedErr = String((e && e.message) || e); continue; }
         }
