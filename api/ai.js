@@ -237,21 +237,22 @@ export default async function handler(req, res) {
         textModel = 'google/gemini-2.5-flash';
       }
       const chatAsk = async (msgsArr, wantJson) => {
-        let payload = { model: textModel, max_tokens: 1600, messages: msgsArr };
-        if (wantJson) payload.response_format = { type: 'json_object' };
-        const textHeaders = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + textToken };
-        let r = await fetch(textBase + '/chat/completions', { method: 'POST', headers: textHeaders, body: JSON.stringify(payload) });
-        let j = await r.json().catch(() => ({}));
-        if (!r.ok && wantJson && (r.status === 400 || r.status === 404 || r.status === 422)) {
-          try { delete payload.response_format; } catch (_) {}
-          r = await fetch(textBase + '/chat/completions', { method: 'POST', headers: textHeaders, body: JSON.stringify(payload) });
-          j = await r.json().catch(() => ({}));
+        for (let attempt = 0; attempt < 3; attempt++) {
+          const payload = { model: textModel, max_tokens: 1600, messages: msgsArr };
+          if (wantJson && attempt === 0) payload.response_format = { type: 'json_object' };
+          const textHeaders = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + textToken };
+          const r = await fetch(textBase + '/chat/completions', { method: 'POST', headers: textHeaders, body: JSON.stringify(payload) });
+          const j = await r.json().catch(() => ({}));
+          if (!r.ok) {
+            const msg = (j && j.error && (j.error.message || JSON.stringify(j.error))) || ('gateway HTTP ' + r.status);
+            if (wantJson && (r.status === 400 || r.status === 404 || r.status === 422) && attempt === 0) continue;
+            return { error: msg };
+          }
+          const c0 = j.choices && j.choices[0] && j.choices[0].message;
+          const t = (c0 && c0.content) || (c0 && c0.reasoning_content) || '';
+          if (t && t.trim()) return { text: t };
         }
-        if (!r.ok) {
-          return { error: (j && j.error && (j.error.message || JSON.stringify(j.error))) || ('gateway HTTP ' + r.status) };
-        }
-        const c0 = j.choices && j.choices[0] && j.choices[0].message;
-        return { text: (c0 && c0.content) || (c0 && c0.reasoning_content) || '' };
+        return { text: '' };
       };
       const ans = await chatAsk(messages, wantsJson);
       if (ans.error) return json(502, { error: 'AI gateway: ' + ans.error });
