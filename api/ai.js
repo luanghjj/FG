@@ -1,17 +1,22 @@
 // Vercel serverless proxy: AI chat
 // Mặc định: gọi gateway opencode.ai (Zen, OpenAI-compatible) — cùng nguồn CLI opencode.
 // Nếu đặt AI_ANTHROPIC=1: gọi Anthropic /v1/messages (dùng cho hhtechapi.net, api.anthropic.com...)
-//
-// Env (Settings -> Environment Variables):
-//   AI_BASE_URL    = https://opencode.ai/zen/v1   (hoặc gateway Anthropic nếu AI_ANTHROPIC=1)
-//   AI_AUTH_TOKEN  = token gateway (open code: key "opencode" trong ~/.local/share/opencode/auth.json)
-//   AI_MODEL       = e.g. deepseek-v4-flash-free
-//   AI_ANTHROPIC   = "1" khi base là Anthropic-compatible (tùy chọn)
-//   AI_WEBSEARCH   = "0" để tắt tìm kiếm ngoài khi tài liệu không có (mặc định bật)
 // Vision (đọc ảnh):
 //   AI_VISION_BASE_URL   = https://openrouter.ai/api/v1
 //   AI_VISION_AUTH_TOKEN = key OpenRouter (sk-or-v1-...)
 //   AI_VISION_MODEL      = google/gemini-2.5-flash
+
+const FETCH_TIMEOUT_MS = 15000;
+
+function fetchWithTimeout(url, options = {}, timeoutMs = FETCH_TIMEOUT_MS) {
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(url, { ...options, signal: controller.signal });
+  } finally {
+    clearTimeout(id);
+  }
+}
 
 const stripThought = (t) =>
   String(t || '')
@@ -23,8 +28,8 @@ const stripTags = (s) =>
   String(s || '')
     .replace(/<!\[CDATA\[|\]\]>/g, '')
     .replace(/<[^>]+>/g, ' ')
-    .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&nbsp;/g, ' ')
+    .replace(/&/g, '&').replace(/</g, '<').replace(/>/g, '>')
+    .replace(/"/g, '"').replace(/'/g, "'").replace(/&nbsp;/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
 
@@ -46,7 +51,7 @@ const webSearch = async (q) => {
   };
   try {
     const qq = encodeURIComponent(String(q || '').slice(0, 200));
-    const r = await fetch('https://www.bing.com/search?q=' + qq + '&format=rss&count=6', { headers: { 'User-Agent': 'Mozilla/5.0' } });
+    const r = await fetchWithTimeout('https://www.bing.com/search?q=' + qq + '&format=rss&count=6', { headers: { 'User-Agent': 'Mozilla/5.0' } });
     if (r.ok) {
       const items = grab(await r.text(), 4);
       if (items.length) return items;
@@ -54,7 +59,7 @@ const webSearch = async (q) => {
   } catch (_) {}
   try {
     const qq = encodeURIComponent(String(q || '').slice(0, 200));
-    const r = await fetch('https://api.duckduckgo.com/?q=' + qq + '&format=json&no_html=1&skip_disambig=1', { headers: { 'User-Agent': 'Mozilla/5.0' } });
+    const r = await fetchWithTimeout('https://api.duckduckgo.com/?q=' + qq + '&format=json&no_html=1&skip_disambig=1', { headers: { 'User-Agent': 'Mozilla/5.0' } });
     if (r.ok) {
       const j = await r.json().catch(() => ({}));
       const items = [];
@@ -174,7 +179,7 @@ export default async function handler(req, res) {
         }
         try {
           const vr = vMode === 'anthropic'
-            ? await fetch(vurl, {
+            ? await fetchWithTimeout(vurl, {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
@@ -185,7 +190,7 @@ export default async function handler(req, res) {
                 },
                 body: JSON.stringify({ model: vmodel, max_tokens: 2048, messages: [{ role: 'user', content }] }),
               })
-            : await fetch(vurl, {
+            : await fetchWithTimeout(vurl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + vtoken },
                 body: JSON.stringify({ model: vmodel, max_tokens: 2048, messages: [{ role: 'user', content }] }),
@@ -211,11 +216,11 @@ export default async function handler(req, res) {
       }
       if (text) return json(200, { parts: [{ type: 'text', text: stripThought(text) || '' }] });
     return json(502, { error: 'AI đọc ảnh: ' + (triedErr || 'không có model khả dụng') });
-  } else if (anthropic) {
+    } else if (anthropic) {
       headers['x-api-key'] = token;
       headers['anthropic-version'] = '2023-06-01';
       headers['anthropic-dangerous-direct-browser-access'] = 'true';
-      const r = await fetch(base + '/v1/messages', {
+      const r = await fetchWithTimeout(base + '/v1/messages', {
         method: 'POST',
         headers,
         body: JSON.stringify({ model, max_tokens: 2048, messages }),
@@ -236,7 +241,7 @@ export default async function handler(req, res) {
           const payload = { model: textModel, max_tokens: 1600, messages: msgsArr };
           if (wantJson && attempt === 0) payload.response_format = { type: 'json_object' };
           const textHeaders = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + textToken };
-          const r = await fetch(textBase + '/chat/completions', { method: 'POST', headers: textHeaders, body: JSON.stringify(payload) });
+          const r = await fetchWithTimeout(textBase + '/chat/completions', { method: 'POST', headers: textHeaders, body: JSON.stringify(payload) });
           const j = await r.json().catch(() => ({}));
           if (!r.ok) {
             const msg = (j && j.error && (j.error.message || JSON.stringify(j.error))) || ('gateway HTTP ' + r.status);

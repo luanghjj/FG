@@ -58,6 +58,7 @@ var AI_SYSTEM =
   var recording = false;
   var aiBusy = false;
   var drag = { on: false, sx: 0, sy: 0, moved: false, orig: null };
+  var lastPresenceTouch = {}; // slug -> timestamp
 
   function $(id) { return document.getElementById(id); }
   function el(tag, cls, html) {
@@ -91,6 +92,14 @@ var AI_SYSTEM =
   function lsGet(k) { try { return localStorage.getItem(k); } catch (_) { return null; } }
   function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (_) {} }
   function lsDel(k) { try { localStorage.removeItem(k); } catch (_) {} }
+
+  function touchPresenceDebounced(slug, player) {
+    var now = Date.now();
+    var last = lastPresenceTouch[slug] || 0;
+    if (now - last < 30000) return; // min 30s between presence updates per room
+    lastPresenceTouch[slug] = now;
+    LearnDB.chatTouchPresence(slug, player).catch(function (e) { console.warn('chatTouchPresence failed:', e); });
+  }
 
   /* ---------- SF-style icons ---------- */
   function icon(name, size) {
@@ -260,7 +269,11 @@ var AI_SYSTEM =
         var localReply = await aiLocalAsk(text, system);
         return localReply || '(AI không trả lời)';
       } catch (eLocal) {
-        throw eCloud;
+        var msg = (eLocal && eLocal.message) || String(eLocal);
+        var err = new Error('AI local: ' + msg);
+        err.originalCloud = eCloud;
+        err.originalLocal = eLocal;
+        throw err;
       }
     }
   }
@@ -485,11 +498,11 @@ var AI_SYSTEM =
     unsubRoom = LearnDB.subscribeChatRoom(slug, onRoomMessages, 1000);
     subscribedSlug = slug;
     updateBadge();
-    LearnDB.chatTouchPresence(slug, player).catch(function () {});
+    touchPresenceDebounced(slug, player);
     if (!presenceTimer) {
       presenceTimer = setInterval(function () {
         if (subscribedSlug) {
-          LearnDB.chatTouchPresence(subscribedSlug, player).catch(function () {});
+          touchPresenceDebounced(subscribedSlug, player);
         }
       }, 60000);
     }
@@ -739,7 +752,7 @@ function aiSetBase() {
         msgs.push(m);
         if (msgs.length > 300) msgs = msgs.slice(-300);
         renderMessages();
-        LearnDB.chatTouchPresence(slug, sender).catch(function () {});
+        touchPresenceDebounced(slug, player);
       })
       .catch(function (err) {
         cbxToast(err && err.message ? err.message : 'Gửi thất bại', 'warn');
@@ -778,7 +791,7 @@ function aiSetBase() {
         msgs.push(m);
         if (msgs.length > 300) msgs = msgs.slice(-300);
         renderMessages();
-        LearnDB.chatTouchPresence(slug, player).catch(function () {});
+        touchPresenceDebounced(slug, player);
       })
       .catch(function (err) {
         cbxToast(err && err.message ? err.message : 'Gửi ảnh thất bại', 'warn');
@@ -829,18 +842,22 @@ function aiSetBase() {
     if (recTimer) { clearInterval(recTimer); recTimer = null; }
     try {
       if (mediaRec && mediaRec.state !== 'inactive') mediaRec.stop();
-    } catch (_) {}
+    } catch (e) { console.warn('mediaRec.stop failed:', e); }
     var mic = $('cbxMic');
     if (mic) mic.classList.remove('cbx-rec');
     $('cbxRecLabel').style.display = 'none';
   }
   function buildVoice() {
     if (recStream) {
-      recStream.getTracks().forEach(function (t) { try { t.stop(); } catch (_) {} });
+      recStream.getTracks().forEach(function (t) { try { t.stop(); } catch (e) { console.warn('track.stop failed:', e); } });
       recStream = null;
     }
     if (!recChunks.length) return;
     var dur = (Date.now() - recStart) / 1000;
+    if (dur > VOICE_MAX_MS / 1000 + 1) {
+      cbxToast('Voice quá dài (' + fmtDur(dur) + ') — tối đa 1:00', 'warn');
+      return;
+    }
     var blob = new Blob(recChunks, { type: mediaRec ? mediaRec.mimeType : 'audio/webm' });
     if (blob.size > VOICE_MAX_BYTES) {
       cbxToast('Voice quá lớn (' + Math.round(blob.size / 1024) + 'KB) — tối đa ~1.5MB', 'warn');
@@ -861,7 +878,7 @@ function aiSetBase() {
         msgs.push(m);
         if (msgs.length > 300) msgs = msgs.slice(-300);
         renderMessages();
-        LearnDB.chatTouchPresence(slug, player).catch(function () {});
+        touchPresenceDebounced(slug, player);
       }).catch(function (err) {
         cbxToast(err && err.message ? err.message : 'Gửi voice thất bại', 'warn');
       });
@@ -1020,14 +1037,13 @@ function aiSetBase() {
       var title = '💬 ' + (roomName(room) || room) + ' · ' + sender;
       var body = String(text || '').slice(0, 140) || 'Tin nhắn mới';
       var n = new Notification(title, { body: body, tag: 'cbx-' + room, requireInteraction: false });
-      if (n.onclick) {}
       n.onclick = function () {
-        try { window.focus(); } catch (_) {}
+        try { window.focus(); } catch (e) { console.warn('window.focus failed:', e); }
         if (rootEl) {
           openRoom(room);
         }
       };
-    } catch (_) {}
+    } catch (e) { console.warn('Notification failed:', e); }
   }
 
   function autoGrow() {

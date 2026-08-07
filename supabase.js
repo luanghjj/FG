@@ -56,13 +56,12 @@
     return data;
   }
 
-  function clean(s) {
+function clean(s) {
     return String(s || '')
       .trim()
-      .toLowerCase()
       .replace(/\s+/g, '-')
       .replace(
-        /[^a-z0-9._:\-àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]/gi,
+        /[^a-zA-Z0-9._:\-àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỨỰỬỮỲÝỴỶỸĐ]/g,
         ''
       );
   }
@@ -241,7 +240,7 @@
       }
       const saved = await saveQuizScoreOnline(opts);
       // also flush any backlog
-      flushScoreQueue().catch(() => {});
+      flushScoreQueue().catch((e) => { console.warn('flushScoreQueue failed:', e); });
       return saved;
     } catch (e) {
       const p = String((opts && opts.player) || getPlayer() || '').trim();
@@ -271,7 +270,7 @@
   // Auto-flush when back online
   if (typeof window !== 'undefined') {
     window.addEventListener('online', () => {
-      flushScoreQueue().catch(() => {});
+      flushScoreQueue().catch((e) => { console.warn('flushScoreQueue online failed:', e); });
     });
   }
 
@@ -756,13 +755,13 @@
       _activeVisit = active;
       bindVisitLifecycle();
       startHeartbeat();
-      try { await heartbeat('relogin-resume'); } catch (_) {}
+      try { await heartbeat('relogin-resume'); } catch (e) { console.warn('heartbeat relogin-resume failed:', e); }
       const history = await loadPlayerHistory(p);
       return { player: p, isNew: isNew, profile: profile, history: history, visitKey: active.key, resumed: true };
     }
 
     // close previous open session in this tab (if any)
-    try { await endVisit('relogin'); } catch (_) {}
+    try { await endVisit('relogin'); } catch (e) { console.warn('endVisit relogin failed:', e); }
 
     // visit log (one row per visit event) with duration tracking
     const visitKey = VISIT_PREFIX + now.slice(0, 10) + ':' + clean(p) + ':' + Date.now();
@@ -1401,7 +1400,7 @@
         total: total,
         player: player,
       });
-    } catch (_) {}
+    } catch (e) { console.warn('saveQuizScore challenge failed:', e); }
     return value;
   }
 
