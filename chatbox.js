@@ -148,7 +148,28 @@
   function saveAiHistory(h) {
     lsSet(AI_HIST_KEY, JSON.stringify(h.slice(-40)));
   }
-  async function aiAsk(text, onDelta) {
+  async function aiCloudAsk(text, system) {
+    var hist = aiHistory();
+    var parts = hist.map(function (m) {
+      return { type: 'text', role: m.role === 'assistant' ? 'assistant' : 'user', text: m.text };
+    });
+    parts.push({ type: 'text', role: 'user', text: text });
+    var res = await fetch('api/ai', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ system: system, parts: parts }),
+    });
+    if (!res.ok) throw new Error('AI cloud: ' + res.status);
+    var j = await res.json();
+    if (j && j.error) throw new Error(j.error);
+    var reply = '';
+    var arr = (j && j.parts) || [];
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] && arr[i].type === 'text') reply += arr[i].text;
+    }
+    return reply;
+  }
+  async function aiLocalAsk(text, system) {
     var base = aiBase();
     var sid = lsGet(AI_SESSION_KEY);
     if (!sid) {
@@ -163,15 +184,9 @@
       if (!sid) throw new Error('AI server không trả session');
       lsSet(AI_SESSION_KEY, sid);
     }
-    var system = AI_SYSTEM;
-    var context = null;
-    if (window.Wissen) {
-      context = window.Wissen.searchContext(text, 4);
-      if (context && context.length) system += '\n\n=== TÀI LIỆU ÔN THI (nguồn nội bộ app — hãy ưu tiên) ===\n' + context.join('\n\n');
-    }
     var hist = aiHistory();
-    var parts = hist.map(function (m) { return { type: 'text', text: m.text }; });
-    parts.push({ type: 'text', text: text });
+    var parts = hist.map(function (m) { return { type: 'text', role: m.role === 'assistant' ? 'assistant' : 'user', text: m.text }; });
+    parts.push({ type: 'text', role: 'user', text: text });
     var res = await fetch(base + '/session/' + encodeURIComponent(sid) + '/message', {
       method: 'POST',
       headers: aiHeaders(),
@@ -183,12 +198,31 @@
       throw new Error('AI server: ' + res.status);
     }
     var j = await res.json();
+    if (j && j.error) throw new Error(j.error);
     var reply = '';
     var arr = (j && j.parts) || [];
     for (var i = 0; i < arr.length; i++) {
       if (arr[i] && arr[i].type === 'text') reply += arr[i].text;
     }
-    return reply || '(AI không trả lời)';
+    return reply;
+  }
+  async function aiAsk(text, onDelta) {
+    var system = AI_SYSTEM;
+    if (window.Wissen) {
+      var context = window.Wissen.searchContext(text, 4);
+      if (context && context.length) system += '\n\n=== TÀI LIỆU ÔN THI (nguồn nội bộ app — hãy ưu tiên) ===\n' + context.join('\n\n');
+    }
+    try {
+      var cloudReply = await aiCloudAsk(text, system);
+      return cloudReply || '(AI không trả lời)';
+    } catch (eCloud) {
+      try {
+        var localReply = await aiLocalAsk(text, system);
+        return localReply || '(AI không trả lời)';
+      } catch (eLocal) {
+        throw eCloud;
+      }
+    }
   }
 
   /* ---------- Rendering: room list ---------- */
@@ -479,26 +513,44 @@
   function aiHealth() {
     var base = aiBase();
     return new Promise(function (resolve) {
-      var done = false;
-      var timer = null;
-      var ctrl = null;
-      try { ctrl = new AbortController(); } catch (_) {}
-      function finish(ok, extra) {
-        if (done) return;
-        done = true;
-        if (timer) clearTimeout(timer);
-        try { if (ctrl) ctrl.abort(); } catch (_) {}
-        resolve({ ok: ok, base: base, extra: extra || '', cmd: aiStartCmd() });
+      var res = { cloud: false, local: false, localExtra: '', cloudExtra: '', base: base };
+      var cnt = 0;
+      function tick() {
+        cnt += 1;
+        if (cnt >= 2) {
+          resolve({
+            ok: !!(res.cloud || res.local),
+            cloud: res.cloud,
+            local: res.local,
+            base: base,
+            extra: res.cloud ? '' : (res.localExtra === 'auth' ? 'auth' : res.cloudExtra),
+            cmd: aiStartCmd(),
+          });
+        }
       }
-      timer = setTimeout(function () { finish(false, 'timeout'); }, 3500);
       try {
-        fetch(base + '/global/health', {
-          signal: ctrl ? ctrl.signal : undefined,
-          headers: aiHeaders(),
-        })
-          .then(function (r) { finish(!!(r && r.ok), r && r.status === 401 ? 'auth' : ''); })
-          .catch(function (e) { finish(false, (e && e.message) || 'err'); });
-      } catch (_) { finish(false, ''); }
+        fetch('api/ai', { method: 'GET' })
+          .then(function (r) {
+            if (r.status === 200) {
+              return r.json().catch(function () { return {}; }).then(function (j) {
+                res.cloud = !!(j && j.ok);
+                res.cloudExtra = j && j.needsConfig ? 'needsConfig' : '';
+                tick();
+              });
+            }
+            res.cloudExtra = 'err'; tick();
+          })
+          .catch(function () { res.cloudExtra = 'err'; tick(); });
+      } catch (_) { res.cloudExtra = 'err'; tick(); }
+      try {
+        fetch(base + '/global/health', { headers: aiHeaders() })
+          .then(function (r) {
+            res.local = !!(r && r.ok);
+            res.localExtra = r && r.status === 401 ? 'auth' : '';
+            tick();
+          })
+          .catch(function () { res.localExtra = ''; tick(); });
+      } catch (_) { res.localExtra = ''; tick(); }
     });
   }
 
@@ -510,11 +562,23 @@
     el.innerHTML = '<span class="cbx-ai-check">Đang kiểm tra AI…</span>';
     aiHealth().then(function (h) {
       if (activeRoom !== 'ai' || !el) return;
-      if (h.ok) {
-        el.innerHTML = '<span class="cbx-ai-ok">● AI sẵn sàng</span><code>' + esc(h.base) + '</code>';
+      if (h.cloud || h.ok) {
+        if (h.cloud) {
+          el.innerHTML = '<span class="cbx-ai-ok">● AI sẵn sàng (cloud)</span><code>api/ai</code>';
+        } else {
+          el.innerHTML = '<span class="cbx-ai-ok">● AI sẵn sàng</span><code>' + esc(h.base) + '</code>';
+        }
+      } else if (h.extra === 'needsConfig') {
+        el.innerHTML =
+          '<span class="cbx-ai-err">⚠️ AI cloud chưa cấu hình</span>' +
+          '<div class="cbx-ai-help">Chủ app cần thêm <b>AI_BASE_URL</b> + <b>AI_AUTH_TOKEN</b> trong ' +
+          'Vercel → Settings → Environment Variables rồi Redeploy.</div>' +
+          '<button id="cbxAiRetry" class="cbx-ai-retry">↻ Kiểm tra lại</button>';
+        var rr = $('cbxAiRetry');
+        if (rr) rr.addEventListener('click', aiHealthRender);
       } else if (h.extra === 'auth') {
         el.innerHTML =
-          '<span class="cbx-ai-err">🔑 Server yêu cầu token</span>' +
+          '<span class="cbx-ai-err">🔑 Server riêng yêu cầu mật khẩu</span>' +
           '<div class="cbx-ai-help">Nhập mật khẩu trong <button class="cbx-ai-gear" id="cbxAiGearHint">⚙ Cấu hình AI</button> — ' +
           'script in token khi chạy <code>bash start-ai-server.command public</code>.</div>';
         var g = $('cbxAiGearHint');
@@ -524,20 +588,16 @@
         el.innerHTML =
           '<span class="cbx-ai-err">⚠️ Không kết nối được ' + esc(h.base) + '</span>' +
           '<div class="cbx-ai-help">' +
-          '<b>Cách khắc phục:</b><br>' +
-          '1. Sửa <button class="cbx-ai-gear" id="cbxAiGearHint">base URL</button> / kiểm tra server đang chạy:<br>' +
+          '<b>Cách khắc phục (nếu muốn dùng server riêng):</b><br>' +
+          '1. Sửa <button class="cbx-ai-gear" id="cbxAiGearHint2">base URL</button>:<br>' +
           '<code>' + esc(h.cmd) + '</code><br>' +
-          '2. Lần đầu: chạy <code>opencode /connect</code> để chọn model.<br>' +
-          '3. App đang mở từ <code>' + esc(originTxt) + '</code> — ' +
-          (detectOrigin()
-            ? 'server phải khởi động với <code>--cors ' + esc(originTxt) + '</code> (script kia tự làm).'
-            : 'phải mở app qua <b>http://localhost</b> (không phải file://) thì CORS mới cho phép.') +
+          '2. Lần đầu: chạy <code>opencode /connect</code> để chọn model.' +
           '</div>' +
           '<button id="cbxAiRetry" class="cbx-ai-retry">↻ Kiểm tra lại</button>';
         var r = $('cbxAiRetry');
         if (r) r.addEventListener('click', aiHealthRender);
-        var g = $('cbxAiGearHint');
-        if (g) g.addEventListener('click', aiSetBase);
+        var g2 = $('cbxAiGearHint2');
+        if (g2) g2.addEventListener('click', aiSetBase);
       }
     });
   }
@@ -545,10 +605,10 @@
   function aiSetBase() {
     var cur = aiBase();
     var v = window.prompt(
-        'AI base URL của thiết bị này.\n' +
+        'AI server riêng (TÙY CHỌN — mọi người dùng tự dùng AI cloud, không cần bước này).\n' +
+        '• Để trống = dùng AI cloud (mặc định).\n' +
         '• Máy tính: http://127.0.0.1:4096\n' +
-        '• Điện thoại: URL công khai do script in ra (…trycloudflare.com)\n' +
-        'Mật khẩu = token script in ra (user opencode)',
+        '• Điện thoại: URL công khai do script in ra (…trycloudflare.com)',
         cur);
     if (v == null) return;
     v = String(v || '').trim().replace(/\/+$/, '');
