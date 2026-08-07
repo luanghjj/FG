@@ -87,6 +87,7 @@ export default async function handler(req, res) {
         for (const u of [vbaseRaw + '/v1/messages', root + '/v1/messages', root + '/api/v1/messages']) addT('anthropic', u);
       }
       let triedErr = '';
+      const dbg = [];
       outer:
       for (const [vMode, vurl] of tries) {
         for (const vmodel of vmodels) {
@@ -127,6 +128,7 @@ export default async function handler(req, res) {
           const vj = await vr.json && vr.json().catch(() => ({}));
           if (!vr.ok) {
             triedErr = (vj && vj.error && (vj.error.message || JSON.stringify(vj.error))) || ('gateway HTTP ' + vr.status);
+            dbg.push({ m: vmodel, u: vurl, s: vr.status, e: (vj && vj.error && (vj.error.message || vj.error.code || JSON.stringify(vj.error))) || '' });
             continue;
           }
           if (vMode === 'anthropic') {
@@ -140,7 +142,7 @@ export default async function handler(req, res) {
         }
       }
       if (text) return json(200, { parts: [{ type: 'text', text: stripThought(text) || '' }] });
-    return json(502, { error: 'AI đọc ảnh: ' + (triedErr || 'không có model khả dụng'), debug: { vbase: vbaseRaw, tries: tries.map((t) => t[1]) } });
+    return json(502, { error: 'AI đọc ảnh: ' + (triedErr || 'không có model khả dụng'), debug: { vbase: vbaseRaw, dbg } });
   } else if (anthropic) {
       headers['x-api-key'] = token;
       headers['anthropic-version'] = '2023-06-01';
