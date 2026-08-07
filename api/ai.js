@@ -26,7 +26,14 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return json(405, { error: 'method not allowed' });
 
   let body;
-  try { body = JSON.parse(req.body || '{}'); } catch (_) { return json(400, { error: 'bad json' }); }
+  const raw = req.body || '';
+  if (typeof raw === 'string') {
+    try { body = JSON.parse(raw); } catch (_) { return json(400, { error: 'bad json' }); }
+  } else if (typeof raw === 'object' && raw !== null) {
+    body = raw;
+  } else {
+    return json(400, { error: 'bad body' });
+  }
 
   if (!base || !token) {
     return json(200, { error: 'AI chưa cấu hình — chủ app cần thêm AI_BASE_URL / AI_AUTH_TOKEN trong Vercel env.', parts: [] });
