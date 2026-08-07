@@ -7,16 +7,61 @@
 //   AI_AUTH_TOKEN  = token gateway (open code: key "opencode" trong ~/.local/share/opencode/auth.json)
 //   AI_MODEL       = e.g. deepseek-v4-flash-free
 //   AI_ANTHROPIC   = "1" khi base là Anthropic-compatible (tùy chọn)
-// Vision (đọc ảnh — mặc định dùng Anthropic /v1/messages với gateway hhtech/anthropic):
-//   AI_VISION_BASE_URL   = https://hhtechapi.net
-//   AI_VISION_AUTH_TOKEN = token hhtech
-//   AI_VISION_MODEL      = e.g. claude-sonnet-5
+//   AI_WEBSEARCH   = "0" để tắt tìm kiếm ngoài khi tài liệu không có (mặc định bật)
+// Vision (đọc ảnh):
+//   AI_VISION_BASE_URL   = https://openrouter.ai/api/v1
+//   AI_VISION_AUTH_TOKEN = key OpenRouter (sk-or-v1-...)
+//   AI_VISION_MODEL      = google/gemini-2.5-flash
 
 const stripThought = (t) =>
   String(t || '')
     .replace(/^\+?\s*Thought:\s*[\d.]+\s*ms\s*$/gim, '')
     .replace(/\n{3,}/g, '\n\n')
     .trim();
+
+const stripTags = (s) =>
+  String(s || '')
+    .replace(/<!\[CDATA\[|\]\]>/g, '')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&nbsp;/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+const webSearch = async (q) => {
+  try {
+    const url = 'https://www.bing.com/search?q=' + encodeURIComponent(String(q || '').slice(0, 200)) + '&format=rss&count=6';
+    const r = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
+    if (!r.ok) return [];
+    const xml = await r.text();
+    const items = [];
+    const re = /<item>([\s\S]*?)<\/item>/g;
+    let m;
+    while ((m = re.exec(xml)) && items.length < 4) {
+      const t = /<title>([\s\S]*?)<\/title>/.exec(m[1]);
+      const d = /<description>([\s\S]*?)<\/description>/.exec(m[1]);
+      const l = /<link>([\s\S]*?)<\/link>/.exec(m[1]);
+      const title = stripTags(t ? t[1] : '');
+      const desc = stripTags(d ? d[1] : '');
+      const link = (l ? l[1] : '').trim();
+      if (title || desc) items.push([title || desc.slice(0, 60), desc, link].filter(Boolean).join(' — '));
+    }
+    return items;
+  } catch (_) { return []; }
+};
+
+const extractJson = (text) => {
+  if (!text) return null;
+  let tt = String(text).replace(/```json?\s*([\s\S]*?)```/i, '$1').trim();
+  let tj = null;
+  try { tj = JSON.parse(tt); } catch (_) {}
+  if (!tj) {
+    const a = tt.indexOf('{'), b = tt.lastIndexOf('}');
+    if (a >= 0 && b > a) { try { tj = JSON.parse(tt.slice(a, b + 1)); } catch (_) {} }
+  }
+  if (tj && typeof tj === 'object' && !Array.isArray(tj)) return JSON.stringify(tj);
+  return null;
+};
 
 export default async function handler(req, res) {
   const base = (process.env.AI_BASE_URL || '').trim().replace(/\/+$/, '');
@@ -163,30 +208,51 @@ export default async function handler(req, res) {
       text = (j.content || []).filter((c) => c && c.type === 'text').map((c) => c.text).join('\n');
     } else {
       const wantsJson = !!body.system && /\bJSON\b/.test(String(body.system));
-      let payload = { model, max_tokens: 2048, messages };
-      if (wantsJson) payload.response_format = { type: 'json_object' };
-      let r = await fetch(base + '/chat/completions', { method: 'POST', headers, body: JSON.stringify(payload) });
-      let j = await r.json().catch(() => ({}));
-      if (!r.ok && wantsJson && (r.status === 400 || r.status === 404 || r.status === 422)) {
-        try { delete payload.response_format; } catch (_) {}
-        r = await fetch(base + '/chat/completions', { method: 'POST', headers, body: JSON.stringify(payload) });
-        j = await r.json().catch(() => ({}));
-      }
-      if (!r.ok) {
-        const msg = (j && j.error && (j.error.message || JSON.stringify(j.error))) || ('gateway HTTP ' + r.status);
-        return json(502, { error: 'AI gateway: ' + msg });
-      }
-      const c0 = j.choices && j.choices[0] && j.choices[0].message;
-      text = (c0 && c0.content) || (c0 && c0.reasoning_content) || '';
-      if (wantsJson && text) {
-        let tt = String(text).replace(/```json?\s*([\s\S]*?)```/i, '$1').trim();
-        let tj = null;
-        try { tj = JSON.parse(tt); } catch (_) {}
-        if (!tj) {
-          const a = tt.indexOf('{'), b = tt.lastIndexOf('}');
-          if (a >= 0 && b > a) { try { tj = JSON.parse(tt.slice(a, b + 1)); } catch (_) {} }
+      const chatAsk = async (msgsArr, wantJson) => {
+        let payload = { model, max_tokens: 1600, messages: msgsArr };
+        if (wantJson) payload.response_format = { type: 'json_object' };
+        let r = await fetch(base + '/chat/completions', { method: 'POST', headers, body: JSON.stringify(payload) });
+        let j = await r.json().catch(() => ({}));
+        if (!r.ok && wantJson && (r.status === 400 || r.status === 404 || r.status === 422)) {
+          try { delete payload.response_format; } catch (_) {}
+          r = await fetch(base + '/chat/completions', { method: 'POST', headers, body: JSON.stringify(payload) });
+          j = await r.json().catch(() => ({}));
         }
-        if (tj && typeof tj === 'object' && !Array.isArray(tj)) text = JSON.stringify(tj);
+        if (!r.ok) {
+          return { error: (j && j.error && (j.error.message || JSON.stringify(j.error))) || ('gateway HTTP ' + r.status) };
+        }
+        const c0 = j.choices && j.choices[0] && j.choices[0].message;
+        return { text: (c0 && c0.content) || (c0 && c0.reasoning_content) || '' };
+      };
+      const ans = await chatAsk(messages, wantsJson);
+      if (ans.error) return json(502, { error: 'AI gateway: ' + ans.error });
+      text = ans.text;
+      if (wantsJson && text) text = extractJson(text) || text;
+
+      // Nếu câu trả lời báo "không có trong tài liệu" → tìm kiếm ngoài rồi trả lời lại
+      const webOn = (process.env.AI_WEBSEARCH || '').trim() !== '0';
+      if (webOn && wantsJson && text) {
+        let o = null;
+        try { o = JSON.parse(text); } catch (_) {}
+        if (o && /không có trong tài liệu|ngoài tài liệu|không nằm trong tài liệu|không thuộc tài liệu|không có trong tài liệu ôn thi|nicht in den unterlagen|outside the (study )?documents/i.test(JSON.stringify(o))) {
+          const lastUser = messages.filter((m) => m.role === 'user').pop() || { role: 'user', content: '' };
+          const q = String(o.question || lastUser.content || '').replace(/^[-*#>\s]+/, '').slice(0, 200);
+          const hits = await webSearch(q);
+          if (hits.length) {
+            const sysMsg = messages.filter((m) => m.role === 'system').slice(-1);
+            const msgs2 = sysMsg.concat([lastUser, {
+              role: 'user',
+              content: '=== KẾT QUẢ TÌM KIẾM NGOÀI (bên ngoài tài liệu) ===\n' +
+                hits.join('\n\n') +
+                '\n\nHãy trả lời câu hỏi trên dựa vào kết quả tìm kiếm này, đưa nguồn (tên trang) vào references.',
+            }]);
+            const ans2 = await chatAsk(msgs2, true);
+            if (!ans2.error && ans2.text) {
+              const t2 = extractJson(ans2.text);
+              if (t2) text = t2;
+            }
+          }
+        }
       }
     }
     return json(200, { parts: [{ type: 'text', text: stripThought(text) || '' }] });
