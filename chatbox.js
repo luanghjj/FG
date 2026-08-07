@@ -94,6 +94,7 @@
     play: '<path d="M8 5v14l11-7L8 5z"/>',
     stop: '<path d="M7 7h10v10H7z"/>',
     trash: '<path d="M4 7h16M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M6 7l1 13h10l1-13"/>',
+    gear: '<path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/>',
   };
 
   /* ---------- Toast ---------- */
@@ -301,9 +302,12 @@
     activeRoom = null;
     // keep polling the previously active room in background so unread keeps counting
     $('cbxThread').style.display = 'none';
+    $('cbxAiStatus').style.display = 'none';
     $('cbxRoomList').style.display = '';
     $('cbxBackBtn').style.display = 'none';
     $('cbxAiBtn').style.display = '';
+    $('cbxAiReset').style.display = 'none';
+    $('cbxAiGear').style.display = 'none';
     $('cbxTitle').textContent = 'Chat';
     renderRoomList();
   }
@@ -317,6 +321,8 @@
     $('cbxThread').style.display = '';
     $('cbxBackBtn').style.display = '';
     $('cbxAiBtn').style.display = '';
+    $('cbxAiReset').style.display = 'none';
+    $('cbxAiGear').style.display = 'none';
     $('cbxTitle').textContent = (roomName(slug) || slug);
     renderMessages(false);
     if (unsubRoom) { unsubRoom(); }
@@ -362,8 +368,11 @@
     $('cbxThread').style.display = '';
     $('cbxBackBtn').style.display = '';
     $('cbxAiBtn').style.display = 'none';
+    $('cbxAiReset').style.display = '';
+    $('cbxAiGear').style.display = '';
     $('cbxTitle').textContent = 'AI · opencode';
     renderAiMessages();
+    aiHealthRender();
   }
 
   function renderAiMessages() {
@@ -413,10 +422,20 @@
       })
       .catch(function (err) {
         aiBusy = false;
+        var raw = (err && err.message) || 'Lỗi AI';
+        var msg = raw;
+        if (/failed to fetch|networkerror|ERR_|connection/i.test(raw)) {
+          msg = '⚠️ Không kết nối được AI server (' + aiBase() + ').\n' +
+            '→ Chạy: ' + aiStartCmd() + '\n' +
+            (detectOrigin() ? '→ Origin đang mở: ' + detectOrigin() + ' (phải khớp --cors của server)' : '→ App đang mở bằng file:// — hãy mở qua http://localhost');
+        } else {
+          msg = '⚠️ ' + raw;
+        }
         var h = aiHistory();
-        h.push({ role: 'assistant', text: '⚠️ ' + (err && err.message ? err.message : 'Lỗi AI') });
+        h.push({ role: 'assistant', text: msg });
         saveAiHistory(h);
         renderAiMessages();
+        aiHealthRender();
         cbxToast('Không kết nối được AI server', 'warn');
       });
   }
@@ -427,6 +446,92 @@
     msgs = [];
     renderAiMessages();
     cbxToast('Đã xoá hội thoại AI', 'ok');
+  }
+
+  /* ---------- AI server diagnostics ---------- */
+  function detectOrigin() {
+    try {
+      var o = window.location.origin;
+      if (o && o !== 'null' && String(o).toLowerCase().indexOf('file:') !== 0) return o;
+    } catch (_) {}
+    return null; // đang mở bằng file:// hoặc origin 'null'
+  }
+
+  function aiStartCmd() {
+    var o = detectOrigin();
+    if (o) return 'bash start-ai-server.command "' + o + '"';
+    return 'Bật server local: python3 -m http.server 8080 → mở http://localhost:8080, ' +
+      'rồi chạy: bash start-ai-server.command "http://localhost:8080"';
+  }
+
+  function aiHealth() {
+    var base = aiBase();
+    return new Promise(function (resolve) {
+      var done = false;
+      var timer = null;
+      var ctrl = null;
+      try { ctrl = new AbortController(); } catch (_) {}
+      function finish(ok, extra) {
+        if (done) return;
+        done = true;
+        if (timer) clearTimeout(timer);
+        try { if (ctrl) ctrl.abort(); } catch (_) {}
+        resolve({ ok: ok, base: base, extra: extra || '', cmd: aiStartCmd() });
+      }
+      timer = setTimeout(function () { finish(false, 'timeout'); }, 3500);
+      try {
+        fetch(base + '/global/health', { signal: ctrl ? ctrl.signal : undefined })
+          .then(function (r) { finish(!!(r && r.ok)); })
+          .catch(function (e) { finish(false, (e && e.message) || 'err'); });
+      } catch (_) { finish(false, ''); }
+    });
+  }
+
+  function aiHealthRender() {
+    var el = $('cbxAiStatus');
+    if (!el) return;
+    if (activeRoom !== 'ai') { el.style.display = 'none'; return; }
+    el.style.display = '';
+    el.innerHTML = '<span class="cbx-ai-check">Đang kiểm tra AI…</span>';
+    aiHealth().then(function (h) {
+      if (activeRoom !== 'ai' || !el) return;
+      if (h.ok) {
+        el.innerHTML = '<span class="cbx-ai-ok">● AI sẵn sàng</span><code>' + esc(h.base) + '</code>';
+      } else {
+        var originTxt = detectOrigin() || 'file://';
+        el.innerHTML =
+          '<span class="cbx-ai-err">⚠️ Không kết nối được ' + esc(h.base) + '</span>' +
+          '<div class="cbx-ai-help">' +
+          '<b>Cách khắc phục:</b><br>' +
+          '1. Sửa <button class="cbx-ai-gear" id="cbxAiGearHint">base URL</button> / kiểm tra server đang chạy:<br>' +
+          '<code>' + esc(h.cmd) + '</code><br>' +
+          '2. Lần đầu: chạy <code>opencode /connect</code> để chọn model.<br>' +
+          '3. App đang mở từ <code>' + esc(originTxt) + '</code> — ' +
+          (detectOrigin()
+            ? 'server phải khởi động với <code>--cors ' + esc(originTxt) + '</code> (script kia tự làm).'
+            : 'phải mở app qua <b>http://localhost</b> (không phải file://) thì CORS mới cho phép.') +
+          '</div>' +
+          '<button id="cbxAiRetry" class="cbx-ai-retry">↻ Kiểm tra lại</button>';
+        var r = $('cbxAiRetry');
+        if (r) r.addEventListener('click', aiHealthRender);
+        var g = $('cbxAiGearHint');
+        if (g) g.addEventListener('click', aiSetBase);
+      }
+    });
+  }
+
+  function aiSetBase() {
+    var cur = aiBase();
+    var v = window.prompt('AI server (base URL) — ví dụ: http://127.0.0.1:4096', cur);
+    if (v == null) return;
+    v = String(v || '').trim().replace(/\/+$/, '');
+    if (!/^https?:\/\//.test(v)) {
+      cbxToast('Base URL phải bắt đầu bằng http(s)://', 'warn');
+      return;
+    }
+    lsSet(AI_BASE_KEY, v);
+    aiHealthRender();
+    cbxToast('Đã lưu AI base: ' + v, 'ok');
   }
 
   /* ---------- Composer ---------- */
@@ -682,12 +787,14 @@
       '<div class="cbx-hr">' +
       '<button id="cbxAiBtn" class="cbx-iconbtn" title="AI">' + icon('sparkle', 20) + '</button>' +
       '<button id="cbxAiReset" class="cbx-iconbtn" title="Xoá hội thoại AI" style="display:none">' + icon('trash', 18) + '</button>' +
+      '<button id="cbxAiGear" class="cbx-iconbtn" title="Cấu hình AI server" style="display:none">' + icon('gear', 19) + '</button>' +
       '<button id="cbxNewRoom" class="cbx-iconbtn" title="Tạo phòng">' + icon('plus', 20) + '</button>' +
       '<button id="cbxClose" class="cbx-iconbtn" title="Đóng">' + icon('close', 20) + '</button>' +
       '</div>' +
       '</div>' +
       '<div id="cbxRoomList" class="cbx-roomlist"></div>' +
       '<div id="cbxThread" class="cbx-thread" style="display:none">' +
+      '<div id="cbxAiStatus" class="cbx-ai-status" style="display:none"></div>' +
       '<div id="cbxMsgs" class="cbx-msgs"></div>' +
       '<div class="cbx-composer">' +
       '<button id="cbxMic" class="cbx-iconbtn cbx-mic" title="Ghi âm">' + icon('mic', 20) + '</button>' +
@@ -708,6 +815,7 @@
     $('cbxBackBtn').addEventListener('click', showRoomList);
     $('cbxAiBtn').addEventListener('click', openAIThread);
     $('cbxAiReset').addEventListener('click', resetAI);
+    $('cbxAiGear').addEventListener('click', aiSetBase);
     $('cbxNewRoom').addEventListener('click', onCreateRoom);
     $('cbxSend').addEventListener('click', sendCurrent);
     $('cbxMic').addEventListener('click', function () {
@@ -833,6 +941,16 @@
     '.cbx-hint b{color:var(--cbx-accent)}' +
     /* thread */
     '.cbx-thread{flex:1;display:flex;flex-direction:column;min-height:0}' +
+    '.cbx-ai-status{display:flex;flex-direction:column;gap:6px;padding:8px 12px;background:#f7f7fa;' +
+    'border-bottom:1px solid var(--cbx-line);font-size:12px;align-items:flex-start}' +
+    '.cbx-ai-check{color:var(--cbx-muted)}' +
+    '.cbx-ai-ok{color:var(--cbx-ok);font-weight:700}' +
+    '.cbx-ai-err{color:var(--cbx-bad);font-weight:700}' +
+    '.cbx-ai-status code{background:var(--cbx-soft);padding:2px 6px;border-radius:6px;font-size:11px;word-break:break-all}' +
+    '.cbx-ai-help{color:var(--cbx-muted);font-size:11px;line-height:1.6}' +
+    '.cbx-ai-gear{border:none;background:none;color:var(--cbx-accent);font:inherit;text-decoration:underline;cursor:pointer;padding:0}' +
+    '.cbx-ai-retry{border:none;background:var(--cbx-accent);color:#fff;border-radius:9px;padding:6px 12px;' +
+    'font-size:12px;font-weight:600;cursor:pointer}' +
     '.cbx-msgs{flex:1;overflow-y:auto;padding:12px 12px 8px;background:#f7f7fa;display:flex;flex-direction:column;gap:3px}' +
     '.cbx-msg{display:flex;gap:6px;align-items:flex-end;max-width:100%}' +
     '.cbx-msg.cbx-own{justify-content:flex-end}' +
