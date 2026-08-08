@@ -4578,7 +4578,8 @@ sInput.addEventListener("keydown",e=>{
 });
 document.addEventListener("click",e=>{ if(!e.target.closest(".search")) sBox.classList.remove("show"); });
 document.addEventListener("keydown",e=>{
-  if(e.key==="/" && document.activeElement!==sInput){ e.preventDefault(); sInput.focus(); }
+  const t=e.target&&e.target.tagName;
+  if(e.key==="/" && t!=="INPUT" && t!=="TEXTAREA" && t!=="SELECT" && document.activeElement!==sInput){ e.preventDefault(); sInput.focus(); }
 });
 
 /* ============ QUIZ ============ */
