@@ -149,7 +149,7 @@ git mv bfk1-catalog.js bfk1-data.js bfk1-extra-data.js bfk1-extra-p1.js bfk1-ext
 git mv bfk2-quiz.js faecher/bfk2/ && git mv deutsch-quiz.js faecher/deutsch/ && git mv gk-gle-data.js gk-uebungen.js faecher/gk/
 ```
 
-Verify: `ls js faecher/bfk1 | wc -l` (10 và 17) — không lỗi.
+Verify: `ls js | wc -l` = 10; `ls faecher/bfk1/*.js | wc -l` = 34 — không lỗi.
 
 - [ ] **Step 2: Cập nhật index.html script srcs (sed có thứ tự)**
 
