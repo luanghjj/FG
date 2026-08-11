@@ -28,7 +28,7 @@
  *           desc: "Kurzzeile in der Liste",
  *           content: `<h2>...</h2>...`,  // HTML, Begriffe mit:
  *           // <span class="term" data-de="Wort" data-vi="nghĩa">Wort</span>
- *           pages: { folder:"2-Bfk1-lf6", from:35, to:44, prefix:"2-Bfk1-lf6" } // optional Scan
+ *           pages: { folder:"images/scans/2-Bfk1-lf6", from:35, to:44, prefix:"2-Bfk1-lf6" } // optional Scan
  *         }
  *       ]
  *     }
@@ -640,7 +640,7 @@
                 icon: "📞",
                 name: "Telephoning",
                 desc: "Call types · phrases · polite language · role play",
-                pages: { folder: "2-Englisch", from: 4, to: 7, prefix: "2-Englisch" },
+                pages: { folder: "images/scans/2-Englisch", from: 4, to: 7, prefix: "2-Englisch" },
                 content: `
                   <h2>📞 Telephoning · Business situations</h2>
                   <div class="hint">Arbeitsblatt HAL · Problem / Information / Complaint calls</div>
@@ -699,7 +699,7 @@
                 icon: "⏱️",
                 name: "Present & future tenses",
                 desc: "Simple present · progressive · going to",
-                pages: { folder: "2-Englisch", from: 11, to: 13, prefix: "2-Englisch" },
+                pages: { folder: "images/scans/2-Englisch", from: 11, to: 13, prefix: "2-Englisch" },
                 content: `
                   <h2>⏱️ Present &amp; future tenses</h2>
                   <div class="hint">Business communication · RAABE / Berufliche Schulen</div>
@@ -752,7 +752,7 @@
                 icon: "🍽️",
                 name: "Dealing with complaints",
                 desc: "Phrases · dialogues · role play · AB S.10+14–15",
-                pages: { folder: "2-Englisch", from: 10, to: 15, prefix: "2-Englisch" },
+                pages: { folder: "images/scans/2-Englisch", from: 10, to: 15, prefix: "2-Englisch" },
                 content: `
                   <h2>🍽️ Dealing with complaints in the restaurant</h2>
 
@@ -816,7 +816,7 @@
                 icon: "🔢",
                 name: "much · many · a little · a few",
                 desc: "Countable vs uncountable",
-                pages: { folder: "2-Englisch", from: 9, to: 9, prefix: "2-Englisch" },
+                pages: { folder: "images/scans/2-Englisch", from: 9, to: 9, prefix: "2-Englisch" },
                 content: `
                   <h2>🔢 much · many · a little · a few</h2>
 
@@ -1019,7 +1019,7 @@
                   "<b>Volksabstimmung</b> (Reihenfolge!): <b>Volksinitiative → Volksbegehren → Volksentscheid</b>.",
                   "In DE <b>kein bundesweiter Volksentscheid</b> über Sachfragen — nur auf Kommunal-/Landesebene.",
                 ],
-                pages: { folder: "2-GK", from: 2, to: 5, prefix: "2-GK" },
+                pages: { folder: "images/scans/2-GK", from: 2, to: 5, prefix: "2-GK" },
                 content: `
                   <h2>🗳️ Partizipation &amp; direkte Demokratie</h2>
                   <div class="hint">KA 22.07.26 · Möglichkeiten der Partizipation</div>
@@ -1151,7 +1151,7 @@
                   "Immer <b>Belege aus dem Bild</b> nennen (Figuren, Aufschrift, Übertreibung, Symbole).",
                   "Fazit = eigene Meinung mit sachlicher Begründung („Meiner Meinung nach …, weil …“).",
                 ],
-                pages: { folder: "2-GK", from: 6, to: 7, prefix: "2-GK" },
+                pages: { folder: "images/scans/2-GK", from: 6, to: 7, prefix: "2-GK" },
                 content: `
                   <h2>🖼️ Arbeitsmethode · Karikatur</h2>
                   <div class="hint">Schema für KA: beschreiben + interpretieren</div>
@@ -1239,7 +1239,7 @@
                   "<b>Gewaltenverschränkung</b> = Gewalten greifen ineinander (nicht völlig getrennt).",
                   "4 Beispiele: Bundestag→Kanzler · Bundespräsident→16 Richter · Landesregierungen→Bundesrat · Bundestag+Bundesrat→BVerfG (je zur Hälfte).",
                 ],
-                pages: { folder: "2-GK", from: 8, to: 10, prefix: "2-GK" },
+                pages: { folder: "images/scans/2-GK", from: 8, to: 10, prefix: "2-GK" },
                 content: `
                   <h2>⚖️ Gewaltenteilung &amp; Gewaltenverschränkung</h2>
 
@@ -1319,7 +1319,7 @@
                 icon: "📉",
                 name: "Vertrauensfrage & Misstrauensvotum",
                 desc: "Art. 67 / 68 GG · Ablauf",
-                pages: { folder: "2-GK", from: 12, to: 13, prefix: "2-GK" },
+                pages: { folder: "images/scans/2-GK", from: 12, to: 13, prefix: "2-GK" },
                 content: `
                   <h2>📉 Vertrauensfrage &amp; konstruktives Misstrauensvotum</h2>
 
@@ -1378,7 +1378,7 @@
                 icon: "📰",
                 name: "Medien als vierte Gewalt",
                 desc: "Informieren · kontrollieren",
-                pages: { folder: "2-GK", from: 11, to: 11, prefix: "2-GK" },
+                pages: { folder: "images/scans/2-GK", from: 11, to: 11, prefix: "2-GK" },
                 content: `
                   <h2>📰 Medien als „vierte Gewalt“</h2>
                   <p>Neben <span class="term" data-de="Legislative" data-vi="lập pháp">Legislative</span>,
@@ -1419,7 +1419,7 @@
                   "<b>Mehrheitsprinzip</b>: die Mehrheit entscheidet, aber Minderheiten- und Grundrechte bleiben geschützt.",
                   "DE = vor allem repräsentativ; direkte Elemente ergänzen nur.",
                 ],
-                pages: { folder: "2-GK", from: 14, to: 15, prefix: "2-GK" },
+                pages: { folder: "images/scans/2-GK", from: 14, to: 15, prefix: "2-GK" },
                 content: `
                   <h2>📜 Demokratie nach dem Grundgesetz</h2>
 
@@ -1461,7 +1461,7 @@
                   "Grundrechte gelten <b>auch für Demokratie-Gegner</b> — nicht an Verhalten geknüpft.",
                   "Art. 1: die <b>Würde des Menschen ist unantastbar</b> (Fundament, bindet alle Staatsgewalt).",
                 ],
-                pages: { folder: "2-GK", from: 16, to: 18, prefix: "2-GK" },
+                pages: { folder: "images/scans/2-GK", from: 16, to: 18, prefix: "2-GK" },
                 content: `
                   <h2>🛡️ Grundrechte</h2>
 
