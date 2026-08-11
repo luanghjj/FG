@@ -173,6 +173,11 @@ var AI_SYSTEM =
     var v = lsGet(AI_BASE_KEY);
     return (v && v.trim()) || AI_DEFAULT_BASE;
   }
+  function aiApiUrl() {
+    var sc = document.currentScript && document.currentScript.src;
+    var m = sc ? sc.match(/^(.*\/)js\/chatbox\.js/) : null;
+    return (m ? m[1] : './') + 'api/ai';
+  }
   function aiToken() {
     var t = lsGet(AI_TOKEN_KEY);
     return (t && String(t).trim()) || '';
@@ -203,7 +208,7 @@ var AI_SYSTEM =
     }
     if (image) parts.push({ type: 'image', role: 'user', image: image });
     else parts.push({ type: 'text', role: 'user', text: text });
-    var res = await fetch('api/ai', {
+    var res = await fetch(aiApiUrl(), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ system: system, parts: parts }),
@@ -648,7 +653,7 @@ var AI_SYSTEM =
         }
       }
       try {
-        fetch('api/ai', { method: 'GET' })
+        fetch(aiApiUrl(), { method: 'GET' })
           .then(function (r) {
             if (r.status === 200) {
               return r.json().catch(function () { return {}; }).then(function (j) {
