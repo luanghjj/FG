@@ -1018,14 +1018,40 @@ function clean(s) {
     return row ? { key: row.key, value: row.value, updated_at: row.updated_at } : null;
   }
 
-  async function saveChallengeRoom(code, value) {
+  async function saveChallengeRoom(code, value, expectedV) {
     const key = challengeRoomKey(code);
     value = value || {};
     value.code = String(code || value.code || '').toUpperCase();
     value.updated_at = new Date().toISOString();
     value.app = 'on-thi';
-    const row = await upsertConfig(key, value);
-    return row && row.value ? row.value : value;
+    if (expectedV == null) {
+      // plain write (creation, host-only) — keeps whatever version the room has
+      const row = await upsertConfig(key, value);
+      return row && row.value ? row.value : value;
+    }
+    // compare-and-set on the version field: PATCH only matches if value->>v is
+    // still the version we read, so a concurrent writer can never be clobbered
+    // silently. Returns the saved room, or null on conflict (caller re-reads).
+    const oldV = Number(expectedV) || 0;
+    const nextV = oldV + 1;
+    value.v = nextV;
+    // NOTE: only the param name is percent-encoded; the `=` between name and
+    // value must stay literal so PostgREST parses the JSON-path filter.
+    const verCond = oldV === 0 ? 'value-%3E%3Ev=is.null' : 'value-%3E%3Ev=eq.' + oldV;
+    const rows = await sbFetch(
+      '/rest/v1/config?key=eq.' +
+        encodeURIComponent(key) +
+        '&' +
+        verCond +
+        '&select=key,value,updated_at',
+      {
+        method: 'PATCH',
+        headers: headers({ Prefer: 'return=representation' }),
+        body: JSON.stringify({ value: value }),
+      }
+    );
+    if (rows && rows.length) return rows[0].value;
+    return null;
   }
 
   /**
@@ -1034,11 +1060,11 @@ function clean(s) {
    * plain get→mutate→save loses updates when two players write within the same
    * ~1s. This helper:
    *   1. reads the room,
-   *   2. lets `mutator(room)` apply a per-player patch and ALSO record what it
-   *      changed via `mark(path)` so we can verify it survived,
-   *   3. saves,
-   *   4. re-reads and checks every marked patch is still present; if any was
-   *      clobbered, re-reads the latest room, re-applies the mutator, and retries.
+   *   2. lets `mutator(room)` apply a per-player patch,
+   *   3. saves via compare-and-set on the room's `v` version field
+   *      (saveChallengeRoom(code, room, expectedV)),
+   *   4. if the CAS failed (a concurrent writer saved first), re-reads the
+   *      latest room, re-applies the mutator, and retries.
    * `mutator` MUST be side-effect-free w.r.t. its inputs and deterministic so
    * re-applying on a fresher room is safe. Returns the final saved room.
    */
@@ -1048,22 +1074,16 @@ function clean(s) {
     if (!row || !row.value) throw new Error('Raum nicht gefunden');
     for (let i = 0; i < attempts; i++) {
       const room = row.value;
-      const marks = [];
-      const mark = (fn) => marks.push(fn); // fn(room) -> true if the patch is still present
-      const patch = mutator(room, mark);
+      const expectedV = Number(room.v) || 0;
+      const patch = mutator(room);
       if (patch === false) return room; // mutator chose not to write
-      await saveChallengeRoom(code, room);
-      // verify: re-read and ensure every marked patch survived
-      const after = await getChallengeRoom(code);
-      if (!after || !after.value) return room;
-      const ok = marks.every((fn) => {
-        try { return fn(after.value); } catch (_) { return false; }
-      });
-      if (ok) return after.value;
+      const saved = await saveChallengeRoom(code, room, expectedV);
+      if (saved) return saved;
       // clobbered — adopt the freshest room and retry the mutation on it
-      row = after;
+      row = await getChallengeRoom(code);
+      if (!row || !row.value) return room;
     }
-    // gave up verifying; return whatever we last saw
+    // gave up; return whatever we last saw
     const last = await getChallengeRoom(code);
     return last && last.value ? last.value : row.value;
   }
@@ -1087,6 +1107,7 @@ function clean(s) {
       status: 'lobby',
       created_at: now,
       updated_at: now,
+      v: 1,
       settings: {
         mode: st.mode || 'classic',
         subjects: st.subjects && st.subjects.length ? st.subjects : ['bfk2'],
@@ -1126,7 +1147,7 @@ function clean(s) {
     const c = String(code || '').trim().toUpperCase();
     if (c.length < 4) throw new Error('Code ungültig');
     const now = new Date().toISOString();
-    return withChallengeRoom(c, (room, mark) => {
+    return withChallengeRoom(c, (room) => {
       if (room.status === 'finished') throw new Error('Raum ist bereits beendet');
       room.players = room.players || {};
       room.scores = room.scores || {};
@@ -1148,8 +1169,6 @@ function clean(s) {
         };
       }
       room.players[player].last_seen = now;
-      // verify this player's membership survives a concurrent join/leave
-      mark((r) => !!(r && r.players && r.players[player]));
     }, { attempts: 6 });
   }
 
@@ -1157,77 +1176,67 @@ function clean(s) {
     const player = String(playerName || getPlayer() || '').trim();
     const readyVal = !!ready;
     const now = new Date().toISOString();
-    return withChallengeRoom(code, (room, mark) => {
+    return withChallengeRoom(code, (room) => {
       if (!room.players || !room.players[player]) throw new Error('Nicht im Raum');
       room.players[player].ready = readyVal;
       room.players[player].last_seen = now;
-      mark((r) => !!(r && r.players && r.players[player] && r.players[player].ready === readyVal));
     });
   }
 
   async function updateChallengeSettings(code, hostName, settings) {
     const host = String(hostName || getPlayer() || '').trim();
-    const row = await getChallengeRoom(code);
-    if (!row || !row.value) throw new Error('Raum nicht gefunden');
-    const room = row.value;
-    if (room.host !== host) throw new Error('Nur der Host kann Einstellungen ändern');
-    if (room.status !== 'lobby') throw new Error('Spiel läuft bereits');
-    room.settings = Object.assign({}, room.settings || {}, settings || {});
-    room.settings.mixed = !!(room.settings.subjects && room.settings.subjects.length > 1);
-    await saveChallengeRoom(code, room);
-    return room;
+    return withChallengeRoom(code, (room) => {
+      if (room.host !== host) throw new Error('Nur der Host kann Einstellungen ändern');
+      if (room.status !== 'lobby') throw new Error('Spiel läuft bereits');
+      room.settings = Object.assign({}, room.settings || {}, settings || {});
+      room.settings.mixed = !!(room.settings.subjects && room.settings.subjects.length > 1);
+    });
   }
 
   async function startChallengeRoom(code, hostName, questionIds) {
     const host = String(hostName || getPlayer() || '').trim();
-    const row = await getChallengeRoom(code);
-    if (!row || !row.value) throw new Error('Raum nicht gefunden');
-    const room = row.value;
-    if (room.host !== host) throw new Error('Nur der Host kann starten');
-    if (room.status !== 'lobby' && room.status !== 'countdown') throw new Error('Raum nicht im Lobby');
-    const ids = questionIds || room.question_ids || [];
-    if (!ids.length) throw new Error('Keine Fragen gewählt');
-    const now = new Date().toISOString();
-    // reset scores for live run
-    const mode = (room.settings && room.settings.mode) || 'classic';
-    const lives = mode === 'survival' ? ((room.settings && room.settings.lives) || 3) : null;
-    room.scores = room.scores || {};
-    Object.keys(room.players || {}).forEach((p) => {
-      room.scores[p] = {
-        correct: 0,
-        answered: 0,
-        streak: 0,
-        bestStreak: 0,
-        points: 0,
-        lives: lives,
-        eliminated: false,
-      };
+    return withChallengeRoom(code, (room) => {
+      if (room.host !== host) throw new Error('Nur der Host kann starten');
+      if (room.status !== 'lobby' && room.status !== 'countdown') throw new Error('Raum nicht im Lobby');
+      const ids = questionIds || room.question_ids || [];
+      if (!ids.length) throw new Error('Keine Fragen gewählt');
+      const now = new Date().toISOString();
+      // reset scores for live run
+      const mode = (room.settings && room.settings.mode) || 'classic';
+      const lives = mode === 'survival' ? ((room.settings && room.settings.lives) || 3) : null;
+      room.scores = room.scores || {};
+      Object.keys(room.players || {}).forEach((p) => {
+        room.scores[p] = {
+          correct: 0,
+          answered: 0,
+          streak: 0,
+          bestStreak: 0,
+          points: 0,
+          lives: lives,
+          eliminated: false,
+        };
+      });
+      room.eliminated = {};
+      room.answers = {};
+      room.question_ids = ids;
+      room.q_index = 0;
+      room.status = 'countdown';
+      room.countdown_ends_at = new Date(Date.now() + 3000).toISOString();
+      room.q_started_at = null;
+      room.started_at = now;
+      room.finished_at = null;
     });
-    room.eliminated = {};
-    room.answers = {};
-    room.question_ids = ids;
-    room.q_index = 0;
-    room.status = 'countdown';
-    room.countdown_ends_at = new Date(Date.now() + 3000).toISOString();
-    room.q_started_at = null;
-    room.started_at = now;
-    room.finished_at = null;
-    await saveChallengeRoom(code, room);
-    return room;
   }
 
   async function goLiveChallenge(code, hostName) {
     const host = String(hostName || getPlayer() || '').trim();
-    const row = await getChallengeRoom(code);
-    if (!row || !row.value) throw new Error('Raum nicht gefunden');
-    const room = row.value;
-    if (room.host !== host) throw new Error('Nur der Host');
-    if (room.status !== 'countdown' && room.status !== 'lobby') return room;
-    room.status = 'live';
-    room.q_index = 0;
-    room.q_started_at = new Date().toISOString();
-    await saveChallengeRoom(code, room);
-    return room;
+    return withChallengeRoom(code, (room) => {
+      if (room.host !== host) throw new Error('Nur der Host');
+      if (room.status !== 'countdown' && room.status !== 'lobby') return false;
+      room.status = 'live';
+      room.q_index = 0;
+      room.q_started_at = new Date().toISOString();
+    });
   }
 
   async function submitChallengeAnswer(code, playerName, qIndex, choiceIndex, isCorrect, meta) {
@@ -1238,7 +1247,7 @@ function clean(s) {
     const choice = Number(choiceIndex);
     const correct = !!isCorrect;
 
-    return withChallengeRoom(code, (room, mark) => {
+    return withChallengeRoom(code, (room) => {
       if (room.status !== 'live') throw new Error('Spiel nicht aktiv');
       if (qi !== Number(room.q_index)) throw new Error('Frage bereits vorbei');
       room.scores = room.scores || {};
@@ -1257,11 +1266,6 @@ function clean(s) {
       }
       const ansEntry = { choice: choice, correct: correct, at: nowIso, ms: ms };
       room.answers[key][player] = ansEntry;
-      // verify this player's answer survives any concurrent write
-      mark((r) => {
-        const a = r && r.answers && r.answers[key] && r.answers[key][player];
-        return !!a && a.choice === choice && !!a.correct === correct;
-      });
 
       room.scores[player].answered = (Number(room.scores[player].answered) || 0) + 1;
       const mode = (room.settings && room.settings.mode) || 'classic';
@@ -1313,13 +1317,6 @@ function clean(s) {
       room.scores[player].points = newPoints;
       room.scores[player].lives = newLives;
       room.scores[player].eliminated = nowEliminated;
-      // verify the score deltas survive (guard against a concurrent answer for the
-      // same player from a double-tap, and against clobber by another player's write)
-      mark((r) => {
-        const s = r && r.scores && r.scores[player];
-        return !!s && Number(s.answered) >= (Number(room.scores[player].answered) || 0)
-          && Number(s.correct) >= newCorrect;
-      });
 
       if (room.players && room.players[player]) {
         room.players[player].last_seen = nowIso;
@@ -1339,7 +1336,7 @@ function clean(s) {
 
   async function advanceChallengeQuestion(code, hostName) {
     const host = String(hostName || getPlayer() || '').trim();
-    return withChallengeRoom(code, (room, mark) => {
+    return withChallengeRoom(code, (room) => {
       if (room.host !== host) throw new Error('Nur der Host kann weiter schalten');
       if (room.status !== 'live') return false;
       const total = (room.question_ids || []).length;
@@ -1348,24 +1345,21 @@ function clean(s) {
         room.status = 'finished';
         room.finished_at = new Date().toISOString();
         room.q_started_at = null;
-        mark((r) => r && r.status === 'finished');
       } else {
         room.q_index = next;
         room.q_started_at = new Date().toISOString();
-        mark((r) => r && Number(r.q_index) === next);
       }
     });
   }
 
   async function finishChallengeRoom(code, hostName) {
     const host = String(hostName || getPlayer() || '').trim();
-    return withChallengeRoom(code, (room, mark) => {
+    return withChallengeRoom(code, (room) => {
       // allow any client to finalize if already past last question via host race
       // (host check intentionally permissive — see comment above the call site)
       room.status = 'finished';
       room.finished_at = room.finished_at || new Date().toISOString();
       room.q_started_at = null;
-      mark((r) => r && r.status === 'finished');
     });
   }
 
