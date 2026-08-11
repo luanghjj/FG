@@ -326,7 +326,7 @@ sed -i '' -E \
  js/faecher.js
 ```
 
-Verify: `grep -c 'klassenarbeiten/' js/faecher.js` = 25 (12 exam + 10 loesung + 1 zusammenfassung + 2 deutsch.html: external: + `<a href>`).
+Verify: `grep -o 'klassenarbeiten/' js/faecher.js | wc -l` = 24 (11 exam + 10 loesung + 1 zusammenfassung + 2 deutsch.html: external: + `<a href>`; grep -c đếm dòng = 14, dùng grep -o).
 
 - [ ] **Step 5: sw.js — PRECACHE đầy đủ + CACHE v106**
 
