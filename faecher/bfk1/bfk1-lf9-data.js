@@ -1,6 +1,6 @@
 /* BfK-1 · Lernfeld 9 – Zahlungen mit dem Gast abwickeln
- * Quelle chính: _bfk_1_notes/lf9.md
- * Câu hỏi bổ sung: _bfk_1_notes/fk_exel (KT Zahlung · Thema 3)
+ * Quelle chính: faecher/bfk1/notes/lf9.md
+ * Câu hỏi bổ sung: quellen/_bfk_1_notes/fk_exel (KT Zahlung · Thema 3)
  * Schema: xem bfk1-lf2-data.js
  */
 window.BFK1_LF9 = {

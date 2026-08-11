@@ -1,6 +1,6 @@
 /* BfK-1 · Lernfeld 6 – Gerichte, Menüs und Produkte anbieten
- * Quelle chính: _bfk_1_notes/lf6.md
- * Câu hỏi bổ sung: _bfk_1_notes/fk_exel (Thema 1, 8 · KT bắt buộc)
+ * Quelle chính: faecher/bfk1/notes/lf6.md
+ * Câu hỏi bổ sung: quellen/_bfk_1_notes/fk_exel (Thema 1, 8 · KT bắt buộc)
  * Schema: xem bfk1-lf2-data.js
  */
 window.BFK1_LF6 = {

@@ -1,6 +1,6 @@
 /* BfK-1 · Lernfeld 2 – Beschaffung und Lagerung (Thu mua & lưu kho)
- * Quelle chính: _bfk_1_notes/sla-lf2.md  (Bfk-SLA-lf2, 63 trang)
- * Câu hỏi bổ sung: _bfk_1_notes/fk_exel  (ánh xạ theo skill lernfeld-klassifikation)
+ * Quelle chính: faecher/bfk1/notes/sla-lf2.md  (Bfk-SLA-lf2, 63 trang)
+ * Câu hỏi bổ sung: quellen/_bfk_1_notes/fk_exel  (ánh xạ theo skill lernfeld-klassifikation)
  *
  * Nội dung 10 LS được chép trong các file phần bfk1-lf2-p1.js … p5.js
  * (mỗi file: window.__LF2 = (window.__LF2||[]).concat([ …items… ]) ).

@@ -1,6 +1,6 @@
 /* BfK-1 · Lernfeld 3 – Küche und Ernährung (Bếp & Dinh dưỡng)
- * Quelle chính: _bfk_1_notes/sla-lf3.md  (Bfk-SLA-lf3, 112 trang)
- * Câu hỏi bổ sung: _bfk_1_notes/fk_exel  (KT Bắt buộc, Thema 2, 5, 6, 7)
+ * Quelle chính: faecher/bfk1/notes/sla-lf3.md  (Bfk-SLA-lf3, 112 trang)
+ * Câu hỏi bổ sung: quellen/_bfk_1_notes/fk_exel  (KT Bắt buộc, Thema 2, 5, 6, 7)
  *
  * Nội dung 10 LS được chép trong các file phần bfk1-lf3-p1.js … p5.js
  * (mỗi file: window.__LF3 = (window.__LF3||[]).concat([ …items… ]) ).
