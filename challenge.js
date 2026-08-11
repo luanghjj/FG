@@ -208,7 +208,7 @@
     const mode = MODE_LABEL[st.mode || 'classic'] || 'Challenge';
     const url = roomInviteUrl(c);
     return (
-      '⚔️ H2FO3T Challenge!\n' +
+      '⚔️ AzubiHub Challenge!\n' +
       'Code: ' + c + '\n' +
       mode + '\n' +
       'Mitspielen: ' + url + '\n' +
@@ -233,7 +233,7 @@
     const url = roomInviteUrl(code);
     if (navigator.share) {
       try {
-        await navigator.share({ title: 'H2FO3T Challenge ' + code, text: text, url: url });
+        await navigator.share({ title: 'AzubiHub Challenge ' + code, text: text, url: url });
         return true;
       } catch (e) {
         // user cancelled or share failed

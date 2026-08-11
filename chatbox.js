@@ -1,5 +1,5 @@
 /* ============================================================
- * Chatbox lơ lửng – floating chat widget for Lern-App
+ * Chatbox lơ lửng – floating chat widget for AzubiHub
  * - Realtime chat rooms (Supabase config polling, ~1s)
  * - Voice messages (MediaRecorder ≤ 60s, base64 in DB)
  * - Private AI thread (cmd: /ai)

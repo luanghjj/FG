@@ -6,12 +6,12 @@
 <meta name="theme-color" content="#007AFF">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="H2FO3T">
+<meta name="apple-mobile-web-app-title" content="AzubiHub">
 <meta name="mobile-web-app-capable" content="yes">
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
-<title>Lern-App · Fachkraft für Gastronomie</title>
+<title>AzubiHub · Fachkraft für Gastronomie</title>
 <style>
 :root{
   /* Clean iOS Utility design system */
@@ -31,10 +31,6 @@ a{color:inherit;text-decoration:none}
 .page{max-width:1040px;margin:0 auto;padding:0 16px calc(72px + var(--safe-bottom));min-width:0}
 img,svg{max-width:100%;height:auto}
 button,input,.tile,.tab,.btn{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
-
-/* ===== Klasse ===== */
-.klasse{text-align:center;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--muted);font-size:.75em;padding:12px 0 6px}
 
 /* ===== Top nav ===== */
 .nav{position:sticky;top:0;z-index:50;background:rgba(242,242,247,.92);backdrop-filter:blur(12px);
@@ -926,7 +922,7 @@ h2 svg,h3 svg,b svg{width:1em;height:1em;display:inline-block;vertical-align:-.1
 <div id="loginGate">
   <div class="login-card">
     <div class="logo-big" aria-hidden="true">🎓</div>
-    <h1>Lern-App H2FO3T</h1>
+    <h1>AzubiHub</h1>
     <p class="sub">Gib deinen Nickname ein, um zu starten.</p>
     <p class="sub-cap">Die Lernzeit wird ab sofort gezählt — bei Wiederkehr siehst du deine Quiz-Historie.</p>
     <div class="login-err" id="loginErr"></div>
@@ -951,13 +947,10 @@ h2 svg,h3 svg,b svg{width:1em;height:1em;display:inline-block;vertical-align:-.1
 
 <div class="page locked" id="appPage">
 
-<!-- ===== KLASSE ===== -->
-<div class="klasse">Klasse H2FO3T</div>
-
 <!-- ===== NAV ===== -->
 <div class="nav">
   <div class="nav-row">
-    <div class="brand" onclick="go('#/')"><span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8.5 12 4l10 4.5-10 4.5z"/><path d="M6 11v4c0 1.2 2.7 2.4 6 2.4s6-1.2 6-2.4v-4"/><path d="M22 8.5v5"/></svg></span><span>Lern-App</span></div>
+    <div class="brand" onclick="go('#/')"><span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8.5 12 4l10 4.5-10 4.5z"/><path d="M6 11v4c0 1.2 2.7 2.4 6 2.4s6-1.2 6-2.4v-4"/><path d="M22 8.5v5"/></svg></span><span>AzubiHub</span></div>
     <div class="crumbs" id="crumbs"></div>
     <span class="user-chip" id="userChip" title="Nickname wechseln" style="display:none">👤 —</span>
     <button type="button" class="search-toggle" id="searchToggle" aria-label="Suche öffnen">🔍</button>
@@ -998,7 +991,7 @@ h2 svg,h3 svg,b svg{width:1em;height:1em;display:inline-block;vertical-align:-.1
     <div class="exam-go">Los →</div>
   </div>
 
-  <div class="fach-label">Fächer · Stundenplan H2FO3T</div>
+  <div class="fach-label">Fächer</div>
   <div id="subjectGroups"></div>
 
   <div class="fach-label">Heute üben</div>
@@ -1534,7 +1527,7 @@ h2 svg,h3 svg,b svg{width:1em;height:1em;display:inline-block;vertical-align:-.1
   <div id="fachPruefBody"></div>
 </section>
 
-<div class="footer">🍀 Lern-App · Fachkraft für Gastronomie · Viel Erfolg! 🍀</div>
+<div class="footer">🍀 AzubiHub · Fachkraft für Gastronomie · Viel Erfolg! 🍀</div>
 </div>
 
 
@@ -1811,7 +1804,7 @@ function renderAbschlussThemen(){
 }
 renderAbschlussThemen();
 
-/* ============ FÄCHER laut Stundenplan H2FO3T ============ */
+/* ============ FÄCHER ============ */
 /* BfK-1 Themen: geladen aus bfk1-data.js (Fallback, falls Datei fehlt) */
 const BFK1_THEMES = window.BFK1_THEMES || {
   lf2: { id:"lf2", label:"Lernfeld 2", badge:"LF 2", title:"Beschaffung und Lagerung", items:[] },
@@ -3895,7 +3888,7 @@ const SUBJECT_GROUPS = [
   {
     id:"allgemein",
     title:"Weitere Fächer",
-    subtitle:"Laut Stundenplan H2FO3T",
+    subtitle:"Laut Stundenplan",
     items:[
       {code:"WiKO", name:"Wirtschaftskompetenz", icon:"<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M4 4v16h16'/><path d='M8 17v-4'/><path d='M12.5 17V9'/><path d='M17 17v-6'/></svg>", accent:"#32ADE6", soft:"#E4F4FD", ready:true, route:"#/fach/wiko",
         desc:"Duales System · BBiG · Arbeitsschutz · Kündigung · Betriebsrat · Lohn & Steuern.",
@@ -4269,7 +4262,7 @@ SUBJECTS.forEach(s=>{
   idx(s.name, s.desc||s.code, s.code, s.route, null,
     s.code+" "+(s.topics||[]).join(" ")+" "+(s.meta||"")+" "+(s.examDate||"")+" "+(s.ready?"verfügbar":"bald")+" "+(s.desc||""));
 });
-idx("Startseite / Fächer","Alle Fächer der Lern-App","App","#/",null,"home start fächer menü lernen");
+idx("Startseite / Fächer","Alle Fächer von AzubiHub","App","#/",null,"home start fächer menü lernen");
 idx("Prüfungstraining","Klassenarbeiten · Quiz · Themen","KA","#/on-thi",null,"klassenarbeit prüfung ka termine training quiz");
 idx("GK Freitext FS1","Übungsaufgaben + Musterlösung · B1-Begriffe DE→VI","GK","#/exam/gk/uebung",null,"freitext erlaeutern beurteilen grundgesetz partizipation musterlosung");
 idx("GK Prüfungen","3 Übungsblätter (FS1) + Lösungsbogen","GK","#/exam/gk/pruefungen",null,"gk prüfung klassenarbeit übungsaufgaben buß-schroeder demokratie gewaltenteilung grundrechte karikatur");
@@ -5310,7 +5303,7 @@ function openPaywall(feature){
     +'<input id="payCode" type="text" placeholder="Code eingeben" autocomplete="off">'
     +'<button type="button" class="btn" id="payRedeem">Freischalten</button>'
     +'<div class="acct-msg" id="payMsg"></div></div>'
-    +'<p class="muted" style="font-size:.8em;margin:0 0 10px">Code bekommst du von H2FO3T.<br>'
+    +'<p class="muted" style="font-size:.8em;margin:0 0 10px">Code bekommst du von deiner Lehrkraft.<br>'
     +'<i>Xin code từ lớp/giáo viên.</i></p>'
     +'<button type="button" class="btn ghost" id="payClose" style="width:100%">Weiter mit Basic</button>'
     +'</div>';

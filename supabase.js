@@ -1,4 +1,4 @@
-/* Shared Supabase client for Lern-App (anon key – use RLS carefully) */
+/* Shared Supabase client for AzubiHub (anon key – use RLS carefully) */
 (function (global) {
   const SB_URL = 'https://bjhdiiimrhvgnegvcpci.supabase.co';
   const SB_ANON =

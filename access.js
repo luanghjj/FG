@@ -1,5 +1,5 @@
 /* ============================================================
- * access.js — 3-Tier Zugriffssystem für die Lern-App
+ * access.js — 3-Tier Zugriffssystem für die AzubiHub
  * ------------------------------------------------------------
  *  free  = Tầng 1: tất cả Thema, nhưng chỉ phần kiến thức cơ bản
  *  paid  = Tầng 2: full nội dung, quiz, Zusammenfassung, Prüfungen

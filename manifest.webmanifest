@@ -1,7 +1,7 @@
 {
-  "name": "Lern-App H2FO3T",
-  "short_name": "H2FO3T",
-  "description": "Lern-App Fachkraft für Gastronomie – BFK, Deutsch, Quiz",
+  "name": "AzubiHub",
+  "short_name": "AzubiHub",
+  "description": "AzubiHub – Lernen, Quizzen und Challenge: Fächer, Flashcards und Training für Azubis",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

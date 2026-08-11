@@ -1,5 +1,5 @@
 /* ============================================================
- * wissen.js – Knowledge index (RAG) for the Lern-App
+ * wissen.js – Knowledge index (RAG) for AzubiHub
  * Gom toàn bộ kiến thức nội bộ từ faecher.js, bfk1-*, quiz globals,
  * GK_GLE_GROUPS, GK_UEBUNGEN, B1_VOCAB thành các chunk có thể tìm kiếm.
  * Chatbox AI (/ai) dùng window.Wissen.searchContext() để trả lời
