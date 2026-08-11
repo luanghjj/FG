@@ -283,21 +283,19 @@ git mv bfk1-ka3.html bfk1-ka3-loesung.html bfk1-ka4.html bfk1-ka4-loesung.html b
 
 - [ ] **Step 2: Sửa ref bên trong 25 file (sed toàn cục)**
 
+> Lưu ý trạng thái: từ Task 2, các trang này đã có `src="./js/X.js?v=N"` (dạng root) — sed sau đây chuyển `./js/` → `../js/` (hợp lệ khi trang nằm ở klassenarbeiten/). Các link href vẫn ở dạng cũ (./index.html, ./manifest.webmanifest, ./icons/...) — pattern dưới đây xử lý cả.
+
 ```bash
 sed -i '' -E \
- -e 's#src="\./supabase\.js\?v=16"#src="../js/supabase.js?v=16"#g' \
- -e 's#src="\./access\.js\?v=[0-9]+"#src="../js/access.js?v=2"#g' \
- -e 's#src="\./guard\.js\?v=[0-9]+"#src="../js/guard.js?v=1"#g' \
- -e 's#src="\./vocab\.js\?v=[0-9]+"#src="../js/vocab.js?v=20"#g' \
- -e 's#src="\./wissen\.js\?v=[0-9]+"#src="../js/wissen.js?v=1"#g' \
- -e 's#src="\./chatbox\.js\?v=[0-9]+"#src="../js/chatbox.js?v=13"#g' \
- -e 's#src="\./diagrams\.js\?v=[0-9]+"#src="../js/diagrams.js?v=1"#g' \
- -e 's#src="\./pwa\.js\?v=[0-9]+"#src="../pwa.js?v=6"#g' \
+ -e 's#src="\./js/(supabase|access|guard|vocab|wissen|chatbox|diagrams)\.js(\?v=[0-9]+)"#src="../js/\1.js\2"#g' \
+ -e 's#src="\./pwa\.js(\?v=[0-9]+)"#src="../pwa.js\1"#g' \
  -e 's#href="\.?/?index\.html"#href="../index.html"#g' \
  -e 's#href="\./manifest\.webmanifest"#href="../manifest.webmanifest"#g' \
  -e 's#href="\./icons/#href="../images/icons/#g' \
  klassenarbeiten/*.html
 ```
+
+Giữ nguyên giá trị `?v=` gốc của từng file (supabase v16, access v2, guard v1, vocab v20, wissen v1, chatbox v13, diagrams v1, pwa v3/6).
 
 Verify: `grep -rn 'src="\./[a-z]' klassenarbeiten/*.html` → chỉ còn `../js/`/`../pwa.js`; `grep -c 'href="../index.html' klassenarbeiten/*.html`.
 
