@@ -17,7 +17,12 @@
 
   var self = document.currentScript;
   var NEED = (self && self.getAttribute('data-need')) || 'pruefungen';
-  var HOME = (self && self.getAttribute('data-home')) || 'index.html';
+  var ROOT = '';
+  if (self && self.src) {
+    var gm = self.src.match(/^(.*\/)js\/guard\.js/);
+    if (gm) ROOT = gm[1];
+  }
+  var HOME = (self && self.getAttribute('data-home')) || ROOT + 'index.html';
 
   function overlay(kind, player) {
     var wrap = document.createElement('div');

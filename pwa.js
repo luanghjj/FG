@@ -114,9 +114,15 @@
     el.classList.add('show');
   }
 
-  // Register SW
+  // Register SW (root-relative: pwa.js sits next to sw.js at the app root,
+  // page-relative './sw.js' would break on pages in subfolders)
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js').catch(() => {});
+    const cur = document.currentScript && document.currentScript.src;
+    const swUrl =
+      cur && cur.lastIndexOf('/') > 0
+        ? cur.slice(0, cur.lastIndexOf('/')) + '/sw.js'
+        : './sw.js';
+    navigator.serviceWorker.register(swUrl).catch(() => {});
     // delay install prompt a bit so login is not blocked
     setTimeout(() => {
       if (isStandalone() || dismissed()) return;
