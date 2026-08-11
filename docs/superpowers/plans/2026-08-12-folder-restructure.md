@@ -53,13 +53,6 @@ function walk(dir, out = []) {
   return out;
 }
 
-function resolve(file, r) {
-  if (!r || r.startsWith('#') || /^(https?:|data:|blob:|mailto:|tel:|\/\/|\/)/.test(r)) return null;
-  const clean = r.split(/[?#]/)[0];
-  if (!clean) return null;
-  return clean;
-}
-
 function refsIn(file) {
   const txt = fs.readFileSync(file, 'utf8');
   const check = (r) => {
