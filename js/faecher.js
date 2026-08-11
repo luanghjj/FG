@@ -581,7 +581,7 @@
         examDate: "2026-07-16",
         ready: true,
         desc: "Visualisierung · Mindmap · Diagramme",
-        external: "deutsch.html",
+        external: "klassenarbeiten/deutsch.html",
         groups: [
           {
             id: "ka",
@@ -595,7 +595,7 @@
                 desc: "Mindmap, Diagramme, Text → Grafik",
                 content: `<h2>🇩🇪 Visualisierung</h2>
                   <div class="hint">Text → Grafik · Mindmap · Diagrammtypen · KA-Training</div>
-                  <p><a class="btn" href="deutsch.html">Deutsch-App öffnen (Theorie + Üben) →</a></p>
+                  <p><a class="btn" href="klassenarbeiten/deutsch.html">Deutsch-App öffnen (Theorie + Üben) →</a></p>
                   <h3 class="sub">1. Was ist Visualisierung?</h3>
                   <p><span class="term" data-de="Visualisierung" data-vi="trực quan hóa">Visualisierung</span> von Texten = Wesentliches als Grafik/Schaubild darstellen (nicht nur abschreiben).</p>
                   <h3 class="sub">2. Häufige Formen</h3>
@@ -2380,31 +2380,31 @@
     bfk1: {
       examThemes: [],
       pruefungen: [
-        { title: "Klassenarbeit Nr. 3", desc: "Froher Seeblick · Gästebewertungen, Obst, Systemgastronomie, Beleg", exam: "bfk1-ka3.html", loesung: "bfk1-ka3-loesung.html" },
-        { title: "Klassenarbeit Nr. 4", desc: "Sonnenblick · vegane Woche, Hülsenfrüchte, Bewirtungsvertrag, USt", exam: "bfk1-ka4.html", loesung: "bfk1-ka4-loesung.html" },
-        { title: "Klassenarbeit Nr. 5", desc: "Stadtkrone · Getreide/Gluten, Menüregeln, Zechprellerei, USt vor Ort", exam: "bfk1-ka5.html", loesung: "bfk1-ka5-loesung.html" },
+        { title: "Klassenarbeit Nr. 3", desc: "Froher Seeblick · Gästebewertungen, Obst, Systemgastronomie, Beleg", exam: "klassenarbeiten/bfk1-ka3.html", loesung: "klassenarbeiten/bfk1-ka3-loesung.html" },
+        { title: "Klassenarbeit Nr. 4", desc: "Sonnenblick · vegane Woche, Hülsenfrüchte, Bewirtungsvertrag, USt", exam: "klassenarbeiten/bfk1-ka4.html", loesung: "klassenarbeiten/bfk1-ka4-loesung.html" },
+        { title: "Klassenarbeit Nr. 5", desc: "Stadtkrone · Getreide/Gluten, Menüregeln, Zechprellerei, USt vor Ort", exam: "klassenarbeiten/bfk1-ka5.html", loesung: "klassenarbeiten/bfk1-ka5-loesung.html" },
       ],
     },
     bfk2: {
       examThemes: [],
       pruefungen: [
-        { title: "Musterprüfung", desc: "Klassenarbeit Nr. 2 · Prüfungsbogen", exam: "kiemtra_mau.html", loesung: "loiGiai_mau.html" },
-        { title: "Zusammenfassung KA2", desc: "LF2 Waren & Lieferung · LF3", exam: "ka2.html", loesung: null },
+        { title: "Musterprüfung", desc: "Klassenarbeit Nr. 2 · Prüfungsbogen", exam: "klassenarbeiten/kiemtra_mau.html", loesung: "klassenarbeiten/loiGiai_mau.html" },
+        { title: "Zusammenfassung KA2", desc: "LF2 Waren & Lieferung · LF3", exam: "klassenarbeiten/ka2.html", loesung: null },
       ],
     },
     englisch: {
       // KA: alle Themen (Telephoning, Present/Future tenses, Complaints, Quantifiers)
       examThemes: ["telephoning", "present-future-tenses", "complaints-restaurant", "quantifiers"],
       pruefungen: [
-        { title: "Class Test 1 (Mock)", desc: "Telephoning · Complaints · Quantifiers · Tenses · 50 P.", exam: "englisch-ka1.html", loesung: "englisch-ka1-loesung.html" },
-        { title: "Class Test 2 (Mock)", desc: "Problem call · complaints · few/little · tenses · 50 P.", exam: "englisch-ka2.html", loesung: "englisch-ka2-loesung.html" },
-        { title: "Class Test 3 (Mock)", desc: "Dialogue writing · C/U nouns · error correction · tenses · 50 P.", exam: "englisch-ka3.html", loesung: "englisch-ka3-loesung.html" },
+        { title: "Class Test 1 (Mock)", desc: "Telephoning · Complaints · Quantifiers · Tenses · 50 P.", exam: "klassenarbeiten/englisch-ka1.html", loesung: "klassenarbeiten/englisch-ka1-loesung.html" },
+        { title: "Class Test 2 (Mock)", desc: "Problem call · complaints · few/little · tenses · 50 P.", exam: "klassenarbeiten/englisch-ka2.html", loesung: "klassenarbeiten/englisch-ka2-loesung.html" },
+        { title: "Class Test 3 (Mock)", desc: "Dialogue writing · C/U nouns · error correction · tenses · 50 P.", exam: "klassenarbeiten/englisch-ka3.html", loesung: "klassenarbeiten/englisch-ka3-loesung.html" },
       ],
     },
     gk: {
       // KA 1: Volksabstimmung, repräsentative Demokratie, Mehrheitsprinzip,
       // Gewaltenteilung + Gewaltenverschränkung, Menschen-/Bürgerrechte, Karikatur
-      zusammenfassung: "gk-zusammenfassung.html",
+      zusammenfassung: "klassenarbeiten/gk-zusammenfassung.html",
       examThemes: ["partizipation", "demokratie-gg", "gewaltenteilung", "grundrechte", "karikatur-methode"],
       examChecklist: [
         "Volksabstimmung (Initiative → Begehren → Entscheid)",
@@ -2416,9 +2416,9 @@
         "Karikatur interpretieren",
       ],
       pruefungen: [
-        { title: "Übung Nr. 1", desc: "Partizipation · Grundgesetz · Gleichberechtigung", exam: "gk-ka1.html", loesung: "gk-ka1-loesung.html" },
-        { title: "Übung Nr. 2", desc: "Gewaltenteilung · Gewaltenverschränkung · Medien · Vertrauensfrage", exam: "gk-ka2.html", loesung: "gk-ka2-loesung.html" },
-        { title: "Übung Nr. 3", desc: "Direkte Demokratie · Karikatur · Menschen-/Bürgerrechte · Mehrheitsprinzip", exam: "gk-ka3.html", loesung: "gk-ka3-loesung.html" },
+        { title: "Übung Nr. 1", desc: "Partizipation · Grundgesetz · Gleichberechtigung", exam: "klassenarbeiten/gk-ka1.html", loesung: "klassenarbeiten/gk-ka1-loesung.html" },
+        { title: "Übung Nr. 2", desc: "Gewaltenteilung · Gewaltenverschränkung · Medien · Vertrauensfrage", exam: "klassenarbeiten/gk-ka2.html", loesung: "klassenarbeiten/gk-ka2-loesung.html" },
+        { title: "Übung Nr. 3", desc: "Direkte Demokratie · Karikatur · Menschen-/Bürgerrechte · Mehrheitsprinzip", exam: "klassenarbeiten/gk-ka3.html", loesung: "klassenarbeiten/gk-ka3-loesung.html" },
       ],
     },
   };

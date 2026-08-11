@@ -6,8 +6,8 @@
 <meta name="theme-color" content="#007AFF">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="AzubiHub">
-<link rel="manifest" href="./manifest.webmanifest">
-<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="apple-touch-icon" href="../images/icons/apple-touch-icon.png">
 <title>Deutsch · Visualisierung – KA 16.07.26</title>
 <style>
 :root{
@@ -258,7 +258,7 @@ button.stw.open{box-shadow:0 0 0 2px #007AFF}
       <div class="brand" onclick="go('home')"><div class="logo">🇩🇪</div> Visualisierung</div>
       <span class="ka">KA 16.07.26</span>
       <span id="deUserChip" class="home-link" style="cursor:default">👤 …</span>
-      <a class="home-link" href="./index.html">← Fächer</a>
+      <a class="home-link" href="../index.html">← Fächer</a>
       <div class="tabs">
         <button class="tab active" data-v="home" onclick="go('home')">Start</button>
         <button class="tab" data-v="lernen" onclick="go('lernen')">Lernen</button>
@@ -864,10 +864,10 @@ button.stw.open{box-shadow:0 0 0 2px #007AFF}
   <div class="footer">Visualisierung · KA 16.07.26 · Viel Erfolg!</div>
 </div>
 
-<script src="./pwa.js?v=3" defer></script>
-<script src="./js/supabase.js?v=16"></script>
-<script src="./js/vocab.js?v=20"></script>
-<script src="./js/diagrams.js?v=1"></script>
+<script src="../pwa.js?v=3" defer></script>
+<script src="../js/supabase.js?v=16"></script>
+<script src="../js/vocab.js?v=20"></script>
+<script src="../js/diagrams.js?v=1"></script>
 <script>
 /* ===== VI toggle (Lernen + Üben) ===== */
 document.addEventListener('click', (e)=>{
@@ -1843,7 +1843,7 @@ function quizIntro(){
     document.getElementById('quizArea').innerHTML=`
       <div class="center">
         <p class="muted" style="margin-bottom:12px">Nickname nötig, um das Quiz zu spielen und Punkte zu speichern.</p>
-        <a class="btn" href="./index.html">← Zur Startseite (Nickname)</a>
+        <a class="btn" href="../index.html">← Zur Startseite (Nickname)</a>
       </div>`;
     return;
   }
@@ -1983,7 +1983,7 @@ function shuffle(a){const arr=[...a];for(let i=arr.length-1;i>0;i--){const j=Mat
   const name=window.LearnDB && LearnDB.getPlayer();
   if(chip){
     if(name){ chip.textContent='👤 '+name; }
-    else { chip.innerHTML='<a href="./index.html" style="color:inherit;text-decoration:none">👤 Login</a>'; }
+    else { chip.innerHTML='<a href="../index.html" style="color:inherit;text-decoration:none">👤 Login</a>'; }
   }
   // Continue session duration tracking after navigating from index
   if(window.LearnDB && LearnDB.resumeVisitTracking) LearnDB.resumeVisitTracking();
@@ -2013,7 +2013,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 <script>document.addEventListener('DOMContentLoaded',function(){try{if(window.fillSchnellwahlMinis)if(typeof fillSchnellwahlMinis==='function') if(typeof fillSchnellwahlMinis==='function') fillSchnellwahlMinis(); if(window.fillDiagSlots)fillDiagSlots(document);}catch(e){}});</script>
-<script src="./js/wissen.js?v=1"></script>
-<script src="./js/chatbox.js?v=13"></script>
+<script src="../js/wissen.js?v=1"></script>
+<script src="../js/chatbox.js?v=13"></script>
 </body>
 </html>
