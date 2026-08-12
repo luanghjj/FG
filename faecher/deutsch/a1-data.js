@@ -1053,6 +1053,520 @@ window.DEUTSCH_A1 = {
           ]
         }
       ]
+    },
+    {
+      id: "u5",
+      title: "Einkaufen",
+      desc: "Mua sắm · giá cả · màu sắc · quần áo · kein/keine",
+      icon: "🛍️",
+      lektionen: [
+        {
+          id: "u5-l1",
+          name: "Einkaufen: Wo kaufen wir ein?",
+          icon: "🛍️",
+          desc: "Mua sắm · các loại cửa hàng · giờ mở cửa",
+          content: `<h2>🛍️ Einkaufen: Wo kaufen wir ein?</h2>
+<div class="hint">Mua sắm · các loại cửa hàng · giờ mở cửa</div>
+<h3 class="sub">1. Đi mua sắm</h3>
+<ul>
+  <li>Ich <span class="term" data-de="einkaufen" data-vi="mua sắm">kaufe ein</span>. — Wir gehen <span class="term" data-de="einkaufen gehen" data-vi="đi mua sắm">einkaufen</span>.</li>
+  <li>Ich gehe <span class="term" data-de="in den Supermarkt" data-vi="vào siêu thị">in den Supermarkt</span>. / Wir gehen <span class="term" data-de="ins Geschäft" data-vi="vào cửa hàng">ins Geschäft</span>.</li>
+  <li>Ich brauche eine <span class="term" data-de="die Einkaufsliste" data-vi="danh sách mua sắm">Einkaufsliste</span>.</li>
+</ul>
+<h3 class="sub">2. Các loại cửa hàng</h3>
+<ul>
+  <li><span class="term" data-de="der Supermarkt" data-vi="siêu thị">Supermarkt</span> · <span class="term" data-de="das Geschäft" data-vi="cửa hàng">Geschäft</span> · <span class="term" data-de="das Kaufhaus" data-vi="trung tâm thương mại">Kaufhaus</span></li>
+  <li><span class="term" data-de="die Bäckerei" data-vi="tiệm bánh mì">Bäckerei</span> · <span class="term" data-de="die Metzgerei" data-vi="hàng thịt">Metzgerei</span> · <span class="term" data-de="der Wochenmarkt" data-vi="chợ phiên hằng tuần">Wochenmarkt</span></li>
+</ul>
+<h3 class="sub">3. Giờ mở cửa</h3>
+<ul>
+  <li><span class="term" data-de="geöffnet" data-vi="mở cửa">Geöffnet</span> bis 20 Uhr. · <span class="term" data-de="geschlossen" data-vi="đóng cửa">Geschlossen</span> am Sonntag.</li>
+  <li>Die <span class="term" data-de="die Öffnungszeiten" data-vi="giờ mở cửa">Öffnungszeiten</span>: Montag bis Samstag, 8–20 Uhr.</li>
+  <li>Das <span class="term" data-de="das Angebot" data-vi="hàng khuyến mãi">Angebot</span> der Woche: Äpfel für 1,99 €.</li>
+</ul>
+<div class="note">💡 Schnellmerk: Cửa hàng đuôi <b>-ei</b> là nơi sản xuất/bán: die Bäck<b>erei</b> (bánh), die Metzger<b>ei</b> (thịt).</div>`,
+          listen: [
+            { id: "u5-l1-l1", text: "Ich gehe in den Supermarkt und kaufe ein.", tip: "Nghe giới từ in + Akkusativ sau gehen", slow: true },
+            { id: "u5-l1-l2", text: "Das Geschäft ist von Montag bis Samstag geöffnet." }
+          ],
+          speak: [
+            { id: "u5-l1-s1", prompt: "Nói: 'Tôi cần một danh sách mua sắm'", model: "Ich brauche eine Einkaufsliste.", hint: "Ich · brau·che · ei·ne · Ein·kaufs·lis·te" }
+          ]
+        },
+        {
+          id: "u5-l2",
+          name: "Was kostet das?",
+          icon: "💶",
+          desc: "Hỏi giá · Was kostet / Wie viel kostet · euro và cent",
+          content: `<h2>💶 Was kostet das?</h2>
+<div class="hint">Hỏi giá · Was kostet / Wie viel kostet · euro và cent</div>
+<h3 class="sub">1. Hỏi giá</h3>
+<ul>
+  <li><span class="term" data-de="Was kostet das?" data-vi="Cái đó giá bao nhiêu?">Was kostet das?</span> — Das kostet <span class="term" data-de="drei Euro" data-vi="ba euro">drei Euro</span>.</li>
+  <li><span class="term" data-de="Wie viel kostet das?" data-vi="Cái đó giá bao nhiêu?">Wie viel kostet das?</span> — Es kostet <span class="term" data-de="fünf Euro fünfzig" data-vi="5 euro 50 xu">fünf Euro fünfzig</span>.</li>
+  <li><span class="term" data-de="Wie viel kosten die Schuhe?" data-vi="Đôi giày giá bao nhiêu?">Wie viel kosten die Schuhe?</span> — Sie kosten <span class="term" data-de="vierzig Euro" data-vi="bốn mươi euro">vierzig Euro</span>.</li>
+</ul>
+<h3 class="sub">2. Giá cả và tiền</h3>
+<ul>
+  <li><span class="term" data-de="der Preis" data-vi="giá cả">Preis</span> · <span class="term" data-de="billig" data-vi="rẻ">billig</span> · <span class="term" data-de="teuer" data-vi="đắt">teuer</span> · <span class="term" data-de="günstig" data-vi="giá phải chăng">günstig</span></li>
+  <li>Tiền Đức: <span class="term" data-de="der Euro" data-vi="đồng euro">Euro</span> và <span class="term" data-de="der Cent" data-vi="xu">Cent</span>: 1,99 € = ein Euro neunundneunzig.</li>
+</ul>
+<h3 class="sub">3. Đắt hay rẻ?</h3>
+<ul>
+  <li>Das ist <span class="term" data-de="zu teuer" data-vi="quá đắt">zu teuer</span>! · Das ist <span class="term" data-de="sehr billig" data-vi="rất rẻ">sehr billig</span>.</li>
+  <li>Gibt es <span class="term" data-de="etwas Billigeres" data-vi="thứ gì đó rẻ hơn">etwas Billigeres</span>?</li>
+</ul>
+<div class="note">💡 Schnellmerk: Giá tiền: euro đọc trước, cent đọc sau: <b>2,50 €</b> = zwei Euro fünfzig. Số lẻ dùng <b>Komma</b> (dấu phẩy), không phải dấu chấm.</div>`,
+          grammar: [
+            {
+              id: "a1-preise-kosten",
+              title: "Preise: Was kostet / Wie viel kosten",
+              rule: "<p>Hỏi giá một vật (số ít): <b>Was kostet das?</b> / <b>Wie viel kostet das?</b> — trả lời: Das kostet … Euro.</p><p>Số nhiều: <b>Wie viel kosten die Schuhe?</b> — Sie kosten … Euro.</p><p>Giá tiền: <b>Euro</b> + <b>Cent</b>: 5,50 € = fünf Euro fünfzig · 0,99 € = neunundneunzig Cent.</p>",
+              examples: ["Was kostet das? — Drei Euro.", "Wie viel kosten die Schuhe? — Vierzig Euro.", "Das Brot kostet zwei Euro neunzig."],
+              exercise: { type: "fill", theme: "u5-l2", cat: "Preise", q: "Wie viel ___ die Schuhe? (kosten)", answers: ["kosten"], answer: "kosten", ex: "die Schuhe (số nhiều) → kosten" }
+            }
+          ],
+          listen: [
+            { id: "u5-l2-l1", text: "Was kostet das? — Das kostet drei Euro.", tip: "Nghe câu hỏi giá và câu trả lời", slow: true },
+            { id: "u5-l2-l2", text: "Wie viel kosten die Schuhe? — Sie kosten vierzig Euro." }
+          ],
+          speak: [
+            { id: "u5-l2-s1", prompt: "Hỏi: 'Cái đó giá bao nhiêu?'", model: "Was kostet das?", hint: "Was · kos·tet · das" },
+            { id: "u5-l2-s2", prompt: "Trả lời: 'Cái đó giá 3 euro'", model: "Das kostet drei Euro.", hint: "Das · kos·tet · drei · Eu·ro" }
+          ]
+        },
+        {
+          id: "u5-l3",
+          name: "Die Farben",
+          icon: "🎨",
+          desc: "Màu sắc · Welche Farbe? · màu + danh từ",
+          content: `<h2>🎨 Die Farben</h2>
+<div class="hint">Màu sắc · Welche Farbe hat…? · màu + danh từ</div>
+<h3 class="sub">1. Màu cơ bản</h3>
+<ul>
+  <li><span class="term" data-de="rot" data-vi="màu đỏ">rot</span> · <span class="term" data-de="blau" data-vi="màu xanh dương">blau</span> · <span class="term" data-de="grün" data-vi="màu xanh lá">grün</span> · <span class="term" data-de="gelb" data-vi="màu vàng">gelb</span></li>
+  <li><span class="term" data-de="schwarz" data-vi="màu đen">schwarz</span> · <span class="term" data-de="weiß" data-vi="màu trắng">weiß</span> · <span class="term" data-de="grau" data-vi="màu xám">grau</span> · <span class="term" data-de="braun" data-vi="màu nâu">braun</span></li>
+  <li><span class="term" data-de="orange" data-vi="màu cam">orange</span> · <span class="term" data-de="lila" data-vi="màu tím">lila</span> · <span class="term" data-de="rosa" data-vi="màu hồng">rosa</span></li>
+</ul>
+<h3 class="sub">2. Màu của đồ vật</h3>
+<ul>
+  <li><span class="term" data-de="die Farbe" data-vi="màu sắc">Farbe</span>: Welche Farbe hat das T-Shirt? — Das T-Shirt ist <span class="term" data-de="blau" data-vi="màu xanh">blau</span>.</li>
+  <li>Ich möchte das Hemd <span class="term" data-de="in Blau" data-vi="màu xanh">in Blau</span>.</li>
+</ul>
+<h3 class="sub">3. Tính từ màu + danh từ</h3>
+<ul>
+  <li>ein <span class="term" data-de="roter Apfel" data-vi="quả táo đỏ">roter Apfel</span> · eine <span class="term" data-de="gelbe Banane" data-vi="quả chuối vàng">gelbe Banane</span></li>
+  <li>ein <span class="term" data-de="grüner Salat" data-vi="món xà lách xanh">grüner Salat</span> · <span class="term" data-de="schwarzer Kaffee" data-vi="cà phê đen">schwarzer Kaffee</span></li>
+</ul>
+<div class="note">💡 Schnellmerk: Tính từ màu đi sau <b>sein</b> không đổi: Das T-Shirt ist <b>blau</b>. Trước danh từ thì thêm đuôi theo giống: ein <b>roter</b> Apfel (der), eine <b>gelbe</b> Banane (die).</div>`,
+          listen: [
+            { id: "u5-l3-l1", text: "rot, blau, grün, gelb, schwarz, weiß", tip: "Nghe và nhắc lại từng màu", slow: true },
+            { id: "u5-l3-l2", text: "Welche Farbe hat das T-Shirt? — Das T-Shirt ist blau." },
+            { id: "u5-l3-l3", text: "Ich möchte das Hemd in Blau." }
+          ],
+          speak: [
+            { id: "u5-l3-s1", prompt: "Nói: 'Chiếc áo phông màu xanh'", model: "Das T-Shirt ist blau.", hint: "Das · T-Shirt · ist · blau" }
+          ]
+        },
+        {
+          id: "u5-l4",
+          name: "Die Kleidung",
+          icon: "👕",
+          desc: "Quần áo · die Hose, das Hemd · mua quần áo",
+          content: `<h2>👕 Die Kleidung</h2>
+<div class="hint">Quần áo · article đúng · mua quần áo</div>
+<h3 class="sub">1. Quần áo cơ bản</h3>
+<ul>
+  <li><span class="term" data-de="die Kleidung" data-vi="quần áo">Kleidung</span> · <span class="term" data-de="die Hose" data-vi="quần dài">Hose</span> · <span class="term" data-de="das Hemd" data-vi="áo sơ mi">Hemd</span> · <span class="term" data-de="das T-Shirt" data-vi="áo phông">T-Shirt</span></li>
+  <li><span class="term" data-de="die Jacke" data-vi="áo khoác">Jacke</span> · <span class="term" data-de="der Pullover" data-vi="áo len">Pullover</span> · <span class="term" data-de="der Rock" data-vi="chân váy">Rock</span> · <span class="term" data-de="das Kleid" data-vi="váy liền">Kleid</span></li>
+  <li><span class="term" data-de="der Mantel" data-vi="áo choàng">Mantel</span> · <span class="term" data-de="der Anzug" data-vi="bộ vest">Anzug</span></li>
+</ul>
+<h3 class="sub">2. Giày và phụ kiện</h3>
+<ul>
+  <li><span class="term" data-de="die Schuhe" data-vi="đôi giày">Schuhe</span> · <span class="term" data-de="die Socken" data-vi="đôi tất">Socken</span> · <span class="term" data-de="der Hut" data-vi="cái mũ">Hut</span> · <span class="term" data-de="der Schal" data-vi="khăn quàng">Schal</span></li>
+  <li><span class="term" data-de="die Handschuhe" data-vi="đôi găng tay">Handschuhe</span> · <span class="term" data-de="die Tasche" data-vi="túi xách">Tasche</span> · <span class="term" data-de="der Gürtel" data-vi="thắt lưng">Gürtel</span></li>
+</ul>
+<h3 class="sub">3. Mua quần áo</h3>
+<ul>
+  <li>Ich <span class="term" data-de="suchen" data-vi="tìm">suche</span> eine Hose. — Welche <span class="term" data-de="die Größe" data-vi="cỡ, size">Größe</span> brauchen Sie?</li>
+  <li>Die Jacke <span class="term" data-de="passen" data-vi="vừa">passt</span> gut. / Die Hose passt <span class="term" data-de="nicht" data-vi="không">nicht</span>.</li>
+</ul>
+<div class="note">💡 Schnellmerk: Học quần áo theo article: <b>die</b> Hose, <b>das</b> Hemd, <b>der</b> Rock — danh từ đuôi -e thường giống cái.</div>`,
+          grammar: [
+            {
+              id: "a1-akkusativ-einkauf",
+              title: "Akkusativ beim Einkaufen",
+              rule: "<p>Khi mua sắm, sau <b>kaufen</b>, <b>suchen</b>, <b>brauchen</b>, <b>möchten</b> danh từ đi Akkusativ:</p><p>der → <b>den</b>: Ich kaufe <b>den</b> Mantel. · die → <b>die</b>: Ich suche <b>die</b> Hose. · das → <b>das</b>: Ich brauche <b>das</b> T-Shirt.</p><p>Bất định: <b>einen</b> (der) · <b>eine</b> (die) · <b>ein</b> (das): Ich kaufe <b>eine</b> Jacke.</p>",
+              examples: ["Ich kaufe den Mantel.", "Ich suche eine Hose.", "Sie braucht das T-Shirt in Blau."],
+              exercise: { type: "fill", theme: "u5-l4", cat: "Akkusativ beim Einkaufen", q: "Ich kaufe ___ Mantel. (der)", answers: ["den"], answer: "den", ex: "der → Akkusativ den" }
+            }
+          ],
+          listen: [
+            { id: "u5-l4-l1", text: "Ich suche eine Hose. — Welche Größe brauchen Sie?", tip: "Nghe cuộc hội thoại mua quần áo", slow: true },
+            { id: "u5-l4-l2", text: "Ich kaufe den Mantel und die Jacke." }
+          ],
+          speak: [
+            { id: "u5-l4-s1", prompt: "Nói: 'Tôi đang tìm một cái áo khoác'", model: "Ich suche eine Jacke.", hint: "Ich · su·che · ei·ne · Ja·cke" }
+          ]
+        },
+        {
+          id: "u5-l5",
+          name: "Im Geschäft",
+          icon: "🛒",
+          desc: "Trong cửa hàng · anprobieren · kein/keine",
+          content: `<h2>🛒 Im Geschäft</h2>
+<div class="hint">Trong cửa hàng · thử đồ · kein/keine phủ định</div>
+<h3 class="sub">1. Vào cửa hàng</h3>
+<ul>
+  <li><span class="term" data-de="Kann ich Ihnen helfen?" data-vi="Tôi giúp gì được cho anh/chị?">Kann ich Ihnen helfen?</span> — Ich möchte gern <span class="term" data-de="anprobieren" data-vi="thử (quần áo)">anprobieren</span>.</li>
+  <li>Die <span class="term" data-de="die Umkleidekabine" data-vi="phòng thử đồ">Umkleidekabine</span> ist dort. — Welche <span class="term" data-de="die Größe" data-vi="cỡ">Größe</span> haben Sie?</li>
+</ul>
+<h3 class="sub">2. Không có…: kein/keine</h3>
+<ul>
+  <li>Ich habe <span class="term" data-de="kein Geld" data-vi="không có tiền">kein Geld</span>. / Ich habe <span class="term" data-de="keine Zeit" data-vi="không có thời gian">keine Zeit</span>.</li>
+  <li>Wir haben <span class="term" data-de="keine Jacke" data-vi="không có áo khoác">keine Jacke</span> in Ihrer Größe. — Das ist <span class="term" data-de="kein Problem" data-vi="không vấn đề gì">kein Problem</span>.</li>
+</ul>
+<h3 class="sub">3. Mua hay không</h3>
+<ul>
+  <li>Ich nehme die Jacke. / Ich nehme sie <span class="term" data-de="nicht" data-vi="không">nicht</span>.</li>
+  <li><span class="term" data-de="der Kunde" data-vi="khách hàng (nam)">Kunde</span> · <span class="term" data-de="die Kundin" data-vi="khách hàng (nữ)">Kundin</span> · <span class="term" data-de="die Verkäuferin" data-vi="người bán hàng (nữ)">Verkäuferin</span></li>
+</ul>
+<div class="note">💡 Schnellmerk: <b>kein/keine</b> phủ định <b>danh từ</b> (giống ein/keine): kein Geld, keine Zeit. <b>nicht</b> phủ định động từ/tính từ: Ich nehme sie <b>nicht</b>.</div>`,
+          grammar: [
+            {
+              id: "a1-kein-keine",
+              title: "Negation: kein/keine (phủ định danh từ)",
+              rule: "<p>Phủ định danh từ dùng <b>kein</b> — chia giống hệt <b>ein</b>:</p><p>der/das → <b>kein</b>: kein Geld, kein Problem · die/Plural → <b>keine</b>: keine Zeit, keine Jacke</p><p>Akkusativ: der → <b>keinen</b>: Ich habe <b>keinen</b> Mantel. · die → <b>keine</b> · das → <b>kein</b>.</p><p>Phủ định động từ/tính từ dùng <b>nicht</b>: Ich nehme die Jacke <b>nicht</b>.</p>",
+              examples: ["Ich habe kein Geld.", "Wir haben keine Jacke in Ihrer Größe.", "Ich nehme die Hose nicht."],
+              exercise: { type: "fill", theme: "u5-l5", cat: "kein/keine", q: "Ich habe ___ Zeit. (không có)", answers: ["keine"], answer: "keine", ex: "die Zeit → keine Zeit" }
+            }
+          ],
+          listen: [
+            { id: "u5-l5-l1", text: "Kann ich Ihnen helfen? — Ich möchte gern anprobieren.", tip: "Nghe câu mời giúp đỡ của nhân viên bán hàng", slow: true },
+            { id: "u5-l5-l2", text: "Wir haben keine Jacke in Ihrer Größe. Es tut mir leid." }
+          ],
+          speak: [
+            { id: "u5-l5-s1", prompt: "Hỏi: 'Có áo khoác màu đỏ không?'", model: "Haben Sie eine rote Jacke?", hint: "Ha·ben · Sie · ei·ne · ro·te · Ja·cke" }
+          ]
+        },
+        {
+          id: "u5-l6",
+          name: "Der Einkauf",
+          icon: "🧺",
+          desc: "Mua hàng · cân lạng · tổng tiền · trả tiền",
+          content: `<h2>🧺 Der Einkauf</h2>
+<div class="hint">Mua hàng · cân lạng · tổng tiền · trả tiền</div>
+<h3 class="sub">1. Mua theo cân</h3>
+<ul>
+  <li>Ich nehme <span class="term" data-de="ein Kilo Tomaten" data-vi="một ki-lô cà chua">ein Kilo Tomaten</span> und <span class="term" data-de="ein Pfund Käse" data-vi="nửa cân phô mai">ein Pfund Käse</span>.</li>
+  <li><span class="term" data-de="ein halbes Kilo" data-vi="nửa ki-lô">Ein halbes Kilo</span> Äpfel, bitte. — <span class="term" data-de="sonst noch etwas" data-vi="còn gì nữa không?">Sonst noch etwas?</span></li>
+</ul>
+<h3 class="sub">2. Tổng tiền</h3>
+<ul>
+  <li>Das macht <span class="term" data-de="zusammen" data-vi="tổng cộng">zusammen</span> <span class="term" data-de="achteinhalb Euro" data-vi="8,5 euro">achteinhalb Euro</span>.</li>
+  <li><span class="term" data-de="bezahlen" data-vi="trả tiền">Bezahlen</span> Sie bar oder mit <span class="term" data-de="die Karte" data-vi="thẻ">Karte</span>?</li>
+  <li>Mit Karte, bitte. / <span class="term" data-de="bar" data-vi="tiền mặt">Bar</span>, bitte. Hier ist das <span class="term" data-de="das Geld" data-vi="tiền">Geld</span>.</li>
+</ul>
+<h3 class="sub">3. Tiền thừa</h3>
+<ul>
+  <li><span class="term" data-de="das Wechselgeld" data-vi="tiền thối lại">Wechselgeld</span>: <span class="term" data-de="Stimmt so" data-vi="Thôi, khỏi thối!">Stimmt so</span>!</li>
+  <li>Danke schön! — <span class="term" data-de="Bitte sehr" data-vi="Không có gì">Bitte sehr</span>! — <span class="term" data-de="bis morgen" data-vi="hẹn gặp ngày mai">Bis morgen</span>!</li>
+</ul>
+<div class="note">💡 Schnellmerk: <b>ein halbes Kilo</b> = nửa ki-lô · <b>ein Pfund</b> = nửa ki-lô · <b>das macht zusammen …</b> = tổng cộng là…</div>`,
+          listen: [
+            { id: "u5-l6-l1", text: "Ich nehme ein Kilo Tomaten und ein Pfund Käse.", tip: "Nghe số lượng mua hàng", slow: true },
+            { id: "u5-l6-l2", text: "Das macht zusammen achteinhalb Euro. — Mit Karte, bitte." }
+          ],
+          speak: [
+            { id: "u5-l6-s1", prompt: "Hỏi: 'Trả tiền mặt hay bằng thẻ?'", model: "Zahlen Sie bar oder mit Karte?", hint: "Zah·len · Sie · bar · o·der · mit · Kar·te" }
+          ]
+        },
+        {
+          id: "u5-l7",
+          name: "Reklamation & Umtausch",
+          icon: "🔁",
+          desc: "Đổi trả hàng · khiếu nại · nhận lại tiền",
+          content: `<h2>🔁 Reklamation & Umtausch</h2>
+<div class="hint">Đổi trả hàng · khiếu nại · nhận lại tiền</div>
+<h3 class="sub">1. Đổi trả</h3>
+<ul>
+  <li>Ich möchte diese Hose <span class="term" data-de="umtauschen" data-vi="đổi trả">umtauschen</span>.</li>
+  <li>Die Hose ist <span class="term" data-de="kaputt" data-vi="hỏng">kaputt</span>. Der <span class="term" data-de="der Reißverschluss" data-vi="khóa kéo">Reißverschluss</span> ist kaputt.</li>
+  <li>Ich möchte mein <span class="term" data-de="das Geld zurück" data-vi="tiền lại">Geld zurück</span>.</li>
+</ul>
+<h3 class="sub">2. Hóa đơn và điều kiện</h3>
+<ul>
+  <li>Haben Sie den <span class="term" data-de="der Kassenzettel" data-vi="hóa đơn">Kassenzettel</span>? — Ja, <span class="term" data-de="hier bitte" data-vi="đây ạ">hier bitte</span>.</li>
+  <li>Die Reklamation ist <span class="term" data-de="innerhalb von" data-vi="trong vòng">innerhalb von</span> 14 Tagen <span class="term" data-de="möglich" data-vi="khả thi">möglich</span>.</li>
+</ul>
+<h3 class="sub">3. Giao tiếp lịch sự</h3>
+<ul>
+  <li>Ich bin <span class="term" data-de="zufrieden" data-vi="hài lòng">zufrieden</span> / <span class="term" data-de="unzufrieden" data-vi="không hài lòng">unzufrieden</span>.</li>
+  <li><span class="term" data-de="Es tut mir leid" data-vi="Tôi rất tiếc">Es tut mir leid</span>. — Das ist <span class="term" data-de="in Ordnung" data-vi="ổn thỏa">in Ordnung</span>.</li>
+</ul>
+<div class="note">💡 Schnellmerk: Đổi trả cần mang <b>den Kassenzettel</b> (hóa đơn). Cửa hàng thường đổi trong 14 ngày; muốn lấy lại tiền nói: Ich möchte mein Geld <b>zurück</b>.</div>`,
+          listen: [
+            { id: "u5-l7-l1", text: "Ich möchte diese Hose umtauschen. Der Reißverschluss ist kaputt.", tip: "Nghe lý do đổi trả hàng", slow: true },
+            { id: "u5-l7-l2", text: "Haben Sie den Kassenzettel? — Ja, hier bitte." }
+          ],
+          speak: [
+            { id: "u5-l7-s1", prompt: "Nói: 'Tôi muốn đổi trả chiếc áo khoác này'", model: "Ich möchte diese Jacke umtauschen.", hint: "Ich · möch·te · die·se · Ja·cke · um·tau·schen" }
+          ]
+        }
+      ]
+    },
+    {
+      id: "u6",
+      title: "Zeit & Tagesablauf",
+      desc: "Thói quen hằng ngày · buổi trong ngày · chia động từ · trennbare Verben",
+      icon: "🌅",
+      lektionen: [
+        {
+          id: "u6-l1",
+          name: "Mein Tagesablauf",
+          icon: "🌅",
+          desc: "Thói quen hằng ngày · chia động từ hiện tại",
+          content: `<h2>🌅 Mein Tagesablauf</h2>
+<div class="hint">Thói quen hằng ngày · chia động từ hiện tại</div>
+<h3 class="sub">1. Buổi sáng</h3>
+<ul>
+  <li>Ich <span class="term" data-de="aufstehen" data-vi="thức dậy">stehe um sechs Uhr auf</span>.</li>
+  <li>Dann <span class="term" data-de="duschen" data-vi="tắm vòi hoa sen">dusche</span> ich und <span class="term" data-de="frühstücken" data-vi="ăn sáng">frühstücke</span>.</li>
+  <li>Ich <span class="term" data-de="die Zähne putzen" data-vi="đánh răng">putze die Zähne</span> und <span class="term" data-de="sich anziehen" data-vi="mặc quần áo">ziehe mich an</span>.</li>
+</ul>
+<h3 class="sub">2. Ngày làm việc</h3>
+<ul>
+  <li>Um acht Uhr <span class="term" data-de="arbeiten" data-vi="làm việc">arbeite</span> ich. Ich <span class="term" data-de="zu Mittag essen" data-vi="ăn trưa">esse zu Mittag</span>.</li>
+  <li>Um siebzehn Uhr <span class="term" data-de="nach Hause gehen" data-vi="về nhà">gehe ich nach Hause</span>.</li>
+</ul>
+<h3 class="sub">3. Buổi tối</h3>
+<ul>
+  <li>Am Abend <span class="term" data-de="kochen" data-vi="nấu ăn">koche</span> ich und <span class="term" data-de="fernsehen" data-vi="xem TV">sehe fern</span>.</li>
+  <li>Um zehn Uhr <span class="term" data-de="schlafen" data-vi="ngủ">schlafe</span> ich.</li>
+  <li>Das ist mein <span class="term" data-de="der Tagesablauf" data-vi="lịch trình trong ngày">Tagesablauf</span>.</li>
+</ul>
+<div class="note">💡 Schnellmerk: Kể việc hằng ngày luôn ở <b>hiện tại</b> với trạng từ thời gian: um 6 Uhr (mốc giờ) · dann (rồi) · am Abend (buổi tối).</div>`,
+          grammar: [
+            {
+              id: "a1-praesens-konjugation",
+              title: "Präsens: chia động từ hiện tại (đều)",
+              rule: "<p>Chia động từ hiện tại: bỏ <b>-en</b> của nguyên mẫu, thêm đuôi theo ngôi:</p><p>ich <b>-e</b> (ich arbeite) · du <b>-st</b> (du arbeitest) · er/sie/es <b>-t</b> (er arbeitet) · wir <b>-en</b> (wir arbeiten) · ihr <b>-t</b> (ihr arbeitet) · sie/Sie <b>-en</b> (sie arbeiten)</p><p>Động từ tận cùng -t/-d (arbeiten, baden) chèn <b>-e-</b> trước đuôi: du arbeit<b>est</b> · er arbeit<b>et</b>.</p>",
+              examples: ["Ich arbeite von acht bis vierzehn Uhr.", "Du frühstückst um sieben Uhr.", "Er schläft um zehn Uhr."],
+              exercise: { type: "fill", theme: "u6-l1", cat: "Präsens", q: "Du ___ um sieben Uhr. (frühstücken)", answers: ["frühstückst"], answer: "frühstückst", ex: "du + frühstücken → frühstückst" }
+            }
+          ],
+          listen: [
+            { id: "u6-l1-l1", text: "Ich stehe um sechs Uhr auf, dusche und frühstücke.", tip: "Nghe chuỗi hoạt động buổi sáng", slow: true },
+            { id: "u6-l1-l2", text: "Am Abend koche ich und sehe fern." }
+          ],
+          speak: [
+            { id: "u6-l1-s1", prompt: "Nói: 'Tôi dậy lúc 6 giờ'", model: "Ich stehe um sechs Uhr auf.", hint: "Ich · ste·he · um · sechs · Uhr · auf" }
+          ]
+        },
+        {
+          id: "u6-l2",
+          name: "Die Tageszeiten",
+          icon: "🌇",
+          desc: "Các buổi trong ngày · am + buổi · morgens, abends",
+          content: `<h2>🌇 Die Tageszeiten</h2>
+<div class="hint">Các buổi trong ngày · am Morgen · morgens, abends</div>
+<h3 class="sub">1. Các buổi</h3>
+<ul>
+  <li><span class="term" data-de="der Morgen" data-vi="buổi sáng">Morgen</span> · <span class="term" data-de="der Vormittag" data-vi="buổi sáng muộn">Vormittag</span> · <span class="term" data-de="der Mittag" data-vi="buổi trưa">Mittag</span></li>
+  <li><span class="term" data-de="der Nachmittag" data-vi="buổi chiều">Nachmittag</span> · <span class="term" data-de="der Abend" data-vi="buổi tối">Abend</span> · <span class="term" data-de="die Nacht" data-vi="ban đêm">Nacht</span></li>
+</ul>
+<h3 class="sub">2. am + buổi</h3>
+<ul>
+  <li><span class="term" data-de="am Morgen" data-vi="vào buổi sáng">Am Morgen</span> trinke ich Kaffee. · <span class="term" data-de="am Abend" data-vi="vào buổi tối">Am Abend</span> sehe ich fern.</li>
+  <li><span class="term" data-de="am Vormittag" data-vi="vào buổi sáng muộn">Am Vormittag</span> arbeite ich. · <span class="term" data-de="am Nachmittag" data-vi="vào buổi chiều">Am Nachmittag</span> lerne ich Deutsch.</li>
+  <li><span class="term" data-de="in der Nacht" data-vi="vào ban đêm">In der Nacht</span> schlafe ich. · <span class="term" data-de="zu Mittag" data-vi="vào buổi trưa">Zu Mittag</span> esse ich.</li>
+</ul>
+<h3 class="sub">3. Trạng từ thường xuyên</h3>
+<ul>
+  <li><span class="term" data-de="morgens" data-vi="hằng sáng">Morgens</span> stehe ich um sechs auf. · <span class="term" data-de="abends" data-vi="hằng tối">Abends</span> schlafe ich um zehn.</li>
+  <li><span class="term" data-de="nachmittags" data-vi="vào các buổi chiều">Nachmittags</span> mache ich Sport.</li>
+</ul>
+<div class="note">💡 Schnellmerk: <b>am</b> + buổi (am Morgen) chỉ một lần · <b>-s</b> ở cuối (morgens) chỉ thói quen lặp lại hằng ngày.</div>`,
+          listen: [
+            { id: "u6-l2-l1", text: "Am Morgen trinke ich Kaffee. Am Abend sehe ich fern.", tip: "Nghe am + buổi trong ngày", slow: true },
+            { id: "u6-l2-l2", text: "Morgens stehe ich um sechs auf. Nachmittags mache ich Sport." },
+            { id: "u6-l2-l3", text: "In der Nacht schlafe ich." }
+          ],
+          speak: [
+            { id: "u6-l2-s1", prompt: "Nói: 'Buổi tối tôi xem TV'", model: "Am Abend sehe ich fern.", hint: "Am · A·bend · se·he · ich · fern" }
+          ]
+        },
+        {
+          id: "u6-l3",
+          name: "Wann machst du was?",
+          icon: "⏰",
+          desc: "Khi nào làm gì · um + giờ · động từ đổi nguyên âm",
+          content: `<h2>⏰ Wann machst du was?</h2>
+<div class="hint">Khi nào làm gì · um + giờ · động từ đổi nguyên âm (e→i, a→ä)</div>
+<h3 class="sub">1. Hỏi khi nào</h3>
+<ul>
+  <li><span class="term" data-de="Wann stehst du auf?" data-vi="Khi nào bạn thức dậy?">Wann stehst du auf?</span> — <span class="term" data-de="um sieben Uhr" data-vi="lúc 7 giờ">Um sieben Uhr</span>.</li>
+  <li><span class="term" data-de="Wann frühstückst du?" data-vi="Khi nào bạn ăn sáng?">Wann frühstückst du?</span> — Um <span class="term" data-de="halb acht" data-vi="7 giờ 30">halb acht</span>.</li>
+  <li>Ich arbeite <span class="term" data-de="von acht bis sechzehn Uhr" data-vi="từ 8 đến 16 giờ">von acht bis sechzehn Uhr</span>.</li>
+</ul>
+<h3 class="sub">2. Động từ đổi nguyên âm (e→i, a→ä)</h3>
+<ul>
+  <li><span class="term" data-de="sprechen" data-vi="nói">sprechen</span>: du <span class="term" data-de="sprichst" data-vi="nói (bạn)">sprichst</span> · er spricht</li>
+  <li><span class="term" data-de="lesen" data-vi="đọc">lesen</span>: du <span class="term" data-de="liest" data-vi="đọc (bạn)">liest</span> · er liest</li>
+  <li><span class="term" data-de="schlafen" data-vi="ngủ">schlafen</span>: du <span class="term" data-de="schläfst" data-vi="ngủ (bạn)">schläfst</span> · er schläft · <span class="term" data-de="fahren" data-vi="lái xe">fahren</span>: du fährst</li>
+</ul>
+<div class="note">💡 Schnellmerk: Đổi nguyên âm chỉ xảy ra ở ngôi <b>du</b> và <b>er/sie/es</b>: du sprichst, er schläft — còn wir/ihr/sie giữ nguyên: wir sprechen.</div>`,
+          grammar: [
+            {
+              id: "a1-praesens-vokalwechsel",
+              title: "Präsens: động từ đổi nguyên âm",
+              rule: "<p>Một số động từ mạnh đổi nguyên âm gốc ở ngôi <b>du</b> và <b>er/sie/es</b>:</p><p>e → i(e): sprechen → du <b>sprichst</b> · lesen → du <b>liest</b> · nehmen → du <b>nimmst</b> · essen → du <b>isst</b></p><p>a → ä: schlafen → du <b>schläfst</b> · fahren → du <b>fährst</b> · laufen → du <b>läufst</b></p><p>wir/ihr/sie/Sie KHÔNG đổi: wir sprechen, ihr sprecht.</p>",
+              examples: ["Er spricht gut Deutsch.", "Du schläfst um zehn Uhr.", "Wir fahren am Samstag nach Berlin."],
+              exercise: { type: "fill", theme: "u6-l3", cat: "Präsens Vokalwechsel", q: "Du ___ um zehn Uhr. (schlafen)", answers: ["schläfst"], answer: "schläfst", ex: "a→ä ở ngôi du: schläfst" }
+            }
+          ],
+          listen: [
+            { id: "u6-l3-l1", text: "Wann stehst du auf? — Um sieben Uhr.", tip: "Nghe câu hỏi Wann + giờ trả lời", slow: true },
+            { id: "u6-l3-l2", text: "Er spricht gut Deutsch und liest jeden Tag." }
+          ],
+          speak: [
+            { id: "u6-l3-s1", prompt: "Hỏi: 'Khi nào bạn dậy?'", model: "Wann stehst du auf?", hint: "Wann · stehst · du · auf" }
+          ]
+        },
+        {
+          id: "u6-l4",
+          name: "Trennbare Verben im Alltag",
+          icon: "🔧",
+          desc: "Động từ tách · aufstehen, fernsehen, einkaufen, anrufen",
+          content: `<h2>🔧 Trennbare Verben im Alltag</h2>
+<div class="hint">Động từ tách · aufstehen, fernsehen, einkaufen, anrufen</div>
+<h3 class="sub">1. Động từ tách phổ biến</h3>
+<ul>
+  <li><span class="term" data-de="aufstehen" data-vi="thức dậy">aufstehen</span> · <span class="term" data-de="fernsehen" data-vi="xem TV">fernsehen</span> · <span class="term" data-de="einkaufen" data-vi="mua sắm">einkaufen</span> · <span class="term" data-de="anrufen" data-vi="gọi điện">anrufen</span></li>
+  <li><span class="term" data-de="mitkommen" data-vi="đi cùng">mitkommen</span> · <span class="term" data-de="mitbringen" data-vi="mang theo">mitbringen</span> · <span class="term" data-de="anfangen" data-vi="bắt đầu">anfangen</span></li>
+</ul>
+<h3 class="sub">2. Tiền tố rời xuống cuối câu</h3>
+<ul>
+  <li>Ich <span class="term" data-de="aufstehen" data-vi="thức dậy (chia)">stehe um sechs Uhr auf</span>.</li>
+  <li>Er <span class="term" data-de="fernsehen" data-vi="xem TV (chia)">sieht am Abend fern</span>.</li>
+  <li>Wir <span class="term" data-de="einkaufen" data-vi="mua sắm (chia)">kaufen am Samstag ein</span>.</li>
+  <li><span class="term" data-de="anrufen" data-vi="gọi điện (mệnh lệnh)">Ruf mich an</span>! — Ich <span class="term" data-de="anrufen" data-vi="gọi điện (ich)">rufe dich an</span>.</li>
+  <li>Der Unterricht <span class="term" data-de="anfangen" data-vi="bắt đầu (chia)">fängt um acht Uhr an</span>.</li>
+</ul>
+<h3 class="sub">3. Hỏi đáp và mẹo</h3>
+<ul>
+  <li>Wann <span class="term" data-de="stehst du auf?" data-vi="bạn dậy lúc nào?">stehst du auf?</span> — Um sieben.</li>
+  <li>Wann <span class="term" data-de="sehen Sie fern?" data-vi="anh/chị xem TV lúc nào?">sehen Sie fern?</span> — Am Abend.</li>
+  <li>Tiền tố luôn <span class="term" data-de="betont" data-vi="được nhấn trọng âm">betont</span>: AUS-ste-hen.</li>
+</ul>
+<div class="note">💡 Schnellmerk: Trong câu trần thuật, động từ chia đứng vị trí 2, <b>tiền tố rời xuống cuối câu</b>: Ich stehe um 6 Uhr <b>auf</b>. Trọng âm rơi vào tiền tố: <b>auf</b>stehen, <b>fern</b>sehen.</div>`,
+          grammar: [
+            {
+              id: "a1-trennbare-alltag",
+              title: "Trennbare Verben: quy tắc tách",
+              rule: "<p>Động từ tách: <b>auf</b>stehen, <b>fern</b>sehen, <b>ein</b>kaufen, <b>an</b>rufen, <b>mit</b>kommen, <b>an</b>fangen.</p><p>Câu trần thuật: động từ chia đứng vị trí 2, tiền tố <b>rời xuống cuối câu</b>: Ich stehe um 6 Uhr <b>auf</b>.</p><p>Câu hỏi/mệnh lệnh cũng tách: Wann <b>stehst</b> du <b>auf</b>? · <b>Ruf</b> mich <b>an</b>!</p>",
+              examples: ["Ich stehe um sechs Uhr auf.", "Wir kaufen am Samstag ein.", "Ruf mich heute Abend an!"],
+              exercise: { type: "fill", theme: "u6-l4", cat: "Trennbare Verben", q: "Ich ___ dich heute Abend ___. (anrufen)", answers: ["rufe an"], answer: "rufe an", ex: "anrufen → ich rufe … an" }
+            }
+          ],
+          listen: [
+            { id: "u6-l4-l1", text: "Ich stehe um sechs Uhr auf und frühstücke.", tip: "Nghe tiền tố tách ở cuối câu", slow: true },
+            { id: "u6-l4-l2", text: "Wir kaufen am Samstag ein. Ruf mich an!" }
+          ],
+          speak: [
+            { id: "u6-l4-s1", prompt: "Nói: 'Tối nay gọi cho tôi nhé!'", model: "Ruf mich heute Abend an!", hint: "Ruf · mich · heu·te · A·bend · an" }
+          ]
+        },
+        {
+          id: "u6-l5",
+          name: "Freizeit & Hobbys",
+          icon: "🎾",
+          desc: "Thời gian rảnh · sở thích · hoạt động giải trí",
+          content: `<h2>🎾 Freizeit & Hobbys</h2>
+<div class="hint">Thời gian rảnh · sở thích · hoạt động giải trí</div>
+<h3 class="sub">1. Sở thích</h3>
+<ul>
+  <li>Mein <span class="term" data-de="das Hobby" data-vi="sở thích">Hobby</span> ist <span class="term" data-de="Sport machen" data-vi="tập thể thao">Sport machen</span>.</li>
+  <li>Ich <span class="term" data-de="spielen" data-vi="chơi">spiele</span> <span class="term" data-de="Fußball" data-vi="bóng đá">Fußball</span> und <span class="term" data-de="Klavier spielen" data-vi="chơi đàn piano">Klavier</span>.</li>
+  <li><span class="term" data-de="Musik hören" data-vi="nghe nhạc">Musik hören</span> · <span class="term" data-de="lesen" data-vi="đọc sách">lesen</span> · <span class="term" data-de="zeichnen" data-vi="vẽ">zeichnen</span></li>
+</ul>
+<h3 class="sub">2. Thời gian rảnh</h3>
+<ul>
+  <li>In meiner <span class="term" data-de="die Freizeit" data-vi="thời gian rảnh">Freizeit</span> mache ich Sport oder <span class="term" data-de="spazieren gehen" data-vi="đi dạo">gehe spazieren</span>.</li>
+  <li>Am Wochenende <span class="term" data-de="Freunde treffen" data-vi="gặp bạn bè">treffe ich Freunde</span> und <span class="term" data-de="ins Kino gehen" data-vi="đi xem phim">gehe ins Kino</span>.</li>
+  <li>Ich habe <span class="term" data-de="viel Zeit" data-vi="nhiều thời gian">viel Zeit</span> / <span class="term" data-de="wenig Zeit" data-vi="ít thời gian">wenig Zeit</span>.</li>
+</ul>
+<div class="note">💡 Schnellmerk: <b>Klavier spielen, Fußball spielen, Musik hören</b> — danh từ đứng sau spielen/hören đi Akkusativ: Fußball (không article), das Klavier.</div>`,
+          listen: [
+            { id: "u6-l5-l1", text: "In meiner Freizeit mache ich Sport und lese Bücher.", tip: "Nghe hoạt động giải trí", slow: true },
+            { id: "u6-l5-l2", text: "Am Wochenende treffe ich Freunde und gehe ins Kino." }
+          ],
+          speak: [
+            { id: "u6-l5-s1", prompt: "Nói: 'Tôi chơi bóng đá'", model: "Ich spiele Fußball.", hint: "Ich · spie·le · Fuß·ball" }
+          ]
+        },
+        {
+          id: "u6-l6",
+          name: "Meine Woche",
+          icon: "📅",
+          desc: "Tuần của tôi · thứ + hoạt động · mức độ thường xuyên",
+          content: `<h2>📅 Meine Woche</h2>
+<div class="hint">Tuần của tôi · thứ + hoạt động · mức độ thường xuyên</div>
+<h3 class="sub">1. Hoạt động trong tuần</h3>
+<ul>
+  <li>Am <span class="term" data-de="der Montag" data-vi="thứ hai">Montag</span> arbeite ich. · Am <span class="term" data-de="der Mittwoch" data-vi="thứ tư">Mittwoch</span> lerne ich Deutsch.</li>
+  <li>Am <span class="term" data-de="der Freitag" data-vi="thứ sáu">Freitag</span> <span class="term" data-de="feiern" data-vi="tổ chức tiệc">feiere</span> ich eine <span class="term" data-de="die Party" data-vi="bữa tiệc">Party</span>.</li>
+</ul>
+<h3 class="sub">2. Cuối tuần</h3>
+<ul>
+  <li>Am <span class="term" data-de="der Samstag" data-vi="thứ bảy">Samstag</span> <span class="term" data-de="einkaufen gehen" data-vi="đi mua sắm">gehe ich einkaufen</span>.</li>
+  <li>Am <span class="term" data-de="der Sonntag" data-vi="chủ nhật">Sonntag</span> <span class="term" data-de="ausschlafen" data-vi="ngủ nướng">schlafe ich aus</span>.</li>
+  <li>Am <span class="term" data-de="das Wochenende" data-vi="cuối tuần">Wochenende</span> <span class="term" data-de="Fahrrad fahren" data-vi="đi xe đạp">fahre ich Fahrrad</span>.</li>
+</ul>
+<h3 class="sub">3. Mức độ thường xuyên</h3>
+<ul>
+  <li><span class="term" data-de="immer" data-vi="luôn luôn">immer</span> · <span class="term" data-de="oft" data-vi="thường xuyên">oft</span> · <span class="term" data-de="manchmal" data-vi="thỉnh thoảng">manchmal</span> · <span class="term" data-de="selten" data-vi="hiếm khi">selten</span> · <span class="term" data-de="nie" data-vi="không bao giờ">nie</span></li>
+  <li>Ich trinke <span class="term" data-de="nie Kaffee" data-vi="không bao giờ uống cà phê">nie Kaffee</span> am Abend.</li>
+</ul>
+<div class="note">💡 Schnellmerk: Trạng từ chỉ mức độ đứng sau động từ chia: Ich <b>trinke</b> nie Kaffee. Thứ + hoạt động luôn dùng <b>am</b>: am Montag, am Wochenende.</div>`,
+          listen: [
+            { id: "u6-l6-l1", text: "Am Montag arbeite ich. Am Samstag gehe ich einkaufen.", tip: "Nghe thứ trong tuần + hoạt động", slow: true },
+            { id: "u6-l6-l2", text: "Am Wochenende fahre ich Fahrrad." },
+            { id: "u6-l6-l3", text: "Ich trinke nie Kaffee am Abend." }
+          ],
+          speak: [
+            { id: "u6-l6-s1", prompt: "Nói: 'Chủ nhật tôi ngủ nướng'", model: "Am Sonntag schlafe ich aus.", hint: "Am · Sonn·tag · schla·fe · ich · aus" }
+          ]
+        },
+        {
+          id: "u6-l7",
+          name: "Ein Tag in Deutschland",
+          icon: "🇩🇪",
+          desc: "Kể về một ngày · ôn tập chia động từ + trennbare",
+          content: `<h2>🇩🇪 Ein Tag in Deutschland</h2>
+<div class="hint">Kể về một ngày · ôn tập chia động từ + trennbare Verben</div>
+<h3 class="sub">1. Kể chuyện cả ngày</h3>
+<ul>
+  <li><span class="term" data-de="zuerst" data-vi="đầu tiên">Zuerst</span> stehe ich auf und <span class="term" data-de="frühstücken" data-vi="ăn sáng">frühstücke</span>.</li>
+  <li><span class="term" data-de="dann" data-vi="sau đó">Dann</span> fahre ich zur Arbeit und <span class="term" data-de="arbeiten" data-vi="làm việc">arbeite</span>.</li>
+  <li><span class="term" data-de="danach" data-vi="rồi sau đó">Danach</span> kaufe ich das <span class="term" data-de="das Abendessen" data-vi="bữa tối">Abendessen</span> ein.</li>
+  <li><span class="term" data-de="später" data-vi="lát nữa, về sau">Später</span> sehe ich fern und <span class="term" data-de="schlafen" data-vi="ngủ">schlafe</span>.</li>
+</ul>
+<h3 class="sub">2. Hỏi về ngày của bạn</h3>
+<ul>
+  <li><span class="term" data-de="Wie ist dein Tagesablauf?" data-vi="Lịch trình ngày của bạn thế nào?">Wie ist dein Tagesablauf?</span> — <span class="term" data-de="erzählen" data-vi="kể">Erzähl</span> mir von deinem Tag!</li>
+  <li><span class="term" data-de="Was machst du am Morgen?" data-vi="Sáng bạn làm gì?">Was machst du am Morgen?</span> · <span class="term" data-de="Was machst du am Abend?" data-vi="Tối bạn làm gì?">Was machst du am Abend?</span></li>
+</ul>
+<div class="note">💡 Schnellmerk: Kể ngày theo trình tự: <b>zuerst</b> (đầu tiên) → <b>dann</b> (sau đó) → <b>danach</b> (kế tiếp) → <b>später</b> (về sau).</div>`,
+          listen: [
+            { id: "u6-l7-l1", text: "Zuerst stehe ich auf, dann frühstücke ich und arbeite.", tip: "Nghe trình tự các hoạt động trong ngày", slow: true },
+            { id: "u6-l7-l2", text: "Danach kaufe ich das Abendessen ein." }
+          ],
+          speak: [
+            { id: "u6-l7-s1", prompt: "Kể: 'Tôi dậy, ăn sáng rồi làm việc'", model: "Ich stehe auf, frühstücke und arbeite.", hint: "Ich · ste·he · auf · früh·stü·cke · und · ar·bei·te" }
+          ]
+        }
+      ]
     }
   ]
 };
