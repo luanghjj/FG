@@ -292,10 +292,10 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 .footer{text-align:center;color:var(--muted);font-size:.82em;padding:24px 14px 0}
 
 /* ===== Login gate (minimal beige card) ===== */
-#loginGate{position:fixed;inset:0;z-index:200;background:#F2F2F7;
+#loginGate,#trackGate{position:fixed;inset:0;z-index:200;background:#F2F2F7;
   display:flex;align-items:center;justify-content:center;padding:24px 20px;
   transition:opacity .35s ease, visibility .35s ease}
-#loginGate.hidden{opacity:0;visibility:hidden;pointer-events:none}
+#loginGate.hidden,#trackGate.hidden{opacity:0;visibility:hidden;pointer-events:none}
 .login-card{
   width:min(440px,100%);background:#fff;border-radius:24px;padding:48px 40px;
   box-shadow:0 8px 40px rgba(0,0,0,.04);color:#0f172a;
@@ -356,6 +356,36 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 .login-skip{background:none;border:none;color:#8E8E93;font:inherit;font-size:.82em;
   padding:10px 0 0;cursor:pointer;text-align:center;width:100%}
 .login-skip:hover{color:#0f172a}
+
+/* ===== Track gate (track wählen nach Login) ===== */
+.track-card{
+  width:min(560px,100%);background:#fff;border-radius:24px;padding:36px 28px;
+  box-shadow:0 8px 40px rgba(0,0,0,.04);color:#0f172a;
+  border:1px solid rgba(212,212,212,.35);
+  text-align:center;animation:popIn .45s cubic-bezier(.22,1,.36,1) both
+}
+.track-logo{
+  width:56px;height:56px;border-radius:999px;background:linear-gradient(135deg,#007AFF,#4DA2FF);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:1.55em;margin:0 auto 18px;font-weight:300
+}
+.track-card h1{font-size:1.45em;font-weight:500;letter-spacing:-.01em;margin:0 0 8px;line-height:1.2}
+.track-card .sub{color:#64748b;font-size:.92em;line-height:1.5;margin:0 0 20px}
+.track-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.track-btn{display:flex;flex-direction:column;align-items:center;gap:8px;border:1px solid rgba(212,212,212,.35);
+  background:#fff;border-radius:18px;padding:22px 16px;text-align:center;cursor:pointer;color:#0f172a;
+  font:inherit;transition:border-color .15s,box-shadow .15s,transform .15s}
+.track-btn:hover{border-color:#007AFF;box-shadow:0 6px 20px rgba(0,122,255,.12);transform:translateY(-2px)}
+.track-emoji{font-size:2.2em;line-height:1}
+.track-title{font-weight:600;font-size:.95em;line-height:1.3}
+.track-sub{color:#64748b;font-size:.78em;line-height:1.45}
+.track-skip{margin-top:16px}
+.track-skip a{color:#007AFF;cursor:pointer;text-decoration:none;font-size:.88em}
+.track-skip a:hover{text-decoration:underline}
+.track-switch{color:#64748b;font-size:1.05em;text-decoration:none;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:999px;
+  transition:background .15s,color .15s;flex-shrink:0}
+.track-switch:hover{background:rgba(100,116,139,.12);color:#0f172a}
+@media (max-width:560px){.track-grid{grid-template-columns:1fr}}
 
 /* ===== Tier / Zugriffsstufen ===== */
 .tier-badge{display:inline-flex;align-items:center;gap:4px;border-radius:999px;
@@ -945,6 +975,28 @@ h2 svg,h3 svg,b svg{width:1em;height:1em;display:inline-block;vertical-align:-.1
   </div>
 </div>
 
+<!-- ===== TRACK GATE (Lernbereich wählen) ===== -->
+<div id="trackGate" class="gate hidden">
+  <div class="track-card">
+    <div class="track-logo">🗂️</div>
+    <h1>Wähle deinen Lernbereich</h1>
+    <div class="sub">Chọn nhánh học của bạn</div>
+    <div class="track-grid">
+      <button type="button" class="track-btn" id="trackFachkraft" onclick="pickTrack('fachkraft')">
+        <span class="track-emoji">🧑‍🍳</span>
+        <span class="track-title">Fachkraft für Gastronomie</span>
+        <span class="track-sub">6 môn nghề · BfK-1 · BfK-2 · GK · WiKO · Englisch · Deutsch</span>
+      </button>
+      <button type="button" class="track-btn" id="trackDeutsch" onclick="pickTrack('deutsch')">
+        <span class="track-emoji">🇩🇪</span>
+        <span class="track-title">Deutsch A1–C1</span>
+        <span class="track-sub">Lộ trình CEFR + Berufsdeutsch · vocab · ngữ pháp · nghe · nói</span>
+      </button>
+    </div>
+    <div class="track-skip muted"><a onclick="pickTrack('fachkraft')">Vào thẳng Fachkraft →</a></div>
+  </div>
+</div>
+
 <div class="page locked" id="appPage">
 
 <!-- ===== NAV ===== -->
@@ -953,6 +1005,7 @@ h2 svg,h3 svg,b svg{width:1em;height:1em;display:inline-block;vertical-align:-.1
     <div class="brand" onclick="go('#/')"><span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8.5 12 4l10 4.5-10 4.5z"/><path d="M6 11v4c0 1.2 2.7 2.4 6 2.4s6-1.2 6-2.4v-4"/><path d="M22 8.5v5"/></svg></span><span>AzubiHub</span></div>
     <div class="crumbs" id="crumbs"></div>
     <span class="user-chip" id="userChip" title="Nickname wechseln" style="display:none">👤 —</span>
+    <a class="track-switch" onclick="showTrackGate()" title="Track wählen">↺</a>
     <button type="button" class="search-toggle" id="searchToggle" aria-label="Suche öffnen">🔍</button>
     <div class="search">
       <span class="mag">🔍</span>
@@ -1527,6 +1580,12 @@ h2 svg,h3 svg,b svg{width:1em;height:1em;display:inline-block;vertical-align:-.1
   <div id="fachPruefBody"></div>
 </section>
 
+<!-- ===== DEUTSCH TRACK HUB (A1–C1 + Berufsdeutsch) ===== -->
+<div class="view" id="v-deutsch" data-nav="Deutsch">
+  <div class="view-head"><h2>🇩🇪 Deutsch A1–C1</h2><p class="muted">Lộ trình tiếng Đức + Berufsdeutsch Gastgewerbe</p></div>
+  <div id="deutschHubBody" class="hub-body"></div>
+</div>
+
 <div class="footer">🍀 AzubiHub · Fachkraft für Gastronomie · Viel Erfolg! 🍀</div>
 </div>
 
@@ -1639,6 +1698,7 @@ h2 svg,h3 svg,b svg{width:1em;height:1em;display:inline-block;vertical-align:-.1
 <script src="./faecher/deutsch/deutsch-quiz.js?v=1"></script>
 <script src="./faecher/gk/gk-gle-data.js?v=1"></script>
 <script src="./js/faecher.js?v=9"></script>
+<script src="./js/deutsch-track.js?v=1"></script>
 <script src="./faecher/gk/gk-uebungen.js?v=4"></script>
 <script>
 /* ============ DATEN (Fleischteile) ============ */
@@ -4171,6 +4231,28 @@ function router(){
     return;
   }
 
+  if (hash.startsWith('#/deutsch')) {
+    if (window.DeutschTrack && window.DeutschTrack.ensureFächer && window.FachForm) window.DeutschTrack.ensureFächer();
+    var parts = hash.replace('#/deutsch', '').split('/').filter(Boolean);
+    var lv = parts[0] || '';
+    var fachId = (window.DeutschTrack && window.DeutschTrack.levelFachId(lv)) || null;
+    if (!fachId) { // #/deutsch hoặc level chưa có → hub Deutsch
+      document.querySelectorAll('.view').forEach(function (v) { v.classList.remove('active'); });
+      var dv = document.getElementById('v-deutsch');
+      if (dv) dv.classList.add('active');
+      let cb = document.getElementById('crumbs');
+      if (cb) cb.innerHTML = '<a onclick="go(\'#/\')">Start</a><span class="sep">›</span><span>Deutsch A1–C1</span>';
+      renderDeutschHub();
+      setBottomNav(hash); window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    // #/deutsch/<level>[/quiz|/unit/lektion] → reuse fach machinery
+    if (parts[1] === 'quiz') { location.hash = '#/fach/' + fachId + '/quiz'; return; }
+    if (parts.length === 2) { location.hash = '#/fach/' + fachId; return; }          // unit list = fach hub
+    if (parts.length === 3 && parts[2]) { location.hash = '#/fach/' + fachId + '/theme/' + parts[2]; return; } // lektion
+    location.hash = '#/fach/' + fachId; return;
+  }
+
   let r=ROUTES[hash];
   if(r && r.redirect){ location.hash=r.redirect; return; }
   r=r||ROUTES["#/"];
@@ -4847,7 +4929,7 @@ function setBottomNav(hash){
     let on=false;
     if(t==='#/') on=(h==='#/' || h==='' || h==='#');
     else if(t==='#/on-thi') on=h==='#/on-thi' || h.startsWith('#/exam/');
-    else if(t==='#faecher') on=h.startsWith('#/bfk') || h.startsWith('#/fach') || h.startsWith('#/abschluss');
+    else if(t==='#faecher') on=h.startsWith('#/bfk') || h.startsWith('#/fach') || h.startsWith('#/abschluss') || h.startsWith('#/deutsch');
     else if(t==='#profile') on=false;
     else if(t.startsWith('#')) on=h===t || (t!=='#/' && h.startsWith(t));
     btn.classList.toggle('active', on);
@@ -4994,6 +5076,35 @@ function renderUserChip(player){
   chip.title='Stufe: '+((window.Access&&Access.tierLabel)?Access.tierLabel(t):'Basic')+' · tippen für Optionen';
   chip.onclick=()=>openAccountSheet(player);
 }
+function pickTrack(which) {
+  var g = document.getElementById('trackGate');
+  if (g) g.classList.add('hidden');
+  if (which === 'deutsch') go('#/deutsch'); else go('#/fach');
+}
+function showTrackGate() {
+  var g = document.getElementById('trackGate');
+  if (g) g.classList.remove('hidden');
+}
+function hideTrackGate() {
+  var g = document.getElementById('trackGate');
+  if (g) g.classList.add('hidden');
+}
+function renderDeutschHub() {
+  var body = document.getElementById('deutschHubBody');
+  if (!body) return;
+  if (!window.DeutschTrack) { body.innerHTML = '<p class="muted">Modul chưa sẵn sàng.</p>'; return; }
+  var lv = window.DeutschTrack.levels();
+  body.innerHTML = '<div class="grid2">' + lv.map(function (l) {
+    var done = window.DeutschTrack.isPassedCached(l.id);
+    var badge = l.level === 'beruf' ? '🛎️' : l.badge;
+    return '<button type="button" class="tile" onclick="go(\'#/deutsch/' + l.level + '\')">'
+      + '<div class="ic">' + badge + '</div>'
+      + '<h3>' + l.title + '</h3>'
+      + '<p>' + l.units + ' Units' + (done ? ' · ✅ hoàn thành' : '') + '</p>'
+      + '</button>';
+  }).join('') + '</div>'
+    + '<div class="hint" style="margin-top:14px">💡 Mỗi cấp: học từ vựng bằng flashcards, ngữ pháp kèm bài tập, luyện nghe 🔊, nói 🎤. Đạt ≥80% quiz cuối cấp để mở khóa cấp sau.</div>';
+}
 function unlockApp(player){
   const gate=document.getElementById('loginGate');
   const page=document.getElementById('appPage');
@@ -5004,6 +5115,7 @@ function unlockApp(player){
   }
   renderUserChip(player);
   loadHomeHistory(player);
+  showTrackGate();
   const t=(window.Access&&Access.tier)?Access.tier():'free';
   const lbl=(window.Access&&Access.tierLabel)?Access.tierLabel(t):'Basic';
   toast('Willkommen, '+player+'! ('+lbl+')','ok');
