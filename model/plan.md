@@ -708,9 +708,9 @@ Expected: `a1 full OK`. + harness PASS. Commit: `git commit -am "feat: Deutsch A
 **Interfaces:**
 - Produces: `window.DEUTSCH_BERUF = { level:'beruf', badge:'Beruf', code:'DE Beruf', title:'Berufsdeutsch Gastgewerbe', units:[…] }`; `window.DEUTSCH_A1_QUIZ` (60 câu, schema quiz cũ: MC `{theme,cat,q,opts,a,ex}` + fill `{type:'fill',theme,cat,q,answers,answer,ex}`; `theme` = lektion id có thật trong a1-data.js).
 
-- [ ] **Step 1: `beruf-data.js` — 3 Units**
+- [ ] **Step 1: `beruf-data.js` — 1 Unit mẫu**
 
-u-b1 Bestellung aufnehmen (nhận order: "Was darf es sein?", món, số lượng, allergy) · u-b2 Speisekarte erklären (giải thích menu, nguyên liệu, cách chế biến) · u-b3 Reklamation & Bezahlen (xử lý phàn nàn, tính tiền, chia hóa đơn). Mỗi Unit 4–6 Lektion, bar như Task 4, vocab chuyên ngành: `Bestellung`, `Vorspeise`, `Hauptgericht`, `Nachspeise`, `Getränk`, `die Rechnung`, `getrennt`, `die Quittung`…
+> AMENDMENT (theo yêu cầu user): không viết nội dung dài; user sẽ gửi cấu trúc/content riêng sau. Làm 1 unit mẫu đủ chứng minh chức năng: `u-b1 Bestellung aufnehmen` — 4 lektion: b1-l1 Begrüßung im Restaurant, b1-l2 Bestellung aufnehmen, b1-l3 Mengen & Allergien, b1-l4 Verabschiedung & Danke. Bar như Task 4, vocab chuyên ngành: `Bestellung`, `Vorspeise`, `Hauptgericht`, `Nachspeise`, `Getränk`, `die Rechnung`, `getrennt`, `die Quittung`, `die Allergie`, `enthalten`…
 
 ```js
 window.DEUTSCH_BERUF = {
@@ -724,9 +724,8 @@ window.DEUTSCH_BERUF = {
       title: "Bestellung aufnehmen",
       desc: "Begrüßung · Fragen · Mengen · Allergien",
       icon: "🛎️",
-      lektionen: [ /* 4-6 lektion theo bar */ ]
+      lektionen: [ /* 4 lektion theo bar */ ]
     }
-    /* u-b2 Speisekarte erklären, u-b3 Reklamation & Bezahlen */
   ]
 };
 ```
