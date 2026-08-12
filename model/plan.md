@@ -440,9 +440,9 @@ function renderDeutschHub() {
     var done = window.DeutschTrack.isPassedCached(l.id);
     var badge = l.level === 'beruf' ? '🛎️' : l.badge;
     return '<button type="button" class="tile" onclick="go(\'#/deutsch/' + l.level + '\')">'
-      + '<span class="tile-ic">' + badge + '</span>'
-      + '<span class="tile-t">' + l.title + '</span>'
-      + '<span class="tile-d">' + l.units + ' Units' + (done ? ' · ✅ hoàn thành' : '') + '</span>'
+      + '<div class="ic">' + badge + '</div>'
+      + '<h3>' + l.title + '</h3>'
+      + '<p>' + l.units + ' Units' + (done ? ' · ✅ hoàn thành' : '') + '</p>'
       + '</button>';
   }).join('') + '</div>'
     + '<div class="hint" style="margin-top:14px">💡 Mỗi cấp: học từ vựng bằng flashcards, ngữ pháp kèm bài tập, luyện nghe 🔊, nói 🎤. Đạt ≥80% quiz cuối cấp để mở khóa cấp sau.</div>';
@@ -501,10 +501,20 @@ Trong `renderFachTheme` (index.html ~2846-2854), tab `theory`, sau khối `enabl
 
 - [ ] **Step 2: 🔊 trong popup vocab**
 
-`js/vocab.js`: tại chỗ dựng popup term (tìm `function lookupVi`/hàm tạo popup), trong nội dung popup thêm nút:
+`js/vocab.js`: tại chỗ popup được show (hàm bindTerms, sau `pop.classList.add("show")` ~589-599), thêm nút 🔊 qua DOM (không dùng inline HTML nên không cần escape):
 
 ```js
-' <button type="button" class="vocab-say" onclick="window.Vocab&&window.Vocab.say(this.getAttribute(\'data-de\'))" data-de="' + escAttr(de) + '">🔊</button>'
+    if (!pop.querySelector('.vocab-say')) {
+      var sb = document.createElement('button');
+      sb.type = 'button';
+      sb.className = 'vocab-say';
+      sb.textContent = '🔊';
+      sb.title = 'Aussprache anhören';
+      sb.addEventListener('click', function () {
+        if (w.Vocab && w.Vocab.say) w.Vocab.say(de);
+      });
+      pop.querySelector('.vi').appendChild(sb);
+    }
 ```
 
 Thêm `say` vào `w.Vocab`:
