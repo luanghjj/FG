@@ -694,7 +694,7 @@ window.DEUTSCH_A1 = {
             {
               id: "a1-berufe-sein",
               title: "Berufe mit sein",
-              rule: "<p>Hỏi nghề: <b>Was bist du von Beruf?</b> — Ich <b>bin</b> Koch. (sein + nghề, KHÔNG mạo từ)</p><p>Nghề nữ = nghề nam + <b>-in</b>: Verkäufer → Verkäufer<b>in</b> · Lehrer → Lehrer<b>in</b> · Polizist → Polizist<b>in</b></p><p>Bất quy tắc: Arzt → Ärztin · Koch → Köchin · Student → Studentin.</p>",
+              rule: "<p>Hỏi nghề: <b>Was bist du von Beruf?</b> — Ich <b>bin</b> Koch. (sein + nghề, KHÔNG mạo từ)</p><p>Nghề nữ = nghề nam + <b>-in</b>: Verkäufer → Verkäufer<b>in</b> · Lehrer → Lehrer<b>in</b> · Polizist → Polizist<b>in</b></p><p>Bất quy tắc: Arzt → Ärztin · Koch → Köchin (thêm đổi âm a→ä).</p>",
               examples: ["Was bist du von Beruf? — Ich bin Koch.", "Sie ist Verkäuferin.", "Er ist Student."],
               exercise: { type: "fill", theme: "u3-l4", cat: "Berufe", q: "Was bist du von ___? — Ich bin Koch.", answers: ["beruf"], answer: "Beruf", ex: "von Beruf = làm nghề gì" }
             }
@@ -918,10 +918,10 @@ window.DEUTSCH_A1 = {
 </ul>
 <h3 class="sub">2. Gọi món</h3>
 <ul>
-  <li><span class="term" data-de="bestellen" data-vi="gọi món">Bestellen</span>: Ich möchte <span class="term" data-de="die Bestellung" data-vi="đơn gọi món">Bestellung</span> aufgeben.</li>
+  <li><span class="term" data-de="bestellen" data-vi="gọi món">Bestellen</span>: Ich möchte <span class="term" data-de="die Bestellung" data-vi="đơn gọi món">eine Bestellung</span> aufgeben.</li>
   <li>Ich nehme <span class="term" data-de="die Suppe" data-vi="món súp">die Suppe</span> als <span class="term" data-de="die Vorspeise" data-vi="món khai vị">Vorspeise</span>.</li>
   <li>Als <span class="term" data-de="die Hauptspeise" data-vi="món chính">Hauptspeise</span> nehme ich <span class="term" data-de="das Schnitzel" data-vi="món schnitzel">das Schnitzel</span>.</li>
-  <li>Zum <span class="term" data-de="das Dessert" data-vi="món tráng miệng">Dessert</span> möchte ich <span class="term" data-de="der Kuchen" data-vi="bánh ngọt">Kuchen</span>.</li>
+  <li>Zum <span class="term" data-de="das Dessert" data-vi="món tráng miệng">Dessert</span> möchte ich <span class="term" data-de="der Kuchen" data-vi="bánh ngọt">einen Kuchen</span>.</li>
 </ul>
 <h3 class="sub">3. Akkusativ sau nehmen/möchten</h3>
 <table>
@@ -1332,7 +1332,7 @@ window.DEUTSCH_A1 = {
 <ul>
   <li>Ich <span class="term" data-de="aufstehen" data-vi="thức dậy">stehe um sechs Uhr auf</span>.</li>
   <li>Dann <span class="term" data-de="duschen" data-vi="tắm vòi hoa sen">dusche</span> ich und <span class="term" data-de="frühstücken" data-vi="ăn sáng">frühstücke</span>.</li>
-  <li>Ich <span class="term" data-de="die Zähne putzen" data-vi="đánh răng">putze die Zähne</span> und <span class="term" data-de="sich anziehen" data-vi="mặc quần áo">ziehe mich an</span>.</li>
+  <li>Ich <span class="term" data-de="die Zähne putzen" data-vi="đánh răng">putze mir die Zähne</span> und <span class="term" data-de="sich anziehen" data-vi="mặc quần áo">ziehe mich an</span>.</li>
 </ul>
 <h3 class="sub">2. Ngày làm việc</h3>
 <ul>
@@ -1351,7 +1351,7 @@ window.DEUTSCH_A1 = {
               id: "a1-praesens-konjugation",
               title: "Präsens: chia động từ hiện tại (đều)",
               rule: "<p>Chia động từ hiện tại: bỏ <b>-en</b> của nguyên mẫu, thêm đuôi theo ngôi:</p><p>ich <b>-e</b> (ich arbeite) · du <b>-st</b> (du arbeitest) · er/sie/es <b>-t</b> (er arbeitet) · wir <b>-en</b> (wir arbeiten) · ihr <b>-t</b> (ihr arbeitet) · sie/Sie <b>-en</b> (sie arbeiten)</p><p>Động từ tận cùng -t/-d (arbeiten, baden) chèn <b>-e-</b> trước đuôi: du arbeit<b>est</b> · er arbeit<b>et</b>.</p>",
-              examples: ["Ich arbeite von acht bis vierzehn Uhr.", "Du frühstückst um sieben Uhr.", "Er schläft um zehn Uhr."],
+              examples: ["Ich arbeite von acht bis vierzehn Uhr.", "Du frühstückst um sieben Uhr.", "Er kocht am Abend."],
               exercise: { type: "fill", theme: "u6-l1", cat: "Präsens", q: "Du ___ um sieben Uhr. (frühstücken)", answers: ["frühstückst"], answer: "frühstückst", ex: "du + frühstücken → frühstückst" }
             }
           ],
