@@ -556,6 +556,7 @@
 #termPop.show{display:block}
 #termPop .de{font-weight:700;margin-bottom:4px}
 #termPop .vi{font-weight:700;color:#86efac;font-size:1.05em}
+.vocab-say{background:none;border:none;font-size:1em;cursor:pointer}
 #termPop .hint{margin-top:6px;font-size:.72em;opacity:.7}
 `;
     document.head.appendChild(s);
@@ -592,6 +593,17 @@
     pop.querySelector(".de").textContent = "🇩🇪 " + de;
     pop.querySelector(".vi").textContent = vi ? ("🇻🇳 " + vi) : "Noch nicht im Wörterbuch";
     pop.classList.add("show");
+    if (!pop.querySelector('.vocab-say')) {
+      var sb = document.createElement('button');
+      sb.type = 'button';
+      sb.className = 'vocab-say';
+      sb.textContent = '🔊';
+      sb.title = 'Aussprache anhören';
+      sb.addEventListener('click', function () {
+        if (w.Vocab && w.Vocab.say) w.Vocab.say(de);
+      });
+      pop.querySelector('.vi').appendChild(sb);
+    }
     el.classList.add("open");
     // inline chip
     let chip=el.nextElementSibling;
@@ -739,7 +751,14 @@
   }
   function enrichTermsInHtml(html){ return html; } // never auto-mutate raw strings (lists/nav safety)
 
-  w.Vocab = { B1_VOCAB, lookupVi, bindTerms, enableVocabOn, enrichTermsInHtml, wrapTextNodes, hidePop };
+  w.Vocab = { B1_VOCAB, lookupVi, bindTerms, enableVocabOn, enrichTermsInHtml, wrapTextNodes, hidePop, say: function (word) {
+  try {
+    var u = new SpeechSynthesisUtterance(String(word));
+    u.lang = 'de-DE';
+    speechSynthesis.cancel();
+    speechSynthesis.speak(u);
+  } catch (_) {}
+} };
   w.B1_VOCAB = B1_VOCAB;
   w.lookupVi = lookupVi;
   w.bindTerms = bindTerms;
