@@ -1,4 +1,4 @@
-/* Deutsch A1 · Units 1–2 (chuẩn form ont-thi-fach; đủ .term → flashcards tự sinh) */
+/* Deutsch A1 · Units 1–4 (chuẩn form ont-thi-fach; đủ .term → flashcards tự sinh) */
 window.DEUTSCH_A1 = {
   level: "a1",
   badge: "A1",
@@ -550,6 +550,506 @@ window.DEUTSCH_A1 = {
           ],
           speak: [
             { id: "u2-l7-s1", prompt: "Nói: 'Tôi dậy lúc 6 giờ'", model: "Ich stehe um sechs Uhr auf.", hint: "Ich · stehe · um · sechs · Uhr · auf" }
+          ]
+        }
+      ]
+    },
+    {
+      id: "u3",
+      title: "Familie & Freunde",
+      desc: "Gia đình · mein/dein · nghề nghiệp · mô tả người",
+      icon: "👨‍👩‍👧‍👦",
+      lektionen: [
+        {
+          id: "u3-l1",
+          name: "Die Familie",
+          icon: "👨‍👩‍👧",
+          desc: "Thành viên gia đình · mein/meine",
+          content: `<h2>👨‍👩‍👧 Die Familie</h2>
+<div class="hint">Thành viên gia đình · sở hữu mein/meine</div>
+<h3 class="sub">1. Bố mẹ và anh chị em</h3>
+<ul>
+  <li><span class="term" data-de="die Familie" data-vi="gia đình">Familie</span> · <span class="term" data-de="die Eltern" data-vi="bố mẹ">Eltern</span> · <span class="term" data-de="der Vater" data-vi="bố">Vater</span> · <span class="term" data-de="die Mutter" data-vi="mẹ">Mutter</span></li>
+  <li><span class="term" data-de="die Geschwister" data-vi="anh chị em">Geschwister</span> · <span class="term" data-de="der Bruder" data-vi="anh/em trai">Bruder</span> · <span class="term" data-de="die Schwester" data-vi="chị/em gái">Schwester</span></li>
+</ul>
+<h3 class="sub">2. Con cái</h3>
+<ul>
+  <li><span class="term" data-de="das Kind" data-vi="đứa trẻ">Kind</span> · <span class="term" data-de="die Kinder" data-vi="những đứa trẻ">Kinder</span> · <span class="term" data-de="der Sohn" data-vi="con trai">Sohn</span> · <span class="term" data-de="die Tochter" data-vi="con gái">Tochter</span> · <span class="term" data-de="das Baby" data-vi="em bé">Baby</span></li>
+  <li>Hast du Geschwister? — Ja, ich habe <span class="term" data-de="einen Bruder" data-vi="một anh/em trai">einen Bruder</span> und eine Schwester.</li>
+</ul>
+<h3 class="sub">3. Của tôi: mein/meine</h3>
+<table>
+  <tr><th>Article</th><th>mein (của tôi)</th><th>dein (của bạn)</th></tr>
+  <tr><td>der</td><td><span class="term" data-de="mein Vater" data-vi="bố của tôi">mein Vater</span></td><td><span class="term" data-de="dein Vater" data-vi="bố của bạn">dein Vater</span></td></tr>
+  <tr><td>die</td><td><span class="term" data-de="meine Mutter" data-vi="mẹ của tôi">meine Mutter</span></td><td><span class="term" data-de="deine Mutter" data-vi="mẹ của bạn">deine Mutter</span></td></tr>
+  <tr><td>das/Plural</td><td><span class="term" data-de="mein Kind" data-vi="con của tôi">mein Kind</span> · <span class="term" data-de="meine Kinder" data-vi="các con của tôi">meine Kinder</span></td><td><span class="term" data-de="deine Kinder" data-vi="các con của bạn">deine Kinder</span></td></tr>
+</table>
+<div class="note">💡 Schnellmerk: <b>mein</b> (của tôi) đi với der/das, <b>meine</b> đi với die và số nhiều — giống hệt <b>dein/deine</b> (của bạn).</div>`,
+          listen: [
+            { id: "u3-l1-l1", text: "Das ist meine Familie: mein Vater, meine Mutter und meine Schwester.", tip: "Nghe các từ mein/meine trong câu", slow: true },
+            { id: "u3-l1-l2", text: "Hast du Geschwister? — Ja, ich habe einen Bruder." }
+          ]
+        },
+        {
+          id: "u3-l2",
+          name: "Mein und dein",
+          icon: "👤",
+          desc: "Đại từ sở hữu mein/dein · khớp giống danh từ",
+          content: `<h2>👤 Mein und dein</h2>
+<div class="hint">Đại từ sở hữu mein/dein · khớp giống danh từ</div>
+<h3 class="sub">1. Quy tắc mein/dein</h3>
+<ul>
+  <li><span class="term" data-de="mein" data-vi="của tôi (der/das)">mein</span> · <span class="term" data-de="dein" data-vi="của bạn (der/das)">dein</span> — trước danh từ giống đực/trung</li>
+  <li><span class="term" data-de="meine" data-vi="của tôi (die/số nhiều)">meine</span> · <span class="term" data-de="deine" data-vi="của bạn (die/số nhiều)">deine</span> — trước danh từ giống cái/số nhiều</li>
+  <li><span class="term" data-de="meine Eltern" data-vi="bố mẹ của tôi">meine Eltern</span> · <span class="term" data-de="deine Eltern" data-vi="bố mẹ của bạn">deine Eltern</span></li>
+</ul>
+<h3 class="sub">2. Ví dụ</h3>
+<ul>
+  <li><span class="term" data-de="Mein Vater" data-vi="Bố của tôi">Mein Vater</span> heißt Nam.</li>
+  <li><span class="term" data-de="Meine Mutter" data-vi="Mẹ của tôi">Meine Mutter</span> ist Lehrerin.</li>
+  <li><span class="term" data-de="Dein Bruder" data-vi="Anh/em trai của bạn">Dein Bruder</span> ist nett.</li>
+  <li><span class="term" data-de="Deine Schwester" data-vi="Chị/em gái của bạn">Deine Schwester</span> ist jung.</li>
+</ul>
+<h3 class="sub">3. Hỏi đáp</h3>
+<ul>
+  <li><span class="term" data-de="Wie heißt deine Mutter?" data-vi="Mẹ của bạn tên gì?">Wie heißt deine Mutter?</span> — Sie heißt Lan.</li>
+  <li><span class="term" data-de="Wie heißt dein Vater?" data-vi="Bố của bạn tên gì?">Wie heißt dein Vater?</span> — Er heißt Nam.</li>
+  <li><span class="term" data-de="Ist das dein Bruder?" data-vi="Đó là anh/em trai của bạn à?">Ist das dein Bruder?</span> — Ja, das ist mein Bruder.</li>
+</ul>
+<div class="note">💡 Schnellmerk: Possessivartikel đứng trước danh từ và khớp giống: der → <b>mein</b>, die → <b>meine</b>, das → <b>mein</b>, Plural → <b>meine</b>.</div>`,
+          grammar: [
+            {
+              id: "a1-possessivartikel",
+              title: "Possessivartikel: mein/dein",
+              rule: "<p><b>mein</b> (của tôi) / <b>dein</b> (của bạn) — khớp giống với danh từ đứng sau:</p><p>der → <b>mein/dein</b>: mein Vater · die → <b>meine/deine</b>: meine Mutter · das → <b>mein/dein</b>: mein Kind · Plural → <b>meine/deine</b>: meine Kinder</p>",
+              examples: ["Mein Vater heißt Nam.", "Meine Mutter ist Lehrerin.", "Deine Schwester ist nett."],
+              exercise: { type: "fill", theme: "u3-l2", cat: "Possessivartikel", q: "___ Mutter ist Lehrerin. (mẹ của tôi)", answers: ["meine"], answer: "meine", ex: "die Mutter → meine Mutter" }
+            }
+          ],
+          listen: [
+            { id: "u3-l2-l1", text: "Mein Vater heißt Nam. Meine Mutter heißt Lan.", tip: "Nghe sự khác nhau mein/meine", slow: true },
+            { id: "u3-l2-l2", text: "Ist das dein Bruder? — Ja, das ist mein Bruder." }
+          ],
+          speak: [
+            { id: "u3-l2-s1", prompt: "Nói: 'Mẹ của tôi tên là Lan'", model: "Meine Mutter heißt Lan.", hint: "Mei·ne · Mut·ter · heißt · Lan" }
+          ]
+        },
+        {
+          id: "u3-l3",
+          name: "Die Verwandten",
+          icon: "👪",
+          desc: "Ông bà · cô chú cậu dì · anh em họ",
+          content: `<h2>👪 Die Verwandten</h2>
+<div class="hint">Ông bà · cô chú cậu dì · anh em họ</div>
+<h3 class="sub">1. Ông bà</h3>
+<ul>
+  <li><span class="term" data-de="die Großeltern" data-vi="ông bà">Großeltern</span> · <span class="term" data-de="der Großvater" data-vi="ông">Großvater</span> · <span class="term" data-de="die Großmutter" data-vi="bà">Großmutter</span></li>
+  <li>Thân mật: <span class="term" data-de="der Opa" data-vi="ông (thân mật)">Opa</span> · <span class="term" data-de="die Oma" data-vi="bà (thân mật)">Oma</span></li>
+  <li>Mein Opa und meine Oma wohnen in <span class="term" data-de="Hanoi" data-vi="Hà Nội">Hanoi</span>.</li>
+</ul>
+<h3 class="sub">2. Cô chú cậu dì</h3>
+<ul>
+  <li><span class="term" data-de="der Onkel" data-vi="chú/bác/cậu">Onkel</span> · <span class="term" data-de="die Tante" data-vi="cô/dì/thím">Tante</span></li>
+  <li><span class="term" data-de="der Cousin" data-vi="anh/em họ (nam)">Cousin</span> · <span class="term" data-de="die Cousine" data-vi="anh/em họ (nữ)">Cousine</span></li>
+</ul>
+<h3 class="sub">3. Cháu và họ hàng</h3>
+<ul>
+  <li><span class="term" data-de="der Neffe" data-vi="cháu trai (con của anh chị em)">Neffe</span> · <span class="term" data-de="die Nichte" data-vi="cháu gái (con của anh chị em)">Nichte</span></li>
+  <li><span class="term" data-de="der Enkel" data-vi="cháu trai (con của con)">Enkel</span> · <span class="term" data-de="die Enkelin" data-vi="cháu gái (con của con)">Enkelin</span></li>
+  <li><span class="term" data-de="die Verwandten" data-vi="họ hàng (số nhiều)">Verwandten</span> · <span class="term" data-de="der Verwandte" data-vi="người họ hàng">Verwandte</span></li>
+</ul>
+<div class="note">💡 Schnellmerk: <b>Großvater/Großmutter</b> = ông/bà; thân mật gọi <b>Opa/Oma</b>. Họ hàng nói chung là <b>die Verwandten</b>.</div>`,
+          listen: [
+            { id: "u3-l3-l1", text: "Mein Opa und meine Oma wohnen in Hanoi.", tip: "Nghe quan hệ họ hàng trong câu", slow: true },
+            { id: "u3-l3-l2", text: "Ich habe einen Onkel und eine Tante. Mein Cousin heißt Minh." }
+          ]
+        },
+        {
+          id: "u3-l4",
+          name: "Berufe",
+          icon: "🧑‍🍳",
+          desc: "Nghề nghiệp · Was bist du von Beruf? · nam/nữ",
+          content: `<h2>🧑‍🍳 Berufe</h2>
+<div class="hint">Nghề nghiệp · Was bist du von Beruf? · nam/nữ</div>
+<h3 class="sub">1. Hỏi nghề nghiệp</h3>
+<ul>
+  <li><span class="term" data-de="Was bist du von Beruf?" data-vi="Bạn làm nghề gì?">Was bist du von Beruf?</span> — Ich bin <span class="term" data-de="der Koch" data-vi="đầu bếp (nam)">Koch</span>.</li>
+  <li><span class="term" data-de="Was ist er von Beruf?" data-vi="Anh ấy làm nghề gì?">Was ist er von Beruf?</span> — Er ist <span class="term" data-de="der Arzt" data-vi="bác sĩ (nam)">Arzt</span>.</li>
+  <li><span class="term" data-de="Was ist sie von Beruf?" data-vi="Cô ấy làm nghề gì?">Was ist sie von Beruf?</span> — Sie ist <span class="term" data-de="die Verkäuferin" data-vi="người bán hàng (nữ)">Verkäuferin</span>.</li>
+</ul>
+<h3 class="sub">2. Nghề nam và nữ</h3>
+<table>
+  <tr><th>Nam</th><th>Nữ</th></tr>
+  <tr><td><span class="term" data-de="der Lehrer" data-vi="giáo viên (nam)">Lehrer</span></td><td><span class="term" data-de="die Lehrerin" data-vi="giáo viên (nữ)">Lehrerin</span></td></tr>
+  <tr><td><span class="term" data-de="der Polizist" data-vi="cảnh sát (nam)">Polizist</span></td><td><span class="term" data-de="die Polizistin" data-vi="cảnh sát (nữ)">Polizistin</span></td></tr>
+  <tr><td><span class="term" data-de="der Fahrer" data-vi="tài xế (nam)">Fahrer</span></td><td><span class="term" data-de="die Fahrerin" data-vi="tài xế (nữ)">Fahrerin</span></td></tr>
+</table>
+<h3 class="sub">3. Nghề khác</h3>
+<ul>
+  <li><span class="term" data-de="der Student" data-vi="sinh viên (nam)">Student</span> · <span class="term" data-de="die Studentin" data-vi="sinh viên (nữ)">Studentin</span> · <span class="term" data-de="die Krankenschwester" data-vi="y tá">Krankenschwester</span></li>
+  <li><span class="term" data-de="der Bäcker" data-vi="thợ làm bánh (nam)">Bäcker</span> · <span class="term" data-de="der Ingenieur" data-vi="kỹ sư">Ingenieur</span> · <span class="term" data-de="der Beruf" data-vi="nghề nghiệp">Beruf</span></li>
+</ul>
+<div class="note">💡 Schnellmerk: Hỏi nghề luôn dùng <b>sein</b> + mạo từ rỗng: Ich bin <b>Koch</b> (không nói "Ich bin ein Koch"). Nghề nữ thường thêm <b>-in</b>: Verkäufer → Verkäufer<b>in</b>.</div>`,
+          grammar: [
+            {
+              id: "a1-berufe-sein",
+              title: "Berufe mit sein",
+              rule: "<p>Hỏi nghề: <b>Was bist du von Beruf?</b> — Ich <b>bin</b> Koch. (sein + nghề, KHÔNG mạo từ)</p><p>Nghề nữ = nghề nam + <b>-in</b>: Verkäufer → Verkäufer<b>in</b> · Lehrer → Lehrer<b>in</b> · Polizist → Polizist<b>in</b></p><p>Bất quy tắc: Arzt → Ärztin · Koch → Köchin · Student → Studentin.</p>",
+              examples: ["Was bist du von Beruf? — Ich bin Koch.", "Sie ist Verkäuferin.", "Er ist Student."],
+              exercise: { type: "fill", theme: "u3-l4", cat: "Berufe", q: "Was bist du von ___? — Ich bin Koch.", answers: ["beruf"], answer: "Beruf", ex: "von Beruf = làm nghề gì" }
+            }
+          ],
+          listen: [
+            { id: "u3-l4-l1", text: "Was bist du von Beruf? — Ich bin Koch.", tip: "Nghe câu hỏi nghề nghiệp", slow: true },
+            { id: "u3-l4-l2", text: "Meine Mutter ist Verkäuferin. Mein Vater ist Fahrer." }
+          ],
+          speak: [
+            { id: "u3-l4-s1", prompt: "Hỏi: 'Bạn làm nghề gì?'", model: "Was bist du von Beruf?", hint: "Was · bist · du · von · Be·ruf" },
+            { id: "u3-l4-s2", prompt: "Trả lời: 'Tôi là đầu bếp'", model: "Ich bin Koch.", hint: "Ich · bin · Koch" }
+          ]
+        },
+        {
+          id: "u3-l5",
+          name: "Personen beschreiben",
+          icon: "🧍",
+          desc: "Mô tả ngoại hình · tóc · mắt · khuôn mặt",
+          content: `<h2>🧍 Personen beschreiben</h2>
+<div class="hint">Mô tả người · dáng vóc · mái tóc · mắt</div>
+<h3 class="sub">1. Dáng vóc</h3>
+<ul>
+  <li><span class="term" data-de="groß" data-vi="cao">groß</span> · <span class="term" data-de="klein" data-vi="thấp">klein</span> · <span class="term" data-de="alt" data-vi="già">alt</span> · <span class="term" data-de="jung" data-vi="trẻ">jung</span></li>
+  <li>Mein Vater ist <span class="term" data-de="sehr groß" data-vi="rất cao">sehr groß</span>. Meine Mutter ist <span class="term" data-de="nicht so groß" data-vi="không cao lắm">nicht so groß</span>.</li>
+</ul>
+<h3 class="sub">2. Mái tóc và mắt</h3>
+<ul>
+  <li><span class="term" data-de="die Haare" data-vi="tóc">Haare</span>: <span class="term" data-de="braun" data-vi="màu nâu">braun</span> · <span class="term" data-de="schwarz" data-vi="màu đen">schwarz</span> · <span class="term" data-de="blond" data-vi="màu vàng hoe">blond</span></li>
+  <li>Sie hat <span class="term" data-de="lange Haare" data-vi="tóc dài">lange Haare</span>. Er hat <span class="term" data-de="kurze Haare" data-vi="tóc ngắn">kurze Haare</span>.</li>
+  <li><span class="term" data-de="die Augen" data-vi="đôi mắt">Augen</span>: <span class="term" data-de="blaue Augen" data-vi="mắt xanh">blaue Augen</span> · <span class="term" data-de="grüne Augen" data-vi="mắt xanh lá">grüne Augen</span></li>
+</ul>
+<h3 class="sub">3. Khuôn mặt</h3>
+<ul>
+  <li><span class="term" data-de="das Gesicht" data-vi="khuôn mặt">Gesicht</span> · <span class="term" data-de="die Nase" data-vi="mũi">Nase</span> · <span class="term" data-de="der Mund" data-vi="miệng">Mund</span> · <span class="term" data-de="das Ohr" data-vi="tai">Ohr</span></li>
+  <li>Sie ist <span class="term" data-de="schön" data-vi="xinh đẹp">schön</span>. Er ist <span class="term" data-de="hübsch" data-vi="đẹp trai">hübsch</span>.</li>
+</ul>
+<div class="note">💡 Schnellmerk: Mô tả ngoại hình: <b>haben</b> + bộ phận (Sie <b>hat</b> blaue Augen) và <b>sein</b> + tính từ (Er <b>ist</b> groß).</div>`,
+          listen: [
+            { id: "u3-l5-l1", text: "Mein Bruder ist groß und hat kurze Haare.", tip: "Nghe tính từ mô tả", slow: true },
+            { id: "u3-l5-l2", text: "Meine Schwester hat lange Haare und blaue Augen." }
+          ],
+          speak: [
+            { id: "u3-l5-s1", prompt: "Mô tả: 'Bố tôi cao'", model: "Mein Vater ist groß.", hint: "Mein · Va·ter · ist · groß" }
+          ]
+        },
+        {
+          id: "u3-l6",
+          name: "Freunde & Charakter",
+          icon: "🤝",
+          desc: "Bạn bè · tính cách · sở thích",
+          content: `<h2>🤝 Freunde & Charakter</h2>
+<div class="hint">Bạn bè · tính cách · sở thích</div>
+<h3 class="sub">1. Bạn bè</h3>
+<ul>
+  <li><span class="term" data-de="der Freund" data-vi="bạn trai/bạn (nam)">Freund</span> · <span class="term" data-de="die Freundin" data-vi="bạn gái/bạn (nữ)">Freundin</span> · <span class="term" data-de="die Freunde" data-vi="những người bạn">Freunde</span></li>
+  <li><span class="term" data-de="der beste Freund" data-vi="bạn thân nhất (nam)">beste Freund</span> · <span class="term" data-de="die beste Freundin" data-vi="bạn thân nhất (nữ)">beste Freundin</span></li>
+</ul>
+<h3 class="sub">2. Tính cách</h3>
+<ul>
+  <li><span class="term" data-de="nett" data-vi="tốt bụng, dễ thương">nett</span> · <span class="term" data-de="freundlich" data-vi="thân thiện">freundlich</span> · <span class="term" data-de="lustig" data-vi="vui tính">lustig</span> · <span class="term" data-de="fleißig" data-vi="chăm chỉ">fleißig</span></li>
+  <li><span class="term" data-de="intelligent" data-vi="thông minh">intelligent</span> · <span class="term" data-de="ehrlich" data-vi="thật thà">ehrlich</span> · <span class="term" data-de="hilfsbereit" data-vi="sẵn lòng giúp đỡ">hilfsbereit</span></li>
+  <li><span class="term" data-de="ruhig" data-vi="điềm tĩnh">ruhig</span> · <span class="term" data-de="laut" data-vi="ồn ào">laut</span> · <span class="term" data-de="sympathisch" data-vi="dễ mến">sympathisch</span></li>
+</ul>
+<h3 class="sub">3. Nói về bạn bè</h3>
+<ul>
+  <li>Das ist <span class="term" data-de="mein Freund Tom" data-vi="bạn Tom của tôi">mein Freund Tom</span>. Er ist sehr lustig.</li>
+  <li>Meine Freundin ist <span class="term" data-de="immer fröhlich" data-vi="luôn vui vẻ">immer fröhlich</span>.</li>
+  <li><span class="term" data-de="das Hobby" data-vi="sở thích">Hobby</span> · <span class="term" data-de="die Hobbys" data-vi="các sở thích">Hobbys</span>: Wir spielen zusammen <span class="term" data-de="Fußball" data-vi="bóng đá">Fußball</span>.</li>
+</ul>
+<div class="note">💡 Schnellmerk: Bạn nam = <b>Freund</b>, bạn nữ = <b>Freundin</b>, nhiều bạn = <b>Freunde</b> (Plural thêm -e).</div>`,
+          listen: [
+            { id: "u3-l6-l1", text: "Das ist mein Freund Tom. Er ist sehr lustig.", tip: "Nghe cách giới thiệu bạn bè", slow: true },
+            { id: "u3-l6-l2", text: "Meine beste Freundin ist hilfsbereit und ehrlich." }
+          ],
+          speak: [
+            { id: "u3-l6-s1", prompt: "Giới thiệu: 'Đây là bạn Tom của tôi'", model: "Das ist mein Freund Tom.", hint: "Das · ist · mein · Freund · Tom" }
+          ]
+        },
+        {
+          id: "u3-l7",
+          name: "Meine Familie vorstellen",
+          icon: "🖼️",
+          desc: "Giới thiệu gia đình · ôn tập mein/meine + sein",
+          content: `<h2>🖼️ Meine Familie vorstellen</h2>
+<div class="hint">Giới thiệu gia đình · ôn tập mein/meine + sein</div>
+<h3 class="sub">1. Giới thiệu chung</h3>
+<ul>
+  <li>Ich möchte meine Familie <span class="term" data-de="vorstellen" data-vi="giới thiệu">vorstellen</span>.</li>
+  <li>Ich <span class="term" data-de="haben" data-vi="có">habe</span> eine <span class="term" data-de="die Schwester" data-vi="chị/em gái">Schwester</span> und einen <span class="term" data-de="der Bruder" data-vi="anh/em trai">Bruder</span>.</li>
+  <li>Meine Familie ist <span class="term" data-de="groß" data-vi="đông đúc">groß</span>: <span class="term" data-de="der Vater" data-vi="bố">Vater</span>, <span class="term" data-de="die Mutter" data-vi="mẹ">Mutter</span>, zwei Brüder und ich.</li>
+</ul>
+<h3 class="sub">2. Trạng thái gia đình</h3>
+<ul>
+  <li><span class="term" data-de="verheiratet" data-vi="đã kết hôn">verheiratet</span> · <span class="term" data-de="ledig" data-vi="độc thân">ledig</span> · <span class="term" data-de="geschieden" data-vi="đã ly hôn">geschieden</span></li>
+  <li>Meine Eltern sind <span class="term" data-de="glücklich" data-vi="hạnh phúc">glücklich</span> verheiratet.</li>
+</ul>
+<h3 class="sub">3. Cùng nhau</h3>
+<ul>
+  <li>Wir essen <span class="term" data-de="zusammen" data-vi="cùng nhau">zusammen</span> und <span class="term" data-de="fernsehen" data-vi="xem TV">sehen fern</span>.</li>
+  <li>Am Sonntag besuchen wir die <span class="term" data-de="die Großeltern" data-vi="ông bà">Großeltern</span>.</li>
+</ul>
+<div class="note">💡 Schnellmerk: Trình tự giới thiệu gia đình: <b>Ich habe</b> … + <b>Mein/Meine</b> … + <b>Wir</b> … — dùng sein cho trạng thái, haben cho thành viên.</div>`,
+          listen: [
+            { id: "u3-l7-l1", text: "Ich habe eine Schwester und einen Bruder. Meine Familie ist groß.", tip: "Nghe cấu trúc Ich habe …", slow: true },
+            { id: "u3-l7-l2", text: "Meine Eltern sind glücklich verheiratet." }
+          ],
+          speak: [
+            { id: "u3-l7-s1", prompt: "Giới thiệu: 'Tôi có một chị gái'", model: "Ich habe eine Schwester.", hint: "Ich · ha·be · ei·ne · Schwes·ter" }
+          ]
+        }
+      ]
+    },
+    {
+      id: "u4",
+      title: "Essen & Trinken",
+      desc: "Món ăn đồ uống · nhà hàng · Akkusativ · essen/trinken",
+      icon: "🍽️",
+      lektionen: [
+        {
+          id: "u4-l1",
+          name: "Das Frühstück",
+          icon: "🥐",
+          desc: "Bữa sáng · đồ ăn · frühstücken",
+          content: `<h2>🥐 Das Frühstück</h2>
+<div class="hint">Bữa sáng · đồ ăn · frühstücken</div>
+<h3 class="sub">1. Bánh mì và đồ phết</h3>
+<ul>
+  <li><span class="term" data-de="das Brot" data-vi="bánh mì (ổ)">Brot</span> · <span class="term" data-de="das Brötchen" data-vi="bánh mì nhỏ">Brötchen</span> · <span class="term" data-de="die Butter" data-vi="bơ">Butter</span> · <span class="term" data-de="der Käse" data-vi="phô mai">Käse</span></li>
+  <li><span class="term" data-de="die Marmelade" data-vi="mứt">Marmelade</span> · <span class="term" data-de="der Honig" data-vi="mật ong">Honig</span> · <span class="term" data-de="die Wurst" data-vi="xúc xích, chả">Wurst</span></li>
+</ul>
+<h3 class="sub">2. Trứng và đồ uống</h3>
+<ul>
+  <li><span class="term" data-de="das Ei" data-vi="trứng">Ei</span> · <span class="term" data-de="das Müsli" data-vi="ngũ cốc">Müsli</span> · <span class="term" data-de="der Joghurt" data-vi="sữa chua">Joghurt</span></li>
+  <li><span class="term" data-de="der Kaffee" data-vi="cà phê">Kaffee</span> · <span class="term" data-de="der Tee" data-vi="trà">Tee</span> · <span class="term" data-de="die Milch" data-vi="sữa">Milch</span> · <span class="term" data-de="der Orangensaft" data-vi="nước cam">Orangensaft</span></li>
+</ul>
+<h3 class="sub">3. Ăn sáng</h3>
+<ul>
+  <li>Ich <span class="term" data-de="frühstücken" data-vi="ăn sáng">frühstücke</span> um sieben Uhr.</li>
+  <li>Ich esse <span class="term" data-de="das Frühstück" data-vi="bữa sáng">Frühstück</span> mit <span class="term" data-de="meiner Familie" data-vi="gia đình của tôi">meiner Familie</span>.</li>
+</ul>
+<div class="note">💡 Schnellmerk: Danh từ đồ ăn có article riêng (das Brot, die Milch, der Kaffee) — học theo article: <b>das/die/der</b> + từ.</div>`,
+          listen: [
+            { id: "u4-l1-l1", text: "Ich frühstücke um sieben Uhr. Ich esse Brot mit Käse.", tip: "Nghe từ vựng đồ ăn", slow: true },
+            { id: "u4-l1-l2", text: "Zum Frühstück trinke ich Kaffee mit Milch." }
+          ]
+        },
+        {
+          id: "u4-l2",
+          name: "Obst & Gemüse",
+          icon: "🍎",
+          desc: "Hoa quả và rau củ · mua theo cân",
+          content: `<h2>🍎 Obst & Gemüse</h2>
+<div class="hint">Hoa quả và rau củ</div>
+<h3 class="sub">1. Hoa quả</h3>
+<ul>
+  <li><span class="term" data-de="das Obst" data-vi="hoa quả">Obst</span> · <span class="term" data-de="der Apfel" data-vi="quả táo">Apfel</span> · <span class="term" data-de="die Banane" data-vi="quả chuối">Banane</span></li>
+  <li><span class="term" data-de="die Orange" data-vi="quả cam">Orange</span> · <span class="term" data-de="die Erdbeere" data-vi="quả dâu tây">Erdbeere</span> · <span class="term" data-de="die Zitrone" data-vi="quả chanh">Zitrone</span> · <span class="term" data-de="die Ananas" data-vi="quả dứa">Ananas</span></li>
+</ul>
+<h3 class="sub">2. Rau củ</h3>
+<ul>
+  <li><span class="term" data-de="das Gemüse" data-vi="rau củ">Gemüse</span> · <span class="term" data-de="die Tomate" data-vi="quả cà chua">Tomate</span> · <span class="term" data-de="die Gurke" data-vi="quả dưa chuột">Gurke</span> · <span class="term" data-de="die Karotte" data-vi="củ cà rốt">Karotte</span></li>
+  <li><span class="term" data-de="die Kartoffel" data-vi="củ khoai tây">Kartoffel</span> · <span class="term" data-de="die Zwiebel" data-vi="củ hành tây">Zwiebel</span> · <span class="term" data-de="der Salat" data-vi="rau xà lách">Salat</span></li>
+</ul>
+<h3 class="sub">3. Mua hoa quả</h3>
+<ul>
+  <li>Ich kaufe <span class="term" data-de="ein Kilo Äpfel" data-vi="một ki-lô táo">ein Kilo Äpfel</span>.</li>
+  <li><span class="term" data-de="gesund" data-vi="tốt cho sức khỏe">Gesund</span>: Obst und Gemüse sind <span class="term" data-de="sehr gesund" data-vi="rất tốt cho sức khỏe">sehr gesund</span>.</li>
+</ul>
+<div class="note">💡 Schnellmerk: Hầu hết rau củ giống cái <b>die</b> (-e, -el): Tomate, Gurke, Kartoffel — riêng der Apfel, der Salat giống đực.</div>`,
+          listen: [
+            { id: "u4-l2-l1", text: "Ich kaufe ein Kilo Äpfel und zwei Bananen.", tip: "Nghe số lượng và loại quả", slow: true },
+            { id: "u4-l2-l2", text: "Obst und Gemüse sind sehr gesund." }
+          ],
+          speak: [
+            { id: "u4-l2-s1", prompt: "Nói: 'Tôi mua một ki-lô táo'", model: "Ich kaufe ein Kilo Äpfel.", hint: "Ich · kau·fe · ein · Ki·lo · Äp·fel" }
+          ]
+        },
+        {
+          id: "u4-l3",
+          name: "Getränke",
+          icon: "🥤",
+          desc: "Đồ uống · khát · möchten",
+          content: `<h2>🥤 Getränke</h2>
+<div class="hint">Đồ uống · khát · möchten</div>
+<h3 class="sub">1. Đồ uống cơ bản</h3>
+<ul>
+  <li><span class="term" data-de="das Getränk" data-vi="đồ uống">Getränk</span> · <span class="term" data-de="das Wasser" data-vi="nước">Wasser</span> · <span class="term" data-de="das Mineralwasser" data-vi="nước khoáng">Mineralwasser</span></li>
+  <li><span class="term" data-de="der Saft" data-vi="nước ép">Saft</span> · <span class="term" data-de="der Apfelsaft" data-vi="nước táo ép">Apfelsaft</span> · <span class="term" data-de="die Limonade" data-vi="nước ngọt có ga">Limonade</span> · <span class="term" data-de="die Cola" data-vi="nước cola">Cola</span></li>
+</ul>
+<h3 class="sub">2. Đồ uống nóng</h3>
+<ul>
+  <li><span class="term" data-de="der Kaffee" data-vi="cà phê">Kaffee</span> · <span class="term" data-de="der Tee" data-vi="trà">Tee</span> · <span class="term" data-de="die Milch" data-vi="sữa">Milch</span></li>
+  <li><span class="term" data-de="der Kaffee mit Milch" data-vi="cà phê sữa">Kaffee mit Milch</span> · <span class="term" data-de="der Tee mit Zitrone" data-vi="trà chanh">Tee mit Zitrone</span></li>
+</ul>
+<h3 class="sub">3. Khát nước</h3>
+<ul>
+  <li>Ich habe <span class="term" data-de="der Durst" data-vi="cơn khát">Durst</span> · Ich bin <span class="term" data-de="durstig" data-vi="khát">durstig</span>.</li>
+  <li>Ich <span class="term" data-de="möchten" data-vi="muốn (lịch sự)">möchte</span> ein <span class="term" data-de="das Glas" data-vi="cái cốc">Glas</span> Wasser, bitte.</li>
+  <li><span class="term" data-de="die Tasse" data-vi="cái tách">Tasse</span> · <span class="term" data-de="die Flasche" data-vi="cái chai">Flasche</span></li>
+</ul>
+<div class="note">💡 Schnellmerk: <b>möchten</b> = muốn (lịch sự): Ich möchte einen Tee. Dùng khi gọi đồ uống, lịch sự hơn "ich will".</div>`,
+          listen: [
+            { id: "u4-l3-l1", text: "Ich habe Durst. Ich möchte ein Glas Wasser, bitte.", tip: "Nghe câu gọi đồ uống lịch sự", slow: true },
+            { id: "u4-l3-l2", text: "Möchtest du einen Tee? — Ja, einen Tee mit Zitrone." }
+          ],
+          speak: [
+            { id: "u4-l3-s1", prompt: "Gọi: 'Làm ơn cho tôi một cốc nước'", model: "Ich möchte ein Glas Wasser, bitte.", hint: "Ich · möch·te · ein · Glas · Was·ser · bit·te" }
+          ]
+        },
+        {
+          id: "u4-l4",
+          name: "Im Restaurant",
+          icon: "🍽️",
+          desc: "Trong nhà hàng · gọi món · Akkusativ",
+          content: `<h2>🍽️ Im Restaurant</h2>
+<div class="hint">Trong nhà hàng · gọi món · Akkusativ</div>
+<h3 class="sub">1. Vào nhà hàng</h3>
+<ul>
+  <li><span class="term" data-de="das Restaurant" data-vi="nhà hàng">Restaurant</span> · <span class="term" data-de="der Kellner" data-vi="bồi bàn (nam)">Kellner</span> · <span class="term" data-de="die Kellnerin" data-vi="bồi bàn (nữ)">Kellnerin</span></li>
+  <li><span class="term" data-de="der Tisch" data-vi="cái bàn">Tisch</span> · <span class="term" data-de="die Speisekarte" data-vi="thực đơn">Speisekarte</span> · <span class="term" data-de="der Gast" data-vi="thực khách">Gast</span> · <span class="term" data-de="die Gäste" data-vi="các thực khách">Gäste</span></li>
+</ul>
+<h3 class="sub">2. Gọi món</h3>
+<ul>
+  <li><span class="term" data-de="bestellen" data-vi="gọi món">Bestellen</span>: Ich möchte <span class="term" data-de="die Bestellung" data-vi="đơn gọi món">Bestellung</span> aufgeben.</li>
+  <li>Ich nehme <span class="term" data-de="die Suppe" data-vi="món súp">die Suppe</span> als <span class="term" data-de="die Vorspeise" data-vi="món khai vị">Vorspeise</span>.</li>
+  <li>Als <span class="term" data-de="die Hauptspeise" data-vi="món chính">Hauptspeise</span> nehme ich <span class="term" data-de="das Schnitzel" data-vi="món schnitzel">das Schnitzel</span>.</li>
+  <li>Zum <span class="term" data-de="das Dessert" data-vi="món tráng miệng">Dessert</span> möchte ich <span class="term" data-de="der Kuchen" data-vi="bánh ngọt">Kuchen</span>.</li>
+</ul>
+<h3 class="sub">3. Akkusativ sau nehmen/möchten</h3>
+<table>
+  <tr><th>Danh từ</th><th>Nominativ</th><th>Akkusativ</th></tr>
+  <tr><td>der Salat</td><td>der Salat</td><td><span class="term" data-de="den Salat" data-vi="món xà lách (Akkusativ)">den Salat</span></td></tr>
+  <tr><td>die Suppe</td><td>die Suppe</td><td><span class="term" data-de="die Suppe" data-vi="món súp (Akkusativ)">die Suppe</span></td></tr>
+  <tr><td>das Wasser</td><td>das Wasser</td><td><span class="term" data-de="das Wasser" data-vi="nước (Akkusativ)">das Wasser</span></td></tr>
+</table>
+<div class="note">💡 Schnellmerk: Sau <b>nehmen/möchten</b> danh từ chuyển Akkusativ: <b>der → den</b> · <b>die → die</b> (không đổi) · <b>das → das</b> (không đổi).</div>`,
+          grammar: [
+            {
+              id: "a1-akkusativ",
+              title: "Akkusativ: den/die/das + einen/eine/ein",
+              rule: "<p>Sau động từ <b>nehmen</b>, <b>möchten</b>, <b>essen</b>, <b>trinken</b> danh từ xác định chuyển Akkusativ:</p><p><b>der → den</b> (den Salat) · <b>die → die</b> (die Suppe, không đổi) · <b>das → das</b> (das Wasser, không đổi)</p><p>Bất định: <b>einen</b> (der: einen Tee) · <b>eine</b> (die: eine Suppe) · <b>ein</b> (das: ein Wasser).</p>",
+              examples: ["Ich nehme den Salat.", "Ich möchte eine Suppe.", "Er trinkt ein Wasser."],
+              exercise: { type: "fill", theme: "u4-l4", cat: "Akkusativ", q: "Ich möchte ___ Suppe. (eine/einen/ein)", answers: ["eine"], answer: "eine", ex: "die Suppe → eine Suppe" }
+            }
+          ],
+          listen: [
+            { id: "u4-l4-l1", text: "Die Speisekarte, bitte! Ich möchte eine Suppe und ein Schnitzel.", tip: "Nghe cách gọi món trong nhà hàng", slow: true },
+            { id: "u4-l4-l2", text: "Der Kellner bringt den Salat und das Wasser." }
+          ],
+          speak: [
+            { id: "u4-l4-s1", prompt: "Gọi món: 'Làm ơn cho tôi thực đơn'", model: "Die Speisekarte, bitte!", hint: "Die · Spei·se·kar·te · bit·te" },
+            { id: "u4-l4-s2", prompt: "Gọi: 'Tôi muốn món súp'", model: "Ich möchte eine Suppe.", hint: "Ich · möch·te · ei·ne · Sup·pe" }
+          ]
+        },
+        {
+          id: "u4-l5",
+          name: "Die Rechnung",
+          icon: "🧾",
+          desc: "Tính tiền · trả tiền · tiền boa",
+          content: `<h2>🧾 Die Rechnung</h2>
+<div class="hint">Tính tiền · trả tiền · tiền boa</div>
+<h3 class="sub">1. Xin tính tiền</h3>
+<ul>
+  <li><span class="term" data-de="die Rechnung" data-vi="hóa đơn">Rechnung</span>, bitte! · Ich möchte <span class="term" data-de="bezahlen" data-vi="trả tiền">bezahlen</span>.</li>
+  <li><span class="term" data-de="zahlen" data-vi="trả, thanh toán">Zahlen</span>: Zahlen Sie <span class="term" data-de="zusammen" data-vi="chung một hóa đơn">zusammen</span> oder <span class="term" data-de="getrennt" data-vi="tách riêng">getrennt</span>?</li>
+</ul>
+<h3 class="sub">2. Trả tiền thế nào?</h3>
+<ul>
+  <li>Ich zahle <span class="term" data-de="bar" data-vi="bằng tiền mặt">bar</span> · mit <span class="term" data-de="die Karte" data-vi="thẻ">Karte</span> · <span class="term" data-de="mit Karte" data-vi="bằng thẻ">mit Karte</span></li>
+  <li><span class="term" data-de="das Geld" data-vi="tiền">Geld</span> · <span class="term" data-de="der Euro" data-vi="đồng euro">Euro</span> · <span class="term" data-de="der Cent" data-vi="xu">Cent</span></li>
+</ul>
+<h3 class="sub">3. Tiền boa và hóa đơn</h3>
+<ul>
+  <li><span class="term" data-de="das Trinkgeld" data-vi="tiền boa">Trinkgeld</span>: Stimmt so! (Không cần thối lại!)</li>
+  <li><span class="term" data-de="der Preis" data-vi="giá">Preis</span> · <span class="term" data-de="die Kasse" data-vi="quầy thu ngân">Kasse</span> · <span class="term" data-de="stimmen" data-vi="đúng, chính xác">Stimmt</span> die Rechnung?</li>
+</ul>
+<div class="note">💡 Schnellmerk: Khi ăn xong: <b>Die Rechnung, bitte!</b> — Trả chung: <b>zusammen</b>, trả riêng: <b>getrennt</b>. Tiền boa để lại tại bàn: <b>Stimmt so!</b></div>`,
+          listen: [
+            { id: "u4-l5-l1", text: "Die Rechnung, bitte! Ich möchte bezahlen.", tip: "Nghe câu xin hóa đơn", slow: true },
+            { id: "u4-l5-l2", text: "Zahlen Sie zusammen oder getrennt? — Zusammen, bitte." }
+          ],
+          speak: [
+            { id: "u4-l5-s1", prompt: "Nói: 'Làm ơn tính tiền!'", model: "Die Rechnung, bitte!", hint: "Die · Rech·nung · bit·te" }
+          ]
+        },
+        {
+          id: "u4-l6",
+          name: "essen, trinken & nehmen",
+          icon: "🍝",
+          desc: "Chia động từ essen/trinken/nehmen · đói · no",
+          content: `<h2>🍝 essen, trinken & nehmen</h2>
+<div class="hint">Chia động từ essen/trinken/nehmen · đói · no</div>
+<h3 class="sub">1. essen — chia đặc biệt</h3>
+<ul>
+  <li>ich <span class="term" data-de="essen" data-vi="ăn">esse</span> · du <span class="term" data-de="isst" data-vi="ăn (bạn)">isst</span> · er/sie/es <span class="term" data-de="isst" data-vi="ăn (anh ấy/cô ấy)">isst</span></li>
+  <li>wir <span class="term" data-de="essen" data-vi="ăn (chúng tôi)">essen</span> · ihr <span class="term" data-de="esst" data-vi="ăn (các bạn)">esst</span> · sie/Sie <span class="term" data-de="essen" data-vi="ăn (họ)">essen</span></li>
+</ul>
+<h3 class="sub">2. trinken & nehmen</h3>
+<ul>
+  <li><span class="term" data-de="trinken" data-vi="uống">trinken</span>: ich trinke · du <span class="term" data-de="trinkst" data-vi="uống (bạn)">trinkst</span> · er/sie/es trinkt · wir trinken</li>
+  <li><span class="term" data-de="nehmen" data-vi="lấy, gọi">nehmen</span>: ich nehme · du <span class="term" data-de="nimmst" data-vi="lấy (bạn)">nimmst</span> · er/sie/es <span class="term" data-de="nimmt" data-vi="lấy (anh ấy)">nimmt</span> · wir nehmen</li>
+</ul>
+<h3 class="sub">3. Đói và no</h3>
+<ul>
+  <li>Ich habe <span class="term" data-de="der Hunger" data-vi="cơn đói">Hunger</span>. Ich möchte <span class="term" data-de="das Mittagessen" data-vi="bữa trưa">Mittagessen</span>.</li>
+  <li><span class="term" data-de="hungrig" data-vi="đói">Hungrig</span> · <span class="term" data-de="satt" data-vi="no">satt</span>: Ich bin satt.</li>
+  <li>Das Essen <span class="term" data-de="schmecken" data-vi="ngon, vừa miệng">schmeckt</span> <span class="term" data-de="lecker" data-vi="ngon">lecker</span>!</li>
+</ul>
+<div class="note">💡 Schnellmerk: <b>essen</b> bất quy tắc: du isst (ss!), er isst. <b>nehmen</b> đổi e→i: du nimmst, er nimmt. <b>trinken</b> đều đặn.</div>`,
+          grammar: [
+            {
+              id: "a1-essen-trinken",
+              title: "essen/trinken/nehmen chia hiện tại",
+              rule: "<p><b>essen</b>: ich esse · du <b>isst</b> · er/sie/es <b>isst</b> · wir essen · ihr esst · sie/Sie essen</p><p><b>trinken</b> (đều): ich trinke · du trinkst · er/sie/es trinkt · wir trinken · ihr trinkt · sie/Sie trinken</p><p><b>nehmen</b> (e→i): ich nehme · du <b>nimmst</b> · er/sie/es <b>nimmt</b> · wir nehmen · ihr nehmt · sie/Sie nehmen</p>",
+              examples: ["Ich esse Brot mit Käse.", "Was trinkst du? — Ich trinke Wasser.", "Der Kellner nimmt die Bestellung auf."],
+              exercise: { type: "fill", theme: "u4-l6", cat: "essen/trinken/nehmen", q: "Du ___ Brot. (essen)", answers: ["isst"], answer: "isst", ex: "du + essen → du isst" }
+            }
+          ],
+          listen: [
+            { id: "u4-l6-l1", text: "Ich habe Hunger. Ich möchte Mittagessen.", tip: "Nghe từ đói và bữa trưa", slow: true },
+            { id: "u4-l6-l2", text: "Das Essen schmeckt lecker!" }
+          ],
+          speak: [
+            { id: "u4-l6-s1", prompt: "Nói: 'Bạn ăn gì?'", model: "Was isst du?", hint: "Was · isst · du" }
+          ]
+        },
+        {
+          id: "u4-l7",
+          name: "Im Supermarkt",
+          icon: "🛒",
+          desc: "Siêu thị · mua đồ ăn · cân, lạng",
+          content: `<h2>🛒 Im Supermarkt</h2>
+<div class="hint">Siêu thị · mua đồ ăn · cân, lạng</div>
+<h3 class="sub">1. Ở siêu thị</h3>
+<ul>
+  <li><span class="term" data-de="der Supermarkt" data-vi="siêu thị">Supermarkt</span> · <span class="term" data-de="der Markt" data-vi="chợ">Markt</span> · <span class="term" data-de="einkaufen" data-vi="đi mua sắm">Einkaufen</span></li>
+  <li><span class="term" data-de="der Einkaufswagen" data-vi="xe đẩy mua hàng">Einkaufswagen</span> · <span class="term" data-de="der Einkaufskorb" data-vi="giỏ mua hàng">Einkaufskorb</span> · <span class="term" data-de="die Tüte" data-vi="túi, bao">Tüte</span></li>
+</ul>
+<h3 class="sub">2. Cân và khối lượng</h3>
+<ul>
+  <li><span class="term" data-de="das Kilo" data-vi="ki-lô-gam">Kilo</span> · <span class="term" data-de="das Gramm" data-vi="gam">Gramm</span> · <span class="term" data-de="das Pfund" data-vi="nửa cân">Pfund</span></li>
+  <li>Ich nehme <span class="term" data-de="ein halbes Kilo" data-vi="nửa ki-lô">ein halbes Kilo</span> Käse.</li>
+</ul>
+<h3 class="sub">3. Thanh toán</h3>
+<ul>
+  <li>An der <span class="term" data-de="die Kasse" data-vi="quầy thanh toán">Kasse</span>: Das ist alles. — Das <span class="term" data-de="das macht" data-vi="tổng cộng là">macht</span> zwölf Euro.</li>
+  <li><span class="term" data-de="der Kassenzettel" data-vi="hóa đơn thanh toán">Kassenzettel</span> · <span class="term" data-de="die Ware" data-vi="hàng hóa">Ware</span> · <span class="term" data-de="das Produkt" data-vi="sản phẩm">Produkt</span></li>
+</ul>
+<div class="note">💡 Schnellmerk: <b>ein halbes Kilo</b> = nửa ki-lô · <b>ein Pfund</b> = nửa ki-lô · <b>das macht … Euro</b> = tổng cộng … euro.</div>`,
+          listen: [
+            { id: "u4-l7-l1", text: "Ich gehe in den Supermarkt und kaufe Obst und Gemüse.", tip: "Nghe hoạt động mua sắm", slow: true },
+            { id: "u4-l7-l2", text: "Das macht zwölf Euro. — Hier, bitte." }
+          ],
+          speak: [
+            { id: "u4-l7-s1", prompt: "Hỏi: 'Cái đó giá bao nhiêu?'", model: "Was kostet das?", hint: "Was · kos·tet · das" }
           ]
         }
       ]
