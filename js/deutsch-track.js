@@ -6,6 +6,37 @@
   function norm(s) {
     return String(s == null ? '' : s).toLowerCase().replace(/\s+/g, ' ').trim();
   }
+  /* Speech-matching: umlaut folding + fuzzy (KHÔNG dùng cho quiz fill — giữ norm() gốc) */
+  function fold(s) {
+    return norm(s).replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/ü/g, 'u').replace(/ß/g, 'ss');
+  }
+  function stripFillers(s) {
+    return s.replace(/(^|[^a-zäöüß0-9])(ähm|ehm|mhm|hmm|äh|hm)(?=$|[^a-zäöüß0-9])/gi, '$1')
+            .replace(/\s+/g, ' ').trim();
+  }
+  function lev(a, b) {
+    var m = a.length, n = b.length;
+    if (!m) return n; if (!n) return m;
+    var prev = [], cur = [];
+    for (var j = 0; j <= n; j++) prev[j] = j;
+    for (var i = 1; i <= m; i++) {
+      cur[0] = i;
+      for (var j = 1; j <= n; j++) {
+        var cost = a[i - 1] === b[j - 1] ? 0 : 1;
+        cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + cost);
+      }
+      var tmp = prev; prev = cur; cur = tmp;
+    }
+    return prev[n];
+  }
+  function matchSpeech(model, transcript) {
+    var t = fold(stripFillers(transcript || ''));
+    var m = fold(model || '');
+    var score = m.length ? 1 - lev(m, t) / Math.max(m.length, t.length) : 0;
+    var exact = t === m;
+    var near = !exact && score >= 0.8;
+    return { ok: exact || near, exact: exact, near: near, score: score, transcript: transcript || '' };
+  }
   function deVoice() {
     try {
       var vs = speechSynthesis.getVoices();
@@ -27,20 +58,27 @@
   }
   function record(model, cb) {
     var SR = w.SpeechRecognition || w.webkitSpeechRecognition;
-    if (!SR) { cb(false, null, 'SpeechRecognition không khả dụng'); return; }
+    if (!SR) { cb(false, null, 'SpeechRecognition không khả dụng', null); return; }
     try {
       var r = new SR();
       r.lang = 'de-DE';
       r.interimResults = false;
-      r.maxAlternatives = 1;
+      r.maxAlternatives = 5;
       r.onresult = function (e) {
-        var t = (e.results[0] && e.results[0][0] && e.results[0][0].transcript) || '';
-        cb(norm(t) === norm(model), t, null);
+        var best = null;
+        for (var i = 0; i < e.results[0].length; i++) {
+          var alt = e.results[0][i];
+          var m = matchSpeech(model, alt.transcript || '');
+          if (m.ok && !best) best = m;
+          if (best && m.exact) { best = m; break; }
+        }
+        if (!best) best = matchSpeech(model, (e.results[0][0] && e.results[0][0].transcript) || '');
+        cb(best.ok, best.transcript, null, best);
       };
-      r.onerror = function () { cb(false, null, 'Không nghe được — kiểm tra micro.'); };
+      r.onerror = function () { cb(false, null, 'Không nghe được — kiểm tra micro.', null); };
       r.onend = function () {};
       r.start();
-    } catch (_) { cb(false, null, 'Không khởi động được SpeechRecognition.'); }
+    } catch (_) { cb(false, null, 'Không khởi động được SpeechRecognition.', null); }
   }
 
   function buildFach(levelData, id) {
@@ -147,11 +185,15 @@
         var sp = item.speak[parseInt(btn.getAttribute('data-dt-speak'), 10)];
         var out = document.getElementById('dtSpeak' + btn.getAttribute('data-dt-speak').replace('dtSpeak', ''));
         if (out) out.innerHTML = '<div class="muted">🎤 Đang nghe…</div>';
-        record(sp.model, function (ok, t, err) {
+        record(sp.model, function (ok, t, err, meta) {
           if (!out) return;
-          if (err) out.innerHTML = '<div class="bad">⚠️ ' + esc(err) + '</div>';
-          else out.innerHTML = '<div class="' + (ok ? 'good' : 'bad') + '">'
-            + (ok ? '✅ Nghe được: ' : '😅 Nghe lại nhé. Máy nghe thấy: ') + esc(t || '—') + '</div>';
+          if (err) { out.innerHTML = '<div class="bad">⚠️ ' + esc(err) + '</div>'; return; }
+          var m = meta || matchSpeech(sp.model, t || '');
+          var html;
+          if (m.exact) html = '<div class="good">✅ Đúng chuẩn: ' + esc(t || '—') + '</div>';
+          else if (m.near) html = '<div class="good">✅ Đúng (gần đúng ' + Math.round(m.score * 100) + '%): ' + esc(t || '—') + '<br><span class="muted">Chuẩn: ' + esc(sp.model) + '</span></div>';
+          else html = '<div class="bad">😅 Nghe lại nhé. Máy nghe thấy: ' + esc(t || '—') + '<br><span class="muted">Mẫu: ' + esc(sp.model) + '</span></div>';
+          out.innerHTML = html;
         });
       });
     });
@@ -206,7 +248,7 @@
   }
 
   w.DeutschTrack = {
-    normalize: norm, speak: speak, record: record,
+    normalize: norm, speak: speak, record: record, match: matchSpeech,
     buildFach: buildFach, levels: levels, levelFachId: levelFachId, ensureFächer: ensureFächer,
     renderExtras: renderExtras, renderExercise: renderExercise,
     isPassedCached: isPassedCached, markPassed: markPassed
