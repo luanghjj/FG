@@ -437,6 +437,20 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 .acct-msg{font-size:.84em;min-height:1.2em}
 .acct-msg.ok{color:var(--ok)}
 .acct-msg.bad{color:var(--bad)}
+.dt-extras{display:grid;gap:14px;margin-top:18px}
+.dt-block{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--bg)}
+.dt-block h3.sub{margin-top:0}
+.dt-examples{margin:8px 0 0;padding-left:1.2em;display:grid;gap:4px}
+.dt-listen-row,.dt-speak-row{display:grid;gap:6px;padding:8px 0;border-top:1px dashed var(--line)}
+.dt-listen-row .btn,.dt-speak-row .btn{justify-self:start}
+.dt-ex{margin-top:10px;display:grid;gap:8px}
+.dt-ex-q{font-size:.95em}
+.dt-ex-in{border:1px solid var(--line);border-radius:10px;padding:9px 12px;font:inherit;background:#fff;max-width:260px}
+.dt-ex-in:focus{outline:none;border-color:#7FBBFF;box-shadow:0 0 0 3px rgba(0,122,255,.12)}
+.dt-feedback{font-size:.9em;min-height:1.3em}
+.dt-feedback.good,.good{color:var(--ok)}
+.dt-feedback.bad,.bad{color:var(--bad)}
+.dt-speak-result{font-size:.9em;min-height:1.2em}
 @media (min-width:640px){
   .sheet{align-items:center}
   .sheet-card{border-radius:20px;max-height:82vh}
@@ -4257,7 +4271,7 @@ function router(){
     // #/deutsch/<level>[/quiz|/unit/lektion] → reuse fach machinery
     if (parts[1] === 'quiz') { location.hash = '#/fach/' + fachId + '/quiz'; return; }
     if (parts.length === 2) { location.hash = '#/fach/' + fachId; return; }          // unit list = fach hub
-    if (parts.length === 3 && parts[2]) { location.hash = '#/fach/' + fachId + '/theme/' + parts[2]; return; } // lektion
+    if (parts.length === 3 && parts[2]) { location.hash = '#/fach/' + fachId + '/theme/' + parts[1] + '-' + parts[2]; return; } // lektion: u1-l2
     location.hash = '#/fach/' + fachId; return;
   }
 
