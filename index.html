@@ -3145,6 +3145,10 @@ function fachQuizResult(){
   area.innerHTML=html;
   const last=[...new Set(fQuiz.pool.map(q=>q.theme))];
   const fachId=fQuiz.fachId;
+  if (typeof fachId !== 'undefined' && fachId && String(fachId).startsWith('deutsch-') && pct >= 80 && window.DeutschTrack) {
+    window.DeutschTrack.markPassed(fachId);
+    setTimeout(function () { try { toast('🎉 ' + (window.FachForm && window.FachForm.findFach(fachId) ? window.FachForm.findFach(fachId).name : fachId) + ': đạt ≥80% — đã mở khóa!', 'ok'); } catch (_) {} }, 400);
+  }
   document.getElementById('fqAgain').onclick=()=>fachQuizStart(fachId,last,'all');
   document.getElementById('fqPick').onclick=()=>fachQuizIntro(fachId,last);
   document.getElementById('fqBack').onclick=()=>go(fachRoute(window.FachForm.findFach(fachId),'hub'));

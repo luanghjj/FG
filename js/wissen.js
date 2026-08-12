@@ -165,6 +165,22 @@
         });
       }
 
+      /* 4b) Deutsch-Track (A1 + Beruf) */
+      if (w.DEUTSCH_A1) addDeutschLevel(w.DEUTSCH_A1);
+      if (w.DEUTSCH_BERUF) addDeutschLevel(w.DEUTSCH_BERUF);
+      function addDeutschLevel(levelData) {
+        (levelData.units || []).forEach(function (un) {
+          (un.lektionen || []).forEach(function (l) {
+            var title = 'Deutsch ' + (levelData.badge || '') + ' · ' + (l.name || l.id);
+            var text = (l.content || '').replace(/<[^>]*>/g, ' ');
+            if (text) addChunk(title, title, text);
+            (l.grammar || []).forEach(function (g) {
+              if (g.title && g.rule) addChunk(title + ' · Grammatik', title, g.title + ': ' + g.rule.replace(/<[^>]*>/g, ' '));
+            });
+          });
+        });
+      }
+
       /* 5) Từ vựng DE→VI */
       if (w.B1_VOCAB) {
         for (var k in w.B1_VOCAB) {
