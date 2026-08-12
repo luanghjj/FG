@@ -160,9 +160,9 @@ window.DEUTSCH_A1_QUIZ = [
   { theme: "u2-l7", cat: "Mein Tag", q: "Trong „Ich stehe um sechs Uhr ___.“ từ tách cuối câu là?",
     opts: ["auf", "an", "aus", "ab"], a: 0,
     ex: "aufstehen → tiền tố auf rời xuống cuối câu." },
-  { type: "fill", theme: "u2-l7", cat: "Mein Tag", q: "Ich ___ um sechs Uhr auf. (aufstehen)",
-    answers: ["stehe", "Stehe"], answer: "stehe",
-    ex: "aufstehen → ich stehe … auf." },
+  { type: "fill", theme: "u2-l7", cat: "Mein Tag", q: "Am Abend ___ ich fern. (fernsehen)",
+    answers: ["sehe", "Sehe"], answer: "sehe",
+    ex: "fernsehen → ich sehe … fern." },
 
   /* ============ GRAMMAR — Block 11: Possessivartikel mein/dein (u3-l2) ============ */
   { theme: "u3-l2", cat: "Mein und dein", q: "„Mẹ của tôi“ nói đúng là?",

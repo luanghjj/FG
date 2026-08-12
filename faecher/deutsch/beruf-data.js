@@ -157,14 +157,14 @@ window.DEUTSCH_BERUF = {
 <h3 class="sub">3. Chúc và tạm biệt</h3>
 <ul>
   <li><span class="term" data-de="Guten Appetit" data-vi="chúc ngon miệng">Guten Appetit</span>! · <span class="term" data-de="einen schönen Abend noch" data-vi="chúc buổi tối vui vẻ">Einen schönen Abend noch</span>!</li>
-  <li><span class="term" data-de="Auf Wiedersehen" data-vi="tạm biệt (chính thức)">Auf Wiedersehen</span>! · <span class="term" data-de="Bis bald" data-vi="hẹn sớm gặp lại">Bis bald</span>! · <span class="term" data-de="auch so" data-vi="anh/chị cũng vậy">Auch so</span>!</li>
+  <li><span class="term" data-de="Auf Wiedersehen" data-vi="tạm biệt (chính thức)">Auf Wiedersehen</span>! · <span class="term" data-de="Bis bald" data-vi="hẹn sớm gặp lại">Bis bald</span>! · <span class="term" data-de="Gleichfalls" data-vi="anh/chị cũng vậy (đáp lời chúc)">Gleichfalls</span>!</li>
 </ul>
 <div class="note">💡 Schnellmerk: Khi khách về: <b>Vielen Dank!</b> — <b>Gern geschehen!</b> — <b>Auf Wiedersehen!</b> Đừng quên đưa <b>die Quittung</b> sau khi khách thanh toán.</div>`,
           grammar: [
             {
               id: "a1b-verabschiedung-danke",
               title: "Dank & Wünsche",
-              rule: "<p>Cảm ơn: <b>Danke</b> · <b>Danke schön</b> · <b>Vielen Dank</b> — đáp lại: <b>Gern geschehen!</b></p><p>Chúc: <b>Einen schönen Abend noch!</b> (Akkusativ) · <b>Guten Appetit!</b> — đáp: <b>Auch so!</b></p>",
+              rule: "<p>Cảm ơn: <b>Danke</b> · <b>Danke schön</b> · <b>Vielen Dank</b> — đáp lại: <b>Gern geschehen!</b></p><p>Chúc: <b>Einen schönen Abend noch!</b> (Akkusativ) · <b>Guten Appetit!</b> — đáp: <b>Gleichfalls!</b> (Ebenfalls!)</p>",
               examples: ["Vielen Dank für das Essen!", "Gern geschehen!", "Einen schönen Abend noch!", "Auf Wiedersehen!"],
               exercise: { type: "fill", theme: "b1-l4", cat: "Verabschiedung", q: "___ schönen Abend noch! (chúc buổi tối vui vẻ)", answers: ["einen"], answer: "Einen", ex: "Chúc → Einen schönen Abend noch!" }
             }
