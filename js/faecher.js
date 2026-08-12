@@ -2471,6 +2471,12 @@
         pages: null,
       };
     },
+    registerFach(fach) {
+      if (!fach || !fach.id) return null;
+      if (FAECHER.some((f) => f.id === fach.id)) return null;
+      FAECHER.push(fach);
+      return fach;
+    },
   };
 
   // Auto-build when DOM scripts finished loading bfk1 data

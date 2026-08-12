@@ -2731,26 +2731,29 @@ function renderFachHub(fachId){
   }
   if(actions){
     // Einheitliche 3er-Leiste: Quiz üben · Training · Prüfungen
+    const isDeutschTrack = fach && fach.track === 'deutsch';
     let a='';
     if((fach.quiz&&fach.quiz.length) || (fach.id==='bfk1') || (fach.id==='bfk2')){
       const qRoute = fach.id==='bfk1' ? '#/bfk/1/quiz' : fach.id==='bfk2' ? '#/bfk/2/quiz' : fachRoute(fach,'quiz');
       a+='<button type="button" class="btn" onclick="go(\''+qRoute+'\')">📝 Quiz üben →</button>';
     }
-    const okTr=!window.Access||Access.can('training');
-    a+='<button type="button" class="btn ghost"'+(okTr
-      ? ' onclick="go(\'#/fach/'+fach.id+'/training\')"'
-      : ' onclick="openPaywall(\'training\')"')+'>🎯 Training →'+(okTr?'':' '+lockPill('Pro'))+'</button>';
-    if(fach.zusammenfassung){
-      const okZu=!window.Access||Access.can('zusammenfassung');
-      a+=okZu
-        ? '<a class="btn ghost" href="'+fach.zusammenfassung+'">📚 Zusammenfassung →</a>'
-        : '<button type="button" class="btn ghost" onclick="openPaywall(\'zusammenfassung\')">📚 Zusammenfassung '+lockPill('Pro')+'</button>';
-    }
-    if((fach.pruefungen||[]).length){
-      const okPr=!window.Access||Access.can('pruefungen');
-      a+='<button type="button" class="btn ghost"'+(okPr
-        ? ' onclick="go(\'#/fach/'+fach.id+'/pruefungen\')"'
-        : ' onclick="openPaywall(\'pruefungen\')"')+'>🗂️ Prüfungen →'+(okPr?'':' '+lockPill('Pro'))+'</button>';
+    if(!isDeutschTrack){
+      const okTr=!window.Access||Access.can('training');
+      a+='<button type="button" class="btn ghost"'+(okTr
+        ? ' onclick="go(\'#/fach/'+fach.id+'/training\')"'
+        : ' onclick="openPaywall(\'training\')"')+'>🎯 Training →'+(okTr?'':' '+lockPill('Pro'))+'</button>';
+      if(fach.zusammenfassung){
+        const okZu=!window.Access||Access.can('zusammenfassung');
+        a+=okZu
+          ? '<a class="btn ghost" href="'+fach.zusammenfassung+'">📚 Zusammenfassung →</a>'
+          : '<button type="button" class="btn ghost" onclick="openPaywall(\'zusammenfassung\')">📚 Zusammenfassung '+lockPill('Pro')+'</button>';
+      }
+      if((fach.pruefungen||[]).length){
+        const okPr=!window.Access||Access.can('pruefungen');
+        a+='<button type="button" class="btn ghost"'+(okPr
+          ? ' onclick="go(\'#/fach/'+fach.id+'/pruefungen\')"'
+          : ' onclick="openPaywall(\'pruefungen\')"')+'>🗂️ Prüfungen →'+(okPr?'':' '+lockPill('Pro'))+'</button>';
+      }
     }
     if(fach.external){
       a+='<a class="btn ghost" href="'+fach.external+'">App öffnen →</a>';
@@ -4294,7 +4297,7 @@ idxBfk1Deep();
 // Standard-Form: alle Fächer / Themen / Begriffe / Quiz
 try{
   ensureFachRegistry();
-  (window.FachForm.FAECHER||[]).forEach(fach=>{
+  (window.FachForm.FAECHER||[]).filter(f=>!f.hidden).forEach(fach=>{
     idx(fach.code+" · "+fach.name, fach.desc||"", fach.code, fachRoute(fach,'hub'), null,
       fach.code+" "+fach.name+" "+(fach.teacher||"")+" "+(fach.desc||"")+" fach");
     window.FachForm.allThemes(fach).forEach(t=>{
