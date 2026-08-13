@@ -7,7 +7,7 @@
  *   id: "bfk1",                 // URL: #/fach/bfk1
  *   code: "BfK-1",
  *   name: "Grundlagen Gastronomie",
- *   icon: "🍳",
+ *   icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="15" r="5.5"/><path d="M15 15h6"/><path d="M8 15l2.5-3"/></svg>',
  *   accent: "#2563eb",
  *   soft: "#eff6ff",
  *   teacher: "Fr. Schuster",
@@ -23,7 +23,7 @@
  *       items: [
  *         {
  *           id: "gluten",                 // URL: #/fach/bfk1/theme/gluten
- *           icon: "🌾",
+ *           icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>',
  *           name: "Getreide",
  *           desc: "Kurzzeile in der Liste",
  *           content: `<h2>...</h2>...`,  // HTML, Begriffe mit:
@@ -93,7 +93,7 @@
     const meta = {};
     allThemes(fach).forEach((t) => {
       meta[t.id] = {
-        icon: t.icon || "📘",
+        icon: t.icon || '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
         name: t.name,
         lf: t.groupBadge || t.groupTitle || "",
       };
@@ -110,7 +110,7 @@
       id: "bfk1",
       code: "BfK-1",
       name: "Grundlagen Gastronomie",
-      icon: "🍳",
+      icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="15" r="5.5"/><path d="M15 15h6"/><path d="M8 15l2.5-3"/></svg>',
       accent: "#2563eb",
       soft: "#eff6ff",
       teacher: "Fr. Schuster (SLA)",
@@ -137,7 +137,7 @@
         id: "bfk2",
         code: "BfK-2",
         name: "Service & Vận hành Nhà hàng (BfK2-ED)",
-        icon: "🍽️",
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>',
         accent: "#dc2626",
         soft: "#fef2f2",
         teacher: "Fr. Herrmann / BfK2-ED",
@@ -155,10 +155,10 @@
             items: [
               {
                 id: "bfk2-berufsbilder",
-                icon: "🛈",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12.01" y2="8"/><line x1="12" y1="11" x2="12" y2="16"/></svg>',
                 name: "LS01 · Berufsbilder im Gastgewerbe",
                 desc: "7 Chân dung nghề 2022 · Fachkraft für Gastronomie · Key facts",
-                content: `<h2>🛈 Berufsbilder im Gastgewerbe (Trang 04 - 11)</h2>
+                content: `<h2> Berufsbilder im Gastgewerbe (Trang 04 - 11)</h2>
 <div class="hint">LS01 · 7 Chân dung nghề nghiệp Gastronomie (2022) · Fachkraft für Gastronomie · Key facts</div>
 <h3 class="sub">1. Tình huống học tập (Lernsituation)</h3>
 <p>Bạn là học viên (Azubi) tại <strong>Hotel &amp; Restaurant Schwarzwaldblick</strong> (Bad Wildbad). Nhân dịp <em>Tag der offenen Tür</em>, bạn có nhiệm vụ thiết kế Poster/Profile giới thiệu 7 khối nghề đào tạo Gastronomie cho học sinh sắp tốt nghiệp.</p>
@@ -180,7 +180,7 @@
   <tr><td><span class="term" data-de="Ausbildungsdauer" data-vi="thời gian đào tạo">Ausbildungsdauer</span></td><td><strong>2 năm</strong> (có thể học thêm 1 năm chuyển tiếp lên bằng 3 năm).</td></tr>
   <tr><td><span class="term" data-de="Anforderungsprofil" data-vi="hồ sơ yêu cầu năng lực">Anforderungsprofil</span></td><td>Thân thiện, thích làm việc nhóm, giao tiếp &amp; bán hàng tốt, có kỹ năng tổ chức.</td></tr>
 </table>
-<div class="note">💡 <b>Das Gastronomie-Einmaleins:</b> Kiến thức nền tảng bắt buộc gồm phục vụ, tư vấn và thanh toán hóa đơn.</div>
+<div class="note"><b>Das Gastronomie-Einmaleins:</b> Kiến thức nền tảng bắt buộc gồm phục vụ, tư vấn và thanh toán hóa đơn.</div>
 <h3 class="sub">4. Bảng từ vựng LS01 (Phần 1)</h3>
 <table>
   <tr><th>Thuật ngữ Đức</th><th>Ý nghĩa Việt</th></tr>
@@ -194,10 +194,10 @@
               },
               {
                 id: "bfk2-gastgeber-team",
-                icon: "🤝",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
                 name: "LS01 · Rolle als Gastgeber & im Team",
                 desc: "Mindmap Anforderungen · Phản hồi đồng nghiệp · 5 Tình huống phục vụ",
-                content: `<h2>🤝 Yêu cầu Vai trò Gastgeber & im Team (Trang 12 - 16)</h2>
+                content: `<h2> Yêu cầu Vai trò Gastgeber & im Team (Trang 12 - 16)</h2>
 <div class="hint">LS01 · Vai trò Gastgeber & Đồng đội · Mindmap · 5 Tình huống phục vụ thực tế</div>
 <h3 class="sub">1. Sơ đồ tư duy (Mindmap Anforderungen)</h3>
 <table>
@@ -222,14 +222,14 @@
   <tr><td><strong>4. Đồng nghiệp bối rối trước khách giận</strong></td><td>Chủ động tới hỗ trợ, điềm tĩnh tiếp quản cuộc trò chuyện và xoa dịu khách.</td></tr>
   <tr><td><strong>5. 2 Azubi tranh công việc dễ</strong></td><td>Trao đổi ngắn gọn, chia đôi công việc công bằng và cam kết luôn luôn luân chuyển ca sau.</td></tr>
 </table>
-<div class="note">💡 <b>Merksatz:</b> Phân công trách nhiệm rõ ràng tạo nên vận hành trơn tru (reibungslose Zusammenarbeit).</div>`
+<div class="note"><b>Merksatz:</b> Phân công trách nhiệm rõ ràng tạo nên vận hành trơn tru (reibungslose Zusammenarbeit).</div>`
               },
               {
                 id: "bfk2-kommunikation",
-                icon: "💬",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
                 name: "LS04 · Angemessen kommunizieren",
                 desc: "3 Dạng giao tiếp · Phương pháp Cornell · Xử lý nhiễu giao tiếp",
-                content: `<h2>💬 Angemessen kommunizieren (Trang 17 - 20)</h2>
+                content: `<h2> Angemessen kommunizieren (Trang 17 - 20)</h2>
 <div class="hint">LS04 · 3 Dạng giao tiếp · Phương pháp ghi chú Cornell · Xử lý nhiễu giao tiếp</div>
 <h3 class="sub">1. 3 Dạng Giao tiếp trong Service</h3>
 <table>
@@ -254,10 +254,10 @@
             items: [
               {
                 id: "bfk2-snacks",
-                icon: "🥪",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h18"/><path d="M3 12a9 9 0 0 0 18 0"/></svg>',
                 name: "LS05 · Snacks und einfache Speisen",
                 desc: "3 Nhóm Snack · 5 Tiêu chuẩn chất lượng · Kühlkette & Allergen",
-                content: `<h2>🥪 Snacks und einfache Speisen zubereiten und servieren (Trang 21 - 24)</h2>
+                content: `<h2> Snacks und einfache Speisen zubereiten und servieren (Trang 21 - 24)</h2>
 <div class="hint">LS05 · 3 Nhóm Món ăn nhẹ · 5 Tiêu chuẩn chất lượng · Kühlkette & Allergen</div>
 <h3 class="sub">1. 3 Nhóm Món ăn nhẹ (Snack-Kategorien)</h3>
 <table>
@@ -279,10 +279,10 @@
               },
               {
                 id: "bfk2-kaltgetraenke",
-                icon: "🥤",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11h13v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M17 11h2a3 3 0 0 1 0 6h-2"/></svg>',
                 name: "LS06 · Alkoholfreie Kaltgetränke",
                 desc: "Mineralwasser, Quellwasser, Tafelwasser · Fruchtsaft & Schorle",
-                content: `<h2>🥤 Alkoholfreie Kaltgetränke bereitstellen (Trang 25 - 27)</h2>
+                content: `<h2> Alkoholfreie Kaltgetränke bereitstellen (Trang 25 - 27)</h2>
 <div class="hint">LS06 · Phân loại Nước khoáng & Nước hoa quả · Quy tắc phục vụ</div>
 <h3 class="sub">1. Phân loại Nước khoáng & Nước uống</h3>
 <table>
@@ -298,14 +298,14 @@
   <tr><td>Fruchtnektar</td><td><strong>25% – 50%</strong></td><td>Dành cho quả nhiều axit/xốp, pha thêm nước &amp; đường (tối đa 20%).</td></tr>
   <tr><td><span class="term" data-de="die Fruchtsaftschorle" data-vi="nước ép trái cây pha sủi soda">Fruchtsaftschorle</span></td><td><strong>ca. 50% Saft + 50% Wasser</strong></td><td>Hỗn hợp nước ép quả + nước khoáng sủi (Apfelschorle).</td></tr>
 </table>
-<div class="note">💡 <b>Servierregel:</b> Nhiệt độ phục vụ chuẩn 8°C – 10°C. Chai nguyên tem phải mở trước mặt khách (vor dem Gast öffnen).</div>`
+<div class="note"><b>Servierregel:</b> Nhiệt độ phục vụ chuẩn 8°C – 10°C. Chai nguyên tem phải mở trước mặt khách (vor dem Gast öffnen).</div>`
               },
               {
                 id: "bfk2-heissgetraenke",
-                icon: "☕",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11h13v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M17 11h2a3 3 0 0 1 0 6h-2"/></svg>',
                 name: "LS07 · Alkoholfreie Heißgetränke",
                 desc: "Arabica vs Robusta · Kakao & Heiße Schokolade · Tee Fermentation & Ziehzeit",
-                content: `<h2>☕ Alkoholfreie Heißgetränke (Trang 28 - 38)</h2>
+                content: `<h2> Alkoholfreie Heißgetränke (Trang 28 - 38)</h2>
 <div class="hint">LS07 · Cà phê Arabica/Robusta · Ca cao & Socola nóng · Trà Fermentation & Ziehzeit</div>
 <h3 class="sub">1. Cà phê: Arabica vs. Robusta</h3>
 <table>
@@ -334,10 +334,10 @@
             items: [
               {
                 id: "bfk2-bierkunde",
-                icon: "🍺",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11h13v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M17 11h2a3 3 0 0 1 0 6h-2"/></svg>',
                 name: "LS08 · Bierkunde und Bierausschank",
                 desc: "Reinheitsgebot 1516 · 4 Rohstoffe · Obergärig vs Untergärig · Zapfanlage",
-                content: `<h2>🍺 Bierkunde und Bierausschank (Trang 39 - 45)</h2>
+                content: `<h2> Bierkunde und Bierausschank (Trang 39 - 45)</h2>
 <div class="hint">LS08 · Reinheitsgebot 1516 · 4 Rohstoffe · Obergärig vs Untergärig · Zapfanlage</div>
 <h3 class="sub">1. Luật tinh khiết Đức (<span class="term" data-de="das Reinheitsgebot" data-vi="luật tinh khiết nấu bia 1516">Reinheitsgebot</span> von 1516)</h3>
 <p>Bia chỉ được phép nấu từ 4 nguyên liệu chính: <strong>Wasser (Nước)</strong>, <strong>Gerstenmalz (Mạch nha đại mạch)</strong>, <strong>Hopfen (Hoa bia)</strong> và <strong>Hefe (Men bia)</strong>.</p>
@@ -354,10 +354,10 @@
               },
               {
                 id: "bfk2-weinkunde",
-                icon: "🍷",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11h13v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M17 11h2a3 3 0 0 1 0 6h-2"/></svg>',
                 name: "LS09 · Weinarten darstellen und empfehlen",
                 desc: "Baden & Württemberg · Fließschema Gärung · Weißwein, Rosé, Rotwein · Weißherbst",
-                content: `<h2>🍷 Weinarten darstellen und empfehlen (Trang 46 - 55)</h2>
+                content: `<h2> Weinarten darstellen und empfehlen (Trang 46 - 55)</h2>
 <div class="hint">LS09 · Baden & Württemberg · Fließschema · Weißwein, Rosé, Rotwein · Weißherbst</div>
 <h3 class="sub">1. Hai Vùng trồng Nho trọng điểm</h3>
 <ul>
@@ -373,7 +373,7 @@
   <tr><td><strong>Roséwein</strong> (Vang hồng)</td><td>Nho đỏ</td><td>Mostgärung hoặc Maischegärung ngắn vài giờ.</td></tr>
   <tr><td><span class="term" data-de="der Rotling" data-vi="vang hồng lai">Rotling</span></td><td>Nho trắng + Nho đỏ ép chung</td><td>Ép chung cả 2 loại nho rồi lên men.</td></tr>
 </table>
-<div class="note">🍇 <b>Weißherbst:</b> Roséwein làm từ 100% MỘT giống nho đỏ duy nhất, đạt chuẩn Qualitätswein/Prädikatswein.</div>`
+<div class="note"><b>Weißherbst:</b> Roséwein làm từ 100% MỘT giống nho đỏ duy nhất, đạt chuẩn Qualitätswein/Prädikatswein.</div>`
               }
             ]
           },
@@ -384,10 +384,10 @@
             items: [
               {
                 id: "bfk2-buffetregeln",
-                icon: "🥗",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>',
                 name: "LS04 · Buffetregeln & Vệ sinh",
                 desc: "Sơ đồ bày bàn rechts nach links · Kühlkette <=7°C & Warmhalten >=65°C · Hustenschutz",
-                content: `<h2>🥗 Buffetregeln & Vệ sinh an toàn thực phẩm (Trang 56 - 59)</h2>
+                content: `<h2> Buffetregeln & Vệ sinh an toàn thực phẩm (Trang 56 - 59)</h2>
 <div class="hint">LS04 · Sơ đồ dựng bàn Buffet · Vệ sinh an toàn HACCP · Quy định Nhiệt độ 7°C / 65°C</div>
 <h3 class="sub">1. Quy tắc dựng bàn Buffet (Aufbau)</h3>
 <ul>
@@ -407,10 +407,10 @@
               },
               {
                 id: "bfk2-kalkulation",
-                icon: "🧮",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 6h8"/><path d="M8 10h.01"/><path d="M12 10h.01"/><path d="M16 10h.01"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg>',
                 name: "LS13 · Bedarfe und Materialkosten berechnen",
                 desc: "Tiệc Brunch 72 khách · Standardrezepturen · Faktor-Formel & Giá vốn",
-                content: `<h2>🧮 Bedarfe und Materialkosten berechnen (Trang 60 - 64)</h2>
+                content: `<h2> Bedarfe und Materialkosten berechnen (Trang 60 - 64)</h2>
 <div class="hint">LS13 · Tính toán lượng nguyên liệu & Chi phí cho Tiệc Buffet / Brunch 72 khách</div>
 <h3 class="sub">1. Tình huống &amp; Công thức tính Hệ số</h3>
 <p>Nhà hàng tổ chức <em>Sonntagsbrunch</em> cho <strong>72 khách</strong>. Tính lượng nguyên liệu dựa theo công thức tiêu chuẩn (<span class="term" data-de="die Standardrezeptur" data-vi="công thức chế biến tiêu chuẩn">Standardrezeptur</span>).</p>
@@ -427,10 +427,10 @@
               },
               {
                 id: "bfk2-kassensysteme",
-                icon: "💻",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>',
                 name: "LS10 · Kassensysteme im Gastgewerbe (POS)",
                 desc: "Stakeholder Anforderungen · Orderfix vs Gastrohero · TSE & Kassenbuch",
-                content: `<h2>💻 Kassensysteme im Gastgewerbe / POS (Trang 65 - 67)</h2>
+                content: `<h2> Kassensysteme im Gastgewerbe / POS (Trang 65 - 67)</h2>
 <div class="hint">LS10 · Hệ thống máy tính tiền POS · Orderfix vs. Gastrohero · TSE & Kassenbuch</div>
 <h3 class="sub">1. Nhu cầu các bên (Stakeholder Requirements)</h3>
 <ul>
@@ -449,10 +449,10 @@
               },
               {
                 id: "bfk2-verkaufsfoerderung",
-                icon: "📣",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>',
                 name: "LS19 · Verkaufsfördernde Maßnahmen im Service",
                 desc: "Sales Promotion · Corporate Design · Eye-Catcher · Tischaufsteller & Digital",
-                content: `<h2>📣 Verkaufsfördernde Maßnahmen im Service (Trang 68 - 69)</h2>
+                content: `<h2> Verkaufsfördernde Maßnahmen im Service (Trang 68 - 69)</h2>
 <div class="hint">LS19 · Biện pháp xúc tiến bán hàng · Corporate Design · Eye-Catcher · Analog & Digital</div>
 <h3 class="sub">1. Khái niệm Xúc tiến Bán hàng (<span class="term" data-de="die Verkaufsförderung" data-vi="xúc tiến bán hàng / sales promotion">Verkaufsförderung</span>)</h3>
 <p>Các hoạt động ngắn hạn nhằm kích cầu doanh số nhà hàng (ví dụ: Tuần lễ món măng tây Spargel, Tuần lễ món chay <span class="term" data-de="die Aktionswoche" data-vi="tuần lễ chương trình khuyến mãi/chủ đề">Aktionswoche</span>, minigame dự thưởng <span class="term" data-de="das Gewinnspiel" data-vi="trò chơi dự thưởng / minigame">Gewinnspiel</span>).</p>
@@ -474,11 +474,11 @@
             items: [
               {
                 id: "fleischteile",
-                icon: "🥩",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="9" r="1.6"/><circle cx="12" cy="7" r="1.6"/><circle cx="17" cy="9" r="1.6"/><path d="M5.5 13.5c0-1.5 3-2.5 6.5-2.5s6.5 1 6.5 2.5c0 2-1.5 4-3 4.5-1.5.5-2.5 1-3.5 1s-2-.5-3.5-1c-1.5-.5-3-2.5-3-4.5z"/></svg>',
                 name: "Fleischteile",
                 desc: "Rind · Schwein · Schaf · Gerichte",
                 route: "#/bfk/2/fleisch",
-                content: `<h2>🥩 Fleischteile</h2>
+                content: `<h2> Fleischteile</h2>
 <div class="hint">Rind · Schwein · Schaf/Lamm · Gerichte · Gewebe. Interaktive Karten im Modul.</div>
 <p><button class="btn" type="button" onclick="go('#/bfk/2/fleisch')">Interaktives Modul öffnen →</button></p>
 <h3 class="sub">1. Wichtige Rind-Teile</h3>
@@ -495,7 +495,7 @@
   <tr><td><span class="term" data-de="Bindegewebe" data-vi="mô liên kết">Bindegewebe</span> (Kollagen)</td><td>Kollagen → <span class="term" data-de="Gelatine" data-vi="gelatin">Gelatine</span>; Elastin bleibt zäh</td><td>Schmoren / Kochen (langsam & feucht)</td></tr>
   <tr><td><span class="term" data-de="Fettgewebe" data-vi="mô mỡ">Fettgewebe</span></td><td>schmilzt → saftig & aromatisch</td><td>Braten / Grillen</td></tr>
 </table>
-<div class="note">💡 Merksatz: <b>Viel Bindegewebe → langsam & feucht</b>. <b>Wenig Bindegewebe → schnell & heiß</b>.</div>
+<div class="note"> Merksatz: <b>Viel Bindegewebe → langsam & feucht</b>. <b>Wenig Bindegewebe → schnell & heiß</b>.</div>
 <h3 class="sub">3. Zusammensetzung Schlachtfleisch</h3>
 <table>
   <tr><th>Stoff</th><th>ca.</th></tr>
@@ -526,11 +526,11 @@
               },
               {
                 id: "kueche",
-                icon: "🍳",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="15" r="5.5"/><path d="M15 15h6"/><path d="M8 15l2.5-3"/></svg>',
                 name: "Küche & Ernährung",
                 desc: "Nährwert · Eiercode · Wertigkeit",
                 route: "#/bfk/2/kueche",
-                content: `<h2>🍳 Küche & Ernährung</h2>
+                content: `<h2> Küche & Ernährung</h2>
 <div class="hint">Nährwert · Eiercode · biologische Wertigkeit</div>
 <p><button class="btn" type="button" onclick="go('#/bfk/2/kueche')">Modul öffnen →</button></p>
 <h3 class="sub">1. Brennwerte</h3>
@@ -563,7 +563,7 @@
   <tr><td>Kuhmilch</td><td>86</td></tr>
   <tr><td>Soja</td><td>84</td></tr>
 </table>
-<div class="note">💡 Ergänzungswert: Kombination hebt BW (z.B. Kartoffel + Ei, Getreide + Milch).</div>`
+<div class="note"> Ergänzungswert: Kombination hebt BW (z.B. Kartoffel + Ei, Getreide + Milch).</div>`
               }
             ]
           }
@@ -574,7 +574,7 @@
         id: "deutsch",
         code: "D",
         name: "Deutsch",
-        icon: "🇩🇪",
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 12h18"/></svg>',
         accent: "#2563eb",
         soft: "#eff6ff",
         teacher: "Herrn Kling",
@@ -590,10 +590,10 @@
             items: [
               {
                 id: "visualisierung",
-                icon: "🧠",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2z"/></svg>',
                 name: "Visualisierung",
                 desc: "Mindmap, Diagramme, Text → Grafik",
-                content: `<h2>🇩🇪 Visualisierung</h2>
+                content: `<h2> Visualisierung</h2>
                   <div class="hint">Text → Grafik · Mindmap · Diagrammtypen · KA-Training</div>
                   <p><a class="btn" href="klassenarbeiten/deutsch.html">Deutsch-App öffnen (Theorie + Üben) →</a></p>
                   <h3 class="sub">1. Was ist Visualisierung?</h3>
@@ -604,7 +604,7 @@
                     <li><span class="term" data-de="Diagramm" data-vi="biểu đồ">Diagramm</span> – Kurve, Balken, Kreis, Fluss…</li>
                     <li><span class="term" data-de="Sachtext" data-vi="văn bản thông tin">Sachtext</span> → Kernaussagen markieren → passende Form wählen</li>
                   </ul>
-                  <div class="note">💡 In der App: Theorie, Matching, Praxis &amp; 50+ Quizfragen zur KA.</div>
+                  <div class="note"> In der App: Theorie, Matching, Praxis &amp; 50+ Quizfragen zur KA.</div>
                   <h3 class="sub">3. Begriffe</h3>
                   <ul>
                     <li><span class="term" data-de="Mindmap" data-vi="sơ đồ tư duy">Mindmap</span></li>
@@ -622,7 +622,7 @@
         id: "englisch",
         code: "E",
         name: "Englisch",
-        icon: "🇬🇧",
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 12h18"/></svg>',
         accent: "#7c3aed",
         soft: "#f5f3ff",
         teacher: "HAL (Hoffmann)",
@@ -637,12 +637,12 @@
             items: [
               {
                 id: "telephoning",
-                icon: "📞",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
                 name: "Telephoning",
                 desc: "Call types · phrases · polite language · role play",
                 pages: { folder: "images/scans/2-Englisch", from: 4, to: 7, prefix: "2-Englisch" },
                 content: `
-                  <h2>📞 Telephoning · Business situations</h2>
+                  <h2> Telephoning · Business situations</h2>
                   <div class="hint">Arbeitsblatt HAL · Problem / Information / Complaint calls</div>
 
                   <h3 class="sub">1. Call types</h3>
@@ -691,17 +691,17 @@
                     <li>End politely: Thank you for calling. Goodbye.</li>
                   </ul>
                   <div class="formula">Answer → Identify → Help / Transfer → Message → Close</div>
-                  <div class="note">💡 On the phone you represent yourself <b>and</b> the company — polite language = professional image.</div>
+                  <div class="note"> On the phone you represent yourself <b>and</b> the company — polite language = professional image.</div>
                 `
               },
               {
                 id: "present-future-tenses",
-                icon: "⏱️",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>',
                 name: "Present & future tenses",
                 desc: "Simple present · progressive · going to",
                 pages: { folder: "images/scans/2-Englisch", from: 11, to: 13, prefix: "2-Englisch" },
                 content: `
-                  <h2>⏱️ Present &amp; future tenses</h2>
+                  <h2>Present &amp; future tenses</h2>
                   <div class="hint">Business communication · RAABE / Berufliche Schulen</div>
 
                   <h3 class="sub">1. Simple present</h3>
@@ -737,7 +737,7 @@
                     <tr><td>Present progressive</td><td>now / temporary / fixed near plan</td><td>now, currently, at the moment</td></tr>
                     <tr><td>going to</td><td>intention / visible future</td><td>going to, next year</td></tr>
                   </table>
-                  <div class="note">💡 Job talk: skills &amp; routines → simple present · current training/project → progressive.</div>
+                  <div class="note"> Job talk: skills &amp; routines → simple present · current training/project → progressive.</div>
                 `
               }
             ]
@@ -749,12 +749,12 @@
             items: [
               {
                 id: "complaints-restaurant",
-                icon: "🍽️",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>',
                 name: "Dealing with complaints",
                 desc: "Phrases · dialogues · role play · AB S.10+14–15",
                 pages: { folder: "images/scans/2-Englisch", from: 10, to: 15, prefix: "2-Englisch" },
                 content: `
-                  <h2>🍽️ Dealing with complaints in the restaurant</h2>
+                  <h2> Dealing with complaints in the restaurant</h2>
 
                   <h3 class="sub">1. Complaint → professional response</h3>
                   <table>
@@ -801,7 +801,7 @@
                     W: I'm terribly sorry. I'll replace the dish immediately and inform the chef.</div>
 
                   <div class="formula">Listen → Apologize → Solve (replace / fix / move) → Thank / follow-up</div>
-                  <div class="note">💡 Never argue. Stay calm, polite, offer a clear solution.</div>
+                  <div class="note"> Never argue. Stay calm, polite, offer a clear solution.</div>
                 `
               }
             ]
@@ -813,12 +813,12 @@
             items: [
               {
                 id: "quantifiers",
-                icon: "🔢",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h16"/><path d="M4 15h16"/><path d="M10 3 8 21"/><path d="M16 3l-2 18"/></svg>',
                 name: "much · many · a little · a few",
                 desc: "Countable vs uncountable",
                 pages: { folder: "images/scans/2-Englisch", from: 9, to: 9, prefix: "2-Englisch" },
                 content: `
-                  <h2>🔢 much · many · a little · a few</h2>
+                  <h2> much · many · a little · a few</h2>
 
                   <table>
                     <tr><th>Word</th><th>With</th><th>Meaning</th><th>Example</th></tr>
@@ -835,7 +835,7 @@
                     <li>I only have <b>a little</b> time before my meeting.</li>
                     <li>There are <b>many</b> people waiting outside.</li>
                   </ul>
-                  <div class="note">💡 <b>few/little</b> alone often sounds negative (almost none). <b>a few / a little</b> = some (enough).</div>
+                  <div class="note"><b>few/little</b> alone often sounds negative (almost none). <b>a few / a little</b> = some (enough).</div>
                   <div class="formula">countable → many / a few · uncountable → much / a little</div>
                 `
               }
@@ -922,7 +922,7 @@
         id: "gk",
         code: "GK",
         name: "Gemeinschaftskunde",
-        icon: "🏛️",
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="1"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M12 6h.01"/><path d="M16 6h.01"/><path d="M8 10h.01"/><path d="M12 10h.01"/><path d="M16 10h.01"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/></svg>',
         accent: "#16a34a",
         soft: "#f0fdf4",
         teacher: "BS (Buß-Schroeder)",
@@ -938,7 +938,7 @@
             items: [
               {
                 id: "gk-ka1-themen",
-                icon: "📌",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
                 name: "Năm 1 · 4 Formen & Grundrechte (KA 1)",
                 desc: "4 Möglichkeiten · Instagram Vor/Nachteile · Grundrechte & Gleichberechtigung",
                 keyPoints: [
@@ -948,7 +948,7 @@
                   "<b>Gleichberechtigung:</b> Rechtlich gleich, aber Lohnlücke, Sorgearbeit & Führungspositionen.",
                 ],
                 content: `
-                  <h2>📌 Năm 1 · KA 1 Grundwissen &amp; Schreibaufgaben</h2>
+                  <h2> Năm 1 · KA 1 Grundwissen &amp; Schreibaufgaben</h2>
                   <div class="hint">Năm 1 · Chú ý của cô Buß-Schroeder · 6 chủ đề KA + Mẫu trả lời FS1</div>
 
                   <h3 class="sub">1. 4 Möglichkeiten der politischen Einflussnahme</h3>
@@ -1010,7 +1010,7 @@
             items: [
               {
                 id: "partizipation",
-                icon: "🗳️",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 13l3 3 7-7"/></svg>',
                 name: "Partizipation & direkte Demokratie",
                 desc: "Formen · digital · Volksinitiative/Begehren/Entscheid",
                 keyPoints: [
@@ -1021,7 +1021,7 @@
                 ],
                 pages: { folder: "images/scans/2-GK", from: 2, to: 5, prefix: "2-GK" },
                 content: `
-                  <h2>🗳️ Partizipation &amp; direkte Demokratie</h2>
+                  <h2> Partizipation &amp; direkte Demokratie</h2>
                   <div class="hint">KA 22.07.26 · Möglichkeiten der Partizipation</div>
 
                   <h3 class="sub">1. Was ist politische Partizipation?</h3>
@@ -1133,16 +1133,16 @@
                     <span class="term" data-de="Zulassung" data-vi="sự cho phép / chấp thuận">Zulassung</span>
                     (z. B. keine <span class="term" data-de="Todesstrafe" data-vi="án tử hình">Todesstrafe</span> per Volksentscheid)</li>
                   </ul>
-                  <div class="note">💡 Wahlen bleiben Kern der
+                  <div class="note"> Wahlen bleiben Kern der
                   <span class="term" data-de="repräsentative Demokratie" data-vi="dân chủ đại diện">repräsentativen Demokratie</span>;
                   direkte Formen ergänzen.</div>
-                  <div class="note">🃏 Mehr Vokabeln: Teilhabe · Willensbildung · Volksinitiative · Volksbegehren · Referendum · Populismus</div>
-                  <div class="note" style="background:#fef2f2;border-left-color:#dc2626;color:#b91c1c">⚠️ <b>Häufiger Fehler:</b> In Deutschland gibt es <b>keinen bundesweiten Volksentscheid</b> über Sachfragen wie in der Schweiz — direkte Abstimmungen nur auf <b>Kommunal-</b> und <b>Landesebene</b>. Reihenfolge merken: <b>Volksinitiative → Volksbegehren → Volksentscheid</b>.<br><span style="font-size:.92em">🇻🇳 Ở Đức <b>không có</b> trưng cầu dân ý toàn liên bang như Thụy Sĩ — chỉ ở cấp địa phương/bang. Nhớ thứ tự: sáng kiến → thỉnh nguyện → trưng cầu.</span></div>
+                  <div class="note"> Mehr Vokabeln: Teilhabe · Willensbildung · Volksinitiative · Volksbegehren · Referendum · Populismus</div>
+                  <div class="note" style="background:#fef2f2;border-left-color:#dc2626;color:#b91c1c"><b>Häufiger Fehler:</b> In Deutschland gibt es <b>keinen bundesweiten Volksentscheid</b> über Sachfragen wie in der Schweiz — direkte Abstimmungen nur auf <b>Kommunal-</b> und <b>Landesebene</b>. Reihenfolge merken: <b>Volksinitiative → Volksbegehren → Volksentscheid</b>.<br><span style="font-size:.92em"> Ở Đức <b>không có</b> trưng cầu dân ý toàn liên bang như Thụy Sĩ — chỉ ở cấp địa phương/bang. Nhớ thứ tự: sáng kiến → thỉnh nguyện → trưng cầu.</span></div>
                 `
               },
               {
                 id: "karikatur-methode",
-                icon: "🖼️",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>',
                 name: "Karikatur interpretieren",
                 desc: "Einleitung · Beschreibung · Deutung · Fazit",
                 keyPoints: [
@@ -1153,7 +1153,7 @@
                 ],
                 pages: { folder: "images/scans/2-GK", from: 6, to: 7, prefix: "2-GK" },
                 content: `
-                  <h2>🖼️ Arbeitsmethode · Karikatur</h2>
+                  <h2> Arbeitsmethode · Karikatur</h2>
                   <div class="hint">Schema für KA: beschreiben + interpretieren</div>
 
                   <h3 class="sub">4 Schritte</h3>
@@ -1183,12 +1183,12 @@
                   <p>Quelle oft: <span class="term" data-de="bpb" data-vi="Cục Giáo dục Chính trị Liên bang (Đức)">bpb</span>
                   · <span class="term" data-de="Karikaturist" data-vi="họa sĩ biếm họa">Karikaturist</span>: Gerhard Mester</p>
                   <div class="formula">Fazit-Satz: Meiner Meinung nach …, weil …. Ich denke, dass …, weil ….</div>
-                  <div class="note">💡 Immer
+                  <div class="note"> Immer
                   <span class="term" data-de="Belege" data-vi="bằng chứng / dẫn chứng">Belege</span> aus dem Bild nennen
                   (<span class="term" data-de="Figuren" data-vi="nhân vật / hình tượng">Figuren</span>, Schrift,
                   <span class="term" data-de="Kontraste" data-vi="sự tương phản">Kontraste</span>) — nicht nur Allgemeinplätze.</div>
 
-                  <h3 class="sub">🗣️ Redemittel · Satzbausteine (für jede Karikatur)</h3>
+                  <h3 class="sub"> Redemittel · Satzbausteine (für jede Karikatur)</h3>
                   <p class="muted" style="font-size:.85em">Fertige Satzanfänge – auf jede Karikatur anwendbar. VN antippen.</p>
 
                   <p><b>1. Einleitung</b></p>
@@ -1230,7 +1230,7 @@
             items: [
               {
                 id: "gewaltenteilung",
-                icon: "⚖️",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16"/><path d="M9 20h6"/><path d="M4 9h16"/><path d="M4 9l-2.5 4"/><path d="M20 9l2.5 4"/><path d="M1.5 13h5"/><path d="M17.5 13h5"/></svg>',
                 name: "Gewaltenteilung & Institutionen",
                 desc: "WRV vs GG · horizontal · Kontrolle",
                 keyPoints: [
@@ -1241,7 +1241,7 @@
                 ],
                 pages: { folder: "images/scans/2-GK", from: 8, to: 10, prefix: "2-GK" },
                 content: `
-                  <h2>⚖️ Gewaltenteilung &amp; Gewaltenverschränkung</h2>
+                  <h2> Gewaltenteilung &amp; Gewaltenverschränkung</h2>
 
                   <h3 class="sub">1. Drei Gewalten</h3>
                   <table>
@@ -1311,17 +1311,17 @@
                     <td><span class="term" data-de="Reichsgericht" data-vi="Tòa án Đế chế">Reichsgericht</span> u. a.</td>
                     <td><span class="term" data-de="Bundesverfassungsgericht" data-vi="Tòa án Hiến pháp Liên bang">Bundesverfassungsgericht</span></td></tr>
                   </table>
-                  <div class="note">💡 Merksatz: Gewaltenteilung sichert Demokratie — Kontrolle statt Machtkonzentration.</div>
+                  <div class="note"> Merksatz: Gewaltenteilung sichert Demokratie — Kontrolle statt Machtkonzentration.</div>
                 `
               },
               {
                 id: "vertrauensfrage-misstrauen",
-                icon: "📉",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>',
                 name: "Vertrauensfrage & Misstrauensvotum",
                 desc: "Art. 67 / 68 GG · Ablauf",
                 pages: { folder: "images/scans/2-GK", from: 12, to: 13, prefix: "2-GK" },
                 content: `
-                  <h2>📉 Vertrauensfrage &amp; konstruktives Misstrauensvotum</h2>
+                  <h2> Vertrauensfrage &amp; konstruktives Misstrauensvotum</h2>
 
                   <h3 class="sub">1. Konstruktives Misstrauensvotum (Art. 67 GG)</h3>
                   <p>Bundestag kann dem <span class="term" data-de="Bundeskanzler" data-vi="Thủ tướng Liên bang">Bundeskanzler</span> das Misstrauen nur aussprechen, indem er
@@ -1361,7 +1361,7 @@
                   </table>
                   <p>Artikel: <span class="term" data-de="Art. 67 GG" data-vi="Điều 67 Luật cơ bản">Art. 67 GG</span> (Misstrauen) ·
                   <span class="term" data-de="Art. 68 GG" data-vi="Điều 68 Luật cơ bản">Art. 68 GG</span> (Vertrauensfrage)</p>
-                  <div class="note">💡 Laut Material: Vertrauensfrage oft „weniger
+                  <div class="note"> Laut Material: Vertrauensfrage oft „weniger
                   <span class="term" data-de="nachteilig" data-vi="bất lợi">nachteilig</span>“ für die
                   <span class="term" data-de="Partei" data-vi="đảng">Partei</span>, weil Fokus auf dem Kanzler liegt — nicht automatisch auf der ganzen Partei.</div>
 
@@ -1370,17 +1370,17 @@
                     <li><b>Art. 67 (Misstrauensvotum):</b> 1982 wurde <span class="term" data-de="Helmut Kohl" data-vi="Helmut Kohl (Thủ tướng CDU)">Helmut Kohl</span> (CDU) durch ein konstruktives Misstrauensvotum zum Kanzler gewählt und löste <span class="term" data-de="Helmut Schmidt" data-vi="Helmut Schmidt (Thủ tướng SPD)">Helmut Schmidt</span> (SPD) ab — bisher das <b>einzige erfolgreiche</b>. <span class="term" data-de="1972" data-vi="năm 1972">1972</span> scheiterte ein Versuch gegen <span class="term" data-de="Willy Brandt" data-vi="Willy Brandt (Thủ tướng SPD)">Willy Brandt</span>.</li>
                     <li><b>Art. 68 (Vertrauensfrage):</b> 2005 stellte <span class="term" data-de="Gerhard Schröder" data-vi="Gerhard Schröder (Thủ tướng SPD)">Gerhard Schröder</span> die Vertrauensfrage und verlor sie <b>absichtlich</b> → <span class="term" data-de="Neuwahlen" data-vi="bầu cử lại / bầu cử sớm">Neuwahlen</span>. 2024 tat <span class="term" data-de="Olaf Scholz" data-vi="Olaf Scholz (Thủ tướng SPD)">Olaf Scholz</span> dasselbe → Neuwahlen 2025.</li>
                   </ul>
-                  <div class="note" style="background:#fef2f2;border-left-color:#dc2626;color:#b91c1c">⚠️ <b>Nicht verwechseln:</b> Die <b>Vertrauensfrage</b> stellt der <b>Kanzler selbst</b> (Art. 68). Das <b>Misstrauensvotum</b> geht vom <b>Parlament/der Opposition</b> aus (Art. 67).<br><span style="font-size:.92em">🇻🇳 Vertrauensfrage do <b>chính Thủ tướng</b> đặt ra; Misstrauensvotum do <b>Quốc hội / phe đối lập</b> khởi xướng.</span></div>
+                  <div class="note" style="background:#fef2f2;border-left-color:#dc2626;color:#b91c1c"><b>Nicht verwechseln:</b> Die <b>Vertrauensfrage</b> stellt der <b>Kanzler selbst</b> (Art. 68). Das <b>Misstrauensvotum</b> geht vom <b>Parlament/der Opposition</b> aus (Art. 67).<br><span style="font-size:.92em"> Vertrauensfrage do <b>chính Thủ tướng</b> đặt ra; Misstrauensvotum do <b>Quốc hội / phe đối lập</b> khởi xướng.</span></div>
                 `
               },
               {
                 id: "medien-vierte-gewalt",
-                icon: "📰",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>',
                 name: "Medien als vierte Gewalt",
                 desc: "Informieren · kontrollieren",
                 pages: { folder: "images/scans/2-GK", from: 11, to: 11, prefix: "2-GK" },
                 content: `
-                  <h2>📰 Medien als „vierte Gewalt“</h2>
+                  <h2> Medien als „vierte Gewalt“</h2>
                   <p>Neben <span class="term" data-de="Legislative" data-vi="lập pháp">Legislative</span>,
                   <span class="term" data-de="Exekutive" data-vi="hành pháp">Exekutive</span>,
                   <span class="term" data-de="Judikative" data-vi="tư pháp">Judikative</span> gelten freie
@@ -1403,14 +1403,14 @@
                     <td>Diskussion, <span class="term" data-de="Kritik" data-vi="phê bình">Kritik</span>,
                     <span class="term" data-de="Vielfalt" data-vi="sự đa dạng">Vielfalt</span> der Positionen</td></tr>
                   </table>
-                  <div class="note">💡 Medien ersetzen keine Staatsgewalt — sie üben öffentliche Kontrolle und Information aus
+                  <div class="note"> Medien ersetzen keine Staatsgewalt — sie üben öffentliche Kontrolle und Information aus
                   (<span class="term" data-de="Pressefreiheit" data-vi="tự do báo chí">Pressefreiheit</span>
                   <span class="term" data-de="Art. 5 GG" data-vi="Điều 5 Luật cơ bản">Art. 5 GG</span>).</div>
                 `
               },
               {
                 id: "demokratie-gg",
-                icon: "📜",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 17V5a2 2 0 0 0-2-2H4"/><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"/></svg>',
                 name: "Demokratie nach dem GG",
                 desc: "Volkssouveränität · repräsentativ · Mehrheit · Menschenbild",
                 keyPoints: [
@@ -1421,7 +1421,7 @@
                 ],
                 pages: { folder: "images/scans/2-GK", from: 14, to: 15, prefix: "2-GK" },
                 content: `
-                  <h2>📜 Demokratie nach dem Grundgesetz</h2>
+                  <h2> Demokratie nach dem Grundgesetz</h2>
 
                   <h3 class="sub">Zentrale Elemente</h3>
                   <table>
@@ -1447,12 +1447,12 @@
                   <span class="term" data-de="Staatsgewalt" data-vi="quyền lực nhà nước">Staatsgewalt</span> ·
                   <span class="term" data-de="Grundgesetz" data-vi="Luật cơ bản / Hiến pháp Đức">Grundgesetz</span></p>
                   <div class="formula">Volk besitzt Macht → wählt Vertreter → Mehrheit entscheidet · Würde schützt jeden Menschen</div>
-                  <div class="note">💡 DE = vor allem repräsentative Demokratie; direkte Elemente ergänzen (v. a. Länder/Kommunen).</div>
+                  <div class="note"> DE = vor allem repräsentative Demokratie; direkte Elemente ergänzen (v. a. Länder/Kommunen).</div>
                 `
               },
               {
                 id: "grundrechte",
-                icon: "🛡️",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
                 name: "Grundrechte",
                 desc: "Menschen- vs Bürgerrechte · Geltung für alle",
                 keyPoints: [
@@ -1463,7 +1463,7 @@
                 ],
                 pages: { folder: "images/scans/2-GK", from: 16, to: 18, prefix: "2-GK" },
                 content: `
-                  <h2>🛡️ Grundrechte</h2>
+                  <h2> Grundrechte</h2>
 
                   <h3 class="sub">1. Menschenrechte vs. Bürgerrechte</h3>
                   <table>
@@ -1502,13 +1502,13 @@
                   <span class="term" data-de="ablehnen" data-vi="từ chối / bác bỏ">ablehnt</span>).
                   Der Staat schützt Würde und Rechte
                   <span class="term" data-de="universell" data-vi="phổ quát">universell</span> im Rahmen des GG.</p>
-                  <div class="note">💡 Art. 1 = Fundament. Grundrechte binden
+                  <div class="note"> Art. 1 = Fundament. Grundrechte binden
                   <span class="term" data-de="Gesetzgebung" data-vi="lập pháp">Gesetzgebung</span>,
                   <span class="term" data-de="vollziehende Gewalt" data-vi="quyền lực hành pháp">vollziehende Gewalt</span> und
                   <span class="term" data-de="Rechtsprechung" data-vi="tư pháp / xét xử">Rechtsprechung</span>
                   (<span class="term" data-de="Art. 1 Abs. 3 GG" data-vi="Điều 1 khoản 3 Luật cơ bản">Art. 1 Abs. 3 GG</span>).</div>
 
-                  <div class="note" style="background:#fef2f2;border-left-color:#dc2626;color:#b91c1c">⚠️ <b>Nicht verwechseln:</b> Am <b>Wortlaut</b> erkennen — <b>Menschenrechte</b> stehen für <b>alle</b> („Jeder…“, „Niemand…“, „Alle Menschen…“), <b>Bürgerrechte</b> nur für Deutsche („Alle Deutschen…“, z. B. Art. 8, 11, 12). Grundrechte gelten <b>auch für Menschen, die die Demokratie ablehnen</b> — sie sind nicht an „richtiges“ Verhalten geknüpft.<br><span style="font-size:.92em">🇻🇳 Nhìn <b>cách diễn đạt</b>: „Jeder/Alle Menschen“ = nhân quyền (cho mọi người); „Alle Deutschen“ = quyền công dân (chỉ người Đức). Quyền cơ bản áp dụng cho <b>cả</b> người phản đối dân chủ.</span></div>
+                  <div class="note" style="background:#fef2f2;border-left-color:#dc2626;color:#b91c1c"><b>Nicht verwechseln:</b> Am <b>Wortlaut</b> erkennen — <b>Menschenrechte</b> stehen für <b>alle</b> („Jeder…“, „Niemand…“, „Alle Menschen…“), <b>Bürgerrechte</b> nur für Deutsche („Alle Deutschen…“, z. B. Art. 8, 11, 12). Grundrechte gelten <b>auch für Menschen, die die Demokratie ablehnen</b> — sie sind nicht an „richtiges“ Verhalten geknüpft.<br><span style="font-size:.92em"> Nhìn <b>cách diễn đạt</b>: „Jeder/Alle Menschen“ = nhân quyền (cho mọi người); „Alle Deutschen“ = quyền công dân (chỉ người Đức). Quyền cơ bản áp dụng cho <b>cả</b> người phản đối dân chủ.</span></div>
                 `
               }
             ]
@@ -1520,14 +1520,14 @@
             items: [
               {
                 id: "redemittel",
-                icon: "🗣️",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>',
                 name: "Redemittel · Satzbausteine",
                 desc: "Für jede Schreibaufgabe: Erläutern · Beurteilen · Vergleichen · Stellung nehmen",
                 content: `
-                  <h2>🗣️ Redemittel für Schreibaufgaben</h2>
+                  <h2> Redemittel für Schreibaufgaben</h2>
                   <div class="hint">Fertige Satzanfänge für die KA – passend zu jedem Thema. Begriffe mit VI antippen.</div>
 
-                  <h3 class="sub">🧭 Operatoren verstehen (was ist gefragt?)</h3>
+                  <h3 class="sub"> Operatoren verstehen (was ist gefragt?)</h3>
                   <table>
                     <tr><th>Operator</th><th>Was tun?</th></tr>
                     <tr><td><span class="term" data-de="Nennen / Aufzählen" data-vi="Nêu / Liệt kê">Nennen / Aufzählen</span></td><td>nur Stichpunkte, keine Erklärung</td></tr>
@@ -1592,7 +1592,7 @@
                     <li><span class="term" data-de="Aus den genannten Gründen …" data-vi="Vì những lý do đã nêu …">Aus den genannten Gründen …</span></li>
                   </ul>
 
-                  <h3 class="sub">🔗 Nützliche Verbindungswörter</h3>
+                  <h3 class="sub"> Nützliche Verbindungswörter</h3>
                   <p><span class="term" data-de="außerdem" data-vi="ngoài ra">außerdem</span> ·
                   <span class="term" data-de="zudem" data-vi="hơn nữa">zudem</span> ·
                   <span class="term" data-de="jedoch" data-vi="tuy nhiên">jedoch</span> ·
@@ -1601,7 +1601,7 @@
                   <span class="term" data-de="zum Beispiel" data-vi="ví dụ">zum Beispiel</span> ·
                   <span class="term" data-de="im Gegensatz dazu" data-vi="trái lại">im Gegensatz dazu</span></p>
 
-                  <div class="note">💡 Tipp: In der KA immer <b>in ganzen Sätzen</b> antworten und die Redemittel passend zum <b>Operator</b> wählen (Erläutern ≠ Beurteilen).</div>
+                  <div class="note"> Tipp: In der KA immer <b>in ganzen Sätzen</b> antworten und die Redemittel passend zum <b>Operator</b> wählen (Erläutern ≠ Beurteilen).</div>
                 `
               }
             ]
@@ -1679,7 +1679,7 @@
   "id": "wiko",
   "code": "WiKO",
   "name": "Wirtschaftskompetenz (Kinh tế & Luật Lao động)",
-  "icon": "📊",
+  "icon": "",
   "accent": "#0ea5e9",
   "soft": "#e0f2fe",
   "teacher": "Fr. Leyh & RM (Remsing) / WiKO-Leyh",
@@ -1694,10 +1694,10 @@
       "items": [
         {
           "id": "wiko-duales-system",
-          "icon": "🏢",
+          "icon": "",
           "name": "LS01 · Das duale System der Berufsausbildung",
           "desc": "Ausbildungsbetrieb (BBiG) vs. Berufsschule (Schulgesetz) · Ưu điểm 2 bên",
-          "content": "<h2>🏢 LS01 · Das duale System der Berufsausbildung (Hệ thống đào tạo kép)</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 01 / LF 01-LS01) · Mô hình kết hợp Trường - Doanh nghiệp</div>\n            <h3>1. 2 Địa điểm đào tạo (Lernorte)</h3>\n            <ul>\n              <li><b>Der Ausbildungsbetrieb (Doanh nghiệp đào tạo):</b> Đào tạo kỹ năng thực hành nghề (<i>praktische Ausbildung</i>). Cơ sở pháp lý: Luật <span class=\"term\" data-de=\"Berufsbildungsgesetz (BBiG)\" data-vi=\"Luật đào tạo nghề\">BBiG</span> & Quy chế <span class=\"term\" data-de=\"Ausbildungsordnung\" data-vi=\"Quy chế đào tạo\">Ausbildungsordnung</span>. Doanh nghiệp chi trả <span class=\"term\" data-de=\"Ausbildungsvergütung\" data-vi=\"Lương trợ cấp học nghề\">Ausbildungsvergütung</span>.</li>\n              <li><b>Die Berufsschule (Trường nghề):</b> Giảng dạy lý thuyết chuyên môn (<i>fachtheoretische Ausbildung</i>) & Kiến thức chung (Wirtschaft, Deutsch, Englisch). Cơ sở pháp lý: Luật giáo dục của Bang (<i>Schulgesetz des Bundeslandes</i>).</li>\n            </ul>\n            <h3>2. Ưu điểm của Hệ thống kép (Vorteile)</h3>\n            <ul>\n              <li><b>Cho Azubi:</b> Nhận lương trợ cấp hàng tháng, va chạm thực tế ngay từ đầu, cơ hội được nhận làm chính thức (<i>Übernahme</i>) cao.</li>\n              <li><b>Cho Doanh nghiệp:</b> Đào tạo nhân sự theo đúng tiêu chuẩn và văn hóa công ty, chủ động nguồn lao động tay nghề cao.</li>\n            </ul>",
+          "content": "<h2> LS01 · Das duale System der Berufsausbildung (Hệ thống đào tạo kép)</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 01 / LF 01-LS01) · Mô hình kết hợp Trường - Doanh nghiệp</div>\n            <h3>1. 2 Địa điểm đào tạo (Lernorte)</h3>\n            <ul>\n              <li><b>Der Ausbildungsbetrieb (Doanh nghiệp đào tạo):</b> Đào tạo kỹ năng thực hành nghề (<i>praktische Ausbildung</i>). Cơ sở pháp lý: Luật <span class=\"term\" data-de=\"Berufsbildungsgesetz (BBiG)\" data-vi=\"Luật đào tạo nghề\">BBiG</span> & Quy chế <span class=\"term\" data-de=\"Ausbildungsordnung\" data-vi=\"Quy chế đào tạo\">Ausbildungsordnung</span>. Doanh nghiệp chi trả <span class=\"term\" data-de=\"Ausbildungsvergütung\" data-vi=\"Lương trợ cấp học nghề\">Ausbildungsvergütung</span>.</li>\n              <li><b>Die Berufsschule (Trường nghề):</b> Giảng dạy lý thuyết chuyên môn (<i>fachtheoretische Ausbildung</i>) & Kiến thức chung (Wirtschaft, Deutsch, Englisch). Cơ sở pháp lý: Luật giáo dục của Bang (<i>Schulgesetz des Bundeslandes</i>).</li>\n            </ul>\n            <h3>2. Ưu điểm của Hệ thống kép (Vorteile)</h3>\n            <ul>\n              <li><b>Cho Azubi:</b> Nhận lương trợ cấp hàng tháng, va chạm thực tế ngay từ đầu, cơ hội được nhận làm chính thức (<i>Übernahme</i>) cao.</li>\n              <li><b>Cho Doanh nghiệp:</b> Đào tạo nhân sự theo đúng tiêu chuẩn và văn hóa công ty, chủ động nguồn lao động tay nghề cao.</li>\n            </ul>",
           "qa": [
             {
               "q": "Mô hình đào tạo kép (Duales System) kết hợp 2 địa điểm nào?",
@@ -1725,10 +1725,10 @@
         },
         {
           "id": "wiko-rechte-pflichten",
-          "icon": "⚖️",
+          "icon": "",
           "name": "LS02 · Rechte und Pflichten des Auszubildenden",
           "desc": "Nghĩa vụ Azubi (Lernpflicht, Berichtsheft) vs. Quyền lợi (Freistellung, Fürsorge)",
-          "content": "<h2>⚖️ LS02 · Rechte und Pflichten des Auszubildenden (Quyền & Nghĩa vụ)</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 02 / LF 01-LS02) · BBiG § 13 & § 14</div>\n            <h3>1. Nghĩa vụ của Học viên (Pflichten des Azubis)</h3>\n            <ul>\n              <li><span class=\"term\" data-de=\"Lernpflicht\" data-vi=\"Nghĩa vụ học tập\">Lernpflicht</span>: Nỗ lực học tập đạt mục tiêu khóa học.</li>\n              <li><span class=\"term\" data-de=\"Berufsschulbesuch\" data-vi=\"Đi học trường nghề\">Berufsschulbesuch</span>: Bắt buộc tham gia đầy đủ tiết học.</li>\n              <li><span class=\"term\" data-de=\"Berichtsheftführung\" data-vi=\"Ghi nhật ký học nghề\">Berichtsheftführung</span>: Viết báo cáo học nghề thường xuyên (điều kiện dự thi).</li>\n              <li><span class=\"term\" data-de=\"Schweigepflicht\" data-vi=\"Nghĩa vụ bảo mật\">Schweigepflicht</span> & <span class=\"term\" data-de=\"Sorgfaltspflicht\" data-vi=\"Nghĩa vụ cẩn trọng\">Sorgfaltspflicht</span>: Bảo mật thông tin kinh doanh & giữ gìn dụng cụ.</li>\n              <li><span class=\"term\" data-de=\"Benachrichtigungspflicht\" data-vi=\"Nghĩa vụ thông báo nghỉ\">Benachrichtigungspflicht</span>: Báo ngay cho công ty khi ốm và nộp giấy AU.</li>\n            </ul>\n            <h3>2. Quyền của Azubi / Nghĩa vụ Doanh nghiệp</h3>\n            <ul>\n              <li><span class=\"term\" data-de=\"Ausbildungspflicht\" data-vi=\"Nghĩa vụ đào tạo\">Ausbildungspflicht</span>: Phân công Ausbilder có bằng cấp đào tạo đúng chuyên môn.</li>\n              <li><span class=\"term\" data-de=\"Freistellung\" data-vi=\"Cho phép nghỉ đi học/thi\">Freistellung</span>: Cho phép nghỉ làm đến trường nghề/đi thi vẫn hưởng nguyên lương.</li>\n              <li><span class=\"term\" data-de=\"Ausbildungsmittel\" data-vi=\"Dụng cụ đào tạo miễn phí\">Ausbildungsmittel</span>: Cung cấp miễn phí dụng cụ, trang thiết bị bảo hộ.</li>\n              <li><span class=\"term\" data-de=\"Fürsorgepflicht\" data-vi=\"Nghĩa vụ chăm sóc an toàn\">Fürsorgepflicht</span>: Đảm bảo an toàn lao động và sức khỏe cho Azubi.</li>\n            </ul>",
+          "content": "<h2> LS02 · Rechte und Pflichten des Auszubildenden (Quyền & Nghĩa vụ)</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 02 / LF 01-LS02) · BBiG § 13 & § 14</div>\n            <h3>1. Nghĩa vụ của Học viên (Pflichten des Azubis)</h3>\n            <ul>\n              <li><span class=\"term\" data-de=\"Lernpflicht\" data-vi=\"Nghĩa vụ học tập\">Lernpflicht</span>: Nỗ lực học tập đạt mục tiêu khóa học.</li>\n              <li><span class=\"term\" data-de=\"Berufsschulbesuch\" data-vi=\"Đi học trường nghề\">Berufsschulbesuch</span>: Bắt buộc tham gia đầy đủ tiết học.</li>\n              <li><span class=\"term\" data-de=\"Berichtsheftführung\" data-vi=\"Ghi nhật ký học nghề\">Berichtsheftführung</span>: Viết báo cáo học nghề thường xuyên (điều kiện dự thi).</li>\n              <li><span class=\"term\" data-de=\"Schweigepflicht\" data-vi=\"Nghĩa vụ bảo mật\">Schweigepflicht</span> & <span class=\"term\" data-de=\"Sorgfaltspflicht\" data-vi=\"Nghĩa vụ cẩn trọng\">Sorgfaltspflicht</span>: Bảo mật thông tin kinh doanh & giữ gìn dụng cụ.</li>\n              <li><span class=\"term\" data-de=\"Benachrichtigungspflicht\" data-vi=\"Nghĩa vụ thông báo nghỉ\">Benachrichtigungspflicht</span>: Báo ngay cho công ty khi ốm và nộp giấy AU.</li>\n            </ul>\n            <h3>2. Quyền của Azubi / Nghĩa vụ Doanh nghiệp</h3>\n            <ul>\n              <li><span class=\"term\" data-de=\"Ausbildungspflicht\" data-vi=\"Nghĩa vụ đào tạo\">Ausbildungspflicht</span>: Phân công Ausbilder có bằng cấp đào tạo đúng chuyên môn.</li>\n              <li><span class=\"term\" data-de=\"Freistellung\" data-vi=\"Cho phép nghỉ đi học/thi\">Freistellung</span>: Cho phép nghỉ làm đến trường nghề/đi thi vẫn hưởng nguyên lương.</li>\n              <li><span class=\"term\" data-de=\"Ausbildungsmittel\" data-vi=\"Dụng cụ đào tạo miễn phí\">Ausbildungsmittel</span>: Cung cấp miễn phí dụng cụ, trang thiết bị bảo hộ.</li>\n              <li><span class=\"term\" data-de=\"Fürsorgepflicht\" data-vi=\"Nghĩa vụ chăm sóc an toàn\">Fürsorgepflicht</span>: Đảm bảo an toàn lao động và sức khỏe cho Azubi.</li>\n            </ul>",
           "qa": [
             {
               "q": "Học viên học nghề có bắt buộc phải viết Berichtsheft (Sổ báo cáo) không?",
@@ -1756,10 +1756,10 @@
         },
         {
           "id": "wiko-ausbildungsvertrag",
-          "icon": "📜",
+          "icon": "",
           "name": "LS03 · Der Berufsausbildungsvertrag (BAV)",
           "desc": "Hình thức Schriftform · 10 nội dung bắt buộc BBiG § 11 · Giám hộ (<18t)",
-          "content": "<h2>📜 LS03 · Der Berufsausbildungsvertrag (Hợp đồng đào tạo nghề)</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 03 / LF 01-LS03) · BBiG § 10 - § 12</div>\n            <h3>1. Hình thức & Ký kết</h3>\n            <ul>\n              <li>Bắt buộc bằng <b>văn bản (Schriftform)</b> và phải ký <b>trước khi bắt đầu đào tạo</b>.</li>\n              <li>Nếu Azubi dưới 18 tuổi: Bắt buộc có chữ ký của <span class=\"term\" data-de=\"gesetzlicher Vertreter\" data-vi=\"người giám hộ hợp pháp\">gesetzlicher Vertreter</span> (cha/mẹ/người giám hộ).</li>\n            </ul>\n            <h3>2. 10 Nội dung tối thiểu bắt buộc (Mindestinhalte BBiG § 11)</h3>\n            <ol>\n              <li>Chuyên ngành & kế hoạch lộ trình đào tạo (Gliederung).</li>\n              <li>Ngày bắt đầu & thời gian khóa học (thường 3 - 3.5 năm).</li>\n              <li>Địa điểm & các đợt đào tạo ngoài doanh nghiệp.</li>\n              <li>Thời gian làm việc hàng ngày/tuần.</li>\n              <li>Thời gian thử việc (<b>Probezeit: tối thiểu 1 tháng, tối đa 4 tháng</b>).</li>\n              <li>Mức lương trợ cấp (Ausbildungsvergütung) & thời hạn trả.</li>\n              <li>Số ngày nghỉ phép năm (Urlaub).</li>\n              <li>Điều kiện hủy hợp đồng (Kündigung).</li>\n              <li>Quy chiếu thỏa ước tập thể (Tarifvertrag / Betriebsvereinbarung).</li>\n              <li>Hình thức ghi nhật ký học nghề (Berichtsheft).</li>\n            </ol>",
+          "content": "<h2> LS03 · Der Berufsausbildungsvertrag (Hợp đồng đào tạo nghề)</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 03 / LF 01-LS03) · BBiG § 10 - § 12</div>\n            <h3>1. Hình thức & Ký kết</h3>\n            <ul>\n              <li>Bắt buộc bằng <b>văn bản (Schriftform)</b> và phải ký <b>trước khi bắt đầu đào tạo</b>.</li>\n              <li>Nếu Azubi dưới 18 tuổi: Bắt buộc có chữ ký của <span class=\"term\" data-de=\"gesetzlicher Vertreter\" data-vi=\"người giám hộ hợp pháp\">gesetzlicher Vertreter</span> (cha/mẹ/người giám hộ).</li>\n            </ul>\n            <h3>2. 10 Nội dung tối thiểu bắt buộc (Mindestinhalte BBiG § 11)</h3>\n            <ol>\n              <li>Chuyên ngành & kế hoạch lộ trình đào tạo (Gliederung).</li>\n              <li>Ngày bắt đầu & thời gian khóa học (thường 3 - 3.5 năm).</li>\n              <li>Địa điểm & các đợt đào tạo ngoài doanh nghiệp.</li>\n              <li>Thời gian làm việc hàng ngày/tuần.</li>\n              <li>Thời gian thử việc (<b>Probezeit: tối thiểu 1 tháng, tối đa 4 tháng</b>).</li>\n              <li>Mức lương trợ cấp (Ausbildungsvergütung) & thời hạn trả.</li>\n              <li>Số ngày nghỉ phép năm (Urlaub).</li>\n              <li>Điều kiện hủy hợp đồng (Kündigung).</li>\n              <li>Quy chiếu thỏa ước tập thể (Tarifvertrag / Betriebsvereinbarung).</li>\n              <li>Hình thức ghi nhật ký học nghề (Berichtsheft).</li>\n            </ol>",
           "qa": [
             {
               "q": "Thời gian thử việc (Probezeit) trong Hợp đồng đào tạo nghề là bao lâu?",
@@ -1783,10 +1783,10 @@
         },
         {
           "id": "wiko-probezeit-ueberwachung",
-          "icon": "🔍",
+          "icon": "",
           "name": "LS04 & LS12 · Probezeit & Giám sát IHK/HWK",
           "desc": "Thử việc (Kündigung ohne Frist) · 6 nhiệm vụ giám sát của IHK/HWK",
-          "content": "<h2>🔍 LS04 & LS12 · Probezeit & Überwachung durch die zuständige Stelle</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 04 & 12 / LF 01-LS04, LS12) · Vai trò IHK/HWK</div>\n            <h3>1. Kündigung in der Probezeit (Trong thử việc)</h3>\n            <ul>\n              <li>Có thể hủy hợp đồng bất kỳ lúc nào.</li>\n              <li><b>Không cần thời hạn báo trước (ohne Frist)</b> và <b>không cần nêu lý do (ohne Angabe von Gründen)</b>.</li>\n              <li>Bắt buộc phải lập bằng <b>văn bản (schriftlich)</b>.</li>\n            </ul>\n            <h3>2. Kündigung nach der Probezeit (Sau thử việc)</h3>\n            <ul>\n              <li><b>Fristlose Kündigung aus wichtigem Grund:</b> Sa thải ngay lập tức vì lý do đặc biệt nghiêm trọng (trộm cắp, bạo lực, cố ý phá hoại). Phải thông báo bằng văn bản trong 2 tuần từ khi phát hiện.</li>\n              <li><b>Ordentliche Kündigung durch Azubi:</b> Azubi muốn bỏ hẳn nghề báo trước <b>4 tuần (Frist von 4 Wochen)</b>.</li>\n            </ul>\n            <h3>3. 6 Nhiệm vụ giám sát của IHK / HWK (Zuständige Stelle - LS12)</h3>\n            <ol>\n              <li>Quản lý danh sách & lưu trữ hợp đồng nghề (Führung des Verzeichnisses).</li>\n              <li>Duyệt đơn rút ngắn / kéo dài thời gian học (Kürzung / Verlängerung).</li>\n              <li>Kiểm tra cơ sở vật chất & bằng cấp của Ausbilder.</li>\n              <li>Giám sát doanh nghiệp đào tạo đúng khung Ausbildungsordnung.</li>\n              <li>Thành lập hội đồng thi & tổ chức kỳ thi (Zwischen- & Abschlussprüfung).</li>\n              <li>Tổ chức các khóa đào tạo nâng cao chuyên môn (Fortbildung).</li>\n            </ol>",
+          "content": "<h2> LS04 & LS12 · Probezeit & Überwachung durch die zuständige Stelle</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 04 & 12 / LF 01-LS04, LS12) · Vai trò IHK/HWK</div>\n            <h3>1. Kündigung in der Probezeit (Trong thử việc)</h3>\n            <ul>\n              <li>Có thể hủy hợp đồng bất kỳ lúc nào.</li>\n              <li><b>Không cần thời hạn báo trước (ohne Frist)</b> và <b>không cần nêu lý do (ohne Angabe von Gründen)</b>.</li>\n              <li>Bắt buộc phải lập bằng <b>văn bản (schriftlich)</b>.</li>\n            </ul>\n            <h3>2. Kündigung nach der Probezeit (Sau thử việc)</h3>\n            <ul>\n              <li><b>Fristlose Kündigung aus wichtigem Grund:</b> Sa thải ngay lập tức vì lý do đặc biệt nghiêm trọng (trộm cắp, bạo lực, cố ý phá hoại). Phải thông báo bằng văn bản trong 2 tuần từ khi phát hiện.</li>\n              <li><b>Ordentliche Kündigung durch Azubi:</b> Azubi muốn bỏ hẳn nghề báo trước <b>4 tuần (Frist von 4 Wochen)</b>.</li>\n            </ul>\n            <h3>3. 6 Nhiệm vụ giám sát của IHK / HWK (Zuständige Stelle - LS12)</h3>\n            <ol>\n              <li>Quản lý danh sách & lưu trữ hợp đồng nghề (Führung des Verzeichnisses).</li>\n              <li>Duyệt đơn rút ngắn / kéo dài thời gian học (Kürzung / Verlängerung).</li>\n              <li>Kiểm tra cơ sở vật chất & bằng cấp của Ausbilder.</li>\n              <li>Giám sát doanh nghiệp đào tạo đúng khung Ausbildungsordnung.</li>\n              <li>Thành lập hội đồng thi & tổ chức kỳ thi (Zwischen- & Abschlussprüfung).</li>\n              <li>Tổ chức các khóa đào tạo nâng cao chuyên môn (Fortbildung).</li>\n            </ol>",
           "qa": [
             {
               "q": "Trong thời gian thử việc, việc sa thải/thôi học diễn ra như thế nào?",
@@ -1810,10 +1810,10 @@
         },
         {
           "id": "wiko-fall-klara",
-          "icon": "📑",
+          "icon": "",
           "name": "LS05 & LS11 · Tình huống vi phạm & Lịch sử BBiG",
           "desc": "Fallbeispiel Klara Korte (Metzgerei Wolf) · So sánh HĐLĐ 1864 vs. BBiG hiện đại",
-          "content": "<h2>📑 LS05 & LS11 · Tình huống Klara Korte & Sự tiến hóa của BBiG</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 05 & 11 / LF 01-LS05, LS11)</div>\n            <h3>1. Tình huống Klara Korte (Metzgerei Wolf)</h3>\n            <p>Học viên Klara Korte bị chủ tiệm thịt giao làm việc dọn dẹp nhà riêng và không cho nghỉ đi học trường nghề ➔ Vi phạm BBiG § 14 (Ausbildungsfremde Tätigkeiten) và nghĩa vụ Freistellung.</p>\n            <h3>2. So sánh Hợp đồng học nghề năm 1864 vs. Luật BBiG hiện đại (LS11)</h3>\n            <ul>\n              <li><b>Năm 1864 (Lịch sử):</b> Học viên phải nộp tiền học cho chủ (Lehrgeld), bị đánh đập, không có ngày nghỉ phép, làm việc không giới hạn giờ.</li>\n              <li><b>Hiện đại (BBiG):</b> Được nhận lương (Ausbildungsvergütung), cấm trừng phạt thể xác, có ngày nghỉ phép (Urlaub), được bảo hộ giờ làm việc (Arbeitszeitgesetz / JArbSchG).</li>\n            </ul>",
+          "content": "<h2> LS05 & LS11 · Tình huống Klara Korte & Sự tiến hóa của BBiG</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 05 & 11 / LF 01-LS05, LS11)</div>\n            <h3>1. Tình huống Klara Korte (Metzgerei Wolf)</h3>\n            <p>Học viên Klara Korte bị chủ tiệm thịt giao làm việc dọn dẹp nhà riêng và không cho nghỉ đi học trường nghề → Vi phạm BBiG § 14 (Ausbildungsfremde Tätigkeiten) và nghĩa vụ Freistellung.</p>\n            <h3>2. So sánh Hợp đồng học nghề năm 1864 vs. Luật BBiG hiện đại (LS11)</h3>\n            <ul>\n              <li><b>Năm 1864 (Lịch sử):</b> Học viên phải nộp tiền học cho chủ (Lehrgeld), bị đánh đập, không có ngày nghỉ phép, làm việc không giới hạn giờ.</li>\n              <li><b>Hiện đại (BBiG):</b> Được nhận lương (Ausbildungsvergütung), cấm trừng phạt thể xác, có ngày nghỉ phép (Urlaub), được bảo hộ giờ làm việc (Arbeitszeitgesetz / JArbSchG).</li>\n            </ul>",
           "qa": [
             {
               "q": "Điểm khác biệt căn bản giữa Hợp đồng học nghề năm 1864 và Luật BBiG hiện đại là gì?",
@@ -1835,10 +1835,10 @@
       "items": [
         {
           "id": "wiko-arbeitsschutz",
-          "icon": "🛡️",
+          "icon": "",
           "name": "LS06 · Arbeitsschutzgesetz & Sozialer Arbeitsschutz",
           "desc": "Technischer vs. Sozialer Arbeitsschutz · Arbeitszeit, BUrlG, JArbSchG (<18t), Mutterschutz",
-          "content": "<h2>🛡️ LS06 · Arbeitsschutzgesetz & Sozialer Arbeitsschutz</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 06 / LF 01-LS06) · Bảo hộ kỹ thuật vs. Bảo hộ xã hội</div>\n            <h3>1. Phân loại Luật Bảo hộ Lao động</h3>\n            <ul>\n              <li><b>Technischer Arbeitsschutz (Kỹ thuật):</b> Ngăn ngừa tai nạn máy móc, an toàn vệ sinh (UVV, Arbeitssicherheitsgesetz, Arbeitsstättenverordnung).</li>\n              <li><b>Sozialer Arbeitsschutz (Xã hội):</b> Bảo vệ con người về giờ làm, nghỉ phép, thai sản, vị thành niên.</li>\n            </ul>\n            <h3>2. Các đạo luật bảo hộ xã hội cốt lõi</h3>\n            <ul>\n              <li><b>Arbeitszeitgesetz (Giờ làm việc):</b> Tối đa <b>8h/ngày</b> (tối đa 10h nếu trung bình 6 tháng vẫn đạt 8h). Thời gian nghỉ giữa 2 ca (<span class=\"term\" data-de=\"Ruhezeit\" data-vi=\"Nghỉ giữa 2 ca\">Ruhezeit</span>) tối thiểu <b>11 giờ</b>. Nghỉ giải lao (<span class=\"term\" data-de=\"Ruhepause\" data-vi=\"Nghỉ giải lao\">Ruhepause</span>): 30 phút (ca 6-9h), 45 phút (ca > 9h).</li>\n              <li><b>Bundesurlaubsgesetz (Nghỉ phép):</b> Tối thiểu <b>24 ngày làm việc (Werktage)</b>/năm (tính tuần 6 ngày) = 20 ngày (tính tuần 5 ngày).</li>\n              <li><b>Mutterschutzgesetz (Thai sản):</b> Cấm làm việc (<span class=\"term\" data-de=\"Beschäftigungsverbot\" data-vi=\"Cấm lao động\">Beschäftigungsverbot</span>) <b>6 tuần trước sinh</b> và <b>8 tuần sau sinh</b>.</li>\n              <li><b>Jugendarbeitsschutzgesetz (JArbSchG - Dưới 18 tuổi):</b> Tối đa <b>8h/ngày, 40h/tuần, 5 ngày/tuần</b>. Ruhezeit tối thiểu <b>12 giờ</b>. Cấm làm ca đêm sau 20:00 (Gastronomie trên 16t được làm đến 22:00). Nộp giấy khám sức khỏe định kỳ (Erstuntersuchung).</li>\n            </ul>",
+          "content": "<h2> LS06 · Arbeitsschutzgesetz & Sozialer Arbeitsschutz</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 06 / LF 01-LS06) · Bảo hộ kỹ thuật vs. Bảo hộ xã hội</div>\n            <h3>1. Phân loại Luật Bảo hộ Lao động</h3>\n            <ul>\n              <li><b>Technischer Arbeitsschutz (Kỹ thuật):</b> Ngăn ngừa tai nạn máy móc, an toàn vệ sinh (UVV, Arbeitssicherheitsgesetz, Arbeitsstättenverordnung).</li>\n              <li><b>Sozialer Arbeitsschutz (Xã hội):</b> Bảo vệ con người về giờ làm, nghỉ phép, thai sản, vị thành niên.</li>\n            </ul>\n            <h3>2. Các đạo luật bảo hộ xã hội cốt lõi</h3>\n            <ul>\n              <li><b>Arbeitszeitgesetz (Giờ làm việc):</b> Tối đa <b>8h/ngày</b> (tối đa 10h nếu trung bình 6 tháng vẫn đạt 8h). Thời gian nghỉ giữa 2 ca (<span class=\"term\" data-de=\"Ruhezeit\" data-vi=\"Nghỉ giữa 2 ca\">Ruhezeit</span>) tối thiểu <b>11 giờ</b>. Nghỉ giải lao (<span class=\"term\" data-de=\"Ruhepause\" data-vi=\"Nghỉ giải lao\">Ruhepause</span>): 30 phút (ca 6-9h), 45 phút (ca > 9h).</li>\n              <li><b>Bundesurlaubsgesetz (Nghỉ phép):</b> Tối thiểu <b>24 ngày làm việc (Werktage)</b>/năm (tính tuần 6 ngày) = 20 ngày (tính tuần 5 ngày).</li>\n              <li><b>Mutterschutzgesetz (Thai sản):</b> Cấm làm việc (<span class=\"term\" data-de=\"Beschäftigungsverbot\" data-vi=\"Cấm lao động\">Beschäftigungsverbot</span>) <b>6 tuần trước sinh</b> và <b>8 tuần sau sinh</b>.</li>\n              <li><b>Jugendarbeitsschutzgesetz (JArbSchG - Dưới 18 tuổi):</b> Tối đa <b>8h/ngày, 40h/tuần, 5 ngày/tuần</b>. Ruhezeit tối thiểu <b>12 giờ</b>. Cấm làm ca đêm sau 20:00 (Gastronomie trên 16t được làm đến 22:00). Nộp giấy khám sức khỏe định kỳ (Erstuntersuchung).</li>\n            </ul>",
           "qa": [
             {
               "q": "Thời gian nghỉ giữa 2 ca làm việc (Ruhezeit) theo Luật Arbeitszeitgesetz tối thiểu là bao nhiêu?",
@@ -1866,10 +1866,10 @@
         },
         {
           "id": "wiko-bewerbung-vorstellung",
-          "icon": "👔",
+          "icon": "",
           "name": "LS07, LS08 & LS10 · Hồ sơ Xin việc & Phỏng vấn",
           "desc": "Anschreiben, CV, Zeugnisse, IfSG § 43 · 6 Phasen des Vorstellungsgesprächs",
-          "content": "<h2>👔 LS07, LS08 & LS10 · Hồ sơ Xin việc & Phỏng vấn tuyển dụng</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 07, 08, 10 / LF 01-LS07, LS08, LS10)</div>\n            <h3>1. Bộ hồ sơ xin việc tiêu chuẩn (Bewerbungsunterlagen)</h3>\n            <ol>\n              <li><b>Das Anschreiben:</b> Thư xin việc (1 trang A4 thể hiện động lực & sự phù hợp).</li>\n              <li><b>Der Lebenslauf:</b> Sơ yếu lý lịch trình bày dạng bảng (CV).</li>\n              <li><b>Die Zeugnisse:</b> Bằng tốt nghiệp phổ thông/nghề, chứng nhận làm việc cũ (Arbeitszeugnis).</li>\n              <li><b>Nachweise & Zertifikate:</b> Chứng nhận thực tập, kỹ năng.</li>\n              <li><b>Gesundheitszeugnis (§ 43 IfSG):</b> Giấy khám sức khỏe / Vệ sinh an toàn thực phẩm (Gastronomie).</li>\n            </ol>\n            <h3>2. 6 Giai đoạn của Buổi phỏng vấn (Die 6 Phasen - LS08)</h3>\n            <ul>\n              <li><b>1. Einstieg:</b> Smalltalk, chào hỏi, tư thế, ngôn ngữ cơ thể.</li>\n              <li><b>2. Fachliche Kompetenz:</b> Trình bày CV, kinh nghiệm, năng lực thực tế.</li>\n              <li><b>3. Unternehmensdarstellung:</b> Nhà tuyển dụng giới thiệu vị trí công việc.</li>\n              <li><b>4. Fragen des Bewerbers:</b> Ứng viên đặt câu hỏi thể hiện sự chủ động.</li>\n              <li><b>5. Konditionen:</b> Trao đổi mức lương, ngày bắt đầu, ca làm việc.</li>\n              <li><b>6. Abschluss:</b> Thống nhất bước tiếp theo, chào tạm biệt lịch sự.</li>\n            </ul>",
+          "content": "<h2> LS07, LS08 & LS10 · Hồ sơ Xin việc & Phỏng vấn tuyển dụng</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 07, 08, 10 / LF 01-LS07, LS08, LS10)</div>\n            <h3>1. Bộ hồ sơ xin việc tiêu chuẩn (Bewerbungsunterlagen)</h3>\n            <ol>\n              <li><b>Das Anschreiben:</b> Thư xin việc (1 trang A4 thể hiện động lực & sự phù hợp).</li>\n              <li><b>Der Lebenslauf:</b> Sơ yếu lý lịch trình bày dạng bảng (CV).</li>\n              <li><b>Die Zeugnisse:</b> Bằng tốt nghiệp phổ thông/nghề, chứng nhận làm việc cũ (Arbeitszeugnis).</li>\n              <li><b>Nachweise & Zertifikate:</b> Chứng nhận thực tập, kỹ năng.</li>\n              <li><b>Gesundheitszeugnis (§ 43 IfSG):</b> Giấy khám sức khỏe / Vệ sinh an toàn thực phẩm (Gastronomie).</li>\n            </ol>\n            <h3>2. 6 Giai đoạn của Buổi phỏng vấn (Die 6 Phasen - LS08)</h3>\n            <ul>\n              <li><b>1. Einstieg:</b> Smalltalk, chào hỏi, tư thế, ngôn ngữ cơ thể.</li>\n              <li><b>2. Fachliche Kompetenz:</b> Trình bày CV, kinh nghiệm, năng lực thực tế.</li>\n              <li><b>3. Unternehmensdarstellung:</b> Nhà tuyển dụng giới thiệu vị trí công việc.</li>\n              <li><b>4. Fragen des Bewerbers:</b> Ứng viên đặt câu hỏi thể hiện sự chủ động.</li>\n              <li><b>5. Konditionen:</b> Trao đổi mức lương, ngày bắt đầu, ca làm việc.</li>\n              <li><b>6. Abschluss:</b> Thống nhất bước tiếp theo, chào tạm biệt lịch sự.</li>\n            </ul>",
           "qa": [
             {
               "q": "Bộ hồ sơ xin việc tiêu chuẩn tại Đức bao gồm những thành phần chính nào?",
@@ -1888,10 +1888,10 @@
         },
         {
           "id": "wiko-fragen-agg",
-          "icon": "🛑",
+          "icon": "",
           "name": "LS09 · Zulässige & Unzulässige Fragen (AGG)",
           "desc": "Luật bình đẳng AGG · Quyền được nói dối (Recht zur Lüge) · Stellenrelevanz",
-          "content": "<h2>🛑 LS09 · Zulässige & Unzulässige Fragen im Vorstellungsgespräch</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 09 / LF 01-LS09) · Luật AGG & Quyền bảo vệ ứng viên</div>\n            <h3>1. Nguyên tắc vàng về Câu hỏi phỏng vấn</h3>\n            <ul>\n              <li><span class=\"term\" data-de=\"Recht zur Lüge\" data-vi=\"Quyền được nói dối\">Recht zur Lüge</span>: Nếu nhà tuyển dụng đặt câu hỏi bị cấm (<i>nicht zulässige Frage</i>), ứng viên <b>được quyền nói dối mà không chịu bất kỳ hậu quả pháp lý nào</b>.</li>\n              <li>Nếu nhà tuyển dụng đặt câu hỏi hợp pháp mà ứng viên khai gian dối: Nhà tuyển dụng có quyền hủy HĐLĐ do lừa dối cố ý (<i>Anfechtung wegen arglistiger Täuschung</i>).</li>\n            </ul>\n            <h3>2. Danh mục câu hỏi BỊ CẤM vs. HỢP PHÁP</h3>\n            <ul>\n              <li><b>CÂU HỎI BỊ CẤM (Được nói dối):</b> Mang thai/kế hoạch sinh con (Schwangerschaft), Tôn giáo (Religion), Xu hướng giới tính, Tình trạng hôn nhân, Quan điểm chính trị, Tài chính nợ nần cá nhân, Nguồn gốc chủng tộc.</li>\n              <li><b>CÂU HỎI HỢP PHÁP (Phải trả lời thật):</b> Chỉ hợp pháp khi liên quan trực tiếp đến vị trí công việc (<i>Stellenrelevanz</i>) — ví dụ: Tiền án tiền sự (Vorstrafen) đối với vị trí Thu ngân/Thủ quỹ; Bệnh truyền nhiễm đối với Đầu bếp/Nhân viên nhà hàng.</li>\n            </ul>",
+          "content": "<h2> LS09 · Zulässige & Unzulässige Fragen im Vorstellungsgespräch</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 09 / LF 01-LS09) · Luật AGG & Quyền bảo vệ ứng viên</div>\n            <h3>1. Nguyên tắc vàng về Câu hỏi phỏng vấn</h3>\n            <ul>\n              <li><span class=\"term\" data-de=\"Recht zur Lüge\" data-vi=\"Quyền được nói dối\">Recht zur Lüge</span>: Nếu nhà tuyển dụng đặt câu hỏi bị cấm (<i>nicht zulässige Frage</i>), ứng viên <b>được quyền nói dối mà không chịu bất kỳ hậu quả pháp lý nào</b>.</li>\n              <li>Nếu nhà tuyển dụng đặt câu hỏi hợp pháp mà ứng viên khai gian dối: Nhà tuyển dụng có quyền hủy HĐLĐ do lừa dối cố ý (<i>Anfechtung wegen arglistiger Täuschung</i>).</li>\n            </ul>\n            <h3>2. Danh mục câu hỏi BỊ CẤM vs. HỢP PHÁP</h3>\n            <ul>\n              <li><b>CÂU HỎI BỊ CẤM (Được nói dối):</b> Mang thai/kế hoạch sinh con (Schwangerschaft), Tôn giáo (Religion), Xu hướng giới tính, Tình trạng hôn nhân, Quan điểm chính trị, Tài chính nợ nần cá nhân, Nguồn gốc chủng tộc.</li>\n              <li><b>CÂU HỎI HỢP PHÁP (Phải trả lời thật):</b> Chỉ hợp pháp khi liên quan trực tiếp đến vị trí công việc (<i>Stellenrelevanz</i>) — ví dụ: Tiền án tiền sự (Vorstrafen) đối với vị trí Thu ngân/Thủ quỹ; Bệnh truyền nhiễm đối với Đầu bếp/Nhân viên nhà hàng.</li>\n            </ul>",
           "qa": [
             {
               "q": "Nếu nhà tuyển dụng hỏi ứng viên nữ: 'Bạn có kế hoạch sinh con trong 2 năm tới không?', ứng viên có quyền gì?",
@@ -1910,10 +1910,10 @@
         },
         {
           "id": "wiko-arbeitsvertrag",
-          "icon": "📝",
+          "icon": "",
           "name": "LS13 & LS16 · Der Arbeitsvertrag & Loại hình HĐLĐ",
           "desc": "Hợp đồng cá nhân · Nachweisgesetz (4 tuần) · Befristet (Thời hạn) & Teilzeit (Bán thời gian)",
-          "content": "<h2>📝 LS13 & LS16 · Der Arbeitsvertrag & Loại hình HĐLĐ</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 13 & 16 / LF 01-LS13, LS16)</div>\n            <h3>1. Hình thức của Hợp đồng Lao động</h3>\n            <ul>\n              <li>Hợp đồng lao động cá nhân (Einzelarbeitsvertrag) có thể được giao kết bằng lời nói (<i>mündlich</i>) hoặc văn bản.</li>\n              <li><b>Luật Nachweisgesetz (1995):</b> Chủ lao động bắt buộc phải lập văn bản tóm tắt các điều khoản chính và trao cho NLĐ chậm nhất <b>4 tuần (1 tháng)</b> kể từ ngày bắt đầu làm việc.</li>\n            </ul>\n            <h3>2. Các loại hình Hợp đồng đặc thù (LS16)</h3>\n            <ul>\n              <li><b>Befristeter Arbeitsvertrag (HĐ xác định thời hạn):</b> Tự động kết thúc khi hết hạn mà không cần sa thải (Kündigung). Tối đa 2 năm không cần lý do (mit/ohne Sachgrund).</li>\n              <li><b>Teilzeitarbeitsvertrag (HĐ bán thời gian):</b> Làm việc ít giờ hơn ca chuẩn fulltime. Bình đẳng quyền lợi theo Teilzeit- und Befristungsgesetz (TzBfG).</li>\n            </ul>",
+          "content": "<h2> LS13 & LS16 · Der Arbeitsvertrag & Loại hình HĐLĐ</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 13 & 16 / LF 01-LS13, LS16)</div>\n            <h3>1. Hình thức của Hợp đồng Lao động</h3>\n            <ul>\n              <li>Hợp đồng lao động cá nhân (Einzelarbeitsvertrag) có thể được giao kết bằng lời nói (<i>mündlich</i>) hoặc văn bản.</li>\n              <li><b>Luật Nachweisgesetz (1995):</b> Chủ lao động bắt buộc phải lập văn bản tóm tắt các điều khoản chính và trao cho NLĐ chậm nhất <b>4 tuần (1 tháng)</b> kể từ ngày bắt đầu làm việc.</li>\n            </ul>\n            <h3>2. Các loại hình Hợp đồng đặc thù (LS16)</h3>\n            <ul>\n              <li><b>Befristeter Arbeitsvertrag (HĐ xác định thời hạn):</b> Tự động kết thúc khi hết hạn mà không cần sa thải (Kündigung). Tối đa 2 năm không cần lý do (mit/ohne Sachgrund).</li>\n              <li><b>Teilzeitarbeitsvertrag (HĐ bán thời gian):</b> Làm việc ít giờ hơn ca chuẩn fulltime. Bình đẳng quyền lợi theo Teilzeit- und Befristungsgesetz (TzBfG).</li>\n            </ul>",
           "qa": [
             {
               "q": "Hợp đồng lao động cá nhân giao kết bằng lời nói (mündlich) có hiệu lực không?",
@@ -1932,10 +1932,10 @@
         },
         {
           "id": "wiko-arbeitszeugnis",
-          "icon": "📄",
+          "icon": "",
           "name": "LS14 & LS15 · Das Arbeitszeugnis & Zeugnissprache",
           "desc": "Einfaches vs. Qualifiziertes Zeugnis · Wohlwollensgebot · Thang điểm mã hóa 1–6",
-          "content": "<h2>📄 LS14 & LS15 · Das Arbeitszeugnis: Einfaches vs. Qualifiziertes</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 14 & 15 / LF 01-LS14, LS15) · Mã hóa nhận xét</div>\n            <h3>1. Phân loại Chứng nhận làm việc (LS14)</h3>\n            <ul>\n              <li><b>Einfaches Arbeitszeugnis:</b> Chỉ xác nhận Loại công việc (Art) và Thời gian làm việc (Dauer). Không chứa lời nhận xét.</li>\n              <li><b>Qualifiziertes Arbeitszeugnis:</b> Bao gồm Art + Dauer + Nhận xét Thái độ/Ứng xử (Führung/Verhalten) + Nhận xét Hiệu suất công việc (Leistung).</li>\n            </ul>\n            <h3>2. Thang điểm mã hóa (Zeugnissprache - LS15)</h3>\n            <ul>\n              <li><b>Note 1 (Sehr gut):</b> <i>\"...stets zur vollsten Zufriedenheit erledigt.\"</i></li>\n              <li><b>Note 2 (Gut):</b> <i>\"...stets zur vollen Zufriedenheit erledigt.\"</i></li>\n              <li><b>Note 3 (Befriedigend):</b> <i>\"...zur vollen Zufriedenheit erledigt.\"</i></li>\n              <li><b>Note 4 (Ausreichend):</b> <i>\"...zur Zufriedenheit erledigt.\"</i></li>\n              <li><b>Note 5 (Mangelhaft):</b> <i>\"...im Großen und Ganzen zur Zufriedenheit erledigt.\"</i></li>\n              <li><b>Note 6 (Ungenügend):</b> <i>\"...hat sich bemüht, die Aufgaben zu unserer Zufriedenheit zu erledigen.\"</i> (Có cố gắng nhưng thất bại).</li>\n            </ul>",
+          "content": "<h2> LS14 & LS15 · Das Arbeitszeugnis: Einfaches vs. Qualifiziertes</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 14 & 15 / LF 01-LS14, LS15) · Mã hóa nhận xét</div>\n            <h3>1. Phân loại Chứng nhận làm việc (LS14)</h3>\n            <ul>\n              <li><b>Einfaches Arbeitszeugnis:</b> Chỉ xác nhận Loại công việc (Art) và Thời gian làm việc (Dauer). Không chứa lời nhận xét.</li>\n              <li><b>Qualifiziertes Arbeitszeugnis:</b> Bao gồm Art + Dauer + Nhận xét Thái độ/Ứng xử (Führung/Verhalten) + Nhận xét Hiệu suất công việc (Leistung).</li>\n            </ul>\n            <h3>2. Thang điểm mã hóa (Zeugnissprache - LS15)</h3>\n            <ul>\n              <li><b>Note 1 (Sehr gut):</b> <i>\"...stets zur vollsten Zufriedenheit erledigt.\"</i></li>\n              <li><b>Note 2 (Gut):</b> <i>\"...stets zur vollen Zufriedenheit erledigt.\"</i></li>\n              <li><b>Note 3 (Befriedigend):</b> <i>\"...zur vollen Zufriedenheit erledigt.\"</i></li>\n              <li><b>Note 4 (Ausreichend):</b> <i>\"...zur Zufriedenheit erledigt.\"</i></li>\n              <li><b>Note 5 (Mangelhaft):</b> <i>\"...im Großen und Ganzen zur Zufriedenheit erledigt.\"</i></li>\n              <li><b>Note 6 (Ungenügend):</b> <i>\"...hat sich bemüht, die Aufgaben zu unserer Zufriedenheit zu erledigen.\"</i> (Có cố gắng nhưng thất bại).</li>\n            </ul>",
           "qa": [
             {
               "q": "Sự khác biệt giữa Einfaches Arbeitszeugnis và Qualifiziertes Arbeitszeugnis là gì?",
@@ -1961,10 +1961,10 @@
       "items": [
         {
           "id": "wiko-kuendigung-frist",
-          "icon": "⚠️",
+          "icon": "",
           "name": "LS17 · Ordentliche Kündigung & Kündigungsfristen",
           "desc": "§ 622 BGB · Thời hạn báo trước 4 tuần · Điều kiện văn bản Schriftform § 623 BGB",
-          "content": "<h2>⚠️ LS17 · Ordentliche Kündigung & Kündigungsfristen (§ 622 BGB)</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 17 / LF 01-LS17) · Thôi việc thông thường</div>\n            <h3>1. Thời hạn báo trước khi thôi việc (Kündigungsfristen)</h3>\n            <ul>\n              <li><b>Quy định chung cho NLĐ & Chủ:</b> Báo trước <b>4 tuần</b> tính đến ngày 15 hoặc cuối tháng dương lịch.</li>\n              <li><b>Trong thử việc (Probezeit max 6 tháng):</b> Báo trước <b>2 tuần</b> bất kỳ ngày nào.</li>\n              <li><b>Thời hạn báo của Chủ lao động gia tăng theo thâm niên:</b> 2 năm (1 tháng), 5 năm (2 tháng), 8 năm (3 tháng), 10 năm (4 tháng), 12 năm (5 tháng), 15 năm (6 tháng), 20 năm thâm niên (7 tháng tính đến cuối tháng).</li>\n            </ul>\n            <h3>2. Điều kiện hình thức bắt buộc</h3>\n            <ol>\n              <li><b>Schriftform (§ 623 BGB):</b> Văn bản giấy có chữ ký tay. Email/SMS/Fax đều vô hiệu.</li>\n              <li><b>Zugang:</b> Đã giao đến tay/hòm thư người nhận.</li>\n              <li><b>Anhörung des Betriebsrates (§ 102 BetrVG):</b> Bắt buộc tham vấn Hội đồng công nhân trước khi phát đơn.</li>\n            </ol>",
+          "content": "<h2> LS17 · Ordentliche Kündigung & Kündigungsfristen (§ 622 BGB)</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 17 / LF 01-LS17) · Thôi việc thông thường</div>\n            <h3>1. Thời hạn báo trước khi thôi việc (Kündigungsfristen)</h3>\n            <ul>\n              <li><b>Quy định chung cho NLĐ & Chủ:</b> Báo trước <b>4 tuần</b> tính đến ngày 15 hoặc cuối tháng dương lịch.</li>\n              <li><b>Trong thử việc (Probezeit max 6 tháng):</b> Báo trước <b>2 tuần</b> bất kỳ ngày nào.</li>\n              <li><b>Thời hạn báo của Chủ lao động gia tăng theo thâm niên:</b> 2 năm (1 tháng), 5 năm (2 tháng), 8 năm (3 tháng), 10 năm (4 tháng), 12 năm (5 tháng), 15 năm (6 tháng), 20 năm thâm niên (7 tháng tính đến cuối tháng).</li>\n            </ul>\n            <h3>2. Điều kiện hình thức bắt buộc</h3>\n            <ol>\n              <li><b>Schriftform (§ 623 BGB):</b> Văn bản giấy có chữ ký tay. Email/SMS/Fax đều vô hiệu.</li>\n              <li><b>Zugang:</b> Đã giao đến tay/hòm thư người nhận.</li>\n              <li><b>Anhörung des Betriebsrates (§ 102 BetrVG):</b> Bắt buộc tham vấn Hội đồng công nhân trước khi phát đơn.</li>\n            </ol>",
           "qa": [
             {
               "q": "Thời hạn báo trước khi thôi việc thông thường theo § 622 BGB là bao lâu?",
@@ -1983,10 +1983,10 @@
         },
         {
           "id": "wiko-kuendigungsschutz",
-          "icon": "🛡️",
+          "icon": "",
           "name": "LS18 & LS19 · Kündigungsschutzgesetz (KSchG) & Tòa lao động",
           "desc": "Nhóm đối tượng cấm sa thải · 3 lý do sa thải hợp pháp · Klagefrist 3 tuần",
-          "content": "<h2>🛡️ LS18 & LS19 · Kündigungsschutzgesetz (KSchG) & Klage vor dem Arbeitsgericht</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 18 & 19 / LF 01-LS18, LS19) · Bảo vệ sa thải chung & đặc biệt</div>\n            <h3>1. Besonderer Kündigungsschutz (Cấm sa thải thông thường - LS18)</h3>\n            <ul>\n              <li>Thành viên Hội đồng công nhân (Betriebsrat / JAV).</li>\n              <li>Phụ nữ mang thai & 4 tháng sau sinh (Mutterschutz).</li>\n              <li>Cha mẹ trong thời gian nghỉ nuôi con (Elternzeit).</li>\n              <li>Người khuyết tật nặng (Schwerbehinderte - phải qua Integrationsamt).</li>\n              <li>Học viên học nghề (Azubi) sau thời gian thử việc.</li>\n            </ul>\n            <h3>2. Allgemeiner Kündigungsschutz (§ 1 KSchG) & 3 Lý do Sa thải (LS19)</h3>\n            <ul>\n              <li>Áp dụng khi làm việc > 6 tháng VÀ công ty > 10 nhân viên.</li>\n              <li><b>3 lý do sa thải hợp pháp:</b>\n                <br>1. <i>Personenbedingt:</i> Lý do cá nhân/sức khỏe mãn tính (\"Er/Sie will, kann aber nicht\").\n                <br>2. <i>Verhaltensbedingt:</i> Vi phạm kỷ luật/đi muộn/cãi chỉ đạo (\"Er/Sie kann, will aber nicht\") -> Cần Cảnh cáo (Abmahnung) trước.\n                <br>3. <i>Betriebsbedingt:</i> Cắt giảm vị trí do vận hành -> Bắt buộc chọn lọc xã hội (<span class=\"term\" data-de=\"Sozialauswahl\" data-vi=\"Lựa chọn xã hội\">Sozialauswahl</span>: tuổi, thâm niên, nghĩa vụ nuôi con).\n              </li>\n            </ul>\n            <h3>3. Thời hạn khởi kiện (Klagefrist § 4 KSchG)</h3>\n            <p>Bắt buộc nộp đơn kiện lên Tòa án Lao động (Arbeitsgericht) trong vòng <b>3 tuần</b> kể từ khi nhận đơn sa thải bằng văn bản!</p>",
+          "content": "<h2> LS18 & LS19 · Kündigungsschutzgesetz (KSchG) & Klage vor dem Arbeitsgericht</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 18 & 19 / LF 01-LS18, LS19) · Bảo vệ sa thải chung & đặc biệt</div>\n            <h3>1. Besonderer Kündigungsschutz (Cấm sa thải thông thường - LS18)</h3>\n            <ul>\n              <li>Thành viên Hội đồng công nhân (Betriebsrat / JAV).</li>\n              <li>Phụ nữ mang thai & 4 tháng sau sinh (Mutterschutz).</li>\n              <li>Cha mẹ trong thời gian nghỉ nuôi con (Elternzeit).</li>\n              <li>Người khuyết tật nặng (Schwerbehinderte - phải qua Integrationsamt).</li>\n              <li>Học viên học nghề (Azubi) sau thời gian thử việc.</li>\n            </ul>\n            <h3>2. Allgemeiner Kündigungsschutz (§ 1 KSchG) & 3 Lý do Sa thải (LS19)</h3>\n            <ul>\n              <li>Áp dụng khi làm việc > 6 tháng VÀ công ty > 10 nhân viên.</li>\n              <li><b>3 lý do sa thải hợp pháp:</b>\n                <br>1. <i>Personenbedingt:</i> Lý do cá nhân/sức khỏe mãn tính (\"Er/Sie will, kann aber nicht\").\n                <br>2. <i>Verhaltensbedingt:</i> Vi phạm kỷ luật/đi muộn/cãi chỉ đạo (\"Er/Sie kann, will aber nicht\") -> Cần Cảnh cáo (Abmahnung) trước.\n                <br>3. <i>Betriebsbedingt:</i> Cắt giảm vị trí do vận hành -> Bắt buộc chọn lọc xã hội (<span class=\"term\" data-de=\"Sozialauswahl\" data-vi=\"Lựa chọn xã hội\">Sozialauswahl</span>: tuổi, thâm niên, nghĩa vụ nuôi con).\n              </li>\n            </ul>\n            <h3>3. Thời hạn khởi kiện (Klagefrist § 4 KSchG)</h3>\n            <p>Bắt buộc nộp đơn kiện lên Tòa án Lao động (Arbeitsgericht) trong vòng <b>3 tuần</b> kể từ khi nhận đơn sa thải bằng văn bản!</p>",
           "qa": [
             {
               "q": "Thời hạn bắt buộc để người lao động nộp đơn kiện sa thải lên Tòa án Lao động (Arbeitsgericht) là bao lâu?",
@@ -2005,10 +2005,10 @@
         },
         {
           "id": "wiko-kuendigung-fristlos",
-          "icon": "⚡",
+          "icon": "",
           "name": "LS20 · Außerordentliche Kündigung (Fristlos § 626 BGB)",
           "desc": "Sa thải ngay lập tức · Wichtiger Grund · 2-Wochen-Erklärungsfrist",
-          "content": "<h2>⚡ LS20 · Außerordentliche Kündigung (Fristlos § 626 BGB)</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 20 / LF 01-LS20) · Sa thải bất thường aus wichtigem Grund</div>\n            <h3>1. Điều kiện cốt lõi (Wichtiger Grund)</h3>\n            <ul>\n              <li>Bắt buộc phải có lý do đặc biệt nghiêm trọng khiến hai bên không thể tiếp tục hợp đồng dù chỉ 1 ngày.</li>\n              <li><b>Lý do từ phía Chủ:</b> Trộm cắp (Diebstahl), hành hung/bạo lực (Tätlichkeiten), cố ý bỏ việc (Arbeitsverweigerung), giả ốm (erschlichene Krankmeldung), gian lận giờ làm.</li>\n              <li><b>Lý do từ phía NLĐ:</b> Nợ lương kéo dài (Nichtzahlung des Lohns), quấy rối tình dục (sexuelle Belästigung), ép làm việc phạm pháp.</li>\n            </ul>\n            <h3>2. Điều kiện hình thức đặc thù</h3>\n            <ol>\n              <li><b>2-Wochen-Frist (§ 626 Abs. 2 BGB):</b> Đơn sa thải phải được phát trong vòng <b>2 tuần kể từ khi phát hiện vi phạm</b>.</li>\n              <li><b>Schriftform (§ 623 BGB):</b> Bắt buộc văn bản giấy chữ ký tay.</li>\n              <li><b>Anhörung des Betriebsrates:</b> Phải tham vấn Hội đồng công nhân.</li>\n            </ol>",
+          "content": "<h2> LS20 · Außerordentliche Kündigung (Fristlos § 626 BGB)</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 20 / LF 01-LS20) · Sa thải bất thường aus wichtigem Grund</div>\n            <h3>1. Điều kiện cốt lõi (Wichtiger Grund)</h3>\n            <ul>\n              <li>Bắt buộc phải có lý do đặc biệt nghiêm trọng khiến hai bên không thể tiếp tục hợp đồng dù chỉ 1 ngày.</li>\n              <li><b>Lý do từ phía Chủ:</b> Trộm cắp (Diebstahl), hành hung/bạo lực (Tätlichkeiten), cố ý bỏ việc (Arbeitsverweigerung), giả ốm (erschlichene Krankmeldung), gian lận giờ làm.</li>\n              <li><b>Lý do từ phía NLĐ:</b> Nợ lương kéo dài (Nichtzahlung des Lohns), quấy rối tình dục (sexuelle Belästigung), ép làm việc phạm pháp.</li>\n            </ul>\n            <h3>2. Điều kiện hình thức đặc thù</h3>\n            <ol>\n              <li><b>2-Wochen-Frist (§ 626 Abs. 2 BGB):</b> Đơn sa thải phải được phát trong vòng <b>2 tuần kể từ khi phát hiện vi phạm</b>.</li>\n              <li><b>Schriftform (§ 623 BGB):</b> Bắt buộc văn bản giấy chữ ký tay.</li>\n              <li><b>Anhörung des Betriebsrates:</b> Phải tham vấn Hội đồng công nhân.</li>\n            </ol>",
           "qa": [
             {
               "q": "Thời hạn tối đa để chủ lao động đưa ra quyết định sa thải fristlos kể từ khi phát hiện hành vi vi phạm là bao lâu?",
@@ -2034,10 +2034,10 @@
       "items": [
         {
           "id": "wiko-betriebsrat-mitbestimmung",
-          "icon": "🏛️",
+          "icon": "",
           "name": "LS21, LS22 & LS23 · Betriebsrat & Mitbestimmung",
           "desc": "BetrVG · 4 Stufen der Mitbestimmung (Information, Anhörung, Echte Mitbestimmung)",
-          "content": "<h2>🏛️ LS21, LS22 & LS23 · Betriebsverfassungsgesetz & Mitbestimmung des Betriebsrates</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 21, 22, 23 / LF 01-LS21, LS22, LS23)</div>\n            <h3>1. Điều kiện thành lập Hội đồng công nhân (Betriebsrat)</h3>\n            <p>Được thành lập tại doanh nghiệp có ít nhất <b>5 nhân viên thường xuyên có quyền bầu cử</b>.</p>\n            <h3>2. 4 Cấp độ Mitbestimmung của Betriebsrat (LS22 & LS23)</h3>\n            <ol>\n              <li><b>Reine Information:</b> Doanh nghiệp thông tin kịp thời (quy hoạch nhân sự, kinh tế).</li>\n              <li><b>Mitwirkung / Anhörung:</b> Tham vấn lắng nghe ý kiến (bắt buộc trước mỗi quyết định sa thải Kündigung).</li>\n              <li><b>Zustimmungsverweigerung:</b> Từ chối chốt nhân sự (tuyển dụng Einstellung, chuyển công tác Versetzung).</li>\n              <li><b>Echte Mitbestimmung:</b> Bắt buộc đồng quyết định 2 bên mới có hiệu lực (lịch làm việc Dienstplan, lịch nghỉ phép Urlaubsplan, lắp camera giám sát).</li>\n            </ol>",
+          "content": "<h2> LS21, LS22 & LS23 · Betriebsverfassungsgesetz & Mitbestimmung des Betriebsrates</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 21, 22, 23 / LF 01-LS21, LS22, LS23)</div>\n            <h3>1. Điều kiện thành lập Hội đồng công nhân (Betriebsrat)</h3>\n            <p>Được thành lập tại doanh nghiệp có ít nhất <b>5 nhân viên thường xuyên có quyền bầu cử</b>.</p>\n            <h3>2. 4 Cấp độ Mitbestimmung của Betriebsrat (LS22 & LS23)</h3>\n            <ol>\n              <li><b>Reine Information:</b> Doanh nghiệp thông tin kịp thời (quy hoạch nhân sự, kinh tế).</li>\n              <li><b>Mitwirkung / Anhörung:</b> Tham vấn lắng nghe ý kiến (bắt buộc trước mỗi quyết định sa thải Kündigung).</li>\n              <li><b>Zustimmungsverweigerung:</b> Từ chối chốt nhân sự (tuyển dụng Einstellung, chuyển công tác Versetzung).</li>\n              <li><b>Echte Mitbestimmung:</b> Bắt buộc đồng quyết định 2 bên mới có hiệu lực (lịch làm việc Dienstplan, lịch nghỉ phép Urlaubsplan, lắp camera giám sát).</li>\n            </ol>",
           "qa": [
             {
               "q": "Doanh nghiệp có ít nhất bao nhiêu nhân viên thì có quyền thành lập Betriebsrat?",
@@ -2056,10 +2056,10 @@
         },
         {
           "id": "wiko-jav",
-          "icon": "👥",
+          "icon": "",
           "name": "LS24 · Jugend- und Auszubildendenvertretung (JAV)",
           "desc": "Đại diện thanh thiếu niên < 18t & Azubi < 25t · Phối hợp với Betriebsrat",
-          "content": "<h2>👥 LS24 · Jugend- und Auszubildendenvertretung (JAV)</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 24 / LF 01-LS24) · Đại diện Azubi & Thanh thiếu niên</div>\n            <h3>1. Điều kiện thành lập JAV</h3>\n            <p>Tại doanh nghiệp có ít nhất <b>5 nhân viên dưới 18 tuổi</b> hoặc <b>học viên học nghề (Azubi) dưới 25 tuổi</b>, và đã có Betriebsrat.</p>\n            <h3>2. Nhiệm vụ & Quyền hạn của JAV</h3>\n            <ul>\n              <li>Đại diện quyền lợi học tập, làm việc và an toàn cho Azubi.</li>\n              <li>Đề xuất các biện pháp cải thiện điều kiện đào tạo lên Betriebsrat.</li>\n              <li>Có quyền cử đại diện tham dự các phiên họp của Betriebsrat khi bàn thảo vấn đề liên quan đến Azubi.</li>\n            </ul>",
+          "content": "<h2> LS24 · Jugend- und Auszubildendenvertretung (JAV)</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 24 / LF 01-LS24) · Đại diện Azubi & Thanh thiếu niên</div>\n            <h3>1. Điều kiện thành lập JAV</h3>\n            <p>Tại doanh nghiệp có ít nhất <b>5 nhân viên dưới 18 tuổi</b> hoặc <b>học viên học nghề (Azubi) dưới 25 tuổi</b>, và đã có Betriebsrat.</p>\n            <h3>2. Nhiệm vụ & Quyền hạn của JAV</h3>\n            <ul>\n              <li>Đại diện quyền lợi học tập, làm việc và an toàn cho Azubi.</li>\n              <li>Đề xuất các biện pháp cải thiện điều kiện đào tạo lên Betriebsrat.</li>\n              <li>Có quyền cử đại diện tham dự các phiên họp của Betriebsrat khi bàn thảo vấn đề liên quan đến Azubi.</li>\n            </ul>",
           "qa": [
             {
               "q": "JAV đại diện cho nhóm đối tượng nào trong doanh nghiệp?",
@@ -2074,10 +2074,10 @@
         },
         {
           "id": "wiko-tarifvertrag",
-          "icon": "🤝",
+          "icon": "",
           "name": "LS25, LS26, LS27, LS28 & LS31 · Luật Thỏa ước tập thể",
           "desc": "Manteltarif vs. Lohntarif · 4 Grundsätze · Günstigkeitsprinzip § 4 Abs. 3 TVG",
-          "content": "<h2>🤝 LS25, LS26, LS27, LS28 & LS31 · Tarifvertrag & Tarifautonomie</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 25, 26, 27, 28, 31 / LF 01-LS25 đến LS31)</div>\n            <h3>1. Đơn vị ký kết & Tarifautonomie (LS25)</h3>\n            <ul>\n              <li>Ký kết giữa <b>Công đoàn (Gewerkschaft - z.B. NGG)</b> và <b>Hiệp hội chủ (Arbeitgeberverband - z.B. DEHOGA)</b>.</li>\n              <li><span class=\"term\" data-de=\"Tarifautonomie\" data-vi=\"Tự chủ thỏa ước\">Tarifautonomie</span> (Art. 9 Abs. 3 GG): Quyền tự do đàm phán thù lao & điều kiện làm việc <b>không có sự can thiệp của Nhà nước</b>.</li>\n            </ul>\n            <h3>2. Phân loại Tarifvertrag (LS26)</h3>\n            <ul>\n              <li><b>Manteltarifvertrag (Thỏa ước khung):</b> Điều kiện làm việc chung (giờ làm, phép năm, thời hạn sa thải). Hiệu lực dài hạn (nhiều năm).</li>\n              <li><b>Lohntarifvertrag (Thỏa ước lương):</b> Chi tiết mức lương từng bậc (Lohngruppen). Hiệu lực ngắn hạn (1-2 năm).</li>\n            </ul>\n            <h3>3. 4 Nguyên tắc vàng của Luật Thỏa ước (LS27, LS31)</h3>\n            <ol>\n              <li><i>Tarifautonomie:</i> Tự do đàm phán.</li>\n              <li><i>Unabdingbarkeit:</i> Mức chuẩn thỏa ước là tiêu chuẩn tối thiểu bắt buộc.</li>\n              <li><i>Günstigkeitsprinzip (§ 4 Abs. 3 TVG):</i> HĐLĐ cá nhân chỉ được khác Tarif nếu <b>có lợi hơn cho NLĐ</b>.</li>\n              <li><i>Friedenspflicht:</i> Nghĩa vụ hòa bình (cấm đình công khi thỏa ước còn hiệu lực).</li>\n            </ol>",
+          "content": "<h2> LS25, LS26, LS27, LS28 & LS31 · Tarifvertrag & Tarifautonomie</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 25, 26, 27, 28, 31 / LF 01-LS25 đến LS31)</div>\n            <h3>1. Đơn vị ký kết & Tarifautonomie (LS25)</h3>\n            <ul>\n              <li>Ký kết giữa <b>Công đoàn (Gewerkschaft - z.B. NGG)</b> và <b>Hiệp hội chủ (Arbeitgeberverband - z.B. DEHOGA)</b>.</li>\n              <li><span class=\"term\" data-de=\"Tarifautonomie\" data-vi=\"Tự chủ thỏa ước\">Tarifautonomie</span> (Art. 9 Abs. 3 GG): Quyền tự do đàm phán thù lao & điều kiện làm việc <b>không có sự can thiệp của Nhà nước</b>.</li>\n            </ul>\n            <h3>2. Phân loại Tarifvertrag (LS26)</h3>\n            <ul>\n              <li><b>Manteltarifvertrag (Thỏa ước khung):</b> Điều kiện làm việc chung (giờ làm, phép năm, thời hạn sa thải). Hiệu lực dài hạn (nhiều năm).</li>\n              <li><b>Lohntarifvertrag (Thỏa ước lương):</b> Chi tiết mức lương từng bậc (Lohngruppen). Hiệu lực ngắn hạn (1-2 năm).</li>\n            </ul>\n            <h3>3. 4 Nguyên tắc vàng của Luật Thỏa ước (LS27, LS31)</h3>\n            <ol>\n              <li><i>Tarifautonomie:</i> Tự do đàm phán.</li>\n              <li><i>Unabdingbarkeit:</i> Mức chuẩn thỏa ước là tiêu chuẩn tối thiểu bắt buộc.</li>\n              <li><i>Günstigkeitsprinzip (§ 4 Abs. 3 TVG):</i> HĐLĐ cá nhân chỉ được khác Tarif nếu <b>có lợi hơn cho NLĐ</b>.</li>\n              <li><i>Friedenspflicht:</i> Nghĩa vụ hòa bình (cấm đình công khi thỏa ước còn hiệu lực).</li>\n            </ol>",
           "qa": [
             {
               "q": "Nguyên tắc Günstigkeitsprinzip quy định điều gì khi so sánh HĐLĐ cá nhân và Thỏa ước tập thể?",
@@ -2100,10 +2100,10 @@
         },
         {
           "id": "wiko-arbeitskampf",
-          "icon": "📢",
+          "icon": "",
           "name": "LS29, LS30, LS32, LS33 & LS34 · Đấu tranh lao động",
           "desc": "NGG vs. DEHOGA · Schlichtung · Urabstimmung (>= 75%) · Streik vs. Aussperrung · Wilder Streik",
-          "content": "<h2>📢 LS29, LS30, LS32, LS33 & LS34 · Schlichtung, Streik & Arbeitskampf</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 29, 30, 32, 33, 34 / LF 01-LS29 đến LS34)</div>\n            <h3>1. Quy trình giải quyết bế tắc đàm phán</h3>\n            <p>Bế tắc (Scheitern) ➡️ Hòa giải (Schlichtung) ➡️ Bỏ phiếu trưng cầu (Urabstimmung >= 75%) ➡️ Đình công (Streik) / Bãi công (Aussperrung) ➡️ Thỏa thuận mới.</p>\n            <h3>2. Chi tiết các hình thức Đấu tranh lao động</h3>\n            <ul>\n              <li><b>Schlichtung (Hòa giải):</b> Trọng tài độc lập đứng ra tìm giải pháp trung hòa.</li>\n              <li><b>Urabstimmung (Bỏ phiếu):</b> Cần ít nhất <b>75% đoàn viên công đoàn</b> bỏ phiếu đồng ý để khởi động đình công.</li>\n              <li><b>Streik (Đình công):</b> NLĐ ngừng làm việc tập thể do Công đoàn tổ chức. Công đoàn chi trả tiền hỗ trợ (<span class=\"term\" data-de=\"Streikgeld\" data-vi=\"Tiền hỗ trợ đình công\">Streikgeld</span>).</li>\n              <li><b>Aussperrung (Bãi công / Khóa cửa):</b> Biện pháp đáp trả của Chủ (tạm thời không cho NLĐ vào làm và không trả lương).</li>\n              <li><span class=\"term\" data-de=\"Wilder Streik\" data-vi=\"Đình công tự phát\">Wilder Streik</span>: Đình công không do Công đoàn tổ chức 🚫 <b>TRÁI PHÁP LUẬT</b> -> NLĐ có thể bị sa thải fristlos ngay lập tức!</li>\n            </ul>",
+          "content": "<h2> LS29, LS30, LS32, LS33 & LS34 · Schlichtung, Streik & Arbeitskampf</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 29, 30, 32, 33, 34 / LF 01-LS29 đến LS34)</div>\n            <h3>1. Quy trình giải quyết bế tắc đàm phán</h3>\n            <p>Bế tắc (Scheitern) → Hòa giải (Schlichtung) → Bỏ phiếu trưng cầu (Urabstimmung >= 75%) → Đình công (Streik) / Bãi công (Aussperrung) → Thỏa thuận mới.</p>\n            <h3>2. Chi tiết các hình thức Đấu tranh lao động</h3>\n            <ul>\n              <li><b>Schlichtung (Hòa giải):</b> Trọng tài độc lập đứng ra tìm giải pháp trung hòa.</li>\n              <li><b>Urabstimmung (Bỏ phiếu):</b> Cần ít nhất <b>75% đoàn viên công đoàn</b> bỏ phiếu đồng ý để khởi động đình công.</li>\n              <li><b>Streik (Đình công):</b> NLĐ ngừng làm việc tập thể do Công đoàn tổ chức. Công đoàn chi trả tiền hỗ trợ (<span class=\"term\" data-de=\"Streikgeld\" data-vi=\"Tiền hỗ trợ đình công\">Streikgeld</span>).</li>\n              <li><b>Aussperrung (Bãi công / Khóa cửa):</b> Biện pháp đáp trả của Chủ (tạm thời không cho NLĐ vào làm và không trả lương).</li>\n              <li><span class=\"term\" data-de=\"Wilder Streik\" data-vi=\"Đình công tự phát\">Wilder Streik</span>: Đình công không do Công đoàn tổ chức  <b>TRÁI PHÁP LUẬT</b> -> NLĐ có thể bị sa thải fristlos ngay lập tức!</li>\n            </ul>",
           "qa": [
             {
               "q": "Cần bao nhiêu % đoàn viên công đoàn bỏ phiếu đồng ý trong cuộc Urabstimmung để khởi động đình công?",
@@ -2129,10 +2129,10 @@
       "items": [
         {
           "id": "wiko-lohnabrechnung-sozial",
-          "icon": "💰",
+          "icon": "",
           "name": "LS35–LS41 & LS43 · Lohnabrechnung & Sozialversicherung",
           "desc": "5 Säulen der Sozialversicherung · Tỷ lệ đóng 50/50 · Pflege 2025 · Brutto zu Netto (Leo Scienca & Frau Wolters)",
-          "content": "<h2>💰 LS35–LS41 & LS43 · Lohnabrechnung & 5 Säulen der Sozialversicherung</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 35–41, 43 / LF 01-LS35 đến LS43) · Tỷ lệ đóng BHXH 50/50</div>\n            <h3>1. 5 Trụ cột Bảo hiểm Xã hội (Sozialversicherung)</h3>\n            <ol>\n              <li><b>Krankenversicherung (BH Y tế):</b> Chi trả khám chữa bệnh.</li>\n              <li><b>Pflegeversicherung (BH Chăm sóc dài hạn):</b> Chi trả khi tàn tật/già yếu (Cập nhật quy định 2025 theo số con).</li>\n              <li><b>Rentenversicherung (BH Hưu trí):</b> Trả lương hưu khi về già.</li>\n              <li><b>Arbeitslosenversicherung (BH Thất nghiệp):</b> Hỗ trợ tài chính khi mất việc.</li>\n              <li><b>Unfallversicherung (BH Tai nạn lao động):</b> 100% do Chủ chi trả (Berufsgenossenschaft).</li>\n            </ol>\n            <p><i>Lưu ý: 4 quỹ đầu đóng chia đều 50/50 giữa Chủ và NLĐ. Quỹ Unfallversicherung do Chủ trả 100%.</i></p>\n            <h3>2. Khấu trừ Lương (Brutto zu Netto - Bài tập Leo Scienca LS40/41 & Frau Wolters LS43)</h3>\n            <p>Bruttolohn ➖ (Lohnsteuer + Solidaritätszuschlag + Kirchensteuer) ➖ Sozialversicherungsbeiträge = <b>Nettolohn</b>.</p>",
+          "content": "<h2> LS35–LS41 & LS43 · Lohnabrechnung & 5 Säulen der Sozialversicherung</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 35–41, 43 / LF 01-LS35 đến LS43) · Tỷ lệ đóng BHXH 50/50</div>\n            <h3>1. 5 Trụ cột Bảo hiểm Xã hội (Sozialversicherung)</h3>\n            <ol>\n              <li><b>Krankenversicherung (BH Y tế):</b> Chi trả khám chữa bệnh.</li>\n              <li><b>Pflegeversicherung (BH Chăm sóc dài hạn):</b> Chi trả khi tàn tật/già yếu (Cập nhật quy định 2025 theo số con).</li>\n              <li><b>Rentenversicherung (BH Hưu trí):</b> Trả lương hưu khi về già.</li>\n              <li><b>Arbeitslosenversicherung (BH Thất nghiệp):</b> Hỗ trợ tài chính khi mất việc.</li>\n              <li><b>Unfallversicherung (BH Tai nạn lao động):</b> 100% do Chủ chi trả (Berufsgenossenschaft).</li>\n            </ol>\n            <p><i>Lưu ý: 4 quỹ đầu đóng chia đều 50/50 giữa Chủ và NLĐ. Quỹ Unfallversicherung do Chủ trả 100%.</i></p>\n            <h3>2. Khấu trừ Lương (Brutto zu Netto - Bài tập Leo Scienca LS40/41 & Frau Wolters LS43)</h3>\n            <p>Bruttolohn  (Lohnsteuer + Solidaritätszuschlag + Kirchensteuer)  Sozialversicherungsbeiträge = <b>Nettolohn</b>.</p>",
           "qa": [
             {
               "q": "5 Trụ cột của Bảo hiểm Xã hội (Sozialversicherung) tại Đức là gì?",
@@ -2151,10 +2151,10 @@
         },
         {
           "id": "wiko-steuerklassen",
-          "icon": "📊",
+          "icon": "",
           "name": "LS42 & LS44–LS48 · Steuerklassen & Lạm phát",
           "desc": "6 Steuerklassen · Lựa chọn IV/IV vs. III/V · Lạm phát (Inflation) & Bài tập tra bảng thuế",
-          "content": "<h2>📊 LS42 & LS44–LS48 · Die 6 Steuerklassen in Deutschland & Inflation</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 42, 44–48 / LF 01-LS42, LS44 đến LS48)</div>\n            <h3>1. Bảng phân loại 6 Bậc Thuế (Steuerklassen - LS44)</h3>\n            <ul>\n              <li><b>Steuerklasse I:</b> Độc thân (Ledig), ly hôn, sống ly thân.</li>\n              <li><b>Steuerklasse II:</b> Bố/mẹ đơn thân nuôi con (Alleinerziehend).</li>\n              <li><b>Steuerklasse III:</b> Đã kết hôn, người có thu nhập cao hơn chọn (vợ/chồng làm lớp V).</li>\n              <li><b>Steuerklasse IV:</b> Đã kết hôn, hai vợ chồng có thu nhập ngang nhau.</li>\n              <li><b>Steuerklasse V:</b> Đã kết hôn, người có thu nhập thấp hơn chọn (vợ/chồng làm lớp III).</li>\n              <li><b>Steuerklasse VI:</b> Người làm công việc thứ 2 (Zweitjob / Công việc làm thêm thứ hai).</li>\n            </ul>\n            <h3>2. Khái niệm Lạm phát (Inflation - LS42)</h3>\n            <p>Lạm phát là sự gia tăng mức giá chung kéo dài làm giảm sức mua (Kaufkraftverlust) của tiền tệ. Các loại lạm phát: Nachfrageinflation (do cầu tăng), Kostendruckinflation (do chi phí đầu vào tăng).</p>",
+          "content": "<h2> LS42 & LS44–LS48 · Die 6 Steuerklassen in Deutschland & Inflation</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 42, 44–48 / LF 01-LS42, LS44 đến LS48)</div>\n            <h3>1. Bảng phân loại 6 Bậc Thuế (Steuerklassen - LS44)</h3>\n            <ul>\n              <li><b>Steuerklasse I:</b> Độc thân (Ledig), ly hôn, sống ly thân.</li>\n              <li><b>Steuerklasse II:</b> Bố/mẹ đơn thân nuôi con (Alleinerziehend).</li>\n              <li><b>Steuerklasse III:</b> Đã kết hôn, người có thu nhập cao hơn chọn (vợ/chồng làm lớp V).</li>\n              <li><b>Steuerklasse IV:</b> Đã kết hôn, hai vợ chồng có thu nhập ngang nhau.</li>\n              <li><b>Steuerklasse V:</b> Đã kết hôn, người có thu nhập thấp hơn chọn (vợ/chồng làm lớp III).</li>\n              <li><b>Steuerklasse VI:</b> Người làm công việc thứ 2 (Zweitjob / Công việc làm thêm thứ hai).</li>\n            </ul>\n            <h3>2. Khái niệm Lạm phát (Inflation - LS42)</h3>\n            <p>Lạm phát là sự gia tăng mức giá chung kéo dài làm giảm sức mua (Kaufkraftverlust) của tiền tệ. Các loại lạm phát: Nachfrageinflation (do cầu tăng), Kostendruckinflation (do chi phí đầu vào tăng).</p>",
           "qa": [
             {
               "q": "Người làm thêm công việc thứ 2 (Zweitjob) tại Đức bắt buộc phải chịu bậc thuế nào?",
@@ -2180,10 +2180,10 @@
       "items": [
         {
           "id": "kaufvertrag",
-          "icon": "🛒",
+          "icon": "",
           "name": "Kaufvertrag, Mängel & Leistungsstörungen (Năm 2)",
           "desc": "Angebot & Annahme · Sachmangel vs. Rechtsmangel · Nacherfüllung & Minderung · Lieferverzug",
-          "content": "<h2>🛒 Kaufvertrag, Mängel & Leistungsstörungen (Chủ đề Năm 2)</h2>\n            <div class=\"hint\">Cơ sở pháp lý Hợp đồng mua bán (§ 433 BGB) & Xử lý vi phạm/hàng lỗi (Chủ đề Năm 2)</div>\n            <h3>1. Sự hình thành Kaufvertrag</h3>\n            <p>Hình thành khi có <b>2 Tuyên bố ý chí phù hợp (zwei übereinstimmende Willenserklärungen)</b>: <span class=\"term\" data-de=\"Angebot\" data-vi=\"Chào hàng / Đề nghị\">Angebot</span> + <span class=\"term\" data-de=\"Annahme\" data-vi=\"Chấp nhận\">Annahme</span>.</p>\n            <h3>2. Nghĩa vụ hai bên (§ 433 BGB)</h3>\n            <ul>\n              <li><b>Verkäufer (Người bán):</b> Giao hàng đúng hạn, không có lỗi (mängelfrei), chuyển giao sở hữu.</li>\n              <li><b>Käufer (Người mua):</b> Nhận hàng (Abnahme) và trả tiền đúng thỏa thuận (Zahlung des Kaufpreises).</li>\n            </ul>\n            <h3>3. Quyền của Người mua khi hàng bị lỗi (Mangel)</h3>\n            <ol>\n              <li><b>Nacherfüllung (Ưu tiên số 1):</b> Yêu cầu sửa chữa (Nachbesserung) hoặc giao hàng mới thay thế (Neulieferung).</li>\n              <li><b>Nếu Nacherfüllung thất bại (sau 2 lần sửa không được):</b> Có quyền Giảm giá (Minderung), Hủy hợp đồng trả hàng (Rücktritt), hoặc Yêu cầu bồi thường thiệt hại (Schadensersatz).</li>\n            </ol>",
+          "content": "<h2> Kaufvertrag, Mängel & Leistungsstörungen (Chủ đề Năm 2)</h2>\n            <div class=\"hint\">Cơ sở pháp lý Hợp đồng mua bán (§ 433 BGB) & Xử lý vi phạm/hàng lỗi (Chủ đề Năm 2)</div>\n            <h3>1. Sự hình thành Kaufvertrag</h3>\n            <p>Hình thành khi có <b>2 Tuyên bố ý chí phù hợp (zwei übereinstimmende Willenserklärungen)</b>: <span class=\"term\" data-de=\"Angebot\" data-vi=\"Chào hàng / Đề nghị\">Angebot</span> + <span class=\"term\" data-de=\"Annahme\" data-vi=\"Chấp nhận\">Annahme</span>.</p>\n            <h3>2. Nghĩa vụ hai bên (§ 433 BGB)</h3>\n            <ul>\n              <li><b>Verkäufer (Người bán):</b> Giao hàng đúng hạn, không có lỗi (mängelfrei), chuyển giao sở hữu.</li>\n              <li><b>Käufer (Người mua):</b> Nhận hàng (Abnahme) và trả tiền đúng thỏa thuận (Zahlung des Kaufpreises).</li>\n            </ul>\n            <h3>3. Quyền của Người mua khi hàng bị lỗi (Mangel)</h3>\n            <ol>\n              <li><b>Nacherfüllung (Ưu tiên số 1):</b> Yêu cầu sửa chữa (Nachbesserung) hoặc giao hàng mới thay thế (Neulieferung).</li>\n              <li><b>Nếu Nacherfüllung thất bại (sau 2 lần sửa không được):</b> Có quyền Giảm giá (Minderung), Hủy hợp đồng trả hàng (Rücktritt), hoặc Yêu cầu bồi thường thiệt hại (Schadensersatz).</li>\n            </ol>",
           "qa": [
             {
               "q": "Hợp đồng mua bán (Kaufvertrag) được hình thành như thế nào?",
@@ -2464,7 +2464,7 @@
     themeTemplate(id, name) {
       return {
         id,
-        icon: "📘",
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
         name,
         desc: "",
         content: `<h2>${name}</h2><div class="hint">Inhalt folgt.</div>`,

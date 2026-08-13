@@ -9,12 +9,12 @@ window.DEUTSCH_A1 = {
       id: "u1",
       title: "Begrüßung & Vorstellung",
       desc: "Hallo · Namen · Länder und Sprachen · Zahlen 1–20",
-      icon: "👋",
+      icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v2"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg>`,
       lektionen: [
         {
           id: "u1-l1",
           name: "Hallo! Ich heiße…",
-          content: `<h2>👋 Hallo! Ich heiße …</h2>
+          content: `<h2>Hallo! Ich heiße …</h2>
 <div class="hint">Chào hỏi · giới thiệu tên · từ lịch sự Sie vs du</div>
 <h3 class="sub">1. Chào hỏi</h3>
 <ul>
@@ -31,7 +31,7 @@ window.DEUTSCH_A1 = {
   <tr><th>Sie (lịch sự)</th><td>khách hàng, người lạ, cấp trên, người lớn tuổi</td></tr>
   <tr><th>du (thân mật)</th><td>bạn bè, đồng nghiệp thân, trẻ em</td></tr>
 </table>
-<div class="note">💡 Schnellmerk: <b>heißen</b> chia: ich heiße · du heißt · er/sie/es heißt · Sie heißen.</div>
+<div class="note">Schnellmerk: <b>heißen</b> chia: ich heiße · du heißt · er/sie/es heißt · Sie heißen.</div>
 <h3 class="sub">4. Luyện tập giao tiếp</h3>
 <ul>
   <li><span class="term" data-de="Wie geht es dir?" data-vi="Bạn khỏe không?">Wie geht es dir?</span> — <span class="term" data-de="Danke, gut" data-vi="Cảm ơn, tôi khỏe">Danke, gut</span>.</li>
@@ -58,9 +58,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u1-l2",
           name: "Woher kommst du?",
-          icon: "🌍",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18z"/></svg>`,
           desc: "Nguồn gốc · quốc tịch · kommen & wohnen",
-          content: `<h2>🌍 Woher kommst du?</h2>
+          content: `<h2>Woher kommst du?</h2>
 <div class="hint">Hỏi nguồn gốc · nơi sống · quốc tịch</div>
 <h3 class="sub">1. Woher kommst du?</h3>
 <ul>
@@ -83,7 +83,7 @@ window.DEUTSCH_A1 = {
   <tr><td>Frankreich</td><td><span class="term" data-de="Franzose" data-vi="người Pháp (nam)">Franzose</span> / <span class="term" data-de="Französin" data-vi="người Pháp (nữ)">Französin</span></td></tr>
   <tr><td>Spanien</td><td><span class="term" data-de="Spanier" data-vi="người Tây Ban Nha (nam)">Spanier</span> / <span class="term" data-de="Spanierin" data-vi="người Tây Ban Nha (nữ)">Spanierin</span></td></tr>
 </table>
-<div class="note">💡 Schnellmerk: Ich bin <b>Vietnamese</b> = Ich <b>komme aus</b> Vietnam. Nguồn gốc hỏi bằng <b>woher</b>, nơi sống hỏi bằng <b>wo</b>.</div>`,
+<div class="note">Schnellmerk: Ich bin <b>Vietnamese</b> = Ich <b>komme aus</b> Vietnam. Nguồn gốc hỏi bằng <b>woher</b>, nơi sống hỏi bằng <b>wo</b>.</div>`,
           grammar: [
             {
               id: "a1-woher-wo",
@@ -105,9 +105,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u1-l3",
           name: "Sprachen & Länder",
-          icon: "🗣️",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>`,
           desc: "Ngôn ngữ · ich spreche … · đại từ nhân xưng",
-          content: `<h2>🗣️ Sprachen & Länder</h2>
+          content: `<h2>Sprachen & Länder</h2>
 <div class="hint">Ngôn ngữ · ich spreche … · đại từ nhân xưng</div>
 <h3 class="sub">1. Ngôn ngữ</h3>
 <ul>
@@ -126,7 +126,7 @@ window.DEUTSCH_A1 = {
   <tr><td>số nhiều 2</td><td><span class="term" data-de="ihr" data-vi="các bạn">ihr</span></td><td>ihr seid</td></tr>
   <tr><td>số nhiều 3</td><td><span class="term" data-de="sie" data-vi="họ">sie</span> / <span class="term" data-de="Sie" data-vi="ngài, quý vị (lịch sự)">Sie</span></td><td>sie sind</td></tr>
 </table>
-<div class="note">💡 Schnellmerk: <b>Sie</b> (lịch sự) luôn viết hoa — khác <b>sie</b> (cô ấy / họ) viết thường. Đại từ <b>sie</b> (cô ấy) chia động từ như <b>er/es</b>.</div>`,
+<div class="note">Schnellmerk: <b>Sie</b> (lịch sự) luôn viết hoa — khác <b>sie</b> (cô ấy / họ) viết thường. Đại từ <b>sie</b> (cô ấy) chia động từ như <b>er/es</b>.</div>`,
           grammar: [
             {
               id: "a1-pronomen",
@@ -144,9 +144,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u1-l4",
           name: "Zahlen 1–20",
-          icon: "🔢",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h16"/><path d="M4 15h16"/><path d="M10 3 8 21"/><path d="M16 3l-2 18"/></svg>`,
           desc: "Đếm 1–20 · cách đọc số",
-          content: `<h2>🔢 Zahlen 1–20</h2>
+          content: `<h2>Zahlen 1–20</h2>
 <div class="hint">Đếm từ 1 đến 20 · mẹo nhớ</div>
 <h3 class="sub">1. Từ 1 đến 10</h3>
 <ul>
@@ -159,8 +159,8 @@ window.DEUTSCH_A1 = {
   <li><span class="term" data-de="sechzehn" data-vi="mười sáu">16 sechzehn</span> · <span class="term" data-de="siebzehn" data-vi="mười bảy">17 siebzehn</span> · <span class="term" data-de="achtzehn" data-vi="mười tám">18 achtzehn</span> · <span class="term" data-de="neunzehn" data-vi="mười chín">19 neunzehn</span> · <span class="term" data-de="zwanzig" data-vi="hai mươi">20 zwanzig</span></li>
 </ul>
 <h3 class="sub">3. Mẹo nhớ</h3>
-<div class="note">💡 Schnellmerk: 13–19 = hàng đơn vị + <b>zehn</b> (mười): drei → drei<b>zehn</b>. Riêng 16 = sech<b>zehn</b> (mất s) và 17 = sieb<b>zehn</b> (mất en).</div>
-<div class="note">💡 Schnellmerk: 11 <b>elf</b> và 12 <b>zwölf</b> là hai số đặc biệt, không theo quy tắc.</div>`,
+<div class="note">Schnellmerk: 13–19 = hàng đơn vị + <b>zehn</b> (mười): drei → drei<b>zehn</b>. Riêng 16 = sech<b>zehn</b> (mất s) và 17 = sieb<b>zehn</b> (mất en).</div>
+<div class="note">Schnellmerk: 11 <b>elf</b> và 12 <b>zwölf</b> là hai số đặc biệt, không theo quy tắc.</div>`,
           listen: [
             { id: "u1-l4-l1", text: "eins, zwei, drei, vier, fünf", tip: "Đếm chậm, nghe rõ từng số", slow: true },
             { id: "u1-l4-l2", text: "elf, zwölf, dreizehn, vierzehn, fünfzehn" },
@@ -173,9 +173,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u1-l5",
           name: "Das Alphabet",
-          icon: "🔤",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>`,
           desc: "Bảng chữ cái · buchstabieren",
-          content: `<h2>🔤 Das Alphabet</h2>
+          content: `<h2>Das Alphabet</h2>
 <div class="hint">Bảng chữ cái · đánh vần (buchstabieren)</div>
 <h3 class="sub">1. Bảng chữ cái</h3>
 <ul>
@@ -192,7 +192,7 @@ window.DEUTSCH_A1 = {
   <li><span class="term" data-de="Wie schreibt man das?" data-vi="Từ đó viết thế nào?">Wie schreibt man das?</span> — A wie Anna, B wie Berta.</li>
   <li><span class="term" data-de="das Wort" data-vi="từ">Wort</span> · <span class="term" data-de="der Name" data-vi="tên">Name</span> · <span class="term" data-de="noch einmal" data-vi="lại một lần nữa">Noch einmal</span>, bitte.</li>
 </ul>
-<div class="note">💡 Schnellmerk: Khi đánh vần dùng tên mẫu: <b>A wie Anna</b>, <b>B wie Berta</b> — tránh nhầm khi nghe qua điện thoại.</div>`,
+<div class="note">Schnellmerk: Khi đánh vần dùng tên mẫu: <b>A wie Anna</b>, <b>B wie Berta</b> — tránh nhầm khi nghe qua điện thoại.</div>`,
           listen: [
             { id: "u1-l5-l1", text: "A wie Anna, B wie Berta, C wie Cäsar", tip: "Nghe cách đọc từng chữ cái", slow: true },
             { id: "u1-l5-l2", text: "Wie schreibt man das? — M-U-E-L-L-E-R" }
@@ -204,9 +204,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u1-l6",
           name: "Telefonnummer",
-          icon: "📞",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`,
           desc: "Hỏi và nói số điện thoại",
-          content: `<h2>📞 Telefonnummer</h2>
+          content: `<h2>Telefonnummer</h2>
 <div class="hint">Hỏi số điện thoại · đọc số theo nhóm</div>
 <h3 class="sub">1. Hỏi số điện thoại</h3>
 <ul>
@@ -221,7 +221,7 @@ window.DEUTSCH_A1 = {
   <li>00 → <span class="term" data-de="Doppel-Null" data-vi="hai số 0 liền nhau">Doppel-Null</span>: 0049 → null <b>Doppel-Null</b> vier neun</li>
 </ul>
 <h3 class="sub">3. Mẹo và luyện tập</h3>
-<div class="note">💡 Schnellmerk: Số điện thoại luôn đọc <b>từng chữ số</b>: 0176 55 22 33 → null eins sieben sechs, fünf fünf, zwei zwei, drei drei.</div>
+<div class="note">Schnellmerk: Số điện thoại luôn đọc <b>từng chữ số</b>: 0176 55 22 33 → null eins sieben sechs, fünf fünf, zwei zwei, drei drei.</div>
 <ul>
   <li><span class="term" data-de="die Vorwahl" data-vi="mã vùng">Vorwahl</span>: 030 (Berlin) · 089 (München) · 040 (Hamburg)</li>
   <li>E-Mail: <span class="term" data-de="die E-Mail-Adresse" data-vi="địa chỉ email">E-Mail-Adresse</span> — <span class="term" data-de="das At-Zeichen" data-vi="dấu @">@</span> đọc là "at", <span class="term" data-de="der Punkt" data-vi="dấu chấm">Punkt</span> đọc là "Punkt".</li>
@@ -237,9 +237,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u1-l7",
           name: "Zahlen im Alltag",
-          icon: "🧮",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 6h8"/><path d="M8 10h.01"/><path d="M12 10h.01"/><path d="M16 10h.01"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg>`,
           desc: "Ôn tập số · tuổi · số nhà · giá cả",
-          content: `<h2>🧮 Zahlen im Alltag</h2>
+          content: `<h2>Zahlen im Alltag</h2>
 <div class="hint">Số trong cuộc sống · tuổi · số nhà · giá cả</div>
 <h3 class="sub">1. Tuổi</h3>
 <ul>
@@ -259,7 +259,7 @@ window.DEUTSCH_A1 = {
   <li><span class="term" data-de="vorwärts zählen" data-vi="đếm xuôi">Vorwärts zählen</span>: eins, zwei, drei, vier, fünf …</li>
   <li><span class="term" data-de="zurückzählen" data-vi="đếm lùi">Zurückzählen</span>: zehn, neun, acht, sieben, sechs …</li>
 </ul>
-<div class="note">💡 Schnellmerk: Tuổi luôn dùng <b>sein</b>: Ich bin 17 Jahre alt. Không nói "Ich habe 17 Jahre".</div>`,
+<div class="note">Schnellmerk: Tuổi luôn dùng <b>sein</b>: Ich bin 17 Jahre alt. Không nói "Ich habe 17 Jahre".</div>`,
           grammar: [
             {
               id: "a1-zahlen-alt",
@@ -283,14 +283,14 @@ window.DEUTSCH_A1 = {
       id: "u2",
       title: "Zahlen & Zeit",
       desc: "Zahlen 21–100 · Uhrzeit · Datum · Termine",
-      icon: "🕐",
+      icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>`,
       lektionen: [
         {
           id: "u2-l1",
           name: "Zahlen 21–100",
-          icon: "🔢",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h16"/><path d="M4 15h16"/><path d="M10 3 8 21"/><path d="M16 3l-2 18"/></svg>`,
           desc: "Số 21–100 · quy tắc đọc số gộp",
-          content: `<h2>🔢 Zahlen 21–100</h2>
+          content: `<h2>Zahlen 21–100</h2>
 <div class="hint">Số 21–100 · quy tắc: đơn vị + und + chục</div>
 <h3 class="sub">1. Từ 21 đến 29</h3>
 <ul>
@@ -311,8 +311,8 @@ window.DEUTSCH_A1 = {
   <tr><td>45</td><td>fünf<b>undvierzig</b></td></tr>
   <tr><td>67</td><td>sieben<b>undsechzig</b></td></tr>
 </table>
-<div class="note">💡 Schnellmerk: 21–99 = <b>đơn vị trước, chục sau</b> + und: 25 = fünf<b>und</b>zwanzig (khác tiếng Việt "hai mươi lăm").</div>
-<div class="note">💡 Schnellmerk: Chú ý ba chục bất quy tắc: 30 drei<b>ßig</b> · 60 sech<b>zig</b> · 70 sieb<b>zig</b>.</div>`,
+<div class="note">Schnellmerk: 21–99 = <b>đơn vị trước, chục sau</b> + und: 25 = fünf<b>und</b>zwanzig (khác tiếng Việt "hai mươi lăm").</div>
+<div class="note">Schnellmerk: Chú ý ba chục bất quy tắc: 30 drei<b>ßig</b> · 60 sech<b>zig</b> · 70 sieb<b>zig</b>.</div>`,
           grammar: [
             {
               id: "a1-zahlen-gross-klein",
@@ -330,9 +330,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u2-l2",
           name: "Wie alt bist du?",
-          icon: "🎂",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg>`,
           desc: "Tuổi · sinh nhật · W-Fragen",
-          content: `<h2>🎂 Wie alt bist du?</h2>
+          content: `<h2>Wie alt bist du?</h2>
 <div class="hint">Hỏi tuổi · nói tuổi · sinh nhật</div>
 <h3 class="sub">1. Hỏi và trả lời tuổi</h3>
 <ul>
@@ -347,7 +347,7 @@ window.DEUTSCH_A1 = {
   <li><span class="term" data-de="das Geburtstagsgeschenk" data-vi="quà sinh nhật">Geburtstagsgeschenk</span> · <span class="term" data-de="die Geburtstagsparty" data-vi="tiệc sinh nhật">Geburtstagsparty</span> · <span class="term" data-de="der Kuchen" data-vi="bánh ga-tô">Kuchen</span></li>
   <li><span class="term" data-de="Herzlichen Glückwunsch" data-vi="Chúc mừng!">Herzlichen Glückwunsch</span> zum Geburtstag!</li>
 </ul>
-<div class="note">💡 Schnellmerk: Tuổi dùng <b>sein</b> (bin/bist/ist…), sinh nhật dùng <b>haben</b>: Ich <b>habe</b> am 15. Juni Geburtstag.</div>`,
+<div class="note">Schnellmerk: Tuổi dùng <b>sein</b> (bin/bist/ist…), sinh nhật dùng <b>haben</b>: Ich <b>habe</b> am 15. Juni Geburtstag.</div>`,
           grammar: [
             {
               id: "a1-w-fragen",
@@ -369,9 +369,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u2-l3",
           name: "Die Wochentage",
-          icon: "📅",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`,
           desc: "Thứ trong tuần · am + thứ",
-          content: `<h2>📅 Die Wochentage</h2>
+          content: `<h2>Die Wochentage</h2>
 <div class="hint">Thứ trong tuần · am + thứ · hỏi thứ mấy</div>
 <h3 class="sub">1. Thứ trong tuần</h3>
 <ul>
@@ -389,7 +389,7 @@ window.DEUTSCH_A1 = {
   <li><span class="term" data-de="Was machst du am Montag?" data-vi="Thứ hai bạn làm gì?">Was machst du am Montag?</span> — Ich <span class="term" data-de="arbeiten" data-vi="làm việc">arbeite</span>.</li>
   <li><span class="term" data-de="die Woche" data-vi="tuần">Woche</span> · <span class="term" data-de="der Tag" data-vi="ngày">Tag</span> · <span class="term" data-de="heute" data-vi="hôm nay">heute</span> · <span class="term" data-de="morgen" data-vi="ngày mai">morgen</span></li>
 </ul>
-<div class="note">💡 Schnellmerk: 6 trong 7 thứ đều kết thúc bằng <b>-tag</b> (Mon-tag, Diens-tag…) — riêng <b>Mittwoch</b> (giữa tuần) là ngoại lệ.</div>`,
+<div class="note">Schnellmerk: 6 trong 7 thứ đều kết thúc bằng <b>-tag</b> (Mon-tag, Diens-tag…) — riêng <b>Mittwoch</b> (giữa tuần) là ngoại lệ.</div>`,
           listen: [
             { id: "u2-l3-l1", text: "Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag, Sonntag", tip: "Nghe từng thứ, chú ý trọng âm đầu từ", slow: true },
             { id: "u2-l3-l2", text: "Welcher Tag ist heute? — Heute ist Mittwoch." }
@@ -398,9 +398,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u2-l4",
           name: "Datum: Tag, Monat, Jahr",
-          icon: "🗓️",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`,
           desc: "Ngày · tháng · năm · số thứ tự",
-          content: `<h2>🗓️ Datum: Tag, Monat, Jahr</h2>
+          content: `<h2>Datum: Tag, Monat, Jahr</h2>
 <div class="hint">Ngày · tháng · năm · cách đọc ngày tháng</div>
 <h3 class="sub">1. Tháng</h3>
 <ul>
@@ -418,7 +418,7 @@ window.DEUTSCH_A1 = {
   <li><span class="term" data-de="das Jahr" data-vi="năm">Jahr</span>: heute ist der 12. August <span class="term" data-de="zweitausendsechsundzwanzig" data-vi="hai nghìn không trăm hai mươi sáu">2026</span>.</li>
   <li><span class="term" data-de="im Jahr" data-vi="vào năm">Im Jahr</span> 2000: <span class="term" data-de="zweitausend" data-vi="hai nghìn">zweitausend</span>.</li>
 </ul>
-<div class="note">💡 Schnellmerk: Đọc năm gộp trái → phải: 2026 → zwei <b>tausend</b> sechsund<b>zwanzig</b>.</div>`,
+<div class="note">Schnellmerk: Đọc năm gộp trái → phải: 2026 → zwei <b>tausend</b> sechsund<b>zwanzig</b>.</div>`,
           grammar: [
             {
               id: "a1-datum-ordinal",
@@ -436,9 +436,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u2-l5",
           name: "Wie spät ist es?",
-          icon: "🕐",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>`,
           desc: "Giờ · um + giờ · von…bis",
-          content: `<h2>🕐 Wie spät ist es?</h2>
+          content: `<h2>Wie spät ist es?</h2>
 <div class="hint">Giờ · Wie spät ist es? · um + giờ · von…bis</div>
 <h3 class="sub">1. Giờ chẵn</h3>
 <ul>
@@ -456,7 +456,7 @@ window.DEUTSCH_A1 = {
   <li>Um <span class="term" data-de="um acht Uhr" data-vi="lúc 8 giờ">acht Uhr</span> beginnt der Unterricht.</li>
   <li>Um <span class="term" data-de="um halb sieben" data-vi="lúc 6 giờ 30">halb sieben</span> stehe ich auf.</li>
 </ul>
-<div class="note">💡 Schnellmerk: <b>Wie spät ist es?</b> → <b>Es ist …</b> (giờ hiện tại). <b>Um wie viel Uhr?</b> → <b>Um …</b> (thời điểm làm gì đó). Khoảng thời gian: <b>von</b> 8 <b>bis</b> 12 Uhr.</div>`,
+<div class="note">Schnellmerk: <b>Wie spät ist es?</b> → <b>Es ist …</b> (giờ hiện tại). <b>Um wie viel Uhr?</b> → <b>Um …</b> (thời điểm làm gì đó). Khoảng thời gian: <b>von</b> 8 <b>bis</b> 12 Uhr.</div>`,
           grammar: [
             {
               id: "a1-uhrzeit-um",
@@ -479,9 +479,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u2-l6",
           name: "Termine & Verabredungen",
-          icon: "📆",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`,
           desc: "Lịch hẹn · đề xuất thời gian · đồng ý/từ chối",
-          content: `<h2>📆 Termine & Verabredungen</h2>
+          content: `<h2>Termine & Verabredungen</h2>
 <div class="hint">Lịch hẹn · đề xuất thời gian · đồng ý / từ chối</div>
 <h3 class="sub">1. Đặt lịch hẹn</h3>
 <ul>
@@ -496,7 +496,7 @@ window.DEUTSCH_A1 = {
   <li>Da habe ich <span class="term" data-de="keine Zeit" data-vi="không có thời gian">keine Zeit</span>. Vielleicht <span class="term" data-de="am Freitag" data-vi="vào thứ sáu">am Freitag</span>?</li>
   <li>Gut, <span class="term" data-de="bis Montag" data-vi="hẹn gặp thứ hai">bis Montag</span>! · <span class="term" data-de="das Treffen" data-vi="buổi gặp mặt">Treffen</span> · <span class="term" data-de="die Verabredung" data-vi="cuộc hẹn">Verabredung</span></li>
 </ul>
-<div class="note">💡 Schnellmerk: Lịch hẹn cần đủ 3 yếu tố: <b>welcher Tag</b> (thứ mấy) + <b>um wie viel Uhr</b> (mấy giờ) + <b>wo</b> (ở đâu).</div>`,
+<div class="note">Schnellmerk: Lịch hẹn cần đủ 3 yếu tố: <b>welcher Tag</b> (thứ mấy) + <b>um wie viel Uhr</b> (mấy giờ) + <b>wo</b> (ở đâu).</div>`,
           grammar: [
             {
               id: "a1-termine-am",
@@ -517,9 +517,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u2-l7",
           name: "Mein Tag",
-          icon: "🌅",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"/><line x1="1" y1="18" x2="3" y2="18"/><line x1="21" y1="18" x2="23" y2="18"/><line x1="18.36" y1="11.64" x2="19.78" y2="10.22"/><line x1="23" y1="22" x2="1" y2="22"/><polyline points="8 6 12 2 16 6"/></svg>`,
           desc: "Thói quen hằng ngày · động từ tách",
-          content: `<h2>🌅 Mein Tag</h2>
+          content: `<h2>Mein Tag</h2>
 <div class="hint">Thói quen hằng ngày · động từ tách · um/von…bis</div>
 <h3 class="sub">1. Buổi sáng và trưa</h3>
 <ul>
@@ -534,7 +534,7 @@ window.DEUTSCH_A1 = {
   <li>Ich koche das <span class="term" data-de="das Abendessen" data-vi="bữa tối">Abendessen</span> und <span class="term" data-de="fernsehen" data-vi="xem TV">sehe fern</span>.</li>
   <li>Um <span class="term" data-de="zweiundzwanzig Uhr" data-vi="22 giờ">zweiundzwanzig Uhr</span> <span class="term" data-de="schlafen" data-vi="ngủ">schlafe</span> ich.</li>
 </ul>
-<div class="note">💡 Schnellmerk: Động từ tách (<b>auf</b>stehen, <b>fern</b>sehen): khi chia, tiền tố rời xuống <b>cuối câu</b> — ich stehe um 6 Uhr <b>auf</b>.</div>`,
+<div class="note">Schnellmerk: Động từ tách (<b>auf</b>stehen, <b>fern</b>sehen): khi chia, tiền tố rời xuống <b>cuối câu</b> — ich stehe um 6 Uhr <b>auf</b>.</div>`,
           grammar: [
             {
               id: "a1-trennbare-verben",
@@ -558,14 +558,14 @@ window.DEUTSCH_A1 = {
       id: "u3",
       title: "Familie & Freunde",
       desc: "Gia đình · mein/dein · nghề nghiệp · mô tả người",
-      icon: "👨‍👩‍👧‍👦",
+      icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
       lektionen: [
         {
           id: "u3-l1",
           name: "Die Familie",
-          icon: "👨‍👩‍👧",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
           desc: "Thành viên gia đình · mein/meine",
-          content: `<h2>👨‍👩‍👧 Die Familie</h2>
+          content: `<h2>Die Familie</h2>
 <div class="hint">Thành viên gia đình · sở hữu mein/meine</div>
 <h3 class="sub">1. Bố mẹ và anh chị em</h3>
 <ul>
@@ -584,7 +584,7 @@ window.DEUTSCH_A1 = {
   <tr><td>die</td><td><span class="term" data-de="meine Mutter" data-vi="mẹ của tôi">meine Mutter</span></td><td><span class="term" data-de="deine Mutter" data-vi="mẹ của bạn">deine Mutter</span></td></tr>
   <tr><td>das/Plural</td><td><span class="term" data-de="mein Kind" data-vi="con của tôi">mein Kind</span> · <span class="term" data-de="meine Kinder" data-vi="các con của tôi">meine Kinder</span></td><td><span class="term" data-de="deine Kinder" data-vi="các con của bạn">deine Kinder</span></td></tr>
 </table>
-<div class="note">💡 Schnellmerk: <b>mein</b> (của tôi) đi với der/das, <b>meine</b> đi với die và số nhiều — giống hệt <b>dein/deine</b> (của bạn).</div>`,
+<div class="note">Schnellmerk: <b>mein</b> (của tôi) đi với der/das, <b>meine</b> đi với die và số nhiều — giống hệt <b>dein/deine</b> (của bạn).</div>`,
           listen: [
             { id: "u3-l1-l1", text: "Das ist meine Familie: mein Vater, meine Mutter und meine Schwester.", tip: "Nghe các từ mein/meine trong câu", slow: true },
             { id: "u3-l1-l2", text: "Hast du Geschwister? — Ja, ich habe einen Bruder." }
@@ -593,9 +593,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u3-l2",
           name: "Mein und dein",
-          icon: "👤",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
           desc: "Đại từ sở hữu mein/dein · khớp giống danh từ",
-          content: `<h2>👤 Mein und dein</h2>
+          content: `<h2>Mein und dein</h2>
 <div class="hint">Đại từ sở hữu mein/dein · khớp giống danh từ</div>
 <h3 class="sub">1. Quy tắc mein/dein</h3>
 <ul>
@@ -616,7 +616,7 @@ window.DEUTSCH_A1 = {
   <li><span class="term" data-de="Wie heißt dein Vater?" data-vi="Bố của bạn tên gì?">Wie heißt dein Vater?</span> — Er heißt Nam.</li>
   <li><span class="term" data-de="Ist das dein Bruder?" data-vi="Đó là anh/em trai của bạn à?">Ist das dein Bruder?</span> — Ja, das ist mein Bruder.</li>
 </ul>
-<div class="note">💡 Schnellmerk: Possessivartikel đứng trước danh từ và khớp giống: der → <b>mein</b>, die → <b>meine</b>, das → <b>mein</b>, Plural → <b>meine</b>.</div>`,
+<div class="note">Schnellmerk: Possessivartikel đứng trước danh từ và khớp giống: der → <b>mein</b>, die → <b>meine</b>, das → <b>mein</b>, Plural → <b>meine</b>.</div>`,
           grammar: [
             {
               id: "a1-possessivartikel",
@@ -637,9 +637,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u3-l3",
           name: "Die Verwandten",
-          icon: "👪",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
           desc: "Ông bà · cô chú cậu dì · anh em họ",
-          content: `<h2>👪 Die Verwandten</h2>
+          content: `<h2>Die Verwandten</h2>
 <div class="hint">Ông bà · cô chú cậu dì · anh em họ</div>
 <h3 class="sub">1. Ông bà</h3>
 <ul>
@@ -658,7 +658,7 @@ window.DEUTSCH_A1 = {
   <li><span class="term" data-de="der Enkel" data-vi="cháu trai (con của con)">Enkel</span> · <span class="term" data-de="die Enkelin" data-vi="cháu gái (con của con)">Enkelin</span></li>
   <li><span class="term" data-de="die Verwandten" data-vi="họ hàng (số nhiều)">Verwandten</span> · <span class="term" data-de="der Verwandte" data-vi="người họ hàng">Verwandte</span></li>
 </ul>
-<div class="note">💡 Schnellmerk: <b>Großvater/Großmutter</b> = ông/bà; thân mật gọi <b>Opa/Oma</b>. Họ hàng nói chung là <b>die Verwandten</b>.</div>`,
+<div class="note">Schnellmerk: <b>Großvater/Großmutter</b> = ông/bà; thân mật gọi <b>Opa/Oma</b>. Họ hàng nói chung là <b>die Verwandten</b>.</div>`,
           listen: [
             { id: "u3-l3-l1", text: "Mein Opa und meine Oma wohnen in Hanoi.", tip: "Nghe quan hệ họ hàng trong câu", slow: true },
             { id: "u3-l3-l2", text: "Ich habe einen Onkel und eine Tante. Mein Cousin heißt Minh." }
@@ -667,9 +667,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u3-l4",
           name: "Berufe",
-          icon: "🧑‍🍳",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
           desc: "Nghề nghiệp · Was bist du von Beruf? · nam/nữ",
-          content: `<h2>🧑‍🍳 Berufe</h2>
+          content: `<h2>Berufe</h2>
 <div class="hint">Nghề nghiệp · Was bist du von Beruf? · nam/nữ</div>
 <h3 class="sub">1. Hỏi nghề nghiệp</h3>
 <ul>
@@ -689,7 +689,7 @@ window.DEUTSCH_A1 = {
   <li><span class="term" data-de="der Student" data-vi="sinh viên (nam)">Student</span> · <span class="term" data-de="die Studentin" data-vi="sinh viên (nữ)">Studentin</span> · <span class="term" data-de="die Krankenschwester" data-vi="y tá">Krankenschwester</span></li>
   <li><span class="term" data-de="der Bäcker" data-vi="thợ làm bánh (nam)">Bäcker</span> · <span class="term" data-de="der Ingenieur" data-vi="kỹ sư">Ingenieur</span> · <span class="term" data-de="der Beruf" data-vi="nghề nghiệp">Beruf</span></li>
 </ul>
-<div class="note">💡 Schnellmerk: Hỏi nghề luôn dùng <b>sein</b> + mạo từ rỗng: Ich bin <b>Koch</b> (không nói "Ich bin ein Koch"). Nghề nữ thường thêm <b>-in</b>: Verkäufer → Verkäufer<b>in</b>.</div>`,
+<div class="note">Schnellmerk: Hỏi nghề luôn dùng <b>sein</b> + mạo từ rỗng: Ich bin <b>Koch</b> (không nói "Ich bin ein Koch"). Nghề nữ thường thêm <b>-in</b>: Verkäufer → Verkäufer<b>in</b>.</div>`,
           grammar: [
             {
               id: "a1-berufe-sein",
@@ -711,9 +711,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u3-l5",
           name: "Personen beschreiben",
-          icon: "🧍",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
           desc: "Mô tả ngoại hình · tóc · mắt · khuôn mặt",
-          content: `<h2>🧍 Personen beschreiben</h2>
+          content: `<h2>Personen beschreiben</h2>
 <div class="hint">Mô tả người · dáng vóc · mái tóc · mắt</div>
 <h3 class="sub">1. Dáng vóc</h3>
 <ul>
@@ -731,7 +731,7 @@ window.DEUTSCH_A1 = {
   <li><span class="term" data-de="das Gesicht" data-vi="khuôn mặt">Gesicht</span> · <span class="term" data-de="die Nase" data-vi="mũi">Nase</span> · <span class="term" data-de="der Mund" data-vi="miệng">Mund</span> · <span class="term" data-de="das Ohr" data-vi="tai">Ohr</span></li>
   <li>Sie ist <span class="term" data-de="schön" data-vi="xinh đẹp">schön</span>. Er ist <span class="term" data-de="hübsch" data-vi="đẹp trai">hübsch</span>.</li>
 </ul>
-<div class="note">💡 Schnellmerk: Mô tả ngoại hình: <b>haben</b> + bộ phận (Sie <b>hat</b> blaue Augen) và <b>sein</b> + tính từ (Er <b>ist</b> groß).</div>`,
+<div class="note">Schnellmerk: Mô tả ngoại hình: <b>haben</b> + bộ phận (Sie <b>hat</b> blaue Augen) và <b>sein</b> + tính từ (Er <b>ist</b> groß).</div>`,
           listen: [
             { id: "u3-l5-l1", text: "Mein Bruder ist groß und hat kurze Haare.", tip: "Nghe tính từ mô tả", slow: true },
             { id: "u3-l5-l2", text: "Meine Schwester hat lange Haare und blaue Augen." }
@@ -743,9 +743,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u3-l6",
           name: "Freunde & Charakter",
-          icon: "🤝",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
           desc: "Bạn bè · tính cách · sở thích",
-          content: `<h2>🤝 Freunde & Charakter</h2>
+          content: `<h2>Freunde & Charakter</h2>
 <div class="hint">Bạn bè · tính cách · sở thích</div>
 <h3 class="sub">1. Bạn bè</h3>
 <ul>
@@ -764,7 +764,7 @@ window.DEUTSCH_A1 = {
   <li>Meine Freundin ist <span class="term" data-de="immer fröhlich" data-vi="luôn vui vẻ">immer fröhlich</span>.</li>
   <li><span class="term" data-de="das Hobby" data-vi="sở thích">Hobby</span> · <span class="term" data-de="die Hobbys" data-vi="các sở thích">Hobbys</span>: Wir spielen zusammen <span class="term" data-de="Fußball" data-vi="bóng đá">Fußball</span>.</li>
 </ul>
-<div class="note">💡 Schnellmerk: Bạn nam = <b>Freund</b>, bạn nữ = <b>Freundin</b>, nhiều bạn = <b>Freunde</b> (Plural thêm -e).</div>`,
+<div class="note">Schnellmerk: Bạn nam = <b>Freund</b>, bạn nữ = <b>Freundin</b>, nhiều bạn = <b>Freunde</b> (Plural thêm -e).</div>`,
           listen: [
             { id: "u3-l6-l1", text: "Das ist mein Freund Tom. Er ist sehr lustig.", tip: "Nghe cách giới thiệu bạn bè", slow: true },
             { id: "u3-l6-l2", text: "Meine beste Freundin ist hilfsbereit und ehrlich." }
@@ -776,9 +776,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u3-l7",
           name: "Meine Familie vorstellen",
-          icon: "🖼️",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>`,
           desc: "Giới thiệu gia đình · ôn tập mein/meine + sein",
-          content: `<h2>🖼️ Meine Familie vorstellen</h2>
+          content: `<h2>Meine Familie vorstellen</h2>
 <div class="hint">Giới thiệu gia đình · ôn tập mein/meine + sein</div>
 <h3 class="sub">1. Giới thiệu chung</h3>
 <ul>
@@ -796,7 +796,7 @@ window.DEUTSCH_A1 = {
   <li>Wir essen <span class="term" data-de="zusammen" data-vi="cùng nhau">zusammen</span> und <span class="term" data-de="fernsehen" data-vi="xem TV">sehen fern</span>.</li>
   <li>Am Sonntag besuchen wir die <span class="term" data-de="die Großeltern" data-vi="ông bà">Großeltern</span>.</li>
 </ul>
-<div class="note">💡 Schnellmerk: Trình tự giới thiệu gia đình: <b>Ich habe</b> … + <b>Mein/Meine</b> … + <b>Wir</b> … — dùng sein cho trạng thái, haben cho thành viên.</div>`,
+<div class="note">Schnellmerk: Trình tự giới thiệu gia đình: <b>Ich habe</b> … + <b>Mein/Meine</b> … + <b>Wir</b> … — dùng sein cho trạng thái, haben cho thành viên.</div>`,
           listen: [
             { id: "u3-l7-l1", text: "Ich habe eine Schwester und einen Bruder. Meine Familie ist groß.", tip: "Nghe cấu trúc Ich habe …", slow: true },
             { id: "u3-l7-l2", text: "Meine Eltern sind glücklich verheiratet." }
@@ -811,14 +811,14 @@ window.DEUTSCH_A1 = {
       id: "u4",
       title: "Essen & Trinken",
       desc: "Món ăn đồ uống · nhà hàng · Akkusativ · essen/trinken",
-      icon: "🍽️",
+      icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>`,
       lektionen: [
         {
           id: "u4-l1",
           name: "Das Frühstück",
-          icon: "🥐",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h18"/><path d="M3 12a9 9 0 0 0 18 0"/></svg>`,
           desc: "Bữa sáng · đồ ăn · frühstücken",
-          content: `<h2>🥐 Das Frühstück</h2>
+          content: `<h2>Das Frühstück</h2>
 <div class="hint">Bữa sáng · đồ ăn · frühstücken</div>
 <h3 class="sub">1. Bánh mì và đồ phết</h3>
 <ul>
@@ -835,7 +835,7 @@ window.DEUTSCH_A1 = {
   <li>Ich <span class="term" data-de="frühstücken" data-vi="ăn sáng">frühstücke</span> um sieben Uhr.</li>
   <li>Ich esse <span class="term" data-de="das Frühstück" data-vi="bữa sáng">Frühstück</span> mit <span class="term" data-de="meiner Familie" data-vi="gia đình của tôi">meiner Familie</span>.</li>
 </ul>
-<div class="note">💡 Schnellmerk: Danh từ đồ ăn có article riêng (das Brot, die Milch, der Kaffee) — học theo article: <b>das/die/der</b> + từ.</div>`,
+<div class="note">Schnellmerk: Danh từ đồ ăn có article riêng (das Brot, die Milch, der Kaffee) — học theo article: <b>das/die/der</b> + từ.</div>`,
           listen: [
             { id: "u4-l1-l1", text: "Ich frühstücke um sieben Uhr. Ich esse Brot mit Käse.", tip: "Nghe từ vựng đồ ăn", slow: true },
             { id: "u4-l1-l2", text: "Zum Frühstück trinke ich Kaffee mit Milch." }
@@ -844,9 +844,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u4-l2",
           name: "Obst & Gemüse",
-          icon: "🍎",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>`,
           desc: "Hoa quả và rau củ · mua theo cân",
-          content: `<h2>🍎 Obst & Gemüse</h2>
+          content: `<h2>Obst & Gemüse</h2>
 <div class="hint">Hoa quả và rau củ</div>
 <h3 class="sub">1. Hoa quả</h3>
 <ul>
@@ -863,7 +863,7 @@ window.DEUTSCH_A1 = {
   <li>Ich kaufe <span class="term" data-de="ein Kilo Äpfel" data-vi="một ki-lô táo">ein Kilo Äpfel</span>.</li>
   <li><span class="term" data-de="gesund" data-vi="tốt cho sức khỏe">Gesund</span>: Obst und Gemüse sind <span class="term" data-de="sehr gesund" data-vi="rất tốt cho sức khỏe">sehr gesund</span>.</li>
 </ul>
-<div class="note">💡 Schnellmerk: Hầu hết rau củ giống cái <b>die</b> (-e, -el): Tomate, Gurke, Kartoffel — riêng der Apfel, der Salat giống đực.</div>`,
+<div class="note">Schnellmerk: Hầu hết rau củ giống cái <b>die</b> (-e, -el): Tomate, Gurke, Kartoffel — riêng der Apfel, der Salat giống đực.</div>`,
           listen: [
             { id: "u4-l2-l1", text: "Ich kaufe ein Kilo Äpfel und zwei Bananen.", tip: "Nghe số lượng và loại quả", slow: true },
             { id: "u4-l2-l2", text: "Obst und Gemüse sind sehr gesund." }
@@ -875,9 +875,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u4-l3",
           name: "Getränke",
-          icon: "🥤",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11h13v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M17 11h2a3 3 0 0 1 0 6h-2"/></svg>`,
           desc: "Đồ uống · khát · möchten",
-          content: `<h2>🥤 Getränke</h2>
+          content: `<h2>Getränke</h2>
 <div class="hint">Đồ uống · khát · möchten</div>
 <h3 class="sub">1. Đồ uống cơ bản</h3>
 <ul>
@@ -895,7 +895,7 @@ window.DEUTSCH_A1 = {
   <li>Ich <span class="term" data-de="möchten" data-vi="muốn (lịch sự)">möchte</span> ein <span class="term" data-de="das Glas" data-vi="cái cốc">Glas</span> Wasser, bitte.</li>
   <li><span class="term" data-de="die Tasse" data-vi="cái tách">Tasse</span> · <span class="term" data-de="die Flasche" data-vi="cái chai">Flasche</span></li>
 </ul>
-<div class="note">💡 Schnellmerk: <b>möchten</b> = muốn (lịch sự): Ich möchte einen Tee. Dùng khi gọi đồ uống, lịch sự hơn "ich will".</div>`,
+<div class="note">Schnellmerk: <b>möchten</b> = muốn (lịch sự): Ich möchte einen Tee. Dùng khi gọi đồ uống, lịch sự hơn "ich will".</div>`,
           listen: [
             { id: "u4-l3-l1", text: "Ich habe Durst. Ich möchte ein Glas Wasser, bitte.", tip: "Nghe câu gọi đồ uống lịch sự", slow: true },
             { id: "u4-l3-l2", text: "Möchtest du einen Tee? — Ja, einen Tee mit Zitrone." }
@@ -907,9 +907,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u4-l4",
           name: "Im Restaurant",
-          icon: "🍽️",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>`,
           desc: "Trong nhà hàng · gọi món · Akkusativ",
-          content: `<h2>🍽️ Im Restaurant</h2>
+          content: `<h2>Im Restaurant</h2>
 <div class="hint">Trong nhà hàng · gọi món · Akkusativ</div>
 <h3 class="sub">1. Vào nhà hàng</h3>
 <ul>
@@ -930,7 +930,7 @@ window.DEUTSCH_A1 = {
   <tr><td>die Suppe</td><td>die Suppe</td><td><span class="term" data-de="die Suppe" data-vi="món súp (Akkusativ)">die Suppe</span></td></tr>
   <tr><td>das Wasser</td><td>das Wasser</td><td><span class="term" data-de="das Wasser" data-vi="nước (Akkusativ)">das Wasser</span></td></tr>
 </table>
-<div class="note">💡 Schnellmerk: Sau <b>nehmen/möchten</b> danh từ chuyển Akkusativ: <b>der → den</b> · <b>die → die</b> (không đổi) · <b>das → das</b> (không đổi).</div>`,
+<div class="note">Schnellmerk: Sau <b>nehmen/möchten</b> danh từ chuyển Akkusativ: <b>der → den</b> · <b>die → die</b> (không đổi) · <b>das → das</b> (không đổi).</div>`,
           grammar: [
             {
               id: "a1-akkusativ",
@@ -952,9 +952,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u4-l5",
           name: "Die Rechnung",
-          icon: "🧾",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6"/><path d="M9 12h6"/></svg>`,
           desc: "Tính tiền · trả tiền · tiền boa",
-          content: `<h2>🧾 Die Rechnung</h2>
+          content: `<h2>Die Rechnung</h2>
 <div class="hint">Tính tiền · trả tiền · tiền boa</div>
 <h3 class="sub">1. Xin tính tiền</h3>
 <ul>
@@ -971,7 +971,7 @@ window.DEUTSCH_A1 = {
   <li><span class="term" data-de="das Trinkgeld" data-vi="tiền boa">Trinkgeld</span>: Stimmt so! (Không cần thối lại!)</li>
   <li><span class="term" data-de="der Preis" data-vi="giá">Preis</span> · <span class="term" data-de="die Kasse" data-vi="quầy thu ngân">Kasse</span> · <span class="term" data-de="stimmen" data-vi="đúng, chính xác">Stimmt</span> die Rechnung?</li>
 </ul>
-<div class="note">💡 Schnellmerk: Khi ăn xong: <b>Die Rechnung, bitte!</b> — Trả chung: <b>zusammen</b>, trả riêng: <b>getrennt</b>. Tiền boa để lại tại bàn: <b>Stimmt so!</b></div>`,
+<div class="note">Schnellmerk: Khi ăn xong: <b>Die Rechnung, bitte!</b> — Trả chung: <b>zusammen</b>, trả riêng: <b>getrennt</b>. Tiền boa để lại tại bàn: <b>Stimmt so!</b></div>`,
           listen: [
             { id: "u4-l5-l1", text: "Die Rechnung, bitte! Ich möchte bezahlen.", tip: "Nghe câu xin hóa đơn", slow: true },
             { id: "u4-l5-l2", text: "Zahlen Sie zusammen oder getrennt? — Zusammen, bitte." }
@@ -983,9 +983,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u4-l6",
           name: "essen, trinken & nehmen",
-          icon: "🍝",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h18"/><path d="M3 12a9 9 0 0 0 18 0"/></svg>`,
           desc: "Chia động từ essen/trinken/nehmen · đói · no",
-          content: `<h2>🍝 essen, trinken & nehmen</h2>
+          content: `<h2>essen, trinken & nehmen</h2>
 <div class="hint">Chia động từ essen/trinken/nehmen · đói · no</div>
 <h3 class="sub">1. essen — chia đặc biệt</h3>
 <ul>
@@ -1003,7 +1003,7 @@ window.DEUTSCH_A1 = {
   <li><span class="term" data-de="hungrig" data-vi="đói">Hungrig</span> · <span class="term" data-de="satt" data-vi="no">satt</span>: Ich bin satt.</li>
   <li>Das Essen <span class="term" data-de="schmecken" data-vi="ngon, vừa miệng">schmeckt</span> <span class="term" data-de="lecker" data-vi="ngon">lecker</span>!</li>
 </ul>
-<div class="note">💡 Schnellmerk: <b>essen</b> bất quy tắc: du isst (ss!), er isst. <b>nehmen</b> đổi e→i: du nimmst, er nimmt. <b>trinken</b> đều đặn.</div>`,
+<div class="note">Schnellmerk: <b>essen</b> bất quy tắc: du isst (ss!), er isst. <b>nehmen</b> đổi e→i: du nimmst, er nimmt. <b>trinken</b> đều đặn.</div>`,
           grammar: [
             {
               id: "a1-essen-trinken",
@@ -1024,9 +1024,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u4-l7",
           name: "Im Supermarkt",
-          icon: "🛒",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1.5"/><circle cx="19" cy="21" r="1.5"/><path d="M2 2h3l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>`,
           desc: "Siêu thị · mua đồ ăn · cân, lạng",
-          content: `<h2>🛒 Im Supermarkt</h2>
+          content: `<h2>Im Supermarkt</h2>
 <div class="hint">Siêu thị · mua đồ ăn · cân, lạng</div>
 <h3 class="sub">1. Ở siêu thị</h3>
 <ul>
@@ -1043,7 +1043,7 @@ window.DEUTSCH_A1 = {
   <li>An der <span class="term" data-de="die Kasse" data-vi="quầy thanh toán">Kasse</span>: Das ist alles. — Das <span class="term" data-de="das macht" data-vi="tổng cộng là">macht</span> zwölf Euro.</li>
   <li><span class="term" data-de="der Kassenzettel" data-vi="hóa đơn thanh toán">Kassenzettel</span> · <span class="term" data-de="die Ware" data-vi="hàng hóa">Ware</span> · <span class="term" data-de="das Produkt" data-vi="sản phẩm">Produkt</span></li>
 </ul>
-<div class="note">💡 Schnellmerk: <b>ein halbes Kilo</b> = nửa ki-lô · <b>ein Pfund</b> = nửa ki-lô · <b>das macht … Euro</b> = tổng cộng … euro.</div>`,
+<div class="note">Schnellmerk: <b>ein halbes Kilo</b> = nửa ki-lô · <b>ein Pfund</b> = nửa ki-lô · <b>das macht … Euro</b> = tổng cộng … euro.</div>`,
           listen: [
             { id: "u4-l7-l1", text: "Ich gehe in den Supermarkt und kaufe Obst und Gemüse.", tip: "Nghe hoạt động mua sắm", slow: true },
             { id: "u4-l7-l2", text: "Das macht zwölf Euro. — Hier, bitte." }
@@ -1058,14 +1058,14 @@ window.DEUTSCH_A1 = {
       id: "u5",
       title: "Einkaufen",
       desc: "Mua sắm · giá cả · màu sắc · quần áo · kein/keine",
-      icon: "🛍️",
+      icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h12l1 12H5z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>`,
       lektionen: [
         {
           id: "u5-l1",
           name: "Einkaufen: Wo kaufen wir ein?",
-          icon: "🛍️",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h12l1 12H5z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>`,
           desc: "Mua sắm · các loại cửa hàng · giờ mở cửa",
-          content: `<h2>🛍️ Einkaufen: Wo kaufen wir ein?</h2>
+          content: `<h2>Einkaufen: Wo kaufen wir ein?</h2>
 <div class="hint">Mua sắm · các loại cửa hàng · giờ mở cửa</div>
 <h3 class="sub">1. Đi mua sắm</h3>
 <ul>
@@ -1084,7 +1084,7 @@ window.DEUTSCH_A1 = {
   <li>Die <span class="term" data-de="die Öffnungszeiten" data-vi="giờ mở cửa">Öffnungszeiten</span>: Montag bis Samstag, 8–20 Uhr.</li>
   <li>Das <span class="term" data-de="das Angebot" data-vi="hàng khuyến mãi">Angebot</span> der Woche: Äpfel für 1,99 €.</li>
 </ul>
-<div class="note">💡 Schnellmerk: Cửa hàng đuôi <b>-ei</b> là nơi sản xuất/bán: die Bäck<b>erei</b> (bánh), die Metzger<b>ei</b> (thịt).</div>`,
+<div class="note">Schnellmerk: Cửa hàng đuôi <b>-ei</b> là nơi sản xuất/bán: die Bäck<b>erei</b> (bánh), die Metzger<b>ei</b> (thịt).</div>`,
           listen: [
             { id: "u5-l1-l1", text: "Ich gehe in den Supermarkt und kaufe ein.", tip: "Nghe giới từ in + Akkusativ sau gehen", slow: true },
             { id: "u5-l1-l2", text: "Das Geschäft ist von Montag bis Samstag geöffnet." }
@@ -1096,9 +1096,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u5-l2",
           name: "Was kostet das?",
-          icon: "💶",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12"/><path d="M4 14h9"/><path d="M19 6a7.7 7.7 0 0 0-5.2-2A7.9 7.9 0 0 0 6 12c0 4.4 3.5 8 7.8 8 2 0 3.8-.8 5.2-2"/></svg>`,
           desc: "Hỏi giá · Was kostet / Wie viel kostet · euro và cent",
-          content: `<h2>💶 Was kostet das?</h2>
+          content: `<h2>Was kostet das?</h2>
 <div class="hint">Hỏi giá · Was kostet / Wie viel kostet · euro và cent</div>
 <h3 class="sub">1. Hỏi giá</h3>
 <ul>
@@ -1116,7 +1116,7 @@ window.DEUTSCH_A1 = {
   <li>Das ist <span class="term" data-de="zu teuer" data-vi="quá đắt">zu teuer</span>! · Das ist <span class="term" data-de="sehr billig" data-vi="rất rẻ">sehr billig</span>.</li>
   <li>Gibt es <span class="term" data-de="etwas Billigeres" data-vi="thứ gì đó rẻ hơn">etwas Billigeres</span>?</li>
 </ul>
-<div class="note">💡 Schnellmerk: Giá tiền: euro đọc trước, cent đọc sau: <b>2,50 €</b> = zwei Euro fünfzig. Số lẻ dùng <b>Komma</b> (dấu phẩy), không phải dấu chấm.</div>`,
+<div class="note">Schnellmerk: Giá tiền: euro đọc trước, cent đọc sau: <b>2,50 €</b> = zwei Euro fünfzig. Số lẻ dùng <b>Komma</b> (dấu phẩy), không phải dấu chấm.</div>`,
           grammar: [
             {
               id: "a1-preise-kosten",
@@ -1138,9 +1138,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u5-l3",
           name: "Die Farben",
-          icon: "🎨",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/></svg>`,
           desc: "Màu sắc · Welche Farbe? · màu + danh từ",
-          content: `<h2>🎨 Die Farben</h2>
+          content: `<h2>Die Farben</h2>
 <div class="hint">Màu sắc · Welche Farbe hat…? · màu + danh từ</div>
 <h3 class="sub">1. Màu cơ bản</h3>
 <ul>
@@ -1158,7 +1158,7 @@ window.DEUTSCH_A1 = {
   <li>ein <span class="term" data-de="roter Apfel" data-vi="quả táo đỏ">roter Apfel</span> · eine <span class="term" data-de="gelbe Banane" data-vi="quả chuối vàng">gelbe Banane</span></li>
   <li>ein <span class="term" data-de="grüner Salat" data-vi="món xà lách xanh">grüner Salat</span> · <span class="term" data-de="schwarzer Kaffee" data-vi="cà phê đen">schwarzer Kaffee</span></li>
 </ul>
-<div class="note">💡 Schnellmerk: Tính từ màu đi sau <b>sein</b> không đổi: Das T-Shirt ist <b>blau</b>. Trước danh từ thì thêm đuôi theo giống: ein <b>roter</b> Apfel (der), eine <b>gelbe</b> Banane (die).</div>`,
+<div class="note">Schnellmerk: Tính từ màu đi sau <b>sein</b> không đổi: Das T-Shirt ist <b>blau</b>. Trước danh từ thì thêm đuôi theo giống: ein <b>roter</b> Apfel (der), eine <b>gelbe</b> Banane (die).</div>`,
           listen: [
             { id: "u5-l3-l1", text: "rot, blau, grün, gelb, schwarz, weiß", tip: "Nghe và nhắc lại từng màu", slow: true },
             { id: "u5-l3-l2", text: "Welche Farbe hat das T-Shirt? — Das T-Shirt ist blau." },
@@ -1171,9 +1171,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u5-l4",
           name: "Die Kleidung",
-          icon: "👕",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>`,
           desc: "Quần áo · die Hose, das Hemd · mua quần áo",
-          content: `<h2>👕 Die Kleidung</h2>
+          content: `<h2>Die Kleidung</h2>
 <div class="hint">Quần áo · article đúng · mua quần áo</div>
 <h3 class="sub">1. Quần áo cơ bản</h3>
 <ul>
@@ -1191,7 +1191,7 @@ window.DEUTSCH_A1 = {
   <li>Ich <span class="term" data-de="suchen" data-vi="tìm">suche</span> eine Hose. — Welche <span class="term" data-de="die Größe" data-vi="cỡ, size">Größe</span> brauchen Sie?</li>
   <li>Die Jacke <span class="term" data-de="passen" data-vi="vừa">passt</span> gut. / Die Hose passt <span class="term" data-de="nicht" data-vi="không">nicht</span>.</li>
 </ul>
-<div class="note">💡 Schnellmerk: Học quần áo theo article: <b>die</b> Hose, <b>das</b> Hemd, <b>der</b> Rock — danh từ đuôi -e thường giống cái.</div>`,
+<div class="note">Schnellmerk: Học quần áo theo article: <b>die</b> Hose, <b>das</b> Hemd, <b>der</b> Rock — danh từ đuôi -e thường giống cái.</div>`,
           grammar: [
             {
               id: "a1-akkusativ-einkauf",
@@ -1212,9 +1212,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u5-l5",
           name: "Im Geschäft",
-          icon: "🛒",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1.5"/><circle cx="19" cy="21" r="1.5"/><path d="M2 2h3l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>`,
           desc: "Trong cửa hàng · anprobieren · kein/keine",
-          content: `<h2>🛒 Im Geschäft</h2>
+          content: `<h2>Im Geschäft</h2>
 <div class="hint">Trong cửa hàng · thử đồ · kein/keine phủ định</div>
 <h3 class="sub">1. Vào cửa hàng</h3>
 <ul>
@@ -1231,7 +1231,7 @@ window.DEUTSCH_A1 = {
   <li>Ich nehme die Jacke. / Ich nehme sie <span class="term" data-de="nicht" data-vi="không">nicht</span>.</li>
   <li><span class="term" data-de="der Kunde" data-vi="khách hàng (nam)">Kunde</span> · <span class="term" data-de="die Kundin" data-vi="khách hàng (nữ)">Kundin</span> · <span class="term" data-de="die Verkäuferin" data-vi="người bán hàng (nữ)">Verkäuferin</span></li>
 </ul>
-<div class="note">💡 Schnellmerk: <b>kein/keine</b> phủ định <b>danh từ</b> (giống ein/keine): kein Geld, keine Zeit. <b>nicht</b> phủ định động từ/tính từ: Ich nehme sie <b>nicht</b>.</div>`,
+<div class="note">Schnellmerk: <b>kein/keine</b> phủ định <b>danh từ</b> (giống ein/keine): kein Geld, keine Zeit. <b>nicht</b> phủ định động từ/tính từ: Ich nehme sie <b>nicht</b>.</div>`,
           grammar: [
             {
               id: "a1-kein-keine",
@@ -1252,9 +1252,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u5-l6",
           name: "Der Einkauf",
-          icon: "🧺",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l1.5 10h15L21 9z"/><path d="M3 9h18"/><path d="M9 9l1-5h4l1 5"/></svg>`,
           desc: "Mua hàng · cân lạng · tổng tiền · trả tiền",
-          content: `<h2>🧺 Der Einkauf</h2>
+          content: `<h2>Der Einkauf</h2>
 <div class="hint">Mua hàng · cân lạng · tổng tiền · trả tiền</div>
 <h3 class="sub">1. Mua theo cân</h3>
 <ul>
@@ -1272,7 +1272,7 @@ window.DEUTSCH_A1 = {
   <li><span class="term" data-de="das Wechselgeld" data-vi="tiền thối lại">Wechselgeld</span>: <span class="term" data-de="Stimmt so" data-vi="Thôi, khỏi thối!">Stimmt so</span>!</li>
   <li>Danke schön! — <span class="term" data-de="Bitte sehr" data-vi="Không có gì">Bitte sehr</span>! — <span class="term" data-de="bis morgen" data-vi="hẹn gặp ngày mai">Bis morgen</span>!</li>
 </ul>
-<div class="note">💡 Schnellmerk: <b>ein halbes Kilo</b> = nửa ki-lô · <b>ein Pfund</b> = nửa ki-lô · <b>das macht zusammen …</b> = tổng cộng là…</div>`,
+<div class="note">Schnellmerk: <b>ein halbes Kilo</b> = nửa ki-lô · <b>ein Pfund</b> = nửa ki-lô · <b>das macht zusammen …</b> = tổng cộng là…</div>`,
           listen: [
             { id: "u5-l6-l1", text: "Ich nehme ein Kilo Tomaten und ein Pfund Käse.", tip: "Nghe số lượng mua hàng", slow: true },
             { id: "u5-l6-l2", text: "Das macht zusammen achteinhalb Euro. — Mit Karte, bitte." }
@@ -1284,9 +1284,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u5-l7",
           name: "Reklamation & Umtausch",
-          icon: "🔁",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>`,
           desc: "Đổi trả hàng · khiếu nại · nhận lại tiền",
-          content: `<h2>🔁 Reklamation & Umtausch</h2>
+          content: `<h2>Reklamation & Umtausch</h2>
 <div class="hint">Đổi trả hàng · khiếu nại · nhận lại tiền</div>
 <h3 class="sub">1. Đổi trả</h3>
 <ul>
@@ -1304,7 +1304,7 @@ window.DEUTSCH_A1 = {
   <li>Ich bin <span class="term" data-de="zufrieden" data-vi="hài lòng">zufrieden</span> / <span class="term" data-de="unzufrieden" data-vi="không hài lòng">unzufrieden</span>.</li>
   <li><span class="term" data-de="Es tut mir leid" data-vi="Tôi rất tiếc">Es tut mir leid</span>. — Das ist <span class="term" data-de="in Ordnung" data-vi="ổn thỏa">in Ordnung</span>.</li>
 </ul>
-<div class="note">💡 Schnellmerk: Đổi trả cần mang <b>den Kassenzettel</b> (hóa đơn). Cửa hàng thường đổi trong 14 ngày; muốn lấy lại tiền nói: Ich möchte mein Geld <b>zurück</b>.</div>`,
+<div class="note">Schnellmerk: Đổi trả cần mang <b>den Kassenzettel</b> (hóa đơn). Cửa hàng thường đổi trong 14 ngày; muốn lấy lại tiền nói: Ich möchte mein Geld <b>zurück</b>.</div>`,
           listen: [
             { id: "u5-l7-l1", text: "Ich möchte diese Hose umtauschen. Der Reißverschluss ist kaputt.", tip: "Nghe lý do đổi trả hàng", slow: true },
             { id: "u5-l7-l2", text: "Haben Sie den Kassenzettel? — Ja, hier bitte." }
@@ -1319,14 +1319,14 @@ window.DEUTSCH_A1 = {
       id: "u6",
       title: "Zeit & Tagesablauf",
       desc: "Thói quen hằng ngày · buổi trong ngày · chia động từ · trennbare Verben",
-      icon: "🌅",
+      icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"/><line x1="1" y1="18" x2="3" y2="18"/><line x1="21" y1="18" x2="23" y2="18"/><line x1="18.36" y1="11.64" x2="19.78" y2="10.22"/><line x1="23" y1="22" x2="1" y2="22"/><polyline points="8 6 12 2 16 6"/></svg>`,
       lektionen: [
         {
           id: "u6-l1",
           name: "Mein Tagesablauf",
-          icon: "🌅",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"/><line x1="1" y1="18" x2="3" y2="18"/><line x1="21" y1="18" x2="23" y2="18"/><line x1="18.36" y1="11.64" x2="19.78" y2="10.22"/><line x1="23" y1="22" x2="1" y2="22"/><polyline points="8 6 12 2 16 6"/></svg>`,
           desc: "Thói quen hằng ngày · chia động từ hiện tại",
-          content: `<h2>🌅 Mein Tagesablauf</h2>
+          content: `<h2>Mein Tagesablauf</h2>
 <div class="hint">Thói quen hằng ngày · chia động từ hiện tại</div>
 <h3 class="sub">1. Buổi sáng</h3>
 <ul>
@@ -1345,7 +1345,7 @@ window.DEUTSCH_A1 = {
   <li>Um zehn Uhr <span class="term" data-de="schlafen" data-vi="ngủ">schlafe</span> ich.</li>
   <li>Das ist mein <span class="term" data-de="der Tagesablauf" data-vi="lịch trình trong ngày">Tagesablauf</span>.</li>
 </ul>
-<div class="note">💡 Schnellmerk: Kể việc hằng ngày luôn ở <b>hiện tại</b> với trạng từ thời gian: um 6 Uhr (mốc giờ) · dann (rồi) · am Abend (buổi tối).</div>`,
+<div class="note">Schnellmerk: Kể việc hằng ngày luôn ở <b>hiện tại</b> với trạng từ thời gian: um 6 Uhr (mốc giờ) · dann (rồi) · am Abend (buổi tối).</div>`,
           grammar: [
             {
               id: "a1-praesens-konjugation",
@@ -1366,9 +1366,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u6-l2",
           name: "Die Tageszeiten",
-          icon: "🌇",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="1"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M12 6h.01"/><path d="M16 6h.01"/><path d="M8 10h.01"/><path d="M12 10h.01"/><path d="M16 10h.01"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/></svg>`,
           desc: "Các buổi trong ngày · am + buổi · morgens, abends",
-          content: `<h2>🌇 Die Tageszeiten</h2>
+          content: `<h2>Die Tageszeiten</h2>
 <div class="hint">Các buổi trong ngày · am Morgen · morgens, abends</div>
 <h3 class="sub">1. Các buổi</h3>
 <ul>
@@ -1386,7 +1386,7 @@ window.DEUTSCH_A1 = {
   <li><span class="term" data-de="morgens" data-vi="hằng sáng">Morgens</span> stehe ich um sechs auf. · <span class="term" data-de="abends" data-vi="hằng tối">Abends</span> schlafe ich um zehn.</li>
   <li><span class="term" data-de="nachmittags" data-vi="vào các buổi chiều">Nachmittags</span> mache ich Sport.</li>
 </ul>
-<div class="note">💡 Schnellmerk: <b>am</b> + buổi (am Morgen) chỉ một lần · <b>-s</b> ở cuối (morgens) chỉ thói quen lặp lại hằng ngày.</div>`,
+<div class="note">Schnellmerk: <b>am</b> + buổi (am Morgen) chỉ một lần · <b>-s</b> ở cuối (morgens) chỉ thói quen lặp lại hằng ngày.</div>`,
           listen: [
             { id: "u6-l2-l1", text: "Am Morgen trinke ich Kaffee. Am Abend sehe ich fern.", tip: "Nghe am + buổi trong ngày", slow: true },
             { id: "u6-l2-l2", text: "Morgens stehe ich um sechs auf. Nachmittags mache ich Sport." },
@@ -1399,9 +1399,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u6-l3",
           name: "Wann machst du was?",
-          icon: "⏰",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>`,
           desc: "Khi nào làm gì · um + giờ · động từ đổi nguyên âm",
-          content: `<h2>⏰ Wann machst du was?</h2>
+          content: `<h2>Wann machst du was?</h2>
 <div class="hint">Khi nào làm gì · um + giờ · động từ đổi nguyên âm (e→i, a→ä)</div>
 <h3 class="sub">1. Hỏi khi nào</h3>
 <ul>
@@ -1415,7 +1415,7 @@ window.DEUTSCH_A1 = {
   <li><span class="term" data-de="lesen" data-vi="đọc">lesen</span>: du <span class="term" data-de="liest" data-vi="đọc (bạn)">liest</span> · er liest</li>
   <li><span class="term" data-de="schlafen" data-vi="ngủ">schlafen</span>: du <span class="term" data-de="schläfst" data-vi="ngủ (bạn)">schläfst</span> · er schläft · <span class="term" data-de="fahren" data-vi="lái xe">fahren</span>: du fährst</li>
 </ul>
-<div class="note">💡 Schnellmerk: Đổi nguyên âm chỉ xảy ra ở ngôi <b>du</b> và <b>er/sie/es</b>: du sprichst, er schläft — còn wir/ihr/sie giữ nguyên: wir sprechen.</div>`,
+<div class="note">Schnellmerk: Đổi nguyên âm chỉ xảy ra ở ngôi <b>du</b> và <b>er/sie/es</b>: du sprichst, er schläft — còn wir/ihr/sie giữ nguyên: wir sprechen.</div>`,
           grammar: [
             {
               id: "a1-praesens-vokalwechsel",
@@ -1436,9 +1436,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u6-l4",
           name: "Trennbare Verben im Alltag",
-          icon: "🔧",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>`,
           desc: "Động từ tách · aufstehen, fernsehen, einkaufen, anrufen",
-          content: `<h2>🔧 Trennbare Verben im Alltag</h2>
+          content: `<h2>Trennbare Verben im Alltag</h2>
 <div class="hint">Động từ tách · aufstehen, fernsehen, einkaufen, anrufen</div>
 <h3 class="sub">1. Động từ tách phổ biến</h3>
 <ul>
@@ -1459,7 +1459,7 @@ window.DEUTSCH_A1 = {
   <li>Wann <span class="term" data-de="sehen Sie fern?" data-vi="anh/chị xem TV lúc nào?">sehen Sie fern?</span> — Am Abend.</li>
   <li>Tiền tố luôn <span class="term" data-de="betont" data-vi="được nhấn trọng âm">betont</span>: AUS-ste-hen.</li>
 </ul>
-<div class="note">💡 Schnellmerk: Trong câu trần thuật, động từ chia đứng vị trí 2, <b>tiền tố rời xuống cuối câu</b>: Ich stehe um 6 Uhr <b>auf</b>. Trọng âm rơi vào tiền tố: <b>auf</b>stehen, <b>fern</b>sehen.</div>`,
+<div class="note">Schnellmerk: Trong câu trần thuật, động từ chia đứng vị trí 2, <b>tiền tố rời xuống cuối câu</b>: Ich stehe um 6 Uhr <b>auf</b>. Trọng âm rơi vào tiền tố: <b>auf</b>stehen, <b>fern</b>sehen.</div>`,
           grammar: [
             {
               id: "a1-trennbare-alltag",
@@ -1480,9 +1480,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u6-l5",
           name: "Freizeit & Hobbys",
-          icon: "🎾",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5 5c4 3 4 11 0 14"/><path d="M19 5c-4 3-4 11 0 14"/></svg>`,
           desc: "Thời gian rảnh · sở thích · hoạt động giải trí",
-          content: `<h2>🎾 Freizeit & Hobbys</h2>
+          content: `<h2>Freizeit & Hobbys</h2>
 <div class="hint">Thời gian rảnh · sở thích · hoạt động giải trí</div>
 <h3 class="sub">1. Sở thích</h3>
 <ul>
@@ -1496,7 +1496,7 @@ window.DEUTSCH_A1 = {
   <li>Am Wochenende <span class="term" data-de="Freunde treffen" data-vi="gặp bạn bè">treffe ich Freunde</span> und <span class="term" data-de="ins Kino gehen" data-vi="đi xem phim">gehe ins Kino</span>.</li>
   <li>Ich habe <span class="term" data-de="viel Zeit" data-vi="nhiều thời gian">viel Zeit</span> / <span class="term" data-de="wenig Zeit" data-vi="ít thời gian">wenig Zeit</span>.</li>
 </ul>
-<div class="note">💡 Schnellmerk: <b>Klavier spielen, Fußball spielen, Musik hören</b> — danh từ đứng sau spielen/hören đi Akkusativ: Fußball (không article), das Klavier.</div>`,
+<div class="note">Schnellmerk: <b>Klavier spielen, Fußball spielen, Musik hören</b> — danh từ đứng sau spielen/hören đi Akkusativ: Fußball (không article), das Klavier.</div>`,
           listen: [
             { id: "u6-l5-l1", text: "In meiner Freizeit mache ich Sport und lese Bücher.", tip: "Nghe hoạt động giải trí", slow: true },
             { id: "u6-l5-l2", text: "Am Wochenende treffe ich Freunde und gehe ins Kino." }
@@ -1508,9 +1508,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u6-l6",
           name: "Meine Woche",
-          icon: "📅",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`,
           desc: "Tuần của tôi · thứ + hoạt động · mức độ thường xuyên",
-          content: `<h2>📅 Meine Woche</h2>
+          content: `<h2>Meine Woche</h2>
 <div class="hint">Tuần của tôi · thứ + hoạt động · mức độ thường xuyên</div>
 <h3 class="sub">1. Hoạt động trong tuần</h3>
 <ul>
@@ -1528,7 +1528,7 @@ window.DEUTSCH_A1 = {
   <li><span class="term" data-de="immer" data-vi="luôn luôn">immer</span> · <span class="term" data-de="oft" data-vi="thường xuyên">oft</span> · <span class="term" data-de="manchmal" data-vi="thỉnh thoảng">manchmal</span> · <span class="term" data-de="selten" data-vi="hiếm khi">selten</span> · <span class="term" data-de="nie" data-vi="không bao giờ">nie</span></li>
   <li>Ich trinke <span class="term" data-de="nie Kaffee" data-vi="không bao giờ uống cà phê">nie Kaffee</span> am Abend.</li>
 </ul>
-<div class="note">💡 Schnellmerk: Trạng từ chỉ mức độ đứng sau động từ chia: Ich <b>trinke</b> nie Kaffee. Thứ + hoạt động luôn dùng <b>am</b>: am Montag, am Wochenende.</div>`,
+<div class="note">Schnellmerk: Trạng từ chỉ mức độ đứng sau động từ chia: Ich <b>trinke</b> nie Kaffee. Thứ + hoạt động luôn dùng <b>am</b>: am Montag, am Wochenende.</div>`,
           listen: [
             { id: "u6-l6-l1", text: "Am Montag arbeite ich. Am Samstag gehe ich einkaufen.", tip: "Nghe thứ trong tuần + hoạt động", slow: true },
             { id: "u6-l6-l2", text: "Am Wochenende fahre ich Fahrrad." },
@@ -1541,9 +1541,9 @@ window.DEUTSCH_A1 = {
         {
           id: "u6-l7",
           name: "Ein Tag in Deutschland",
-          icon: "🇩🇪",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 12h18"/></svg>`,
           desc: "Kể về một ngày · ôn tập chia động từ + trennbare",
-          content: `<h2>🇩🇪 Ein Tag in Deutschland</h2>
+          content: `<h2>Ein Tag in Deutschland</h2>
 <div class="hint">Kể về một ngày · ôn tập chia động từ + trennbare Verben</div>
 <h3 class="sub">1. Kể chuyện cả ngày</h3>
 <ul>
@@ -1557,7 +1557,7 @@ window.DEUTSCH_A1 = {
   <li><span class="term" data-de="Wie ist dein Tagesablauf?" data-vi="Lịch trình ngày của bạn thế nào?">Wie ist dein Tagesablauf?</span> — <span class="term" data-de="erzählen" data-vi="kể">Erzähl</span> mir von deinem Tag!</li>
   <li><span class="term" data-de="Was machst du am Morgen?" data-vi="Sáng bạn làm gì?">Was machst du am Morgen?</span> · <span class="term" data-de="Was machst du am Abend?" data-vi="Tối bạn làm gì?">Was machst du am Abend?</span></li>
 </ul>
-<div class="note">💡 Schnellmerk: Kể ngày theo trình tự: <b>zuerst</b> (đầu tiên) → <b>dann</b> (sau đó) → <b>danach</b> (kế tiếp) → <b>später</b> (về sau).</div>`,
+<div class="note">Schnellmerk: Kể ngày theo trình tự: <b>zuerst</b> (đầu tiên) → <b>dann</b> (sau đó) → <b>danach</b> (kế tiếp) → <b>später</b> (về sau).</div>`,
           listen: [
             { id: "u6-l7-l1", text: "Zuerst stehe ich auf, dann frühstücke ich und arbeite.", tip: "Nghe trình tự các hoạt động trong ngày", slow: true },
             { id: "u6-l7-l2", text: "Danach kaufe ich das Abendessen ein." }

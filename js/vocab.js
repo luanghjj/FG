@@ -505,6 +505,8 @@
     "Unverletzlichkeit der Wohnung":"bất khả xâm phạm chỗ ở"
   }
 
+  function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+
   function lookupVi(de){
     if(!de) return "";
     const s=String(de).trim();
@@ -557,6 +559,7 @@
 #termPop .de{font-weight:700;margin-bottom:4px}
 #termPop .vi{font-weight:700;color:#86efac;font-size:1.05em}
 .vocab-say{background:none;border:none;font-size:1em;cursor:pointer}
+.vocab-say svg{width:1em;height:1em;display:inline-block;vertical-align:-.12em}
 #termPop .hint{margin-top:6px;font-size:.72em;opacity:.7}
 `;
     document.head.appendChild(s);
@@ -590,14 +593,16 @@
     let vi = el.getAttribute("data-vi") || lookupVi(de);
     if(vi) el.setAttribute("data-vi", vi);
     const pop=ensurePop();
-    pop.querySelector(".de").textContent = "🇩🇪 " + de;
-    pop.querySelector(".vi").textContent = vi ? ("🇻🇳 " + vi) : "Noch nicht im Wörterbuch";
+    const flagDE='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 12h18"/></svg> ';
+    const flagVN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><polygon points="12 7 13.3 10 16.4 10.2 14 12.2 14.8 15.2 12 13.5 9.2 15.2 10 12.2 7.6 10.2 10.7 10"/></svg> ';
+    pop.querySelector(".de").innerHTML = flagDE + esc(de);
+    pop.querySelector(".vi").innerHTML = vi ? (flagVN + esc(vi)) : "Noch nicht im Wörterbuch";
     pop.classList.add("show");
     if (!pop.querySelector('.vocab-say')) {
       var sb = document.createElement('button');
       sb.type = 'button';
       sb.className = 'vocab-say';
-      sb.textContent = '🔊';
+      sb.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 4 20 12 6 20"/></svg>';
       sb.title = 'Aussprache anhören';
       sb.addEventListener('click', function () {
         if (w.Vocab && w.Vocab.say) w.Vocab.say(de);
@@ -613,7 +618,7 @@
       el.insertAdjacentElement("afterend", chip);
     }
     if(vi){
-      chip.textContent="🇻🇳 "+vi;
+      chip.innerHTML=flagVN + esc(vi);
       chip.classList.remove("hidden");
     }
     const r=el.getBoundingClientRect();

@@ -9,14 +9,14 @@ window.DEUTSCH_BERUF = {
       id: "u-b1",
       title: "Bestellung aufnehmen",
       desc: "Begrüßung · Fragen · Mengen · Allergien",
-      icon: "🛎️",
+      icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>`,
       lektionen: [
         {
           id: "b1-l1",
           name: "Begrüßung im Restaurant",
-          icon: "👋",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v2"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg>`,
           desc: "Chào khách · hỏi số người · mời ngồi",
-          content: `<h2>👋 Begrüßung im Restaurant</h2>
+          content: `<h2>Begrüßung im Restaurant</h2>
 <div class="hint">Chào khách · hỏi số người · mời ngồi · đưa thực đơn</div>
 <h3 class="sub">1. Chào khách</h3>
 <ul>
@@ -36,7 +36,7 @@ window.DEUTSCH_BERUF = {
   <li>Hier ist die <span class="term" data-de="die Speisekarte" data-vi="thực đơn">Speisekarte</span>. — <span class="term" data-de="Einen Moment" data-vi="một chút, một lát">Einen Moment</span>, bitte.</li>
   <li><span class="term" data-de="Möchten Sie etwas trinken?" data-vi="Anh/chị muốn uống gì không?">Möchten Sie etwas trinken?</span> — Ja, <span class="term" data-de="gern" data-vi="xin vui lòng, rất muốn">gern</span>.</li>
 </ul>
-<div class="note">💡 Schnellmerk: Trong nhà hàng luôn xưng hô lịch sự <b>Sie</b> với khách. Chào khách: Guten Tag! Herzlich willkommen! — rồi hỏi ngay số người: Für wie viele Personen?</div>`,
+<div class="note">Schnellmerk: Trong nhà hàng luôn xưng hô lịch sự <b>Sie</b> với khách. Chào khách: Guten Tag! Herzlich willkommen! — rồi hỏi ngay số người: Für wie viele Personen?</div>`,
           grammar: [
             {
               id: "a1b-begruessung-hoeflichkeit",
@@ -57,9 +57,9 @@ window.DEUTSCH_BERUF = {
         {
           id: "b1-l2",
           name: "Bestellung aufnehmen",
-          icon: "📋",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 12h6"/><path d="M9 16h4"/></svg>`,
           desc: "Gọi món · Vorspeise · Hauptgericht · Getränke",
-          content: `<h2>📋 Bestellung aufnehmen</h2>
+          content: `<h2>Bestellung aufnehmen</h2>
 <div class="hint">Gọi món · khai vị · món chính · tráng miệng · đồ uống</div>
 <h3 class="sub">1. Hỏi và nhận đơn</h3>
 <ul>
@@ -78,7 +78,7 @@ window.DEUTSCH_BERUF = {
   <li><span class="term" data-de="Einmal die Suppe" data-vi="một phần súp">Einmal die Suppe</span> und zweimal Schnitzel, bitte.</li>
   <li><span class="term" data-de="Ist das alles?" data-vi="Hết chưa ạ?">Ist das alles?</span> — Ja, <span class="term" data-de="das wäre alles" data-vi="vậy là hết">das wäre alles</span>.</li>
 </ul>
-<div class="note">💡 Schnellmerk: Hỏi khách: <b>Was darf es sein?</b> — khách trả lời bằng <b>Ich nehme …</b> (Akkusativ: die Suppe, das Schnitzel). Số phần: einmal/zweimal.</div>`,
+<div class="note">Schnellmerk: Hỏi khách: <b>Was darf es sein?</b> — khách trả lời bằng <b>Ich nehme …</b> (Akkusativ: die Suppe, das Schnitzel). Số phần: einmal/zweimal.</div>`,
           grammar: [
             {
               id: "a1b-bestellung-aufnehmen",
@@ -99,9 +99,9 @@ window.DEUTSCH_BERUF = {
         {
           id: "b1-l3",
           name: "Mengen & Allergien",
-          icon: "⚠️",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,
           desc: "Số lượng · dị ứng · thành phần",
-          content: `<h2>⚠️ Mengen & Allergien</h2>
+          content: `<h2>Mengen & Allergien</h2>
 <div class="hint">Số lượng · hỏi dị ứng · thành phần món ăn</div>
 <h3 class="sub">1. Số lượng</h3>
 <ul>
@@ -119,7 +119,7 @@ window.DEUTSCH_BERUF = {
   <li>Das Schnitzel <span class="term" data-de="enthalten" data-vi="chứa">enthält</span> Gluten. — <span class="term" data-de="ohne" data-vi="không có">Ohne</span> Laktose, bitte.</li>
   <li>Ich <span class="term" data-de="vertragen" data-vi="dung nạp được">vertrage</span> keine Nüsse. — <span class="term" data-de="mit" data-vi="có, với">Mit</span> oder ohne Zwiebeln?</li>
 </ul>
-<div class="note">💡 Schnellmerk: Hỏi dị ứng: Haben Sie eine Allergie? Khách trả lời: Ich habe eine Allergie <b>gegen</b> + Akkusativ (gegen Nüsse, gegen Laktose). Nhân viên nên chủ động hỏi thành phần: Was ist enthalten?</div>`,
+<div class="note">Schnellmerk: Hỏi dị ứng: Haben Sie eine Allergie? Khách trả lời: Ich habe eine Allergie <b>gegen</b> + Akkusativ (gegen Nüsse, gegen Laktose). Nhân viên nên chủ động hỏi thành phần: Was ist enthalten?</div>`,
           grammar: [
             {
               id: "a1b-mengen-allergien",
@@ -140,9 +140,9 @@ window.DEUTSCH_BERUF = {
         {
           id: "b1-l4",
           name: "Verabschiedung & Danke",
-          icon: "👋",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v2"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg>`,
           desc: "Cảm ơn · tạm biệt · tính tiền",
-          content: `<h2>👋 Verabschiedung & Danke</h2>
+          content: `<h2>Verabschiedung & Danke</h2>
 <div class="hint">Cảm ơn · chúc khách · tạm biệt · tính tiền</div>
 <h3 class="sub">1. Cảm ơn</h3>
 <ul>
@@ -159,7 +159,7 @@ window.DEUTSCH_BERUF = {
   <li><span class="term" data-de="Guten Appetit" data-vi="chúc ngon miệng">Guten Appetit</span>! · <span class="term" data-de="einen schönen Abend noch" data-vi="chúc buổi tối vui vẻ">Einen schönen Abend noch</span>!</li>
   <li><span class="term" data-de="Auf Wiedersehen" data-vi="tạm biệt (chính thức)">Auf Wiedersehen</span>! · <span class="term" data-de="Bis bald" data-vi="hẹn sớm gặp lại">Bis bald</span>! · <span class="term" data-de="Gleichfalls" data-vi="anh/chị cũng vậy (đáp lời chúc)">Gleichfalls</span>!</li>
 </ul>
-<div class="note">💡 Schnellmerk: Khi khách về: <b>Vielen Dank!</b> — <b>Gern geschehen!</b> — <b>Auf Wiedersehen!</b> Đừng quên đưa <b>die Quittung</b> sau khi khách thanh toán.</div>`,
+<div class="note">Schnellmerk: Khi khách về: <b>Vielen Dank!</b> — <b>Gern geschehen!</b> — <b>Auf Wiedersehen!</b> Đừng quên đưa <b>die Quittung</b> sau khi khách thanh toán.</div>`,
           grammar: [
             {
               id: "a1b-verabschiedung-danke",

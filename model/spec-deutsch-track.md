@@ -1,4 +1,4 @@
-# AzubiHub · Deutsch-Track A1–C1 — Design Spec
+ok# AzubiHub · Deutsch-Track A1–C1 — Design Spec
 
 Ngày: 2026-08-12 · Trạng thái: đã duyệt (brainstorming) · Repo: `/Users/nguyenchilinh/Desktop/ôn thi`
 

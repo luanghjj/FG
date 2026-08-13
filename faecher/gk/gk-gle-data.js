@@ -14,7 +14,7 @@
       items: [
         {
           id: "gk-gle-ls01-10",
-          icon: "🎓",
+          icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>',
           name: "Trang 01–10 · Duale Ausbildung & Rahmenbedingungen",
           desc: "Ưu & Nhược điểm 3 góc nhìn · Chọn nghề vs Thực tế · Giải quyết xung đột · Hợp đồng 3 bên",
           keyPoints: [
@@ -25,7 +25,7 @@
           ],
           pages: { folder: "gk-gle", from: 1, to: 10, prefix: "GK01-LS" },
           content: `
-            <h2>🎓 Duale Ausbildung &amp; Rahmenbedingungen (Trang 01–10)</h2>
+            <h2>Duale Ausbildung &amp; Rahmenbedingungen (Trang 01–10)</h2>
             <div class="hint">Giáo trình GK-GLE · Große - Stoltenberg · Chuyên đề Đào tạo Kép &amp; Pháp lý</div>
 
             <h3 class="sub">1. Phân tích 3 Góc nhìn hệ thống Đào tạo Kép (Duale Ausbildung)</h3>
@@ -33,7 +33,7 @@
               <tr><th>Đối tượng</th><th>Vorteile (Ưu điểm)</th><th>Nachteile (Nhược điểm)</th></tr>
               <tr>
                 <td><strong>Học viên (Azubi)</strong></td>
-                <td>• Tích lũy kinh nghiệm thực tế sớm (<span class="term" data-de="praktische Erfahrung" data-vi="kinh nghiệm thực tế">praktische Erfahrung</span>).<br>• Có lương hàng tháng ➡ Tự chủ tài chính (<span class="term" data-de="finanziell unabhängig" data-vi="tự chủ tài chính">finanziell unabhängig</span>).</td>
+                <td>• Tích lũy kinh nghiệm thực tế sớm (<span class="term" data-de="praktische Erfahrung" data-vi="kinh nghiệm thực tế">praktische Erfahrung</span>).<br>• Có lương hàng tháng → Tự chủ tài chính (<span class="term" data-de="finanziell unabhängig" data-vi="tự chủ tài chính">finanziell unabhängig</span>).</td>
                 <td>• Áp lực vừa làm vừa học (<span class="term" data-de="Stress durch Arbeit &amp; Lernen" data-vi="áp lực làm việc &amp; học tập">Stress</span>).<br>• Ít ngày nghỉ hơn sinh viên (<span class="term" data-de="weniger Freizeit" data-vi="ít thời gian rảnh">weniger Freizeit</span>).</td>
               </tr>
               <tr>
@@ -50,8 +50,8 @@
 
             <h3 class="sub">2. Nghề mơ ước vs. Nghề học thực tế (Wunschberufe vs. Realität)</h3>
             <ul>
-              <li><strong>Nam giới (Jungen):</strong> Mơ ước: Informatiker, Maschinenbauer, Polizist ➡ Thực tế đăng ký: <span class="term" data-de="Kfz-Mechatroniker" data-vi="thợ cơ khí điện tử ô tô">Kfz-Mechatroniker</span>, Fachinformatiker, Verkäufer.</li>
-              <li><strong>Nữ giới (Mädchen):</strong> Mơ ước: Lehrerin, Ärztin, Erzieherin ➡ Thực tế đăng ký: <span class="term" data-de="Kauffrau für Büromanagement" data-vi="chuyên viên quản trị văn phòng">Kauffrau cho Büromanagement</span>, Medizinische Fachangestellte, Verkäuferin.</li>
+              <li><strong>Nam giới (Jungen):</strong> Mơ ước: Informatiker, Maschinenbauer, Polizist → Thực tế đăng ký: <span class="term" data-de="Kfz-Mechatroniker" data-vi="thợ cơ khí điện tử ô tô">Kfz-Mechatroniker</span>, Fachinformatiker, Verkäufer.</li>
+              <li><strong>Nữ giới (Mädchen):</strong> Mơ ước: Lehrerin, Ärztin, Erzieherin → Thực tế đăng ký: <span class="term" data-de="Kauffrau für Büromanagement" data-vi="chuyên viên quản trị văn phòng">Kauffrau cho Büromanagement</span>, Medizinische Fachangestellte, Verkäuferin.</li>
             </ul>
 
             <h3 class="sub">3. Phương pháp giải quyết xung đột trong Đào tạo (Konflikte lösen)</h3>
@@ -84,7 +84,7 @@
       items: [
         {
           id: "gk-gle-ls11-25",
-          icon: "⚖️",
+          icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16"/><path d="M9 20h6"/><path d="M4 9h16"/><path d="M4 9l-2.5 4"/><path d="M20 9l2.5 4"/><path d="M1.5 13h5"/><path d="M17.5 13h5"/></svg>',
           name: "Trang 11–25 · Familie, Gleichberechtigung & Karikatur",
           desc: "Gia đình Xưa-Nay · Gender Pay Gap · Phân tích Karikatur Homeoffice · 2 Leitbilder gia đình",
           keyPoints: [
@@ -95,7 +95,7 @@
           ],
           pages: { folder: "gk-gle", from: 11, to: 25, prefix: "GK01-LS" },
           content: `
-            <h2>⚖️ Familie, Gleichberechtigung &amp; Karikatur (Trang 11–25)</h2>
+            <h2>Familie, Gleichberechtigung &amp; Karikatur (Trang 11–25)</h2>
             <div class="hint">Giáo trình GK-GLE · Bình đẳng giới, Phân tích Karikatur &amp; Chính sách gia đình</div>
 
             <h3 class="sub">1. Gia đình &amp; Hình thức sống: Früher vs. Heute</h3>
@@ -162,7 +162,7 @@
       items: [
         {
           id: "gk-gle-ls26-30",
-          icon: "📊",
+          icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>',
           name: "Trang 26–30 · Maslow Pyramide & Demografischer Wandel",
           desc: "Tháp Maslow 5 tầng · Tự định hướng cá nhân · Tháp dân số 1910–2060 · Frauenquote",
           keyPoints: [
@@ -173,7 +173,7 @@
           ],
           pages: { folder: "gk-gle", from: 26, to: 30, prefix: "GK01-LS" },
           content: `
-            <h2>📊 Maslow Pyramide &amp; Demografischer Wandel (Trang 26–30)</h2>
+            <h2>Maslow Pyramide &amp; Demografischer Wandel (Trang 26–30)</h2>
             <div class="hint">Giáo trình GK-GLE · Tháp nhu cầu Maslow &amp; Biến đổi Nhân khẩu học Đức</div>
 
             <h3 class="sub">1. Tháp nhu cầu 5 tầng của Abraham Maslow (Bedürfnispyramide)</h3>
@@ -195,7 +195,7 @@
             </ul>
 
             <h3 class="sub">3. Hợp đồng thế hệ (Generationenvertrag) &amp; Khủng hoảng Quỹ Hưu trí</h3>
-            <p>Nguyên tắc <span class="term" data-de="Generationenvertrag" data-vi="hợp đồng thế hệ">Generationenvertrag</span>: Người đang đi làm đóng phí bảo hiểm để chi trả trực tiếp cho người đang nghỉ hưu. Do tỷ lệ sinh giảm (1,54 con/nữ) và tuổi thọ tăng, số người làm việc giảm còn số người nhận lương hưu tăng ➡ Nguy cơ vỡ quỹ hưu trí (<span class="term" data-de="Finanzierungskrise der Rentenversicherung" data-vi="khủng hoảng tài chính quỹ hưu trí">Rentenkrise</span>).</p>
+            <p>Nguyên tắc <span class="term" data-de="Generationenvertrag" data-vi="hợp đồng thế hệ">Generationenvertrag</span>: Người đang đi làm đóng phí bảo hiểm để chi trả trực tiếp cho người đang nghỉ hưu. Do tỷ lệ sinh giảm (1,54 con/nữ) và tuổi thọ tăng, số người làm việc giảm còn số người nhận lương hưu tăng → Nguy cơ vỡ quỹ hưu trí (<span class="term" data-de="Finanzierungskrise der Rentenversicherung" data-vi="khủng hoảng tài chính quỹ hưu trí">Rentenkrise</span>).</p>
 
             <h3 class="sub">4. Tranh luận về Hạn ngạch nữ lãnh đạo (Frauenquote)</h3>
             <p><strong>Pro (+):</strong> Chỉ có áp lực pháp lý mới giúp nữ giới phá vỡ rào cản vô hình; Đa dạng ban lãnh đạo giúp doanh nghiệp hoạt động hiệu quả hơn.<br>
@@ -221,7 +221,7 @@
       items: [
         {
           id: "gk-gle-ls31-35",
-          icon: "🌍",
+          icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18z"/></svg>',
           name: "Trang 31–35 · Migration, Integration & Fachkräfte",
           desc: "3 Nhóm di cư · Fachkräfteeinwanderungsgesetz · Yếu tố hội nhập & Đóng góp kinh tế",
           keyPoints: [
@@ -231,7 +231,7 @@
           ],
           pages: { folder: "gk-gle", from: 31, to: 35, prefix: "GK01-LS" },
           content: `
-            <h2>🌍 Migration, Integration &amp; Fachkräfte (Trang 31–35)</h2>
+            <h2>Migration, Integration &amp; Fachkräfte (Trang 31–35)</h2>
             <div class="hint">Giáo trình GK-GLE · Di cư, Hội nhập &amp; Luật Nhập cư Lao động Tay nghề cao</div>
 
             <h3 class="sub">1. Các nhóm người di cư đến Đức (3 Gruppen)</h3>
@@ -271,7 +271,7 @@
       items: [
         {
           id: "gk-gle-ls36-43",
-          icon: "🤖",
+          icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>',
           name: "Trang 36–43 · Strukturwandel & Industrie 4.0",
           desc: "5 Nhân tố đổi mới · 4 Khu vực I–IV · Tiến trình 1.0–4.0 · Karikatur Robot · Nghề 2035",
           keyPoints: [
@@ -282,7 +282,7 @@
           ],
           pages: { folder: "gk-gle", from: 36, to: 43, prefix: "GK01-LS" },
           content: `
-            <h2>🤖 Strukturwandel &amp; Industrie 4.0 (Trang 36–43)</h2>
+            <h2>Strukturwandel &amp; Industrie 4.0 (Trang 36–43)</h2>
             <div class="hint">Giáo trình GK-GLE · 4 Khu vực Kinh tế &amp; Cách mạng Công nghiệp 4.0</div>
 
             <h3 class="sub">1. 4 Khu vực Kinh tế (Die vier Wirtschaftssektoren)</h3>
@@ -347,7 +347,7 @@
       items: [
         {
           id: "gk-gle-ls44-49",
-          icon: "🛡️",
+          icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
           name: "Trang 44–49 · Medien, Fake News & Sozialstaat",
           desc: "Echokammer & NetzDG · Ngân sách an sinh 1.161 tỷ € · 3 Mục tiêu & 3 Nguyên tắc an sinh",
           keyPoints: [
@@ -358,7 +358,7 @@
           ],
           pages: { folder: "gk-gle", from: 44, to: 49, prefix: "GK01-LS" },
           content: `
-            <h2>🛡️ Medien, Fake News &amp; Sozialstaat (Trang 44–49)</h2>
+            <h2>Medien, Fake News &amp; Sozialstaat (Trang 44–49)</h2>
             <div class="hint">Giáo trình GK-GLE · Truyền thông số, Tin giả &amp; Nguyên tắc An sinh Xã hội Đức</div>
 
             <h3 class="sub">1. Truyền thông, Tin giả &amp; Kiểm soát mạng (NetzDG)</h3>

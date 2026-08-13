@@ -3,6 +3,21 @@
   'use strict';
   var w = window;
 
+  var svg = function (p) {
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + p + '</svg>';
+  };
+  var ICON = {
+    flag: svg('<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 12h18"/>'),
+    book: svg('<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>'),
+    play: svg('<polygon points="6 4 20 12 6 20"/>'),
+    bulb: svg('<path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5.76.76 1.23 1.52 1.41 2.5"/>'),
+    turtle: svg('<path d="M6 3h12v4l-5 5 5 5v4H6v-4l5-5-5-5z"/>'),
+    mic: svg('<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/>'),
+    warn: svg('<path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>'),
+    ok: svg('<polyline points="20 6 9 17 4 12"/>'),
+    no: svg('<circle cx="12" cy="12" r="9"/><path d="M9 9h.01"/><path d="M15 9h.01"/><path d="M8.5 15h7"/>')
+  };
+
   function norm(s) {
     return String(s == null ? '' : s).toLowerCase().replace(/\s+/g, ' ').trim();
   }
@@ -54,7 +69,7 @@
       u.rate = (opts && opts.slow) ? 0.75 : 0.95;
       speechSynthesis.cancel();
       speechSynthesis.speak(u);
-    } catch (_) { toast && toast('🔊 Không hỗ trợ đọc tiếng nói trên thiết bị này.', 'warn'); }
+    } catch (_) { toast && toast('Không hỗ trợ đọc tiếng nói trên thiết bị này.', 'warn'); }
   }
   function record(model, cb) {
     var SR = w.SpeechRecognition || w.webkitSpeechRecognition;
@@ -88,7 +103,7 @@
         id: u.id, badge: levelData.badge || 'A1', title: u.title,
         items: (u.lektionen || []).map(function (l) {
           return {
-            id: l.id, icon: l.icon || '🇩🇪', name: l.name, desc: l.desc || '',
+            id: l.id, icon: l.icon || ICON.flag, name: l.name, desc: l.desc || '',
             content: l.content || '',
             grammar: l.grammar || null, listen: l.listen || null, speak: l.speak || null
           };
@@ -98,7 +113,7 @@
     var LEVEL_QUIZ = { a1: 'DEUTSCH_A1_QUIZ', beruf: 'DEUTSCH_BERUF_QUIZ' };
     return {
       id: id, code: levelData.code || 'DE ' + (levelData.badge || ''), name: levelData.title,
-      icon: '🇩🇪', accent: '#dc2626', soft: '#fef2f2', ready: true, hidden: true, track: 'deutsch',
+      icon: ICON.flag, accent: '#dc2626', soft: '#fef2f2', ready: true, hidden: true, track: 'deutsch',
       desc: levelData.badge + ' · ' + units.length + ' Units',
       groups: groups,
       quiz: (w[LEVEL_QUIZ[levelData.level]] || []).slice()
@@ -139,7 +154,7 @@
     if (item.grammar && item.grammar.length) {
       html += item.grammar.map(function (g, gi) {
         var ex = g.exercise ? '<div class="dt-ex" id="dtEx' + gi + '"></div>' : '';
-        return '<div class="dt-block dt-grammar"><h3 class="sub">📘 ' + esc(g.title) + '</h3>'
+        return '<div class="dt-block dt-grammar"><h3 class="sub">' + ICON.book + ' ' + esc(g.title) + '</h3>'
           + '<div>' + g.rule + '</div>'
           + ((g.examples || []).length ? '<ul class="dt-examples">' + g.examples.map(function (x) {
               var s = String(x); if (s.indexOf('<') === -1) s = esc(s);
@@ -148,23 +163,23 @@
       }).join('');
     }
     if (item.listen && item.listen.length) {
-      html += '<div class="dt-block dt-listen"><h3 class="sub">🔊 Luyện nghe</h3>'
+      html += '<div class="dt-block dt-listen"><h3 class="sub">' + ICON.play + ' Luyện nghe</h3>'
         + item.listen.map(function (l, li) {
-            return '<div class="dt-listen-row"><button type="button" class="btn ghost" data-dt-listen="' + li + '">▶ Nghe</button>'
+            return '<div class="dt-listen-row"><button type="button" class="btn ghost" data-dt-listen="' + li + '">' + ICON.play + ' Nghe</button>'
               + '<span>' + esc(l.text) + '</span>'
-              + (l.tip ? '<div class="muted">💡 ' + esc(l.tip) + '</div>' : '') + '</div>';
+              + (l.tip ? '<div class="muted">' + ICON.bulb + ' ' + esc(l.tip) + '</div>' : '') + '</div>';
           }).join('')
         + (item.listen.some(function (l) { return l.slow; })
-            ? '<div class="muted">Nghe lại chậm với nút <b>🐢 Chậm</b> khi bật ở từng dòng.</div>' : '')
+            ? '<div class="muted">Nghe lại chậm với nút <b>' + ICON.turtle + ' Chậm</b> khi bật ở từng dòng.</div>' : '')
         + '</div>';
     }
     if (item.speak && item.speak.length) {
-      html += '<div class="dt-block dt-speak"><h3 class="sub">🎤 Luyện nói</h3>'
+      html += '<div class="dt-block dt-speak"><h3 class="sub">' + ICON.mic + ' Luyện nói</h3>'
         + item.speak.map(function (sp, si) {
             return '<div class="dt-speak-row"><div class="muted">' + esc(sp.prompt) + '</div>'
               + '<div class="dt-model">' + esc(sp.model) + '</div>'
-              + (sp.hint ? '<div class="muted">🗣 ' + esc(sp.hint) + '</div>' : '')
-              + '<button type="button" class="btn" data-dt-speak="' + si + '">🎤 Đọc &amp; kiểm tra</button>'
+              + (sp.hint ? '<div class="muted">' + ICON.mic + ' ' + esc(sp.hint) + '</div>' : '')
+              + '<button type="button" class="btn" data-dt-speak="' + si + '">' + ICON.mic + ' Đọc &amp; kiểm tra</button>'
               + '<div class="dt-speak-result" id="dtSpeak' + si + '"></div></div>';
           }).join('')
         + '</div>';
@@ -184,15 +199,15 @@
       btn.addEventListener('click', function () {
         var sp = item.speak[parseInt(btn.getAttribute('data-dt-speak'), 10)];
         var out = document.getElementById('dtSpeak' + btn.getAttribute('data-dt-speak').replace('dtSpeak', ''));
-        if (out) out.innerHTML = '<div class="muted">🎤 Đang nghe…</div>';
+        if (out) out.innerHTML = '<div class="muted">' + ICON.mic + ' Đang nghe…</div>';
         record(sp.model, function (ok, t, err, meta) {
           if (!out) return;
-          if (err) { out.innerHTML = '<div class="bad">⚠️ ' + esc(err) + '</div>'; return; }
+          if (err) { out.innerHTML = '<div class="bad">' + ICON.warn + ' ' + esc(err) + '</div>'; return; }
           var m = meta || matchSpeech(sp.model, t || '');
           var html;
-          if (m.exact) html = '<div class="good">✅ Đúng chuẩn: ' + esc(t || '—') + '</div>';
-          else if (m.near) html = '<div class="good">✅ Đúng (gần đúng ' + Math.round(m.score * 100) + '%): ' + esc(t || '—') + '<br><span class="muted">Chuẩn: ' + esc(sp.model) + '</span></div>';
-          else html = '<div class="bad">😅 Nghe lại nhé. Máy nghe thấy: ' + esc(t || '—') + '<br><span class="muted">Mẫu: ' + esc(sp.model) + '</span></div>';
+          if (m.exact) html = '<div class="good">' + ICON.ok + ' Đúng chuẩn: ' + esc(t || '—') + '</div>';
+          else if (m.near) html = '<div class="good">' + ICON.ok + ' Đúng (gần đúng ' + Math.round(m.score * 100) + '%): ' + esc(t || '—') + '<br><span class="muted">Chuẩn: ' + esc(sp.model) + '</span></div>';
+          else html = '<div class="bad">' + ICON.no + ' Nghe lại nhé. Máy nghe thấy: ' + esc(t || '—') + '<br><span class="muted">Mẫu: ' + esc(sp.model) + '</span></div>';
           out.innerHTML = html;
         });
       });
@@ -218,7 +233,7 @@
         ok = sel && parseInt(sel.getAttribute('data-i'), 10) === ex.a;
       }
       fb.className = 'dt-ex-fb show ' + (ok ? 'good' : 'bad');
-      fb.innerHTML = (ok ? '✅ ' : '❌ ') + (ex.ex || '');
+      fb.innerHTML = (ok ? ICON.ok + ' ' : ICON.no + ' ') + (ex.ex || '');
       if (ok) {
         try {
           var p = (w.LearnDB && w.LearnDB.getPlayer && w.LearnDB.getPlayer()) || '';
