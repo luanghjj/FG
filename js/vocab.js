@@ -559,7 +559,9 @@
 #termPop .de{font-weight:700;margin-bottom:4px}
 #termPop .vi{font-weight:700;color:#86efac;font-size:1.05em}
 .vocab-say{background:none;border:none;font-size:1em;cursor:pointer}
-.vocab-say svg{width:1em;height:1em;display:inline-block;vertical-align:-.12em}
+.vocab-say svg{width:1em;height:1em;display:inline-block;vertical-align:-.12em;color:#2563eb}
+#termPop .de svg{color:#eab308}
+#termPop .vi svg{color:#f43f5e}
 #termPop .hint{margin-top:6px;font-size:.72em;opacity:.7}
 `;
     document.head.appendChild(s);

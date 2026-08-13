@@ -7,15 +7,15 @@
     return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + p + '</svg>';
   };
   var ICON = {
-    flag: svg('<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 12h18"/>'),
-    book: svg('<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>'),
-    play: svg('<polygon points="6 4 20 12 6 20"/>'),
-    bulb: svg('<path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5.76.76 1.23 1.52 1.41 2.5"/>'),
-    turtle: svg('<path d="M6 3h12v4l-5 5 5 5v4H6v-4l5-5-5-5z"/>'),
+    flag: svg('<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 12h18"/>').replace('stroke="currentColor"', 'stroke="#d97706"'),
+    book: svg('<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>').replace('stroke="currentColor"', 'stroke="#2563eb"'),
+    play: svg('<polygon points="6 4 20 12 6 20"/>').replace('stroke="currentColor"', 'stroke="#2563eb"'),
+    bulb: svg('<path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5.76.76 1.23 1.52 1.41 2.5"/>').replace('stroke="currentColor"', 'stroke="#d97706"'),
+    turtle: svg('<path d="M6 3h12v4l-5 5 5 5v4H6v-4l5-5-5-5z"/>').replace('stroke="currentColor"', 'stroke="#16a34a"'),
     mic: svg('<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/>'),
-    warn: svg('<path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>'),
-    ok: svg('<polyline points="20 6 9 17 4 12"/>'),
-    no: svg('<circle cx="12" cy="12" r="9"/><path d="M9 9h.01"/><path d="M15 9h.01"/><path d="M8.5 15h7"/>')
+    warn: svg('<path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>').replace('stroke="currentColor"', 'stroke="#d97706"'),
+    ok: svg('<polyline points="20 6 9 17 4 12"/>').replace('stroke="currentColor"', 'stroke="#16a34a"'),
+    no: svg('<circle cx="12" cy="12" r="9"/><path d="M9 9h.01"/><path d="M15 9h.01"/><path d="M8.5 15h7"/>').replace('stroke="currentColor"', 'stroke="#dc2626"')
   };
 
   function norm(s) {

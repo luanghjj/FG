@@ -257,6 +257,26 @@
   });
   var RE = new RegExp('(' + escaped.join('|') + ')', 'g');
 
+  /* ---------- màu theo nhóm ý nghĩa ---------- */
+  var COLOR_GROUPS = [
+    ['e-green', '✅✔✓☑🌍🌐🌱🌽🌾🌿🍀🍁🍃💰💳💶🟢♻📈📊'],
+    ['e-red', '❌✕✗☒🔴🚫🛑🔥🧯'],
+    ['e-amber', '⚠❗☀⭐★☆✦🏆🥈🥉🎉🎓🎃🏷🛎🛢📦🦺🗜🔺'],
+    ['e-orange', '🍳🍽🥩🥔🥛🍚🍞🍏🥧🥦🥗🥚🥤🧃☕🍫🍷🍺🥪🍇🍎🫘♨'],
+    ['e-blue', '❓📝📋✏✍🖊📁📄📂📜📑📖📗📘📙📚📇🗂🔖📅🗓⏰⏱⏳🔍🔒🔑🔗🔄🔀🔤📶🆕💬📣📥📏📐📱💻👤👥🧑🧑‍👉👋👍🤝🗣🧠🚪✈🚀🏠🏢🏨🏛🗺📍📌🧿'],
+    ['e-violet', '🎨🎲🃏📻⚖'],
+    ['e-teal', '🐄🐑🐔🐖🐟🐢🐮🕊🧭🛡🔬🧪🧬🦠🪒'],
+    ['e-pink', '💖❤'],
+    ['e-slate', '☐☁🧊💧⚙⚔💀']
+  ];
+  function iconClass(key) {
+    var ch = key.charAt(0);
+    for (var i = 0; i < COLOR_GROUPS.length; i++) {
+      if (COLOR_GROUPS[i][1].indexOf(ch) !== -1) return COLOR_GROUPS[i][0];
+    }
+    return '';
+  }
+
   /* ---------- thay thế emoji trong một text node ---------- */
   function processText(node) {
     var text = node.nodeValue;
@@ -272,7 +292,7 @@
       var html = M[key];
       if (html) {
         var span = document.createElement('span');
-        span.className = 'emoji-ic';
+        span.className = 'emoji-ic' + (iconClass(key) ? ' ' + iconClass(key) : '');
         span.setAttribute('data-emoji', '1');
         span.innerHTML = html;
         frag.appendChild(span);
@@ -323,7 +343,20 @@
   style.textContent =
     '.emoji-ic{display:inline-flex;align-items:center;justify-content:center;' +
     'width:1.15em;height:1.15em;flex-shrink:0;vertical-align:-0.15em;line-height:1}' +
-    '.emoji-ic svg{width:100%;height:100%;display:block;color:inherit}';
+    '.emoji-ic svg{width:100%;height:100%;display:block;color:inherit}' +
+    '.emoji-ic.e-green{color:#16a34a}' +
+    '.emoji-ic.e-red{color:#dc2626}' +
+    '.emoji-ic.e-amber{color:#d97706}' +
+    '.emoji-ic.e-orange{color:#ea580c}' +
+    '.emoji-ic.e-blue{color:#2563eb}' +
+    '.emoji-ic.e-violet{color:#7c3aed}' +
+    '.emoji-ic.e-teal{color:#0d9488}' +
+    '.emoji-ic.e-pink{color:#db2777}' +
+    '.emoji-ic.e-slate{color:#475569}' +
+    '.tile .emoji-ic.e-green,.tile .emoji-ic.e-red,.tile .emoji-ic.e-amber,' +
+    '.tile .emoji-ic.e-orange,.tile .emoji-ic.e-blue,.tile .emoji-ic.e-violet,' +
+    '.tile .emoji-ic.e-teal,.tile .emoji-ic.e-pink,.tile .emoji-ic.e-slate{color:var(--tile-accent,var(--accent))}' +
+    '.tile .emoji-ic svg,.subject-card .emoji-ic svg{color:inherit}';
   (document.head || document.documentElement).appendChild(style);
 
   /* ---------- khởi động ---------- */
