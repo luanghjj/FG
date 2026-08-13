@@ -342,8 +342,8 @@
   var style = document.createElement('style');
   style.textContent =
     '.emoji-ic{display:inline-flex;align-items:center;justify-content:center;' +
-    'width:1.15em;height:1.15em;flex-shrink:0;vertical-align:-0.15em;line-height:1}' +
-    '.emoji-ic svg{width:100%;height:100%;display:block;color:inherit}' +
+    'width:1em;height:1em;flex-shrink:0;vertical-align:-0.15em;line-height:1}' +
+    '.emoji-ic svg{width:1em;height:1em;display:block;color:inherit}' +
     '.emoji-ic.e-green{color:#16a34a}' +
     '.emoji-ic.e-red{color:#dc2626}' +
     '.emoji-ic.e-amber{color:#d97706}' +
