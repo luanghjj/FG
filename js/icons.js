@@ -341,6 +341,8 @@
   /* ---------- CSS ---------- */
   var style = document.createElement('style');
   style.textContent =
+    ':where(svg[viewBox="0 0 24 24"]){width:1em;height:1em;display:inline-block;' +
+    'vertical-align:-0.14em;flex-shrink:0}' +
     '.emoji-ic{display:inline-flex;align-items:center;justify-content:center;' +
     'width:1em;height:1em;flex-shrink:0;vertical-align:-0.15em;line-height:1}' +
     '.emoji-ic svg{width:1em;height:1em;display:block;color:inherit}' +
