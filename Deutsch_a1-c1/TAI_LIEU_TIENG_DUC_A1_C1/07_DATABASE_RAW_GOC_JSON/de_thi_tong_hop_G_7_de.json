@@ -1,0 +1,313 @@
+[
+  {
+    "title": "Nguyên tắc gốc: thân từ + đuôi",
+    "note": "Hiểu cái này là chia được phần lớn động từ",
+    "hue": "t2",
+    "blocks": [
+      {
+        "kind": "text",
+        "body": "Động từ nguyên thể luôn kết thúc bằng **-en** (đôi khi **-n**). Bỏ đuôi đó đi thì còn **thân từ (Stamm)**, rồi gắn đuôi theo chủ ngữ: `lernen` → thân `lern` → `ich lerne`."
+      },
+      {
+        "kind": "table",
+        "head": [
+          "Chủ ngữ",
+          "Đuôi",
+          "lernen (học)",
+          "arbeiten (làm việc)"
+        ],
+        "rows": [
+          [
+            "ich",
+            "-e",
+            "lerne",
+            "arbeite"
+          ],
+          [
+            "du",
+            "-st",
+            "lernst",
+            "arbeit**e**st"
+          ],
+          [
+            "er/sie/es",
+            "-t",
+            "lernt",
+            "arbeit**e**t"
+          ],
+          [
+            "wir",
+            "-en",
+            "lernen",
+            "arbeiten"
+          ],
+          [
+            "ihr",
+            "-t",
+            "lernt",
+            "arbeit**e**t"
+          ],
+          [
+            "sie/Sie",
+            "-en",
+            "lernen",
+            "arbeiten"
+          ]
+        ]
+      },
+      {
+        "kind": "list",
+        "items": [
+          "Thân kết thúc bằng **-t, -d, -n, -m** khó đọc → thêm **-e** đệm: `arbeiten` → `du arbeitest`, `finden` → `er findet`.",
+          "Thân kết thúc bằng **-s, -ß, -z, -x** → ngôi `du` chỉ thêm **-t**: `heißen` → `du heißt`, `sitzen` → `du sitzt`."
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Ba nhóm động từ",
+    "note": "Yếu · mạnh · hỗn hợp",
+    "hue": "t12",
+    "blocks": [
+      {
+        "kind": "table",
+        "head": [
+          "Nhóm",
+          "Dấu hiệu",
+          "Ví dụ"
+        ],
+        "rows": [
+          [
+            "Yếu (đều)",
+            "Không đổi nguyên âm; Präteritum thêm **-te**; Partizip II là `ge...t`",
+            "`lernen – lernte – gelernt`"
+          ],
+          [
+            "Mạnh (bất quy tắc)",
+            "**Đổi nguyên âm** ở thân; Partizip II là `ge...en`",
+            "`sprechen – sprach – gesprochen`"
+          ],
+          [
+            "Hỗn hợp",
+            "Vừa đổi nguyên âm vừa lấy đuôi **-te/-t**",
+            "`bringen – brachte – gebracht`"
+          ]
+        ]
+      },
+      {
+        "kind": "text",
+        "body": "Động từ mạnh còn hay **đổi nguyên âm ở ngôi du và er/sie/es** thì hiện tại: `fahren` → `du fährst, er fährt`; `sprechen` → `du sprichst, er spricht`; `lesen` → `du liest, er liest`."
+      }
+    ]
+  },
+  {
+    "title": "Công thức từng thì",
+    "note": "8 thì web đang chia",
+    "hue": "t15",
+    "blocks": [
+      {
+        "kind": "table",
+        "head": [
+          "Thì",
+          "Công thức",
+          "Ví dụ (machen)"
+        ],
+        "rows": [
+          [
+            "Präsens",
+            "thân + đuôi",
+            "`ich mache`"
+          ],
+          [
+            "Präteritum",
+            "yếu: thân + **te** + đuôi · mạnh: thân đổi nguyên âm",
+            "`ich machte`"
+          ],
+          [
+            "Perfekt",
+            "**haben/sein** (chia) + **Partizip II** cuối câu",
+            "`ich habe gemacht`"
+          ],
+          [
+            "Plusquamperfekt",
+            "**hatte/war** + Partizip II",
+            "`ich hatte gemacht`"
+          ],
+          [
+            "Futur I",
+            "**werden** (chia) + **Infinitiv** cuối câu",
+            "`ich werde machen`"
+          ],
+          [
+            "Futur II",
+            "**werden** + Partizip II + **haben/sein**",
+            "`ich werde gemacht haben`"
+          ],
+          [
+            "Konjunktiv II",
+            "**würde** + Infinitiv (hoặc dạng riêng)",
+            "`ich würde machen`"
+          ],
+          [
+            "Imperativ",
+            "du: thân (+e) · ihr: thân + **t** · Sie: Infinitiv + **Sie**",
+            "`Mach!` · `Macht!` · `Machen Sie!`"
+          ]
+        ]
+      },
+      {
+        "kind": "text",
+        "body": "Konjunktiv II của mấy động từ hay dùng có **dạng riêng**, đừng ghép với würde: `sein → wäre`, `haben → hätte`, `können → könnte`, `werden → würde`, `müssen → müsste`."
+      }
+    ]
+  },
+  {
+    "title": "Perfekt dùng haben hay sein?",
+    "note": "Chọn sai là mất điểm ngay",
+    "hue": "t20",
+    "blocks": [
+      {
+        "kind": "list",
+        "items": [
+          "Dùng **sein** khi động từ chỉ **sự di chuyển từ chỗ này sang chỗ khác**: `gehen, kommen, fahren, fliegen, laufen, reisen` → `ich bin gefahren`.",
+          "Dùng **sein** khi chỉ **sự thay đổi trạng thái**: `aufstehen, einschlafen, aufwachen, sterben, wachsen` → `ich bin aufgestanden`.",
+          "Ba từ đặc biệt luôn dùng **sein**: `sein, bleiben, werden` → `ich bin gewesen`, `ich bin geblieben`.",
+          "**Còn lại dùng haben**, kể cả động từ có tân ngữ: `ich habe das Buch gelesen`."
+        ]
+      },
+      {
+        "kind": "text",
+        "body": "Mẹo: câu hỏi được **wohin?** (đi đâu) thì thường là `sein`; câu hỏi được **was?** (cái gì) thì thường là `haben`."
+      }
+    ]
+  },
+  {
+    "title": "Partizip II — cách tạo",
+    "note": "Phần hay sai nhất của Perfekt",
+    "hue": "t8",
+    "blocks": [
+      {
+        "kind": "table",
+        "head": [
+          "Loại động từ",
+          "Công thức",
+          "Ví dụ"
+        ],
+        "rows": [
+          [
+            "Yếu",
+            "**ge** + thân + **t**",
+            "`machen → gemacht`"
+          ],
+          [
+            "Mạnh",
+            "**ge** + thân đổi + **en**",
+            "`sprechen → gesprochen`"
+          ],
+          [
+            "Tách được",
+            "tiền tố + **ge** + thân + t/en",
+            "`aufstehen → aufgestanden`"
+          ],
+          [
+            "Không tách được",
+            "**KHÔNG có ge**",
+            "`verstehen → verstanden`"
+          ],
+          [
+            "Kết thúc -ieren",
+            "**KHÔNG có ge**",
+            "`studieren → studiert`"
+          ]
+        ]
+      },
+      {
+        "kind": "text",
+        "body": "Tiền tố **không tách**: `be-, emp-, ent-, er-, ge-, miss-, ver-, zer-`. Nhớ câu: **be-ge-er-ver-zer-ent-emp-miss** — gặp mấy tiền tố này thì bỏ `ge-` đi."
+      }
+    ]
+  },
+  {
+    "title": "Động từ tách (trennbare Verben)",
+    "note": "Tiền tố nhảy xuống cuối câu",
+    "hue": "t18",
+    "blocks": [
+      {
+        "kind": "list",
+        "items": [
+          "Câu thường: tiền tố **rơi xuống cuối câu** → `Ich stehe um 6 Uhr **auf**.`",
+          "Perfekt: **-ge-** nằm **giữa** tiền tố và thân → `Ich bin früh **aufgestanden**.`",
+          "Có `zu`: `zu` nằm **giữa** → `Es ist Zeit **aufzustehen**.`",
+          "Đi với động từ khuyết thiếu thì **giữ nguyên khối** ở cuối câu → `Ich muss früh **aufstehen**.`"
+        ]
+      },
+      {
+        "kind": "text",
+        "body": "Tiền tố tách hay gặp: `ab-, an-, auf-, aus-, ein-, mit-, nach-, vor-, weg-, zu-, zurück-, um-, fern-, los-`."
+      }
+    ]
+  },
+  {
+    "title": "Động từ khuyết thiếu",
+    "note": "können, müssen, wollen, sollen, dürfen, mögen",
+    "hue": "t13",
+    "blocks": [
+      {
+        "kind": "list",
+        "items": [
+          "Thì hiện tại: **ich và er/sie/es giống hệt nhau** và **không có đuôi**: `ich kann – er kann`, `ich muss – er muss`.",
+          "Số ít đổi nguyên âm, số nhiều quay về như nguyên thể: `können → ich kann / wir können`.",
+          "Câu có động từ khuyết thiếu: động từ chính để **nguyên thể ở cuối câu** → `Ich **kann** heute nicht **kommen**.`",
+          "Quá khứ thường dùng **Präteritum** cho tự nhiên: `ich konnte, ich musste, ich wollte` (thay vì Perfekt)."
+        ]
+      },
+      {
+        "kind": "table",
+        "head": [
+          "Nguyên thể",
+          "ich / er",
+          "Präteritum",
+          "Nghĩa"
+        ],
+        "rows": [
+          [
+            "können",
+            "kann",
+            "konnte",
+            "có thể, biết"
+          ],
+          [
+            "müssen",
+            "muss",
+            "musste",
+            "phải"
+          ],
+          [
+            "wollen",
+            "will",
+            "wollte",
+            "muốn"
+          ],
+          [
+            "sollen",
+            "soll",
+            "sollte",
+            "nên"
+          ],
+          [
+            "dürfen",
+            "darf",
+            "durfte",
+            "được phép"
+          ],
+          [
+            "mögen",
+            "mag",
+            "mochte",
+            "thích"
+          ]
+        ]
+      }
+    ]
+  }
+]

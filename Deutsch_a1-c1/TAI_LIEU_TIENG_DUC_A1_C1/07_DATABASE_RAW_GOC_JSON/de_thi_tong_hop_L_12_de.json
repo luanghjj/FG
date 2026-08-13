@@ -1,0 +1,566 @@
+[
+  {
+    "title": "Stevie und ihr Begleiter",
+    "audioText": "Stevie: Hallo Tobias! Schön, dich mal wieder zu treffen. Wie geht's deiner Schwester?\nTobias: Ach, Stevie, gut! Sie ist total aufgeregt – sie will nämlich für ihr Studium ins Ausland, am liebsten nach Kanada.\nStevie: Wirklich? Mutig. Weißt du noch, letztes Jahr, als meine Eltern und ich bei euch zu Besuch waren?\nTobias: Klar, ihr wart doch den ganzen Nachmittag bei uns zu Hause. Meine Mutter redet heute noch von eurem Kuchen.\nStevie: Haha. Übrigens, unser alter Lehrer, Herr Vega – hast du gehört, was aus ihm geworden ist?\nTobias: Nein, erzähl!\nStevie: Er lebt jetzt in Buenos Aires. Fünf Jahre ist er schon dort und arbeitet an einer Schule.\nTobias: Fünf Jahre schon? Krass. Sag mal, gehst du eigentlich noch aufs Humboldt-Gymnasium?\nStevie: Ja, immer noch. Wir sind ja beide da – gleiche Schule, nur andere Klasse.\nTobias: Stimmt. Und was hast du letzte Woche so gemacht?\nStevie: Oh, anstrengend. Am Anfang der Woche war ich bei meiner Familie auf dem Land, aber zum Wochenende hin musste ich schon zurück in die Stadt zu einem Kurs.\nTobias: Ah, deswegen warst du am Samstag nicht erreichbar.\nStevie: Genau. Man sieht sich echt viel zu selten, oder? Ehrlich, seit Monaten haben wir uns nicht mehr getroffen.\nTobias: Da hast du recht, viel zu selten. Aber zurück zu Herrn Vega – unterrichtet der da unten eigentlich Spanisch?\nStevie: Nein, das ist das Lustige – ausgerechnet Deutsch unterrichtet er! Die argentinischen Kinder lernen bei ihm unsere Sprache.\nTobias: Ha, ein Deutschlehrer in Argentinien.\nStevie: Sag mal, du lernst doch selbst noch Spanisch weiter?\nTobias: Ja! Ich liebe diese Sprache. Spanisch ist einfach meine Leidenschaft, nicht so sehr das Deutsche.\nStevie: Geht mir genauso – mein Herz schlägt für Spanisch. Komm, lass uns einen Kaffee trinken gehen.\nTobias: Sehr gern!",
+    "titleVi": "",
+    "qs": [
+      {
+        "de": "Die Schwester des jungen Mannes möchte im Ausland studieren.",
+        "vi": "Em gái của chàng trai muốn đi du học ở nước ngoài.",
+        "r": true
+      },
+      {
+        "de": "Die Familie des Mädchens war bei der Familie des Jungen.",
+        "vi": "Gia đình cô gái đã ở chỗ gia đình chàng trai.",
+        "r": true
+      },
+      {
+        "de": "Ihr Lehrer arbeitet seit 5 Jahren in Argentinien.",
+        "vi": "Thầy giáo của họ làm việc ở Argentina 5 năm rồi.",
+        "r": true
+      },
+      {
+        "de": "Der Junge und das Mädchen sind in der gleichen Schule.",
+        "vi": "Chàng trai và cô gái học cùng trường.",
+        "r": true
+      },
+      {
+        "de": "Am Ende der Woche war sie bei ihrer Familie.",
+        "vi": "Cuối tuần cô ấy đã ở chỗ gia đình mình.",
+        "r": false
+      },
+      {
+        "de": "Sie sieht ihn immer wieder.",
+        "vi": "Cô ấy gặp anh ấy thường xuyên.",
+        "r": false
+      },
+      {
+        "de": "Ihr Lehrer unterrichtet jetzt Spanisch.",
+        "vi": "Thầy giáo của họ giờ dạy tiếng Tây Ban Nha.",
+        "r": false
+      },
+      {
+        "de": "Sie lieben die deutsche Sprache.",
+        "vi": "Họ yêu thích tiếng Đức.",
+        "r": false
+      }
+    ]
+  },
+  {
+    "title": "Reise eines Jungen und eines Mädchens in die Berge",
+    "audioText": "Jonas: Hey Lena! Wie war denn die Bergtour am Wochenende? Tut mir echt leid, dass ich nicht dabei sein konnte.\nLena: Hallo Jonas! Kein Problem – du warst ja verreist. Du hattest doch deinen Urlaub gebucht, oder?\nJonas: Ja, ich lag am Strand, während ihr die Berge hochgeklettert seid. Aber sag, dein Knie – was ist passiert?\nLena: Ach, halb so schlimm. Ich bin gestürzt und habe mir das Knie aufgeschürft, nur ein paar Kratzer, nichts Gebrochenes.\nJonas: Zum Glück nur leicht. Und wie war das Wetter?\nLena: Am Anfang herrlich, blauer Himmel. Und dann, ganz plötzlich, aus dem Nichts – ein Wolkenbruch! Von einer Sekunde auf die andere schüttete es.\nJonas: Oh je. Du gehst doch sonst oft in die Berge, oder?\nLena: Nein, überhaupt nicht! Das war erst mein zweites Mal überhaupt. Regelmäßig wandern, das sind eher meine Eltern, nicht ich.\nJonas: Ach so. Und in der Mittagspause – konntest du dich ausruhen?\nLena: Ausruhen ja, aber schlafen? Keine Chance. Ich habe in der Pause nur ein Brot gegessen und Fotos gemacht; geschlafen hat höchstens der Hund vom Bergführer.\nJonas: Haha. Und warum warst du am Ende so müde? Die falschen Schuhe?\nLena: Nein, meine Wanderschuhe waren perfekt. Es lag am Rucksack – der war viel zu schwer gepackt, das hat mich fertiggemacht.\nJonas: Verstehe. Waren denn am Ende alle mit oben?\nLena: Nein, das ist es ja – zwei aus der Gruppe sind schon an der Hütte umgekehrt, die haben unten gewartet. Nur die Hälfte war ganz oben.\nJonas: Und der Regen – musstet ihr da lange draußen ausharren?\nLena: Zum Glück nicht. Wir haben sofort einen Unterstand gefunden, keine zehn Minuten im Regen, dann waren wir im Trockenen.\nJonas: Puh, Glück gehabt. Beim nächsten Mal komme ich mit!\nLena: Abgemacht!",
+    "titleVi": "Chuyến đi lên núi của một chàng trai và một cô gái",
+    "qs": [
+      {
+        "de": "Der junge Mann konnte nicht zum Berg gehen, weil er Urlaub hatte.",
+        "vi": "Chàng trai không thể lên núi vì anh đang trong kỳ nghỉ.",
+        "r": true
+      },
+      {
+        "de": "Das Mädchen hat leichte Verletzungen erlitten.",
+        "vi": "Cô gái bị thương nhẹ.",
+        "r": true
+      },
+      {
+        "de": "Der Regen fiel auf einmal.",
+        "vi": "Mưa rơi đột ngột.",
+        "r": true
+      },
+      {
+        "de": "Das Mädchen geht regelmäßig zum Berg.",
+        "vi": "Cô gái thường xuyên đi lên núi.",
+        "r": false
+      },
+      {
+        "de": "Das Mädchen hat während der Pause geschlafen.",
+        "vi": "Cô gái đã ngủ trong giờ nghỉ.",
+        "r": false
+      },
+      {
+        "de": "Das Mädchen war müde, weil sie ungeeignetes Schuhwerk trug.",
+        "vi": "Cô gái mệt vì đã đi giày không phù hợp.",
+        "r": false
+      },
+      {
+        "de": "Alle Teilnehmer haben an der Wanderung teilgenommen.",
+        "vi": "Tất cả người tham gia đều tham gia chuyến đi bộ đường dài.",
+        "r": false
+      },
+      {
+        "de": "Die Teilnehmer mussten eine Stunde unter dem Regen stehen.",
+        "vi": "Những người tham gia phải đứng dưới mưa một tiếng.",
+        "r": false
+      }
+    ]
+  },
+  {
+    "title": "Katya und ihre Freundin",
+    "audioText": "Vera: Katja, endlich zurück! Und? Hat sich die ganze Reise überhaupt gelohnt?\nKatja: Vera, absolut! Jeder Euro war es wert, ich würde sofort wieder hinfahren.\nVera: So begeistert? Erzähl mal.\nKatja: Also, am Strand war es so schön, dass ich einen Tag länger bleiben wollte. Ich hab meiner Chefin einfach erzählt, ich sei krank – dabei lag ich putzmunter in der Sonne.\nVera: Katja! Du Schlingel. Und wie bist du überhaupt hingekommen?\nVera: Weißt du was – beim nächsten Mal nimmst du einfach das Flugzeug, das geht viel schneller und bequemer.\nKatja: Vielleicht hast du recht. Diesmal war's aber halb über Land mit dem Bus und halb übers Wasser mit der Fähre.\nVera: Und auf dem Schiff – hast du da an Deck geschlafen, unter den Sternen?\nKatja: Nein, viel zu windig! Ich hatte eine kleine Kabine gebucht und dort geschlafen. An Deck geschlafen hat nur ein älterer Herr auf seiner Bank.\nVera: Klug. Und dein erster Tag, war der gleich toll?\nKatja: Ach, der erste Tag war eine Katastrophe! Mein Koffer kam nicht an und es hat in Strömen geregnet. Erst danach wurde alles besser.\nVera: Oje. Hast du dir was mitgebracht, so als Andenken?\nKatja: Ja! Ich wollte eigentlich eine CD meiner Lieblingsband, aber die war ausverkauft. Am Ende hab ich ein schönes T-Shirt vom Markt genommen.\nVera: Auch schön. Und das italienische Essen – besser als bei uns zu Hause?\nKatja: Hm, lecker war es, keine Frage. Aber ehrlich? Das Essen von meiner Oma zu Hause schmeckt mir immer noch am allerbesten.\nVera: Haha, typisch. War die Reise für dich am Ende sehr anstrengend?\nKatja: Überhaupt nicht! Für mich war es die reinste Erholung. Anstrengend fand es höchstens meine Reisebegleiterin, die ständig unterwegs sein wollte.\nVera: Dann hast du dich ja bestens erholt. Schön, dass du wieder da bist!\nKatja: Danke, Vera!",
+    "titleVi": "Katya và bạn của cô ấy",
+    "qs": [
+      {
+        "de": "Die Reise hat sich gelohnt.",
+        "vi": "Chuyến đi rất đáng giá.",
+        "r": true
+      },
+      {
+        "de": "Sie hat ein Problem gemacht, um einen zusätzlichen Tag am Strand zu bleiben.",
+        "vi": "Cô ấy gây chuyện để được ở lại thêm một ngày trên bãi biển.",
+        "r": true
+      },
+      {
+        "de": "Beim nächsten Mal wirst du mit dem Flugzeug fliegen.",
+        "vi": "Lần tới bạn sẽ đi bằng máy bay.",
+        "r": true
+      },
+      {
+        "de": "Die Reise war zu Land und zu Wasser.",
+        "vi": "Chuyến đi diễn ra cả trên bộ lẫn trên biển.",
+        "r": true
+      },
+      {
+        "de": "Katja schlief auf dem Deck des Schiffes.",
+        "vi": "Katja đã ngủ trên boong tàu.",
+        "r": false
+      },
+      {
+        "de": "Ihr erster Tag war sehr gut.",
+        "vi": "Ngày đầu tiên của cô ấy rất tốt.",
+        "r": false
+      },
+      {
+        "de": "Sie kaufte eine CD ihrer Lieblingsband.",
+        "vi": "Cô ấy mua một đĩa CD của ban nhạc yêu thích của mình.",
+        "r": false
+      },
+      {
+        "de": "Italienisches Essen schmeckt besser als das Essen zu Hause.",
+        "vi": "Đồ ăn Ý ngon hơn đồ ăn ở nhà.",
+        "r": false
+      },
+      {
+        "de": "Für Katja war die Reise anstrengend.",
+        "vi": "Đối với Katja, chuyến đi rất mệt mỏi.",
+        "r": false
+      }
+    ]
+  },
+  {
+    "title": "Linart und Rosa",
+    "audioText": "Lennart: Hallo Rosa! Und, hast du dich entschieden, wo du studieren willst?\nRosa: Hi Lennart! Ja, endlich – ich gehe nach Berlin an die Uni, das steht jetzt fest.\nLennart: Toll! Und mit deinen ganzen Sprachen wird das Studium bestimmt leicht. Du sprichst ja Französisch, Englisch, Italienisch...\nRosa: Haha, ja, Sprachen liegen mir einfach. Vier oder fünf kann ich mittlerweile ganz gut.\nLennart: Beeindruckend. Ich weiß dagegen noch nicht mal, wo ich diesen Sommer Urlaub mache.\nRosa: Wirklich? Noch gar keine Idee?\nLennart: Nein, keine Ahnung – vielleicht Italien, vielleicht Kroatien, ich hab noch überhaupt kein Land festgelegt.\nRosa: Lass dir Zeit. Ich lerne nebenbei übrigens noch eine neue Sprache.\nLennart: Ach ja? Welche denn?\nRosa: Spanisch! In meiner Freizeit büffle ich jeden Abend Vokabeln, das macht mir richtig Spaß.\nLennart: Respekt. Ich muss vorher noch was anderes büffeln – ich hab nämlich noch eine Klausur vor mir.\nRosa: Oh, ich dachte, du wärst schon durch?\nLennart: Fast! Ich hätte beinahe keine Prüfung mehr gehabt, aber eine einzige steht leider doch noch aus, nächste Woche.\nRosa: Dann drück ich dir die Daumen.\nLennart: Danke. Und dein Spanisch – lernst du das dann in Argentinien?\nRosa: Nein, nach Argentinien zieht es eher dich mit deinem Fußball! Ich mach einen Sprachkurs direkt in Spanien, in Sevilla.\nLennart: Und wo wohnst du am Anfang? Gleich in einer WG?\nRosa: Nein, zu Beginn nehme ich ein Zimmer im Studentenwohnheim. In eine Wohngemeinschaft ziehe ich vielleicht erst im zweiten Semester.\nLennart: Klingt vernünftig.\nRosa: Und du – weißt du eigentlich schon, in welcher Stadt dein Fußballtraining stattfindet?\nLennart: Ehrlich gesagt nein. Der Verein hat mir noch keine genaue Stadt genannt, ich tappe da völlig im Dunkeln.\nRosa: Dann heißt es für uns beide: abwarten!\nLennart: Genau. Viel Erfolg in Berlin!",
+    "titleVi": "Linart và Rosa",
+    "qs": [
+      {
+        "de": "Rosa plant, in Berlin zu studieren.",
+        "vi": "Rosa dự định học ở Berlin.",
+        "r": true
+      },
+      {
+        "de": "Rosa hat Kenntnisse in vielen Sprachen.",
+        "vi": "Rosa biết nhiều ngôn ngữ.",
+        "r": true
+      },
+      {
+        "de": "Lennart weiß nicht, in welchem Land er seinen Urlaub verbringen wird.",
+        "vi": "Lennart không biết sẽ nghỉ ở quốc gia nào.",
+        "r": true
+      },
+      {
+        "de": "Rosa wird sich in ihrer Freizeit mit dem Lernen von Spanisch beschäftigen.",
+        "vi": "Rosa sẽ dành thời gian rảnh để học tiếng Tây Ban Nha.",
+        "r": true
+      },
+      {
+        "de": "Lennart hat noch eine Prüfung.",
+        "vi": "Lennart vẫn còn một kỳ thi.",
+        "r": true
+      },
+      {
+        "de": "Lennart hat keine Prüfung.",
+        "vi": "Lennart không có kỳ thi nào.",
+        "r": false
+      },
+      {
+        "de": "Rosa will in Argentinien Spanisch lernen.",
+        "vi": "Rosa muốn học tiếng Tây Ban Nha ở Argentina.",
+        "r": false
+      },
+      {
+        "de": "Sie möchte zu Beginn in einer Wohngemeinschaft wohnen.",
+        "vi": "Cô ấy muốn ở trong căn hộ chung ngay từ đầu.",
+        "r": false
+      },
+      {
+        "de": "Lennart weiß genau, in welcher Stadt er trainiert wird.",
+        "vi": "Lennart biết chính xác sẽ được đào tạo ở thành phố nào.",
+        "r": false
+      }
+    ]
+  },
+  {
+    "title": "Sabine und Robert: Urlaub am Meer",
+    "audioText": "Robert: Sabine, willkommen zurück aus Italien! Wie war der Urlaub am Meer?\nSabine: Hallo Robert! Wunderbar. Weißt du, italienisch zu essen war für mich nichts Neues – ich koche zu Hause ständig Pasta und Risotto, ich kannte die Gerichte also schon lange, bevor ich überhaupt hingefahren bin.\nRobert: Stimmt, du probierst ja gern alles Mögliche aus.\nSabine: Oh ja, ich liebe es, immer wieder etwas völlig Neues auf der Karte zu bestellen. Ausprobieren ist mein Hobby.\nRobert: Und? Hat das Essen dort gehalten, was es verspricht?\nSabine: Und wie! Jedes Gericht war ein Traum, so frisch und aromatisch. Einfach köstlich.\nRobert: Habt ihr auch nette Leute kennengelernt?\nSabine: Ja, eine Familie aus der Schweiz. Die hatten zwei süße Töchter, die immer mit uns am Pool gespielt haben.\nRobert: Schön. Und wie lange wart ihr weg? Nur ein verlängertes Wochenende?\nSabine: Ach was, viel länger! Zwei volle Wochen hatten wir. Nur einen Tag – da wäre ich ja nie so weit gefahren.\nRobert: Zwei Wochen, herrlich. Und das Hotel? Ich hörte, du warst da eher kritisch?\nSabine: Nein, im Gegenteil! Ich war rundum zufrieden, das Personal war so freundlich, ich kann gar nichts Schlechtes sagen.\nRobert: Gab's denn gar kein Malheur?\nSabine: Doch, einmal – aber lustig. Mein Mann hat den Zimmerschlüssel am Strand im Sand vergraben, und wir haben ihn erst abends wiedergefunden. An der Rezeption war er zum Glück nicht, sonst hätten wir gedacht, er sei gestohlen.\nRobert: Haha, typisch. Und wart ihr viel unterwegs?\nSabine: Nicht jeden Tag. An manchen Tagen haben wir Ausflüge gemacht, aber an anderen sind wir einfach nur faul am Strand gelegen.\nRobert: Fahrt ihr eigentlich immer an denselben Ort?\nSabine: Nein, nie! Meine Familie sucht sich jedes Jahr ein neues Ziel aus – letztes Jahr Griechenland, dieses Jahr Italien. Immer woanders.\nRobert: Abwechslung ist gut. Sag noch mal – die Schweizer, hatten die nur ein einziges Kind?\nSabine: Nein, nein, eine einzige Tochter wäre untertrieben – es waren zwei Mädchen, wie gesagt.\nRobert: Klingt nach einem perfekten Urlaub!\nSabine: War es auch. Danke, Robert!",
+    "titleVi": "Sabine và Robert: Kỳ nghỉ ở biển",
+    "qs": [
+      {
+        "de": "Die Dame kennt italienische Gerichte, bevor sie nach Italien reist.",
+        "vi": "Người phụ nữ biết các món ăn Ý trước khi đi Ý.",
+        "r": true
+      },
+      {
+        "de": "Sie liebt es, neue Gerichte auszuprobieren.",
+        "vi": "Cô ấy thích thử các món ăn mới.",
+        "r": true
+      },
+      {
+        "de": "Das italienische Essen war köstlich.",
+        "vi": "Đồ ăn Ý rất ngon.",
+        "r": true
+      },
+      {
+        "de": "Die Schweizer Familie hat Töchter.",
+        "vi": "Gia đình người Thụy Sĩ có các cô con gái.",
+        "r": true
+      },
+      {
+        "de": "Sie hatte nur einen Tag Urlaub.",
+        "vi": "Cô ấy chỉ có một ngày nghỉ.",
+        "r": false
+      },
+      {
+        "de": "Sie war mit dem Hotel unzufrieden.",
+        "vi": "Cô ấy không hài lòng về khách sạn.",
+        "r": false
+      },
+      {
+        "de": "Ihr Mann hat den Schlüssel an der Rezeption liegen lassen.",
+        "vi": "Chồng cô ấy để quên chìa khóa ở quầy lễ tân.",
+        "r": false
+      },
+      {
+        "de": "Jeden Tag machten sie Ausflüge.",
+        "vi": "Mỗi ngày họ đều đi tham quan (Ausflüge).",
+        "r": false
+      },
+      {
+        "de": "Die Familie der Frau macht jedes Jahr Urlaub am gleichen Ort.",
+        "vi": "Gia đình của người phụ nữ kể chuyện năm nào cũng nghỉ ở cùng một nơi.",
+        "r": false
+      },
+      {
+        "de": "Die Schweizer Familie hat eine Tochter.",
+        "vi": "Gia đình người Thụy Sĩ có một cô con gái.",
+        "r": false
+      }
+    ]
+  },
+  {
+    "title": "Martin und Sandra: über den Besuch eines Films",
+    "audioText": "Sandra: Martin, gestern der Film – also, mich hat er nicht überzeugt.\nMartin: Ach, Sandra, wieso denn?\nSandra: Total unrealistisch! Kein Mensch überlebt so einen Sturz, und dann diese Explosionen – das hat mit dem echten Leben nichts zu tun.\nMartin: Hm, das war mir egal. Übrigens, war die Anfahrt gestern nicht anstrengend?\nSandra: Du meinst mit dem Bus?\nMartin: Ja, ich fahr da echt lieber mit der Bahn. Im Zug kann ich lesen und sitze bequem, im Bus wird mir immer schlecht.\nSandra: Verstehe ich. Sag mal, du fragst gar nicht nach meinem Studium?\nMartin: Ach ja! Du machst doch bald deinen Abschluss – im Herbst, oder?\nSandra: Nein, das dauert noch! Im Herbst fange ich gerade erst mein Hauptseminar an; mit dem Abschluss bin ich frühestens nächstes Frühjahr fertig.\nMartin: Ah, hatte ich falsch in Erinnerung.\nSandra: Und, wie fandest du den Film denn nun wirklich?\nMartin: Ehrlich? Mir hat er richtig gut gefallen! Die Bilder, die Musik – ich fand ihn klasse, auch wenn die Handlung übertrieben war.\nSandra: Geschmackssache. Ich hab ja bald diesen Nebenjob.\nMartin: Ach, du arbeitest den ganzen Tag im Hotel?\nSandra: Nein, im Hotel jobbt meine Schwester. Ich sitze nur ein paar Stunden abends an der Kinokasse, nicht den ganzen Tag.\nMartin: Ach so.\nSandra: Und du, machst du im Sommer eine Reise mit deiner Familie?\nMartin: Nein, diesmal nicht mit der Familie – ich fahre allein mit zwei Kumpels zum Wandern nach Österreich.\nSandra: Klingt gut.\nMartin: Und stimmt es, dass du im Herbst mit dem Studium aufhörst, um Vollzeit zu arbeiten?\nSandra: Auf keinen Fall! Ich studiere ganz normal weiter. Wer hat dir denn diesen Unsinn erzählt? Aufhören kommt gar nicht in Frage.\nMartin: Gut zu wissen. Gehen wir am Wochenende noch mal ins Kino, ein zweites Mal?\nSandra: Nein, lass uns lieber was anderes machen. Zweimal in einer Woche ins Kino – das muss nicht sein. Wie wär's mit einem Spaziergang?\nMartin: Auch schön. Machen wir!",
+    "titleVi": "Martin và Sandra: về việc xem một bộ phim",
+    "qs": [
+      {
+        "de": "Sandra hat gesehen, dass der Film unrealistisch ist.",
+        "vi": "Sandra thấy bộ phim không thực tế.",
+        "r": true
+      },
+      {
+        "de": "Martin findet die Zugfahrt angenehmer als die Busfahrt.",
+        "vi": "Martin thấy đi tàu hỏa thoải mái hơn đi xe buýt.",
+        "r": true
+      },
+      {
+        "de": "Sandra wird im Herbst ihr Studium abschließen.",
+        "vi": "Sandra sẽ hoàn tất việc học vào mùa thu.",
+        "r": false
+      },
+      {
+        "de": "Martin fand den Film schlecht.",
+        "vi": "Martin thấy bộ phim dở.",
+        "r": false
+      },
+      {
+        "de": "Sandra wird den ganzen Tag im Hotel arbeiten.",
+        "vi": "Sandra sẽ làm việc cả ngày ở khách sạn.",
+        "r": false
+      },
+      {
+        "de": "Er wird eine Reise mit seiner Familie machen.",
+        "vi": "Anh ấy sẽ đi du lịch với gia đình.",
+        "r": false
+      },
+      {
+        "de": "Sie hört im Herbst mit dem Studium auf, um zu arbeiten.",
+        "vi": "Cô ấy ngừng học vào mùa thu để đi làm.",
+        "r": false
+      },
+      {
+        "de": "Sie werden am Wochenende ein zweites Mal ins Kino gehen.",
+        "vi": "Họ sẽ đi xem phim lần thứ hai vào cuối tuần.",
+        "r": false
+      }
+    ]
+  },
+  {
+    "title": "Seven und Mike",
+    "audioText": "Seven: Hallo Mike, schön dich zu treffen! Stell dir vor, ich fange bald bei einer Firma in Schottland an.\nMike: Wirklich? Das ist ja fantastisch! Ich freue mich riesig für dich, beruflich nach Schottland zu gehen ist eine tolle Chance.\nSeven: Danke! Weißt du, Mikeil, der Mann meiner Schwester, lebt schon seit vielen Jahren dort und arbeitet in Edinburgh. Er hat gesagt: „Komm ruhig, hier gibt es genug Arbeit.\"\nMike: Ach, dein Schwager! Dann kennst du dich ja schon ein bisschen aus.\nSeven: Naja, ein bisschen. Im Moment suche ich noch günstige Angebote für die paar freien Tage, die ich mir vorher als Urlaub nehmen will.\nMike: Und wo wohnst du dann?\nSeven: Genau das ist die Frage. Ich suche gerade eine kleine Wohnung, einen Ort zum Wohnen in der Nähe des Büros.\nMike: Ich? Nein, ich arbeite ja weiter hier in der Stadt. Nur dein Schwager arbeitet drüben, nicht ich bei deiner Schwester.\nSeven: Klar. Die ersten Tage verbringe ich bei Mikeil, bis ich etwas Eigenes gefunden habe.\nMike: Und das Wetter? In Schottland ist doch bestimmt alles kalt, oder?\nSeven: Das denken alle! Aber meine Schwester meinte, im Sommer ist das Wasser am See sogar richtig warm, überhaupt nicht kalt.\nMike: Na, dann drück ich dir die Daumen, dass du schnell einen Platz zum Wohnen findest!\nSeven: Danke, Mike! Ich suche weiter. Du hast ja Glück, du musst nichts suchen.",
+    "titleVi": "Trong đề thi thật, các tên có thể đổi thành Daniel, Meike, Sven, Lea, Anke, Paul — xem phần đề thi bên dưới",
+    "qs": [
+      {
+        "de": "Seven geht zur Arbeit / beruflich in Schottland.",
+        "vi": "Seven đang đi làm.",
+        "r": true
+      },
+      {
+        "de": "Mike war begeistert davon.",
+        "vi": "Miki rất phấn khích về điều này.",
+        "r": true
+      },
+      {
+        "de": "Mikeil, der Ehemann der Schwester, arbeitet seit langem in Schottland.",
+        "vi": "Chồng của chị gái làm việc lâu dài ở Scotland.",
+        "r": true
+      },
+      {
+        "de": "Seven sucht nach Angeboten für seinen Urlaub.",
+        "vi": "Seven đang tìm các ưu đãi cho kỳ nghỉ của mình.",
+        "r": true
+      },
+      {
+        "de": "Seven sucht nach einem Ort zum Wohnen.",
+        "vi": "Seven đang tìm một nơi để ở.",
+        "r": true
+      },
+      {
+        "de": "Mike arbeitet bei ihrer Schwester.",
+        "vi": "Miki sẽ làm việc ở chỗ chị gái mình.",
+        "r": false
+      },
+      {
+        "de": "Mike wird ihren Tag bei jemandem verbringen.",
+        "vi": "Miki sẽ trải qua ngày của mình ở nhà ai đó.",
+        "r": false
+      },
+      {
+        "de": "Das Wasser war sehr kalt.",
+        "vi": "Nước rất lạnh.",
+        "r": false
+      },
+      {
+        "de": "Mike suchte einen Aufenthaltsort.",
+        "vi": "Miki đang tìm một nơi để ở.",
+        "r": false
+      }
+    ]
+  },
+  {
+    "title": "Studentenaustausch / Die Gastfamilie",
+    "audioText": "Anna: Guten Morgen, George! Na, wie war der Schüleraustausch deiner beiden Jungs?\nGeorge: Hallo Anna! Ganz wunderbar. Meine beiden Söhne waren drei Wochen in England, in einem kleinen Ort bei Brighton.\nAnna: Das klingt toll. Ich überlege, ob ich meine Tochter Leonie nächstes Jahr auch schicke. Meinst du, dein Ältester findet dort schnell Anschluss?\nGeorge: Auf jeden Fall. Mein ältester Sohn ist sehr offen, der findet überall in kürzester Zeit neue Freunde.\nAnna: Und wie lief die Organisation? Wann wusstet ihr, wo sie wohnen?\nGeorge: Wir hatten Glück. Die Adresse der Gastfamilie haben wir schon ein halbes Jahr vor dem Austausch bekommen.\nAnna: Sechs Monate vorher, das ist wirklich früh! Ich dachte immer, meine Leonie sei älter als deine Kinder, aber mit ihren zwölf Jahren ist sie ja jünger.\nGeorge: Stimmt, meine sind schon fünfzehn.\nAnna: Und deine zwei, waren die bei verschiedenen Familien untergebracht?\nGeorge: Nein, zum Glück nicht. Beide waren bei derselben Gastfamilie, den Müllers. Sie wollten unbedingt zusammenbleiben.\nAnna: Kannst du mir die wichtigsten Informationen zur Organisation geben?\nGeorge: Klar. Aber ich bringe sie dir nicht erst beim nächsten Treffen mit, das dauert zu lange. Ich schicke dir heute Abend gleich alles per E-Mail.\nAnna: Perfekt. Und hat dein Großer euch als Eltern sehr vermisst?\nGeorge: Ehrlich gesagt überhaupt nicht! Er hatte so viel Spaß, dass er kaum an uns gedacht hat. Am Telefon sagte er nur: „Papa, es ist super hier!\"\nAnna: Ha, das ist doch ein gutes Zeichen!",
+    "titleVi": "Trao đổi học sinh / Gia đình tiếp đón — Con của George là con của Anna",
+    "qs": [
+      {
+        "de": "Georges Söhne waren in England.",
+        "vi": "Các con của George đã ở Anh.",
+        "r": true
+      },
+      {
+        "de": "Anna glaubt, dass Georges ältester Sohn Leonie schnell Freunde findet.",
+        "vi": "Anna tin rằng Leonie, con trai lớn của George, sẽ nhanh kết bạn.",
+        "r": true
+      },
+      {
+        "de": "George erhielt die Adresse der Gastfamilie sechs Monate vor dem Austausch.",
+        "vi": "George nhận được địa chỉ gia đình tiếp đón sáu tháng trước khi trao đổi.",
+        "r": true
+      },
+      {
+        "de": "Annas Tochter ist älter als Georges Kinder.",
+        "vi": "Con gái của Anna lớn hơn các con của George.",
+        "r": false
+      },
+      {
+        "de": "Georges Kinder lebten bei verschiedenen Familien.",
+        "vi": "Các con của George sống ở những gia đình khác nhau.",
+        "r": false
+      },
+      {
+        "de": "George wird Anna die wesentlichen Informationen beim nächsten Treffen mitbringen.",
+        "vi": "George sẽ mang cho Anna những thông tin chính tại cuộc họp lần tới.",
+        "r": false
+      },
+      {
+        "de": "Georges ältester Sohn vermisste seine Eltern sehr.",
+        "vi": "Con trai lớn của George rất nhớ bố mẹ.",
+        "r": false
+      }
+    ]
+  },
+  {
+    "title": "Reise nach Ägypten",
+    "audioText": "Nadia: Hey Jasmin! Ich bin gerade aus Ägypten zurück, es war einfach traumhaft!\nJasmin: Hallo Nadia! Erzähl, wie war es?\nNadia: Ehrlich, ich war rundum zufrieden. Das Meer, die Sonne, das Hotel, alles perfekt.\nJasmin: Schön! Ich fahre ja, wie du weißt, jedes Jahr mit meiner Familie an denselben Ort, immer nach Kroatien ans Meer – wir haben dort ein Haus und fahren jedes Jahr hin.\nNadia: Stimmt, du bist da treu.\nJasmin: Weißt du noch, wie wir uns kennengelernt haben?\nNadia: Klar, im Deutschkurs an der Uni! Auch wenn viele denken, das war auf einer Geburtstagsfeier, nein, im Kurs war das.\nJasmin: Genau. Und wie lange warst du weg, vier Wochen?\nNadia: Nein, so viel Urlaub bekomme ich leider nicht. Nur zehn Tage, aber die haben gereicht.\nJasmin: Ich wollte dieses Jahr eigentlich auch weiter weg, sogar nach Ägypten.\nNadia: Und warum hast du es nicht gemacht? Kein Geld?\nJasmin: Nein, am Geld lag es nicht. Ich hatte einfach keine Zeit wegen der neuen Arbeit.\nNadia: Und sonst, gibt es Neuigkeiten? Willst du nicht bald umziehen?\nJasmin: Die Wohnung? Nein, die behalte ich. Aber ich denke darüber nach, die Stelle zu wechseln.\nNadia: Ach, und machst du noch deinen Tenniskurs?\nJasmin: Ja! Aber das ist kein Einzeltraining mit Privattrainer, es ist ein Gruppenkurs und geht über zwei Monate.\nNadia: Klingt gut. Vielleicht komme ich mal mit!",
+    "titleVi": "Chuyến đi đến Ai Cập",
+    "qs": [
+      {
+        "de": "Das Mädchen war mit dem Urlaub in Ägypten sehr zufrieden.",
+        "vi": "Cô gái rất hài lòng với kỳ nghỉ ở Ai Cập.",
+        "r": true
+      },
+      {
+        "de": "Das zweite Mädchen fährt jedes Jahr mit ihrer Familie ans Meer, wo sie ein Haus haben.",
+        "vi": "Cô gái thứ hai cùng gia đình năm nào cũng đến căn nhà của họ ở biển.",
+        "r": true
+      },
+      {
+        "de": "Die beiden Mädchen lernten sich an ihrem Geburtstag kennen.",
+        "vi": "Hai cô gái làm quen với nhau vào ngày sinh nhật.",
+        "r": false
+      },
+      {
+        "de": "Die Reise nach Ägypten dauerte zehn Tage.",
+        "vi": "Chuyến đi Ai Cập kéo dài 10 ngày.",
+        "r": true
+      },
+      {
+        "de": "Sie reiste nicht, weil sie kein Geld hatte.",
+        "vi": "Cô ấy không đi du lịch vì không có tiền.",
+        "r": false
+      },
+      {
+        "de": "Sie möchte ihre Wohnung wechseln.",
+        "vi": "Cô ấy muốn đổi căn hộ của mình.",
+        "r": false
+      },
+      {
+        "de": "Der Tenniskurs dauert eine Woche mit einem Privattrainer.",
+        "vi": "Khóa quần vợt kéo dài một tuần với một huấn luyện viên riêng.",
+        "r": false
+      }
+    ]
+  },
+  {
+    "title": "Christoph und Stefani",
+    "audioText": "Christoph: Michael? Das gibt es doch nicht, wir sitzen im selben Zug!\nMichael: Christoph! So ein Zufall! Wo geht es denn hin?\nChristoph: Ich muss nach Brüssel, rein beruflich. Meine Firma hat dort ein Meeting.\nMichael: Und wir sind sogar zusammen eingestiegen, am selben Bahnsteig!\nChristoph: Verrückt. Und du, wohin fährst du?\nMichael: Ich fahre nach Interlaken, in die Schweiz.\nChristoph: Schön! Was hat dein Ticket gekostet?\nMichael: Genau 25 Euro, ein super Sparangebot.\nChristoph: Und dabei hatten wir das gar nicht abgesprochen, kein geplantes Treffen, reiner Zufall!\nMichael: Weißt du noch, letztes Mal im Bahnhofsrestaurant? Wie lange haben wir da auf die Pizza gewartet, eine Viertelstunde?\nChristoph: Viel länger! Fast eine ganze Stunde haben wir auf die Pizza gewartet, das war eine Frechheit.\nMichael: Und die Pizza war auch noch teuer.\nChristoph: Ach was, die 25 Euro waren doch für dein Zugticket, nicht für die Pizza! Die Pizza hat viel weniger gekostet.\nChristoph: Denk dran, in Interlaken kannst du nicht in Euro zahlen.\nMichael: Stimmt, dort muss ich in Schweizer Franken bezahlen, nicht in Euro. Ich wechsle am besten schon am Bahnhof.\nChristoph: Fährst du wegen des Musikfestivals hin?\nMichael: Nein, das Festival letztes Jahr hat mich gar nicht begeistert, zu laut, zu voll. Ich besuche diesmal nur meine Tante.\nChristoph: Ha, verständlich. Grüß sie von mir!",
+    "titleVi": "Christoph và Stefani — đôi khi tên là Michael",
+    "qs": [
+      {
+        "de": "Er reiste aus beruflichen Gründen nach Brüssel.",
+        "vi": "Anh ấy đi Brussels vì lý do công việc.",
+        "r": true
+      },
+      {
+        "de": "Die beiden jungen Männer stiegen gemeinsam in den Zug.",
+        "vi": "Hai chàng trai lên tàu cùng nhau.",
+        "r": true
+      },
+      {
+        "de": "Michal fährt nach Interlaken.",
+        "vi": "Michael đi đến Interlaken.",
+        "r": true
+      },
+      {
+        "de": "Er hat 25 Euro für das Ticket bezahlt.",
+        "vi": "Anh ấy trả 25 euro tiền vé.",
+        "r": true
+      },
+      {
+        "de": "Die beiden jungen Männer hatten ein Treffen geplant.",
+        "vi": "Họ đã lên kế hoạch gặp nhau.",
+        "r": false
+      },
+      {
+        "de": "Sie warteten eine Viertelstunde auf die Pizza.",
+        "vi": "Họ đợi ba phần tư tiếng để lấy pizza.",
+        "r": false
+      },
+      {
+        "de": "Er hat 25 Euro für die Pizza bezahlt.",
+        "vi": "Anh ấy trả 25 euro tiền pizza.",
+        "r": false
+      },
+      {
+        "de": "Er musste in Euro bezahlen.",
+        "vi": "Anh ấy phải trả bằng euro.",
+        "r": false
+      },
+      {
+        "de": "Michael war vom Festival begeistert.",
+        "vi": "Michael thích lễ hội.",
+        "r": false
+      }
+    ]
+  },
+  {
+    "title": "Großvater und Enkelin sprechen über Marken",
+    "audioText": "Mia: Opa Werner, stimmt es, dass du früher ein eigenes Geschäft hattest?\nWerner: Ja, meine liebe Mia. Ich hatte über dreißig Jahre lang ein Modegeschäft, Kleidung, Hüte, feine Stoffe.\nMia: Wahnsinn! Und in demselben Laden ist jetzt diese neue Boutique, oder?\nWerner: Genau. Die junge Frau hat ihn übernommen; ihr Geschäft ist jetzt seit drei Jahren geöffnet.\nMia: Toll, dass der Laden weiterlebt.\nWerner: Weißt du, damals hat deine Mutter, also meine Tochter, oft im Laden mitgeholfen. Dein Bruder, mein Enkel, hat dort nie gearbeitet, der war ja noch gar nicht geboren.\nMia: Und warum hast du damals zugemacht? Gab es einen Brand?\nWerner: Nein, nein, einen Brand gab es zum Glück nie. Ich habe einfach aufgehört, weil ich in Rente gegangen bin.\nMia: War der Laden eigentlich versteckt, so in einem Hinterhaus?\nWerner: Überhaupt nicht! Mein Geschäft lag direkt an der großen Straße, mit einem schönen Schaufenster. Jeder ist daran vorbeigekommen.\nMia: Kein Wunder, dass es so gut lief, Opa!",
+    "titleVi": "Ông và cháu gái nói chuyện về các thương hiệu",
+    "qs": [
+      {
+        "de": "Großvater hatte ein Modegeschäft.",
+        "vi": "Ông có một cửa hàng thời trang.",
+        "r": true
+      },
+      {
+        "de": "Es ist seit 3 Jahren geöffnet.",
+        "vi": "Ông đã mở cửa hàng được 3 năm.",
+        "r": true
+      },
+      {
+        "de": "Der Enkel arbeitete im Laden.",
+        "vi": "Người cháu đã làm việc trong cửa hàng.",
+        "r": false
+      },
+      {
+        "de": "Der Laden wurde wegen des Brandes geschlossen.",
+        "vi": "Cửa hàng đóng cửa chỉ vì hỏa hoạn.",
+        "r": false
+      },
+      {
+        "de": "Das Geschäft an der Straße befand sich in einem Hinterhaus.",
+        "vi": "Cửa hàng trên phố nằm trong một tòa nhà phía sau.",
+        "r": false
+      }
+    ]
+  },
+  {
+    "title": "Tiêu đề không rõ",
+    "audioText": "Lena: Hi Tobias! Danke nochmal, dass dein Freund Max mir am Wochenende geholfen hat.\nTobias: Hallo Lena! Gern. Und, hat der Umzug gut geklappt?\nLena: Super! Max ist so kräftig, der muskulöse Kerl hat die schweren Kisten fast allein die Treppe hochgetragen.\nTobias: Ja, der Max! Den kenne ich übrigens schon ewig, wir waren zusammen in der Schule, seit der fünften Klasse.\nLena: Echt, so lange schon?\nTobias: Übrigens, ich war letzte Woche verreist. Stell dir vor, die ganze Reise hat mich keinen Cent gekostet, meine Firma hat alles bezahlt.\nLena: Wie schön, gratis reisen!\nTobias: Und deine neue Wohnung, die ist doch ganz oben, oder?\nLena: Ja, im fünften Stock. Erst war ich skeptisch, aber jetzt bin ich völlig einverstanden, die Aussicht ist herrlich.\nTobias: Sollen wir nachher zusammen einkaufen gehen?\nLena: Heute nicht, ich muss noch auspacken. Gestern waren wir ja auch nicht einkaufen, sondern haben nur Kaffee getrunken.\nTobias: Warum bist du eigentlich umgezogen? Waren die alten Nachbarn so schlimm?\nLena: Nein, die Nachbarn waren nett! Ich brauchte einfach mehr Platz, die alte Wohnung war zu klein.\nLena: Und deine Reise, hast du die lange im Voraus geplant?\nTobias: Überhaupt nicht! Das war total spontan. Mein Chef sagte am Montag: „Fahr morgen los\", und weg war ich.\nLena: Ha, so ein Glück muss man haben!",
+    "titleVi": "",
+    "qs": [
+      {
+        "de": "Der muskulöse Freund des Mädchens hat ihr beim Umzug geholfen.",
+        "vi": "Người bạn cơ bắp của cô gái đã giúp cô chuyển đồ.",
+        "r": true
+      },
+      {
+        "de": "Er kennt seinen Freund seit der Schulzeit.",
+        "vi": "Anh ấy biết bạn mình từ thời đi học.",
+        "r": true
+      },
+      {
+        "de": "Die Reise war kostenlos für ihn.",
+        "vi": "Chuyến đi miễn phí đối với anh ấy.",
+        "r": true
+      },
+      {
+        "de": "Sie war mit dem fünften Stock einverstanden.",
+        "vi": "Cô ấy hài lòng với tầng năm.",
+        "r": true
+      },
+      {
+        "de": "Der Junge und das Mädchen waren zusammen einkaufen.",
+        "vi": "Cô gái và chàng trai đã đi mua sắm cùng nhau.",
+        "r": false
+      },
+      {
+        "de": "Das Mädchen ist wegen der lauten Nachbarn in eine neue Wohnung gezogen.",
+        "vi": "Cô gái chuyển đến căn hộ mới vì hàng xóm ồn ào.",
+        "r": false
+      },
+      {
+        "de": "Der Junge denkt seit Langem an die Reise.",
+        "vi": "Chàng trai đã nghĩ về chuyến đi từ lâu.",
+        "r": false
+      }
+    ]
+  }
+]

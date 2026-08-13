@@ -1,0 +1,2425 @@
+[
+  {
+    "title": "Das Schiff und der Kapitän",
+    "titleVi": "Con thuyền và thuyền trưởng",
+    "audioText": "Herzlich willkommen an Bord, meine Damen und Herren! Bevor wir ablegen, ein paar Worte zu unserem Ziel. Diese mächtige Festung, die Sie gleich am Ufer erblicken, war über Jahrhunderte hinweg von großer geschichtlicher Bedeutung – hier wurden Schlachten geschlagen und Verträge besiegelt. Wir legen dort übrigens eine Rast von hundertzwanzig Minuten ein – nicht etwa nur eine kurze halbe Stunde, wie manche vielleicht denken. Nutzen Sie die Zeit! Ich lege Ihnen besonders ans Herz, einen Blick in das alte Gotteshaus zu werfen; dieses Sakralgebäude mit seinen bunten Fenstern ist wirklich sehenswert. Wenn Sie den Aufstieg wagen und den obersten Wehrturm erklimmen, dann können Sie von dort oben den malerischen Ort Wachau in seiner ganzen Ausdehnung erblicken. Überhaupt gehört zu unserer Donaufahrt genau dieser Rundblick von der Festung, die hoch über der Ortschaft am Fluss thront. Kein Wunder, dass jährlich rund eine Million Gäste hierherkommen – manche behaupten sogar zwei Millionen, aber das ist übertrieben. Am Schluss unserer Tour erwartet Sie dann eine weite Sicht bis zum fernen Horizont. Ach ja, das prächtige Anwesen dort drüben? Das ist nicht etwa Staatsbesitz, sondern gehört bis heute dem britischen Monarchen persönlich. Und das Städtchen selbst ist weithin bekannt dafür, dass hier reichlich edler Rebsaft gekeltert wird. Errichtet wurde die Siedlung vor einem vollen Jahrtausend. So, und nun zu mir: Während der gesamten Fahrt befand ich mich als Ihr Steuermann natürlich an Bord unseres stolzen Dampfers. Gute Reise!",
+    "exam": [
+      {
+        "qDe": "Welche Rolle hat die Burg gespielt?",
+        "qVi": "Pháo đài đã đóng vai trò gì?",
+        "opts": [
+          {
+            "de": "Eine militärische Rolle",
+            "vi": "Vai trò quân sự.",
+            "c": false
+          },
+          {
+            "de": "Wichtige Rolle in der Geschichte",
+            "vi": "Vai trò quan trọng trong lịch sử.",
+            "c": true
+          },
+          {
+            "de": "Keine besondere Rolle",
+            "vi": "Không có vai trò đặc biệt.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Wie lange dauert die Pause?",
+        "qVi": "Giờ nghỉ kéo dài bao lâu?",
+        "opts": [
+          {
+            "de": "Eine Stunde",
+            "vi": "Một tiếng.",
+            "c": false
+          },
+          {
+            "de": "Zwei Stunden",
+            "vi": "Hai tiếng.",
+            "c": true
+          },
+          {
+            "de": "Drei Stunden",
+            "vi": "Ba tiếng.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Es wird empfohlen:",
+        "qVi": "Được khuyến nghị:",
+        "opts": [
+          {
+            "de": "Ein Schloss zu besichtigen",
+            "vi": "Tham quan lâu đài.",
+            "c": false
+          },
+          {
+            "de": "Die Kirche zu besichtigen",
+            "vi": "Tham quan nhà thờ.",
+            "c": true
+          },
+          {
+            "de": "Das Museum",
+            "vi": "Bảo tàng.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Vom oberen Teil der Burg aus kann man die…",
+        "qVi": "Từ phần trên của pháo đài có thể nhìn thấy…",
+        "opts": [
+          {
+            "de": "Stadt Wachau sehen",
+            "vi": "Thành phố Wachau.",
+            "c": true
+          },
+          {
+            "de": "Einen Fluss",
+            "vi": "Một dòng sông.",
+            "c": false
+          },
+          {
+            "de": "Eine Frau",
+            "vi": "Một người phụ nữ.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Die Donau-Reise beinhaltet einen Panoramablick von einer Burg…",
+        "qVi": "Chuyến đi sông Donau có view toàn cảnh từ một pháo đài…",
+        "opts": [
+          {
+            "de": "Spaziergang",
+            "vi": "Đi dạo.",
+            "c": false
+          },
+          {
+            "de": "die sich oberhalb der Stadt Donau befindet",
+            "vi": "nằm phía trên thành phố Donau.",
+            "c": true
+          },
+          {
+            "de": "Mittagessen",
+            "vi": "Bữa trưa.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Wie viele Besucher pro Jahr?",
+        "qVi": "Bao nhiêu khách mỗi năm?",
+        "opts": [
+          {
+            "de": "Million Besucher pro Jahr",
+            "vi": "Một triệu khách mỗi năm.",
+            "c": true
+          },
+          {
+            "de": "10.000",
+            "vi": "10 nghìn.",
+            "c": false
+          },
+          {
+            "de": "100.000",
+            "vi": "100 nghìn.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Was ist am Ende zu sehen?",
+        "qVi": "Cuối cùng nhìn thấy gì?",
+        "opts": [
+          {
+            "de": "Kirche",
+            "vi": "Nhà thờ.",
+            "c": false
+          },
+          {
+            "de": "Fernblick",
+            "vi": "Tầm nhìn xa.",
+            "c": true
+          }
+        ]
+      },
+      {
+        "qDe": "Wem gehört das Schloss?",
+        "qVi": "Lâu đài thuộc về ai?",
+        "opts": [
+          {
+            "de": "Dem Bürgermeister",
+            "vi": "Thị trưởng.",
+            "c": false
+          },
+          {
+            "de": "Dem englischen König",
+            "vi": "Vua nước Anh.",
+            "c": true
+          },
+          {
+            "de": "Der Stadtverwaltung",
+            "vi": "Chính quyền thành phố.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Wofür ist die Stadt berühmt?",
+        "qVi": "Thành phố nổi tiếng vì gì?",
+        "opts": [
+          {
+            "de": "Für die Herstellung von Wein",
+            "vi": "Sản xuất rượu vang.",
+            "c": true
+          },
+          {
+            "de": "Für Süßigkeiten",
+            "vi": "Bánh kẹo.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Wann wurde die Stadt gegründet?",
+        "qVi": "Thành phố được thành lập khi nào?",
+        "opts": [
+          {
+            "de": "Vor 1000 Jahren",
+            "vi": "Cách đây 1000 năm.",
+            "c": true
+          },
+          {
+            "de": "Vor 100 Jahren",
+            "vi": "Cách đây 100 năm.",
+            "c": false
+          }
+        ]
+      }
+    ],
+    "qs": [
+      {
+        "qDe": "Welche Rolle hat die Burg gespielt?",
+        "ansDe": "Wichtige Rolle in der Geschichte.",
+        "qVi": "Lâu đài đã đóng vai trò gì?",
+        "ansVi": "Vai trò quan trọng trong lịch sử."
+      },
+      {
+        "qDe": "Wie lange dauert die Pause?",
+        "ansDe": "Zwei Stunden.",
+        "qVi": "Giờ nghỉ kéo dài bao lâu?",
+        "ansVi": "Hai giờ."
+      },
+      {
+        "qDe": "Es wird empfohlen:",
+        "ansDe": "Die Kirche zu besichtigen.",
+        "qVi": "Được khuyến nghị:",
+        "ansVi": "Tham quan nhà thờ."
+      },
+      {
+        "qDe": "Vom oberen Teil der Burg aus kann man die...",
+        "ansDe": "Stadt Wachau sehen.",
+        "qVi": "Từ phần trên lâu đài có thể nhìn thấy...",
+        "ansVi": "Thành phố Wachau."
+      },
+      {
+        "qDe": "Die Donau-Reise beinhaltet:",
+        "ansDe": "Eine panoramische Aussicht von der Burg oberhalb der Stadt Donau.",
+        "qVi": "Chuyến đi sông Danube bao gồm:",
+        "ansVi": "Tầm nhìn toàn cảnh từ lâu đài phía trên thành phố Danube."
+      },
+      {
+        "qDe": "Wie viele Besucher pro Jahr?",
+        "ansDe": "1 Million Besucher pro Jahr.",
+        "qVi": "Bao nhiêu du khách mỗi năm?",
+        "ansVi": "1 triệu du khách mỗi năm."
+      },
+      {
+        "qDe": "Was ist am Ende zu sehen?",
+        "ansDe": "Fernblick.",
+        "qVi": "Cuối cùng nhìn thấy gì?",
+        "ansVi": "Tầm nhìn xa."
+      },
+      {
+        "qDe": "Wem gehört das Schloss?",
+        "ansDe": "Dem Englischen König.",
+        "qVi": "Ai sở hữu lâu đài?",
+        "ansVi": "Vua nước Anh."
+      },
+      {
+        "qDe": "Wofür ist die Stadt berühmt?",
+        "ansDe": "Für die Herstellung von Wein.",
+        "qVi": "Thành phố nổi tiếng về gì?",
+        "ansVi": "Về sản xuất rượu vang."
+      },
+      {
+        "qDe": "Wann wurde die Stadt gegründet?",
+        "ansDe": "Vor 1000 Jahren.",
+        "qVi": "Thành phố thành lập khi nào?",
+        "ansVi": "Cách đây 1000 năm."
+      },
+      {
+        "qDe": "Wo war der Schiffskapitän?",
+        "ansDe": "In Schiff (auf dem Schiff).",
+        "qVi": "Thuyền trưởng ở đâu?",
+        "ansVi": "Trên con thuyền."
+      }
+    ]
+  },
+  {
+    "title": "Besuchen Sie Berlin",
+    "titleVi": "Der Fernsehturm  —  Thăm Berlin — Tháp truyền hình",
+    "audioText": "Guten Tag und herzlich willkommen zu unserem Stadtrundgang durch die Hauptstadt! Unser erstes Highlight ist natürlich der berühmte Fernsehturm am Alexanderplatz. Wussten Sie, dass dieses Wahrzeichen Jahr für Jahr von weit mehr als einer Million Reisenden bestiegen wird? Manche schätzen es auf nur ein paar hunderttausend – weit gefehlt. Ganz oben, in etwa zweihundert Metern Höhe, erwartet Sie ein Drehrestaurant. Dort können Sie nicht nur heimische Spezialitäten aus der eigenen Region genießen, sondern ebenso Köstlichkeiten aus aller Herren Länder. Ein kleiner Hinweis jedoch: Selbst mitgebrachte Flaschen und Dosen dürfen Sie nicht mit hinaufnehmen – das ist strikt untersagt. Etwas Essbares von zu Hause wäre kein Problem, aber Trinkbares eben nicht. Wann Sie am besten kommen sollten? Das lässt sich pauschal gar nicht sagen, denn die Zeiten variieren je nach Saison – im Sommer öffnet der Turm länger als im Winter. Die Öffnungszeiten hängen also ganz davon ab, welche Zeit im Jahreslauf gerade herrscht. Und noch ein persönlicher Rat von mir als Ihrem Stadtführer: Lassen Sie das Auto stehen und steigen Sie lieber in Bus, Tram und U-Bahn – der städtische Nahverkehr bringt Sie bequem überallhin und erspart Ihnen die leidige Parkplatzsuche. Der Turm selbst zieht übrigens verlässlich seine gut eine Million Gäste an, Winter wie Sommer. So, folgen Sie mir nun bitte zum Eingang. Ich wünsche Ihnen einen wunderbaren Aufenthalt in unserer schönen Stadt!",
+    "exam": [
+      {
+        "qDe": "Der Fernsehturm wird von mehr als … besucht.",
+        "qVi": "Tháp truyền hình được hơn … tham quan.",
+        "opts": [
+          {
+            "de": "Weniger als 100.000",
+            "vi": "Ít hơn 100.000.",
+            "c": false
+          },
+          {
+            "de": "einer Million Touristen",
+            "vi": "một triệu du khách.",
+            "c": true
+          },
+          {
+            "de": "Nur Berliner Einwohner",
+            "vi": "Chỉ cư dân Berlin.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Was kann man dort essen?",
+        "qVi": "Ở đó có thể ăn gì?",
+        "opts": [
+          {
+            "de": "Chinesisches Essen",
+            "vi": "Món Trung Quốc.",
+            "c": false
+          },
+          {
+            "de": "Regionale Gerichte",
+            "vi": "Món ăn địa phương.",
+            "c": true
+          },
+          {
+            "de": "Fast Food",
+            "vi": "Đồ ăn nhanh.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Was ist verboten?",
+        "qVi": "Điều gì bị cấm?",
+        "opts": [
+          {
+            "de": "Fotos machen",
+            "vi": "Chụp ảnh.",
+            "c": false
+          },
+          {
+            "de": "Getränke dabei zu haben",
+            "vi": "Mang theo đồ uống.",
+            "c": true
+          },
+          {
+            "de": "Musik hören",
+            "vi": "Nghe nhạc.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Wann sollte man die Stadt besuchen?",
+        "qVi": "Nên thăm thành phố khi nào?",
+        "opts": [
+          {
+            "de": "Nur im Sommer",
+            "vi": "Chỉ mùa hè.",
+            "c": false
+          },
+          {
+            "de": "Unterschiedlich nach Jahreszeit",
+            "vi": "Khác nhau tùy mùa.",
+            "c": true
+          },
+          {
+            "de": "Im Winter",
+            "vi": "Mùa đông.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Welchen Rat gab der Reiseleiter?",
+        "qVi": "Hướng dẫn viên khuyên gì?",
+        "opts": [
+          {
+            "de": "Ein Museum besuchen",
+            "vi": "Thăm bảo tàng.",
+            "c": false
+          },
+          {
+            "de": "Zum Alexanderplatz gehen",
+            "vi": "Đến quảng trường Alexanderplatz.",
+            "c": true
+          },
+          {
+            "de": "Im Hotel bleiben",
+            "vi": "Ở lại khách sạn.",
+            "c": false
+          }
+        ]
+      }
+    ],
+    "qs": [
+      {
+        "qDe": "Der Fernsehturm wird besucht von...",
+        "ansDe": "über einer Million Touristen.",
+        "qVi": "Tháp truyền hình được thăm bởi...",
+        "ansVi": "hơn một triệu du khách."
+      },
+      {
+        "qDe": "Was kann man dort essen?",
+        "ansDe": "Regionale Gerichte (auch Speisen aus aller Welt).",
+        "qVi": "Có thể ăn gì ở đó?",
+        "ansVi": "Món địa phương (và cả món từ khắp thế giới)."
+      },
+      {
+        "qDe": "Was ist verboten?",
+        "ansDe": "Getränke dabei zu haben.",
+        "qVi": "Điều gì bị cấm?",
+        "ansVi": "Mang theo đồ uống."
+      },
+      {
+        "qDe": "Wann sollte man die Stadt besuchen?",
+        "ansDe": "Unterschiedlich nach Jahreszeit.",
+        "qVi": "Nên thăm khi nào?",
+        "ansVi": "Khác nhau tùy theo mùa."
+      },
+      {
+        "qDe": "Welchen Rat gab der Stadtführer?",
+        "ansDe": "Öffentliche Verkehrsmittel benutzen (Bus & Bahn).",
+        "qVi": "Hướng dẫn viên khuyên gì?",
+        "ansVi": "Dùng phương tiện công cộng (xe buýt & tàu)."
+      },
+      {
+        "qDe": "Der Fernsehturm...",
+        "ansDe": "hat jedes Jahr über eine Million Besucher.",
+        "qVi": "",
+        "ansVi": "Mỗi năm có hơn một triệu du khách."
+      },
+      {
+        "qDe": "Besucher können im Fernsehturm...",
+        "ansDe": "regionale, aber auch Speisen aus aller Welt essen.",
+        "qVi": "",
+        "ansVi": "Ăn món địa phương và món từ khắp thế giới."
+      },
+      {
+        "qDe": "Es ist generell nicht erlaubt,...",
+        "ansDe": "Getränke dabeizuhaben.",
+        "qVi": "",
+        "ansVi": "Mang theo đồ uống."
+      },
+      {
+        "qDe": "Die Öffnungszeiten sind...",
+        "ansDe": "von der Jahreszeit abhängig.",
+        "qVi": "",
+        "ansVi": "Phụ thuộc vào mùa."
+      },
+      {
+        "qDe": "Der Stadtführer rät bei einem Besuch,...",
+        "ansDe": "öffentliche Verkehrsmittel zu benutzen.",
+        "qVi": "",
+        "ansVi": "Dùng phương tiện công cộng."
+      }
+    ]
+  },
+  {
+    "title": "Ein Ausflug in ein Resort",
+    "titleVi": "Chuyến đi đến khu nghỉ dưỡng",
+    "audioText": "Liebe Gäste, schön, dass Sie in unserem Resort angekommen sind! Lassen Sie mich Ihnen kurz erklären, was Sie erwartet. In Ihrer Buchung ist übrigens die erste Mahlzeit des Tages bereits enthalten – Sie müssen also morgens nicht extra bezahlen, das Büfett am frühen Morgen ist inklusive. Kaffee gibt es dabei unbegrenzt. Wenn Sie schwimmen möchten: Unser Schwimmbecken finden Sie nicht etwa im Keller, wie in vielen Hotels, sondern ganz weit oben – direkt unter freiem Himmel auf der obersten Ebene des Gebäudes. Der Ausblick von dort ist herrlich. Eine Etage über dem Eingang, also im ersten Stock, haben wir eine kleine Besonderheit: gut erhaltene Mauerreste aus der Zeit der alten Römer, echte antike Überbleibsel längst vergangener Epochen. Im Parterre hingegen, gleich beim Empfang, stehen mehrere Rechner bereit, an denen Sie kostenlos ins Internet gehen können. Nun zum Programm: Der Ausflug in das benachbarte Städtchen Rettenberg findet nicht am Vormittag statt, wie ursprünglich geplant, sondern erst nach dem Mittagessen, wenn die Mittagshitze vorüber ist. Seien Sie also gegen halb zwei bereit. Ach, und falls Sie sich über den Raum nebenan wundern: Dort steht eine ganze Kiste voller Flaschen edlen Rebsafts – ein Geschenk des Hauses an unsere Stammgäste. Bitte nicht anfassen! So, ich hoffe, Sie fühlen sich rundum wohl. Bei Fragen wenden Sie sich jederzeit an die Rezeption. Genießen Sie Ihren Aufenthalt!",
+    "exam": [
+      {
+        "qDe": "Reservierung beinhaltet?",
+        "qVi": "Đặt phòng bao gồm gì?",
+        "opts": [
+          {
+            "de": "Frühstück",
+            "vi": "Bữa sáng.",
+            "c": true
+          },
+          {
+            "de": "Mittagessen",
+            "vi": "Bữa trưa.",
+            "c": false
+          },
+          {
+            "de": "Abendessen",
+            "vi": "Bữa tối.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Wo ist der Pool?",
+        "qVi": "Hồ bơi ở đâu?",
+        "opts": [
+          {
+            "de": "Im Keller",
+            "vi": "Dưới tầng hầm.",
+            "c": false
+          },
+          {
+            "de": "Im Garten",
+            "vi": "Trong vườn.",
+            "c": false
+          },
+          {
+            "de": "Auf dem Dach",
+            "vi": "Trên sân thượng.",
+            "c": true
+          }
+        ]
+      },
+      {
+        "qDe": "Was haben sie am Nachmittag gemacht?",
+        "qVi": "Họ đã làm gì vào buổi chiều?",
+        "opts": [
+          {
+            "de": "Einen Ausflug in die Stadt Rettenberg",
+            "vi": "Đi tham quan thành phố Rettenberg.",
+            "c": true
+          },
+          {
+            "de": "Im Pool auf dem Dach schwimmen",
+            "vi": "Bơi tại hồ bơi trên mái nhà.",
+            "c": false
+          },
+          {
+            "de": "Die römischen Ruinen besichtigen",
+            "vi": "Tham quan các tàn tích La Mã.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Was ist im ersten Stock?",
+        "qVi": "Tầng một có gì?",
+        "opts": [
+          {
+            "de": "Romane",
+            "vi": "Tiểu thuyết.",
+            "c": true
+          },
+          {
+            "de": "Möbel",
+            "vi": "Nội thất.",
+            "c": false
+          },
+          {
+            "de": "Kleidung",
+            "vi": "Quần áo.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Was ist im Raum?",
+        "qVi": "Trong phòng có gì?",
+        "opts": [
+          {
+            "de": "Süßigkeiten / Gebäck",
+            "vi": "Bánh kẹo.",
+            "c": false
+          },
+          {
+            "de": "Weinkiste",
+            "vi": "Thùng rượu vang.",
+            "c": true
+          },
+          {
+            "de": "Der Fernseher",
+            "vi": "Ti vi.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Was gibt es im Erdgeschoss?",
+        "qVi": "Tầng trệt có gì?",
+        "opts": [
+          {
+            "de": "Computer",
+            "vi": "Máy tính.",
+            "c": true
+          },
+          {
+            "de": "Garten",
+            "vi": "Khu vườn.",
+            "c": false
+          }
+        ]
+      }
+    ],
+    "qs": [
+      {
+        "qDe": "Reservierung beinhaltet?",
+        "ansDe": "Frühstück.",
+        "qVi": "Đặt phòng bao gồm gì?",
+        "ansVi": "Bữa sáng."
+      },
+      {
+        "qDe": "Wo ist der Pool?",
+        "ansDe": "Auf dem Dach.",
+        "qVi": "Hồ bơi ở đâu?",
+        "ansVi": "Trên sân thượng."
+      },
+      {
+        "qDe": "Was ist im ersten Stock?",
+        "ansDe": "Römische Ruinen.",
+        "qVi": "Ở tầng một có gì?",
+        "ansVi": "Tàn tích La Mã."
+      },
+      {
+        "qDe": "Was gibt es im Erdgeschoss?",
+        "ansDe": "Computer.",
+        "qVi": "Ở tầng trệt có gì?",
+        "ansVi": "Máy tính."
+      },
+      {
+        "qDe": "Was haben sie am Nachmittag gemacht?",
+        "ansDe": "Einen Ausflug in die Stadt Rettenberg.",
+        "qVi": "Họ đã làm gì vào buổi chiều?",
+        "ansVi": "Đi tham quan thành phố Rettenberg."
+      },
+      {
+        "qDe": "Was gibt es im Raum?",
+        "ansDe": "Weinkiste / Weinschachtel.",
+        "qVi": "Trong phòng có gì?",
+        "ansVi": "Thùng / hộp rượu vang."
+      }
+    ]
+  },
+  {
+    "title": "Reise nach München",
+    "titleVi": "Chuyến đi đến München",
+    "audioText": "Einen schönen guten Morgen, liebe Teilnehmerinnen und Teilnehmer! Ich freue mich, Ihnen heute den Ablauf unserer Fortbildungsreise vorzustellen. Unser Ziel ist, wie Sie wissen, die bayerische Landeshauptstadt – dort, in München, findet unsere gesamte Veranstaltung statt. Wir fahren nicht nach Nürnberg, das war ein früherer Plan, sondern eben in die Weltstadt mit Herz. Zum Tagesablauf: Das Mittagessen nehmen wir jeweils direkt in unserer Unterkunft ein, also im Speisesaal des Hauses, in dem wir übernachten – Sie müssen dafür nicht extra in ein Lokal gehen. Am Nachmittag, genauer gesagt zwischen sechzehn und achtzehn Uhr, setzen wir uns zusammen und tauschen uns ausführlich über das jeweilige Fachthema aus; wir besprechen die Inhalte gemeinsam in kleinen Gruppen. Am Donnerstag dann, gleich nach dem Abendessen, kommt ein feierlicher Moment: Dann werden nämlich die Urkunden an alle überreicht, die sich zuvor für den anwendungsorientierten Lehrgang eingeschrieben haben. Ein Höhepunkt der Reise ist außerdem unser Ausflug – wir besichtigen das weitläufige Olympiagelände mit seinem Turm und dem großen Stadion, ein wirklich beeindruckendes Areal. Und noch etwas Organisatorisches: Nach der kurzen Kaffeepause geht es nicht etwa mit einem trockenen Vortrag weiter, sondern mit dem praktischen Übungsteil, in dem Sie selbst tätig werden. Bringen Sie also bequeme Kleidung mit. Bei Fragen stehe ich Ihnen jederzeit gern zur Verfügung. Auf eine gute gemeinsame Zeit!",
+    "exam": [
+      {
+        "qDe": "Wohin geht die Reise?",
+        "qVi": "Chuyến đi tới đâu?",
+        "opts": [
+          {
+            "de": "nach Berlin",
+            "vi": "Berlin.",
+            "c": false
+          },
+          {
+            "de": "nach München",
+            "vi": "München.",
+            "c": true
+          },
+          {
+            "de": "nach Frankfurt",
+            "vi": "Frankfurt.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Innerhalb dieses Hotels?",
+        "qVi": "Trong khách sạn này họ sẽ?",
+        "opts": [
+          {
+            "de": "Sie schlafen früh",
+            "vi": "Đi ngủ sớm.",
+            "c": false
+          },
+          {
+            "de": "Sie essen im Hotel zu Mittag",
+            "vi": "Ăn trưa tại khách sạn.",
+            "c": true
+          },
+          {
+            "de": "Sie tanzen im Restaurant",
+            "vi": "Nhảy trong nhà hàng.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Von 4 bis 6 Uhr…",
+        "qVi": "Từ 4 đến 6 giờ họ…",
+        "opts": [
+          {
+            "de": "schreiben einen Bericht",
+            "vi": "Viết báo cáo.",
+            "c": false
+          },
+          {
+            "de": "Thema diskutieren und darüber sprechen",
+            "vi": "Thảo luận một chủ đề và nói về nó.",
+            "c": true
+          },
+          {
+            "de": "fotografieren",
+            "vi": "Chụp ảnh.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Was werden sie nach der Pause tun?",
+        "qVi": "Sau giờ nghỉ họ làm gì?",
+        "opts": [
+          {
+            "de": "Musik hören",
+            "vi": "Nghe nhạc.",
+            "c": false
+          },
+          {
+            "de": "Praxiskurs registrieren 19:00 Uhr",
+            "vi": "Đăng ký khóa thực hành lúc 19:00.",
+            "c": true
+          },
+          {
+            "de": "tanzen",
+            "vi": "Nhảy.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Wann würde die Reise stattfinden?",
+        "qVi": "Chuyến đi diễn ra vào lúc nào?",
+        "opts": [
+          {
+            "de": "zwischen 8 und 10 Uhr",
+            "vi": "Từ 8 đến 10 giờ.",
+            "c": false
+          },
+          {
+            "de": "zwischen 12 und 14 Uhr",
+            "vi": "Từ 12 đến 14 giờ.",
+            "c": false
+          },
+          {
+            "de": "zwischen 14 und 16 Uhr",
+            "vi": "Từ 14 đến 16 giờ.",
+            "c": true
+          }
+        ]
+      }
+    ],
+    "qs": [
+      {
+        "qDe": "Wohin geht die Reise / Wo findet die Veranstaltung statt?",
+        "ansDe": "Nach München / In München.",
+        "qVi": "Chuyến đi / sự kiện ở đâu?",
+        "ansVi": "Đến / tại München."
+      },
+      {
+        "qDe": "Wo essen sie zu Mittag?",
+        "ansDe": "Sie essen im Hotel zu Mittag.",
+        "qVi": "Họ ăn trưa ở đâu?",
+        "ansVi": "Họ ăn trưa tại khách sạn."
+      },
+      {
+        "qDe": "Von 4 bis 6 Uhr...",
+        "ansDe": "Thema diskutieren und darüber sprechen.",
+        "qVi": "Từ 4 đến 6 giờ...",
+        "ansVi": "Thảo luận một chủ đề và nói về nó."
+      },
+      {
+        "qDe": "Was passiert nach dem Abendessen am Donnerstag?",
+        "ansDe": "Zertifikate Verteilung (Praxiskurs registrieren).",
+        "qVi": "Sau bữa tối thứ Năm có gì?",
+        "ansVi": "Phát chứng chỉ (đăng ký khóa thực hành)."
+      },
+      {
+        "qDe": "Wo geht der Ausflug hin?",
+        "ansDe": "Olympia Stadt (Olympiapark).",
+        "qVi": "Chuyến đi chơi đi đâu?",
+        "ansVi": "Khu Olympic."
+      },
+      {
+        "qDe": "Was machen wir nach der Pause?",
+        "ansDe": "Praxiskurs.",
+        "qVi": "Sau giờ nghỉ làm gì?",
+        "ansVi": "Khóa học thực hành."
+      }
+    ]
+  },
+  {
+    "title": "Klassenfahrt nach München (2)",
+    "titleVi": "Chuyến dã ngoại lớp đến München (2)",
+    "audioText": "Hallo zusammen, hört bitte kurz her! Ich erkläre euch schnell, wie unsere Klassenfahrt in die bayerische Hauptstadt abläuft. Gleich nach der Ankunft steht etwas Schönes an: Wir erkunden die Stadt zunächst bei einer gemütlichen Tour im Reisebus, vorbei an allen wichtigen Sehenswürdigkeiten, sodass ihr euch einen ersten Überblick verschaffen könnt. Keine Sorge, weit laufen müssen wir dabei nicht. Am späteren Nachmittag, und zwar von sechzehn bis achtzehn Uhr, setzen wir uns dann alle zusammen: In dieser Runde tauschen wir uns miteinander aus und sammeln eure Ideen und Anregungen für die kommenden Tage. Jeder darf sich einbringen! Übernachten werden wir übrigens nicht in einem teuren Hotel, wie einige gehofft haben, sondern ganz einfach im Jugendgästehaus am Stadtrand – die Zimmer sind schlicht, aber sauber und richtig günstig. Vergesst eure Regenjacken nicht, das Wetter soll wechselhaft werden. Und ein letzter wichtiger Punkt: Nach insgesamt sechs Stunden Programm wird euer Betreuer die Urkunden an euch austeilen, also die Bescheinigungen über eure Teilnahme. Hebt sie gut auf, die braucht ihr später vielleicht noch! So, das war's fürs Erste. Packt eure Sachen zusammen, wir treffen uns in zehn Minuten unten am Bus. Ich freue mich riesig auf diese Fahrt mit euch – das wird bestimmt unvergesslich!",
+    "exam": [
+      {
+        "qDe": "Was machen sie?",
+        "qVi": "Họ làm gì?",
+        "opts": [
+          {
+            "de": "Sie machen eine Rundfahrt",
+            "vi": "Đi tham quan vòng quanh.",
+            "c": true
+          },
+          {
+            "de": "Sie gehen wandern",
+            "vi": "Đi bộ đường dài.",
+            "c": false
+          },
+          {
+            "de": "Sie besuchen ein Museum",
+            "vi": "Thăm bảo tàng.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Von 4 – 6 Uhr?",
+        "qVi": "Từ 4 đến 6 giờ?",
+        "opts": [
+          {
+            "de": "Sie essen gemeinsam",
+            "vi": "Ăn cùng nhau.",
+            "c": false
+          },
+          {
+            "de": "Diskussion miteinander und Vorschläge",
+            "vi": "Thảo luận với nhau và trao đổi đề xuất.",
+            "c": true
+          },
+          {
+            "de": "Sie sehen einen Film",
+            "vi": "Xem phim.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Wo werden sie schlafen?",
+        "qVi": "Họ ngủ ở đâu?",
+        "opts": [
+          {
+            "de": "In der Jugendherberge",
+            "vi": "Nhà nghỉ thanh niên.",
+            "c": false
+          },
+          {
+            "de": "Im Hotel",
+            "vi": "Khách sạn.",
+            "c": true
+          },
+          {
+            "de": "Im Zelt",
+            "vi": "Trong lều.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Nach 6 Stunden?",
+        "qVi": "Sau 6 tiếng?",
+        "opts": [
+          {
+            "de": "Sie machen eine Pause",
+            "vi": "Nghỉ giải lao.",
+            "c": false
+          },
+          {
+            "de": "Er wird Zertifikate verteilen",
+            "vi": "Sẽ phát chứng chỉ.",
+            "c": true
+          },
+          {
+            "de": "Es gibt ein Konzert",
+            "vi": "Có buổi hòa nhạc.",
+            "c": false
+          }
+        ]
+      }
+    ],
+    "qs": [
+      {
+        "qDe": "Was machen sie?",
+        "ansDe": "Sie machen eine Rundfahrt.",
+        "qVi": "Họ làm gì?",
+        "ansVi": "Họ đi tham quan vòng quanh."
+      },
+      {
+        "qDe": "Von 4 bis 6 Uhr?",
+        "ansDe": "Diskussion miteinander und Vorschläge.",
+        "qVi": "Từ 4 đến 6 giờ?",
+        "ansVi": "Thảo luận với nhau và trao đổi đề xuất."
+      },
+      {
+        "qDe": "Wo werden sie schlafen?",
+        "ansDe": "In der Jugendherberge.",
+        "qVi": "Họ ngủ ở đâu?",
+        "ansVi": "Trong nhà nghỉ thanh niên."
+      },
+      {
+        "qDe": "Nach 6 Stunden?",
+        "ansDe": "Er wird Zertifikate verteilen.",
+        "qVi": "Sau 6 giờ?",
+        "ansVi": "Sẽ phát chứng chỉ."
+      }
+    ]
+  },
+  {
+    "title": "Klassenfahrt und Schüler besuchen das Museum",
+    "titleVi": "Dã ngoại & học sinh thăm bảo tàng",
+    "audioText": "So, liebe Klasse, einmal alle herhören, bevor wir losfahren! Ich gebe euch die wichtigsten Informationen für unseren heutigen Ausflug weiter. Zunächst: Sagt bitte allen Bescheid, dass unser Reiseleiter, Herr Berger, nicht am Eingang des Gebäudes auf uns wartet, sondern draußen auf dem Parkplatz, direkt neben unserem großen Bus – dort treffen wir ihn also. Von da aus geht es dann zu Fuß weiter: Richtet bitte aus, dass wir gemeinsam in den hübschen kleinen Ort unten im Tal hineinspazieren. Und jetzt kommt das Spannende – sagt den anderen, dass wir schon nach gut dreißig Minuten Fußweg die offene See vor uns liegen haben; dort dürft ihr dann nach Herzenslust Erinnerungsfotos knipsen. Etwas ganz Erstaunliches erwartet euch außerdem: Obwohl gerade die wärmste Zeit des Jahres herrscht und wir alle in T-Shirts unterwegs sind, könnt ihr an einer schattigen Nordseite tatsächlich noch eisige weiße Reste des Winters entdecken – ganz ohne Kühlanlage. Zieht sicherheitshalber eine dünne Jacke mit ein. Unser letztes Ziel ist dann das kleine Museum am Ortsrand. Es beherbergt keine alten Gemälde berühmter Meister, wie manche vermuten, sondern eine Sammlung von Aufnahmen der heimischen Landschaft und der Tierwelt – lauter Motive aus der freien Umgebung. Ein wirklich schöner Abschluss. Denkt an feste Schuhe und ausreichend Wasser. In fünf Minuten geht es los, seid also pünktlich am Bus. Auf einen schönen Tag zusammen!",
+    "exam": [
+      {
+        "qDe": "Wo wird der Reiseleiter sie treffen?",
+        "qVi": "Hướng dẫn viên gặp họ ở đâu?",
+        "opts": [
+          {
+            "de": "Am Reisebus",
+            "vi": "Tại xe khách du lịch.",
+            "c": true
+          },
+          {
+            "de": "in Busfahrt",
+            "vi": "Trên chuyến xe buýt.",
+            "c": false
+          },
+          {
+            "de": "am Treffpunkt",
+            "vi": "Tại điểm hẹn.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Sag ihnen, dass wir…?",
+        "qVi": "Hãy nói với họ rằng chúng ta…?",
+        "opts": [
+          {
+            "de": "in ein Dorf gehen",
+            "vi": "đi đến một ngôi làng.",
+            "c": true
+          },
+          {
+            "de": "ins Kino gehen",
+            "vi": "đi xem phim.",
+            "c": false
+          },
+          {
+            "de": "nach Hause gehen",
+            "vi": "đi về nhà.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Sag ihnen, dass Sie nach einer…?",
+        "qVi": "Hãy nói với họ rằng sau…?",
+        "opts": [
+          {
+            "de": "ganzen Stunde das Meer sehen",
+            "vi": "một tiếng thì thấy biển.",
+            "c": false
+          },
+          {
+            "de": "halben Stunde das Meer sehen und Fotos machen können",
+            "vi": "nửa tiếng thì thấy biển và chụp ảnh được.",
+            "c": true
+          },
+          {
+            "de": "Stunde den Berg sehen",
+            "vi": "một tiếng thì thấy núi.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Sag ihnen, dass…?",
+        "qVi": "Hãy nói với họ rằng…?",
+        "opts": [
+          {
+            "de": "Sie Schnee sehen können, obwohl es Sommer ist",
+            "vi": "có thể thấy tuyết dù đang là mùa hè.",
+            "c": true
+          },
+          {
+            "de": "es keinen Schnee gibt",
+            "vi": "không có tuyết.",
+            "c": false
+          },
+          {
+            "de": "es Frühling ist",
+            "vi": "đang là mùa xuân.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Das Museum…?",
+        "qVi": "Bảo tàng…?",
+        "opts": [
+          {
+            "de": "zeigt Bilder aus der Natur",
+            "vi": "trưng bày tranh về thiên nhiên.",
+            "c": true
+          },
+          {
+            "de": "zeigt Autos aus der Geschichte",
+            "vi": "trưng bày xe hơi lịch sử.",
+            "c": false
+          },
+          {
+            "de": "zeigt nur Technik",
+            "vi": "chỉ trưng bày công nghệ.",
+            "c": false
+          }
+        ]
+      }
+    ],
+    "qs": [
+      {
+        "qDe": "Wo wird der Reiseleiter sie treffen?",
+        "ansDe": "Am Reisebus.",
+        "qVi": "Hướng dẫn viên gặp họ ở đâu?",
+        "ansVi": "Tại xe buýt du lịch."
+      },
+      {
+        "qDe": "Sag ihnen, dass wir...?",
+        "ansDe": "Ins Dorf gehen.",
+        "qVi": "Nói với họ rằng chúng ta...?",
+        "ansVi": "Đi đến một ngôi làng."
+      },
+      {
+        "qDe": "Sag ihnen, dass Sie nach einer...?",
+        "ansDe": "halben Stunde das Meer sehen und Fotos machen können.",
+        "qVi": "Nói với họ rằng sau một...?",
+        "ansVi": "nửa giờ có thể ngắm biển và chụp ảnh."
+      },
+      {
+        "qDe": "Sag ihnen, dass...?",
+        "ansDe": "Sie Schnee sehen können, obwohl es Sommer ist.",
+        "qVi": "Nói với họ rằng...?",
+        "ansVi": "Có thể thấy tuyết dù đang là mùa hè."
+      },
+      {
+        "qDe": "Das Museum...?",
+        "ansDe": "zeigt Bilder aus der Natur.",
+        "qVi": "Bảo tàng...?",
+        "ansVi": "trưng bày tranh về thiên nhiên."
+      }
+    ]
+  },
+  {
+    "title": "Ein Besuch oder Ausflug in die Stadt",
+    "titleVi": "Một chuyến thăm / dã ngoại đến thành phố",
+    "audioText": "Liebe Reisegruppe, herzlich willkommen! Bevor es losgeht, möchte ich Ihnen kurz erklären, was Sie in den nächsten Tagen erwartet. Ach, entschuldigen Sie bitte das Rauschen im Mikrofon – so, jetzt funktioniert es. Also: Wir werden nicht nur ein verlängertes Wochenende, sondern eine volle Woche gemeinsam unterwegs sein, sieben aufeinanderfolgende Tage, von Montag bis Sonntag. Manche von Ihnen dachten vielleicht, es wären bloß drei oder vier Tage – nein, das stimmt nicht, planen Sie ruhig die ganze Woche ein. Der Höhepunkt? Natürlich unser Besuch beim Winzer! Dort dürfen Sie verschiedene Sorten des edlen Rebensaftes kosten und selbst beurteilen, welcher Ihnen am besten mundet. Eine kleine, aber wichtige Sache: Für Ihr leibliches Wohl, also für Speis und Trank unterwegs, kümmert sich diesmal jeder ganz allein. Das Hotel stellt kein Buffet bereit – Sie müssen Ihre Mahlzeiten also selbst mitbringen oder vor Ort einkaufen. Wer lieber mit dem Rad fahren möchte, den beruhige ich: Es sind genügend Abstellmöglichkeiten für Fahrräder vorhanden, Sie müssen Ihr Zweirad also nicht zu Hause lassen. Und noch etwas ganz Ernstes zum Schluss – bitte hören Sie kurz zu: Denken Sie unbedingt an ein Verbandspäckchen und ein kleines Notfall-Set. Ein Pflaster oder eine Wundsalbe kann bei einer langen Wanderung wirklich Gold wert sein. Gibt es noch Fragen? Nein? Dann wünsche ich uns allen eine wunderbare gemeinsame Reise!",
+    "exam": [
+      {
+        "qDe": "Sie werden … verbringen.",
+        "qVi": "Họ sẽ ở cùng nhau…",
+        "opts": [
+          {
+            "de": "drei Tage zusammen",
+            "vi": "ba ngày.",
+            "c": false
+          },
+          {
+            "de": "sieben Tage zusammen",
+            "vi": "bảy ngày.",
+            "c": true
+          },
+          {
+            "de": "ein Wochenende",
+            "vi": "một cuối tuần.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Was werden sie tun?",
+        "qVi": "Họ sẽ làm gì?",
+        "opts": [
+          {
+            "de": "viele Städte besuchen",
+            "vi": "thăm nhiều thành phố.",
+            "c": false
+          },
+          {
+            "de": "eine Bootsfahrt machen",
+            "vi": "đi thuyền.",
+            "c": false
+          },
+          {
+            "de": "Wein probieren",
+            "vi": "nếm rượu vang.",
+            "c": true
+          }
+        ]
+      },
+      {
+        "qDe": "Für die Organisation der Reise sind…?",
+        "qVi": "Việc tổ chức chuyến đi…?",
+        "opts": [
+          {
+            "de": "Die Lehrer zuständig",
+            "vi": "Giáo viên phụ trách.",
+            "c": false
+          },
+          {
+            "de": "sie sorgen selbst für die Verpflegung",
+            "vi": "họ tự lo phần ăn uống.",
+            "c": true
+          },
+          {
+            "de": "Ein Reisebüro zuständig",
+            "vi": "Công ty du lịch phụ trách.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Es wird…?",
+        "qVi": "Sẽ…?",
+        "opts": [
+          {
+            "de": "Platz für Fahrräder geben",
+            "vi": "có chỗ để xe đạp.",
+            "c": true
+          },
+          {
+            "de": "einen Parkplatz für Busse geben",
+            "vi": "có bãi đỗ cho xe buýt.",
+            "c": false
+          },
+          {
+            "de": "keine Parkplätze geben",
+            "vi": "không có chỗ đỗ xe.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Sie sollten…?",
+        "qVi": "Bạn nên…?",
+        "opts": [
+          {
+            "de": "einen Regenschirm mitbringen",
+            "vi": "mang theo ô.",
+            "c": false
+          },
+          {
+            "de": "Erste-Hilfe-Material mitbringen",
+            "vi": "mang theo đồ sơ cứu.",
+            "c": true
+          },
+          {
+            "de": "einen Stadtplan mitbringen",
+            "vi": "mang theo bản đồ thành phố.",
+            "c": false
+          }
+        ]
+      }
+    ],
+    "qs": [
+      {
+        "qDe": "Sie werden ... verbringen.",
+        "ansDe": "Sieben Tage zusammen.",
+        "qVi": "Họ sẽ dành ... cùng nhau.",
+        "ansVi": "Bảy ngày cùng nhau."
+      },
+      {
+        "qDe": "Was werden sie tun?",
+        "ansDe": "Sie werden Wein probieren.",
+        "qVi": "Họ sẽ làm gì?",
+        "ansVi": "Họ sẽ nếm thử rượu vang."
+      },
+      {
+        "qDe": "Für die Organisation der Reise sind...?",
+        "ansDe": "sie sorgen selbst für die Verpflegung.",
+        "qVi": "Về tổ chức chuyến đi...?",
+        "ansVi": "Họ tự lo phần ăn uống."
+      },
+      {
+        "qDe": "Es wird...?",
+        "ansDe": "Platz für Fahrräder geben.",
+        "qVi": "Sẽ...?",
+        "ansVi": "Cung cấp chỗ cho xe đạp."
+      },
+      {
+        "qDe": "Sie sollten...?",
+        "ansDe": "Erste-Hilfe-Material mitbringen.",
+        "qVi": "Bạn nên...?",
+        "ansVi": "Mang theo vật dụng sơ cứu."
+      }
+    ]
+  },
+  {
+    "title": "Schweizer Milch und Käse Fabrik",
+    "titleVi": "Nhà máy sữa và phô mai Thụy Sĩ",
+    "audioText": "Grüezi und herzlich willkommen in unserer Molkerei! Hören Sie das leise Brummen der Maschinen im Hintergrund? Das läuft hier rund um die Uhr. Stellen Sie sich einmal vor: Tag für Tag fließen bei uns sechs Millionen Liter frische Milch durch die Rohre – jeden einzelnen Tag, nicht etwa pro Woche, wie manche Besucher glauben. Eine wirklich gewaltige Menge. Während Sie durch die Halle gehen, ein kleiner Tipp: Richten Sie Ihren Blick ruhig einmal nach oben, zur Decke – dort oben verlaufen die spannendsten Anlagen, die man leicht übersieht. Nun zu unseren Sorten. Da wäre zum Beispiel unser milder Weichkäse: Den genießt man am besten auf einer knusprigen Scheibe Brot, das passt hervorragend zusammen. Unseren kräftigen Bergkäse hingegen essen wir Eidgenossen besonders gern zusammen mit heißen Erdäpfeln – also mit Kartoffeln, das ist bei uns fast schon eine Tradition. Übrigens: Unser berühmtester Käse ist rechtlich abgesichert, er trägt ein eingetragenes Markenzeichen, damit niemand ihn einfach nachahmen darf. Wie er entsteht? Ganz natürlich, aus der frischen Milch unserer Kühe von den Alpwiesen – reine Kuhmilch, sonst nichts. Und das eigentliche Geheimnis liegt in der Wärme: Die Milch wird vorsichtig erhitzt, denn ohne diese gezielte Erwärmung würde die Masse niemals fest werden. Manche denken, es sei die Kälte – nein, ganz im Gegenteil, die Hitze macht's! So, und jetzt folgen Sie mir bitte zur Verkostung. Guten Appetit!",
+    "exam": [
+      {
+        "qDe": "Sechs Millionen Liter Milch?",
+        "qVi": "Sáu triệu lít sữa?",
+        "opts": [
+          {
+            "de": "täglich im Supermarkt verkauft",
+            "vi": "bán hằng ngày ở siêu thị.",
+            "c": false
+          },
+          {
+            "de": "täglich in der Milchindustrie / für Produkte verwendet",
+            "vi": "dùng hằng ngày trong ngành sữa / cho sản phẩm.",
+            "c": true
+          },
+          {
+            "de": "nur für Käseherstellung genutzt",
+            "vi": "chỉ dùng làm phô mai.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Eine andere Käsesorte?",
+        "qVi": "Một loại phô mai khác?",
+        "opts": [
+          {
+            "de": "Es wird mit Brot gegessen",
+            "vi": "Được ăn kèm bánh mì.",
+            "c": true
+          },
+          {
+            "de": "Es wird kalt gegessen",
+            "vi": "Ăn lạnh.",
+            "c": false
+          },
+          {
+            "de": "Es wird mehr gegessen als Käse",
+            "vi": "Ăn nhiều hơn phô mai.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Der Käse ist geschützt durch…?",
+        "qVi": "Phô mai được bảo hộ bằng…?",
+        "opts": [
+          {
+            "de": "Temperaturregeln",
+            "vi": "quy định về nhiệt độ.",
+            "c": false
+          },
+          {
+            "de": "Warenzeichen (Marken, rechtlich)",
+            "vi": "nhãn hiệu (thương hiệu, về mặt pháp lý).",
+            "c": true
+          },
+          {
+            "de": "Spezielle Verpackung",
+            "vi": "bao bì đặc biệt.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Frage zur Käseherstellung?",
+        "qVi": "Về việc làm phô mai?",
+        "opts": [
+          {
+            "de": "Hergestellt aus Ziegenmilch",
+            "vi": "Làm từ sữa dê.",
+            "c": false
+          },
+          {
+            "de": "Hergestellt aus Kuhmilch",
+            "vi": "Làm từ sữa bò.",
+            "c": true
+          },
+          {
+            "de": "Hergestellt mit Eiern",
+            "vi": "Làm từ trứng.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Wie konsumieren die Schweizer ihn?",
+        "qVi": "Người Thụy Sĩ ăn nó thế nào?",
+        "opts": [
+          {
+            "de": "Mit Kartoffeln",
+            "vi": "Với khoai tây.",
+            "c": true
+          },
+          {
+            "de": "Mit Fleisch",
+            "vi": "Với thịt.",
+            "c": false
+          },
+          {
+            "de": "Mit Fisch",
+            "vi": "Với cá.",
+            "c": false
+          }
+        ]
+      }
+    ],
+    "qs": [
+      {
+        "qDe": "6 Millionen Liter Milch?",
+        "ansDe": "Täglich/jährlich in der Milchindustrie verwendet.",
+        "qVi": "6 triệu lít sữa?",
+        "ansVi": "Được dùng (hàng ngày/hàng năm) trong ngành công nghiệp sữa."
+      },
+      {
+        "qDe": "Worauf sollte man während des Besuchs achten?",
+        "ansDe": "Oben schauen.",
+        "qVi": "Nên chú ý gì khi tham quan?",
+        "ansVi": "Nhìn lên trên."
+      },
+      {
+        "qDe": "Frage zu einer anderen Käsesorte:",
+        "ansDe": "Es wird mit Brot gegessen.",
+        "qVi": "Câu hỏi về loại phô mai khác:",
+        "ansVi": "Được ăn với bánh mì."
+      },
+      {
+        "qDe": "Wie konsumieren die Schweizer ihn?",
+        "ansDe": "Mit Kartoffeln.",
+        "qVi": "Người Thụy Sĩ ăn nó thế nào?",
+        "ansVi": "Với khoai tây."
+      },
+      {
+        "qDe": "Der Käse ist geschützt durch...?",
+        "ansDe": "Warenzeichen / Warenschutz (markenrechtlich).",
+        "qVi": "Phô mai được bảo vệ bằng...?",
+        "ansVi": "Nhãn hiệu / bảo hộ thương hiệu (theo luật)."
+      },
+      {
+        "qDe": "Frage zur Käseherstellung:",
+        "ansDe": "Hergestellt aus Kuhmilch.",
+        "qVi": "Câu hỏi về sản xuất phô mai:",
+        "ansVi": "Làm từ sữa bò."
+      },
+      {
+        "qDe": "Mit...?",
+        "ansDe": "Heizung.",
+        "qVi": "Với...?",
+        "ansVi": "Hệ thống sưởi / làm nóng."
+      }
+    ]
+  },
+  {
+    "title": "Schokoladenfabrik / Kakao Fabrik",
+    "titleVi": "Nhà máy sô-cô-la / ca cao",
+    "audioText": "Willkommen in unserer Schokoladenmanufaktur, schön, dass Sie da sind! Riechen Sie diesen herrlichen Duft? Das ist echter Kakao. Unsere Schokolade ist etwas ganz Besonderes, denn sie wird aus Kakao hergestellt, der ausschließlich aus ökologischem Anbau stammt – reines Bio, ganz ohne Chemie. Bei einem Rundgang können Sie live miterleben, wie unser Chocolatier die rohen Bohnen Schritt für Schritt verarbeitet, so lange, bis am Ende eine fertige, glänzende Tafel daraus geworden ist. Faszinierend, nicht wahr? Sie möchten mehr über die Anbaugebiete und Plantagen erfahren? Alle Auskünfte dazu erteilt Ihnen gern das Unternehmen Zotter. Ein wichtiger Grundsatz bei uns: Bestimmte Zutaten dürfen nicht von irgendwoher kommen – ein Teil der Rohstoffe muss zwingend aus Österreich stammen. Und was ist uns am allerwichtigsten? Viele tippen sofort auf den Geschmack – klar, der zählt natürlich auch – aber ehrlich gesagt legen wir den größten Wert auf die Hülle, also auf eine schöne, hochwertige Verpackung. Übrigens: Wer eine kostenlose Kostprobe möchte, der findet sie nicht im Verkaufsraum, sondern drüben in unserer kleinen Ausstellung – dort dürfen Sie gratis naschen. Verantwortlich für das Design unserer Verpackungen ist ein Mann namens Andreas – ein echter Künstler. Und wussten Sie, dass es Schokolade bei uns in Österreich schon seit mehr als zweihundert Jahren gibt? Eine lange, süße Tradition. Unser Modell hat sich längst nicht nur regional einen Namen gemacht – es ist rund um den gesamten Erdball bekannt geworden. Und jetzt: Folgen Sie mir zur Verkostung!",
+    "exam": [
+      {
+        "qDe": "Welche Schokolade macht die Firma?",
+        "qVi": "Công ty làm loại sô-cô-la nào?",
+        "opts": [
+          {
+            "de": "die Zucker enthält",
+            "vi": "chứa đường.",
+            "c": false
+          },
+          {
+            "de": "die Bio-Kakao enthält",
+            "vi": "chứa ca cao hữu cơ.",
+            "c": true
+          },
+          {
+            "de": "die Milch enthält",
+            "vi": "chứa sữa.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Von welchen Schokoladenfarmen gibt es Informationen?",
+        "qVi": "Có thông tin về trang trại sô-cô-la nào?",
+        "opts": [
+          {
+            "de": "Informationen von Nestlé",
+            "vi": "Thông tin từ Nestlé.",
+            "c": false
+          },
+          {
+            "de": "Informationen von Firma Zotter",
+            "vi": "Thông tin từ hãng Zotter.",
+            "c": true
+          },
+          {
+            "de": "Informationen von Firma Lindt",
+            "vi": "Thông tin từ hãng Lindt.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "In einer Schokoladenfabrik kann man…?",
+        "qVi": "Trong nhà máy sô-cô-la có thể…?",
+        "opts": [
+          {
+            "de": "nur sehen",
+            "vi": "chỉ xem.",
+            "c": false
+          },
+          {
+            "de": "aus den Bohnen Schokolade machen, bis eine Tafel wird",
+            "vi": "làm sô-cô-la từ hạt cho tới khi thành thanh.",
+            "c": true
+          },
+          {
+            "de": "Verpackung drucken",
+            "vi": "in bao bì.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Einige Schokoladenmaterialien müssen…?",
+        "qVi": "Một số nguyên liệu sô-cô-la phải…?",
+        "opts": [
+          {
+            "de": "aus Deutschland kommen",
+            "vi": "đến từ Đức.",
+            "c": false
+          },
+          {
+            "de": "aus Österreich kommen",
+            "vi": "đến từ Áo.",
+            "c": true
+          },
+          {
+            "de": "aus Belgien kommen",
+            "vi": "đến từ Bỉ.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Das Wichtigste für das Unternehmen ist…?",
+        "qVi": "Điều quan trọng nhất với công ty là…?",
+        "opts": [
+          {
+            "de": "Preise",
+            "vi": "Giá cả.",
+            "c": false
+          },
+          {
+            "de": "Werbung",
+            "vi": "Quảng cáo.",
+            "c": false
+          },
+          {
+            "de": "Verpackungen",
+            "vi": "Bao bì.",
+            "c": true
+          }
+        ]
+      },
+      {
+        "qDe": "Wo kann man kostenlose Schokolade bekommen?",
+        "qVi": "Nhận sô-cô-la miễn phí ở đâu?",
+        "opts": [
+          {
+            "de": "Im Supermarkt",
+            "vi": "Siêu thị.",
+            "c": false
+          },
+          {
+            "de": "Im Museum",
+            "vi": "Bảo tàng.",
+            "c": false
+          },
+          {
+            "de": "In einer Ausstellung",
+            "vi": "Tại một triển lãm.",
+            "c": true
+          }
+        ]
+      },
+      {
+        "qDe": "Wer ist für die Gestaltung der Verpackung verantwortlich?",
+        "qVi": "Ai phụ trách thiết kế bao bì?",
+        "opts": [
+          {
+            "de": "Andreas",
+            "vi": "Andreas.",
+            "c": true
+          },
+          {
+            "de": "Thomas",
+            "vi": "Thomas.",
+            "c": false
+          },
+          {
+            "de": "Julia",
+            "vi": "Julia.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Seit wie vielen Jahren gibt es Schokoladenriegel in Österreich?",
+        "qVi": "Thanh sô-cô-la đã có ở Áo bao nhiêu năm?",
+        "opts": [
+          {
+            "de": "seit 100 Jahren",
+            "vi": "100 năm.",
+            "c": false
+          },
+          {
+            "de": "seit 120 Jahren",
+            "vi": "120 năm.",
+            "c": false
+          },
+          {
+            "de": "seit 150 Jahren",
+            "vi": "150 năm.",
+            "c": true
+          }
+        ]
+      },
+      {
+        "qDe": "Wie berühmt ist dieses Schokoladenmodell?",
+        "qVi": "Mẫu sô-cô-la này nổi tiếng đến đâu?",
+        "opts": [
+          {
+            "de": "in Europa",
+            "vi": "ở châu Âu.",
+            "c": false
+          },
+          {
+            "de": "nur in Österreich",
+            "vi": "chỉ ở Áo.",
+            "c": false
+          },
+          {
+            "de": "um die ganze Welt",
+            "vi": "khắp thế giới.",
+            "c": true
+          }
+        ]
+      }
+    ],
+    "qs": [
+      {
+        "qDe": "Schokolade?",
+        "ansDe": "Die Bio Kakao enthält.",
+        "qVi": "Sô-cô-la?",
+        "ansVi": "Loại có chứa ca cao hữu cơ."
+      },
+      {
+        "qDe": "In einer Schokoladenfabrik kann man...",
+        "ansDe": "Er macht aus den Bohnen Schokolade, bis daraus Tafel wird.",
+        "qVi": "Trong nhà máy sô-cô-la có thể...",
+        "ansVi": "Làm sô-cô-la từ hạt cho đến khi thành thanh."
+      },
+      {
+        "qDe": "Schokoladenfarmen?",
+        "ansDe": "Informationen von Zotter Firma.",
+        "qVi": "Các nông trại sô-cô-la?",
+        "ansVi": "Thông tin từ công ty Zotter."
+      },
+      {
+        "qDe": "Einige Schokoladenmaterialien müssen...",
+        "ansDe": "Aus Österreich kommen.",
+        "qVi": "Một số nguyên liệu phải...",
+        "ansVi": "Đến từ Áo."
+      },
+      {
+        "qDe": "Das Wichtigste für das Unternehmen ist...",
+        "ansDe": "Verpackungen.",
+        "qVi": "Điều quan trọng nhất với công ty là...",
+        "ansVi": "Bao bì đóng gói."
+      },
+      {
+        "qDe": "Wo kann man kostenlose Schokolade bekommen?",
+        "ansDe": "In einer Ausstellung / Museum.",
+        "qVi": "Nhận sô-cô-la miễn phí ở đâu?",
+        "ansVi": "Trong triển lãm / bảo tàng."
+      },
+      {
+        "qDe": "Wer ist für die Gestaltung der Verpackung verantwortlich?",
+        "ansDe": "Andreas.",
+        "qVi": "Ai chịu trách nhiệm thiết kế bao bì?",
+        "ansVi": "Andreas."
+      },
+      {
+        "qDe": "Seit wie vielen Jahren gibt es Schokolade in Österreich?",
+        "ansDe": "(theo bài nghe — chọn số năm tương ứng)",
+        "qVi": "Sô-cô-la có ở Áo bao nhiêu năm?",
+        "ansVi": "(theo bài nghe — chọn số năm tương ứng)"
+      },
+      {
+        "qDe": "Wie berühmt ist dieses Schokoladen-Modell?",
+        "ansDe": "Um ganze Welt (in der ganzen Welt).",
+        "qVi": "Mẫu sô-cô-la này nổi tiếng mức nào?",
+        "ansVi": "Khắp cả thế giới."
+      }
+    ]
+  },
+  {
+    "title": "Ein Zoo in der Nordschweiz",
+    "titleVi": "Vườn thú ở miền bắc Thụy Sĩ",
+    "audioText": "Liebe Eltern, liebe Kolleginnen und Kollegen, einen wunderschönen guten Morgen! Ich möchte Ihnen heute unseren geplanten Ausflug vorstellen – und, oh, warten Sie kurz, jemand schließt gerade die Tür, so, jetzt ist es ruhiger. Also: Das Schöne vorweg – wirklich sämtliche Kinder unserer Gruppe wollen mitkommen, ausnahmslos jedes einzelne Kind hat sich angemeldet. Das freut mich riesig! Wohin geht die Reise? Nun, wir kehren in ein ganz besonderes Lokal ein: in ein Café mit herrlichem Rundblick über die gesamte Landschaft, ein echtes Panorama-Café hoch oben am Hang. Von dort hat man eine fantastische Aussicht auf die Berge der Nordschweiz. Und wann brechen wir auf? Nicht etwa frühmorgens, wie einige vielleicht angenommen haben – nein, unser Ausflug startet erst, wenn die Sonne langsam untergeht, also am Abend. Das hat übrigens einen Grund: In der Dämmerung sind viele Tiere im Zoo besonders aktiv und lebendig. Wie lange sind wir unterwegs? Insgesamt drei Tage – also eine kleine, feine Reise über drei Tage hinweg, mit zwei Übernachtungen. Ich denke, das ist genau die richtige Länge für die Kinder, nicht zu kurz und nicht zu lang. Haben Sie noch Fragen dazu? Dann melden Sie sich gern bei mir im Sekretariat. Ich freue mich schon jetzt riesig auf dieses gemeinsame Abenteuer mit Ihnen und den Kleinen!",
+    "exam": [
+      {
+        "qDe": "Was ist passiert? (Wer nimmt teil?)",
+        "qVi": "Điều gì xảy ra? (Ai tham gia?)",
+        "opts": [
+          {
+            "de": "Nur Erwachsene",
+            "vi": "Chỉ người lớn.",
+            "c": false
+          },
+          {
+            "de": "Nur Schüler",
+            "vi": "Chỉ học sinh.",
+            "c": false
+          },
+          {
+            "de": "Alle Kinder",
+            "vi": "Tất cả trẻ em.",
+            "c": true
+          }
+        ]
+      },
+      {
+        "qDe": "Was ist passiert? (Wo?)",
+        "qVi": "Điều gì xảy ra? (Ở đâu?)",
+        "opts": [
+          {
+            "de": "In einem Restaurant",
+            "vi": "Trong một nhà hàng.",
+            "c": false
+          },
+          {
+            "de": "In einem Panorama-Café",
+            "vi": "Trong một quán café toàn cảnh.",
+            "c": true
+          },
+          {
+            "de": "In einem Park",
+            "vi": "Trong một công viên.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Was ist passiert? (Wann?)",
+        "qVi": "Điều gì xảy ra? (Khi nào?)",
+        "opts": [
+          {
+            "de": "Am Abend",
+            "vi": "Buổi tối.",
+            "c": true
+          },
+          {
+            "de": "Am Morgen",
+            "vi": "Buổi sáng.",
+            "c": false
+          },
+          {
+            "de": "Am Nachmittag",
+            "vi": "Buổi chiều.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Was ist passiert? (Wie lange?)",
+        "qVi": "Điều gì xảy ra? (Bao lâu?)",
+        "opts": [
+          {
+            "de": "Ein Tag",
+            "vi": "Một ngày.",
+            "c": false
+          },
+          {
+            "de": "Zwei Tage",
+            "vi": "Hai ngày.",
+            "c": false
+          },
+          {
+            "de": "Drei Tage",
+            "vi": "Ba ngày.",
+            "c": true
+          }
+        ]
+      }
+    ],
+    "qs": [
+      {
+        "qDe": "Wer möchte teilnehmen?",
+        "ansDe": "Alle Kinder.",
+        "qVi": "Ai muốn tham gia?",
+        "ansVi": "Tất cả trẻ em."
+      },
+      {
+        "qDe": "Wohin geht die Reise?",
+        "ansDe": "In einem Panorama-Café.",
+        "qVi": "Chuyến đi đến đâu?",
+        "ansVi": "Trong quán cà phê toàn cảnh."
+      },
+      {
+        "qDe": "Wann ist der Ausflug?",
+        "ansDe": "Am Abend.",
+        "qVi": "Chuyến đi khi nào?",
+        "ansVi": "Vào buổi tối."
+      },
+      {
+        "qDe": "Wie viele Tage?",
+        "ansDe": "3 Tage.",
+        "qVi": "Bao nhiêu ngày?",
+        "ansVi": "3 ngày."
+      }
+    ]
+  },
+  {
+    "title": "Ettenheim / Littenheim",
+    "titleVi": "Ettenheim / Littenheim",
+    "audioText": "Herzlich willkommen zu unserer kleinen Stadtvorstellung! Darf ich Ihnen Ettenheim ans Herz legen? Ein wirklich zauberhaftes Städtchen. Was Sie dort als Erstes bemerken, sind die alten Befestigungsmauern, die den historischen Kern noch heute umschließen – gut erhaltene Stadtmauern aus früheren Jahrhunderten. Wo genau liegt der Ort? Viele glauben, er läge tief in der Schweiz – das stimmt aber nicht. Ettenheim befindet sich gleich hinter der französischen Grenze, das Nachbarland Frankreich ist nur einen Katzensprung entfernt. Und die Region? Der Ort schmiegt sich in den wunderschönen Schwarzwald, mitten in Deutschland also. Was macht die Gegend besonders? Vor allem die Weine! Hier finden Sie in erster Linie günstige Angebote für hellen Wein, also für Weißwein – die Winzer der Umgebung sind genau dafür bekannt. Und wenn Sie sich gern in der freien Natur bewegen: Rund um die Stadt gibt es ausgezeichnete Strecken für ausgedehnte Wanderungen, ein wahres Paradies für alle, die zu Fuß unterwegs sein wollen. Noch ein praktischer Hinweis zum Schluss – bitte notieren Sie sich das: Wenn Sie im Bürgerbüro etwas erledigen möchten, denken Sie an die Öffnungszeiten. Am Donnerstag hat es besonders lange geöffnet, nämlich bis acht Uhr am Abend, also bis zwanzig Uhr. An den übrigen Tagen schließt man deutlich früher. So, das war mein kleiner Überblick – ich wünsche Ihnen einen wunderbaren Aufenthalt bei uns!",
+    "exam": [
+      {
+        "qDe": "Was gibt es in der Stadt?",
+        "qVi": "Trong thành phố có gì?",
+        "opts": [
+          {
+            "de": "Museen",
+            "vi": "Bảo tàng.",
+            "c": false
+          },
+          {
+            "de": "Stadtmauern",
+            "vi": "Tường thành.",
+            "c": true
+          },
+          {
+            "de": "Schloss",
+            "vi": "Lâu đài.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Ist die Stadt in der Nähe von?",
+        "qVi": "Thành phố ở gần?",
+        "opts": [
+          {
+            "de": "Belgien",
+            "vi": "Bỉ.",
+            "c": false
+          },
+          {
+            "de": "Frankreich",
+            "vi": "Pháp.",
+            "c": true
+          },
+          {
+            "de": "Schweiz",
+            "vi": "Thụy Sĩ.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Was ist darin am meisten zu finden?",
+        "qVi": "Ở đó nhiều nhất là gì?",
+        "opts": [
+          {
+            "de": "Angebote auf Rotwein",
+            "vi": "Ưu đãi rượu vang đỏ.",
+            "c": false
+          },
+          {
+            "de": "Angebote auf Bier",
+            "vi": "Ưu đãi bia.",
+            "c": false
+          },
+          {
+            "de": "Angebote auf Weißwein",
+            "vi": "Ưu đãi rượu vang trắng.",
+            "c": true
+          }
+        ]
+      },
+      {
+        "qDe": "Was können Sie tun?",
+        "qVi": "Bạn có thể làm gì?",
+        "opts": [
+          {
+            "de": "Fahrrad fahren",
+            "vi": "Đạp xe.",
+            "c": false
+          },
+          {
+            "de": "gute Wandermöglichkeiten",
+            "vi": "có điều kiện đi bộ đường dài tốt.",
+            "c": true
+          },
+          {
+            "de": "Schwimmen",
+            "vi": "Bơi.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Sie können das Bürgerbüro besuchen?",
+        "qVi": "Có thể đến văn phòng công dân?",
+        "opts": [
+          {
+            "de": "Montag bis 18 Uhr",
+            "vi": "Thứ Hai đến 18 giờ.",
+            "c": false
+          },
+          {
+            "de": "Donnerstag bis 20 Uhr",
+            "vi": "Thứ Năm đến 20 giờ.",
+            "c": true
+          },
+          {
+            "de": "Freitag bis 14 Uhr",
+            "vi": "Thứ Sáu đến 14 giờ.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Wo liegt diese Stadt?",
+        "qVi": "Thành phố này nằm ở đâu?",
+        "opts": [
+          {
+            "de": "Frankfurt",
+            "vi": "Frankfurt.",
+            "c": false
+          },
+          {
+            "de": "Frankreich",
+            "vi": "Pháp.",
+            "c": false
+          },
+          {
+            "de": "Schwarzwald",
+            "vi": "Rừng Đen (Schwarzwald).",
+            "c": true
+          }
+        ]
+      }
+    ],
+    "qs": [
+      {
+        "qDe": "Was gibt es in der Stadt?",
+        "ansDe": "Stadtmauern.",
+        "qVi": "Trong thành phố có gì?",
+        "ansVi": "Tường thành."
+      },
+      {
+        "qDe": "Ist die Stadt in der Nähe?",
+        "ansDe": "Frankreich.",
+        "qVi": "Thành phố ở gần đâu?",
+        "ansVi": "Pháp."
+      },
+      {
+        "qDe": "Wo liegt diese Stadt?",
+        "ansDe": "Schwarzwald (in Deutschland).",
+        "qVi": "Thành phố này nằm ở đâu?",
+        "ansVi": "Rừng Đen (ở Đức)."
+      },
+      {
+        "qDe": "Was ist darin am meisten zu finden?",
+        "ansDe": "Angebote auf Weißwein.",
+        "qVi": "Tìm thấy nhiều nhất là gì?",
+        "ansVi": "Ưu đãi rượu vang trắng."
+      },
+      {
+        "qDe": "Was können Sie tun?",
+        "ansDe": "Gute Wandermöglichkeiten.",
+        "qVi": "Bạn có thể làm gì?",
+        "ansVi": "Cơ hội tốt để đi bộ đường dài."
+      },
+      {
+        "qDe": "Sie können das Reisebüro / Bürgerbüro besuchen?",
+        "ansDe": "Donnerstag bis 20 Uhr.",
+        "qVi": "Thăm văn phòng du lịch/công dân?",
+        "ansVi": "Thứ Năm đến 20 giờ."
+      }
+    ]
+  },
+  {
+    "title": "Reise nach Köln",
+    "titleVi": "Chuyến đi đến Köln",
+    "audioText": "So, liebe Freunde, jetzt erzähle ich euch von unserem tollen Wochenende in Köln – hört mal kurz her, mein Handy klingelt gerade, einen Moment, so, ausgeschaltet. Also: Der absolute Höhepunkt war natürlich der Besuch der riesigen Kathedrale mitten in der Stadt, dieses gewaltige gotische Bauwerk mit den zwei hoch aufragenden Türmen. Man kommt aus dem Staunen gar nicht mehr heraus! Danach haben wir uns ein uraltes Gebäude angeschaut, ein wunderschönes historisches Fachwerkhaus aus längst vergangenen Zeiten – wirklich beeindruckend, wie gut es bis heute erhalten geblieben ist. Und was gehört zu Köln einfach dazu? Genau, das typische helle Bier der Stadt, das man dort in kleinen, schlanken Gläsern serviert. Ich habe natürlich auch ein Glas davon probiert. Und das Allerbeste: Petrus hat es gut mit uns gemeint! Das Wetter war einfach herrlich, strahlender Sonnenschein den ganzen Tag über – kein einziger Tropfen Regen, obwohl der Wetterbericht eigentlich dichte Wolken angekündigt hatte. Da hatten wir wirklich großes Glück. Ach, und einen Tipp von unserem Stadtführer muss ich unbedingt weitergeben: Wer ein schönes Andenken sucht, sollte auf jeden Fall die Juweliergeschäfte besuchen – dort gibt es wunderbaren Schmuck in allen Variationen. Also, ich sage euch: Köln ist immer eine Reise wert. Fahrt unbedingt selbst einmal hin, ihr werdet es nicht bereuen!",
+    "exam": [
+      {
+        "qDe": "Was besichtigen sie? (Sehenswürdigkeit)",
+        "qVi": "Họ tham quan gì? (địa danh)",
+        "opts": [
+          {
+            "de": "Kirche",
+            "vi": "Nhà thờ.",
+            "c": false
+          },
+          {
+            "de": "Dom",
+            "vi": "Nhà thờ lớn (Dom).",
+            "c": true
+          },
+          {
+            "de": "Rathaus",
+            "vi": "Tòa thị chính.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Was sehen sie? (Gebäude)",
+        "qVi": "Họ nhìn thấy gì? (tòa nhà)",
+        "opts": [
+          {
+            "de": "Neues Haus",
+            "vi": "Nhà mới.",
+            "c": false
+          },
+          {
+            "de": "Altes Haus",
+            "vi": "Nhà cũ.",
+            "c": true
+          },
+          {
+            "de": "Museum",
+            "vi": "Bảo tàng.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Was trinken sie? (Getränk)",
+        "qVi": "Họ uống gì? (đồ uống)",
+        "opts": [
+          {
+            "de": "Wasser",
+            "vi": "Nước.",
+            "c": false
+          },
+          {
+            "de": "Bier",
+            "vi": "Bia.",
+            "c": true
+          },
+          {
+            "de": "Cola",
+            "vi": "Cô-ca.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Wie ist das Wetter?",
+        "qVi": "Thời tiết thế nào?",
+        "opts": [
+          {
+            "de": "Das Wetter ist schlecht",
+            "vi": "Thời tiết xấu.",
+            "c": false
+          },
+          {
+            "de": "Das Wetter ist ausgezeichnet",
+            "vi": "Thời tiết tuyệt vời.",
+            "c": true
+          },
+          {
+            "de": "Es hat geschneit",
+            "vi": "Có tuyết rơi.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Was war der Rat?",
+        "qVi": "Lời khuyên là gì?",
+        "opts": [
+          {
+            "de": "Lebensmittelgeschäfte",
+            "vi": "Cửa hàng thực phẩm.",
+            "c": false
+          },
+          {
+            "de": "Schmuckgeschäfte besuchen",
+            "vi": "Thăm cửa hàng trang sức.",
+            "c": true
+          },
+          {
+            "de": "Buchhandlungen",
+            "vi": "Hiệu sách.",
+            "c": false
+          }
+        ]
+      }
+    ],
+    "qs": [
+      {
+        "qDe": "Was besuchen wir?",
+        "ansDe": "Dom.",
+        "qVi": "Chúng ta thăm gì?",
+        "ansVi": "Nhà thờ chính tòa."
+      },
+      {
+        "qDe": "Was schauen wir?",
+        "ansDe": "Altes Haus.",
+        "qVi": "Chúng ta ngắm gì?",
+        "ansVi": "Ngôi nhà cổ."
+      },
+      {
+        "qDe": "Was trinken wir?",
+        "ansDe": "Bier.",
+        "qVi": "Chúng ta uống gì?",
+        "ansVi": "Bia."
+      },
+      {
+        "qDe": "Wie war das Wetter?",
+        "ansDe": "Das Wetter ist ausgezeichnet.",
+        "qVi": "Thời tiết thế nào?",
+        "ansVi": "Thời tiết tuyệt vời."
+      },
+      {
+        "qDe": "Was war der Rat?",
+        "ansDe": "Schmuck-Geschäfte besuchen.",
+        "qVi": "Lời khuyên là gì?",
+        "ansVi": "Thăm các cửa hàng trang sức."
+      }
+    ]
+  },
+  {
+    "title": "Brolingua-Schule",
+    "titleVi": "Trường Brolingua",
+    "audioText": "Herzlich willkommen, liebe Gäste, zu unserem Tag der offenen Tür an der Sprachschule Brolingua! – Moment, hören Sie das? Ja, im Nebenraum stimmt gerade jemand die Gitarre... genau, denn was erwartet Sie heute? Vor allem ganz viel Spaß und Abwechslung: kleine Spiele, Musik, ein Quiz und am Abend sogar ein gemeinsames Grillfest – kurz gesagt, jede Menge, um sich zu vergnügen. Aber worauf kommt es uns im Unterricht selbst eigentlich an? Manche denken ja, wir würden stundenlang stur Vokabeln pauken. Nein, überhaupt nicht! Das Allerwichtigste ist bei uns, dass Sie auf ganz unterschiedliche Art und Weise lernen – mal mit Videos, mal im Rollenspiel, mal mit einer App auf dem Handy. Und keine Sorge um den Geldbeutel: Eine Sprachreise mit uns muss kein Vermögen kosten, die ist für fast jeden gut zu bezahlen. Ach ja, und wenn das Wetter mitspielt – heute sind es angenehme 24 Grad – dann sitzen wir gar nicht im Klassenzimmer, sondern draußen im Grünen: Der Unterricht findet dann einfach zwischen den alten Kastanien im Schulgarten statt. Nur eine Kleinigkeit müssen Sie noch wissen: Das dicke bunte Lehrbuch ist im Preis leider nicht enthalten – dafür verlangen wir einen kleinen Aufpreis obendrauf. So, und jetzt folgen Sie mir bitte hier entlang!",
+    "exam": [
+      {
+        "qDe": "Zum heutigen Programm…",
+        "qVi": "Trong chương trình hôm nay…",
+        "opts": [
+          {
+            "de": "gehören viele Unterhaltungsangebote",
+            "vi": "có nhiều hoạt động giải trí.",
+            "c": true
+          },
+          {
+            "de": "gehören Bücher",
+            "vi": "có sách.",
+            "c": false
+          },
+          {
+            "de": "gehört ein Test",
+            "vi": "có một bài kiểm tra.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Für den Unterricht bei Prolingua ist es am wichtigsten…",
+        "qVi": "Điều quan trọng nhất khi học ở Prolingua là…",
+        "opts": [
+          {
+            "de": "dass man nur Grammatik lernt",
+            "vi": "chỉ học ngữ pháp.",
+            "c": false
+          },
+          {
+            "de": "dass man durch verschiedene Methoden lernt",
+            "vi": "học qua nhiều phương pháp khác nhau.",
+            "c": true
+          },
+          {
+            "de": "dass man still bleibt",
+            "vi": "giữ im lặng.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Eine Sprachreise mit Prolingua…",
+        "qVi": "Một chuyến du học ngôn ngữ với Prolingua…",
+        "opts": [
+          {
+            "de": "ist teuer",
+            "vi": "đắt.",
+            "c": false
+          },
+          {
+            "de": "ist nur für Kinder",
+            "vi": "chỉ dành cho trẻ em.",
+            "c": false
+          },
+          {
+            "de": "ist für jemanden bezahlbar",
+            "vi": "trong khả năng chi trả của người ta.",
+            "c": true
+          }
+        ]
+      },
+      {
+        "qDe": "Wo kann der Unterricht noch stattfinden?",
+        "qVi": "Buổi học còn có thể diễn ra ở đâu?",
+        "opts": [
+          {
+            "de": "auf der Terrasse",
+            "vi": "trên sân thượng.",
+            "c": false
+          },
+          {
+            "de": "am See",
+            "vi": "bên hồ.",
+            "c": false
+          },
+          {
+            "de": "im Garten",
+            "vi": "trong vườn.",
+            "c": true
+          }
+        ]
+      },
+      {
+        "qDe": "Wofür muss man zusätzlich zahlen?",
+        "qVi": "Phải trả thêm tiền cho gì?",
+        "opts": [
+          {
+            "de": "für das Kursbuch",
+            "vi": "cho giáo trình.",
+            "c": true
+          },
+          {
+            "de": "für Kopien",
+            "vi": "cho bản sao / photo.",
+            "c": false
+          },
+          {
+            "de": "für Getränke",
+            "vi": "cho đồ uống.",
+            "c": false
+          }
+        ]
+      }
+    ],
+    "qs": [
+      {
+        "qDe": "Zum heutigen Programm...",
+        "ansDe": "Gehören viele Unterhaltungsangebote.",
+        "qVi": "Trong chương trình hôm nay...",
+        "ansVi": "Có nhiều lựa chọn giải trí."
+      },
+      {
+        "qDe": "Für den Unterricht ist es am wichtigsten...",
+        "ansDe": "Dass man durch verschiedene Methoden lernt.",
+        "qVi": "Điều quan trọng nhất khi học...",
+        "ansVi": "Là học qua nhiều phương pháp khác nhau."
+      },
+      {
+        "qDe": "Eine Sprachreise mit Prolingua...",
+        "ansDe": "Ist für jemanden bezahlbar.",
+        "qVi": "Một chuyến du học ngôn ngữ...",
+        "ansVi": "Vừa túi tiền của một người nào đó."
+      },
+      {
+        "qDe": "Wo kann der Unterricht noch stattfinden?",
+        "ansDe": "Im Garten.",
+        "qVi": "Buổi học còn diễn ra ở đâu?",
+        "ansVi": "Trong vườn."
+      },
+      {
+        "qDe": "Wofür muss man zusätzlich zahlen?",
+        "ansDe": "Für das Kursbuch.",
+        "qVi": "Trả thêm tiền cho gì?",
+        "ansVi": "Cho sách giáo trình."
+      }
+    ]
+  },
+  {
+    "title": "Besuchen Sie eine Schule",
+    "titleVi": "Hãy thăm một ngôi trường",
+    "audioText": "Guten Abend, liebe Eltern, und schön, dass Sie alle gekommen sind! Wofür ist unsere Schule eigentlich in der ganzen Region bekannt? Nicht etwa für Mathe oder Sport – nein, unser großer Ruf gründet auf dem Unterricht in fremden Sprachen; bei uns lernen die Kinder Englisch, Französisch und Spanisch auf höchstem Niveau. Und was können Sie heute Abend hier tun? Gleich dort im Foyer läuft auf einer großen Leinwand eine Aufnahme über unsere Einrichtung – betrachten Sie diese Bilder ruhig in aller Ruhe, dann bekommen Sie einen guten Eindruck vom Schulalltag. – Entschuldigung, es ist gerade etwas laut, das liegt an der Schülerband in der Aula: Dort können Sie nämlich Musik ganz live erleben, die Jugendlichen spielen extra für Sie. Danach lade ich Sie in unseren Fitnessraum ein. Was Sie da machen dürfen? Kein anstrengendes Krafttraining, haben Sie keine Angst! Sie dürfen einfach eine Runde gegen den Ball treten und Fußball spielen, so wie früher auf dem Schulhof. Und zum Schluss noch ein Hinweis: Wer uns zusätzlich unterstützen möchte, kann bei uns direkt am Stand ein Buch erwerben; der Erlös fließt in unsere Schulbibliothek. Vielen Dank, und viel Freude beim Rundgang!",
+    "exam": [
+      {
+        "qDe": "Die Schule ist berühmt für ihre?",
+        "qVi": "Trường nổi tiếng về?",
+        "opts": [
+          {
+            "de": "Sportangebote",
+            "vi": "Hoạt động thể thao.",
+            "c": false
+          },
+          {
+            "de": "Fremdsprachen",
+            "vi": "Ngoại ngữ.",
+            "c": true
+          },
+          {
+            "de": "Gebäude",
+            "vi": "Tòa nhà.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Was kann mann in der Schule tun?",
+        "qVi": "Phụ huynh có thể làm gì ở trường?",
+        "opts": [
+          {
+            "de": "Ein Buch ansehen",
+            "vi": "Xem một cuốn sách.",
+            "c": false
+          },
+          {
+            "de": "Ein Bild der Schule ansehen",
+            "vi": "Xem một bức ảnh về trường.",
+            "c": true
+          },
+          {
+            "de": "Einen Film ansehen",
+            "vi": "Xem một bộ phim.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Kann mann?",
+        "qVi": "Phụ huynh có thể?",
+        "opts": [
+          {
+            "de": "Tanzen",
+            "vi": "Nhảy.",
+            "c": false
+          },
+          {
+            "de": "Live-Musik hören",
+            "vi": "Nghe nhạc sống.",
+            "c": true
+          },
+          {
+            "de": "Vortrag halten",
+            "vi": "Thuyết trình.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Was kann mann im Fitnessstudio tun?",
+        "qVi": "Phụ huynh có thể làm gì ở phòng gym?",
+        "opts": [
+          {
+            "de": "Yoga machen",
+            "vi": "Tập yoga.",
+            "c": false
+          },
+          {
+            "de": "Fußball spielen",
+            "vi": "Chơi bóng đá.",
+            "c": true
+          },
+          {
+            "de": "Lesen",
+            "vi": "Đọc sách.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "qDe": "Welche zusätzliche Arbeit können Eltern leisten?",
+        "qVi": "Phụ huynh có thể làm thêm việc gì?",
+        "opts": [
+          {
+            "de": "Sie kaufen ein Buch über die Schule",
+            "vi": "Mua một cuốn sách về trường.",
+            "c": true
+          },
+          {
+            "de": "Sie schreiben einen Bericht",
+            "vi": "Viết một báo cáo.",
+            "c": false
+          },
+          {
+            "de": "Sie reparieren die Möbel",
+            "vi": "Sửa đồ nội thất.",
+            "c": false
+          }
+        ]
+      }
+    ],
+    "qs": [
+      {
+        "qDe": "Die Schule ist berühmt für ihre?",
+        "ansDe": "Fremdsprachen.",
+        "qVi": "Trường nổi tiếng về gì?",
+        "ansVi": "Ngoại ngữ."
+      },
+      {
+        "qDe": "Was kann mann in der Schule tun?",
+        "ansDe": "Ein Bild der Schule ansehen.",
+        "qVi": "Phụ huynh làm gì ở trường?",
+        "ansVi": "Họ xem một bức ảnh của trường."
+      },
+      {
+        "qDe": "Kann mann?",
+        "ansDe": "Live-Musik hören.",
+        "qVi": "Phụ huynh có thể?",
+        "ansVi": "Nghe nhạc trực tiếp."
+      },
+      {
+        "qDe": "Was kann mann im Fitnessstudio tun?",
+        "ansDe": "Fußball spielen.",
+        "qVi": "Phụ huynh làm gì trong phòng tập?",
+        "ansVi": "Chơi bóng đá."
+      },
+      {
+        "qDe": "Welche zusätzliche Arbeit können Eltern leisten?",
+        "ansDe": "Sie kaufen ein Buch bei der Schule.",
+        "qVi": "Làm thêm việc gì?",
+        "ansVi": "Họ mua một quyển sách của trường."
+      }
+    ]
+  },
+  {
+    "title": "Klassenfahrt / Reise nach Hamburg",
+    "titleVi": "Dã ngoại lớp / Chuyến đi Hamburg",
+    "audioText": "So, Leute, hört mal alle her – unsere Klassenfahrt nach Hamburg, wie läuft die eigentlich ab? Wo starten wir? Nicht am Hafen, wie manche vielleicht vermuten, sondern mitten im Zentrum: Los geht unsere Tour direkt in der Innenstadt, am Rathausplatz um Punkt zehn. Von dort spazieren wir hinüber zur alten Burg. Und was machen wir dort? Etwas ganz Besonderes – wir feiern nämlich den Geburtstag von Lena, die wird morgen sechzehn, also gibt es hinter den dicken Mauern der Burg ein kleines Fest mit Kuchen und Kerzen. Danach – Achtung, das wird lustig – besuchen wir eine Ausstellung mit Figuren aus Wachs; ihr wisst schon, diese täuschend echten Nachbildungen von Stars und Politikern. – Pssst, das Handy bitte auf lautlos! – Und wie endet der Tag? Nicht etwa in einem Hotel. Nein, zum Abschluss fahren wir raus an die Küste und bauen dort unser Zelt auf. Wo übernachten wir also? Wir kriechen abends in ein Zelt direkt neben dem Wasser und schlafen mit dem Rauschen der Wellen ein. Klingt das nicht großartig? Denkt aber an warme Sachen, nachts wird es am Meer ziemlich frisch!",
+    "qs": [
+      {
+        "qDe": "Wo beginnt die Reise?",
+        "ansDe": "Die Reise beginnt in der Stadt.",
+        "qVi": "Chuyến đi bắt đầu ở đâu?",
+        "ansVi": "Chuyến đi bắt đầu trong thành phố."
+      },
+      {
+        "qDe": "Was machen sie in der Burg?",
+        "ansDe": "Sie feiern einen Geburtstag in der Burg.",
+        "qVi": "Họ làm gì trong lâu đài?",
+        "ansVi": "Họ tổ chức sinh nhật trong lâu đài."
+      },
+      {
+        "qDe": "Was besuchen sie danach?",
+        "ansDe": "Sie besuchen die Wachsfiguren.",
+        "qVi": "Sau đó họ thăm gì?",
+        "ansVi": "Họ thăm các tượng sáp."
+      },
+      {
+        "qDe": "Was machen sie am Ende?",
+        "ansDe": "Am Ende machen sie ein Zelt am Meer und schlafen.",
+        "qVi": "Cuối cùng họ làm gì?",
+        "ansVi": "Cuối cùng họ dựng lều bên biển và ngủ."
+      },
+      {
+        "qDe": "Wo schlafen sie?",
+        "ansDe": "Sie schlafen in einem Zelt neben dem Meer.",
+        "qVi": "Họ ngủ ở đâu?",
+        "ansVi": "Họ ngủ trong lều bên cạnh biển."
+      }
+    ]
+  },
+  {
+    "title": "Ausflug (nach Grüßengrubben)",
+    "titleVi": "Chuyến dã ngoại (đến Grüßengrubben)",
+    "audioText": "Also, meine Lieben, ich freue mich riesig – wohin führt uns unser nächster Ausflug? Nicht in die langweilige Nachbarstadt, nein, wir fahren nach Grüßengrubben, dieses hübsche kleine Örtchen unten am Fluss! Und was erwartet uns dort? Eine ganze Menge ist da los: Es steigt nämlich ein großes Fest mit Bühne, und am Abend spielt sogar eine Band – freut euch also auf ein richtiges Konzert unter freiem Himmel. Wo geht es danach hin? Wir schlendern gemeinsam zum Bäcker mitten im Ort und dürfen dort allerlei süße Leckereien kosten – die berühmten Krapfen soll man unbedingt einmal probieren. Aber eines müssen wir vorher erledigen: Alle Fahrräder gründlich durchsehen und auf ihre Sicherheit hin überprüfen lassen; und meldet euch bitte spätestens zwei Wochen im Voraus an, sonst wird es eng. Und wie sollt ihr dabei sein? Bitte gut ausgeruht und bei bester Gesundheit – wer sich krank fühlt, bleibt lieber daheim. Ach, und noch eine Entscheidung steht an: Statt ins Schwimmbad – nein – entscheiden wir uns diesmal für das Museum, das mit den alten Fahrzeugen. Meldet euch also rechtzeitig, es lohnt sich wirklich!",
+    "qs": [
+      {
+        "qDe": "Wohin geht der Ausflug?",
+        "ansDe": "Nach Grüßengrubben.",
+        "qVi": "Chuyến đi đến đâu?",
+        "ansVi": "Đến Grüßengrubben."
+      },
+      {
+        "qDe": "Was gibt es dort zu tun?",
+        "ansDe": "Es gibt eine Party und Veranstaltung (Konzert/Musik).",
+        "qVi": "Ở đó có gì để làm?",
+        "ansVi": "Có một bữa tiệc và sự kiện (hòa nhạc)."
+      },
+      {
+        "qDe": "Wohin gehen wir als nächstes?",
+        "ansDe": "Zur Bäckerei, Süßigkeiten probieren.",
+        "qVi": "Tiếp theo đi đâu?",
+        "ansVi": "Đến tiệm bánh nếm thử đồ ngọt."
+      },
+      {
+        "qDe": "Was müssen wir machen?",
+        "ansDe": "Fahrräder checken und prüfen (zwei Wochen vorher anmelden).",
+        "qVi": "Phải làm gì?",
+        "ansVi": "Kiểm tra xe đạp (đăng ký trước hai tuần)."
+      },
+      {
+        "qDe": "Wie sollen wir uns fühlen?",
+        "ansDe": "Wir sollen gesund sein!",
+        "qVi": "Nên cảm thấy thế nào?",
+        "ansVi": "Chúng ta nên khỏe mạnh!"
+      },
+      {
+        "qDe": "Welche Aktivität wählen wir?",
+        "ansDe": "Wir wählen das Museum.",
+        "qVi": "Chọn hoạt động nào?",
+        "ansVi": "Chúng ta chọn bảo tàng."
+      }
+    ]
+  },
+  {
+    "title": "Fragen & Antworten (tiêu đề chưa rõ)",
+    "titleVi": "Hỏi & Đáp",
+    "audioText": "Ja, hallo, hört ihr mich alle? Gut. – Also, warum verspäten wir uns heute leider ein wenig? Es liegt nicht etwa am Wetter, nein; wir stecken gerade im dicksten Feierabendverkehr fest, ein zäher Stau auf der Autobahn hält uns auf, das tut mir wirklich leid. Nun zu euren Fragen: Wann gehe ich darauf ein? Nicht sofort, habt bitte noch ein bisschen Geduld – erst in etwa zehn Minuten beantworte ich all eure Fragen, dann ist genug Zeit für jeden. Und was dürft ihr gleich fotografieren? Ganz einfach: das große Bauwerk selbst und außerdem die schöne Landschaft ringsherum – Aufnahmen von dem Gebäude und der Natur drumherum sind ausdrücklich erlaubt. Und noch ein Tipp zum Schluss: Wenn ihr genauere Auskünfte braucht, dann wendet euch bitte nicht an mich, sondern sprecht direkt mit dem Moderator dort vorne am Eingang – der kennt sich mit allem bestens aus. So, gleich haben wir es geschafft!",
+    "qs": [
+      {
+        "qDe": "Warum werden sie sich verspäten?",
+        "ansDe": "Wegen Verkehrsstau verspäten.",
+        "qVi": "Tại sao họ đến muộn?",
+        "ansVi": "Đến muộn vì tắc đường."
+      },
+      {
+        "qDe": "Wann werden die Fragen beantwortet?",
+        "ansDe": "Die Fragen werden nach 10 Minuten beantwortet.",
+        "qVi": "Câu hỏi được trả lời khi nào?",
+        "ansVi": "Câu hỏi được trả lời sau 10 phút."
+      },
+      {
+        "qDe": "Was werden sie fotografieren?",
+        "ansDe": "Sie werden das Gebäude oder die Natur um es herum fotografieren.",
+        "qVi": "Họ chụp ảnh gì?",
+        "ansVi": "Họ chụp tòa nhà hoặc thiên nhiên xung quanh."
+      },
+      {
+        "qDe": "Mit wem werden sie sprechen?",
+        "ansDe": "Sie werden mit dem Moderator sprechen.",
+        "qVi": "Họ nói chuyện với ai?",
+        "ansVi": "Họ nói chuyện với người dẫn chương trình."
+      }
+    ]
+  },
+  {
+    "title": "Eine Einheit über den Plan einer Reise",
+    "titleVi": "Đơn vị nói về kế hoạch một chuyến đi",
+    "audioText": "Liebe Kolleginnen und Kollegen, herzlichen Dank, dass Sie sich heute Zeit genommen haben! Ich sage es gleich vorweg: Wie fanden wir denn die Planung unserer Reise? Ehrlich gesagt war ich anfangs skeptisch – so ein straffer Ablauf, dachte ich, das kann ja nur schiefgehen. Aber weit gefehlt! Am Ende sind wir alle rundum glücklich damit, wie das Ganze auf die Beine gestellt wurde; besser hätte man es kaum organisieren können, ein großes Lob an das Team. Und jetzt die Frage, die euch sicher am meisten interessiert: Wo kehren wir mittags eigentlich ein? Nicht etwa im Bus mit belegten Broten – keine Sorge – und auch nicht im Hotel. Nein, gegen halb eins setzen wir uns gemütlich in ein hübsches Lokal am Marktplatz und lassen uns dort in aller Ruhe bewirten. Das kleine Gasthaus soll eine ausgezeichnete regionale Küche haben. Also, bringt Appetit mit – und jetzt geht es los!",
+    "qs": [
+      {
+        "qDe": "Sie ... mit der Organisation der Reise.",
+        "ansDe": "Sie sind zufrieden mit der Organisation der Reise.",
+        "qVi": "Họ ... với việc tổ chức chuyến đi.",
+        "ansVi": "Họ hài lòng với việc tổ chức chuyến đi."
+      },
+      {
+        "qDe": "Wo werden sie zu Mittag essen?",
+        "ansDe": "Sie werden in einem Restaurant essen.",
+        "qVi": "Họ ăn trưa ở đâu?",
+        "ansVi": "Họ sẽ ăn trong một nhà hàng."
+      }
+    ]
+  }
+]

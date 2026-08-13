@@ -1,0 +1,661 @@
+{
+  "empfinden": {
+    "praetStem": "empfand",
+    "partizip": "empfunden",
+    "aux": "haben",
+    "konjStem": "empfände"
+  },
+  "verbinden": {
+    "praetStem": "verband",
+    "partizip": "verbunden",
+    "aux": "haben",
+    "konjStem": "verbände"
+  },
+  "verschwinden": {
+    "praetStem": "verschwand",
+    "partizip": "verschwunden",
+    "aux": "sein",
+    "konjStem": "verschwände"
+  },
+  "gelingen": {
+    "praetStem": "gelang",
+    "partizip": "gelungen",
+    "aux": "sein",
+    "konjStem": "gelänge"
+  },
+  "klingen": {
+    "praetStem": "klang",
+    "partizip": "geklungen",
+    "aux": "haben",
+    "konjStem": "klänge"
+  },
+  "zwingen": {
+    "praetStem": "zwang",
+    "partizip": "gezwungen",
+    "aux": "haben",
+    "konjStem": "zwänge"
+  },
+  "dringen": {
+    "praetStem": "drang",
+    "partizip": "gedrungen",
+    "aux": "sein",
+    "konjStem": "dränge"
+  },
+  "gewinnen": {
+    "praetStem": "gewann",
+    "partizip": "gewonnen",
+    "aux": "haben",
+    "konjStem": "gewänne"
+  },
+  "zerrinnen": {
+    "praetStem": "zerrann",
+    "partizip": "zerronnen",
+    "aux": "sein",
+    "konjStem": "zerränne"
+  },
+  "sinken": {
+    "praetStem": "sank",
+    "partizip": "gesunken",
+    "aux": "sein",
+    "konjStem": "sänke"
+  },
+  "trinken": {
+    "praetStem": "trank",
+    "partizip": "getrunken",
+    "aux": "haben",
+    "konjStem": "tränke"
+  },
+  "stinken": {
+    "praetStem": "stank",
+    "partizip": "gestunken",
+    "aux": "haben",
+    "konjStem": "stänke"
+  },
+  "binden": {
+    "praetStem": "band",
+    "partizip": "gebunden",
+    "aux": "haben",
+    "konjStem": "bände"
+  },
+  "finden": {
+    "praetStem": "fand",
+    "partizip": "gefunden",
+    "aux": "haben",
+    "konjStem": "fände"
+  },
+  "winden": {
+    "praetStem": "wand",
+    "partizip": "gewunden",
+    "aux": "haben",
+    "konjStem": "wände"
+  },
+  "schwinden": {
+    "praetStem": "schwand",
+    "partizip": "geschwunden",
+    "aux": "sein",
+    "konjStem": "schwände"
+  },
+  "bieten": {
+    "praetStem": "bot",
+    "partizip": "geboten",
+    "aux": "haben",
+    "konjStem": "böte"
+  },
+  "verbieten": {
+    "praetStem": "verbot",
+    "partizip": "verboten",
+    "aux": "haben",
+    "konjStem": "verböte"
+  },
+  "gießen": {
+    "praetStem": "goss",
+    "partizip": "gegossen",
+    "aux": "haben",
+    "konjStem": "gösse"
+  },
+  "genießen": {
+    "praetStem": "genoss",
+    "partizip": "genossen",
+    "aux": "haben",
+    "konjStem": "genösse"
+  },
+  "schießen": {
+    "praetStem": "schoss",
+    "partizip": "geschossen",
+    "aux": "haben",
+    "konjStem": "schösse"
+  },
+  "schließen": {
+    "praetStem": "schloss",
+    "partizip": "geschlossen",
+    "aux": "haben",
+    "konjStem": "schlösse"
+  },
+  "fließen": {
+    "praetStem": "floss",
+    "partizip": "geflossen",
+    "aux": "sein",
+    "konjStem": "flösse"
+  },
+  "beschließen": {
+    "praetStem": "beschloss",
+    "partizip": "beschlossen",
+    "aux": "haben",
+    "konjStem": "beschlösse"
+  },
+  "riechen": {
+    "praetStem": "roch",
+    "partizip": "gerochen",
+    "aux": "haben",
+    "konjStem": "röche"
+  },
+  "kriechen": {
+    "praetStem": "kroch",
+    "partizip": "gekrochen",
+    "aux": "sein",
+    "konjStem": "kröche"
+  },
+  "betrügen": {
+    "praetStem": "betrog",
+    "partizip": "betrogen",
+    "aux": "haben",
+    "konjStem": "betröge"
+  },
+  "wiegen": {
+    "praetStem": "wog",
+    "partizip": "gewogen",
+    "aux": "haben",
+    "konjStem": "wöge"
+  },
+  "biegen": {
+    "praetStem": "bog",
+    "partizip": "gebogen",
+    "aux": "haben",
+    "konjStem": "böge"
+  },
+  "fliegen": {
+    "praetStem": "flog",
+    "partizip": "geflogen",
+    "aux": "sein",
+    "konjStem": "flöge"
+  },
+  "fliehen": {
+    "praetStem": "floh",
+    "partizip": "geflohen",
+    "aux": "sein",
+    "konjStem": "flöhe"
+  },
+  "ziehen": {
+    "praetStem": "zog",
+    "partizip": "gezogen",
+    "aux": "haben",
+    "konjStem": "zöge"
+  },
+  "beziehen": {
+    "praetStem": "bezog",
+    "partizip": "bezogen",
+    "aux": "haben",
+    "konjStem": "bezöge"
+  },
+  "erziehen": {
+    "praetStem": "erzog",
+    "partizip": "erzogen",
+    "aux": "haben",
+    "konjStem": "erzöge"
+  },
+  "wachsen": {
+    "duStem": "wächs",
+    "praetStem": "wuchs",
+    "partizip": "gewachsen",
+    "aux": "sein",
+    "konjStem": "wüchse"
+  },
+  "waschen": {
+    "duStem": "wäsch",
+    "praetStem": "wusch",
+    "partizip": "gewaschen",
+    "aux": "haben",
+    "konjStem": "wüsche"
+  },
+  "schaffen": {
+    "praetStem": "schuf",
+    "partizip": "geschaffen",
+    "aux": "haben",
+    "konjStem": "schüfe"
+  },
+  "graben": {
+    "duStem": "gräb",
+    "praetStem": "grub",
+    "partizip": "gegraben",
+    "aux": "haben",
+    "konjStem": "grübe"
+  },
+  "laden": {
+    "duStem": "läd",
+    "praetStem": "lud",
+    "partizip": "geladen",
+    "aux": "haben",
+    "konjStem": "lüde"
+  },
+  "einladen": {
+    "duStem": "läd",
+    "praetStem": "lud",
+    "partizip": "eingeladen",
+    "aux": "haben",
+    "konjStem": "lüde"
+  },
+  "schlagen": {
+    "duStem": "schläg",
+    "praetStem": "schlug",
+    "partizip": "geschlagen",
+    "aux": "haben",
+    "konjStem": "schlüge"
+  },
+  "tragen": {
+    "duStem": "träg",
+    "praetStem": "trug",
+    "partizip": "getragen",
+    "aux": "haben",
+    "konjStem": "trüge"
+  },
+  "beitragen": {
+    "duStem": "träg",
+    "praetStem": "trug",
+    "partizip": "beigetragen",
+    "aux": "haben",
+    "konjStem": "trüge"
+  },
+  "raten": {
+    "duStem": "rät",
+    "praetStem": "riet",
+    "partizip": "geraten",
+    "aux": "haben",
+    "konjStem": "riete"
+  },
+  "braten": {
+    "duStem": "brät",
+    "praetStem": "briet",
+    "partizip": "gebraten",
+    "aux": "haben",
+    "konjStem": "briete"
+  },
+  "halten": {
+    "duStem": "hält",
+    "praetStem": "hielt",
+    "partizip": "gehalten",
+    "aux": "haben",
+    "konjStem": "hielte"
+  },
+  "enthalten": {
+    "duStem": "enthält",
+    "praetStem": "enthielt",
+    "partizip": "enthalten",
+    "aux": "haben",
+    "konjStem": "enthielte"
+  },
+  "behalten": {
+    "duStem": "behält",
+    "praetStem": "behielt",
+    "partizip": "behalten",
+    "aux": "haben",
+    "konjStem": "behielte"
+  },
+  "fallen": {
+    "duStem": "fäll",
+    "praetStem": "fiel",
+    "partizip": "gefallen",
+    "aux": "sein",
+    "konjStem": "fiele"
+  },
+  "gefallen": {
+    "duStem": "gefäll",
+    "praetStem": "gefiel",
+    "partizip": "gefallen",
+    "aux": "haben",
+    "konjStem": "gefiele"
+  },
+  "auffallen": {
+    "duStem": "fäll",
+    "praetStem": "fiel",
+    "partizip": "aufgefallen",
+    "aux": "sein",
+    "konjStem": "fiele"
+  },
+  "fangen": {
+    "duStem": "fäng",
+    "praetStem": "fing",
+    "partizip": "gefangen",
+    "aux": "haben",
+    "konjStem": "finge"
+  },
+  "empfangen": {
+    "duStem": "empfäng",
+    "praetStem": "empfing",
+    "partizip": "empfangen",
+    "aux": "haben",
+    "konjStem": "empfinge"
+  },
+  "hängen": {
+    "praetStem": "hing",
+    "partizip": "gehangen",
+    "aux": "haben",
+    "konjStem": "hinge"
+  },
+  "blasen": {
+    "duStem": "bläs",
+    "praetStem": "blies",
+    "partizip": "geblasen",
+    "aux": "haben",
+    "konjStem": "bliese"
+  },
+  "lassen": {
+    "duStem": "läss",
+    "praetStem": "ließ",
+    "partizip": "gelassen",
+    "aux": "haben",
+    "konjStem": "ließe"
+  },
+  "verlassen": {
+    "duStem": "verläss",
+    "praetStem": "verließ",
+    "partizip": "verlassen",
+    "aux": "haben",
+    "konjStem": "verließe"
+  },
+  "messen": {
+    "duStem": "miss",
+    "praetStem": "maß",
+    "partizip": "gemessen",
+    "aux": "haben",
+    "konjStem": "mäße"
+  },
+  "vergessen": {
+    "duStem": "vergiss",
+    "praetStem": "vergaß",
+    "partizip": "vergessen",
+    "aux": "haben",
+    "konjStem": "vergäße"
+  },
+  "fressen": {
+    "duStem": "friss",
+    "praetStem": "fraß",
+    "partizip": "gefressen",
+    "aux": "haben",
+    "konjStem": "fräße"
+  },
+  "treten": {
+    "duStem": "tritt",
+    "praetStem": "trat",
+    "partizip": "getreten",
+    "aux": "sein",
+    "konjStem": "träte"
+  },
+  "bitten": {
+    "praetStem": "bat",
+    "partizip": "gebeten",
+    "aux": "haben",
+    "konjStem": "bäte"
+  },
+  "sitzen": {
+    "praetStem": "saß",
+    "partizip": "gesessen",
+    "aux": "haben",
+    "konjStem": "säße"
+  },
+  "besitzen": {
+    "praetStem": "besaß",
+    "partizip": "besessen",
+    "aux": "haben",
+    "konjStem": "besäße"
+  },
+  "leiden": {
+    "praetStem": "litt",
+    "partizip": "gelitten",
+    "aux": "haben",
+    "konjStem": "litte"
+  },
+  "schneiden": {
+    "praetStem": "schnitt",
+    "partizip": "geschnitten",
+    "aux": "haben",
+    "konjStem": "schnitte"
+  },
+  "streiten": {
+    "praetStem": "stritt",
+    "partizip": "gestritten",
+    "aux": "haben",
+    "konjStem": "stritte"
+  },
+  "reiten": {
+    "praetStem": "ritt",
+    "partizip": "geritten",
+    "aux": "sein",
+    "konjStem": "ritte"
+  },
+  "gleiten": {
+    "praetStem": "glitt",
+    "partizip": "geglitten",
+    "aux": "sein",
+    "konjStem": "glitte"
+  },
+  "pfeifen": {
+    "praetStem": "pfiff",
+    "partizip": "gepfiffen",
+    "aux": "haben",
+    "konjStem": "pfiffe"
+  },
+  "greifen": {
+    "praetStem": "griff",
+    "partizip": "gegriffen",
+    "aux": "haben",
+    "konjStem": "griffe"
+  },
+  "begreifen": {
+    "praetStem": "begriff",
+    "partizip": "begriffen",
+    "aux": "haben",
+    "konjStem": "begriffe"
+  },
+  "kneifen": {
+    "praetStem": "kniff",
+    "partizip": "gekniffen",
+    "aux": "haben",
+    "konjStem": "kniffe"
+  },
+  "reißen": {
+    "praetStem": "riss",
+    "partizip": "gerissen",
+    "aux": "haben",
+    "konjStem": "risse"
+  },
+  "beißen": {
+    "praetStem": "biss",
+    "partizip": "gebissen",
+    "aux": "haben",
+    "konjStem": "bisse"
+  },
+  "scheinen": {
+    "praetStem": "schien",
+    "partizip": "geschienen",
+    "aux": "haben",
+    "konjStem": "schiene"
+  },
+  "steigen": {
+    "praetStem": "stieg",
+    "partizip": "gestiegen",
+    "aux": "sein",
+    "konjStem": "stiege"
+  },
+  "schweigen": {
+    "praetStem": "schwieg",
+    "partizip": "geschwiegen",
+    "aux": "haben",
+    "konjStem": "schwiege"
+  },
+  "leihen": {
+    "praetStem": "lieh",
+    "partizip": "geliehen",
+    "aux": "haben",
+    "konjStem": "liehe"
+  },
+  "meiden": {
+    "praetStem": "mied",
+    "partizip": "gemieden",
+    "aux": "haben",
+    "konjStem": "miede"
+  },
+  "preisen": {
+    "praetStem": "pries",
+    "partizip": "gepriesen",
+    "aux": "haben",
+    "konjStem": "priese"
+  },
+  "weisen": {
+    "praetStem": "wies",
+    "partizip": "gewiesen",
+    "aux": "haben",
+    "konjStem": "wiese"
+  },
+  "beweisen": {
+    "praetStem": "bewies",
+    "partizip": "bewiesen",
+    "aux": "haben",
+    "konjStem": "bewiese"
+  },
+  "scheiden": {
+    "praetStem": "schied",
+    "partizip": "geschieden",
+    "aux": "sein",
+    "konjStem": "schiede"
+  },
+  "entscheiden": {
+    "praetStem": "entschied",
+    "partizip": "entschieden",
+    "aux": "haben",
+    "konjStem": "entschiede"
+  },
+  "schreien": {
+    "praetStem": "schrie",
+    "partizip": "geschrien",
+    "aux": "haben",
+    "konjStem": "schriee"
+  },
+  "schweben": {
+    "praetStem": "schwebte",
+    "partizip": "geschwebt",
+    "aux": "haben",
+    "konjStem": "schwebte"
+  },
+  "werfen": {
+    "duStem": "wirf",
+    "praetStem": "warf",
+    "partizip": "geworfen",
+    "aux": "haben",
+    "konjStem": "würfe"
+  },
+  "sterben": {
+    "duStem": "stirb",
+    "praetStem": "starb",
+    "partizip": "gestorben",
+    "aux": "sein",
+    "konjStem": "stürbe"
+  },
+  "verderben": {
+    "duStem": "verdirb",
+    "praetStem": "verdarb",
+    "partizip": "verdorben",
+    "aux": "haben",
+    "konjStem": "verdürbe"
+  },
+  "werben": {
+    "duStem": "wirb",
+    "praetStem": "warb",
+    "partizip": "geworben",
+    "aux": "haben",
+    "konjStem": "würbe"
+  },
+  "helfen": {
+    "duStem": "hilf",
+    "praetStem": "half",
+    "partizip": "geholfen",
+    "aux": "haben",
+    "konjStem": "hülfe"
+  },
+  "treffen": {
+    "duStem": "triff",
+    "praetStem": "traf",
+    "partizip": "getroffen",
+    "aux": "haben",
+    "konjStem": "träfe"
+  },
+  "stechen": {
+    "duStem": "stich",
+    "praetStem": "stach",
+    "partizip": "gestochen",
+    "aux": "haben",
+    "konjStem": "stäche"
+  },
+  "sprechen": {
+    "duStem": "sprich",
+    "praetStem": "sprach",
+    "partizip": "gesprochen",
+    "aux": "haben",
+    "konjStem": "spräche"
+  },
+  "brechen": {
+    "duStem": "brich",
+    "praetStem": "brach",
+    "partizip": "gebrochen",
+    "aux": "haben",
+    "konjStem": "bräche"
+  },
+  "unterbrechen": {
+    "duStem": "unterbrich",
+    "praetStem": "unterbrach",
+    "partizip": "unterbrochen",
+    "aux": "haben",
+    "konjStem": "unterbräche"
+  },
+  "erschrecken": {
+    "duStem": "erschrick",
+    "praetStem": "erschrak",
+    "partizip": "erschrocken",
+    "aux": "sein",
+    "konjStem": "erschräke"
+  },
+  "gelten": {
+    "duStem": "gilt",
+    "praetStem": "galt",
+    "partizip": "gegolten",
+    "aux": "haben",
+    "konjStem": "gälte"
+  },
+  "schmelzen": {
+    "duStem": "schmilz",
+    "praetStem": "schmolz",
+    "partizip": "geschmolzen",
+    "aux": "sein",
+    "konjStem": "schmölze"
+  },
+  "stehlen": {
+    "duStem": "stiehl",
+    "praetStem": "stahl",
+    "partizip": "gestohlen",
+    "aux": "haben",
+    "konjStem": "stähle"
+  },
+  "befehlen": {
+    "duStem": "befiehl",
+    "praetStem": "befahl",
+    "partizip": "befohlen",
+    "aux": "haben",
+    "konjStem": "beföhle"
+  },
+  "empfehlen": {
+    "duStem": "empfiehl",
+    "praetStem": "empfahl",
+    "partizip": "empfohlen",
+    "aux": "haben",
+    "konjStem": "empföhle"
+  }
+}

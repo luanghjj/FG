@@ -1,0 +1,1201 @@
+{
+  "level": "B2",
+  "examType": "Goethe-Zertifikat B2 & ÖSD B2",
+  "localesContent": {
+    "goetheb2.randomMeta": "Đề ngẫu nhiên · chấm /100",
+    "goetheb2.backToList": "Đề khác",
+    "goetheb2.correctOf": "câu đúng",
+    "goetheb2.submitTeil": "Nộp bài {teil}",
+    "goetheb2.continueTeil": "Tiếp tục {teil} →",
+    "goetheb2.selectPlaceholder": "— chọn —",
+    "goetheb2.noAnswer": "(không có đáp án trong file)",
+    "goetheb2.refLabel": "(tham khảo)",
+    "goetheb2.scoreConverted": "Quy đổi gần đúng theo % câu đúng (đậu khi ≥ 60/100).",
+    "goetheb2.passThreshold": "Đậu ✅ (≥60)",
+    "goetheb2.failThreshold": "Chưa đạt ❌ (<60)",
+    "goetheb2.teilScoreLabel": "Điểm từng Teil",
+    "goetheb2.answerKey": "Đáp án",
+    "goetheb2.lockUnlock": "Thanh toán để mở khóa",
+    "goetheb2.unlock": "Mở khóa",
+    "goetheb2.hoeren.title": "{examLabel} B2 — Hören",
+    "goetheb2.hoeren.audioNotSet": "Audio chính thức chưa được gắn. Dán link file nghe vào HOEREN_AUDIO_URL trong code. Tạm thời có thể nghe bằng nút đọc máy (TTS) ở mỗi Teil.",
+    "goetheb2.hoeren.audioLabel": "Audio gốc (toàn bộ Hören)",
+    "goetheb2.hoeren.t1Desc": "Teil 1 · 5 đoạn ngắn (nghe 1 lần)",
+    "goetheb2.hoeren.t2Desc": "Teil 2 · phỏng vấn radio (nghe 2 lần)",
+    "goetheb2.hoeren.t3Desc": "Teil 3 · hội thoại (nghe 1 lần)",
+    "goetheb2.hoeren.t4Desc": "Teil 4 · bài thuyết trình (nghe 2 lần)",
+    "goetheb2.hoeren.browserNoTTS": "Trình duyệt không hỗ trợ đọc giọng nói.",
+    "goetheb2.hoeren.listenOnce": "Nghe (1×)",
+    "goetheb2.hoeren.listenCount": "Nghe (lần {n}/2)",
+    "goetheb2.hoeren.listenDone": "đã đủ 2 lần",
+    "goetheb2.hoeren.stop": "Dừng",
+    "goetheb2.hoeren.transcript": "Lời thoại",
+    "goetheb2.hoeren.listenedOnce": "đã nghe — chỉ 1 lần như đề thật",
+    "goetheb2.hoeren.sampleLabel": "(mẫu)",
+    "goetheb2.hoeren.submitT1": "Nộp bài Hören Teil 1",
+    "goetheb2.hoeren.submitT2": "Nộp bài Hören Teil 2",
+    "goetheb2.hoeren.submitT3": "Nộp bài Hören Teil 3",
+    "goetheb2.hoeren.submitT4": "Nộp bài Hören Teil 4",
+    "goetheb2.hoeren.t1Instr": "Sie hören fünf Gespräche und Äußerungen. Sie hören jeden Text einmal. Zu jedem Text lösen Sie zwei Aufgaben.",
+    "goetheb2.hoeren.t1TtsTip": "Bấm \"Nghe\" để phát đoạn audio (chỉ 1 lần như đề thật). Hãy bật loa.",
+    "goetheb2.hoeren.t2Instr": "Sie hören im Radio ein Interview mit einer Persönlichkeit aus der Wissenschaft. Sie hören den Text zweimal. Wählen Sie bei jeder Aufgabe die richtige Lösung.",
+    "goetheb2.hoeren.t3Instr": "Sie hören im Radio ein Gespräch mit mehreren Personen über alternative Wohnformen. Sie hören den Text einmal. Wählen Sie bei jeder Aufgabe: Wer sagt das? (a = Moderator, b = Frau Gerster, c = Frau Lücke)",
+    "goetheb2.hoeren.t4Instr": "Sie hören einen kurzen Vortrag. Der Redner spricht über das Thema „Bessere Arbeitstechniken\". Sie hören den Text zweimal. Wählen Sie bei jeder Aufgabe die richtige Lösung.",
+    "goetheb2.hoerenBank.title": "Đề tủ Hören {examLabel} B2",
+    "goetheb2.hoerenBank.subtitle": "{count} đề · đáp án theo Teil · mở {free} đề đầu",
+    "goetheb2.hoerenBank.deTitle": "Đề tủ Hören {examLabel} B2",
+    "goetheb2.hoerenBank.deSubtitle": "Đề tủ Hören {examLabel} B2",
+    "goetheb2.hoerenBank.quiz": "Trắc nghiệm",
+    "goetheb2.hoerenBank.answer": "Đáp án",
+    "goetheb2.hoerenBank.viewAnswer": "Xem đáp án",
+    "goetheb2.hoerenBank.teilCount": "{n} Teil",
+    "goetheb2.hoerenBank.quizTip": "Chọn đáp án cho mỗi câu rồi bấm Nộp bài để chấm. Lưu ý: Bộ đề tủ này không có audio. Đáp án vẫn đúng nhưng vẫn có ít thay đổi nhỏ, nên phần nghe khi đi thi mọi người nếu nghe được bài thì nên làm theo các bạn, còn không nghe được thì các bạn hãy điền đáp án tủ này vào nhé.",
+    "goetheb2.hoerenBank.quizTipDisclaimer": "Đừng quá dựa vào đề tủ — hãy luyện nghe hằng ngày để qua Đức không bị \"điếc\" nhé các bạn",
+    "goetheb2.hoerenBank.goodLuck": "Chúc các bạn đạt điểm cao!",
+    "goetheb2.hoerenBank.submitCount": "Nộp bài ({count} câu)",
+    "goetheb2.hoerenBank.refTip": "Bảng đáp án + từ khóa để dò \"tủ\". (\"×\" = câu chưa rõ trong tài liệu; \"M\" = đáp án Beispiel/Markierung.)",
+    "goetheb2.hoerenBank.onlyKeywords": "Đề này tài liệu chỉ có từ khóa, không có đáp án dạng chọn (R/F · a/b/c). Hãy dùng \"Xem đáp án\".",
+    "goetheb2.hoerenBank.questionN": "Câu {n}",
+    "goetheb2.hoerenBank.unlockNote": "Mở khóa Đề tủ Hören (chọn gói 1 kỹ năng, combo hoặc full).",
+    "goetheb2.lesen.title": "{examLabel} B2 — Lesen",
+    "goetheb2.lesen.tippAussagen": "Aussagen — chọn người (a–d)",
+    "goetheb2.lesen.tippOptions": "Các câu (2 câu thừa)",
+    "goetheb2.lesen.tippMeinungen": "Các ý kiến (1 ý kiến thừa)",
+    "goetheb2.lesen.tippUeberschriften": "Überschriften — chọn ý kiến (a–h)",
+    "goetheb2.lesen.beispielUsed": "(Beispiel — đã dùng)",
+    "goetheb2.lesen.correctAnswer": "✓ Đúng",
+    "goetheb2.lesen.wrongAnswer": "✗ Đáp án: {ans}",
+    "goetheb2.lesen.submitT1": "Nộp bài Teil 1",
+    "goetheb2.lesen.submitT2": "Nộp bài Teil 2",
+    "goetheb2.lesen.submitT3": "Nộp bài Teil 3",
+    "goetheb2.lesen.submitT4": "Nộp bài Teil 4",
+    "goetheb2.lesen.submitT5": "Nộp bài Teil 5",
+    "goetheb2.lesen.continueT2": "Tiếp tục Teil 2 →",
+    "goetheb2.lesen.continueT3": "Tiếp tục Teil 3 →",
+    "goetheb2.lesen.continueT4": "Tiếp tục Teil 4 →",
+    "goetheb2.lesen.continueT5": "Tiếp tục Teil 5 →",
+    "goetheb2.lesen.correctCountTeil": "câu đúng (Teil {n})",
+    "goetheb2.lesenBank.title": "Đề tủ Lesen {examLabel} B2",
+    "goetheb2.lesenBank.subtitle": "Teil 1–5 · mở {free} đề đầu mỗi Teil",
+    "goetheb2.lesenBank.teilCount": "Teil {teil} · {count} đề",
+    "goetheb2.lesenBank.deSubtitle": "Đề tủ Lesen {examLabel} B2",
+    "goetheb2.lesenBank.quizTip": "Chọn đáp án cho mỗi câu rồi bấm Nộp bài để chấm điểm như đi thi. Lưu ý: Đáp án theo tài liệu, có thể có ít thay đổi nhỏ — khi đi thi nếu đọc hiểu được thì làm theo bài, còn không kịp thì điền đáp án tủ này.",
+    "goetheb2.lesenBank.quizTipDisclaimer": "Đừng quá dựa vào đề tủ — hãy luyện đọc hằng ngày để qua Đức không bị \"giao tiếp dễ dàng\" nhé các bạn",
+    "goetheb2.lesenBank.refTip": "Tài liệu tham khảo \"tủ\": câu hỏi + đáp án (đáp án sau dấu →).",
+    "goetheb2.lesenBank.quizCountLabel": "{count} câu · chọn đáp án + chấm điểm",
+    "goetheb2.lesenBank.refCountLabel": "{count} câu · tham khảo",
+    "goetheb2.lesenBank.passLabel": "Đậu ✅ (≥60)",
+    "goetheb2.lesenBank.failLabel": "Chưa đạt ❌ (<60)",
+    "goetheb2.lesenBank.passNote": "Quy đổi gần đúng theo % câu đúng (đậu khi ≥ 60/100).",
+    "goetheb2.lesenBank.correctCountLabel": "câu đúng",
+    "goetheb2.lesenBank.unlockNote": "Mở khóa Đề tủ Lesen (chọn gói 1 kỹ năng, combo hoặc full).",
+    "goetheb2.lesenBank.personLabel": "Person {p}",
+    "goetheb2.lesenBank.keyLabel": "Schlüssel",
+    "goetheb2.schreiben.title": "{examLabel} B2 — Schreiben",
+    "goetheb2.schreiben.subtitle": "2 Teile · ca. 75 Minuten",
+    "goetheb2.schreiben.yourEssay": "Bài viết của bạn",
+    "goetheb2.schreiben.wordCount": "{n} từ",
+    "goetheb2.schreiben.clear": "Xoá",
+    "goetheb2.schreiben.scoreBtn": "Chấm điểm bài viết",
+    "goetheb2.schreiben.scoreNote": "Điểm chấm tự động dựa trên độ dài, độ phủ ý, bố cục & ngữ pháp cơ bản. Hãy đối chiếu thêm với bài mẫu.",
+    "goetheb2.schreiben.tipBtn": "Gợi ý / Mẫu câu",
+    "goetheb2.schreiben.tipBtnHide": "Ẩn",
+    "goetheb2.schreiben.sampleBtn": "Xem bài mẫu",
+    "goetheb2.schreiben.sampleBtnHide": "Ẩn bài mẫu",
+    "goetheb2.schreiben.redemittelTitle": "Redemittel — mẫu câu hữu ích",
+    "goetheb2.schreiben.musterTitle": "Musterlösung — bài mẫu tham khảo",
+    "goetheb2.schreiben.musterNote": "Đây chỉ là một cách viết tham khảo — bài của bạn có thể khác.",
+    "goetheb2.schreiben.notesLabel": "Chuẩn bị lập luận (dafür / dagegen)",
+    "goetheb2.schreiben.notesPlaceholderT1": "Einleitung… eigene Meinung mit Argumenten… Schluss…",
+    "goetheb2.schreiben.notesPlaceholderT2": "Sehr geehrte/r …, … Mit freundlichen Grüßen",
+    "goetheb2.schreiben.writePlaceholder": "Viết bài của bạn ở đây… (Anrede/Einleitung, các điểm nội dung, Schluss/Gruß)",
+    "goetheb2.schreiben.scoring": "Đang chấm…",
+    "goetheb2.schreiben.scoreAI": "Chấm điểm AI",
+    "goetheb2.schreiben.minCharsRequired": "Hãy viết ít nhất một vài câu trước khi chấm.",
+    "goetheb2.schreibenBank.title": "Đề tủ Schreiben {examLabel} B2",
+    "goetheb2.schreibenBank.subtitle": "Teil 1 Forumsbeitrag · Teil 2 thư trang trọng — mở {free} đề đầu mỗi Teil",
+    "goetheb2.schreibenBank.backToList": "Danh sách đề",
+    "goetheb2.schreibenBank.deSubtitle": "Schreiben {examLabel} B2 · Teil {teil} {teilDesc} · bài mẫu",
+    "goetheb2.schreibenBank.t1Desc": "(Forumsbeitrag)",
+    "goetheb2.schreibenBank.t2Desc": "(thư trang trọng)",
+    "goetheb2.schreibenBank.musterTitle": "Bài mẫu (Musterlösung)",
+    "goetheb2.schreibenBank.listenBtn": "Nghe",
+    "goetheb2.schreibenBank.stopBtn": "Dừng",
+    "goetheb2.schreibenBank.yourEssayLabel": "Bài viết của bạn",
+    "goetheb2.schreibenBank.feedbackLabel": "Nhận xét",
+    "goetheb2.schreibenBank.correctedLabel": "Bản đã sửa",
+    "goetheb2.schreibenBank.scoreSuffix": "/100",
+    "goetheb2.schreibenBank.scoreNote": "Điểm tổng (theo 4 tiêu chí Schreiben B2) · Đậu ≥ 60",
+    "goetheb2.schreibenBank.scoreAI": "Chấm điểm AI",
+    "goetheb2.schreibenBank.scoring": "Đang chấm…",
+    "goetheb2.schreibenBank.errorScoring": "Lỗi khi chấm bài. Thử lại sau.",
+    "goetheb2.schreibenBank.minCharsRequired": "Hãy viết ít nhất một vài câu trước khi chấm.",
+    "goetheb2.schreibenBank.t1Label": "Teil 1 · Forumsbeitrag",
+    "goetheb2.schreibenBank.t2Label": "Teil 2 · Thư trang trọng",
+    "goetheb2.schreibenBank.deItemDesc": "Đề {no} · bài mẫu Teil {teil} · đọc + nghe phát âm",
+    "goetheb2.schreibenBank.unlockNote": "Mở khóa Đề tủ Schreiben B2 (chọn gói 1 kỹ năng, combo hoặc full).",
+    "goetheb2.sprechen.title": "{examLabel} B2 — Sprechen",
+    "goetheb2.sprechen.t1SubDesc": "Teil 1 · Vortrag halten (~4 phút)",
+    "goetheb2.sprechen.t2SubDesc": "Teil 2 · Diskussion führen (~5 phút)",
+    "goetheb2.sprechen.redemittelBtn": "Redemittel — mẫu câu hữu ích",
+    "goetheb2.sprechen.redemittelHide": "Ẩn mẫu câu",
+    "goetheb2.sprechen.notesLabel": "Notizen (chuẩn bị bài nói)",
+    "goetheb2.sprechen.notesPlaceholder": "Ghi ý cho Einleitung, Hauptteil (các điểm trên) và Schluss…",
+    "goetheb2.sprechen.afterNote": "Sau bài nói, bạn cùng sẽ đặt câu hỏi. Hãy luyện nói to ~4 phút theo dàn ý.",
+    "goetheb2.sprechen.discussNotesLabel": "Chuẩn bị lập luận (dafür / dagegen)",
+    "goetheb2.sprechen.discussNotesPlaceholder": "Ghi quan điểm, 2–3 lý lẽ và cách phản hồi ý kiến đối phương…",
+    "goetheb2.sprechenBank.title": "Đề tủ Sprechen {examLabel} B2",
+    "goetheb2.sprechenBank.subtitle": "Teil 1 Vortrag · Teil 2 Diskussion — mở {free} đề đầu mỗi Teil",
+    "goetheb2.sprechenBank.backToList": "Danh sách đề",
+    "goetheb2.sprechenBank.deSubtitle": "Sprechen {examLabel} B2 · Teil {teil} · bài mẫu",
+    "goetheb2.sprechenBank.listenBtn": "Nghe bài mẫu",
+    "goetheb2.sprechenBank.stopBtn": "Dừng",
+    "goetheb2.sprechenBank.t1Label": "Teil 1 · Vortrag",
+    "goetheb2.sprechenBank.t2Label": "Teil 2 · Diskussion",
+    "goetheb2.sprechenBank.deItemDesc": "Bài mẫu Teil {teil} · đọc + nghe phát âm",
+    "goetheb2.sprechenBank.unlockNote": "Mở khóa Đề tủ Sprechen B2 (chọn gói 1 kỹ năng, combo hoặc full).",
+    "goetheb2.loadingBank": "Đang tải ngân hàng đề...",
+    "goetheb2.loadFail": "Không tải được ngân hàng đề {skill} B2. Vui lòng thử lại sau.",
+    "goetheb2.randomExam": "Vào phòng thi",
+    "goetheb2.randomFreeLeft": "· còn {n} lượt free",
+    "goetheb2.countDe": "{count} đề",
+    "goetheb2.lesenBank.correctTeil": "Đúng {score}/{total} câu · Teil {teil}",
+    "goetheb2.lesenBank.subMeinung": "Ý kiến",
+    "goetheb2.lesenBank.subQuiz": "Trắc nghiệm",
+    "goetheb2.lesenBank.pdfTitle": "Đề Goethe B2 · Lesen",
+    "goetheb2.hoerenBank.pdfTitle": "Đề Goethe B2 · Hören",
+    "goetheb2.schreibenBank.deTitle": "Đề {no} — {title}",
+    "goetheb2.sprechenBank.pdfTitle": "Đề Goethe B2 · Sprechen"
+  },
+  "lesenBank": {
+    "readingData": {
+      "2": [
+        {
+          "title": "Bildungssystem und Begabung · nguyên văn PDF",
+          "texts": [
+            {
+              "p": "Text",
+              "text": "Kritische Stimmen zum deutschen Bildungssystem gibt es viele, meist kommen sie von Pädagogen, Didaktikern oder Praktikern. Neueren Datums ist die Kritik auch aus der Hirnforschung und Genetik. So bewertete der Kölner Hirnforscher Gerald Hüther zum Beispiel die These, dass in unserem Schul- und Hochschulsystem konsequent der Durchschnitt gefordert werde, nicht aber die individuelle Begabung. Hat ein Kind in einigen Fächern sehr gute Noten, in anderen aber schlechte, wird von ihm verlangt, für die letzteren intensiv zu lernen, damit es dort dann zumindest durchschnittlich wird. Durch dieses Verhalten seitens der Lehrer und Eltern bleiben die besonderen Fähigkeiten eines Kindes unerkannt. (10) Ein umgekehrtes Verhalten fände Hüther wesentlich sinnvoller. Nämlich anzustreben, dort perfekt zu werden, wo die individuellen Stärken liegen. Dafür müsste gerade die Freude am Entdecken oder das hartnäckige Suchen nach Antworten auf vielleicht noch nie gestellte Fragen in unserem Bildungssystem tatkräftig unterstützt werden. Es ist in der Psychologie bekannt, dass besonders Begabte ihre ganze Aufmerksamkeit auf ein bestimmtes Gebiet, bestimmte Probleme richten. (11) Diese gewisse Einseitigkeit ist Bedingung für außergewöhnliche Kreativität und originelles Denken. Außerdem braucht das Talent eine große Portion Entschlossenheit, denn es stößt in unserem System auf Widerstand. Thomas Mann ist ein bekanntes Beispiel für einen erfolgreichen Kreativen mit schlechten Noten. (12) Seine Lehrer und die eingebildeten Universitätsprofessoren mit ihrer beschränkten Fantasie nahm er nicht ernst. Bildungsreformen in Deutschland basieren oft auf Vergleichen: internationale Vergleichsstudien wie die PISA-Studien, Vergleiche zwischen den Bundesländern, Schulen und sogar Klassen. (13) Diese Gleichmacherei ist laut dem Wiener Professor für Medizinische Genetik, Markus Hengstschläger, eine gefährliche Entwicklung. Die Gesellschaft verliert dadurch einen signifikanten Anteil an Talenten. Aber gerade diese Individualisten braucht die Gesellschaft für eine erfolgreiche Zukunft. Hengstschläger meint, den Schülern und Studierenden würde das Denken in ungewöhnlichen Bahnen, das Streben nach Grenzüberschreitungen, abgewöhnt. (14) Schulen und Universitäten werden als Lern- und Studierfabriken bezeichnet, in denen der Zwang zur Anpassung vorherrscht. (15) Denn in den Personalabteilungen ist die Durchschnittsnote im Zeugnis nach wie vor eines der wichtigsten Kriterien bei der Beurteilung und möglichen Einstellung eines Bewerbers. Spezielle Begabungen werden in Ausbildung und Arbeitsmarkt somit nicht ausreichend berücksichtigt.",
+              "schl": ""
+            },
+            {
+              "p": "a",
+              "text": "Andere Wissenschaftler teilen seine Ansicht.",
+              "schl": ""
+            },
+            {
+              "p": "b",
+              "text": "So einen Wettkampf wird keiner gewinnen.",
+              "schl": ""
+            },
+            {
+              "p": "c",
+              "text": "Die Entwicklung spezieller Begabungen wird nämlich durch den Zwang, zu einer guten Durchschnittsnote zu kommen, behindert.",
+              "schl": ""
+            },
+            {
+              "p": "d",
+              "text": "Andere Themen dagegen interessieren sie überhaupt nicht.",
+              "schl": ""
+            },
+            {
+              "p": "e",
+              "text": "Ein Grund für diese Entwicklung sollen auch die Arbeitgeber sein.",
+              "schl": ""
+            },
+            {
+              "p": "f",
+              "text": "Der standardisierte Durchschnitt steht also im Vordergrund.",
+              "schl": ""
+            },
+            {
+              "p": "g",
+              "text": "Es ist falsch, gute Zeugnisse mit guten beruflichen Leistungen gleichzusetzen.",
+              "schl": ""
+            },
+            {
+              "p": "h",
+              "text": "Doch diese störten ihn überhaupt nicht.",
+              "schl": ""
+            }
+          ],
+          "qs": [
+            {
+              "stem": "Welche Ergänzung passt in Lücke 10?",
+              "ans": "c"
+            },
+            {
+              "stem": "Welche Ergänzung passt in Lücke 11?",
+              "ans": "d"
+            },
+            {
+              "stem": "Welche Ergänzung passt in Lücke 12?",
+              "ans": "h"
+            },
+            {
+              "stem": "Welche Ergänzung passt in Lücke 13?",
+              "ans": "f"
+            },
+            {
+              "stem": "Welche Ergänzung passt in Lücke 14?",
+              "ans": "g"
+            },
+            {
+              "stem": "Welche Ergänzung passt in Lücke 15?",
+              "ans": "e"
+            }
+          ],
+          "opts": [
+            "a",
+            "b",
+            "c",
+            "d",
+            "e",
+            "f",
+            "g",
+            "h"
+          ],
+          "interactive": true
+        },
+        {
+          "title": "Kennenlernen und Liebe über das Internet · phục dựng Modell 116B",
+          "texts": [
+            {
+              "p": "Text",
+              "text": "Früher war es eher ungewöhnlich, eine Partnerin oder einen Partner im Internet kennenzulernen. (10) gehören Online-Portale für viele Menschen zum Alltag. Die meisten Nutzerinnen und Nutzer (11), dort einen passenden Menschen zu finden. Eine aktuelle (12) zeigt sogar, dass ungefähr jede fünfte Beziehung online beginnt. Allerdings muss man in manchen Portalen persönliche Daten und Vorlieben preisgeben oder Kosten (13). Trotz aller Möglichkeiten bleiben Zweifel: Profile können unvollständig sein und ein langer Chat ersetzt kein persönliches Treffen. Deshalb möchten viele Singles (14) auch Menschen im wirklichen Leben begegnen. (15) bleibt der erste Kontakt im Netz für viele eine bequeme Möglichkeit.",
+              "schl": ""
+            },
+            {
+              "p": "a",
+              "text": "Heute",
+              "schl": ""
+            },
+            {
+              "p": "b",
+              "text": "hoffen",
+              "schl": ""
+            },
+            {
+              "p": "c",
+              "text": "Statistik",
+              "schl": ""
+            },
+            {
+              "p": "d",
+              "text": "übernehmen",
+              "schl": ""
+            },
+            {
+              "p": "e",
+              "text": "weiterhin",
+              "schl": ""
+            },
+            {
+              "p": "f",
+              "text": "Trotz Internet",
+              "schl": ""
+            },
+            {
+              "p": "g",
+              "text": "gestern",
+              "schl": ""
+            },
+            {
+              "p": "h",
+              "text": "vermeiden",
+              "schl": ""
+            }
+          ],
+          "qs": [
+            {
+              "stem": "Welche Ergänzung passt in Lücke 10?",
+              "ans": null
+            },
+            {
+              "stem": "Welche Ergänzung passt in Lücke 11?",
+              "ans": null
+            },
+            {
+              "stem": "Welche Ergänzung passt in Lücke 12?",
+              "ans": null
+            },
+            {
+              "stem": "Welche Ergänzung passt in Lücke 13?",
+              "ans": null
+            },
+            {
+              "stem": "Welche Ergänzung passt in Lücke 14?",
+              "ans": null
+            },
+            {
+              "stem": "Welche Ergänzung passt in Lücke 15?",
+              "ans": null
+            }
+          ],
+          "opts": [
+            "a",
+            "b",
+            "c",
+            "d",
+            "e",
+            "f",
+            "g",
+            "h"
+          ],
+          "interactive": false
+        }
+      ],
+      "3": [
+        {
+          "title": "Soziale Benachteiligung macht krank · nguyên văn PDF",
+          "texts": [
+            {
+              "p": "Text",
+              "text": "Statistiken zeigen, dass nahezu alle Krankheiten bei sozial Benachteiligten viel häufiger auftreten. Auch die Betroffenen selbst schätzen ihre Gesundheit viel schlechter ein als andere Teile der Bevölkerung. Diese Selbsteinschätzung bleibt ohne Folgen, da keine Möglichkeit gesehen wird, zu ändern. In der Häufigkeit der Arztbesuche gibt es keinen Unterschied zwischen sozial Benachteiligten und anderen. Auf den ersten Blick lässt sich die ungesunde Verhaltensweise der ärmeren Bevölkerungsschicht als Ursache vermuten. Sie rauchen mehr, bewegen sich weniger, haben häufig Übergewicht und trinken mehr Alkohol. Doch dieser erste Blick täuscht: Die tiefere Ursache liegt darin, dass Arme sich ausgeschlossen fühlen. Sie gehören nicht zur normalen Gesellschaft. Sie sind aus der Norm herausgefallen, schaffen es nicht, so wie die anderen zu sein. Das macht Stress. Selbst arme Berufstätige fühlen diesen Stress. Meist haben sie einen Arbeitsplatz am unteren Ende der Hierarchie. Es fehlt ihnen die Achtung, ihre Arbeit hat keinen Wert, sie müssen Anweisungen ausführen und dürfen nichts entscheiden. Das Gefühl, nicht dazuzugehören, hat weitere Konsequenzen. Man vermeidet Kontakte zu Menschen aus einer anderen sozialen Schicht, geht in keinen Verein und besucht keinen Elternabend in der Schule. Aufgrund dieser Isolation fehlt es an Unterstützung, wenn es Probleme mit Behörden oder den Kindern gibt. Um die Situation zu verbessern, muss bei den Kindern angefangen werden. Projekte informieren junge Eltern, fördern eine gesunde Entwicklung und helfen Kindern, ihre Fähigkeiten zu erkennen, Selbstbewusstsein aufzubauen und sich Ziele zu setzen. Ein Projekt in Worms betreut Kinder bei den Hausaufgaben, lädt Eltern zum gemeinsamen Kochen ein und setzt mehr auf praktisches Tun als auf Worte.",
+              "schl": ""
+            }
+          ],
+          "qs": [
+            {
+              "stem": "Der entscheidende Grund für häufige Erkrankungen sozial Benachteiligter ist … (ihre soziale Außenseiterrolle / ständiger Kontakt zu Ärzten / nur ihre falsche Lebensweise)",
+              "ans": "ihre soziale Außenseiterrolle"
+            },
+            {
+              "stem": "Sozial schwächer Gestellte haben Stress, weil … (sie am Arbeitsplatz unter Zeitdruck stehen / es an Anerkennung für ihre Tätigkeit fehlt / ihre Arbeit immer langweilig ist)",
+              "ans": "es an Anerkennung für ihre Tätigkeit fehlt"
+            },
+            {
+              "stem": "Das Gefühl, anders zu sein, hat zur Folge, dass … (auf Medikamente verzichtet wird / das soziale Leben eingeschränkt wird / das Interesse an den Kindern verloren geht)",
+              "ans": "das soziale Leben eingeschränkt wird"
+            },
+            {
+              "stem": "Von geförderten Kindern erwartet man, dass sie … (entdecken, was in ihnen steckt / von ihren Eltern verändert werden / schlechter ernährt werden)",
+              "ans": "entdecken, was in ihnen steckt"
+            },
+            {
+              "stem": "Im Wormser Projekt … (werden nur Kochkurse angeboten / werden Aktivitäten der Kinder gefördert / helfen nur Eltern bei Hausaufgaben)",
+              "ans": "werden Aktivitäten der Kinder gefördert"
+            },
+            {
+              "stem": "Beschränkte Gesundheitsangebote … (erreichen alle Gruppen gleich / bringen immer die gewünschten Ergebnisse / nutzen überwiegend sozial besser Gestellte)",
+              "ans": "nutzen überwiegend sozial besser Gestellte"
+            }
+          ],
+          "opts": [],
+          "interactive": true
+        },
+        {
+          "title": "Neue Gartenstädte · phục dựng Modell 116B",
+          "texts": [
+            {
+              "p": "Text",
+              "text": "In dicht bebauten Städten wächst der Wunsch nach kleinen Gärten. Parks und Grünflächen vermitteln Ruhe und verbessern das Stadtklima. Neue Gartenprojekte sollen deshalb auch mitten in Wohnvierteln entstehen. Auf Märkten werden hochwertige, regional erzeugte Produkte angeboten. Zugleich greifen viele Initiativen alte Techniken des Gärtnerns auf und verbinden sie mit modernen, nachhaltigen Methoden. In New York entstanden Gemeinschaftsgärten, weil Bewohnerinnen und Bewohner Grün in der Innenstadt vermissten. Dabei braucht ein Stadtgarten weder eine besonders große Fläche noch eine luxuriöse Ausstattung: Schon ein kleiner freier Ort reicht aus. Einige Projekte geben ihre Erfahrungen inzwischen an andere Stadtteile weiter.",
+              "schl": ""
+            }
+          ],
+          "qs": [
+            {
+              "stem": "Warum wünschen sich Menschen mehr Parks und Grünflächen? (Sie vermitteln Ruhe / Sie erhöhen die Mieten / Sie ersetzen alle Wohnungen)",
+              "ans": null
+            },
+            {
+              "stem": "Was wird auf lokalen Märkten angeboten? (hochwertige Produkte / nur importierte Blumen / alte Maschinen)",
+              "ans": null
+            },
+            {
+              "stem": "Wie reagieren Initiativen auf moderne Anforderungen? (Sie verbinden alte Techniken mit neuen Methoden / Sie geben das Gärtnern auf / Sie bauen nur große Parks)",
+              "ans": null
+            },
+            {
+              "stem": "Warum entstanden Gemeinschaftsgärten in New York? (Die Menschen vermissten Grün in der Innenstadt / Nur Reiche durften Gärten besitzen / Es gab zu viele große Parks)",
+              "ans": null
+            },
+            {
+              "stem": "Was braucht man mindestens für einen Stadtgarten? (eine kleine Fläche / eine besondere Dekoration / mehrere Hektar Land)",
+              "ans": null
+            },
+            {
+              "stem": "Was tun einige erfolgreiche Projekte? (Sie geben Erfahrungen weiter / Sie verkaufen ihre Flächen / Sie verbieten neue Mitglieder)",
+              "ans": null
+            }
+          ],
+          "opts": [],
+          "interactive": false
+        }
+      ],
+      "4": [
+        {
+          "title": "Berufliche Weiterbildung · nguyên văn PDF",
+          "texts": [
+            {
+              "p": "B",
+              "text": "Unser Leben wird immer mehr den Anforderungen des Arbeitslebens untergeordnet. Aber es gibt doch noch anderes: die Familie, die Freunde, die Hobbys. Dafür muss auch Zeit bleiben.",
+              "schl": ""
+            },
+            {
+              "p": "C",
+              "text": "Mit dem Beruf ist es wie mit den meisten anderen Dingen im Leben: Alles ändert sich und wir müssen uns auf diese Veränderungen einstellen, um den Anschluss nicht zu verpassen.",
+              "schl": ""
+            },
+            {
+              "p": "D",
+              "text": "Wer beruflich vorwärtskommen will, muss in seine Bildung investieren: um auf dem eigenen Fachgebiet aktuell zu sein und um für Führungsaufgaben Zusatzqualifikationen zu erwerben.",
+              "schl": ""
+            },
+            {
+              "p": "E",
+              "text": "Ich bin für Weiterbildung. Das Unternehmen profitiert, wenn seine Mitarbeiter höher qualifiziert sind. Daher sollte das auch vom Unternehmen organisiert und bezahlt werden.",
+              "schl": ""
+            },
+            {
+              "p": "F",
+              "text": "Da es heute keine sicheren Arbeitsplätze mehr gibt, ist Fortbildung absolut notwendig. Nur wer sich immer wieder auf den neuesten Stand bringt, hat die Chance, nach einer Kündigung schnell wieder einen Job zu bekommen.",
+              "schl": ""
+            },
+            {
+              "p": "G",
+              "text": "Ich glaube, dass vieles Reden über die Notwendigkeit von Fortbildung stark von Bildungsunternehmen gefördert wird. Sie verdienen an all den Kursen und Workshops.",
+              "schl": ""
+            },
+            {
+              "p": "H",
+              "text": "Es ist schade, dass man Weiterbildung immer nur mit dem Arbeitsleben verbindet. In einigen Bundesländern gibt es bezahlten Bildungsurlaub zu Themen der Allgemeinbildung wie Umweltschutz oder Literatur.",
+              "schl": ""
+            }
+          ],
+          "qs": [
+            {
+              "stem": "Weiterbildung ist wichtig für die Karriere.",
+              "ans": "D"
+            },
+            {
+              "stem": "Weiterbildung ist Aufgabe des Arbeitgebers.",
+              "ans": "E"
+            },
+            {
+              "stem": "Weiterbildung ist ein lohnendes Geschäft.",
+              "ans": "G"
+            },
+            {
+              "stem": "Qualifikation schützt vor Arbeitslosigkeit.",
+              "ans": "F"
+            },
+            {
+              "stem": "Weiterbildung ist mehr als berufliche Bildung.",
+              "ans": "H"
+            },
+            {
+              "stem": "Man muss sich dem gesellschaftlichen Wandel anpassen.",
+              "ans": "C"
+            }
+          ],
+          "opts": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H"
+          ],
+          "interactive": true
+        },
+        {
+          "title": "Reisen in der Gruppe oder allein · phục dựng Modell 116B",
+          "texts": [
+            {
+              "p": "A",
+              "text": "Ich liebe Überraschungen und plane ungern im Voraus. Wenn ich eine organisierte Reisegruppe sehe, halte ich lieber Abstand.",
+              "schl": ""
+            },
+            {
+              "p": "B",
+              "text": "Eine Reise individuell zu organisieren ist schwierig: Man muss Tickets buchen und Unterkünfte sichern. Mit einer Gruppe erspart man sich viel Arbeit.",
+              "schl": ""
+            },
+            {
+              "p": "C",
+              "text": "Wenn man allein reist, mischt man sich leichter unter die Einheimischen. In einer geschlossenen Gruppe passiert das oft nicht.",
+              "schl": ""
+            },
+            {
+              "p": "D",
+              "text": "Ob allein oder in der Gruppe ist für mich zweitrangig. Entscheidend sind das Ziel und der Ort der Reise.",
+              "schl": ""
+            },
+            {
+              "p": "E",
+              "text": "Für mich zählen die Kosten. In einer Gruppe kann ich Ausgaben teilen und dadurch mehr sparen.",
+              "schl": ""
+            },
+            {
+              "p": "F",
+              "text": "Auf Reisen lerne ich neue Menschen kennen und sammle Erfahrungen. Eine Gruppe kann dabei viele neue Kontakte ermöglichen.",
+              "schl": ""
+            },
+            {
+              "p": "G",
+              "text": "Früher interessierten sich für Abenteuerreisen fast nur Ältere. Heute hat sich die Kundengruppe verändert und auch viele Jüngere fragen danach.",
+              "schl": ""
+            }
+          ],
+          "qs": [
+            {
+              "stem": "Eine organisierte Reise lässt wenig Raum für Spontaneität.",
+              "ans": "A"
+            },
+            {
+              "stem": "Individuelles Reisen verlangt viel Organisation.",
+              "ans": "B"
+            },
+            {
+              "stem": "Alleinreisende kommen leichter mit Einheimischen in Kontakt.",
+              "ans": "C"
+            },
+            {
+              "stem": "Die Reiseform hängt vom Ziel ab.",
+              "ans": "D"
+            },
+            {
+              "stem": "Gruppenreisen können Kosten senken.",
+              "ans": "E"
+            },
+            {
+              "stem": "Reisen schaffen neue Erfahrungen und Kontakte.",
+              "ans": "F"
+            },
+            {
+              "stem": "Die Kundengruppe für Abenteuerreisen hat sich verändert.",
+              "ans": "G"
+            }
+          ],
+          "opts": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G"
+          ],
+          "interactive": true
+        }
+      ],
+      "5": [
+        {
+          "title": "Vereinsordnung · nguyên văn PDF",
+          "texts": [
+            {
+              "p": "A",
+              "text": "Zielsetzung des Vereins",
+              "schl": ""
+            },
+            {
+              "p": "B",
+              "text": "Entschädigung für Vereinstätigkeit",
+              "schl": ""
+            },
+            {
+              "p": "C",
+              "text": "Haftung des Vereins",
+              "schl": ""
+            },
+            {
+              "p": "D",
+              "text": "Pflichten der Mitglieder",
+              "schl": ""
+            },
+            {
+              "p": "E",
+              "text": "Pflichten der Mitglieder",
+              "schl": ""
+            },
+            {
+              "p": "F",
+              "text": "Schutz persönlicher Daten",
+              "schl": ""
+            },
+            {
+              "p": "G",
+              "text": "Beiträge und Sonderumlagen",
+              "schl": ""
+            },
+            {
+              "p": "H",
+              "text": "Ernennung von Ehrenmitgliedern",
+              "schl": ""
+            },
+            {
+              "p": "§ 28",
+              "text": "Zentraler Vereinszweck ist die Förderung des Sports, insbesondere des Breiten-, Wettkampf- und Gesundheitssports sowie der sportlichen Rehabilitation. Der Verein bietet Kindern, Jugendlichen und Erwachsenen unabhängig von Geschlecht, Identität, Herkunft, Glauben oder sozialer Stellung eine sportliche Heimat.",
+              "schl": ""
+            },
+            {
+              "p": "§ 29",
+              "text": "Vereinsämter werden grundsätzlich ehrenamtlich ausgeführt. Bei Bedarf können sie im Rahmen der haushaltsrechtlichen Möglichkeiten gegen Zahlung einer Aufwandsentschädigung ausgeübt werden. Entscheidungen darüber trifft der Vorstand.",
+              "schl": ""
+            },
+            {
+              "p": "§ 30",
+              "text": "Zur Erfüllung der Vereinsaufgaben werden unter Beachtung der gesetzlichen Bestimmungen personenbezogene Informationen der Mitglieder erhoben, verarbeitet, gespeichert und genutzt. Diese Daten werden nicht an Dritte weitergegeben und technisch vor unbefugtem Zugriff geschützt.",
+              "schl": ""
+            }
+          ],
+          "qs": [
+            {
+              "stem": "Welche Überschrift passt zu § 28?",
+              "ans": "A"
+            },
+            {
+              "stem": "Welche Überschrift passt zu § 29?",
+              "ans": "B"
+            },
+            {
+              "stem": "Welche Überschrift passt zu § 30?",
+              "ans": "F"
+            }
+          ],
+          "opts": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H"
+          ],
+          "interactive": true
+        },
+        {
+          "title": "Ferienhausordnung · phục dựng Modell 116B",
+          "texts": [
+            {
+              "p": "A",
+              "text": "Zahlungsmöglichkeiten",
+              "schl": ""
+            },
+            {
+              "p": "B",
+              "text": "Stornierung und Rücktritt",
+              "schl": ""
+            },
+            {
+              "p": "C",
+              "text": "Kaution und Schäden",
+              "schl": ""
+            },
+            {
+              "p": "D",
+              "text": "Anreisezeiten",
+              "schl": ""
+            },
+            {
+              "p": "E",
+              "text": "Haustiere",
+              "schl": ""
+            },
+            {
+              "p": "F",
+              "text": "Internetnutzung",
+              "schl": ""
+            },
+            {
+              "p": "§ 1",
+              "text": "Der Mietpreis ist vor der Anreise per Banküberweisung oder Kreditkarte zu bezahlen. Barzahlung bei der Schlüsselübergabe ist nur nach vorheriger Vereinbarung möglich.",
+              "schl": ""
+            },
+            {
+              "p": "§ 2",
+              "text": "Ein Rücktritt muss schriftlich erklärt werden. Bis 30 Tage vor Mietbeginn ist die Stornierung kostenfrei; danach wird abhängig vom Zeitpunkt eine Gebühr berechnet.",
+              "schl": ""
+            },
+            {
+              "p": "§ 3",
+              "text": "Vor der Schlüsselübergabe ist eine Kaution zu hinterlegen. Entstehen während des Aufenthalts Schäden, kann der entsprechende Betrag von der Kaution einbehalten werden.",
+              "schl": ""
+            }
+          ],
+          "qs": [
+            {
+              "stem": "Welche Überschrift passt zu § 1?",
+              "ans": "A"
+            },
+            {
+              "stem": "Welche Überschrift passt zu § 2?",
+              "ans": "B"
+            },
+            {
+              "stem": "Welche Überschrift passt zu § 3?",
+              "ans": "C"
+            }
+          ],
+          "opts": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F"
+          ],
+          "interactive": true
+        }
+      ]
+    },
+    "readingQuestions": {
+      "1": 17,
+      "2": 12,
+      "3": 12,
+      "4": 12,
+      "5": 12
+    }
+  },
+  "hoerenBank": {
+    "listeningData": {
+      "1": 10,
+      "2": 10,
+      "3": 12,
+      "4": 8
+    }
+  },
+  "schreibenBank": {
+    "writingPrompts": [
+      {
+        "de": "Kind",
+        "vi": "đứa trẻ"
+      },
+      {
+        "de": "Baby",
+        "vi": "em bé"
+      },
+      {
+        "de": "Mädchen",
+        "vi": "bé gái"
+      },
+      {
+        "de": "Haus",
+        "vi": "ngôi nhà"
+      },
+      {
+        "de": "Zimmer",
+        "vi": "căn phòng"
+      },
+      {
+        "de": "Bett",
+        "vi": "cái giường"
+      },
+      {
+        "de": "Fenster",
+        "vi": "cửa sổ"
+      },
+      {
+        "de": "Bad",
+        "vi": "phòng tắm"
+      },
+      {
+        "de": "Buch",
+        "vi": "quyển sách"
+      },
+      {
+        "de": "Heft",
+        "vi": "quyển vở"
+      },
+      {
+        "de": "Papier",
+        "vi": "giấy"
+      },
+      {
+        "de": "Handy",
+        "vi": "điện thoại"
+      },
+      {
+        "de": "Auto",
+        "vi": "ô tô"
+      },
+      {
+        "de": "Fahrrad",
+        "vi": "xe đạp"
+      },
+      {
+        "de": "Ticket",
+        "vi": "vé"
+      },
+      {
+        "de": "Geld",
+        "vi": "tiền"
+      },
+      {
+        "de": "Bild",
+        "vi": "bức tranh"
+      },
+      {
+        "de": "Foto",
+        "vi": "bức ảnh"
+      },
+      {
+        "de": "Wasser",
+        "vi": "nước"
+      },
+      {
+        "de": "Bier",
+        "vi": "bia"
+      },
+      {
+        "de": "Brot",
+        "vi": "bánh mì"
+      },
+      {
+        "de": "Ei",
+        "vi": "quả trứng"
+      },
+      {
+        "de": "Fleisch",
+        "vi": "thịt"
+      },
+      {
+        "de": "Obst",
+        "vi": "trái cây"
+      },
+      {
+        "de": "Gemüse",
+        "vi": "rau củ"
+      },
+      {
+        "de": "Frühstück",
+        "vi": "bữa sáng"
+      },
+      {
+        "de": "Mittagessen",
+        "vi": "bữa trưa"
+      },
+      {
+        "de": "Abendessen",
+        "vi": "bữa tối"
+      },
+      {
+        "de": "Restaurant",
+        "vi": "nhà hàng"
+      },
+      {
+        "de": "Hotel",
+        "vi": "khách sạn"
+      },
+      {
+        "de": "Krankenhaus",
+        "vi": "bệnh viện"
+      },
+      {
+        "de": "Büro",
+        "vi": "văn phòng"
+      },
+      {
+        "de": "Amt",
+        "vi": "cơ quan hành chính"
+      },
+      {
+        "de": "Formular",
+        "vi": "tờ khai"
+      },
+      {
+        "de": "Land",
+        "vi": "đất nước, vùng quê"
+      },
+      {
+        "de": "Dorf",
+        "vi": "làng"
+      },
+      {
+        "de": "Meer",
+        "vi": "biển"
+      },
+      {
+        "de": "Wetter",
+        "vi": "thời tiết"
+      },
+      {
+        "de": "Jahr",
+        "vi": "năm"
+      },
+      {
+        "de": "Wochenende",
+        "vi": "cuối tuần"
+      },
+      {
+        "de": "Auge",
+        "vi": "con mắt"
+      },
+      {
+        "de": "Ohr",
+        "vi": "cái tai"
+      },
+      {
+        "de": "Bein",
+        "vi": "cái chân"
+      },
+      {
+        "de": "Herz",
+        "vi": "trái tim"
+      },
+      {
+        "de": "Gesicht",
+        "vi": "khuôn mặt"
+      },
+      {
+        "de": "Problem",
+        "vi": "vấn đề"
+      },
+      {
+        "de": "Beispiel",
+        "vi": "ví dụ"
+      },
+      {
+        "de": "Wort",
+        "vi": "từ"
+      },
+      {
+        "de": "Thema",
+        "vi": "chủ đề"
+      },
+      {
+        "de": "Ergebnis",
+        "vi": "kết quả"
+      },
+      {
+        "de": "Leben",
+        "vi": "cuộc sống"
+      },
+      {
+        "de": "Spiel",
+        "vi": "trò chơi"
+      },
+      {
+        "de": "Messer",
+        "vi": "con dao"
+      },
+      {
+        "de": "Glas",
+        "vi": "cái ly"
+      }
+    ]
+  },
+  "sprechenBank": {
+    "speakingPrompts": [
+      {
+        "de": "Kind",
+        "vi": "đứa trẻ"
+      },
+      {
+        "de": "Baby",
+        "vi": "em bé"
+      },
+      {
+        "de": "Mädchen",
+        "vi": "bé gái"
+      },
+      {
+        "de": "Haus",
+        "vi": "ngôi nhà"
+      },
+      {
+        "de": "Zimmer",
+        "vi": "căn phòng"
+      },
+      {
+        "de": "Bett",
+        "vi": "cái giường"
+      },
+      {
+        "de": "Fenster",
+        "vi": "cửa sổ"
+      },
+      {
+        "de": "Bad",
+        "vi": "phòng tắm"
+      },
+      {
+        "de": "Buch",
+        "vi": "quyển sách"
+      },
+      {
+        "de": "Heft",
+        "vi": "quyển vở"
+      },
+      {
+        "de": "Papier",
+        "vi": "giấy"
+      },
+      {
+        "de": "Handy",
+        "vi": "điện thoại"
+      },
+      {
+        "de": "Auto",
+        "vi": "ô tô"
+      },
+      {
+        "de": "Fahrrad",
+        "vi": "xe đạp"
+      },
+      {
+        "de": "Ticket",
+        "vi": "vé"
+      },
+      {
+        "de": "Geld",
+        "vi": "tiền"
+      },
+      {
+        "de": "Bild",
+        "vi": "bức tranh"
+      },
+      {
+        "de": "Foto",
+        "vi": "bức ảnh"
+      },
+      {
+        "de": "Wasser",
+        "vi": "nước"
+      },
+      {
+        "de": "Bier",
+        "vi": "bia"
+      },
+      {
+        "de": "Brot",
+        "vi": "bánh mì"
+      },
+      {
+        "de": "Ei",
+        "vi": "quả trứng"
+      },
+      {
+        "de": "Fleisch",
+        "vi": "thịt"
+      },
+      {
+        "de": "Obst",
+        "vi": "trái cây"
+      },
+      {
+        "de": "Gemüse",
+        "vi": "rau củ"
+      },
+      {
+        "de": "Frühstück",
+        "vi": "bữa sáng"
+      },
+      {
+        "de": "Mittagessen",
+        "vi": "bữa trưa"
+      },
+      {
+        "de": "Abendessen",
+        "vi": "bữa tối"
+      },
+      {
+        "de": "Restaurant",
+        "vi": "nhà hàng"
+      },
+      {
+        "de": "Hotel",
+        "vi": "khách sạn"
+      },
+      {
+        "de": "Krankenhaus",
+        "vi": "bệnh viện"
+      },
+      {
+        "de": "Büro",
+        "vi": "văn phòng"
+      },
+      {
+        "de": "Amt",
+        "vi": "cơ quan hành chính"
+      },
+      {
+        "de": "Formular",
+        "vi": "tờ khai"
+      },
+      {
+        "de": "Land",
+        "vi": "đất nước, vùng quê"
+      },
+      {
+        "de": "Dorf",
+        "vi": "làng"
+      },
+      {
+        "de": "Meer",
+        "vi": "biển"
+      },
+      {
+        "de": "Wetter",
+        "vi": "thời tiết"
+      },
+      {
+        "de": "Jahr",
+        "vi": "năm"
+      },
+      {
+        "de": "Wochenende",
+        "vi": "cuối tuần"
+      },
+      {
+        "de": "Auge",
+        "vi": "con mắt"
+      },
+      {
+        "de": "Ohr",
+        "vi": "cái tai"
+      },
+      {
+        "de": "Bein",
+        "vi": "cái chân"
+      },
+      {
+        "de": "Herz",
+        "vi": "trái tim"
+      },
+      {
+        "de": "Gesicht",
+        "vi": "khuôn mặt"
+      },
+      {
+        "de": "Problem",
+        "vi": "vấn đề"
+      },
+      {
+        "de": "Beispiel",
+        "vi": "ví dụ"
+      },
+      {
+        "de": "Wort",
+        "vi": "từ"
+      },
+      {
+        "de": "Thema",
+        "vi": "chủ đề"
+      },
+      {
+        "de": "Ergebnis",
+        "vi": "kết quả"
+      },
+      {
+        "de": "Leben",
+        "vi": "cuộc sống"
+      },
+      {
+        "de": "Spiel",
+        "vi": "trò chơi"
+      },
+      {
+        "de": "Messer",
+        "vi": "con dao"
+      },
+      {
+        "de": "Glas",
+        "vi": "cái ly"
+      }
+    ]
+  }
+}

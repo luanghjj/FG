@@ -1,0 +1,32 @@
+{
+  "GoetheB1LesenBank": {
+    "__error": "Cannot use import statement outside a module"
+  },
+  "GoetheB1HoerenBank": {
+    "__error": "Cannot use import statement outside a module"
+  },
+  "GoetheB1HoerenSim": {
+    "__error": "Cannot use import statement outside a module"
+  },
+  "GoetheB1HoerenSim2": {
+    "__error": "Cannot use import statement outside a module"
+  },
+  "GoetheB1SchreibenBank": {
+    "__error": "Cannot use import statement outside a module"
+  },
+  "GoetheB1SchreibenSim": {
+    "__error": "Cannot use import statement outside a module"
+  },
+  "GoetheB1SprechenBank": {
+    "__error": "Cannot use import statement outside a module"
+  },
+  "GoetheB1SprechenSim": {
+    "__error": "Cannot use import statement outside a module"
+  },
+  "GoetheB1Sim": {
+    "__error": "Cannot use import statement outside a module"
+  },
+  "GoetheB1Sim2": {
+    "__error": "Cannot use import statement outside a module"
+  }
+}

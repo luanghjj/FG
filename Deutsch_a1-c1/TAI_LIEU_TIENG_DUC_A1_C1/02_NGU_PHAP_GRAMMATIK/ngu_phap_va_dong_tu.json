@@ -1,0 +1,2770 @@
+{
+  "dong_tu_bat_quy_tac": {
+    "backen": {
+      "duStem": "bäck",
+      "praetStem": "backte",
+      "partizip": "gebacken",
+      "aux": "haben",
+      "konjStem": "backte"
+    },
+    "befehlen": {
+      "duStem": "befiehl",
+      "praetStem": "befahl",
+      "partizip": "befohlen",
+      "aux": "haben",
+      "konjStem": "beföhle"
+    },
+    "beißen": {
+      "praetStem": "biss",
+      "partizip": "gebissen",
+      "aux": "haben",
+      "konjStem": "bisse"
+    },
+    "bergen": {
+      "duStem": "birg",
+      "praetStem": "barg",
+      "partizip": "geborgen",
+      "aux": "haben",
+      "konjStem": "bärge"
+    },
+    "betrügen": {
+      "praetStem": "betrog",
+      "partizip": "betrogen",
+      "aux": "haben",
+      "konjStem": "betröge"
+    },
+    "biegen": {
+      "praetStem": "bog",
+      "partizip": "gebogen",
+      "aux": "haben",
+      "konjStem": "böge"
+    },
+    "binden": {
+      "praetStem": "band",
+      "partizip": "gebunden",
+      "aux": "haben",
+      "konjStem": "bände"
+    },
+    "blasen": {
+      "duStem": "bläs",
+      "praetStem": "blies",
+      "partizip": "geblasen",
+      "aux": "haben",
+      "konjStem": "bliese"
+    },
+    "braten": {
+      "duStem": "brät",
+      "praetStem": "briet",
+      "partizip": "gebraten",
+      "aux": "haben",
+      "konjStem": "briete"
+    },
+    "brechen": {
+      "duStem": "brich",
+      "praetStem": "brach",
+      "partizip": "gebrochen",
+      "aux": "haben",
+      "konjStem": "bräche"
+    },
+    "dringen": {
+      "praetStem": "drang",
+      "partizip": "gedrungen",
+      "aux": "sein",
+      "konjStem": "dränge"
+    },
+    "empfangen": {
+      "duStem": "empfäng",
+      "praetStem": "empfing",
+      "partizip": "empfangen",
+      "aux": "haben",
+      "konjStem": "empfinge"
+    },
+    "erschrecken": {
+      "duStem": "erschrick",
+      "praetStem": "erschrak",
+      "partizip": "erschrocken",
+      "aux": "sein",
+      "konjStem": "erschräke"
+    },
+    "fechten": {
+      "duStem": "ficht",
+      "praetStem": "focht",
+      "partizip": "gefochten",
+      "aux": "haben",
+      "konjStem": "föchte"
+    },
+    "fliehen": {
+      "praetStem": "floh",
+      "partizip": "geflohen",
+      "aux": "sein",
+      "konjStem": "flöhe"
+    },
+    "fließen": {
+      "praetStem": "floss",
+      "partizip": "geflossen",
+      "aux": "sein",
+      "konjStem": "flösse"
+    },
+    "fressen": {
+      "duStem": "friss",
+      "praetStem": "fraß",
+      "partizip": "gefressen",
+      "aux": "haben",
+      "konjStem": "fräße"
+    },
+    "frieren": {
+      "praetStem": "fror",
+      "partizip": "gefroren",
+      "aux": "haben",
+      "konjStem": "fröre"
+    },
+    "gebären": {
+      "duStem": "gebier",
+      "praetStem": "gebar",
+      "partizip": "geboren",
+      "aux": "haben",
+      "konjStem": "gebäre"
+    },
+    "gedeihen": {
+      "praetStem": "gedieh",
+      "partizip": "gediehen",
+      "aux": "sein",
+      "konjStem": "gediehe"
+    },
+    "gelingen": {
+      "praetStem": "gelang",
+      "partizip": "gelungen",
+      "aux": "sein",
+      "konjStem": "gelänge"
+    },
+    "gelten": {
+      "duStem": "gilt",
+      "praetStem": "galt",
+      "partizip": "gegolten",
+      "aux": "haben",
+      "konjStem": "gälte"
+    },
+    "genießen": {
+      "praetStem": "genoss",
+      "partizip": "genossen",
+      "aux": "haben",
+      "konjStem": "genösse"
+    },
+    "geschehen": {
+      "duStem": "geschieh",
+      "praetStem": "geschah",
+      "partizip": "geschehen",
+      "aux": "sein",
+      "konjStem": "geschähe"
+    },
+    "gleichen": {
+      "praetStem": "glich",
+      "partizip": "geglichen",
+      "aux": "haben",
+      "konjStem": "gliche"
+    },
+    "gleiten": {
+      "praetStem": "glitt",
+      "partizip": "geglitten",
+      "aux": "sein",
+      "konjStem": "glitte"
+    },
+    "graben": {
+      "duStem": "gräb",
+      "praetStem": "grub",
+      "partizip": "gegraben",
+      "aux": "haben",
+      "konjStem": "grübe"
+    },
+    "hängen": {
+      "praetStem": "hing",
+      "partizip": "gehangen",
+      "aux": "haben",
+      "konjStem": "hinge"
+    },
+    "heben": {
+      "praetStem": "hob",
+      "partizip": "gehoben",
+      "aux": "haben",
+      "konjStem": "höbe"
+    },
+    "klingen": {
+      "praetStem": "klang",
+      "partizip": "geklungen",
+      "aux": "haben",
+      "konjStem": "klänge"
+    },
+    "kriechen": {
+      "praetStem": "kroch",
+      "partizip": "gekrochen",
+      "aux": "sein",
+      "konjStem": "kröche"
+    },
+    "laden": {
+      "duStem": "läd",
+      "praetStem": "lud",
+      "partizip": "geladen",
+      "aux": "haben",
+      "konjStem": "lüde"
+    },
+    "leiden": {
+      "praetStem": "litt",
+      "partizip": "gelitten",
+      "aux": "haben",
+      "konjStem": "litte"
+    },
+    "leihen": {
+      "praetStem": "lieh",
+      "partizip": "geliehen",
+      "aux": "haben",
+      "konjStem": "liehe"
+    },
+    "lügen": {
+      "praetStem": "log",
+      "partizip": "gelogen",
+      "aux": "haben",
+      "konjStem": "löge"
+    },
+    "meiden": {
+      "praetStem": "mied",
+      "partizip": "gemieden",
+      "aux": "haben",
+      "konjStem": "miede"
+    },
+    "messen": {
+      "duStem": "miss",
+      "praetStem": "maß",
+      "partizip": "gemessen",
+      "aux": "haben",
+      "konjStem": "mäße"
+    },
+    "misslingen": {
+      "praetStem": "misslang",
+      "partizip": "misslungen",
+      "aux": "sein",
+      "konjStem": "misslänge"
+    },
+    "pfeifen": {
+      "praetStem": "pfiff",
+      "partizip": "gepfiffen",
+      "aux": "haben",
+      "konjStem": "pfiffe"
+    },
+    "preisen": {
+      "praetStem": "pries",
+      "partizip": "gepriesen",
+      "aux": "haben",
+      "konjStem": "priese"
+    },
+    "quellen": {
+      "duStem": "quill",
+      "praetStem": "quoll",
+      "partizip": "gequollen",
+      "aux": "sein",
+      "konjStem": "quölle"
+    },
+    "reiben": {
+      "praetStem": "rieb",
+      "partizip": "gerieben",
+      "aux": "haben",
+      "konjStem": "riebe"
+    },
+    "reißen": {
+      "praetStem": "riss",
+      "partizip": "gerissen",
+      "aux": "haben",
+      "konjStem": "risse"
+    },
+    "riechen": {
+      "praetStem": "roch",
+      "partizip": "gerochen",
+      "aux": "haben",
+      "konjStem": "röche"
+    },
+    "ringen": {
+      "praetStem": "rang",
+      "partizip": "gerungen",
+      "aux": "haben",
+      "konjStem": "ränge"
+    },
+    "rinnen": {
+      "praetStem": "rann",
+      "partizip": "geronnen",
+      "aux": "sein",
+      "konjStem": "ränne"
+    },
+    "saufen": {
+      "duStem": "säuf",
+      "praetStem": "soff",
+      "partizip": "gesoffen",
+      "aux": "haben",
+      "konjStem": "söffe"
+    },
+    "saugen": {
+      "praetStem": "sog",
+      "partizip": "gesogen",
+      "aux": "haben",
+      "konjStem": "söge"
+    },
+    "schaffen": {
+      "praetStem": "schuf",
+      "partizip": "geschaffen",
+      "aux": "haben",
+      "konjStem": "schüfe"
+    },
+    "scheiden": {
+      "praetStem": "schied",
+      "partizip": "geschieden",
+      "aux": "sein",
+      "konjStem": "schiede"
+    },
+    "schelten": {
+      "duStem": "schilt",
+      "praetStem": "schalt",
+      "partizip": "gescholten",
+      "aux": "haben",
+      "konjStem": "schölte"
+    },
+    "scheren": {
+      "praetStem": "schor",
+      "partizip": "geschoren",
+      "aux": "haben",
+      "konjStem": "schöre"
+    },
+    "schieben": {
+      "praetStem": "schob",
+      "partizip": "geschoben",
+      "aux": "haben",
+      "konjStem": "schöbe"
+    },
+    "schießen": {
+      "praetStem": "schoss",
+      "partizip": "geschossen",
+      "aux": "haben",
+      "konjStem": "schösse"
+    },
+    "schleichen": {
+      "praetStem": "schlich",
+      "partizip": "geschlichen",
+      "aux": "sein",
+      "konjStem": "schliche"
+    },
+    "schleifen": {
+      "praetStem": "schliff",
+      "partizip": "geschliffen",
+      "aux": "haben",
+      "konjStem": "schliffe"
+    },
+    "schmelzen": {
+      "duStem": "schmilz",
+      "praetStem": "schmolz",
+      "partizip": "geschmolzen",
+      "aux": "sein",
+      "konjStem": "schmölze"
+    },
+    "schreiten": {
+      "praetStem": "schritt",
+      "partizip": "geschritten",
+      "aux": "sein",
+      "konjStem": "schritte"
+    },
+    "schweigen": {
+      "praetStem": "schwieg",
+      "partizip": "geschwiegen",
+      "aux": "haben",
+      "konjStem": "schwiege"
+    },
+    "schwellen": {
+      "duStem": "schwill",
+      "praetStem": "schwoll",
+      "partizip": "geschwollen",
+      "aux": "sein",
+      "konjStem": "schwölle"
+    },
+    "schwinden": {
+      "praetStem": "schwand",
+      "partizip": "geschwunden",
+      "aux": "sein",
+      "konjStem": "schwände"
+    },
+    "schwingen": {
+      "praetStem": "schwang",
+      "partizip": "geschwungen",
+      "aux": "haben",
+      "konjStem": "schwänge"
+    },
+    "schwören": {
+      "praetStem": "schwor",
+      "partizip": "geschworen",
+      "aux": "haben",
+      "konjStem": "schwüre"
+    },
+    "spinnen": {
+      "praetStem": "spann",
+      "partizip": "gesponnen",
+      "aux": "haben",
+      "konjStem": "spönne"
+    },
+    "stechen": {
+      "duStem": "stich",
+      "praetStem": "stach",
+      "partizip": "gestochen",
+      "aux": "haben",
+      "konjStem": "stäche"
+    },
+    "stehlen": {
+      "duStem": "stiehl",
+      "praetStem": "stahl",
+      "partizip": "gestohlen",
+      "aux": "haben",
+      "konjStem": "stähle"
+    },
+    "steigen": {
+      "praetStem": "stieg",
+      "partizip": "gestiegen",
+      "aux": "sein",
+      "konjStem": "stiege"
+    },
+    "stinken": {
+      "praetStem": "stank",
+      "partizip": "gestunken",
+      "aux": "haben",
+      "konjStem": "stänke"
+    },
+    "stoßen": {
+      "duStem": "stöß",
+      "praetStem": "stieß",
+      "partizip": "gestoßen",
+      "aux": "haben",
+      "konjStem": "stieße"
+    },
+    "streichen": {
+      "praetStem": "strich",
+      "partizip": "gestrichen",
+      "aux": "haben",
+      "konjStem": "striche"
+    },
+    "streiten": {
+      "praetStem": "stritt",
+      "partizip": "gestritten",
+      "aux": "haben",
+      "konjStem": "stritte"
+    },
+    "treiben": {
+      "praetStem": "trieb",
+      "partizip": "getrieben",
+      "aux": "haben",
+      "konjStem": "triebe"
+    },
+    "treten": {
+      "duStem": "tritt",
+      "praetStem": "trat",
+      "partizip": "getreten",
+      "aux": "sein",
+      "konjStem": "träte"
+    },
+    "trügen": {
+      "praetStem": "trog",
+      "partizip": "getrogen",
+      "aux": "haben",
+      "konjStem": "tröge"
+    },
+    "verderben": {
+      "duStem": "verdirb",
+      "praetStem": "verdarb",
+      "partizip": "verdorben",
+      "aux": "haben",
+      "konjStem": "verdürbe"
+    },
+    "verschwinden": {
+      "praetStem": "verschwand",
+      "partizip": "verschwunden",
+      "aux": "sein",
+      "konjStem": "verschwände"
+    },
+    "wachsen": {
+      "duStem": "wächs",
+      "praetStem": "wuchs",
+      "partizip": "gewachsen",
+      "aux": "sein",
+      "konjStem": "wüchse"
+    },
+    "waschen": {
+      "duStem": "wäsch",
+      "praetStem": "wusch",
+      "partizip": "gewaschen",
+      "aux": "haben",
+      "konjStem": "wüsche"
+    },
+    "weichen": {
+      "praetStem": "wich",
+      "partizip": "gewichen",
+      "aux": "sein",
+      "konjStem": "wiche"
+    },
+    "weisen": {
+      "praetStem": "wies",
+      "partizip": "gewiesen",
+      "aux": "haben",
+      "konjStem": "wiese"
+    },
+    "wenden": {
+      "praetStem": "wandte",
+      "partizip": "gewandt",
+      "aux": "haben",
+      "konjStem": "wendete"
+    },
+    "werben": {
+      "duStem": "wirb",
+      "praetStem": "warb",
+      "partizip": "geworben",
+      "aux": "haben",
+      "konjStem": "würbe"
+    },
+    "wiegen": {
+      "praetStem": "wog",
+      "partizip": "gewogen",
+      "aux": "haben",
+      "konjStem": "wöge"
+    },
+    "winden": {
+      "praetStem": "wand",
+      "partizip": "gewunden",
+      "aux": "haben",
+      "konjStem": "wände"
+    },
+    "wringen": {
+      "praetStem": "wrang",
+      "partizip": "gewrungen",
+      "aux": "haben",
+      "konjStem": "wränge"
+    },
+    "zwingen": {
+      "praetStem": "zwang",
+      "partizip": "gezwungen",
+      "aux": "haben",
+      "konjStem": "zwänge"
+    }
+  },
+  "nhom_bien_doi_dong_tu": {
+    "empfinden": {
+      "praetStem": "empfand",
+      "partizip": "empfunden",
+      "aux": "haben",
+      "konjStem": "empfände"
+    },
+    "verbinden": {
+      "praetStem": "verband",
+      "partizip": "verbunden",
+      "aux": "haben",
+      "konjStem": "verbände"
+    },
+    "verschwinden": {
+      "praetStem": "verschwand",
+      "partizip": "verschwunden",
+      "aux": "sein",
+      "konjStem": "verschwände"
+    },
+    "gelingen": {
+      "praetStem": "gelang",
+      "partizip": "gelungen",
+      "aux": "sein",
+      "konjStem": "gelänge"
+    },
+    "klingen": {
+      "praetStem": "klang",
+      "partizip": "geklungen",
+      "aux": "haben",
+      "konjStem": "klänge"
+    },
+    "zwingen": {
+      "praetStem": "zwang",
+      "partizip": "gezwungen",
+      "aux": "haben",
+      "konjStem": "zwänge"
+    },
+    "dringen": {
+      "praetStem": "drang",
+      "partizip": "gedrungen",
+      "aux": "sein",
+      "konjStem": "dränge"
+    },
+    "gewinnen": {
+      "praetStem": "gewann",
+      "partizip": "gewonnen",
+      "aux": "haben",
+      "konjStem": "gewänne"
+    },
+    "zerrinnen": {
+      "praetStem": "zerrann",
+      "partizip": "zerronnen",
+      "aux": "sein",
+      "konjStem": "zerränne"
+    },
+    "sinken": {
+      "praetStem": "sank",
+      "partizip": "gesunken",
+      "aux": "sein",
+      "konjStem": "sänke"
+    },
+    "trinken": {
+      "praetStem": "trank",
+      "partizip": "getrunken",
+      "aux": "haben",
+      "konjStem": "tränke"
+    },
+    "stinken": {
+      "praetStem": "stank",
+      "partizip": "gestunken",
+      "aux": "haben",
+      "konjStem": "stänke"
+    },
+    "binden": {
+      "praetStem": "band",
+      "partizip": "gebunden",
+      "aux": "haben",
+      "konjStem": "bände"
+    },
+    "finden": {
+      "praetStem": "fand",
+      "partizip": "gefunden",
+      "aux": "haben",
+      "konjStem": "fände"
+    },
+    "winden": {
+      "praetStem": "wand",
+      "partizip": "gewunden",
+      "aux": "haben",
+      "konjStem": "wände"
+    },
+    "schwinden": {
+      "praetStem": "schwand",
+      "partizip": "geschwunden",
+      "aux": "sein",
+      "konjStem": "schwände"
+    },
+    "bieten": {
+      "praetStem": "bot",
+      "partizip": "geboten",
+      "aux": "haben",
+      "konjStem": "böte"
+    },
+    "verbieten": {
+      "praetStem": "verbot",
+      "partizip": "verboten",
+      "aux": "haben",
+      "konjStem": "verböte"
+    },
+    "gießen": {
+      "praetStem": "goss",
+      "partizip": "gegossen",
+      "aux": "haben",
+      "konjStem": "gösse"
+    },
+    "genießen": {
+      "praetStem": "genoss",
+      "partizip": "genossen",
+      "aux": "haben",
+      "konjStem": "genösse"
+    },
+    "schießen": {
+      "praetStem": "schoss",
+      "partizip": "geschossen",
+      "aux": "haben",
+      "konjStem": "schösse"
+    },
+    "schließen": {
+      "praetStem": "schloss",
+      "partizip": "geschlossen",
+      "aux": "haben",
+      "konjStem": "schlösse"
+    },
+    "fließen": {
+      "praetStem": "floss",
+      "partizip": "geflossen",
+      "aux": "sein",
+      "konjStem": "flösse"
+    },
+    "beschließen": {
+      "praetStem": "beschloss",
+      "partizip": "beschlossen",
+      "aux": "haben",
+      "konjStem": "beschlösse"
+    },
+    "riechen": {
+      "praetStem": "roch",
+      "partizip": "gerochen",
+      "aux": "haben",
+      "konjStem": "röche"
+    },
+    "kriechen": {
+      "praetStem": "kroch",
+      "partizip": "gekrochen",
+      "aux": "sein",
+      "konjStem": "kröche"
+    },
+    "betrügen": {
+      "praetStem": "betrog",
+      "partizip": "betrogen",
+      "aux": "haben",
+      "konjStem": "betröge"
+    },
+    "wiegen": {
+      "praetStem": "wog",
+      "partizip": "gewogen",
+      "aux": "haben",
+      "konjStem": "wöge"
+    },
+    "biegen": {
+      "praetStem": "bog",
+      "partizip": "gebogen",
+      "aux": "haben",
+      "konjStem": "böge"
+    },
+    "fliegen": {
+      "praetStem": "flog",
+      "partizip": "geflogen",
+      "aux": "sein",
+      "konjStem": "flöge"
+    },
+    "fliehen": {
+      "praetStem": "floh",
+      "partizip": "geflohen",
+      "aux": "sein",
+      "konjStem": "flöhe"
+    },
+    "ziehen": {
+      "praetStem": "zog",
+      "partizip": "gezogen",
+      "aux": "haben",
+      "konjStem": "zöge"
+    },
+    "beziehen": {
+      "praetStem": "bezog",
+      "partizip": "bezogen",
+      "aux": "haben",
+      "konjStem": "bezöge"
+    },
+    "erziehen": {
+      "praetStem": "erzog",
+      "partizip": "erzogen",
+      "aux": "haben",
+      "konjStem": "erzöge"
+    },
+    "wachsen": {
+      "duStem": "wächs",
+      "praetStem": "wuchs",
+      "partizip": "gewachsen",
+      "aux": "sein",
+      "konjStem": "wüchse"
+    },
+    "waschen": {
+      "duStem": "wäsch",
+      "praetStem": "wusch",
+      "partizip": "gewaschen",
+      "aux": "haben",
+      "konjStem": "wüsche"
+    },
+    "schaffen": {
+      "praetStem": "schuf",
+      "partizip": "geschaffen",
+      "aux": "haben",
+      "konjStem": "schüfe"
+    },
+    "graben": {
+      "duStem": "gräb",
+      "praetStem": "grub",
+      "partizip": "gegraben",
+      "aux": "haben",
+      "konjStem": "grübe"
+    },
+    "laden": {
+      "duStem": "läd",
+      "praetStem": "lud",
+      "partizip": "geladen",
+      "aux": "haben",
+      "konjStem": "lüde"
+    },
+    "einladen": {
+      "duStem": "läd",
+      "praetStem": "lud",
+      "partizip": "eingeladen",
+      "aux": "haben",
+      "konjStem": "lüde"
+    },
+    "schlagen": {
+      "duStem": "schläg",
+      "praetStem": "schlug",
+      "partizip": "geschlagen",
+      "aux": "haben",
+      "konjStem": "schlüge"
+    },
+    "tragen": {
+      "duStem": "träg",
+      "praetStem": "trug",
+      "partizip": "getragen",
+      "aux": "haben",
+      "konjStem": "trüge"
+    },
+    "beitragen": {
+      "duStem": "träg",
+      "praetStem": "trug",
+      "partizip": "beigetragen",
+      "aux": "haben",
+      "konjStem": "trüge"
+    },
+    "raten": {
+      "duStem": "rät",
+      "praetStem": "riet",
+      "partizip": "geraten",
+      "aux": "haben",
+      "konjStem": "riete"
+    },
+    "braten": {
+      "duStem": "brät",
+      "praetStem": "briet",
+      "partizip": "gebraten",
+      "aux": "haben",
+      "konjStem": "briete"
+    },
+    "halten": {
+      "duStem": "hält",
+      "praetStem": "hielt",
+      "partizip": "gehalten",
+      "aux": "haben",
+      "konjStem": "hielte"
+    },
+    "enthalten": {
+      "duStem": "enthält",
+      "praetStem": "enthielt",
+      "partizip": "enthalten",
+      "aux": "haben",
+      "konjStem": "enthielte"
+    },
+    "behalten": {
+      "duStem": "behält",
+      "praetStem": "behielt",
+      "partizip": "behalten",
+      "aux": "haben",
+      "konjStem": "behielte"
+    },
+    "fallen": {
+      "duStem": "fäll",
+      "praetStem": "fiel",
+      "partizip": "gefallen",
+      "aux": "sein",
+      "konjStem": "fiele"
+    },
+    "gefallen": {
+      "duStem": "gefäll",
+      "praetStem": "gefiel",
+      "partizip": "gefallen",
+      "aux": "haben",
+      "konjStem": "gefiele"
+    },
+    "auffallen": {
+      "duStem": "fäll",
+      "praetStem": "fiel",
+      "partizip": "aufgefallen",
+      "aux": "sein",
+      "konjStem": "fiele"
+    },
+    "fangen": {
+      "duStem": "fäng",
+      "praetStem": "fing",
+      "partizip": "gefangen",
+      "aux": "haben",
+      "konjStem": "finge"
+    },
+    "empfangen": {
+      "duStem": "empfäng",
+      "praetStem": "empfing",
+      "partizip": "empfangen",
+      "aux": "haben",
+      "konjStem": "empfinge"
+    },
+    "hängen": {
+      "praetStem": "hing",
+      "partizip": "gehangen",
+      "aux": "haben",
+      "konjStem": "hinge"
+    },
+    "blasen": {
+      "duStem": "bläs",
+      "praetStem": "blies",
+      "partizip": "geblasen",
+      "aux": "haben",
+      "konjStem": "bliese"
+    },
+    "lassen": {
+      "duStem": "läss",
+      "praetStem": "ließ",
+      "partizip": "gelassen",
+      "aux": "haben",
+      "konjStem": "ließe"
+    },
+    "verlassen": {
+      "duStem": "verläss",
+      "praetStem": "verließ",
+      "partizip": "verlassen",
+      "aux": "haben",
+      "konjStem": "verließe"
+    },
+    "messen": {
+      "duStem": "miss",
+      "praetStem": "maß",
+      "partizip": "gemessen",
+      "aux": "haben",
+      "konjStem": "mäße"
+    },
+    "vergessen": {
+      "duStem": "vergiss",
+      "praetStem": "vergaß",
+      "partizip": "vergessen",
+      "aux": "haben",
+      "konjStem": "vergäße"
+    },
+    "fressen": {
+      "duStem": "friss",
+      "praetStem": "fraß",
+      "partizip": "gefressen",
+      "aux": "haben",
+      "konjStem": "fräße"
+    },
+    "treten": {
+      "duStem": "tritt",
+      "praetStem": "trat",
+      "partizip": "getreten",
+      "aux": "sein",
+      "konjStem": "träte"
+    },
+    "bitten": {
+      "praetStem": "bat",
+      "partizip": "gebeten",
+      "aux": "haben",
+      "konjStem": "bäte"
+    },
+    "sitzen": {
+      "praetStem": "saß",
+      "partizip": "gesessen",
+      "aux": "haben",
+      "konjStem": "säße"
+    },
+    "besitzen": {
+      "praetStem": "besaß",
+      "partizip": "besessen",
+      "aux": "haben",
+      "konjStem": "besäße"
+    },
+    "leiden": {
+      "praetStem": "litt",
+      "partizip": "gelitten",
+      "aux": "haben",
+      "konjStem": "litte"
+    },
+    "schneiden": {
+      "praetStem": "schnitt",
+      "partizip": "geschnitten",
+      "aux": "haben",
+      "konjStem": "schnitte"
+    },
+    "streiten": {
+      "praetStem": "stritt",
+      "partizip": "gestritten",
+      "aux": "haben",
+      "konjStem": "stritte"
+    },
+    "reiten": {
+      "praetStem": "ritt",
+      "partizip": "geritten",
+      "aux": "sein",
+      "konjStem": "ritte"
+    },
+    "gleiten": {
+      "praetStem": "glitt",
+      "partizip": "geglitten",
+      "aux": "sein",
+      "konjStem": "glitte"
+    },
+    "pfeifen": {
+      "praetStem": "pfiff",
+      "partizip": "gepfiffen",
+      "aux": "haben",
+      "konjStem": "pfiffe"
+    },
+    "greifen": {
+      "praetStem": "griff",
+      "partizip": "gegriffen",
+      "aux": "haben",
+      "konjStem": "griffe"
+    },
+    "begreifen": {
+      "praetStem": "begriff",
+      "partizip": "begriffen",
+      "aux": "haben",
+      "konjStem": "begriffe"
+    },
+    "kneifen": {
+      "praetStem": "kniff",
+      "partizip": "gekniffen",
+      "aux": "haben",
+      "konjStem": "kniffe"
+    },
+    "reißen": {
+      "praetStem": "riss",
+      "partizip": "gerissen",
+      "aux": "haben",
+      "konjStem": "risse"
+    },
+    "beißen": {
+      "praetStem": "biss",
+      "partizip": "gebissen",
+      "aux": "haben",
+      "konjStem": "bisse"
+    },
+    "scheinen": {
+      "praetStem": "schien",
+      "partizip": "geschienen",
+      "aux": "haben",
+      "konjStem": "schiene"
+    },
+    "steigen": {
+      "praetStem": "stieg",
+      "partizip": "gestiegen",
+      "aux": "sein",
+      "konjStem": "stiege"
+    },
+    "schweigen": {
+      "praetStem": "schwieg",
+      "partizip": "geschwiegen",
+      "aux": "haben",
+      "konjStem": "schwiege"
+    },
+    "leihen": {
+      "praetStem": "lieh",
+      "partizip": "geliehen",
+      "aux": "haben",
+      "konjStem": "liehe"
+    },
+    "meiden": {
+      "praetStem": "mied",
+      "partizip": "gemieden",
+      "aux": "haben",
+      "konjStem": "miede"
+    },
+    "preisen": {
+      "praetStem": "pries",
+      "partizip": "gepriesen",
+      "aux": "haben",
+      "konjStem": "priese"
+    },
+    "weisen": {
+      "praetStem": "wies",
+      "partizip": "gewiesen",
+      "aux": "haben",
+      "konjStem": "wiese"
+    },
+    "beweisen": {
+      "praetStem": "bewies",
+      "partizip": "bewiesen",
+      "aux": "haben",
+      "konjStem": "bewiese"
+    },
+    "scheiden": {
+      "praetStem": "schied",
+      "partizip": "geschieden",
+      "aux": "sein",
+      "konjStem": "schiede"
+    },
+    "entscheiden": {
+      "praetStem": "entschied",
+      "partizip": "entschieden",
+      "aux": "haben",
+      "konjStem": "entschiede"
+    },
+    "schreien": {
+      "praetStem": "schrie",
+      "partizip": "geschrien",
+      "aux": "haben",
+      "konjStem": "schriee"
+    },
+    "schweben": {
+      "praetStem": "schwebte",
+      "partizip": "geschwebt",
+      "aux": "haben",
+      "konjStem": "schwebte"
+    },
+    "werfen": {
+      "duStem": "wirf",
+      "praetStem": "warf",
+      "partizip": "geworfen",
+      "aux": "haben",
+      "konjStem": "würfe"
+    },
+    "sterben": {
+      "duStem": "stirb",
+      "praetStem": "starb",
+      "partizip": "gestorben",
+      "aux": "sein",
+      "konjStem": "stürbe"
+    },
+    "verderben": {
+      "duStem": "verdirb",
+      "praetStem": "verdarb",
+      "partizip": "verdorben",
+      "aux": "haben",
+      "konjStem": "verdürbe"
+    },
+    "werben": {
+      "duStem": "wirb",
+      "praetStem": "warb",
+      "partizip": "geworben",
+      "aux": "haben",
+      "konjStem": "würbe"
+    },
+    "helfen": {
+      "duStem": "hilf",
+      "praetStem": "half",
+      "partizip": "geholfen",
+      "aux": "haben",
+      "konjStem": "hülfe"
+    },
+    "treffen": {
+      "duStem": "triff",
+      "praetStem": "traf",
+      "partizip": "getroffen",
+      "aux": "haben",
+      "konjStem": "träfe"
+    },
+    "stechen": {
+      "duStem": "stich",
+      "praetStem": "stach",
+      "partizip": "gestochen",
+      "aux": "haben",
+      "konjStem": "stäche"
+    },
+    "sprechen": {
+      "duStem": "sprich",
+      "praetStem": "sprach",
+      "partizip": "gesprochen",
+      "aux": "haben",
+      "konjStem": "spräche"
+    },
+    "brechen": {
+      "duStem": "brich",
+      "praetStem": "brach",
+      "partizip": "gebrochen",
+      "aux": "haben",
+      "konjStem": "bräche"
+    },
+    "unterbrechen": {
+      "duStem": "unterbrich",
+      "praetStem": "unterbrach",
+      "partizip": "unterbrochen",
+      "aux": "haben",
+      "konjStem": "unterbräche"
+    },
+    "erschrecken": {
+      "duStem": "erschrick",
+      "praetStem": "erschrak",
+      "partizip": "erschrocken",
+      "aux": "sein",
+      "konjStem": "erschräke"
+    },
+    "gelten": {
+      "duStem": "gilt",
+      "praetStem": "galt",
+      "partizip": "gegolten",
+      "aux": "haben",
+      "konjStem": "gälte"
+    },
+    "schmelzen": {
+      "duStem": "schmilz",
+      "praetStem": "schmolz",
+      "partizip": "geschmolzen",
+      "aux": "sein",
+      "konjStem": "schmölze"
+    },
+    "stehlen": {
+      "duStem": "stiehl",
+      "praetStem": "stahl",
+      "partizip": "gestohlen",
+      "aux": "haben",
+      "konjStem": "stähle"
+    },
+    "befehlen": {
+      "duStem": "befiehl",
+      "praetStem": "befahl",
+      "partizip": "befohlen",
+      "aux": "haben",
+      "konjStem": "beföhle"
+    },
+    "empfehlen": {
+      "duStem": "empfiehl",
+      "praetStem": "empfahl",
+      "partizip": "empfohlen",
+      "aux": "haben",
+      "konjStem": "empföhle"
+    }
+  },
+  "dong_tu_tru_cot": [
+    {
+      "key": "core",
+      "title": "Ba động từ trụ cột",
+      "note": "Học thuộc trước tiên — dùng để chia mọi thì khác",
+      "verbs": [
+        {
+          "de": "sein",
+          "vi": "thì, là, ở"
+        },
+        {
+          "de": "haben",
+          "vi": "có"
+        },
+        {
+          "de": "werden",
+          "vi": "trở thành, sẽ"
+        }
+      ]
+    },
+    {
+      "key": "modal",
+      "title": "Động từ khuyết thiếu",
+      "note": "Đứng với động từ nguyên thể ở cuối câu",
+      "verbs": [
+        {
+          "de": "können",
+          "vi": "có thể, biết"
+        },
+        {
+          "de": "müssen",
+          "vi": "phải"
+        },
+        {
+          "de": "wollen",
+          "vi": "muốn"
+        },
+        {
+          "de": "sollen",
+          "vi": "nên, được bảo"
+        },
+        {
+          "de": "dürfen",
+          "vi": "được phép"
+        },
+        {
+          "de": "mögen",
+          "vi": "thích"
+        }
+      ]
+    },
+    {
+      "key": "daily",
+      "title": "Dùng nhiều nhất hằng ngày",
+      "note": "Gặp liên tục trong A1–B1",
+      "verbs": [
+        {
+          "de": "gehen",
+          "vi": "đi (bộ)"
+        },
+        {
+          "de": "kommen",
+          "vi": "đến"
+        },
+        {
+          "de": "machen",
+          "vi": "làm"
+        },
+        {
+          "de": "sagen",
+          "vi": "nói"
+        },
+        {
+          "de": "geben",
+          "vi": "đưa, cho"
+        },
+        {
+          "de": "nehmen",
+          "vi": "lấy, cầm"
+        },
+        {
+          "de": "sehen",
+          "vi": "nhìn, thấy"
+        },
+        {
+          "de": "wissen",
+          "vi": "biết (kiến thức)"
+        },
+        {
+          "de": "finden",
+          "vi": "tìm thấy, thấy rằng"
+        },
+        {
+          "de": "denken",
+          "vi": "nghĩ"
+        },
+        {
+          "de": "sprechen",
+          "vi": "nói (ngôn ngữ)"
+        },
+        {
+          "de": "lesen",
+          "vi": "đọc"
+        },
+        {
+          "de": "schreiben",
+          "vi": "viết"
+        },
+        {
+          "de": "lernen",
+          "vi": "học"
+        },
+        {
+          "de": "arbeiten",
+          "vi": "làm việc"
+        },
+        {
+          "de": "leben",
+          "vi": "sống"
+        },
+        {
+          "de": "wohnen",
+          "vi": "cư trú, ở"
+        },
+        {
+          "de": "essen",
+          "vi": "ăn"
+        },
+        {
+          "de": "trinken",
+          "vi": "uống"
+        },
+        {
+          "de": "fahren",
+          "vi": "đi (xe), lái"
+        },
+        {
+          "de": "kaufen",
+          "vi": "mua"
+        },
+        {
+          "de": "brauchen",
+          "vi": "cần"
+        },
+        {
+          "de": "helfen",
+          "vi": "giúp"
+        },
+        {
+          "de": "spielen",
+          "vi": "chơi"
+        },
+        {
+          "de": "warten",
+          "vi": "đợi"
+        },
+        {
+          "de": "bleiben",
+          "vi": "ở lại"
+        },
+        {
+          "de": "stehen",
+          "vi": "đứng"
+        },
+        {
+          "de": "liegen",
+          "vi": "nằm"
+        },
+        {
+          "de": "laufen",
+          "vi": "chạy, đi bộ"
+        },
+        {
+          "de": "schlafen",
+          "vi": "ngủ"
+        },
+        {
+          "de": "fragen",
+          "vi": "hỏi"
+        },
+        {
+          "de": "antworten",
+          "vi": "trả lời"
+        },
+        {
+          "de": "heißen",
+          "vi": "tên là"
+        },
+        {
+          "de": "bringen",
+          "vi": "mang đến"
+        },
+        {
+          "de": "lassen",
+          "vi": "để, cho phép"
+        },
+        {
+          "de": "halten",
+          "vi": "giữ, dừng"
+        },
+        {
+          "de": "treffen",
+          "vi": "gặp"
+        },
+        {
+          "de": "verstehen",
+          "vi": "hiểu"
+        },
+        {
+          "de": "bekommen",
+          "vi": "nhận được"
+        },
+        {
+          "de": "beginnen",
+          "vi": "bắt đầu"
+        }
+      ]
+    },
+    {
+      "key": "separable",
+      "title": "Động từ tách hay gặp",
+      "note": "Tiền tố tách ra và nhảy xuống cuối câu",
+      "verbs": [
+        {
+          "de": "aufstehen",
+          "vi": "thức dậy"
+        },
+        {
+          "de": "anfangen",
+          "vi": "bắt đầu"
+        },
+        {
+          "de": "anrufen",
+          "vi": "gọi điện"
+        },
+        {
+          "de": "einkaufen",
+          "vi": "đi mua sắm"
+        },
+        {
+          "de": "ankommen",
+          "vi": "đến nơi"
+        },
+        {
+          "de": "abfahren",
+          "vi": "khởi hành"
+        },
+        {
+          "de": "einsteigen",
+          "vi": "lên xe"
+        },
+        {
+          "de": "aussteigen",
+          "vi": "xuống xe"
+        },
+        {
+          "de": "umsteigen",
+          "vi": "đổi tuyến"
+        },
+        {
+          "de": "mitkommen",
+          "vi": "đi cùng"
+        },
+        {
+          "de": "abholen",
+          "vi": "đón, lấy về"
+        },
+        {
+          "de": "aufräumen",
+          "vi": "dọn dẹp"
+        },
+        {
+          "de": "fernsehen",
+          "vi": "xem tivi"
+        },
+        {
+          "de": "anziehen",
+          "vi": "mặc vào"
+        },
+        {
+          "de": "ausziehen",
+          "vi": "cởi ra, dọn đi"
+        },
+        {
+          "de": "einschlafen",
+          "vi": "ngủ thiếp đi"
+        }
+      ]
+    }
+  ],
+  "danh_tu_der": [
+    {
+      "de": "Mann",
+      "vi": "người đàn ông"
+    },
+    {
+      "de": "Vater",
+      "vi": "bố"
+    },
+    {
+      "de": "Bruder",
+      "vi": "anh/em trai"
+    },
+    {
+      "de": "Sohn",
+      "vi": "con trai"
+    },
+    {
+      "de": "Freund",
+      "vi": "bạn (nam)"
+    },
+    {
+      "de": "Lehrer",
+      "vi": "thầy giáo"
+    },
+    {
+      "de": "Arzt",
+      "vi": "bác sĩ (nam)"
+    },
+    {
+      "de": "Kollege",
+      "vi": "đồng nghiệp"
+    },
+    {
+      "de": "Nachbar",
+      "vi": "hàng xóm"
+    },
+    {
+      "de": "Chef",
+      "vi": "sếp"
+    },
+    {
+      "de": "Name",
+      "vi": "tên"
+    },
+    {
+      "de": "Beruf",
+      "vi": "nghề nghiệp"
+    },
+    {
+      "de": "Tag",
+      "vi": "ngày"
+    },
+    {
+      "de": "Morgen",
+      "vi": "buổi sáng"
+    },
+    {
+      "de": "Abend",
+      "vi": "buổi tối"
+    },
+    {
+      "de": "Monat",
+      "vi": "tháng"
+    },
+    {
+      "de": "Sommer",
+      "vi": "mùa hè"
+    },
+    {
+      "de": "Winter",
+      "vi": "mùa đông"
+    },
+    {
+      "de": "Tisch",
+      "vi": "cái bàn"
+    },
+    {
+      "de": "Stuhl",
+      "vi": "cái ghế"
+    },
+    {
+      "de": "Schrank",
+      "vi": "tủ"
+    },
+    {
+      "de": "Schlüssel",
+      "vi": "chìa khóa"
+    },
+    {
+      "de": "Computer",
+      "vi": "máy tính"
+    },
+    {
+      "de": "Fernseher",
+      "vi": "tivi"
+    },
+    {
+      "de": "Kühlschrank",
+      "vi": "tủ lạnh"
+    },
+    {
+      "de": "Teller",
+      "vi": "cái đĩa"
+    },
+    {
+      "de": "Löffel",
+      "vi": "cái thìa"
+    },
+    {
+      "de": "Garten",
+      "vi": "khu vườn"
+    },
+    {
+      "de": "Baum",
+      "vi": "cái cây"
+    },
+    {
+      "de": "Weg",
+      "vi": "con đường, lối đi"
+    },
+    {
+      "de": "Platz",
+      "vi": "quảng trường, chỗ"
+    },
+    {
+      "de": "Bahnhof",
+      "vi": "nhà ga"
+    },
+    {
+      "de": "Flughafen",
+      "vi": "sân bay"
+    },
+    {
+      "de": "Zug",
+      "vi": "tàu hỏa"
+    },
+    {
+      "de": "Bus",
+      "vi": "xe buýt"
+    },
+    {
+      "de": "Wagen",
+      "vi": "xe hơi"
+    },
+    {
+      "de": "Brief",
+      "vi": "lá thư"
+    },
+    {
+      "de": "Termin",
+      "vi": "cuộc hẹn"
+    },
+    {
+      "de": "Urlaub",
+      "vi": "kỳ nghỉ"
+    },
+    {
+      "de": "Preis",
+      "vi": "giá, giải thưởng"
+    },
+    {
+      "de": "Kaffee",
+      "vi": "cà phê"
+    },
+    {
+      "de": "Tee",
+      "vi": "trà"
+    },
+    {
+      "de": "Saft",
+      "vi": "nước ép"
+    },
+    {
+      "de": "Wein",
+      "vi": "rượu vang"
+    },
+    {
+      "de": "Apfel",
+      "vi": "quả táo"
+    },
+    {
+      "de": "Käse",
+      "vi": "phô mai"
+    },
+    {
+      "de": "Salat",
+      "vi": "rau trộn"
+    },
+    {
+      "de": "Kuchen",
+      "vi": "bánh ngọt"
+    },
+    {
+      "de": "Kopf",
+      "vi": "cái đầu"
+    },
+    {
+      "de": "Arm",
+      "vi": "cánh tay"
+    },
+    {
+      "de": "Hund",
+      "vi": "con chó"
+    },
+    {
+      "de": "Fehler",
+      "vi": "lỗi sai"
+    },
+    {
+      "de": "Satz",
+      "vi": "câu"
+    },
+    {
+      "de": "Kurs",
+      "vi": "khóa học"
+    }
+  ],
+  "danh_tu_die": [
+    {
+      "de": "Frau",
+      "vi": "người phụ nữ"
+    },
+    {
+      "de": "Mutter",
+      "vi": "mẹ"
+    },
+    {
+      "de": "Schwester",
+      "vi": "chị/em gái"
+    },
+    {
+      "de": "Tochter",
+      "vi": "con gái"
+    },
+    {
+      "de": "Freundin",
+      "vi": "bạn (nữ)"
+    },
+    {
+      "de": "Lehrerin",
+      "vi": "cô giáo"
+    },
+    {
+      "de": "Ärztin",
+      "vi": "bác sĩ (nữ)"
+    },
+    {
+      "de": "Familie",
+      "vi": "gia đình"
+    },
+    {
+      "de": "Wohnung",
+      "vi": "căn hộ"
+    },
+    {
+      "de": "Küche",
+      "vi": "nhà bếp"
+    },
+    {
+      "de": "Tür",
+      "vi": "cửa"
+    },
+    {
+      "de": "Wand",
+      "vi": "bức tường"
+    },
+    {
+      "de": "Lampe",
+      "vi": "đèn"
+    },
+    {
+      "de": "Uhr",
+      "vi": "đồng hồ"
+    },
+    {
+      "de": "Tasche",
+      "vi": "túi xách"
+    },
+    {
+      "de": "Brille",
+      "vi": "kính mắt"
+    },
+    {
+      "de": "Zeitung",
+      "vi": "báo"
+    },
+    {
+      "de": "Karte",
+      "vi": "thẻ, bản đồ"
+    },
+    {
+      "de": "Adresse",
+      "vi": "địa chỉ"
+    },
+    {
+      "de": "Nummer",
+      "vi": "số"
+    },
+    {
+      "de": "Straße",
+      "vi": "đường phố"
+    },
+    {
+      "de": "Stadt",
+      "vi": "thành phố"
+    },
+    {
+      "de": "Schule",
+      "vi": "trường học"
+    },
+    {
+      "de": "Universität",
+      "vi": "trường đại học"
+    },
+    {
+      "de": "Arbeit",
+      "vi": "công việc"
+    },
+    {
+      "de": "Firma",
+      "vi": "công ty"
+    },
+    {
+      "de": "Prüfung",
+      "vi": "kỳ thi"
+    },
+    {
+      "de": "Frage",
+      "vi": "câu hỏi"
+    },
+    {
+      "de": "Antwort",
+      "vi": "câu trả lời"
+    },
+    {
+      "de": "Sprache",
+      "vi": "ngôn ngữ"
+    },
+    {
+      "de": "Woche",
+      "vi": "tuần"
+    },
+    {
+      "de": "Stunde",
+      "vi": "giờ, tiết học"
+    },
+    {
+      "de": "Minute",
+      "vi": "phút"
+    },
+    {
+      "de": "Zeit",
+      "vi": "thời gian"
+    },
+    {
+      "de": "Hand",
+      "vi": "bàn tay"
+    },
+    {
+      "de": "Nase",
+      "vi": "cái mũi"
+    },
+    {
+      "de": "Katze",
+      "vi": "con mèo"
+    },
+    {
+      "de": "Milch",
+      "vi": "sữa"
+    },
+    {
+      "de": "Butter",
+      "vi": "bơ"
+    },
+    {
+      "de": "Suppe",
+      "vi": "món súp"
+    },
+    {
+      "de": "Wurst",
+      "vi": "xúc xích"
+    },
+    {
+      "de": "Kartoffel",
+      "vi": "khoai tây"
+    },
+    {
+      "de": "Tomate",
+      "vi": "cà chua"
+    },
+    {
+      "de": "Banane",
+      "vi": "quả chuối"
+    },
+    {
+      "de": "Blume",
+      "vi": "bông hoa"
+    },
+    {
+      "de": "Reise",
+      "vi": "chuyến đi"
+    },
+    {
+      "de": "Bahn",
+      "vi": "tàu điện"
+    },
+    {
+      "de": "Post",
+      "vi": "bưu điện"
+    },
+    {
+      "de": "Bank",
+      "vi": "ngân hàng"
+    },
+    {
+      "de": "Apotheke",
+      "vi": "hiệu thuốc"
+    },
+    {
+      "de": "Rechnung",
+      "vi": "hóa đơn"
+    },
+    {
+      "de": "Musik",
+      "vi": "âm nhạc"
+    },
+    {
+      "de": "Gesundheit",
+      "vi": "sức khỏe"
+    },
+    {
+      "de": "Meinung",
+      "vi": "ý kiến"
+    }
+  ],
+  "danh_tu_das": [
+    {
+      "de": "Kind",
+      "vi": "đứa trẻ"
+    },
+    {
+      "de": "Baby",
+      "vi": "em bé"
+    },
+    {
+      "de": "Mädchen",
+      "vi": "bé gái"
+    },
+    {
+      "de": "Haus",
+      "vi": "ngôi nhà"
+    },
+    {
+      "de": "Zimmer",
+      "vi": "căn phòng"
+    },
+    {
+      "de": "Bett",
+      "vi": "cái giường"
+    },
+    {
+      "de": "Fenster",
+      "vi": "cửa sổ"
+    },
+    {
+      "de": "Bad",
+      "vi": "phòng tắm"
+    },
+    {
+      "de": "Buch",
+      "vi": "quyển sách"
+    },
+    {
+      "de": "Heft",
+      "vi": "quyển vở"
+    },
+    {
+      "de": "Papier",
+      "vi": "giấy"
+    },
+    {
+      "de": "Handy",
+      "vi": "điện thoại"
+    },
+    {
+      "de": "Auto",
+      "vi": "ô tô"
+    },
+    {
+      "de": "Fahrrad",
+      "vi": "xe đạp"
+    },
+    {
+      "de": "Ticket",
+      "vi": "vé"
+    },
+    {
+      "de": "Geld",
+      "vi": "tiền"
+    },
+    {
+      "de": "Bild",
+      "vi": "bức tranh"
+    },
+    {
+      "de": "Foto",
+      "vi": "bức ảnh"
+    },
+    {
+      "de": "Wasser",
+      "vi": "nước"
+    },
+    {
+      "de": "Bier",
+      "vi": "bia"
+    },
+    {
+      "de": "Brot",
+      "vi": "bánh mì"
+    },
+    {
+      "de": "Ei",
+      "vi": "quả trứng"
+    },
+    {
+      "de": "Fleisch",
+      "vi": "thịt"
+    },
+    {
+      "de": "Obst",
+      "vi": "trái cây"
+    },
+    {
+      "de": "Gemüse",
+      "vi": "rau củ"
+    },
+    {
+      "de": "Frühstück",
+      "vi": "bữa sáng"
+    },
+    {
+      "de": "Mittagessen",
+      "vi": "bữa trưa"
+    },
+    {
+      "de": "Abendessen",
+      "vi": "bữa tối"
+    },
+    {
+      "de": "Restaurant",
+      "vi": "nhà hàng"
+    },
+    {
+      "de": "Hotel",
+      "vi": "khách sạn"
+    },
+    {
+      "de": "Krankenhaus",
+      "vi": "bệnh viện"
+    },
+    {
+      "de": "Büro",
+      "vi": "văn phòng"
+    },
+    {
+      "de": "Amt",
+      "vi": "cơ quan hành chính"
+    },
+    {
+      "de": "Formular",
+      "vi": "tờ khai"
+    },
+    {
+      "de": "Land",
+      "vi": "đất nước, vùng quê"
+    },
+    {
+      "de": "Dorf",
+      "vi": "làng"
+    },
+    {
+      "de": "Meer",
+      "vi": "biển"
+    },
+    {
+      "de": "Wetter",
+      "vi": "thời tiết"
+    },
+    {
+      "de": "Jahr",
+      "vi": "năm"
+    },
+    {
+      "de": "Wochenende",
+      "vi": "cuối tuần"
+    },
+    {
+      "de": "Auge",
+      "vi": "con mắt"
+    },
+    {
+      "de": "Ohr",
+      "vi": "cái tai"
+    },
+    {
+      "de": "Bein",
+      "vi": "cái chân"
+    },
+    {
+      "de": "Herz",
+      "vi": "trái tim"
+    },
+    {
+      "de": "Gesicht",
+      "vi": "khuôn mặt"
+    },
+    {
+      "de": "Problem",
+      "vi": "vấn đề"
+    },
+    {
+      "de": "Beispiel",
+      "vi": "ví dụ"
+    },
+    {
+      "de": "Wort",
+      "vi": "từ"
+    },
+    {
+      "de": "Thema",
+      "vi": "chủ đề"
+    },
+    {
+      "de": "Ergebnis",
+      "vi": "kết quả"
+    },
+    {
+      "de": "Leben",
+      "vi": "cuộc s���ng"
+    },
+    {
+      "de": "Spiel",
+      "vi": "trò chơi"
+    },
+    {
+      "de": "Messer",
+      "vi": "con dao"
+    },
+    {
+      "de": "Glas",
+      "vi": "cái ly"
+    }
+  ],
+  "chia_duoi_tinh_tu": [
+    {
+      "de": "gut",
+      "vi": "tốt",
+      "der": "der gute Tag",
+      "die": "die gute Frau",
+      "das": "das gute Buch"
+    },
+    {
+      "de": "neu",
+      "vi": "mới",
+      "der": "der neue Tisch",
+      "die": "die neue Wohnung",
+      "das": "das neue Auto"
+    },
+    {
+      "de": "alt",
+      "vi": "cũ, già",
+      "der": "der alte Mann",
+      "die": "die alte Uhr",
+      "das": "das alte Haus"
+    },
+    {
+      "de": "groß",
+      "vi": "to, lớn",
+      "der": "der große Garten",
+      "die": "die große Stadt",
+      "das": "das große Zimmer"
+    },
+    {
+      "de": "klein",
+      "vi": "nhỏ",
+      "der": "der kleine Hund",
+      "die": "die kleine Tasche",
+      "das": "das kleine Kind"
+    },
+    {
+      "de": "schön",
+      "vi": "đẹp",
+      "der": "der schöne Tag",
+      "die": "die schöne Blume",
+      "das": "das schöne Bild"
+    },
+    {
+      "de": "teuer",
+      "vi": "đắt",
+      "der": "der teure Wein",
+      "die": "die teure Brille",
+      "das": "das teure Handy"
+    },
+    {
+      "de": "billig",
+      "vi": "rẻ",
+      "der": "der billige Kaffee",
+      "die": "die billige Karte",
+      "das": "das billige Ticket"
+    },
+    {
+      "de": "schnell",
+      "vi": "nhanh",
+      "der": "der schnelle Zug",
+      "die": "die schnelle Bahn",
+      "das": "das schnelle Auto"
+    },
+    {
+      "de": "langsam",
+      "vi": "chậm",
+      "der": "der langsame Bus",
+      "die": "die langsame Arbeit",
+      "das": "das langsame Spiel"
+    },
+    {
+      "de": "warm",
+      "vi": "ấm",
+      "der": "der warme Tee",
+      "die": "die warme Suppe",
+      "das": "das warme Wasser"
+    },
+    {
+      "de": "kalt",
+      "vi": "lạnh",
+      "der": "der kalte Winter",
+      "die": "die kalte Milch",
+      "das": "das kalte Bier"
+    },
+    {
+      "de": "lang",
+      "vi": "dài",
+      "der": "der lange Weg",
+      "die": "die lange Straße",
+      "das": "das lange Jahr"
+    },
+    {
+      "de": "kurz",
+      "vi": "ngắn",
+      "der": "der kurze Brief",
+      "die": "die kurze Frage",
+      "das": "das kurze Wort"
+    },
+    {
+      "de": "einfach",
+      "vi": "dễ, đơn giản",
+      "der": "der einfache Satz",
+      "die": "die einfache Prüfung",
+      "das": "das einfache Beispiel"
+    },
+    {
+      "de": "schwer",
+      "vi": "khó, nặng",
+      "der": "der schwere Kurs",
+      "die": "die schwere Arbeit",
+      "das": "das schwere Problem"
+    },
+    {
+      "de": "wichtig",
+      "vi": "quan trọng",
+      "der": "der wichtige Termin",
+      "die": "die wichtige Frage",
+      "das": "das wichtige Formular"
+    },
+    {
+      "de": "richtig",
+      "vi": "đúng",
+      "der": "der richtige Weg",
+      "die": "die richtige Antwort",
+      "das": "das richtige Wort"
+    },
+    {
+      "de": "falsch",
+      "vi": "sai",
+      "der": "der falsche Name",
+      "die": "die falsche Nummer",
+      "das": "das falsche Ticket"
+    },
+    {
+      "de": "freundlich",
+      "vi": "thân thiện",
+      "der": "der freundliche Chef",
+      "die": "die freundliche Ärztin",
+      "das": "das freundliche Kind"
+    },
+    {
+      "de": "müde",
+      "vi": "mệt",
+      "der": "der müde Vater",
+      "die": "die müde Mutter",
+      "das": "das müde Baby"
+    },
+    {
+      "de": "glücklich",
+      "vi": "hạnh phúc",
+      "der": "der glückliche Mann",
+      "die": "die glückliche Familie",
+      "das": "das glückliche Paar"
+    }
+  ],
+  "meo_nho_giong_danh_tu": [
+    {
+      "title": "Cách chắc ăn nhất: nhìn ĐUÔI của từ",
+      "note": "Thuộc bảng này là đoán đúng phần lớn danh từ",
+      "hue": "t2",
+      "blocks": [
+        {
+          "kind": "text",
+          "body": "Tiếng Đức không có quy tắc tuyệt đối, nhưng **đuôi từ** cho biết giống với độ chính xác rất cao. Học theo đuôi lợi hơn học vẹt từng từ nhiều."
+        },
+        {
+          "kind": "table",
+          "head": [
+            "Giống",
+            "Đuôi",
+            "Ví dụ"
+          ],
+          "rows": [
+            [
+              "der",
+              "**-er, -ling, -ismus, -ant, -ist, -eur, -or**",
+              "`der Lehrer`, `der Lehrling`, `der Tourismus`, `der Praktikant`"
+            ],
+            [
+              "die",
+              "**-ung, -heit, -keit, -schaft, -tion, -sion, -tät, -ik, -ur, -anz, -enz, -ie, -ei**",
+              "`die Wohnung`, `die Freiheit`, `die Möglichkeit`, `die Situation`"
+            ],
+            [
+              "die",
+              "**-in** (nghề nghiệp giống cái), **-e** (khoảng 90%)",
+              "`die Lehrerin`, `die Blume`, `die Schule`"
+            ],
+            [
+              "das",
+              "**-chen, -lein** (dạng nhỏ)",
+              "`das Mädchen`, `das Brötchen`, `das Fräulein`"
+            ],
+            [
+              "das",
+              "**-ment, -tum, -um, -ma, -nis**",
+              "`das Dokument`, `das Eigentum`, `das Museum`, `das Thema`"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Đoán theo nhóm nghĩa",
+      "note": "Khi đuôi từ không cho biết gì",
+      "hue": "t12",
+      "blocks": [
+        {
+          "kind": "list",
+          "items": [
+            "**der** — người/động vật giống đực (`der Mann`, `der Vater`), **ngày, tháng, mùa, hướng, thời tiết**: `der Montag`, `der Januar`, `der Sommer`, `der Norden`, `der Regen`.",
+            "**der** — hầu hết **đồ uống có cồn**: `der Wein`, `der Whisky` (ngoại lệ: `das Bier`).",
+            "**die** — người giống cái (`die Frau`, `die Mutter`), **số dùng như danh từ**: `die Eins`, `die Null`.",
+            "**die** — **hầu hết các loài hoa và cây**: `die Rose`, `die Tanne`.",
+            "**das** — **động từ dùng làm danh từ**: `das Essen` (việc ăn), `das Lernen`, `das Schwimmen`.",
+            "**das** — **màu sắc, chữ cái, tên ngôn ngữ, kim loại**: `das Blau`, `das A`, `das Deutsch`, `das Gold`.",
+            "**das** — **con non của người và vật**: `das Kind`, `das Baby`, `das Kalb`."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Từ ghép: lấy giống của từ CUỐI",
+      "note": "Quy tắc đúng gần như 100%",
+      "hue": "t15",
+      "blocks": [
+        {
+          "kind": "text",
+          "body": "Từ ghép tiếng Đức dài đến đâu cũng chỉ cần nhìn **từ đứng cuối cùng**, vì đó mới là từ chính."
+        },
+        {
+          "kind": "table",
+          "head": [
+            "Từ ghép",
+            "Từ cuối",
+            "Giống"
+          ],
+          "rows": [
+            [
+              "`die Haustür`",
+              "die Tür",
+              "die"
+            ],
+            [
+              "`der Hausschlüssel`",
+              "der Schlüssel",
+              "der"
+            ],
+            [
+              "`das Wohnzimmer`",
+              "das Zimmer",
+              "das"
+            ],
+            [
+              "`die Krankenversicherung`",
+              "die Versicherung",
+              "die"
+            ],
+            [
+              "`der Hauptbahnhof`",
+              "der Bahnhof",
+              "der"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Những bẫy hay sai nhất",
+      "note": "Người Việt hay nhầm đúng mấy từ này",
+      "hue": "t13",
+      "blocks": [
+        {
+          "kind": "list",
+          "items": [
+            "`das Mädchen` — là **con gái** nhưng vẫn là **das**, vì đuôi **-chen** luôn thắng nghĩa.",
+            "`die Butter`, `die Wurst`, `die Kartoffel` — đồ ăn nhưng là **die**; còn `das Brot`, `das Ei`, `das Fleisch` là **das**.",
+            "`das Wasser`, `das Bier` là **das**, nhưng `der Kaffee`, `der Tee`, `der Saft`, `der Wein` là **der**.",
+            "`die Zeit` (thời gian) là die, nhưng `der Tag`, `der Monat` là der và `das Jahr` là das — nhóm thời gian không đồng nhất, phải học riêng.",
+            "Một số từ **đổi nghĩa theo giống**: `der See` (cái hồ) ≠ `die See` (biển); `das Band` (dải băng) ≠ `der Band` (tập sách)."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Học sao cho nhớ lâu",
+      "note": "Cách dùng chính màn này cho hiệu quả",
+      "hue": "t20",
+      "blocks": [
+        {
+          "kind": "list",
+          "items": [
+            "**Không bao giờ học từ trần.** Học `die Tür` chứ đừng học `Tür` — nhớ sai mạo từ về sau sửa rất mệt.",
+            "Ở web này, mạo từ luôn có **màu riêng**: der xanh dương, die đỏ hồng, das xanh lá. Nhìn màu nhiều lần sẽ nhớ mà không cần cố.",
+            "Nút loa cũng đọc theo giống: **der giọng nam, die giọng nữ, das lúc nam lúc nữ** — nhớ bằng tai thay vì học thuộc.",
+            "Học theo **cụm**: `die Tür öffnen`, `den Schlüssel suchen` — nhớ cả câu thì mạo từ tự đi kèm.",
+            "Từ nào đã tra mà vẫn quên thì **lưu vào Từ vựng của tôi** rồi luyện lại bằng thẻ lật."
+          ]
+        }
+      ]
+    }
+  ],
+  "nguyen_tac_chia_dong_tu": [
+    {
+      "title": "Nguyên tắc gốc: thân từ + đuôi",
+      "note": "Hiểu cái này là chia được phần lớn động từ",
+      "hue": "t2",
+      "blocks": [
+        {
+          "kind": "text",
+          "body": "Động từ nguyên thể luôn kết thúc bằng **-en** (đôi khi **-n**). Bỏ đuôi đó đi thì còn **thân từ (Stamm)**, rồi gắn đuôi theo chủ ngữ: `lernen` → thân `lern` → `ich lerne`."
+        },
+        {
+          "kind": "table",
+          "head": [
+            "Chủ ngữ",
+            "Đuôi",
+            "lernen (học)",
+            "arbeiten (làm việc)"
+          ],
+          "rows": [
+            [
+              "ich",
+              "-e",
+              "lerne",
+              "arbeite"
+            ],
+            [
+              "du",
+              "-st",
+              "lernst",
+              "arbeit**e**st"
+            ],
+            [
+              "er/sie/es",
+              "-t",
+              "lernt",
+              "arbeit**e**t"
+            ],
+            [
+              "wir",
+              "-en",
+              "lernen",
+              "arbeiten"
+            ],
+            [
+              "ihr",
+              "-t",
+              "lernt",
+              "arbeit**e**t"
+            ],
+            [
+              "sie/Sie",
+              "-en",
+              "lernen",
+              "arbeiten"
+            ]
+          ]
+        },
+        {
+          "kind": "list",
+          "items": [
+            "Thân kết thúc bằng **-t, -d, -n, -m** khó đọc → thêm **-e** đệm: `arbeiten` → `du arbeitest`, `finden` → `er findet`.",
+            "Thân kết thúc bằng **-s, -ß, -z, -x** → ngôi `du` chỉ thêm **-t**: `heißen` → `du heißt`, `sitzen` → `du sitzt`."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Ba nhóm động từ",
+      "note": "Yếu · mạnh · hỗn hợp",
+      "hue": "t12",
+      "blocks": [
+        {
+          "kind": "table",
+          "head": [
+            "Nhóm",
+            "Dấu hiệu",
+            "Ví dụ"
+          ],
+          "rows": [
+            [
+              "Yếu (đều)",
+              "Không đổi nguyên âm; Präteritum thêm **-te**; Partizip II là `ge...t`",
+              "`lernen – lernte – gelernt`"
+            ],
+            [
+              "Mạnh (bất quy tắc)",
+              "**Đổi nguyên âm** ở thân; Partizip II là `ge...en`",
+              "`sprechen – sprach – gesprochen`"
+            ],
+            [
+              "Hỗn hợp",
+              "Vừa đổi nguyên âm vừa lấy đuôi **-te/-t**",
+              "`bringen – brachte – gebracht`"
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "body": "Động từ mạnh còn hay **đổi nguyên âm ở ngôi du và er/sie/es** thì hiện tại: `fahren` → `du fährst, er fährt`; `sprechen` → `du sprichst, er spricht`; `lesen` → `du liest, er liest`."
+        }
+      ]
+    },
+    {
+      "title": "Công thức từng thì",
+      "note": "8 thì web đang chia",
+      "hue": "t15",
+      "blocks": [
+        {
+          "kind": "table",
+          "head": [
+            "Thì",
+            "Công thức",
+            "Ví dụ (machen)"
+          ],
+          "rows": [
+            [
+              "Präsens",
+              "thân + đuôi",
+              "`ich mache`"
+            ],
+            [
+              "Präteritum",
+              "yếu: thân + **te** + đuôi · mạnh: thân đổi nguyên âm",
+              "`ich machte`"
+            ],
+            [
+              "Perfekt",
+              "**haben/sein** (chia) + **Partizip II** cuối câu",
+              "`ich habe gemacht`"
+            ],
+            [
+              "Plusquamperfekt",
+              "**hatte/war** + Partizip II",
+              "`ich hatte gemacht`"
+            ],
+            [
+              "Futur I",
+              "**werden** (chia) + **Infinitiv** cuối câu",
+              "`ich werde machen`"
+            ],
+            [
+              "Futur II",
+              "**werden** + Partizip II + **haben/sein**",
+              "`ich werde gemacht haben`"
+            ],
+            [
+              "Konjunktiv II",
+              "**würde** + Infinitiv (hoặc dạng riêng)",
+              "`ich würde machen`"
+            ],
+            [
+              "Imperativ",
+              "du: thân (+e) · ihr: thân + **t** · Sie: Infinitiv + **Sie**",
+              "`Mach!` · `Macht!` · `Machen Sie!`"
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "body": "Konjunktiv II của mấy động từ hay dùng có **dạng riêng**, đừng ghép với würde: `sein → wäre`, `haben → hätte`, `können → könnte`, `werden → würde`, `müssen → müsste`."
+        }
+      ]
+    },
+    {
+      "title": "Perfekt dùng haben hay sein?",
+      "note": "Chọn sai là mất điểm ngay",
+      "hue": "t20",
+      "blocks": [
+        {
+          "kind": "list",
+          "items": [
+            "Dùng **sein** khi động từ chỉ **sự di chuyển từ chỗ này sang chỗ khác**: `gehen, kommen, fahren, fliegen, laufen, reisen` → `ich bin gefahren`.",
+            "Dùng **sein** khi chỉ **sự thay đổi trạng thái**: `aufstehen, einschlafen, aufwachen, sterben, wachsen` → `ich bin aufgestanden`.",
+            "Ba từ đặc biệt luôn dùng **sein**: `sein, bleiben, werden` → `ich bin gewesen`, `ich bin geblieben`.",
+            "**Còn lại dùng haben**, kể cả động từ có tân ngữ: `ich habe das Buch gelesen`."
+          ]
+        },
+        {
+          "kind": "text",
+          "body": "Mẹo: câu hỏi được **wohin?** (đi đâu) thì thường là `sein`; câu hỏi được **was?** (cái gì) thì thường là `haben`."
+        }
+      ]
+    },
+    {
+      "title": "Partizip II — cách tạo",
+      "note": "Phần hay sai nhất của Perfekt",
+      "hue": "t8",
+      "blocks": [
+        {
+          "kind": "table",
+          "head": [
+            "Loại động từ",
+            "Công thức",
+            "Ví dụ"
+          ],
+          "rows": [
+            [
+              "Yếu",
+              "**ge** + thân + **t**",
+              "`machen → gemacht`"
+            ],
+            [
+              "Mạnh",
+              "**ge** + thân đổi + **en**",
+              "`sprechen → gesprochen`"
+            ],
+            [
+              "Tách được",
+              "tiền tố + **ge** + thân + t/en",
+              "`aufstehen → aufgestanden`"
+            ],
+            [
+              "Không tách được",
+              "**KHÔNG có ge**",
+              "`verstehen → verstanden`"
+            ],
+            [
+              "Kết thúc -ieren",
+              "**KHÔNG có ge**",
+              "`studieren → studiert`"
+            ]
+          ]
+        },
+        {
+          "kind": "text",
+          "body": "Tiền tố **không tách**: `be-, emp-, ent-, er-, ge-, miss-, ver-, zer-`. Nhớ câu: **be-ge-er-ver-zer-ent-emp-miss** — gặp mấy tiền tố này thì bỏ `ge-` đi."
+        }
+      ]
+    },
+    {
+      "title": "Động từ tách (trennbare Verben)",
+      "note": "Tiền tố nhảy xuống cuối câu",
+      "hue": "t18",
+      "blocks": [
+        {
+          "kind": "list",
+          "items": [
+            "Câu thường: tiền tố **rơi xuống cuối câu** → `Ich stehe um 6 Uhr **auf**.`",
+            "Perfekt: **-ge-** nằm **giữa** tiền tố và thân → `Ich bin früh **aufgestanden**.`",
+            "Có `zu`: `zu` nằm **giữa** → `Es ist Zeit **aufzustehen**.`",
+            "Đi với động từ khuyết thiếu thì **giữ nguyên khối** ở cuối câu → `Ich muss früh **aufstehen**.`"
+          ]
+        },
+        {
+          "kind": "text",
+          "body": "Tiền tố tách hay gặp: `ab-, an-, auf-, aus-, ein-, mit-, nach-, vor-, weg-, zu-, zurück-, um-, fern-, los-`."
+        }
+      ]
+    },
+    {
+      "title": "Động từ khuyết thiếu",
+      "note": "können, müssen, wollen, sollen, dürfen, mögen",
+      "hue": "t13",
+      "blocks": [
+        {
+          "kind": "list",
+          "items": [
+            "Thì hiện tại: **ich và er/sie/es giống hệt nhau** và **không có đuôi**: `ich kann – er kann`, `ich muss – er muss`.",
+            "Số ít đổi nguyên âm, số nhiều quay về như nguyên thể: `können → ich kann / wir können`.",
+            "Câu có động từ khuyết thiếu: động từ chính để **nguyên thể ở cuối câu** → `Ich **kann** heute nicht **kommen**.`",
+            "Quá khứ thường dùng **Präteritum** cho tự nhiên: `ich konnte, ich musste, ich wollte` (thay vì Perfekt)."
+          ]
+        },
+        {
+          "kind": "table",
+          "head": [
+            "Nguyên thể",
+            "ich / er",
+            "Präteritum",
+            "Nghĩa"
+          ],
+          "rows": [
+            [
+              "können",
+              "kann",
+              "konnte",
+              "có thể, biết"
+            ],
+            [
+              "müssen",
+              "muss",
+              "musste",
+              "phải"
+            ],
+            [
+              "wollen",
+              "will",
+              "wollte",
+              "muốn"
+            ],
+            [
+              "sollen",
+              "soll",
+              "sollte",
+              "nên"
+            ],
+            [
+              "dürfen",
+              "darf",
+              "durfte",
+              "được phép"
+            ],
+            [
+              "mögen",
+              "mag",
+              "mochte",
+              "thích"
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

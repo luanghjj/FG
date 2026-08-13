@@ -1,0 +1,292 @@
+{
+  "dtzLocales": {
+    "dtz.de": "Đề {n}",
+    "dtz.bai": "Bài {n}",
+    "dtz.teilBai": "Teil {teil} · Bài {n}",
+    "dtz.unlock": "Mở khóa",
+    "dtz.do": "Làm",
+    "dtz.enterExam": "Vào thi",
+    "dtz.enterSpeak": "Vào nói",
+    "dtz.countBai": "{count} bài",
+    "dtz.tryAgain": "Vui lòng thử lại.",
+    "dtz.loadingDe": "Đang tải dữ liệu đề...",
+    "dtz.notFoundDe": "Không tìm thấy đề này trong DB.",
+    "dtz.examShort": "Thi",
+    "dtz.practiceShort": "Luyện",
+    "dtz.unlockToDo": "Mở khóa để làm đề này",
+    "dtz.practiceEach": "Luyện riêng từng phần",
+    "dtz.practiceOwnTeil": "Luyện riêng · Teil {teil}",
+    "dtz.teilDe": "Teil {teil} · Đề {n}",
+    "dtz.fullSet": "📖 Bộ đề đầy đủ · {count} đề",
+    "dtz.fullSetDesc": "Chọn 1 đề để làm. Trong mỗi đề chuyển Teil 1–5 bằng tab.",
+    "dtz.lesen.cauRange": "Câu {a}–{b} · richtig/falsch + a/b/c",
+    "dtz.lesen.heroSub": "Đọc hiểu · làm bài online · tự chấm điểm",
+    "dtz.lesen.heroFullExams": "📄 {count} đề đầy đủ",
+    "dtz.lesen.min45": "⏱️ 45 phút",
+    "dtz.lesen.selfGrade": "Teil 1–5 · tự chấm",
+    "dtz.lesen.enterExamFull": "Vào thi — Bộ đề đầy đủ",
+    "dtz.lesen.enterExamFullDesc": "{count} đề · chuyển Teil 1–5 bằng tab · tự chấm + đáp án",
+    "dtz.lesen.notEnoughTeil": "Chưa đủ 5 Teil để gộp thành đề — hãy luyện từng phần bên dưới.",
+    "dtz.lesen.loading": "Đang tải dữ liệu DTZ Lesen...",
+    "dtz.lesen.loadErr": "Không tải được dữ liệu DTZ Lesen từ DB.",
+    "dtz.paywall.lesen": "Mở khóa toàn bộ DTZ B1 Đọc.",
+    "dtz.hoeren.noSpeech": "Trình duyệt không hỗ trợ đọc tiếng Đức (Web Speech). Hãy dùng Chrome/Edge mới nhất để nghe được phần audio.",
+    "dtz.hoeren.notFoundDe": "Không tìm thấy đề Hören trong DB.",
+    "dtz.hoeren.listDesc": "{count} đề · mỗi đề {perDe} · giọng Đức tự động",
+    "dtz.hoeren.perDe4": "4 câu",
+    "dtz.hoeren.perDe5": "5 câu",
+    "dtz.hoeren.fullExamHeader": "Đề thi đầy đủ · cả 4 Teil · 25 phút",
+    "dtz.hoeren.fullExamCard": "20 Aufgaben · thi thật",
+    "dtz.hoeren.loading": "Đang tải dữ liệu DTZ Hören...",
+    "dtz.hoeren.loadErr": "Không tải được dữ liệu DTZ Hören từ DB.",
+    "dtz.hoeren.note": "Lưu ý: đề gốc chỉ có câu hỏi + đáp án, không kèm file âm thanh. Lời thoại tiếng Đức được soạn khớp đáp án và đọc bằng giọng máy (cần Chrome/Edge để nghe).",
+    "dtz.paywall.hoeren": "Mở khóa toàn bộ DTZ B1 Nghe.",
+    "dtz.aiPractice": "Luyện nói / đối thoại với AI",
+    "dtz.showSample": "Xem bài mẫu",
+    "dtz.hideSample": "Ẩn bài mẫu",
+    "dtz.listenSample": "Nghe bài mẫu",
+    "dtz.showDialog": "Xem hội thoại mẫu",
+    "dtz.hideDialog": "Ẩn hội thoại mẫu",
+    "dtz.listenDialog": "Nghe hội thoại",
+    "dtz.needAgree": "Cần thống nhất",
+    "dtz.sprechen.tipPhoto": "Mẹo: nhìn ảnh, tự nói trước theo 3 gợi ý, rồi mở bài mẫu để so sánh và nghe phát âm.",
+    "dtz.sprechen.teil2List": "Teil 2 · {count} đề · Über ein Foto sprechen. Chọn 1 ảnh để luyện.",
+    "dtz.sprechen.teil3List": "Teil 3 · {count} đề · Gemeinsam etwas planen. Chọn 1 tình huống để luyện.",
+    "dtz.sprechen.loading": "Đang tải dữ liệu DTZ Sprechen...",
+    "dtz.sprechen.loadErr": "Không tải được dữ liệu DTZ Sprechen từ DB.",
+    "dtz.paywall.sprechen": "Mở khóa toàn bộ DTZ B1 Nói.",
+    "dtz.schreiben.totalScore": "Điểm tổng",
+    "dtz.schreiben.gradedByCriteria": "· chấm theo tiêu chí của kỳ thi",
+    "dtz.schreiben.feedback": "💬 Nhận xét",
+    "dtz.schreiben.corrected": "✅ Bản đã sửa",
+    "dtz.schreiben.yourWriting": "📝 Bài viết của bạn",
+    "dtz.schreiben.writeMin": "Hãy viết ít nhất vài câu trước khi chấm.",
+    "dtz.schreiben.grading": "Đang chấm…",
+    "dtz.schreiben.gradeWithAi": "Chấm bài bằng AI",
+    "dtz.schreiben.gradeErr": "Lỗi khi chấm bài. Thử lại sau.",
+    "dtz.schreiben.tipWrite": "Mẹo: đọc tình huống, viết đủ 4 điểm với Anrede + Grußformel, chấm AI, rồi mở bài mẫu để so sánh.",
+    "dtz.schreiben.tabAll": "Tất cả ({count})",
+    "dtz.schreiben.searchPlaceholder": "Tìm đề (Heizung, Kündigung, Einladung…)",
+    "dtz.schreiben.introCount": "Schreiben · {count} đề thư.",
+    "dtz.schreiben.allUnlocked": "Bạn đã mở khóa toàn bộ đề.",
+    "dtz.schreiben.freeCount": "{count} đề đầu được mở miễn phí.",
+    "dtz.schreiben.introWritePrefix": "Viết bài rồi nhấn",
+    "dtz.schreiben.introWriteSuffix": "để nhận điểm + sửa lỗi.",
+    "dtz.schreiben.lockedItem": "Mở khóa gói Schreiben để làm đề này",
+    "dtz.schreiben.noResult": "Không tìm thấy đề phù hợp.",
+    "dtz.schreiben.loading": "Đang tải dữ liệu DTZ Schreiben...",
+    "dtz.schreiben.loadErr": "Không tải được dữ liệu DTZ Schreiben từ DB.",
+    "dtz.paywall.schreiben": "Mở khóa toàn bộ DTZ B1 Schreiben, bài mẫu và chấm bài bằng AI.",
+    "dtz.shell.timeUp": "Hết giờ — bài đã được nộp tự động. ",
+    "dtz.shell.answerColored": "Đáp án đúng/sai được tô màu bên dưới.",
+    "dtz.shell.answeredOf": "Đã trả lời {answered}/{total} câu",
+    "dtz.shell.answered": "Đã trả lời",
+    "dtz.shell.confirmBody": "Bài nộp rồi sẽ được chấm và không sửa được nữa. Bạn đã trả lời {answered}/{total} câu."
+  },
+  "situationsAndDialogues": {
+    "Hausordnung — Nội quy nhà ở": [
+      {
+        "opts": [
+          "mit einem Erwachsenen im Lift zu fahren.",
+          "auf dem Spielplatz neben dem Haus zu spielen.",
+          "in der Tiefgarage zu spielen."
+        ],
+        "correct": 2
+      },
+      {
+        "opts": [
+          "etwas zu verändern.",
+          "eine eigene Waschmaschine zu benutzen.",
+          "kleine Fische oder Wellensittiche zu halten."
+        ],
+        "correct": 0
+      },
+      {
+        "opts": [
+          "mit dem Staubsauger putzen.",
+          "duschen und baden.",
+          "ein Instrument spielen."
+        ],
+        "correct": 1
+      },
+      {
+        "opts": [
+          "Fahrräder im Treppenhaus abstellen dürfen.",
+          "gemeinschaftliche Räume offen lassen dürfen.",
+          "die Waschküche sauber halten müssen."
+        ],
+        "correct": 2
+      }
+    ],
+    "Benutzungsordnung der Bibliothek — Quy định sử dụng thư viện": [
+      {
+        "opts": [
+          "zahlt man nur eine Pauschale von 10 Euro.",
+          "muss es wieder gekauft werden.",
+          "wird man sofort aus der Bibliothek ausgeschlossen."
+        ],
+        "correct": 1
+      },
+      {
+        "opts": [
+          "nur in der Bibliothek lesen.",
+          "für 28 Tage ausleihen.",
+          "zweimal um 14 Tage verlängern."
+        ],
+        "correct": 0
+      },
+      {
+        "opts": [
+          "wenn sie einen Studentenausweis vorlegen.",
+          "wenn sie schon über 18 Jahre alt sind.",
+          "wenn die Eltern ein Dokument ausfüllen."
+        ],
+        "correct": 2
+      },
+      {
+        "opts": [
+          "darf man Rucksäcke und Taschen tragen.",
+          "sind Gespräche verboten.",
+          "sind Speisen erlaubt."
+        ],
+        "correct": 1
+      }
+    ],
+    "Kreis – Viereck – Dreieck — Hình tròn, hình vuông, hình tam giác": [
+      {
+        "opts": [
+          "das passende Symbol mit der Hand verdecken.",
+          "die Rückseite der Fragekarte anschauen.",
+          "ihre Antwort laut vorlesen."
+        ],
+        "correct": 0
+      },
+      {
+        "opts": [
+          "liest immer der jüngste Spieler vor.",
+          "stehen auf der Rückseite der Karte.",
+          "stellt ein Spieler nach dem anderen."
+        ],
+        "correct": 2
+      },
+      {
+        "opts": [
+          "eine neue Karte ziehen.",
+          "stehen bleiben.",
+          "ein Feld zurückgehen."
+        ],
+        "correct": 1
+      },
+      {
+        "opts": [
+          "nimmt jeder Spieler drei unterschiedliche Chips.",
+          "mischt der jüngste Spieler die Karten allein.",
+          "stellt jeder Spieler seine Figur ins Ziel."
+        ],
+        "correct": 0
+      }
+    ],
+    "Infoblatt für die Mieter des Studenten­wohnheims — Tờ thông tin cho người thuê ký túc xá sinh viên": [
+      {
+        "opts": [
+          "Eine Reinigungsfirma putzt die Zimmer der Mieter.",
+          "In den Zimmern dürfen die Mieter Plakate aufhängen.",
+          "Die Mieter müssen auch die Gänge selbst putzen."
+        ],
+        "correct": 1
+      },
+      {
+        "opts": [
+          "dürfen Fahrräder im Flur abstellen.",
+          "müssen Motorräder nicht beim Vermieter anmelden.",
+          "dürfen Fahrräder nicht in die Zimmer mitnehmen."
+        ],
+        "correct": 2
+      },
+      {
+        "opts": [
+          "nur Heimbewohner dürfen den Garten nutzen.",
+          "Grillpartys im Garten dürfen bis Mitternacht dauern.",
+          "der Veranstaltungsraum darf ohne Anmeldung genutzt werden."
+        ],
+        "correct": 0
+      },
+      {
+        "opts": [
+          "bekommt einen Ersatzschlüssel kostenlos.",
+          "darf den Schlüssel bei längerer Abwesenheit behalten.",
+          "muss melden, wenn ein Schlüssel verloren geht."
+        ],
+        "correct": 2
+      }
+    ],
+    "Umzugsplaner — Kế hoạch chuyển nhà": [
+      {
+        "opts": [
+          "füllen Sie jede Kiste möglichst ganz voll.",
+          "die Kisten müssen nicht beschriftet werden.",
+          "packen Sie so, dass nichts beschädigt werden kann."
+        ],
+        "correct": 2
+      },
+      {
+        "opts": [
+          "entscheiden, was Sie mit unnötigen Sachen machen.",
+          "erst am Umzugstag mit dem Aufräumen beginnen.",
+          "auf jeden Fall alle alten Sachen behalten."
+        ],
+        "correct": 0
+      },
+      {
+        "opts": [
+          "bekommen alkoholische Getränke angeboten.",
+          "müssen wissen, wohin die Möbel kommen.",
+          "müssen ihre eigene Verpflegung mitbringen."
+        ],
+        "correct": 1
+      },
+      {
+        "opts": [
+          "muss man die Umzugsfirma um Erlaubnis bitten.",
+          "braucht man keine besondere Genehmigung.",
+          "muss man den Umzug bei der Polizei anmelden."
+        ],
+        "correct": 2
+      }
+    ],
+    "Rundbrief an die Mieter — Thư thông báo gửi người thuê": [
+      {
+        "opts": [
+          "keine Gegenstände in den Gängen stehen.",
+          "die Mieter ihre Schuhe vor der Wohnungstür abstellen.",
+          "Kinderwagen im Eingangsbereich abgestellt werden."
+        ],
+        "correct": 0
+      },
+      {
+        "opts": [
+          "man schwere Blumentöpfe an das Geländer hängen.",
+          "man Blumen haben.",
+          "man einen Grill benutzen."
+        ],
+        "correct": 1
+      },
+      {
+        "opts": [
+          "werden alle Fahrräder aus der Tiefgarage entfernt.",
+          "dürfen keine Fahrräder mehr benutzt werden.",
+          "müssen Fahrräder mit einem Namensschild markiert sein."
+        ],
+        "correct": 2
+      },
+      {
+        "opts": [
+          "müssen selten benutzte Fahrräder in ihren Keller stellen.",
+          "dürfen alte Fahrräder in der Tiefgarage abstellen.",
+          "sollen ihre Fahrräder im Kinderwagenraum abstellen."
+        ],
+        "correct": 0
+      }
+    ]
+  }
+}

@@ -1,0 +1,2551 @@
+[
+  {
+    "sits": [
+      {
+        "audioText": "Ach, liebe Gäste, herzlich willkommen im Café Sonnenblick! Nein, wir haben hier keine große Lebensmittelabteilung eröffnet, keine Sorge. Also, unsere Karte bleibt bunt: Jede Woche wechseln wir unser Angebot, mal frische Suppen, mal hausgemachter Kuchen, mal herzhafte Snacks. Wer denkt, es gäbe nur noch Getränke oder gar keine Speisen mehr, der irrt sich völlig. Übrigens spielt donnerstags ab 18 Uhr unser Pianist Bernd. Kommen Sie vorbei und lassen Sie sich immer wieder neu überraschen!",
+        "rfDe": "Die neue Lebensmittelabteilung im Café.",
+        "rfVi": "Một thông báo về việc khai trương quầy thực phẩm trong quán cà phê.",
+        "r": false,
+        "mcDe": "Was bietet das Café?",
+        "mcVi": "Quán cà phê cung cấp gì?",
+        "opts": [
+          {
+            "de": "Keine Speisen mehr.",
+            "vi": "Không cung cấp đồ ăn nữa.",
+            "c": false
+          },
+          {
+            "de": "Verschiedene / wechselnde Angebote.",
+            "vi": "Các ưu đãi đa dạng / thay đổi.",
+            "c": true
+          },
+          {
+            "de": "Nur Getränke.",
+            "vi": "Chỉ đồ uống.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Achtung, eine Durchsage für die Reisenden nach Graz. Also, es liegt kein gesperrter Streckenabschnitt vor, wie zuerst befürchtet, sondern eine technische Störung an der Lokomotive. Deshalb entfällt die Weiterfahrt heute Abend. Sie müssen Ihr Ticket aber nicht umtauschen, und selbstverständlich fällt Ihre Reise nach Graz nicht aus. Wir bringen Sie morgen früh, gegen 6:20 Uhr, ans Ziel. Das Bordbistro auf Gleis 4 bleibt bis 22 Uhr geöffnet. Vielen Dank für Ihre Geduld.",
+        "rfDe": "Es ging um Zugschädigung, aber der Weg war geschlossen.",
+        "rfVi": "Không có hư hại trên tàu, nhưng đường thì bị đóng.",
+        "r": false,
+        "mcDe": "Was passiert mit dem Passagier nach Graz?",
+        "mcVi": "Điều gì xảy ra với hành khách đi Graz?",
+        "opts": [
+          {
+            "de": "Die Passagiere werden am Morgen reisen.",
+            "vi": "Hành khách sẽ đi vào buổi sáng.",
+            "c": true
+          },
+          {
+            "de": "Er muss das Ticket umtauschen.",
+            "vi": "Phải đổi vé.",
+            "c": false
+          },
+          {
+            "de": "Er fährt nicht nach Graz.",
+            "vi": "Sẽ không đi Graz.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Hallo und willkommen bei unserem großen Ratespiel hier im Kaufhaus Merten! Also, gleich beginnen wir mit den kniffligen Fragen rund ums Allgemeinwissen. Und nein, gewinnen können Sie leider nicht schon in fünf Minuten, das dauert bis zum Finale um 16 Uhr. Unser Wettbewerb ist übrigens keine Programmnummer des heutigen Sommerfests, sondern läuft ganz eigenständig. Und keine Sorge, er findet nicht erst morgen statt, sondern jetzt sofort. Greifen Sie zum Mikrofon und raten Sie mit!",
+        "rfDe": "Sie könnten in fünf Minuten gewinnen.",
+        "rfVi": "Bạn có thể thắng trong năm phút.",
+        "r": false,
+        "mcDe": "Was passiert?",
+        "mcVi": "Điều gì xảy ra?",
+        "opts": [
+          {
+            "de": "Quiz",
+            "vi": "Cuộc thi đố.",
+            "c": true
+          },
+          {
+            "de": "Findet morgen statt",
+            "vi": "Sẽ diễn ra ngày mai.",
+            "c": false
+          },
+          {
+            "de": "Ist Teil der Veranstaltung",
+            "vi": "Là một phần của sự kiện.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Also, Frau Berger, ich rufe wegen Ihrer Tochter Lena an. Es geht überhaupt nicht um einen Vortrag, der schon letzte Woche gehalten wurde, keine Sorge. Nein, Lena hat bei unserem Ausflug ins Fotomuseum begeistert die ausgestellten Aufnahmen betrachtet, die Bilder haben es ihr richtig angetan. Sie muss also nichts selbst malen, und natürlich darf sie beim nächsten Termin mitmachen. Treffpunkt ist Samstag um 10 Uhr am Eingang. Rufen Sie mich bitte kurz zurück, ja?",
+        "rfDe": "Jemand spricht über eine Präsentation, die früher gehalten wurde.",
+        "rfVi": "Ai đó nói về một bài thuyết trình đã được trình bày trước đó.",
+        "r": false,
+        "mcDe": "Was sollte ein Mädchen tun?",
+        "mcVi": "Cô gái nên làm gì?",
+        "opts": [
+          {
+            "de": "Sie interessiert sich für die Bilder.",
+            "vi": "Cô ấy quan tâm đến những bức ảnh.",
+            "c": true
+          },
+          {
+            "de": "Sie soll ein Bild malen.",
+            "vi": "Cô ấy phải vẽ một bức tranh.",
+            "c": false
+          },
+          {
+            "de": "Sie darf nicht teilnehmen.",
+            "vi": "Cô ấy không được phép tham gia.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Liebe Vereinsmitglieder, hier eine kurze Ansage zum Freizeitprogramm. Also, unser Angebot ist keineswegs nur den Trainern vorbehalten, aber ganz offen für jeden ist es auch nicht – nur angemeldete Mitglieder dürfen mitspielen. Am Mittwoch bietet Klaus wieder Korbwürfe und schnelle Spielzüge in der Halle an, ihr wisst schon, unser beliebtes Basketball. Das findet drinnen im Turnsaal statt, nicht draußen auf dem Platz. Bringt bitte saubere Hallenschuhe mit. Beginn ist pünktlich um 17:30 Uhr.",
+        "rfDe": "Nur für Trainer.",
+        "rfVi": "Chỉ dành cho huấn luyện viên.",
+        "r": false,
+        "mcDe": "Was passiert?",
+        "mcVi": "Điều gì xảy ra?",
+        "opts": [
+          {
+            "de": "Basketball mit Klaus",
+            "vi": "Bóng rổ với Klaus.",
+            "c": true
+          },
+          {
+            "de": "Findet draußen statt",
+            "vi": "Diễn ra ngoài trời.",
+            "c": false
+          },
+          {
+            "de": "Ist für alle offen",
+            "vi": "Mở cho tất cả mọi người.",
+            "c": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "sits": [
+      {
+        "audioText": "Guten Tag, hier spricht Frau Wagner. Also, ich rufe an, weil ich noch ein paar Fragen zu meiner Bestellung vom Dienstag habe. Ich möchte weder mein Geld zurück noch einen neuen Liefertermin – nein, ich will mich einfach nur erkundigen, ob mein Sonderwunsch mit der blauen Verpackung notiert wurde. Die Bestellnummer lautet 4471. Ach, und die Rechnung habe ich schon erhalten, danke. Könnten Sie mich bitte unter 0176-33 zurückrufen? Vielen Dank und einen schönen Tag!",
+        "rfDe": "Eine Frau hat Fragen über ihre Bestellung.",
+        "rfVi": "Một phụ nữ có câu hỏi về đơn đặt hàng của mình.",
+        "r": true,
+        "mcDe": "Was möchte sie?",
+        "mcVi": "Cô ấy muốn gì?",
+        "opts": [
+          {
+            "de": "Eine Rückerstattung",
+            "vi": "Hoàn lại tiền.",
+            "c": false
+          },
+          {
+            "de": "Nach der Wunsch",
+            "vi": "Theo nguyện vọng.",
+            "c": true
+          },
+          {
+            "de": "Einen neuen Termin",
+            "vi": "Một cuộc hẹn mới.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Also, liebe Reisegruppe, ein kurzer Hinweis zum morgigen Tag. Ich erkläre Ihnen jetzt ausdrücklich nicht den Reiseweg nach Wien, das steht erst später an. Nein, morgen früh besuchen wir den Tierpark am Stadtrand, wo Löwen, Giraffen und Pinguine auf uns warten. Ein Museum oder eine Stadtrundfahrt sind für morgen nicht geplant, das machen wir übermorgen. Treffpunkt ist um 9 Uhr an der Hotelrezeption. Denken Sie an bequeme Schuhe, denn das Gelände ist ziemlich weitläufig. Bis morgen!",
+        "rfDe": "Der Reiseführer erklärt den Weg / die Strecke nach Wien.",
+        "rfVi": "Hướng dẫn viên giải thích đường / tuyến đến Wien.",
+        "r": false,
+        "mcDe": "Was werden sie am nächsten Tag tun?",
+        "mcVi": "Họ sẽ làm gì vào ngày hôm sau?",
+        "opts": [
+          {
+            "de": "Sie besuchen ein Museum.",
+            "vi": "Họ thăm một bảo tàng.",
+            "c": false
+          },
+          {
+            "de": "Sie werden in den Zoo / Tierpark gehen.",
+            "vi": "Họ sẽ đến sở thú / công viên động vật.",
+            "c": true
+          },
+          {
+            "de": "Sie machen eine Stadtrundfahrt.",
+            "vi": "Họ đi tham quan vòng quanh thành phố.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "So, liebe Gäste, wir haben gerade unseren Stadtspaziergang durch die schöne Wiener Altstadt beendet – ich hoffe, die Sehenswürdigkeiten haben Ihnen gefallen. Also, als Nächstes steht kein weiterer Rundgang und auch kein Messebesuch an, sondern wir legen erst mal eine kurze Verschnaufpause ein. Zwanzig Minuten Zeit für einen Kaffee, dann geht es weiter. Das Café Central finden Sie gleich um die Ecke, links neben der Kirche. Bitte seien Sie um Viertel nach drei wieder pünktlich hier am Brunnen. Danke!",
+        "rfDe": "Stadtrundfahrt / Stadtspaziergang durch Wien.",
+        "rfVi": "Tham quan / đi bộ vòng quanh thành phố Wien.",
+        "r": true,
+        "mcDe": "Was passiert als Nächstes?",
+        "mcVi": "Điều gì xảy ra tiếp theo?",
+        "opts": [
+          {
+            "de": "Stadtrundfahrt",
+            "vi": "Tham quan thành phố.",
+            "c": false
+          },
+          {
+            "de": "Kurze Pause",
+            "vi": "Nghỉ ngắn.",
+            "c": true
+          },
+          {
+            "de": "Messebesuch",
+            "vi": "Thăm hội chợ / triển lãm.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Achtung, achtung, liebe Kundinnen und Kunden hier im Einkaufszentrum Parkallee! Also, das hier ist keine Radiosendung, sondern unsere Live-Verlosung direkt an der Bühne. In genau fünf Minuten haben Sie die Chance, einen Umschlag voller Bargeld zu ergattern! Es geht nicht darum, irgendwelche Schlüssel abzuholen oder eine Bestellung aufzugeben – nein, hier gibt es echtes Geld zu holen. Kommen Sie zum Stand im Erdgeschoss neben der Rolltreppe. Halten Sie Ihren Kassenbon bereit. Die Ziehung beginnt um Punkt 15 Uhr!",
+        "rfDe": "Radioprogramm / Radiosendung.",
+        "rfVi": "Chương trình phát thanh / buổi phát sóng.",
+        "r": false,
+        "mcDe": "In fünf Minuten kann man?",
+        "mcVi": "Trong năm phút có thể làm gì?",
+        "opts": [
+          {
+            "de": "Geld gewinnen",
+            "vi": "Thắng tiền.",
+            "c": true
+          },
+          {
+            "de": "Schlüssel holen",
+            "vi": "Lấy chìa khóa.",
+            "c": false
+          },
+          {
+            "de": "Bestellung machen",
+            "vi": "Đặt hàng.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Und nun der Wetterbericht. Also, ganz so verlockend ist es heute leider nicht: Von einer Sonne, die über ganz Deutschland strahlt, kann keine Rede sein, im Norden hängen dichte Wolken. Zwar wird es heute Nachmittag stellenweise mild und freundlich, doch das täuscht. Denn in den kommenden Tagen frischt der Wind kräftig auf, mit stürmischen Böen bis 60 Stundenkilometern. Warm und sonnig bleibt es also gerade nicht. Packen Sie lieber eine winddichte Jacke ein. So weit die Aussichten für diese Woche.",
+        "rfDe": "Heute scheint in ganz Deutschland die Sonne.",
+        "rfVi": "Hôm nay mặt trời chiếu sáng trên khắp nước Đức.",
+        "r": false,
+        "mcDe": "Das Wetter in den kommenden Tagen?",
+        "mcVi": "Thời tiết trong những ngày tới?",
+        "opts": [
+          {
+            "de": "Sonnig",
+            "vi": "Nắng.",
+            "c": false
+          },
+          {
+            "de": "Warm",
+            "vi": "Ấm.",
+            "c": false
+          },
+          {
+            "de": "Windig",
+            "vi": "Có gió.",
+            "c": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "sits": [
+      {
+        "audioText": "Hallo Tom, hier ist Markus. Also, du, heute Abend gehe ich tatsächlich noch zum Konzert von der Band Nordwind, die Karten hatte ich ja schon. Aber jetzt am Nachmittag zieht es mich erst mal woanders hin: Ich schaue mir die neue Kunstausstellung im Stadtmuseum an, die Gemälde sollen fantastisch sein. Zum Faschingsumzug in der Innenstadt gehe ich diesmal nicht, zu viel Trubel. Wenn du Lust hast, komm doch zur Galerie dazu, so gegen vier. Ruf mich an! Tschüss.",
+        "rfDe": "Er geht zu einem Konzert.",
+        "rfVi": "Anh ấy đi đến một buổi hòa nhạc.",
+        "r": true,
+        "mcDe": "Wohin geht er?",
+        "mcVi": "Anh ấy đi đâu?",
+        "opts": [
+          {
+            "de": "Konzert",
+            "vi": "Buổi hòa nhạc.",
+            "c": false
+          },
+          {
+            "de": "Ausstellung",
+            "vi": "Triển lãm.",
+            "c": true
+          },
+          {
+            "de": "Umzug",
+            "vi": "Chuyển nhà.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Guten Morgen, Frau Klein, hier ist die Hausverwaltung Sommer. Also, es geht heute ausnahmsweise nicht um Ihren Einzug in die neue Wohnung, den besprechen wir ein andermal. Nein, ich rufe an, damit Sie bei uns im Büro die Schlüssel abholen können, sie liegen für Sie bereit. Neue Fenster müssen wir übrigens nicht einbauen, und den Umzugstermin verschieben wir auch nicht. Das Büro hat bis 16 Uhr geöffnet, Zimmer 3 im Erdgeschoss. Bringen Sie bitte Ihren Ausweis mit. Bis später!",
+        "rfDe": "Einziehen / Einzug.",
+        "rfVi": "Dọn vào / chuyển vào nhà mới.",
+        "r": false,
+        "mcDe": "Was ruft sie an, um zu tun?",
+        "mcVi": "Cô ấy gọi điện để làm gì?",
+        "opts": [
+          {
+            "de": "Neue Fenster bekommen",
+            "vi": "Để có cửa sổ mới.",
+            "c": false
+          },
+          {
+            "de": "Die Schlüssel zu holen",
+            "vi": "Để lấy chìa khóa.",
+            "c": true
+          },
+          {
+            "de": "Den Umzug verschieben",
+            "vi": "Để hoãn việc chuyển nhà.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Hallo, hier ist Frau Meier. Also, du weißt ja, unser Umzug wurde auf nächsten Monat verschoben, das steht fest. Aber deshalb rufe ich gar nicht an. Ich möchte nämlich, dass in der neuen Wohnung endlich neue Fenster eingebaut werden, die alten sind undicht. Die Schlüssel muss ich nicht abholen, die habe ich längst. Kannst du mir die Nummer vom Fensterbauer schicken? Am besten heute noch, so gegen 18 Uhr bin ich zu Hause. Danke dir, bis bald!",
+        "rfDe": "Der Umzug wird verschoben.",
+        "rfVi": "Việc chuyển nhà bị hoãn.",
+        "r": true,
+        "mcDe": "Was ruft sie an, um zu tun?",
+        "mcVi": "Cô ấy gọi điện để làm gì?",
+        "opts": [
+          {
+            "de": "Neue Fenster bekommen",
+            "vi": "Để có cửa sổ mới.",
+            "c": true
+          },
+          {
+            "de": "Die Schlüssel zu holen",
+            "vi": "Để lấy chìa khóa.",
+            "c": false
+          },
+          {
+            "de": "Den Umzug verschieben",
+            "vi": "Để hoãn việc chuyển nhà.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Guten Tag, hier ist die Praxis Dr. Fischer. Also, keine Sorge, bei uns findet keine Messe statt, das haben Sie vielleicht verwechselt. Ich rufe wegen Ihres Termins an. Am Samstag um neun Uhr geht es leider nicht, da ist alles ausgebucht. Auch „irgendwann am Sonntag“ reicht uns nicht – merken Sie sich bitte ganz genau den Sonntag um elf Uhr vormittags. Bringen Sie Ihre Versichertenkarte mit. Die Praxis liegt in der Lindenstraße 7. Rufen Sie zurück, falls es nicht passt. Danke!",
+        "rfDe": "Messe stattfinden.",
+        "rfVi": "Tổ chức hội chợ / triển lãm.",
+        "r": false,
+        "mcDe": "Wann ist der Termin?",
+        "mcVi": "Lịch hẹn khi nào?",
+        "opts": [
+          {
+            "de": "Am Samstag um 9 Uhr",
+            "vi": "Thứ Bảy lúc 9 giờ.",
+            "c": false
+          },
+          {
+            "de": "Am Sonntag",
+            "vi": "Chủ Nhật.",
+            "c": false
+          },
+          {
+            "de": "Am Sonntag um 11 Uhr",
+            "vi": "Chủ Nhật lúc 11 giờ.",
+            "c": true
+          }
+        ]
+      },
+      {
+        "audioText": "Hallo Sabine, hier ist Papa. Also, du arbeitest ja nun wirklich nicht als Sporttrainerin, auch wenn du das immer scherzhaft behauptest. Ich rufe an, weil dein neuer Ausweis bei der Behörde fertig ist. Bitte lass ihn abholen, schick am besten deinen Bruder zum Amt, du selbst hast ja keine Zeit. Trainieren gehen oder eine Radtour machen kannst du danach immer noch. Das Amt schließt heute schon um 14 Uhr, Schalter 5. Vergiss die Abholvollmacht nicht. Melde dich, wenn's klappt. Tschüss!",
+        "rfDe": "Sie arbeitet als Sporttrainerin.",
+        "rfVi": "Cô ấy làm huấn luyện viên thể thao.",
+        "r": false,
+        "mcDe": "Was soll sie tun?",
+        "mcVi": "Cô ấy nên làm gì?",
+        "opts": [
+          {
+            "de": "Ausweis abholen lassen",
+            "vi": "Đi lấy thẻ căn cước.",
+            "c": true
+          },
+          {
+            "de": "Trainieren",
+            "vi": "Tập luyện.",
+            "c": false
+          },
+          {
+            "de": "Fahrrad fahren",
+            "vi": "Đạp xe.",
+            "c": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "sits": [
+      {
+        "audioText": "Achtung, ein Hinweis zur Fahrradmesse am Wochenende. In der Stadt eröffnen keine neuen Fahrradgeschäfte, wie zuerst berichtet wurde. Auf der Messe können Besucher stattdessen verschiedene Fahrräder direkt ausprobieren. Es geht dabei weder nur um Sicherheit noch darum, ausschließlich neue Designs anzusehen. Die Teststrecke befindet sich draußen hinter Halle 2 und ist von 10 bis 18 Uhr geöffnet.",
+        "rfDe": "In der Stadt eröffnen neue Fahrradgeschäfte.",
+        "rfVi": "Trong thành phố sẽ mở các cửa hàng xe đạp mới.",
+        "r": false,
+        "mcDe": "Was können die Besucher auf der Fahrradmesse machen?",
+        "mcVi": "Khách tham quan có thể làm gì tại hội chợ xe đạp?",
+        "opts": [
+          {
+            "de": "Etwas über Sicherheit erfahren.",
+            "vi": "Tìm hiểu về an toàn.",
+            "c": false
+          },
+          {
+            "de": "Neue Designs ansehen.",
+            "vi": "Xem các thiết kế mới.",
+            "c": false
+          },
+          {
+            "de": "Fahrräder ausprobieren.",
+            "vi": "Đi thử xe đạp.",
+            "c": true
+          }
+        ]
+      },
+      {
+        "audioText": "Guten Tag, Frau Ahmadi, hier ist das Sekretariat der Sprachschule. Also, es möchte kein Schulbeamter mit Ihrem Sohn sprechen, keine Sorge, es ist nichts passiert. Ich rufe nur wegen der Anmeldeunterlagen an. Für die Einschreibung brauchen wir unbedingt die Urkunde über seine Geburt, das Original bitte. Ein Reisepass genügt uns nicht, und der Schülerausweis reicht ebenfalls nicht aus. Bringen Sie das Dokument bis Donnerstag ins Büro, Zimmer 12. Wir haben von 8 bis 15 Uhr geöffnet. Bei Fragen rufen Sie gern zurück. Danke!",
+        "rfDe": "Ein Schulbeamter möchte mit dem Schüler sprechen.",
+        "rfVi": "Một viên chức nhà trường muốn nói chuyện với học sinh.",
+        "r": false,
+        "mcDe": "Welches Dokument ist erforderlich?",
+        "mcVi": "Cần giấy tờ nào?",
+        "opts": [
+          {
+            "de": "Reisepass",
+            "vi": "Hộ chiếu.",
+            "c": false
+          },
+          {
+            "de": "Geburtsurkunde",
+            "vi": "Giấy khai sinh.",
+            "c": true
+          },
+          {
+            "de": "Schülerausweis",
+            "vi": "Thẻ học sinh.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Und jetzt die Verkehrsmeldungen. Also, auf der Autobahn A-12 kommt es derzeit zu erheblichen Behinderungen im Straßenverkehr. Der Grund ist aber nicht etwa zu viel Verkehr oder eine Baustelle – nein, dichter Nebel drückt auf die Fahrbahn, und die Autofahrer sehen kaum die Hand vor Augen. Wegen der schlechten Sicht bitte den Abstand vergrößern und die Nebelscheinwerfer einschalten. Besonders zwischen der Ausfahrt Talheim und dem Kreuz Nord ist es grau in grau. Fahren Sie vorsichtig, es ist erst 6:40 Uhr morgens.",
+        "rfDe": "Der Verkehr ist auf die schlechte Sicht der Autofahrer zurückzuführen (über Straßenverkehr).",
+        "rfVi": "Giao thông bị ảnh hưởng do tầm nhìn kém của tài xế (về tín hiệu giao thông).",
+        "r": true,
+        "mcDe": "Schwierigkeiten, die Straße A-12 zu sehen, wegen?",
+        "mcVi": "Khó nhìn thấy đường A-12 vì?",
+        "opts": [
+          {
+            "de": "Verkehr",
+            "vi": "Ùn tắc giao thông.",
+            "c": false
+          },
+          {
+            "de": "Straßenverkehr",
+            "vi": "Tín hiệu giao thông.",
+            "c": false
+          },
+          {
+            "de": "Nebel",
+            "vi": "Sương mù.",
+            "c": true
+          }
+        ]
+      },
+      {
+        "audioText": "Guten Tag, Herr Brandt, hier ist die Werkstatt Auto-Müller. Also, entgegen unserer letzten Nachricht müssen Sie Ihr Auto heute nicht selbst abholen, da hat sich etwas geändert. Nein, wir bitten Sie nur, uns noch einmal zurückzurufen, damit wir einen neuen Übergabetermin absprechen können. Sie müssen den Wagen weder irgendwo parken noch von jemandem abholen lassen. Unsere Nummer ist 0721-88 45, erreichbar bis 17 Uhr. Fragen Sie einfach nach Kollege Uwe. Wir hoffen, das passt Ihnen. Vielen Dank und bis dann!",
+        "rfDe": "Herr X muss sein Auto abholen / Abholung für das Auto.",
+        "rfVi": "Ông X phải đi lấy xe của mình.",
+        "r": false,
+        "mcDe": "Sie haben ihn gefragt?",
+        "mcVi": "Họ đã yêu cầu ông ấy điều gì?",
+        "opts": [
+          {
+            "de": "Um wieder anzurufen / (Zurückrufen)",
+            "vi": "Gọi lại lần nữa.",
+            "c": true
+          },
+          {
+            "de": "Parken",
+            "vi": "Đỗ xe.",
+            "c": false
+          },
+          {
+            "de": "Abholen lassen",
+            "vi": "Sắp xếp việc lấy xe.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Liebe Kundinnen und Kunden, willkommen bei uns im Markt! Also, eine große Eröffnungsfeier feiern wir heute nicht, unser Geschäft gibt es ja längst. Ich möchte Ihnen nur unsere Abteilung „Natur“ ans Herz legen. Dort finden Sie frisches Obst und Gemüse aus fernen Ländern – Mangos, Avocados und Datteln, importiert aus aller Welt. Eine neue Geschäftsidee stellen wir hier nicht vor, und abholen lassen können Sie die Ware auch nicht, nehmen Sie sie gleich mit. Die Abteilung liegt hinten links, neben der Kasse 4. Guten Einkauf!",
+        "rfDe": "Die Eröffnungsfeier des Ladens / Neueröffnung Geschäft.",
+        "rfVi": "Lễ khai trương cửa hàng / mở lại cửa hàng.",
+        "r": false,
+        "mcDe": "Was gibt es in der Rubrik Natur zu kaufen?",
+        "mcVi": "Trong mục \"Thiên nhiên\" có thể mua gì?",
+        "opts": [
+          {
+            "de": "Neue Idee anbieten",
+            "vi": "Đưa ra ý tưởng mới.",
+            "c": false
+          },
+          {
+            "de": "Produkte / Obst und Gemüse von anderen Ländern",
+            "vi": "Sản phẩm / trái cây và rau củ từ các nước khác.",
+            "c": true
+          },
+          {
+            "de": "Abholen lassen",
+            "vi": "Sắp xếp việc nhận hàng.",
+            "c": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "sits": [
+      {
+        "audioText": "Hallo Mama, ich bin's, Nina. Also, ich habe meine Freundin Julia heute gar nicht angerufen, um sie um Rat zu fragen, dazu kam ich nicht. Aber weißt du, wenn es um Vorträge und Präsentationen geht, kennt sie sich wirklich bestens aus, sie hält ständig welche im Studium. Mit Möbeln oder mit importierten Waren aus anderen Ländern hat sie dagegen überhaupt nichts am Hut. Vielleicht frage ich sie morgen, wie ich meine Folien besser mache. Ich komme so gegen sieben nach Hause. Bis später, tschüss!",
+        "rfDe": "Das Mädchen rief ihre Freundin an und fragte sie um Rat.",
+        "rfVi": "Cô gái gọi cho bạn mình và xin lời khuyên.",
+        "r": false,
+        "mcDe": "Ihre Freundin hat große / viele Erfahrungen mit?",
+        "mcVi": "Bạn của cô ấy có nhiều kinh nghiệm về?",
+        "opts": [
+          {
+            "de": "Möbel",
+            "vi": "Nội thất.",
+            "c": false
+          },
+          {
+            "de": "Produkte von anderen Ländern",
+            "vi": "Sản phẩm từ các nước khác.",
+            "c": false
+          },
+          {
+            "de": "Präsentationen",
+            "vi": "Các bài thuyết trình.",
+            "c": true
+          }
+        ]
+      },
+      {
+        "audioText": "Hallo Lisa, hier ist Mareike. Also, ich schaffe es heute leider doch nicht zu unserem Termin, es tut mir echt leid. Zu Hause ist gerade das Chaos ausgebrochen: Mein Bruder und meine Eltern haben sich fürchterlich gestritten, und ich muss hierbleiben und schlichten. Es geht nicht etwa darum, dass meine Familie schnell irgendwohin kommen muss, und mit meiner Nachbarin oder den Großeltern hat das auch nichts zu tun. Können wir uns morgen um 15 Uhr treffen? Ruf mich bitte kurz zurück. Danke dir, bis bald!",
+        "rfDe": "Das Mädchen geht zum Termin.",
+        "rfVi": "Cô gái đi đến cuộc hẹn.",
+        "r": false,
+        "mcDe": "Was passiert?",
+        "mcVi": "Điều gì xảy ra?",
+        "opts": [
+          {
+            "de": "Ihrer Familie schnell zu kommen",
+            "vi": "Gia đình cô ấy đến nhanh.",
+            "c": false
+          },
+          {
+            "de": "Ihre Nachbarin und ihre Großeltern",
+            "vi": "Hàng xóm và ông bà của cô ấy.",
+            "c": false
+          },
+          {
+            "de": "Ihr Bruder und ihre Familie / Eltern stritten",
+            "vi": "Anh em và gia đình / cha mẹ cãi nhau.",
+            "c": true
+          }
+        ]
+      },
+      {
+        "audioText": "Guten Tag, hier ist die Reisevereinigung Alpenblick. Also, besondere Angebote für Einzelzimmer haben wir derzeit leider nicht, das muss ich Ihnen ehrlich sagen. Wichtig ist aber etwas anderes: Wenn Sie mitfahren möchten, müssen Sie Ihren Platz unbedingt rechtzeitig im Voraus reservieren, spätestens zwei Wochen vorher. Das Mittagessen und das Abendessen sind übrigens nicht im Preis enthalten, die zahlen Sie extra. Die Abfahrt ist am 12. Mai um 8 Uhr am Busbahnhof. Rufen Sie uns unter 030-55 12 an. Wir freuen uns auf Sie!",
+        "rfDe": "Es gibt Angebote für Einzelzimmer.",
+        "rfVi": "Có các ưu đãi cho phòng đơn.",
+        "r": false,
+        "mcDe": "Die Person muss?",
+        "mcVi": "Người đó phải?",
+        "opts": [
+          {
+            "de": "Mittagessen",
+            "vi": "Ăn trưa.",
+            "c": false
+          },
+          {
+            "de": "Im Voraus buchen / (Reisevereinigung)",
+            "vi": "Đặt trước qua văn phòng du lịch.",
+            "c": true
+          },
+          {
+            "de": "Abendessen",
+            "vi": "Ăn tối.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Achtung, eine Durchsage am Bahnsteig 2. Also, es finden keine großen Umbauarbeiten an unseren Zügen statt, wie manche Fahrgäste vermuten. Nein, der defekte Regionalzug wird lediglich instand gesetzt, eine kleine technische Reparatur, mehr nicht. Der Waggon wird also weder komplett ausgetauscht noch frisch lackiert, keine Sorge. Voraussichtlich ist alles bis 10:30 Uhr behoben, dann fährt der Zug wieder planmäßig. Bitte beachten Sie die Anzeigetafeln. Der Kiosk am Gleis hat übrigens geöffnet. Wir danken für Ihr Verständnis und wünschen eine gute Reise.",
+        "rfDe": "Es gibt Bauarbeiten am Zug / Umbau.",
+        "rfVi": "Có công việc xây dựng / cải tạo trên tàu.",
+        "r": false,
+        "mcDe": "Was passiert?",
+        "mcVi": "Điều gì xảy ra?",
+        "opts": [
+          {
+            "de": "Wird ausgetauscht",
+            "vi": "Được thay thế.",
+            "c": false
+          },
+          {
+            "de": "Wird lackiert",
+            "vi": "Được sơn.",
+            "c": false
+          },
+          {
+            "de": "Wird repariert",
+            "vi": "Được sửa chữa.",
+            "c": true
+          }
+        ]
+      },
+      {
+        "audioText": "Hallo, liebe Hörerinnen und Hörer! Also, wir stellen euch heute kein neues Buch und auch kein neues Magazin vor, das habt ihr vielleicht falsch gehört. Nein, es geht um unseren frisch gestarteten Podcast „Stadtgespräch“. Was euch dort erwartet? Vor allem spannende Gespräche mit interessanten Gästen aus der Nachbarschaft, ausführlich und persönlich. Nervige Werbung gibt es bei uns nicht, und lange Reportagen sucht ihr ebenfalls vergeblich. Die erste Folge erscheint am Montag, den 3. Juni. Abonniert uns und schaltet ein. Wir freuen uns riesig auf euch!",
+        "rfDe": "Ein neues Buch wird vorgestellt / Ankündigung eines neuen Magazins.",
+        "rfVi": "Giới thiệu một cuốn sách mới / thông báo về một tạp chí mới.",
+        "r": false,
+        "mcDe": "Im Inhalt findet man?",
+        "mcVi": "Trong nội dung có gì?",
+        "opts": [
+          {
+            "de": "Werbung",
+            "vi": "Quảng cáo.",
+            "c": false
+          },
+          {
+            "de": "Reportagen",
+            "vi": "Bài phóng sự.",
+            "c": false
+          },
+          {
+            "de": "Interview",
+            "vi": "Phỏng vấn.",
+            "c": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "sits": [
+      {
+        "audioText": "Und nun das Wetter für morgen, Freitag, den 14. März. Also, im Norden bleibt es leider grau, kalt und nass – hier hält sich der Winter noch hartnäckig, mit Temperaturen um vier Grad. Ganz anders sieht es im Westen aus: Dort erwarten uns endlich die ersten wirklich milden Tage, bis zu 18 Grad, die Sonne, ähm, die Krokusse blühen sogar schon. Von einer Wetterbesserung überall im Land kann also keine Rede sein. Packen Sie im Norden weiter den dicken Mantel ein.",
+        "rfDe": "Das Wetter wird überall in Deutschland besser sein.",
+        "rfVi": "Thời tiết sẽ tốt hơn trên khắp nước Đức.",
+        "r": false,
+        "mcDe": "Das Wetter im Westen wird?",
+        "mcVi": "Thời tiết ở phía Tây sẽ?",
+        "opts": [
+          {
+            "de": "Der Frühling kommt",
+            "vi": "Mùa xuân đang đến.",
+            "c": true
+          },
+          {
+            "de": "Im Westen",
+            "vi": "Ở phía Tây.",
+            "c": false
+          },
+          {
+            "de": "Im Norden",
+            "vi": "Ở phía Bắc.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Hallo Frau Berger, hier ist Lena von nebenan. Ähm, ich wollte mich ganz herzlich bedanken – aber nicht wegen der Blumen, die habe ich ja selbst gegossen, sondern dass Sie die ganze Woche meinen Kater Moritz gefüttert haben, während ich in Hamburg war. Das war wirklich lieb von Ihnen! Wenn ich am Sonntag zurück bin, bringe ich Ihnen aus einem netten Geschäft eine Kleinigkeit als Dankeschön mit. Bei Ihrer Oma war ich übrigens nicht. Bis bald, tschüss!",
+        "rfDe": "Ein Mädchen dankte ihrer Nachbarin, dass sie die Pflanzen gegossen hatte, während sie außer Haus war.",
+        "rfVi": "Cô gái cảm ơn hàng xóm đã tưới cây trong lúc cô ấy đi vắng.",
+        "r": false,
+        "mcDe": "Das Mädchen versprach der Nachbarin?",
+        "mcVi": "Cô gái đã hứa với hàng xóm điều gì?",
+        "opts": [
+          {
+            "de": "Ihr bei ihrer Rückkehr ein Geschenk zu machen",
+            "vi": "Tặng quà khi cô ấy trở về.",
+            "c": true
+          },
+          {
+            "de": "Ihr bei ihrer Großmutter ein Geschenk zu machen",
+            "vi": "Tặng quà ở chỗ bà của cô ấy.",
+            "c": false
+          },
+          {
+            "de": "Ein Geschäft, das Geschenk zu verkaufen",
+            "vi": "Một cửa hàng bán quà.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Meine Damen und Herren, hier spricht Ihr Kapitän. Ähm, wie Sie merken, stehen wir noch am Gate. Ich weiß, viele denken jetzt sofort ans schlechte Wetter – aber nein, der Himmel ist heute klar, es liegt diesmal nur an einer kleinen technischen Prüfung am Triebwerk. Wir starten in etwa fünfzehn Minuten. Bitte behalten Sie so lange Ihre Sitzplätze und lassen Sie den Gurt geschlossen. Die Dame mit den Blumen bitte ich, den Strauß im Fach zu verstauen. Danke für Ihre Geduld.",
+        "rfDe": "Es war flughafenbedingt und die Verzögerung war wetterbedingt.",
+        "rfVi": "Sự chậm trễ là do sân bay và do thời tiết.",
+        "r": false,
+        "mcDe": "Der Pilot / Kapitän forderte die Passagiere auf, an ihren?",
+        "mcVi": "Cơ trưởng yêu cầu hành khách điều gì?",
+        "opts": [
+          {
+            "de": "Plätzen zu bleiben / sitzen bleiben",
+            "vi": "Ngồi yên tại chỗ.",
+            "c": true
+          },
+          {
+            "de": "Blumen zu bleiben, setzen im Raum",
+            "vi": "Ngồi giữa hoa trong phòng.",
+            "c": false
+          },
+          {
+            "de": "Bepflanze zu schenken",
+            "vi": "Tặng cây.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "So, und jetzt der Wetterausblick. Für morgen, also Donnerstag, muss ich Sie leider enttäuschen: Es bleibt nicht trocken, im Gegenteil, ab Mittag ziehen dichte Wolken auf und es gibt kräftige Schauer, teils den ganzen Tag über. Schnee ist bei zehn Grad natürlich nicht dabei, keine Sorge. Die gute Nachricht kommt am Wochenende: Ab Samstag reißt die Wolkendecke auf, es wird freundlich und angenehm warm. Nehmen Sie morgen aber unbedingt den Regenschirm mit!",
+        "rfDe": "Das Wetter am Wochenende / am Ende der Woche ist gut.",
+        "rfVi": "Thời tiết cuối tuần đẹp.",
+        "r": true,
+        "mcDe": "Im Allgemeinen, wie wird das Wetter am nächsten Tag?",
+        "mcVi": "Nhìn chung, thời tiết ngày hôm sau sẽ thế nào?",
+        "opts": [
+          {
+            "de": "Es schneit",
+            "vi": "Sẽ có tuyết.",
+            "c": false
+          },
+          {
+            "de": "Es regnet",
+            "vi": "Sẽ có mưa.",
+            "c": true
+          },
+          {
+            "de": "Es bleibt trocken",
+            "vi": "Trời vẫn khô ráo.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Liebe Kinofreunde, ein kurzer Hinweis vor der Vorstellung heute Abend um 20 Uhr. Der Regisseur, Herr Sanders, stammt zwar ursprünglich aus Berlin, und gedreht wurde – nein, eben nicht in der Schweiz, wie manche vermuten. Dieser Film ist tatsächlich komplett hier bei uns in Neuenberg entstanden, in unseren eigenen Straßen und Höfen. Deshalb erkennen Sie sicher die eine oder andere Ecke wieder. Wir wünschen viel Vergnügen – der Saal öffnet in zehn Minuten.",
+        "rfDe": "Sie sprachen über eine Kulturveranstaltung.",
+        "rfVi": "Họ nói về một sự kiện văn hóa.",
+        "r": false,
+        "mcDe": "Wo wurde der Film produziert?",
+        "mcVi": "Bộ phim được sản xuất ở đâu?",
+        "opts": [
+          {
+            "de": "In Berlin",
+            "vi": "Ở Berlin.",
+            "c": false
+          },
+          {
+            "de": "In der Schweiz",
+            "vi": "Ở Thụy Sĩ.",
+            "c": false
+          },
+          {
+            "de": "In der gleichen Stadt \"Neuenberg\"",
+            "vi": "Trong cùng thành phố Neuenberg.",
+            "c": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "sits": [
+      {
+        "audioText": "Guten Tag, Frau Kunze, hier die Praxis Ihres Optikers, Kollegin Ortmann am Apparat. Ihre neue Brille ist fast fertig. Also, der Preis für das Gestell bleibt genau gleich wie besprochen, da ändert sich gar nichts. Aber: Sie hatten sich ja zusätzlich für die entspiegelten Spezialgläser entschieden. Dafür kommen leider nicht 150 Euro, sondern 250 Euro obendrauf – zusätzlich zu den ursprünglichen 350 Euro. Falls das für Sie in Ordnung ist, rufen Sie kurz zurück. Danke, tschüss!",
+        "rfDe": "Der Optiker ruft an, um dem Kunden mitzuteilen, dass sich der Preis für eine neue Brille geändert hat.",
+        "rfVi": "Cửa hàng kính gọi để báo khách rằng giá kính mới đã thay đổi.",
+        "r": false,
+        "mcDe": "Für eine neue Brille bezahlen?",
+        "mcVi": "Phải trả bao nhiêu cho kính mới?",
+        "opts": [
+          {
+            "de": "150 Euro",
+            "vi": "",
+            "c": false
+          },
+          {
+            "de": "250 Euro",
+            "vi": "",
+            "c": false
+          },
+          {
+            "de": "Sie müssen statt 350 Euro 250 Euro zusätzlich / mehr bezahlen",
+            "vi": "Phải trả thêm: 350 euro thay vì 250.",
+            "c": true
+          }
+        ]
+      },
+      {
+        "audioText": "Achtung, eine Durchsage für alle Fluggäste. Ähm, keine Sorge, der Flugbetrieb läuft ganz normal weiter, es startet also fast alles pünktlich. Die Maschine nach Kopenhagen, Flug LH 401, hebt planmäßig ab, und auch der Flug nach Frankfurt ist rechtzeitig am Gate. Nur unser Flug nach Genf, Flug LX 213, verzögert sich um rund vierzig Minuten wegen einer verspäteten Zubringermaschine. Wir bitten die Passagiere nach Genf um etwas Geduld und danken fürs Verständnis.",
+        "rfDe": "Der Flughafen und die Flugzeuge werden nicht starten.",
+        "rfVi": "Sân bay và các máy bay sẽ không cất cánh.",
+        "r": false,
+        "mcDe": "Welcher Flug hatte Verspätung?",
+        "mcVi": "Chuyến bay nào bị trễ?",
+        "opts": [
+          {
+            "de": "Kopenhagen",
+            "vi": "Copenhagen.",
+            "c": false
+          },
+          {
+            "de": "Frankfurt",
+            "vi": "Frankfurt.",
+            "c": false
+          },
+          {
+            "de": "Genf",
+            "vi": "Geneva.",
+            "c": true
+          }
+        ]
+      },
+      {
+        "audioText": "Hey, hier ist Tobias! Du, unser Ausflug zum Kletterwald steht – wir treffen uns Samstag um neun am Bahnhof. Ähm, ganz wichtig: Der Veranstalter braucht die Zahl der Leute bis morgen Abend, also gib mir bitte ganz schnell Bescheid, ob du mitkommst, sonst ist dein Platz weg. Essen musst du übrigens nichts mitbringen, für die Verpflegung ist gesorgt. Also, meld dich fix, ja? Ich freu mich total, wenn du dabei bist. Bis dann!",
+        "rfDe": "Ein Mädchen hat ihren Freund zu einem Ausflug eingeladen.",
+        "rfVi": "Cô gái mời bạn của mình đi dã ngoại.",
+        "r": false,
+        "mcDe": "Was muss man vor der Abreise tun?",
+        "mcVi": "Phải làm gì trước khi khởi hành?",
+        "opts": [
+          {
+            "de": "Schnell melden",
+            "vi": "Đăng ký nhanh.",
+            "c": true
+          },
+          {
+            "de": "Etwas essen",
+            "vi": "Ăn gì đó.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Hallo zusammen, kurze Info zur heutigen Stunde im Kochkurs. Also, Frau Doktor Reinl war pünktlich da, sogar fünf Minuten früher, kein Grund zur Sorge. Wir hatten eigentlich geplant, einen Film über die italienische Küche zu schauen, aber daraus wurde nichts. Auch die große Diskussion haben wir verschoben. Stattdessen haben wir gemeinsam gekocht und richtig lecker zusammen gegessen – Pasta für zwölf Leute! Nächste Woche dann der Film. Meldet euch, wer das Rezept möchte.",
+        "rfDe": "Der Unterricht hat begonnen und der Lehrer / Professor war noch nicht da.",
+        "rfVi": "Giờ học đã bắt đầu nhưng giáo viên chưa đến.",
+        "r": false,
+        "mcDe": "Was fand im Unterricht statt?",
+        "mcVi": "Điều gì diễn ra trong giờ học?",
+        "opts": [
+          {
+            "de": "Essen",
+            "vi": "Ăn uống.",
+            "c": true
+          },
+          {
+            "de": "Diskussion",
+            "vi": "Thảo luận.",
+            "c": false
+          },
+          {
+            "de": "Film schauen",
+            "vi": "Xem phim.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Und zum Schluss die Wetteraussichten für Norddeutschland. Am Freitag zeigt sich häufig die Sonne, trocken und mild bei siebzehn Grad. Der Samstag wird dann ungemütlich windig, mit kräftigen Böen von der Küste her. Und am Sonntag? Da müssen Sie den Schirm bereithalten: von früh bis spät ziehen Regenwolken durch, es tröpfelt und schauert fast ununterbrochen. Erst am Montag beruhigt sich die Lage wieder. Kommen Sie gut durchs Wochenende hier oben im Norden!",
+        "rfDe": "Wetterverhältnisse in Norddeutschland.",
+        "rfVi": "Tình hình thời tiết ở miền Bắc nước Đức.",
+        "r": true,
+        "mcDe": "Am Sonntag wird?",
+        "mcVi": "Chủ Nhật sẽ?",
+        "opts": [
+          {
+            "de": "Regnerisch",
+            "vi": "Có mưa.",
+            "c": true
+          },
+          {
+            "de": "Windig",
+            "vi": "Có gió.",
+            "c": false
+          },
+          {
+            "de": "Sonnig",
+            "vi": "Nắng.",
+            "c": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "sits": [
+      {
+        "audioText": "Guten Tag, Frau Sommer, hier ist die Hausverwaltung Weber. Es geht um die eine Wohnung in der Lindenstraße 8, die wir Ihnen anbieten – also nur diese eine, eine zweite haben wir momentan leider nicht frei. Zur Info: Die meisten Nebenkosten sind schon in der Miete von 620 Euro enthalten. Nur die Heizung, ähm, die rechnen wir separat ab, die zahlen Sie also extra. Kaputt ist da übrigens nichts, die Anlage ist ganz neu. Melden Sie sich gern!",
+        "rfDe": "Sie bieten der Frau mehrere Wohnungen an.",
+        "rfVi": "Họ đề nghị cho người phụ nữ nhiều căn hộ.",
+        "r": false,
+        "mcDe": "Für die ...?",
+        "mcVi": "Về việc...?",
+        "opts": [
+          {
+            "de": "Heizung zahlen Sie extra",
+            "vi": "Trả thêm tiền cho sưởi.",
+            "c": true
+          },
+          {
+            "de": "Man muss extra zahlen",
+            "vi": "Phải trả thêm.",
+            "c": false
+          },
+          {
+            "de": "Die Heizung ist kaputt",
+            "vi": "Lò sưởi bị hỏng.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Liebe Eltern, eine Durchsage der Schulleitung. Ähm, das hier ist kein Sprachkurs für die Ferien, auch wenn das im Aushang etwas missverständlich stand. Es geht um unseren jährlichen Elternabend am Donnerstag um 18 Uhr. An diesem Abend besprechen ausschließlich die Lehrkräfte gemeinsam mit den Müttern und Vätern die anstehenden Fragen zum Schuljahr. Die Schülerinnen und Schüler bleiben diesmal zu Hause, und Großeltern bitten wir ebenfalls, nicht mitzukommen. Wir freuen uns auf ein volles Klassenzimmer.",
+        "rfDe": "Ein jährliches Sprachprogramm für die Feiertage.",
+        "rfVi": "Một chương trình ngôn ngữ hằng năm cho kỳ nghỉ.",
+        "r": false,
+        "mcDe": "Angelegenheiten werden besprochen zwischen?",
+        "mcVi": "Các vấn đề được thảo luận giữa?",
+        "opts": [
+          {
+            "de": "Lehrer und Schüler",
+            "vi": "Giáo viên và học sinh.",
+            "c": false
+          },
+          {
+            "de": "Lehrer und Großmutter",
+            "vi": "Giáo viên và bà.",
+            "c": false
+          },
+          {
+            "de": "Zwischen Lehrern und Eltern",
+            "vi": "Giữa giáo viên và phụ huynh.",
+            "c": true
+          }
+        ]
+      },
+      {
+        "audioText": "Sehr geehrte Fahrgäste auf Gleis 4, eine wichtige Information. Also, unser Zug hier nimmt heute eine andere Strecke als gewohnt, die übliche Route ist wegen Bauarbeiten gesperrt. Dadurch verspätet sich die Ankunft in Köln um voraussichtlich fünfundzwanzig Minuten. Die Züge auf den Nachbargleisen fahren übrigens ganz normal und pünktlich, da ändert sich nichts. Wir bitten alle Reisenden nach Köln, die spätere Ankunft einzuplanen. Aktuelle Anschlüsse finden Sie auf den Anzeigetafeln. Vielen Dank für Ihr Verständnis.",
+        "rfDe": "Die Route des Zuges wurde geändert.",
+        "rfVi": "Lộ trình của tàu đã thay đổi.",
+        "r": true,
+        "mcDe": "Was ist passiert?",
+        "mcVi": "Điều gì đã xảy ra?",
+        "opts": [
+          {
+            "de": "Verspätung nach Bagdad",
+            "vi": "Trễ chuyến đi Baghdad.",
+            "c": false
+          },
+          {
+            "de": "Verspätung nach Köln",
+            "vi": "Trễ chuyến đi Köln.",
+            "c": true
+          },
+          {
+            "de": "Verspätung nach Pasera",
+            "vi": "Trễ chuyến đi Pasera.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Guten Tag, Frau Ecker, hier ist das Küchenstudio Berger. Sie haben ja noch keine Küche bei uns gekauft, keine Sorge, da ist nichts unterschrieben. Wir wollten Ihnen nur Bescheid geben: Wir haben Ihnen heute drei verschiedene Angebote per E-Mail zugeschickt, ganz an Sie persönlich, nicht an Ihren Mann und auch nicht an Ihren Sohn. Schauen Sie in aller Ruhe rein. Bei Fragen rufen Sie uns unter der bekannten Nummer an. Einen schönen Tag noch!",
+        "rfDe": "Eine Frau kaufte eine neue Küche.",
+        "rfVi": "Một phụ nữ mua một nhà bếp mới.",
+        "r": false,
+        "mcDe": "Was ist passiert?",
+        "mcVi": "Điều gì đã xảy ra?",
+        "opts": [
+          {
+            "de": "Angebote wurden an die Frau gesendet",
+            "vi": "Các báo giá đã được gửi cho người phụ nữ.",
+            "c": true
+          },
+          {
+            "de": "Angebote werden an den Mann gesendet",
+            "vi": "Các báo giá sẽ được gửi cho người đàn ông.",
+            "c": false
+          },
+          {
+            "de": "Angebot wird an den Jungen angezahlt",
+            "vi": "Đã trả tiền cọc cho báo giá cho chàng trai.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Liebe Gäste im Filmclub, ein Hinweis zum heutigen Abend. Der Film selbst lief ja schon letzten Freitag, den zeigen wir heute also nicht noch einmal. Heute steht etwas anderes im Mittelpunkt: ein offenes Publikumsgespräch mit der Regisseurin, Frau Kloss, direkt hier im Saal. Ihre Mitgliedskarte müssen Sie dafür nicht extra aktivieren, und zahlen müssen Sie heute auch fast nichts – der Eintritt ist frei. Kommen Sie einfach um 19 Uhr vorbei und stellen Sie Ihre Fragen!",
+        "rfDe": "Informationen zur Vorführung des Films.",
+        "rfVi": "Thông tin về buổi chiếu phim.",
+        "r": false,
+        "mcDe": "Was ist passiert?",
+        "mcVi": "Điều gì đã xảy ra?",
+        "opts": [
+          {
+            "de": "Karte aktivieren",
+            "vi": "Kích hoạt thẻ.",
+            "c": false
+          },
+          {
+            "de": "Gespräch",
+            "vi": "Trò chuyện.",
+            "c": true
+          },
+          {
+            "de": "Wenig zu bezahlen",
+            "vi": "Trả một khoản nhỏ.",
+            "c": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "sits": [
+      {
+        "audioText": "Hallo mein Schatz, hier ist Mama. Du, ich rufe dich an, nicht den Papa – der ist ja noch bis acht im Büro. Kannst du bitte schon mal das Abendessen für uns fertig machen? Die Nudeln und die Soße stehen im Kühlschrank, das geht ganz schnell. Frühstück brauchst du natürlich nicht vorzubereiten, das ist ja erst morgen früh dran. Und die Oma musst du heute nicht anrufen, das mache ich später selbst. Danke dir, bis gleich, hab dich lieb!",
+        "rfDe": "Die Mutter spricht mit ihrem Mann.",
+        "rfVi": "Người mẹ nói chuyện với chồng.",
+        "r": false,
+        "mcDe": "Was soll er tun? / Der Sohn soll?",
+        "mcVi": "Anh ấy / cậu con trai nên làm gì?",
+        "opts": [
+          {
+            "de": "Mit Großmutter anrufen",
+            "vi": "Gọi điện cho bà.",
+            "c": false
+          },
+          {
+            "de": "Abendessen vorbereiten",
+            "vi": "Chuẩn bị bữa tối.",
+            "c": true
+          },
+          {
+            "de": "Morgenessen vorbereiten",
+            "vi": "Chuẩn bị bữa sáng.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Herzlich willkommen im Kunsthaus am Markt! Nein, wir sind kein Theater, hier gibt es keine Bühnenaufführung – bei uns dreht sich alles um Bilder und Ausstellungen. Der Eintritt zu unseren verschiedenen Ausstellungen kostet für Erwachsene 15 Euro. Kinder unter zwölf kommen komplett kostenlos rein, und Studenten zahlen ermäßigt nur 8 Euro. Geöffnet haben wir täglich von 10 bis 18 Uhr. Kommen Sie vorbei und entdecken Sie unsere neue Fotoschau im Erdgeschoss!",
+        "rfDe": "Die Werbung war für eine Theateraufführung.",
+        "rfVi": "Quảng cáo là về một buổi diễn kịch.",
+        "r": false,
+        "mcDe": "Wie hoch sind die Eintrittspreise zu verschiedenen Ausstellungen?",
+        "mcVi": "Giá vé cho các triển lãm khác nhau là bao nhiêu?",
+        "opts": [
+          {
+            "de": "Kostenlos",
+            "vi": "Miễn phí.",
+            "c": false
+          },
+          {
+            "de": "15 €",
+            "vi": "15 €",
+            "c": true
+          },
+          {
+            "de": "8 €",
+            "vi": "",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Achtung, eine wichtige Mitteilung am Flughafen – und nein, es geht diesmal ausnahmsweise nicht um die üblichen Sicherheitshinweise. Es betrifft konkret einen einzelnen Flug. Der Flug nach Zürich, Flug OS 118, ist nur leicht verspätet und startet gleich. Auch die Maschine nach Berlin hebt ganz normal ab. Leider müssen wir Ihnen aber mitteilen: Der Flug nach Wien um 16:40 Uhr fällt heute komplett aus, er wurde gestrichen. Betroffene Fluggäste nach Wien wenden sich bitte an den Schalter B3.",
+        "rfDe": "Bekanntgabe von Sicherheitshinweisen am Flughafen.",
+        "rfVi": "Thông báo các hướng dẫn an toàn tại sân bay.",
+        "r": false,
+        "mcDe": "Welcher Flug wurde annulliert (ausfallen)?",
+        "mcVi": "Chuyến bay nào bị hủy?",
+        "opts": [
+          {
+            "de": "Wien",
+            "vi": "Wien.",
+            "c": true
+          },
+          {
+            "de": "Berlin",
+            "vi": "Berlin.",
+            "c": false
+          },
+          {
+            "de": "Zürich",
+            "vi": "Zürich.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Hallo Frau Lindner, hier spricht Ihre Betreuerin aus der neuen Seniorenresidenz. Schön, dass Ihr Umzug in die neue Unterkunft ja so gut geklappt hat! Ich wollte Ihnen kurz die Freizeitangebote vorstellen. Ins Kino um die Ecke gehen viele, und ein Spaziergang im Park ist auch beliebt – aber Sie hatten sich ja für etwas ganz anderes entschieden: Sie melden sich bei unserem Golfklub an und spielen künftig auf der neuen Anlage mit. Die erste Runde ist schon am Mittwoch. Viel Spaß dabei!",
+        "rfDe": "Es ging um einen Wohnortwechsel / Änderung der Unterkunft.",
+        "rfVi": "Nói về việc thay đổi nơi ở.",
+        "r": true,
+        "mcDe": "Was wird die Dame tun?",
+        "mcVi": "Người phụ nữ sẽ làm gì?",
+        "opts": [
+          {
+            "de": "Sie besucht ein Kino",
+            "vi": "Cô ấy đi xem phim.",
+            "c": false
+          },
+          {
+            "de": "Sie geht spazieren",
+            "vi": "Cô ấy đi dạo.",
+            "c": false
+          },
+          {
+            "de": "Sie nimmt an einem Golfplatz teil",
+            "vi": "Cô ấy tham gia ở sân golf.",
+            "c": true
+          }
+        ]
+      },
+      {
+        "audioText": "Und jetzt noch ein Verkehrshinweis zum großen Stadtfest an diesem Wochenende – nein, kein Sportevent, sondern unser Musikfestival im Stadtpark. Ein kleiner Tipp von mir ganz allein hier im Studio, kein langes Gespräch nötig: Kommen Sie am besten mit öffentlichen Verkehrsmitteln, die meisten Gäste nutzen am liebsten Bus und U-Bahn direkt bis zum Eingang. Mit dem Taxi wird es teuer und dauert lange, und fürs Fahrrad gibt es kaum Stellplätze. Also, Bus und Bahn – das klappt am besten!",
+        "rfDe": "Ein Radiogespräch über eine Sportveranstaltung.",
+        "rfVi": "Một cuộc trò chuyện trên radio về một sự kiện thể thao.",
+        "r": false,
+        "mcDe": "Mit welchen Verkehrsmitteln fahren Besucher am liebsten?",
+        "mcVi": "Khách thích đi bằng phương tiện nào nhất?",
+        "opts": [
+          {
+            "de": "Mit Bus oder U-Bahn",
+            "vi": "Bằng xe buýt hoặc tàu điện ngầm.",
+            "c": true
+          },
+          {
+            "de": "Mit dem Taxi",
+            "vi": "Bằng taxi.",
+            "c": false
+          },
+          {
+            "de": "Mit dem Fahrrad",
+            "vi": "Bằng xe đạp.",
+            "c": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "sits": [
+      {
+        "audioText": "Hey Nina, ich bin's, Sophie! Du, schlechte Nachricht: Unser Kletterkurs am Samstag ist leider abgesagt, der Trainer ist krank geworden. Klettern fällt also flach. Ins Schwimmbad wollte ich als Ersatz vorschlagen, aber das ist gerade wegen Renovierung zu. Weißt du was? Am besten machen wir stattdessen eine schöne Tour zu Fuß hoch in die Berge, so vier, fünf Stunden durch die Wälder. Das Wetter soll ja super werden. Ruf mich kurz zurück, ob du Lust hast! Ciao!",
+        "rfDe": "Mädchen sprach mit ihrer Freundin über einen Kletterkurs und der Kurs findet nicht statt / abgesagt.",
+        "rfVi": "Cô gái nói với bạn về một khóa leo núi, và khóa đó bị hủy.",
+        "r": true,
+        "mcDe": "Was macht sie am besten?",
+        "mcVi": "Cô ấy nên làm gì là tốt nhất?",
+        "opts": [
+          {
+            "de": "Klettern",
+            "vi": "Leo núi.",
+            "c": false
+          },
+          {
+            "de": "Schwimmen",
+            "vi": "Bơi.",
+            "c": false
+          },
+          {
+            "de": "Wandern",
+            "vi": "Đi bộ / dã ngoại.",
+            "c": true
+          }
+        ]
+      },
+      {
+        "audioText": "Herzlich willkommen im Stadtmuseum! Eine kurze Durchsage – keine Sorge, wir bauen gerade nichts um, alle Bereiche sind ganz normal geöffnet. Ihre Eintrittskarten kaufen Sie bitte hier unten am Eingang, im Erdgeschoss. Unsere kleine Buchhandlung mit den Katalogen finden Sie ebenfalls im Erdgeschoss. Und wenn Sie Hunger bekommen: Ganz oben, im obersten Stockwerk, erwartet Sie unser Restaurant mit warmen Gerichten und kalten Snacks. Der Aufzug bringt Sie bequem nach oben. Wir wünschen Ihnen einen schönen Besuch!",
+        "rfDe": "Es gab ein Gespräch im Museum (Umbau).",
+        "rfVi": "Có một cuộc trò chuyện về việc cải tạo bảo tàng.",
+        "r": false,
+        "mcDe": "Was können die Leute im Oberstockwerk tun?",
+        "mcVi": "Khách có thể làm gì ở tầng trên?",
+        "opts": [
+          {
+            "de": "Tickets kaufen",
+            "vi": "Mua vé.",
+            "c": false
+          },
+          {
+            "de": "Bücher lesen",
+            "vi": "Đọc sách.",
+            "c": false
+          },
+          {
+            "de": "Warme und kalte Speisen kaufen",
+            "vi": "Mua đồ ăn nóng và lạnh.",
+            "c": true
+          }
+        ]
+      },
+      {
+        "audioText": "Guten Tag, Herr Falk, hier ist Ihre Hausbank, Herr Neumann am Telefon. Gute Neuigkeiten: Ihre neue Kreditkarte ist da und schon freigeschaltet. Das Beste daran – Sie zahlen dafür fast nichts, im ersten Jahr sind es null Euro Gebühr, danach nur ein Euro im Monat. Sie müssen also wirklich sehr wenig bezahlen. Um damit zu kaufen oder irgendwo bargeldlos zu bleiben, brauchen Sie nichts weiter zu tun. Die Karte liegt bei uns zur Abholung bereit. Bis bald!",
+        "rfDe": "Neue Kreditkarte.",
+        "rfVi": "Thẻ tín dụng mới.",
+        "r": true,
+        "mcDe": "Was ist passiert?",
+        "mcVi": "Điều gì đã xảy ra?",
+        "opts": [
+          {
+            "de": "Wenig zu bezahlen",
+            "vi": "Trả một khoản nhỏ.",
+            "c": true
+          },
+          {
+            "de": "Wenig zu kaufen",
+            "vi": "Mua ít.",
+            "c": false
+          },
+          {
+            "de": "Wenig zu bleiben",
+            "vi": "Ở lại thời gian ngắn.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Und nun die Wettervorhersage – heute ausnahmsweise nicht für den Westen, sondern für den Süden und Osten Deutschlands. Am Freitag weht ein kräftiger Wind, teils stürmische Böen in den Alpen. Der Samstag wird dagegen richtig freundlich, viel Sonne und bis zu zwanzig Grad. Am Sonntag müssen Sie dann aber den Regenschirm einpacken: Von Süden ziehen dichte Wolken auf und bringen anhaltenden Regen, teils kräftige Schauer bis in die Nacht. Bleiben Sie trocken – zumindest am Samstag!",
+        "rfDe": "Wettermeldungen über die Wetterlage in Westdeutschland.",
+        "rfVi": "Dự báo thời tiết ở miền Tây nước Đức.",
+        "r": false,
+        "mcDe": "Wie wird das Wetter am Sonntag sein?",
+        "mcVi": "Thời tiết Chủ Nhật sẽ thế nào?",
+        "opts": [
+          {
+            "de": "Sonnig",
+            "vi": "Nắng.",
+            "c": false
+          },
+          {
+            "de": "Regnerisch",
+            "vi": "Có mưa.",
+            "c": true
+          },
+          {
+            "de": "Windig",
+            "vi": "Có gió.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Aufgepasst, liebe Sprachtalente! Wir suchen für unseren großen Wettbewerb Menschen, die mehr als drei Sprachen fließend sprechen – also vier, fünf oder sogar mehr. Und jetzt der Hauptpreis: Die drei besten Teilnehmerinnen und Teilnehmer dürfen für ein ganzes Wochenende in die Hauptstadt Berlin reisen, alles bezahlt. Nach Paris geht es diesmal übrigens nicht, das war letztes Jahr. Und nein, die Jury bekommt natürlich kein Geschenk. Anmeldeschluss ist der 30. September. Machen Sie mit und zeigen Sie Ihr Können!",
+        "rfDe": "Wettbewerb für Personen, die mehr als drei Sprachen fließend beherrschen.",
+        "rfVi": "Cuộc thi cho những người thông thạo hơn ba ngôn ngữ.",
+        "r": true,
+        "mcDe": "Bei Wettbewerb dürfen?",
+        "mcVi": "Trong cuộc thi được phép gì?",
+        "opts": [
+          {
+            "de": "Sie reisen nach Paris",
+            "vi": "Họ đi Paris.",
+            "c": false
+          },
+          {
+            "de": "Drei Beste reisen nach Berlin",
+            "vi": "Ba người xuất sắc nhất đi Berlin.",
+            "c": true
+          },
+          {
+            "de": "Die Jury bekommt ein Geschenk",
+            "vi": "Ban giám khảo nhận quà.",
+            "c": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "sits": [
+      {
+        "audioText": "Guten Tag, hier ist die Praxis Dr. Sommer, gleich neben der Bank am Marktplatz – nein, wir sind nicht die Bankberatung, die ruft heute nicht bei Ihnen an. Also, Ihr alter Termin am Freitag um zehn, der fällt leider ganz weg, den können wir nicht mehr halten. Verschieben müssen wir aber nichts extra – ich würde Ihnen einfach einen komplett neuen Termin anbieten, nämlich Montag um halb neun. Passt Ihnen das? Rufen Sie kurz zurück, ja?",
+        "rfDe": "Der Text handelt von einer Bankberatung / Beratungsgespräch.",
+        "rfVi": "Văn bản nói về một buổi tư vấn ngân hàng.",
+        "r": false,
+        "mcDe": "Was ist passiert?",
+        "mcVi": "Điều gì đã xảy ra?",
+        "opts": [
+          {
+            "de": "Einen alten Termin",
+            "vi": "Một lịch hẹn cũ.",
+            "c": false
+          },
+          {
+            "de": "Neuen Termin verschieben",
+            "vi": "Hoãn lịch hẹn mới.",
+            "c": false
+          },
+          {
+            "de": "Schlägt einen neuen Termin vor",
+            "vi": "Đề xuất một lịch hẹn mới.",
+            "c": true
+          }
+        ]
+      },
+      {
+        "audioText": "Hallo Frau Berger, hier spricht Lena vom Friseursalon Haarscharf in der Lindenstraße. Ich wollte Ihnen zwei neue Termine für Ihren Haarschnitt vorschlagen. Also, heute noch am gleichen Tag zurückzurufen brauchen Sie nicht, der Salon ist gleich zu. Und einfach gar nicht melden – tja, dann verfällt Ihr Platz sofort. Am besten geben Sie mir morgen bis spätestens zwölf Uhr mittags Bescheid, dann halte ich Ihnen den Dienstagstermin frei. Bis dahin, schönen Abend!",
+        "rfDe": "Frau arbeitet bei einem Friseur – Ich habe eine Dame angerufen und neue Termine vorgeschlagen.",
+        "rfVi": "Cô ấy làm ở tiệm cắt tóc – đã gọi cho một bà và đề xuất các lịch hẹn mới.",
+        "r": true,
+        "mcDe": "Was kann eine Frau tun?",
+        "mcVi": "Người phụ nữ có thể làm gì?",
+        "opts": [
+          {
+            "de": "Rückruf am nächsten Tag bis Mittag",
+            "vi": "Gọi lại vào hôm sau trước trưa.",
+            "c": true
+          },
+          {
+            "de": "Am gleichen Tag antworten",
+            "vi": "Trả lời trong cùng ngày.",
+            "c": false
+          },
+          {
+            "de": "Gar nicht zurückrufen",
+            "vi": "Không gọi lại.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Guten Morgen, Autohaus Krüger am Ring, mein Name ist Thomas. Ab heute vergeben wir wieder freie Werkstatttermine für die Inspektion. Eine kurze Nachricht per Mail brauchen Sie diesmal nicht zu schreiben, das System ist umgestellt. Und einfach liegen lassen und ignorieren würde ich an Ihrer Stelle nicht, die Plätze sind schnell voll. Rufen Sie am besten heute Nachmittag noch einmal bei uns durch, dann tragen wir Sie direkt ein. Vielen Dank!",
+        "rfDe": "Es war, als würde der Anrufer Termine eröffnen.",
+        "rfVi": "Cứ như thể người gọi đang mở các lịch hẹn.",
+        "r": true,
+        "mcDe": "Was macht sie?",
+        "mcVi": "Cô ấy làm gì?",
+        "opts": [
+          {
+            "de": "Wieder anrufen",
+            "vi": "Gọi lại.",
+            "c": true
+          },
+          {
+            "de": "Sie ignoriert es",
+            "vi": "Cô ấy bỏ qua.",
+            "c": false
+          },
+          {
+            "de": "Sie schreibt eine Nachricht",
+            "vi": "Cô ấy viết một tin nhắn.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Liebe Eltern, hier die Durchsage zu unserem Schulfest am Samstag. Sie alle, ganz besonders die Familien unserer Erstklässler, sind herzlich eingeladen. Ein großes Essens- und Getränkezelt hatten wir eigentlich geplant, das fällt dieses Jahr leider aus – also bitte selbst eine Kleinigkeit mitbringen. Dafür ist auf dem Sportplatz jede Menge los: Die Kinder dürfen sich den ganzen Nachmittag beim Fußball, Basketball und anderen Spielen mit dem Ball austoben. Beginn ist um vierzehn Uhr!",
+        "rfDe": "Es gab eine Veranstaltung in der Schule und die Familien / Eltern waren dort eingeladen.",
+        "rfVi": "Có một sự kiện ở trường và các gia đình được mời.",
+        "r": true,
+        "mcDe": "Was gibt's draußen?",
+        "mcVi": "Ngoài trời có gì?",
+        "opts": [
+          {
+            "de": "Verschiedene Ballspiele",
+            "vi": "Nhiều trò chơi bóng khác nhau.",
+            "c": true
+          },
+          {
+            "de": "Sport und Getränke",
+            "vi": "Thể thao và đồ uống.",
+            "c": false
+          },
+          {
+            "de": "Sport und Essen",
+            "vi": "Thể thao và đồ ăn.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Und weiter geht's hier bei Radio Wellenklang auf 95,5 – nicht zu verwechseln mit dem Kanal B-19, der läuft heute übrigens gar nicht. Die Nachrichten mit dem Verkehr sind gerade eben zu Ende gegangen, und die große Sportschau, tja, die kommt erst heute Abend. Jetzt aber, für die nächste Stunde nonstop, drehen wir die Musik auf: die frischesten Charthits und brandneue Songs, nur für euch. Viel Spaß beim Mithören!",
+        "rfDe": "Radio B-19 sagt, dass es das Unterhaltung hat.",
+        "rfVi": "Đài B-19 thông báo có một chương trình giải trí.",
+        "r": false,
+        "mcDe": "Was läuft im Radio?",
+        "mcVi": "Trên radio đang phát gì?",
+        "opts": [
+          {
+            "de": "Nachrichten",
+            "vi": "Tin tức.",
+            "c": false
+          },
+          {
+            "de": "Neue Hits / Musik Hits",
+            "vi": "Các bản hit mới / nhạc hit.",
+            "c": true
+          },
+          {
+            "de": "Sport",
+            "vi": "Thể thao.",
+            "c": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "sits": [
+      {
+        "audioText": "Meine Damen und Herren, willkommen an Bord der 'Rheinperle'. Wir schippern jetzt gemütlich den Rhein hinunter Richtung Koblenz. Keine Sorge, das hier ist keine Durchfahrt ohne Halt und wir fahren auch nicht pausenlos durch – im Gegenteil. Gegen dreizehn Uhr legen wir für eine Stunde an einem gemütlichen Gasthaus am Ufer an, wo Sie in Ruhe zu Mittag essen können. Bitte denken Sie an Ihre Jacke, auf dem Wasser weht ein frischer Wind.",
+        "rfDe": "Er spricht über eine Schifffahrt zum Rhein River.",
+        "rfVi": "Anh ấy nói về một chuyến đi thuyền trên sông Rhein.",
+        "r": true,
+        "mcDe": "Was passiert während der Fahrt?",
+        "mcVi": "Điều gì xảy ra trong chuyến đi?",
+        "opts": [
+          {
+            "de": "Es gibt keine Pause",
+            "vi": "Không có nghỉ giải lao.",
+            "c": false
+          },
+          {
+            "de": "Halt im Restaurant",
+            "vi": "Dừng tại nhà hàng.",
+            "c": true
+          },
+          {
+            "de": "Direktfahrt ohne Stopp",
+            "vi": "Đi thẳng không dừng.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Achtung am Gleis vier: Wir bitten um Ihre Aufmerksamkeit. Der ICE nach Hamburg um sechzehn Uhr zwölf hat heute leider keine Weiterfahrt, er endet hier vorzeitig. Auch der Zug in Richtung Berlin ist wegen Bauarbeiten umgeleitet und kommt später. Der nächste Zug, der hier tatsächlich abfährt, bringt Sie in die Quadratestadt am Neckar, also nach Mannheim, planmäßig in etwa zehn Minuten von Gleis vier. Bitte beachten Sie die geänderten Anzeigen.",
+        "rfDe": "Der Zug wird Verspätung haben / umbegleiten.",
+        "rfVi": "Tàu sẽ bị trễ.",
+        "r": true,
+        "mcDe": "Wohin fährt der nächste Zug?",
+        "mcVi": "Chuyến tàu tiếp theo đi đâu?",
+        "opts": [
+          {
+            "de": "Berlin",
+            "vi": "Berlin.",
+            "c": false
+          },
+          {
+            "de": "Hamburg",
+            "vi": "Hamburg.",
+            "c": false
+          },
+          {
+            "de": "Mannheim",
+            "vi": "Mannheim.",
+            "c": true
+          }
+        ]
+      },
+      {
+        "audioText": "Liebe Gäste, herzlich willkommen zum Familientag im Stadtpark. Die Kleinen dürfen natürlich nur zusammen mit Mama, Papa oder den Großeltern aufs Gelände – bitte lassen Sie die Kinder nicht allein herumlaufen. Eine ruhige Leseecke mit Bilderbüchern war angedacht, die konnten wir wetterbedingt aber nicht aufbauen. Stattdessen warten auf der großen Wiese Fußball, Völkerball und viele andere Spiele mit dem Ball auf die Kinder. Los geht's um elf Uhr bei hoffentlich trockenem Himmel.",
+        "rfDe": "Die Kinder werden von ihren Familien begleitet.",
+        "rfVi": "Trẻ em đi cùng với gia đình.",
+        "r": true,
+        "mcDe": "Was sind die Aktivitäten?",
+        "mcVi": "Các hoạt động là gì?",
+        "opts": [
+          {
+            "de": "Lesen",
+            "vi": "Đọc sách.",
+            "c": false
+          },
+          {
+            "de": "Ballspiele",
+            "vi": "Trò chơi bóng.",
+            "c": true
+          }
+        ]
+      },
+      {
+        "audioText": "Und noch ein Hinweis zu unserem Kinoabend heute: Gezeigt wird keineswegs eine brandneue Produktion, sondern ein echter Klassiker von 1975, frisch restauriert. Ein kleines Konzert im Foyer war vorher geplant, das lassen wir heute ausfallen. Und eine lange Pause zwischendurch gibt es diesmal auch nicht. Dafür sitzen wir im Anschluss an den Film noch zusammen und sprechen mit unserem Gast über die Bilder – ein offenes Gespräch für alle, die Lust haben. Beginn: zwanzig Uhr.",
+        "rfDe": "Neuer Film.",
+        "rfVi": "Phim mới.",
+        "r": false,
+        "mcDe": "Was fand danach statt?",
+        "mcVi": "Điều gì diễn ra sau đó?",
+        "opts": [
+          {
+            "de": "Diskussion nach dem Film",
+            "vi": "Thảo luận sau phim.",
+            "c": true
+          },
+          {
+            "de": "Pause",
+            "vi": "Nghỉ giải lao.",
+            "c": false
+          },
+          {
+            "de": "Konzert",
+            "vi": "Buổi hòa nhạc.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Hunger auf echte italienische Pizza? Dann aufgepasst, hier kommt das Angebot der Pizzeria Bella Napoli in der Bahnhofstraße! Freitags ist bei uns leider ganz normaler Preis, kein Rabatt. Und montags haben wir sogar Ruhetag, da bleibt der Ofen kalt. Aber jeweils am Sonnabend und am Sonntag bekommen Sie bei uns jede zweite Pizza geschenkt – das ganze Wochenende lang! Einfach vorbeikommen oder unter 0621-334455 bestellen. Buon appetito!",
+        "rfDe": "Werbung für eine Pizzeria.",
+        "rfVi": "Quảng cáo cho một tiệm pizza.",
+        "r": true,
+        "mcDe": "Wann ist das Angebot gültig?",
+        "mcVi": "Ưu đãi có hiệu lực khi nào?",
+        "opts": [
+          {
+            "de": "Freitag",
+            "vi": "Thứ Sáu.",
+            "c": false
+          },
+          {
+            "de": "Samstag und Sonntag",
+            "vi": "Thứ Bảy và Chủ Nhật.",
+            "c": true
+          },
+          {
+            "de": "Nur Montag",
+            "vi": "Chỉ thứ Hai.",
+            "c": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "sits": [
+      {
+        "audioText": "Hey Lisa, ich bin gerade im Möbelhaus und suche was fürs neue Wohnzimmer. Also, dieses graue Sofa, das du mir empfohlen hast – ich hab's mir angeschaut. Kostenlos ist es natürlich nicht, kostet sogar ganz schön viel. Aber das ist nicht mal das Problem. Es ist einfach viel zu groß für unsere kleine Ecke, das passt hinten und vorne nicht in den Raum. Also für uns taugt das leider gar nichts. Ich schau mich weiter um, meld mich später!",
+        "rfDe": "Im Text geht es um den Kauf von Möbeln für das Haus.",
+        "rfVi": "Văn bản nói về việc mua nội thất cho nhà.",
+        "r": true,
+        "mcDe": "Das Sofa ist?",
+        "mcVi": "Ghế sofa thì?",
+        "opts": [
+          {
+            "de": "Geeignet",
+            "vi": "Phù hợp.",
+            "c": false
+          },
+          {
+            "de": "Nicht geeignet",
+            "vi": "Không phù hợp.",
+            "c": true
+          },
+          {
+            "de": "Kostenlos",
+            "vi": "Miễn phí.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Hallo Nina, hier ist Mama. Kleine Planänderung: Unser Termin bei der Wohnungsübergabe ist von Donnerstag auf Freitag um fünfzehn Uhr verschoben worden. Du musst den Schlüssel diesmal nicht zurückgeben, das machen wir später. Und einfach selbst irgendeinen Schlüssel mitnehmen geht auch nicht. Wichtig ist: Geh bitte zu Frau Wagner, unserer Haushälterin, und lass dir von ihr den Wohnungsschlüssel geben. Ohne den kommen wir nämlich nicht rein. Danke dir, Schatz!",
+        "rfDe": "Der Termin wurde geändert.",
+        "rfVi": "Lịch hẹn đã bị thay đổi.",
+        "r": true,
+        "mcDe": "Das Mädchen muss?",
+        "mcVi": "Cô gái phải làm gì?",
+        "opts": [
+          {
+            "de": "Schlüssel zurückgeben",
+            "vi": "Trả lại chìa khóa.",
+            "c": false
+          },
+          {
+            "de": "Schlüssel nehmen",
+            "vi": "Lấy chìa khóa.",
+            "c": false
+          },
+          {
+            "de": "Die Haushälterin Schlüssel abnehmen",
+            "vi": "Nhận chìa khóa từ người quản gia.",
+            "c": true
+          }
+        ]
+      },
+      {
+        "audioText": "Liebe Musikfreunde, ein Wort zum heutigen Konzert der Band 'Nordwind' hier im Kulturhaus. Auf große Tournee durch andere Städte geht die Gruppe erst mal nicht, das ist gestrichen. Und nur stur ihre Lieder singen wollen die vier Musiker heute auch nicht. Nein, das Besondere: Die Band stellt den kompletten Ablauf des Abends ganz allein zusammen, ohne Agentur, alles in eigener Regie. Es geht gleich um zwanzig Uhr dreißig los, bitte nehmen Sie langsam Ihre Plätze ein.",
+        "rfDe": "Der Text handelt von einem Konzert.",
+        "rfVi": "Văn bản nói về một buổi hòa nhạc.",
+        "r": true,
+        "mcDe": "Was wird die Band tun?",
+        "mcVi": "Ban nhạc sẽ làm gì?",
+        "opts": [
+          {
+            "de": "Eine Tour machen",
+            "vi": "Đi lưu diễn.",
+            "c": false
+          },
+          {
+            "de": "Das Ausstellungsprogramm selbst organisieren",
+            "vi": "Tự tổ chức chương trình triển lãm.",
+            "c": true
+          },
+          {
+            "de": "Nur singen",
+            "vi": "Chỉ hát.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Achtung, ein Tipp aus unserer Möbelabteilung – und nein, dieser Hinweis ist nicht von einer Kundin namens Leonie, sondern von uns, dem Geschäft selbst. Das beliebte Ecksofa 'Komfort' kostet im Laden hier keineswegs mehr als sonst, keine Sorge. In der Zeitungsbeilage am Wochenende finden Sie dazu übrigens keinen Rabatt. Wer aber richtig sparen will, bestellt das Sofa einfach über unseren Onlineshop – dort ist der Preis derzeit deutlich heruntergesetzt. Nur diese Woche!",
+        "rfDe": "Leonie möchte ihr Haus einrichten.",
+        "rfVi": "Leonie muốn trang trí nhà mình.",
+        "r": false,
+        "mcDe": "Was über das Sofa?",
+        "mcVi": "Về chiếc sofa thì sao?",
+        "opts": [
+          {
+            "de": "Der Preis wird direkt im Internet – online reduziert",
+            "vi": "Giá được giảm trực tiếp trên internet.",
+            "c": true
+          },
+          {
+            "de": "Preis in der Zeitung reduziert",
+            "vi": "Giá giảm trên báo.",
+            "c": false
+          },
+          {
+            "de": "Preis im Geschäft teurer",
+            "vi": "Giá ở cửa hàng đắt hơn.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Guten Tag, Sie haben das Bürgerbüro der Stadt erreicht – wir sind übrigens nicht die Verkehrspolizei unter B-30, die erreichen Sie unter einer anderen Nummer. Einen festen Termin brauchen Sie bei uns für diese Sache nicht zu vereinbaren. Und eine E-Mail schreiben lohnt sich gerade nicht, das Postfach wird derzeit nicht gelesen. Am schnellsten geht es, wenn Sie einfach in etwa einer Stunde noch einmal hier durchklingeln. Unsere Leitung ist ab vierzehn Uhr wieder frei.",
+        "rfDe": "Straßen-Polizei B-30.",
+        "rfVi": "Công ty đường bộ B-30.",
+        "r": false,
+        "mcDe": "Was soll man tun?",
+        "mcVi": "Người ta nên làm gì?",
+        "opts": [
+          {
+            "de": "Termin vereinbaren",
+            "vi": "Đặt lịch hẹn.",
+            "c": false
+          },
+          {
+            "de": "Wiederanrufen",
+            "vi": "Gọi lại.",
+            "c": true
+          },
+          {
+            "de": "Email schreiben",
+            "vi": "Viết email.",
+            "c": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "sits": [
+      {
+        "audioText": "Herzlich willkommen bei Timmy, Ihrem Supermarkt in der Innenstadt! Ein kurzer Wegweiser für Sie: Unsere Elektroabteilung finden Sie ganz oben im dritten Obergeschoss. Getränke und Frischwaren liegen gleich hier im Erdgeschoss. Und wer es süß mag – alles rund um Schokolade, Bonbons und Kekse – der fährt bitte zwei Etagen über dem Eingang, also ins zweite Obergeschoss. Heute übrigens auf alle Süßigkeiten zwanzig Prozent Rabatt. Viel Spaß beim Einkaufen bei Timmy!",
+        "rfDe": "Eine Werbung für einen Supermarkt namens Timmy.",
+        "rfVi": "Quảng cáo cho một siêu thị tên Timmy.",
+        "r": true,
+        "mcDe": "Was ist passiert?",
+        "mcVi": "Điều gì đã xảy ra?",
+        "opts": [
+          {
+            "de": "Die Süßwarenabteilung befindet sich im zweiten Stock",
+            "vi": "Quầy bánh kẹo nằm ở tầng hai.",
+            "c": true
+          },
+          {
+            "de": "Im dritten Stock",
+            "vi": "Ở tầng ba.",
+            "c": false
+          },
+          {
+            "de": "Im zweiten Stock",
+            "vi": "Ở tầng hai.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Guten Abend, hier die Abendnachrichten aus Brandenburg. Unser Hauptthema heute: Autofahrer müssen sich in Potsdam auf keine neuen Sperrungen einstellen, da bleibt alles beim Alten. Auch für Motorradfahrer gibt es diese Woche keine besonderen Meldungen. Ausführlich berichten wir dagegen über die vielen Menschen, die täglich mit dem Fahrrad zur Arbeit strampeln: Die Stadt baut bis 2027 rund dreißig Kilometer neue Radwege. Mehr dazu gleich nach dem Wetter.",
+        "rfDe": "Abendnachrichten aus Brandenburg.",
+        "rfVi": "Bản tin tối từ Brandenburg.",
+        "r": true,
+        "mcDe": "Worüber wurde berichtet?",
+        "mcVi": "Đã đưa tin về điều gì?",
+        "opts": [
+          {
+            "de": "Autofahrer",
+            "vi": "Tài xế ô tô.",
+            "c": false
+          },
+          {
+            "de": "Radfahrer",
+            "vi": "Người đi xe đạp.",
+            "c": true
+          },
+          {
+            "de": "Motorradfahrer",
+            "vi": "Người đi xe máy.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Guten Tag, hier die Praxis für Zahngesundheit Dr. Klein – nicht der Friseursalon, bei dem Sie zuletzt waren, wir sind die Zahnarztpraxis. Es geht um Ihren reservierten Kontrolltermin. Bis Sonntag müssen Sie sich noch nicht entscheiden, so knapp ist es nicht. Und länger als bis Anfang der Woche, etwa bis Dienstag, können wir den Platz leider nicht halten. Bitte bestätigen Sie den Termin spätestens am kommenden Montag, sonst vergeben wir ihn weiter. Danke!",
+        "rfDe": "Termin beim Friseur.",
+        "rfVi": "Lịch hẹn ở tiệm cắt tóc.",
+        "r": false,
+        "mcDe": "Bis wann ist der Termin gültig?",
+        "mcVi": "Lịch hẹn có hiệu lực đến khi nào?",
+        "opts": [
+          {
+            "de": "Bis Sonntag",
+            "vi": "Đến Chủ Nhật.",
+            "c": false
+          },
+          {
+            "de": "Bis Montag",
+            "vi": "Đến thứ Hai.",
+            "c": true
+          },
+          {
+            "de": "Bis Dienstag",
+            "vi": "Đến thứ Ba.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Hi Sabine, ich bin's, Katrin. Also, meine Reise nächste Woche – ich fahre übrigens nicht allein, meine Schwester kommt mit, und wir fliegen auch nicht nach Italien, sondern nach Kroatien. Frisches Obst mitzubringen lohnt sich ja nicht, das wird auf dem Rückweg nur matschig. Aber ich möchte unbedingt ein hübsches Mitbringsel für unseren netten Nachbarn Herrn Falk besorgen, er hat ja die ganze Zeit die Post reingeholt. Hast du eine Idee, was ihm gefallen könnte?",
+        "rfDe": "Sie verreist allein nach Halien.",
+        "rfVi": "Cô ấy đi du lịch một mình đến Halien.",
+        "r": false,
+        "mcDe": "Sie wird?",
+        "mcVi": "Cô ấy sẽ?",
+        "opts": [
+          {
+            "de": "Obst mitbringen",
+            "vi": "Mang trái cây về.",
+            "c": false
+          },
+          {
+            "de": "Ein Geschenk für ihren Nachbarn kaufen",
+            "vi": "Mua quà cho hàng xóm.",
+            "c": true
+          }
+        ]
+      },
+      {
+        "audioText": "Hey Mimi, hier ist Katia. Tut mir echt leid, aber aus dem Kino heute Abend wird bei mir leider nichts. Es ist so: Zu Hause ist gerade dicke Luft. Meine Nachbarin und meine Großeltern haben damit gar nichts zu tun, die sind ganz entspannt. Aber mein Bruder und meine Eltern haben sich richtig in die Haare gekriegt, es gab einen fürchterlichen Krach zwischen den beiden Seiten. Ich muss jetzt hierbleiben und schlichten. Lass uns die Vorstellung um zwanzig Uhr einfach verschieben, ja?",
+        "rfDe": "Katia kann nicht ins Kino gehen.",
+        "rfVi": "Katia không thể đi xem phim.",
+        "r": true,
+        "mcDe": "Was passiert?",
+        "mcVi": "Điều gì xảy ra?",
+        "opts": [
+          {
+            "de": "Ihrer Familie schnell zu kommen",
+            "vi": "Gia đình cô ấy đến nhanh.",
+            "c": false
+          },
+          {
+            "de": "Ihre Nachbarin und ihre Großeltern",
+            "vi": "Hàng xóm và ông bà của cô ấy.",
+            "c": false
+          },
+          {
+            "de": "Ihr Bruder und ihre Familie / Eltern stritten",
+            "vi": "Anh em và gia đình / cha mẹ cãi nhau.",
+            "c": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "sits": [
+      {
+        "audioText": "Guten Tag, hier ist die Rezeption vom Hotel Seeblick, Zimmer 214. Also, ähm, ich rufe wegen Ihrer Buchung im November an. Zunächst dachten wir, der Preis pro Nacht bleibt genau gleich, und eine Ermäßigung gibt es diesmal leider auch nicht. Na ja, tatsächlich müssen wir Ihnen mitteilen, dass die Übernachtung etwas teurer wird, der Aufschlag liegt bei rund 18 Euro. Bitte rufen Sie kurz zurück. Vielen Dank!",
+        "rfDe": "Ein Hotel – eine Checkpoint-Einheit im Hotel kontaktierte.",
+        "rfVi": "Một khách sạn – một bộ phận kiểm tra trong khách sạn đã liên hệ.",
+        "r": true,
+        "mcDe": "Was wurde mitgeteilt?",
+        "mcVi": "Họ được thông báo điều gì?",
+        "opts": [
+          {
+            "de": "Preis bleibt gleich",
+            "vi": "Giá giữ nguyên.",
+            "c": false
+          },
+          {
+            "de": "Preisanstieg / Mehr kosten",
+            "vi": "Giá tăng.",
+            "c": true
+          },
+          {
+            "de": "Es gibt Ermäßigung",
+            "vi": "Có giảm giá.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Und nun der Verkehrsservice um kurz nach acht. Liebe Autofahrer, auf der B31 bei Freiburg staut es sich, also bitte etwas Geduld. Manche denken ja, wegen der Ferienzeit sei die Strecke dicht, nein, das ist es nicht. In Wirklichkeit ist die Fahrbahn nach einem heftigen Zusammenstoß zweier Lkw komplett blockiert. Die Bergung dauert noch etwa 40 Minuten. Weichen Sie am besten über Emmendingen aus. Gute Fahrt!",
+        "rfDe": "Verkehrsnachrichten.",
+        "rfVi": "Tin tức giao thông.",
+        "r": true,
+        "mcDe": "Die Straße ist gesperrt?",
+        "mcVi": "Đường bị chặn vì?",
+        "opts": [
+          {
+            "de": "Wegen Unfall",
+            "vi": "Do tai nạn.",
+            "c": true
+          },
+          {
+            "de": "Wegen Urlaub",
+            "vi": "Do kỳ nghỉ.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Hallo Mama, ich bin's, Lena. Also, du weißt ja, ich träume schon lange von einer neuen Küche, die alte ist einfach zu klein. Heute war ich beim Italiener um die Ecke und hab, na ja, nicht etwa nur Obst eingekauft, sondern gleich mehrere frische Speisen für die Feier bestellt, so vier verschiedene Gerichte. Die werden am Samstag um 17 Uhr geliefert. Ruf mich bitte zurück, ja? Bis später!",
+        "rfDe": "Sie möchte eine neue Küche.",
+        "rfVi": "Cô ấy muốn một nhà bếp mới.",
+        "r": true,
+        "mcDe": "Sie?",
+        "mcVi": "Cô ấy?",
+        "opts": [
+          {
+            "de": "Hat neue Gerichte bestellt",
+            "vi": "Đã đặt các món ăn mới.",
+            "c": true
+          },
+          {
+            "de": "Hat Obst bestellt",
+            "vi": "Đã đặt trái cây.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Hi Tom, hier ist Sabine. Du hast wohl gedacht, ich ruf an, um unseren Termin zu verschieben, nein, ganz im Gegenteil, der bleibt genau so stehen. Und ans Schlafengehen ist heute auch nicht zu denken, dafür ist keine Zeit. Wir müssen unbedingt heute Abend um 19 Uhr essen gehen, ich hab im Lokal Adler für uns reserviert. Zieh dich also schick an. Bis gleich, tschüss!",
+        "rfDe": "Sie sprechen mit ihr, um den Termin zu verschieben.",
+        "rfVi": "Họ nói chuyện với cô ấy để hoãn lịch hẹn.",
+        "r": false,
+        "mcDe": "Man muss unbedingt?",
+        "mcVi": "Nhất định phải?",
+        "opts": [
+          {
+            "de": "Ins Restaurant gehen",
+            "vi": "Đến nhà hàng.",
+            "c": true
+          },
+          {
+            "de": "Schlafen",
+            "vi": "Ngủ.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Entdecken Sie München mit dem neuen Citypass! Na ja, viele glauben, damit könne man alle Sehenswürdigkeiten kostenlos besichtigen, das stimmt so nicht, es gibt bloß einen kleinen Rabatt. Auch günstiger einkaufen in den Geschäften ist damit nicht möglich. Was der Pass aber wirklich bietet: Sie fahren drei Tage lang gratis mit allen öffentlichen Verkehrsmitteln in und um München. Nur 24,90 Euro. Erhältlich an jedem Automaten!",
+        "rfDe": "Sie hören eine Werbung für Sehenswürdigkeiten.",
+        "rfVi": "Bạn nghe một quảng cáo về các điểm tham quan.",
+        "r": false,
+        "mcDe": "Mit dem Citypass kann man?",
+        "mcVi": "Với thẻ Citypass có thể làm gì?",
+        "opts": [
+          {
+            "de": "Busse und Bahnen in und um München nutzen",
+            "vi": "Dùng xe buýt và tàu trong và quanh München.",
+            "c": true
+          },
+          {
+            "de": "Sehenswürdigkeiten gratis besuchen",
+            "vi": "Thăm các điểm tham quan miễn phí.",
+            "c": false
+          },
+          {
+            "de": "Günstig in der Stadt einkaufen",
+            "vi": "Mua sắm giá rẻ trong thành phố.",
+            "c": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "sits": [
+      {
+        "audioText": "Achtung, eine Durchsage für alle Reisenden auf Gleis 7. Also, entgegen mancher Gerüchte sind nicht sämtliche Verbindungen dieser Linie gesperrt, der Betrieb läuft weitgehend normal. Der Zug nach Genf, der eben genannt wurde, hat allerdings nichts mit uns zu tun. Unser ICE 1502 bringt Sie heute pünktlich um 14:20 Uhr in die deutsche Hauptstadt. Bitte steigen Sie jetzt ein. Wir wünschen Ihnen eine angenehme Fahrt nach Berlin!",
+        "rfDe": "Alle Linien einer bestimmten Linie werden geschlossen sein.",
+        "rfVi": "Toàn bộ một tuyến nhất định sẽ bị đóng.",
+        "r": false,
+        "mcDe": "Wohin geht die Reise?",
+        "mcVi": "Chuyến đi đến đâu?",
+        "opts": [
+          {
+            "de": "Nach Berlin",
+            "vi": "Đến Berlin.",
+            "c": true
+          },
+          {
+            "de": "Nach Genf",
+            "vi": "Đến Geneva.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Hey Papa, ich bin's. Also, du hast gefragt, ob ich wegen der Versicherung anrufe, nein, darum geht's diesmal gar nicht. Und keine Sorge, essen waren wir schon, wir müssen also nicht ins Restaurant. Der Wagen macht seit heute Morgen komische Geräusche, deshalb bringe ich ihn gleich um halb drei zum Mechaniker in die Reparatur. Kannst du mich danach abholen? Ruf bitte kurz zurück. Danke, bis später!",
+        "rfDe": "Das Mädchen spricht wegen der Versicherung.",
+        "rfVi": "Cô gái nói chuyện về vấn đề bảo hiểm.",
+        "r": false,
+        "mcDe": "Sie wird?",
+        "mcVi": "Cô ấy sẽ?",
+        "opts": [
+          {
+            "de": "Das Auto in die Werkstatt bringen",
+            "vi": "Đưa xe đến gara sửa.",
+            "c": true
+          },
+          {
+            "de": "Ins Restaurant gehen",
+            "vi": "Đến nhà hàng.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Aufgepasst, liebe Gäste des Freizeitbads Aquapark! Also, unsere neuen Sommerangebote gelten, anders als letztes Jahr, ausdrücklich auch für den Wassersport, da müssen Sie nichts extra zahlen. Ein Familienrabatt für alle ist diesmal allerdings nicht dabei. Die günstigen Preise, na ja, richten sich nämlich nur an die Kleinen: Alle unter zwölf Jahren zahlen bloß 3 Euro Eintritt. Kommen Sie vorbei, täglich ab 9 Uhr!",
+        "rfDe": "Die Angebote gelten nicht für Wassersport.",
+        "rfVi": "Các ưu đãi không áp dụng cho thể thao dưới nước.",
+        "r": false,
+        "mcDe": "Die Angebote sind?",
+        "mcVi": "Các ưu đãi dành cho?",
+        "opts": [
+          {
+            "de": "Für Kinder",
+            "vi": "Cho trẻ em.",
+            "c": true
+          },
+          {
+            "de": "Für Familie",
+            "vi": "Cho gia đình.",
+            "c": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Flughafen & Bahnhof",
+    "sits": [
+      {
+        "audioText": "Sehr geehrte Fahrgäste, eine wichtige Durchsage. Also, man hört ja, es liege an einem beschädigten Waggon, das ist so nicht ganz richtig, die Ursache ist eine andere. Wer heute Abend noch nach Graz wollte, kann leider nicht mehr fahren, und ein Umsteigen in Bruck bringt Ihnen diesmal auch nichts. Die Weiterreise nach Graz ist erst am kommenden Morgen ab 6:45 Uhr möglich. Wir bitten um Ihr Verständnis.",
+        "rfDe": "Sie werden über den Schaden an einem Zug informiert.",
+        "rfVi": "Bạn được thông báo về hư hỏng trên một chuyến tàu.",
+        "r": false,
+        "mcDe": "Wer nach Graz möchte, …",
+        "mcVi": "Người muốn đi Graz thì …",
+        "opts": [
+          {
+            "de": "kann erst morgen fahren.",
+            "vi": "chỉ có thể đi vào ngày mai.",
+            "c": true
+          },
+          {
+            "de": "fährt heute Abend.",
+            "vi": "đi tối nay.",
+            "c": false
+          },
+          {
+            "de": "muss umsteigen.",
+            "vi": "phải đổi tàu.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Meine Damen und Herren, eine Information für die Passagiere am Gate B12. Also, der Flug nach Wien hat lediglich eine kleine Verspätung von zwanzig Minuten, und die Maschine nach Zürich boardet ganz normal. Leider müssen wir Ihnen jedoch mitteilen: Der Flug LH 431 nach Genf entfällt heute komplett, wegen technischer Probleme. Betroffene Reisende wenden sich bitte an den Schalter 4. Wir bedauern die Unannehmlichkeiten sehr.",
+        "rfDe": "Sie hören Infos zur Sicherheit am Flughafen.",
+        "rfVi": "Bạn nghe thông tin về an ninh ở sân bay.",
+        "r": false,
+        "mcDe": "Welcher Flug fällt aus?",
+        "mcVi": "Chuyến bay nào bị hủy?",
+        "opts": [
+          {
+            "de": "Der Flug nach Genf.",
+            "vi": "Chuyến đi Geneva.",
+            "c": true
+          },
+          {
+            "de": "Der Flug nach Wien.",
+            "vi": "Chuyến đi Wien.",
+            "c": false
+          },
+          {
+            "de": "Der Flug nach Zürich.",
+            "vi": "Chuyến đi Zürich.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Liebe Reisende im ICE 1010, eine Durchsage vom Zugchef. Also, keine Sorge, der Zug fällt heute nicht aus, das war ein Irrtum. Ganz pünktlich, na ja, werden wir aber leider auch nicht sein. Wegen einer geänderten Streckenführung bei Wuppertal erreichen wir Köln Hauptbahnhof mit rund 25 Minuten Verzögerung, also etwa um 16:50 Uhr statt 16:25 Uhr. Ihre Anschlusszüge warten. Wir danken Ihnen für Ihre Geduld.",
+        "rfDe": "Sie hören Infos über eine geänderte Zugstrecke.",
+        "rfVi": "Bạn nghe thông tin về việc thay đổi tuyến đường tàu.",
+        "r": true,
+        "mcDe": "Der Zug …",
+        "mcVi": "Chuyến tàu …",
+        "opts": [
+          {
+            "de": "kommt in Köln verspätet an.",
+            "vi": "đến Köln muộn.",
+            "c": true
+          },
+          {
+            "de": "fällt heute aus.",
+            "vi": "hôm nay bị hủy.",
+            "c": false
+          },
+          {
+            "de": "fährt pünktlich.",
+            "vi": "chạy đúng giờ.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Achtung, eine Sicherheitsdurchsage für alle Fluggäste im Terminal 2. Also, der Flug nach Berlin startet planmäßig, und auch die Maschine nach Genf hebt wie vorgesehen ab. Aus Sicherheitsgründen jedoch, na ja, wird der Flug OS 234 nach Wien heute leider gestrichen. Alle betroffenen Passagiere erhalten am Informationsschalter neben Gate 9 einen Ersatzflug für morgen früh. Bitte behalten Sie Ihr Gepäck stets im Auge. Vielen Dank.",
+        "rfDe": "Es gibt eine Bekanntgabe von Sicherheitshinweisen am Flughafen.",
+        "rfVi": "Có thông báo các hướng dẫn an toàn tại sân bay.",
+        "r": false,
+        "mcDe": "Welcher Flug wurde annulliert?",
+        "mcVi": "Chuyến bay nào bị hủy bỏ?",
+        "opts": [
+          {
+            "de": "Der Flug nach Wien.",
+            "vi": "Chuyến đi Wien.",
+            "c": true
+          },
+          {
+            "de": "Der Flug nach Berlin.",
+            "vi": "Chuyến đi Berlin.",
+            "c": false
+          },
+          {
+            "de": "Der Flug nach Genf.",
+            "vi": "Chuyến đi Geneva.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Sehr geehrte Fahrgäste, hier spricht Ihr Zugbegleiter. Also, wie Sie vielleicht schon gemerkt haben, hat unser Zug etwas Verspätung und wird zudem umgeleitet. Wir fahren heute nicht direkt über Köln, und Graz steht ohnehin nicht auf unserer Route. Der nächste planmäßige Halt ist in wenigen Minuten der Bahnhof Mülheim, Ankunft gegen 11:15 Uhr. Bitte denken Sie beim Aussteigen an Ihr Gepäck. Ich danke Ihnen für Ihr Verständnis.",
+        "rfDe": "Der Zug wird Verspätung haben oder umgeleitet.",
+        "rfVi": "Tàu sẽ bị trễ hoặc đổi hướng.",
+        "r": true,
+        "mcDe": "Wie heißt der nächste Bahnhof?",
+        "mcVi": "Ga kế tiếp là ga nào?",
+        "opts": [
+          {
+            "de": "Mülheim",
+            "vi": "Mülheim.",
+            "c": true
+          },
+          {
+            "de": "Köln",
+            "vi": "Köln.",
+            "c": false
+          },
+          {
+            "de": "Graz",
+            "vi": "Graz.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Eine Durchsage für alle Reisenden am Bahnsteig 3. Also, es heißt ja, sämtliche Verbindungen dieser Linie seien heute gesperrt, das trifft so nicht zu, es fährt fast alles normal. Der Zug nach Wien, der eben durchfuhr, gehört nicht zu uns, und nach Graz geht es heute gar nicht. Unser Regionalexpress bringt Sie planmäßig um 13:40 Uhr in die deutsche Hauptstadt. Bitte beeilen Sie sich beim Einsteigen. Angenehme Reise nach Berlin!",
+        "rfDe": "Alle Linien einer bestimmten Linie werden geschlossen sein.",
+        "rfVi": "Toàn bộ một tuyến nhất định sẽ bị đóng.",
+        "r": false,
+        "mcDe": "Wohin geht die Reise?",
+        "mcVi": "Chuyến đi đến đâu?",
+        "opts": [
+          {
+            "de": "Nach Berlin",
+            "vi": "Đến Berlin.",
+            "c": true
+          },
+          {
+            "de": "Nach Wien",
+            "vi": "Đến Wien.",
+            "c": false
+          },
+          {
+            "de": "Nach Graz",
+            "vi": "Đến Graz.",
+            "c": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Wetterbericht",
+    "sits": [
+      {
+        "audioText": "Und jetzt der Wetterbericht für die kommende Woche. Also, wer glaubt, heute scheine überall in Deutschland die Sonne, der irrt, im Norden ist es ziemlich bewölkt. Und richtig warm, na ja, wird es in den nächsten Tagen leider auch nicht. Stellen Sie sich vielmehr auf kräftigen Wind ein: Ab Mittwoch fegen Böen mit bis zu 60 Stundenkilometern übers Land. Ein Regenschirm nützt da wenig. Bleiben Sie trotzdem gut gelaunt!",
+        "rfDe": "Heute scheint in ganz Deutschland die Sonne.",
+        "rfVi": "Hôm nay mặt trời chiếu sáng khắp nước Đức.",
+        "r": false,
+        "mcDe": "Wie wird das Wetter in den kommenden Tagen?",
+        "mcVi": "Thời tiết những ngày tới thế nào?",
+        "opts": [
+          {
+            "de": "Windig",
+            "vi": "Có gió.",
+            "c": true
+          },
+          {
+            "de": "Sonnig",
+            "vi": "Nắng.",
+            "c": false
+          },
+          {
+            "de": "Warm",
+            "vi": "Ấm.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Guten Morgen, hier die Wetteraussichten. Also, dass es gleich in ganz Deutschland besser wird, das stimmt leider nicht, der Osten bleibt trüb. Im Westen dagegen, na ja, muss niemand mehr mit Schnee rechnen, und kalt bleibt es dort auch nicht. Ganz im Gegenteil: Rund um Köln und Aachen klettern die Temperaturen auf milde 16 Grad, es wird richtig frühlingshaft. Genießen Sie die ersten warmen Sonnenstrahlen am Nachmittag!",
+        "rfDe": "Das Wetter wird überall in Deutschland besser sein.",
+        "rfVi": "Thời tiết sẽ tốt hơn trên khắp nước Đức.",
+        "r": false,
+        "mcDe": "Wie wird das Wetter im Westen?",
+        "mcVi": "Thời tiết phía Tây sẽ thế nào?",
+        "opts": [
+          {
+            "de": "Der Frühling kommt.",
+            "vi": "Mùa xuân đang đến.",
+            "c": true
+          },
+          {
+            "de": "Es schneit.",
+            "vi": "Có tuyết.",
+            "c": false
+          },
+          {
+            "de": "Es bleibt kalt.",
+            "vi": "Vẫn lạnh.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Und nun ein Blick auf das Wetter von morgen. Also, das Wochenende, so viel sei verraten, wird richtig schön und sonnig. Morgen jedoch, na ja, sieht es anders aus. Schneien wird es zwar nicht, dafür ist es zu mild, und trocken bleibt es leider auch nicht. Im ganzen Land ziehen kräftige Niederschläge auf, örtlich mit Schauern bis zum Abend. Nehmen Sie also besser einen Schirm mit. Am Sonntag lacht dann wieder die Sonne!",
+        "rfDe": "Das Wetter am Wochenende ist gut.",
+        "rfVi": "Thời tiết cuối tuần đẹp.",
+        "r": true,
+        "mcDe": "Wie wird das Wetter am nächsten Tag im Allgemeinen?",
+        "mcVi": "Nhìn chung thời tiết ngày hôm sau thế nào?",
+        "opts": [
+          {
+            "de": "Es regnet.",
+            "vi": "Có mưa.",
+            "c": true
+          },
+          {
+            "de": "Es schneit.",
+            "vi": "Có tuyết.",
+            "c": false
+          },
+          {
+            "de": "Es bleibt trocken.",
+            "vi": "Khô ráo.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Zum Schluss noch das Wetter für den Norden Deutschlands. Also, an der Küste war es ja tagsüber recht windig, das legt sich aber langsam. Und die Sonne, na ja, die zeigt sich am Sonntag leider kaum. Von Hamburg bis Kiel müssen Sie nämlich mit anhaltendem Regen rechnen, dazu höchstens 11 Grad. Packen Sie die Regenjacke ein! Erst am Montag wird es dann wieder etwas freundlicher. Kommen Sie gut durch den Tag.",
+        "rfDe": "Die Vorhersage informiert über das Wetter im Norden Deutschlands.",
+        "rfVi": "Bản tin dự báo về thời tiết ở miền Bắc nước Đức.",
+        "r": true,
+        "mcDe": "Wie wird das Wetter am Sonntag?",
+        "mcVi": "Thời tiết Chủ Nhật thế nào?",
+        "opts": [
+          {
+            "de": "Regnerisch",
+            "vi": "Có mưa.",
+            "c": true
+          },
+          {
+            "de": "Windig",
+            "vi": "Có gió.",
+            "c": false
+          },
+          {
+            "de": "Sonnig",
+            "vi": "Nắng.",
+            "c": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Im Kino / Filmfest",
+    "sits": [
+      {
+        "audioText": "Ja, also, liebe Gäste, willkommen zur Abendvorstellung um 20 Uhr. Kurz vorweg: Nein, der Film fällt heute nicht aus, und keine Sorge, ausverkauft sind wir auch nicht, es gibt noch Restkarten an der Kasse. Wichtig ist: Direkt im Anschluss an den Film bleiben Sie bitte in Saal 3 sitzen, denn dann lädt der Regisseur zu einer offenen Fragerunde ein. Sie können mit ihm plaudern und über den Streifen diskutieren. Der Kiosk nebenan hat übrigens noch geöffnet.",
+        "rfDe": "Sie hören Informationen zur Vorführung des Films.",
+        "rfVi": "Bạn nghe thông tin về buổi chiếu phim.",
+        "r": false,
+        "mcDe": "Was passiert nach dem Film?",
+        "mcVi": "Sau phim có gì?",
+        "opts": [
+          {
+            "de": "Es gibt ein Gespräch / eine Diskussion.",
+            "vi": "Có buổi trò chuyện / thảo luận.",
+            "c": true
+          },
+          {
+            "de": "Der Film fällt aus.",
+            "vi": "Phim bị hủy.",
+            "c": false
+          },
+          {
+            "de": "Die Karten sind ausverkauft.",
+            "vi": "Vé đã bán hết.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "So, und jetzt zum Kulturtipp: Heute Abend zeigt das Programmkino Lichtblick den Streifen 'Nordwind'. Ein Konzert im Foyer? Das gab es letztes Jahr, dieses Mal leider nicht. Und nein, eine lange Pause zwischendurch ist auch nicht geplant, der Film läuft am Stück durch. Aber Achtung: Wenn der Abspann vorbei ist, geht es weiter mit einem Austausch über den Film, moderiert von zwei Kritikern. Beginn ist Punkt 19:30 Uhr, der Eintritt kostet acht Euro.",
+        "rfDe": "Es wird ein neuer Film gezeigt.",
+        "rfVi": "Một bộ phim mới được chiếu.",
+        "r": false,
+        "mcDe": "Was fand danach statt?",
+        "mcVi": "Sau đó diễn ra điều gì?",
+        "opts": [
+          {
+            "de": "Eine Diskussion nach dem Film.",
+            "vi": "Một buổi thảo luận sau phim.",
+            "c": true
+          },
+          {
+            "de": "Ein Konzert.",
+            "vi": "Một buổi hòa nhạc.",
+            "c": false
+          },
+          {
+            "de": "Eine lange Pause.",
+            "vi": "Một giờ nghỉ dài.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Liebes Festivalpublikum, eine kleine Programmänderung: Das gemeinsame Abendessen im Restaurant nebenan muss heute leider entfallen. Auch die geplante Stadtführung um 18 Uhr fällt wegen des Regens aus. Aber, gute Nachricht, nach der letzten Vorführung in Saal 1 kommen die Regisseurin und ihr Team persönlich auf die Bühne. Dann könnt ihr ihnen alle eure Fragen stellen und mit den Filmemachern ins Gespräch kommen. Das dauert etwa dreißig Minuten. Bitte bleibt einfach auf euren Plätzen sitzen.",
+        "rfDe": "Sie hören Infos über eine Programmänderung.",
+        "rfVi": "Bạn nghe thông tin về việc thay đổi chương trình.",
+        "r": false,
+        "mcDe": "Was gibt es auf dem Filmfest nach dem Film?",
+        "mcVi": "Tại liên hoan phim, sau phim có gì?",
+        "opts": [
+          {
+            "de": "Noch Gespräche mit den Machern.",
+            "vi": "Còn có trò chuyện với nhà làm phim.",
+            "c": true
+          },
+          {
+            "de": "Ein Abendessen.",
+            "vi": "Một bữa tối.",
+            "c": false
+          },
+          {
+            "de": "Eine Stadtführung.",
+            "vi": "Một tour tham quan thành phố.",
+            "c": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Radio",
+    "sits": [
+      {
+        "audioText": "Ja, hallo und herzlich willkommen bei Radio Welle 95.5! Gleich läuft wieder unser großes Mittagsquiz. Also, aufgepasst: Wer die Konzertkarten für Samstag abholen möchte, der ruft bitte erst nach der Sendung an. Und Bestellungen für unser Fanshirt nehmen wir heute gar nicht entgegen. Aber jetzt kommt's: In genau fünf Minuten rufen wir eine Hörerin an, und wer die Tagesfrage richtig beantwortet, dem überweisen wir fünfhundert Euro aufs Konto. Bleibt also unbedingt am Radio dran!",
+        "rfDe": "Sie hören Werbung für eine neue Radiosendung.",
+        "rfVi": "Bạn nghe quảng cáo cho một chương trình phát thanh mới.",
+        "r": false,
+        "mcDe": "Was kann man in fünf Minuten?",
+        "mcVi": "Trong năm phút có thể làm gì?",
+        "opts": [
+          {
+            "de": "Geld gewinnen.",
+            "vi": "Thắng tiền.",
+            "c": true
+          },
+          {
+            "de": "Karten holen.",
+            "vi": "Lấy vé.",
+            "c": false
+          },
+          {
+            "de": "Eine Bestellung machen.",
+            "vi": "Đặt hàng.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "...und damit zurück zu unserem Sportthema, dem großen Stadtmarathon am Sonntag. Ich habe die Organisatorin gefragt, wie die Besucher am besten anreisen. Sie sagt: Mit dem eigenen Auto wird's schwierig, alle Parkplätze rund ums Stadion sind gesperrt. Auch das Fahrrad lohnt sich kaum, viele Wege sind abgesperrt. Am liebsten kommen die Zuschauer deshalb ganz bequem mit den öffentlichen Verkehrsmitteln, also mit der Linie U4 oder dem Bus 12 direkt zum Ziel. Rund zwanzigtausend Läufer werden erwartet.",
+        "rfDe": "Es gibt ein Radiogespräch über eine Sportveranstaltung.",
+        "rfVi": "Có một cuộc trò chuyện trên đài về một sự kiện thể thao.",
+        "r": false,
+        "mcDe": "Mit welchem Verkehrsmittel fahren die Besucher am liebsten?",
+        "mcVi": "Khách thích đến bằng phương tiện nào nhất?",
+        "opts": [
+          {
+            "de": "Mit Bus oder U-Bahn.",
+            "vi": "Bằng xe buýt hoặc tàu điện ngầm.",
+            "c": true
+          },
+          {
+            "de": "Mit dem Auto.",
+            "vi": "Bằng ô tô.",
+            "c": false
+          },
+          {
+            "de": "Mit dem Fahrrad.",
+            "vi": "Bằng xe đạp.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Hier ist euer Sender Radio B-19, mitten am Nachmittag! Die Nachrichten? Die kommen erst wieder um 15 Uhr, keine Sorge. Und das lange Interview mit dem Bürgermeister, das haben wir auf morgen verschoben. Jetzt in der nächsten Stunde dreht sich bei uns alles um Musik: Wir spielen für euch die frischesten Chart-Stürmer und die neuesten Songs, die gerade erst rausgekommen sind. Also Lautstärke hoch und mitgesungen! Gleich nach diesem Lied geht's weiter.",
+        "rfDe": "Radio B-19 bietet Unterhaltung und Informationen.",
+        "rfVi": "Đài B-19 có cả giải trí lẫn thông tin.",
+        "r": true,
+        "mcDe": "Was läuft im Radio?",
+        "mcVi": "Trên đài đang phát gì?",
+        "opts": [
+          {
+            "de": "Neue Hits.",
+            "vi": "Các bản hit mới.",
+            "c": true
+          },
+          {
+            "de": "Nachrichten.",
+            "vi": "Tin tức.",
+            "c": false
+          },
+          {
+            "de": "Ein Interview.",
+            "vi": "Một cuộc phỏng vấn.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Guten Tag, hier ist die Verkehrswache B-30, Sie haben unseren Anrufbeantworter erreicht. Wegen Ihres Fahrzeugs: Sie brauchen es nicht umzuparken, das ist inzwischen geklärt. Und bitte warten Sie auch nicht länger vor unserer Dienststelle, heute ist niemand mehr im Haus. Am besten wählen Sie unsere Nummer 0711 - 44 55 morgen zwischen neun und zwölf Uhr noch einmal, dann erreichen Sie einen Kollegen persönlich. Vielen Dank und einen schönen Abend noch.",
+        "rfDe": "Es geht um die Straßenpolizei (B-30).",
+        "rfVi": "Nói về cảnh sát giao thông (B-30).",
+        "r": false,
+        "mcDe": "Was soll man tun?",
+        "mcVi": "Nên làm gì?",
+        "opts": [
+          {
+            "de": "Wieder anrufen / zurückrufen.",
+            "vi": "Gọi lại.",
+            "c": true
+          },
+          {
+            "de": "Parken.",
+            "vi": "Đỗ xe.",
+            "c": false
+          },
+          {
+            "de": "Warten.",
+            "vi": "Chờ.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Radio 90 begleitet Sie durch den Nachmittag mit Unterhaltung und aktuellen Informationen. Zwischen unseren kurzen Nachrichten und Veranstaltungstipps spielen wir jetzt die neuesten Songs aus den Charts. Interviews gibt es erst am Abend, und ältere Musik steht heute nicht auf dem Programm. Bleiben Sie dran und genießen Sie die neuen Hits!",
+        "rfDe": "Radio 90 bietet Unterhaltung und Informationen.",
+        "rfVi": "Đài Radio 90 có cả nội dung giải trí và thông tin.",
+        "r": true,
+        "mcDe": "Wofür interessiert sich die Sendung besonders?",
+        "mcVi": "Chương trình đặc biệt quan tâm đến nội dung nào?",
+        "opts": [
+          {
+            "de": "Neue Hits.",
+            "vi": "Các bản hit mới.",
+            "c": true
+          },
+          {
+            "de": "Alte Musik.",
+            "vi": "Nhạc cũ.",
+            "c": false
+          },
+          {
+            "de": "Lange Interviews.",
+            "vi": "Các cuộc phỏng vấn dài.",
+            "c": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Konzert / Ausstellung",
+    "sits": [
+      {
+        "audioText": "Hey, ich bin's, Markus! Du, für heute Abend hat sich was geändert. Das Konzert von der Band, zu dem wir eigentlich wollten, ist ausverkauft, da kommen wir nicht mehr rein. Und beim Umzug durch die Innenstadt, na ja, da war mir zu viel Trubel. Deshalb schlage ich was anderes vor: Im Stadtmuseum ist gerade eine tolle Schau mit Fotografien zu sehen, die schauen wir uns an. Treffen wir uns um 18:30 am Eingang? Meld dich kurz!",
+        "rfDe": "Er geht zu einem Konzert.",
+        "rfVi": "Anh ấy đi đến một buổi hòa nhạc.",
+        "r": true,
+        "mcDe": "Wohin geht er?",
+        "mcVi": "Anh ấy đi đâu?",
+        "opts": [
+          {
+            "de": "Zu einer Ausstellung.",
+            "vi": "Đến một triển lãm.",
+            "c": true
+          },
+          {
+            "de": "Zu einem Konzert.",
+            "vi": "Đến một buổi hòa nhạc.",
+            "c": false
+          },
+          {
+            "de": "Zu einem Umzug.",
+            "vi": "Đến một cuộc diễu hành.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "So, jetzt noch eine Neuigkeit für alle Fans der Gruppe Nordlicht. Ein brandneues Lied? Das gibt's leider erst im Herbst zu hören. Und eine Pause vom Touren, wie manche befürchtet haben, ist auch nicht in Sicht. Das Spannende ist: Für ihr Konzert am 12. Mai in der Stadthalle stellt die Band diesmal alles in Eigenregie auf die Beine, von der Bühne bis zum Ablauf plant sie den ganzen Abend ganz allein, ohne Agentur. Karten gibt's ab morgen.",
+        "rfDe": "Der Text handelt von einem Konzert.",
+        "rfVi": "Đoạn văn nói về một buổi hòa nhạc.",
+        "r": true,
+        "mcDe": "Was wird die Band tun?",
+        "mcVi": "Ban nhạc sẽ làm gì?",
+        "opts": [
+          {
+            "de": "Sie organisiert das Programm selbst.",
+            "vi": "Họ tự tổ chức chương trình.",
+            "c": true
+          },
+          {
+            "de": "Sie spielt ein neues Lied.",
+            "vi": "Họ chơi một bài hát mới.",
+            "c": false
+          },
+          {
+            "de": "Sie macht eine Pause.",
+            "vi": "Họ nghỉ giải lao.",
+            "c": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Sportkurs / Trainer",
+    "sits": [
+      {
+        "audioText": "Liebe Mitglieder, ein kurzer Hinweis zu unserem neuen Freizeitangebot. Nein, es ist nicht nur was für Trainer, sondern für alle, die Lust haben. Schwimmen im Hallenbad? Das startet leider erst im Winter. Und der Fußballkurs, den viele erwartet haben, kommt bei uns diese Saison nicht zustande. Stattdessen gibt es jeden Mittwoch um 17 Uhr ein Korbball-Training in der Halle 2, geleitet von unserem Übungsleiter Klaus. Bringt einfach Sportschuhe mit. Wir freuen uns auf euch!",
+        "rfDe": "Die Anzeige ist für die Trainer.",
+        "rfVi": "Thông báo dành cho các huấn luyện viên.",
+        "r": false,
+        "mcDe": "Was bietet das Programm?",
+        "mcVi": "Chương trình cung cấp gì?",
+        "opts": [
+          {
+            "de": "Basketball mit Klaus.",
+            "vi": "Bóng rổ với Klaus.",
+            "c": true
+          },
+          {
+            "de": "Fußball mit Klaus.",
+            "vi": "Bóng đá với Klaus.",
+            "c": false
+          },
+          {
+            "de": "Schwimmen.",
+            "vi": "Bơi.",
+            "c": false
+          }
+        ]
+      },
+      {
+        "audioText": "Guten Morgen, Herr Berger, hier ist die Verwaltung vom Sportzentrum. Es geht um Ihren neuen Mitarbeiterausweis. Sie müssen heute nicht zum Training kommen, die Einheit übernimmt eine Kollegin. Und mit dem Rad herzufahren lohnt sich auch nicht, unser Parkplatz ist wegen Bauarbeiten gesperrt. Wichtig ist nur: Ihr Ausweis liegt fertig am Empfang. Schicken Sie am besten jemanden vorbei, der ihn für Sie am Schalter entgegennimmt, bis Freitag um 16 Uhr. Danke schön!",
+        "rfDe": "Er arbeitet als Sporttrainer.",
+        "rfVi": "Anh ấy làm huấn luyện viên thể thao.",
+        "r": false,
+        "mcDe": "Was sollte er tun?",
+        "mcVi": "Anh ấy nên làm gì?",
+        "opts": [
+          {
+            "de": "Den Ausweis abholen lassen.",
+            "vi": "Đi lấy thẻ.",
+            "c": true
+          },
+          {
+            "de": "Trainieren.",
+            "vi": "Tập luyện.",
+            "c": false
+          },
+          {
+            "de": "Fahrrad fahren.",
+            "vi": "Đạp xe.",
+            "c": false
+          }
+        ]
+      }
+    ]
+  }
+]

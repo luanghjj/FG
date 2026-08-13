@@ -24,3 +24,8 @@ _ocr/
 
 # Claude
 .claude/
+
+# React app
+Deutsch_a1-c1/node_modules/
+Deutsch_a1-c1/dist/
+Deutsch_a1-c1/tsconfig.tsbuildinfo

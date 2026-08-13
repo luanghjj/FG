@@ -1,0 +1,795 @@
+{
+  "Z": {
+    "1": 17,
+    "2": 12,
+    "3": 12,
+    "4": 12,
+    "5": 12
+  },
+  "J": {
+    "1": 10,
+    "2": 10,
+    "3": 12,
+    "4": 8
+  },
+  "Y": {
+    "2": [
+      {
+        "title": "Bildungssystem und Begabung · nguyên văn PDF",
+        "texts": [
+          {
+            "p": "Text",
+            "text": "Kritische Stimmen zum deutschen Bildungssystem gibt es viele, meist kommen sie von Pädagogen, Didaktikern oder Praktikern. Neueren Datums ist die Kritik auch aus der Hirnforschung und Genetik. So bewertete der Kölner Hirnforscher Gerald Hüther zum Beispiel die These, dass in unserem Schul- und Hochschulsystem konsequent der Durchschnitt gefordert werde, nicht aber die individuelle Begabung. Hat ein Kind in einigen Fächern sehr gute Noten, in anderen aber schlechte, wird von ihm verlangt, für die letzteren intensiv zu lernen, damit es dort dann zumindest durchschnittlich wird. Durch dieses Verhalten seitens der Lehrer und Eltern bleiben die besonderen Fähigkeiten eines Kindes unerkannt. (10) Ein umgekehrtes Verhalten fände Hüther wesentlich sinnvoller. Nämlich anzustreben, dort perfekt zu werden, wo die individuellen Stärken liegen. Dafür müsste gerade die Freude am Entdecken oder das hartnäckige Suchen nach Antworten auf vielleicht noch nie gestellte Fragen in unserem Bildungssystem tatkräftig unterstützt werden. Es ist in der Psychologie bekannt, dass besonders Begabte ihre ganze Aufmerksamkeit auf ein bestimmtes Gebiet, bestimmte Probleme richten. (11) Diese gewisse Einseitigkeit ist Bedingung für außergewöhnliche Kreativität und originelles Denken. Außerdem braucht das Talent eine große Portion Entschlossenheit, denn es stößt in unserem System auf Widerstand. Thomas Mann ist ein bekanntes Beispiel für einen erfolgreichen Kreativen mit schlechten Noten. (12) Seine Lehrer und die eingebildeten Universitätsprofessoren mit ihrer beschränkten Fantasie nahm er nicht ernst. Bildungsreformen in Deutschland basieren oft auf Vergleichen: internationale Vergleichsstudien wie die PISA-Studien, Vergleiche zwischen den Bundesländern, Schulen und sogar Klassen. (13) Diese Gleichmacherei ist laut dem Wiener Professor für Medizinische Genetik, Markus Hengstschläger, eine gefährliche Entwicklung. Die Gesellschaft verliert dadurch einen signifikanten Anteil an Talenten. Aber gerade diese Individualisten braucht die Gesellschaft für eine erfolgreiche Zukunft. Hengstschläger meint, den Schülern und Studierenden würde das Denken in ungewöhnlichen Bahnen, das Streben nach Grenzüberschreitungen, abgewöhnt. (14) Schulen und Universitäten werden als Lern- und Studierfabriken bezeichnet, in denen der Zwang zur Anpassung vorherrscht. (15) Denn in den Personalabteilungen ist die Durchschnittsnote im Zeugnis nach wie vor eines der wichtigsten Kriterien bei der Beurteilung und möglichen Einstellung eines Bewerbers. Spezielle Begabungen werden in Ausbildung und Arbeitsmarkt somit nicht ausreichend berücksichtigt.",
+            "schl": ""
+          },
+          {
+            "p": "a",
+            "text": "Andere Wissenschaftler teilen seine Ansicht.",
+            "schl": ""
+          },
+          {
+            "p": "b",
+            "text": "So einen Wettkampf wird keiner gewinnen.",
+            "schl": ""
+          },
+          {
+            "p": "c",
+            "text": "Die Entwicklung spezieller Begabungen wird nämlich durch den Zwang, zu einer guten Durchschnittsnote zu kommen, behindert.",
+            "schl": ""
+          },
+          {
+            "p": "d",
+            "text": "Andere Themen dagegen interessieren sie überhaupt nicht.",
+            "schl": ""
+          },
+          {
+            "p": "e",
+            "text": "Ein Grund für diese Entwicklung sollen auch die Arbeitgeber sein.",
+            "schl": ""
+          },
+          {
+            "p": "f",
+            "text": "Der standardisierte Durchschnitt steht also im Vordergrund.",
+            "schl": ""
+          },
+          {
+            "p": "g",
+            "text": "Es ist falsch, gute Zeugnisse mit guten beruflichen Leistungen gleichzusetzen.",
+            "schl": ""
+          },
+          {
+            "p": "h",
+            "text": "Doch diese störten ihn überhaupt nicht.",
+            "schl": ""
+          }
+        ],
+        "qs": [
+          {
+            "stem": "Welche Ergänzung passt in Lücke 10?",
+            "ans": "c"
+          },
+          {
+            "stem": "Welche Ergänzung passt in Lücke 11?",
+            "ans": "d"
+          },
+          {
+            "stem": "Welche Ergänzung passt in Lücke 12?",
+            "ans": "h"
+          },
+          {
+            "stem": "Welche Ergänzung passt in Lücke 13?",
+            "ans": "f"
+          },
+          {
+            "stem": "Welche Ergänzung passt in Lücke 14?",
+            "ans": "g"
+          },
+          {
+            "stem": "Welche Ergänzung passt in Lücke 15?",
+            "ans": "e"
+          }
+        ],
+        "opts": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g",
+          "h"
+        ],
+        "interactive": true
+      },
+      {
+        "title": "Kennenlernen und Liebe über das Internet · phục dựng Modell 116B",
+        "texts": [
+          {
+            "p": "Text",
+            "text": "Früher war es eher ungewöhnlich, eine Partnerin oder einen Partner im Internet kennenzulernen. (10) gehören Online-Portale für viele Menschen zum Alltag. Die meisten Nutzerinnen und Nutzer (11), dort einen passenden Menschen zu finden. Eine aktuelle (12) zeigt sogar, dass ungefähr jede fünfte Beziehung online beginnt. Allerdings muss man in manchen Portalen persönliche Daten und Vorlieben preisgeben oder Kosten (13). Trotz aller Möglichkeiten bleiben Zweifel: Profile können unvollständig sein und ein langer Chat ersetzt kein persönliches Treffen. Deshalb möchten viele Singles (14) auch Menschen im wirklichen Leben begegnen. (15) bleibt der erste Kontakt im Netz für viele eine bequeme Möglichkeit.",
+            "schl": ""
+          },
+          {
+            "p": "a",
+            "text": "Heute",
+            "schl": ""
+          },
+          {
+            "p": "b",
+            "text": "hoffen",
+            "schl": ""
+          },
+          {
+            "p": "c",
+            "text": "Statistik",
+            "schl": ""
+          },
+          {
+            "p": "d",
+            "text": "übernehmen",
+            "schl": ""
+          },
+          {
+            "p": "e",
+            "text": "weiterhin",
+            "schl": ""
+          },
+          {
+            "p": "f",
+            "text": "Trotz Internet",
+            "schl": ""
+          },
+          {
+            "p": "g",
+            "text": "gestern",
+            "schl": ""
+          },
+          {
+            "p": "h",
+            "text": "vermeiden",
+            "schl": ""
+          }
+        ],
+        "qs": [
+          {
+            "stem": "Welche Ergänzung passt in Lücke 10?",
+            "ans": null
+          },
+          {
+            "stem": "Welche Ergänzung passt in Lücke 11?",
+            "ans": null
+          },
+          {
+            "stem": "Welche Ergänzung passt in Lücke 12?",
+            "ans": null
+          },
+          {
+            "stem": "Welche Ergänzung passt in Lücke 13?",
+            "ans": null
+          },
+          {
+            "stem": "Welche Ergänzung passt in Lücke 14?",
+            "ans": null
+          },
+          {
+            "stem": "Welche Ergänzung passt in Lücke 15?",
+            "ans": null
+          }
+        ],
+        "opts": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g",
+          "h"
+        ],
+        "interactive": false
+      }
+    ],
+    "3": [
+      {
+        "title": "Soziale Benachteiligung macht krank · nguyên văn PDF",
+        "texts": [
+          {
+            "p": "Text",
+            "text": "Statistiken zeigen, dass nahezu alle Krankheiten bei sozial Benachteiligten viel häufiger auftreten. Auch die Betroffenen selbst schätzen ihre Gesundheit viel schlechter ein als andere Teile der Bevölkerung. Diese Selbsteinschätzung bleibt ohne Folgen, da keine Möglichkeit gesehen wird, zu ändern. In der Häufigkeit der Arztbesuche gibt es keinen Unterschied zwischen sozial Benachteiligten und anderen. Auf den ersten Blick lässt sich die ungesunde Verhaltensweise der ärmeren Bevölkerungsschicht als Ursache vermuten. Sie rauchen mehr, bewegen sich weniger, haben häufig Übergewicht und trinken mehr Alkohol. Doch dieser erste Blick täuscht: Die tiefere Ursache liegt darin, dass Arme sich ausgeschlossen fühlen. Sie gehören nicht zur normalen Gesellschaft. Sie sind aus der Norm herausgefallen, schaffen es nicht, so wie die anderen zu sein. Das macht Stress. Selbst arme Berufstätige fühlen diesen Stress. Meist haben sie einen Arbeitsplatz am unteren Ende der Hierarchie. Es fehlt ihnen die Achtung, ihre Arbeit hat keinen Wert, sie müssen Anweisungen ausführen und dürfen nichts entscheiden. Das Gefühl, nicht dazuzugehören, hat weitere Konsequenzen. Man vermeidet Kontakte zu Menschen aus einer anderen sozialen Schicht, geht in keinen Verein und besucht keinen Elternabend in der Schule. Aufgrund dieser Isolation fehlt es an Unterstützung, wenn es Probleme mit Behörden oder den Kindern gibt. Um die Situation zu verbessern, muss bei den Kindern angefangen werden. Projekte informieren junge Eltern, fördern eine gesunde Entwicklung und helfen Kindern, ihre Fähigkeiten zu erkennen, Selbstbewusstsein aufzubauen und sich Ziele zu setzen. Ein Projekt in Worms betreut Kinder bei den Hausaufgaben, lädt Eltern zum gemeinsamen Kochen ein und setzt mehr auf praktisches Tun als auf Worte.",
+            "schl": ""
+          }
+        ],
+        "qs": [
+          {
+            "stem": "Der entscheidende Grund für häufige Erkrankungen sozial Benachteiligter ist … (ihre soziale Außenseiterrolle / ständiger Kontakt zu Ärzten / nur ihre falsche Lebensweise)",
+            "ans": "ihre soziale Außenseiterrolle"
+          },
+          {
+            "stem": "Sozial schwächer Gestellte haben Stress, weil … (sie am Arbeitsplatz unter Zeitdruck stehen / es an Anerkennung für ihre Tätigkeit fehlt / ihre Arbeit immer langweilig ist)",
+            "ans": "es an Anerkennung für ihre Tätigkeit fehlt"
+          },
+          {
+            "stem": "Das Gefühl, anders zu sein, hat zur Folge, dass … (auf Medikamente verzichtet wird / das soziale Leben eingeschränkt wird / das Interesse an den Kindern verloren geht)",
+            "ans": "das soziale Leben eingeschränkt wird"
+          },
+          {
+            "stem": "Von geförderten Kindern erwartet man, dass sie … (entdecken, was in ihnen steckt / von ihren Eltern verändert werden / schlechter ernährt werden)",
+            "ans": "entdecken, was in ihnen steckt"
+          },
+          {
+            "stem": "Im Wormser Projekt … (werden nur Kochkurse angeboten / werden Aktivitäten der Kinder gefördert / helfen nur Eltern bei Hausaufgaben)",
+            "ans": "werden Aktivitäten der Kinder gefördert"
+          },
+          {
+            "stem": "Beschränkte Gesundheitsangebote … (erreichen alle Gruppen gleich / bringen immer die gewünschten Ergebnisse / nutzen überwiegend sozial besser Gestellte)",
+            "ans": "nutzen überwiegend sozial besser Gestellte"
+          }
+        ],
+        "opts": [],
+        "interactive": true
+      },
+      {
+        "title": "Neue Gartenstädte · phục dựng Modell 116B",
+        "texts": [
+          {
+            "p": "Text",
+            "text": "In dicht bebauten Städten wächst der Wunsch nach kleinen Gärten. Parks und Grünflächen vermitteln Ruhe und verbessern das Stadtklima. Neue Gartenprojekte sollen deshalb auch mitten in Wohnvierteln entstehen. Auf Märkten werden hochwertige, regional erzeugte Produkte angeboten. Zugleich greifen viele Initiativen alte Techniken des Gärtnerns auf und verbinden sie mit modernen, nachhaltigen Methoden. In New York entstanden Gemeinschaftsgärten, weil Bewohnerinnen und Bewohner Grün in der Innenstadt vermissten. Dabei braucht ein Stadtgarten weder eine besonders große Fläche noch eine luxuriöse Ausstattung: Schon ein kleiner freier Ort reicht aus. Einige Projekte geben ihre Erfahrungen inzwischen an andere Stadtteile weiter.",
+            "schl": ""
+          }
+        ],
+        "qs": [
+          {
+            "stem": "Warum wünschen sich Menschen mehr Parks und Grünflächen? (Sie vermitteln Ruhe / Sie erhöhen die Mieten / Sie ersetzen alle Wohnungen)",
+            "ans": null
+          },
+          {
+            "stem": "Was wird auf lokalen Märkten angeboten? (hochwertige Produkte / nur importierte Blumen / alte Maschinen)",
+            "ans": null
+          },
+          {
+            "stem": "Wie reagieren Initiativen auf moderne Anforderungen? (Sie verbinden alte Techniken mit neuen Methoden / Sie geben das Gärtnern auf / Sie bauen nur große Parks)",
+            "ans": null
+          },
+          {
+            "stem": "Warum entstanden Gemeinschaftsgärten in New York? (Die Menschen vermissten Grün in der Innenstadt / Nur Reiche durften Gärten besitzen / Es gab zu viele große Parks)",
+            "ans": null
+          },
+          {
+            "stem": "Was braucht man mindestens für einen Stadtgarten? (eine kleine Fläche / eine besondere Dekoration / mehrere Hektar Land)",
+            "ans": null
+          },
+          {
+            "stem": "Was tun einige erfolgreiche Projekte? (Sie geben Erfahrungen weiter / Sie verkaufen ihre Flächen / Sie verbieten neue Mitglieder)",
+            "ans": null
+          }
+        ],
+        "opts": [],
+        "interactive": false
+      }
+    ],
+    "4": [
+      {
+        "title": "Berufliche Weiterbildung · nguyên văn PDF",
+        "texts": [
+          {
+            "p": "B",
+            "text": "Unser Leben wird immer mehr den Anforderungen des Arbeitslebens untergeordnet. Aber es gibt doch noch anderes: die Familie, die Freunde, die Hobbys. Dafür muss auch Zeit bleiben.",
+            "schl": ""
+          },
+          {
+            "p": "C",
+            "text": "Mit dem Beruf ist es wie mit den meisten anderen Dingen im Leben: Alles ändert sich und wir müssen uns auf diese Veränderungen einstellen, um den Anschluss nicht zu verpassen.",
+            "schl": ""
+          },
+          {
+            "p": "D",
+            "text": "Wer beruflich vorwärtskommen will, muss in seine Bildung investieren: um auf dem eigenen Fachgebiet aktuell zu sein und um für Führungsaufgaben Zusatzqualifikationen zu erwerben.",
+            "schl": ""
+          },
+          {
+            "p": "E",
+            "text": "Ich bin für Weiterbildung. Das Unternehmen profitiert, wenn seine Mitarbeiter höher qualifiziert sind. Daher sollte das auch vom Unternehmen organisiert und bezahlt werden.",
+            "schl": ""
+          },
+          {
+            "p": "F",
+            "text": "Da es heute keine sicheren Arbeitsplätze mehr gibt, ist Fortbildung absolut notwendig. Nur wer sich immer wieder auf den neuesten Stand bringt, hat die Chance, nach einer Kündigung schnell wieder einen Job zu bekommen.",
+            "schl": ""
+          },
+          {
+            "p": "G",
+            "text": "Ich glaube, dass vieles Reden über die Notwendigkeit von Fortbildung stark von Bildungsunternehmen gefördert wird. Sie verdienen an all den Kursen und Workshops.",
+            "schl": ""
+          },
+          {
+            "p": "H",
+            "text": "Es ist schade, dass man Weiterbildung immer nur mit dem Arbeitsleben verbindet. In einigen Bundesländern gibt es bezahlten Bildungsurlaub zu Themen der Allgemeinbildung wie Umweltschutz oder Literatur.",
+            "schl": ""
+          }
+        ],
+        "qs": [
+          {
+            "stem": "Weiterbildung ist wichtig für die Karriere.",
+            "ans": "D"
+          },
+          {
+            "stem": "Weiterbildung ist Aufgabe des Arbeitgebers.",
+            "ans": "E"
+          },
+          {
+            "stem": "Weiterbildung ist ein lohnendes Geschäft.",
+            "ans": "G"
+          },
+          {
+            "stem": "Qualifikation schützt vor Arbeitslosigkeit.",
+            "ans": "F"
+          },
+          {
+            "stem": "Weiterbildung ist mehr als berufliche Bildung.",
+            "ans": "H"
+          },
+          {
+            "stem": "Man muss sich dem gesellschaftlichen Wandel anpassen.",
+            "ans": "C"
+          }
+        ],
+        "opts": [
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "interactive": true
+      },
+      {
+        "title": "Reisen in der Gruppe oder allein · phục dựng Modell 116B",
+        "texts": [
+          {
+            "p": "A",
+            "text": "Ich liebe Überraschungen und plane ungern im Voraus. Wenn ich eine organisierte Reisegruppe sehe, halte ich lieber Abstand.",
+            "schl": ""
+          },
+          {
+            "p": "B",
+            "text": "Eine Reise individuell zu organisieren ist schwierig: Man muss Tickets buchen und Unterkünfte sichern. Mit einer Gruppe erspart man sich viel Arbeit.",
+            "schl": ""
+          },
+          {
+            "p": "C",
+            "text": "Wenn man allein reist, mischt man sich leichter unter die Einheimischen. In einer geschlossenen Gruppe passiert das oft nicht.",
+            "schl": ""
+          },
+          {
+            "p": "D",
+            "text": "Ob allein oder in der Gruppe ist für mich zweitrangig. Entscheidend sind das Ziel und der Ort der Reise.",
+            "schl": ""
+          },
+          {
+            "p": "E",
+            "text": "Für mich zählen die Kosten. In einer Gruppe kann ich Ausgaben teilen und dadurch mehr sparen.",
+            "schl": ""
+          },
+          {
+            "p": "F",
+            "text": "Auf Reisen lerne ich neue Menschen kennen und sammle Erfahrungen. Eine Gruppe kann dabei viele neue Kontakte ermöglichen.",
+            "schl": ""
+          },
+          {
+            "p": "G",
+            "text": "Früher interessierten sich für Abenteuerreisen fast nur Ältere. Heute hat sich die Kundengruppe verändert und auch viele Jüngere fragen danach.",
+            "schl": ""
+          }
+        ],
+        "qs": [
+          {
+            "stem": "Eine organisierte Reise lässt wenig Raum für Spontaneität.",
+            "ans": "A"
+          },
+          {
+            "stem": "Individuelles Reisen verlangt viel Organisation.",
+            "ans": "B"
+          },
+          {
+            "stem": "Alleinreisende kommen leichter mit Einheimischen in Kontakt.",
+            "ans": "C"
+          },
+          {
+            "stem": "Die Reiseform hängt vom Ziel ab.",
+            "ans": "D"
+          },
+          {
+            "stem": "Gruppenreisen können Kosten senken.",
+            "ans": "E"
+          },
+          {
+            "stem": "Reisen schaffen neue Erfahrungen und Kontakte.",
+            "ans": "F"
+          },
+          {
+            "stem": "Die Kundengruppe für Abenteuerreisen hat sich verändert.",
+            "ans": "G"
+          }
+        ],
+        "opts": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G"
+        ],
+        "interactive": true
+      }
+    ],
+    "5": [
+      {
+        "title": "Vereinsordnung · nguyên văn PDF",
+        "texts": [
+          {
+            "p": "A",
+            "text": "Zielsetzung des Vereins",
+            "schl": ""
+          },
+          {
+            "p": "B",
+            "text": "Entschädigung für Vereinstätigkeit",
+            "schl": ""
+          },
+          {
+            "p": "C",
+            "text": "Haftung des Vereins",
+            "schl": ""
+          },
+          {
+            "p": "D",
+            "text": "Pflichten der Mitglieder",
+            "schl": ""
+          },
+          {
+            "p": "E",
+            "text": "Pflichten der Mitglieder",
+            "schl": ""
+          },
+          {
+            "p": "F",
+            "text": "Schutz persönlicher Daten",
+            "schl": ""
+          },
+          {
+            "p": "G",
+            "text": "Beiträge und Sonderumlagen",
+            "schl": ""
+          },
+          {
+            "p": "H",
+            "text": "Ernennung von Ehrenmitgliedern",
+            "schl": ""
+          },
+          {
+            "p": "§ 28",
+            "text": "Zentraler Vereinszweck ist die Förderung des Sports, insbesondere des Breiten-, Wettkampf- und Gesundheitssports sowie der sportlichen Rehabilitation. Der Verein bietet Kindern, Jugendlichen und Erwachsenen unabhängig von Geschlecht, Identität, Herkunft, Glauben oder sozialer Stellung eine sportliche Heimat.",
+            "schl": ""
+          },
+          {
+            "p": "§ 29",
+            "text": "Vereinsämter werden grundsätzlich ehrenamtlich ausgeführt. Bei Bedarf können sie im Rahmen der haushaltsrechtlichen Möglichkeiten gegen Zahlung einer Aufwandsentschädigung ausgeübt werden. Entscheidungen darüber trifft der Vorstand.",
+            "schl": ""
+          },
+          {
+            "p": "§ 30",
+            "text": "Zur Erfüllung der Vereinsaufgaben werden unter Beachtung der gesetzlichen Bestimmungen personenbezogene Informationen der Mitglieder erhoben, verarbeitet, gespeichert und genutzt. Diese Daten werden nicht an Dritte weitergegeben und technisch vor unbefugtem Zugriff geschützt.",
+            "schl": ""
+          }
+        ],
+        "qs": [
+          {
+            "stem": "Welche Überschrift passt zu § 28?",
+            "ans": "A"
+          },
+          {
+            "stem": "Welche Überschrift passt zu § 29?",
+            "ans": "B"
+          },
+          {
+            "stem": "Welche Überschrift passt zu § 30?",
+            "ans": "F"
+          }
+        ],
+        "opts": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "interactive": true
+      },
+      {
+        "title": "Ferienhausordnung · phục dựng Modell 116B",
+        "texts": [
+          {
+            "p": "A",
+            "text": "Zahlungsmöglichkeiten",
+            "schl": ""
+          },
+          {
+            "p": "B",
+            "text": "Stornierung und Rücktritt",
+            "schl": ""
+          },
+          {
+            "p": "C",
+            "text": "Kaution und Schäden",
+            "schl": ""
+          },
+          {
+            "p": "D",
+            "text": "Anreisezeiten",
+            "schl": ""
+          },
+          {
+            "p": "E",
+            "text": "Haustiere",
+            "schl": ""
+          },
+          {
+            "p": "F",
+            "text": "Internetnutzung",
+            "schl": ""
+          },
+          {
+            "p": "§ 1",
+            "text": "Der Mietpreis ist vor der Anreise per Banküberweisung oder Kreditkarte zu bezahlen. Barzahlung bei der Schlüsselübergabe ist nur nach vorheriger Vereinbarung möglich.",
+            "schl": ""
+          },
+          {
+            "p": "§ 2",
+            "text": "Ein Rücktritt muss schriftlich erklärt werden. Bis 30 Tage vor Mietbeginn ist die Stornierung kostenfrei; danach wird abhängig vom Zeitpunkt eine Gebühr berechnet.",
+            "schl": ""
+          },
+          {
+            "p": "§ 3",
+            "text": "Vor der Schlüsselübergabe ist eine Kaution zu hinterlegen. Entstehen während des Aufenthalts Schäden, kann der entsprechende Betrag von der Kaution einbehalten werden.",
+            "schl": ""
+          }
+        ],
+        "qs": [
+          {
+            "stem": "Welche Überschrift passt zu § 1?",
+            "ans": "A"
+          },
+          {
+            "stem": "Welche Überschrift passt zu § 2?",
+            "ans": "B"
+          },
+          {
+            "stem": "Welche Überschrift passt zu § 3?",
+            "ans": "C"
+          }
+        ],
+        "opts": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ],
+        "interactive": true
+      }
+    ]
+  },
+  "U": {
+    "Hausordnung — Nội quy nhà ở": [
+      {
+        "opts": [
+          "mit einem Erwachsenen im Lift zu fahren.",
+          "auf dem Spielplatz neben dem Haus zu spielen.",
+          "in der Tiefgarage zu spielen."
+        ],
+        "correct": 2
+      },
+      {
+        "opts": [
+          "etwas zu verändern.",
+          "eine eigene Waschmaschine zu benutzen.",
+          "kleine Fische oder Wellensittiche zu halten."
+        ],
+        "correct": 0
+      },
+      {
+        "opts": [
+          "mit dem Staubsauger putzen.",
+          "duschen und baden.",
+          "ein Instrument spielen."
+        ],
+        "correct": 1
+      },
+      {
+        "opts": [
+          "Fahrräder im Treppenhaus abstellen dürfen.",
+          "gemeinschaftliche Räume offen lassen dürfen.",
+          "die Waschküche sauber halten müssen."
+        ],
+        "correct": 2
+      }
+    ],
+    "Benutzungsordnung der Bibliothek — Quy định sử dụng thư viện": [
+      {
+        "opts": [
+          "zahlt man nur eine Pauschale von 10 Euro.",
+          "muss es wieder gekauft werden.",
+          "wird man sofort aus der Bibliothek ausgeschlossen."
+        ],
+        "correct": 1
+      },
+      {
+        "opts": [
+          "nur in der Bibliothek lesen.",
+          "für 28 Tage ausleihen.",
+          "zweimal um 14 Tage verlängern."
+        ],
+        "correct": 0
+      },
+      {
+        "opts": [
+          "wenn sie einen Studentenausweis vorlegen.",
+          "wenn sie schon über 18 Jahre alt sind.",
+          "wenn die Eltern ein Dokument ausfüllen."
+        ],
+        "correct": 2
+      },
+      {
+        "opts": [
+          "darf man Rucksäcke und Taschen tragen.",
+          "sind Gespräche verboten.",
+          "sind Speisen erlaubt."
+        ],
+        "correct": 1
+      }
+    ],
+    "Kreis – Viereck – Dreieck — Hình tròn, hình vuông, hình tam giác": [
+      {
+        "opts": [
+          "das passende Symbol mit der Hand verdecken.",
+          "die Rückseite der Fragekarte anschauen.",
+          "ihre Antwort laut vorlesen."
+        ],
+        "correct": 0
+      },
+      {
+        "opts": [
+          "liest immer der jüngste Spieler vor.",
+          "stehen auf der Rückseite der Karte.",
+          "stellt ein Spieler nach dem anderen."
+        ],
+        "correct": 2
+      },
+      {
+        "opts": [
+          "eine neue Karte ziehen.",
+          "stehen bleiben.",
+          "ein Feld zurückgehen."
+        ],
+        "correct": 1
+      },
+      {
+        "opts": [
+          "nimmt jeder Spieler drei unterschiedliche Chips.",
+          "mischt der jüngste Spieler die Karten allein.",
+          "stellt jeder Spieler seine Figur ins Ziel."
+        ],
+        "correct": 0
+      }
+    ],
+    "Infoblatt für die Mieter des Studenten­wohnheims — Tờ thông tin cho người thuê ký túc xá sinh viên": [
+      {
+        "opts": [
+          "Eine Reinigungsfirma putzt die Zimmer der Mieter.",
+          "In den Zimmern dürfen die Mieter Plakate aufhängen.",
+          "Die Mieter müssen auch die Gänge selbst putzen."
+        ],
+        "correct": 1
+      },
+      {
+        "opts": [
+          "dürfen Fahrräder im Flur abstellen.",
+          "müssen Motorräder nicht beim Vermieter anmelden.",
+          "dürfen Fahrräder nicht in die Zimmer mitnehmen."
+        ],
+        "correct": 2
+      },
+      {
+        "opts": [
+          "nur Heimbewohner dürfen den Garten nutzen.",
+          "Grillpartys im Garten dürfen bis Mitternacht dauern.",
+          "der Veranstaltungsraum darf ohne Anmeldung genutzt werden."
+        ],
+        "correct": 0
+      },
+      {
+        "opts": [
+          "bekommt einen Ersatzschlüssel kostenlos.",
+          "darf den Schlüssel bei längerer Abwesenheit behalten.",
+          "muss melden, wenn ein Schlüssel verloren geht."
+        ],
+        "correct": 2
+      }
+    ],
+    "Umzugsplaner — Kế hoạch chuyển nhà": [
+      {
+        "opts": [
+          "füllen Sie jede Kiste möglichst ganz voll.",
+          "die Kisten müssen nicht beschriftet werden.",
+          "packen Sie so, dass nichts beschädigt werden kann."
+        ],
+        "correct": 2
+      },
+      {
+        "opts": [
+          "entscheiden, was Sie mit unnötigen Sachen machen.",
+          "erst am Umzugstag mit dem Aufräumen beginnen.",
+          "auf jeden Fall alle alten Sachen behalten."
+        ],
+        "correct": 0
+      },
+      {
+        "opts": [
+          "bekommen alkoholische Getränke angeboten.",
+          "müssen wissen, wohin die Möbel kommen.",
+          "müssen ihre eigene Verpflegung mitbringen."
+        ],
+        "correct": 1
+      },
+      {
+        "opts": [
+          "muss man die Umzugsfirma um Erlaubnis bitten.",
+          "braucht man keine besondere Genehmigung.",
+          "muss man den Umzug bei der Polizei anmelden."
+        ],
+        "correct": 2
+      }
+    ],
+    "Rundbrief an die Mieter — Thư thông báo gửi người thuê": [
+      {
+        "opts": [
+          "keine Gegenstände in den Gängen stehen.",
+          "die Mieter ihre Schuhe vor der Wohnungstür abstellen.",
+          "Kinderwagen im Eingangsbereich abgestellt werden."
+        ],
+        "correct": 0
+      },
+      {
+        "opts": [
+          "man schwere Blumentöpfe an das Geländer hängen.",
+          "man Blumen haben.",
+          "man einen Grill benutzen."
+        ],
+        "correct": 1
+      },
+      {
+        "opts": [
+          "werden alle Fahrräder aus der Tiefgarage entfernt.",
+          "dürfen keine Fahrräder mehr benutzt werden.",
+          "müssen Fahrräder mit einem Namensschild markiert sein."
+        ],
+        "correct": 2
+      },
+      {
+        "opts": [
+          "müssen selten benutzte Fahrräder in ihren Keller stellen.",
+          "dürfen alte Fahrräder in der Tiefgarage abstellen.",
+          "sollen ihre Fahrräder im Kinderwagenraum abstellen."
+        ],
+        "correct": 0
+      }
+    ]
+  }
+}

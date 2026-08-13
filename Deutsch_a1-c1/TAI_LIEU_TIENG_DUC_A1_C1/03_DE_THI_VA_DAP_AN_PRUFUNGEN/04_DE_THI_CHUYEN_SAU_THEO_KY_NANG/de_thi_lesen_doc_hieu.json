@@ -1,0 +1,600 @@
+{
+  "bai_doc_dai": {
+    "Entspannt zum Filmfestival — Lễ hội phim": [
+      {
+        "opts": [
+          "dass das Festival in eine größere Stadt umziehen soll.",
+          "dass weniger Festivalbesucher mit dem Auto anreisen sollen.",
+          "dass die Zahl der gezeigten Filme verringert werden soll."
+        ],
+        "correct": 1
+      },
+      {
+        "opts": [
+          "werden sowohl der Eintritt als auch die Fahrkarte billiger.",
+          "ist nur die Zugfahrt, nicht aber der Eintritt günstiger.",
+          "bekommen alle Besucher freien Eintritt zum Festival."
+        ],
+        "correct": 0
+      },
+      {
+        "opts": [
+          "bieten einen solchen ermäßigten Eintritt schon seit Jahren an.",
+          "lehnen ein derartiges Rabattangebot bisher klar ab.",
+          "haben Interesse an einem ähnlichen Angebot."
+        ],
+        "correct": 2
+      }
+    ],
+    "Ab aufs Rad — Đi xe đạp ở Đức": [
+      {
+        "opts": [
+          "dass Radfahren nur für junge, sportliche Menschen geeignet ist.",
+          "dass Radfahrer etwas für ihre Gesundheit tun.",
+          "dass Autofahren umweltfreundlicher als Radfahren ist."
+        ],
+        "correct": 1
+      },
+      {
+        "opts": [
+          "benutzt das Rad für kurze Fahrten.",
+          "macht größere Touren am liebsten mit dem Fahrrad.",
+          "besitzt gar kein eigenes Fahrrad."
+        ],
+        "correct": 0
+      },
+      {
+        "opts": [
+          "vor jeder Fahrt eine spezielle Sonnenbrille aufsetzen.",
+          "möglichst schnell und sportlich fahren, um fit zu bleiben.",
+          "im Frühling die Fahrradteile kontrollieren."
+        ],
+        "correct": 2
+      }
+    ],
+    "Fehlen bald 40000 Arbeitskräfte — Thiếu hụt lao động ở Thụy Sĩ": [
+      {
+        "opts": [
+          "dass die Überalterung der Gesellschaft das Hauptproblem ist.",
+          "dass es im Jahr 2030 viel zu viele Arbeitskräfte geben wird.",
+          "dass einigen Berufen Arbeitnehmer fehlen werden."
+        ],
+        "correct": 2
+      },
+      {
+        "opts": [
+          "weil zu viele ältere Menschen weiterarbeiten wollen.",
+          "weil einige Berufe bei jungen Menschen unbeliebt sind.",
+          "weil zu viele ausländische Arbeitnehmer ins Land kommen."
+        ],
+        "correct": 1
+      },
+      {
+        "opts": [
+          "wenn mehr Frauen eine bezahlte Arbeit aufnehmen würden.",
+          "wenn das gesetzliche Rentenalter deutlich gesenkt würde.",
+          "wenn ganz auf ausländische Arbeitskräfte verzichtet würde."
+        ],
+        "correct": 0
+      }
+    ],
+    "Wenn es kalt wird — Chăm sóc da mùa đông": [
+      {
+        "opts": [
+          "die besten Wintersportarten für Anfänger.",
+          "den Schutz der Haut gegen Sonne und Kälte.",
+          "die richtige Kleidung und Ausrüstung beim Skifahren."
+        ],
+        "correct": 1
+      },
+      {
+        "opts": [
+          "wegen der schwachen Wintersonne überhaupt keinen Sonnenschutz.",
+          "Sonnencremes mit hohem Schutzfaktor.",
+          "nur nachts eine fetthaltige Creme für das Gesicht."
+        ],
+        "correct": 1
+      },
+      {
+        "opts": [
+          "tagsüber durch eine Fettcreme geschützt werden.",
+          "im Winter am besten gar nicht eingecremt werden.",
+          "am Tag mit einer feuchtigkeitsreichen Creme gepflegt werden."
+        ],
+        "correct": 0
+      }
+    ],
+    "Interkulturelles Arbeiten im Gemeinschaftsgarten — Vườn cộng đồng ở Graz": [
+      {
+        "opts": [
+          "dass die Fachschule vor allem neue Lehrkräfte ausbilden möchte.",
+          "dass ein Garten die Kommunikation zwischen Menschen fördern soll.",
+          "dass ein Garten möglichst hohe Ernteerträge bringen soll."
+        ],
+        "correct": 1
+      },
+      {
+        "opts": [
+          "weil sie das Grundstück danach teurer verkaufen möchte.",
+          "damit ihre Schüler dafür eine bessere Abschlussnote bekommen.",
+          "damit die Bevölkerung etwas über Landwirtschaft lernen kann."
+        ],
+        "correct": 2
+      },
+      {
+        "opts": [
+          "darf jede Familie nur gemeinsam ein einziges Beet bepflanzen.",
+          "arbeiten Hobbygärtner aus verschiedenen Kulturen zusammen.",
+          "sind ausschließlich einheimische Familien willkommen."
+        ],
+        "correct": 1
+      }
+    ],
+    "Ein ungewöhnlicher Laden / Annas Geschäftsidee — Cửa hàng đồ thủ công của Anna": [
+      {
+        "opts": [
+          "eine bekannte Kaufhauskette.",
+          "den Verkauf von industrieller Massenware.",
+          "Annas Geschäftsidee."
+        ],
+        "correct": 2
+      },
+      {
+        "opts": [
+          "Frauen, die in ihrer Freizeit kreativ sind.",
+          "Männer, die Möbel aus Holz herstellen.",
+          "Künstler, die vom Verkauf ihrer Werke leben müssen."
+        ],
+        "correct": 0
+      },
+      {
+        "opts": [
+          "deshalb erhöht sie jeden Monat die Miete für die Fächer.",
+          "deshalb behält sie einen Teil der Einnahmen für sich.",
+          "deshalb verkauft sie ihre eigenen Handarbeiten im Laden."
+        ],
+        "correct": 1
+      }
+    ],
+    "Essen Sie bunt — Đồ ăn nhiều màu sắc và lợi ích": [
+      {
+        "opts": [
+          "die Zubereitung von warmen Gemüsegerichten.",
+          "die Wirkung von pflanzlichen Lebensmitteln.",
+          "den Geschmacksunterschied von rotem und grünem Gemüse."
+        ],
+        "correct": 1
+      },
+      {
+        "opts": [
+          "nur von ihrer Farbe auf dem Teller abhängig.",
+          "unabhängig davon, wie viel Sonne sie bekommen haben.",
+          "abhängig von der Zeit der Ernte."
+        ],
+        "correct": 2
+      },
+      {
+        "opts": [
+          "wenn man nicht krank werden möchte.",
+          "nur dann, wenn man bereits krank ist.",
+          "möglichst lange nach der Ernte."
+        ],
+        "correct": 0
+      }
+    ],
+    "Schweizer Bergparadies — Thiên đường núi Thụy Sĩ": [
+      {
+        "opts": [
+          "ein attraktives Ferienangebot in den Bergen.",
+          "eine neue Klettersportschule nur für Profis.",
+          "ein Sportprogramm ausschließlich für den Winter."
+        ],
+        "correct": 0
+      },
+      {
+        "opts": [
+          "sind alle Aktivitäten kostenpflichtig.",
+          "bezahlt man nur fürs Klettern.",
+          "kann man kostenlos an einem Kochkurs teilnehmen."
+        ],
+        "correct": 1
+      },
+      {
+        "opts": [
+          "sind nur für erfahrene Bergsteiger geeignet.",
+          "dürfen nur mit einem Bergführer gemacht werden.",
+          "informieren unterwegs über Pflanzen und Tiere."
+        ],
+        "correct": 2
+      }
+    ],
+    "Wien fährt Rad — Chiến dịch \"Vienna đi xe đạp\"": [
+      {
+        "opts": [
+          "dass Radfahren in Wien als Freizeitsport gefördert wird.",
+          "dass das Radfahren in Wien beliebter gemacht werden soll.",
+          "dass die Wiener zu viele Unfälle mit dem Fahrrad haben."
+        ],
+        "correct": 1
+      },
+      {
+        "opts": [
+          "müssen alle Studenten mit dem Fahrrad kommen.",
+          "wurden die Fahrradabstellplätze wieder abgebaut.",
+          "verwenden heute mehr Mitarbeiter als früher das Fahrrad."
+        ],
+        "correct": 2
+      },
+      {
+        "opts": [
+          "in anderen Teilen Österreichs höher als in Wien.",
+          "in Wien bereits auf 10 Prozent gestiegen.",
+          "in ganz Österreich ungefähr gleich hoch."
+        ],
+        "correct": 0
+      }
+    ],
+    "Pausenkultur / Mittagsschlaf — Văn hóa ngủ trưa ở nơi làm việc": [
+      {
+        "opts": [
+          "dass Mitarbeiter nach einer Schlafpause bessere Arbeitsergebnisse erzielen.",
+          "dass Chefs den Mittagsschlaf inzwischen in allen Firmen eingeführt haben.",
+          "dass ein Mittagsschlaf nur Rentnern und Kleinkindern etwas bringt."
+        ],
+        "correct": 0
+      },
+      {
+        "opts": [
+          "verbieten ihren Mitarbeitern jeden Mittagsschlaf.",
+          "haben zu wenig Räume für ihre Mitarbeiter.",
+          "bieten ihren Mitarbeitern spezielle Ruheräume an."
+        ],
+        "correct": 2
+      },
+      {
+        "opts": [
+          "wird von den meisten deutschen Betrieben angeboten.",
+          "wird von immer mehr Arbeitnehmern genutzt.",
+          "hilft besonders Menschen mit Schlafstörungen."
+        ],
+        "correct": 1
+      }
+    ],
+    "Schlafprobleme — Vấn đề giấc ngủ ở Áo": [
+      {
+        "opts": [
+          "dass jeder Mensch genau 7,5 Stunden schlafen sollte.",
+          "was guter Schlaf für verschiedene Menschen bedeutet.",
+          "wie man Schlafstörungen mit Medikamenten heilt."
+        ],
+        "correct": 1
+      },
+      {
+        "opts": [
+          "weil sie zu spät ins Bett gehen.",
+          "weil sie regelmäßig mehr als zehn Stunden schlafen.",
+          "weil sie tagsüber zu wenig arbeiten."
+        ],
+        "correct": 0
+      },
+      {
+        "opts": [
+          "möglichst lange im Bett zu bleiben.",
+          "jeden Tag genau gleich lange zu schlafen.",
+          "die Nacht ohne häufiges Aufwachen durchzuschlafen."
+        ],
+        "correct": 2
+      }
+    ],
+    "Auf der Suche nach Mobilitätskonzepten — Tương lai ngành xe và di chuyển bền vững": [
+      {
+        "opts": [
+          "die Geschichte des Flughafens Tempelhof in Berlin.",
+          "den Bau neuer Straßen in Spanien.",
+          "die Zukunft der Reifen- und Automobilindustrie."
+        ],
+        "correct": 2
+      },
+      {
+        "opts": [
+          "konnte dieses Jahr erstmals von allen Interessierten besucht werden.",
+          "findet seit 1998 immer nur in Spanien statt.",
+          "fand von Anfang an großes Interesse in der Branche."
+        ],
+        "correct": 0
+      },
+      {
+        "opts": [
+          "dass die Zahl der Autos bis 2050 deutlich sinken wird.",
+          "dass es 2050 weltweit über eine Milliarde Autos geben wird.",
+          "dass es 2050 nur noch 800 Millionen Autos geben wird."
+        ],
+        "correct": 1
+      }
+    ],
+    "Pro Juventute feiert — Kỷ niệm tổ chức Pro Juventute ở Thụy Sĩ": [
+      {
+        "opts": [
+          "es um den 100. Geburtstag der Stadt Bern.",
+          "es um einen Malkurs für Erwachsene.",
+          "es um den Geburtstag einer Kinder- und Jugendorganisation."
+        ],
+        "correct": 2
+      },
+      {
+        "opts": [
+          "werden allein von den Kindern ausgewählt.",
+          "werden am Jahresende in Bern ausgestellt.",
+          "gewinnen für die Klasse eine Reise durch die Schweiz."
+        ],
+        "correct": 1
+      },
+      {
+        "opts": [
+          "finanzielle Unterstützung durch weitere Firmen.",
+          "mehr Mitarbeiter für ihre Büros.",
+          "eine eigene Sendung im Fernsehen."
+        ],
+        "correct": 0
+      }
+    ],
+    "Müll weg, Leipzig! — Chiến dịch dọn rác ở Leipzig": [
+      {
+        "opts": [
+          "viele Menschen beim Sammeln und Beseitigen von Müll mitgemacht haben.",
+          "die Stadt weniger Abfall produziert als im vergangenen Jahr.",
+          "in Leipzig neue gesetzliche Regeln zur Mülltrennung gelten."
+        ],
+        "correct": 0
+      },
+      {
+        "opts": [
+          "eine kostenlose Abendveranstaltung mit Musik.",
+          "die Müllsammelaktion selbst.",
+          "schlechtes Wetter während der Aktion."
+        ],
+        "correct": 0
+      },
+      {
+        "opts": [
+          "kritisierte die Idee der Aktion.",
+          "nahm in diesem Jahr zum ersten Mal teil.",
+          "hatte die Idee zu dieser Aktion."
+        ],
+        "correct": 2
+      }
+    ],
+    "Sommerveranstaltung mit Musik (13–18 Jahre) — Sự kiện hè có luyện nhạc cụ": [
+      {
+        "opts": [
+          "Schülerinnen und Schüler aus Österreich an einer internationalen Sommerveranstaltung teilnehmen.",
+          "nur italienische Jugendliche in Deutschland Urlaub machen.",
+          "Erwachsene einen neuen Musikkurs organisieren."
+        ],
+        "correct": 0
+      },
+      {
+        "opts": [
+          "fand die Veranstaltung im vergangenen Jahr langweilig.",
+          "möchte auch in diesem Jahr bei der Veranstaltung mitmachen.",
+          "will den Beginn des Konzerts auf keinen Fall verpassen."
+        ],
+        "correct": 1
+      },
+      {
+        "opts": [
+          "bereiten sich gemeinsam auf ein Konzert vor.",
+          "üben jeweils auf einem Instrument.",
+          "dürfen keine Musikinstrumente ausprobieren."
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  "thong_bao_noi_quy": {
+    "Hausordnung — Nội quy nhà ở": [
+      {
+        "opts": [
+          "mit einem Erwachsenen im Lift zu fahren.",
+          "auf dem Spielplatz neben dem Haus zu spielen.",
+          "in der Tiefgarage zu spielen."
+        ],
+        "correct": 2
+      },
+      {
+        "opts": [
+          "etwas zu verändern.",
+          "eine eigene Waschmaschine zu benutzen.",
+          "kleine Fische oder Wellensittiche zu halten."
+        ],
+        "correct": 0
+      },
+      {
+        "opts": [
+          "mit dem Staubsauger putzen.",
+          "duschen und baden.",
+          "ein Instrument spielen."
+        ],
+        "correct": 1
+      },
+      {
+        "opts": [
+          "Fahrräder im Treppenhaus abstellen dürfen.",
+          "gemeinschaftliche Räume offen lassen dürfen.",
+          "die Waschküche sauber halten müssen."
+        ],
+        "correct": 2
+      }
+    ],
+    "Benutzungsordnung der Bibliothek — Quy định sử dụng thư viện": [
+      {
+        "opts": [
+          "zahlt man nur eine Pauschale von 10 Euro.",
+          "muss es wieder gekauft werden.",
+          "wird man sofort aus der Bibliothek ausgeschlossen."
+        ],
+        "correct": 1
+      },
+      {
+        "opts": [
+          "nur in der Bibliothek lesen.",
+          "für 28 Tage ausleihen.",
+          "zweimal um 14 Tage verlängern."
+        ],
+        "correct": 0
+      },
+      {
+        "opts": [
+          "wenn sie einen Studentenausweis vorlegen.",
+          "wenn sie schon über 18 Jahre alt sind.",
+          "wenn die Eltern ein Dokument ausfüllen."
+        ],
+        "correct": 2
+      },
+      {
+        "opts": [
+          "darf man Rucksäcke und Taschen tragen.",
+          "sind Gespräche verboten.",
+          "sind Speisen erlaubt."
+        ],
+        "correct": 1
+      }
+    ],
+    "Kreis – Viereck – Dreieck — Hình tròn, hình vuông, hình tam giác": [
+      {
+        "opts": [
+          "das passende Symbol mit der Hand verdecken.",
+          "die Rückseite der Fragekarte anschauen.",
+          "ihre Antwort laut vorlesen."
+        ],
+        "correct": 0
+      },
+      {
+        "opts": [
+          "liest immer der jüngste Spieler vor.",
+          "stehen auf der Rückseite der Karte.",
+          "stellt ein Spieler nach dem anderen."
+        ],
+        "correct": 2
+      },
+      {
+        "opts": [
+          "eine neue Karte ziehen.",
+          "stehen bleiben.",
+          "ein Feld zurückgehen."
+        ],
+        "correct": 1
+      },
+      {
+        "opts": [
+          "nimmt jeder Spieler drei unterschiedliche Chips.",
+          "mischt der jüngste Spieler die Karten allein.",
+          "stellt jeder Spieler seine Figur ins Ziel."
+        ],
+        "correct": 0
+      }
+    ],
+    "Infoblatt für die Mieter des Studenten­wohnheims — Tờ thông tin cho người thuê ký túc xá sinh viên": [
+      {
+        "opts": [
+          "Eine Reinigungsfirma putzt die Zimmer der Mieter.",
+          "In den Zimmern dürfen die Mieter Plakate aufhängen.",
+          "Die Mieter müssen auch die Gänge selbst putzen."
+        ],
+        "correct": 1
+      },
+      {
+        "opts": [
+          "dürfen Fahrräder im Flur abstellen.",
+          "müssen Motorräder nicht beim Vermieter anmelden.",
+          "dürfen Fahrräder nicht in die Zimmer mitnehmen."
+        ],
+        "correct": 2
+      },
+      {
+        "opts": [
+          "nur Heimbewohner dürfen den Garten nutzen.",
+          "Grillpartys im Garten dürfen bis Mitternacht dauern.",
+          "der Veranstaltungsraum darf ohne Anmeldung genutzt werden."
+        ],
+        "correct": 0
+      },
+      {
+        "opts": [
+          "bekommt einen Ersatzschlüssel kostenlos.",
+          "darf den Schlüssel bei längerer Abwesenheit behalten.",
+          "muss melden, wenn ein Schlüssel verloren geht."
+        ],
+        "correct": 2
+      }
+    ],
+    "Umzugsplaner — Kế hoạch chuyển nhà": [
+      {
+        "opts": [
+          "füllen Sie jede Kiste möglichst ganz voll.",
+          "die Kisten müssen nicht beschriftet werden.",
+          "packen Sie so, dass nichts beschädigt werden kann."
+        ],
+        "correct": 2
+      },
+      {
+        "opts": [
+          "entscheiden, was Sie mit unnötigen Sachen machen.",
+          "erst am Umzugstag mit dem Aufräumen beginnen.",
+          "auf jeden Fall alle alten Sachen behalten."
+        ],
+        "correct": 0
+      },
+      {
+        "opts": [
+          "bekommen alkoholische Getränke angeboten.",
+          "müssen wissen, wohin die Möbel kommen.",
+          "müssen ihre eigene Verpflegung mitbringen."
+        ],
+        "correct": 1
+      },
+      {
+        "opts": [
+          "muss man die Umzugsfirma um Erlaubnis bitten.",
+          "braucht man keine besondere Genehmigung.",
+          "muss man den Umzug bei der Polizei anmelden."
+        ],
+        "correct": 2
+      }
+    ],
+    "Rundbrief an die Mieter — Thư thông báo gửi người thuê": [
+      {
+        "opts": [
+          "keine Gegenstände in den Gängen stehen.",
+          "die Mieter ihre Schuhe vor der Wohnungstür abstellen.",
+          "Kinderwagen im Eingangsbereich abgestellt werden."
+        ],
+        "correct": 0
+      },
+      {
+        "opts": [
+          "man schwere Blumentöpfe an das Geländer hängen.",
+          "man Blumen haben.",
+          "man einen Grill benutzen."
+        ],
+        "correct": 1
+      },
+      {
+        "opts": [
+          "werden alle Fahrräder aus der Tiefgarage entfernt.",
+          "dürfen keine Fahrräder mehr benutzt werden.",
+          "müssen Fahrräder mit einem Namensschild markiert sein."
+        ],
+        "correct": 2
+      },
+      {
+        "opts": [
+          "müssen selten benutzte Fahrräder in ihren Keller stellen.",
+          "dürfen alte Fahrräder in der Tiefgarage abstellen.",
+          "sollen ihre Fahrräder im Kinderwagenraum abstellen."
+        ],
+        "correct": 0
+      }
+    ]
+  }
+}

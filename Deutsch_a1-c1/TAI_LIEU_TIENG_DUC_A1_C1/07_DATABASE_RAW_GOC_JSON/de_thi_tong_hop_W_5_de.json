@@ -1,0 +1,147 @@
+[
+  {
+    "title": "Cách chắc ăn nhất: nhìn ĐUÔI của từ",
+    "note": "Thuộc bảng này là đoán đúng phần lớn danh từ",
+    "hue": "t2",
+    "blocks": [
+      {
+        "kind": "text",
+        "body": "Tiếng Đức không có quy tắc tuyệt đối, nhưng **đuôi từ** cho biết giống với độ chính xác rất cao. Học theo đuôi lợi hơn học vẹt từng từ nhiều."
+      },
+      {
+        "kind": "table",
+        "head": [
+          "Giống",
+          "Đuôi",
+          "Ví dụ"
+        ],
+        "rows": [
+          [
+            "der",
+            "**-er, -ling, -ismus, -ant, -ist, -eur, -or**",
+            "`der Lehrer`, `der Lehrling`, `der Tourismus`, `der Praktikant`"
+          ],
+          [
+            "die",
+            "**-ung, -heit, -keit, -schaft, -tion, -sion, -tät, -ik, -ur, -anz, -enz, -ie, -ei**",
+            "`die Wohnung`, `die Freiheit`, `die Möglichkeit`, `die Situation`"
+          ],
+          [
+            "die",
+            "**-in** (nghề nghiệp giống cái), **-e** (khoảng 90%)",
+            "`die Lehrerin`, `die Blume`, `die Schule`"
+          ],
+          [
+            "das",
+            "**-chen, -lein** (dạng nhỏ)",
+            "`das Mädchen`, `das Brötchen`, `das Fräulein`"
+          ],
+          [
+            "das",
+            "**-ment, -tum, -um, -ma, -nis**",
+            "`das Dokument`, `das Eigentum`, `das Museum`, `das Thema`"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Đoán theo nhóm nghĩa",
+    "note": "Khi đuôi từ không cho biết gì",
+    "hue": "t12",
+    "blocks": [
+      {
+        "kind": "list",
+        "items": [
+          "**der** — người/động vật giống đực (`der Mann`, `der Vater`), **ngày, tháng, mùa, hướng, thời tiết**: `der Montag`, `der Januar`, `der Sommer`, `der Norden`, `der Regen`.",
+          "**der** — hầu hết **đồ uống có cồn**: `der Wein`, `der Whisky` (ngoại lệ: `das Bier`).",
+          "**die** — người giống cái (`die Frau`, `die Mutter`), **số dùng như danh từ**: `die Eins`, `die Null`.",
+          "**die** — **hầu hết các loài hoa và cây**: `die Rose`, `die Tanne`.",
+          "**das** — **động từ dùng làm danh từ**: `das Essen` (việc ăn), `das Lernen`, `das Schwimmen`.",
+          "**das** — **màu sắc, chữ cái, tên ngôn ngữ, kim loại**: `das Blau`, `das A`, `das Deutsch`, `das Gold`.",
+          "**das** — **con non của người và vật**: `das Kind`, `das Baby`, `das Kalb`."
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Từ ghép: lấy giống của từ CUỐI",
+    "note": "Quy tắc đúng gần như 100%",
+    "hue": "t15",
+    "blocks": [
+      {
+        "kind": "text",
+        "body": "Từ ghép tiếng Đức dài đến đâu cũng chỉ cần nhìn **từ đứng cuối cùng**, vì đó mới là từ chính."
+      },
+      {
+        "kind": "table",
+        "head": [
+          "Từ ghép",
+          "Từ cuối",
+          "Giống"
+        ],
+        "rows": [
+          [
+            "`die Haustür`",
+            "die Tür",
+            "die"
+          ],
+          [
+            "`der Hausschlüssel`",
+            "der Schlüssel",
+            "der"
+          ],
+          [
+            "`das Wohnzimmer`",
+            "das Zimmer",
+            "das"
+          ],
+          [
+            "`die Krankenversicherung`",
+            "die Versicherung",
+            "die"
+          ],
+          [
+            "`der Hauptbahnhof`",
+            "der Bahnhof",
+            "der"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Những bẫy hay sai nhất",
+    "note": "Người Việt hay nhầm đúng mấy từ này",
+    "hue": "t13",
+    "blocks": [
+      {
+        "kind": "list",
+        "items": [
+          "`das Mädchen` — là **con gái** nhưng vẫn là **das**, vì đuôi **-chen** luôn thắng nghĩa.",
+          "`die Butter`, `die Wurst`, `die Kartoffel` — đồ ăn nhưng là **die**; còn `das Brot`, `das Ei`, `das Fleisch` là **das**.",
+          "`das Wasser`, `das Bier` là **das**, nhưng `der Kaffee`, `der Tee`, `der Saft`, `der Wein` là **der**.",
+          "`die Zeit` (thời gian) là die, nhưng `der Tag`, `der Monat` là der và `das Jahr` là das — nhóm thời gian không đồng nhất, phải học riêng.",
+          "Một số từ **đổi nghĩa theo giống**: `der See` (cái hồ) ≠ `die See` (biển); `das Band` (dải băng) ≠ `der Band` (tập sách)."
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Học sao cho nhớ lâu",
+    "note": "Cách dùng chính màn này cho hiệu quả",
+    "hue": "t20",
+    "blocks": [
+      {
+        "kind": "list",
+        "items": [
+          "**Không bao giờ học từ trần.** Học `die Tür` chứ đừng học `Tür` — nhớ sai mạo từ về sau sửa rất mệt.",
+          "Ở web này, mạo từ luôn có **màu riêng**: der xanh dương, die đỏ hồng, das xanh lá. Nhìn màu nhiều lần sẽ nhớ mà không cần cố.",
+          "Nút loa cũng đọc theo giống: **der giọng nam, die giọng nữ, das lúc nam lúc nữ** — nhớ bằng tai thay vì học thuộc.",
+          "Học theo **cụm**: `die Tür öffnen`, `den Schlüssel suchen` — nhớ cả câu thì mạo từ tự đi kèm.",
+          "Từ nào đã tra mà vẫn quên thì **lưu vào Từ vựng của tôi** rồi luyện lại bằng thẻ lật."
+        ]
+      }
+    ]
+  }
+]

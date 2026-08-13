@@ -1,0 +1,8 @@
+{
+  "telcB1Full": {
+    "__error": "Cannot use import statement outside a module"
+  },
+  "telcB2Full": {
+    "__error": "Cannot use import statement outside a module"
+  }
+}

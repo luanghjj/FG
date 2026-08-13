@@ -1,0 +1,170 @@
+[
+  {
+    "title": "01_Từ vựng A1 Đức-Việt",
+    "category": "01_TU_VUNG_WORTSCHATZ",
+    "mdPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/01_TU_VUNG_WORTSCHATZ/01_Từ vựng A1 Đức-Việt.md",
+    "jsonPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/01_TU_VUNG_WORTSCHATZ/01_Từ vựng A1 Đức-Việt.json",
+    "wordCount": 43433
+  },
+  {
+    "title": "02_Từ Vựng Goethe A1",
+    "category": "01_TU_VUNG_WORTSCHATZ",
+    "mdPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/01_TU_VUNG_WORTSCHATZ/02_Từ Vựng Goethe A1.md",
+    "jsonPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/01_TU_VUNG_WORTSCHATZ/02_Từ Vựng Goethe A1.json",
+    "wordCount": 27112
+  },
+  {
+    "title": "03_Schritte plus A1.1 Đức-Việt",
+    "category": "04_GIAO_TRINH_VA_SACH_HOC",
+    "mdPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/04_GIAO_TRINH_VA_SACH_HOC/03_Schritte plus A1.1 Đức-Việt.md",
+    "jsonPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/04_GIAO_TRINH_VA_SACH_HOC/03_Schritte plus A1.1 Đức-Việt.json",
+    "wordCount": 8281
+  },
+  {
+    "title": "04_Từ vựng và ngữ pháp A1",
+    "category": "04_GIAO_TRINH_VA_SACH_HOC",
+    "mdPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/04_GIAO_TRINH_VA_SACH_HOC/04_Từ vựng và ngữ pháp A1.md",
+    "jsonPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/04_GIAO_TRINH_VA_SACH_HOC/04_Từ vựng và ngữ pháp A1.json",
+    "wordCount": 26471
+  },
+  {
+    "title": "05_Từ vựng tiếng Đức trình độ A1",
+    "category": "01_TU_VUNG_WORTSCHATZ",
+    "mdPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/01_TU_VUNG_WORTSCHATZ/05_Từ vựng tiếng Đức trình độ A1.md",
+    "jsonPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/01_TU_VUNG_WORTSCHATZ/05_Từ vựng tiếng Đức trình độ A1.json",
+    "wordCount": 12835
+  },
+  {
+    "title": "06_Từ vựng Đức-Việt A2",
+    "category": "01_TU_VUNG_WORTSCHATZ",
+    "mdPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/01_TU_VUNG_WORTSCHATZ/06_Từ vựng Đức-Việt A2.md",
+    "jsonPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/01_TU_VUNG_WORTSCHATZ/06_Từ vựng Đức-Việt A2.json",
+    "wordCount": 54771
+  },
+  {
+    "title": "07_Từ Vựng Goethe A2",
+    "category": "01_TU_VUNG_WORTSCHATZ",
+    "mdPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/01_TU_VUNG_WORTSCHATZ/07_Từ Vựng Goethe A2.md",
+    "jsonPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/01_TU_VUNG_WORTSCHATZ/07_Từ Vựng Goethe A2.json",
+    "wordCount": 38344
+  },
+  {
+    "title": "08_Schritte plus A2.2",
+    "category": "04_GIAO_TRINH_VA_SACH_HOC",
+    "mdPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/04_GIAO_TRINH_VA_SACH_HOC/08_Schritte plus A2.2.md",
+    "jsonPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/04_GIAO_TRINH_VA_SACH_HOC/08_Schritte plus A2.2.json",
+    "wordCount": 6460
+  },
+  {
+    "title": "09_Từ vựng tiếng Đức theo chủ điểm A2",
+    "category": "01_TU_VUNG_WORTSCHATZ",
+    "mdPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/01_TU_VUNG_WORTSCHATZ/09_Từ vựng tiếng Đức theo chủ điểm A2.md",
+    "jsonPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/01_TU_VUNG_WORTSCHATZ/09_Từ vựng tiếng Đức theo chủ điểm A2.json",
+    "wordCount": 17491
+  },
+  {
+    "title": "10_Từ vựng tiếng Đức trình độ A2",
+    "category": "01_TU_VUNG_WORTSCHATZ",
+    "mdPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/01_TU_VUNG_WORTSCHATZ/10_Từ vựng tiếng Đức trình độ A2.md",
+    "jsonPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/01_TU_VUNG_WORTSCHATZ/10_Từ vựng tiếng Đức trình độ A2.json",
+    "wordCount": 8004
+  },
+  {
+    "title": "11_Ngữ pháp Goethe A2",
+    "category": "02_NGU_PHAP_GRAMMATIK",
+    "mdPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/02_NGU_PHAP_GRAMMATIK/11_Ngữ pháp Goethe A2.md",
+    "jsonPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/02_NGU_PHAP_GRAMMATIK/11_Ngữ pháp Goethe A2.json",
+    "wordCount": 13814
+  },
+  {
+    "title": "12_Từ vựng ngành Điều dưỡng (PDF)",
+    "category": "01_TU_VUNG_WORTSCHATZ",
+    "mdPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/01_TU_VUNG_WORTSCHATZ/12_Từ vựng ngành Điều dưỡng (PDF).md",
+    "jsonPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/01_TU_VUNG_WORTSCHATZ/12_Từ vựng ngành Điều dưỡng (PDF).json",
+    "wordCount": 11612
+  },
+  {
+    "title": "13_Từ Vựng Goethe B1",
+    "category": "01_TU_VUNG_WORTSCHATZ",
+    "mdPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/01_TU_VUNG_WORTSCHATZ/13_Từ Vựng Goethe B1.md",
+    "jsonPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/01_TU_VUNG_WORTSCHATZ/13_Từ Vựng Goethe B1.json",
+    "wordCount": 51974
+  },
+  {
+    "title": "14_Từ vựng tiếng Đức theo chủ điểm B1",
+    "category": "01_TU_VUNG_WORTSCHATZ",
+    "mdPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/01_TU_VUNG_WORTSCHATZ/14_Từ vựng tiếng Đức theo chủ điểm B1.md",
+    "jsonPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/01_TU_VUNG_WORTSCHATZ/14_Từ vựng tiếng Đức theo chủ điểm B1.json",
+    "wordCount": 29583
+  },
+  {
+    "title": "15_Từ vựng Đức-Việt tất cả chủ đề",
+    "category": "01_TU_VUNG_WORTSCHATZ",
+    "mdPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/01_TU_VUNG_WORTSCHATZ/15_Từ vựng Đức-Việt tất cả chủ đề.md",
+    "jsonPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/01_TU_VUNG_WORTSCHATZ/15_Từ vựng Đức-Việt tất cả chủ đề.json",
+    "wordCount": 15677
+  },
+  {
+    "title": "16_Từ vựng Đức-Việt B1",
+    "category": "01_TU_VUNG_WORTSCHATZ",
+    "mdPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/01_TU_VUNG_WORTSCHATZ/16_Từ vựng Đức-Việt B1.md",
+    "jsonPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/01_TU_VUNG_WORTSCHATZ/16_Từ vựng Đức-Việt B1.json",
+    "wordCount": 39755
+  },
+  {
+    "title": "17_Từ vựng tiếng Đức trình độ B1",
+    "category": "01_TU_VUNG_WORTSCHATZ",
+    "mdPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/01_TU_VUNG_WORTSCHATZ/17_Từ vựng tiếng Đức trình độ B1.md",
+    "jsonPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/01_TU_VUNG_WORTSCHATZ/17_Từ vựng tiếng Đức trình độ B1.json",
+    "wordCount": 14538
+  },
+  {
+    "title": "18_Ngữ pháp B1 Goethe",
+    "category": "02_NGU_PHAP_GRAMMATIK",
+    "mdPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/02_NGU_PHAP_GRAMMATIK/18_Ngữ pháp B1 Goethe.md",
+    "jsonPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/02_NGU_PHAP_GRAMMATIK/18_Ngữ pháp B1 Goethe.json",
+    "wordCount": 870
+  },
+  {
+    "title": "19_Grammatik aktiv A1-B1",
+    "category": "02_NGU_PHAP_GRAMMATIK",
+    "mdPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/02_NGU_PHAP_GRAMMATIK/19_Grammatik aktiv A1-B1.md",
+    "jsonPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/02_NGU_PHAP_GRAMMATIK/19_Grammatik aktiv A1-B1.json",
+    "wordCount": 2073
+  },
+  {
+    "title": "20_Chúng ta cùng học tiếng Đức A1 A2 B1",
+    "category": "04_GIAO_TRINH_VA_SACH_HOC",
+    "mdPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/04_GIAO_TRINH_VA_SACH_HOC/20_Chúng ta cùng học tiếng Đức A1 A2 B1.md",
+    "jsonPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/04_GIAO_TRINH_VA_SACH_HOC/20_Chúng ta cùng học tiếng Đức A1 A2 B1.json",
+    "wordCount": 140095
+  },
+  {
+    "title": "21_Ngữ pháp B1 Đức Việt",
+    "category": "02_NGU_PHAP_GRAMMATIK",
+    "mdPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/02_NGU_PHAP_GRAMMATIK/21_Ngữ pháp B1 Đức Việt.md",
+    "jsonPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/02_NGU_PHAP_GRAMMATIK/21_Ngữ pháp B1 Đức Việt.json",
+    "wordCount": 21420
+  },
+  {
+    "title": "22_Đề TELC thường xuyên ra nhất",
+    "category": "05_PDF_DE_THI_IN_AN",
+    "mdPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/05_PDF_DE_THI_IN_AN/22_Đề TELC thường xuyên ra nhất.md",
+    "jsonPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/05_PDF_DE_THI_IN_AN/22_Đề TELC thường xuyên ra nhất.json",
+    "wordCount": 47697
+  },
+  {
+    "title": "23_Từ vựng tiếng Đức trình độ B2",
+    "category": "01_TU_VUNG_WORTSCHATZ",
+    "mdPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/01_TU_VUNG_WORTSCHATZ/23_Từ vựng tiếng Đức trình độ B2.md",
+    "jsonPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/01_TU_VUNG_WORTSCHATZ/23_Từ vựng tiếng Đức trình độ B2.json",
+    "wordCount": 18179
+  },
+  {
+    "title": "24_Từ vựng ngành Điều dưỡng (PDF)",
+    "category": "01_TU_VUNG_WORTSCHATZ",
+    "mdPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/01_TU_VUNG_WORTSCHATZ/24_Từ vựng ngành Điều dưỡng (PDF).md",
+    "jsonPath": "08_NOI_DUNG_TRICH_XUAT_TU_PDF/01_TU_VUNG_WORTSCHATZ/24_Từ vựng ngành Điều dưỡng (PDF).json",
+    "wordCount": 11612
+  }
+]
