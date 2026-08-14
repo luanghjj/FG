@@ -1,0 +1,156 @@
+[
+  {
+    "de": "gut",
+    "vi": "tốt",
+    "der": "der gute Tag",
+    "die": "die gute Frau",
+    "das": "das gute Buch"
+  },
+  {
+    "de": "neu",
+    "vi": "mới",
+    "der": "der neue Tisch",
+    "die": "die neue Wohnung",
+    "das": "das neue Auto"
+  },
+  {
+    "de": "alt",
+    "vi": "cũ, già",
+    "der": "der alte Mann",
+    "die": "die alte Uhr",
+    "das": "das alte Haus"
+  },
+  {
+    "de": "groß",
+    "vi": "to, lớn",
+    "der": "der große Garten",
+    "die": "die große Stadt",
+    "das": "das große Zimmer"
+  },
+  {
+    "de": "klein",
+    "vi": "nhỏ",
+    "der": "der kleine Hund",
+    "die": "die kleine Tasche",
+    "das": "das kleine Kind"
+  },
+  {
+    "de": "schön",
+    "vi": "đẹp",
+    "der": "der schöne Tag",
+    "die": "die schöne Blume",
+    "das": "das schöne Bild"
+  },
+  {
+    "de": "teuer",
+    "vi": "đắt",
+    "der": "der teure Wein",
+    "die": "die teure Brille",
+    "das": "das teure Handy"
+  },
+  {
+    "de": "billig",
+    "vi": "rẻ",
+    "der": "der billige Kaffee",
+    "die": "die billige Karte",
+    "das": "das billige Ticket"
+  },
+  {
+    "de": "schnell",
+    "vi": "nhanh",
+    "der": "der schnelle Zug",
+    "die": "die schnelle Bahn",
+    "das": "das schnelle Auto"
+  },
+  {
+    "de": "langsam",
+    "vi": "chậm",
+    "der": "der langsame Bus",
+    "die": "die langsame Arbeit",
+    "das": "das langsame Spiel"
+  },
+  {
+    "de": "warm",
+    "vi": "ấm",
+    "der": "der warme Tee",
+    "die": "die warme Suppe",
+    "das": "das warme Wasser"
+  },
+  {
+    "de": "kalt",
+    "vi": "lạnh",
+    "der": "der kalte Winter",
+    "die": "die kalte Milch",
+    "das": "das kalte Bier"
+  },
+  {
+    "de": "lang",
+    "vi": "dài",
+    "der": "der lange Weg",
+    "die": "die lange Straße",
+    "das": "das lange Jahr"
+  },
+  {
+    "de": "kurz",
+    "vi": "ngắn",
+    "der": "der kurze Brief",
+    "die": "die kurze Frage",
+    "das": "das kurze Wort"
+  },
+  {
+    "de": "einfach",
+    "vi": "dễ, đơn giản",
+    "der": "der einfache Satz",
+    "die": "die einfache Prüfung",
+    "das": "das einfache Beispiel"
+  },
+  {
+    "de": "schwer",
+    "vi": "khó, nặng",
+    "der": "der schwere Kurs",
+    "die": "die schwere Arbeit",
+    "das": "das schwere Problem"
+  },
+  {
+    "de": "wichtig",
+    "vi": "quan trọng",
+    "der": "der wichtige Termin",
+    "die": "die wichtige Frage",
+    "das": "das wichtige Formular"
+  },
+  {
+    "de": "richtig",
+    "vi": "đúng",
+    "der": "der richtige Weg",
+    "die": "die richtige Antwort",
+    "das": "das richtige Wort"
+  },
+  {
+    "de": "falsch",
+    "vi": "sai",
+    "der": "der falsche Name",
+    "die": "die falsche Nummer",
+    "das": "das falsche Ticket"
+  },
+  {
+    "de": "freundlich",
+    "vi": "thân thiện",
+    "der": "der freundliche Chef",
+    "die": "die freundliche Ärztin",
+    "das": "das freundliche Kind"
+  },
+  {
+    "de": "müde",
+    "vi": "mệt",
+    "der": "der müde Vater",
+    "die": "die müde Mutter",
+    "das": "das müde Baby"
+  },
+  {
+    "de": "glücklich",
+    "vi": "hạnh phúc",
+    "der": "der glückliche Mann",
+    "die": "die glückliche Familie",
+    "das": "das glückliche Paar"
+  }
+]

@@ -1,53 +1,75 @@
-import React, { useState } from 'react';
-import { 
-  CheckCircle2, 
-  XCircle, 
-  Sparkles, 
-  Volume2, 
-  RotateCcw, 
-  Layers, 
+import React, { useState, useCallback } from 'react';
+import {
+  Layers,
+  Volume2,
+  RotateCcw,
   HelpCircle,
   Headphones,
+  BookOpen,
   FileCheck,
-  BookOpen
+  Sparkles,
+  Bot,
+  CheckCircle2,
+  XCircle,
 } from 'lucide-react';
-import rawHoerenData from '../data/de_thi_audio_va_transcript_hoeren_18_bai.json';
+import { BANKS, speakerLabel } from '../services/examBankUtils';
+import { explainAnswerWithGemini, AnswerExplanationResult } from '../services/geminiService';
 
-interface OptionItem {
-  de: string;
-  vi: string;
-  c: boolean;
-}
+type TabId = 'hoeren' | 'lesen' | 'sprach';
+type Level = 'B1' | 'B2';
 
-interface ExamQuestion {
-  qDe: string;
-  qVi: string;
-  opts: OptionItem[];
-}
-
-interface QuestionAnswerPair {
-  qDe: string;
-  ansDe: string;
-  qVi: string;
-  ansVi: string;
-}
-
-interface HoerenItem {
-  title: string;
-  titleVi: string;
-  audioText: string;
-  exam?: ExamQuestion[];
-  qs?: QuestionAnswerPair[];
-}
+const TAB_META: { id: TabId; label: string; levels: Level[] }[] = [
+  { id: 'hoeren', label: 'Hörverstehen (Nghe hiểu)', levels: ['B1'] },
+  { id: 'lesen', label: 'Leseverstehen (Đọc hiểu)', levels: ['B1', 'B2'] },
+  { id: 'sprach', label: 'Sprachbausteine (Ngữ pháp)', levels: ['B1'] },
+];
 
 export const ExamSimulator: React.FC = () => {
-  const [selectedSetIndex, setSelectedSetIndex] = useState<number>(0);
-  const [selectedTab, setSelectedTab] = useState<'hoeren' | 'lesen' | 'sprachbausteine'>('hoeren');
+  const [level, setLevel] = useState<Level>('B1');
+  const [tab, setTab] = useState<TabId>('hoeren');
+  const [selectedItem, setSelectedItem] = useState(0);
   const [userAnswers, setUserAnswers] = useState<{ [key: string]: number }>({});
-  const [showResults, setShowResults] = useState<boolean>(false);
+  const [showResults, setShowResults] = useState(false);
+  const [explanations, setExplanations] = useState<{ [key: string]: AnswerExplanationResult | null }>({});
+  const [explainingKey, setExplainingKey] = useState<string | null>(null);
 
-  const hoerenList = rawHoerenData as HoerenItem[];
-  const currentItem = hoerenList[selectedSetIndex % hoerenList.length] || hoerenList[0];
+  const bank =
+    tab === 'hoeren'
+      ? BANKS.hoeren.B1
+      : tab === 'sprach'
+        ? BANKS.sprach.B1
+        : level === 'B2'
+          ? BANKS.lesen.B2
+          : BANKS.lesen.B1;
+
+  const item = bank.items[selectedItem] || bank.items[0];
+
+  const resetForNewContext = useCallback(() => {
+    setSelectedItem(0);
+    setUserAnswers({});
+    setShowResults(false);
+    setExplanations({});
+    setExplainingKey(null);
+  }, []);
+
+  const changeTab = (t: TabId) => {
+    setTab(t);
+    if (t !== 'lesen') setLevel('B1');
+    resetForNewContext();
+  };
+
+  const changeLevel = (l: Level) => {
+    setLevel(l);
+    resetForNewContext();
+  };
+
+  const changeItem = (idx: number) => {
+    setSelectedItem(idx);
+    setUserAnswers({});
+    setShowResults(false);
+    setExplanations({});
+    setExplainingKey(null);
+  };
 
   const speakGerman = (text: string) => {
     if ('speechSynthesis' in window) {
@@ -64,251 +86,314 @@ export const ExamSimulator: React.FC = () => {
     setUserAnswers(prev => ({ ...prev, [qKey]: optIndex }));
   };
 
-  const handleReset = () => {
-    setUserAnswers({});
-    setShowResults(false);
+  const handleExplain = async (qKey: string, qIdx: number) => {
+    if (explanations[qKey]) return;
+    setExplainingKey(qKey);
+    const q = item.questions[qIdx];
+    const result = await explainAnswerWithGemini(
+      q.stem,
+      q.options.map(o => o.de),
+      q.correctIdx,
+      userAnswers[qKey] ?? -1,
+      item.passage
+    );
+    setExplanations(prev => ({ ...prev, [qKey]: result }));
+    setExplainingKey(null);
   };
 
-  const questions = currentItem?.exam || [];
-
-  const calculateScore = () => {
+  const questions = item?.questions || [];
+  const score = (() => {
     let correct = 0;
-    const total = questions.length;
     questions.forEach((q, idx) => {
-      const chosen = userAnswers[`q_${idx}`];
-      if (chosen !== undefined && q.opts[chosen]?.c === true) {
-        correct++;
-      }
+      if (userAnswers[`q_${idx}`] === q.correctIdx) correct++;
     });
+    const total = questions.length;
     return { correct, total, percentage: total > 0 ? Math.round((correct / total) * 100) : 0 };
-  };
+  })();
 
-  const score = calculateScore();
+  const letter = (i: number) => ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'][i] || String(i + 1);
 
   return (
     <div className="space-y-6 pb-16">
-      {/* Header Banner */}
-      <div className="rounded-3xl bg-slate-900 border border-slate-800 p-6 sm:p-8 text-white shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-        <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 text-xs font-bold uppercase mb-2">
-            <Layers className="w-3.5 h-3.5" />
-            Phòng Thi Mô Phỏng Trực Tiếp (Exam Simulator)
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold font-display text-white">
-            Bộ Đề Thi Thử Chuẩn B1 - B2 Kèm Lời Thoại & Đáp Án
+      {/* Compact Header */}
+      <div className="rounded-2xl bg-white border border-ios-line p-3 sm:p-4 shadow-xs flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
+        <div className="hidden md:block">
+          <h2 className="text-lg font-extrabold font-display text-ios-ink flex items-center gap-2">
+            <Layers className="w-4 h-4 text-ios-accent" />
+            <span>Phòng Thi Mô Phỏng TELC & Goethe (B1 - B2)</span>
           </h2>
-          <p className="text-slate-400 text-xs sm:text-sm mt-1 max-w-2xl">
-            Làm bài trắc nghiệm bấm giờ, xem giải thích chi tiết đáp án AI, nghe audio script và kiểm tra trình độ theo thời gian thực.
-          </p>
         </div>
 
-        {/* Set Selector Dropdown */}
-        <div className="flex flex-wrap items-center gap-3 bg-slate-800/80 p-2 rounded-2xl border border-slate-700/80 shrink-0">
-          <span className="text-xs text-slate-400 font-semibold pl-2">Chọn Đề:</span>
-          <select
-            value={selectedSetIndex}
-            onChange={(e) => {
-              setSelectedSetIndex(Number(e.target.value));
-              handleReset();
-            }}
-            className="bg-slate-900 text-amber-400 text-xs sm:text-sm font-bold px-3 py-2 rounded-xl border border-amber-500/40 focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
-          >
-            {hoerenList.map((item, i) => (
-              <option key={i} value={i}>
-                Đề #{i + 1}: {item.title.substring(0, 30)}...
-              </option>
-            ))}
-          </select>
-        </div>
+        {/* Item Selector Dropdown */}
+        {bank.items.length > 0 && (
+          <div className="flex items-center justify-between sm:justify-start gap-2 bg-ios-bg p-1.5 rounded-xl border border-ios-line">
+            <span className="text-xs text-ios-muted font-bold pl-2 shrink-0">Chọn Đề:</span>
+            <select
+              value={selectedItem}
+              onChange={(e) => changeItem(Number(e.target.value))}
+              className="bg-white text-ios-accent text-xs sm:text-sm font-bold px-3 py-1.5 rounded-lg border border-ios-line focus:outline-none cursor-pointer flex-1 sm:max-w-[280px]"
+            >
+              {bank.items.map((it, i) => (
+                <option key={i} value={i}>
+                  Đề #{i + 1}: {it.title.substring(0, 32)}{it.title.length > 32 ? '…' : ''}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
       </div>
 
       {/* Mode / Tab Selector */}
-      <div className="flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-3 overflow-x-auto">
-        <button
-          onClick={() => setSelectedTab('hoeren')}
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
-            selectedTab === 'hoeren'
-              ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
-              : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50'
-          }`}
-        >
-          <Headphones className="w-4 h-4" />
-          <span>Hörverstehen & Transcript ({hoerenList.length} bài)</span>
-        </button>
+      <div className="flex flex-col lg:flex-row gap-3 border-b border-ios-line pb-3">
+        <div className="flex items-center gap-2 overflow-x-auto">
+          {TAB_META.map((m) => {
+            const isActive = tab === m.id;
+            const Icon = m.id === 'hoeren' ? Headphones : m.id === 'lesen' ? BookOpen : FileCheck;
+            return (
+              <button
+                key={m.id}
+                onClick={() => changeTab(m.id)}
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all shrink-0 cursor-pointer ${
+                  isActive
+                    ? 'bg-ios-accent-soft text-ios-accent'
+                    : 'bg-white text-ios-secondary border border-ios-line hover:bg-ios-bg'
+                }`}
+              >
+                <Icon className="w-4 h-4" />
+                <span>{m.label}</span>
+                <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${isActive ? 'bg-white text-ios-accent' : 'bg-ios-bg text-ios-muted'}`}>
+                  {bank.items.length} đề
+                </span>
+              </button>
+            );
+          })}
+        </div>
 
-        <button
-          onClick={() => setSelectedTab('lesen')}
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
-            selectedTab === 'lesen'
-              ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
-              : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50'
-          }`}
-        >
-          <BookOpen className="w-4 h-4" />
-          <span>Leseverstehen (Đọc Hiểu Teil 1-3)</span>
-        </button>
-
-        <button
-          onClick={() => setSelectedTab('sprachbausteine')}
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
-            selectedTab === 'sprachbausteine'
-              ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
-              : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50'
-          }`}
-        >
-          <FileCheck className="w-4 h-4" />
-          <span>Sprachbausteine (Điền Từ Teil 1-2)</span>
-        </button>
+        {/* Level Selector (only for lesen) */}
+        {tab === 'lesen' && (
+          <div className="flex items-center gap-2">
+            <span className="text-xs text-ios-muted font-semibold pl-1">Trình độ:</span>
+            {TAB_META.find((m) => m.id === 'lesen')!.levels.map((l) => (
+              <button
+                key={l}
+                onClick={() => changeLevel(l)}
+                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  level === l
+                    ? 'bg-ios-accent text-white shadow-sm'
+                    : 'bg-white text-ios-secondary border border-ios-line hover:bg-ios-bg'
+                }`}
+              >
+                {l}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
-      {/* Main Container */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Left Column: Text / Audio Transcript */}
-        <div className="lg:col-span-7 space-y-4">
-          <div className="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm space-y-4">
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-800 pb-4">
-              <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">
-                  Đề Số #{selectedSetIndex + 1}
-                </span>
-                <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mt-0.5">
-                  {currentItem?.title}
-                </h3>
-                {currentItem?.titleVi && (
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                    🇻🇳 {currentItem.titleVi}
-                  </p>
+      {!item ? (
+        <div className="rounded-2xl bg-white border border-ios-line p-10 text-center text-sm text-ios-muted">
+          Chưa có đề nào cho phần này.
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          {/* Left Column: Passage / Transcript */}
+          <div className="lg:col-span-7 space-y-4">
+            <div className="rounded-2xl bg-white border border-ios-line p-6 sm:p-8 shadow-sm space-y-4">
+              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-ios-line pb-4">
+                <div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-ios-accent">
+                    {bank.label} · Đề Số #{selectedItem + 1}
+                  </span>
+                  <h3 className="text-lg sm:text-xl font-bold text-ios-ink mt-0.5">
+                    {item.title}
+                  </h3>
+                  {item.titleVi && (
+                    <p className="text-xs text-ios-muted mt-0.5">
+                      {item.titleVi}
+                    </p>
+                  )}
+                </div>
+
+                {item.passage && (
+                  <button
+                    onClick={() => speakGerman(item.passage?.substring(0, 300) || '')}
+                    className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-ios-bg hover:bg-ios-accent-soft text-ios-secondary hover:text-ios-accent text-xs font-bold transition-colors cursor-pointer border border-ios-line"
+                    title="Nghe phát âm lời thoại"
+                  >
+                    <Volume2 className="w-4 h-4" />
+                    <span>Nghe Đọc (TTS)</span>
+                  </button>
                 )}
               </div>
 
-              <button
-                onClick={() => speakGerman(currentItem?.audioText?.substring(0, 300) || '')}
-                className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-amber-500/20 text-slate-700 dark:text-slate-200 hover:text-amber-500 text-xs font-bold transition-colors cursor-pointer"
-                title="Nghe phát âm lời thoại"
-              >
-                <Volume2 className="w-4 h-4" />
-                <span>Nghe Đọc (TTS)</span>
-              </button>
+              {item.passage ? (
+                <div className="bg-ios-bg rounded-xl p-5 border border-ios-line max-h-[480px] overflow-y-auto leading-relaxed text-sm text-ios-ink font-sans whitespace-pre-line">
+                  {item.passage}
+                </div>
+              ) : (
+                <div className="bg-ios-bg rounded-xl p-5 border border-ios-line text-xs text-ios-muted">
+                  Chọn mạo từ (giống) đúng cho danh từ tính từ trong bài tập bên phải.
+                </div>
+              )}
             </div>
+          </div>
 
-            {/* Content Box */}
-            <div className="bg-slate-50 dark:bg-slate-800/40 rounded-2xl p-5 border border-slate-200/80 dark:border-slate-700/50 max-h-[480px] overflow-y-auto leading-relaxed text-sm text-slate-800 dark:text-slate-200 font-sans space-y-4">
-              <div className="whitespace-pre-line leading-relaxed">
-                {currentItem?.audioText}
+          {/* Right Column: Interactive Questions */}
+          <div className="lg:col-span-5 space-y-4">
+            <div className="rounded-2xl bg-white border border-ios-line p-6 sm:p-8 shadow-sm space-y-6">
+              <div className="flex items-center justify-between">
+                <h4 className="text-base font-bold text-ios-ink flex items-center gap-2">
+                  <HelpCircle className="w-4 h-4 text-ios-accent" />
+                  <span>Câu Hỏi ({questions.length} câu)</span>
+                </h4>
+
+                {showResults && (
+                  <div className={`px-3 py-1 rounded-full text-xs font-bold ${score.percentage >= 60 ? 'bg-ios-ok-soft border border-ios-ok/30 text-ios-ok' : 'bg-ios-bad-soft border border-ios-bad/30 text-ios-bad'}`}>
+                    Điểm: {score.correct} / {score.total} ({score.percentage}%)
+                  </div>
+                )}
               </div>
 
-              {/* Analysis & Key Points */}
-              {currentItem?.qs && currentItem.qs.length > 0 && (
-                <div className="pt-4 border-t border-slate-200 dark:border-slate-700 space-y-3">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5" />
-                    <span>Ý Chính Và Dịch Nghĩa Nội Dung:</span>
-                  </h4>
-                  <div className="space-y-2">
-                    {currentItem.qs.map((q, idx) => (
-                      <div key={idx} className="p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs space-y-1">
-                        <div className="font-bold text-slate-900 dark:text-white">{q.qDe}</div>
-                        <div className="text-slate-600 dark:text-slate-300 font-medium">👉 {q.ansDe}</div>
-                        <div className="text-slate-400 italic">🇻🇳 {q.qVi}: {q.ansVi}</div>
+              {/* Questions */}
+              <div className="space-y-5 max-h-[620px] overflow-y-auto pr-1">
+                {questions.map((q, qIdx) => {
+                  const qKey = `q_${qIdx}`;
+                  const chosenOpt = userAnswers[qKey];
+                  const isZuordnung = item.kind === 'zuordnung';
+                  const expl = explanations[qKey];
+
+                  return (
+                    <div key={qKey} className="p-4 rounded-xl bg-ios-bg border border-ios-line space-y-3">
+                      <div className="space-y-1">
+                        <div className="font-bold text-xs sm:text-sm text-ios-ink">
+                          {isZuordnung ? `Câu ${qIdx + 1}` : `Câu ${qIdx + 1}: ${q.stem}`}
+                        </div>
+                        {q.stemVi && (
+                          <div className="text-xs text-ios-muted">
+                            {q.stemVi}
+                          </div>
+                        )}
                       </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
 
-        {/* Right Column: Interactive Questions & AI Scoring */}
-        <div className="lg:col-span-5 space-y-4">
-          <div className="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm space-y-6">
-            <div className="flex items-center justify-between">
-              <h4 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                <HelpCircle className="w-4 h-4 text-amber-500" />
-                <span>Câu Hỏi Trắc Nghiệm ({questions.length} câu)</span>
-              </h4>
-
-              {showResults && (
-                <div className="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-bold">
-                  Điểm: {score.correct} / {score.total} ({score.percentage}%)
-                </div>
-              )}
-            </div>
-
-            {/* Questions */}
-            <div className="space-y-5 max-h-[460px] overflow-y-auto pr-1">
-              {questions.map((q, qIdx) => {
-                const qKey = `q_${qIdx}`;
-                const chosenOpt = userAnswers[qKey];
-
-                return (
-                  <div key={qIdx} className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 space-y-3">
-                    <div className="space-y-1">
-                      <div className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white">
-                        Câu {qIdx + 1}: {q.qDe}
-                      </div>
-                      <div className="text-xs text-slate-500 dark:text-slate-400">
-                        🇻🇳 {q.qVi}
-                      </div>
-                    </div>
-
-                    <div className="space-y-1.5">
-                      {q.opts.map((opt, optIdx) => {
-                        const isChosen = chosenOpt === optIdx;
-                        const isThisCorrect = opt.c;
-
-                        let optClass = 'bg-white dark:bg-slate-700 border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-200 hover:border-amber-500';
-                        if (showResults) {
-                          if (isThisCorrect) optClass = 'bg-emerald-500/20 border-emerald-500 text-emerald-800 dark:text-emerald-200 font-bold';
-                          else if (isChosen && !isThisCorrect) optClass = 'bg-rose-500/20 border-rose-500 text-rose-800 dark:text-rose-200';
-                        } else if (isChosen) {
-                          optClass = 'bg-amber-500/20 border-amber-500 text-amber-900 dark:text-amber-300 font-bold';
-                        }
-
-                        return (
-                          <button
-                            key={optIdx}
-                            onClick={() => handleSelectAnswer(qKey, optIdx)}
-                            className={`w-full text-left p-2.5 rounded-xl border text-xs transition-all flex items-start justify-between gap-2 cursor-pointer ${optClass}`}
+                      {isZuordnung ? (
+                        <div className="space-y-1.5">
+                          <div className="text-xs text-ios-muted italic pb-0.5">
+                            Người nói nào nói câu này? (Điền đúng người nói để được điểm)
+                          </div>
+                          <select
+                            value={chosenOpt ?? ''}
+                            disabled={showResults}
+                            onChange={(e) => handleSelectAnswer(qKey, Number(e.target.value))}
+                            className={`w-full p-2.5 rounded-lg border text-xs font-bold cursor-pointer focus:outline-none focus:ring-2 focus:ring-ios-accent/30 ${
+                              showResults
+                                ? chosenOpt === q.correctIdx
+                                  ? 'bg-ios-ok-soft border-ios-ok text-ios-ok'
+                                  : 'bg-ios-bad-soft border-ios-bad text-ios-bad'
+                                : 'bg-white border-ios-line text-ios-ink'
+                            }`}
                           >
-                            <div className="space-y-0.5">
-                              <div>{['A', 'B', 'C'][optIdx]}. {opt.de}</div>
-                              <div className="text-[11px] opacity-75">{opt.vi}</div>
+                            <option value="" disabled>Chọn người nói…</option>
+                            {q.options.map((o, oi) => (
+                              <option key={oi} value={oi}>{speakerLabel(o.de)}</option>
+                            ))}
+                          </select>
+                          {showResults && (
+                            <div className="text-[11px] font-bold text-ios-ok flex items-center gap-1">
+                              <CheckCircle2 className="w-3.5 h-3.5" />
+                              <span>Đáp án: {speakerLabel(q.options[q.correctIdx].de)}</span>
                             </div>
-                            {showResults && isThisCorrect && <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />}
-                            {showResults && isChosen && !isThisCorrect && <XCircle className="w-4 h-4 text-rose-500 shrink-0 mt-0.5" />}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+                          )}
+                        </div>
+                      ) : (
+                        <div className="space-y-1.5">
+                          {q.options.map((opt, optIdx) => {
+                            const isChosen = chosenOpt === optIdx;
+                            const isThisCorrect = opt.correct;
 
-            {/* Action Buttons */}
-            <div className="pt-2 flex items-center gap-3">
-              {!showResults ? (
-                <button
-                  onClick={() => setShowResults(true)}
-                  className="flex-1 py-3 px-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <Sparkles className="w-4 h-4" />
-                  <span>Nộp Bài & Xem Điểm Số</span>
-                </button>
-              ) : (
-                <button
-                  onClick={handleReset}
-                  className="flex-1 py-3 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm border border-slate-600 transition-all flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <RotateCcw className="w-4 h-4" />
-                  <span>Làm Lại Đề Này</span>
-                </button>
-              )}
+                            let optClass = 'bg-white border-ios-line text-ios-ink hover:border-ios-accent';
+                            if (showResults) {
+                              if (isThisCorrect) optClass = 'bg-ios-ok-soft border-ios-ok text-ios-ok font-bold';
+                              else if (isChosen && !isThisCorrect) optClass = 'bg-ios-bad-soft border-ios-bad text-ios-bad';
+                            } else if (isChosen) {
+                              optClass = 'bg-ios-accent-soft border-ios-accent text-ios-accent font-bold';
+                            }
+
+                            return (
+                              <button
+                                key={optIdx}
+                                onClick={() => handleSelectAnswer(qKey, optIdx)}
+                                className={`w-full text-left p-2.5 rounded-lg border text-xs transition-all flex items-start justify-between gap-2 cursor-pointer ${optClass}`}
+                              >
+                                <div className="space-y-0.5">
+                                  <div>{letter(optIdx)}. {opt.de}</div>
+                                  {opt.vi && <div className="text-[11px] opacity-75">{opt.vi}</div>}
+                                </div>
+                                {showResults && isThisCorrect && <CheckCircle2 className="w-4 h-4 text-ios-ok shrink-0 mt-0.5" />}
+                                {showResults && isChosen && !isThisCorrect && <XCircle className="w-4 h-4 text-ios-bad shrink-0 mt-0.5" />}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      )}
+
+                      {/* AI Explanation */}
+                      {showResults && (
+                        <div className="pt-1 border-t border-ios-line">
+                          {!expl ? (
+                            <button
+                              onClick={() => handleExplain(qKey, qIdx)}
+                              disabled={explainingKey === qKey}
+                              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-ios-accent-soft border border-ios-accent/30 text-ios-accent text-xs font-bold hover:bg-[#DDEBFF] transition-colors cursor-pointer disabled:opacity-60"
+                            >
+                              <Bot className="w-3.5 h-3.5" />
+                              {explainingKey === qKey ? 'Đang giải thích…' : 'Giải thích đáp án'}
+                            </button>
+                          ) : (
+                            <div className="text-xs space-y-1.5">
+                              <div className="font-bold text-ios-accent flex items-center gap-1.5">
+                                <Sparkles className="w-3.5 h-3.5" />
+                                Giải thích đáp án
+                              </div>
+                              <div className="text-ios-secondary leading-relaxed">{expl.explanation}</div>
+                              {expl.translation && (
+                                <div className="text-ios-muted italic">{expl.translation}</div>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Action Buttons */}
+              <div className="pt-2 flex items-center gap-3">
+                {!showResults ? (
+                  <button
+                    onClick={() => setShowResults(true)}
+                    className="flex-1 py-3 px-4 rounded-lg bg-ios-accent hover:bg-[#0A6FE0] text-white font-bold text-sm shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    <Sparkles className="w-4 h-4" />
+                    <span>Nộp Bài & Xem Điểm Số</span>
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => {
+                      setShowResults(false);
+                      setExplanations({});
+                    }}
+                    className="flex-1 py-3 px-4 rounded-lg bg-ios-bg hover:bg-ios-accent-soft text-ios-ink font-bold text-sm border border-ios-line transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    <RotateCcw className="w-4 h-4" />
+                    <span>Làm Lại Đề Này</span>
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

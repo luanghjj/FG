@@ -111,6 +111,19 @@ table.mx tbody tr:hover .mx-namecol{background:#EAF3FF}
 .mx-pct{font-weight:700;font-size:.78em}
 .mx-pct.hi{color:var(--ok)}.mx-pct.mid{color:#B26A00}.mx-pct.lo{color:var(--muted)}
 .mx-empty{padding:16px;text-align:center;color:var(--muted);font-size:.86em}
+/* ===== Main Section Switcher & Deutsch UI ===== */
+.main-tabs{display:flex;gap:8px;margin-bottom:16px;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch}
+.main-tab{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 18px;font:inherit;font-size:.88em;font-weight:600;color:var(--muted);cursor:pointer;white-space:nowrap;transition:all .2s ease}
+.main-tab.active{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 2px 8px rgba(0,122,255,.25)}
+.sec-pane{display:none}
+.sec-pane.active{display:block;animation:aIn .35s cubic-bezier(.22,1,.36,1)}
+.alert-card{background:#FFF5F5;border:1px solid #FFD1D1;border-radius:16px;padding:18px;margin-bottom:14px;animation:aIn .4s cubic-bezier(.22,1,.36,1) both}
+.alert-card h2{color:var(--bad);font-size:1em;margin-bottom:8px;font-weight:600}
+.pill-badge{display:inline-block;border-radius:99px;padding:3px 10px;font-size:.74em;font-weight:700}
+.pill-ok{background:#E3F7E8;color:#248A3D}
+.pill-bad{background:#FFF0F0;color:#C4342B}
+.pill-warn{background:#FFF9E6;color:#8A6D00}
+.pill-blue{background:#EAF3FF;color:#007AFF}
 @media (max-width:640px){
   .wrap{padding:14px 12px calc(40px + var(--safe-bottom))}
   .brand{font-size:1em}
@@ -137,166 +150,279 @@ table.mx tbody tr:hover .mx-namecol{background:#EAF3FF}
   </div>
 
   <div id="dash">
-    <div class="grid" id="statsGrid"></div>
+    <!-- Main Navigation Switcher -->
+    <div class="main-tabs" id="mainTabs">
+      <button type="button" class="main-tab active" data-tab="deutsch">🇩🇪 Tiếng Đức A1–B1 (Kỷ Luật & Luyện Đề)</button>
+      <button type="button" class="main-tab" data-tab="gastronomie">🍽️ Gastronomie (Azubi Nghề)</button>
+      <button type="button" class="main-tab" data-tab="roles">👥 Phân Quyền & Mã Pro</button>
+    </div>
 
-    <!-- ===== Zugriffsstufen ===== -->
-    <div class="card">
-      <h2>Zugriffsstufen · Phân tầng</h2>
-      <p class="muted" style="margin-bottom:12px">
-        <b>Basic</b> = alle Themen, nur Grundwissen · <b>Pro</b> = volle Inhalte, Quiz, Zusammenfassung, Prüfungen · <b>Admin</b> = alles + dieses Dashboard.
-      </p>
+    <!-- ==================== PANE 1: DEUTSCH A1-B1 HUB ==================== -->
+    <div class="sec-pane active" id="pane-deutsch">
+      <!-- Deutsch Stats Grid -->
+      <div class="grid" id="deStatsGrid"></div>
 
-      <div class="tier-form">
-        <div style="flex:1 1 200px;min-width:0">
-          <label class="muted" for="roleNick">Nickname</label>
-          <input id="roleNick" type="text" list="nickList" placeholder="z. B. linh" autocomplete="off">
-          <datalist id="nickList"></datalist>
+      <!-- Cài Đặt Kỷ Luật Học Tập -->
+      <div class="card">
+        <h2>⚙️ Cài Đặt Kỷ Luật Khóa Học (Áp Dụng Cho Tất Cả Học Viên)</h2>
+        <p class="muted" style="margin-bottom:12px">
+          Hệ thống sẽ tự động ép học viên gõ từ vựng lặp lại và bắt làm lại ngữ pháp cho đến khi đạt chuẩn.
+        </p>
+        <div class="tier-form">
+          <div style="flex:1 1 140px;min-width:0">
+            <label class="muted" for="deMinRepeats">Số lần gõ từ bắt buộc</label>
+            <input id="deMinRepeats" type="number" min="1" max="10" placeholder="3 (mặc định 3 lần)">
+          </div>
+          <div style="flex:1 1 160px;min-width:0">
+            <label class="muted" for="deDailyVocab">Chỉ tiêu từ vựng / ngày</label>
+            <input id="deDailyVocab" type="number" min="5" max="100" placeholder="20 từ">
+          </div>
+          <div style="flex:1 1 160px;min-width:0">
+            <label class="muted" for="deDailyGrammar">Chỉ tiêu bài ngữ pháp / ngày</label>
+            <input id="deDailyGrammar" type="number" min="1" max="20" placeholder="5 bài">
+          </div>
+          <div style="flex:1 1 160px;min-width:0">
+            <label class="muted" for="dePassThreshold">Ngưỡng mở Unit mới (%)</label>
+            <input id="dePassThreshold" type="number" min="50" max="100" placeholder="80%">
+          </div>
+          <button type="button" id="btnSaveDeSettings">Lưu Cài Đặt Kỷ Luật</button>
         </div>
-        <div style="flex:0 0 130px">
-          <label class="muted" for="roleTier">Stufe</label>
-          <select id="roleTier">
-            <option value="free">Basic</option>
-            <option value="paid">Pro</option>
-            <option value="super">Admin</option>
-          </select>
+        <div class="muted" id="deSettingsMsg" style="margin-top:6px"></div>
+      </div>
+
+      <!-- 🚨 Bảng Cảnh Báo Kỷ Luật (Red Alert) -->
+      <div class="alert-card" id="deRedAlertCard">
+        <h2>🚨 Cảnh Báo Kỷ Luật (Học Viên Lười Học & Chưa Đạt Chỉ Tiêu)</h2>
+        <div class="muted" id="deRedAlertMeta" style="margin-bottom:8px">Tự động phát hiện học viên chưa hoàn thành bài chép từ hôm nay hoặc vắng mặt quá 2 ngày.</div>
+        <div class="tscroll">
+          <table>
+            <thead><tr><th>Học Viên</th><th>Chỉ Tiêu Từ Hôm Nay</th><th>Lần Cuối Hoạt Động</th><th>Lý Do Cảnh Báo</th></tr></thead>
+            <tbody id="deRedAlertBody"></tbody>
+          </table>
         </div>
-        <div style="flex:1 1 160px;min-width:0">
-          <label class="muted" for="roleNote">Notiz (optional)</label>
-          <input id="roleNote" type="text" placeholder="z. B. bezahlt 07/26" autocomplete="off">
+      </div>
+
+      <!-- ✍️ Bảng Theo Dõi Chép Từ Vựng Kỷ Luật -->
+      <div class="card">
+        <h2>✍️ Tiến Độ Chép Từ Vựng Kỷ Luật (Typing Repetition Drill)</h2>
+        <p class="muted" style="margin-bottom:10px">
+          Theo dõi số từ học viên đã gõ lặp lại $N$ lần kèm mạo từ và số nhiều.
+        </p>
+        <div class="tscroll">
+          <table>
+            <thead><tr><th>Học Viên</th><th>Đã Thuộc (Đủ Lần Gõ)</th><th>Gõ Hôm Nay</th><th>Lỗi Sai (Mistakes)</th><th>Chỉ Tiêu Ngày</th><th>Hoạt Động Gần Nhất</th></tr></thead>
+            <tbody id="deVocabBody"></tbody>
+          </table>
         </div>
-        <button type="button" id="btnSetRole">Speichern</button>
       </div>
-      <div class="err" id="roleErr"></div>
 
-      <div class="tscroll" style="margin-top:14px">
-        <table>
-          <thead><tr><th>Nickname</th><th>Stufe</th><th>Vergeben von</th><th>Wann</th><th>Notiz</th><th>Aktion</th></tr></thead>
-          <tbody id="rolesBody"></tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- ===== Pro-Code + Admin-Passwort ===== -->
-    <div class="card">
-      <h2>Pro-Code &amp; Admin-Passwort</h2>
-      <p class="muted" style="margin-bottom:12px">
-        Wer den Pro-Code in der App eingibt, wird automatisch auf <b>Pro</b> gesetzt.<br>
-        <i>Ai nhập đúng code trong app thì tự lên tầng Pro.</i>
-      </p>
-      <div class="tier-form">
-        <div style="flex:1 1 180px;min-width:0">
-          <label class="muted" for="paidCode">Pro-Code</label>
-          <input id="paidCode" type="text" placeholder="Code" autocomplete="off">
+      <!-- 📖 Bảng Theo Dõi Ngữ Pháp & Điểm Yếu -->
+      <div class="card">
+        <h2>📖 Vòng Lặp Ngữ Pháp 100% & Các Chủ Đề Học Viên Hay Sai Nhất</h2>
+        <p class="muted" style="margin-bottom:10px">
+          Quy tắc 100%: Học viên bắt buộc phải làm lại câu sai đến khi đúng hoàn toàn mới được tính hoàn thành.
+        </p>
+        <div class="grid2">
+          <div>
+            <h3 style="font-size:.92em;margin-bottom:6px;font-weight:600">Tiến Độ Theo Học Viên</h3>
+            <div class="tscroll" style="max-height:200px">
+              <table>
+                <thead><tr><th>Học Viên</th><th>Chuyên Đề 100%</th><th>Số Lần Phải Retry</th></tr></thead>
+                <tbody id="deGrammarPlayerBody"></tbody>
+              </table>
+            </div>
+          </div>
+          <div>
+            <h3 style="font-size:.92em;margin-bottom:6px;font-weight:600">Top Điểm Yếu Cần Rèn Thêm</h3>
+            <div class="tscroll" style="max-height:200px">
+              <table>
+                <thead><tr><th>Chuyên Đề</th><th>Tổng Lỗi Sai</th><th>Số Lượt Retry</th></tr></thead>
+                <tbody id="deWeakTopicsBody"></tbody>
+              </table>
+            </div>
+          </div>
         </div>
-        <button type="button" id="btnSavePaid">Code speichern</button>
       </div>
-      <div class="tier-form" style="margin-top:4px">
-        <div style="flex:1 1 180px;min-width:0">
-          <label class="muted" for="newAdminPass">Neues Admin-Passwort</label>
-          <input id="newAdminPass" type="password" placeholder="mind. 4 Zeichen" autocomplete="new-password">
+
+      <!-- 🏆 Bảng Điểm 54 Đề Thi TELC & Goethe B1 -->
+      <div class="card">
+        <h2>🏆 Lịch Sử Làm 54 Đề Thi TELC B1 & Goethe</h2>
+        <p class="muted" style="margin-bottom:8px">Thống kê kết quả thi thử các bộ đề của học viên.</p>
+        <div class="tscroll">
+          <table>
+            <thead><tr><th>Học Viên</th><th>Bài Thi / Đề</th><th>Kỹ Năng</th><th>Điểm Số</th><th>% Đạt</th><th>Số Lần Thử</th><th>Thời Gian Nộp</th></tr></thead>
+            <tbody id="deExamsBody"></tbody>
+          </table>
         </div>
-        <button type="button" class="ghost" id="btnSavePass">Passwort ändern</button>
       </div>
-      <div class="err" id="codeErr"></div>
-      <div class="muted" id="codeMsg" style="margin-top:6px"></div>
     </div>
 
-    <!-- ===== Feature-Matrix ===== -->
-    <div class="card">
-      <h2>Welche Inhalte in welcher Stufe?</h2>
-      <p class="muted" style="margin-bottom:10px">Mindeststufe pro Bereich. Änderungen gelten sofort für alle.</p>
-      <div id="manifestBox" class="mani-grid"></div>
-      <button type="button" id="btnSaveManifest" style="margin-top:12px">Matrix speichern</button>
-      <div class="muted" id="maniMsg" style="margin-top:6px"></div>
-    </div>
+    <!-- ==================== PANE 2: GASTRONOMIE (AZUBI) ==================== -->
+    <div class="sec-pane" id="pane-gastronomie">
+      <div class="grid" id="statsGrid"></div>
 
-    <div class="card">
-      <h2>🎯 Tagesziel (für alle)</h2>
-      <div class="muted" id="goalMeta">Ziel pro Tag in Minuten — gilt für alle Nutzer.</div>
-      <div style="display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;margin-top:8px">
-        <div style="flex:0 0 180px">
-          <label class="muted" for="goalMin">Minuten / Tag</label>
-          <input id="goalMin" type="text" inputmode="numeric" placeholder="z.B. 60">
+      <div class="card">
+        <h2>🎯 Tagesziel (für alle)</h2>
+        <div class="muted" id="goalMeta">Ziel pro Tag in Minuten — gilt für alle Nutzer.</div>
+        <div style="display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;margin-top:8px">
+          <div style="flex:0 0 180px">
+            <label class="muted" for="goalMin">Minuten / Tag</label>
+            <input id="goalMin" type="text" inputmode="numeric" placeholder="z.B. 60">
+          </div>
+          <button type="button" id="btnSaveGoal">Speichern</button>
         </div>
-        <button type="button" id="btnSaveGoal">Speichern</button>
+      </div>
+
+      <div class="card">
+        <h2>📅 Aktivität (letzte 14 Tage)</h2>
+        <div class="bars" id="dayBars"></div>
+      </div>
+
+      <div class="card">
+        <div class="row-actions">
+          <h2 style="flex:1;margin:0">👥 Nutzer (Nickname)</h2>
+        </div>
+        <div class="muted" id="playersMeta"></div>
+        <div class="tscroll" style="margin-top:8px">
+          <table>
+            <thead><tr><th>Nickname</th><th>Stufe</th><th>Besuche</th><th>Quiz</th><th>Heute</th><th>Zeit gesamt</th><th>LS-Fortschritt</th><th>Gelernte Fächer</th><th>Letzte Session</th><th>Zuletzt</th></tr></thead>
+            <tbody id="playersBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ===== Fortschritts-Matrix (Pro) ===== -->
+      <div class="card">
+        <h2>🗺️ Lern-Matrix · Pro-Nutzer</h2>
+        <p class="muted" style="margin-bottom:10px">
+          Jede Zeile = ein Pro-Nutzer, jede Spalte = ein LS/Thema. Farbe = Status.<br>
+          <i>Mỗi hàng = 1 học viên Pro, mỗi cột = 1 LS. Màu thể hiện trạng thái.</i>
+        </p>
+        <div class="mx-legend">
+          <span><i class="mx-key mx-k-done"></i> Đã thuộc / erledigt</span>
+          <span><i class="mx-key mx-k-learn"></i> Đang ôn / lernt</span>
+          <span><i class="mx-key mx-k-seen"></i> Đã xem / gesehen</span>
+          <span><i class="mx-key mx-k-none"></i> Chưa mở / offen</span>
+        </div>
+        <div class="mx-tabs" id="mxTabs"></div>
+        <div class="mx-scroll" id="mxScroll"><div class="mx-empty">Lädt…</div></div>
+      </div>
+
+      <div class="card" id="underGoalCard">
+        <h2>⚠️ Nutzer unter Ziel heute</h2>
+        <div class="muted" id="underGoalMeta" style="margin-bottom:8px">Aktiv heute (Berlin), aber noch nicht beim Tagesziel.</div>
+        <div class="tscroll">
+          <table>
+            <thead><tr><th>Nickname</th><th>Heute gelernt</th><th>Fehlt zum Ziel</th><th>Zuletzt gesehen</th></tr></thead>
+            <tbody id="underGoalBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>📊 Quiz-Punkte (neueste)</h2>
+        <div class="muted" style="margin-bottom:8px">Klicke auf eine Zeile für Details.</div>
+        <div class="tscroll">
+          <table>
+            <thead><tr><th>Spieler</th><th>Fach</th><th>Quiz</th><th>Punkte</th><th>%</th><th>Versuche</th><th>Zeitpunkt</th></tr></thead>
+            <tbody id="quizBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>📈 Übersicht nach Quiz</h2>
+        <div class="tscroll">
+          <table>
+            <thead><tr><th>Quiz</th><th>Personen</th><th>Versuche</th><th>Ø %</th></tr></thead>
+            <tbody id="aggBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>🚪 Letzte Besuche (mit Dauer)</h2>
+        <p class="muted" style="margin-bottom:8px">Dauer via Heartbeat (~30s) und pagehide.</p>
+        <div class="tscroll">
+          <table>
+            <thead><tr><th>Spieler</th><th>Start</th><th>Ende / zuletzt</th><th>Dauer</th><th>Status</th></tr></thead>
+            <tbody id="visitBody"></tbody>
+          </table>
+        </div>
       </div>
     </div>
 
-    <div class="card">
-      <h2>📅 Aktivität (letzte 14 Tage)</h2>
-      <div class="bars" id="dayBars"></div>
-    </div>
+    <!-- ==================== PANE 3: ROLES & PRO CODE ==================== -->
+    <div class="sec-pane" id="pane-roles">
+      <!-- ===== Zugriffsstufen ===== -->
+      <div class="card">
+        <h2>Zugriffsstufen · Phân tầng</h2>
+        <p class="muted" style="margin-bottom:12px">
+          <b>Basic</b> = alle Themen, nur Grundwissen · <b>Pro</b> = volle Inhalte, Quiz, Zusammenfassung, Prüfungen · <b>Admin</b> = alles + dieses Dashboard.
+        </p>
 
-    <div class="card">
-      <div class="row-actions">
-        <h2 style="flex:1;margin:0">👥 Nutzer (Nickname)</h2>
-      </div>
-      <div class="muted" id="playersMeta"></div>
-      <div class="tscroll" style="margin-top:8px">
-        <table>
-          <thead><tr><th>Nickname</th><th>Stufe</th><th>Besuche</th><th>Quiz</th><th>Heute</th><th>Zeit gesamt</th><th>LS-Fortschritt</th><th>Gelernte Fächer</th><th>Letzte Session</th><th>Zuletzt</th></tr></thead>
-          <tbody id="playersBody"></tbody>
-        </table>
-      </div>
-    </div>
+        <div class="tier-form">
+          <div style="flex:1 1 200px;min-width:0">
+            <label class="muted" for="roleNick">Nickname</label>
+            <input id="roleNick" type="text" list="nickList" placeholder="z. B. linh" autocomplete="off">
+            <datalist id="nickList"></datalist>
+          </div>
+          <div style="flex:0 0 130px">
+            <label class="muted" for="roleTier">Stufe</label>
+            <select id="roleTier">
+              <option value="free">Basic</option>
+              <option value="paid">Pro</option>
+              <option value="super">Admin</option>
+            </select>
+          </div>
+          <div style="flex:1 1 160px;min-width:0">
+            <label class="muted" for="roleNote">Notiz (optional)</label>
+            <input id="roleNote" type="text" placeholder="z. B. bezahlt 07/26" autocomplete="off">
+          </div>
+          <button type="button" id="btnSetRole">Speichern</button>
+        </div>
+        <div class="err" id="roleErr"></div>
 
-    <!-- ===== Fortschritts-Matrix (Pro) ===== -->
-    <div class="card">
-      <h2>🗺️ Lern-Matrix · Pro-Nutzer</h2>
-      <p class="muted" style="margin-bottom:10px">
-        Jede Zeile = ein Pro-Nutzer, jede Spalte = ein LS/Thema. Farbe = Status.<br>
-        <i>Mỗi hàng = 1 học viên Pro, mỗi cột = 1 LS. Màu thể hiện trạng thái.</i>
-      </p>
-      <div class="mx-legend">
-        <span><i class="mx-key mx-k-done"></i> Đã thuộc / erledigt</span>
-        <span><i class="mx-key mx-k-learn"></i> Đang ôn / lernt</span>
-        <span><i class="mx-key mx-k-seen"></i> Đã xem / gesehen</span>
-        <span><i class="mx-key mx-k-none"></i> Chưa mở / offen</span>
+        <div class="tscroll" style="margin-top:14px">
+          <table>
+            <thead><tr><th>Nickname</th><th>Stufe</th><th>Vergeben von</th><th>Wann</th><th>Notiz</th><th>Aktion</th></tr></thead>
+            <tbody id="rolesBody"></tbody>
+          </table>
+        </div>
       </div>
-      <div class="mx-tabs" id="mxTabs"></div>
-      <div class="mx-scroll" id="mxScroll"><div class="mx-empty">Lädt…</div></div>
-    </div>
 
-    <div class="card" id="underGoalCard">
-      <h2>⚠️ Nutzer unter Ziel heute</h2>
-      <div class="muted" id="underGoalMeta" style="margin-bottom:8px">Aktiv heute (Berlin), aber noch nicht beim Tagesziel.</div>
-      <div class="tscroll">
-        <table>
-          <thead><tr><th>Nickname</th><th>Heute gelernt</th><th>Fehlt zum Ziel</th><th>Zuletzt gesehen</th></tr></thead>
-          <tbody id="underGoalBody"></tbody>
-        </table>
+      <!-- ===== Pro-Code + Admin-Passwort ===== -->
+      <div class="card">
+        <h2>Pro-Code &amp; Admin-Passwort</h2>
+        <p class="muted" style="margin-bottom:12px">
+          Wer den Pro-Code in der App eingibt, wird automatisch auf <b>Pro</b> gesetzt.<br>
+          <i>Ai nhập đúng code trong app thì tự lên tầng Pro.</i>
+        </p>
+        <div class="tier-form">
+          <div style="flex:1 1 180px;min-width:0">
+            <label class="muted" for="paidCode">Pro-Code</label>
+            <input id="paidCode" type="text" placeholder="Code" autocomplete="off">
+          </div>
+          <button type="button" id="btnSavePaid">Code speichern</button>
+        </div>
+        <div class="tier-form" style="margin-top:4px">
+          <div style="flex:1 1 180px;min-width:0">
+            <label class="muted" for="newAdminPass">Neues Admin-Passwort</label>
+            <input id="newAdminPass" type="password" placeholder="mind. 4 Zeichen" autocomplete="new-password">
+          </div>
+          <button type="button" class="ghost" id="btnSavePass">Passwort ändern</button>
+        </div>
+        <div class="err" id="codeErr"></div>
+        <div class="muted" id="codeMsg" style="margin-top:6px"></div>
       </div>
-    </div>
 
-    <div class="card">
-      <h2>📊 Quiz-Punkte (neueste)</h2>
-      <div class="muted" style="margin-bottom:8px">Klicke auf eine Zeile für Details.</div>
-      <div class="tscroll">
-        <table>
-          <thead><tr><th>Spieler</th><th>Fach</th><th>Quiz</th><th>Punkte</th><th>%</th><th>Versuche</th><th>Zeitpunkt</th></tr></thead>
-          <tbody id="quizBody"></tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>📈 Übersicht nach Quiz</h2>
-      <div class="tscroll">
-        <table>
-          <thead><tr><th>Quiz</th><th>Personen</th><th>Versuche</th><th>Ø %</th></tr></thead>
-          <tbody id="aggBody"></tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>🚪 Letzte Besuche (mit Dauer)</h2>
-      <p class="muted" style="margin-bottom:8px">Dauer via Heartbeat (~30s) und pagehide.</p>
-      <div class="tscroll">
-        <table>
-          <thead><tr><th>Spieler</th><th>Start</th><th>Ende / zuletzt</th><th>Dauer</th><th>Status</th></tr></thead>
-          <tbody id="visitBody"></tbody>
-        </table>
+      <!-- ===== Feature-Matrix ===== -->
+      <div class="card">
+        <h2>Welche Inhalte in welcher Stufe?</h2>
+        <p class="muted" style="margin-bottom:10px">Mindeststufe pro Bereich. Änderungen gelten sofort für alle.</p>
+        <div id="manifestBox" class="mani-grid"></div>
+        <button type="button" id="btnSaveManifest" style="margin-top:12px">Matrix speichern</button>
+        <div class="muted" id="maniMsg" style="margin-top:6px"></div>
       </div>
     </div>
   </div>
@@ -691,37 +817,190 @@ document.getElementById('btnSaveManifest').onclick=async()=>{
     const excelName=excelTier==='free'?'Basic':excelTier==='super'?'Admin':'Pro';
     msg.textContent='Matrix gespeichert · Excel-Fragenbank ab '+excelName+'.';
   }catch(e){ msg.textContent='Fehler: '+(e.message||e); }
+function initTabs(){
+  document.querySelectorAll('#mainTabs .main-tab').forEach(btn => {
+    btn.onclick = () => {
+      const tab = btn.getAttribute('data-tab');
+      document.querySelectorAll('#mainTabs .main-tab').forEach(b => b.classList.toggle('active', b === btn));
+      document.querySelectorAll('.sec-pane').forEach(p => p.classList.remove('active'));
+      const activePane = document.getElementById('pane-' + tab);
+      if(activePane) activePane.classList.add('active');
+    };
+  });
+}
+
+async function loadDeutschStats(){
+  if(!window.LearnDB || !window.LearnDB.getDeutschAdminStats) return;
+  const grid = document.getElementById('deStatsGrid');
+  if(!grid) return;
+  grid.innerHTML = '<div class="stat"><div class="l">Đang tải dữ liệu Tiếng Đức…</div></div>';
+  try {
+    const ds = await LearnDB.getDeutschAdminStats();
+    const st = ds.settings || { minRepeats: 3, passThresholdPct: 80, dailyVocabGoal: 20, dailyGrammarGoal: 5 };
+    
+    // Populate discipline inputs
+    const minRepInp = document.getElementById('deMinRepeats');
+    const dVocabInp = document.getElementById('deDailyVocab');
+    const dGramInp = document.getElementById('deDailyGrammar');
+    const passInp = document.getElementById('dePassThreshold');
+    if(minRepInp && !minRepInp.value) minRepInp.value = st.minRepeats || 3;
+    if(dVocabInp && !dVocabInp.value) dVocabInp.value = st.dailyVocabGoal || 20;
+    if(dGramInp && !dGramInp.value) dGramInp.value = st.dailyGrammarGoal || 5;
+    if(passInp && !passInp.value) passInp.value = st.passThresholdPct || 80;
+
+    // Calculate totals
+    const totalVocabDrilled = (ds.players || []).reduce((acc, p) => acc + (p.vocabCompleted || 0), 0);
+    const totalVocabToday = (ds.players || []).reduce((acc, p) => acc + (p.vocabToday || 0), 0);
+    const totalGrammarMastered = (ds.players || []).reduce((acc, p) => acc + (p.grammarMastered || 0), 0);
+    const totalGrammarRetries = (ds.players || []).reduce((acc, p) => acc + (p.grammarRetries || 0), 0);
+    const totalTelcExams = (ds.players || []).reduce((acc, p) => acc + (p.telcExams ? p.telcExams.length : 0), 0);
+
+    grid.innerHTML = `
+      <div class="stat"><div class="n">${ds.totalStudents || 0}</div><div class="l">Học Viên Tiếng Đức</div></div>
+      <div class="stat"><div class="n">${totalVocabDrilled}</div><div class="l">Từ Vựng Đã Gõ Kỷ Luật</div></div>
+      <div class="stat"><div class="n" style="color:var(--ok)">${totalVocabToday}</div><div class="l">Từ Vựng Gõ Hôm Nay</div></div>
+      <div class="stat"><div class="n">${totalGrammarMastered}</div><div class="l">Chuyên Đề Ngữ Pháp 100%</div></div>
+      <div class="stat"><div class="n" style="color:var(--warn)">${totalGrammarRetries}</div><div class="l">Lượt Làm Lại Câu Sai</div></div>
+      <div class="stat"><div class="n">${totalTelcExams}</div><div class="l">Bài Thi TELC / Goethe</div></div>
+    `;
+
+    // Red Alerts Table
+    const redAlertBody = document.getElementById('deRedAlertBody');
+    const redAlertCard = document.getElementById('deRedAlertCard');
+    const redAlertMeta = document.getElementById('deRedAlertMeta');
+    if(!ds.redAlerts || !ds.redAlerts.length){
+      if(redAlertBody) redAlertBody.innerHTML = '<tr><td colspan="4" class="muted" style="text-align:center;padding:14px">✅ Tuyệt vời! Tất cả học viên đều hoàn thành chỉ tiêu ngày và chăm chỉ vào học.</td></tr>';
+      if(redAlertCard) redAlertCard.style.opacity = '0.75';
+      if(redAlertMeta) redAlertMeta.textContent = 'Hiện tại không có học viên nào bị cảnh báo đỏ.';
+    } else {
+      if(redAlertCard) redAlertCard.style.opacity = '1';
+      if(redAlertMeta) redAlertMeta.textContent = 'Phát hiện ' + ds.redAlerts.length + ' học viên cần giáo viên đôn đốc, nhắc nhở:';
+      if(redAlertBody) {
+        redAlertBody.innerHTML = ds.redAlerts.map(a => {
+          return `<tr>
+            <td><b style="color:var(--bad)">${escH(a.player)}</b></td>
+            <td><b>${a.vocabToday || 0}</b> / ${st.dailyVocabGoal || 20} từ</td>
+            <td>${fmt(a.last_seen)}</td>
+            <td><span class="pill-badge pill-bad">${escH(a.reasons.join(' · '))}</span></td>
+          </tr>`;
+        }).join('');
+      }
+    }
+
+    // Vocab Table
+    const vocabBody = document.getElementById('deVocabBody');
+    if(vocabBody){
+      vocabBody.innerHTML = (ds.players || []).map(p => {
+        const meetsGoal = (p.vocabToday || 0) >= (st.dailyVocabGoal || 20);
+        const goalBadge = meetsGoal
+          ? '<span class="pill-badge pill-ok">✓ Đạt (' + p.vocabToday + '/' + (st.dailyVocabGoal || 20) + ')</span>'
+          : '<span class="pill-badge pill-bad">Chưa đạt (' + (p.vocabToday || 0) + '/' + (st.dailyVocabGoal || 20) + ')</span>';
+        return `<tr>
+          <td><b>${escH(p.player)}</b></td>
+          <td><b style="color:var(--ok)">${p.vocabCompleted || 0}</b> từ</td>
+          <td><b>${p.vocabToday || 0}</b> từ</td>
+          <td><span style="color:${p.vocabMistakes > 0 ? 'var(--bad)' : 'var(--muted)'}">${p.vocabMistakes || 0}</span></td>
+          <td>${goalBadge}</td>
+          <td>${fmt(p.last_seen)}</td>
+        </tr>`;
+      }).join('') || '<tr><td colspan="6" class="muted">Chưa có học viên bắt đầu chép từ.</td></tr>';
+    }
+
+    // Grammar Player Table
+    const gramPlayerBody = document.getElementById('deGrammarPlayerBody');
+    if(gramPlayerBody){
+      gramPlayerBody.innerHTML = (ds.players || []).map(p => {
+        return `<tr>
+          <td><b>${escH(p.player)}</b></td>
+          <td><span class="pill-badge pill-ok">✓ ${p.grammarMastered || 0} bài</span></td>
+          <td><b style="color:var(--warn)">${p.grammarRetries || 0}</b> lượt</td>
+        </tr>`;
+      }).join('') || '<tr><td colspan="3" class="muted">Chưa có dữ liệu</td></tr>';
+    }
+
+    // Weak Grammar Topics Table
+    const weakTopicsBody = document.getElementById('deWeakTopicsBody');
+    if(weakTopicsBody){
+      weakTopicsBody.innerHTML = (ds.weakGrammarTopics || []).slice(0, 10).map(t => {
+        return `<tr>
+          <td><b>${escH(t.title)}</b></td>
+          <td><span style="color:var(--bad);font-weight:600">${t.totalMistakes} lỗi</span></td>
+          <td><b>${t.totalRetries}</b> lượt làm lại</td>
+        </tr>`;
+      }).join('') || '<tr><td colspan="3" class="muted">Chưa có chủ đề bị làm sai nhiều.</td></tr>';
+    }
+
+    // TELC Exams Table
+    const examsBody = document.getElementById('deExamsBody');
+    if(examsBody){
+      const allExams = [];
+      (ds.players || []).forEach(p => {
+        (p.telcExams || []).forEach(ex => {
+          allExams.push(Object.assign({ player: p.player }, ex));
+        });
+      });
+      allExams.sort((a, b) => new Date(b.at || b.updated_at || 0) - new Date(a.at || a.updated_at || 0));
+
+      examsBody.innerHTML = allExams.slice(0, 50).map(ex => {
+        const isPassed = (ex.pct || 0) >= (st.passThresholdPct || 80);
+        const passBadge = isPassed
+          ? '<span class="pill-badge pill-ok">Đạt (' + ex.pct + '%)</span>'
+          : '<span class="pill-badge pill-bad">Trượt (' + (ex.pct || 0) + '%)</span>';
+        return `<tr>
+          <td><b>${escH(ex.player)}</b></td>
+          <td>${escH(ex.subject || 'TELC B1')}</td>
+          <td>${escH(ex.quiz || 'Tổng hợp')}</td>
+          <td><b>${ex.correct || 0}/${ex.total || 0}</b></td>
+          <td>${passBadge}</td>
+          <td>${ex.attempts || 1}</td>
+          <td>${fmt(ex.at || ex.updated_at)}</td>
+        </tr>`;
+      }).join('') || '<tr><td colspan="7" class="muted">Chưa có học viên thi thử đề TELC/Goethe.</td></tr>';
+    }
+
+  } catch(e) {
+    if(grid) grid.innerHTML = '<div class="stat"><div class="l" style="color:var(--bad)">Lỗi tải dữ liệu: ' + (e.message || e) + '</div></div>';
+  }
+}
+
+document.getElementById('btnSaveDeSettings').onclick = async () => {
+  const minRepeats = Number(document.getElementById('deMinRepeats').value) || 3;
+  const dailyVocabGoal = Number(document.getElementById('deDailyVocab').value) || 20;
+  const dailyGrammarGoal = Number(document.getElementById('deDailyGrammar').value) || 5;
+  const passThresholdPct = Number(document.getElementById('dePassThreshold').value) || 80;
+  const msg = document.getElementById('deSettingsMsg');
+  const btn = document.getElementById('btnSaveDeSettings');
+  msg.textContent = 'Đang lưu…'; btn.disabled = true;
+  try {
+    await LearnDB.saveDisciplineSettings({
+      minRepeats,
+      dailyVocabGoal,
+      dailyGrammarGoal,
+      passThresholdPct,
+      strictLevelGate: true
+    });
+    msg.textContent = '✓ Đã lưu cài đặt kỷ luật thành công!';
+    setTimeout(() => { msg.textContent = ''; }, 3000);
+    await loadDeutschStats();
+  } catch(e) {
+    msg.textContent = 'Lỗi lưu: ' + (e.message || e);
+  } finally {
+    btn.disabled = false;
+  }
 };
 
-document.getElementById('btnLogin').onclick=async()=>{
-  const pass=document.getElementById('pass').value;
-  const btn=document.getElementById('btnLogin');
-  showErr('');
-  if(!window.LearnDB){ showErr('supabase.js fehlt'); return; }
-  if(!window.Access){ showErr('access.js fehlt'); return; }
-  btn.disabled=true; btn.textContent='Prüfe…';
-  try{
-    const ok = await Access.checkSuperPassword(pass);
-    if(!ok){ showErr('Falsches Passwort'); return; }
-    try{ sessionStorage.setItem(AUTH_KEY,'1'); }catch(_){}
-    if(window.Access) Access.markSuperVerified(true);
-    unlock();
-  }catch(e){ showErr(e.message||String(e)); }
-  finally{ btn.disabled=false; btn.textContent='Zum Dashboard'; }
-};
-document.getElementById('pass').addEventListener('keydown', e=>{ if(e.key==='Enter') document.getElementById('btnLogin').click(); });
-document.getElementById('btnRefresh').onclick=load;
-document.getElementById('btnSaveGoal').onclick=async()=>{
-  const raw=document.getElementById('goalMin').value;
-  const m=Number(String(raw).replace(',','.'))||0;
-  if(m<=0){ alert('Bitte eine gültige Minutenzahl eingeben (z.B. 60).'); return; }
-  const btn=document.getElementById('btnSaveGoal');
-  if(btn){ btn.disabled=true; btn.textContent='Speichert…'; }
-  try{
-    await LearnDB.setAdminGoal(Math.round(m*60), 'admin');
-    await load();
-  }catch(e){ alert('Speichern fehlgeschlagen: '+(e.message||e)); }
-  finally{ if(btn){ btn.disabled=false; btn.textContent='Speichern'; } }
+function unlock(){
+  document.getElementById('loginBox').style.display='none';
+  document.getElementById('dash').style.display='block';
+  document.getElementById('btnRefresh').style.display='inline-block';
+  initTabs();
+  load();
+  loadDeutschStats();
+}
+
+document.getElementById('btnRefresh').onclick = async () => {
+  await load();
+  await loadDeutschStats();
 };
 
 try{

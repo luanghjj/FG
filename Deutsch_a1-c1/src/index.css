@@ -1,15 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: 'Inter', sans-serif;
-  --font-display: 'Outfit', sans-serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+  --color-ios-bg: #F2F2F7;
+  --color-ios-surface: #FFFFFF;
+  --color-ios-ink: #000000;
+  --color-ios-muted: #8E8E93;
+  --color-ios-secondary: #3C3C43;
+  --color-ios-tertiary: #1C1C1E;
+  --color-ios-line: #E5E5EA;
+  --color-ios-accent: #007AFF;
+  --color-ios-accent-soft: #EAF3FF;
+  --color-ios-ok: #248A3D;
+  --color-ios-ok-soft: #E3F7E8;
+  --color-ios-warn: #8A6D00;
+  --color-ios-warn-soft: #FFF9E6;
+  --color-ios-bad: #C4342B;
+  --color-ios-bad-soft: #FFF0F0;
+  --color-ios-indigo: #5856D6;
+  --color-ios-indigo-soft: #EEF0FF;
 }
 
 body {
-  background-color: #f9fafb;
+  background-color: var(--color-ios-bg);
   font-family: var(--font-sans);
-  color: #0a1b33;
+  color: var(--color-ios-ink);
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;

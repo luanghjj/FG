@@ -1,0 +1,1488 @@
+{
+  "meta": {
+    "title": "Khóa Học B1 - Deutsch Mittelstufe 1",
+    "subtitle": "12 bài học chuyên sâu B1: Luyện thi TELC B1 & Goethe B1, Passiv, Konjunktiv II, Relativsatz & Viết thư 45/45",
+    "totalLessons": 12
+  },
+  "lessons": [
+    {
+      "id": "b1-l1",
+      "lesson": 1,
+      "day": 1,
+      "title": "Relativsätze im Nominativ, Akkusativ & Dativ",
+      "titleVi": "Mệnh đề quan hệ (Relativsätze) & Tình bạn",
+      "duration": "50 phút",
+      "theme": "Quan hệ bạn bè & Xã hội",
+      "goals": [
+        "Nắm vững đại từ quan hệ der/die/das/die trong Nominativ, Akkusativ và Dativ",
+        "Biết cách nối hai câu đơn thành một câu phức có mệnh đề quan hệ để nâng cao văn phong B1",
+        "Mô tả tính cách và phẩm chất của một người bạn tốt"
+      ],
+      "vocab": [
+        {
+          "de": "die Freundschaft",
+          "vi": "tình bạn",
+          "exampleDe": "Eine echte Freundschaft hält ein Leben lang.",
+          "exampleVi": "Một tình bạn chân chính sẽ bền vững suốt đời."
+        },
+        {
+          "de": "die Beziehung",
+          "vi": "mối quan hệ",
+          "exampleDe": "Er hat eine gute Beziehung zu seinen Kollegen.",
+          "exampleVi": "Anh ấy có mối quan hệ tốt với đồng nghiệp."
+        },
+        {
+          "de": "sich verlassen auf (+ Akk)",
+          "vi": "tin tưởng, dựa cậy vào ai",
+          "exampleDe": "Ich kann mich immer auf meinen besten Freund verlassen.",
+          "exampleVi": "Tôi luôn có thể tin tưởng vào người bạn thân nhất của mình."
+        },
+        {
+          "de": "hilfsbereit",
+          "vi": "sẵn lòng giúp đỡ",
+          "exampleDe": "Sie ist eine sehr hilfsbereite Person.",
+          "exampleVi": "Cô ấy là một người rất sẵn lòng giúp đỡ người khác."
+        },
+        {
+          "de": "zuverlässig",
+          "vi": "đáng tin cậy",
+          "exampleDe": "Ein zuverlässiger Freund ist viel wert.",
+          "exampleVi": "Một người bạn đáng tin cậy rất đáng quý."
+        },
+        {
+          "de": "ehrlich",
+          "vi": "thành thật, trung thực",
+          "exampleDe": "Ehrlichkeit ist das Wichtigste in einer Beziehung.",
+          "exampleVi": "Sự trung thực là điều quan trọng nhất trong một mối quan hệ."
+        },
+        {
+          "de": "der Kontakt",
+          "vi": "liên lạc",
+          "exampleDe": "Wir halten immer noch engen Kontakt.",
+          "exampleVi": "Chúng tôi vẫn giữ liên lạc chặt chẽ với nhau."
+        },
+        {
+          "de": "unterstützen",
+          "vi": "hỗ trợ, ủng hộ",
+          "exampleDe": "Meine Familie unterstützt mich bei allem.",
+          "exampleVi": "Gia đình luôn ủng hộ tôi trong mọi việc."
+        },
+        {
+          "de": "das Vertrauen",
+          "vi": "sự tin tưởng",
+          "exampleDe": "Ohne Vertrauen gibt es keine Freundschaft.",
+          "exampleVi": "Không có sự tin tưởng thì không có tình bạn."
+        },
+        {
+          "de": "kennenlernen",
+          "vi": "làm quen, biết đến",
+          "exampleDe": "Das ist die Person, die ich im Deutschkurs kennengelernt habe.",
+          "exampleVi": "Đó là người mà tôi đã quen trong khóa học tiếng Đức."
+        }
+      ],
+      "grammar": {
+        "topic": "Mệnh đề quan hệ (Relativsätze im Nominativ, Akkusativ, Dativ)",
+        "formula": "Bảng đại từ quan hệ: • Masc: der (Nom) / den (Akk) / dem (Dat) • Fem: die / die / der • Neut: das / das / dem • Plural: die / die / denen (Dat)",
+        "explanation": "Mệnh đề quan hệ là mệnh đề phụ bổ nghĩa cho danh từ đứng trước, luôn ngăn cách bởi dấu phẩy và ĐẨY ĐỘNG TỪ VỀ CUỐI CÂU. Giống và số phụ thuộc danh từ đứng trước, cách (Kasus) phụ thuộc vai trò của nó trong mệnh đề quan hệ.",
+        "examples": [
+          {
+            "de": "Das ist der Freund, der mir immer hilft. (Nom)",
+            "vi": "Đó là người bạn (người mà) luôn giúp đỡ tôi."
+          },
+          {
+            "de": "Das ist der Freund, den ich gestern getroffen habe. (Akk)",
+            "vi": "Đó là người bạn (người mà) tôi đã gặp hôm qua."
+          },
+          {
+            "de": "Das ist der Freund, mit dem ich lerne. (Dativ sau 'mit')",
+            "vi": "Đó là người bạn (người mà) tôi cùng học."
+          }
+        ]
+      },
+      "dialogue": {
+        "title": "Hội thoại: Người bạn thân nhất của bạn (Mein bester Freund)",
+        "de": "Julia: Wer ist eigentlich der Mann auf diesem Foto, Dat?\nDat: Das ist Tuan, ein guter Freund, den ich schon seit der Schulzeit kenne.\nJulia: Was schätzt du am meisten an ihm?\nDat: Er ist ein Mensch, auf den man sich immer verlassen kann. Wenn ich Probleme habe, ist er der Erste, der mir hilft.\nJulia: Es ist wunderbar, solche Freunde zu haben!",
+        "vi": "Julia: Ai là người đàn ông trong bức ảnh này vậy Đạt?\nĐạt: Đó là Tuấn, một người bạn tốt mà mình đã quen từ thời đi học.\nJulia: Bạn trân trọng điều gì nhất ở anh ấy?\nĐạt: Anh ấy là người mà người ta luôn có thể tin cậy. Khi mình gặp khó khăn, anh ấy luôn là người đầu tiên giúp đỡ mình.\nJulia: Thật tuyệt vời khi có những người bạn như vậy!"
+      },
+      "speaking": {
+        "task": "Thuyết trình về người bạn thân hoặc hình mẫu lý tưởng (B1 Sprechen Teil 1)",
+        "taskVi": "Dùng ít nhất 2 câu mệnh đề quan hệ (der..., den..., mit dem...).",
+        "prompt": "Mein bester Freund heißt ... Das ist eine Person, die ... Ich schätze an ihm, dass ...",
+        "sample": "Ich möchte über meinen besten Freund sprechen. Er heißt Nam. Er ist eine Person, die immer für andere da ist. Das ist der Freund, mit dem ich jeden Tag Deutsch lerne. Er unterstützt mich sehr bei der Vorbereitung auf die B1-Prüfung."
+      },
+      "quiz": [
+        {
+          "q": "Điền đại từ quan hệ thích hợp (Akkusativ giống đực): Das ist der Lehrer, ___ alle Schüler sehr mögen.",
+          "qVi": "Masc Akkusativ.",
+          "options": [
+            {
+              "de": "den",
+              "correct": true
+            },
+            {
+              "de": "der",
+              "correct": false
+            },
+            {
+              "de": "dem",
+              "correct": false
+            }
+          ],
+          "explain": "der Lehrer là giống đực, trong mệnh đề quan hệ đóng vai trò tân ngữ trực tiếp của 'mögen' -> Akkusativ là 'den'."
+        },
+        {
+          "q": "Điền đại từ quan hệ thích hợp (Dativ số nhiều): Das sind die Kollegen, mit ___ ich arbeite.",
+          "qVi": "Plural Dativ sau giới từ mit.",
+          "options": [
+            {
+              "de": "denen",
+              "correct": true
+            },
+            {
+              "de": "die",
+              "correct": false
+            },
+            {
+              "de": "den",
+              "correct": false
+            }
+          ],
+          "explain": "Đại từ quan hệ Dativ số nhiều là 'denen'."
+        }
+      ]
+    },
+    {
+      "id": "b1-l2",
+      "lesson": 2,
+      "day": 2,
+      "title": "Konnektoren: obwohl, trotzdem, damit & um...zu",
+      "titleVi": "Liên từ nâng cao: Mặc dù (obwohl / trotzdem) & Mục đích (damit / um...zu)",
+      "duration": "50 phút",
+      "theme": "Đời sống & Mục tiêu",
+      "goals": [
+        "Phân biệt obwohl (mệnh đề phụ, V cuối) và trotzdem (trạng từ, V2)",
+        "Phân biệt chỉ mục đích damit (hai chủ ngữ khác nhau) và um...zu (cùng chủ ngữ)",
+        "Ứng dụng viết đoạn văn biểu đạt tương phản và mục đích"
+      ],
+      "vocab": [
+        {
+          "de": "obwohl",
+          "vi": "mặc dù (đẩy động từ về cuối)",
+          "exampleDe": "Obwohl es regnet, gehe ich spazieren.",
+          "exampleVi": "Mặc dù trời mưa, tôi vẫn đi dạo."
+        },
+        {
+          "de": "trotzdem",
+          "vi": "tuy nhiên, dẫu vậy (động từ đứng ở vị trí 2)",
+          "exampleDe": "Es regnet, trotzdem gehe ich spazieren.",
+          "exampleVi": "Trời mưa, dẫu vậy tôi vẫn đi dạo."
+        },
+        {
+          "de": "damit",
+          "vi": "để mà (dùng khi 2 vế khác chủ ngữ)",
+          "exampleDe": "Ich lerne viel, damit meine Eltern stolz auf mich sind.",
+          "exampleVi": "Tôi học nhiều để bố mẹ tự hào về tôi."
+        },
+        {
+          "de": "um ... zu (+ Infinitiv)",
+          "vi": "để mà (dùng khi 2 vế cùng chủ ngữ)",
+          "exampleDe": "Ich lerne Deutsch, um in Deutschland zu arbeiten.",
+          "exampleVi": "Tôi học tiếng Đức để làm việc tại Đức."
+        },
+        {
+          "de": "anstrengend",
+          "vi": "vất vả, mệt nhọc",
+          "exampleDe": "Die Arbeit ist anstrengend, aber interessant.",
+          "exampleVi": "Công việc vất vả nhưng thú vị."
+        },
+        {
+          "de": "das Ziel",
+          "vi": "mục tiêu",
+          "exampleDe": "Mein großes Ziel ist das B1-Zertifikat.",
+          "exampleVi": "Mục tiêu lớn của tôi là chứng chỉ B1."
+        },
+        {
+          "de": "erreichen",
+          "vi": "đạt được",
+          "exampleDe": "Ich werde mein Ziel erreichen.",
+          "exampleVi": "Tôi sẽ đạt được mục tiêu của mình."
+        },
+        {
+          "de": "trotz (+ Genitiv/Dativ)",
+          "vi": "bất chấp, mặc cho",
+          "exampleDe": "Trotz des schlechten Wetters sind wir losgefahren.",
+          "exampleVi": "Bất chấp thời tiết xấu chúng tôi vẫn khởi hành."
+        },
+        {
+          "de": "verzichten auf (+ Akk)",
+          "vi": "từ bỏ, không dùng cái gì",
+          "exampleDe": "Er verzichtet auf Zucker, um abzunehmen.",
+          "exampleVi": "Anh ấy kiêng đường để giảm cân."
+        },
+        {
+          "de": "erfolgreich",
+          "vi": "thành công",
+          "exampleDe": "Ich möchte ein erfolgreicher Koch werden.",
+          "exampleVi": "Tôi muốn trở thành một đầu bếp thành công."
+        }
+      ],
+      "grammar": {
+        "topic": "obwohl vs trotzdem & damit vs um...zu",
+        "formula": "1. Obwohl + S + ... + V_cuối, V2 + S... • 2. Satz 1. Trotzdem + V2 + S... • 3. S1 + V1..., damit + S2 + ... + V_cuối • 4. S + V..., um + ... + zu + Infinitiv",
+        "explanation": "Khi 2 mệnh đề có cùng một chủ ngữ muốn chỉ mục đích, BẮT BUỘC nên dùng 'um...zu' để câu văn ngắn gọn và tự nhiên hơn.",
+        "examples": [
+          {
+            "de": "Obwohl er müde war, hat er weitergelernt.",
+            "vi": "Mặc dù anh ấy mệt, anh ấy vẫn học tiếp."
+          },
+          {
+            "de": "Ich spare Geld, um ein neues Auto zu kaufen.",
+            "vi": "Tôi tiết kiệm tiền để mua một chiếc xe ô tô mới (cùng chủ ngữ ich)."
+          }
+        ]
+      },
+      "dialogue": {
+        "title": "Hội thoại: Nỗ lực vì mục tiêu (Fokussiert aufs Ziel)",
+        "de": "Elena: Linh, du lernst fast 5 Stunden jeden Tag. Ist das nicht zu viel?\nLinh: Es ist zwar anstrengend, aber ich mache das, um die B1-Prüfung gleich beim ersten Mal zu bestehen.\nElena: Und obwohl du Vollzeit arbeitest, kommst du immer pünktlich zum Kurs!\nLinh: Ja, ich stehe jeden Tag um 5 Uhr auf, damit ich vor der Arbeit noch Grammatik wiederholen kann.\nElena: Dein Fleiß ist wirklich bewundernswert!",
+        "vi": "Elena: Linh, ngày nào bạn cũng học gần 5 tiếng. Có quá nhiều không?\nLinh: Tuy vất vả nhưng mình làm vậy để thi đỗ chứng chỉ B1 ngay lần đầu tiên.\nElena: Và mặc dù bạn làm việc toàn thời gian, bạn vẫn luôn đến lớp đúng giờ!\nLinh: Ừ, ngày nào mình cũng dậy từ 5 giờ sáng để có thể ôn ngữ pháp trước giờ làm.\nElena: Sự chăm chỉ của bạn thật đáng khâm phục!"
+      },
+      "speaking": {
+        "task": "Trình bày mục tiêu học tập và phương pháp vượt khó của bạn",
+        "taskVi": "Dùng các liên từ 'obwohl', 'trotzdem', 'um...zu'.",
+        "prompt": "Ich lerne Deutsch, um ... Obwohl es manchmal schwierig ist, ...",
+        "sample": "Ich lerne jeden Tag Deutsch, um meine Sprachkenntnisse zu verbessern und die B1-Prüfung zu bestehen. Obwohl die Grammatik manchmal kompliziert ist, gebe ich nicht auf. Ich nutze KI-Tools und mache Übungen, um schneller Fortschritte zu machen."
+      },
+      "quiz": [
+        {
+          "q": "Chọn liên từ thích hợp: Ich lerne Deutsch, ___ in Deutschland eine Ausbildung zu machen.",
+          "qVi": "Cùng chủ ngữ chỉ mục đích có 'zu + Infinitiv'.",
+          "options": [
+            {
+              "de": "um",
+              "correct": true
+            },
+            {
+              "de": "damit",
+              "correct": false
+            },
+            {
+              "de": "weil",
+              "correct": false
+            }
+          ],
+          "explain": "Cấu trúc um ... zu + Infinitiv dùng khi cùng một chủ ngữ."
+        },
+        {
+          "q": "Chọn câu viết ĐÚNG với 'trotzdem':",
+          "qVi": "Vị trí động từ sau trotzdem.",
+          "options": [
+            {
+              "de": "Es regnet, trotzdem geht er spazieren.",
+              "correct": true
+            },
+            {
+              "de": "Es regnet, trotzdem er geht spazieren.",
+              "correct": false
+            }
+          ],
+          "explain": "trotzdem là Adverb (vị trí 1), động từ 'geht' đứng ở vị trí 2."
+        }
+      ]
+    },
+    {
+      "id": "b1-l3",
+      "lesson": 3,
+      "day": 3,
+      "title": "Das Passiv im Präsens & Präteritum: Thể Bị Động",
+      "titleVi": "Thể Bị Động (Passiv) trong Hiện tại & Quá khứ",
+      "duration": "55 phút",
+      "theme": "Quy trình công việc & Sản xuất",
+      "goals": [
+        "Nắm vững công thức Passiv Präsens: werden + Partizip II",
+        "Nắm vững công thức Passiv Präteritum: wurden + Partizip II",
+        "Mô tả quy trình chế biến món ăn, sản xuất và nội quy làm việc"
+      ],
+      "vocab": [
+        {
+          "de": "werden",
+          "vi": "trở thành, được (trợ từ tạo thể bị động)",
+          "exampleDe": "Das Essen wird frisch zubereitet.",
+          "exampleVi": "Món ăn được chế biến tươi mới."
+        },
+        {
+          "de": "wurden",
+          "vi": "đã được (Passiv quá khứ)",
+          "exampleDe": "Das Haus wurde 1990 gebaut.",
+          "exampleVi": "Ngôi nhà đã được xây dựng năm 1990."
+        },
+        {
+          "de": "herstellen",
+          "vi": "sản xuất, chế tạo",
+          "exampleDe": "Dieses Auto wird in Deutschland hergestellt.",
+          "exampleVi": "Chiếc ô tô này được sản xuất tại Đức."
+        },
+        {
+          "de": "reparieren",
+          "vi": "sửa chữa",
+          "exampleDe": "Mein Laptop wird gerade repariert.",
+          "exampleVi": "Laptop của tôi đang được sửa chữa."
+        },
+        {
+          "de": "informieren",
+          "vi": "thông báo",
+          "exampleDe": "Die Mitarbeiter wurden rechtzeitig informiert.",
+          "exampleVi": "Các nhân viên đã được thông báo kịp thời."
+        },
+        {
+          "de": "von (+ Dativ)",
+          "vi": "bởi (chỉ tác nhân gây ra hành động)",
+          "exampleDe": "Der Brief wurde von der Chefin unterschrieben.",
+          "exampleVi": "Lá thư đã được ký bởi sếp nữ."
+        },
+        {
+          "de": "durch (+ Akkusativ)",
+          "vi": "bởi / thông qua (chỉ phương tiện, nguyên nhân gián tiếp)",
+          "exampleDe": "Das Gebäude wurde durch das Feuer zerstört.",
+          "exampleVi": "Tòa nhà đã bị phá hủy bởi ngọn lửa."
+        },
+        {
+          "de": "zubereiten",
+          "vi": "chế biến, nấu nướng",
+          "exampleDe": "Die Suppe wird mit frischen Kräutern gekocht.",
+          "exampleVi": "Món súp được nấu với các loại rau thơm tươi."
+        },
+        {
+          "de": "öffnen",
+          "vi": "mở cửa",
+          "exampleDe": "Die Bank wird um 9 Uhr geöffnet.",
+          "exampleVi": "Ngân hàng được mở cửa lúc 9 giờ."
+        },
+        {
+          "de": "schließen",
+          "vi": "đóng cửa",
+          "exampleDe": "Die Türen werden automatisch geschlossen.",
+          "exampleVi": "Những cánh cửa được đóng tự động."
+        }
+      ],
+      "grammar": {
+        "topic": "Thể Bị Động: Passiv Präsens & Passiv Präteritum",
+        "formula": "• Passiv Präsens: Chủ ngữ + werden (chia) + ... + Partizip II • Passiv Präteritum: Chủ ngữ + wurden (chia) + ... + Partizip II",
+        "explanation": "Thể bị động dùng khi người nói muốn nhấn mạnh vào HÀNH ĐỘNG hoặc KẾT QUẢ chứ không quan trọng ai là người thực hiện. Chia werden: ich werde, du wirst, er wird, wir werden, ihr werdet, sie werden. Chia wurden: ich wurde, du wurdest, er wurde, wir wurden, ihr wurdet, sie wurden.",
+        "examples": [
+          {
+            "de": "Deutsch wird von vielen Menschen gelernt. (Präsens)",
+            "vi": "Tiếng Đức được học bởi rất nhiều người."
+          },
+          {
+            "de": "Das Dokument wurde gestern geschickt. (Präteritum)",
+            "vi": "Tài liệu đã được gửi ngày hôm qua."
+          }
+        ]
+      },
+      "dialogue": {
+        "title": "Hội thoại: Quy trình trong nhà hàng (Ablauf in der Restaurantküche)",
+        "de": "Küchenchef: Guten Morgen, hier sind die Regeln für heute: Das Gemüse wird zuerst gründlich gewaschen und dann geschnitten.\nAzubi: Und wann wird das Fleisch gebraten?\nKüchenchef: Das Fleisch wird erst gebraten, wenn die Gäste bestellen. Die Teller werden vorher im Wärmeschrank vorgewärmt.\nAzubi: Verstanden, Chef! Alles wird genau nach Vorschrift gemacht.",
+        "vi": "Bếp trưởng: Chào buổi sáng, đây là quy định cho hôm nay: Rau củ trước tiên được rửa sạch kỹ càng và sau đó được thái nhỏ.\nHọc viên: Và khi nào thịt được nướng ạ?\nBếp trưởng: Thịt chỉ được nướng khi khách gọi món. Đĩa đựng thức ăn được làm ấm trước trong tủ sưởi.\nHọc viên: Đã rõ thưa bếp trưởng! Mọi việc sẽ được làm chính xác theo quy định."
+      },
+      "speaking": {
+        "task": "Mô tả quy trình một món ăn hoặc một sản phẩm bằng thể bị động",
+        "taskVi": "Dùng cấu trúc 'Zuerst wird ..., dann wird ..., schließlich wird ...'",
+        "prompt": "Wie wird dieses Gericht zubereitet? - Zuerst wird ... Dann werden ...",
+        "sample": "Ich möchte beschreiben, wie vietnamesische Frühlingsrollen (Nem) zubereitet werden. Zuerst wird Fleisch mit Gemüse und Pilzen gemischt. Dann wird die Füllung in Reispapier gewickelt. Schließlich werden die Rollen in heißem Öl knusprig frittiert. Sie werden heiß mit Soße serviert."
+      },
+      "quiz": [
+        {
+          "q": "Chuyển câu 'Man baut ein neues Krankenhaus' sang thể Passiv Präsens:",
+          "qVi": "Tạo câu bị động hiện tại.",
+          "options": [
+            {
+              "de": "Ein neues Krankenhaus wird gebaut.",
+              "correct": true
+            },
+            {
+              "de": "Ein neues Krankenhaus wurde gebaut.",
+              "correct": false
+            },
+            {
+              "de": "Ein neues Krankenhaus hat gebaut werden.",
+              "correct": false
+            }
+          ],
+          "explain": "Chủ ngữ số ít 'Ein neues Krankenhaus' đi với 'wird' + Partizip II 'gebaut'."
+        }
+      ]
+    },
+    {
+      "id": "b1-l4",
+      "lesson": 4,
+      "day": 4,
+      "title": "Konjunktiv II: Träumereien, Wünsche & Ratschläge",
+      "titleVi": "Giả định cách (Konjunktiv II): Mong ước, Giả thiết & Lời khuyên",
+      "duration": "50 phút",
+      "theme": "Ước mơ & Lời khuyên cuộc sống",
+      "goals": [
+        "Nắm vững các dạng thức của Konjunktiv II: wäre (sein), hätte (haben), könnte, müsste và würde + Infinitiv",
+        "Đưa ra lời khuyên với 'An deiner Stelle würde ich... / Du solltest...'",
+        "Biểu đạt điều ước không có thật: 'Wenn ich reich wäre, würde ich...'"
+      ],
+      "vocab": [
+        {
+          "de": "wäre",
+          "vi": "giá như là / ở (Konjunktiv II của sein)",
+          "exampleDe": "Wenn ich in Deutschland wäre, würde ich Berlin besuchen.",
+          "exampleVi": "Nếu tôi ở Đức, tôi sẽ đi thăm Berlin."
+        },
+        {
+          "de": "hätte",
+          "vi": "giá như có (Konjunktiv II của haben)",
+          "exampleDe": "Wenn ich mehr Zeit hätte, würde ich mehr reisen.",
+          "exampleVi": "Nếu tôi có nhiều thời gian hơn, tôi sẽ đi du lịch nhiều hơn."
+        },
+        {
+          "de": "könnte",
+          "vi": "giá như có thể",
+          "exampleDe": "Wenn ich fliegen könnte, wäre das toll.",
+          "exampleVi": "Nếu tôi có thể bay thì thật tuyệt."
+        },
+        {
+          "de": "würde (+ Infinitiv)",
+          "vi": "sẽ (trong giả thiết không có thật)",
+          "exampleDe": "Ich würde ein großes Haus kaufen.",
+          "exampleVi": "Tôi sẽ mua một căn nhà to (nếu có tiền)."
+        },
+        {
+          "de": "der Ratschlag",
+          "vi": "lời khuyên",
+          "exampleDe": "Darf ich dir einen Ratschlag geben?",
+          "exampleVi": "Tôi có thể cho bạn một lời khuyên được không?"
+        },
+        {
+          "de": "an deiner Stelle",
+          "vi": "ở vị trí của bạn / nếu tôi là bạn",
+          "exampleDe": "An deiner Stelle würde ich sofort den Arzt anrufen.",
+          "exampleVi": "Nếu ở vị trí của bạn tôi sẽ gọi bác sĩ ngay lập tức."
+        },
+        {
+          "de": "die Wirklichkeit",
+          "vi": "thực tế",
+          "exampleDe": "In Wirklichkeit ist es ganz anders.",
+          "exampleVi": "Trong thực tế mọi chuyện lại hoàn toàn khác."
+        },
+        {
+          "de": "der Wunsch",
+          "vi": "điều ước, nguyện vọng",
+          "exampleDe": "Mein größter Wunsch ist eine gute Ausbildung.",
+          "exampleVi": "Nguyện vọng lớn nhất của tôi là một khóa học nghề tốt."
+        },
+        {
+          "de": "ausgeben",
+          "vi": "chi tiêu (tiền)",
+          "exampleDe": "Ich würde nicht so viel Geld ausgeben.",
+          "exampleVi": "Tôi sẽ không tiêu nhiều tiền như vậy đâu."
+        },
+        {
+          "de": "die Gelegenheit",
+          "vi": "cơ hội, dịp",
+          "exampleDe": "Das wäre eine fantastische Gelegenheit!",
+          "exampleVi": "Đó sẽ là một cơ hội tuyệt vời!"
+        }
+      ],
+      "grammar": {
+        "topic": "Giả định cách Konjunktiv II: wäre, hätte & würde + Infinitiv",
+        "formula": "• sein -> ich wäre, du wärst, er wäre, wir wären • haben -> ich hätte, du hättest, er hätte, wir hätten • Động từ thường -> würde + Infinitiv ở cuối câu",
+        "explanation": "Dùng để nói về những điều KHÔNG CÓ THẬT ở hiện tại, ước mơ hoặc lời khuyên nhủ tế nhị. Khi dùng với 'Wenn', động từ Konjunktiv II đứng ở cuối mệnh đề phụ.",
+        "examples": [
+          {
+            "de": "Wenn ich viel Geld hätte, würde ich eine Weltreise machen.",
+            "vi": "Nếu tôi có nhiều tiền, tôi sẽ làm một chuyến du lịch vòng quanh thế giới."
+          },
+          {
+            "de": "An deiner Stelle würde ich jeden Tag 20 Vokabeln lernen.",
+            "vi": "Nếu ở vị trí của bạn, tôi sẽ học 20 từ vựng mỗi ngày."
+          }
+        ]
+      },
+      "dialogue": {
+        "title": "Hội thoại: Nếu bạn trúng số độc đắc (Wenn du im Lotto gewinnen würdest)",
+        "de": "Mark: Was würdest du tun, wenn du eine Million Euro gewinnen würdest?\nLinh: Wenn ich so viel Geld hätte, würde ich zuerst meinen Eltern ein schönes Haus in Vietnam kaufen. Und du?\nMark: Ich würde meinen Job kündigen und eine Sprachschule eröffnen. Dann könnte ich Menschen helfen, Deutsch zu lernen.\nLinh: Das wäre wirklich eine sinnvolle Idee!",
+        "vi": "Mark: Bạn sẽ làm gì nếu bạn trúng 1 triệu Euro?\nLinh: Nếu mình có nhiều tiền như vậy, trước tiên mình sẽ mua cho bố mẹ một căn nhà đẹp ở Việt Nam. Còn bạn?\nMark: Mình sẽ nghỉ việc và mở một trường dạy ngoại ngữ. Khi đó mình có thể giúp đỡ mọi người học tiếng Đức.\nLinh: Đó thực sự sẽ là một ý tưởng rất ý nghĩa!"
+      },
+      "speaking": {
+        "task": "Cho lời khuyên cho bạn bè khi họ gặp khó khăn trong học tập hoặc công việc",
+        "taskVi": "Dùng mẫu câu 'An deiner Stelle würde ich...' hoặc 'Du solltest...'",
+        "prompt": "Ein Freund hat Probleme beim Sprechen. Was raten Sie ihm? - An deiner Stelle würde ich ...",
+        "sample": "Wenn mein Freund Angst vor dem Sprechen hat, würde ich ihm raten: 'An deiner Stelle würde ich täglich mit einer KI oder vor dem Spiegel laut sprechen. Du solltest keine Angst vor Fehlern haben, denn aus Fehlern lernt man am meisten.'"
+      },
+      "quiz": [
+        {
+          "q": "Chọn câu đúng biểu đạt lời khuyên: 'Nếu tôi là bạn, tôi sẽ học chăm hơn.'",
+          "qVi": "Cấu trúc An deiner Stelle.",
+          "options": [
+            {
+              "de": "An deiner Stelle würde ich fleißiger lernen.",
+              "correct": true
+            },
+            {
+              "de": "An deiner Stelle lerne ich fleißiger.",
+              "correct": false
+            },
+            {
+              "de": "An deiner Stelle werde ich fleißiger lernen.",
+              "correct": false
+            }
+          ],
+          "explain": "An deiner Stelle + würde + Subjekt + ... + Infinitiv."
+        }
+      ]
+    },
+    {
+      "id": "b1-l5",
+      "lesson": 5,
+      "day": 5,
+      "title": "Verben mit festen Präpositionen: Động từ đi kèm giới từ cố định",
+      "titleVi": "Động từ kèm giới từ cố định & Câu hỏi Worauf / Auf wen",
+      "duration": "55 phút",
+      "theme": "Thảo luận & Tranh luận",
+      "goals": [
+        "Học thuộc 20 động từ đi kèm giới từ cố định quan trọng nhất trình độ B1",
+        "Biết cách tạo đại từ nghi vấn chỉ vật (Woran, Wovon, Worüber) và chỉ người (An wen, Von wem, Über wen)",
+        "Tạo đại từ phó từ: daran, darauf, darüber, damit"
+      ],
+      "vocab": [
+        {
+          "de": "warten auf (+ Akk)",
+          "vi": "chờ đợi ai/cái gì",
+          "exampleDe": "Ich warte auf den Bus.",
+          "exampleVi": "Tôi đang chờ xe buýt."
+        },
+        {
+          "de": "sich freuen auf (+ Akk)",
+          "vi": "mong chờ điều sắp tới",
+          "exampleDe": "Ich freue mich auf den Urlaub.",
+          "exampleVi": "Tôi rất mong chờ kỳ nghỉ sắp tới."
+        },
+        {
+          "de": "sich freuen über (+ Akk)",
+          "vi": "vui mừng về điều đã xảy ra",
+          "exampleDe": "Ich freue mich über dein schönes Geschenk.",
+          "exampleVi": "Tôi rất vui vì món quà đẹp của bạn."
+        },
+        {
+          "de": "denken an (+ Akk)",
+          "vi": "nghĩ về ai/cái gì",
+          "exampleDe": "Ich denke oft an meine Heimat.",
+          "exampleVi": "Tôi thường nghĩ về quê hương của mình."
+        },
+        {
+          "de": "träumen von (+ Dat)",
+          "vi": "mơ về cái gì",
+          "exampleDe": "Er träumt von einem guten Job in Deutschland.",
+          "exampleVi": "Anh ấy mơ về một công việc tốt ở Đức."
+        },
+        {
+          "de": "sich interessieren für (+ Akk)",
+          "vi": "quan tâm, hứng thú với",
+          "exampleDe": "Ich interessiere mich für deutsche Geschichte.",
+          "exampleVi": "Tôi quan tâm đến lịch sử nước Đức."
+        },
+        {
+          "de": "gehören zu (+ Dat)",
+          "vi": "thuộc về",
+          "exampleDe": "Pünktlichkeit gehört zur deutschen Kultur.",
+          "exampleVi": "Đúng giờ thuộc về nét văn hóa của người Đức."
+        },
+        {
+          "de": "sich kümmern um (+ Akk)",
+          "vi": "chăm sóc, lo liệu việc gì",
+          "exampleDe": "Die Krankenschwester kümmert sich um die Patienten.",
+          "exampleVi": "Nữ điều dưỡng chăm sóc các bệnh nhân."
+        },
+        {
+          "de": "sprechen über (+ Akk) / von (+ Dat)",
+          "vi": "nói về chủ đề gì",
+          "exampleDe": "Wir haben über die Prüfung gesprochen.",
+          "exampleVi": "Chúng tôi đã nói chuyện về kỳ thi."
+        },
+        {
+          "de": "teilnehmen an (+ Dat)",
+          "vi": "tham gia vào",
+          "exampleDe": "Ich nehme an einem B1-Vorbereitungskurs teil.",
+          "exampleVi": "Tôi tham gia vào một khóa luyện thi B1."
+        }
+      ],
+      "grammar": {
+        "topic": "Hệ thống Động từ + Giới từ & Pronominaladverbien (da(r)- / wo(r)-)",
+        "formula": "Chỉ vật: Wo + (r) + Präposition (Worauf, Worüber, Womit) • Da + (r) + Präposition (Darauf, Darüber, Damit) • Chỉ người: Präposition + Wen/Wem (Auf wen wartest du? - Auf meine Mutter.)",
+        "explanation": "Thêm chữ 'r' ở giữa nếu giới từ bắt đầu bằng một nguyên âm (wo + r + auf = worauf; da + r + an = daran). Không bao giờ dùng worauf/darauf cho NGƯỜI.",
+        "examples": [
+          {
+            "de": "Worauf wartest du? - Ich warte auf den Zug. (Vật -> Worauf / darauf)",
+            "vi": "Bạn đang đợi cái gì? - Tôi đang đợi tàu."
+          },
+          {
+            "de": "Auf wen wartest du? - Ich warte auf meinen Lehrer. (Người -> Auf wen)",
+            "vi": "Bạn đang đợi ai? - Tôi đang đợi thầy giáo của tôi."
+          }
+        ]
+      },
+      "dialogue": {
+        "title": "Hội thoại: Sở thích và dự định (Interessen und Pläne)",
+        "de": "Simon: Hallo Linh, woran denkst du gerade so nachdenklich?\nLinh: Ich denke an meine mündliche Prüfung nächste Woche. Ich habe ein bisschen Angst davor.\nSimon: Keine Sorge! Du hast doch so fleißig daran gearbeitet. Wofür interessierst du dich beim Präsentationsthema?\nLinh: Ich interessiere mich für das Thema 'Gesunde Ernährung im Alltag'. Darüber kann ich viel erzählen.\nSimon: Perfekt! Du wirst das sicher schaffen.",
+        "vi": "Simon: Chào Linh, bạn đang suy nghĩ trầm ngâm về điều gì thế?\nLinh: Mình đang nghĩ về phần thi nói tuần tới. Mình hơi lo lắng về nó.\nSimon: Đừng lo! Bạn đã luyện tập chăm chỉ cho nó rồi mà. Bạn quan tâm đến chủ đề thuyết trình nào?\nLinh: Mình quan tâm đến chủ đề 'Dinh dưỡng lành mạnh trong đời sống'. Về chủ đề đó mình có thể kể rất nhiều.\nSimon: Hoàn hảo! Chắc chắn bạn sẽ làm tốt thôi."
+      },
+      "speaking": {
+        "task": "Nói về sở thích, mối quan tâm và những điều bạn đang mong chờ",
+        "taskVi": "Dùng các động từ: sich interessieren für, sich freuen auf, träumen von.",
+        "prompt": "Wofür interessieren Sie sich? Worauf freuen Sie sich in Zukunft?",
+        "sample": "Ich interessiere mich sehr für die deutsche Küche und europäische Kultur. In der Zukunft träume ich von einer erfolgreichen Karriere in Deutschland. Zurzeit freue ich mich sehr auf meinen Flug nach Frankfurt im nächsten Monat."
+      },
+      "quiz": [
+        {
+          "q": "Hỏi về NGƯỜI: 'Bạn đang chờ đợi ai?' Tiếng Đức là gì?",
+          "qVi": "Phân biệt câu hỏi chỉ người với giới từ auf.",
+          "options": [
+            {
+              "de": "Auf wen wartest du?",
+              "correct": true
+            },
+            {
+              "de": "Worauf wartest du?",
+              "correct": false
+            },
+            {
+              "de": "An wen wartest du?",
+              "correct": false
+            }
+          ],
+          "explain": "warten đi với giới từ auf (+ Akk). Khi hỏi về người dùng 'Auf wen'."
+        }
+      ]
+    },
+    {
+      "id": "b1-l6",
+      "lesson": 6,
+      "day": 6,
+      "title": "Zweiteilige Konnektoren: Liên từ kép B1",
+      "titleVi": "Liên từ ghép đôi: nicht nur...sondern auch, sowohl...als auch, weder...noch",
+      "duration": "50 phút",
+      "theme": "Lập luận & Văn phong học thuật",
+      "goals": [
+        "Làm chủ 4 bộ liên từ kép quan trọng nhất để đạt điểm cao trong bài viết và nói B1:",
+        "1. nicht nur ... sondern auch (không những... mà còn)",
+        "2. sowohl ... als auch (vừa... vừa / cả... lẫn)",
+        "3. weder ... noch (không... cũng không)",
+        "4. entweder ... oder (hoặc là... hoặc là)"
+      ],
+      "vocab": [
+        {
+          "de": "nicht nur ... sondern auch",
+          "vi": "không những... mà còn",
+          "exampleDe": "Er spricht nicht nur Deutsch, sondern auch fließend Englisch.",
+          "exampleVi": "Anh ấy không những nói tiếng Đức mà còn thông thạo tiếng Anh."
+        },
+        {
+          "de": "sowohl ... als auch",
+          "vi": "vừa... vừa / cả cái này lẫn cái kia",
+          "exampleDe": "Diese Methode ist sowohl einfach als auch effektiv.",
+          "exampleVi": "Phương pháp này vừa đơn giản lại vừa hiệu quả."
+        },
+        {
+          "de": "weder ... noch",
+          "vi": "không... cũng không (phủ định cả hai)",
+          "exampleDe": "Er trinkt weder Alkohol noch Kaffee.",
+          "exampleVi": "Anh ấy không uống rượu mà cũng không uống cà phê."
+        },
+        {
+          "de": "entweder ... oder",
+          "vi": "hoặc là... hoặc là (chọn 1 trong 2)",
+          "exampleDe": "Wir können entweder mit dem Zug oder mit dem Bus fahren.",
+          "exampleVi": "Chúng ta có thể hoặc đi bằng tàu hỏa hoặc đi bằng xe buýt."
+        },
+        {
+          "de": "zwar ... aber",
+          "vi": "tuy... nhưng",
+          "exampleDe": "Deutsch ist zwar schwer, aber sehr logisch.",
+          "exampleVi": "Tiếng Đức tuy khó nhưng rất logic."
+        },
+        {
+          "de": "einerseits ... andererseits",
+          "vi": "một mặt... mặt khác",
+          "exampleDe": "Einerseits ist es teuer, andererseits lohnt es sich.",
+          "exampleVi": "Một mặt thì đắt đỏ, mặt khác thì rất xứng đáng."
+        },
+        {
+          "de": "der Vorteil",
+          "vi": "ưu điểm, lợi ích",
+          "exampleDe": "Ein großer Vorteil ist die Flexibilität.",
+          "exampleVi": "Một ưu điểm lớn là sự linh hoạt."
+        },
+        {
+          "de": "der Nachteil",
+          "vi": "nhược điểm, bất lợi",
+          "exampleDe": "Der Nachteil sind die hohen Kosten.",
+          "exampleVi": "Nhược điểm là chi phí cao."
+        },
+        {
+          "de": "argumentieren",
+          "vi": "lập luận, đưa ra lý lẽ",
+          "exampleDe": "Sie kann sehr überzeugend argumentieren.",
+          "exampleVi": "Cô ấy có thể lập luận rất thuyết phục."
+        },
+        {
+          "de": "die Entscheidung",
+          "vi": "quyết định",
+          "exampleDe": "Das ist eine wichtige Entscheidung für mein Leben.",
+          "exampleVi": "Đó là một quyết định quan trọng cho cuộc đời tôi."
+        }
+      ],
+      "grammar": {
+        "topic": "Quy tắc ngữ pháp của các liên từ kép (Zweiteilige Konnektoren)",
+        "formula": "sowohl A als auch B • nicht nur A sondern auch B • weder A noch B • zwar A, aber B",
+        "explanation": "Các liên từ này dùng để liên kết hai thành phần đồng đẳng (2 danh từ, 2 tính từ, hoặc 2 mệnh đề) giúp bài viết và bài nói trôi chảy, phong phú hơn rất nhiều so với dùng từ 'und' đơn điệu.",
+        "examples": [
+          {
+            "de": "Vietnamesisches Essen ist sowohl gesund als auch lecker.",
+            "vi": "Món ăn Việt Nam vừa tốt cho sức khỏe lại vừa ngon miệng."
+          },
+          {
+            "de": "Er hat weder Zeit noch Geld für Urlaub.",
+            "vi": "Anh ấy không có thời gian mà cũng chẳng có tiền để đi nghỉ mát."
+          }
+        ]
+      },
+      "dialogue": {
+        "title": "Hội thoại: Đánh giá phương pháp học trực tuyến (Online-Lernen)",
+        "de": "Klara: Wie findest du Online-Deutschkurse, Phong?\nPhong: Meiner Meinung nach hat Online-Lernen sowohl Vor- als auch Nachteile. Man spart nicht nur viel Zeit für den Weg, sondern man kann auch flexibel lernen.\nKlara: Gibt es auch Nachteile?\nPhong: Ja, man hat zwar Flexibilität, aber man trifft seine Mitschüler nicht persönlich. Manchmal fehlt der direkte Kontakt.\nKlara: Da stimme ich dir vollkommen zu!",
+        "vi": "Klara: Bạn thấy các khóa học tiếng Đức online thế nào, Phong?\nPhong: Theo ý kiến của mình, học online vừa có ưu điểm lại vừa có nhược điểm. Người ta không những tiết kiệm được nhiều thời gian đi lại mà còn có thể học linh hoạt.\nKlara: Có nhược điểm gì không?\nPhong: Có chứ, người ta tuy có sự linh hoạt nhưng lại không gặp trực tiếp bạn học. Đôi khi thiếu đi sự tiếp xúc trực tiếp.\nKlara: Mình hoàn toàn đồng ý với bạn!"
+      },
+      "speaking": {
+        "task": "Phân tích ưu và nhược điểm của một chủ đề (B1 Sprechen Teil 1)",
+        "taskVi": "Dùng 'sowohl...als auch', 'nicht nur...sondern auch', 'zwar...aber'.",
+        "prompt": "Thema: Soziale Medien (Mạng xã hội). Nennen Sie Vor- und Nachteile.",
+        "sample": "Soziale Medien haben sowohl Vorteile als auch Nachteile. Einerseits helfen sie uns, nicht nur schnell Nachrichten zu lesen, sondern auch mit Freunden weltweit in Kontakt zu bleiben. Andererseits verbringen viele Menschen zu viel Zeit am Bildschirm, was weder gut für die Augen noch für die Gesundheit ist."
+      },
+      "quiz": [
+        {
+          "q": "Điền liên từ kép thích hợp: Er spricht ___ Deutsch ___ Englisch (cả 2 thứ tiếng).",
+          "qVi": "Liên từ vừa... vừa.",
+          "options": [
+            {
+              "de": "sowohl ... als auch",
+              "correct": true
+            },
+            {
+              "de": "weder ... noch",
+              "correct": false
+            },
+            {
+              "de": "entweder ... oder",
+              "correct": false
+            }
+          ],
+          "explain": "sowohl A als auch B = cả A lẫn B."
+        }
+      ]
+    },
+    {
+      "id": "b1-l7",
+      "lesson": 7,
+      "day": 7,
+      "title": "B1 Schreiben: Cấu trúc thư 45/45 điểm",
+      "titleVi": "Kỹ năng Viết thư B1: 4 Leitpunkte, Lời chào & Kết thúc chuẩn mực",
+      "duration": "55 phút",
+      "theme": "Luyện viết thư B1",
+      "goals": [
+        "Nắm vững bố cục 5 phần của một bức thư B1 (Lời chào, Mở bài, Giải quyết 4 Leitpunkte, Lời kết, Ký tên)",
+        "Bộ từ vựng Redemittel viết thư thân mật (Informeller Brief) và thư trang trọng (Formeller Brief)",
+        "Các liên từ kết nối câu giúp đạt điểm tối đa tiêu chí Kohärenz & Grammatik"
+      ],
+      "vocab": [
+        {
+          "de": "Sehr geehrte Damen und Herren,",
+          "vi": "Kính thưa quý ông/quý bà (mở đầu thư trang trọng)",
+          "exampleDe": "Sehr geehrte Damen und Herren, ich schreibe Ihnen bezüglich...",
+          "exampleVi": "Kính thưa quý ngài, tôi viết thư cho quý ngài liên quan đến..."
+        },
+        {
+          "de": "Liebe / Lieber ...",
+          "vi": "Gửi bạn thân mến (mở đầu thư thân mật)",
+          "exampleDe": "Liebe Anna, wie geht es dir?",
+          "exampleVi": "Anna thân mến, bạn dạo này thế nào?"
+        },
+        {
+          "de": "Mit freundlichen Grüßen",
+          "vi": "Trân trọng kính chào (kết thư trang trọng)",
+          "exampleDe": "Mit freundlichen Grüßen, Nguyen Van Minh",
+          "exampleVi": "Trân trọng kính chào, Nguyễn Văn Minh"
+        },
+        {
+          "de": "Herzliche Grüße / Viele Grüße",
+          "vi": "Thân ái (kết thư bạn bè)",
+          "exampleDe": "Viele Grüße und bis bald!",
+          "exampleVi": "Thân ái chào bạn và hẹn sớm gặp lại!"
+        },
+        {
+          "de": "der Leitpunkt",
+          "vi": "ý trọng tâm đề bài yêu cầu",
+          "exampleDe": "Man muss alle vier Leitpunkte ausführlich beantworten.",
+          "exampleVi": "Người ta phải trả lời đầy đủ và chi tiết cả 4 ý trọng tâm."
+        },
+        {
+          "de": "sich entschuldigen für (+ Akk)",
+          "vi": "xin lỗi về việc gì",
+          "exampleDe": "Ich möchte mich dafür entschuldigen, dass ich nicht kommen kann.",
+          "exampleVi": "Tôi muốn xin lỗi vì tôi đã không thể đến tham dự."
+        },
+        {
+          "de": "der Grund für (+ Akk)",
+          "vi": "lý do cho cái gì",
+          "exampleDe": "Der Grund für meine Absage ist eine Grippe.",
+          "exampleVi": "Lý do cho việc từ chối của tôi là một trận cảm cúm."
+        },
+        {
+          "de": "vorschlagen",
+          "vi": "đề xuất, gợi ý",
+          "exampleDe": "Ich schlage vor, dass wir uns am Samstag treffen.",
+          "exampleVi": "Tôi đề xuất chúng ta gặp nhau vào thứ Bảy."
+        },
+        {
+          "de": "die Einladung",
+          "vi": "lời mời",
+          "exampleDe": "Vielen Dank für deine herzliche Einladung!",
+          "exampleVi": "Cảm ơn bạn rất nhiều vì lời mời nồng nhiệt!"
+        },
+        {
+          "de": "Rückmeldung geben",
+          "vi": "phản hồi thông tin",
+          "exampleDe": "Gib mir bitte bald Rückmeldung!",
+          "exampleVi": "Làm ơn hãy sớm phản hồi lại cho mình nhé!"
+        }
+      ],
+      "grammar": {
+        "topic": "Khung xương cấu trúc viết thư chuẩn 45/45 điểm TELC / Goethe B1",
+        "formula": "1. Anrede (Dấu phẩy) -> 2. Viết thường chữ cái đầu đoạn 1 -> 3. Xử lý 4 Leitpunkte (mỗi ý 2-3 câu) -> 4. Schlusssatz -> 5. Grußformel + Unterschrift",
+        "explanation": "Để đạt điểm tối đa (45/45), học viên phải phát triển mỗi Leitpunkt từ 2 đến 3 câu có liên từ nối (weil, da, obwohl, deshalb, um...zu), không được viết cộc lốc một câu.",
+        "examples": [
+          {
+            "de": "Liebe Sarah,\n\nwie geht es dir? Ich hoffe, dass du gesund bist. Ich habe mich sehr über deine Einladung zu deiner Geburtstagsparty gefreut...",
+            "vi": "Mẫu mở bài thân mật đạt điểm tối đa."
+          }
+        ]
+      },
+      "dialogue": {
+        "title": "Mẫu bài viết thư hoàn chỉnh: Thư xin lỗi không đến dự tiệc (B1 Schreiben)",
+        "de": "Liebe Eva,\n\nvielen Dank für deine Einladung zu deiner Einweihungsparty am kommenden Samstag. Ich habe mich wirklich sehr darüber gefreut.\n\nLeider muss ich dir mitteilen, dass ich an diesem Tag nicht kommen kann. Der Grund dafür ist, dass ich am Wochenende beruflich nach Berlin fahren muss, weil meine Firma dort eine wichtige Messe veranstaltet.\n\nEs tut mir wirklich leid, dass ich deine neue Wohnung nicht sehen kann. Wie wäre es, wenn wir uns nächstes Wochenende auf einen Kaffee treffen? Dann kannst du mir alles in Ruhe erzählen.\n\nIch wünsche dir eine tolle Party mit vielen Gästen!\n\nHerzliche Grüße,\nMinh",
+        "vi": "Eva thân mến,\n\nCảm ơn bạn rất nhiều vì lời mời đến bữa tiệc tân gia vào thứ Bảy tới. Mình thực sự rất vui khi nhận được thư mời.\n\nRất tiếc mình phải báo với bạn rằng mình không thể đến vào hôm đó được. Lý do là cuối tuần mình phải đi công tác tới Berlin, vì công ty mình tổ chức một hội chợ quan trọng ở đó.\n\nMình thực sự rất tiếc vì không thể ngắm căn hộ mới của bạn. Sẽ thế nào nếu cuối tuần sau chúng mình hẹn nhau đi uống cà phê? Khi đó bạn có thể kể cho mình nghe mọi chuyện.\n\nChúc bạn có một bữa tiệc thật vui vẻ với nhiều khách mời nhé!\n\nThân ái,\nMinh"
+      },
+      "speaking": {
+        "task": "Phân tích 4 bước xử lý đề viết thư B1",
+        "taskVi": "Nêu cách mở bài, kết bài và xử lý từng Leitpunkt.",
+        "prompt": "Wie schreibt man einen B1-Brief erfolgreich?",
+        "sample": "Um einen B1-Brief erfolgreich zu schreiben, lese ich zuerst die vier Leitpunkte genau durch. Ich beginne mit einer passenden Anrede. Für jeden Leitpunkt schreibe ich mindestens zwei vollständige Sätze mit Konnektoren wie 'weil' oder 'obwohl'. Am Ende benutze ich eine höfliche Grußformel und unterschreibe mit meinem Namen."
+      },
+      "quiz": [
+        {
+          "q": "Sau lời chào 'Liebe Maria,' (có dấu phẩy), từ đầu tiên của đoạn văn tiếp theo phải viết thế nào?",
+          "qVi": "Quy tắc viết hoa / viết thường trong thư tiếng Đức.",
+          "options": [
+            {
+              "de": "Bắt buộc viết thường (kleingeschrieben), ví dụ: 'ich hoffe...'",
+              "correct": true
+            },
+            {
+              "de": "Bắt buộc viết hoa",
+              "correct": false
+            }
+          ],
+          "explain": "Trong tiếng Đức, sau dấu phẩy của lời chào đầu thư, từ đầu tiên bắt buộc phải viết thường (trừ khi là danh từ)."
+        }
+      ]
+    },
+    {
+      "id": "b1-l8",
+      "lesson": 8,
+      "day": 8,
+      "title": "B1 Sprechen: Khung 5 bước thuyết trình Teil 1",
+      "titleVi": "Luyện Nói B1 Teil 1: 5 Bước Thuyết Trình Max Điểm & Redemittel",
+      "duration": "55 phút",
+      "theme": "Luyện nói B1 Teil 1",
+      "goals": [
+        "Làm chủ 5 bước thuyết trình B1: 1. Mở bài -> 2. Trải nghiệm bản thân -> 3. Tình hình ở quê hương -> 4. Ưu & Nhược điểm -> 5. Kết luận & Cảm ơn",
+        "Bộ mẫu câu Redemittel ghi điểm tuyệt đối trong mắt giám khảo",
+        "Cách trả lời câu hỏi phản biện của bạn thi và giám khảo"
+      ],
+      "vocab": [
+        {
+          "de": "die Präsentation",
+          "vi": "bài thuyết trình",
+          "exampleDe": "Das Thema meiner Präsentation lautet...",
+          "exampleVi": "Chủ đề của bài thuyết trình của tôi là..."
+        },
+        {
+          "de": "die Erfahrung",
+          "vi": "trải nghiệm cá nhân",
+          "exampleDe": "Meiner persönlichen Erfahrung nach...",
+          "exampleVi": "Theo trải nghiệm cá nhân của tôi..."
+        },
+        {
+          "de": "das Heimatland",
+          "vi": "quê hương",
+          "exampleDe": "In meinem Heimatland Vietnam ist die Situation so, dass...",
+          "exampleVi": "Ở quê hương tôi Việt Nam, tình hình là..."
+        },
+        {
+          "de": "der Aspekt",
+          "vi": "khía cạnh",
+          "exampleDe": "Man muss beide Aspekte berücksichtigen.",
+          "exampleVi": "Người ta phải cân nhắc cả hai khía cạnh."
+        },
+        {
+          "de": "die Aufmerksamkeit",
+          "vi": "sự chú ý",
+          "exampleDe": "Vielen Dank für Ihre Aufmerksamkeit!",
+          "exampleVi": "Cảm ơn quý vị đã chú ý lắng nghe!"
+        },
+        {
+          "de": "überzeugen",
+          "vi": "thuyết phục",
+          "exampleDe": "Dieses Argument überzeugt mich.",
+          "exampleVi": "Lập luận này thuyết phục tôi."
+        },
+        {
+          "de": "die Rückfrage",
+          "vi": "câu hỏi ngược lại",
+          "exampleDe": "Haben Sie noch Fragen an mich?",
+          "exampleVi": "Quý vị có câu hỏi nào dành cho tôi không?"
+        },
+        {
+          "de": "zusammenfassend",
+          "vi": "tóm lại, tổng kết lại",
+          "exampleDe": "Zusammenfassend möchte ich sagen...",
+          "exampleVi": "Tóm lại tôi muốn nói rằng..."
+        },
+        {
+          "de": "die Ansicht",
+          "vi": "quan điểm, góc nhìn",
+          "exampleDe": "Ich bin der Ansicht, dass...",
+          "exampleVi": "Tôi giữ quan điểm rằng..."
+        },
+        {
+          "de": "die Gliederung",
+          "vi": "bố cục, dàn bài",
+          "exampleDe": "Meine Präsentation besteht aus folgenden Teilen.",
+          "exampleVi": "Bài thuyết trình của tôi gồm các phần sau."
+        }
+      ],
+      "grammar": {
+        "topic": "Khung Redemittel 5 bước thuyết trình B1 Goethe/TELC",
+        "formula": "Bước 1: Das Thema meiner Präsentation ist... • Bước 2: Was meine persönlichen Erfahrungen angeht... • Bước 3: In meinem Heimatland Vietnam... • Bước 4: Ein großer Vorteil ist... Ein Nachteil ist... • Bước 5: Meiner Meinung nach... Vielen Dank für Ihre Aufmerksamkeit!",
+        "explanation": "Học thuộc lòng bộ khung này giúp học viên luôn giữ được cấu trúc mạch lạc, nói trôi chảy từ 2 đến 3 phút mà không bị ngập ngừng.",
+        "examples": [
+          {
+            "de": "Ich habe meine Präsentation in vier Teile gegliedert.",
+            "vi": "Tôi đã chia bài thuyết trình của mình thành 4 phần."
+          }
+        ]
+      },
+      "dialogue": {
+        "title": "Mẫu bài nói B1 hoàn chỉnh: Chủ đề 'Brauchen Kinder Handys?' (Trẻ em có cần điện thoại không?)",
+        "de": "Kandidat: Guten Tag! Das Thema meiner Präsentation lautet 'Brauchen Kinder eigene Smartphones?'. Dieses Thema ist heutzutage sehr aktuell.\n\nZuerst möchte ich über meine persönlichen Erfahrungen sprechen. Als ich ein Kind war, hatte ich noch kein Handy und habe viel draußen gespielt. Heute haben jedoch fast alle Kinder schon ab 8 Jahren ein Smartphone.\n\nIn meinem Heimatland Vietnam nutzen viele Kinder Handys, um online zu lernen und mit ihren Eltern in Kontakt zu bleiben.\n\nEin großer Vorteil davon ist, dass die Eltern ihre Kinder jederzeit erreichen können. Außerdem gibt es viele nützliche Lern-Apps. Ein Nachteil ist aber, dass Kinder süchtig werden und sich weniger bewegen.\n\nMeiner Meinung nach sollten Kinder Handys nutzen dürfen, aber die Eltern müssen die Bildschirmzeit kontrollieren.\n\nDas war meine Präsentation. Vielen Dank für Ihre Aufmerksamkeit! Haben Sie Fragen an mich?",
+        "vi": "Thí sinh: Xin chào ban giám khảo! Chủ đề bài thuyết trình của tôi là 'Trẻ em có cần điện thoại thông minh riêng không?'. Chủ đề này ngày nay rất mang tính thời sự.\n\nTrước tiên tôi xin nói về trải nghiệm cá nhân. Khi tôi còn nhỏ, tôi chưa có điện thoại và đã chơi ngoài trời rất nhiều. Tuy nhiên ngày nay hầu hết trẻ em từ 8 tuổi đã có điện thoại.\n\nỞ quê hương tôi Việt Nam, nhiều trẻ em sử dụng điện thoại để học online và giữ liên lạc với bố mẹ.\n\nMột ưu điểm lớn là bố mẹ có thể liên lạc với con bất cứ lúc nào. Ngoài ra có rất nhiều ứng dụng học tập hữu ích. Tuy nhiên nhược điểm là trẻ em dễ bị nghiện và ít vận động thể chất hơn.\n\nTheo quan điểm của tôi, trẻ em nên được phép dùng điện thoại, nhưng bố mẹ phải kiểm soát thời gian sử dụng màn hình.\n\nĐó là bài thuyết trình của tôi. Cảm ơn quý vị đã chú ý lắng nghe! Quý vị có câu hỏi nào cho tôi không ạ?"
+      },
+      "speaking": {
+        "task": "Thực hành thuyết trình chủ đề 'Sollen Jugendliche Haustiere haben?' (Thanh thiếu niên có nên nuôi thú cưng không?)",
+        "taskVi": "Nói đủ 5 bước theo đúng khung Redemittel chuẩn B1.",
+        "prompt": "Das Thema meiner Präsentation ist ... Meine Erfahrung ... In Vietnam ... Vorteile und Nachteile ... Meine Meinung ...",
+        "sample": "Das Thema meiner Präsentation ist 'Haustiere für Jugendliche'. Ich persönlich hatte früher einen Hund, der mir viel Freude gebracht hat. In Vietnam haben immer mehr Familien Hunde oder Katzen. Ein Vorteil ist, dass Jugendliche lernen, Verantwortung zu übernehmen. Ein Nachteil sind die hohen Kosten für Futter und Tierarzt. Meiner Meinung nach ist ein Haustier sehr positiv für die Entwicklung von Jugendlichen."
+      },
+      "quiz": [
+        {
+          "q": "Câu nào dùng để kết thúc bài thuyết trình chuẩn và lịch sự nhất?",
+          "qVi": "Mẫu câu kết thúc phần thuyết trình B1.",
+          "options": [
+            {
+              "de": "Das war alles. Vielen Dank für Ihre Aufmerksamkeit! Haben Sie noch Fragen an mich?",
+              "correct": true
+            },
+            {
+              "de": "Ich bin fertig. Tschüss!",
+              "correct": false
+            }
+          ],
+          "explain": "Mẫu câu lịch sự và mở ra phần hỏi đáp với giám khảo và bạn thi."
+        }
+      ]
+    },
+    {
+      "id": "b1-l9",
+      "lesson": 9,
+      "day": 9,
+      "title": "B1 Sprechen: Teil 2 & Teil 3 (Gemeinsam planen)",
+      "titleVi": "Luyện Nói B1 Teil 2 & 3: Miêu Tả Tranh & Đối Đáp Lập Kế Hoạch",
+      "duration": "50 phút",
+      "theme": "Hội thoại đối đáp & Lập kế hoạch",
+      "goals": [
+        "Kỹ thuật miêu tả tranh Teil 2 (Bố cục tranh, tiền cảnh, hậu cảnh, cảm xúc)",
+        "Kỹ năng đối đáp Teil 3: Đưa ra đề xuất, đồng tình, phản đối lịch sự và chốt lịch hẹn",
+        "Bộ từ vựng Redemittel lập kế hoạch chuyến đi, tổ chức sinh nhật hoặc thăm người ốm"
+      ],
+      "vocab": [
+        {
+          "de": "auf dem Bild sehe ich...",
+          "vi": "trong bức tranh tôi nhìn thấy...",
+          "exampleDe": "Auf dem Bild sehe ich eine Familie im Park.",
+          "exampleVi": "Trong bức tranh tôi nhìn thấy một gia đình trong công viên."
+        },
+        {
+          "de": "im Vordergrund / im Hintergrund",
+          "vi": "ở tiền cảnh / ở hậu cảnh",
+          "exampleDe": "Im Vordergrund steht ein Tisch, im Hintergrund sieht man Bäume.",
+          "exampleVi": "Ở tiền cảnh có một cái bàn, ở hậu cảnh người ta thấy cây cối."
+        },
+        {
+          "de": "die Atmosphäre",
+          "vi": "bầu không khí",
+          "exampleDe": "Die Atmosphäre wirkt sehr gemütlich und entspannt.",
+          "exampleVi": "Bầu không khí toát lên vẻ rất ấm cúng và thư thái."
+        },
+        {
+          "de": "vorschlagen",
+          "vi": "đề xuất",
+          "exampleDe": "Ich schlage vor, dass wir mit dem Zug fahren.",
+          "exampleVi": "Tôi đề xuất chúng ta đi bằng tàu hỏa."
+        },
+        {
+          "de": "einverstanden sein mit",
+          "vi": "đồng ý với",
+          "exampleDe": "Ich bin absolut einverstanden damit.",
+          "exampleVi": "Tôi hoàn toàn đồng ý với điều đó."
+        },
+        {
+          "de": "der Gegenvorschlag",
+          "vi": "đề xuất thay thế",
+          "exampleDe": "Darf ich einen Gegenvorschlag machen?",
+          "exampleVi": "Tôi có thể đưa ra một đề xuất thay thế được không?"
+        },
+        {
+          "de": "passen (+ Dativ)",
+          "vi": "phù hợp về mặt thời gian",
+          "exampleDe": "Passt es dir am Samstag um 15 Uhr?",
+          "exampleVi": "Thứ Bảy lúc 15 giờ có hợp với bạn không?"
+        },
+        {
+          "de": "besorgen",
+          "vi": "chuẩn bị, mua sắm đồ",
+          "exampleDe": "Ich kann die Getränke und Snacks besorgen.",
+          "exampleVi": "Mình có thể chuẩn bị đồ uống và đồ ăn nhẹ."
+        },
+        {
+          "de": "sich einigen auf (+ Akk)",
+          "vi": "thống nhất về cái gì",
+          "exampleDe": "Wir haben uns auf den Treffpunkt geeinigt.",
+          "exampleVi": "Chúng tôi đã thống nhất về điểm hẹn."
+        },
+        {
+          "de": "abmachen",
+          "vi": "chốt lại, hẹn ước",
+          "exampleDe": "Super, dann machen wir das so ab!",
+          "exampleVi": "Tuyệt vời, vậy chúng ta chốt như thế nhé!"
+        }
+      ],
+      "grammar": {
+        "topic": "Bộ Redemittel Đối Đáp Lập Kế Hoạch (Gemeinsam etwas planen)",
+        "formula": "• Đề xuất: Wollen wir...? / Wie wäre es, wenn wir...? • Đồng tình: Das ist eine super Idee! / Das passt mir sehr gut. • Từ chối lịch sự & Đổi giờ: Da kann ich leider nicht, weil... Wie wäre es stattdessen am...? • Chốt lại: Abgemacht!",
+        "explanation": "Trong Teil 3, giám khảo chấm điểm khả năng TƯƠNG TÁC qua lại. Không được nói độc thoại một mình, phải luôn hỏi ý kiến đối phương sau mỗi câu đề xuất (Und was meinst du dazu?).",
+        "examples": [
+          {
+            "de": "Wie wäre es, wenn wir uns am Samstag um 10 Uhr am Hauptbahnhof treffen? - Das klingt prima!",
+            "vi": "Sẽ thế nào nếu chúng ta gặp nhau ở Ga trung tâm lúc 10h thứ Bảy? - Nghe tuyệt đấy!"
+          }
+        ]
+      },
+      "dialogue": {
+        "title": "Mẫu hội thoại Teil 3 hoàn chỉnh: Lên kế hoạch thăm bạn bị ốm (Einen kranken Freund besuchen)",
+        "de": "Kandidat A: Hallo Minh, hast du gehört, dass Thomas im Krankenhaus liegt? Er hatte einen Fahrradunfall.\nKandidat B: Oh nein, das wusste ich nicht! Wir sollten ihn unbedingt zusammen besuchen. Wann hast du Zeit?\nKandidat A: Wie wäre es mit Freitagnachmittag um 16 Uhr?\nKandidat B: Am Freitag muss ich leider bis 17 Uhr arbeiten. Passt es dir vielleicht am Samstagvormittag um 10 Uhr?\nKandidat A: Ja, Samstag um 10 Uhr passt mir sehr gut. Was wollen wir ihm mitbringen?\nKandidat B: Ich schlage vor, dass wir ihm frisches Obst und ein interessantes Buch kaufen.\nKandidat A: Tolle Idee! Ich besorge das Buch und du kaufst das Obst, einverstanden?\nKandidat B: Abgemacht! Wir treffen uns am Samstag um 9:45 Uhr vor dem Haupteingang des Krankenhauses.",
+        "vi": "Thí sinh A: Chào Minh, bạn đã nghe tin Thomas đang nằm viện chưa? Cậu ấy bị tai nạn xe đạp đấy.\nThí sinh B: Ôi không, mình chưa biết! Chúng mình nhất định phải cùng nhau đi thăm cậu ấy. Khi nào bạn có thời gian?\nThí sinh A: Chiều thứ Sáu lúc 16h thì sao?\nThí sinh B: Thứ Sáu mình phải làm việc đến 17h. Thứ Bảy lúc 10h sáng có hợp với bạn không?\nThí sinh A: Ừ, thứ Bảy lúc 10h sáng rất hợp với mình. Chúng mình mang quà gì cho cậu ấy nhỉ?\nThí sinh B: Mình đề xuất chúng mình mua hoa quả tươi và một cuốn sách thú vị.\nThí sinh A: Ý tưởng tuyệt vời! Mình sẽ chuẩn bị sách còn bạn mua hoa quả nhé, đồng ý chứ?\nThí sinh B: Chốt thế nhé! Chúng mình gặp nhau lúc 9:45 thứ Bảy trước cổng chính bệnh viện."
+      },
+      "speaking": {
+        "task": "Thực hành đối đáp lên kế hoạch tổ chức tiệc chia tay đồng nghiệp",
+        "taskVi": "Đưa ra đề xuất về địa điểm, đồ ăn, quà tặng và chốt thời gian.",
+        "prompt": "Planen Sie eine Abschiedsparty für eine Kollegin.",
+        "sample": "Hallo! Unsere Kollegin geht bald nach Berlin. Wollen wir eine Überraschungsparty für sie organisieren? Ich schlage vor, dass wir uns in einem Restaurant treffen. Ich kann die Reservierung machen. Was hältst du davon?"
+      },
+      "quiz": [
+        {
+          "q": "Khi bạn thi đưa ra đề xuất và bạn muốn từ chối lịch sự để đổi giờ khác, câu nào chuẩn nhất?",
+          "qVi": "Mẫu câu đối đáp lịch sự trong Teil 3.",
+          "options": [
+            {
+              "de": "Da kann ich leider nicht, weil ich arbeiten muss. Wie wäre es stattdessen am Sonntag?",
+              "correct": true
+            },
+            {
+              "de": "Nein, das will ich nicht. Geh alleine!",
+              "correct": false
+            }
+          ],
+          "explain": "Luôn từ chối kèm lý do và đưa ra giải pháp thay thế (Gegenvorschlag)."
+        }
+      ]
+    },
+    {
+      "id": "b1-l10",
+      "lesson": 10,
+      "day": 10,
+      "title": "Nomen-Verb-Verbindungen: Cụm Danh - Động từ B1",
+      "titleVi": "Cụm Danh - Động từ cố định (Nomen-Verb-Verbindungen) Nâng Cao Văn Phong",
+      "duration": "50 phút",
+      "theme": "Văn phong học thuật & Công sở",
+      "goals": [
+        "Nắm vững 15 cụm Nomen-Verb-Verbindungen thông dụng nhất trong các bài đọc hiểu và viết B1:",
+        "Entscheidung treffen (= entscheiden), zur Verfügung stehen (= verfügbar sein), Angst haben vor (= sich fürchten), Rücksicht nehmen auf (= berücksichtigen)..."
+      ],
+      "vocab": [
+        {
+          "de": "eine Entscheidung treffen",
+          "vi": "đưa ra quyết định (= entscheiden)",
+          "exampleDe": "Wir müssen bald eine Entscheidung treffen.",
+          "exampleVi": "Chúng ta phải sớm đưa ra quyết định."
+        },
+        {
+          "de": "zur Verfügung stehen",
+          "vi": "có sẵn để sử dụng (= verfügbar sein)",
+          "exampleDe": "Für Fragen stehe ich Ihnen gerne zur Verfügung.",
+          "exampleVi": "Tôi luôn sẵn sàng giải đáp các câu hỏi của quý vị."
+        },
+        {
+          "de": "Rücksicht nehmen auf (+ Akk)",
+          "vi": "để ý, quan tâm, tôn trọng (= berücksichtigen)",
+          "exampleDe": "Man muss auf andere Menschen Rücksicht nehmen.",
+          "exampleVi": "Người ta phải biết tôn trọng và để ý đến người khác."
+        },
+        {
+          "de": "in Frage kommen",
+          "vi": "có thể xem xét, khả thi (= möglich sein)",
+          "exampleDe": "Eine Verspätung kommt für mich nicht in Frage.",
+          "exampleVi": "Việc đi muộn đối với tôi là không thể chấp nhận được."
+        },
+        {
+          "de": "in Kraft treten",
+          "vi": "có hiệu lực (luật/quy định = gültig werden)",
+          "exampleDe": "Das neue Gesetz tritt ab Januar in Kraft.",
+          "exampleVi": "Luật mới sẽ có hiệu lực từ tháng Một."
+        },
+        {
+          "de": "zur Sprache bringen",
+          "vi": "nêu ra, đưa ra thảo luận (= ansprechen)",
+          "exampleDe": "Ich möchte dieses Problem im Meeting zur Sprache bringen.",
+          "exampleVi": "Tôi muốn đưa vấn đề này ra thảo luận trong cuộc họp."
+        },
+        {
+          "de": "unter Druck stehen",
+          "vi": "chịu áp lực, căng thẳng (= gestresst sein)",
+          "exampleDe": "Vor der Prüfung stehe ich oft unter Druck.",
+          "exampleVi": "Trước kỳ thi tôi thường chịu nhiều áp lực."
+        },
+        {
+          "de": "Bescheid geben / sagen",
+          "vi": "thông báo, báo tin cho ai biết (= informieren)",
+          "exampleDe": "Gib mir bitte Bescheid, wenn du ankommst.",
+          "exampleVi": "Làm ơn hãy báo cho mình biết khi bạn đến nơi nhé."
+        },
+        {
+          "de": "im Stande sein",
+          "vi": "có khả năng làm gì (= fähig sein / können)",
+          "exampleDe": "Er ist im Stande, diese schwierige Aufgabe zu lösen.",
+          "exampleVi": "Anh ấy có khả năng giải quyết nhiệm vụ khó khăn này."
+        },
+        {
+          "de": "Einfluss haben auf (+ Akk)",
+          "vi": "có ảnh hưởng đến (= beeinflussen)",
+          "exampleDe": "Das Wetter hat großen Einfluss auf unsere Laune.",
+          "exampleVi": "Thời tiết có ảnh hưởng lớn đến tâm trạng của chúng ta."
+        }
+      ],
+      "grammar": {
+        "topic": "Cấu trúc cụm Danh từ + Động từ (Nomen-Verb-Verbindungen)",
+        "formula": "Nomen (thường đi kèm mạo từ hoặc giới từ) + Verben đặc thù (haben, treffen, stehen, bringen, nehmen...)",
+        "explanation": "Sử dụng Nomen-Verb-Verbindungen giúp bài thi Viết B1 (Schreiben) và phần Đọc (Lesen) trở nên chuyên nghiệp, đạt điểm văn phong cấp độ B1+ / B2.",
+        "examples": [
+          {
+            "de": "Ich habe mich entschieden. = Ich habe eine Entscheidung getroffen.",
+            "vi": "Tôi đã đưa ra quyết định."
+          },
+          {
+            "de": "Ich helfe dir. = Ich leiste dir Hilfe.",
+            "vi": "Tôi hỗ trợ bạn."
+          }
+        ]
+      },
+      "dialogue": {
+        "title": "Hội thoại: Trong cuộc họp công ty (In der Teambesprechung)",
+        "de": "Frau Becker: Guten Tag zusammen. Wir müssen heute eine wichtige Entscheidung bezüglich des neuen Projekts treffen.\nHerr Schmidt: Ich stehe voll und ganz zur Verfügung, um die Leitung zu übernehmen.\nFrau Becker: Sehr gut! Bitte nehmen Sie dabei Rücksicht auf das Budget. Stehen Sie momentan sehr unter Druck?\nHerr Schmidt: Nein, alles ist unter Kontrolle. Ich gebe Ihnen am Freitag Bescheid über den ersten Zwischenstand.",
+        "vi": "Bà Becker: Xin chào mọi người. Hôm nay chúng ta phải đưa ra một quyết định quan trọng liên quan đến dự án mới.\nÔng Schmidt: Tôi hoàn toàn sẵn lòng để đảm nhận vai trò quản lý.\nBà Becker: Rất tốt! Xin hãy lưu ý đến ngân sách nhé. Hiện tại ông có đang chịu nhiều áp lực không?\nÔng Schmidt: Không ạ, mọi thứ đều trong tầm kiểm soát. Tôi sẽ báo cáo cho bà biết về tiến độ đầu tiên vào thứ Sáu."
+      },
+      "speaking": {
+        "task": "Sử dụng ít nhất 2 cụm Nomen-Verb-Verbindungen để nói về công việc",
+        "taskVi": "Dùng 'eine Entscheidung treffen', 'unter Druck stehen' hoặc 'Bescheid geben'.",
+        "prompt": "Erzählen Sie von einer Situation, in der Sie eine schwierige Entscheidung treffen mussten.",
+        "sample": "Letztes Jahr musste ich eine wichtige Entscheidung über meine Zukunft treffen. Ich stand damals sehr unter Druck, weil ich mich zwischen einem Job in Vietnam und einer Ausbildung in Deutschland entscheiden musste. Ich habe mich für Deutschland entschieden und stehe voll zu dieser Wahl."
+      },
+      "quiz": [
+        {
+          "q": "Cụm từ nào đồng nghĩa với 'Ich entscheide mich'?",
+          "qVi": "Nhận diện Nomen-Verb-Verbindung.",
+          "options": [
+            {
+              "de": "Ich treffe eine Entscheidung.",
+              "correct": true
+            },
+            {
+              "de": "Ich nehme eine Entscheidung.",
+              "correct": false
+            },
+            {
+              "de": "Ich gebe eine Entscheidung.",
+              "correct": false
+            }
+          ],
+          "explain": "Cụm cố định là: 'eine Entscheidung treffen'."
+        }
+      ]
+    },
+    {
+      "id": "b1-l11",
+      "lesson": 11,
+      "day": 11,
+      "title": "Ausbildung & Leben in Deutschland",
+      "titleVi": "Học Nghề Du Học (Ausbildung), Hợp Đồng & Cuộc Sống Tại Đức",
+      "duration": "50 phút",
+      "theme": "Du học nghề & Định cư",
+      "goals": [
+        "Từ vựng chuyên môn về đào tạo nghề kép (Duales System, Berufsschule, Ausbildungsbetrieb)",
+        "Hiểu hợp đồng lao động (Ausbildungsvertrag, Probezeit, Gehalt, Urlaubstage)",
+        "Các thủ tục quan trọng khi mới sang Đức: Bürgeramt (Anmeldung), Krankenversicherung, Sperrkonto"
+      ],
+      "vocab": [
+        {
+          "de": "die Ausbildung",
+          "vi": "đào tạo nghề",
+          "exampleDe": "Ich mache eine 3-jährige Ausbildung.",
+          "exampleVi": "Tôi làm khóa học nghề 3 năm."
+        },
+        {
+          "de": "der Ausbildungsbetrieb",
+          "vi": "doanh nghiệp nhận đào tạo thực hành",
+          "exampleDe": "Mein Ausbildungsbetrieb ist ein 4-Sterne-Hotel.",
+          "exampleVi": "Doanh nghiệp đào tạo thực hành của tôi là một khách sạn 4 sao."
+        },
+        {
+          "de": "die Berufsschule",
+          "vi": "trường dạy lý thuyết nghề",
+          "exampleDe": "Zweimal pro Woche gehe ich in die Berufsschule.",
+          "exampleVi": "Mỗi tuần 2 lần tôi đi đến trường lý thuyết nghề."
+        },
+        {
+          "de": "die Probezeit",
+          "vi": "thời gian thử việc (thường từ 1-4 tháng)",
+          "exampleDe": "In der Probezeit kann der Vertrag schneller gekündigt werden.",
+          "exampleVi": "Trong thời gian thử việc hợp đồng có thể chấm dứt nhanh hơn."
+        },
+        {
+          "de": "die Vergütung / das Gehalt",
+          "vi": "tiền lương trợ cấp học nghề",
+          "exampleDe": "Die monatliche Ausbildungsvergütung beträgt 1100 Euro.",
+          "exampleVi": "Trợ cấp học nghề hàng tháng là 1.100 Euro."
+        },
+        {
+          "de": "die Anmeldung",
+          "vi": "đăng ký tạm trú tại tòa thị chính (Bürgeramt)",
+          "exampleDe": "Nach der Ankunft muss man innerhalb von 14 Tagen die Anmeldung machen.",
+          "exampleVi": "Sau khi đến Đức phải làm thủ tục đăng ký tạm trú trong vòng 14 ngày."
+        },
+        {
+          "de": "das Sperrkonto",
+          "vi": "tài khoản phong tỏa chứng minh tài chính",
+          "exampleDe": "Ich habe ein Sperrkonto eröffnet.",
+          "exampleVi": "Tôi đã mở một tài khoản phong tỏa."
+        },
+        {
+          "de": "die Krankenversicherung",
+          "vi": "bảo hiểm y tế",
+          "exampleDe": "In Deutschland ist eine Krankenversicherung gesetzlich vorgeschrieben.",
+          "exampleVi": "Ở Đức bảo hiểm y tế là bắt buộc theo luật."
+        },
+        {
+          "de": "die Arbeitserlaubnis",
+          "vi": "giấy phép lao động",
+          "exampleDe": "Mit dem Visum erhalte ich die Arbeitserlaubnis.",
+          "exampleVi": "Cùng với visa tôi nhận được giấy phép lao động."
+        },
+        {
+          "de": "die Integration",
+          "vi": "sự hòa nhập cộng đồng",
+          "exampleDe": "Sprache ist der Schlüssel für eine erfolgreiche Integration.",
+          "exampleVi": "Ngôn ngữ là chìa khóa cho sự hòa nhập thành công."
+        }
+      ],
+      "grammar": {
+        "topic": "Từ vựng & Mẫu câu ứng xử chuyên nghiệp trong môi trường Ausbildung Đức",
+        "formula": "Höfliche Kommunikation + Fachbegriffe",
+        "explanation": "Tại Đức, học viên học nghề (Azubi) được bảo vệ bởi luật lao động (BBiG) nhưng cũng có nghĩa vụ tuân thủ nội quy, đúng giờ và báo cáo nghỉ ốm (Krankmeldung) ngay trước giờ bắt đầu làm việc.",
+        "examples": [
+          {
+            "de": "Ich habe mich ordnungsgemäß beim Bürgeramt angemeldet.",
+            "vi": "Tôi đã đăng ký tạm trú đúng quy định tại Tòa thị chính."
+          }
+        ]
+      },
+      "dialogue": {
+        "title": "Hội thoại: Ngày đầu tiên nhận việc học nghề (Erster Tag im Ausbildungsbetrieb)",
+        "de": "Chef: Herzlich willkommen in unserem Team, Minh! Wie war deine Anreise aus Vietnam?\nMinh: Vielen Dank, Herr Wagner! Die Anreise war gut. Ich habe mich schon in meiner Wohnung eingelebt und die Anmeldung beim Bürgeramt erledigt.\nChef: Großartig. Hier ist dein Ausbildungsplan für das erste Ausbildungsjahr. Drei Tage pro Woche bist du bei uns im Betrieb und zwei Tage in der Berufsschule.\nMinh: Ich freue mich sehr auf die Zusammenarbeit und werde mein Bestes geben!",
+        "vi": "Sếp: Nhiệt liệt chào mừng bạn đến với đội ngũ của chúng tôi, Minh! Chuyến bay từ Việt Nam sang của bạn thế nào?\nMinh: Em cảm ơn ông Wagner rất nhiều ạ! Chuyến đi rất tốt. Em đã ổn định chỗ ở và hoàn thành đăng ký tạm trú tại Tòa thị chính rồi ạ.\nSếp: Tuyệt vời. Đây là kế hoạch học nghề cho năm thứ nhất. Mỗi tuần 3 ngày bạn thực hành tại doanh nghiệp và 2 ngày học tại trường nghề.\nMinh: Em rất mong chờ được làm việc cùng mọi người và em sẽ nỗ lực hết mình ạ!"
+      },
+      "speaking": {
+        "task": "Giới thiệu về ngành nghề bạn đã chọn và kế hoạch tại Đức",
+        "taskVi": "Nói về lý do chọn ngành (Điều dưỡng, Bếp, Nhà hàng...) và mục tiêu nghề nghiệp.",
+        "prompt": "Welchen Beruf lernen Sie in Deutschland und warum?",
+        "sample": "Ich habe mich für eine Ausbildung als Pflegefachkraft entschieden, weil ich gerne kranken Menschen helfe. Deutschland bietet eine hervorragende Ausbildung und sichere Arbeitsplätze. Mein Ziel ist es, nach der 3-jährigen Ausbildung als staatlich anerkannter Pfleger zu arbeiten und mich weiterzubilden."
+      },
+      "quiz": [
+        {
+          "q": "Sau khi đặt chân đến Đức, trong vòng bao nhiêu ngày bạn phải làm thủ tục đăng ký tạm trú (Anmeldung) tại Bürgeramt?",
+          "qVi": "Quy định tạm trú của Đức.",
+          "options": [
+            {
+              "de": "Trong vòng 14 ngày (14 Tage)",
+              "correct": true
+            },
+            {
+              "de": "Trong vòng 6 tháng",
+              "correct": false
+            },
+            {
+              "de": "Không bắt buộc",
+              "correct": false
+            }
+          ],
+          "explain": "Theo luật cư trú Đức (Bundesmeldegesetz), người chuyển đến phải đăng ký tạm trú trong vòng 14 ngày."
+        }
+      ]
+    },
+    {
+      "id": "b1-l12",
+      "lesson": 12,
+      "day": 12,
+      "title": "B1 Zertifikatsprüfung Full Mock & Chiến Thuật Điểm Cao",
+      "titleVi": "Thi Thử Toàn Diện Chuẩn TELC / Goethe B1 & Tổng Kết Khóa Học",
+      "duration": "60 phút",
+      "theme": "Tổng ôn & Thi thử B1",
+      "goals": [
+        "Tổng kết chiến thuật làm bài thi TELC B1 & Goethe B1 (Lesen, Hören, Schreiben, Sprechen)",
+        "Bẫy thường gặp trong bài thi trắc nghiệm đọc hiểu và nghe hiểu",
+        "Tự tin đạt chứng chỉ B1 với điểm số cao để hoàn tất hồ sơ Visa du học Đức"
+      ],
+      "vocab": [
+        {
+          "de": "die Zertifikatsprüfung",
+          "vi": "kỳ thi cấp chứng chỉ",
+          "exampleDe": "Ich habe mich intensiv auf die B1-Zertifikatsprüfung vorbereitet.",
+          "exampleVi": "Tôi đã chuẩn bị chuyên sâu cho kỳ thi chứng chỉ B1."
+        },
+        {
+          "de": "das Zeitmanagement",
+          "vi": "kỹ năng quản lý thời gian thi",
+          "exampleDe": "Gutes Zeitmanagement ist entscheidend in der Prüfung.",
+          "exampleVi": "Quản lý thời gian tốt là yếu tố quyết định trong kỳ thi."
+        },
+        {
+          "de": "die Sprachkompetenz",
+          "vi": "năng lực ngôn ngữ",
+          "exampleDe": "Auf B1-Niveau besitzt man eine solide Sprachkompetenz.",
+          "exampleVi": "Ở trình độ B1 người ta sở hữu năng lực ngôn ngữ vững vàng."
+        },
+        {
+          "de": "die Redemittel",
+          "vi": "các mẫu câu diễn đạt",
+          "exampleDe": "Die Redemittel helfen beim flüssigen Sprechen.",
+          "exampleVi": "Các mẫu câu diễn đạt giúp nói năng trôi chảy."
+        },
+        {
+          "de": "überfliegen",
+          "vi": "đọc lướt lấy ý chính (Skimming)",
+          "exampleDe": "Überfliegen Sie den Text zuerst, um das Thema zu verstehen.",
+          "exampleVi": "Hãy đọc lướt văn bản trước để hiểu chủ đề."
+        },
+        {
+          "de": "das Schlüsselwort",
+          "vi": "từ khóa trọng tâm",
+          "exampleDe": "Unterstreichen Sie die Schlüsselwörter in der Frage.",
+          "exampleVi": "Hãy gạch chân các từ khóa trong câu hỏi."
+        },
+        {
+          "de": "das Selbstvertrauen",
+          "vi": "sự tự tin",
+          "exampleDe": "Gehen Sie mit vollem Selbstvertrauen in die Prüfung!",
+          "exampleVi": "Hãy bước vào phòng thi với sự tự tin tuyệt đối!"
+        },
+        {
+          "de": "das Visum",
+          "vi": "thị thực / visa",
+          "exampleDe": "Mit dem B1-Zertifikat erhalte ich mein Visum für Deutschland.",
+          "exampleVi": "Với chứng chỉ B1 tôi sẽ nhận được visa đi Đức."
+        },
+        {
+          "de": "der Erfolg",
+          "vi": "thành công",
+          "exampleDe": "Ich wünsche Ihnen viel Erfolg auf Ihrem Weg nach Deutschland!",
+          "exampleVi": "Chúc bạn nhiều thành công trên con đường đến nước Đức!"
+        },
+        {
+          "de": "die Zukunft",
+          "vi": "tương lai",
+          "exampleDe": "Eine erfolgreiche Zukunft wartet auf Sie!",
+          "exampleVi": "Một tương lai thành công đang chờ đón bạn!"
+        }
+      ],
+      "grammar": {
+        "topic": "Checklist vàng ngữ pháp B1 trước khi vào phòng thi",
+        "formula": "1. Relativsätze • 2. Passiv Präsens/Präteritum • 3. Konjunktiv II • 4. Zweiteilige Konnektoren • 5. Verben mit Präpositionen",
+        "explanation": "Chỉ cần áp dụng linh hoạt 5 cấu trúc ngữ pháp này trong bài viết và bài nói, bạn chắc chắn sẽ đạt điểm Giỏi (sehr gut / gut) trong kỳ thi B1 TELC & Goethe.",
+        "examples": [
+          {
+            "de": "Ich habe hart gearbeitet und mein B1-Zertifikat erfolgreich erworben!",
+            "vi": "Tôi đã nỗ lực chăm chỉ và xuất sắc đạt được chứng chỉ B1!"
+          }
+        ]
+      },
+      "dialogue": {
+        "title": "Hội thoại: Nhận kết quả thi B1 (Ergebnis der B1-Prüfung)",
+        "de": "Prüfer: Herzlichen Glückwunsch, Herr Nguyen! Sie haben die B1-Prüfung mit 285 von 300 Punkten bestanden.\nNguyen: Vielen Dank! Das ist der glücklichste Tag in meinem Leben!\nPrüfer: Ihre mündliche Leistung war hervorragend und Ihr Brief war fast fehlerfrei. Was sind Ihre nächsten Pläne?\nNguyen: Ich reise nächsten Monat nach Frankfurt, um meine Ausbildung als Restaurantfachmann zu beginnen.\nPrüfer: Wunderbar! Deutschland freut sich auf engagierte junge Menschen wie Sie. Alles Gute für Ihre Zukunft!",
+        "vi": "Giám khảo: Xin nhiệt liệt chúc mừng anh Nguyễn! Anh đã thi đỗ kỳ thi B1 với 285 trên 300 điểm.\nNguyễn: Tôi cảm ơn giám khảo rất nhiều! Đây là ngày hạnh phúc nhất trong cuộc đời tôi!\nGiám khảo: Phần thi nói của anh rất xuất sắc và bài viết thư gần như không có lỗi sai. Kế hoạch tiếp theo của anh là gì?\nNguyễn: Tháng tới tôi sẽ bay sang Frankfurt để bắt đầu khóa học nghề chuyên viên nhà hàng.\nGiám khảo: Tuyệt vời! Nước Đức rất chào đón những bạn trẻ nhiệt huyết như anh. Chúc anh mọi điều tốt đẹp nhất cho tương lai!"
+      },
+      "speaking": {
+        "task": "Tự tin phát biểu tổng kết khóa học B1 và gửi lời cảm ơn",
+        "taskVi": "Nói về cảm xúc và sự sẵn sàng cho cuộc sống mới tại Đức.",
+        "prompt": "Abschlussrede nach bestandener B1-Prüfung.",
+        "sample": "Heute ist ein ganz besonderer Tag für mich. Nach monatelangem Lernen habe ich das B1-Zertifikat erreicht. Ich danke meinen Lehrern und meinen Freunden für die ständige Unterstützung. Ich fühle mich jetzt bestens vorbereitet und freue mich auf mein neues Leben und meine Ausbildung in Deutschland!"
+      },
+      "quiz": [
+        {
+          "q": "Tổng kết B1: Bạn đã hoàn thành xuất sắc toàn bộ khóa học A1 -> A2 -> B1. Mục tiêu tiếp theo là gì?",
+          "qVi": "Tự tin bước vào kỳ thi thật và hồ sơ Visa.",
+          "options": [
+            {
+              "de": "Luyện 54 bộ đề thi thật TELC/Goethe và nộp hồ sơ Visa du học Đức!",
+              "correct": true
+            },
+            {
+              "de": "Dừng lại không học nữa",
+              "correct": false
+            }
+          ],
+          "explain": "Chúc mừng bạn đã hoàn thành trọn vẹn lộ trình A1-B1 chuẩn chỉnh!"
+        }
+      ]
+    }
+  ]
+}

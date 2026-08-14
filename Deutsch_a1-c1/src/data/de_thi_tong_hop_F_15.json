@@ -1,0 +1,727 @@
+[
+  {
+    "title": "Hausaufgaben — Bài tập về nhà",
+    "audioText": "Moderator: Herzlich willkommen zu unserer Sendung „Alltag und Bildung“. Mein Name ist Thomas Richter, und heute sprechen wir über ein Thema, das in fast jeder Familie für Diskussionen sorgt: die Hausaufgaben. Bei mir im Studio sind zwei Gäste. Zu meiner Rechten sitzt Herr Klein, er ist Lehrer an einer Gesamtschule und unterrichtet seit über zwanzig Jahren Mathematik. Guten Tag, Herr Klein.\nHerr Klein: Guten Tag, ich freue mich, hier zu sein.\nModerator: Und zu meiner Linken begrüße ich Frau Berger. Sie ist Mutter von drei schulpflichtigen Kindern und engagiert sich im Elternbeirat. Schön, dass Sie da sind.\nFrau Berger: Vielen Dank für die Einladung.\nModerator: Herr Klein, fangen wir mit Ihnen an. Warum halten Sie Hausaufgaben eigentlich für sinnvoll?\nHerr Klein: Also, für mich sind Hausaufgaben vor allem ein Mittel, mit dem man den Lernfortschritt gut im Blick behalten kann. Gerade bei jüngeren Schülern, bei den Jungen zum Beispiel, sehe ich, dass eine regelmäßige Kontrolle wirklich hilft. Man merkt sofort, wer den Stoff verstanden hat und wer noch Unterstützung braucht.\nFrau Berger: Das mag im Klassenzimmer stimmen, aber zu Hause kann von Kontrolle doch gar keine Rede sein.\nHerr Klein: Verstehen Sie mich bitte nicht falsch, ich meine nicht, dass die Eltern kontrollieren sollen, sondern die Lehrkraft.\nFrau Berger: Das hoffe ich sehr, denn in der Realität sieht es leider oft anders aus.\nModerator: Bleiben wir noch kurz bei Ihnen, Herr Klein. Sie haben ja auch mit älteren Schülern und sogar mit Studierenden zu tun.\nHerr Klein: Genau. Und da fällt mir auf: Wer studiert, hat im Vergleich oft ziemlich viel Zeit für sich. Die Studierenden verfügen über große zeitliche Freiräume, viel mehr, als die Leute glauben. Deshalb wundert es mich, wenn sie sagen, sie kämen mit den Aufgaben nicht hinterher.\nFrau Berger: Viel Freizeit? Das würde ich so pauschal nicht sagen, viele jobben doch nebenbei.\nHerr Klein: Und genau das ist ein wichtiger Punkt. Ein Nebenjob während des Studiums ist keine verlorene Zeit, im Gegenteil. So eine Tätigkeit bereitet die jungen Leute auf das spätere Berufsleben vor, sie lernen Pünktlichkeit, Verantwortung und den Umgang mit Kollegen.\nModerator: Interessant. Jetzt möchte ich aber selbst einmal etwas einwerfen, wenn ich darf. Ich erinnere mich an meine eigene Schulzeit, und ehrlich gesagt fand ich diese Aufgaben für den Nachmittag oft einfach nur öde. Diese ewigen Wiederholungen, immer dasselbe Schema, das hat mich damals gelangweilt. Sehen Sie das anders, Frau Berger?\nFrau Berger: Langweilig sind sie manchmal, da haben Sie recht, Herr Richter. Aber mein eigentliches Problem ist ein anderes. In der Praxis läuft es doch oft so, dass am Ende die Eltern die Aufgaben für die Kinder erledigen. Nach einem langen Arbeitstag ist man selbst schon völlig erschöpft und setzt sich dann noch hin und macht die Rechenaufgaben quasi mit – oder gleich für das Kind.\nHerr Klein: Das sollte natürlich nicht passieren.\nFrau Berger: Nein, aber es passiert. Und der Grund ist die Menge. Meine Kinder haben Tag für Tag einen riesigen Berg an Aufgaben zu bewältigen, den sie allein kaum schaffen. Da bleibt gar keine andere Wahl.\nModerator: Und was ist mit den Freizeitaktivitäten der Kinder?\nFrau Berger: Genau das kommt zu kurz! Für mich sind die Hobbys eines Kindes mindestens so bedeutsam wie die schulischen Aufgaben. Ein Kind, das ein Instrument spielt oder Sport treibt, lernt fürs Leben genauso viel. Das darf man nicht gegen die Hausaufgaben ausspielen.\nHerr Klein: Da bin ich sogar teilweise Ihrer Meinung, ohne Ausgleich geht es nicht.\nFrau Berger: Und noch etwas, das mir am Herzen liegt: Schauen Sie sich mal die Schulranzen an. Die sind für die Kinder viel zu schwer. Die Schüler packen sich Buch um Buch hinein und schleppen das täglich hin und her, und das nur wegen der ganzen Aufgaben, die sie zu Hause brauchen.\nHerr Klein: Die schweren Ranzen ließen sich mit digitalen Büchern natürlich leichter machen, das gebe ich zu.\nFrau Berger: Das wäre wenigstens ein Anfang, ja.\nModerator: Das ist ein sehr anschauliches Bild. Fassen wir zusammen: Herr Klein sieht in den Hausaufgaben vor allem ein hilfreiches Instrument zur Kontrolle und betont, dass auch Nebenjobs auf den Beruf vorbereiten und Studierende viel Freizeit haben. Frau Berger dagegen weist darauf hin, dass oft die müden Eltern die Aufgaben übernehmen, dass die Kinder zu viele Aufgaben haben, dass Hobbys ebenso wichtig sind und dass die Ranzen viel zu schwer werden. Ich danke Ihnen beiden ganz herzlich für dieses offene Gespräch und Ihnen, liebe Hörerinnen und Hörer, fürs Zuhören. Bis zum nächsten Mal.",
+    "items": [
+      {
+        "de": "Hausaufgaben helfen, eine gute Kontrolle zu haben / Für junge Männer gibt es gute Kontrolle.",
+        "vi": "Bài tập về nhà giúp kiểm soát tốt / Đối với những người trẻ, nó mang lại sự kiểm soát tốt.",
+        "who": "mann"
+      },
+      {
+        "de": "Die Studierenden haben viel Freizeit.",
+        "vi": "Học sinh có nhiều thời gian rảnh rỗi.",
+        "who": "mann"
+      },
+      {
+        "de": "Jobs bereiten Studierende auf das Berufsleben vor.",
+        "vi": "Công việc chuẩn bị cho học sinh bước vào cuộc sống nghề nghiệp.",
+        "who": "mann"
+      },
+      {
+        "de": "Hausaufgaben sind langweilig.",
+        "vi": "Bài tập về nhà thật nhàm chán.",
+        "who": "moderator"
+      },
+      {
+        "de": "Eltern schreiben Hausaufgaben für ihre Kinder // Eltern sind von ihrer Arbeit sehr müde",
+        "vi": "Cha mẹ viết bài tập về nhà cho con cái // Cha mẹ rất mệt mỏi vì công việc.",
+        "who": "frau"
+      },
+      {
+        "de": "Kinder haben viele Hausaufgaben zu erledigen oder zu machen",
+        "vi": "Trẻ em có rất nhiều bài tập về nhà phải làm hoặc phải hoàn thành.",
+        "who": "frau"
+      },
+      {
+        "de": "Hobbys sind genauso wichtig wie Hausaufgaben",
+        "vi": "Sở thích cũng quan trọng không kém bài tập về nhà.",
+        "who": "frau"
+      },
+      {
+        "de": "Die Taschen sind für die Schüler schwer und sie legen Bücher hinein.",
+        "vi": "Cặp sách nặng đối với học sinh, các em để sách vào trong đó.",
+        "who": "frau"
+      }
+    ]
+  },
+  {
+    "title": "Einkaufszentrum — Trung tâm mua sắm",
+    "audioText": "Moderator: Guten Abend und willkommen zu „Stadt im Gespräch“. Ich bin Thomas Richter. Heute geht es um ein umstrittenes Projekt: den geplanten Bau eines großen Einkaufszentrums am Stadtrand. Zwei Gäste diskutieren mit mir. Herr Vogel ist Stadtplaner und berät seit vielen Jahren Kommunen bei Bauprojekten. Willkommen.\nHerr Vogel: Guten Abend, danke.\nModerator: Und Frau Neumann wohnt seit ihrer Kindheit in dem betroffenen Viertel und vertritt eine Bürgerinitiative. Schön, dass Sie da sind.\nFrau Neumann: Guten Abend.\nModerator: Herr Vogel, warum sollte die Stadt dieses Zentrum überhaupt bauen?\nHerr Vogel: Nun, der wichtigste Vorteil ist aus meiner Sicht die Beschäftigung. Ein solches Zentrum schafft viele neue Arbeitsplätze, und davon profitieren gerade die Menschen, die im Moment ohne Job sind. Wer arbeitslos ist, bekommt hier eine echte Chance.\nFrau Neumann: Arbeitsplätze klingt gut, aber zu welchem Preis?\nModerator: Dazu kommen wir gleich. Herr Vogel, was macht so ein Zentrum sonst noch attraktiv?\nHerr Vogel: Ganz entscheidend ist die Lage. Das Einkaufszentrum muss für alle leicht zu erreichen sein, sonst funktioniert es nicht. Und was viele nicht wissen: Zu dem Projekt gehören sogar Wohnungen. Es wird im Komplex auch Mietwohnungen geben, sodass die Leute direkt dort wohnen können.\nModerator: Und wer soll dort einkaufen?\nHerr Vogel: Alle sollen das können, und das ist mir wichtig. Auch Menschen mit einem schmalen Geldbeutel sollen in dieses Zentrum kommen können. Es ist ausdrücklich nicht nur für Gutverdiener gedacht.\nFrau Neumann: Das behaupten Sie, aber die Leute im Viertel sehen das ganz anders.\nModerator: Gleich, Frau Neumann. Herr Vogel, ein letzter Punkt von Ihrer Seite?\nHerr Vogel: Ja, damit alle hinkommen, muss man den Nahverkehr ausbauen. Für das Zentrum müssen unbedingt Busse eingesetzt werden, am besten in kurzen Takten. Ohne gute Busverbindungen bleibt das Ganze halbherzig.\nModerator: Wenn ich kurz einhaken darf: Nach den Unterlagen, die mir vorliegen, sollen dort ja auch viele bekannte Marken und internationale Ketten einziehen. Das Zentrum wird also eine ganze Reihe berühmter, internationaler Geschäfte beherbergen. Und noch eine Beobachtung von mir: Man liest ja oft, dass gerade Vermieter recht häufig umziehen, also selten lange am selben Ort bleiben. Aber Frau Neumann, jetzt sind Sie dran.\nFrau Neumann: Danke. Ich will ganz deutlich sein: Wir geben nicht auf. Gegen diesen Bau werden wir uns noch sehr lange zur Wehr setzen, notfalls über Jahre.\nHerr Vogel: Widerstand bringt am Ende aber niemandem etwas.\nFrau Neumann: Doch, wenn wir zusammenhalten. Wir haben uns als Nachbarn zusammengeschlossen, und gemeinsam wollen wir verhindern, dass dieses Zentrum überhaupt gebaut wird. Einzeln ist man machtlos, gemeinsam nicht.\nModerator: Sie klingen sehr aufgebracht. Warum?\nFrau Neumann: Weil es hier um unser Zuhause geht! Man erzählt von Chancen, aber in Wirklichkeit hat man Menschen dazu gedrängt, ihre Häuser aufzugeben. Familien mussten ausziehen, ob sie wollten oder nicht.\nHerr Vogel: Für die Umgesiedelten gab es doch Entschädigungen.\nFrau Neumann: Die reichen hinten und vorne nicht. Die Menschen bei uns im Viertel haben ohnehin wenig, viele sind arm und haben schlicht kein Geld, um woanders neu anzufangen. Genau die trifft es am härtesten.\nModerator: Fassen wir zusammen: Herr Vogel betont die neuen Arbeitsplätze für Arbeitslose, die gute Erreichbarkeit mit Bussen, die geplanten Mietwohnungen und den Zugang auch für Menschen mit wenig Geld. Frau Neumann dagegen kämpft mit ihrer Initiative entschlossen und gemeinsam gegen den Bau, weil Anwohner zum Wegzug gezwungen wurden und viele im Viertel schlicht zu arm sind. Ich bedanke mich herzlich bei Ihnen beiden und bei Ihnen fürs Zuhören.",
+    "items": [
+      {
+        "de": "Durch den Bau dieses Zentrums werden Beschäftigungsmöglichkeiten für Arbeitslose geschaffen.",
+        "vi": "Việc xây dựng trung tâm này sẽ tạo ra cơ hội việc làm cho những người thất nghiệp.",
+        "who": "mann"
+      },
+      {
+        "de": "Das Einkaufszentrum muss gut erreichbar sein.",
+        "vi": "Trung tâm mua sắm phải dễ dàng tiếp cận.",
+        "who": "mann"
+      },
+      {
+        "de": "es wird solche geben in Mietwohnungen.",
+        "vi": "Sẽ có các căn hộ cho thuê.",
+        "who": "mann"
+      },
+      {
+        "de": "Menschen mit wenig Geld können ins Einkaufszentrum gehen.",
+        "vi": "Những người có ít tiền cũng có thể đến trung tâm mua sắm.",
+        "who": "mann"
+      },
+      {
+        "de": "Dem Einkaufszentrum müssen Busse zur Verfügung gestellt werden.",
+        "vi": "Phải bố trí xe buýt cho trung tâm.",
+        "who": "mann"
+      },
+      {
+        "de": "Das Zentrum wird viele berühmte und internationale Geschäfte Enthalten.",
+        "vi": "Trung tâm sẽ bao gồm nhiều cửa hàng nổi tiếng và quốc tế.",
+        "who": "moderator"
+      },
+      {
+        "de": "Vermieter ziehen häufig um.",
+        "vi": "Những người cho thuê chuyển chỗ thường xuyên.",
+        "who": "moderator"
+      },
+      {
+        "de": "Wir werden uns noch lange gegen den Bau wehren.",
+        "vi": "Chúng tôi sẽ tiếp tục phản đối việc xây dựng trong thời gian dài.",
+        "who": "frau"
+      },
+      {
+        "de": "Wir stehen zusammen, um den Bau dieses Zentrums zu verhindern.",
+        "vi": "Chúng ta cùng nhau đứng lên để ngăn chặn việc xây dựng trung tâm này.",
+        "who": "frau"
+      },
+      {
+        "de": "Tatsächlich wurden die Menschen gezwungen, ihre Häuser zu verlassen.",
+        "vi": "Thực tế, người dân đã bị buộc phải rời bỏ nhà cửa của họ.",
+        "who": "frau"
+      },
+      {
+        "de": "Die Menschen hier sind arm und haben kein Geld.",
+        "vi": "Người dân ở đây nghèo và không có tiền.",
+        "who": "frau"
+      }
+    ]
+  },
+  {
+    "title": "Die Geschenke — Quà tặng",
+    "audioText": "Moderator: Hallo und willkommen zu „Miteinander“. Mein Name ist Thomas Richter. Unser heutiges Thema: das Schenken. Warum schenken wir, und wie macht man es richtig? Dazu habe ich zwei Gäste. Herr Braun ist Verkaufsleiter in einem Kaufhaus und beobachtet das Schenkverhalten seit Jahren beruflich. Willkommen.\nHerr Braun: Hallo, danke schön.\nModerator: Frau Wagner arbeitet als Kulturwissenschaftlerin und erforscht Bräuche rund um Feste. Schön, dass Sie hier sind.\nFrau Wagner: Sehr gern.\nModerator: Herr Braun, viele halten Geldgeschenke für einfallslos. Wie sehen Sie das?\nHerr Braun: Ganz und gar nicht einfallslos. Wer Geld verschenkt, gibt dem anderen die Freiheit, es genau so einzusetzen, wie es für ihn am sinnvollsten ist. Man kann das geschenkte Geld hervorragend gebrauchen, für etwas, das man wirklich braucht.\nFrau Wagner: Praktisch ist es, aber ein bisschen kalt, finde ich.\nModerator: Herr Braun, was leistet ein Geschenk denn darüber hinaus?\nHerr Braun: Sehr viel. Ein Geschenk verbindet Menschen. Es festigt die Beziehungen zwischen Freunden, in der Familie, unter Kollegen. Man zeigt damit: Ich habe an dich gedacht.\nFrau Wagner: Da bin ich ganz bei Ihnen, das Zwischenmenschliche steht im Vordergrund.\nModerator: Gibt es beim Schenken denn feste Regeln?\nHerr Braun: Durchaus. Beim Schenken gelten bestimmte ungeschriebene Regeln, etwa wie viel man ausgibt oder wann welches Geschenk passt. Wer die missachtet, tritt schnell ins Fettnäpfchen.\nModerator: Und wie wichtig ist die Verpackung?\nHerr Braun: Ehrlich gesagt überschätzt. Meiner Meinung nach muss man ein Geschenk gar nicht aufwendig einpacken. Der Inhalt zählt, nicht das schöne Papier drum herum.\nModerator: Interessant. Ich möchte hier kurz selbst einen Gedanken einbringen: Mir fällt immer wieder auf, wie verschieden Menschen auf dasselbe Geschenk reagieren. Der eine strahlt, der andere bleibt kühl – die Reaktionen sind wirklich von Mensch zu Mensch völlig unterschiedlich. Frau Wagner, was ist Ihnen beim Schenken wichtig?\nFrau Wagner: Was mir persönlich am meisten Freude macht, sind Überraschungen. Ein Geschenk, mit dem man überhaupt nicht rechnet, das ist für mich das Allerschönste.\nHerr Braun: Da geht aber auch das Risiko mit, dass man danebenliegt.\nFrau Wagner: Das stimmt. Und deshalb bin ich, anders als Sie, Herr Braun, kein Fan von Geldgeschenken. Ich halte es eher für keine gute Idee, Geld zu verschenken; manchmal hat man dann sogar das Gefühl, es sei nur ein Umtausch, Geld gegen Geld.\nHerr Braun: Aber praktisch ist es doch, das haben wir gerade gehört.\nFrau Wagner: Praktisch schon, das gebe ich zu. Wenn man schon Geld schenkt, dann kann man es wenigstens für etwas wirklich Sinnvolles einsetzen, etwa sparen oder spenden. So bekommt es doch noch einen Wert.\nModerator: Sie erforschen ja auch Bräuche. Gibt es da große Unterschiede?\nFrau Wagner: Riesige. Wie man schenkt, ist von Land zu Land völlig verschieden. Jede Kultur hat ihre eigenen Traditionen, und was hier höflich ist, kann anderswo unpassend sein.\nModerator: Fassen wir zusammen: Herr Braun findet Geldgeschenke durchaus praktisch und gut verwendbar, betont, dass Geschenke soziale Beziehungen stärken, dass es feste Regeln gibt und dass die Verpackung nicht nötig ist. Frau Wagner liebt Überraschungsgeschenke, steht Geldgeschenken kritisch gegenüber, empfiehlt aber, geschenktes Geld sinnvoll zu nutzen, und verweist auf die unterschiedlichen Traditionen von Land zu Land. Herzlichen Dank Ihnen beiden und Ihnen fürs Zuhören.",
+    "items": [
+      {
+        "de": "Geld Geschenk kann gut verwenden.",
+        "vi": "Tiền được chi tiêu một cách hợp lý.",
+        "who": "mann"
+      },
+      {
+        "de": "Geschenke stärken soziale Beziehungen",
+        "vi": "Quà tặng củng cố các mối quan hệ xã hội.",
+        "who": "mann"
+      },
+      {
+        "de": "Beim Schenken gelten bestimmte Regeln.",
+        "vi": "Khi tặng quà có những quy tắc nhất định được áp dụng.",
+        "who": "mann"
+      },
+      {
+        "de": "Es ist nicht notwendig, die Geschenke einzupacken.",
+        "vi": "Không nhất thiết phải gói quà.",
+        "who": "mann"
+      },
+      {
+        "de": "Die Reaktionen der Menschen auf Geschenke sind von Person zu Person unterschiedlich.",
+        "vi": "Phản ứng của mọi người đối với quà tặng khác nhau tùy từng người.",
+        "who": "moderator"
+      },
+      {
+        "de": "Eine Sache, die mir am besten gefällt, sind besonders Überraschungsgeschenke.",
+        "vi": "Điều tôi thích nhất là những món quà bất ngờ.",
+        "who": "frau"
+      },
+      {
+        "de": "Geld zu schenken als Geschenk ist schlecht. (Manchmal Umtausch)",
+        "vi": "Tặng tiền làm quà thì không tốt (đôi khi mang tính trao đổi).",
+        "who": "frau"
+      },
+      {
+        "de": "Geschenkgeld kann auch zum Sinnvollmachen verwendet werden.",
+        "vi": "Tiền quà tặng cũng có thể được dùng vào những mục đích có ý nghĩa.",
+        "who": "frau"
+      },
+      {
+        "de": "Die Traditionen des Schenkens variieren von Land zu Land - Traditionen sind unterschiedlich.",
+        "vi": "Truyền thống tặng quà khác nhau giữa các quốc gia, các truyền thống là khác nhau.",
+        "who": "frau"
+      }
+    ]
+  },
+  {
+    "title": "Fernbeziehungen — Mối quan hệ yêu xa",
+    "audioText": "Moderator: Herzlich willkommen zu „Zwei Leben, eine Liebe“. Ich bin Thomas Richter. Heute sprechen wir über Fernbeziehungen, über die Liebe auf Distanz. Bei mir: Herr Lang, Paartherapeut mit eigener Praxis. Willkommen.\nHerr Lang: Guten Tag.\nModerator: Und Frau Schmidt, Journalistin, die selbst mehrere Jahre eine Fernbeziehung geführt hat. Schön, dass Sie da sind.\nFrau Schmidt: Danke, freut mich.\nModerator: Herr Lang, was braucht ein Mensch, um so eine Beziehung auf Distanz auszuhalten?\nHerr Lang: Vor allem eines: Eigenständigkeit. Wer in einer Fernbeziehung glücklich sein will, muss auf eigenen Beinen stehen und selbstständig durchs Leben gehen können. Wer ständig jemanden an seiner Seite braucht, tut sich sehr schwer.\nFrau Schmidt: Unabhängig sein, ja, aber ganz allein schafft man das auch nicht.\nModerator: Was ist noch wichtig, Herr Lang?\nHerr Lang: Man muss lernen, die Entscheidungen des anderen zu respektieren. Wenn der Partner sich für einen Job in einer anderen Stadt entscheidet, muss man das akzeptieren, auch wenn es wehtut. Ohne diesen Respekt geht es nicht.\nFrau Schmidt: Das sehe ich ähnlich, aber es gehört noch mehr dazu.\nModerator: Bevor Sie weitermachen, Frau Schmidt, eine Beobachtung von mir: Sie haben mir vorhin erzählt, dass so eine Fernbeziehung heute leichter zu organisieren ist, weil das Reisen billig geworden ist. Sie sagten ja selbst: Flüge sind oft richtig günstig, es gibt viele Billigflüge.\nFrau Schmidt: Ja, das stimmt, die günstigen Flüge haben uns oft gerettet. Aber Geld allein löst das Problem nicht. Für mich war das Wichtigste, dass beide dieselbe Richtung wollen. Beide Partner müssen gemeinsame Ziele und Pläne für die Zukunft haben, sonst driftet man auseinander.\nHerr Lang: Gemeinsame Ziele, absolut, das kann ich als Therapeut nur bestätigen.\nFrau Schmidt: Und trotzdem war es nicht immer leicht. Kurioserweise gab es die meisten Konflikte genau dann, wenn wir uns endlich wiedersahen. Kaum war man zusammen, kam es zwischen uns beiden zum Streit, weil die Erwartungen so hoch waren.\nModerator: Woran lag das?\nFrau Schmidt: An der Anspannung. Zum Glück hilft heute die Technik enorm. Durch Videoanrufe und Nachrichten ist das Kommunizieren viel einfacher geworden, und das hat unsere Beziehung wirklich verbessert. Früher gab es ja nur teure Telefonate.\nHerr Lang: Die Technik ersetzt aber die Nähe nicht ganz.\nFrau Schmidt: Nein, und das war das Schwerste. Man wartet manchmal wochenlang, bis man den anderen endlich wieder in die Arme schließen kann. Diese lange Wartezeit, bis man sich wiedersieht, zehrt an den Nerven.\nModerator: Und wie ist Ihre Beziehung ausgegangen, wenn ich fragen darf?\nFrau Schmidt: Ehrlich? Am Ende hat bei uns der Beruf gesiegt. Für meinen Partner war die Karriere am Ende wichtiger als unsere Beziehung. Der Job stand für ihn über allem, und daran ist es zerbrochen.\nHerr Lang: Das ist leider häufig so, auch in meiner Praxis.\nModerator: Fassen wir zusammen: Herr Lang betont, dass man in einer Fernbeziehung selbstständig sein und die Entscheidungen des Partners akzeptieren muss. Frau Schmidt hebt gemeinsame Ziele hervor, berichtet von Streit beim Wiedersehen, lobt die moderne Technik für die Kommunikation, klagt über die langen Wartezeiten und stellt fest, dass am Ende der Beruf wichtiger war als die Beziehung. Und dass günstige Flüge dabei helfen, hatten wir ja auch schon gehört. Vielen Dank Ihnen beiden und Ihnen fürs Zuhören.",
+    "items": [
+      {
+        "de": "Eine Person muss unabhängig sein. /selbstständig/",
+        "vi": "Một người phải độc lập.",
+        "who": "mann"
+      },
+      {
+        "de": "Wir müssen die Entscheidungen der anderen Parteien akzeptieren.",
+        "vi": "Chúng ta phải chấp nhận quyết định của bên kia.",
+        "who": "mann"
+      },
+      {
+        "de": "Sie sagte: Flüge sind günstig/Billigflüge",
+        "vi": "Cô ấy nói: Các chuyến bay rẻ / chuyến bay giá rẻ.",
+        "who": "moderator"
+      },
+      {
+        "de": "Beide Parteien müssen gemeinsame Ziele und Pläne haben.",
+        "vi": "Cả hai bên phải có mục tiêu và kế hoạch chung.",
+        "who": "frau"
+      },
+      {
+        "de": "Wenn sie sich treffen, kommt es zu Streitigkeiten zwischen den beiden Parteien.",
+        "vi": "Khi gặp nhau, mâu thuẫn nảy sinh giữa hai bên.",
+        "who": "frau"
+      },
+      {
+        "de": "Technologie hat die Kommunikation einfacher gemacht // um Beziehungen zu verbessern.",
+        "vi": "Công nghệ đã giúp việc giao tiếp dễ dàng hơn // để cải thiện các mối quan hệ.",
+        "who": "frau"
+      },
+      {
+        "de": "Warten Sie lange, bis Sie die zweite Person sehen.",
+        "vi": "Phải chờ đợi rất lâu để được gặp người kia.",
+        "who": "frau"
+      },
+      {
+        "de": "Das Job ist wichtiger als Beziehungen.",
+        "vi": "Công việc quan trọng hơn các mối quan hệ.",
+        "who": "frau"
+      }
+    ]
+  },
+  {
+    "title": "Freiwillige Soziale Jahr — Năm tình nguyện xã hội",
+    "audioText": "Moderator: Willkommen zu „Jung und engagiert“. Mein Name ist Thomas Richter. Heute geht es um das Freiwillige Soziale Jahr, kurz FSJ. Lohnt sich das? Meine Gäste: Herr Weber, Personalberater, der viele junge Bewerber betreut. Willkommen.\nHerr Weber: Guten Tag.\nModerator: Und Frau Fischer, die selbst ein Freiwilliges Soziales Jahr in einem Krankenhaus absolviert hat. Schön, dass Sie da sind.\nFrau Fischer: Hallo, danke für die Einladung.\nModerator: Herr Weber, Sie sehen ja täglich Lebensläufe auf Ihrem Schreibtisch.\nHerr Weber: Das stimmt, und ein solches Jahr taucht darin heute immer häufiger auf.\nModerator: Herr Weber, es gibt ja immer wieder die Idee, so ein Jahr für alle verpflichtend zu machen. Was halten Sie davon?\nHerr Weber: Davon halte ich gar nichts. Das Entscheidende an diesem Jahr ist doch die Freiwilligkeit. Man darf das Freiwillige Soziale Jahr auf keinen Fall zu einer Pflicht machen, sonst verliert es seinen ganzen Sinn. Zwang und Engagement passen einfach nicht zusammen.\nFrau Fischer: Freiwillig ja, aber ganz nutzlos für die Gesellschaft wäre eine Pflicht ja nicht.\nHerr Weber: Nutzen für die Gesellschaft schon, aber echtes Engagement muss vom Menschen selbst kommen, nicht auf Befehl.\nModerator: Ein fairer Punkt. Sehen Sie denn auch Nachteile, Herr Weber?\nHerr Weber: Ja, die gibt es. Für manche junge Leute ist so ein Jahr am Ende vergeudete Zeit. Sie hängen zwölf Monate hinterher, ohne dass es sie wirklich weiterbringt, und dieser Zeitverlust lässt sich später kaum aufholen.\nFrau Fischer: Das würde ich so nicht stehen lassen, aber gut.\nModerator: Ich möchte an der Stelle ein paar Punkte einbringen, die für so ein Jahr sprechen. Erstens: Wer nach der Schule noch gar nicht weiß, welchen Beruf er ergreifen soll, für den ist dieses Jahr ausgesprochen nützlich, es hilft bei der Orientierung. Zweitens finde ich bemerkenswert, dass man das Freiwillige Soziale Jahr nicht nur zu Hause, sondern überall auf der Welt leisten kann. Und drittens sollte man nicht vergessen: Die sozialen Einrichtungen in Deutschland sind auf diese Helfer dringend angewiesen, ohne sie käme manches zum Erliegen. Frau Fischer, Sie haben es ja selbst gemacht.\nFrau Fischer: Das habe ich, und es war eine tolle Zeit, die man sogar wiederholen kann. Viele wissen gar nicht, dass man ein solches Jahr zweimal machen darf, wenn man möchte. Ich habe darüber wirklich nachgedacht.\nHerr Weber: Zweimal? Das kostet dann aber noch mehr Zeit.\nFrau Fischer: Zeit, die gut investiert ist. Ein Wermutstropfen bleibt allerdings: Die Bezahlung ist schlecht. Die freiwilligen Helfer bekommen für ihre Arbeit nur ein sehr geringes Taschengeld, davon kann man kaum leben.\nHerr Weber: Genau dieses geringe Taschengeld schreckt viele junge Leute ab.\nFrau Fischer: Für mich ging es aber nie ums Geld, sondern um die Erfahrung.\nModerator: Wie sah Ihr Arbeitsalltag konkret aus?\nFrau Fischer: Man ist voll eingebunden. Als Freiwillige arbeitet man Seite an Seite mit den festen Angestellten, man gehört richtig zum Team und übernimmt echte Aufgaben. Das war für mich das Wertvollste.\nHerr Weber: Aber Sie ersetzen damit doch fast eine bezahlte Kraft.\nFrau Fischer: So würde ich das nicht sagen, wir unterstützen sie nur. Und das geschieht eben in den sozialen Einrichtungen, in Krankenhäusern, Pflegeheimen, Kindergärten. Genau dort, wo Menschen Hilfe brauchen, ist so ein Jahr Gold wert.\nModerator: Fassen wir zusammen: Herr Weber besteht darauf, dass das Freiwillige Soziale Jahr freiwillig bleiben muss und für manche auch verlorene Zeit sein kann. Ich selbst habe ergänzt, dass es bei der Berufsorientierung hilft, weltweit möglich ist und dass die sozialen Einrichtungen es dringend brauchen. Frau Fischer berichtet, dass man es zweimal machen kann, dass die Bezahlung schlecht ist, dass man mit den Angestellten zusammenarbeitet und dass all das in sozialen Einrichtungen stattfindet. Ganz herzlichen Dank Ihnen beiden und Ihnen fürs Zuhören.",
+    "items": [
+      {
+        "de": "Das freiwillige soziale Jahr darf nicht zur Pflicht warden.",
+        "vi": "Năm tình nguyện xã hội không được trở thành bắt buộc.",
+        "who": "mann"
+      },
+      {
+        "de": "Mit dem freiwilligen sozialen Jahr verlieren manche umsonst Zeit.",
+        "vi": "Một số người lãng phí thời gian của họ khi thực hiện năm tình nguyện xã hội.",
+        "who": "mann"
+      },
+      {
+        "de": "Wenn man noch keine Berufspläne hat, ist die freiwillige soziale Jahr nützlich.",
+        "vi": "Nếu bạn chưa có kế hoạch nghề nghiệp nào, thì năm tình nguyện xã hội sẽ hữu ích.",
+        "who": "moderator"
+      },
+      {
+        "de": "Das freiwillige soziale Jahr kann man weltweit machen.",
+        "vi": "Năm tình nguyện xã hội có thể được thực hiện ở bất cứ đâu trên thế giới.",
+        "who": "moderator"
+      },
+      {
+        "de": "Die sozialen Einrichtungen in Deutschland brauche das freiwillige soziale Jahr.",
+        "vi": "Các cơ sở xã hội ở Đức cần đến năm tình nguyện xã hội.",
+        "who": "moderator"
+      },
+      {
+        "de": "Man kann das freiwillige soziale Jahr zweimal machen",
+        "vi": "Bạn có thể tham gia năm tình nguyện xã hội hai lần.",
+        "who": "frau"
+      },
+      {
+        "de": "Die freiwilligen Helfer im soziale Jahr verdienen schlecht.",
+        "vi": "Những tình nguyện viên trong năm xã hội được trả lương ít ỏi.",
+        "who": "frau"
+      },
+      {
+        "de": "Die freiwilligen Helfer im sozialen Jahr arbeiten mit dem Angestellten zusammen.",
+        "vi": "Các tình nguyện viên trong năm xã hội làm việc sát cánh cùng các nhân viên.",
+        "who": "frau"
+      },
+      {
+        "de": "Die Soziale Einrichtungen.",
+        "vi": "Các cơ sở xã hội.",
+        "who": "frau"
+      }
+    ]
+  },
+  {
+    "title": "Soziale Werke — Công việc xã hội",
+    "audioText": "Moderator: Guten Abend und herzlich willkommen zu unserer Sendung. Unser Thema heute: soziale Werke, also freiwillige soziale Arbeit. Dazu begrüße ich zwei Gäste. Frau Berger arbeitet seit Jahren als Sozialpädagogin und engagiert sich in mehreren Hilfsprojekten. Herr Neumann ist Unternehmensberater und steht solchen Programmen eher kritisch gegenüber. Herr Neumann, fangen wir mit Ihnen an: Was halten Sie von einem sozialen Jahr?\nHerr Neumann: Ehrlich gesagt nicht viel. Für mich ist ein soziales Jahr vor allem Zeitverschwendung, man verliert dabei einfach wertvolle Zeit. Wenn jemand eigentlich etwas anderes machen möchte, sollte er dieses soziale Jahr nicht absolvieren.\nModerator: Das ist eine klare Meinung. Woran denken Sie konkret?\nHerr Neumann: In dieser Zeit könnte man einen richtigen Job machen und gutes Geld verdienen. Wer gute Leistung bringt, verdient eben auch gut, und genau das bleibt bei der sozialen Arbeit auf der Strecke.\nModerator: Und wenn man sich trotzdem engagieren möchte?\nHerr Neumann: Dann muss man dafür nicht einmal Mitglied einer bestimmten Organisation sein. Man kann das ganz unabhängig tun.\nModerator: Da haben Sie recht, leisten kann man so ein Engagement praktisch überall, es ist nicht an einen festen Verein gebunden. Und man darf nicht vergessen: Für viele ist es am Ende eine positive Ergänzung zur Bewerbung und zum Lebenslauf. Außerdem kann freiwillige Arbeit ein Projekt konkret verbessern. Frau Berger, wie sehen Sie das?\nFrau Berger: Herr Neumann nennt es verlorene Zeit, aber genau das Gegenteil ist der Fall. Soziale Arbeit hilft einem sogar, ein richtiger Experte auf seinem Gebiet zu werden.\nFrau Berger: Vor allem muss man erst einmal Erfahrung sammeln, und die bekommt man in solchen Projekten wie nirgendwo sonst.\nFrau Berger: Und noch etwas: Soziale Arbeit hilft ungemein bei der Berufswahl, weil man herausfindet, was einem wirklich liegt.\nModerator: Vielen Dank, Frau Berger und Herr Neumann. Wir halten fest: Herr Neumann sieht vor allem den Zeit- und Geldverlust, während Frau Berger die gesammelte Erfahrung, die berufliche Orientierung und den Weg zum Experten betont. Ihnen zu Hause danke ich fürs Zuhören.",
+    "items": [
+      {
+        "de": "Verlieren die Zeit / Zeitverschwendung / Es verursacht Zeit verlieren.",
+        "vi": "Lãng phí thời gian / lãng phí thời gian / gây ra sự lãng phí thời gian.",
+        "who": "mann"
+      },
+      {
+        "de": "Mit gutem Gewinn verdient man gutes Geld verdienen.",
+        "vi": "Với lợi nhuận tốt, bạn có thể kiếm được nhiều tiền.",
+        "who": "mann"
+      },
+      {
+        "de": "Um soziales Jahr zu leisten, ist es nicht notwendig, Mitglied einer bestimmten Organisation zu sein.",
+        "vi": "Để tham gia một năm xã hội, không nhất thiết phải là thành viên của một tổ chức cụ thể nào.",
+        "who": "mann"
+      },
+      {
+        "de": "Überall.",
+        "vi": "Ở khắp mọi nơi.",
+        "who": "moderator"
+      },
+      {
+        "de": "Eine positive Ergänzung zur Bewerbung und zum Lebenslauf.",
+        "vi": "Một điểm cộng tích cực cho đơn xin việc và sơ yếu lý lịch của bạn.",
+        "who": "moderator"
+      },
+      {
+        "de": "Freiwillige Arbeit kann ein Projekt besser machen.",
+        "vi": "Công việc tình nguyện có thể giúp một dự án trở nên tốt hơn.",
+        "who": "moderator"
+      },
+      {
+        "de": "Man macht kein soziales Jahr, wenn man eigentlich etwas anderes machen möchte.",
+        "vi": "Người ta không tham gia năm xã hội nếu thực ra muốn làm một việc khác.",
+        "pending": true
+      },
+      {
+        "de": "Sozialen Werken hilft Ihnen, ein professioneller Experte zu warden.",
+        "vi": "Công việc tình nguyện giúp bạn trở thành một chuyên gia xã hội.",
+        "who": "frau"
+      },
+      {
+        "de": "Erfahrung muss gesammelt warden.",
+        "vi": "Cần phải tích lũy kinh nghiệm.",
+        "who": "frau"
+      },
+      {
+        "de": "Sozialen Werken hilft bei der Berufswahl.",
+        "vi": "Công việc xã hội giúp ích trong việc chọn nghề.",
+        "who": "frau"
+      }
+    ]
+  },
+  {
+    "title": "Freundschaft — Tình bạn",
+    "audioText": "Moderatorin: Guten Abend und herzlich willkommen. Heute sprechen wir über ein Thema, das uns alle angeht: Freundschaft. Bei mir im Studio sind Frau Schulz, Psychologin mit dem Schwerpunkt Beziehungen, und Herr Wagner, der als Projektmanager einen sehr vollen Terminkalender hat. Herr Wagner, treffen Sie Ihre Freunde eigentlich oft?\nHerr Wagner: Ehrlich gesagt viel zu selten. Mein Alltag ist so voll, das Leben ist einfach zu stressig, um sich oft mit Freunden zu treffen.\nModeratorin: Und wenn es dann doch klappt?\nHerr Wagner: Dann zählt für mich Ehrlichkeit. Ein echter Freund sollte ehrlich seine Meinung sagen, auch wenn sie mir nicht gefällt.\nModeratorin: Und wie halten Sie Kontakt, wenn die Zeit fehlt?\nHerr Wagner: Über das Netz. Gerade für junge Leute finde ich es sogar wichtig, viele Freunde im Internet zu haben.\nModeratorin: Das ist ein spannender Punkt, man hat ja oft Freunde für ganz unterschiedliche Aktivitäten. Über soziale Medien kann man außerdem ganz leicht miteinander in Kontakt bleiben. Frau Schulz, wie sehen Sie die Sache?\nFrau Schulz: Für mich beginnt es früher: In jeder Lebensphase gibt es einen passenden Freund, vom Kindergarten bis ins Alter.\nFrau Schulz: Aber diese Freundschaften kommen nicht von allein, man muss sich um seine Freunde kümmern.\nFrau Schulz: Und deshalb sind für eine echte Freundschaft gemeinsame Aktivitäten so wichtig, nicht nur kurze Nachrichten.\nFrau Schulz: Ich selbst habe zum Beispiel Freunde, mit denen ich fast nur über die Apps spreche.\nModeratorin: Vielen Dank Ihnen beiden. Festhalten können wir: Herr Wagner betont Ehrlichkeit und die Rolle des Internets trotz Zeitmangels, während Frau Schulz die Pflege der Freundschaft, gemeinsame Aktivitäten und die Freunde für jede Lebensphase hervorhebt. Und Ihnen zu Hause danke ich fürs Zuhören.",
+    "items": [
+      {
+        "de": "Das Leben ist zu stressig, um sich oft mit Freunden zu treffen.",
+        "vi": "Cuộc sống quá căng thẳng nên tôi không thể gặp gỡ bạn bè thường xuyên.",
+        "who": "mann"
+      },
+      {
+        "de": "Ein Freund sollte ehrlich seine Meinung sagen.",
+        "vi": "Một người bạn nên nói thẳng những gì mình nghĩ một cách chân thành (cô gái sau đó nói rằng có thể xảy ra cãi vã vì quá thẳng thắn).",
+        "who": "mann"
+      },
+      {
+        "de": "Für junge Leute ist es wichtig, viele Freunde im Internet zu haben!",
+        "vi": "Đối với người trẻ, việc có nhiều bạn bè trên mạng là quan trọng.",
+        "who": "mann"
+      },
+      {
+        "de": "Man hat Freunde für unterschiedliche Aktivitäten.",
+        "vi": "Người ta có những người bạn cho những hoạt động khác nhau.",
+        "who": "moderator"
+      },
+      {
+        "de": "In jede Lebensphase gibt es einen Freunde.",
+        "vi": "Mỗi giai đoạn của cuộc đời đều có một người bạn.",
+        "who": "frau"
+      },
+      {
+        "de": "Man muss sich um seine Freunde kümmern.",
+        "vi": "Bạn phải quan tâm chăm sóc bạn bè của mình.",
+        "who": "frau"
+      },
+      {
+        "de": "Für eine Freundschaft sind gemeinsame Aktivitäten wichtig.",
+        "vi": "Đối với tình bạn, các hoạt động chung là quan trọng.",
+        "who": "frau"
+      },
+      {
+        "de": "Durch soziale Medien kann man leichter in Kontakt bleiben.",
+        "vi": "Thông qua mạng xã hội, người ta có thể giữ liên lạc dễ dàng hơn.",
+        "who": "moderator"
+      },
+      {
+        "de": "Ich habe Freunde, mit denen ich über die Apps spreche.",
+        "vi": "Tôi có những người bạn mà tôi trò chuyện qua các ứng dụng.",
+        "who": "frau"
+      }
+    ]
+  },
+  {
+    "title": "Mobiltelefone — Điện thoại di động",
+    "audioText": "Moderator: Guten Abend und willkommen zu unserer Diskussionsrunde. Unser Thema heute: das Mobiltelefon in unserem Alltag. Dazu begrüße ich Frau Klein, Kommunikationsberaterin, und Herrn Fischer, Lehrer und bekennender Handy-Kritiker. Herr Fischer, stört Sie das ständige Klingeln?\nHerr Fischer: Und wie. Natürlich wird Frau Klein gleich sagen, das Handy sei praktisch, aber man muss doch nicht jeden Anruf sofort annehmen. Diese ständige Erreichbarkeit macht uns alle nervös.\nModerator: Sie würden das Gerät also gern häufiger ausschalten?\nHerr Fischer: Mehr noch: Für mich sollte das Mobiltelefon auch in anderen Bereichen verboten werden, nicht nur im Kino oder im Theater.\nModerator: Ist das nicht ein bisschen streng?\nHerr Fischer: Ich glaube, man kann durchaus lernen, das Handy manchmal einfach nicht zu benutzen. Das tut jedem gut.\nModerator: Da gebe ich Ihnen teilweise recht, es gibt ja tatsächlich Orte, an denen das Telefonieren absolut verboten ist. Frau Klein, überzeugt Sie das?\nFrau Klein: Ehrlich gesagt nicht. Was das Telefonieren betrifft, kann man Arbeitszeit und Freizeit heute gar nicht mehr klar trennen, die Grenzen sind fließend.\nFrau Klein: Und ganz ehrlich: Mobiltelefone sind einfach sehr praktisch, das kann niemand bestreiten.\nFrau Klein: Herr Fischer möchte das Gerät am liebsten verbieten, aber das Handy ist längst ein fester Teil unseres Alltags geworden.\nFrau Klein: Denken Sie nur an Familien: Eltern sind viel beruhigter, wenn ihre Kinder ein Mobiltelefon dabeihaben.\nModerator: Vielen Dank Ihnen beiden. Zusammengefasst: Herr Fischer plädiert für mehr Zurückhaltung und klare Verbote, während Frau Klein die Praktikabilität, die verschwimmenden Grenzen und die Sicherheit für Familien betont. Ihnen zu Hause danke ich fürs Zuhören.",
+    "items": [
+      {
+        "de": "Man muss nicht jeden Anruf anrufen.",
+        "vi": "Không nhất thiết phải thực hiện mọi cuộc gọi điện thoại.",
+        "who": "mann"
+      },
+      {
+        "de": "Mobiltelefon muss auch in anderen Bereichen verboten werden.",
+        "vi": "Điện thoại di động cũng cần bị cấm ở những khu vực khác.",
+        "who": "mann"
+      },
+      {
+        "de": "Man kann besser lernen, das Mobiltelefon manchmal nicht benutzen zu bestätigen.",
+        "vi": "Tốt hơn là nên học cách chấp nhận việc đôi khi không sử dụng điện thoại di động.",
+        "who": "mann"
+      },
+      {
+        "de": "Es gibt Orte, an denen das Telefonieren absolut verboten ist.",
+        "vi": "Có những nơi việc sử dụng điện thoại di động bị cấm hoàn toàn.",
+        "who": "moderator"
+      },
+      {
+        "de": "Was das Telefonieren betrifft, kann man Arbeitszeit und Freizeit nicht klar trennen",
+        "vi": "Về việc gọi điện thoại, người ta không thể tách bạch rõ ràng thời gian làm việc và thời gian rảnh rỗi.",
+        "who": "frau"
+      },
+      {
+        "de": "Mobiltelefone sind sehr praktisch.",
+        "vi": "Điện thoại di động rất tiện lợi.",
+        "who": "frau"
+      },
+      {
+        "de": "Das Handy ist Teil unseres Alltags geworden.",
+        "vi": "Điện thoại di động đã trở thành một phần của cuộc sống hàng ngày của chúng ta.",
+        "who": "frau"
+      },
+      {
+        "de": "Eltern sind beruhigter, wenn ihre Kinder ein Mobiltelefon haben.",
+        "vi": "Cha mẹ cảm thấy yên tâm hơn khi con cái họ có điện thoại di động (tôi không đồng ý với người dẫn chương trình).",
+        "who": "frau"
+      }
+    ]
+  },
+  {
+    "title": "Über ein Reisebüro oder nicht? — Đặt chỗ qua văn phòng du lịch hay không?",
+    "audioText": "Moderator: Guten Abend und herzlich willkommen. Unsere heutige Frage lautet: Bucht man seine Reise besser über ein Reisebüro oder nicht? Dazu begrüße ich Frau Hoffmann, die selbst ein Reisebüro leitet, und Herrn Braun, der als Reiseblogger am liebsten alles selbst organisiert. Herr Braun, brauchen wir das Reisebüro überhaupt noch?\nHerr Braun: Kommt darauf an, wer reist. Familien mit kleinen Kindern zum Beispiel reisen eher alleine und organisieren alles selbst.\nModerator: Und der Rest?\nHerr Braun: Frau Hoffmann wird gleich ihr Reisebüro loben, aber ehrlich: Die meisten Leute buchen ihre Reisen heute ohnehin online.\nModerator: Gibt es da kein Muster?\nHerr Braun: Doch, ein ganz klares: Wie man reist, hängt stark vom Alter ab.\nModerator: Man darf dabei nicht vergessen, dass man auf Reisen Geld ausgeben und im Ausland oft Geld umtauschen muss. Immerhin ist das Reisen insgesamt billiger geworden als früher. Und natürlich gibt es heute viele Alternativen zum klassischen Reisebüro. Frau Hoffmann, hat Ihr Beruf da noch eine Zukunft?\nFrau Hoffmann: Auf jeden Fall. Reisen hat so viele Vorteile, man verbessert zum Beispiel ganz nebenbei seine Sprachkenntnisse.\nFrau Hoffmann: Und das Internet hat eine echte Globalisierung geschaffen und die Kommunikation zwischen Menschen aus aller Welt erleichtert.\nFrau Hoffmann: Herr Braun sagt, alle buchen online, aber Senioren oder ältere Erwachsene reisen in der Regel doch lieber mit einem Reisebüro.\nModerator: Vielen Dank Ihnen beiden. Wir halten fest: Herr Braun sieht den Trend zum Online-Buchen und zum eigenständigen Reisen je nach Alter, während Frau Hoffmann die Vorteile des Reisens und die feste Rolle des Reisebüros für ältere Kunden betont. Ihnen zu Hause danke ich fürs Zuhören.",
+    "items": [
+      {
+        "de": "Familien mit kleinen Kindern hingegen reisen eher alleine.",
+        "vi": "Mặt khác, những gia đình có con nhỏ thì có xu hướng đi du lịch một mình (tự túc).",
+        "who": "mann"
+      },
+      {
+        "de": "Die Leute buchen ihre Reisen jetzt online.",
+        "vi": "Mọi người giờ đây đặt các chuyến đi của họ qua mạng.",
+        "who": "mann"
+      },
+      {
+        "de": "Die Art zu reisen hängt von Alter ab.",
+        "vi": "Cách thức đi du lịch phụ thuộc vào độ tuổi.",
+        "who": "mann"
+      },
+      {
+        "de": "Geld ausgeben/Tauschen Gelg - geld geben.",
+        "vi": "Chi tiền / trao đổi tiền - đưa tiền.",
+        "who": "moderator"
+      },
+      {
+        "de": "Reisen ist billiger geworden als zuvor.",
+        "vi": "Du lịch đã trở nên rẻ hơn so với trước đây.",
+        "who": "moderator"
+      },
+      {
+        "de": "Alternative …",
+        "vi": "Lựa chọn thay thế …",
+        "who": "moderator"
+      },
+      {
+        "de": "Spracherbesserung.",
+        "vi": "Cải thiện ngôn ngữ.",
+        "who": "frau"
+      },
+      {
+        "de": "Das Internet hat sich globalisierung geschaffen und die Kommunikation zwischen Menschen aus alle welt.",
+        "vi": "Internet đã tạo ra sự toàn cầu hóa, giúp việc giao tiếp giữa mọi người trên khắp thế giới dễ dàng hơn.",
+        "who": "frau"
+      },
+      {
+        "de": "Senioren oder Erwachsene reisen in der Regel mit einem Reisebüro.",
+        "vi": "Người cao tuổi và người lớn thường đi du lịch qua các văn phòng du lịch.",
+        "who": "frau"
+      }
+    ]
+  },
+  {
+    "title": "Erwachsene — Người trưởng thành",
+    "audioText": "Moderator: Guten Abend und herzlich willkommen zu unserer Sendung. Heute stellen wir eine Frage, die sich jeder irgendwann stellt: Ab wann ist man eigentlich erwachsen? Dazu begrüße ich Frau Wolf, Soziologin an der Universität. Frau Wolf, was bedeutet für Sie erwachsen sein?\nFrau Wolf: Für mich ist die Sache ziemlich klar: Erwachsen zu sein bedeutet vor allem, selbständig zu sein und für sich selbst zu sorgen.\nModerator: Und wann zeigt sich diese Selbständigkeit?\nFrau Wolf: Oft im entscheidenden Moment. Bevor man ins Ausland geht und ganz allein draußen lebt, braucht man schon etwas Mut.\nModerator: Das stimmt. Viele sagen allerdings auch: Richtig erwachsen wird man erst, wenn man selbst ein Kind hat und Verantwortung für einen anderen Menschen übernimmt. Frau Wolf, vielen Dank für Ihre Einschätzungen, und Ihnen zu Hause danke ich fürs Zuhören.",
+    "items": [
+      {
+        "de": "Erwachsen zu sein bedeutet, selbständig zu sein.",
+        "vi": "Trưởng thành nghĩa là tự lập / độc lập.",
+        "who": "frau"
+      },
+      {
+        "de": "Bevor man ins Ausland geht und allein draußen lebt, braucht man etwas Mut.",
+        "vi": "Trước khi ra nước ngoài và sống tự lập, người ta cần một chút can đảm.",
+        "who": "frau"
+      },
+      {
+        "de": "Man wird erwachsen, wenn man ein Kind hat.",
+        "vi": "Người ta trở thành người trưởng thành khi có con.",
+        "who": "moderator"
+      }
+    ]
+  },
+  {
+    "title": "Bio-Lebensmittel — Thực phẩm hữu cơ",
+    "audioText": "Moderatorin: Herzlich willkommen zu \"Thema am Mittag\". Heute geht es um Bio-Lebensmittel — für die einen ein Muss, für die anderen reine Geldverschwendung. Im Studio begrüße ich Frau Weber, Ernährungsberaterin, und Herrn Krause. Schön, dass Sie da sind.\nHerr Krause: Bio-Lebensmittel sind viel zu teuer. Dafür muss man sehr viel bezahlen.\nFrau Weber: Sie sind oft teuer, das stimmt. Wenn man aber Angebote vergleicht, kann man durchaus günstigere Bio-Produkte finden.\nHerr Krause: Günstiger vielleicht, aber dafür braucht man Zeit. Ich möchte schnell einkaufen und im Einkaufszentrum alle Lebensmittel auf einmal bekommen.\nModeratorin: Beim Thema Bio müssen wir auch über die Umwelt sprechen. Lange Transportwege können die Umwelt belasten.\nFrau Weber: Deshalb sollte man Obst und Gemüse möglichst in der eigenen Gegend anbauen, am besten in der Nähe des Wohnorts.\nHerr Krause: Und besser schmeckt Bio auch nicht immer. Bio-Tomaten schmecken zum Beispiel manchmal überhaupt nicht lecker.\nFrau Weber: Frische Bio-Produkte verderben allerdings schnell, wenn man sie nach der Ernte nicht sofort verwendet.\nModeratorin: Außerdem bedeutet Bio nicht automatisch gesund. Auch Bio-Schokolade bleibt Schokolade und ist nicht immer gesund.\nModeratorin: Damit sind die wichtigsten Argumente genannt: Preis, schneller Einkauf, regionale Produktion, Geschmack, Haltbarkeit, Umwelt und Gesundheit.",
+    "items": [
+      {
+        "de": "Man muss für Bio-Lebensmittel viel bezahlen.",
+        "vi": "Phải trả nhiều tiền cho thực phẩm hữu cơ.",
+        "who": "mann"
+      },
+      {
+        "de": "Man kann Bio-Lebensmittel auch günstiger finden.",
+        "vi": "Cũng có thể tìm được thực phẩm hữu cơ với giá rẻ hơn.",
+        "who": "frau"
+      },
+      {
+        "de": "Im Einkaufszentrum kann man alle Lebensmittel schnell einkaufen.",
+        "vi": "Ở trung tâm mua sắm có thể mua nhanh tất cả thực phẩm.",
+        "who": "mann"
+      },
+      {
+        "de": "Bei Bio-Lebensmitteln muss man auch an die Umwelt denken.",
+        "vi": "Với thực phẩm hữu cơ cũng cần nghĩ đến môi trường.",
+        "who": "moderator"
+      },
+      {
+        "de": "Man sollte Obst und Gemüse in der eigenen Gegend anbauen.",
+        "vi": "Nên trồng rau quả ngay trong khu vực mình sống.",
+        "who": "frau"
+      },
+      {
+        "de": "Bio-Lebensmittel schmecken nicht immer lecker, zum Beispiel Tomaten.",
+        "vi": "Thực phẩm hữu cơ không phải lúc nào cũng ngon, ví dụ như cà chua.",
+        "who": "mann"
+      },
+      {
+        "de": "Frische Bio-Produkte verderben schnell, wenn man sie nicht sofort verwendet.",
+        "vi": "Thực phẩm hữu cơ tươi nhanh hỏng nếu không dùng ngay.",
+        "who": "frau"
+      },
+      {
+        "de": "Bio-Produkte sind nicht immer gesund, zum Beispiel Bio-Schokolade.",
+        "vi": "Sản phẩm hữu cơ không phải lúc nào cũng tốt cho sức khỏe, ví dụ sô-cô-la hữu cơ.",
+        "who": "moderator"
+      }
+    ]
+  },
+  {
+    "title": "Abnehmprogramm — Chương trình giảm cân",
+    "audioText": "Moderator: Willkommen zu unserem Gesundheitsmagazin \"Gut leben\". Immer mehr Kinder in Deutschland sind übergewichtig — höchste Zeit, über Abnehmprogramme zu sprechen. Meine Gäste heute: Frau Hoffmann, Erzieherin in einer Kita, und Herr Lehmann, Sportpädagoge. Schön, dass Sie da sind.\nFrau Hoffmann: Hallo, guten Tag.\nHerr Lehmann: Guten Tag.\nModerator: Herr Lehmann, Sie setzen bei Ihren Programmen stark auf Spiele. Warum?\nHerr Lehmann: Weil Kinder am besten lernen, wenn es Spaß macht. Auf spielerische Weise können sie eine Menge Nützliches über Gesundheit und Ernährung aufnehmen, fast ohne es zu merken.\nModerator: Reicht das denn aus?\nHerr Lehmann: Allein nicht. Man darf die Familie nicht vergessen — die Eltern spielen eine entscheidende Rolle, denn sie prägen das Verhalten ihrer Kinder mehr als alles andere. Und man sollte das Problem nicht kleinreden: Falsche Essgewohnheiten schaden der Gesundheit ganz erheblich.\nModerator: In manchen Regionen gibt es inzwischen ein interessantes Instrument. Ich meine diesen elektronischen Test, der misst und feststellt, ob ein Kind zu stark an Gewicht zunimmt. Nebenbei zeigt sich dabei auch: Viele der betroffenen Schüler haben zusätzlich Schwierigkeiten in der Schule.\nFrau Hoffmann: Das kann ich bestätigen. Aus meiner Sicht liegt eine Hauptursache in der Bewegung — die Kinder bewegen sich heute längst nicht mehr so viel wie früher, und deshalb nehmen sie zu.\nModerator: Was halten Sie von dem erwähnten Test?\nFrau Hoffmann: Sehr viel. Man könnte meinen, so ein Test sei teuer, doch das Gegenteil ist der Fall: Er ist kostenlos und erkennt zuverlässig, welche Kinder übergewichtig sind. Wichtig sind aber auch wir Fachkräfte — gerade die Kindergärtnerinnen beeinflussen das Verhalten der Kinder ganz wesentlich. Und früher, das darf man nicht vergessen, war das Problem des Übergewichts längst nicht so verbreitet wie heute.\nModerator: Und Ihr Rezept?\nFrau Hoffmann: Ganz einfach: Beim Spielen tun die Kinder ganz nebenbei etwas Gutes für ihre eigene Gesundheit.\nModerator: Fassen wir zusammen: Herr Lehmann betont das spielerische Lernen, die Rolle der Eltern und die Gefahr schlechter Essgewohnheiten. Frau Hoffmann sieht den Bewegungsmangel als Ursache, lobt den kostenlosen Test, hebt den Einfluss der Erzieherinnen hervor und erinnert daran, dass Übergewicht früher seltener war. Ich selbst habe auf den elektronischen Test und die schulischen Probleme der Kinder hingewiesen. Vielen Dank für das Gespräch.\nFrau Hoffmann: Danke.\nHerr Lehmann: Danke schön.",
+    "items": [
+      {
+        "de": "Spielerisch kann man Nützliches zum Thema Gesundheit lernen.",
+        "vi": "Có thể học những điều bổ ích về sức khỏe thông qua chơi đùa.",
+        "who": "mann"
+      },
+      {
+        "de": "Eltern spielen eine wichtige Rolle bei der Beeinflussung des Verhaltens von Kindern.",
+        "vi": "Cha mẹ đóng vai trò quan trọng trong việc ảnh hưởng đến hành vi của trẻ.",
+        "who": "mann"
+      },
+      {
+        "de": "Schlechte Essgewohnheiten beeinträchtigen die Gesundheit stark.",
+        "vi": "Thói quen ăn uống xấu ảnh hưởng tiêu cực lớn đến sức khỏe.",
+        "who": "mann"
+      },
+      {
+        "de": "Es gibt einen (elektronischen) Test, der die Gewichtszunahme bestimmt.",
+        "vi": "Có một bài kiểm tra (điện tử) để xác định mức tăng cân.",
+        "who": "moderator"
+      },
+      {
+        "de": "Schüler haben Probleme in der Schule.",
+        "vi": "Học sinh gặp vấn đề ở trường.",
+        "who": "moderator"
+      },
+      {
+        "de": "Kinder bewegen sich nicht mehr wie früher, deshalb nehmen sie zu.",
+        "vi": "Trẻ ít vận động hơn trước nên bị tăng cân.",
+        "who": "frau"
+      },
+      {
+        "de": "Der elektronische Test ist kostenlos und erkennt übergewichtige Kinder.",
+        "vi": "Bài kiểm tra điện tử miễn phí và phát hiện trẻ thừa cân.",
+        "who": "frau"
+      },
+      {
+        "de": "Kindergärtnerinnen beeinflussen das Verhalten der Kinder wesentlich.",
+        "vi": "Các cô giáo mầm non ảnh hưởng đáng kể đến hành vi của trẻ.",
+        "who": "frau"
+      },
+      {
+        "de": "Das Problem des Übergewichts war früher nicht so verbreitet.",
+        "vi": "Vấn đề thừa cân trước đây không phổ biến như bây giờ.",
+        "who": "frau"
+      },
+      {
+        "de": "Kinder tun spielerisch etwas Gutes für ihre Gesundheit.",
+        "vi": "Trẻ cải thiện sức khỏe thông qua việc chơi đùa.",
+        "who": "frau"
+      }
+    ]
+  },
+  {
+    "title": "Grünflächen in der Stadt — Không gian xanh trong thành phố",
+    "audioText": "Moderatorin: Willkommen zu unserer Sendung über die Zukunft der Städte. Heute geht es um ein Projekt für mehr Grünflächen. Das Projekt ist schon seit einiger Zeit bekannt, und solche Flächen sind besonders wichtig für das Stadtbild.\nFrau Berger: Grünflächen bringen der Umwelt viele Vorteile. Sie verbessern außerdem die Lebensqualität der Menschen. Pflanzen sind gut für die Umwelt, und deshalb ist es unsere Pflicht, die Natur zu schützen.\nHerr Klein: Ich sehe das kritischer. Wohnungen und Immobilien sind heute schon teurer als früher. Außerdem bringt es meiner Meinung nach wenig, nur die öffentlichen Verkehrsmittel zu verbessern.\nModeratorin: Wir halten fest: Das Projekt ist nicht ganz neu. Grünflächen prägen das Aussehen der Stadt, während über Kosten und Verkehr weiter diskutiert wird.",
+    "items": [
+      {
+        "de": "Grünflächen bringen Vorteile für die Umwelt.",
+        "vi": "Không gian xanh mang lại lợi ích cho môi trường.",
+        "who": "frau"
+      },
+      {
+        "de": "Grünflächen verbessern die Lebensqualität.",
+        "vi": "Không gian xanh cải thiện chất lượng cuộc sống.",
+        "who": "frau"
+      },
+      {
+        "de": "Das Projekt ist schon seit einiger Zeit bekannt.",
+        "vi": "Dự án đã được biết đến từ một thời gian trước.",
+        "who": "moderator"
+      },
+      {
+        "de": "Wohnungen und Immobilien sind teurer als früher.",
+        "vi": "Căn hộ và bất động sản đắt hơn trước đây.",
+        "pending": true
+      },
+      {
+        "de": "Eine Verbesserung der öffentlichen Verkehrsmittel bringt nichts.",
+        "vi": "Việc cải thiện phương tiện giao thông công cộng không mang lại lợi ích.",
+        "who": "mann"
+      },
+      {
+        "de": "Pflanzen sind gut für die Umwelt.",
+        "vi": "Cây cối có lợi cho môi trường.",
+        "who": "frau"
+      },
+      {
+        "de": "Grünflächen sind wichtig für das Stadtbild.",
+        "vi": "Không gian xanh quan trọng đối với diện mạo thành phố.",
+        "who": "moderator"
+      },
+      {
+        "de": "Es ist unsere Pflicht, die Umwelt zu schützen.",
+        "vi": "Bảo vệ môi trường là nghĩa vụ của chúng ta.",
+        "who": "frau"
+      }
+    ]
+  },
+  {
+    "title": "Kindergarten / Kindererziehung — Mẫu giáo / Giáo dục trẻ em",
+    "audioText": "Moderator: Guten Abend und willkommen zu \"Streitpunkt\". Unser Thema heute: Kindergarten und Kindererziehung — wer soll sich eigentlich um unsere Kleinsten kümmern? Dazu begrüße ich Frau Schuster, die seit Jahren als Erzieherin arbeitet, und Herrn Fischer, Vater und Elternvertreter. Schön, dass Sie da sind.\nFrau Schuster: Guten Abend.\nHerr Fischer: Hallo, guten Abend.\nModerator: Frau Schuster, hat sich die Berufswelt für junge Frauen verändert?\nFrau Schuster: Ja, deutlich. Mädchen bekommen heute schon früher Jobangebote als noch vor einigen Jahren. Und auch etwas anderes hat sich gewandelt: Man dachte lange, Erziehung sei reine Frauensache, doch inzwischen ist die Arbeit von Männern im Erziehungsberuf durchaus beliebt und wird gut akzeptiert.\nModerator: Und wie stehen Sie zur Rolle der Eltern?\nFrau Schuster: Die ist zentral. Wir brauchen unbedingt das Eingreifen der Eltern, wenn die Kinder spielen — sie müssen die Kleinen unterstützen und schützen, statt sie sich selbst zu überlassen.\nModerator: Da sehe ich das ehrlich gesagt anders, und ich formuliere es bewusst zugespitzt. Meiner Meinung nach gehören die Kinder tagsüber unter die Aufsicht der Schule beziehungsweise der Einrichtung. Man muss sie zeitweise sogar ein Stück weit von der Familie fernhalten, schon deshalb, weil die Eltern ohnehin sehr viel Zeit außer Haus verbringen.\nHerr Fischer: Beim Spielen sehe ich das gelassener als Frau Schuster. Man muss nicht bei jedem Schritt eingreifen — es ist völlig normal, dass sich ein Kind beim Spielen auch einmal verletzt, das gehört zum Großwerden dazu.\nModerator: Ein letztes Stichwort: der Beruf selbst.\nHerr Fischer: Da wird es ernst. Die Kindererziehung ist einfach zu schlecht bezahlt — die Gehälter in diesem Beruf müssen dringend steigen, sonst fehlt uns bald das Personal.\nFrau Schuster: Dem stimme ich ausnahmsweise voll zu.\nModerator: Fassen wir zusammen: Frau Schuster beobachtet frühere Jobangebote für Mädchen, eine wachsende Akzeptanz von Männern im Beruf und fordert das aktive Eingreifen der Eltern. Herr Fischer bleibt beim Spielen gelassen und pocht auf höhere Gehälter. Ich selbst habe die Aufsicht durch die Einrichtung ins Spiel gebracht — auch auf die Gefahr hin, die Kinder zeitweise von der Familie zu trennen, weil die Eltern viel unterwegs sind. Vielen Dank Ihnen beiden.\nFrau Schuster: Danke.\nHerr Fischer: Danke schön.",
+    "items": [
+      {
+        "de": "Mädchen bekommen schon früher Jobangebote.",
+        "vi": "Các bé gái nhận được lời mời làm việc sớm hơn.",
+        "who": "frau"
+      },
+      {
+        "de": "Die Arbeit des Mannes im Beruf der Kindererziehung ist beliebt / akzeptiert.",
+        "vi": "Việc đàn ông làm nghề nuôi dạy trẻ được ưa chuộng / chấp nhận.",
+        "who": "frau"
+      },
+      {
+        "de": "Wir brauchen das Eingreifen der Eltern beim Spielen der Kinder. (Unterstützung / Schutz)",
+        "vi": "Cần sự tham gia của cha mẹ khi trẻ chơi (hỗ trợ / bảo vệ).",
+        "who": "frau"
+      },
+      {
+        "de": "Die Kinder sollten unter der Aufsicht der Schule bleiben.",
+        "vi": "Trẻ nên ở dưới sự giám sát của nhà trường.",
+        "who": "moderator"
+      },
+      {
+        "de": "Wir müssen die Kinder von der Familie fernhalten.",
+        "vi": "Chúng ta phải tách trẻ khỏi gia đình.",
+        "who": "moderator"
+      },
+      {
+        "de": "Die Eltern verbringen viel Zeit außerhalb des Hauses.",
+        "vi": "Cha mẹ dành nhiều thời gian ở ngoài nhà.",
+        "who": "moderator"
+      },
+      {
+        "de": "Es ist normal, dass sich das Kind beim Spielen verletzt.",
+        "vi": "Trẻ bị thương khi chơi là chuyện bình thường.",
+        "who": "mann"
+      },
+      {
+        "de": "Der Beruf der Kindererziehung ist schlecht bezahlt, die Gehälter müssen steigen.",
+        "vi": "Nghề nuôi dạy trẻ lương thấp, lương cần được tăng.",
+        "who": "mann"
+      }
+    ]
+  },
+  {
+    "title": "Windkraft / Alternative Energie — Năng lượng gió",
+    "audioText": "Moderator: Herzlich willkommen zu \"Energie & Umwelt\". Windräder prägen immer mehr unsere Landschaft — Segen oder Ärgernis? Darüber spreche ich mit Frau Vogel von einem Umweltverband und mit Herrn Bauer, der eine Bürgerinitiative vertritt. Schön, dass Sie da sind.\nFrau Vogel: Guten Tag.\nHerr Bauer: Guten Tag, hallo.\nModerator: Frau Vogel, wie steht es um den Ausbau der Windkraft?\nFrau Vogel: Sehr gut. Die Zahl der Windanlagen wächst zurzeit sehr schnell, es kommen ständig neue hinzu. Wo man sie am besten aufstellt, ist für mich klar: Am sinnvollsten baut man die Anlagen draußen im Meer, dort weht der Wind gleichmäßig und stört niemanden.\nModerator: Ein Argument höre ich immer wieder — und ich teile es: Der große Vorteil ist doch, dass der Wind selbst nichts kostet, es ist eine kostenfreie Energiequelle.\nHerr Bauer: Kostenlos vielleicht, aber nicht ohne Nachteile. Man lobt die schöne saubere Energie, doch die Kehrseite blendet man gern aus: Die Windräder verschandeln das Landschaftsbild, sie verändern das Aussehen der Natur ganz klar zum Negativen. Trotzdem müssen wir nach alternativen Energiequellen suchen.\nModerator: Klingt, als wären Sie grundsätzlich dagegen.\nHerr Bauer: Nicht grundsätzlich. Ich bin überzeugt, dass neue Erfindungen und bessere Technik diese Probleme mit der Zeit lösen werden. Bis dahin gilt aber: Man muss die Menschen, die in der Nähe wohnen, unbedingt vor dem Lärm der Anlagen schützen.\nFrau Vogel: Genau deshalb ja raus aufs Meer.\nModerator: Eines steht über allem: Wir alle verbrauchen heute weit mehr Strom als noch vor einigen Jahren. Umso mehr gilt am Ende für jeden von uns — jeder Einzelne sollte Strom sparen, wo er nur kann.\nModerator: Fassen wir zusammen: Frau Vogel freut sich über den schnellen Ausbau und plädiert für Anlagen im Meer. Herr Bauer stört sich am veränderten Landschaftsbild, setzt auf alternative Energie und künftige Erfindungen und fordert Lärmschutz für die Anwohner. Vielen Dank für dieses Gespräch.\nFrau Vogel: Danke.\nHerr Bauer: Danke schön.",
+    "items": [
+      {
+        "de": "Die Zahl an Windanlagen wächst sehr schnell.",
+        "vi": "Số lượng nhà máy điện gió tăng rất nhanh.",
+        "who": "frau"
+      },
+      {
+        "de": "Man sollte Windanlagen im Meer bauen.",
+        "vi": "Nên xây nhà máy điện gió ngoài biển.",
+        "who": "frau"
+      },
+      {
+        "de": "Wind ist kostenfreie Energie.",
+        "vi": "Gió là nguồn năng lượng miễn phí.",
+        "who": "moderator"
+      },
+      {
+        "de": "Windräder verändern das Aussehen der Landschaft negativ.",
+        "vi": "Tua-bin gió làm cảnh quan xấu đi.",
+        "who": "mann"
+      },
+      {
+        "de": "Neue Erfindungen werden das Problem lösen.",
+        "vi": "Các phát minh mới sẽ giải quyết vấn đề.",
+        "who": "mann"
+      },
+      {
+        "de": "Man muss die Bevölkerung vor Lärm schützen.",
+        "vi": "Phải bảo vệ người dân khỏi tiếng ồn.",
+        "who": "mann"
+      },
+      {
+        "de": "Man muss nach alternativen Energiequellen suchen.",
+        "vi": "Phải tìm kiếm các nguồn năng lượng thay thế.",
+        "who": "mann"
+      },
+      {
+        "de": "Die Leute konsumieren mehr Strom als früher.",
+        "vi": "Người ta tiêu thụ nhiều điện hơn trước.",
+        "pending": true
+      },
+      {
+        "de": "Jeder sollte Strom sparen.",
+        "vi": "Mọi người nên tiết kiệm điện.",
+        "pending": true
+      }
+    ]
+  }
+]

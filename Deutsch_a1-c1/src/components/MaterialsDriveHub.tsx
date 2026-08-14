@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { 
-  FolderDown, 
-  FileText, 
-  ExternalLink, 
-  Download, 
-  Search, 
-  Folder, 
+import {
+  FolderDown,
+  FileText,
+  ExternalLink,
+  Download,
+  Search,
+  Folder,
   CheckCircle2,
   HardDrive
 } from 'lucide-react';
@@ -53,40 +53,34 @@ export const MaterialsDriveHub: React.FC = () => {
   });
 
   return (
-    <div className="space-y-6 pb-16">
-      {/* Header Banner */}
-      <div className="rounded-3xl bg-slate-900 border border-slate-800 p-6 sm:p-8 text-white shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+    <div className="space-y-4 pb-16">
+      {/* Compact Header */}
+      <div className="rounded-2xl bg-white border border-ios-line p-3 sm:p-4 shadow-xs flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 text-xs font-bold uppercase mb-2">
-            <FolderDown className="w-3.5 h-3.5" />
-            Kho Tài Liệu Giáo Trình Miễn Phí (Free Materials)
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold font-display text-white">
-            24 Sách PDF Đã Tải Về Máy & 66 Folder Google Drive
+          <h2 className="text-base sm:text-lg font-extrabold font-display text-ios-ink flex items-center gap-2">
+            <FolderDown className="w-4 h-4 text-ios-accent" />
+            <span>24 Sách PDF & 66 Thư Mục Google Drive A1 - C1</span>
           </h2>
-          <p className="text-slate-400 text-xs sm:text-sm mt-1 max-w-2xl">
-            Giáo trình gốc (Schritte Plus, Aspekte Neu, Studio d), tuyển tập đề thi thật kèm Audio, bảng từ vựng và bài tập ngữ pháp từ A1 đến C1.
-          </p>
         </div>
 
-        <div className="flex items-center gap-2 bg-slate-800/80 px-4 py-2 rounded-2xl border border-slate-700 shrink-0">
-          <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-          <span className="text-xs font-bold text-slate-300">24/24 PDF Đã Tải Offline</span>
+        <div className="flex items-center gap-2 bg-ios-ok-soft px-3 py-1.5 rounded-lg border border-ios-ok/20 shrink-0">
+          <CheckCircle2 className="w-3.5 h-3.5 text-ios-ok" />
+          <span className="text-xs font-bold text-ios-ok">24 PDF Offline</span>
         </div>
       </div>
 
       {/* Offline Storage Notice Box */}
-      <div className="p-5 rounded-3xl bg-emerald-500/10 border border-emerald-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-white">
+      <div className="p-5 rounded-2xl bg-ios-ok-soft border border-ios-ok/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+          <div className="w-10 h-10 rounded-xl bg-white text-ios-ok border border-ios-ok/20 flex items-center justify-center shrink-0">
             <HardDrive className="w-5 h-5" />
           </div>
           <div>
-            <h4 className="text-sm font-bold text-emerald-300">
+            <h4 className="text-sm font-bold text-ios-ok">
               Đã tải trọn bộ 24 File PDF Giáo Trình gốc về ổ cứng của bạn
             </h4>
-            <p className="text-xs text-slate-300 font-mono mt-0.5">
-              📁 Vị trí lưu trên máy: <strong>KHO_FILE_PDF_GIAO_TRINH_A1_B2/</strong> (hơn 400 MB)
+            <p className="text-xs text-ios-secondary font-mono mt-0.5">
+              Vị trí lưu trên máy: <strong>KHO_FILE_PDF_GIAO_TRINH_A1_B2/</strong> (hơn 400 MB)
             </p>
           </div>
         </div>
@@ -95,13 +89,13 @@ export const MaterialsDriveHub: React.FC = () => {
       {/* Search & Level Filters */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
         <div className="relative flex-1">
-          <Search className="w-4 h-4 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-ios-muted absolute left-4 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Tìm sách giáo trình hoặc thư mục ôn thi (Schritte, B1, Audio, Grammatik)..."
-            className="w-full pl-11 pr-4 py-3 rounded-2xl bg-slate-900 border border-slate-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-amber-500 shadow-sm placeholder:text-slate-500"
+            className="w-full pl-11 pr-4 py-3 rounded-xl bg-white border border-ios-line text-sm text-ios-ink focus:outline-none focus:ring-2 focus:ring-ios-accent/30 shadow-sm placeholder:text-ios-muted"
           />
         </div>
 
@@ -110,10 +104,10 @@ export const MaterialsDriveHub: React.FC = () => {
             <button
               key={lvl}
               onClick={() => setFilterLevel(lvl)}
-              className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer ${
+              className={`px-4 py-2.5 rounded-lg text-xs font-bold transition-all shrink-0 cursor-pointer ${
                 filterLevel === lvl
-                  ? 'bg-amber-500 text-slate-950 shadow-sm'
-                  : 'bg-slate-900 text-slate-400 border border-slate-800 hover:bg-slate-800 hover:text-white'
+                  ? 'bg-ios-accent text-white shadow-sm'
+                  : 'bg-white text-ios-secondary border border-ios-line hover:bg-ios-bg'
               }`}
             >
               {lvl}
@@ -125,11 +119,11 @@ export const MaterialsDriveHub: React.FC = () => {
       {/* Direct Download PDF Books Section */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <h3 className="text-base font-bold text-white flex items-center gap-2">
-            <FileText className="w-4 h-4 text-rose-500" />
+          <h3 className="text-base font-bold text-ios-ink flex items-center gap-2">
+            <FileText className="w-4 h-4 text-ios-bad" />
             <span>24 Sách & Giáo Trình PDF (Tải Trực Tiếp & Đọc Offline)</span>
           </h3>
-          <span className="text-xs text-slate-400 font-semibold">
+          <span className="text-xs text-ios-muted font-semibold">
             {filteredPdfs.length} tài liệu
           </span>
         </div>
@@ -138,20 +132,20 @@ export const MaterialsDriveHub: React.FC = () => {
           {filteredPdfs.map((pdf, idx) => (
             <div
               key={idx}
-              className="rounded-2xl bg-slate-900 border border-slate-800 p-5 shadow-sm hover:border-amber-500/50 hover:shadow-md transition-all flex flex-col justify-between space-y-4 group"
+              className="rounded-2xl bg-white border border-ios-line p-5 shadow-sm hover:border-ios-accent/50 hover:shadow-md transition-all flex flex-col justify-between space-y-4 group"
             >
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-500/10 text-rose-400 border border-rose-500/20">
+                  <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-ios-bad-soft text-ios-bad border border-ios-bad/20">
                     PDF EBOOK
                   </span>
-                  <span className="text-[11px] font-medium text-emerald-400 flex items-center gap-1">
+                  <span className="text-[11px] font-medium text-ios-ok flex items-center gap-1">
                     <CheckCircle2 className="w-3 h-3" />
                     Đã có offline
                   </span>
                 </div>
 
-                <h4 className="text-sm font-bold text-white line-clamp-2 group-hover:text-amber-400 transition-colors">
+                <h4 className="text-sm font-bold text-ios-ink line-clamp-2 group-hover:text-ios-accent transition-colors">
                   {pdf.name}
                 </h4>
               </div>
@@ -160,7 +154,7 @@ export const MaterialsDriveHub: React.FC = () => {
                 href={pdf.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-amber-500 text-slate-200 hover:text-slate-950 font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer border border-slate-700 hover:border-amber-500"
+                className="w-full py-2.5 px-4 rounded-lg bg-ios-bg hover:bg-ios-accent text-ios-secondary hover:text-white font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer border border-ios-line hover:border-ios-accent"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>Mở / Tải Lại Link Gốc</span>
@@ -173,11 +167,11 @@ export const MaterialsDriveHub: React.FC = () => {
       {/* Google Drive Folders Section */}
       <div className="space-y-4 pt-6">
         <div className="flex items-center justify-between">
-          <h3 className="text-base font-bold text-white flex items-center gap-2">
-            <Folder className="w-4 h-4 text-amber-500" />
+          <h3 className="text-base font-bold text-ios-ink flex items-center gap-2">
+            <Folder className="w-4 h-4 text-ios-accent" />
             <span>66 Thư Mục Google Drive Theo Cấp Độ (Kho Tài Nguyên)</span>
           </h3>
-          <span className="text-xs text-slate-400 font-semibold">
+          <span className="text-xs text-ios-muted font-semibold">
             {filteredDrives.length} thư mục
           </span>
         </div>
@@ -186,19 +180,19 @@ export const MaterialsDriveHub: React.FC = () => {
           {filteredDrives.map((drive, idx) => (
             <div
               key={idx}
-              className="rounded-2xl bg-slate-900 border border-slate-800 p-5 shadow-sm hover:border-indigo-500/50 hover:shadow-md transition-all flex flex-col justify-between space-y-4"
+              className="rounded-2xl bg-white border border-ios-line p-5 shadow-sm hover:border-ios-indigo/50 hover:shadow-md transition-all flex flex-col justify-between space-y-4"
             >
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                  <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-ios-indigo-soft text-ios-indigo border border-ios-indigo/20">
                     {drive.level}
                   </span>
-                  <span className="text-[11px] font-medium text-slate-400">
+                  <span className="text-[11px] font-medium text-ios-muted">
                     Drive Folder
                   </span>
                 </div>
 
-                <h4 className="text-sm font-bold text-white line-clamp-2">
+                <h4 className="text-sm font-bold text-ios-ink line-clamp-2">
                   {drive.title}
                 </h4>
               </div>
@@ -207,7 +201,7 @@ export const MaterialsDriveHub: React.FC = () => {
                 href={drive.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-2.5 px-4 rounded-xl bg-indigo-500/10 hover:bg-indigo-600 text-indigo-300 hover:text-white font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer border border-indigo-500/20 hover:border-indigo-600"
+                className="w-full py-2.5 px-4 rounded-lg bg-ios-indigo-soft hover:bg-ios-indigo text-ios-indigo hover:text-white font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer border border-ios-indigo/20 hover:border-ios-indigo"
               >
                 <ExternalLink className="w-3.5 h-3.5" />
                 <span>Mở Google Drive</span>

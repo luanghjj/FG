@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Sparkles, 
-  Key, 
-  CheckCircle2, 
-  X, 
-  ExternalLink, 
-  Bot, 
+import {
+  Sparkles,
+  Key,
+  CheckCircle2,
+  X,
+  ExternalLink,
+  Bot,
   RefreshCw,
   Cpu
 } from 'lucide-react';
-import { 
-  getStoredGeminiKey, 
-  setStoredGeminiKey, 
-  getStoredModel, 
-  setStoredModel, 
-  testGeminiConnection 
+import {
+  getStoredGeminiKey,
+  setStoredGeminiKey,
+  getStoredModel,
+  setStoredModel,
+  testGeminiConnection
 } from '../services/geminiService';
 
 interface GeminiApiKeyModalProps {
@@ -66,49 +66,49 @@ export const GeminiApiKeyModal: React.FC<GeminiApiKeyModalProps> = ({ isOpen, on
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fadeIn">
-      <div className="bg-slate-900 border border-slate-700 rounded-3xl max-w-lg w-full p-6 sm:p-8 text-white shadow-2xl space-y-6 relative">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-fadeIn">
+      <div className="bg-white border border-ios-line rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-xl space-y-6 relative">
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-all cursor-pointer"
+          className="absolute top-5 right-5 p-2 rounded-lg text-ios-muted hover:text-ios-ink hover:bg-ios-bg transition-all cursor-pointer"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Header */}
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 to-rose-500 flex items-center justify-center shadow-lg shadow-amber-500/20 shrink-0">
-            <Bot className="w-6 h-6 text-slate-950" />
+          <div className="w-12 h-12 rounded-xl bg-ios-accent flex items-center justify-center shadow-sm shrink-0">
+            <Bot className="w-6 h-6 text-white" />
           </div>
           <div>
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 text-[10px] font-bold uppercase mb-0.5">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-ios-accent-soft text-ios-accent border border-ios-accent/30 text-[10px] font-bold uppercase mb-0.5">
               <Sparkles className="w-3 h-3" />
               Google Skills Integration
             </div>
-            <h3 className="text-xl font-extrabold font-display text-white">
+            <h3 className="text-xl font-extrabold font-display text-ios-ink">
               Cấu Hình Google Gemini AI
             </h3>
           </div>
         </div>
 
-        <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+        <p className="text-xs sm:text-sm text-ios-secondary leading-relaxed">
           Tích hợp trí tuệ nhân tạo từ <strong>Google Agent Skills</strong> để tự động chấm bài viết Schreiben chuẩn TELC/Goethe, luyện nói Speaking tương tác và giải thích ngữ pháp A1-C1 chuyên sâu.
         </p>
 
         {/* Input Form */}
         <div className="space-y-4">
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5 flex items-center justify-between">
+            <label className="block text-xs font-bold uppercase tracking-wider text-ios-muted mb-1.5 flex items-center justify-between">
               <span className="flex items-center gap-1.5">
-                <Key className="w-3.5 h-3.5 text-amber-400" />
+                <Key className="w-3.5 h-3.5 text-ios-accent" />
                 Gemini API Key
               </span>
               <a
                 href="https://aistudio.google.com/app/apikey"
                 target="_blank"
                 rel="noreferrer"
-                className="text-[11px] text-amber-400 hover:underline flex items-center gap-1 font-semibold"
+                className="text-[11px] text-ios-accent hover:underline flex items-center gap-1 font-semibold"
               >
                 Lấy Key Miễn Phí <ExternalLink className="w-3 h-3" />
               </a>
@@ -118,22 +118,22 @@ export const GeminiApiKeyModal: React.FC<GeminiApiKeyModalProps> = ({ isOpen, on
               value={apiKey}
               onChange={(e) => setApiKey(e.target.value)}
               placeholder="AIzaSy..."
-              className="w-full px-4 py-3 rounded-2xl bg-slate-950 border border-slate-800 focus:border-amber-500 focus:outline-none text-sm text-slate-100 placeholder:text-slate-600 font-mono"
+              className="w-full px-4 py-3 rounded-xl bg-ios-bg border border-ios-line focus:border-ios-accent focus:outline-none text-sm text-ios-ink placeholder:text-ios-muted font-mono"
             />
-            <p className="text-[11px] text-slate-500 mt-1">
+            <p className="text-[11px] text-ios-muted mt-1">
               * API Key được lưu bảo mật cục bộ trên trình duyệt (LocalStorage) của bạn.
             </p>
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5 flex items-center gap-1.5">
-              <Cpu className="w-3.5 h-3.5 text-indigo-400" />
+            <label className="block text-xs font-bold uppercase tracking-wider text-ios-muted mb-1.5 flex items-center gap-1.5">
+              <Cpu className="w-3.5 h-3.5 text-ios-indigo" />
               Chọn Model Gemini
             </label>
             <select
               value={model}
               onChange={(e) => setModel(e.target.value)}
-              className="w-full px-4 py-3 rounded-2xl bg-slate-950 border border-slate-800 focus:border-amber-500 focus:outline-none text-sm text-slate-100 font-sans cursor-pointer"
+              className="w-full px-4 py-3 rounded-xl bg-ios-bg border border-ios-line focus:border-ios-accent focus:outline-none text-sm text-ios-ink font-sans cursor-pointer"
             >
               <option value="gemini-2.5-flash">Gemini 2.5 Flash (Nhanh & Tối Ưu Nhất - Khuyên Dùng)</option>
               <option value="gemini-1.5-flash">Gemini 1.5 Flash (Siêu Tốc)</option>
@@ -144,10 +144,10 @@ export const GeminiApiKeyModal: React.FC<GeminiApiKeyModalProps> = ({ isOpen, on
           {/* Test connection alert */}
           {testResult && (
             <div
-              className={`p-3.5 rounded-2xl border text-xs font-medium flex items-start gap-2.5 ${
+              className={`p-3.5 rounded-xl border text-xs font-medium flex items-start gap-2.5 ${
                 testResult.success
-                  ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
-                  : 'bg-rose-500/10 border-rose-500/30 text-rose-400'
+                  ? 'bg-ios-ok-soft border-ios-ok/30 text-ios-ok'
+                  : 'bg-ios-bad-soft border-ios-bad/30 text-ios-bad'
               }`}
             >
               {testResult.success ? (
@@ -169,7 +169,7 @@ export const GeminiApiKeyModal: React.FC<GeminiApiKeyModalProps> = ({ isOpen, on
             type="button"
             onClick={handleTest}
             disabled={isTesting}
-            className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+            className="px-4 py-2.5 rounded-lg bg-ios-bg hover:bg-ios-accent-soft text-ios-ink text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-50 border border-ios-line"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${isTesting ? 'animate-spin' : ''}`} />
             <span>{isTesting ? 'Đang thử...' : 'Kiểm Tra Key'}</span>
@@ -179,18 +179,18 @@ export const GeminiApiKeyModal: React.FC<GeminiApiKeyModalProps> = ({ isOpen, on
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2.5 rounded-xl text-slate-400 hover:text-white text-xs font-bold transition-all cursor-pointer"
+              className="px-4 py-2.5 rounded-lg text-ios-muted hover:text-ios-ink text-xs font-bold transition-all cursor-pointer"
             >
               Đóng
             </button>
             <button
               type="button"
               onClick={handleSave}
-              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-xs font-extrabold shadow-lg shadow-amber-500/25 transition-all flex items-center gap-1.5 cursor-pointer"
+              className="px-5 py-2.5 rounded-lg bg-ios-accent hover:bg-[#0A6FE0] text-white text-xs font-extrabold shadow-sm transition-all flex items-center gap-1.5 cursor-pointer"
             >
               {isSaved ? (
                 <>
-                  <CheckCircle2 className="w-4 h-4 text-slate-950" />
+                  <CheckCircle2 className="w-4 h-4" />
                   <span>Đã Lưu!</span>
                 </>
               ) : (

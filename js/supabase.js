@@ -1697,6 +1697,278 @@ function clean(s) {
     };
   }
 
+  // ===== DEUTSCH TRACKING & DISCIPLINE (A1–B1) =====
+  const DEUTSCH_VOCAB_PREFIX = 'learn:deutsch:vocab:';
+  const DEUTSCH_GRAMMAR_PREFIX = 'learn:deutsch:grammar:';
+  const DEUTSCH_SETTINGS_KEY = 'learn:deutsch:discipline_settings';
+
+  async function getDisciplineSettings() {
+    try {
+      const cfg = await getConfig(DEUTSCH_SETTINGS_KEY);
+      if (cfg && cfg.value) {
+        return typeof cfg.value === 'string' ? JSON.parse(cfg.value) : cfg.value;
+      }
+    } catch (_) {}
+    return {
+      minRepeats: 3,
+      passThresholdPct: 80,
+      dailyVocabGoal: 20,
+      dailyGrammarGoal: 5,
+      strictLevelGate: true
+    };
+  }
+
+  async function saveDisciplineSettings(settings) {
+    return upsertConfig(DEUTSCH_SETTINGS_KEY, settings);
+  }
+
+  async function saveVocabDrillProgress(player, item) {
+    const pl = clean(player || getPlayer() || 'gast');
+    const wordId = item.wordId || item.id || ('w_' + Date.now());
+    const now = new Date().toISOString();
+    
+    // Save to local storage cache first
+    let localData = {};
+    try {
+      localData = JSON.parse(localStorage.getItem('learn_vocab_drill_' + pl) || '{}');
+    } catch (_) {}
+    
+    localData[wordId] = Object.assign({}, localData[wordId] || {}, {
+      wordId,
+      german: item.german || '',
+      article: item.article || '',
+      vietnamese: item.vietnamese || '',
+      level: item.level || 'B1',
+      specialty: item.specialty || 'all',
+      repeats: (item.repeats || 1),
+      mistakes: (item.mistakes || 0),
+      passedAt: now
+    });
+    
+    try {
+      localStorage.setItem('learn_vocab_drill_' + pl, JSON.stringify(localData));
+    } catch (_) {}
+
+    // Async sync to Supabase
+    try {
+      const key = DEUTSCH_VOCAB_PREFIX + pl;
+      const remote = await getConfig(key);
+      let remoteData = (remote && remote.value) ? (typeof remote.value === 'string' ? JSON.parse(remote.value) : remote.value) : {};
+      remoteData[wordId] = localData[wordId];
+      await upsertConfig(key, remoteData);
+    } catch (e) {
+      console.warn('saveVocabDrillProgress offline/fail:', e);
+    }
+    return localData[wordId];
+  }
+
+  async function getVocabDrillData(player) {
+    const pl = clean(player || getPlayer() || 'gast');
+    let data = {};
+    try {
+      data = JSON.parse(localStorage.getItem('learn_vocab_drill_' + pl) || '{}');
+    } catch (_) {}
+    try {
+      const key = DEUTSCH_VOCAB_PREFIX + pl;
+      const remote = await getConfig(key);
+      if (remote && remote.value) {
+        const parsed = typeof remote.value === 'string' ? JSON.parse(remote.value) : remote.value;
+        data = Object.assign({}, parsed, data);
+      }
+    } catch (_) {}
+    return data;
+  }
+
+  async function saveGrammarMastery(player, item) {
+    const pl = clean(player || getPlayer() || 'gast');
+    const topicId = item.topicId || item.id || ('g_' + Date.now());
+    const now = new Date().toISOString();
+
+    let localData = {};
+    try {
+      localData = JSON.parse(localStorage.getItem('learn_grammar_mastery_' + pl) || '{}');
+    } catch (_) {}
+
+    localData[topicId] = Object.assign({}, localData[topicId] || {}, {
+      topicId,
+      title: item.title || '',
+      score: item.score || 0,
+      total: item.total || 0,
+      retryCount: item.retryCount || 0,
+      mistakes: item.mistakes || 0,
+      is100Pct: (item.score === item.total && item.total > 0),
+      passedAt: now
+    });
+
+    try {
+      localStorage.setItem('learn_grammar_mastery_' + pl, JSON.stringify(localData));
+    } catch (_) {}
+
+    try {
+      const key = DEUTSCH_GRAMMAR_PREFIX + pl;
+      const remote = await getConfig(key);
+      let remoteData = (remote && remote.value) ? (typeof remote.value === 'string' ? JSON.parse(remote.value) : remote.value) : {};
+      remoteData[topicId] = localData[topicId];
+      await upsertConfig(key, remoteData);
+    } catch (e) {
+      console.warn('saveGrammarMastery offline/fail:', e);
+    }
+    return localData[topicId];
+  }
+
+  async function getGrammarMasteryData(player) {
+    const pl = clean(player || getPlayer() || 'gast');
+    let data = {};
+    try {
+      data = JSON.parse(localStorage.getItem('learn_grammar_mastery_' + pl) || '{}');
+    } catch (_) {}
+    try {
+      const key = DEUTSCH_GRAMMAR_PREFIX + pl;
+      const remote = await getConfig(key);
+      if (remote && remote.value) {
+        const parsed = typeof remote.value === 'string' ? JSON.parse(remote.value) : remote.value;
+        data = Object.assign({}, parsed, data);
+      }
+    } catch (_) {}
+    return data;
+  }
+
+  async function getDeutschAdminStats() {
+    const [vocabConfigs, grammarConfigs, settings, adminStats] = await Promise.all([
+      listConfig(DEUTSCH_VOCAB_PREFIX + '%', 100).catch(() => []),
+      listConfig(DEUTSCH_GRAMMAR_PREFIX + '%', 100).catch(() => []),
+      getDisciplineSettings().catch(() => ({ minRepeats: 3, passThresholdPct: 80, dailyVocabGoal: 20 })),
+      getAdminStats().catch(() => ({ players: [], quizzes: [], visits: [] }))
+    ]);
+
+    const playersMap = {};
+
+    // Map base players
+    (adminStats.players || []).forEach(p => {
+      const nick = (p.player || '').toLowerCase();
+      if (!nick) return;
+      playersMap[nick] = {
+        player: p.player,
+        visits: p.visits || 0,
+        total_duration_sec: p.total_duration_sec || 0,
+        last_seen: p.last_seen || null,
+        vocabCompleted: 0,
+        vocabToday: 0,
+        grammarMastered: 0,
+        grammarRetries: 0,
+        telcExams: [],
+        redAlerts: []
+      };
+    });
+
+    const berlinToday = (berlinDay ? berlinDay() : new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Berlin' }).format());
+
+    // Parse vocab configs
+    vocabConfigs.forEach(cfg => {
+      const nick = cfg.key.replace(DEUTSCH_VOCAB_PREFIX, '').toLowerCase();
+      if (!playersMap[nick]) {
+        playersMap[nick] = {
+          player: nick,
+          visits: 1,
+          total_duration_sec: 0,
+          last_seen: cfg.updated_at,
+          vocabCompleted: 0,
+          vocabToday: 0,
+          grammarMastered: 0,
+          grammarRetries: 0,
+          telcExams: [],
+          redAlerts: []
+        };
+      }
+      try {
+        const val = typeof cfg.value === 'string' ? JSON.parse(cfg.value) : cfg.value;
+        const words = Object.values(val || {});
+        playersMap[nick].vocabCompleted = words.length;
+        playersMap[nick].vocabToday = words.filter(w => (w.passedAt && w.passedAt.slice(0, 10) === berlinToday)).length;
+      } catch (_) {}
+    });
+
+    // Parse grammar configs
+    const weakGrammarTopics = {};
+    grammarConfigs.forEach(cfg => {
+      const nick = cfg.key.replace(DEUTSCH_GRAMMAR_PREFIX, '').toLowerCase();
+      if (!playersMap[nick]) {
+        playersMap[nick] = {
+          player: nick,
+          visits: 1,
+          total_duration_sec: 0,
+          last_seen: cfg.updated_at,
+          vocabCompleted: 0,
+          vocabToday: 0,
+          grammarMastered: 0,
+          grammarRetries: 0,
+          telcExams: [],
+          redAlerts: []
+        };
+      }
+      try {
+        const val = typeof cfg.value === 'string' ? JSON.parse(cfg.value) : cfg.value;
+        const topics = Object.values(val || {});
+        playersMap[nick].grammarMastered = topics.filter(t => t.is100Pct).length;
+        playersMap[nick].grammarRetries = topics.reduce((acc, t) => acc + (t.retryCount || 0), 0);
+        
+        topics.forEach(t => {
+          if (t.mistakes > 0 || t.retryCount > 0) {
+            const tId = t.topicId || t.title;
+            if (!weakGrammarTopics[tId]) {
+              weakGrammarTopics[tId] = { topicId: tId, title: t.title || tId, totalMistakes: 0, totalRetries: 0, studentCount: 0 };
+            }
+            weakGrammarTopics[tId].totalMistakes += (t.mistakes || 0);
+            weakGrammarTopics[tId].totalRetries += (t.retryCount || 0);
+            weakGrammarTopics[tId].studentCount += 1;
+          }
+        });
+      } catch (_) {}
+    });
+
+    // Parse Deutsch / TELC quiz attempts
+    (adminStats.quizzes || []).forEach(q => {
+      const nick = (q.player || '').toLowerCase();
+      const subj = (q.subject || '').toLowerCase();
+      if (subj.includes('deutsch') || subj.includes('telc') || subj.includes('goethe') || subj.includes('b1') || subj.includes('a1')) {
+        if (playersMap[nick]) {
+          playersMap[nick].telcExams.push(q);
+        }
+      }
+    });
+
+    // Evaluate Red Alerts
+    const redAlerts = [];
+    const now = new Date();
+    Object.values(playersMap).forEach(p => {
+      const reasons = [];
+      if (p.vocabToday < (settings.dailyVocabGoal || 20)) {
+        reasons.push(`Chưa đạt chỉ tiêu gõ ${settings.dailyVocabGoal || 20} từ vựng hôm nay (đã gõ: ${p.vocabToday})`);
+      }
+      if (p.last_seen) {
+        const daysDiff = (now.getTime() - new Date(p.last_seen).getTime()) / (1000 * 3600 * 24);
+        if (daysDiff > 2) {
+          reasons.push(`Không vào học ${Math.floor(daysDiff)} ngày qua`);
+        }
+      } else {
+        reasons.push('Chưa có lịch sử học tập');
+      }
+      if (reasons.length > 0) {
+        p.redAlerts = reasons;
+        redAlerts.push({ player: p.player, reasons, last_seen: p.last_seen, vocabToday: p.vocabToday });
+      }
+    });
+
+    return {
+      settings,
+      players: Object.values(playersMap),
+      totalStudents: Object.keys(playersMap).length,
+      weakGrammarTopics: Object.values(weakGrammarTopics).sort((a, b) => b.totalMistakes - a.totalMistakes),
+      redAlerts,
+      adminStats
+    };
+  }
+
   global.LearnDB = {
     url: SB_URL,
     getConfig,
@@ -1727,6 +1999,14 @@ function clean(s) {
     berlinDay,
     bindVisitLifecycle,
     resumeVisitTracking,
+    // deutsch discipline & tracking
+    getDisciplineSettings,
+    saveDisciplineSettings,
+    saveVocabDrillProgress,
+    getVocabDrillData,
+    saveGrammarMastery,
+    getGrammarMasteryData,
+    getDeutschAdminStats,
     // challenge
     createChallengeRoom,
     joinChallengeRoom,

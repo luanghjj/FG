@@ -1,18 +1,19 @@
 import React, { useState, useMemo } from 'react';
 import { motion } from 'motion/react';
-import { 
-  FileText, 
-  Search, 
-  CheckCircle2, 
-  Sparkles, 
-  BookOpen, 
+import {
+  FileText,
+  Search,
+  CheckCircle2,
+  Sparkles,
+  BookOpen,
   ChevronRight,
   Volume2,
   Table,
   Bot,
   RefreshCw,
   AlertTriangle,
-  Lightbulb
+  Lightbulb,
+  XCircle
 } from 'lucide-react';
 import rawGrammarData from '../data/NGU_PHAP_86_CHUYEN_DE_A1_B2.json';
 import { explainGrammarWithGemini, GrammarExplainResult } from '../services/geminiService';
@@ -151,45 +152,226 @@ const masterGrammarTopics: GrammarTopic[] = [
   }
 ];
 
+interface GrammarDrillQuestion {
+  id: string;
+  q: string;
+  options: string[];
+  correct: number;
+  explanation: string;
+}
+
+const TOPIC_DRILL_QUESTIONS: Record<string, GrammarDrillQuestion[]> = {
+  passiv: [
+    {
+      id: 'p1',
+      q: 'Chuyển sang thể bị động hiện tại: "Der Arzt untersucht den Patienten."',
+      options: [
+        'Der Patient wird vom Arzt untersucht.',
+        'Der Patient wurde vom Arzt untersucht.',
+        'Der Patient wird durch den Arzt untersuchen.',
+        'Der Patient ist vom Arzt untersucht.'
+      ],
+      correct: 0,
+      explanation: 'Hiện tại Passiv: Subjekt (Der Patient) + wird (chia theo ngôi er) + vom Arzt (người thực hiện) + Partizip II (untersucht).'
+    },
+    {
+      id: 'p2',
+      q: 'Điền vào chỗ trống: "Die E-Mail ___ gestern von mir abgeschickt."',
+      options: ['wird', 'wurde', 'hat', 'ist'],
+      correct: 1,
+      explanation: '"gestern" chỉ thời gian quá khứ -> Dùng Präteritum Passiv: wurde abgeschickt.'
+    },
+    {
+      id: 'p3',
+      q: 'Chủ thể hành động là đồ vật / phương tiện thì dùng giới từ nào?',
+      options: ['von + Dativ', 'durch + Akkusativ', 'mit + Dativ', 'bei + Dativ'],
+      correct: 1,
+      explanation: 'von + Dativ (cho người), durch + Akkusativ (cho phương tiện/nguyên nhân gián tiếp).'
+    }
+  ],
+  konjunktiv2: [
+    {
+      id: 'k1',
+      q: 'Hoàn thành câu ước: "Wenn ich reich ___, würde ich ein Haus kaufen."',
+      options: ['bin', 'war', 'wäre', 'hätte'],
+      correct: 2,
+      explanation: 'Động từ sein ở Konjunktiv II là "wäre" (ich wäre, du wärst, er/sie/es wäre).'
+    },
+    {
+      id: 'k2',
+      q: 'Đưa ra lời khuyên lịch sự: "Du ___ mehr Wasser trinken."',
+      options: ['solltest', 'musst', 'willst', 'sollst'],
+      correct: 0,
+      explanation: '"solltest" là dạng Konjunktiv II của sollen dùng để khuyên nhủ nhẹ nhàng, lịch sự.'
+    },
+    {
+      id: 'k3',
+      q: 'Nhờ vả lịch sự với động từ können: "___ Sie mir bitte das Salz geben?"',
+      options: ['Können', 'Könnten', 'Konnten', 'Könnt'],
+      correct: 1,
+      explanation: 'Konjunktiv II của können là "Könnten Sie..." mang tính lịch sự, trang trọng nhất.'
+    }
+  ],
+  relativsatz: [
+    {
+      id: 'r1',
+      q: 'Chọn đại từ quan hệ thích hợp: "Das ist der Tisch, ___ ich gestern gekauft habe."',
+      options: ['der', 'den', 'dem', 'dessen'],
+      correct: 1,
+      explanation: 'Tisch (der) đóng vai trò tân ngữ Akkusativ cho động từ kaufen -> dùng "den".'
+    },
+    {
+      id: 'r2',
+      q: 'Điền đại từ quan hệ: "Die Frau, ___ ich geholfen habe, ist meine Nachbarin."',
+      options: ['die', 'der', 'den', 'deren'],
+      correct: 1,
+      explanation: 'Động từ "helfen" luôn đi với Dativ -> Giống cái Dativ là "der".'
+    }
+  ],
+  wechselpraepositionen: [
+    {
+      id: 'w1',
+      q: 'Hành động chuyển động đặt quyển sách lên bàn (Wohin?): "Ich lege das Buch auf ___ Tisch."',
+      options: ['der', 'den', 'dem', 'das'],
+      correct: 1,
+      explanation: 'Wohin? (hành động chuyển động legen) -> Akkusativ của der Tisch là "den Tisch".'
+    },
+    {
+      id: 'w2',
+      q: 'Quyển sách đang nằm trên bàn (Wo?): "Das Buch liegt auf ___ Tisch."',
+      options: ['den', 'dem', 'der', 'das'],
+      correct: 1,
+      explanation: 'Wo? (vị trí tĩnh liegen) -> Dativ của der Tisch là "dem Tisch".'
+    }
+  ]
+};
+
 export const GrammarHub: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'topics' | 'irregular_verbs'>('topics');
-  const [searchTerm, setSearchTerm] = useState('');
   const [selectedTopicId, setSelectedTopicId] = useState<string>('passiv');
-
-  // AI Grammar Explanation States
-  const [isExplaining, setIsExplaining] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
   const [aiExplanation, setAiExplanation] = useState<GrammarExplainResult | null>(null);
+  const [isExplaining, setIsExplaining] = useState(false);
 
-  // Parse 86 Irregular Verbs
-  const rawLessons = rawGrammarData.lessons || {};
+  // Mastery State
+  const [masteryState, setMasteryState] = useState<Record<string, { is100Pct: boolean; mistakes: number; retries: number }>>({});
+  const [drillTopicId, setDrillTopicId] = useState<string>('passiv');
+  const [drillQueue, setDrillQueue] = useState<GrammarDrillQuestion[]>(() => TOPIC_DRILL_QUESTIONS['passiv'] || []);
+  const [drillChosenOpt, setDrillChosenOpt] = useState<number | null>(null);
+  const [drillFeedback, setDrillFeedback] = useState<{ isCorrect: boolean; text: string } | null>(null);
+  const [drillRetries, setDrillRetries] = useState(0);
+  const [drillMistakes, setDrillMistakes] = useState(0);
+
+  // Parse raw verbs
   const verbList: VerbLesson[] = useMemo(() => {
-    return Object.entries(rawLessons).map(([verb, data]: [string, any]) => ({
-      verb,
-      duStem: data.duStem || verb,
-      praetStem: data.praetStem || '',
-      partizip: data.partizip || '',
-      aux: data.aux || 'haben',
-      konjStem: data.konjStem || ''
+    const raw = rawGrammarData as unknown as { lessons?: Record<string, Partial<VerbLesson>> };
+    if (!raw.lessons) return [];
+    return Object.entries(raw.lessons).map(([v, val]) => ({
+      verb: v,
+      duStem: val.duStem || v,
+      praetStem: val.praetStem || '',
+      partizip: val.partizip || '',
+      aux: val.aux || 'haben',
+      konjStem: val.konjStem || ''
     }));
-  }, [rawLessons]);
+  }, []);
 
   const filteredTopics = useMemo(() => {
-    return masterGrammarTopics.filter(t => 
-      t.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+    return masterGrammarTopics.filter(t =>
+      t.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       t.level.toLowerCase().includes(searchTerm.toLowerCase()) ||
       t.category.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }, [searchTerm]);
 
   const filteredVerbs = useMemo(() => {
-    return verbList.filter(v => 
-      v.verb.toLowerCase().includes(searchTerm.toLowerCase()) || 
+    return verbList.filter(v =>
+      v.verb.toLowerCase().includes(searchTerm.toLowerCase()) ||
       v.praetStem.toLowerCase().includes(searchTerm.toLowerCase()) ||
       v.partizip.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }, [verbList, searchTerm]);
 
   const currentTopic = filteredTopics.find(l => l.id === selectedTopicId) || filteredTopics[0] || masterGrammarTopics[0];
+
+  // Initialize drill queue when switching topic
+  const startTopicDrill = (topicId: string) => {
+    const qList = TOPIC_DRILL_QUESTIONS[topicId] || [
+      {
+        id: topicId + '_1',
+        q: `Xác định cấu trúc chính xác của: ${currentTopic.title}`,
+        options: [
+          currentTopic.formula,
+          'Cấu trúc đảo trật tự sai',
+          'Động từ đứng không đúng vị trí',
+          'Thiếu mạo từ và đuôi ngữ pháp'
+        ],
+        correct: 0,
+        explanation: 'Công thức chuẩn: ' + currentTopic.formula
+      }
+    ];
+    setDrillTopicId(topicId);
+    setDrillQueue([...qList]);
+    setDrillChosenOpt(null);
+    setDrillFeedback(null);
+    setDrillRetries(0);
+    setDrillMistakes(0);
+  };
+
+  const handleAnswerDrill = (chosenIdx: number) => {
+    if (drillFeedback !== null) return;
+    const currentQ = drillQueue[0];
+    if (!currentQ) return;
+
+    setDrillChosenOpt(chosenIdx);
+    const isCorrect = chosenIdx === currentQ.correct;
+
+    if (isCorrect) {
+      setDrillFeedback({ isCorrect: true, text: 'Chính xác! ' + currentQ.explanation });
+      setTimeout(() => {
+        const nextQueue = drillQueue.slice(1);
+        setDrillQueue(nextQueue);
+        setDrillChosenOpt(null);
+        setDrillFeedback(null);
+
+        if (nextQueue.length === 0) {
+          // Completed 100%!
+          setMasteryState(prev => ({
+            ...prev,
+            [drillTopicId]: { is100Pct: true, mistakes: drillMistakes, retries: drillRetries }
+          }));
+          try {
+            const playerName = localStorage.getItem('learn_player_name') || 'hocvien';
+            const win = window as unknown as { LearnDB?: { saveGrammarMastery?: (player: string, item: unknown) => void } };
+            if (win.LearnDB && win.LearnDB.saveGrammarMastery) {
+              win.LearnDB.saveGrammarMastery(playerName, {
+                topicId: drillTopicId,
+                title: currentTopic.title,
+                score: 10,
+                total: 10,
+                retryCount: drillRetries,
+                mistakes: drillMistakes
+              });
+            }
+          } catch (_) {}
+        }
+      }, 1200);
+    } else {
+      setDrillRetries(prev => prev + 1);
+      setDrillMistakes(prev => prev + 1);
+      setDrillFeedback({
+        isCorrect: false,
+        text: `Sai rồi! Đáp án đúng: "${currentQ.options[currentQ.correct]}". Câu hỏi này sẽ được xếp vào cuối vòng để bạn làm lại!`
+      });
+      setTimeout(() => {
+        // Append question to the end of the queue
+        const nextQueue = [...drillQueue.slice(1), currentQ];
+        setDrillQueue(nextQueue);
+        setDrillChosenOpt(null);
+        setDrillFeedback(null);
+      }, 2500);
+    }
+  };
 
   const speakGerman = (text: string) => {
     if ('speechSynthesis' in window) {
@@ -217,56 +399,150 @@ export const GrammarHub: React.FC = () => {
     }
   };
 
-  return (
-    <div className="space-y-6 pb-16">
-      {/* Header Banner */}
-      <div className="rounded-3xl bg-slate-900 border border-slate-800 p-6 sm:p-8 text-white shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-        <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-bold uppercase mb-2">
-            <FileText className="w-3.5 h-3.5" />
-            Cẩm Nang Ngữ Pháp Toàn Diện & 86 Động Từ Bất Quy Tắc
+  const renderMasteryDrill = (topic: GrammarTopic) => {
+    if (drillTopicId !== topic.id) {
+      return (
+        <div className="p-6 rounded-2xl bg-ios-bg border border-ios-line text-center space-y-3">
+          <p className="text-xs sm:text-sm text-ios-secondary font-medium">
+            Sẵn sàng kiểm tra và rèn luyện vòng lặp cho chuyên đề <b>{topic.title}</b>?
+          </p>
+          <button
+            type="button"
+            onClick={() => startTopicDrill(topic.id)}
+            className="px-5 py-2.5 rounded-xl bg-ios-accent hover:bg-[#0A6FE0] text-white font-bold text-xs shadow-sm cursor-pointer"
+          >
+            Bắt Đầu Vòng Luyện 100%
+          </button>
+        </div>
+      );
+    }
+
+    if (drillQueue.length === 0) {
+      return (
+        <div className="p-6 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-3 animate-in fade-in">
+          <div className="text-3xl">🎉</div>
+          <h4 className="text-base font-extrabold text-emerald-800">
+            Xuất Sắc! Bạn Đã Làm Chủ 100% Chuyên Đề Này!
+          </h4>
+          <p className="text-xs text-emerald-700">
+            Số lần làm lại: {drillRetries} lượt • Lỗi sai: {drillMistakes} • Đã lưu vào hồ sơ học viên.
+          </p>
+          <button
+            type="button"
+            onClick={() => startTopicDrill(topic.id)}
+            className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm cursor-pointer"
+          >
+            Luyện Lại Từ Đầu
+          </button>
+        </div>
+      );
+    }
+
+    const currentQ = drillQueue[0];
+    const letter = (idx: number) => ['A', 'B', 'C', 'D'][idx] || String(idx + 1);
+
+    return (
+      <div className="p-5 sm:p-6 rounded-2xl bg-ios-bg border-2 border-purple-200 space-y-5">
+        <div className="flex items-center justify-between text-xs font-bold text-purple-800">
+          <span>Câu hỏi còn lại trong vòng lặp: {drillQueue.length} câu</span>
+          <span>Số lượt Retry: {drillRetries}</span>
+        </div>
+
+        <div className="space-y-1">
+          <div className="text-xs uppercase tracking-wider text-ios-muted font-bold">Câu hỏi:</div>
+          <h4 className="text-sm sm:text-base font-bold text-ios-ink">{currentQ.q}</h4>
+        </div>
+
+        <div className="grid grid-cols-1 gap-2.5 pt-1">
+          {currentQ.options.map((opt, oIdx) => {
+            const isSelected = drillChosenOpt === oIdx;
+            return (
+              <button
+                key={oIdx}
+                type="button"
+                onClick={() => handleAnswerDrill(oIdx)}
+                disabled={drillFeedback !== null}
+                className={`p-3.5 rounded-xl border text-left text-xs sm:text-sm font-semibold transition-all cursor-pointer flex items-center gap-3 ${
+                  isSelected
+                    ? drillFeedback?.isCorrect
+                      ? 'bg-emerald-500 text-white border-emerald-600'
+                      : 'bg-rose-500 text-white border-rose-600'
+                    : 'bg-white text-ios-ink border-ios-line hover:border-ios-accent hover:bg-ios-accent-soft'
+                }`}
+              >
+                <span className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-bold shrink-0 ${
+                  isSelected ? 'bg-white/20 text-white' : 'bg-ios-bg text-ios-muted'
+                }`}>
+                  {letter(oIdx)}
+                </span>
+                <span>{opt}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {drillFeedback && (
+          <div className={`p-4 rounded-xl text-xs font-bold ${
+            drillFeedback.isCorrect
+              ? 'bg-emerald-100 text-emerald-900 border border-emerald-300'
+              : 'bg-rose-100 text-rose-900 border border-rose-300'
+          }`}>
+            {drillFeedback.text}
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold font-display text-white">
-            Ngữ Pháp Chuẩn A1 → B2 & Gemini AI Tutor
+        )}
+      </div>
+    );
+  };
+
+  return (
+    <div className="space-y-4 pb-16">
+      {/* Compact Header & Mode Switcher */}
+      <div className="rounded-2xl bg-white border border-ios-line p-3 sm:p-4 shadow-xs flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
+        <div className="hidden md:block">
+          <h2 className="text-lg font-extrabold font-display text-ios-ink flex items-center gap-2">
+            <FileText className="w-4 h-4 text-ios-ok" />
+            <span>Ngữ Pháp Chuẩn A1 → B2 & Gemini AI Tutor</span>
           </h2>
-          <p className="text-slate-400 text-xs sm:text-sm mt-1 max-w-2xl">
-            Tóm tắt công thức, phân tích vị trí động từ, bẫy thi và trợ lý <strong>Gemini AI</strong> giải thích sâu bản chất ngữ pháp.
+          <p className="text-ios-secondary text-xs mt-0.5">
+            Tóm tắt công thức, vị trí động từ và luyện tập vòng lặp 100%.
           </p>
         </div>
 
         {/* View Mode Toggle */}
-        <div className="flex items-center bg-slate-800 p-1.5 rounded-2xl border border-slate-700 shrink-0">
+        <div className="flex items-center bg-ios-bg p-1 rounded-xl border border-ios-line overflow-x-auto scrollbar-none gap-1">
           <button
             onClick={() => {
               setActiveTab('topics');
               setAiExplanation(null);
             }}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-              activeTab === 'topics' ? 'bg-emerald-500 text-slate-950 shadow-sm' : 'text-slate-400 hover:text-white'
+            className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer shrink-0 ${
+              activeTab === 'topics' ? 'bg-white text-ios-accent shadow-xs' : 'text-ios-secondary hover:text-ios-ink'
             }`}
           >
-            📚 Chuyên Đề Ngữ Pháp
+            <BookOpen className="w-3.5 h-3.5" />
+            <span>Chuyên Đề Ngữ Pháp</span>
           </button>
           <button
             onClick={() => setActiveTab('irregular_verbs')}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-              activeTab === 'irregular_verbs' ? 'bg-emerald-500 text-slate-950 shadow-sm' : 'text-slate-400 hover:text-white'
+            className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer shrink-0 ${
+              activeTab === 'irregular_verbs' ? 'bg-white text-ios-accent shadow-xs' : 'text-ios-secondary hover:text-ios-ink'
             }`}
           >
-            📋 86 Động Từ Bất Quy Tắc
+            <Table className="w-3.5 h-3.5" />
+            <span>86 Động Từ Bất Quy Tắc</span>
           </button>
         </div>
       </div>
 
       {/* Search Bar */}
-      <div className="relative max-w-xl">
-        <Search className="w-4 h-4 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2" />
+      <div className="relative">
+        <Search className="w-4 h-4 text-ios-muted absolute left-3.5 top-1/2 -translate-y-1/2" />
         <input
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder={activeTab === 'topics' ? "Tìm chuyên đề (Passiv, Konjunktiv, Relativsatz, Giới từ)..." : "Tìm động từ (nehmen, sprechen, fahren, geben)..."}
-          className="w-full pl-11 pr-4 py-3 rounded-2xl bg-slate-900 border border-slate-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 shadow-sm placeholder:text-slate-500"
+          className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white border border-ios-line text-xs sm:text-sm text-ios-ink focus:outline-none focus:border-ios-accent shadow-xs placeholder:text-ios-muted"
         />
       </div>
 
@@ -284,10 +560,10 @@ export const GrammarHub: React.FC = () => {
                     setSelectedTopicId(les.id);
                     setAiExplanation(null);
                   }}
-                  className={`w-full text-left p-4 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-3 ${
+                  className={`w-full text-left p-4 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-3 ${
                     isSelected
-                      ? 'bg-slate-900 text-white border-emerald-500 shadow-md ring-2 ring-emerald-500/20'
-                      : 'bg-slate-900/60 text-slate-300 border-slate-800 hover:bg-slate-800'
+                      ? 'bg-ios-accent-soft text-ios-ink border-ios-accent shadow-sm'
+                      : 'bg-white text-ios-secondary border-ios-line hover:bg-ios-bg'
                   }`}
                 >
                   <div className="space-y-1">
@@ -295,16 +571,16 @@ export const GrammarHub: React.FC = () => {
                       {les.title}
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-[10px] px-2 py-0.5 rounded-full font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                      <span className={`text-[10px] px-2 py-0.5 rounded-full font-semibold ${isSelected ? 'bg-white text-ios-ok' : 'bg-ios-ok-soft text-ios-ok border border-ios-ok/20'}`}>
                         {les.level}
                       </span>
-                      <span className="text-[11px] text-slate-400 font-medium">
+                      <span className="text-[11px] text-ios-muted font-medium">
                         {les.category}
                       </span>
                     </div>
                   </div>
 
-                  <ChevronRight className={`w-4 h-4 shrink-0 ${isSelected ? 'text-emerald-400' : 'text-slate-500'}`} />
+                  <ChevronRight className={`w-4 h-4 shrink-0 ${isSelected ? 'text-ios-accent' : 'text-ios-muted'}`} />
                 </button>
               );
             })}
@@ -316,15 +592,15 @@ export const GrammarHub: React.FC = () => {
               key={currentTopic.id}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="rounded-3xl bg-slate-900 border border-slate-800 p-6 sm:p-8 shadow-sm space-y-6"
+              className="rounded-2xl bg-white border border-ios-line p-6 sm:p-8 shadow-sm space-y-6"
             >
               {/* Title & Level */}
-              <div className="border-b border-slate-800 pb-4 flex flex-wrap items-center justify-between gap-4">
+              <div className="border-b border-ios-line pb-4 flex flex-wrap items-center justify-between gap-4">
                 <div>
-                  <span className="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-bold uppercase">
+                  <span className="px-2.5 py-1 rounded-md bg-ios-ok-soft text-ios-ok border border-ios-ok/20 text-xs font-bold uppercase">
                     Trình Độ: {currentTopic.level} • {currentTopic.category}
                   </span>
-                  <h3 className="text-xl sm:text-2xl font-extrabold text-white font-display mt-2">
+                  <h3 className="text-xl sm:text-2xl font-extrabold text-ios-ink font-display mt-2">
                     {currentTopic.title}
                   </h3>
                 </div>
@@ -332,7 +608,7 @@ export const GrammarHub: React.FC = () => {
                 <button
                   onClick={handleAskAIExplanation}
                   disabled={isExplaining}
-                  className="px-4 py-2.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-indigo-600 text-slate-950 text-xs font-black shadow-lg shadow-emerald-500/20 hover:opacity-90 transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50"
+                  className="px-4 py-2.5 rounded-lg bg-ios-accent hover:bg-[#0A6FE0] text-white text-xs font-bold shadow-sm transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50"
                 >
                   {isExplaining ? (
                     <>
@@ -349,26 +625,26 @@ export const GrammarHub: React.FC = () => {
               </div>
 
               {/* Formula Box */}
-              <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 space-y-1.5">
-                <div className="text-xs font-bold text-emerald-400 flex items-center gap-1.5 uppercase tracking-wider">
+              <div className="p-4 rounded-xl bg-ios-ok-soft border border-ios-ok/20 space-y-1.5">
+                <div className="text-xs font-bold text-ios-ok flex items-center gap-1.5 uppercase tracking-wider">
                   <Sparkles className="w-4 h-4" />
                   <span>Công Thức & Cấu Trúc Ngữ Pháp:</span>
                 </div>
-                <div className="text-xs sm:text-sm font-bold text-white font-mono bg-slate-950 p-3 rounded-xl border border-slate-800 leading-relaxed">
+                <div className="text-xs sm:text-sm font-bold text-ios-ink font-mono bg-white p-3 rounded-lg border border-ios-line leading-relaxed">
                   {currentTopic.formula}
                 </div>
               </div>
 
               {/* Rules */}
               <div className="space-y-3">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                <h4 className="text-xs font-bold uppercase tracking-wider text-ios-muted flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-ios-ok" />
                   <span>Quy Tắc Và Cách Sử Dụng Cốt Lõi:</span>
                 </h4>
                 <div className="space-y-2">
                   {currentTopic.rules.map((r, rIdx) => (
-                    <div key={rIdx} className="p-3 rounded-xl bg-slate-950 border border-slate-800/80 text-xs sm:text-sm text-slate-300 flex items-start gap-2.5">
-                      <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 mt-2" />
+                    <div key={rIdx} className="p-3 rounded-lg bg-ios-bg border border-ios-line text-xs sm:text-sm text-ios-secondary flex items-start gap-2.5">
+                      <div className="w-1.5 h-1.5 rounded-full bg-ios-ok shrink-0 mt-2" />
                       <span>{r}</span>
                     </div>
                   ))}
@@ -377,25 +653,25 @@ export const GrammarHub: React.FC = () => {
 
               {/* Examples */}
               <div className="space-y-3">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                  <BookOpen className="w-4 h-4 text-indigo-400" />
+                <h4 className="text-xs font-bold uppercase tracking-wider text-ios-muted flex items-center gap-1.5">
+                  <BookOpen className="w-4 h-4 text-ios-indigo" />
                   <span>Ví Dụ Minh Họa Song Ngữ Đức - Việt:</span>
                 </h4>
                 <div className="space-y-2.5">
                   {currentTopic.examples.map((ex, eIdx) => (
-                    <div key={eIdx} className="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 flex items-start justify-between gap-3">
+                    <div key={eIdx} className="p-3.5 rounded-xl bg-ios-bg border border-ios-line flex items-start justify-between gap-3">
                       <div className="space-y-1">
-                        <div className="text-sm font-bold text-white font-sans">
+                        <div className="text-sm font-bold text-ios-ink font-sans">
                           {ex.de}
                         </div>
-                        <div className="text-xs text-slate-400 font-medium">
-                          👉 {ex.vi}
+                        <div className="text-xs text-ios-muted font-medium">
+                          {ex.vi}
                         </div>
                       </div>
 
                       <button
                         onClick={() => speakGerman(ex.de)}
-                        className="p-2 rounded-lg bg-slate-800 hover:bg-emerald-500 hover:text-slate-950 text-slate-300 transition-colors shrink-0 cursor-pointer"
+                        className="p-2 rounded-lg bg-white hover:bg-ios-accent-soft hover:text-ios-accent text-ios-secondary transition-colors shrink-0 cursor-pointer border border-ios-line"
                         title="Nghe phát âm ví dụ"
                       >
                         <Volume2 className="w-4 h-4" />
@@ -405,32 +681,60 @@ export const GrammarHub: React.FC = () => {
                 </div>
               </div>
 
+              {/* ==================== MASTERY LOOP 100% PRACTICE SECTION ==================== */}
+              <div className="mt-8 pt-6 border-t border-ios-line space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="p-2 rounded-xl bg-purple-50 text-purple-700 border border-purple-200">
+                      <RefreshCw className="w-4 h-4" />
+                    </span>
+                    <div>
+                      <h4 className="text-sm sm:text-base font-extrabold text-ios-ink font-display">
+                        Luyện Tập Vòng Lặp 100% (Mastery Loop)
+                      </h4>
+                      <p className="text-xs text-ios-secondary">
+                        Quy tắc kỷ luật: Sai câu nào phải làm lại câu đó ở cuối vòng cho đến khi đúng 100%.
+                      </p>
+                    </div>
+                  </div>
+
+                  {masteryState[currentTopic.id]?.is100Pct && (
+                    <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold flex items-center gap-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5" /> Đã Thuộc 100%
+                    </span>
+                  )}
+                </div>
+
+                {/* Practice Interactive Box */}
+                {renderMasteryDrill(currentTopic)}
+              </div>
+
               {/* AI Deep Explanation Section */}
               {aiExplanation && (
-                <div className="mt-6 pt-6 border-t border-slate-800 space-y-4 animate-fadeIn">
-                  <div className="p-5 rounded-2xl bg-slate-950 border border-indigo-500/30 space-y-3">
-                    <div className="flex items-center gap-2 text-indigo-400 font-bold text-sm">
+                <div className="mt-6 pt-6 border-t border-ios-line space-y-4 animate-fadeIn">
+                  <div className="p-5 rounded-xl bg-ios-indigo-soft border border-ios-indigo/30 space-y-3">
+                    <div className="flex items-center gap-2 text-ios-indigo font-bold text-sm">
                       <Bot className="w-4 h-4" />
                       <span>Phân Tích Bản Chất Từ Gemini AI:</span>
                     </div>
-                    <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-ios-ink leading-relaxed">
                       {aiExplanation.ruleExplanation}
                     </p>
                   </div>
 
                   {/* Common Mistakes */}
                   {aiExplanation.commonMistakes?.length > 0 && (
-                    <div className="p-5 rounded-2xl bg-rose-500/10 border border-rose-500/20 space-y-3">
-                      <div className="flex items-center gap-2 text-rose-400 font-bold text-xs uppercase tracking-wider">
+                    <div className="p-5 rounded-xl bg-ios-bad-soft border border-ios-bad/20 space-y-3">
+                      <div className="flex items-center gap-2 text-ios-bad font-bold text-xs uppercase tracking-wider">
                         <AlertTriangle className="w-4 h-4" />
                         <span>Bẫy Thường Gặp Trong Bài Thi (Stolpersteine):</span>
                       </div>
                       <div className="space-y-2">
                         {aiExplanation.commonMistakes.map((cm, i) => (
-                          <div key={i} className="text-xs space-y-1 p-3 rounded-xl bg-slate-950/80 border border-rose-500/20">
-                            <div className="text-rose-400 line-through">❌ {cm.wrong}</div>
-                            <div className="text-emerald-400 font-bold">✔️ {cm.correct}</div>
-                            <div className="text-slate-300">{cm.explanation}</div>
+                          <div key={i} className="text-xs space-y-1 p-3 rounded-lg bg-white border border-ios-bad/20">
+                            <div className="text-ios-bad flex items-center gap-1.5"><XCircle className="w-3.5 h-3.5" />{cm.wrong}</div>
+                            <div className="text-ios-ok font-bold flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5" />{cm.correct}</div>
+                            <div className="text-ios-secondary">{cm.explanation}</div>
                           </div>
                         ))}
                       </div>
@@ -439,8 +743,8 @@ export const GrammarHub: React.FC = () => {
 
                   {/* Memory Tip */}
                   {aiExplanation.memoryTip && (
-                    <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-start gap-2.5 text-xs text-amber-300">
-                      <Lightbulb className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                    <div className="p-4 rounded-xl bg-ios-warn-soft border border-ios-warn/20 flex items-start gap-2.5 text-xs text-ios-warn">
+                      <Lightbulb className="w-4 h-4 text-ios-warn shrink-0 mt-0.5" />
                       <div>
                         <span className="font-bold">Mẹo Nhớ Siêu Tốc: </span>
                         {aiExplanation.memoryTip}
@@ -456,10 +760,10 @@ export const GrammarHub: React.FC = () => {
 
       {/* VIEW: 86 IRREGULAR VERBS TABLE */}
       {activeTab === 'irregular_verbs' && (
-        <div className="rounded-3xl bg-slate-900 border border-slate-800 shadow-xl overflow-hidden">
-          <div className="p-5 border-b border-slate-800 flex items-center justify-between text-xs font-bold text-slate-400 uppercase tracking-wider">
+        <div className="rounded-2xl bg-white border border-ios-line shadow-sm overflow-hidden">
+          <div className="p-5 border-b border-ios-line flex items-center justify-between text-xs font-bold text-ios-muted uppercase tracking-wider">
             <div className="flex items-center gap-2">
-              <Table className="w-4 h-4 text-emerald-400" />
+              <Table className="w-4 h-4 text-ios-accent" />
               <span>Tổng cộng: {filteredVerbs.length} động từ bất quy tắc</span>
             </div>
             <span>Tra cứu theo Infinitiv, Präteritum hoặc Partizip II</span>
@@ -467,7 +771,7 @@ export const GrammarHub: React.FC = () => {
 
           <div className="overflow-x-auto max-h-[600px] overflow-y-auto">
             <table className="w-full text-left text-xs sm:text-sm">
-              <thead className="bg-slate-950 text-slate-400 font-bold uppercase text-[11px] sticky top-0 z-10 border-b border-slate-800">
+              <thead className="bg-ios-bg text-ios-muted font-bold uppercase text-[11px] sticky top-0 z-10 border-b border-ios-line">
                 <tr>
                   <th className="p-3.5 pl-6">Infinitiv</th>
                   <th className="p-3.5">Präsens (du / er,sie,es)</th>
@@ -477,29 +781,29 @@ export const GrammarHub: React.FC = () => {
                   <th className="p-3.5 pr-6 text-center">Nghe</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60 font-medium text-slate-200">
+              <tbody className="divide-y divide-ios-line font-medium text-ios-secondary">
                 {filteredVerbs.map((v, i) => (
-                  <tr key={i} className="hover:bg-slate-800/40 transition-colors">
-                    <td className="p-3.5 pl-6 font-bold text-white">
+                  <tr key={i} className="hover:bg-ios-bg transition-colors">
+                    <td className="p-3.5 pl-6 font-bold text-ios-ink">
                       {v.verb}
                     </td>
-                    <td className="p-3.5 text-emerald-400 font-semibold">
+                    <td className="p-3.5 text-ios-ok font-semibold">
                       {v.duStem}
                     </td>
-                    <td className="p-3.5 text-amber-400 font-semibold">
+                    <td className="p-3.5 text-ios-warn font-semibold">
                       {v.praetStem}
                     </td>
                     <td className="p-3.5">
-                      <span className="text-slate-400 text-xs mr-1">({v.aux})</span>
-                      <strong className="text-indigo-400">{v.partizip}</strong>
+                      <span className="text-ios-muted text-xs mr-1">({v.aux})</span>
+                      <strong className="text-ios-indigo">{v.partizip}</strong>
                     </td>
-                    <td className="p-3.5 text-slate-400 italic">
+                    <td className="p-3.5 text-ios-muted italic">
                       {v.konjStem}
                     </td>
                     <td className="p-3.5 pr-6 text-center">
                       <button
                         onClick={() => speakGerman(`${v.verb}, ${v.praetStem}, ${v.partizip}`)}
-                        className="p-1.5 rounded-lg bg-slate-800 hover:bg-emerald-500 hover:text-slate-950 text-slate-300 transition-colors cursor-pointer"
+                        className="p-1.5 rounded-lg bg-ios-bg hover:bg-ios-accent-soft hover:text-ios-accent text-ios-secondary transition-colors cursor-pointer border border-ios-line"
                         title="Nghe phát âm 3 thì"
                       >
                         <Volume2 className="w-3.5 h-3.5" />

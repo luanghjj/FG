@@ -47,6 +47,30 @@ export interface GrammarExplainResult {
   memoryTip: string;
 }
 
+export interface AnswerExplanationResult {
+  explanation: string;
+  correctAnswer: string;
+  yourAnswer: string;
+  isCorrect: boolean;
+  translation: string;
+}
+
+export interface VocabHandwritingGradeResult {
+  score: number; // 0-100%
+  totalWordsChecked: number;
+  correctWordsCount: number;
+  transcribedText: string;
+  summary: string;
+  wordFeedback: {
+    original: string; // what the student wrote/typed
+    correction: string; // the correct standard German
+    status: 'correct' | 'mistake';
+    errorType?: 'article' | 'spelling' | 'capitalization' | 'plural' | 'meaning';
+    explanation: string;
+  }[];
+  teacherAdvice: string;
+}
+
 // Storage helpers
 const API_KEY_STORAGE_KEY = 'gemini_api_key';
 const MODEL_STORAGE_KEY = 'gemini_selected_model';
@@ -296,6 +320,63 @@ Trả về JSON đúng schema:
   }
 };
 
+/**
+ * 4. AI Giải thích đáp án câu hỏi trắc nghiệm (Exam Q&A Explainer)
+ */
+export const explainAnswerWithGemini = async (
+  questionStem: string,
+  options: string[],
+  correctIdx: number,
+  chosenIdx: number,
+  passage?: string
+): Promise<AnswerExplanationResult> => {
+  const ai = getGenAIClient();
+  const model = getStoredModel();
+  const isCorrect = chosenIdx === correctIdx;
+  const correctAnswer = options[correctIdx] || '';
+  const yourAnswer = options[chosenIdx] ?? '';
+
+  if (!ai || !getStoredGeminiKey()) {
+    return simulateAnswerExplanation(questionStem, options, correctIdx, chosenIdx, passage);
+  }
+
+  const prompt = `
+Bạn là giáo viên tiếng Đức trình độ B1-B2. Giải thích một câu hỏi trắc nghiệm bằng tiếng Việt, chi tiết nhưng dễ hiểu.
+
+BỐI CẢNH / BÀI ĐỌC (nếu có):
+"""
+${passage ? passage.substring(0, 1200) : 'không có'}
+"""
+
+CÂU HỎI: ${questionStem}
+CÁC ĐÁP ÁN:
+${options.map((o, i) => `${['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'][i]}. ${o}`).join('\n')}
+ĐÁP ÁN ĐÚNG: ${correctAnswer}
+NGƯỜI HỌC CHỌN: ${yourAnswer || '(không chọn)'}
+
+Trả về JSON đúng schema (không bọc markdown):
+{
+  "explanation": "Giải thích TẠI SAO đáp án đúng là đúng bằng tiếng Việt, dựa vào nội dung đoạn văn/đàm thoại, và nếu người học chọn sai thì nói rõ vì sao phương án họ chọn sai.",
+  "correctAnswer": "${correctAnswer}",
+  "yourAnswer": "${yourAnswer}",
+  "isCorrect": ${isCorrect},
+  "translation": "Dịch câu hỏi (và đáp án đúng) sang tiếng Việt để người học hiểu nghĩa."
+}
+`;
+
+  try {
+    const response = await ai.models.generateContent({
+      model: model,
+      contents: prompt,
+      config: { responseMimeType: 'application/json' }
+    });
+    return JSON.parse((response.text || '{}').replace(/```json/g, '').replace(/```/g, '').trim());
+  } catch (err) {
+    console.error('Answer explanation error:', err);
+    return simulateAnswerExplanation(questionStem, options, correctIdx, chosenIdx, passage);
+  }
+};
+
 // --- Fallback Heuristic Analyzers (when offline or before API key is provided) ---
 
 function simulateWritingGrading(_promptTitle: string, leitpunkte: string[], essay: string): WritingGradeResult {
@@ -381,6 +462,35 @@ function simulateWritingGrading(_promptTitle: string, leitpunkte: string[], essa
   };
 }
 
+function simulateAnswerExplanation(
+  questionStem: string,
+  options: string[],
+  correctIdx: number,
+  chosenIdx: number,
+  passage?: string
+): AnswerExplanationResult {
+  const isCorrect = chosenIdx === correctIdx;
+  const correctAnswer = options[correctIdx] || '';
+  const yourAnswer = options[chosenIdx] ?? '';
+  const letter = (i: number) => ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'][i] || String(i + 1);
+
+  return {
+    explanation: isCorrect
+      ? `Chính xác! Đáp án ${letter(correctIdx)} (${correctAnswer}) là đáp án đúng. ` +
+        `Câu hỏi "${questionStem}" đang kiểm tra khả năng nắm ý chính của đoạn ${passage ? 'nghe/đọc' : 'bài tập'} — ` +
+        `phương án này khớp trực tiếp với thông tin được nêu.`
+      : `Đáp án đúng là ${letter(correctIdx)}: "${correctAnswer}". ` +
+        `Bạn chọn ${yourAnswer ? `${letter(chosenIdx)} ("${yourAnswer}")` : 'không trả lời'}, ` +
+        `phương án này chỉ nêu một chi tiết phụ/đánh lạc hướng chứ không trả lời đúng trọng tâm câu hỏi. ` +
+        `Mẹo: khi làm bài nghe/đọc, gạch chân từ khóa trong câu hỏi rồi tìm câu mang đúng từ khóa đó trong đoạn văn.`,
+    correctAnswer,
+    yourAnswer,
+    isCorrect,
+    translation: `(Bản dịch tham khảo) Câu hỏi: ${questionStem} — Đáp án đúng: ${correctAnswer}. ` +
+      'Cài đặt Gemini API để nhận bản dịch và giải thích chi tiết hơn theo từng câu.',
+  };
+}
+
 function simulateSpeakingFeedback(transcript: string): SpeakingFeedbackResult {
   const words = transcript.trim() ? transcript.trim().split(/\s+/).length : 0;
   return {
@@ -401,3 +511,141 @@ function simulateSpeakingFeedback(transcript: string): SpeakingFeedbackResult {
     nativeSpeakerModel: 'Das Thema meiner Präsentation ist sehr interessant. Meiner persönlichen Erfahrung nach spielt dieses Thema eine wichtige Rolle im Alltag.'
   };
 }
+
+/**
+ * Grade handwriting image or pasted vocabulary text with Gemini AI
+ */
+export async function gradeVocabHandwritingOrText(
+  input: { imageBase64?: string; text?: string; level?: string }
+): Promise<VocabHandwritingGradeResult> {
+  const ai = getGenAIClient();
+  const modelName = getStoredModel();
+
+  if (ai) {
+    try {
+      const systemPrompt = `Bạn là một Giáo Viên Tiếng Đức Goethe/TELC kỳ cựu và nghiêm khắc.
+Nhiệm vụ: Chấm và kiểm tra bài chép từ vựng của học viên (từ ảnh chụp vở ghi chép hoặc từ văn bản học viên nhập).
+Yêu cầu kiểm tra chi tiết:
+1. Mạo từ xác định: der / die / das có đúng giống của danh từ không?
+2. Viết hoa danh từ (Großschreibung): Toàn bộ danh từ tiếng Đức BẮT BUỘC phải viết hoa chữ cái đầu (VD: der Tisch, không được viết der tisch).
+3. Chính tả và biến âm (Umlauts): ä, ö, ü, ß, đuôi -en, -e, -er.
+4. Chấm điểm trên thang điểm 100% dựa trên tỷ lệ từ viết đúng hoàn hảo.
+
+Trả về kết quả ĐÚNG định dạng JSON sau (không kèm markdown ngoài json):
+{
+  "score": 85,
+  "totalWordsChecked": 10,
+  "correctWordsCount": 8,
+  "transcribedText": "danh sách từ đã nhận diện...",
+  "summary": "Nhận xét tổng quan về độ chính xác và nét chữ...",
+  "wordFeedback": [
+    {
+      "original": "từ học viên viết",
+      "correction": "từ chuẩn tiếng Đức (kèm mạo từ đúng)",
+      "status": "correct hoặc mistake",
+      "errorType": "article | spelling | capitalization | plural | meaning",
+      "explanation": "Giải thích chi tiết tại sao sai và quy tắc cần nhớ"
+    }
+  ],
+  "teacherAdvice": "Lời khuyên đôn đốc học viên cách luyện chép hiệu quả hơn"
+}`;
+
+      let contents: any;
+      if (input.imageBase64) {
+        // Strip data:image/...;base64, if present
+        const base64Data = input.imageBase64.includes(',')
+          ? input.imageBase64.split(',')[1]
+          : input.imageBase64;
+        const mimeType = input.imageBase64.includes(';')
+          ? input.imageBase64.split(';')[0].replace('data:', '')
+          : 'image/jpeg';
+
+        contents = [
+          {
+            inlineData: {
+              mimeType: mimeType || 'image/jpeg',
+              data: base64Data
+            }
+          },
+          {
+            text: `Hãy đọc chữ viết tay trong ảnh bài chép từ vựng tiếng Đức này (Trình độ ${input.level || 'A1-B1'}) và chấm điểm chi tiết theo hướng dẫn.`
+          }
+        ];
+      } else {
+        contents = `Hãy kiểm tra và chấm điểm danh sách từ vựng tiếng Đức sau (Trình độ ${input.level || 'A1-B1'}):\n\n${input.text || ''}`;
+      }
+
+      const response = await ai.models.generateContent({
+        model: modelName,
+        contents,
+        config: {
+          systemInstruction: systemPrompt,
+          responseMimeType: 'application/json'
+        }
+      });
+
+      const text = response.text || '';
+      const parsed = JSON.parse(text);
+      return parsed as VocabHandwritingGradeResult;
+    } catch (err) {
+      console.warn('Gemini handwriting grading fallback triggered:', err);
+    }
+  }
+
+  // Local rule-based grading fallback
+  return simulateVocabGrading(input.text || (input.imageBase64 ? 'Bài chụp chữ viết tay từ vựng' : ''));
+}
+
+function simulateVocabGrading(text: string): VocabHandwritingGradeResult {
+  const lines = text.split(/[\n,;]+/).map(s => s.trim()).filter(Boolean);
+  const feedback: VocabHandwritingGradeResult['wordFeedback'] = [];
+  let correctCount = 0;
+
+  lines.forEach((line) => {
+    const parts = line.split(/\s+/);
+    const hasArticle = parts.length > 1 && ['der', 'die', 'das', 'den', 'dem', 'des'].includes(parts[0].toLowerCase());
+    const mainWord = hasArticle ? parts[1] : parts[0];
+    const isCapitalized = mainWord && mainWord[0] === mainWord[0].toUpperCase() && mainWord[0] !== mainWord[0].toLowerCase();
+
+    if (!hasArticle) {
+      feedback.push({
+        original: line,
+        correction: `der/die/das ${line}`,
+        status: 'mistake',
+        errorType: 'article',
+        explanation: 'Thiếu mạo từ xác định (der/die/das). Bắt buộc phải học danh từ kèm mạo từ.'
+      });
+    } else if (!isCapitalized) {
+      feedback.push({
+        original: line,
+        correction: `${parts[0]} ${mainWord.charAt(0).toUpperCase() + mainWord.slice(1)}`,
+        status: 'mistake',
+        errorType: 'capitalization',
+        explanation: 'Quy tắc ngữ pháp Đức: Mọi danh từ (Substantive) BẮT BUỘC phải viết hoa chữ cái đầu.'
+      });
+    } else {
+      correctCount++;
+      feedback.push({
+        original: line,
+        correction: line,
+        status: 'correct',
+        explanation: 'Chính xác! Viết đúng mạo từ và danh từ viết hoa chuẩn tiếng Đức.'
+      });
+    }
+  });
+
+  const total = Math.max(1, lines.length);
+  const score = Math.round((correctCount / total) * 100);
+
+  return {
+    score,
+    totalWordsChecked: total,
+    correctWordsCount: correctCount,
+    transcribedText: lines.join('\n') || text,
+    summary: `Đã kiểm tra ${total} từ vựng. Đạt ${correctCount}/${total} từ chuẩn xác (${score}%). ` +
+      (score >= 80 ? 'Rất tốt! Bạn ghi nhớ chuẩn mạo từ và quy tắc viết hoa.' : 'Cần chú ý mạo từ der/die/das và viết hoa tất cả danh từ.'),
+    wordFeedback: feedback,
+    teacherAdvice: 'Hãy duy trì chép từ vựng kèm mạo từ và dạng số nhiều mỗi ngày để tạo phản xạ ngôn ngữ tự nhiên.'
+  };
+}
+

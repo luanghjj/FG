@@ -1,0 +1,1380 @@
+{
+  "meta": {
+    "title": "Khóa Học A1 - Deutsch Grundstufe 1",
+    "subtitle": "12 bài học theo chuẩn Goethe A1: từ vựng, ngữ pháp, nghe - nói & kiểm tra sau mỗi bài",
+    "totalLessons": 12
+  },
+  "lessons": [
+    {
+      "id": "a1-l1",
+      "lesson": 1,
+      "day": 1,
+      "title": "Begrüßung & Vorstellung",
+      "titleVi": "Chào hỏi & giới thiệu bản thân",
+      "duration": "45 phút",
+      "theme": "Chào hỏi",
+      "goals": [
+        "Chào hỏi cơ bản (Hallo, Guten Morgen, Tschüss)",
+        "Tự giới thiệu tên, quê quán, nơi ở",
+        "Đặt câu hỏi W-Fragen: Wie, Woher, Wo"
+      ],
+      "vocab": [
+        { "de": "Hallo", "vi": "xin chào", "exampleDe": "Hallo, ich heiße Minh.", "exampleVi": "Xin chào, mình tên Minh." },
+        { "de": "Guten Morgen", "vi": "chào buổi sáng", "exampleDe": "Guten Morgen, Frau Müller!", "exampleVi": "Chào buổi sáng, cô Müller!" },
+        { "de": "heißen", "vi": "tên là", "exampleDe": "Ich heiße Anna.", "exampleVi": "Tôi tên là Anna." },
+        { "de": "der Name", "vi": "cái tên", "exampleDe": "Mein Name ist Anna.", "exampleVi": "Tên của tôi là Anna." },
+        { "de": "wohnen", "vi": "sống, ở (nơi ở)", "exampleDe": "Ich wohne in München.", "exampleVi": "Tôi sống ở München." },
+        { "de": "kommen", "vi": "đến từ", "exampleDe": "Ich komme aus Vietnam.", "exampleVi": "Tôi đến từ Việt Nam." },
+        { "de": "lernen", "vi": "học", "exampleDe": "Ich lerne Deutsch.", "exampleVi": "Tôi học tiếng Đức." },
+        { "de": "sprechen", "vi": "nói", "exampleDe": "Ich spreche ein bisschen Deutsch.", "exampleVi": "Tôi nói được một chút tiếng Đức." },
+        { "de": "aus", "vi": "từ (chỉ quê quán)", "exampleDe": "Ich komme aus Vietnam.", "exampleVi": "Tôi đến từ Việt Nam." },
+        { "de": "Deutschland", "vi": "nước Đức", "exampleDe": "Mein Bruder wohnt in Deutschland.", "exampleVi": "Anh trai tôi sống ở Đức." }
+      ],
+      "grammar": {
+        "topic": "Động từ sein & heißen - Hiện tại đơn (Präsens)",
+        "formula": "ich bin / du bist / er-sie-es ist • wir sind / ihr seid / sie sind",
+        "explanation": "sein (thì/là) là động từ quan trọng nhất để giới thiệu. heißen có nghĩa 'tên là'. W-Fragen là câu hỏi bắt đầu bằng từ để hỏi: Wie (thế nào), Woher (từ đâu), Wo (ở đâu).",
+        "examples": [
+          { "de": "Ich bin Minh. Wer bist du?", "vi": "Tôi là Minh. Bạn là ai?" },
+          { "de": "Wie heißt du? - Ich heiße Anna.", "vi": "Bạn tên gì? - Tôi tên là Anna." },
+          { "de": "Woher kommst du? - Ich komme aus Vietnam.", "vi": "Bạn đến từ đâu? - Tôi đến từ Việt Nam." }
+        ]
+      },
+      "dialogue": {
+        "title": "Hội thoại làm quen (Erste Kontakte)",
+        "de": "Anna: Hallo! Ich heiße Anna. Wie heißt du?\nMinh: Hallo Anna! Ich heiße Minh. Ich komme aus Vietnam. Und woher kommst du?\nAnna: Ich komme aus Deutschland. Wo wohnst du?\nMinh: Ich wohne in München. Und du?\nAnna: Ich wohne auch in München. Tschüss, Minh!\nMinh: Tschüss! Bis später!",
+        "vi": "Anna: Xin chào! Tôi tên Anna. Bạn tên gì?\nMinh: Chào Anna! Tôi tên Minh. Tôi đến từ Việt Nam. Còn bạn đến từ đâu?\nAnna: Tôi đến từ Đức. Bạn sống ở đâu?\nMinh: Tôi sống ở München. Còn bạn?\nAnna: Tôi cũng sống ở München. Tạm biệt Minh!\nMinh: Tạm biệt! Hẹn gặp lại!"
+      },
+      "speaking": {
+        "task": "Tự giới thiệu bản thân bằng tiếng Đức",
+        "taskVi": "Nói: tên, quê quán, nơi sống và môn bạn đang học.",
+        "prompt": "Ich heiße ... Ich komme aus ... Ich wohne in ... Ich lerne ...",
+        "sample": "Hallo! Ich heiße Minh. Ich komme aus Vietnam. Ich wohne in Berlin. Ich lerne Deutsch. Ich spreche ein bisschen Deutsch. Tschüss!"
+      },
+      "quiz": [
+        {
+          "q": "„Wie heißt du?\" nghĩa là gì?",
+          "qVi": "Câu hỏi này hỏi điều gì?",
+          "options": [
+            { "de": "Bạn tên gì?", "correct": true },
+            { "de": "Bạn sống ở đâu?", "correct": false },
+            { "de": "Bạn đến từ đâu?", "correct": false }
+          ],
+          "explain": "Wie heißt du? = Bạn tên gì? (Wie = thế nào, heißen = tên là)"
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Ich ___ aus Vietnam.",
+          "qVi": "Điền động từ đúng vào chỗ trống.",
+          "options": [
+            { "de": "komme", "correct": true },
+            { "de": "wohne", "correct": false },
+            { "de": "heiße", "correct": false }
+          ],
+          "explain": "kommen aus + quốc gia = đến từ nước nào. 'Ich komme aus Vietnam.'"
+        },
+        {
+          "q": "„Woher kommst du?\" hỏi điều gì?",
+          "qVi": "Ý nghĩa của câu hỏi Woher...?",
+          "options": [
+            { "de": "Hỏi nơi xuất thân / đến từ đâu", "correct": true },
+            { "de": "Hỏi tên", "correct": false },
+            { "de": "Hỏi tuổi", "correct": false }
+          ],
+          "explain": "Woher = từ đâu. Woher kommst du? = Bạn đến từ đâu? Trả lời: Ich komme aus..."
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Wo ___ du? - Ich wohne in Berlin.",
+          "qVi": "Chia động từ wohnen cho chủ ngữ 'du'.",
+          "options": [
+            { "de": "wohnst", "correct": true },
+            { "de": "wohne", "correct": false },
+            { "de": "wohnt", "correct": false }
+          ],
+          "explain": "du → wohnst (thêm -st). 'Wo wohnst du?' = Bạn sống ở đâu?"
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Er ___ aus Deutschland.",
+          "qVi": "Chia động từ kommen cho chủ ngữ 'er'.",
+          "options": [
+            { "de": "kommt", "correct": true },
+            { "de": "kommst", "correct": false },
+            { "de": "kommen", "correct": false }
+          ],
+          "explain": "er/sie/es → kommt (thêm -t). 'Er kommt aus Deutschland.'"
+        },
+        {
+          "q": "„Tschüss!\" được dùng khi nào?",
+          "qVi": "Ngữ cảnh sử dụng từ chào tạm biệt thân mật.",
+          "options": [
+            { "de": "Khi tạm biệt một cách thân mật", "correct": true },
+            { "de": "Khi chào buổi sáng", "correct": false },
+            { "de": "Khi hỏi đường", "correct": false }
+          ],
+          "explain": "Tschüss = tạm biệt (thân mật). Buổi sáng dùng 'Guten Morgen'."
+        }
+      ]
+    },
+    {
+      "id": "a1-l2",
+      "lesson": 2,
+      "day": 2,
+      "title": "Zahlen & Uhrzeit",
+      "titleVi": "Số đếm & thời gian",
+      "duration": "45 phút",
+      "theme": "Số & Giờ",
+      "goals": [
+        "Đọc - viết số đếm từ 0 đến 100",
+        "Hỏi và trả lời giờ trong ngày",
+        "Nghe hiểu giờ giấc trong hội thoại"
+      ],
+      "vocab": [
+        { "de": "die Zahl", "vi": "con số", "exampleDe": "Die Zahl drei ist meine Glückszahl.", "exampleVi": "Số 3 là con số may mắn của tôi." },
+        { "de": "eins, zwei, drei", "vi": "một, hai, ba", "exampleDe": "Ich habe zwei Brüder.", "exampleVi": "Tôi có hai anh em trai." },
+        { "de": "zehn", "vi": "mười", "exampleDe": "Ich lerne zehn Wörter pro Tag.", "exampleVi": "Tôi học mười từ mỗi ngày." },
+        { "de": "zwanzig", "vi": "hai mươi", "exampleDe": "Mein Bruder ist zwanzig Jahre alt.", "exampleVi": "Anh trai tôi hai mươi tuổi." },
+        { "de": "hundert", "vi": "một trăm", "exampleDe": "Das Buch kostet hundert Euro.", "exampleVi": "Cuốn sách giá một trăm Euro." },
+        { "de": "die Uhrzeit", "vi": "giờ giấc", "exampleDe": "Die Uhrzeit ist wichtig.", "exampleVi": "Giờ giấc rất quan trọng." },
+        { "de": "die Uhr", "vi": "đồng hồ", "exampleDe": "Die Uhr zeigt acht Uhr.", "exampleVi": "Đồng hồ chỉ 8 giờ." },
+        { "de": "die Stunde", "vi": "tiếng (khoảng thời gian)", "exampleDe": "Ich lerne eine Stunde Deutsch.", "exampleVi": "Tôi học tiếng Đức một tiếng." },
+        { "de": "wie spät", "vi": "mấy giờ rồi", "exampleDe": "Wie spät ist es?", "exampleVi": "Bây giờ mấy giờ rồi?" },
+        { "de": "halb", "vi": "rưỡi", "exampleDe": "Es ist halb neun.", "exampleVi": "Bây giờ 8 giờ rưỡi." }
+      ],
+      "grammar": {
+        "topic": "Giờ chính thức & giờ đời thường",
+        "formula": "Es ist ... Uhr (chính thức) • Es ist halb/Viertel ... (đời thường)",
+        "explanation": "Hỏi giờ: 'Wie viel Uhr ist es?' hoặc 'Wie spät ist es?'. Giờ chính thức: Es ist acht Uhr (8:00). Giờ đời thường: halb neun = 8:30 (nửa trước giờ thứ 9), Viertel nach acht = 8:15, Viertel vor neun = 8:45.",
+        "examples": [
+          { "de": "Wie viel Uhr ist es? - Es ist zehn Uhr.", "vi": "Mấy giờ rồi? - 10 giờ." },
+          { "de": "Es ist halb sieben.", "vi": "6 giờ rưỡi (18:30)." },
+          { "de": "Der Kurs beginnt um acht Uhr.", "vi": "Khóa học bắt đầu lúc 8 giờ." }
+        ]
+      },
+      "dialogue": {
+        "title": "Hỏi giờ (Nach der Uhrzeit fragen)",
+        "de": "Tourist: Entschuldigung, wie viel Uhr ist es?\nAnna: Es ist halb neun.\nTourist: Vielen Dank! Und wann beginnt der Kurs?\nAnna: Der Kurs beginnt um neun Uhr.\nTourist: Gut, ich habe noch eine halbe Stunde. Danke schön!\nAnna: Bitte sehr. Viel Spaß!",
+        "vi": "Khách: Xin lỗi, mấy giờ rồi ạ?\nAnna: 8 giờ rưỡi.\nKhách: Cảm ơn nhiều! Vậy khóa học bắt đầu khi nào?\nAnna: Khóa học bắt đầu lúc 9 giờ.\nKhách: Tốt, tôi còn nửa tiếng nữa. Cảm ơn nhiều!\nAnna: Không có gì. Chúc vui vẻ!"
+      },
+      "speaking": {
+        "task": "Đọc giờ bằng tiếng Đức",
+        "taskVi": "Nói giờ theo đồng hồ: 8:00, 8:15, 8:30, 8:45 bằng cả 2 cách.",
+        "prompt": "Es ist ... Uhr. / Es ist halb ... . / Es ist Viertel nach ... .",
+        "sample": "Es ist acht Uhr. Es ist Viertel nach acht. Es ist halb neun. Es ist Viertel vor neun."
+      },
+      "quiz": [
+        {
+          "q": "„Es ist acht Uhr.\" là mấy giờ?",
+          "qVi": "Đọc giờ chính thức.",
+          "options": [
+            { "de": "8 giờ", "correct": true },
+            { "de": "9 giờ", "correct": false },
+            { "de": "7 giờ", "correct": false }
+          ],
+          "explain": "Es ist acht Uhr = bây giờ 8 giờ."
+        },
+        {
+          "q": "„halb neun\" là mấy giờ?",
+          "qVi": "Giờ rưỡi trong tiếng Đức.",
+          "options": [
+            { "de": "8 giờ 30", "correct": true },
+            { "de": "9 giờ 30", "correct": false },
+            { "de": "8 giờ 15", "correct": false }
+          ],
+          "explain": "halb neun = nửa của giờ thứ 9 = 8:30."
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Wie viel ist fünf + fünf?",
+          "qVi": "Tính phép cộng bằng tiếng Đức.",
+          "options": [
+            { "de": "zehn", "correct": true },
+            { "de": "zwanzig", "correct": false },
+            { "de": "fünfzehn", "correct": false }
+          ],
+          "explain": "5 + 5 = 10 = zehn."
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Es ist Viertel ___ neun.",
+          "qVi": "Điền từ chỉ 8:45 (còn 15 phút nữa là 9 giờ).",
+          "options": [
+            { "de": "vor", "correct": true },
+            { "de": "nach", "correct": false },
+            { "de": "in", "correct": false }
+          ],
+          "explain": "Viertel vor neun = 15 phút trước 9 giờ = 8:45. Viertel nach = 15 phút sau."
+        },
+        {
+          "q": "„zwanzig\" là số mấy?",
+          "qVi": "Nhận diện số đếm tiếng Đức.",
+          "options": [
+            { "de": "20", "correct": true },
+            { "de": "12", "correct": false },
+            { "de": "22", "correct": false }
+          ],
+          "explain": "zwanzig = 20. (zwölf = 12, zweiundzwanzig = 22)"
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Der Kurs beginnt ___ acht Uhr.",
+          "qVi": "Giới từ chỉ thời điểm bắt đầu.",
+          "options": [
+            { "de": "um", "correct": true },
+            { "de": "in", "correct": false },
+            { "de": "auf", "correct": false }
+          ],
+          "explain": "um + giờ = lúc mấy giờ. 'Der Kurs beginnt um acht Uhr.' = Khóa học bắt đầu lúc 8 giờ."
+        }
+      ]
+    },
+    {
+      "id": "a1-l3",
+      "lesson": 3,
+      "day": 3,
+      "title": "Familie",
+      "titleVi": "Gia đình",
+      "duration": "45 phút",
+      "theme": "Gia đình",
+      "goals": [
+        "Gọi tên các thành viên trong gia đình",
+        "Dùng Possessivpronomen: mein / meine",
+        "Nhận biết giống của danh từ: der / die / das"
+      ],
+      "vocab": [
+        { "de": "die Familie", "vi": "gia đình", "exampleDe": "Meine Familie ist groß.", "exampleVi": "Gia đình tôi đông người." },
+        { "de": "der Vater", "vi": "bố", "exampleDe": "Mein Vater arbeitet in Hanoi.", "exampleVi": "Bố tôi làm việc ở Hà Nội." },
+        { "de": "die Mutter", "vi": "mẹ", "exampleDe": "Meine Mutter ist Lehrerin.", "exampleVi": "Mẹ tôi là giáo viên." },
+        { "de": "der Bruder", "vi": "anh/em trai", "exampleDe": "Ich habe einen Bruder.", "exampleVi": "Tôi có một anh trai." },
+        { "de": "die Schwester", "vi": "chị/em gái", "exampleDe": "Meine Schwester ist zwölf Jahre alt.", "exampleVi": "Em gái tôi 12 tuổi." },
+        { "de": "der Sohn", "vi": "con trai", "exampleDe": "Sie hat einen Sohn.", "exampleVi": "Cô ấy có một con trai." },
+        { "de": "die Tochter", "vi": "con gái", "exampleDe": "Ihre Tochter studiert.", "exampleVi": "Con gái của cô ấy đang học đại học." },
+        { "de": "die Eltern", "vi": "bố mẹ", "exampleDe": "Meine Eltern wohnen in Vietnam.", "exampleVi": "Bố mẹ tôi sống ở Việt Nam." },
+        { "de": "das Kind", "vi": "đứa trẻ", "exampleDe": "Das Kind spielt im Garten.", "exampleVi": "Đứa trẻ đang chơi trong vườn." },
+        { "de": "der Mann", "vi": "người đàn ông / chồng", "exampleDe": "Der Mann heißt Thomas.", "exampleVi": "Người đàn ông tên là Thomas." }
+      ],
+      "grammar": {
+        "topic": "Possessivpronomen mein / meine",
+        "formula": "der → mein • die → meine • das → mein",
+        "explanation": "mein (của tôi) đi với danh từ giống đực (der) và giống trung (das): mein Vater, mein Kind. meine đi với danh từ giống cái (die): meine Mutter, meine Schwester.",
+        "examples": [
+          { "de": "Das ist mein Vater.", "vi": "Đây là bố tôi." },
+          { "de": "Das ist meine Mutter.", "vi": "Đây là mẹ tôi." },
+          { "de": "Meine Eltern wohnen in Vietnam.", "vi": "Bố mẹ tôi sống ở Việt Nam." }
+        ]
+      },
+      "dialogue": {
+        "title": "Nói về gia đình (Über die Familie sprechen)",
+        "de": "Anna: Hast du Geschwister?\nMinh: Ja, ich habe einen Bruder und eine Schwester.\nAnna: Wie heißt dein Bruder?\nMinh: Er heißt Tom. Er ist zwanzig Jahre alt.\nAnna: Und wie heißt deine Schwester?\nMinh: Sie heißt Lisa. Sie ist noch klein. Und du?\nAnna: Ich habe keine Geschwister.",
+        "vi": "Anna: Bạn có anh chị em không?\nMinh: Có, tôi có một anh trai và một em gái.\nAnna: Anh trai bạn tên gì?\nMinh: Anh ấy tên Tom. Anh ấy 20 tuổi.\nAnna: Còn em gái bạn tên gì?\nMinh: Em ấy tên Lisa. Em còn nhỏ. Còn bạn?\nAnna: Tôi không có anh chị em."
+      },
+      "speaking": {
+        "task": "Giới thiệu gia đình của bạn",
+        "taskVi": "Nói về bố, mẹ, anh chị em và tuổi của họ.",
+        "prompt": "Das ist mein/meine ... Er/Sie heißt ... Er/Sie ist ... Jahre alt.",
+        "sample": "Das ist meine Familie. Das ist mein Vater, er heißt Tuan. Das ist meine Mutter, sie heißt Lan. Ich habe einen Bruder, er heißt Tom. Meine Familie ist sehr nett."
+      },
+      "quiz": [
+        {
+          "q": "„die Mutter\" là ai?",
+          "qVi": "Nghĩa của từ chỉ thành viên gia đình.",
+          "options": [
+            { "de": "Mẹ", "correct": true },
+            { "de": "Bố", "correct": false },
+            { "de": "Chị gái", "correct": false }
+          ],
+          "explain": "die Mutter = mẹ. (der Vater = bố)"
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Das ist ___ Vater.",
+          "qVi": "Possessivpronomen cho danh từ giống đực.",
+          "options": [
+            { "de": "mein", "correct": true },
+            { "de": "meine", "correct": false },
+            { "de": "meinen", "correct": false }
+          ],
+          "explain": "der Vater (giống đực) → mein Vater."
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Das ist ___ Mutter.",
+          "qVi": "Possessivpronomen cho danh từ giống cái.",
+          "options": [
+            { "de": "meine", "correct": true },
+            { "de": "mein", "correct": false },
+            { "de": "meins", "correct": false }
+          ],
+          "explain": "die Mutter (giống cái) → meine Mutter."
+        },
+        {
+          "q": "„die Eltern\" có nghĩa là gì?",
+          "qVi": "Nghĩa của danh từ số nhiều.",
+          "options": [
+            { "de": "Bố mẹ", "correct": true },
+            { "de": "Anh chị em", "correct": false },
+            { "de": "Ông bà", "correct": false }
+          ],
+          "explain": "die Eltern = bố mẹ (số nhiều). (Geschwister = anh chị em)"
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Das ___ meine Schwester.",
+          "qVi": "Động từ sein cho chủ ngữ 'das'.",
+          "options": [
+            { "de": "ist", "correct": true },
+            { "de": "sind", "correct": false },
+            { "de": "bist", "correct": false }
+          ],
+          "explain": "das/er/sie/es → ist. 'Das ist meine Schwester.'"
+        },
+        {
+          "q": "„der Bruder\" có nghĩa là gì?",
+          "qVi": "Nghĩa của từ chỉ anh/em trai.",
+          "options": [
+            { "de": "Anh/em trai", "correct": true },
+            { "de": "Anh/em gái", "correct": false },
+            { "de": "Chú", "correct": false }
+          ],
+          "explain": "der Bruder = anh/em trai. (die Schwester = chị/em gái)"
+        }
+      ]
+    },
+    {
+      "id": "a1-l4",
+      "lesson": 4,
+      "day": 4,
+      "title": "Essen & Trinken",
+      "titleVi": "Ăn uống",
+      "duration": "50 phút",
+      "theme": "Ăn uống",
+      "goals": [
+        "Gọi tên đồ ăn, thức uống cơ bản",
+        "Gọi món với 'ich möchte' + Akkusativ",
+        "Dùng den/die/das và einen/eine đúng giống"
+      ],
+      "vocab": [
+        { "de": "das Essen", "vi": "món ăn", "exampleDe": "Das Essen schmeckt sehr gut.", "exampleVi": "Món ăn rất ngon." },
+        { "de": "trinken", "vi": "uống", "exampleDe": "Ich trinke gern Wasser.", "exampleVi": "Tôi thích uống nước." },
+        { "de": "essen", "vi": "ăn", "exampleDe": "Ich esse gern Reis.", "exampleVi": "Tôi thích ăn cơm." },
+        { "de": "das Wasser", "vi": "nước", "exampleDe": "Ich trinke viel Wasser.", "exampleVi": "Tôi uống nhiều nước." },
+        { "de": "das Brot", "vi": "bánh mì", "exampleDe": "Ich esse ein Brot.", "exampleVi": "Tôi ăn một ổ bánh mì." },
+        { "de": "der Kaffee", "vi": "cà phê", "exampleDe": "Ich möchte einen Kaffee, bitte.", "exampleVi": "Cho tôi một ly cà phê." },
+        { "de": "der Tee", "vi": "trà", "exampleDe": "Möchtest du einen Tee?", "exampleVi": "Bạn có muốn một tách trà không?" },
+        { "de": "die Milch", "vi": "sữa", "exampleDe": "Ich trinke die Milch gern.", "exampleVi": "Tôi thích uống sữa." },
+        { "de": "der Apfel", "vi": "quả táo", "exampleDe": "Ich esse einen Apfel.", "exampleVi": "Tôi ăn một quả táo." },
+        { "de": "der Hunger", "vi": "cơn đói", "exampleDe": "Ich habe Hunger.", "exampleVi": "Tôi đói." }
+      ],
+      "grammar": {
+        "topic": "Akkusativ & ich möchte",
+        "formula": "der → den/einen • die → die/eine • das → das/ein",
+        "explanation": "Khi là tân ngữ trực tiếp, mạo từ xác định đổi: der → den; còn die và das giữ nguyên. Mạo từ bất định: der/ein → einen. 'ich möchte' = tôi muốn (lịch sự khi gọi món).",
+        "examples": [
+          { "de": "Ich möchte einen Kaffee.", "vi": "Tôi muốn một ly cà phê." },
+          { "de": "Ich esse den Apfel.", "vi": "Tôi ăn quả táo (đã biết)." },
+          { "de": "Ich möchte das Wasser, bitte.", "vi": "Cho tôi nước lọc." }
+        ]
+      },
+      "dialogue": {
+        "title": "Gọi món tại quán cà phê (Im Café)",
+        "de": "Kellner: Guten Tag! Was möchten Sie?\nMinh: Ich möchte einen Kaffee und ein Brötchen, bitte.\nKellner: Möchten Sie auch etwas zu trinken?\nMinh: Ja, ich möchte auch Wasser, bitte. Ich habe Durst.\nKellner: Möchten Sie etwas essen?\nMinh: Ja, ich esse gern einen Apfel. Danke!",
+        "vi": "Phục vụ: Xin chào! Quý khách muốn dùng gì?\nMinh: Cho tôi một ly cà phê và một cái bánh nhỏ.\nPhục vụ: Quý khách có muốn uống thêm gì không?\nMinh: Có, cho tôi thêm nước lọc. Tôi khát.\nPhục vụ: Quý khách có muốn ăn gì không?\nMinh: Có, tôi ăn một quả táo. Cảm ơn!"
+      },
+      "speaking": {
+        "task": "Gọi món và thức uống",
+        "taskVi": "Nói món bạn muốn gọi: cà phê, trà, bánh mì, táo...",
+        "prompt": "Ich möchte einen/eine/ein ..., bitte. Ich habe Hunger/Durst.",
+        "sample": "Guten Tag! Ich möchte einen Kaffee und ein Brötchen, bitte. Ich habe Hunger. Und ich habe auch Durst. Möchten Sie etwas essen? Nein, danke."
+      },
+      "quiz": [
+        {
+          "q": "„trinken\" có nghĩa là gì?",
+          "qVi": "Nghĩa của động từ.",
+          "options": [
+            { "de": "Uống", "correct": true },
+            { "de": "Ăn", "correct": false },
+            { "de": "Nấu", "correct": false }
+          ],
+          "explain": "trinken = uống. (essen = ăn)"
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Ich möchte ___ Kaffee.",
+          "qVi": "Mạo từ bất định Akkusativ cho der Kaffee.",
+          "options": [
+            { "de": "einen", "correct": true },
+            { "de": "ein", "correct": false },
+            { "de": "eine", "correct": false }
+          ],
+          "explain": "der Kaffee → Akkusativ = einen. 'Ich möchte einen Kaffee.'"
+        },
+        {
+          "q": "„das Wasser\" có nghĩa là gì?",
+          "qVi": "Nghĩa của danh từ giống trung.",
+          "options": [
+            { "de": "Nước", "correct": true },
+            { "de": "Sữa", "correct": false },
+            { "de": "Bia", "correct": false }
+          ],
+          "explain": "das Wasser = nước. (die Milch = sữa)"
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Ich esse ___ Apfel.",
+          "qVi": "Mạo từ xác định Akkusativ cho der Apfel.",
+          "options": [
+            { "de": "den", "correct": true },
+            { "de": "der", "correct": false },
+            { "de": "dem", "correct": false }
+          ],
+          "explain": "der Apfel → Akkusativ = den. 'Ich esse den Apfel.'"
+        },
+        {
+          "q": "„Ich habe Hunger.\" nghĩa là gì?",
+          "qVi": "Diễn đạt cảm giác đói.",
+          "options": [
+            { "de": "Tôi đói", "correct": true },
+            { "de": "Tôi khát", "correct": false },
+            { "de": "Tôi mệt", "correct": false }
+          ],
+          "explain": "Ich habe Hunger = tôi đói. (Ich habe Durst = tôi khát)"
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Ich möchte ___ Tee.",
+          "qVi": "Mạo từ bất định Akkusativ cho der Tee.",
+          "options": [
+            { "de": "einen", "correct": true },
+            { "de": "eine", "correct": false },
+            { "de": "einem", "correct": false }
+          ],
+          "explain": "der Tee → Akkusativ = einen. 'Ich möchte einen Tee.'"
+        }
+      ]
+    },
+    {
+      "id": "a1-l5",
+      "lesson": 5,
+      "day": 5,
+      "title": "Einkaufen",
+      "titleVi": "Đi mua sắm",
+      "duration": "45 phút",
+      "theme": "Mua sắm",
+      "goals": [
+        "Hỏi giá cả và trả lời bằng Euro",
+        "Gọi tên cửa hàng, sản phẩm cơ bản",
+        "Diễn đạt: Das ist alles / Ich nehme ..."
+      ],
+      "vocab": [
+        { "de": "kaufen", "vi": "mua", "exampleDe": "Ich kaufe im Supermarkt.", "exampleVi": "Tôi mua ở siêu thị." },
+        { "de": "das Geld", "vi": "tiền", "exampleDe": "Das Geld reicht nicht.", "exampleVi": "Tiền không đủ." },
+        { "de": "der Euro", "vi": "đồng Euro", "exampleDe": "Das kostet zwei Euro.", "exampleVi": "Cái đó giá 2 Euro." },
+        { "de": "kosten", "vi": "có giá", "exampleDe": "Wie viel kostet das Brot?", "exampleVi": "Bánh mì giá bao nhiêu?" },
+        { "de": "der Preis", "vi": "giá", "exampleDe": "Der Preis ist gut.", "exampleVi": "Giá tốt." },
+        { "de": "der Supermarkt", "vi": "siêu thị", "exampleDe": "Der Supermarkt ist um die Ecke.", "exampleVi": "Siêu thị ở ngay góc phố." },
+        { "de": "das Geschäft", "vi": "cửa hàng", "exampleDe": "Das Geschäft ist heute offen.", "exampleVi": "Hôm nay cửa hàng mở cửa." },
+        { "de": "teuer", "vi": "đắt", "exampleDe": "Das Handy ist zu teuer.", "exampleVi": "Cái điện thoại này quá đắt." },
+        { "de": "billig", "vi": "rẻ", "exampleDe": "Die Tasche ist billig.", "exampleVi": "Cái túi này rẻ." },
+        { "de": "das Stück", "vi": "cái, chiếc (đếm lẻ)", "exampleDe": "Ein Stück Kuchen, bitte.", "exampleVi": "Cho tôi một miếng bánh." }
+      ],
+      "grammar": {
+        "topic": "Hỏi giá: Wie viel kostet ...?",
+        "formula": "Wie viel kostet das? - Es kostet ... Euro.",
+        "explanation": "Để hỏi giá dùng 'Wie viel kostet ...?' (số ít) hoặc 'Wie viel kosten ...?' (số nhiều). Trả lời: 'Es kostet ... Euro.' / 'Sie kosten ... Euro.' Khi quyết định mua: 'Ich nehme ...' (tôi lấy...) và 'Das ist alles.' (chỉ vậy thôi).",
+        "examples": [
+          { "de": "Wie viel kostet das Brot? - Es kostet zwei Euro.", "vi": "Bánh mì giá bao nhiêu? - 2 Euro." },
+          { "de": "Ich nehme das Brot, bitte.", "vi": "Cho tôi lấy ổ bánh mì." },
+          { "de": "Das macht zusammen fünf Euro.", "vi": "Tổng cộng 5 Euro." }
+        ]
+      },
+      "dialogue": {
+        "title": "Mua sắm tại siêu thị (Im Supermarkt)",
+        "de": "Minh: Guten Tag! Wie viel kostet das Brot?\nVerkäuferin: Das Brot kostet zwei Euro.\nMinh: Ich nehme das Brot, bitte. Und wie viel kostet die Milch?\nVerkäuferin: Die Milch kostet einen Euro fünfzig.\nMinh: Ich nehme auch die Milch. Das ist alles.\nVerkäuferin: Das macht zusammen drei Euro fünfzig. Danke schön!",
+        "vi": "Minh: Chào chị! Bánh mì giá bao nhiêu ạ?\nNhân viên: Bánh mì giá 2 Euro.\nMinh: Tôi lấy bánh mì. Còn sữa giá bao nhiêu?\nNhân viên: Sữa giá 1 Euro 50.\nMinh: Tôi lấy thêm sữa. Chỉ vậy thôi.\nNhân viên: Tổng cộng 3 Euro 50. Cảm ơn!"
+      },
+      "speaking": {
+        "task": "Hỏi giá và mua hàng",
+        "taskVi": "Hỏi giá một món đồ, trả lời và thanh toán.",
+        "prompt": "Guten Tag! Wie viel kostet ...? - Ich nehme ..., bitte. - Das ist alles.",
+        "sample": "Guten Tag! Wie viel kostet die Tasche? Sie kostet zehn Euro. Ich nehme die Tasche, bitte. Das ist alles. Danke schön!"
+      },
+      "quiz": [
+        {
+          "q": "„kosten\" có nghĩa là gì?",
+          "qVi": "Nghĩa của động từ.",
+          "options": [
+            { "de": "Có giá", "correct": true },
+            { "de": "Mua", "correct": false },
+            { "de": "Bán", "correct": false }
+          ],
+          "explain": "kosten = có giá. (kaufen = mua, verkaufen = bán)"
+        },
+        {
+          "q": "„Wie viel kostet das?\" hỏi điều gì?",
+          "qVi": "Mục đích của câu hỏi.",
+          "options": [
+            { "de": "Hỏi giá cả", "correct": true },
+            { "de": "Hỏi thời gian", "correct": false },
+            { "de": "Hỏi đường đi", "correct": false }
+          ],
+          "explain": "Wie viel kostet das? = Cái đó giá bao nhiêu?"
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Das Brot kostet ___ Euro.",
+          "qVi": "Điền số lượng phù hợp.",
+          "options": [
+            { "de": "zwei", "correct": true },
+            { "de": "zweite", "correct": false },
+            { "de": "zwanzigste", "correct": false }
+          ],
+          "explain": "Giá cả dùng số đếm: 'Es kostet zwei Euro.'"
+        },
+        {
+          "q": "„teuer\" có nghĩa là gì?",
+          "qVi": "Nghĩa của tính từ.",
+          "options": [
+            { "de": "Đắt", "correct": true },
+            { "de": "Rẻ", "correct": false },
+            { "de": "Miễn phí", "correct": false }
+          ],
+          "explain": "teuer = đắt. (billig = rẻ)"
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Ich ___ die Milch, bitte.",
+          "qVi": "Động từ khi quyết định mua.",
+          "options": [
+            { "de": "nehme", "correct": true },
+            { "de": "gebe", "correct": false },
+            { "de": "habe", "correct": false }
+          ],
+          "explain": "Ich nehme ... = tôi lấy ... (khi quyết định mua)."
+        },
+        {
+          "q": "„Das ist alles.\" có nghĩa là gì?",
+          "qVi": "Câu nói khi kết thúc mua hàng.",
+          "options": [
+            { "de": "Chỉ vậy thôi / hết rồi", "correct": true },
+            { "de": "Còn thiếu tiền", "correct": false },
+            { "de": "Quá đắt", "correct": false }
+          ],
+          "explain": "Das ist alles = chỉ vậy thôi, mua xong rồi."
+        }
+      ]
+    },
+    {
+      "id": "a1-l6",
+      "lesson": 6,
+      "day": 6,
+      "title": "Wohnen",
+      "titleVi": "Nhà ở",
+      "duration": "45 phút",
+      "theme": "Nhà ở",
+      "goals": [
+        "Gọi tên các phòng và đồ nội thất",
+        "Dùng 'es gibt' + Akkusativ",
+        "Mô tả căn hộ của bạn"
+      ],
+      "vocab": [
+        { "de": "das Haus", "vi": "ngôi nhà", "exampleDe": "Das Haus ist groß.", "exampleVi": "Ngôi nhà rộng." },
+        { "de": "die Wohnung", "vi": "căn hộ", "exampleDe": "Meine Wohnung ist klein.", "exampleVi": "Căn hộ của tôi nhỏ." },
+        { "de": "das Zimmer", "vi": "căn phòng", "exampleDe": "Ich habe ein Zimmer.", "exampleVi": "Tôi có một phòng." },
+        { "de": "die Küche", "vi": "nhà bếp", "exampleDe": "Die Küche ist modern.", "exampleVi": "Nhà bếp hiện đại." },
+        { "de": "das Bad", "vi": "phòng tắm", "exampleDe": "Das Bad ist sauber.", "exampleVi": "Phòng tắm sạch sẽ." },
+        { "de": "das Bett", "vi": "giường", "exampleDe": "Das Bett ist bequem.", "exampleVi": "Cái giường êm." },
+        { "de": "der Tisch", "vi": "bàn", "exampleDe": "Der Tisch steht in der Küche.", "exampleVi": "Cái bàn đặt trong bếp." },
+        { "de": "der Stuhl", "vi": "ghế", "exampleDe": "Ich habe zwei Stühle.", "exampleVi": "Tôi có hai cái ghế." },
+        { "de": "das Fenster", "vi": "cửa sổ", "exampleDe": "Das Fenster ist offen.", "exampleVi": "Cửa sổ đang mở." },
+        { "de": "die Tür", "vi": "cửa ra vào", "exampleDe": "Die Tür ist zu.", "exampleVi": "Cửa đang đóng." }
+      ],
+      "grammar": {
+        "topic": "es gibt + Akkusativ",
+        "formula": "Es gibt + einen/eine/ein + Nomen (Akkusativ)",
+        "explanation": "'es gibt' = có (tồn tại). Theo sau luôn là Akkusativ: einen (der), eine (die), ein (das). Ví dụ: Es gibt eine Küche (có một nhà bếp).",
+        "examples": [
+          { "de": "In der Wohnung gibt es eine Küche.", "vi": "Trong căn hộ có một nhà bếp." },
+          { "de": "Es gibt ein Bad und zwei Zimmer.", "vi": "Có một phòng tắm và hai phòng ngủ." },
+          { "de": "Gibt es einen Garten? - Nein, leider nicht.", "vi": "Có vườn không? - Tiếc là không." }
+        ]
+      },
+      "dialogue": {
+        "title": "Mô tả căn hộ (Die Wohnung beschreiben)",
+        "de": "Anna: Wie ist deine neue Wohnung?\nMinh: Sie ist klein, aber sehr schön. Es gibt eine Küche, ein Bad und zwei Zimmer.\nAnna: Ist die Küche groß?\nMinh: Ja, die Küche ist groß und modern. Es gibt einen Tisch und zwei Stühle.\nAnna: Gibt es einen Balkon?\nMinh: Ja, es gibt auch einen kleinen Balkon. Ich bin sehr zufrieden.",
+        "vi": "Anna: Căn hộ mới của bạn thế nào?\nMinh: Nhỏ nhưng rất đẹp. Có một nhà bếp, một phòng tắm và hai phòng ngủ.\nAnna: Nhà bếp có rộng không?\nMinh: Có, nhà bếp rộng và hiện đại. Có một cái bàn và hai cái ghế.\nAnna: Có ban công không?\nMinh: Có, cũng có một ban công nhỏ. Tôi rất hài lòng."
+      },
+      "speaking": {
+        "task": "Mô tả căn hộ / ngôi nhà của bạn",
+        "taskVi": "Nói căn hộ có gì: phòng, bếp, ban công...",
+        "prompt": "Meine Wohnung ist ... . Es gibt eine/ein/einen ... .",
+        "sample": "Meine Wohnung ist klein, aber schön. Es gibt eine Küche, ein Bad und zwei Zimmer. Es gibt auch einen Balkon. Die Küche ist modern. Ich bin zufrieden."
+      },
+      "quiz": [
+        {
+          "q": "„die Wohnung\" có nghĩa là gì?",
+          "qVi": "Nghĩa của danh từ.",
+          "options": [
+            { "de": "Căn hộ", "correct": true },
+            { "de": "Ngôi nhà", "correct": false },
+            { "de": "Khách sạn", "correct": false }
+          ],
+          "explain": "die Wohnung = căn hộ. (das Haus = ngôi nhà)"
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Es gibt ___ Küche.",
+          "qVi": "Mạo từ bất định Akkusativ cho die Küche.",
+          "options": [
+            { "de": "eine", "correct": true },
+            { "de": "einen", "correct": false },
+            { "de": "ein", "correct": false }
+          ],
+          "explain": "die Küche → Akkusativ = eine. 'Es gibt eine Küche.'"
+        },
+        {
+          "q": "„das Zimmer\" có nghĩa là gì?",
+          "qVi": "Nghĩa của danh từ giống trung.",
+          "options": [
+            { "de": "Căn phòng", "correct": true },
+            { "de": "Cửa sổ", "correct": false },
+            { "de": "Ban công", "correct": false }
+          ],
+          "explain": "das Zimmer = căn phòng. (das Fenster = cửa sổ)"
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: In der Wohnung gibt es ___ Bad.",
+          "qVi": "Mạo từ bất định Akkusativ cho das Bad.",
+          "options": [
+            { "de": "ein", "correct": true },
+            { "de": "eine", "correct": false },
+            { "de": "einen", "correct": false }
+          ],
+          "explain": "das Bad → Akkusativ = ein. 'Es gibt ein Bad.'"
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: ___ es einen Balkon? - Ja, es gibt einen.",
+          "qVi": "Cách đặt câu hỏi với es gibt.",
+          "options": [
+            { "de": "Gibt", "correct": true },
+            { "de": "Hat", "correct": false },
+            { "de": "Ist", "correct": false }
+          ],
+          "explain": "Câu hỏi với 'es gibt': 'Gibt es ...?' - Có ... không?"
+        },
+        {
+          "q": "„das Bett\" có nghĩa là gì?",
+          "qVi": "Nghĩa của danh từ.",
+          "options": [
+            { "de": "Giường", "correct": true },
+            { "de": "Bàn", "correct": false },
+            { "de": "Ghế", "correct": false }
+          ],
+          "explain": "das Bett = giường. (der Tisch = bàn, der Stuhl = ghế)"
+        }
+      ]
+    },
+    {
+      "id": "a1-l7",
+      "lesson": 7,
+      "day": 7,
+      "title": "Wegbeschreibung",
+      "titleVi": "Chỉ đường",
+      "duration": "50 phút",
+      "theme": "Chỉ đường",
+      "goals": [
+        "Hỏi và chỉ đường: rechts, links, geradeaus",
+        "Hiểu các địa điểm: Bahnhof, Haltestelle",
+        "Dùng câu mệnh lệnh lịch sự (Gehen Sie ...)"
+      ],
+      "vocab": [
+        { "de": "rechts", "vi": "bên phải", "exampleDe": "Der Bahnhof ist rechts.", "exampleVi": "Nhà ga nằm bên phải." },
+        { "de": "links", "vi": "bên trái", "exampleDe": "Biegen Sie links ab!", "exampleVi": "Hãy rẽ trái!" },
+        { "de": "geradeaus", "vi": "đi thẳng", "exampleDe": "Gehen Sie geradeaus!", "exampleVi": "Hãy đi thẳng!" },
+        { "de": "die Straße", "vi": "con đường, phố", "exampleDe": "Gehen Sie die Straße entlang.", "exampleVi": "Đi dọc theo con phố." },
+        { "de": "der Weg", "vi": "đường đi", "exampleDe": "Wo ist der Weg zum Bahnhof?", "exampleVi": "Đường tới nhà ga ở đâu?" },
+        { "de": "der Bahnhof", "vi": "nhà ga", "exampleDe": "Der Bahnhof ist nicht weit.", "exampleVi": "Nhà ga không xa." },
+        { "de": "die Haltestelle", "vi": "trạm dừng", "exampleDe": "Die Haltestelle ist dort.", "exampleVi": "Trạm dừng ở đằng kia." },
+        { "de": "weit", "vi": "xa", "exampleDe": "Ist es weit bis zur Bank?", "exampleVi": "Đến ngân hàng có xa không?" },
+        { "de": "gehen", "vi": "đi bộ", "exampleDe": "Ich gehe zu Fuß.", "exampleVi": "Tôi đi bộ." },
+        { "de": "ab|biegen", "vi": "rẽ", "exampleDe": "Biegen Sie nach rechts ab!", "exampleVi": "Hãy rẽ sang phải!" }
+      ],
+      "grammar": {
+        "topic": "Câu mệnh lệnh lịch sự (Imperativ mit Sie)",
+        "formula": "Gehen Sie ... ! • Biegen Sie ... ab! • Nehmen Sie ... !",
+        "explanation": "Khi chỉ đường cho người lạ, dùng dạng 'Sie' lịch sự: động từ nguyên mẫu + Sie. abbiegen là động từ tách: trong câu mệnh lệnh, 'ab' chạy về cuối câu: 'Biegen Sie rechts ab!'",
+        "examples": [
+          { "de": "Gehen Sie geradeaus!", "vi": "Ông/bà đi thẳng!" },
+          { "de": "Biegen Sie nach links ab!", "vi": "Ông/bà rẽ sang trái!" },
+          { "de": "Nehmen Sie die zweite Straße rechts.", "vi": "Đi lối thứ hai rẽ phải." }
+        ]
+      },
+      "dialogue": {
+        "title": "Hỏi đường đến nhà ga (Nach dem Weg fragen)",
+        "de": "Tourist: Entschuldigung, wo ist der Bahnhof?\nAnna: Gehen Sie geradeaus, dann biegen Sie nach links ab.\nTourist: Und dann?\nAnna: Dann gehen Sie noch hundert Meter. Der Bahnhof ist rechts.\nTourist: Ist es weit?\nAnna: Nein, es ist nicht weit. Nur fünf Minuten zu Fuß.",
+        "vi": "Khách: Xin lỗi, nhà ga ở đâu ạ?\nAnna: Ông đi thẳng, sau đó rẽ trái.\nKhách: Rồi sao nữa?\nAnna: Rồi đi tiếp khoảng 100 mét. Nhà ga nằm bên phải.\nKhách: Có xa không?\nAnna: Không, không xa đâu. Chỉ 5 phút đi bộ."
+      },
+      "speaking": {
+        "task": "Chỉ đường cho khách du lịch",
+        "taskVi": "Nói đường đến nhà ga / trạm dừng bằng mệnh lệnh lịch sự.",
+        "prompt": "Gehen Sie ... . Dann biegen Sie ... ab. ... ist rechts/links.",
+        "sample": "Entschuldigung, wo ist die Haltestelle? Gehen Sie geradeaus, dann biegen Sie nach rechts ab. Die Haltestelle ist links. Es ist nicht weit, nur drei Minuten zu Fuß."
+      },
+      "quiz": [
+        {
+          "q": "„rechts\" có nghĩa là gì?",
+          "qVi": "Nghĩa của từ chỉ phương hướng.",
+          "options": [
+            { "de": "Bên phải", "correct": true },
+            { "de": "Bên trái", "correct": false },
+            { "de": "Đi thẳng", "correct": false }
+          ],
+          "explain": "rechts = bên phải. (links = bên trái)"
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Gehen Sie ___!",
+          "qVi": "Từ chỉ hướng đi thẳng.",
+          "options": [
+            { "de": "geradeaus", "correct": true },
+            { "de": "links", "correct": false },
+            { "de": "rechts", "correct": false }
+          ],
+          "explain": "geradeaus = đi thẳng."
+        },
+        {
+          "q": "„der Bahnhof\" là địa điểm nào?",
+          "qVi": "Nghĩa của danh từ địa điểm.",
+          "options": [
+            { "de": "Nhà ga", "correct": true },
+            { "de": "Bệnh viện", "correct": false },
+            { "de": "Trường học", "correct": false }
+          ],
+          "explain": "der Bahnhof = nhà ga. (die Haltestelle = trạm dừng xe)"
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Biegen Sie nach ___ ab!",
+          "qVi": "Giới từ chỉ hướng chuyển động.",
+          "options": [
+            { "de": "links", "correct": true },
+            { "de": "linken", "correct": false },
+            { "de": "linker", "correct": false }
+          ],
+          "explain": "nach links = sang trái. 'Biegen Sie nach links ab!'"
+        },
+        {
+          "q": "„Es ist nicht weit.\" nghĩa là gì?",
+          "qVi": "Diễn đạt khoảng cách.",
+          "options": [
+            { "de": "Không xa", "correct": true },
+            { "de": "Rất xa", "correct": false },
+            { "de": "Gần đây có chợ", "correct": false }
+          ],
+          "explain": "nicht weit = không xa."
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: ___ ist der Bahnhof?",
+          "qVi": "Từ để hỏi về vị trí.",
+          "options": [
+            { "de": "Wo", "correct": true },
+            { "de": "Wer", "correct": false },
+            { "de": "Was", "correct": false }
+          ],
+          "explain": "Wo = ở đâu (hỏi vị trí). 'Wo ist der Bahnhof?'"
+        }
+      ]
+    },
+    {
+      "id": "a1-l8",
+      "lesson": 8,
+      "day": 8,
+      "title": "Beruf & Arbeit",
+      "titleVi": "Nghề nghiệp & công việc",
+      "duration": "50 phút",
+      "theme": "Nghề nghiệp",
+      "goals": [
+        "Gọi tên các nghề phổ biến",
+        "Dùng Modalverben: können, wollen, müssen",
+        "Hỏi - đáp về nghề nghiệp"
+      ],
+      "vocab": [
+        { "de": "der Beruf", "vi": "nghề nghiệp", "exampleDe": "Was bist du von Beruf?", "exampleVi": "Bạn làm nghề gì?" },
+        { "de": "die Arbeit", "vi": "công việc", "exampleDe": "Die Arbeit ist interessant.", "exampleVi": "Công việc thú vị." },
+        { "de": "der Arzt", "vi": "bác sĩ (nam)", "exampleDe": "Der Arzt hilft den Patienten.", "exampleVi": "Bác sĩ giúp đỡ bệnh nhân." },
+        { "de": "die Ärztin", "vi": "bác sĩ (nữ)", "exampleDe": "Meine Tante ist Ärztin.", "exampleVi": "Cô tôi là bác sĩ." },
+        { "de": "der Lehrer", "vi": "giáo viên (nam)", "exampleDe": "Der Lehrer erklärt die Grammatik.", "exampleVi": "Thầy giáo giải thích ngữ pháp." },
+        { "de": "der Koch", "vi": "đầu bếp (nam)", "exampleDe": "Der Koch kocht sehr gut.", "exampleVi": "Đầu bếp nấu rất ngon." },
+        { "de": "der Kellner", "vi": "người phục vụ (nam)", "exampleDe": "Der Kellner bringt das Essen.", "exampleVi": "Người phục vụ bưng đồ ăn." },
+        { "de": "arbeiten", "vi": "làm việc", "exampleDe": "Ich arbeite in einem Restaurant.", "exampleVi": "Tôi làm việc ở một nhà hàng." },
+        { "de": "der Patient", "vi": "bệnh nhân (nam)", "exampleDe": "Der Patient wartet auf den Arzt.", "exampleVi": "Bệnh nhân đang đợi bác sĩ." },
+        { "de": "das Krankenhaus", "vi": "bệnh viện", "exampleDe": "Sie arbeitet im Krankenhaus.", "exampleVi": "Cô ấy làm việc ở bệnh viện." }
+      ],
+      "grammar": {
+        "topic": "Modalverben: können, wollen, müssen",
+        "formula": "können + Infinitiv • wollen + Infinitiv • müssen + Infinitiv",
+        "explanation": "Động từ khiếm khuyết (Modalverben) đứng ở vị trí 2, động từ chính chạy về cuối câu ở dạng nguyên mẫu. können = có thể, wollen = muốn, müssen = phải.",
+        "examples": [
+          { "de": "Ich kann Deutsch sprechen.", "vi": "Tôi có thể nói tiếng Đức." },
+          { "de": "Ich will Koch werden.", "vi": "Tôi muốn trở thành đầu bếp." },
+          { "de": "Er muss heute arbeiten.", "vi": "Hôm nay anh ấy phải làm việc." }
+        ]
+      },
+      "dialogue": {
+        "title": "Nói về công việc (Über den Beruf sprechen)",
+        "de": "Anna: Was bist du von Beruf?\nMinh: Ich bin Koch. Ich arbeite in einem Restaurant. Und du?\nAnna: Ich arbeite als Krankenpflegerin im Krankenhaus.\nMinh: Das ist eine wichtige Arbeit. Arbeitest du gern?\nAnna: Ja, sehr gern. Und möchtest du später etwas anderes machen?\nMinh: Ich will später ein eigenes Restaurant haben.",
+        "vi": "Anna: Bạn làm nghề gì?\nMinh: Tôi là đầu bếp. Tôi làm việc ở một nhà hàng. Còn bạn?\nAnna: Tôi làm y tá ở bệnh viện.\nMinh: Đó là công việc quan trọng. Bạn có thích công việc không?\nAnna: Có, rất thích. Còn bạn muốn đổi nghề sau này không?\nMinh: Tôi muốn sau này có một nhà hàng riêng."
+      },
+      "speaking": {
+        "task": "Giới thiệu nghề nghiệp & mong muốn",
+        "taskVi": "Nói bạn làm nghề gì, nơi làm việc và ước mơ.",
+        "prompt": "Ich bin ... von Beruf. Ich arbeite ... . Ich will ... werden.",
+        "sample": "Ich bin Koch von Beruf. Ich arbeite in einem Restaurant in München. Die Arbeit ist interessant. Ich kann gut kochen. Ich will später ein eigenes Restaurant haben."
+      },
+      "quiz": [
+        {
+          "q": "„der Beruf\" có nghĩa là gì?",
+          "qVi": "Nghĩa của danh từ.",
+          "options": [
+            { "de": "Nghề nghiệp", "correct": true },
+            { "de": "Sở thích", "correct": false },
+            { "de": "Học vấn", "correct": false }
+          ],
+          "explain": "der Beruf = nghề nghiệp. 'Was bist du von Beruf?'"
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Ich ___ Deutsch sprechen.",
+          "qVi": "Modalverb chỉ khả năng.",
+          "options": [
+            { "de": "kann", "correct": true },
+            { "de": "muss", "correct": false },
+            { "de": "will", "correct": false }
+          ],
+          "explain": "können = có thể. 'Ich kann Deutsch sprechen.'"
+        },
+        {
+          "q": "„der Arzt\" là ai?",
+          "qVi": "Nghĩa của từ chỉ nghề nghiệp.",
+          "options": [
+            { "de": "Bác sĩ", "correct": true },
+            { "de": "Giáo viên", "correct": false },
+            { "de": "Đầu bếp", "correct": false }
+          ],
+          "explain": "der Arzt = bác sĩ. (die Ärztin = nữ bác sĩ)"
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Er ___ heute arbeiten.",
+          "qVi": "Modalverb chỉ sự bắt buộc.",
+          "options": [
+            { "de": "muss", "correct": true },
+            { "de": "kann", "correct": false },
+            { "de": "will", "correct": false }
+          ],
+          "explain": "müssen = phải. 'Er muss heute arbeiten.'"
+        },
+        {
+          "q": "„Was bist du von Beruf?\" hỏi điều gì?",
+          "qVi": "Mục đích của câu hỏi.",
+          "options": [
+            { "de": "Hỏi nghề nghiệp", "correct": true },
+            { "de": "Hỏi tuổi", "correct": false },
+            { "de": "Hỏi quê quán", "correct": false }
+          ],
+          "explain": "Câu hỏi chuẩn về nghề nghiệp: Was bist du von Beruf?"
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Sie arbeitet ___ Krankenhaus.",
+          "qVi": "Giới từ chỉ nơi làm việc.",
+          "options": [
+            { "de": "im", "correct": true },
+            { "de": "auf", "correct": false },
+            { "de": "zu", "correct": false }
+          ],
+          "explain": "im = in dem (trong). 'Sie arbeitet im Krankenhaus.'"
+        }
+      ]
+    },
+    {
+      "id": "a1-l9",
+      "lesson": 9,
+      "day": 9,
+      "title": "Freizeit & Hobbys",
+      "titleVi": "Thời gian rảnh & sở thích",
+      "duration": "45 phút",
+      "theme": "Sở thích",
+      "goals": [
+        "Nói về sở thích với gern / nicht gern",
+        "Dùng động từ tách: fernsehen",
+        "Hỏi - đáp về thời gian rảnh"
+      ],
+      "vocab": [
+        { "de": "die Freizeit", "vi": "thời gian rảnh", "exampleDe": "Was machst du in deiner Freizeit?", "exampleVi": "Bạn làm gì lúc rảnh?" },
+        { "de": "das Hobby", "vi": "sở thích", "exampleDe": "Mein Hobby ist Lesen.", "exampleVi": "Sở thích của tôi là đọc sách." },
+        { "de": "spielen", "vi": "chơi", "exampleDe": "Ich spiele gern Fußball.", "exampleVi": "Tôi thích chơi bóng đá." },
+        { "de": "lesen", "vi": "đọc", "exampleDe": "Ich lese gern Bücher.", "exampleVi": "Tôi thích đọc sách." },
+        { "de": "schwimmen", "vi": "bơi", "exampleDe": "Wir schwimmen im Sommer.", "exampleVi": "Chúng tôi bơi vào mùa hè." },
+        { "de": "singen", "vi": "hát", "exampleDe": "Sie singt sehr schön.", "exampleVi": "Cô ấy hát rất hay." },
+        { "de": "tanzen", "vi": "nhảy múa", "exampleDe": "Er tanzt gern.", "exampleVi": "Anh ấy thích nhảy." },
+        { "de": "fern|sehen", "vi": "xem tivi", "exampleDe": "Ich sehe abends gern fern.", "exampleVi": "Tôi thích xem tivi buổi tối." },
+        { "de": "die Musik", "vi": "âm nhạc", "exampleDe": "Ich höre gern Musik.", "exampleVi": "Tôi thích nghe nhạc." },
+        { "de": "gern", "vi": "thích (làm gì)", "exampleDe": "Ich koche sehr gern.", "exampleVi": "Tôi rất thích nấu ăn." }
+      ],
+      "grammar": {
+        "topic": "gern / nicht gern & Động từ tách (trennbare Verben)",
+        "formula": "Ich spiele gern ... • Ich sehe gern fern (fernsehen)",
+        "explanation": "gern đặt sau động từ để chỉ 'thích làm gì'; nicht gern = không thích. Động từ tách như fernsehen: trong câu đơn, tiền tố 'fern' tách ra chạy về cuối: 'ich sehe fern'.",
+        "examples": [
+          { "de": "Ich spiele gern Fußball.", "vi": "Tôi thích chơi bóng đá." },
+          { "de": "Ich sehe gern fern.", "vi": "Tôi thích xem tivi." },
+          { "de": "Er kocht nicht gern.", "vi": "Anh ấy không thích nấu ăn." }
+        ]
+      },
+      "dialogue": {
+        "title": "Nói về sở thích (Über Hobbys sprechen)",
+        "de": "Anna: Was machst du gern in deiner Freizeit?\nMinh: Ich lese gern Bücher und höre Musik. Und du?\nAnna: Ich spiele gern Fußball und schwimme gern.\nMinh: Siehst du gern fern?\nAnna: Nein, ich sehe nicht so gern fern. Und du?\nMinh: Ich sehe abends gern fern.",
+        "vi": "Anna: Bạn thích làm gì lúc rảnh?\nMinh: Tôi thích đọc sách và nghe nhạc. Còn bạn?\nAnna: Tôi thích chơi bóng đá và bơi.\nMinh: Bạn có thích xem tivi không?\nAnna: Không, tôi không thích xem tivi lắm. Còn bạn?\nMinh: Tôi thích xem tivi buổi tối."
+      },
+      "speaking": {
+        "task": "Nói về sở thích của bạn",
+        "taskVi": "Nói 2-3 sở thích và điều bạn không thích làm.",
+        "prompt": "In meiner Freizeit ... ich gern ... . Ich ... nicht gern ... .",
+        "sample": "In meiner Freizeit lese ich gern Bücher und höre gern Musik. Ich spiele auch gern Fußball. Ich sehe nicht gern fern. Das ist langweilig."
+      },
+      "quiz": [
+        {
+          "q": "„das Hobby\" có nghĩa là gì?",
+          "qVi": "Nghĩa của danh từ.",
+          "options": [
+            { "de": "Sở thích", "correct": true },
+            { "de": "Công việc", "correct": false },
+            { "de": "Bài tập", "correct": false }
+          ],
+          "explain": "das Hobby = sở thích."
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Ich ___ gern Bücher.",
+          "qVi": "Chia động từ lesen.",
+          "options": [
+            { "de": "lese", "correct": true },
+            { "de": "liest", "correct": false },
+            { "de": "lesen", "correct": false }
+          ],
+          "explain": "ich → lese. 'Ich lese gern Bücher.'"
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Ich sehe gern ___.",
+          "qVi": "Tiền tố tách của fernsehen.",
+          "options": [
+            { "de": "fern", "correct": true },
+            { "de": "sehe", "correct": false },
+            { "de": "fernsehen", "correct": false }
+          ],
+          "explain": "fernsehen → 'ich sehe ... fern'. Tiền tố fern về cuối câu."
+        },
+        {
+          "q": "„gern\" có nghĩa là gì?",
+          "qVi": "Nghĩa của trạng từ chỉ sở thích.",
+          "options": [
+            { "de": "Thích (làm gì đó)", "correct": true },
+            { "de": "Ghét", "correct": false },
+            { "de": "Thường xuyên", "correct": false }
+          ],
+          "explain": "gern = thích làm gì. 'Ich koche gern.' = Tôi thích nấu ăn."
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Er spielt gern ___.",
+          "qVi": "Hoàn thành câu về sở thích.",
+          "options": [
+            { "de": "Fußball", "correct": true },
+            { "de": "die Musik", "correct": false },
+            { "de": "ein Buch", "correct": false }
+          ],
+          "explain": "Fußball spielen = chơi bóng đá. (Musik hören = nghe nhạc)"
+        },
+        {
+          "q": "„schwimmen\" có nghĩa là gì?",
+          "qVi": "Nghĩa của động từ.",
+          "options": [
+            { "de": "Bơi", "correct": true },
+            { "de": "Chạy", "correct": false },
+            { "de": "Nhảy", "correct": false }
+          ],
+          "explain": "schwimmen = bơi. (tanzen = nhảy)"
+        }
+      ]
+    },
+    {
+      "id": "a1-l10",
+      "lesson": 10,
+      "day": 10,
+      "title": "Gesundheit & Körper",
+      "titleVi": "Sức khỏe & cơ thể",
+      "duration": "50 phút",
+      "theme": "Sức khỏe",
+      "goals": [
+        "Gọi tên các bộ phận cơ thể",
+        "Diễn đạt triệu chứng: Ich habe Kopfschmerzen",
+        "Dùng Modalverb sollen và kính ngữ du/Sie"
+      ],
+      "vocab": [
+        { "de": "der Kopf", "vi": "cái đầu", "exampleDe": "Mein Kopf tut weh.", "exampleVi": "Đầu tôi đau." },
+        { "de": "der Arm", "vi": "cánh tay", "exampleDe": "Er hat einen gebrochenen Arm.", "exampleVi": "Anh ấy bị gãy tay." },
+        { "de": "das Bein", "vi": "chân", "exampleDe": "Mein Bein tut weh.", "exampleVi": "Chân tôi đau." },
+        { "de": "die Hand", "vi": "bàn tay", "exampleDe": "Ich wasche meine Hände.", "exampleVi": "Tôi rửa tay." },
+        { "de": "die Schmerzen", "vi": "những cơn đau", "exampleDe": "Ich habe starke Schmerzen.", "exampleVi": "Tôi đau dữ dội." },
+        { "de": "krank", "vi": "ốm, bệnh", "exampleDe": "Ich bin krank.", "exampleVi": "Tôi bị ốm." },
+        { "de": "gesund", "vi": "khỏe mạnh", "exampleDe": "Sport macht gesund.", "exampleVi": "Thể thao giúp khỏe mạnh." },
+        { "de": "das Fieber", "vi": "sốt", "exampleDe": "Das Kind hat hohes Fieber.", "exampleVi": "Đứa trẻ sốt cao." },
+        { "de": "die Medizin", "vi": "thuốc", "exampleDe": "Die Medizin hilft gegen Schmerzen.", "exampleVi": "Thuốc giúp giảm đau." },
+        { "de": "die Apotheke", "vi": "hiệu thuốc", "exampleDe": "Die Apotheke ist neben dem Markt.", "exampleVi": "Hiệu thuốc nằm cạnh chợ." }
+      ],
+      "grammar": {
+        "topic": "Modalverb sollen & Diễn đạt triệu chứng",
+        "formula": "Ich habe + Körperteilschmerzen • Du/Sie sollen + Infinitiv",
+        "explanation": "Kể triệu chứng: 'Ich habe Kopfschmerzen' (tôi đau đầu). Khuyên bảo dùng sollen: 'Du sollst ...' (thân mật) / 'Sie sollen ...' (lịch sự). Gute Besserung! = Mau khỏe nhé!",
+        "examples": [
+          { "de": "Ich habe Kopfschmerzen und Fieber.", "vi": "Tôi bị đau đầu và sốt." },
+          { "de": "Du sollst zum Arzt gehen.", "vi": "Bạn nên đi khám bác sĩ." },
+          { "de": "Sie sollen viel Wasser trinken.", "vi": "Ông/bà nên uống nhiều nước." }
+        ]
+      },
+      "dialogue": {
+        "title": "Đi khám bác sĩ (Beim Arzt)",
+        "de": "Arzt: Guten Tag! Was fehlt Ihnen?\nMinh: Guten Tag, Herr Doktor! Ich habe Kopfschmerzen und Fieber.\nArzt: Seit wann fühlen Sie sich krank?\nMinh: Seit gestern Abend.\nArzt: Sie sollen viel Wasser trinken und zwei Tage zu Hause bleiben. Hier ist die Medizin.\nMinh: Vielen Dank! Auf Wiedersehen.",
+        "vi": "Bác sĩ: Xin chào! Anh bị làm sao?\nMinh: Chào bác sĩ! Tôi đau đầu và sốt.\nBác sĩ: Anh thấy mệt từ khi nào?\nMinh: Từ tối qua ạ.\nBác sĩ: Anh nên uống nhiều nước và nghỉ ở nhà hai ngày. Đây là thuốc.\nMinh: Cảm ơn nhiều! Tạm biệt."
+      },
+      "speaking": {
+        "task": "Kể triệu chứng với bác sĩ",
+        "taskVi": "Nói bạn đau gì, từ khi nào và làm theo lời khuyên.",
+        "prompt": "Guten Tag, Herr Doktor! Ich habe ... . Ich fühle mich ... seit ... .",
+        "sample": "Guten Tag, Herr Doktor! Ich habe Kopfschmerzen und Fieber. Ich fühle mich krank seit gestern Abend. Ich soll viel Wasser trinken und zu Hause bleiben. Gute Besserung! Danke!"
+      },
+      "quiz": [
+        {
+          "q": "„die Schmerzen\" có nghĩa là gì?",
+          "qVi": "Nghĩa của danh từ số nhiều.",
+          "options": [
+            { "de": "Những cơn đau", "correct": true },
+            { "de": "Viên thuốc", "correct": false },
+            { "de": "Cơn sốt", "correct": false }
+          ],
+          "explain": "die Schmerzen = những cơn đau. (das Fieber = sốt)"
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Ich habe ___. ",
+          "qVi": "Diễn đạt triệu chứng đau đầu.",
+          "options": [
+            { "de": "Kopfschmerzen", "correct": true },
+            { "de": "Fußball", "correct": false },
+            { "de": "Hunger", "correct": false }
+          ],
+          "explain": "Ich habe Kopfschmerzen = tôi đau đầu."
+        },
+        {
+          "q": "„krank\" có nghĩa là gì?",
+          "qVi": "Nghĩa của tính từ.",
+          "options": [
+            { "de": "Ốm, bệnh", "correct": true },
+            { "de": "Khỏe mạnh", "correct": false },
+            { "de": "Mệt mỏi", "correct": false }
+          ],
+          "explain": "krank = ốm, bệnh. (gesund = khỏe mạnh)"
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Du ___ zum Arzt gehen.",
+          "qVi": "Modalverb khuyên bảo với du.",
+          "options": [
+            { "de": "sollst", "correct": true },
+            { "de": "sollen", "correct": false },
+            { "de": "kannst", "correct": false }
+          ],
+          "explain": "du → sollst. 'Du sollst zum Arzt gehen.' = Bạn nên đi khám."
+        },
+        {
+          "q": "„Gute Besserung!\" dùng khi nào?",
+          "qVi": "Lời chúc khi người khác ốm.",
+          "options": [
+            { "de": "Chúc mau khỏe bệnh", "correct": true },
+            { "de": "Chúc ngủ ngon", "correct": false },
+            { "de": "Chúc mừng sinh nhật", "correct": false }
+          ],
+          "explain": "Gute Besserung = mau khỏe nhé (với người đang ốm)."
+        },
+        {
+          "q": "„das Fieber\" có nghĩa là gì?",
+          "qVi": "Nghĩa của danh từ.",
+          "options": [
+            { "de": "Cơn sốt", "correct": true },
+            { "de": "Cơn đau", "correct": false },
+            { "de": "Cảm lạnh", "correct": false }
+          ],
+          "explain": "das Fieber = sốt. 'Ich habe Fieber.' = Tôi bị sốt."
+        }
+      ]
+    },
+    {
+      "id": "a1-l11",
+      "lesson": 11,
+      "day": 11,
+      "title": "Reisen & Wetter",
+      "titleVi": "Du lịch & thời tiết",
+      "duration": "50 phút",
+      "theme": "Du lịch",
+      "goals": [
+        "Nói về kỳ nghỉ và phương tiện đi lại",
+        "Mô tả thời tiết: Es ist sonnig, warm, kalt",
+        "Dùng Perfekt với haben và sein"
+      ],
+      "vocab": [
+        { "de": "reisen", "vi": "du lịch", "exampleDe": "Ich reise gern.", "exampleVi": "Tôi thích du lịch." },
+        { "de": "der Urlaub", "vi": "kỳ nghỉ", "exampleDe": "Ich habe eine Woche Urlaub.", "exampleVi": "Tôi có một tuần nghỉ." },
+        { "de": "der Zug", "vi": "tàu hỏa", "exampleDe": "Der Zug fährt um zehn Uhr ab.", "exampleVi": "Tàu khởi hành lúc 10 giờ." },
+        { "de": "das Flugzeug", "vi": "máy bay", "exampleDe": "Wir fliegen mit dem Flugzeug.", "exampleVi": "Chúng tôi đi máy bay." },
+        { "de": "das Ticket", "vi": "vé", "exampleDe": "Ich habe das Ticket gekauft.", "exampleVi": "Tôi đã mua vé." },
+        { "de": "der Koffer", "vi": "vali", "exampleDe": "Mein Koffer ist sehr schwer.", "exampleVi": "Vali của tôi rất nặng." },
+        { "de": "die Sonne", "vi": "mặt trời", "exampleDe": "Die Sonne scheint.", "exampleVi": "Trời nắng." },
+        { "de": "der Regen", "vi": "mưa", "exampleDe": "Der Regen hört nicht auf.", "exampleVi": "Mưa không ngớt." },
+        { "de": "der Schnee", "vi": "tuyết", "exampleDe": "Im Winter liegt Schnee.", "exampleVi": "Mùa đông có tuyết." },
+        { "de": "das Wetter", "vi": "thời tiết", "exampleDe": "Wie ist das Wetter heute?", "exampleVi": "Hôm nay thời tiết thế nào?" }
+      ],
+      "grammar": {
+        "topic": "Perfekt: haben & sein + Partizip II",
+        "formula": "Ich habe + Partizip II • Ich bin + Partizip II (di chuyển)",
+        "explanation": "Thì quá khứ gần (Perfekt) = trợ động từ haben/sein chia ở hiện tại + Partizip II cuối câu. Động từ chỉ di chuyển/đổi trạng thái dùng sein: fliegen → bin geflogen, fahren → bin gefahren. Các động từ khác dùng haben: kaufen → habe gekauft, buchen → habe gebucht.",
+        "examples": [
+          { "de": "Ich bin nach Deutschland geflogen.", "vi": "Tôi đã bay sang Đức." },
+          { "de": "Ich habe das Ticket gekauft.", "vi": "Tôi đã mua vé." },
+          { "de": "Es hat geregnet.", "vi": "Trời đã mưa." }
+        ]
+      },
+      "dialogue": {
+        "title": "Kể về kỳ nghỉ (Über den Urlaub sprechen)",
+        "de": "Anna: Wo warst du im Urlaub?\nMinh: Ich war in Vietnam. Ich bin nach Hanoi geflogen.\nAnna: Wie war das Wetter?\nMinh: Es war sehr warm und sonnig. Aber einmal hat es geregnet.\nAnna: Hast du das Hotel gebucht?\nMinh: Ja, ich habe das Hotel im Internet gebucht. Es war sehr schön.",
+        "vi": "Anna: Bạn đã đi nghỉ ở đâu?\nMinh: Tôi ở Việt Nam. Tôi đã bay đến Hà Nội.\nAnna: Thời tiết thế nào?\nMinh: Rất ấm và nắng. Nhưng có một lần trời mưa.\nAnna: Bạn đã đặt khách sạn chưa?\nMinh: Rồi, tôi đã đặt khách sạn qua Internet. Rất đẹp."
+      },
+      "speaking": {
+        "task": "Kể về một chuyến đi của bạn",
+        "taskVi": "Nói bạn đã đi đâu, đi bằng gì và thời tiết thế nào.",
+        "prompt": "Im Urlaub war ich in ... . Ich bin nach ... geflogen/gefahren. Das Wetter war ... .",
+        "sample": "Im Urlaub war ich in Deutschland. Ich bin nach Berlin geflogen. Das Wetter war kalt, aber sonnig. Ich habe das Hotel im Internet gebucht. Es war sehr schön. Ich reise sehr gern."
+      },
+      "quiz": [
+        {
+          "q": "„der Urlaub\" có nghĩa là gì?",
+          "qVi": "Nghĩa của danh từ.",
+          "options": [
+            { "de": "Kỳ nghỉ", "correct": true },
+            { "de": "Ngày lễ quốc gia", "correct": false },
+            { "de": "Cuối tuần", "correct": false }
+          ],
+          "explain": "der Urlaub = kỳ nghỉ (nghỉ phép, nghỉ hè...)."
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Ich ___ nach Deutschland geflogen.",
+          "qVi": "Trợ động từ Perfekt cho fliegen.",
+          "options": [
+            { "de": "bin", "correct": true },
+            { "de": "habe", "correct": false },
+            { "de": "hat", "correct": false }
+          ],
+          "explain": "fliegen chỉ di chuyển → dùng sein: 'Ich bin geflogen.'"
+        },
+        {
+          "q": "„das Wetter\" có nghĩa là gì?",
+          "qVi": "Nghĩa của danh từ.",
+          "options": [
+            { "de": "Thời tiết", "correct": true },
+            { "de": "Mùa", "correct": false },
+            { "de": "Khí hậu vùng", "correct": false }
+          ],
+          "explain": "das Wetter = thời tiết."
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Ich ___ das Ticket gekauft.",
+          "qVi": "Trợ động từ Perfekt cho kaufen.",
+          "options": [
+            { "de": "habe", "correct": true },
+            { "de": "bin", "correct": false },
+            { "de": "ist", "correct": false }
+          ],
+          "explain": "kaufen → dùng haben: 'Ich habe gekauft.'"
+        },
+        {
+          "q": "„die Sonne scheint\" nghĩa là gì?",
+          "qVi": "Mô tả thời tiết nắng.",
+          "options": [
+            { "de": "Trời nắng", "correct": true },
+            { "de": "Trời mưa", "correct": false },
+            { "de": "Trời lạnh", "correct": false }
+          ],
+          "explain": "die Sonne scheint = mặt trời chiếu sáng = trời nắng."
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Es war sehr warm und ___. ",
+          "qVi": "Hoàn thành mô tả thời tiết.",
+          "options": [
+            { "de": "sonnig", "correct": true },
+            { "de": "schwer", "correct": false },
+            { "de": "laut", "correct": false }
+          ],
+          "explain": "warm und sonnig = ấm và nắng. (schwer = nặng, laut = ồn)"
+        }
+      ]
+    },
+    {
+      "id": "a1-mock",
+      "lesson": 12,
+      "day": 12,
+      "title": "Start Deutsch 1 Mock Exam",
+      "titleVi": "Kiểm tra tổng hợp cuối khóa A1",
+      "duration": "60 phút",
+      "theme": "Kiểm tra tổng hợp",
+      "goals": [
+        "Ôn tập toàn bộ 11 bài đã học",
+        "Làm bài kiểm tra mô phỏng Start Deutsch 1",
+        "Đạt từ 60% trở lên để hoàn thành khóa A1"
+      ],
+      "vocab": [],
+      "grammar": {
+        "topic": "Ôn tập toàn diện A1",
+        "formula": "Tổng hợp: sein/heißen, số & giờ, Possessivpronomen, Akkusativ, es gibt, Imperativ, Modalverben, trennbare Verben, Perfekt",
+        "explanation": "Bài 12 là bài kiểm tra tổng hợp (Mock Exam) mô phỏng dạng bài Start Deutsch 1. Trả lời đúng từ 60% (7/12 câu) trở lên là đạt.",
+        "examples": [
+          { "de": "Wie heißt du? - Ich heiße ...", "vi": "Bạn tên gì? - Tôi tên là ..." },
+          { "de": "Ich möchte einen Kaffee.", "vi": "Cho tôi một ly cà phê." },
+          { "de": "Ich bin nach Berlin gefahren.", "vi": "Tôi đã đi Berlin." }
+        ]
+      },
+      "dialogue": {
+        "title": "Hội thoại tổng hợp (Dialog zum Üben)",
+        "de": "Anna: Hallo Minh! Wie geht es dir?\nMinh: Danke, gut! Und dir?\nAnna: Auch gut. Ich war am Wochenende in Berlin. Das Wetter war schön.\nMinh: Klasse! Bist du mit dem Zug gefahren?\nAnna: Ja, ich bin mit dem Zug gefahren. Und ich habe ein Geschenk für dich gekauft.\nMinh: Oh, danke schön! Das ist sehr nett!",
+        "vi": "Anna: Chào Minh! Bạn khỏe không?\nMinh: Cảm ơn, khỏe! Còn bạn?\nAnna: Cũng khỏe. Cuối tuần tôi đi Berlin. Thời tiết đẹp.\nMinh: Tuyệt! Bạn đi tàu hỏa à?\nAnna: Ừ, mình đi tàu hỏa. Và mình có mua một món quà cho bạn.\nMinh: Ôi, cảm ơn nhiều! Bạn thật tử tế!"
+      },
+      "speaking": {
+        "task": "Phỏng vấn tổng hợp cuối khóa",
+        "taskVi": "Trả lời đầy đủ: tên, quê quán, nơi ở, nghề nghiệp, gia đình, sở thích.",
+        "prompt": "Ich heiße ... Ich komme aus ... Ich wohne in ... Ich bin ... von Beruf ...",
+        "sample": "Hallo! Ich heiße Minh. Ich komme aus Vietnam. Ich wohne in Berlin. Ich bin Koch von Beruf. Ich habe eine Schwester. In meiner Freizeit lese ich gern Bücher und höre Musik. Ich lerne Deutsch und möchte gut sprechen. Das war mein A1-Kurs! Danke schön!"
+      },
+      "quiz": [
+        {
+          "q": "„Wie heißt du?\" - trả lời đúng nhất?",
+          "qVi": "Trả lời câu hỏi giới thiệu tên.",
+          "options": [
+            { "de": "Ich heiße Minh.", "correct": true },
+            { "de": "Ich komme aus Vietnam.", "correct": false },
+            { "de": "Ich wohne in Berlin.", "correct": false }
+          ],
+          "explain": "Wie heißt du? hỏi tên → Ich heiße ..."
+        },
+        {
+          "q": "„drei\" là số mấy?",
+          "qVi": "Số đếm tiếng Đức.",
+          "options": [
+            { "de": "3", "correct": true },
+            { "de": "13", "correct": false },
+            { "de": "30", "correct": false }
+          ],
+          "explain": "drei = 3. (dreizehn = 13, dreißig = 30)"
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Das ist ___ Mutter.",
+          "qVi": "Possessivpronomen với die Mutter.",
+          "options": [
+            { "de": "meine", "correct": true },
+            { "de": "mein", "correct": false },
+            { "de": "meinen", "correct": false }
+          ],
+          "explain": "die Mutter (giống cái) → meine Mutter."
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Ich möchte ___ Tee.",
+          "qVi": "Akkusativ với der Tee.",
+          "options": [
+            { "de": "einen", "correct": true },
+            { "de": "eine", "correct": false },
+            { "de": "ein", "correct": false }
+          ],
+          "explain": "der Tee → Akkusativ = einen."
+        },
+        {
+          "q": "„Wie viel kostet das Brot?\" hỏi gì?",
+          "qVi": "Mục đích câu hỏi mua sắm.",
+          "options": [
+            { "de": "Giá của bánh mì", "correct": true },
+            { "de": "Vị của bánh mì", "correct": false },
+            { "de": "Thời gian bán", "correct": false }
+          ],
+          "explain": "Wie viel kostet ...? = hỏi giá."
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Es gibt ___ Küche in der Wohnung.",
+          "qVi": "es gibt + Akkusativ với die Küche.",
+          "options": [
+            { "de": "eine", "correct": true },
+            { "de": "einen", "correct": false },
+            { "de": "ein", "correct": false }
+          ],
+          "explain": "die Küche → Akkusativ = eine. 'Es gibt eine Küche.'"
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Gehen Sie geradeaus, dann ___ Sie nach links ab.",
+          "qVi": "Động từ tách trong câu chỉ đường.",
+          "options": [
+            { "de": "biegen", "correct": true },
+            { "de": "gehen", "correct": false },
+            { "de": "nehmen", "correct": false }
+          ],
+          "explain": "abbiegen (rẽ): 'Biegen Sie ... ab!'"
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Ich ___ Deutsch sprechen.",
+          "qVi": "Modalverb khả năng.",
+          "options": [
+            { "de": "kann", "correct": true },
+            { "de": "muss", "correct": false },
+            { "de": "will", "correct": false }
+          ],
+          "explain": "können = có thể. 'Ich kann Deutsch sprechen.'"
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Ich ___ gern Bücher.",
+          "qVi": "Chia động từ lesen.",
+          "options": [
+            { "de": "lese", "correct": true },
+            { "de": "liest", "correct": false },
+            { "de": "lesen", "correct": false }
+          ],
+          "explain": "ich → lese. 'Ich lese gern Bücher.'"
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Ich habe ___. ",
+          "qVi": "Triệu chứng đau đầu.",
+          "options": [
+            { "de": "Kopfschmerzen", "correct": true },
+            { "de": "Fußball", "correct": false },
+            { "de": "Urlaub", "correct": false }
+          ],
+          "explain": "Ich habe Kopfschmerzen = tôi đau đầu."
+        },
+        {
+          "q": "Chọn đáp án ĐÚNG: Ich ___ mit dem Zug nach Berlin gefahren.",
+          "qVi": "Perfekt với fahren (di chuyển).",
+          "options": [
+            { "de": "bin", "correct": true },
+            { "de": "habe", "correct": false },
+            { "de": "hat", "correct": false }
+          ],
+          "explain": "fahren chỉ di chuyển → sein: 'Ich bin gefahren.'"
+        },
+        {
+          "q": "„Guten Morgen!\" dùng khi nào?",
+          "qVi": "Lời chào theo thời điểm.",
+          "options": [
+            { "de": "Buổi sáng", "correct": true },
+            { "de": "Buổi tối", "correct": false },
+            { "de": "Buổi trưa", "correct": false }
+          ],
+          "explain": "Guten Morgen = chào buổi sáng. (Guten Abend = chào buổi tối)"
+        }
+      ]
+    }
+  ],
+  "mockExam": [
+    { "q": "Wie heißt du? - Ich ___ Minh.", "qVi": "Chia động từ heißen.", "options": [{ "de": "heiße", "correct": true }, { "de": "heißt", "correct": false }, { "de": "heiß", "correct": false }], "explain": "ich → heiße. 'Ich heiße Minh.'" },
+    { "q": "Chọn số ĐÚNG: zwanzig = ?", "qVi": "Số đếm.", "options": [{ "de": "20", "correct": true }, { "de": "12", "correct": false }, { "de": "22", "correct": false }], "explain": "zwanzig = 20." },
+    { "q": "Das ist mein ___ und das ist meine ___.", "qVi": "Possessivpronomen theo giống.", "options": [{ "de": "Vater / Mutter", "correct": true }, { "de": "Mutter / Vater", "correct": false }, { "de": "Schwester / Bruder", "correct": false }], "explain": "der Vater → mein, die Mutter → meine." },
+    { "q": "Ich möchte ___ Apfel, bitte.", "qVi": "Akkusativ với der Apfel.", "options": [{ "de": "einen", "correct": true }, { "de": "eine", "correct": false }, { "de": "ein", "correct": false }], "explain": "der Apfel → einen." },
+    { "q": "„Es kostet zehn Euro.\" - giá bao nhiêu?", "qVi": "Nghe hiểu giá cả.", "options": [{ "de": "10 Euro", "correct": true }, { "de": "20 Euro", "correct": false }, { "de": "2 Euro", "correct": false }], "explain": "zehn Euro = 10 Euro." },
+    { "q": "Es gibt ___ Zimmer in meiner Wohnung.", "qVi": "es gibt + Akkusativ với das Zimmer.", "options": [{ "de": "ein", "correct": true }, { "de": "eine", "correct": false }, { "de": "einen", "correct": false }], "explain": "das Zimmer → ein." },
+    { "q": "Gehen Sie ___, dann rechts.", "qVi": "Chỉ đường đi thẳng.", "options": [{ "de": "geradeaus", "correct": true }, { "de": "links", "correct": false }, { "de": "zurück", "correct": false }], "explain": "geradeaus = đi thẳng." },
+    { "q": "Was bist du von Beruf? - Ich ___ Koch.", "qVi": "Động từ sein với ich.", "options": [{ "de": "bin", "correct": true }, { "de": "bist", "correct": false }, { "de": "ist", "correct": false }], "explain": "ich → bin. 'Ich bin Koch.'" },
+    { "q": "Ich sehe abends gern ___.", "qVi": "Động từ tách fernsehen.", "options": [{ "de": "fern", "correct": true }, { "de": "sehe", "correct": false }, { "de": "seht", "correct": false }], "explain": "fernsehen → 'ich sehe ... fern'." },
+    { "q": "Du ___ viel Wasser trinken.", "qVi": "Khuyên bảo với du.", "options": [{ "de": "sollst", "correct": true }, { "de": "kannst", "correct": false }, { "de": "wollst", "correct": false }], "explain": "du → sollst. 'Du sollst ... trinken.'" },
+    { "q": "Wie ist das ___ heute? - Es ist warm und sonnig.", "qVi": "Từ chỉ thời tiết.", "options": [{ "de": "Wetter", "correct": true }, { "de": "Wochenende", "correct": false }, { "de": "Urlaub", "correct": false }], "explain": "das Wetter = thời tiết." },
+    { "q": "Ich ___ gestern einen Kaffee getrunken.", "qVi": "Perfekt với trinken.", "options": [{ "de": "habe", "correct": true }, { "de": "bin", "correct": false }, { "de": "ist", "correct": false }], "explain": "trinken → haben: 'Ich habe getrunken.'" }
+  ]
+}
