@@ -1714,11 +1714,7 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
 <script src="./faecher/deutsch/deutsch-quiz.js?v=1"></script>
 <script src="./faecher/gk/gk-gle-data.js?v=1"></script>
 <script src="./js/faecher.js?v=10"></script>
-<script src="./js/deutsch-track.js?v=3"></script>
 <script src="./faecher/gk/gk-uebungen.js?v=4"></script>
-<script src="./faecher/deutsch/a1-data.js?v=2"></script>
-<script src="./faecher/deutsch/a1-quiz.js?v=2"></script>
-<script src="./faecher/deutsch/beruf-data.js?v=2"></script>
 <script>
 /* ============ DATEN (Fleischteile) ============ */
 const DATA = {
@@ -2937,7 +2933,6 @@ function fachThemeSetTab(tabId){
       if(window.enableVocabOn) enableVocabOn(panel);
       else if(window.bindTerms) bindTerms(panel);
     }catch(e){}
-    try { if (window.DeutschTrack && theme && (theme.grammar || theme.listen || theme.speak)) window.DeutschTrack.renderExtras(panel, theme); } catch (e) {}
   }
 }
 
@@ -3161,10 +3156,6 @@ function fachQuizResult(){
   area.innerHTML=html;
   const last=[...new Set(fQuiz.pool.map(q=>q.theme))];
   const fachId=fQuiz.fachId;
-  if (typeof fachId !== 'undefined' && fachId && String(fachId).startsWith('deutsch-') && pct >= 80 && window.DeutschTrack) {
-    window.DeutschTrack.markPassed(fachId);
-    setTimeout(function () { try { toast('🎉 ' + (window.FachForm && window.FachForm.findFach(fachId) ? window.FachForm.findFach(fachId).name : fachId) + ': đạt ≥80% — đã mở khóa!', 'ok'); } catch (_) {} }, 400);
-  }
   document.getElementById('fqAgain').onclick=()=>fachQuizStart(fachId,last,'all');
   document.getElementById('fqPick').onclick=()=>fachQuizIntro(fachId,last);
   document.getElementById('fqBack').onclick=()=>go(fachRoute(window.FachForm.findFach(fachId),'hub'));
@@ -4256,25 +4247,16 @@ function router(){
   }
 
   if (hash.startsWith('#/deutsch')) {
-    if (window.DeutschTrack && window.DeutschTrack.ensureFächer && window.FachForm) window.DeutschTrack.ensureFächer();
-    var parts = hash.replace('#/deutsch', '').split('/').filter(Boolean);
-    var lv = parts[0] || '';
-    var fachId = (window.DeutschTrack && window.DeutschTrack.levelFachId(lv)) || null;
-    if (!fachId) { // #/deutsch hoặc level chưa có → hub Deutsch
-      document.querySelectorAll('.view').forEach(function (v) { v.classList.remove('active'); });
-      var dv = document.getElementById('v-deutsch');
-      if (dv) dv.classList.add('active');
-      let cb = document.getElementById('crumbs');
-      if (cb) cb.innerHTML = '<a onclick="go(\'#/\')">Start</a><span class="sep">›</span><span>Deutsch A1–C1</span>';
-      renderDeutschHub();
-      setBottomNav(hash); window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
-    // #/deutsch/<level>[/quiz|/unit/lektion] → reuse fach machinery
-    if (parts[1] === 'quiz') { location.hash = '#/fach/' + fachId + '/quiz'; return; }
-    if (parts.length === 2) { location.hash = '#/fach/' + fachId; return; }          // unit list = fach hub
-    if (parts.length === 3 && parts[2]) { location.hash = '#/fach/' + fachId + '/theme/' + parts[1] + '-' + parts[2]; return; } // lektion: u1-l2
-    location.hash = '#/fach/' + fachId; return;
+    // Mọi route #/deutsch (kể cả cấp độ/unit/lektion cũ) → về launcher hub
+    if (hash !== '#/deutsch') { location.hash = '#/deutsch'; return; }
+    document.querySelectorAll('.view').forEach(function (v) { v.classList.remove('active'); });
+    var dv = document.getElementById('v-deutsch');
+    if (dv) dv.classList.add('active');
+    let cb = document.getElementById('crumbs');
+    if (cb) cb.innerHTML = '<a onclick="go(\'#/\')">Start</a><span class="sep">›</span><span>Deutsch A1–C1</span>';
+    renderDeutschHub();
+    setBottomNav(hash); window.scrollTo({ top: 0, behavior: 'smooth' });
+    return;
   }
 
   let r=ROUTES[hash];
@@ -5116,18 +5098,20 @@ function hideTrackGate() {
 function renderDeutschHub() {
   var body = document.getElementById('deutschHubBody');
   if (!body) return;
-  if (!window.DeutschTrack) { body.innerHTML = '<p class="muted">Modul chưa sẵn sàng.</p>'; return; }
-  var lv = window.DeutschTrack.levels();
-  body.innerHTML = '<div class="grid2">' + lv.map(function (l) {
-    var done = window.DeutschTrack.isPassedCached(l.id);
-    var badge = l.level === 'beruf' ? '🛎️' : l.badge;
-    return '<button type="button" class="tile" onclick="go(\'#/deutsch/' + l.level + '\')">'
-      + '<div class="ic">' + badge + '</div>'
-      + '<h3>' + l.title + '</h3>'
-      + '<p>' + l.units + ' Units' + (done ? ' · ✅ hoàn thành' : '') + '</p>'
-      + '</button>';
-  }).join('') + '</div>'
-    + '<div class="hint" style="margin-top:14px">💡 Mỗi cấp: học từ vựng bằng flashcards, ngữ pháp kèm bài tập, luyện nghe 🔊, nói 🎤. Đạt ≥80% quiz cuối cấp để mở khóa cấp sau.</div>';
+  body.innerHTML =
+    '<div class="card" style="max-width:560px;margin:0 auto;text-align:center;padding:28px 20px">'
+    + '<div style="font-size:44px;line-height:1">🇩🇪</div>'
+    + '<h3 style="margin:12px 0 4px">Deutsch A1–C1 · Sprachziel Master</h3>'
+    + '<p class="muted">Khóa học A1–B1 (36 bài) · 54 bộ đề TELC/Goethe · 6.000 từ vựng · 86 chủ điểm ngữ pháp · viết mẫu &amp; luyện nói AI.</p>'
+    + '<div style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:14px 0">'
+    + '<span class="st-tick good">36 Bài</span>'
+    + '<span class="st-tick good">54 Đề</span>'
+    + '<span class="st-tick good">6.000 Từ</span>'
+    + '<span class="st-tick good">86 Ngữ pháp</span>'
+    + '</div>'
+    + '<a class="btn" style="font-size:15px;padding:12px 22px" href="./deutsch-a1-c1/">Mở app học đầy đủ →</a>'
+    + '<p class="muted" style="margin-top:12px">Ứng dụng học tiếng Đức chuyên sâu nằm ở thư mục con của website này.</p>'
+    + '</div>';
 }
 function unlockApp(player){
   const gate=document.getElementById('loginGate');

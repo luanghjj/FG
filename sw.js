@@ -1,5 +1,5 @@
 /* Service Worker – AzubiHub (offline shell + static assets) */
-const CACHE = 'azubihub-v107';
+const CACHE = 'azubihub-v108';
 const PRECACHE = [
   './',
   './js/wissen.js',
@@ -54,10 +54,6 @@ const PRECACHE = [
   './faecher/bfk1/bfk1-quiz.js',
   './faecher/bfk2/bfk2-quiz.js',
   './faecher/deutsch/deutsch-quiz.js',
-  './faecher/deutsch/a1-data.js',
-  './faecher/deutsch/a1-quiz.js',
-  './faecher/deutsch/beruf-data.js',
-  './js/deutsch-track.js',
   './manifest.webmanifest',
   './images/icons/icon-192.png',
   './images/icons/icon-512.png',

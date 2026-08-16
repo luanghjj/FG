@@ -29,3 +29,5 @@ _ocr/
 Deutsch_a1-c1/node_modules/
 Deutsch_a1-c1/dist/
 Deutsch_a1-c1/tsconfig.tsbuildinfo
+
+# Bản build deploy của app React (tạo từ: cd Deutsch_a1-c1 && npm run build && rm -rf ../deutsch-a1-c1 && cp -R dist ../deutsch-a1-c1)

@@ -272,7 +272,7 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({ onNavigate }) => {
           <div className="flex flex-wrap items-center gap-2">
             {currentLevel.hasCourse ? (
               <button
-                onClick={() => onNavigate('a1course', selectedLevelKey as CourseLevel)}
+                onClick={() => onNavigate('course', selectedLevelKey as CourseLevel)}
                 className="px-5 py-2.5 rounded-xl bg-ios-ok hover:bg-[#1E7A34] text-white text-xs font-bold shadow-xs transition-all flex items-center gap-2 cursor-pointer"
               >
                 <BookMarked className="w-4 h-4" />
