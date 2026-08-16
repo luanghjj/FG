@@ -25,7 +25,7 @@ Quyết định: **chỉ dùng app React** làm nguồn học Deutsch duy nhất
    - Mô tả ngắn + badge (36 bài khóa học · 54 bộ đề · 6.000 từ vựng · 86 ngữ pháp)
    - Nút **"Mở app học đầy đủ →"** `href="./deutsch-a1-c1/"`
 2. **Routing `#/deutsch`** (~index.html:4258): mọi route `#/deutsch/<level>[/...]` redirect về `#/deutsch` (launcher). Bỏ map `#/fach/deutsch-a1`.
-3. **Gỡ script cũ** khỏi index.html ~1714–1721: `faecher/deutsch/deutsch-quiz.js`, `js/deutsch-track.js`, `a1-data.js`, `a1-quiz.js`, `beruf-data.js`.
+3. **Gỡ script cũ** khỏi index.html: `js/deutsch-track.js`, `faecher/deutsch/a1-data.js`, `a1-quiz.js`, `beruf-data.js`. **GIỮ** `faecher/deutsch/deutsch-quiz.js` (DEUTSCH_QUIZ = Visualisierung quiz, dùng cho fach `deutsch` + `#/exam/deutsch`).
 4. **Gỡ wiring liên quan**:
    - `DeutschTrack.ensureFächer()` trong routing `#/deutsch`
    - Nhánh unlock `fachId.startsWith('deutsch-')` (~index.html:3164)
