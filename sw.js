@@ -1,10 +1,12 @@
 /* Service Worker – AzubiHub (offline shell + static assets) */
-const CACHE = 'azubihub-v108';
+const CACHE = 'azubihub-v109';
 const PRECACHE = [
   './',
   './js/wissen.js',
   './js/chatbox.js',
   './index.html',
+  './deutsch-a1-c1/',
+  './deutsch-a1-c1/index.html',
   './klassenarbeiten/deutsch.html',
   './admin.html',
   './challenge.html',
@@ -116,7 +118,13 @@ self.addEventListener('fetch', (event) => {
           caches.open(CACHE).then((c) => c.put(req, copy));
           return res;
         })
-        .catch(() => caches.match(req).then((r) => r || caches.match('./index.html')))
+        .catch(() =>
+          caches.match(req).then((r) => {
+            if (r) return r;
+            if (req.url.includes('/deutsch-a1-c1/')) return caches.match('./deutsch-a1-c1/index.html');
+            return caches.match('./index.html');
+          })
+        )
     );
     return;
   }

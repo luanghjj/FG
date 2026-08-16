@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { BANKS, speakerLabel } from '../services/examBankUtils';
 import { explainAnswerWithGemini, AnswerExplanationResult } from '../services/geminiService';
+import { getLearnDB, getStoredPlayer } from '../services/learnDB';
 
 type TabId = 'hoeren' | 'lesen' | 'sprach';
 type Level = 'B1' | 'B2';
@@ -110,6 +111,24 @@ export const ExamSimulator: React.FC = () => {
     const total = questions.length;
     return { correct, total, percentage: total > 0 ? Math.round((correct / total) * 100) : 0 };
   })();
+
+  const submitExam = () => {
+    setShowResults(true);
+    const playerName = getStoredPlayer();
+    if (!playerName || score.total === 0) return;
+    const itemId = String(item.id || item.title || `${tab}-${level}-${selectedItem}`).slice(0, 80);
+    getLearnDB()
+      .then((db) =>
+        db.saveQuizScore({
+          subject: 'deutsch-exam',
+          quiz: itemId,
+          correct: score.correct,
+          total: score.total,
+          player: playerName
+        })
+      )
+      .catch(() => {});
+  };
 
   const letter = (i: number) => ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'][i] || String(i + 1);
 
@@ -371,7 +390,7 @@ export const ExamSimulator: React.FC = () => {
               <div className="pt-2 flex items-center gap-3">
                 {!showResults ? (
                   <button
-                    onClick={() => setShowResults(true)}
+                    onClick={submitExam}
                     className="flex-1 py-3 px-4 rounded-lg bg-ios-accent hover:bg-[#0A6FE0] text-white font-bold text-sm shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <Sparkles className="w-4 h-4" />

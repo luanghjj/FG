@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { motion } from 'motion/react';
 import {
   CheckCircle2,
@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { TabType } from './Navbar';
 import { CourseLevel } from './A1CourseHub';
+import { getLearnDB, getStoredPlayer } from '../services/learnDB';
 
 interface RoadmapViewProps {
   onNavigate: (tab: TabType, level?: CourseLevel, lessonId?: string) => void;
@@ -100,7 +101,48 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({ onNavigate }) => {
     };
   }, [selectedLevelKey]);
 
-  const activeProg = progressMap[selectedLevelKey as keyof typeof progressMap] || { count: 0, percent: 0 };
+  // Merge Supabase progress (shared LearnDB) into the roadmap counts
+  const [cloudProgress, setCloudProgress] = useState<Record<string, number>>({});
+  useEffect(() => {
+    let alive = true;
+    const playerName = getStoredPlayer();
+    if (!playerName) return;
+    getLearnDB()
+      .then((db) => db.loadPlayerHistory(playerName))
+      .then((data) => {
+        if (!alive) return;
+        const themes = (data.profile && data.profile.themes) || {};
+        const counts: Record<string, number> = {};
+        (Object.keys(themes) as string[]).forEach((k) => {
+          const entry = themes[k];
+          if (!entry) return;
+          const m = /^deutsch-(a1|a2|b1):(.+)$/.exec(k);
+          if (!m) return;
+          const lvl = m[1].toUpperCase();
+          if (entry.status === 'done') counts[lvl] = (counts[lvl] || 0) + 1;
+        });
+        setCloudProgress(counts);
+      })
+      .catch(() => {});
+    return () => {
+      alive = false;
+    };
+  }, []);
+
+  const mergedMap = useMemo(() => {
+    const merge = (lvl: string, local: { count: number; percent: number }) => {
+      const cloud = cloudProgress[lvl] || 0;
+      const count = Math.max(local.count, cloud);
+      return { count, percent: Math.round((count / 12) * 100) };
+    };
+    return {
+      A1: merge('A1', progressMap.A1),
+      A2: merge('A2', progressMap.A2),
+      B1: merge('B1', progressMap.B1)
+    };
+  }, [progressMap, cloudProgress]);
+
+  const activeProg = mergedMap[selectedLevelKey as keyof typeof mergedMap] || { count: 0, percent: 0 };
 
   return (
     <div className="space-y-4 pb-16">
@@ -121,9 +163,9 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({ onNavigate }) => {
         {/* Level Badges Row */}
         <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
           {[
-            { id: 'A1', label: 'A1 Căn Bản', prog: progressMap.A1, hasCourse: true },
-            { id: 'A2', label: 'A2 Sơ Cấp', prog: progressMap.A2, hasCourse: true },
-            { id: 'B1', label: 'B1 Trung Cấp', prog: progressMap.B1, hasCourse: true },
+            { id: 'A1', label: 'A1 Căn Bản', prog: mergedMap.A1, hasCourse: true },
+            { id: 'A2', label: 'A2 Sơ Cấp', prog: mergedMap.A2, hasCourse: true },
+            { id: 'B1', label: 'B1 Trung Cấp', prog: mergedMap.B1, hasCourse: true },
             { id: 'B2', label: 'B2 Chuyên Ngành', prog: { count: 0, percent: 0 }, hasCourse: false },
             { id: 'C1', label: 'C1 Học Thuật', prog: { count: 0, percent: 0 }, hasCourse: false }
           ].map((item) => {

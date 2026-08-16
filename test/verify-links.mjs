@@ -8,8 +8,17 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
-const SKIP_DIRS = new Set(['.git', 'quellen', 'docs', 'node_modules', '_bfk_1_notes', 'breakdown-plan', 'test', 'api', 'wiko', '_ocr']);
+const SKIP_DIRS = new Set(['.git', 'quellen', 'docs', 'node_modules', '_bfk_1_notes', 'breakdown-plan', 'test', 'api', 'wiko', '_ocr', 'dist']);
 let errors = 0;
+
+function findPageDir(file) {
+  let d = path.dirname(file);
+  while (d !== ROOT && d !== path.dirname(d)) {
+    if (fs.existsSync(path.join(d, 'index.html'))) return d;
+    d = path.dirname(d);
+  }
+  return null;
+}
 
 function walk(dir, out = []) {
   for (const ent of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -41,9 +50,27 @@ function refsIn(file) {
     for (const m of txt.matchAll(/["'`]([^"'`\s]+?\.(?:html|js|png|jpg|jpeg|webmanifest|svg))["'`]/g)) check(m[1]);
   }
   if (file.endsWith('.js')) {
-    for (const m of txt.matchAll(/["'`]([^"'`\s]+?\.(?:html|js|png|jpg|jpeg|webmanifest|svg|css))["'`]/g)) check(m[1]);
+    const pageDir = findPageDir(file);
+    const reported = new Set();
+    const checkEither = (r) => {
+      const clean = r.split(/[?#]/)[0];
+      if (!clean || clean.startsWith('#') || /^(https?:|data:|blob:|mailto:|tel:|\/\/|\/)/.test(clean)) return;
+      if (/['"`+=${]/.test(clean)) return;
+      if (!/\.(html|js|png|jpg|jpeg|webmanifest|svg|css|xlsx|pdf|zip|md)$/.test(clean)) return;
+      const a = path.resolve(path.dirname(file), clean);
+      const b = path.resolve(ROOT, clean);
+      const c = pageDir ? path.resolve(pageDir, clean) : a;
+      if (!fs.existsSync(a) && !fs.existsSync(b) && !fs.existsSync(c)) {
+        if (!reported.has(clean)) {
+          reported.add(clean);
+          errors++;
+          console.error('[MISSING] ' + path.relative(ROOT, file) + ' → ' + clean);
+        }
+      }
+    };
+    for (const m of txt.matchAll(/["'`]([^"'`\s]+?\.(?:html|js|png|jpg|jpeg|webmanifest|svg|css))["'`]/g)) checkEither(m[1]);
     if (/faecher\.js|bfk1-data\.js$/.test(file)) {
-      for (const m of txt.matchAll(/folder\s*:\s*["']([^"']+)["']/g)) check(m[1] + '/');
+      for (const m of txt.matchAll(/folder\s*:\s*["']([^"']+)["']/g)) checkEither(m[1] + '/');
     }
   }
   if (file.endsWith('sw.js')) {

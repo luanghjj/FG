@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import rawGrammarData from '../data/NGU_PHAP_86_CHUYEN_DE_A1_B2.json';
 import { explainGrammarWithGemini, GrammarExplainResult } from '../services/geminiService';
+import { getLearnDB, getStoredPlayer } from '../services/learnDB';
 
 interface VerbLesson {
   verb: string;
@@ -341,17 +342,18 @@ export const GrammarHub: React.FC = () => {
             [drillTopicId]: { is100Pct: true, mistakes: drillMistakes, retries: drillRetries }
           }));
           try {
-            const playerName = localStorage.getItem('learn_player_name') || 'hocvien';
-            const win = window as unknown as { LearnDB?: { saveGrammarMastery?: (player: string, item: unknown) => void } };
-            if (win.LearnDB && win.LearnDB.saveGrammarMastery) {
-              win.LearnDB.saveGrammarMastery(playerName, {
-                topicId: drillTopicId,
-                title: currentTopic.title,
-                score: 10,
-                total: 10,
-                retryCount: drillRetries,
-                mistakes: drillMistakes
-              });
+            const playerName = getStoredPlayer();
+            if (playerName) {
+              getLearnDB().then((db) => {
+                db.saveGrammarMastery(playerName, {
+                  topicId: drillTopicId,
+                  title: currentTopic.title,
+                  score: 10,
+                  total: 10,
+                  retryCount: drillRetries,
+                  mistakes: drillMistakes
+                }).catch(() => {});
+              }).catch(() => {});
             }
           } catch (_) {}
         }

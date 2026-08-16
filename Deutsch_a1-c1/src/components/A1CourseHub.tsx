@@ -21,6 +21,7 @@ import rawA1Course from '../data/a1_course.json';
 import rawA2Course from '../data/a2_course.json';
 import rawB1Course from '../data/b1_course.json';
 import { evaluateSpeakingWithGemini, explainAnswerWithGemini, SpeakingFeedbackResult, AnswerExplanationResult } from '../services/geminiService';
+import { getLearnDB, getStoredPlayer } from '../services/learnDB';
 import { TabType } from './Navbar';
 
 export type CourseLevel = 'A1' | 'A2' | 'B1';
@@ -349,21 +350,30 @@ export const A1CourseHub: React.FC<A1CourseHubProps> = ({
     setProgress(nextProgress);
     saveProgress(currentLevel, nextProgress);
 
-    // Sync to Supabase
-    try {
-      const playerName = localStorage.getItem('learn_player_name') || 'hocvien';
-      const win = window as unknown as { LearnDB?: { saveGrammarMastery?: (player: string, item: unknown) => void } };
-      if (win.LearnDB && win.LearnDB.saveGrammarMastery) {
-        win.LearnDB.saveGrammarMastery(playerName, {
-          topicId: `${currentLevel.toLowerCase()}-${activeLesson.id}`,
-          title: `[${currentLevel}] Bài ${activeLesson.lesson}: ${activeLesson.title}`,
-          score: quizStats.correct,
-          total: quizStats.total,
-          retryCount: 0,
-          mistakes: quizStats.total - quizStats.correct
-        });
-      }
-    } catch (_) {}
+    // Sync to Supabase (shared LearnDB with AzubiHub)
+    const playerName = getStoredPlayer();
+    if (playerName) {
+      getLearnDB().then((db) => {
+        const fach = `deutsch-${currentLevel.toLowerCase()}`;
+        const theme = activeLesson.id;
+        const name = `[${currentLevel}] Bài ${activeLesson.lesson}: ${activeLesson.title}`;
+        db.markThemeProgress(playerName, {
+          fach,
+          theme,
+          name,
+          status: isPassed ? 'done' : 'seen'
+        }).catch(() => {});
+        if (quizStats.total > 0) {
+          db.saveQuizScore({
+            subject: fach,
+            quiz: theme,
+            correct: quizStats.correct,
+            total: quizStats.total,
+            player: playerName
+          }).catch(() => {});
+        }
+      }).catch(() => {});
+    }
   };
 
   const handleResetQuiz = () => {

@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import rawVocabList from '../data/tu_vung_6000.json';
 import { gradeVocabHandwritingOrText, VocabHandwritingGradeResult } from '../services/geminiService';
+import { getLearnDB, getStoredPlayer } from '../services/learnDB';
 
 interface VocabItem {
   id?: string;
@@ -162,18 +163,19 @@ export const VocabularyHub: React.FC = () => {
         
         // Save progress to Supabase / localStorage
         try {
-          const playerName = localStorage.getItem('learn_player_name') || 'hocvien';
-          const win = window as unknown as { LearnDB?: { saveVocabDrillProgress?: (player: string, item: unknown) => void } };
-          if (win.LearnDB && win.LearnDB.saveVocabDrillProgress) {
-            win.LearnDB.saveVocabDrillProgress(playerName, {
-              wordId: currentWord.id || currentDe,
-              german: currentDe,
-              vietnamese: currentVi,
-              level: currentWord.level || selectedLevel,
-              specialty: currentWord.specialty || selectedSpecialty,
-              repeats: nextRepeats,
-              mistakes: drillStats.mistakes
-            });
+          const playerName = getStoredPlayer();
+          if (playerName) {
+            getLearnDB().then((db) => {
+              db.saveVocabDrillProgress(playerName, {
+                wordId: currentWord.id || currentDe,
+                german: currentDe,
+                vietnamese: currentVi,
+                level: currentWord.level || selectedLevel,
+                specialty: currentWord.specialty || selectedSpecialty,
+                repeats: nextRepeats,
+                mistakes: drillStats.mistakes
+              }).catch(() => {});
+            }).catch(() => {});
           }
         } catch (_) {}
 
@@ -227,18 +229,19 @@ export const VocabularyHub: React.FC = () => {
 
       // Save AI grade progress
       try {
-        const playerName = localStorage.getItem('learn_player_name') || 'hocvien';
-        const win = window as unknown as { LearnDB?: { saveVocabDrillProgress?: (player: string, item: unknown) => void } };
-        if (win.LearnDB && win.LearnDB.saveVocabDrillProgress) {
-          win.LearnDB.saveVocabDrillProgress(playerName, {
-            wordId: 'ai-exam-' + Date.now(),
-            german: `Chấm bài AI (${res.correctWordsCount}/${res.totalWordsChecked} từ)`,
-            vietnamese: `Điểm: ${res.score}%`,
-            level: selectedLevel,
-            specialty: selectedSpecialty,
-            repeats: 3,
-            mistakes: res.totalWordsChecked - res.correctWordsCount
-          });
+        const playerName = getStoredPlayer();
+        if (playerName) {
+          getLearnDB().then((db) => {
+            db.saveVocabDrillProgress(playerName, {
+              wordId: 'ai-exam-' + Date.now(),
+              german: `Chấm bài AI (${res.correctWordsCount}/${res.totalWordsChecked} từ)`,
+              vietnamese: `Điểm: ${res.score}%`,
+              level: selectedLevel,
+              specialty: selectedSpecialty,
+              repeats: 3,
+              mistakes: res.totalWordsChecked - res.correctWordsCount
+            }).catch(() => {});
+          }).catch(() => {});
         }
       } catch (_) {}
 

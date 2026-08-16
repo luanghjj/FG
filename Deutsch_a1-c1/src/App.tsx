@@ -6,6 +6,8 @@ import {
   ExamSubTab,
   TabType
 } from './components/Navbar';
+import { AuthGate } from './components/AuthGate';
+import { getStoredPlayer } from './services/learnDB';
 import { RoadmapView } from './components/RoadmapView';
 import { A1CourseHub, CourseLevel } from './components/A1CourseHub';
 import { ExamSimulator } from './components/ExamSimulator';
@@ -33,6 +35,7 @@ export default function App() {
   const [examSubTab, setExamSubTab] = useState<ExamSubTab>('exams');
   const [courseLevel, setCourseLevel] = useState<CourseLevel>('A1');
   const [courseLessonId, setCourseLessonId] = useState<string | null>(null);
+  const [player] = useState<string>(() => getStoredPlayer());
 
   const handleNavigate = (tab: TabType, level?: CourseLevel, lessonId?: string) => {
     if (level) setCourseLevel(level);
@@ -152,7 +155,11 @@ export default function App() {
         mainMode={mainMode}
         setMainMode={setMainMode}
         onNavigateHome={() => handleNavigate('learn')}
+        player={player}
       />
+
+      {/* Auth gate + player chip */}
+      <AuthGate />
 
       {/* Secondary Sub-Navigation Pill Bar */}
       <div className="bg-white/80 backdrop-blur-md border-b border-ios-line sticky top-14 sm:top-16 z-30 shadow-2xs">

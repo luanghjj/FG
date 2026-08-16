@@ -5085,7 +5085,13 @@ function renderUserChip(player){
 function pickTrack(which) {
   var g = document.getElementById('trackGate');
   if (g) g.classList.add('hidden');
-  if (which === 'deutsch') go('#/deutsch'); else go('#/fach');
+  try { localStorage.setItem('azubi_track', which); } catch (_) {}
+  if (which === 'deutsch') {
+    // Mở thẳng vào app Deutsch (subfolder) thay vì launcher hub
+    location.href = './deutsch-a1-c1/';
+  } else {
+    go('#/fach');
+  }
 }
 function showTrackGate() {
   var g = document.getElementById('trackGate');
@@ -5123,6 +5129,13 @@ function unlockApp(player){
   }
   renderUserChip(player);
   loadHomeHistory(player);
+  var azubiTrack = '';
+  try { azubiTrack = localStorage.getItem('azubi_track') || ''; } catch (_) {}
+  if (azubiTrack === 'deutsch') {
+    // Nhớ track đã chọn → mở thẳng vào app Deutsch mỗi lần đăng nhập
+    location.href = './deutsch-a1-c1/';
+    return;
+  }
   showTrackGate();
   const t=(window.Access&&Access.tier)?Access.tier():'free';
   const lbl=(window.Access&&Access.tierLabel)?Access.tierLabel(t):'Basic';

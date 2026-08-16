@@ -5,10 +5,12 @@ import {
   Trophy,
   Sparkles,
   Bot,
-  CheckCircle2
+  CheckCircle2,
+  ArrowLeft
 } from 'lucide-react';
 import { getStoredGeminiKey } from '../services/geminiService';
 import { GeminiApiKeyModal } from './GeminiApiKeyModal';
+import { setStoredTrack, clearStoredPlayer } from '../services/learnDB';
 
 export type MainMode = 'learn' | 'exam';
 
@@ -32,15 +34,28 @@ interface NavbarProps {
   setMainMode: (mode: MainMode) => void;
   activeSubTab?: string;
   onNavigateHome?: () => void;
+  player?: string;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   mainMode,
   setMainMode,
-  onNavigateHome
+  onNavigateHome,
+  player
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const hasApiKey = Boolean(getStoredGeminiKey());
+
+  const goBackToHub = () => {
+    setStoredTrack('fachkraft');
+    window.location.href = new URL('../', window.location.href).href;
+  };
+
+  const doLogout = () => {
+    clearStoredPlayer();
+    setStoredTrack('fachkraft');
+    window.location.reload();
+  };
 
   return (
     <>
@@ -117,8 +132,31 @@ export const Navbar: React.FC<NavbarProps> = ({
               </button>
             </nav>
 
-            {/* Right Action: Gemini AI Key Setup Button */}
+            {/* Right Action: Player + Back to Hub + Gemini AI Key */}
             <div className="flex items-center gap-2 shrink-0">
+              {player && (
+                <>
+                  <span className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-ios-accent-soft text-ios-accent text-xs font-bold max-w-[110px]">
+                    <span className="truncate">👤 {player}</span>
+                  </span>
+                  <button
+                    onClick={doLogout}
+                    title="Đăng xuất"
+                    className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-bold text-ios-secondary hover:text-ios-bad hover:bg-ios-bad-soft transition-colors border border-ios-line/60"
+                  >
+                    <span>↺</span>
+                    <span className="hidden xl:inline">Đăng xuất</span>
+                  </button>
+                  <button
+                    onClick={goBackToHub}
+                    title="Về AzubiHub"
+                    className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-bold text-ios-secondary hover:text-ios-accent hover:bg-ios-accent-soft transition-colors border border-ios-line/60"
+                  >
+                    <ArrowLeft className="w-3.5 h-3.5" />
+                    <span className="hidden lg:inline">Về AzubiHub</span>
+                  </button>
+                </>
+              )}
               <button
                 onClick={() => setIsModalOpen(true)}
                 className={`flex items-center gap-1 px-2.5 py-1.5 sm:px-3.5 sm:py-2 rounded-xl text-xs font-bold transition-all cursor-pointer border ${
