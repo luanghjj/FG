@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 import { getStoredGeminiKey } from '../services/geminiService';
 import { GeminiApiKeyModal } from './GeminiApiKeyModal';
-import { setStoredTrack, clearStoredPlayer, getLearnDB } from '../services/learnDB';
+import { setStoredTrack, clearStoredPlayer, getStoredPlayer, getLearnDB } from '../services/learnDB';
 
 export type MainMode = 'learn' | 'exam';
 
@@ -48,28 +48,44 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [isPro, setIsPro] = useState(false);
   const hasApiKey = Boolean(getStoredGeminiKey());
 
-  // Detect Pro tier from parent AzubiHub access system
+  // Detect Pro tier from parent AzubiHub access system & Supabase
   useEffect(() => {
-    // Check body class from parent (set by access.js)
+    const applyPro = (t: string) => {
+      if (t === 'paid' || t === 'super') {
+        setIsPro(true);
+        document.body.classList.add(`tier-${t}`);
+        document.body.dataset.tier = t;
+      }
+    };
+
     const checkTier = () => {
       const body = document.body;
-      if (body.classList.contains('tier-paid') || body.classList.contains('tier-super')) {
-        setIsPro(true);
-        return;
-      }
-      // Fallback: check localStorage for access tier
+      if (body.classList.contains('tier-paid')) { setIsPro(true); return; }
+      if (body.classList.contains('tier-super')) { setIsPro(true); return; }
+      
       try {
-        const tier = localStorage.getItem('access_tier') || '';
-        if (tier === 'paid' || tier === 'super') {
-          setIsPro(true);
-          body.classList.add(`tier-${tier}`);
-        }
+        const ssTier = sessionStorage.getItem('learn_tier');
+        if (ssTier) { applyPro(ssTier); return; }
+        const lsTier = localStorage.getItem('access_tier');
+        if (lsTier) { applyPro(lsTier); return; }
       } catch { /* ignore */ }
     };
+
     checkTier();
-    // Re-check when LearnDB loads (access.js may set tier after)
-    getLearnDB().then(() => setTimeout(checkTier, 500)).catch(() => {});
-  }, []);
+
+    // Query Supabase directly if player is logged in
+    const p = player || getStoredPlayer();
+    if (p) {
+      getLearnDB().then(async (db) => {
+        try {
+          const row = await db.getConfig('learn:role:' + p.trim().toLowerCase());
+          if (row && row.value && (row.value.tier === 'paid' || row.value.tier === 'super')) {
+            applyPro(row.value.tier);
+          }
+        } catch { /* ignore */ }
+      }).catch(() => {});
+    }
+  }, [player]);
 
   const goBackToHub = () => {
     setStoredTrack('fachkraft');

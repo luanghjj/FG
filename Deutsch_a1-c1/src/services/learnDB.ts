@@ -46,6 +46,8 @@ export interface LearnDBPlayerHistory {
 
 export interface LearnDBHandle {
   url: string;
+  getConfig(key: string): Promise<{ key: string; value: any; updated_at?: string } | null>;
+  upsertConfig(key: string, value: any): Promise<unknown>;
   getPlayer(): string;
   setPlayer(name: string): string;
   clearPlayer(): void;
