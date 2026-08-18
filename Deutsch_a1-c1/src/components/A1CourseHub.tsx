@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
   BookOpen,
   CheckCircle2,
@@ -156,6 +156,35 @@ export const A1CourseHub: React.FC<A1CourseHubProps> = ({
   const [isEvaluating, setIsEvaluating] = useState(false);
   const [feedback, setFeedback] = useState<SpeakingFeedbackResult | null>(null);
   const recognitionRef = useRef<any>(null);
+
+  // Sync course progress from Supabase LearnDB (shared backend)
+  useEffect(() => {
+    const p = getStoredPlayer();
+    if (!p) return;
+    getLearnDB().then(async (db) => {
+      try {
+        const profile = await db.getPlayerProfile(p);
+        if (profile && profile.themes) {
+          const fachPrefix = `deutsch-${currentLevel.toLowerCase()}:`;
+          const completedFromDb: string[] = [];
+          Object.entries(profile.themes).forEach(([tk, val]: [string, any]) => {
+            if (tk.startsWith(fachPrefix) && val && val.status === 'done') {
+              const lessonId = tk.slice(fachPrefix.length);
+              completedFromDb.push(lessonId);
+            }
+          });
+          if (completedFromDb.length > 0) {
+            setProgress((prev) => {
+              const merged = Array.from(new Set([...prev.completed, ...completedFromDb]));
+              const next = { ...prev, completed: merged };
+              saveProgress(currentLevel, next);
+              return next;
+            });
+          }
+        }
+      } catch (_) {}
+    }).catch(() => {});
+  }, [currentLevel]);
 
   // Switch Course Level
   const handleLevelChange = (lvl: CourseLevel) => {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   GraduationCap,
   BookOpen,
@@ -6,11 +6,12 @@ import {
   Sparkles,
   Bot,
   CheckCircle2,
-  ArrowLeft
+  ArrowLeft,
+  Crown
 } from 'lucide-react';
 import { getStoredGeminiKey } from '../services/geminiService';
 import { GeminiApiKeyModal } from './GeminiApiKeyModal';
-import { setStoredTrack, clearStoredPlayer } from '../services/learnDB';
+import { setStoredTrack, clearStoredPlayer, getLearnDB } from '../services/learnDB';
 
 export type MainMode = 'learn' | 'exam';
 
@@ -44,7 +45,31 @@ export const Navbar: React.FC<NavbarProps> = ({
   player
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPro, setIsPro] = useState(false);
   const hasApiKey = Boolean(getStoredGeminiKey());
+
+  // Detect Pro tier from parent AzubiHub access system
+  useEffect(() => {
+    // Check body class from parent (set by access.js)
+    const checkTier = () => {
+      const body = document.body;
+      if (body.classList.contains('tier-paid') || body.classList.contains('tier-super')) {
+        setIsPro(true);
+        return;
+      }
+      // Fallback: check localStorage for access tier
+      try {
+        const tier = localStorage.getItem('access_tier') || '';
+        if (tier === 'paid' || tier === 'super') {
+          setIsPro(true);
+          body.classList.add(`tier-${tier}`);
+        }
+      } catch { /* ignore */ }
+    };
+    checkTier();
+    // Re-check when LearnDB loads (access.js may set tier after)
+    getLearnDB().then(() => setTimeout(checkTier, 500)).catch(() => {});
+  }, []);
 
   const goBackToHub = () => {
     setStoredTrack('fachkraft');
@@ -67,17 +92,23 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={onNavigateHome || (() => setMainMode('learn'))}
               className="flex items-center gap-2 sm:gap-3 cursor-pointer group shrink-0"
             >
-              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-ios-accent flex items-center justify-center shadow-xs group-hover:opacity-90 transition-opacity">
+              <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center shadow-xs group-hover:opacity-90 transition-opacity ${isPro ? 'bg-gradient-to-br from-amber-500 to-amber-700' : 'bg-ios-accent'}`}>
                 <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
               </div>
               <div>
                 <div className="flex items-center gap-1.5">
                   <span className="font-display font-bold text-base sm:text-lg text-ios-ink tracking-tight">
-                    Sprachziel Master
+                    AzubiHub
                   </span>
-                  <span className="text-[9px] uppercase font-bold px-1.5 py-0.2 rounded bg-ios-accent-soft text-ios-accent hidden sm:inline-flex">
-                    Pro
+                  <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md text-ios-muted hidden sm:inline-flex">
+                    Deutsch
                   </span>
+                  {isPro && (
+                    <span className="text-[9px] uppercase font-bold px-1.5 py-0.5 rounded-full hidden sm:inline-flex items-center gap-0.5" style={{ background: '#E7D9BE', color: '#8A6D1E' }}>
+                      <Crown className="w-2.5 h-2.5" />
+                      Pro
+                    </span>
+                  )}
                 </div>
                 <p className="text-[10px] text-ios-muted font-medium hidden sm:block">
                   Học & Ôn Thi Tiếng Đức Toàn Diện A1 - C1

@@ -278,7 +278,7 @@ export default function App() {
       <footer className="border-t border-ios-line bg-white py-4 sm:py-6 text-center text-xs text-ios-muted mt-8">
         <div className="max-w-7xl mx-auto px-4 space-y-1.5">
           <div className="flex items-center justify-center gap-2 font-bold text-ios-ink text-xs">
-            <span>Sprachziel Master Learning Hub</span>
+            <span>AzubiHub Deutsch</span>
             <span>•</span>
             <span>Cơ Sở Dữ Liệu Học & Ôn Thi Tiếng Đức</span>
           </div>

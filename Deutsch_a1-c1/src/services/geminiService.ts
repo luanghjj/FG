@@ -106,7 +106,7 @@ export const testGeminiConnection = async (apiKey: string, modelName = 'gemini-2
     const ai = new GoogleGenAI({ apiKey: apiKey.trim() });
     const response = await ai.models.generateContent({
       model: modelName,
-      contents: 'Hãy trả lời ngắn gọn: "Kết nối thành công với Google Gemini AI cho ứng dụng Sprachziel!" bằng tiếng Việt.'
+      contents: 'Hãy trả lời ngắn gọn: "Kết nối thành công với Google Gemini AI cho ứng dụng AzubiHub Deutsch!" bằng tiếng Việt.'
     });
     return { success: true, message: response.text || 'Kết nối thành công!' };
   } catch (err: any) {

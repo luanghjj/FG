@@ -50,3 +50,43 @@ body {
 .marquee-track:hover {
   animation-play-state: paused;
 }
+
+/* ===== Pro/Super Theme – matches AzubiHub main app beige palette ===== */
+body.tier-paid,
+body.tier-super {
+  --color-ios-bg: #F3EEE4;
+  --color-ios-surface: #FBF8F1;
+  --color-ios-line: #E6DECF;
+  --color-ios-accent-soft: #F1E9DA;
+}
+
+/* Pro header warm tint */
+body.tier-paid header,
+body.tier-super header {
+  background: rgba(251, 248, 241, 0.95) !important;
+  border-bottom-color: #E6DECF !important;
+}
+
+/* Pro sub-nav warm tint */
+body.tier-paid .backdrop-blur-md,
+body.tier-super .backdrop-blur-md {
+  background: rgba(251, 248, 241, 0.85) !important;
+}
+
+/* Pro footer warm tint */
+body.tier-paid footer,
+body.tier-super footer {
+  background: #FBF8F1 !important;
+  border-top-color: #E6DECF !important;
+}
+
+/* Pro card surfaces and inputs */
+body.tier-paid .bg-white,
+body.tier-super .bg-white {
+  background-color: #FBF8F1 !important;
+}
+
+body.tier-paid .border-ios-line,
+body.tier-super .border-ios-line {
+  border-color: #E6DECF !important;
+}

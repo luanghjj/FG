@@ -51,14 +51,15 @@ export const AuthGate: React.FC = () => {
     <div className="fixed inset-0 z-[300] bg-ios-bg flex items-center justify-center p-4 overflow-y-auto">
       <div className="w-full max-w-md">
         <div className="bg-ios-surface border border-ios-line rounded-3xl shadow-xl p-6 sm:p-8">
-          <div className="flex items-center justify-center w-14 h-14 mx-auto rounded-2xl bg-ios-accent shadow-md mb-4">
+          <div className="flex items-center justify-center w-14 h-14 mx-auto rounded-2xl bg-gradient-to-br from-amber-500 to-amber-700 shadow-md mb-4">
             <GraduationCap className="w-7 h-7 text-white" />
           </div>
-          <h1 className="text-center font-display font-bold text-xl text-ios-ink">
-            Sprachziel Master
+          <h1 className="text-center font-display font-bold text-xl text-ios-ink flex items-center justify-center gap-2">
+            AzubiHub
+            <span className="text-sm font-bold text-ios-muted">Deutsch</span>
           </h1>
           <p className="text-center text-sm text-ios-muted mt-1 mb-6">
-            Đăng nhập để đồng bộ tiến độ với AzubiHub
+            Đăng nhập để đồng bộ tiến độ học tập
           </p>
           {player && !showGate && (
             <p className="text-center text-xs text-ios-ok mb-4">✓ Đang đăng nhập với {player}</p>
