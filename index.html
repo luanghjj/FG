@@ -197,6 +197,8 @@ body.tier-paid .pro-flag,body.tier-super .pro-flag{
 .panel.active{display:block;animation:fade .25s}
 .apanel{display:none}
 .apanel.active{display:block;animation:fade .25s}
+.zpanel{display:none}
+.zpanel.active{display:block;animation:fade .25s}
 
 /* Image chart + hotspots */
 .diagram-wrap{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start}
@@ -1364,168 +1366,627 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
 <section class="view zwischen-scope" id="v-zwischen">
   <div class="back" onclick="go('#/')">← Fächer</div>
   <div class="section-head">
-    <h2>🛡️ Zwischenprüfung</h2>
-    <p>Fachkraft für Gastronomie · Wirtschaftsdienst · Lý thuyết + Thực hành — IHK AO 2022.</p>
+    <h2>🛡️ Zwischenprüfung: Fachkraft für Gastronomie (AO 2022)</h2>
+    <p>Cẩm nang ôn thi toàn diện · Prüfungsbereich: Wirtschaftsdienst · Lý thuyết &amp; Thực hành (Song ngữ Đức - Việt)</p>
   </div>
   <div class="tabs">
-    <div class="tab active" data-ztab="tongquan">🇩🇪 Tổng quan</div>
-    <div class="tab" data-ztab="lythuyet">📚 Lý thuyết</div>
-    <div class="tab" data-ztab="thuchanh">🛠️ Thực hành</div>
-    <div class="tab" data-ztab="hoctap">🎯 Cần học</div>
+    <div class="tab active" data-ztab="tongquan">🇩🇪 1. Tổng quan kỳ thi</div>
+    <div class="tab" data-ztab="lythuyet">📚 2. Lý thuyết (Schriftlich)</div>
+    <div class="tab" data-ztab="thuchanh">🛠️ 3. Thực hành (Praktisch)</div>
+    <div class="tab" data-ztab="hoctap">🎯 4. 7 Chủ đề &amp; Đề thi mẫu</div>
   </div>
 
-  <!-- TỔNG QUAN -->
+  <!-- ==================== TAB 1: TỔNG QUAN ==================== -->
   <div class="zpanel active" id="z-tongquan">
     <div class="card">
-      <h2>1. Kỳ thi này là gì?</h2>
-      <p><strong>Zwischenprüfung</strong> là kỳ thi giữa quá trình <em>Ausbildung</em>, diễn ra vào <strong>Halbjahr thứ 3</strong> của chương trình đào tạo, kiểm tra kiến thức/kỹ năng đã học trong <strong>12 tháng đầu</strong> (bao gồm cả nội dung dạy ở Berufsschule theo Ausbildungsrahmenplan).</p>
-      <div class="note">💡 Nói đơn giản: bạn <strong>không</strong> cần học toàn bộ chương trình Fachkraft für Gastronomie — trọng tâm là những gì đã học trong 12 tháng đầu.</div>
-    </div>
-
-    <div class="card">
-      <h2>2. Cấu trúc kỳ thi</h2>
-      <p>Zwischenprüfung có <strong>1 Prüfungsbereich</strong> chính: <strong>🏨 Wirtschaftsdienst</strong>, chia làm 2 phần:</p>
-      <table>
-        <tr><th>Phần</th><th>Hình thức</th><th>Thời gian</th></tr>
-        <tr><td><strong>Teil 1</strong></td><td>Schriftlich — Lý thuyết</td><td>60 phút</td></tr>
-        <tr><td><strong>Teil 2</strong></td><td>Praktisch — Thực hành</td><td>60 phút</td></tr>
-        <tr><td><strong>Tổng cộng</strong></td><td>Lý thuyết + Thực hành</td><td><strong>120 phút</strong></td></tr>
-      </table>
-      <div class="note">📌 Thông tin do IHK xác nhận: phần viết 60 phút + Arbeitsaufgabe thực hành 60 phút.</div>
-    </div>
-
-    <div class="card">
-      <h2>3. Sơ đồ nhớ nhanh</h2>
-      <div class="hint">Một dòng để nhớ:</div>
-      <div class="grid2">
-        <div class="mini"><h4>📚 Schriftlich · 60 Min.</h4><p>Reinigung · Desinfektion · Pflege · Nachhaltigkeit · Abfall · Arbeitssicherheit</p></div>
-        <div class="mini"><h4>🛠️ Praktisch · 60 Min.</h4><p>Waren erkennen · Geschirr/Besteck/Gläser auswählen · Gastraum reinigen · kontrollieren · herrichten</p></div>
+      <h2>📌 1. Bản chất kỳ thi Zwischenprüfung (Fachkraft für Gastronomie – AO 2022)</h2>
+      <p><strong>Zwischenprüfung</strong> là kỳ thi đánh giá năng lực giữa quá trình đào tạo nghề (<em>Ausbildung</em>), được tổ chức vào <strong>học kỳ thứ 3 (3. Ausbildungs-Halbjahr)</strong> nhằm kiểm tra toàn diện kiến thức và kỹ năng của <strong>12 tháng đầu tiên (1. Ausbildungsjahr)</strong> theo <em>Ausbildungsrahmenplan</em> và chương trình khung <em>KMK-Rahmenlehrplan (Lernfelder 1 – 4)</em>.</p>
+      
+      <div class="note">
+        💡 <strong>Điểm cốt lõi cần nhớ:</strong> Bạn <strong>không</strong> phải học toàn bộ chương trình tốt nghiệp của cả 2 hay 3 năm. Trọng tâm tuyệt đối của kỳ thi này chỉ nằm trong 12 tháng đầu tiên!
       </div>
-      <div class="note">⚠️ Quan trọng: ảnh ghi "bài thi lý thuyết" và "bài thi thực hành" dễ khiến hiểu là 2 Prüfungsbereiche độc lập. Theo quy định chính thức, <strong>Prüfungsbereich = Wirtschaftsdienst</strong>, và trong đó mới có 2 phần schriftlich + praktisch. Zwischenprüfung <strong>không phải</strong> Abschlussprüfung.</div>
+    </div>
+
+    <div class="card">
+      <h2>⚖️ 2. Tên gọi chính thức và Cấu trúc Prüfungsbereich</h2>
+      <p>Theo quy định chính thức của <strong>IHK / AO 2022</strong>, kỳ thi này <strong>không</strong> chia thành kỳ thi riêng cho <em>Restaurantservice</em> hay <em>Systemgastronomie</em>, mà chỉ có <strong>DUY NHẤT 1 Prüfungsbereich</strong> chính thức:</p>
+      
+      <div style="background:var(--accent-soft);border:2px solid var(--accent);border-radius:12px;padding:16px;margin:12px 0;text-align:center;">
+        <h3 style="color:var(--ink);margin:0 0 6px;font-size:1.2em;">🏨 Prüfungsbereich: <strong>Wirtschaftsdienst</strong></h3>
+        <p style="margin:0;color:#64748b;font-size:.95em;">(Dịch vụ kinh tế – Vận hành hậu cần &amp; buồng phòng/nhà hàng)</p>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Phần thi</th>
+            <th>Hình thức thi (Form)</th>
+            <th>Thời gian (Dauer)</th>
+            <th>Nội dung trọng tâm (Schwerpunkte)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Teil 1: Schriftlich</strong><br><span style="color:#64748b">Lý thuyết viết</span></td>
+            <td>Trắc nghiệm + Tự luận tình huống<br><em>(Gebundene + Ungebundene Aufgaben)</em></td>
+            <td><strong>60 phút</strong></td>
+            <td>Vệ sinh Gastraum, cơ chế hóa chất (Reinigung, Desinfektion, Pflege), vòng tròn Sinner, bảo vệ môi trường (Nachhaltigkeit), phân loại rác (Abfalltrennung), an toàn lao động (Arbeitssicherheit &amp; Brandschutz).</td>
+          </tr>
+          <tr>
+            <td><strong>Teil 2: Praktisch</strong><br><span style="color:#64748b">Thực hành + Vấn đáp</span></td>
+            <td>Thực hiện bài tập thực tế + Phỏng vấn<br><em>(Arbeitsaufgabe inkl. Fachgespräch)</em></td>
+            <td><strong>60 phút</strong></td>
+            <td>Nhận biết hàng hóa &amp; dụng cụ (Waren &amp; Gebrauchsgegenstände), chọn đồ sứ/dao dĩa/ly cốc phù hợp, quy trình vệ sinh - kiểm tra - sắp đặt phòng khách (Gastraum reinigen, kontrollieren, herrichten), set up bàn (Tisch eindecken).</td>
+          </tr>
+          <tr style="background:#fff3e2;font-weight:600;">
+            <td><strong>TỔNG CỘNG</strong></td>
+            <td>Lý thuyết + Thực hành</td>
+            <td><strong>120 phút</strong></td>
+            <td>Đánh giá năng lực độc lập &amp; chuyên nghiệp trong Wirtschaftsdienst.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        ⚠️ <strong>Lưu ý chống nhầm lẫn:</strong> Zwischenprüfung <strong>khác</strong> với kỳ thi tốt nghiệp cuối khóa (<em>Abschlussprüfung</em>). Điểm thi Zwischenprüfung là thước đo bắt buộc để đánh giá tiến độ học tập và điều kiện chuyển tiếp giai đoạn 2 của khóa Ausbildung.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🧠 3. Sơ đồ tư duy ghi nhớ nhanh (Mindmap für die Prüfung)</h2>
+      <div class="grid2">
+        <div class="mini">
+          <h4>📚 Teil 1: Schriftliche Prüfung (60 Min.)</h4>
+          <ul>
+            <li><strong>Pflege &amp; Reinigung:</strong> Gastraumhygiene, Reinigungsarten, Reinigungsplan.</li>
+            <li><strong>Chemie &amp; Physik:</strong> Sinnerscher Kreis, pH-Werte, Dosierung, 4-Farben-Tücher.</li>
+            <li><strong>Nachhaltigkeit:</strong> Wasser-, Strom- &amp; Chemiesparen, Umweltzeichen.</li>
+            <li><strong>Abfall:</strong> Abfallhierarchie, Mülltrennung, Fettentsorgung.</li>
+            <li><strong>Sicherheit:</strong> SRS-Unfälle, Messer, Brandklassen (Klasse F), PSA, Ergonomie.</li>
+          </ul>
+        </div>
+        <div class="mini">
+          <h4>🛠️ Teil 2: Praktische Aufgabe (60 Min.)</h4>
+          <ul>
+            <li><strong>Waren &amp; Güter:</strong> Zitrusfrüchte, frische Kräuter, Menagen, Servietten.</li>
+            <li><strong>Geschirr &amp; Besteck:</strong> Tellerarten, Besteckteile, Wein- &amp; Wassergläser zuordnen.</li>
+            <li><strong>Tisch eindecken:</strong> Grundgedeck, Menügedeck, 1-2 cm Tischkante, Gläseranordnung.</li>
+            <li><strong>4 Phasen:</strong> Vorbereiten → Reinigen → Kontrollieren → Herrichten.</li>
+            <li><strong>Fachgespräch:</strong> Giải thích lý do chọn công cụ, an toàn và xử lý tình huống.</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- LÝ THUYẾT -->
+  <!-- ==================== TAB 2: LÝ THUYẾT CHI TIẾT ==================== -->
   <div class="zpanel" id="z-lythuyet">
     <div class="card">
-      <h2>📚 LÝ THUYẾT — SCHRIFTLICH</h2>
-      <p><strong>Prüfungsbereich: Wirtschaftsdienst</strong> — cần chuẩn bị 4 nhóm nội dung lớn.</p>
+      <h2>📚 PHẦN LÝ THUYẾT — SCHRIFTLICHE PRÜFUNG (WIRTSCHAFTSDIENST)</h2>
+      <p>Tổng hợp 5 khối kiến thức trọng tâm tuyệt đối thường xuyên xuất hiện trong đề thi viết IHK.</p>
     </div>
 
+    <!-- KHỐI 1 -->
     <div class="card">
-      <h2>① Pflege und Reinigung von Gasträumen</h2>
-      <p>Chăm sóc và vệ sinh khu vực dành cho khách. Cần hiểu:</p>
-      <div class="chips">
-        <span>Vì sao phải vệ sinh Gastraum</span><span>Ý nghĩa với Gasterlebnis</span><span>Vệ sinh bàn ghế</span><span>Vệ sinh sàn nhà</span><span>Vệ sinh cửa kính/cửa sổ</span><span>Vệ sinh khu vực phục vụ</span><span>Vệ sinh vật dụng</span><span>Chuẩn bị Gastraum trước khi khách đến</span><span>Kiểm tra sau khi vệ sinh</span><span>Dọn dẹp sau khi khách rời đi</span>
-      </div>
-      <div class="note">🔑 Đặc biệt phải hiểu chuỗi: <strong>Sauberkeit → Hygiene → Wohlbefinden → Gasterlebnis</strong>. Vệ sinh không chỉ để "sạch" mà còn ảnh hưởng trực tiếp đến trải nghiệm của khách.</div>
-    </div>
+      <h2>① Pflege und Reinigung von Gasträumen (Vệ sinh &amp; Chăm sóc khu vực khách)</h2>
+      <div class="hint">Bedeutung der Sauberkeit für das Gasterlebnis · Reinigungsarten · Reinigungsplan</div>
+      
+      <h3 class="sub">1. Chuỗi giá trị trải nghiệm khách hàng (Die Wirkungskette)</h3>
+      <div class="formula">Sauberkeit (Sạch sẽ) ➔ Hygiene (Vệ sinh an toàn) ➔ Wohlbefinden (Sự an tâm, hài lòng) ➔ Gasterlebnis (Trải nghiệm hoàn hảo) ➔ Kundentreue &amp; Umsatz (Doanh thu &amp; Khách quay lại)</div>
+      <p>Ấn tượng đầu tiên (<em>Erster Eindruck</em>) của khách hàng được hình thành ngay trong 30 giây đầu tiên khi bước vào nhà hàng qua mùi hương, độ trong của kính, mặt bàn không dính dầu mỡ và sàn nhà sạch bóng.</p>
 
-    <div class="card">
-      <h2>② Reinigung – Desinfektion – Pflege</h2>
+      <h3 class="sub">2. Phân loại 3 cấp độ vệ sinh (Reinigungsarten)</h3>
+      <table>
+        <tr><th>Loại vệ sinh</th><th>Khái niệm tiếng Đức</th><th>Mục đích &amp; Ví dụ thực tế</th></tr>
+        <tr>
+          <td><strong>Sichtreinigung</strong><br><span style="color:#64748b">Vệ sinh trực quan</span></td>
+          <td>Entfernung von groben, sichtbaren Verschmutzungen während der Betriebszeit.</td>
+          <td>Dọn rác rơi trên sàn, lau vết nước đổ trên bàn khi khách đang dùng bữa, đổ gạt tàn thuốc lá ngoài sảnh.</td>
+        </tr>
+        <tr>
+          <td><strong>Unterhaltsreinigung</strong><br><span style="color:#64748b">Vệ sinh duy trì hàng ngày</span></td>
+          <td>Regelmäßige, meist tägliche Reinigung nach oder vor dem Service.</td>
+          <td>Quét &amp; lau sàn phòng ăn, lau bóng bàn ghế, làm sạch nhà vệ sinh khách (Gäste-WCs), lau quầy bar/buffet.</td>
+        </tr>
+        <tr>
+          <td><strong>Grundreinigung</strong><br><span style="color:#64748b">Tổng vệ sinh định kỳ</span></td>
+          <td>Gründliche Reinigung in größeren Zeitabständen (monatlich/jährlich).</td>
+          <td>Tẩy rửa sâu các góc chết, giặt rèm cửa, đánh bóng sàn gỗ/đá cẩm thạch, lau toàn bộ cửa kính trên cao.</td>
+        </tr>
+      </table>
+
+      <h3 class="sub">3. Kế hoạch vệ sinh chuẩn HACCP (Der Reinigungsplan)</h3>
+      <p>Một kế hoạch vệ sinh bắt buộc phải trả lời <strong>5 câu hỏi cốt lõi (5 W-Fragen)</strong>:</p>
+      <ul>
+        <li><strong>WAS?</strong> — Khu vực, bề mặt hay thiết bị nào cần làm sạch? (z.B. Gasttische, Fußboden, Schneidebretter).</li>
+        <li><strong>WANN / WIE OFT?</strong> — Khi nào và tần suất ra sao? (z.B. täglich nach Schichtende, wöchentlich montags).</li>
+        <li><strong>WOMIT?</strong> — Sử dụng hóa chất và dụng cụ nào? (z.B. Allzweckreiniger, gelbes Mikrofasertuch, Wischmop).</li>
+        <li><strong>WIE?</strong> — Liều lượng, nhiệt độ và thời gian tác dụng thế nào? (z.B. 20 ml auf 5 Liter Wasser, 5 Min. Einwirkzeit).</li>
+        <li><strong>WER?</strong> — Ai là người chịu trách nhiệm thực hiện? (z.B. Servicekraft Schicht B, Auszubildender).</li>
+        <li><strong>KONTROLLE:</strong> — Người giám sát kiểm tra và ký xác nhận vào bảng Checklist (Dokumentation).</li>
+      </ul>
+
+      <h3 class="sub">4. Hướng dẫn vệ sinh các bề mặt đặc thù (Oberflächenpflege)</h3>
       <div class="grid2">
-        <div class="mini"><h4>🧽 Reinigung</h4><p><strong>= Làm sạch.</strong> Loại bỏ: thức ăn thừa, bụi bẩn, dầu mỡ, chất bẩn nhìn thấy được.</p></div>
-        <div class="mini"><h4>🦠 Desinfektion</h4><p><strong>= Khử khuẩn.</strong> Mục đích: giảm/tiêu diệt vi sinh vật gây bệnh đến mức an toàn.</p></div>
-        <div class="mini"><h4>✨ Pflege</h4><p><strong>= Bảo dưỡng.</strong> Giúp đồ vật giữ chất lượng, kéo dài tuổi thọ, giữ hình thức đẹp, sử dụng an toàn.</p></div>
+        <div class="mini">
+          <h4>🪵 Bề mặt gỗ (Holzoberflächen)</h4>
+          <p>Dùng khăn ẩm nhẹ (<em>nebelfeucht</em>), tuyệt đối không để đọng nước gây phồng rộp gỗ. Định kỳ dùng dầu/sáp dưỡng gỗ (<em>Holzpflegemittel/Wachs</em>) theo chiều vân gỗ.</p>
+        </div>
+        <div class="mini">
+          <h4>✨ Inox / Thép không gỉ (Edelstahl)</h4>
+          <p>Lau sạch dầu mỡ bằng chất tẩy trung tính, sau đó xịt dầu bóng chuyên dụng (<em>Edelstahlpflegespray</em>) để tạo màng chống bám vân tay.</p>
+        </div>
+        <div class="mini">
+          <h4>🪟 Kính &amp; Gương (Glas &amp; Spiegel)</h4>
+          <p>Dùng nước lau kính chuyên dụng (<em>Glasreiniger</em>) chứa cồn (Alkohol), lau bằng khăn microfiber hoặc cây gạt cao su (<em>Fensterabzieher</em>) để không để lại vệt mờ (<em>streifenfrei</em>).</p>
+        </div>
+        <div class="mini">
+          <h4>🛋️ Vải nỉ &amp; Da (Polster &amp; Leder)</h4>
+          <p>Vải nỉ hút bụi hàng ngày, tẩy ố bằng bọt giặt khô (<em>Polsterschaum</em>). Da thật lau bằng khăn ẩm và thoa kem dưỡng da (<em>Lederlotion</em>) chống nứt nẻ.</p>
+        </div>
       </div>
-      <div class="hint" style="margin-top:12px">🧴 Reinigungsmittel thường gặp: Allzweckreiniger · Glasreiniger · Fettlöser · Sanitärreiniger · Desinfektionsmittel.</div>
-      <div class="note">⚠️ Không được hiểu "cái nào cũng dùng được cho mọi thứ" — phải biết loại nào phù hợp bề mặt nào (Glas → Glasreiniger, Fett → Fettlöser, Sanitär → Sanitärreiniger) và chú ý <strong>Dosierung · Einwirkzeit · Anwendung · Kennzeichnung · Sicherheitshinweise</strong>.</div>
     </div>
 
+    <!-- KHỐI 2 -->
     <div class="card">
-      <h2>③ Nachhaltigkeit</h2>
-      <p>Vệ sinh nhưng đồng thời bảo vệ môi trường — IHK nhấn mạnh các biện pháp Reinigung, Desinfektion, Pflege phải xét dưới góc độ Nachhaltigkeit. Ví dụ:</p>
-      <div class="chips">
-        <span>💧 Tiết kiệm nước — không để vòi chảy lãng phí</span><span>⚡ Tiết kiệm năng lượng — không bật thiết bị khi không cần</span><span>🧴 Dùng hóa chất hợp lý — không quá liều</span><span>♻️ Ưu tiên sản phẩm thân thiện môi trường</span><span>🧹 Làm sạch hiệu quả — đúng lượng nước, hóa chất, dụng cụ</span>
-      </div>
-    </div>
+      <h2>② Cơ chế Hóa học &amp; Vật lý: Reinigung – Desinfektion – Pflege</h2>
+      <div class="hint">Sinnerscher Kreis · pH-Wert Skala · 4-Farben-Code · Sicherheitsdatenblatt</div>
 
-    <div class="card">
-      <h2>④ Abfall — Rác thải</h2>
+      <h3 class="sub">1. Phân biệt chính xác 3 khái niệm cốt lõi</h3>
       <div class="grid2">
-        <div class="mini"><h4>♻️ Abfall vermeiden</h4><p>Tránh tạo rác: không lãng phí thực phẩm, dùng nguyên liệu hợp lý, hạn chế đồ dùng 1 lần, mua phù hợp nhu cầu.</p></div>
-        <div class="mini"><h4>🔁 Wiederverwertung</h4><p>Tái sử dụng / tái chế.</p></div>
-        <div class="mini"><h4>🗑️ Entsorgung</h4><p>Xử lý rác đúng quy định.</p></div>
-        <div class="mini"><h4>🧩 Mülltrennung</h4><p>Phân loại: Papier/Pappe · Glas · Kunststoff · Bioabfall · Restmüll.</p></div>
+        <div class="mini">
+          <h4>🧽 REINIGUNG (Làm sạch)</h4>
+          <p><strong>Bản chất:</strong> Loại bỏ bụi bẩn, thức ăn thừa, dầu mỡ nhìn thấy được và không nhìn thấy bằng phương pháp cơ học/hóa học.<br><strong>Hiệu quả:</strong> Giảm khoảng 80% – 90% số lượng vi sinh vật bám dính.</p>
+        </div>
+        <div class="mini">
+          <h4>🦠 DESINFEKTION (Khử khuẩn)</h4>
+          <p><strong>Bản chất:</strong> Tiêu diệt hoặc bất hoạt các mầm bệnh truyền nhiễm (vi khuẩn, virus, nấm) xuống mức an toàn không còn nguy cơ lây bệnh.<br><strong>Hiệu quả:</strong> Tiêu diệt tới 99,999% vi sinh vật gây hại.</p>
+        </div>
+        <div class="mini">
+          <h4>✨ PFLEGE (Bảo dưỡng)</h4>
+          <p><strong>Bản chất:</strong> Phủ một lớp màng bảo vệ (<em>Schutzfilm</em>) lên bề mặt đồ vật để chống trầy xước, ngăn ẩm mốc, tăng tuổi thọ và giữ độ bóng đẹp ban đầu.</p>
+        </div>
       </div>
-      <div class="note">⚠️ Điểm dễ sai: <strong>không</strong> nên học thuộc kiểu "màu thùng xanh = luôn là X" — màu &amp; hệ thống phân loại phụ thuộc doanh nghiệp/địa phương. Nắm nguyên tắc: <strong>vermeiden → trennen → wiederverwenden/recyceln → richtig entsorgen</strong>.</div>
+
+      <h3 class="sub">2. Vòng tròn Sinner (Der Sinnersche Kreis) – 4 yếu tố tác động</h3>
+      <div class="formula">4 YẾU TỐ: 🧪 Chemie (Hóa chất) + ⚙️ Mechanik (Lực cơ học) + 🌡️ Temperatur (Nhiệt độ) + ⏱️ Zeit (Thời gian) = 100% HIỆU QUẢ VỆ SINH</div>
+      <p><strong>Nguyên tắc bù trừ (Kompensationsprinzip):</strong> Nếu giảm một yếu tố (ví dụ: dùng ít hóa chất hơn để bảo vệ môi trường hoặc nước lạnh), bạn bắt buộc phải tăng các yếu tố khác (tăng thời gian ngâm hoặc cọ rửa mạnh hơn) để đạt cùng một kết quả làm sạch.</p>
+
+      <h3 class="sub">3. Thang đo độ pH (pH-Wert-Skala) và Cách chọn hóa chất</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Dải pH</th>
+            <th>Tính chất hóa học</th>
+            <th>Tên loại hóa chất tiêu biểu</th>
+            <th>Phạm vi sử dụng &amp; Cấm kỵ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>pH 0 – 2</strong></td>
+            <td>Stark sauer<br><span style="color:#64748b">Axit mạnh</span></td>
+            <td>Kalklöser, Urinsteinlöser, Zementschleierentferner</td>
+            <td>Tẩy cặn vôi cứng, ố vàng bồn cầu trong Sanitär.<br>⚠️ <strong>CẤM:</strong> Đá cẩm thạch (Marmor), men gạch xốp, nhôm.</td>
+          </tr>
+          <tr>
+            <td><strong>pH 3 – 6</strong></td>
+            <td>Schwach sauer<br><span style="color:#64748b">Axit nhẹ</span></td>
+            <td>Sanitärreiniger, Badreiniger, Essig-/Zitronenreiniger</td>
+            <td>Vệ sinh lavabo, bồn rửa inox, chống bám vôi hằng ngày.</td>
+          </tr>
+          <tr>
+            <td><strong>pH 7</strong></td>
+            <td>Neutral<br><span style="color:#64748b">Trung tính</span></td>
+            <td>Allzweckreiniger, Handspülmittel, Neutralreiniger</td>
+            <td>An toàn cho mọi bề mặt: lau bàn ghế phòng ăn, rửa chén bát bằng tay, lau kính, an toàn cho da tay.</td>
+          </tr>
+          <tr>
+            <td><strong>pH 8 – 10</strong></td>
+            <td>Schwach alkalisch<br><span style="color:#64748b">Kiềm nhẹ</span></td>
+            <td>Universal-Bodenreiniger, Seifenreiniger</td>
+            <td>Lau sàn nhà đa năng, làm sạch dầu mỡ nhẹ và bụi đất.</td>
+          </tr>
+          <tr>
+            <td><strong>pH 11 – 14</strong></td>
+            <td>Stark alkalisch<br><span style="color:#64748b">Kiềm mạnh</span></td>
+            <td>Fettlöser, Grill- &amp; Ofenreiniger, Spülmaschinenreiniger</td>
+            <td>Hòa tan dầu mỡ két cháy, vỉ nướng bếp, tẩy rửa dầu mỡ công nghiệp.<br>⚠️ <strong>CẤM:</strong> Nhôm (Aluminium), vải len, da thật.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="sub">4. Hệ thống mã màu khăn lau chuẩn Quốc tế (4-Farben-Code)</h3>
+      <div class="grid2">
+        <div class="mini" style="border-left-color:#ff3b30">
+          <h4 style="color:#d70015">🔴 ROT (Đỏ) — Khuvực cực bẩn (Hohe Keimbelastung)</h4>
+          <p>Chỉ dùng cho <strong>bồn cầu (WC-Becken), bệ tiểu nam (Urinale)</strong> và khu vực xung quanh bồn cầu.</p>
+        </div>
+        <div class="mini" style="border-left-color:#ff9500">
+          <h4 style="color:#b25000">🟡 GELB (Vàng) — Khu vệ sinh phụ (Sanitärbereich)</h4>
+          <p>Dùng cho <strong>bồn rửa tay (Waschbecken), gương nhà tắm, vòi sen, gạch ốp tường nhà vệ sinh</strong>.</p>
+        </div>
+        <div class="mini" style="border-left-color:#007aff">
+          <h4 style="color:#0051a8">🔵 BLAU (Xanh dương) — Khu phục vụ khách (Gastraum &amp; Büro)</h4>
+          <p>Dùng lau <strong>bàn ăn, ghế, quầy bar, cửa sổ, tay nắm cửa, menu</strong> tại sảnh đón khách.</p>
+        </div>
+        <div class="mini" style="border-left-color:#34c759">
+          <h4 style="color:#1b7a36">🟢 GRÜN (Xanh lá) — Khu vực Bếp &amp; Thực phẩm (Küche &amp; Bar)</h4>
+          <p>Dùng lau <strong>bàn sơ chế thực phẩm, thớt, quầy ra đồ bếp, máy móc tiếp xúc thức ăn</strong>.</p>
+        </div>
+      </div>
+
+      <div class="note" style="background:#ffebee;border-left-color:#d32f2f;color:#b71c1c;">
+        ☠️ <strong>CẢNH BÁO NGUY HIỂM TỬ VONG TRONG ĐỀ THI:</strong> Tuyệt đối <strong>KHÔNG BAO GIỜ</strong> trộn lẫn chất tẩy rửa chứa Axit (Kalklöser) với chất tẩy rửa chứa Clo (Chlorbleiche). Phản ứng hóa học sẽ lập tức giải phóng <strong>Khí Clo độc (tödliches Chlorgas)</strong> gây bỏng đường hô hấp và tử vong!
+      </div>
     </div>
 
+    <!-- KHỐI 3 -->
     <div class="card">
-      <h2>⑤ Arbeitssicherheit &amp; Gesundheitsschutz</h2>
-      <p>Các quy tắc an toàn tại Küche · Service · Lager · Wirtschaftsdienst:</p>
+      <h2>③ Nachhaltigkeit &amp; Umweltschutz (Phát triển bền vững &amp; Bảo vệ môi trường)</h2>
+      <p>IHK đặc biệt chú trọng tiêu chí "Xanh" trong toàn bộ thao tác ngành ẩm thực:</p>
+      <ul>
+        <li>💧 <strong>Tiết kiệm nước (Wasser sparen):</strong> Không để vòi nước chảy tự do khi dọn dẹp; lắp đầu vòi sục khí tiết kiệm (<em>Perlatoren</em>); chỉ vận hành máy rửa chén khi đã xếp đầy giàn (<em>volle Beladung</em>).</li>
+        <li>⚡ <strong>Tiết kiệm năng lượng (Energie sparen):</strong> Tắt máy pha cà phê, lò nướng, đèn sảnh khi hết ca làm việc; duy trì nhiệt độ chuẩn kho mát (+2°C đến +7°C) và kho đông (≤ -18°C), đóng kín cửa tủ lạnh ngay sau khi lấy đồ.</li>
+        <li>🧴 <strong>Đong đếm hóa chất chuẩn xác (Exakte Dosierung):</strong> Sử dụng cốc đong (<em>Messbecher</em>) hoặc hệ thống pha tự động (<em>Dosieranlagen</em>). Dùng quá liều (<em>Überdosierung</em>) không làm sạch hơn mà gây lãng phí, để lại vệt ố dính và làm ô nhiễm nguồn nước.</li>
+        <li>🌱 <strong>Ưu tiên sản phẩm sinh thái:</strong> Chọn hóa chất có chứng nhận nhãn sinh thái Châu Âu (<em>EU Ecolabel</em>) hoặc <em>Blauer Engel</em>, có chất hoạt động bề mặt dễ phân hủy sinh học (<em>biologisch abbaubar</em>). Sử dụng khăn vi sợi Microfiber cao cấp để giảm thiểu nhu cầu dùng hóa chất.</li>
+      </ul>
+    </div>
+
+    <!-- KHỐI 4 -->
+    <div class="card">
+      <h2>④ Abfallwirtschaft &amp; Mülltrennung (Quản lý &amp; Phân loại rác thải)</h2>
+      
+      <h3 class="sub">1. Tháp 5 tầng quản lý rác (Die 5-stufige Abfallhierarchie theo luật KrWG)</h3>
+      <div class="formula">1. Vermeidung (Tránh tạo rác) ➔ 2. Wiederverwendung (Tái sử dụng) ➔ 3. Recycling (Tái chế) ➔ 4. Verwertung (Thu hồi năng lượng) ➔ 5. Beseitigung (Tiêu hủy rác thải)</div>
+
+      <h3 class="sub">2. Phân loại rác thực tế trong nhà hàng Đức (Mülltrennung in der Praxis)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Loại rác (Abfallart)</th>
+            <th>Thùng chứa / Hệ thống</th>
+            <th>Quy định chi tiết &amp; Điểm cấm kỵ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Bioabfall &amp; Speisereste</strong><br><span style="color:#64748b">Thức ăn thừa &amp; rác hữu cơ</span></td>
+            <td>Braune Tonne / Thùng thu gom thức ăn thừa chuyên dụng</td>
+            <td>Thức ăn thừa của khách bắt buộc gom riêng theo luật thú y để chuyển đến nhà máy khí sinh học (<em>Biogasanlage</em>).<br>⚠️ <strong>CẤM:</strong> Đổ thức ăn thừa vào bồn cầu hoặc cống thoát nước!</td>
+          </tr>
+          <tr>
+            <td><strong>Altglas</strong><br><span style="color:#64748b">Chai lọ thủy tinh</span></td>
+            <td>Container Weißglas, Braunglas, Grünglas</td>
+            <td>Phân loại chuẩn theo 3 màu: Trong suốt, Nâu, Xanh lá. Chai có màu khác (xanh dương, đỏ) bỏ chung vào thùng <em>Grünglas</em>.<br>⚠️ <strong>CẤM:</strong> Đồ sứ vỡ, pha lê, bóng đèn vỡ vào thùng kính tái chế.</td>
+          </tr>
+          <tr>
+            <td><strong>Papier, Pappe &amp; Karton</strong><br><span style="color:#64748b">Giấy &amp; thùng carton</span></td>
+            <td>Blaue Tonne (Thùng xanh dương)</td>
+            <td>Vỏ hộp carton phải được ép dẹp phẳng để tiết kiệm diện tích; thực đơn cũ, giấy văn phòng sạch.<br>⚠️ <strong>CẤM:</strong> Khăn giấy ăn dính dầu mỡ, giấy nướng bánh dính thức ăn.</td>
+          </tr>
+          <tr>
+            <td><strong>Wertstoffe / Verpackungen</strong><br><span style="color:#64748b">Bao bì nhựa &amp; kim loại</span></td>
+            <td>Gelber Sack / Gelbe Tonne (Grüner Punkt)</td>
+            <td>Hộp thiếc đóng hộp thực phẩm, chai nhựa không cọc tiền (ohne Pfand), túi nilon sạch, vỏ hộp sữa Tetra Pak.</td>
+          </tr>
+          <tr>
+            <td><strong>Altspeisefett &amp; -öl</strong><br><span style="color:#64748b">Dầu mỡ thải nhà bếp</span></td>
+            <td>Fettabscheider / Thùng thu gom dầu mỡ (Öli-Tonne)</td>
+            <td>Dầu chiên rán thừa gom vào thùng kín chuyên dụng để tái chế thành nhiên liệu sinh học Biodiesel.<br>⚠️ <strong>CẤM TUYỆT ĐỐI:</strong> Đổ dầu mỡ vào cống thoát nước gây nghẹt đường ống!</td>
+          </tr>
+          <tr>
+            <td><strong>Restmüll</strong><br><span style="color:#64748b">Rác thải sinh hoạt còn lại</span></td>
+            <td>Schwarze / Graue Tonne (Thùng đen)</td>
+            <td>Khăn ăn giấy dính dầu, tàn tro, đầu lọc thuốc lá, giẻ rách cũ, đĩa sứ vỡ.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- KHỐI 5 -->
+    <div class="card">
+      <h2>⑤ Arbeitssicherheit &amp; Gesundheitsschutz (An toàn lao động &amp; Bảo hộ)</h2>
+      <div class="hint">Quy chuẩn DGUV Vorschrift 110 (Ngành nhà hàng khách sạn) &amp; Luật ArbSchG</div>
+      
       <div class="grid2">
-        <div class="mini"><h4>🔪 Messer</h4><p>Dùng đúng cách, không để vị trí nguy hiểm, không cầm dao chạy, cất an toàn.</p></div>
-        <div class="mini"><h4>🧽 Nền ướt</h4><p>Phải cảnh báo, làm sạch, tránh trượt ngã cho khách &amp; nhân viên.</p></div>
-        <div class="mini"><h4>🔥 Feuer</h4><p>Biết nguy cơ cháy, cách phòng cháy, vị trí Feuerlöscher, cách xử lý khi phát hiện cháy.</p></div>
-        <div class="mini"><h4>🧤 PSA</h4><p>Găng tay, giày chống trượt, quần áo bảo hộ khi cần. Tuân thủ Rauchverbot.</p></div>
+        <div class="mini">
+          <h4>🚷 Phòng chống trượt ngã (SRS-Unfälle)</h4>
+          <p>Tai nạn trượt ngã (<em>Stolpern, Rutschen, Stürzen</em>) là tai nạn phổ biến nhất. Khi sàn ướt, phải <strong>ngay lập tức đặt biển cảnh báo màu vàng "Achtung Rutschgefahr!"</strong>. Nhân viên bắt buộc phải mang giày bảo hộ có đế chống trượt đạt chuẩn SRC (<em>Rutschhemmende Sicherheitsschuhe</em>).</p>
+        </div>
+        <div class="mini">
+          <h4>🔪 Sử dụng dao an toàn (Umgang mit Messern)</h4>
+          <p>Cầm dao luôn hướng mũi dao xuống đất sát thân người khi di chuyển; luôn cắt gọt trên thớt phẳng có lót khăn ẩm chống trượt; <strong>không bao giờ dùng tay bắt dao đang rơi</strong>; sau khi dùng xong phải lau rửa và cất vào giá/từ tính (<em>Messerleiste</em>).</p>
+        </div>
+        <div class="mini">
+          <h4>🔥 Phòng cháy chữa cháy &amp; Bếp (Brandschutz)</h4>
+          <p>Biết vị trí bình chữa cháy (<em>Feuerlöscher</em>), chăn dập lửa (<em>Löschdecke</em>) và nút báo cháy khẩn cấp. Lối thoát hiểm (<em>Fluchtwege</em>) luôn phải thông thoáng.<br><strong>Cực kỳ quan trọng:</strong> Cháy dầu mỡ trong bếp thuộc <strong>Brandklasse F</strong>. Phải dùng bình bọt dập mỡ (<em>Fettbrandlöscher</em>) hoặc đậy vung/chăn chữa cháy. <strong>TUYỆT ĐỐI KHÔNG DÙNG NƯỚC DẬP CHÁY DẦU MỠ</strong> (sẽ gây nổ hơi dầu bùng phát cực kỳ nguy hiểm - <em>Fettbrandexplosion</em>)!</p>
+        </div>
+        <div class="mini">
+          <h4>🧤 Trang thiết bị bảo hộ cá nhân (PSA) &amp; Ergonomie</h4>
+          <p>Đeo găng tay Nitrile và kính bảo hộ khi pha chế hóa chất tẩy rửa mạnh. Khi bê vác vật nặng (thùng bia, bao bột): giữ lưng thẳng, gập gối nâng bằng lực của chân (<em>aus den Knien heben</em>) và ôm sát vật nặng vào ngực để bảo vệ cột sống.</p>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- THỰC HÀNH -->
+  <!-- ==================== TAB 3: THỰC HÀNH CHI TIẾT ==================== -->
   <div class="zpanel" id="z-thuchanh">
     <div class="card">
-      <h2>🛠️ THỰC HÀNH — PRAKTISCHE PRÜFUNG</h2>
-      <p>Thực hiện một <strong>Arbeitsaufgabe</strong> trong khoảng <strong>60 phút</strong>. Theo IHK, phải chứng minh khả năng:</p>
-      <div class="chips">
-        <span>Waren erkennen</span><span>Einsatzmöglichkeiten zuordnen</span><span>Gebrauchsgegenstände auswählen</span><span>Geschirr/Besteck/Gläser anlassbezogen auswählen</span><span>Gasträume reinigen</span><span>Gasträume kontrollieren</span><span>Gasträume herrichten</span>
-      </div>
+      <h2>🛠️ PHẦN THỰC HÀNH — PRAKTISCHE PRÜFUNG (ARBEITSAUFGABE)</h2>
+      <p>Thời lượng: <strong>60 phút</strong>. Thí sinh phải thực hiện bài tập thực tế kết hợp vấn đáp chuyên môn (<em>Fachgespräch</em>) trước ban giám khảo IHK.</p>
     </div>
 
+    <!-- HÀNG HÓA & DỤNG CỤ -->
     <div class="card">
-      <h2>① Đồ dùng trong Restaurant</h2>
+      <h2>① Waren- &amp; Gebrauchsgegenständekunde (Nhận diện hàng hóa &amp; Dụng cụ)</h2>
+      
+      <h3 class="sub">1. Nhận biết thực phẩm &amp; Mục đích sử dụng (Waren &amp; Einsatzmöglichkeiten)</h3>
+      <table>
+        <tr><th>Mặt hàng (Ware)</th><th>Hình ảnh đặc trưng</th><th>Công dụng &amp; Ứng dụng thực tế trong dịch vụ (Einsatzmöglichkeiten)</th></tr>
+        <tr>
+          <td><strong>Zitrusfrüchte</strong><br>(Zitrone, Limette, Orange)</td>
+          <td>Chanh vàng, chanh xanh, cam tươi</td>
+          <td>Trang trí ly cocktail/đồ uống (<em>Cocktailgarnitur</em>), ăn kèm hải sản/Wiener Schnitzel, tạo hương thơm và độ chua cân bằng cho sốt hoặc đồ uống chào mừng.</td>
+        </tr>
+        <tr>
+          <td><strong>Frische Kräuter</strong><br>(Minze, Rosmarin, Basilikum)</td>
+          <td>Bạc hà tươi, hương thảo, húng tây</td>
+          <td>Minze dùng cho cocktail (Mojito, Hugo), tráng miệng; Rosmarin dùng trang trí món thịt cừu/bò và món nướng; Basilikum dùng cho món Ý (Caprese, Pasta).</td>
+        </tr>
+        <tr>
+          <td><strong>Menagen &amp; Gewürze</strong><br>(Salz, Pfeffer, Senf, Essig &amp; Öl)</td>
+          <td>Bộ gia vị để bàn tiêu chuẩn</td>
+          <td>Phục vụ khách tự nêm nếm theo khẩu vị. Lưu ý: Lọ muối (nhiều lỗ hơn), lọ tiêu (ít lỗ hơn). Bình dầu giấm luôn sạch bóng, không rỉ cặn quanh nắp.</td>
+        </tr>
+        <tr>
+          <td><strong>Servietten</strong><br>(Mundtuch aus Stoff / Papier)</td>
+          <td>Khăn ăn vải và khăn giấy cao cấp</td>
+          <td>Khăn vải dùng cho tiệc cao cấp (Fine Dining); khăn giấy dùng cho phục vụ nhanh hoặc ăn sáng. Dùng lau miệng khách nhẹ nhàng và trang trí bàn tiệc (<em>Tischdekoration</em>).</td>
+        </tr>
+      </table>
+
+      <h3 class="sub">2. Chuyên khảo Đồ sứ nhà hàng (Porzellan / Geschirrarten)</h3>
       <div class="grid2">
-        <div class="mini"><h4>🍽️ Geschirr</h4><p>Teller · Suppenteller · Dessertteller · Untertasse · Schüssel</p></div>
-        <div class="mini"><h4>🥄 Besteck</h4><p>Menümesser · Menügabel · Vorspeisenbesteck · Dessertlöffel · Kaffeelöffel · Kuchengabel</p></div>
-        <div class="mini"><h4>🥂 Gläser</h4><p>Wasserglas · Weißweinglas · Rotweinglas · Sektglas · Bierglas</p></div>
+        <div class="mini">
+          <h4>🍽️ Platzteller (Đĩa lót trang trí / Show Plate)</h4>
+          <p>Đường kính lớn nhất (~30–33 cm). Đặt cố định tại vị trí ngồi làm tâm điểm từ đầu bữa tiệc đến trước món tráng miệng.</p>
+        </div>
+        <div class="mini">
+          <h4>🥩 Speiseteller / Flacher Teller (Đĩa ăn chính)</h4>
+          <p>Đường kính ~26–28 cm. Dùng đựng món chính (<em>Hauptgericht</em>) như thịt bò bít tết, gà nướng kèm rau củ tinh bột.</p>
+        </div>
+        <div class="mini">
+          <h4>🥣 Suppenteller &amp; Suppentasse mit Untertasse</h4>
+          <p>Đĩa súp sâu lòng (~23 cm) dùng cho súp đặc (<em>gebundene Suppe</em>); Tách súp 2 quai kèm đĩa lót dùng cho nước dùng trong (<em>klare Brühe/Consommé</em>).</p>
+        </div>
+        <div class="mini">
+          <h4>🥗 Vorspeisen- &amp; Dessertteller</h4>
+          <p>Đường kính vừa (~19–21 cm). Dùng phục vụ món khai vị (<em>Vorspeise</em>), món tráng miệng ngọt, phô mai hoặc làm đĩa ăn sáng (<em>Frühstücksteller</em>).</p>
+        </div>
+        <div class="mini">
+          <h4>🍞 Brotteller (Đĩa bánh mì)</h4>
+          <p>Đường kính nhỏ (~15–17 cm). Luôn được <strong>đặt bên tay trái của khách</strong> kèm một dao phết bơ nhỏ.</p>
+        </div>
       </div>
-      <div class="note">🎯 Điểm quan trọng không chỉ biết tên mà phải biết <strong>welches Glas/Besteck/Geschirr passt zu welchem Anlass bzw. Getränk/Speise</strong>?</div>
-    </div>
 
-    <div class="card">
-      <h2>② Tisch eindecken</h2>
-      <div class="chips">
-        <span>Vị trí Teller</span><span>Besteck</span><span>Gläser</span><span>Serviette</span><span>Abstand</span><span>Besteckordnung</span><span>Cách chuẩn bị bàn</span>
-      </div>
-      <div class="note">Ví dụ cơ bản: <strong>Teller → Besteck → Glas → Serviette</strong>. Trong thi phải chú ý loại món/đồ uống và Anlass để chọn dụng cụ phù hợp.</div>
-    </div>
+      <h3 class="sub">3. Chuyên khảo Dao thìa dĩa (Besteckteile &amp; Funktionen)</h3>
+      <table>
+        <tr><th>Tên dụng cụ (Besteckteil)</th><th>Đặc điểm nhận dạng</th><th>Mục đích sử dụng (Einsatzzweck)</th></tr>
+        <tr>
+          <td><strong>Menümesser &amp; Menügabel</strong></td>
+          <td>Kích thước tiêu chuẩn lớn nhất trong bộ dao dĩa</td>
+          <td>Dùng cho món chính (Hauptgang: Fleisch, Geflügel, Gemüsegerichte).</td>
+        </tr>
+        <tr>
+          <td><strong>Vorspeisenbesteck</strong></td>
+          <td>Tương tự Menübesteck nhưng kích thước nhỏ hơn</td>
+          <td>Dùng cho các món khai vị nguội hoặc nóng (Salate, Antipasti).</td>
+        </tr>
+        <tr>
+          <td><strong>Fischmesser &amp; Fischgabel</strong></td>
+          <td>Dao có lưỡi bẹt không sắc (dùng tách thớ cá), dĩa có 4 răng và rãnh khuyết ở giữa</td>
+          <td>Phục vụ riêng cho các món cá phi lê hoặc nguyên con để không cắt nát xương cá.</td>
+        </tr>
+        <tr>
+          <td><strong>Steakmesser</strong></td>
+          <td>Lưỡi dao có răng cưa sắc bén (<em>Wellenschliff</em>)</td>
+          <td>Dùng cắt thịt bò nướng bít tết, sườn nướng mà không làm ép chảy nước ngọt của thịt.</td>
+        </tr>
+        <tr>
+          <td><strong>Suppenlöffel &amp; Bouillonlöffel</strong></td>
+          <td>Suppenlöffel hình bầu dục to; Bouillonlöffel hình tròn sâu</td>
+          <td>Suppenlöffel dùng cho đĩa súp sâu lòng; Bouillonlöffel dùng với tách súp 2 quai.</td>
+        </tr>
+        <tr>
+          <td><strong>Dessertbesteck (Kaffeelöffel, Kuchengabel)</strong></td>
+          <td>Thìa nhỏ, dĩa 3 răng có 1 cạnh răng to bản hơn</td>
+          <td>Dùng cho món bánh ngọt, kem, hoa quả tráng miệng hoặc khuấy cà phê/trà.</td>
+        </tr>
+        <tr>
+          <td><strong>Buttermesser</strong></td>
+          <td>Lưỡi dao ngắn, đầu tù tròn</td>
+          <td>Đặt trên đĩa bánh mì (Brotteller) dùng lấy bơ và phết bơ lên bánh mì.</td>
+        </tr>
+      </table>
 
-    <div class="card">
-      <h2>③ Gastraum reinigen – kontrollieren – herrichten</h2>
-      <p>Một trong những kỹ năng quan trọng nhất của phần thực hành. Quy trình:</p>
+      <h3 class="sub">4. Chuyên khảo Ly cốc thủy tinh &amp; pha lê (Gläserkunde)</h3>
       <div class="grid2">
-        <div class="mini"><h4>① Vorbereiten</h4><p>Chuẩn bị: Reinigungsmittel · Reinigungstücher · Eimer · Handschuhe · dụng cụ cần thiết.</p></div>
-        <div class="mini"><h4>② Reinigen</h4><p>Làm sạch khu vực.</p></div>
-        <div class="mini"><h4>③ Kontrollieren</h4><p>Kiểm tra: sạch chưa, còn bụi, bàn/ghế/sàn/kính/dụng cụ sạch chưa?</p></div>
-        <div class="mini"><h4>④ Herrichten</h4><p>Chuẩn bị Gastraum cho khách: bàn, ghế, Geschirr, Besteck, Gläser, Serviette, Dekoration nếu cần.</p></div>
+        <div class="mini">
+          <h4>💧 Wasserglas (Ly nước lọc / Richtglas)</h4>
+          <p>Có thể là ly có chân (<em>Wasserbecher auf Fuß</em>) hoặc ly không chân (<em>Tumbler</em>). Đây là <strong>Ly định vị trung tâm (Richtglas)</strong> khi set up bàn tiệc.</p>
+        </div>
+        <div class="mini">
+          <h4>🥂 Weißweinglas (Ly rượu vang trắng)</h4>
+          <p>Bầu ly nhỏ hơn, thon gọn hình hoa tulip để giữ hương thơm hoa quả tươi mát và duy trì nhiệt độ phục vụ lạnh chuẩn (<strong>10°C – 12°C</strong>).</p>
+        </div>
+        <div class="mini">
+          <h4>🍷 Rotweinglas (Ly rượu vang đỏ)</h4>
+          <p>Bầu ly tròn to bản (<em>Bordeaux- / Burgunderkelch</em>) giúp rượu vang đỏ tiếp xúc tối đa với oxy để bung tỏa hương thơm phức hợp ở nhiệt độ (<strong>16°C – 18°C</strong>).</p>
+        </div>
+        <div class="mini">
+          <h4>🍾 Sektglas / Champagnerflöte (Ly sâm panh / vang sủi)</h4>
+          <p>Dáng ly thon dài hình ống (<em>Flöte</em>) để bọt khí ga (<em>Mousseux / Perlage</em>) sủi tăm đẹp mắt và không bị thoát ga nhanh.</p>
+        </div>
+        <div class="mini">
+          <h4>🍺 Biergläser (Ly bia)</h4>
+          <p>Ly tulip có chân (<em>Pilstulpe</em>) cho bia Pilsner, ly thẳng dày (<em>Willibecher</em>), hoặc ly cao đáy thon (<em>Weizenglas</em>) cho bia lúa mì kèm lớp bọt dày dặn.</p>
+        </div>
       </div>
     </div>
 
+    <!-- SET UP BÀN -->
     <div class="card">
-      <h2>④ Waren erkennen</h2>
-      <p>Nhận biết hàng hóa/nguyên liệu và Einsatzmöglichkeiten của chúng. Ví dụ:</p>
+      <h2>② Kỹ thuật Bày bàn chuẩn Quốc tế (Tisch eindecken: Grund- &amp; Menügedeck)</h2>
+      <div class="hint">Nguyên tắc vàng IHK về khoảng cách, thứ tự và tính đối xứng</div>
+
+      <h3 class="sub">1. Các quy tắc cơ bản không được sai sót (Grundregeln)</h3>
+      <ul>
+        <li>📏 <strong>Khoảng cách mép bàn (Abstand zur Tischkante):</strong> Toàn bộ đĩa lót (Platzteller) và chuôi cán dao thìa dĩa phải cách mép bàn đúng <strong>1 – 2 cm</strong> (tương đương bề dày 1 ngón tay cái).</li>
+        <li>🔄 <strong>Thứ tự dùng từ ngoài vào trong (Von außen nach innen):</strong> Khách sẽ dùng dao dĩa từ phía ngoài cùng vào trong theo trình tự từng món của thực đơn. Món ăn đầu tiên sẽ dùng dao dĩa nằm ngoài cùng!</li>
+        <li>🔪 <strong>Quy tắc tay thuận:</strong> 
+          <ul>
+            <li><strong>Bên phải (Rechts):</strong> Đặt dao ăn chính (<em>Menümesser</em>) và thìa súp (<em>Suppenlöffel</em>). <strong>Lưỡi dao bắt buộc quay sang trái hướng vào trong lòng đĩa (Schneide nach links / zum Teller)!</strong></li>
+            <li><strong>Bên trái (Links):</strong> Đặt các loại dĩa (<em>Gabeln</em>), răng dĩa ngửa lên trên.</li>
+          </ul>
+        </li>
+        <li>🍰 <strong>Bộ dao dĩa tráng miệng (Dessertbesteck):</strong> Đặt nằm ngang phía <strong>trên đầu đĩa (oberhalb des Tellers)</strong>.
+          <ul>
+            <li>Thìa tráng miệng (<em>Dessertlöffel</em>): Cán thìa hướng sang <strong>bên phải</strong> (để tay phải cầm).</li>
+            <li>Dĩa tráng miệng (<em>Dessertgabel</em>): Cán dĩa hướng sang <strong>bên trái</strong> (để tay trái cầm).</li>
+          </ul>
+        </li>
+        <li>🥖 <strong>Đĩa bánh mì &amp; Dao bơ (Brotteller &amp; Buttermesser):</strong> Đặt bên <strong>tay trái</strong> của các dĩa ăn chính, mép dưới ngang hàng hoặc mép đĩa căn chỉnh đối xứng. Dao bơ đặt trên đĩa bánh mì, lưỡi dao quay về bên trái.</li>
+        <li>🥂 <strong>Bố trí ly cốc (Gläseranordnung):</strong>
+          <ul>
+            <li><strong>Richtglas (Ly chuẩn/chính):</strong> Thường là <em>Wasserglas</em> hoặc <em>Rotweinglas</em> của món chính. Đặt thẳng hàng phía trên đầu mũi dao chính (<em>Hauptmesser</em>) khoảng 1 cm.</li>
+            <li><strong>Xếp theo đường chéo 45° (Diagonale) hoặc Tam giác (Dreiecksform):</strong> Các ly tiếp theo (Weißweinglas, Sektglas) xếp chếch dần xuống phía dưới bên phải theo thứ tự thưởng thức đồ uống.</li>
+          </ul>
+        </li>
+        <li>🧻 <strong>Khăn ăn (Mundserviette):</strong> Đặt chính giữa đĩa hoặc bên trái dĩa. Gấp theo kiểu trang nhã (như Tafelspitz, Bischofsmütze), tuyệt đối không dùng tay chạm quá nhiều vào khăn làm mất vệ sinh.</li>
+      </ul>
+    </div>
+
+    <!-- QUY TRÌNH 4 BƯỚC THỰC HÀNH -->
+    <div class="card">
+      <h2>③ Quy trình 4 Bước thực hiện bài thi thực hành (Gastraum reinigen – kontrollieren – herrichten)</h2>
+      
       <div class="grid2">
-        <div class="mini"><h4>🍋 Zitrone</h4><p>→ Garnitur · Getränk · Speise · Dekoration tùy trường hợp.</p></div>
-        <div class="mini"><h4>🧻 Serviette</h4><p>→ phục vụ khách · Tischdekoration · vệ sinh nhỏ khi phục vụ.</p></div>
+        <div class="mini">
+          <h4>Bước 1: Vorbereiten (Chuẩn bị dụng cụ)</h4>
+          <p>Lấy khay dọn, chọn đúng khăn lau theo mã màu (khăn xanh dương cho bàn ghế, khăn vàng cho bồn rửa), lấy xô nước pha hóa chất trung tính đúng liều lượng, đeo găng tay cao su.</p>
+        </div>
+        <div class="mini">
+          <h4>Bước 2: Reinigen (Thực hiện lau dọn)</h4>
+          <p>Lau theo nguyên tắc khoa học: <strong>Từ trên xuống dưới (von oben nach unten)</strong>, <strong>từ trong ra ngoài (von innen nach außen)</strong>, <strong>từ sạch sang bẩn (von sauber zu unrein)</strong>. Lau mặt bàn theo hình chữ S uốn lượn (<em>S-förmige Wischbewegung</em>) để không bỏ sót bụi và không bôi bẩn ngược lại.</p>
+        </div>
+        <div class="mini">
+          <h4>Bước 3: Kontrollieren (Kiểm tra chất lượng)</h4>
+          <p>Đứng lùi lại, cúi người nhìn nghiêng dưới ánh đèn để kiểm tra: Mặt bàn đã khô sạch hoàn toàn chưa? Có còn vệt nước mờ (<em>streifenfrei</em>), dấu vân tay trên kính hay bụi ở chân bàn ghế không? Bàn ghế có bị kênh lung lay không?</p>
+        </div>
+        <div class="mini">
+          <h4>Bước 4: Herrichten &amp; Eindecken (Sắp đặt hoàn thiện)</h4>
+          <p>Kê bàn ghế thẳng hàng theo tuyến nhìn (<em>Fluchtlinien</em>). Trải khăn trải bàn phẳng phiu không nếp nhăn. Dùng khăn mềm sạch (<em>Poliertuch</em>) lau bóng ly cốc và dao dĩa dưới hơi nước nóng trước khi đặt lên bàn tiệc (<em>Polieren</em>). Hoàn thiện bộ gia vị menage, hoa tươi và nến.</p>
+        </div>
       </div>
-      <div class="note">Mục tiêu: không chỉ nhận ra đồ vật mà phải biết <strong>wofür wird dieser Gegenstand / diese Ware verwendet</strong>?</div>
+
+      <div class="note">
+        🗣️ <strong>Mẹo thi vấn đáp (Fachgespräch):</strong> Trong khi bạn thao tác, giám khảo IHK có thể hỏi: <em>„Tại sao bạn lại chọn loại nước lau này?“</em> hoặc <em>„Khăn màu vàng dùng làm gì?“</em> Hãy trả lời tự tin, dõng dạc bằng thuật ngữ chuyên môn: nêu rõ độ pH, vòng tròn Sinner và hệ thống mã màu!
+      </div>
     </div>
   </div>
 
-  <!-- CẦN HỌC -->
+  <!-- ==================== TAB 4: 7 CHỦ ĐỀ & ĐỀ THI MẪU ==================== -->
   <div class="zpanel" id="z-hoctap">
     <div class="card">
-      <h2>🎯 Điều bạn thực sự cần học</h2>
-      <p>Chia việc học thành <strong>7 nhóm</strong>:</p>
-      <div class="grid2">
-        <div class="mini"><h4>🔵 A. Reinigung</h4><p>Reinigung · Desinfektion · Pflege · Reinigungsmittel · Dosierung · Einwirkzeit · Reinigungsvorgang · Hygiene</p></div>
-        <div class="mini"><h4>🟢 B. Nachhaltigkeit</h4><p>Wasser sparen · Energie sparen · Reinigungsmittel tiết kiệm · Müll vermeiden · Wiederverwertung · Umweltbewusstsein</p></div>
-        <div class="mini"><h4>🟡 C. Abfall</h4><p>Abfallvermeidung · Mülltrennung · Recycling · Wiederverwertung · Entsorgung</p></div>
-        <div class="mini"><h4>🔴 D. Arbeitssicherheit</h4><p>Unfallverhütung · Rutschgefahr · Messer · Feuer · Gefahrstoffe · Schutzkleidung · Gesundheitsschutz</p></div>
-        <div class="mini"><h4>🟣 E. Geschirr</h4><p>Các loại Teller · Schüsseln · Untertassen · Einsatzmöglichkeiten</p></div>
-        <div class="mini"><h4>🟠 F. Besteck &amp; Gläser</h4><p>Messer · Gabel · Löffel · Dessertbesteck · Wein- und Wassergläser · chọn theo Speise/Getränk</p></div>
-        <div class="mini"><h4>🟤 G. Gastraum</h4><p>Reinigen · kontrollieren · herrichten · Tisch eindecken · Tisch überprüfen · chuẩn bị khu vực cho khách</p></div>
+      <h2>🎯 4. TỔNG KẾT 7 CHỦ ĐỀ CỐT LÕI &amp; BỘ CÂU HỎI MẪU IHK</h2>
+      <p>Bảng đối chiếu nhanh 7 chủ đề trọng tâm và các câu hỏi tình huống thực tế hay gặp trong đề thi Zwischenprüfung.</p>
+    </div>
+
+    <div class="grid2">
+      <div class="mini">
+        <h4>🔵 A. REINIGUNG &amp; HYGIENE</h4>
+        <p><strong>Từ khóa:</strong> Sicht-, Unterhalts-, Grundreinigung, HACCP-Reinigungsplan, Sinnerscher Kreis, pH-Skala (sauer/neutral/alkalisch), 4-Farben-Tuchsystem, Dosierung, Einwirkzeit.</p>
+      </div>
+      <div class="mini">
+        <h4>🟢 B. NACHHALTIGKEIT</h4>
+        <p><strong>Từ khóa:</strong> Wasser- &amp; Energiesparen, Sparperlatoren, Kühlhaustemperaturen (+2°C bis +7°C), EU-Ecolabel, Blauer Engel, biologische Abbaubarkeit, Überdosierung vermeiden.</p>
+      </div>
+      <div class="mini">
+        <h4>🟡 C. ABFALLWIRTSCHAFT</h4>
+        <p><strong>Từ khóa:</strong> 5-stufige Abfallhierarchie, Speiseresteverordnung (Biogas), Glasfarben-Trennung, Blaue Tonne, Gelber Sack (DSD), Fettabscheider (Altfettentsorgung).</p>
+      </div>
+      <div class="mini">
+        <h4>🔴 D. ARBEITSSICHERHEIT</h4>
+        <p><strong>Từ khóa:</strong> DGUV 110, SRS-Unfälle (Rutschgefahr-Schild), Messertragen, Brandklasse F (Fettbrandlöscher / NIE Wasser!), PSA (Handschuhe, Schuhe SRC), Ergonomie.</p>
+      </div>
+      <div class="mini">
+        <h4>🟣 E. GESCHIRR</h4>
+        <p><strong>Từ khóa:</strong> Platzteller (~32cm), Speiseteller (~26cm), Suppentasse/Suppenteller, Vorspeisen-/Dessertteller (~20cm), Brotteller links (~16cm).</p>
+      </div>
+      <div class="mini">
+        <h4>🟠 F. BESTECK &amp; GLÄSER</h4>
+        <p><strong>Từ khóa:</strong> Menümesser/Menügabel, Fischbesteck, Steakmesser, Richtglas (Wasserglas), Weißweinglas (10-12°C), Rotweinglas (16-18°C), Sektflöte, Polieren.</p>
+      </div>
+      <div class="mini" style="grid-column: 1 / -1;">
+        <h4>🟤 G. GASTRÄUME HERRICHTEN</h4>
+        <p><strong>Từ khóa:</strong> Tisch eindecken (1-2 cm Abstand, von außen nach innen, Schneide nach innen), 4 Phasen (Vorbereiten, Reinigen, Kontrollieren, Herrichten), Fluchtlinie, Fachgespräch.</p>
+      </div>
+    </div>
+
+    <!-- ĐỀ THI TÌNH HUỐNG MẪU -->
+    <div class="card">
+      <h2>📝 5 Bài tập tình huống thi mẫu điển hình (Typische IHK-Prüfungsfragen mit Musterlösung)</h2>
+      
+      <div style="margin-bottom:16px;border-bottom:1px dashed var(--line);padding-bottom:12px;">
+        <p style="font-weight:600;color:var(--ink);margin-bottom:4px;">❓ Câu hỏi 1 (Lý thuyết - Hóa chất &amp; An toàn):</p>
+        <p style="font-style:italic;color:#64748b;margin:0 0 6px;">Ein Auszubildender möchte verkrustete Kalkablagerungen an der Kaffeemaschine entfernen und mischt einen stark sauren Kalklöser mit einem chlorhaltigen Reiniger. Beurteilen Sie dieses Verhalten.</p>
+        <div style="background:#eaf3ff;padding:10px 14px;border-radius:8px;font-size:.9em;border-left:3px solid #007aff;">
+          <strong>✅ Đáp án chuẩn (Musterlösung):</strong> Hành vi này cực kỳ nguy hiểm và bị nghiêm cấm tuyệt đối (<em>Lebensgefährlich und streng verboten</em>). Khi trộn chất tẩy chứa axit với chất tẩy chứa clo, phản ứng hóa học sẽ giải phóng <strong>Khí Clo độc (giftiges Chlorgas)</strong> gây ngộ độc và bỏng rát đường hô hấp cấp tính.
+        </div>
+      </div>
+
+      <div style="margin-bottom:16px;border-bottom:1px dashed var(--line);padding-bottom:12px;">
+        <p style="font-weight:600;color:var(--ink);margin-bottom:4px;">❓ Câu hỏi 2 (Lý thuyết - Vòng tròn Sinner):</p>
+        <p style="font-style:italic;color:#64748b;margin:0 0 6px;">Nennen Sie die 4 Faktoren des Sinnerschen Kreises. Wie verändert sich der Prozess, wenn aus Umweltschutzgründen die Wassertemperatur von 60°C auf 30°C gesenkt wird?</p>
+        <div style="background:#eaf3ff;padding:10px 14px;border-radius:8px;font-size:.9em;border-left:3px solid #007aff;">
+          <strong>✅ Đáp án chuẩn (Musterlösung):</strong> 4 yếu tố gồm: <em>Chemie, Mechanik, Temperatur, Zeit</em>. Theo nguyên tắc bù trừ (<em>Kompensationsprinzip</em>), khi nhiệt độ (Temperatur) giảm xuống 30°C, để đạt cùng hiệu quả sạch, ta phải <strong>tăng thời gian tác dụng (Einwirkzeit kéo dài hơn)</strong> hoặc <strong>tăng lực cơ học chà rửa (mehr Mechanik)</strong>.
+        </div>
+      </div>
+
+      <div style="margin-bottom:16px;border-bottom:1px dashed var(--line);padding-bottom:12px;">
+        <p style="font-weight:600;color:var(--ink);margin-bottom:4px;">❓ Câu hỏi 3 (Lý thuyết - Phòng cháy chữa cháy):</p>
+        <p style="font-style:italic;color:#64748b;margin:0 0 6px;">In der Restaurantküche gerät Speiseöl in einer Fritteuse in Brand. Welche Löschmaßnahme ist korrekt und was darf keinesfalls getan werden?</p>
+        <div style="background:#eaf3ff;padding:10px 14px;border-radius:8px;font-size:.9em;border-left:3px solid #007aff;">
+          <strong>✅ Đáp án chuẩn (Musterlösung):</strong> Cháy dầu mỡ thuộc <strong>Brandklasse F</strong>. Biện pháp đúng: Tắt nguồn điện/ga, dùng nắp kim loại/chăn dập lửa (<em>Löschdecke</em>) úp kín để triệt tiêu oxy, hoặc dùng bình chữa cháy chuyên dụng <em>Fettbrandlöscher</em>.<br>⚠️ <strong>Tuyệt đối không dùng nước</strong> vì 1 lít nước gặp dầu sôi sẽ bốc hơi tức thì thành 1700 lít hơi nước gây nổ bung dầu cháy (<em>Fettbrandexplosion</em>)!
+        </div>
+      </div>
+
+      <div style="margin-bottom:16px;border-bottom:1px dashed var(--line);padding-bottom:12px;">
+        <p style="font-weight:600;color:var(--ink);margin-bottom:4px;">❓ Câu hỏi 4 (Thực hành - Bày bàn &amp; Dao dĩa):</p>
+        <p style="font-style:italic;color:#64748b;margin:0 0 6px;">Sie decken für ein 3-Gänge-Menü ein: 1. Tomatensuppe, 2. Rinderfiletsteak mit Rosmarinkartoffeln, 3. Mousse au Chocolat. Beschreiben Sie die Besteckanordnung.</p>
+        <div style="background:#eaf3ff;padding:10px 14px;border-radius:8px;font-size:.9em;border-left:3px solid #007aff;">
+          <strong>✅ Đáp án chuẩn (Musterlösung):</strong>
+          <ul>
+            <li><strong>Bên phải đĩa (từ ngoài vào trong):</strong> Suppenlöffel (cho món súp cà chua ngoài cùng) ➔ Steakmesser (lưỡi răng cưa quay vào phía trong đĩa cho món bít tết).</li>
+            <li><strong>Bên trái đĩa:</strong> Menügabel (dĩa ăn chính cho món bò bít tết).</li>
+            <li><strong>Phía trên đầu đĩa:</strong> Dessertlöffel (thìa tráng miệng cán quay sang phải cho món Mousse au Chocolat).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <p style="font-weight:600;color:var(--ink);margin-bottom:4px;">❓ Câu hỏi 5 (Thực hành - Quy trình vệ sinh &amp; Kiểm tra):</p>
+        <p style="font-style:italic;color:#64748b;margin:0 0 6px;">Nennen Sie die 4 Schritte bei der Vorbereitung und Durchführung der Gastraumreinigung vor dem Eindecken.</p>
+        <div style="background:#eaf3ff;padding:10px 14px;border-radius:8px;font-size:.9em;border-left:3px solid #007aff;">
+          <strong>✅ Đáp án chuẩn (Musterlösung):</strong>
+          <ol>
+            <li><strong>Vorbereiten:</strong> Chuẩn bị dụng cụ, khăn màu xanh/vàng, pha hóa chất trung tính đúng liều lượng, đeo găng bảo hộ.</li>
+            <li><strong>Reinigen:</strong> Lau dọn theo nguyên tắc từ trên xuống dưới, từ trong ra ngoài, lau mặt bàn theo đường chữ S.</li>
+            <li><strong>Kontrollieren:</strong> Kiểm tra bằng mắt dưới ánh sáng để đảm bảo sạch bóng, không còn vệt nước mờ hay bụi bẩn.</li>
+            <li><strong>Herrichten:</strong> Căn chỉnh bàn ghế thẳng hàng, trải khăn bàn, lau bóng (polieren) dao dĩa ly cốc và set up bàn chuẩn.</li>
+          </ol>
+        </div>
       </div>
     </div>
   </div>

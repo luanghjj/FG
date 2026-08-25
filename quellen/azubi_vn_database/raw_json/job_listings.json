@@ -1,0 +1,398 @@
+[
+  {
+    "id": 14732,
+    "date": "2026-01-29T17:12:42",
+    "date_gmt": "2026-01-29T10:12:42",
+    "guid": {
+      "rendered": "https://azubi.vn/?post_type=job_listing&#038;p=14732"
+    },
+    "modified": "2026-01-29T17:12:42",
+    "modified_gmt": "2026-01-29T10:12:42",
+    "slug": "konditoreifachverkaufer-baden-wurttemberg",
+    "status": "publish",
+    "type": "job_listing",
+    "link": "https://azubi.vn/hop-dong/konditoreifachverkaufer-baden-wurttemberg/",
+    "title": {
+      "rendered": "Konditoreifachverkäufer [Baden-Württemberg]"
+    },
+    "content": {
+      "rendered": "<ul>\n<li aria-level=\"1\">Tên ngành nghề: Konditoreifachverkäufer</li>\n<li aria-level=\"1\">Đối tượng: Nam / Nữ</li>\n<li aria-level=\"1\">Ngày nhập học: Ab Sofort</li>\n<li aria-level=\"1\">Thời gian đào tạo: 03 năm</li>\n<li aria-level=\"1\">Trợ cấp: ab 1050 Euro/tháng</li>\n<li aria-level=\"1\">Nơi học nghề và học lý thuyết: Toàn nước Đức (Doanh nghiệp có cơ sở ở toàn nước Đức)</li>\n<li aria-level=\"1\">Chỗ ở: Doanh nghiệp hỗ trợ tìm nhà</li>\n<li aria-level=\"1\">Thông tin về hỗ trợ và yêu cầu thêm: Tiếng Đức B1 Full kỹ năng, giao tiếp tốt, chăm chỉ, có sức khỏe tốt</li>\n</ul>\n",
+      "protected": false
+    },
+    "author": 29,
+    "featured_media": 0,
+    "comment_status": "closed",
+    "ping_status": "closed",
+    "template": "",
+    "job_listing_type": [],
+    "job_listing_category": [
+      211
+    ],
+    "job_listing_location": [
+      154
+    ],
+    "job_listing_tag": [],
+    "class_list": [
+      "post-14732",
+      "job_listing",
+      "type-job_listing",
+      "status-publish",
+      "hentry",
+      "job_listing_category-ban-hang",
+      "job_listing_location-baden-wuerttemberg",
+      "is-featured",
+      "is-urgent"
+    ],
+    "metas": {
+      "_job_category": {
+        "211": "Bán Hàng"
+      },
+      "_job_tag": [],
+      "_job_gender": "Nam / Nữ",
+      "_job_salary_type": "monthly",
+      "_job_salary": "1050 € - 1300 €/ tháng",
+      "_job_qualification": "B1",
+      "_job_photos": "",
+      "_job_address": "",
+      "_job_application_deadline_date": "2026-05-31",
+      "_job_location": {
+        "154": "Baden-Württemberg"
+      },
+      "_job_logo": "https://azubi.vn/wp-content/uploads/wp-job-board-pro-uploads/_employer_featured_image/2023/12/idoku-100x100-1.png",
+      "_job_employer_name": "CÔNG TY CỔ PHẦN IDOKU",
+      "_job_employer_url": "https://azubi.vn/cong-ty/idoku/"
+    },
+    "_links": {
+      "self": [
+        {
+          "href": "https://azubi.vn/wp-json/wp/v2/job_listing/14732",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://azubi.vn/wp-json/wp/v2/job_listing"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://azubi.vn/wp-json/wp/v2/types/job_listing"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://azubi.vn/wp-json/wp/v2/users/29"
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://azubi.vn/wp-json/wp/v2/comments?post=14732"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://azubi.vn/wp-json/wp/v2/media?parent=14732"
+        }
+      ],
+      "wp:term": [
+        {
+          "taxonomy": "job_listing_type",
+          "embeddable": true,
+          "href": "https://azubi.vn/wp-json/wp/v2/job_listing_type?post=14732"
+        },
+        {
+          "taxonomy": "job_listing_category",
+          "embeddable": true,
+          "href": "https://azubi.vn/wp-json/wp/v2/job_listing_category?post=14732"
+        },
+        {
+          "taxonomy": "job_listing_location",
+          "embeddable": true,
+          "href": "https://azubi.vn/wp-json/wp/v2/job_listing_location?post=14732"
+        },
+        {
+          "taxonomy": "job_listing_tag",
+          "embeddable": true,
+          "href": "https://azubi.vn/wp-json/wp/v2/job_listing_tag?post=14732"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 14731,
+    "date": "2026-01-29T17:06:19",
+    "date_gmt": "2026-01-29T10:06:19",
+    "guid": {
+      "rendered": "https://azubi.vn/?post_type=job_listing&#038;p=14731"
+    },
+    "modified": "2026-01-29T17:09:00",
+    "modified_gmt": "2026-01-29T10:09:00",
+    "slug": "restaurantfachmann-frau-baden-wurttemberg",
+    "status": "publish",
+    "type": "job_listing",
+    "link": "https://azubi.vn/hop-dong/restaurantfachmann-frau-baden-wurttemberg/",
+    "title": {
+      "rendered": "Restaurantfachmann/-frau [Baden-Württemberg]"
+    },
+    "content": {
+      "rendered": "<ul>\n<li aria-level=\"1\">Tên ngành nghề: Restaurantfachmann/-frau</li>\n<li aria-level=\"1\">Đối tượng: Nam / Nữ</li>\n<li aria-level=\"1\">Ngày nhập học: Ab Sofort</li>\n<li aria-level=\"1\">Thời gian đào tạo: 03 năm</li>\n<li aria-level=\"1\">Trợ cấp: ab 1050 Euro/tháng</li>\n<li aria-level=\"1\">Nơi học nghề và học lý thuyết: Toàn nước Đức (Doanh nghiệp có cơ sở ở toàn nước Đức)</li>\n<li aria-level=\"1\">Chỗ ở: Doanh nghiệp hỗ trợ tìm nhà</li>\n<li aria-level=\"1\">Thông tin về hỗ trợ và yêu cầu thêm: Tiếng Đức B1 Full kỹ năng, giao tiếp tốt, chăm chỉ, có sức khỏe tốt</li>\n</ul>\n<div id=\"gtx-trans\" style=\"position: absolute; left: 230px; top: 157px;\">\n<div class=\"gtx-trans-icon\"></div>\n</div>\n",
+      "protected": false
+    },
+    "author": 29,
+    "featured_media": 0,
+    "comment_status": "closed",
+    "ping_status": "closed",
+    "template": "",
+    "job_listing_type": [],
+    "job_listing_category": [
+      184
+    ],
+    "job_listing_location": [
+      154
+    ],
+    "job_listing_tag": [],
+    "class_list": [
+      "post-14731",
+      "job_listing",
+      "type-job_listing",
+      "status-publish",
+      "hentry",
+      "job_listing_category-nha-hang",
+      "job_listing_location-baden-wuerttemberg",
+      "is-featured",
+      "is-urgent"
+    ],
+    "metas": {
+      "_job_category": {
+        "184": "Nhà Hàng"
+      },
+      "_job_tag": [],
+      "_job_gender": "Nam / Nữ",
+      "_job_salary_type": "monthly",
+      "_job_salary": "1050 € - 1300 €/ tháng",
+      "_job_qualification": "B1",
+      "_job_photos": "",
+      "_job_address": "",
+      "_job_application_deadline_date": "2026-05-31",
+      "_job_location": {
+        "154": "Baden-Württemberg"
+      },
+      "_job_logo": "https://azubi.vn/wp-content/uploads/wp-job-board-pro-uploads/_employer_featured_image/2023/12/idoku-100x100-1.png",
+      "_job_employer_name": "CÔNG TY CỔ PHẦN IDOKU",
+      "_job_employer_url": "https://azubi.vn/cong-ty/idoku/"
+    },
+    "_links": {
+      "self": [
+        {
+          "href": "https://azubi.vn/wp-json/wp/v2/job_listing/14731",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://azubi.vn/wp-json/wp/v2/job_listing"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://azubi.vn/wp-json/wp/v2/types/job_listing"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://azubi.vn/wp-json/wp/v2/users/29"
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://azubi.vn/wp-json/wp/v2/comments?post=14731"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://azubi.vn/wp-json/wp/v2/media?parent=14731"
+        }
+      ],
+      "wp:term": [
+        {
+          "taxonomy": "job_listing_type",
+          "embeddable": true,
+          "href": "https://azubi.vn/wp-json/wp/v2/job_listing_type?post=14731"
+        },
+        {
+          "taxonomy": "job_listing_category",
+          "embeddable": true,
+          "href": "https://azubi.vn/wp-json/wp/v2/job_listing_category?post=14731"
+        },
+        {
+          "taxonomy": "job_listing_location",
+          "embeddable": true,
+          "href": "https://azubi.vn/wp-json/wp/v2/job_listing_location?post=14731"
+        },
+        {
+          "taxonomy": "job_listing_tag",
+          "embeddable": true,
+          "href": "https://azubi.vn/wp-json/wp/v2/job_listing_tag?post=14731"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 14712,
+    "date": "2026-01-29T15:40:52",
+    "date_gmt": "2026-01-29T08:40:52",
+    "guid": {
+      "rendered": "https://azubi.vn/?post_type=job_listing&#038;p=14712"
+    },
+    "modified": "2026-01-29T16:56:31",
+    "modified_gmt": "2026-01-29T09:56:31",
+    "slug": "fachkraft-fur-gastronomie-baden-wurttemberg",
+    "status": "publish",
+    "type": "job_listing",
+    "link": "https://azubi.vn/hop-dong/fachkraft-fur-gastronomie-baden-wurttemberg/",
+    "title": {
+      "rendered": "Fachkraft Für Gastronomie [Baden-Württemberg]"
+    },
+    "content": {
+      "rendered": "<ul>\n<li aria-level=\"1\">Tên ngành nghề: Fachkraft für Gastronomie</li>\n<li aria-level=\"1\">Đối tượng: Nam / Nữ</li>\n<li aria-level=\"1\">Ngày nhập học: Ab Sofort</li>\n<li aria-level=\"1\">Thời gian đào tạo: 02 năm</li>\n<li aria-level=\"1\">Trợ cấp: ab 1050 Euro/tháng</li>\n<li aria-level=\"1\">Nơi học nghề và học lý thuyết: Bang Baden-Württemberg</li>\n<li aria-level=\"1\">Chỗ ở: Doanh nghiệp hỗ trợ tìm nhà</li>\n<li aria-level=\"1\">Thông tin về hỗ trợ và yêu cầu thêm: Tiếng Đức B1 Full kỹ năng, giao tiếp tốt, chăm chỉ, có sức khỏe tốt</li>\n</ul>\n<div id=\"gtx-trans\" style=\"position: absolute; left: 265px; top: 112px;\">\n<div class=\"gtx-trans-icon\"></div>\n</div>\n",
+      "protected": false
+    },
+    "author": 29,
+    "featured_media": 0,
+    "comment_status": "closed",
+    "ping_status": "closed",
+    "template": "",
+    "job_listing_type": [],
+    "job_listing_category": [
+      184
+    ],
+    "job_listing_location": [
+      154
+    ],
+    "job_listing_tag": [],
+    "class_list": [
+      "post-14712",
+      "job_listing",
+      "type-job_listing",
+      "status-publish",
+      "hentry",
+      "job_listing_category-nha-hang",
+      "job_listing_location-baden-wuerttemberg",
+      "is-featured",
+      "is-urgent"
+    ],
+    "metas": {
+      "_job_category": {
+        "184": "Nhà Hàng"
+      },
+      "_job_tag": [],
+      "_job_gender": "Nam / Nữ",
+      "_job_salary_type": "monthly",
+      "_job_salary": "1050 € - 1300 €/ tháng",
+      "_job_qualification": "B1",
+      "_job_photos": "",
+      "_job_address": "",
+      "_job_application_deadline_date": "2026-05-31",
+      "_job_location": {
+        "154": "Baden-Württemberg"
+      },
+      "_job_logo": "https://azubi.vn/wp-content/uploads/wp-job-board-pro-uploads/_employer_featured_image/2023/12/idoku-100x100-1.png",
+      "_job_employer_name": "CÔNG TY CỔ PHẦN IDOKU",
+      "_job_employer_url": "https://azubi.vn/cong-ty/idoku/"
+    },
+    "_links": {
+      "self": [
+        {
+          "href": "https://azubi.vn/wp-json/wp/v2/job_listing/14712",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://azubi.vn/wp-json/wp/v2/job_listing"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://azubi.vn/wp-json/wp/v2/types/job_listing"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://azubi.vn/wp-json/wp/v2/users/29"
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://azubi.vn/wp-json/wp/v2/comments?post=14712"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://azubi.vn/wp-json/wp/v2/media?parent=14712"
+        }
+      ],
+      "wp:term": [
+        {
+          "taxonomy": "job_listing_type",
+          "embeddable": true,
+          "href": "https://azubi.vn/wp-json/wp/v2/job_listing_type?post=14712"
+        },
+        {
+          "taxonomy": "job_listing_category",
+          "embeddable": true,
+          "href": "https://azubi.vn/wp-json/wp/v2/job_listing_category?post=14712"
+        },
+        {
+          "taxonomy": "job_listing_location",
+          "embeddable": true,
+          "href": "https://azubi.vn/wp-json/wp/v2/job_listing_location?post=14712"
+        },
+        {
+          "taxonomy": "job_listing_tag",
+          "embeddable": true,
+          "href": "https://azubi.vn/wp-json/wp/v2/job_listing_tag?post=14712"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  }
+]
