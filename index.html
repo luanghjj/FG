@@ -180,6 +180,7 @@ body.tier-paid .pro-flag,body.tier-super .pro-flag{
 /* Soft scopes – keep hierarchy without loud colors */
 .bfk-scope{--accent:#007AFF;--accent-soft:#EAF3FF}
 .abschluss-scope{--accent:#AF52DE;--accent-soft:#F6EDFC}
+.zwischen-scope{--accent:#FF9500;--accent-soft:#FFF3E2}
 
 /* ===== Theme content shared ===== */
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:none;padding:22px;margin-bottom:16px}
@@ -1049,6 +1050,17 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
     <span class="cd" id="homeExamCd">…</span>
   </div>
 
+  <!-- Banner Zwischenprüfung -->
+  <div class="exam-banner" onclick="go('#/zwischen')" style="--accent:#FF9500;--accent-soft:#FFF3E2">
+    <div class="exam-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v5c0 5 3.7 9 9 10 5.3-1 9-5 9-10V7z"/><path d="M8.5 12l2.3 2.3 4.7-4.7"/></svg></div>
+    <div class="exam-txt">
+      <div class="exam-kicker">Prüfungstraining</div>
+      <h2>Zwischenprüfung</h2>
+      <p>Wirtschaftsdienst · schriftlich &amp; praktisch.</p>
+    </div>
+    <div class="exam-go">Los →</div>
+  </div>
+
   <!-- Banner Abschlussprüfung -->
   <div class="exam-banner" onclick="go('#/abschluss')">
     <div class="exam-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg></div>
@@ -1345,6 +1357,177 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
     </table>
     <div class="formula">Körpereiweiß aus 100g = Eiweißanteil(g) × BW(%)<br>Beispiel: 100g Ei → 13g × 100% = 13g Körpereiweiß</div>
     <p style="font-size:.9em"><strong>Ergänzungswert:</strong> Kombination → BW steigt! z.B. Kartoffeln + Ei · Getreide + Milch · Linsen + Spätzle · Reis + Ei + Hühnchen.</p>
+  </div>
+</section>
+
+<!-- ===== THEME: ZWISCHENPRÜFUNG ===== -->
+<section class="view zwischen-scope" id="v-zwischen">
+  <div class="back" onclick="go('#/')">← Fächer</div>
+  <div class="section-head">
+    <h2>🛡️ Zwischenprüfung</h2>
+    <p>Fachkraft für Gastronomie · Wirtschaftsdienst · Lý thuyết + Thực hành — IHK AO 2022.</p>
+  </div>
+  <div class="tabs">
+    <div class="tab active" data-ztab="tongquan">🇩🇪 Tổng quan</div>
+    <div class="tab" data-ztab="lythuyet">📚 Lý thuyết</div>
+    <div class="tab" data-ztab="thuchanh">🛠️ Thực hành</div>
+    <div class="tab" data-ztab="hoctap">🎯 Cần học</div>
+  </div>
+
+  <!-- TỔNG QUAN -->
+  <div class="zpanel active" id="z-tongquan">
+    <div class="card">
+      <h2>1. Kỳ thi này là gì?</h2>
+      <p><strong>Zwischenprüfung</strong> là kỳ thi giữa quá trình <em>Ausbildung</em>, diễn ra vào <strong>Halbjahr thứ 3</strong> của chương trình đào tạo, kiểm tra kiến thức/kỹ năng đã học trong <strong>12 tháng đầu</strong> (bao gồm cả nội dung dạy ở Berufsschule theo Ausbildungsrahmenplan).</p>
+      <div class="note">💡 Nói đơn giản: bạn <strong>không</strong> cần học toàn bộ chương trình Fachkraft für Gastronomie — trọng tâm là những gì đã học trong 12 tháng đầu.</div>
+    </div>
+
+    <div class="card">
+      <h2>2. Cấu trúc kỳ thi</h2>
+      <p>Zwischenprüfung có <strong>1 Prüfungsbereich</strong> chính: <strong>🏨 Wirtschaftsdienst</strong>, chia làm 2 phần:</p>
+      <table>
+        <tr><th>Phần</th><th>Hình thức</th><th>Thời gian</th></tr>
+        <tr><td><strong>Teil 1</strong></td><td>Schriftlich — Lý thuyết</td><td>60 phút</td></tr>
+        <tr><td><strong>Teil 2</strong></td><td>Praktisch — Thực hành</td><td>60 phút</td></tr>
+        <tr><td><strong>Tổng cộng</strong></td><td>Lý thuyết + Thực hành</td><td><strong>120 phút</strong></td></tr>
+      </table>
+      <div class="note">📌 Thông tin do IHK xác nhận: phần viết 60 phút + Arbeitsaufgabe thực hành 60 phút.</div>
+    </div>
+
+    <div class="card">
+      <h2>3. Sơ đồ nhớ nhanh</h2>
+      <div class="hint">Một dòng để nhớ:</div>
+      <div class="grid2">
+        <div class="mini"><h4>📚 Schriftlich · 60 Min.</h4><p>Reinigung · Desinfektion · Pflege · Nachhaltigkeit · Abfall · Arbeitssicherheit</p></div>
+        <div class="mini"><h4>🛠️ Praktisch · 60 Min.</h4><p>Waren erkennen · Geschirr/Besteck/Gläser auswählen · Gastraum reinigen · kontrollieren · herrichten</p></div>
+      </div>
+      <div class="note">⚠️ Quan trọng: ảnh ghi "bài thi lý thuyết" và "bài thi thực hành" dễ khiến hiểu là 2 Prüfungsbereiche độc lập. Theo quy định chính thức, <strong>Prüfungsbereich = Wirtschaftsdienst</strong>, và trong đó mới có 2 phần schriftlich + praktisch. Zwischenprüfung <strong>không phải</strong> Abschlussprüfung.</div>
+    </div>
+  </div>
+
+  <!-- LÝ THUYẾT -->
+  <div class="zpanel" id="z-lythuyet">
+    <div class="card">
+      <h2>📚 LÝ THUYẾT — SCHRIFTLICH</h2>
+      <p><strong>Prüfungsbereich: Wirtschaftsdienst</strong> — cần chuẩn bị 4 nhóm nội dung lớn.</p>
+    </div>
+
+    <div class="card">
+      <h2>① Pflege und Reinigung von Gasträumen</h2>
+      <p>Chăm sóc và vệ sinh khu vực dành cho khách. Cần hiểu:</p>
+      <div class="chips">
+        <span>Vì sao phải vệ sinh Gastraum</span><span>Ý nghĩa với Gasterlebnis</span><span>Vệ sinh bàn ghế</span><span>Vệ sinh sàn nhà</span><span>Vệ sinh cửa kính/cửa sổ</span><span>Vệ sinh khu vực phục vụ</span><span>Vệ sinh vật dụng</span><span>Chuẩn bị Gastraum trước khi khách đến</span><span>Kiểm tra sau khi vệ sinh</span><span>Dọn dẹp sau khi khách rời đi</span>
+      </div>
+      <div class="note">🔑 Đặc biệt phải hiểu chuỗi: <strong>Sauberkeit → Hygiene → Wohlbefinden → Gasterlebnis</strong>. Vệ sinh không chỉ để "sạch" mà còn ảnh hưởng trực tiếp đến trải nghiệm của khách.</div>
+    </div>
+
+    <div class="card">
+      <h2>② Reinigung – Desinfektion – Pflege</h2>
+      <div class="grid2">
+        <div class="mini"><h4>🧽 Reinigung</h4><p><strong>= Làm sạch.</strong> Loại bỏ: thức ăn thừa, bụi bẩn, dầu mỡ, chất bẩn nhìn thấy được.</p></div>
+        <div class="mini"><h4>🦠 Desinfektion</h4><p><strong>= Khử khuẩn.</strong> Mục đích: giảm/tiêu diệt vi sinh vật gây bệnh đến mức an toàn.</p></div>
+        <div class="mini"><h4>✨ Pflege</h4><p><strong>= Bảo dưỡng.</strong> Giúp đồ vật giữ chất lượng, kéo dài tuổi thọ, giữ hình thức đẹp, sử dụng an toàn.</p></div>
+      </div>
+      <div class="hint" style="margin-top:12px">🧴 Reinigungsmittel thường gặp: Allzweckreiniger · Glasreiniger · Fettlöser · Sanitärreiniger · Desinfektionsmittel.</div>
+      <div class="note">⚠️ Không được hiểu "cái nào cũng dùng được cho mọi thứ" — phải biết loại nào phù hợp bề mặt nào (Glas → Glasreiniger, Fett → Fettlöser, Sanitär → Sanitärreiniger) và chú ý <strong>Dosierung · Einwirkzeit · Anwendung · Kennzeichnung · Sicherheitshinweise</strong>.</div>
+    </div>
+
+    <div class="card">
+      <h2>③ Nachhaltigkeit</h2>
+      <p>Vệ sinh nhưng đồng thời bảo vệ môi trường — IHK nhấn mạnh các biện pháp Reinigung, Desinfektion, Pflege phải xét dưới góc độ Nachhaltigkeit. Ví dụ:</p>
+      <div class="chips">
+        <span>💧 Tiết kiệm nước — không để vòi chảy lãng phí</span><span>⚡ Tiết kiệm năng lượng — không bật thiết bị khi không cần</span><span>🧴 Dùng hóa chất hợp lý — không quá liều</span><span>♻️ Ưu tiên sản phẩm thân thiện môi trường</span><span>🧹 Làm sạch hiệu quả — đúng lượng nước, hóa chất, dụng cụ</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>④ Abfall — Rác thải</h2>
+      <div class="grid2">
+        <div class="mini"><h4>♻️ Abfall vermeiden</h4><p>Tránh tạo rác: không lãng phí thực phẩm, dùng nguyên liệu hợp lý, hạn chế đồ dùng 1 lần, mua phù hợp nhu cầu.</p></div>
+        <div class="mini"><h4>🔁 Wiederverwertung</h4><p>Tái sử dụng / tái chế.</p></div>
+        <div class="mini"><h4>🗑️ Entsorgung</h4><p>Xử lý rác đúng quy định.</p></div>
+        <div class="mini"><h4>🧩 Mülltrennung</h4><p>Phân loại: Papier/Pappe · Glas · Kunststoff · Bioabfall · Restmüll.</p></div>
+      </div>
+      <div class="note">⚠️ Điểm dễ sai: <strong>không</strong> nên học thuộc kiểu "màu thùng xanh = luôn là X" — màu &amp; hệ thống phân loại phụ thuộc doanh nghiệp/địa phương. Nắm nguyên tắc: <strong>vermeiden → trennen → wiederverwenden/recyceln → richtig entsorgen</strong>.</div>
+    </div>
+
+    <div class="card">
+      <h2>⑤ Arbeitssicherheit &amp; Gesundheitsschutz</h2>
+      <p>Các quy tắc an toàn tại Küche · Service · Lager · Wirtschaftsdienst:</p>
+      <div class="grid2">
+        <div class="mini"><h4>🔪 Messer</h4><p>Dùng đúng cách, không để vị trí nguy hiểm, không cầm dao chạy, cất an toàn.</p></div>
+        <div class="mini"><h4>🧽 Nền ướt</h4><p>Phải cảnh báo, làm sạch, tránh trượt ngã cho khách &amp; nhân viên.</p></div>
+        <div class="mini"><h4>🔥 Feuer</h4><p>Biết nguy cơ cháy, cách phòng cháy, vị trí Feuerlöscher, cách xử lý khi phát hiện cháy.</p></div>
+        <div class="mini"><h4>🧤 PSA</h4><p>Găng tay, giày chống trượt, quần áo bảo hộ khi cần. Tuân thủ Rauchverbot.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THỰC HÀNH -->
+  <div class="zpanel" id="z-thuchanh">
+    <div class="card">
+      <h2>🛠️ THỰC HÀNH — PRAKTISCHE PRÜFUNG</h2>
+      <p>Thực hiện một <strong>Arbeitsaufgabe</strong> trong khoảng <strong>60 phút</strong>. Theo IHK, phải chứng minh khả năng:</p>
+      <div class="chips">
+        <span>Waren erkennen</span><span>Einsatzmöglichkeiten zuordnen</span><span>Gebrauchsgegenstände auswählen</span><span>Geschirr/Besteck/Gläser anlassbezogen auswählen</span><span>Gasträume reinigen</span><span>Gasträume kontrollieren</span><span>Gasträume herrichten</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>① Đồ dùng trong Restaurant</h2>
+      <div class="grid2">
+        <div class="mini"><h4>🍽️ Geschirr</h4><p>Teller · Suppenteller · Dessertteller · Untertasse · Schüssel</p></div>
+        <div class="mini"><h4>🥄 Besteck</h4><p>Menümesser · Menügabel · Vorspeisenbesteck · Dessertlöffel · Kaffeelöffel · Kuchengabel</p></div>
+        <div class="mini"><h4>🥂 Gläser</h4><p>Wasserglas · Weißweinglas · Rotweinglas · Sektglas · Bierglas</p></div>
+      </div>
+      <div class="note">🎯 Điểm quan trọng không chỉ biết tên mà phải biết <strong>welches Glas/Besteck/Geschirr passt zu welchem Anlass bzw. Getränk/Speise</strong>?</div>
+    </div>
+
+    <div class="card">
+      <h2>② Tisch eindecken</h2>
+      <div class="chips">
+        <span>Vị trí Teller</span><span>Besteck</span><span>Gläser</span><span>Serviette</span><span>Abstand</span><span>Besteckordnung</span><span>Cách chuẩn bị bàn</span>
+      </div>
+      <div class="note">Ví dụ cơ bản: <strong>Teller → Besteck → Glas → Serviette</strong>. Trong thi phải chú ý loại món/đồ uống và Anlass để chọn dụng cụ phù hợp.</div>
+    </div>
+
+    <div class="card">
+      <h2>③ Gastraum reinigen – kontrollieren – herrichten</h2>
+      <p>Một trong những kỹ năng quan trọng nhất của phần thực hành. Quy trình:</p>
+      <div class="grid2">
+        <div class="mini"><h4>① Vorbereiten</h4><p>Chuẩn bị: Reinigungsmittel · Reinigungstücher · Eimer · Handschuhe · dụng cụ cần thiết.</p></div>
+        <div class="mini"><h4>② Reinigen</h4><p>Làm sạch khu vực.</p></div>
+        <div class="mini"><h4>③ Kontrollieren</h4><p>Kiểm tra: sạch chưa, còn bụi, bàn/ghế/sàn/kính/dụng cụ sạch chưa?</p></div>
+        <div class="mini"><h4>④ Herrichten</h4><p>Chuẩn bị Gastraum cho khách: bàn, ghế, Geschirr, Besteck, Gläser, Serviette, Dekoration nếu cần.</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>④ Waren erkennen</h2>
+      <p>Nhận biết hàng hóa/nguyên liệu và Einsatzmöglichkeiten của chúng. Ví dụ:</p>
+      <div class="grid2">
+        <div class="mini"><h4>🍋 Zitrone</h4><p>→ Garnitur · Getränk · Speise · Dekoration tùy trường hợp.</p></div>
+        <div class="mini"><h4>🧻 Serviette</h4><p>→ phục vụ khách · Tischdekoration · vệ sinh nhỏ khi phục vụ.</p></div>
+      </div>
+      <div class="note">Mục tiêu: không chỉ nhận ra đồ vật mà phải biết <strong>wofür wird dieser Gegenstand / diese Ware verwendet</strong>?</div>
+    </div>
+  </div>
+
+  <!-- CẦN HỌC -->
+  <div class="zpanel" id="z-hoctap">
+    <div class="card">
+      <h2>🎯 Điều bạn thực sự cần học</h2>
+      <p>Chia việc học thành <strong>7 nhóm</strong>:</p>
+      <div class="grid2">
+        <div class="mini"><h4>🔵 A. Reinigung</h4><p>Reinigung · Desinfektion · Pflege · Reinigungsmittel · Dosierung · Einwirkzeit · Reinigungsvorgang · Hygiene</p></div>
+        <div class="mini"><h4>🟢 B. Nachhaltigkeit</h4><p>Wasser sparen · Energie sparen · Reinigungsmittel tiết kiệm · Müll vermeiden · Wiederverwertung · Umweltbewusstsein</p></div>
+        <div class="mini"><h4>🟡 C. Abfall</h4><p>Abfallvermeidung · Mülltrennung · Recycling · Wiederverwertung · Entsorgung</p></div>
+        <div class="mini"><h4>🔴 D. Arbeitssicherheit</h4><p>Unfallverhütung · Rutschgefahr · Messer · Feuer · Gefahrstoffe · Schutzkleidung · Gesundheitsschutz</p></div>
+        <div class="mini"><h4>🟣 E. Geschirr</h4><p>Các loại Teller · Schüsseln · Untertassen · Einsatzmöglichkeiten</p></div>
+        <div class="mini"><h4>🟠 F. Besteck &amp; Gläser</h4><p>Messer · Gabel · Löffel · Dessertbesteck · Wein- und Wassergläser · chọn theo Speise/Getränk</p></div>
+        <div class="mini"><h4>🟤 G. Gastraum</h4><p>Reinigen · kontrollieren · herrichten · Tisch eindecken · Tisch überprüfen · chuẩn bị khu vực cho khách</p></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1856,6 +2039,17 @@ document.querySelectorAll('#v-abschluss .tab').forEach(t=>t.addEventListener("cl
 }));
 function abschlussShowTab(tab){
   const el=document.querySelector('#v-abschluss .tab[data-atab="'+tab+'"]');
+  if(el) el.click();
+}
+/* Zwischenprüfung tabs */
+document.querySelectorAll('#v-zwischen .tab').forEach(t=>t.addEventListener("click",()=>{
+  document.querySelectorAll('#v-zwischen .tab').forEach(x=>x.classList.remove("active"));
+  document.querySelectorAll('#v-zwischen .zpanel').forEach(x=>x.classList.remove("active"));
+  t.classList.add("active");
+  document.getElementById("z-"+t.getAttribute("data-ztab")).classList.add("active");
+}));
+function zwischenShowTab(tab){
+  const el=document.querySelector('#v-zwischen .tab[data-ztab="'+tab+'"]');
   if(el) el.click();
 }
 /* Abschluss-Themen (wird schrittweise erweitert) */
@@ -4151,6 +4345,7 @@ const ROUTES = {
   "#/bfk/kueche":  {view:"v-kueche", crumbs:[["BfK","#/bfk"],["BfK-2","#/bfk/2"],["Küche","#/bfk/2/kueche"]], redirect:"#/bfk/2/kueche"},
   "#/bfk/quiz":    {view:"v-quiz",   crumbs:[["BfK","#/bfk"],["BfK-2","#/bfk/2"],["Quiz","#/bfk/2/quiz"]], redirect:"#/bfk/2/quiz"},
   "#/bfk/pruefungen":{view:"v-pruefungen",crumbs:[["BfK","#/bfk"],["BfK-2","#/bfk/2"],["Prüfungen","#/bfk/2/pruefungen"]], redirect:"#/bfk/2/pruefungen"},
+  "#/zwischen":  {view:"v-zwischen",crumbs:[["Zwischenprüfung","#/zwischen"]]},
   "#/abschluss":   {view:"v-abschluss",crumbs:[["Abschlussprüfung","#/abschluss"]]},
   "#/fach/wiko":   {view:"v-placeholder", crumbs:[["WiKO","#/fach/wiko"]], placeholder:true},
   "#/fach/e":      {view:"v-placeholder", crumbs:[["Englisch","#/fach/e"]], placeholder:true}, // alias → router uses FachForm for englisch
@@ -4445,6 +4640,8 @@ try{
 });
 
 
+idx("Zwischenprüfung","Wirtschaftsdienst · schriftlich + praktisch · 60 Min. je Teil","Prüfung","#/zwischen",()=>zwischenShowTab("tongquan"),"zwischenprüfung zwischen pruefung wirtschaftsdienst reinigung desinfektion pflege nachhaltigkeit abfall arbeitssicherheit tisch eindecken geschirr besteck gläser gastraum");
+idx("Wirtschaftsdienst","Zwischenprüfung · Reinigung · Service · Prüfungsbereich","Prüfung","#/zwischen",()=>zwischenShowTab("tongquan"),"wirtschaftsdienst zwischenpruefung");
 idx("Klassen-Challenge","Realtime Duell · Raumcode · Live-Score","Game","challenge.html",null,"challenge game duell multiplayer");
 idx("Admin Dashboard","Nutzer · Besuche · Quiz-Punkte","Admin","admin.html",null,"admin statistik rangliste besuche");
 idx("Musterprüfung","Klassenarbeit Nr. 2 · Prüfungsbogen","Prüfung","klassenarbeiten/kiemtra_mau.html",null,"prüfung ka ka2 test");
@@ -4935,7 +5132,7 @@ function setBottomNav(hash){
     let on=false;
     if(t==='#/') on=(h==='#/' || h==='' || h==='#');
     else if(t==='#/on-thi') on=h==='#/on-thi' || h.startsWith('#/exam/');
-    else if(t==='#faecher') on=h.startsWith('#/bfk') || h.startsWith('#/fach') || h.startsWith('#/abschluss') || h.startsWith('#/deutsch');
+    else if(t==='#faecher') on=h.startsWith('#/bfk') || h.startsWith('#/fach') || h.startsWith('#/abschluss') || h.startsWith('#/zwischen') || h.startsWith('#/deutsch');
     else if(t==='#profile') on=false;
     else if(t.startsWith('#')) on=h===t || (t!=='#/' && h.startsWith(t));
     btn.classList.toggle('active', on);
