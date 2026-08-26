@@ -2084,7 +2084,113 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
       </div>
     </div>
 
-    <!-- 10 CÂU HỎI THI MẪU -->
+
+    <!-- ==================== FLASHCARDS ÔN SIÊU TỐC ==================== -->
+    <div class="card" style="border-left:4px solid #3b82f6;">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+        <div>
+          <h2 style="margin:0;color:#1d4ed8;font-size:1.15em;">🃏 BỘ FLASHCARD ÔN SIÊU TỐC (LERNKARTEN)</h2>
+          <p class="hint" style="margin:4px 0 0;">Chạm vào thẻ để lật xem đáp án và giải thích song ngữ Đức - Việt</p>
+        </div>
+        <div style="display:flex;gap:6px;">
+          <button onclick="fcShuffle()" style="background:#f1f5f9;border:1px solid #cbd5e1;padding:6px 12px;border-radius:8px;font-size:.82em;cursor:pointer;font-weight:600;">🔀 Xáo trộn</button>
+          <span id="fc-counter" style="background:#dbeafe;color:#1e40af;padding:6px 12px;border-radius:8px;font-size:.82em;font-weight:700;">1 / 20</span>
+        </div>
+      </div>
+
+      <!-- FLASHCARD DISPLAY -->
+      <div id="flashcard-container" onclick="fcFlip()" style="perspective:1000px;margin:16px 0;cursor:pointer;-webkit-tap-highlight-color:transparent;">
+        <div id="fc-card" style="position:relative;width:100%;min-height:170px;background:#ffffff;border:2px solid #3b82f6;border-radius:16px;padding:22px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;box-shadow:0 4px 16px rgba(59,130,246,.08);transition:transform .4s;transform-style:preserve-3d;">
+          <div style="font-size:.78em;font-weight:700;color:#3b82f6;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;" id="fc-topic">CHỦ ĐỀ</div>
+          <div style="font-size:1.08em;font-weight:600;color:#0f172a;line-height:1.5;" id="fc-front">Nội dung câu hỏi...</div>
+          <div style="font-size:.82em;color:#94a3b8;margin-top:12px;">👆 Chạm để lật đáp án</div>
+        </div>
+      </div>
+
+      <!-- FLASHCARD CONTROLS -->
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
+        <button onclick="fcPrev()" style="flex:1;background:var(--surface);border:1px solid var(--line);padding:10px;border-radius:12px;font-weight:600;font-size:.9em;cursor:pointer;">← Thẻ trước</button>
+        <button onclick="fcNext()" style="flex:1;background:#3b82f6;color:#fff;border:none;padding:10px;border-radius:12px;font-weight:600;font-size:.9em;cursor:pointer;">Thẻ tiếp theo →</button>
+      </div>
+    </div>
+
+    <script>
+    const FLASHCARDS = [
+      {topic:"KÜHLKETTE", q:"Nhiệt độ bảo quản tối đa của Thịt gia cầm tươi (Geflügel) và Thịt xay (Hackfleisch)?", a:"🍗 Geflügel: ≤ +4°C (tránh vi khuẩn Salmonella)\n🥩 Hackfleisch: ≤ +2°C (chế biến ngay trong ngày)"},
+      {topic:"HYGIENE (IFSG)", q:"Luật IfSG §42/43 cấm nhân viên làm việc (Tätigkeitsverbot) khi có triệu chứng gì?", a:"🚫 Khi bị sốt cao, nôn mửa, tiêu chảy cấp hoặc viêm gan truyền nhiễm. Bắt buộc báo ngay cho quản lý và đi khám bác sĩ!"},
+      {topic:"BRUTALE CHEMISCHE REAKTION", q:"Vì sao TUYỆT ĐỐI CẤM trộn nước tẩy cặn vôi (Säure) với nước tẩy Clo (Chlor)?", a:"☠️ Axit + Clo giải phóng ngay lập tức KHÍ CLO ĐỘC (tödliches Chlorgas) gây bỏng phù phổi cấp và tử vong!"},
+      {topic:"BRANDSCHUTZ", q:"Cháy dầu mỡ trong bếp (Brandklasse F) phải chữa cháy thế nào và cấm điều gì?", a:"🧯 Dùng Fettbrandlöscher hoặc chăn dập lửa (Löschdecke).\n⚠️ TUYỆT ĐỐI CẤM DÙNG NƯỚC vì sẽ gây nổ hơi dầu (Fettbrandexplosion)!"},
+      {topic:"WARENWIRTSCHAFT", q:"Phân biệt MHD (Mindesthaltbarkeitsdatum) và Verbrauchsdatum?", a:"📅 MHD: Hạn chất lượng tối ưu (quá hạn vẫn dùng được nếu cảm quan tốt).\n🛑 Verbrauchsdatum: Hạn an toàn vi sinh bắt buộc cho thịt/cá tươi (quá hạn phải vứt ngay, cấm dùng)!"},
+      {topic:"SERVICE", q:"Quy tắc bưng món và dâng rượu: Phục vụ từ bên nào?", a:"👉 Tất cả món ăn chính, tráng miệng, nước ngọt, rượu vang đều dâng và thu dọn từ bên PHẢI (von RECHTS).\n👈 Riêng đĩa bánh mì (Brotteller) và đĩa salad phụ phục vụ/thu dọn từ bên TRÁI (von LINKS)."},
+      {topic:"TISCHWÄSCHE", q:"4 Chức năng quan trọng nhất của tấm lót bàn Molton?", a:"1. Chống trượt khăn bàn (Rutschfestigkeit)\n2. Giảm tiếng va đập ly đĩa (Geräuschdämpfung)\n3. Thấm hút chất lỏng đổ (Flüssigkeitsaufnahme)\n4. Chống sốc nhiệt bảo vệ bàn gỗ (Hitzeschutz)"},
+      {topic:"EINDECKEN", q:"Quy tắc cơ bản khi bày dao dĩa (Besteck) lên bàn ăn?", a:"📏 Cách mép bàn 1–2 cm.\n🍴 Dao thìa bên PHẢI (lưỡi dao quay vào trong đĩa); Dĩa bên TRÁI.\n🥄 Dessertbesteck nằm ngang trên đầu đĩa (Thìa cán sang PHẢI, Dĩa cán sang TRÁI)."},
+      {topic:"EIERCODE", q:"Ý nghĩa các số đầu tiên trên mã trứng gà (0, 1, 2, 3)?", a:"0 = Bio (Hữu cơ)\n1 = Freilandhaltung (Thả vườn)\n2 = Bodenhaltung (Nuôi chuồng sàn)\n3 = Käfighaltung (Nuôi lồng)"},
+      {topic:"REKLAMATION", q:"4 Bước vàng xử lý khiếu nại của khách (L-A-S-T Regel)?", a:"🎧 L - Listen (Lắng nghe không ngắt lời)\n🤝 A - Apologize (Chân thành xin lỗi)\n🛠️ S - Solve (Đưa ra giải pháp tức thì)\n💐 T - Thank (Cảm ơn khách phản hồi)\n⛔ Tuyệt đối không cãi khách!"},
+      {topic:"14 ALLERGENE", q:"Người bị bệnh Zöliakie bị dị ứng với chất nào và phải kiêng gì?", a:"🌾 Dị ứng Gluten (ký hiệu A). Bắt buộc kiêng tuyệt đối lúa mì, lúa mạch đen, lúa mạch, yến mạch và các sản phẩm bột mì!"},
+      {topic:"4-FARBEN-CODE", q:"Màu khăn lau chuyên dụng cho bồn rửa tay và gạch ốp nhà tắm là màu gì?", a:"🟡 Khăn màu VÀNG (Gelb) = Bồn rửa tay, vòi sen, gạch men khu vệ sinh.\n(🔴 Đỏ = Bồn cầu WC | 🔵 Xanh dương = Bàn ghế phòng khách | 🟢 Xanh lá = Bếp)"},
+      {topic:"LAGERUNG", q:"Ý nghĩa của nguyên tắc kho FIFO (First In – First Out)?", a:"📦 Hàng nhập trước hoặc có hạn dùng ngắn hơn phải đem ra dùng trước. Hàng mới nhập về xếp ra phía sau/dưới."},
+      {topic:"ARBEITSSICHERHEIT", q:"Cách cầm tay an toàn khi thái thực phẩm bằng dao bếp?", a:"🖐️ Krallengriff (ngón tay gập tròn hình móng vuốt, móng tay tựa vào sống dao để lưỡi dao trượt mà không cắt vào thịt ngón tay)."},
+      {topic:"PFLEGEETIKETT", q:"Biểu tượng Bàn ủi 3 chấm và Hình tròn chữ P trên nhãn mác?", a:"👔 Bàn ủi 3 chấm = Được ủi nhiệt độ cao nhất tới 200°C (vải Cotton/Leinen).\n🧼 Hình tròn P = Cho phép giặt khô chuyên nghiệp (chemische Reinigung mit Perchlorethylen)."}
+    ];
+
+    let fcIdx = 0;
+    let fcIsFlipped = false;
+
+    function fcUpdate(){
+      const card = FLASHCARDS[fcIdx];
+      document.getElementById('fc-topic').textContent = card.topic;
+      document.getElementById('fc-counter').textContent = (fcIdx+1) + ' / ' + FLASHCARDS.length;
+      const frontEl = document.getElementById('fc-front');
+      const cardEl = document.getElementById('fc-card');
+      fcIsFlipped = false;
+      cardEl.style.background = '#ffffff';
+      cardEl.style.borderColor = '#3b82f6';
+      frontEl.innerHTML = card.q;
+      cardEl.querySelector('div:last-child').textContent = '👆 Chạm để lật đáp án';
+    }
+
+    function fcFlip(){
+      const card = FLASHCARDS[fcIdx];
+      const frontEl = document.getElementById('fc-front');
+      const cardEl = document.getElementById('fc-card');
+      fcIsFlipped = !fcIsFlipped;
+      if(fcIsFlipped){
+        cardEl.style.background = '#eff6ff';
+        cardEl.style.borderColor = '#1d4ed8';
+        frontEl.innerHTML = '<strong>' + card.a.replace(/\n/g, '<br>') + '</strong>';
+        cardEl.querySelector('div:last-child').textContent = '👆 Chạm để quay lại câu hỏi';
+      } else {
+        cardEl.style.background = '#ffffff';
+        cardEl.style.borderColor = '#3b82f6';
+        frontEl.innerHTML = card.q;
+        cardEl.querySelector('div:last-child').textContent = '👆 Chạm để lật đáp án';
+      }
+    }
+
+    function fcNext(){
+      fcIdx = (fcIdx + 1) % FLASHCARDS.length;
+      fcUpdate();
+    }
+
+    function fcPrev(){
+      fcIdx = (fcIdx - 1 + FLASHCARDS.length) % FLASHCARDS.length;
+      fcUpdate();
+    }
+
+    function fcShuffle(){
+      for (let i = FLASHCARDS.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [FLASHCARDS[i], FLASHCARDS[j]] = [FLASHCARDS[j], FLASHCARDS[i]];
+      }
+      fcIdx = 0;
+      fcUpdate();
+    }
+
+    // Init first card
+    setTimeout(fcUpdate, 300);
+    </script>
+
+        <!-- 10 CÂU HỎI THI MẪU -->
     <div class="card">
       <h2>📝 10 Câu hỏi Tình huống Thi mẫu kèm Lời giải Chi tiết (Musterlösungen)</h2>
       
@@ -2207,11 +2313,12 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
       <p class="hint">Tuyển tập 4 bộ đề thi hoàn chỉnh bám sát 100% cấu trúc, thời gian và dạng bài thi thực tế (Thời gian: 60 phút · Dạng bài: Trắc nghiệm, Điền số, Ghép nối, Thứ tự &amp; Tính toán). Tích hợp chế độ giải chi tiết song ngữ Đức - Việt.</p>
       
       <!-- SUB-TABS SELECTOR -->
-      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;">
-        <button class="exam-tab-btn" data-target="exam-herbst2023" onclick="switchExamForm('exam-herbst2023')" style="background:var(--accent);color:#fff;border:1px solid var(--accent);border-radius:20px;padding:7px 14px;font-weight:600;font-size:.85em;cursor:pointer;">🏛️ Đề Thực Tế Herbst 2023</button>
-        <button class="exam-tab-btn" data-target="exam-form-a" onclick="switchExamForm('exam-form-a')" style="background:var(--surface);color:var(--muted);border:1px solid var(--line);border-radius:20px;padding:7px 14px;font-weight:600;font-size:.85em;cursor:pointer;">🍂 Đề Mẫu A (Mùa Thu)</button>
-        <button class="exam-tab-btn" data-target="exam-form-b" onclick="switchExamForm('exam-form-b')" style="background:var(--surface);color:var(--muted);border:1px solid var(--line);border-radius:20px;padding:7px 14px;font-weight:600;font-size:.85em;cursor:pointer;">🎄 Đề Mẫu B (Giáng Sinh)</button>
-        <button class="exam-tab-btn" data-target="exam-form-c" onclick="switchExamForm('exam-form-c')" style="background:var(--surface);color:var(--muted);border:1px solid var(--line);border-radius:20px;padding:7px 14px;font-weight:600;font-size:.85em;cursor:pointer;">🌸 Đề Mẫu C (Mùa Xuân)</button>
+      <div style="display:flex;gap:8px;margin-top:12px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;">
+        <button class="exam-tab-btn" data-target="exam-herbst2023" onclick="switchExamForm('exam-herbst2023')" style="white-space:nowrap;background:var(--accent);color:#fff;border:1px solid var(--accent);border-radius:20px;padding:8px 16px;font-weight:600;font-size:.86em;cursor:pointer;flex-shrink:0;">🏛️ Đề Thực Tế Herbst 2023 (30 câu)</button>
+        <button class="exam-tab-btn" data-target="exam-form-a" onclick="switchExamForm('exam-form-a')" style="white-space:nowrap;background:var(--surface);color:var(--muted);border:1px solid var(--line);border-radius:20px;padding:8px 16px;font-weight:600;font-size:.86em;cursor:pointer;flex-shrink:0;">🍂 Đề Mẫu A · Mùa Thu (23 câu)</button>
+        <button class="exam-tab-btn" data-target="exam-form-b" onclick="switchExamForm('exam-form-b')" style="white-space:nowrap;background:var(--surface);color:var(--muted);border:1px solid var(--line);border-radius:20px;padding:8px 16px;font-weight:600;font-size:.86em;cursor:pointer;flex-shrink:0;">🎄 Đề Mẫu B · Giáng Sinh (23 câu)</button>
+        <button class="exam-tab-btn" data-target="exam-form-c" onclick="switchExamForm('exam-form-c')" style="white-space:nowrap;background:var(--surface);color:var(--muted);border:1px solid var(--line);border-radius:20px;padding:8px 16px;font-weight:600;font-size:.86em;cursor:pointer;flex-shrink:0;">🌸 Đề Mẫu C · Mùa Xuân (23 câu)</button>
+        <button class="exam-tab-btn" data-target="exam-history-box" onclick="switchExamForm('exam-history-box')" style="white-space:nowrap;background:var(--surface);color:var(--muted);border:1px solid var(--line);border-radius:20px;padding:8px 16px;font-weight:600;font-size:.86em;cursor:pointer;flex-shrink:0;">📊 Lịch Sử Làm Bài</button>
       </div>
     </div>
 
@@ -2225,6 +2332,13 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
           </div>
           <span class="tag" style="background:#eaf3ff;color:#007aff;border-color:#007aff;">Đề thi thực tế Herbst 2023</span>
         </div>
+      </div>
+
+      <!-- NÚT THI THỬ TƯƠNG TÁC -->
+      <div class="card" style="background:linear-gradient(135deg,#eaf3ff,#f0f4ff);border:2px solid #007aff;text-align:center;padding:20px;">
+        <h3 style="margin:0 0 8px;color:#004b99;font-size:1.05em;">🎯 CHẾ ĐỘ THI THỬ TƯƠNG TÁC</h3>
+        <p style="margin:0 0 14px;color:#64748b;font-size:.88em;">Làm bài trực tiếp trên app · ⏱ Bấm giờ 60 phút · ✅ Chấm điểm tự động · 📊 Phân tích điểm yếu</p>
+        <button onclick="ExamSim.start('herbst2023')" style="background:#007aff;color:#fff;border:none;border-radius:12px;padding:12px 28px;font-weight:700;font-size:1em;cursor:pointer;box-shadow:0 4px 12px rgba(0,122,255,.25);transition:.15s;">🚀 Bắt đầu Thi Thử (30 câu · 60 phút)</button>
       </div>
 
       <!-- SITUATION 1 -->
@@ -2893,13 +3007,20 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
     <!-- ==================== ĐỀ THI MẪU A (MÙA THU) ==================== -->
     <div class="exam-set" id="exam-form-a" style="display:none;">
       <div class="card" style="border-left:4px solid #f59e0b;">
-        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
           <div>
             <h3 style="margin:0;color:#b45309;font-size:1.15em;">🍂 Musterprüfung A · Jubiläumsfeier im Herbst</h3>
             <p style="margin:4px 0 0;color:var(--muted);font-size:.88em;">Prüfungsbereich: <strong>Wirtschaftsdienst</strong> · Prüfungszeit: <strong>60 Minuten</strong> · Tiệc cưới Bạc tháng 10</p>
           </div>
           <span class="tag" style="background:#fffbeb;color:#b45309;border-color:#f59e0b;">Đề Mẫu Chuẩn A</span>
         </div>
+      </div>
+
+      <!-- NÚT THI THỬ TƯƠNG TÁC FORM A -->
+      <div class="card" style="background:linear-gradient(135deg,#fffbeb,#fef3c7);border:2px solid #f59e0b;text-align:center;padding:20px;">
+        <h3 style="margin:0 0 8px;color:#b45309;font-size:1.05em;">🎯 CHẾ ĐỘ THI THỬ TƯƠNG TÁC (ĐỀ A)</h3>
+        <p style="margin:0 0 14px;color:#64748b;font-size:.88em;">Làm bài trực tiếp trên app · ⏱ Bấm giờ 60 phút · ✅ Chấm điểm tự động · 📊 Phân tích điểm yếu</p>
+        <button onclick="ExamSim.start('form_a')" style="background:#f59e0b;color:#fff;border:none;border-radius:12px;padding:12px 28px;font-weight:700;font-size:1em;cursor:pointer;box-shadow:0 4px 12px rgba(245,158,11,.25);transition:.15s;">🚀 Bắt đầu Thi Thử Đề A (23 câu · 60 phút)</button>
       </div>
 
       <div class="card" style="background:#f8fafc;">
@@ -2909,6 +3030,7 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
         </p>
       </div>
 
+      <!-- 1 -->
       <div class="card">
         <p><strong>1. Aufgabe (Brandschutz):</strong> Welcher Zustand im Bankettsaal stellt einen Verstoß gegen die Brandschutzvorschriften dar?</p>
         <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
@@ -2920,10 +3042,11 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
         </ol>
         <details style="margin-top:10px;background:#fef3c7;padding:10px 14px;border-radius:8px;border-left:3px solid #f59e0b;">
           <summary style="cursor:pointer;font-weight:600;color:#b45309;">🔍 Xem đáp án &amp; giải thích</summary>
-          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong> (Lối thoát hiểm bị chặn một phần là vi phạm luật PCCC).</p>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Cửa thoát hiểm bị chặn một phần là vi phạm luật PCCC nghiêm trọng.</p>
         </details>
       </div>
 
+      <!-- 2 -->
       <div class="card">
         <p><strong>2. Aufgabe (Reinigungsarten):</strong> Welche Reinigungsarbeit gehört zur <strong>Grundreinigung</strong> và không cần làm trước mỗi buổi tiệc?</p>
         <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
@@ -2935,66 +3058,314 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
         </ol>
         <details style="margin-top:10px;background:#fef3c7;padding:10px 14px;border-radius:8px;border-left:3px solid #f59e0b;">
           <summary style="cursor:pointer;font-weight:600;color:#b45309;">🔍 Xem đáp án &amp; giải thích</summary>
-          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 3</strong> (Đánh bóng phủ sàn gỗ thuộc tổng vệ sinh định kỳ hàng năm).</p>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 3</strong><br>Đánh bóng phủ sàn gỗ thuộc tổng vệ sinh định kỳ hàng năm.</p>
         </details>
       </div>
 
+      <!-- 3 -->
       <div class="card">
-        <p><strong>3. Aufgabe (Rechenaufgabe: Tischdeckengröße):</strong> Ein Tisch ist <strong>180 cm lang</strong> und <strong>90 cm breit</strong>. Der Überhang beträgt <strong>25 cm</strong> an allen 4 Seiten. Berechnen Sie die Maße der Tischdecke!</p>
+        <p><strong>3. Aufgabe (Fleckenbehandlung):</strong> Beim Eindecken fällt flüssiges Kerzenwachs auf den Teppichboden. Wie entfernen Sie es fachgerecht?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Mit kochendem Seifenwasser einreiben.</li>
+          <li>Löschpapier auflegen und vorsichtig mit mäßiger Hitze darüberbügeln.</li>
+          <li>Mit feinem Speisesalz bestreuen.</li>
+          <li>Mit reinem Aceton übergießen.</li>
+          <li>Mit heißem Dampf anblasen.</li>
+        </ol>
+        <details style="margin-top:10px;background:#fef3c7;padding:10px 14px;border-radius:8px;border-left:3px solid #f59e0b;">
+          <summary style="cursor:pointer;font-weight:600;color:#b45309;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Đặt giấy thấm và ủi nhiệt vừa để sáp nến chảy ngấm vào giấy.</p>
+        </details>
+      </div>
+
+      <!-- 4 -->
+      <div class="card">
+        <p><strong>4. Aufgabe (Umweltschutz):</strong> Welches Merkmal kennzeichnet einen neuen Staubsauger als besonders energieeffizient?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Kabel mit 15m Länge.</li>
+          <li>Motor mit 2.200 Watt.</li>
+          <li>EU-Energielabel mit hoher Energieeffizienzklasse A.</li>
+          <li>Chrom-Gehäuse.</li>
+          <li>Nur Einwegbeutel.</li>
+        </ol>
+        <details style="margin-top:10px;background:#fef3c7;padding:10px 14px;border-radius:8px;border-left:3px solid #f59e0b;">
+          <summary style="cursor:pointer;font-weight:600;color:#b45309;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 3</strong><br>Nhãn năng lượng EU chứng nhận tiết kiệm điện năng tối đa.</p>
+        </details>
+      </div>
+
+      <!-- 5 -->
+      <div class="card">
+        <p><strong>5. Aufgabe (Tischwäsche):</strong> Welche Stoffeigenschaft ist für hochwertige Restaurant-Tischdecken aus Baumwolle entscheidend?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Geringe Saugfähigkeit.</li>
+          <li>Hohe Koch- und Bügelfestigkeit sowie Strapazierfähigkeit (Vollzwirn).</li>
+          <li>Elastischer Stretch-Anteil.</li>
+          <li>Kunststoff-Beschichtung.</li>
+          <li>Sehr dünner Stoff.</li>
+        </ol>
+        <details style="margin-top:10px;background:#fef3c7;padding:10px 14px;border-radius:8px;border-left:3px solid #f59e0b;">
+          <summary style="cursor:pointer;font-weight:600;color:#b45309;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Sợi xe đôi Vollzwirn chịu được nhiệt độ giặt 95°C và ủi phẳng.</p>
+        </details>
+      </div>
+
+      <!-- 6 -->
+      <div class="card">
+        <p><strong>6. Aufgabe (Rechenaufgabe: Tischdeckengröße):</strong> Ein Tisch ist <strong>180 cm lang</strong> und <strong>90 cm breit</strong>. Der Überhang beträgt <strong>25 cm</strong> an allen 4 Seiten. Berechnen Sie die Maße der Tischdecke in cm!</p>
         <details style="margin-top:10px;background:#fef3c7;padding:10px 14px;border-radius:8px;border-left:3px solid #f59e0b;">
           <summary style="cursor:pointer;font-weight:600;color:#b45309;">🔍 Xem đáp án &amp; giải thích</summary>
           <p style="margin:8px 0 0;font-size:.9em;">
             <strong>✅ Đáp án đúng: 230 cm × 140 cm</strong><br>
-            • Dài: $180 + (2 \times 25) = \mathbf{230\text{ cm}}$<br>
-            • Rộng: $90 + (2 \times 25) = \mathbf{140\text{ cm}}$
+            • Dài: $180 + (2 	imes 25) = \mathbf{230	ext{ cm}}$<br>
+            • Rộng: $90 + (2 	imes 25) = \mathbf{140	ext{ cm}}$
           </p>
         </details>
       </div>
 
+      <!-- 7 -->
       <div class="card">
-        <p><strong>4. Aufgabe (Dekoration Silberhochzeit im Oktober):</strong> Welche <strong>zwei</strong> Elemente passen stilvoll zur Silberhochzeit im Oktober? <em>(Chọn 2)</em></p>
+        <p><strong>7. Aufgabe (Tischdekoration):</strong> Welche <strong>zwei</strong> Dekorationselemente passen stilvoll zur Silberhochzeit im Oktober? <em>(Chọn 2)</em></p>
         <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
           <li>Narzissen und Tulpen</li>
           <li>Silberne Kerzenleuchter mit weißen Tafelkerzen</li>
           <li>Adventskranz mit Tannenzapfen</li>
           <li>Gruselige Halloween-Kürbisse</li>
           <li>Herbstliches Tischgesteck mit dezenten Silberakzenten</li>
-          <li>Blühende Topfpflanzen mit Erde</li>
+          <li>Topfpflanzen mit feuchter Erde</li>
         </ol>
         <details style="margin-top:10px;background:#fef3c7;padding:10px 14px;border-radius:8px;border-left:3px solid #f59e0b;">
           <summary style="cursor:pointer;font-weight:600;color:#b45309;">🔍 Xem đáp án &amp; giải thích</summary>
-          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2 và 5</strong> (Chân nến bạc hợp đám cưới Bạc + Hoa quả mùa thu hợp tháng 10).</p>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2 và 5</strong><br>Chân nến bạc hợp đám cưới Bạc + Hoa quả mùa thu hợp tháng 10.</p>
         </details>
       </div>
 
+      <!-- 8 -->
       <div class="card">
-        <p><strong>5. Aufgabe (Silberpflege):</strong> Angelaufenes Silberbesteck (Silbersulfid) reinigen Sie schonend durch:</p>
+        <p><strong>8. Aufgabe (Sicherheitsregeln):</strong> Welche Sicherheitsregel ist beim Aufstellen echter Kerzen zwingend einzuhalten?</p>
         <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
-          <li>Drahtwolle und Scheuerpulver</li>
-          <li>Salzsäurebad</li>
-          <li>Warmes Alufolie-Salzbad oder spezielles Silberpoliertuch</li>
-          <li>Spülmaschine bei 90°C mit starker Lauge</li>
-          <li>Essigreiniger pH 1</li>
+          <li>Kerzen direkt auf Papierservietten stellen.</li>
+          <li>In standfesten, unbrennbaren Leuchtern, nicht im Luftzug oder nah an Vorhängen.</li>
+          <li>Erst beim Hauptgang anzünden.</li>
+          <li>Über Nacht brennen lassen.</li>
+          <li>Mit brennbarem Plastikband verzieren.</li>
         </ol>
         <details style="margin-top:10px;background:#fef3c7;padding:10px 14px;border-radius:8px;border-left:3px solid #f59e0b;">
           <summary style="cursor:pointer;font-weight:600;color:#b45309;">🔍 Xem đáp án &amp; giải thích</summary>
-          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 3</strong> (Phản ứng điện hóa Alufolie + Salz làm sạch bạc nhẹ nhàng không hao mòn kim loại).</p>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Nến phải đặt trên đế chống cháy, xa rèm cửa và nguồn gió lùa.</p>
         </details>
       </div>
 
+      <!-- 9 -->
       <div class="card">
-        <p><strong>6. Aufgabe (Rechenaufgabe: Wasserverlust):</strong> An der Bar tropft der Wasserhahn: In <strong>5 Stunden</strong> verliert er <strong>7,5 Liter</strong>. Wie viel Liter Wasser gehen in 24 Stunden verloren?</p>
+        <p><strong>9. Aufgabe (Silberpflege):</strong> Angelaufenes Silberbesteck (Silbersulfid) reinigen Sie schonend durch:</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Drahtwolle und Scheuerpulver.</li>
+          <li>Salzsäurebad.</li>
+          <li>Warmes Alufolie-Salzbad oder spezielles Silberpoliertuch.</li>
+          <li>Spülmaschine bei 90°C mit Lauge.</li>
+          <li>Essigreiniger pH 1.</li>
+        </ol>
+        <details style="margin-top:10px;background:#fef3c7;padding:10px 14px;border-radius:8px;border-left:3px solid #f59e0b;">
+          <summary style="cursor:pointer;font-weight:600;color:#b45309;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 3</strong><br>Phản ứng điện hóa Alufolie + muối làm sạch bạc nhẹ nhàng không hao mòn kim loại.</p>
+        </details>
+      </div>
+
+      <!-- 10 -->
+      <div class="card">
+        <p><strong>10. Aufgabe (Pflegeetikett):</strong> Pflegeetikett: Waschbottich 60°C, Dreieck durchgestrichen, Bügeleisen 2 Punkte, Kreis P, Trockner 1 Punkt. Welche Aussage ist richtig?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Mit Chlor gebleicht werden.</li>
+          <li>Bei mittlerer Hitze (150°C) gebügelt und bei niedriger Temperatur getrocknet werden.</li>
+          <li>Darf nicht gewaschen werden.</li>
+          <li>Kochend bei 95°C waschen.</li>
+          <li>Nicht im Trockner trocknen.</li>
+        </ol>
+        <details style="margin-top:10px;background:#fef3c7;padding:10px 14px;border-radius:8px;border-left:3px solid #f59e0b;">
+          <summary style="cursor:pointer;font-weight:600;color:#b45309;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Bàn ủi 2 chấm (tối đa 150°C) và sấy ở nhiệt độ thấp 1 chấm.</p>
+        </details>
+      </div>
+
+      <!-- 11 -->
+      <div class="card">
+        <p><strong>11. Aufgabe (Tischwäsche):</strong> Welcher Grund ist <strong>kein</strong> Zweck einer Molton-Unterlage unter dem Tischtuch?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Dämpfung von Klirrgeräuschen.</li>
+          <li>Schutz der Tischplatte vor Hitzeschäden.</li>
+          <li>Verhinderung des Verrutschens der Tischdecke.</li>
+          <li>Vollständiger Ersatz des Tischtuches.</li>
+          <li>Aufsaugen verschütteter Flüssigkeiten.</li>
+        </ol>
+        <details style="margin-top:10px;background:#fef3c7;padding:10px 14px;border-radius:8px;border-left:3px solid #f59e0b;">
+          <summary style="cursor:pointer;font-weight:600;color:#b45309;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 4</strong><br>Molton là tấm lót bên dưới, không thể thay thế khăn trải bàn chính.</p>
+        </details>
+      </div>
+
+      <!-- 12 -->
+      <div class="card">
+        <p><strong>12. Aufgabe (Betriebsorganisation):</strong> Was ist der wesentliche Vorteil von Mietwäsche / Leasing gegenüber Eigenwäsche?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Keine hohen Investitionskosten für teure Waschmaschinen und Wäschekauf.</li>
+          <li>Mitarbeiter müssen im Restaurant bügeln.</li>
+          <li>Wäsche wird nach 2 Wochen Eigentum.</li>
+          <li>Keine Lagerfläche nötig.</li>
+          <li>Kein Umtausch möglich.</li>
+        </ol>
+        <details style="margin-top:10px;background:#fef3c7;padding:10px 14px;border-radius:8px;border-left:3px solid #f59e0b;">
+          <summary style="cursor:pointer;font-weight:600;color:#b45309;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 1</strong><br>Tiết kiệm chi phí đầu tư máy móc ban đầu và rủi ro hao mòn vải.</p>
+        </details>
+      </div>
+
+      <!-- 13 -->
+      <div class="card">
+        <p><strong>13. Aufgabe (Gefahrstofflagerung):</strong> Welche Vorschrift zur Gefahrstofflagerung ist korrekt?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>In leere Mineralwasserflaschen umfüllen.</li>
+          <li>Zusammen mit offenen Lebensmitteln lagern.</li>
+          <li>Im Originalgebinde mit Kennzeichnung, Sicherheitsdatenblatt und unter Verschluss.</li>
+          <li>Säuren und Laugen offen mischen.</li>
+          <li>Über 40°C in der Sonne lagern.</li>
+        </ol>
+        <details style="margin-top:10px;background:#fef3c7;padding:10px 14px;border-radius:8px;border-left:3px solid #f59e0b;">
+          <summary style="cursor:pointer;font-weight:600;color:#b45309;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 3</strong><br>Bảo quản đúng quy chuẩn trong bao bì gốc có nhãn cảnh báo và tủ khóa an toàn.</p>
+        </details>
+      </div>
+
+      <!-- 14 -->
+      <div class="card">
+        <p><strong>14. Aufgabe (Arbeitssicherheit):</strong> Wasserkaraffe zerbricht im Buffetbereich. Welche Maßnahmenkette ist korrekt?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Weitergehen und später kehren.</li>
+          <li>Scherben mit bloßen Händen aufheben.</li>
+          <li>Warnschild aufstellen, Scherben mit Handfeger/Schaufel aufnehmen, Boden trockenwischen.</li>
+          <li>Teppich darüberlegen.</li>
+          <li>Licht ausschalten.</li>
+        </ol>
+        <details style="margin-top:10px;background:#fef3c7;padding:10px 14px;border-radius:8px;border-left:3px solid #f59e0b;">
+          <summary style="cursor:pointer;font-weight:600;color:#b45309;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 3</strong><br>Cắm biển cảnh báo trơn trượt ➔ Dọn miểng chai ➔ Lau khô sàn.</p>
+        </details>
+      </div>
+
+      <!-- 15 -->
+      <div class="card">
+        <p><strong>15. Aufgabe (Umweltschutz):</strong> Welche Stufe hat in der 5-stufigen Abfallhierarchie nach KrWG die oberste Priorität?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Beseitigung</li>
+          <li>Energetische Verwertung</li>
+          <li>Abfallvermeidung</li>
+          <li>Recycling</li>
+          <li>Deponierung</li>
+        </ol>
+        <details style="margin-top:10px;background:#fef3c7;padding:10px 14px;border-radius:8px;border-left:3px solid #f59e0b;">
+          <summary style="cursor:pointer;font-weight:600;color:#b45309;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 3</strong><br>Tránh tạo ra rác (Abfallvermeidung) luôn là ưu tiên cao nhất.</p>
+        </details>
+      </div>
+
+      <!-- 16 -->
+      <div class="card">
+        <p><strong>16. Aufgabe (Mülltrennung):</strong> Ordnen Sie zu: 1.Bierkronkorken 2.Kaffeesatz 3.Porzellanscherben 4.Sektflaschen 5.Pappkarton 6.Leuchtstoffröhren</p>
+        <details style="margin-top:10px;background:#fef3c7;padding:10px 14px;border-radius:8px;border-left:3px solid #f59e0b;">
+          <summary style="cursor:pointer;font-weight:600;color:#b45309;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án:</strong> Biotonne: 2 | Glas: 4 | Gelber Sack: 1 | Papier: 5 | Restmüll: 3 | Sondermüll: 6</p>
+        </details>
+      </div>
+
+      <!-- 17 -->
+      <div class="card">
+        <p><strong>17. Aufgabe (Reinigungsmittel):</strong> Warum führt eine Überdosierung von Allzweckreiniger zu Nachteilen?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Einwirkzeit sinkt auf 0.</li>
+          <li>Klebrige Tensidschichten bauen sich auf, ziehen Schmutz an và machen Böden rutschig.</li>
+          <li>pH-Wert wird 0.</li>
+          <li>Wasser gefriert sofort.</li>
+          <li>Tücher verlieren Farbe.</li>
+        </ol>
+        <details style="margin-top:10px;background:#fef3c7;padding:10px 14px;border-radius:8px;border-left:3px solid #f59e0b;">
+          <summary style="cursor:pointer;font-weight:600;color:#b45309;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Dư thừa chất hoạt động bề mặt làm dính bẩn nhanh hơn và trơn trượt sàn.</p>
+        </details>
+      </div>
+
+      <!-- 18 -->
+      <div class="card">
+        <p><strong>18. Aufgabe (Lärmschutz):</strong> Gäste beschweren sich über lautes Besteckgeklapper. Welche Maßnahme hilft direkt am Tisch?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Tischdecken weglassen.</li>
+          <li>Molton-Tischpolster unter dem Tischtuch verwenden.</li>
+          <li>Plastikbesteck eindecken.</li>
+          <li>Musik verdoppeln.</li>
+          <li>Nur Suppe servieren.</li>
+        </ol>
+        <details style="margin-top:10px;background:#fef3c7;padding:10px 14px;border-radius:8px;border-left:3px solid #f59e0b;">
+          <summary style="cursor:pointer;font-weight:600;color:#b45309;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Tấm Molton hấp thụ tiếng ồn va đập dao dĩa bát đĩa trên bàn.</p>
+        </details>
+      </div>
+
+      <!-- 19 -->
+      <div class="card">
+        <p><strong>19. Aufgabe (Rechenaufgabe: Wasserverlust):</strong> An der Bar tropft der Wasserhahn: In <strong>5 Stunden</strong> verliert er <strong>7,5 Liter</strong>. Wie viel Liter Wasser gehen in 24 Stunden verloren?</p>
         <details style="margin-top:10px;background:#fef3c7;padding:10px 14px;border-radius:8px;border-left:3px solid #f59e0b;">
           <summary style="cursor:pointer;font-weight:600;color:#b45309;">🔍 Xem đáp án &amp; giải thích</summary>
           <p style="margin:8px 0 0;font-size:.9em;">
             <strong>✅ Đáp án đúng: 36 Liter</strong><br>
-            $7{,}5\text{ l} \div 5\text{ h} = 1{,}5\text{ l/h} \longrightarrow 1{,}5 \times 24 = \mathbf{36\text{ Liter}}$
+            $7{,}5	ext{ l} \div 5	ext{ h} = 1{,}5	ext{ l/h} \longrightarrow 1{,}5 	imes 24 = \mathbf{36	ext{ Liter}}$
           </p>
         </details>
       </div>
 
+      <!-- 20 -->
       <div class="card">
-        <p><strong>7. Aufgabe (Rechenaufgabe: Pfandabrechnung):</strong> Berechnen Sie das Pfandguthaben:</p>
+        <p><strong>20. Aufgabe (Entkalkung):</strong> Welches Entkalkungsmittel für Kaffeemaschinen ist materialschonend und umweltfreundlich?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Salzsäure pH 0.</li>
+          <li>Zitronensäure- oder Milchsäurebasis (organische Säuren).</li>
+          <li>Natronlauge pH 14.</li>
+          <li>Scheuersand mit Chlor.</li>
+          <li>Schmierseife.</li>
+        </ol>
+        <details style="margin-top:10px;background:#fef3c7;padding:10px 14px;border-radius:8px;border-left:3px solid #f59e0b;">
+          <summary style="cursor:pointer;font-weight:600;color:#b45309;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Axit hữu cơ nhẹ an toàn cho linh kiện máy và dễ phân hủy sinh học.</p>
+        </details>
+      </div>
+
+      <!-- 21 -->
+      <div class="card">
+        <p><strong>21. Aufgabe (Reihenfolge):</strong> 6 Schritte zur Reinigung einer Gläserspülmaschine:</p>
+        <details style="margin-top:10px;background:#fef3c7;padding:10px 14px;border-radius:8px;border-left:3px solid #f59e0b;">
+          <summary style="cursor:pointer;font-weight:600;color:#b45309;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Thứ tự:</strong> 1. Tắt máy ➔ 2. Xả nước ➔ 3. Tháo tay phun/lưới lọc ➔ 4. Lau khoang ➔ 5. Lắp lại ➔ 6. Mở hé cửa.</p>
+        </details>
+      </div>
+
+      <!-- 22 -->
+      <div class="card">
+        <p><strong>22. Aufgabe (Lagerkontrolle):</strong> Welche <strong>3</strong> Prüfungen verhindern den Verderb im Vorratslager? <em>(Chọn 3)</em></p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Tägliche Kontrolle/Protokoll der Lagertemperaturen.</li>
+          <li>Überprüfung der Haltbarkeitsdaten (MHD / FIFO).</li>
+          <li>Kontrolle auf Schädlingsspuren.</li>
+          <li>Kontrolle des Firmenlogos.</li>
+          <li>Unterschrift Lieferschein prüfen.</li>
+          <li>Supermarkt-Prospekt prüfen.</li>
+        </ol>
+        <details style="margin-top:10px;background:#fef3c7;padding:10px 14px;border-radius:8px;border-left:3px solid #f59e0b;">
+          <summary style="cursor:pointer;font-weight:600;color:#b45309;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 1, 2, 3</strong><br>Kiểm tra nhiệt độ bảo quản, hạn dùng (FIFO) và dấu vết côn trùng chuột bọ.</p>
+        </details>
+      </div>
+
+      <!-- 23 -->
+      <div class="card">
+        <p><strong>23. Aufgabe (Rechenaufgabe: Pfandabrechnung):</strong> Berechnen Sie das Pfandguthaben:</p>
         <ul style="font-size:.9em;color:#475569;margin-left:20px;">
           <li>4 Kisten Pils à 20 Flaschen (Flasche: 0,08 € | Kiste: 1,50 €)</li>
           <li>3 Kisten Cola à 12 Flaschen (Flasche: 0,15 € | Kiste: 1,50 €)</li>
@@ -3004,9 +3375,9 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
           <summary style="cursor:pointer;font-weight:600;color:#b45309;">🔍 Xem đáp án &amp; giải thích</summary>
           <p style="margin:8px 0 0;font-size:.9em;">
             <strong>✅ Đáp án đúng: 28,30 Euro</strong><br>
-            • Két: $7 \times 1{,}50 = 10{,}50\text{ €}$<br>
-            • Chai: $(80 \times 0{,}08) + (36 \times 0{,}15) + (16 \times 0{,}25) = 6{,}40 + 5{,}40 + 4{,}00 = 15{,}80\text{ €}$<br>
-            • Tổng: $10{,}50 + 15{,}80 = \mathbf{28{,}30\text{ €}}$
+            • Két: $7 	imes 1{,}50 = 10{,}50	ext{ €}$<br>
+            • Chai: $(80 	imes 0{,}08) + (36 	imes 0{,}15) + (16 	imes 0{,}25) = 6{,}40 + 5{,}40 + 4{,}00 = 15{,}80	ext{ €}$<br>
+            • Tổng: $10{,}50 + 15{,}80 = \mathbf{28{,}30	ext{ €}}$
           </p>
         </details>
       </div>
@@ -3015,13 +3386,20 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
     <!-- ==================== ĐỀ THI MẪU B (GIÁNG SINH) ==================== -->
     <div class="exam-set" id="exam-form-b" style="display:none;">
       <div class="card" style="border-left:4px solid #ef4444;">
-        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
           <div>
             <h3 style="margin:0;color:#b91c1c;font-size:1.15em;">🎄 Musterprüfung B · Weihnachtsbankett im Winter</h3>
             <p style="margin:4px 0 0;color:var(--muted);font-size:.88em;">Prüfungsbereich: <strong>Wirtschaftsdienst</strong> · Prüfungszeit: <strong>60 Minuten</strong> · Tiệc Giáng sinh tháng 12</p>
           </div>
           <span class="tag" style="background:#fef2f2;color:#b91c1c;border-color:#ef4444;">Đề Mẫu Chuẩn B</span>
         </div>
+      </div>
+
+      <!-- NÚT THI THỬ TƯƠNG TÁC FORM B -->
+      <div class="card" style="background:linear-gradient(135deg,#fef2f2,#fee2e2);border:2px solid #ef4444;text-align:center;padding:20px;">
+        <h3 style="margin:0 0 8px;color:#b91c1c;font-size:1.05em;">🎯 CHẾ ĐỘ THI THỬ TƯƠNG TÁC (ĐỀ B)</h3>
+        <p style="margin:0 0 14px;color:#64748b;font-size:.88em;">Làm bài trực tiếp trên app · ⏱ Bấm giờ 60 phút · ✅ Chấm điểm tự động · 📊 Phân tích điểm yếu</p>
+        <button onclick="ExamSim.start('form_b')" style="background:#ef4444;color:#fff;border:none;border-radius:12px;padding:12px 28px;font-weight:700;font-size:1em;cursor:pointer;box-shadow:0 4px 12px rgba(239,68,68,.25);transition:.15s;">🚀 Bắt đầu Thi Thử Đề B (23 câu · 60 phút)</button>
       </div>
 
       <div class="card" style="background:#f8fafc;">
@@ -3031,85 +3409,340 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
         </p>
       </div>
 
+      <!-- 1 -->
       <div class="card">
-        <p><strong>1. Aufgabe (Rechenaufgabe: Tischdeckengröße):</strong> Ein Tisch ist <strong>200 cm lang</strong> und <strong>100 cm breit</strong>. Der Überhang beträgt <strong>30 cm</strong> an allen Kanten. Berechnen Sie die Gesamtmaße der Tischdecke!</p>
+        <p><strong>1. Aufgabe (Brandschutz):</strong> Welche Maßnahme entspricht den Brandschutzbestimmungen bei Weihnachtsdekoration?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Brennende Kerzen direkt in trockene Tannenzweige stecken.</li>
+          <li>Fluchtwege mit Geschenketischen verstellen.</li>
+          <li>Lichterketten mit VDE-/GS-Zeichen nutzen, Steckdosen nicht überlasten.</li>
+          <li>Papiergirlanden über Heizstrahlern aufhängen.</li>
+          <li>Notausgangsschilder verdecken.</li>
+        </ol>
+        <details style="margin-top:10px;background:#fee2e2;padding:10px 14px;border-radius:8px;border-left:3px solid #ef4444;">
+          <summary style="cursor:pointer;font-weight:600;color:#b91c1c;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 3</strong><br>Dùng đèn trang trí có chứng nhận VDE/GS an toàn điện.</p>
+        </details>
+      </div>
+
+      <!-- 2 -->
+      <div class="card">
+        <p><strong>2. Aufgabe (Unterhaltsreinigung):</strong> Welche Arbeiten gehören zur Unterhaltsreinigung vor dem Eindecken?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Grundreinigung der Polstermöbel.</li>
+          <li>Fensterbänke abwischen, Tische ausrichten và reinigen, Boden saugen/wischen.</li>
+          <li>Abschleifen der Holztheke.</li>
+          <li>Chemisches Reinigen der Decken.</li>
+          <li>Wände streichen.</li>
+        </ol>
+        <details style="margin-top:10px;background:#fee2e2;padding:10px 14px;border-radius:8px;border-left:3px solid #ef4444;">
+          <summary style="cursor:pointer;font-weight:600;color:#b91c1c;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Lau bậu cửa, lau bàn ghế, hút bụi sàn là vệ sinh duy trì hằng ngày.</p>
+        </details>
+      </div>
+
+      <!-- 3 -->
+      <div class="card">
+        <p><strong>3. Aufgabe (Fleckenbehandlung):</strong> Rotweinfleck auf weißer Baumwolltischdecke. Richtige Sofortmaßnahme?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Mit heißem Kaffee übergießen.</li>
+          <li>Flüssigkeit mit sauberem Tuch abtupfen, mit Mineralwasser oder Salz behandeln solange feucht.</li>
+          <li>Mit Feuerzeug erhitzen.</li>
+          <li>3 Tage eintrocknen lassen.</li>
+          <li>Tinte darüber gießen.</li>
+        </ol>
+        <details style="margin-top:10px;background:#fee2e2;padding:10px 14px;border-radius:8px;border-left:3px solid #ef4444;">
+          <summary style="cursor:pointer;font-weight:600;color:#b91c1c;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Thấm khô ngay khi vết rượu còn ướt và dùng nước khoáng có ga/muối.</p>
+        </details>
+      </div>
+
+      <!-- 4 -->
+      <div class="card">
+        <p><strong>4. Aufgabe (Rechenaufgabe: Tischdeckengröße):</strong> Ein Tisch ist <strong>200 cm lang</strong> und <strong>100 cm breit</strong>. Der Überhang beträgt <strong>30 cm</strong> an allen Kanten. Berechnen Sie die Tischdeckengröße in cm!</p>
         <details style="margin-top:10px;background:#fee2e2;padding:10px 14px;border-radius:8px;border-left:3px solid #ef4444;">
           <summary style="cursor:pointer;font-weight:600;color:#b91c1c;">🔍 Xem đáp án &amp; giải thích</summary>
           <p style="margin:8px 0 0;font-size:.9em;">
             <strong>✅ Đáp án đúng: 260 cm × 160 cm</strong><br>
-            • Dài: $200 + (2 \times 30) = \mathbf{260\text{ cm}}$<br>
-            • Rộng: $100 + (2 \times 30) = \mathbf{160\text{ cm}}$
+            • Dài: $200 + (2 	imes 30) = \mathbf{260	ext{ cm}}$<br>
+            • Rộng: $100 + (2 	imes 30) = \mathbf{160	ext{ cm}}$
           </p>
         </details>
       </div>
 
+      <!-- 5 -->
       <div class="card">
-        <p><strong>2. Aufgabe (Besteckanordnung von außen nach innen):</strong> Menü: 1. Suppe, 2. Fischgang, 3. Hauptgang (Fleisch). Wie liegt das Besteck auf der rechten Seite von außen nach innen?</p>
+        <p><strong>5. Aufgabe (Tischdekoration):</strong> Welche <strong>2</strong> Dekorationselemente passen zu einem traditionellen Weihnachtsbankett im Dezember? <em>(Chọn 2)</em></p>
         <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
-          <li>Menümesser ➔ Fischmesser ➔ Suppenlöffel</li>
-          <li>Suppenlöffel ➔ Fischmesser ➔ Menümesser (Schneide nach links)</li>
-          <li>Fischgabel ➔ Menügabel ➔ Suppenlöffel</li>
-          <li>Dessertlöffel ➔ Menümesser ➔ Suppenlöffel</li>
+          <li>Frische Kirschblütenzweige</li>
+          <li>Rote/goldene Bänder mit dezenten Tannenzweigen und Zapfen</li>
+          <li>Ostereier im Heunest</li>
+          <li>Wassermelonen mit Schirmchen</li>
+          <li>Weihnachtliche Menükarten mit Teelichtern im Glas</li>
+          <li>Strandmuscheln und Sand</li>
         </ol>
         <details style="margin-top:10px;background:#fee2e2;padding:10px 14px;border-radius:8px;border-left:3px solid #ef4444;">
           <summary style="cursor:pointer;font-weight:600;color:#b91c1c;">🔍 Xem đáp án &amp; giải thích</summary>
-          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong> (Ăn từ ngoài vào trong: Thìa súp ➔ Dao cá ➔ Dao thịt chính).</p>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2 và 5</strong><br>Cành thông, nơ vàng đỏ, nến ly thủy tinh hợp không khí Giáng sinh.</p>
         </details>
       </div>
 
+      <!-- 6 -->
       <div class="card">
-        <p><strong>3. Aufgabe (Richtglas):</strong> Wo wird das Richtglas (Wasserglas) normgerecht platziert?</p>
+        <p><strong>6. Aufgabe (Besteckanordnung):</strong> Menü: 1.Suppe 2.Fisch 3.Hauptgang (Fleisch). Besteckanordnung rechts von AUSSEN nach INNEN?</p>
         <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
-          <li>Links neben der Gabel.</li>
+          <li>Menümesser → Fischmesser → Suppenlöffel</li>
+          <li>Suppenlöffel → Fischmesser → Menümesser (Schneide nach links)</li>
+          <li>Fischgabel → Menügabel → Suppenlöffel</li>
+          <li>Dessertlöffel → Menümesser → Suppenlöffel</li>
+          <li>Menümesser → Suppenlöffel → Fischmesser</li>
+        </ol>
+        <details style="margin-top:10px;background:#fee2e2;padding:10px 14px;border-radius:8px;border-left:3px solid #ef4444;">
+          <summary style="cursor:pointer;font-weight:600;color:#b91c1c;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Thìa súp ngoài cùng ➔ Dao cá ➔ Dao thịt trong cùng (lưỡi quay sang trái).</p>
+        </details>
+      </div>
+
+      <!-- 7 -->
+      <div class="card">
+        <p><strong>7. Aufgabe (Richtglas):</strong> Wo wird das Richtglas (Wasserglas) normgerecht platziert?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Links neben der Menügabel.</li>
           <li>Genau 1 cm über der Spitze des Menümessers (Hauptgangmesser).</li>
           <li>In der Mitte des Platztellers.</li>
           <li>Hinter dem Brotteller.</li>
         </ol>
         <details style="margin-top:10px;background:#fee2e2;padding:10px 14px;border-radius:8px;border-left:3px solid #ef4444;">
           <summary style="cursor:pointer;font-weight:600;color:#b91c1c;">🔍 Xem đáp án &amp; giải thích</summary>
-          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong> (Ly nước đặt thẳng trên mũi dao chính 1 cm).</p>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Ly nước định vị đặt thẳng phía trên đầu mũi dao chính 1 cm.</p>
         </details>
       </div>
 
+      <!-- 8 -->
       <div class="card">
-        <p><strong>4. Aufgabe (Kühlkette Fleisch &amp; Geflügel aus LF2):</strong> Höchsttemperatur für frisches Geflügelfleisch und frisches Hackfleisch?</p>
+        <p><strong>8. Aufgabe (Brotteller):</strong> An welcher Position wird der Brotteller mit dem Buttermesser eingedeckt?</p>
         <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
-          <li>Geflügel: +10°C | Hackfleisch: +8°C</li>
-          <li>Geflügel: ≤ +4°C | Hackfleisch: ≤ +2°C</li>
-          <li>Geflügel: +7°C | Hackfleisch: +7°C</li>
-          <li>Beide bei +15°C im Trockenlager.</li>
+          <li>Rechts neben dem Suppenlöffel.</li>
+          <li>Links neben der äußeren Gabel, Buttermesser auf dem Teller (Schneide nach links).</li>
+          <li>Oberhalb des Dessertbestecks.</li>
+          <li>Auf dem Platzteller.</li>
         </ol>
         <details style="margin-top:10px;background:#fee2e2;padding:10px 14px;border-radius:8px;border-left:3px solid #ef4444;">
           <summary style="cursor:pointer;font-weight:600;color:#b91c1c;">🔍 Xem đáp án &amp; giải thích</summary>
-          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong> (Gia cầm ≤ +4°C tránh Salmonella; Thịt xay sống ≤ +2°C).</p>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Đĩa bánh mì đặt bên TRÁI các dĩa chính, dao bơ đặt trên đĩa (lưỡi quay sang trái).</p>
         </details>
       </div>
 
+      <!-- 9 -->
       <div class="card">
-        <p><strong>5. Aufgabe (Rechenaufgabe: Wasserverlust):</strong> Két nước rò rỉ <strong>6 Liter in 4 Stunden</strong>. Tính lượng nước mất trong 24 Stunden!</p>
+        <p><strong>9. Aufgabe (Hygiene):</strong> Warum sollten Mundservietten mit möglichst wenigen Handgriffen gefaltet werden?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Damit sie schneller zerreißt.</li>
+          <li>Aus Hygienegründen, um Keimübertragung durch Handkontakt zu minimieren.</li>
+          <li>Damit sie schwerer wird.</li>
+          <li>Wird nur 1x pro Jahr gewaschen.</li>
+        </ol>
+        <details style="margin-top:10px;background:#fee2e2;padding:10px 14px;border-radius:8px;border-left:3px solid #ef4444;">
+          <summary style="cursor:pointer;font-weight:600;color:#b91c1c;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Gấp đơn giản hạn chế tối đa tay chạm trực tiếp để tránh lây nhiễm chéo vi khuẩn.</p>
+        </details>
+      </div>
+
+      <!-- 10 -->
+      <div class="card">
+        <p><strong>10. Aufgabe (Pflegeetikett):</strong> Pflegeetikett mit durchgestrichenem Wäschetrockner-Symbol. Was bedeutet das?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Bei maximaler Hitze trocknen.</li>
+          <li>Darf nicht im Wäschetrockner getrocknet werden (nur Lufttrocknung).</li>
+          <li>Darf nicht gebügelt werden.</li>
+          <li>Chemisch reinigen.</li>
+        </ol>
+        <details style="margin-top:10px;background:#fee2e2;padding:10px 14px;border-radius:8px;border-left:3px solid #ef4444;">
+          <summary style="cursor:pointer;font-weight:600;color:#b91c1c;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Cấm dùng máy sấy nhiệt, chỉ phơi gió tự nhiên.</p>
+        </details>
+      </div>
+
+      <!-- 11 -->
+      <div class="card">
+        <p><strong>11. Aufgabe (Tischwäsche):</strong> Was zeichnet hochwertige Damast-Tischdecken aus?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Aufgedruckte Farbmuster.</li>
+          <li>Eingewebte Muster durch Wechsel von Kett- und Schussfäden mit Glanzeffekt.</li>
+          <li>Grobe Struktur wie Kartoffelsack.</li>
+          <li>Dehnbar wie Gummi.</li>
+        </ol>
+        <details style="margin-top:10px;background:#fee2e2;padding:10px 14px;border-radius:8px;border-left:3px solid #ef4444;">
+          <summary style="cursor:pointer;font-weight:600;color:#b91c1c;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Vải Damask dệt hoa văn chìm nổi sang trọng nhờ kỹ thuật đan sợi dọc và ngang.</p>
+        </details>
+      </div>
+
+      <!-- 12 -->
+      <div class="card">
+        <p><strong>12. Aufgabe (Gläserpflege):</strong> Wie werden Gläser vor dem Eindecken fachgerecht poliert?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Mit den Fingern auswischen.</li>
+          <li>Über Wasserdampf halten und mit fusselfreiem Leinentuch an Fuß und Kelch polieren.</li>
+          <li>Mit Zeitungspapier reiben.</li>
+          <li>Mit Spülmittelschaum einreiben.</li>
+        </ol>
+        <details style="margin-top:10px;background:#fee2e2;padding:10px 14px;border-radius:8px;border-left:3px solid #ef4444;">
+          <summary style="cursor:pointer;font-weight:600;color:#b91c1c;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Hơ miệng ly qua hơi nước nóng rồi dùng khăn lau bóng không bụi lông (không vặn xoắn chân ly).</p>
+        </details>
+      </div>
+
+      <!-- 13 -->
+      <div class="card">
+        <p><strong>13. Aufgabe (Kohlensäureflaschen):</strong> Wo dürfen Kohlensäureflaschen CO2 keinesfalls gelagert werden?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>In gut belüfteten kühlen Räumen.</li>
+          <li>In engen, ungelüfteten Fluren, Treppenhäusern oder nah an Wärmequellen/Öfen.</li>
+          <li>Im Flaschenlager mit Wandhalterung.</li>
+          <li>Im Getränkekeller mit Kette.</li>
+        </ol>
+        <details style="margin-top:10px;background:#fee2e2;padding:10px 14px;border-radius:8px;border-left:3px solid #ef4444;">
+          <summary style="cursor:pointer;font-weight:600;color:#b91c1c;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Cấm để nơi kín gió, cầu thang thoát hiểm hoặc nơi gần nguồn nhiệt.</p>
+        </details>
+      </div>
+
+      <!-- 14 -->
+      <div class="card">
+        <p><strong>14. Aufgabe (Arbeitssicherheit):</strong> Welcher Griff schützt die Fingerkuppen beim Schneiden mit dem Messer?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Flachhandgriff</li>
+          <li>Krallengriff (Fingerkuppen nach innen gebogen, Daumen hinten)</li>
+          <li>Scherengriff</li>
+          <li>Faustgriff</li>
+        </ol>
+        <details style="margin-top:10px;background:#fee2e2;padding:10px 14px;border-radius:8px;border-left:3px solid #ef4444;">
+          <summary style="cursor:pointer;font-weight:600;color:#b91c1c;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Cầm tay kiểu móng vuốt (Krallengriff) bảo vệ đầu ngón tay tuyệt đối.</p>
+        </details>
+      </div>
+
+      <!-- 15 -->
+      <div class="card">
+        <p><strong>15. Aufgabe (Müllvermeidung):</strong> Welche Maßnahme vermeidet aktiv Abfall im Service?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Portionspackungen für Butter.</li>
+          <li>Mehrweg-Karaffen und Großgebinde statt Einweg-Portionspackungen.</li>
+          <li>Stoffservietten nach 1x wegwerfen.</li>
+          <li>Einweg-Pappbecher nutzen.</li>
+        </ol>
+        <details style="margin-top:10px;background:#fee2e2;padding:10px 14px;border-radius:8px;border-left:3px solid #ef4444;">
+          <summary style="cursor:pointer;font-weight:600;color:#b91c1c;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Dùng bình thủy tinh dùng nhiều lần và bao bì lớn để giảm thiểu rác thải nhựa.</p>
+        </details>
+      </div>
+
+      <!-- 16 -->
+      <div class="card">
+        <p><strong>16. Aufgabe (pH-Werte &amp; Chemie):</strong> Ordnen Sie die pH-Werte passenden Reinigungsmitteln zu:</p>
+        <details style="margin-top:10px;background:#fee2e2;padding:10px 14px;border-radius:8px;border-left:3px solid #ef4444;">
+          <summary style="cursor:pointer;font-weight:600;color:#b91c1c;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án:</strong> Allzweckreiniger: pH 7 | Grillreiniger: pH 13 | Urinsteinentferner: pH 1 | Sanitärreiniger: pH 4 | Bodenpflege: pH 9</p>
+        </details>
+      </div>
+
+      <!-- 17 -->
+      <div class="card">
+        <p><strong>17. Aufgabe (Sinnerscher Kreis):</strong> Waschtemperatur sinkt von 90°C auf 40°C. Anpassung des Waschprozesses?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Gar nichts ändern.</li>
+          <li>Waschzeit verlängern (Zeit) und enzymatische Waschmittel nutzen (Chemie).</li>
+          <li>Ohne Waschmittel waschen.</li>
+          <li>Trommel nur 10% beladen.</li>
+        </ol>
+        <details style="margin-top:10px;background:#fee2e2;padding:10px 14px;border-radius:8px;border-left:3px solid #ef4444;">
+          <summary style="cursor:pointer;font-weight:600;color:#b91c1c;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Theo vòng tròn Sinner: giảm nhiệt độ thì phải tăng thời gian ngâm giặt và hoạt tính enzyme.</p>
+        </details>
+      </div>
+
+      <!-- 18 -->
+      <div class="card">
+        <p><strong>18. Aufgabe (Amerikanischer Service):</strong> Von welcher Seite wird der Hauptgang beim Amerikanischen Service serviert?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Grundsätzlich von LINKS.</li>
+          <li>Grundsätzlich von RECHTS.</li>
+          <li>Von der freien Seite.</li>
+          <li>Über die Tischmitte.</li>
+        </ol>
+        <details style="margin-top:10px;background:#fee2e2;padding:10px 14px;border-radius:8px;border-left:3px solid #ef4444;">
+          <summary style="cursor:pointer;font-weight:600;color:#b91c1c;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Phục vụ kiểu Mỹ: Dâng đĩa và rót đồ uống từ bên PHẢI (von RECHTS).</p>
+        </details>
+      </div>
+
+      <!-- 19 -->
+      <div class="card">
+        <p><strong>19. Aufgabe (Rechenaufgabe: Wasserverlust):</strong> Két nước rò rỉ <strong>6 Liter in 4 Stunden</strong>. Tính lượng nước mất trong 24 Stunden!</p>
         <details style="margin-top:10px;background:#fee2e2;padding:10px 14px;border-radius:8px;border-left:3px solid #ef4444;">
           <summary style="cursor:pointer;font-weight:600;color:#b91c1c;">🔍 Xem đáp án &amp; giải thích</summary>
           <p style="margin:8px 0 0;font-size:.9em;">
             <strong>✅ Đáp án đúng: 36 Liter</strong><br>
-            $\frac{24}{4} \times 6 = 6 \times 6 = \mathbf{36\text{ Liter}}$
+            $rac{24}{4} 	imes 6 = 6 	imes 6 = \mathbf{36	ext{ Liter}}$
           </p>
         </details>
       </div>
 
+      <!-- 20 -->
       <div class="card">
-        <p><strong>6. Aufgabe (Rechenaufgabe: Pfandabrechnung):</strong> Tính tiền cọc:</p>
+        <p><strong>20. Aufgabe (Fettbrand):</strong> Fettbrand in der Fritteuse. Welcher Feuerlöscher ist zwingend einzusetzen?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Wasserlöscher (Klasse A)</li>
+          <li>Fettbrandlöscher (Brandklasse F)</li>
+          <li>Kohlendioxidlöscher für Holz</li>
+          <li>Sandeimer mit Wasser</li>
+        </ol>
+        <details style="margin-top:10px;background:#fee2e2;padding:10px 14px;border-radius:8px;border-left:3px solid #ef4444;">
+          <summary style="cursor:pointer;font-weight:600;color:#b91c1c;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Cháy dầu mỡ thuộc Brandklasse F, bắt buộc dùng bình bọt dập mỡ chuyên dụng (cấm dùng nước!).</p>
+        </details>
+      </div>
+
+      <!-- 21 -->
+      <div class="card">
+        <p><strong>21. Aufgabe (Reihenfolge):</strong> 6 Schritte zur Reinigung eines Kombidämpfers:</p>
+        <details style="margin-top:10px;background:#fee2e2;padding:10px 14px;border-radius:8px;border-left:3px solid #ef4444;">
+          <summary style="cursor:pointer;font-weight:600;color:#b91c1c;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Thứ tự:</strong> 1. Để nguội (&lt;60°C) ➔ 2. Gạt cặn lớn ➔ 3. Xịt hóa chất ➔ 4. Tráng nước ➔ 5. Lau khô ➔ 6. Mở hé cửa.</p>
+        </details>
+      </div>
+
+      <!-- 22 -->
+      <div class="card">
+        <p><strong>22. Aufgabe (Kühlkette):</strong> Höchsttemperatur für frisches Geflügelfleisch und frisches Hackfleisch?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Geflügel: +10°C | Hack: +8°C</li>
+          <li>Geflügel: ≤ +4°C | Hackfleisch: ≤ +2°C</li>
+          <li>Geflügel: +7°C | Hack: +7°C</li>
+          <li>Beide bei +15°C im Trockenlager.</li>
+        </ol>
+        <details style="margin-top:10px;background:#fee2e2;padding:10px 14px;border-radius:8px;border-left:3px solid #ef4444;">
+          <summary style="cursor:pointer;font-weight:600;color:#b91c1c;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Gia cầm tươi ≤ +4°C (tránh Salmonella); Thịt xay tươi sống ≤ +2°C.</p>
+        </details>
+      </div>
+
+      <!-- 23 -->
+      <div class="card">
+        <p><strong>23. Aufgabe (Rechenaufgabe: Pfandabrechnung):</strong> Berechnen Sie das Pfandguthaben:</p>
         <ul style="font-size:.9em;color:#475569;margin-left:20px;">
           <li>5 Kisten Wasser à 12 Flaschen (Flasche: 0,15 € | Kiste: 1,50 €)</li>
           <li>2 Kisten Bier à 24 Flaschen (Flasche: 0,08 € | Kiste: 1,50 €)</li>
-          <li>20 Einwegflaschen (Flasche: 0,25 €)</li>
+          <li>20 Einweg-PET-Flaschen (Flasche: 0,25 €)</li>
         </ul>
         <details style="margin-top:10px;background:#fee2e2;padding:10px 14px;border-radius:8px;border-left:3px solid #ef4444;">
           <summary style="cursor:pointer;font-weight:600;color:#b91c1c;">🔍 Xem đáp án &amp; giải thích</summary>
           <p style="margin:8px 0 0;font-size:.9em;">
             <strong>✅ Đáp án đúng: 28,34 Euro</strong><br>
-            • Két: $7 \times 1{,}50 = 10{,}50\text{ €}$<br>
-            • Chai: $(60 \times 0{,}15) + (48 \times 0{,}08) + (20 \times 0{,}25) = 9{,}00 + 3{,}84 + 5{,}00 = 17{,}84\text{ €}$<br>
-            • Tổng: $10{,}50 + 17{,}84 = \mathbf{28{,}34\text{ €}}$
+            • Két: $7 	imes 1{,}50 = 10{,}50	ext{ €}$<br>
+            • Chai: $(60 	imes 0{,}15) + (48 	imes 0{,}08) + (20 	imes 0{,}25) = 9{,}00 + 3{,}84 + 5{,}00 = 17{,}84	ext{ €}$<br>
+            • Tổng: $10{,}50 + 17{,}84 = \mathbf{28{,}34	ext{ €}}$
           </p>
         </details>
       </div>
@@ -3118,13 +3751,20 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
     <!-- ==================== ĐỀ THI MẪU C (MÙA XUÂN) ==================== -->
     <div class="exam-set" id="exam-form-c" style="display:none;">
       <div class="card" style="border-left:4px solid #10b981;">
-        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
           <div>
             <h3 style="margin:0;color:#047857;font-size:1.15em;">🌸 Musterprüfung C · Frühlings-Hochzeitsfeier</h3>
             <p style="margin:4px 0 0;color:var(--muted);font-size:.88em;">Prüfungsbereich: <strong>Wirtschaftsdienst</strong> · Prüfungszeit: <strong>60 Minuten</strong> · Tiệc cưới mùa xuân tháng 5</p>
           </div>
           <span class="tag" style="background:#ecfdf5;color:#047857;border-color:#10b981;">Đề Mẫu Chuẩn C</span>
         </div>
+      </div>
+
+      <!-- NÚT THI THỬ TƯƠNG TÁC FORM C -->
+      <div class="card" style="background:linear-gradient(135deg,#ecfdf5,#d1fae5);border:2px solid #10b981;text-align:center;padding:20px;">
+        <h3 style="margin:0 0 8px;color:#047857;font-size:1.05em;">🎯 CHẾ ĐỘ THI THỬ TƯƠNG TÁC (ĐỀ C)</h3>
+        <p style="margin:0 0 14px;color:#64748b;font-size:.88em;">Làm bài trực tiếp trên app · ⏱ Bấm giờ 60 phút · ✅ Chấm điểm tự động · 📊 Phân tích điểm yếu</p>
+        <button onclick="ExamSim.start('form_c')" style="background:#10b981;color:#fff;border:none;border-radius:12px;padding:12px 28px;font-weight:700;font-size:1em;cursor:pointer;box-shadow:0 4px 12px rgba(16,185,129,.25);transition:.15s;">🚀 Bắt đầu Thi Thử Đề C (23 câu · 60 phút)</button>
       </div>
 
       <div class="card" style="background:#f8fafc;">
@@ -3134,73 +3774,321 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
         </p>
       </div>
 
+      <!-- 1 -->
       <div class="card">
-        <p><strong>1. Aufgabe (Rechenaufgabe: Tischdeckengröße):</strong> Ein Tisch ist <strong>160 cm lang</strong> und <strong>80 cm breit</strong>. Der Überhang beträgt <strong>20 cm</strong> an allen Seiten. Berechnen Sie die Maße der Tischdecke!</p>
+        <p><strong>1. Aufgabe (Brandschutz):</strong> Wie müssen Flucht- und Rettungswege im Gastraum vorschriftsmäßig gekennzeichnet sein?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Rote runde Verbotsschilder.</li>
+          <li>Grüne rechteckige Schilder mit weißem Pfeil/Rettungszeichen (beleuchtet/nachleuchtend).</li>
+          <li>Gelbe Dreiecke.</li>
+          <li>Handgeschriebene Zettel.</li>
+        </ol>
+        <details style="margin-top:10px;background:#d1fae5;padding:10px 14px;border-radius:8px;border-left:3px solid #10b981;">
+          <summary style="cursor:pointer;font-weight:600;color:#047857;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Biển hình chữ nhật màu xanh lá, có mũi tên/hình người chạy màu trắng phát quang.</p>
+        </details>
+      </div>
+
+      <!-- 2 -->
+      <div class="card">
+        <p><strong>2. Aufgabe (Reinigung):</strong> Nach welcher Grundregel wird der Gastraum hygienisch gereinigt?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Von unten nach oben.</li>
+          <li>Von oben nach unten, von innen nach außen und von sauber zu unrein.</li>
+          <li>Querfeldein.</li>
+          <li>Vom WC zum Tisch mit demselben Tuch.</li>
+        </ol>
+        <details style="margin-top:10px;background:#d1fae5;padding:10px 14px;border-radius:8px;border-left:3px solid #10b981;">
+          <summary style="cursor:pointer;font-weight:600;color:#047857;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Nguyên tắc vệ sinh vàng: Từ trên xuống dưới, từ trong ra ngoài, từ sạch sang bẩn.</p>
+        </details>
+      </div>
+
+      <!-- 3 -->
+      <div class="card">
+        <p><strong>3. Aufgabe (Fleckenbehandlung):</strong> Frischer Kaffeefleck auf weißer Stoffserviette. Fachgerechte Vorbehandlung?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Mit lauwarmem Wasser auswaschen, Fleckensalz/Sauerstoffbleiche vor der Wäsche auftragen.</li>
+          <li>Mit Schmieröl einreiben.</li>
+          <li>Bei 200°C trocken einbügeln.</li>
+          <li>Mit Rotwein übergießen.</li>
+        </ol>
+        <details style="margin-top:10px;background:#d1fae5;padding:10px 14px;border-radius:8px;border-left:3px solid #10b981;">
+          <summary style="cursor:pointer;font-weight:600;color:#047857;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 1</strong><br>Xả nước ấm và dùng chất tẩy oxy hoạt tính trước khi giặt máy.</p>
+        </details>
+      </div>
+
+      <!-- 4 -->
+      <div class="card">
+        <p><strong>4. Aufgabe (Rechenaufgabe: Tischdeckengröße):</strong> Ein Tisch ist <strong>160 cm lang</strong> und <strong>80 cm breit</strong>. Der Überhang beträgt <strong>20 cm</strong> an allen Seiten. Berechnen Sie die Maße der Tischdecke!</p>
         <details style="margin-top:10px;background:#d1fae5;padding:10px 14px;border-radius:8px;border-left:3px solid #10b981;">
           <summary style="cursor:pointer;font-weight:600;color:#047857;">🔍 Xem đáp án &amp; giải thích</summary>
           <p style="margin:8px 0 0;font-size:.9em;">
             <strong>✅ Đáp án đúng: 200 cm × 120 cm</strong><br>
-            • Dài: $160 + (2 \times 20) = \mathbf{200\text{ cm}}$<br>
-            • Rộng: $80 + (2 \times 20) = \mathbf{120\text{ cm}}$
+            • Dài: $160 + (2 	imes 20) = \mathbf{200	ext{ cm}}$<br>
+            • Rộng: $80 + (2 	imes 20) = \mathbf{120	ext{ cm}}$
           </p>
         </details>
       </div>
 
+      <!-- 5 -->
       <div class="card">
-        <p><strong>2. Aufgabe (Dessertbesteck Anordnung):</strong> Wie wird das Dessertbesteck oberhalb des Platztellers eingedeckt?</p>
+        <p><strong>5. Aufgabe (Tischdekoration):</strong> Welche <strong>2</strong> Dekorationselemente passen besonders gut zu einer Hochzeit im Mai? <em>(Chọn 2)</em></p>
         <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
-          <li>Löffel zeigt nach links, Gabel zeigt nach rechts.</li>
+          <li>Frühlingsblumen (weiße Tulpen, Maiglöckchen) in Glasvasen</li>
+          <li>Getrocknete Maiskolben</li>
+          <li>Grüne Buchsbaumkränze mit zarten weißen Bändern</li>
+          <li>Eiszapfen aus Plastik</li>
+          <li>Halloween-Kürbisse</li>
+        </ol>
+        <details style="margin-top:10px;background:#d1fae5;padding:10px 14px;border-radius:8px;border-left:3px solid #10b981;">
+          <summary style="cursor:pointer;font-weight:600;color:#047857;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 1 và 3</strong><br>Hoa tulip trắng, hoa linh lan và lá xanh phù hợp mùa xuân tháng 5.</p>
+        </details>
+      </div>
+
+      <!-- 6 -->
+      <div class="card">
+        <p><strong>6. Aufgabe (Gedeckarten):</strong> Was ist das typische Merkmal eines festlichen Bankettgedecks im Vergleich zum Grundgedeck?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Kein Besteck auf dem Tisch.</li>
+          <li>Platzteller als Basis, vollständiges Besteck für alle Gänge (max. 3 Besteckteile je Seite) và Gläsersatz.</li>
+          <li>Pappteller và Plastikbesteck.</li>
+          <li>Keine Gläser.</li>
+        </ol>
+        <details style="margin-top:10px;background:#d1fae5;padding:10px 14px;border-radius:8px;border-left:3px solid #10b981;">
+          <summary style="cursor:pointer;font-weight:600;color:#047857;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Có đĩa lót Platzteller cố định, bộ dao dĩa và ly rượu vang cho từng món ăn.</p>
+        </details>
+      </div>
+
+      <!-- 7 -->
+      <div class="card">
+        <p><strong>7. Aufgabe (Besteck):</strong> Wie wird das Dessertbesteck oberhalb des Platztellers eingedeckt?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Löffel nach links, Gabel nach rechts.</li>
           <li>Dessertgabel liegt unten (Griff nach LINKS), Dessertlöffel liegt oben (Griff nach RECHTS).</li>
-          <li>Beide Griffe zeigen nach unten in den Teller.</li>
+          <li>Beide Griffe nach unten.</li>
           <li>Senkrecht im Wasserglas.</li>
         </ol>
         <details style="margin-top:10px;background:#d1fae5;padding:10px 14px;border-radius:8px;border-left:3px solid #10b981;">
           <summary style="cursor:pointer;font-weight:600;color:#047857;">🔍 Xem đáp án &amp; giải thích</summary>
-          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong> (Dĩa dưới cán sang trái, Thìa trên cán sang phải).</p>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Dĩa tráng miệng nằm dưới (cán sang trái), thìa tráng miệng nằm trên (cán sang phải).</p>
         </details>
       </div>
 
+      <!-- 8 -->
       <div class="card">
-        <p><strong>3. Aufgabe (Gefahr Chlorgas):</strong> Warum darf saurer Kalklöser niemals mit chlorhaltigem Reiniger gemischt werden?</p>
+        <p><strong>8. Aufgabe (Service):</strong> Wie läuft der Französische Service (Plattenservice) korrekt ab?</p>
         <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
-          <li>Das Gemisch gefriert sofort.</li>
-          <li>Es entsteht tödliches Chlorgas (todesgefährliche Verätzung der Lunge).</li>
-          <li>Reinigungskraft verdoppelt sich.</li>
-          <li>Flasche explodiert nicht.</li>
+          <li>Teller wird in der Küche angerichtet và von rechts serviert.</li>
+          <li>Speisen auf Platten von LINKS herangereicht, Gast bedient sich mit Vorlegebesteck selbst.</li>
+          <li>Kellner legt am Gueridon vor.</li>
+          <li>Nur Buffet-Selbstbedienung.</li>
         </ol>
         <details style="margin-top:10px;background:#d1fae5;padding:10px 14px;border-radius:8px;border-left:3px solid #10b981;">
           <summary style="cursor:pointer;font-weight:600;color:#047857;">🔍 Xem đáp án &amp; giải thích</summary>
-          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong> (Axit + Clo sinh ra khí Clo cực độc gây phù phổi và tử vong!).</p>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Phục vụ kiểu Pháp: Dâng khay thức ăn từ bên TRÁI (von LINKS) để khách tự gắp vào đĩa.</p>
         </details>
       </div>
 
+      <!-- 9 -->
       <div class="card">
-        <p><strong>4. Aufgabe (Vier-Farben-System):</strong> Welches Tuch wird für Waschbecken và Armaturen im Sanitärbereich verwendet?</p>
+        <p><strong>9. Aufgabe (Allergene):</strong> Gast meldet schwere Glutenunverträglichkeit (Zöliakie). Welche Zutat muss zwingend vermieden werden?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Reines Rindfleisch.</li>
+          <li>Weizen, Roggen, Gerste, Dinkel und herkömmliches Mehl.</li>
+          <li>Frisches Quellwasser.</li>
+          <li>Frische Äpfel.</li>
+        </ol>
+        <details style="margin-top:10px;background:#d1fae5;padding:10px 14px;border-radius:8px;border-left:3px solid #10b981;">
+          <summary style="cursor:pointer;font-weight:600;color:#047857;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Gluten có trong ngũ cốc (lúa mì, lúa mạch, yến mạch); người Zöliakie phải kiêng tuyệt đối.</p>
+        </details>
+      </div>
+
+      <!-- 10 -->
+      <div class="card">
+        <p><strong>10. Aufgabe (Pflegeetikett):</strong> Bügeleisensymbol mit 3 Punkten auf dem Etikett bedeutet:</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Nicht bügeln.</li>
+          <li>Nur mit kaltem Dampf bügeln.</li>
+          <li>Bügeln mit hoher Hitze bis maximal 200°C (für Baumwolle/Leinen).</li>
+          <li>Nur Stufe 1.</li>
+        </ol>
+        <details style="margin-top:10px;background:#d1fae5;padding:10px 14px;border-radius:8px;border-left:3px solid #10b981;">
+          <summary style="cursor:pointer;font-weight:600;color:#047857;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 3</strong><br>Ủi nhiệt độ cao nhất tới 200°C (chuyên dùng cho vải Cotton và Linen).</p>
+        </details>
+      </div>
+
+      <!-- 11 -->
+      <div class="card">
+        <p><strong>11. Aufgabe (Reklamation):</strong> Gast reklamiert verärgert kalte Suppe. Professionelles Verhalten nach L-A-S-T:</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Sagen, dass er zu langsam isst.</li>
+          <li>Lautstark diskutieren.</li>
+          <li>Ruhig zuhören (Listen), entschuldigen (Apologize), sofort heiße Suppe bringen (Solve), bedanken (Thank).</li>
+          <li>Ignorieren.</li>
+        </ol>
+        <details style="margin-top:10px;background:#d1fae5;padding:10px 14px;border-radius:8px;border-left:3px solid #10b981;">
+          <summary style="cursor:pointer;font-weight:600;color:#b45309;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 3</strong><br>Quy tắc L-A-S-T: Lắng nghe ➔ Xin lỗi ➔ Đổi súp nóng ngay ➔ Cảm ơn. Tuyệt đối không cãi khách!</p>
+        </details>
+      </div>
+
+      <!-- 12 -->
+      <div class="card">
+        <p><strong>12. Aufgabe (Service):</strong> Wie wird die 3-Teller-Tragetechnik mit der linken Hand korrekt ausgeführt?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Alle 3 Teller aufeinander stapeln.</li>
+          <li>Teller 1 mit Daumen/Zeigefinger greifen, Teller 2 unter den ersten schieben (Unterarm stützen), Teller 3 in rechter Hand.</li>
+          <li>Teller mit Zähnen halten.</li>
+          <li>Auf dem Kopf balancieren.</li>
+        </ol>
+        <details style="margin-top:10px;background:#d1fae5;padding:10px 14px;border-radius:8px;border-left:3px solid #10b981;">
+          <summary style="cursor:pointer;font-weight:600;color:#047857;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Ngón cái và trỏ kẹp đĩa 1, đĩa 2 luồn dưới tựa trên cẳng tay, tay phải cầm đĩa thứ 3.</p>
+        </details>
+      </div>
+
+      <!-- 13 -->
+      <div class="card">
+        <p><strong>13. Aufgabe (Gefahrstoffe):</strong> Warum darf saurer Kalklöser niemals mit chlorhaltigem Reiniger gemischt werden?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Gemisch gefriert sofort.</li>
+          <li>Es entsteht hochgiftiges Chlorgas (schwere Lungenverätzung und Erstickung).</li>
+          <li>Reinigungskraft verdoppelt sich.</li>
+          <li>Flasche wird rosa.</li>
+        </ol>
+        <details style="margin-top:10px;background:#d1fae5;padding:10px 14px;border-radius:8px;border-left:3px solid #10b981;">
+          <summary style="cursor:pointer;font-weight:600;color:#047857;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Axit + Clo sinh ra khí Clo cực độc gây phù phổi cấp và tử vong!</p>
+        </details>
+      </div>
+
+      <!-- 14 -->
+      <div class="card">
+        <p><strong>14. Aufgabe (Arbeitssicherheit):</strong> Welche PSA ist beim Ansetzen ätzender Reinigungslauge zur Grundreinigung vorgeschrieben?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Kurze Hose und Sandalen.</li>
+          <li>Chemikalienbeständige Schutzhandschuhe (Nitril) und dichtschließende Schutzbrille.</li>
+          <li>Wollmütze und Sonnenbrille.</li>
+          <li>Lederschürze ohne Handschuhe.</li>
+        </ol>
+        <details style="margin-top:10px;background:#d1fae5;padding:10px 14px;border-radius:8px;border-left:3px solid #10b981;">
+          <summary style="cursor:pointer;font-weight:600;color:#047857;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Pha hóa chất kiềm mạnh bắt buộc đeo găng tay Nitril chống ăn mòn và kính bảo hộ.</p>
+        </details>
+      </div>
+
+      <!-- 15 -->
+      <div class="card">
+        <p><strong>15. Aufgabe (Umweltschutz):</strong> Welche Einrichtung an Handwaschbecken spart wirkungsvoll Wasser?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Entfernen des Abflusses.</li>
+          <li>Strahlregler mit Luftbeimischung (Perlatoren) oder Sensorarmaturen.</li>
+          <li>Voll aufgedrehte Drehventile.</li>
+          <li>Loch im Becken.</li>
+        </ol>
+        <details style="margin-top:10px;background:#d1fae5;padding:10px 14px;border-radius:8px;border-left:3px solid #10b981;">
+          <summary style="cursor:pointer;font-weight:600;color:#047857;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Đầu vòi Perlatoren sục bọt khí giúp giảm 50% lượng nước tiêu thụ mà vẫn sạch.</p>
+        </details>
+      </div>
+
+      <!-- 16 -->
+      <div class="card">
+        <p><strong>16. Aufgabe (Mülltrennung):</strong> Ordnen Sie zu: 1.Naturkorken 2.Altspeiseöl 3.Konservendosen 4.Speisekartenpapier 5.Fettige Papierservietten 6.Altglas</p>
+        <details style="margin-top:10px;background:#d1fae5;padding:10px 14px;border-radius:8px;border-left:3px solid #10b981;">
+          <summary style="cursor:pointer;font-weight:600;color:#047857;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án:</strong> Altglas: 6 | Fettabscheider: 2 | Gelber Sack: 3 | Papier: 4 | Restmüll: 5 | Korksammlung: 1</p>
+        </details>
+      </div>
+
+      <!-- 17 -->
+      <div class="card">
+        <p><strong>17. Aufgabe (Vier-Farben-System):</strong> Welches Reinigungstuch wird für Waschbecken, Fliesen und Armaturen im Sanitärbereich genutzt?</p>
         <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
           <li>Rotes Tuch (WC)</li>
-          <li>Gelbes Tuch (Waschbecken/Fliesen)</li>
+          <li>Gelbes Tuch (Waschbecken/Armaturen)</li>
           <li>Blaues Tuch (Gastraum)</li>
           <li>Grünes Tuch (Küche)</li>
         </ol>
         <details style="margin-top:10px;background:#d1fae5;padding:10px 14px;border-radius:8px;border-left:3px solid #10b981;">
           <summary style="cursor:pointer;font-weight:600;color:#047857;">🔍 Xem đáp án &amp; giải thích</summary>
-          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2 (Gelbes Tuch - Khăn Vàng)</strong>.</p>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2 (Gelbes Tuch - Khăn Vàng)</strong><br>Khăn màu vàng chuyên dùng lau bồn rửa tay, vòi nước và gạch men phòng tắm.</p>
         </details>
       </div>
 
+      <!-- 18 -->
       <div class="card">
-        <p><strong>5. Aufgabe (Rechenaufgabe: Wasserverlust):</strong> Vòi nước rỉ <strong>4,5 Liter in 3 Stunden</strong>. Tính lượng nước mất trong 24 Stunden!</p>
+        <p><strong>18. Aufgabe (Getränkekunde):</strong> Warum schäumt Bier im fettigen Glas stark auf và die Schaumkrone zerfällt sofort?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Fett zerstört die Oberflächenspannung und wirkt als Schaumzerstörer.</li>
+          <li>Bier enthält kein Wasser.</li>
+          <li>Glas ist zu kalt.</li>
+          <li>Kohlensäure wird vermehrt.</li>
+        </ol>
+        <details style="margin-top:10px;background:#d1fae5;padding:10px 14px;border-radius:8px;border-left:3px solid #10b981;">
+          <summary style="cursor:pointer;font-weight:600;color:#047857;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 1</strong><br>Dầu mỡ phá vỡ sức căng bề mặt bọt bia, khiến bọt trào rồi xẹp lép ngay tức khắc.</p>
+        </details>
+      </div>
+
+      <!-- 19 -->
+      <div class="card">
+        <p><strong>19. Aufgabe (Rechenaufgabe: Wasserverlust):</strong> Vòi nước rỉ <strong>4,5 Liter in 3 Stunden</strong>. Tính lượng nước mất trong 24 Stunden!</p>
         <details style="margin-top:10px;background:#d1fae5;padding:10px 14px;border-radius:8px;border-left:3px solid #10b981;">
           <summary style="cursor:pointer;font-weight:600;color:#047857;">🔍 Xem đáp án &amp; giải thích</summary>
           <p style="margin:8px 0 0;font-size:.9em;">
             <strong>✅ Đáp án đúng: 36 Liter</strong><br>
-            $\frac{24}{3} \times 4{,}5 = 8 \times 4{,}5 = \mathbf{36\text{ Liter}}$
+            $rac{24}{3} 	imes 4{,}5 = 8 	imes 4{,}5 = \mathbf{36	ext{ Liter}}$
           </p>
         </details>
       </div>
 
+      <!-- 20 -->
       <div class="card">
-        <p><strong>6. Aufgabe (Rechenaufgabe: Pfandabrechnung):</strong> Tính tiền cọc:</p>
+        <p><strong>20. Aufgabe (Materialkunde):</strong> Warum darf saurer Kalklöser (pH 1) nicht auf Marmor-Waschtischen verwendet werden?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Marmor besteht aus Calciumcarbonat (Kalkstein) und wird durch Säure zersetzt und matt angeätzt.</li>
+          <li>Marmor fängt Feuer.</li>
+          <li>Verwandelt Säure in Zucker.</li>
+        </ol>
+        <details style="margin-top:10px;background:#d1fae5;padding:10px 14px;border-radius:8px;border-left:3px solid #10b981;">
+          <summary style="cursor:pointer;font-weight:600;color:#047857;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 1</strong><br>Đá cẩm thạch Marmor có gốc vôi (canxi cacbonat), axit sẽ ăn mòn làm thủng mờ bề mặt vĩnh viễn.</p>
+        </details>
+      </div>
+
+      <!-- 21 -->
+      <div class="card">
+        <p><strong>21. Aufgabe (Reihenfolge):</strong> 6 Schritte bei der Warenannahme von frischem Rindfleisch:</p>
+        <details style="margin-top:10px;background:#d1fae5;padding:10px 14px;border-radius:8px;border-left:3px solid #10b981;">
+          <summary style="cursor:pointer;font-weight:600;color:#047857;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Thứ tự chuẩn:</strong> 1. Kiểm tra xe giao hàng ➔ 2. Đối chiếu phiếu giao ➔ 3. Đo nhiệt độ tâm thịt (≤7°C) ➔ 4. Cảm quan màu/mùi ➔ 5. Ký nhận ➔ 6. Nhập kho lạnh ngay.</p>
+        </details>
+      </div>
+
+      <!-- 22 -->
+      <div class="card">
+        <p><strong>22. Aufgabe (Lagergrundsätze):</strong> Was bedeutet das Lagerprinzip FIFO (First In – First Out)?</p>
+        <ol style="margin-left:20px;font-size:.9em;line-height:1.6;">
+          <li>Teuerste Ware zuerst.</li>
+          <li>Waren mit früherem Einlagerungsdatum/kürzerem MHD zuerst verbrauchen; Neulieferung hinten/unten einräumen.</li>
+          <li>Alles gleichzeitig wegwerfen.</li>
+        </ol>
+        <details style="margin-top:10px;background:#d1fae5;padding:10px 14px;border-radius:8px;border-left:3px solid #10b981;">
+          <summary style="cursor:pointer;font-weight:600;color:#047857;">🔍 Xem đáp án &amp; giải thích</summary>
+          <p style="margin:8px 0 0;font-size:.9em;"><strong>✅ Đáp án đúng: 2</strong><br>Hàng nhập trước/hạn ngắn dùng trước, hàng mới về xếp lùi vào sau.</p>
+        </details>
+      </div>
+
+      <!-- 23 -->
+      <div class="card">
+        <p><strong>23. Aufgabe (Rechenaufgabe: Pfandberechnung):</strong> Berechnen Sie das Pfandguthaben:</p>
         <ul style="font-size:.9em;color:#475569;margin-left:20px;">
           <li>6 Kisten Bier à 20 Flaschen (Flasche: 0,08 € | Kiste: 1,50 €)</li>
           <li>4 Kisten Limonade à 12 Flaschen (Flasche: 0,15 € | Kiste: 1,50 €)</li>
@@ -3210,13 +4098,14 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
           <summary style="cursor:pointer;font-weight:600;color:#047857;">🔍 Xem đáp án &amp; giải thích</summary>
           <p style="margin:8px 0 0;font-size:.9em;">
             <strong>✅ Đáp án đúng: 34,30 Euro</strong><br>
-            • Két: $10 \times 1{,}50 = 15{,}00\text{ €}$<br>
-            • Chai/Lon: $(120 \times 0{,}08) + (48 \times 0{,}15) + (10 \times 0{,}25) = 9{,}60 + 7{,}20 + 2{,}50 = 19{,}30\text{ €}$<br>
-            • Tổng: $15{,}00 + 19{,}30 = \mathbf{34{,}30\text{ €}}$
+            • Két: $10 	imes 1{,}50 = 15{,}00	ext{ €}$<br>
+            • Chai/Lon: $(120 	imes 0{,}08) + (48 	imes 0{,}15) + (10 	imes 0{,}25) = 9{,}60 + 7{,}20 + 2{,}50 = 19{,}30	ext{ €}$<br>
+            • Tổng: $15{,}00 + 19{,}30 = \mathbf{34{,}30	ext{ €}}$
           </p>
         </details>
       </div>
     </div>
+
   </div>
 
 </section>
@@ -3739,7 +4628,39 @@ document.querySelectorAll('#v-zwischen .tab').forEach(t=>t.addEventListener("cli
   document.getElementById("z-"+t.getAttribute("data-ztab")).classList.add("active");
 }));
 
+
+function renderExamHistoryList(){
+  const container = document.getElementById('history-list-content');
+  if(!container) return;
+  const history = JSON.parse(localStorage.getItem('exam_history')||'[]');
+  if(history.length === 0){
+    container.innerHTML = '<div style="text-align:center;padding:24px;color:#8e8e93;font-style:italic;">Chưa có lần thi thử nào. Hãy chọn một đề thi và nhấn "Bắt đầu Thi Thử"!</div>';
+    return;
+  }
+  let html = '<div style="display:flex;flex-direction:column;gap:10px;">';
+  history.slice().reverse().forEach((item, idx) => {
+    const pass = item.pct >= 50;
+    const d = new Date(item.date);
+    const dateStr = d.toLocaleDateString('vi-VN') + ' ' + d.toLocaleTimeString('vi-VN', {hour:'2-digit',minute:'2-digit'});
+    const m = Math.floor(item.timeUsed / 60);
+    const s = item.timeUsed % 60;
+    html += `<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:#f8fafc;border-radius:10px;border-left:4px solid ${pass?'#22c55e':'#ef4444'};">
+      <div>
+        <div style="font-weight:600;font-size:.92em;color:#1e293b;">${item.exam}</div>
+        <div style="font-size:.8em;color:#64748b;">${dateStr} · Làm trong ${m}m ${s}s</div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-weight:800;font-size:1.15em;color:${pass?'#166534':'#991b1b'};">${item.pct}%</div>
+        <div style="font-size:.78em;color:#64748b;">${item.correct}/${item.total} câu</div>
+      </div>
+    </div>`;
+  });
+  html += '<div style="margin-top:14px;text-align:center;"><button onclick="if(confirm(\'Xóa toàn bộ lịch sử thi?\')){localStorage.removeItem(\'exam_history\');renderExamHistoryList();}" style="background:#fee2e2;color:#b91c1c;border:1px solid #fca5a5;padding:6px 14px;border-radius:8px;font-size:.82em;cursor:pointer;">🗑️ Xóa lịch sử thi</button></div></div>';
+  container.innerHTML = html;
+}
+
 function switchExamForm(formId) {
+  if(formId === "exam-history-box") renderExamHistoryList();
   document.querySelectorAll('.exam-set').forEach(el => el.style.display = 'none');
   document.querySelectorAll('.exam-tab-btn').forEach(btn => {
     btn.style.background = 'var(--surface)';
@@ -7585,6 +8506,7 @@ setInterval(()=>{
   }, 800);
 })();
 </script>
+<script src="./js/exam-sim.js?v=1"></script>
 <script src="./js/wissen.js?v=2"></script>
 <script src="./js/chatbox.js?v=14"></script>
 <script src="./js/icons.js?v=1"></script>
