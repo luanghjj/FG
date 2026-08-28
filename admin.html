@@ -475,6 +475,7 @@ table.mx tbody tr:hover .mx-namecol{background:#EAF3FF}
 <script src="./pwa.js?v=3" defer></script>
 <script src="./js/supabase.js?v=16"></script>
 <script src="./js/access.js?v=2"></script>
+<script src="./js/icons.js?v=1"></script>
 <script src="./faecher/bfk1/bfk1-catalog.js?v=1"></script>
 <script>
 const AUTH_KEY='learn_admin_ok';
@@ -488,12 +489,6 @@ function fmt(ts){
   try{ return new Date(ts).toLocaleString('de-DE'); }catch(_){ return String(ts).slice(0,19); }
 }
 function escH(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-function unlock(){
-  document.getElementById('loginBox').style.display='none';
-  document.getElementById('dash').style.display='block';
-  document.getElementById('btnRefresh').style.display='inline-block';
-  load();
-}
 function dayKey(iso){
   if(!iso) return '';
   return String(iso).slice(0,10);
@@ -862,6 +857,8 @@ document.getElementById('btnSaveManifest').onclick=async()=>{
     const excelName=excelTier==='free'?'Basic':excelTier==='super'?'Admin':'Pro';
     msg.textContent='Matrix gespeichert · Excel-Fragenbank ab '+excelName+'.';
   }catch(e){ msg.textContent='Fehler: '+(e.message||e); }
+};
+
 function initTabs(){
   document.querySelectorAll('#mainTabs .main-tab').forEach(btn => {
     btn.onclick = () => {
@@ -1074,9 +1071,7 @@ document.getElementById('pass').addEventListener('keydown', e => {
 try{
   if(sessionStorage.getItem(AUTH_KEY)==='1') unlock();
 }catch(_){}
-</script>
-<script src="./js/icons.js?v=1"></script>
-<script>
+
 /* ===== KLASSENARBEIT ACCESS CONTROL UI ===== */
 let _allPlayersList = [];
 let _kaWhitelistSet = new Set();
