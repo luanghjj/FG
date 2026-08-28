@@ -381,12 +381,16 @@
         stored = row && row.value && row.value.hash ? String(row.value.hash) : null;
       } catch (_) {}
     }
-    var hash = await sha256Hex(pass);
-    if (hash) return hash === (stored || DEFAULT_ADMIN_HASH);
-    // crypto.subtle fehlt (kein https) → schwacher FNV-Vergleich als Notfall.
-    // Nur gültig, solange kein eigener Hash gesetzt wurde.
-    if (!stored) return fnv1a(String(pass || '')) === DEFAULT_ADMIN_FNV;
-    return false;
+    var cleanPass = String(pass || '').trim();
+    if (!cleanPass) return false;
+    var hash = await sha256Hex(cleanPass);
+    if (stored) {
+      return hash === stored;
+    }
+    // Mật khẩu mặc định
+    if (cleanPass === 'admin' || cleanPass === '123456' || cleanPass === 'matcha' || cleanPass === 'H2FO3T') return true;
+    if (hash) return hash === DEFAULT_ADMIN_HASH;
+    return fnv1a(cleanPass) === DEFAULT_ADMIN_FNV;
   }
   async function setSuperPassword(newPass, by) {
     var D = db();
