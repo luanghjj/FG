@@ -566,6 +566,7 @@ function isSelected(qId, optIdx){
 }
 
 function answer(qId, optIdx, type, multi){
+  if(window.SoundFX) SoundFX.playClick();
   if(_submitted) return;
   if(type === 'multi'){
     let curr = _answers[qId] || [];
@@ -676,6 +677,10 @@ function _doSubmit(){
   const total = _exam.questions.length;
   const pct = Math.round(correct/total*100);
   const pass = pct >= 50;
+  if(window.SoundFX){
+    if(pass) SoundFX.playFanfare();
+    else SoundFX.playWrong();
+  }
   const timeUsed = _exam.time - _remaining;
   const minUsed = Math.floor(timeUsed/60);
   const secUsed = timeUsed%60;

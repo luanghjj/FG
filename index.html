@@ -1059,10 +1059,116 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
 .eq-history-item{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:12px 14px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px}
 .eq-history-score.pass{color:var(--ok);font-weight:700}
 .eq-history-score.fail{color:var(--bad);font-weight:700}
+
+/* ============================================================
+   ADVANCED UX/UI SYSTEM ENHANCEMENTS (8 CORE FEATURES)
+   ============================================================ */
+
+/* 1. THEME VARIABLES (Light, Dark, Auto) */
+:root[data-theme="dark"],
+[data-theme="dark"] {
+  --bg:#1C1C1E; --surface:#2C2C2E; --ink:#F2F2F7; --muted:#98989D; --line:#38383A;
+  --accent:#0A84FF; --accent-soft:#1C3A5E; --accent-2:#5AADFF;
+  --ok:#30D158; --okbg:#0D2B18; --bad:#FF453A; --badbg:#2B0D0D; --warn:#FFD60A; --warnbg:#2B250D;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.4);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#1C1C1E; --surface:#2C2C2E; --ink:#F2F2F7; --muted:#98989D; --line:#38383A;
+    --accent:#0A84FF; --accent-soft:#1C3A5E; --accent-2:#5AADFF;
+    --ok:#30D158; --okbg:#0D2B18; --bad:#FF453A; --badbg:#2B0D0D; --warn:#FFD60A; --warnbg:#2B250D;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.4);
+  }
+}
+[data-theme="dark"] .nav,
+:root:not([data-theme="light"]) @media (prefers-color-scheme:dark){ .nav{background:rgba(28,28,30,.94)} }
+[data-theme="dark"] .login-card, [data-theme="dark"] .track-card, [data-theme="dark"] .sheet-card,
+[data-theme="dark"] .card, [data-theme="dark"] .today-card, [data-theme="dark"] .subject-card,
+[data-theme="dark"] .ka-card, [data-theme="dark"] .theme-item, [data-theme="dark"] .progress-card,
+[data-theme="dark"] .next-exam-chip, [data-theme="dark"] .detail-box{ background:#2C2C2E; color:var(--ink) }
+
+[data-theme="dark"] body.tier-paid, [data-theme="dark"] body.tier-super{
+  --bg:#1A1916; --surface:#2A2720; --line:#3A3630; --accent-soft:#242017;
+}
+
+/* Theme toggle button in nav */
+.theme-toggle{border:1px solid var(--line);background:var(--surface);border-radius:999px;width:34px;height:34px;
+  display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:.95em;color:var(--muted);
+  transition:background .15s,color .15s,transform .15s;flex-shrink:0;-webkit-tap-highlight-color:transparent}
+.theme-toggle:hover{color:var(--ink);background:var(--accent-soft);transform:scale(1.05)}
+
+/* Sound toggle button in nav / quiz */
+.sound-toggle{border:1px solid var(--line);background:var(--surface);border-radius:999px;width:34px;height:34px;
+  display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:.92em;color:var(--muted);
+  transition:background .15s,color .15s;flex-shrink:0;-webkit-tap-highlight-color:transparent}
+.sound-toggle:hover{color:var(--ink);background:var(--accent-soft)}
+.sound-toggle.muted{opacity:.5}
+
+/* 2. SEARCH ENHANCEMENTS */
+.sh-quick{padding:12px 14px;background:var(--surface);border-bottom:1px solid var(--line)}
+.sh-section{margin-bottom:10px}
+.sh-section:last-child{margin-bottom:0}
+.sh-head{display:flex;justify-content:space-between;align-items:center;font-size:.72em;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.sh-clear{background:none;border:none;color:var(--bad);font-size:.95em;cursor:pointer;padding:0}
+.sh-chips{display:flex;flex-wrap:wrap;gap:6px}
+.sh-chip{display:inline-flex;align-items:center;gap:4px;background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:4px 10px;font-size:.78em;font-weight:500;color:var(--ink);cursor:pointer;transition:.12s;-webkit-tap-highlight-color:transparent}
+.sh-chip:hover{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.sh-mark{background:#FEF08A;color:#854D0E;padding:0 2px;border-radius:3px;font-weight:600}
+[data-theme="dark"] .sh-mark{background:#854D0E;color:#FEF08A}
+
+/* 3. LIGHTBOX ZOOM CONTROLS */
+#pageLightbox .lb-controls{display:flex;align-items:center;gap:6px;background:rgba(30,41,59,.85);backdrop-filter:blur(8px);padding:6px 12px;border-radius:999px;margin-bottom:8px}
+#pageLightbox .lb-btn{border:none;background:rgba(255,255,255,.15);color:#fff;border-radius:8px;padding:6px 10px;font-size:.82em;font-weight:600;cursor:pointer;transition:.15s}
+#pageLightbox .lb-btn:hover{background:rgba(255,255,255,.3)}
+#pageLightbox .lb-zoom-level{color:#fff;font-size:.8em;font-weight:700;min-width:44px;text-align:center}
+#pageLightbox .lb-img-wrap{position:relative;overflow:hidden;max-width:100%;max-height:75vh;display:flex;align-items:center;justify-content:center;border-radius:10px;touch-action:none}
+#pageLightbox img{transition:transform .15s ease-out;transform-origin:center center;user-select:none;-webkit-user-drag:none}
+
+/* 4. FONT SIZE ADJUSTER TOOLBAR */
+.font-bar{display:inline-flex;align-items:center;gap:3px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:2px 4px}
+.font-btn{border:none;background:transparent;color:var(--muted);border-radius:999px;padding:3px 8px;font-size:.78em;font-weight:700;cursor:pointer;transition:.15s}
+.font-btn:hover,.font-btn.active{background:var(--accent);color:#fff}
+body.font-sm{--font-scale:.92;font-size:14px}
+body.font-md{--font-scale:1;font-size:15.5px}
+body.font-lg{--font-scale:1.14;font-size:17.5px}
+body.font-xl{--font-scale:1.28;font-size:19.5px}
+
+/* 5. GAMIFICATION: STREAK & MILESTONES CARD */
+.streak-card{background:linear-gradient(135deg,rgba(255,149,0,.12),rgba(255,45,85,.08));border:1.5px solid rgba(255,149,0,.3);border-radius:var(--radius);padding:16px 18px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;gap:14px;position:relative;overflow:hidden}
+.streak-main{display:flex;align-items:center;gap:12px}
+.streak-flame{font-size:2.2em;line-height:1;filter:drop-shadow(0 2px 8px rgba(255,149,0,.4));animation:softPulse 2s infinite}
+.streak-count{font-size:1.45em;font-weight:800;color:#D97706;line-height:1.1}
+[data-theme="dark"] .streak-count{color:#FBBF24}
+.streak-label{font-size:.78em;color:var(--muted);font-weight:600;margin-top:2px}
+.streak-milestone{flex:1;max-width:260px}
+.streak-m-title{display:flex;justify-content:space-between;font-size:.74em;font-weight:700;color:var(--ink);margin-bottom:5px}
+.streak-bar{height:7px;background:rgba(0,0,0,.08);border-radius:999px;overflow:hidden}
+[data-theme="dark"] .streak-bar{background:rgba(255,255,255,.12)}
+.streak-bar span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#FF9500,#FF2D55);transition:width .6s ease}
+
+/* 6. OFFLINE BANNER */
+#offlineBanner{position:fixed;top:0;left:0;right:0;z-index:9998;background:#F59E0B;color:#78350F;font-size:.82em;font-weight:600;text-align:center;padding:7px 14px;box-shadow:0 2px 10px rgba(0,0,0,.15);display:none;align-items:center;justify-content:center;gap:8px;animation:viewIn .25s ease}
+#offlineBanner.online{background:#10B981;color:#064E3B}
+#offlineBanner.show{display:flex}
+
+/* 7. SMART FLOATING POSITIONING */
+#backToTop{position:fixed;right:16px;bottom:calc(148px + var(--safe-bottom));z-index:80;
+  width:40px;height:40px;border-radius:50%;background:var(--surface);color:var(--accent);
+  border:1px solid var(--line);box-shadow:var(--shadow);display:none;align-items:center;
+  justify-content:center;font-size:1.1em;cursor:pointer;transition:opacity .2s,transform .2s;
+  -webkit-tap-highlight-color:transparent}
+#backToTop.show{display:flex}
+#backToTop:hover{transform:translateY(-2px);background:var(--accent-soft)}
+
+@media (max-width:640px){
+  #backToTop{bottom:calc(152px + var(--safe-bottom));right:14px;width:38px;height:38px}
+}
+
 </style>
 <script src="./pwa.js?v=5" defer></script>
 </head>
 <body>
+<div id="offlineBanner" role="status"><span>⚡ Đang ở chế độ Ngoại tuyến (Offline) — Bài học &amp; Đề thi vẫn hoạt động!</span></div>
 <!-- ===== LOGIN GATE ===== -->
 <div id="loginGate">
   <div class="login-card">
@@ -1121,6 +1227,13 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
     <div class="crumbs" id="crumbs"></div>
     <span class="user-chip" id="userChip" title="Nickname wechseln" style="display:none">👤 —</span>
     <a class="track-switch" onclick="showTrackGate()" title="Track wählen">↺</a>
+    <button type="button" class="theme-toggle" id="themeToggle" onclick="ThemeMgr.toggle()" title="Chuyển chế độ Sáng/Tối" aria-label="Theme toggle">🌙</button>
+    <button type="button" class="sound-toggle" id="soundToggle" onclick="SoundFX.toggle()" title="Bật/Tắt âm thanh" aria-label="Sound toggle">🔊</button>
+    <div class="font-bar" title="Cỡ chữ">
+      <button type="button" class="font-btn" data-size="sm" onclick="FontScaler.set('sm')">A-</button>
+      <button type="button" class="font-btn active" data-size="md" onclick="FontScaler.set('md')">A</button>
+      <button type="button" class="font-btn" data-size="lg" onclick="FontScaler.set('lg')">A+</button>
+    </div>
     <button type="button" class="search-toggle" id="searchToggle" aria-label="Suche öffnen">🔍</button>
     <div class="search">
       <span class="mag">🔍</span>
@@ -1139,6 +1252,26 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
   </div>
 
   <!-- Compact next KA -->
+  
+  <!-- 🔥 STREAK & ZWISCHENPRÜFUNG READINESS MILESTONE -->
+  <div class="streak-card" id="homeStreakCard">
+    <div class="streak-main">
+      <div class="streak-flame">🔥</div>
+      <div>
+        <div class="streak-count" id="streakCount">1 ngày</div>
+        <div class="streak-label">Chuỗi học liên tục</div>
+      </div>
+    </div>
+    <div class="streak-milestone">
+      <div class="streak-m-title">
+        <span>🎯 Sẵn sàng Zwischenprüfung</span>
+        <span id="milestonePct">45%</span>
+      </div>
+      <div class="streak-bar">
+        <span id="milestoneBar" style="width:45%"></span>
+      </div>
+    </div>
+  </div>
   <div class="next-exam-chip" id="homeExamChip" onclick="go('#/on-thi')" title="Prüfungstraining · Klassenarbeiten">
     <div class="date-box"><div class="d" id="homeExamDay">—</div><div class="m" id="homeExamMon">—</div></div>
     <div class="body">
@@ -2246,6 +2379,7 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
     }
 
     function fcFlip(){
+      if(window.SoundFX) SoundFX.playClick();
       const card = FLASHCARDS[fcIdx];
       const frontEl = document.getElementById('fc-front');
       const cardEl = document.getElementById('fc-card');
@@ -2264,16 +2398,19 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
     }
 
     function fcNext(){
+      if(window.SoundFX) SoundFX.playClick();
       fcIdx = (fcIdx + 1) % FLASHCARDS.length;
       fcUpdate();
     }
 
     function fcPrev(){
+      if(window.SoundFX) SoundFX.playClick();
       fcIdx = (fcIdx - 1 + FLASHCARDS.length) % FLASHCARDS.length;
       fcUpdate();
     }
 
     function fcShuffle(){
+      if(window.SoundFX) SoundFX.playClick();
       for (let i = FLASHCARDS.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [FLASHCARDS[i], FLASHCARDS[j]] = [FLASHCARDS[j], FLASHCARDS[i]];
@@ -4468,14 +4605,23 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
 <!-- Page lightbox for scanned worksheets -->
 <div id="pageLightbox" aria-hidden="true">
   <div class="lb-inner">
-    <img id="lbImg" alt="Arbeitsblatt">
-    <div class="lb-cap" id="lbCap"></div>
+    <div class="lb-controls">
+      <button class="lb-btn" id="lbZoomOut" title="Thu nhỏ (Zoom -)">−</button>
+      <span class="lb-zoom-level" id="lbZoomVal">100%</span>
+      <button class="lb-btn" id="lbZoomIn" title="Phóng to (Zoom +)">+</button>
+      <button class="lb-btn" id="lbZoomReset" title="Đặt lại kích thước">⛶ Đặt lại</button>
+    </div>
+    <div class="lb-img-wrap" id="lbImgWrap">
+      <img id="lbImg" src="" alt="Scan">
+    </div>
     <div class="lb-bar">
-      <button type="button" id="lbPrev">←</button>
-      <button type="button" id="lbClose">Schließen</button>
-      <button type="button" id="lbNext">→</button>
+      <button type="button" id="lbPrev">← Vorherige</button>
+      <span class="lb-cap" id="lbCap">Seite</span>
+      <button type="button" id="lbNext">Nächste →</button>
+      <button type="button" id="lbClose">Schließen ✕</button>
     </div>
   </div>
+</div>
 </div>
 
 <!-- Bottom nav (mobile): compact, center opens Fächer picker -->
@@ -7543,7 +7689,101 @@ function scoreHit(it, terms, q){
   INDEX.length=0; out.forEach(x=>INDEX.push(x));
 })();
 
+
+/* ============ UPGRADED SEARCH SYSTEM ============ */
+const HOT_TAGS = [
+  {icon:'🥩', label:'Thịt bò (Rind)', q:'Rind'},
+  {icon:'🔥', label:'PCCC (Brandschutz)', q:'Brandschutz'},
+  {icon:'🧽', label:'Mã 4 màu khăn', q:'Farben'},
+  {icon:'❄️', label:'Nhiệt độ Kühlkette', q:'Kuehlkette'},
+  {icon:'🍽️', label:'Dao dĩa Gedeck', q:'Gedeck'},
+  {icon:'📜', label:'Khiếu nại L-A-S-T', q:'LAST'}
+];
+
+function getRecentSearches(){
+  try{ return JSON.parse(localStorage.getItem('azubi_recent_searches') || '[]'); }catch(e){ return []; }
+}
+function saveRecentSearch(q){
+  if(!q || q.length < 2) return;
+  let list = getRecentSearches().filter(x => x.toLowerCase() !== q.toLowerCase());
+  list.unshift(q);
+  localStorage.setItem('azubi_recent_searches', JSON.stringify(list.slice(0, 5)));
+}
+function clearRecentSearches(){
+  localStorage.removeItem('azubi_recent_searches');
+  showQuickSuggestions();
+}
+
+function showQuickSuggestions(){
+  const recents = getRecentSearches();
+  let html = '<div class="sh-quick">';
+  if(recents.length > 0){
+    html += '<div class="sh-section"><div class="sh-head"><span>🕒 Gần đây</span><button class="sh-clear" onclick="clearRecentSearches()">Xóa</button></div>';
+    html += '<div class="sh-chips">' + recents.map(r => `<span class="sh-chip" onclick="applySearchTag('${r.replace(/'/g,"\'")}')">🕒 ${r}</span>`).join('') + '</div></div>';
+  }
+  html += '<div class="sh-section" style="margin-top:8px"><div class="sh-head"><span>🔥 Chủ đề ôn thi nhanh</span></div>';
+  html += '<div class="sh-chips">' + HOT_TAGS.map(t => `<span class="sh-chip" onclick="applySearchTag('${t.q}')">${t.icon} ${t.label}</span>`).join('') + '</div></div>';
+  html += '</div>';
+  sBox.innerHTML = html;
+  sBox.classList.add("show");
+}
+window.clearRecentSearches = clearRecentSearches;
+window.applySearchTag = function(q){
+  sInput.value = q;
+  runSearch(q);
+  sInput.focus();
+};
+
+function highlightMatch(text, terms){
+  if(!text) return "";
+  let res = text;
+  terms.forEach(t => {
+    if(t.length < 2) return;
+    const regex = new RegExp('('+t.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')+')', 'gi');
+    res = res.replace(regex, '<mark class="sh-mark">$1</mark>');
+  });
+  return res;
+}
+
 function runSearch(q0){
+  const q=norm(q0).trim();
+  if(!q){ showQuickSuggestions(); return; }
+  const terms=q.split(/\s+/).filter(Boolean);
+  sHits=INDEX
+    .filter(it=>!(it.features||[]).some(f=>window.Access&&!Access.can(f)))
+    .filter(it=>terms.every(t=>(it.hay||"").includes(t) || norm(it.raw||"").includes(t)))
+    .map(it=>({it, sc:scoreHit(it,terms,q)}))
+    .sort((a,b)=>b.sc-a.sc)
+    .slice(0,80)
+    .map(x=>x.it);
+  sActive=-1;
+  if(!sHits.length){
+    sBox.innerHTML='<div class="res"><span class="empty">Keine Treffer für „'+q0.replace(/[<>&]/g,"")+'“.</span></div>';
+    sBox.classList.add("show"); return;
+  }
+  sBox.innerHTML =
+    '<div class="res" style="pointer-events:none;opacity:.75"><span class="empty">'+sHits.length+' Treffer'+(sHits.length>=40?' (Top 40)':'')+'</span></div>'+
+    sHits.map((h,i)=> {
+      const tHighlighted = highlightMatch(h.title, terms);
+      const sHighlighted = highlightMatch(h.sub, terms);
+      return '<div class="res" data-i="'+i+'"><span class="badge">'+h.badge+'</span><div class="txt"><div class="t">'+tHighlighted+'</div><div class="s">'+sHighlighted+'</div></div></div>';
+    }).join("");
+  sBox.classList.add("show");
+  sBox.querySelectorAll(".res[data-i]").forEach(el=>{ const i=+el.getAttribute("data-i"); if(!isNaN(i)) el.addEventListener("click",()=>pickHit(i)); });
+}
+
+const origPickHit = pickHit;
+pickHit = function(i){
+  if(sInput.value.trim()) saveRecentSearch(sInput.value.trim());
+  origPickHit(i);
+};
+
+sInput.addEventListener("focus", () => {
+  if(!sInput.value.trim()) showQuickSuggestions();
+});
+
+/* function oldRunSearch(q0){ */
+function _unused_runSearch(q0){
   const q=norm(q0).trim();
   if(!q){ sBox.classList.remove("show"); sBox.innerHTML=""; return; }
   const terms=q.split(/\s+/).filter(Boolean);
@@ -7709,9 +7949,11 @@ function answer(chosen,q,qi){
   area.querySelectorAll(".opt").forEach((b,i)=>{ b.classList.add("locked"); if(i===q.a) b.classList.add("correct"); if(i===chosen&&chosen!==q.a) b.classList.add("wrong"); });
   const fb=document.getElementById("qfb");
   if(chosen===q.a){
+    if(window.SoundFX) SoundFX.playCorrect();
     qScore++; fb.className="q-feedback ok show"; fb.innerHTML="✅ Richtig! "+q.ex;
     clearWrongResolved(qi);
   } else {
+    if(window.SoundFX) SoundFX.playWrong();
     qWrong.push(qi); addWrong(qi);
     fb.className="q-feedback no show"; fb.innerHTML="❌ Leider falsch. "+q.ex;
   }
@@ -7722,6 +7964,10 @@ function answer(chosen,q,qi){
 function quizResult(){
   const area=document.getElementById("quizArea");
   const total=qOrder.length, pct=total?Math.round((qScore/total)*100):0;
+  if(window.SoundFX){
+    if(pct>=50) SoundFX.playFanfare();
+    else SoundFX.playWrong();
+  }
   let msg;
   if(pct>=90) msg="🏆 Ausgezeichnet! Du beherrschst den Stoff!";
   else if(pct>=70) msg="👍 Gut gemacht — ein bisschen nacharbeiten genügt.";
@@ -8667,5 +8913,319 @@ setInterval(()=>{
   }, {passive:true});
 })();
 </script>
+
+<script>
+/* ============================================================
+   1. SOUND EFFECTS & HAPTIC SYSTEM (Web Audio API Synthesizer)
+   ============================================================ */
+const SoundFX = (function(){
+  let audioCtx = null;
+  let muted = localStorage.getItem('azubi_muted') === '1';
+
+  function getCtx(){
+    if(!audioCtx && (window.AudioContext || window.webkitAudioContext)){
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if(audioCtx && audioCtx.state === 'suspended'){
+      audioCtx.resume();
+    }
+    return audioCtx;
+  }
+
+  function playTone(freq, duration, type='sine', gainVal=0.15, delay=0){
+    if(muted) return;
+    try{
+      const ctx = getCtx();
+      if(!ctx) return;
+      setTimeout(() => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, ctx.currentTime);
+        gain.gain.setValueAtTime(gainVal, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(ctx.currentTime);
+        osc.stop(ctx.currentTime + duration);
+      }, delay * 1000);
+    }catch(e){}
+  }
+
+  function vibrate(pattern){
+    try{
+      if('vibrate' in navigator && !muted) navigator.vibrate(pattern);
+    }catch(e){}
+  }
+
+  function updateIcon(){
+    const el = document.getElementById('soundToggle');
+    if(el){
+      el.textContent = muted ? '🔇' : '🔊';
+      el.classList.toggle('muted', muted);
+    }
+  }
+
+  return {
+    playCorrect: function(){
+      playTone(523.25, 0.15, 'triangle', 0.2, 0);       // C5
+      playTone(659.25, 0.15, 'triangle', 0.2, 0.08);    // E5
+      playTone(783.99, 0.25, 'triangle', 0.22, 0.16);   // G5
+      vibrate([40]);
+    },
+    playWrong: function(){
+      playTone(293.66, 0.18, 'sawtooth', 0.18, 0);      // D4
+      playTone(220.00, 0.25, 'sawtooth', 0.18, 0.12);   // A3
+      vibrate([80, 50, 80]);
+    },
+    playClick: function(){
+      playTone(800, 0.04, 'sine', 0.08, 0);
+      vibrate([20]);
+    },
+    playFanfare: function(){
+      playTone(523.25, 0.12, 'triangle', 0.2, 0);
+      playTone(659.25, 0.12, 'triangle', 0.2, 0.1);
+      playTone(783.99, 0.12, 'triangle', 0.2, 0.2);
+      playTone(1046.50, 0.45, 'triangle', 0.25, 0.3);
+      vibrate([50, 50, 50, 50, 150]);
+    },
+    toggle: function(){
+      muted = !muted;
+      localStorage.setItem('azubi_muted', muted ? '1' : '0');
+      updateIcon();
+      if(!muted) this.playClick();
+      if(window.toast) toast(muted ? '🔇 Đã tắt âm thanh' : '🔊 Đã bật âm thanh', 'info');
+    },
+    isMuted: function(){ return muted; },
+    init: function(){ updateIcon(); }
+  };
+})();
+window.SoundFX = SoundFX;
+
+/* ============================================================
+   2. THEME MANAGER (Light / Dark / Auto)
+   ============================================================ */
+const ThemeMgr = (function(){
+  const MODES = ['auto', 'dark', 'light'];
+  let current = localStorage.getItem('azubi_theme') || 'auto';
+
+  function apply(mode){
+    current = mode;
+    localStorage.setItem('azubi_theme', mode);
+    const html = document.documentElement;
+    if(mode === 'auto'){
+      html.removeAttribute('data-theme');
+    } else {
+      html.setAttribute('data-theme', mode);
+    }
+    updateBtn();
+  }
+
+  function updateBtn(){
+    const btn = document.getElementById('themeToggle');
+    if(!btn) return;
+    if(current === 'dark') btn.textContent = '🌙';
+    else if(current === 'light') btn.textContent = '☀️';
+    else btn.textContent = '⚙️';
+  }
+
+  return {
+    init: function(){ apply(current); },
+    toggle: function(){
+      const nextIdx = (MODES.indexOf(current) + 1) % MODES.length;
+      apply(MODES[nextIdx]);
+      SoundFX.playClick();
+      const labels = {auto:'⚙️ Tự động theo hệ thống', dark:'🌙 Chế độ Tối (Dark Mode)', light:'☀️ Chế độ Sáng (Light Mode)'};
+      if(window.toast) toast(labels[MODES[nextIdx]], 'info');
+    },
+    get: function(){ return current; }
+  };
+})();
+window.ThemeMgr = ThemeMgr;
+
+/* ============================================================
+   3. FONT SIZE SCALER (A- / A / A+)
+   ============================================================ */
+const FontScaler = (function(){
+  const SIZES = ['sm', 'md', 'lg', 'xl'];
+  let current = localStorage.getItem('azubi_font_size') || 'md';
+
+  function apply(size){
+    current = size;
+    localStorage.setItem('azubi_font_size', size);
+    SIZES.forEach(s => document.body.classList.remove('font-' + s));
+    document.body.classList.add('font-' + size);
+    document.querySelectorAll('.font-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.size === size);
+    });
+  }
+
+  return {
+    init: function(){ apply(current); },
+    set: function(size){ apply(size); SoundFX.playClick(); }
+  };
+})();
+window.FontScaler = FontScaler;
+
+/* ============================================================
+   4. STREAK TRACKER & READINESS CALCULATION
+   ============================================================ */
+const StreakTracker = (function(){
+  function checkStreak(){
+    const now = new Date();
+    const todayStr = now.toISOString().slice(0, 10);
+    const lastActive = localStorage.getItem('azubi_last_active');
+    let streak = parseInt(localStorage.getItem('azubi_streak') || '1', 10);
+
+    if(!lastActive){
+      streak = 1;
+    } else if(lastActive !== todayStr){
+      const lastDate = new Date(lastActive);
+      const diffDays = Math.floor((now - lastDate) / (1000 * 60 * 60 * 24));
+      if(diffDays === 1) streak += 1;
+      else if(diffDays > 1) streak = 1;
+    }
+    localStorage.setItem('azubi_last_active', todayStr);
+    localStorage.setItem('azubi_streak', streak.toString());
+
+    // Update UI
+    const elCount = document.getElementById('streakCount');
+    if(elCount) elCount.textContent = streak + ' ngày';
+
+    // Calculate Zwischenprüfung readiness
+    calcReadiness();
+  }
+
+  function calcReadiness(){
+    const history = JSON.parse(localStorage.getItem('exam_history') || '[]');
+    let readiness = 30; // base curriculum
+    if(history.length > 0){
+      const best = Math.max(...history.map(h => h.pct || 0));
+      readiness = Math.min(100, 30 + Math.round(best * 0.7));
+    }
+    const elPct = document.getElementById('milestonePct');
+    const elBar = document.getElementById('milestoneBar');
+    if(elPct) elPct.textContent = readiness + '%';
+    if(elBar) elBar.style.width = readiness + '%';
+  }
+
+  return { init: checkStreak, refresh: calcReadiness };
+})();
+window.StreakTracker = StreakTracker;
+
+/* ============================================================
+   5. OFFLINE / ONLINE DETECTOR
+   ============================================================ */
+(function(){
+  const banner = document.getElementById('offlineBanner');
+  if(!banner) return;
+
+  function updateStatus(){
+    if(!navigator.onLine){
+      banner.className = 'show';
+      banner.innerHTML = '<span>⚡ Bạn đang học Offline (Ngoại tuyến) — Mọi bài học &amp; đề thi vẫn sẵn sàng!</span>';
+    } else {
+      if(banner.classList.contains('show')){
+        banner.className = 'show online';
+        banner.innerHTML = '<span>🟢 Đã kết nối mạng trở lại!</span>';
+        setTimeout(() => { banner.classList.remove('show', 'online'); }, 3000);
+      }
+    }
+  }
+
+  window.addEventListener('online', updateStatus);
+  window.addEventListener('offline', updateStatus);
+  if(!navigator.onLine) updateStatus();
+})();
+
+/* ============================================================
+   6. LIGHTBOX PINCH-TO-ZOOM & PAN CONTROLS
+   ============================================================ */
+(function(){
+  let scale = 1, posX = 0, posY = 0, startDist = 0, startScale = 1;
+  let isDragging = false, startX = 0, startY = 0;
+
+  const wrap = document.getElementById('lbImgWrap');
+  const img = document.getElementById('lbImg');
+  const val = document.getElementById('lbZoomVal');
+
+  function updateTransform(){
+    if(!img) return;
+    img.style.transform = `translate(${posX}px, ${posY}px) scale(${scale})`;
+    if(val) val.textContent = Math.round(scale * 100) + '%';
+  }
+
+  function resetZoom(){
+    scale = 1; posX = 0; posY = 0;
+    updateTransform();
+  }
+  window.resetLbZoom = resetZoom;
+
+  document.getElementById('lbZoomIn')?.addEventListener('click', () => {
+    scale = Math.min(3.5, scale + 0.35); updateTransform();
+  });
+  document.getElementById('lbZoomOut')?.addEventListener('click', () => {
+    scale = Math.max(0.7, scale - 0.35); updateTransform();
+  });
+  document.getElementById('lbZoomReset')?.addEventListener('click', resetZoom);
+
+  // Double tap to zoom toggle
+  let lastTap = 0;
+  img?.addEventListener('touchend', function(e){
+    const now = Date.now();
+    if(now - lastTap < 300){
+      scale = (scale > 1.2) ? 1 : 2.2;
+      posX = 0; posY = 0;
+      updateTransform();
+    }
+    lastTap = now;
+  });
+
+  // Touch Pinch & Pan
+  wrap?.addEventListener('touchstart', function(e){
+    if(e.touches.length === 2){
+      startDist = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+      startScale = scale;
+    } else if(e.touches.length === 1 && scale > 1){
+      isDragging = true;
+      startX = e.touches[0].clientX - posX;
+      startY = e.touches[0].clientY - posY;
+    }
+  }, {passive:true});
+
+  wrap?.addEventListener('touchmove', function(e){
+    if(e.touches.length === 2 && startDist > 0){
+      const dist = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+      scale = Math.max(0.7, Math.min(3.5, startScale * (dist / startDist)));
+      updateTransform();
+    } else if(e.touches.length === 1 && isDragging){
+      posX = e.touches[0].clientX - startX;
+      posY = e.touches[0].clientY - startY;
+      updateTransform();
+    }
+  }, {passive:true});
+
+  wrap?.addEventListener('touchend', function(){
+    isDragging = false;
+  });
+})();
+
+/* ============================================================
+   INITIALIZATION ON LOAD
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', function(){
+  ThemeMgr.init();
+  SoundFX.init();
+  FontScaler.init();
+  StreakTracker.init();
+});
+</script>
+
 </body>
 </html>
