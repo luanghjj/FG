@@ -963,6 +963,46 @@ h2 svg,h3 svg,b svg{width:1em;height:1em;display:inline-block;vertical-align:-.1
 button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-shrink:0}
 .muted svg,.good svg,.bad svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-shrink:0}
 @media (max-width:560px){ .tile .ic svg{width:22px;height:22px} }
+
+/* ===== Back-to-top button ===== */
+#backToTop{position:fixed;right:16px;bottom:calc(80px + var(--safe-bottom));z-index:80;
+  width:40px;height:40px;border-radius:50%;background:var(--surface);color:var(--accent);
+  border:1px solid var(--line);box-shadow:var(--shadow);display:none;align-items:center;
+  justify-content:center;font-size:1.1em;cursor:pointer;transition:opacity .2s,transform .2s;
+  -webkit-tap-highlight-color:transparent}
+#backToTop.show{display:flex}
+#backToTop:hover{transform:translateY(-2px);background:var(--accent-soft)}
+
+/* ===== Bottom nav active state ===== */
+#bottomNav .bnav-item.active{color:var(--accent)}
+#bottomNav .bnav-item.active .bnav-ic{color:var(--accent);background:var(--accent-soft)}
+#bottomNav .bnav-fab.active{background:#005ECB}
+
+/* ===== Exam pill nav scroll fade hint ===== */
+.exam-pill-nav-wrap{position:relative}
+.exam-pill-nav-wrap::after{content:"";position:absolute;top:0;right:0;bottom:6px;width:32px;
+  background:linear-gradient(to right,transparent,var(--surface));pointer-events:none;border-radius:0 20px 20px 0}
+
+/* ===== Dark mode ===== */
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#1C1C1E; --surface:#2C2C2E; --ink:#F2F2F7; --muted:#98989D; --line:#38383A;
+    --accent-soft:#1C3A5E; --accent-2:#5AADFF;
+    --okbg:#0D2B18; --badbg:#2B0D0D; --warnbg:#2B250D;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.4);
+  }
+  body.tier-paid,body.tier-super{--bg:#1A1916;--surface:#2A2720;--line:#3A3630;--accent-soft:#1C1A16}
+  .nav{background:rgba(28,28,30,.94)}
+  body.tier-paid .nav,body.tier-super .nav{background:rgba(26,25,22,.94)}
+  .login-card,.track-card,.sheet-card{background:#2C2C2E;color:var(--ink)}
+  .login-card input[type=text],.login-card input[type=password]{color:var(--ink);border-bottom-color:var(--line)}
+  #loginGate,#trackGate{background:#1C1C1E}
+  .ex-header,.ex-footer{background:rgba(44,44,46,.96)}
+  img{opacity:.9}
+  @media (prefers-reduced-motion:no-preference){
+    .view.active{animation:viewIn .38s cubic-bezier(.22,1,.36,1)}
+  }
+}
 </style>
 <script src="./pwa.js?v=5" defer></script>
 </head>
@@ -972,20 +1012,20 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
   <div class="login-card">
     <div class="logo-big" aria-hidden="true">🎓</div>
     <h1>AzubiHub</h1>
-    <p class="sub">Gib deinen Nickname ein, um zu starten.</p>
-    <p class="sub-cap">Die Lernzeit wird ab sofort gezählt — bei Wiederkehr siehst du deine Quiz-Historie.</p>
+    <p class="sub">Nhập Nickname để bắt đầu học.</p>
+    <p class="sub-cap">Thời gian học sẽ được theo dõi — lần sau đăng nhập lại, bạn thấy lịch sử Quiz.</p>
     <div class="login-err" id="loginErr"></div>
     <div class="login-form" id="loginForm">
       <label for="nickInput">Nickname</label>
-      <input id="nickInput" type="text" maxlength="32" placeholder="z. B. Linh, Alex, Phuc…" autocomplete="username">
-      <button class="btn-go" id="loginBtn" type="button">Los geht's <span class="arrow">→</span></button>
+      <input id="nickInput" type="text" maxlength="32" placeholder="VD: Linh, Alex, Phuc…" autocomplete="username">
+      <button class="btn-go" id="loginBtn" type="button">Bắt đầu <span class="arrow">→</span></button>
     </div>
     <!-- Schritt 2: nur für Super-Admin-Nicknames -->
     <div class="login-form" id="superForm" style="display:none">
-      <label for="superPass">Admin-Passwort</label>
-      <input id="superPass" type="password" maxlength="64" placeholder="Passwort für Admin-Stufe" autocomplete="current-password">
-      <button class="btn-go" id="superBtn" type="button">Als Admin öffnen <span class="arrow">→</span></button>
-      <button type="button" class="login-skip" id="superSkip">Ohne Admin-Rechte fortfahren</button>
+      <label for="superPass">Mật khẩu Admin</label>
+      <input id="superPass" type="password" maxlength="64" placeholder="Mật khẩu cấp Admin" autocomplete="current-password">
+      <button class="btn-go" id="superBtn" type="button">Đăng nhập Admin <span class="arrow">→</span></button>
+      <button type="button" class="login-skip" id="superSkip">Tiếp tục không dùng quyền Admin</button>
     </div>
     <div class="login-hist" id="loginHist"></div>
     <div class="login-admin">
@@ -1039,7 +1079,7 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
 <section class="view" id="v-home">
   <div class="hero">
     <h1>Fachkraft für Gastronomie</h1>
-    <p>Wähle ein Fach, um mit dem Lernen zu beginnen.</p>
+    <p>Chọn môn học để bắt đầu ôn tập.</p>
   </div>
 
   <!-- Compact next KA -->
@@ -4425,6 +4465,7 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
 </div>
 
 <div id="toastHost" aria-live="polite"></div>
+<button id="backToTop" aria-label="Lên đầu trang" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <!-- Floating timer bubble -->
 <div id="timerBubble" class="timer-bubble collapsed" style="display:none">
@@ -8506,9 +8547,69 @@ setInterval(()=>{
   }, 800);
 })();
 </script>
-<script src="./js/exam-sim.js?v=1"></script>
+<script src="./js/exam-sim.js?v=2"></script>
 <script src="./js/wissen.js?v=2"></script>
 <script src="./js/chatbox.js?v=14"></script>
 <script src="./js/icons.js?v=1"></script>
+<script>
+/* ===== Back-to-top ===== */
+(function(){
+  const btn = document.getElementById('backToTop');
+  if(!btn) return;
+  let ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        btn.classList.toggle('show', window.scrollY > 400);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+})();
+
+/* ===== Bottom nav active state ===== */
+(function(){
+  function updateNavActive(){
+    const hash = location.hash || '#/';
+    const items = document.querySelectorAll('#bottomNav .bnav-item, #bottomNav .bnav-fab');
+    items.forEach(el => {
+      const target = el.getAttribute('data-nav') || el.getAttribute('onclick') || '';
+      el.classList.remove('active');
+    });
+    // Map hash to nav items by data-nav attribute
+    const navMap = {'#/':'nav-home','#/on-thi':'nav-training'};
+    const activeKey = navMap[hash] || navMap[hash.split('/').slice(0,2).join('/')];
+    if(activeKey){
+      const el = document.querySelector(`#bottomNav [data-nav="${activeKey}"]`);
+      if(el) el.classList.add('active');
+    }
+  }
+  window.addEventListener('hashchange', updateNavActive);
+  updateNavActive();
+})();
+
+/* ===== Flashcard swipe gesture ===== */
+(function(){
+  let touchStartX = 0, touchStartY = 0;
+  document.addEventListener('touchstart', function(e){
+    const fc = document.getElementById('flashcard-container');
+    if(fc && fc.contains(e.target)){
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }
+  }, {passive:true});
+  document.addEventListener('touchend', function(e){
+    const fc = document.getElementById('flashcard-container');
+    if(!fc || !fc.contains(e.target)) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    if(Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50){
+      if(dx < 0 && typeof fcNext === 'function') fcNext();
+      else if(dx > 0 && typeof fcPrev === 'function') fcPrev();
+    }
+  }, {passive:true});
+})();
+</script>
 </body>
 </html>
