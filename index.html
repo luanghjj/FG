@@ -1258,17 +1258,17 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
     <div class="streak-main">
       <div class="streak-flame">🔥</div>
       <div>
-        <div class="streak-count" id="streakCount">1 ngày</div>
-        <div class="streak-label">Chuỗi học liên tục</div>
+        <div class="streak-count" id="streakCount">1 Tag</div>
+        <div class="streak-label">Tage in Folge</div>
       </div>
     </div>
     <div class="streak-milestone">
       <div class="streak-m-title">
-        <span>🎯 Sẵn sàng Zwischenprüfung</span>
-        <span id="milestonePct">45%</span>
+        <span>🎯 Bereit für die Zwischenprüfung</span>
+        <span id="milestonePct">30%</span>
       </div>
       <div class="streak-bar">
-        <span id="milestoneBar" style="width:45%"></span>
+        <span id="milestoneBar" style="width:30%"></span>
       </div>
     </div>
   </div>
@@ -9090,7 +9090,7 @@ const StreakTracker = (function(){
 
     // Update UI
     const elCount = document.getElementById('streakCount');
-    if(elCount) elCount.textContent = streak + ' ngày';
+    if(elCount) elCount.textContent = streak === 1 ? '1 Tag' : (streak + ' Tage');
 
     // Calculate Zwischenprüfung readiness
     calcReadiness();
