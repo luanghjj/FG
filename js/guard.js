@@ -53,7 +53,7 @@
           (player ? ' Angemeldet als <b style="color:#000">' + esc(player) + '</b> (Basic).' : '') +
           '</p>' +
           '<p style="color:#8E8E93;font-size:.86em;font-style:italic;line-height:1.5;margin:0 0 22px">' +
-          'Đề thi và lời giải thuộc tầng Pro. Nhập code trong app để mở.</p>';
+          'Bài thi Klassenarbeit chỉ mở cho các tài khoản được giáo viên/admin cấp quyền trên thiết bị này.</p>';
 
     wrap.innerHTML =
       '<div style="width:min(420px,100%);background:#fff;border:1px solid #E5E5EA;border-radius:22px;' +
@@ -98,13 +98,17 @@
       block('nologin', '');
       return;
     }
-    // Stufe aus dem Session-Cache; falls leer → aus Supabase nachladen
+    // Whitelist-Prüfung für Klassenarbeiten
     var ok = false;
     try {
-      ok = Access.can(NEED);
-      if (!ok) {
-        await Access.loadTier(player);
+      if (Access.canAccessKlassenarbeit) {
+        ok = await Access.canAccessKlassenarbeit(player);
+      } else {
         ok = Access.can(NEED);
+        if (!ok) {
+          await Access.loadTier(player);
+          ok = Access.can(NEED);
+        }
       }
     } catch (_) {
       ok = true; // Netzfehler → nicht aussperren

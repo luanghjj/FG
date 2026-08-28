@@ -354,6 +354,50 @@ table.mx tbody tr:hover .mx-namecol{background:#EAF3FF}
 
     <!-- ==================== PANE 3: ROLES & PRO CODE ==================== -->
     <div class="sec-pane" id="pane-roles">
+
+      <!-- ===== QUẢN LÝ QUYỀN MỞ KLASSENARBEITEN ===== -->
+      <div class="card" style="border-left:4px solid #007AFF;">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:6px">
+          <h2>🎯 Phân Quyền Klassenarbeiten (Klassenarbeit-Zugriff)</h2>
+          <span class="tag" style="background:#E3F7E8;color:#248A3D;border:none">🔒 Bảo vệ thiết bị</span>
+        </div>
+        <p class="muted" style="margin-bottom:14px">
+          Klassenarbeit không mở tự do trên mọi thiết bị. <b>Chỉ các tài khoản được bật xanh [✓ ĐƯỢC PHÉP] ở danh sách dưới mới có quyền mở đề thi &amp; bài tập Klassenarbeiten.</b>
+        </p>
+
+        <div class="tier-form" style="margin-bottom:12px">
+          <div style="flex:1 1 220px;min-width:0">
+            <label class="muted" for="kaQuickNick">Thêm Nickname cấp quyền</label>
+            <input id="kaQuickNick" type="text" list="nickList" placeholder="Nhập Nickname (VD: linh, phuc...)" autocomplete="off">
+          </div>
+          <button type="button" id="btnKaQuickGrant" onclick="quickAddKaGrant()">✅ Cấp quyền ngay</button>
+          <button type="button" class="ghost" id="btnKaGrantAll" onclick="batchKaGrant(true)">Mở tất cả</button>
+          <button type="button" class="ghost" id="btnKaRevokeAll" onclick="batchKaGrant(false)" style="color:var(--bad)">Khóa tất cả</button>
+        </div>
+        <div class="err" id="kaErr"></div>
+        <div class="muted" id="kaMsg" style="margin-bottom:8px"></div>
+
+        <div class="row-actions" style="margin-top:10px;margin-bottom:10px">
+          <button type="button" class="mini active" id="kaFilterAll" onclick="filterKaList('all')">Tất cả (<span id="kaCountAll">0</span>)</button>
+          <button type="button" class="mini ghost" id="kaFilterAllowed" onclick="filterKaList('allowed')">✅ Được phép (<span id="kaCountAllowed">0</span>)</button>
+          <button type="button" class="mini ghost" id="kaFilterLocked" onclick="filterKaList('locked')">🔒 Bị khóa (<span id="kaCountLocked">0</span>)</button>
+        </div>
+
+        <div class="tscroll" style="max-height:360px">
+          <table>
+            <thead>
+              <tr>
+                <th>Nickname</th>
+                <th>Quyền Klassenarbeit</th>
+                <th>Phân tầng</th>
+                <th>Thao tác nhanh</th>
+              </tr>
+            </thead>
+            <tbody id="kaBody"></tbody>
+          </table>
+        </div>
+      </div>
+
       <!-- ===== Zugriffsstufen ===== -->
       <div class="card">
         <h2>Zugriffsstufen · Phân tầng</h2>
@@ -497,6 +541,7 @@ async function load(){
 
     // Zugriffsstufen: Nickname-Vorschläge + Rollen-Tabelle + Code + Matrix
     await loadRoles(s.players || []);
+    await loadKaWhitelistUI(s.players || []);
     await loadPaidCode();
     await loadManifestUI();
 
@@ -1007,6 +1052,145 @@ try{
   if(sessionStorage.getItem(AUTH_KEY)==='1') unlock();
 }catch(_){}
 </script>
-<script src="./js/icons.js?v=1"></script>
+<script src="./js/icons.js?v=1">
+/* ===== KLASSENARBEIT ACCESS CONTROL UI ===== */
+let _allPlayersList = [];
+let _kaWhitelistSet = new Set();
+let _kaFilterMode = 'all';
+
+function showKaErr(m){
+  const el = document.getElementById('kaErr');
+  if(!el) return;
+  if(!m){ el.classList.remove('show'); el.textContent = ''; return; }
+  el.textContent = m; el.classList.add('show');
+}
+function showKaMsg(m){
+  const el = document.getElementById('kaMsg');
+  if(el){ el.textContent = m; setTimeout(() => { if(el.textContent===m) el.textContent=''; }, 3500); }
+}
+
+async function loadKaWhitelistUI(players){
+  if(!window.Access) return;
+  try{
+    const list = await Access.loadKaWhitelist();
+    _kaWhitelistSet = new Set((list || []).map(s => String(s).toLowerCase()));
+  }catch(_){}
+  _allPlayersList = players || _allPlayersList || [];
+  renderKaTable();
+}
+
+function filterKaList(mode){
+  _kaFilterMode = mode;
+  document.getElementById('kaFilterAll')?.classList.toggle('active', mode === 'all');
+  document.getElementById('kaFilterAll')?.classList.toggle('ghost', mode !== 'all');
+  document.getElementById('kaFilterAllowed')?.classList.toggle('active', mode === 'allowed');
+  document.getElementById('kaFilterAllowed')?.classList.toggle('ghost', mode !== 'allowed');
+  document.getElementById('kaFilterLocked')?.classList.toggle('active', mode === 'locked');
+  document.getElementById('kaFilterLocked')?.classList.toggle('ghost', mode !== 'locked');
+  renderKaTable();
+}
+
+function renderKaTable(){
+  const body = document.getElementById('kaBody');
+  if(!body) return;
+
+  const known = new Set();
+  const allNicks = [];
+
+  (_allPlayersList || []).forEach(p => {
+    const nick = String(p.player || '').trim();
+    if(nick && !known.has(nick.toLowerCase())){
+      known.add(nick.toLowerCase());
+      allNicks.push(nick);
+    }
+  });
+  _kaWhitelistSet.forEach(nick => {
+    if(nick && !known.has(nick.toLowerCase())){
+      known.add(nick.toLowerCase());
+      allNicks.push(nick);
+    }
+  });
+
+  const total = allNicks.length;
+  const allowedCount = allNicks.filter(n => _kaWhitelistSet.has(n.toLowerCase())).length;
+  const lockedCount = total - allowedCount;
+
+  const elAll = document.getElementById('kaCountAll');
+  const elAllowed = document.getElementById('kaCountAllowed');
+  const elLocked = document.getElementById('kaCountLocked');
+  if(elAll) elAll.textContent = total;
+  if(elAllowed) elAllowed.textContent = allowedCount;
+  if(elLocked) elLocked.textContent = lockedCount;
+
+  let filtered = allNicks;
+  if(_kaFilterMode === 'allowed'){
+    filtered = allNicks.filter(n => _kaWhitelistSet.has(n.toLowerCase()));
+  } else if(_kaFilterMode === 'locked'){
+    filtered = allNicks.filter(n => !_kaWhitelistSet.has(n.toLowerCase()));
+  }
+
+  if(!filtered.length){
+    body.innerHTML = '<tr><td colspan="4" class="muted" style="text-align:center;padding:16px">Không có tài khoản nào phù hợp</td></tr>';
+    return;
+  }
+
+  body.innerHTML = filtered.map(nick => {
+    const isAllowed = _kaWhitelistSet.has(nick.toLowerCase());
+    const tier = (_roleMap && _roleMap[nick.toLowerCase()]) || 'free';
+    const statusBadge = isAllowed
+      ? '<span class="tag" style="background:#E3F7E8;color:#248A3D;border:1px solid #248A3D">✅ ĐƯỢC PHÉP</span>'
+      : '<span class="tag" style="background:#FFF0F0;color:#C4342B;border:1px solid #FFD1D1">🔒 KHÔNG ĐƯỢC PHÉP</span>';
+
+    const toggleBtn = isAllowed
+      ? `<button type="button" class="mini ghost" style="color:var(--bad);border-color:var(--bad);font-weight:600" onclick="toggleKaAccess('${escH(nick)}', false)">🔒 Khóa quyền</button>`
+      : `<button type="button" class="mini" style="background:#248A3D;color:#fff;font-weight:600" onclick="toggleKaAccess('${escH(nick)}', true)">✅ Mở quyền</button>`;
+
+    return `<tr>
+      <td><b>${escH(nick)}</b></td>
+      <td>${statusBadge}</td>
+      <td>${tierTag(tier)}</td>
+      <td>${toggleBtn}</td>
+    </tr>`;
+  }).join('');
+}
+
+async function toggleKaAccess(player, allowed){
+  showKaErr('');
+  try{
+    await Access.setKaAllowed(player, allowed, 'admin:dashboard');
+    if(allowed) _kaWhitelistSet.add(player.toLowerCase());
+    else _kaWhitelistSet.delete(player.toLowerCase());
+    renderKaTable();
+    showKaMsg(allowed ? `✅ Đã cấp quyền Klassenarbeit cho "${player}"` : `🔒 Đã khóa quyền Klassenarbeit của "${player}"`);
+  }catch(e){
+    showKaErr(e.message || String(e));
+  }
+}
+
+async function quickAddKaGrant(){
+  const inp = document.getElementById('kaQuickNick');
+  const nick = (inp ? inp.value : '').trim();
+  if(!nick){ showKaErr('Vui lòng nhập Nickname'); return; }
+  await toggleKaAccess(nick, true);
+  if(inp) inp.value = '';
+}
+
+async function batchKaGrant(allowed){
+  const action = allowed ? 'Mở quyền Klassenarbeit cho TẤT CẢ học viên?' : 'Khóa quyền Klassenarbeit TẤT CẢ học viên?';
+  if(!confirm(action)) return;
+  showKaErr('');
+  try{
+    const nicks = (_allPlayersList || []).map(p => p.player);
+    await Access.batchSetKaAllowed(nicks, allowed, 'admin:dashboard');
+    if(allowed) nicks.forEach(n => _kaWhitelistSet.add(n.toLowerCase()));
+    else _kaWhitelistSet.clear();
+    renderKaTable();
+    showKaMsg(allowed ? '✅ Đã mở quyền Klassenarbeit cho tất cả!' : '🔒 Đã khóa quyền Klassenarbeit tất cả!');
+  }catch(e){
+    showKaErr(e.message || String(e));
+  }
+}
+
+</script>
 </body>
 </html>

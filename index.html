@@ -4425,6 +4425,33 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 </section>
 
 
+
+<!-- ===== KLASSENARBEIT ACCESS DENIED VIEW ===== -->
+<section class="view" id="v-ka-locked">
+  <div class="back" onclick="go('#/')">← Startseite</div>
+  <div class="card" style="text-align:center;padding:40px 20px;max-width:560px;margin:24px auto;">
+    <div style="width:64px;height:64px;border-radius:20px;background:#FFF0F0;color:#C4342B;display:flex;align-items:center;justify-content:center;font-size:2em;margin:0 auto 18px;">
+      🔒
+    </div>
+    <h2 style="font-size:1.35em;margin-bottom:8px;color:var(--ink);">Klassenarbeit gesperrt</h2>
+    <p style="color:var(--muted);font-size:.95em;line-height:1.6;margin-bottom:6px;">
+      Phần đề thi và bài tập <b>Klassenarbeiten</b> không mở tự do trên mọi thiết bị.
+    </p>
+    <p style="color:var(--muted);font-size:.9em;line-height:1.5;margin-bottom:20px;">
+      Tài khoản <b style="color:var(--ink)" id="kaLockPlayer">—</b> hiện <b>chưa được giáo viên/admin cấp quyền</b> truy cập nội dung này.
+    </p>
+    <div style="background:var(--bg);border-radius:12px;padding:14px;font-size:.85em;color:var(--muted);margin-bottom:24px;text-align:left;line-height:1.6;">
+      💡 <b>Cách mở khóa:</b><br>
+      • Hãy liên hệ giáo viên / admin để bật quyền cho Nickname của bạn trong Dashboard.<br>
+      • Hoặc đổi sang Nickname đã được cấp phép.
+    </div>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+      <button type="button" class="btn ghost" onclick="go('#/')">← Về Trang chủ</button>
+      <button type="button" class="btn" onclick="LearnDB&&LearnDB.clearPlayer();location.reload();">👤 Đổi Nickname khác</button>
+    </div>
+  </div>
+</section>
+
 <!-- ===== KLASSENARBEITEN ===== -->
 <section class="view" id="v-on-thi">
   <div class="back" onclick="go('#/')">← Start</div>
@@ -7229,6 +7256,32 @@ function go(hash){
 }
 function router(){
   let hash=location.hash||"#/";
+  // ===== KLASSENARBEIT ACCESS CONTROL GUARD =====
+  const isKaRoute = (hash === "#/on-thi" || hash.startsWith("#/exam/") || hash.endsWith("/pruefungen"));
+  if (isKaRoute) {
+    const curPlayer = (window.LearnDB && LearnDB.getPlayer()) || '';
+    if (!curPlayer) {
+      const gate = document.getElementById('loginGate');
+      if (gate) gate.classList.remove('hidden');
+      return;
+    }
+    const isAllowed = (window.Access && Access.isKaAllowed) ? Access.isKaAllowed(curPlayer) : true;
+    if (!isAllowed) {
+      document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
+      const lockView = document.getElementById("v-ka-locked");
+      if (lockView) {
+        lockView.classList.add("active");
+        const pEl = document.getElementById("kaLockPlayer");
+        if (pEl) pEl.textContent = curPlayer;
+        const cb = document.getElementById("crumbs");
+        if (cb) cb.innerHTML = '<a onclick="go(\'#/\')">Start</a><span class="sep">›</span><span>Klassenarbeit (Gesperrt)</span>';
+        setBottomNav(hash);
+        window.scrollTo({top:0, behavior:"smooth"});
+        return;
+      }
+    }
+  }
+
 
   // GK Freitext Übungen: #/exam/gk/uebung[/:setId]
   if(hash.startsWith("#/exam/gk/uebung")){
@@ -8298,6 +8351,7 @@ function unlockApp(player){
   }
   renderUserChip(player);
   loadHomeHistory(player);
+  if(window.Access && Access.loadKaWhitelist) Access.loadKaWhitelist();
   var azubiTrack = '';
   try { azubiTrack = localStorage.getItem('azubi_track') || ''; } catch (_) {}
   if (azubiTrack === 'deutsch') {

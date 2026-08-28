@@ -24,6 +24,8 @@
   var MANIFEST_KEY = 'learn:access:manifest';
   var ADMIN_HASH_KEY = 'learn:admin:pass_hash';
   var AUDIT_PREFIX = 'learn:audit:';
+  var KA_WHITELIST_KEY = 'learn:access:ka_whitelist';
+  var _kaWhitelist = null;
 
   // Session-Cache (sessionStorage → sống trong 1 tab, không lưu lâu dài)
   var SS_TIER = 'learn_tier';
@@ -204,6 +206,123 @@
     } catch (_) {
       return [];
     }
+  }
+
+  /* ---------- Klassenarbeit Zugriffsschutz (Whitelist) ---------- */
+  async function loadKaWhitelist() {
+    var D = db();
+    var localList = [];
+    try {
+      var rawLocal = localStorage.getItem('azubi_ka_whitelist');
+      if (rawLocal) localList = JSON.parse(rawLocal);
+    } catch (_) {}
+
+    if (!D || !D.getConfig) {
+      _kaWhitelist = Array.isArray(localList) ? localList : [];
+      return _kaWhitelist;
+    }
+
+    try {
+      var row = await D.getConfig(KA_WHITELIST_KEY);
+      if (row && row.value && Array.isArray(row.value.list)) {
+        _kaWhitelist = row.value.list.map(clean).filter(Boolean);
+        localStorage.setItem('azubi_ka_whitelist', JSON.stringify(_kaWhitelist));
+        return _kaWhitelist;
+      }
+    } catch (_) {}
+
+    _kaWhitelist = Array.isArray(localList) ? localList : [];
+    return _kaWhitelist;
+  }
+
+  function getKaWhitelist() {
+    if (_kaWhitelist) return _kaWhitelist;
+    try {
+      var rawLocal = localStorage.getItem('azubi_ka_whitelist');
+      if (rawLocal) _kaWhitelist = JSON.parse(rawLocal);
+    } catch (_) {}
+    return _kaWhitelist || [];
+  }
+
+  function isKaAllowed(player) {
+    var p = clean(player || _player || (db() && db().getPlayer && db().getPlayer()));
+    if (!p) return false;
+    // Super-Admin hat immer Zugriff
+    if (tier() === 'super' || isSuperVerified()) return true;
+    var list = getKaWhitelist();
+    return list.includes(p);
+  }
+
+  async function canAccessKlassenarbeit(player) {
+    var p = clean(player || _player || (db() && db().getPlayer && db().getPlayer()));
+    if (!p) return false;
+    if (tier() === 'super' || isSuperVerified()) return true;
+    await loadKaWhitelist();
+    return isKaAllowed(p);
+  }
+
+  async function setKaAllowed(player, allowed, by) {
+    var D = db();
+    var p = clean(player);
+    if (!p) throw new Error('Nickname fehlt');
+    await loadKaWhitelist();
+    var set = new Set(_kaWhitelist || []);
+    if (allowed) {
+      set.add(p);
+    } else {
+      set.delete(p);
+    }
+    var nextList = Array.from(set);
+    _kaWhitelist = nextList;
+    try {
+      localStorage.setItem('azubi_ka_whitelist', JSON.stringify(nextList));
+    } catch (_) {}
+
+    if (D && D.upsertConfig) {
+      await D.upsertConfig(KA_WHITELIST_KEY, {
+        list: nextList,
+        updated_by: by || 'super',
+        updated_at: new Date().toISOString()
+      });
+      // Auch im Nutzer-Rollen-Record vermerken (falls vorhanden)
+      try {
+        var cur = await getRole(p);
+        if (cur) {
+          cur.ka_allowed = !!allowed;
+          await D.upsertConfig(roleKey(p), cur);
+        }
+      } catch (_) {}
+    }
+    audit('ka_whitelist.set', by, { player: p, allowed: !!allowed });
+    return nextList;
+  }
+
+  async function batchSetKaAllowed(players, allowed, by) {
+    var D = db();
+    await loadKaWhitelist();
+    var set = new Set(_kaWhitelist || []);
+    (players || []).forEach(function(pl) {
+      var p = clean(pl);
+      if (p) {
+        if (allowed) set.add(p);
+        else set.delete(p);
+      }
+    });
+    var nextList = Array.from(set);
+    _kaWhitelist = nextList;
+    try {
+      localStorage.setItem('azubi_ka_whitelist', JSON.stringify(nextList));
+    } catch (_) {}
+
+    if (D && D.upsertConfig) {
+      await D.upsertConfig(KA_WHITELIST_KEY, {
+        list: nextList,
+        updated_by: by || 'super',
+        updated_at: new Date().toISOString()
+      });
+    }
+    audit('ka_whitelist.batch_set', by, { count: (players || []).length, allowed: !!allowed });
+    return nextList;
   }
 
   /* ---------- Freischaltcode (tầng 2) ---------- */
@@ -497,6 +616,13 @@
     setRole: setRole,
     revokeRole: revokeRole,
     listRoles: listRoles,
+    // Klassenarbeit Whitelist
+    loadKaWhitelist: loadKaWhitelist,
+    getKaWhitelist: getKaWhitelist,
+    isKaAllowed: isKaAllowed,
+    canAccessKlassenarbeit: canAccessKlassenarbeit,
+    setKaAllowed: setKaAllowed,
+    batchSetKaAllowed: batchSetKaAllowed,
     // Freischaltcode
     getPaidCode: getPaidCode,
     setPaidCode: setPaidCode,
