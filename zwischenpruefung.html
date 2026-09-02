@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ Zwischenprüfung – Fachkraft für Gastronomie</title>
+<style>
+  :root {
+    --accent: #1d4ed8;
+    --accent-soft: #dbeafe;
+    --ink: #0f172a;
+    --muted: #64748b;
+    --surface: #f8fafc;
+    --line: #e2e8f0;
+    --green: #16a34a;
+    --red: #dc2626;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--surface);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  .site-header {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%);
+    color: #fff;
+    padding: 24px 20px;
+    text-align: center;
+  }
+  .site-header h1 { font-size: 1.6em; margin-bottom: 6px; }
+  .site-header p  { font-size: .9em; opacity: .85; }
+
+  .translate-notice {
+    background: #fef3c7;
+    border: 1px solid #fcd34d;
+    border-radius: 10px;
+    padding: 10px 16px;
+    margin: 14px 16px;
+    font-size: .87em;
+    color: #78350f;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 6px;
+    padding: 14px 16px 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab {
+    flex-shrink: 0;
+    padding: 8px 14px;
+    border-radius: 10px 10px 0 0;
+    background: #e2e8f0;
+    color: var(--muted);
+    font-size: .82em;
+    font-weight: 600;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-bottom: none;
+    transition: all .2s;
+    user-select: none;
+  }
+  .tab.active {
+    background: #fff;
+    color: var(--accent);
+    border-color: var(--line);
+  }
+
+  .panel { display: none; padding: 14px 16px 30px; }
+  .panel.active { display: block; }
+
+  .card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 14px;
+    border: 1px solid var(--line);
+    box-shadow: 0 1px 4px rgba(0,0,0,.05);
+  }
+  .card > h2 {
+    font-size: 1.05em;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--accent-soft);
+  }
+  .card h3.sub {
+    font-size: .95em;
+    color: var(--ink);
+    margin: 14px 0 8px;
+    font-weight: 700;
+  }
+
+  /* Translation */
+  .de-trigger {
+    display: inline-block;
+    background: #eff6ff;
+    border: 1px dashed #93c5fd;
+    border-radius: 5px;
+    padding: 1px 6px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #1e40af;
+    font-size: .9em;
+    transition: background .15s;
+    user-select: none;
+    position: relative;
+  }
+  .de-trigger:hover { background: #dbeafe; }
+  .de-trigger::after { content: ' 🔍'; font-size: .75em; }
+
+  .vi-tip {
+    display: none;
+    position: absolute;
+    z-index: 999;
+    left: 0; top: calc(100% + 4px);
+    min-width: 200px;
+    max-width: 320px;
+    background: #1e293b;
+    color: #f1f5f9;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: .82em;
+    line-height: 1.55;
+    box-shadow: 0 8px 24px rgba(0,0,0,.25);
+    white-space: pre-line;
+    font-weight: 400;
+  }
+  .de-trigger.open .vi-tip { display: block; }
+
+  .formula {
+    background: #eff6ff;
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 12px 14px;
+    font-size: .9em;
+    margin: 10px 0;
+    line-height: 1.9;
+  }
+
+  .note {
+    background: #fef9c3;
+    border-left: 4px solid #eab308;
+    border-radius: 0 10px 10px 0;
+    padding: 10px 14px;
+    font-size: .9em;
+    margin: 10px 0;
+  }
+  .note.danger {
+    background: #fee2e2;
+    border-left-color: #dc2626;
+    color: #7f1d1d;
+  }
+
+  table { width: 100%; border-collapse: collapse; font-size: .88em; margin: 10px 0; }
+  th { background: var(--accent); color: #fff; padding: 8px 10px; text-align: left; font-size: .83em; }
+  td { padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr:nth-child(even) td { background: #f8fafc; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+  @media (max-width: 540px) { .grid2 { grid-template-columns: 1fr; } }
+  .mini {
+    background: #f8fafc;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 12px;
+    border-left: 3px solid var(--accent);
+  }
+  .mini h4 { font-size: .88em; margin-bottom: 6px; color: var(--accent); }
+  .mini p, .mini ul { font-size: .86em; }
+  .mini ul { padding-left: 16px; }
+  .mini li { margin-bottom: 4px; }
+
+  /* Flashcards */
+  #fc-card {
+    min-height: 160px;
+    background: #fff;
+    border: 2px solid var(--accent);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: background .3s;
+    margin: 14px 0;
+  }
+  #fc-card.flipped { background: #eff6ff; border-color: #1e40af; }
+  #fc-topic { font-size: .75em; font-weight: 800; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+  #fc-q { font-size: 1em; font-weight: 600; line-height: 1.5; }
+  #fc-hint { font-size: .8em; color: var(--muted); margin-top: 10px; }
+  #fc-counter { background: var(--accent-soft); color: var(--accent); padding: 5px 12px; border-radius: 20px; font-size: .82em; font-weight: 700; }
+  .fc-btns { display: flex; gap: 8px; margin-top: 6px; }
+  .fc-btns button { flex:1; padding:10px; border-radius:10px; font-weight:700; font-size:.9em; cursor:pointer; border:1px solid var(--line); background:var(--surface); }
+  .fc-btns .btn-next { background:var(--accent); color:#fff; border-color:var(--accent); }
+
+  /* Exam */
+  .q-block { background:#fff; border:1px solid var(--line); border-radius:12px; padding:14px; margin-bottom:12px; }
+  .q-label { font-weight:700; color:var(--accent); font-size:.9em; margin-bottom:6px; }
+  .q-situation { background:#f0fdf4; border:1px solid #86efac; border-radius:10px; padding:12px; margin-bottom:12px; font-size:.88em; color:#14532d; }
+  .q-text { font-size:.92em; margin-bottom:8px; }
+  .opts { list-style:none; padding:0; margin:0 0 8px; }
+  .opts li { padding:7px 10px; border:1px solid var(--line); border-radius:8px; margin-bottom:5px; font-size:.87em; cursor:pointer; }
+  .opts li:hover { background:#f0f9ff; }
+  .opts li.correct { background:#dcfce7; border-color:#86efac; color:#14532d; font-weight:700; }
+  .opts li.wrong   { background:#fee2e2; border-color:#fca5a5; color:#7f1d1d; }
+  .q-ans { display:none; background:#eff6ff; border-left:4px solid var(--accent); border-radius:0 10px 10px 0; padding:10px 12px; font-size:.87em; margin-top:6px; }
+  .q-ans.visible { display:block; }
+  .show-btn { background:none; border:1px solid var(--accent); color:var(--accent); border-radius:8px; padding:5px 12px; font-size:.82em; cursor:pointer; font-weight:600; margin-top:4px; }
+  .show-btn:hover { background:var(--accent-soft); }
+
+  ul.styled { padding-left:18px; margin:8px 0; }
+  ul.styled li { margin-bottom:5px; font-size:.9em; }
+
+  #scroll-top { position:fixed; bottom:20px; right:16px; background:var(--accent); color:#fff; border:none; border-radius:50%; width:42px; height:42px; font-size:1.1em; cursor:pointer; display:none; box-shadow:0 4px 12px rgba(29,78,216,.4); z-index:100; align-items:center; justify-content:center; }
+  #scroll-top.visible { display:flex; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <h1>🛡️ Zwischenprüfung – Fachkraft für Gastronomie</h1>
+  <p>Prüfungsbereich: <strong>Wirtschaftsdienst</strong> · AO 2022 · Vollständig auf Deutsch</p>
+</header>
+
+<div class="translate-notice">
+  💡 Auf den blauen <span style="background:#eff6ff;border:1px dashed #93c5fd;border-radius:4px;padding:1px 5px;font-weight:700;color:#1e40af;">Begriff 🔍</span> klicken → Vietnamesische Übersetzung erscheint sofort!
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('t1',this)">📋 1. Überblick</div>
+  <div class="tab" onclick="showTab('t2',this)">🧹 2. Hygiene &amp; Reinigung</div>
+  <div class="tab" onclick="showTab('t3',this)">📦 3. Lagerung &amp; Abfall</div>
+  <div class="tab" onclick="showTab('t4',this)">🍽️ 4. Service &amp; Tisch</div>
+  <div class="tab" onclick="showTab('t5',this)">🃏 5. Lernkarten</div>
+  <div class="tab" onclick="showTab('t6',this)">📝 6. Prüfungsaufgaben</div>
+</div>
+
+<!-- ===== TAB 1 ===== -->
+<div class="panel active" id="t1">
+  <div class="card">
+    <h2>📌 Was ist die Zwischenprüfung?</h2>
+    <p>Die <strong>Zwischenprüfung</strong> ist eine Leistungsprüfung im
+    <span class="de-trigger" onclick="toggleTip(this)">3. Ausbildungshalbjahr<span class="vi-tip">học kỳ thứ 3 của đào tạo nghề</span></span>.
+    Sie prüft Kenntnisse und Fähigkeiten des
+    <span class="de-trigger" onclick="toggleTip(this)">1. Ausbildungsjahres<span class="vi-tip">năm đào tạo thứ nhất (12 tháng đầu)</span></span>.
+    Grundlage: <span class="de-trigger" onclick="toggleTip(this)">Ausbildungsrahmenplan<span class="vi-tip">khung chương trình đào tạo doanh nghiệp</span></span>
+    + <strong>Lernfelder 1–4</strong> der Berufsschule.</p>
+    <div class="note">💡 Wichtig: Nur die <strong>ersten 12 Monate</strong> der Ausbildung sind prüfungsrelevant!</div>
+  </div>
+
+  <div class="card">
+    <h2>⚖️ Prüfungsstruktur – Prüfungsbereich: WIRTSCHAFTSDIENST</h2>
+    <table>
+      <thead><tr><th>Prüfungsteil</th><th>Form</th><th>Dauer</th><th>Lernfelder</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Teil 1: Schriftlich</strong></td>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Gebundene + Ungebundene Aufgaben<span class="vi-tip">Câu trắc nghiệm + Tự luận tình huống</span></span></td>
+          <td><strong>60 Min.</strong></td>
+          <td>LF 2, LF 3, Arbeitssicherheit</td>
+        </tr>
+        <tr>
+          <td><strong>Teil 2: Praktisch</strong></td>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Arbeitsaufgabe inkl. Fachgespräch<span class="vi-tip">Bài thực hành + Vấn đáp chuyên ngành</span></span></td>
+          <td><strong>60 Min.</strong></td>
+          <td>LF 3, LF 6, Service</td>
+        </tr>
+        <tr style="background:#fef3c7;font-weight:600;">
+          <td>GESAMT</td><td>Theorie + Praxis</td><td><strong>120 Min.</strong></td><td>Berufliche Handlungskompetenz</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>🗺️ Lernfeld-Übersicht (BfK-1)</h2>
+    <div class="grid2">
+      <div class="mini">
+        <h4>📦 LF 2 – Beschaffung &amp; Lagerung</h4>
+        <p><span class="de-trigger" onclick="toggleTip(this)">Warenannahme<span class="vi-tip">tiếp nhận hàng hóa, kiểm tra hàng đến</span></span>,
+        <span class="de-trigger" onclick="toggleTip(this)">Kühlkette<span class="vi-tip">chuỗi lạnh (bảo quản nhiệt độ lạnh liên tục)</span></span>,
+        MHD vs. <span class="de-trigger" onclick="toggleTip(this)">Verbrauchsdatum<span class="vi-tip">hạn dùng bắt buộc (thực phẩm tươi sống)</span></span>,
+        <span class="de-trigger" onclick="toggleTip(this)">FIFO-Prinzip<span class="vi-tip">First In – First Out: hàng nhập trước → dùng trước</span></span></p>
+      </div>
+      <div class="mini">
+        <h4>🍳 LF 3 – Küche &amp; Hygiene</h4>
+        <p>3 Hygienebereiche, HACCP,
+        <span class="de-trigger" onclick="toggleTip(this)">Sinnerscher Kreis<span class="vi-tip">Vòng tròn Sinner: 4 yếu tố vệ sinh (Chemie, Mechanik, Temperatur, Zeit)</span></span>,
+        pH-Skala, Tisch eindecken</p>
+      </div>
+      <div class="mini">
+        <h4>🍽️ LF 6 – Service &amp; Menüs</h4>
+        <p><span class="de-trigger" onclick="toggleTip(this)">Gedeckarten<span class="vi-tip">Các kiểu bày bàn (Grundgedeck, Menügedeck, Bankettgedeck...)</span></span>,
+        14 <span class="de-trigger" onclick="toggleTip(this)">Allergene<span class="vi-tip">Chất gây dị ứng (14 loại bắt buộc công bố theo LMIV)</span></span></p>
+      </div>
+      <div class="mini">
+        <h4>🛎️ LF 9 – Gäste &amp; Reklamation</h4>
+        <p><span class="de-trigger" onclick="toggleTip(this)">Servierarten<span class="vi-tip">Hình thức phục vụ: Amerikanisch, Französisch, Englisch, Russisch</span></span>,
+        <span class="de-trigger" onclick="toggleTip(this)">Reklamation<span class="vi-tip">Xử lý khiếu nại khách hàng</span></span> nach L-A-S-T,
+        <span class="de-trigger" onclick="toggleTip(this)">Mülltrennung<span class="vi-tip">Phân loại rác thải</span></span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB 2 ===== -->
+<div class="panel" id="t2">
+  <div class="card">
+    <h2>① Die 3 Reinigungsarten</h2>
+    <table>
+      <thead><tr><th>Reinigungsart</th><th>Bedeutung</th><th>Zeitpunkt</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong><span class="de-trigger" onclick="toggleTip(this)">Sichtreinigung<span class="vi-tip">vệ sinh trực quan: nhặt rác nhìn thấy trong giờ làm việc</span></span></strong></td>
+          <td>Beseitigung grober sichtbarer Verschmutzungen</td>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Während der Betriebszeit<span class="vi-tip">Trong giờ mở cửa hoạt động</span></span></td>
+        </tr>
+        <tr>
+          <td><strong><span class="de-trigger" onclick="toggleTip(this)">Unterhaltsreinigung<span class="vi-tip">vệ sinh duy trì hàng ngày (trước/sau ca làm việc)</span></span></strong></td>
+          <td>Regelmäßige, tägliche Reinigung</td>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Vor oder nach dem Service<span class="vi-tip">Trước hoặc sau ca phục vụ</span></span></td>
+        </tr>
+        <tr>
+          <td><strong><span class="de-trigger" onclick="toggleTip(this)">Grundreinigung<span class="vi-tip">Tổng vệ sinh định kỳ: hàng tháng / quý / năm</span></span></strong></td>
+          <td>Gründliche Reinigung in großen Zeitabständen</td>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Monatlich / Quartalsweise<span class="vi-tip">Hàng tháng / hàng quý</span></span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub">Der Reinigungs- und Desinfektionsplan – 5 W-Fragen</h3>
+    <ul class="styled">
+      <li><strong>WAS?</strong> – <span class="de-trigger" onclick="toggleTip(this)">Welche Fläche oder welches Gerät?<span class="vi-tip">Đối tượng/bề mặt nào cần làm sạch?</span></span></li>
+      <li><strong>WANN / WIE OFT?</strong> – <span class="de-trigger" onclick="toggleTip(this)">Zeitpunkt und Häufigkeit<span class="vi-tip">Khi nào và tần suất thực hiện?</span></span></li>
+      <li><strong>WOMIT?</strong> – <span class="de-trigger" onclick="toggleTip(this)">Reinigungsmittel und Werkzeug<span class="vi-tip">Loại hóa chất và dụng cụ nào?</span></span></li>
+      <li><strong>WIE?</strong> – <span class="de-trigger" onclick="toggleTip(this)">Dosierung und Einwirkzeit<span class="vi-tip">Cách pha, nồng độ và thời gian tác dụng</span></span></li>
+      <li><strong>WER?</strong> – <span class="de-trigger" onclick="toggleTip(this)">Zuständige Person<span class="vi-tip">Ai chịu trách nhiệm thực hiện?</span></span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>② Die 3 Hygienebereiche (LF 3)</h2>
+    <div class="grid2">
+      <div class="mini">
+        <h4>🧑‍🍳 1. Personalhygiene</h4>
+        <ul>
+          <li><span class="de-trigger" onclick="toggleTip(this)">Händewaschen in 6 Schritten<span class="vi-tip">Rửa tay đúng kỹ thuật 6 bước với xà phòng diệt khuẩn</span></span></li>
+          <li>Kein Schmuck, keine Ringe! <span class="de-trigger" onclick="toggleTip(this)">(Keimherde)<span class="vi-tip">Ổ vi khuẩn tích tụ</span></span></li>
+          <li><span class="de-trigger" onclick="toggleTip(this)">Wunden mit wasserdichtem Pflaster<span class="vi-tip">Băng kín vết thương hở bằng băng dán chống thấm nước màu xanh</span></span></li>
+          <li><strong>IfSG §42/43:</strong> <span class="de-trigger" onclick="toggleTip(this)">Tätigkeitsverbot bei Fieber, Durchfall, Erbrechen<span class="vi-tip">Cấm làm việc khi: sốt cao, tiêu chảy, nôn mửa, viêm gan A</span></span></li>
+        </ul>
+      </div>
+      <div class="mini">
+        <h4>🏢 2. Betriebshygiene</h4>
+        <ul>
+          <li><span class="de-trigger" onclick="toggleTip(this)">Reine &amp; Unreine Seite trennen<span class="vi-tip">Phân tách nghiêm ngặt khu sạch và khu bẩn</span></span></li>
+          <li><span class="de-trigger" onclick="toggleTip(this)">Schädlingsbekämpfung<span class="vi-tip">Kiểm soát và diệt côn trùng, loài gặm nhấm định kỳ</span></span></li>
+          <li><span class="de-trigger" onclick="toggleTip(this)">Abfallbehälter mit Fußpedal<span class="vi-tip">Thùng rác có nắp đậy và bàn đạp chân</span></span></li>
+        </ul>
+      </div>
+      <div class="mini" style="grid-column:1/-1;">
+        <h4>🥩 3. Produkthygiene</h4>
+        <ul>
+          <li><span class="de-trigger" onclick="toggleTip(this)">Kreuzkontamination vermeiden<span class="vi-tip">Tránh nhiễm khuẩn chéo → thớt theo màu: Đỏ=thịt, Vàng=gia cầm, Xanh=rau, Xanh dương=cá</span></span></li>
+          <li><span class="de-trigger" onclick="toggleTip(this)">Auftauen im Kühlhaus auf Abtropfgitter<span class="vi-tip">Rã đông trong ngăn mát tủ lạnh trên khay lưới hứng nước rã đông</span></span></li>
+          <li><span class="de-trigger" onclick="toggleTip(this)">Kerntemperatur ≥ +72 °C für mindestens 2 Minuten<span class="vi-tip">Nhiệt độ tâm thực phẩm ≥ +72°C trong 2 phút để diệt Salmonella</span></span></li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub">HACCP – 7 Schritte</h3>
+    <div class="formula">
+      1. <span class="de-trigger" onclick="toggleTip(this)">Gefahrenanalyse<span class="vi-tip">Phân tích mối nguy</span></span> ➔
+      2. <span class="de-trigger" onclick="toggleTip(this)">CCPs bestimmen<span class="vi-tip">Xác định điểm kiểm soát tới hạn</span></span> ➔
+      3. <span class="de-trigger" onclick="toggleTip(this)">Grenzwerte festlegen<span class="vi-tip">Thiết lập ngưỡng giới hạn</span></span> ➔
+      4. <span class="de-trigger" onclick="toggleTip(this)">Überwachung<span class="vi-tip">Giám sát liên tục</span></span> ➔
+      5. <span class="de-trigger" onclick="toggleTip(this)">Korrekturmaßnahmen<span class="vi-tip">Biện pháp khắc phục</span></span> ➔
+      6. <span class="de-trigger" onclick="toggleTip(this)">Verifizierung<span class="vi-tip">Xác minh / kiểm tra lại</span></span> ➔
+      7. <span class="de-trigger" onclick="toggleTip(this)">Dokumentation<span class="vi-tip">Lập hồ sơ / ghi chép</span></span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>③ Sinnerscher Kreis – pH-Skala – 4-Farben-Code</h2>
+
+    <h3 class="sub">Der Sinnersche Kreis</h3>
+    <div class="formula">
+      🧪 <span class="de-trigger" onclick="toggleTip(this)">Chemie<span class="vi-tip">Hóa chất tẩy rửa</span></span> +
+      ⚙️ <span class="de-trigger" onclick="toggleTip(this)">Mechanik<span class="vi-tip">Lực cơ học / cọ rửa</span></span> +
+      🌡️ <span class="de-trigger" onclick="toggleTip(this)">Temperatur<span class="vi-tip">Nhiệt độ</span></span> +
+      ⏱️ <span class="de-trigger" onclick="toggleTip(this)">Zeit<span class="vi-tip">Thời gian tác dụng</span></span> = <strong>100% Reinigungsleistung</strong><br>
+      <span class="de-trigger" onclick="toggleTip(this)">Kompensationsprinzip<span class="vi-tip">Nguyên tắc bù trừ: giảm 1 yếu tố → phải tăng yếu tố khác!</span></span>: Faktor reduziert → andere erhöhen!
+    </div>
+
+    <h3 class="sub">pH-Wert-Skala</h3>
+    <table>
+      <thead><tr><th>pH</th><th>Eigenschaft</th><th>Reinigungsmittel</th><th>Anwendung</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>pH 0–2</strong></td>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Stark sauer<span class="vi-tip">Axit mạnh</span></span></td>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Kalklöser<span class="vi-tip">Chất tẩy cặn vôi ⚠️ CẤM dùng cho đá cẩm thạch, nhôm!</span></span></td>
+          <td>Kalkablagerungen im Sanitärbereich</td>
+        </tr>
+        <tr>
+          <td><strong>pH 7</strong></td>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Neutral<span class="vi-tip">Trung tính – an toàn cho mọi bề mặt</span></span></td>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Allzweckreiniger<span class="vi-tip">Chất tẩy đa năng trung tính</span></span></td>
+          <td>Tische, Gläser, Hände</td>
+        </tr>
+        <tr>
+          <td><strong>pH 11–14</strong></td>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Stark alkalisch<span class="vi-tip">Kiềm mạnh ⚠️ CẤM dùng cho nhôm, da thật!</span></span></td>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Fettlöser<span class="vi-tip">Chất tẩy dầu mỡ cháy đen</span></span></td>
+          <td>Eingebranntes Fett, Fritteusen</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub">Der 4-Farben-Code</h3>
+    <div class="grid2">
+      <div class="mini" style="border-left-color:#dc2626;">
+        <h4 style="color:#b91c1c;">🔴 ROT</h4>
+        <p><span class="de-trigger" onclick="toggleTip(this)">WC-Becken &amp; Urinale<span class="vi-tip">Bồn cầu và bệ tiểu nam – khu cực bẩn</span></span></p>
+      </div>
+      <div class="mini" style="border-left-color:#ca8a04;">
+        <h4 style="color:#92400e;">🟡 GELB</h4>
+        <p><span class="de-trigger" onclick="toggleTip(this)">Waschbecken, Spiegel, Armaturen<span class="vi-tip">Bồn rửa tay, gương, vòi nước khu vệ sinh</span></span></p>
+      </div>
+      <div class="mini" style="border-left-color:#1d4ed8;">
+        <h4 style="color:#1e40af;">🔵 BLAU</h4>
+        <p><span class="de-trigger" onclick="toggleTip(this)">Gastraum &amp; Bürobereiche<span class="vi-tip">Bàn ăn, ghế, cửa kính khu phục vụ khách</span></span></p>
+      </div>
+      <div class="mini" style="border-left-color:#16a34a;">
+        <h4 style="color:#15803d;">🟢 GRÜN</h4>
+        <p><span class="de-trigger" onclick="toggleTip(this)">Küche &amp; Lebensmittelbereich<span class="vi-tip">Bàn sơ chế thực phẩm, quầy ra đồ bếp</span></span></p>
+      </div>
+    </div>
+
+    <div class="note danger">☠️ <strong>LEBENSGEFAHR!</strong> Niemals
+    <span class="de-trigger" onclick="toggleTip(this)">sauren Kalklöser + chlorhaltigen Reiniger<span class="vi-tip">Chất tẩy axit + chất tẩy chứa Clo</span></span> mischen!
+    → <span class="de-trigger" onclick="toggleTip(this)">Freisetzung von tödlichem Chlorgas!<span class="vi-tip">Giải phóng Khí Clo độc chết người → bỏng phổi, ngạt thở!</span></span></div>
+  </div>
+
+  <div class="card">
+    <h2>④ Arbeitssicherheit – DGUV Vorschrift 110</h2>
+    <div class="grid2">
+      <div class="mini">
+        <h4>🚷 <span class="de-trigger" onclick="toggleTip(this)">Rutschgefahr<span class="vi-tip">Nguy cơ trượt ngã trên sàn ướt</span></span></h4>
+        <p>Bei nassem Boden sofort <span class="de-trigger" onclick="toggleTip(this)">Warnschild aufstellen<span class="vi-tip">Dựng biển cảnh báo màu vàng "Achtung Rutschgefahr!"</span></span>. Schuhe SRC tragen.</p>
+      </div>
+      <div class="mini">
+        <h4>🔪 <span class="de-trigger" onclick="toggleTip(this)">Messersicherheit<span class="vi-tip">An toàn khi dùng dao bếp</span></span></h4>
+        <p><span class="de-trigger" onclick="toggleTip(this)">Krallengriff beim Schneiden<span class="vi-tip">Kỹ thuật móng vuốt: gập ngón tay tròn khi thái</span></span>.
+        <span class="de-trigger" onclick="toggleTip(this)">Niemals ein fallendes Messer auffangen!<span class="vi-tip">TUYỆT ĐỐI KHÔNG chụp dao rơi! Hãy bước lui!</span></span></p>
+      </div>
+      <div class="mini">
+        <h4>🔥 <span class="de-trigger" onclick="toggleTip(this)">Brandklasse F<span class="vi-tip">Cháy dầu mỡ bếp – loại F</span></span></h4>
+        <p><span class="de-trigger" onclick="toggleTip(this)">Fettbrandlöscher oder Löschdecke<span class="vi-tip">Bình chữa cháy chuyên dụng loại F hoặc chăn dập lửa</span></span>.
+        <strong>⛔ KEIN WASSER!</strong>
+        <span class="de-trigger" onclick="toggleTip(this)">(→ Fettbrandexplosion!)<span class="vi-tip">Nước + dầu sôi = nổ hơi dầu cực kỳ nguy hiểm!</span></span></p>
+      </div>
+      <div class="mini">
+        <h4>🧤 PSA &amp; <span class="de-trigger" onclick="toggleTip(this)">Ergonomie<span class="vi-tip">Khoa học tư thế và an toàn lao động</span></span></h4>
+        <p><span class="de-trigger" onclick="toggleTip(this)">Nitrile-Handschuhe beim Umgang mit starken Reinigern<span class="vi-tip">Đeo găng tay Nitrile khi pha/dùng hóa chất mạnh</span></span>.
+        <span class="de-trigger" onclick="toggleTip(this)">Schwere Lasten aus den Knien heben<span class="vi-tip">Nâng vật nặng: lưng thẳng, gập đầu gối, nâng bằng lực chân</span></span>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB 3 ===== -->
+<div class="panel" id="t3">
+  <div class="card">
+    <h2>① Warenannahme &amp; Lagerung (LF 2)</h2>
+
+    <h3 class="sub">6-Schritte-Beschaffungsprozess</h3>
+    <div class="formula">
+      1. <span class="de-trigger" onclick="toggleTip(this)">Bedarfsermittlung<span class="vi-tip">Xác định nhu cầu</span></span> ➔
+      2. <span class="de-trigger" onclick="toggleTip(this)">Bestandskontrolle<span class="vi-tip">Kiểm tra tồn kho</span></span> ➔
+      3. <span class="de-trigger" onclick="toggleTip(this)">Lieferantenauswahl<span class="vi-tip">Chọn nhà cung cấp</span></span> ➔
+      4. <span class="de-trigger" onclick="toggleTip(this)">Bestellung<span class="vi-tip">Đặt hàng</span></span> ➔
+      5. <span class="de-trigger" onclick="toggleTip(this)">Warenannahme<span class="vi-tip">Nhận hàng &amp; kiểm tra</span></span> ➔
+      6. <span class="de-trigger" onclick="toggleTip(this)">Einlagerung &amp; Überwachung<span class="vi-tip">Nhập kho &amp; giám sát nhiệt độ</span></span>
+    </div>
+
+    <h3 class="sub">MHD vs. Verbrauchsdatum</h3>
+    <div class="grid2">
+      <div class="mini">
+        <h4>📅 <span class="de-trigger" onclick="toggleTip(this)">Mindesthaltbarkeitsdatum (MHD)<span class="vi-tip">Hạn sử dụng tối thiểu. Quá hạn KHÔNG tự động hỏng → kiểm tra cảm quan → có thể còn dùng được!</span></span></h4>
+        <p>Z.B. Nudeln, Mehl → nach Ablauf sensorisch prüfen</p>
+      </div>
+      <div class="mini">
+        <h4>🛑 <span class="de-trigger" onclick="toggleTip(this)">Verbrauchsdatum<span class="vi-tip">Hạn dùng bắt buộc (thịt tươi, cá tươi). Quá hạn → TIÊU HỦY NGAY! Cấm chế biến!</span></span></h4>
+        <p>Z.B. Hackfleisch, frischer Fisch →
+        <span class="de-trigger" onclick="toggleTip(this)">sofort entsorgen!<span class="vi-tip">Bắt buộc tiêu hủy ngay khi quá hạn!</span></span></p>
+      </div>
+    </div>
+
+    <h3 class="sub">Lagertemperaturen</h3>
+    <table>
+      <thead><tr><th>Ware</th><th>Lagerart</th><th>Temperatur</th></tr></thead>
+      <tbody>
+        <tr><td><span class="de-trigger" onclick="toggleTip(this)">Geflügelfleisch<span class="vi-tip">Thịt gia cầm (gà, vịt)</span></span></td><td>Kühlhaus</td><td><strong>≤ +4 °C</strong></td></tr>
+        <tr><td><span class="de-trigger" onclick="toggleTip(this)">Hackfleisch<span class="vi-tip">Thịt xay sống</span></span></td><td>Kühlhaus</td><td><strong>≤ +2 °C</strong></td></tr>
+        <tr><td><span class="de-trigger" onclick="toggleTip(this)">Frisches Fleisch<span class="vi-tip">Thịt bò, heo tươi</span></span></td><td>Kühlhaus</td><td><strong>≤ +7 °C</strong></td></tr>
+        <tr><td><span class="de-trigger" onclick="toggleTip(this)">Frischer Fisch<span class="vi-tip">Cá tươi sống → bảo quản trên đá vảy</span></span></td><td>Fischkühlung</td><td><strong>0 bis +2 °C</strong></td></tr>
+        <tr><td><span class="de-trigger" onclick="toggleTip(this)">Milch &amp; Molkerei<span class="vi-tip">Sữa, bơ, phô mai, kem</span></span></td><td>Molkerei­kühlung</td><td><strong>≤ +8 °C</strong></td></tr>
+        <tr><td><span class="de-trigger" onclick="toggleTip(this)">Tiefkühlware<span class="vi-tip">Hàng đông lạnh</span></span></td><td>Tiefkühllager</td><td><strong>≤ −18 °C</strong></td></tr>
+        <tr><td><span class="de-trigger" onclick="toggleTip(this)">Trockenwaren<span class="vi-tip">Hàng khô: gạo, bột, mì sợi, đồ hộp</span></span></td><td>Trockenlager</td><td><strong>+15 bis +20 °C</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="note">📦 <strong>FIFO-Prinzip:</strong>
+    <span class="de-trigger" onclick="toggleTip(this)">Neue Ware hinten einlagern, alte Ware nach vorne stellen.<span class="vi-tip">First In – First Out: hàng nhập trước dùng trước. Hàng mới xếp sau/dưới.</span></span></div>
+  </div>
+
+  <div class="card">
+    <h2>② Nachhaltigkeit &amp; Abfall (KrWG)</h2>
+    <h3 class="sub">Die 5-stufige Abfallhierarchie</h3>
+    <div class="formula">
+      1. <span class="de-trigger" onclick="toggleTip(this)">Vermeidung<span class="vi-tip">Tránh tạo rác (ưu tiên cao nhất)</span></span> ➔
+      2. <span class="de-trigger" onclick="toggleTip(this)">Wiederverwendung<span class="vi-tip">Tái sử dụng</span></span> ➔
+      3. <span class="de-trigger" onclick="toggleTip(this)">Recycling<span class="vi-tip">Tái chế vật liệu</span></span> ➔
+      4. <span class="de-trigger" onclick="toggleTip(this)">Sonstige Verwertung<span class="vi-tip">Thu hồi năng lượng (đốt lấy điện)</span></span> ➔
+      5. <span class="de-trigger" onclick="toggleTip(this)">Beseitigung<span class="vi-tip">Tiêu hủy an toàn (ưu tiên thấp nhất)</span></span>
+    </div>
+
+    <h3 class="sub">Mülltrennung im Restaurant</h3>
+    <table>
+      <thead><tr><th>Abfallart</th><th>Behälter</th><th>Hinweis</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Bioabfall &amp; Speisereste<span class="vi-tip">Rác hữu cơ &amp; thức ăn thừa</span></span></td>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Braune Tonne<span class="vi-tip">Thùng màu nâu</span></span></td>
+          <td><strong>⛔ Nie ins WC kippen!</strong></td>
+        </tr>
+        <tr>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Altglas<span class="vi-tip">Thủy tinh cũ: phân màu Trắng/Xanh/Nâu. ⛔ Không bỏ sứ, pha lê vào!</span></span></td>
+          <td>Weiß-/Grün-/Braunglas</td>
+          <td>Nach Farbe sortieren</td>
+        </tr>
+        <tr>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Papier &amp; Pappe<span class="vi-tip">Giấy &amp; carton</span></span></td>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Blaue Tonne<span class="vi-tip">Thùng màu xanh dương</span></span></td>
+          <td>Kartons flach zusammenlegen</td>
+        </tr>
+        <tr>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Wertstoffe / Verpackung<span class="vi-tip">Vật liệu tái chế / bao bì</span></span></td>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Gelber Sack / Gelbe Tonne<span class="vi-tip">Túi/thùng màu vàng (Grüner Punkt)</span></span></td>
+          <td>Dosen, Plastikflaschen, Tetra Pak</td>
+        </tr>
+        <tr>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Altspeiseöl<span class="vi-tip">Dầu chiên thừa → tái chế Diesel sinh học</span></span></td>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Fettabscheider / Öli-Tonne<span class="vi-tip">Bể tách dầu / thùng dầu thải. ⛔ Cấm đổ vào cống!</span></span></td>
+          <td><strong>⛔ Nie in den Ausguss!</strong></td>
+        </tr>
+        <tr>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Restmüll<span class="vi-tip">Rác thải còn lại (không tái chế được)</span></span></td>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Schwarze / Graue Tonne<span class="vi-tip">Thùng đen hoặc xám</span></span></td>
+          <td>Schmutzige Servietten, Zigaretten</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===== TAB 4 ===== -->
+<div class="panel" id="t4">
+  <div class="card">
+    <h2>① Tischwäsche &amp; Eindecken (LF 3)</h2>
+
+    <h3 class="sub">Die 4 Tischwäsche-Schichten</h3>
+    <ul class="styled">
+      <li>🛡️ <strong><span class="de-trigger" onclick="toggleTip(this)">Molton<span class="vi-tip">Tấm lót bàn nỉ cao su (dưới cùng). 4 chức năng: chống trượt, giảm ồn, thấm hút, chống nhiệt</span></span></strong> – Unterste Schicht; 4 Funktionen: Rutschfestigkeit, Geräuschdämpfung, Flüssigkeitsaufnahme, Hitzeschutz</li>
+      <li>⬜ <strong><span class="de-trigger" onclick="toggleTip(this)">Tischtuch<span class="vi-tip">Khăn trải bàn chính. Phải rủ xung quanh đều 20–30 cm</span></span></strong> – Überhang <strong>20–30 cm</strong> pro Seite</li>
+      <li>🟫 <strong><span class="de-trigger" onclick="toggleTip(this)">Napperon / Deckserviette<span class="vi-tip">Khăn phủ nhỏ trang trí – thay nhanh khi bẩn</span></span></strong> – Dekoratives Abdecktuch</li>
+      <li>🎗️ <strong><span class="de-trigger" onclick="toggleTip(this)">Tischläufer<span class="vi-tip">Dải khăn hẹp chạy dài giữa bàn tạo điểm nhấn</span></span></strong> – Schmales Zierband über die Tischmitte</li>
+    </ul>
+
+    <h3 class="sub">Goldene Regeln beim Eindecken</h3>
+    <div class="formula">
+      📏 <span class="de-trigger" onclick="toggleTip(this)">Abstand zur Tischkante: 1–2 cm<span class="vi-tip">Chuôi dao/dĩa cách mép bàn 1–2 cm (1 đốt ngón tay)</span></span><br>
+      🔄 <span class="de-trigger" onclick="toggleTip(this)">Reihenfolge: von außen nach innen<span class="vi-tip">Thứ tự: dao dĩa của món đầu tiên ở ngoài cùng, vào trong theo món</span></span><br>
+      🔪 <span class="de-trigger" onclick="toggleTip(this)">Messer rechts (Klinge nach innen); Gabel links (Zinken oben)<span class="vi-tip">Dao bên PHẢI (lưỡi quay vào đĩa); Dĩa bên TRÁI (ngửa răng dĩa)</span></span><br>
+      🍰 <span class="de-trigger" onclick="toggleTip(this)">Dessertbesteck: quer über dem Teller (Löffelgriff rechts, Gabelgriff links)<span class="vi-tip">Dao dĩa tráng miệng: nằm ngang trên đầu đĩa (thìa cán PHẢI, dĩa cán TRÁI)</span></span><br>
+      🥖 <span class="de-trigger" onclick="toggleTip(this)">Brotteller links; Buttermesser auf dem Brotteller<span class="vi-tip">Đĩa bánh mì bên TRÁI; dao phết bơ đặt trên đĩa bánh mì</span></span><br>
+      🥂 <span class="de-trigger" onclick="toggleTip(this)">Richtglas (Wasserglas): über der Messerspitze, ca. 1 cm<span class="vi-tip">Ly nước (Richtglas): phía trên đầu mũi dao chính, khoảng 1 cm</span></span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>② Geschirr – Besteck – Gläser</h2>
+    <div class="grid2">
+      <div class="mini">
+        <h4>🍽️ <span class="de-trigger" onclick="toggleTip(this)">Platzteller (Ø ~32 cm)<span class="vi-tip">Đĩa lót trang trí lớn nhất – show plate. Để suốt bữa cho đến trước tráng miệng</span></span></h4>
+        <p>Stets am Platz des Gastes, bis vor dem Dessert.</p>
+      </div>
+      <div class="mini">
+        <h4>🥩 <span class="de-trigger" onclick="toggleTip(this)">Speiseteller (Ø ~26–28 cm)<span class="vi-tip">Đĩa ăn món chính (nóng)</span></span></h4>
+        <p>Für warme Hauptspeisen.</p>
+      </div>
+      <div class="mini">
+        <h4>🥖 <span class="de-trigger" onclick="toggleTip(this)">Brotteller (Ø ~15–17 cm)<span class="vi-tip">Đĩa bánh mì – luôn đặt bên tay TRÁI của khách</span></span></h4>
+        <p>Immer <strong>links</strong> vom Gast.</p>
+      </div>
+      <div class="mini">
+        <h4>🍾 <span class="de-trigger" onclick="toggleTip(this)">Sektflöte (Champagner)<span class="vi-tip">Ly sâm panh hình ống thon: bọt khí tăm sủi đẹp và lâu tan</span></span></h4>
+        <p><span class="de-trigger" onclick="toggleTip(this)">Röhrenform → Perlage bleibt erhalten<span class="vi-tip">Hình ống thon → bọt khí sủi lâu tan hơn</span></span></p>
+      </div>
+    </div>
+
+    <table>
+      <thead><tr><th>Besteck</th><th>Merkmal</th><th>Verwendung</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Menübesteck<span class="vi-tip">Dao dĩa ăn chính – lớn nhất trong bộ</span></span></td>
+          <td>Größte Größe im Set</td>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Fleischgerichte<span class="vi-tip">Dùng cho các món thịt chính</span></span></td>
+        </tr>
+        <tr>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Fischmesser &amp; Fischgabel<span class="vi-tip">Dao cá lưỡi phẳng tù; dĩa 4 răng có rãnh giữa → tách thớ cá</span></span></td>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Flache, stumpfe Klinge<span class="vi-tip">Lưỡi dao phẳng bè không mài sắc</span></span></td>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Fischgerichte<span class="vi-tip">Dùng cho món cá</span></span></td>
+        </tr>
+        <tr>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Steakmesser<span class="vi-tip">Dao bít tết – lưỡi răng cưa sắc</span></span></td>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Wellenschliff<span class="vi-tip">Lưỡi răng cưa sắc bén</span></span></td>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Rindfleisch-Steaks<span class="vi-tip">Bít tết thịt bò – cắt ngọt thớ</span></span></td>
+        </tr>
+        <tr>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Buttermesser<span class="vi-tip">Dao phết bơ – lưỡi ngắn đầu tù</span></span></td>
+          <td>Kurze, stumpfe Klinge</td>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Auf dem Brotteller<span class="vi-tip">Đặt trên đĩa bánh mì để phết bơ</span></span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>③ Servierarten &amp; Tragetechniken</h2>
+    <table>
+      <thead><tr><th>Servierart</th><th>Beschreibung</th><th>Richtung</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong><span class="de-trigger" onclick="toggleTip(this)">Amerikanischer Service<span class="vi-tip">Phổ biến nhất: đầu bếp chia sẵn trên đĩa, nhân viên bưng ra</span></span></strong><br><em>(Tellerservice)</em></td>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Fertig angerichtete Teller<span class="vi-tip">Món ăn đã được chia sẵn đẹp mắt trên đĩa từ bếp</span></span></td>
+          <td>Von <strong>RECHTS</strong></td>
+        </tr>
+        <tr>
+          <td><strong><span class="de-trigger" onclick="toggleTip(this)">Französischer Service<span class="vi-tip">Nhân viên bưng khay lớn, khách tự gắp bằng Vorlegebesteck</span></span></strong><br><em>(Plattenservice)</em></td>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Gast entnimmt selbst mit Vorlegebesteck<span class="vi-tip">Khách tự gắp thức ăn từ khay lớn bằng bộ gắp</span></span></td>
+          <td>Von <strong>LINKS</strong></td>
+        </tr>
+        <tr>
+          <td><strong><span class="de-trigger" onclick="toggleTip(this)">Englischer Service<span class="vi-tip">Nhân viên chia thức ăn tại bàn phụ Gueridon cạnh bàn khách</span></span></strong><br><em>(Gueridonservice)</em></td>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Portionierung am Gueridon<span class="vi-tip">Chia thức ăn tại bàn phụ, đặt đĩa cho khách từ PHẢI</span></span></td>
+          <td>Von <strong>RECHTS</strong></td>
+        </tr>
+        <tr>
+          <td><strong><span class="de-trigger" onclick="toggleTip(this)">Russischer Service<span class="vi-tip">Khay thịt lớn nguyên con đặt giữa bàn tiệc, khách tự chia</span></span></strong></td>
+          <td><span class="de-trigger" onclick="toggleTip(this)">Große Platten direkt auf den Tisch<span class="vi-tip">Các khay lớn đặt trực tiếp giữa bàn tiệc</span></span></td>
+          <td>Tischmitte</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub">Reklamation – Die L-A-S-T-Regel</h3>
+    <div class="formula">
+      🎧 <strong>L – <span class="de-trigger" onclick="toggleTip(this)">Listen (Zuhören)<span class="vi-tip">Lắng nghe: không ngắt lời, thể hiện đồng cảm</span></span></strong><br>
+      🤝 <strong>A – <span class="de-trigger" onclick="toggleTip(this)">Apologize (Entschuldigen)<span class="vi-tip">Chân thành xin lỗi vì sự bất tiện của khách</span></span></strong><br>
+      🛠️ <strong>S – <span class="de-trigger" onclick="toggleTip(this)">Solve (Lösung anbieten)<span class="vi-tip">Đưa ra giải pháp tức thì (đổi đĩa, làm lại món, mời đồ uống bù)</span></span></strong><br>
+      💐 <strong>T – <span class="de-trigger" onclick="toggleTip(this)">Thank (Bedanken)<span class="vi-tip">Cảm ơn khách đã phản hồi để nhà hàng cải thiện</span></span></strong><br>
+      ⛔ <em><span class="de-trigger" onclick="toggleTip(this)">Nie mit dem Gast diskutieren!<span class="vi-tip">TUYỆT ĐỐI KHÔNG tranh cãi hay đổ lỗi cho khách!</span></span></em>
+    </div>
+
+    <h3 class="sub">Die 14 Hauptallergene (LMIV)</h3>
+    <div class="grid2">
+      <div class="mini">
+        <ul>
+          <li><strong>A</strong> – <span class="de-trigger" onclick="toggleTip(this)">Glutenhaltiges Getreide<span class="vi-tip">Ngũ cốc chứa gluten: lúa mì, lúa mạch đen, yến mạch</span></span></li>
+          <li><strong>B</strong> – <span class="de-trigger" onclick="toggleTip(this)">Krebstiere<span class="vi-tip">Giáp xác: tôm, cua, tôm hùm</span></span></li>
+          <li><strong>C</strong> – <span class="de-trigger" onclick="toggleTip(this)">Eier<span class="vi-tip">Trứng và sản phẩm từ trứng</span></span></li>
+          <li><strong>D</strong> – <span class="de-trigger" onclick="toggleTip(this)">Fische<span class="vi-tip">Cá và sản phẩm từ cá</span></span></li>
+          <li><strong>E</strong> – <span class="de-trigger" onclick="toggleTip(this)">Erdnüsse<span class="vi-tip">Đậu phộng (lạc)</span></span></li>
+          <li><strong>F</strong> – <span class="de-trigger" onclick="toggleTip(this)">Sojabohnen<span class="vi-tip">Đậu nành và sản phẩm đậu nành</span></span></li>
+          <li><strong>G</strong> – <span class="de-trigger" onclick="toggleTip(this)">Milch / Laktose<span class="vi-tip">Sữa và đường sữa lactose</span></span></li>
+        </ul>
+      </div>
+      <div class="mini">
+        <ul>
+          <li><strong>H</strong> – <span class="de-trigger" onclick="toggleTip(this)">Schalenfrüchte (Nüsse)<span class="vi-tip">Quả hạch: hạnh nhân, óc chó, hạt dẻ, hạt điều</span></span></li>
+          <li><strong>L</strong> – <span class="de-trigger" onclick="toggleTip(this)">Sellerie<span class="vi-tip">Cần tây</span></span></li>
+          <li><strong>M</strong> – <span class="de-trigger" onclick="toggleTip(this)">Senf<span class="vi-tip">Mù tạt</span></span></li>
+          <li><strong>N</strong> – <span class="de-trigger" onclick="toggleTip(this)">Sesamsamen<span class="vi-tip">Hạt vừng / mè</span></span></li>
+          <li><strong>O</strong> – <span class="de-trigger" onclick="toggleTip(this)">Schwefeldioxid &amp; Sulfite<span class="vi-tip">Lưu huỳnh đioxit &amp; sunfite (trong rượu vang)</span></span></li>
+          <li><strong>P</strong> – <span class="de-trigger" onclick="toggleTip(this)">Lupinen<span class="vi-tip">Đậu Lupin</span></span></li>
+          <li><strong>R</strong> – <span class="de-trigger" onclick="toggleTip(this)">Weichtiere<span class="vi-tip">Thân mềm: mực, bạch tuộc, ốc, nghêu sò</span></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB 5: LERNKARTEN ===== -->
+<div class="panel" id="t5">
+  <div class="card">
+    <h2>🃏 Lernkarten – Schnellwiederholung</h2>
+    <p style="font-size:.88em;color:var(--muted);">Klicken Sie auf die Karte um die Antwort zu sehen (Deutsch + Vietnamesisch).</p>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin:10px 0;">
+      <span id="fc-counter">1 / 15</span>
+      <button onclick="fcShuffle()" style="background:#f1f5f9;border:1px solid #cbd5e1;padding:6px 12px;border-radius:8px;font-size:.82em;cursor:pointer;font-weight:600;">🔀 Mischen</button>
+    </div>
+    <div id="fc-card" onclick="fcFlip()">
+      <div id="fc-topic">THEMA</div>
+      <div id="fc-q">Wird geladen...</div>
+      <div id="fc-hint">👆 Klicken zum Antwort anzeigen</div>
+    </div>
+    <div class="fc-btns">
+      <button onclick="fcPrev()">← Vorherige</button>
+      <button class="btn-next" onclick="fcNext()">Nächste →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB 6: PRÜFUNGSAUFGABEN ===== -->
+<div class="panel" id="t6">
+  <div class="card">
+    <h2>📝 Zwischenprüfung Herbst 2023 – Wirtschaftsdienst</h2>
+    <p style="font-size:.88em;color:var(--muted);">Prüfungszeit: <strong>60 Minuten</strong> · Klicken Sie eine Antwort an oder nutzen Sie „Lösung zeigen".</p>
+  </div>
+
+  <div class="q-situation">🏰 <strong>Situation (Aufgaben 1–12):</strong> Sie sind Mitarbeiter im Restaurant <em>„Zum Schloss"</em>, Miltenberg. Herr Josef Baum feiert am 26. August 2023 seinen 50. Geburtstag mit 40 Personen. Sie helfen bei der Vorbereitung.</div>
+
+  <!-- Q1 -->
+  <div class="q-block">
+    <div class="q-label">1. Aufgabe – <span class="de-trigger" onclick="toggleTip(this)">Brandschutz<span class="vi-tip">Phòng cháy chữa cháy (PCCC)</span></span></div>
+    <div class="q-text">Sie sollen den Raum laut den Regeln des Brandschutzes kontrollieren. Welchen Mangel müssen Sie beanstanden?</div>
+    <ol class="opts">
+      <li onclick="selectOpt(this,false)">Die <span class="de-trigger" onclick="toggleTip(this)">Rettungswege<span class="vi-tip">lối thoát hiểm</span></span> sind ausgeschildert.</li>
+      <li onclick="selectOpt(this,false)">Die <span class="de-trigger" onclick="toggleTip(this)">Feuerlöscher<span class="vi-tip">bình chữa cháy</span></span> sind gut sichtbar angebracht.</li>
+      <li onclick="selectOpt(this,true)">Die <span class="de-trigger" onclick="toggleTip(this)">Notausgänge<span class="vi-tip">cửa thoát hiểm</span></span> sind nicht frei zugänglich.</li>
+      <li onclick="selectOpt(this,false)">Die Feuerlöscher sind alle 2 Jahre überprüft worden.</li>
+      <li onclick="selectOpt(this,false)">Die Notausgänge sind mit dem grünen Schild gekennzeichnet.</li>
+    </ol>
+    <div class="q-ans" id="ans1">✅ <strong>Antwort 3.</strong> <span class="de-trigger" onclick="toggleTip(this)">Notausgänge müssen immer frei zugänglich sein – nie versperren!<span class="vi-tip">Cửa thoát hiểm luôn phải thông thoáng! Bị chặn = vi phạm PCCC nghiêm trọng!</span></span></div>
+    <button class="show-btn" onclick="showAns('ans1')">🔍 Lösung zeigen</button>
+  </div>
+
+  <!-- Q2 -->
+  <div class="q-block">
+    <div class="q-label">2. Aufgabe – <span class="de-trigger" onclick="toggleTip(this)">Reinigung Gastraum<span class="vi-tip">Vệ sinh phòng tiệc</span></span></div>
+    <div class="q-text">Welche Reinigungsarbeit müssen Sie <strong>nicht zwingend</strong> vor jeder Veranstaltung durchführen?</div>
+    <ol class="opts">
+      <li onclick="selectOpt(this,false)"><span class="de-trigger" onclick="toggleTip(this)">Staub wischen<span class="vi-tip">Lau bụi</span></span></li>
+      <li onclick="selectOpt(this,true)"><span class="de-trigger" onclick="toggleTip(this)">Teppichboden shampoonieren<span class="vi-tip">Giặt thảm bằng dầu giặt chuyên dụng = Grundreinigung (tổng vệ sinh định kỳ)</span></span></li>
+      <li onclick="selectOpt(this,false)"><span class="de-trigger" onclick="toggleTip(this)">Fensterbänke auswischen<span class="vi-tip">Lau bệ cửa sổ</span></span></li>
+      <li onclick="selectOpt(this,false)"><span class="de-trigger" onclick="toggleTip(this)">Staubsaugen<span class="vi-tip">Hút bụi</span></span></li>
+      <li onclick="selectOpt(this,false)"><span class="de-trigger" onclick="toggleTip(this)">Tische abwischen<span class="vi-tip">Lau bàn</span></span></li>
+    </ol>
+    <div class="q-ans" id="ans2">✅ <strong>Antwort 2.</strong> <span class="de-trigger" onclick="toggleTip(this)">Teppich shampoonieren = Grundreinigung (nicht vor jeder Veranstaltung – Teppich wäre nass!)<span class="vi-tip">Giặt thảm = tổng vệ sinh định kỳ. Không làm trước buổi tiệc vì thảm ẩm ướt!</span></span></div>
+    <button class="show-btn" onclick="showAns('ans2')">🔍 Lösung zeigen</button>
+  </div>
+
+  <!-- Q6 -->
+  <div class="q-block">
+    <div class="q-label">6. Aufgabe – <span class="de-trigger" onclick="toggleTip(this)">Rechenaufgabe: Tischdeckengröße<span class="vi-tip">Bài toán tính kích thước khăn trải bàn</span></span></div>
+    <div class="q-text">Der Tisch ist <strong>160 cm lang</strong> und <strong>80 cm breit</strong>. Auf jeder Seite ist ein Überhang von <strong>25 cm</strong> zu berücksichtigen. Berechnen Sie die Größe der <span class="de-trigger" onclick="toggleTip(this)">Tischdecke<span class="vi-tip">Khăn trải bàn</span></span>!</div>
+    <div class="q-ans visible">
+      ✅ <strong>Lösung: 210 cm × 130 cm</strong><br>
+      • <span class="de-trigger" onclick="toggleTip(this)">Länge: 160 + (2 × 25) = 210 cm<span class="vi-tip">Chiều dài: 160 + 50 = 210 cm</span></span><br>
+      • <span class="de-trigger" onclick="toggleTip(this)">Breite: 80 + (2 × 25) = 130 cm<span class="vi-tip">Chiều rộng: 80 + 50 = 130 cm</span></span>
+    </div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="q-block">
+    <div class="q-label">10. Aufgabe – <span class="de-trigger" onclick="toggleTip(this)">Pflegeetikett<span class="vi-tip">Nhãn mác giặt là</span></span></div>
+    <div class="q-text">Etikett-Symbole: 100% Baumwolle · 95°C ·
+    <span class="de-trigger" onclick="toggleTip(this)">Dreieck durchgestrichen<span class="vi-tip">Tam giác gạch chéo = KHÔNG được tẩy trắng</span></span> ·
+    <span class="de-trigger" onclick="toggleTip(this)">Trockner durchgestrichen<span class="vi-tip">Máy sấy gạch chéo = KHÔNG được dùng máy sấy</span></span> ·
+    <span class="de-trigger" onclick="toggleTip(this)">Bügeleisen 3 Punkte<span class="vi-tip">Bàn ủi 3 chấm = được ủi đến 200°C</span></span> ·
+    <span class="de-trigger" onclick="toggleTip(this)">Kreis P<span class="vi-tip">Hình tròn P = được giặt khô chuyên nghiệp</span></span></div>
+    <ol class="opts">
+      <li onclick="selectOpt(this,false)">Schonwaschgang und chemische Reinigung erlaubt.</li>
+      <li onclick="selectOpt(this,false)">Chlorbleiche und Trockner erlaubt.</li>
+      <li onclick="selectOpt(this,false)">Chlorbleiche erlaubt, nicht schleudern.</li>
+      <li onclick="selectOpt(this,true)">Chemische Reinigung und Bügeln Stufe 3 erlaubt.</li>
+      <li onclick="selectOpt(this,false)">Chemische Reinigung und Trockner erlaubt.</li>
+    </ol>
+    <div class="q-ans" id="ans10">✅ <strong>Antwort 4.</strong> Kreis P = <span class="de-trigger" onclick="toggleTip(this)">chemische Reinigung erlaubt<span class="vi-tip">Giặt khô chuyên nghiệp được phép</span></span>; 3 Punkte = <span class="de-trigger" onclick="toggleTip(this)">Bügeln bis 200°C<span class="vi-tip">Được ủi đến 200°C (Stufe 3)</span></span>.</div>
+    <button class="show-btn" onclick="showAns('ans10')">🔍 Lösung zeigen</button>
+  </div>
+
+  <div class="q-situation" style="margin-top:16px;">🦺 <strong>Situation (Aufgaben 13–18):</strong> Sie helfen dem <span class="de-trigger" onclick="toggleTip(this)">Sicherheitsbeauftragten<span class="vi-tip">cán bộ an toàn lao động</span></span> und dem <span class="de-trigger" onclick="toggleTip(this)">Umweltschutzbeauftragten<span class="vi-tip">cán bộ bảo vệ môi trường</span></span>.</div>
+
+  <!-- Q13 -->
+  <div class="q-block">
+    <div class="q-label">13. Aufgabe – <span class="de-trigger" onclick="toggleTip(this)">Lagerung von Kohlensäureflaschen<span class="vi-tip">Bảo quản bình khí CO2 áp lực cao</span></span></div>
+    <div class="q-text">Worauf müssen Sie bei der Lagerung der <span class="de-trigger" onclick="toggleTip(this)">Kohlensäureflaschen<span class="vi-tip">bình khí CO2</span></span> achten?</div>
+    <ol class="opts">
+      <li onclick="selectOpt(this,false)">Flaschen flach hinlegen.</li>
+      <li onclick="selectOpt(this,false)">Lagerung über 25°C und neben Wärmequellen erlaubt.</li>
+      <li onclick="selectOpt(this,false)">Im Getränkekühlhaus oder Bierkeller aufbewahren.</li>
+      <li onclick="selectOpt(this,true)"><span class="de-trigger" onclick="toggleTip(this)">Stehend lagern und gegen Umfallen sichern.<span class="vi-tip">Đặt đứng và có xích/thanh giằng chống đổ ngã. Bắt buộc!</span></span></li>
+      <li onclick="selectOpt(this,false)">Verschlusskappe bei Anlieferung entfernen.</li>
+    </ol>
+    <div class="q-ans" id="ans13">✅ <strong>Antwort 4.</strong> <span class="de-trigger" onclick="toggleTip(this)">Druckgasflaschen müssen immer stehend und gesichert gelagert werden!<span class="vi-tip">Bình khí nén áp suất cao bắt buộc đặt đứng và chống đổ!</span></span></div>
+    <button class="show-btn" onclick="showAns('ans13')">🔍 Lösung zeigen</button>
+  </div>
+
+  <!-- Q14 -->
+  <div class="q-block">
+    <div class="q-label">14. Aufgabe – <span class="de-trigger" onclick="toggleTip(this)">Messersicherheit (falsche Aussage finden)<span class="vi-tip">An toàn khi dùng dao – tìm câu SAI</span></span></div>
+    <div class="q-text">Welche Arbeitsanweisung zum Umgang mit Messern ist <strong>falsch</strong>?</div>
+    <ol class="opts">
+      <li onclick="selectOpt(this,false)"><span class="de-trigger" onclick="toggleTip(this)">Bei Bedarf Schutzkleidung tragen<span class="vi-tip">Mặc đồ bảo hộ khi cần → ĐÚNG ✓</span></span></li>
+      <li onclick="selectOpt(this,false)"><span class="de-trigger" onclick="toggleTip(this)">Das geeignete Messer auswählen<span class="vi-tip">Chọn đúng loại dao → ĐÚNG ✓</span></span></li>
+      <li onclick="selectOpt(this,false)"><span class="de-trigger" onclick="toggleTip(this)">Messer nicht ins Spülwasser legen<span class="vi-tip">Không đặt dao vào chậu rửa → ĐÚNG ✓</span></span></li>
+      <li onclick="selectOpt(this,true)"><span class="de-trigger" onclick="toggleTip(this)">Fallende Messer auffangen<span class="vi-tip">Chụp dao rơi → SAI! ✗ TUYỆT ĐỐI KHÔNG! Hãy bước lùi!</span></span></li>
+      <li onclick="selectOpt(this,false)"><span class="de-trigger" onclick="toggleTip(this)">Nicht benötigte Messer wegräumen<span class="vi-tip">Cất dao không cần dùng → ĐÚNG ✓</span></span></li>
+    </ol>
+    <div class="q-ans" id="ans14">✅ <strong>Antwort 4 ist FALSCH.</strong> <span class="de-trigger" onclick="toggleTip(this)">Niemals ein fallendes Messer auffangen! Immer zurücktreten und fallen lassen.<span class="vi-tip">TUYỆT ĐỐI KHÔNG chụp dao rơi! Hãy bước lùi và để dao rơi tự do!</span></span></div>
+    <button class="show-btn" onclick="showAns('ans14')">🔍 Lösung zeigen</button>
+  </div>
+</div>
+
+<button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// Tab switching
+function showTab(id, el) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+}
+
+// Translation toggle
+function toggleTip(el) {
+  const wasOpen = el.classList.contains('open');
+  // Close all others
+  document.querySelectorAll('.de-trigger.open').forEach(t => t.classList.remove('open'));
+  if (!wasOpen) el.classList.add('open');
+}
+
+// Close on outside click
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.de-trigger')) {
+    document.querySelectorAll('.de-trigger.open').forEach(t => t.classList.remove('open'));
+  }
+});
+
+// Flashcards
+const CARDS = [
+  {topic:"KÜHLKETTE", q:"Welche Lagertemperatur gilt für frisches Geflügel und für Hackfleisch?", a:"🍗 Geflügel: ≤ +4 °C\n🥩 Hackfleisch: ≤ +2 °C (Verarbeitung noch am selben Tag!)\n\n🇻🇳 Thịt gia cầm: ≤ +4°C | Thịt xay: ≤ +2°C (phải chế biến trong ngày)"},
+  {topic:"IFSG §42/43", q:"Wann besteht ein Tätigkeitsverbot laut IfSG §42/43?", a:"🚫 Bei: Fieber · Durchfall · Erbrechen · Hepatitis A\n\n🇻🇳 Cấm làm việc khi: sốt cao, tiêu chảy, nôn mửa, viêm gan A"},
+  {topic:"CHEMIEGEFAHR", q:"Warum darf man Kalklöser (Säure) NIEMALS mit Chlorreiniger mischen?", a:"☠️ → Freisetzung von tödlichem Chlorgas (Erstickungsgefahr!)\n\n🇻🇳 Axit + Clo = khí Clo độc chết người!"},
+  {topic:"BRANDKLASSE F", q:"Wie löscht man einen Fettbrand korrekt? Was ist verboten?", a:"✅ Fettbrandlöscher oder Löschdecke.\n⛔ KEIN WASSER! → Fettbrandexplosion!\n\n🇻🇳 Dùng bình F hoặc chăn dập lửa. TUYỆT ĐỐI CẤM NƯỚC!"},
+  {topic:"MHD vs VD", q:"Was ist der Unterschied zwischen MHD und Verbrauchsdatum?", a:"📅 MHD = Qualitätsgarantie (nach Ablauf sensorisch prüfen)\n🛑 Verbrauchsdatum = sofort entsorgen wenn abgelaufen!\n\n🇻🇳 MHD: hạn chất lượng\nVerbrauchsdatum: TIÊU HỦY NGAY khi quá hạn!"},
+  {topic:"SERVIERRICHTUNG", q:"Von welcher Seite werden Speisen beim Amerikanischen Service serviert und abgeräumt?", a:"👉 Servieren & Abräumen: von RECHTS.\n👈 Ausnahme: Brotteller von LINKS.\n\n🇻🇳 Dâng và thu dọn từ PHẢI. Ngoại lệ: đĩa bánh mì từ TRÁI."},
+  {topic:"MOLTON", q:"Welche 4 Funktionen erfüllt die Molton-Tischauflage?", a:"1. Rutschfestigkeit (chống trượt)\n2. Geräuschdämpfung (giảm ồn)\n3. Flüssigkeitsaufnahme (thấm hút)\n4. Hitzeschutz (chống nhiệt)"},
+  {topic:"EINDECKEN", q:"Wie werden Messer und Gabel beim Eindecken positioniert?", a:"🔪 Messer: rechts (Klinge zur Tellermitte)\n🍴 Gabel: links (Zinken oben)\n📏 Abstand Tischkante: 1–2 cm\n\n🇻🇳 Dao PHẢI (lưỡi vào đĩa); Dĩa TRÁI. Cách mép 1–2 cm."},
+  {topic:"EIERCODE", q:"Was bedeuten die Zahlen 0, 1, 2, 3 im Eiercode auf dem Ei?", a:"0 = Bio (hữu cơ)\n1 = Freilandhaltung (thả vườn)\n2 = Bodenhaltung (chuồng sàn)\n3 = Käfighaltung (nuôi lồng nhốt)"},
+  {topic:"L-A-S-T REGEL", q:"Nennen Sie die 4 Schritte der L-A-S-T-Regel bei Gästereklamationen.", a:"🎧 L – Listen (Zuhören)\n🤝 A – Apologize (Entschuldigen)\n🛠️ S – Solve (Lösung anbieten)\n💐 T – Thank (Bedanken)\n⛔ NIE streiten!\n\n🇻🇳 Nghe → Xin lỗi → Giải pháp → Cảm ơn"},
+  {topic:"4-FARBEN-CODE", q:"Welche Farbe gilt für Waschbecken und Spiegel im Sanitärbereich?", a:"🟡 GELB = Sanitärbereich (Waschbecken, Spiegel, Armaturen)\n\n🇻🇳 Khăn VÀNG = Bồn rửa tay, gương, vòi sen.\n(🔴Bồn cầu | 🔵Phòng khách | 🟢Bếp)"},
+  {topic:"FIFO-PRINZIP", q:"Was bedeutet FIFO und wie wendet man es beim Einlagern an?", a:"First In – First Out:\nNeue Ware hinten/unten → alte Ware vorne/oben (zuerst verwenden).\n\n🇻🇳 Hàng nhập trước dùng trước. Hàng mới xếp sau/dưới."},
+  {topic:"SINNERSCHER KREIS", q:"Was versteht man unter dem Kompensationsprinzip beim Sinnerschen Kreis?", a:"Wird ein Faktor reduziert (z.B. Temperatur), müssen andere Faktoren erhöht werden (z.B. längere Einwirkzeit oder stärkere Mechanik).\n\n🇻🇳 Giảm 1 yếu tố → phải tăng yếu tố khác bù lại"},
+  {topic:"HACCP 7 SCHRITTE", q:"Nennen Sie alle 7 Schritte des HACCP-Systems.", a:"1. Gefahrenanalyse\n2. CCPs bestimmen\n3. Grenzwerte festlegen\n4. Überwachung\n5. Korrekturmaßnahmen\n6. Verifizierung\n7. Dokumentation"},
+  {topic:"ABFALLHIERARCHIE", q:"Nennen Sie die 5 Stufen der Abfallhierarchie (KrWG), höchste Priorität zuerst.", a:"1. Vermeidung (tránh)\n2. Wiederverwendung (tái sử dụng)\n3. Recycling (tái chế)\n4. Sonstige Verwertung (thu hồi năng lượng)\n5. Beseitigung (tiêu hủy)"},
+];
+
+let fcIdx = 0, fcFlipped = false;
+
+function fcRender() {
+  const c = CARDS[fcIdx];
+  document.getElementById('fc-topic').textContent = c.topic;
+  document.getElementById('fc-q').textContent = c.q;
+  document.getElementById('fc-hint').textContent = '👆 Klicken zum Antwort anzeigen';
+  document.getElementById('fc-counter').textContent = (fcIdx+1) + ' / ' + CARDS.length;
+  const card = document.getElementById('fc-card');
+  card.classList.remove('flipped');
+  fcFlipped = false;
+}
+
+function fcFlip() {
+  const card = document.getElementById('fc-card');
+  fcFlipped = !fcFlipped;
+  if (fcFlipped) {
+    card.classList.add('flipped');
+    document.getElementById('fc-q').innerHTML = CARDS[fcIdx].a.replace(/\n/g,'<br>');
+    document.getElementById('fc-hint').textContent = '👆 Klicken für Frage';
+  } else {
+    card.classList.remove('flipped');
+    document.getElementById('fc-q').textContent = CARDS[fcIdx].q;
+    document.getElementById('fc-hint').textContent = '👆 Klicken zum Antwort anzeigen';
+  }
+}
+
+function fcNext() { fcIdx = (fcIdx+1) % CARDS.length; fcRender(); }
+function fcPrev() { fcIdx = (fcIdx-1+CARDS.length) % CARDS.length; fcRender(); }
+function fcShuffle() {
+  for (let i=CARDS.length-1;i>0;i--) {
+    const j=Math.floor(Math.random()*(i+1));
+    [CARDS[i],CARDS[j]]=[CARDS[j],CARDS[i]];
+  }
+  fcIdx=0; fcRender();
+}
+setTimeout(fcRender, 200);
+
+// Exam helpers
+function selectOpt(li, isCorrect) {
+  const list = li.parentElement;
+  list.querySelectorAll('li').forEach(item => item.classList.remove('correct','wrong'));
+  li.classList.add(isCorrect ? 'correct' : 'wrong');
+  if (!isCorrect) {
+    // Mark the correct one
+    const allLi = list.querySelectorAll('li');
+    allLi.forEach(item => {
+      if (item.getAttribute('onclick') && item.getAttribute('onclick').includes('true')) {
+        item.classList.add('correct');
+      }
+    });
+  }
+}
+
+function showAns(id) {
+  const box = document.getElementById(id);
+  if (box) box.classList.toggle('visible');
+}
+
+// Scroll top
+window.addEventListener('scroll', () => {
+  document.getElementById('scroll-top').classList.toggle('visible', window.scrollY > 300);
+});
+</script>
+
+</body>
+</html>
