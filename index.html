@@ -1032,12 +1032,28 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
 .eq-ans-bad summary,.eq-ans-bad-sum{cursor:pointer;font-weight:600;color:var(--bad,#C4342B)}
 .eq-info-row{margin:0 0 6px;color:var(--ink)}
 .eq-italic-muted{margin:0;font-style:italic;color:var(--muted);font-size:.92em}
-/* ── Zwischen: Klick-Übersetzung ── */
+/* ── Zwischen: Klick-Übersetzung & Audio Toolbar ── */
+.zw-toolbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;background:var(--surface,#fff);border:1px solid var(--line,#e2e8f0);border-radius:12px;padding:10px 14px;margin:12px 0 16px;box-shadow:0 1px 3px rgba(0,0,0,.03);}
+.zw-toggle-group{display:flex;align-items:center;flex-wrap:wrap;gap:6px;}
+.zw-mode-btn{background:var(--bg,#f8fafc);color:var(--muted,#64748b);border:1px solid var(--line,#cbd5e1);border-radius:20px;padding:6px 14px;font-size:.82em;font-weight:600;cursor:pointer;transition:all .2s;}
+.zw-mode-btn.active{background:var(--accent,#1d4ed8);color:#fff;border-color:var(--accent,#1d4ed8);box-shadow:0 2px 6px rgba(29,78,216,.25);}
+.zw-mode-btn:hover:not(.active){border-color:var(--accent,#1d4ed8);color:var(--accent,#1d4ed8);}
+.zw-audio-btn{background:none;border:none;cursor:pointer;font-size:.95em;padding:0 3px;color:var(--accent);vertical-align:middle;transition:transform .15s;}
+.zw-audio-btn:hover{transform:scale(1.25);}
 .zw-tip{display:inline-block;position:relative;cursor:pointer;background:#eff6ff;border:1px dashed #93c5fd;border-radius:5px;padding:1px 6px;font-weight:600;color:#1e40af;font-size:.9em;transition:background .15s;user-select:none;}
 .zw-tip:hover{background:#dbeafe;}
 .zw-tip::after{content:' 🔍';font-size:.72em;}
-.zw-pop{display:none;position:absolute;z-index:9999;left:0;top:calc(100% + 5px);min-width:200px;max-width:320px;background:#1e293b;color:#f1f5f9;border-radius:10px;padding:10px 12px;font-size:.82em;line-height:1.55;box-shadow:0 8px 24px rgba(0,0,0,.3);white-space:pre-line;font-weight:400;pointer-events:none;}
+.zw-pop{display:none;position:absolute;z-index:9999;left:0;top:calc(100% + 5px);min-width:220px;max-width:340px;background:#1e293b;color:#f1f5f9;border-radius:10px;padding:10px 12px;font-size:.82em;line-height:1.55;box-shadow:0 8px 24px rgba(0,0,0,.3);white-space:pre-line;font-weight:400;pointer-events:none;}
+.zw-pop-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #334155;padding-bottom:5px;margin-bottom:6px;font-size:.85em;color:#94a3b8;}
 .zw-tip.zw-open .zw-pop{display:block;}
+/* Chế độ song ngữ toàn bộ (Bilingual Mode) */
+.zw-bilingual-mode .zw-tip{background:transparent!important;border:none!important;padding:0!important;color:inherit!important;font-weight:600!important;cursor:default!important;}
+.zw-bilingual-mode .zw-tip::after{content:none!important;}
+.zw-bilingual-mode .zw-tip .zw-pop{display:inline-block!important;position:static!important;background:#eff6ff!important;color:#1e40af!important;border:1px solid #bfdbfe!important;border-radius:5px!important;padding:2px 7px!important;margin-left:4px!important;font-size:.83em!important;box-shadow:none!important;font-weight:400!important;pointer-events:auto!important;white-space:normal!important;vertical-align:middle!important;}
+.zw-bilingual-mode .zw-pop-head{display:none!important;}
+/* Flashcard Spaced Repetition Tags */
+.fc-filter-btn{padding:5px 12px;border-radius:16px;border:1px solid var(--line,#cbd5e1);background:var(--surface,#fff);color:var(--muted,#64748b);font-size:.8em;font-weight:600;cursor:pointer;}
+.fc-filter-btn.active{background:var(--accent,#1d4ed8);color:#fff;border-color:var(--accent,#1d4ed8);}
 /* ===== Exam Tab 5: z-dethimau — class-based styles ===== */
 .eq-pill-row{display:flex;gap:8px;margin-top:12px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch}
 .eq-pill{white-space:nowrap;background:var(--surface);color:var(--muted);border:1px solid var(--line);border-radius:20px;padding:8px 16px;font-weight:600;font-size:.86em;cursor:pointer;flex-shrink:0;transition:.15s;font-family:inherit}
@@ -1602,8 +1618,21 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
   <div class="back" onclick="go('#/')">← Fächer</div>
   <div class="section-head">
     <h2>🛡️ Zwischenprüfung: Fachkraft für Gastronomie (AO 2022)</h2>
-    <p>Vollständiges Lernheft auf Deutsch · Prüfungsbereich: <strong>Wirtschaftsdienst</strong> · Klick auf <span class="zw-tip" onclick="zwTip(this)" style="font-size:.85em;"><span class="zw-pop">← So sehen Übersetzungen aus! Klicken zum Schließen.</span>Begriff 🔍</span> = vietnamesische Übersetzung</p>
+    <p>Vollständiges Lernheft auf Deutsch · Prüfungsbereich: <strong>Wirtschaftsdienst</strong> · Bấm vào từ hoặc nút bên dưới để đổi chế độ học.</p>
   </div>
+
+  <!-- TOOLBAR: CHẾ ĐỘ DỊCH & PHÁT ÂM TIẾNG ĐỨC -->
+  <div class="zw-toolbar">
+    <div class="zw-toggle-group">
+      <span style="font-size:.84em;font-weight:700;color:var(--muted);">📖 Chế độ học:</span>
+      <button class="zw-mode-btn active" id="zw-btn-click" onclick="setZwMode('click')">🇩🇪 100% Tiếng Đức (Bấm để dịch)</button>
+      <button class="zw-mode-btn" id="zw-btn-bilingual" onclick="setZwMode('bilingual')">🇻🇳 Hiện song ngữ toàn bộ</button>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px;">
+      <button onclick="speakDE('Willkommen zur Zwischenprüfung! Viel Erfolg beim Lernen!')" class="zw-mode-btn" style="background:#f0fdf4;color:#15803d;border-color:#bbf7d0;" title="Bấm để nghe thử phát âm tiếng Đức">🔊 Nghe phát âm mẫu</button>
+    </div>
+  </div>
+
   <div class="tabs">
     <div class="tab active" data-ztab="tongquan">📋 1. Überblick</div>
     <div class="tab" data-ztab="lythuyet">🧹 2. Hygiene &amp; Reinigung</div>
@@ -2356,581 +2385,48 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
     </div>
   </div>
 
-  <!-- ==================== TAB 4: LERNKARTEN ==================== -->
+  <!-- ==================== TAB 4: LERNKARTEN (SPACED REPETITION) ==================== -->
   <div class="zpanel" id="z-hoctap">
     <div class="card">
-      <h2>🃏 Lernkarten – Schnellwiederholung</h2>
-      <p class="hint">Klicken Sie auf die Karte → Antwort auf Deutsch + 🇻🇳 Vietnamesisch erscheint.</p>
-      <div style="display:flex;justify-content:space-between;align-items:center;margin:10px 0 0;">
-        <span id="fc-counter2" style="background:var(--accent-soft);color:var(--accent);padding:5px 12px;border-radius:20px;font-size:.82em;font-weight:700;">1 / 15</span>
-        <button onclick="fc2Shuffle()" style="background:#f1f5f9;border:1px solid #cbd5e1;padding:6px 12px;border-radius:8px;font-size:.82em;cursor:pointer;font-weight:600;">🔀 Mischen</button>
-      </div>
-      <div id="fc-card2" onclick="fc2Flip()" style="min-height:160px;background:#fff;border:2px solid var(--accent);border-radius:16px;padding:20px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;cursor:pointer;margin:12px 0;transition:background .3s;">
-        <div id="fc2-topic" style="font-size:.75em;font-weight:800;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">THEMA</div>
-        <div id="fc2-q" style="font-size:1em;font-weight:600;line-height:1.5;">Wird geladen…</div>
-        <div id="fc2-hint" style="font-size:.8em;color:#64748b;margin-top:10px;">👆 Klicken zum Antwort anzeigen</div>
-      </div>
-      <div style="display:flex;gap:8px;">
-        <button onclick="fc2Prev()" style="flex:1;padding:10px;border-radius:10px;font-weight:700;font-size:.9em;cursor:pointer;border:1px solid #e2e8f0;background:#f8fafc;">← Vorherige</button>
-        <button onclick="fc2Next()" style="flex:1;padding:10px;border-radius:10px;font-weight:700;font-size:.9em;cursor:pointer;border:none;background:var(--accent);color:#fff;">Nächste →</button>
-      </div>
-    </div>
-
-    <script>
-    const FC2 = [
-      {topic:"KÜHLKETTE", q:"Welche Lagertemperatur gilt für frisches Geflügel und Hackfleisch?", a:"🍗 Geflügel: ≤ +4 °C\n🥩 Hackfleisch: ≤ +2 °C (Verarbeitung noch am selben Tag!)\n\n🇻🇳 Thịt gia cầm: ≤ +4°C | Thịt xay: ≤ +2°C (phải chế biến trong ngày)"},
-      {topic:"IFSG §42/43", q:"Wann besteht ein Tätigkeitsverbot laut IfSG §42/43?", a:"🚫 Bei: Fieber · Durchfall · Erbrechen · Hepatitis A\n\n🇻🇳 Cấm làm việc khi: sốt cao, tiêu chảy, nôn mửa, viêm gan A"},
-      {topic:"CHEMIEGEFAHR", q:"Warum darf man Kalklöser NIEMALS mit Chlorreiniger mischen?", a:"☠️ → Freisetzung von tödlichem Chlorgas!\n\n🇻🇳 Axit + Clo = khí Clo độc chết người!"},
-      {topic:"BRANDKLASSE F", q:"Wie löscht man einen Fettbrand? Was ist verboten?", a:"✅ Fettbrandlöscher oder Löschdecke.\n⛔ KEIN WASSER! → Fettbrandexplosion!\n\n🇻🇳 Dùng bình F hoặc chăn dập lửa. TUYỆT ĐỐI CẤM NƯỚC!"},
-      {topic:"MHD vs VD", q:"Was ist der Unterschied zwischen MHD und Verbrauchsdatum?", a:"📅 MHD = Qualitätsgarantie (nach Ablauf sensorisch prüfen)\n🛑 Verbrauchsdatum = sofort entsorgen wenn abgelaufen!\n\n🇻🇳 MHD: hạn chất lượng | VD: TIÊU HỦY NGAY khi quá hạn!"},
-      {topic:"SERVIERRICHTUNG", q:"Von welcher Seite werden Speisen beim Amerikanischen Service serviert?", a:"👉 Servieren & Abräumen: von RECHTS.\n👈 Ausnahme: Brotteller von LINKS.\n\n🇻🇳 Dâng và thu dọn luôn từ PHẢI. Ngoại lệ: đĩa bánh mì từ TRÁI."},
-      {topic:"MOLTON", q:"Welche 4 Funktionen erfüllt die Molton-Tischauflage?", a:"1. Rutschfestigkeit (chống trượt)\n2. Geräuschdämpfung (giảm ồn)\n3. Flüssigkeitsaufnahme (thấm hút)\n4. Hitzeschutz (chống nhiệt)"},
-      {topic:"EINDECKEN", q:"Wie werden Messer und Gabel beim Eindecken positioniert?", a:"🔪 Messer: rechts (Klinge zur Tellermitte)\n🍴 Gabel: links (Zinken oben)\n📏 Abstand Tischkante: 1–2 cm\n\n🇻🇳 Dao PHẢI (lưỡi vào đĩa); Dĩa TRÁI. Cách mép 1–2 cm."},
-      {topic:"EIERCODE", q:"Was bedeuten die Zahlen 0, 1, 2, 3 im Eiercode?", a:"0 = Bio (hữu cơ)\n1 = Freilandhaltung (thả vườn)\n2 = Bodenhaltung (chuồng sàn)\n3 = Käfighaltung (nuôi lồng nhốt)"},
-      {topic:"L-A-S-T REGEL", q:"Nennen Sie die 4 Schritte der L-A-S-T-Regel.", a:"🎧 L – Listen (Zuhören)\n🤝 A – Apologize (Entschuldigen)\n🛠️ S – Solve (Lösung anbieten)\n💐 T – Thank (Bedanken)\n⛔ NIE streiten!\n\n🇻🇳 Nghe → Xin lỗi → Giải pháp → Cảm ơn"},
-      {topic:"4-FARBEN-CODE", q:"Welche Farbe gilt für Waschbecken und Spiegel im Sanitärbereich?", a:"🟡 GELB = Sanitärbereich (Waschbecken, Spiegel, Armaturen)\n\n🇻🇳 Khăn VÀNG = Bồn rửa tay, gương, vòi sen.\n(🔴Bồn cầu | 🔵Phòng khách | 🟢Bếp)"},
-      {topic:"FIFO-PRINZIP", q:"Was bedeutet FIFO und wie wendet man es beim Einlagern an?", a:"First In – First Out:\nNeue Ware hinten/unten → alte Ware vorne/oben.\n\n🇻🇳 Hàng nhập trước dùng trước. Hàng mới xếp sau/dưới."},
-      {topic:"SINNERSCHER KREIS", q:"Was passiert beim Kompensationsprinzip des Sinnerschen Kreises?", a:"Wird ein Faktor gesenkt (z.B. Temperatur), müssen andere erhöht werden (z.B. längere Einwirkzeit oder stärkere Mechanik).\n\n🇻🇳 Nguyên tắc bù trừ: giảm 1 yếu tố → tăng yếu tố khác"},
-      {topic:"HACCP 7 SCHRITTE", q:"Nennen Sie alle 7 Schritte des HACCP-Systems.", a:"1. Gefahrenanalyse\n2. CCPs bestimmen\n3. Grenzwerte festlegen\n4. Überwachung\n5. Korrekturmaßnahmen\n6. Verifizierung\n7. Dokumentation"},
-      {topic:"ABFALLHIERARCHIE", q:"Nennen Sie die 5 Stufen der Abfallhierarchie nach KrWG.", a:"1. Vermeidung (tránh)\n2. Wiederverwendung (tái sử dụng)\n3. Recycling (tái chế)\n4. Sonstige Verwertung (thu hồi năng lượng)\n5. Beseitigung (tiêu hủy)"},
-    ];
-    let fc2Idx=0, fc2Flipped=false;
-    function fc2Render(){
-      const c=FC2[fc2Idx];
-      document.getElementById('fc2-topic').textContent=c.topic;
-      document.getElementById('fc2-q').textContent=c.q;
-      document.getElementById('fc2-hint').textContent='👆 Klicken zum Antwort anzeigen';
-      document.getElementById('fc-counter2').textContent=(fc2Idx+1)+' / '+FC2.length;
-      document.getElementById('fc-card2').style.background='#fff';
-      document.getElementById('fc-card2').style.borderColor='var(--accent)';
-      fc2Flipped=false;
-    }
-    function fc2Flip(){
-      fc2Flipped=!fc2Flipped;
-      const card=document.getElementById('fc-card2');
-      if(fc2Flipped){
-        card.style.background='#eff6ff';
-        card.style.borderColor='#1e40af';
-        document.getElementById('fc2-q').innerHTML=FC2[fc2Idx].a.replace(/\n/g,'<br>');
-        document.getElementById('fc2-hint').textContent='👆 Klicken für Frage';
-      } else {
-        card.style.background='#fff';
-        card.style.borderColor='var(--accent)';
-        document.getElementById('fc2-q').textContent=FC2[fc2Idx].q;
-        document.getElementById('fc2-hint').textContent='👆 Klicken zum Antwort anzeigen';
-      }
-    }
-    function fc2Next(){fc2Idx=(fc2Idx+1)%FC2.length;fc2Render();}
-    function fc2Prev(){fc2Idx=(fc2Idx-1+FC2.length)%FC2.length;fc2Render();}
-    function fc2Shuffle(){
-      for(let i=FC2.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[FC2[i],FC2[j]]=[FC2[j],FC2[i]];}
-      fc2Idx=0;fc2Render();
-    }
-    setTimeout(fc2Render,400);
-    </script>
-  </div>
-
-    <div class="card">
-      <h2>🛠️ PHẦN THỰC HÀNH &amp; NGHIỆP VỤ SERVICE (ARBEITSAUFGABE - 60 MIN.)</h2>
-      <p>Tổng hợp chi tiết nghiệp vụ phục vụ, bày bàn, bưng bê đĩa/ly và xử lý khiếu nại tích hợp từ giáo trình <strong>BfK-1 (LF 3, LF 6, LF 9)</strong>.</p>
-    </div>
-
-    <!-- HÀNG HÓA & DỤNG CỤ -->
-    <div class="card">
-      <h2>① Nhận biết Hàng hóa &amp; Dụng cụ nhà hàng (Waren- &amp; Inventarkunde)</h2>
-
-      <h3 class="sub">1. Hàng hóa thực phẩm tiêu biểu &amp; Trứng gà (Eiercode aus LF3)</h3>
-      <table>
-        <thead>
-          <tr><th>Mặt hàng</th><th>Đặc điểm &amp; Mã nhận diện</th><th>Công dụng &amp; Ứng dụng thực tế trong dịch vụ</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Zitrusfrüchte</strong><br>(Zitrone, Limette, Orange)</td>
-            <td>Chanh vàng, chanh xanh, cam tươi</td>
-            <td>Cắt lát xoắn vỏ trang trí cocktail (<em>Cocktailgarnitur</em>), ăn kèm hải sản, cá hồi và món thịt tẩm bột chiên <em>Wiener Schnitzel</em>.</td>
-          </tr>
-          <tr>
-            <td><strong>Frische Kräuter</strong><br>(Minze, Rosmarin, Basilikum)</td>
-            <td>Bạc hà, hương thảo, húng tây</td>
-            <td>Minze dùng cho cocktail (Mojito, Hugo) và tráng miệng; Rosmarin dùng cho món bít tết và thịt cừu nướng; Basilikum dùng cho món Ý (Caprese, Pasta).</td>
-          </tr>
-          <tr>
-            <td><strong>Hühnereier (Mã trứng)</strong><br><em>(BfK-1 LF3 chuyên sâu)</em></td>
-            <td><strong>0</strong> = Bio (Hữu cơ)<br><strong>1</strong> = Freilandhaltung (Nuôi thả tự nhiên)<br><strong>2</strong> = Bodenhaltung (Nuôi trong chuồng trên sàn)<br><strong>3</strong> = Käfighaltung (Nuôi lồng nhốt)</td>
-            <td>Chế biến món ăn sáng (Spiegelei, Rührei, Omelett), nhũ hóa làm sốt Hollandaise, Mayonnaise; bảo quản trong kho lạnh $\le +8^\circ\text{C}$ sau 18 ngày kể từ ngày đẻ, tránh vi khuẩn Salmonella.</td>
-          </tr>
-          <tr>
-            <td><strong>Menagen</strong></td>
-            <td>Bộ lọ muối, lọ tiêu, dầu giấm để bàn</td>
-            <td>Phục vụ khách tự nêm nếm. Lọ muối nhiều lỗ hơn lọ tiêu. Cổ bình dầu giấm luôn lau sạch bóng không dính cặn.</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h3 class="sub">2. Chuyên khảo Đồ sứ (Porzellanarten)</h3>
-      <div class="grid2">
-        <div class="mini">
-          <h4>🍽️ Platzteller (Đĩa lót trang trí / Show plate - Ø ~30–33 cm)</h4>
-          <p>Đĩa to nhất, đặt cố định tại vị trí ngồi làm tâm điểm từ đầu bữa tiệc đến trước món tráng miệng.</p>
-        </div>
-        <div class="mini">
-          <h4>🥩 Speiseteller / Flacher Teller (Đĩa ăn chính - Ø ~26–28 cm)</h4>
-          <p>Dùng đựng món chính nóng (<em>Hauptgericht</em>) như bít tết, gà quay kèm rau củ tinh bột.</p>
-        </div>
-        <div class="mini">
-          <h4>🥣 Suppenteller &amp; Suppentasse mit Untertasse</h4>
-          <p>Đĩa súp sâu lòng (~23 cm) dùng cho súp đặc (<em>gebundene Suppe</em>); Tách súp 2 quai kèm đĩa lót dùng cho nước dùng trong (<em>klare Brühe / Consommé</em>).</p>
-        </div>
-        <div class="mini">
-          <h4>🥗 Vorspeisen- &amp; Dessertteller (Ø ~19–21 cm)</h4>
-          <p>Dùng cho món khai vị nguội (Salate, Antipasti), đĩa tráng miệng ngọt hoặc làm đĩa ăn sáng (<em>Frühstücksteller</em>).</p>
-        </div>
-        <div class="mini">
-          <h4>🥖 Brotteller (Đĩa bánh mì - Ø ~15–17 cm)</h4>
-          <p>Luôn đặt ở <strong>phía bên tay trái của khách</strong> kèm dao phết bơ nhỏ (<em>Buttermesser</em>).</p>
-        </div>
-      </div>
-
-      <h3 class="sub">3. Chuyên khảo Dao thìa dĩa (Besteckteile)</h3>
-      <table>
-        <thead>
-          <tr><th>Tên dụng cụ</th><th>Đặc điểm cấu tạo</th><th>Công năng sử dụng</th></tr>
-        </thead>
-        <tbody>
-          <tr><td><strong>Menümesser &amp; Menügabel</strong></td><td>Kích thước tiêu chuẩn lớn nhất trong bộ</td><td>Dùng cho món ăn chính (Hauptgang: Fleisch, Geflügel).</td></tr>
-          <tr><td><strong>Vorspeisenbesteck</strong></td><td>Kích thước nhỏ hơn Menübesteck</td><td>Dùng cho món khai vị nguội hoặc món nóng đầu bữa.</td></tr>
-          <tr><td><strong>Fischmesser &amp; Fischgabel</strong></td><td>Dao lưỡi phẳng bè không mài sắc; Dĩa 4 răng có rãnh giữa</td><td>Phục vụ món cá để lách tách thớ thịt mà không cắt đứt xương cá.</td></tr>
-          <tr><td><strong>Steakmesser</strong></td><td>Lưỡi dao răng cưa sắc bén (<em>Wellenschliff</em>)</td><td>Cắt thịt bò bít tết ngọt thớ mà không làm ép chảy nước ngọt của thịt.</td></tr>
-          <tr><td><strong>Dessertbesteck</strong></td><td>Kaffeelöffel, Kuchengabel (3 răng có 1 cạnh to)</td><td>Dùng cho bánh ngọt, kem, hoa quả tráng miệng hoặc cà phê/trà.</td></tr>
-          <tr><td><strong>Buttermesser</strong></td><td>Lưỡi ngắn, đầu tù tròn</td><td>Đặt trên đĩa bánh mì (Brotteller) dùng lấy và phết bơ.</td></tr>
-        </tbody>
-      </table>
-
-      <h3 class="sub">4. Chuyên khảo Ly cốc (Gläserkunde)</h3>
-      <div class="grid2">
-        <div class="mini">
-          <h4>💧 Wasserglas (Ly nước lọc / Richtglas)</h4>
-          <p>Ly có chân hoặc không chân (Tumbler). Là <strong>ly định vị chuẩn (Richtglas)</strong> khi set up bàn tiệc.</p>
-        </div>
-        <div class="mini">
-          <h4>🥂 Weißweinglas (Ly rượu vang trắng)</h4>
-          <p>Bầu ly nhỏ thon gọn hình hoa tulip để giữ hương hoa quả và nhiệt độ mát lạnh chuẩn (<strong>10°C – 12°C</strong>).</p>
-        </div>
-        <div class="mini">
-          <h4>🍷 Rotweinglas (Ly rượu vang đỏ)</h4>
-          <p>Bầu ly to tròn phình rộng (Bordeaux/Burgunder) giúp vang đỏ tiếp xúc tối đa oxy để thở ở nhiệt độ phòng (<strong>16°C – 18°C</strong>).</p>
-        </div>
-        <div class="mini">
-          <h4>🍾 Sektglas / Champagnerflöte</h4>
-          <p>Dáng thon dài hình ống (<em>Flöte</em>) để bọt khí sủi tăm (<em>Mousseux / Perlage</em>) nổi đẹp mắt và lâu tan.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- BÀY BÀN & TISCHWÄSCHE -->
-    <div class="card">
-      <h2>② Kỹ thuật Khăn trải bàn &amp; Bày bàn chuẩn Quốc tế (Tischwäsche &amp; Eindecken)</h2>
-      <div class="hint">Nội dung cốt lõi trích từ môn BfK-1 Lernfeld 3 (Molton, Tischtuch, Napperon, Gedeckarten)</div>
-
-      <h3 class="sub">1. Phân loại Khăn trải bàn (Tischwäsche)</h3>
-      <ul>
-        <li>🛡️ <strong>Molton (Tấm lót bàn nỉ cao su):</strong> Trải lót dưới cùng sát mặt bàn gỗ. Tác dụng: Chống trơn trượt khăn trải bàn, giảm tiếng ồn khi đặt ly đĩa, thấm hút chất lỏng khi đổ và bảo vệ mặt bàn khỏi nhiệt độ nóng.</li>
-        <li>⬜ <strong>Tischtuch (Khăn trải bàn chính):</strong> Trải phủ lên trên Molton. Mép khăn phải <strong>rủ đều xung quanh bàn từ 20 cm đến 30 cm</strong> (vừa chạm tới mặt ghế ngồi, không chạm sàn gây vướng chân khách).</li>
-        <li>🟫 <strong>Napperon / Deckserviette (Khăn phủ nhỏ / Khăn bảo vệ):</strong> Trải phủ chéo hoặc chính giữa trên khăn bàn chính để trang trí và thay thế nhanh khi bẩn mà không cần thay cả tấm khăn bàn to.</li>
-        <li>🎗️ <strong>Tischläufer (Khăn chạy dài giữa bàn):</strong> Dải khăn hẹp trải dọc giữa bàn tạo điểm nhấn hiện đại.</li>
-      </ul>
-
-      <h3 class="sub">2. Các loại Gedeck tiêu chuẩn (Gedeckarten)</h3>
-      <div class="grid2">
-        <div class="mini">
-          <h4>☕ 1. Frühstücksgedeck (Bàn ăn sáng)</h4>
-          <p>Đĩa ăn sáng (~20cm), tách cà phê kèm đĩa lót và thìa cà phê bên phải, dao ăn sáng bên phải đĩa, khăn ăn, ly nước cam/nước lọc.</p>
-        </div>
-        <div class="mini">
-          <h4>🍽️ 2. Grundgedeck / Mittelgedeck (Bàn ăn cơ bản)</h4>
-          <p>Dùng cho bữa ăn chưa chốt menu (À la carte): Đĩa ăn chính (hoặc Platzteller), Menümesser (phải), Menügabel (trái), Wasserglas (thẳng mũi dao), khăn ăn.</p>
-        </div>
-        <div class="mini">
-          <h4>🍷 3. Erweitertes Menügedeck (Bàn tiệc món chọn sẵn)</h4>
-          <p>Set up đầy đủ dụng cụ theo thực đơn 3–4 món: Dao dĩa khai vị ngoài cùng, thìa súp, dao dĩa món chính, dao dĩa tráng miệng trên đầu, đĩa bánh mì bên trái, bộ ly vang trắng/đỏ/nước.</p>
-        </div>
-        <div class="mini">
-          <h4>👑 4. Bankettgedeck (Bàn tiệc lớn cao cấp)</h4>
-          <p>Có đĩa lót Platzteller cố định, khăn ăn vải gấp tạo hình nghệ thuật (Tafelspitz), menu tiệc in sẵn, đầy đủ bộ ly pha lê và dao dĩa chuyên dụng (Fischbesteck, Steakmesser).</p>
-        </div>
-      </div>
-
-      <h3 class="sub">3. Sơ đồ &amp; Quy tắc vàng khi Bày bàn (Grundregeln des Eindeckens)</h3>
-      <div class="formula">
-        📏 KHOẢNG CÁCH: Đĩa lót và chuôi dao thìa dĩa cách mép bàn đúng 1 – 2 cm (1 đốt ngón tay).<br>
-        🔄 THỨ TỰ: Xếp dao dĩa theo trình tự món ăn từ NGOÀI VÀO TRONG (von außen nach innen).<br>
-        🔪 TAY THUẬN: Dao &amp; thìa bên PHẢI (Lưỡi dao quay sang trái/vào trong đĩa); Dĩa bên TRÁI (ngửa răng dĩa).<br>
-        🍰 TRÁNG MIỆNG: Nằm ngang phía TRÊN ĐẦU đĩa (Thìa cán quay sang PHẢI, Dĩa cán quay sang TRÁI).<br>
-        🥖 BÁNH MÌ: Đĩa bánh mì đặt bên TRÁI các dĩa chính; dao bơ đặt trên đĩa bánh mì quay lưỡi sang trái.<br>
-        🥂 LY CỐC: Richtglas (Wasserglas) đặt thẳng hàng phía trên đầu mũi dao chính 1 cm; các ly rượu vang xếp chéo 45° hoặc tam giác xuống phía dưới bên phải.
-      </div>
-    </div>
-
-    <!-- KỸ THUẬT PHỤC VỤ & BƯNG BÊ -->
-    <div class="card">
-      <h2>③ Kỹ thuật Phục vụ &amp; Bưng bê (Servierarten &amp; Tragetechniken aus LF3)</h2>
-
-      <h3 class="sub">1. Bốn hình thức phục vụ kinh điển (Die 4 Servierarten)</h3>
-      <table>
-        <thead>
-          <tr><th>Hình thức phục vụ</th><th>Cách thức vận hành</th><th>Hướng phục vụ</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Amerikanischer Service</strong><br>(Tellerservice - Phổ biến nhất)</td>
-            <td>Món ăn được đầu bếp chia sẵn đẹp mắt trên từng đĩa trong bếp. Người phục vụ bưng đĩa ra đặt trước mặt khách.</td>
-            <td>Đặt món ăn từ bên <strong>PHẢI (von RECHTS)</strong> của khách.</td>
-          </tr>
-          <tr>
-            <td><strong>Französischer Service</strong><br>(Plattenservice - Khách tự gắp)</td>
-            <td>Món ăn được bày trên khay/đĩa bạc lớn. Người phục vụ bưng khay đến sát bàn, khách tự dùng bộ gắp (<em>Vorlegebesteck</em>) gắp thức ăn vào đĩa của mình.</td>
-            <td>Phục vụ từ bên <strong>TRÁI (von LINKS)</strong> của khách.</td>
-          </tr>
-          <tr>
-            <td><strong>Englischer Service</strong><br>(Gueridonservice / Vorlegeservice)</td>
-            <td>Món ăn được mang ra bàn phụ (<em>Gueridon</em>) cạnh bàn khách. Người phục vụ dùng bộ gắp chia thức ăn ra đĩa rồi mới dâng lên bàn cho khách.</td>
-            <td>Chia thức ăn bên bàn phụ, sau đó đặt đĩa cho khách từ bên <strong>PHẢI (von RECHTS)</strong>.</td>
-          </tr>
-          <tr>
-            <td><strong>Russischer Service</strong><br>(Đại tiệc gia đình / Khay lớn)</td>
-            <td>Các tảng thịt lớn, gà quay nguyên con được bày nguyên khay đặt trực tiếp lên giữa bàn tiệc để khách tự chia sẻ với nhau.</td>
-            <td>Đặt khay lớn giữa bàn tiệc.</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h3 class="sub">2. Kỹ thuật Bưng bê &amp; Thu dọn (Tragetechniken &amp; Abräumen)</h3>
-      <div class="grid2">
-        <div class="mini">
-          <h4>🍽️ Kỹ thuật bưng 3 đĩa (3-Teller-Tragetechnik)</h4>
-          <p>Tay trái cầm 2 đĩa (Đĩa 1 giữ bằng ngón cái và ngón trỏ; Đĩa 2 luồn dưới đĩa 1 tựa trên 3 ngón còn lại và cẳng tay). Tay phải bưng đĩa thứ 3 để đặt cho khách.</p>
-        </div>
-        <div class="mini">
-          <h4>🍷 Kỹ thuật bưng ly (Gläser tragen)</h4>
-          <p><strong>Bắt buộc luôn dùng khay (Tablett)!</strong> Không bao giờ cầm tay trực tiếp nhiều ly. Xếp các ly nặng, ly cao hoặc chai rượu ở chính giữa khay để giữ trọng tâm cân bằng, ly thấp ở xung quanh.</p>
-        </div>
-        <div class="mini">
-          <h4>➡️ Quy tắc dâng món &amp; Rót đồ uống (Einsetzen)</h4>
-          <p>Tất cả các món ăn chính, món tráng miệng, nước uống và rượu vang đều được <strong>dâng/rót từ bên PHẢI (von RECHTS)</strong>. Riêng đĩa bánh mì và đĩa salad phụ được dâng từ bên TRÁI (von LINKS).</p>
-        </div>
-        <div class="mini">
-          <h4>⬅️ Quy tắc thu dọn bàn (Abräumen)</h4>
-          <p>Thu dọn đĩa bẩn và ly bẩn từ bên <strong>PHẢI (von RECHTS)</strong> bằng kỹ thuật xếp chồng dao dĩa trên đĩa thu dọn đầu tiên. Đĩa bánh mì thu dọn từ bên TRÁI.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- XỬ LÝ KHIẾU NẠI & 14 DỊ ỨNG -->
-    <div class="card">
-      <h2>④ Xử lý Khiếu nại &amp; 14 Chất gây dị ứng (Reklamation &amp; Allergene aus LF6/LF9)</h2>
-
-      <h3 class="sub">1. Quy tắc vàng xử lý phàn nàn của khách (Die L-A-S-T Regel)</h3>
-      <div class="formula">
-        🎧 <strong>L - Listen (Zuhören):</strong> Lắng nghe chăm chú, không ngắt lời, thể hiện sự đồng cảm bằng ánh mắt.<br>
-        🤝 <strong>A - Apologize (Sich entschuldigen):</strong> Chân thành xin lỗi vì sự bất tiện của khách (dù lỗi thuộc về bếp hay ai).<br>
-        🛠️ <strong>S - Solve (Lösung anbieten):</strong> Đưa ra giải pháp tức thì (đổi đĩa mới, làm lại món, mời đồ uống bù đắp).<br>
-        💐 <strong>T - Thank (Sich bedanken):</strong> Cảm ơn khách vì đã phản hồi để nhà hàng cải thiện dịch vụ.<br>
-        ⛔ <strong>NGUYÊN TẮC BẤT DI BẤT DỊCH:</strong> <em>Nie mit dem Gast diskutieren oder streiten!</em> (Tuyệt đối không tranh cãi hay đổ lỗi cho khách!).
-      </div>
-
-      <h3 class="sub">2. 14 Chất gây dị ứng bắt buộc công bố theo luật LMIV (Die 14 Hauptallergene)</h3>
-      <div class="grid2">
-        <div class="mini">
-          <ul>
-            <li><strong>A - Glutenhaltiges Getreide:</strong> Ngũ cốc chứa gluten (lúa mì, lúa mạch đen, yến mạch).</li>
-            <li><strong>B - Krebstiere:</strong> Giáp xác (tôm, cua, tôm hùm).</li>
-            <li><strong>C - Eier:</strong> Trứng và các sản phẩm từ trứng.</li>
-            <li><strong>D - Fische:</strong> Cá và các sản phẩm từ cá.</li>
-            <li><strong>E - Erdnüsse:</strong> Đậu phộng (lạc).</li>
-            <li><strong>F - Sojabohnen:</strong> Đậu nành và sản phẩm từ đậu nành.</li>
-            <li><strong>G - Milch / Laktose:</strong> Sữa và đường sữa lactose.</li>
-          </ul>
-        </div>
-        <div class="mini">
-          <ul>
-            <li><strong>H - Schalenfrüchte:</strong> Quả hạch (hạnh nhân, óc chó, hạt dẻ, hạt điều).</li>
-            <li><strong>L - Sellerie:</strong> Cần tây và sản phẩm từ cần tây.</li>
-            <li><strong>M - Senf:</strong> Mù tạt và hạt mù tạt.</li>
-            <li><strong>N - Sesamsamen:</strong> Hạt vừng (mè).</li>
-            <li><strong>O - Schwefeldioxid &amp; Sulfite:</strong> Sunfite ($\gt 10\text{ mg/kg}$ trong rượu vang).</li>
-            <li><strong>P - Lupinen:</strong> Đậu Lupin.</li>
-            <li><strong>R - Weichtiere:</strong> Thân mềm (mực, bạch tuộc, ốc, nghêu sò).</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ==================== TAB 4: 7 CHỦ ĐỀ & 10 ĐỀ THI MẪU ==================== -->
-  <div class="zpanel" id="z-hoctap">
-    <div class="card">
-      <h2>🎯 4. TỔNG KẾT 7 CHỦ ĐỀ CỐT LÕI &amp; 10 BÀI TẬP THI MẪU</h2>
-      <p>Hệ thống ôn luyện hoàn chỉnh với 10 bài tập tình huống thực tế bám sát cấu trúc đề thi thực tế.</p>
-    </div>
-
-    <div class="grid2">
-      <div class="mini">
-        <h4>🔵 A. REINIGUNG &amp; HYGIENE (LF 3)</h4>
-        <p><strong>Từ khóa:</strong> Sicht-/Unterhalts-/Grundreinigung, HACCP, 3 Hygienebereiche (Personal/Betrieb/Produkt), IfSG §42/43, pH-Skala (0–14), 4-Farben-Code, Sinnerscher Kreis.</p>
-      </div>
-      <div class="mini">
-        <h4>🟢 B. NACHHALTIGKEIT &amp; ENERGIE</h4>
-        <p><strong>Từ khóa:</strong> Tiết kiệm nước (Perlatoren), năng lượng (Kühlhaus +2..+7°C, Tiefkühl ≤-18°C), đong chuẩn tránh Überdosierung, EU-Ecolabel, Blauer Engel, Mikrofasertuch.</p>
-      </div>
-      <div class="mini">
-        <h4>🟡 C. LAGERUNG &amp; ABFALL (LF 2)</h4>
-        <p><strong>Từ khóa:</strong> 6 bước Beschaffung, Warenannahme, MHD vs. Verbrauchsdatum, Kühlkette, FIFO-Prinzip, 5-stufige Abfallhierarchie, Altglas 3 màu, Fettabscheider.</p>
-      </div>
-      <div class="mini">
-        <h4>🔴 D. ARBEITSSICHERHEIT (DGUV 110)</h4>
-        <p><strong>Từ khóa:</strong> SRS-Unfälle (Rutschgefahr-Schild, giày SRC), dùng dao (Krallengriff, không bắt dao rơi), Brandklasse F (Fettbrandlöscher / CẤM NƯỚC!), nâng vật nặng bằng đầu gối.</p>
-      </div>
-      <div class="mini">
-        <h4>🟣 E. GESCHIRR &amp; TISCHWÄSCHE (LF 3)</h4>
-        <p><strong>Từ khóa:</strong> Molton, Tischtuch (rủ 20-30cm), Napperon, Platzteller (~32cm), Speiseteller (~26cm), Suppenteller/Suppentasse, Brotteller bên trái.</p>
-      </div>
-      <div class="mini">
-        <h4>🟠 F. BESTECK &amp; GLÄSER (LF 3)</h4>
-        <p><strong>Từ khóa:</strong> Menübesteck, Fischbesteck, Steakmesser, Richtglas (Wasserglas), Weißweinglas (10–12°C), Rotweinglas (16–18°C), Sektflöte, Polieren.</p>
-      </div>
-      <div class="mini" style="grid-column: 1 / -1;">
-        <h4>🟤 G. SERVICE, MENÜ &amp; REKLAMATION (LF 3, 6, 9)</h4>
-        <p><strong>Từ khóa:</strong> Tisch eindecken (cự ly 1-2 cm, từ ngoài vào trong, lưỡi dao quay vào trong), Servierarten (Amerikanisch von RECHTS), 3-Teller-Tragen, quy tắc L-A-S-T, 14 Allergene.</p>
-      </div>
-    </div>
-
-
-    <!-- ==================== FLASHCARDS ÔN SIÊU TỐC ==================== -->
-    <div class="card" style="border-left:4px solid #3b82f6;">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
         <div>
-          <h2 style="margin:0;color:#1d4ed8;font-size:1.15em;">🃏 BỘ FLASHCARD ÔN SIÊU TỐC (LERNKARTEN)</h2>
-          <p class="hint" style="margin:4px 0 0;">Chạm vào thẻ để lật xem đáp án và giải thích song ngữ Đức - Việt</p>
+          <h2 style="margin:0;color:var(--accent);">🃏 Lernkarten – Intelligentes Wiederholen</h2>
+          <p class="hint" style="margin:4px 0 0;">Luyện nhớ thuật ngữ &amp; câu hỏi thi. Bấm vào thẻ để lật xem đáp án · Bấm 🔊 để nghe phát âm tiếng Đức.</p>
         </div>
-        <div style="display:flex;gap:6px;">
-          <button onclick="fcShuffle()" style="background:#f1f5f9;border:1px solid #cbd5e1;padding:6px 12px;border-radius:8px;font-size:.82em;cursor:pointer;font-weight:600;">🔀 Xáo trộn</button>
-          <span id="fc-counter" style="background:#dbeafe;color:#1e40af;padding:6px 12px;border-radius:8px;font-size:.82em;font-weight:700;">1 / 20</span>
-        </div>
-      </div>
-
-      <!-- FLASHCARD DISPLAY -->
-      <div id="flashcard-container" onclick="fcFlip()" style="perspective:1000px;margin:16px 0;cursor:pointer;-webkit-tap-highlight-color:transparent;">
-        <div id="fc-card" style="position:relative;width:100%;min-height:170px;background:#ffffff;border:2px solid #3b82f6;border-radius:16px;padding:22px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;box-shadow:0 4px 16px rgba(59,130,246,.08);transition:transform .4s;transform-style:preserve-3d;">
-          <div style="font-size:.78em;font-weight:700;color:#3b82f6;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;" id="fc-topic">CHỦ ĐỀ</div>
-          <div style="font-size:1.08em;font-weight:600;color:#0f172a;line-height:1.5;" id="fc-front">Nội dung câu hỏi...</div>
-          <div style="font-size:.82em;color:#94a3b8;margin-top:12px;">👆 Chạm để lật đáp án</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <button class="fc-filter-btn active" id="fc-filter-all" onclick="fcFilter('all')">Tất cả (<span id="fc-count-all">15</span>)</button>
+          <button class="fc-filter-btn" id="fc-filter-learn" onclick="fcFilter('learning')">Cần ôn lại (<span id="fc-count-learn">0</span>)</button>
+          <button class="fc-filter-btn" id="fc-filter-master" onclick="fcFilter('mastered')">Đã thuộc (<span id="fc-count-master">0</span>)</button>
+          <button onclick="fcShuffle()" style="background:#f1f5f9;border:1px solid #cbd5e1;padding:5px 10px;border-radius:16px;font-size:.8em;cursor:pointer;font-weight:600;">🔀 Trộn thẻ</button>
         </div>
       </div>
 
-      <!-- FLASHCARD CONTROLS -->
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
-        <button onclick="fcPrev()" style="flex:1;background:var(--surface);border:1px solid var(--line);padding:10px;border-radius:12px;font-weight:600;font-size:.9em;cursor:pointer;">← Thẻ trước</button>
-        <button onclick="fcNext()" style="flex:1;background:#3b82f6;color:#fff;border:none;padding:10px;border-radius:12px;font-weight:600;font-size:.9em;cursor:pointer;">Thẻ tiếp theo →</button>
-      </div>
-    </div>
-
-    <script>
-    const FLASHCARDS = [
-      {topic:"KÜHLKETTE", q:"Nhiệt độ bảo quản tối đa của Thịt gia cầm tươi (Geflügel) và Thịt xay (Hackfleisch)?", a:"🍗 Geflügel: ≤ +4°C (tránh vi khuẩn Salmonella)\n🥩 Hackfleisch: ≤ +2°C (chế biến ngay trong ngày)"},
-      {topic:"HYGIENE (IFSG)", q:"Luật IfSG §42/43 cấm nhân viên làm việc (Tätigkeitsverbot) khi có triệu chứng gì?", a:"🚫 Khi bị sốt cao, nôn mửa, tiêu chảy cấp hoặc viêm gan truyền nhiễm. Bắt buộc báo ngay cho quản lý và đi khám bác sĩ!"},
-      {topic:"BRUTALE CHEMISCHE REAKTION", q:"Vì sao TUYỆT ĐỐI CẤM trộn nước tẩy cặn vôi (Säure) với nước tẩy Clo (Chlor)?", a:"☠️ Axit + Clo giải phóng ngay lập tức KHÍ CLO ĐỘC (tödliches Chlorgas) gây bỏng phù phổi cấp và tử vong!"},
-      {topic:"BRANDSCHUTZ", q:"Cháy dầu mỡ trong bếp (Brandklasse F) phải chữa cháy thế nào và cấm điều gì?", a:"🧯 Dùng Fettbrandlöscher hoặc chăn dập lửa (Löschdecke).\n⚠️ TUYỆT ĐỐI CẤM DÙNG NƯỚC vì sẽ gây nổ hơi dầu (Fettbrandexplosion)!"},
-      {topic:"WARENWIRTSCHAFT", q:"Phân biệt MHD (Mindesthaltbarkeitsdatum) và Verbrauchsdatum?", a:"📅 MHD: Hạn chất lượng tối ưu (quá hạn vẫn dùng được nếu cảm quan tốt).\n🛑 Verbrauchsdatum: Hạn an toàn vi sinh bắt buộc cho thịt/cá tươi (quá hạn phải vứt ngay, cấm dùng)!"},
-      {topic:"SERVICE", q:"Quy tắc bưng món và dâng rượu: Phục vụ từ bên nào?", a:"👉 Tất cả món ăn chính, tráng miệng, nước ngọt, rượu vang đều dâng và thu dọn từ bên PHẢI (von RECHTS).\n👈 Riêng đĩa bánh mì (Brotteller) và đĩa salad phụ phục vụ/thu dọn từ bên TRÁI (von LINKS)."},
-      {topic:"TISCHWÄSCHE", q:"4 Chức năng quan trọng nhất của tấm lót bàn Molton?", a:"1. Chống trượt khăn bàn (Rutschfestigkeit)\n2. Giảm tiếng va đập ly đĩa (Geräuschdämpfung)\n3. Thấm hút chất lỏng đổ (Flüssigkeitsaufnahme)\n4. Chống sốc nhiệt bảo vệ bàn gỗ (Hitzeschutz)"},
-      {topic:"EINDECKEN", q:"Quy tắc cơ bản khi bày dao dĩa (Besteck) lên bàn ăn?", a:"📏 Cách mép bàn 1–2 cm.\n🍴 Dao thìa bên PHẢI (lưỡi dao quay vào trong đĩa); Dĩa bên TRÁI.\n🥄 Dessertbesteck nằm ngang trên đầu đĩa (Thìa cán sang PHẢI, Dĩa cán sang TRÁI)."},
-      {topic:"EIERCODE", q:"Ý nghĩa các số đầu tiên trên mã trứng gà (0, 1, 2, 3)?", a:"0 = Bio (Hữu cơ)\n1 = Freilandhaltung (Thả vườn)\n2 = Bodenhaltung (Nuôi chuồng sàn)\n3 = Käfighaltung (Nuôi lồng)"},
-      {topic:"REKLAMATION", q:"4 Bước vàng xử lý khiếu nại của khách (L-A-S-T Regel)?", a:"🎧 L - Listen (Lắng nghe không ngắt lời)\n🤝 A - Apologize (Chân thành xin lỗi)\n🛠️ S - Solve (Đưa ra giải pháp tức thì)\n💐 T - Thank (Cảm ơn khách phản hồi)\n⛔ Tuyệt đối không cãi khách!"},
-      {topic:"14 ALLERGENE", q:"Người bị bệnh Zöliakie bị dị ứng với chất nào và phải kiêng gì?", a:"🌾 Dị ứng Gluten (ký hiệu A). Bắt buộc kiêng tuyệt đối lúa mì, lúa mạch đen, lúa mạch, yến mạch và các sản phẩm bột mì!"},
-      {topic:"4-FARBEN-CODE", q:"Màu khăn lau chuyên dụng cho bồn rửa tay và gạch ốp nhà tắm là màu gì?", a:"🟡 Khăn màu VÀNG (Gelb) = Bồn rửa tay, vòi sen, gạch men khu vệ sinh.\n(🔴 Đỏ = Bồn cầu WC | 🔵 Xanh dương = Bàn ghế phòng khách | 🟢 Xanh lá = Bếp)"},
-      {topic:"LAGERUNG", q:"Ý nghĩa của nguyên tắc kho FIFO (First In – First Out)?", a:"📦 Hàng nhập trước hoặc có hạn dùng ngắn hơn phải đem ra dùng trước. Hàng mới nhập về xếp ra phía sau/dưới."},
-      {topic:"ARBEITSSICHERHEIT", q:"Cách cầm tay an toàn khi thái thực phẩm bằng dao bếp?", a:"🖐️ Krallengriff (ngón tay gập tròn hình móng vuốt, móng tay tựa vào sống dao để lưỡi dao trượt mà không cắt vào thịt ngón tay)."},
-      {topic:"PFLEGEETIKETT", q:"Biểu tượng Bàn ủi 3 chấm và Hình tròn chữ P trên nhãn mác?", a:"👔 Bàn ủi 3 chấm = Được ủi nhiệt độ cao nhất tới 200°C (vải Cotton/Leinen).\n🧼 Hình tròn P = Cho phép giặt khô chuyên nghiệp (chemische Reinigung mit Perchlorethylen)."}
-    ];
-
-    let fcIdx = 0;
-    let fcIsFlipped = false;
-
-    function fcUpdate(){
-      const card = FLASHCARDS[fcIdx];
-      document.getElementById('fc-topic').textContent = card.topic;
-      document.getElementById('fc-counter').textContent = (fcIdx+1) + ' / ' + FLASHCARDS.length;
-      const frontEl = document.getElementById('fc-front');
-      const cardEl = document.getElementById('fc-card');
-      fcIsFlipped = false;
-      cardEl.style.background = '#ffffff';
-      cardEl.style.borderColor = '#3b82f6';
-      frontEl.innerHTML = card.q;
-      cardEl.querySelector('div:last-child').textContent = '👆 Chạm để lật đáp án';
-    }
-
-    function fcFlip(){
-      if(window.SoundFX) SoundFX.playClick();
-      const card = FLASHCARDS[fcIdx];
-      const frontEl = document.getElementById('fc-front');
-      const cardEl = document.getElementById('fc-card');
-      fcIsFlipped = !fcIsFlipped;
-      if(fcIsFlipped){
-        cardEl.style.background = '#eff6ff';
-        cardEl.style.borderColor = '#1d4ed8';
-        frontEl.innerHTML = '<strong>' + card.a.replace(/\n/g, '<br>') + '</strong>';
-        cardEl.querySelector('div:last-child').textContent = '👆 Chạm để quay lại câu hỏi';
-      } else {
-        cardEl.style.background = '#ffffff';
-        cardEl.style.borderColor = '#3b82f6';
-        frontEl.innerHTML = card.q;
-        cardEl.querySelector('div:last-child').textContent = '👆 Chạm để lật đáp án';
-      }
-    }
-
-    function fcNext(){
-      if(window.SoundFX) SoundFX.playClick();
-      fcIdx = (fcIdx + 1) % FLASHCARDS.length;
-      fcUpdate();
-    }
-
-    function fcPrev(){
-      if(window.SoundFX) SoundFX.playClick();
-      fcIdx = (fcIdx - 1 + FLASHCARDS.length) % FLASHCARDS.length;
-      fcUpdate();
-    }
-
-    function fcShuffle(){
-      if(window.SoundFX) SoundFX.playClick();
-      for (let i = FLASHCARDS.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [FLASHCARDS[i], FLASHCARDS[j]] = [FLASHCARDS[j], FLASHCARDS[i]];
-      }
-      fcIdx = 0;
-      fcUpdate();
-    }
-
-    // Init first card
-    setTimeout(fcUpdate, 300);
-    </script>
-
-        <!-- 10 CÂU HỎI THI MẪU -->
-    <div class="card">
-      <h2>📝 10 Câu hỏi Tình huống Thi mẫu kèm Lời giải Chi tiết (Musterlösungen)</h2>
-      
-      <!-- CÂU 1 -->
-      <div class="eq-q-wrap">
-        <p class="eq-q-label">❓ Câu 1 (Lý thuyết - Hóa chất &amp; Nguy cơ tử vong):</p>
-        <p class="eq-q-hint">Ein Auszubildender möchte verkrustete Kalkablagerungen an der Kaffeemaschine entfernen und mischt einen stark sauren Kalklöser mit einem chlorhaltigen Reiniger. Beurteilen Sie dieses Verhalten.</p>
-        <div class="eq-answer">
-          <strong>✅ Đáp án chuẩn (Musterlösung):</strong> Hành vi này **cực kỳ nguy hiểm và bị nghiêm cấm tuyệt đối (<em>Lebensgefährlich und streng verboten</em>)**. Khi trộn axit với chất tẩy chứa clo, phản ứng hóa học sẽ giải phóng tức thì **Khí Clo độc (<em>tödliches Chlorgas</em>)** gây ngạt thở, bỏng phù phổi cấp và tử vong!
-        </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin:14px 0 6px;">
+        <span id="fc-counter" style="background:var(--accent-soft);color:var(--accent);padding:4px 12px;border-radius:20px;font-size:.82em;font-weight:700;">1 / 15</span>
+        <button id="fc-audio-btn" onclick="fcSpeakCurrent(event)" style="background:#f0fdf4;border:1px solid #86efac;color:#15803d;padding:4px 12px;border-radius:20px;font-size:.82em;font-weight:600;cursor:pointer;">🔊 Nghe phát âm</button>
       </div>
 
-      <!-- CÂU 2 -->
-      <div class="eq-q-wrap">
-        <p class="eq-q-label">❓ Câu 2 (Lý thuyết - Vòng tròn Sinner):</p>
-        <p class="eq-q-hint">Nennen Sie die 4 Faktoren des Sinnerschen Kreises. Wie verändert sich der Reinigungsprozess, wenn aus Umweltschutzgründen die Wassertemperatur gesenkt wird?</p>
-        <div class="eq-answer">
-          <strong>✅ Đáp án chuẩn (Musterlösung):</strong> 4 yếu tố gồm: *Chemie, Mechanik, Temperatur, Zeit*. Theo nguyên tắc bù trừ (*Kompensationsprinzip*), khi nhiệt độ nước giảm, để đạt cùng hiệu quả sạch ta phải **tăng thời gian tác dụng (Einwirkzeit kéo dài hơn)** hoặc **tăng lực cơ học cọ rửa (mehr Mechanik)**.
-        </div>
+      <!-- CARD DISPLAY -->
+      <div id="fc-card" onclick="fcFlip()" style="min-height:180px;background:#fff;border:2px solid var(--accent);border-radius:16px;padding:24px 20px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;cursor:pointer;margin:10px 0;transition:all .25s;box-shadow:0 4px 14px rgba(29,78,216,.08);">
+        <div id="fc-topic" style="font-size:.76em;font-weight:800;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">THEMA</div>
+        <div id="fc-content" style="font-size:1.05em;font-weight:600;line-height:1.55;color:var(--ink);">Wird geladen…</div>
+        <div id="fc-hint" style="font-size:.8em;color:var(--muted);margin-top:12px;">👆 Chạm để lật đáp án</div>
       </div>
 
-      <!-- CÂU 3 -->
-      <div class="eq-q-wrap">
-        <p class="eq-q-label">❓ Câu 3 (Lý thuyết - Phòng cháy chữa cháy nhà bếp):</p>
-        <p class="eq-q-hint">In der Restaurantküche gerät Speiseöl in einer Fritteuse in Brand. Welche Löschmaßnahme ist korrekt und was darf keinesfalls getan werden?</p>
-        <div class="eq-answer">
-          <strong>✅ Đáp án chuẩn (Musterlösung):</strong> Cháy dầu mỡ thuộc **Brandklasse F**. Biện pháp đúng: Tắt bếp ngay, dùng nắp kim loại/chăn dập lửa (<em>Löschdecke</em>) úp kín hoặc bình chữa cháy chuyên dụng <em>Fettbrandlöscher</em>.<br>⚠️ **Tuyệt đối cấm dùng nước** vì nước gặp dầu sôi sẽ bốc hơi tức thì tạo quả cầu lửa nổ tung (<em>Fettbrandexplosion</em>)!
-        </div>
+      <!-- STATUS ACTIONS -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">
+        <button onclick="fcMark('learning')" style="background:#fef2f2;color:#b91c1c;border:1px solid #fca5a5;padding:9px;border-radius:10px;font-weight:700;font-size:.88em;cursor:pointer;">❌ Chưa nhớ (Cần ôn lại)</button>
+        <button onclick="fcMark('mastered')" style="background:#f0fdf4;color:#15803d;border:1px solid #86efac;padding:9px;border-radius:10px;font-weight:700;font-size:.88em;cursor:pointer;">✅ Đã thuộc (Ghi nhớ)</button>
       </div>
 
-      <!-- CÂU 4 -->
-      <div class="eq-q-wrap">
-        <p class="eq-q-label">❓ Câu 4 (Lý thuyết - Luật phòng chống lây nhiễm IfSG §42/43 aus LF3):</p>
-        <p class="eq-q-hint">Eine Servicekraft leidet seit dem Morgen an akutem Durchfall und Erbrechen. Darf sie im Restaurant arbeiten? Welche gesetzlichen Pflichten bestehen?</p>
-        <div class="eq-answer">
-          <strong>✅ Đáp án chuẩn (Musterlösung):</strong> Nhân viên **bị cấm làm việc tuyệt đối (Tätigkeitsverbot theo § 42 IfSG)**. Nhân viên phải báo ngay cho quản lý cơ sở và đi khám bác sĩ. Chỉ được đi làm lại khi có xác nhận y tế không còn nguy cơ lây nhiễm mầm bệnh.
-        </div>
-      </div>
-
-      <!-- CÂU 5 -->
-      <div class="eq-q-wrap">
-        <p class="eq-q-label">❓ Câu 5 (Lý thuyết - Nhập hàng &amp; Phân biệt hạn dùng aus LF2):</p>
-        <p class="eq-q-hint">Erklären Sie den Unterschied zwischen MHD (Mindesthaltbarkeitsdatum) und dem Verbrauchsdatum bei der Warenannahme von frischem Hackfleisch und Nudeln.</p>
-        <div class="eq-answer">
-          <strong>✅ Đáp án chuẩn (Musterlösung):</strong>
-          <ul>
-            <li><strong>Nudeln (MHD):</strong> Là hạn đảm bảo chất lượng. Quá hạn thực phẩm không tự động hỏng, nếu kiểm tra cảm quan tốt vẫn được dùng.</li>
-            <li><strong>Frisches Hackfleisch (Verbrauchsdatum - "zu verbrauchen bis"):</strong> Bắt buộc dùng cho thịt tươi sống dễ hỏng. Quá ngày này thực phẩm có nguy cơ nhiễm khuẩn nguy hiểm, **bắt buộc phải vứt bỏ tiêu hủy ngay, cấm chế biến!**</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- CÂU 6 -->
-      <div class="eq-q-wrap">
-        <p class="eq-q-label">❓ Câu 6 (Thực hành - Bày bàn &amp; Dao dĩa aus LF3):</p>
-        <p class="eq-q-hint">Sie decken für ein 3-Gänge-Menü ein: 1. Tomatensuppe, 2. Rinderfiletsteak mit Rosmarinkartoffeln, 3. Mousse au Chocolat. Beschreiben Sie die Besteckanordnung.</p>
-        <div class="eq-answer">
-          <strong>✅ Đáp án chuẩn (Musterlösung):</strong>
-          <ul>
-            <li><strong>Bên phải đĩa (từ ngoài vào trong):</strong> Suppenlöffel (ngoài cùng cho súp) ➔ Steakmesser (lưỡi quay sang trái hướng vào trong đĩa cho bít tết).</li>
-            <li><strong>Bên trái đĩa:</strong> Menügabel (dĩa chính cho món bò).</li>
-            <li><strong>Phía trên đầu đĩa:</strong> Dessertlöffel (thìa tráng miệng cán quay sang **bên phải** cho Mousse au Chocolat).</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- CÂU 7 -->
-      <div class="eq-q-wrap">
-        <p class="eq-q-label">❓ Câu 7 (Thực hành - Chức năng của Molton aus LF3):</p>
-        <p class="eq-q-hint">Welche vier praktischen Aufgaben erfüllt eine Molton-Tischauflage unter dem Tischtuch?</p>
-        <div class="eq-answer">
-          <strong>✅ Đáp án chuẩn (Musterlösung):</strong> 4 chức năng: 1. Chống trượt khăn trải bàn (Rutschfestigkeit), 2. Giảm tiếng ồn khi đặt ly đĩa dao dĩa (Geräuschdämpfung), 3. Thấm hút chất lỏng đổ bảo vệ mặt bàn (Flüssigkeitsaufnahme), 4. Bảo vệ mặt bàn gỗ khỏi sức nóng của đĩa ăn (Hitzeschutz).
-        </div>
-      </div>
-
-      <!-- CÂU 8 -->
-      <div class="eq-q-wrap">
-        <p class="eq-q-label">❓ Câu 8 (Thực hành - Hình thức phục vụ &amp; Hướng bưng đĩa aus LF3):</p>
-        <p class="eq-q-hint">Von welcher Seite wird beim Amerikanischen Service der Hauptgang serviert und abgeräumt? Gibt es Ausnahmen?</p>
-        <div class="eq-answer">
-          <strong>✅ Đáp án chuẩn (Musterlösung):</strong> Beim Amerikanischen Service werden alle Speisen und Getränke **von RECHTS serviert und von RECHTS abgeräumt** (Dâng và thu dọn từ bên PHẢI). **Ngoại lệ:** Đĩa bánh mì (Brotteller) và đĩa salad phụ đặt bên trái được phục vụ và thu dọn từ bên **TRÁI (von LINKS)**.
-        </div>
-      </div>
-
-      <!-- CÂU 9 -->
-      <div class="eq-q-wrap">
-        <p class="eq-q-label">❓ Câu 9 (Nghiệp vụ - Xử lý khiếu nại của khách aus LF6/LF9):</p>
-        <p class="eq-q-hint">Ein Gast reklamiert lautstark, dass sein Rumpsteak durchgebraten statt medium serviert wurde. Wie reagieren Sie nach der L-A-S-T-Regel?</p>
-        <div class="eq-answer">
-          <strong>✅ Đáp án chuẩn (Musterlösung):</strong>
-          <ol>
-            <li><strong>L (Listen):</strong> Lắng nghe bình tĩnh, không ngắt lời khách.</li>
-            <li><strong>A (Apologize):</strong> Chân thành xin lỗi vì sự bất tiện của khách.</li>
-            <li><strong>S (Solve):</strong> Thu hồi đĩa bít tết ngay, báo bếp ưu tiên làm lại đĩa steak chuẩn Medium trong thời gian nhanh nhất, mời khách 1 đồ uống trong lúc chờ.</li>
-            <li><strong>T (Thank):</strong> Cảm ơn khách đã phản hồi để nhà hàng phục vụ tốt hơn. **Tuyệt đối không tranh cãi!**</li>
-          </ol>
-        </div>
-      </div>
-
-      <!-- CÂU 10 -->
-      <div>
-        <p class="eq-q-label">❓ Câu 10 (Thực hành - 4 Bước vệ sinh &amp; Sắp đặt Gastraum):</p>
-        <p class="eq-q-hint">Nennen Sie die 4 Schritte bei der praktischen Arbeitsaufgabe im Gastraum und die Wischtechnik.</p>
-        <div class="eq-answer">
-          <strong>✅ Đáp án chuẩn (Musterlösung):</strong>
-          <ol>
-            <li><strong>Vorbereiten:</strong> Chuẩn bị dụng cụ, khăn lau theo mã màu xanh/vàng, pha hóa chất trung tính đúng liều lượng, đeo găng tay.</li>
-            <li><strong>Reinigen:</strong> Lau theo quy tắc từ trên xuống dưới, từ trong ra ngoài, lau mặt bàn theo đường chữ S (<em>S-förmige Wischbewegung</em>).</li>
-            <li><strong>Kontrollieren:</strong> Kiểm tra bằng mắt dưới ánh sáng để đảm bảo sạch bóng, không còn vệt nước mờ (<em>streifenfrei</em>) hay bụi bẩn.</li>
-            <li><strong>Herrichten:</strong> Căn chỉnh bàn ghế thẳng hàng (<em>Fluchtlinien</em>), trải khăn bàn Molton + Tischtuch, lau bóng ly cốc dao dĩa (<em>Polieren</em>) và set up bàn tiệc hoàn chỉnh.</li>
-          </ol>
-        </div>
+      <!-- NAVIGATION -->
+      <div style="display:flex;gap:8px;">
+        <button onclick="fcPrev()" style="flex:1;padding:10px;border-radius:10px;font-weight:700;font-size:.9em;cursor:pointer;border:1px solid var(--line);background:var(--surface);">← Thẻ trước</button>
+        <button onclick="fcNext()" style="flex:1;padding:10px;border-radius:10px;font-weight:700;font-size:.9em;cursor:pointer;border:none;background:var(--accent);color:#fff;">Thẻ sau →</button>
       </div>
     </div>
   </div>
+
   <!-- ==================== TAB 5: KHO ĐỀ THI MẪU ==================== -->
   <div class="zpanel" id="z-dethimau">
     <div class="card">
@@ -5343,14 +4839,205 @@ function zwischenShowTab(tab){
   const el=document.querySelector('#v-zwischen .tab[data-ztab="'+tab+'"]');
   if(el) el.click();
 }
+/* ── Zwischen: Audio Pronunciation (Web Speech API) ── */
+function speakDE(text, e){
+  if(e && e.stopPropagation) e.stopPropagation();
+  if(!('speechSynthesis' in window)) return;
+  window.speechSynthesis.cancel();
+  const clean = text.replace(/[\n\r]/g,' ').replace(/[🔍🔊]/g,'').trim();
+  const u = new SpeechSynthesisUtterance(clean);
+  u.lang = 'de-DE';
+  u.rate = 0.88; // clear, comfortable speed for language learners
+  window.speechSynthesis.speak(u);
+}
+
+/* ── Zwischen: Chế độ dịch (Click vs Song ngữ toàn bộ) ── */
+function setZwMode(mode){
+  const view = document.getElementById('v-zwischen');
+  const btnClick = document.getElementById('zw-btn-click');
+  const btnBi = document.getElementById('zw-btn-bilingual');
+  if(mode === 'bilingual'){
+    view.classList.add('zw-bilingual-mode');
+    if(btnBi) btnBi.classList.add('active');
+    if(btnClick) btnClick.classList.remove('active');
+  } else {
+    view.classList.remove('zw-bilingual-mode');
+    if(btnClick) btnClick.classList.add('active');
+    if(btnBi) btnBi.classList.remove('active');
+    // Close all open tooltips
+    document.querySelectorAll('.zw-tip.zw-open').forEach(t=>t.classList.remove('zw-open'));
+  }
+}
+
 function zwTip(el){
-  const was=el.classList.contains('zw-open');
+  if(document.getElementById('v-zwischen') && document.getElementById('v-zwischen').classList.contains('zw-bilingual-mode')) return;
+  const was = el.classList.contains('zw-open');
   document.querySelectorAll('.zw-tip.zw-open').forEach(t=>t.classList.remove('zw-open'));
-  if(!was) el.classList.add('zw-open');
+  if(!was){
+    el.classList.add('zw-open');
+    // Read German text aloud when clicked
+    const textOnly = el.childNodes[0] ? el.childNodes[0].textContent : '';
+    if(textOnly && textOnly.trim()) speakDE(textOnly.trim());
+  }
 }
 document.addEventListener('click',function(e){
   if(!e.target.closest('.zw-tip')) document.querySelectorAll('.zw-tip.zw-open').forEach(t=>t.classList.remove('zw-open'));
 });
+
+/* ── Zwischen: Spaced Repetition Flashcards ── */
+const FC_DATA = [
+  {id:1, topic:"KÜHLKETTE", q:"Welche Lagertemperaturen gelten für frisches Geflügel und Hackfleisch?", a:"🍗 Frisches Geflügel: ≤ +4 °C\n🥩 Hackfleisch: ≤ +2 °C (Verarbeitung noch am selben Tag!)\n\n🇻🇳 Thịt gia cầm: ≤ +4°C | Thịt xay sống: ≤ +2°C (phải chế biến trong ngày)"},
+  {id:2, topic:"IFSG §42/43", q:"Wann besteht ein Tätigkeitsverbot laut Infektionsschutzgesetz (IfSG §42)?", a:"🚫 Tätigkeitsverbot bei: Fieber, akutem Durchfall, Erbrechen, infektiöser Hepatitis A.\n\n🇻🇳 Cấm làm việc khi: sốt cao, tiêu chảy cấp, nôn mửa, viêm gan A"},
+  {id:3, topic:"CHEMIEGEFAHR", q:"Warum darf man sauren Kalklöser NIEMALS mit chlorhaltigem Reiniger mischen?", a:"☠️ Lebensgefahr! Säure + Chlor reagieren und setzen tödliches Chlorgas frei (Verätzungs- und Erstickungsgefahr!).\n\n🇻🇳 Axit + Clo phản ứng sinh Khí Clo độc chết người!"},
+  {id:4, topic:"BRANDKLASSE F", q:"Wie löscht man einen Fettbrand in der Küche korrekt? Was ist absolut verboten?", a:"✅ Richtig: Fettbrandlöscher (Klasse F) oder Löschdecke.\n⛔ ABSOLUT VERBOTEN: Niemals Wasser verwenden! (→ Fettbrandexplosion!)\n\n🇻🇳 Dùng bình F hoặc chăn dập lửa. TUYỆT ĐỐI CẤM NƯỚC!"},
+  {id:5, topic:"MHD vs VD", q:"Was ist der Unterschied zwischen Mindesthaltbarkeitsdatum (MHD) und Verbrauchsdatum?", a:"📅 MHD = Qualitätsgarantie (nach Ablauf sensorisch prüfen, oft noch gut).\n🛑 Verbrauchsdatum = Sicherheitsgrenze bei leicht verderblicher Ware (nach Ablauf SOFORT entsorgen!).\n\n🇻🇳 MHD: hạn chất lượng | Verbrauchsdatum: TIÊU HỦY NGAY khi quá hạn!"},
+  {id:6, topic:"SERVIERRICHTUNG", q:"Von welcher Seite werden Speisen und Getränke beim Amerikanischen Service serviert?", a:"👉 Servieren und Abräumen erfolgen grundsätzlich von RECHTS.\n👈 Ausnahme: Brotteller und Beilagensalate werden von LINKS eingesetzt.\n\n🇻🇳 Dâng và thu dọn luôn từ PHẢI. Ngoại lệ: đĩa bánh mì từ TRÁI."},
+  {id:7, topic:"MOLTON", q:"Welche 4 wichtigen Funktionen erfüllt die Molton-Tischauflage?", a:"1. Rutschfestigkeit (Tischtuch verrutscht nicht)\n2. Geräuschdämpfung (Geschirr klappert leiser)\n3. Flüssigkeitsaufnahme (saugt Verschüttetes auf)\n4. Hitzeschutz (schützt den Holztisch vor heißen Tellern)\n\n🇻🇳 Chống trượt · Giảm ồn · Thấm hút · Chống nhiệt"},
+  {id:8, topic:"EINDECKEN", q:"Wie werden Messer und Gabel beim Eindecken positioniert?", a:"🔪 Messer: rechts vom Teller (Schneide zeigt nach innen zum Teller)\n🍴 Gabel: links vom Teller (Zinken zeigen nach oben)\n📏 Abstand zur Tischkante: 1–2 cm\n\n🇻🇳 Dao PHẢI (lưỡi quay vào đĩa); Dĩa TRÁI (ngửa răng). Cách mép bàn 1–2 cm."},
+  {id:9, topic:"EIERCODE", q:"Was bedeuten die Haltungsform-Ziffern 0, 1, 2, 3 auf dem Ei-Stempel?", a:"0 = Ökologische Erzeugung / Bio\n1 = Freilandhaltung\n2 = Bodenhaltung\n3 = Käfighaltung / Kleingruppenhaltung\n\n🇻🇳 0=Hữu cơ | 1=Thả vườn | 2=Chuồng sàn | 3=Lồng nhốt"},
+  {id:10, topic:"L-A-S-T REGEL", q:"Nennen Sie die 4 Schritte der L-A-S-T-Regel bei Gästereklamationen.", a:"🎧 L – Listen (Aufmerksam zuhören, ausreden lassen)\n🤝 A – Apologize (Aufrichtig entschuldigen)\n🛠️ S – Solve (Sofortige Lösung anbieten)\n💐 T – Thank (Für das Feedback bedanken)\n⛔ Niemals mit dem Gast streiten!\n\n🇻🇳 Lắng nghe ➔ Xin lỗi ➔ Đưa giải pháp ➔ Cảm ơn"},
+  {id:11, topic:"4-FARBEN-CODE", q:"Welches Mikrofasertuch wird für Waschbecken und Armaturen im Sanitärbereich verwendet?", a:"🟡 GELBES TUCH = Sanitärbereich (Waschbecken, Fliesen, Spiegel, Armaturen).\n(🔴 Rot = WC/Urinal | 🔵 Blau = Gastraum/Büro | 🟢 Grün = Küche/Lebensmittel)\n\n🇻🇳 Khăn VÀNG = Bồn rửa tay, gương, vòi nước"},
+  {id:12, topic:"FIFO-PRINZIP", q:"Was bedeutet das FIFO-Prinzip und wie wird es beim Einlagern angewendet?", a:"First In – First Out:\nNeu angelieferte Ware wird hinten/unten eingeräumt, ältere Ware nach vorne/oben geholt, damit sie zuerst verbraucht wird.\n\n🇻🇳 Hàng nhập trước dùng trước. Hàng mới xếp sau/dưới."},
+  {id:13, topic:"SINNERSCHER KREIS", q:"Was versteht man unter dem Kompensationsprinzip beim Sinnerschen Kreis?", a:"Die 4 Faktoren (Chemie, Mechanik, Temperatur, Zeit) ergeben zusammen 100% Reinigungskraft.\nWird ein Faktor verringert (z.B. niedrigere Temperatur), muss ein anderer Faktor erhöht werden (z.B. längere Einwirkzeit oder mehr Mechanik).\n\n🇻🇳 Giảm 1 yếu tố ➔ phải tăng yếu tố khác bù lại"},
+  {id:14, topic:"HACCP 7 SCHRITTE", q:"Nennen Sie alle 7 Grundschritte des HACCP-Systems.", a:"1. Gefahrenanalyse durchführen\n2. Kritische Kontrollpunkte (CCPs) bestimmen\n3. Grenzwerte für CCPs festlegen\n4. Kontinuierliche Überwachung einrichten\n5. Korrekturmaßnahmen festlegen\n6. Verifizierungsverfahren etablieren\n7. Dokumentation und Nachweise führen\n\n🇻🇳 7 bước kiểm soát an toàn vệ sinh thực phẩm HACCP"},
+  {id:15, topic:"ABFALLHIERARCHIE", q:"Nennen Sie die 5 Stufen der Abfallhierarchie nach dem Kreislaufwirtschaftsgesetz (KrWG).", a:"1. Vermeidung (höchste Priorität)\n2. Vorbereitung zur Wiederverwendung\n3. Recycling (stoffliche Verwertung)\n4. Sonstige Verwertung (z.B. energetische Verwertung)\n5. Beseitigung (Deponierung / niedrigste Priorität)\n\n🇻🇳 1.Tránh tạo rác ➔ 2.Tái sử dụng ➔ 3.Tái chế ➔ 4.Thu hồi năng lượng ➔ 5.Tiêu hủy"}
+];
+
+let fcFilterMode = 'all';
+let fcFilteredList = [...FC_DATA];
+let fcCurrentIdx = 0;
+let fcIsFlipped = false;
+let fcMasteredIds = new Set(JSON.parse(localStorage.getItem('zw_fc_mastered') || '[]'));
+let fcLearningIds = new Set(JSON.parse(localStorage.getItem('zw_fc_learning') || '[]'));
+
+function fcUpdateCounts(){
+  document.getElementById('fc-count-all').textContent = FC_DATA.length;
+  document.getElementById('fc-count-learn').textContent = fcLearningIds.size;
+  document.getElementById('fc-count-master').textContent = fcMasteredIds.size;
+}
+
+function fcFilter(mode){
+  fcFilterMode = mode;
+  document.querySelectorAll('.fc-filter-btn').forEach(b => b.classList.remove('active'));
+  const activeBtn = document.getElementById('fc-filter-' + (mode === 'all' ? 'all' : mode === 'learning' ? 'learn' : 'master'));
+  if(activeBtn) activeBtn.classList.add('active');
+
+  if(mode === 'learning'){
+    fcFilteredList = FC_DATA.filter(c => fcLearningIds.has(c.id));
+    if(fcFilteredList.length === 0) fcFilteredList = [...FC_DATA];
+  } else if(mode === 'mastered'){
+    fcFilteredList = FC_DATA.filter(c => fcMasteredIds.has(c.id));
+    if(fcFilteredList.length === 0) fcFilteredList = [...FC_DATA];
+  } else {
+    fcFilteredList = [...FC_DATA];
+  }
+  fcCurrentIdx = 0;
+  fcRender();
+}
+
+function fcRender(){
+  fcUpdateCounts();
+  if(!fcFilteredList.length) fcFilteredList = [...FC_DATA];
+  const card = fcFilteredList[fcCurrentIdx];
+  const cardEl = document.getElementById('fc-card');
+  const topicEl = document.getElementById('fc-topic');
+  const contentEl = document.getElementById('fc-content');
+  const hintEl = document.getElementById('fc-hint');
+  const counterEl = document.getElementById('fc-counter');
+
+  if(!cardEl || !card) return;
+
+  topicEl.textContent = card.topic;
+  counterEl.textContent = (fcCurrentIdx + 1) + ' / ' + fcFilteredList.length;
+
+  // Status badge
+  const isMaster = fcMasteredIds.has(card.id);
+  const isLearn = fcLearningIds.has(card.id);
+  const statusBadge = isMaster ? ' · <span style="color:#15803d;font-weight:700;">✅ ĐÃ THUỘC</span>' : isLearn ? ' · <span style="color:#b91c1c;font-weight:700;">❌ CẦN ÔN LẠI</span>' : '';
+  topicEl.innerHTML = card.topic + statusBadge;
+
+  fcIsFlipped = false;
+  cardEl.style.background = '#fff';
+  cardEl.style.borderColor = isMaster ? '#86efac' : isLearn ? '#fca5a5' : 'var(--accent)';
+  contentEl.textContent = card.q;
+  hintEl.textContent = '👆 Chạm để lật đáp án';
+}
+
+function fcFlip(){
+  const card = fcFilteredList[fcCurrentIdx];
+  const cardEl = document.getElementById('fc-card');
+  const contentEl = document.getElementById('fc-content');
+  const hintEl = document.getElementById('fc-hint');
+  if(!cardEl || !card) return;
+
+  fcIsFlipped = !fcIsFlipped;
+  if(fcIsFlipped){
+    cardEl.style.background = '#eff6ff';
+    cardEl.style.borderColor = '#1d4ed8';
+    contentEl.innerHTML = card.a.replace(/\n/g, '<br>');
+    hintEl.textContent = '👆 Chạm để quay lại câu hỏi';
+  } else {
+    cardEl.style.background = '#fff';
+    contentEl.textContent = card.q;
+    hintEl.textContent = '👆 Chạm để lật đáp án';
+  }
+}
+
+function fcNext(){
+  if(!fcFilteredList.length) return;
+  fcCurrentIdx = (fcCurrentIdx + 1) % fcFilteredList.length;
+  fcRender();
+}
+
+function fcPrev(){
+  if(!fcFilteredList.length) return;
+  fcCurrentIdx = (fcCurrentIdx - 1 + fcFilteredList.length) % fcFilteredList.length;
+  fcRender();
+}
+
+function fcShuffle(){
+  for(let i = fcFilteredList.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [fcFilteredList[i], fcFilteredList[j]] = [fcFilteredList[j], fcFilteredList[i]];
+  }
+  fcCurrentIdx = 0;
+  fcRender();
+}
+
+function fcMark(status){
+  const card = fcFilteredList[fcCurrentIdx];
+  if(!card) return;
+  if(status === 'mastered'){
+    fcMasteredIds.add(card.id);
+    fcLearningIds.delete(card.id);
+  } else {
+    fcLearningIds.add(card.id);
+    fcMasteredIds.delete(card.id);
+  }
+  localStorage.setItem('zw_fc_mastered', JSON.stringify([...fcMasteredIds]));
+  localStorage.setItem('zw_fc_learning', JSON.stringify([...fcLearningIds]));
+  fcRender();
+  // Auto advance to next card after marking
+  setTimeout(fcNext, 350);
+}
+
+function fcSpeakCurrent(e){
+  if(e && e.stopPropagation) e.stopPropagation();
+  const card = fcFilteredList[fcCurrentIdx];
+  if(!card) return;
+  if(fcIsFlipped){
+    // Speak the German portion of the answer (before 🇻🇳)
+    const dePart = card.a.split('🇻🇳')[0] || card.a;
+    speakDE(dePart);
+  } else {
+    speakDE(card.q);
+  }
+}
+
+// Initial render
+setTimeout(function(){
+  if(document.getElementById('fc-card')) fcRender();
+}, 500);
 /* Abschluss-Themen (wird schrittweise erweitert) */
 const ABSCHLUSS_THEMEN=[
   {icon:"<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M6.5 15.5A6 6 0 1 1 16 9.5c1.3 1 2 2.3 2 3.7 0 2.7-2.6 4.8-6 4.8-1.6 0-3-.5-4-1.2'/><circle cx='7.5' cy='16' r='2.1'/><path d='M9 14.6 11 12.5'/></svg>", name:"Fleisch & Produktkunde", desc:"Fleischteile, Gerichte, Garverfahren.", route:"#/bfk/2/fleisch", ready:true},
