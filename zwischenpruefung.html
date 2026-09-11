@@ -243,6 +243,7 @@
   <div class="tab" onclick="showTab('t4',this)">🍽️ 4. Service &amp; Tisch</div>
   <div class="tab" onclick="showTab('t5',this)">🃏 5. Lernkarten</div>
   <div class="tab" onclick="showTab('t6',this)">📝 6. Prüfungsaufgaben</div>
+  <div class="tab" onclick="showTab('t7',this)">🎯 7. Praktische Prüfung</div>
 </div>
 
 <!-- ===== TAB 1 ===== -->
@@ -723,7 +724,7 @@
     <div id="fc-card" onclick="fcFlip()">
       <div id="fc-topic">THEMA</div>
       <div id="fc-q">Wird geladen...</div>
-      <div id="fc-hint">👆 Klicken zum Antwort anzeigen</div>
+      <div id="fc-hint">👆 Klicken für Antwort</div>
     </div>
     <div class="fc-btns">
       <button onclick="fcPrev()">← Vorherige</button>
@@ -834,6 +835,191 @@
   </div>
 </div>
 
+<!-- ===== TAB 7: PRAKTISCHE PRÜFUNG (3 TEILE) ===== -->
+<div class="panel" id="t7">
+  <div class="card">
+    <h2>🎯 Praktische Zwischenprüfung – 3 Teile</h2>
+    <p style="font-size:.88em;color:var(--muted);">Nach deinem Prüfungsblatt „<em>NỘI DUNG THI THỰC HÀNH</em>". Jede Aufgabe ist zum <strong>Antippen &amp; Prüfen</strong> — klicke eine Antwort an oder nutze „Lösung zeigen".</p>
+  </div>
+
+  <!-- ============ TEIL 1 ============ -->
+  <div class="q-situation">🍽️ <strong>Teil 1 – Eindecken &amp; Material:</strong> 4-Gang-Menü mit Getränken. (1) Materialliste für <strong>30 Personen</strong> nennen. (2) Ein 4-Gänge-Menü für <strong>2 Personen</strong> eindecken. Anlass: <span class="de-trigger" onclick="toggleTip(this)">Verlobungsfeier<span class="vi-tip">Tiệc đính hôn</span></span>.</div>
+
+  <!-- T1-Menü -->
+  <div class="card">
+    <h3 style="margin-top:0;">📜 Das Menü (Verlobungsfeier)</h3>
+    <table>
+      <tr><th>Gang</th><th>Speise / Getränk</th></tr>
+      <tr><td><span class="de-trigger" onclick="toggleTip(this)">Aperitif / Wein 1<span class="vi-tip">Rượu khai vị / vang 1</span></span></td><td><span class="de-trigger" onclick="toggleTip(this)">Müller-Thurgau trocken<span class="vi-tip">Vang trắng khô Müller-Thurgau</span></span></td></tr>
+      <tr><td><span class="de-trigger" onclick="toggleTip(this)">Vorspeise<span class="vi-tip">Món khai vị</span></span></td><td><span class="de-trigger" onclick="toggleTip(this)">Blattsalate mit Räucherlachsstreifen, Dill-Honig-Dressing<span class="vi-tip">Salad lá + cá hồi xông khói thái sợi, sốt thì là-mật ong</span></span></td></tr>
+      <tr><td><span class="de-trigger" onclick="toggleTip(this)">Zwischengang<span class="vi-tip">Món giữa</span></span></td><td><span class="de-trigger" onclick="toggleTip(this)">Quiche mit Gorgonzola und Spinat<span class="vi-tip">Bánh quiche phô mai Gorgonzola &amp; rau chân vịt</span></span></td></tr>
+      <tr><td><span class="de-trigger" onclick="toggleTip(this)">Hauptgang / Wein 2<span class="vi-tip">Món chính / vang 2</span></span></td><td><span class="de-trigger" onclick="toggleTip(this)">Kalbsfilet rosa gebraten, holländische Sauce, glasierte Schalotten, Herzoginkartoffeln<span class="vi-tip">Phi lê bê áp chín hồng, sốt Hollandaise, hành tây baby caramel, khoai tây Herzogin</span></span> · <span class="de-trigger" onclick="toggleTip(this)">Spätburgunder Weißherbst trocken<span class="vi-tip">Vang hồng khô Spätburgunder Weißherbst</span></span></td></tr>
+    </table>
+    <div class="note">💡 Merke: <span class="de-trigger" onclick="toggleTip(this)">Weißwein zu Fisch/hell, Rosé/leichter Rotwein zu Kalb<span class="vi-tip">Vang trắng đi với cá/món nhạt, vang hồng/đỏ nhẹ đi với thịt bê</span></span>.</div>
+  </div>
+
+  <!-- T1-Q1: Eindeck-Reihenfolge -->
+  <div class="q-block">
+    <div class="q-label">Aufgabe 1 – <span class="de-trigger" onclick="toggleTip(this)">Reihenfolge beim Eindecken<span class="vi-tip">Thứ tự khi bày bàn (dọn bàn)</span></span></div>
+    <div class="q-text">Was legst du beim Eindecken <strong>zuerst</strong> auf den blanken Tisch?</div>
+    <ol class="opts">
+      <li onclick="selectOpt(this,false)">Das <span class="de-trigger" onclick="toggleTip(this)">Besteck<span class="vi-tip">bộ dao/nĩa/thìa</span></span></li>
+      <li onclick="selectOpt(this,true)">Den <span class="de-trigger" onclick="toggleTip(this)">Molton / die Tischwäsche-Unterlage<span class="vi-tip">Lớp lót Molton (vải nỉ) dưới khăn bàn</span></span>, dann die <span class="de-trigger" onclick="toggleTip(this)">Tischdecke<span class="vi-tip">khăn trải bàn</span></span></li>
+      <li onclick="selectOpt(this,false)">Die <span class="de-trigger" onclick="toggleTip(this)">Gläser<span class="vi-tip">ly/cốc</span></span></li>
+      <li onclick="selectOpt(this,false)">Den <span class="de-trigger" onclick="toggleTip(this)">Platzteller<span class="vi-tip">đĩa lót/đĩa trang trí</span></span></li>
+    </ol>
+    <div class="q-ans" id="t7a1">✅ <strong>Antwort 2.</strong> <span class="de-trigger" onclick="toggleTip(this)">Reihenfolge: Molton → Tischdecke → Platzteller → Besteck → Gläser → Serviette → Tischschmuck.<span class="vi-tip">Thứ tự: lớp lót Molton → khăn bàn → đĩa lót → dao nĩa → ly → khăn ăn → trang trí bàn.</span></span></div>
+    <button class="show-btn" onclick="showAns('t7a1')">🔍 Lösung zeigen</button>
+  </div>
+
+  <!-- T1-Q2: Besteck-Regel -->
+  <div class="q-block">
+    <div class="q-label">Aufgabe 2 – <span class="de-trigger" onclick="toggleTip(this)">Besteck-Regel<span class="vi-tip">Quy tắc đặt dao nĩa</span></span></div>
+    <div class="q-text">Wie liegt das Besteck für die einzelnen Gänge?</div>
+    <ol class="opts">
+      <li onclick="selectOpt(this,false)">Alles rechts, egal welche Reihenfolge.</li>
+      <li onclick="selectOpt(this,true)"><span class="de-trigger" onclick="toggleTip(this)">Von außen nach innen essen<span class="vi-tip">Ăn từ ngoài vào trong</span></span>: Messer + Suppenlöffel rechts, Gabeln links.</li>
+      <li onclick="selectOpt(this,false)">Dessertbesteck immer links unten.</li>
+      <li onclick="selectOpt(this,false)">Messer mit der Schneide nach außen.</li>
+    </ol>
+    <div class="q-ans" id="t7a2">✅ <strong>Antwort 2.</strong> <span class="de-trigger" onclick="toggleTip(this)">Messer (Schneide nach innen) und Löffel rechts, Gabeln links, Dessertbesteck oben quer. Von außen nach innen.<span class="vi-tip">Dao (lưỡi quay vào trong) &amp; thìa bên phải, nĩa bên trái, bộ tráng miệng đặt ngang phía trên. Ăn từ ngoài vào.</span></span></div>
+    <button class="show-btn" onclick="showAns('t7a2')">🔍 Lösung zeigen</button>
+  </div>
+
+  <!-- T1-Q3: Gläser -->
+  <div class="q-block">
+    <div class="q-label">Aufgabe 3 – <span class="de-trigger" onclick="toggleTip(this)">Gläser platzieren<span class="vi-tip">Đặt ly</span></span></div>
+    <div class="q-text">Wo stehen die Gläser (Wasser, Weißwein, Rotwein) beim gehobenen Gedeck?</div>
+    <ol class="opts">
+      <li onclick="selectOpt(this,false)">Links neben den Gabeln.</li>
+      <li onclick="selectOpt(this,true)"><span class="de-trigger" onclick="toggleTip(this)">Rechts oben über dem Messer<span class="vi-tip">Phía trên bên phải, trên đầu dao</span></span> – Wasserglas links, Wein diagonal dahinter.</li>
+      <li onclick="selectOpt(this,false)">Direkt vor dem Teller in einer Reihe.</li>
+      <li onclick="selectOpt(this,false)">Egal, Hauptsache dekorativ.</li>
+    </ol>
+    <div class="q-ans" id="t7a3">✅ <strong>Antwort 2.</strong> <span class="de-trigger" onclick="toggleTip(this)">Gläser rechts über der Messerspitze: Wasserkelch links, dahinter diagonal Weißwein-, dann Rotweinglas.<span class="vi-tip">Ly đặt bên phải trên mũi dao: ly nước bên trái, chéo phía sau là ly vang trắng rồi ly vang đỏ.</span></span></div>
+    <button class="show-btn" onclick="showAns('t7a3')">🔍 Lösung zeigen</button>
+  </div>
+
+  <!-- T1-Q4: Materialliste 30 P -->
+  <div class="q-block">
+    <div class="q-label">Aufgabe 4 – <span class="de-trigger" onclick="toggleTip(this)">Materialliste für 30 Personen<span class="vi-tip">Danh sách vật dụng cho 30 khách</span></span></div>
+    <div class="q-text">Nenne das Material zum Eindecken. (Lösung als Merkliste)</div>
+    <div class="q-ans visible">
+      <strong>🪑 Tisch &amp; Wäsche:</strong> <span class="de-trigger" onclick="toggleTip(this)">Molton, Tischdecken, Servietten, ggf. Tischläufer<span class="vi-tip">Lớp lót Molton, khăn bàn, khăn ăn, có thể có khăn chạy bàn</span></span><br>
+      <strong>🍽️ Geschirr (×30):</strong> <span class="de-trigger" onclick="toggleTip(this)">Platzteller, Vorspeisenteller, Suppen-/Zwischenteller, Hauptspeisenteller, Dessertteller, Brotteller<span class="vi-tip">Đĩa lót, đĩa khai vị, đĩa súp/món giữa, đĩa món chính, đĩa tráng miệng, đĩa bánh mì</span></span><br>
+      <strong>🍴 Besteck (×30):</strong> <span class="de-trigger" onclick="toggleTip(this)">Menümesser + -gabel, Vorspeisenbesteck, Fischbesteck, Dessertbesteck, Suppenlöffel<span class="vi-tip">Dao/nĩa món chính, bộ khai vị, bộ ăn cá, bộ tráng miệng, thìa súp</span></span><br>
+      <strong>🥂 Gläser (×30):</strong> <span class="de-trigger" onclick="toggleTip(this)">Wasserglas, Weißweinglas, Rotweinglas, Sektglas (Aperitif)<span class="vi-tip">Ly nước, ly vang trắng, ly vang đỏ, ly champagne (khai vị)</span></span><br>
+      <strong>➕ Zusatz:</strong> <span class="de-trigger" onclick="toggleTip(this)">Menükarten, Tischnummern, Tischschmuck (Blumen/Kerze), Salz/Pfeffer, Brotkörbe<span class="vi-tip">Thực đơn, số bàn, trang trí (hoa/nến), muối/tiêu, giỏ bánh mì</span></span>
+    </div>
+  </div>
+
+  <!-- ============ TEIL 2 ============ -->
+  <div class="q-situation" style="margin-top:20px;">🔍 <strong>Teil 2 – Warenerkennung:</strong> 10 von 20 Gegenständen erkennen &amp; Verwendung nennen. Reinigungs-/Pflege-/Desinfektionsmittel unterscheiden · Obst/Gemüse/Kräuter · Tücher &amp; Fensterreinigung · Wäschesymbole.</div>
+
+  <!-- T2-Q1: Reinigung/Pflege/Desinfektion -->
+  <div class="q-block">
+    <div class="q-label">Aufgabe 5 – <span class="de-trigger" onclick="toggleTip(this)">Reinigungs- vs. Pflege- vs. Desinfektionsmittel<span class="vi-tip">Chất tẩy rửa vs. chất bảo dưỡng vs. chất khử trùng</span></span></div>
+    <div class="q-text">Was ist die <strong>Aufgabe eines Desinfektionsmittels</strong>?</div>
+    <ol class="opts">
+      <li onclick="selectOpt(this,false)"><span class="de-trigger" onclick="toggleTip(this)">Schmutz lösen und entfernen<span class="vi-tip">Làm tan &amp; loại bỏ chất bẩn → đó là Reinigungsmittel</span></span></li>
+      <li onclick="selectOpt(this,false)"><span class="de-trigger" onclick="toggleTip(this)">Oberflächen schützen und pflegen<span class="vi-tip">Bảo vệ &amp; dưỡng bề mặt → đó là Pflegemittel</span></span></li>
+      <li onclick="selectOpt(this,true)"><span class="de-trigger" onclick="toggleTip(this)">Krankheitserreger (Keime) abtöten<span class="vi-tip">Tiêu diệt mầm bệnh/vi khuẩn</span></span></li>
+      <li onclick="selectOpt(this,false)">Angenehmen Duft verbreiten.</li>
+    </ol>
+    <div class="q-ans" id="t7a5">✅ <strong>Antwort 3.</strong> <span class="de-trigger" onclick="toggleTip(this)">Reinigen = Schmutz weg · Pflegen = schützen · Desinfizieren = Keime abtöten.<span class="vi-tip">Tẩy rửa = sạch bẩn · Bảo dưỡng = bảo vệ · Khử trùng = diệt khuẩn.</span></span></div>
+    <button class="show-btn" onclick="showAns('t7a5')">🔍 Lösung zeigen</button>
+  </div>
+
+  <!-- T2-Q2: Fensterreinigung -->
+  <div class="q-block">
+    <div class="q-label">Aufgabe 6 – <span class="de-trigger" onclick="toggleTip(this)">Fenster putzen: Tuch &amp; Mittel<span class="vi-tip">Lau kính: chọn khăn &amp; dung dịch</span></span></div>
+    <div class="q-text">Womit reinigst du eine große Glasscheibe <strong>streifenfrei</strong>?</div>
+    <ol class="opts">
+      <li onclick="selectOpt(this,false)"><span class="de-trigger" onclick="toggleTip(this)">Geschirrtuch + Scheuermilch<span class="vi-tip">Khăn lau bát + kem chà nhám → sai, làm xước</span></span></li>
+      <li onclick="selectOpt(this,true)"><span class="de-trigger" onclick="toggleTip(this)">Mikrofasertuch (oder Abzieher) + Glasreiniger<span class="vi-tip">Khăn microfiber (hoặc cây gạt) + nước lau kính</span></span></li>
+      <li onclick="selectOpt(this,false)"><span class="de-trigger" onclick="toggleTip(this)">Poliertuch + Öl<span class="vi-tip">Khăn đánh bóng + dầu → để đánh bóng inox/bạc</span></span></li>
+      <li onclick="selectOpt(this,false)"><span class="de-trigger" onclick="toggleTip(this)">Allzwecktuch + Fettlöser<span class="vi-tip">Khăn đa năng + chất tẩy dầu mỡ</span></span></li>
+    </ol>
+    <div class="q-ans" id="t7a6">✅ <strong>Antwort 2.</strong> <span class="de-trigger" onclick="toggleTip(this)">Glas: Mikrofasertuch + Glasreiniger, streifenfrei nachpolieren. Poliertuch = für Besteck/Gläser polieren, Geschirrtuch = abtrocknen, Allzwecktuch = allgemein.<span class="vi-tip">Kính: khăn microfiber + nước lau kính, lau khô không để vệt. Khăn đánh bóng = đánh bóng dao nĩa/ly, khăn lau bát = lau khô, khăn đa năng = việc chung.</span></span></div>
+    <button class="show-btn" onclick="showAns('t7a6')">🔍 Lösung zeigen</button>
+  </div>
+
+  <!-- T2-Q3: Obst/Gemüse/Kräuter -->
+  <div class="q-block">
+    <div class="q-label">Aufgabe 7 – <span class="de-trigger" onclick="toggleTip(this)">Obst · Gemüse · Kräuter zuordnen<span class="vi-tip">Phân loại trái cây · rau củ · rau thơm/gia vị</span></span></div>
+    <div class="q-text">Welche Zuordnung ist <strong>richtig</strong>?</div>
+    <ol class="opts">
+      <li onclick="selectOpt(this,false)"><span class="de-trigger" onclick="toggleTip(this)">Petersilie = Gemüse<span class="vi-tip">Ngò tây = rau củ → sai, đó là Kräuter</span></span></li>
+      <li onclick="selectOpt(this,true)"><span class="de-trigger" onclick="toggleTip(this)">Apfel = Obst · Möhre = Gemüse · Dill = Kräuter<span class="vi-tip">Táo = trái cây · Cà rốt = rau củ · Thì là = rau thơm</span></span></li>
+      <li onclick="selectOpt(this,false)"><span class="de-trigger" onclick="toggleTip(this)">Tomate = Obst<span class="vi-tip">Cà chua → trong bếp coi là Gemüse (rau củ)</span></span></li>
+      <li onclick="selectOpt(this,false)"><span class="de-trigger" onclick="toggleTip(this)">Zitrone = Gemüse<span class="vi-tip">Chanh = rau củ → sai, là Obst</span></span></li>
+    </ol>
+    <div class="q-ans" id="t7a7">✅ <strong>Antwort 2.</strong> <span class="de-trigger" onclick="toggleTip(this)">Obst = süß/Frucht (Apfel), Gemüse = Pflanzenteile (Möhre), Kräuter = würzen/garnieren (Dill, Petersilie, Schnittlauch).<span class="vi-tip">Obst = trái cây ngọt (táo), Gemüse = rau củ (cà rốt), Kräuter = rau thơm nêm/trang trí (thì là, ngò tây, hẹ).</span></span></div>
+    <button class="show-btn" onclick="showAns('t7a7')">🔍 Lösung zeigen</button>
+  </div>
+
+  <!-- T2-Q4: Wäschesymbole -->
+  <div class="q-block">
+    <div class="q-label">Aufgabe 8 – <span class="de-trigger" onclick="toggleTip(this)">Wäschesymbole unterscheiden<span class="vi-tip">Phân biệt ký hiệu giặt là</span></span></div>
+    <div class="q-text">Was bedeutet ein <strong>durchgestrichenes Dreieck</strong> auf dem Pflegeetikett?</div>
+    <ol class="opts">
+      <li onclick="selectOpt(this,false)">Nicht bügeln.</li>
+      <li onclick="selectOpt(this,false)">Nicht im Trockner trocknen.</li>
+      <li onclick="selectOpt(this,true)"><span class="de-trigger" onclick="toggleTip(this)">Nicht bleichen<span class="vi-tip">Không được tẩy trắng</span></span></li>
+      <li onclick="selectOpt(this,false)">Nicht chemisch reinigen.</li>
+    </ol>
+    <div class="q-ans" id="t7a8">✅ <strong>Antwort 3.</strong> <span class="de-trigger" onclick="toggleTip(this)">Bottich = Waschen · Dreieck = Bleichen · Quadrat = Trocknen · Bügeleisen = Bügeln · Kreis = chemische Reinigung. Durchgestrichen = verboten.<span class="vi-tip">Chậu = giặt · Tam giác = tẩy trắng · Hình vuông = sấy · Bàn ủi = ủi · Hình tròn = giặt khô. Gạch chéo = cấm.</span></span></div>
+    <button class="show-btn" onclick="showAns('t7a8')">🔍 Lösung zeigen</button>
+  </div>
+
+  <!-- ============ TEIL 3 ============ -->
+  <div class="q-situation" style="margin-top:20px;">🍳 <strong>Teil 3 – Frühstück &amp; Menüzuordnung:</strong> Frühstück mit Kaffee für <strong>4 Personen à la carte</strong>. (1) 10 Fehler finden. (2) Die richtigen Teller zu 4 Menüs zuordnen.</div>
+
+  <!-- T3-Q1: Frühstück eindecken -->
+  <div class="q-block">
+    <div class="q-label">Aufgabe 9 – <span class="de-trigger" onclick="toggleTip(this)">Frühstücksgedeck<span class="vi-tip">Bộ đồ ăn sáng</span></span></div>
+    <div class="q-text">Was gehört zu einem <strong>einfachen Kaffee-Frühstücksgedeck</strong>?</div>
+    <ol class="opts">
+      <li onclick="selectOpt(this,false)">Suppenteller + Suppenlöffel + Rotweinglas.</li>
+      <li onclick="selectOpt(this,true)"><span class="de-trigger" onclick="toggleTip(this)">Frühstücksteller, Kaffeetasse mit Untertasse &amp; Kaffeelöffel, Messer, kleine Gabel, Serviette<span class="vi-tip">Đĩa ăn sáng, tách cà phê + đĩa lót + thìa cà phê, dao, nĩa nhỏ, khăn ăn</span></span></li>
+      <li onclick="selectOpt(this,false)">Nur ein großes Menümesser.</li>
+      <li onclick="selectOpt(this,false)">Sektglas + Dessertlöffel.</li>
+    </ol>
+    <div class="q-ans" id="t7a9">✅ <strong>Antwort 2.</strong> <span class="de-trigger" onclick="toggleTip(this)">Tasse + Untertasse rechts, Kaffeelöffel auf der Untertasse rechts, Messer rechts, Gabel links, Frühstücksteller Mitte.<span class="vi-tip">Tách + đĩa lót bên phải, thìa cà phê đặt trên đĩa lót, dao bên phải, nĩa bên trái, đĩa ăn sáng ở giữa.</span></span></div>
+    <button class="show-btn" onclick="showAns('t7a9')">🔍 Lösung zeigen</button>
+  </div>
+
+  <!-- T3-Q2: Fehler finden -->
+  <div class="q-block">
+    <div class="q-label">Aufgabe 10 – <span class="de-trigger" onclick="toggleTip(this)">Fehler im Gedeck finden<span class="vi-tip">Tìm lỗi trong cách bày bàn</span></span></div>
+    <div class="q-text">Welche Beobachtung ist ein <strong>Fehler</strong>, den du beanstanden musst?</div>
+    <ol class="opts">
+      <li onclick="selectOpt(this,false)">Die Gabel liegt links vom Teller.</li>
+      <li onclick="selectOpt(this,false)">Die Tasse steht rechts mit dem Henkel nach rechts.</li>
+      <li onclick="selectOpt(this,true)"><span class="de-trigger" onclick="toggleTip(this)">Das Messer liegt mit der Schneide nach außen.<span class="vi-tip">Dao đặt lưỡi quay ra ngoài → SAI, lưỡi phải quay vào trong</span></span></li>
+      <li onclick="selectOpt(this,false)">Die Serviette liegt sauber gefaltet auf dem Teller.</li>
+    </ol>
+    <div class="q-ans" id="t7a10">✅ <strong>Antwort 3.</strong> <span class="de-trigger" onclick="toggleTip(this)">Typische Fehler: Messerschneide nach außen, schmutziges/fleckiges Geschirr, falsche Besteckreihenfolge, Glas am falschen Platz, Henkel/Löffel falsch, fehlende Serviette.<span class="vi-tip">Lỗi hay gặp: lưỡi dao quay ra ngoài, bát đĩa bẩn/ố, sai thứ tự dao nĩa, ly sai chỗ, quai tách/thìa sai hướng, thiếu khăn ăn.</span></span></div>
+    <button class="show-btn" onclick="showAns('t7a10')">🔍 Lösung zeigen</button>
+  </div>
+
+  <!-- T3-Q3: Teller zu Menü -->
+  <div class="q-block">
+    <div class="q-label">Aufgabe 11 – <span class="de-trigger" onclick="toggleTip(this)">Richtigen Teller zum Gang zuordnen<span class="vi-tip">Chọn đúng đĩa cho từng món</span></span></div>
+    <div class="q-text">Welche Zuordnung <strong>Speise → Teller</strong> ist richtig?</div>
+    <ol class="opts">
+      <li onclick="selectOpt(this,false)">Suppe → flacher Dessertteller.</li>
+      <li onclick="selectOpt(this,true)"><span class="de-trigger" onclick="toggleTip(this)">Suppe → tiefer Teller · Hauptgang → großer flacher Teller · Dessert → kleiner Dessertteller · Salat → Salatschale<span class="vi-tip">Súp → đĩa sâu · Món chính → đĩa phẳng lớn · Tráng miệng → đĩa nhỏ · Salad → tô/chén salad</span></span></li>
+      <li onclick="selectOpt(this,false)">Hauptgang → Brotteller.</li>
+      <li onclick="selectOpt(this,false)">Dessert → Suppenteller.</li>
+    </ol>
+    <div class="q-ans" id="t7a11">✅ <strong>Antwort 2.</strong> <span class="de-trigger" onclick="toggleTip(this)">Größe/Form richtet sich nach Gang: tief für Suppe, groß-flach für Hauptgang, klein für Dessert/Vorspeise, Schale für Salat.<span class="vi-tip">Kích cỡ/hình dạng đĩa theo món: đĩa sâu cho súp, đĩa phẳng lớn cho món chính, đĩa nhỏ cho tráng miệng/khai vị, tô cho salad.</span></span></div>
+    <button class="show-btn" onclick="showAns('t7a11')">🔍 Lösung zeigen</button>
+  </div>
+
+  <div class="note" style="margin-top:16px;">✅ <span class="de-trigger" onclick="toggleTip(this)">Tipp für die Praxis: sauber &amp; ruhig arbeiten, immer von rechts eindecken (außer Gabel/Brot von links), Besteck nur am Griff anfassen, Gläser am Stiel.<span class="vi-tip">Mẹo thi thực hành: làm sạch sẽ &amp; bình tĩnh, bày bàn từ bên phải (trừ nĩa/bánh mì từ trái), chỉ cầm dao nĩa ở cán, cầm ly ở chân ly.</span></span></div>
+</div>
+
 <button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <script>
@@ -885,7 +1071,7 @@ function fcRender() {
   const c = CARDS[fcIdx];
   document.getElementById('fc-topic').textContent = c.topic;
   document.getElementById('fc-q').textContent = c.q;
-  document.getElementById('fc-hint').textContent = '👆 Klicken zum Antwort anzeigen';
+  document.getElementById('fc-hint').textContent = '👆 Klicken für Antwort';
   document.getElementById('fc-counter').textContent = (fcIdx+1) + ' / ' + CARDS.length;
   const card = document.getElementById('fc-card');
   card.classList.remove('flipped');
@@ -902,7 +1088,7 @@ function fcFlip() {
   } else {
     card.classList.remove('flipped');
     document.getElementById('fc-q').textContent = CARDS[fcIdx].q;
-    document.getElementById('fc-hint').textContent = '👆 Klicken zum Antwort anzeigen';
+    document.getElementById('fc-hint').textContent = '👆 Klicken für Antwort';
   }
 }
 
