@@ -210,6 +210,11 @@ body.tier-paid .pro-flag,body.tier-super .pro-flag{
 .zq-btn{margin-top:10px;border:1px solid #93c5fd;background:#eff6ff;color:#1e40af;border-radius:9px;padding:7px 12px;font-weight:600;cursor:pointer;font-size:.86em}
 .zq-ans{display:none;margin-top:10px;padding:10px 12px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;font-size:.9em}
 .zq-ans.show{display:block;animation:fade .2s}
+.zq-fig{display:flex;flex-wrap:wrap;gap:12px;margin:10px 0}
+.zq-fig figure{margin:0;flex:1 1 140px;max-width:200px;text-align:center}
+.zq-fig img{width:100%;height:120px;object-fit:cover;border-radius:10px;border:1px solid #e5e7eb;background:#f1f5f9;display:block}
+.zq-fig figcaption{font-size:.78em;color:var(--muted);margin-top:4px;font-weight:600}
+.zw-hero{width:100%;max-height:230px;object-fit:cover;border-radius:14px;border:1px solid #e5e7eb;margin:6px 0 2px}
 
 /* Image chart + hotspots */
 .diagram-wrap{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start}
@@ -4251,6 +4256,8 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
     <!-- ===== TEIL 1 ===== -->
     <div class="card">
       <h2>🍽️ Teil 1 – Eindecken &amp; Material</h2>
+      <img class="zw-hero" loading="lazy" onerror="this.style.display='none'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Formal_Place_Setting_12_Course_Dinner.jpg/500px-Formal_Place_Setting_12_Course_Dinner.jpg" alt="Formelles Gedeck – Beispiel für ein vollständiges Menü-Gedeck">
+      <p style="font-size:.8em;color:var(--muted);margin:2px 0 8px;">👆 So sieht ein vollständiges Menü-Gedeck aus (Vị trí đĩa, dao nĩa, ly cho bữa nhiều món).</p>
       <p>4-Gang-Menü mit Getränken. Aufgabe: (1) Materialliste für <strong>30 Personen</strong>, (2) ein 4-Gänge-Menü für <strong>2 Personen</strong> eindecken. Anlass: <span class="zw-tip" onclick="zwTip(this)">Verlobungsfeier<span class="zw-pop">Tiệc đính hôn</span></span>.</p>
       <table>
         <thead><tr><th>Gang</th><th>Speise / Getränk</th></tr></thead>
@@ -4262,6 +4269,11 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
         </tbody>
       </table>
       <div class="formula">💡 <span class="zw-tip" onclick="zwTip(this)">Weißwein zu Fisch/hell, Rosé/leichter Rotwein zu Kalb<span class="zw-pop">Vang trắng đi với cá/món nhạt, vang hồng/đỏ nhẹ đi với thịt bê</span></span></div>
+      <div class="zq-fig">
+        <figure><img loading="lazy" onerror="this.parentNode.style.display='none'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Cutlery.jpg/500px-Cutlery.jpg" alt="Besteck"><figcaption>Besteck (dao nĩa thìa)</figcaption></figure>
+        <figure><img loading="lazy" onerror="this.parentNode.style.display='none'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Wine_glass.jpg/500px-Wine_glass.jpg" alt="Weinglas"><figcaption>Weinglas (ly vang)</figcaption></figure>
+        <figure><img loading="lazy" onerror="this.parentNode.style.display='none'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Champagne_flute_and_bottle.jpg/500px-Champagne_flute_and_bottle.jpg" alt="Sektglas"><figcaption>Sektglas (ly champagne)</figcaption></figure>
+      </div>
     </div>
 
     <div class="zq" onclick="zwSelectOpt(event)">
@@ -4334,6 +4346,9 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
     <div class="zq" onclick="zwSelectOpt(event)">
       <div class="zq-label">Aufgabe 6 – <span class="zw-tip" onclick="zwTip(this)">Fenster putzen: Tuch &amp; Mittel<span class="zw-pop">Lau kính: khăn &amp; dung dịch</span></span></div>
       <div class="zq-text">Womit reinigst du eine Glasscheibe <strong>streifenfrei</strong>?</div>
+      <div class="zq-fig">
+        <figure><img loading="lazy" onerror="this.parentNode.style.display='none'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Microfiber_cloth.jpg/500px-Microfiber_cloth.jpg" alt="Mikrofasertuch"><figcaption>Mikrofasertuch (khăn microfiber)</figcaption></figure>
+      </div>
       <ol class="zq-opts">
         <li data-c="0"><span class="zw-tip" onclick="zwTip(this)">Geschirrtuch + Scheuermilch<span class="zw-pop">Khăn lau bát + kem chà → xước kính</span></span></li>
         <li data-c="1"><span class="zw-tip" onclick="zwTip(this)">Mikrofasertuch (od. Abzieher) + Glasreiniger<span class="zw-pop">Khăn microfiber (hoặc cây gạt) + nước lau kính</span></span></li>
@@ -4347,6 +4362,12 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
     <div class="zq" onclick="zwSelectOpt(event)">
       <div class="zq-label">Aufgabe 7 – <span class="zw-tip" onclick="zwTip(this)">Obst · Gemüse · Kräuter<span class="zw-pop">Trái cây · rau củ · rau thơm</span></span></div>
       <div class="zq-text">Welche Zuordnung ist <strong>richtig</strong>?</div>
+      <div class="zq-fig">
+        <figure><img loading="lazy" onerror="this.parentNode.style.display='none'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Red_Apple.jpg/500px-Red_Apple.jpg" alt="Apfel"><figcaption>Apfel → Obst</figcaption></figure>
+        <figure><img loading="lazy" onerror="this.parentNode.style.display='none'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Carrots.JPG/500px-Carrots.JPG" alt="Karotte"><figcaption>Möhre → Gemüse</figcaption></figure>
+        <figure><img loading="lazy" onerror="this.parentNode.style.display='none'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Dill.jpg/500px-Dill.jpg" alt="Dill"><figcaption>Dill → Kräuter</figcaption></figure>
+        <figure><img loading="lazy" onerror="this.parentNode.style.display='none'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Petroselinum_crispum_003.JPG/500px-Petroselinum_crispum_003.JPG" alt="Petersilie"><figcaption>Petersilie → Kräuter</figcaption></figure>
+      </div>
       <ol class="zq-opts">
         <li data-c="0"><span class="zw-tip" onclick="zwTip(this)">Petersilie = Gemüse<span class="zw-pop">Ngò tây → sai, là Kräuter</span></span></li>
         <li data-c="1"><span class="zw-tip" onclick="zwTip(this)">Apfel = Obst · Möhre = Gemüse · Dill = Kräuter<span class="zw-pop">Táo = trái cây · Cà rốt = rau củ · Thì là = rau thơm</span></span></li>
@@ -4379,6 +4400,9 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
     <div class="zq" onclick="zwSelectOpt(event)">
       <div class="zq-label">Aufgabe 9 – <span class="zw-tip" onclick="zwTip(this)">Frühstücksgedeck<span class="zw-pop">Bộ đồ ăn sáng</span></span></div>
       <div class="zq-text">Was gehört zu einem <strong>Kaffee-Frühstücksgedeck</strong>?</div>
+      <div class="zq-fig">
+        <figure><img loading="lazy" onerror="this.parentNode.style.display='none'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Table_setting-01.jpg/500px-Table_setting-01.jpg" alt="Gedeck Beispiel"><figcaption>Gedeck-Beispiel (bố trí bàn)</figcaption></figure>
+      </div>
       <ol class="zq-opts">
         <li data-c="0">Suppenteller + Suppenlöffel + Rotweinglas.</li>
         <li data-c="1"><span class="zw-tip" onclick="zwTip(this)">Frühstücksteller, Kaffeetasse mit Untertasse &amp; Kaffeelöffel, Messer, kleine Gabel, Serviette<span class="zw-pop">Đĩa ăn sáng, tách cà phê + đĩa lót + thìa, dao, nĩa nhỏ, khăn ăn</span></span></li>
