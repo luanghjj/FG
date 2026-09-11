@@ -1,6 +1,6 @@
 /* ============================================================
    exam-sim.js  —  Prüfungssimulation Engine für AzubiHub
-   Chế độ thi thử bấm giờ tương tác chuẩn IHK (Herbst 2023, A, B, C)
+   Interaktive Prüfungssimulation mit Timer nach IHK-Standard (Herbst 2023, A, B, C)
    ============================================================ */
 (function(){
 "use strict";
@@ -117,7 +117,7 @@ const EXAMS = {
     situations: [
       {range:"1–12", text:"Hotel Seeblick: Am 15. Oktober feiern 60 Gäste eine Silberhochzeit. Sie bereiten den Gastraum und die Tischwäsche vor."},
       {range:"13–17", text:"Sie kontrollieren Sicherheit und Umweltstandards im Betrieb."},
-      {range:"18–23", text:"Sie sind an der Bar và im Vorratslager eingeteilt."}
+      {range:"18–23", text:"Sie sind an der Bar und im Vorratslager eingeteilt."}
     ],
     questions: [
       {id:1,sit:0,q:"Welcher Zustand im Bankettsaal stellt einen Verstoß gegen Brandschutzvorschriften dar?",
@@ -169,7 +169,7 @@ const EXAMS = {
        opts:["Bio→2, Glas→4, Gelb→1, Papier→5, Rest→3, Sonder→6"],ans:[0],type:"open",topic:"Mülltrennung",
        explain:"Biotonne: 2 | Glas: 4 | Gelber Sack: 1 | Papier: 5 | Restmüll: 3 | Sondermüll: 6"},
       {id:17,sit:1,q:"Warum führt eine Überdosierung von Allzweckreiniger zu Nachteilen?",
-       opts:["Einwirkzeit sinkt auf 0","Klebrige Tensidschichten bauen sich auf, ziehen Schmutz an và machen Böden rutschig","pH-Wert wird 0","Wasser gefriert sofort","Tücher verlieren Farbe"],
+       opts:["Einwirkzeit sinkt auf 0","Klebrige Tensidschichten bauen sich auf, ziehen Schmutz an und machen Böden rutschig","pH-Wert wird 0","Wasser gefriert sofort","Tücher verlieren Farbe"],
        ans:[1],type:"single",topic:"Reinigungsmittel"},
       {id:18,sit:2,q:"Gäste beschweren sich über lautes Besteckgeklapper. Welche Maßnahme hilft direkt am Tisch?",
        opts:["Tischdecken weglassen","Molton-Tischpolster unter dem Tischtuch verwenden","Plastikbesteck eindecken","Musik verdoppeln","Nur Suppe servieren"],
@@ -198,15 +198,15 @@ const EXAMS = {
     time: 3600,
     situations: [
       {range:"1–12", text:"Schlosshotel Bellevue: Am 20. Dezember feiern 80 Personen eine Weihnachtsfeier mit 4-Gänge-Menü. Sie decken das Menügedeck ein."},
-      {range:"13–17", text:"Sie prüfen Arbeitssicherheit, Chemieeinsatz và Brandschutz im Küchenbereich."},
-      {range:"18–23", text:"Sie bedienen Gäste im Service và verwalten Leergut."}
+      {range:"13–17", text:"Sie prüfen Arbeitssicherheit, Chemieeinsatz und Brandschutz im Küchenbereich."},
+      {range:"18–23", text:"Sie bedienen Gäste im Service und verwalten Leergut."}
     ],
     questions: [
       {id:1,sit:0,q:"Welche Maßnahme entspricht den Brandschutzbestimmungen bei Weihnachtsdekoration?",
        opts:["Brennende Kerzen direkt in trockene Tannenzweige stecken","Fluchtwege mit Geschenketischen verstellen","Lichterketten mit VDE-/GS-Zeichen nutzen, Steckdosen nicht überlasten","Papiergirlanden über Heizstrahlern aufhängen","Notausgangsschilder verdecken"],
        ans:[2],type:"single",topic:"Brandschutz"},
       {id:2,sit:0,q:"Welche Arbeiten gehören zur Unterhaltsreinigung vor dem Eindecken?",
-       opts:["Grundreinigung der Polstermöbel","Fensterbänke abwischen, Tische ausrichten và reinigen, Boden saugen/wischen","Abschleifen der Holztheke","Chemisches Reinigen der Decken","Wände streichen"],
+       opts:["Grundreinigung der Polstermöbel","Fensterbänke abwischen, Tische ausrichten und reinigen, Boden saugen/wischen","Abschleifen der Holztheke","Chemisches Reinigen der Decken","Wände streichen"],
        ans:[1],type:"single",topic:"Reinigung"},
       {id:3,sit:0,q:"Rotweinfleck auf weißer Baumwolltischdecke. Richtige Sofortmaßnahme?",
        opts:["Mit heißem Kaffee übergießen","Flüssigkeit mit sauberem Tuch abtupfen, mit Mineralwasser oder Salz behandeln solange feucht","Mit Feuerzeug erhitzen","3 Tage eintrocknen lassen","Tinte darüber gießen"],
@@ -279,9 +279,9 @@ const EXAMS = {
     subtitle: "Hochzeit im Mai · Prüfungszeit: 60 Minuten",
     time: 3600,
     situations: [
-      {range:"1–12", text:"Landgasthof zur Post: Am 18. Mai feiern 100 Gäste eine Hochzeit. Sie helfen bei Raumvorbereitung, Bankettgedeck và Gästebetreuung."},
-      {range:"13–17", text:"Sie achten auf Arbeitsschutz, Chlorgas-Vermeidung và nachhaltige Mülltrennung."},
-      {range:"18–23", text:"Sie übernehmen Thekendienst, Warenannahme và Reklamationsbehandlung."}
+      {range:"1–12", text:"Landgasthof zur Post: Am 18. Mai feiern 100 Gäste eine Hochzeit. Sie helfen bei Raumvorbereitung, Bankettgedeck und Gästebetreuung."},
+      {range:"13–17", text:"Sie achten auf Arbeitsschutz, Chlorgas-Vermeidung und nachhaltige Mülltrennung."},
+      {range:"18–23", text:"Sie übernehmen Thekendienst, Warenannahme und Reklamationsbehandlung."}
     ],
     questions: [
       {id:1,sit:0,q:"Wie müssen Flucht- und Rettungswege im Gastraum vorschriftsmäßig gekennzeichnet sein?",
@@ -300,13 +300,13 @@ const EXAMS = {
        opts:["Frühlingsblumen (weiße Tulpen, Maiglöckchen) in Glasvasen","Getrocknete Maiskolben","Grüne Buchsbaumkränze mit zarten weißen Bändern","Eiszapfen aus Plastik","Halloween-Kürbisse","Tontöpfe mit Gartenerde"],
        ans:[0,2],type:"multi",multi:2,topic:"Tischdekoration"},
       {id:6,sit:0,q:"Was ist das typische Merkmal eines festlichen Bankettgedecks im Vergleich zum Grundgedeck?",
-       opts:["Kein Besteck auf dem Tisch","Platzteller als Basis, vollständiges Besteck für alle Gänge (max. 3 Besteckteile je Seite) và Gläsersatz","Pappteller và Plastikbesteck","Keine Gläser","Gäste bringen Besteck mit"],
+       opts:["Kein Besteck auf dem Tisch","Platzteller als Basis, vollständiges Besteck für alle Gänge (max. 3 Besteckteile je Seite) und Gläsersatz","Pappteller und Plastikbesteck","Keine Gläser","Gäste bringen Besteck mit"],
        ans:[1],type:"single",topic:"Gedeckarten"},
       {id:7,sit:0,q:"Wie wird das Dessertbesteck oberhalb des Platztellers eingedeckt?",
        opts:["Löffel nach links, Gabel nach rechts","Dessertgabel liegt unten (Griff nach LINKS), Dessertlöffel liegt oben (Griff nach RECHTS)","Beide Griffe nach unten","Senkrecht im Wasserglas","Unter dem Teller"],
        ans:[1],type:"single",topic:"Besteck"},
       {id:8,sit:0,q:"Wie läuft der Französische Service (Plattenservice) korrekt ab?",
-       opts:["Teller wird in der Küche angerichtet và von rechts serviert","Speisen auf Platten von LINKS herangereicht, Gast bedient sich mit Vorlegebesteck selbst","Kellner legt am Gueridon vor","Nur Buffet-Selbstbedienung","Speisen werden hingestellt"],
+       opts:["Teller wird in der Küche angerichtet und von rechts serviert","Speisen auf Platten von LINKS herangereicht, Gast bedient sich mit Vorlegebesteck selbst","Kellner legt am Gueridon vor","Nur Buffet-Selbstbedienung","Speisen werden hingestellt"],
        ans:[1],type:"single",topic:"Service"},
       {id:9,sit:0,q:"Gast meldet schwere Glutenunverträglichkeit (Zöliakie). Welche Zutat muss zwingend vermieden werden?",
        opts:["Reines Rindfleisch","Weizen, Roggen, Gerste, Dinkel und herkömmliches Mehl","Frisches Quellwasser","Frische Äpfel","Gekochte Kartoffeln"],
@@ -335,7 +335,7 @@ const EXAMS = {
       {id:17,sit:1,q:"Welches Reinigungstuch wird für Waschbecken, Fliesen und Armaturen im Sanitärbereich genutzt?",
        opts:["Rotes Tuch (WC)","Gelbes Tuch (Waschbecken/Armaturen)","Blaues Tuch (Gastraum)","Grünes Tuch (Küche)","Schwarzes Tuch"],
        ans:[1],type:"single",topic:"Vier-Farben-System"},
-      {id:18,sit:2,q:"Warum schäumt Bier im fettigen Glas stark auf và die Schaumkrone zerfällt sofort?",
+      {id:18,sit:2,q:"Warum schäumt Bier im fettigen Glas stark auf und die Schaumkrone zerfällt sofort?",
        opts:["Fett zerstört die Oberflächenspannung und wirkt als Schaumzerstörer","Bier enthält kein Wasser","Glas ist zu kalt","Kohlensäure wird vermehrt","Alkoholgehalt steigt"],
        ans:[0],type:"single",topic:"Getränkekunde"},
       {id:19,sit:2,q:"Wasserhahn tropft: 4,5 Liter in 3 Stunden. Wasserverlust in 24 Stunden?",
@@ -475,15 +475,15 @@ function renderExamUI(){
 .ex-confirm-actions .ex-btn{flex:1;text-align:center}
 </style>
 <div class="ex-header">
-  <button class="ex-btn ex-btn-ghost" onclick="ExamSim.quit()" style="padding:6px 12px;font-size:.85em">✕ Thoát</button>
+  <button class="ex-btn ex-btn-ghost" onclick="ExamSim.quit()" style="padding:6px 12px;font-size:.85em">✕ Beenden</button>
   <div class="ex-title">${_exam.title}</div>
   <div class="ex-timer" id="exam-timer">60:00</div>
 </div>
 <div class="ex-progress"><span style="width:${(answeredCount/qs.length*100)}%"></span></div>
 <div class="ex-body" id="exam-body"></div>
 <div class="ex-footer">
-  <div class="ex-progress-text" id="exam-progress">${answeredCount}/${qs.length} câu đã trả lời</div>
-  <button class="ex-btn ex-btn-primary" onclick="ExamSim.submit()">📤 Nộp bài</button>
+  <div class="ex-progress-text" id="exam-progress">${answeredCount}/${qs.length} Fragen beantwortet</div>
+  <button class="ex-btn ex-btn-primary" onclick="ExamSim.submit()">📤 Abgeben</button>
 </div>`;
 
   updateTimerDisplay();
@@ -500,7 +500,7 @@ function renderQuestions(){
     if(q.sit !== undefined && q.sit !== lastSit && _exam.situations && _exam.situations[q.sit]){
       lastSit = q.sit;
       const sit = _exam.situations[q.sit];
-      html += `<div class="ex-sit">📋 <strong>Situation (Câu ${sit.range}):</strong> ${sit.text}</div>`;
+      html += `<div class="ex-sit">📋 <strong>Situation (Aufgabe ${sit.range}):</strong> ${sit.text}</div>`;
     }
 
     const answered = _answers[q.id] !== undefined;
@@ -517,12 +517,12 @@ function renderQuestions(){
     html += `<div class="ex-q-head">`;
     html += `<div class="ex-q-num">${q.id}</div>`;
     html += `<div class="ex-q-text">${q.q}</div>`;
-    if(!_submitted) html += `<span class="ex-q-mark ${marked?'active':''}" onclick="ExamSim.toggleMark(${q.id})" title="Đánh dấu">${marked?'⭐':'☆'}</span>`;
+    if(!_submitted) html += `<span class="ex-q-mark ${marked?'active':''}" onclick="ExamSim.toggleMark(${q.id})" title="Markieren">${marked?'⭐':'☆'}</span>`;
     html += `</div>`;
 
     if(q.type === 'open'){
       const val = _answers[q.id] || '';
-      html += `<input class="ex-open-input" type="text" placeholder="Nhập đáp án..." value="${val}" onchange="ExamSim.answerOpen(${q.id},this.value)" ${_submitted?'disabled':''}/>`;
+      html += `<input class="ex-open-input" type="text" placeholder="Antwort eingeben..." value="${val}" onchange="ExamSim.answerOpen(${q.id},this.value)" ${_submitted?'disabled':''}/>`;
     } else {
       html += `<div class="ex-opts">`;
       q.opts.forEach((opt,oi) => {
@@ -547,9 +547,9 @@ function renderQuestions(){
       const correct = checkAnswer(q);
       const correctAns = q.ans.map(a => q.type==='open' ? q.opts[a] : `${a+1}. ${q.opts[a]}`).join(', ');
       if(!correct){
-        html += `<div class="ex-explain show" style="background:#fef2f2;border-color:#ef4444;color:#991b1b;">❌ Đáp án đúng: ${correctAns}</div>`;
+        html += `<div class="ex-explain show" style="background:#fef2f2;border-color:#ef4444;color:#991b1b;">❌ Richtige Antwort: ${correctAns}</div>`;
       } else {
-        html += `<div class="ex-explain show">✅ Chính xác!</div>`;
+        html += `<div class="ex-explain show">✅ Richtig!</div>`;
       }
     }
     html += `</div>`;
@@ -605,7 +605,7 @@ function updateProgress(){
   const bar = document.querySelector('#exam-overlay .ex-progress span');
   if(bar) bar.style.width = (answered/total*100)+'%';
   const txt = document.getElementById('exam-progress');
-  if(txt) txt.textContent = `${answered}/${total} câu đã trả lời`;
+  if(txt) txt.textContent = `${answered}/${total} Fragen beantwortet`;
 }
 
 function checkAnswer(q){
@@ -630,7 +630,7 @@ function showConfirm(title, msg, confirmLabel, confirmClass, onConfirm){
     <div class="ex-confirm-title">${title}</div>
     <div class="ex-confirm-msg">${msg}</div>
     <div class="ex-confirm-actions">
-      <button class="ex-btn ex-btn-ghost" id="_exConfCancel">Hủy</button>
+      <button class="ex-btn ex-btn-ghost" id="_exConfCancel">Abbrechen</button>
       <button class="ex-btn ${confirmClass}" id="_exConfOk">${confirmLabel}</button>
     </div>
   </div>`;
@@ -647,9 +647,9 @@ function submitExam(){
     const total = _exam.questions.length;
     if(answered < total){
       showConfirm(
-        '📤 Nộp bài sớm?',
-        `Bạn mới trả lời <strong>${answered}/${total} câu</strong>. Chắc chắn muốn nộp bài?`,
-        'Nộp bài', 'ex-btn-primary',
+        '📤 Vorzeitig abgeben?',
+        `Du hast erst <strong>${answered}/${total} Fragen</strong> beantwortet. Wirklich abgeben?`,
+        'Abgeben', 'ex-btn-primary',
         () => _doSubmit()
       );
       return;
@@ -699,9 +699,9 @@ function _doSubmit(){
 <div class="ex-result-box">
   <h2>${pass?'🎉 Bestanden!':'😔 Leider nicht bestanden'}</h2>
   <div class="ex-result-score ${pass?'pass':'fail'}">${pct}%</div>
-  <p style="color:#64748b;font-size:.92em;">${correct} / ${total} câu đúng · Thời gian: ${minUsed}m ${secUsed}s</p>
+  <p style="color:#64748b;font-size:.92em;">${correct} / ${total} richtig · Zeit: ${minUsed}m ${secUsed}s</p>
   <div class="ex-result-bar"><span style="width:${pct}%;background:${pass?'#22c55e':'#ef4444'}"></span></div>
-  <h3 style="margin-top:20px;font-size:1em;color:#1e293b;">📊 Phân tích theo chủ đề</h3>
+  <h3 style="margin-top:20px;font-size:1em;color:#1e293b;">📊 Analyse nach Thema</h3>
   <div class="ex-topic-grid">
     ${Object.entries(topicStats).map(([t,s]) => {
       const tpct = Math.round(s.correct/s.total*100);
@@ -716,8 +716,8 @@ function _doSubmit(){
   // Update footer
   if(footer){
     footer.innerHTML = `
-<button class="ex-btn ex-btn-ghost" onclick="ExamSim.quit()">← Quay lại</button>
-<button class="ex-btn ex-btn-primary" onclick="document.getElementById('exam-body').scrollTo({top:0,behavior:'smooth'});document.getElementById('exam-overlay').scrollTo({top:0,behavior:'smooth'})">🔝 Lên đầu trang</button>`;
+<button class="ex-btn ex-btn-ghost" onclick="ExamSim.quit()">← Zurück</button>
+<button class="ex-btn ex-btn-primary" onclick="document.getElementById('exam-body').scrollTo({top:0,behavior:'smooth'});document.getElementById('exam-overlay').scrollTo({top:0,behavior:'smooth'})">🔝 Nach oben</button>`;
   }
   document.getElementById('exam-overlay').scrollTo({top:0,behavior:'smooth'});
 }
@@ -725,9 +725,9 @@ function _doSubmit(){
 function quitExam(){
   if(!_submitted && _remaining > 0){
     showConfirm(
-      '🚪 Thoát khỏi bài thi?',
-      'Bạn chưa nộp bài. Tiến trình làm bài sẽ <strong>không được lưu</strong>.',
-      'Thoát', 'ex-btn-danger',
+      '🚪 Prüfung beenden?',
+      'Du hast noch nicht abgegeben. Dein Fortschritt wird <strong>nicht gespeichert</strong>.',
+      'Beenden', 'ex-btn-danger',
       () => _doQuit()
     );
     return;

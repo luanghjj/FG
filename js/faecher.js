@@ -186,7 +186,7 @@
   <tr><th>Thuật ngữ Đức</th><th>Ý nghĩa Việt</th></tr>
   <tr><td><span class="term" data-de="die Fachkraft, "-e" data-vi="chuyên viên / nhân lực lành nghề">die Fachkraft</span></td><td>Nhân viên đã qua đào tạo chuyên môn</td></tr>
   <tr><td><span class="term" data-de="das Gastgewerbe" data-vi="ngành dịch vụ khách sạn &amp; nhà hàng">das Gastgewerbe</span></td><td>Ngành hospitality nói chung</td></tr>
-  <tr><td><span class="term" data-de="die Systemgastronomie" data-vi="ẩm thực hệ thống / chuỗi">die Systemgastronomie</span></td><td>Chuỗi nhà hàng chuẩn hóa (Vapiano, McDonald's...)</td></tr>
+  <tr><td><span class="term" data-de="die Systemgastronomie" data-vi="ẩm thực hệ thống (chuẩn hóa)">die Systemgastronomie</span></td><td>Chuỗi nhà hàng chuẩn hóa (Vapiano, McDonald's...)</td></tr>
   <tr><td><span class="term" data-de="die Veranstaltungsgastronomie" data-vi="ẩm thực sự kiện / tiệc mừng">die Veranstaltungsgastronomie</span></td><td>Dịch vụ catering tiệc cưới, hội nghị</td></tr>
   <tr><td><span class="term" data-de="das Einmaleins" data-vi="bảng cửu chương / kiến thức cơ bản">das Einmaleins</span></td><td>Kiến thức nền tảng bắt buộc</td></tr>
   <tr><td><span class="term" data-de="der Nachwuchskraft, "-e" data-vi="nhân lực trẻ tiềm năng / Azubi">der Nachwuchskraft</span></td><td>Thế hệ học viên mới</td></tr>
@@ -203,7 +203,7 @@
 <table>
   <tr><th>Vai trò</th><th>Yêu cầu năng lực cốt lõi</th></tr>
   <tr><td><span class="term" data-de="als Gastgeber/in" data-vi="với vai trò chủ nhà">Als Gastgeber/in</span></td><td><span class="term" data-de="Freundlichkeit" data-vi="sự thân thiện">Freundlichkeit</span>, <span class="term" data-de="Kommunikation" data-vi="giao tiếp">Kommunikation</span>, <span class="term" data-de="Servicequalität" data-vi="chất lượng dịch vụ">Servicequalität</span>, <span class="term" data-de="Problemlösung" data-vi="giải quyết vấn đề">Problemlösung</span>.</td></tr>
-  <tr><td><span class="term" data-de="im Team" data-vi="trong đội ngũ đồng đội">Im Team</span></td><td><span class="term" data-de="Teamfähigkeit" data-vi="khả năng làm việc nhóm">Teamfähigkeit</span>, <span class="term" data-de="Zuverlässigkeit" data-vi="sự tin cậy">Zuverlässigkeit</span>, <span class="term" data-de="Respekt" data-vi="sự tôn trọng">Respekt</span>, <span class="term" data-de="Flexibilität" data-vi="sự linh hoạt">Flexibilität</span> &amp; Ordnung.</td></tr>
+  <tr><td><span class="term" data-de="im Team" data-vi="trong đội ngũ đồng đội">Im Team</span></td><td><span class="term" data-de="Teamfähigkeit" data-vi="khả năng làm việc nhóm">Teamfähigkeit</span>, <span class="term" data-de="Zuverlässigkeit" data-vi="độ tin cậy">Zuverlässigkeit</span>, <span class="term" data-de="Respekt" data-vi="sự tôn trọng">Respekt</span>, <span class="term" data-de="Flexibilität" data-vi="sự linh hoạt">Flexibilität</span> &amp; Ordnung.</td></tr>
 </table>
 <h3 class="sub">2. Góc nhìn từ Đồng nghiệp (Aussagen der Kolleg/innen)</h3>
 <ul>
@@ -275,7 +275,7 @@
   <li><strong>Hygiene &amp; Sicherheit:</strong> Tuân thủ strictly quy tắc an toàn thực phẩm HACCP.</li>
 </ul>
 <h3 class="sub">3. Bảo quản lạnh &amp; Khái niệm Dị ứng</h3>
-<p>Luôn duy trì <span class="term" data-de="die Kühlkette" data-vi="chuỗi bảo quản lạnh">Kühlkette</span> liên tục (2°C – 7°C đối với thịt, sữa, trứng). Đảm bảo <span class="term" data-de="die Allergenkennzeichnung" data-vi="ghi nhãn chất gây dị ứng">Allergenkennzeichnung</span> cho 14 nhóm dị ứng bắt buộc trên thực đơn.</p>`
+<p>Luôn duy trì <span class="term" data-de="die Kühlkette" data-vi="chuỗi lạnh (bảo quản lạnh)">Kühlkette</span> liên tục (2°C – 7°C đối với thịt, sữa, trứng). Đảm bảo <span class="term" data-de="die Allergenkennzeichnung" data-vi="ghi nhãn chất gây dị ứng">Allergenkennzeichnung</span> cho 14 nhóm dị ứng bắt buộc trên thực đơn.</p>`
               },
               {
                 id: "bfk2-kaltgetraenke",
@@ -287,7 +287,7 @@
 <h3 class="sub">1. Phân loại Nước khoáng & Nước uống</h3>
 <table>
   <tr><th>Loại nước</th><th>Đặc điểm pháp lý &amp; Sản xuất</th></tr>
-  <tr><td><span class="term" data-de="das Mineralwasser" data-vi="nước khoáng thiên nhiên">Mineralwasser</span></td><td>Nguồn ngầm bảo vệ, thành phần khoáng ổn định, đóng chai tại nguồn, <span class="term" data-de="amtlich anerkannt" data-vi="được nhà nước kiểm định chứng nhận">amtlich anerkannt</span>.</td></tr>
+  <tr><td><span class="term" data-de="das Mineralwasser" data-vi="nước khoáng">Mineralwasser</span></td><td>Nguồn ngầm bảo vệ, thành phần khoáng ổn định, đóng chai tại nguồn, <span class="term" data-de="amtlich anerkannt" data-vi="được nhà nước kiểm định chứng nhận">amtlich anerkannt</span>.</td></tr>
   <tr><td><span class="term" data-de="das Tafelwasser" data-vi="nước uống pha chế công nghiệp">Tafelwasser</span></td><td>Pha chế công nghiệp từ nước máy + khoáng/muối/CO2, chiết từ vòi kẹp.</td></tr>
   <tr><td>Quellwasser / Heilwasser</td><td>Nước nguồn thiên nhiên / Nước chữa bệnh tuân theo Luật Dược phẩm.</td></tr>
 </table>
@@ -392,7 +392,7 @@
 <h3 class="sub">1. Quy tắc dựng bàn Buffet (Aufbau)</h3>
 <ul>
   <li>Chiều sâu bàn tối thiểu <strong>70 cm</strong>; phủ khăn quây (<span class="term" data-de="das Skirting, -s" data-vi="vải quây chân bàn buffet">Skirting</span>) sát đất.</li>
-  <li>Trình tự món ăn (<span class="term" data-de="die Menüfolge" data-vi="trình tự món ăn thực đơn">Menüfolge</span>) xếp từ <strong>PHẢI sang TRÁI (von rechts nach links)</strong>: Đĩa → Khai vị → Súp → Món chính lạnh → Món chính nóng → Tráng miệng → Bánh mì/Besteck.</li>
+  <li>Trình tự món ăn (<span class="term" data-de="die Menüfolge" data-vi="trình tự món trong thực đơn">Menüfolge</span>) xếp từ <strong>PHẢI sang TRÁI (von rechts nach links)</strong>: Đĩa → Khai vị → Súp → Món chính lạnh → Món chính nóng → Tráng miệng → Bánh mì/Besteck.</li>
   <li>Dụng cụ gắp (<span class="term" data-de="das Vorlagebesteck" data-vi="dụng cụ gắp thức ăn chung">Vorlagebesteck</span>) đặt ở mép dưới đĩa, cán hướng sang phải.</li>
 </ul>
 
@@ -554,7 +554,7 @@
   <li>Nach MHD nur <b>durcherhitzt</b> · Salmonellen: 5 Min. kochen</li>
 </ul>
 <h3 class="sub">3. Biologische Wertigkeit (BW)</h3>
-<div class="formula"><span class="term" data-de="Biologische Wertigkeit" data-vi="giá trị sinh học (protein)">Biologische Wertigkeit</span> = wie viel g Körpereiweiß aus 100 g Nahrungseiweiß</div>
+<div class="formula"><span class="term" data-de="Biologische Wertigkeit" data-vi="giá trị sinh học">Biologische Wertigkeit</span> = wie viel g Körpereiweiß aus 100 g Nahrungseiweiß</div>
 <table>
   <tr><th>Lebensmittel</th><th>BW</th></tr>
   <tr><td><span class="term" data-de="Hühnerei" data-vi="trứng gà">Hühnerei</span> (Referenz)</td><td><strong>100</strong></td></tr>
@@ -973,7 +973,7 @@
                   <h3 class="sub">3. Wichtigkeit der Grundrechte &amp; Grenzen des Staates</h3>
                   <ul>
                     <li><strong>Tại sao Grundrechte quan trọng:</strong> Bảo vệ quyền tự do, nhân phẩm (<span class="term" data-de="Menschenwürde" data-vi="nhân phẩm con người">Menschenwürde</span>) và bình đẳng trước pháp luật, chống lại sự độc đoán của nhà nước (<span class="term" data-de="staatliche Willkür" data-vi="sự độc đoán của nhà nước">staatliche Willkür</span>).</li>
-                    <li><strong>Tại sao Nhà nước đặt ra giới hạn:</strong> Đảm bảo an ninh trật tự (<span class="term" data-de="Sicherheit" data-vi="an ninh">Sicherheit</span>), bảo vệ quyền lợi của người khác và ngăn chặn hành vi phạm tội (<span class="term" data-de="Straftaten und Missbrauch" data-vi="tội phạm và lạm dụng">Straftaten</span>).</li>
+                    <li><strong>Tại sao Nhà nước đặt ra giới hạn:</strong> Đảm bảo an ninh trật tự (<span class="term" data-de="Sicherheit" data-vi="an toàn / an ninh (tùy ngữ cảnh)">Sicherheit</span>), bảo vệ quyền lợi của người khác và ngăn chặn hành vi phạm tội (<span class="term" data-de="Straftaten und Missbrauch" data-vi="tội phạm và lạm dụng">Straftaten</span>).</li>
                   </ul>
 
                   <h3 class="sub">4. Gleichberechtigung von Frauen und Männern</h3>
@@ -1038,7 +1038,7 @@
                     <tr><td><span class="term" data-de="Wahlen" data-vi="bầu cử">Wahlen</span></td><td>wichtigste <span class="term" data-de="demokratische Kontrolle" data-vi="sự kiểm soát dân chủ">demokratische Kontrolle</span>;
                     <span class="term" data-de="Macht auf Zeit" data-vi="quyền lực có thời hạn">Macht auf Zeit</span> an
                     <span class="term" data-de="Vertreter" data-vi="đại diện">Vertreter</span></td></tr>
-                    <tr><td><span class="term" data-de="Partei" data-vi="đảng">Partei</span></td><td><span class="term" data-de="Mitwirkung" data-vi="sự tham gia / đồng hành">Mitwirkung</span> über Parteiarbeit</td></tr>
+                    <tr><td><span class="term" data-de="Partei" data-vi="đảng chính trị">Partei</span></td><td><span class="term" data-de="Mitwirkung" data-vi="sự tham gia / đồng hành">Mitwirkung</span> über Parteiarbeit</td></tr>
                     <tr><td><span class="term" data-de="Demonstration" data-vi="biểu tình">Demonstration</span></td><td>
                     <span class="term" data-de="Kundgebung" data-vi="buổi mít tinh / biểu dương">Kundgebung</span>, Marsch,
                     <span class="term" data-de="Mahnwache" data-vi="canh thức / tuần hành im lặng">Mahnwache</span>,
@@ -1047,7 +1047,7 @@
                     <tr><td><span class="term" data-de="Leserbrief" data-vi="thư bạn đọc">Leserbrief</span></td><td>Meinung in
                     <span class="term" data-de="Medien" data-vi="truyền thông">Medien</span></td></tr>
                     <tr><td><span class="term" data-de="Bürgerentscheid" data-vi="trưng cầu dân ý cấp địa phương">Bürgerentscheid</span> /
-                    <span class="term" data-de="Volksentscheid" data-vi="trưng cầu / quyết định của dân">Volksentscheid</span></td>
+                    <span class="term" data-de="Volksentscheid" data-vi="trưng cầu dân ý">Volksentscheid</span></td>
                     <td><span class="term" data-de="direkte Abstimmung" data-vi="bỏ phiếu trực tiếp">direkte Abstimmung</span> über
                     <span class="term" data-de="Sachfragen" data-vi="vấn đề nội dung / vấn đề cụ thể">Sachfragen</span>
                     (<span class="term" data-de="Kommune" data-vi="cấp địa phương / xã-thị">Kommune</span>/
@@ -1078,7 +1078,7 @@
                     <tr><td>direktere <span class="term" data-de="Kommunikation" data-vi="giao tiếp">Kommunikation</span>
                     <span class="term" data-de="Sender" data-vi="người gửi">Sender</span>↔
                     <span class="term" data-de="Empfänger" data-vi="người nhận">Empfänger</span></td>
-                    <td><span class="term" data-de="Informationsflut" data-vi="lũ thông tin">Informationsflut</span> verdeckt Wichtiges</td></tr>
+                    <td><span class="term" data-de="Informationsflut" data-vi="bão/lũ thông tin">Informationsflut</span> verdeckt Wichtiges</td></tr>
                     <tr><td><span class="term" data-de="Interaktivität" data-vi="tính tương tác">Interaktivität</span></td>
                     <td>unübersichtlich, schwer zu filtern</td></tr>
                   </table>
@@ -1256,7 +1256,7 @@
                   und Macht begrenzen (Lehre aus
                   <span class="term" data-de="Nationalsozialismus" data-vi="chủ nghĩa Quốc xã">NS</span>: keine
                   <span class="term" data-de="Machtkonzentration" data-vi="tập trung quyền lực">Machtkonzentration</span>).</p>
-                  <p><span class="term" data-de="Gewaltenverschränkung" data-vi="đan xen quyền lực">Gewaltenverschränkung</span>:
+                  <p><span class="term" data-de="Gewaltenverschränkung" data-vi="sự đan xen quyền lực">Gewaltenverschränkung</span>:
                   die Gewalten sind nicht völlig getrennt, sondern
                   <b>greifen ineinander</b> und kontrollieren sich gegenseitig.</p>
 
@@ -1363,7 +1363,7 @@
                   <span class="term" data-de="Art. 68 GG" data-vi="Điều 68 Luật cơ bản">Art. 68 GG</span> (Vertrauensfrage)</p>
                   <div class="note"> Laut Material: Vertrauensfrage oft „weniger
                   <span class="term" data-de="nachteilig" data-vi="bất lợi">nachteilig</span>“ für die
-                  <span class="term" data-de="Partei" data-vi="đảng">Partei</span>, weil Fokus auf dem Kanzler liegt — nicht automatisch auf der ganzen Partei.</div>
+                  <span class="term" data-de="Partei" data-vi="đảng chính trị">Partei</span>, weil Fokus auf dem Kanzler liegt — nicht automatisch auf der ganzen Partei.</div>
 
                   <h3 class="sub">4. Beispiele aus der Geschichte</h3>
                   <ul>
@@ -1434,7 +1434,7 @@
 
                   <h3 class="sub"><span class="term" data-de="Menschenbild" data-vi="quan niệm về con người">Menschenbild</span> im GG</h3>
                   <ul>
-                    <li><span class="term" data-de="Menschenwürde" data-vi="nhân phẩm">Menschenwürde</span> ist
+                    <li><span class="term" data-de="Menschenwürde" data-vi="nhân phẩm con người">Menschenwürde</span> ist
                     <span class="term" data-de="unantastbar" data-vi="bất khả xâm phạm">unantastbar</span>
                     (<span class="term" data-de="Art. 1 GG" data-vi="Điều 1 Luật cơ bản">Art. 1 GG</span></li>
                     <li>Recht auf
@@ -1445,7 +1445,7 @@
                   <p>Weitere Begriffe:
                   <span class="term" data-de="Abgeordnete" data-vi="đại biểu quốc hội">Abgeordnete</span> ·
                   <span class="term" data-de="Staatsgewalt" data-vi="quyền lực nhà nước">Staatsgewalt</span> ·
-                  <span class="term" data-de="Grundgesetz" data-vi="Luật cơ bản / Hiến pháp Đức">Grundgesetz</span></p>
+                  <span class="term" data-de="Grundgesetz" data-vi="Luật cơ bản / Hiến pháp CHLB Đức">Grundgesetz</span></p>
                   <div class="formula">Volk besitzt Macht → wählt Vertreter → Mehrheit entscheidet · Würde schützt jeden Menschen</div>
                   <div class="note"> DE = vor allem repräsentative Demokratie; direkte Elemente ergänzen (v. a. Länder/Kommunen).</div>
                 `
@@ -1475,7 +1475,7 @@
                   <h3 class="sub">2. Wichtige Artikel (Beispiele)</h3>
                   <table>
                     <tr><th>Art.</th><th>Inhalt</th></tr>
-                    <tr><td>1</td><td><span class="term" data-de="Menschenwürde" data-vi="nhân phẩm">Menschenwürde</span>
+                    <tr><td>1</td><td><span class="term" data-de="Menschenwürde" data-vi="nhân phẩm con người">Menschenwürde</span>
                     <span class="term" data-de="unantastbar" data-vi="bất khả xâm phạm">unantastbar</span></td></tr>
                     <tr><td>2</td><td><span class="term" data-de="Persönliche Freiheitsrechte" data-vi="các quyền tự do cá nhân">Persönliche Freiheitsrechte</span> / Entfaltung</td></tr>
                     <tr><td>3</td><td><span class="term" data-de="Gleichheit vor dem Gesetz" data-vi="bình đẳng trước pháp luật">Gleichheit vor dem Gesetz</span></td></tr>
@@ -1534,7 +1534,7 @@
                     <tr><td><span class="term" data-de="Beschreiben" data-vi="Mô tả">Beschreiben</span></td><td>sachlich darstellen, wie etwas ist</td></tr>
                     <tr><td><span class="term" data-de="Erläutern / Erklären" data-vi="Trình bày / Giải thích">Erläutern / Erklären</span></td><td>mit eigenen Worten + Beispiel verständlich machen</td></tr>
                     <tr><td><span class="term" data-de="Begründen" data-vi="Lập luận / Nêu lý do">Begründen</span></td><td>Warum? – Gründe mit „weil / da“ geben</td></tr>
-                    <tr><td><span class="term" data-de="Vergleichen" data-vi="So sánh">Vergleichen</span></td><td>Gemeinsamkeiten + Unterschiede</td></tr>
+                    <tr><td><span class="term" data-de="Vergleichen" data-vi="so sánh">Vergleichen</span></td><td>Gemeinsamkeiten + Unterschiede</td></tr>
                     <tr><td><span class="term" data-de="Beurteilen" data-vi="Đánh giá (có lý lẽ)">Beurteilen</span></td><td>Vor- und Nachteile abwägen → sachliches Urteil</td></tr>
                     <tr><td><span class="term" data-de="Stellung nehmen" data-vi="Nêu quan điểm">Stellung nehmen</span></td><td>eigene Meinung + Begründung</td></tr>
                   </table>

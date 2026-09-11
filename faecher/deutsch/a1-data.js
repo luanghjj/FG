@@ -35,7 +35,7 @@ window.DEUTSCH_A1 = {
 <h3 class="sub">4. Luyện tập giao tiếp</h3>
 <ul>
   <li><span class="term" data-de="Wie geht es dir?" data-vi="Bạn khỏe không?">Wie geht es dir?</span> — <span class="term" data-de="Danke, gut" data-vi="Cảm ơn, tôi khỏe">Danke, gut</span>.</li>
-  <li><span class="term" data-de="Danke" data-vi="cảm ơn">Danke</span>! · <span class="term" data-de="Bitte" data-vi="không có gì / xin mời">Bitte</span>! · <span class="term" data-de="Entschuldigung" data-vi="xin lỗi">Entschuldigung</span>!</li>
+  <li><span class="term" data-de="Danke" data-vi="cảm ơn">Danke</span>! · <span class="term" data-de="Bitte" data-vi="không có gì / xin mời">Bitte</span>! · <span class="term" data-de="Entschuldigung" data-vi="xin lỗi / lời xin lỗi">Entschuldigung</span>!</li>
   <li><span class="term" data-de="Es freut mich" data-vi="Rất vui được gặp bạn">Es freut mich</span>.</li>
 </ul>`,
           grammar: [
@@ -344,7 +344,7 @@ window.DEUTSCH_A1 = {
 <ul>
   <li><span class="term" data-de="der Geburtstag" data-vi="sinh nhật">Geburtstag</span>: Ich habe am <span class="term" data-de="15. Juni" data-vi="ngày 15 tháng 6">15. Juni</span> Geburtstag.</li>
   <li><span class="term" data-de="Wann hast du Geburtstag?" data-vi="Khi nào sinh nhật bạn?">Wann hast du Geburtstag?</span></li>
-  <li><span class="term" data-de="das Geburtstagsgeschenk" data-vi="quà sinh nhật">Geburtstagsgeschenk</span> · <span class="term" data-de="die Geburtstagsparty" data-vi="tiệc sinh nhật">Geburtstagsparty</span> · <span class="term" data-de="der Kuchen" data-vi="bánh ga-tô">Kuchen</span></li>
+  <li><span class="term" data-de="das Geburtstagsgeschenk" data-vi="quà sinh nhật">Geburtstagsgeschenk</span> · <span class="term" data-de="die Geburtstagsparty" data-vi="tiệc sinh nhật">Geburtstagsparty</span> · <span class="term" data-de="der Kuchen" data-vi="bánh ngọt">Kuchen</span></li>
   <li><span class="term" data-de="Herzlichen Glückwunsch" data-vi="Chúc mừng!">Herzlichen Glückwunsch</span> zum Geburtstag!</li>
 </ul>
 <div class="note">Schnellmerk: Tuổi dùng <b>sein</b> (bin/bist/ist…), sinh nhật dùng <b>haben</b>: Ich <b>habe</b> am 15. Juni Geburtstag.</div>`,
@@ -486,7 +486,7 @@ window.DEUTSCH_A1 = {
 <h3 class="sub">1. Đặt lịch hẹn</h3>
 <ul>
   <li>Ich möchte einen <span class="term" data-de="der Termin" data-vi="lịch hẹn">Termin</span> <span class="term" data-de="vereinbaren" data-vi="đặt, thỏa thuận">vereinbaren</span>.</li>
-  <li><span class="term" data-de="Passt es Ihnen?" data-vi="Anh/chị có tiện không? (lịch sự)">Passt es Ihnen?</span> — Ja, das <span class="term" data-de="passen" data-vi="hợp, tiện">passt</span>.</li>
+  <li><span class="term" data-de="Passt es Ihnen?" data-vi="Anh/chị có tiện không? (lịch sự)">Passt es Ihnen?</span> — Ja, das <span class="term" data-de="passen" data-vi="vừa vặn (kích cỡ) / phù hợp, tiện">passt</span>.</li>
   <li><span class="term" data-de="Welcher Tag passt dir?" data-vi="Ngày nào phù hợp với bạn?">Welcher Tag passt dir?</span> — <span class="term" data-de="am Montag" data-vi="vào thứ hai">Am Montag</span> passt es mir.</li>
   <li><span class="term" data-de="Um wie viel Uhr?" data-vi="Lúc mấy giờ?">Um wie viel Uhr?</span> — <span class="term" data-de="um zehn Uhr" data-vi="lúc 10 giờ">Um zehn Uhr</span>.</li>
 </ul>
@@ -531,7 +531,7 @@ window.DEUTSCH_A1 = {
 <h3 class="sub">2. Buổi tối</h3>
 <ul>
   <li>Um siebzehn Uhr <span class="term" data-de="nach Hause kommen" data-vi="về nhà">komme ich nach Hause</span>.</li>
-  <li>Ich koche das <span class="term" data-de="das Abendessen" data-vi="bữa tối">Abendessen</span> und <span class="term" data-de="fernsehen" data-vi="xem TV">sehe fern</span>.</li>
+  <li>Ich koche das <span class="term" data-de="das Abendessen" data-vi="bữa tối">Abendessen</span> und <span class="term" data-de="fernsehen" data-vi="xem tivi (TV)">sehe fern</span>.</li>
   <li>Um <span class="term" data-de="zweiundzwanzig Uhr" data-vi="22 giờ">zweiundzwanzig Uhr</span> <span class="term" data-de="schlafen" data-vi="ngủ">schlafe</span> ich.</li>
 </ul>
 <div class="note">Schnellmerk: Động từ tách (<b>auf</b>stehen, <b>fern</b>sehen): khi chia, tiền tố rời xuống <b>cuối câu</b> — ich stehe um 6 Uhr <b>auf</b>.</div>`,
@@ -789,11 +789,11 @@ window.DEUTSCH_A1 = {
 <h3 class="sub">2. Trạng thái gia đình</h3>
 <ul>
   <li><span class="term" data-de="verheiratet" data-vi="đã kết hôn">verheiratet</span> · <span class="term" data-de="ledig" data-vi="độc thân">ledig</span> · <span class="term" data-de="geschieden" data-vi="đã ly hôn">geschieden</span></li>
-  <li>Meine Eltern sind <span class="term" data-de="glücklich" data-vi="hạnh phúc">glücklich</span> verheiratet.</li>
+  <li>Meine Eltern sind <span class="term" data-de="glücklich" data-vi="hạnh phúc, vui sướng">glücklich</span> verheiratet.</li>
 </ul>
 <h3 class="sub">3. Cùng nhau</h3>
 <ul>
-  <li>Wir essen <span class="term" data-de="zusammen" data-vi="cùng nhau">zusammen</span> und <span class="term" data-de="fernsehen" data-vi="xem TV">sehen fern</span>.</li>
+  <li>Wir essen <span class="term" data-de="zusammen" data-vi="cùng nhau">zusammen</span> und <span class="term" data-de="fernsehen" data-vi="xem tivi (TV)">sehen fern</span>.</li>
   <li>Am Sonntag besuchen wir die <span class="term" data-de="die Großeltern" data-vi="ông bà">Großeltern</span>.</li>
 </ul>
 <div class="note">Schnellmerk: Trình tự giới thiệu gia đình: <b>Ich habe</b> … + <b>Mein/Meine</b> … + <b>Wir</b> … — dùng sein cho trạng thái, haben cho thành viên.</div>`,
@@ -850,7 +850,7 @@ window.DEUTSCH_A1 = {
 <div class="hint">Hoa quả và rau củ</div>
 <h3 class="sub">1. Hoa quả</h3>
 <ul>
-  <li><span class="term" data-de="das Obst" data-vi="hoa quả">Obst</span> · <span class="term" data-de="der Apfel" data-vi="quả táo">Apfel</span> · <span class="term" data-de="die Banane" data-vi="quả chuối">Banane</span></li>
+  <li><span class="term" data-de="das Obst" data-vi="trái cây (hoa quả)">Obst</span> · <span class="term" data-de="der Apfel" data-vi="quả táo">Apfel</span> · <span class="term" data-de="die Banane" data-vi="quả chuối">Banane</span></li>
   <li><span class="term" data-de="die Orange" data-vi="quả cam">Orange</span> · <span class="term" data-de="die Erdbeere" data-vi="quả dâu tây">Erdbeere</span> · <span class="term" data-de="die Zitrone" data-vi="quả chanh">Zitrone</span> · <span class="term" data-de="die Ananas" data-vi="quả dứa">Ananas</span></li>
 </ul>
 <h3 class="sub">2. Rau củ</h3>
@@ -913,12 +913,12 @@ window.DEUTSCH_A1 = {
 <div class="hint">Trong nhà hàng · gọi món · Akkusativ</div>
 <h3 class="sub">1. Vào nhà hàng</h3>
 <ul>
-  <li><span class="term" data-de="das Restaurant" data-vi="nhà hàng">Restaurant</span> · <span class="term" data-de="der Kellner" data-vi="bồi bàn (nam)">Kellner</span> · <span class="term" data-de="die Kellnerin" data-vi="bồi bàn (nữ)">Kellnerin</span></li>
+  <li><span class="term" data-de="das Restaurant" data-vi="nhà hàng">Restaurant</span> · <span class="term" data-de="der Kellner" data-vi="người phục vụ bàn (bồi bàn nam)">Kellner</span> · <span class="term" data-de="die Kellnerin" data-vi="bồi bàn (nữ)">Kellnerin</span></li>
   <li><span class="term" data-de="der Tisch" data-vi="cái bàn">Tisch</span> · <span class="term" data-de="die Speisekarte" data-vi="thực đơn">Speisekarte</span> · <span class="term" data-de="der Gast" data-vi="thực khách">Gast</span> · <span class="term" data-de="die Gäste" data-vi="các thực khách">Gäste</span></li>
 </ul>
 <h3 class="sub">2. Gọi món</h3>
 <ul>
-  <li><span class="term" data-de="bestellen" data-vi="gọi món">Bestellen</span>: Ich möchte <span class="term" data-de="die Bestellung" data-vi="đơn gọi món">eine Bestellung</span> aufgeben.</li>
+  <li><span class="term" data-de="bestellen" data-vi="gọi món, đặt món">Bestellen</span>: Ich möchte <span class="term" data-de="die Bestellung" data-vi="phiếu món, đơn gọi món">eine Bestellung</span> aufgeben.</li>
   <li>Ich nehme <span class="term" data-de="die Suppe" data-vi="món súp">die Suppe</span> als <span class="term" data-de="die Vorspeise" data-vi="món khai vị">Vorspeise</span>.</li>
   <li>Als <span class="term" data-de="die Hauptspeise" data-vi="món chính">Hauptspeise</span> nehme ich <span class="term" data-de="das Schnitzel" data-vi="món schnitzel">das Schnitzel</span>.</li>
   <li>Zum <span class="term" data-de="das Dessert" data-vi="món tráng miệng">Dessert</span> möchte ich <span class="term" data-de="der Kuchen" data-vi="bánh ngọt">einen Kuchen</span>.</li>
@@ -958,7 +958,7 @@ window.DEUTSCH_A1 = {
 <div class="hint">Tính tiền · trả tiền · tiền boa</div>
 <h3 class="sub">1. Xin tính tiền</h3>
 <ul>
-  <li><span class="term" data-de="die Rechnung" data-vi="hóa đơn">Rechnung</span>, bitte! · Ich möchte <span class="term" data-de="bezahlen" data-vi="trả tiền">bezahlen</span>.</li>
+  <li><span class="term" data-de="die Rechnung" data-vi="hóa đơn">Rechnung</span>, bitte! · Ich möchte <span class="term" data-de="bezahlen" data-vi="trả tiền / thanh toán">bezahlen</span>.</li>
   <li><span class="term" data-de="zahlen" data-vi="trả, thanh toán">Zahlen</span>: Zahlen Sie <span class="term" data-de="zusammen" data-vi="chung một hóa đơn">zusammen</span> oder <span class="term" data-de="getrennt" data-vi="tách riêng">getrennt</span>?</li>
 </ul>
 <h3 class="sub">2. Trả tiền thế nào?</h3>
@@ -968,8 +968,8 @@ window.DEUTSCH_A1 = {
 </ul>
 <h3 class="sub">3. Tiền boa và hóa đơn</h3>
 <ul>
-  <li><span class="term" data-de="das Trinkgeld" data-vi="tiền boa">Trinkgeld</span>: Stimmt so! (Không cần thối lại!)</li>
-  <li><span class="term" data-de="der Preis" data-vi="giá">Preis</span> · <span class="term" data-de="die Kasse" data-vi="quầy thu ngân">Kasse</span> · <span class="term" data-de="stimmen" data-vi="đúng, chính xác">Stimmt</span> die Rechnung?</li>
+  <li><span class="term" data-de="das Trinkgeld" data-vi="tiền tip (tiền boa)">Trinkgeld</span>: Stimmt so! (Không cần thối lại!)</li>
+  <li><span class="term" data-de="der Preis" data-vi="giá cả">Preis</span> · <span class="term" data-de="die Kasse" data-vi="quầy thu ngân">Kasse</span> · <span class="term" data-de="stimmen" data-vi="đúng, chính xác">Stimmt</span> die Rechnung?</li>
 </ul>
 <div class="note">Schnellmerk: Khi ăn xong: <b>Die Rechnung, bitte!</b> — Trả chung: <b>zusammen</b>, trả riêng: <b>getrennt</b>. Tiền boa để lại tại bàn: <b>Stimmt so!</b></div>`,
           listen: [
@@ -1040,8 +1040,8 @@ window.DEUTSCH_A1 = {
 </ul>
 <h3 class="sub">3. Thanh toán</h3>
 <ul>
-  <li>An der <span class="term" data-de="die Kasse" data-vi="quầy thanh toán">Kasse</span>: Das ist alles. — Das <span class="term" data-de="das macht" data-vi="tổng cộng là">macht</span> zwölf Euro.</li>
-  <li><span class="term" data-de="der Kassenzettel" data-vi="hóa đơn thanh toán">Kassenzettel</span> · <span class="term" data-de="die Ware" data-vi="hàng hóa">Ware</span> · <span class="term" data-de="das Produkt" data-vi="sản phẩm">Produkt</span></li>
+  <li>An der <span class="term" data-de="die Kasse" data-vi="quầy thu ngân">Kasse</span>: Das ist alles. — Das <span class="term" data-de="das macht" data-vi="tổng cộng là">macht</span> zwölf Euro.</li>
+  <li><span class="term" data-de="der Kassenzettel" data-vi="hóa đơn">Kassenzettel</span> · <span class="term" data-de="die Ware" data-vi="hàng hóa">Ware</span> · <span class="term" data-de="das Produkt" data-vi="sản phẩm">Produkt</span></li>
 </ul>
 <div class="note">Schnellmerk: <b>ein halbes Kilo</b> = nửa ki-lô · <b>ein Pfund</b> = nửa ki-lô · <b>das macht … Euro</b> = tổng cộng … euro.</div>`,
           listen: [
@@ -1069,7 +1069,7 @@ window.DEUTSCH_A1 = {
 <div class="hint">Mua sắm · các loại cửa hàng · giờ mở cửa</div>
 <h3 class="sub">1. Đi mua sắm</h3>
 <ul>
-  <li>Ich <span class="term" data-de="einkaufen" data-vi="mua sắm">kaufe ein</span>. — Wir gehen <span class="term" data-de="einkaufen gehen" data-vi="đi mua sắm">einkaufen</span>.</li>
+  <li>Ich <span class="term" data-de="einkaufen" data-vi="đi mua sắm">kaufe ein</span>. — Wir gehen <span class="term" data-de="einkaufen gehen" data-vi="đi mua sắm">einkaufen</span>.</li>
   <li>Ich gehe <span class="term" data-de="in den Supermarkt" data-vi="vào siêu thị">in den Supermarkt</span>. / Wir gehen <span class="term" data-de="ins Geschäft" data-vi="vào cửa hàng">ins Geschäft</span>.</li>
   <li>Ich brauche eine <span class="term" data-de="die Einkaufsliste" data-vi="danh sách mua sắm">Einkaufsliste</span>.</li>
 </ul>
@@ -1082,7 +1082,7 @@ window.DEUTSCH_A1 = {
 <ul>
   <li><span class="term" data-de="geöffnet" data-vi="mở cửa">Geöffnet</span> bis 20 Uhr. · <span class="term" data-de="geschlossen" data-vi="đóng cửa">Geschlossen</span> am Sonntag.</li>
   <li>Die <span class="term" data-de="die Öffnungszeiten" data-vi="giờ mở cửa">Öffnungszeiten</span>: Montag bis Samstag, 8–20 Uhr.</li>
-  <li>Das <span class="term" data-de="das Angebot" data-vi="hàng khuyến mãi">Angebot</span> der Woche: Äpfel für 1,99 €.</li>
+  <li>Das <span class="term" data-de="das Angebot" data-vi="chào hàng / ưu đãi, báo giá">Angebot</span> der Woche: Äpfel für 1,99 €.</li>
 </ul>
 <div class="note">Schnellmerk: Cửa hàng đuôi <b>-ei</b> là nơi sản xuất/bán: die Bäck<b>erei</b> (bánh), die Metzger<b>ei</b> (thịt).</div>`,
           listen: [
@@ -1108,7 +1108,7 @@ window.DEUTSCH_A1 = {
 </ul>
 <h3 class="sub">2. Giá cả và tiền</h3>
 <ul>
-  <li><span class="term" data-de="der Preis" data-vi="giá cả">Preis</span> · <span class="term" data-de="billig" data-vi="rẻ">billig</span> · <span class="term" data-de="teuer" data-vi="đắt">teuer</span> · <span class="term" data-de="günstig" data-vi="giá phải chăng">günstig</span></li>
+  <li><span class="term" data-de="der Preis" data-vi="giá cả">Preis</span> · <span class="term" data-de="billig" data-vi="rẻ">billig</span> · <span class="term" data-de="teuer" data-vi="đắt (đắt đỏ)">teuer</span> · <span class="term" data-de="günstig" data-vi="giá phải chăng (hợp túi tiền)">günstig</span></li>
   <li>Tiền Đức: <span class="term" data-de="der Euro" data-vi="đồng euro">Euro</span> và <span class="term" data-de="der Cent" data-vi="xu">Cent</span>: 1,99 € = ein Euro neunundneunzig.</li>
 </ul>
 <h3 class="sub">3. Đắt hay rẻ?</h3>
@@ -1150,7 +1150,7 @@ window.DEUTSCH_A1 = {
 </ul>
 <h3 class="sub">2. Màu của đồ vật</h3>
 <ul>
-  <li><span class="term" data-de="die Farbe" data-vi="màu sắc">Farbe</span>: Welche Farbe hat das T-Shirt? — Das T-Shirt ist <span class="term" data-de="blau" data-vi="màu xanh">blau</span>.</li>
+  <li><span class="term" data-de="die Farbe" data-vi="màu sắc">Farbe</span>: Welche Farbe hat das T-Shirt? — Das T-Shirt ist <span class="term" data-de="blau" data-vi="màu xanh dương">blau</span>.</li>
   <li>Ich möchte das Hemd <span class="term" data-de="in Blau" data-vi="màu xanh">in Blau</span>.</li>
 </ul>
 <h3 class="sub">3. Tính từ màu + danh từ</h3>
@@ -1177,8 +1177,8 @@ window.DEUTSCH_A1 = {
 <div class="hint">Quần áo · article đúng · mua quần áo</div>
 <h3 class="sub">1. Quần áo cơ bản</h3>
 <ul>
-  <li><span class="term" data-de="die Kleidung" data-vi="quần áo">Kleidung</span> · <span class="term" data-de="die Hose" data-vi="quần dài">Hose</span> · <span class="term" data-de="das Hemd" data-vi="áo sơ mi">Hemd</span> · <span class="term" data-de="das T-Shirt" data-vi="áo phông">T-Shirt</span></li>
-  <li><span class="term" data-de="die Jacke" data-vi="áo khoác">Jacke</span> · <span class="term" data-de="der Pullover" data-vi="áo len">Pullover</span> · <span class="term" data-de="der Rock" data-vi="chân váy">Rock</span> · <span class="term" data-de="das Kleid" data-vi="váy liền">Kleid</span></li>
+  <li><span class="term" data-de="die Kleidung" data-vi="quần áo">Kleidung</span> · <span class="term" data-de="die Hose" data-vi="quần dài (chiếc quần)">Hose</span> · <span class="term" data-de="das Hemd" data-vi="áo sơ mi">Hemd</span> · <span class="term" data-de="das T-Shirt" data-vi="áo phông">T-Shirt</span></li>
+  <li><span class="term" data-de="die Jacke" data-vi="áo khoác">Jacke</span> · <span class="term" data-de="der Pullover" data-vi="áo len">Pullover</span> · <span class="term" data-de="der Rock" data-vi="chân váy">Rock</span> · <span class="term" data-de="das Kleid" data-vi="váy liền / chiếc váy">Kleid</span></li>
   <li><span class="term" data-de="der Mantel" data-vi="áo choàng">Mantel</span> · <span class="term" data-de="der Anzug" data-vi="bộ vest">Anzug</span></li>
 </ul>
 <h3 class="sub">2. Giày và phụ kiện</h3>
@@ -1188,8 +1188,8 @@ window.DEUTSCH_A1 = {
 </ul>
 <h3 class="sub">3. Mua quần áo</h3>
 <ul>
-  <li>Ich <span class="term" data-de="suchen" data-vi="tìm">suche</span> eine Hose. — Welche <span class="term" data-de="die Größe" data-vi="cỡ, size">Größe</span> brauchen Sie?</li>
-  <li>Die Jacke <span class="term" data-de="passen" data-vi="vừa">passt</span> gut. / Die Hose passt <span class="term" data-de="nicht" data-vi="không">nicht</span>.</li>
+  <li>Ich <span class="term" data-de="suchen" data-vi="tìm">suche</span> eine Hose. — Welche <span class="term" data-de="die Größe" data-vi="cỡ">Größe</span> brauchen Sie?</li>
+  <li>Die Jacke <span class="term" data-de="passen" data-vi="vừa vặn (kích cỡ) / phù hợp, tiện">passt</span> gut. / Die Hose passt <span class="term" data-de="nicht" data-vi="không">nicht</span>.</li>
 </ul>
 <div class="note">Schnellmerk: Học quần áo theo article: <b>die</b> Hose, <b>das</b> Hemd, <b>der</b> Rock — danh từ đuôi -e thường giống cái.</div>`,
           grammar: [
@@ -1264,8 +1264,8 @@ window.DEUTSCH_A1 = {
 <h3 class="sub">2. Tổng tiền</h3>
 <ul>
   <li>Das macht <span class="term" data-de="zusammen" data-vi="tổng cộng">zusammen</span> <span class="term" data-de="achteinhalb Euro" data-vi="8,5 euro">achteinhalb Euro</span>.</li>
-  <li><span class="term" data-de="bezahlen" data-vi="trả tiền">Bezahlen</span> Sie bar oder mit <span class="term" data-de="die Karte" data-vi="thẻ">Karte</span>?</li>
-  <li>Mit Karte, bitte. / <span class="term" data-de="bar" data-vi="tiền mặt">Bar</span>, bitte. Hier ist das <span class="term" data-de="das Geld" data-vi="tiền">Geld</span>.</li>
+  <li><span class="term" data-de="bezahlen" data-vi="trả tiền / thanh toán">Bezahlen</span> Sie bar oder mit <span class="term" data-de="die Karte" data-vi="thẻ">Karte</span>?</li>
+  <li>Mit Karte, bitte. / <span class="term" data-de="bar" data-vi="bằng tiền mặt">Bar</span>, bitte. Hier ist das <span class="term" data-de="das Geld" data-vi="tiền">Geld</span>.</li>
 </ul>
 <h3 class="sub">3. Tiền thừa</h3>
 <ul>
@@ -1341,7 +1341,7 @@ window.DEUTSCH_A1 = {
 </ul>
 <h3 class="sub">3. Buổi tối</h3>
 <ul>
-  <li>Am Abend <span class="term" data-de="kochen" data-vi="nấu ăn">koche</span> ich und <span class="term" data-de="fernsehen" data-vi="xem TV">sehe fern</span>.</li>
+  <li>Am Abend <span class="term" data-de="kochen" data-vi="nấu / luộc">koche</span> ich und <span class="term" data-de="fernsehen" data-vi="xem tivi (TV)">sehe fern</span>.</li>
   <li>Um zehn Uhr <span class="term" data-de="schlafen" data-vi="ngủ">schlafe</span> ich.</li>
   <li>Das ist mein <span class="term" data-de="der Tagesablauf" data-vi="lịch trình trong ngày">Tagesablauf</span>.</li>
 </ul>
@@ -1442,16 +1442,16 @@ window.DEUTSCH_A1 = {
 <div class="hint">Động từ tách · aufstehen, fernsehen, einkaufen, anrufen</div>
 <h3 class="sub">1. Động từ tách phổ biến</h3>
 <ul>
-  <li><span class="term" data-de="aufstehen" data-vi="thức dậy">aufstehen</span> · <span class="term" data-de="fernsehen" data-vi="xem TV">fernsehen</span> · <span class="term" data-de="einkaufen" data-vi="mua sắm">einkaufen</span> · <span class="term" data-de="anrufen" data-vi="gọi điện">anrufen</span></li>
+  <li><span class="term" data-de="aufstehen" data-vi="thức dậy">aufstehen</span> · <span class="term" data-de="fernsehen" data-vi="xem tivi (TV)">fernsehen</span> · <span class="term" data-de="einkaufen" data-vi="đi mua sắm">einkaufen</span> · <span class="term" data-de="anrufen" data-vi="gọi điện thoại">anrufen</span></li>
   <li><span class="term" data-de="mitkommen" data-vi="đi cùng">mitkommen</span> · <span class="term" data-de="mitbringen" data-vi="mang theo">mitbringen</span> · <span class="term" data-de="anfangen" data-vi="bắt đầu">anfangen</span></li>
 </ul>
 <h3 class="sub">2. Tiền tố rời xuống cuối câu</h3>
 <ul>
-  <li>Ich <span class="term" data-de="aufstehen" data-vi="thức dậy (chia)">stehe um sechs Uhr auf</span>.</li>
-  <li>Er <span class="term" data-de="fernsehen" data-vi="xem TV (chia)">sieht am Abend fern</span>.</li>
-  <li>Wir <span class="term" data-de="einkaufen" data-vi="mua sắm (chia)">kaufen am Samstag ein</span>.</li>
-  <li><span class="term" data-de="anrufen" data-vi="gọi điện (mệnh lệnh)">Ruf mich an</span>! — Ich <span class="term" data-de="anrufen" data-vi="gọi điện (ich)">rufe dich an</span>.</li>
-  <li>Der Unterricht <span class="term" data-de="anfangen" data-vi="bắt đầu (chia)">fängt um acht Uhr an</span>.</li>
+  <li>Ich <span class="term" data-de="aufstehen" data-vi="thức dậy">stehe um sechs Uhr auf</span>.</li>
+  <li>Er <span class="term" data-de="fernsehen" data-vi="xem tivi (TV)">sieht am Abend fern</span>.</li>
+  <li>Wir <span class="term" data-de="einkaufen" data-vi="đi mua sắm">kaufen am Samstag ein</span>.</li>
+  <li><span class="term" data-de="anrufen" data-vi="gọi điện thoại">Ruf mich an</span>! — Ich <span class="term" data-de="anrufen" data-vi="gọi điện thoại">rufe dich an</span>.</li>
+  <li>Der Unterricht <span class="term" data-de="anfangen" data-vi="bắt đầu">fängt um acht Uhr an</span>.</li>
 </ul>
 <h3 class="sub">3. Hỏi đáp và mẹo</h3>
 <ul>
@@ -1488,7 +1488,7 @@ window.DEUTSCH_A1 = {
 <ul>
   <li>Mein <span class="term" data-de="das Hobby" data-vi="sở thích">Hobby</span> ist <span class="term" data-de="Sport machen" data-vi="tập thể thao">Sport machen</span>.</li>
   <li>Ich <span class="term" data-de="spielen" data-vi="chơi">spiele</span> <span class="term" data-de="Fußball" data-vi="bóng đá">Fußball</span> und <span class="term" data-de="Klavier spielen" data-vi="chơi đàn piano">Klavier</span>.</li>
-  <li><span class="term" data-de="Musik hören" data-vi="nghe nhạc">Musik hören</span> · <span class="term" data-de="lesen" data-vi="đọc sách">lesen</span> · <span class="term" data-de="zeichnen" data-vi="vẽ">zeichnen</span></li>
+  <li><span class="term" data-de="Musik hören" data-vi="nghe nhạc">Musik hören</span> · <span class="term" data-de="lesen" data-vi="đọc">lesen</span> · <span class="term" data-de="zeichnen" data-vi="vẽ">zeichnen</span></li>
 </ul>
 <h3 class="sub">2. Thời gian rảnh</h3>
 <ul>

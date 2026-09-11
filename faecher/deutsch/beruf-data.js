@@ -20,15 +20,15 @@ window.DEUTSCH_BERUF = {
 <div class="hint">Chào khách · hỏi số người · mời ngồi · đưa thực đơn</div>
 <h3 class="sub">1. Chào khách</h3>
 <ul>
-  <li><span class="term" data-de="Guten Tag" data-vi="chào ngày tốt lành">Guten Tag</span>! <span class="term" data-de="Herzlich willkommen" data-vi="nhiệt liệt chào mừng">Herzlich willkommen</span>!</li>
-  <li><span class="term" data-de="Schönen guten Abend" data-vi="chúc buổi tối tốt lành">Schönen guten Abend</span>! — <span class="term" data-de="der Gast" data-vi="thực khách (số ít)">Gast</span>, <span class="term" data-de="die Gäste" data-vi="các thực khách (số nhiều)">Gäste</span></li>
+  <li><span class="term" data-de="Guten Tag" data-vi="chào buổi chiều/ngày (chính thức)">Guten Tag</span>! <span class="term" data-de="Herzlich willkommen" data-vi="nhiệt liệt chào mừng">Herzlich willkommen</span>!</li>
+  <li><span class="term" data-de="Schönen guten Abend" data-vi="chúc buổi tối tốt lành">Schönen guten Abend</span>! — <span class="term" data-de="der Gast" data-vi="thực khách">Gast</span>, <span class="term" data-de="die Gäste" data-vi="các thực khách">Gäste</span></li>
   <li><span class="term" data-de="Haben Sie einen Tisch reserviert?" data-vi="Anh/chị đã đặt bàn chưa?">Haben Sie einen Tisch reserviert?</span></li>
 </ul>
 <h3 class="sub">2. Hỏi số người và đặt bàn</h3>
 <ul>
   <li><span class="term" data-de="Für wie viele Personen?" data-vi="Cho mấy người ạ?">Für wie viele Personen?</span> — <span class="term" data-de="zwei Personen" data-vi="hai người">Zwei Personen</span>, bitte.</li>
-  <li>Ich habe eine <span class="term" data-de="die Reservierung" data-vi="sự đặt chỗ trước">Reservierung</span>. — <span class="term" data-de="reservieren" data-vi="đặt chỗ trước">Reservieren</span> Sie einen <span class="term" data-de="der Tisch" data-vi="cái bàn">Tisch</span>?</li>
-  <li><span class="term" data-de="der Kellner" data-vi="bồi bàn (nam)">Kellner</span> · <span class="term" data-de="die Kellnerin" data-vi="bồi bàn (nữ)">Kellnerin</span></li>
+  <li>Ich habe eine <span class="term" data-de="die Reservierung" data-vi="sự đặt chỗ trước (đặt bàn)">Reservierung</span>. — <span class="term" data-de="reservieren" data-vi="đặt chỗ trước">Reservieren</span> Sie einen <span class="term" data-de="der Tisch" data-vi="cái bàn">Tisch</span>?</li>
+  <li><span class="term" data-de="der Kellner" data-vi="người phục vụ bàn (bồi bàn nam)">Kellner</span> · <span class="term" data-de="die Kellnerin" data-vi="bồi bàn (nữ)">Kellnerin</span></li>
 </ul>
 <h3 class="sub">3. Mời ngồi và đưa thực đơn</h3>
 <ul>
@@ -63,8 +63,8 @@ window.DEUTSCH_BERUF = {
 <div class="hint">Gọi món · khai vị · món chính · tráng miệng · đồ uống</div>
 <h3 class="sub">1. Hỏi và nhận đơn</h3>
 <ul>
-  <li><span class="term" data-de="bestellen" data-vi="gọi món">Bestellen</span> — Was möchten Sie? / <span class="term" data-de="Was darf es sein?" data-vi="Anh/chị dùng gì ạ?">Was darf es sein?</span></li>
-  <li>Ich nehme <span class="term" data-de="die Bestellung" data-vi="đơn gọi món">die Bestellung</span> auf. — <span class="term" data-de="aufnehmen" data-vi="tiếp nhận (đơn)">Aufnehmen</span></li>
+  <li><span class="term" data-de="bestellen" data-vi="gọi món, đặt món">Bestellen</span> — Was möchten Sie? / <span class="term" data-de="Was darf es sein?" data-vi="Anh/chị dùng gì ạ?">Was darf es sein?</span></li>
+  <li>Ich nehme <span class="term" data-de="die Bestellung" data-vi="phiếu món, đơn gọi món">die Bestellung</span> auf. — <span class="term" data-de="aufnehmen" data-vi="tiếp nhận (đơn)">Aufnehmen</span></li>
   <li><span class="term" data-de="Ich nehme …" data-vi="Tôi lấy/gọi …">Ich nehme</span> die Suppe als <span class="term" data-de="die Vorspeise" data-vi="món khai vị">Vorspeise</span>.</li>
 </ul>
 <h3 class="sub">2. Món chính và tráng miệng</h3>
@@ -105,13 +105,13 @@ window.DEUTSCH_BERUF = {
 <div class="hint">Số lượng · hỏi dị ứng · thành phần món ăn</div>
 <h3 class="sub">1. Số lượng</h3>
 <ul>
-  <li>Die <span class="term" data-de="die Menge" data-vi="số lượng">Menge</span>: <span class="term" data-de="ein halbes Kilo" data-vi="nửa cân">ein halbes Kilo</span> · <span class="term" data-de="ein Kilo" data-vi="một cân">ein Kilo</span> · <span class="term" data-de="die Scheibe" data-vi="lát (bánh)">Scheibe</span></li>
+  <li>Die <span class="term" data-de="die Menge" data-vi="số lượng">Menge</span>: <span class="term" data-de="ein halbes Kilo" data-vi="nửa ki-lô">ein halbes Kilo</span> · <span class="term" data-de="ein Kilo" data-vi="một cân">ein Kilo</span> · <span class="term" data-de="die Scheibe" data-vi="lát (bánh)">Scheibe</span></li>
   <li><span class="term" data-de="zwei Scheiben Brot" data-vi="hai lát bánh mì">Zwei Scheiben Brot</span>, bitte. — <span class="term" data-de="reicht das?" data-vi="như vậy đủ chưa?">Reicht das?</span></li>
 </ul>
 <h3 class="sub">2. Dị ứng</h3>
 <ul>
   <li><span class="term" data-de="die Allergie" data-vi="sự dị ứng">Allergie</span>: Ich habe eine Allergie <span class="term" data-de="gegen" data-vi="với, chống lại">gegen</span> Nüsse.</li>
-  <li><span class="term" data-de="die Zutat" data-vi="thành phần">Zutat</span> · <span class="term" data-de="enthalten" data-vi="chứa, có chứa">enthalten</span>: Enthält die Suppe <span class="term" data-de="die Nuss" data-vi="quả hạch, hạt">Nüsse</span>?</li>
+  <li><span class="term" data-de="die Zutat" data-vi="thành phần">Zutat</span> · <span class="term" data-de="enthalten" data-vi="chứa">enthalten</span>: Enthält die Suppe <span class="term" data-de="die Nuss" data-vi="quả hạch, hạt">Nüsse</span>?</li>
   <li><span class="term" data-de="die Laktose" data-vi="lactose">Laktose</span> · <span class="term" data-de="das Gluten" data-vi="gluten">Gluten</span> · <span class="term" data-de="die Erdnuss" data-vi="lạc">Erdnuss</span></li>
 </ul>
 <h3 class="sub">3. Nói với khách</h3>
@@ -147,12 +147,12 @@ window.DEUTSCH_BERUF = {
 <h3 class="sub">1. Cảm ơn</h3>
 <ul>
   <li><span class="term" data-de="Danke schön" data-vi="cảm ơn nhiều">Danke schön</span>! · <span class="term" data-de="Vielen Dank" data-vi="rất cảm ơn">Vielen Dank</span>! · <span class="term" data-de="gern geschehen" data-vi="không có gì">Gern geschehen</span>!</li>
-  <li><span class="term" data-de="Es hat geschmeckt" data-vi="món ăn rất ngon">Es hat geschmeckt</span>! — <span class="term" data-de="schmecken" data-vi="hợp khẩu vị, ngon">Schmeckt</span> es gut?</li>
+  <li><span class="term" data-de="Es hat geschmeckt" data-vi="món ăn rất ngon">Es hat geschmeckt</span>! — <span class="term" data-de="schmecken" data-vi="ngon, vừa miệng">Schmeckt</span> es gut?</li>
 </ul>
 <h3 class="sub">2. Tính tiền và hóa đơn</h3>
 <ul>
   <li>Die <span class="term" data-de="die Rechnung" data-vi="hóa đơn">Rechnung</span>, bitte! — Zahlen Sie <span class="term" data-de="zusammen" data-vi="chung một hóa đơn">zusammen</span> oder <span class="term" data-de="getrennt" data-vi="tách riêng">getrennt</span>?</li>
-  <li>Hier ist Ihre <span class="term" data-de="die Quittung" data-vi="biên nhận, hóa đơn giấy">Quittung</span>. — <span class="term" data-de="das Trinkgeld" data-vi="tiền boa">Trinkgeld</span>: Stimmt so!</li>
+  <li>Hier ist Ihre <span class="term" data-de="die Quittung" data-vi="biên nhận, hóa đơn giấy">Quittung</span>. — <span class="term" data-de="das Trinkgeld" data-vi="tiền tip (tiền boa)">Trinkgeld</span>: Stimmt so!</li>
 </ul>
 <h3 class="sub">3. Chúc và tạm biệt</h3>
 <ul>

@@ -129,7 +129,7 @@ window.__LF2 = (window.__LF2||[]).concat([
       { q: "Was passiert bei zu hoher Luftfeuchtigkeit?", options: ["Salate werden welk", "Brot verliert Frische, Puderzucker klumpt, Schimmel", "Nichts", "Ware friert ein"], answer: 1, explain: "Zu hoch → Brot alt, Puderzucker klumpt, Schimmelbildung. Zu niedrig → Salate welk." },
       { q: "Wohin gehört Reinigungsmittel?", options: ["Kühlraum", "Trockenlager bei Lebensmitteln", "Non-Food-Lager, getrennt von LM", "Tiefkühler"], answer: 2, explain: "Non-Food-Lager – niemals bei Lebensmitteln (Kontaminations-/Geruchsgefahr)." },
       { q: "Milch und Milcherzeugnisse lagern bei…", options: ["ca. +8 °C", "0 °C", "−18 °C", "+15 °C"], answer: 0, explain: "Milch ca. +8 °C, verpackte und offene Ware getrennt." },
-      { q: "Was bedeutet âreine und unreine Produkte trennen“?", options: ["Bio von konventionell", "Saubere von erd-/keimbehafteten Waren getrennt lagern", "Teuer von billig", "Fest von flÃ¼ssig"], answer: 1, explain: "Hygiene: erdbehaftetes GemÃ¼se/ganze Fische (KeimtrÃ¤ger) getrennt von unverpackter Frischware/Speisen." }
+      { q: "Was bedeutet „reine und unreine Produkte trennen“?", options: ["Bio von konventionell", "Saubere von erd-/keimbehafteten Waren getrennt lagern", "Teuer von billig", "Fest von flüssig"], answer: 1, explain: "Hygiene: erdbehaftetes Gemüse/ganze Fische (Keimträger) getrennt von unverpackter Frischware/Speisen." }
     ],
     vokabeln: [
       { de: "die Lagerart", vi: "loại kho" },

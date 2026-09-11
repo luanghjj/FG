@@ -1508,7 +1508,7 @@ function clean(s) {
 
   async function chatCreateRoom(name, player) {
     const raw = String(name || '').trim().slice(0, 40);
-    if (!raw) throw new Error('Tên phòng không được để trống');
+    if (!raw) throw new Error('Raumname darf nicht leer sein');
     let slug = clean(raw);
     if (!slug) slug = 'phong';
     let room = await chatGetRoom(slug);
@@ -1535,7 +1535,7 @@ function clean(s) {
   async function withChatRoom(slug, mutator, opts) {
     const attempts = (opts && opts.attempts) || 5;
     let room = await chatGetRoom(slug);
-    if (!room) throw new Error('Phòng không tồn tại');
+    if (!room) throw new Error('Raum existiert nicht');
     for (let i = 0; i < attempts; i++) {
       const marks = [];
       const mark = (fn) => marks.push(fn);
@@ -1943,15 +1943,15 @@ function clean(s) {
     Object.values(playersMap).forEach(p => {
       const reasons = [];
       if (p.vocabToday < (settings.dailyVocabGoal || 20)) {
-        reasons.push(`Chưa đạt chỉ tiêu gõ ${settings.dailyVocabGoal || 20} từ vựng hôm nay (đã gõ: ${p.vocabToday})`);
+        reasons.push(`Tagesziel von ${settings.dailyVocabGoal || 20} Vokabeln nicht erreicht (heute: ${p.vocabToday})`);
       }
       if (p.last_seen) {
         const daysDiff = (now.getTime() - new Date(p.last_seen).getTime()) / (1000 * 3600 * 24);
         if (daysDiff > 2) {
-          reasons.push(`Không vào học ${Math.floor(daysDiff)} ngày qua`);
+          reasons.push(`Seit ${Math.floor(daysDiff)} Tagen nicht gelernt`);
         }
       } else {
-        reasons.push('Chưa có lịch sử học tập');
+        reasons.push('Kein Lernverlauf vorhanden');
       }
       if (reasons.length > 0) {
         p.redAlerts = reasons;

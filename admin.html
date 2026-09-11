@@ -48,7 +48,7 @@ table{width:100%;border-collapse:collapse;font-size:.84em;background:#F2F2F7;bor
 th,td{padding:9px 12px;text-align:left;vertical-align:top}
 th{background:#E5E5EA;color:#3C3C43;font-size:.72em;text-transform:uppercase;letter-spacing:.04em;font-weight:600}
 td{border-top:1px solid var(--line);color:var(--ink)}
-/* Bảng giới hạn ~5 hàng rồi cuộn dọc trong bảng; header dính khi cuộn. */
+/* Tabelle auf ~5 Zeilen begrenzen, dann vertikal scrollen; Header bleibt beim Scrollen stehen. */
 .tscroll{max-height:236px;overflow:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:10px}
 .tscroll table{border-radius:0}
 .tscroll thead th{position:sticky;top:0;z-index:2}
@@ -152,9 +152,9 @@ table.mx tbody tr:hover .mx-namecol{background:#EAF3FF}
   <div id="dash">
     <!-- Main Navigation Switcher -->
     <div class="main-tabs" id="mainTabs">
-      <button type="button" class="main-tab active" data-tab="deutsch">🇩🇪 Tiếng Đức A1–B1 (Kỷ Luật & Luyện Đề)</button>
-      <button type="button" class="main-tab" data-tab="gastronomie">🍽️ Gastronomie (Azubi Nghề)</button>
-      <button type="button" class="main-tab" data-tab="roles">👥 Phân Quyền & Mã Pro</button>
+      <button type="button" class="main-tab active" data-tab="deutsch">🇩🇪 Deutsch A1–B1 (Disziplin &amp; Prüfungstraining)</button>
+      <button type="button" class="main-tab" data-tab="gastronomie">🍽️ Gastronomie (Azubi-Beruf)</button>
+      <button type="button" class="main-tab" data-tab="roles">👥 Rollen &amp; Pro-Code</button>
     </div>
 
     <!-- ==================== PANE 1: DEUTSCH A1-B1 HUB ==================== -->
@@ -162,81 +162,81 @@ table.mx tbody tr:hover .mx-namecol{background:#EAF3FF}
       <!-- Deutsch Stats Grid -->
       <div class="grid" id="deStatsGrid"></div>
 
-      <!-- Cài Đặt Kỷ Luật Học Tập -->
+      <!-- Lern-Disziplin-Einstellungen -->
       <div class="card">
-        <h2>⚙️ Cài Đặt Kỷ Luật Khóa Học (Áp Dụng Cho Tất Cả Học Viên)</h2>
+        <h2>⚙️ Lern-Disziplin (gilt für alle Nutzer)</h2>
         <p class="muted" style="margin-bottom:12px">
-          Hệ thống sẽ tự động ép học viên gõ từ vựng lặp lại và bắt làm lại ngữ pháp cho đến khi đạt chuẩn.
+          Das System erzwingt wiederholtes Vokabel-Tippen und wiederholt Grammatik-Aufgaben, bis der Standard erreicht ist.
         </p>
         <div class="tier-form">
           <div style="flex:1 1 140px;min-width:0">
-            <label class="muted" for="deMinRepeats">Số lần gõ từ bắt buộc</label>
-            <input id="deMinRepeats" type="number" min="1" max="10" placeholder="3 (mặc định 3 lần)">
+            <label class="muted" for="deMinRepeats">Pflicht-Wiederholungen pro Vokabel</label>
+            <input id="deMinRepeats" type="number" min="1" max="10" placeholder="3 (Standard: 3)">
           </div>
           <div style="flex:1 1 160px;min-width:0">
-            <label class="muted" for="deDailyVocab">Chỉ tiêu từ vựng / ngày</label>
-            <input id="deDailyVocab" type="number" min="5" max="100" placeholder="20 từ">
+            <label class="muted" for="deDailyVocab">Vokabel-Ziel / Tag</label>
+            <input id="deDailyVocab" type="number" min="5" max="100" placeholder="20 Vokabeln">
           </div>
           <div style="flex:1 1 160px;min-width:0">
-            <label class="muted" for="deDailyGrammar">Chỉ tiêu bài ngữ pháp / ngày</label>
-            <input id="deDailyGrammar" type="number" min="1" max="20" placeholder="5 bài">
+            <label class="muted" for="deDailyGrammar">Grammatik-Ziel / Tag</label>
+            <input id="deDailyGrammar" type="number" min="1" max="20" placeholder="5 Aufgaben">
           </div>
           <div style="flex:1 1 160px;min-width:0">
-            <label class="muted" for="dePassThreshold">Ngưỡng mở Unit mới (%)</label>
+            <label class="muted" for="dePassThreshold">Schwelle für neues Unit (%)</label>
             <input id="dePassThreshold" type="number" min="50" max="100" placeholder="80%">
           </div>
-          <button type="button" id="btnSaveDeSettings">Lưu Cài Đặt Kỷ Luật</button>
+          <button type="button" id="btnSaveDeSettings">Disziplin speichern</button>
         </div>
         <div class="muted" id="deSettingsMsg" style="margin-top:6px"></div>
       </div>
 
-      <!-- 🚨 Bảng Cảnh Báo Kỷ Luật (Red Alert) -->
+      <!-- 🚨 Disziplin-Warnungen (Red Alert) -->
       <div class="alert-card" id="deRedAlertCard">
-        <h2>🚨 Cảnh Báo Kỷ Luật (Học Viên Lười Học & Chưa Đạt Chỉ Tiêu)</h2>
-        <div class="muted" id="deRedAlertMeta" style="margin-bottom:8px">Tự động phát hiện học viên chưa hoàn thành bài chép từ hôm nay hoặc vắng mặt quá 2 ngày.</div>
+        <h2>🚨 Disziplin-Warnungen (Nutzer unter Tagesziel)</h2>
+        <div class="muted" id="deRedAlertMeta" style="margin-bottom:8px">Erkennt automatisch Nutzer, die heute ihre Vokabel-Wiederholung nicht abgeschlossen haben oder länger als 2 Tage inaktiv waren.</div>
         <div class="tscroll">
           <table>
-            <thead><tr><th>Học Viên</th><th>Chỉ Tiêu Từ Hôm Nay</th><th>Lần Cuối Hoạt Động</th><th>Lý Do Cảnh Báo</th></tr></thead>
+            <thead><tr><th>Nutzer</th><th>Vokabel-Ziel heute</th><th>Letzte Aktivität</th><th>Warnungsgrund</th></tr></thead>
             <tbody id="deRedAlertBody"></tbody>
           </table>
         </div>
       </div>
 
-      <!-- ✍️ Bảng Theo Dõi Chép Từ Vựng Kỷ Luật -->
+      <!-- ✍️ Vokabel-Tipp-Tracking -->
       <div class="card">
-        <h2>✍️ Tiến Độ Chép Từ Vựng Kỷ Luật (Typing Repetition Drill)</h2>
+        <h2>✍️ Vokabel-Tipp-Fortschritt (Typing Repetition Drill)</h2>
         <p class="muted" style="margin-bottom:10px">
-          Theo dõi số từ học viên đã gõ lặp lại $N$ lần kèm mạo từ và số nhiều.
+          Zeigt, wie viele Vokabeln ein Nutzer $N$ mal mit Artikel und Plural getippt hat.
         </p>
         <div class="tscroll">
           <table>
-            <thead><tr><th>Học Viên</th><th>Đã Thuộc (Đủ Lần Gõ)</th><th>Gõ Hôm Nay</th><th>Lỗi Sai (Mistakes)</th><th>Chỉ Tiêu Ngày</th><th>Hoạt Động Gần Nhất</th></tr></thead>
+            <thead><tr><th>Nutzer</th><th>Gelernt</th><th>Heute getippt</th><th>Fehler</th><th>Tagesziel</th><th>Letzte Aktivität</th></tr></thead>
             <tbody id="deVocabBody"></tbody>
           </table>
         </div>
       </div>
 
-      <!-- 📖 Bảng Theo Dõi Ngữ Pháp & Điểm Yếu -->
+      <!-- 📖 Grammatik-Tracking &amp; Schwächen -->
       <div class="card">
-        <h2>📖 Vòng Lặp Ngữ Pháp 100% & Các Chủ Đề Học Viên Hay Sai Nhất</h2>
+        <h2>📖 Grammatik-Wiederholung bis 100% &amp; häufigste Fehlerthemen</h2>
         <p class="muted" style="margin-bottom:10px">
-          Quy tắc 100%: Học viên bắt buộc phải làm lại câu sai đến khi đúng hoàn toàn mới được tính hoàn thành.
+          100%-Regel: Falsch beantwortete Aufgaben müssen so lange wiederholt werden, bis alles korrekt ist – erst dann gilt das Thema als abgeschlossen.
         </p>
         <div class="grid2">
           <div>
-            <h3 style="font-size:.92em;margin-bottom:6px;font-weight:600">Tiến Độ Theo Học Viên</h3>
+            <h3 style="font-size:.92em;margin-bottom:6px;font-weight:600">Fortschritt pro Nutzer</h3>
             <div class="tscroll" style="max-height:200px">
               <table>
-                <thead><tr><th>Học Viên</th><th>Chuyên Đề 100%</th><th>Số Lần Phải Retry</th></tr></thead>
+                <thead><tr><th>Nutzer</th><th>Themen 100%</th><th>Wiederholungen</th></tr></thead>
                 <tbody id="deGrammarPlayerBody"></tbody>
               </table>
             </div>
           </div>
           <div>
-            <h3 style="font-size:.92em;margin-bottom:6px;font-weight:600">Top Điểm Yếu Cần Rèn Thêm</h3>
+            <h3 style="font-size:.92em;margin-bottom:6px;font-weight:600">Top-Schwachstellen</h3>
             <div class="tscroll" style="max-height:200px">
               <table>
-                <thead><tr><th>Chuyên Đề</th><th>Tổng Lỗi Sai</th><th>Số Lượt Retry</th></tr></thead>
+                <thead><tr><th>Thema</th><th>Fehler gesamt</th><th>Wiederholungen</th></tr></thead>
                 <tbody id="deWeakTopicsBody"></tbody>
               </table>
             </div>
@@ -244,13 +244,13 @@ table.mx tbody tr:hover .mx-namecol{background:#EAF3FF}
         </div>
       </div>
 
-      <!-- 🏆 Bảng Điểm 54 Đề Thi TELC & Goethe B1 -->
+      <!-- 🏆 Ergebnisse TELC &amp; Goethe B1 -->
       <div class="card">
-        <h2>🏆 Lịch Sử Làm 54 Đề Thi TELC B1 & Goethe</h2>
-        <p class="muted" style="margin-bottom:8px">Thống kê kết quả thi thử các bộ đề của học viên.</p>
+        <h2>🏆 Prüfungsverlauf TELC B1 &amp; Goethe</h2>
+        <p class="muted" style="margin-bottom:8px">Statistik der Prüfungsergebnisse aller Nutzer.</p>
         <div class="tscroll">
           <table>
-            <thead><tr><th>Học Viên</th><th>Bài Thi / Đề</th><th>Kỹ Năng</th><th>Điểm Số</th><th>% Đạt</th><th>Số Lần Thử</th><th>Thời Gian Nộp</th></tr></thead>
+            <thead><tr><th>Nutzer</th><th>Prüfung / Test</th><th>Können</th><th>Punkte</th><th>%</th><th>Versuche</th><th>Abgabe</th></tr></thead>
             <tbody id="deExamsBody"></tbody>
           </table>
         </div>
@@ -296,13 +296,13 @@ table.mx tbody tr:hover .mx-namecol{background:#EAF3FF}
         <h2>🗺️ Lern-Matrix · Pro-Nutzer</h2>
         <p class="muted" style="margin-bottom:10px">
           Jede Zeile = ein Pro-Nutzer, jede Spalte = ein LS/Thema. Farbe = Status.<br>
-          <i>Mỗi hàng = 1 học viên Pro, mỗi cột = 1 LS. Màu thể hiện trạng thái.</i>
+          
         </p>
         <div class="mx-legend">
-          <span><i class="mx-key mx-k-done"></i> Đã thuộc / erledigt</span>
-          <span><i class="mx-key mx-k-learn"></i> Đang ôn / lernt</span>
-          <span><i class="mx-key mx-k-seen"></i> Đã xem / gesehen</span>
-          <span><i class="mx-key mx-k-none"></i> Chưa mở / offen</span>
+          <span><i class="mx-key mx-k-done"></i> erledigt</span>
+          <span><i class="mx-key mx-k-learn"></i> lernt</span>
+          <span><i class="mx-key mx-k-seen"></i> gesehen</span>
+          <span><i class="mx-key mx-k-none"></i> offen</span>
         </div>
         <div class="mx-tabs" id="mxTabs"></div>
         <div class="mx-scroll" id="mxScroll"><div class="mx-empty">Lädt…</div></div>
@@ -355,32 +355,32 @@ table.mx tbody tr:hover .mx-namecol{background:#EAF3FF}
     <!-- ==================== PANE 3: ROLES & PRO CODE ==================== -->
     <div class="sec-pane" id="pane-roles">
 
-      <!-- ===== QUẢN LÝ QUYỀN MỞ KLASSENARBEITEN ===== -->
+      <!-- ===== KLASSENARBEIT-ZUGRIFF ===== -->
       <div class="card" style="border-left:4px solid #007AFF;">
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:6px">
-          <h2>🎯 Phân Quyền Klassenarbeiten (Klassenarbeit-Zugriff)</h2>
-          <span class="tag" style="background:#E3F7E8;color:#248A3D;border:none">🔒 Bảo vệ thiết bị</span>
+          <h2>🎯 Klassenarbeit-Zugriff</h2>
+          <span class="tag" style="background:#E3F7E8;color:#248A3D;border:none">🔒 Geräteschutz</span>
         </div>
         <p class="muted" style="margin-bottom:14px">
-          Klassenarbeit không mở tự do trên mọi thiết bị. <b>Chỉ các tài khoản được bật xanh [✓ ĐƯỢC PHÉP] ở danh sách dưới mới có quyền mở đề thi &amp; bài tập Klassenarbeiten.</b>
+          Klassenarbeiten sind nicht auf jedem Gerät frei zugänglich. <b>Nur Konten mit grüner Markierung [✓ FREIGEGEBEN] in der Liste unten dürfen Klassenarbeiten und Aufgaben öffnen.</b>
         </p>
 
         <div class="tier-form" style="margin-bottom:12px">
           <div style="flex:1 1 220px;min-width:0">
-            <label class="muted" for="kaQuickNick">Thêm Nickname cấp quyền</label>
-            <input id="kaQuickNick" type="text" list="nickList" placeholder="Nhập Nickname (VD: linh, phuc...)" autocomplete="off">
+            <label class="muted" for="kaQuickNick">Nickname freigeben</label>
+            <input id="kaQuickNick" type="text" list="nickList" placeholder="Nickname eingeben (z. B. linh, phuc…)" autocomplete="off">
           </div>
-          <button type="button" id="btnKaQuickGrant" onclick="quickAddKaGrant()">✅ Cấp quyền ngay</button>
-          <button type="button" class="ghost" id="btnKaGrantAll" onclick="batchKaGrant(true)">Mở tất cả</button>
-          <button type="button" class="ghost" id="btnKaRevokeAll" onclick="batchKaGrant(false)" style="color:var(--bad)">Khóa tất cả</button>
+          <button type="button" id="btnKaQuickGrant" onclick="quickAddKaGrant()">✅ Sofort freigeben</button>
+          <button type="button" class="ghost" id="btnKaGrantAll" onclick="batchKaGrant(true)">Alle freigeben</button>
+          <button type="button" class="ghost" id="btnKaRevokeAll" onclick="batchKaGrant(false)" style="color:var(--bad)">Alle sperren</button>
         </div>
         <div class="err" id="kaErr"></div>
         <div class="muted" id="kaMsg" style="margin-bottom:8px"></div>
 
         <div class="row-actions" style="margin-top:10px;margin-bottom:10px">
-          <button type="button" class="mini active" id="kaFilterAll" onclick="filterKaList('all')">Tất cả (<span id="kaCountAll">0</span>)</button>
-          <button type="button" class="mini ghost" id="kaFilterAllowed" onclick="filterKaList('allowed')">✅ Được phép (<span id="kaCountAllowed">0</span>)</button>
-          <button type="button" class="mini ghost" id="kaFilterLocked" onclick="filterKaList('locked')">🔒 Bị khóa (<span id="kaCountLocked">0</span>)</button>
+          <button type="button" class="mini active" id="kaFilterAll" onclick="filterKaList('all')">Alle (<span id="kaCountAll">0</span>)</button>
+          <button type="button" class="mini ghost" id="kaFilterAllowed" onclick="filterKaList('allowed')">✅ Freigegeben (<span id="kaCountAllowed">0</span>)</button>
+          <button type="button" class="mini ghost" id="kaFilterLocked" onclick="filterKaList('locked')">🔒 Gesperrt (<span id="kaCountLocked">0</span>)</button>
         </div>
 
         <div class="tscroll" style="max-height:360px">
@@ -388,9 +388,9 @@ table.mx tbody tr:hover .mx-namecol{background:#EAF3FF}
             <thead>
               <tr>
                 <th>Nickname</th>
-                <th>Quyền Klassenarbeit</th>
-                <th>Phân tầng</th>
-                <th>Thao tác nhanh</th>
+                <th>Klassenarbeit-Recht</th>
+                <th>Stufe</th>
+                <th>Aktion</th>
               </tr>
             </thead>
             <tbody id="kaBody"></tbody>
@@ -400,7 +400,7 @@ table.mx tbody tr:hover .mx-namecol{background:#EAF3FF}
 
       <!-- ===== Zugriffsstufen ===== -->
       <div class="card">
-        <h2>Zugriffsstufen · Phân tầng</h2>
+        <h2>Zugriffsstufen</h2>
         <p class="muted" style="margin-bottom:12px">
           <b>Basic</b> = alle Themen, nur Grundwissen · <b>Pro</b> = volle Inhalte, Quiz, Zusammenfassung, Prüfungen · <b>Admin</b> = alles + dieses Dashboard.
         </p>
@@ -440,7 +440,7 @@ table.mx tbody tr:hover .mx-namecol{background:#EAF3FF}
         <h2>Pro-Code &amp; Admin-Passwort</h2>
         <p class="muted" style="margin-bottom:12px">
           Wer den Pro-Code in der App eingibt, wird automatisch auf <b>Pro</b> gesetzt.<br>
-          <i>Ai nhập đúng code trong app thì tự lên tầng Pro.</i>
+          <i>Wer den Code in der App eingibt, wird automatisch auf Pro gesetzt.</i>
         </p>
         <div class="tier-form">
           <div style="flex:1 1 180px;min-width:0">
@@ -473,7 +473,7 @@ table.mx tbody tr:hover .mx-namecol{background:#EAF3FF}
 </div>
 
 <script src="./pwa.js?v=3" defer></script>
-<script src="./js/supabase.js?v=16"></script>
+<script src="./js/supabase.js?v=17"></script>
 <script src="./js/access.js?v=2"></script>
 <script src="./js/icons.js?v=1"></script>
 <script src="./faecher/bfk1/bfk1-catalog.js?v=1"></script>
@@ -664,7 +664,7 @@ function tierTag(t){
 let _mxPlayers=[];      // [{player, themes}]
 let _mxTab='all';       // 'all' | group id
 const MX_STATUS_CLS={done:'mx-k-done',learning:'mx-k-learn',seen:'mx-k-seen'};
-const MX_STATUS_LBL={done:'Đã thuộc',learning:'Đang ôn',seen:'Đã xem'};
+const MX_STATUS_LBL={done:'erledigt',learning:'lernt',seen:'gesehen'};
 /** Status eines LS für einen Nutzer (aus profile.themes). fach fest = bfk1. */
 function mxStatusOf(themes, itemId){
   if(!themes) return '';
@@ -691,7 +691,7 @@ function mxRenderTable(){
   const host=document.getElementById('mxScroll');
   if(!host) return;
   const cols=mxColumns();
-  if(!_mxPlayers.length){ host.innerHTML='<div class="mx-empty">Noch keine Pro-Nutzer mit Fortschritt.<br><i>Chưa có học viên Pro nào có tiến trình.</i></div>'; return; }
+  if(!_mxPlayers.length){ host.innerHTML='<div class="mx-empty">Noch keine Pro-Nutzer mit Fortschritt.</div>'; return; }
   if(!cols.length){ host.innerHTML='<div class="mx-empty">Keine LS in dieser Gruppe.</div>'; return; }
   // Kopf
   let head='<tr><th class="mx-namecol mx-name">Nutzer</th><th class="mx-pctcol">%</th>';
@@ -713,7 +713,7 @@ function mxRenderTable(){
     cols.forEach(c=>{
       const st=mxStatusOf(r.p.themes,c.id);
       const cls=MX_STATUS_CLS[st]||'mx-k-none';
-      const lbl=MX_STATUS_LBL[st]||'Chưa mở';
+      const lbl=MX_STATUS_LBL[st]||'offen';
       tds+='<td class="mx-cell"><span class="mx-dot '+cls+'" title="'+escH(r.p.player)+' · '+escH(c.name)+' · '+lbl+'"></span></td>';
     });
     return '<tr>'+tds+'</tr>';
@@ -789,7 +789,7 @@ async function loadPaidCode(){
 const MANI_LABEL={
   'theme:list':'Themenliste','theme:basic':'Grundwissen im Thema','theme:full':'Volle Inhalte im Thema',
   'theme:pages':'Arbeitsblätter (Scans)','theme:flashcards':'Karteikarten',
-  'questionbank:excel':'Excel-Fragenbank · Câu hỏi từ Excel',
+  'questionbank:excel':'Excel-Fragenbank',
   'quiz:demo':'Quiz (Demo)','quiz:full':'Quiz (voll)','training':'Prüfungstraining',
   'zusammenfassung':'Zusammenfassung','pruefungen':'Prüfungsbögen + Lösungen',
   'challenge':'Challenge','admin':'Admin-Dashboard',
@@ -875,7 +875,7 @@ async function loadDeutschStats(){
   if(!window.LearnDB || !window.LearnDB.getDeutschAdminStats) return;
   const grid = document.getElementById('deStatsGrid');
   if(!grid) return;
-  grid.innerHTML = '<div class="stat"><div class="l">Đang tải dữ liệu Tiếng Đức…</div></div>';
+  grid.innerHTML = '<div class="stat"><div class="l">Deutsch-Daten werden geladen…</div></div>';
   try {
     const ds = await LearnDB.getDeutschAdminStats();
     const st = ds.settings || { minRepeats: 3, passThresholdPct: 80, dailyVocabGoal: 20, dailyGrammarGoal: 5 };
@@ -898,12 +898,12 @@ async function loadDeutschStats(){
     const totalTelcExams = (ds.players || []).reduce((acc, p) => acc + (p.telcExams ? p.telcExams.length : 0), 0);
 
     grid.innerHTML = `
-      <div class="stat"><div class="n">${ds.totalStudents || 0}</div><div class="l">Học Viên Tiếng Đức</div></div>
-      <div class="stat"><div class="n">${totalVocabDrilled}</div><div class="l">Từ Vựng Đã Gõ Kỷ Luật</div></div>
-      <div class="stat"><div class="n" style="color:var(--ok)">${totalVocabToday}</div><div class="l">Từ Vựng Gõ Hôm Nay</div></div>
-      <div class="stat"><div class="n">${totalGrammarMastered}</div><div class="l">Chuyên Đề Ngữ Pháp 100%</div></div>
-      <div class="stat"><div class="n" style="color:var(--warn)">${totalGrammarRetries}</div><div class="l">Lượt Làm Lại Câu Sai</div></div>
-      <div class="stat"><div class="n">${totalTelcExams}</div><div class="l">Bài Thi TELC / Goethe</div></div>
+      <div class="stat"><div class="n">${ds.totalStudents || 0}</div><div class="l">Deutsch-Nutzer</div></div>
+      <div class="stat"><div class="n">${totalVocabDrilled}</div><div class="l">Getippte Vokabeln</div></div>
+      <div class="stat"><div class="n" style="color:var(--ok)">${totalVocabToday}</div><div class="l">Heute getippte Vokabeln</div></div>
+      <div class="stat"><div class="n">${totalGrammarMastered}</div><div class="l">Grammatik-Themen 100%</div></div>
+      <div class="stat"><div class="n" style="color:var(--warn)">${totalGrammarRetries}</div><div class="l">Wiederholte Aufgaben</div></div>
+      <div class="stat"><div class="n">${totalTelcExams}</div><div class="l">Prüfungen TELC / Goethe</div></div>
     `;
 
     // Red Alerts Table
@@ -911,17 +911,17 @@ async function loadDeutschStats(){
     const redAlertCard = document.getElementById('deRedAlertCard');
     const redAlertMeta = document.getElementById('deRedAlertMeta');
     if(!ds.redAlerts || !ds.redAlerts.length){
-      if(redAlertBody) redAlertBody.innerHTML = '<tr><td colspan="4" class="muted" style="text-align:center;padding:14px">✅ Tuyệt vời! Tất cả học viên đều hoàn thành chỉ tiêu ngày và chăm chỉ vào học.</td></tr>';
+      if(redAlertBody) redAlertBody.innerHTML = '<tr><td colspan="4" class="muted" style="text-align:center;padding:14px">✅ Super! Alle Nutzer haben ihr Tagesziel erreicht.</td></tr>';
       if(redAlertCard) redAlertCard.style.opacity = '0.75';
-      if(redAlertMeta) redAlertMeta.textContent = 'Hiện tại không có học viên nào bị cảnh báo đỏ.';
+      if(redAlertMeta) redAlertMeta.textContent = 'Aktuell keine Nutzer mit roter Warnung.';
     } else {
       if(redAlertCard) redAlertCard.style.opacity = '1';
-      if(redAlertMeta) redAlertMeta.textContent = 'Phát hiện ' + ds.redAlerts.length + ' học viên cần giáo viên đôn đốc, nhắc nhở:';
+      if(redAlertMeta) redAlertMeta.textContent = 'Achtung: ' + ds.redAlerts.length + ' Nutzer brauchen eine Erinnerung:';
       if(redAlertBody) {
         redAlertBody.innerHTML = ds.redAlerts.map(a => {
           return `<tr>
             <td><b style="color:var(--bad)">${escH(a.player)}</b></td>
-            <td><b>${a.vocabToday || 0}</b> / ${st.dailyVocabGoal || 20} từ</td>
+            <td><b>${a.vocabToday || 0}</b> / ${st.dailyVocabGoal || 20} Vokabeln</td>
             <td>${fmt(a.last_seen)}</td>
             <td><span class="pill-badge pill-bad">${escH(a.reasons.join(' · '))}</span></td>
           </tr>`;
@@ -935,17 +935,17 @@ async function loadDeutschStats(){
       vocabBody.innerHTML = (ds.players || []).map(p => {
         const meetsGoal = (p.vocabToday || 0) >= (st.dailyVocabGoal || 20);
         const goalBadge = meetsGoal
-          ? '<span class="pill-badge pill-ok">✓ Đạt (' + p.vocabToday + '/' + (st.dailyVocabGoal || 20) + ')</span>'
-          : '<span class="pill-badge pill-bad">Chưa đạt (' + (p.vocabToday || 0) + '/' + (st.dailyVocabGoal || 20) + ')</span>';
+          ? '<span class="pill-badge pill-ok">✓ erreicht (' + p.vocabToday + '/' + (st.dailyVocabGoal || 20) + ')</span>'
+          : '<span class="pill-badge pill-bad">nicht erreicht (' + (p.vocabToday || 0) + '/' + (st.dailyVocabGoal || 20) + ')</span>';
         return `<tr>
           <td><b>${escH(p.player)}</b></td>
-          <td><b style="color:var(--ok)">${p.vocabCompleted || 0}</b> từ</td>
-          <td><b>${p.vocabToday || 0}</b> từ</td>
+          <td><b style="color:var(--ok)">${p.vocabCompleted || 0}</b> Vokabeln</td>
+          <td><b>${p.vocabToday || 0}</b> Vokabeln</td>
           <td><span style="color:${p.vocabMistakes > 0 ? 'var(--bad)' : 'var(--muted)'}">${p.vocabMistakes || 0}</span></td>
           <td>${goalBadge}</td>
           <td>${fmt(p.last_seen)}</td>
         </tr>`;
-      }).join('') || '<tr><td colspan="6" class="muted">Chưa có học viên bắt đầu chép từ.</td></tr>';
+      }).join('') || '<tr><td colspan="6" class="muted">Noch keine Nutzer haben mit dem Vokabel-Tippen begonnen.</td></tr>';
     }
 
     // Grammar Player Table
@@ -954,10 +954,10 @@ async function loadDeutschStats(){
       gramPlayerBody.innerHTML = (ds.players || []).map(p => {
         return `<tr>
           <td><b>${escH(p.player)}</b></td>
-          <td><span class="pill-badge pill-ok">✓ ${p.grammarMastered || 0} bài</span></td>
-          <td><b style="color:var(--warn)">${p.grammarRetries || 0}</b> lượt</td>
+          <td><span class="pill-badge pill-ok">✓ ${p.grammarMastered || 0} Aufgaben</span></td>
+          <td><b style="color:var(--warn)">${p.grammarRetries || 0}</b> Wiederholungen</td>
         </tr>`;
-      }).join('') || '<tr><td colspan="3" class="muted">Chưa có dữ liệu</td></tr>';
+      }).join('') || '<tr><td colspan="3" class="muted">Noch keine Daten</td></tr>';
     }
 
     // Weak Grammar Topics Table
@@ -966,10 +966,10 @@ async function loadDeutschStats(){
       weakTopicsBody.innerHTML = (ds.weakGrammarTopics || []).slice(0, 10).map(t => {
         return `<tr>
           <td><b>${escH(t.title)}</b></td>
-          <td><span style="color:var(--bad);font-weight:600">${t.totalMistakes} lỗi</span></td>
-          <td><b>${t.totalRetries}</b> lượt làm lại</td>
+          <td><span style="color:var(--bad);font-weight:600">${t.totalMistakes} Fehler</span></td>
+          <td><b>${t.totalRetries}</b> Wiederholungen</td>
         </tr>`;
-      }).join('') || '<tr><td colspan="3" class="muted">Chưa có chủ đề bị làm sai nhiều.</td></tr>';
+      }).join('') || '<tr><td colspan="3" class="muted">Noch keine Fehlerthemen.</td></tr>';
     }
 
     // TELC Exams Table
@@ -986,22 +986,22 @@ async function loadDeutschStats(){
       examsBody.innerHTML = allExams.slice(0, 50).map(ex => {
         const isPassed = (ex.pct || 0) >= (st.passThresholdPct || 80);
         const passBadge = isPassed
-          ? '<span class="pill-badge pill-ok">Đạt (' + ex.pct + '%)</span>'
-          : '<span class="pill-badge pill-bad">Trượt (' + (ex.pct || 0) + '%)</span>';
+          ? '<span class="pill-badge pill-ok">Bestanden (' + ex.pct + '%)</span>'
+          : '<span class="pill-badge pill-bad">Nicht bestanden (' + (ex.pct || 0) + '%)</span>';
         return `<tr>
           <td><b>${escH(ex.player)}</b></td>
           <td>${escH(ex.subject || 'TELC B1')}</td>
-          <td>${escH(ex.quiz || 'Tổng hợp')}</td>
+          <td>${escH(ex.quiz || 'Gesamt')}</td>
           <td><b>${ex.correct || 0}/${ex.total || 0}</b></td>
           <td>${passBadge}</td>
           <td>${ex.attempts || 1}</td>
           <td>${fmt(ex.at || ex.updated_at)}</td>
         </tr>`;
-      }).join('') || '<tr><td colspan="7" class="muted">Chưa có học viên thi thử đề TELC/Goethe.</td></tr>';
+      }).join('') || '<tr><td colspan="7" class="muted">Noch keine TELC/Goethe-Prüfungsversuche.</td></tr>';
     }
 
   } catch(e) {
-    if(grid) grid.innerHTML = '<div class="stat"><div class="l" style="color:var(--bad)">Lỗi tải dữ liệu: ' + (e.message || e) + '</div></div>';
+    if(grid) grid.innerHTML = '<div class="stat"><div class="l" style="color:var(--bad)">Fehler beim Laden: ' + (e.message || e) + '</div></div>';
   }
 }
 
@@ -1012,7 +1012,7 @@ document.getElementById('btnSaveDeSettings').onclick = async () => {
   const passThresholdPct = Number(document.getElementById('dePassThreshold').value) || 80;
   const msg = document.getElementById('deSettingsMsg');
   const btn = document.getElementById('btnSaveDeSettings');
-  msg.textContent = 'Đang lưu…'; btn.disabled = true;
+  msg.textContent = 'Speichern…'; btn.disabled = true;
   try {
     await LearnDB.saveDisciplineSettings({
       minRepeats,
@@ -1021,11 +1021,11 @@ document.getElementById('btnSaveDeSettings').onclick = async () => {
       passThresholdPct,
       strictLevelGate: true
     });
-    msg.textContent = '✓ Đã lưu cài đặt kỷ luật thành công!';
+    msg.textContent = '✓ Disziplin-Einstellungen gespeichert!';
     setTimeout(() => { msg.textContent = ''; }, 3000);
     await loadDeutschStats();
   } catch(e) {
-    msg.textContent = 'Lỗi lưu: ' + (e.message || e);
+    msg.textContent = 'Speichern fehlgeschlagen: ' + (e.message || e);
   } finally {
     btn.disabled = false;
   }
@@ -1043,9 +1043,9 @@ function unlock(){
 document.getElementById('btnLogin').onclick = async () => {
   const pass = (document.getElementById('pass').value || '').trim();
   showErr('');
-  if(!pass){ showErr('Vui lòng nhập mật khẩu Admin'); return; }
+  if(!pass){ showErr('Bitte Admin-Passwort eingeben'); return; }
   const btn = document.getElementById('btnLogin');
-  btn.disabled = true; btn.textContent = 'Đang kiểm tra…';
+  btn.disabled = true; btn.textContent = 'Prüfen…';
   try {
     let ok = false;
     if(window.Access && Access.checkSuperPassword){
@@ -1056,10 +1056,10 @@ document.getElementById('btnLogin').onclick = async () => {
       if(window.Access && Access.markSuperVerified) Access.markSuperVerified(true);
       unlock();
     } else {
-      showErr('Mật khẩu không đúng. Mật khẩu mặc định: admin');
+      showErr('Falsches Passwort. Standard-Passwort: admin');
     }
   } catch(e) {
-    showErr('Lỗi: ' + (e.message || e));
+    showErr('Fehler: ' + (e.message || e));
   } finally {
     btn.disabled = false; btn.textContent = 'Zum Dashboard';
   }
@@ -1149,7 +1149,7 @@ function renderKaTable(){
   }
 
   if(!filtered.length){
-    body.innerHTML = '<tr><td colspan="4" class="muted" style="text-align:center;padding:16px">Không có tài khoản nào phù hợp</td></tr>';
+    body.innerHTML = '<tr><td colspan="4" class="muted" style="text-align:center;padding:16px">Keine passenden Konten</td></tr>';
     return;
   }
 
@@ -1157,12 +1157,12 @@ function renderKaTable(){
     const isAllowed = _kaWhitelistSet.has(nick.toLowerCase());
     const tier = (_roleMap && _roleMap[nick.toLowerCase()]) || 'free';
     const statusBadge = isAllowed
-      ? '<span class="tag" style="background:#E3F7E8;color:#248A3D;border:1px solid #248A3D">✅ ĐƯỢC PHÉP</span>'
-      : '<span class="tag" style="background:#FFF0F0;color:#C4342B;border:1px solid #FFD1D1">🔒 KHÔNG ĐƯỢC PHÉP</span>';
+      ? '<span class="tag" style="background:#E3F7E8;color:#248A3D;border:1px solid #248A3D">✅ FREIGEGEBEN</span>'
+      : '<span class="tag" style="background:#FFF0F0;color:#C4342B;border:1px solid #FFD1D1">🔒 GESPERRT</span>';
 
     const toggleBtn = isAllowed
-      ? `<button type="button" class="mini ghost" style="color:var(--bad);border-color:var(--bad);font-weight:600" onclick="toggleKaAccess('${escH(nick)}', false)">🔒 Khóa quyền</button>`
-      : `<button type="button" class="mini" style="background:#248A3D;color:#fff;font-weight:600" onclick="toggleKaAccess('${escH(nick)}', true)">✅ Mở quyền</button>`;
+      ? `<button type="button" class="mini ghost" style="color:var(--bad);border-color:var(--bad);font-weight:600" onclick="toggleKaAccess('${escH(nick)}', false)">🔒 Sperren</button>`
+      : `<button type="button" class="mini" style="background:#248A3D;color:#fff;font-weight:600" onclick="toggleKaAccess('${escH(nick)}', true)">✅ Freigeben</button>`;
 
     return `<tr>
       <td><b>${escH(nick)}</b></td>
@@ -1180,7 +1180,7 @@ async function toggleKaAccess(player, allowed){
     if(allowed) _kaWhitelistSet.add(player.toLowerCase());
     else _kaWhitelistSet.delete(player.toLowerCase());
     renderKaTable();
-    showKaMsg(allowed ? `✅ Đã cấp quyền Klassenarbeit cho "${player}"` : `🔒 Đã khóa quyền Klassenarbeit của "${player}"`);
+    showKaMsg(allowed ? `✅ Klassenarbeit freigegeben für "${player}"` : `🔒 Klassenarbeit gesperrt für "${player}"`);
   }catch(e){
     showKaErr(e.message || String(e));
   }
@@ -1189,13 +1189,13 @@ async function toggleKaAccess(player, allowed){
 async function quickAddKaGrant(){
   const inp = document.getElementById('kaQuickNick');
   const nick = (inp ? inp.value : '').trim();
-  if(!nick){ showKaErr('Vui lòng nhập Nickname'); return; }
+  if(!nick){ showKaErr('Bitte Nickname eingeben'); return; }
   await toggleKaAccess(nick, true);
   if(inp) inp.value = '';
 }
 
 async function batchKaGrant(allowed){
-  const action = allowed ? 'Mở quyền Klassenarbeit cho TẤT CẢ học viên?' : 'Khóa quyền Klassenarbeit TẤT CẢ học viên?';
+  const action = allowed ? 'Klassenarbeit für ALLE Nutzer freigeben?' : 'Klassenarbeit für ALLE Nutzer sperren?';
   if(!confirm(action)) return;
   showKaErr('');
   try{
@@ -1204,7 +1204,7 @@ async function batchKaGrant(allowed){
     if(allowed) nicks.forEach(n => _kaWhitelistSet.add(n.toLowerCase()));
     else _kaWhitelistSet.clear();
     renderKaTable();
-    showKaMsg(allowed ? '✅ Đã mở quyền Klassenarbeit cho tất cả!' : '🔒 Đã khóa quyền Klassenarbeit tất cả!');
+    showKaMsg(allowed ? '✅ Klassenarbeit für alle freigegeben!' : '🔒 Klassenarbeit für alle gesperrt!');
   }catch(e){
     showKaErr(e.message || String(e));
   }

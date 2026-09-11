@@ -181,7 +181,7 @@
               <li><span class="term" data-de="Selbstverwirklichung" data-vi="tự thể hiện bản thân">Selbstverwirklichung</span> – Độc lập, sáng tạo, phát triển tiềm năng cá nhân.</li>
               <li><span class="term" data-de="Soziale Wertschätzung" data-vi="được tôn trọng &amp; công nhận">Wertschätzung</span> – Được công nhận, địa vị, thành công công việc.</li>
               <li><span class="term" data-de="Soziale Beziehungen" data-vi="mối quan hệ xã hội">Soziale Beziehungen</span> – Gia đình, bạn bè, tình yêu, sự gắn kết.</li>
-              <li><span class="term" data-de="Sicherheit" data-vi="an toàn &amp; ổn định">Sicherheit</span> – Pháp luật, việc làm ổn định, bảo vệ khỏi nguy hiểm.</li>
+              <li><span class="term" data-de="Sicherheit" data-vi="an toàn / an ninh (tùy ngữ cảnh)">Sicherheit</span> – Pháp luật, việc làm ổn định, bảo vệ khỏi nguy hiểm.</li>
               <li><span class="term" data-de="Körperliche Grundbedürfnisse" data-vi="nhu cầu sinh lý cơ bản">Grundbedürfnisse</span> – Ăn, uống, ngủ, chỗ ở, sức khỏe.</li>
             </ol>
             <div class="formula"><b>Quy luật:</b> 3 tầng dưới là <i>Defizitbedürfnisse</i> (nhu cầu thiếu hụt - dừng khi đủ); 2 tầng trên là <i>Unstillbare Bedürfnisse</i> (càng phát triển càng muốn hướng tới).</div>
@@ -245,7 +245,7 @@
             <ul>
               <li><span class="term" data-de="Spracherwerb" data-vi="học ngôn ngữ tiếng Đức">Spracherwerb</span>: Tiếng Đức là chìa khóa để hội nhập thị trường lao động và đời sống xã hội.</li>
               <li><span class="term" data-de="Anerkennung von Qualifikationen" data-vi="công nhận bằng cấp chuyên môn">Anerkennung</span>: Quy trình thẩm định và công nhận bằng cấp nghề nước ngoài.</li>
-              <li><span class="term" data-de="Gesellschaftliche Teilhabe" data-vi="hòa nhập đời sống xã hội">Teilhabe</span>: Tôn trọng trật tự pháp luật và các giá trị của Hiến pháp (<span class="term" data-de="Grundgesetz" data-vi="Hiến pháp Đức">Grundgesetz</span>).</li>
+              <li><span class="term" data-de="Gesellschaftliche Teilhabe" data-vi="hòa nhập đời sống xã hội">Teilhabe</span>: Tôn trọng trật tự pháp luật và các giá trị của Hiến pháp (<span class="term" data-de="Grundgesetz" data-vi="Luật cơ bản / Hiến pháp CHLB Đức">Grundgesetz</span>).</li>
             </ul>
 
             <h3 class="sub">3. Vai trò kinh tế của Di cư (Wirtschaftsfaktor Migration)</h3>

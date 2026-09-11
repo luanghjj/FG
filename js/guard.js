@@ -5,12 +5,12 @@
  *
  *   <script src="./supabase.js?v=13"></script>
  *   <script src="./access.js?v=1"></script>
- *   <script src="./guard.js?v=1" data-need="pruefungen"></script>
+ *   <script src="./guard.js?v=2" data-need="pruefungen"></script>
  *
  * data-need = Feature-Key aus dem Access-Manifest (Standard: "pruefungen").
  * Fehlt die Stufe, wird die Seite überdeckt und zurück zur App geleitet.
  *
- * Khoá mềm: chỉ kiểm ở client. Đủ cho lớp học, không chống devtools.
+ * Weiche Sperre: nur clientseitig geprüft. Ausreichend für den Unterricht, kein Schutz gegen DevTools.
  * ============================================================ */
 (function () {
   'use strict';
@@ -46,14 +46,14 @@
           '<p style="color:#8E8E93;font-size:.92em;line-height:1.55;margin:0 0 4px">' +
           'Bitte zuerst in der App mit deinem Nickname anmelden.</p>' +
           '<p style="color:#8E8E93;font-size:.86em;font-style:italic;line-height:1.5;margin:0 0 22px">' +
-          'Vui lòng đăng nhập bằng nickname trong app trước.</p>'
+          'Bitte zuerst mit dem Nickname in der App anmelden.</p>'
         : '<h1 style="font-size:1.3em;font-weight:600;letter-spacing:-.01em;margin:0 0 10px">Pro-Inhalt</h1>' +
           '<p style="color:#8E8E93;font-size:.92em;line-height:1.55;margin:0 0 4px">' +
           'Prüfungsbögen und Lösungen sind in der Pro-Stufe.' +
           (player ? ' Angemeldet als <b style="color:#000">' + esc(player) + '</b> (Basic).' : '') +
           '</p>' +
           '<p style="color:#8E8E93;font-size:.86em;font-style:italic;line-height:1.5;margin:0 0 22px">' +
-          'Bài thi Klassenarbeit chỉ mở cho các tài khoản được giáo viên/admin cấp quyền trên thiết bị này.</p>';
+          'Klassenarbeiten sind nur für Konten freigeschaltet, die von Lehrkraft/Admin auf diesem Gerät berechtigt wurden.</p>';
 
     wrap.innerHTML =
       '<div style="width:min(420px,100%);background:#fff;border:1px solid #E5E5EA;border-radius:22px;' +
