@@ -1,0 +1,213 @@
+/* Student auth / admin student styles */
+.auth-page {
+    padding: 56px 0 70px;
+    background: linear-gradient(180deg, #fffaf0 0%, #ffffff 55%);
+}
+.auth-shell {
+    max-width: 520px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 22px;
+    padding: 28px;
+    box-shadow: 0 18px 50px rgba(15, 23, 42, .10);
+    border: 1px solid rgba(15, 23, 42, .08);
+}
+.auth-shell h1 {
+    margin: 0 0 8px;
+    font-size: 28px;
+    color: #111827;
+}
+.auth-shell p {
+    margin: 0 0 20px;
+    color: #64748b;
+    line-height: 1.55;
+}
+.auth-form { display: grid; gap: 14px; }
+.auth-form label { font-weight: 800; color: #111827; }
+.auth-form input, .auth-form select, .auth-form textarea {
+    width: 100%;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 13px 14px;
+    font-size: 15px;
+    outline: none;
+    background: #fff;
+}
+.auth-form input:focus, .auth-form select:focus, .auth-form textarea:focus {
+    border-color: #d4a017;
+    box-shadow: 0 0 0 4px rgba(212, 160, 23, .14);
+}
+.auth-btn {
+    border: 0;
+    border-radius: 999px;
+    padding: 14px 18px;
+    font-weight: 900;
+    cursor: pointer;
+    background: #d4a017;
+    color: #111827;
+    box-shadow: 0 10px 24px rgba(212, 160, 23, .25);
+}
+.auth-links { margin-top: 16px; text-align: center; color: #64748b; }
+.auth-links a { color: #b7791f; font-weight: 800; text-decoration: none; }
+.auth-alert {
+    border-radius: 14px;
+    padding: 12px 14px;
+    margin: 0 0 16px;
+    font-weight: 700;
+    line-height: 1.45;
+}
+.auth-alert.error { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+.auth-alert.success { background: #ecfdf5; color: #047857; border: 1px solid #bbf7d0; }
+.auth-profile-card {
+    max-width: 760px;
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, .08);
+    border-radius: 22px;
+    padding: 28px;
+    box-shadow: 0 18px 50px rgba(15, 23, 42, .08);
+}
+.auth-profile-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 18px; }
+.auth-profile-item { background: #f8fafc; border-radius: 16px; padding: 14px; }
+.auth-profile-item span { display:block; color:#64748b; font-size:13px; margin-bottom:4px; }
+.auth-profile-item strong { color:#111827; }
+.student-status { display:inline-flex; align-items:center; gap:6px; border-radius:999px; padding:5px 10px; font-weight:900; font-size:12px; }
+.student-status.pending { background:#fff7ed; color:#c2410c; }
+.student-status.approved { background:#ecfdf5; color:#047857; }
+.student-status.blocked { background:#fef2f2; color:#b91c1c; }
+.student-device-ok { color:#047857; font-weight:800; }
+.student-device-empty { color:#64748b; font-weight:800; }
+.student-admin-actions { display:flex; flex-wrap:wrap; gap:6px; }
+.student-admin-actions form { display:inline; }
+.student-mini { color:#64748b; font-size:12px; line-height:1.4; }
+@media (max-width: 768px) {
+    .auth-page { padding: 28px 0 54px; }
+    .auth-shell, .auth-profile-card { margin: 0 12px; padding: 20px; border-radius: 18px; }
+    .auth-profile-grid { grid-template-columns: 1fr; }
+}
+
+/* ===== FIX 2026-08-12: admin học viên responsive ===== */
+.admin-main,
+.admin-layout {
+    max-width: 100vw;
+}
+.admin-main .card {
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.admin-main .form-grid {
+    display: grid;
+    gap: 14px;
+}
+.admin-main .form-grid label {
+    display: block;
+    margin: 0 0 6px;
+    font-size: 13px;
+    font-weight: 800;
+    color: #344054;
+}
+.admin-main .form-grid input,
+.admin-main .form-grid select,
+.admin-main .form-grid textarea,
+.admin-main .doc-filter-form input,
+.admin-main .doc-filter-form select {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #d0d5dd;
+    border-radius: 12px;
+    padding: 11px 12px;
+    font-size: 14px;
+    background: #fff;
+    color: #111827;
+    outline: none;
+}
+.admin-main .form-grid textarea {
+    min-height: 86px;
+    resize: vertical;
+}
+.admin-main .form-grid .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    align-items: start;
+}
+.admin-main .doc-admin-list-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+.admin-main .doc-filter-form {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.admin-main .doc-filter-form input[type="search"] {
+    width: min(280px, 100%);
+}
+.admin-main .table-wrap {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid #e8edf3;
+    border-radius: 14px;
+}
+.admin-main .table-wrap .admin-table {
+    min-width: 980px;
+}
+.student-admin-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    min-width: 260px;
+}
+.student-admin-actions form {
+    margin: 0;
+}
+.student-admin-actions .btn,
+.student-admin-actions button.btn {
+    padding: 8px 10px !important;
+    font-size: 13px !important;
+}
+@media (max-width: 720px) {
+    .admin-main {
+        padding-left: 14px !important;
+        padding-right: 14px !important;
+        overflow-x: hidden;
+    }
+    .admin-main .admin-top .btn {
+        width: 100% !important;
+    }
+    .admin-main .card {
+        padding: 16px !important;
+        border-radius: 16px !important;
+    }
+    .admin-main .form-grid .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    .admin-main .doc-admin-list-head {
+        align-items: stretch;
+    }
+    .admin-main .doc-admin-list-head h2 {
+        width: 100%;
+    }
+    .admin-main .doc-filter-form,
+    .admin-main .doc-filter-form select,
+    .admin-main .doc-filter-form input[type="search"],
+    .admin-main .doc-filter-form .btn {
+        width: 100% !important;
+    }
+    .admin-main .table-wrap {
+        margin-left: -2px;
+        margin-right: -2px;
+    }
+}

@@ -1,0 +1,160 @@
+{
+  "title": "Nguyễn Ron Fahrschule - Đào tạo bằng lái xe tại Đức",
+  "meta_description": "Đào tạo bằng lái xe tại Đức cho người Việt. Học lý thuyết online, học thực hành tại Berlin, hỗ trợ hồ sơ từ A-Z.",
+  "hero": {
+    "heading": "Đào tạo bằng lái xe ô tôtại Đức cho người Việt",
+    "subheading": "Học dễ hiểu – Thi tự tin – Lấy bằng nhanh\r\nGiáo viên nói tiếng Việt, hỗ trợ trọn từ A-Z tại Berlin",
+    "rating": "★★★★★ 5.0/5 từ 1000+ học viên người Việt tại Berlin"
+  },
+  "services": [
+    {
+      "service": "Luyện thi lý thuyết",
+      "description": "Học online qua Zoom, giải thích bằng tiếng Việt"
+    },
+    {
+      "service": "Học thực hành",
+      "description": "Lịch học linh hoạt theo nhu cầu học viên"
+    },
+    {
+      "service": "Dịch thuật giấy tờ",
+      "description": "Hỗ trợ giấy tờ cần thiết khi đăng ký học và thi"
+    },
+    {
+      "service": "Đăng ký thi",
+      "description": "Hỗ trợ lịch thi lý thuyết và thực hành"
+    },
+    {
+      "service": "Tư vấn đổi bằng",
+      "description": "Tư vấn cho người đã có bằng lái Việt Nam"
+    }
+  ],
+  "licenses": [
+    {
+      "type": "B",
+      "description": "Bằng lái ô tô số sàn và số tự động",
+      "icon": "assets/img/license-b.png"
+    },
+    {
+      "type": "B78",
+      "description": "Học và thi xe số tự động",
+      "icon": "assets/img/license-b78.png"
+    },
+    {
+      "type": "B197",
+      "description": "Thi tự động, học thêm số sàn để lái cả hai loại xe",
+      "icon": "assets/img/license-b197.png"
+    },
+    {
+      "type": "Hồ sơ A-Z",
+      "description": "Học cứu thương, khám mắt, Bürgeramt, Anmeldung, đăng ký thi",
+      "icon": "assets/img/hero-car-night.png"
+    }
+  ],
+  "packages": [
+    {
+      "name": "🔥🔥Gói học 2 lần thi",
+      "price": "💰2.880",
+      "notes": "- Chương trình học và thi trong 3-4 tuần, Lịch thi lại sau 2 tuần\r\n- Lệ phí thi cho Dekra hoặc Tüv 129,83 học sinh tự đóng theo quy định",
+      "features": [
+        "👉 16 buổi lái thực tế",
+        "💎 2 Lịch thi",
+        "🆓 Miễn phí đăng ký trường",
+        "🆓 Học mô hình không giới hạn thời gian"
+      ]
+    },
+    {
+      "name": "🔥🔥Gói học 2 lần thi",
+      "price": "💰3.660",
+      "notes": "- Chương trình học và thi trong 3-4 tuần\r\n- Lịch thi lại sau 2 tuần\r\n- Lệ phí thi cho Dekra hoặc Tüv 129,83e  học sinh đóng theo quy định",
+      "features": [
+        "👉 23 buổi lái thực tế",
+        "💎 2 Lịch thi",
+        "🆓 Miễn phí đăng ký trường",
+        "🆓 Học mô hình không giới hạn thời gian"
+      ]
+    },
+    {
+      "name": "Gói học 3 lần thi",
+      "price": "3.980€",
+      "notes": "Gói phổ biến, lộ trình chắc hơn",
+      "features": [
+        "21 buổi lái thực tế",
+        "3 lịch thi, tổng 345 phút",
+        "Miễn phí đăng ký trường",
+        "Học mô hình không giới hạn"
+      ]
+    }
+  ],
+  "process": [
+    {
+      "step": "1",
+      "title": "Tư vấn",
+      "description": "Chọn hạng bằng và lộ trình phù hợp"
+    },
+    {
+      "step": "2",
+      "title": "Chuẩn bị hồ sơ",
+      "description": "Hướng dẫn giấy tờ, cứu thương, khám mắt"
+    },
+    {
+      "step": "3",
+      "title": "Học lý thuyết",
+      "description": "Học online/offline bằng tiếng Việt"
+    },
+    {
+      "step": "4",
+      "title": "Học thực hành",
+      "description": "Lái xe cùng giáo viên tại Berlin"
+    },
+    {
+      "step": "5",
+      "title": "Thi",
+      "description": "Thi lý thuyết và thực hành"
+    },
+    {
+      "step": "6",
+      "title": "Nhận bằng",
+      "description": "Hoàn tất và nhận bằng lái Đức"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Học lái xe ở Đức có khó không?",
+      "answer": "Nếu được hướng dẫn đúng bằng tiếng Việt và luyện tập đều, học viên sẽ dễ nắm luật và tự tin hơn khi thi."
+    },
+    {
+      "question": "Mất bao lâu để lấy bằng?",
+      "answer": "Chương trình học và thi dự kiến khoảng 3–4 tuần, tùy khả năng, lịch học và lịch thi."
+    },
+    {
+      "question": "Có thể học lý thuyết online không?",
+      "answer": "Có. Trung tâm hỗ trợ học lý thuyết online qua Zoom cho người Việt trên toàn nước Đức."
+    },
+    {
+      "question": "Nếu thi trượt thì sao?",
+      "answer": "Trung tâm hỗ trợ lấy lịch thi lại sớm, thường sau khoảng 2–3 tuần."
+    }
+  ],
+  "blogs": [
+    {
+      "title": "5 mẹo học lý thuyết dễ nhớ dành cho người mới bắt đầu",
+      "summary": "Cách học lý thuyết lái xe tại Đức dễ hiểu hơn cho người Việt.",
+      "url": "post.php?slug=5-meo-hoc-ly-thuyet",
+      "content": "Nên học theo nhóm biển báo, luật ưu tiên, tốc độ và tình huống giao thông. Sau mỗi buổi học cần luyện lại bằng đề thi thử.",
+      "date": "Ngày đăng: 16/05/2026"
+    },
+    {
+      "title": "Kinh nghiệm thi thực hành đường lần đầu",
+      "summary": "Các lỗi thường gặp khi thi thực hành và cách tránh.",
+      "url": "post.php?slug=kinh-nghiem-thi-thuc-hanh",
+      "content": "Hãy giữ tâm lý ổn định, quan sát gương thường xuyên, chú ý biển báo và đi đúng tốc độ cho phép.",
+      "date": "Ngày đăng: 16/05/2026"
+    }
+  ],
+  "contact": {
+    "whatsapp": "015253218333",
+    "email": "info@nguyenron.com",
+    "address": "Möllendorffstraße 44 Lichtenberg 10367 Berlin",
+    "working_hours": "06:00 – 20:00 hằng ngày"
+  }
+}

@@ -4,6 +4,9 @@
 # Ảnh scan tài liệu (nặng, chỉ dùng làm nguồn OCR — không cần cho web)
 *.jpg
 *.jpeg
+!fuererschein/images/theory/*.jpg
+!furerschein/public/images/theory/*.jpg
+!furerschein/furerschein-app/public/images/theory/*.jpg
 2-D/
 2-Bfk1-lf6/
 _bfk_1_notes/
@@ -29,5 +32,7 @@ _ocr/
 Deutsch_a1-c1/node_modules/
 Deutsch_a1-c1/dist/
 Deutsch_a1-c1/tsconfig.tsbuildinfo
+furerschein/furerschein-app/node_modules/
+furerschein/furerschein-app/dist/
 
 # Bản build deploy của app React (tạo từ: cd Deutsch_a1-c1 && npm run build && rm -rf ../deutsch-a1-c1 && cp -R dist ../deutsch-a1-c1)

@@ -1,0 +1,350 @@
+{
+  "": {
+    "status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "length": 15535,
+    "redirect": ""
+  },
+  "index.php": {
+    "status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "length": 15535,
+    "redirect": ""
+  },
+  "robots.txt": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "sitemap.xml": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "tai-lieu.php": {
+    "status": 302,
+    "content_type": "text/html; charset=UTF-8",
+    "length": 0,
+    "redirect": "login.php?redirect=%2Ftai-lieu.php&reason=not_logged_in"
+  },
+  "videos.php": {
+    "status": 302,
+    "content_type": "text/html; charset=UTF-8",
+    "length": 0,
+    "redirect": "login.php?redirect=%2Fvideos.php&reason=not_logged_in"
+  },
+  "blog.php": {
+    "status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "length": 5318,
+    "redirect": ""
+  },
+  "appointments.php": {
+    "status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "length": 4606,
+    "redirect": ""
+  },
+  "login.php": {
+    "status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "length": 5461,
+    "redirect": ""
+  },
+  "register.php": {
+    "status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "length": 5977,
+    "redirect": ""
+  },
+  "forgot-password.php": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "reset-password.php": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "profile.php": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "post.php?slug=5-meo-hoc-ly-thuyet": {
+    "status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "length": 4842,
+    "redirect": ""
+  },
+  "post.php?slug=kinh-nghiem-thi-thuc-hanh": {
+    "status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "length": 4785,
+    "redirect": ""
+  },
+  "watch.php": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "watch.php?id=1": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "video.php": {
+    "status": 302,
+    "content_type": "text/html; charset=UTF-8",
+    "length": 0,
+    "redirect": "login.php?redirect=%2Fvideo.php&reason=not_logged_in"
+  },
+  "video.php?id=1": {
+    "status": 302,
+    "content_type": "text/html; charset=UTF-8",
+    "length": 0,
+    "redirect": "login.php?redirect=%2Fvideo.php%3Fid%3D1&reason=not_logged_in"
+  },
+  "video-category.php": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "video-category.php?id=1": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "doc.php": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "doc.php?id=1": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "document.php": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "document.php?id=1": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "view-document.php": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "view-doc.php": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "download.php": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "download.php?id=1": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "cau-hoi.php": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "thi-thu.php": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "luyen-thi.php": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "quiz.php": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "exam.php": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "de-thi.php": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "questions.php": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "theory.php": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "api/": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "api/videos.php": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "api/documents.php": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "api/questions.php": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "api/appointments.php": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "admin/": {
+    "status": 302,
+    "content_type": "text/html; charset=UTF-8",
+    "length": 0,
+    "redirect": "login.php"
+  },
+  "admin/login.php": {
+    "status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "length": 481,
+    "redirect": ""
+  },
+  "admin/index.php": {
+    "status": 302,
+    "content_type": "text/html; charset=UTF-8",
+    "length": 0,
+    "redirect": "login.php"
+  },
+  "admin/videos.php": {
+    "status": 302,
+    "content_type": "text/html; charset=UTF-8",
+    "length": 0,
+    "redirect": "login.php"
+  },
+  "admin/documents.php": {
+    "status": 302,
+    "content_type": "text/html; charset=UTF-8",
+    "length": 0,
+    "redirect": "login.php"
+  },
+  "admin/appointments.php": {
+    "status": 302,
+    "content_type": "text/html; charset=UTF-8",
+    "length": 0,
+    "redirect": "login.php"
+  },
+  "admin/posts.php": {
+    "status": 302,
+    "content_type": "text/html; charset=UTF-8",
+    "length": 0,
+    "redirect": "login.php"
+  },
+  "uploads/": {
+    "status": 403,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "uploads/documents/": {
+    "status": 403,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "uploads/videos/": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "uploads/images/": {
+    "status": 404,
+    "content_type": "text/html",
+    "length": 548,
+    "redirect": ""
+  },
+  "assets/js/main.js": {
+    "status": 200,
+    "content_type": "application/javascript",
+    "length": 201,
+    "redirect": ""
+  },
+  "assets/css/style.css": {
+    "status": 200,
+    "content_type": "text/css",
+    "length": 31504,
+    "redirect": ""
+  },
+  "assets/css/video.css": {
+    "status": 200,
+    "content_type": "text/css",
+    "length": 15419,
+    "redirect": ""
+  },
+  "assets/css/document.css": {
+    "status": 200,
+    "content_type": "text/css",
+    "length": 10342,
+    "redirect": ""
+  },
+  "assets/css/auth.css": {
+    "status": 200,
+    "content_type": "text/css",
+    "length": 5942,
+    "redirect": ""
+  }
+}

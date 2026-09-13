@@ -378,7 +378,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 
 /* ===== Track gate (track wählen nach Login) ===== */
 .track-card{
-  width:min(560px,100%);background:#fff;border-radius:24px;padding:36px 28px;
+  width:min(700px,100%);background:#fff;border-radius:24px;padding:36px 24px;
   box-shadow:0 8px 40px rgba(0,0,0,.04);color:#0f172a;
   border:1px solid rgba(212,212,212,.35);
   text-align:center;animation:popIn .45s cubic-bezier(.22,1,.36,1) both
@@ -389,7 +389,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 }
 .track-card h1{font-size:1.45em;font-weight:500;letter-spacing:-.01em;margin:0 0 8px;line-height:1.2}
 .track-card .sub{color:#64748b;font-size:.92em;line-height:1.5;margin:0 0 20px}
-.track-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.track-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
 .track-btn{display:flex;flex-direction:column;align-items:center;gap:8px;border:1px solid rgba(212,212,212,.35);
   background:#fff;border-radius:18px;padding:22px 16px;text-align:center;cursor:pointer;color:#0f172a;
   font:inherit;transition:border-color .15s,box-shadow .15s,transform .15s}
@@ -1250,6 +1250,11 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
         <span class="track-emoji">🇩🇪</span>
         <span class="track-title">Deutsch A1–C1</span>
         <span class="track-sub">CEFR-Kurs + Berufsdeutsch · Wortschatz · Grammatik · Hören · Sprechen</span>
+      </button>
+      <button type="button" class="track-btn" id="trackFuehrerschein" onclick="pickTrack('fuehrerschein')">
+        <span class="track-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:34px;height:34px"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="4.93" y1="19.07" x2="9.88" y2="14.12"/><line x1="19.07" y1="19.07" x2="14.12" y2="14.12"/></svg></span>
+        <span class="track-title">Luyện thi Lái xe (Führerschein)</span>
+        <span class="track-sub">Bằng B &amp; B197 · Đề thi thử · Mẹo thi vàng · Song ngữ Đức – Việt</span>
       </button>
     </div>
     <div class="track-skip muted"><a onclick="pickTrack('fachkraft')">Direkt zu Fachkraft →</a></div>
@@ -7697,6 +7702,11 @@ function router(){
     return;
   }
 
+  if (hash.startsWith('#/fuehrerschein') || hash.startsWith('#/fuererschein')) {
+    location.href = './fuererschein/';
+    return;
+  }
+
   let r=ROUTES[hash];
   if(r && r.redirect){ location.hash=r.redirect; return; }
   r=r||ROUTES["#/"];
@@ -8629,6 +8639,9 @@ function pickTrack(which) {
   if (which === 'deutsch') {
     // Mở thẳng vào app Deutsch (subfolder) thay vì launcher hub
     location.href = './deutsch-a1-c1/';
+  } else if (which === 'fuehrerschein' || which === 'fuererschein') {
+    // Mở thẳng vào app Führerschein (subfolder)
+    location.href = './fuererschein/';
   } else {
     go('#/fach');
   }
@@ -8675,6 +8688,10 @@ function unlockApp(player){
   if (azubiTrack === 'deutsch') {
     // Nhớ track đã chọn → mở thẳng vào app Deutsch mỗi lần đăng nhập
     location.href = './deutsch-a1-c1/';
+    return;
+  }
+  if (azubiTrack === 'fuehrerschein' || azubiTrack === 'fuererschein') {
+    location.href = './fuererschein/';
     return;
   }
   showTrackGate();

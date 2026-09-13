@@ -8,7 +8,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
-const SKIP_DIRS = new Set(['.git', 'quellen', 'docs', 'node_modules', '_bfk_1_notes', 'breakdown-plan', 'test', 'api', 'wiko', '_ocr', 'dist']);
+const SKIP_DIRS = new Set(['.git', 'quellen', 'docs', 'node_modules', '_bfk_1_notes', 'breakdown-plan', 'test', 'api', 'wiko', '_ocr', 'dist', 'pages_html']);
 let errors = 0;
 
 function findPageDir(file) {
