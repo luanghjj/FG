@@ -20,7 +20,7 @@ function drawExamQuestions(questions) {
   return shuffle([...drawnG, ...drawnZ])
 }
 
-export default function ExamSimulation({ questions, showVn: globalShowVn, onComplete }) {
+export default function ExamSimulation({ questions, showVn: globalShowVn, onComplete, player }) {
   const [examState, setExamState] = useState('intro') // 'intro' | 'testing' | 'result'
   const [examQuestions, setExamQuestions] = useState([])
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -125,14 +125,25 @@ export default function ExamSimulation({ questions, showVn: globalShowVn, onComp
     }
   }, [examQuestions, userAnswers])
 
-  // Inform parent when exam is completed
+  // Inform parent when exam is completed & sync to LearnDB
   useEffect(() => {
-    if (examState === 'result' && resultData && onComplete) {
-      const resultsToSave = resultData.details.map(d => ({
-        id: d.question.id,
-        correct: d.isCorrect
-      }))
-      onComplete(resultsToSave)
+    if (examState === 'result' && resultData) {
+      if (onComplete) {
+        const resultsToSave = resultData.details.map(d => ({
+          id: d.question.id,
+          correct: d.isCorrect
+        }))
+        onComplete(resultsToSave)
+      }
+      if (window.LearnDB && player) {
+        window.LearnDB.saveQuizScore({
+          subject: 'fuehrerschein',
+          quiz: 'pruefungssimulation',
+          correct: resultData.correctCount,
+          total: resultData.totalQuestions,
+          player: player
+        }).catch(() => {})
+      }
     }
   }, [examState, resultData])
 

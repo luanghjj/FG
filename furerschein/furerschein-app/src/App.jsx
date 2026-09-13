@@ -7,7 +7,7 @@ import QuestionCard from './components/QuestionCard'
 import QuestionList from './components/QuestionList'
 import Dashboard from './components/Dashboard'
 import TipsGuide from './components/TipsGuide'
-import { BookOpen, GraduationCap, AlertTriangle, RotateCcw, Search, Car, Sparkles, Sun, Moon } from 'lucide-react'
+import { BookOpen, GraduationCap, AlertTriangle, RotateCcw, Search, Car, Sparkles, User } from 'lucide-react'
 
 const TABS = [
   { id: 'dashboard', label: 'Trang chủ', labelDe: 'Start', icon: Car },
@@ -19,23 +19,58 @@ const TABS = [
   { id: 'search', label: 'Tìm kiếm', labelDe: 'Suche', icon: Search },
 ]
 
-function loadProgress() {
+const PLAYER_KEY = 'learn_player_name'
+
+function getStoredPlayer() {
   try {
-    return JSON.parse(localStorage.getItem('fuhrerschein_progress') || '{}')
-  } catch { return {} }
+    return (localStorage.getItem(PLAYER_KEY) || '').trim()
+  } catch {
+    return ''
+  }
 }
 
-function saveProgress(progress) {
+function getProgressKey(player) {
+  const p = (player || '').trim().toLowerCase()
+  return p ? `fuhrerschein_progress_${p}` : 'fuhrerschein_progress'
+}
+
+function loadLocalProgress(player) {
   try {
-    localStorage.setItem('fuhrerschein_progress', JSON.stringify(progress))
+    const key = getProgressKey(player)
+    const data = localStorage.getItem(key)
+    if (data) return JSON.parse(data)
+    // Fallback: check legacy un-prefixed data
+    const legacy = localStorage.getItem('fuhrerschein_progress')
+    if (legacy) {
+      if (player) localStorage.setItem(key, legacy)
+      return JSON.parse(legacy)
+    }
+    return {}
+  } catch {
+    return {}
+  }
+}
+
+function saveLocalProgress(progress, player) {
+  try {
+    const key = getProgressKey(player)
+    localStorage.setItem(key, JSON.stringify(progress))
   } catch (e) {
     console.error('Failed to save progress:', e)
+  }
+  // Sync to Supabase LearnDB if available
+  if (typeof window !== 'undefined' && window.LearnDB && player) {
+    const p = player.trim().toLowerCase()
+    window.LearnDB.upsertConfig(`learn:fuehrerschein:progress:${p}`, progress).catch(() => {})
   }
 }
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('dashboard')
-  const [progress, setProgress] = useState(loadProgress)
+  const [player, setPlayer] = useState(getStoredPlayer)
+  const [progress, setProgress] = useState(() => loadLocalProgress(player))
+  const [isEditingPlayer, setIsEditingPlayer] = useState(false)
+  const [tempPlayerName, setTempPlayerName] = useState('')
   const [selectedTopic, setSelectedTopic] = useState(null)
   const [searchQuery, setSearchQuery] = useState('')
   const [showVn, setShowVn] = useState(true)
@@ -45,7 +80,58 @@ export default function App() {
     } catch { return false }
   })
 
-  useEffect(() => { saveProgress(progress) }, [progress])
+  // Dynamically load ../js/supabase.js for shared cloud storage
+  useEffect(() => {
+    if (typeof window !== 'undefined' && !window.LearnDB) {
+      const script = document.createElement('script')
+      script.src = new URL('../js/supabase.js', window.location.href).href
+      script.async = true
+      script.onload = () => {
+        if (player && window.LearnDB && window.LearnDB.getConfig) {
+          const p = player.trim().toLowerCase()
+          window.LearnDB.getConfig(`learn:fuehrerschein:progress:${p}`).then(res => {
+            if (res && res.value && typeof res.value === 'object') {
+              setProgress(prev => {
+                const localCount = Object.keys(prev.answered || {}).length
+                const remoteCount = Object.keys(res.value.answered || {}).length
+                if (remoteCount >= localCount) {
+                  saveLocalProgress(res.value, player)
+                  return res.value
+                }
+                return prev
+              })
+            }
+          }).catch(() => {})
+        }
+      }
+      document.head.appendChild(script)
+    }
+  }, [player])
+
+  // When player changes, load progress and try cloud sync
+  useEffect(() => {
+    const currentProg = loadLocalProgress(player)
+    setProgress(currentProg)
+
+    if (player && typeof window !== 'undefined' && window.LearnDB && window.LearnDB.getConfig) {
+      const p = player.trim().toLowerCase()
+      window.LearnDB.getConfig(`learn:fuehrerschein:progress:${p}`).then(res => {
+        if (res && res.value && typeof res.value === 'object') {
+          const remoteProg = res.value
+          const localAnswered = Object.keys(currentProg.answered || {}).length
+          const remoteAnswered = Object.keys(remoteProg.answered || {}).length
+          if (remoteAnswered >= localAnswered) {
+            saveLocalProgress(remoteProg, player)
+            setProgress(remoteProg)
+          }
+        }
+      }).catch(() => {})
+    }
+  }, [player])
+
+  useEffect(() => {
+    saveLocalProgress(progress, player)
+  }, [progress, player])
 
   useEffect(() => {
     if (darkMode) {
@@ -126,20 +212,29 @@ export default function App() {
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <button
+              onClick={() => { setTempPlayerName(player); setIsEditingPlayer(true) }}
+              className="px-2.5 py-1.5 rounded-xl text-xs font-semibold cursor-pointer bg-white/20 hover:bg-white/30 backdrop-blur-md transition-all active:scale-95 flex items-center gap-1.5 text-white max-w-[130px] sm:max-w-[180px] truncate"
+              title="Đổi Nickname người học (tiến độ lưu theo Nickname)"
+            >
+              <User className="w-3.5 h-3.5 shrink-0" />
+              <span className="truncate">{player || 'Đặt Nickname'}</span>
+            </button>
+
             <button
               onClick={() => setShowVn(!showVn)}
-              className="px-3 py-1.5 rounded-xl text-xs font-bold cursor-pointer bg-white/20 hover:bg-white/30 backdrop-blur-md transition-all active:scale-95 flex items-center gap-1.5"
+              className="px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold cursor-pointer bg-white/20 hover:bg-white/30 backdrop-blur-md transition-all active:scale-95 flex items-center gap-1"
               title="Bật/tắt hiển thị tiếng Việt để luyện phản xạ tiếng Đức"
             >
-              {showVn ? '🇻🇳 Đang hiện TV' : '🇩🇪 Chỉ tiếng Đức'}
+              {showVn ? '🇻🇳 TV' : '🇩🇪 DE'}
             </button>
             <a
               href="../"
               onClick={() => {
                 try { localStorage.setItem('azubi_track', 'fachkraft'); } catch (_) {}
               }}
-              className="px-3 py-1.5 rounded-xl text-xs font-bold cursor-pointer bg-white/20 hover:bg-white/30 backdrop-blur-md transition-all active:scale-95 flex items-center gap-1 text-white no-underline"
+              className="px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold cursor-pointer bg-white/20 hover:bg-white/30 backdrop-blur-md transition-all active:scale-95 flex items-center gap-1 text-white no-underline"
               title="Quay lại AzubiHub"
             >
               ← AzubiHub
@@ -219,6 +314,7 @@ export default function App() {
           <ExamSimulation
             questions={questionsData}
             showVn={showVn}
+            player={player}
             onComplete={(results) => {
               results.forEach(r => markAnswered(r.id, r.correct))
             }}
@@ -377,6 +473,63 @@ export default function App() {
           <p>Dữ liệu chuẩn hóa 1.127 câu hỏi thi chính thức • Tiêu chuẩn TÜV / DEKRA</p>
         </div>
       </footer>
+      {/* Nickname Editor Modal */}
+      {isEditingPlayer && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-3xl p-6 max-w-sm w-full shadow-2xl space-y-4">
+            <h3 className="text-base font-bold text-gray-900 flex items-center gap-2">
+              <User className="w-5 h-5 text-green-600" /> Nickname Người Học
+            </h3>
+            <p className="text-xs text-gray-500">
+              Nhập nickname để hệ thống lưu riêng tiến độ học, danh sách câu sai và điểm thi thử của bạn (đồng bộ cùng AzubiHub).
+            </p>
+            <input
+              type="text"
+              value={tempPlayerName}
+              onChange={(e) => setTempPlayerName(e.target.value)}
+              placeholder="Ví dụ: Linh, Nam, Trang..."
+              className="w-full px-4 py-2.5 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-green-600 text-sm bg-gray-50"
+              maxLength={32}
+              autoFocus
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  const clean = tempPlayerName.trim().slice(0, 32)
+                  setPlayer(clean)
+                  try {
+                    if (clean) localStorage.setItem(PLAYER_KEY, clean)
+                    else localStorage.removeItem(PLAYER_KEY)
+                  } catch (_) {}
+                  setIsEditingPlayer(false)
+                }
+              }}
+            />
+            <div className="flex gap-2 justify-end pt-2">
+              <button
+                type="button"
+                onClick={() => setIsEditingPlayer(false)}
+                className="px-4 py-2 rounded-xl text-xs font-bold text-gray-600 hover:bg-gray-100 cursor-pointer"
+              >
+                Hủy
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  const clean = tempPlayerName.trim().slice(0, 32)
+                  setPlayer(clean)
+                  try {
+                    if (clean) localStorage.setItem(PLAYER_KEY, clean)
+                    else localStorage.removeItem(PLAYER_KEY)
+                  } catch (_) {}
+                  setIsEditingPlayer(false)
+                }}
+                className="px-4 py-2 rounded-xl text-xs font-bold bg-green-600 hover:bg-green-700 text-white shadow-xs cursor-pointer"
+              >
+                Lưu Nickname
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
