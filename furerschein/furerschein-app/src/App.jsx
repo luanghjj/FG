@@ -7,7 +7,7 @@ import QuestionCard from './components/QuestionCard'
 import QuestionList from './components/QuestionList'
 import Dashboard from './components/Dashboard'
 import TipsGuide from './components/TipsGuide'
-import { BookOpen, GraduationCap, AlertTriangle, RotateCcw, Search, Car, Sparkles, User } from 'lucide-react'
+import { BookOpen, GraduationCap, AlertTriangle, RotateCcw, Search, Car, Sparkles, User, Image as ImageIcon, Star, Filter } from 'lucide-react'
 
 const TABS = [
   { id: 'dashboard', label: 'Trang chủ', labelDe: 'Start', icon: Car },
@@ -73,6 +73,7 @@ export default function App() {
   const [tempPlayerName, setTempPlayerName] = useState('')
   const [selectedTopic, setSelectedTopic] = useState(null)
   const [searchQuery, setSearchQuery] = useState('')
+  const [searchFilter, setSearchFilter] = useState('all') // 'all' | 'image' | 'points5' | 'wrong' | 'favorite'
   const [showVn, setShowVn] = useState(true)
   const [darkMode, setDarkMode] = useState(() => {
     try {
@@ -174,7 +175,7 @@ export default function App() {
     })
   }
 
-  const searchResults = searchQuery.trim().length >= 2
+  const baseQuestions = searchQuery.trim().length >= 2
     ? questionsData.filter(q => {
         const s = searchQuery.toLowerCase().trim()
         const deMatch = (q.question_de || '').toLowerCase().includes(s)
@@ -186,7 +187,15 @@ export default function App() {
         )
         return deMatch || vnMatch || codeMatch || optMatch
       })
-    : []
+    : (searchFilter !== 'all' ? questionsData : [])
+
+  const filteredSearchResults = baseQuestions.filter(q => {
+    if (searchFilter === 'image') return Boolean(q.image)
+    if (searchFilter === 'points5') return q.points === 5
+    if (searchFilter === 'wrong') return errorIds.includes(q.id)
+    if (searchFilter === 'favorite') return Boolean(progress.favorites?.[q.id])
+    return true
+  })
 
   const topicQuestions = selectedTopic
     ? questionsData.filter(q => q.category_full === selectedTopic)
@@ -196,48 +205,51 @@ export default function App() {
     <div className="min-h-screen bg-gray-50 flex flex-col transition-colors duration-200">
       {/* Header */}
       <header className="bg-gradient-to-r from-green-700 via-green-600 to-emerald-700 text-white shadow-lg sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-3 sm:px-4 py-2 sm:py-3 flex items-center justify-between gap-2">
           <div
             onClick={() => { setActiveTab('dashboard'); setSelectedTopic(null) }}
-            className="flex items-center gap-2.5 sm:gap-3 cursor-pointer select-none"
+            className="flex items-center gap-2 sm:gap-2.5 cursor-pointer select-none min-w-0"
           >
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center">
-              <Car className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center shrink-0">
+              <Car className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
             </div>
-            <div>
-              <h1 className="text-base sm:text-lg font-bold leading-tight flex items-center gap-1.5">
+            <div className="min-w-0">
+              <h1 className="text-sm sm:text-lg font-bold leading-tight truncate">
                 Führerschein Lernen
               </h1>
-              <p className="text-green-100 text-[11px] sm:text-xs">Học Lý Thuyết Lái Xe Đức 🇩🇪🇻🇳</p>
+              <p className="text-green-100 text-[10px] sm:text-xs truncate hidden sm:block">Học Lý Thuyết Lái Xe Đức</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-1.5 sm:gap-2">
+          <div className="flex items-center gap-1 sm:gap-2 shrink-0">
             <button
+              type="button"
               onClick={() => { setTempPlayerName(player); setIsEditingPlayer(true) }}
-              className="px-2.5 py-1.5 rounded-xl text-xs font-semibold cursor-pointer bg-white/20 hover:bg-white/30 backdrop-blur-md transition-all active:scale-95 flex items-center gap-1.5 text-white max-w-[130px] sm:max-w-[180px] truncate"
+              className="px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-semibold cursor-pointer bg-white/20 hover:bg-white/30 backdrop-blur-md transition-all active:scale-95 flex items-center gap-1 text-white max-w-[80px] sm:max-w-[150px] truncate"
               title="Đổi Nickname người học (tiến độ lưu theo Nickname)"
             >
-              <User className="w-3.5 h-3.5 shrink-0" />
-              <span className="truncate">{player || 'Đặt Nickname'}</span>
+              <User className="w-3 h-3 shrink-0" />
+              <span className="truncate">{player || 'Nickname'}</span>
             </button>
 
             <button
+              type="button"
               onClick={() => setShowVn(!showVn)}
-              className="px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold cursor-pointer bg-white/20 hover:bg-white/30 backdrop-blur-md transition-all active:scale-95 flex items-center gap-1"
-              title="Bật/tắt hiển thị tiếng Việt để luyện phản xạ tiếng Đức"
+              className="px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-bold cursor-pointer bg-white/20 hover:bg-white/30 backdrop-blur-md transition-all active:scale-95 flex items-center gap-0.5 text-white shrink-0"
+              title="Bật/tắt song ngữ tiếng Việt"
             >
-              {showVn ? '🇻🇳 TV' : '🇩🇪 DE'}
+              <span>{showVn ? 'TV' : 'DE'}</span>
             </button>
             <a
               href="../"
               onClick={() => {
                 try { localStorage.setItem('azubi_track', 'fachkraft'); } catch (_) {}
               }}
-              className="px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold cursor-pointer bg-white/20 hover:bg-white/30 backdrop-blur-md transition-all active:scale-95 flex items-center gap-1 text-white no-underline"
+              className="px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-bold cursor-pointer bg-white/20 hover:bg-white/30 backdrop-blur-md transition-all active:scale-95 flex items-center gap-0.5 text-white no-underline shrink-0"
               title="Quay lại AzubiHub"
             >
-              ← AzubiHub
+              <span className="hidden sm:inline">← AzubiHub</span>
+              <span className="sm:hidden">← Hub</span>
             </a>
           </div>
         </div>
@@ -361,7 +373,7 @@ export default function App() {
                   <Car className="w-8 h-8" />
                 </div>
                 <p className="text-lg font-bold text-gray-700">Chưa có câu sai nào!</p>
-                <p className="text-xs text-gray-400 mt-1">Sehr gut! Bạn đang làm rất tốt, hãy tiếp tục phát huy! 💪</p>
+                <p className="text-xs text-gray-400 mt-1">Sehr gut! Bạn đang làm rất tốt, hãy tiếp tục phát huy!</p>
               </div>
             ) : (
               <QuestionList
@@ -386,26 +398,123 @@ export default function App() {
               </p>
             </div>
 
+            {/* Search Input */}
             <div className="relative">
               <Search className="w-5 h-5 text-gray-400 absolute left-4 top-3.5" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
-                placeholder="Nhập ít nhất 2 ký tự để tìm kiếm..."
-                className="w-full pl-11 pr-4 py-3 rounded-2xl border-2 border-gray-200 focus:border-green-500 focus:outline-none text-base bg-white shadow-xs transition-all"
+                placeholder="Nhập từ khóa hoặc mã câu hỏi..."
+                className="w-full pl-11 pr-16 py-3 rounded-2xl border-2 border-gray-200 focus:border-green-500 focus:outline-none text-base bg-white shadow-xs transition-all"
               />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-3.5 top-3 text-xs font-bold bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-lg px-2.5 py-1 cursor-pointer transition-colors"
+                >
+                  Xóa
+                </button>
+              )}
             </div>
 
-            {searchQuery.trim().length >= 2 && (
-              <p className="text-xs text-gray-500 px-1">
-                Tìm thấy <strong>{searchResults.length}</strong> câu hỏi phù hợp với "{searchQuery}"
-              </p>
+            {/* Quick Filter Chips */}
+            <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1 scrollbar-none text-xs">
+              <span className="text-gray-400 font-semibold flex items-center gap-1 shrink-0">
+                <Filter className="w-3.5 h-3.5" /> Lọc nhanh:
+              </span>
+              <button
+                type="button"
+                onClick={() => setSearchFilter('all')}
+                className={`px-3 py-1.5 rounded-xl font-bold transition-all cursor-pointer shrink-0 ${
+                  searchFilter === 'all'
+                    ? 'bg-green-700 text-white shadow-xs'
+                    : 'bg-white border border-gray-200 text-gray-600 hover:border-gray-300'
+                }`}
+              >
+                Tất cả
+              </button>
+              <button
+                type="button"
+                onClick={() => setSearchFilter('image')}
+                className={`px-3 py-1.5 rounded-xl font-bold transition-all cursor-pointer flex items-center gap-1.5 shrink-0 ${
+                  searchFilter === 'image'
+                    ? 'bg-blue-600 text-white shadow-xs'
+                    : 'bg-white border border-gray-200 text-gray-600 hover:border-gray-300'
+                }`}
+              >
+                <ImageIcon className="w-3.5 h-3.5" />
+                <span>Có hình ảnh</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setSearchFilter('points5')}
+                className={`px-3 py-1.5 rounded-xl font-bold transition-all cursor-pointer flex items-center gap-1.5 shrink-0 ${
+                  searchFilter === 'points5'
+                    ? 'bg-red-600 text-white shadow-xs'
+                    : 'bg-white border border-gray-200 text-gray-600 hover:border-gray-300'
+                }`}
+              >
+                <AlertTriangle className="w-3.5 h-3.5" />
+                <span>Câu 5 điểm</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setSearchFilter('wrong')}
+                className={`px-3 py-1.5 rounded-xl font-bold transition-all cursor-pointer flex items-center gap-1.5 shrink-0 ${
+                  searchFilter === 'wrong'
+                    ? 'bg-orange-600 text-white shadow-xs'
+                    : 'bg-white border border-gray-200 text-gray-600 hover:border-gray-300'
+                }`}
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+                <span>Đã từng làm sai</span>
+                {errorIds.length > 0 && (
+                  <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
+                    searchFilter === 'wrong' ? 'bg-white/30 text-white' : 'bg-red-100 text-red-600'
+                  }`}>
+                    {errorIds.length}
+                  </span>
+                )}
+              </button>
+              <button
+                type="button"
+                onClick={() => setSearchFilter('favorite')}
+                className={`px-3 py-1.5 rounded-xl font-bold transition-all cursor-pointer flex items-center gap-1.5 shrink-0 ${
+                  searchFilter === 'favorite'
+                    ? 'bg-amber-500 text-white shadow-xs'
+                    : 'bg-white border border-gray-200 text-gray-600 hover:border-gray-300'
+                }`}
+              >
+                <Star className="w-3.5 h-3.5" />
+                <span>Đã gắn sao</span>
+              </button>
+            </div>
+
+            {/* Results count indicator */}
+            {(searchQuery.trim().length >= 2 || searchFilter !== 'all') && (
+              <div className="flex items-center justify-between text-xs text-gray-500 px-1">
+                <span>
+                  Tìm thấy <strong>{filteredSearchResults.length}</strong> câu hỏi phù hợp
+                  {searchFilter !== 'all' && ' (theo bộ lọc)'}
+                </span>
+                {(searchQuery || searchFilter !== 'all') && (
+                  <button
+                    type="button"
+                    onClick={() => { setSearchQuery(''); setSearchFilter('all') }}
+                    className="text-green-700 hover:underline cursor-pointer font-semibold"
+                  >
+                    Đặt lại bộ lọc
+                  </button>
+                )}
+              </div>
             )}
 
-            {searchQuery.trim().length >= 2 && searchResults.length > 0 && (
+            {/* Search list */}
+            {filteredSearchResults.length > 0 && (
               <QuestionList
-                questions={searchResults}
+                questions={filteredSearchResults}
                 showVn={showVn}
                 progress={progress}
                 markAnswered={markAnswered}
@@ -413,10 +522,36 @@ export default function App() {
               />
             )}
 
-            {searchQuery.trim().length >= 2 && searchResults.length === 0 && (
-              <div className="text-center py-16 bg-white rounded-3xl border border-gray-100 text-gray-400">
+            {/* No matches */}
+            {(searchQuery.trim().length >= 2 || searchFilter !== 'all') && filteredSearchResults.length === 0 && (
+              <div className="text-center py-16 bg-white rounded-3xl border border-gray-100 text-gray-400 shadow-xs">
                 <Search className="w-12 h-12 mx-auto mb-2 opacity-30" />
-                <p>Không tìm thấy câu hỏi nào phù hợp với "{searchQuery}"</p>
+                <p className="font-semibold text-gray-600">Không tìm thấy câu hỏi nào phù hợp</p>
+                <p className="text-xs text-gray-400 mt-1">Thử thay đổi từ khóa hoặc bấm "Đặt lại bộ lọc"</p>
+              </div>
+            )}
+
+            {/* Default guide when idle */}
+            {searchQuery.trim().length < 2 && searchFilter === 'all' && (
+              <div className="bg-white rounded-3xl border border-gray-100 p-6 shadow-xs space-y-4">
+                <div>
+                  <h3 className="text-sm font-bold text-gray-900 mb-1">Gợi ý từ khóa tra cứu nhanh:</h3>
+                  <p className="text-xs text-gray-500">
+                    Bấm vào các từ khóa phổ biến dưới đây để tra cứu nhanh các tình huống hay thi:
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {['Vorfahrt', 'Geschwindigkeit', 'Überholen', 'Alkohol', 'Bremsweg', 'Kreisverkehr', 'Autobahn', 'Halten und Parken', 'Reißverschlussverfahren', 'Stau'].map(tag => (
+                    <button
+                      key={tag}
+                      type="button"
+                      onClick={() => setSearchQuery(tag)}
+                      className="px-3 py-1.5 rounded-xl bg-gray-100 hover:bg-green-50 hover:text-green-700 text-gray-700 text-xs font-semibold transition-colors cursor-pointer"
+                    >
+                      {tag}
+                    </button>
+                  ))}
+                </div>
               </div>
             )}
           </div>

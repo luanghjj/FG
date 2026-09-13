@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react'
-import { Timer, CheckCircle2, XCircle, AlertTriangle, ChevronLeft, ChevronRight, RotateCcw, Award, ZoomIn, Eye, EyeOff, Check, X, Lightbulb, Sparkles } from 'lucide-react'
+import { Timer, CheckCircle2, XCircle, AlertTriangle, ChevronLeft, ChevronRight, RotateCcw, Award, ZoomIn, Eye, EyeOff, Check, X, Lightbulb, Sparkles, Flag } from 'lucide-react'
 import { getQuestionExplanation } from '../utils/explanations'
 
 function drawExamQuestions(questions) {
@@ -30,6 +30,8 @@ export default function ExamSimulation({ questions, showVn: globalShowVn, onComp
   const [showVn, setShowVn] = useState(globalShowVn)
   const [reviewFilter, setReviewFilter] = useState('all') // 'all' | 'wrong' | 'correct'
 
+  const [markedQuestions, setMarkedQuestions] = useState(new Set())
+
   // Timer countdown during testing
   useEffect(() => {
     if (examState !== 'testing') return
@@ -51,6 +53,7 @@ export default function ExamSimulation({ questions, showVn: globalShowVn, onComp
     const drawn = drawExamQuestions(questions)
     setExamQuestions(drawn)
     setUserAnswers({})
+    setMarkedQuestions(new Set())
     setCurrentIndex(0)
     setTimeLeft(45 * 60)
     setExamState('testing')
@@ -68,10 +71,34 @@ export default function ExamSimulation({ questions, showVn: globalShowVn, onComp
     })
   }
 
+  const handleToggleMark = (qId) => {
+    setMarkedQuestions(prev => {
+      const next = new Set(prev)
+      if (next.has(qId)) {
+        next.delete(qId)
+      } else {
+        next.add(qId)
+      }
+      return next
+    })
+  }
+
   const handleSubmitExam = (force = false) => {
     if (!force) {
       const answeredCount = Object.keys(userAnswers).filter(k => userAnswers[k]?.size > 0).length
-      if (answeredCount < examQuestions.length) {
+      const markedCount = markedQuestions.size
+
+      if (markedCount > 0 && answeredCount < examQuestions.length) {
+        const confirmSubmit = window.confirm(
+          `Bạn còn ${markedCount} câu đang đánh dấu xem lại và mới làm ${answeredCount}/${examQuestions.length} câu. Bạn có chắc chắn muốn nộp bài ngay?`
+        )
+        if (!confirmSubmit) return
+      } else if (markedCount > 0) {
+        const confirmSubmit = window.confirm(
+          `Bạn có ${markedCount} câu đang đánh dấu xem lại (Markieren). Bạn có chắc chắn muốn nộp bài luôn không?`
+        )
+        if (!confirmSubmit) return
+      } else if (answeredCount < examQuestions.length) {
         const confirmSubmit = window.confirm(
           `Bạn mới làm ${answeredCount}/${examQuestions.length} câu hỏi. Bạn có chắc chắn muốn nộp bài ngay không?`
         )
@@ -244,31 +271,89 @@ export default function ExamSimulation({ questions, showVn: globalShowVn, onComp
         </div>
 
         {/* Question Bubble Map */}
-        <div className="bg-white p-3 rounded-2xl border border-gray-100 shadow-sm flex flex-wrap gap-1.5 justify-center">
-          {examQuestions.map((eq, idx) => {
-            const hasAnswer = (userAnswers[eq.id] || new Set()).size > 0
-            const isCurrent = idx === currentIndex
-            return (
-              <button
-                key={eq.id}
-                onClick={() => setCurrentIndex(idx)}
-                className={`w-8 h-8 rounded-lg text-xs font-bold transition-all cursor-pointer ${isCurrent ? 'ring-2 ring-blue-600 bg-blue-600 text-white' : hasAnswer ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'}`}
-              >
-                {idx + 1}
-              </button>
-            )
-          })}
+        <div className="bg-white p-3 rounded-2xl border border-gray-100 shadow-sm space-y-2.5">
+          <div className="flex flex-wrap gap-1.5 justify-center">
+            {examQuestions.map((eq, idx) => {
+              const hasAnswer = (userAnswers[eq.id] || new Set()).size > 0
+              const isCurrent = idx === currentIndex
+              const isMarked = markedQuestions.has(eq.id)
+              return (
+                <button
+                  key={eq.id}
+                  type="button"
+                  onClick={() => setCurrentIndex(idx)}
+                  className={`relative w-8 h-8 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    isCurrent
+                      ? 'ring-2 ring-blue-600 bg-blue-600 text-white shadow-xs'
+                      : hasAnswer
+                      ? 'bg-blue-100 text-blue-800 hover:bg-blue-200'
+                      : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+                  } ${isMarked ? 'ring-2 ring-amber-500 font-extrabold' : ''}`}
+                  title={`Câu ${idx + 1}${isMarked ? ' (Đã đánh dấu xem lại)' : ''}`}
+                >
+                  {idx + 1}
+                  {isMarked && (
+                    <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-amber-500 ring-1 ring-white" />
+                  )}
+                </button>
+              )
+            })}
+          </div>
+
+          {markedQuestions.size > 0 && (
+            <div className="pt-2 border-t border-gray-100 flex flex-wrap items-center justify-between gap-1.5 text-xs text-amber-900 bg-amber-50/80 px-3 py-2 rounded-xl">
+              <span className="flex items-center gap-1.5 font-semibold">
+                <Flag className="w-3.5 h-3.5 text-amber-600 fill-amber-600" />
+                <span>{markedQuestions.size} câu cần xem lại:</span>
+              </span>
+              <div className="flex flex-wrap gap-1">
+                {examQuestions.map((eq, idx) => {
+                  if (!markedQuestions.has(eq.id)) return null
+                  return (
+                    <button
+                      key={eq.id}
+                      type="button"
+                      onClick={() => setCurrentIndex(idx)}
+                      className={`px-2 py-0.5 rounded-md text-[11px] font-bold cursor-pointer transition-colors ${
+                        idx === currentIndex
+                          ? 'bg-amber-600 text-white shadow-xs'
+                          : 'bg-amber-200/90 text-amber-900 hover:bg-amber-300'
+                      }`}
+                    >
+                      Câu {idx + 1}
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Active Question Box */}
         {q && (
           <div className="bg-white rounded-3xl border border-gray-100 shadow-md overflow-hidden">
             {/* Header info */}
-            <div className="px-5 py-3 bg-gray-50 border-b flex items-center justify-between text-xs">
-              <span className="font-mono text-gray-500">Mã: {q.code}</span>
-              <span className={`font-bold px-2 py-0.5 rounded-full text-white ${q.points === 5 ? 'bg-red-600' : q.points === 4 ? 'bg-orange-500' : 'bg-blue-600'}`}>
-                {q.points} Punkte
-              </span>
+            <div className="px-4 sm:px-5 py-3 bg-gray-50 border-b flex items-center justify-between gap-2 text-xs">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="font-mono text-gray-500">Mã: {q.code}</span>
+                <span className={`font-bold px-2 py-0.5 rounded-full text-white ${q.points === 5 ? 'bg-red-600' : q.points === 4 ? 'bg-orange-500' : 'bg-blue-600'}`}>
+                  {q.points} Punkte
+                </span>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => handleToggleMark(q.id)}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold cursor-pointer transition-all active:scale-95 text-xs ${
+                  markedQuestions.has(q.id)
+                    ? 'bg-amber-500 text-white shadow-xs hover:bg-amber-600'
+                    : 'bg-white border border-gray-200 text-gray-700 hover:border-amber-400 hover:text-amber-700'
+                }`}
+                title="Đánh dấu câu này để xem lại trước khi nộp bài (TÜV Markieren)"
+              >
+                <Flag className={`w-3.5 h-3.5 ${markedQuestions.has(q.id) ? 'fill-white' : 'text-gray-500'}`} />
+                <span>{markedQuestions.has(q.id) ? 'Đã đánh dấu xem lại' : 'Đánh dấu xem lại'}</span>
+              </button>
             </div>
 
             {/* Image if any */}
