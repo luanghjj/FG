@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Star, Check, X, Eye, EyeOff, ZoomIn, Info, CheckCircle2, XCircle, Lightbulb, Sparkles, ChevronDown, ChevronUp, Volume2, VolumeX } from 'lucide-react'
+import { Star, Check, X, Eye, EyeOff, ZoomIn, Info, CheckCircle2, XCircle, Lightbulb, Sparkles, ChevronDown, ChevronUp, Volume2, VolumeX, AlertTriangle } from 'lucide-react'
 import { getQuestionExplanation } from '../utils/explanations'
 import { speakGerman, stopSpeech } from '../utils/speech'
 
@@ -285,23 +285,79 @@ export default function QuestionCard({ question, showVn, onAnswer, isFavorite, o
       {/* Explanation Section */}
       {explanation && (submitted || showExplanation) && (
         <div className="px-5 pb-3">
-          <div className="p-4 rounded-2xl bg-amber-50/90 border border-amber-200 text-gray-800 space-y-2">
-            <div className="flex items-center justify-between flex-wrap gap-1">
+          <div className="p-4 rounded-2xl bg-amber-50/90 border border-amber-200 text-gray-800 space-y-3">
+            <div className="flex items-center justify-between flex-wrap gap-1.5">
               <div className="flex items-center gap-1.5 text-amber-950 font-bold text-xs sm:text-sm">
                 <Lightbulb className="w-4 h-4 text-amber-600 shrink-0" />
                 <span>Giải thích: Tại sao đáp án này đúng? (Erklärung)</span>
               </div>
-              <span className="text-[11px] font-semibold text-amber-800 bg-amber-100/90 px-2 py-0.5 rounded-md border border-amber-200">
-                {explanation.ruleName}
-              </span>
+              <div className="flex items-center gap-1.5 flex-wrap">
+                {explanation.isCrucial && (
+                  <span className="text-[11px] font-extrabold text-red-700 bg-red-100 px-2 py-0.5 rounded-md border border-red-200 flex items-center gap-1">
+                    <AlertTriangle className="w-3 h-3 text-red-600" />
+                    <span>Câu 5 Điểm (Điểm Liệt)</span>
+                  </span>
+                )}
+                <span className="text-[11px] font-semibold text-amber-800 bg-amber-100/90 px-2 py-0.5 rounded-md border border-amber-200">
+                  {explanation.ruleName}
+                </span>
+              </div>
             </div>
 
-            <p className="text-xs sm:text-sm text-gray-700 leading-relaxed">
+            {/* Context Content */}
+            <p className="text-xs sm:text-sm text-gray-800 leading-relaxed font-medium">
               {explanation.content}
             </p>
 
+            {/* Formula Calculation Box */}
+            {explanation.formulaCalculation && (
+              <div className="p-3 bg-white/90 border border-amber-300 rounded-xl font-mono text-xs text-amber-950 space-y-1">
+                <p className="font-bold font-sans text-amber-900 text-[11px]">Công thức tính toán từng bước (Faustformel):</p>
+                <p className="whitespace-pre-line leading-relaxed">{explanation.formulaCalculation}</p>
+              </div>
+            )}
+
+            {/* Breakdown of correct options */}
+            {explanation.correctBreakdown && explanation.correctBreakdown.length > 0 && (
+              <div className="space-y-1.5 pt-1">
+                <p className="text-xs font-bold text-green-900">Vì sao phương án đúng được chọn?</p>
+                <div className="space-y-1">
+                  {explanation.correctBreakdown.map((item, idx) => (
+                    <div key={idx} className="text-xs text-gray-700 bg-white/80 p-2 rounded-xl border border-green-200 flex items-start gap-1.5">
+                      <Check className="w-3.5 h-3.5 text-green-600 shrink-0 mt-0.5" />
+                      <div>
+                        <span className="font-semibold text-gray-900">{item.de}</span>
+                        {item.vn && <span className="text-gray-500"> ({item.vn})</span>}
+                        {item.reason && <p className="text-green-800 mt-0.5 font-medium">{item.reason}</p>}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Breakdown of trap / wrong options */}
+            {explanation.trapBreakdown && explanation.trapBreakdown.length > 0 && (
+              <div className="space-y-1.5 pt-1">
+                <p className="text-xs font-bold text-red-900">Bẫy cần tránh ở các phương án sai:</p>
+                <div className="space-y-1">
+                  {explanation.trapBreakdown.map((item, idx) => (
+                    <div key={idx} className="text-xs text-gray-700 bg-white/80 p-2 rounded-xl border border-red-200 flex items-start gap-1.5">
+                      <X className="w-3.5 h-3.5 text-red-500 shrink-0 mt-0.5" />
+                      <div>
+                        <span className="font-medium text-gray-700 line-through">{item.de}</span>
+                        {item.vn && <span className="text-gray-500"> ({item.vn})</span>}
+                        {item.trap && <p className="text-red-700 mt-0.5">{item.trap}</p>}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Key takeaway */}
             {explanation.keyTakeaway && (
-              <div className="pt-2 border-t border-amber-200/80 flex items-start gap-1.5 text-xs text-amber-950 font-semibold">
+              <div className="pt-2 border-t border-amber-200/80 flex items-start gap-1.5 text-xs text-amber-950 font-bold">
                 <Sparkles className="w-3.5 h-3.5 text-amber-600 shrink-0 mt-0.5" />
                 <span>Mẹo cốt lõi: {explanation.keyTakeaway}</span>
               </div>
@@ -313,9 +369,12 @@ export default function QuestionCard({ question, showVn, onAnswer, isFavorite, o
       {/* Numerical question info */}
       {q.is_numerical && (
         <div className="px-5 pb-3">
-          <p className="text-sm text-orange-700 bg-orange-50 border border-orange-200 px-4 py-3 rounded-2xl">
-            💡 <strong>Câu hỏi tự điền số (Zahlenfrage):</strong> Hãy tự tính toán và nhập con số cụ thể vào ô khi thi thật.
-          </p>
+          <div className="text-sm text-orange-800 bg-orange-50 border border-orange-200 px-4 py-3 rounded-2xl flex items-center gap-2">
+            <Info className="w-4 h-4 text-orange-600 shrink-0" />
+            <div>
+              <strong>Câu hỏi tự điền số (Zahlenfrage):</strong> Hãy tự tính toán và nhập con số cụ thể vào ô khi thi thật.
+            </div>
+          </div>
         </div>
       )}
 
