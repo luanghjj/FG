@@ -278,9 +278,13 @@ h1, h2, h3, h4, .hero h1, .exam-txt h2, .section-head h2, .card h2, .login-card 
   color: var(--accent) !important;
 }
 
-/* Login Gate & Track Gate background */
-#loginGate, #trackGate {
+/* Login Gate & Track Gate */
+#loginGate {
   background: var(--bg) !important;
+}
+#trackGate {
+  background: rgba(27, 31, 42, 0.65) !important;
+  backdrop-filter: blur(5px) !important;
 }
 .login-card input[type=password], .login-card input[type=text] {
   color: var(--ink) !important;
@@ -410,4 +414,18 @@ input:focus, select:focus, textarea:focus, .search input:focus, .fill-input:focu
 /* Remove awkward gradients */
 .eq-cta-card, .streak-card {
   background: var(--accent-soft) !important;
+}
+
+
+/* Ensure lesson items have distinct card styling and borders */
+.theme-item {
+  background: var(--surface) !important;
+  border: 1.5px solid var(--line) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: 0 1px 3px rgba(27, 31, 42, 0.06) !important;
+  margin-bottom: 8px !important;
+}
+.theme-item:hover {
+  border-color: var(--accent) !important;
+  box-shadow: 0 3px 10px rgba(27, 31, 42, 0.1) !important;
 }

@@ -1203,11 +1203,11 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 }
 
 </style>
-<script src="./pwa.js?v=5" defer></script>
+<script src="./pwa.js?v=6" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./css/statute-theme.css?v=8">
+<link rel="stylesheet" href="./css/statute-theme.css?v=9">
 </head>
 <body>
 <div id="offlineBanner" role="status"><span>⚡ Offline-Modus — Lektionen &amp; Prüfungen bleiben verfügbar!</span></div>
@@ -1239,8 +1239,9 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 </div>
 
 <!-- ===== TRACK GATE (Lernbereich wählen) ===== -->
-<div id="trackGate" class="gate hidden">
-  <div class="track-card">
+<div id="trackGate" class="gate hidden" onclick="if(event.target===this) hideTrackGate()">
+  <div class="track-card" style="position:relative">
+    <button type="button" class="sheet-x" onclick="hideTrackGate()" aria-label="Schließen" style="position:absolute;top:16px;right:16px;cursor:pointer">✕</button>
     <div class="track-logo">🗂️</div>
     <h1>Wähle deinen Lernbereich</h1>
     <div class="sub">Wähle deinen Lernweg</div>
@@ -8723,7 +8724,6 @@ function unlockApp(player){
   var azubiTrack = '';
   try { azubiTrack = localStorage.getItem('azubi_track') || ''; } catch (_) {}
   if (azubiTrack === 'deutsch') {
-    // Nhớ track đã chọn → mở thẳng vào app Deutsch mỗi lần đăng nhập
     location.href = './deutsch-a1-c1/';
     return;
   }
@@ -8731,7 +8731,10 @@ function unlockApp(player){
     location.href = './fuererschein/';
     return;
   }
-  showTrackGate();
+  // Mặc định track là fachkraft, không tự động bật popup làm phiền người dùng
+  if (!azubiTrack) {
+    try { localStorage.setItem('azubi_track', 'fachkraft'); } catch (_) {}
+  }
   const t=(window.Access&&Access.tier)?Access.tier():'free';
   const lbl=(window.Access&&Access.tierLabel)?Access.tierLabel(t):'Basic';
   toast('Willkommen, '+player+'! ('+lbl+')','ok');
