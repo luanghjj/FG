@@ -12,7 +12,7 @@
   --surface: #FBF8EF;
   --ink: #1B1F2A;
   --muted: #48586B;
-  --line: #D8CFB8;
+  --line: #B8A88A;
   --accent: #7A2E2E;
   --accent-soft: #F3E6DF;
   --accent-2: #9C7A3C;
@@ -22,7 +22,7 @@
   --okbg: #eef3ea;
   --bad: #7A2E2E;
   --badbg: #F7E9DF;
-  --shadow: 0 1px 2px rgba(27,31,42,.05), 0 6px 18px rgba(27,31,42,.07);
+  --shadow: 0 2px 8px rgba(27,31,42,.12), 0 1px 3px rgba(27,31,42,.08);
   --radius: 10px;
   --radius-sm: 8px;
 }
@@ -32,7 +32,7 @@
   --surface: #FBF8EF;
   --ink: #1B1F2A;
   --muted: #48586B;
-  --line: #D8CFB8;
+  --line: #B8A88A;
   --accent: #7A2E2E;
   --accent-soft: #F3E6DF;
   --accent-2: #9C7A3C;
@@ -49,7 +49,7 @@
   :root:not([data-theme="light"]) {
     --bg: #1A1916;
     --surface: #26231E;
-    --line: #3E382F;
+    --line: #5A5040;
     --ink: #EAE3D0;
     --muted: #A39B88;
     --accent: #B85042;
@@ -68,7 +68,7 @@
 :root[data-theme="dark"] {
   --bg: #1A1916;
   --surface: #26231E;
-  --line: #3E382F;
+  --line: #5A5040;
   --ink: #EAE3D0;
   --muted: #A39B88;
   --accent: #B85042;
@@ -159,7 +159,7 @@ h1, h2, h3, h4, .hero h1, .exam-txt h2, .section-head h2, .card h2, .login-card 
 .btn.ghost {
   background: transparent !important;
   color: var(--ink) !important;
-  border: 1px solid var(--line) !important;
+  border: 1.5px solid var(--line) !important;
 }
 
 .btn.ghost:hover {
@@ -172,7 +172,7 @@ h1, h2, h3, h4, .hero h1, .exam-txt h2, .section-head h2, .card h2, .login-card 
 .tile, .card, .opt, details, .today-card, .progress-card, .subject-card, .ka-card,
 .theme-item, .next-exam-chip, .detail-box, .track-btn, .search-toggle {
   background: var(--surface) !important;
-  border: 1px solid var(--line) !important;
+  border: 1.5px solid var(--line) !important;
   border-radius: var(--radius) !important;
   color: var(--ink) !important;
 }
@@ -181,7 +181,7 @@ h1, h2, h3, h4, .hero h1, .exam-txt h2, .section-head h2, .card h2, .login-card 
 .exam-banner {
   background: var(--surface) !important;
   color: var(--ink) !important;
-  border: 1px solid var(--line) !important;
+  border: 1.5px solid var(--line) !important;
   border-left: 6px solid var(--accent-2) !important;
   border-radius: var(--radius) !important;
   box-shadow: var(--shadow) !important;
@@ -215,7 +215,7 @@ h1, h2, h3, h4, .hero h1, .exam-txt h2, .section-head h2, .card h2, .login-card 
 .exam-banner .exam-go {
   background: var(--accent-soft) !important;
   color: var(--accent) !important;
-  border: 1px solid var(--line) !important;
+  border: 1.5px solid var(--line) !important;
 }
 .exam-banner:hover {
   border-color: var(--accent-2) !important;
@@ -227,7 +227,7 @@ h1, h2, h3, h4, .hero h1, .exam-txt h2, .section-head h2, .card h2, .login-card 
 .exam-detail-banner {
   background: var(--surface) !important;
   color: var(--ink) !important;
-  border: 1px solid var(--line) !important;
+  border: 1.5px solid var(--line) !important;
   border-left: 6px solid var(--accent) !important;
   border-radius: var(--radius) !important;
 }
@@ -245,7 +245,7 @@ h1, h2, h3, h4, .hero h1, .exam-txt h2, .section-head h2, .card h2, .login-card 
 .sheet-card, .login-card, .track-card, #searchSheet .sheet, #fachSheet .fs-card {
   background: var(--surface) !important;
   color: var(--ink) !important;
-  border: 1px solid var(--line) !important;
+  border: 1.5px solid var(--line) !important;
   border-radius: 16px !important;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
 }
@@ -268,7 +268,7 @@ h1, h2, h3, h4, .hero h1, .exam-txt h2, .section-head h2, .card h2, .login-card 
 .sheet-card .btn.ghost {
   background: transparent !important;
   color: var(--ink) !important;
-  border: 1px solid var(--line) !important;
+  border: 1.5px solid var(--line) !important;
   border-radius: 8px !important;
   font-weight: 500 !important;
 }
@@ -290,7 +290,7 @@ h1, h2, h3, h4, .hero h1, .exam-txt h2, .section-head h2, .card h2, .login-card 
 /* Bottom Navigation */
 .bottom-nav {
   background: var(--surface) !important;
-  border: 1px solid var(--line) !important;
+  border: 1.5px solid var(--line) !important;
   box-shadow: var(--shadow) !important;
 }
 .bottom-nav .nav-center {
@@ -325,7 +325,7 @@ h1, h2, h3, h4, .hero h1, .exam-txt h2, .section-head h2, .card h2, .login-card 
 .flash-face.front {
   background: var(--surface) !important;
   color: var(--ink) !important;
-  border: 1px solid var(--line) !important;
+  border: 1.5px solid var(--line) !important;
 }
 .flash-face.back {
   background: var(--okbg) !important;
@@ -360,7 +360,7 @@ th {
 }
 
 th, td {
-  border: 1px solid var(--line) !important;
+  border: 1.5px solid var(--line) !important;
 }
 tr:nth-child(even) td {
   background: rgba(0, 0, 0, 0.02) !important;
