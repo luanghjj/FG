@@ -1,5 +1,5 @@
 /* AzubiHub · Statute theme — giao diện "Gesetzbuch zum Lernen" (parchment · wax · brass · slate)
-   Đồng bộ toàn bộ màu sắc, font chữ, modal, banner theo chuẩn cổ điển cao cấp */
+   Đồng bộ toàn diện toàn bộ màu sắc, font chữ, modal, banner, thẻ, điều hướng theo chuẩn cổ điển cao cấp */
 
 :root {
   --font-serif: "Source Serif 4", Georgia, serif;
@@ -136,7 +136,7 @@ h1, h2, h3, h4, .hero h1, .exam-txt h2, .section-head h2, .card h2, .login-card 
   font-family: var(--font-mono) !important;
 }
 
-/* Nav */
+/* Top Nav */
 .nav {
   background: var(--bg) !important;
   border-bottom: 3px double var(--accent-2) !important;
@@ -168,8 +168,9 @@ h1, h2, h3, h4, .hero h1, .exam-txt h2, .section-head h2, .card h2, .login-card 
   color: var(--accent) !important;
 }
 
-/* Tiles & Cards */
-.tile, .card, .opt, details {
+/* Tiles, Cards, Containers across all pages */
+.tile, .card, .opt, details, .today-card, .progress-card, .subject-card, .ka-card,
+.theme-item, .next-exam-chip, .detail-box, .track-btn, .search-toggle {
   background: var(--surface) !important;
   border: 1px solid var(--line) !important;
   border-radius: var(--radius) !important;
@@ -241,25 +242,26 @@ h1, h2, h3, h4, .hero h1, .exam-txt h2, .section-head h2, .card h2, .login-card 
 .sheet {
   background: rgba(27, 31, 42, 0.6) !important;
 }
-.sheet-card, .login-card, .track-card {
+.sheet-card, .login-card, .track-card, #searchSheet .sheet, #fachSheet .fs-card {
   background: var(--surface) !important;
   color: var(--ink) !important;
   border: 1px solid var(--line) !important;
   border-radius: 16px !important;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
 }
-.sheet-head b {
+.sheet-head b, .login-card h1, .track-card h1, .track-title, .login-hist h3, .login-hist .hrow b {
   color: var(--ink) !important;
   font-size: 1.15em !important;
 }
-.sheet-card p.muted, .sheet-card .muted, .sheet-card label {
+.sheet-card p.muted, .sheet-card .muted, .sheet-card label,
+.track-card .sub, .track-sub, .login-hist, .login-hist .hrow, .login-admin a, .login-skip {
   color: var(--muted) !important;
 }
-.sheet-x {
+.sheet-x, #fachSheet .fs-close, #searchSheet .sheet-close {
   background: var(--accent-soft) !important;
   color: var(--accent) !important;
 }
-.sheet-x:hover {
+.sheet-x:hover, #fachSheet .fs-close:hover, #searchSheet .sheet-close:hover {
   background: var(--accent) !important;
   color: #fff !important;
 }
@@ -276,6 +278,34 @@ h1, h2, h3, h4, .hero h1, .exam-txt h2, .section-head h2, .card h2, .login-card 
   color: var(--accent) !important;
 }
 
+/* Login Gate & Track Gate background */
+#loginGate, #trackGate {
+  background: var(--bg) !important;
+}
+.login-card input[type=password], .login-card input[type=text] {
+  color: var(--ink) !important;
+  border-bottom: 1px solid var(--line) !important;
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+  background: var(--surface) !important;
+  border: 1px solid var(--line) !important;
+  box-shadow: var(--shadow) !important;
+}
+.bottom-nav .nav-center {
+  border-color: var(--surface) !important;
+  background: var(--accent) !important;
+  color: #fff !important;
+}
+.bottom-nav button {
+  color: var(--muted) !important;
+}
+.bottom-nav button.active {
+  color: var(--accent) !important;
+  background: var(--accent-soft) !important;
+}
+
 /* Tier Badges */
 .tier-badge.t-paid {
   background: var(--okbg) !important;
@@ -289,6 +319,21 @@ h1, h2, h3, h4, .hero h1, .exam-txt h2, .section-head h2, .card h2, .login-card 
 .tier-badge.t-super {
   background: #fbf0df !important;
   color: #9C7A3C !important;
+}
+
+/* Flashcards */
+.flash-face.front {
+  background: var(--surface) !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--line) !important;
+}
+.flash-face.back {
+  background: var(--okbg) !important;
+  color: var(--ok) !important;
+  border: 1px solid rgba(63, 92, 57, 0.3) !important;
+}
+.flash-vi {
+  color: var(--ok) !important;
 }
 
 /* Tables */
