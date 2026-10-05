@@ -90,3 +90,74 @@ html body .formula,html body code,html body pre,html body .kbd{font-family:var(-
 
 /* Không dùng gradient — màu phẳng */
 .eq-cta-card,.streak-card{background:var(--accent-soft)}
+
+/* Mute hover and focus effects */
+input:focus, select:focus, textarea:focus, .search input:focus, .fill-input:focus, .pw-code input:focus, .dt-ex-in:focus {
+  outline: none !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px rgba(122, 46, 46, 0.15) !important;
+}
+
+/* Make quiz colors more muted/parchment friendly */
+:root:not([data-theme="dark"]) {
+  --ok: #3f5c39;
+  --okbg: #eef3ea;
+  --bad: #7A2E2E;
+  --badbg: #F7E9DF;
+}
+
+/* Fix h1 size on mobile */
+@media (max-width: 640px) {
+  html body h1, html body .hero h1, html body .login-card h1, html body .track-card h1 {
+    font-size: clamp(1.4rem, 6vw, 1.8rem) !important;
+  }
+}
+
+/* Dark Academia theme for Dark Mode */
+:root[data-theme="dark"],
+:root:not([data-theme="light"]) @media (prefers-color-scheme: dark) {
+  --bg: #1A1916 !important;
+  --surface: #2A2720 !important;
+  --line: #3A3630 !important;
+  --ink: #EAE3D0 !important;
+  --muted: #A39B88 !important;
+  --accent: #C9877A !important;
+  --accent-soft: #3A2623 !important;
+  --accent-2: #D2B26E !important;
+  --ok: #627F5A !important;
+  --okbg: #1A2715 !important;
+  --bad: #C9877A !important;
+  --badbg: #3A2623 !important;
+}
+
+:root[data-theme="dark"] body,
+:root:not([data-theme="light"]) @media (prefers-color-scheme: dark) body {
+  background-color: var(--bg) !important;
+  background-image: none !important;
+}
+
+:root[data-theme="dark"] .tile, :root[data-theme="dark"] .card, :root[data-theme="dark"] .opt, :root[data-theme="dark"] details,
+:root:not([data-theme="light"]) @media (prefers-color-scheme: dark) .tile,
+:root:not([data-theme="light"]) @media (prefers-color-scheme: dark) .card,
+:root:not([data-theme="light"]) @media (prefers-color-scheme: dark) .opt,
+:root:not([data-theme="light"]) @media (prefers-color-scheme: dark) details {
+  background-color: var(--surface) !important;
+  border-color: var(--line) !important;
+}
+
+:root[data-theme="dark"] .nav,
+:root:not([data-theme="light"]) @media (prefers-color-scheme: dark) .nav {
+  background: rgba(26, 25, 22, 0.94) !important;
+  border-bottom: 3px double var(--accent-2) !important;
+}
+
+:root[data-theme="dark"] th,
+:root:not([data-theme="light"]) @media (prefers-color-scheme: dark) th {
+  background: #11110F !important;
+  color: #D2B26E !important;
+}
+
+:root[data-theme="dark"] tr:nth-child(even) td,
+:root:not([data-theme="light"]) @media (prefers-color-scheme: dark) tr:nth-child(even) td {
+  background: #201D18 !important;
+}
