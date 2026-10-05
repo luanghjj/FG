@@ -1284,7 +1284,7 @@ function aiSetBase() {
     '.cbx-room-item.cbx-active{background:var(--cbx-soft)}' +
     '.cbx-avatar{width:40px;height:40px;border-radius:12px;background:var(--cbx-accent);color:#fff;flex:none;' +
     'display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:700}' +
-    '.cbx-avatar-ai{background:linear-gradient(135deg,#AF52DE,#007AFF)}' +
+    '.cbx-avatar-ai{background:#7A2E2E}' +
     '.cbx-avatar-sm{width:30px;height:30px;border-radius:9px;font-size:14px}' +
     '.cbx-room-name{flex:1;font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}' +
     '.cbx-room-meta{font-size:11px;color:var(--cbx-muted);flex:none}' +

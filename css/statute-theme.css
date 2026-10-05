@@ -1,0 +1,92 @@
+/* AzubiHub · Statute theme — giao diện "Gesetzbuch zum Lernen" (parchment · wax · brass · slate)
+   Chỉ đổi màu/kiểu chữ/bo góc; không đổi layout. Fonts: Fraunces · Source Serif 4 · IBM Plex Sans/Mono */
+:root{
+  --font-serif:"Source Serif 4",Georgia,serif;
+  --font-head:"Fraunces",Georgia,serif;
+  --font-ui:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+/* ---- Light palette (dark mode giữ nguyên bảng màu tối) ---- */
+:root[data-theme="light"],
+:root:not([data-theme="dark"]){
+  --bg:#F1ECDE; --surface:#FBF8EF; --ink:#1B1F2A; --muted:#48586B; --line:#D8CFB8;
+  --accent:#7A2E2E; --accent-soft:#F3E6DF; --accent-2:#9C7A3C;
+  --warn:#7A2E2E; --warnbg:#F7E9DF;
+  --shadow:0 1px 2px rgba(27,31,42,.05),0 6px 18px rgba(27,31,42,.07);
+  --radius:10px; --radius-sm:8px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){ --accent:#C9877A; --accent-soft:#3A2623; --accent-2:#D2B26E; --radius:10px; --radius-sm:8px; }
+}
+:root[data-theme="dark"]{ --accent:#C9877A; --accent-soft:#3A2623; --accent-2:#D2B26E; --radius:10px; --radius-sm:8px; }
+
+body{
+  font-family:var(--font-serif);
+  line-height:1.65;
+}
+:root:not([data-theme="dark"]) body{
+  background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0,rgba(0,0,0,.012) 1px,transparent 1px,transparent 3px);
+}
+::selection{background:#d9c9a3;color:#1B1F2A}
+
+/* Tiêu đề: Fraunces */
+h1,h2,h3,h4,.hero h1,.exam-txt h2,.section-head h2,.card h2,.login-card h1,.track-card h1,.paywall h2,.brand{
+  font-family:var(--font-head);
+  font-weight:600;
+  letter-spacing:-.005em;
+}
+.content h3,.theme-content h3,.card h3{color:var(--accent);border-left:3px solid var(--accent);padding-left:12px}
+
+/* UI chrome: IBM Plex Sans */
+.nav,.crumbs,.search input,.btn,button,input,select,textarea,.tab,.tile .sub,.badge,.chip,.eq-pill,.opt,.eq-cta-btn,th{
+  font-family:var(--font-ui);
+}
+.kbd,.formula,code,pre,kbd{font-family:var(--font-mono)}
+
+/* Nav kiểu "spine" */
+:root:not([data-theme="dark"]) .nav{background:rgba(241,236,222,.94);border-bottom:3px double var(--accent-2)}
+.brand .logo{background:var(--accent);border-radius:6px}
+
+/* Nút / thẻ / ô */
+.btn,.eq-cta-btn{border-radius:6px;box-shadow:none;letter-spacing:.02em}
+.tile,.card,.opt{border-radius:var(--radius)}
+:root:not([data-theme="dark"]) .tile,
+:root:not([data-theme="dark"]) .card{background:#FBF8EF}
+
+/* Bảng */
+table{border-collapse:collapse}
+th{background:#1B1F2A;color:#F1ECDE;font-size:.78rem;letter-spacing:.03em;text-transform:uppercase;font-weight:600}
+th,td{border:1px solid var(--line)}
+:root:not([data-theme="dark"]) tr:nth-child(even) td{background:#EAE3D0}
+
+/* Ghi chú / merksatz / công thức */
+.note,.warn{border-left:4px solid var(--accent);border-radius:0 6px 6px 0}
+:root:not([data-theme="dark"]) .note,
+:root:not([data-theme="dark"]) .warn{background:#F7E9DF}
+.formula{border-left:3px solid var(--accent-2);background:rgba(156,122,60,.08)}
+
+/* Hỏi-đáp <details> (accordion) */
+details{border-radius:8px}
+details>summary{font-family:var(--font-ui);font-weight:600;cursor:pointer}
+details[open]>summary{color:var(--accent)}
+
+/* Khối song ngữ DE / VI nếu có */
+.de{border-left:3px solid var(--accent);background:rgba(122,46,46,.045);border-radius:0 6px 6px 0;padding:10px 16px}
+.vi{font-family:var(--font-ui);font-size:.92em;color:var(--muted);border-left:3px solid #c7d0da;padding:6px 16px}
+
+/* ---- Tăng độ ưu tiên: tier + font ---- */
+:root:not([data-theme="dark"]) body.tier-paid,
+:root:not([data-theme="dark"]) body.tier-super{
+  --bg:#F1ECDE; --surface:#FBF8EF; --line:#D8CFB8; --accent-soft:#F3E6DF;
+}
+html body{font-family:var(--font-serif) !important}
+html body h1,html body h2,html body h3,html body h4,html body .brand,html body .hero h1{font-family:var(--font-head) !important}
+html body .nav,html body .nav *,html body .btn,html body button,html body input,html body select,html body textarea,
+html body .tab,html body .chip,html body .badge,html body .crumbs,html body .opt,html body th,html body summary{font-family:var(--font-ui) !important}
+html body .formula,html body code,html body pre,html body .kbd{font-family:var(--font-mono) !important}
+:root:not([data-theme="dark"]) body{background-color:#F1ECDE}
+:root:not([data-theme="dark"]) .tile,:root:not([data-theme="dark"]) .card,:root:not([data-theme="dark"]) .opt,
+:root:not([data-theme="dark"]) details{background:#FBF8EF;border-color:#D8CFB8}
+
+/* Không dùng gradient — màu phẳng */
+.eq-cta-card,.streak-card{background:var(--accent-soft)}
