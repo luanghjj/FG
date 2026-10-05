@@ -1,163 +1,368 @@
 /* AzubiHub · Statute theme — giao diện "Gesetzbuch zum Lernen" (parchment · wax · brass · slate)
-   Chỉ đổi màu/kiểu chữ/bo góc; không đổi layout. Fonts: Fraunces · Source Serif 4 · IBM Plex Sans/Mono */
-:root{
-  --font-serif:"Source Serif 4",Georgia,serif;
-  --font-head:"Fraunces",Georgia,serif;
-  --font-ui:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
-  --font-mono:"IBM Plex Mono",ui-monospace,monospace;
-}
-/* ---- Light palette (dark mode giữ nguyên bảng màu tối) ---- */
-:root[data-theme="light"],
-:root:not([data-theme="dark"]){
-  --bg:#F1ECDE; --surface:#FBF8EF; --ink:#1B1F2A; --muted:#48586B; --line:#D8CFB8;
-  --accent:#7A2E2E; --accent-soft:#F3E6DF; --accent-2:#9C7A3C;
-  --warn:#7A2E2E; --warnbg:#F7E9DF;
-  --shadow:0 1px 2px rgba(27,31,42,.05),0 6px 18px rgba(27,31,42,.07);
-  --radius:10px; --radius-sm:8px;
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){ --accent:#C9877A; --accent-soft:#3A2623; --accent-2:#D2B26E; --radius:10px; --radius-sm:8px; }
-}
-:root[data-theme="dark"]{ --accent:#C9877A; --accent-soft:#3A2623; --accent-2:#D2B26E; --radius:10px; --radius-sm:8px; }
+   Đồng bộ toàn bộ màu sắc, font chữ, modal, banner theo chuẩn cổ điển cao cấp */
 
-body{
-  font-family:var(--font-serif);
-  line-height:1.65;
-}
-:root:not([data-theme="dark"]) body{
-  background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0,rgba(0,0,0,.012) 1px,transparent 1px,transparent 3px);
-}
-::selection{background:#d9c9a3;color:#1B1F2A}
+:root {
+  --font-serif: "Source Serif 4", Georgia, serif;
+  --font-head: "Fraunces", Georgia, serif;
+  --font-ui: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 
-/* Tiêu đề: Fraunces */
-h1,h2,h3,h4,.hero h1,.exam-txt h2,.section-head h2,.card h2,.login-card h1,.track-card h1,.paywall h2,.brand{
-  font-family:var(--font-head);
-  font-weight:600;
-  letter-spacing:-.005em;
-}
-.content h3,.theme-content h3,.card h3{color:var(--accent);border-left:3px solid var(--accent);padding-left:12px}
-
-/* UI chrome: IBM Plex Sans */
-.nav,.crumbs,.search input,.btn,button,input,select,textarea,.tab,.tile .sub,.badge,.chip,.eq-pill,.opt,.eq-cta-btn,th{
-  font-family:var(--font-ui);
-}
-.kbd,.formula,code,pre,kbd{font-family:var(--font-mono)}
-
-/* Nav kiểu "spine" */
-:root:not([data-theme="dark"]) .nav{background:rgba(241,236,222,.94);border-bottom:3px double var(--accent-2)}
-.brand .logo{background:var(--accent);border-radius:6px}
-
-/* Nút / thẻ / ô */
-.btn,.eq-cta-btn{border-radius:6px;box-shadow:none;letter-spacing:.02em}
-.tile,.card,.opt{border-radius:var(--radius)}
-:root:not([data-theme="dark"]) .tile,
-:root:not([data-theme="dark"]) .card{background:#FBF8EF}
-
-/* Bảng */
-table{border-collapse:collapse}
-th{background:#1B1F2A;color:#F1ECDE;font-size:.78rem;letter-spacing:.03em;text-transform:uppercase;font-weight:600}
-th,td{border:1px solid var(--line)}
-:root:not([data-theme="dark"]) tr:nth-child(even) td{background:#EAE3D0}
-
-/* Ghi chú / merksatz / công thức */
-.note,.warn{border-left:4px solid var(--accent);border-radius:0 6px 6px 0}
-:root:not([data-theme="dark"]) .note,
-:root:not([data-theme="dark"]) .warn{background:#F7E9DF}
-.formula{border-left:3px solid var(--accent-2);background:rgba(156,122,60,.08)}
-
-/* Hỏi-đáp <details> (accordion) */
-details{border-radius:8px}
-details>summary{font-family:var(--font-ui);font-weight:600;cursor:pointer}
-details[open]>summary{color:var(--accent)}
-
-/* Khối song ngữ DE / VI nếu có */
-.de{border-left:3px solid var(--accent);background:rgba(122,46,46,.045);border-radius:0 6px 6px 0;padding:10px 16px}
-.vi{font-family:var(--font-ui);font-size:.92em;color:var(--muted);border-left:3px solid #c7d0da;padding:6px 16px}
-
-/* ---- Tăng độ ưu tiên: tier + font ---- */
-:root:not([data-theme="dark"]) body.tier-paid,
-:root:not([data-theme="dark"]) body.tier-super{
-  --bg:#F1ECDE; --surface:#FBF8EF; --line:#D8CFB8; --accent-soft:#F3E6DF;
-}
-html body{font-family:var(--font-serif) !important}
-html body h1,html body h2,html body h3,html body h4,html body .brand,html body .hero h1{font-family:var(--font-head) !important}
-html body .nav,html body .nav *,html body .btn,html body button,html body input,html body select,html body textarea,
-html body .tab,html body .chip,html body .badge,html body .crumbs,html body .opt,html body th,html body summary{font-family:var(--font-ui) !important}
-html body .formula,html body code,html body pre,html body .kbd{font-family:var(--font-mono) !important}
-:root:not([data-theme="dark"]) body{background-color:#F1ECDE}
-:root:not([data-theme="dark"]) .tile,:root:not([data-theme="dark"]) .card,:root:not([data-theme="dark"]) .opt,
-:root:not([data-theme="dark"]) details{background:#FBF8EF;border-color:#D8CFB8}
-
-/* Không dùng gradient — màu phẳng */
-.eq-cta-card,.streak-card{background:var(--accent-soft)}
-
-/* Mute hover and focus effects */
-input:focus, select:focus, textarea:focus, .search input:focus, .fill-input:focus, .pw-code input:focus, .dt-ex-in:focus {
-  outline: none !important;
-  border-color: var(--accent) !important;
-  box-shadow: 0 0 0 3px rgba(122, 46, 46, 0.15) !important;
+  /* Default Light Palette (Parchment & Wax) */
+  --bg: #F1ECDE;
+  --surface: #FBF8EF;
+  --ink: #1B1F2A;
+  --muted: #48586B;
+  --line: #D8CFB8;
+  --accent: #7A2E2E;
+  --accent-soft: #F3E6DF;
+  --accent-2: #9C7A3C;
+  --warn: #7A2E2E;
+  --warnbg: #F7E9DF;
+  --ok: #3f5c39;
+  --okbg: #eef3ea;
+  --bad: #7A2E2E;
+  --badbg: #F7E9DF;
+  --shadow: 0 1px 2px rgba(27,31,42,.05), 0 6px 18px rgba(27,31,42,.07);
+  --radius: 10px;
+  --radius-sm: 8px;
 }
 
-/* Make quiz colors more muted/parchment friendly */
-:root:not([data-theme="dark"]) {
+:root[data-theme="light"] {
+  --bg: #F1ECDE;
+  --surface: #FBF8EF;
+  --ink: #1B1F2A;
+  --muted: #48586B;
+  --line: #D8CFB8;
+  --accent: #7A2E2E;
+  --accent-soft: #F3E6DF;
+  --accent-2: #9C7A3C;
+  --warn: #7A2E2E;
+  --warnbg: #F7E9DF;
   --ok: #3f5c39;
   --okbg: #eef3ea;
   --bad: #7A2E2E;
   --badbg: #F7E9DF;
 }
 
-/* Fix h1 size on mobile */
+/* Dark Academia Palette for Dark Mode */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1A1916;
+    --surface: #26231E;
+    --line: #3E382F;
+    --ink: #EAE3D0;
+    --muted: #A39B88;
+    --accent: #B85042;
+    --accent-soft: #382522;
+    --accent-2: #D2B26E;
+    --warn: #D2B26E;
+    --warnbg: #2B250D;
+    --ok: #6E8B65;
+    --okbg: #1C2718;
+    --bad: #B85042;
+    --badbg: #382522;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.4);
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #1A1916;
+  --surface: #26231E;
+  --line: #3E382F;
+  --ink: #EAE3D0;
+  --muted: #A39B88;
+  --accent: #B85042;
+  --accent-soft: #382522;
+  --accent-2: #D2B26E;
+  --warn: #D2B26E;
+  --warnbg: #2B250D;
+  --ok: #6E8B65;
+  --okbg: #1C2718;
+  --bad: #B85042;
+  --badbg: #382522;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.4);
+}
+
+/* Prevent tier-paid from overriding theme vars */
+body.tier-paid, body.tier-super {
+  --bg: var(--bg) !important;
+  --surface: var(--surface) !important;
+  --line: var(--line) !important;
+  --accent-soft: var(--accent-soft) !important;
+}
+
+/* Body and global elements */
+html body {
+  font-family: var(--font-serif) !important;
+  background-color: var(--bg) !important;
+  color: var(--ink) !important;
+  line-height: 1.65;
+}
+
+:root:not([data-theme="dark"]) body {
+  background-image: repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0, rgba(0,0,0,.012) 1px, transparent 1px, transparent 3px);
+}
+
+::selection {
+  background: #d9c9a3;
+  color: #1B1F2A;
+}
+
+/* Typography */
+h1, h2, h3, h4, .hero h1, .exam-txt h2, .section-head h2, .card h2, .login-card h1, .track-card h1, .paywall h2, .brand {
+  font-family: var(--font-head) !important;
+  font-weight: 600 !important;
+  letter-spacing: -.005em !important;
+}
+
 @media (max-width: 640px) {
   html body h1, html body .hero h1, html body .login-card h1, html body .track-card h1 {
     font-size: clamp(1.4rem, 6vw, 1.8rem) !important;
   }
 }
 
-/* Dark Academia theme for Dark Mode */
-:root[data-theme="dark"],
-:root:not([data-theme="light"]) @media (prefers-color-scheme: dark) {
-  --bg: #1A1916 !important;
-  --surface: #2A2720 !important;
-  --line: #3A3630 !important;
-  --ink: #EAE3D0 !important;
-  --muted: #A39B88 !important;
-  --accent: #C9877A !important;
-  --accent-soft: #3A2623 !important;
-  --accent-2: #D2B26E !important;
-  --ok: #627F5A !important;
-  --okbg: #1A2715 !important;
-  --bad: #C9877A !important;
-  --badbg: #3A2623 !important;
+.content h3, .theme-content h3, .card h3 {
+  color: var(--accent) !important;
+  border-left: 3px solid var(--accent) !important;
+  padding-left: 12px !important;
 }
 
-:root[data-theme="dark"] body,
-:root:not([data-theme="light"]) @media (prefers-color-scheme: dark) body {
-  background-color: var(--bg) !important;
-  background-image: none !important;
+/* UI chrome */
+.nav, .crumbs, .search input, .btn, button, input, select, textarea, .tab, .tile .sub, .badge, .chip, .eq-pill, .opt, .eq-cta-btn, th, summary {
+  font-family: var(--font-ui) !important;
 }
 
-:root[data-theme="dark"] .tile, :root[data-theme="dark"] .card, :root[data-theme="dark"] .opt, :root[data-theme="dark"] details,
-:root:not([data-theme="light"]) @media (prefers-color-scheme: dark) .tile,
-:root:not([data-theme="light"]) @media (prefers-color-scheme: dark) .card,
-:root:not([data-theme="light"]) @media (prefers-color-scheme: dark) .opt,
-:root:not([data-theme="light"]) @media (prefers-color-scheme: dark) details {
-  background-color: var(--surface) !important;
-  border-color: var(--line) !important;
+.kbd, .formula, code, pre, kbd {
+  font-family: var(--font-mono) !important;
 }
 
-:root[data-theme="dark"] .nav,
-:root:not([data-theme="light"]) @media (prefers-color-scheme: dark) .nav {
-  background: rgba(26, 25, 22, 0.94) !important;
+/* Nav */
+.nav {
+  background: var(--bg) !important;
   border-bottom: 3px double var(--accent-2) !important;
 }
 
-:root[data-theme="dark"] th,
-:root:not([data-theme="light"]) @media (prefers-color-scheme: dark) th {
+.brand .logo {
+  background: var(--accent) !important;
+  border-radius: 6px !important;
+}
+
+/* Buttons */
+.btn, .eq-cta-btn {
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  letter-spacing: .02em !important;
+  background: var(--accent) !important;
+  color: #fff !important;
+}
+
+.btn.ghost {
+  background: transparent !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--line) !important;
+}
+
+.btn.ghost:hover {
+  background: var(--accent-soft) !important;
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+}
+
+/* Tiles & Cards */
+.tile, .card, .opt, details {
+  background: var(--surface) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius) !important;
+  color: var(--ink) !important;
+}
+
+/* Exam Banners: thay thế các khối đỏ nguyên mảng bằng thẻ viền sách tinh tế */
+.exam-banner {
+  background: var(--surface) !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--line) !important;
+  border-left: 6px solid var(--accent-2) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow) !important;
+}
+.exam-banner:nth-of-type(2) {
+  border-left-color: var(--accent) !important;
+}
+.exam-banner .exam-kicker {
+  color: var(--accent-2) !important;
+  font-family: var(--font-mono) !important;
+  letter-spacing: .12em !important;
+  font-weight: 600 !important;
+  opacity: 1 !important;
+}
+.exam-banner:nth-of-type(2) .exam-kicker {
+  color: var(--accent) !important;
+}
+.exam-banner .exam-txt h2 {
+  color: var(--ink) !important;
+}
+.exam-banner .exam-txt p {
+  color: var(--muted) !important;
+  opacity: 1 !important;
+}
+.exam-banner .exam-ic {
+  color: var(--accent-2) !important;
+}
+.exam-banner:nth-of-type(2) .exam-ic {
+  color: var(--accent) !important;
+}
+.exam-banner .exam-go {
+  background: var(--accent-soft) !important;
+  color: var(--accent) !important;
+  border: 1px solid var(--line) !important;
+}
+.exam-banner:hover {
+  border-color: var(--accent-2) !important;
+}
+.exam-banner:nth-of-type(2):hover {
+  border-color: var(--accent) !important;
+}
+
+.exam-detail-banner {
+  background: var(--surface) !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--line) !important;
+  border-left: 6px solid var(--accent) !important;
+  border-radius: var(--radius) !important;
+}
+.exam-detail-banner h2 {
+  color: var(--ink) !important;
+}
+.exam-detail-banner p {
+  color: var(--muted) !important;
+}
+
+/* Modals & Sheet Cards (fix triệt để chữ chìm / nền tối) */
+.sheet {
+  background: rgba(27, 31, 42, 0.6) !important;
+}
+.sheet-card, .login-card, .track-card {
+  background: var(--surface) !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+}
+.sheet-head b {
+  color: var(--ink) !important;
+  font-size: 1.15em !important;
+}
+.sheet-card p.muted, .sheet-card .muted, .sheet-card label {
+  color: var(--muted) !important;
+}
+.sheet-x {
+  background: var(--accent-soft) !important;
+  color: var(--accent) !important;
+}
+.sheet-x:hover {
+  background: var(--accent) !important;
+  color: #fff !important;
+}
+.sheet-card .btn.ghost {
+  background: transparent !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+}
+.sheet-card .btn.ghost:hover {
+  background: var(--accent-soft) !important;
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+}
+
+/* Tier Badges */
+.tier-badge.t-paid {
+  background: var(--okbg) !important;
+  color: var(--ok) !important;
+  border: 1px solid rgba(63, 92, 57, 0.2) !important;
+}
+.tier-badge.t-free {
+  background: var(--accent-soft) !important;
+  color: var(--muted) !important;
+}
+.tier-badge.t-super {
+  background: #fbf0df !important;
+  color: #9C7A3C !important;
+}
+
+/* Tables */
+table {
+  border-collapse: collapse !important;
+}
+th {
+  background: #1B1F2A !important;
+  color: #F1ECDE !important;
+  font-size: .78rem !important;
+  letter-spacing: .03em !important;
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+}
+@media (prefers-color-scheme: dark) {
+  th {
+    background: #11110F !important;
+    color: #D2B26E !important;
+  }
+}
+:root[data-theme="dark"] th {
   background: #11110F !important;
   color: #D2B26E !important;
 }
 
-:root[data-theme="dark"] tr:nth-child(even) td,
-:root:not([data-theme="light"]) @media (prefers-color-scheme: dark) tr:nth-child(even) td {
-  background: #201D18 !important;
+th, td {
+  border: 1px solid var(--line) !important;
+}
+tr:nth-child(even) td {
+  background: rgba(0, 0, 0, 0.02) !important;
+}
+@media (prefers-color-scheme: dark) {
+  tr:nth-child(even) td {
+    background: rgba(255, 255, 255, 0.02) !important;
+  }
+}
+:root[data-theme="dark"] tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Notes & Warn */
+.note, .warn {
+  border-left: 4px solid var(--accent) !important;
+  background: var(--warnbg) !important;
+  border-radius: 0 6px 6px 0 !important;
+}
+.formula {
+  border-left: 3px solid var(--accent-2) !important;
+  background: rgba(156, 122, 60, .08) !important;
+}
+
+/* DE/VI translation blocks */
+.de {
+  border-left: 3px solid var(--accent) !important;
+  background: rgba(122, 46, 46, .045) !important;
+  border-radius: 0 6px 6px 0 !important;
+  padding: 10px 16px !important;
+}
+.vi {
+  font-family: var(--font-ui) !important;
+  font-size: .92em !important;
+  color: var(--muted) !important;
+  border-left: 3px solid #c7d0da !important;
+  padding: 6px 16px !important;
+}
+
+/* Focus and input states */
+input:focus, select:focus, textarea:focus, .search input:focus, .fill-input:focus, .pw-code input:focus, .dt-ex-in:focus {
+  outline: none !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px rgba(122, 46, 46, 0.15) !important;
+}
+
+/* Remove awkward gradients */
+.eq-cta-card, .streak-card {
+  background: var(--accent-soft) !important;
 }
