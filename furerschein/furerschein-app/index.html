@@ -5,6 +5,15 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AzubiHub · Luyện Thi Bằng Lái Xe Đức (Führerschein)</title>
+    <link rel="stylesheet" href="./azubi-skin.css?v=2" />
+    <script>
+      /* Đồng bộ sáng/tối với AzubiHub (azubi_theme: auto|dark|light) */
+      try {
+        var t = localStorage.getItem('azubi_theme');
+        if (t === 'dark' || t === 'light') localStorage.setItem('fuhrerschein_dark', t === 'dark' ? 'true' : 'false');
+        else if (t === 'auto' && window.matchMedia) localStorage.setItem('fuhrerschein_dark', matchMedia('(prefers-color-scheme: dark)').matches ? 'true' : 'false');
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>

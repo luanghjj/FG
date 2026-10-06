@@ -1,0 +1,354 @@
+/* AzubiHub · Elite Hospitality — áp dụng thiết kế từ stitch_thi_t_k_ui_ux_sang_tr_ng
+   (ivory #FBF9F5 · amber #B45309 · Playfair Display + Plus Jakarta Sans · thẻ bo 12px, viền hairline)
+   Nạp SAU statute-theme.css: chỉ ghi đè hình dạng/bố cục, màu lấy từ biến theme (hỗ trợ dark). */
+
+:root {
+  --radius: 12px;
+  --radius-sm: 8px;
+  --elite-shadow-1: 0 4px 20px -3px rgba(27, 28, 26, .06);
+  --elite-shadow-2: 0 8px 24px -4px rgba(15, 23, 42, .08);
+}
+
+html body { line-height: 1.5; }
+
+/* ===== Header: frosted ivory + hairline ===== */
+.nav {
+  background: color-mix(in srgb, var(--bg) 86%, transparent) !important;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line) !important;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, .03);
+}
+.brand { font-size: 1.1em; letter-spacing: -.01em; }
+.brand .logo {
+  border-radius: 999px !important;
+  background: var(--accent-soft) !important;
+  color: var(--accent) !important;
+}
+.user-chip {
+  background: var(--accent-soft) !important;
+  color: var(--accent) !important;
+  border-radius: 999px !important;
+}
+
+/* ===== Hero ===== */
+#v-home .hero {
+  background: color-mix(in srgb, var(--surface) 70%, var(--bg));
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--elite-shadow-1);
+  padding: 20px;
+  margin: 6px 0 16px;
+}
+#v-home .hero::before {
+  content: "IHK Ausbildung · BW";
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+#v-home .hero h1 { font-size: clamp(1.6rem, 6vw, 2.25rem) !important; font-weight: 500 !important; line-height: 1.2; }
+#v-home .hero p { font-size: 13px; color: var(--muted); }
+
+/* ===== Streak + readiness ===== */
+.streak-card {
+  background: var(--surface) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--elite-shadow-1);
+}
+.streak-flame { filter: none !important; animation: none !important; color: var(--accent); }
+.streak-count { color: var(--ink) !important; font-size: 1.05em !important; font-weight: 700 !important; }
+.streak-m-title { color: var(--muted) !important; }
+.streak-m-title span:last-child { color: var(--accent) !important; font-weight: 700; }
+.streak-bar { height: 6px !important; background: color-mix(in srgb, var(--line) 60%, var(--surface)) !important; }
+.streak-bar span { background: linear-gradient(90deg, #D97706, #B45309) !important; }
+
+/* ===== Next exam chip ===== */
+.next-exam-chip { border-radius: var(--radius) !important; border: 1px solid var(--line) !important; }
+.next-exam-chip .date-box { background: var(--accent-soft) !important; color: var(--accent) !important; border-radius: 10px; }
+
+/* ===== Exam banners: thẻ trắng + vạch hổ phách bên trái ===== */
+.exam-banner {
+  border: 1px solid var(--line) !important;
+  border-left: 4px solid var(--accent) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--elite-shadow-1) !important;
+  padding: 16px 18px !important;
+  gap: 14px !important;
+}
+.exam-banner:nth-of-type(2) { border-left-color: var(--accent-2) !important; }
+.exam-banner::after { display: none !important; }
+.exam-banner .exam-kicker {
+  font-family: var(--font-ui) !important;
+  font-size: 10px !important;
+  letter-spacing: .14em !important;
+  font-weight: 700 !important;
+}
+.exam-banner .exam-txt h2 { font-size: 1.2em !important; }
+.exam-banner .exam-txt p { font-size: 12.5px; }
+.exam-banner .exam-ic {
+  width: 42px; height: 42px; border-radius: 999px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--accent-soft); flex-shrink: 0;
+}
+.exam-ic svg { width: 22px !important; height: 22px !important; }
+.exam-banner .exam-go {
+  border-radius: 999px !important;
+  font-size: 12px; font-weight: 600;
+  background: var(--accent-soft) !important;
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent) !important;
+}
+
+/* ===== Section headings ===== */
+.fach-label {
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: .14em !important;
+  color: var(--muted) !important;
+}
+.group-head h3 {
+  font-family: var(--font-head) !important;
+  font-size: 1.15em !important;
+  font-weight: 600 !important;
+  border-left: none !important;
+  padding-left: 0 !important;
+  color: var(--ink) !important;
+}
+.group-head p { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+
+/* ===== Subject cards: hàng gọn, vạch màu 3px ===== */
+.subject-card {
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius) !important;
+  background: var(--surface) !important;
+  box-shadow: none;
+}
+.subject-card:hover { border-color: var(--accent-2) !important; box-shadow: var(--elite-shadow-2) !important; }
+.subject-card .ic { border-radius: 8px; }
+.subject-card .code { font-weight: 700; }
+.subject-card .pill { border-radius: 999px; font-weight: 600; letter-spacing: .02em; }
+
+/* ===== Heute üben: 4 ô gọn ===== */
+.today-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+@media (min-width: 560px) { .today-grid { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; } }
+.today-card {
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius) !important;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.today-card:hover { border-color: var(--accent-2) !important; box-shadow: var(--elite-shadow-2) !important; }
+.today-card .ic svg { color: var(--accent); }
+
+/* ===== Lernstand ===== */
+.progress-card { border: 1px solid var(--line) !important; border-radius: var(--radius) !important; box-shadow: var(--elite-shadow-1); }
+.pstat { border-radius: var(--radius-sm) !important; background: var(--accent-soft) !important; }
+
+/* ===== Buttons ===== */
+.btn, .eq-cta-btn { border-radius: 8px !important; font-weight: 600 !important; }
+
+/* ===== Bottom nav: frosted, icon + label ===== */
+.bottom-nav {
+  background: color-mix(in srgb, var(--bg) 90%, transparent) !important;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--line) !important;
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, .05) !important;
+}
+.bottom-nav button { color: var(--muted) !important; }
+.bottom-nav button.active { color: var(--accent) !important; background: var(--accent-soft) !important; font-weight: 700; }
+
+/* ===== Subject rows (theo mẫu: ô mã · tên + giáo viên · pill ngày · chevron) ===== */
+.subject-grid { display: flex !important; flex-direction: column; gap: 8px !important; }
+.subject-card {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  justify-content: flex-start !important;
+  gap: 12px;
+  padding: 12px 14px !important;
+  min-height: 0 !important;
+  min-width: 0;
+}
+.subject-card::before { width: 3px; border-radius: 3px; }
+.subject-card.soon::before { background: transparent; }
+.subject-card .code-box {
+  flex: 0 0 auto;
+  width: 40px; height: 40px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  background: color-mix(in srgb, var(--surface) 60%, var(--bg));
+  color: var(--accent);
+  font-weight: 700; font-size: 12.5px;
+  letter-spacing: .01em;
+}
+.subject-card.soon .code-box { color: var(--muted); font-weight: 500; }
+.subject-card .sc-main { flex: 1; min-width: 0; }
+.subject-card .sc-title {
+  font-size: 14px; font-weight: 600; color: var(--ink);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.subject-card .teacher { font-size: 12px; color: var(--muted); margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.subject-card .sc-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.subject-card .sc-right .chev { width: 18px; height: 18px; color: var(--muted); }
+.subject-card .pill.date { background: var(--accent-soft); color: var(--accent); font-weight: 600; font-size: 11px; padding: 2px 8px; border-radius: 999px; }
+.subject-card .pill.soon, .subject-card .pill.ready { font-size: 11px; }
+.subject-card .pro-flag {
+  position: static !important;
+  top: auto !important; right: auto !important;
+  margin-left: 6px;
+  vertical-align: 1px;
+  flex: 0 0 auto;
+}
+
+/* Weitere Fächer: lưới 2 cột */
+.subject-group + .subject-group .subject-grid { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.subject-group + .subject-group .subject-card { flex-direction: column; align-items: flex-start; gap: 8px; }
+.subject-group + .subject-group .subject-card .code-box { width: auto; height: auto; background: none; padding: 0; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.subject-group + .subject-group .subject-card .sc-main { width: 100%; }
+.subject-group + .subject-group .subject-card .sc-right { width: 100%; justify-content: space-between; }
+@media (min-width: 720px) { .subject-group + .subject-group .subject-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.subject-group { margin-bottom: 22px; }
+
+/* Icon đơn sắc theo màu nhấn (icons.js gán màu riêng cho emoji) */
+.streak-flame, .streak-flame *, .streak-m-title *, .exam-ic *, .today-card .ic * { color: var(--accent) !important; }
+
+/* ===== Khung desktop rộng 1280px (DESIGN.md: 12-col, max 1280) ===== */
+.page, .nav-row { max-width: 1280px !important; }
+
+/* ===== KPI row: streak + kỳ thi kế tiếp (mobile 1 cột · desktop 2 cột) ===== */
+.kpi-row { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 18px; }
+@media (min-width: 860px) { .kpi-row { grid-template-columns: 1.4fr 1fr; align-items: stretch; } }
+.kpi-row .streak-card,
+.kpi-row .next-exam-chip { margin-bottom: 0 !important; height: 100%; }
+
+/* ===== Quote micro-card (cuối trang chủ) ===== */
+.quote-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 22px 0 6px;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--surface) 70%, var(--bg));
+}
+.quote-card .quote-ic {
+  flex: 0 0 auto;
+  width: 32px; height: 32px;
+  border-radius: 999px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.quote-card .quote-ic svg { width: 17px; height: 17px; display: block; }
+.quote-card blockquote { margin: 0; border: none !important; padding: 0 !important; }
+.quote-card blockquote p {
+  margin: 0;
+  font-family: var(--font-head);
+  font-style: italic;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.quote-card figcaption {
+  margin-top: 6px;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ===== Desktop: 2 cột song song (BfK | Allgemeinbildung) như bản mẫu ===== */
+@media (min-width: 1024px) {
+  #subjectGroups { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; align-items: start; }
+  .subject-group { margin-bottom: 0; }
+  /* cột phải quay về danh sách dọc 1 cột cho cân với cột trái */
+  .subject-group + .subject-group .subject-grid { grid-template-columns: 1fr !important; }
+  .subject-group + .subject-group .subject-card { flex-direction: row; align-items: center; gap: 12px; }
+  .subject-group + .subject-group .subject-card .code-box {
+    width: 40px; height: 40px; padding: 0;
+    background: color-mix(in srgb, var(--surface) 60%, var(--bg));
+    font-size: 12.5px; letter-spacing: .01em; text-transform: none;
+  }
+  .subject-group + .subject-group .subject-card .sc-right { width: auto; justify-content: flex-end; }
+}
+
+/* ===== Đơn sắc: khử màu emoji-ic trong phạm vi trang chủ/thẻ ===== */
+#v-home .emoji-ic,
+.subject-card .emoji-ic,
+.today-card .emoji-ic,
+.streak-card .emoji-ic,
+.progress-card .emoji-ic,
+.group-head .emoji-ic { color: var(--accent) !important; }
+#v-home .section-head .emoji-ic,
+#v-home .fach-label .emoji-ic,
+.hist-panel .emoji-ic { color: var(--muted) !important; }
+
+/* ===== Viền rõ khối: mọi thẻ/khối đều có đường bao 1.5px ===== */
+.streak-card,
+.next-exam-chip,
+.exam-banner,
+.subject-card,
+.today-card,
+.progress-card,
+.quote-card,
+.hist-panel,
+.card,
+.ka-card,
+.theme-item,
+.fach-item,
+.detail-box,
+.ueb-set,
+.ueb-paper,
+.pw-list,
+.mastery-chip {
+  border: 1.5px solid var(--line) !important;
+}
+/* giữ lại vạch hổ phách bên trái của banner kỳ thi (khối trên vừa ghi đè) */
+.exam-banner { border-left: 4px solid var(--accent) !important; }
+.exam-banner:nth-of-type(2) { border-left-color: var(--accent-2) !important; }
+
+/* Khối con bên trong thẻ: viền nhạt hơn để phân cấp */
+.pstat,
+.subject-card .code-box,
+.today-card .ic,
+.next-exam-chip .date-box,
+.quote-card .quote-ic {
+  border: 1px solid color-mix(in srgb, var(--line) 70%, transparent) !important;
+}
+
+/* Bảng & đường kẻ ngang */
+.progress-card h3,
+.hist-panel h3 {
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid var(--line);
+  margin-bottom: 12px;
+}
+
+/* Nhãn mục: thêm kẻ dưới mảnh để tách mạch nội dung */
+.fach-label {
+  padding-bottom: 7px;
+  border-bottom: 1.5px solid color-mix(in srgb, var(--line) 80%, transparent);
+  margin-bottom: 12px !important;
+}
+
+/* Tiêu đề nhóm môn: vạch hổ phách bên trái cho ra khối */
+.group-head {
+  border-left: 3px solid var(--accent);
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+
+/* Hover: viền đậm lên bằng màu nhấn thay vì chỉ đổ bóng */
+.subject-card:hover,
+.today-card:hover,
+.next-exam-chip:hover,
+.exam-banner:hover {
+  border-color: var(--accent) !important;
+}

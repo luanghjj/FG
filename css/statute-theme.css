@@ -2,46 +2,46 @@
    Đồng bộ toàn diện toàn bộ màu sắc, font chữ, modal, banner, thẻ, điều hướng theo chuẩn cổ điển cao cấp */
 
 :root {
-  --font-serif: "Source Serif 4", Georgia, serif;
-  --font-head: "Fraunces", Georgia, serif;
-  --font-ui: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-serif: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-head: "Playfair Display", Georgia, serif;
+  --font-ui: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 
   /* Default Light Palette (Parchment & Wax) */
-  --bg: #F1ECDE;
-  --surface: #FBF8EF;
-  --ink: #1B1F2A;
-  --muted: #48586B;
-  --line: #B8A88A;
-  --accent: #7A2E2E;
-  --accent-soft: #F3E6DF;
-  --accent-2: #9C7A3C;
-  --warn: #7A2E2E;
-  --warnbg: #F7E9DF;
+  --bg: #E2D8C2;
+  --surface: #FDFBF6;
+  --ink: #0F172A;
+  --muted: #5A5344;
+  --line: #B5A27C;
+  --accent: #9A4607;
+  --accent-soft: #F7E6CC;
+  --accent-2: #D97706;
+  --warn: #B45309;
+  --warnbg: #FDF3E3;
   --ok: #3f5c39;
   --okbg: #eef3ea;
-  --bad: #7A2E2E;
-  --badbg: #F7E9DF;
+  --bad: #B45309;
+  --badbg: #FDF3E3;
   --shadow: 0 2px 8px rgba(27,31,42,.12), 0 1px 3px rgba(27,31,42,.08);
   --radius: 10px;
   --radius-sm: 8px;
 }
 
 :root[data-theme="light"] {
-  --bg: #F1ECDE;
-  --surface: #FBF8EF;
-  --ink: #1B1F2A;
-  --muted: #48586B;
-  --line: #B8A88A;
-  --accent: #7A2E2E;
-  --accent-soft: #F3E6DF;
-  --accent-2: #9C7A3C;
-  --warn: #7A2E2E;
-  --warnbg: #F7E9DF;
+  --bg: #E2D8C2;
+  --surface: #FDFBF6;
+  --ink: #0F172A;
+  --muted: #5A5344;
+  --line: #B5A27C;
+  --accent: #9A4607;
+  --accent-soft: #F7E6CC;
+  --accent-2: #D97706;
+  --warn: #B45309;
+  --warnbg: #FDF3E3;
   --ok: #3f5c39;
   --okbg: #eef3ea;
-  --bad: #7A2E2E;
-  --badbg: #F7E9DF;
+  --bad: #B45309;
+  --badbg: #FDF3E3;
 }
 
 /* Dark Academia Palette for Dark Mode */
@@ -52,14 +52,14 @@
     --line: #5A5040;
     --ink: #EAE3D0;
     --muted: #A39B88;
-    --accent: #B85042;
+    --accent: #E08A3C;
     --accent-soft: #382522;
     --accent-2: #D2B26E;
     --warn: #D2B26E;
     --warnbg: #2B250D;
     --ok: #6E8B65;
     --okbg: #1C2718;
-    --bad: #B85042;
+    --bad: #E08A3C;
     --badbg: #382522;
     --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.4);
   }
@@ -71,14 +71,14 @@
   --line: #5A5040;
   --ink: #EAE3D0;
   --muted: #A39B88;
-  --accent: #B85042;
+  --accent: #E08A3C;
   --accent-soft: #382522;
   --accent-2: #D2B26E;
   --warn: #D2B26E;
   --warnbg: #2B250D;
   --ok: #6E8B65;
   --okbg: #1C2718;
-  --bad: #B85042;
+  --bad: #E08A3C;
   --badbg: #382522;
   --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.4);
 }
@@ -105,7 +105,7 @@ html body {
 
 ::selection {
   background: #d9c9a3;
-  color: #1B1F2A;
+  color: #0F172A;
 }
 
 /* Typography */
@@ -322,7 +322,7 @@ h1, h2, h3, h4, .hero h1, .exam-txt h2, .section-head h2, .card h2, .login-card 
 }
 .tier-badge.t-super {
   background: #fbf0df !important;
-  color: #9C7A3C !important;
+  color: #D97706 !important;
 }
 
 /* Flashcards */
@@ -345,8 +345,8 @@ table {
   border-collapse: collapse !important;
 }
 th {
-  background: #1B1F2A !important;
-  color: #F1ECDE !important;
+  background: #0F172A !important;
+  color: #FBF9F5 !important;
   font-size: .78rem !important;
   letter-spacing: .03em !important;
   text-transform: uppercase !important;
@@ -392,7 +392,7 @@ tr:nth-child(even) td {
 /* DE/VI translation blocks */
 .de {
   border-left: 3px solid var(--accent) !important;
-  background: rgba(122, 46, 46, .045) !important;
+  background: rgba(180, 83, 9, .045) !important;
   border-radius: 0 6px 6px 0 !important;
   padding: 10px 16px !important;
 }
@@ -408,7 +408,7 @@ tr:nth-child(even) td {
 input:focus, select:focus, textarea:focus, .search input:focus, .fill-input:focus, .pw-code input:focus, .dt-ex-in:focus {
   outline: none !important;
   border-color: var(--accent) !important;
-  box-shadow: 0 0 0 3px rgba(122, 46, 46, 0.15) !important;
+  box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.15) !important;
 }
 
 /* Remove awkward gradients */
