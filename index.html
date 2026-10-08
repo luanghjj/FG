@@ -1445,7 +1445,6 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
     <div class="crumbs" id="crumbs"></div>
     <span class="user-chip" id="userChip" title="Nickname wechseln" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px"><circle cx="12" cy="8" r="3.4"/><path d="M5 20a7 7 0 0 1 14 0"/></svg> —</span>
     <a class="track-switch" onclick="showTrackGate()" title="Lernbereich wechseln (Fachkraft · Deutsch · Führerschein · Leben in Deutschland)" role="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px"><path d="m16 3 4 4-4 4"/><path d="M20 7H4"/><path d="m8 21-4-4 4-4"/><path d="M4 17h16"/></svg><span class="ts-label">Bereich</span></a>
-    <button type="button" class="theme-toggle" id="themeToggle" onclick="ThemeMgr.toggle()" title="Hell/Dunkel umschalten" aria-label="Theme umschalten"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
     <button type="button" class="sound-toggle" id="soundToggle" onclick="SoundFX.toggle()" title="Ton ein/aus" aria-label="Ton umschalten"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></button>
     <div class="font-bar" title="Schriftgröße" role="group" aria-label="Schriftgröße">
       <button type="button" class="font-btn" data-size="sm" onclick="FontScaler.set('sm')" aria-label="Schrift kleiner">A-</button>
@@ -9654,14 +9653,9 @@ const ThemeMgr = (function(){
   if(MODES.indexOf(current)<0) current='auto';
 
   function apply(mode){
-    current = mode;
-    safeSet('azubi_theme', mode);
-    const html = document.documentElement;
-    if(mode === 'auto'){
-      html.removeAttribute('data-theme');
-    } else {
-      html.setAttribute('data-theme', mode);
-    }
+    current = 'light';
+    safeSet('azubi_theme', 'light');
+    document.documentElement.setAttribute('data-theme', 'light');
     updateBtn();
   }
 
