@@ -256,7 +256,7 @@
     if (hist.length) {
       var last = hist.slice(-5).reverse();
       histHtml = '<h3>Verlauf (' + hist.length + ')</h3><ul class="tipps">' + last.map(function (h) {
-        return '<li>' + esc(h.land || '') + ': ' + h.correct + '/33 — ' + (h.passed ? 'Bestanden' : 'Nicht bestanden') + '</li>';
+        return '<li>' + esc(h.land || '') + ': ' + Number(h.correct||0) + '/33 — ' + (h.passed ? 'Bestanden' : 'Nicht bestanden') + '</li>';
       }).join('') + '</ul>';
     }
     area.innerHTML =
