@@ -15,10 +15,10 @@
 <style>
 :root{
   /* Clean iOS Utility design system */
-  --bg:#FBF9F5; --surface:#ffffff; --ink:#000000; --muted:#8E8E93; --line:#E5E5EA;
+  --bg:#E8DEC9; --surface:#ffffff; --ink:#000000; --muted:#8E8E93; --line:#C9BC9E;
   --accent:#B45309; --accent-soft:#FDF8EE; --accent-2:#D97706;
   --ok:#248A3D; --okbg:#E3F7E8; --bad:#C4342B; --badbg:#FFF0F0; --warn:#8A6D00; --warnbg:#FFF9E6;
-  --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06);
+  --shadow:0 1px 2px rgba(60,45,20,.07),0 8px 24px rgba(60,45,20,.09);
   --radius:16px; --radius-sm:12px;
   --safe-top:env(safe-area-inset-top,0px);
   --safe-bottom:env(safe-area-inset-bottom,0px);
@@ -33,7 +33,7 @@ img,svg{max-width:100%;height:auto}
 button,input,.tile,.tab,.btn{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 
 /* ===== Top nav ===== */
-.nav{position:sticky;top:0;z-index:50;background:rgba(242,242,247,.92);backdrop-filter:blur(12px);
+.nav{position:sticky;top:0;z-index:50;background:rgba(240,234,224,.92);backdrop-filter:blur(12px);
   border-bottom:1px solid var(--line);margin:0 -16px 18px;padding:10px 14px;padding-top:calc(10px + var(--safe-top))}
 .nav-row{max-width:1040px;margin:0 auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:9px;font-weight:600;font-size:1.02em;cursor:pointer;white-space:nowrap}
@@ -112,7 +112,7 @@ button,input,.tile,.tab,.btn{touch-action:manipulation;-webkit-tap-highlight-col
 /* ===== Card grids ===== */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
 .tile{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px;cursor:pointer;
-  box-shadow:none;transition:transform .2s cubic-bezier(.22,1,.36,1),box-shadow .2s,border-color .16s;position:relative;overflow:hidden}
+  box-shadow:var(--shadow);transition:transform .2s cubic-bezier(.22,1,.36,1),box-shadow .2s,border-color .16s;position:relative;overflow:hidden}
 .tile:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:#C7DFFF}
 .tile:active{transform:scale(.98)}
 .tile::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--tile-accent,var(--accent));opacity:.85}
@@ -128,13 +128,13 @@ button,input,.tile,.tab,.btn{touch-action:manipulation;-webkit-tap-highlight-col
 .pill.ready{background:var(--okbg);color:var(--ok)}
 .pill.soon{background:var(--warnbg);color:var(--warn)}
 .topic-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
-.topic-chip{display:inline-flex;align-items:center;gap:4px;font-size:.72em;font-weight:600;padding:4px 9px;border-radius:999px;background:var(--tile-soft,var(--accent-soft));color:var(--ink);border:1px solid color-mix(in srgb, var(--tile-accent,var(--accent)) 18%, #fff)}
+.topic-chip{display:inline-flex;align-items:center;gap:4px;font-size:.72em;font-weight:600;padding:4px 9px;border-radius:999px;background:var(--tile-soft,var(--accent-soft));color:var(--ink);border:1px solid var(--line);border:1px solid color-mix(in srgb, var(--tile-accent,var(--accent)) 18%, #fff)}
 .subject-group{margin:0 0 18px}
 .subject-group .group-head{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;margin:0 0 10px;flex-wrap:wrap}
 .subject-group .group-head h3{font-size:1em;font-weight:700;letter-spacing:-.01em}
 .subject-group .group-head p{color:var(--muted);font-size:.8em}
 .subject-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
-.subject-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 12px 11px;cursor:pointer;position:relative;overflow:hidden;transition:transform .15s,box-shadow .15s,border-color .15s;min-height:92px;display:flex;flex-direction:column;justify-content:space-between}
+.subject-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 12px 11px;cursor:pointer;position:relative;overflow:hidden;transition:transform .15s,box-shadow .15s,border-color .15s;min-height:92px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 1px 2px rgba(60,45,20,.06)}
 .subject-card:hover{transform:translateY(-1px);box-shadow:var(--shadow);border-color:#C7DFFF}
 .subject-card.soon{opacity:.8}
 .subject-card.soon:hover{transform:none;box-shadow:none;border-color:var(--line)}
@@ -183,7 +183,7 @@ body.tier-paid .pro-flag,body.tier-super .pro-flag{
 .zwischen-scope{--accent:#FF9500;--accent-soft:#FFF3E2}
 
 /* ===== Theme content shared ===== */
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:none;padding:22px;margin-bottom:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px;margin-bottom:16px}
 .card h2{color:var(--ink);font-size:1.08em;margin-bottom:4px;font-weight:600}
 .card .hint{color:var(--muted);font-size:.85em;margin-bottom:14px}
 
@@ -643,12 +643,12 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 .lf-block{margin-bottom:18px}
 .lf-block h3{font-size:1.05em;font-weight:700;margin:0 0 10px;display:flex;align-items:center;gap:8px}
 .lf-block .lf-badge{font-size:.68em;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);text-transform:uppercase;letter-spacing:.04em}
-.theme-list{display:flex;flex-direction:column;gap:8px}
-.theme-item{display:flex;align-items:flex-start;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .15s}
+.theme-list{display:flex;flex-direction:column;gap:10px}
+.theme-item{display:flex;align-items:flex-start;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .15s;box-shadow:0 1px 2px rgba(60,45,20,.05)}
 .theme-item:hover{border-color:#C7DFFF;box-shadow:var(--shadow);transform:translateY(-1px)}
 .theme-item .num{flex:0 0 28px;height:28px;border-radius:9px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:.78em;font-weight:800}
 .theme-item .tt{flex:1;min-width:0}
-.theme-item .tt b{display:block;font-size:.95em;font-weight:650;line-height:1.3}
+.theme-item .tt b{display:block;font-size:.95em;font-weight:700;line-height:1.3;color:var(--ink)}
 .theme-item .tt span{display:block;font-size:.8em;color:var(--muted);margin-top:3px;line-height:1.4}
 .theme-item .arrow{color:var(--muted);font-size:.9em;align-self:center}
 .lf-vi{font-weight:500;color:var(--muted);font-size:.82em}
@@ -715,7 +715,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 .practice-modes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 18px}
 @media (max-width:420px){.practice-modes{grid-template-columns:1fr}}
 .practice-mode{display:flex;flex-direction:column;gap:4px;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:14px;padding:14px 14px 12px;cursor:pointer;font:inherit;color:inherit;transition:.15s;box-shadow:var(--shadow)}
-.practice-mode:hover,.practice-mode:active{border-color:color-mix(in srgb,var(--accent) 35%, #fff);transform:translateY(-1px)}
+.practice-mode:hover,.practice-mode:active{border-color:var(--accent);border-color:color-mix(in srgb,var(--accent) 35%, #fff);transform:translateY(-1px)}
 .practice-mode .pm-ic{font-size:1.35em;line-height:1}
 .practice-mode b{font-size:.92em;font-weight:700;letter-spacing:-.01em}
 .practice-mode span{font-size:.75em;color:var(--muted);line-height:1.35}
@@ -724,7 +724,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 .practice-section h3 .count{font-size:.72em;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
 .theme-check-list{display:flex;flex-direction:column;gap:8px}
 .theme-check{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--surface);cursor:pointer}
-.theme-check:has(input:checked){border-color:color-mix(in srgb,var(--accent) 40%, #fff);background:var(--accent-soft)}
+.theme-check:has(input:checked){border-color:var(--accent);border-color:color-mix(in srgb,var(--accent) 40%, #fff);background:var(--accent-soft)}
 .theme-check input{margin-top:3px;accent-color:var(--accent)}
 .theme-check .tt{flex:1;min-width:0}
 .theme-check .tt b{display:block;font-size:.9em}
@@ -1006,25 +1006,21 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
 .exam-pill-nav-wrap::after{content:"";position:absolute;top:0;right:0;bottom:6px;width:32px;
   background:linear-gradient(to right,transparent,var(--surface));pointer-events:none;border-radius:0 20px 20px 0}
 
-/* ===== Dark mode ===== */
+/* ===== Dark mode: delegated to css/statute-theme.css (single source of truth) ===== */
+/* statute-theme.css owns --bg/--surface/--ink/--accent for light + dark + auto.
+   Keep only non-variable tweaks here with proper data-theme guards. */
+:root[data-theme="dark"] img{opacity:.9}
 @media (prefers-color-scheme:dark){
-  :root{
-    --bg:#1C1C1E; --surface:#2C2C2E; --ink:#FBF9F5; --muted:#98989D; --line:#38383A;
-    --accent-soft:#1C3A5E; --accent-2:#5AADFF;
-    --okbg:#0D2B18; --badbg:#2B0D0D; --warnbg:#2B250D;
-    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.4);
-  }
-  body.tier-paid,body.tier-super{--bg:#1A1916;--surface:#2A2720;--line:#3A3630;--accent-soft:#1C1A16}
-  .nav{background:rgba(28,28,30,.94)}
-  body.tier-paid .nav,body.tier-super .nav{background:rgba(26,25,22,.94)}
-  .login-card,.track-card,.sheet-card{background:#2C2C2E;color:var(--ink)}
-  .login-card input[type=text],.login-card input[type=password]{color:var(--ink);border-bottom-color:var(--line)}
-  #loginGate,#trackGate{background:#1C1C1E}
-  .ex-header,.ex-footer{background:rgba(44,44,46,.96)}
-  img{opacity:.9}
-  @media (prefers-reduced-motion:no-preference){
-    .view.active{animation:viewIn .38s cubic-bezier(.22,1,.36,1)}
-  }
+  :root:not([data-theme="light"]) img{opacity:.9}
+  :root:not([data-theme="light"]) .nav{background:rgba(26,25,22,.94)}
+}
+:root[data-theme="dark"] .nav{background:rgba(26,25,22,.94)}
+:root[data-theme="dark"] #loginGate,:root[data-theme="dark"] #trackGate{background:#1A1916}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) #loginGate,:root:not([data-theme="light"]) #trackGate{background:#1A1916}
+}
+@media (prefers-reduced-motion:no-preference){
+  .view.active{animation:viewIn .38s cubic-bezier(.22,1,.36,1)}
 }
 
 
@@ -1109,32 +1105,9 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
    ADVANCED UX/UI SYSTEM ENHANCEMENTS (8 CORE FEATURES)
    ============================================================ */
 
-/* 1. THEME VARIABLES (Light, Dark, Auto) */
-:root[data-theme="dark"],
-[data-theme="dark"] {
-  --bg:#1C1C1E; --surface:#2C2C2E; --ink:#FBF9F5; --muted:#98989D; --line:#38383A;
-  --accent:#0A84FF; --accent-soft:#1C3A5E; --accent-2:#5AADFF;
-  --ok:#30D158; --okbg:#0D2B18; --bad:#FF453A; --badbg:#2B0D0D; --warn:#FFD60A; --warnbg:#2B250D;
-  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.4);
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --bg:#1C1C1E; --surface:#2C2C2E; --ink:#FBF9F5; --muted:#98989D; --line:#38383A;
-    --accent:#0A84FF; --accent-soft:#1C3A5E; --accent-2:#5AADFF;
-    --ok:#30D158; --okbg:#0D2B18; --bad:#FF453A; --badbg:#2B0D0D; --warn:#FFD60A; --warnbg:#2B250D;
-    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.4);
-  }
-}
-[data-theme="dark"] .nav,
-:root:not([data-theme="light"]) @media (prefers-color-scheme:dark){ .nav{background:rgba(28,28,30,.94)} }
-[data-theme="dark"] .login-card, [data-theme="dark"] .track-card, [data-theme="dark"] .sheet-card,
-[data-theme="dark"] .card, [data-theme="dark"] .today-card, [data-theme="dark"] .subject-card,
-[data-theme="dark"] .ka-card, [data-theme="dark"] .theme-item, [data-theme="dark"] .progress-card,
-[data-theme="dark"] .next-exam-chip, [data-theme="dark"] .detail-box{ background:#2C2C2E; color:var(--ink) }
-
-[data-theme="dark"] body.tier-paid, [data-theme="dark"] body.tier-super{
-  --bg:#1A1916; --surface:#2A2720; --line:#3A3630; --accent-soft:#242017;
-}
+/* 1. THEME VARIABLES: delegated to css/statute-theme.css (warm parchment + dark academia).
+   Do NOT redeclare --bg/--surface/--accent here to avoid blue (#0A84FF) vs warm (#E08A3C) conflict.
+   ThemeMgr toggles html[data-theme="dark"|"light"] or removes it for auto; statute-theme.css handles all 3. */
 
 /* Theme toggle button in nav */
 .theme-toggle{border:1px solid var(--line);background:var(--surface);border-radius:999px;width:34px;height:34px;
@@ -1160,6 +1133,9 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
 .sh-chip:hover{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
 .sh-mark{background:#FEF08A;color:#854D0E;padding:0 2px;border-radius:3px;font-weight:600}
 [data-theme="dark"] .sh-mark{background:#854D0E;color:#FEF08A}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .sh-mark{background:#854D0E;color:#FEF08A}
+}
 
 /* 3. LIGHTBOX ZOOM CONTROLS */
 #pageLightbox .lb-controls{display:flex;align-items:center;gap:6px;background:rgba(30,41,59,.85);backdrop-filter:blur(8px);padding:6px 12px;border-radius:999px;margin-bottom:8px}
@@ -1184,11 +1160,17 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 .streak-flame{font-size:2.2em;line-height:1;filter:drop-shadow(0 2px 8px rgba(255,149,0,.4));animation:softPulse 2s infinite}
 .streak-count{font-size:1.45em;font-weight:800;color:#D97706;line-height:1.1}
 [data-theme="dark"] .streak-count{color:#FBBF24}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .streak-count{color:#FBBF24}
+}
 .streak-label{font-size:.78em;color:var(--muted);font-weight:600;margin-top:2px}
 .streak-milestone{flex:1;max-width:260px}
 .streak-m-title{display:flex;justify-content:space-between;font-size:.74em;font-weight:700;color:var(--ink);margin-bottom:5px}
 .streak-bar{height:7px;background:rgba(0,0,0,.08);border-radius:999px;overflow:hidden}
 [data-theme="dark"] .streak-bar{background:rgba(255,255,255,.12)}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .streak-bar{background:rgba(255,255,255,.12)}
+}
 .streak-bar span{display:block;height:100%;border-radius:999px;background:#FF9500;transition:width .6s ease}
 
 /* 6. OFFLINE BANNER */
@@ -1209,13 +1191,55 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
   #backToTop{bottom:calc(152px + var(--safe-bottom));right:14px;width:38px;height:38px}
 }
 
+/* 8. DARK-MODE HARDCODE FIXES (single source: statute vars; covers explicit + auto dark) */
+[data-theme="dark"] .zq,[data-theme="dark"] .zq-opts>li,[data-theme="dark"] .zq-ans,
+[data-theme="dark"] .mini,[data-theme="dark"] .formula,[data-theme="dark"] .svg-box,
+[data-theme="dark"] .ueb-paper,[data-theme="dark"] .ueb-set,[data-theme="dark"] .ueb-sol,
+[data-theme="dark"] .tq-item,[data-theme="dark"] .qa-item,[data-theme="dark"] .vk-item,
+[data-theme="dark"] .zw-toolbar,[data-theme="dark"] .src-thumb img{
+  background:var(--surface);border-color:var(--line);color:var(--ink)
+}
+[data-theme="dark"] .zq-opts>li:hover{background:var(--accent-soft)}
+[data-theme="dark"] .detail-box .viet,[data-theme="dark"] .detail-box dd,
+[data-theme="dark"] .mini p,[data-theme="dark"] .mini li,[data-theme="dark"] .quiz-start p,
+[data-theme="dark"] .ueb-aufg .aintro,[data-theme="dark"] .ueb-paper .datum,
+[data-theme="dark"] .qa-vi,[data-theme="dark"] .vk-vi{color:var(--muted)}
+[data-theme="dark"] .ueb-aufg .aline,[data-theme="dark"] .ueb-aufg .ah .apts,
+[data-theme="dark"] .detail-box dt,[data-theme="dark"] .qa-qtext b{color:var(--ink)}
+[data-theme="dark"] .ueb-part .pno,[data-theme="dark"] .ueb-aufg .ah .aname{color:#E08A3C}
+[data-theme="dark"] .zw-tip{background:var(--accent-soft);border-color:var(--accent);color:var(--ink)}
+[data-theme="dark"] .zw-tip:hover{background:var(--accent-soft)}
+[data-theme="dark"] .zq-fig img{background:var(--bg);border-color:var(--line)}
+[data-theme="dark"] .ueb-sol{background:var(--okbg);border-color:var(--line)}
+[data-theme="dark"] .tq-explain,[data-theme="dark"] .qa-why{background:var(--warnbg);color:var(--ink)}
+[data-theme="dark"] .login-card input[type=text],[data-theme="dark"] .login-card input[type=password]{border-bottom-color:var(--line)}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .zq,:root:not([data-theme="light"]) .zq-opts>li,:root:not([data-theme="light"]) .zq-ans,
+  :root:not([data-theme="light"]) .mini,:root:not([data-theme="light"]) .formula,:root:not([data-theme="light"]) .svg-box,
+  :root:not([data-theme="light"]) .ueb-paper,:root:not([data-theme="light"]) .ueb-set,:root:not([data-theme="light"]) .ueb-sol,
+  :root:not([data-theme="light"]) .tq-item,:root:not([data-theme="light"]) .qa-item,:root:not([data-theme="light"]) .vk-item,
+  :root:not([data-theme="light"]) .zw-toolbar{background:var(--surface);border-color:var(--line);color:var(--ink)}
+  :root:not([data-theme="light"]) .detail-box .viet,:root:not([data-theme="light"]) .detail-box dd,
+  :root:not([data-theme="light"]) .mini p,:root:not([data-theme="light"]) .mini li,
+  :root:not([data-theme="light"]) .ueb-aufg .aintro{color:var(--muted)}
+  :root:not([data-theme="light"]) .ueb-aufg .aline,:root:not([data-theme="light"]) .ueb-aufg .ah .apts{color:var(--ink)}
+  :root:not([data-theme="light"]) .ueb-part .pno,:root:not([data-theme="light"]) .ueb-aufg .ah .aname{color:#E08A3C}
+  :root:not([data-theme="light"]) .zw-tip{background:var(--accent-soft);border-color:var(--accent);color:var(--ink)}
+}
+
+/* 9. A11Y: visible focus + keyboard activation for clickable cards */
+.tile[tabindex]:focus-visible,.today-card[tabindex]:focus-visible,.exam-banner[tabindex]:focus-visible,
+.theme-item[tabindex]:focus-visible,.subject-card[tabindex]:focus-visible,.ka-card[tabindex]:focus-visible,
+.next-exam-chip[tabindex]:focus-visible,.back[tabindex]:focus-visible,.brand[tabindex]:focus-visible,
+.track-switch[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:12px}
+
 </style>
 <script src="./pwa.js?v=6" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./css/statute-theme.css?v=13">
-<link rel="stylesheet" href="./css/elite-theme.css?v=8">
+<link rel="stylesheet" href="./css/statute-theme.css?v=14">
+<link rel="stylesheet" href="./css/elite-theme.css?v=9">
 </head>
 <body>
 <div id="offlineBanner" role="status"><span>⚡ Offline-Modus — Lektionen &amp; Prüfungen bleiben verfügbar!</span></div>
@@ -1269,6 +1293,11 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
         <span class="track-title">Luyện thi Lái xe (Führerschein)</span>
         <span class="track-sub">Bằng B &amp; B197 · Đề thi thử · Mẹo thi vàng · Song ngữ Đức – Việt</span>
       </button>
+      <button type="button" class="track-btn" id="trackLid" onclick="pickTrack('lid')">
+        <span class="track-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:34px;height:34px"><path d="M4 21V4"/><path d="M4 4h13l-3 4 3 4H4"/></svg></span>
+        <span class="track-title">Leben in Deutschland</span>
+        <span class="track-sub">Einbürgerungstest · 310 Fragen je Bundesland · Prüfungssimulation</span>
+      </button>
     </div>
     <div class="track-skip muted"><a onclick="pickTrack('fachkraft')">Direkt zu Fachkraft →</a></div>
   </div>
@@ -1285,10 +1314,11 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
     <a class="track-switch" onclick="showTrackGate()" title="Lernbereich wechseln (Fachkraft · Deutsch · Führerschein)" role="button">⇄<span class="ts-label">Bereich</span></a>
     <button type="button" class="theme-toggle" id="themeToggle" onclick="ThemeMgr.toggle()" title="Hell/Dunkel umschalten" aria-label="Theme umschalten">🌙</button>
     <button type="button" class="sound-toggle" id="soundToggle" onclick="SoundFX.toggle()" title="Ton ein/aus" aria-label="Ton umschalten">🔊</button>
-    <div class="font-bar" title="Schriftgröße">
-      <button type="button" class="font-btn" data-size="sm" onclick="FontScaler.set('sm')">A-</button>
-      <button type="button" class="font-btn active" data-size="md" onclick="FontScaler.set('md')">A</button>
-      <button type="button" class="font-btn" data-size="lg" onclick="FontScaler.set('lg')">A+</button>
+    <div class="font-bar" title="Schriftgröße" role="group" aria-label="Schriftgröße">
+      <button type="button" class="font-btn" data-size="sm" onclick="FontScaler.set('sm')" aria-label="Schrift kleiner">A-</button>
+      <button type="button" class="font-btn active" data-size="md" onclick="FontScaler.set('md')" aria-label="Schrift normal">A</button>
+      <button type="button" class="font-btn" data-size="lg" onclick="FontScaler.set('lg')" aria-label="Schrift größer">A+</button>
+      <button type="button" class="font-btn" data-size="xl" onclick="FontScaler.set('xl')" aria-label="Schrift sehr groß">A++</button>
     </div>
     <button type="button" class="search-toggle" id="searchToggle" aria-label="Suche öffnen">🔍</button>
     <div class="search">
@@ -8635,8 +8665,8 @@ function initSearchSheet(){
       .sort((a,b)=>b.sc-a.sc)
       .slice(0,80)
       .map(x=>x.it);
-    if(!hits.length){ body.innerHTML='<div class="empty-state"><div class="big-ic">😕</div>Keine Treffer für „'+q0.replace(/[<>&]/g,'')+'“.</div>'; return; }
-    body.innerHTML=hits.map((h,i)=>'<div class="res" data-si="'+i+'"><span class="badge">'+h.badge+'</span><div class="txt"><div class="t">'+h.title+'</div><div class="s">'+h.sub+'</div></div></div>').join('');
+    if(!hits.length){ body.innerHTML='<div class="empty-state"><div class="big-ic">😕</div>Keine Treffer für „'+escHtml(q0)+'“.</div>'; return; }
+    body.innerHTML=hits.map((h,i)=>'<div class="res" data-si="'+i+'"><span class="badge">'+escHtml(h.badge)+'</span><div class="txt"><div class="t">'+escHtml(h.title)+'</div><div class="s">'+escHtml(h.sub)+'</div></div></div>').join('');
     body.querySelectorAll('.res[data-si]').forEach(el=>{
       el.addEventListener('click',()=>{
         const i=+el.getAttribute('data-si'); const h=hits[i]; if(!h) return;
@@ -8698,6 +8728,9 @@ function pickTrack(which) {
   } else if (which === 'fuehrerschein' || which === 'fuererschein') {
     // Mở thẳng vào app Führerschein (subfolder)
     location.href = './fuererschein/';
+  } else if (which === 'lid') {
+    // Mở app LiD standalone (subfolder)
+    location.href = './lid/';
   } else {
     go('#/fach');
   }
@@ -8707,8 +8740,8 @@ function showTrackGate() {
   if (g) g.classList.remove('hidden');
   var cur = '';
   try { cur = localStorage.getItem('azubi_track') || 'fachkraft'; } catch (_) {}
-  var map = { fachkraft:'trackFachkraft', deutsch:'trackDeutsch', fuehrerschein:'trackFuehrerschein', fuererschein:'trackFuehrerschein' };
-  ['trackFachkraft','trackDeutsch','trackFuehrerschein'].forEach(function(id){
+  var map = { fachkraft:'trackFachkraft', deutsch:'trackDeutsch', fuehrerschein:'trackFuehrerschein', fuererschein:'trackFuehrerschein', lid:'trackLid' };
+  ['trackFachkraft','trackDeutsch','trackFuehrerschein','trackLid'].forEach(function(id){
     var el = document.getElementById(id);
     if (el) el.classList.toggle('current', map[cur] === id);
   });
@@ -8762,6 +8795,10 @@ function unlockApp(player){
   }
   if (azubiTrack === 'fuehrerschein' || azubiTrack === 'fuererschein') {
     location.href = './fuererschein/';
+    return;
+  }
+  if (azubiTrack === 'lid') {
+    location.href = './lid/';
     return;
   }
   // Mặc định track là fachkraft, không tự động bật popup làm phiền người dùng
@@ -8832,11 +8869,11 @@ async function loadHomeHistory(player){
       return;
     }
     body.innerHTML='<table class="hist-table"><tr><th>Fach</th><th>Quiz</th><th>Punkte</th><th>Versuche</th><th>Datum</th></tr>'
-      +qs.map(q=>'<tr><td>'+(q.subject||'')+'</td><td>'+(q.quiz||'')+'</td><td><b>'+q.correct+'/'+q.total+'</b> ('+q.pct+'%)</td><td>'+q.attempts+'</td><td>'+(q.at||'').slice(0,10)+'</td></tr>').join('')
+      +qs.map(q=>'<tr><td>'+escHtml(q.subject||'')+'</td><td>'+escHtml(q.quiz||'')+'</td><td><b>'+Number(q.correct||0)+'/'+Number(q.total||0)+'</b> ('+Number(q.pct||0)+'%)</td><td>'+Number(q.attempts||0)+'</td><td>'+escHtml((q.at||'').slice(0,10))+'</td></tr>').join('')
       +'</table>';
   }catch(e){
     if(panel) panel.style.display='block';
-    if(body) body.innerHTML='<div class="empty-state">Historie nicht ladbar: '+(e.message||e)+'</div>';
+    if(body) body.innerHTML='<div class="empty-state">Historie nicht ladbar: '+escHtml(e.message||e)+'</div>';
   }
 }
 /* Schritt 2 im Login: Passwort für Super-Admin-Nicknames */
@@ -9379,7 +9416,9 @@ setInterval(()=>{
    ============================================================ */
 const SoundFX = (function(){
   let audioCtx = null;
-  let muted = localStorage.getItem('azubi_muted') === '1';
+  function safeGet(k){ try{ return localStorage.getItem(k); }catch(_){ return null; } }
+  function safeSet(k,v){ try{ localStorage.setItem(k,v); }catch(_){} }
+  let muted = safeGet('azubi_muted') === '1';
 
   function getCtx(){
     if(!audioCtx && (window.AudioContext || window.webkitAudioContext)){
@@ -9450,7 +9489,7 @@ const SoundFX = (function(){
     },
     toggle: function(){
       muted = !muted;
-      localStorage.setItem('azubi_muted', muted ? '1' : '0');
+      safeSet('azubi_muted', muted ? '1' : '0');
       updateIcon();
       if(!muted) this.playClick();
       if(window.toast) toast(muted ? '🔇 Ton aus' : '🔊 Ton an', 'info');
@@ -9466,11 +9505,14 @@ window.SoundFX = SoundFX;
    ============================================================ */
 const ThemeMgr = (function(){
   const MODES = ['auto', 'dark', 'light'];
-  let current = localStorage.getItem('azubi_theme') || 'auto';
+  function safeGet(k){ try{ return localStorage.getItem(k); }catch(_){ return null; } }
+  function safeSet(k,v){ try{ localStorage.setItem(k,v); }catch(_){} }
+  let current = safeGet('azubi_theme') || 'auto';
+  if(MODES.indexOf(current)<0) current='auto';
 
   function apply(mode){
     current = mode;
-    localStorage.setItem('azubi_theme', mode);
+    safeSet('azubi_theme', mode);
     const html = document.documentElement;
     if(mode === 'auto'){
       html.removeAttribute('data-theme');
@@ -9503,25 +9545,31 @@ const ThemeMgr = (function(){
 window.ThemeMgr = ThemeMgr;
 
 /* ============================================================
-   3. FONT SIZE SCALER (A- / A / A+)
+   3. FONT SIZE SCALER (A- / A / A+ / A++)
    ============================================================ */
 const FontScaler = (function(){
   const SIZES = ['sm', 'md', 'lg', 'xl'];
-  let current = localStorage.getItem('azubi_font_size') || 'md';
+  function safeGet(k){ try{ return localStorage.getItem(k); }catch(_){ return null; } }
+  function safeSet(k,v){ try{ localStorage.setItem(k,v); }catch(_){} }
+  let current = safeGet('azubi_font_size') || 'md';
+  if(SIZES.indexOf(current)<0) current='md';
 
   function apply(size){
+    if(SIZES.indexOf(size)<0) size='md';
     current = size;
-    localStorage.setItem('azubi_font_size', size);
+    safeSet('azubi_font_size', size);
     SIZES.forEach(s => document.body.classList.remove('font-' + s));
     document.body.classList.add('font-' + size);
     document.querySelectorAll('.font-btn').forEach(b => {
       b.classList.toggle('active', b.dataset.size === size);
+      if(b.dataset.size===size) b.setAttribute('aria-pressed','true');
+      else b.removeAttribute('aria-pressed');
     });
   }
 
   return {
     init: function(){ apply(current); },
-    set: function(size){ apply(size); SoundFX.playClick(); }
+    set: function(size){ apply(size); if(window.SoundFX) SoundFX.playClick(); }
   };
 })();
 window.FontScaler = FontScaler;
@@ -9672,6 +9720,46 @@ window.StreakTracker = StreakTracker;
 
   wrap?.addEventListener('touchend', function(){
     isDragging = false;
+  });
+})();
+
+/* ============================================================
+   A11Y: keyboard activation for div-based navigation cards
+   ============================================================ */
+(function(){
+  const SEL = '.tile[onclick],.today-card[onclick],.exam-banner[onclick],.theme-item[onclick],'
+    + '.subject-card[onclick],.ka-card[onclick],.next-exam-chip[onclick],.back[onclick],.brand[onclick]';
+  function enhance(root){
+    (root||document).querySelectorAll(SEL).forEach(function(el){
+      if(!el.hasAttribute('tabindex')) el.setAttribute('tabindex','0');
+      if(!el.hasAttribute('role')) el.setAttribute('role','button');
+      if(el.dataset.a11yBound) return;
+      el.dataset.a11yBound='1';
+      el.addEventListener('keydown', function(e){
+        if(e.key==='Enter'||e.key===' '){
+          e.preventDefault();
+          el.click();
+        }
+      });
+    });
+    var ts = document.querySelector('.track-switch');
+    if(ts && !ts.hasAttribute('tabindex')) ts.setAttribute('tabindex','0');
+    if(ts && !ts.dataset.a11yBound){
+      ts.dataset.a11yBound='1';
+      ts.addEventListener('keydown', function(e){
+        if(e.key==='Enter'||e.key===' '){ e.preventDefault(); ts.click(); }
+      });
+    }
+  }
+  document.addEventListener('DOMContentLoaded', function(){ enhance(document); });
+  // dynamic content (subject groups, search, quiz) is injected after route change
+  const obs = new MutationObserver(function(muts){
+    let need=false;
+    muts.forEach(function(m){ if(m.addedNodes && m.addedNodes.length) need=true; });
+    if(need) enhance(document);
+  });
+  document.addEventListener('DOMContentLoaded', function(){
+    try{ obs.observe(document.getElementById('appPage')||document.body,{childList:true,subtree:true}); }catch(_){}
   });
 })();
 
