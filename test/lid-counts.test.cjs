@@ -19,3 +19,17 @@ const a1 = allg.find((e) => e.nr === 1);
 assert.strictEqual(a1.a, 3);
 assert.ok(a1.opts[3].indexOf('Meinungsfreiheit') !== -1);
 console.log('PASS lid-counts teil1 (300 allgemeine)');
+for (const f of ['lid-land-p1.js', 'lid-land-p2.js']) eval(read(f));
+const land = window.__LID_LAND || [];
+assert.strictEqual(land.length, 160, 'land phải đủ 160, hiện có ' + land.length);
+const lands = ['BW','BY','BE','BB','HB','HH','HE','MV','NI','NW','RP','SL','SN','ST','SH','TH'];
+for (const L of lands) {
+  const n = land.filter((e) => e.land === L).length;
+  assert.strictEqual(n, 10, 'bang ' + L + ' phải có 10 câu, hiện có ' + n);
+}
+for (const e of land) {
+  assert.strictEqual(e.opts.length, 4, 'câu bang ' + e.land + ' nr ' + e.nr + ' phải có 4 opts');
+  assert.ok(Number.isInteger(e.a) && e.a >= 0 && e.a <= 3, 'câu bang ' + e.land + ' nr ' + e.nr + ' thiếu a');
+  assert.strictEqual(e.theme, 'lid-land', 'câu bang phải có theme lid-land');
+}
+console.log('PASS lid-counts teil2 (160 Länder)');
