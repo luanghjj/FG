@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -12,16 +12,6 @@
 <link rel="apple-touch-icon" href="./images/icons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="192x192" href="./images/icons/icon-192.png">
 <title>AzubiHub · Fachkraft für Gastronomie</title>
-<script>
-// FORCE CACHE CLEAR - This removes the stubborn PWA Service Worker cache
-if('serviceWorker' in navigator){
-  navigator.serviceWorker.getRegistrations().then(regs => {
-    let re = false;
-    for(let r of regs){ r.unregister(); re = true; }
-    if(re) location.reload(true);
-  });
-}
-</script>
 <style>
 :root{
   --bg: #E2D8C2;
@@ -413,7 +403,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 
 /* ===== Track gate (Lernbereich wählen modal) ===== */
 #trackGate{
-  position:fixed;inset:0;z-index:200;background:rgba(15,23,42,.75);
+  position:fixed;inset:0;z-index:200;background:rgba(40,36,30,.5);
   -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
   display:flex;align-items:center;justify-content:center;padding:20px 16px;
   transition:opacity .25s ease,visibility .25s ease
