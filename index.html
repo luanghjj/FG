@@ -481,60 +481,60 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 @media (max-width:420px){.track-switch .ts-label{display:none}.track-switch{padding:0}}
 
 /* Dark mode overrides for Track Gate */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) #trackGate { background: rgba(0,0,0,.82) }
-  :root:not([data-theme="light"]) .track-card {
+@media (max-width: 1px) {
+  :root[data-theme="never-dark"] #trackGate { background: rgba(0,0,0,.82) }
+  :root[data-theme="never-dark"] .track-card {
     background: #181613; border-color: #4D4335; color: #FFFFFF; box-shadow: 0 24px 70px rgba(0,0,0,.75)
   }
-  :root:not([data-theme="light"]) .track-card h1 { color: #FFFFFF }
-  :root:not([data-theme="light"]) .track-card .sub { color: #C9BFAD }
-  :root:not([data-theme="light"]) .track-card .sheet-x { background: #25201A; border-color: #4D4335; color: #C9BFAD }
-  :root:not([data-theme="light"]) .track-card .sheet-x:hover { background: #38271A; color: #E08A3C; border-color: #E08A3C }
-  :root:not([data-theme="light"]) .track-logo { background: #362417; border-color: #6E4924; color: #E08A3C }
-  :root:not([data-theme="light"]) .track-logo svg { color: #E08A3C }
-  :root:not([data-theme="light"]) .track-btn {
+  :root[data-theme="never-dark"] .track-card h1 { color: #FFFFFF }
+  :root[data-theme="never-dark"] .track-card .sub { color: #C9BFAD }
+  :root[data-theme="never-dark"] .track-card .sheet-x { background: #25201A; border-color: #4D4335; color: #C9BFAD }
+  :root[data-theme="never-dark"] .track-card .sheet-x:hover { background: #38271A; color: #E08A3C; border-color: #E08A3C }
+  :root[data-theme="never-dark"] .track-logo { background: #362417; border-color: #6E4924; color: #E08A3C }
+  :root[data-theme="never-dark"] .track-logo svg { color: #E08A3C }
+  :root[data-theme="never-dark"] .track-btn {
     background: #25201B; border-color: #4D4032; color: #FFFFFF; box-shadow: 0 3px 10px rgba(0,0,0,.35)
   }
-  :root:not([data-theme="light"]) .track-btn:hover {
+  :root[data-theme="never-dark"] .track-btn:hover {
     border-color: #E08A3C; background: #302A23; box-shadow: 0 8px 24px rgba(224,138,60,.24)
   }
-  :root:not([data-theme="light"]) .track-emoji { background: #362417; border-color: #6E4924; color: #E08A3C }
-  :root:not([data-theme="light"]) .track-emoji svg { color: #E08A3C }
-  :root:not([data-theme="light"]) .track-title { color: #FFFFFF }
-  :root:not([data-theme="light"]) .track-sub { color: #D6CEBE }
-  :root:not([data-theme="light"]) .track-btn.current {
+  :root[data-theme="never-dark"] .track-emoji { background: #362417; border-color: #6E4924; color: #E08A3C }
+  :root[data-theme="never-dark"] .track-emoji svg { color: #E08A3C }
+  :root[data-theme="never-dark"] .track-title { color: #FFFFFF }
+  :root[data-theme="never-dark"] .track-sub { color: #D6CEBE }
+  :root[data-theme="never-dark"] .track-btn.current {
     border-color: #E08A3C; background: #362417; box-shadow: 0 4px 22px rgba(224,138,60,.3)
   }
-  :root:not([data-theme="light"]) .track-btn.current::after { background: #E08A3C; color: #FFFFFF }
-  :root:not([data-theme="light"]) .track-skip a { background: #362417; border-color: #6E4924; color: #E08A3C }
-  :root:not([data-theme="light"]) .track-skip a:hover { background: #E08A3C; color: #FFFFFF }
+  :root[data-theme="never-dark"] .track-btn.current::after { background: #E08A3C; color: #FFFFFF }
+  :root[data-theme="never-dark"] .track-skip a { background: #362417; border-color: #6E4924; color: #E08A3C }
+  :root[data-theme="never-dark"] .track-skip a:hover { background: #E08A3C; color: #FFFFFF }
 }
-:root[data-theme="dark"] #trackGate { background: rgba(0,0,0,.82) }
-:root[data-theme="dark"] .track-card {
+:root[data-theme="never-dark"] #trackGate { background: rgba(0,0,0,.82) }
+:root[data-theme="never-dark"] .track-card {
   background: #181613; border-color: #4D4335; color: #FFFFFF; box-shadow: 0 24px 70px rgba(0,0,0,.75)
 }
-:root[data-theme="dark"] .track-card h1 { color: #FFFFFF }
-:root[data-theme="dark"] .track-card .sub { color: #C9BFAD }
-:root[data-theme="dark"] .track-card .sheet-x { background: #25201A; border-color: #4D4335; color: #C9BFAD }
-:root[data-theme="dark"] .track-card .sheet-x:hover { background: #38271A; color: #E08A3C; border-color: #E08A3C }
-:root[data-theme="dark"] .track-logo { background: #362417; border-color: #6E4924; color: #E08A3C }
-:root[data-theme="dark"] .track-logo svg { color: #E08A3C }
-:root[data-theme="dark"] .track-btn {
+:root[data-theme="never-dark"] .track-card h1 { color: #FFFFFF }
+:root[data-theme="never-dark"] .track-card .sub { color: #C9BFAD }
+:root[data-theme="never-dark"] .track-card .sheet-x { background: #25201A; border-color: #4D4335; color: #C9BFAD }
+:root[data-theme="never-dark"] .track-card .sheet-x:hover { background: #38271A; color: #E08A3C; border-color: #E08A3C }
+:root[data-theme="never-dark"] .track-logo { background: #362417; border-color: #6E4924; color: #E08A3C }
+:root[data-theme="never-dark"] .track-logo svg { color: #E08A3C }
+:root[data-theme="never-dark"] .track-btn {
   background: #25201B; border-color: #4D4032; color: #FFFFFF; box-shadow: 0 3px 10px rgba(0,0,0,.35)
 }
-:root[data-theme="dark"] .track-btn:hover {
+:root[data-theme="never-dark"] .track-btn:hover {
   border-color: #E08A3C; background: #302A23; box-shadow: 0 8px 24px rgba(224,138,60,.24)
 }
-:root[data-theme="dark"] .track-emoji { background: #362417; border-color: #6E4924; color: #E08A3C }
-:root[data-theme="dark"] .track-emoji svg { color: #E08A3C }
-:root[data-theme="dark"] .track-title { color: #FFFFFF }
-:root[data-theme="dark"] .track-sub { color: #D6CEBE }
-:root[data-theme="dark"] .track-btn.current {
+:root[data-theme="never-dark"] .track-emoji { background: #362417; border-color: #6E4924; color: #E08A3C }
+:root[data-theme="never-dark"] .track-emoji svg { color: #E08A3C }
+:root[data-theme="never-dark"] .track-title { color: #FFFFFF }
+:root[data-theme="never-dark"] .track-sub { color: #D6CEBE }
+:root[data-theme="never-dark"] .track-btn.current {
   border-color: #E08A3C; background: #362417; box-shadow: 0 4px 22px rgba(224,138,60,.3)
 }
-:root[data-theme="dark"] .track-btn.current::after { background: #E08A3C; color: #FFFFFF }
-:root[data-theme="dark"] .track-skip a { background: #362417; border-color: #6E4924; color: #E08A3C }
-:root[data-theme="dark"] .track-skip a:hover { background: #E08A3C; color: #FFFFFF }
+:root[data-theme="never-dark"] .track-btn.current::after { background: #E08A3C; color: #FFFFFF }
+:root[data-theme="never-dark"] .track-skip a { background: #362417; border-color: #6E4924; color: #E08A3C }
+:root[data-theme="never-dark"] .track-skip a:hover { background: #E08A3C; color: #FFFFFF }
 
 /* ===== Tier / Zugriffsstufen ===== */
 .tier-badge{display:inline-flex;align-items:center;gap:4px;border-radius:999px;
@@ -1134,15 +1134,15 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
 /* ===== Dark mode: delegated to css/statute-theme.css (single source of truth) ===== */
 /* statute-theme.css owns --bg/--surface/--ink/--accent for light + dark + auto.
    Keep only non-variable tweaks here with proper data-theme guards. */
-:root[data-theme="dark"] img{opacity:.9}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]) img{opacity:.9}
-  :root:not([data-theme="light"]) .nav{background:rgba(26,25,22,.94)}
+:root[data-theme="never-dark"] img{opacity:.9}
+@media (max-width: 1px){
+  :root[data-theme="never-dark"] img{opacity:.9}
+  :root[data-theme="never-dark"] .nav{background:rgba(26,25,22,.94)}
 }
-:root[data-theme="dark"] .nav{background:rgba(26,25,22,.94)}
-:root[data-theme="dark"] #loginGate,:root[data-theme="dark"] #trackGate{background:#1A1916}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]) #loginGate,:root:not([data-theme="light"]) #trackGate{background:#1A1916}
+:root[data-theme="never-dark"] .nav{background:rgba(26,25,22,.94)}
+:root[data-theme="never-dark"] #loginGate,:root[data-theme="never-dark"] #trackGate{background:#1A1916}
+@media (max-width: 1px){
+  :root[data-theme="never-dark"] #loginGate,:root[data-theme="never-dark"] #trackGate{background:#1A1916}
 }
 @media (prefers-reduced-motion:no-preference){
   .view.active{animation:viewIn .38s cubic-bezier(.22,1,.36,1)}
@@ -1257,9 +1257,9 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
 .sh-chip{display:inline-flex;align-items:center;gap:4px;background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:4px 10px;font-size:.78em;font-weight:500;color:var(--ink);cursor:pointer;transition:.12s;-webkit-tap-highlight-color:transparent}
 .sh-chip:hover{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
 .sh-mark{background:#FEF08A;color:#854D0E;padding:0 2px;border-radius:3px;font-weight:600}
-[data-theme="dark"] .sh-mark{background:#854D0E;color:#FEF08A}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]) .sh-mark{background:#854D0E;color:#FEF08A}
+[data-theme="never-dark"] .sh-mark{background:#854D0E;color:#FEF08A}
+@media (max-width: 1px){
+  :root[data-theme="never-dark"] .sh-mark{background:#854D0E;color:#FEF08A}
 }
 
 /* 3. LIGHTBOX ZOOM CONTROLS */
@@ -1284,17 +1284,17 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 .streak-main{display:flex;align-items:center;gap:12px}
 .streak-flame{font-size:2.2em;line-height:1;filter:drop-shadow(0 2px 8px rgba(255,149,0,.4));animation:softPulse 2s infinite}
 .streak-count{font-size:1.45em;font-weight:800;color:#D97706;line-height:1.1}
-[data-theme="dark"] .streak-count{color:#FBBF24}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]) .streak-count{color:#FBBF24}
+[data-theme="never-dark"] .streak-count{color:#FBBF24}
+@media (max-width: 1px){
+  :root[data-theme="never-dark"] .streak-count{color:#FBBF24}
 }
 .streak-label{font-size:.78em;color:var(--muted);font-weight:600;margin-top:2px}
 .streak-milestone{flex:1;max-width:260px}
 .streak-m-title{display:flex;justify-content:space-between;font-size:.74em;font-weight:700;color:var(--ink);margin-bottom:5px}
 .streak-bar{height:7px;background:rgba(0,0,0,.08);border-radius:999px;overflow:hidden}
-[data-theme="dark"] .streak-bar{background:rgba(255,255,255,.12)}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]) .streak-bar{background:rgba(255,255,255,.12)}
+[data-theme="never-dark"] .streak-bar{background:rgba(255,255,255,.12)}
+@media (max-width: 1px){
+  :root[data-theme="never-dark"] .streak-bar{background:rgba(255,255,255,.12)}
 }
 .streak-bar span{display:block;height:100%;border-radius:999px;background:#FF9500;transition:width .6s ease}
 
@@ -1317,39 +1317,39 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 }
 
 /* 8. DARK-MODE HARDCODE FIXES (single source: statute vars; covers explicit + auto dark) */
-[data-theme="dark"] .zq,[data-theme="dark"] .zq-opts>li,[data-theme="dark"] .zq-ans,
-[data-theme="dark"] .mini,[data-theme="dark"] .formula,[data-theme="dark"] .svg-box,
-[data-theme="dark"] .ueb-paper,[data-theme="dark"] .ueb-set,[data-theme="dark"] .ueb-sol,
-[data-theme="dark"] .tq-item,[data-theme="dark"] .qa-item,[data-theme="dark"] .vk-item,
-[data-theme="dark"] .zw-toolbar,[data-theme="dark"] .src-thumb img{
+[data-theme="never-dark"] .zq,[data-theme="never-dark"] .zq-opts>li,[data-theme="never-dark"] .zq-ans,
+[data-theme="never-dark"] .mini,[data-theme="never-dark"] .formula,[data-theme="never-dark"] .svg-box,
+[data-theme="never-dark"] .ueb-paper,[data-theme="never-dark"] .ueb-set,[data-theme="never-dark"] .ueb-sol,
+[data-theme="never-dark"] .tq-item,[data-theme="never-dark"] .qa-item,[data-theme="never-dark"] .vk-item,
+[data-theme="never-dark"] .zw-toolbar,[data-theme="never-dark"] .src-thumb img{
   background:var(--surface);border-color:var(--line);color:var(--ink)
 }
-[data-theme="dark"] .zq-opts>li:hover{background:var(--accent-soft)}
-[data-theme="dark"] .detail-box .viet,[data-theme="dark"] .detail-box dd,
-[data-theme="dark"] .mini p,[data-theme="dark"] .mini li,[data-theme="dark"] .quiz-start p,
-[data-theme="dark"] .ueb-aufg .aintro,[data-theme="dark"] .ueb-paper .datum,
-[data-theme="dark"] .qa-vi,[data-theme="dark"] .vk-vi{color:var(--muted)}
-[data-theme="dark"] .ueb-aufg .aline,[data-theme="dark"] .ueb-aufg .ah .apts,
-[data-theme="dark"] .detail-box dt,[data-theme="dark"] .qa-qtext b{color:var(--ink)}
-[data-theme="dark"] .ueb-part .pno,[data-theme="dark"] .ueb-aufg .ah .aname{color:#E08A3C}
-[data-theme="dark"] .zw-tip{background:var(--accent-soft);border-color:var(--accent);color:var(--ink)}
-[data-theme="dark"] .zw-tip:hover{background:var(--accent-soft)}
-[data-theme="dark"] .zq-fig img{background:var(--bg);border-color:var(--line)}
-[data-theme="dark"] .ueb-sol{background:var(--okbg);border-color:var(--line)}
-[data-theme="dark"] .tq-explain,[data-theme="dark"] .qa-why{background:var(--warnbg);color:var(--ink)}
-[data-theme="dark"] .login-card input[type=text],[data-theme="dark"] .login-card input[type=password]{border-bottom-color:var(--line)}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]) .zq,:root:not([data-theme="light"]) .zq-opts>li,:root:not([data-theme="light"]) .zq-ans,
-  :root:not([data-theme="light"]) .mini,:root:not([data-theme="light"]) .formula,:root:not([data-theme="light"]) .svg-box,
-  :root:not([data-theme="light"]) .ueb-paper,:root:not([data-theme="light"]) .ueb-set,:root:not([data-theme="light"]) .ueb-sol,
-  :root:not([data-theme="light"]) .tq-item,:root:not([data-theme="light"]) .qa-item,:root:not([data-theme="light"]) .vk-item,
-  :root:not([data-theme="light"]) .zw-toolbar{background:var(--surface);border-color:var(--line);color:var(--ink)}
-  :root:not([data-theme="light"]) .detail-box .viet,:root:not([data-theme="light"]) .detail-box dd,
-  :root:not([data-theme="light"]) .mini p,:root:not([data-theme="light"]) .mini li,
-  :root:not([data-theme="light"]) .ueb-aufg .aintro{color:var(--muted)}
-  :root:not([data-theme="light"]) .ueb-aufg .aline,:root:not([data-theme="light"]) .ueb-aufg .ah .apts{color:var(--ink)}
-  :root:not([data-theme="light"]) .ueb-part .pno,:root:not([data-theme="light"]) .ueb-aufg .ah .aname{color:#E08A3C}
-  :root:not([data-theme="light"]) .zw-tip{background:var(--accent-soft);border-color:var(--accent);color:var(--ink)}
+[data-theme="never-dark"] .zq-opts>li:hover{background:var(--accent-soft)}
+[data-theme="never-dark"] .detail-box .viet,[data-theme="never-dark"] .detail-box dd,
+[data-theme="never-dark"] .mini p,[data-theme="never-dark"] .mini li,[data-theme="never-dark"] .quiz-start p,
+[data-theme="never-dark"] .ueb-aufg .aintro,[data-theme="never-dark"] .ueb-paper .datum,
+[data-theme="never-dark"] .qa-vi,[data-theme="never-dark"] .vk-vi{color:var(--muted)}
+[data-theme="never-dark"] .ueb-aufg .aline,[data-theme="never-dark"] .ueb-aufg .ah .apts,
+[data-theme="never-dark"] .detail-box dt,[data-theme="never-dark"] .qa-qtext b{color:var(--ink)}
+[data-theme="never-dark"] .ueb-part .pno,[data-theme="never-dark"] .ueb-aufg .ah .aname{color:#E08A3C}
+[data-theme="never-dark"] .zw-tip{background:var(--accent-soft);border-color:var(--accent);color:var(--ink)}
+[data-theme="never-dark"] .zw-tip:hover{background:var(--accent-soft)}
+[data-theme="never-dark"] .zq-fig img{background:var(--bg);border-color:var(--line)}
+[data-theme="never-dark"] .ueb-sol{background:var(--okbg);border-color:var(--line)}
+[data-theme="never-dark"] .tq-explain,[data-theme="never-dark"] .qa-why{background:var(--warnbg);color:var(--ink)}
+[data-theme="never-dark"] .login-card input[type=text],[data-theme="never-dark"] .login-card input[type=password]{border-bottom-color:var(--line)}
+@media (max-width: 1px){
+  :root[data-theme="never-dark"] .zq,:root[data-theme="never-dark"] .zq-opts>li,:root[data-theme="never-dark"] .zq-ans,
+  :root[data-theme="never-dark"] .mini,:root[data-theme="never-dark"] .formula,:root[data-theme="never-dark"] .svg-box,
+  :root[data-theme="never-dark"] .ueb-paper,:root[data-theme="never-dark"] .ueb-set,:root[data-theme="never-dark"] .ueb-sol,
+  :root[data-theme="never-dark"] .tq-item,:root[data-theme="never-dark"] .qa-item,:root[data-theme="never-dark"] .vk-item,
+  :root[data-theme="never-dark"] .zw-toolbar{background:var(--surface);border-color:var(--line);color:var(--ink)}
+  :root[data-theme="never-dark"] .detail-box .viet,:root[data-theme="never-dark"] .detail-box dd,
+  :root[data-theme="never-dark"] .mini p,:root[data-theme="never-dark"] .mini li,
+  :root[data-theme="never-dark"] .ueb-aufg .aintro{color:var(--muted)}
+  :root[data-theme="never-dark"] .ueb-aufg .aline,:root[data-theme="never-dark"] .ueb-aufg .ah .apts{color:var(--ink)}
+  :root[data-theme="never-dark"] .ueb-part .pno,:root[data-theme="never-dark"] .ueb-aufg .ah .aname{color:#E08A3C}
+  :root[data-theme="never-dark"] .zw-tip{background:var(--accent-soft);border-color:var(--accent);color:var(--ink)}
 }
 
 /* 9. A11Y: visible focus + keyboard activation for clickable cards */
@@ -1363,8 +1363,8 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./css/statute-theme.css?v=18">
-<link rel="stylesheet" href="./css/elite-theme.css?v=11">
+<link rel="stylesheet" href="./css/statute-theme.css?v=200">
+<link rel="stylesheet" href="./css/elite-theme.css?v=200">
 </head>
 <body>
 <div id="offlineBanner" role="status"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-right:6px"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Offline-Modus — Lektionen &amp; Prüfungen bleiben verfügbar!</span></div>

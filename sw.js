@@ -1,5 +1,5 @@
 /* Service Worker – AzubiHub (offline shell + static assets) */
-const CACHE = 'azubihub-v146';
+const CACHE = 'azubihub-v147';
 const PRECACHE = [
   './',
   './js/wissen.js',
