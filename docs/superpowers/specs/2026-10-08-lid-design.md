@@ -97,3 +97,13 @@
 
 - Invoke `writing-plans` để lập implementation plan (chia chunk nhập liệu 460 câu,
   mapping 16 mã bang, thứ tự file, test đếm số liệu).
+
+## 7. Revision 2026-10-08 — standalone track (user yêu cầu sau duyệt)
+
+- LiD KHÔNG vào `FAECHER`/`js/faecher.js`. Là track riêng `lid/` như
+  `fuererschein/` và `deutsch-a1-c1/`: `lid/index.html` + `lid/data/*.js` +
+  `lid/lid-exam.js` + `lid/lid-app.js`, classic HTML/JS không build step.
+- Vào sau đăng nhập qua nút track thứ 4 trong `#trackGate` (`pickTrack('lid')`
+  → `./lid/`), redirect trong `unlockApp`, link về `../index.html?choose=1`.
+- `sw.js` precache 11 file `lid/` + bump cache. Mọi số liệu thi (310/bang, đề
+  33 = 30+3, 60 phút, đậu ≥17) và nguồn BAMF giữ nguyên.
