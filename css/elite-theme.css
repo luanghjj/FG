@@ -13,6 +13,7 @@ html body { line-height: 1.5; }
 
 /* ===== Header: frosted ivory + hairline ===== */
 .nav {
+  background: var(--bg) !important;
   background: color-mix(in srgb, var(--bg) 86%, transparent) !important;
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
@@ -33,74 +34,94 @@ html body { line-height: 1.5; }
 
 /* ===== Hero ===== */
 #v-home .hero {
-  background: color-mix(in srgb, var(--surface) 70%, var(--bg));
-  border: 1.5px solid var(--line);
-  border-radius: var(--radius);
-  box-shadow: var(--elite-shadow-1);
-  padding: 20px;
-  margin: 6px 0 16px;
+  background: var(--surface) !important;
+  background: color-mix(in srgb, var(--surface) 75%, var(--bg)) !important;
+  border: 1.5px solid var(--line) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--elite-shadow-1) !important;
+  padding: 24px !important;
+  margin: 6px 0 18px !important;
+  position: relative !important;
+  overflow: hidden !important;
 }
 #v-home .hero::before {
-  content: "IHK Ausbildung · BW";
-  display: block;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 10px;
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 4px !important;
+  background: var(--accent) !important;
 }
-#v-home .hero h1 { font-size: clamp(1.6rem, 6vw, 2.25rem) !important; font-weight: 500 !important; line-height: 1.2; }
-#v-home .hero p { font-size: 13px; color: var(--muted); }
+#v-home .hero h1 { font-family: var(--font-head) !important; font-size: clamp(1.6rem, 5vw, 2.2rem) !important; font-weight: 600 !important; line-height: 1.25 !important; color: var(--ink) !important; }
+#v-home .hero p { font-size: 0.94rem !important; color: var(--muted) !important; line-height: 1.6 !important; }
 
 /* ===== Streak + readiness ===== */
 .streak-card {
   background: var(--surface) !important;
-  border: 1px solid var(--line) !important;
+  border: 1.5px solid var(--line) !important;
   border-radius: var(--radius) !important;
-  box-shadow: var(--elite-shadow-1);
+  box-shadow: var(--elite-shadow-1) !important;
 }
 .streak-flame { filter: none !important; animation: none !important; color: var(--accent); }
 .streak-count { color: var(--ink) !important; font-size: 1.05em !important; font-weight: 700 !important; }
 .streak-m-title { color: var(--muted) !important; }
 .streak-m-title span:last-child { color: var(--accent) !important; font-weight: 700; }
-.streak-bar { height: 6px !important; background: color-mix(in srgb, var(--line) 60%, var(--surface)) !important; }
+.streak-bar { height: 6px !important; background: var(--line) !important; background: color-mix(in srgb, var(--line) 60%, var(--surface)) !important; }
 .streak-bar span { background: linear-gradient(90deg, #D97706, #B45309) !important; }
 
 /* ===== Next exam chip ===== */
-.next-exam-chip { border-radius: var(--radius) !important; border: 1px solid var(--line) !important; }
+.next-exam-chip { border-radius: var(--radius) !important; border: 1.5px solid var(--line) !important; background: var(--surface) !important; box-shadow: var(--elite-shadow-1) !important; }
 .next-exam-chip .date-box { background: var(--accent-soft) !important; color: var(--accent) !important; border-radius: 10px; }
 
-/* ===== Exam banners: thẻ trắng + vạch hổ phách bên trái ===== */
+/* ===== Exam banners: chuẩn sáp hổ phách & certificate viền tinh tế ===== */
 .exam-banner {
-  border: 1px solid var(--line) !important;
+  background: var(--surface) !important;
+  border: 1.5px solid var(--line) !important;
   border-left: 4px solid var(--accent) !important;
   border-radius: var(--radius) !important;
   box-shadow: var(--elite-shadow-1) !important;
-  padding: 16px 18px !important;
-  gap: 14px !important;
+  padding: 16px 20px !important;
+  gap: 16px !important;
+  transition: all .2s cubic-bezier(.22, 1, .36, 1) !important;
+}
+.exam-banner:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: var(--elite-shadow-2) !important;
+  border-color: var(--accent) !important;
 }
 .exam-banner:nth-of-type(2) { border-left-color: var(--accent-2) !important; }
 .exam-banner::after { display: none !important; }
 .exam-banner .exam-kicker {
-  font-family: var(--font-ui) !important;
-  font-size: 10px !important;
-  letter-spacing: .14em !important;
+  font-family: var(--font-mono) !important;
+  font-size: 10.5px !important;
+  letter-spacing: .12em !important;
   font-weight: 700 !important;
+  text-transform: uppercase !important;
+  color: var(--accent) !important;
 }
-.exam-banner .exam-txt h2 { font-size: 1.2em !important; }
-.exam-banner .exam-txt p { font-size: 12.5px; }
+.exam-banner .exam-txt h2 { font-family: var(--font-head) !important; font-size: 1.3rem !important; color: var(--ink) !important; font-weight: 600 !important; }
+.exam-banner .exam-txt p { font-size: 13px !important; color: var(--muted) !important; }
 .exam-banner .exam-ic {
-  width: 42px; height: 42px; border-radius: 999px;
-  display: flex; align-items: center; justify-content: center;
-  background: var(--accent-soft); flex-shrink: 0;
+  width: 44px !important; height: 44px !important; border-radius: 12px !important;
+  display: flex !important; align-items: center !important; justify-content: center !important;
+  background: var(--accent-soft) !important; color: var(--accent) !important; flex-shrink: 0 !important;
 }
 .exam-ic svg { width: 22px !important; height: 22px !important; }
 .exam-banner .exam-go {
+  margin-left: auto !important;
   border-radius: 999px !important;
-  font-size: 12px; font-weight: 600;
-  background: var(--accent-soft) !important;
-  border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent) !important;
+  font-size: 0.88rem !important; font-weight: 600 !important;
+  background: linear-gradient(135deg, #B45309, #9A4607) !important;
+  color: #fff !important;
+  border: 1px solid var(--accent) !important;
+  box-shadow: 0 2px 8px rgba(180, 83, 9, .25) !important;
+  padding: 8px 18px !important;
+  transition: all .15s !important;
+}
+.exam-banner:hover .exam-go {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 14px rgba(180, 83, 9, .35) !important;
 }
 
 /* ===== Section headings ===== */
@@ -133,19 +154,29 @@ html body { line-height: 1.5; }
 .subject-card .pill { border-radius: 999px; font-weight: 600; letter-spacing: .02em; }
 
 /* ===== Heute üben: 4 ô gọn ===== */
-.today-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+.today-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 10px !important; }
 @media (min-width: 560px) { .today-grid { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; } }
 .today-card {
-  border: 1px solid var(--line) !important;
-  border-radius: var(--radius) !important;
+  border: 1.5px solid var(--line) !important;
+  border-radius: var(--radius-sm) !important;
+  background: var(--surface) !important;
+  box-shadow: 0 1px 3px rgba(27, 31, 42, .05) !important;
+  padding: 16px 12px !important;
   text-align: center;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
+  transition: all .2s cubic-bezier(.22, 1, .36, 1) !important;
+  cursor: pointer;
 }
-.today-card:hover { border-color: var(--accent-2) !important; box-shadow: var(--elite-shadow-2) !important; }
-.today-card .ic svg { color: var(--accent); }
+.today-card:hover { border-color: var(--accent) !important; box-shadow: var(--elite-shadow-1) !important; transform: translateY(-2px) !important; }
+.today-card .ic {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: var(--accent-soft); display: flex; align-items: center; justify-content: center;
+  margin-bottom: 6px;
+}
+.today-card .ic svg { color: var(--accent); width: 18px; height: 18px; }
 
 /* ===== Lernstand ===== */
-.progress-card { border: 1px solid var(--line) !important; border-radius: var(--radius) !important; box-shadow: var(--elite-shadow-1); }
+.progress-card { border: 1.5px solid var(--line) !important; border-radius: var(--radius) !important; background: var(--surface) !important; box-shadow: var(--elite-shadow-1); }
 .pstat { border-radius: var(--radius-sm) !important; background: var(--accent-soft) !important; }
 
 /* ===== Buttons ===== */
@@ -153,6 +184,7 @@ html body { line-height: 1.5; }
 
 /* ===== Bottom nav: frosted, icon + label ===== */
 .bottom-nav {
+  background: var(--bg) !important;
   background: color-mix(in srgb, var(--bg) 90%, transparent) !important;
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
@@ -170,33 +202,40 @@ html body { line-height: 1.5; }
   align-items: center;
   justify-content: flex-start !important;
   gap: 12px;
-  padding: 12px 14px !important;
+  padding: 12px 16px !important;
   min-height: 0 !important;
   min-width: 0;
+  background: var(--surface) !important;
+  border: 1.5px solid var(--line) !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: 0 1px 3px rgba(27, 31, 42, .05) !important;
+  transition: all .15s cubic-bezier(.22, 1, .36, 1) !important;
 }
+.subject-card:hover { border-color: var(--accent) !important; box-shadow: var(--elite-shadow-1) !important; transform: translateY(-1px) !important; }
 .subject-card::before { width: 3px; border-radius: 3px; }
 .subject-card.soon::before { background: transparent; }
 .subject-card .code-box {
   flex: 0 0 auto;
-  width: 40px; height: 40px;
-  border-radius: 8px;
+  width: 42px; height: 42px;
+  border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
-  background: color-mix(in srgb, var(--surface) 60%, var(--bg));
+  background: var(--accent-soft);
   color: var(--accent);
-  font-weight: 700; font-size: 12.5px;
+  font-weight: 700; font-size: 13px;
   letter-spacing: .01em;
 }
-.subject-card.soon .code-box { color: var(--muted); font-weight: 500; }
+.subject-card.soon .code-box { background: color-mix(in srgb, var(--surface) 60%, var(--bg)); color: var(--muted); font-weight: 500; }
 .subject-card .sc-main { flex: 1; min-width: 0; }
 .subject-card .sc-title {
-  font-size: 14px; font-weight: 600; color: var(--ink);
+  font-family: var(--font-ui) !important;
+  font-size: 14.5px; font-weight: 600; color: var(--ink);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .subject-card .teacher { font-size: 12px; color: var(--muted); margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .subject-card .sc-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
 .subject-card .sc-right .chev { width: 18px; height: 18px; color: var(--muted); }
-.subject-card .pill.date { background: var(--accent-soft); color: var(--accent); font-weight: 600; font-size: 11px; padding: 2px 8px; border-radius: 999px; }
-.subject-card .pill.soon, .subject-card .pill.ready { font-size: 11px; }
+.subject-card .pill.date { font-family: var(--font-mono); background: var(--accent-soft); color: var(--accent); font-weight: 600; font-size: 11px; padding: 2px 8px; border-radius: 6px; border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); }
+.subject-card .pill.soon, .subject-card .pill.ready { font-size: 11px; border-radius: 6px; }
 .subject-card .pro-flag {
   position: static !important;
   top: auto !important; right: auto !important;
@@ -217,8 +256,8 @@ html body { line-height: 1.5; }
 /* Icon đơn sắc theo màu nhấn (icons.js gán màu riêng cho emoji) */
 .streak-flame, .streak-flame *, .streak-m-title *, .exam-ic *, .today-card .ic * { color: var(--accent) !important; }
 
-/* ===== Khung desktop rộng 1280px (DESIGN.md: 12-col, max 1280) ===== */
-.page, .nav-row { max-width: 1280px !important; }
+/* ===== Khung trang đồng bộ chuẩn 960px (giống LiD 920px) ===== */
+.page, .nav-row { max-width: 960px !important; }
 
 /* ===== KPI row: streak + kỳ thi kế tiếp (mobile 1 cột · desktop 2 cột) ===== */
 .kpi-row { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 18px; }
@@ -235,6 +274,7 @@ html body { line-height: 1.5; }
   padding: 16px 18px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
+  background: var(--surface);
   background: color-mix(in srgb, var(--surface) 70%, var(--bg));
 }
 .quote-card .quote-ic {
@@ -273,6 +313,7 @@ html body { line-height: 1.5; }
   .subject-group + .subject-group .subject-card { flex-direction: row; align-items: center; gap: 12px; }
   .subject-group + .subject-group .subject-card .code-box {
     width: 40px; height: 40px; padding: 0;
+    background: var(--surface);
     background: color-mix(in srgb, var(--surface) 60%, var(--bg));
     font-size: 12.5px; letter-spacing: .01em; text-transform: none;
   }
@@ -320,6 +361,7 @@ html body { line-height: 1.5; }
 .today-card .ic,
 .next-exam-chip .date-box,
 .quote-card .quote-ic {
+  border: 1px solid var(--line) !important;
   border: 1px solid color-mix(in srgb, var(--line) 70%, transparent) !important;
 }
 
@@ -334,6 +376,7 @@ html body { line-height: 1.5; }
 /* Nhãn mục: thêm kẻ dưới mảnh để tách mạch nội dung */
 .fach-label {
   padding-bottom: 7px;
+  border-bottom: 1.5px solid var(--line);
   border-bottom: 1.5px solid color-mix(in srgb, var(--line) 80%, transparent);
   margin-bottom: 12px !important;
 }
@@ -349,6 +392,7 @@ html body { line-height: 1.5; }
 .subject-card:hover,
 .today-card:hover,
 .next-exam-chip:hover,
-.exam-banner:hover {
+.exam-banner:hover,
+.track-btn:hover {
   border-color: var(--accent) !important;
 }

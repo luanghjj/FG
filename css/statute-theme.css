@@ -20,10 +20,13 @@
   --warnbg: #FDF3E3;
   --ok: #3f5c39;
   --okbg: #eef3ea;
-  --bad: #B45309;
+  --bad: #9A4607;
   --badbg: #FDF3E3;
+  --surface-card: #FDFBF6;
   --shadow: 0 2px 8px rgba(27,31,42,.12), 0 1px 3px rgba(27,31,42,.08);
-  --radius: 10px;
+  --elite-shadow-1: 0 4px 20px -3px rgba(27, 28, 26, .06);
+  --elite-shadow-2: 0 8px 24px -4px rgba(15, 23, 42, .08);
+  --radius: 12px;
   --radius-sm: 8px;
 }
 
@@ -40,8 +43,9 @@
   --warnbg: #FDF3E3;
   --ok: #3f5c39;
   --okbg: #eef3ea;
-  --bad: #B45309;
+  --bad: #9A4607;
   --badbg: #FDF3E3;
+  --surface-card: #FDFBF6;
 }
 
 /* Dark Academia Palette for Dark Mode */
@@ -49,6 +53,7 @@
   :root:not([data-theme="light"]) {
     --bg: #1A1916;
     --surface: #26231E;
+    --surface-card: #201D18;
     --line: #5A5040;
     --ink: #EAE3D0;
     --muted: #A39B88;
@@ -62,12 +67,15 @@
     --bad: #E08A3C;
     --badbg: #382522;
     --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.4);
+    --elite-shadow-1: 0 4px 20px -3px rgba(0, 0, 0, .45);
+    --elite-shadow-2: 0 8px 24px -4px rgba(0, 0, 0, .6);
   }
 }
 
 :root[data-theme="dark"] {
   --bg: #1A1916;
   --surface: #26231E;
+  --surface-card: #201D18;
   --line: #5A5040;
   --ink: #EAE3D0;
   --muted: #A39B88;
@@ -81,6 +89,8 @@
   --bad: #E08A3C;
   --badbg: #382522;
   --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.4);
+  --elite-shadow-1: 0 4px 20px -3px rgba(0, 0, 0, .45);
+  --elite-shadow-2: 0 8px 24px -4px rgba(0, 0, 0, .6);
 }
 
 /* Prevent tier-paid from overriding theme vars */
@@ -136,24 +146,33 @@ h1, h2, h3, h4, .hero h1, .exam-txt h2, .section-head h2, .card h2, .login-card 
   font-family: var(--font-mono) !important;
 }
 
-/* Top Nav */
+/* Top Nav: Frosted Glass Hairline */
 .nav {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 50 !important;
   background: var(--bg) !important;
-  border-bottom: 3px double var(--accent-2) !important;
+  background: color-mix(in srgb, var(--bg) 88%, transparent) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid var(--line) !important;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, .03) !important;
 }
 
 .brand .logo {
-  background: var(--accent) !important;
-  border-radius: 6px !important;
+  background: var(--accent-soft) !important;
+  color: var(--accent) !important;
+  border-radius: 999px !important;
 }
 
 /* Buttons */
 .btn, .eq-cta-btn {
-  border-radius: 6px !important;
+  border-radius: 8px !important;
   box-shadow: none !important;
   letter-spacing: .02em !important;
   background: var(--accent) !important;
   color: #fff !important;
+  font-weight: 600 !important;
 }
 
 .btn.ghost {
@@ -170,7 +189,7 @@ h1, h2, h3, h4, .hero h1, .exam-txt h2, .section-head h2, .card h2, .login-card 
 
 /* Tiles, Cards, Containers across all pages */
 .tile, .card, .opt, details, .today-card, .progress-card, .subject-card, .ka-card,
-.theme-item, .next-exam-chip, .detail-box, .track-btn, .search-toggle {
+.theme-item, .next-exam-chip, .detail-box, .search-toggle {
   background: var(--surface) !important;
   border: 1.5px solid var(--line) !important;
   border-radius: var(--radius) !important;
@@ -242,19 +261,19 @@ h1, h2, h3, h4, .hero h1, .exam-txt h2, .section-head h2, .card h2, .login-card 
 .sheet {
   background: rgba(27, 31, 42, 0.6) !important;
 }
-.sheet-card, .login-card, .track-card, #searchSheet .sheet, #fachSheet .fs-card {
+.sheet-card, .login-card, #searchSheet .sheet, #fachSheet .fs-card {
   background: var(--surface) !important;
   color: var(--ink) !important;
   border: 1.5px solid var(--line) !important;
   border-radius: 16px !important;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
 }
-.sheet-head b, .login-card h1, .track-card h1, .track-title, .login-hist h3, .login-hist .hrow b {
+.sheet-head b, .login-card h1, .login-hist h3, .login-hist .hrow b {
   color: var(--ink) !important;
   font-size: 1.15em !important;
 }
 .sheet-card p.muted, .sheet-card .muted, .sheet-card label,
-.track-card .sub, .track-sub, .login-hist, .login-hist .hrow, .login-admin a, .login-skip {
+.login-hist, .login-hist .hrow, .login-admin a, .login-skip {
   color: var(--muted) !important;
 }
 .sheet-x, #fachSheet .fs-close, #searchSheet .sheet-close {
@@ -282,9 +301,350 @@ h1, h2, h3, h4, .hero h1, .exam-txt h2, .section-head h2, .card h2, .login-card 
 #loginGate {
   background: var(--bg) !important;
 }
+/* Track Gate (Modal chọn lộ trình học) - Phân tầng thị giác cao cấp & Tương phản tuyệt đối */
 #trackGate {
-  background: rgba(27, 31, 42, 0.65) !important;
-  backdrop-filter: blur(5px) !important;
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 200 !important;
+  background: rgba(15, 23, 42, 0.75) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 20px 16px !important;
+}
+#trackGate.hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+.track-card {
+  width: min(720px, 100%) !important;
+  background: var(--surface) !important;
+  border: 1.5px solid var(--line) !important;
+  border-radius: 22px !important;
+  padding: 34px 28px !important;
+  box-shadow: 0 24px 64px rgba(15, 23, 42, 0.28) !important;
+  color: #0F172A !important;
+  text-align: center !important;
+  position: relative !important;
+  animation: popIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) both !important;
+}
+.track-card h1 {
+  font-family: var(--font-head) !important;
+  font-size: 1.55em !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
+  margin: 0 0 6px !important;
+  line-height: 1.25 !important;
+  color: #0F172A !important;
+}
+.track-card .sub {
+  color: #5A5344 !important;
+  font-size: 0.92em !important;
+  line-height: 1.5 !important;
+  margin: 0 0 22px !important;
+}
+.track-card .sheet-x {
+  position: absolute !important;
+  top: 16px !important;
+  right: 16px !important;
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 999px !important;
+  border: 1px solid var(--line) !important;
+  background: var(--accent-soft) !important;
+  color: var(--accent) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.15s !important;
+}
+.track-card .sheet-x:hover {
+  background: var(--accent) !important;
+  color: #FFFFFF !important;
+  border-color: var(--accent) !important;
+  transform: scale(1.05) !important;
+}
+.track-logo {
+  width: 52px !important;
+  height: 52px !important;
+  border-radius: 999px !important;
+  background: var(--accent-soft) !important;
+  color: var(--accent) !important;
+  border: 1.5px solid var(--line) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 auto 14px !important;
+}
+.track-logo svg {
+  width: 26px !important;
+  height: 26px !important;
+  color: var(--accent) !important;
+}
+.track-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+}
+@media (max-width: 580px) {
+  .track-grid { grid-template-columns: 1fr !important; }
+}
+.track-btn {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  text-align: left !important;
+  gap: 10px !important;
+  background: var(--surface) !important;
+  border: 1.5px solid var(--line) !important;
+  border-radius: 16px !important;
+  padding: 18px 16px !important;
+  cursor: pointer !important;
+  color: var(--ink) !important;
+  font: inherit !important;
+  transition: all 0.18s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  position: relative !important;
+  box-shadow: 0 1px 3px rgba(27, 31, 42, 0.05) !important;
+}
+.track-btn:hover {
+  border-color: var(--accent) !important;
+  background: var(--surface) !important;
+  box-shadow: 0 8px 24px rgba(154, 70, 7, 0.16) !important;
+  transform: translateY(-2px) !important;
+}
+.track-emoji {
+  width: 42px !important;
+  height: 42px !important;
+  border-radius: 10px !important;
+  background: var(--accent-soft) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--accent) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+.track-emoji svg {
+  width: 22px !important;
+  height: 22px !important;
+  color: var(--accent) !important;
+}
+.track-title {
+  font-weight: 700 !important;
+  font-size: 1.05em !important;
+  line-height: 1.35 !important;
+  color: var(--ink) !important;
+  display: block !important;
+}
+.track-sub {
+  color: var(--muted) !important;
+  font-size: 0.84em !important;
+  line-height: 1.45 !important;
+  font-weight: 500 !important;
+  display: block !important;
+}
+.track-btn.current {
+  border: 2px solid var(--accent) !important;
+  background: var(--accent-soft) !important;
+  box-shadow: 0 4px 18px rgba(154, 70, 7, 0.18) !important;
+}
+.track-btn.current::after {
+  content: "Aktuell" !important;
+  position: absolute !important;
+  top: 12px !important;
+  right: 12px !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  color: #FFFFFF !important;
+  background: var(--accent) !important;
+  padding: 2px 8px !important;
+  border-radius: 999px !important;
+}
+.track-skip {
+  margin-top: 16px !important;
+}
+.track-skip a {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  color: var(--accent) !important;
+  font-size: 0.9em !important;
+  font-weight: 600 !important;
+  padding: 8px 20px !important;
+  border-radius: 999px !important;
+  background: var(--accent-soft) !important;
+  border: 1.5px solid var(--line) !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  transition: all 0.15s !important;
+}
+.track-skip a:hover {
+  background: var(--accent) !important;
+  color: #FFFFFF !important;
+  border-color: var(--accent) !important;
+}
+
+/* Dark Mode: Phân tách khối rõ rệt, chữ sáng rõ nét, không bị chìm màu */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) #trackGate {
+    background: rgba(0, 0, 0, 0.82) !important;
+  }
+  :root:not([data-theme="light"]) .track-card {
+    background: #181613 !important;
+    border-color: #4D4335 !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.75) !important;
+  }
+  :root:not([data-theme="light"]) .track-card h1 {
+    color: #FFFFFF !important;
+  }
+  :root:not([data-theme="light"]) .track-card .sub {
+    color: #C9BFAD !important;
+  }
+  :root:not([data-theme="light"]) .track-card .sheet-x {
+    background: #25201A !important;
+    border-color: #4D4335 !important;
+    color: #C9BFAD !important;
+  }
+  :root:not([data-theme="light"]) .track-card .sheet-x:hover {
+    background: #38271A !important;
+    border-color: #E08A3C !important;
+    color: #E08A3C !important;
+  }
+  :root:not([data-theme="light"]) .track-logo {
+    background: #362417 !important;
+    border-color: #6E4924 !important;
+    color: #E08A3C !important;
+  }
+  :root:not([data-theme="light"]) .track-logo svg {
+    color: #E08A3C !important;
+  }
+  :root:not([data-theme="light"]) .track-btn {
+    background: #25201B !important;
+    border-color: #4D4032 !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35) !important;
+  }
+  :root:not([data-theme="light"]) .track-btn:hover {
+    border-color: #E08A3C !important;
+    background: #302A23 !important;
+    box-shadow: 0 8px 24px rgba(224, 138, 60, 0.24) !important;
+  }
+  :root:not([data-theme="light"]) .track-emoji {
+    background: #362417 !important;
+    border-color: #6E4924 !important;
+    color: #E08A3C !important;
+  }
+  :root:not([data-theme="light"]) .track-emoji svg {
+    color: #E08A3C !important;
+  }
+  :root:not([data-theme="light"]) .track-title {
+    color: #FFFFFF !important;
+  }
+  :root:not([data-theme="light"]) .track-sub {
+    color: #D6CEBE !important;
+  }
+  :root:not([data-theme="light"]) .track-btn.current {
+    border-color: #E08A3C !important;
+    background: #362417 !important;
+    box-shadow: 0 4px 22px rgba(224, 138, 60, 0.3) !important;
+  }
+  :root:not([data-theme="light"]) .track-btn.current::after {
+    background: #E08A3C !important;
+    color: #FFFFFF !important;
+  }
+  :root:not([data-theme="light"]) .track-skip a {
+    background: #362417 !important;
+    border-color: #6E4924 !important;
+    color: #E08A3C !important;
+  }
+  :root:not([data-theme="light"]) .track-skip a:hover {
+    background: #E08A3C !important;
+    color: #FFFFFF !important;
+  }
+}
+
+:root[data-theme="dark"] #trackGate {
+  background: rgba(0, 0, 0, 0.82) !important;
+}
+:root[data-theme="dark"] .track-card {
+  background: #181613 !important;
+  border-color: #4D4335 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.75) !important;
+}
+:root[data-theme="dark"] .track-card h1 {
+  color: #FFFFFF !important;
+}
+:root[data-theme="dark"] .track-card .sub {
+  color: #C9BFAD !important;
+}
+:root[data-theme="dark"] .track-card .sheet-x {
+  background: #25201A !important;
+  border-color: #4D4335 !important;
+  color: #C9BFAD !important;
+}
+:root[data-theme="dark"] .track-card .sheet-x:hover {
+  background: #38271A !important;
+  border-color: #E08A3C !important;
+  color: #E08A3C !important;
+}
+:root[data-theme="dark"] .track-logo {
+  background: #362417 !important;
+  border-color: #6E4924 !important;
+  color: #E08A3C !important;
+}
+:root[data-theme="dark"] .track-logo svg {
+  color: #E08A3C !important;
+}
+:root[data-theme="dark"] .track-btn {
+  background: #25201B !important;
+  border-color: #4D4032 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35) !important;
+}
+:root[data-theme="dark"] .track-btn:hover {
+  border-color: #E08A3C !important;
+  background: #302A23 !important;
+  box-shadow: 0 8px 24px rgba(224, 138, 60, 0.24) !important;
+}
+:root[data-theme="dark"] .track-emoji {
+  background: #362417 !important;
+  border-color: #6E4924 !important;
+  color: #E08A3C !important;
+}
+:root[data-theme="dark"] .track-emoji svg {
+  color: #E08A3C !important;
+}
+:root[data-theme="dark"] .track-title {
+  color: #FFFFFF !important;
+}
+:root[data-theme="dark"] .track-sub {
+  color: #D6CEBE !important;
+}
+:root[data-theme="dark"] .track-btn.current {
+  border-color: #E08A3C !important;
+  background: #362417 !important;
+  box-shadow: 0 4px 22px rgba(224, 138, 60, 0.3) !important;
+}
+:root[data-theme="dark"] .track-btn.current::after {
+  background: #E08A3C !important;
+  color: #FFFFFF !important;
+}
+:root[data-theme="dark"] .track-skip a {
+  background: #362417 !important;
+  border-color: #6E4924 !important;
+  color: #E08A3C !important;
+}
+:root[data-theme="dark"] .track-skip a:hover {
+  background: #E08A3C !important;
+  color: #FFFFFF !important;
 }
 .login-card input[type=password], .login-card input[type=text] {
   color: var(--ink) !important;
@@ -428,4 +788,137 @@ input:focus, select:focus, textarea:focus, .search input:focus, .fill-input:focu
 .theme-item:hover {
   border-color: var(--accent) !important;
   box-shadow: 0 3px 10px rgba(27, 31, 42, 0.1) !important;
+}
+
+/* ==========================================================================
+   Shared Components (Đồng bộ theo chuẩn Leben in Deutschland & Elite Statute)
+   ========================================================================== */
+
+/* 1. Segmented Tabs Pill Control */
+.tabs-pill, .tab-nav, .tabs-segmented, .segmented-control {
+  display: flex !important;
+  gap: 6px !important;
+  background: color-mix(in srgb, var(--surface) 60%, var(--bg)) !important;
+  padding: 6px !important;
+  border-radius: 14px !important;
+  border: 1.5px solid var(--line) !important;
+  margin: 16px 0 !important;
+}
+
+.tabs-pill button, .tab-nav button, .tabs-segmented button, .tab-pill {
+  flex: 1 !important;
+  padding: 10px 16px !important;
+  border: 1px solid transparent !important;
+  border-radius: 10px !important;
+  background: transparent !important;
+  color: var(--muted) !important;
+  font-family: var(--font-ui) !important;
+  font-size: 0.92rem !important;
+  font-weight: 600 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  cursor: pointer !important;
+  transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.tabs-pill button:hover, .tab-nav button:hover, .tabs-segmented button:hover, .tab-pill:hover {
+  color: var(--ink) !important;
+  background: color-mix(in srgb, var(--surface) 80%, transparent) !important;
+}
+
+.tabs-pill button.active, .tab-nav button.active, .tabs-segmented button.active, .tab-pill.active {
+  background: var(--surface) !important;
+  color: var(--accent) !important;
+  border-color: var(--line) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* 2. Trắc nghiệm & Quiz Options Badges */
+.opt-badge, .option-letter, .q-letter {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 8px !important;
+  background: var(--accent-soft) !important;
+  color: var(--accent) !important;
+  border: 1px solid var(--line) !important;
+  font-family: var(--font-mono) !important;
+  font-weight: 700 !important;
+  font-size: 0.85rem !important;
+  flex-shrink: 0 !important;
+}
+
+/* 3. Feedback Cards & Giải thích đáp án */
+.feedback-box, .explain-box, .qa-explain {
+  border-radius: var(--radius) !important;
+  padding: 14px 18px !important;
+  margin-top: 14px !important;
+  border: 1.5px solid var(--line) !important;
+  animation: viewIn 0.3s ease both !important;
+}
+.feedback-box.good, .explain-box.good {
+  background: var(--okbg) !important;
+  border-color: var(--ok) !important;
+  color: var(--ok) !important;
+}
+.feedback-box.bad, .explain-box.bad {
+  background: var(--badbg) !important;
+  border-color: var(--bad) !important;
+  color: var(--bad) !important;
+}
+
+/* 4. Mẹo thi & Schnellmerk Cards */
+.tipp-card, .schnellmerk-box {
+  background: var(--surface) !important;
+  border: 1.5px solid var(--line) !important;
+  border-left: 4px solid var(--accent) !important;
+  border-radius: var(--radius) !important;
+  padding: 16px 18px !important;
+  margin-bottom: 14px !important;
+  box-shadow: var(--elite-shadow-1) !important;
+}
+.tipp-card h4, .schnellmerk-box h4 {
+  font-family: var(--font-head) !important;
+  color: var(--ink) !important;
+  font-size: 1.05rem !important;
+  margin-bottom: 6px !important;
+}
+.tipp-card p, .schnellmerk-box p {
+  color: var(--muted) !important;
+  font-size: 0.9rem !important;
+  line-height: 1.55 !important;
+}
+
+/* 5. Stat Chips & Kicker Badges */
+.stat-chip {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 8px 12px !important;
+  background: var(--surface) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius-sm) !important;
+  font-size: 0.84rem !important;
+  color: var(--muted) !important;
+}
+.stat-chip strong {
+  color: var(--ink) !important;
+  font-weight: 700 !important;
+}
+.stat-chip svg {
+  width: 16px !important;
+  height: 16px !important;
+  color: var(--accent) !important;
+  flex-shrink: 0 !important;
+}
+.kicker-badge {
+  font-size: 10.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+  color: var(--accent) !important;
 }

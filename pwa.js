@@ -122,7 +122,9 @@
       cur && cur.lastIndexOf('/') > 0
         ? cur.slice(0, cur.lastIndexOf('/')) + '/sw.js'
         : './sw.js';
-    navigator.serviceWorker.register(swUrl).catch(() => {});
+    navigator.serviceWorker.register(swUrl).then((reg) => {
+      try { reg.update(); } catch (_) {}
+    }).catch(() => {});
     // delay install prompt a bit so login is not blocked
     setTimeout(() => {
       if (isStandalone() || dismissed()) return;
