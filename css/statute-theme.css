@@ -50,7 +50,6 @@
 
 /* Dark Academia Palette for Dark Mode */
 
-:root[data-theme="never-dark"] {
   --bg: #1A1916;
   --surface: #26231E;
   --surface-card: #201D18;
@@ -87,7 +86,6 @@ html body {
   line-height: 1.65;
 }
 
-:root:not([data-theme="never-dark"]) body {
   background-image: repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0, rgba(0,0,0,.012) 1px, transparent 1px, transparent 3px);
 }
 
@@ -470,79 +468,61 @@ h1, h2, h3, h4, .hero h1, .exam-txt h2, .section-head h2, .card h2, .login-card 
 
 /* Dark Mode: Phân tách khối rõ rệt, chữ sáng rõ nét, không bị chìm màu */
 
-:root[data-theme="never-dark"] #trackGate {
   background: rgba(0, 0, 0, 0.82) !important;
 }
-:root[data-theme="never-dark"] .track-card {
   background: #181613 !important;
   border-color: #4D4335 !important;
   color: #FFFFFF !important;
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.75) !important;
 }
-:root[data-theme="never-dark"] .track-card h1 {
   color: #FFFFFF !important;
 }
-:root[data-theme="never-dark"] .track-card .sub {
   color: #C9BFAD !important;
 }
-:root[data-theme="never-dark"] .track-card .sheet-x {
   background: #25201A !important;
   border-color: #4D4335 !important;
   color: #C9BFAD !important;
 }
-:root[data-theme="never-dark"] .track-card .sheet-x:hover {
   background: #38271A !important;
   border-color: #E08A3C !important;
   color: #E08A3C !important;
 }
-:root[data-theme="never-dark"] .track-logo {
   background: #362417 !important;
   border-color: #6E4924 !important;
   color: #E08A3C !important;
 }
-:root[data-theme="never-dark"] .track-logo svg {
   color: #E08A3C !important;
 }
-:root[data-theme="never-dark"] .track-btn {
   background: #25201B !important;
   border-color: #4D4032 !important;
   color: #FFFFFF !important;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35) !important;
 }
-:root[data-theme="never-dark"] .track-btn:hover {
   border-color: #E08A3C !important;
   background: #302A23 !important;
   box-shadow: 0 8px 24px rgba(224, 138, 60, 0.24) !important;
 }
-:root[data-theme="never-dark"] .track-emoji {
   background: #362417 !important;
   border-color: #6E4924 !important;
   color: #E08A3C !important;
 }
-:root[data-theme="never-dark"] .track-emoji svg {
   color: #E08A3C !important;
 }
-:root[data-theme="never-dark"] .track-title {
   color: #FFFFFF !important;
 }
-:root[data-theme="never-dark"] .track-sub {
   color: #D6CEBE !important;
 }
-:root[data-theme="never-dark"] .track-btn.current {
   border-color: #E08A3C !important;
   background: #362417 !important;
   box-shadow: 0 4px 22px rgba(224, 138, 60, 0.3) !important;
 }
-:root[data-theme="never-dark"] .track-btn.current::after {
   background: #E08A3C !important;
   color: #FFFFFF !important;
 }
-:root[data-theme="never-dark"] .track-skip a {
   background: #362417 !important;
   border-color: #6E4924 !important;
   color: #E08A3C !important;
 }
-:root[data-theme="never-dark"] .track-skip a:hover {
   background: #E08A3C !important;
   color: #FFFFFF !important;
 }
@@ -612,7 +592,6 @@ th {
   text-transform: uppercase !important;
   font-weight: 600 !important;
 }
-:root[data-theme="never-dark"] th {
   background: #11110F !important;
   color: #D2B26E !important;
 }
@@ -623,7 +602,6 @@ th, td {
 tr:nth-child(even) td {
   background: rgba(0, 0, 0, 0.02) !important;
 }
-:root[data-theme="never-dark"] tr:nth-child(even) td {
   background: rgba(255, 255, 255, 0.02) !important;
 }
 

@@ -482,59 +482,23 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 
 /* Dark mode overrides for Track Gate */
 @media (max-width: 1px) {
-  :root[data-theme="never-dark"] #trackGate { background: rgba(0,0,0,.82) }
-  :root[data-theme="never-dark"] .track-card {
     background: #181613; border-color: #4D4335; color: #FFFFFF; box-shadow: 0 24px 70px rgba(0,0,0,.75)
   }
-  :root[data-theme="never-dark"] .track-card h1 { color: #FFFFFF }
-  :root[data-theme="never-dark"] .track-card .sub { color: #C9BFAD }
-  :root[data-theme="never-dark"] .track-card .sheet-x { background: #25201A; border-color: #4D4335; color: #C9BFAD }
-  :root[data-theme="never-dark"] .track-card .sheet-x:hover { background: #38271A; color: #E08A3C; border-color: #E08A3C }
-  :root[data-theme="never-dark"] .track-logo { background: #362417; border-color: #6E4924; color: #E08A3C }
-  :root[data-theme="never-dark"] .track-logo svg { color: #E08A3C }
-  :root[data-theme="never-dark"] .track-btn {
     background: #25201B; border-color: #4D4032; color: #FFFFFF; box-shadow: 0 3px 10px rgba(0,0,0,.35)
   }
-  :root[data-theme="never-dark"] .track-btn:hover {
     border-color: #E08A3C; background: #302A23; box-shadow: 0 8px 24px rgba(224,138,60,.24)
   }
-  :root[data-theme="never-dark"] .track-emoji { background: #362417; border-color: #6E4924; color: #E08A3C }
-  :root[data-theme="never-dark"] .track-emoji svg { color: #E08A3C }
-  :root[data-theme="never-dark"] .track-title { color: #FFFFFF }
-  :root[data-theme="never-dark"] .track-sub { color: #D6CEBE }
-  :root[data-theme="never-dark"] .track-btn.current {
     border-color: #E08A3C; background: #362417; box-shadow: 0 4px 22px rgba(224,138,60,.3)
   }
-  :root[data-theme="never-dark"] .track-btn.current::after { background: #E08A3C; color: #FFFFFF }
-  :root[data-theme="never-dark"] .track-skip a { background: #362417; border-color: #6E4924; color: #E08A3C }
-  :root[data-theme="never-dark"] .track-skip a:hover { background: #E08A3C; color: #FFFFFF }
 }
-:root[data-theme="never-dark"] #trackGate { background: rgba(0,0,0,.82) }
-:root[data-theme="never-dark"] .track-card {
   background: #181613; border-color: #4D4335; color: #FFFFFF; box-shadow: 0 24px 70px rgba(0,0,0,.75)
 }
-:root[data-theme="never-dark"] .track-card h1 { color: #FFFFFF }
-:root[data-theme="never-dark"] .track-card .sub { color: #C9BFAD }
-:root[data-theme="never-dark"] .track-card .sheet-x { background: #25201A; border-color: #4D4335; color: #C9BFAD }
-:root[data-theme="never-dark"] .track-card .sheet-x:hover { background: #38271A; color: #E08A3C; border-color: #E08A3C }
-:root[data-theme="never-dark"] .track-logo { background: #362417; border-color: #6E4924; color: #E08A3C }
-:root[data-theme="never-dark"] .track-logo svg { color: #E08A3C }
-:root[data-theme="never-dark"] .track-btn {
   background: #25201B; border-color: #4D4032; color: #FFFFFF; box-shadow: 0 3px 10px rgba(0,0,0,.35)
 }
-:root[data-theme="never-dark"] .track-btn:hover {
   border-color: #E08A3C; background: #302A23; box-shadow: 0 8px 24px rgba(224,138,60,.24)
 }
-:root[data-theme="never-dark"] .track-emoji { background: #362417; border-color: #6E4924; color: #E08A3C }
-:root[data-theme="never-dark"] .track-emoji svg { color: #E08A3C }
-:root[data-theme="never-dark"] .track-title { color: #FFFFFF }
-:root[data-theme="never-dark"] .track-sub { color: #D6CEBE }
-:root[data-theme="never-dark"] .track-btn.current {
   border-color: #E08A3C; background: #362417; box-shadow: 0 4px 22px rgba(224,138,60,.3)
 }
-:root[data-theme="never-dark"] .track-btn.current::after { background: #E08A3C; color: #FFFFFF }
-:root[data-theme="never-dark"] .track-skip a { background: #362417; border-color: #6E4924; color: #E08A3C }
-:root[data-theme="never-dark"] .track-skip a:hover { background: #E08A3C; color: #FFFFFF }
 
 /* ===== Tier / Zugriffsstufen ===== */
 .tier-badge{display:inline-flex;align-items:center;gap:4px;border-radius:999px;
@@ -1134,15 +1098,9 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
 /* ===== Dark mode: delegated to css/statute-theme.css (single source of truth) ===== */
 /* statute-theme.css owns --bg/--surface/--ink/--accent for light + dark + auto.
    Keep only non-variable tweaks here with proper data-theme guards. */
-:root[data-theme="never-dark"] img{opacity:.9}
 @media (max-width: 1px){
-  :root[data-theme="never-dark"] img{opacity:.9}
-  :root[data-theme="never-dark"] .nav{background:rgba(26,25,22,.94)}
 }
-:root[data-theme="never-dark"] .nav{background:rgba(26,25,22,.94)}
-:root[data-theme="never-dark"] #loginGate,:root[data-theme="never-dark"] #trackGate{background:#1A1916}
 @media (max-width: 1px){
-  :root[data-theme="never-dark"] #loginGate,:root[data-theme="never-dark"] #trackGate{background:#1A1916}
 }
 @media (prefers-reduced-motion:no-preference){
   .view.active{animation:viewIn .38s cubic-bezier(.22,1,.36,1)}
@@ -1257,9 +1215,7 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
 .sh-chip{display:inline-flex;align-items:center;gap:4px;background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:4px 10px;font-size:.78em;font-weight:500;color:var(--ink);cursor:pointer;transition:.12s;-webkit-tap-highlight-color:transparent}
 .sh-chip:hover{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
 .sh-mark{background:#FEF08A;color:#854D0E;padding:0 2px;border-radius:3px;font-weight:600}
-[data-theme="never-dark"] .sh-mark{background:#854D0E;color:#FEF08A}
 @media (max-width: 1px){
-  :root[data-theme="never-dark"] .sh-mark{background:#854D0E;color:#FEF08A}
 }
 
 /* 3. LIGHTBOX ZOOM CONTROLS */
@@ -1284,17 +1240,13 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 .streak-main{display:flex;align-items:center;gap:12px}
 .streak-flame{font-size:2.2em;line-height:1;filter:drop-shadow(0 2px 8px rgba(255,149,0,.4));animation:softPulse 2s infinite}
 .streak-count{font-size:1.45em;font-weight:800;color:#D97706;line-height:1.1}
-[data-theme="never-dark"] .streak-count{color:#FBBF24}
 @media (max-width: 1px){
-  :root[data-theme="never-dark"] .streak-count{color:#FBBF24}
 }
 .streak-label{font-size:.78em;color:var(--muted);font-weight:600;margin-top:2px}
 .streak-milestone{flex:1;max-width:260px}
 .streak-m-title{display:flex;justify-content:space-between;font-size:.74em;font-weight:700;color:var(--ink);margin-bottom:5px}
 .streak-bar{height:7px;background:rgba(0,0,0,.08);border-radius:999px;overflow:hidden}
-[data-theme="never-dark"] .streak-bar{background:rgba(255,255,255,.12)}
 @media (max-width: 1px){
-  :root[data-theme="never-dark"] .streak-bar{background:rgba(255,255,255,.12)}
 }
 .streak-bar span{display:block;height:100%;border-radius:999px;background:#FF9500;transition:width .6s ease}
 
@@ -1317,39 +1269,9 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 }
 
 /* 8. DARK-MODE HARDCODE FIXES (single source: statute vars; covers explicit + auto dark) */
-[data-theme="never-dark"] .zq,[data-theme="never-dark"] .zq-opts>li,[data-theme="never-dark"] .zq-ans,
-[data-theme="never-dark"] .mini,[data-theme="never-dark"] .formula,[data-theme="never-dark"] .svg-box,
-[data-theme="never-dark"] .ueb-paper,[data-theme="never-dark"] .ueb-set,[data-theme="never-dark"] .ueb-sol,
-[data-theme="never-dark"] .tq-item,[data-theme="never-dark"] .qa-item,[data-theme="never-dark"] .vk-item,
-[data-theme="never-dark"] .zw-toolbar,[data-theme="never-dark"] .src-thumb img{
   background:var(--surface);border-color:var(--line);color:var(--ink)
 }
-[data-theme="never-dark"] .zq-opts>li:hover{background:var(--accent-soft)}
-[data-theme="never-dark"] .detail-box .viet,[data-theme="never-dark"] .detail-box dd,
-[data-theme="never-dark"] .mini p,[data-theme="never-dark"] .mini li,[data-theme="never-dark"] .quiz-start p,
-[data-theme="never-dark"] .ueb-aufg .aintro,[data-theme="never-dark"] .ueb-paper .datum,
-[data-theme="never-dark"] .qa-vi,[data-theme="never-dark"] .vk-vi{color:var(--muted)}
-[data-theme="never-dark"] .ueb-aufg .aline,[data-theme="never-dark"] .ueb-aufg .ah .apts,
-[data-theme="never-dark"] .detail-box dt,[data-theme="never-dark"] .qa-qtext b{color:var(--ink)}
-[data-theme="never-dark"] .ueb-part .pno,[data-theme="never-dark"] .ueb-aufg .ah .aname{color:#E08A3C}
-[data-theme="never-dark"] .zw-tip{background:var(--accent-soft);border-color:var(--accent);color:var(--ink)}
-[data-theme="never-dark"] .zw-tip:hover{background:var(--accent-soft)}
-[data-theme="never-dark"] .zq-fig img{background:var(--bg);border-color:var(--line)}
-[data-theme="never-dark"] .ueb-sol{background:var(--okbg);border-color:var(--line)}
-[data-theme="never-dark"] .tq-explain,[data-theme="never-dark"] .qa-why{background:var(--warnbg);color:var(--ink)}
-[data-theme="never-dark"] .login-card input[type=text],[data-theme="never-dark"] .login-card input[type=password]{border-bottom-color:var(--line)}
 @media (max-width: 1px){
-  :root[data-theme="never-dark"] .zq,:root[data-theme="never-dark"] .zq-opts>li,:root[data-theme="never-dark"] .zq-ans,
-  :root[data-theme="never-dark"] .mini,:root[data-theme="never-dark"] .formula,:root[data-theme="never-dark"] .svg-box,
-  :root[data-theme="never-dark"] .ueb-paper,:root[data-theme="never-dark"] .ueb-set,:root[data-theme="never-dark"] .ueb-sol,
-  :root[data-theme="never-dark"] .tq-item,:root[data-theme="never-dark"] .qa-item,:root[data-theme="never-dark"] .vk-item,
-  :root[data-theme="never-dark"] .zw-toolbar{background:var(--surface);border-color:var(--line);color:var(--ink)}
-  :root[data-theme="never-dark"] .detail-box .viet,:root[data-theme="never-dark"] .detail-box dd,
-  :root[data-theme="never-dark"] .mini p,:root[data-theme="never-dark"] .mini li,
-  :root[data-theme="never-dark"] .ueb-aufg .aintro{color:var(--muted)}
-  :root[data-theme="never-dark"] .ueb-aufg .aline,:root[data-theme="never-dark"] .ueb-aufg .ah .apts{color:var(--ink)}
-  :root[data-theme="never-dark"] .ueb-part .pno,:root[data-theme="never-dark"] .ueb-aufg .ah .aname{color:#E08A3C}
-  :root[data-theme="never-dark"] .zw-tip{background:var(--accent-soft);border-color:var(--accent);color:var(--ink)}
 }
 
 /* 9. A11Y: visible focus + keyboard activation for clickable cards */
@@ -8868,7 +8790,7 @@ function pickTrack(which) {
     // Mở app LiD standalone (subfolder)
     location.href = './lid/';
   } else {
-    go('#/fach');
+    go('#/');
   }
 }
 function showTrackGate() {
@@ -9911,5 +9833,6 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 </script>
 
+  <style>body, :root, html { background: #E2D8C2 !important; } #trackGate { background: rgba(40,36,30,0.5) !important; } .track-card { background: #FDFBF6 !important; color: #0F172A !important; }</style>
 </body>
 </html>

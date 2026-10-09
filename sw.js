@@ -1,5 +1,5 @@
 /* Service Worker – AzubiHub (offline shell + static assets) */
-const CACHE = 'azubihub-v147';
+const CACHE = 'azubihub-v150';
 const PRECACHE = [
   './',
   './js/wissen.js',
@@ -143,6 +143,7 @@ self.addEventListener('fetch', (event) => {
           caches.match(req).then((r) => {
             if (r) return r;
             if (req.url.includes('/deutsch-a1-c1/')) return caches.match('./deutsch-a1-c1/index.html');
+            if (req.url.includes('/fuererschein/')) return caches.match('./fuererschein/index.html');
             return caches.match('./index.html');
           })
         )

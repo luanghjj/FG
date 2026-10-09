@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Clearing Cache...</title>
+</head>
+<body>
+  <h1>Đang dọn dẹp bộ nhớ đệm (Cache)...</h1>
+  <p>Vui lòng đợi 2 giây, hệ thống sẽ tự động chuyển hướng bạn về ứng dụng.</p>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function(registrations) {
+        for(let registration of registrations) {
+          registration.unregister();
+        }
+        // Xóa sạch cache storage
+        if(window.caches) {
+          caches.keys().then(function(names) {
+            for (let name of names) caches.delete(name);
+          });
+        }
+        localStorage.removeItem('azubi_theme');
+        setTimeout(function(){
+          window.location.href = '/?clear=' + Date.now();
+        }, 1500);
+      });
+    } else {
+      window.location.href = '/?clear=' + Date.now();
+    }
+  </script>
+</body>
+</html>
