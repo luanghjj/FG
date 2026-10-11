@@ -1,7 +1,7 @@
 /* ============================================================
    AzubiHub · Führerschein Theme (LiD Parchment & Brass Standard)
-   Đồng bộ giao diện theo chuẩn Leben in Deutschland:
-   (parchment · ivory · amber wax · brass borders · Playfair & Plus Jakarta)
+   Đồng bộ 100% giao diện theo chuẩn Leben in Deutschland:
+   (parchment · ivory paper · amber wax · brass hairline borders)
    ============================================================ */
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
 
@@ -45,9 +45,14 @@ body {
   min-height: 100vh;
 }
 
-/* ===== 1. HEADER: FROSTED GLASS PARCHMENT ===== */
-header {
+/* ===== 1. HEADER: FROSTED GLASS PARCHMENT (KHÔNG DA CAM) ===== */
+header,
+header.bg-gradient-to-r,
+header.from-green-700,
+header.via-green-600,
+header.to-emerald-700 {
   background: rgba(226, 216, 194, 0.92) !important;
+  background-image: none !important;
   backdrop-filter: blur(16px) !important;
   -webkit-backdrop-filter: blur(16px) !important;
   border-bottom: 1.5px solid #B5A27C !important;
@@ -59,64 +64,142 @@ header h1 {
   font-family: var(--font-head) !important;
   font-weight: 700 !important;
   color: #0F172A !important;
+  letter-spacing: -.01em !important;
 }
 
 header p, header .text-green-100 {
   color: #5A5344 !important;
 }
 
-header .bg-white\/20 {
+/* Logo icon box */
+header .w-8.h-8, header .w-10.h-10, header .bg-white\/20:has(svg) {
   background: #F7E6CC !important;
-  border: 1px solid #B5A27C !important;
+  border: 1.5px solid #B5A27C !important;
 }
-
-header .bg-white\/20 svg {
+header .w-8.h-8 svg, header .w-10.h-10 svg, header .bg-white\/20 svg {
   color: #9A4607 !important;
 }
 
-/* Nickname button in header */
-header button.bg-white\/20 {
-  background: #FDFBF6 !important;
+/* Header action buttons: Nickname, TV, Back */
+header button,
+header a[title="Quay lại AzubiHub"] {
   border: 1.5px solid #B5A27C !important;
+  background: #FDFBF6 !important;
   color: #0F172A !important;
   font-weight: 600 !important;
-}
-header button.bg-white\/20:hover {
-  background: #F7E6CC !important;
-  border-color: #9A4607 !important;
+  border-radius: 999px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04) !important;
+  transition: all .15s ease !important;
+  text-decoration: none !important;
 }
 
-/* Sub-nav horizontal tabs (Dashboard, 30 Chủ đề, Đề thi chuẩn...) */
-nav, .border-b.border-green-800\/20, div:has(> button.whitespace-nowrap) {
+header button:hover,
+header a[title="Quay lại AzubiHub"]:hover {
+  background: #F7E6CC !important;
+  border-color: #9A4607 !important;
+  color: #9A4607 !important;
+  transform: translateY(-1px) !important;
+}
+
+header button svg,
+header a[title="Quay lại AzubiHub"] svg {
+  color: #9A4607 !important;
+}
+
+/* ===== 2. SUB-NAV TABS (TRANG CHỦ, MẸO THI VÀNG, HỌC THEO CHỦ ĐỀ...) ===== */
+nav.sticky,
+.border-b.border-green-800\/20,
+div.border-b:has(> div > div > button),
+nav:has(button) {
   background: rgba(226, 216, 194, 0.95) !important;
   border-bottom: 1.5px solid #B5A27C !important;
 }
 
-/* ===== 2. CARDS: IVORY PAPER & BRASS BORDERS ===== */
-.bg-white {
-  background-color: #FDFBF6 !important;
-  border: 1.5px solid #B5A27C !important;
-  border-radius: 16px !important;
-  box-shadow: 0 4px 18px -2px rgba(27, 28, 26, 0.06) !important;
+/* Active tab: Amber wax thay vì xanh lá */
+nav button.text-green-700,
+nav button.font-extrabold,
+nav button.text-green-600 {
+  color: #9A4607 !important;
+  font-weight: 700 !important;
+}
+nav button.text-green-700 svg,
+nav button.text-green-600 svg,
+nav button svg.text-green-600 {
+  color: #9A4607 !important;
+}
+nav button span.bg-green-600 {
+  background-color: #9A4607 !important;
 }
 
-.border-gray-100, .border-gray-200 {
-  border-color: #B5A27C !important;
+/* Inactive tabs */
+nav button:not(.text-green-700):not(.text-green-600) {
+  color: #5A5344 !important;
 }
-
-/* Headings */
-h1, h2, h3, h4 {
-  font-family: var(--font-head) !important;
-  letter-spacing: -.01em !important;
+nav button:hover {
   color: #0F172A !important;
 }
 
-/* ===== 3. CTA & BUTTONS: WARM AMBER WAX GRADIENT ===== */
-.bg-gradient-to-r.from-green-700,
-.bg-gradient-to-r.from-green-600,
-.bg-gradient-to-r.from-emerald-600,
-button.bg-green-600,
-button.bg-green-700 {
+/* ===== 3. HERO BANNER: CHUYỂN TỪ XANH SANG CERTIFICATE CARD CHUẨN LiD ===== */
+.bg-gradient-to-br.from-green-700,
+.bg-gradient-to-br.from-green-600,
+div.rounded-3xl:has(h1) {
+  background-image: none !important;
+  background-color: #FDFBF6 !important;
+  background: color-mix(in srgb, #FDFBF6 85%, #E2D8C2) !important;
+  border: 1.5px solid #B5A27C !important;
+  border-radius: 20px !important;
+  box-shadow: 0 4px 20px -3px rgba(27, 28, 26, 0.08) !important;
+  color: #0F172A !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Vạch sáp hổ phách 4px bên trái chuẩn LiD hero */
+.bg-gradient-to-br.from-green-700::before,
+div.rounded-3xl:has(h1)::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 4px !important;
+  background: #9A4607 !important;
+  border-radius: 4px 0 0 4px !important;
+}
+
+/* Hero Title */
+.bg-gradient-to-br.from-green-700 h1,
+div.rounded-3xl:has(h1) h1 {
+  font-family: var(--font-head) !important;
+  color: #0F172A !important;
+  font-weight: 700 !important;
+}
+
+/* Hero Description */
+.bg-gradient-to-br.from-green-700 p.text-green-100,
+div.rounded-3xl:has(h1) p.text-green-100,
+div.rounded-3xl:has(h1) p {
+  color: #5A5344 !important;
+}
+
+/* Hero Kicker Badge */
+.bg-gradient-to-br.from-green-700 .bg-white\/20,
+div.rounded-3xl:has(h1) .bg-white\/20 {
+  background: #F7E6CC !important;
+  border: 1px solid #B5A27C !important;
+  color: #9A4607 !important;
+  font-weight: 700 !important;
+}
+
+/* Hero Action Buttons */
+.bg-gradient-to-br.from-green-700 button,
+div.rounded-3xl:has(h1) button {
+  border-radius: 999px !important;
+  font-weight: 700 !important;
+}
+
+.bg-gradient-to-br.from-green-700 button:nth-child(1),
+div.rounded-3xl:has(h1) button:nth-child(1) {
   background-image: linear-gradient(135deg, #C2570C, #B45309) !important;
   background-color: #B45309 !important;
   border: 1px solid #8A3705 !important;
@@ -124,7 +207,41 @@ button.bg-green-700 {
   box-shadow: 0 2px 8px rgba(154, 70, 7, 0.25) !important;
 }
 
-/* Badges */
+.bg-gradient-to-br.from-green-700 button:nth-child(2),
+div.rounded-3xl:has(h1) button:nth-child(2) {
+  background: #FDFBF6 !important;
+  color: #0F172A !important;
+  border: 1.5px solid #B5A27C !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04) !important;
+}
+
+.bg-gradient-to-br.from-green-700 button:nth-child(3),
+div.rounded-3xl:has(h1) button:nth-child(3) {
+  background: #FDF3E3 !important;
+  color: #B45309 !important;
+  border: 1.5px solid #B5A27C !important;
+}
+
+/* ===== 4. CARDS & SECTIONS: GIẤY NGÀ & VIỀN ĐỒNG THAU ===== */
+.bg-white {
+  background-color: #FDFBF6 !important;
+  border: 1.5px solid #B5A27C !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 18px -2px rgba(27, 28, 26, 0.06) !important;
+}
+
+.border-gray-100, .border-gray-200, .border-gray-300 {
+  border-color: #B5A27C !important;
+}
+
+/* Card titles */
+h1, h2, h3, h4 {
+  font-family: var(--font-head) !important;
+  letter-spacing: -.01em !important;
+  color: #0F172A !important;
+}
+
+/* Stat Cards & Category Badges */
 .bg-green-100 {
   background-color: #eef3ea !important;
   color: #3f5c39 !important;
@@ -137,33 +254,26 @@ button.bg-green-700 {
   border: 1px solid #B5A27C !important;
 }
 
-/* Pill back button chuẩn LiD */
-.lid-back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 14px;
-  border-radius: 999px;
-  border: 1.5px solid #B5A27C !important;
-  background: #FDFBF6 !important;
-  color: #0F172A !important;
-  font-size: 0.84rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all .15s;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-  white-space: nowrap;
-}
-
-.lid-back-link:hover {
-  background: #F7E6CC !important;
-  border-color: #9A4607 !important;
+/* Category cards: Grundstoff (G) & Zusatzstoff (B) badges */
+span.rounded-full:has(> svg),
+div.rounded-full:has(> svg),
+.text-teal-700, .bg-teal-100,
+.text-blue-700, .bg-blue-100 {
+  background-color: #F7E6CC !important;
   color: #9A4607 !important;
-  transform: translateY(-1px);
+  border: 1px solid #B5A27C !important;
 }
 
-.lid-back-link svg {
-  width: 15px;
-  height: 15px;
-  color: inherit;
+/* "Xem tất cả →" links */
+a.text-green-700,
+a.text-blue-700,
+button.text-green-700,
+.text-green-700 {
+  color: #9A4607 !important;
+  font-weight: 600 !important;
+}
+
+/* Progress bar */
+.bg-gray-100 {
+  background-color: #EAE3D0 !important;
 }
