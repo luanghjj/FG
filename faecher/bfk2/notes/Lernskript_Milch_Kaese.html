@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>§ BFK Milch & Käse — Lernfeld 10 · LS 2–3 (DE/VI)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== DESIGN TOKENS =====
+  ink    #1B1F2A  primary text / spine
+  paper  #F1ECDE  parchment ground
+  wax    #7A2E2E  paragraph seal / DE accent
+  brass  #9C7A3C  rule / numerals
+  slate  #48586B  VI translation voice
+  line   #D8CFB8  hairline
+*/
+:root{
+  --ink:#1B1F2A; --paper:#F1ECDE; --paper2:#EAE3D0; --wax:#7A2E2E;
+  --brass:#9C7A3C; --slate:#48586B; --line:#D8CFB8; --slateline:#c7d0da;
+  --green:#5b7a52; --greenbg:#eef3ea;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--paper);
+  background-image:
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.012) 0px, rgba(0,0,0,0.012) 1px, transparent 1px, transparent 3px);
+  color:var(--ink); font-family:"Source Serif 4",Georgia,serif; line-height:1.65;
+  font-size:17px;
+}
+::selection{background:#d9c9a3;}
+a{color:var(--wax);}
+
+/* ---- Header: title block like a statute cover page ---- */
+header.cover{
+  padding:60px 24px 42px; text-align:center; position:relative;
+  border-bottom:3px double var(--brass);
+  background:linear-gradient(180deg, var(--paper2), var(--paper));
+}
+header.cover .kicker{
+  font-family:"IBM Plex Mono",monospace; letter-spacing:.18em; font-size:.72rem;
+  text-transform:uppercase; color:var(--brass); margin-bottom:14px;
+}
+header.cover h1{
+  font-family:"Fraunces",serif; font-weight:600; font-size:clamp(1.9rem,5vw,3.1rem);
+  margin:0 0 10px; color:var(--ink); letter-spacing:-.01em;
+}
+header.cover h1 em{font-style:italic; color:var(--wax); font-weight:500;}
+header.cover .subtitle-de{font-size:1.02rem; color:var(--ink); margin:4px 0;}
+header.cover .subtitle-vi{
+  font-family:"IBM Plex Sans",sans-serif; font-size:.92rem; color:var(--slate);
+  margin:2px 0 0; font-style:normal;
+}
+header.cover .subtitle-vi:before{content:"VI · "; font-weight:600; letter-spacing:.03em; color:var(--slate); opacity:.7;}
+header.cover .exam-meta{
+  display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:18px;
+  font-family:"IBM Plex Mono",monospace; font-size:.72rem;
+}
+header.cover .exam-meta span{
+  border:1px solid var(--brass); color:var(--wax); padding:4px 12px; border-radius:20px;
+  letter-spacing:.04em;
+}
+
+/* ---- Legend + controls ---- */
+.legend{
+  max-width:820px; margin:22px auto 0; display:flex; gap:18px; justify-content:center;
+  flex-wrap:wrap; align-items:center; font-family:"IBM Plex Sans",sans-serif; font-size:.82rem; color:var(--ink);
+}
+.legend .item{display:flex; align-items:center; gap:8px;}
+.legend .swatch{width:16px; height:16px; border-radius:2px; flex-shrink:0;}
+.legend .swatch.de{background:var(--wax);}
+.legend .swatch.vi{background:var(--slate);}
+.toggle-btn{
+  cursor:pointer; font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.05em;
+  background:var(--ink); color:var(--paper); border:none; padding:8px 14px; border-radius:6px;
+  text-transform:uppercase; transition:.15s;
+}
+.toggle-btn:hover{background:var(--wax);}
+
+/* ---- Sticky paragraph nav ---- */
+nav.spine{
+  position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper);
+  display:flex; gap:0; overflow-x:auto; white-space:nowrap; padding:0 10px;
+  box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+nav.spine a{
+  color:var(--paper); text-decoration:none; font-family:"IBM Plex Mono",monospace;
+  font-size:.74rem; letter-spacing:.03em; padding:13px 14px; border-right:1px solid rgba(255,255,255,.12);
+  opacity:.72; transition:.15s;
+}
+nav.spine a:hover{opacity:1; background:rgba(255,255,255,.06); color:#EFC9A0;}
+nav.spine a.exam{color:#EFC9A0; opacity:.9;}
+nav.spine .grp{
+  font-family:"IBM Plex Mono",monospace; font-size:.64rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--brass); padding:13px 8px 13px 14px; align-self:center; opacity:.9;
+}
+
+main{max-width:840px; margin:0 auto; padding:10px 24px 100px;}
+
+/* ---- Section shell: like a numbered § chapter ---- */
+section.chapter{padding:50px 0 20px; border-bottom:1px solid var(--line); scroll-margin-top:54px;}
+section.chapter:last-of-type{border-bottom:none;}
+.chapter-head{display:flex; align-items:baseline; gap:16px; margin-bottom:6px;}
+.chapter-num{
+  font-family:"Fraunces",serif; font-weight:700; font-size:2.5rem; color:var(--brass);
+  line-height:1; flex-shrink:0;
+}
+.chapter-title-de{font-family:"Fraunces",serif; font-weight:600; font-size:1.5rem; color:var(--ink); margin:0;}
+.chapter-title-vi{
+  font-family:"IBM Plex Sans",sans-serif; font-size:.95rem; color:var(--slate); margin:4px 0 0 60px;
+}
+.chapter-title-vi:before{content:"VI · "; font-weight:600; opacity:.7;}
+.lf-tag{
+  font-family:"IBM Plex Mono",monospace; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase;
+  background:var(--wax); color:var(--paper); padding:3px 9px; border-radius:4px; margin-left:auto; align-self:center;
+}
+
+h3.sub{
+  font-family:"Fraunces",serif; font-weight:600; font-size:1.16rem; color:var(--wax);
+  margin:32px 0 4px; padding-left:14px; border-left:3px solid var(--wax);
+}
+h3.sub .vi-sub{
+  display:block; font-family:"IBM Plex Sans",sans-serif; font-weight:500; font-size:.82rem;
+  color:var(--slate); margin-top:3px; border-left:none; padding-left:0; letter-spacing:0;
+}
+h4.h4{font-family:'IBM Plex Sans',sans-serif; color:var(--ink); margin:24px 0 6px; font-size:1rem;}
+h4.h4 .vi-sub{display:block; color:var(--slate); font-weight:400; font-size:.82rem; margin-top:2px;}
+
+/* ---- The core DE→VI stacked block ---- */
+.block{margin:16px 0 22px;}
+.de{
+  position:relative; padding:14px 18px 14px 20px; background:rgba(122,46,46,.045);
+  border-left:3px solid var(--wax); border-radius:0 6px 6px 0; font-size:1rem;
+}
+.de .tag{
+  font-family:"IBM Plex Mono",monospace; font-size:.66rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--wax); display:block; margin-bottom:5px; opacity:.85;
+}
+.vi{
+  font-family:"IBM Plex Sans",sans-serif; font-size:.9rem; color:var(--slate);
+  padding:10px 18px 4px 20px; border-left:3px solid var(--slateline); margin-top:-4px;
+}
+.vi .tag{
+  font-family:"IBM Plex Mono",monospace; font-size:.64rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--slate); display:block; margin-bottom:4px; opacity:.75;
+}
+/* Vietnamese hide toggle */
+body.hide-vi .vi{display:none !important;}
+body.hide-vi .vi-sub{display:none !important;}
+body.hide-vi .vi-cell{display:none !important;}
+body.hide-vi .vi-mini{display:none !important;}
+body.hide-vi .chapter-title-vi{display:none !important;}
+
+ul,ol{margin:10px 0; padding-left:26px;}
+li{margin:5px 0;}
+li.de{border-radius:0 6px 6px 0; margin:7px 0;}
+
+.para-code{
+  font-family:"IBM Plex Mono",monospace; font-size:.7rem; font-weight:600; color:#fff;
+  background:var(--brass); padding:2px 8px; border-radius:10px; margin-left:6px; letter-spacing:.02em;
+  display:inline-block;
+}
+b,strong{color:var(--ink);}
+.vi b,.vi strong{color:#324150;}
+
+table{width:100%; border-collapse:collapse; margin:16px 0; font-size:.9rem; background:#fff;}
+th,td{border:1px solid var(--line); padding:9px 11px; text-align:left; vertical-align:top;}
+th{background:var(--ink); color:var(--paper); font-family:"IBM Plex Sans",sans-serif; font-weight:600; font-size:.78rem; letter-spacing:.03em; text-transform:uppercase;}
+tr:nth-child(even) td{background:var(--paper2);}
+td.vi-cell{color:var(--slate); font-family:"IBM Plex Sans",sans-serif; font-size:.82rem;}
+.vi-cell{color:var(--slate); font-family:"IBM Plex Sans",sans-serif; font-size:.82rem; display:block; margin-top:3px;}
+
+.example{
+  background:var(--greenbg); border-left:4px solid var(--green); border-radius:0 6px 6px 0;
+  padding:10px 16px; margin:12px 0; font-size:.92rem;
+}
+.example .tag{font-family:"IBM Plex Mono",monospace; font-size:.65rem; letter-spacing:.1em; color:#3f5c39; text-transform:uppercase; display:block; margin-bottom:4px;}
+.example .vi{border:none; padding:4px 0 0; margin:0;}
+
+.warn{
+  background:#f7e9df; border-left:4px solid var(--wax); border-radius:0 6px 6px 0;
+  padding:10px 16px; margin:12px 0; font-size:.92rem;
+}
+.warn .tag{font-family:"IBM Plex Mono",monospace; font-size:.65rem; letter-spacing:.1em; color:var(--wax); text-transform:uppercase; display:block; margin-bottom:4px;}
+.warn .vi{border:none; padding:4px 0 0; margin:0;}
+
+.timeline{
+  display:flex; justify-content:space-between; margin:26px 0 8px; padding:16px 10px;
+  border:1px solid var(--line); border-radius:8px; background:#fff;
+  font-family:"IBM Plex Mono",monospace; font-size:.78rem; text-align:center; color:var(--ink);
+}
+.timeline div{flex:1;}
+.timeline .vi-mini{display:block; font-family:"IBM Plex Sans",sans-serif; font-size:.68rem; color:var(--slate); margin-top:2px;}
+
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+@media(max-width:640px){.grid2{grid-template-columns:1fr;} .chapter-title-vi{margin-left:0;}}
+
+.badge-set{
+  font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.05em; text-transform:uppercase;
+  background:var(--ink); color:var(--paper); padding:5px 12px; border-radius:4px; display:inline-block; margin-bottom:14px;
+}
+.pill{display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:.66rem; font-weight:600;
+  padding:2px 9px; border-radius:12px; letter-spacing:.03em; text-transform:uppercase;}
+.pill.ok{background:#e2efdb; color:#3f5c39; border:1px solid #a9c39b;}
+.pill.no{background:#f4ddd6; color:#8a3324; border:1px solid #d3a294;}
+.pill.al{background:#f4ddd6; color:#7A2E2E; border:1px solid #d3a294;}
+
+/* ---- Q&A / Lösung accordion ---- */
+details.q{border:1px solid var(--line); border-radius:8px; margin:14px 0; overflow:hidden; background:#fff;}
+details.q summary{
+  cursor:pointer; list-style:none; padding:14px 18px; font-family:"IBM Plex Sans",sans-serif;
+  font-weight:600; font-size:.95rem; color:var(--ink); position:relative; padding-right:40px;
+}
+details.q summary::-webkit-details-marker{display:none;}
+details.q summary:after{
+  content:"+"; position:absolute; right:16px; top:50%; transform:translateY(-50%);
+  font-size:1.3rem; color:var(--brass); font-weight:400;
+}
+details.q[open] summary:after{content:"–";}
+details.q[open] summary{background:rgba(122,46,46,.04); border-bottom:1px dashed var(--line);}
+details.q summary .qnum{
+  font-family:"IBM Plex Mono",monospace; color:var(--brass); font-weight:600; margin-right:8px;
+}
+details.q .ans{padding:2px 18px 16px;}
+details.q .ans .de{margin-top:12px;}
+details.q .ans .vi{margin-bottom:6px;}
+
+/* ---- Math / calculation card ---- */
+.calc{
+  font-family:"IBM Plex Mono",monospace; font-size:.86rem; background:var(--ink); color:var(--paper);
+  border-radius:8px; padding:16px 18px; margin:14px 0; line-height:1.9;
+}
+.calc .op{color:var(--brass);}
+.calc .val{color:#EFC9A0;}
+.calc .res{color:#a9d39b; border-top:1px dashed rgba(255,255,255,.25); padding-top:4px; margin-top:4px; display:block;}
+
+/* ---- Exam sheet ---- */
+.exam-intro{
+  background:var(--paper2); border:1px solid var(--line); border-radius:8px;
+  padding:14px 18px; margin:16px 0; font-size:.94rem;
+}
+.aufgabe{margin:22px 0; padding-left:16px; border-left:3px solid var(--brass);}
+.aufgabe-num{font-family:"IBM Plex Sans",sans-serif; font-weight:600; color:var(--wax); font-size:1rem; display:block; margin-bottom:4px;}
+.pts{float:right; font-family:"IBM Plex Mono",monospace; color:var(--brass); font-size:.78rem;}
+kbd{font-family:"IBM Plex Mono",monospace; background:var(--paper2); border:1px solid var(--line); border-radius:4px; padding:1px 6px; font-size:.78rem; color:var(--ink);}
+code{font-family:"IBM Plex Mono",monospace; background:var(--paper2); border:1px solid var(--line); border-radius:4px; padding:1px 6px; font-size:.86em;}
+
+footer{
+  text-align:center; padding:44px 20px 70px; font-family:"IBM Plex Sans",sans-serif;
+  font-size:.82rem; color:var(--slate); border-top:1px solid var(--line);
+}
+footer .de{background:none; border:none; padding:0;}
+footer .vi{border:none; padding:0; margin-top:4px;}
+
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+@media print{
+  nav.spine, .toggle-btn{display:none;}
+  body{font-size:12pt; background:#fff;}
+  details.q, details.q .ans{display:block !important;}
+  details.q[open] summary:after,details.q summary:after{content:"";}
+  section.chapter{page-break-inside:auto;}
+}
+
+/* ---- übernommen & angepasst: Quiz, Balken, Zeitstrahl ---- */
+.mc{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:12px 0}
+.mc h4{margin:0 0 2px;font-family:"IBM Plex Sans",sans-serif;font-size:1rem}
+.mc .opts{display:grid;gap:6px;margin-top:8px}
+.mc .opts button{font-family:"IBM Plex Sans",sans-serif;text-align:left;background:var(--paper);color:var(--ink);border:1px solid var(--line);padding:8px 12px;border-radius:8px;cursor:pointer;font-size:.92rem}
+.mc .opts button:hover{background:var(--paper2)}
+.mc .opts button.right{background:var(--greenbg);border-color:var(--green);color:#3f5c39;font-weight:600}
+.mc .opts button.wrong{background:#f7e9df;border-color:var(--wax);color:var(--wax)}
+.mc .why{display:none;margin-top:8px;font-size:.9rem;font-family:"IBM Plex Sans",sans-serif;color:var(--slate)}
+.mc.done .why{display:block}
+#score{position:sticky;bottom:10px;margin:14px 0;background:var(--ink);color:var(--paper);padding:8px 14px;border-radius:8px;display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:.8rem}
+.bars{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:14px 0}
+.bar{display:grid;grid-template-columns:90px 1fr 64px;gap:8px;align-items:center;margin:6px 0;font-size:.9rem;font-family:"IBM Plex Sans",sans-serif}
+.bar i{display:block;height:20px;border-radius:3px;background:var(--c);width:var(--w)}
+.bar span:last-child{text-align:right;font-variant-numeric:tabular-nums;font-family:"IBM Plex Mono",monospace;font-size:.8rem}
+.bars .note{font-size:.82rem;color:var(--slate);margin:8px 0 0;font-family:"IBM Plex Sans",sans-serif}
+ul.time{list-style:none;margin:16px 0;padding:0 0 0 20px;border-left:3px solid var(--brass)}
+ul.time li{position:relative;margin:0 0 14px;padding-left:14px}
+ul.time li::before{content:"";position:absolute;left:-28px;top:7px;width:11px;height:11px;border-radius:50%;background:var(--wax);border:2px solid var(--paper)}
+ul.time b{font-family:"Fraunces",serif;color:var(--wax)}
+ul.time .de{margin:6px 0 0}
+:root{--wine:#7A2E2E;--olive:#6f7d1c;--olive-soft:#eef1d2}
+/* ---- Karten (Karteikarten) ---- */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;border-top:6px solid var(--olive);box-shadow:0 1px 6px rgba(0,0,0,.06)}
+.card.rot{border-top-color:var(--wine)}
+.card header{padding:10px 14px 0;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.card header h3{margin:0;font-size:1.2rem;font-family:"Fraunces",serif;border:none;padding:0}
+.card .tag{font-size:.78rem;padding:2px 10px;border-radius:999px;background:var(--olive-soft);color:var(--olive);white-space:nowrap;font-family:"IBM Plex Sans",sans-serif}
+.card.rot .tag{background:#f3dfe5;color:var(--wine)}
+.cbody{padding:2px 14px 12px}
+.cbody h4{color:var(--ink);font-size:.85rem;font-family:"IBM Plex Sans",sans-serif;margin:12px 0 2px;text-transform:uppercase;letter-spacing:.05em}
+.cbody p.de{margin:2px 0 0;font-size:.95rem;font-weight:600;color:var(--ink)}
+.cbody p.vi{font-size:.88rem;color:var(--slate);font-family:"IBM Plex Sans",sans-serif;margin:2px 0 6px;padding-left:10px;border-left:3px solid var(--slateline)}
+.card .note{font-size:.85rem;background:#f7e9df;border-radius:6px;padding:6px 10px;margin:10px 0 0;color:#6b3500;font-family:"IBM Plex Sans",sans-serif}
+.card.extra{border-style:dashed}
+.card.extra .tag::after{content:" (bổ sung)"}
+.quiz .card{cursor:pointer}
+.quiz .card:not(.open) .cbody{display:none}
+.quiz .card:not(.open) header::after{content:"bấm để lật";font-size:.8rem;color:var(--slate);font-family:"IBM Plex Sans",sans-serif}
+/* ---- Aufgabenliste ---- */
+ol.tasks{counter-reset:t;list-style:none;padding:0;margin:14px 0}
+ol.tasks>li{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 16px 10px 58px;margin:10px 0;position:relative}
+ol.tasks>li::before{counter-increment:t;content:counter(t);position:absolute;left:14px;top:14px;width:30px;height:30px;border-radius:50%;background:var(--wax);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Fraunces",serif;font-weight:700}
+ol.tasks a{color:var(--wax);font-weight:600}
+/* ---- Ablauf-Lanes ---- */
+.lanes{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:14px 0}
+@media(max-width:760px){.lanes{grid-template-columns:1fr}}
+.lane h3{margin:0 0 10px;padding:10px 14px;border-radius:8px;color:#fff;background:var(--olive);font-family:"IBM Plex Sans",sans-serif;font-size:1rem;border:none}
+.lane.rot h3{background:var(--wax)}
+.step{position:relative;background:#fff;border:1px solid var(--line);border-left:5px solid var(--olive);border-radius:8px;padding:10px 14px 6px;margin:0 0 24px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.lane.rot .step{border-left-color:var(--wax)}
+.step::after{content:"▼";position:absolute;left:50%;bottom:-21px;transform:translateX(-50%);color:var(--brass);font-size:.8rem}
+.step:last-child::after{display:none}
+.step.opt{border-style:dashed;border-left-style:solid}
+.step .sn{font-weight:600;font-family:"Fraunces",serif;font-size:1.05rem;color:var(--ink)}
+.step .sn .vi{display:inline-block;margin:0 0 0 8px;font-weight:400;font-size:.8rem;padding:2px 10px;font-family:"IBM Plex Sans",sans-serif;color:var(--slate);background:var(--paper2);border-radius:10px;border:none}
+.step p.de{margin:6px 0 0;font-size:.95rem}
+.step p.vi{font-size:.88rem;color:var(--slate);font-family:"IBM Plex Sans",sans-serif;margin:2px 0 6px;padding-left:10px;border-left:3px solid var(--slateline)}
+.opt-tag{font-size:.78rem;color:var(--wax);margin-left:6px;font-family:"IBM Plex Sans",sans-serif}
+/* ---- Pyramiden ---- */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0}
+@media(max-width:760px){.two{grid-template-columns:1fr}}
+.two .box{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.two .box h4{font-family:"IBM Plex Sans",sans-serif;font-size:.9rem;margin:0 0 8px;color:var(--ink)}
+.pyr{display:flex;flex-direction:column;align-items:center;gap:4px;margin:12px 0}
+.pyr div{padding:8px 10px;color:#fff;text-align:center;border-radius:4px;font-size:.9rem;font-family:"IBM Plex Sans",sans-serif}
+.pyr div small{display:block;opacity:.92;font-size:.78rem}
+.p1{width:100%;background:#a9a2ad}.p2{width:78%;background:#7d4f65}.p3{width:56%;background:var(--wax)}
+.l1{width:100%;background:#8c8a4a}.l2{width:74%;background:#6e7021}.l3{width:48%;background:#475006}
+.l4{width:30%;background:#2d3304}
+/* ---- Prädikat-Leiter ---- */
+.ladder{display:grid;gap:8px;margin:12px 0}
+.lad{display:grid;grid-template-columns:34px 1fr;gap:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px;position:relative;overflow:hidden}
+.lad::before{content:"";position:absolute;left:0;bottom:0;height:5px;background:var(--wax);width:var(--w)}
+.lad .n{width:30px;height:30px;border-radius:50%;border:2px solid var(--wax);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--wax);font-family:"Fraunces",serif}
+.lad strong{font-family:"Fraunces",serif;font-size:1.1rem}
+.lad .meta{font-size:.8rem;color:var(--slate);font-family:"IBM Plex Sans",sans-serif;margin-left:8px}
+.lad p.de{margin:6px 0 0;font-size:.95rem}
+.lad p.vi{font-size:.88rem;color:var(--slate);font-family:"IBM Plex Sans",sans-serif;margin:2px 0 4px;padding-left:10px;border-left:3px solid var(--slateline)}
+/* ---- JS-generierte Tabellen: vietnamesische Spans kompakt ---- */
+td .vi{display:block;font-size:.8rem;color:var(--slate);font-family:"IBM Plex Sans",sans-serif;margin-top:3px;padding:0;border:none}
+
+</style>
+</head>
+<body>
+<header class="cover">
+  <div class="kicker">BFK · Lernfeld 10 · Lernsituation 2–3 · Lernskript</div>
+  <h1>§ <em>Milch & Käse</em></h1>
+  <p class="subtitle-de">Mindmap Milchprodukte · 6 Käsegruppen · Zusammensetzung · Fettgehaltsstufen · Käseplatte</p>
+  <p class="subtitle-vi">Sơ đồ tư duy sản phẩm sữa · 6 nhóm phô mai · thành phần · các mức hàm lượng béo · khay phô mai — tài liệu ôn thi song ngữ</p>
+  <div class="exam-meta"><span>LS 2 · Milchprodukte</span><span>LS 3 · Käse</span><span>DE / VI zweisprachig</span></div>
+  <div class="legend">
+    <div class="item"><span class="swatch de"></span> Deutsch (Original — luôn đọc trước)</div>
+    <div class="item"><span class="swatch vi"></span> Tiếng Việt (bản dịch — đọc sau để hiểu)</div>
+    <button class="toggle-btn" id="viToggle" onclick="toggleVi()">&#x1F1FB;&#x1F1F3; Tiếng Việt: AN</button>
+  </div>
+</header>
+<nav class="spine"><span class="grp">Kapitel</span><a href="#p1">§1 · Milchprodukte</a><a href="#p2">§2 · Käsegruppen</a><a href="#p3">§3 · Sorten-Tabelle</a><a href="#p4">§4 · Herstellung</a><a href="#p5">§5 · Zusammensetzung</a><a href="#p6">§6 · Fettstufen</a><a href="#p7">§7 · Fett i. Tr.</a><a href="#p8">§8 · Verwendung</a><a href="#p9">§9 · Käseplatte</a><a href="#p10">§10 · Getränke</a><a href="#p11">§11 · Concept Map</a><span class="grp">Selbsttest</span><a href="#quiz" class="exam">Prüfungs-Check</a></nav>
+<main>
+
+<section class="chapter" id="p1"><div class="chapter-head"><span class="chapter-num">§1</span><h2 class="chapter-title-de">Mindmap: Milchprodukte & Weiterverarbeitung</h2><span class="lf-tag">LF 10 · LS 2</span></div><p class="chapter-title-vi">Sơ đồ tư duy: các sản phẩm từ sữa và cách chế biến tiếp</p>
+<div class="cards">
+<div class="card"><header><h3>Trinkmilch</h3><span class="tag">sữa uống</span></header><div class="cbody">
+<p class="de">Rohmilch — nicht für den Verkauf, erst Verarbeitung.</p><p class="vi">Sữa thô — không bán trực tiếp, phải qua chế biến trước.</p>
+<p class="de">Pasteurisierte Milch — kurz erhitzt.</p><p class="vi">Sữa thanh trùng — đun nóng trong thời gian ngắn.</p>
+<p class="de">Frischmilch — gekühlt.</p><p class="vi">Sữa tươi — bảo quản lạnh.</p>
+<p class="de">ESL-Milch — länger haltbar.</p><p class="vi">Sữa ESL — bảo quản được lâu hơn.</p>
+</div></div>
+<div class="card"><header><h3>Sahne / Rahm</h3><span class="tag">kem sữa</span></header><div class="cbody">
+<p class="de">Weiterverarbeitung: Abtrennen des Milchfetts durch Zentrifugieren (Separator).</p><p class="vi">Chế biến tiếp: tách chất béo của sữa bằng phương pháp ly tâm (máy tách).</p>
+<p class="de">→ Schlagsahne, Crème fraîche, Sahnesoße.</p><p class="vi">→ kem đánh bông, crème fraîche, sốt kem.</p>
+</div></div>
+<div class="card rot"><header><h3>Butter</h3><span class="tag">bơ</span></header><div class="cbody">
+<p class="de">Die Sahne wird geschlagen, das Milchfett wird abgetrennt.</p><p class="vi">Đánh bông kem, tách chất béo sữa ra.</p>
+</div></div>
+<div class="card"><header><h3>Käse</h3><span class="tag">phô mai</span></header><div class="cbody">
+<p class="de">Die Milch wird durch Lab oder Säuerung zum Gerinnen gebracht. Der Käsebruch wird weiterverarbeitet.</p><p class="vi">Sữa được làm đông tụ bằng men đông (Lab) hoặc lên men chua. Phần đông tụ (Käsebruch) được chế biến tiếp.</p>
+<p class="de">→ Frischkäse, Weichkäse, Hartkäse.</p><p class="vi">→ phô mai tươi, phô mai mềm, phô mai cứng.</p>
+</div></div>
+<div class="card"><header><h3>Quark</h3><span class="tag">quark</span></header><div class="cbody">
+<p class="de">Die Milch wird durch Säuerung zum Gerinnen gebracht. Der Molkeanteil wird abgetrennt.</p><p class="vi">Sữa được làm đông bằng lên men chua. Phần whey (Molke) được tách ra.</p>
+<p class="de">→ Speisequark, Magerquark, Kräuterquark.</p><p class="vi">→ quark ăn liền, quark ít béo, quark thảo mộc.</p>
+</div></div>
+<div class="card"><header><h3>Joghurt</h3><span class="tag">sữa chua</span></header><div class="cbody">
+<p class="de">Die Milch wird mit Milchsäurekulturen versetzt und fermentiert.</p><p class="vi">Sữa được cấy men lactic rồi lên men.</p>
+<p class="de">→ Natur, Frucht, Trinkjoghurt.</p><p class="vi">→ sữa chua nguyên vị, sữa chua trái cây, sữa chua uống.</p>
+</div></div>
+</div>
+<div class="warn"><span class="tag">Lernsituation 2 — Auftrag</span>Erstellen Sie eine Mindmap, die sowohl die Produkte als auch deren jeweilige Weiterverarbeitungsmöglichkeit in der Molkerei darstellt.<div class="vi">Vẽ sơ đồ tư duy thể hiện cả các sản phẩm lẫn khả năng chế biến tiếp theo của từng sản phẩm trong nhà máy sữa.</div></div>
+</section>
+
+<section class="chapter" id="p2"><div class="chapter-head"><span class="chapter-num">§2</span><h2 class="chapter-title-de">Die 6 Käsegruppen</h2><span class="lf-tag">LF 10 · LS 3</span></div><p class="chapter-title-vi">6 nhóm phô mai</p>
+
+<h3 class="sub">1. Hartkäse <span class="vi-sub">Phô mai cứng</span></h3>
+<div class="block"><div class="de"><span class="tag">Definition</span>Bestehen aus einem festen bis sehr festem Käseteig. Wegen ihrer langen Reifungs- und Lagerdauer (bis zu einigen Jahren) erreichen sie einen hohen Trockenmassegehalt.</div><div class="vi"><span class="tag">VI</span>Gồm bột phô mai cứng đến rất cứng. Do thời gian ủ chín và lưu kho dài (tới vài năm) nên có hàm lượng chất khô cao.</div></div>
+<div class="block"><div class="de"><span class="tag">Beispiele</span>Emmentaler — gelbe Farbe, regelmäßige kirschengroße Löcher, vollmundiger Geschmack. Bergkäse — mattgelbe Farbe, erbsengroße Löcher, würziger bzw. kräftiger als Emmentaler. Cheddar — wird hauptsächlich in England hergestellt; besonders zur Schmelzkäseherstellung verwendet. Comté und Beaufort — aus Frankreich. Parmesan und Provolone — italienische Spezialitäten. Gruyère und Appenzeller — aus der Schweiz.</div><div class="vi"><span class="tag">VI</span>Emmentaler — màu vàng, lỗ tròn đều cỡ quả anh đào, vị đầy đặn. Bergkäse — màu vàng xỉn, lỗ cỡ hạt đậu, đậm vị hơn Emmentaler. Cheddar — chủ yếu sản xuất ở Anh; dùng nhiều để làm phô mai tan chảy. Comté và Beaufort — từ Pháp. Parmesan và Provolone — đặc sản Ý. Gruyère và Appenzeller — từ Thụy Sĩ.</div></div>
+
+<h3 class="sub">2. Schnittkäse <span class="vi-sub">Phô mai cắt lát</span></h3>
+<div class="block"><div class="de"><span class="tag">Definition</span>Ist weicher und saftiger als Hartkäse. Der Trockenmassegehalt liegt etwas niedriger als beim Hartkäse.</div><div class="vi"><span class="tag">VI</span>Mềm và mọng hơn phô mai cứng. Hàm lượng chất khô thấp hơn một chút so với phô mai cứng.</div></div>
+<div class="block"><div class="de"><span class="tag">Beispiele</span>Gouda — glatte und trockene Rinde, elfenbeinfarben bis gelb, je älter desto würziger; Holland. Edamer — häufig mit Paraffinschicht, hell bis goldgelb, milder Geschmack; Holland. Tilsiter — viele runde und schlitzförmige Löcher, pikanter Geschmack; Deutschland. Raclette — aus dem Schweizer Wallis; Spezialität, bei der verschiedene Lebensmittel mit dem Käse in kleinen Pfännchen überbacken werden. Danbo und Havarti — aus Dänemark; dem Gouda vergleichbare Erzeugnisse.</div><div class="vi"><span class="tag">VI</span>Gouda — vỏ nhẵn khô, màu ngà đến vàng, càng để lâu càng đậm; Hà Lan. Edamer — thường bọc lớp parafin, màu vàng nhạt đến vàng kim, vị nhẹ; Hà Lan. Tilsiter — nhiều lỗ tròn và lỗ dài, vị cay nồng; Đức. Raclette — từ vùng Wallis (Thụy Sĩ); món đặc sản nướng phô mai chảy lên đồ ăn trong chảo nhỏ. Danbo và Havarti — từ Đan Mạch; tương tự Gouda.</div></div>
+
+<h3 class="sub">3. Halbfeste Schnittkäse <span class="vi-sub">Phô mai cắt lát nửa cứng</span></h3>
+<div class="block"><div class="de"><span class="tag">Definition</span>Sind weicher als Schnittkäse und gleichmäßig durch die ganze Masse gereift. Ihr Trockenmassegehalt liegt unter dem der Schnittkäse.</div><div class="vi"><span class="tag">VI</span>Mềm hơn Schnittkäse, chín đều khắp khối. Hàm lượng chất khô thấp hơn Schnittkäse.</div></div>
+<div class="block"><div class="de"><span class="tag">a) Blauschimmelkäse</span>Haben ein weiß-gelbliches Inneres mit dunkelgrünen bis blauen Schimmeladern. Die Schnittfläche wirkt marmoriert. Kräftiger bis scharf pikanter Geschmack. Die pikantesten sind: Roquefort (Schafsmilch) aus Frankreich, Danablu aus Dänemark, Stilton aus England, Gorgonzola aus Italien, Bavaria Blu aus Deutschland.</div><div class="vi"><span class="tag">VI</span>Phô mai mốc xanh: ruột trắng-vàng với vân mốc xanh đậm đến xanh dương; mặt cắt như đá cẩm thạch; vị đậm đến cay nồng gắt. Những loại cay nồng nhất: Roquefort (sữa cừu) từ Pháp, Danablu từ Đan Mạch, Stilton từ Anh, Gorgonzola từ Ý, Bavaria Blu từ Đức.</div></div>
+<div class="block"><div class="de"><span class="tag">b) Rotschmierekäse</span>Geschmeidige rotbraune Haut, gelbliche Farbe mit geringer Lochung, mildes Aroma. Bekannte Sorten: Esrom aus Dänemark, Taleggio aus Italien. Romadur: weißgelbe Würfel mit lackartiger Schmiere, wenig Löcher, gleichmäßig gereift, sehr pikant.</div><div class="vi"><span class="tag">VI</span>Phô mai bôi đỏ: vỏ nâu đỏ dẻo mịn, màu vàng nhạt, ít lỗ, hương nhẹ. Các loại nổi tiếng: Esrom (Đan Mạch), Taleggio (Ý). Romadur: khối vuông trắng-vàng với lớp bôi bóng như sơn, ít lỗ, chín đều, rất cay nồng.</div></div>
+
+<h3 class="sub">4. Weichkäse <span class="vi-sub">Phô mai mềm</span></h3>
+<div class="block"><div class="de"><span class="tag">Definition</span>Der Trockenmassegehalt liegt unter dem der halbfesten Schnittkäse. Man unterscheidet zwei Arten: Weichkäse mit Schimmelbildung und Weichkäse mit Rotschmiere.</div><div class="vi"><span class="tag">VI</span>Hàm lượng chất khô thấp hơn nhóm halbfest. Có hai loại: phô mai mềm mốc trắng và phô mai mềm bôi đỏ.</div></div>
+<div class="block"><div class="de"><span class="tag">a) mit Schimmelbildung</span>Camembert — wird unter Verwendung von essbarem, weißem Schimmel hergestellt, der nur an der Oberfläche wächst; milder, aromatischer Geschmack. Brie — wird im Allgemeinen weniger reif verzehrt als Camembert; milder; „Tortenstücke".</div><div class="vi"><span class="tag">VI</span>Camembert — làm bằng mốc trắng ăn được, chỉ mọc trên bề mặt; vị nhẹ, thơm. Brie — thường ăn khi chưa chín bằng Camembert; vị nhẹ; dạng "miếng bánh".</div></div>
+<div class="block"><div class="de"><span class="tag">b) mit Rotschmiere</span>Romadur und Limburger — gelbbraune bis rötliche geschmeidige Haut; weißer bis hellgelber Teig, wenig Löcher, kräftiger, würziger Geschmack. Münster — feste, gelblichrote Haut, etwas feucht, gelblichweiß, keine Löcher, feiner, pikanter Geschmack.</div><div class="vi"><span class="tag">VI</span>Romadur và Limburger — vỏ dẻo màu vàng-nâu đến đỏ; ruột trắng đến vàng nhạt, ít lỗ, vị đậm, cay. Münster — vỏ chắc màu vàng-đỏ, hơi ẩm, ruột trắng-vàng, không lỗ, vị tinh tế, cay nồng.</div></div>
+
+<h3 class="sub">5. Frischkäse <span class="vi-sub">Phô mai tươi</span></h3>
+<div class="block"><div class="de"><span class="tag">Definition</span>Sind alle Käsesorten, die zwar eine Milchsäureumwandlung, jedoch keinen Reifungsprozess durchmachen.</div><div class="vi"><span class="tag">VI</span>Gồm mọi loại phô mai có chuyển hóa acid lactic nhưng không qua quá trình ủ chín.</div></div>
+<div class="block"><div class="de"><span class="tag">Sorten</span>Frischkäse — wird in allen Fettgehaltsstufen hergestellt. Schichtkäse — gleicht dem Speisequark in seiner Zusammensetzung, festere Struktur, erkennbare Schichtenbildung. Rahmfrischkäse — Gehalt von mindestens 50 % Fett i. Tr. Doppelrahmfrischkäse — immer mindestens 60 % Fett i. Tr. Beispiele: Mozzarella, Ricotta, Mascarpone, Quark, Hüttenkäse.</div><div class="vi"><span class="tag">VI</span>Frischkäse — sản xuất ở mọi mức hàm lượng béo. Schichtkäse — thành phần giống quark ăn liền, kết cấu chắc hơn, thấy rõ lớp. Rahmfrischkäse — ít nhất 50% béo trong chất khô. Doppelrahmfrischkäse — luôn ít nhất 60% béo trong chất khô. Ví dụ: Mozzarella, Ricotta, Mascarpone, Quark, Hüttenkäse.</div></div>
+
+<h3 class="sub">6. Sauermilchkäse <span class="vi-sub">Phô mai sữa chua</span></h3>
+<div class="block"><div class="de"><span class="tag">Definition</span>Werden aus Sauermilchquark gewonnen. Sie werden überwiegend in der Magerstufe hergestellt. Hoher Eiweißgehalt, glattes Äußeres, gelbliche Farbe.</div><div class="vi"><span class="tag">VI</span>Làm từ quark sữa chua (Sauermilchquark). Chủ yếu sản xuất ở mức ít béo (Magerstufe). Giàu đạm, mặt ngoài nhẵn, màu vàng nhạt.</div></div>
+<div class="block"><div class="de"><span class="tag">Bekannteste</span>Harzer, Mainzer, Handkäse, Korbkäse, Olmützer Quargel, Nieheimer, Stangenkäse.</div><div class="vi"><span class="tag">VI</span>Nổi tiếng nhất: Harzer, Mainzer, Handkäse, Korbkäse, Olmützer Quargel, Nieheimer, Stangenkäse.</div></div>
+</section>
+
+<section class="chapter" id="p3"><div class="chapter-head"><span class="chapter-num">§3</span><h2 class="chapter-title-de">Käsesorten-Tabelle (20+ Sorten)</h2><span class="lf-tag">LF 10 · LS 3</span></div><p class="chapter-title-vi">Bảng các loại phô mai — bài tập: liệt kê ít nhất 20 loại kèm nhóm và xuất xứ</p>
+<table><thead><tr><th>Käsesorte <span class="vi-cell">Loại phô mai</span></th><th>Käsegruppe <span class="vi-cell">Nhóm</span></th><th>Land <span class="vi-cell">Xuất xứ</span></th></tr></thead><tbody>
+<tr><td>Emmentaler</td><td>Hartkäse</td><td>Schweiz <span class="vi-cell">Thụy Sĩ</span></td></tr>
+<tr><td>Bergkäse</td><td>Hartkäse</td><td>Deutschland / Österreich <span class="vi-cell">Đức / Áo</span></td></tr>
+<tr><td>Cheddar (Chester)</td><td>Hartkäse</td><td>England <span class="vi-cell">Anh</span></td></tr>
+<tr><td>Comté</td><td>Hartkäse</td><td>Frankreich <span class="vi-cell">Pháp</span></td></tr>
+<tr><td>Beaufort</td><td>Hartkäse</td><td>Frankreich <span class="vi-cell">Pháp</span></td></tr>
+<tr><td>Parmesan (Parmigiano)</td><td>Hartkäse</td><td>Italien <span class="vi-cell">Ý</span></td></tr>
+<tr><td>Provolone</td><td>Hartkäse</td><td>Italien <span class="vi-cell">Ý</span></td></tr>
+<tr><td>Gruyère</td><td>Hartkäse</td><td>Schweiz <span class="vi-cell">Thụy Sĩ</span></td></tr>
+<tr><td>Appenzeller</td><td>Hartkäse</td><td>Schweiz <span class="vi-cell">Thụy Sĩ</span></td></tr>
+<tr><td>Gouda</td><td>Schnittkäse</td><td>Holland <span class="vi-cell">Hà Lan</span></td></tr>
+<tr><td>Edamer</td><td>Schnittkäse</td><td>Holland <span class="vi-cell">Hà Lan</span></td></tr>
+<tr><td>Tilsiter</td><td>Schnittkäse</td><td>Deutschland <span class="vi-cell">Đức</span></td></tr>
+<tr><td>Raclette</td><td>Schnittkäse</td><td>Schweiz (Wallis) <span class="vi-cell">Thụy Sĩ (Wallis)</span></td></tr>
+<tr><td>Danbo</td><td>Schnittkäse</td><td>Dänemark <span class="vi-cell">Đan Mạch</span></td></tr>
+<tr><td>Havarti</td><td>Schnittkäse</td><td>Dänemark <span class="vi-cell">Đan Mạch</span></td></tr>
+<tr><td>Roquefort (Schafsmilch)</td><td>halbfester Schnittkäse · Blauschimmel</td><td>Frankreich <span class="vi-cell">Pháp</span></td></tr>
+<tr><td>Danablu</td><td>halbfester Schnittkäse · Blauschimmel</td><td>Dänemark <span class="vi-cell">Đan Mạch</span></td></tr>
+<tr><td>Stilton</td><td>halbfester Schnittkäse · Blauschimmel</td><td>England <span class="vi-cell">Anh</span></td></tr>
+<tr><td>Gorgonzola</td><td>halbfester Schnittkäse · Blauschimmel</td><td>Italien <span class="vi-cell">Ý</span></td></tr>
+<tr><td>Bavaria Blu</td><td>halbfester Schnittkäse · Blauschimmel</td><td>Deutschland <span class="vi-cell">Đức</span></td></tr>
+<tr><td>Esrom</td><td>halbfester Schnittkäse · Rotschmiere</td><td>Dänemark <span class="vi-cell">Đan Mạch</span></td></tr>
+<tr><td>Taleggio</td><td>halbfester Schnittkäse · Rotschmiere</td><td>Italien <span class="vi-cell">Ý</span></td></tr>
+<tr><td>Romadur</td><td>halbfester Schnittkäse / Weichkäse · Rotschmiere</td><td>Deutschland <span class="vi-cell">Đức</span></td></tr>
+<tr><td>Camembert</td><td>Weichkäse · Schimmelbildung</td><td>Frankreich <span class="vi-cell">Pháp</span></td></tr>
+<tr><td>Brie</td><td>Weichkäse · Schimmelbildung</td><td>Frankreich <span class="vi-cell">Pháp</span></td></tr>
+<tr><td>Limburger</td><td>Weichkäse · Rotschmiere</td><td>Deutschland <span class="vi-cell">Đức</span></td></tr>
+<tr><td>Münster</td><td>Weichkäse · Rotschmiere</td><td>Frankreich <span class="vi-cell">Pháp</span></td></tr>
+<tr><td>Feta</td><td>Weichkäse</td><td>Griechenland <span class="vi-cell">Hy Lạp</span></td></tr>
+<tr><td>Mozzarella</td><td>Frischkäse</td><td>Italien <span class="vi-cell">Ý</span></td></tr>
+<tr><td>Ricotta</td><td>Frischkäse</td><td>Italien <span class="vi-cell">Ý</span></td></tr>
+<tr><td>Mascarpone</td><td>Frischkäse</td><td>Italien <span class="vi-cell">Ý</span></td></tr>
+<tr><td>Quark</td><td>Frischkäse</td><td>Deutschland <span class="vi-cell">Đức</span></td></tr>
+<tr><td>Hüttenkäse</td><td>Frischkäse</td><td>England <span class="vi-cell">Anh</span></td></tr>
+<tr><td>Schichtkäse</td><td>Frischkäse</td><td>Deutschland <span class="vi-cell">Đức</span></td></tr>
+<tr><td>Exquisa</td><td>Frischkäse</td><td>Deutschland <span class="vi-cell">Đức</span></td></tr>
+<tr><td>Harzer</td><td>Sauermilchkäse</td><td>Deutschland <span class="vi-cell">Đức</span></td></tr>
+<tr><td>Mainzer</td><td>Sauermilchkäse</td><td>Deutschland <span class="vi-cell">Đức</span></td></tr>
+<tr><td>Handkäse</td><td>Sauermilchkäse</td><td>Deutschland <span class="vi-cell">Đức</span></td></tr>
+<tr><td>Korbkäse</td><td>Sauermilchkäse</td><td>Deutschland <span class="vi-cell">Đức</span></td></tr>
+<tr><td>Olmützer Quargel</td><td>Sauermilchkäse</td><td>Tschechien <span class="vi-cell">Séc</span></td></tr>
+<tr><td>Nieheimer</td><td>Sauermilchkäse</td><td>Deutschland <span class="vi-cell">Đức</span></td></tr>
+<tr><td>Stangenkäse</td><td>Sauermilchkäse</td><td>Deutschland <span class="vi-cell">Đức</span></td></tr>
+</tbody></table>
+<div class="example"><span class="tag">Lernsituation 3 — Auftrag</span>Erstellen Sie eine Liste mit mindestens 20 Käsesorten und ergänzen Sie die Liste mit Tierart der Milch oder Herkunftsland. Stellen Sie das Thema Käse in einer Concept Map dar (Käseherstellung, Käsezusammensetzung, Käsearten, Fettgehaltsstufen).<div class="vi">Liệt kê ít nhất 20 loại phô mai, bổ sung thêm loại sữa (động vật) hoặc nước xuất xứ. Trình bày chủ đề phô mai bằng Concept Map (cách làm phô mai, thành phần, các loại phô mai, các mức hàm lượng béo).</div></div>
+</section>
+
+<section class="chapter" id="p4"><div class="chapter-head"><span class="chapter-num">§4</span><h2 class="chapter-title-de">Käseherstellung</h2><span class="lf-tag">LF 10</span></div><p class="chapter-title-vi">Cách làm phô mai</p>
+<div class="lanes"><div class="lane">
+<div class="step"><span class="sn">1. Milch <span class="vi">nguyên liệu sữa</span></span><p class="de">Ausgangsstoff für alle Milchprodukte.</p><p class="vi">Nguyên liệu cho mọi sản phẩm từ sữa.</p></div>
+<div class="step"><span class="sn">2. Gerinnen <span class="vi">làm đông tụ</span></span><p class="de">Die Milch wird durch <b>Lab</b> oder <b>Säuerung</b> zum Gerinnen gebracht.</p><p class="vi">Sữa được làm đông tụ bằng <b>men đông (Lab)</b> hoặc <b>lên men chua</b>.</p></div>
+<div class="step"><span class="sn">3. Trennung <span class="vi">tách</span></span><p class="de">Der <b>Käsebruch</b> trennt sich von der <b>Molke</b> (wässriger Anteil).</p><p class="vi">Phần <b>đông tụ (Käsebruch)</b> tách khỏi <b>whey (Molke)</b> — phần nước.</p></div>
+<div class="step"><span class="sn">4. Weiterverarbeitung <span class="vi">chế biến tiếp</span></span><p class="de">Je nach Sorte: formen, pressen, salzen, reifen — oder frisch verzehren.</p><p class="vi">Tùy loại: tạo hình, ép, ướp muối, ủ chín — hoặc ăn tươi.</p></div>
+</div></div>
+</section>
+
+<section class="chapter" id="p5"><div class="chapter-head"><span class="chapter-num">§5</span><h2 class="chapter-title-de">Zusammensetzung von Käse</h2><span class="lf-tag">LF 10</span></div><p class="chapter-title-vi">Thành phần của phô mai</p>
+<div class="block"><div class="de"><span class="tag">Grundregel</span>Käse besteht aus <b>Wasser</b> und <b>Trockenmasse</b>. Die Trockenmasse enthält Protein, Fett und andere Inhaltsstoffe.</div><div class="vi"><span class="tag">VI</span>Phô mai gồm <b>nước</b> và <b>chất khô</b>. Chất khô chứa đạm (protein), chất béo và các thành phần khác.</div></div>
+<div class="bars">
+<div class="bar"><span>Wasser</span><i style="--w:42%;--c:#48586B"></i><span>42 %</span></div>
+<div class="bar"><span>Trockenmasse</span><i style="--w:58%;--c:#9C7A3C"></i><span>58 %</span></div>
+<div class="bar"><span>— Fett</span><i style="--w:29%;--c:#7A2E2E"></i><span>29 %</span></div>
+<div class="bar"><span>— Eiweiß</span><i style="--w:25%;--c:#6f7d1c"></i><span>25 %</span></div>
+<div class="bar"><span>— andere</span><i style="--w:4%;--c:#a9a2ad"></i><span>4 %</span></div>
+<p class="note">Beispiel-Diagramm: 100 g Käse = 42 g Wasser + 58 g Trockenmasse (29 g Fett + 25 g Eiweiß + 4 g andere Inhaltsstoffe).</p>
+<p class="note vi-mini">Ví dụ: 100 g phô mai = 42 g nước + 58 g chất khô (29 g béo + 25 g đạm + 4 g thành phần khác).</p>
+</div>
+</section>
+
+<section class="chapter" id="p6"><div class="chapter-head"><span class="chapter-num">§6</span><h2 class="chapter-title-de">Fettgehaltsstufen bei Käse</h2><span class="lf-tag">LF 10</span></div><p class="chapter-title-vi">Các mức hàm lượng béo của phô mai</p>
+<div class="block"><div class="de"><span class="tag">Regel</span>Käse wird häufig nach seinem <b>Fettgehalt in der Trockenmasse (Fett i. Tr.)</b> eingeteilt.</div><div class="vi"><span class="tag">VI</span>Phô mai thường được phân loại theo <b>hàm lượng béo trong chất khô (Fett i. Tr.)</b>.</div></div>
+<table><thead><tr><th>Fettgehaltsstufe <span class="vi-cell">Mức hàm lượng béo</span></th><th>Fett i. Tr. (%)</th></tr></thead><tbody>
+<tr><td>Doppelrahmstufe</td><td>≥ 60 %</td></tr>
+<tr><td>Rahmstufe</td><td>50 – 59 %</td></tr>
+<tr><td>Vollfettstufe</td><td>45 – 49 %</td></tr>
+<tr><td>Fettstufe</td><td>40 – 44 %</td></tr>
+<tr><td>Dreiviertelfettstufe</td><td>30 – 39 %</td></tr>
+<tr><td>Halbfettstufe</td><td>20 – 29 %</td></tr>
+<tr><td>Viertelfettstufe</td><td>10 – 19 %</td></tr>
+<tr><td>Magerstufe</td><td>&lt; 10 %</td></tr>
+</tbody></table>
+<h3 class="sub">Aufgabe 1 — Zuordnung <span class="vi-sub">Bài 1 — Xếp đúng mức</span></h3>
+<div class="block"><div class="de"><span class="tag">Aufgabe</span>Ordne die folgenden Käsesorten der richtigen Fettstufe zu: a) 62 % Fett i. Tr. · b) 48 % Fett i. Tr. · c) 25 % Fett i. Tr. · d) 12 % Fett i. Tr.</div><div class="vi"><span class="tag">VI</span>Xếp các mức béo sau vào đúng bậc: a) 62% · b) 48% · c) 25% · d) 12% Fett i. Tr.</div></div>
+<details class="q"><summary><span class="qnum">Lösung</span>Lösung anzeigen</summary><div class="ans">
+<div class="de">a) 62 % → Doppelrahmstufe (≥ 60 %). b) 48 % → Vollfettstufe (45–49 %). c) 25 % → Halbfettstufe (20–29 %). d) 12 % → Viertelfettstufe (10–19 %).</div>
+<div class="vi">a) 62% → bậc Doppelrahm (≥ 60%). b) 48% → bậc Vollfett (45–49%). c) 25% → bậc Halbfett (20–29%). d) 12% → bậc Viertelfett (10–19%).</div>
+</div></details>
+</section>
+
+<section class="chapter" id="p7"><div class="chapter-head"><span class="chapter-num">§7</span><h2 class="chapter-title-de">Fett i. Tr. vs. absoluter Fettgehalt</h2><span class="lf-tag">LF 10</span></div><p class="chapter-title-vi">Hàm lượng béo trong chất khô so với hàm lượng béo tuyệt đối</p>
+<div class="block"><div class="de"><span class="tag">Regel</span>Der Fettgehalt wird meist als <b>Fett in der Trockenmasse (Fett i. Tr.)</b> angegeben. Für den tatsächlichen Fettgehalt im Käse muss man den <b>absoluten Fettgehalt</b> berechnen.</div><div class="vi"><span class="tag">VI</span>Hàm lượng béo thường được ghi là <b>béo trong chất khô (Fett i. Tr.)</b>. Muốn biết lượng béo thực tế trong phô mai phải tính <b>hàm lượng béo tuyệt đối</b>.</div></div>
+<div class="calc">
+<span class="op">TM</span> <span class="op">=</span> <span class="val">100 % − Wasser %</span><br>
+<span class="op">Fett_abs</span> <span class="op">=</span> <span class="val">Fett i. Tr. × TM ÷ 100</span><br>
+<span class="op">Fett i. Tr.</span> <span class="op">=</span> <span class="val">Fett_abs ÷ TM × 100</span>
+<span class="res">TM = chất khô · Fett_abs = béo tuyệt đối</span>
+</div>
+<div class="aufgabe"><span class="aufgabe-num">Aufgabe 2</span><div class="de">Ein Käse hat 45 % Fett i. Tr. und 50 % Wasser. Berechne den absoluten Fettgehalt.</div><div class="vi">Một loại phô mai có 45% Fett i. Tr. và 50% nước. Tính hàm lượng béo tuyệt đối.</div>
+<details class="q"><summary><span class="qnum">Lösung</span>Lösung anzeigen</summary><div class="ans"><div class="calc">TM <span class="op">=</span> <span class="val">100 − 50 = 50 %</span><br>Fett_abs <span class="op">=</span> <span class="val">45 % × 50 % ÷ 100 = 22,5 %</span></div><div class="vi">Chất khô TM = 50%; béo tuyệt đối = 45% × 50% ÷ 100 = 22,5%.</div></div></details></div>
+<div class="aufgabe"><span class="aufgabe-num">Aufgabe 3</span><div class="de">Ein Käse hat 60 % Fett i. Tr. und 35 % Wasser. Berechne den absoluten Fettgehalt.</div><div class="vi">Một loại phô mai có 60% Fett i. Tr. và 35% nước. Tính hàm lượng béo tuyệt đối.</div>
+<details class="q"><summary><span class="qnum">Lösung</span>Lösung anzeigen</summary><div class="ans"><div class="calc">TM <span class="op">=</span> <span class="val">100 − 35 = 65 %</span><br>Fett_abs <span class="op">=</span> <span class="val">60 % × 65 % ÷ 100 = 39 %</span></div><div class="vi">Chất khô TM = 65%; béo tuyệt đối = 60% × 65% ÷ 100 = 39%.</div></div></details></div>
+<div class="aufgabe"><span class="aufgabe-num">Aufgabe 4</span><div class="de">Ein Käse enthält 28 % Fett absolut und hat eine Trockenmasse von 56 %. Berechne den Fettgehalt i. Tr.</div><div class="vi">Một loại phô mai chứa 28% béo tuyệt đối, chất khô 56%. Tính Fett i. Tr.</div>
+<details class="q"><summary><span class="qnum">Lösung</span>Lösung anzeigen</summary><div class="ans"><div class="calc">Fett i. Tr. <span class="op">=</span> <span class="val">28 ÷ 56 × 100 = 50 %</span> <span class="res">→ Rahmstufe</span></div><div class="vi">Fett i. Tr. = 28 ÷ 56 × 100 = 50% → thuộc bậc Rahmstufe.</div></div></details></div>
+<div class="example"><span class="tag">Beispiel aus der Mitschrift</span><div class="de">100 g Käse · 70 % Trockenmasse · 45 % Fett i. Tr. → 45 % × 70 g = <b>31,5 g Fett</b> absolut.</div><div class="vi">100 g phô mai · 70% chất khô · 45% Fett i. Tr. → 45% × 70 g = <b>31,5 g béo</b> tuyệt đối.</div></div>
+<div class="warn"><span class="tag">Aufgabe 5 — Warum?</span><div class="de">Warum ist der Fettgehalt i. Tr. für den Vergleich von Käse sinnvoller als der absolute Fettgehalt?</div><div class="vi">Vì sao dùng Fett i. Tr. để so sánh các loại phô mai hợp lý hơn dùng hàm lượng béo tuyệt đối?</div>
+<div class="de" style="margin-top:8px"><b>Antwort:</b> Der Fettgehalt i. Tr. ist besser zum Vergleichen geeignet, weil der Wassergehalt von Käse je nach Sorte und Reifegrad stark unterschiedlich ist. Würde man nur den absoluten Fettgehalt vergleichen, könnte ein wasserreicher Käse fälschlicherweise „fettärmer" wirken als ein trockener Käse, obwohl beide den gleichen Fettanteil in der Trockenmasse haben. Der Fett i. Tr.-Wert ist also unabhängig vom Wassergehalt und macht Käsesorten vergleichbar.</div>
+<div class="vi"><b>Trả lời:</b> Dùng Fett i. Tr. so sánh tốt hơn vì lượng nước trong phô mai khác nhau rất nhiều tùy loại và độ chín. Nếu chỉ so sánh béo tuyệt đối, phô mai nhiều nước sẽ trông "ít béo" hơn phô mai khô một cách sai lầm, dù cả hai có cùng tỷ lệ béo trong chất khô. Giá trị Fett i. Tr. không phụ thuộc vào lượng nước nên các loại phô mai mới so sánh được với nhau.</div></div>
+</section>
+
+<section class="chapter" id="p8"><div class="chapter-head"><span class="chapter-num">§8</span><h2 class="chapter-title-de">Käseverwendung in der Gastronomie</h2><span class="lf-tag">LF 10</span></div><p class="chapter-title-vi">Cách dùng phô mai trong ẩm thực</p>
+<h3 class="sub">1. Einsatz pro Käse <span class="vi-sub">Mỗi loại phô mai dùng làm gì</span></h3>
+<table><thead><tr><th>Käse</th><th>Verwendung (mind. 2 Möglichkeiten) <span class="vi-cell">Cách dùng</span></th></tr></thead><tbody>
+<tr><td>Emmentaler</td><td>Käsespätzle <span class="vi-cell">mì Spätzle phô mai</span></td></tr>
+<tr><td>Gouda</td><td>Wurstsalat <span class="vi-cell">salad xúc xích</span></td></tr>
+<tr><td>Camembert</td><td>gebackener Camembert <span class="vi-cell">Camembert nướng/chiên</span></td></tr>
+<tr><td>Roquefort</td><td>Salat / Salatdressing <span class="vi-cell">salad / sốt salad</span></td></tr>
+<tr><td>Exquisa</td><td>Käsekuchen <span class="vi-cell">bánh phô mai</span></td></tr>
+<tr><td>Harzer</td><td>Handkäse mit Musik <span class="vi-cell">Handkäse với hành ngâm</span></td></tr>
+<tr><td>Parmesan</td><td>Pasta / Pizza <span class="vi-cell">mì Ý / pizza</span></td></tr>
+</tbody></table>
+<h3 class="sub">2. Gerichte → passender Käse <span class="vi-sub">Món ăn → phô mai phù hợp</span></h3>
+<table><thead><tr><th>Gericht <span class="vi-cell">Món ăn</span></th><th>Käse <span class="vi-cell">Phô mai</span></th></tr></thead><tbody>
+<tr><td>Kartoffelgratin</td><td>Parmesan</td></tr>
+<tr><td>Käsewindbeutel</td><td>Cheddar</td></tr>
+<tr><td>Käsekuchen</td><td>Frischkäse</td></tr>
+<tr><td>Salatdressing</td><td>Roquefort</td></tr>
+<tr><td>Cordon Bleu</td><td>Emmentaler</td></tr>
+<tr><td>Käsefondue</td><td>Appenzeller</td></tr>
+<tr><td>Welsh Rarebit</td><td>Cheddar</td></tr>
+<tr><td>Schweizer Käsesalat</td><td>Emmentaler / Appenzeller</td></tr>
+</tbody></table>
+<div class="example"><span class="tag">Käseauswahl</span><div class="de">Emmentaler, Quark, Roquefort, Parmesan, Gruyère (Greyerzer), Frischkäse (z. B. Exquisa), Chester (Cheddar).</div><div class="vi">Các loại phô mai cho sẵn trong bài: Emmentaler, Quark, Roquefort, Parmesan, Gruyère, Frischkäse (ví dụ Exquisa), Chester (Cheddar).</div></div>
+</section>
+
+<section class="chapter" id="p9"><div class="chapter-head"><span class="chapter-num">§9</span><h2 class="chapter-title-de">Käseplatte & Käseuhr</h2><span class="lf-tag">LF 10 · LS 3</span></div><p class="chapter-title-vi">Khay phô mai và "đồng hồ phô mai"</p>
+<h3 class="sub">Käseuhr — Anordnung <span class="vi-sub">"Đồng hồ" sắp xếp phô mai</span></h3>
+<table><thead><tr><th>Position</th><th>Käse</th><th>Beigabe <span class="vi-cell">Đồ ăn kèm</span></th></tr></thead><tbody>
+<tr><td>1</td><td>Ziegenfrischkäse</td><td>Honig, Trauben <span class="vi-cell">mật ong, nho</span></td></tr>
+<tr><td>2</td><td>Brie</td><td>Apfel <span class="vi-cell">táo</span></td></tr>
+<tr><td>3</td><td>Gouda</td><td>Cracker <span class="vi-cell">bánh quy mặn</span></td></tr>
+<tr><td>4</td><td>Gruyère</td><td>Birnen <span class="vi-cell">lê</span></td></tr>
+<tr><td>5</td><td>Parmigiano</td><td>Chutney <span class="vi-cell">sốt chutney</span></td></tr>
+<tr><td>6</td><td>Gorgonzola</td><td>Marmelade <span class="vi-cell">mứt</span></td></tr>
+</tbody></table>
+<h3 class="sub">Regeln für die Käseplatte <span class="vi-sub">Quy tắc bày khay phô mai</span></h3>
+<div class="block"><div class="de"><span class="tag">Reihenfolge</span>Von mild nach kräftig.</div><div class="vi"><span class="tag">VI</span>Xếp từ vị nhẹ đến vị đậm.</div></div>
+<div class="block"><div class="de"><span class="tag">Stücke</span>Stücke, keine Scheiben.</div><div class="vi"><span class="tag">VI</span>Cắt thành miếng, không thái lát mỏng.</div></div>
+<div class="block"><div class="de"><span class="tag">Unverpackt</span>Unverpackt anrichten.</div><div class="vi"><span class="tag">VI</span>Bày không bọc bao bì.</div></div>
+<div class="block"><div class="de"><span class="tag">Beigaben</span>Passende Beigaben: Obst, Gemüse, Brot, Dips.</div><div class="vi"><span class="tag">VI</span>Đồ ăn kèm phù hợp: trái cây, rau củ, bánh mì, sốt chấm.</div></div>
+<div class="block"><div class="de"><span class="tag">Variation</span>Verschiedene Käsegruppen verwenden und mit Deko ergänzen.</div><div class="vi"><span class="tag">VI</span>Dùng nhiều nhóm phô mai khác nhau và trang trí thêm.</div></div>
+</section>
+
+<section class="chapter" id="p10"><div class="chapter-head"><span class="chapter-num">§10</span><h2 class="chapter-title-de">Getränkebegleitung & Hygiene</h2><span class="lf-tag">LF 10</span></div><p class="chapter-title-vi">Đồ uống đi kèm và vệ sinh</p>
+<div class="block"><div class="de"><span class="tag">Weißweine</span>Müller-Thurgau, Weißburgunder, Chardonnay, Viognier.</div><div class="vi"><span class="tag">VI</span>Các loại vang trắng: Müller-Thurgau, Weißburgunder, Chardonnay, Viognier.</div></div>
+<div class="block"><div class="de"><span class="tag">Aperitif / Cocktails</span>Aperol (Spritz), Hugo, Espresso Martini.</div><div class="vi"><span class="tag">VI</span>Khai vị / cocktail: Aperol (Spritz), Hugo, Espresso Martini.</div></div>
+<div class="warn"><span class="tag">Hygiene</span><div class="de">Kühlkette einhalten!</div><div class="vi">Luôn giữ chuỗi lạnh (Kühlkette)!</div></div>
+</section>
+
+<section class="chapter" id="p11"><div class="chapter-head"><span class="chapter-num">§11</span><h2 class="chapter-title-de">Concept Map — die 4 Leitbegriffe</h2><span class="lf-tag">LF 10 · LS 3</span></div><p class="chapter-title-vi">Bản đồ khái niệm — 4 thuật ngữ bắt buộc</p>
+<div class="block"><div class="de"><span class="tag">1 · Käseherstellung</span>Milch → Gerinnen durch Lab oder Säuerung → Trennung in Käsebruch und Molke → Formen, Pressen, Reifen (<a href="#p4">§4</a>).</div><div class="vi"><span class="tag">VI</span>Sữa → đông tụ bằng men đông hoặc lên men chua → tách thành phần đông và whey → tạo hình, ép, ủ chín.</div></div>
+<div class="block"><div class="de"><span class="tag">2 · Käsezusammensetzung</span>Wasser (42 %) + Trockenmasse (58 %) = Fett (29 %) + Eiweiß (25 %) + andere Inhaltsstoffe (4 %) (<a href="#p5">§5</a>).</div><div class="vi"><span class="tag">VI</span>Nước (42%) + chất khô (58%) = béo (29%) + đạm (25%) + thành phần khác (4%).</div></div>
+<div class="block"><div class="de"><span class="tag">3 · Käsearten</span>Die 6 Käsegruppen: Hartkäse, Schnittkäse, halbfeste Schnittkäse, Weichkäse, Frischkäse, Sauermilchkäse (<a href="#p2">§2</a>).</div><div class="vi"><span class="tag">VI</span>6 nhóm phô mai: cứng, cắt lát, cắt lát nửa cứng, mềm, tươi, sữa chua.</div></div>
+<div class="block"><div class="de"><span class="tag">4 · Fettgehaltsstufen</span>Einteilung nach Fett i. Tr.: Doppelrahmstufe (≥ 60 %) → Rahmstufe → Vollfettstufe → Fettstufe → Dreiviertelfettstufe → Halbfettstufe → Viertelfettstufe → Magerstufe (&lt; 10 %) (<a href="#p6">§6</a>).</div><div class="vi"><span class="tag">VI</span>Phân loại theo Fett i. Tr.: từ bậc Doppelrahm (≥ 60%) xuống bậc Mager (&lt; 10%).</div></div>
+</section>
+
+<section class="chapter" id="quiz"><div class="chapter-head"><span class="chapter-num">§?</span><h2 class="chapter-title-de">Prüfungs-Check</h2><span class="lf-tag">Selbsttest</span></div><p class="chapter-title-vi">Tự kiểm tra nhanh (10 câu)</p>
+<details class="q"><summary><span class="qnum">Frage 1</span>Nenne die 6 Käsegruppen.</summary><div class="ans"><div class="de">Hartkäse, Schnittkäse, halbfeste Schnittkäse, Weichkäse, Frischkäse, Sauermilchkäse.</div><div class="vi">Phô mai cứng, phô mai cắt lát, phô mai cắt lát nửa cứng, phô mai mềm, phô mai tươi, phô mai sữa chua.</div></div></details>
+<details class="q"><summary><span class="qnum">Frage 2</span>Wie entsteht Käse aus Milch? Nenne die 4 Schritte.</summary><div class="ans"><div class="de">1. Milch. 2. Gerinnen durch Lab oder Säuerung. 3. Trennung in Käsebruch und Molke. 4. Weiterverarbeitung (formen, pressen, reifen).</div><div class="vi">1. Sữa. 2. Đông tụ bằng men đông hoặc lên men chua. 3. Tách thành phần đông và whey. 4. Chế biến tiếp (tạo hình, ép, ủ chín).</div></div></details>
+<details class="q"><summary><span class="qnum">Frage 3</span>Was bedeutet „Fett i. Tr."?</summary><div class="ans"><div class="de">Fettgehalt in der Trockenmasse — der Fettanteil bezogen auf die Trockenmasse, nicht auf das Gesamtgewicht.</div><div class="vi">Hàm lượng béo trong chất khô — tỷ lệ béo tính trên chất khô, không phải trên tổng trọng lượng.</div></div></details>
+<details class="q"><summary><span class="qnum">Frage 4</span>62 % Fett i. Tr. — welche Fettgehaltsstufe?</summary><div class="ans"><div class="de">Doppelrahmstufe (≥ 60 %).</div><div class="vi">Bậc Doppelrahm (≥ 60%).</div></div></details>
+<details class="q"><summary><span class="qnum">Frage 5</span>Ein Käse hat 45 % Fett i. Tr. und 50 % Wasser. Wie hoch ist der absolute Fettgehalt?</summary><div class="ans"><div class="de">TM = 100 − 50 = 50 %; Fett_abs = 45 % × 50 % ÷ 100 = 22,5 %.</div><div class="vi">Chất khô = 50%; béo tuyệt đối = 22,5%.</div></div></details>
+<details class="q"><summary><span class="qnum">Frage 6</span>Warum ist Fett i. Tr. zum Vergleichen sinnvoller als der absolute Fettgehalt?</summary><div class="ans"><div class="de">Weil der Fett i. Tr.-Wert unabhängig vom Wassergehalt ist — ein wasserreicher Käse wirkt sonst fälschlicherweise „fettärmer".</div><div class="vi">Vì giá trị Fett i. Tr. không phụ thuộc vào lượng nước — nếu không, phô mai nhiều nước sẽ trông "ít béo" một cách sai lầm.</div></div></details>
+<details class="q"><summary><span class="qnum">Frage 7</span>Nenne 3 Hartkäse-Sorten mit Herkunftsland.</summary><div class="ans"><div class="de">z. B. Emmentaler (Schweiz), Parmesan (Italien), Cheddar (England).</div><div class="vi">Ví dụ: Emmentaler (Thụy Sĩ), Parmesan (Ý), Cheddar (Anh).</div></div></details>
+<details class="q"><summary><span class="qnum">Frage 8</span>Camembert oder Brie — welcher wird reifer verzehrt?</summary><div class="ans"><div class="de">Camembert wird reifer verzehrt; Brie wird im Allgemeinen weniger reif verzehrt („Tortenstücke"), milder.</div><div class="vi">Camembert ăn khi chín hơn; Brie thường ăn khi chưa chín bằng ("miếng bánh"), vị nhẹ hơn.</div></div></details>
+<details class="q"><summary><span class="qnum">Frage 9</span>Wie wird Butter aus Sahne hergestellt?</summary><div class="ans"><div class="de">Die Sahne wird geschlagen, das Milchfett wird abgetrennt.</div><div class="vi">Đánh bông kem, tách chất béo sữa ra.</div></div></details>
+<details class="q"><summary><span class="qnum">Frage 10</span>Käseplatte: In welcher Reihenfolge werden die Käse angeordnet?</summary><div class="ans"><div class="de">Von mild nach kräftig — z. B. Ziegenfrischkäse → Brie → Gouda → Gruyère → Parmigiano → Gorgonzola. Stücke (keine Scheiben), unverpackt, mit passenden Beigaben.</div><div class="vi">Xếp từ vị nhẹ đến vị đậm — ví dụ: Ziegenfrischkäse → Brie → Gouda → Gruyère → Parmigiano → Gorgonzola. Cắt miếng (không thái lát), không bọc bao bì, kèm đồ ăn phù hợp.</div></div></details>
+</section>
+</main>
+<footer>
+  <div class="de">BFK · Lernfeld 10 — erstellt aus den Arbeitsblättern und Mitschriften (Milch & Milchprodukte, Käsesorten, Fettgehaltsstufen, Käseverwendung, Käseplatte).</div>
+  <div class="vi">Tài liệu ôn thi BFK · Lernfeld 10 — biên soạn từ các tờ bài tập và ghi chép (sữa & sản phẩm sữa, các loại phô mai, mức hàm lượng béo, cách dùng phô mai, khay phô mai).</div>
+</footer>
+<script>
+function toggleVi(){
+  document.body.classList.toggle('hide-vi');
+  var b=document.getElementById('viToggle');
+  var hidden=document.body.classList.contains('hide-vi');
+  b.textContent = hidden ? '\uD83C\uDDE9\uD83C\uDEA9 Tiếng Việt: TẮT' : '\u1F1FB\u1F1F3 Tiếng Việt: AN';
+}
+</script>
+</body>
+</html>

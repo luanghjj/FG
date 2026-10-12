@@ -1043,6 +1043,298 @@
     "ex": "Forelle blau wird im Essigsud gegart, wodurch die Haut sich silbrig-blau färbt."
   },
   {
+    "theme": "milch-kaese",
+    "cat": "Käsegruppen",
+    "q": "In welche 6 Hauptgruppen wird Käse in Deutschland eingeteilt?",
+    "opts": [
+      "Hartkäse, Schnittkäse, halbfeste Schnittkäse, Weichkäse, Frischkäse, Sauermilchkäse",
+      "Kuhkäse, Schafskäse, Ziegenkäse, Büffelkäse, Mischkäse, Schmelzkäse",
+      "Rohmilchkäse, Kochkäse, Schmelzkäse, Blauschimmelkäse, Weißkäse, Gelbkäse",
+      "Magerkäse, Halbfettkäse, Fettkäse, Vollfettkäse, Rahmkäse, Doppelrahmkäse"
+    ],
+    "a": 0,
+    "ex": "Die 6 Käsegruppen nach Käseverordnung (KäseV) richten sich nach dem Wassergehalt in der fettfreien Käsemasse: Hartkäse, Schnittkäse, halbfeste Schnittkäse, Weichkäse, Frischkäse und Sauermilchkäse."
+  },
+  {
+    "theme": "milch-kaese",
+    "cat": "Herstellung",
+    "q": "Welche 4 grundlegenden Schritte beschreiben die Käseherstellung aus Milch?",
+    "opts": [
+      "Milch → Gerinnen (Lab/Säuerung) → Trennung (Käsebruch & Molke) → Weiterverarbeitung (Formen, Pressen, Reifen)",
+      "Milch → Pasteurisieren → Zentrifugieren → Schlagen zu Butter",
+      "Milch → Fermentieren → Kochen → Kühlen im Wasserbad",
+      "Milch → Eindicken mit Stärke → Trocknen im Ofen → Räuchern"
+    ],
+    "a": 0,
+    "ex": "Käseherstellung: 1. Ausgangsstoff Milch, 2. Gerinnen durch Lab hoặc lên men chua, 3. Tách thành Käsebruch và Molke, 4. Chế biến tiếp (tạo hình, ép, ướp muối, ủ chín)."
+  },
+  {
+    "theme": "milch-kaese",
+    "cat": "Fettgehalt",
+    "q": "Was bedeutet die Angabe „Fett i. Tr.“ auf der Käseverpackung?",
+    "opts": [
+      "Fettgehalt bezogen auf die Trockenmasse des Käses",
+      "Absoluter Fettgehalt bezogen auf das gesamte Käsegewicht",
+      "Fettgehalt im flüssigen Zustand vor dem Gerinnen",
+      "Mindestgehalt an ungesättigten Omega-3-Fettsäuren"
+    ],
+    "a": 0,
+    "ex": "Fett i. Tr. = Fett in der Trockenmasse (hàm lượng béo tính trên chất khô). Vì phô mai mất nước trong quá trình ủ, hàm lượng béo trong chất khô luôn không đổi và dễ so sánh."
+  },
+  {
+    "theme": "milch-kaese",
+    "cat": "Fettstufen",
+    "q": "Welcher Fettgehaltsstufe entspricht ein Käse mit 62 % Fett i. Tr.?",
+    "opts": [
+      "Doppelrahmstufe (mindestens 60 % Fett i. Tr.)",
+      "Rahmstufe (50–59 % Fett i. Tr.)",
+      "Vollfettstufe (45–49 % Fett i. Tr.)",
+      "Fettstufe (40–44 % Fett i. Tr.)"
+    ],
+    "a": 0,
+    "ex": "Từ 60 % Fett i. Tr. trở lên thuộc bậc Doppelrahmstufe (ví dụ Mascarpone, Doppelrahmfrischkäse, Brillat-Savarin)."
+  },
+  {
+    "theme": "milch-kaese",
+    "cat": "Berechnung",
+    "q": "Ein Käse hat 45 % Fett i. Tr. und 50 % Wassergehalt. Wie hoch ist sein absoluter Fettgehalt?",
+    "opts": [
+      "22,5 %",
+      "45,0 %",
+      "32,5 %",
+      "15,0 %"
+    ],
+    "a": 0,
+    "ex": "Trockenmasse (TM) = 100 % − 50 % = 50 %. Absoluter Fettgehalt = 45 % × 50 % ÷ 100 = 22,5 %."
+  },
+  {
+    "theme": "milch-kaese",
+    "cat": "Berechnung",
+    "q": "Warum ist der Fettgehalt i. Tr. für den Vergleich verschiedener Käsesorten sinnvoller als der absolute Fettgehalt?",
+    "opts": [
+      "Weil er unabhängig vom stark schwankenden Wassergehalt der Sorten ist",
+      "Weil der absolute Fettgehalt im Labor nicht messbar ist",
+      "Weil Käse ohne Trockenmasse nicht verkauft werden darf",
+      "Weil das Lebensmittelrecht nur ungerade Prozentzahlen erlaubt"
+    ],
+    "a": 0,
+    "ex": "Phô mai nhiều nước (như Frischkäse) sẽ có vẻ ít béo hơn phô mai khô một cách giả tạo nếu chỉ so béo tuyệt đối. Fett i. Tr. độc lập với lượng nước."
+  },
+  {
+    "theme": "milch-kaese",
+    "cat": "Sorten",
+    "q": "Welche 3 Käsesorten gehören zur Gruppe der Hartkäse?",
+    "opts": [
+      "Emmentaler, Parmesan, Cheddar",
+      "Gouda, Tilsiter, Edamer",
+      "Camembert, Brie, Roquefort",
+      "Mozzarella, Ricotta, Quark"
+    ],
+    "a": 0,
+    "ex": "Hartkäse có thời gian ủ chín dài và hàm lượng chất khô cao nhất: Emmentaler (Schweiz), Parmesan (Italien), Cheddar (England), Bergkäse, Comté."
+  },
+  {
+    "theme": "milch-kaese",
+    "cat": "Weichkäse",
+    "q": "Wie unterscheiden sich Camembert und Brie typischerweise beim Verzehr?",
+    "opts": [
+      "Camembert wird meist reifer verzehrt; Brie wird im Allgemeinen milder und weniger reif verzehrt",
+      "Camembert wird aus Ziegenmilch hergestellt, Brie immer aus Schafsmilch",
+      "Brie reift mit Rotschmiere, Camembert ohne Schimmel",
+      "Camembert ist ein Hartkäse, Brie ein Schnittkäse"
+    ],
+    "a": 0,
+    "ex": "Camembert thường ăn khi đã chín đều, ngậy béo. Brie ăn khi còn thanh nhẹ, mềm mại dạng miếng bánh (Tortenstücke)."
+  },
+  {
+    "theme": "milch-kaese",
+    "cat": "Milchprodukte",
+    "q": "Wie wird Butter aus Sahne (Rahm) hergestellt?",
+    "opts": [
+      "Die Sahne wird geschlagen, wodurch sich das Milchfett von der Buttermilch trennt",
+      "Die Sahne wird mit Lab gekocht, bis sie gerinnt",
+      "Die Sahne wird eingefroren und danach gepresst",
+      "Die Sahne wird mit Essig versetzt und destilliert"
+    ],
+    "a": 0,
+    "ex": "Khi đánh bông kem sữa (buttern), các hạt cầu béo liên kết lại thành bơ, phần chất lỏng tách ra là sữa bơ (Buttermilch)."
+  },
+  {
+    "theme": "milch-kaese",
+    "cat": "Service",
+    "q": "Nach welchem Hauptprinzip wird eine Käseplatte bzw. Käseuhr für Gäste angerichtet?",
+    "opts": [
+      "Im Uhrzeigersinn von mild nach kräftig (z. B. Frischkäse → Weichkäse → Schnittkäse → Blauschimmel)",
+      "Alphabetisch nach Herkunftsland des Käses",
+      "Vom dunkelsten Käse zum hellsten Käse",
+      "Ausschließlich in hauchdünnen Scheiben mit Alufolie"
+    ],
+    "a": 0,
+    "ex": "Quy tắc đồng hồ phô mai (Käseuhr): Xếp theo chiều kim đồng hồ từ vị nhẹ đến vị đậm. Cắt thành miếng (Stücke, không thái lát mỏng), không bọc bao bì."
+  },
+  {
+    "theme": "milch-kaese",
+    "cat": "Milcharten",
+    "q": "Was versteht man unter ESL-Milch im Gegensatz zu traditioneller Frischmilch?",
+    "opts": [
+      "Extended Shelf Life — durch besondere Erhitzung/Mikrofiltration länger haltbar gekühlt",
+      "Rohmilch direkt ab Hof ohne jegliche Erwärmung",
+      "Kondensmilch mit doppeltem Zuckergehalt",
+      "Sojamilch mit künstlichem Kalziumzusatz"
+    ],
+    "a": 0,
+    "ex": "ESL = Extended Shelf Life (sữa bảo quản kéo dài). Giữ lạnh chưa mở nắp được khoảng 3 tuần, trong khi sữa tươi truyền thống chỉ 7–10 ngày."
+  },
+  {
+    "theme": "milch-kaese",
+    "cat": "Käsegruppen",
+    "q": "Zu welcher Käsegruppe gehört der französische Roquefort und aus welcher Milch stammt er?",
+    "opts": [
+      "Halbfester Schnittkäse (Blauschimmel) aus roher Schafsmilch",
+      "Hartkäse aus entrahmter Kuhmilch",
+      "Frischkäse aus pasteurisierter Ziegenmilch",
+      "Sauermilchkäse aus Pferdemilch"
+    ],
+    "a": 0,
+    "ex": "Roquefort là phô mai mốc xanh nổi tiếng của Pháp làm từ sữa cừu sống, ủ trong các hang đá vôi tự nhiên."
+  },
+  {
+    "theme": "milch-kaese",
+    "cat": "Sauermilchkäse",
+    "q": "Welche Eigenschaften und Sorten sind typisch für Sauermilchkäse?",
+    "opts": [
+      "Hergestellt aus Sauermilchquark, sehr eiweißreich, fettarm (Magerstufe, < 10 % Fett i. Tr.); z. B. Harzer, Handkäse",
+      "Hergestellt mit Lab, mindestens 60 % Fett i. Tr., süßlicher Geschmack; z. B. Mascarpone",
+      "Lange Reifung von 3 Jahren mit Edelschimmel; z. B. Gorgonzola",
+      "Nur in Salzlake gereifter Weichkäse aus Griechenland; z. B. Feta"
+    ],
+    "a": 0,
+    "ex": "Sauermilchkäse (Harzer Käse, Handkäse mit Musik) làm từ quark sữa chua, không dùng Lab, rất giàu protein và thuộc bậc ít béo Magerstufe (< 10 % Fett i. Tr.)."
+  },
+  {
+    "theme": "milch-kaese",
+    "cat": "Fettstufen",
+    "q": "Ein Käse enthält 28 % Fett absolut und hat eine Trockenmasse von 56 %. Zu welcher Fettgehaltsstufe gehört er?",
+    "opts": [
+      "Rahmstufe (50 % Fett i. Tr.)",
+      "Magerstufe (< 10 % Fett i. Tr.)",
+      "Halbfettstufe (20–29 % Fett i. Tr.)",
+      "Doppelrahmstufe (≥ 60 % Fett i. Tr.)"
+    ],
+    "a": 0,
+    "ex": "Fett i. Tr. = 28 ÷ 56 × 100 = 50 %. Nằm trong khoảng 50–59 % → thuộc bậc Rahmstufe."
+  },
+  {
+    "theme": "milch-kaese",
+    "cat": "Kulinarik",
+    "q": "Welcher Käse wird traditionell für original Allgäuer Käsespätzle und Cordon Bleu verwendet?",
+    "opts": [
+      "Emmentaler / Bergkäse",
+      "Roquefort",
+      "Harzer Käse",
+      "Ricotta"
+    ],
+    "a": 0,
+    "ex": "Emmentaler và Bergkäse có độ tan chảy lý tưởng và vị đậm đà đặc trưng cho Käsespätzle và nhân Cordon Bleu."
+  },
+  {
+    "theme": "milch-kaese",
+    "cat": "Getränke",
+    "q": "Welche Weißweine eignen sich laut Lernfeld 10 besonders harmonisch als Begleiter zu Käse?",
+    "opts": [
+      "Müller-Thurgau, Weißburgunder, Chardonnay, Viognier",
+      "Nur extrem süßer Glühwein mit Nelken",
+      "Reiner Industrie-Brennspiritus",
+      "Eichenfassgelagerter schwerer Portwein zu allen Sorten"
+    ],
+    "a": 0,
+    "ex": "Vang trắng nhẹ đến đậm đà (Müller-Thurgau, Weißburgunder, Chardonnay, Viognier) hòa quyện tuyệt vời với hương thơm béo của phô mai."
+  },
+  {
+    "theme": "milch-kaese",
+    "cat": "Käseplatte",
+    "q": "Welche Beigaben harmonieren klassisch auf einer Käseplatte?",
+    "opts": [
+      "Trauben, Feigensenf/Chutney, Birnen, Nüsse, Cracker, Brot",
+      "Ketchup, Pommes Frites, Mayonnaise",
+      "Rohe Zwiebeln auf allen milden Frischkäsen",
+      "Sauerkraut und scharfer Meerrettich auf Camembert"
+    ],
+    "a": 0,
+    "ex": "Hoa quả tươi (nho, lê), mứt/chutney, hạt óc chó, bánh quy mặn và bánh mì giúp tôn lên hương vị của từng miếng phô mai."
+  },
+  {
+    "theme": "milch-kaese",
+    "cat": "Zusammensetzung",
+    "q": "Aus welchen zwei Hauptkomponenten besteht jeder Käse?",
+    "opts": [
+      "Wasser und Trockenmasse (Eiweiß, Fett, Mineralstoffe)",
+      "Zucker und Essigsäure",
+      "Stärke und Pflanzenöl",
+      "Kohlensäure und Gelatine"
+    ],
+    "a": 0,
+    "ex": "100 g phô mai = % nước + % chất khô (trong chất khô gồm chất béo, chất đạm và khoáng chất)."
+  },
+  {
+    "theme": "milch-kaese",
+    "cat": "Frischkäse",
+    "q": "Was zeichnet Frischkäse gegenüber gereiften Käsegruppen aus?",
+    "opts": [
+      "Er macht keine Reifung durch und ist sofort verzehrfertig",
+      "Er muss mindestens 6 Monate im Keller lagern",
+      "Er enthält immer Schimmelkulturen",
+      "Er darf nur mit Blauschimmel geimpft werden"
+    ],
+    "a": 0,
+    "ex": "Phô mai tươi (Mozzarella, Ricotta, Mascarpone, Quark, Hüttenkäse) không qua quá trình ủ chín và có lượng nước cao nhất."
+  },
+  {
+    "theme": "milch-kaese",
+    "cat": "Schnittkäse",
+    "q": "Aus welchem Land stammen die weltbekannten Schnittkäsesorten Gouda und Edamer?",
+    "opts": [
+      "Niederlande (Holland)",
+      "Schweiz",
+      "Griechenland",
+      "Spanien"
+    ],
+    "a": 0,
+    "ex": "Gouda và Edamer là những loại phô mai cắt lát truyền thống nổi tiếng của Hà Lan."
+  },
+  {
+    "theme": "milch-kaese",
+    "cat": "Herstellung",
+    "type": "fill",
+    "q": "Die Milch wird durch ___ oder Säuerung zum Gerinnen gebracht.",
+    "a": "Lab",
+    "ex": "Lab (men đông tụ dịch vị) làm đông tụ đạm cazein trong sữa."
+  },
+  {
+    "theme": "milch-kaese",
+    "cat": "Herstellung",
+    "type": "fill",
+    "q": "Beim Dicklegen trennt sich der feste Käsebruch von der flüssigen ___.",
+    "a": "Molke",
+    "ex": "Molke (nước whey) chứa nước, đường sữa laktose và khoáng chất hòa tan."
+  },
+  {
+    "theme": "milch-kaese",
+    "cat": "Fettstufen",
+    "type": "fill",
+    "q": "Käse mit mindestens 60 % Fett i. Tr. gehört zur ___stufe.",
+    "a": "Doppelrahm",
+    "ex": "Từ 60 % Fett i. Tr. trở lên thuộc bậc Doppelrahmstufe."
+  },
+  {
+    "theme": "milch-kaese",
+    "cat": "Käseplatte",
+    "type": "fill",
+    "q": "Beim Anrichten der Käseuhr verläuft die Reihenfolge von ___ nach kräftig.",
+    "a": "mild",
+    "ex": "Thứ tự thưởng thức trên đĩa phô mai luôn từ nhẹ (mild) đến đậm (kräftig)."
+  },
+  {
     "type": "fill",
     "theme": "fisch-warenkunde",
     "cat": "Gerichte",
