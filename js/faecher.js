@@ -1605,9 +1605,513 @@
                 `
               }
             ]
-          }
-        ],
+          },
+          {
+            id: "jahr2-wahlen-geschichte",
+            badge: "KA 12.10.26",
+            title: "Năm 2 · Wahlen, Macht & Geschichte (KA 12.10.2026)",
+            items: [
+              {
+                id: "wahlgrundsaetze",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="m9 12 2 2 4-4"/></svg>',
+                name: "Wahlrechtsgrundsätze & Wahlrecht",
+                desc: "5 Grundsätze (A-U-F-G-G) · Aktives & passives Wahlrecht · Wahlpflicht",
+                keyPoints: [
+                  "<b>Merkwort A-U-F-G-G:</b> allgemein, unmittelbar, frei, gleich, geheim.",
+                  "<b>Unmittelbar:</b> Wähler stimmen direkt ohne Zwischenschaltung von Wahlmännern ab.",
+                  "<b>Frei & keine Wahlpflicht:</b> Jede Person entscheidet ohne Zwang, ob und wen sie wählt.",
+                  "<b>Aktives Wahlrecht:</b> Ab 18 Jahren, deutsche Staatsbürgerschaft, mindestens 3 Monate Wohnsitz.",
+                  "<b>Wahlperioden:</b> Bundestag alle 4 Jahre, Landtag alle 5 Jahre (in BW Landtagswahl ab 16 Jahren)."
+                ],
+                content: `
+                  <h2>§ 1 Wahlrechtsgrundsätze &amp; Wahlrecht</h2>
+                  <div class="hint">Klassenarbeit 12.10.2026 · 5 Wahlrechtsgrundsätze &amp; Voraussetzungen</div>
+
+                  <h3 class="sub">1. Die fünf Wahlrechtsgrundsätze (Merkwort: A-U-F-G-G)</h3>
+                  <div class="formula"><b>Merkwort A-U-F-G-G:</b> <span class="term" data-de="allgemein" data-vi="phổ thông">Allgemein</span> · <span class="term" data-de="unmittelbar" data-vi="trực tiếp">Unmittelbar</span> · <span class="term" data-de="frei" data-vi="tự do">Frei</span> · <span class="term" data-de="gleich" data-vi="bình đẳng">Gleich</span> · <span class="term" data-de="geheim" data-vi="bí mật">Geheim</span></div>
+
+                  <p>Für den <span class="term" data-de="Bundestag" data-vi="Quốc hội liên bang Đức">Bundestag</span> und die <span class="term" data-de="Landtag" data-vi="Nghị viện bang">Landtage</span> gelten dieselben fünf Grundsätze:</p>
+
+                  <table>
+                    <tr><th>Grundsatz</th><th>Bedeutung (Định nghĩa)</th><th>Verstoß (Hành vi vi phạm)</th></tr>
+                    <tr>
+                      <td><b>allgemein</b><br><span class="muted">phổ thông</span></td>
+                      <td>Jede Person, die die Wahlvoraussetzungen erfüllt, darf wählen – unabhängig von Religion, Bildung, Geschlecht, Einkommen oder Beruf.</td>
+                      <td>Frauen oder einkommensschwache Bürger werden von der Wahl ausgeschlossen.</td>
+                    </tr>
+                    <tr>
+                      <td><b>unmittelbar</b><br><span class="muted">trực tiếp</span></td>
+                      <td>Die Wähler wählen Kandidaten und Parteien direkt; es sind keine <span class="term" data-de="Wahlmänner" data-vi="đại cử tri">Wahlmänner</span> dazwischengeschaltet.</td>
+                      <td>Ein Gremium von Wahlmännern stimmt stellvertretend für die Wähler ab (wie im US-System).</td>
+                    </tr>
+                    <tr>
+                      <td><b>frei</b><br><span class="muted">tự do</span></td>
+                      <td>Jede Person entscheidet ohne Zwang, Druck oder Kontrolle, wen sie wählt – und <i>ob</i> sie überhaupt wählt.</td>
+                      <td>Arbeitgeber oder Familienmitglieder drohen mit Konsequenzen bei falscher Stimmabgabe.</td>
+                    </tr>
+                    <tr>
+                      <td><b>gleich</b><br><span class="muted">bình đẳng</span></td>
+                      <td>Jede Stimme hat denselben Zählwert und denselben Einfluss auf das Wahlergebnis.</td>
+                      <td>Reiche oder Akademiker erhalten ein Mehrstimmrecht (z. B. zwei Stimmen).</td>
+                    </tr>
+                    <tr>
+                      <td><b>geheim</b><br><span class="muted">bí mật</span></td>
+                      <td>Die Stimmabgabe erfolgt unbeobachtet in einer <span class="term" data-de="Wahlkabine" data-vi="buồng bỏ phiếu">Wahlkabine</span>; der gefaltete Zettel kommt in eine versiegelte <span class="term" data-de="Wahlurne" data-vi="thùng phiếu niêm phong">Wahlurne</span>.</td>
+                      <td>Offene Stimmabgabe per Handzeichen oder Beaufsichtigung in der Wahlkabine.</td>
+                    </tr>
+                  </table>
+
+                  <h3 class="sub">2. Aktives und passives Wahlrecht</h3>
+                  <table>
+                    <tr><th>Kriterium</th><th>Aktives Wahlrecht (wählen dürfen)</th><th>Passives Wahlrecht (gewählt werden)</th></tr>
+                    <tr><td><b>Wer?</b></td><td>Alle deutschen Staatsbürger</td><td>Jeder Wahlberechtigte</td></tr>
+                    <tr><td><b>Mindestalter</b></td><td>Vollendung des 18. Lebensjahres am Wahltag</td><td>Vollendung des 18. Lebensjahres am Wahltag</td></tr>
+                    <tr><td><b>Aufenthalt / Status</b></td><td>Mindestens 3 Monate Wohnsitz im Wahlgebiet</td><td>Seit mindestens 1 Jahr Deutscher im Sinne des Art. 116 Abs. 1 GG</td></tr>
+                  </table>
+
+                  <div class="note"><b>Keine Wahlpflicht in Deutschland:</b> Eine gesetzliche Wahlpflicht widerspräche dem Grundsatz „frei“, da jeder Bürger auch das Recht hat, nicht zur Wahl zu gehen.</div>
+                  <div class="formula">Bundestagswahl: alle <b>4 Jahre</b> · Landtagswahl (z. B. Baden-Württemberg): alle <b>5 Jahre</b> (in BW ab 16 Jahren wahlberechtigt).</div>
+                `,
+                qa: [
+                  { q: "Nennen Sie die fünf Wahlrechtsgrundsätze in Deutschland!", a: "Allgemein, unmittelbar, frei, gleich und geheim (Merkwort: A-U-F-G-G)." },
+                  { q: "Erklären Sie den Grundsatz „unmittelbar“ mit einem Beispiel, das dagegen verstößt!", a: "Unmittelbar bedeutet, dass die Wähler ihre Vertreter direkt wählen. Ein Verstoß läge vor, wenn Wahlmänner zwischengeschaltet wären, die stellvertretend entscheiden." },
+                  { q: "Warum gibt es in Deutschland keine gesetzliche Wahlpflicht?", a: "Weil der Grundsatz der freien Wahl garantiert, dass jeder Bürger frei und ohne Zwang entscheiden darf, ob er überhaupt wählt oder der Wahl fernbleibt." }
+                ],
+                vokabeln: [
+                  { de: "Wahlrechtsgrundsätze", vi: "các nguyên tắc bầu cử" },
+                  { de: "unmittelbar", vi: "trực tiếp (không qua đại cử tri)" },
+                  { de: "Wahlmänner", vi: "đại cử tri" },
+                  { de: "Wahlkabine", vi: "buồng bỏ phiếu kín" },
+                  { de: "Wahlurne", vi: "thùng bỏ phiếu niêm phong" },
+                  { de: "aktives Wahlrecht", vi: "quyền bầu cử (đi bỏ phiếu)" },
+                  { de: "passives Wahlrecht", vi: "quyền ứng cử (được người khác bầu)" },
+                  { de: "Wahlpflicht", vi: "nghĩa vụ bắt buộc đi bầu" }
+                ]
+              },
+              {
+                id: "erst-zweitstimme",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>',
+                name: "Erststimme & Zweitstimme (Wahlsystem)",
+                desc: "Mehrheits- vs. Verhältniswahl · Direktmandat · Personalisierte Verhältniswahl",
+                keyPoints: [
+                  "<b>Erststimme:</b> Wählt eine Person im Wahlkreis (Mehrheitswahl in 299 Wahlkreisen → Direktmandat).",
+                  "<b>Zweitstimme:</b> Wählt eine Partei über die Landesliste (Verhältniswahl → bestimmt Sitzverteilung).",
+                  "<b>Zweitstimme ist wichtiger:</b> Sie entscheidet über die prozentuale Stärke der Parteien im Bundestag.",
+                  "<b>Personalisierte Verhältniswahl:</b> Kombination aus Verhältniswahl und Persönlichkeitswahl.",
+                  "<b>Stimmensplitting:</b> Erststimme und Zweitstimme an unterschiedliche Parteien vergeben."
+                ],
+                content: `
+                  <h2>§ 2 Erststimme und Zweitstimme</h2>
+                  <div class="hint">Bundestagswahl: System der personalisierten Verhältniswahl</div>
+
+                  <h3 class="sub">1. Vergleich Erststimme vs. Zweitstimme</h3>
+                  <table>
+                    <tr><th>Merkmal</th><th>Erststimme (Phiếu thứ nhất)</th><th>Zweitstimme (Phiếu thứ hai)</th></tr>
+                    <tr><td><b>Was wählt man?</b></td><td>Einen konkreten Kandidaten (Person) im eigenen Wahlkreis</td><td>Eine politische Partei über deren <span class="term" data-de="Landesliste" data-vi="danh sách ứng viên của bang">Landesliste</span></td></tr>
+                    <tr><td><b>Wahlsystem</b></td><td><span class="term" data-de="Mehrheitswahl" data-vi="bầu cử theo đa số">Mehrheitswahl</span> (Einfache Mehrheit im Wahlkreis)</td><td><span class="term" data-de="Verhältniswahl" data-vi="bầu cử theo tỷ lệ">Verhältniswahl</span> (Prozentsatz der Stimmen)</td></tr>
+                    <tr><td><b>Ergebnis</b></td><td>Der Sieger im Wahlkreis erhält ein <span class="term" data-de="Direktmandat" data-vi="ghế nghị sĩ trực tiếp">Direktmandat</span></td><td>Bestimmt maßgeblich die Zahl der Gesamtsitze der Partei im Bundestag</td></tr>
+                    <tr><td><b>Struktur</b></td><td>Deutschland ist in exakt <b>299 Wahlkreise</b> aufgeteilt</td><td>Pro Bundesland stellt jede Partei eine geordnete Landesliste auf</td></tr>
+                  </table>
+
+                  <h3 class="sub">2. Das Wahlsystem: Personalisierte Verhältniswahl</h3>
+                  <div class="formula"><b>Personalisierte Verhältniswahl:</b> Das Gesamtergebnis richtet sich nach dem <b>Verhältnis der Zweitstimmen</b>, wird aber durch Direktkandidaten der Erststimme <b>personalisiert</b>.</div>
+
+                  <p><b>Stimmensplitting:</b> Ein Wähler kann seine Erststimme einem Direktkandidaten einer Partei geben und seine Zweitstimme einer anderen Partei (z. B. Erststimme CDU, Zweitstimme FDP).</p>
+
+                  <h3 class="sub">3. Regierungsbildung und Aufgaben des Bundestages</h3>
+                  <ul>
+                    <li><b>Regierungsbildung:</b> Eine Bundesregierung benötigt die <span class="term" data-de="absolute Mehrheit" data-vi="đa số tuyệt đối (> 50 %)">absolute Mehrheit</span> (&gt; 50 % der Sitze). Erreicht keine Partei allein 50 %, bilden Parteien eine <span class="term" data-de="Koalition" data-vi="liên minh chính phủ">Koalition</span>.</li>
+                    <li><b>Hauptaufgaben des Bundestages (Legislative):</b>
+                      <ol>
+                        <li>Wahl des Bundeskanzlers</li>
+                        <li><span class="term" data-de="Gesetzgebung" data-vi="lập pháp / làm luật">Gesetzgebung</span> (Verabschiedung von Gesetzen und Bundeshaushalt)</li>
+                        <li>Kontrolle der Regierungsarbeit (<span class="term" data-de="parlamentarische Kontrolle" data-vi="giám sát của quốc hội">parlamentarische Kontrolle</span>)</li>
+                      </ol>
+                    </li>
+                  </ul>
+                  <div class="note"><b>Wahlrechtsreform 2023:</b> Feste Bundestagsgröße von 630 Sitzen, Abschaffung von Überhang- und Ausgleichsmandaten (Zweitstimmendeckung erforderlich).</div>
+                `,
+                qa: [
+                  { q: "Was entscheidet die Zweitstimme bei der Bundestagswahl?", a: "Sie entscheidet über die prozentuale Stärke einer Partei und damit über die Gesamtzahl ihrer Sitze im Bundestag. Sie ist die maßgebliche Stimme." },
+                  { q: "Was versteht man unter einem Direktmandat?", a: "Ein Mandat, das der Bewerber gewinnt, der in seinem Wahlkreis die einfache Mehrheit der Erststimmen erzielt hat (299 Wahlkreise insgesamt)." },
+                  { q: "Warum wird das deutsche Wahlsystem als „personalisierte Verhältniswahl“ bezeichnet?", a: "Weil die Sitzverteilung im Parlament proportional nach den Zweitstimmen erfolgt, aber durch die direkte Personenwahl der Erststimme personalisiert wird." },
+                  { q: "Was bedeutet Stimmensplitting?", a: "Der Wähler gibt seine Erststimme und seine Zweitstimme an zwei unterschiedliche Parteien ab." }
+                ],
+                vokabeln: [
+                  { de: "Erststimme", vi: "phiếu thứ nhất (bầu ứng viên trực tiếp)" },
+                  { de: "Zweitstimme", vi: "phiếu thứ hai (bầu danh sách đảng)" },
+                  { de: "Direktmandat", vi: "ghế đại biểu trực tiếp tại khu vực" },
+                  { de: "Landesliste", vi: "danh sách ứng viên cấp bang của đảng" },
+                  { de: "Mehrheitswahl", vi: "bầu cử theo đa số" },
+                  { de: "Verhältniswahl", vi: "bầu cử theo tỷ lệ" },
+                  { de: "Stimmensplitting", vi: "chia phiếu (bầu ứng viên đảng A, danh sách đảng B)" },
+                  { de: "Koalition", vi: "liên minh các đảng cầm quyền" }
+                ]
+              },
+              {
+                id: "sperrklausel",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>',
+                name: "Sperrklausel (5 %-Hürde)",
+                desc: "5 % bundesweit · Grundmandatsklausel (3 Direktmandate) · Zersplitterung",
+                keyPoints: [
+                  "<b>5 %-Hürde:</b> Parteien müssen bundesweit mindestens 5 % der Zweitstimmen erzielen.",
+                  "<b>Grundmandatsklausel:</b> Mindestens 3 Direktmandate heben die 5 %-Hürde auf (Verteilung nach Zweitstimmen).",
+                  "<b>Unter 5 % und nur 1–2 Direktmandate:</b> Nur die Direktkandidaten ziehen ein; Zweitstimmen verfallen.",
+                  "<b>Zweck:</b> Schutz vor Parteizersplitterung und instabilen Regierungen (Lehre aus Weimarer Republik).",
+                  "<b>Achtung Klausurfalle:</b> Bei der Bundestagswahl gilt die Hürde bundesweit, nicht pro Bundesland."
+                ],
+                content: `
+                  <h2>§ 3 <span class="term" data-de="Sperrklausel" data-vi="ngưỡng tối thiểu vào quốc hội">Sperrklausel</span> (<span class="term" data-de="5 %-Hürde" data-vi="ngưỡng 5 %">5 %-Hürde</span>)</h2>
+                  <div class="hint">Regelung zur Parlamentsstabilität &amp; <span class="term" data-de="Grundmandatsklausel" data-vi="điều khoản ghế tối thiểu (3 ghế)">Grundmandatsklausel</span></div>
+
+                  <h3 class="sub">1. Grundregel der Sperrklausel</h3>
+                  <div class="formula">Nur Parteien, die <b>bundesweit mindestens 5 % der Zweitstimmen</b> erreichen ODER <b>mindestens 3 Direktmandate</b> gewinnen (<span class="term" data-de="Grundmandatsklausel" data-vi="điều khoản 3 ghế trực tiếp">Grundmandatsklausel</span>), ziehen mit vollem Zweitstimmenergebnis in den Bundestag ein.</div>
+
+                  <h3 class="sub">2. Drei typische Klausur-Fallbeispiele</h3>
+                  <table>
+                    <tr><th>Partei</th><th>Zweitstimmen</th><th>Direktmandate</th><th>Ergebnis &amp; Begründung</th></tr>
+                    <tr>
+                      <td><b>Partei A</b></td>
+                      <td><b>5,3 %</b></td>
+                      <td>0</td>
+                      <td><b>Zieht voll ein:</b> Erreicht &ge; 5 % der Zweitstimmen. Erhält Sitze entsprechend ihrem Zweitstimmenanteil.</td>
+                    </tr>
+                    <tr>
+                      <td><b>Partei B</b></td>
+                      <td><b>4,8 %</b></td>
+                      <td><b>3 Direktmandate</b></td>
+                      <td><b>Zieht voll ein (Grundmandatsklausel):</b> Trotz &lt; 5 % heben die 3 Direktmandate die Hürde auf; Sitze nach 4,8 % Zweitstimmen.</td>
+                    </tr>
+                    <tr>
+                      <td><b>Partei C</b></td>
+                      <td><b>4,0 %</b></td>
+                      <td><b>2 Direktmandate</b></td>
+                      <td><b>Nur 2 Sitze:</b> Nur die 2 direkt gewählten Abgeordneten ziehen ein; alle Zweitstimmen verfallen ersatzlos.</td>
+                    </tr>
+                  </table>
+
+                  <h3 class="sub">3. Warum gibt es die 5 %-Hürde? (Pro &amp; Kontra)</h3>
+                  <table>
+                    <tr><th>Vorteile / Absicht (Pro)</th><th>Kritikpunkte (Kontra)</th></tr>
+                    <tr>
+                      <td>• Verhindert die <span class="term" data-de="Zersplitterung" data-vi="sự chia nhỏ / phân mảnh">Zersplitterung</span> des Parlaments in viele Kleinstparteien.<br>• Ermöglicht stabile Regierungsmehrheiten und <span class="term" data-de="handlungsfähig" data-vi="có năng lực hành động điều hành">handlungsfähige</span> Koalitionen (Lehre aus dem Scheitern der <span class="term" data-de="Weimarer Republik" data-vi="Cộng hòa Weimar (1919–1933)">Weimarer Republik</span>).</td>
+                      <td>• Stimmen für Parteien unter 5 % verfallen (oft Millionen Wählerstimmen ohne Repräsentation im Parlament).<br>• Erschwert neuen Parteien den Einstieg in die Bundespolitik.</td>
+                    </tr>
+                  </table>
+
+                  <div class="note"><b>Wichtige Klausurfalle:</b> Bei der Bundestagswahl zählt das bundesweite Gesamtergebnis. Ein Ergebnis von 4,1 % in einem Bundesland bedeutet nicht, dass eine Partei draußen ist, wenn sie bundesweit über 5 % liegt!</div>
+                `,
+                qa: [
+                  { q: "Unter welcher Bedingung zieht eine Partei mit 4,6 % der Zweitstimmen dennoch als Fraktion in den Bundestag ein?", a: "Wenn sie mindestens drei Direktmandate über die Erststimme gewonnen hat (Grundmandatsklausel)." },
+                  { q: "Was geschieht mit einer Partei, die 4,2 % der Zweitstimmen und 2 Direktmandate erhält?", a: "Nur die 2 direkt gewählten Kandidaten ziehen als Abgeordnete ein; alle Zweitstimmen verfallen und die Partei erhält keine weiteren Sitze." },
+                  { q: "Welches historische Ereignis führte zur Einführung der 5 %-Hürde?", a: "Die Instabilität der Weimarer Republik, in der zahlreiche Splitterparteien die Bildung stabiler Regierungen unmöglich machten und den Aufstieg des Nationalsozialismus begünstigten." }
+                ],
+                vokabeln: [
+                  { de: "Sperrklausel", vi: "điều khoản ngăn chặn (rào cản)" },
+                  { de: "5 %-Hürde", vi: "rào cản 5 % phiếu bầu" },
+                  { de: "Grundmandatsklausel", vi: "điều khoản ghế trực tiếp tối thiểu (3 ghế)" },
+                  { de: "Zersplitterung", vi: "sự phân mảnh / chia nhỏ quốc hội" },
+                  { de: "Weimarer Republik", vi: "Cộng hòa Weimar (1919–1933)" }
+                ]
+              },
+              {
+                id: "vertrauensfrage",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+                name: "Vertrauensfrage & Misstrauensvotum",
+                desc: "Art. 68 GG vs. Art. 67 GG · Konstruktiver Kanzlersturz · Stabilität",
+                keyPoints: [
+                  "<b>Vertrauensfrage (Art. 68 GG):</b> Geht vom Bundeskanzler aus, um die Mehrheit im Bundestag zu testen.",
+                  "<b>Konstruktives Misstrauensvotum (Art. 67 GG):</b> Bundestag stürzt Kanzler nur bei gleichzeitiger Wahl eines Nachfolgers.",
+                  "<b>Bedeutung „konstruktiv“:</b> Verhindert Regierungskrise ohne Kanzler (Schutz vor Machtvakuum).",
+                  "<b>Folge bei verlorener Vertrauensfrage:</b> Bundespräsident kann Bundestag auflösen → Neuwahlen.",
+                  "<b>Beispiele:</b> 1982 Helmut Schmidt gestürzt → Helmut Kohl; Dez 2024 Olaf Scholz → Neuwahlen Feb 2025."
+                ],
+                content: `
+                  <h2>§ 4 <span class="term" data-de="Vertrauensfrage" data-vi="bỏ phiếu tín nhiệm (Art. 68 GG)">Vertrauensfrage</span> &amp; <span class="term" data-de="konstruktives Misstrauensvotum" data-vi="bất tín nhiệm xây dựng (Art. 67 GG)">Misstrauensvotum</span></h2>
+                  <div class="hint">Regierungsstabilität &amp; vorzeitiges Ende einer Kanzlerschaft</div>
+
+                  <h3 class="sub">1. Vertrauensfrage vs. Konstruktives Misstrauensvotum</h3>
+                  <table>
+                    <tr><th>Kriterium</th><th><span class="term" data-de="Vertrauensfrage" data-vi="bỏ phiếu tín nhiệm">Vertrauensfrage</span> (Art. 68 GG)</th><th><span class="term" data-de="konstruktives Misstrauensvotum" data-vi="bỏ phiếu bất tín nhiệm xây dựng">Konstruktives Misstrauensvotum</span> (Art. 67 GG)</th></tr>
+                    <tr><td><b>Wer ergreift die Initiative?</b></td><td>Der <b><span class="term" data-de="Bundeskanzler" data-vi="Thủ tướng Liên bang">Bundeskanzler</span></b></td><td>Der <b>Bundestag</b> (Parlamentsmehrheit)</td></tr>
+                    <tr><td><b>Inhalt &amp; Antrag</b></td><td>Kanzler beantragt, dass ihm der Bundestag das Vertrauen ausspricht</td><td>Bundestag entzieht Kanzler das Vertrauen und wählt <b>zugleich einen Nachfolger</b></td></tr>
+                    <tr><td><b>Erforderliche Mehrheit</b></td><td>Absolute Mehrheit der Mitglieder des Bundestages</td><td>Absolute Mehrheit der Mitglieder des Bundestages für den Gegenkandidaten</td></tr>
+                    <tr><td><b>Rechtsfolge bei Misserfolg</b></td><td>Verliert der Kanzler, kann der <span class="term" data-de="Bundespräsident" data-vi="Tổng thống Liên bang">Bundespräsident</span> den Bundestag auflösen &rarr; <b><span class="term" data-de="Neuwahlen" data-vi="bầu cử lại / trước hạn">Neuwahlen</span></b></td><td>Der alte Kanzler ist sofort entlassen; der Bundespräsident ernennt den neuen Kanzler</td></tr>
+                    <tr><td><b>Zweck</b></td><td>Kanzler prüft, ob seine Koalitionsmehrheit noch steht (oder strebt gezielt Neuwahlen an)</td><td>Kanzlersturz durch das Parlament, aber nur bei vorhandener regierungsfähiger Alternative</td></tr>
+                  </table>
+
+                  <h3 class="sub">2. Das Prinzip der „Konstruktivität“</h3>
+                  <div class="formula"><b>Warum „konstruktiv“?</b> Ein Kanzler kann im Grundgesetz nicht einfach abgewählt werden, ohne dass <b>im selben Wahlgang ein neuer Bundeskanzler mit absoluter Mehrheit gewählt wird</b>. Dies verhindert ein gefährliches Machtvakuum.</div>
+
+                  <h3 class="sub">3. Historische und aktuelle Beispiele</h3>
+                  <ul>
+                    <li><b>1982:</b> Helmut Schmidt (SPD) verlor die FDP als Koalitionspartner. Helmut Kohl (CDU) wurde durch ein konstruktives Misstrauensvotum neuer Bundeskanzler.</li>
+                    <li><b>Dezember 2024:</b> Olaf Scholz (SPD) stellte nach dem Bruch der Ampel-Koalition die Vertrauensfrage und verlor sie. Bundespräsident Frank-Walter Steinmeier leitete die <span class="term" data-de="Auflösung des Bundestages" data-vi="giải tán Quốc hội">Auflösung des Bundestages</span> ein &rarr; Neuwahlen im Februar 2025.</li>
+                  </ul>
+                `,
+                qa: [
+                  { q: "Wer stellt die Vertrauensfrage und wer initiiert das konstruktive Misstrauensvotum?", a: "Die Vertrauensfrage stellt der Bundeskanzler (Art. 68 GG); das konstruktive Misstrauensvotum geht vom Bundestag aus (Art. 67 GG)." },
+                  { q: "Warum heißt das Misstrauensvotum im deutschen Grundgesetz „konstruktiv“?", a: "Weil der Bundestag den amtierenden Kanzler nur stürzen kann, wenn er in derselben Abstimmung mit absoluter Mehrheit einen neuen Bundeskanzler wählt. So entsteht kein führungs- und regierungsloser Zustand." },
+                  { q: "Welche verfassungsrechtliche Möglichkeit hat der Bundeskanzler, wenn er die Vertrauensfrage verliert?", a: "Er kann dem Bundespräsidenten vorschlagen, den Bundestag aufzulösen, woraufhin innerhalb von 60 Tagen Neuwahlen stattfinden müssen." }
+                ],
+                vokabeln: [
+                  { de: "Vertrauensfrage", vi: "cuộc bỏ phiếu tín nhiệm (Thủ tướng yêu cầu)" },
+                  { de: "konstruktives Misstrauensvotum", vi: "bỏ phiếu bất tín nhiệm mang tính xây dựng" },
+                  { de: "Bundeskanzler", vi: "Thủ tướng liên bang Đức" },
+                  { de: "Bundespräsident", vi: "Tổng thống liên bang Đức" },
+                  { de: "Auflösung des Bundestages", vi: "giải tán Quốc hội" },
+                  { de: "Neuwahlen", vi: "bầu cử lại / bầu cử trước thời hạn" }
+                ]
+              },
+              {
+                id: "statistik-analyse",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>',
+                name: "Statistik analysieren (Methode)",
+                desc: "3 Schritte: Einleitung · Analyse · Fazit · Formulierungshilfen · Fallbeispiele",
+                keyPoints: [
+                  "<b>Dreischritt der Analyse:</b> 1. Einleitung (Basisdaten), 2. Analyse (konkrete Zahlen & Vergleiche), 3. Fazit (Zusammenfassung & Ursachen).",
+                  "<b>Analyse-Gebot:</b> Ausschließlich Fakten und Zahlen aus der Grafik nennen – keine persönliche Meinung!",
+                  "<b>Fazit-Gebot:</b> Begründungen stets vorsichtig als Vermutung formulieren („Mögliche Gründe könnten sein...“).",
+                  "<b>Wahlergebnis BW:</b> CDU/CSU 30,6 % (Spitze), AfD 19,8 %, SPD 14,2 %, Grüne 13,8 %, BSW 4,1 %.",
+                  "<b>Alterspyramide Bundestag:</b> 40–59 Jahre dominieren; Frauen und Jüngere (&lt;30) sind unterrepräsentiert."
+                ],
+                content: `
+                  <h2>§ 5 <span class="term" data-de="Statistikanalyse" data-vi="phân tích số liệu thống kê">Statistik analysieren</span> (Methodenkompetenz)</h2>
+                  <div class="hint">Dreischritt: Einleitung – Analyse – Fazit &amp; nützliche Redemittel</div>
+
+                  <h3 class="sub">1. Der Dreischritt einer perfekten Statistikanalyse</h3>
+                  <table>
+                    <tr><th>Teil</th><th>Was muss zwingend hinein?</th></tr>
+                    <tr>
+                      <td><b>1. <span class="term" data-de="Einleitung" data-vi="phần mở bài">Einleitung</span></b><br><span class="muted">Mở bài</span></td>
+                      <td>• <b>Thema</b> der Statistik<br>• <b>Darstellungsform</b> (z. B. <span class="term" data-de="Balkendiagramm" data-vi="biểu đồ thanh">Balkendiagramm</span>, <span class="term" data-de="Kreisdiagramm" data-vi="biểu đồ tròn">Kreisdiagramm</span>, <span class="term" data-de="Säulendiagramm" data-vi="biểu đồ cột">Säulendiagramm</span>)<br>• <b>Einheit</b> (z. B. Prozent, absolute Zahlen)<br>• <b>Quelle</b> (z. B. Infratest dimap, Statistisches Bundesamt)<br>• <b>Erscheinungsjahr</b> / Erhebungszeitraum</td>
+                    </tr>
+                    <tr>
+                      <td><b>2. <span class="term" data-de="Analyse" data-vi="phần phân tích">Analyse</span></b><br><span class="muted">Phân tích</span></td>
+                      <td>• <b>Höchster</b> Wert (Spitzenreiter)<br>• <b>Niedrigster</b> Wert<br>• <b>Auffälligkeiten &amp; Vergleiche</b> (wer liegt gleichauf, wer hat großen Abstand?)<br>• <i>Wichtig:</i> Immer die <b>exakten Zahlen</b> nennen! <i>Keine</i> eigene Meinung in diesen Teil!</td>
+                    </tr>
+                    <tr>
+                      <td><b>3. <span class="term" data-de="Fazit" data-vi="kết luận / nhận định">Fazit</span></b><br><span class="muted">Kết luận</span></td>
+                      <td>• Kurze Zusammenfassung der Kernaussage<br>• <b>Vorsichtige Begründung</b> / Deutung möglicher Ursachen<br>• Formulierung: „Mögliche Gründe könnten sein, dass...“</td>
+                    </tr>
+                  </table>
+
+                  <h3 class="sub">2. Redemittel &amp; Formulierungshilfen</h3>
+                  <table>
+                    <tr><th>Deutsch</th><th>Tiếng Việt</th></tr>
+                    <tr><td>Das Thema der vorliegenden Statistik lautet …</td><td>Chủ đề của bảng thống kê này là …</td></tr>
+                    <tr><td>Die Daten werden in einem Balkendiagramm in Prozent dargestellt.</td><td>Số liệu được thể hiện qua biểu đồ cột theo tỷ lệ phần trăm.</td></tr>
+                    <tr><td>Die Quelle ist … (z. B. Infratest dimap).</td><td>Nguồn dữ liệu là …</td></tr>
+                    <tr><td>Mit … % hat … den höchsten Stimmenanteil erzielt.</td><td>Với … %, … đạt tỷ lệ phiếu bầu cao nhất.</td></tr>
+                    <tr><td>Dagegen erhielt … mit lediglich … % das schwächste Ergebnis.</td><td>Ngược lại, … chỉ đạt kết quả thấp nhất với … %.</td></tr>
+                    <tr><td>Fast gleichauf liegen … mit … % und … mit … %.</td><td>Gần như bằng điểm nhau là … và …</td></tr>
+                    <tr><td>Deutlich vor / hinter … liegt … mit … %.</td><td>Xếp vượt trội / thấp hơn rõ rệt so với … là …</td></tr>
+                    <tr><td>Zusammenfassend lässt sich sagen, dass …</td><td>Tóm lại có thể rút ra nhận định rằng …</td></tr>
+                    <tr><td>Mögliche Gründe dafür könnten sein, dass Wähler …</td><td>Những nguyên nhân khả dĩ cho điều này có thể là do cử tri …</td></tr>
+                  </table>
+
+                  <h3 class="sub">3. Musterbeispiel: Bundestagswahl in Baden-Württemberg</h3>
+                  <div class="formula"><b>Daten:</b> CDU/CSU 30,6 % · AfD 19,8 % · SPD 14,2 % · Grüne 13,8 % · Linke 6,8 % · FDP 5,6 % · BSW 4,1 %</div>
+                  <ul>
+                    <li><b>Einleitung:</b> Das Thema der Statistik lautet „Ergebnisse der Bundestagswahl in Baden-Württemberg“. Die Daten werden in einem Balkendiagramm in Prozent dargestellt. Die Quelle ist Infratest dimap.</li>
+                    <li><b>Analyse:</b> Mit 30,6 % erzielte die CDU/CSU das mit Abstand stärkste Ergebnis. Die AfD folgt mit 19,8 % auf Rang zwei und liegt damit deutlich vor SPD (14,2 %) und Grünen (13,8 %), die nahezu gleichauf liegen. Linke (6,8 %) und FDP (5,6 %) überwinden die 5 %-Hürde knapp, während das BSW mit 4,1 % das schwächste Ergebnis verzeichnet und scheitert.</li>
+                    <li><b>Fazit:</b> Zusammenfassend behauptet die CDU ihre Vormachtstellung in BW, während Oppositionsparteien zulegen konnten. Mögliche Gründe könnten sein, dass viele Wähler Stabilität suchen oder Unmut über die Wirtschaftslage ausdrücken wollten.</li>
+                  </ul>
+                `,
+                qa: [
+                  { q: "Aus welchen drei Abschnitten besteht eine korrekte Statistikanalyse?", a: "1. Einleitung (Thema, Darstellungsform, Einheit, Quelle, Erhebungszeitraum), 2. Analyse (höchste/niedrigste Werte, Vergleiche mit konkreten Zahlen), 3. Fazit (Gesamtfazit und vorsichtig formulierte Ursachen)." },
+                  { q: "Warum darf im Analyseteil keine persönliche Meinung stehen?", a: "Weil die Analyse eine reine, objektive Beschreibung der vorliegenden Zahlen und Fakten sein muss. Wertungen und Begründungen gehören ausschließlich in das Fazit." }
+                ],
+                vokabeln: [
+                  { de: "Statistikanalyse", vi: "phân tích số liệu thống kê" },
+                  { de: "Balkendiagramm", vi: "biểu đồ thanh ngang / cột" },
+                  { de: "Einleitung", vi: "phần mở bài" },
+                  { de: "Analyse", vi: "phần phân tích dữ liệu" },
+                  { de: "Fazit", vi: "phần kết luận / nhận định" },
+                  { de: "Bevölkerungspyramide", vi: "tháp dân số / cơ cấu tuổi" }
+                ]
+              },
+              {
+                id: "kalter-krieg",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
+                name: "Kalter Krieg & Deutsche Teilung (1945–1990)",
+                desc: "Ost-West-Konflikt · Merkmale · Gleichgewicht des Schreckens · Chronologie",
+                keyPoints: [
+                  "<b>Definition:</b> Globaler Ost-West-Konflikt zwischen den Supermächten USA und UdSSR nach dem Zweiten Weltkrieg.",
+                  "<b>Merkmale:</b> Wettrüsten, atomare Abschreckung, Propaganda und Stellvertreterkriege – kein direkter Militärschlag gegeneinander.",
+                  "<b>Begriffsursprung:</b> 1947 vom US-Publizisten Walter Lippmann geprägt; Truman-Doktrin formulierte Systemspaltung.",
+                  "<b>Gleichgewicht des Schreckens:</b> Beide Seiten besaßen genug Nuklearwaffen zur gegenseitigen Totalvernichtung (Overkill).",
+                  "<b>Wichtige Daten:</b> Mai 1949 GG/BRD · Okt 1949 DDR · 13.08.1961 Mauerbau · 09.11.1989 Mauerfall · 03.10.1990 Wiedervereinigung."
+                ],
+                content: `
+                  <h2>§ 6 Kalter Krieg &amp; Deutsche Teilung (1945–1990)</h2>
+                  <div class="hint">Ideologischer Konflikt, Wettrüsten &amp; Chronologie der deutschen Einheit</div>
+
+                  <h3 class="sub">1. Was war der Kalte Krieg?</h3>
+                  <div class="formula"><b>Definition:</b> Der Kalte Krieg war die Konfrontation im Rahmen des <b>Ost-West-Konflikts</b> zwischen der westlichen Welt unter Führung der <b>USA</b> und dem Ostblock unter Führung der <b>UdSSR</b> von 1945 bis 1990.</div>
+
+                  <p>Er wurde <b>nie als direkter Krieg</b> zwischen den Supermächten geführt, sondern war geprägt von <span class="term" data-de="Wettrüsten" data-vi="chạy đua vũ trang">Wettrüsten</span>, Drohung mit Atomwaffen, Propaganda und <span class="term" data-de="Stellvertreterkriege" data-vi="chiến tranh ủy nhiệm">Stellvertreterkriegen</span> (z. B. Korea- und Vietnamkrieg).</p>
+
+                  <h3 class="sub">2. Die beiden Systeme im Systemvergleich</h3>
+                  <table>
+                    <tr><th>Bereich</th><th>Westblock (USA, BRD, Westeuropa)</th><th>Ostblock (UdSSR, DDR, Osteuropa)</th></tr>
+                    <tr><td><b>Staatsform</b></td><td><span class="term" data-de="Demokratie" data-vi="dân chủ">Demokratie</span> (Gewaltenteilung, Menschenrechte)</td><td><span class="term" data-de="Diktatur" data-vi="độc tài">Diktatur</span> (Einparteienherrschaft, SED)</td></tr>
+                    <tr><td><b>Gesellschaft</b></td><td>Freiheitlich, Pluralismus, <span class="term" data-de="Kapitalismus" data-vi="chủ nghĩa tư bản">Kapitalismus</span></td><td><span class="term" data-de="Sozialismus" data-vi="chủ nghĩa xã hội">Sozialismus</span>, Kollektivismus</td></tr>
+                    <tr><td><b>Wirtschaftssystem</b></td><td>Soziale <span class="term" data-de="Marktwirtschaft" data-vi="kinh tế thị trường">Marktwirtschaft</span></td><td>Zentral gesteuerte <span class="term" data-de="Planwirtschaft" data-vi="kinh tế kế hoạch hóa">Planwirtschaft</span></td></tr>
+                    <tr><td><b>Militärbündnis</b></td><td><span class="term" data-de="NATO" data-vi="Khối quân sự Bắc Đại Tây Dương (NATO)">NATO</span> (gegründet 1949)</td><td><span class="term" data-de="Warschauer Pakt" data-vi="Khối Hiệp ước Warszawa">Warschauer Pakt</span> (gegründet 1955)</td></tr>
+                  </table>
+
+                  <h3 class="sub">3. Wichtige Begriffe des Kalten Krieges</h3>
+                  <ul>
+                    <li><b>Gleichgewicht des Schreckens:</b> Beide Seiten besaßen so viele Atomwaffen, dass ein Erstschlag die Vernichtung beider Seiten zur Folge gehabt hätte. Diese Abschreckung verhinderte den Dritten Weltkrieg.</li>
+                    <li><b>Walter Lippmann (1947):</b> US-Publizist, der den Begriff „Kalter Krieg“ (Cold War) prägte und weltweit bekannt machte.</li>
+                    <li><b>Höhepunkte:</b> Berliner Mauerbau (1961), Kubakrise (1962), US-Mondlandung (1969).</li>
+                  </ul>
+
+                  <h3 class="sub">4. Chronologie der deutschen Teilung und Wiedervereinigung</h3>
+                  <table>
+                    <tr><th>Datum</th><th>Historisches Ereignis</th><th>Bedeutung für Deutschland</th></tr>
+                    <tr><td><b>08. Mai 1945</b></td><td>Kapitulation der Wehrmacht</td><td>Ende des Zweiten Weltkriegs in Europa; Aufteilung in 4 Besatzungszonen.</td></tr>
+                    <tr><td><b>23. Mai 1949</b></td><td>Verkündung des Grundgesetzes</td><td>Gründung der <b>Bundesrepublik Deutschland (BRD)</b>; Konrad Adenauer Kanzler.</td></tr>
+                    <tr><td><b>07. Oktober 1949</b></td><td>Gründung der DDR</td><td>Gründung der <b>Deutschen Demokratischen Republik</b>; Walter Ulbricht an der Spitze.</td></tr>
+                    <tr><td><b>13. August 1961</b></td><td>Bau der Berliner Mauer</td><td>Abriegelung Westberlins durch die DDR; Zementierung der Teilung.</td></tr>
+                    <tr><td><b>09. November 1989</b></td><td>Fall der Berliner Mauer</td><td>Öffnung der innerdeutschen Grenze nach friedlicher Revolution in der DDR.</td></tr>
+                    <tr><td><b>03. Oktober 1990</b></td><td>Wiedervereinigung</td><td>Beitritt der DDR zur BRD; Nationalfeiertag (Tag der Deutschen Einheit).</td></tr>
+                    <tr><td><b>02. Dezember 1990</b></td><td>Erste gesamtdeutsche Wahl</td><td>Helmut Kohl bleibt Bundeskanzler des wiedervereinigten Deutschlands.</td></tr>
+                  </table>
+                `,
+                qa: [
+                  { q: "Definieren Sie den Begriff „Kalter Krieg“ in zwei bis drei Sätzen!", a: "Der Kalte Krieg war der weltweite Macht- und Systemkonflikt zwischen den Supermächten USA (Demokratie, Kapitalismus) und UdSSR (Diktatur, Sozialismus) von 1945 bis 1990. Er wurde nicht direkt militärisch ausgetragen, sondern durch Wettrüsten, Propaganda und Stellvertreterkriege." },
+                  { q: "Was versteht man unter dem „Gleichgewicht des Schreckens“?", a: "Die Situation, in der beide Supermächte über ausreichend Atomwaffen verfügten, um die jeweils andere Seite mehrfach vollständig zu vernichten. Diese nukleare Abschreckung verhinderte einen direkten Krieg." },
+                  { q: "Nennen Sie drei historische Schlüsseldaten der deutschen Geschichte zwischen 1949 und 1990!", a: "23. Mai 1949 (Gründung der BRD), 13. August 1961 (Bau der Berliner Mauer) und 3. Oktober 1990 (Deutsche Wiedervereinigung)." }
+                ],
+                vokabeln: [
+                  { de: "Kalter Krieg", vi: "Chiến tranh Lạnh (1945–1990)" },
+                  { de: "Wettrüsten", vi: "chạy đua vũ trang" },
+                  { de: "Gleichgewicht des Schreckens", vi: "cân bằng nỗi sợ hãi (răn đe hạt nhân)" },
+                  { de: "Stellvertreterkriege", vi: "chiến tranh ủy nhiệm" },
+                  { de: "Planwirtschaft", vi: "kinh tế kế hoạch hóa tập trung" },
+                  { de: "Marktwirtschaft", vi: "kinh tế thị trường" },
+                  { de: "Mauerbau", vi: "sự kiện xây Bức tường Berlin (13.08.1961)" },
+                  { de: "Wiedervereinigung", vi: "sự kiện thống nhất nước Đức (03.10.1990)" }
+                ]
+              },
+              {
+                id: "zentralismus",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="9" y1="22" x2="9" y2="18"/><line x1="15" y1="22" x2="15" y2="18"/></svg>',
+                name: "Zentralismus, Dezentralisierung & Staatsformen",
+                desc: "Zentralismus vs. Föderalismus · Demokratie vs. Diktatur im Systemvergleich",
+                keyPoints: [
+                  "<b>Zentralismus:</b> Alle Macht und Entscheidungen liegen bei der Zentralregierung in der Hauptstadt (Beispiel: DDR).",
+                  "<b>Dezentralisierung (Föderalismus):</b> Aufgabenverteilung auf Bund, 16 Bundesländer und Kommunen (Beispiel: BRD).",
+                  "<b>Vorteile Dezentralisierung:</b> Bürgernähe, Berücksichtigung regionaler Bedürfnisse, Machtbegrenzung.",
+                  "<b>Demokratie:</b> Volkssouveränität, Gewaltenteilung, Grundrechte, freie Wahlen und Rechtsstaatlichkeit.",
+                  "<b>Diktatur:</b> Machtmonopol einer Person/Partei, Zensur, Verletzung der Menschenrechte, keine Gewaltenteilung."
+                ],
+                content: `
+                  <h2>§ 7 <span class="term" data-de="Zentralismus" data-vi="chế độ tập quyền">Zentralismus</span>, <span class="term" data-de="Dezentralisierung" data-vi="sự phân quyền">Dezentralisierung</span> &amp; Staatsformen</h2>
+                  <div class="hint">Staatsaufbau im Vergleich: Föderalismus vs. Zentralstaat &amp; Demokratie vs. Diktatur</div>
+
+                  <h3 class="sub">1. Zentralismus vs. Dezentralisierung (Föderalismus)</h3>
+                  <table>
+                    <tr><th>Kriterium</th><th><span class="term" data-de="Zentralismus" data-vi="chế độ tập quyền">Zentralismus</span> (Tập quyền)</th><th><span class="term" data-de="Dezentralisierung" data-vi="sự phân quyền">Dezentralisierung</span> / <span class="term" data-de="Föderalismus" data-vi="chế độ liên bang">Föderalismus</span> (Phân quyền)</th></tr>
+                    <tr><td><b>Definition</b></td><td>Entscheidungsgewalt liegt konzentriert bei einer zentralen Stelle in der Hauptstadt.</td><td>Aufgaben, Kompetenzen und Finanzen werden auf Bund, Länder und Gemeinden aufgeteilt.</td></tr>
+                    <tr><td><b>Rolle der Regionen</b></td><td>Untergeordnete Verwaltungseinheiten ohne nennenswerte eigene Autonomie.</td><td>Eigenständige Gliedstaaten (Bundesländer) mit eigenen Parlamenten und Gesetzen.</td></tr>
+                    <tr><td><b>Vorteile</b></td><td>Einheitliche Standards im gesamten Land, schnelle und unkomplizierte Entscheidungswege.</td><td>Größere <span class="term" data-de="Bürgernähe" data-vi="sự gần gũi với người dân">Bürgernähe</span>, Schutz vor Machtmissbrauch, Berücksichtigung regionaler Kultur.</td></tr>
+                    <tr><td><b>Nachteile</b></td><td>Gefahr von Machtkonzentration, Vernachlässigung regionaler Interessen.</td><td>Komplizierte Abstimmungsprozesse, uneinheitliche Regelungen (z. B. Schulnoten).</td></tr>
+                    <tr><td><b>Beispiel</b></td><td><b>DDR:</b> 1952 Auflösung der 5 Länder und Ersetzung durch 14 zentral geführte Bezirke.</td><td><b>BRD:</b> 16 Bundesländer; Bildungspolitik, Polizei und Kulturhoheit liegen bei den Ländern.</td></tr>
+                  </table>
+
+                  <h3 class="sub">2. Systemvergleich: Demokratie vs. Diktatur</h3>
+                  <table>
+                    <tr><th>Merkmal</th><th><span class="term" data-de="Demokratie" data-vi="chế độ dân chủ">Demokratie</span> (Dân chủ)</th><th><span class="term" data-de="Diktatur" data-vi="chế độ độc tài">Diktatur</span> (Độc tài)</th></tr>
+                    <tr><td><b>Souveränität</b></td><td><b><span class="term" data-de="Volkssouveränität" data-vi="chủ quyền nhân dân">Volkssouveränität</span>:</b> Alle Staatsgewalt geht vom Volke aus (Art. 20 GG).</td><td><b>Machtmonopol:</b> Herrschaft eines Alleinherrschers oder einer Einheitspartei.</td></tr>
+                    <tr><td><b>Gewaltenteilung</b></td><td>Strikte Trennung in Legislative, Exekutive und Judikative (<span class="term" data-de="Gewaltenteilung" data-vi="tam quyền phân lập">Gewaltenteilung</span>).</td><td>Keine Gewaltenteilung; Justiz und Polizei unterstehen dem Diktator.</td></tr>
+                    <tr><td><b>Grundrechte</b></td><td>Umfassender Grundrechtekatalog; einklagbar vor unabhängigen Gerichten.</td><td>Menschenrechte werden missachtet; Zensur, Willkür, Verfolgung Andersdenkender.</td></tr>
+                    <tr><td><b>Partizipation</b></td><td>Freie, geheime, gleiche, unmittelbare und allgemeine Wahlen; Opposition existiert.</td><td>Scheinwahlen oder Wahlverbot; keine legale Opposition geduldet.</td></tr>
+                  </table>
+                `,
+                qa: [
+                  { q: "Erklären Sie den Unterschied zwischen Zentralismus und Dezentralisierung!", a: "Im Zentralismus liegt die gesamte Entscheidungsmacht bei einer zentralen Führung in der Hauptstadt. Bei der Dezentralisierung (Föderalismus) werden Entscheidungsrechte und Aufgaben auf regionale Einheiten (Länder und Gemeinden) verteilt." },
+                  { q: "Nennen Sie ein konkretes Beispiel für Dezentralisierung in der Bundesrepublik Deutschland!", a: "Die Kulturhoheit der Länder: Die Schul- und Bildungspolitik sowie das Polizeiwesen werden eigenständig von den 16 Bundesländern gestaltet." },
+                  { q: "Welche Merkmale kennzeichnen eine freiheitliche Demokratie im Gegensatz zur Diktatur?", a: "Gewaltenteilung, Achtung der Grundrechte, freie und geheime Wahlen, Schutz der Opposition und die Bindung aller staatlichen Organe an das Recht." }
+                ],
+                vokabeln: [
+                  { de: "Zentralismus", vi: "chế độ tập quyền" },
+                  { de: "Dezentralisierung", vi: "sự phân quyền / phi tập trung hóa" },
+                  { de: "Föderalismus", vi: "chế độ liên bang" },
+                  { de: "Bürgernähe", vi: "sự gần dân / sát với dân" },
+                  { de: "Volkssouveränität", vi: "chủ quyền nhân dân" },
+                  { de: "Gewaltenteilung", vi: "tam quyền phân lập" }
+                ]
+              }
+            ]
+          },
+],
         quiz: [
+          // --- Quests für Wahlen, Macht & Geschichte (KA 12.10.2026) ---
+          // 1. Wahlrechtsgrundsätze & Wahlrecht (5 MC + 2 Fill)
+          { theme:"wahlgrundsaetze", cat:"Wahlgrundsätze", q:"Welcher Wahlrechtsgrundsatz verbietet die Zwischenschaltung von Wahlmännern?", opts:["allgemein","unmittelbar","geheim","frei"], a:1, ex:"Unmittelbar bedeutet: Die Wähler stimmen direkt ohne Wahlmänner ab." },
+          { theme:"wahlgrundsaetze", cat:"Wahlrecht", q:"Ab welchem Alter gilt das aktive Wahlrecht bei der Bundestagswahl?", opts:["16 Jahre","18 Jahre","21 Jahre","25 Jahre"], a:1, ex:"Vollendung des 18. Lebensjahres am Wahltag (aktives und passives Wahlrecht)." },
+          { theme:"wahlgrundsaetze", cat:"Wahlrecht", q:"Warum gibt es in Deutschland keine gesetzliche Wahlpflicht?", opts:["Weil es keine Strafen gäbe","Weil der Grundsatz „frei“ auch das Recht garantiert, nicht zu wählen","Weil die Urnen zu klein sind","Weil Parteien verboten sind"], a:1, ex:"Frei bedeutet: Wahlentscheidung ohne Zwang, inklusive Nicht-Wählen." },
+          { theme:"wahlgrundsaetze", cat:"Wahlgrundsätze", q:"Welcher Grundsatz besagt, dass jede abgegebene Stimme denselben Einfluss auf das Wahlergebnis hat?", opts:["frei","gleich","allgemein","geheim"], a:1, ex:"Gleich bedeutet: Jede Stimme hat denselben Zählwert und Erfolgswert." },
+          { theme:"wahlgrundsaetze", cat:"Wahlgrundsätze", q:"Welcher Grundsatz verbietet den Ausschluss von Wählern aufgrund von Einkommen, Geschlecht oder Religion?", opts:["allgemein","unmittelbar","gleich","geheim"], a:0, ex:"Allgemein bedeutet: Alle Staatsbürger ab 18 dürfen wählen, ohne Diskriminierung." },
+          { type:"fill", theme:"wahlgrundsaetze", cat:"Merkwort", q:"Wie lautet das Merkwort für die fünf Wahlrechtsgrundsätze im Grundgesetz?", answers:["a-u-f-g-g","aufgg"], answer:"A-U-F-G-G", ex:"Allgemein, unmittelbar, frei, gleich, geheim." },
+          { type:"fill", theme:"wahlgrundsaetze", cat:"Wohnsitz", q:"Wie viele Monate muss man vor der Bundestagswahl mindestens seinen Wohnsitz in Deutschland haben?", answers:["3","3 monate","drei","drei monate"], answer:"3 Monate", ex:"Mindestens 3 Monate ununterbrochener Wohnsitz in Deutschland." },
+
+          // 2. Erststimme & Zweitstimme (5 MC + 2 Fill)
+          { theme:"erst-zweitstimme", cat:"Erststimme", q:"Wie viele Wahlkreise gibt es bei der Bundestagswahl für die Erststimme?", opts:["16","299","630","598"], a:1, ex:"Deutschland ist für die Erststimme in genau 299 Wahlkreise unterteilt." },
+          { theme:"erst-zweitstimme", cat:"Zweitstimme", q:"Wofür steht die Zweitstimme bei der Bundestagswahl maßgeblich?", opts:["Wahl des Bundespräsidenten","Direktkandidat im Wahlkreis","Partei über die Landesliste (bestimmt Sitzverteilung)","Bürgermeister"], a:2, ex:"Die Zweitstimme wählt eine Partei und bestimmt die prozentuale Sitzverteilung." },
+          { theme:"erst-zweitstimme", cat:"Erststimme", q:"Wer zieht über die Erststimme direkt in den Bundestag ein?", opts:["Der älteste Kandidat","Der Kandidat mit den meisten Erststimmen im Wahlkreis (Direktmandat)","Alle Kandidaten der Regierungspartei","Nur Parteivorsitzende"], a:1, ex:"Einfache Mehrheit im Wahlkreis reicht für den Gewinn des Direktmandats." },
+          { theme:"erst-zweitstimme", cat:"Wahlsystem", q:"Was versteht man unter dem Begriff „Stimmensplitting“?", opts:["Zwei Stimmzettel abgeben","Erst- und Zweitstimme an unterschiedliche Parteien vergeben","Stimme für ungültig erklären","Halbe Stimmen abgeben"], a:1, ex:"Stimmensplitting: Erststimme für Kandidat von Partei A, Zweitstimme für Partei B." },
+          { theme:"erst-zweitstimme", cat:"Wahlsystem", q:"Wie heißt das deutsche Wahlsystem offiziell?", opts:["Reines Mehrheitswahlrecht","Personalisierte Verhältniswahl","Absolute Mehrheitswahl","Listenwahl ohne Personen"], a:1, ex:"Personalisierte Verhältniswahl verbindet Personenwahl (Erststimme) mit Parteien-Verhältniswahl (Zweitstimme)." },
+          { type:"fill", theme:"erst-zweitstimme", cat:"Direktmandat", q:"Wie nennt man das Mandat, das ein Bewerber bei Gewinn seines Wahlkreises erhält?", answers:["direktmandat"], answer:"Direktmandat", ex:"Über die Erststimme wird der Wahlkreissieger als Direktmandat gewählt." },
+          { type:"fill", theme:"erst-zweitstimme", cat:"Reform 2023", q:"Auf wie viele Sitze wurde der Deutsche Bundestag durch die Wahlrechtsreform 2023 fest begrenzt?", answers:["630","630 sitze"], answer:"630 Sitze", ex:"Feste Sollgröße von 630 Abgeordneten ohne Überhang- und Ausgleichsmandate." },
+
+          // 3. Sperrklausel (5 %-Hürde) (5 MC + 2 Fill)
+          { theme:"sperrklausel", cat:"Sperrklausel", q:"Wo gilt die 5 %-Hürde bei der Bundestagswahl?", opts:["pro Wahlkreis","pro Bundesland","bundesweit auf das Gesamtergebnis","nur in Berlin"], a:2, ex:"Bei der Bundestagswahl gilt die 5 %-Sperrklausel bundesweit." },
+          { theme:"sperrklausel", cat:"Grundmandate", q:"Eine Partei erzielt 4,6 % Zweitstimmen und 3 Direktmandate. Was passiert?", opts:["Sie zieht nicht ein","Sie zieht voll entsprechend ihrem Zweitstimmenanteil ein","Es gibt Neuwahlen","Nur 1 Kandidat zieht ein"], a:1, ex:"Grundmandatsklausel: Mindestens 3 Direktmandate heben die 5 %-Hürde auf." },
+          { theme:"sperrklausel", cat:"Geschichte", q:"Welche historische Erfahrung aus der Weimarer Republik führte zur 5 %-Hürde?", opts:["Die Zersplitterung des Reichstags in Kleinparteien und Regierungskrisen","Zu hohe Wahlbeteiligung","Zu wenige Bundesländer","Mangel an Parteien"], a:0, ex:"Lehre aus Weimar: Zersplitterung verhinderte stabile Koalitionen und begünstigte Diktatur." },
+          { theme:"sperrklausel", cat:"Fallbeispiel", q:"Eine Partei erhält bundesweit 3,8 % der Zweitstimmen und 2 Direktmandate. Wie viele Sitze erhält sie?", opts:["Keine Sitze","Genau 2 Sitze für die Direktkandidaten (Zweitstimmen verfallen)","Alle Sitze nach 3,8 %","Neuwahl"], a:1, ex:"Unter 5 % und weniger als 3 Direktmandate: Nur die gewonnenen Wahlkreiskandidaten ziehen ein." },
+          { theme:"sperrklausel", cat:"Zweck", q:"Welcher Hauptvorteil wird der 5 %-Sperrklausel zugeschrieben?", opts:["Abschaffung der Opposition","Sicherung stabiler Mehrheiten und handlungsfähiger Regierungen","Kostensenkung im Parlament","Verkürzung der Wahlperioden"], a:1, ex:"Sie schützt vor Handlungsunfähigkeit durch zu viele Klein- und Splitterparteien." },
+          { type:"fill", theme:"sperrklausel", cat:"Grundmandat", q:"Wie viele Direktmandate muss eine Partei mindestens gewinnen, um trotz weniger als 5 % Zweitstimmen in Fraktionsstärke einzuziehen?", answers:["3","drei","3 direktmandate"], answer:"3 Direktmandate", ex:"Die Grundmandatsklausel greift ab exakt 3 gewonnenen Wahlkreisen." },
+          { type:"fill", theme:"sperrklausel", cat:"Fachbegriff", q:"Wie nennt man die Gefahr der Zersetzung des Parlaments in viele winzige Splitterparteien?", answers:["zersplitterung","parlamentszersplitterung"], answer:"Zersplitterung", ex:"Die Sperrklausel verhindert eine Lähmung durch Zersplitterung." },
+
+          // 4. Vertrauensfrage & Misstrauensvotum (5 MC + 2 Fill)
+          { theme:"vertrauensfrage", cat:"Vertrauensfrage", q:"Wer stellt im deutschen Grundgesetz die Vertrauensfrage (Art. 68 GG)?", opts:["Der Bundespräsident","Der Bundeskanzler","Der Bundestagspräsident","Das Bundesverfassungsgericht"], a:1, ex:"Der Bundeskanzler stellt die Vertrauensfrage, um seine Parlamentsmehrheit zu prüfen." },
+          { theme:"vertrauensfrage", cat:"Misstrauensvotum", q:"Was bedeutet das Wort „konstruktiv“ beim Misstrauensvotum (Art. 67 GG)?", opts:["Der Kanzler tritt freiwillig zurück","Der Bundestag wählt im selben Wahlgang einen neuen Kanzler","Das Volk stimmt ab","Die Minister bleiben im Amt"], a:1, ex:"Nur wer gleichzeitig mit Mehrheit einen Nachfolger wählt, kann den alten Kanzler stürzen." },
+          { theme:"vertrauensfrage", cat:"Geschichte", q:"Welcher Bundeskanzler wurde 1982 durch ein erfolgreiches konstruktives Misstrauensvotum gestürzt?", opts:["Willy Brandt","Helmut Schmidt","Konrad Adenauer","Gerhard Schröder"], a:1, ex:"Helmut Schmidt (SPD) verlor die FDP; Helmut Kohl (CDU) wurde im selben Votum Kanzler." },
+          { theme:"vertrauensfrage", cat:"Rechtsfolge", q:"Was kann der Bundespräsident tun, wenn der Kanzler die Vertrauensfrage verliert?", opts:["Kanzler verhaften","Den Bundestag auf Vorschlag des Kanzlers auflösen","Sofort allein regieren","Ein Gesetz erlassen"], a:1, ex:"Nach Art. 68 GG kann der Bundespräsident innerhalb von 21 Tagen den Bundestag auflösen." },
+          { theme:"vertrauensfrage", cat:"Frist", q:"Innerhalb welcher Frist müssen nach Auflösung des Bundestages Neuwahlen stattfinden?", opts:["Innerhalb von 14 Tagen","Innerhalb von 60 Tagen","Nach einem Jahr","Erst nach 4 Jahren"], a:1, ex:"Art. 39 GG schreibt Neuwahlen innerhalb von 60 Tagen nach Parlamentsauflösung vor." },
+          { type:"fill", theme:"vertrauensfrage", cat:"Artikel", q:"Welcher Artikel des Grundgesetzes regelt das konstruktive Misstrauensvotum?", answers:["art. 67","art. 67 gg","artikel 67","67"], answer:"Art. 67 GG", ex:"Art. 67 regelt das Misstrauensvotum, Art. 68 die Vertrauensfrage." },
+          { type:"fill", theme:"vertrauensfrage", cat:"Mehrheit", q:"Welche Art von Mehrheit im Bundestag ist nötig, um einen Kanzler per Misstrauensvotum zu stürzen?", answers:["absolute mehrheit","kanzlermehrheit","absolute"], answer:"Absolute Mehrheit", ex:"Mehrheit der gesetzlichen Mitglieder des Bundestages (Kanzlermehrheit)." },
+
+          // 5. Statistik analysieren (Methode) (5 MC + 2 Fill)
+          { theme:"statistik-analyse", cat:"Methode", q:"In welchem Teil der Statistikanalyse werden mögliche Begründungen vorsichtig formuliert?", opts:["In der Einleitung","In der Tabelle","Im Fazit","Nirgendwo"], a:2, ex:"Begründungen und vorsichtige Vermutungen gehören ausschließlich in das Fazit." },
+          { theme:"statistik-analyse", cat:"Einleitung", q:"Welche Pflichtangaben gehören zwingend in die Einleitung einer Statistikanalyse?", opts:["Persönliche Wahlempfehlung","Thema, Darstellungsform, Einheit, Quelle und Erhebungszeitraum","Nur Seitenzahl","Ergebnis der Regierung"], a:1, ex:"Die Einleitung benennt Thema, Form, Einheit, Quelle und Zeitbezug." },
+          { theme:"statistik-analyse", cat:"Analyse", q:"Was ist im Analyseteil einer Statistik streng zu vermeiden?", opts:["Zahlen nennen","Die eigene persönliche Meinung oder Begründungen einfließen lassen","Vergleiche anstellen","Spitzenreiter benennen"], a:1, ex:"Der Analyseteil ist rein sachlich und objektiv; Wertungen gehören nur ins Fazit." },
+          { theme:"statistik-analyse", cat:"Formulierung", q:"Welche Formulierung eignet sich besonders für das vorsichtige Fazit einer Statistikanalyse?", opts:["„Es ist unumstößlich bewiesen, dass...“","„Mögliche Gründe dafür könnten sein, dass...“","„Ich persönlich finde, dass...“","„Die Statistik ist falsch, weil...“"], a:1, ex:"Hypothesen und Deutungen im Fazit immer als vorsichtige Vermutung formulieren." },
+          { theme:"statistik-analyse", cat:"Bundestag", q:"Welche Altersgruppe dominiert laut Alterspyramide den Deutschen Bundestag?", opts:["Unter 25 Jahre","40 bis 59 Jahre","Über 80 Jahre","Nur 30-Jährige"], a:1, ex:"Die Altersgruppe der 40- bis 59-Jährigen stellt die deutliche Mehrheit der Abgeordneten." },
+          { type:"fill", theme:"statistik-analyse", cat:"Dreischritt", q:"Wie heißt der dreiteilige Aufbau einer systematischen Grafikanalyse?", answers:["einleitung, analyse, fazit","einleitung analyse fazit","einleitung - analyse - fazit"], answer:"Einleitung – Analyse – Fazit", ex:"Klassischer Dreischritt der Methodenkompetenz." },
+          { type:"fill", theme:"statistik-analyse", cat:"Diagrammtyp", q:"Wie nennt man ein Diagramm mit horizontalen Balken zur Darstellung von Werten?", answers:["balkendiagramm"], answer:"Balkendiagramm", ex:"Balkendiagramm (horizontal) oder Säulendiagramm (vertikal)." },
+
+          // 6. Kalter Krieg & Deutsche Teilung (5 MC + 2 Fill)
+          { theme:"kalter-krieg", cat:"Kalter Krieg", q:"Wer prägte im Jahr 1947 den Begriff „Kalter Krieg“?", opts:["Harry S. Truman","Walter Lippmann","Winston Churchill","Konrad Adenauer"], a:1, ex:"Der amerikanische Publizist Walter Lippmann prägte den Begriff 1947." },
+          { theme:"kalter-krieg", cat:"Chronologie", q:"An welchem Datum wurde die Berliner Mauer errichtet?", opts:["13. August 1961","9. November 1989","23. Mai 1949","17. Juni 1953"], a:0, ex:"13. August 1961: Beginn des Mauerbaus durch die DDR." },
+          { theme:"kalter-krieg", cat:"Abschreckung", q:"Was versteht man unter dem „Gleichgewicht des Schreckens“?", opts:["Beide Seiten konnten sich nuklear mehrfach vernichten, was direkten Krieg verhinderte","Konventionelle Waffen waren verboten","Die USA waren unbewaffnet","Es gab nur Propaganda"], a:0, ex:"Nukleare Abschreckung (Overkill-Kapazität) verhinderte den Ausbruch eines Dritten Weltkriegs." },
+          { theme:"kalter-krieg", cat:"BRD-Gründung", q:"Welches Datum markiert die offizielle Gründung der Bundesrepublik Deutschland?", opts:["08. Mai 1945","23. Mai 1949 (Verkündung des Grundgesetzes)","07. Oktober 1949","13. August 1961"], a:1, ex:"Mit der Verkündung des Grundgesetzes am 23. Mai 1949 wurde die BRD gegründet." },
+          { theme:"kalter-krieg", cat:"Wirtschaftssysteme", q:"Welche gegensätzlichen Wirtschaftssysteme standen sich im Kalten Krieg gegenüber?", opts:["Marktwirtschaft (Westen) vs. Planwirtschaft (Osten)","Beide hatten Feudalismus","Keine Wirtschaft in der DDR","Reine Tauschwirtschaft"], a:0, ex:"Westen: Kapitalismus & freie/soziale Marktwirtschaft; Osten: Sozialismus & staatliche Planwirtschaft." },
+          { type:"fill", theme:"kalter-krieg", cat:"Mauerfall", q:"An welchem genauen Datum fiel die Berliner Mauer?", answers:["09.11.1989","9. november 1989","09. november 1989","9.11.1989"], answer:"09. November 1989", ex:"Öffnung der innerdeutschen Grenze nach friedlicher Revolution in der DDR." },
+          { type:"fill", theme:"kalter-krieg", cat:"Stellvertreter", q:"Wie nennt man Kriege, die von Supermächten indirekt über Drittstaaten geführt wurden?", answers:["stellvertreterkriege","stellvertreterkrieg"], answer:"Stellvertreterkriege", ex:"Zum Beispiel Koreakrieg, Vietnamkrieg, Afghanistankrieg." },
+
+          // 7. Zentralismus, Dezentralisierung & Staatsformen (5 MC + 2 Fill)
+          { theme:"zentralismus", cat:"Staatsaufbau", q:"Was kennzeichnet das Prinzip der Dezentralisierung (Föderalismus)?", opts:["Alle Macht liegt in der Hauptstadt","Aufgaben und Entscheidungen werden auf Länder und Gemeinden aufgeteilt","Abschaffung von Wahlen","Einparteienherrschaft"], a:1, ex:"Aufteilung der staatlichen Aufgaben auf Bund, Länder und Kommunen." },
+          { theme:"zentralismus", cat:"DDR-Vergleich", q:"Welches war ein typisches Merkmal des zentralistischen Staatsaufbaus in der DDR ab 1952?", opts:["Starke Länderparlamente","Auflösung der Länder und Ersetzung durch 14 zentral geführte Bezirke","Freie Wahlen mit 20 Parteien","Unabhängige Justiz"], a:1, ex:"Die DDR schaffte 1952 ihre Länder ab und regierte zentral aus Ost-Berlin über 14 Bezirke." },
+          { theme:"zentralismus", cat:"Vorteil", q:"Was ist ein wesentlicher Vorteil der Dezentralisierung / des Föderalismus?", opts:["Schnellere Diktatur","Bürgernähe, Machtbegrenzung und Berücksichtigung regionaler Interessen","Abschaffung von Steuern","Nur ein Minister für alles"], a:1, ex:"Föderalismus garantiert Bürgernähe und schützt vor Machtkonzentration." },
+          { theme:"zentralismus", cat:"Grundgesetz", q:"Welches fundamentale Staatsprinzip besagt: „Alle Staatsgewalt geht vom Volke aus“?", opts:["Zentralismus","Volkssouveränität (Art. 20 Abs. 2 GG)","Planwirtschaft","Diktatur des Proletariats"], a:1, ex:"Volkssouveränität ist das Herzstück der parlamentarischen Demokratie." },
+          { theme:"zentralismus", cat:"Demokratie vs. Diktatur", q:"Was unterscheidet eine freiheitliche Demokratie grundlegend von einer Diktatur?", opts:["Demokratie hat keine Gesetze","Gewaltenteilung, Grundrechte, freie Wahlen und echte Opposition","In der Demokratie regiert das Militär","Es gibt keinen Unterschied"], a:1, ex:"Rechtsstaatlichkeit, Gewaltenteilung und Grundrechte schützen die Bürger vor Willkür." },
+          { type:"fill", theme:"zentralismus", cat:"Bundesländer", q:"Aus wie vielen Bundesländern besteht die Bundesrepublik Deutschland?", answers:["16","sechzehn","16 bundesländer"], answer:"16", ex:"Deutschland ist ein Bundesstaat aus 16 Bundesländern." },
+          { type:"fill", theme:"zentralismus", cat:"Gewalten", q:"In welche drei Gewalten ist die Staatsmacht in der Demokratie aufgeteilt?", answers:["legislative, exekutive, judikative","legislative exekutive judikative"], answer:"Legislative, Exekutive, Judikative", ex:"Gesetzgebung, vollziehende Gewalt und rechtsprechende Gewalt." },
           { theme:"partizipation", cat:"Partizipation", q:"Was bedeutet politische Partizipation?", opts:["Nur Steuern zahlen","Teilhabe am politischen Willensbildungs- und Entscheidungsprozess","Nur Urlaub im Ausland","Nur Sport im Verein"], a:1, ex:"Mitmachen in Politik und Öffentlichkeit." },
           { theme:"partizipation", cat:"Formen", q:"Welche Form gehört zur digitalen Partizipation?", opts:["Nur Schweigemarsch offline","Online-Petition / Forum / Blog","Nur geheime Absprachen","Nur Noten in der Schule"], a:1, ex:"Internetforum, Online-Petition, Blog, Podcast…" },
           { theme:"partizipation", cat:"Pro/Kontra", q:"Ein Nachteil digitaler Partizipation ist …", opts:["weltweiter Zugang","Anonymität kann zu unqualifizierten Beiträgen führen","Interaktivität","leichte Erreichbarkeit"], a:1, ex:"Anonymität + Informationsflut als Kontra." },
@@ -2475,7 +2979,7 @@
       // KA 1: Volksabstimmung, repräsentative Demokratie, Mehrheitsprinzip,
       // Gewaltenteilung + Gewaltenverschränkung, Menschen-/Bürgerrechte, Karikatur
       zusammenfassung: "klassenarbeiten/gk-zusammenfassung.html",
-      examThemes: ["partizipation", "demokratie-gg", "gewaltenteilung", "grundrechte", "karikatur-methode"],
+      examThemes: ["partizipation", "demokratie-gg", "gewaltenteilung", "grundrechte", "karikatur-methode", "wahlgrundsaetze", "erst-zweitstimme", "sperrklausel", "vertrauensfrage", "statistik-analyse", "kalter-krieg", "zentralismus"],
       examChecklist: [
         "Volksabstimmung (Initiative → Begehren → Entscheid)",
         "Repräsentative Demokratie",
@@ -2484,8 +2988,16 @@
         "Gewaltenverschränkung + Beispiele",
         "Menschen- und Bürgerrechte",
         "Karikatur interpretieren",
+        "5 Wahlrechtsgrundsätze (A-U-F-G-G)",
+        "Erststimme vs. Zweitstimme (Direktmandat & personalisierte Verhältniswahl)",
+        "Sperrklausel (5 %-Hürde & Grundmandatsklausel)",
+        "Vertrauensfrage (Art. 68 GG) vs. konstruktives Misstrauensvotum (Art. 67 GG)",
+        "Statistikanalyse: Dreischritt (Einleitung – Analyse – Fazit)",
+        "Kalter Krieg: Merkmale, Systemvergleich & Chronologie 1945–1990",
+        "Zentralismus vs. Dezentralisierung / Föderalismus",
       ],
       pruefungen: [
+        { title: "Klassenarbeit 12.10.2026", desc: "Wahlen, Macht & Geschichte · 9 Aufgaben (50 P.) mit Musterlösung", exam: "klassenarbeiten/gk-ka-2026-10-12.html", loesung: "klassenarbeiten/gk-ka-2026-10-12.html" },
         { title: "Übung Nr. 1", desc: "Partizipation · Grundgesetz · Gleichberechtigung", exam: "klassenarbeiten/gk-ka1.html", loesung: "klassenarbeiten/gk-ka1-loesung.html" },
         { title: "Übung Nr. 2", desc: "Gewaltenteilung · Gewaltenverschränkung · Medien · Vertrauensfrage", exam: "klassenarbeiten/gk-ka2.html", loesung: "klassenarbeiten/gk-ka2-loesung.html" },
         { title: "Übung Nr. 3", desc: "Direkte Demokratie · Karikatur · Menschen-/Bürgerrechte · Mehrheitsprinzip", exam: "klassenarbeiten/gk-ka3.html", loesung: "klassenarbeiten/gk-ka3-loesung.html" },

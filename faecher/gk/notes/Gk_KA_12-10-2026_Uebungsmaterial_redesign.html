@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>§ Gk – Klassenarbeit 12.10.2026 – Übungsmaterial (DE/VI)</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+/* ===== DESIGN TOKENS =====
+  ink    #1B1F2A  primary text / spine
+  paper  #F1ECDE  parchment ground
+  wax    #7A2E2E  paragraph seal / DE accent
+  brass  #9C7A3C  rule / numerals
+  slate  #48586B  VI translation voice
+  line   #D8CFB8  hairline
+*/
+:root{
+  --ink:#1B1F2A; --paper:#F1ECDE; --paper2:#EAE3D0; --wax:#7A2E2E;
+  --brass:#9C7A3C; --slate:#48586B; --line:#D8CFB8; --slateline:#c7d0da;
+  --green:#5b7a52; --greenbg:#eef3ea;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--paper);
+  background-image:
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.012) 0px, rgba(0,0,0,0.012) 1px, transparent 1px, transparent 3px);
+  color:var(--ink); font-family:"Source Serif 4",Georgia,serif; line-height:1.65;
+  font-size:17px;
+}
+::selection{background:#d9c9a3;}
+a{color:var(--wax);}
+
+/* ---- Header: title block like a statute cover page ---- */
+header.cover{
+  padding:60px 24px 42px; text-align:center; position:relative;
+  border-bottom:3px double var(--brass);
+  background:linear-gradient(180deg, var(--paper2), var(--paper));
+}
+header.cover .kicker{
+  font-family:"IBM Plex Mono",monospace; letter-spacing:.18em; font-size:.72rem;
+  text-transform:uppercase; color:var(--brass); margin-bottom:14px;
+}
+header.cover h1{
+  font-family:"Fraunces",serif; font-weight:600; font-size:clamp(1.9rem,5vw,3.1rem);
+  margin:0 0 10px; color:var(--ink); letter-spacing:-.01em;
+}
+header.cover h1 em{font-style:italic; color:var(--wax); font-weight:500;}
+header.cover .subtitle-de{font-size:1.02rem; color:var(--ink); margin:4px 0;}
+header.cover .subtitle-vi{
+  font-family:"IBM Plex Sans",sans-serif; font-size:.92rem; color:var(--slate);
+  margin:2px 0 0; font-style:normal;
+}
+header.cover .subtitle-vi:before{content:"VI · "; font-weight:600; letter-spacing:.03em; color:var(--slate); opacity:.7;}
+header.cover .exam-meta{
+  display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:18px;
+  font-family:"IBM Plex Mono",monospace; font-size:.72rem;
+}
+header.cover .exam-meta span{
+  border:1px solid var(--brass); color:var(--wax); padding:4px 12px; border-radius:20px;
+  letter-spacing:.04em;
+}
+
+/* ---- Legend + controls ---- */
+.legend{
+  max-width:820px; margin:22px auto 0; display:flex; gap:18px; justify-content:center;
+  flex-wrap:wrap; align-items:center; font-family:"IBM Plex Sans",sans-serif; font-size:.82rem; color:var(--ink);
+}
+.legend .item{display:flex; align-items:center; gap:8px;}
+.legend .swatch{width:16px; height:16px; border-radius:2px; flex-shrink:0;}
+.legend .swatch.de{background:var(--wax);}
+.legend .swatch.vi{background:var(--slate);}
+.toggle-btn{
+  cursor:pointer; font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.05em;
+  background:var(--ink); color:var(--paper); border:none; padding:8px 14px; border-radius:6px;
+  text-transform:uppercase; transition:.15s;
+}
+.toggle-btn:hover{background:var(--wax);}
+
+/* ---- Sticky paragraph nav ---- */
+nav.spine{
+  position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper);
+  display:flex; gap:0; overflow-x:auto; white-space:nowrap; padding:0 10px;
+  box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+nav.spine a{
+  color:var(--paper); text-decoration:none; font-family:"IBM Plex Mono",monospace;
+  font-size:.74rem; letter-spacing:.03em; padding:13px 14px; border-right:1px solid rgba(255,255,255,.12);
+  opacity:.72; transition:.15s;
+}
+nav.spine a:hover{opacity:1; background:rgba(255,255,255,.06); color:#EFC9A0;}
+nav.spine a.exam{color:#EFC9A0; opacity:.9;}
+nav.spine .grp{
+  font-family:"IBM Plex Mono",monospace; font-size:.64rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--brass); padding:13px 8px 13px 14px; align-self:center; opacity:.9;
+}
+
+main{max-width:840px; margin:0 auto; padding:10px 24px 100px;}
+
+/* ---- Section shell: like a numbered § chapter ---- */
+section.chapter{padding:50px 0 20px; border-bottom:1px solid var(--line); scroll-margin-top:54px;}
+section.chapter:last-of-type{border-bottom:none;}
+.chapter-head{display:flex; align-items:baseline; gap:16px; margin-bottom:6px;}
+.chapter-num{
+  font-family:"Fraunces",serif; font-weight:700; font-size:2.5rem; color:var(--brass);
+  line-height:1; flex-shrink:0;
+}
+.chapter-title-de{font-family:"Fraunces",serif; font-weight:600; font-size:1.5rem; color:var(--ink); margin:0;}
+.chapter-title-vi{
+  font-family:"IBM Plex Sans",sans-serif; font-size:.95rem; color:var(--slate); margin:4px 0 0 60px;
+}
+.chapter-title-vi:before{content:"VI · "; font-weight:600; opacity:.7;}
+.lf-tag{
+  font-family:"IBM Plex Mono",monospace; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase;
+  background:var(--wax); color:var(--paper); padding:3px 9px; border-radius:4px; margin-left:auto; align-self:center;
+}
+
+h3.sub{
+  font-family:"Fraunces",serif; font-weight:600; font-size:1.16rem; color:var(--wax);
+  margin:32px 0 4px; padding-left:14px; border-left:3px solid var(--wax);
+}
+h3.sub .vi-sub{
+  display:block; font-family:"IBM Plex Sans",sans-serif; font-weight:500; font-size:.82rem;
+  color:var(--slate); margin-top:3px; border-left:none; padding-left:0; letter-spacing:0;
+}
+h4.h4{font-family:'IBM Plex Sans',sans-serif; color:var(--ink); margin:24px 0 6px; font-size:1rem;}
+h4.h4 .vi-sub{display:block; color:var(--slate); font-weight:400; font-size:.82rem; margin-top:2px;}
+
+/* ---- The core DE→VI stacked block ---- */
+.block{margin:16px 0 22px;}
+.de{
+  position:relative; padding:14px 18px 14px 20px; background:rgba(122,46,46,.045);
+  border-left:3px solid var(--wax); border-radius:0 6px 6px 0; font-size:1rem;
+}
+.de .tag{
+  font-family:"IBM Plex Mono",monospace; font-size:.66rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--wax); display:block; margin-bottom:5px; opacity:.85;
+}
+.vi{
+  font-family:"IBM Plex Sans",sans-serif; font-size:.9rem; color:var(--slate);
+  padding:10px 18px 4px 20px; border-left:3px solid var(--slateline); margin-top:-4px;
+}
+.vi .tag{
+  font-family:"IBM Plex Mono",monospace; font-size:.64rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--slate); display:block; margin-bottom:4px; opacity:.75;
+}
+/* Vietnamese hide toggle */
+body.hide-vi .vi{display:none !important;}
+body.hide-vi .vi-sub{display:none !important;}
+body.hide-vi .vi-cell{display:none !important;}
+body.hide-vi .vi-mini{display:none !important;}
+body.hide-vi .chapter-title-vi{display:none !important;}
+
+ul,ol{margin:10px 0; padding-left:26px;}
+li{margin:5px 0;}
+li.de{border-radius:0 6px 6px 0; margin:7px 0;}
+
+.para-code{
+  font-family:"IBM Plex Mono",monospace; font-size:.7rem; font-weight:600; color:#fff;
+  background:var(--brass); padding:2px 8px; border-radius:10px; margin-left:6px; letter-spacing:.02em;
+  display:inline-block;
+}
+b,strong{color:var(--ink);}
+.vi b,.vi strong{color:#324150;}
+
+table{width:100%; border-collapse:collapse; margin:16px 0; font-size:.9rem; background:#fff;}
+th,td{border:1px solid var(--line); padding:9px 11px; text-align:left; vertical-align:top;}
+th{background:var(--ink); color:var(--paper); font-family:"IBM Plex Sans",sans-serif; font-weight:600; font-size:.78rem; letter-spacing:.03em; text-transform:uppercase;}
+tr:nth-child(even) td{background:var(--paper2);}
+td.vi-cell{color:var(--slate); font-family:"IBM Plex Sans",sans-serif; font-size:.82rem;}
+.vi-cell{color:var(--slate); font-family:"IBM Plex Sans",sans-serif; font-size:.82rem; display:block; margin-top:3px;}
+
+.example{
+  background:var(--greenbg); border-left:4px solid var(--green); border-radius:0 6px 6px 0;
+  padding:10px 16px; margin:12px 0; font-size:.92rem;
+}
+.example .tag{font-family:"IBM Plex Mono",monospace; font-size:.65rem; letter-spacing:.1em; color:#3f5c39; text-transform:uppercase; display:block; margin-bottom:4px;}
+.example .vi{border:none; padding:4px 0 0; margin:0;}
+
+.warn{
+  background:#f7e9df; border-left:4px solid var(--wax); border-radius:0 6px 6px 0;
+  padding:10px 16px; margin:12px 0; font-size:.92rem;
+}
+.warn .tag{font-family:"IBM Plex Mono",monospace; font-size:.65rem; letter-spacing:.1em; color:var(--wax); text-transform:uppercase; display:block; margin-bottom:4px;}
+.warn .vi{border:none; padding:4px 0 0; margin:0;}
+
+.timeline{
+  display:flex; justify-content:space-between; margin:26px 0 8px; padding:16px 10px;
+  border:1px solid var(--line); border-radius:8px; background:#fff;
+  font-family:"IBM Plex Mono",monospace; font-size:.78rem; text-align:center; color:var(--ink);
+}
+.timeline div{flex:1;}
+.timeline .vi-mini{display:block; font-family:"IBM Plex Sans",sans-serif; font-size:.68rem; color:var(--slate); margin-top:2px;}
+
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+@media(max-width:640px){.grid2{grid-template-columns:1fr;} .chapter-title-vi{margin-left:0;}}
+
+.badge-set{
+  font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.05em; text-transform:uppercase;
+  background:var(--ink); color:var(--paper); padding:5px 12px; border-radius:4px; display:inline-block; margin-bottom:14px;
+}
+.pill{display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:.66rem; font-weight:600;
+  padding:2px 9px; border-radius:12px; letter-spacing:.03em; text-transform:uppercase;}
+.pill.ok{background:#e2efdb; color:#3f5c39; border:1px solid #a9c39b;}
+.pill.no{background:#f4ddd6; color:#8a3324; border:1px solid #d3a294;}
+.pill.al{background:#f4ddd6; color:#7A2E2E; border:1px solid #d3a294;}
+
+/* ---- Q&A / Lösung accordion ---- */
+details.q{border:1px solid var(--line); border-radius:8px; margin:14px 0; overflow:hidden; background:#fff;}
+details.q summary{
+  cursor:pointer; list-style:none; padding:14px 18px; font-family:"IBM Plex Sans",sans-serif;
+  font-weight:600; font-size:.95rem; color:var(--ink); position:relative; padding-right:40px;
+}
+details.q summary::-webkit-details-marker{display:none;}
+details.q summary:after{
+  content:"+"; position:absolute; right:16px; top:50%; transform:translateY(-50%);
+  font-size:1.3rem; color:var(--brass); font-weight:400;
+}
+details.q[open] summary:after{content:"–";}
+details.q[open] summary{background:rgba(122,46,46,.04); border-bottom:1px dashed var(--line);}
+details.q summary .qnum{
+  font-family:"IBM Plex Mono",monospace; color:var(--brass); font-weight:600; margin-right:8px;
+}
+details.q .ans{padding:2px 18px 16px;}
+details.q .ans .de{margin-top:12px;}
+details.q .ans .vi{margin-bottom:6px;}
+
+/* ---- Math / calculation card ---- */
+.calc{
+  font-family:"IBM Plex Mono",monospace; font-size:.86rem; background:var(--ink); color:var(--paper);
+  border-radius:8px; padding:16px 18px; margin:14px 0; line-height:1.9;
+}
+.calc .op{color:var(--brass);}
+.calc .val{color:#EFC9A0;}
+.calc .res{color:#a9d39b; border-top:1px dashed rgba(255,255,255,.25); padding-top:4px; margin-top:4px; display:block;}
+
+/* ---- Exam sheet ---- */
+.exam-intro{
+  background:var(--paper2); border:1px solid var(--line); border-radius:8px;
+  padding:14px 18px; margin:16px 0; font-size:.94rem;
+}
+.aufgabe{margin:22px 0; padding-left:16px; border-left:3px solid var(--brass);}
+.aufgabe-num{font-family:"IBM Plex Sans",sans-serif; font-weight:600; color:var(--wax); font-size:1rem; display:block; margin-bottom:4px;}
+.pts{float:right; font-family:"IBM Plex Mono",monospace; color:var(--brass); font-size:.78rem;}
+kbd{font-family:"IBM Plex Mono",monospace; background:var(--paper2); border:1px solid var(--line); border-radius:4px; padding:1px 6px; font-size:.78rem; color:var(--ink);}
+code{font-family:"IBM Plex Mono",monospace; background:var(--paper2); border:1px solid var(--line); border-radius:4px; padding:1px 6px; font-size:.86em;}
+
+footer{
+  text-align:center; padding:44px 20px 70px; font-family:"IBM Plex Sans",sans-serif;
+  font-size:.82rem; color:var(--slate); border-top:1px solid var(--line);
+}
+footer .de{background:none; border:none; padding:0;}
+footer .vi{border:none; padding:0; margin-top:4px;}
+
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+@media print{
+  nav.spine, .toggle-btn{display:none;}
+  body{font-size:12pt; background:#fff;}
+  details.q, details.q .ans{display:block !important;}
+  details.q[open] summary:after,details.q summary:after{content:"";}
+  section.chapter{page-break-inside:auto;}
+}
+
+/* ---- übernommen & angepasst: Quiz, Balken, Zeitstrahl ---- */
+.mc{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:12px 0}
+.mc h4{margin:0 0 2px;font-family:"IBM Plex Sans",sans-serif;font-size:1rem}
+.mc .opts{display:grid;gap:6px;margin-top:8px}
+.mc .opts button{font-family:"IBM Plex Sans",sans-serif;text-align:left;background:var(--paper);color:var(--ink);border:1px solid var(--line);padding:8px 12px;border-radius:8px;cursor:pointer;font-size:.92rem}
+.mc .opts button:hover{background:var(--paper2)}
+.mc .opts button.right{background:var(--greenbg);border-color:var(--green);color:#3f5c39;font-weight:600}
+.mc .opts button.wrong{background:#f7e9df;border-color:var(--wax);color:var(--wax)}
+.mc .why{display:none;margin-top:8px;font-size:.9rem;font-family:"IBM Plex Sans",sans-serif;color:var(--slate)}
+.mc.done .why{display:block}
+#score{position:sticky;bottom:10px;margin:14px 0;background:var(--ink);color:var(--paper);padding:8px 14px;border-radius:8px;display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:.8rem}
+.bars{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:14px 0}
+.bar{display:grid;grid-template-columns:90px 1fr 64px;gap:8px;align-items:center;margin:6px 0;font-size:.9rem;font-family:"IBM Plex Sans",sans-serif}
+.bar i{display:block;height:20px;border-radius:3px;background:var(--c);width:var(--w)}
+.bar span:last-child{text-align:right;font-variant-numeric:tabular-nums;font-family:"IBM Plex Mono",monospace;font-size:.8rem}
+.bars .note{font-size:.82rem;color:var(--slate);margin:8px 0 0;font-family:"IBM Plex Sans",sans-serif}
+ul.time{list-style:none;margin:16px 0;padding:0 0 0 20px;border-left:3px solid var(--brass)}
+ul.time li{position:relative;margin:0 0 14px;padding-left:14px}
+ul.time li::before{content:"";position:absolute;left:-28px;top:7px;width:11px;height:11px;border-radius:50%;background:var(--wax);border:2px solid var(--paper)}
+ul.time b{font-family:"Fraunces",serif;color:var(--wax)}
+ul.time .de{margin:6px 0 0}
+</style>
+</head>
+<body>
+<header class="cover">
+  <div class="kicker">Gemeinschaftskunde · Lernskript · Klassenarbeit 12.10.2026</div>
+  <h1>§ <em>Wahlen, Macht &amp; Geschichte</em></h1>
+  <p class="subtitle-de">Gk-Klassenarbeit am 12.10.2026 · Wahlrecht, Kanzlersturz, Statistik, Kalter Krieg, Staatsaufbau</p>
+  <p class="subtitle-vi">Tài liệu ôn tập song ngữ Đức–Việt: tóm tắt từng chủ đề, đề thi thử có lời giải và quiz trắc nghiệm.</p>
+  <div class="exam-meta">
+    <span id="count">Klassenarbeit: 12.10.2026</span><span>GK</span><span>DE / VI zweisprachig</span>
+  </div>
+  <div class="legend">
+    <div class="item"><span class="swatch de"></span> Deutsch (Original — luôn đọc trước)</div>
+    <div class="item"><span class="swatch vi"></span> Tiếng Việt (bản dịch — đọc sau để hiểu)</div>
+    <button class="toggle-btn" id="viToggle" onclick="toggleVi()">🇻🇳 Tiếng Việt: AN</button>
+  </div>
+</header>
+<nav class="spine">
+  <span class="grp">Themen</span>
+  <a href="#t1">1 · Wahlgrundsätze</a>
+  <a href="#t2">2 · Erst-/Zweitstimme</a>
+  <a href="#t3">3 · Sperrklausel</a>
+  <a href="#t4">4 · Vertrauensfrage</a>
+  <a href="#t5">5 · Statistik</a>
+  <a href="#t6">6 · Kalter Krieg</a>
+  <a href="#t7">7 · Zentralismus</a>
+  <span class="grp">Test</span>
+  <a href="#klausur" class="exam">Übungsklausur</a>
+  <a href="#quiz" class="exam">Quiz</a>
+</nav>
+<main>
+
+<!-- 1 -->
+<section class="chapter" id="t1"><div class="chapter-head"><span class="chapter-num">§1</span><h2 class="chapter-title-de">Wahlrechtsgrundsätze</h2></div><p class="chapter-title-vi">5 nguyên tắc bầu cử (prüfungsrelevant = có trong đề thi).</p><div class="block"><div class="de"><span class="tag">Merke</span><strong>Merkwort: A-U-F-G-G</strong> = allgemein, unmittelbar, frei, gleich, geheim.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Mẹo nhớ A-U-F-G-G: phổ thông, trực tiếp, tự do, bình đẳng, bí mật.</div></div><div class="block"><div class="de">Für Bundestag und Landtage gelten dieselben fünf Grundsätze.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Quốc hội liên bang (Bundestag) và Quốc hội bang (Landtag) đều áp dụng cùng 5 nguyên tắc này.</div></div><table>
+<tr><th>Grundsatz</th><th>Bedeutung</th><th>Verstoß (Beispiel)</th></tr>
+<tr><td><strong>allgemein</strong><span class="vi-cell">phổ thông</span></td>
+<td>Jede Person, die die Wahlrechtsvoraussetzungen erfüllt, darf wählen, unabhängig von Konfession, Bildung, Geschlecht, Sprache, Einkommen oder Beruf.
+        <span class="vi-cell">Ai đủ điều kiện đều được bầu, không phân biệt tôn giáo, học vấn, giới tính, ngôn ngữ, thu nhập hay nghề nghiệp.</span></td>
+<td>Frauen oder Arme dürfen nicht wählen.<span class="vi-cell">Phụ nữ hoặc người nghèo không được bầu.</span></td></tr>
+<tr><td><strong>unmittelbar</strong><span class="vi-cell">trực tiếp</span></td>
+<td>Die Wahlberechtigten wählen Kandidaten bzw. Parteien direkt; es sind keine Wahlfrauen und Wahlmänner zwischengeschaltet.
+        <span class="vi-cell">Cử tri bầu thẳng ứng viên/đảng, không có “đại cử tri” ở giữa.</span></td>
+<td>Wahlmänner entscheiden statt der Wähler.<span class="vi-cell">Đại cử tri quyết định thay cử tri.</span></td></tr>
+<tr><td><strong>frei</strong><span class="vi-cell">tự do</span></td>
+<td>Jede Person entscheidet ohne Zwang und Kontrolle, wen sie wählt und ob sie überhaupt wählt.
+        <span class="vi-cell">Mỗi người quyết định không bị ép buộc hay kiểm soát: bầu ai, và có đi bầu hay không.</span></td>
+<td>Druck oder Drohung durch Arbeitgeber oder Familie.<span class="vi-cell">Bị chủ hoặc gia đình gây áp lực, đe dọa.</span></td></tr>
+<tr><td><strong>gleich</strong><span class="vi-cell">bình đẳng</span></td>
+<td>Jede Stimme hat den gleichen Wert, unabhängig von Besitz, Einkommen, Bildung, Religion, Geschlecht oder politischer Einstellung.
+        <span class="vi-cell">Mỗi lá phiếu có giá trị như nhau, bất kể tài sản, thu nhập, học vấn, tôn giáo, giới tính hay quan điểm chính trị.</span></td>
+<td>Reiche haben mehrere Stimmen.<span class="vi-cell">Người giàu có nhiều phiếu.</span></td></tr>
+<tr><td><strong>geheim</strong><span class="vi-cell">bí mật</span></td>
+<td>Man stimmt unbeobachtet in der Wahlkabine ab, der gefaltete Stimmzettel kommt in eine versiegelte Wahlurne.
+        <span class="vi-cell">Bỏ phiếu không bị ai nhìn trong buồng phiếu (Wahlkabine), phiếu gấp lại được cho vào thùng phiếu niêm phong (Wahlurne).</span></td>
+<td>Offene Abstimmung per Handzeichen.<span class="vi-cell">Bỏ phiếu công khai bằng giơ tay.</span></td></tr>
+</table><h3 class="sub">Aktives und passives Wahlrecht (Bundestag)</h3><table>
+<tr><th></th><th>Aktives Wahlrecht (wählen)</th><th>Passives Wahlrecht (gewählt werden)</th></tr>
+<tr><td><strong>Wer?</strong><span class="vi-cell">Ai?</span></td><td>Alle Deutschen<span class="vi-cell">Mọi công dân Đức</span></td><td>Jeder Wahlberechtigte<span class="vi-cell">Mọi người có quyền bầu cử</span></td></tr>
+<tr><td><strong>Alter</strong><span class="vi-cell">Tuổi</span></td><td>18. Lebensjahr am Wahltag vollendet<span class="vi-cell">Đủ 18 tuổi vào ngày bầu cử</span></td><td>18. Lebensjahr am Wahltag vollendet<span class="vi-cell">Đủ 18 tuổi vào ngày bầu cử</span></td></tr>
+<tr><td><strong>Dauer</strong><span class="vi-cell">Thời gian</span></td><td>Seit mindestens 3 Monaten Wohnung oder gewöhnlicher Aufenthalt im Wahlgebiet<span class="vi-cell">Có nơi ở hoặc cư trú thường xuyên tại khu vực bầu cử ít nhất 3 tháng</span></td><td>Seit mindestens 1 Jahr Deutscher im Sinne des Art. 116 Abs. 1 GG<span class="vi-cell">Là người Đức theo Điều 116 khoản 1 Hiến pháp (GG) ít nhất 1 năm</span></td></tr>
+</table><div class="block"><div class="de">Bundestagswahlen finden alle 4 Jahre statt, Landtagswahlen alle 5 Jahre.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Bundestag bầu 4 năm một lần, Landtag 5 năm một lần.</div></div><div class="block"><div class="de">Bei Kommunal- und Europawahlen dürfen auch EU-Bürger wählen, und in Baden-Württemberg darf man die Landtagswahl schon ab 16 Jahren.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Ở bầu cử cấp xã/thành phố và châu Âu, công dân EU cũng được bầu; ở Baden-Württemberg, bầu Landtag từ 16 tuổi (ghi chú của bạn).</div></div><h3 class="sub">Prüfungsfragen</h3><details class="q"><summary>Nenne die fünf Wahlrechtsgrundsätze.</summary>
+<div class="de">Allgemein, unmittelbar, frei, gleich, geheim.</div><div class="vi"><span class="tag">VI</span>Phổ thông, trực tiếp, tự do, bình đẳng, bí mật.</div></details><details class="q"><summary>Erkläre „unmittelbar“ mit einem Beispiel, das gegen den Grundsatz verstößt.</summary>
+<div class="de">Unmittelbar heißt, dass die Wähler ihre Vertreter direkt wählen. Ein Verstoß wäre, wenn Wahlmänner dazwischengeschaltet wären.</div>
+<div class="vi"><span class="tag">VI</span>“Unmittelbar” nghĩa là cử tri bầu thẳng người đại diện. Vi phạm là khi có đại cử tri xen giữa.</div></details><details class="q"><summary>Warum ist eine Wahlpflicht mit dem Grundsatz „frei“ schwer vereinbar?</summary>
+<div class="de">Frei bedeutet, dass jede Person entscheiden darf, ob sie überhaupt wählt. Eine Pflicht würde diese Entscheidung einschränken, deshalb gibt es in Deutschland keine Wahlpflicht.</div>
+<div class="vi"><span class="tag">VI</span>“Frei” nghĩa là ai cũng được quyết định có đi bầu hay không. Bắt buộc đi bầu sẽ hạn chế điều đó, nên Đức không có nghĩa vụ đi bầu.</div></details></section>
+<!-- 2 -->
+<section class="chapter" id="t2"><div class="chapter-head"><span class="chapter-num">§2</span><h2 class="chapter-title-de">Erststimme und Zweitstimme</h2></div><p class="chapter-title-vi">Phiếu thứ nhất (ứng viên) và phiếu thứ hai (đảng).</p><table>
+<tr><th></th><th>Erststimme</th><th>Zweitstimme</th></tr>
+<tr><td><strong>Man wählt …</strong><span class="vi-cell">Bầu …</span></td><td>einen Kandidaten (Person) im eigenen Wahlkreis<span class="vi-cell">một ứng viên (cá nhân) trong khu vực bầu cử của mình</span></td><td>eine Partei (Landesliste)<span class="vi-cell">một đảng (danh sách bang)</span></td></tr>
+<tr><td><strong>System</strong><span class="vi-cell">Hệ thống</span></td><td>Mehrheitswahl<span class="vi-cell">Bầu theo đa số</span></td><td>Verhältniswahl<span class="vi-cell">Bầu theo tỷ lệ</span></td></tr>
+<tr><td><strong>Ergebnis</strong><span class="vi-cell">Kết quả</span></td><td>Wer im Wahlkreis die meisten Stimmen hat, gewinnt ein Direktmandat.<span class="vi-cell">Ai nhiều phiếu nhất trong khu vực sẽ thắng một ghế trực tiếp (Direktmandat).</span></td><td>Der Prozentsatz der Partei bestimmt die Zahl ihrer Sitze im Bundestag.<span class="vi-cell">Tỷ lệ % của đảng quyết định số ghế của đảng trong Bundestag.</span></td></tr>
+<tr><td><strong>Zahl</strong><span class="vi-cell">Số lượng</span></td><td>299 Wahlkreise<span class="vi-cell">299 khu vực bầu cử</span></td><td>pro Bundesland eine Landesliste je Partei<span class="vi-cell">mỗi bang một danh sách bang cho mỗi đảng</span></td></tr>
+</table><div class="block"><div class="de"><span class="tag">Merke</span>Die Bundestagswahl heißt <strong>personalisierte Verhältniswahl</strong>.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Bầu cử Bundestag gọi là “bầu theo tỷ lệ có yếu tố cá nhân hóa”.</div></div><div class="block"><div class="de">Der Grund: Mit der Erststimme wählt man eine Person, mit der Zweitstimme entscheidet man über die Stärke der Parteien.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Lý do: phiếu thứ nhất chọn một người, phiếu thứ hai quyết định sức mạnh của các đảng.</div></div><h3 class="sub">Weiterer Ablauf</h3><div class="block"><div class="de">Einige Wochen vor der Wahl kommt die Wahlbenachrichtigung.</div><div class="vi"><span class="tag">VI</span>Vài tuần trước ngày bầu cử, cử tri nhận thông báo bầu cử (Wahlbenachrichtigung).</div></div><div class="block"><div class="de">Man wählt per Briefwahl oder im Wahllokal.</div><div class="vi"><span class="tag">VI</span>Có thể bầu qua thư (Briefwahl) hoặc tại điểm bầu cử (Wahllokal).</div></div><div class="block"><div class="de">Die Parteien stellen vor der Wahl für jedes Bundesland eine Landesliste auf.</div><div class="vi"><span class="tag">VI</span>Trước bầu cử, các đảng lập danh sách bang cho từng bang.</div></div><div class="block"><div class="de">Die restlichen Sitze werden mit Kandidaten der Landesliste aufgefüllt.</div><div class="vi"><span class="tag">VI</span>Các ghế còn lại được lấp bằng ứng viên trong danh sách bang.</div></div><div class="block"><div class="de">Eine Regierung braucht mehr als die Hälfte der Sitze, also die absolute Mehrheit.</div><div class="vi"><span class="tag">VI</span>Chính phủ cần hơn một nửa số ghế, tức đa số tuyệt đối.</div></div><div class="block"><div class="de">Hat keine Partei 50 %, bilden mehrere Parteien eine Koalition.</div><div class="vi"><span class="tag">VI</span>Nếu không đảng nào đạt 50 %, nhiều đảng liên minh lập Koalition.</div></div><div class="block"><div class="de">Aufgaben des Bundestages (Legislative): Wahl des Bundeskanzlers, Gesetzgebung, Kontrolle der Regierungsarbeit.</div><div class="vi"><span class="tag">VI</span>Nhiệm vụ của Bundestag (lập pháp): bầu Thủ tướng, làm luật, giám sát chính phủ.</div></div><div class="warn">
+<span class="tag">Zum Nachprüfen</span>
+<p>Auf deinem Blatt steht, alle 299 Wahlkreissieger ziehen in den Bundestag ein; auf der anderen Seite steht „Abschaffung: Überhangmandat“.</p>
+<div class="vi">Một tờ của bạn ghi: cả 299 người thắng khu vực đều vào Bundestag; tờ kia lại ghi “bỏ Überhangmandat”. Hai thông tin này không hoàn toàn khớp.</div>
+<p>Nach der Wahlrechtsreform (2023) gibt es 630 Sitze ohne Überhang- und Ausgleichsmandate, und ein Direktmandat verfällt, wenn die Zweitstimmen der Partei es nicht decken.</p>
+<div class="vi">Theo cải cách luật bầu cử (2023): 630 ghế cố định, không còn ghế vượt (Überhang) và ghế bù (Ausgleich); ghế trực tiếp có thể bị mất nếu phiếu thứ hai của đảng không “phủ” được. Đây là kiến thức bổ sung, hãy theo cách thầy/cô dạy.</div>
+</div><h3 class="sub">Prüfungsfragen</h3><details class="q"><summary>Was entscheidet die Zweitstimme?</summary>
+<div class="de">Sie entscheidet, wie stark eine Partei prozentual im Bundestag vertreten ist, also die Zahl ihrer Sitze.</div>
+<div class="vi"><span class="tag">VI</span>Nó quyết định đảng chiếm bao nhiêu % ghế trong Bundestag.</div></details><details class="q"><summary>Was ist ein Direktmandat?</summary>
+<div class="de">Ein Kandidat gewinnt es, wenn er in seinem Wahlkreis die meisten Erststimmen erhält.</div>
+<div class="vi"><span class="tag">VI</span>Ứng viên giành được khi có nhiều phiếu thứ nhất nhất trong khu vực bầu cử của mình.</div></details><details class="q"><summary>Warum heißt das System „personalisierte Verhältniswahl“?</summary>
+<div class="de">Weil die Sitzverteilung nach dem Verhältnis der Zweitstimmen erfolgt, aber mit der Erststimme auch Personen direkt gewählt werden.</div>
+<div class="vi"><span class="tag">VI</span>Vì ghế được chia theo tỷ lệ phiếu thứ hai, nhưng phiếu thứ nhất vẫn bầu trực tiếp từng người.</div></details><details class="q"><summary>Was bedeutet „Stimmensplitting“?<span class="para-code">bổ sung</span></summary>
+<div class="de">Man gibt die Erststimme und die Zweitstimme an verschiedene Parteien.</div>
+<div class="vi"><span class="tag">VI</span>Cử tri bỏ phiếu thứ nhất và phiếu thứ hai cho các đảng khác nhau.</div></details></section>
+<!-- 3 -->
+<section class="chapter" id="t3"><div class="chapter-head"><span class="chapter-num">§3</span><h2 class="chapter-title-de">Sperrklausel (5 %-Hürde)</h2></div><p class="chapter-title-vi">Rào cản 5 %.</p><div class="block"><div class="de"><span class="tag">Merke</span>Parteien, die bundesweit mindestens 5 % der Zweitstimmen erhalten, ziehen in den Bundestag ein.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Đảng đạt ít nhất 5 % phiếu thứ hai trên toàn quốc sẽ vào Bundestag.</div></div><div class="block"><div class="de">Parteien unter 5 % ziehen nur ein, wenn sie mindestens 3 Direktmandate gewinnen.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Đảng dưới 5 % chỉ được vào nếu thắng ít nhất 3 ghế trực tiếp (Direktmandate).</div></div><div class="block"><div class="de">Sonst verlieren sie alle Zweitstimmen.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Nếu không, toàn bộ phiếu thứ hai của họ bị mất.</div></div><h3 class="sub">Drei Fallbeispiele</h3><table>
+<tr><th>Partei</th><th>Zweitstimmen</th><th>Direktmandate</th><th>Ergebnis</th></tr>
+<tr><td><strong>A</strong></td><td>5,3 %</td><td>0</td><td>Zieht ein, weil über 5 %.<span class="vi-cell">Vào quốc hội vì trên 5 %.</span></td></tr>
+<tr><td><strong>B</strong></td><td>4,8 %</td><td>3</td><td>Zieht ein, weil mindestens 3 Direktmandate. Die Sitze richten sich nach den Zweitstimmen.<span class="vi-cell">Vào vì có ≥ 3 ghế trực tiếp; số ghế tính theo phiếu thứ hai. (Ví dụ “3 + 4,8 % → có thể” trong ghi chú của bạn.)</span></td></tr>
+<tr><td><strong>C</strong></td><td>4,0 %</td><td>2</td><td>Nur die 2 Kandidaten mit Direktmandat ziehen ein, alle Zweitstimmen sind verloren.<span class="vi-cell">Chỉ 2 ứng viên thắng trực tiếp được vào; toàn bộ phiếu thứ hai mất. (Ghi chú của bạn: “nur 2 → verloren”.)</span></td></tr>
+</table><h3 class="sub">Warum gibt es die Sperrklausel?</h3><div class="block"><div class="de">Sie soll verhindern, dass zu viele kleine Parteien im Parlament sitzen und die Regierungsbildung schwierig wird.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Mục đích: tránh quốc hội bị chia nhỏ bởi quá nhiều đảng nhỏ khiến việc lập chính phủ khó khăn.</div></div><div class="block"><div class="de">Kritik: Die Stimmen für Parteien unter 5 % haben keinen Einfluss auf die Sitzverteilung.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Phê bình: phiếu bầu cho đảng dưới 5 % không ảnh hưởng đến việc chia ghế.</div></div><div class="warn">
+<span class="tag">Falle in der Klausur</span>
+<p>Die 5 %-Hürde gilt bundesweit und nicht pro Bundesland.</p>
+<div class="vi">Rào 5 % tính trên toàn quốc, không tính riêng từng bang. Ví dụ BSW chỉ 4,1 % ở Baden-Württemberg không có nghĩa là họ trượt hay đỗ; phải xem kết quả toàn quốc.</div>
+<p>Bei Landtagswahlen gilt ebenfalls die 5 %-Klausel, bezogen auf das jeweilige Bundesland.</p>
+<div class="vi">Ở bầu cử Landtag cũng có điều khoản 5 %, nhưng tính trong phạm vi bang đó.</div>
+</div><h3 class="sub">Prüfungsfragen</h3><details class="q"><summary>Unter welcher Bedingung zieht eine Partei mit 4,6 % in den Bundestag ein?</summary>
+<div class="de">Wenn sie mindestens 3 Direktmandate gewonnen hat.</div><div class="vi"><span class="tag">VI</span>Nếu đảng đó thắng ít nhất 3 ghế trực tiếp.</div></details><details class="q"><summary>Was passiert bei 4 % und nur 2 Direktmandaten?</summary>
+<div class="de">Nur die 2 direkt gewählten Kandidaten ziehen ein; die Zweitstimmen verfallen und die Partei bekommt keine weiteren Sitze.</div>
+<div class="vi"><span class="tag">VI</span>Chỉ 2 người thắng trực tiếp vào quốc hội; phiếu thứ hai mất và đảng không có thêm ghế.</div></details></section>
+<!-- 4 -->
+<section class="chapter" id="t4"><div class="chapter-head"><span class="chapter-num">§4</span><h2 class="chapter-title-de">Vertrauensfrage und Misstrauensvotum</h2></div><p class="chapter-title-vi">Câu hỏi tín nhiệm và bỏ phiếu bất tín nhiệm.</p><div class="warn">
+<span class="tag">Quelle dieses Abschnitts</span>
+<p>Dieses Thema stand nicht in deinen Fotos, deshalb ist der Inhalt aus allgemeinem Wissen (Art. 67 und 68 GG).</p>
+<div class="vi">Chủ đề này không có trong ảnh bạn gửi nên mình viết từ kiến thức chung (Điều 67 và 68 Hiến pháp). Hãy đối chiếu với vở/ tài liệu trên lớp.</div>
+</div><table>
+<tr><th></th><th>Vertrauensfrage (Art. 68 GG)</th><th>Konstruktives Misstrauensvotum (Art. 67 GG)</th></tr>
+<tr><td><strong>Wer geht aus?</strong><span class="vi-cell">Ai khởi xướng?</span></td><td>Der Bundeskanzler<span class="vi-cell">Thủ tướng</span></td><td>Der Bundestag<span class="vi-cell">Quốc hội</span></td></tr>
+<tr><td><strong>Inhalt</strong><span class="vi-cell">Nội dung</span></td><td>Der Kanzler beantragt, dass ihm der Bundestag das Vertrauen ausspricht.<span class="vi-cell">Thủ tướng đề nghị Bundestag bày tỏ tín nhiệm với mình.</span></td><td>Der Bundestag wählt mit der Mehrheit seiner Mitglieder einen Nachfolger und entzieht so dem Kanzler das Vertrauen.<span class="vi-cell">Bundestag bầu người kế nhiệm bằng đa số thành viên, qua đó rút tín nhiệm khỏi Thủ tướng.</span></td></tr>
+<tr><td><strong>Folge</strong><span class="vi-cell">Hệ quả</span></td><td>Bekommt er keine Mehrheit, kann der Bundespräsident auf Vorschlag des Kanzlers den Bundestag auflösen, dann gibt es Neuwahlen.<span class="vi-cell">Nếu không đủ đa số, Tổng thống có thể giải tán Bundestag theo đề nghị của Thủ tướng, sau đó bầu cử lại.</span></td><td>Der Bundespräsident entlässt den alten Kanzler und ernennt den neuen.<span class="vi-cell">Tổng thống miễn nhiệm Thủ tướng cũ và bổ nhiệm người mới.</span></td></tr>
+<tr><td><strong>Zweck</strong><span class="vi-cell">Mục đích</span></td><td>Der Kanzler prüft, ob er noch eine Mehrheit hat.<span class="vi-cell">Thủ tướng kiểm tra xem mình còn đa số hay không.</span></td><td>Ein Kanzler kann nur gestürzt werden, wenn es sofort eine Alternative gibt.<span class="vi-cell">Chỉ lật đổ được Thủ tướng khi có ngay người thay thế.</span></td></tr>
+</table><div class="block"><div class="de"><span class="tag">Merke</span>Das Wort „konstruktiv“ heißt: Nur wer gleichzeitig einen neuen Kanzler wählt, kann den alten abwählen.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>“Konstruktiv” nghĩa là: muốn bãi nhiệm Thủ tướng cũ thì phải đồng thời bầu ra Thủ tướng mới.</div></div><div class="block"><div class="de">Das soll Instabilität wie in der Weimarer Republik verhindern, wo Regierungen ohne Alternative gestürzt wurden.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Điều này nhằm tránh bất ổn như thời Cộng hòa Weimar, khi chính phủ bị lật mà không có phương án thay thế.</div></div><h3 class="sub">Beispiele</h3><div class="block"><div class="de">1982 wurde Helmut Schmidt durch ein konstruktives Misstrauensvotum abgewählt, Helmut Kohl wurde Kanzler.</div><div class="vi"><span class="tag">VI</span>Năm 1982, Helmut Schmidt bị bãi nhiệm bằng bỏ phiếu bất tín nhiệm mang tính xây dựng, Helmut Kohl lên làm Thủ tướng (khớp với ghi chú “Kohl từ 1982” của bạn).</div></div><div class="block"><div class="de">Bei der Vertrauensfrage von Olaf Scholz im Dezember 2024 verlor der Kanzler die Abstimmung, danach gab es Neuwahlen im Februar 2025.</div><div class="vi"><span class="tag">VI</span>Câu hỏi tín nhiệm của Olaf Scholz tháng 12.2024: ông thua phiếu, sau đó có bầu cử lại vào tháng 2.2025.</div></div><h3 class="sub">Prüfungsfragen</h3><details class="q"><summary>Wer stellt die Vertrauensfrage, wer das Misstrauensvotum?</summary>
+<div class="de">Die Vertrauensfrage stellt der Kanzler, das Misstrauensvotum geht vom Bundestag aus.</div>
+<div class="vi"><span class="tag">VI</span>Vertrauensfrage do Thủ tướng đặt ra; Misstrauensvotum xuất phát từ Bundestag.</div></details><details class="q"><summary>Warum ist das Misstrauensvotum „konstruktiv“?</summary>
+<div class="de">Der Bundestag muss in derselben Abstimmung einen Nachfolger wählen, damit es keine Regierungskrise ohne Kanzler gibt.</div>
+<div class="vi"><span class="tag">VI</span>Bundestag phải bầu luôn người kế nhiệm trong cùng cuộc bỏ phiếu để không xảy ra khủng hoảng thiếu Thủ tướng.</div></details><details class="q"><summary>Was kann nach einer verlorenen Vertrauensfrage geschehen?</summary>
+<div class="de">Der Bundespräsident kann den Bundestag auflösen, und es folgen Neuwahlen.</div>
+<div class="vi"><span class="tag">VI</span>Tổng thống có thể giải tán Bundestag và tiếp theo là bầu cử lại.</div></details></section>
+<!-- 5 -->
+<section class="chapter" id="t5"><div class="chapter-head"><span class="chapter-num">§5</span><h2 class="chapter-title-de">Statistik analysieren</h2></div><p class="chapter-title-vi">Phương pháp phân tích biểu đồ thống kê: Einleitung – Analyse – Fazit.</p><table>
+<tr><th>Teil</th><th>Was gehört hinein?</th></tr>
+<tr><td><strong>Einleitung</strong><span class="vi-cell">Mở bài</span></td><td>Thema, Art der Darstellung (z. B. Balkendiagramm), Einheit (Prozent), Quelle, Jahr.<span class="vi-cell">Chủ đề, loại biểu đồ (cột), đơn vị (%), nguồn, năm.</span></td></tr>
+<tr><td><strong>Analyse</strong><span class="vi-cell">Phân tích</span></td><td>Höchster und niedrigster Wert, Vergleiche, Auffälligkeiten, immer mit genauen Zahlen.<span class="vi-cell">Giá trị cao nhất/thấp nhất, so sánh, điểm đáng chú ý, luôn kèm con số chính xác. Chưa đưa ý kiến cá nhân vào phần này.</span></td></tr>
+<tr><td><strong>Fazit</strong><span class="vi-cell">Kết luận</span></td><td>Kurze Zusammenfassung, mögliche Gründe, Bedeutung des Ergebnisses.<span class="vi-cell">Tóm tắt ngắn, các lý do có thể, ý nghĩa của kết quả.</span></td></tr>
+</table><h3 class="sub">Nützliche Formulierungen</h3><table>
+<tr><th>Deutsch</th><th>Tiếng Việt</th></tr>
+<tr><td>Das Thema der Statistik lautet …</td><td>Chủ đề của thống kê là …</td></tr>
+<tr><td>Die Daten sind in einem Balkendiagramm in Prozent dargestellt.</td><td>Số liệu được trình bày bằng biểu đồ cột theo %.</td></tr>
+<tr><td>Die Quelle ist … (z. B. Infratest dimap).</td><td>Nguồn là … (ví dụ Infratest dimap).</td></tr>
+<tr><td>Mit … % hat … die meisten Stimmen erhalten.</td><td>Với … %, … nhận được nhiều phiếu nhất.</td></tr>
+<tr><td>Dagegen erhielt … nur … %.</td><td>Ngược lại, … chỉ nhận … %.</td></tr>
+<tr><td>Fast gleich viele Stimmen erhielten …</td><td>Gần như bằng nhau là …</td></tr>
+<tr><td>Deutlich weniger als … erhielt …</td><td>Ít hơn rõ rệt so với … là …</td></tr>
+<tr><td>Außerdem erhielt … … %.</td><td>Ngoài ra … nhận … %.</td></tr>
+<tr><td>Zusammenfassend kann man sagen, dass …</td><td>Tóm lại có thể nói rằng …</td></tr>
+<tr><td>Mögliche Gründe dafür könnten sein, dass …</td><td>Những lý do có thể là …</td></tr>
+</table><h3 class="sub">Beispiel: Bundestagswahl 2025 in Baden-Württemberg (deine Daten)</h3><div class="bars" id="bars1"></div><h4 class="h4">Einleitung</h4><div class="block"><div class="de"><span class="tag">Beispiel</span>Das Thema der Statistik lautet Bundestagswahl 2025. Die Ergebnisse von Baden-Württemberg sind in einem Balkendiagramm in Prozent dargestellt. Die Quelle ist Infratest dimap.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Chủ đề thống kê là Bundestagswahl 2025. Kết quả của Baden-Württemberg được vẽ bằng biểu đồ cột theo %. Nguồn: Infratest dimap.</div></div><h4 class="h4">Analyse</h4><div class="block"><div class="de">Mit 30,6 % hat die CDU/CSU die meisten Stimmen erhalten. Dagegen erhielt das BSW nur 4,1 %.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>CDU/CSU nhận nhiều phiếu nhất với 30,6 %. Ngược lại BSW chỉ nhận 4,1 %.</div></div><div class="block"><div class="de">Fast gleich viele Stimmen bekamen die SPD mit 14,2 % und die Grünen mit 13,8 %.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>SPD (14,2 %) và Grünen (13,8 %) gần như bằng nhau.</div></div><div class="block"><div class="de">Die AfD erhielt mit 19,8 % deutlich weniger Stimmen als die CDU/CSU, aber mehr als SPD und Grüne.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>AfD với 19,8 % ít hơn rõ rệt so với CDU/CSU nhưng nhiều hơn SPD và Grünen.</div></div><div class="block"><div class="de">Außerdem erhielten die FDP 5,6 % und die Linke 6,8 %.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Ngoài ra FDP nhận 5,6 % và Die Linke 6,8 %.</div></div><h4 class="h4">Fazit</h4><div class="block"><div class="de">Zusammenfassend ist die CDU/CSU in Baden-Württemberg die stärkste Kraft, die übrigen Parteien liegen deutlich dahinter.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Tóm lại, CDU/CSU là lực lượng mạnh nhất ở Baden-Württemberg, các đảng khác thấp hơn rõ rệt.</div></div><div class="block"><div class="de">Mögliche Gründe könnten sein, dass viele Wähler Wert auf Stabilität legen, während andere mit Themen wie Migration oder Sicherheit unzufrieden sind.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Lý do có thể: nhiều cử tri coi trọng sự ổn định, trong khi người khác không hài lòng về các chủ đề như di cư hay an ninh.</div></div><div class="warn">
+<span class="tag">Zum Nachprüfen in deinen Notizen</span>
+<p>In deinem Text steht, die AfD mit 19,8 % habe „deutlich weniger“ Stimmen als SPD und Grüne.</p>
+<div class="vi">Trong bài của bạn có câu AfD (19,8 %) nhận “deutlich weniger” phiếu — nhưng 19,8 % nhiều hơn SPD 14,2 % và Grünen 13,8 %. Chỉ ít hơn CDU/CSU (30,6 %). Mình đã sửa trong mẫu trên.</div>
+<p>Im Fazit solltest du Vermutungen als mögliche Gründe formulieren, nicht als feste Tatsachen über Wähler.</p>
+<div class="vi">Ở phần Fazit hãy viết các suy đoán như “lý do có thể là…”, đừng khẳng định như sự thật về cử tri; giáo viên thường chấm cao hơn cho cách viết thận trọng.</div>
+<p>Deine Notizen enthalten außerdem andere Zahlen (Landtagswahl 2026: handschriftlich und getippt, mit unterschiedlichen Werten).</p>
+<div class="vi">Ngoài ra các ghi chú về Landtagswahl 2026 (viết tay và bản đánh máy) có số liệu khác nhau (ví dụ Grünen 32,6 hay 32,9 %). Hãy luôn lấy số trực tiếp từ biểu đồ trong đề, đừng thuộc số.</div>
+</div><h3 class="sub">Beispiel 2: „Der Bundestag als Bevölkerungspyramide“</h3><div class="block"><div class="de">Die Grafik vergleicht den Anteil der Altersgruppen in der Bevölkerung (Umriss) mit dem Anteil im Parlament (schwarze Balken), getrennt nach Männern und Frauen.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Biểu đồ so sánh tỷ lệ các nhóm tuổi trong dân số (đường viền) với tỷ lệ trong quốc hội (cột đen), chia theo nam và nữ.</div></div><div class="block"><div class="de"><span class="tag">Beispiel</span><strong>Einleitung:</strong> Das Thema ist die Altersstruktur des Bundestages im Vergleich zur Bevölkerung. Die Quelle ist der Spiegel (Zugriff 2019). Das Mindestalter für Abgeordnete beträgt 18 Jahre.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Mở bài: chủ đề là cơ cấu tuổi của Bundestag so với dân số; nguồn Spiegel (truy cập 2019); tuổi tối thiểu để làm nghị sĩ là 18.</div></div><div class="block"><div class="de"><strong>Analyse:</strong> Die meisten Abgeordneten sind zwischen 40 und 59 Jahre alt, bei den Männern sind die Gruppen 45 bis 54 am stärksten (ca. 10 % und mehr).</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Phân tích: đa số nghị sĩ ở tuổi 40–59; ở nam, nhóm 45–54 đông nhất (khoảng 10 % trở lên). Con số đọc từ biểu đồ nên ghi “ca.”.</div></div><div class="block"><div class="de">Junge Menschen unter 30 und Menschen über 70 sind im Parlament deutlich seltener vertreten als in der Bevölkerung.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Người dưới 30 và trên 70 tuổi chiếm tỷ lệ trong quốc hội thấp hơn rõ rệt so với trong dân số.</div></div><div class="block"><div class="de">Außerdem sind die Männerbalken deutlich länger als die Frauenbalken.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Ngoài ra cột của nam dài hơn cột của nữ rõ rệt.</div></div><div class="block"><div class="de"><strong>Fazit:</strong> Das Parlament ist älter und männlicher als die Bevölkerung, daher werden die Interessen von Jüngeren und Frauen möglicherweise weniger vertreten.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Kết luận: quốc hội già hơn và nhiều nam hơn dân số, nên lợi ích của người trẻ và phụ nữ có thể được đại diện ít hơn. (Liên hệ với cuộc tranh luận bỏ phiếu từ 16 tuổi.)</div></div></section>
+<!-- 6 -->
+<section class="chapter" id="t6"><div class="chapter-head"><span class="chapter-num">§6</span><h2 class="chapter-title-de">Definition Kalter Krieg</h2></div><p class="chapter-title-vi">Chiến tranh Lạnh: định nghĩa, các khái niệm, mốc thời gian 1945–1990.</p><div class="block"><div class="de"><span class="tag">Merke</span>Der Kalte Krieg ist eine Form der Konfrontation im Rahmen des Ost-West-Konflikts, nachdem sich die Alliierten des 2. Weltkriegs zerstritten hatten.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Chiến tranh Lạnh là một dạng đối đầu trong xung đột Đông–Tây, sau khi các nước Đồng minh trong Thế chiến II bất đồng.</div></div><div class="block"><div class="de">Er war eine weltanschauliche Auseinandersetzung zwischen Demokratie und Kapitalismus im Westen und Diktatur und Sozialismus im Osten.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Đó là cuộc đối đầu về thế giới quan: dân chủ và tư bản ở phương Tây, độc tài và xã hội chủ nghĩa ở phương Đông.</div></div><div class="block"><div class="de">Der Kalte Krieg war immer geprägt von Wettrüsten, Androhung von Atomkrieg und Propaganda.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Chiến tranh Lạnh luôn đặc trưng bởi chạy đua vũ trang, đe dọa chiến tranh hạt nhân và tuyên truyền.</div></div><h3 class="sub">Herkunft des Begriffs</h3><div class="block"><div class="de">US-Präsident Truman sprach zuerst von einer Zweiteilung der Welt in ein westlich-demokratisches und ein östlich-sozialistisches Gesellschaftssystem.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Tổng thống Mỹ Truman lần đầu nói về việc thế giới chia làm hai: hệ thống dân chủ phương Tây và hệ thống xã hội chủ nghĩa/cộng sản phương Đông.</div></div><div class="block"><div class="de">Der amerikanische Publizist Walter Lippmann prägte 1947 den Begriff „Kalter Krieg“, der seit Ende der Vierzigerjahre gebräuchlich ist.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Nhà báo Mỹ Walter Lippmann đặt ra thuật ngữ “Kalter Krieg” năm 1947; từ cuối những năm 1940 nó trở nên phổ biến.</div></div><h3 class="sub">Ost und West im Vergleich</h3><table>
+<tr><th></th><th>Ostmächte (SU, DDR)</th><th>Westmächte (USA, BRD)</th></tr>
+<tr><td><strong>Staatsform</strong><span class="vi-cell">Thể chế</span></td><td>Diktatur<span class="vi-cell">Độc tài</span></td><td>Demokratie<span class="vi-cell">Dân chủ</span></td></tr>
+<tr><td><strong>Gesellschaft</strong><span class="vi-cell">Xã hội</span></td><td>Sozialismus<span class="vi-cell">Chủ nghĩa xã hội</span></td><td>Kapitalismus<span class="vi-cell">Chủ nghĩa tư bản</span></td></tr>
+<tr><td><strong>Wirtschaft</strong><span class="vi-cell">Kinh tế</span></td><td>Planwirtschaft<span class="vi-cell">Kinh tế kế hoạch hóa</span></td><td>(Soziale) Marktwirtschaft<span class="vi-cell">Kinh tế thị trường (xã hội)</span></td></tr>
+<tr><td><strong>Militärbündnis</strong><span class="vi-cell">Liên minh quân sự</span></td><td>Warschauer Pakt<span class="vi-cell">Khối Warszawa</span></td><td>NATO<span class="vi-cell">NATO</span></td></tr>
+</table><h3 class="sub">Wichtige Begriffe</h3><table>
+<tr><th>Begriff</th><th>Erklärung</th></tr>
+<tr><td><strong>Anti-Hitler-Koalition</strong></td><td>Bündnis der Siegermächte gegen Hitler, das im Grunde schon auf der Potsdamer Konferenz (August 1945) zerbrach.<span class="vi-cell">Liên minh các cường quốc chiến thắng chống Hitler, về cơ bản tan vỡ ngay tại Hội nghị Potsdam (tháng 8.1945).</span></td></tr>
+<tr><td><strong>Supermächte</strong></td><td>Die USA und die UdSSR führten die zwei Machtblöcke in West und Ost an.<span class="vi-cell">Mỹ và Liên Xô dẫn đầu hai khối quyền lực phương Tây và phương Đông.</span></td></tr>
+<tr><td><strong>Stellvertreterkriege</strong></td><td>Kriege, an denen nur eine Supermacht beteiligt war, während die andere den Gegner im Hintergrund unterstützte.<span class="vi-cell">Các cuộc chiến mà chỉ một siêu cường tham chiến trực tiếp, siêu cường kia hỗ trợ phe đối lập phía sau.</span></td></tr>
+<tr><td><strong>Wettrüsten</strong></td><td>Die Mächte entwickelten immer mehr und wirksamere Waffen.<span class="vi-cell">Các cường quốc phát triển ngày càng nhiều vũ khí hiệu quả hơn.</span></td></tr>
+<tr><td><strong>Gleichgewicht des Schreckens</strong></td><td>Beide Seiten hätten sich mehrfach vernichten können, deshalb kam es nie zum direkten Krieg.<span class="vi-cell">Cả hai bên đủ sức hủy diệt nhau nhiều lần, vì thế không bao giờ xảy ra chiến tranh trực tiếp.</span></td></tr>
+<tr><td><strong>Sowjetisierung Osteuropas</strong></td><td>Übernahme des sowjetischen Modells: Sozialismus, Planwirtschaft, Kollektivierung der Landwirtschaft.<span class="vi-cell">Đông Âu áp dụng mô hình Liên Xô: chủ nghĩa xã hội, kinh tế kế hoạch, tập thể hóa nông nghiệp.</span></td></tr>
+<tr><td><strong>Höhepunkte</strong></td><td>Bau der Berliner Mauer 1961, Sperrzone zwischen Ost- und Westdeutschland, Mondlandung der Amerikaner, Kubakrise.<span class="vi-cell">Đỉnh điểm: xây Bức tường Berlin 1961, vùng cấm giữa Đông và Tây Đức, Mỹ đổ bộ lên Mặt Trăng, khủng hoảng Cuba.</span></td></tr>
+<tr><td><strong>Ende</strong></td><td>Das Wettrüsten fand erst Mitte der 1980er Jahre mit Michail Gorbatschow als neuem Generalsekretär der KPdSU allmählich ein Ende.<span class="vi-cell">Chạy đua vũ trang chỉ dần kết thúc vào giữa những năm 1980, khi Mikhail Gorbachev trở thành Tổng bí thư Đảng Cộng sản Liên Xô.</span></td></tr>
+</table><h3 class="sub">Chronologie 1945 bis 1990</h3><ul class="time">
+<li><b>8. Mai 1945</b><div class="de">Kapitulation Deutschlands.</div><div class="vi"><span class="tag">VI</span>Đức đầu hàng.</div></li>
+<li><b>August 1945</b><div class="de">Potsdamer Konferenz über die Zukunft Deutschlands.</div><div class="vi"><span class="tag">VI</span>Hội nghị Potsdam bàn về tương lai nước Đức.</div></li>
+<li><b>23. Mai 1949</b><div class="de">Erlass des Grundgesetzes und Gründung der BRD.</div><div class="vi"><span class="tag">VI</span>Ban hành Hiến pháp (GG) và thành lập CHLB Đức (BRD).</div></li>
+<li><b>15. September 1949</b><div class="de">Konrad Adenauer wird erster Bundeskanzler.</div><div class="vi"><span class="tag">VI</span>Konrad Adenauer trở thành Thủ tướng đầu tiên.</div></li>
+<li><b>7. Oktober 1949</b><div class="de">Gründung der DDR; Walter Ulbricht ist die führende Person der SED (auf deinem Blatt „1. Staatssekretär“).</div><div class="vi"><span class="tag">VI</span>Thành lập CHDC Đức (DDR); Walter Ulbricht là nhân vật đứng đầu SED (tờ của bạn ghi “1. Staatssekretär”, cứ viết theo tờ của lớp).</div></li>
+<li><b>13. August 1961</b><div class="de">Bau der Berliner Mauer.</div><div class="vi"><span class="tag">VI</span>Xây Bức tường Berlin.</div></li>
+<li><b>9. November 1989</b><div class="de">Öffnung der Grenze zur BRD und nach Westberlin.</div><div class="vi"><span class="tag">VI</span>Mở biên giới sang Tây Đức và Tây Berlin.</div></li>
+<li><b>3. Oktober 1990</b><div class="de">Wiedervereinigung Deutschlands.</div><div class="vi"><span class="tag">VI</span>Nước Đức thống nhất.</div></li>
+<li><b>2. Dezember 1990</b><div class="de">Erste gesamtdeutsche Bundestagswahl; Helmut Kohl (Kanzler seit 1982) bleibt Bundeskanzler.</div><div class="vi"><span class="tag">VI</span>Cuộc bầu cử Bundestag toàn nước Đức đầu tiên; Helmut Kohl (Thủ tướng từ 1982) vẫn là Thủ tướng.</div></li>
+<li><b>20. Juni 1991</b><div class="de">Der Bundestag entscheidet sich für Berlin als Regierungssitz.</div><div class="vi"><span class="tag">VI</span>Bundestag quyết định chọn Berlin làm nơi đặt chính phủ.</div></li>
+</ul><h3 class="sub">Prüfungsfragen</h3><details class="q"><summary>Definiere den Kalten Krieg in 2 bis 3 Sätzen.</summary>
+<div class="de">Der Kalte Krieg war der Ost-West-Konflikt zwischen den Supermächten USA und UdSSR nach 1945. Er wurde nie als direkter Krieg geführt, sondern durch Wettrüsten, Propaganda und Stellvertreterkriege. Er endete Ende der 1980er Jahre mit dem Ende des Ostblocks.</div>
+<div class="vi"><span class="tag">VI</span>Chiến tranh Lạnh là xung đột Đông–Tây giữa hai siêu cường Mỹ và Liên Xô sau 1945. Hai bên chưa bao giờ đánh nhau trực tiếp mà đối đầu bằng chạy đua vũ trang, tuyên truyền và chiến tranh ủy nhiệm. Nó kết thúc cuối thập niên 1980 cùng sự sụp đổ của khối Đông.</div></details><details class="q"><summary>Nenne drei Höhepunkte des Kalten Krieges.</summary>
+<div class="de">Der Bau der Berliner Mauer 1961, die Kubakrise und die Mondlandung der Amerikaner.</div>
+<div class="vi"><span class="tag">VI</span>Xây Bức tường Berlin 1961, khủng hoảng Cuba và Mỹ đổ bộ Mặt Trăng.</div></details><details class="q"><summary>Warum kam es nie zu einem direkten Krieg zwischen USA und UdSSR?</summary>
+<div class="de">Wegen des Gleichgewichts des Schreckens: Beide hatten so viele Atomwaffen, dass ein Krieg auch den eigenen Untergang bedeutet hätte.</div>
+<div class="vi"><span class="tag">VI</span>Do “cân bằng nỗi sợ hãi”: cả hai đều có quá nhiều vũ khí hạt nhân nên chiến tranh sẽ dẫn đến chính sự diệt vong của mình.</div></details></section>
+<!-- 7 -->
+<section class="chapter" id="t7"><div class="chapter-head"><span class="chapter-num">§7</span><h2 class="chapter-title-de">Zentralismus und Dezentralisierung</h2></div><p class="chapter-title-vi">Tập quyền và phân quyền.</p><div class="warn">
+<span class="tag">Quelle dieses Abschnitts</span>
+<p>Diese Begriffe standen nicht in deinen Fotos, deshalb sind die Erklärungen aus allgemeinem Wissen.</p>
+<div class="vi">Hai khái niệm này không có trong ảnh bạn gửi, nên mình viết từ kiến thức chung. Nếu thầy/cô có định nghĩa riêng, hãy ưu tiên định nghĩa đó.</div>
+</div><table>
+<tr><th></th><th>Zentralismus</th><th>Dezentralisierung</th></tr>
+<tr><td><strong>Definition</strong><span class="vi-cell">Định nghĩa</span></td>
+<td>Staatsaufbau, bei dem die Entscheidungsmacht bei einer zentralen Stelle liegt, meist bei der Regierung in der Hauptstadt.<span class="vi-cell">Cấu trúc nhà nước mà quyền quyết định nằm ở một trung tâm, thường là chính phủ ở thủ đô.</span></td>
+<td>Aufgaben und Entscheidungsrechte werden auf untere Ebenen verteilt, zum Beispiel auf Länder und Gemeinden.<span class="vi-cell">Nhiệm vụ và quyền quyết định được chia cho các cấp thấp hơn, ví dụ bang và xã/thành phố.</span></td></tr>
+<tr><td><strong>Regionen</strong><span class="vi-cell">Các vùng</span></td><td>Haben wenig Eigenständigkeit.<span class="vi-cell">Có ít quyền tự chủ.</span></td><td>Haben eigene Rechte und Verantwortung.<span class="vi-cell">Có quyền và trách nhiệm riêng.</span></td></tr>
+<tr><td><strong>Vorteile</strong><span class="vi-cell">Ưu điểm</span></td><td>Einheitliche Regeln, schnelle Entscheidungen.<span class="vi-cell">Quy tắc thống nhất, quyết định nhanh.</span></td><td>Nähe zu den Bürgern, regionale Besonderheiten, Machtverteilung.<span class="vi-cell">Gần dân, tính đến đặc thù địa phương, quyền lực được phân chia.</span></td></tr>
+<tr><td><strong>Nachteile</strong><span class="vi-cell">Nhược điểm</span></td><td>Große Machtkonzentration, geringe Mitsprache der Regionen.<span class="vi-cell">Quyền lực tập trung lớn, các vùng ít tiếng nói.</span></td><td>Unterschiedliche Regeln je Region, Abstimmung kostet Zeit.<span class="vi-cell">Quy định khác nhau giữa các vùng, phối hợp tốn thời gian.</span></td></tr>
+<tr><td><strong>Beispiel</strong><span class="vi-cell">Ví dụ</span></td><td>DDR: Die Länder wurden 1952 aufgelöst, Planwirtschaft wurde zentral gesteuert.<span class="vi-cell">DDR: các bang bị giải thể năm 1952, kinh tế kế hoạch được điều hành tập trung.</span></td><td>BRD: Bund, 16 Länder und Gemeinden teilen sich die Aufgaben (Föderalismus), z. B. liegt die Schulpolitik bei den Ländern.<span class="vi-cell">BRD: Liên bang, 16 bang và các xã chia sẻ nhiệm vụ (liên bang chế), ví dụ chính sách giáo dục thuộc các bang.</span></td></tr>
+</table><h3 class="sub">Zusatz: Demokratie und Diktatur im Vergleich (Modul 5)</h3><table>
+<tr><th></th><th>Demokratie</th><th>Diktatur</th></tr>
+<tr><td><strong>Begriff</strong><span class="vi-cell">Khái niệm</span></td><td>Staatsform, Herrschaft des Volkes.<span class="vi-cell">Thể chế nhà nước, quyền lực thuộc về nhân dân.</span></td><td>Staatsform, Herrschaft einer Person (Alleinherrscher) oder einer kleinen Gruppe.<span class="vi-cell">Thể chế nhà nước, quyền lực thuộc về một người hoặc nhóm nhỏ.</span></td></tr>
+<tr><td><strong>Grundrechte</strong><span class="vi-cell">Quyền cơ bản</span></td><td>Menschenrechte, Meinungs-, Presse- und Versammlungsfreiheit, Gleichheit vor dem Gesetz.<span class="vi-cell">Nhân quyền, tự do ngôn luận, báo chí, hội họp, bình đẳng trước pháp luật.</span></td><td>Verletzung der Menschenrechte, Zensur, keine Versammlungsfreiheit, keine Gleichheit vor dem Gesetz.<span class="vi-cell">Vi phạm nhân quyền, kiểm duyệt, không có tự do hội họp, không bình đẳng trước pháp luật.</span></td></tr>
+<tr><td><strong>Herrschaft</strong><span class="vi-cell">Cách thực thi quyền lực</span></td><td>Gewaltenteilung (Legislative, Exekutive, Judikative), Opposition, Kontrolle der Herrschaft.<span class="vi-cell">Tam quyền phân lập (lập pháp, hành pháp, tư pháp), có đối lập, quyền lực bị kiểm soát.</span></td><td>Keine Gewaltenteilung, keine Opposition, Willkür, Polizei und Militär unterstehen dem Herrscher.<span class="vi-cell">Không phân quyền, không đối lập, tùy tiện, cảnh sát và quân đội trực thuộc nhà cai trị.</span></td></tr>
+<tr><td><strong>Partizipation</strong><span class="vi-cell">Tham gia chính trị</span></td><td>Wahlrecht, freie und geheime Wahlen, Volksentscheid, Mehrheitsprinzip.<span class="vi-cell">Quyền bầu cử, bầu cử tự do và bí mật, trưng cầu dân ý, nguyên tắc đa số.</span></td><td>Kein Wahlrecht, Personenkult, alleinige Entscheidungsgewalt des Herrschers.<span class="vi-cell">Không có quyền bầu cử, sùng bái cá nhân, quyền quyết định thuộc riêng nhà cai trị.</span></td></tr>
+</table><h3 class="sub">Prüfungsfragen</h3><details class="q"><summary>Erkläre den Unterschied zwischen Zentralismus und Dezentralisierung.</summary>
+<div class="de">Beim Zentralismus entscheidet eine zentrale Stelle fast alles, bei der Dezentralisierung liegen viele Entscheidungen bei Ländern und Gemeinden.</div>
+<div class="vi"><span class="tag">VI</span>Ở tập quyền, một trung tâm quyết định gần như mọi thứ; ở phân quyền, nhiều quyết định thuộc bang và xã.</div></details><details class="q"><summary>Nenne ein Beispiel für Dezentralisierung in Deutschland.</summary>
+<div class="de">Die Bildungspolitik liegt bei den 16 Bundesländern.</div>
+<div class="vi"><span class="tag">VI</span>Chính sách giáo dục do 16 bang quyết định.</div></details></section>
+<!-- KLAUSUR -->
+<section class="chapter" id="klausur"><div class="chapter-head"><span class="chapter-num">✎</span><h2 class="chapter-title-de">Übungsklausur</h2></div><p class="chapter-title-vi">Đề thi thử (khoảng 45 phút, 50 điểm). Tự làm trên giấy, sau đó bấm “Musterlösung” để đối chiếu.</p><div class="aufgabe"><span class="aufgabe-num">Aufgabe 1 <span class="pts">5 P.</span></span>
+<div class="de">Nenne die fünf Wahlrechtsgrundsätze und erkläre zwei davon in je einem Satz.</div>
+<div class="vi"><span class="tag">VI</span>Kể tên 5 nguyên tắc bầu cử và giải thích hai nguyên tắc, mỗi cái một câu.</div>
+<details class="q"><summary><span class="qnum">Lösung</span> Musterlösung</summary>
+
+<div class="ans"><div class="de">Allgemein, unmittelbar, frei, gleich, geheim. Gleich: Jede Stimme hat den gleichen Wert. Geheim: Man wählt unbeobachtet in der Wahlkabine und wirft den Zettel in eine versiegelte Urne.</div><div class="vi"><span class="tag">VI</span>Phổ thông, trực tiếp, tự do, bình đẳng, bí mật. Bình đẳng: mỗi phiếu có giá trị như nhau. Bí mật: bỏ phiếu không bị nhìn trong buồng phiếu và cho phiếu vào thùng niêm phong.</div></div></details></div><div class="aufgabe"><span class="aufgabe-num">Aufgabe 2 <span class="pts">6 P.</span></span>
+<div class="de">Ergänze den Lückentext: Wahlberechtigt ist jeder ___ Staatsbürger, der ___ Jahre alt ist. Mit der ___ wird ein Kandidat gewählt, mit der ___ eine Partei. Dieses System nennt man ___ Verhältniswahl. Parteien brauchen mindestens ___ % der Zweitstimmen.</div>
+<div class="vi"><span class="tag">VI</span>Điền vào chỗ trống: Quyền bầu cử thuộc về mọi công dân ___ đủ ___ tuổi. Phiếu ___ bầu một ứng viên, phiếu ___ bầu một đảng. Hệ thống này gọi là bầu theo tỷ lệ ___. Các đảng cần ít nhất ___ % phiếu thứ hai.</div>
+<details class="q"><summary><span class="qnum">Lösung</span> Musterlösung</summary>
+
+<div class="ans"><div class="de">deutsche; 18; Erststimme; Zweitstimme; personalisierte; 5</div><div class="vi"><span class="tag">VI</span>Đức; 18; Erststimme (phiếu thứ nhất); Zweitstimme (phiếu thứ hai); có cá nhân hóa; 5</div></div></details></div><div class="aufgabe"><span class="aufgabe-num">Aufgabe 3 <span class="pts">6 P.</span></span>
+<div class="de">Partei X erhält 4,7 % der Zweitstimmen und 3 Direktmandate, Partei Y erhält 4,2 % und 2 Direktmandate. Beurteile, wer im Bundestag vertreten ist, und begründe.</div>
+<div class="vi"><span class="tag">VI</span>Đảng X nhận 4,7 % phiếu thứ hai và 3 ghế trực tiếp; đảng Y nhận 4,2 % và 2 ghế trực tiếp. Đánh giá đảng nào có mặt trong Bundestag và giải thích.</div>
+<details class="q"><summary><span class="qnum">Lösung</span> Musterlösung</summary>
+
+<div class="ans"><div class="de">Partei X zieht ein, weil sie mindestens 3 Direktmandate gewonnen hat, obwohl sie unter 5 % liegt. Bei Partei Y ziehen nur die 2 direkt gewählten Kandidaten ein, die Zweitstimmen verfallen.</div><div class="vi"><span class="tag">VI</span>Đảng X vào Bundestag vì thắng ≥ 3 ghế trực tiếp dù dưới 5 %. Ở đảng Y chỉ 2 người thắng trực tiếp được vào, phiếu thứ hai mất.</div></div></details></div><div class="aufgabe"><span class="aufgabe-num">Aufgabe 4 <span class="pts">6 P.</span></span>
+<div class="de">Erkläre den Unterschied zwischen Vertrauensfrage und konstruktivem Misstrauensvotum.</div>
+<div class="vi"><span class="tag">VI</span>Giải thích sự khác nhau giữa Vertrauensfrage và konstruktives Misstrauensvotum.</div>
+<details class="q"><summary><span class="qnum">Lösung</span> Musterlösung</summary>
+
+<div class="ans"><div class="de">Bei der Vertrauensfrage fragt der Kanzler den Bundestag, ob er ihm vertraut; verliert er, kann der Bundestag aufgelöst werden. Beim konstruktiven Misstrauensvotum wählt der Bundestag mit Mehrheit gleichzeitig einen neuen Kanzler und stürzt so den alten.</div><div class="vi"><span class="tag">VI</span>Vertrauensfrage: Thủ tướng hỏi Bundestag có tín nhiệm mình không; thua thì Bundestag có thể bị giải tán. Misstrauensvotum xây dựng: Bundestag bầu đa số một Thủ tướng mới cùng lúc và qua đó lật đổ Thủ tướng cũ.</div></div></details></div><div class="aufgabe"><span class="aufgabe-num">Aufgabe 5 <span class="pts">10 P.</span></span>
+<div class="de">Analysiere die folgende Statistik (Landtags-/Bundestagswahl, Balkendiagramm in %): CDU/CSU 30,6; AfD 19,8; SPD 14,2; Grüne 13,8; Linke 6,8; FDP 5,6; BSW 4,1. Schreibe Einleitung, Analyse und Fazit.</div>
+<div class="vi"><span class="tag">VI</span>Phân tích thống kê sau (biểu đồ cột, %): CDU/CSU 30,6; AfD 19,8; SPD 14,2; Grüne 13,8; Linke 6,8; FDP 5,6; BSW 4,1. Viết mở bài, phân tích và kết luận.</div>
+<details class="q"><summary><span class="qnum">Lösung</span> Musterlösung</summary>
+
+<div class="ans"><div class="de">Siehe das Beispiel in Abschnitt 5. Wichtig: Thema, Darstellungsform, Einheit, Quelle; höchster Wert (CDU/CSU 30,6 %) und niedrigster Wert (BSW 4,1 %); mindestens ein Vergleich (SPD und Grüne fast gleich); im Fazit eine Zusammenfassung und vorsichtig formulierte Gründe.</div><div class="vi"><span class="tag">VI</span>Xem ví dụ ở mục 5. Cần có: chủ đề, dạng biểu đồ, đơn vị, nguồn; giá trị cao nhất (CDU/CSU 30,6 %) và thấp nhất (BSW 4,1 %); ít nhất một phép so sánh (SPD và Grünen gần bằng nhau); phần kết luận có tóm tắt và nêu lý do một cách thận trọng.</div></div></details></div><div class="aufgabe"><span class="aufgabe-num">Aufgabe 6 <span class="pts">8 P.</span></span>
+<div class="de">Definiere den Begriff „Kalter Krieg“ und nenne drei typische Merkmale und zwei Höhepunkte.</div>
+<div class="vi"><span class="tag">VI</span>Định nghĩa “Kalter Krieg”, nêu ba đặc điểm tiêu biểu và hai đỉnh điểm.</div>
+<details class="q"><summary><span class="qnum">Lösung</span> Musterlösung</summary>
+
+<div class="ans"><div class="de">Der Kalte Krieg war der Ost-West-Konflikt zwischen den USA (Demokratie, Kapitalismus) und der UdSSR (Diktatur, Sozialismus) nach 1945. Merkmale: Wettrüsten, Androhung von Atomkrieg, Propaganda (auch Stellvertreterkriege). Höhepunkte: Bau der Berliner Mauer 1961, Kubakrise.</div><div class="vi"><span class="tag">VI</span>Chiến tranh Lạnh là xung đột Đông–Tây giữa Mỹ (dân chủ, tư bản) và Liên Xô (độc tài, xã hội chủ nghĩa) sau 1945. Đặc điểm: chạy đua vũ trang, đe dọa chiến tranh hạt nhân, tuyên truyền (cả chiến tranh ủy nhiệm). Đỉnh điểm: xây Bức tường Berlin 1961, khủng hoảng Cuba.</div></div></details></div><div class="aufgabe"><span class="aufgabe-num">Aufgabe 7 <span class="pts">4 P.</span></span>
+<div class="de">Ordne die Daten zu: 23. Mai 1949, 13. August 1961, 9. November 1989, 3. Oktober 1990 – Mauerfall, Wiedervereinigung, Gründung der BRD, Mauerbau.</div>
+<div class="vi"><span class="tag">VI</span>Ghép ngày với sự kiện: Bức tường sụp đổ, thống nhất nước Đức, thành lập BRD, xây tường.</div>
+<details class="q"><summary><span class="qnum">Lösung</span> Musterlösung</summary>
+
+<div class="ans"><div class="de">23.05.1949 Gründung der BRD; 13.08.1961 Mauerbau; 09.11.1989 Mauerfall (Grenzöffnung); 03.10.1990 Wiedervereinigung.</div><div class="vi"><span class="tag">VI</span>23.5.1949 thành lập BRD; 13.8.1961 xây tường; 9.11.1989 tường sụp đổ (mở biên giới); 3.10.1990 thống nhất nước Đức.</div></div></details></div><div class="aufgabe"><span class="aufgabe-num">Aufgabe 8 <span class="pts">5 P.</span></span>
+<div class="de">Erkläre die Begriffe Zentralismus und Dezentralisierung und nenne je ein Beispiel.</div>
+<div class="vi"><span class="tag">VI</span>Giải thích hai khái niệm tập quyền và phân quyền, nêu mỗi cái một ví dụ.</div>
+<details class="q"><summary><span class="qnum">Lösung</span> Musterlösung</summary>
+
+<div class="ans"><div class="de">Zentralismus: Die Macht liegt bei einer zentralen Stelle (Beispiel: DDR nach Auflösung der Länder). Dezentralisierung: Aufgaben werden auf untere Ebenen verteilt (Beispiel: Bildungspolitik bei den Bundesländern).</div><div class="vi"><span class="tag">VI</span>Tập quyền: quyền lực ở một trung tâm (ví dụ DDR sau khi giải thể các bang). Phân quyền: nhiệm vụ chia cho các cấp thấp hơn (ví dụ giáo dục thuộc các bang).</div></div></details></div><div class="aufgabe"><span class="aufgabe-num">Aufgabe 9 (Richtig oder falsch?) <span class="pts">6 P.</span></span>
+<ol>
+<li>Bei der Bundestagswahl gibt es 299 Wahlkreise. <span class="vi-cell">Bundestagswahl có 299 khu vực bầu cử.</span></li>
+<li>Die Wahlpflicht gehört zu den Wahlrechtsgrundsätzen. <span class="vi-cell">Nghĩa vụ đi bầu là một trong các nguyên tắc bầu cử.</span></li>
+<li>Die 5 %-Hürde gilt bundesweit. <span class="vi-cell">Rào 5 % áp dụng toàn quốc.</span></li>
+<li>Mit der Erststimme wählt man eine Partei. <span class="vi-cell">Phiếu thứ nhất bầu một đảng.</span></li>
+<li>Lippmann prägte 1947 den Begriff „Kalter Krieg“. <span class="vi-cell">Lippmann đặt ra thuật ngữ “Chiến tranh Lạnh” năm 1947.</span></li>
+<li>Beim Misstrauensvotum entscheidet der Bundespräsident allein. <span class="vi-cell">Ở Misstrauensvotum, Tổng thống tự quyết định một mình.</span></li>
+</ol>
+<details class="q"><summary><span class="qnum">Lösung</span> Musterlösung</summary>
+
+<div class="ans"><div class="de">1 richtig; 2 falsch (frei: man darf entscheiden, ob man wählt); 3 richtig; 4 falsch (Kandidat); 5 richtig; 6 falsch (der Bundestag wählt einen neuen Kanzler).</div><div class="vi"><span class="tag">VI</span>1 đúng; 2 sai (tự do: được quyết định có đi bầu hay không); 3 đúng; 4 sai (bầu ứng viên); 5 đúng; 6 sai (Bundestag bầu Thủ tướng mới).</div></div></details></div></section>
+<!-- QUIZ -->
+<section class="chapter" id="quiz"><div class="chapter-head"><span class="chapter-num">?</span><h2 class="chapter-title-de">Quick-Quiz</h2></div><p class="chapter-title-vi">12 câu trắc nghiệm, bấm đáp án để biết đúng/sai ngay.</p><div id="quizBox"></div><div id="score">Punkte: 0 / 12</div></section>
+
+</main>
+<footer>
+  <div class="de">Zusammengestellt aus deinen Arbeitsblättern und Notizen, ergänzt aus allgemeinem Wissen (gekennzeichnet) — jetzt im §-Design.</div>
+  <div class="vi">Tổng hợp từ bài tập và ghi chú của bạn, bổ sung kiến thức chung (có đánh dấu) — đã chuyển sang thiết kế §. Chúc bạn ôn thi hiệu quả! 🍀</div>
+</footer>
+<script>
+
+/* Countdown */
+(function(){
+  var t=new Date('2026-10-12T00:00:00'), n=new Date();
+  var d=Math.ceil((t-n)/86400000), el=document.getElementById('count');
+  if(d>1) el.textContent='Noch '+d+' Tage bis zur Klassenarbeit (12.10.2026)';
+  else if(d===1) el.textContent='Morgen ist die Klassenarbeit (12.10.2026)';
+  else if(d===0) el.textContent='Heute ist die Klassenarbeit. Viel Erfolg!';
+  else el.textContent='Klassenarbeit: 12.10.2026';
+})();
+
+/* Balken */
+var bars=[["CDU/CSU",30.6,"#222"],["AfD",19.8,"#2b7bd6"],["SPD",14.2,"#d0213b"],["Grüne",13.8,"#2e9a4a"],["Linke",6.8,"#c2308b"],["FDP",5.6,"#e0b400"],["BSW",4.1,"#7a3fb0"]];
+var b='';
+bars.forEach(function(r){b+='<div class="bar"><span>'+r[0]+'</span><i style="--w:'+(r[1]/32*100)+'%;--c:'+r[2]+'"></i><span>'+r[1].toString().replace('.',',')+' %</span></div>'});
+b+='<p class="note">Balkenfarben wie in deinen Notizen (CDU/CSU schwarz, AfD blau, SPD rot, Grüne grün, FDP gelb, Linke pink, BSW lila).</p>';
+document.getElementById('bars1').innerHTML=b;
+
+/* Quiz */
+var quiz=[
+ {q:"Welcher Wahlrechtsgrundsatz verbietet Wahlmänner?",v:"Nguyên tắc nào cấm đại cử tri?",o:["allgemein","unmittelbar","geheim"],a:1,w:"Unmittelbar: Es wird direkt gewählt. / Trực tiếp: bầu thẳng, không qua trung gian."},
+ {q:"Wofür steht die Zweitstimme?",v:"Phiếu thứ hai dùng để bầu gì?",o:["Direktkandidat","Partei (Landesliste)","Bundeskanzler"],a:1,w:"Sie bestimmt die Sitzverteilung der Parteien. / Quyết định việc chia ghế giữa các đảng."},
+ {q:"Wie viele Wahlkreise gibt es bei der Bundestagswahl?",v:"Bundestagswahl có bao nhiêu khu vực bầu cử?",o:["16","299","630"],a:1,w:"299 Wahlkreise. / 299 khu vực bầu cử."},
+ {q:"Partei mit 4,6 % Zweitstimmen und 3 Direktmandaten: Was passiert?",v:"Đảng có 4,6 % phiếu thứ hai và 3 ghế trực tiếp: kết quả?",o:["Sie zieht nicht ein","Sie zieht ein","Es gibt Neuwahlen"],a:1,w:"Mindestens 3 Direktmandate genügen. / Có ≥ 3 ghế trực tiếp là đủ."},
+ {q:"Wo gilt die 5 %-Hürde bei der Bundestagswahl?",v:"Rào 5 % ở Bundestagswahl tính ở đâu?",o:["pro Wahlkreis","bundesweit","pro Bundesland"],a:1,w:"Bundesweit. / Toàn quốc."},
+ {q:"Wer stellt die Vertrauensfrage?",v:"Ai đặt câu hỏi tín nhiệm?",o:["Der Bundespräsident","Der Bundeskanzler","Der Bundesrat"],a:1,w:"Der Kanzler (Art. 68 GG). / Thủ tướng (Điều 68 GG)."},
+ {q:"Was heißt „konstruktives“ Misstrauensvotum?",v:"“Konstruktiv” trong Misstrauensvotum nghĩa là gì?",o:["Der Kanzler tritt freiwillig zurück","Der Bundestag wählt zugleich einen Nachfolger","Das Volk stimmt ab"],a:1,w:"Nur mit gleichzeitiger Wahl eines neuen Kanzlers. / Chỉ khi đồng thời bầu Thủ tướng mới."},
+ {q:"Wer prägte 1947 den Begriff „Kalter Krieg“?",v:"Ai đặt ra thuật ngữ “Chiến tranh Lạnh” năm 1947?",o:["Truman","Walter Lippmann","Gorbatschow"],a:1,w:"Der Publizist Walter Lippmann. / Nhà báo Walter Lippmann."},
+ {q:"Wann wurde die Berliner Mauer gebaut?",v:"Bức tường Berlin được xây khi nào?",o:["13. August 1961","9. November 1989","23. Mai 1949"],a:0,w:"13. August 1961. / 13.8.1961."},
+ {q:"Was bedeutet „Gleichgewicht des Schreckens“?",v:"“Gleichgewicht des Schreckens” nghĩa là gì?",o:["Beide Seiten konnten sich mehrfach vernichten, deshalb gab es keinen direkten Krieg","Der Westen war stärker","Es gab keine Atomwaffen"],a:0,w:"Abschreckung durch Atomwaffen. / Răn đe bằng vũ khí hạt nhân."},
+ {q:"Was ist Dezentralisierung?",v:"Phân quyền là gì?",o:["Alle Macht in der Hauptstadt","Aufgaben werden auf untere Ebenen verteilt","Abschaffung der Wahlen"],a:1,w:"Z. B. Länder und Gemeinden. / Ví dụ bang và xã."},
+ {q:"Ab welchem Alter darf man bei der Bundestagswahl wählen?",v:"Từ bao nhiêu tuổi được bầu Bundestag?",o:["16","18","21"],a:1,w:"18 am Wahltag. / 18 tuổi vào ngày bầu cử."}
+];
+var score=0, answered=0, qb=document.getElementById('quizBox');
+quiz.forEach(function(it,i){
+  var d=document.createElement('div'); d.className='mc';
+  var h='<h4>'+(i+1)+'. '+it.q+'</h4><span class="vi">'+it.v+'</span><div class="opts"></div><p class="why">'+it.w+'</p>';
+  d.innerHTML=h;
+  var box=d.querySelector('.opts');
+  it.o.forEach(function(t,j){
+    var bt=document.createElement('button'); bt.type='button'; bt.textContent=t;
+    bt.addEventListener('click',function(){
+      if(d.classList.contains('done'))return;
+      d.classList.add('done'); answered++;
+      var all=box.querySelectorAll('button');
+      all[it.a].classList.add('right');
+      if(j===it.a){score++}else{bt.classList.add('wrong')}
+      document.getElementById('score').textContent='Punkte: '+score+' / '+quiz.length+(answered===quiz.length?' – fertig':'');
+    });
+    box.appendChild(bt);
+  });
+  qb.appendChild(d);
+});
+
+
+function toggleVi(){
+  document.body.classList.toggle('hide-vi');
+  var b=document.getElementById('viToggle');
+  var hidden=document.body.classList.contains('hide-vi');
+  b.textContent = hidden ? '🇩🇪 Tiếng Việt: TẮT' : '🇻🇳 Tiếng Việt: AN';
+}
+
+</script>
+</body>
+</html>

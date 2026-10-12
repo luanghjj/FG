@@ -35,4 +35,5 @@ Deutsch_a1-c1/tsconfig.tsbuildinfo
 furerschein/furerschein-app/node_modules/
 furerschein/furerschein-app/dist/
 
-# Bản build deploy của app React (tạo từ: cd Deutsch_a1-c1 && npm run build && rm -rf ../deutsch-a1-c1 && cp -R dist ../deutsch-a1-c1)
+# Raw sources
+quellen/

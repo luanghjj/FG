@@ -4928,7 +4928,7 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 
 <script src="./js/supabase.js?v=17"></script>
 <script src="./js/access.js?v=2"></script>
-<script src="./js/vocab.js?v=23"></script>
+<script src="./js/vocab.js?v=24"></script>
 <script src="./faecher/bfk1/bfk1-lf2-p1.js?v=2"></script>
 <script src="./faecher/bfk1/bfk1-lf2-p2.js?v=2"></script>
 <script src="./faecher/bfk1/bfk1-lf2-p3.js?v=2"></script>
@@ -4967,7 +4967,7 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 <script src="./faecher/bfk2/bfk2-quiz.js?v=1"></script>
 <script src="./faecher/deutsch/deutsch-quiz.js?v=1"></script>
 <script src="./faecher/gk/gk-gle-data.js?v=2"></script>
-<script src="./js/faecher.js?v=13"></script>
+<script src="./js/faecher.js?v=14"></script>
 <script src="./js/search-pages-data.js?v=1"></script>
 <script src="./faecher/gk/gk-uebungen.js?v=4"></script>
 <script>
@@ -7047,6 +7047,13 @@ function renderThemeFlashcards(themeId, item, fach){
   const host=document.getElementById('themeFlash');
   if(!host) return;
   let cards=extractTermsFromHtml((item&&item.content)||'');
+  if(item && Array.isArray(item.vokabeln) && item.vokabeln.length){
+    item.vokabeln.forEach(v => {
+      if(v && v.de && v.vi && !cards.some(c => c.de.toLowerCase() === v.de.toLowerCase())) {
+        cards.push({ de: v.de, vi: v.vi });
+      }
+    });
+  }
   // fallback from global vocab for theme keywords in desc/name
   if(cards.length<4 && window.lookupVi){
     const bag=((item&&item.name)||'')+' '+((item&&item.desc)||'')+' '+((item&&item.content)||'').replace(/<[^>]+>/g,' ');

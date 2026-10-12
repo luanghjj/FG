@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Klassenarbeit GK · 12.10.2026 – Wahlen, Macht & Geschichte</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/statute-theme.css?v=200">
+<script src="../js/guard.js" data-need="pruefungen"></script>
+<style>
+:root{
+  --bg:#E2D8C2; --surface:#FDFBF6; --ink:#0F172A; --muted:#5A5344;
+  --line:#B5A27C; --accent:#9A4607; --accent-soft:#F7E6CC;
+  --warn:#B45309; --warnbg:#FDF3E3; --ok:#3f5c39; --okbg:#eef3ea;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,sans-serif;
+  background:var(--bg); color:var(--ink); padding:24px 16px; min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+.page{
+  max-width:860px; margin:0 auto; background:var(--surface);
+  border:1.5px solid var(--line); border-radius:20px;
+  box-shadow:0 8px 30px -4px rgba(27,28,26,0.1); overflow:hidden;
+}
+.top-nav{
+  background:rgba(226,216,194,0.6); backdrop-filter:blur(12px);
+  padding:12px 24px; border-bottom:1px solid var(--line);
+  display:flex; justify-content:space-between; align-items:center;
+}
+.back-btn{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:6px 14px; border-radius:999px; border:1.5px solid var(--line);
+  background:var(--surface); color:var(--ink); font-size:0.85rem;
+  font-weight:600; text-decoration:none; transition:.15s;
+}
+.back-btn:hover{background:var(--accent-soft); border-color:var(--accent); color:var(--accent);}
+.header{
+  padding:32px 36px 24px; position:relative;
+  background:linear-gradient(180deg, color-mix(in srgb, var(--surface) 60%, var(--bg)), var(--surface));
+  border-bottom:1.5px solid var(--line);
+}
+.header::before{
+  content:""; position:absolute; left:0; top:0; bottom:0; width:5px; background:var(--accent);
+}
+.kicker{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:0.75rem; font-weight:700; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--accent); margin-bottom:8px;
+}
+.header h1{
+  font-family:"Playfair Display",Georgia,serif; font-size:clamp(1.6rem,4vw,2.2rem);
+  font-weight:700; color:var(--ink); margin-bottom:6px; line-height:1.25;
+}
+.subtitle{font-size:0.95rem; color:var(--muted); margin-bottom:16px;}
+.meta-chips{display:flex; gap:10px; flex-wrap:wrap; font-size:0.8rem;}
+.chip{
+  background:var(--surface); border:1px solid var(--line); border-radius:8px;
+  padding:4px 10px; color:var(--muted); font-weight:600;
+}
+.chip strong{color:var(--ink);}
+.chip.accent{background:var(--accent-soft); color:var(--accent); border-color:var(--accent);}
+.instructions{
+  background:var(--warnbg); border-bottom:1px solid var(--line);
+  padding:12px 36px; font-size:0.88rem; color:var(--warn);
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;
+}
+.toggle-sol-btn{
+  cursor:pointer; background:var(--ink); color:#fff; border:none;
+  padding:6px 14px; border-radius:8px; font-size:0.8rem; font-weight:600;
+  transition:.15s;
+}
+.toggle-sol-btn:hover{background:var(--accent);}
+.body{padding:32px 36px 40px;}
+.aufg{
+  margin-bottom:28px; padding-bottom:24px; border-bottom:1px solid var(--line);
+}
+.aufg:last-child{border-bottom:none;}
+.a-head{
+  display:flex; justify-content:space-between; align-items:baseline;
+  margin-bottom:10px;
+}
+.a-num{
+  font-family:"Playfair Display",serif; font-size:1.15rem; font-weight:700; color:var(--ink);
+}
+.a-pts{
+  font-family:"IBM Plex Mono",monospace; font-size:0.8rem; font-weight:700;
+  color:var(--accent); background:var(--accent-soft); padding:3px 10px;
+  border-radius:20px; border:1px solid var(--line);
+}
+.a-de{font-size:0.96rem; line-height:1.65; color:var(--ink); font-weight:500; margin-bottom:6px;}
+.a-vi{font-size:0.88rem; line-height:1.6; color:var(--muted); margin-bottom:12px;}
+.a-vi::before{content:"VI · "; font-weight:700; color:var(--accent); opacity:.8;}
+.data-box{
+  background:color-mix(in srgb, var(--surface) 50%, var(--bg));
+  border:1px solid var(--line); border-radius:10px; padding:12px 16px;
+  margin:10px 0 14px; font-size:0.88rem; line-height:1.6;
+}
+table.k-table{
+  width:100%; border-collapse:collapse; margin:12px 0; font-size:0.88rem; background:#fff;
+  border-radius:8px; overflow:hidden; border:1px solid var(--line);
+}
+table.k-table th, table.k-table td{
+  border:1px solid var(--line); padding:8px 12px; text-align:left; vertical-align:top;
+}
+table.k-table th{background:var(--ink); color:#fff; font-size:0.78rem; text-transform:uppercase; letter-spacing:.04em;}
+table.k-table tr:nth-child(even) td{background:color-mix(in srgb, var(--surface) 60%, var(--bg));}
+details.sol{
+  background:#fff; border:1.5px solid var(--line); border-radius:12px;
+  margin-top:14px; overflow:hidden;
+}
+details.sol summary{
+  cursor:pointer; list-style:none; padding:10px 16px; font-size:0.85rem;
+  font-weight:700; color:var(--accent); background:var(--accent-soft);
+  display:flex; justify-content:space-between; align-items:center;
+}
+details.sol summary::-webkit-details-marker{display:none;}
+details.sol summary::after{content:"▼ Xem lời giải mẫu"; font-size:0.75rem;}
+details.sol[open] summary::after{content:"▲ Thu gọn";}
+details.sol .sol-body{padding:14px 18px; font-size:0.9rem; line-height:1.65;}
+details.sol .sol-de{color:var(--ink); margin-bottom:8px;}
+details.sol .sol-vi{color:var(--muted); font-size:0.85rem; border-top:1px dashed var(--line); padding-top:6px; margin-top:6px;}
+details.sol .sol-vi::before{content:"Dịch nghĩa: "; font-weight:700; color:var(--accent);}
+.footer{
+  background:color-mix(in srgb, var(--surface) 60%, var(--bg));
+  border-top:1.5px solid var(--line); padding:20px 36px;
+  text-align:center; font-size:0.85rem; color:var(--muted);
+}
+@media print{
+  body{background:#fff; padding:0;}
+  .page{border:none; box-shadow:none;}
+  .top-nav, .toggle-sol-btn{display:none;}
+  details.sol, details.sol .sol-body{display:block !important;}
+  details.sol summary{display:none;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top-nav">
+    <a href="../index.html#/fach/gk" class="back-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><path d="M19 12H5"/><path d="M12 5l-7 7 7 7"/></svg>
+      <span>← Về môn GK</span>
+    </a>
+    <span style="font-size:0.82rem;font-weight:600;color:var(--muted)">AzubiHub · Prüfungsportal</span>
+  </div>
+
+  <header class="header">
+    <div class="kicker">Gemeinschaftskunde · Übungsklausur · Prüfungsrelevant</div>
+    <h1>Klassenarbeit: Wahlen, Macht & Geschichte</h1>
+    <div class="subtitle">Mô phỏng đề thi chính thức GK ngày 12.10.2026 · Song ngữ Đức – Việt</div>
+    <div class="meta-chips">
+      <span class="chip">Môn: <strong>GK</strong></span>
+      <span class="chip">Thời gian: <strong>45 phút</strong></span>
+      <span class="chip accent">Tổng điểm: <strong>50 Punkte</strong></span>
+      <span class="chip">Hình thức: <strong>9 Aufgaben</strong></span>
+    </div>
+  </header>
+
+  <div class="instructions">
+    <span><strong>Quy định:</strong> Trả lời bằng câu hoàn chỉnh (ganze Sätze), trừ khi có yêu cầu điền từ hoặc ghép nối.</span>
+    <button class="toggle-sol-btn" onclick="toggleAllSolutions()">Mở toàn bộ lời giải</button>
+  </div>
+
+  <div class="body">
+
+    <!-- AUFGABE 1 -->
+    <div class="aufg">
+      <div class="a-head">
+        <span class="a-num">Aufgabe 1: Wahlrechtsgrundsätze</span>
+        <span class="a-pts">5 Punkte</span>
+      </div>
+      <p class="a-de">Nennen Sie die fünf Wahlrechtsgrundsätze für den Deutschen Bundestag und erläutern Sie zwei davon in je einem vollständigen Satz!</p>
+      <p class="a-vi">Kể tên 5 nguyên tắc bầu cử của Quốc hội Đức (Bundestag) và giải thích hai trong số đó, mỗi nguyên tắc bằng một câu hoàn chỉnh!</p>
+      <details class="sol">
+        <summary>Musterlösung</summary>
+        <div class="sol-body">
+          <div class="sol-de">
+            <strong>Die fünf Wahlrechtsgrundsätze (Merkwort A-U-F-G-G):</strong><br>
+            1. <strong>Allgemein:</strong> Jede Person mit deutscher Staatsbürgerschaft ab 18 Jahren darf wählen, unabhängig von Bildung, Einkommen, Konfession oder Geschlecht.<br>
+            2. <strong>Unmittelbar:</strong> Die Wähler stimmen direkt für die Kandidaten oder Parteien ohne zwischengeschaltete Wahlmänner ab.<br>
+            3. <strong>Frei:</strong> Die Stimmabgabe erfolgt ohne Druck, Zwang oder staatliche Kontrolle.<br>
+            4. <strong>Gleich:</strong> Jede abgegebene Stimme zählt gleich viel und hat denselben Einfluss auf das Wahlergebnis.<br>
+            5. <strong>Geheim:</strong> Die Wahl erfolgt in einer geschlossenen Wahlkabine und der Zettel kommt gefaltet in eine versiegelte Wahlurne.
+          </div>
+          <div class="sol-vi">
+            5 nguyên tắc: Phổ thông (Allgemein), Trực tiếp (Unmittelbar), Tự do (Frei), Bình đẳng (Gleich), Bí mật (Geheim). Chọn 2 nguyên tắc bất kỳ để giải thích chuẩn nghĩa.
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <!-- AUFGABE 2 -->
+    <div class="aufg">
+      <div class="a-head">
+        <span class="a-num">Aufgabe 2: Lückentext zum Wahlsystem</span>
+        <span class="a-pts">6 Punkte</span>
+      </div>
+      <p class="a-de">Ergänzen Sie die passenden Fachbegriffe in den Lücken:</p>
+      <div class="data-box">
+        Wahlberechtigt ist jeder <strong>(1)</strong> ________ Staatsbürger, der am Wahltag mindestens <strong>(2)</strong> ________ Jahre alt ist. Bei der Bundestagswahl hat jeder Wähler zwei Stimmen. Mit der <strong>(3)</strong> ________ wird eine konkrete Person im Wahlkreis gewählt, mit der <strong>(4)</strong> ________ eine Partei über die Landesliste. Dieses Wahlsystem nennt man <strong>(5)</strong> ________ Verhältniswahl. Um ins Parlament einzuziehen, benötigt eine Partei mindestens <strong>(6)</strong> ________ % der Zweitstimmen.
+      </div>
+      <p class="a-vi">Điền các thuật ngữ thích hợp vào 6 chỗ trống trên.</p>
+      <details class="sol">
+        <summary>Musterlösung</summary>
+        <div class="sol-body">
+          <div class="sol-de">
+            (1) <strong>deutsche</strong> (hoặc Deutscher)<br>
+            (2) <strong>18</strong><br>
+            (3) <strong>Erststimme</strong><br>
+            (4) <strong>Zweitstimme</strong><br>
+            (5) <strong>personalisierte</strong><br>
+            (6) <strong>5</strong>
+          </div>
+          <div class="sol-vi">
+            (1) Đức; (2) 18; (3) Erststimme; (4) Zweitstimme; (5) personalisierte (có yếu tố cá nhân hóa); (6) 5 %.
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <!-- AUFGABE 3 -->
+    <div class="aufg">
+      <div class="a-head">
+        <span class="a-num">Aufgabe 3: Fallbeispiel Sperrklausel (5 %-Hürde)</span>
+        <span class="a-pts">6 Punkte</span>
+      </div>
+      <p class="a-de">Bei einer Bundestagswahl erzielen zwei Parteien folgende bundesweite Ergebnisse:</p>
+      <table class="k-table">
+        <tr><th>Partei</th><th>Zweitstimmen</th><th>Direktmandate (Erststimme)</th></tr>
+        <tr><td><strong>Partei X</strong></td><td>4,7 %</td><td>3 Direktmandate</td></tr>
+        <tr><td><strong>Partei Y</strong></td><td>4,2 %</td><td>2 Direktmandate</td></tr>
+      </table>
+      <p class="a-de">Beurteilen Sie begründet, welche Partei in welcher Stärke in den Bundestag einzieht!</p>
+      <p class="a-vi">Hãy đánh giá và giải thích đảng nào được vào Bundestag và số ghế được tính như thế nào!</p>
+      <details class="sol">
+        <summary>Musterlösung</summary>
+        <div class="sol-body">
+          <div class="sol-de">
+            <strong>Partei X:</strong> Zieht in den Bundestag ein. Grund: Durch die Grundmandatsklausel reicht der Gewinn von mindestens 3 Direktmandaten aus, um die 5 %-Hürde zu umgehen. Die Partei wird gemäß ihrem Zweitstimmenanteil (4,7 %) im Parlament mit Sitzen vertreten.<br><br>
+            <strong>Partei Y:</strong> Zieht nicht als Fraktion ein. Grund: Sie liegt unter 5 % und hat weniger als 3 Direktmandate gewonnen. Nur die 2 direkt gewählten Abgeordneten ziehen als fraktionslose Abgeordnete ein; alle Zweitstimmen der Partei verfallen.
+          </div>
+          <div class="sol-vi">
+            Đảng X vào quốc hội vì đạt điều kiện ngoại lệ tối thiểu 3 ghế trực tiếp (Grundmandatsklausel). Đảng Y trượt rào 5 % và chỉ có 2 ghế trực tiếp nên chỉ 2 ứng viên đó vào, toàn bộ phiếu Zweitstimmen bị mất.
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <!-- AUFGABE 4 -->
+    <div class="aufg">
+      <div class="a-head">
+        <span class="a-num">Aufgabe 4: Kanzlersturz – Vertrauensfrage vs. Misstrauensvotum</span>
+        <span class="a-pts">6 Punkte</span>
+      </div>
+      <p class="a-de">Erklären Sie den Unterschied zwischen der Vertrauensfrage (Art. 68 GG) und dem konstruktiven Misstrauensvotum (Art. 67 GG) hinsichtlich Initiative, Abstimmung und Konsequenzen!</p>
+      <p class="a-vi">Giải thích sự khác nhau giữa Vertrauensfrage và konstruktives Misstrauensvotum về người khởi xướng, cách bỏ phiếu và hệ quả!</p>
+      <details class="sol">
+        <summary>Musterlösung</summary>
+        <div class="sol-body">
+          <div class="sol-de">
+            1. <strong>Initiative:</strong> Die <em>Vertrauensfrage</em> wird vom Bundeskanzler gestellt, um zu prüfen, ob er noch die Parlamentsmehrheit hat. Das <em>Misstrauensvotum</em> geht vom Bundestag aus.<br>
+            2. <strong>Konstruktivität:</strong> Beim konstruktiven Misstrauensvotum kann der Kanzler nur gestürzt werden, wenn der Bundestag gleichzeitig mit absoluter Mehrheit einen neuen Bundeskanzler wählt (Schutz vor regierungsloser Krise wie in Weimar).<br>
+            3. <strong>Konsequenz:</strong> Verliert der Kanzler die Vertrauensfrage, kann der Bundespräsident den Bundestag auflösen und Neuwahlen ansetzen. Bei erfolgreichem Misstrauensvotum wird der neue Kanzler sofort ernannt.
+          </div>
+          <div class="sol-vi">
+            Vertrauensfrage do Thủ tướng đặt ra (thua phiếu có thể giải tán quốc hội bầu lại). Misstrauensvotum do Quốc hội đề xuất; "konstruktiv" nghĩa là bắt buộc phải bầu ngay Thủ tướng mới cùng lúc, tránh để đất nước rơi vào khoảng trống quyền lực.
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <!-- AUFGABE 5 -->
+    <div class="aufg">
+      <div class="a-head">
+        <span class="a-num">Aufgabe 5: Methodische Statistikanalyse</span>
+        <span class="a-pts">10 Punkte</span>
+      </div>
+      <p class="a-de">Analysieren Sie das folgende Wahlergebnis (Bundestagswahl in Baden-Württemberg) nach dem gelernten Dreischritt (Einleitung – Analyse – Fazit):</p>
+      <div class="data-box">
+        <strong>Daten (Balkendiagramm, Zweitstimmen in %, Infratest dimap):</strong><br>
+        CDU/CSU: 30,6 % | AfD: 19,8 % | SPD: 14,2 % | Grüne: 13,8 % | Die Linke: 6,8 % | FDP: 5,6 % | BSW: 4,1 %
+      </div>
+      <p class="a-vi">Viết bài phân tích thống kê theo đúng 3 bước: Mở bài (Einleitung), Phân tích số liệu (Analyse), Kết luận & suy đoán lý do (Fazit).</p>
+      <details class="sol">
+        <summary>Musterlösung</summary>
+        <div class="sol-body">
+          <div class="sol-de">
+            <strong>1. Einleitung:</strong> Das Thema der vorliegenden Statistik lautet „Ergebnisse der Bundestagswahl in Baden-Württemberg“. Die Daten werden in einem Balkendiagramm dargestellt, die Einheit ist Prozent (Zweitstimmenanteil). Als Quelle fungiert Infratest dimap.<br><br>
+            <strong>2. Analyse:</strong> Mit 30,6 % hat die CDU/CSU den höchsten Stimmenanteil erzielt und ist stärkste Kraft. Die AfD folgt mit 19,8 % auf dem zweiten Platz, liegt damit deutlich vor SPD (14,2 %) und Grünen (13,8 %), die nahezu gleichauf liegen. Das BSW hat mit 4,1 % den niedrigsten Wert erzielt und scheitert an der 5 %-Hürde. FDP (5,6 %) und Linke (6,8 %) liegen knapp über der Sperrklausel.<br><br>
+            <strong>3. Fazit:</strong> Zusammenfassend dominiert die Union traditionell in Baden-Württemberg, während die Regierungsparteien Verluste hinnehmen mussten. Mögliche Gründe dafür könnten sein, dass Wähler vermehrt Stabilität suchen oder mit aktuellen Themen wie Wirtschaft und Migration unzufrieden sind.
+          </div>
+          <div class="sol-vi">
+            Cần đủ 3 phần: Mở bài (chủ đề, dạng biểu đồ, %, nguồn); Phân tích (cao nhất, thấp nhất, so sánh với số liệu chính xác); Kết luận (tóm tắt ý chính và dùng mẫu câu dự đoán lý do thận trọng "Mögliche Gründe könnten sein...").
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <!-- AUFGABE 6 -->
+    <div class="aufg">
+      <div class="a-head">
+        <span class="a-num">Aufgabe 6: Definition & Merkmale des Kalten Krieges</span>
+        <span class="a-pts">8 Punkte</span>
+      </div>
+      <p class="a-de">Definieren Sie den Begriff „Kalter Krieg“ in 2 bis 3 Sätzen, nennen Sie drei typische Merkmale und erläutern Sie zwei historische Höhepunkte!</p>
+      <p class="a-vi">Định nghĩa "Chiến tranh Lạnh" trong 2-3 câu, nêu 3 đặc điểm tiêu biểu và giải thích 2 sự kiện đỉnh điểm!</p>
+      <details class="sol">
+        <summary>Musterlösung</summary>
+        <div class="sol-body">
+          <div class="sol-de">
+            <strong>Definition:</strong> Der Kalte Krieg war der weltanschauliche und machtpolitische Ost-West-Konflikt zwischen den Supermächten USA (Demokratie, Marktwirtschaft) und UdSSR (Diktatur, Planwirtschaft) nach 1945. Er wurde nie in einer direkten militärischen Konfrontation zwischen beiden Supermächten ausgetragen.<br><br>
+            <strong>Typische Merkmale:</strong><br>
+            - Wettrüsten (ständige Entwicklung von Atom- und Massenvernichtungswaffen)<br>
+            - Stellvertreterkriege (Konflikte in Drittstaaten wie Korea oder Vietnam)<br>
+            - Propaganda und Androhung von Atomkrieg („Gleichgewicht des Schreckens“)<br><br>
+            <strong>Zwei Höhepunkte:</strong><br>
+            1. <em>Bau der Berliner Mauer (13. August 1961):</em> Zementierung der Teilung Deutschlands und Europas.<br>
+            2. <em>Kubakrise (Oktober 1962):</em> Beinahe-Atomkrieg durch die Stationierung sowjetischer Raketen auf Kuba.
+          </div>
+          <div class="sol-vi">
+            Định nghĩa: xung đột Đông-Tây giữa Mỹ và Liên Xô sau 1945 không đối đầu quân sự trực tiếp. Đặc điểm: chạy đua vũ trang, chiến tranh ủy nhiệm, tuyên truyền. Đỉnh điểm: xây Tường Berlin 1961, Khủng hoảng tên lửa Cuba 1962 (hoặc đổ bộ Mặt Trăng 1969).
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <!-- AUFGABE 7 -->
+    <div class="aufg">
+      <div class="a-head">
+        <span class="a-num">Aufgabe 7: Chronologie der deutschen Teilung & Einheit</span>
+        <span class="a-pts">4 Punkte</span>
+      </div>
+      <p class="a-de">Ordnen Sie die vier historischen Daten den passenden Ereignissen zu:</p>
+      <div class="data-box">
+        <strong>Daten:</strong> 23. Mai 1949 · 13. August 1961 · 9. November 1989 · 3. Oktober 1990<br>
+        <strong>Ereignisse:</strong> Mauerbau · Wiedervereinigung · Erlass des Grundgesetzes (Gründung der BRD) · Fall der Berliner Mauer (Grenzöffnung)
+      </div>
+      <p class="a-vi">Ghép 4 mốc thời gian trên với đúng sự kiện lịch sử.</p>
+      <details class="sol">
+        <summary>Musterlösung</summary>
+        <div class="sol-body">
+          <div class="sol-de">
+            • <strong>23. Mai 1949:</strong> Erlass des Grundgesetzes / Gründung der Bundesrepublik Deutschland (BRD)<br>
+            • <strong>13. August 1961:</strong> Bau der Berliner Mauer (Mauerbau)<br>
+            • <strong>09. November 1989:</strong> Öffnung der Berliner Mauer / Mauerfall<br>
+            • <strong>03. Oktober 1990:</strong> Deutsche Wiedervereinigung (Tag der Deutschen Einheit)
+          </div>
+          <div class="sol-vi">
+            23.05.1949: Thành lập BRD; 13.08.1961: Xây tường Berlin; 09.11.1989: Bức tường sụp đổ; 03.10.1990: Thống nhất nước Đức.
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <!-- AUFGABE 8 -->
+    <div class="aufg">
+      <div class="a-head">
+        <span class="a-num">Aufgabe 8: Zentralismus vs. Dezentralisierung (Föderalismus)</span>
+        <span class="a-pts">5 Punkte</span>
+      </div>
+      <p class="a-de">Erklären Sie den Unterschied zwischen Zentralismus und Dezentralisierung und nennen Sie je einen Vorteil sowie ein konkretes historisches/aktuelles Beispiel aus Deutschland!</p>
+      <p class="a-vi">Giải thích sự khác biệt giữa tập quyền và phân quyền, nêu một ưu điểm và một ví dụ cụ thể tại Đức!</p>
+      <details class="sol">
+        <summary>Musterlösung</summary>
+        <div class="sol-body">
+          <div class="sol-de">
+            <strong>Zentralismus:</strong> Sämtliche politische Entscheidungsgewalt liegt bei einer zentralen Stelle (meist der Regierung in der Hauptstadt).<br>
+            - <em>Vorteil:</em> Einheitliche Gesetze und schnelle Entscheidungswege.<br>
+            - <em>Beispiel:</em> Die DDR nach der Auflösung der Länder im Jahr 1952.<br><br>
+            <strong>Dezentralisierung (Föderalismus):</strong> Aufgaben und Entscheidungen werden auf mehrere Ebenen (Bund, 16 Länder, Kommunen) aufgeteilt.<br>
+            - <em>Vorteil:</em> Größere Bürgernähe, Berücksichtigung regionaler Bedürfnisse und Machtbegrenzung.<br>
+            - <em>Beispiel:</em> Die Bundesrepublik Deutschland (BRD), z. B. liegt die Schul- und Bildungspolitik bei den 16 Bundesländern.
+          </div>
+          <div class="sol-vi">
+            Tập quyền: quyền lực tập trung tại thủ đô (VD: DDR xóa bỏ các bang năm 1952). Phân quyền / liên bang: chia quyền cho các bang và xã (VD: BRD trao quyền giáo dục cho 16 bang).
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <!-- AUFGABE 9 -->
+    <div class="aufg">
+      <div class="a-head">
+        <span class="a-num">Aufgabe 9: Richtig oder Falsch?</span>
+        <span class="a-pts">6 Punkte</span>
+      </div>
+      <p class="a-de">Entscheiden Sie bei den folgenden sechs Aussagen, ob sie richtig (R) oder falsch (F) sind:</p>
+      <table class="k-table">
+        <tr><th>Aussage</th><th>R / F</th></tr>
+        <tr><td>1. Bei der Bundestagswahl gibt es genau 299 Wahlkreise für die Erststimme.</td><td>[ &nbsp; ]</td></tr>
+        <tr><td>2. Eine gesetzliche Wahlpflicht gehört zu den Grundsätzen des Grundgesetzes.</td><td>[ &nbsp; ]</td></tr>
+        <tr><td>3. Die 5 %-Sperrklausel bei der Bundestagswahl gilt auf Bundesebene, nicht pro Bundesland.</td><td>[ &nbsp; ]</td></tr>
+        <tr><td>4. Mit der Erststimme entscheidet der Wähler über die prozentuale Parteienstärke.</td><td>[ &nbsp; ]</td></tr>
+        <tr><td>5. Walter Lippmann prägte 1947 den Begriff „Kalter Krieg“.</td><td>[ &nbsp; ]</td></tr>
+        <tr><td>6. Beim konstruktiven Misstrauensvotum entscheidet der Bundespräsident allein über die Kanzlerentlassung.</td><td>[ &nbsp; ]</td></tr>
+      </table>
+      <p class="a-vi">Đánh dấu Đúng (Richtig) hoặc Sai (Falsch) cho 6 nhận định trên.</p>
+      <details class="sol">
+        <summary>Musterlösung</summary>
+        <div class="sol-body">
+          <div class="sol-de">
+            1. <strong>Richtig:</strong> Es gibt exakt 299 Wahlkreise für Direktmandate.<br>
+            2. <strong>Falsch:</strong> Die Wahl ist frei (keine Wahlpflicht; jeder darf entscheiden, ob er wählt).<br>
+            3. <strong>Richtig:</strong> Die 5 %-Hürde wird aus der Gesamtzahl der Zweitstimmen bundesweit berechnet.<br>
+            4. <strong>Falsch:</strong> Die Parteienstärke wird über die Zweitstimme entschieden; die Erststimme wählt Personen.<br>
+            5. <strong>Richtig:</strong> Walter Lippmann machte den Begriff 1947 populär.<br>
+            6. <strong>Falsch:</strong> Der Bundestag muss mit absoluter Mehrheit einen neuen Kanzler wählen; der Bundespräsident ernennt diesen dann verfassungsgemäß.
+          </div>
+          <div class="sol-vi">
+            1: R (299 khu vực) | 2: F (không bắt buộc đi bầu) | 3: R (tính toàn quốc) | 4: F (Zweitstimme mới quyết định tỷ lệ đảng) | 5: R (Lippmann 1947) | 6: F (Bundestag bầu, Tổng thống chỉ bổ nhiệm theo thủ tục).
+          </div>
+        </div>
+      </details>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <div><strong>Viel Erfolg bei der Klassenarbeit!</strong></div>
+    <div style="margin-top:4px">AzubiHub · Gemeinschaftskunde Lernportal · Hỗ trợ song ngữ DE/VI</div>
+  </footer>
+</div>
+
+<script>
+function toggleAllSolutions() {
+  const sols = document.querySelectorAll('details.sol');
+  const btn = document.querySelector('.toggle-sol-btn');
+  const allOpen = Array.from(sols).every(s => s.open);
+  sols.forEach(s => s.open = !allOpen);
+  btn.textContent = allOpen ? 'Mở toàn bộ lời giải' : 'Thu gọn toàn bộ lời giải';
+}
+</script>
+</body>
+</html>
