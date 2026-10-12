@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#007AFF">
+<meta name="theme-color" content="#9A4607">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/statute-theme.css?v=200">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="AzubiHub">
 <link rel="manifest" href="../manifest.webmanifest">
@@ -11,17 +13,18 @@
 <title>Deutsch · Visualisierung – KA 16.07.26</title>
 <style>
 :root{
-  --bg:#F2F2F7; --surface:#fff; --ink:#000; --muted:#8E8E93; --line:#E5E5EA;
-  --accent:#007AFF; --accent2:#007AFF; --soft:#EAF3FF;
-  --ok:#248A3D; --okbg:#E3F7E8; --bad:#C4342B; --badbg:#FFF0F0;
-  --warn:#8A6D00; --warnbg:#FFF9E6;
-  --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06);
+  --bg:#E2D8C2; --surface:#FDFBF6; --ink:#0F172A; --muted:#5A5344; --line:#B5A27C;
+  --accent:#9A4607; --accent2:#9A4607; --accent-soft:#F7E6CC; --soft:#F4EAD4;
+  --ok:#3f5c39; --okbg:#eef3ea; --bad:#8B261E; --badbg:#FBEAE8;
+  --warn:#B45309; --warnbg:#FDF3E3;
+  --shadow:0 8px 30px -4px rgba(27,28,26,0.1);
   --safe-bottom:env(safe-area-inset-bottom,0px);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
-body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-.page{max-width:860px;margin:0 auto;padding:0 14px calc(72px + var(--safe-bottom));min-width:0}
+body{font-family:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased;padding:16px 12px 32px}
+.page{max-width:860px;margin:0 auto;background:var(--surface);border:1.5px solid var(--line);border-radius:20px;box-shadow:var(--shadow);overflow:hidden;padding:0 0 calc(60px + var(--safe-bottom));min-width:0}
+/* page styled */
 button,input,.tile,.tab,.btn{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 .view{display:none}.view.active{display:block;animation:deIn .35s cubic-bezier(.22,1,.36,1)}
 @keyframes deIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
@@ -29,30 +32,34 @@ button,input,.tile,.tab,.btn{touch-action:manipulation;-webkit-tap-highlight-col
 @media (prefers-reduced-motion:reduce){.view.active,.card,.acc,.tu-card{animation:none!important}}
 
 /* NAV – only 4 tabs */
-.nav{position:sticky;top:0;z-index:40;background:rgba(242,242,247,.92);backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--line);margin:0 -14px 16px;padding:10px 14px}
+.nav{position:sticky;top:0;z-index:40;background:rgba(226,216,194,0.92);backdrop-filter:blur(12px);
+  border-bottom:1.5px solid var(--line);padding:12px 20px;margin-bottom:16px}
 .nav-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .brand{font-weight:600;display:flex;align-items:center;gap:8px;cursor:pointer}
-.brand .logo{width:30px;height:30px;border-radius:9px;background:#007AFF;color:var(--ink);
-  color:#fff;display:flex;align-items:center;justify-content:center}
-.ka{background:#EAF3FF;color:#007AFF;border:1px solid #EAF3FF;border-radius:999px;padding:3px 10px;font-size:.72em;font-weight:600}
+.brand{font-family:"Playfair Display",Georgia,serif;font-weight:700;display:flex;align-items:center;gap:8px;cursor:pointer;font-size:1.05rem}
+.brand .logo{width:30px;height:30px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center}
+.back-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font-size:0.85rem;font-weight:600;text-decoration:none;transition:.15s}
+.back-btn:hover{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.vi-badge{display:inline-block;padding:1px 6px;border-radius:4px;background:var(--accent-soft);color:var(--accent);font-size:.72em;font-weight:700;font-family:"IBM Plex Mono",monospace;margin-right:4px}
+.ka{background:var(--accent-soft);color:var(--accent);border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-size:.75em;font-weight:700;font-family:"IBM Plex Mono",monospace}
 .tabs{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
-.tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 13px;font:inherit;
-  font-size:.82em;font-weight:500;color:var(--muted);cursor:pointer}
+.tab{border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 14px;font:inherit;
+  font-size:.82em;font-weight:600;color:var(--muted);cursor:pointer;transition:.15s}
+.tab:hover{color:var(--ink);border-color:var(--accent)}
 .tab.active{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:500}
 
 .view{display:none}.view.active{display:block}
-.hero{background:#007AFF;color:#fff;border-radius:18px;padding:22px;margin-bottom:14px;box-shadow:var(--shadow)}
-.hero h1{font-size:1.35em;font-weight:500;margin-bottom:6px;letter-spacing:-.01em}
+.hero{background:linear-gradient(180deg, color-mix(in srgb, var(--surface) 60%, var(--bg)), var(--surface));color:var(--ink);border-bottom:1.5px solid var(--line);border-left:5px solid var(--accent);border-radius:0;padding:24px 28px;margin-bottom:16px;box-shadow:none;position:relative}
+.hero h1{font-family:"Playfair Display",Georgia,serif;font-size:1.6em;font-weight:700;margin-bottom:6px;line-height:1.25}
 .hero p{opacity:.93;font-size:.92em}
 .pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
-.pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:3px 10px;font-size:.75em;font-weight:700}
+.pill{background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:4px 11px;font-size:.75em;font-weight:700;color:var(--muted);font-family:"IBM Plex Mono",monospace}
 
-.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:12px;box-shadow:none}
-.card h2{font-size:1.05em;margin-bottom:10px;font-weight:600}
+.card{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:18px;margin:0 20px 14px;box-shadow:none}
+.card h2{font-family:"Playfair Display",Georgia,serif;font-size:1.2em;margin-bottom:10px;font-weight:700;color:var(--ink)}
 .card h3{font-size:.95em;margin:12px 0 6px;color:var(--ink);font-weight:600}
 .muted{color:var(--muted);font-size:.88em}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 20px;margin-bottom:14px}
 @media(max-width:640px){
   .page{padding:0 12px calc(80px + var(--safe-bottom))}
   .grid2{grid-template-columns:1fr}
@@ -98,11 +105,11 @@ table.t tr:nth-child(even) td{background:#fff}
 }
 .vi-inline.show{display:inline}
 
-.tile{border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff;cursor:pointer;transition:.12s}
+.tile{border:1.5px solid var(--line);border-radius:14px;padding:14px;background:var(--surface);cursor:pointer;transition:.15s}
 .tile:hover{border-color:var(--accent);box-shadow:0 0 0 3px var(--soft)}
 .tile .ico{font-size:1.3em}
 .tile .name{font-weight:800;font-size:.92em;margin:4px 0}
-.tile .zweck{display:inline-block;background:#EAF3FF;color:#007AFF;border-radius:999px;padding:2px 8px;font-size:.7em;font-weight:600}
+.tile .zweck{display:inline-block;background:var(--accent-soft);color:var(--accent);border:1px solid var(--line);border-radius:999px;padding:2px 8px;font-size:.7em;font-weight:700;font-family:"IBM Plex Mono",monospace}
 
 .step{display:flex;gap:10px;align-items:flex-start;background:#F2F2F7;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:8px}
 .step .n{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;font-weight:600;font-size:.85em;display:flex;align-items:center;justify-content:center}
@@ -162,7 +169,7 @@ table.t tr:nth-child(even) td{background:#fff}
 .choice button.no{border-color:var(--bad);background:var(--badbg);color:#C4342B}
 .choice button:disabled{cursor:default}
 
-.hint-bar{background:#EAF3FF;border:1px solid #EAF3FF;border-radius:10px;padding:8px 12px;font-size:.82em;color:#004B99;margin-bottom:12px}
+.hint-bar{background:var(--accent-soft);border:1.5px solid var(--line);border-radius:10px;padding:10px 16px;font-size:.84em;color:var(--accent);margin:0 20px 14px;display:flex;align-items:center;gap:8px}
 .footer{text-align:center;color:var(--muted);font-size:.8em;padding:20px 0 8px}
 .home-link{font-size:.78em;font-weight:500;color:var(--muted);border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 10px;text-decoration:none;white-space:nowrap}
 .home-link:hover{color:var(--ink);border-color:#007AFF}
@@ -194,7 +201,7 @@ table.t tr:nth-child(even) td{background:#fff}
 .lb tr.me td{background:#EAF3FF;font-weight:700}
 
 /* accordion sections inside Lernen */
-.acc{border:1px solid var(--line);border-radius:12px;margin-bottom:8px;overflow:hidden;background:#fff}
+.acc{border:1.5px solid var(--line);border-radius:12px;margin:0 20px 10px;overflow:hidden;background:var(--surface)}
 .acc>summary{list-style:none;cursor:pointer;padding:12px 14px;font-weight:800;font-size:.95em;display:flex;justify-content:space-between;align-items:center;user-select:none}
 .acc>summary::-webkit-details-marker{display:none}
 .acc>summary::after{content:'▸';color:var(--muted);font-size:.9em;transition:.15s}
@@ -202,8 +209,9 @@ table.t tr:nth-child(even) td{background:#fff}
 .acc .body{padding:0 14px 14px}
 
 /* Textübungen */
-.tu-card{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:16px;overflow:hidden;box-shadow:var(--shadow)}
-.tu-head{background:#007AFF;color:#fff;padding:14px 16px;display:flex;align-items:center;gap:10px}
+.tu-card{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;margin:0 20px 16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.04)}
+.tu-head{background:var(--accent);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:10px}
+.tu-head h3{font-family:"Playfair Display",Georgia,serif;font-size:1.05em;margin-bottom:2px}
 .tu-head .num{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.9em;flex-shrink:0}
 .tu-head .info{flex:1}
 .tu-head h3{font-size:1em;margin-bottom:2px}
@@ -255,10 +263,10 @@ button.stw.open{box-shadow:0 0 0 2px #007AFF}
 <div class="page">
   <div class="nav">
     <div class="nav-inner">
-      <div class="brand" onclick="go('home')"><div class="logo">🇩🇪</div> Visualisierung</div>
+      <a class="back-btn" href="../index.html#/fach/deutsch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px"><path d="M19 12H5"/><path d="M12 5l-7 7 7 7"/></svg>Deutsch</a>
+      <div class="brand" onclick="go('home')"><div class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div> Visualisierung</div>
       <span class="ka">KA 16.07.26</span>
-      <span id="deUserChip" class="home-link" style="cursor:default">👤 …</span>
-      <a class="home-link" href="../index.html">← Fächer</a>
+      <span id="deUserChip" class="home-link" style="cursor:default"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>…</span>
       <div class="tabs">
         <button class="tab active" data-v="home" onclick="go('home')">Start</button>
         <button class="tab" data-v="lernen" onclick="go('lernen')">Lernen</button>
@@ -280,33 +288,33 @@ button.stw.open{box-shadow:0 0 0 2px #007AFF}
       </div>
     </div>
 
-    <div class="hint-bar">💡 <b>Tipp:</b> Wörter mit <span style="border-bottom:1.5px dashed #007AFF">gestrichelter Linie</span> antippen → Bedeutung auf Vietnamesisch.</div>
+    <div class="hint-bar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;vertical-align:-2px;margin-right:4px"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15 2a6 6 0 0 0-6 6c0 2 1.5 3.5 2 5h2c.5-1.5 2-3 2-5a6 6 0 0 0-6-6z"/></svg><b>Tipp:</b> Wörter mit <span style="border-bottom:1.5px dashed var(--accent)">gestrichelter Linie</span> antippen → Bedeutung auf Vietnamesisch.</div>
 
     <div class="grid2">
       <div class="tile" onclick="go('lernen')">
-        <div class="ico">📘</div>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:26px;height:26px"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
         <div class="name">Lernen</div>
         <div class="muted">Theorie · 7 Formen · Tipps</div>
       </div>
       <div class="tile" onclick="go('ueben')">
-        <div class="ico">✏️</div>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:26px;height:26px"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
         <div class="name">Üben</div>
         <div class="muted">Zuordnen · Text→Form · Quiz</div>
       </div>
       <div class="tile" onclick="go('ka')">
-        <div class="ico">🥩</div>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:26px;height:26px"><circle cx="12" cy="12" r="3"/><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><line x1="7.5" y1="7.5" x2="10" y2="10"/><line x1="16.5" y1="7.5" x2="14" y2="10"/><line x1="7.5" y1="16.5" x2="10" y2="14"/><line x1="16.5" y1="16.5" x2="14" y2="14"/></svg></div>
         <div class="name">KA-Mindmap</div>
         <div class="muted">Fleischkonsum – Musterlösung</div>
       </div>
       <div class="tile" onclick="go('ueben');setTimeout(()=>document.getElementById('quizBox')?.scrollIntoView({behavior:'smooth'}),80)">
-        <div class="ico">📝</div>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:26px;height:26px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
         <div class="name">Quiz starten</div>
         <div class="muted">Direkt zum Test</div>
       </div>
     </div>
 
     <div class="card">
-      <h2>⚡ Schnell merken</h2>
+      <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:18px;height:18px;vertical-align:-2px;margin-right:6px"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10"/></svg>Schnell merken</h2>
       <div class="formula">
         <button class="vi-btn" data-vi="Hình ảnh nói nhiều hơn ngàn lời.">Bilder sagen mehr als tausend Worte.</button>
         <div class="vi-pop"></div>
@@ -338,7 +346,7 @@ button.stw.open{box-shadow:0 0 0 2px #007AFF}
 
   <!-- ========== LERNEN ========== -->
   <div class="view" id="v-lernen" data-vocab-content>
-    <div class="hint-bar">📘 Lernen — antippe gestrichelte Wörter für Vietnamesisch.</div>
+    <div class="hint-bar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px;vertical-align:-2px;margin-right:6px"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>Lernen — antippe gestrichelte Wörter für Vietnamesisch.</div>
 
     <details class="acc" open>
       <summary>1. Was ist Visualisierung?</summary>
@@ -508,7 +516,7 @@ button.stw.open{box-shadow:0 0 0 2px #007AFF}
         <h3>Checkliste pro Form (aus dem Übungsblatt)</h3>
         <div class="checklist-grid">
           <div class="cl">
-            <b>📈 Kurvendiagramm</b>
+            <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;vertical-align:-2px;margin-right:4px"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>Kurvendiagramm</b>
             <ul class="check">
               <li>Thema als Überschrift</li>
               <li>Entwicklung über Zeitraum</li>
@@ -517,7 +525,7 @@ button.stw.open{box-shadow:0 0 0 2px #007AFF}
             </ul>
           </div>
           <div class="cl">
-            <b>📊 Säulen-/Balkendiagramm</b>
+            <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;vertical-align:-2px;margin-right:4px"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Säulen-/Balkendiagramm</b>
             <ul class="check">
               <li>Thema als Überschrift</li>
               <li>Mehrere Größen im Vergleich</li>
@@ -525,7 +533,7 @@ button.stw.open{box-shadow:0 0 0 2px #007AFF}
             </ul>
           </div>
           <div class="cl">
-            <b>🥧 Kreis-/Tortendiagramm</b>
+            <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;vertical-align:-2px;margin-right:4px"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>Kreis-/Tortendiagramm</b>
             <ul class="check">
               <li>Thema als Überschrift</li>
               <li>Ganzes + Teile in %</li>
@@ -533,7 +541,7 @@ button.stw.open{box-shadow:0 0 0 2px #007AFF}
             </ul>
           </div>
           <div class="cl">
-            <b>📋 Tabelle</b>
+            <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;vertical-align:-2px;margin-right:4px"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>Tabelle</b>
             <ul class="check">
               <li>Thema als Überschrift</li>
               <li>Angabe der Maßeinheiten</li>
@@ -541,7 +549,7 @@ button.stw.open{box-shadow:0 0 0 2px #007AFF}
             </ul>
           </div>
           <div class="cl">
-            <b>🔀 Strukturbild</b>
+            <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;vertical-align:-2px;margin-right:4px"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>Strukturbild</b>
             <ul class="check">
               <li>Thema als Überschrift</li>
               <li>Beziehungen / Abhängigkeiten</li>
@@ -549,7 +557,7 @@ button.stw.open{box-shadow:0 0 0 2px #007AFF}
             </ul>
           </div>
           <div class="cl">
-            <b>🧠 Mindmap</b>
+            <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px;vertical-align:-2px;margin-right:6px"><circle cx="12" cy="12" r="3"/><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><line x1="7.5" y1="7.5" x2="10" y2="10"/><line x1="16.5" y1="7.5" x2="14" y2="10"/><line x1="7.5" y1="16.5" x2="10" y2="14"/><line x1="16.5" y1="16.5" x2="14" y2="14"/></svg>Mindmap</b>
             <ul class="check">
               <li>Thema in der Mitte</li>
               <li>Hauptäste = Aspekte</li>
@@ -568,7 +576,7 @@ button.stw.open{box-shadow:0 0 0 2px #007AFF}
           <div class="vi-pop"></div>
         </div>
         <div class="mm">
-          <div class="mm-c"><span>🧠 Gehirn</span></div>
+          <div class="mm-c"><span>Gehirn</span></div>
           <div class="mm-g">
             <div class="mm-b r">
               <h4>Rechte Hirnhälfte
@@ -646,14 +654,14 @@ button.stw.open{box-shadow:0 0 0 2px #007AFF}
 
   <!-- ========== ÜBEN ========== -->
   <div class="view" id="v-ueben" data-vocab-content>
-    <div class="hint-bar">✏️ Üben — Texte lesen · gestrichelte Wörter antippen → VI-Bedeutung · Thema · Form · Quiz</div>
+    <div class="hint-bar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px;vertical-align:-2px;margin-right:6px"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>Üben — Texte lesen · gestrichelte Wörter antippen → VI-Bedeutung · Thema · Form · Quiz</div>
 
     <!-- Textübungen -->
     <div id="tuList"></div>
 
     <!-- Match -->
     <div class="card">
-      <h2>🔗 Zuordnen: Form ↔ Zweck</h2>
+      <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:18px;height:18px;vertical-align:-2px;margin-right:6px"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>Zuordnen: Form ↔ Zweck</h2>
       <p class="muted">Links eine Form, rechts einen Zweck antippen.</p>
       <div style="display:flex;justify-content:space-between;align-items:center;margin:8px 0 12px">
         <span class="muted" id="matchScore">0 / 7</span>
@@ -667,21 +675,21 @@ button.stw.open{box-shadow:0 0 0 2px #007AFF}
 
     <!-- Praxis -->
     <div class="card">
-      <h2>📄 Text → Darstellungsform</h2>
+      <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:18px;height:18px;vertical-align:-2px;margin-right:6px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Text → Darstellungsform</h2>
       <p class="muted">Welche Form passt am besten?</p>
       <div id="praxisList"></div>
     </div>
 
     <!-- Quiz -->
     <div class="card" id="quizBox">
-      <h2>📝 Quiz</h2>
+      <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px;vertical-align:-2px;margin-right:6px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Quiz</h2>
       <div id="quizArea"></div>
     </div>
   </div>
 
   <!-- ========== KA ========== -->
   <div class="view" id="v-ka" data-vocab-content>
-    <div class="hint-bar">🥩 Klassenarbeit-Muster: Mindmap zum Text „Fleischkonsum in Deutschland“</div>
+    <div class="hint-bar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:18px;height:18px;vertical-align:-2px;margin-right:6px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Klassenarbeit-Muster: Mindmap zum Text „Fleischkonsum in Deutschland“</div>
 
     <div class="card">
       <h2>Aufgabe</h2>
@@ -706,7 +714,7 @@ button.stw.open{box-shadow:0 0 0 2px #007AFF}
     </div>
 
     <div class="card">
-      <h2>📄 Originaltext (zum Markieren üben)</h2>
+      <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:18px;height:18px;vertical-align:-2px;margin-right:6px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Originaltext (zum Markieren üben)</h2>
       <p class="muted" style="margin-bottom:8px">Gelb = mögliche Hauptäste · gestrichelte Wörter antippen für VI.</p>
       <div class="ka-text">
         <p><b class="mark">Fleischkonsum in Deutschland</b></p>
@@ -780,9 +788,9 @@ button.stw.open{box-shadow:0 0 0 2px #007AFF}
     </div>
 
     <div class="card">
-      <h2>✅ Muster-Mindmap</h2>
+      <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px"><polyline points="20 6 9 17 4 12"/></svg>Muster-Mindmap</h2>
       <div class="mm">
-        <div class="mm-c"><span>🥩 Fleischkonsum in Deutschland</span></div>
+        <div class="mm-c"><span>Fleischkonsum in Deutschland</span></div>
         <div class="mm-g">
           <div class="mm-b o">
             <h4>Vergangenheit</h4>
@@ -895,7 +903,7 @@ document.addEventListener('click', (e)=>{
     pop.textContent = '';
     btn.classList.remove('open');
   }else{
-    pop.textContent = '🇻🇳 ' + vi;
+    pop.innerHTML = '<span class="vi-badge">VI</span> ' + vi;
     pop.classList.add('show');
     btn.classList.add('open');
   }
@@ -903,19 +911,19 @@ document.addEventListener('click', (e)=>{
 
 /* ===== DATA ===== */
 const FORMEN = [
-  {id:'kurve', ico:'📈', name:'Kurvendiagramm', zweck:'Entwicklung',
+  {id:'kurve', ico:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;vertical-align:-2px;margin-right:4px"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>', name:'Kurvendiagramm', zweck:'Entwicklung',
    desc:'Zeit auf der X-Achse, Menge auf der Y-Achse.', vi:'Biểu đồ đường – xu hướng theo thời gian'},
-  {id:'saeule', ico:'📊', name:'Balken-/Säulendiagramm', zweck:'Vergleich',
+  {id:'saeule', ico:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;vertical-align:-2px;margin-right:4px"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>', name:'Balken-/Säulendiagramm', zweck:'Vergleich',
    desc:'Mehrere Größen im Vergleich.', vi:'Biểu đồ cột – so sánh'},
-  {id:'kreis', ico:'🥧', name:'Kreis-/Tortendiagramm', zweck:'Anteile (%)',
+  {id:'kreis', ico:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;vertical-align:-2px;margin-right:4px"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>', name:'Kreis-/Tortendiagramm', zweck:'Anteile (%)',
    desc:'Teile eines Ganzen in Prozent.', vi:'Biểu đồ tròn – tỷ lệ %'},
-  {id:'organi', ico:'🏢', name:'Organigramm', zweck:'Hierarchie, Personen',
+  {id:'organi', ico:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;vertical-align:-2px;margin-right:4px"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>', name:'Organigramm', zweck:'Hierarchie, Personen',
    desc:'Hierarchie und Beziehungen von Personen.', vi:'Sơ đồ tổ chức'},
-  {id:'struktur', ico:'🔀', name:'Strukturbild', zweck:'Abläufe, Ursache–Wirkung',
+  {id:'struktur', ico:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;vertical-align:-2px;margin-right:4px"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>', name:'Strukturbild', zweck:'Abläufe, Ursache–Wirkung',
    desc:'Abläufe, Abhängigkeiten, Teufelskreis.', vi:'Sơ đồ cấu trúc – quy trình, nhân–quả'},
-  {id:'tabelle', ico:'📋', name:'Tabelle', zweck:'Vergleich (Zahlen)',
+  {id:'tabelle', ico:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;vertical-align:-2px;margin-right:4px"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>', name:'Tabelle', zweck:'Vergleich (Zahlen)',
    desc:'Genauer Zahlenvergleich mit Einheiten.', vi:'Bảng số liệu'},
-  {id:'mindmap', ico:'🧠', name:'Mindmap', zweck:'Ideensammlung',
+  {id:'mindmap', ico:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px;vertical-align:-2px;margin-right:6px"><circle cx="12" cy="12" r="3"/><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><line x1="7.5" y1="7.5" x2="10" y2="10"/><line x1="16.5" y1="7.5" x2="14" y2="10"/><line x1="7.5" y1="16.5" x2="10" y2="14"/><line x1="16.5" y1="16.5" x2="14" y2="14"/></svg>', name:'Mindmap', zweck:'Ideensammlung',
    desc:'Thema in der Mitte, Äste = Aspekte.', vi:'Mindmap – thu thập & sắp ý'},
 ];
 
@@ -1140,7 +1148,7 @@ const TEXTUBUNGEN = [
   {
     id:'tu1',
     title:'Jugendliche und Social Media',
-    form:'mindmap', formLabel:'Mindmap', formIco:'🧠',
+    form:'mindmap', formLabel:'Mindmap', formIco:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px;vertical-align:-2px;margin-right:6px"><circle cx="12" cy="12" r="3"/><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><line x1="7.5" y1="7.5" x2="10" y2="10"/><line x1="16.5" y1="7.5" x2="14" y2="10"/><line x1="7.5" y1="16.5" x2="10" y2="14"/><line x1="16.5" y1="16.5" x2="14" y2="14"/></svg>',
     aufgabe:'Visualisiere den folgenden Text in Form einer <b>Mindmap</b>.',
     text:`In Deutschland nutzen fast alle Jugendlichen zwischen 12 und 19 Jahren täglich Social Media.
 Die beliebtesten Plattformen sind Instagram, TikTok und YouTube.
@@ -1172,7 +1180,7 @@ Viele Eltern und Lehrer fordern daher mehr <span class="mark">Medienkompetenz</s
   {
     id:'tu2',
     title:'Berufsausbildung in Deutschland (2015–2023)',
-    form:'kurve', formLabel:'Kurvendiagramm', formIco:'📈',
+    form:'kurve', formLabel:'Kurvendiagramm', formIco:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;vertical-align:-2px;margin-right:4px"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>',
     aufgabe:'Visualisiere die folgende Entwicklung als <b>Kurvendiagramm</b>.',
     text:`Die Zahl der neu abgeschlossenen Ausbildungsverträge in Deutschland hat sich in den letzten Jahren verändert.
 Im Jahr <span class="mark">2015</span> wurden rund <span class="mark">522.000</span> neue Verträge abgeschlossen.
@@ -1200,7 +1208,7 @@ Seitdem steigt die Zahl wieder: <span class="mark">2022</span> wurden <span clas
   {
     id:'tu3',
     title:'Organisation im Restaurant',
-    form:'organi', formLabel:'Organigramm', formIco:'🏢',
+    form:'organi', formLabel:'Organigramm', formIco:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;vertical-align:-2px;margin-right:4px"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>',
     aufgabe:'Erstelle ein <b>Organigramm</b> der Betriebshierarchie.',
     text:`In einem Restaurant gibt es eine klare <span class="mark">Hierarchie</span>.
 An der Spitze steht der <span class="mark">Geschäftsführer</span>.
@@ -1232,7 +1240,7 @@ Alle Mitarbeiter arbeiten zusammen, um den Gästen einen guten Service zu bieten
   {
     id:'tu4',
     title:'Beliebte Getränke im Restaurant',
-    form:'saeule', formLabel:'Säulen-/Balkendiagramm', formIco:'📊',
+    form:'saeule', formLabel:'Säulen-/Balkendiagramm', formIco:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;vertical-align:-2px;margin-right:4px"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>',
     aufgabe:'Visualisiere die Angaben als <b>Säulen- oder Balkendiagramm</b>.',
     text:`Eine Umfrage unter Gästen eines Restaurants ergab folgende Ergebnisse zum beliebtesten Getränk:
 <span class="mark">Wasser</span> wählten <span class="mark">42</span> von 100 Gästen,
@@ -1262,7 +1270,7 @@ Die Zahlen zeigen einen klaren Vergleich zwischen den Getränkearten.`,
   {
     id:'tu5',
     title:'Energiequellen in Deutschland',
-    form:'kreis', formLabel:'Kreis-/Tortendiagramm', formIco:'🥧',
+    form:'kreis', formLabel:'Kreis-/Tortendiagramm', formIco:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;vertical-align:-2px;margin-right:4px"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>',
     aufgabe:'Stelle die Anteile als <b>Kreisdiagramm</b> dar.',
     text:`Im Jahr 2023 setzte sich der Strommix in Deutschland ungefähr so zusammen:
 <span class="mark">Erneuerbare Energien</span> hatten einen Anteil von <span class="mark">52&nbsp;%</span>,
@@ -1293,7 +1301,7 @@ Alle Anteile ergeben zusammen 100&nbsp;%.`,
   {
     id:'tu6',
     title:'Temperaturen in fünf Städten',
-    form:'tabelle', formLabel:'Tabelle', formIco:'📋',
+    form:'tabelle', formLabel:'Tabelle', formIco:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;vertical-align:-2px;margin-right:4px"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>',
     aufgabe:'Stelle die exakten Werte in einer <b>Tabelle</b> dar.',
     text:`Die durchschnittlichen Tagestemperaturen im Juli betrugen:
 in <span class="mark">Berlin</span> <span class="mark">24,1&nbsp;°C</span> (Juni: 21,3&nbsp;°C),
@@ -1324,7 +1332,7 @@ Die Werte des Vormonats stehen jeweils in Klammern.`,
   {
     id:'tu7',
     title:'Beschwerde im Service (Teufelskreis)',
-    form:'struktur', formLabel:'Strukturbild', formIco:'🔀',
+    form:'struktur', formLabel:'Strukturbild', formIco:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;vertical-align:-2px;margin-right:4px"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>',
     aufgabe:'Stelle den Ablauf als <b>Strukturbild</b> (Ursache–Wirkung) dar.',
     text:`Wenn Gäste im Restaurant lange warten müssen, werden sie oft unzufrieden.
 Unzufriedene Gäste beschweren sich beim Servicepersonal.
@@ -1353,7 +1361,7 @@ So entsteht ein <span class="mark">Teufelskreis</span>: lange Wartezeit → Unzu
   {
     id:'tu8',
     title:'Nachhaltigkeit in der Gastronomie',
-    form:'mindmap', formLabel:'Mindmap', formIco:'🧠',
+    form:'mindmap', formLabel:'Mindmap', formIco:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px;vertical-align:-2px;margin-right:6px"><circle cx="12" cy="12" r="3"/><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><line x1="7.5" y1="7.5" x2="10" y2="10"/><line x1="16.5" y1="7.5" x2="14" y2="10"/><line x1="7.5" y1="16.5" x2="10" y2="14"/><line x1="16.5" y1="16.5" x2="14" y2="14"/></svg>',
     aufgabe:'Visualisiere den Text in Form einer <b>Mindmap</b>.',
     text:`Nachhaltigkeit spielt in der Gastronomie eine immer größere Rolle.
 Restaurants achten auf <span class="mark">regionale und saisonale Produkte</span>, um Transportwege zu verkürzen.
@@ -1384,7 +1392,7 @@ Langfristig sollen Gäste, Umwelt und Betrieb gleichermaßen profitieren.`,
   {
     id:'tu9',
     title:'Gästezahlen im Café (Mo–Fr)',
-    form:'kurve', formLabel:'Kurvendiagramm', formIco:'📈',
+    form:'kurve', formLabel:'Kurvendiagramm', formIco:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;vertical-align:-2px;margin-right:4px"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>',
     aufgabe:'Stelle die Entwicklung der Gästezahlen als <b>Kurvendiagramm</b> dar.',
     text:`Ein Café hat in einer Woche folgende Gästezahlen notiert:
 <span class="mark">Montag</span> <span class="mark">45</span> Gäste,
@@ -1592,8 +1600,8 @@ function buildTU(tu, i){
 
   // Step 2 answer: thema
   const themaAns = `<div class="answer" id="${tu.id}-thema-ans">
-    🎯 <b>Thema:</b> ${tu.thema}<br>
-    🇻🇳 <span style="color:#248A3D">${tu.themaVI}</span>
+    <span class="vi-badge">Thema</span> <b>${tu.thema}</b><br>
+    <span class="vi-badge">VI</span> <span style="color:var(--ok)">${tu.themaVI}</span>
   </div>`;
 
   // Step 3: stichworte
@@ -1626,14 +1634,14 @@ function buildTU(tu, i){
         <ul>${b.items.map(it=>`<li>${it}</li>`).join('')}</ul>
       </div>`).join('');
     drawContent = `<div class="mm-mini" id="${tu.id}-muster">
-      <h5>✅ Muster-${tu.formLabel} (Lösung)</h5>
+      <h5><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px"><polyline points="20 6 9 17 4 12"/></svg>Muster-${tu.formLabel} (Lösung)</h5>
       <div style="font-size:.78em;color:#8E8E93;margin-bottom:8px;text-align:center">Thema in die Mitte · Äste = Hauptpunkte · nur Stichworte</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">${branches}</div>
     </div>`;
   } else {
     const tips = tu.zeichenTipps.map(t=>`<li>${t}</li>`).join('');
     drawContent = `<div class="answer" id="${tu.id}-muster">
-      <b>✏️ Tipps zum Zeichnen:</b>
+      <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px;vertical-align:-2px;margin-right:6px"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>Tipps zum Zeichnen:</b>
       <ul style="margin:6px 0 0;padding-left:16px">${tips}</ul>
     </div>`;
   }
@@ -1642,13 +1650,13 @@ function buildTU(tu, i){
   <div class="tu-head">
     <div class="num">${i+1}</div>
     <div class="info">
-      <h3>📄 ${tu.title}</h3>
+      <h3>${tu.title}</h3>
       <span class="tag2">${tu.formIco} ${tu.formLabel}</span>
     </div>
   </div>
   <div class="tu-body">
-    <div class="box info" style="margin-bottom:12px">📋 <b>Aufgabe:</b> ${wrapTextWithVI(tu.aufgabe)}</div>
-    <div class="muted" style="font-size:.8em;margin:-4px 0 8px">💡 Wörter mit <span style="border-bottom:1.5px dashed #007AFF">gestrichelter Linie</span> antippen → vietnamesische Bedeutung</div>
+    <div class="box info" style="margin-bottom:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:18px;height:18px;vertical-align:-2px;margin-right:6px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><b>Aufgabe:</b> ${wrapTextWithVI(tu.aufgabe)}</div>
+    <div class="muted" style="font-size:.8em;margin:-4px 0 8px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;vertical-align:-2px;margin-right:4px"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15 2a6 6 0 0 0-6 6c0 2 1.5 3.5 2 5h2c.5-1.5 2-3 2-5a6 6 0 0 0-6-6z"/></svg>Wörter mit <span style="border-bottom:1.5px dashed var(--accent)">gestrichelter Linie</span> antippen → vietnamesische Bedeutung</div>
     <div class="tu-text">${textVI}</div>
 
     <div class="tu-steps">
@@ -1658,9 +1666,9 @@ function buildTU(tu, i){
           Aufgabe verstehen — Was soll ich machen?
         </div>
         <div class="tu-step-body" id="${tu.id}-s1">
-          <div class="box info">📌 <b>Aufgabenstellung lesen:</b> Finde das Schlüsselwort in der Aufgabe.<br>
+          <div class="box info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><b>Aufgabenstellung lesen:</b> Finde das Schlüsselwort in der Aufgabe.<br>
           Hier: <b>„${tu.formLabel}"</b> = Darstellungsform ist vorgegeben.</div>
-          <div class="box tip">💡 <b>Tipp:</b> Zuerst die Aufgabe lesen → geforderte Form erkennen. Oft steht dort: <i>„Visualisiere … als Mindmap / als Diagramm …"</i></div>
+          <div class="box tip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;vertical-align:-2px;margin-right:4px"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15 2a6 6 0 0 0-6 6c0 2 1.5 3.5 2 5h2c.5-1.5 2-3 2-5a6 6 0 0 0-6-6z"/></svg><b>Tipp:</b> Zuerst die Aufgabe lesen → geforderte Form erkennen. Oft steht dort: <i>„Visualisiere … als Mindmap / als Diagramm …"</i></div>
         </div>
       </div>
 
@@ -1671,7 +1679,7 @@ function buildTU(tu, i){
         </div>
         <div class="tu-step-body" id="${tu.id}-s2">
           <p>Lies den Text. Was ist das Hauptthema? (= Mitte der Mindmap / Titel des Diagramms)</p>
-          <div class="box tip">💡 Das Thema ist die zentrale Aussage — oft im ersten Satz oder in der Überschrift.</div>
+          <div class="box tip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;vertical-align:-2px;margin-right:4px"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15 2a6 6 0 0 0-6 6c0 2 1.5 3.5 2 5h2c.5-1.5 2-3 2-5a6 6 0 0 0-6-6z"/></svg>Das Thema ist die zentrale Aussage — oft im ersten Satz oder in der Überschrift.</div>
           <button class="reveal-btn" onclick="revealAns('${tu.id}-thema-ans')">→ Lösung zeigen</button>
           ${themaAns}
         </div>
@@ -1684,7 +1692,7 @@ function buildTU(tu, i){
         </div>
         <div class="tu-step-body" id="${tu.id}-s3">
           <p>Markiere wichtige Wörter und Zahlen im Text. <b>Keine ganzen Sätze!</b></p>
-          <div class="box tip">💡 Nur Schlüsselwörter, Zahlen und Namen markieren — keine ganzen Sätze abschreiben!</div>
+          <div class="box tip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;vertical-align:-2px;margin-right:4px"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15 2a6 6 0 0 0-6 6c0 2 1.5 3.5 2 5h2c.5-1.5 2-3 2-5a6 6 0 0 0-6-6z"/></svg>Nur Schlüsselwörter, Zahlen und Namen markieren — keine ganzen Sätze abschreiben!</div>
           <button class="reveal-btn" onclick="revealAns('${tu.id}-stw-ans')">→ Stichworte zeigen</button>
           ${stwAns}
         </div>
@@ -1697,7 +1705,7 @@ function buildTU(tu, i){
         </div>
         <div class="tu-step-body" id="${tu.id}-s4">
           <p>Welche Form passt zu diesem Text? Warum?</p>
-          <div class="box tip">💡 Inhalt prüfen: Zeitreihe? → Kurve. Anteile %? → Kreis. Hierarchie? → Organigramm. Viele Aspekte? → Mindmap.</div>
+          <div class="box tip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;vertical-align:-2px;margin-right:4px"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15 2a6 6 0 0 0-6 6c0 2 1.5 3.5 2 5h2c.5-1.5 2-3 2-5a6 6 0 0 0-6-6z"/></svg>Inhalt prüfen: Zeitreihe? → Kurve. Anteile %? → Kreis. Hierarchie? → Organigramm. Viele Aspekte? → Mindmap.</div>
           <button class="reveal-btn" onclick="revealAns('${tu.id}-form-ans')">→ Antwort zeigen</button>
           ${formAns}
         </div>
@@ -1711,7 +1719,7 @@ function buildTU(tu, i){
         <div class="tu-step-body" id="${tu.id}-s5">
           <button class="reveal-btn" onclick="revealAns('${tu.id}-muster')">→ Muster / Tipps zeigen</button>
           ${drawContent}
-          <div class="box ok" style="margin-top:10px">✅ <b>Checkliste:</b> Überschrift ✓ · nur Stichworte ✓ · Einheiten/Achsen ✓ · sauber mit Lineal ✓ · Wörter zählen ✓</div>
+          <div class="box ok" style="margin-top:10px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px"><polyline points="20 6 9 17 4 12"/></svg><b>Checkliste:</b> Überschrift – nur Stichworte – Einheiten/Achsen – sauber mit Lineal – Wörter zählen</div>
         </div>
       </div>
     </div>
@@ -1755,7 +1763,7 @@ function renderFormen(){
       <div class="zweck">${f.zweck}</div>
       ${typeof diagFig==='function'?diagFig(f.id,false):''}
       <div class="muted" style="margin-top:4px;font-size:.82em">${f.desc}</div>
-      <button class="vi-btn" data-vi="${f.vi}" style="margin-top:6px;font-size:.8em">VI 🇻🇳</button>
+      <button class="vi-btn" data-vi="${f.vi}" style="margin-top:6px;font-size:.8em">VI</button>
       <div class="vi-pop"></div>
     </div>`).join('');
   if(typeof fillSchnellwahlMinis==='function') if(typeof fillSchnellwahlMinis==='function') fillSchnellwahlMinis();
@@ -1823,8 +1831,8 @@ function ansPraxis(i,opt){
   const ok=opt===p.answer;
   const ansName=(FORMEN.find(f=>f.id===p.answer)||{}).name||p.answer;
   fb.className='fb show '+(ok?'ok':'no');
-  fb.innerHTML=(ok?'✅ Richtig! ':'❌ Falsch. Richtig: <b>'+ansName+'</b>. ')+p.explain
-    + ' <button type="button" class="vi-btn" data-open-diag="'+p.answer+'">🔍 Beispiel mit Zahlen</button>';
+  fb.innerHTML=(ok?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px"><polyline points="20 6 9 17 4 12"/></svg>Richtig! ':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px"><circle cx="12" cy="12" r="9"/><path d="M9 9h.01"/><path d="M15 9h.01"/><path d="M8.5 15h7"/></svg>Falsch. Richtig: <b>'+ansName+'</b>. ')+p.explain
+    + ' <button type="button" class="vi-btn" data-open-diag="'+p.answer+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>Beispiel mit Zahlen</button>';
   const box=document.getElementById('pd-'+i);
   if(box && window.showPraxisDiag) showPraxisDiag(box, p.answer);
   else if(box && window.DIAG_SVG && DIAG_SVG[p.answer]){
@@ -1850,11 +1858,11 @@ function quizIntro(){
   document.getElementById('quizArea').innerHTML=`
     <div class="center">
       <p class="muted" style="margin-bottom:10px">${QUIZ.length} Fragen · gemischt · mit Erklärung</p>
-      <p class="muted" style="margin-bottom:8px;font-size:.84em">☁️ Nickname: <b>${name.replace(/</g,'&lt;')}</b></p>
+      <p class="muted" style="margin-bottom:8px;font-size:.84em">Nickname: <b>${name.replace(/</g,'&lt;')}</b></p>
       <div class="db-status" id="dbStatus">Verbindung wird geprüft…</div>
       <div style="margin-top:12px">
         <button class="btn" onclick="quizStart()">Quiz starten</button>
-        <button class="btn ghost sm" style="margin-left:8px" type="button" onclick="showLeaderboard()">🏆 Rangliste</button>
+        <button class="btn ghost sm" style="margin-left:8px" type="button" onclick="showLeaderboard()">Rangliste</button>
       </div>
       <div id="lbBox" class="lb"></div>
       <div id="myHistBox" class="lb"></div>
@@ -1870,7 +1878,7 @@ async function showMyHistory(){
     const data=await LearnDB.loadPlayerHistory();
     const de=(data.quizzes||[]).filter(q=>String(q.subject).toUpperCase()==='DE');
     if(!de.length){ box.innerHTML=''; return; }
-    box.innerHTML=`<h4>📜 Deine Deutsch-Historie</h4>
+    box.innerHTML=`<h4>Deine Deutsch-Historie</h4>
       <table><tr><th>Quiz</th><th>Punkte</th><th>Versuche</th><th>Datum</th></tr>
       ${de.map(q=>`<tr><td>${escH(q.quiz)}</td><td>${q.correct}/${q.total} (${q.pct}%)</td><td>${q.attempts}</td><td>${(q.at||'').slice(0,10)}</td></tr>`).join('')}
       </table>`;
@@ -1882,10 +1890,10 @@ async function checkDb(){
   try{
     await LearnDB.ping();
     st.className='db-status ok';
-    st.textContent='✅ Mit Supabase verbunden';
+    st.textContent='Mit Supabase verbunden';
   }catch(e){
     st.className='db-status err';
-    st.textContent='⚠️ Keine DB-Verbindung: '+(e.message||e);
+    st.textContent='Keine DB-Verbindung: '+(e.message||e);
   }
 }
 async function showLeaderboard(){
@@ -1899,7 +1907,7 @@ async function showLeaderboard(){
       return;
     }
     const me=(LearnDB.getPlayer()||'').toLowerCase();
-    box.innerHTML=`<h4>🏆 Rangliste · Deutsch</h4>
+    box.innerHTML=`<h4>Rangliste · Deutsch</h4>
       <table><tr><th>#</th><th>Name</th><th>Punkte</th><th>%</th></tr>
       ${rows.map((r,i)=>`<tr class="${String(r.player).toLowerCase()===me?'me':''}"><td>${i+1}</td><td>${escH(r.player)}</td><td>${r.correct}/${r.total}</td><td>${r.pct}%</td></tr>`).join('')}
       </table>`;
@@ -1930,8 +1938,13 @@ function answerQ(chosen){
     if(i===chosen && chosen!==q.a) b.classList.add('wrong');
   });
   const fb=document.getElementById('qfb');
-  if(chosen===q.a){ qScore++; fb.className='fb show ok'; fb.textContent='✅ Richtig! '+q.ex; }
-  else { fb.className='fb show no'; fb.textContent='❌ Falsch. '+q.ex; }
+  if(chosen===q.a){
+    qScore++; fb.className='fb show ok';
+    fb.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px"><polyline points="20 6 9 17 4 12"/></svg>Richtig! '+q.ex;
+  } else {
+    fb.className='fb show no';
+    fb.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px"><circle cx="12" cy="12" r="9"/><path d="M9 9h.01"/><path d="M15 9h.01"/><path d="M8.5 15h7"/></svg>Falsch. '+q.ex;
+  }
   const last=qIndex===qOrder.length-1;
   document.getElementById('qnav').innerHTML=`<button class="btn row" onclick="qIndex++;renderQ()">${last?'Ergebnis':'Weiter →'}</button>`;
 }
@@ -1965,13 +1978,13 @@ async function saveAndShowScore(){
     const saved=await LearnDB.saveQuizScore({
       subject:'DE', quiz:'visualisierung', correct:qScore, total:qOrder.length, player:name
     });
-    if(st){ st.className='db-status ok'; st.textContent='✅ Gespeichert: '+saved.correct+'/'+saved.total+' ('+saved.pct+'%)'; }
+    if(st){ st.className='db-status ok'; st.textContent='Gespeichert: '+saved.correct+'/'+saved.total+' ('+saved.pct+'%)'; }
     await showLeaderboard();
     await showMyHistory();
   }catch(e){
     if(e && e.queued){
-      if(st){ st.className='db-status ok'; st.textContent='📦 Offline gespeichert — Sync später'; }
-    }else if(st){ st.className='db-status err'; st.textContent='❌ Speichern fehlgeschlagen: '+(e.message||e); }
+      if(st){ st.className='db-status ok'; st.textContent='Offline gespeichert — Sync später'; }
+    }else if(st){ st.className='db-status err'; st.textContent='Speichern fehlgeschlagen: '+(e.message||e); }
   }
 }
 
@@ -1982,8 +1995,8 @@ function shuffle(a){const arr=[...a];for(let i=arr.length-1;i>0;i--){const j=Mat
   const chip=document.getElementById('deUserChip');
   const name=window.LearnDB && LearnDB.getPlayer();
   if(chip){
-    if(name){ chip.textContent='👤 '+name; }
-    else { chip.innerHTML='<a href="../index.html" style="color:inherit;text-decoration:none">👤 Login</a>'; }
+    if(name){ chip.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>'+name; }
+    else { chip.innerHTML='<a href="../index.html" style="color:inherit;text-decoration:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Login</a>'; }
   }
   // Continue session duration tracking after navigating from index
   if(window.LearnDB && LearnDB.resumeVisitTracking) LearnDB.resumeVisitTracking();

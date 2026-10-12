@@ -3,7 +3,7 @@
   "use strict";
   w.DEUTSCH_QUIZ = [
   {
-    "theme": "visualisierung",
+    "theme": "mindmap-diagramme",
     "cat": "Definition",
     "q": "Was bedeutet Visualisierung von Texten?",
     "opts": [
@@ -16,7 +16,7 @@
     "ex": "Visualisierung = Text als Grafik darstellen, Wesentliches sichtbar machen."
   },
   {
-    "theme": "visualisierung",
+    "theme": "mindmap-diagramme",
     "cat": "Ziel",
     "q": "Was ist KEIN Ziel der Visualisierung?",
     "opts": [
@@ -29,7 +29,7 @@
     "ex": "Keine ganzen Sätze – nur Stichworte!"
   },
   {
-    "theme": "visualisierung",
+    "theme": "mindmap-diagramme",
     "cat": "Merkhilfe",
     "q": "Welche Merkhilfe gilt?",
     "opts": [
@@ -42,7 +42,7 @@
     "ex": "Bilder sagen mehr als tausend Worte."
   },
   {
-    "theme": "visualisierung",
+    "theme": "text-zu-grafik",
     "cat": "Schritte",
     "q": "Was ist der 1. Arbeitsschritt?",
     "opts": [
@@ -55,7 +55,7 @@
     "ex": "Zuerst die Fragestellung analysieren."
   },
   {
-    "theme": "visualisierung",
+    "theme": "text-zu-grafik",
     "cat": "Schritte",
     "q": "Richtige Reihenfolge?",
     "opts": [
@@ -68,7 +68,7 @@
     "ex": "Lesen → Markieren → Form wählen → Zeichnen."
   },
   {
-    "theme": "visualisierung",
+    "theme": "mindmap-diagramme",
     "cat": "Formen",
     "q": "Kurvendiagramm eignet sich für …",
     "opts": [
@@ -81,7 +81,7 @@
     "ex": "Kurve = Entwicklung (Zeitachse)."
   },
   {
-    "theme": "visualisierung",
+    "theme": "mindmap-diagramme",
     "cat": "Formen",
     "q": "Kreisdiagramm eignet sich für …",
     "opts": [
@@ -94,7 +94,7 @@
     "ex": "Kreis = Anteile in Prozent."
   },
   {
-    "theme": "visualisierung",
+    "theme": "mindmap-diagramme",
     "cat": "Formen",
     "q": "Säulendiagramm eignet sich für …",
     "opts": [
@@ -107,7 +107,7 @@
     "ex": "Säule/Balken = Vergleich."
   },
   {
-    "theme": "visualisierung",
+    "theme": "mindmap-diagramme",
     "cat": "Formen",
     "q": "Mindmap eignet sich für …",
     "opts": [
@@ -120,7 +120,7 @@
     "ex": "Mindmap = Ideensammlung/-ordnung."
   },
   {
-    "theme": "visualisierung",
+    "theme": "mindmap-diagramme",
     "cat": "Formen",
     "q": "Strukturbild eignet sich für …",
     "opts": [
@@ -133,7 +133,7 @@
     "ex": "Strukturbild = Abläufe / Ursache–Wirkung."
   },
   {
-    "theme": "visualisierung",
+    "theme": "mindmap-diagramme",
     "cat": "Formen",
     "q": "Organigramm zeigt vor allem …",
     "opts": [
@@ -146,7 +146,7 @@
     "ex": "Organigramm = Hierarchie / Personen."
   },
   {
-    "theme": "visualisierung",
+    "theme": "mindmap-diagramme",
     "cat": "Tipps",
     "q": "Warum keine ganzen Sätze?",
     "opts": [
@@ -159,7 +159,7 @@
     "ex": "Stichworte sind klarer und prüfungsgerecht."
   },
   {
-    "theme": "visualisierung",
+    "theme": "mindmap-diagramme",
     "cat": "Tipps",
     "q": "Großschreibung in Schaubildern?",
     "opts": [
@@ -172,7 +172,7 @@
     "ex": "Nur Substantive + Satzanfang groß."
   },
   {
-    "theme": "visualisierung",
+    "theme": "mindmap-diagramme",
     "cat": "Tipps",
     "q": "Was braucht jede Grafik?",
     "opts": [
@@ -185,7 +185,7 @@
     "ex": "Überschrift und Größenbezeichnung nicht vergessen."
   },
   {
-    "theme": "visualisierung",
+    "theme": "mindmap-diagramme",
     "cat": "Hirn",
     "q": "Die rechte Hirnhälfte arbeitet vor allem …",
     "opts": [
@@ -198,7 +198,7 @@
     "ex": "Rechts: analog, ganzheitlich, Bilder, kreativ."
   },
   {
-    "theme": "visualisierung",
+    "theme": "mindmap-diagramme",
     "cat": "Hirn",
     "q": "Die linke Hirnhälfte ist zuständig für …",
     "opts": [
@@ -211,7 +211,7 @@
     "ex": "Links: analytisch, Sprache, Logik, Struktur."
   },
   {
-    "theme": "visualisierung",
+    "theme": "muster-ka",
     "cat": "KA",
     "q": "Drei zentrale Aspekte beim Fleischkonsum heute?",
     "opts": [
@@ -224,7 +224,7 @@
     "ex": "Gesundheit · Umwelt · Tierwohl."
   },
   {
-    "theme": "visualisierung",
+    "theme": "muster-ka",
     "cat": "KA",
     "q": "Welche Form verlangt die Muster-KA?",
     "opts": [
@@ -237,7 +237,7 @@
     "ex": "Aufgabe: in Form einer Mindmap."
   },
   {
-    "theme": "visualisierung",
+    "theme": "text-zu-grafik",
     "cat": "Praxis",
     "q": "Exportzahlen 1992–2000 → beste Form?",
     "opts": [
@@ -250,7 +250,7 @@
     "ex": "Zeitreihe → Kurve."
   },
   {
-    "theme": "visualisierung",
+    "theme": "text-zu-grafik",
     "cat": "Praxis",
     "q": "Teufelskreis negatives Denken → Form?",
     "opts": [
@@ -263,7 +263,7 @@
     "ex": "Ursache–Wirkung → Strukturbild."
   },
   {
-    "theme": "visualisierung",
+    "theme": "mindmap-diagramme",
     "cat": "Formen",
     "q": "Tabelle eignet sich besonders für …",
     "opts": [
@@ -276,7 +276,7 @@
     "ex": "Tabelle = genauer Zahlenvergleich."
   },
   {
-    "theme": "visualisierung",
+    "theme": "mindmap-diagramme",
     "cat": "Formen",
     "q": "Wann nimmst du KEIN Kreisdiagramm?",
     "opts": [
@@ -289,7 +289,7 @@
     "ex": "Zeitreihe → Kurve, nicht Kreis."
   },
   {
-    "theme": "visualisierung",
+    "theme": "mindmap-diagramme",
     "cat": "Formen",
     "q": "Balkendiagramm und Säulendiagramm dienen vor allem dem …",
     "opts": [
@@ -302,7 +302,7 @@
     "ex": "Balken/Säule = Vergleich mehrerer Größen."
   },
   {
-    "theme": "visualisierung",
+    "theme": "text-zu-grafik",
     "cat": "Schritte",
     "q": "Was machst du NACH dem Lesen?",
     "opts": [
@@ -315,7 +315,7 @@
     "ex": "Nach dem Lesen: markieren und ordnen."
   },
   {
-    "theme": "visualisierung",
+    "theme": "text-zu-grafik",
     "cat": "Schritte",
     "q": "Wann wählst du die Darstellungsform?",
     "opts": [
@@ -328,7 +328,7 @@
     "ex": "Erst Inhalt klären, dann Form wählen."
   },
   {
-    "theme": "visualisierung",
+    "theme": "mindmap-diagramme",
     "cat": "Tipps",
     "q": "Was bedeutet „schlagwortartig\"?",
     "opts": [
@@ -341,7 +341,7 @@
     "ex": "schlagwortartig = stichwortartig, keine ganzen Sätze."
   },
   {
-    "theme": "visualisierung",
+    "theme": "mindmap-diagramme",
     "cat": "Tipps",
     "q": "Warum mit Lineal zeichnen?",
     "opts": [
@@ -354,7 +354,7 @@
     "ex": "Sauberkeit zählt in der Bewertung."
   },
   {
-    "theme": "visualisierung",
+    "theme": "mindmap-diagramme",
     "cat": "Tipps",
     "q": "Gleichwertige Aussagen sollen …",
     "opts": [
@@ -367,7 +367,7 @@
     "ex": "Gleiche Wichtigkeit → gleiche Darstellung."
   },
   {
-    "theme": "visualisierung",
+    "theme": "text-zu-grafik",
     "cat": "Vokabel",
     "q": "Was sind „Schlüsselwörter\"?",
     "opts": [
@@ -380,7 +380,7 @@
     "ex": "Schlüsselwörter = wichtige Stichworte im Text."
   },
   {
-    "theme": "visualisierung",
+    "theme": "text-zu-grafik",
     "cat": "Vokabel",
     "q": "Was ist die „Überschrift\" einer Grafik?",
     "opts": [
@@ -393,7 +393,7 @@
     "ex": "Überschrift = Titel der Grafik."
   },
   {
-    "theme": "visualisierung",
+    "theme": "text-zu-grafik",
     "cat": "Vokabel",
     "q": "Was ist ein „Teufelskreis\"?",
     "opts": [
@@ -406,7 +406,7 @@
     "ex": "Teufelskreis = sich verstärkende Ursache–Wirkung (Schleife)."
   },
   {
-    "theme": "visualisierung",
+    "theme": "text-zu-grafik",
     "cat": "Vokabel",
     "q": "Was bedeutet „Hierarchie\"?",
     "opts": [
@@ -419,7 +419,7 @@
     "ex": "Hierarchie = Rangordnung (z. B. Organigramm)."
   },
   {
-    "theme": "visualisierung",
+    "theme": "text-zu-grafik",
     "cat": "Vokabel",
     "q": "Wofür stehen „Anteile\" typischerweise?",
     "opts": [
@@ -432,7 +432,7 @@
     "ex": "Anteile = Teile eines Ganzen, oft in Prozent."
   },
   {
-    "theme": "visualisierung",
+    "theme": "text-zu-grafik",
     "cat": "Vokabel",
     "q": "Was zeigt eine „Entwicklung\" meist?",
     "opts": [
@@ -445,7 +445,7 @@
     "ex": "Entwicklung → oft Kurvendiagramm."
   },
   {
-    "theme": "visualisierung",
+    "theme": "text-zu-grafik",
     "cat": "Praxis",
     "q": "Getränke: Wasser 42, Softdrinks 28, Kaffee 18 … → Form?",
     "opts": [
@@ -458,7 +458,7 @@
     "ex": "Vergleich mehrerer Kategorien → Säule/Balken."
   },
   {
-    "theme": "visualisierung",
+    "theme": "text-zu-grafik",
     "cat": "Praxis",
     "q": "Strommix 52% · 26% · 15% · 1% · 6% → Form?",
     "opts": [
@@ -471,7 +471,7 @@
     "ex": "Anteile = 100% → Kreis."
   },
   {
-    "theme": "visualisierung",
+    "theme": "text-zu-grafik",
     "cat": "Praxis",
     "q": "Temperaturen mehrerer Städte in Juli und Juni → Form?",
     "opts": [
@@ -484,7 +484,7 @@
     "ex": "Exakte Zahlen + 2 Spalten → Tabelle."
   },
   {
-    "theme": "visualisierung",
+    "theme": "text-zu-grafik",
     "cat": "Praxis",
     "q": "Wartezeit → Unzufriedenheit → Beschwerde → Stress → … → Form?",
     "opts": [
@@ -497,7 +497,7 @@
     "ex": "Teufelskreis → Strukturbild."
   },
   {
-    "theme": "visualisierung",
+    "theme": "text-zu-grafik",
     "cat": "Praxis",
     "q": "Nachhaltigkeit: Einkauf, Energie, Mehrweg, Verschwendung → Form?",
     "opts": [
@@ -510,7 +510,7 @@
     "ex": "Viele Aspekte → Mindmap."
   },
   {
-    "theme": "visualisierung",
+    "theme": "text-zu-grafik",
     "cat": "Praxis",
     "q": "Gästezahlen Mo–Fr (45, 52, 48, 61, 78) → beste Form?",
     "opts": [
@@ -523,7 +523,7 @@
     "ex": "Entwicklung über Tage → Kurve."
   },
   {
-    "theme": "visualisierung",
+    "theme": "muster-ka",
     "cat": "KA",
     "q": "Was sollst du am Ende der Mindmap-KA tun?",
     "opts": [
@@ -536,7 +536,7 @@
     "ex": "Hinweis: Anzahl der Wörter zählen."
   },
   {
-    "theme": "visualisierung",
+    "theme": "muster-ka",
     "cat": "KA",
     "q": "Welche 3 Aspekte sind im Fleischkonsum-Text zentral?",
     "opts": [
@@ -549,7 +549,7 @@
     "ex": "Gesundheit · Umwelt · Tierwohl."
   },
   {
-    "theme": "visualisierung",
+    "theme": "mindmap-diagramme",
     "cat": "Hirn",
     "q": "Körpersprache (Gestik + Mimik) steuert vor allem die …",
     "opts": [
@@ -562,7 +562,7 @@
     "ex": "Rechts: kreativ, Bilder, Körpersprache."
   },
   {
-    "theme": "visualisierung",
+    "theme": "mindmap-diagramme",
     "cat": "Hirn",
     "q": "Mathematik und logisches Denken gehören eher zur …",
     "opts": [
@@ -575,7 +575,7 @@
     "ex": "Links: analytisch, Logik, Sprache, Mathe."
   },
   {
-    "theme": "visualisierung",
+    "theme": "mindmap-diagramme",
     "cat": "Tipps",
     "q": "Welche Achse trägt beim Kurvendiagramm meist die Zeit?",
     "opts": [
@@ -588,7 +588,7 @@
     "ex": "Zeit auf der X-Achse, Menge auf der Y-Achse."
   },
   {
-    "theme": "visualisierung",
+    "theme": "mindmap-diagramme",
     "cat": "Tipps",
     "q": "Was gehört in die Mitte einer Mindmap?",
     "opts": [
@@ -601,7 +601,7 @@
     "ex": "Thema in die Mitte, Äste = Aspekte."
   },
   {
-    "theme": "visualisierung",
+    "theme": "mindmap-diagramme",
     "cat": "Formen",
     "q": "Geschäftsführer → Küchenchef / Restaurantleiter → Mitarbeiter: Form?",
     "opts": [
@@ -614,7 +614,7 @@
     "ex": "Hierarchie von Personen → Organigramm."
   },
   {
-    "theme": "visualisierung",
+    "theme": "muster-ka",
     "cat": "Vokabel",
     "q": "Was bedeutet „Massentierhaltung\"?",
     "opts": [
@@ -627,7 +627,7 @@
     "ex": "Massentierhaltung = Haltung vieler Tiere auf engem Raum."
   },
   {
-    "theme": "visualisierung",
+    "theme": "muster-ka",
     "cat": "Vokabel",
     "q": "Was bedeutet „artgerechte Haltung\"?",
     "opts": [
@@ -640,7 +640,7 @@
     "ex": "artgerecht = den Bedürfnissen der Tierart entsprechend."
   },
   {
-    "theme": "visualisierung",
+    "theme": "muster-ka",
     "cat": "Vokabel",
     "q": "Was ist „Lebensmittelverschwendung\"?",
     "opts": [
@@ -653,7 +653,7 @@
     "ex": "Lebensmittelverschwendung = Wegwerfen von Lebensmitteln."
   },
   {
-    "theme": "visualisierung",
+    "theme": "mindmap-diagramme",
     "cat": "Definition",
     "q": "Visualisierung bedeutet vor allem …",
     "opts": [
@@ -666,7 +666,7 @@
     "ex": "Von Text → Darstellung/Grafik."
   },
   {
-    "theme": "visualisierung",
+    "theme": "mindmap-diagramme",
     "cat": "Tipps",
     "q": "Welche Aussage ist FALSCH?",
     "opts": [
@@ -677,6 +677,71 @@
     ],
     "a": 2,
     "ex": "Keine ganzen Sätze in der Grafik."
+  },
+  {
+    "theme": "muster-ka",
+    "cat": "Fleischkonsum",
+    "q": "Als was galt Fleisch in der Vergangenheit in Deutschland?",
+    "opts": [
+      "Als alltägliches Grundnahrungsmittel",
+      "Als Zeichen von Wohlstand (nur mit genug Geld regelmäßig)",
+      "Als ungesundes Verbotsprodukt",
+      "Als reines Tierfutter"
+    ],
+    "a": 1,
+    "ex": "Früher galt Fleisch als Zeichen von Wohlstand – nur wohlhabende Bürger konnten es sich regelmäßig leisten."
+  },
+  {
+    "theme": "muster-ka",
+    "cat": "Gesundheit",
+    "q": "Welche gesundheitliche Empfehlung geben Ernährungsexperten bezüglich Fleisch?",
+    "opts": [
+      "Täglich möglichst viel rotes Fleisch essen",
+      "Fleischkonsum reduzieren, mäßig verzehren und mehr pflanzliche Lebensmittel essen",
+      "Vollständig auf Eiweiß und Eisen verzichten",
+      "Nur verarbeitetes Fleisch (Wurstwaren) verzehren"
+    ],
+    "a": 1,
+    "ex": "Mäßiger Verzehr liefert Eiweiß und Eisen; zu viel rotes/verarbeitetes Fleisch erhöht Krankheitsrisiken. Daher pflanzliche Nahrung bevorzugen."
+  },
+  {
+    "theme": "muster-ka",
+    "cat": "Umwelt",
+    "q": "Warum belastet die Fleischproduktion die Umwelt besonders stark?",
+    "opts": [
+      "Weil keine Maschinen eingesetzt werden",
+      "Hoher Verbrauch von Wasser, Energie, Flächen sowie Treibhausgase und Waldrodung",
+      "Weil Tiere keinen Sauerstoff atmen",
+      "Weil zu viele Pflanzen wachsen"
+    ],
+    "a": 1,
+    "ex": "Große Mengen Wasser, Energie und Anbauflächen sowie Treibhausgase und Waldrodung belasten das Klima."
+  },
+  {
+    "theme": "muster-ka",
+    "cat": "Checkliste",
+    "q": "Welche Regel gilt für die Textbeschriftung in der Muster-Mindmap?",
+    "opts": [
+      "Ganze Sätze aus dem Text wörtlich abschreiben",
+      "Nur Stichworte / Schlüsselbegriffe verwenden und Wörter zählen",
+      "Jedes Wort großschreiben",
+      "Mindestens 500 Wörter schreiben"
+    ],
+    "a": 1,
+    "ex": "In der Mindmap stehen nur Stichworte (keine ganzen Sätze); am Ende werden die Wörter gezählt."
+  },
+  {
+    "theme": "muster-ka",
+    "cat": "Bewertung",
+    "q": "Was gehört zu den zentralen Bewertungskriterien bei der Mindmap-Klassenarbeit?",
+    "opts": [
+      "Möglichst bunte Glitzerfarben ohne Struktur",
+      "Vollständigkeit der Aspekte, korrekte Mindmap-Hierarchie, Stichworte und saubere Zeichnung",
+      "Dass mindestens 10 Seiten Text geschrieben werden",
+      "Dass nur eine einzige Linie gezeichnet wird"
+    ],
+    "a": 1,
+    "ex": "Bewertet werden Erfassen der wesentlichen Kernaspekte, hierarchische Mindmap-Struktur, Beschränkung auf Stichworte und Übersichtlichkeit."
   }
 ];
-})(window);
+})(typeof window !== "undefined" ? window : global);

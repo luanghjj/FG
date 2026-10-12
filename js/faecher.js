@@ -2694,44 +2694,233 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
         id: "deutsch",
         code: "D",
         name: "Deutsch",
-        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 12h18"/></svg>',
-        accent: "#2563eb",
-        soft: "#eff6ff",
+        icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
+        accent: "#9A4607",
+        soft: "#FDF8EE",
         teacher: "Herrn Kling",
         examDate: "2026-07-16",
         ready: true,
-        desc: "Visualisierung · Mindmap · Diagramme",
-        external: "klassenarbeiten/deutsch.html",
+        desc: "Visualisierung · Mindmap · Diagramme · Text → Grafik",
         groups: [
           {
-            id: "ka",
-            badge: "KA",
-            title: "Klassenarbeit",
+            id: "visualisierung",
+            badge: "KA · Visualisierung",
+            title: "Visualisierung & Darstellungsformen",
             items: [
               {
-                id: "visualisierung",
-                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2z"/></svg>',
-                name: "Visualisierung",
-                desc: "Mindmap, Diagramme, Text → Grafik",
-                content: `<h2> Visualisierung</h2>
-                  <div class="hint">Text → Grafik · Mindmap · Diagrammtypen · KA-Training</div>
-                  <p><a class="btn" href="klassenarbeiten/deutsch.html">Deutsch-App öffnen (Theorie + Üben) →</a></p>
-                  <h3 class="sub">1. Was ist Visualisierung?</h3>
-                  <p><span class="term" data-de="Visualisierung" data-vi="trực quan hóa">Visualisierung</span> von Texten = Wesentliches als Grafik/Schaubild darstellen (nicht nur abschreiben).</p>
-                  <h3 class="sub">2. Häufige Formen</h3>
-                  <ul>
-                    <li><span class="term" data-de="Mindmap" data-vi="sơ đồ tư duy">Mindmap</span> – Ideen/Struktur vom Zentrum aus</li>
-                    <li><span class="term" data-de="Diagramm" data-vi="biểu đồ">Diagramm</span> – Kurve, Balken, Kreis, Fluss…</li>
-                    <li><span class="term" data-de="Sachtext" data-vi="văn bản thông tin">Sachtext</span> → Kernaussagen markieren → passende Form wählen</li>
-                  </ul>
-                  <div class="note"> In der App: Theorie, Matching, Praxis &amp; 50+ Quizfragen zur KA.</div>
-                  <h3 class="sub">3. Begriffe</h3>
-                  <ul>
-                    <li><span class="term" data-de="Mindmap" data-vi="sơ đồ tư duy">Mindmap</span></li>
-                    <li><span class="term" data-de="Diagramm" data-vi="biểu đồ">Diagramm</span></li>
-                    <li><span class="term" data-de="Visualisierung" data-vi="trực quan hóa">Visualisierung</span></li>
-                    <li><span class="term" data-de="Sachtext" data-vi="văn bản thông tin">Sachtext</span></li>
-                  </ul>`,
+                id: "mindmap-diagramme",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><line x1="7.5" y1="7.5" x2="10" y2="10"/><line x1="16.5" y1="7.5" x2="14" y2="10"/><line x1="7.5" y1="16.5" x2="10" y2="14"/><line x1="16.5" y1="16.5" x2="14" y2="14"/></svg>',
+                name: "Mindmap & Diagrammtypen (6 Grundformen)",
+                desc: "Mindmap, Fluss-, Säulen-, Balken-, Kreis- & Liniendiagramm · Zweck & Regeln",
+                content: `<h2>Mindmap &amp; Diagrammtypen</h2>
+<div class="hint">Visualisierung von Texten · 6 Grundformen · Gestaltungsregeln · Gehirnhälften-Modell</div>
+
+<h3 class="sub">1. Was ist Visualisierung?</h3>
+<p><span class="term" data-de="Visualisierung" data-vi="trực quan hóa">Visualisierung</span> von Texten bedeutet, einen Sachtext oder Sachverhalt als <span class="term" data-de="Schaubild" data-vi="sơ đồ / hình minh họa">Schaubild</span> oder <span class="term" data-de="Grafik" data-vi="đồ họa / biểu đồ">Grafik</span> darzustellen.</p>
+<div class="note"><b>Merkhilfe:</b> „Bilder sagen mehr als tausend Worte." Text auf das Wesentliche reduzieren und den roten Faden sichtbar machen.</div>
+
+<h4 style="margin:14px 0 6px">Ziele &amp; Vorteile</h4>
+<ul>
+  <li><b>Wesentliches reduzieren:</b> Überflüssige Füllwörter weglassen, nur zentrale Aussagen erfassen.</li>
+  <li><b>Roten Faden sichtbar machen:</b> Zusammenhänge und logische Strukturen auf einen Blick erkennbar machen.</li>
+  <li><b>Besseres Behalten:</b> Grafische Darstellungen bleiben schneller und länger im Gedächtnis verankert.</li>
+  <li><b>Keine ganzen Sätze:</b> In Schaubildern werden ausschließlich <span class="term" data-de="Stichwort" data-vi="từ khóa / ý chính">Stichworte</span> und <span class="term" data-de="Schlüsselwort" data-vi="từ khóa cốt lõi">Schlüsselwörter</span> verwendet!</li>
+</ul>
+
+<h3 class="sub">2. Die 6 Grundformen der Visualisierung</h3>
+<p>Je nach Art der Information muss die passende Darstellungsform gewählt werden:</p>
+<table class="t" style="margin:10px 0;width:100%">
+  <thead>
+    <tr><th>Diagrammform</th><th>Wann einsetzen? (Zweck)</th><th>Wichtigste Merkmale</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b><span class="term" data-de="Kurvendiagramm" data-vi="biểu đồ đường / đồ thị">Kurvendiagramm</span></b> (Liniendiagramm)</td>
+      <td><span class="term" data-de="Entwicklung" data-vi="xu hướng / sự phát triển">Entwicklung</span> über einen Zeitraum (Zeitreihen)</td>
+      <td>Zeitachse immer auf der waagerechten X-Achse (Jahre, Monate, Stunden), Menge/Werte auf der senkrechten Y-Achse.</td>
+    </tr>
+    <tr>
+      <td><b><span class="term" data-de="Säulendiagramm" data-vi="biểu đồ cột dọc">Säulendiagramm</span> / <span class="term" data-de="Balkendiagramm" data-vi="biểu đồ thanh ngang">Balkendiagramm</span></b></td>
+      <td><span class="term" data-de="Vergleich" data-vi="so sánh">Vergleich</span> mehrerer Größen oder Kategorien</td>
+      <td>Mehrere Größen visuell nebeneinander stellen. Säulen = vertikal, Balken = horizontal.</td>
+    </tr>
+    <tr>
+      <td><b><span class="term" data-de="Kreisdiagramm" data-vi="biểu đồ tròn">Kreisdiagramm</span></b> (Tortendiagramm)</td>
+      <td><span class="term" data-de="Anteile" data-vi="tỷ lệ phần trăm">Anteile</span> eines Ganzen (Prozentwerte, Summe = 100 %)</td>
+      <td>Zeigt, wie sich eine Gesamtheit aufteilt. Wichtig: Nicht für Zeitverläufe verwenden!</td>
+    </tr>
+    <tr>
+      <td><b><span class="term" data-de="Tabelle" data-vi="bảng số liệu">Tabelle</span></b></td>
+      <td>Exakte Zahlen, genaue Messwerte, mehrere Spalten</td>
+      <td>Präzise Gegenüberstellung mit klaren Spaltenköpfen und Maßeinheiten.</td>
+    </tr>
+    <tr>
+      <td><b><span class="term" data-de="Strukturbild" data-vi="sơ đồ cấu trúc / nhân–quả">Strukturbild</span></b> (Flussdiagramm)</td>
+      <td>Abläufe, Prozesse, <span class="term" data-de="Ursache-Wirkung" data-vi="nguyên nhân – kết quả">Ursache und Wirkung</span></td>
+      <td>Pfeile zeigen Richtungen (A → B → C). Gut geeignet für Kreisläufe und Zusammenhänge.</td>
+    </tr>
+    <tr>
+      <td><b><span class="term" data-de="Organigramm" data-vi="sơ đồ tổ chức / cấp bậc">Organigramm</span></b></td>
+      <td><span class="term" data-de="Hierarchie" data-vi="hệ thống cấp bậc">Hierarchie</span>, Über- und Unterordnung von Personen/Abteilungen</td>
+      <td>Zeigt Organisationsstrukturen (z.B. Geschäftsführer → Abteilungsleiter → Mitarbeiter).</td>
+    </tr>
+    <tr>
+      <td><b><span class="term" data-de="Mindmap" data-vi="sơ đồ tư duy">Mindmap</span></b></td>
+      <td>Ideensammlung, Erfassen komplexer Texte, Themenübersicht</td>
+      <td>Thema im Zentrum, 4–6 Hauptäste für Kernaspekte, verzweigte Unteräste, nur Stichworte.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="note"><b>Schnellmerkformel:</b> % → Kreis · Zeit → Kurve · Vergleich → Säule · exakte Zahlen → Tabelle · Text/Ideen → Mindmap · Kausalität/Ablauf → Strukturbild · Hierarchie → Organigramm.</div>
+
+<h3 class="sub">3. Regeln für eine korrekte Mindmap</h3>
+<ol>
+  <li><b>Zentrum:</b> Das Hauptthema steht deutlich hervorgehoben in der Mitte des Blattes (z.B. in einem Kreis oder Kasten).</li>
+  <li><b>Hauptäste:</b> Vom Zentrum gehen dicke Hauptäste für die zentralen Oberthemen/Aspekte aus.</li>
+  <li><b>Unteräste:</b> An den Hauptästen verzweigen sich dünnere Unteräste für Detailinformationen.</li>
+  <li><b>Nur Stichworte:</b> Keine ganzen Sätze! Maximal 1 bis 3 Wörter pro Ast.</li>
+  <li><b>Lesbarkeit &amp; Sauberkeit:</b> Deutlich und waagerecht schreiben, damit man das Blatt beim Lesen nicht drehen muss.</li>
+  <li><b>Farben &amp; Symbole:</b> Äste farblich unterscheiden und sinnvolle Symbole/Pfeile zur Verknüpfung nutzen.</li>
+</ol>
+
+<h3 class="sub">4. Gehirnhälften-Modell (Mindmap-Hintergrund)</h3>
+<p>Das menschliche Gehirn besteht aus zwei Hälften, die unterschiedliche Denkweisen steuern:</p>
+<ul>
+  <li><b><span class="term" data-de="Rechte Hirnhälfte" data-vi="bán cầu não phải">Rechte Hirnhälfte</span>:</b> Arbeitet analog und ganzheitlich. Denkt in Bildern, Mustern, Gefühlen und Farben. Zuständig für Kreativität, Musikalität, Intuition und Körpersprache (Gestik &amp; Mimik).</li>
+  <li><b><span class="term" data-de="Linke Hirnhälfte" data-vi="bán cầu não trái">Linke Hirnhälfte</span>:</b> Arbeitet analytisch, digital und logisch. Speichert abstrakte Daten wie Texte, Tabellen, Zahlen und Grammatik. Zuständig für Mathematik, Logik, Planung und strukturierte Gliederung.</li>
+</ul>
+<div class="hint">Mindmaps verbinden beide Hirnhälften: Die logische Textstruktur (links) wird mit bildhafter Anordnung und Farben (rechts) verknüpft!</div>
+
+<h3 class="sub">5. Gestaltungs- und Bewertungskriterien</h3>
+<ul>
+  <li><b>Überschrift:</b> Jede Grafik braucht eine aussagekräftige Überschrift, die das Thema benennt.</li>
+  <li><b>Lineal verwenden:</b> Achsen, Tabellenstriche und Rahmen immer sauber mit Lineal zeichnen!</li>
+  <li><b>Achsenbeschriftung &amp; Einheiten:</b> Bei Diagrammen immer Achsen beschriften und Maßeinheiten (€, %, kg, Jahre) angeben.</li>
+  <li><b>Groß- und Kleinschreibung:</b> Auch in Stichworten gilt: Nur Substantive und Satzanfänge großschreiben!</li>
+</ul>`,
+              },
+              {
+                id: "text-zu-grafik",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>',
+                name: "Text → Grafik: 4 Schritte & Kernaussagen",
+                desc: "Lesen, Kernaussagen filtern, Form begründet wählen, Struktur gestalten · Teufelskreis",
+                content: `<h2>Text → Grafik: 4 Schritte &amp; Kernaussagen</h2>
+<div class="hint">Systematische Methode · Sachtexte erfassen · Ursache-Wirkungs-Ketten · Teufelskreis</div>
+
+<h3 class="sub">1. Die 4 Arbeitsschritte zur Visualisierung</h3>
+<p>Um aus einem fortlaufenden Sachtext eine fehlerfreie Grafik zu erstellen, folgt man stets dieser bewährten Reihenfolge:</p>
+
+<div class="step-card" style="border:1px solid var(--line);border-radius:12px;padding:12px;margin:8px 0;background:var(--surface)">
+  <b>Schritt 1: Fragestellung analysieren</b>
+  <p style="margin:4px 0 0;font-size:.9em">Was genau wird verlangt? Die Aufgabenstellung gründlich lesen und das geforderte Produkt markieren (z.B. „Erstelle eine Mindmap" oder „Vergleiche die Werte in einem Diagramm").</p>
+</div>
+
+<div class="step-card" style="border:1px solid var(--line);border-radius:12px;padding:12px;margin:8px 0;background:var(--surface)">
+  <b>Schritt 2: Text gründlich lesen</b>
+  <p style="margin:4px 0 0;font-size:.9em">Den <span class="term" data-de="Sachtext" data-vi="văn bản thông tin / văn bản nhật dụng">Sachtext</span> mindestens einmal vollständig von Anfang bis Ende lesen, um den Gesamtzusammenhang und die Hauptaussage zu erfassen.</p>
+</div>
+
+<div class="step-card" style="border:1px solid var(--line);border-radius:12px;padding:12px;margin:8px 0;background:var(--surface)">
+  <b>Schritt 3: Kernaussagen filtern &amp; markieren</b>
+  <p style="margin:4px 0 0;font-size:.9em"><span class="term" data-de="Kernaussage" data-vi="thông điệp cốt lõi / ý chính">Kernaussagen</span> und <span class="term" data-de="Schlüsselwort" data-vi="từ khóa cốt lõi">Schlüsselwörter</span> mit Textmarker unterstreichen. Unwichtige Ausschmückungen, Füllwörter und Wiederholungen bewusst weglassen.</p>
+</div>
+
+<div class="step-card" style="border:1px solid var(--line);border-radius:12px;padding:12px;margin:8px 0;background:var(--surface)">
+  <b>Schritt 4: Darstellungsform begründet wählen &amp; gestalten</b>
+  <p style="margin:4px 0 0;font-size:.9em">Die passende Form nach den Datenmerkmalen auswählen (Zeitverlauf, Anteile, Vergleich, Hierarchie, Kausalität). Anschließend die Grafik sauber mit Überschrift, Einheiten und Lineal zeichnen.</p>
+</div>
+
+<h3 class="sub">2. Kausalitätsdiagramme &amp; der Teufelskreis</h3>
+<p>Wenn ein Text Ursachen und Folgen beschreibt, eignet sich ein <span class="term" data-de="Strukturbild" data-vi="sơ đồ cấu trúc / nhân–quả">Strukturbild</span> mit logischen Pfeilen (A → B → C).</p>
+<p>Ein besonderer Fall ist der <b><span class="term" data-de="Teufelskreis" data-vi="vòng luẩn quẩn / vòng xoáy tiêu cực">Teufelskreis</span></b> (Vicious Circle): Eine Kette von negativen Ereignissen, bei der das Endergebnis die ursprüngliche Ursache wieder verstärkt.</p>
+
+<div class="note">
+  <b>Beispiel aus dem Unterricht: Teufelskreis „Negatives Denken bei Azubis"</b>
+  <p style="margin:6px 0 0">
+    Negatives Denken („Das schaffe ich nie")<br>
+    → Angst und übervorsichtiges Zögern beim Arbeiten<br>
+    → Fehler und Verzögerungen im Service/Küche<br>
+    → Kritik durch den Ausbilder / Küchenchef<br>
+    → Gefühl des Versagens und sinkendes Selbstwertgefühl<br>
+    → <b>verstärkt wiederum das negative Denken!</b> (Kreislauf schließt sich)
+  </p>
+</div>
+
+<h3 class="sub">3. Praxisszenarien: Welcher Text verlangt welche Form?</h3>
+<ul>
+  <li><b>Stromerzeugung (Erneuerbare 52 %, Kohle 26 %, Gas 15 %, Sonstige 7 %):</b> Gesamtheit = 100 % Anteile → <b>Kreisdiagramm</b>.</li>
+  <li><b>Umsatzentwicklung eines Restaurants 2018 bis 2026:</b> Zeitverlauf auf X-Achse, Umsatz auf Y-Achse → <b>Kurvendiagramm</b>.</li>
+  <li><b>Gästezufriedenheit in 4 verschiedenen Hotelabteilungen:</b> Vergleich mehrerer eigenständiger Gruppen → <b>Balken- oder Säulendiagramm</b>.</li>
+  <li><b>Bestellablauf von der Warenannahme bis zur Einlagerung:</b> Prozessschritte in zeitlicher Abfolge → <b>Flussdiagramm / Strukturbild</b>.</li>
+  <li><b>Personelle Struktur einer Hotelbrigade:</b> Hoteldirektor über F&amp;B-Manager, Chef de Cuisine und Restaurantleiter → <b>Organigramm</b>.</li>
+</ul>
+
+<h3 class="sub">4. Typische Fehler vermeiden</h3>
+<div class="hint">
+  <ul>
+    <li>Falsche Form: Ein Kreisdiagramm für eine Zeitreihe wählen (z.B. Jahre im Tortenstück) ist ein schwerer Fehler!</li>
+    <li>Ganze Sätze: Fließtext in die Äste einer Mindmap schreiben führt zu Punktabzug. Nur prägnante Stichwörter verwenden.</li>
+    <li>Fehlende Überschrift: Jede Visualisierung muss sofort erkennen lassen, welches Thema behandelt wird.</li>
+    <li>Freihand zeichnen: Achsen, Tabellenlinien und Kästen müssen immer mit Lineal gezeichnet werden.</li>
+  </ul>
+</div>`,
+              },
+            ],
+          },
+          {
+            id: "ka-praxis",
+            badge: "KA · Training",
+            title: "Klassenarbeit Praxis & Musteraufgabe",
+            items: [
+              {
+                id: "muster-ka",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>',
+                name: "Muster-Klassenarbeit (Herrn Kling) & Checkliste",
+                desc: "Originaltext Fleischkonsum · Kernaussagen · Muster-Mindmap · Bewertungskriterien",
+                content: `<h2>Muster-Klassenarbeit (Herrn Kling) &amp; Checkliste</h2>
+<div class="hint">Prüfungsaufgabe · Original-Sachtext · Kernaussagen · Muster-Mindmap · Bewertungskriterien</div>
+
+<p><a class="btn" href="klassenarbeiten/deutsch.html">Interaktive Deutsch-App öffnen (Training + Musterlösung) →</a></p>
+
+<h3 class="sub">1. Aufgabenstellung der Klassenarbeit</h3>
+<div class="note">
+  <b>Aufgabe:</b> Visualisiere den folgenden Sachtext <i>„Fleischkonsum in Deutschland"</i> in Form einer vollständigen und übersichtlichen <b>Mindmap</b> auf einem separaten Blatt. Übernimm alle wichtigen Kerninformationen und zähle am Ende die Anzahl deiner verwendeten Wörter.
+</div>
+
+<h3 class="sub">2. Originaltext: „Fleischkonsum in Deutschland"</h3>
+<div style="background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;margin:10px 0;line-height:1.6">
+  <p><b>Fleischkonsum in Deutschland</b></p>
+  <p>In der <b>Vergangenheit</b> galt Fleisch in Deutschland als <span class="term" data-de="Wohlstand" data-vi="sự giàu có / thịnh vượng">Zeichen von Wohlstand</span>. Nur Menschen mit ausreichend Geld konnten es sich leisten, regelmäßig Fleisch zu essen. Mit dem steigenden Lebensstandard wurde Fleisch jedoch immer günstiger und für fast alle Menschen verfügbar. Heute gehört es für viele zum Alltag, sei es zu Hause, in der Kantine oder unterwegs.</p>
+  <p>In den letzten Jahren hat sich die Einstellung zum Fleischkonsum jedoch verändert. Immer mehr Menschen beschäftigen sich mit den Folgen ihres Essverhaltens. Dabei spielen vor allem <b>drei Aspekte</b> eine wichtige Rolle: die <b>Gesundheit</b>, der <b>Umweltschutz</b> und das <b>Tierwohl</b>.</p>
+  <p><b>Gesundheit:</b> Aus gesundheitlicher Sicht liefert Fleisch wichtige Nährstoffe wie <span class="term" data-de="Eiweiß" data-vi="chất đạm / protein">Eiweiß</span> und <span class="term" data-de="Eisen" data-vi="sắt (khoáng chất)">Eisen</span>. Ein mäßiger Verzehr kann daher sinnvoll sein. Zu viel rotes oder verarbeitetes Fleisch kann jedoch das Risiko für verschiedene Krankheiten erhöhen. Ernährungsexperten empfehlen deshalb, den Fleischkonsum zu reduzieren und häufiger pflanzliche Lebensmittel wie Gemüse, Obst oder <span class="term" data-de="Hülsenfrüchte" data-vi="các loại đậu">Hülsenfrüchte</span> zu essen.</p>
+  <p><b>Umweltschutz:</b> Auch die Umwelt wird durch die Fleischproduktion stark belastet. Für die Tierhaltung werden große Mengen an Wasser, Energie und Anbauflächen benötigt. Zudem entstehen <span class="term" data-de="Treibhausgase" data-vi="khí nhà kính">Treibhausgase</span>, die zur <span class="term" data-de="Klimaerwärmung" data-vi="sự nóng lên toàn cầu">Klimaerwärmung</span> beitragen. Häufig werden Wälder gerodet, um Platz für Futtermittel zu schaffen. Dadurch gehen wichtige Lebensräume verloren und das Klima wird weiter geschädigt.</p>
+  <p><b>Tierwohl:</b> Ein weiterer wichtiger Punkt ist das Tierwohl. In der <span class="term" data-de="Massentierhaltung" data-vi="chăn nuôi công nghiệp tập trung">Massentierhaltung</span> leben viele Tiere auf engem Raum und unter schlechten Bedingungen. Deshalb achten immer mehr Verbraucher auf die Herkunft des Fleisches und bevorzugen Produkte aus <span class="term" data-de="artgerechte Haltung" data-vi="chăn nuôi nhân đạo / phù hợp tập tính">artgerechter Haltung</span>.</p>
+  <p>Diese <b>Entwicklungen</b> führen zu einem veränderten Ernährungsverhalten. Viele Menschen essen heute bewusster und reduzieren Fleischkonsum. Andere verzichten ganz auf tierische Produkte und ernähren sich vegetarisch oder vegan. Langfristig könnte ein geringerer Fleischkonsum dazu beitragen, die Umwelt zu schützen, die Gesundheit zu verbessern und das Leben der Tiere zu erleichtern.</p>
+</div>
+
+<h3 class="sub">3. Kernaussagen &amp; Mindmap-Struktur</h3>
+<ul>
+  <li><b>Zentrum der Mindmap:</b> „Fleischkonsum in Deutschland"</li>
+  <li><b>Hauptast 1: Vergangenheit &amp; Wandel:</b> Früher Zeichen von Wohlstand · steigender Lebensstandard → günstig &amp; für alle verfügbar · Alltagskonsum.</li>
+  <li><b>Hauptast 2: Gesundheit:</b> Liefert Eiweiß &amp; Eisen (mäßig sinnvoll) · Risiko bei zu viel rotem/verarbeitetem Fleisch · Empfehlung: Reduzieren, mehr Hülsenfrüchte &amp; Gemüse.</li>
+  <li><b>Hauptast 3: Umweltschutz:</b> Hoher Verbrauch an Wasser, Energie, Fläche · Treibhausgase &amp; Klimaerwärmung · Waldrodung für Tierfutter · Verlust von Lebensräumen.</li>
+  <li><b>Hauptast 4: Tierwohl:</b> Problem Massentierhaltung (Enge, schlechte Bedingungen) · Herkunft prüfen · Trend zu artgerechter Haltung.</li>
+  <li><b>Hauptast 5: Zukünftige Entwicklungen:</b> Bewussterer Konsum · Trend zu vegetarisch / vegan · langfristige Vorteile für Mensch, Tier &amp; Umwelt.</li>
+</ul>
+
+<h3 class="sub">4. Prüfungs-Checkliste für die Klassenarbeit</h3>
+<div class="note">
+  <b>Vor der Abgabe prüfen:</b>
+  <ol>
+    <li>Steht das Thema deutlich in der Mitte des Blattes?</li>
+    <li>Sind alle 5–6 Hauptäste vorhanden (Vergangenheit, Gesundheit, Umwelt, Tierwohl, Entwicklung)?</li>
+    <li>Wurden ausschließlich Stichworte verwendet (keine ganzen Sätze)?</li>
+    <li>Wurden die Äste hierarchisch unterteilt und farblich/visuell gegliedert?</li>
+    <li>Wurde die Gesamtzahl der geschriebenen Wörter am Rand notiert?</li>
+    <li>Sind alle Substantive und Eigennamen korrekt großgeschrieben?</li>
+  </ol>
+</div>`,
               },
             ],
           },
@@ -5084,6 +5273,22 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
       pruefungen: [
         { title: "Musterprüfung", desc: "Klassenarbeit Nr. 2 · Prüfungsbogen", exam: "klassenarbeiten/kiemtra_mau.html", loesung: "klassenarbeiten/loiGiai_mau.html" },
         { title: "Zusammenfassung KA2", desc: "LF2 Waren & Lieferung · LF3", exam: "klassenarbeiten/ka2.html", loesung: null },
+      ],
+    },
+    deutsch: {
+      zusammenfassung: "klassenarbeiten/deutsch.html",
+      examThemes: ["mindmap-diagramme", "text-zu-grafik", "muster-ka"],
+      examChecklist: [
+        "6 Grundformen (Mindmap, Fluss-, Säulen-, Balken-, Kreis-, Liniendiagramm)",
+        "Formauswahl begründen (Zeitverlauf, Anteile %, Vergleich, Hierarchie, Kausalität)",
+        "Regeln für eine korrekte Mindmap (Zentrum, Hauptäste, Unteräste, Stichworte)",
+        "4-Schritte-Methode (Fragestellung analysieren → Text lesen → Markieren → Form wählen → Zeichnen)",
+        "Ursache-Wirkungs-Kette / Teufelskreis (Pfeile A → B → C)",
+        "Muster-KA Fleischkonsum: 3 Aspekte erfassen (Gesundheit, Umwelt, Tierwohl)",
+        "Prüfungsregeln einhalten: Lineal, nur Stichworte, keine ganzen Sätze, Wörter zählen",
+      ],
+      pruefungen: [
+        { title: "Klassenarbeit Deutsch · Visualisierung", desc: "Mindmap, Diagramme, Sachtext → Grafik (Herrn Kling) · Interaktive Lern- & Übungsapp", exam: "klassenarbeiten/deutsch.html", loesung: "klassenarbeiten/deutsch.html" },
       ],
     },
     englisch: {

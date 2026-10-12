@@ -1459,10 +1459,10 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
       <b>BfK-2 · Quiz</b>
       <span>10 Fragen · Fleisch</span>
     </div>
-    <div class="today-card" onclick="location.href='klassenarbeiten/deutsch.html'">
-      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3v18"/><path d="M6 4h11l-2.6 3.6L17 11.2H6z"/></svg></div>
+    <div class="today-card" onclick="go('#/fach/deutsch')">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
       <b>Deutsch</b>
-      <span>Visualisierung üben</span>
+      <span>Visualisierung &amp; KA</span>
     </div>
     <div class="today-card" onclick="go('#/bfk/1')">
       <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="13" r="7"/><circle cx="11" cy="13" r="2.6"/><path d="M18 13h4"/></svg></div>
@@ -5189,9 +5189,9 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 <script src="./faecher/bfk1/bfk1-data.js?v=20"></script>
 <script src="./faecher/bfk1/bfk1-quiz.js?v=15"></script>
 <script src="./faecher/bfk2/bfk2-quiz.js?v=4"></script>
-<script src="./faecher/deutsch/deutsch-quiz.js?v=1"></script>
+<script src="./faecher/deutsch/deutsch-quiz.js?v=2"></script>
 <script src="./faecher/gk/gk-gle-data.js?v=2"></script>
-<script src="./js/faecher.js?v=17"></script>
+<script src="./js/faecher.js?v=18"></script>
 <script src="./js/search-pages-data.js?v=1"></script>
 <script src="./faecher/gk/gk-uebungen.js?v=4"></script>
 <script>
@@ -5912,13 +5912,6 @@ function examThemeCatalog(ex){
       {id:'pruefungen', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8a2 2 0 0 1 2-2h3.8l2 2H19a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 11h18"/></svg>', name:'Prüfungen', desc:'Muster + Lösungen', route:'#/bfk/2/pruefungen', qCount:0, group:'KA'},
     ].concat(total && !nFleisch && !nKueche ? [{id:'quiz', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4-1L19.4 7.6a1.9 1.9 0 0 0-2.7-2.7L5.3 16.3z"/><path d="M14.5 6.6 17.4 9.5"/><path d="M4 20l4-1"/></svg>', name:'Quiz BfK-2', desc:'MC Selbsttest', route:'#/bfk/2/quiz', qCount:total, group:'Üben'}] : []);
   }
-  if(ex.id==='deutsch'){
-    const n=(window.DEUTSCH_QUIZ||[]).length;
-    return [
-      {id:'visualisierung', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6c-.8-1.4-3-1.7-4.2-.5C6.5 4.8 4.3 5.4 4.3 7.3 3.2 7.7 2.8 9 3.5 9.9c-.7.8-.5 2.1.5 2.6-.2 1.1.8 2.1 1.9 1.9.4.9 1.5 1.3 2.4.8.5.6 1.2.9 1.9.8"/><path d="M12 6c.8-1.4 3-1.7 4.2-.5C17.5 4.8 19.7 5.4 19.7 7.3c1.1.4 1.5 1.7.8 2.6.7.8.5 2.1-.5 2.6.2 1.1-.8 2.1-1.9 1.9-.4.9-1.5 1.3-2.4.8-.5.6-1.2.9-1.9.8"/><path d="M12 6v13"/></svg>', name:'Visualisierung', desc:'Mindmap · Diagramme · Quiz', route:'#/fach/deutsch/theme/visualisierung', qCount:n, group:'KA'},
-      {id:'deutsch-app', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3v18"/><path d="M6 4h11l-2.6 3.6L17 11.2H6z"/></svg>', name:'Deutsch-App', desc:'Theorie + Üben (Vollansicht)', route:'klassenarbeiten/deutsch.html', qCount:0, group:'KA', external:true},
-    ];
-  }
   try{
     ensureFachRegistry();
     const fach=window.FachForm && window.FachForm.findFach(ex.id);
@@ -5926,7 +5919,7 @@ function examThemeCatalog(ex){
     const quiz=fach.quiz||[];
     const counts={}; quiz.forEach(q=>{ counts[q.theme]=(counts[q.theme]||0)+1; });
     return window.FachForm.allThemes(fach).map(t=>({
-      id:t.id, icon:t.icon||'📘', name:t.name, desc:t.desc||t.groupBadge||'',
+      id:t.id, icon:t.icon||'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>', name:t.name, desc:t.desc||t.groupBadge||'',
       route:'#/fach/'+fach.id+'/theme/'+t.id,
       qCount:counts[t.id]||0, group:t.groupBadge||t.groupTitle||''
     }));
@@ -5992,23 +5985,7 @@ function startExamPractice(examId, mode, themeIds){
     setTimeout(()=>{ try{ if(mode==='quick' && typeof quizStart==='function') quizStart('quick'); else if(typeof quizStart==='function') quizStart('all'); }catch(e){} }, 120);
     return;
   }
-  if(ex.id==='deutsch'){
-    if(mode==='learn' || mode==='flash'){
-      const first=(ids&&ids[0] && ids[0]!=='deutsch-app') ? ids[0] : 'visualisierung';
-      if(first==='deutsch-app'){ location.href='klassenarbeiten/deutsch.html'; return; }
-      go('#/fach/deutsch/theme/'+first);
-      return;
-    }
-    // quiz modes via FachForm + DEUTSCH_QUIZ
-    const themeIds=(ids&&ids.length)? ids.filter(x=>x!=='deutsch-app') : ['visualisierung'];
-    if(window.DEUTSCH_QUIZ && DEUTSCH_QUIZ.length){
-      fachQuizStart('deutsch', themeIds.length?themeIds:['visualisierung'], mode==='quick'?'quick':'all');
-      return;
-    }
-    location.href='klassenarbeiten/deutsch.html';
-    return;
-  }
-  // standard FachForm exams (englisch, gk, …)
+  // standard FachForm exams (deutsch, englisch, gk, …)
   if(mode==='learn'){
     go(ids&&ids[0] ? '#/fach/'+ex.id+'/theme/'+ids[0] : examStudyRoute(ex));
     return;
@@ -7735,9 +7712,9 @@ const SUBJECT_GROUPS = [
       {code:"WiKO", name:"Wirtschaftskompetenz", icon:"<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M4 4v16h16'/><path d='M8 17v-4'/><path d='M12.5 17V9'/><path d='M17 17v-6'/></svg>", accent:"#32ADE6", soft:"#E4F4FD", ready:true, route:"#/fach/wiko",
         desc:"Duales System · BBiG · Arbeitsschutz · Kündigung · Betriebsrat · Lohn & Steuern.",
         topics:["Duales System","BBiG","Arbeitsschutz","Kündigung","Betriebsrat","Tarifvertrag","Lohn","Kaufvertrag"], meta:"Fr. Leyh & RM (Remsing)"},
-      {code:"D", name:"Deutsch", icon:"<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M6 3v18'/><path d='M6 4h11l-2.6 3.6L17 11.2H6z'/></svg>", accent:"#B45309", soft:"#FDF8EE", ready:true, route:"#/fach/deutsch",
-        desc:"Visualisierung · Mindmap · Diagramme (Standard-Form).",
-        topics:["Visualisierung","Mindmap","Diagramme","Sachtext"], meta:"Herrn Kling", examDate:"2026-07-16"},
+      {code:"D", name:"Deutsch", icon:"<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M4 19.5A2.5 2.5 0 0 1 6.5 17H20'/><path d='M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z'/></svg>", accent:"#9A4607", soft:"#FDF8EE", ready:true, route:"#/fach/deutsch",
+        desc:"Visualisierung · Mindmap · Diagramme · Text → Grafik.",
+        topics:["Mindmap","Diagrammtypen","Text → Grafik","Muster-KA"], meta:"Herrn Kling", examDate:"2026-07-16"},
       {code:"GK", name:"Gemeinschaftskunde", icon:"<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M3 9 12 4l9 5'/><path d='M4.5 9.5v7'/><path d='M9 9.5v7'/><path d='M15 9.5v7'/><path d='M19.5 9.5v7'/><path d='M3 20h18'/></svg>", accent:"#34C759", soft:"#E3F7E8", ready:true, route:"#/fach/gk",
         desc:"Partizipation · Demokratie GG · Gewaltenteilung · Karikatur.",
         topics:["Partizipation","Direkte Demokratie","Gewaltenteilung","Vertrauensfrage","Grundrechte"], meta:"BS (Buß-Schroeder)", examDate:"2026-07-22"},
@@ -8358,18 +8335,12 @@ idx("BFK Quiz","Multiple-Choice Fleisch · Gerichte · Gewebe · Ernährung","Qu
 
 // Deutsch / Visualisierung
 [
-  ["Deutsch · Visualisierung","KA 16.07.26 · Mindmap · Diagramme · Quiz","deutsch visualisierung ka"],
-  ["Mindmap","Thema in der Mitte · Äste · Stichworte","mindmap ideensammlung"],
-  ["Kurvendiagramm","Entwicklung über Zeit · X=Zeit Y=Menge","kurve zeitreihe"],
-  ["Säulen-/Balkendiagramm","Vergleich mehrerer Größen","säule balken vergleich"],
-  ["Kreisdiagramm / Torte","Anteile in % · Summe 100%","kreis anteile prozent"],
-  ["Tabelle","exakte Zahlen · mehrere Spalten","tabelle zahlen"],
-  ["Strukturbild","Ursache–Wirkung · Ablauf · Teufelskreis","struktur pfeile"],
-  ["Organigramm","Hierarchie · Personen · Abteilungen","hierarchie chef"],
-  ["Arbeitsschritte Visualisierung","Lesen · Markieren · Form wählen · Zeichnen","schritte visualisieren"],
-  ["Fleischkonsum in Deutschland","KA-Muster · Mindmap Gesundheit Umwelt Tierwohl","fleischkonsum ka text"],
-  ["Teufelskreis","negatives Denken · Feedback-Schleife","strukturbild"],
-].forEach(([t,s,extra])=>idx(t,"Deutsch · "+s,"DE","klassenarbeiten/deutsch.html",null,extra));
+  ["Deutsch · Visualisierung","KA 16.07.26 · Mindmap · Diagramme · Quiz","#/fach/deutsch","deutsch visualisierung ka"],
+  ["Mindmap & Diagrammtypen","6 Grundformen · Zweck, Regeln & Hirnhälften","#/fach/deutsch/theme/mindmap-diagramme","mindmap ideensammlung diagramme kurve säule kreis tabelle strukturbild"],
+  ["Text → Grafik: 4 Schritte","Lesen · Kernaussagen filtern · Form wählen · Teufelskreis","#/fach/deutsch/theme/text-zu-grafik","schritte visualisieren kernaussagen teufelskreis kausalität"],
+  ["Muster-Klassenarbeit (Herrn Kling)","Fleischkonsum in Deutschland · Mindmap · Checkliste","#/fach/deutsch/theme/muster-ka","fleischkonsum ka muster mindmap kling checkliste"],
+  ["Deutsch-App (Interaktive Vollansicht)","Theorie, Zuordnen, Matching & KA-Simulation","klassenarbeiten/deutsch.html","deutsch app vollansicht interaktiv klassenarbeit"],
+].forEach(([t,s,route,extra])=>idx(t,"Deutsch · "+s,"DE",route,null,extra));
 
 // Prüfungen BFK
 idx("Prüfungen","Musterprüfung · Lösungsbogen · KA2-Zusammenfassung","Prüfung","#/bfk/2/pruefungen",null,"ka2 prüfung");
