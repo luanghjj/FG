@@ -720,7 +720,7 @@
     "ex": "Cross-Selling = bán sản phẩm bổ sung phù hợp (ví dụ: vang kèm món chính, Espresso/Digestif sau bữa ăn)."
   },
   {
-    "theme": "fisch-einteilung",
+    "theme": "fisch-warenkunde",
     "cat": "Einteilung",
     "q": "Nach welchen 5 Kriterien werden Fische in der Gastronomie eingeteilt?",
     "opts": [
@@ -733,7 +733,7 @@
     "ex": "Fische werden nach 5 Kriterien eingeteilt: Lebensraum, Wanderverhalten, Körperform, Fang/Zucht und Fettgehalt."
   },
   {
-    "theme": "fisch-einteilung",
+    "theme": "fisch-warenkunde",
     "cat": "Wanderfische",
     "q": "Wohin wandert der Flussaal zum Laichen?",
     "opts": [
@@ -746,7 +746,7 @@
     "ex": "Der Flussaal wächst im Süßwasser auf und wandert zum Laichen ins Meer (Süß → Salz)."
   },
   {
-    "theme": "fisch-einteilung",
+    "theme": "fisch-warenkunde",
     "cat": "Wanderfische",
     "q": "Welches Wanderverhalten zeigt der Lachs?",
     "opts": [
@@ -759,7 +759,7 @@
     "ex": "Der Lachs schlüpft im Süßwasser, wandert als Junglachs ins Meer und schwimmt zum Laichen flussaufwärts ins Süßwasser zurück."
   },
   {
-    "theme": "fisch-einteilung",
+    "theme": "fisch-warenkunde",
     "cat": "Körperform",
     "q": "Welches Merkmal kennzeichnet echte Plattfische (z. B. Scholle, Seezunge)?",
     "opts": [
@@ -772,7 +772,7 @@
     "ex": "Plattfische sind flach und asymmetrisch, tragen beide Augen auf einer Körperseite und schwimmen seitlich liegend am Meeresboden."
   },
   {
-    "theme": "fisch-einteilung",
+    "theme": "fisch-warenkunde",
     "cat": "Merkmale",
     "q": "Woran erkennt man Hecht, Karpfen und Zander eindeutig?",
     "opts": [
@@ -786,7 +786,7 @@
   },
   {
     "type": "fill",
-    "theme": "fisch-einteilung",
+    "theme": "fisch-warenkunde",
     "cat": "Wanderfische",
     "q": "Wohin wandert der Flussaal, um zu laichen?",
     "answers": ["ins meer", "meer", "salzwasser", "im meer"],
@@ -795,7 +795,7 @@
   },
   {
     "type": "fill",
-    "theme": "fisch-einteilung",
+    "theme": "fisch-warenkunde",
     "cat": "Merkmale",
     "q": "Welches Tastorgan tragen Karpfen beidseits des Mauls?",
     "answers": ["bartfäden", "bartfaeden", "bartfaden", "die bartfäden"],
@@ -803,7 +803,7 @@
     "ex": "Karpfen erkennt man leicht an den Bartfäden beidseits des Mauls."
   },
   {
-    "theme": "fisch-inhaltsstoffe",
+    "theme": "fisch-warenkunde",
     "cat": "Fettgehalt",
     "q": "Ab welchem Fettgehalt wird ein Fisch lebensmittelrechtlich als 'Fettfisch' eingestuft?",
     "opts": [
@@ -816,7 +816,7 @@
     "ex": "Fettfisch = über 10 % Fett (z. B. Aal, Makrele, Hering, Lachs). Magerfisch = unter 10 % (oft < 2 %)."
   },
   {
-    "theme": "fisch-inhaltsstoffe",
+    "theme": "fisch-warenkunde",
     "cat": "Fettfische",
     "q": "Welche der folgenden Fische zählen alle zu den Fettfischen (> 10 % Fett)?",
     "opts": [
@@ -829,7 +829,7 @@
     "ex": "Fettfische (>10 %): Makrele, Hering, Aal, Lachs, Thunfisch, Sardine."
   },
   {
-    "theme": "fisch-inhaltsstoffe",
+    "theme": "fisch-warenkunde",
     "cat": "Nährstoffe",
     "q": "Was ist der wesentliche Unterschied im Nährstoffgehalt zwischen Fett und Eiweiß beim Fisch?",
     "opts": [
@@ -842,7 +842,7 @@
     "ex": "Prüfungsfalle: Fett schwankt je nach Art und Jahreszeit stark (0,5–25 %), Eiweiß bleibt relativ stabil bei 15–23 %."
   },
   {
-    "theme": "fisch-inhaltsstoffe",
+    "theme": "fisch-warenkunde",
     "cat": "Mineralstoffe",
     "q": "Welches lebenswichtige Spurenelement liefert Seefisch in besonders hohem Maße?",
     "opts": [
@@ -855,7 +855,7 @@
     "ex": "Seefisch ist die wichtigste natürliche Quelle für Jod (bis zu 330 µg / 100 g), essenziell für die Schilddrüsenfunktion."
   },
   {
-    "theme": "fisch-inhaltsstoffe",
+    "theme": "fisch-warenkunde",
     "cat": "Kohlenhydrate",
     "q": "Wie hoch ist der Kohlenhydratanteil im frischen Fischfleisch?",
     "opts": [
@@ -869,7 +869,7 @@
   },
   {
     "type": "fill",
-    "theme": "fisch-inhaltsstoffe",
+    "theme": "fisch-warenkunde",
     "cat": "Fettgehalt",
     "q": "Ab wie viel Prozent Fettanteil gilt ein Fisch als Fettfisch (Zahl angeben)?",
     "answers": ["10", "10%", "10 %", "über 10%", "über 10 %", ">10%", "> 10%"],
@@ -878,7 +878,7 @@
   },
   {
     "type": "fill",
-    "theme": "fisch-inhaltsstoffe",
+    "theme": "fisch-warenkunde",
     "cat": "Fettsäuren",
     "q": "Welche gesunden, mehrfach ungesättigten Fettsäuren sind in Seefisch und Fettfisch besonders reichlich enthalten?",
     "answers": ["omega-3", "omega 3", "omega-3-fettsäuren", "omega 3 fettsäuren", "omega3"],
@@ -886,7 +886,7 @@
     "ex": "Fettfische sind reich an wertvollen ungesättigten Omega-3-Fettsäuren."
   },
   {
-    "theme": "fisch-konservierung",
+    "theme": "fisch-warenkunde",
     "cat": "Räuchern",
     "q": "Was versteht man in der Warenkunde unter einem 'Bückling'?",
     "opts": [
@@ -899,7 +899,7 @@
     "ex": "Bückling = ganzer, ausgenommener Hering mit Kopf, gesalzen und heiß geräuchert."
   },
   {
-    "theme": "fisch-konservierung",
+    "theme": "fisch-warenkunde",
     "cat": "Räuchern",
     "q": "Aus welchem Fisch und welchem Teil werden 'Schillerlocken' hergestellt?",
     "opts": [
@@ -912,7 +912,7 @@
     "ex": "Schillerlocken = Bauchlappen des Dornhais (Seeaal), gesalzen, gerollt und heiß geräuchert."
   },
   {
-    "theme": "fisch-konservierung",
+    "theme": "fisch-warenkunde",
     "cat": "Trocknen",
     "q": "Was ist der Unterschied zwischen Stockfisch und Klippfisch?",
     "opts": [
@@ -925,7 +925,7 @@
     "ex": "Beide bestehen aus Kabeljau/Dorsch: Stockfisch wird ohne Salz getrocknet, Klippfisch erst gesalzen und dann getrocknet."
   },
   {
-    "theme": "fisch-konservierung",
+    "theme": "fisch-warenkunde",
     "cat": "Salzen",
     "q": "Welches Konservierungsprinzip bewirkt das Salzen von Fisch (z. B. Matjes)?",
     "opts": [
@@ -938,7 +938,7 @@
     "ex": "Salz entzieht dem Fischgewebe durch osmotischen Druck Wasser, wodurch Mikroorganismen die Lebensgrundlage entzogen wird."
   },
   {
-    "theme": "fisch-konservierung",
+    "theme": "fisch-warenkunde",
     "cat": "Kaviar",
     "q": "Nur der Rogen welcher Fischart darf als 'echter Kaviar' bezeichnet werden?",
     "opts": [
@@ -952,7 +952,7 @@
   },
   {
     "type": "fill",
-    "theme": "fisch-konservierung",
+    "theme": "fisch-warenkunde",
     "cat": "Trocknen",
     "q": "Wie nennt man den luftgetrockneten Kabeljau, der OHNE Salz getrocknet wird?",
     "answers": ["stockfisch", "der stockfisch"],
@@ -961,7 +961,7 @@
   },
   {
     "type": "fill",
-    "theme": "fisch-konservierung",
+    "theme": "fisch-warenkunde",
     "cat": "Kaviar",
     "q": "Von welcher Fischart stammt echter Kaviar ausschließlich?",
     "answers": ["stör", "stoer", "der stör", "vom stör"],
@@ -969,7 +969,7 @@
     "ex": "Nur der Rogen vom Stör darf als echter Kaviar bezeichnet werden."
   },
   {
-    "theme": "fisch-gerichte-praxis",
+    "theme": "fisch-warenkunde",
     "cat": "Zubereitung",
     "q": "Was zeichnet die klassische Zubereitung 'Müllerin Art' (z. B. Forelle Müllerin Art) aus?",
     "opts": [
@@ -982,7 +982,7 @@
     "ex": "Müllerin Art: Fisch in Mehl wenden, in schäumender Butter braten, mit Zitrone und Petersilie servieren."
   },
   {
-    "theme": "fisch-gerichte-praxis",
+    "theme": "fisch-warenkunde",
     "cat": "Zubereitung",
     "q": "Wie wird 'Forelle blau' zubereitet und warum wird sie blau?",
     "opts": [
@@ -995,7 +995,7 @@
     "ex": "Forelle blau: Fangfrisch, ungeschuppt im Essigsud gegart. Die Schleimschicht färbt sich durch die Säure silbrig-blau."
   },
   {
-    "theme": "fisch-gerichte-praxis",
+    "theme": "fisch-warenkunde",
     "cat": "Gerichte",
     "q": "Welcher Fisch wird für die Sauce des klassischen Gerichtes 'Vitello tonnato' püriert?",
     "opts": [
@@ -1008,7 +1008,7 @@
     "ex": "Vitello tonnato = dünne Scheiben kaltes Kalbfleisch in einer cremigen Thunfischsauce mit Kapern."
   },
   {
-    "theme": "fisch-gerichte-praxis",
+    "theme": "fisch-warenkunde",
     "cat": "Weinempfehlung",
     "q": "Welche Weißweinsorten werden im Lernskript besonders zu Fischgerichten empfohlen?",
     "opts": [
@@ -1021,7 +1021,7 @@
     "ex": "Klassische Weinempfehlungen zu Fisch: Müller-Thurgau, Weißburgunder, Chardonnay und Viognier."
   },
   {
-    "theme": "fisch-gerichte-praxis",
+    "theme": "fisch-warenkunde",
     "cat": "Fischangebot",
     "q": "Welcher der folgenden Speisefische ist ein Plattfisch?",
     "opts": [
@@ -1035,7 +1035,7 @@
   },
   {
     "type": "fill",
-    "theme": "fisch-gerichte-praxis",
+    "theme": "fisch-warenkunde",
     "cat": "Zubereitung",
     "q": "In welchem säuerlichen Sud wird eine Forelle bei der Zubereitung 'blau' pochiert?",
     "answers": ["essigsud", "essig-sud", "essigwasser", "essigbrühe"],
@@ -1044,7 +1044,7 @@
   },
   {
     "type": "fill",
-    "theme": "fisch-gerichte-praxis",
+    "theme": "fisch-warenkunde",
     "cat": "Gerichte",
     "q": "Welche Beilage wird klassisch zu geräucherter Bodensee-Renke serviert?",
     "answers": ["meerrettichsahne", "meerrettich-sahne", "sahne-meerrettich", "sahnemeerrettich"],

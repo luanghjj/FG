@@ -573,250 +573,1122 @@
             title: "Năm 2 · Fisch — Warenkunde & Zubereitung",
             items: [
               {
-                id: "fisch-einteilung",
+                id: "fisch-warenkunde",
                 icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 12c.94-3.46 4.94-6 8.5-6 3.56 0 6.06 2.54 7 6-.94 3.46-3.44 6-7 6-3.56 0-7.56-2.54-8.5-6z"/><path d="M18 10v4"/><path d="M2 16l4.5-4L2 8"/></svg>',
-                name: "Einteilung der Fische & Merkmale",
-                desc: "5 Kriterien · Wanderfische (Aal vs. Lachs) · Platt- & Rundfische · Merkmale (Hecht, Karpfen, Zander)",
+                name: "Fisch — Warenkunde & Zubereitung (DE/VI)",
+                desc: "§1 Einteilung · §2 Inhaltsstoffe · §3 Merkmale · §4 Konservierung · §5 Kaviar · §6 Gerichte & Wein · §7 Bildtafel (15 loài cá có đủ ảnh) · Prüfungs-Check",
                 vokabeln: [
-                  { de: "Wanderfische", vi: "cá di cư" },
-                  { de: "Flussaal", vi: "lươn sông" },
-                  { de: "Laichen", vi: "đẻ trứng (cá)" },
-                  { de: "Plattfische", vi: "cá thân bẹt (hai mắt cùng 1 bên)" },
-                  { de: "Rundfische", vi: "cá thân tròn / hình thoi" },
-                  { de: "Hecht", vi: "cá măng sông (mõm dài)" },
-                  { de: "Karpfen", vi: "cá chép (có râu mép)" },
-                  { de: "Bartfäden", vi: "râu mép cá chép" },
-                  { de: "Zander", vi: "cá vược sông (gai nắp mang)" },
-                  { de: "Kiemendeckel", vi: "nắp mang cá" }
-                ],
-                content: `<h2>§1 &amp; §3 Einteilung der Fische &amp; Merkmale</h2>
-<div class="hint">Warenkunde · 5 Kriterien · Wanderverhalten · Platt- vs. Rundfische · Erkennungsmerkmale</div>
+          {
+                    "de": "Wanderfische",
+                    "vi": "cá di cư"
+          },
+          {
+                    "de": "Flussaal",
+                    "vi": "lươn sông"
+          },
+          {
+                    "de": "Laichen",
+                    "vi": "đẻ trứng (cá)"
+          },
+          {
+                    "de": "Plattfische",
+                    "vi": "cá thân bẹt (hai mắt cùng 1 bên)"
+          },
+          {
+                    "de": "Rundfische",
+                    "vi": "cá thân tròn / hình thoi"
+          },
+          {
+                    "de": "Hecht",
+                    "vi": "cá măng sông (mõm dài)"
+          },
+          {
+                    "de": "Karpfen",
+                    "vi": "cá chép (có râu mép)"
+          },
+          {
+                    "de": "Bartfäden",
+                    "vi": "râu mép cá chép"
+          },
+          {
+                    "de": "Zander",
+                    "vi": "cá vược sông (gai nắp mang)"
+          },
+          {
+                    "de": "Kiemendeckel",
+                    "vi": "nắp mang cá"
+          },
+          {
+                    "de": "Fettfisch",
+                    "vi": "cá béo (> 10 % chất béo)"
+          },
+          {
+                    "de": "Magerfisch",
+                    "vi": "cá nạc (< 10 % chất béo)"
+          },
+          {
+                    "de": "Eiweißanteil",
+                    "vi": "hàm lượng đạm (protein)"
+          },
+          {
+                    "de": "Fettanteil",
+                    "vi": "hàm lượng chất béo"
+          },
+          {
+                    "de": "Jod",
+                    "vi": "khoáng chất i-ốt"
+          },
+          {
+                    "de": "Omega-3",
+                    "vi": "axit béo omega-3 không bão hòa"
+          },
+          {
+                    "de": "Halbkonserven",
+                    "vi": "bán đồ hộp"
+          },
+          {
+                    "de": "Vollkonserven",
+                    "vi": "đồ hộp hoàn toàn"
+          },
+          {
+                    "de": "Bückling",
+                    "vi": "cá trích nguyên con có đầu hun nóng"
+          },
+          {
+                    "de": "Schillerlocken",
+                    "vi": "lườn bụng cá nhám cuộn hun nóng"
+          },
+          {
+                    "de": "osmotischer Druck",
+                    "vi": "áp suất thẩm thấu"
+          },
+          {
+                    "de": "Matjeshering",
+                    "vi": "cá trích trẻ muối nhẹ lên men lactic"
+          },
+          {
+                    "de": "Stockfisch",
+                    "vi": "cá tuyết phơi khô không muối"
+          },
+          {
+                    "de": "Klippfisch",
+                    "vi": "cá tuyết muối trước rồi phơi khô"
+          },
+          {
+                    "de": "Bismarckhering",
+                    "vi": "phi lê cá trích ngâm giấm"
+          },
+          {
+                    "de": "Rollmops",
+                    "vi": "cá trích cuộn dưa chuột ngâm giấm"
+          },
+          {
+                    "de": "Stör",
+                    "vi": "cá tầm (sản xuất Kaviar thật)"
+          },
+          {
+                    "de": "Kaviar",
+                    "vi": "trứng cá tầm muối"
+          },
+          {
+                    "de": "Müllerin Art",
+                    "vi": "kiểu bà chủ cối xay (lăn bột mì chiên bơ)"
+          },
+          {
+                    "de": "Forelle blau",
+                    "vi": "cá hồi luộc nước giấm nhẹ giữ màu xanh bạc"
+          },
+          {
+                    "de": "Renke",
+                    "vi": "cá Renke hồ Bodensee"
+          },
+          {
+                    "de": "Vitello tonnato",
+                    "vi": "thịt bê lát lạnh sốt cá ngừ"
+          },
+          {
+                    "de": "Müller-Thurgau",
+                    "vi": "rượu vang trắng Müller-Thurgau"
+          },
+          {
+                    "de": "Weißburgunder",
+                    "vi": "rượu vang trắng Pinot Blanc"
+          },
+          {
+                    "de": "Chardonnay",
+                    "vi": "rượu vang trắng Chardonnay"
+          },
+          {
+                    "de": "Viognier",
+                    "vi": "rượu vang trắng Viognier"
+          },
+          {
+                    "de": "Knurrhahn",
+                    "vi": "cá chào mào biển"
+          },
+          {
+                    "de": "Rochen",
+                    "vi": "cá đuối"
+          },
+          {
+                    "de": "Seelachs",
+                    "vi": "cá tuyết đen"
+          },
+          {
+                    "de": "Kabeljau",
+                    "vi": "cá tuyết Đại Tây Dương"
+          },
+          {
+                    "de": "Rotbarsch",
+                    "vi": "cá vược đỏ"
+          },
+          {
+                    "de": "Schellfisch",
+                    "vi": "cá tuyết chấm đen"
+          },
+          {
+                    "de": "Seeteufel",
+                    "vi": "cá mặt quỷ"
+          }
+],
+                content: `<style>
 
-<h3 class="sub">1. 5 Kriterien der Fischeinteilung (5 Tiêu chí Phân loại Cá)</h3>
-<p>Trong ngành ẩm thực và thương mại (<span class="term" data-de="Warenkunde" data-vi="ngành hàng thực phẩm / hàng hóa học">Warenkunde</span>), cá được phân loại theo <b>5 tiêu chí cơ bản</b>:</p>
-<table>
-  <tr><th>Tiêu chí</th><th>Phân loại &amp; Ý nghĩa</th></tr>
-  <tr><td><strong>a) Herkunft &amp; Lebensraum</strong></td><td><span class="term" data-de="Süßwasserfische" data-vi="cá nước ngọt">Süßwasserfische</span> (nước ngọt) vs. <span class="term" data-de="Salzwasserfische" data-vi="cá nước mặn">Salzwasserfische / Seefische</span> (nước mặn / biển)</td></tr>
-  <tr><td><strong>b) Wanderverhalten</strong></td><td><span class="term" data-de="Wanderfische" data-vi="cá di cư">Wanderfische</span> (di cư sinh sản: Aal vs. Lachs) vs. Cá định cư tại chỗ</td></tr>
-  <tr><td><strong>c) Körperform</strong></td><td><span class="term" data-de="Plattfische" data-vi="cá thân bẹt">Plattfische</span> (thân bẹt, sống đáy) vs. <span class="term" data-de="Rundfische" data-vi="cá thân tròn">Rundfische</span> (thân tròn, bơi tự do)</td></tr>
-  <tr><td><strong>d) Fang oder Zucht</strong></td><td><span class="term" data-de="Wildfisch" data-vi="cá đánh bắt tự nhiên">Wildfisch</span> (đánh bắt tự nhiên) vs. <span class="term" data-de="Zuchtfisch" data-vi="cá nuôi trang trại">Zuchtfisch</span> (nuôi trong trại/Aquakultur)</td></tr>
-  <tr><td><strong>e) Fettgehalt</strong></td><td><span class="term" data-de="Fettfisch" data-vi="cá béo">Fettfisch</span> (&gt; 10 % chất béo) vs. <span class="term" data-de="Magerfisch" data-vi="cá nạc">Magerfisch</span> (&lt; 10 % chất béo)</td></tr>
-</table>
+/* ===== DESIGN TOKENS =====
+  ink    #1B1F2A  primary text / spine
+  paper  #F1ECDE  parchment ground
+  wax    #7A2E2E  paragraph seal / DE accent
+  brass  #9C7A3C  rule / numerals
+  slate  #48586B  VI translation voice
+  line   #D8CFB8  hairline
+*/
+.fisch-skript-wrap {
+  --ink:#1B1F2A; --paper:#F1ECDE; --paper2:#EAE3D0; --wax:#7A2E2E;
+  --brass:#9C7A3C; --slate:#48586B; --line:#D8CFB8; --slateline:#c7d0da;
+  --green:#5b7a52; --greenbg:#eef3ea;
+}
 
-<h3 class="sub">2. Phân loại theo Nước ngọt &amp; Nước mặn</h3>
-<table>
-  <tr><th>Nhóm cá</th><th>Các loài tiêu biểu</th></tr>
-  <tr><td><b>Süßwasserfische</b> (Nước ngọt)</td><td><span class="term" data-de="Forelle" data-vi="cá hồi suối">Forelle</span>, Pangasius, <span class="term" data-de="Zander" data-vi="cá vược sông">Zander</span>, Barsch, <span class="term" data-de="Karpfen" data-vi="cá chép">Karpfen</span>, <span class="term" data-de="Hecht" data-vi="cá măng sông">Hecht</span>, <span class="term" data-de="Flussaal" data-vi="lươn sông">Flussaal</span>, Saibling, Wels.</td></tr>
-  <tr><td><b>Seefische / Salzwasserfische</b> (Nước mặn)</td><td><span class="term" data-de="Scholle" data-vi="cá bơn sao">Scholle</span>, <span class="term" data-de="Seelachs" data-vi="cá tuyết đen">Seelachs</span>, <span class="term" data-de="Hering" data-vi="cá trích">Hering</span>, <span class="term" data-de="Seezunge" data-vi="cá bơn lưỡi trâu">Seezunge</span>, <span class="term" data-de="Makrele" data-vi="cá thu">Makrele</span>, <span class="term" data-de="Heilbutt" data-vi="cá bơn lớn">Heilbutt</span>, <span class="term" data-de="Kabeljau" data-vi="cá tuyết Đại Tây Dương">Kabeljau / Dorsch</span>, <span class="term" data-de="Thunfisch" data-vi="cá ngừ">Thunfisch</span>, <span class="term" data-de="Steinbutt" data-vi="cá bơn turbot">Steinbutt</span>, <span class="term" data-de="Rotbarsch" data-vi="cá vược đỏ">Rotbarsch</span>, <span class="term" data-de="Schellfisch" data-vi="cá tuyết chấm đen">Schellfisch</span>, <span class="term" data-de="Stör" data-vi="cá tầm">Stör</span>, <span class="term" data-de="Knurrhahn" data-vi="cá chào mào biển">Knurrhahn</span>, <span class="term" data-de="Rochen" data-vi="cá đuối">Rochen</span>, <span class="term" data-de="Seeteufel" data-vi="cá mặt quỷ">Seeteufel</span>.</td></tr>
-</table>
+.fisch-skript-wrap, .fisch-skript-wrap * {box-sizing:border-box;}
 
-<h3 class="sub">3. Wanderfische — Cá Di cư (Aal vs. Lachs)</h3>
-<p>Cá di cư là loài sinh sống ở một môi trường nước nhưng di chuyển đến môi trường nước khác để <span class="term" data-de="Laichen" data-vi="đẻ trứng (cá)">laichen</span> (đẻ trứng):</p>
-<ul>
-  <li><b>Flussaal (Lươn sông — Süßwasser → Meer):</b> Sinh ra ở biển (vùng biển Sargasso) dưới dạng <span class="term" data-de="Glasaal" data-vi="cá chình con dạng thủy tinh">Glasaal</span> → bơi ngược vào các con sông thành <span class="term" data-de="Steigaal" data-vi="cá chình di cư vào sông">Steigaal</span> → sống và phát triển 4–10 năm ở nước ngọt → khi trưởng thành di cư <b>ra biển để đẻ trứng</b> rồi chết.</li>
-  <li><b>Lachs (Cá hồi — Meer → Süßwasser):</b> Nở ở đầu nguồn sông suối nước ngọt → khi còn là cá con (<span class="term" data-de="Junglachs" data-vi="cá hồi trẻ">Junglachs</span>) bơi ra biển lớn, tăng cân rất nhanh → khi trưởng thành bơi <b>ngược dòng sông về nước ngọt để đẻ trứng</b>. Cá <span class="term" data-de="Lachsforelle" data-vi="cá hồi suối di cư">Lachsforelle</span> cũng có tập tính di cư tương tự.</li>
-</ul>
-<div class="warn"><strong>Merksatz thi bắt buộc:</strong><br>• <b>Flussaal:</b> Ngọt → Mặn (sinh trưởng ở sông, <b>đẻ trứng ở biển / laicht im Meer</b>).<br>• <b>Lachs:</b> Mặn → Ngọt (sinh trưởng ở biển, <b>đẻ trứng ở sông / laicht im Fluss</b>).</div>
+.fisch-skript-wrap {scroll-behavior:smooth;}
 
-<h3 class="sub">4. Körperform: Plattfische vs. Rundfische</h3>
-<table>
-  <tr><th>Đặc điểm</th><th>Plattfische (Cá thân bẹt)</th><th>Rundfische (Cá thân tròn)</th></tr>
-  <tr><td><b>Hình dáng</b></td><td>Thân phẳng dẹt, bất đối xứng, thích nghi sống ở đáy biển (<span class="term" data-de="Bodenfische" data-vi="cá đáy">Bodenfische</span>).</td><td>Thân tròn hoặc hình thoi (<span class="term" data-de="spindelförmig" data-vi="hình thoi">spindelförmig</span>), đối xứng hai bên.</td></tr>
-  <tr><td><b>Mắt</b></td><td><strong>Cả hai mắt cùng nằm trên một mặt</strong> (mặt hướng lên trên).</td><td><strong>Mỗi bên thân có một mắt</strong>.</td></tr>
-  <tr><td><b>Vận động</b></td><td>Bơi nằm nghiêng sát đáy biển.</td><td>Bơi tự do ở các tầng nước (<span class="term" data-de="freischwimmend" data-vi="bơi tự do">freischwimmend</span>).</td></tr>
-  <tr><td><b>Ví dụ</b></td><td>Scholle, Seezunge, Flunder, Steinbutt, Heilbutt, Rotzunge.</td><td>Forelle, Hecht, Zander, Kabeljau, Lachs, Hering, Makrele, Thunfisch.</td></tr>
-</table>
+.fisch-skript-wrap {
+  margin:0; background:var(--paper);
+  background-image:
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.012) 0px, rgba(0,0,0,0.012) 1px, transparent 1px, transparent 3px);
+  color:var(--ink); font-family:"Source Serif 4",Georgia,serif; line-height:1.65;
+  font-size:17px;
+}
 
-<h3 class="sub">5. Erkennungsmerkmale einzelner Süßwasser- &amp; Raubfische (§3)</h3>
-<table>
-  <tr><th>Loài cá</th><th>Đặc điểm nhận biết then chốt (Merkmale)</th><th>Ứng dụng bếp</th></tr>
-  <tr><td><b>Hecht</b> (Cá măng sông)</td><td>Cá săn mồi (<span class="term" data-de="Raubfisch" data-vi="cá săn mồi">Raubfisch</span>) với <strong>lange Schnauze</strong> (mõm dài dẹt như mỏ vịt, nhiều răng nhọn). Cá 1 tuổi gọi là <i>Grashecht</i>.</td><td>Thịt trắng, nạc, thích hợp làm chả cá xay (<span class="term" data-de="Farce" data-vi="nhân thịt xay / chả xay">Farcen</span>), Hechtklößchen.</td></tr>
-  <tr><td><b>Karpfen</b> (Cá chép)</td><td>Đặc trưng rõ rệt bởi <strong>Bartfäden</strong> (2 râu mép dài + 2 râu ngắn) ở hai bên khóe miệng. Dạng vảy: Spiegelkarpfen (vảy gương), Lederkarpfen (da trơn), Schuppenkarpfen (vảy đều).</td><td>Nấu kiểu Karpfen blau, chiên giòn, nướng truyền thống Giáng sinh/Năm mới.</td></tr>
-  <tr><td><b>Zander</b> (Cá vược sông)</td><td>Cá săn mồi quý, có <strong>kleiner Dorn am Kiemendeckel</strong> (gai nhọn nhỏ ở nắp mang). Thịt trắng tinh khiết, săn chắc không xương dăm.</td><td>Áp chảo da giòn (auf der Haut gebraten), hấp nấm, sốt bơ Riesling.</td></tr>
-</table>
-<div class="note"><strong>Mẹo nhớ siêu nhanh (Merkhilfe):</strong><br>• <b>Hecht</b> = lange Schnauze (mõm dài).<br>• <b>Karpfen</b> = Bartfäden (râu mép).<br>• <b>Zander</b> = Dorn am Kiemendeckel (gai ở nắp mang).</div>`
-              },
-              {
-                id: "fisch-inhaltsstoffe",
-                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>',
-                name: "Inhaltsstoffe & Nährwerte des Fisches",
-                desc: "Fettfisch (>10%) vs. Magerfisch (<10%) · Eiweiß 15–23% · Jod bis 330 µg · Omega-3",
-                vokabeln: [
-                  { de: "Fettfisch", vi: "cá béo (> 10 % chất béo)" },
-                  { de: "Magerfisch", vi: "cá nạc (< 10 % chất béo)" },
-                  { de: "Eiweißanteil", vi: "hàm lượng đạm (protein)" },
-                  { de: "Fettanteil", vi: "hàm lượng chất béo" },
-                  { de: "Jod", vi: "khoáng chất i-ốt" },
-                  { de: "Omega-3", vi: "axit béo omega-3 không bão hòa" }
-                ],
-                content: `<h2>§2 Inhaltsstoffe des Fisches &amp; Fettgehalt</h2>
-<div class="hint">Thành phần dinh dưỡng · Nährwerttabelle · Phân loại Fettfisch vs. Magerfisch · Omega-3 & Khoáng chất</div>
+.fisch-skript-wrap ::selection {background:#d9c9a3;}
 
-<h3 class="sub">1. Thành phần Dinh dưỡng Chuẩn (Nährwerte im Überblick)</h3>
-<p>Cá là nguồn thực phẩm giàu đạm quý giá, dễ tiêu hóa hơn thịt gia súc do cấu trúc sợi cơ ngắn và mô liên kết mềm mại:</p>
-<table>
-  <tr><th>Thành phần</th><th>Tỷ lệ (% hoặc hàm lượng)</th><th>Ý nghĩa &amp; Lưu ý thi</th></tr>
-  <tr><td><b>Fettanteil</b> (Chất béo)</td><td><strong>0,5 – 25 %</strong></td><td><strong>Schwankt stark</strong> (dao động rất mạnh tùy loài cá, độ tuổi, thức ăn và mùa sinh sản).</td></tr>
-  <tr><td><b>Eiweißanteil</b> (Đạm)</td><td><strong>15 – 23 %</strong></td><td><strong>Relativ gleichbleibend</strong> (khá ổn định), có giá trị sinh học cao (<span class="term" data-de="biologische Wertigkeit" data-vi="giá trị sinh học">biologische Wertigkeit</span>).</td></tr>
-  <tr><td><b>Kohlenhydrate</b> (Carb)</td><td><strong>&lt; 1 %</strong></td><td>Hầu như không có (<span class="term" data-de="Glykogen" data-vi="glycogen">Glykogen</span> trong cơ phân giải nhanh sau khi đánh bắt).</td></tr>
-  <tr><td><b>Mineralstoffe</b> (Khoáng)</td><td>Jod bis <strong>330 µg / 100 g</strong></td><td>Cá biển là nguồn <span class="term" data-de="Jod" data-vi="khoáng chất i-ốt">Jod</span> tự nhiên dồi dào nhất, bên cạnh selen, fluor và photpho.</td></tr>
-  <tr><td><b>Fettsäuren</b> (Axit béo)</td><td>Reich an <span class="term" data-de="Omega-3" data-vi="axit béo omega-3">Omega-3</span></td><td>Nhiều axit béo không bão hòa đa (EPA, DHA), bảo vệ tim mạch và phát triển trí não.</td></tr>
-  <tr><td><b>Vitamine</b></td><td>Vit. A, D, B-Gruppe</td><td>Vitamin tan trong dầu (A, D) tập trung ở mỡ và gan cá (Fischlebertran).</td></tr>
-</table>
+.fisch-skript-wrap a {color:var(--wax);}
 
-<div class="warn"><strong>Prüfungsfalle (Bẫy thi trắc nghiệm):</strong><br>• Lượng <b>chất béo (Fett)</b> biến động rất mạnh: từ 0,5 % (cá nạc) đến tận 25 % (cá béo).<br>• Lượng <b>chất đạm (Eiweiß)</b> luôn giữ ổn định ở mức 15–23 %.</div>
 
-<h3 class="sub">2. Phân loại Cá theo Hàm lượng Chất béo (Fettgehalt)</h3>
-<p>Quy chuẩn phân định ranh giới là <b>mốc 10 % chất béo</b>:</p>
-<table>
-  <tr><th>Nhóm</th><th>Hàm lượng mỡ</th><th>Các loài cá tiêu biểu</th><th>Đặc điểm nấu nướng</th></tr>
-  <tr><td><b>Fettfische</b> (Cá béo)</td><td><strong>&gt; 10 % Fett</strong></td><td><span class="term" data-de="Makrele" data-vi="cá thu">Makrele</span>, <span class="term" data-de="Hering" data-vi="cá trích">Hering</span>, <span class="term" data-de="Aal" data-vi="lươn">Aal</span>, <span class="term" data-de="Lachs" data-vi="cá hồi">Lachs</span>, <span class="term" data-de="Thunfisch" data-vi="cá ngừ">Thunfisch</span>, <span class="term" data-de="Sardine" data-vi="cá mòi">Sardine</span>.</td><td>Thịt đậm đà, chịu nhiệt tốt, rất hợp hun khói nóng (<span class="term" data-de="Heißräuchern" data-vi="hun khói nóng">Heißräuchern</span>), nướng than (<span class="term" data-de="Grillen" data-vi="nướng vỉ">Grillen</span>), áp chảo.</td></tr>
-  <tr><td><b>Magerfische</b> (Cá nạc)</td><td><strong>&lt; 10 % Fett</strong> (nhiều loài &lt; 2 %)</td><td><span class="term" data-de="Kabeljau" data-vi="cá tuyết">Kabeljau / Dorsch</span>, <span class="term" data-de="Seelachs" data-vi="cá tuyết đen">Seelachs</span>, <span class="term" data-de="Zander" data-vi="cá vược sông">Zander</span>, <span class="term" data-de="Schellfisch" data-vi="cá tuyết chấm đen">Schellfisch</span>, <span class="term" data-de="Hecht" data-vi="cá măng sông">Hecht</span>, <span class="term" data-de="Scholle" data-vi="cá bơn sao">Scholle</span>, <span class="term" data-de="Seezunge" data-vi="cá bơn lưỡi trâu">Seezunge</span>, <span class="term" data-de="Steinbutt" data-vi="cá bơn turbot">Steinbutt</span>, <span class="term" data-de="Forelle" data-vi="cá hồi suối">Forelle</span>.</td><td>Thịt thanh nhẹ, ít năng lượng, dễ bị khô nếu quá nhiệt; thích hợp hấp (<span class="term" data-de="Dämpfen" data-vi="hấp chín">Dämpfen</span>), luộc nhẹ (<span class="term" data-de="Pochieren" data-vi="chần / luộc nhỏ lửa">Pochieren</span>), tẩm bột chiên bơ (Müllerin Art).</td></tr>
-</table>
+/* ---- Header: title block like a statute cover page ---- */
+.fisch-skript-wrap header.cover {
+  padding:60px 24px 42px; text-align:center; position:relative;
+  border-bottom:3px double var(--brass);
+  background:linear-gradient(180deg, var(--paper2), var(--paper));
+}
 
-<div class="note"><strong>Ernährungsphysiologie:</strong> Omega-3-Fettsäuren làm giảm nguy cơ xơ vữa động mạch và hạ triglyceride máu. Khuyến nghị dinh dưỡng DGE: nên ăn cá từ 1–2 lần mỗi tuần, trong đó có ít nhất một bữa cá béo.</div>`
-              },
-              {
-                id: "fisch-konservierung",
-                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>',
-                name: "Fischerzeugnisse, Konservierung & Kaviar",
-                desc: "Räuchern (Bückling, Schillerlocken) · Salzen (Matjes) · Trocknen (Stock- vs. Klippfisch) · Säuern · Echter Kaviar vs. Ersatz",
-                vokabeln: [
-                  { de: "Halbkonserven", vi: "bán đồ hộp" },
-                  { de: "Vollkonserven", vi: "đồ hộp hoàn toàn" },
-                  { de: "Bückling", vi: "cá trích nguyên con có đầu hun nóng" },
-                  { de: "Schillerlocken", vi: "lườn bụng cá nhám cuộn hun nóng" },
-                  { de: "osmotischer Druck", vi: "áp suất thẩm thấu" },
-                  { de: "Matjeshering", vi: "cá trích trẻ muối nhẹ lên men lactic" },
-                  { de: "Stockfisch", vi: "cá tuyết phơi khô không muối" },
-                  { de: "Klippfisch", vi: "cá tuyết muối trước rồi phơi khô" },
-                  { de: "Bismarckhering", vi: "phi lê cá trích ngâm giấm" },
-                  { de: "Rollmops", vi: "cá trích cuộn dưa chuột ngâm giấm" },
-                  { de: "Stör", vi: "cá tầm (sản xuất Kaviar thật)" },
-                  { de: "Kaviar", vi: "trứng cá tầm muối" }
-                ],
-                content: `<h2>§4 &amp; §5 Fischerzeugnisse, Konservierung &amp; Kaviar</h2>
-<div class="hint">Phương pháp bảo quản · Nguyên lý sinh hóa · Đặc sản cá · Phân biệt trứng cá tầm thật và Kaviarersatz</div>
+.fisch-skript-wrap header.cover .kicker {
+  font-family:"IBM Plex Mono",monospace; letter-spacing:.18em; font-size:.72rem;
+  text-transform:uppercase; color:var(--brass); margin-bottom:14px;
+}
 
-<h3 class="sub">1. Nguyên tắc Bảo quản &amp; Độ bền (Haltbarkeit)</h3>
-<p>Thịt cá rất nhanh hỏng do hàm lượng nước tự do cao, lớp da nhớt dễ nhiễm vi khuẩn chịu lạnh (<span class="term" data-de="psychrophile Bakterien" data-vi="vi khuẩn ưa lạnh">psychrophile Bakterien</span>). Do đó ngành công nghiệp chế biến cá tạo ra nhiều dạng sản phẩm:</p>
-<table>
-  <tr><th>Dạng đồ hộp / bảo quản</th><th>Hạn sử dụng</th><th>Điều kiện bảo quản &amp; Ví dụ</th></tr>
-  <tr><td><span class="term" data-de="Halbkonserven" data-vi="bán đồ hộp">Halbkonserven</span> (Bán đồ hộp)</td><td>Vài ngày đến vài tuần (Tage bis Wochen)</td><td>Bắt buộc giữ lạnh (&lt; 7 °C); chưa tiệt trùng hoàn toàn. Ví dụ: Bismarckhering, Rollmops, Matjes, Anchosen.</td></tr>
-  <tr><td><span class="term" data-de="Vollkonserven" data-vi="đồ hộp hoàn toàn">Vollkonserven</span> (Đồ hộp tiệt trùng)</td><td>Nhiều tháng đến nhiều năm (Monate bis Jahre)</td><td>Được đóng kín và tiệt trùng nhiệt độ cao (&gt; 100 °C trong nồi áp suất Autoklav). Bảo quản nhiệt độ phòng. Ví dụ: Thunfisch in Öl, Ölsardinen.</td></tr>
-</table>
+.fisch-skript-wrap header.cover h1 {
+  font-family:"Fraunces",serif; font-weight:600; font-size:clamp(1.9rem,5vw,3.1rem);
+  margin:0 0 10px; color:var(--ink); letter-spacing:-.01em;
+}
 
-<h3 class="sub">2. 4 Phương pháp Bảo quản Chính &amp; Sản phẩm Kinh điển</h3>
-<ol>
-  <li><strong>Räuchern (Hun khói):</strong>
-    <ul>
-      <li><span class="term" data-de="Bückling" data-vi="cá trích hun khói nóng nguyên con có đầu">Bückling</span>: Cá trích nguyên con đã mổ ruột nhưng <b>giữ nguyên đầu (mit Kopf)</b>, ướp muối và <b>hun khói nóng (heiß geräuchert)</b> ở nhiệt độ 60–85 °C.</li>
-      <li><span class="term" data-de="Schillerlocken" data-vi="lườn bụng cá nhám cuộn hun khói">Schillerlocken</span>: Dải lườn bụng bóc da của cá nhám góc (<span class="term" data-de="Dornhai" data-vi="cá nhám góc / Seeaal">Dornhai / Seeaal</span>), ướp muối, khi hun khói nóng sẽ tự cuộn xoắn tròn lại như bím tóc của đại thi hào Friedrich Schiller.</li>
-      <li><span class="term" data-de="Räucherlachs" data-vi="cá hồi hun khói lạnh">Räucherlachs</span>: Phi lê cá hồi muối rồi <b>hun khói lạnh (<span class="term" data-de="Kalträuchern" data-vi="hun khói lạnh">Kalträuchern</span>)</b> dưới 30 °C để thịt vẫn giữ được độ tươi mềm, béo ngậy.</li>
-    </ul>
-  </li>
-  <li><strong>Salzen (Ướp muối):</strong>
-    <p><b>Nguyên lý sinh hóa:</b> Muối hút kiệt nước tự do ra khỏi tế bào cá nhờ <span class="term" data-de="osmotischer Druck" data-vi="áp suất thẩm thấu">áp suất thẩm thấu (osmotischer Druck)</span>. Vi sinh vật bị mất nước, không thể nhân đôi và phát triển.</p>
-    <ul>
-      <li><span class="term" data-de="Matjeshering" data-vi="cá trích non muối nhẹ">Matjeshering</span>: Cá trích trẻ đánh bắt vào cuối xuân/đầu hè <b>trước khi đến tuổi đẻ trứng (vor der Laichreife)</b>, mỡ cao, ướp muối nhẹ và ủ lên men lactic tự nhiên nhờ enzyme có sẵn trong ruột và tụy cá.</li>
-      <li><span class="term" data-de="Salzhering" data-vi="cá trích muối đậm">Salzhering</span>: Cá trích ướp muối hạt đậm (stark gesalzen); khi dùng phải ngâm nước lạnh khử bớt mặn.</li>
-    </ul>
-  </li>
-  <li><strong>Trocknen (Phơi khô / Sấy khô):</strong>
-    <p><b>Nguyên lý:</b> Làm bay hơi nước (<span class="term" data-de="Lufttrocknung" data-vi="phơi khô tự nhiên">Lufttrocknung</span>), triệt tiêu môi trường sống của vi khuẩn gây ôi thiu.</p>
-    <ul>
-      <li><span class="term" data-de="Stockfisch" data-vi="cá tuyết phơi khô không muối">Stockfisch</span>: Cá tuyết (<span class="term" data-de="Kabeljau" data-vi="cá tuyết">Kabeljau</span>) mổ đôi, phơi khô trên giàn gỗ tự nhiên ngoài trời gió lạnh, <b>hoàn toàn KHÔNG ướp muối (ohne Salz)</b>.</li>
-      <li><span class="term" data-de="Klippfisch" data-vi="cá tuyết ướp muối rồi mới phơi khô">Klippfisch</span>: Cá tuyết <b>được ướp muối đậm trước (erst gesalzen)</b>, sau đó mới đem phơi khô trên các mỏm đá hoặc giàn sấy.</li>
-    </ul>
-  </li>
-  <li><strong>Säuern &amp; Marinieren (Ngâm chua / Giấm gia vị):</strong>
-    <p><b>Nguyên lý:</b> Axit axetic trong giấm làm <b>hạ độ pH (<span class="term" data-de="pH-Wert" data-vi="chỉ số pH">pH-Wert sinkt</span>)</b> xuống dưới 4,5; môi trường axit ức chế vi khuẩn thối rữa và làm mềm xương dăm.</p>
-    <ul>
-      <li><span class="term" data-de="Bismarckhering" data-vi="phi lê cá trích ngâm giấm">Bismarckhering</span>: Phi lê cá trích bỏ xương dăm, ngâm trong dung dịch giấm, muối và hạt tiêu/gia vị.</li>
-      <li><span class="term" data-de="Rollmops" data-vi="cá trích cuộn dưa chuột ngâm giấm">Rollmops</span>: Phi lê cá trích cuộn tròn bên trong miếng dưa chuột muối và hành tây, ghim que tăm gỗ nhỏ, ngâm trong nước giấm chua cay.</li>
-    </ul>
-  </li>
-</ol>
+.fisch-skript-wrap header.cover h1 em {font-style:italic; color:var(--wax); font-weight:500;}
 
-<h3 class="sub">3. Echter Kaviar &amp; Kaviarersatz (§5)</h3>
-<table>
-  <tr><th>Tên gọi</th><th>Nguồn gốc loài cá</th><th>Đặc điểm nhận dạng</th></tr>
-  <tr><td><b>Echter Kaviar</b> (Trứng cá tầm thật)</td><td>Chỉ duy nhất từ trứng của loài <strong>Stör (Cá tầm)</strong> (Beluga, Osietra, Sevruga).</td><td>Hạt trứng bóng bẩy, màu xám đen đến vàng ánh nâu hổ phách, béo ngậy tan chảy, giá thành đắt đỏ bậc nhất thế giới.</td></tr>
-  <tr><td><b>Lachskaviar</b></td><td>Trứng cá hồi (<span class="term" data-de="Lachs" data-vi="cá hồi">Lachs</span>)</td><td>Hạt to tròn, mọng nước, có màu <strong>orange-rot (cam đỏ)</strong> rực rỡ.</td></tr>
-  <tr><td><b>Keta-Kaviar</b></td><td>Trứng cá hồi Keta biển Thái Bình Dương</td><td>Hạt to đều, vỏ trứng dai nhẹ, vị thơm ngậy đặc trưng.</td></tr>
-  <tr><td><b>Deutscher Kaviar</b></td><td>Trứng cá mái đá (<span class="term" data-de="Seehase" data-vi="cá seehase">Seehase / Lumpfisch</span>)</td><td>Trứng hạt nhỏ, được <strong>schwarz gefärbt (nhuộm màu đen)</strong> nhân tạo để mô phỏng trứng cá tầm thật.</td></tr>
-  <tr><td><b>Tobiko</b></td><td>Trứng cá chuồn (<span class="term" data-de="Flugfisch" data-vi="cá chuồn">Flugfisch</span>)</td><td>Hạt giòn tanh tách, dùng phổ biến trong món Sushi và ẩm thực Nhật Bản.</td></tr>
-</table>
+.fisch-skript-wrap header.cover .subtitle-de {font-size:1.02rem; color:var(--ink); margin:4px 0;}
 
-<div class="warn"><strong>Tóm tắt so sánh hay thi:</strong><br>• <b>Bückling:</b> Hering hun nóng <b>có đầu</b>.<br>• <b>Stockfisch:</b> Cá tuyết phơi <b>không muối</b>.<br>• <b>Klippfisch:</b> Cá tuyết <b>có ướp muối trước</b> rồi mới phơi.<br>• <b>Echter Kaviar:</b> <b>Chỉ duy nhất từ cá tầm (Stör)</b>.</div>`
-              },
-              {
-                id: "fisch-gerichte-praxis",
-                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 22h8"/><path d="M12 11v11"/><path d="M6 2h12v3a6 6 0 0 1-12 0V2z"/></svg>',
-                name: "Fischgerichte, Weinempfehlung & Bildtafel",
-                desc: "Müllerin Art · Forelle blau · Bodensee-Renke · Vitello tonnato · Weißweine · Seefische & Süßwasserfische erkennen",
-                vokabeln: [
-                  { de: "Müllerin Art", vi: "kiểu bà chủ cối xay (lăn bột mì chiên bơ)" },
-                  { de: "Forelle blau", vi: "cá hồi luộc nước giấm nhẹ giữ màu xanh bạc" },
-                  { de: "Renke", vi: "cá Renke hồ Bodensee" },
-                  { de: "Vitello tonnato", vi: "thịt bê lát lạnh sốt cá ngừ" },
-                  { de: "Müller-Thurgau", vi: "rượu vang trắng Müller-Thurgau" },
-                  { de: "Weißburgunder", vi: "rượu vang trắng Pinot Blanc" },
-                  { de: "Chardonnay", vi: "rượu vang trắng Chardonnay" },
-                  { de: "Viognier", vi: "rượu vang trắng Viognier" },
-                  { de: "Knurrhahn", vi: "cá chào mào biển" },
-                  { de: "Rochen", vi: "cá đuối" },
-                  { de: "Seelachs", vi: "cá tuyết đen" },
-                  { de: "Kabeljau", vi: "cá tuyết Đại Tây Dương" },
-                  { de: "Rotbarsch", vi: "cá vược đỏ" },
-                  { de: "Schellfisch", vi: "cá tuyết chấm đen" },
-                  { de: "Seeteufel", vi: "cá mặt quỷ" }
-                ],
-                content: `<h2>§6 &amp; §7 Fischgerichte, Weinempfehlung &amp; Bildtafel</h2>
-<div class="hint">Thực đơn nhà hàng · Phương pháp nấu cá kinh điển · Rượu vang trắng đi kèm · Bảng nhận diện cá</div>
+.fisch-skript-wrap header.cover .subtitle-vi {
+  font-family:"IBM Plex Sans",sans-serif; font-size:.92rem; color:var(--slate);
+  margin:2px 0 0; font-style:normal;
+}
 
-<h3 class="sub">1. Các Món Cá Kinh điển Trong Nhà hàng (§6)</h3>
-<table>
-  <tr><th>Món ăn</th><th>Mô tả cách chế biến &amp; Điểm đặc trưng</th><th>Đồ ăn kèm (Beilagen)</th></tr>
-  <tr><td><b>Renke aus dem Bodensee geräuchert</b></td><td>Cá <span class="term" data-de="Renke" data-vi="cá Renke đặc sản hồ Bodensee">Renke</span> đặc sản của hồ Bodensee (thuộc họ cá hồi cá hồi trắng), được hun khói mềm mịn, thơm mùi gỗ sồi.</td><td>Ăn kèm kem cải ngựa cay nồng dịu (<span class="term" data-de="Meerrettichsahne" data-vi="kem cải ngựa">Meerrettichsahne</span>) và bánh mì nâu.</td></tr>
-  <tr><td><b>Renke / Forelle Müllerin Art</b></td><td>Kiểu “bà chủ cối xay bột” (<i>À la Meunière</i>): Cá làm sạch, tẩm qua một lớp bột mì mỏng (<span class="term" data-de="Mehl" data-vi="bột mì">in Mehl gewendet</span>), rán vàng đều trong bơ tươi (<span class="term" data-de="in Butter gebraten" data-vi="chiên trong bơ">in Butter gebraten</span>), rưới bơ nâu thơm hạt dẻ (braune Butter) và nước cốt chanh tươi.</td><td><span class="term" data-de="Petersilienkartoffeln" data-vi="khoai tây luộc xóc rau mùi tây">Petersilienkartoffeln</span> (khoai tây xóc bơ mùi tây).</td></tr>
-  <tr><td><b>Forelle blau</b></td><td>Kiểu “cá hồi xanh”: Cá hồi tươi sống vừa bắt, không cạo vảy để giữ lớp nhớt tự nhiên, chần nhẹ trong nước giấm gia vị lăn tăn sủi tăm (<span class="term" data-de="Essigsud" data-vi="nước giấm luộc cá">Essigsud</span>). Axit trong giấm phản ứng với lớp chất nhầy trên da làm da cá chuyển màu <b>xanh ánh bạc (silbrig-blau)</b> lấp lánh.</td><td><span class="term" data-de="Salzkartoffeln" data-vi="khoai tây luộc muối">Salzkartoffeln</span> và bơ đun chảy (<span class="term" data-de="zerlassene Butter" data-vi="bơ nấu chảy">zerlassene Butter</span>).</td></tr>
-  <tr><td><b>Lachs-Steak</b></td><td>Lát cá hồi cắt khúc nướng hoặc áp chảo vàng óng, mềm ngậy bên trong.</td><td>Sốt kem cam cà ri (Orange-Curry-Creme), cơm hương lài (Jasminreis) và salad dầu giấm mè.</td></tr>
-  <tr><td><b>Vitello tonnato</b></td><td>Khai vị truyền thống Ý: Thịt bê luộc mềm thái lát mỏng manh, phục vụ nguội lạnh phủ đẫm sốt kem cá ngừ (<span class="term" data-de="Thunfischsoße" data-vi="sốt kem cá ngừ">Thunfischsoße</span>, cá cơm xay nhuyễn và nụ bạch hoa Kapern).</td><td>Bánh mì Ciabatta hoặc Grissini giòn.</td></tr>
-</table>
+.fisch-skript-wrap header.cover .subtitle-vi:before {content:"VI · "; font-weight:600; letter-spacing:.03em; color:var(--slate); opacity:.7;}
 
-<h3 class="sub">2. 13 Loại Cá Thường Thấy Trong Thực đơn Nhà hàng</h3>
-<div class="note"><strong>13 Speisefische im Restaurant „Zum goldenen Karpfen“:</strong><br>
-Kabeljau (cá tuyết), Forelle (cá hồi suối), Heilbutt (cá bơn lớn), Zander (cá vược sông), Seelachs (cá tuyết đen), Scholle (cá bơn sao), Thunfisch (cá ngừ), Seezunge (cá bơn lưỡi trâu), Makrele (cá thu), Karpfen (cá chép), Aal (lươn), Wolfsbarsch (cá vược biển), Lachs (cá hồi).</div>
+.fisch-skript-wrap header.cover .exam-meta {
+  display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:18px;
+  font-family:"IBM Plex Mono",monospace; font-size:.72rem;
+}
 
-<h3 class="sub">3. Weinempfehlung zu Fisch (Gợi ý Rượu vang Trắng)</h3>
-<p>Quy tắc cơ bản: Vị thanh ngọt, mềm và đạm nhạy cảm của cá kết hợp hoàn hảo nhất với <b>rượu vang trắng khô (trockene Weißweine)</b> có độ axit hài hòa:</p>
-<ul>
-  <li><b>Müller-Thurgau (Rivaner):</b> Vang trắng tươi mát, hương hoa quả nhẹ nhàng, nồng độ cồn vừa phải; rất hợp với cá luộc (Forelle blau), cá hấp thanh đạm.</li>
-  <li><b>Weißburgunder (Pinot Blanc):</b> Hương vị cân bằng, tròn trịa, tao nhã; cực kỳ phù hợp với cá áp chảo bơ, cá sốt bơ chanh (Müllerin Art).</li>
-  <li><b>Chardonnay:</b> Cấu trúc đậm đà, hương quả chín mọng và thoảng hương gỗ sồi vani; rất hợp với cá béo (Lachs, Aal) hoặc cá sốt kem béo ngậy.</li>
-  <li><b>Viognier:</b> Vang trắng thơm nồng nàn hương hoa nhài và quả mơ đào; kết hợp xuất sắc với các món cá có nước sốt cari cam hoặc sốt gia vị thơm.</li>
-</ul>
+.fisch-skript-wrap header.cover .exam-meta span {
+  border:1px solid var(--brass); color:var(--wax); padding:4px 12px; border-radius:20px;
+  letter-spacing:.04em;
+}
 
-<h3 class="sub">4. Bildtafel: Bảng Nhận Diện Các Loài Cá (§7)</h3>
-<p>Danh sách các loài cá biển và nước ngọt quan trọng cần nhận biết mặt hình dáng trong kỳ thi nghề:</p>
-<table>
-  <tr><th>Nhóm</th><th>Loài cá (Deutsch)</th><th>Tên tiếng Việt &amp; Dấu hiệu nhận dạng đặc trưng</th></tr>
-  <tr><td rowspan="8"><b>Seefische (Cá biển)</b></td><td><span class="term" data-de="Knurrhahn" data-vi="cá chào mào biển">Knurrhahn</span></td><td>Cá chào mào biển: đầu to bọc giáp xương cứng, vây ngực xòe rộng như cánh quạt nhiều màu sắc rực rỡ.</td></tr>
-  <tr><td><span class="term" data-de="Rochen" data-vi="cá đuối">Rochen</span></td><td>Cá đuối: thân dẹt phẳng hình thoi, cánh vây rộng uyển chuyển, đuôi dài mảnh như roi.</td></tr>
-  <tr><td><span class="term" data-de="Seelachs" data-vi="cá tuyết đen">Seelachs</span></td><td>Cá tuyết đen (Pollock): lưng xanh đen sẫm, bụng trắng bạc, thịt dai ngon giá thành hợp lý.</td></tr>
-  <tr><td><span class="term" data-de="Kabeljau" data-vi="cá tuyết">Kabeljau / Dorsch</span></td><td>Cá tuyết: có một sợi râu cằm đặc trưng (<span class="term" data-de="Kinnfaden" data-vi="râu cằm">Kinnfaden</span>), đường bên hông màu sáng rõ rệt.</td></tr>
-  <tr><td><span class="term" data-de="Lengfisch" data-vi="cá ling">Lengfisch</span></td><td>Cá ling: thân dài như con lươn, vây lưng và vây hậu môn rất dài.</td></tr>
-  <tr><td><span class="term" data-de="Rotbarsch" data-vi="cá vược đỏ">Rotbarsch</span></td><td>Cá vược đỏ: toàn thân màu đỏ lửa hoặc hồng cam, mắt to tròn lồi, vây lưng có tia gai nhọn.</td></tr>
-  <tr><td><span class="term" data-de="Schellfisch" data-vi="cá tuyết chấm đen">Schellfisch</span></td><td>Cá tuyết đốm đen: đặc trưng bởi <b>một đốm đen lớn trên vây ngực</b> (gọi là “dấu tay Thánh Peter”).</td></tr>
-  <tr><td><span class="term" data-de="Seeteufel" data-vi="cá mặt quỷ">Seeteufel</span></td><td>Cá mặt quỷ (Anglerfish): đầu khổng lồ bè bẹt, miệng rộng ngoác đầy răng nhọn, thịt đuôi giòn như tôm hùm.</td></tr>
-  <tr><td rowspan="6"><b>Süßwasserfische (Cá nước ngọt)</b></td><td><span class="term" data-de="Forelle" data-vi="cá hồi suối">Forelle / Saibling</span></td><td>Họ cá hồi nước ngọt: thân hình thoi thon gọn, có vây mỡ (<span class="term" data-de="Fettflosse" data-vi="vây mỡ">Fettflosse</span>), nhiều đốm chấm đen/đỏ trên thân.</td></tr>
-  <tr><td><span class="term" data-de="Flussbarsch" data-vi="cá rô sông">Flussbarsch</span></td><td>Cá rô sông châu Âu: các sọc vằn đen dọc thân như da hổ, vây bụng và vây đuôi màu đỏ cam tươi.</td></tr>
-  <tr><td><span class="term" data-de="Zander" data-vi="cá vược sông">Zander</span></td><td>Cá vược sông: mắt đục phản quang trong bóng tối, có gai nhỏ nắp mang, răng nanh sắc.</td></tr>
-  <tr><td><span class="term" data-de="Hecht" data-vi="cá măng sông">Hecht</span></td><td>Cá măng sông: thân thuôn dài, mõm bẹt dài như mỏ vịt, vây lưng lùi sát về phía đuôi để phóng nhanh.</td></tr>
-  <tr><td><span class="term" data-de="Wels" data-vi="cá da trơn">Wels</span></td><td>Cá nheo khổng lồ: đầu bẹt, thân da trơn bóng không vảy, 2 râu mép rất dài ở hàm trên và 4 râu nhỏ hàm dưới.</td></tr>
-  <tr><td><span class="term" data-de="Karpfen" data-vi="cá chép">Karpfen</span></td><td>Cá chép: thân dày gù cao, 4 sợi râu mép (Bartfäden) rõ ràng quanh miệng.</td></tr>
-</table>`
+
+/* ---- Legend + controls ---- */
+.fisch-skript-wrap .legend {
+  max-width:820px; margin:22px auto 0; display:flex; gap:18px; justify-content:center;
+  flex-wrap:wrap; align-items:center; font-family:"IBM Plex Sans",sans-serif; font-size:.82rem; color:var(--ink);
+}
+
+.fisch-skript-wrap .legend .item {display:flex; align-items:center; gap:8px;}
+
+.fisch-skript-wrap .legend .swatch {width:16px; height:16px; border-radius:2px; flex-shrink:0;}
+
+.fisch-skript-wrap .legend .swatch.de {background:var(--wax);}
+
+.fisch-skript-wrap .legend .swatch.vi {background:var(--slate);}
+
+.fisch-skript-wrap .toggle-btn {
+  cursor:pointer; font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.05em;
+  background:var(--ink); color:var(--paper); border:none; padding:8px 14px; border-radius:6px;
+  text-transform:uppercase; transition:.15s;
+}
+
+.fisch-skript-wrap .toggle-btn:hover {background:var(--wax);}
+
+
+/* ---- Sticky paragraph nav ---- */
+.fisch-skript-wrap nav.spine {
+  position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper);
+  display:flex; gap:0; overflow-x:auto; white-space:nowrap; padding:0 10px;
+  box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+.fisch-skript-wrap nav.spine a {
+  color:var(--paper); text-decoration:none; font-family:"IBM Plex Mono",monospace;
+  font-size:.74rem; letter-spacing:.03em; padding:13px 14px; border-right:1px solid rgba(255,255,255,.12);
+  opacity:.72; transition:.15s;
+}
+
+.fisch-skript-wrap nav.spine a:hover {opacity:1; background:rgba(255,255,255,.06); color:#EFC9A0;}
+
+.fisch-skript-wrap nav.spine a.exam {color:#EFC9A0; opacity:.9;}
+
+.fisch-skript-wrap nav.spine .grp {
+  font-family:"IBM Plex Mono",monospace; font-size:.64rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--brass); padding:13px 8px 13px 14px; align-self:center; opacity:.9;
+}
+
+
+.fisch-skript-wrap main {max-width:840px; margin:0 auto; padding:10px 24px 100px;}
+
+
+/* ---- Section shell: like a numbered § chapter ---- */
+.fisch-skript-wrap section.chapter {padding:50px 0 20px; border-bottom:1px solid var(--line); scroll-margin-top:54px;}
+
+.fisch-skript-wrap section.chapter:last-of-type {border-bottom:none;}
+
+.fisch-skript-wrap .chapter-head {display:flex; align-items:baseline; gap:16px; margin-bottom:6px;}
+
+.fisch-skript-wrap .chapter-num {
+  font-family:"Fraunces",serif; font-weight:700; font-size:2.5rem; color:var(--brass);
+  line-height:1; flex-shrink:0;
+}
+
+.fisch-skript-wrap .chapter-title-de {font-family:"Fraunces",serif; font-weight:600; font-size:1.5rem; color:var(--ink); margin:0;}
+
+.fisch-skript-wrap .chapter-title-vi {
+  font-family:"IBM Plex Sans",sans-serif; font-size:.95rem; color:var(--slate); margin:4px 0 0 60px;
+}
+
+.fisch-skript-wrap .chapter-title-vi:before {content:"VI · "; font-weight:600; opacity:.7;}
+
+.fisch-skript-wrap .lf-tag {
+  font-family:"IBM Plex Mono",monospace; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase;
+  background:var(--wax); color:var(--paper); padding:3px 9px; border-radius:4px; margin-left:auto; align-self:center;
+}
+
+
+.fisch-skript-wrap h3.sub {
+  font-family:"Fraunces",serif; font-weight:600; font-size:1.16rem; color:var(--wax);
+  margin:32px 0 4px; padding-left:14px; border-left:3px solid var(--wax);
+}
+
+.fisch-skript-wrap h3.sub .vi-sub {
+  display:block; font-family:"IBM Plex Sans",sans-serif; font-weight:500; font-size:.82rem;
+  color:var(--slate); margin-top:3px; border-left:none; padding-left:0; letter-spacing:0;
+}
+
+.fisch-skript-wrap h4.h4 {font-family:'IBM Plex Sans',sans-serif; color:var(--ink); margin:24px 0 6px; font-size:1rem;}
+
+.fisch-skript-wrap h4.h4 .vi-sub {display:block; color:var(--slate); font-weight:400; font-size:.82rem; margin-top:2px;}
+
+
+/* ---- The core DE→VI stacked block ---- */
+.fisch-skript-wrap .block {margin:16px 0 22px;}
+
+.fisch-skript-wrap .de {
+  position:relative; padding:14px 18px 14px 20px; background:rgba(122,46,46,.045);
+  border-left:3px solid var(--wax); border-radius:0 6px 6px 0; font-size:1rem;
+}
+
+.fisch-skript-wrap .de .tag {
+  font-family:"IBM Plex Mono",monospace; font-size:.66rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--wax); display:block; margin-bottom:5px; opacity:.85;
+}
+
+.fisch-skript-wrap .vi {
+  font-family:"IBM Plex Sans",sans-serif; font-size:.9rem; color:var(--slate);
+  padding:10px 18px 4px 20px; border-left:3px solid var(--slateline); margin-top:-4px;
+}
+
+.fisch-skript-wrap .vi .tag {
+  font-family:"IBM Plex Mono",monospace; font-size:.64rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--slate); display:block; margin-bottom:4px; opacity:.75;
+}
+
+/* Vietnamese hide toggle */
+.fisch-skript-wrap.hide-vi .vi {display:none !important;}
+
+.fisch-skript-wrap.hide-vi .vi-sub {display:none !important;}
+
+.fisch-skript-wrap.hide-vi .vi-cell {display:none !important;}
+
+.fisch-skript-wrap.hide-vi .vi-mini {display:none !important;}
+
+.fisch-skript-wrap.hide-vi .chapter-title-vi {display:none !important;}
+
+
+.fisch-skript-wrap ul, .fisch-skript-wrap ol {margin:10px 0; padding-left:26px;}
+
+.fisch-skript-wrap li {margin:5px 0;}
+
+.fisch-skript-wrap li.de {border-radius:0 6px 6px 0; margin:7px 0;}
+
+
+.fisch-skript-wrap .para-code {
+  font-family:"IBM Plex Mono",monospace; font-size:.7rem; font-weight:600; color:#fff;
+  background:var(--brass); padding:2px 8px; border-radius:10px; margin-left:6px; letter-spacing:.02em;
+  display:inline-block;
+}
+
+.fisch-skript-wrap b, .fisch-skript-wrap strong {color:var(--ink);}
+
+.fisch-skript-wrap .vi b, .fisch-skript-wrap .vi strong {color:#324150;}
+
+
+.fisch-skript-wrap table {width:100%; border-collapse:collapse; margin:16px 0; font-size:.9rem; background:#fff;}
+
+.fisch-skript-wrap th, .fisch-skript-wrap td {border:1px solid var(--line); padding:9px 11px; text-align:left; vertical-align:top;}
+
+.fisch-skript-wrap th {background:var(--ink); color:var(--paper); font-family:"IBM Plex Sans",sans-serif; font-weight:600; font-size:.78rem; letter-spacing:.03em; text-transform:uppercase;}
+
+.fisch-skript-wrap tr:nth-child(even) td {background:var(--paper2);}
+
+.fisch-skript-wrap td.vi-cell {color:var(--slate); font-family:"IBM Plex Sans",sans-serif; font-size:.82rem;}
+
+.fisch-skript-wrap .vi-cell {color:var(--slate); font-family:"IBM Plex Sans",sans-serif; font-size:.82rem; display:block; margin-top:3px;}
+
+
+.fisch-skript-wrap .example {
+  background:var(--greenbg); border-left:4px solid var(--green); border-radius:0 6px 6px 0;
+  padding:10px 16px; margin:12px 0; font-size:.92rem;
+}
+
+.fisch-skript-wrap .example .tag {font-family:"IBM Plex Mono",monospace; font-size:.65rem; letter-spacing:.1em; color:#3f5c39; text-transform:uppercase; display:block; margin-bottom:4px;}
+
+.fisch-skript-wrap .example .vi {border:none; padding:4px 0 0; margin:0;}
+
+
+.fisch-skript-wrap .warn {
+  background:#f7e9df; border-left:4px solid var(--wax); border-radius:0 6px 6px 0;
+  padding:10px 16px; margin:12px 0; font-size:.92rem;
+}
+
+.fisch-skript-wrap .warn .tag {font-family:"IBM Plex Mono",monospace; font-size:.65rem; letter-spacing:.1em; color:var(--wax); text-transform:uppercase; display:block; margin-bottom:4px;}
+
+.fisch-skript-wrap .warn .vi {border:none; padding:4px 0 0; margin:0;}
+
+
+.fisch-skript-wrap .timeline {
+  display:flex; justify-content:space-between; margin:26px 0 8px; padding:16px 10px;
+  border:1px solid var(--line); border-radius:8px; background:#fff;
+  font-family:"IBM Plex Mono",monospace; font-size:.78rem; text-align:center; color:var(--ink);
+}
+
+.fisch-skript-wrap .timeline div {flex:1;}
+
+.fisch-skript-wrap .timeline .vi-mini {display:block; font-family:"IBM Plex Sans",sans-serif; font-size:.68rem; color:var(--slate); margin-top:2px;}
+
+
+.fisch-skript-wrap .grid2 {display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+
+@media(max-width:640px){
+.fisch-skript-wrap .grid2 {grid-template-columns:1fr;}
+ .fisch-skript-wrap .chapter-title-vi {margin-left:0;}
+
+}
+
+
+.fisch-skript-wrap .badge-set {
+  font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.05em; text-transform:uppercase;
+  background:var(--ink); color:var(--paper); padding:5px 12px; border-radius:4px; display:inline-block; margin-bottom:14px;
+}
+
+.fisch-skript-wrap .pill {display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:.66rem; font-weight:600;
+  padding:2px 9px; border-radius:12px; letter-spacing:.03em; text-transform:uppercase;}
+
+.fisch-skript-wrap .pill.ok {background:#e2efdb; color:#3f5c39; border:1px solid #a9c39b;}
+
+.fisch-skript-wrap .pill.no {background:#f4ddd6; color:#8a3324; border:1px solid #d3a294;}
+
+.fisch-skript-wrap .pill.al {background:#f4ddd6; color:#7A2E2E; border:1px solid #d3a294;}
+
+
+/* ---- Q&A / Lösung accordion ---- */
+.fisch-skript-wrap details.q {border:1px solid var(--line); border-radius:8px; margin:14px 0; overflow:hidden; background:#fff;}
+
+.fisch-skript-wrap details.q summary {
+  cursor:pointer; list-style:none; padding:14px 18px; font-family:"IBM Plex Sans",sans-serif;
+  font-weight:600; font-size:.95rem; color:var(--ink); position:relative; padding-right:40px;
+}
+
+.fisch-skript-wrap details.q summary::-webkit-details-marker {display:none;}
+
+.fisch-skript-wrap details.q summary:after {
+  content:"+"; position:absolute; right:16px; top:50%; transform:translateY(-50%);
+  font-size:1.3rem; color:var(--brass); font-weight:400;
+}
+
+.fisch-skript-wrap details.q[open] summary:after {content:"–";}
+
+.fisch-skript-wrap details.q[open] summary {background:rgba(122,46,46,.04); border-bottom:1px dashed var(--line);}
+
+.fisch-skript-wrap details.q summary .qnum {
+  font-family:"IBM Plex Mono",monospace; color:var(--brass); font-weight:600; margin-right:8px;
+}
+
+.fisch-skript-wrap details.q .ans {padding:2px 18px 16px;}
+
+.fisch-skript-wrap details.q .ans .de {margin-top:12px;}
+
+.fisch-skript-wrap details.q .ans .vi {margin-bottom:6px;}
+
+
+/* ---- Math / calculation card ---- */
+.fisch-skript-wrap .calc {
+  font-family:"IBM Plex Mono",monospace; font-size:.86rem; background:var(--ink); color:var(--paper);
+  border-radius:8px; padding:16px 18px; margin:14px 0; line-height:1.9;
+}
+
+.fisch-skript-wrap .calc .op {color:var(--brass);}
+
+.fisch-skript-wrap .calc .val {color:#EFC9A0;}
+
+.fisch-skript-wrap .calc .res {color:#a9d39b; border-top:1px dashed rgba(255,255,255,.25); padding-top:4px; margin-top:4px; display:block;}
+
+
+/* ---- Exam sheet ---- */
+.fisch-skript-wrap .exam-intro {
+  background:var(--paper2); border:1px solid var(--line); border-radius:8px;
+  padding:14px 18px; margin:16px 0; font-size:.94rem;
+}
+
+.fisch-skript-wrap .aufgabe {margin:22px 0; padding-left:16px; border-left:3px solid var(--brass);}
+
+.fisch-skript-wrap .aufgabe-num {font-family:"IBM Plex Sans",sans-serif; font-weight:600; color:var(--wax); font-size:1rem; display:block; margin-bottom:4px;}
+
+.fisch-skript-wrap .pts {float:right; font-family:"IBM Plex Mono",monospace; color:var(--brass); font-size:.78rem;}
+
+.fisch-skript-wrap kbd {font-family:"IBM Plex Mono",monospace; background:var(--paper2); border:1px solid var(--line); border-radius:4px; padding:1px 6px; font-size:.78rem; color:var(--ink);}
+
+.fisch-skript-wrap code {font-family:"IBM Plex Mono",monospace; background:var(--paper2); border:1px solid var(--line); border-radius:4px; padding:1px 6px; font-size:.86em;}
+
+
+.fisch-skript-wrap footer {
+  text-align:center; padding:44px 20px 70px; font-family:"IBM Plex Sans",sans-serif;
+  font-size:.82rem; color:var(--slate); border-top:1px solid var(--line);
+}
+
+.fisch-skript-wrap footer .de {background:none; border:none; padding:0;}
+
+.fisch-skript-wrap footer .vi {border:none; padding:0; margin-top:4px;}
+
+
+
+/* ---- Bildtafel ---- */
+.fisch-skript-wrap .fishgrid {display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:18px 0;}
+
+@media(max-width:640px){
+.fisch-skript-wrap .fishgrid {grid-template-columns:repeat(2,1fr);}
+
+}
+
+.fisch-skript-wrap figure.fish {margin:0; background:#fff; border:1px solid var(--line); border-radius:6px; overflow:hidden;}
+
+.fisch-skript-wrap figure.fish img {display:block; width:100%; height:auto; background:#fff;}
+
+.fisch-skript-wrap figure.fish figcaption {padding:8px 12px 10px; border-top:3px solid var(--brass); font-family:"Fraunces",serif; font-size:1rem; color:var(--ink);}
+
+.fisch-skript-wrap figure.fish figcaption .vi-cell {font-size:.78rem; margin-top:2px;}
+
+
+@media (prefers-reduced-motion: reduce){
+ .fisch-skript-wrap {scroll-behavior:auto;}
+ 
+}
+
+@media print{
+
+  .fisch-skript-wrap nav.spine, .fisch-skript-wrap .toggle-btn {display:none;}
+
+  .fisch-skript-wrap {font-size:12pt; background:#fff;}
+
+  .fisch-skript-wrap details.q, .fisch-skript-wrap details.q .ans {display:block !important;}
+
+  .fisch-skript-wrap details.q[open] summary:after, .fisch-skript-wrap details.q summary:after {content:"";}
+
+  .fisch-skript-wrap section.chapter {page-break-inside:auto;}
+
+
+}
+
+
+</style>
+<div class="fisch-skript-wrap">
+<header class="cover">
+  <div class="kicker">Berufsfachschule Küche · Lernskript · Warenkunde</div>
+  <h1>§ <em>Fisch</em> — Einteilung, Inhaltsstoffe &amp; Konservierung</h1>
+  <p class="subtitle-de">Fischarten · Wanderfische · Fettgehalt · Räuchern, Salzen, Marinieren · Kaviar · Fischgerichte</p>
+  <p class="subtitle-vi">Phân loại cá, thành phần dinh dưỡng, bảo quản, trứng cá và món ăn từ cá</p>
+  <div class="exam-meta">
+    <span>Warenkunde</span><span>Fisch</span><span>DE / VI zweisprachig</span>
+  </div>
+  <div class="legend">
+    <div class="item"><span class="swatch de"></span> Deutsch (Original — luôn đọc trước)</div>
+    <div class="item"><span class="swatch vi"></span> Tiếng Việt (bản dịch — đọc sau để hiểu)</div>
+    <button class="toggle-btn" id="viToggle" onclick="(function(){ var wrap=document.querySelector('.fisch-skript-wrap'); if(!wrap)return; wrap.classList.toggle('hide-vi'); var b=document.getElementById('viToggle'); if(b) b.textContent=wrap.classList.contains('hide-vi')?'DE · Tiếng Việt: TẮT':'VI · Tiếng Việt: BẬT'; })()"> Tiếng Việt: AN</button>
+  </div>
+</header>
+
+<nav class="spine">
+  <span class="grp">Grundlagen</span>
+  <a href="#p1" onclick="event.preventDefault(); var el=document.getElementById('p1'); if(el) el.scrollIntoView({behavior:'smooth'});">1 · Einteilung</a>
+  <a href="#p2" onclick="event.preventDefault(); var el=document.getElementById('p2'); if(el) el.scrollIntoView({behavior:'smooth'});">2 · Inhaltsstoffe</a>
+  <a href="#p3" onclick="event.preventDefault(); var el=document.getElementById('p3'); if(el) el.scrollIntoView({behavior:'smooth'});">3 · Fischarten</a>
+  <span class="grp">Verarbeitung</span>
+  <a href="#p4" onclick="event.preventDefault(); var el=document.getElementById('p4'); if(el) el.scrollIntoView({behavior:'smooth'});">4 · Konservierung</a>
+  <a href="#p5" onclick="event.preventDefault(); var el=document.getElementById('p5'); if(el) el.scrollIntoView({behavior:'smooth'});">5 · Kaviar</a>
+  <a href="#p6" onclick="event.preventDefault(); var el=document.getElementById('p6'); if(el) el.scrollIntoView({behavior:'smooth'});">6 · Gerichte &amp; Wein</a>
+  <a href="#p7" onclick="event.preventDefault(); var el=document.getElementById('p7'); if(el) el.scrollIntoView({behavior:'smooth'});">7 · Bildtafel</a>
+  <span class="grp">TEST</span>
+  <a href="#quiz" onclick="event.preventDefault(); var el=document.getElementById('quiz'); if(el) el.scrollIntoView({behavior:'smooth'});" class="exam">Prüfungs-Check</a>
+</nav>
+
+<main>
+<span class="badge-set">Teil 1 · Fische kennen &amp; einteilen</span>
+
+<!-- ============ §1 ============ -->
+<section class="chapter" id="p1">
+  <div class="chapter-head">
+    <span class="chapter-num">§1</span>
+    <h2 class="chapter-title-de">Einteilung der Fische</h2>
+    <span class="lf-tag">Warenkunde</span>
+  </div>
+  <p class="chapter-title-vi">Phân loại cá theo 5 tiêu chí: môi trường sống, di cư, hình dáng, nguồn gốc, hàm lượng béo</p>
+
+  <div class="block">
+    <div class="de"><span class="tag">Überblick</span>
+      Fische werden nach <b>fünf Kriterien</b> eingeteilt: (a) Herkunft / Lebensraum, (b) Wanderverhalten, (c) Körperform, (d) Fang oder Zucht, (e) Fettgehalt.</div>
+    <div class="vi"><span class="tag">VI</span>
+      Cá được chia theo <b>5 tiêu chí</b>: (a) nguồn gốc / môi trường sống, (b) tập tính di cư, (c) hình dáng cơ thể, (d) đánh bắt hay nuôi, (e) hàm lượng chất béo.</div>
+  </div>
+
+  <h3 class="sub">a) Herkunft &amp; Lebensraum
+    <span class="vi-sub">Theo môi trường sống: nước ngọt và nước mặn</span>
+  </h3>
+  <table>
+    <tr><th>Gruppe</th><th>Fischarten / Loài cá</th></tr>
+    <tr><td><b>Süßwasserfische</b><span class="vi-cell">Cá nước ngọt</span></td>
+      <td>Forelle, Pangasius, Zander, Barsch, Karpfen, Hecht, Flussaal
+        <span class="vi-cell">Cá hồi suối, cá tra/basa, cá vược sông, cá vược, cá chép, cá măng sông, lươn sông</span></td></tr>
+    <tr><td><b>Salzwasserfische / Seefische</b><span class="vi-cell">Cá nước mặn / cá biển</span></td>
+      <td>Scholle, Seelachs, Hering, Seezunge, Makrele, Heilbutt, Kabeljau / Dorsch, Thunfisch, Steinbutt, Flunder, Knurrhahn, Rochen, Lengfisch, Rotbarsch, Schellfisch, Petersfisch, Seeteufel, Stör, Rotzunge, Steinbeisser, Wolfsbarsch, Seeaal (Dornhai)
+        <span class="vi-cell">Gồm cá bơn, cá tuyết, cá trích, cá thu, cá ngừ, cá tầm, cá nhám góc… sống ở biển</span></td></tr>
+  </table>
+
+  <h3 class="sub">b) Wanderfische
+    <span class="vi-sub">Cá di cư — đẻ trứng ở môi trường khác nơi sinh sống</span>
+  </h3>
+
+  <div class="block">
+    <div class="de"><span class="tag">Flussaal · Süß- ins Salzwasser</span>
+      Der Aal wächst im Süßwasser auf und wandert zum <b>Laichen ins Meer</b>.</div>
+    <div class="vi"><span class="tag">VI</span>
+      Lươn sông lớn lên ở nước ngọt, rồi di cư <b>ra biển để đẻ trứng</b>.</div>
+  </div>
+  <div class="timeline">
+    <div>Glasaal<span class="vi-mini">cá chình thủy tinh · ở biển</span></div>
+    <div>Steigaal<span class="vi-mini">di cư vào sông</span></div>
+    <div>4–10 Jahre<span class="vi-mini">sống ở nước ngọt</span></div>
+    <div>Laichen<span class="vi-mini">quay về biển đẻ trứng</span></div>
+  </div>
+
+  <div class="block">
+    <div class="de"><span class="tag">Lachs · Salz- ins Süßwasser</span>
+      Der Lachs schlüpft im Süßwasser, wandert als <b>Junglachs</b> ins Meer und nimmt dort sehr schnell an Gewicht zu. Zum Laichen schwimmt er flussaufwärts zurück ins Süßwasser. Auch die <b>Lachsforelle</b> gehört zu den Wanderfischen.</div>
+    <div class="vi"><span class="tag">VI</span>
+      Cá hồi sinh ra ở nước ngọt, khi còn trẻ (<i>Junglachs</i>) ra biển và tăng cân rất nhanh, rồi bơi ngược dòng sông về nước ngọt để đẻ trứng. <i>Lachsforelle</i> cũng là cá di cư.</div>
+  </div>
+  <div class="timeline">
+    <div>Süßwasser<span class="vi-mini">nơi nở</span></div>
+    <div>Junglachs<span class="vi-mini">cá hồi trẻ ra biển</span></div>
+    <div>Meer<span class="vi-mini">tăng cân nhanh</span></div>
+    <div>Fluss aufwärts<span class="vi-mini">ngược sông, đẻ trứng</span></div>
+  </div>
+
+  <div class="warn"><span class="tag">Merksatz · Câu dễ nhầm</span>
+    Aal: <b>Süß → Salz</b> (laicht im Meer). Lachs: <b>Salz → Süß</b> (laicht im Fluss).
+    <div class="vi"><span class="tag">VI</span>Lươn: ngọt → mặn (đẻ ở biển). Cá hồi: mặn → ngọt (đẻ ở sông).</div>
+  </div>
+
+  <h3 class="sub">c) Körperform
+    <span class="vi-sub">Cá thân bẹt và cá thân tròn</span>
+  </h3>
+  <div class="grid2">
+    <div>
+      <span class="pill no">Plattfische</span>
+      <div class="block">
+        <div class="de"><span class="tag">Platt · Bodenfische</span>
+          Körper flach und asymmetrisch, <b>beide Augen auf einer Seite</b>. Leben am Meeresboden und schwimmen seitlich liegend.</div>
+        <div class="vi"><span class="tag">VI</span>
+          Thân phẳng, bất đối xứng, <b>hai mắt cùng một bên</b>. Sống ở đáy biển, bơi nằm nghiêng.</div>
+      </div>
+      <div class="example"><span class="tag">Beispiele</span>Scholle, Seezunge, Flunder, Steinbutt, Heilbutt, Rotzunge</div>
+    </div>
+    <div>
+      <span class="pill ok">Rundfische</span>
+      <div class="block">
+        <div class="de"><span class="tag">Rund · freischwimmend</span>
+          Körper rund bis spindelförmig und symmetrisch, <b>je ein Auge pro Seite</b>. Schwimmen frei im Wasser.</div>
+        <div class="vi"><span class="tag">VI</span>
+          Thân tròn, hình thoi, đối xứng, <b>mỗi bên một mắt</b>. Bơi tự do trong tầng nước.</div>
+      </div>
+      <div class="example"><span class="tag">Beispiele</span>Forelle, Hecht, Seelachs, Zander, Hering, Makrele, Lachs, Pangasius, Kabeljau, Aal, Steinbeisser, Wolfsbarsch, Thunfisch</div>
+    </div>
+  </div>
+
+  <h3 class="sub">d) Fang oder Zucht
+    <span class="vi-sub">Cá tự nhiên và cá nuôi</span>
+  </h3>
+  <table>
+    <tr><th>Begriff</th><th>Bedeutung</th></tr>
+    <tr><td><b>Wildfisch</b></td><td>Fisch aus natürlichem Fang <span class="vi-cell">Cá đánh bắt tự nhiên</span></td></tr>
+    <tr><td><b>Zuchtfisch</b></td><td>Fisch aus Farmhaltung <span class="vi-cell">Cá nuôi trang trại</span></td></tr>
+  </table>
+
+  <h3 class="sub">e) Fettgehalt
+    <span class="vi-sub">Cá béo và cá nạc</span>
+  </h3>
+  <div class="grid2">
+    <div>
+      <span class="pill al">Fettfisch &gt; 10 %</span>
+      <div class="block">
+        <div class="de"><span class="tag">Cá béo</span>Makrele, Hering, Aal, Sardine, Lachs, Thunfisch</div>
+        <div class="vi"><span class="tag">VI</span>Cá thu, cá trích, lươn, cá mòi, cá hồi, cá ngừ — chất béo trên 10 %.</div>
+      </div>
+    </div>
+    <div>
+      <span class="pill ok">Magerfisch &lt; 10 %</span>
+      <div class="block">
+        <div class="de"><span class="tag">Cá nạc · oft &lt; 2 %</span>Kabeljau / Dorsch, Seelachs, Zander, Schellfisch, Hecht, Scholle, Seezunge, Flunder, Steinbutt, Forelle</div>
+        <div class="vi"><span class="tag">VI</span>Chất béo dưới 10 %, nhiều loài dưới 2 %.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ §2 ============ -->
+<section class="chapter" id="p2">
+  <div class="chapter-head">
+    <span class="chapter-num">§2</span>
+    <h2 class="chapter-title-de">Inhaltsstoffe des Fisches</h2>
+    <span class="lf-tag">Warenkunde</span>
+  </div>
+  <p class="chapter-title-vi">Thành phần dinh dưỡng của cá</p>
+
+  <table>
+    <tr><th>Inhaltsstoff</th><th>Anteil</th><th>Hinweis</th></tr>
+    <tr><td><b>Fettanteil</b><span class="vi-cell">Chất béo</span></td><td>0,5 – 25 %</td>
+      <td>Schwankt stark je nach Art <span class="vi-cell">Dao động lớn tùy loài</span></td></tr>
+    <tr><td><b>Eiweißanteil</b><span class="vi-cell">Đạm</span></td><td>15 – 23 %</td>
+      <td>Relativ gleichbleibend <span class="vi-cell">Khá ổn định</span></td></tr>
+    <tr><td><b>Kohlenhydrate</b><span class="vi-cell">Carbohydrate</span></td><td>&lt; 1 %</td>
+      <td>Praktisch keine <span class="vi-cell">Hầu như không có</span></td></tr>
+    <tr><td><b>Mineralstoffe</b><span class="vi-cell">Khoáng chất</span></td><td>Jod bis 330 µg / 100 g</td>
+      <td>Wichtige Jodquelle <span class="vi-cell">Nguồn iốt quan trọng</span></td></tr>
+    <tr><td><b>Fettsäuren</b><span class="vi-cell">Axit béo</span></td><td>—</td>
+      <td>Viele ungesättigte Fettsäuren, besonders <b>Omega-3</b> <span class="vi-cell">Giàu axit béo không bão hòa, nhất là Omega-3</span></td></tr>
+  </table>
+
+  <div class="warn"><span class="tag">Prüfungsfalle · Bẫy thi</span>
+    Der <b>Fettgehalt</b> schwankt stark (0,5–25 %), der <b>Eiweißgehalt</b> bleibt relativ stabil (15–23 %).
+    <div class="vi"><span class="tag">VI</span>Chất béo biến động mạnh, đạm thì ổn định.</div>
+  </div>
+</section>
+
+<!-- ============ §3 ============ -->
+<section class="chapter" id="p3">
+  <div class="chapter-head">
+    <span class="chapter-num">§3</span>
+    <h2 class="chapter-title-de">Merkmale einzelner Fischarten</h2>
+    <span class="lf-tag">Warenkunde</span>
+  </div>
+  <p class="chapter-title-vi">Đặc điểm nhận biết của từng loài cá</p>
+
+  <table>
+    <tr><th>Fisch</th><th>Merkmale / Đặc điểm</th></tr>
+    <tr><td><b>Lachs</b><span class="vi-cell">Cá hồi</span></td>
+      <td>Wanderfisch: Süßwasser → Meer (schnelles Wachstum) → zurück zum Laichen.
+        <span class="vi-cell">Nở ở nước ngọt, ra biển lớn nhanh, về sông đẻ trứng.</span></td></tr>
+    <tr><td><b>Flussaal</b><span class="vi-cell">Lươn sông</span></td>
+      <td>Glasaal (Meer) → Steigaal (Fluss) → 4–10 Jahre Süßwasser → Laichen im Meer.
+        <span class="vi-cell">Từ biển vào sông, 4–10 năm ở nước ngọt rồi về biển.</span></td></tr>
+    <tr><td><b>Forelle</b><span class="vi-cell">Cá hồi suối</span></td>
+      <td>Regenbogenforelle, Goldforelle, Bachforelle und die wandernde <b>Lachsforelle</b>.
+        <span class="vi-cell">Cá hồi cầu vồng, cá hồi vàng, cá hồi suối; Lachsforelle là dạng di cư.</span></td></tr>
+    <tr><td><b>Hecht</b><span class="vi-cell">Cá măng sông</span></td>
+      <td>Raubfisch mit <b>langer Schnauze</b>; einjährig = <i>Grashecht</i>. Fleisch eignet sich für <b>Farcen</b>.
+        <span class="vi-cell">Cá săn mồi, mõm dài; 1 tuổi gọi là Grashecht; thịt hợp làm chả cá / thịt xay.</span></td></tr>
+    <tr><td><b>Karpfen</b><span class="vi-cell">Cá chép</span></td>
+      <td><b>Bartfäden</b> beidseits des Mauls. Formen: Spiegelkarpfen, Zeilkarpfen, Lederkarpfen, Schuppenkarpfen.
+        <span class="vi-cell">Có râu hai bên miệng. Chia theo vảy: chép gương, Zeilkarpfen, chép trần, chép vảy.</span></td></tr>
+    <tr><td><b>Zander</b><span class="vi-cell">Cá vược sông</span></td>
+      <td>Raubfisch mit <b>kleinem Dorn am Kiemendeckel</b>; Fleisch ähnlich wie Hecht.
+        <span class="vi-cell">Cá săn mồi, có gai nhỏ ở nắp mang; thịt giống cá măng sông.</span></td></tr>
+  </table>
+
+  <div class="example"><span class="tag">Merkhilfe · Mẹo nhớ</span>
+    Hecht = <b>lange Schnauze</b> · Karpfen = <b>Bartfäden</b> · Zander = <b>Dorn am Kiemendeckel</b>
+    <div class="vi"><span class="tag">VI</span>Măng sông = mõm dài · Chép = có râu · Vược sông = gai ở nắp mang.</div>
+  </div>
+</section>
+
+<span class="badge-set">Teil 2 · Konservieren, Verarbeiten &amp; Anrichten</span>
+
+<!-- ============ §4 ============ -->
+<section class="chapter" id="p4">
+  <div class="chapter-head">
+    <span class="chapter-num">§4</span>
+    <h2 class="chapter-title-de">Fischerzeugnisse &amp; Konservierung</h2>
+    <span class="lf-tag">Warenkunde</span>
+  </div>
+  <p class="chapter-title-vi">Sản phẩm từ cá và các phương pháp bảo quản</p>
+
+  <div class="block">
+    <div class="de"><span class="tag">Grundsatz</span>
+      Fisch <b>verdirbt leicht</b>. Er wird daher in verschiedenen Formen angeboten: Kühlfisch, TK-Fisch, Räucherfisch, Salzfisch, Trockenfisch, marinierter Fisch und Konserven.</div>
+    <div class="vi"><span class="tag">VI</span>
+      Cá <b>rất dễ hư</b>. Vì vậy cá được bán dưới dạng: cá tươi làm lạnh, đông lạnh, hun khói, muối, khô, ngâm chua và đồ hộp.</div>
+  </div>
+
+  <table>
+    <tr><th>Art</th><th>Haltbarkeit</th></tr>
+    <tr><td><b>Halbkonserven</b><span class="vi-cell">Bán đồ hộp</span></td><td>Tage bis Wochen <span class="vi-cell">Vài ngày đến vài tuần</span></td></tr>
+    <tr><td><b>Vollkonserven</b><span class="vi-cell">Đồ hộp hoàn toàn</span></td><td>Monate bis Jahre <span class="vi-cell">Vài tháng đến nhiều năm</span></td></tr>
+  </table>
+
+  <h3 class="sub">1 · Räuchern
+    <span class="vi-sub">Cá hun khói</span>
+  </h3>
+  <table>
+    <tr><th>Produkt</th><th>Beschreibung</th></tr>
+    <tr><td><b>Bückling</b></td><td>Ganzer, ausgenommener Hering <b>mit Kopf</b>, gesalzen und <b>heiß</b> geräuchert.
+      <span class="vi-cell">Cá trích nguyên con bỏ ruột, giữ đầu, muối rồi hun khói nóng.</span></td></tr>
+    <tr><td><b>Schillerlocken</b></td><td>Bauchlappen des Dornhais (Seeaal), gesalzen, gerollt, heiß geräuchert.
+      <span class="vi-cell">Phần lườn bụng cá nhám góc, muối, cuộn lại, hun khói nóng.</span></td></tr>
+  </table>
+
+  <h3 class="sub">2 · Salzen
+    <span class="vi-sub">Cá muối — nguyên lý: áp suất thẩm thấu</span>
+  </h3>
+  <div class="block">
+    <div class="de"><span class="tag">Prinzip</span>
+      Salz entzieht dem Fisch Wasser (<b>osmotischer Druck</b>). Mikroorganismen verlieren ihren Lebensraum und vermehren sich nicht.</div>
+    <div class="vi"><span class="tag">VI</span>
+      Muối rút nước khỏi cá nhờ <b>áp suất thẩm thấu</b>, vi sinh vật mất môi trường sống nên không phát triển.</div>
+  </div>
+  <table>
+    <tr><th>Produkt</th><th>Beschreibung</th></tr>
+    <tr><td><b>Matjeshering</b></td><td>Junger Hering <b>vor der Laichreife</b>, mild gesalzen, milchsauer angereift.
+      <span class="vi-cell">Cá trích trẻ chưa đến tuổi đẻ, muối nhẹ, ủ lên men lactic.</span></td></tr>
+    <tr><td><b>Salzhering</b></td><td>Hering stark gesalzen. <span class="vi-cell">Cá trích muối đậm.</span></td></tr>
+    <tr><td><b>Kaviar</b></td><td>Rogen, meist vom Stör, stark gesalzen. <span class="vi-cell">Trứng cá (thường là cá tầm), muối đậm.</span></td></tr>
+  </table>
+
+  <h3 class="sub">3 · Trocknen
+    <span class="vi-sub">Cá khô — nguyên lý: rút kiệt nước</span>
+  </h3>
+  <div class="block">
+    <div class="de"><span class="tag">Prinzip</span>
+      Durch <b>Lufttrocknung</b> wird dem Fisch das Wasser entzogen. Ohne Wasser können sich Bakterien nicht vermehren.</div>
+    <div class="vi"><span class="tag">VI</span>
+      Phơi khô tự nhiên trong không khí để rút hết nước; không có nước vi khuẩn không phát triển được.</div>
+  </div>
+  <div class="grid2">
+    <div class="example"><span class="tag">Stockfisch</span>Kabeljau / Dorsch, luftgetrocknet, <b>ohne Salz</b>.
+      <div class="vi"><span class="tag">VI</span>Cá tuyết phơi khô, <b>không ướp muối</b>.</div></div>
+    <div class="example"><span class="tag">Klippfisch</span>Kabeljau / Dorsch, <b>erst gesalzen</b>, dann getrocknet.
+      <div class="vi"><span class="tag">VI</span>Cá tuyết <b>ướp muối trước</b>, rồi mới phơi khô.</div></div>
+  </div>
+
+  <h3 class="sub">4 · Säuern &amp; Marinieren
+    <span class="vi-sub">Ngâm chua / giấm — nguyên lý: hạ độ pH</span>
+  </h3>
+  <div class="block">
+    <div class="de"><span class="tag">Prinzip</span>
+      Essigsäure <b>senkt den pH-Wert</b> und hemmt Fäulnisbakterien.</div>
+    <div class="vi"><span class="tag">VI</span>
+      Axit axetic / giấm <b>hạ độ pH</b>, ngăn vi khuẩn gây thối phát triển.</div>
+  </div>
+  <table>
+    <tr><th>Produkt</th><th>Beschreibung</th></tr>
+    <tr><td><b>Bismarckhering</b></td><td>Entgrätetes Heringsfilet in Essig-Gewürz-Aufguss.
+      <span class="vi-cell">Phi lê cá trích bỏ xương ngâm giấm và gia vị.</span></td></tr>
+    <tr><td><b>Rollmops</b></td><td>Heringsfilet, gerollt, mit Gurke und Gewürzen gefüllt, in Essigsud.
+      <span class="vi-cell">Phi lê cá trích cuộn nhân dưa chuột và gia vị, ngâm nước giấm.</span></td></tr>
+  </table>
+
+  <h3 class="sub">5 · Kombinierte Verfahren
+    <span class="vi-sub">Kết hợp nhiều phương pháp</span>
+  </h3>
+  <table>
+    <tr><th>Produkt</th><th>Verfahren</th></tr>
+    <tr><td><b>Räucherlachs</b></td><td>Salzen + <b>Kalträuchern</b> <span class="vi-cell">Muối + hun khói lạnh</span></td></tr>
+    <tr><td><b>Anchovis</b></td><td>Stark salzen + <b>milchsaure Reifung</b> <span class="vi-cell">Muối đậm + ủ lên men lactic (cá cơm)</span></td></tr>
+  </table>
+
+  <div class="warn"><span class="tag">Vorsicht · Dễ nhầm</span>
+    <b>Bückling</b> = heiß geräuchert, mit Kopf. <b>Räucherlachs</b> = kalt geräuchert. <b>Stockfisch</b> = ohne Salz, <b>Klippfisch</b> = mit Salz.
+    <div class="vi"><span class="tag">VI</span>Bückling: hun nóng, giữ đầu. Hồi hun khói: hun lạnh. Stockfisch: không muối; Klippfisch: có muối.</div>
+  </div>
+</section>
+
+<!-- ============ §5 ============ -->
+<section class="chapter" id="p5">
+  <div class="chapter-head">
+    <span class="chapter-num">§5</span>
+    <h2 class="chapter-title-de">Kaviar &amp; Kaviarersatz</h2>
+    <span class="lf-tag">Warenkunde</span>
+  </div>
+  <p class="chapter-title-vi">Trứng cá tầm và các sản phẩm thay thế</p>
+
+  <div class="block">
+    <div class="de"><span class="tag">Echter Kaviar</span>
+      Nur der Rogen vom <b>Stör</b> darf als echter Kaviar bezeichnet werden.</div>
+    <div class="vi"><span class="tag">VI</span>
+      Chỉ trứng của <b>cá tầm (Stör)</b> mới là caviar thật.</div>
+  </div>
+
+  <table>
+    <tr><th>Kaviarersatz</th><th>Merkmal</th></tr>
+    <tr><td><b>Lachskaviar</b></td><td>Lachsrogen, <b>orange-rot</b> <span class="vi-cell">Trứng cá hồi, màu cam đỏ</span></td></tr>
+    <tr><td><b>Keta-Kaviar</b></td><td>Rogen vom Ketalachs <span class="vi-cell">Trứng cá hồi Keta</span></td></tr>
+    <tr><td><b>Deutscher Kaviar</b></td><td>Rogen, <b>schwarz gefärbt</b> <span class="vi-cell">Trứng cá nhuộm đen</span></td></tr>
+    <tr><td><b>Tobiko</b></td><td>Rogen vom Flugfisch <span class="vi-cell">Trứng cá chuồn</span></td></tr>
+  </table>
+</section>
+
+<!-- ============ §6 ============ -->
+<section class="chapter" id="p6">
+  <div class="chapter-head">
+    <span class="chapter-num">§6</span>
+    <h2 class="chapter-title-de">Fischgerichte &amp; Weinempfehlung</h2>
+    <span class="lf-tag">Warenkunde</span>
+  </div>
+  <p class="chapter-title-vi">Món ăn từ cá, cá phục vụ tại nhà hàng và rượu vang đi kèm</p>
+
+  <h3 class="sub">Gerichte
+    <span class="vi-sub">Các món trong tài liệu</span>
+  </h3>
+  <table>
+    <tr><th>Gericht</th><th>Erklärung / Giải thích</th></tr>
+    <tr><td><b>Renke aus dem Bodensee</b>, geräuchert, mit Meerrettichsahne</td>
+      <td>Renke vom Bodensee, geräuchert, mit Meerrettichsahne.
+        <span class="vi-cell">Cá Renke hồ Bodensee hun khói, ăn kèm kem mù tạt ngựa.</span></td></tr>
+    <tr><td><b>Renke Müllerin Art</b> mit Petersilienkartoffeln</td>
+      <td>In Mehl gewendet, in Butter gebraten; dazu Petersilienkartoffeln.
+        <span class="vi-cell">Kiểu “bà chủ cối xay”: tẩm bột mì, chiên bơ; kèm khoai tây rau mùi tây.</span></td></tr>
+    <tr><td><b>Forelle blau</b> mit Salzkartoffeln und zerlassener Butter</td>
+      <td>Forelle im Essigsud gegart, behält das silbrig-blaue Aussehen.
+        <span class="vi-cell">Cá hồi suối luộc nước giấm nhẹ để giữ màu xanh bạc; kèm khoai luộc và bơ tan chảy.</span></td></tr>
+    <tr><td><b>Lachs-Steak</b> mit Orange-Curry-Creme, Jasminreis und Salat mit Sesam-Dressing</td>
+      <td>Gebratenes Lachssteak mit Orangen-Curry-Sauce.
+        <span class="vi-cell">Bít tết cá hồi, sốt kem cam curry, cơm hương lài, salad sốt mè.</span></td></tr>
+    <tr><td><b>Vitello tonnato</b></td>
+      <td>Kaltes Kalbfleisch in Thunfischsoße.
+        <span class="vi-cell">Thịt bê lát lạnh phủ sốt cá ngừ.</span></td></tr>
+  </table>
+
+  <h3 class="sub">Restaurant „Zum goldenen Karpfen“
+    <span class="vi-sub">Các loại cá trong thực đơn nhà hàng</span>
+  </h3>
+  <div class="block">
+    <div class="de"><span class="tag">Fischangebot</span>
+      Kabeljau, Forelle, Heilbutt, Zander, Seelachs, Scholle, Thunfisch, Seezunge, Makrele, Karpfen, Aal, Wolfsbarsch, Lachs.</div>
+    <div class="vi"><span class="tag">VI</span>
+      13 loại cá nhà hàng phục vụ: tuyết, hồi suối, cá bơn lớn, vược sông, tuyết đen, cá bơn, cá ngừ, cá bơn lưỡi trâu, cá thu, cá chép, lươn, cá vược biển, cá hồi.</div>
+  </div>
+
+  <h3 class="sub">Weinempfehlung zu Fisch
+    <span class="vi-sub">Rượu vang trắng hợp với món cá</span>
+  </h3>
+  <div class="block">
+    <div class="de"><span class="tag">Weißweine</span>
+      <b>Müller-Thurgau</b> · <b>Weißburgunder</b> · <b>Chardonnay</b> · <b>Viognier</b></div>
+    <div class="vi"><span class="tag">VI</span>
+      Bốn loại vang trắng gợi ý cho món cá.</div>
+  </div>
+</section>
+
+
+<!-- ============ §7 ============ -->
+<section class="chapter" id="p7">
+  <div class="chapter-head">
+    <span class="chapter-num">§7</span>
+    <h2 class="chapter-title-de">Bildtafel: Fische erkennen</h2>
+    <span class="lf-tag">Technologie</span>
+  </div>
+  <p class="chapter-title-vi">Bảng hình cá — nhìn hình, gọi tên (tên đã viết lại rõ ràng)</p>
+
+  <h3 class="sub">Seefische mit Bild
+    <span class="vi-sub">Cá biển có hình</span>
+  </h3>
+  <div class="fishgrid">
+    <figure class="fish"><img src="data:image/jpeg;base64,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" alt="Knurrhahn">
+      <figcaption><b>Knurrhahn</b><span class="vi-cell">cá chào mào biển (gurnard)</span></figcaption></figure>
+    <figure class="fish"><img src="data:image/jpeg;base64,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" alt="Rochen">
+      <figcaption><b>Rochen</b><span class="vi-cell">cá đuối</span></figcaption></figure>
+    <figure class="fish"><img src="data:image/jpeg;base64,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" alt="Seelachs">
+      <figcaption><b>Seelachs</b><span class="vi-cell">cá tuyết đen (pollock)</span></figcaption></figure>
+    <figure class="fish"><img src="data:image/jpeg;base64,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" alt="Kabeljau / Dorsch">
+      <figcaption><b>Kabeljau / Dorsch</b><span class="vi-cell">cá tuyết</span></figcaption></figure>
+    <figure class="fish"><img src="data:image/jpeg;base64,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" alt="Lengfisch">
+      <figcaption><b>Lengfisch</b><span class="vi-cell">cá ling</span></figcaption></figure>
+    <figure class="fish"><img src="data:image/jpeg;base64,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" alt="Rotbarsch">
+      <figcaption><b>Rotbarsch</b><span class="vi-cell">cá vược đỏ</span></figcaption></figure>
+    <figure class="fish"><img src="data:image/jpeg;base64,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" alt="Schellfisch">
+      <figcaption><b>Schellfisch</b><span class="vi-cell">cá tuyết chấm đen (haddock)</span></figcaption></figure>
+    <figure class="fish"><img src="data:image/jpeg;base64,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" alt="Seelachs">
+      <figcaption><b>Seelachs</b><span class="vi-cell">cá tuyết đen (pollock)</span></figcaption></figure>
+    <figure class="fish"><img src="data:image/jpeg;base64,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" alt="Makrele">
+      <figcaption><b>Makrele</b><span class="vi-cell">cá thu</span></figcaption></figure>
+    <figure class="fish"><img src="data:image/jpeg;base64,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+6Hb9eIdlcNL+MudxDoq+ZhF+u07OcRwybf2JXZtKeI2ndSuZFUuCK04f8vOOB/07FXAEEAjmCpREXzIxsjHMeA5rhsQR1C4tq3EWtDy2JaGMgt4G4OB5B4DXdvu0k+gO/Nenh1qEUMiZorEMmDvvaJWH3JKk55Bzm/yvOw4hy326Lsu6+h0RERERERAtVqTC1c9iZ6F6KOSN490vbxcLux2+BX5Mv4ijiLcuOyz5xkK8hifC2LYv58nNd0II57Ffozwhx1OPQWO2gjeXcTnOkjHETxHr8eSuBxlEniNOuXevltXtFVrw/uoImf6WAL2A26DkoI57qURfL2NkbwvaHNPY81pcppLA5QO9txVWQu6u4AD+YWi/wALNKB7Xtx3luadxwSOCuVGrFSrMgrtLYmDZoJJ2C90REXlZgjsQPhnjbJG8bOY4bghcR1xoG1gJJbmKrvyWDkJM1Rh4Zq+/eMjqO+yuHhDrBmosZPj7Ekj79BxYXTN4XyxfwvI7HoD8QuhoihSiIiIiLmvi14bx6sjjyGMIgzEPIHfhEzfQnsR2Ks/h9iLOC0jQx94g2Ymnj2O/Mknr9VY0RR3UoiIiIiIiKCN1hwYqhXvPuQVII7T28LpWMAc4fFZoRERERERERERERERERERERFBUoiIOiInZebIy2Z7zI8h23uno35L0RERERERETZEREREREREUKURERERERERERECIiIiIiIURQpRERERERERERERERERERERQOqlAiKCVPZERERFAO4QqQidkRQealN+adlBPJN035oTtup7KAEPUIe6jfupHMbqdl//2Q==" alt="Thunfisch">
+      <figcaption><b>Thunfisch</b><span class="vi-cell">cá ngừ</span></figcaption></figure>
+    <figure class="fish"><img src="data:image/jpeg;base64,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" alt="Petersfisch">
+      <figcaption><b>Petersfisch</b><span class="vi-cell">cá Peter (John Dory)</span></figcaption></figure>
+    <figure class="fish"><img src="data:image/jpeg;base64,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" alt="Heilbutt">
+      <figcaption><b>Heilbutt</b><span class="vi-cell">cá bơn lớn (halibut)</span></figcaption></figure>
+    <figure class="fish"><img src="data:image/jpeg;base64,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" alt="Seeteufel">
+      <figcaption><b>Seeteufel</b><span class="vi-cell">cá cóc biển (monkfish)</span></figcaption></figure>
+    <figure class="fish"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/wAALCACqAQkBAREA/8QAHAABAQACAwEBAAAAAAAAAAAAAAEGBwIEBQMI/8QAOxAAAgEEAAQEBQEECAcAAAAAAAECAwQFEQYSITEHE0FRFCJhcYEyQlKRoRUWgpKiscHRIyQzYnKy0v/aAAgBAQAAPwD9ULoAAAR7CWigegAQAAB0M5SdbC31NLbnQnFfmLMW8NK3wlu8RJvylQpXlrt96VRdV/ZkpL8ozgADZGF0HqGUa+gABCgAAERQAAAcZxU6coy6prRrnAVPI4iw1tzf81ZSusfVj6+W0qkG/p8sdfc2OUAA4tFS12KAAAAAAAEAAAAQ6ccZZLKPIq2pK+dPynX5Fz8u9637dDugAB9iJFAAAAADJvXQoIu/YoAAAAAAQAAAA2AAACN6fcoAAAAAAAAAf07j7k2H2HropCgAAE182ykKAAAAAAAAwARlAHqRfUoABCj1AAAAAAABEy7I2UAAnroepQATRSdygAAA83OZqwwlqq2Rrxpxk+WEEtyqP2jFdWycO5m1z2NjfWSqqk5yhqpBxknF6aaf1R6YAAI0DqZLI2WMoefkLqjb0d656s9I7UXGcYyi04yW016nIBvTQGgyFAAJ6lAAI5L3RQ+xjnFfFNvglChTjG5yNVN07fnUdRXec2/0xXq3+DVn9YKeazcqFrlo3GZrUtVslToc1KzhvXl0IyaSXdub6vX2Pc8I85jcVf3/AAlTytO9jQqc9tcdEqu1uST209M2yigAHGbUYuUmlFdW2+yNccV+KWMsLirY4ipTu7qCfPW6yo0dJvrrq+2unuat4Vtc54ncYW0uIatadlQUa1WPI4QjDe1GK/7u2/Y/TMIqMIxitRitJeyOQAAYQAAOve3ltY207i9uKVvQgtyqVZqMUvq2YhU8RcXc3ELXA0q+Vuqn/TUI+VSl9fMnpNfbZ9ZUeNMm23c47C0uyjCDuan5b0j5z4Szl09XvGWU5f3banTo/wA0tnCPh1ay18XneIrmP7s8hNL+Wj6rw1wO/mnlJrWtSyNdr+HMSfhlwxNJTtbqWvWV5Wev8RI+GfD0VqKyS+2Qr/8A0cpeHGH6au83GK/ZjlK6X/sdOt4TcM1fNlUjfyq1Vy1ajvKjlUXtJt9V9zyq3ghw7OMo07rIU0+68xNf5HQuPAnG/LK0y97SqRe1KUYvT9Oxl9vbcaY23pUKFbD39OlBQUqvmU5yS9W+vU5yzHF9t1r8NW1xt9fhr5dP7yRf64X9FpX3CWcpr1dCEKy/wy2cI+JGCi2ryGUsWu6usfWhr88rR3LbxA4TuNeXxBjU/adZQf8ACWmdO+4/sajqUeHLW6z9zTTclYw5qcfvUfy/hNmos7xxecTVr+xzta/xrpb8vG2sGvNl01Cckubrt+yOjjMbxJgcFKpibW/sal3WpxiuaMY1XJ65FCceZtdFv7s37wTw/LA4nlua9S5yFdqpc1qk+dylr9Kb/ZXZGQlAAAABxqTjThKdSSjCK25Sekka9yfG13lc9WwXCHwU7iFPmd/Xqc1Lm1vkio73Lv3aXT1PO4w4ahjMM8zmLivf1qEXVuq1aam4aXSNKm1yLb6b12MHt89PiLGWm7y4oWtS7VtVV241ZRTjuLhJRTj1ST0ZFj7jKUKNV8V567q423jUpUqVpJwqVa0J8nLzrq23rXvsyrw94j87IzwdxdSua8ITnuctyoyjJKVNt9Za2tS9epsEIAAAABrfc6lfHWVxLmuLS3qv3nTjL/Q+tKhSt6Pl0KcKdNdowjpH5vu89O4z9zaefc2UqtWtSpRoxjbp6m9ObUdvb+vp1ZlHgrQw9zka1e/v53Wdt6k4Uqdeo2ortzw22m39Ddm+xyAALsgAI9+j0dDiDFUc3hbzG3Mpxo3NN05OD09M/PtbAWfBN/RtL2d9aV3OSjcKry0qvT5Zwlr5Xp6aZ6tTM38VQsL7P1LyxrTiqPxNm5OpGb5eWXpLq/R9ddNGw8NwhjeG8dUu8pXo3FK2jOskreNGjRXduMFvr07ttnmZLGTreFPxNS3ayXW/pJx+eFWVTnXT36ovD97bZ/xBsMljrCNGjTsarnddpVm3BdtfpT2t+rTMzz/E2HwFGVTLX9C30t8rl8z+y7mE1fGzhSE2qayNWK188Lfp/NoyHg3jqz4srSWOx+Sp26Taua1JRptr0T2+plwAAJs8rK8R4fEwcsjkrW3SW2p1Fv8AgYDlvGXCqvG0wfJc3E5cqr3UnRt4fWUtN6+yPZoWnG+Qo07mnxJhaNKpHmirewlUi195T2y3VzxjhbWr8ZQt85RlTlqpZR+HrU5a6fI2019d7+jNFxwlxlL6+nUu8jKFjKLpVKtDmjQnN80vNT+ZJP8AaS6nYr4K9w3lZZur8am6treWlwpUJqOnt7ilGL69N/g/Q3A/ENHifhy0yVKPlznFKpT/AHJ66r/X8nv9dlQAAAAB52cw2PzllK0ytrSuaMvSa3r6p+hq7McAZnD8rwbp5PH0Gnb29VqFzbae/wDh1NafVvueJWz1zSv6VtxLZcR3PLNSVtf3dKnQnJdluMIqWn6NmS3V9xfxZXt1b4WztsRb1oVp0pXkXO45XtRco7SW0m1rqcuJsRx/Sx1S5w95jqFaUOWVta0IqVOO+kYVH1aXV9Uup+fr6rcUry8Wdt69bITjy81zOSnTlvrLXr7dehmPhrwrW4zvba3drTtsRZ6V5Wp7Url73qT33+3ZH6dx9nb4+0pWtnRhRt6UVGFOC0kjsg6GbytrhsfUvL6ooUoe7S2/ZbMdw3iRwvlpzhQydOlOEXKSr/JpLv1fQsuPsZUny4y1yWTeukrW0k4v+09I4rLcXZCO8dgrSwpvtPI3D5vo+SCf82Yf4h8M8eX2K+LhnFXrQ6SsbCnKjDXuntuT+jNfcOeF/EHE1zCpeW39GW9OKpzrXEXzSa7vlb22/fsbs4S8NOHuHKEdWsb27181xcxUm/suyX2M1hCNOKjCKjFdEktJFfYxjifhC2y9ZXlnXljsrH9N3Rim5Jfszi+kl19TU+QnmOBcXeWVxZW9KnCnqj8069K9lKS2nF9E++kta36nqeDWauqHEFWyvrSna0clB1qMaM3KnGpHvFJt8rS6cvTWuxuwAApAAAAfKtQo14uNalCcfacU9/xMXvfD3hy4ryr0bKVjXbbdSxqzoN7/APFpHCnwbcWvSw4mztCmuihUrRrJf34tnn5vw/uc3SVPK5qN7CL+X4iwoya/KSZ9sVwlnMJjqdjhs7aWttT/AEwWOj1+r69X9T7wwnGW9z4rt39Fjoa/zOaw/F7WnxRba91jo/7h8M5+un8XxjkIp91bW9Gn/B8raMX8Q/DqxlwnfXNTI5a6vKMfNjUu7udWKa9eTfKu/ojSOe4Ru8TkY2XmRuar8uPNRg3Hnn+mG/drqfr3H0Xb2NvSkkpQpxi9e6R2QAARnwv7Ohf2tS2u6UatGonGUX6mtbPwnpYni6yzOGyNSnSoV/NnSr7qSae+ZKW/Xb6vqbRRQATqUD8AAABkYKAD53NGncW9WjWSlTqRcJJ+qa0zBsPwHWocQ219k8pO8tbFasrZw5VB60pT/ekl039DPEUAAD1IyghWAAAAAACP1C7dS6AAAAAAAIwigAE9SgAAAEYKAAAAPUAAAAAAJ7JvqUAAAEYKAAR9igAAIEe/QoAAGgAAAACAoAAYCAAAJ9yghQBsAAAAAg0EUAAAAhQCbKCPRUAAAAAAATZQAAACbW9epWAAAAACIoAAACDCOL6S6FOTJ6EXcpWR9gjj6lRWT2D7lQfRdBHsT1DKuxx/3Kf/2Q==" alt="Hering">
+      <figcaption><b>Hering</b><span class="vi-cell">cá trích</span></figcaption></figure>
+    <figure class="fish"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/wAALCACoAQcBAREA/8QAHAABAAIDAQEBAAAAAAAAAAAAAAEFAgQGBwMI/8QAPhAAAQQCAQMBBQUGAwcFAAAAAQACAwQFEQYSITFBBxMiUWEUMnGBkRUjQlKhsRYkMxdTY4KSwdE0YnKiw//aAAgBAQAAPwD9UEIiIiIiIiIo8KURERERERERETW0RERCiIiIiKFKIiIiIiIiIiIiIhRPVEREREREREUKUREREREREREREREREREREREREREREUH0UoiBQPKlERERFjI9sbS57mtaPJJ0AjHB7Q5pDmnwQexWSIiIiIEREREREREREREQIuO9o3OafDscHPaJ78oPuK4Ot/U/IBeRW+UZLl8Tb2fgDaEUfRBVgc4Nml3ou93vb/kNnQ+p7L0b2WXbeMmk41l2vilEIu0myn4vcuPxMP1YdfkV6QiIiKEUonqiIiIiIhRERERNquzuYpYTGzXclOyGCNuyXHufoB81+enxZD2mWczPUdG2/wBp2QSkBzoWnUbGfIeST42rTj8Qw7LtPG42U2ome7uXbNgQiu/q2SBvTRrwR3W7lsxlDPjMpE+XJ5fGT9DBUrOeJGSA9UbnjQ7gdtDXbyvW+KcjpclxYuUHHqaeiaJ40+J/q1w9CrpERFCBE2nqpRFDthp6dE+gQb137FSoUoieqjYVDnuX4HBfDk8pWhk0SI+rqef+Ud1zsftFlykPvOMcazGUjJ0JixsMX1+JxXxucq5a2/QoyYWhjZr7nMhNiwZe4G+/QND8yttuM59Z39ozuKqD0+z1S8/1KrcNW5NlMjkKEvIcrUkpOaHSSUI2Ml36sPqF8stxrlbM7i6o5BmLeLs9bbU8RjYYT6eBvRV5R9muDjnFjJG3l7ABa19+Yy9P4A9gs63DbmNEf7HzT4vcs91CJ60chZH/ACdWg4j81zPMfZzl89aF6y/E3bbWFmuh8HvB6dRaTvS5S1w7mjPd1pMW1lFnSP8AIzBx0Ow01zwD6b2rTiBZw/LSZC7iuVMkfH0SsixrGwP+RLYye4+fqu/pe0rjFiQRTX30Zv8Ad3YXwH/7DX9V0VXNYu2dVcjTmPyjma7+xW+1wcNgghShUIqnkvIMdxzGPu5SdsUbezW7255+QHqV5wz2pZqy1ppcXkk9/IRXBkPU5utjbQNj8ewXXcL5XcytubGZ/GHFZeNgmEJf1CSM+rT9PUei7BERNKPC5bk/M6WDmFWGGxkcg4dX2Wmz3jmj1Ltfd/NdUi+c00cEbpJntjjb3LnHQH5rjMt7RMcyR1bAwWM7eB17qk3qaD/7n+AtUYXlnKA1/IL7cJQPmjQd1SOHydL6fkr7FcJ49jGOFbF1y97el8kret7/AMSe6tcPi6eGoNp4+L3Vdhc5rAd6JJJ1+ZVJT5th58tfx1t0lCxSk6D9tAja/wBOphJ7hWX+I8KRsZagfr79v/lbMWVx8x1FeqvOt/DK09v1X3Zarv8AuTxO9Ozwe6+oc0+CPyKdXxaWSjXdYyRtkidG7fS4Fp0deVX3cHQu4k461CJaxj93qQ9Ttfie+1R5vgWCyArlmKx7Hskb1uMJBcz+IDpI7/InarMd7OG1J7nusvkasBk6qrath7TE3Xdp2SD3+i3HcUz8Df8AIcyvgjwLMEco/sF8nt9oVD4mS4HKsHbocH13H677hYN5BzmMD33DqspHkw5Fo3+G2qtucn5ndx9mxWwsGLggeY5S4us2GkeemNoG/I9VxeFuYa/njb5o7I2XgO0y8OgMIPY+7Otlx3prd61387Xdt5FJTyb4MUMPVxLCwtDpAx/T0kuJ8DyR43pcpdztTIe7s5Hk1avmq0z5KthjgY4gOwaWt2S1w7H1XovAObVOV1XMax8V+Bo9/H0no3vXUxxHcH9V16bRVGc5HisJH1ZK7FC4+Gb6nu/Bo7rhsnyi/ni2OEWMRjXk66dOt2BrwGD/AEx9T/RaMc9Pj8AsY5luGK61ry2ORvvHuHYmSV5LR+Dd7XoeX5VhMQHfb8nVjcP4OsFx/Bo7qgk5jlss8RcUwE87HeLt4mCEfXWuo/osYeDz5QifmmWnyb99YqxEw1o/oGjufzK6jj0WJjxrP2FHWbT2WtMDQG7BIP8AUFWgRFq3MdSvN6blSCdvykjDv7rn85wTBZOoI46UNKZruqOevCwOYfzBBH0IKrcp7NsTLxY4yjXrR3GRBjLkkXxkgg7cW6Pf11pRV9nGLi44yrLVqnKCDoNlgcwGTX3tAqux3s5ldgsgy48V8nJIXVXQ2pXthAAABJIJ2QSe3bassFwCFlNxy81oWnSOcG1r83Qxvo0EkEpX4M9uVsNlu3zi3DcRbkZhK09vh1vWvJ3vfdWH+CYGg+6zXIIj6Ft9x1+u1Q5TE8wxmZqVsPm79rGz6D5rEUUr4e56iXEDtrWux77Vlfw/Nq1aWTF8nr3JwPght0GMB7/zNPb9FUnknPI7DYZ8NjYXusNrN6mSua8kff6m9g36kLoftHN/Sjx/t6faJe5/6VDbvNm934fCO+jb0g//ADWX7Z5RGP3/ABaOQ/8AAyLTv/qaFiOUZVnafiOWB9eh8Tx+vUsv8VXA7T+K5tpPfsyM/wBnrG3n4LBEd3jOVka5vfrpteBv08qmlbxF8hNvidiIH+N+NOv6Ktn457PrDgDgrkW++2V5m/2W9iePYud4r4DPcix4A+GIOPQNfLraf7rcbx3PuZK7H86viNhLX+/pxyEEee/ZfO3xzl7Me+atzKzYkDepsYpxt6/pv0WxW4TkZBG69y3OysI2+ESMj7/LYCpuYY/FcXrx1cTVuS5a24dJDi57wTrTpXAlrdkbI7rnjV5hJFYiiGFwkBd7t9gP/eSFo8BxO3f0VbUbkqcjhJyOg267u6Z3Q6UD+VnT1nXz2vV+NUeF1A1+DbiS938bJGvefzJJW3zDJZSjTruwdZk4c4tmlDDKYW67EMBBd3+q4rhec5nk8kauZq++pySOilLqjq/TFojra7t+nleg8W47j+M480sS2VlYvMgZJKX6J862trNZODD4uxftk+5gb1HpGyfQAfUnQXL4/nE8zZpLuEs1omztqxlsjXuklJHw6HjQOz+C+Fr2hmHI+5jxM80D3uihcyRvXI5r+gnpPgdWwO/fRVVF7W4Zcp7j9kTw14ZC23JLI0OiaCWl4aO7gCDsjwF6dXniswRz15GSwyAOY9hDmuB8EH1X0RETssZHtjjc95Aa0Ek/IKK80dmCOaFwfFIA5rh4IPgrNVM3I8XFkXUXW2m20OLo2NLiOlvUR29dd9eVaRPa+Jkjd9LgCCQsbNiKrBJPYkbFDGC5z3nQaPmSsatqG2wvryB7AdFw8eAf+4VdNlpo4b8raMsjasoYGtPxSN0C5wH02e3rpakOdtvyMzXUP8lFC6UyMJe8kEdI6QOxPfY8jSumTSmvDIYXdT9dTQfu7XygvarufkPdVHhxGnSjWt9jv6qmyvN+O46QNmzFPrb96ON3vHkfg1aP+0TFS/8AoaWWukefc0n6/UgBQ/l2Ymka3H8RyUjT36p3siH9SUPI+Vs+OTiLjEO5DLjC/X4aUUfaLRmuto2sZlquQIJ+zPrkuIHkgjyFlZ5jg5/fOloZKUNa6KUmi8gD1adhUNC4OS2YaOLw8NLBtcXSyGNjpCNeno3Y0N+dLO/xbDciyMWFx1KCnQpxiazNAAHlzhpkYcO/jZPf0C6S57OeI2y50mBpNe7uXxM92f1bpVDfZNhIHl1C9mKRP+5uOCqc1xjlHH7lWXjWYzV+ppwmhkmbK4H0ID9Aj6LcxHMeRUPejPcezVlp0I3Q0QCPnvpcd/0WrnOcwZfDWsfewmfrue4bc2g/4dODgf1AXKTc+r1TXrtx957YMp9uMphLS5p3sdJHkb1+SpMTzeCll6151K04Vyddu3d0rzv/AJpB+QWOG/zjZLFetqz7wze9MYbK/q+MtJ1sOG9gg7I15Xd8F5fj+OizRyFyKGnI0TwPJ3FG87Lmbb2bvz0/iR2XQH2ocYZNLCcyZ2vdvbK79MbrRAIHlfGjzbj81SIV+RVIpxH7oddwhrWl33tP7l4A33H0Ww3k1aerBHJy3Ftb1Se9cyZjJT8X7sAgkDxo/PataPLsdLL7yfN4npEbGyV2WGfunnyeskbCpcxk+OOy7M1LyWiLdVjhC2G22MP7khjhvTh9CpPtI4yKpZaz9WSSZrBIxpIDAW/F0Fu/7+fVasPtB419jpR4uXNOr0z8LIKsrxIACA1ztHY/NYWPaBA+Z8tCryX3rnhwY+g98fgDQGtgev4r45HkOPuwMfPiuU1bJfG+aavjywyuY4EdWh38foSuw4/n8Byd1ptK0ZJ5AGzVJnFkjNf8M9x9dK+jqN+wmtbd9qYdh3vWj4gT4I8a9FxfPeW2sHZr47HNirzSBrmSza6HjuCxncAPHbQdoFc7DmzLIYcvza3hbLnbMNinHXc7fqHEEOH1BXS0uKyXq4kj5pmbTH9+uvYY1rvzaF9pPZ7TsdrmZz9kfKS+/wD7LOH2Z8UY4OmxTLL973ZkdKT+pXRY7CYzGsazH4+rWa0aAiia3Q/IKwDQPCaU6VLyfjtPkFRsdkPisRHqgsxHplgd/M13kLnMHmI+PzyYXk4r17chMkVwnpivdvvbPh/YbB/JVlWyzCZtuQpVIn1bUJknjrP/AHYZ5Lmn7rteo+pVh7PpKkHJuR1arI2xzPZahMZHS5hHSda8aIK9ARETSwMbD5a0/ksXQROYWGNnSRojpC/PWao/4ZzuShsRTGpWmEjHscW6j+9D8Q7j+Jm/Qtaucmjjz9Bk9SEm4C8yVTJ3n6e+/T4w0k+NHRVxjK2LrW4L2M6qMob0EunLfdk9w2Qt3rfo/u0+CAV1dDk1TH2m0+V0KliF0gjd9prMFqHfguABbKw/zNP4helDiHGpWh/7DxpDhsH7O3x+i+c3BuLzdPvMDjj09hqBo/svvX4jx2udw4THNPz+zt/8KxhxlCD/AEaVaP8A+ETR/wBltNjYwaY0NHyA0p0mlz3JeIYvPD3s0P2e+3/TuwfBNGfmHDz+BXkvIH8qweTGMzuVtSUn6bUt7DIpfPwvd6P7+vb8PIqbNOGWxq6LkV0u6xkGOLnxPGtB7D37+B9PBctrIw5mjWa/H5XHWG9IlfHYgEMUgPlu3/AT8wQ0qeEYrNckjsW6OHp4mxGB0WYzLVEhO+7Qz4Xfppey8KxeWxeL93nco/I23kOLiOzO3cA6Gx+K6JEREVfm8RRzdCSllK0diu8d2vG9fUfIry3KYDO8UqzValexl8EWlkRg0Z6rCduBZ26wf1W17OpIMhzizbxNLI1cZBQEB+1xlnxl+9Df4FesIO6IiKHHWvxXnHtToxw2YcjZ9+MdYiNK46Fgc5oJ3G7R7fe7fmvP5YI8JnpoGs97O09Twa2tP+85zB5JA+MD1HUB4Cxu168lh1jGxV2ZXXvZImE/5hhH+pGddL9/xMI7juNEK74LRHKOQY58lIRUsS500z2yPfG+Y/dY3rGwR5I9OwXt48IiIiIq/OYmnmsbPRyMQlrTDTmn+4+q4J/sq1CIK/I8nHXZ2ja9rHljf5eojZH0VrgvZngcbJHPYZLkbbAB762/rJ147eOy7ZrGsa1rAGtaNADwAsgigKURFHqpUaAOwO6n0UBSigqQi1Mtj6+VxtijdZ1152GN7fmCvDclibmJyAx1mWw6akwkTxyAyzVtksnbv+OI+R6t2PC3C2Onip8i8QzV6+pm1hIG6meC1skRBI6HdWyw+PI0vWeJYlmGwFSm09Ugb1yvPl7z3cT+auERERERQhRNqT3QeEREUHypREREREXNc2403P04pK72w5OoS+tO5ocO405jh6scNgheKtrx0clj8VN72takyMDXY+Zp/dMD9ksPh7N70T48L9HjwiIiIiIoRPRQskRERERERERERfCanWnnhmmgikmhJMb3NBcwn5H0X3RPQoPCIiIEUIU9E9UClEREQqDshSoUoiIiIiKPVSiIoKlEUInzQeFKIiglN/NB3U7RR4U7REREREREREUFShRFCkKNd9oDtSigqVipRAgClFHlSiIiIiIiIoUooRPxUoERQpUJtEUoiIiIiIiIoPYEgE/QKGnqaHaI36FTpSiFPRR4RCEHjupREUO7KB37r//Z" alt="Stör">
+      <figcaption><b>Stör</b><span class="vi-cell">cá tầm</span></figcaption></figure>
+  </div>
+
+  <div class="warn"><span class="tag">Bitte prüfen · Kiểm tra lại</span>
+    Auf dem Blatt steht <b>„Seelachs“ zweimal</b> (Bild 3 und Bild 8). Vergleiche mit deinem Lösungsblatt.
+    <div class="vi"><span class="tag">VI</span>Trên phiếu bạn viết “Seelachs” hai lần (hình 3 và hình 8). Hãy đối chiếu lại với bản đáp án của giáo viên.</div>
+  </div>
+
+  <h3 class="sub">Weitere Seefische (Blatt 1)
+    <span class="vi-sub">Các cá biển khác trên phiếu số 1 — chưa có hình</span>
+  </h3>
+  <table>
+    <tr><th>Seefisch</th><th>Tiếng Việt</th></tr>
+    <tr><td><b>Steinbutt</b></td><td class="vi-cell" style="display:table-cell">cá bơn turbot</td></tr>
+    <tr><td><b>Scholle</b></td><td class="vi-cell" style="display:table-cell">cá bơn sao (plaice)</td></tr>
+    <tr><td><b>Seezunge</b></td><td class="vi-cell" style="display:table-cell">cá bơn lưỡi trâu (sole)</td></tr>
+    <tr><td><b>Rotzunge</b></td><td class="vi-cell" style="display:table-cell">cá bơn đỏ</td></tr>
+    <tr><td><b>Seehecht</b></td><td class="vi-cell" style="display:table-cell">cá tuyết hake</td></tr>
+    <tr><td><b>Steinbeisser</b></td><td class="vi-cell" style="display:table-cell">cá sói biển (wolffish)</td></tr>
+    <tr><td><b>Wolfsbarsch</b></td><td class="vi-cell" style="display:table-cell">cá vược biển</td></tr>
+    <tr><td><b>Seeaal</b></td><td class="vi-cell" style="display:table-cell">cá nhám góc (Dornhai)</td></tr>
+  </table>
+
+  <h3 class="sub">Süßwasserfische (Blatt 3)
+    <span class="vi-sub">Cá nước ngọt trên phiếu số 3 — chưa có hình</span>
+  </h3>
+  <table>
+    <tr><th>Süßwasserfisch</th><th>Tiếng Việt</th></tr>
+    <tr><td><b>Forelle (Regenbogenforelle)</b></td><td class="vi-cell" style="display:table-cell">cá hồi vân</td></tr>
+    <tr><td><b>Saibling</b></td><td class="vi-cell" style="display:table-cell">cá hồi suối</td></tr>
+    <tr><td><b>Lachs</b></td><td class="vi-cell" style="display:table-cell">cá hồi</td></tr>
+    <tr><td><b>Flussbarsch</b></td><td class="vi-cell" style="display:table-cell">rô châu Âu</td></tr>
+    <tr><td><b>Zander</b></td><td class="vi-cell" style="display:table-cell">cá vược sông</td></tr>
+    <tr><td><b>Aal</b></td><td class="vi-cell" style="display:table-cell">lươn</td></tr>
+    <tr><td><b>Hecht</b></td><td class="vi-cell" style="display:table-cell">cá măng sông / cá chó</td></tr>
+    <tr><td><b>Wels</b></td><td class="vi-cell" style="display:table-cell">cá da trơn, cá nheo</td></tr>
+    <tr><td><b>Stör</b></td><td class="vi-cell" style="display:table-cell">cá tầm</td></tr>
+    <tr><td><b>Schleie</b></td><td class="vi-cell" style="display:table-cell">cá tench (họ cá chép)</td></tr>
+    <tr><td><b>Karpfen</b></td><td class="vi-cell" style="display:table-cell">cá chép</td></tr>
+    <tr><td><b>Brasse</b></td><td class="vi-cell" style="display:table-cell">cá mè trắng</td></tr>
+  </table>
+</section>
+
+<span class="badge-set">Prüfungsvorbereitung · Test</span>
+
+<!-- ============ QUIZ ============ -->
+<section class="chapter" id="quiz">
+  <div class="chapter-head">
+    <span class="chapter-num">?</span>
+    <h2 class="chapter-title-de">Prüfungs-Check (Schnellfragen)</h2>
+    <span class="lf-tag">Fisch</span>
+  </div>
+  <p class="chapter-title-vi">Câu hỏi nhanh — bấm để xem đáp án</p>
+
+  <details class="q"><summary><span class="qnum">F1</span> Nach welchen 5 Kriterien werden Fische eingeteilt?</summary>
+    <div class="ans"><div class="de">Herkunft/Lebensraum · Wanderverhalten · Körperform · Fang oder Zucht · Fettgehalt.</div>
+    <div class="vi"><span class="tag">VI</span>Nguồn gốc/môi trường · di cư · hình dáng · đánh bắt hay nuôi · hàm lượng béo.</div></div></details>
+
+  <details class="q"><summary><span class="qnum">F2</span> Wohin wandert der Aal zum Laichen, wohin der Lachs?</summary>
+    <div class="ans"><div class="de">Aal: vom Süßwasser ins <b>Meer</b>. Lachs: vom Meer ins <b>Süßwasser</b>.</div>
+    <div class="vi"><span class="tag">VI</span>Lươn ra biển đẻ trứng; cá hồi về nước ngọt đẻ trứng.</div></div></details>
+
+  <details class="q"><summary><span class="qnum">F3</span> Wie unterscheiden sich Plattfische und Rundfische?</summary>
+    <div class="ans"><div class="de">Plattfische: flach, asymmetrisch, beide Augen auf einer Seite, Bodenfische. Rundfische: symmetrisch, je ein Auge pro Seite, freischwimmend.</div>
+    <div class="vi"><span class="tag">VI</span>Cá bẹt: hai mắt một bên, sống đáy. Cá tròn: mỗi bên một mắt, bơi tự do.</div></div></details>
+
+  <details class="q"><summary><span class="qnum">F4</span> Ab wann gilt ein Fisch als Fettfisch? Nenne 3 Beispiele.</summary>
+    <div class="ans"><div class="de">Über <b>10 %</b> Fett: z. B. Makrele, Hering, Aal, Lachs.</div>
+    <div class="vi"><span class="tag">VI</span>Trên 10 % chất béo: cá thu, cá trích, lươn, cá hồi…</div></div></details>
+
+  <details class="q"><summary><span class="qnum">F5</span> Nenne die Inhaltsstoffe des Fisches mit Zahlen.</summary>
+    <div class="ans"><div class="de">Fett 0,5–25 % · Eiweiß 15–23 % · Kohlenhydrate &lt; 1 % · Jod bis 330 µg/100 g · viele Omega-3-Fettsäuren.</div></div></details>
+
+  <details class="q"><summary><span class="qnum">F6</span> Woran erkennt man Hecht, Karpfen und Zander?</summary>
+    <div class="ans"><div class="de">Hecht: lange Schnauze. Karpfen: Bartfäden am Maul. Zander: kleiner Dorn am Kiemendeckel.</div>
+    <div class="vi"><span class="tag">VI</span>Măng sông: mõm dài. Chép: râu. Vược sông: gai nhỏ ở nắp mang.</div></div></details>
+
+  <details class="q"><summary><span class="qnum">F7</span> Was ist der Unterschied zwischen Stockfisch und Klippfisch?</summary>
+    <div class="ans"><div class="de">Beide sind getrockneter Kabeljau. Stockfisch wird <b>ohne Salz</b> luftgetrocknet, Klippfisch wird <b>erst gesalzen</b>, dann getrocknet.</div>
+    <div class="vi"><span class="tag">VI</span>Stockfisch: không muối. Klippfisch: muối trước rồi phơi.</div></div></details>
+
+  <details class="q"><summary><span class="qnum">F8</span> Was ist ein Bückling, was sind Schillerlocken?</summary>
+    <div class="ans"><div class="de">Bückling: ganzer, ausgenommener Hering mit Kopf, heiß geräuchert. Schillerlocken: gerollte Bauchlappen vom Dornhai, heiß geräuchert.</div></div></details>
+
+  <details class="q"><summary><span class="qnum">F9</span> Welches Konservierungsprinzip steckt hinter Matjes, Stockfisch und Rollmops?</summary>
+    <div class="ans"><div class="de">Matjes: Salz (osmotischer Druck, dazu milchsaure Reifung). Stockfisch: Trocknen (Wasserentzug). Rollmops: Säuern (pH-Wert sinkt durch Essigsäure).</div>
+    <div class="vi"><span class="tag">VI</span>Muối · phơi khô · giấm (hạ pH).</div></div></details>
+
+  <details class="q"><summary><span class="qnum">F10</span> Nenne 3 Kaviarersatz-Produkte und ihr Merkmal.</summary>
+    <div class="ans"><div class="de">Lachskaviar (orange-rot) · Deutscher Kaviar (schwarz gefärbt) · Tobiko (Flugfisch-Rogen) · Keta-Kaviar (Ketalachs).</div></div></details>
+
+  <details class="q"><summary><span class="qnum">F11</span> Welche Weißweine passen zu Fischgerichten?</summary>
+    <div class="ans"><div class="de">Müller-Thurgau, Weißburgunder, Chardonnay, Viognier.</div></div></details>
+</section>
+</main>
+
+<footer>
+  <div class="de">Zusammengestellt als Lernskript zum Thema Fisch — Warenkunde.</div>
+  <div class="vi">Tổng hợp tài liệu ôn tập về Cá (Fisch). Chúc bạn ôn thi hiệu quả! </div>
+</footer>
+
+<script>
+function toggleViFisch(){ var wrap=document.querySelector('.fisch-skript-wrap'); if(!wrap) return; wrap.classList.toggle('hide-vi'); var b=document.getElementById('viToggle'); if(b) b.textContent=wrap.classList.contains('hide-vi') ? 'DE · Tiếng Việt: TẮT' : 'VI · Tiếng Việt: BẬT'; } window.toggleViFisch = toggleViFisch;
+</script>
+
+</div>`
               }
             ]
           }
