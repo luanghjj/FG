@@ -2924,6 +2924,176 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
               },
             ],
           },
+          {
+            id: "inhaltsangabe",
+            badge: "KA · Inhaltsangabe",
+            title: "Inhaltsangabe schreiben (Sachtext & Kurzgeschichte)",
+            items: [
+              {
+                id: "inhaltsangabe-formel",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>',
+                name: "Inhaltsangabe: Formel, Aufbau & Checkliste",
+                desc: "TATTE-Formel · Einleitungssatz · 4-Farben-Methode · Zeitform Präsens · Todsünden",
+                content: `<h2>Inhaltsangabe: Formel, Aufbau &amp; Checkliste</h2>
+<div class="hint">Grundregeln · TATTE-Einleitungssatz · 4-Farben-Methode · Zeitform Präsens · 5 Todsünden</div>
+
+<p><a class="btn" href="klassenarbeiten/deutsch-inhaltsangabe.html">Interaktives Übungsmaterial &amp; Prüfungsbogen öffnen (DE/VI) →</a></p>
+
+<h3 class="sub">1. Was ist eine Inhaltsangabe?</h3>
+<div class="note">
+  Eine <b>Inhaltsangabe</b> ist eine <b>knappe, sachliche und objektive</b> Zusammenfassung eines Textes in <b>eigenen Worten</b> und in der Zeitform <b>Präsens</b>.
+  <br><b>Ziel:</b> Der Leser soll das Wesentliche verstehen, ohne den Originaltext gelesen zu haben.
+</div>
+
+<h3 class="sub">2. Die goldene Einleitungs-Formel (TATTE)</h3>
+<p>Der Einleitungssatz besteht aus 5 festen Bausteinen:</p>
+<table>
+  <thead><tr><th>Kürzel</th><th>Baustein</th><th>Bedeutung / Beispiel</th><th>Tiếng Việt</th></tr></thead>
+  <tbody>
+    <tr><td><b>T</b></td><td><span class="term" data-de="Titel" data-vi="tiêu đề tác phẩm">Titel</span></td><td>in Anführungszeichen: <i>„Hauptsache weit“</i>, <i>„Trachtenmode“</i></td><td>Tên tác phẩm</td></tr>
+    <tr><td><b>A</b></td><td><span class="term" data-de="Autor" data-vi="tác giả">Autor / Autorin</span></td><td>Vor- und Nachname: Sibylle Berg, Elke Heidenreich</td><td>Tác giả</td></tr>
+    <tr><td><b>T</b></td><td><span class="term" data-de="Textsorte" data-vi="thể loại văn bản">Textsorte / Textart</span></td><td>Kurzgeschichte, Sachtext, Zeitungsbericht, Glosse</td><td>Thể loại văn bản</td></tr>
+    <tr><td><b>T</b></td><td><span class="term" data-de="Thema" data-vi="chủ đề cốt lõi">Thema / Kernaussage</span></td><td>Worum geht es im Kern? (1–2 präzise Sätze)</td><td>Chủ đề tóm tắt ngắn</td></tr>
+    <tr><td><b>E</b></td><td><span class="term" data-de="Erscheinungsjahr" data-vi="năm xuất bản / nguồn">Erscheinungsjahr / Quelle</span></td><td>Jahr (z. B. 2001) oder Medium (z. B. Stuttgarter Zeitung)</td><td>Năm / nguồn xuất bản</td></tr>
+  </tbody>
+</table>
+
+<div class="note">
+  <b>Mustersatz (Schablone):</b><br>
+  <i>„In der/dem <span style="color:#7A2E2E;font-weight:600">[Textsorte]</span> ‚<span style="color:#5b7a52;font-weight:600">[Titel]</span>‘ von <span style="color:#48586B;font-weight:600">[Autor]</span>, erschienen im Jahr <span style="color:#9C7A3C;font-weight:600">[Jahr]</span> in <span style="color:#9C7A3C;font-weight:600">[Quelle]</span>, geht es um <span style="font-weight:600">[Thema]</span>.“</i>
+</div>
+
+<h3 class="sub">3. Der Hauptteil (Chronologisch in Sinnabschnitten)</h3>
+<ul>
+  <li><b>Sinnabschnitte bilden:</b> Den Text in logische Abschnitte unterteilen (z. B. Einleitung, Konflikt, Wendepunkt, Ausgang).</li>
+  <li><b>Zeitform: Immer Präsens!</b> Auch wenn der Originaltext im Präteritum geschrieben ist. Bei Vorzeitigkeit: Perfekt.</li>
+  <li><b>Eigene Worte:</b> Keine langen Sätze aus dem Text abschreiben (Paraphrasieren!).</li>
+  <li><b>Keine wörtliche Rede:</b> Niemals direkte Rede mit Anführungszeichen („...“) übernehmen. Stattdessen <b>indirekte Rede</b> oder Handlungen zusammenfassen.</li>
+</ul>
+
+<h3 class="sub">4. Die 5 Todsünden einer Inhaltsangabe</h3>
+<div class="warn" style="background:#FFF3CD;border:1px solid #FFE69C;border-radius:10px;padding:12px;margin:10px 0;line-height:1.6">
+  <ol>
+    <li><b>Keine Zitate / wörtliche Rede</b> (keine Anführungszeichen im Hauptteil!).</li>
+    <li><b>Kein Präteritum / Perfekt</b> als Haupterzählzeit (durchgehend Präsens!).</li>
+    <li><b>Keine eigene Meinung / Wertung</b> („Ich finde gut...“, „Der böse Mann...“).</li>
+    <li><b>Keine Spannungsmacher</b> („Plötzlich geschah etwas Schreckliches...“).</li>
+    <li><b>Keine unwichtigen Details</b> (Ausschmückungen, Nebensächlichkeiten weglassen!).</li>
+  </ol>
+</div>
+
+<h3 class="sub">5. Prüfungs-Checkliste vor Abgabe</h3>
+<div class="note">
+  <ol>
+    <li>Nennt der Einleitungssatz alle TATTE-Elemente (Titel, Autor, Textart, Thema, Erscheinungsjahr)?</li>
+    <li>Ist die gesamte Inhaltsangabe im Präsens verfasst?</li>
+    <li>Gibt es keine wörtliche Rede und keine Anführungszeichen im Hauptteil?</li>
+    <li>Ist der Text in eigene Worte umformuliert (kein wörtliches Abschreiben)?</li>
+    <li>Werden die Ereignisse in der richtigen zeitlichen Reihenfolge dargestellt?</li>
+    <li>Ist der Ton sachlich, neutral und frei von persönlicher Meinung?</li>
+    <li>Enthält der Schluss (falls gefordert) die Kernaussage bzw. Botschaft?</li>
+  </ol>
+</div>`,
+              },
+              {
+                id: "inhaltsangabe-muster",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>',
+                name: "Mustertexte: Spaghettieis & Trachtenmode",
+                desc: "2 vollständige Musterlösungen mit Farbzerlegung (Titel, Autor, Textsorte, Thema)",
+                content: `<h2>Mustertexte: Spaghettieis &amp; Trachtenmode</h2>
+<div class="hint">2 vollständige Musterlösungen mit Analyse der TATTE-Bestandteile und Sinnabschnitte</div>
+
+<p><a class="btn" href="klassenarbeiten/deutsch-inhaltsangabe.html">Vollständiges Material in der Deutsch-App öffnen →</a></p>
+
+<h3 class="sub">Musterbeispiel 1: Sachtext / Zeitungsbericht („Spaghettieis“)</h3>
+<div style="background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;margin:10px 0;line-height:1.6">
+  <p><b>Originalangaben:</b> Titel: <i>„Das Eis, das aus der Spätzlepresse kam“</i> · Autorin: Nicole Hess · Textart: Zeitungsbericht · Erschienen: 28.02.2014, Stuttgarter Zeitung</p>
+  
+  <p><b>1. Einleitungssatz:</b><br>
+  Der Zeitungsbericht <i>„Das Eis, das aus der Spätzlepresse kam“</i> von Nicole Hess, erschienen am 28.02.2014 in der Stuttgarter Zeitung, thematisiert die Erfindung des beliebten Spaghettieises durch den Mannheimer Eismacher Dario Fontanella.</p>
+
+  <p><b>2. Hauptteil:</b><br>
+  Im Jahr 1969 entwickelt der Eismacher Dario Fontanella in Mannheim die Idee, Vanilleeis durch eine gekühlte <span class="term" data-de="Spätzlepresse" data-vi="dụng cụ ép mì spätzle">Spätzlepresse</span> zu drücken, um die Form von Spaghetti nachzubilden. Garniert mit Erdbeersoße als Tomatensauce und geriebener weißer Schokolade als Parmesankäse entsteht so das erste Spaghettieis. Obwohl sein ursprünglicher Plan, die Farben der italienischen Flagge nachzubilden, vom Vater abgelehnt wird, setzt sich die süße Nudel-Kopie schnell durch.<br><br>
+  Heute ist Dario Fontanella 62 Jahre alt und betreibt mehrere Eisdielen sowie eine eigene Manufaktur in Mannheim. Trotz seines bundesweiten Erfolgs und zahlreicher Ehrungen bedauert er, seine Erfindung damals nicht patentiert zu haben, wodurch ihm erhebliche finanzielle Einnahmen entgangen sind.</p>
+
+  <p><b>Analyse der Qualität:</b><br>
+  Der Text verwendet durchgehend das <b>Präsens</b> („entwickelt“, „ist“, „bedauert“), fasst die Geschichte in zwei klare Sinnabschnitte (Erfindung 1969 → Gegenwart) zusammen und verzichtet auf direkte Zitate.</p>
+</div>
+
+<h3 class="sub">Musterbeispiel 2: Literarischer Text / Kurzgeschichte („Trachtenmode“)</h3>
+<div style="background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;margin:10px 0;line-height:1.6">
+  <p><b>Originalangaben:</b> Titel: <i>„Trachtenmode“</i> · Autorin: Elke Heidenreich · Textart: Kurzgeschichte · Jahr: 2005 · Verlag: Hanser</p>
+  
+  <p><b>1. Einleitungssatz:</b><br>
+  In der Kurzgeschichte <i>„Trachtenmode“</i> von Elke Heidenreich aus dem Jahr 2005 geht es um eine deutsche Filmcrew in Australien, deren leichtsinniger Streich mit einem scheinbar toten Känguru eine unerwartete Wendung nimmt.</p>
+
+  <p><b>2. Hauptteil:</b><br>
+  Eine Münchner Dokumentarfilmgruppe unternimmt eine Jeepfahrt durch einen australischen Nationalpark. Als ein Känguru neben dem Fahrzeug herläuft, streift der Fahrer das Tier versehentlich. Die entsetzten Filmer glauben, das Tier sei tot, und lehnen es an einen Baumstamm.<br><br>
+  Während zwei Teammitglieder Hilfe holen, verkleidet der zurückgebliebene Begleiter Waldi das Känguru im <span class="term" data-de="Übermut" data-vi="sự bồng bột / nghịch dại">Übermut</span> mit seiner bayerischen Trachtenjacke und einem Hut, während der Kameramann die Szene filmt. Plötzlich erwacht das Tier aus seiner Betäubung und flieht mit hoher Geschwindigkeit in den Busch – mitsamt der Jacke, in der sich alle Flugtickets und Ausweispapiere der Gruppe befinden.</p>
+
+  <p><b>3. Schluss (Kernaussage / Botschaft):</b><br>
+  Die Geschichte verdeutlicht, dass respektloser Leichtsinn und unüberlegter Übermut gravierende, unvorhersehbare Konsequenzen nach sich ziehen können.</p>
+
+  <p><b>Analyse der Qualität:</b><br>
+  Der literarische Text besitzt einen deutlichen Wendepunkt (Känguru wacht auf), der chronologisch dargestellt wird. Unwichtige Details (Marken, Gamsbart) wurden weggelassen, die Kernaussage wird im Schlusssatz sachlich formuliert.</p>
+</div>`,
+              },
+              {
+                id: "inhaltsangabe-uebung",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>',
+                name: "Übung & Originaltext: ‚Hauptsache weit‘",
+                desc: "Kurzgeschichte von Sibylle Berg (2001) · 5 Sinnabschnitte · Aufgabenstellung KA",
+                content: `<h2>Übung &amp; Originaltext: ‚Hauptsache weit‘</h2>
+<div class="hint">Kurzgeschichte von Sibylle Berg (2001) · 5 Sinnabschnitte · Textmarkierung &amp; Aufgabenstellung KA</div>
+
+<p><a class="btn" href="klassenarbeiten/deutsch-inhaltsangabe.html#p6">Interaktive Übung &amp; Musterlösung in der App öffnen →</a></p>
+
+<h3 class="sub">1. Aufgabenstellung (Klassenarbeit)</h3>
+<div class="note">
+  <b>Aufgabe:</b>
+  <ol>
+    <li>Lies die folgende Kurzgeschichte <i>„Hauptsache weit“</i> von Sibylle Berg sorgfältig durch.</li>
+    <li>Gliedere den Text in sinnvolle <b>Sinnabschnitte</b> und formuliere für jeden Abschnitt eine kurze Überschrift.</li>
+    <li>Verfasse eine vollständige <b>Inhaltsangabe</b> (Einleitungssatz mit TATTE, Hauptteil im Präsens, Schlusssatz mit Kernaussage).</li>
+  </ol>
+</div>
+
+<h3 class="sub">2. Originaltext: „Hauptsache weit“ von Sibylle Berg</h3>
+<div style="background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;margin:10px 0;line-height:1.7;font-size:.95em">
+  <p><b>Und weg</b>, hatte er gedacht. Die Schule war zu Ende, das Leben noch nicht, hatte noch nicht begonnen, das Leben. Er hatte nicht viel Angst davor, weil er noch keine Enttäuschungen kannte. Er war ein schöner Junge mit langen dunklen Haaren, er spielte Gitarre, komponierte am Computer und dachte, irgendwie werde ich wohl später nach London gehen, was Kreatives machen. Aber das war später. Und nun? Warum kommt der Spaß nicht?</p>
+  
+  <p>Der Junge hockt in einem Zimmer, das Zimmer ist grün, wegen der Neonleuchte, es hat kein Fenster und der Ventilator ist sehr laut. Schatten huschen über den Betonboden, das Glück ist das nicht, eine Wolldecke auf dem Bett, auf der schon einige Kriege ausgetragen wurden. Magen gegen Tom Yam, Darm gegen Curry. Immer verloren, die Eingeweide. Der Junge ist 18, und jetzt aber Asien, hatte er sich gedacht. Mit 1000 Dollar durch Thailand, Indien, Kambodscha, drei Monate unterwegs, und dann wieder heim, nach Deutschland. Das ist so eng, so langweilig, jetzt was erleben und vielleicht nie wieder zurück. Hast du keine Angst, hatten blasse Freunde zu Hause gefragt, so ganz alleine? Nein, hatte er geantwortet, man lernt ja so viele Leute kennen unterwegs. Bis jetzt hatte er hauptsächlich Mädchen kennengelernt, nett waren die schon, wenn man Leute mag, die einen bei jedem Satz anfassen. Mädchen, die aussahen wie dreißig und doch so alt waren wie er, seit Monaten unterwegs, die Mädchen, da werden sie komisch. Übermorgen würde er in Laos sein, da mag er jetzt gar nicht dran denken, in seinem hässlichen Pensionszimmer, muss Obacht geben, dass er sich nicht aufs Bett wirft und weint, auf die Decke, wo schon die anderen Dinge drauf sind. In dem kleinen Fernseher kommen nur Leute vor, die ihm völlig fremd sind, das ist das Zeichen, dass man einsam ist, wenn man die Fernsehstars eines Landes nicht kennt und die eigenen keine Bedeutung haben. Der Junge sehnt sich nach Stefan Raab, nach Harald Schmidt. Er merkt weiter, dass er gar nicht existiert, wenn er nichts hat, was er kennt. Wenn er keine Zeitung in seiner Sprache kaufen kann, keine Klatschgeschichten über einheimische Prominente lesen, wenn keiner anruft und fragt, wie es ihm geht. Dann gibt es ihn nicht. Denkt er. Und ist unterdessen aus seinem Zimmer in die heiße Nacht gegangen, hat fremdes Essen vor sich, von einer fremdsprachigen Serviererin gebracht, die sich nicht für ihn interessiert, wie niemand hier. Das ist wie tot sein, denkt der Junge. Weit weg von zu Hause, um anderen beim Leben zuzusehen, könnte man umfallen und sterben in der tropischen Nacht und niemand würde weinen darum. Jetzt weint er doch, denkt an die lange Zeit, die er noch rumbekommen muss, alleine in heißen Ländern mit seinem Rucksack, und das stimmt so gar nicht mit den Bildern überein, die er zu Hause von sich hatte. Wie er entspannt mit Wasserbüffeln spielen wollte, in Straßencafés sitzen und cool sein. Was ist, ist einer mit Sonnenbrand und Heimweh nach den Stars zu Hause, die sind wie ein Geländer zum Festhalten.</p>
+  
+  <p>Er geht durch die Nacht, selbst Tiere reden ausländisch, und dann sieht er etwas, sein Herz schlägt schneller. Ein Computer, ein Internet-Café. Und er setzt sich, schaltet den Computer an, liest seine E-Mails. Kleine Sätze von seinen Freunden, und denen antwortet er, dass es ihm gut gehe und alles großartig ist, und er schreibt und schreibt und es ist auf einmal völlig egal, dass zu seinen Füßen ausländische Insekten so groß wie Meerkatzen herumlaufen, dass das fremde Essen im Magen drückt. Er schreibt seinen Freunden über die kleinen Katastrophen, und die fremde Welt um ihn verschwimmt, er ist nicht mehr allein, taucht in den Bildschirm ein, der ist wie ein weiches Bett; er denkt an Bill Gates und Fred Apple, er schickt eine Mail an Sat 1, und für ein paar Stunden ist er wieder am Leben, in der heißen Nacht weit weg von zu Hause.</p>
+</div>
+
+<h3 class="sub">3. Sinnabschnitte &amp; Strukturhilfe</h3>
+<table>
+  <thead><tr><th>Abschnitt</th><th>Zeilen / Inhalt</th><th>Schwerpunkt</th></tr></thead>
+  <tbody>
+    <tr><td><b>1. Ausgangssituation</b></td><td>Schulabschluss, Zukunftspläne, Wunsch nach Ausbruch aus Deutschland</td><td>Reisemotiv &amp; Euphorie</td></tr>
+    <tr><td><b>2. Ernüchternde Realität</b></td><td>Tristes Pensionszimmer, Magenprobleme, Einsamkeit in der Fremde</td><td>Diskrepanz Traum vs. Realität</td></tr>
+    <tr><td><b>3. Identitätsverlust</b></td><td>Fremde Fernsehstars, fehlende Sprache, Gefühl der Nicht-Existenz</td><td>Krise &amp; tiefes Heimweh</td></tr>
+    <tr><td><b>4. Wendepunkt</b></td><td>Fund des Internet-Cafés, Kontakt zu Freunden per E-Mail</td><td>Rettungsanker Internet</td></tr>
+    <tr><td><b>5. Auflösung &amp; Botschaft</b></td><td>Scheinbare Stärke nach außen, vorübergehende Beruhigung durch virtuelle Heimat</td><td>Bedeutung von Bindung</td></tr>
+  </tbody>
+</table>
+
+<h3 class="sub">4. Musterlösung (Zum Abgleich)</h3>
+<div class="note">
+  <p><b>Einleitung:</b><br>
+  In der Kurzgeschichte <i>„Hauptsache weit“</i> von Sibylle Berg (2001) geht es um einen 18-jährigen Schulabgänger, der allein durch Südostasien reist und fernab der Heimat von tiefer Einsamkeit und Heimweh überwältigt wird.</p>
+  
+  <p><b>Hauptteil:</b><br>
+  Nach dem Schulabschluss reist ein 18-jähriger Deutscher mit wenig Geld allein für drei Monate durch Asien, um dem gewohnten Alltag zu entfliehen. Anstatt der erhofften Abenteuer findet er sich jedoch in einem trostlosen, fensterlosen Pensionszimmer wieder. Die fremde Umgebung, Sprachbarrieren und gesundheitliche Probleme verstärken sein Gefühl der Isolation. Da ihm vertraute kulturelle Bezugspunkte fehlen, fühlt er sich fremd und bedeutungslos.<br><br>
+  Als er ziellos durch die Stadt irrt und weint, entdeckt er ein Internet-Café. Beim Lesen und Beantworten der E-Mails seiner Freunde zu Hause verdrängt er seine Einsamkeit. Er täuscht ihnen vor, dass seine Reise ein voller Erfolg sei, und findet in der digitalen Verbindung zu seiner Heimat für einige Stunden emotionalen Halt.</p>
+
+  <p><b>Schluss:</b><br>
+  Die Kurzgeschichte zeigt, dass das Streben nach exotischen Reisen und Selbstfindung oft an der Sehnsucht nach Vertrautheit und Heimat scheitert, wenn feste soziale Bindungen fehlen.</p>
+</div>`,
+              },
+            ],
+          },
         ],
         quiz: (w.DEUTSCH_QUIZ || []).slice(),
       },
@@ -5277,7 +5447,14 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
     },
     deutsch: {
       zusammenfassung: "klassenarbeiten/deutsch.html",
-      examThemes: ["mindmap-diagramme", "text-zu-grafik", "muster-ka"],
+      examThemes: [
+        "mindmap-diagramme",
+        "text-zu-grafik",
+        "muster-ka",
+        "inhaltsangabe-formel",
+        "inhaltsangabe-muster",
+        "inhaltsangabe-uebung",
+      ],
       examChecklist: [
         "6 Grundformen (Mindmap, Fluss-, Säulen-, Balken-, Kreis-, Liniendiagramm)",
         "Formauswahl begründen (Zeitverlauf, Anteile %, Vergleich, Hierarchie, Kausalität)",
@@ -5286,9 +5463,14 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
         "Ursache-Wirkungs-Kette / Teufelskreis (Pfeile A → B → C)",
         "Muster-KA Fleischkonsum: 3 Aspekte erfassen (Gesundheit, Umwelt, Tierwohl)",
         "Prüfungsregeln einhalten: Lineal, nur Stichworte, keine ganzen Sätze, Wörter zählen",
+        "Inhaltsangabe-Formel: TATTE (Titel, Autor, Textsorte, Thema, Erscheinungsjahr)",
+        "Inhaltsangabe-Sprache: Präsens, sachlich, objektiv, eigene Worte, indirekte Rede",
+        "Todsünden vermeiden: Keine wörtliche Rede (Zitate), kein Präteritum/Perfekt, keine eigene Meinung/Wertung",
+        "Sinnabschnitte bilden & chronologisch die Haupthandlung wiedergeben",
       ],
       pruefungen: [
         { title: "Klassenarbeit Deutsch · Visualisierung", desc: "Mindmap, Diagramme, Sachtext → Grafik (Herrn Kling) · Interaktive Lern- & Übungsapp", exam: "klassenarbeiten/deutsch.html", loesung: "klassenarbeiten/deutsch.html" },
+        { title: "Klassenarbeit Deutsch · Inhaltsangabe", desc: "Formel TATTE, Checkliste, Mustertexte (Spaghettieis, Trachtenmode) & Übung „Hauptsache weit“ (DE/VI)", exam: "klassenarbeiten/deutsch-inhaltsangabe.html", loesung: "klassenarbeiten/deutsch-inhaltsangabe.html" },
       ],
     },
     englisch: {

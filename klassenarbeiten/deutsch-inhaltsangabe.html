@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>§ Inhaltsangabe schreiben — Übungsmaterial (DE/VI)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/statute-theme.css?v=200">
+<style>
+/* ===== DESIGN TOKENS =====
+  ink    #1B1F2A  primary text / spine
+  paper  #F1ECDE  parchment ground
+  wax    #7A2E2E  paragraph seal / DE accent
+  brass  #9C7A3C  rule / numerals
+  slate  #48586B  VI translation voice
+  line   #D8CFB8  hairline
+*/
+:root{
+  --ink:#1B1F2A; --paper:#F1ECDE; --paper2:#EAE3D0; --wax:#7A2E2E;
+  --brass:#9C7A3C; --slate:#48586B; --line:#D8CFB8; --slateline:#c7d0da;
+  --green:#5b7a52; --greenbg:#eef3ea;
+  --wine:#7A2E2E; --olive:#6f7d1c; --olive-soft:#eef1d2;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--paper);
+  background-image:
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.012) 0px, rgba(0,0,0,0.012) 1px, transparent 1px, transparent 3px);
+  color:var(--ink); font-family:"Source Serif 4",Georgia,serif; line-height:1.65;
+  font-size:17px;
+}
+::selection{background:#d9c9a3;}
+a{color:var(--wax);}
+
+/* ---- Top bar with back to app ---- */
+.top-bar{
+  background:rgba(226,216,194,0.85); backdrop-filter:blur(12px);
+  padding:10px 20px; border-bottom:1px solid var(--line);
+  display:flex; justify-content:space-between; align-items:center;
+  position:sticky; top:0; z-index:30;
+}
+.back-btn{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:6px 14px; border-radius:999px; border:1.5px solid var(--line);
+  background:var(--paper); color:var(--ink); font-size:0.85rem;
+  font-family:"IBM Plex Sans",sans-serif; font-weight:600; text-decoration:none; transition:.15s;
+}
+.back-btn:hover{background:#EAE3D0; border-color:var(--wax); color:var(--wax);}
+.top-kicker{font-family:"IBM Plex Mono",monospace; font-size:.74rem; color:var(--brass); letter-spacing:.05em;}
+
+/* ---- Header: title block like a statute cover page ---- */
+header.cover{
+  padding:44px 24px 38px; text-align:center; position:relative;
+  border-bottom:3px double var(--brass);
+  background:linear-gradient(180deg, var(--paper2), var(--paper));
+}
+header.cover .kicker{
+  font-family:"IBM Plex Mono",monospace; letter-spacing:.18em; font-size:.72rem;
+  text-transform:uppercase; color:var(--brass); margin-bottom:14px;
+}
+header.cover h1{
+  font-family:"Fraunces",serif; font-weight:600; font-size:clamp(1.9rem,5vw,3.1rem);
+  margin:0 0 10px; color:var(--ink); letter-spacing:-.01em;
+}
+header.cover h1 em{font-style:italic; color:var(--wax); font-weight:500;}
+header.cover .subtitle-de{font-size:1.02rem; color:var(--ink); margin:4px 0;}
+header.cover .subtitle-vi{
+  font-family:"IBM Plex Sans",sans-serif; font-size:.92rem; color:var(--slate);
+  margin:2px 0 0; font-style:normal;
+}
+header.cover .subtitle-vi:before{content:"VI · "; font-weight:600; letter-spacing:.03em; color:var(--slate); opacity:.7;}
+header.cover .exam-meta{
+  display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:18px;
+  font-family:"IBM Plex Mono",monospace; font-size:.72rem;
+}
+header.cover .exam-meta span{
+  border:1px solid var(--brass); color:var(--wax); padding:4px 12px; border-radius:20px;
+  letter-spacing:.04em;
+}
+
+/* ---- Legend + controls ---- */
+.legend{
+  max-width:820px; margin:22px auto 0; display:flex; gap:18px; justify-content:center;
+  flex-wrap:wrap; align-items:center; font-family:"IBM Plex Sans",sans-serif; font-size:.82rem; color:var(--ink);
+}
+.legend .item{display:flex; align-items:center; gap:8px;}
+.legend .swatch{width:16px; height:16px; border-radius:2px; flex-shrink:0;}
+.legend .swatch.de{background:var(--wax);}
+.legend .swatch.vi{background:var(--slate);}
+.toggle-btn{
+  cursor:pointer; font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.05em;
+  background:var(--ink); color:var(--paper); border:none; padding:8px 14px; border-radius:6px;
+  text-transform:uppercase; transition:.15s; display:inline-flex; align-items:center;
+}
+.toggle-btn:hover{background:var(--wax);}
+
+/* ---- Sticky paragraph nav ---- */
+nav.spine{
+  position:sticky; top:49px; z-index:20; background:var(--ink); color:var(--paper);
+  display:flex; gap:0; overflow-x:auto; white-space:nowrap; padding:0 10px;
+  box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+nav.spine a{
+  color:var(--paper); text-decoration:none; font-family:"IBM Plex Mono",monospace;
+  font-size:.74rem; letter-spacing:.03em; padding:13px 14px; border-right:1px solid rgba(255,255,255,.12);
+  opacity:.72; transition:.15s;
+}
+nav.spine a:hover{opacity:1; background:rgba(255,255,255,.06); color:#EFC9A0;}
+nav.spine a.exam{color:#EFC9A0; opacity:.9;}
+nav.spine .grp{
+  font-family:"IBM Plex Mono",monospace; font-size:.64rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--brass); padding:13px 8px 13px 14px; align-self:center; opacity:.9;
+}
+
+main{max-width:840px; margin:0 auto; padding:10px 24px 100px;}
+
+/* ---- Section shell: like a numbered § chapter ---- */
+section.chapter{padding:50px 0 20px; border-bottom:1px solid var(--line); scroll-margin-top:90px;}
+section.chapter:last-of-type{border-bottom:none;}
+.chapter-head{display:flex; align-items:baseline; gap:16px; margin-bottom:6px;}
+.chapter-num{
+  font-family:"Fraunces",serif; font-weight:700; font-size:2.5rem; color:var(--brass);
+  line-height:1; flex-shrink:0;
+}
+.chapter-title-de{font-family:"Fraunces",serif; font-weight:600; font-size:1.5rem; color:var(--ink); margin:0;}
+.chapter-title-vi{
+  font-family:"IBM Plex Sans",sans-serif; font-size:.95rem; color:var(--slate); margin:4px 0 0 60px;
+}
+.chapter-title-vi:before{content:"VI · "; font-weight:600; opacity:.7;}
+.lf-tag{
+  font-family:"IBM Plex Mono",monospace; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase;
+  background:var(--wax); color:var(--paper); padding:3px 9px; border-radius:4px; margin-left:auto; align-self:center;
+}
+
+h3.sub{
+  font-family:"Fraunces",serif; font-weight:600; font-size:1.16rem; color:var(--wax);
+  margin:32px 0 4px; padding-left:14px; border-left:3px solid var(--wax);
+}
+h3.sub .vi-sub{
+  display:block; font-family:"IBM Plex Sans",sans-serif; font-weight:500; font-size:.82rem;
+  color:var(--slate); margin-top:3px; border-left:none; padding-left:0; letter-spacing:0;
+}
+h4.h4{font-family:'IBM Plex Sans',sans-serif; color:var(--ink); margin:24px 0 6px; font-size:1rem;}
+h4.h4 .vi-sub{display:block; color:var(--slate); font-weight:400; font-size:.82rem; margin-top:2px;}
+
+/* ---- The core DE→VI stacked block ---- */
+.block{margin:16px 0 22px;}
+.de{
+  position:relative; padding:14px 18px 14px 20px; background:rgba(122,46,46,.045);
+  border-left:3px solid var(--wax); border-radius:0 6px 6px 0; font-size:1rem;
+}
+.de .tag{
+  font-family:"IBM Plex Mono",monospace; font-size:.66rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--wax); display:block; margin-bottom:5px; opacity:.85;
+}
+.vi{
+  font-family:"IBM Plex Sans",sans-serif; font-size:.9rem; color:var(--slate);
+  padding:10px 18px 4px 20px; border-left:3px solid var(--slateline); margin-top:-4px;
+}
+.vi .tag{
+  font-family:"IBM Plex Mono",monospace; font-size:.64rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--slate); display:block; margin-bottom:4px; opacity:.75;
+}
+/* Vietnamese hide toggle */
+body.hide-vi .vi{display:none !important;}
+body.hide-vi .vi-sub{display:none !important;}
+body.hide-vi .vi-cell{display:none !important;}
+body.hide-vi .vi-mini{display:none !important;}
+body.hide-vi .chapter-title-vi{display:none !important;}
+
+ul,ol{margin:10px 0; padding-left:26px;}
+li{margin:5px 0;}
+li.de{border-radius:0 6px 6px 0; margin:7px 0;}
+
+b,strong{color:var(--ink);}
+.vi b,.vi strong{color:#324150;}
+
+table{width:100%; border-collapse:collapse; margin:16px 0; font-size:.9rem; background:#fff;}
+th,td{border:1px solid var(--line); padding:9px 11px; text-align:left; vertical-align:top;}
+th{background:var(--ink); color:var(--paper); font-family:"IBM Plex Sans",sans-serif; font-weight:600; font-size:.78rem; letter-spacing:.03em; text-transform:uppercase;}
+tr:nth-child(even) td{background:var(--paper2);}
+td.vi-cell{color:var(--slate); font-family:"IBM Plex Sans",sans-serif; font-size:.82rem;}
+.vi-cell{color:var(--slate); font-family:"IBM Plex Sans",sans-serif; font-size:.82rem; display:block; margin-top:3px;}
+
+.example{
+  background:var(--greenbg); border-left:4px solid var(--green); border-radius:0 6px 6px 0;
+  padding:10px 16px; margin:12px 0; font-size:.92rem;
+}
+.example .tag{font-family:"IBM Plex Mono",monospace; font-size:.65rem; letter-spacing:.1em; color:#3f5c39; text-transform:uppercase; display:block; margin-bottom:4px;}
+.example .vi{border:none; padding:4px 0 0; margin:0;}
+
+.warn{
+  background:#f7e9df; border-left:4px solid var(--wax); border-radius:0 6px 6px 0;
+  padding:10px 16px; margin:12px 0; font-size:.92rem;
+}
+.warn .tag{font-family:"IBM Plex Mono",monospace; font-size:.65rem; letter-spacing:.1em; color:var(--wax); text-transform:uppercase; display:block; margin-bottom:4px;}
+.warn .vi{border:none; padding:4px 0 0; margin:0;}
+
+/* ---- Q&A / Lösung accordion ---- */
+details.q{border:1px solid var(--line); border-radius:8px; margin:14px 0; overflow:hidden; background:#fff;}
+details.q summary{
+  cursor:pointer; list-style:none; padding:14px 18px; font-family:"IBM Plex Sans",sans-serif;
+  font-weight:600; font-size:.95rem; color:var(--ink); position:relative; padding-right:40px;
+}
+details.q summary::-webkit-details-marker{display:none;}
+details.q summary:after{
+  content:"+"; position:absolute; right:16px; top:50%; transform:translateY(-50%);
+  font-size:1.3rem; color:var(--brass); font-weight:400;
+}
+details.q[open] summary:after{content:"–";}
+details.q[open] summary{background:rgba(122,46,46,.04); border-bottom:1px dashed var(--line);}
+details.q summary .qnum{
+  font-family:"IBM Plex Mono",monospace; color:var(--brass); font-weight:600; margin-right:8px;
+}
+details.q .ans{padding:2px 18px 16px;}
+details.q .ans .de{margin-top:12px;}
+details.q .ans .vi{margin-bottom:6px;}
+
+.exam-intro{
+  background:var(--paper2); border:1px solid var(--line); border-radius:8px;
+  padding:14px 18px; margin:16px 0; font-size:.94rem;
+}
+.aufgabe{margin:22px 0; padding-left:16px; border-left:3px solid var(--brass);}
+.aufgabe-num{font-family:"IBM Plex Sans",sans-serif; font-weight:600; color:var(--wax); font-size:1rem; display:block; margin-bottom:4px;}
+.pts{float:right; font-family:"IBM Plex Mono",monospace; color:var(--brass); font-size:.78rem;}
+
+/* ---- Quiz ---- */
+.mc{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:12px 0}
+.mc h4{margin:0 0 2px;font-family:"IBM Plex Sans",sans-serif;font-size:1rem}
+.mc .opts{display:grid;gap:6px;margin-top:8px}
+.mc .opts button{font-family:"IBM Plex Sans",sans-serif;text-align:left;background:var(--paper);color:var(--ink);border:1px solid var(--line);padding:8px 12px;border-radius:8px;cursor:pointer;font-size:.92rem}
+.mc .opts button:hover{background:var(--paper2)}
+.mc .opts button.right{background:var(--greenbg);border-color:var(--green);color:#3f5c39;font-weight:600}
+.mc .opts button.wrong{background:#f7e9df;border-color:var(--wax);color:var(--wax)}
+.mc .why{display:none;margin-top:8px;font-size:.9rem;font-family:"IBM Plex Sans",sans-serif;color:var(--slate)}
+.mc.done .why{display:block}
+#score{position:sticky;bottom:10px;margin:14px 0;background:var(--ink);color:var(--paper);padding:8px 14px;border-radius:8px;display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:.8rem}
+
+/* Markierungsfarben (funktional, aus dem Originaltext der Übung) */
+mark{padding:1px 2px;border-radius:2px}
+.m-sit{background:#ffe58a}.m-ereig{background:#aee3ff}.m-gef{background:#ffc9d6}.m-schluss{background:#bdeec0}
+.mark-legend{display:flex;flex-wrap:wrap;gap:14px;margin:10px 0 16px;font-family:"IBM Plex Sans",sans-serif;font-size:.85rem}
+.mark-legend span{display:inline-flex;align-items:center;gap:6px}
+.mark-legend i{width:14px;height:14px;display:inline-block;border-radius:3px;border:1px solid rgba(0,0,0,.2)}
+.orig{margin:16px 0 22px;font-size:.95rem;line-height:1.7}
+.orig p{margin:0 0 12px}
+
+footer{
+  text-align:center; padding:44px 20px 70px; font-family:"IBM Plex Sans",sans-serif;
+  font-size:.82rem; color:var(--slate); border-top:1px solid var(--line);
+}
+footer .de{background:none; border:none; padding:0;}
+footer .vi{border:none; padding:0; margin-top:4px;}
+
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+@media print{
+  .top-bar, nav.spine, .toggle-btn{display:none;}
+  body{font-size:12pt; background:#fff;}
+  details.q, details.q .ans{display:block !important;}
+  details.q[open] summary:after,details.q summary:after{content:"";}
+  section.chapter{page-break-inside:auto;}
+}
+</style>
+</head>
+<body>
+<div class="top-bar">
+  <a class="back-btn" href="../index.html#/fach/deutsch">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px"><path d="M19 12H5"/><path d="M12 5l-7 7 7 7"/></svg>
+    Deutsch
+  </a>
+  <span class="top-kicker">AzubiHub · Inhaltsangabe</span>
+</div>
+
+<header class="cover">
+  <div class="kicker">Deutsch · Literatur und Medien I · Übungsmaterial</div>
+  <h1>§ <em>Inhaltsangabe schreiben</em></h1>
+  <p class="subtitle-de">Formel, Musterbeispiele &amp; Übung mit Lösungen</p>
+  <p class="subtitle-vi">Công thức viết tóm tắt (Inhaltsangabe), ví dụ mẫu đã làm, và bài luyện tập có lời giải.</p>
+  <div class="exam-meta"><span>Deutsch</span><span>Inhaltsangabe</span><span>DE / VI zweisprachig</span></div>
+  <div class="legend">
+    <div class="item"><span class="swatch de"></span> Deutsch (Original — luôn đọc trước)</div>
+    <div class="item"><span class="swatch vi"></span> Tiếng Việt (bản dịch — đọc sau để hiểu)</div>
+    <button class="toggle-btn" id="viToggle" onclick="toggleVi()"><span style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:.72rem;background:var(--wax);color:var(--paper);padding:2px 6px;border-radius:3px;margin-right:6px">VI</span>Tiếng Việt: BẬT</button>
+  </div>
+</header>
+
+<nav class="spine">
+  <span class="grp">Kapitel</span>
+  <a href="#p1">§1 · Formel</a>
+  <a href="#p2">§2 · Checkliste</a>
+  <a href="#p3">§3 · Sprache</a>
+  <a href="#p4">§4 · Beispiel 1</a>
+  <a href="#p5">§5 · Beispiel 2</a>
+  <a href="#p6">§6 · Übung</a>
+  <span class="grp">Selbsttest</span>
+  <a href="#quiz" class="exam">Quick-Quiz</a>
+</nav>
+
+<main>
+<section class="chapter" id="p1">
+  <div class="chapter-head"><span class="chapter-num">§1</span><h2 class="chapter-title-de">Die Formel: So baust du jede Inhaltsangabe</h2><span class="lf-tag">Deutsch</span></div>
+  <p class="chapter-title-vi">Công thức áp dụng cho MỌI bài tóm tắt văn bản, dù là truyện ngắn hay bài báo.</p>
+  <div class="block">
+    <div class="de">
+      <span class="tag">Formel</span>
+      <strong>EINLEITUNG</strong> + <strong>HAUPTTEIL</strong> + <strong>SCHLUSS</strong>
+      <ol>
+        <li><strong>Einleitung (1 Satz):</strong> Titel – Autor/in – Textart – Erscheinungsjahr/-ort – Thema in einem Satz</li>
+        <li><strong>Hauptteil (mehrere Sätze):</strong> Handlung in eigenen Worten, chronologisch, nur das Wesentliche</li>
+        <li><strong>Schluss (1–2 Sätze):</strong> Kernaussage / Botschaft des Textes zusammenfassen</li>
+      </ol>
+    </div>
+    <div class="vi">
+      <span class="tag">VI</span>
+      Mọi bài Inhaltsangabe đều gồm 3 phần: Mở bài (1 câu: tên tác phẩm – tác giả – thể loại – năm/nơi xuất bản – chủ đề chính), Thân bài (nhiều câu: tóm tắt nội dung theo đúng trình tự, chỉ giữ ý chính), Kết bài (1–2 câu: thông điệp/ý nghĩa cốt lõi).
+    </div>
+  </div>
+  <h4 class="h4">Satzformel für die Einleitung</h4>
+  <div class="block">
+    <div class="de">„In der/dem <em>[Textart]</em> ‚<em>[Titel]</em>' von <em>[Autor/in]</em> (<em>[Jahr]</em>) geht es um <em>[Thema in 1 Satz]</em>."</div>
+    <div class="vi"><span class="tag">VI</span>Công thức câu mở bài: “Trong [thể loại] ‚[tên tác phẩm]' của [tác giả] (năm), nội dung nói về [chủ đề trong 1 câu].”</div>
+  </div>
+  <h4 class="h4">Faustregel für den Hauptteil</h4>
+  <div class="block">
+    <div class="de">Frage dich bei jedem Satz: Ist das wichtig für die Handlung? Wenn nein → weglassen. Schreibe nur, WAS passiert, nicht WIE es sich anfühlt (keine Stimmungsbeschreibungen, keine wörtliche Rede).</div>
+    <div class="vi"><span class="tag">VI</span>Với mỗi câu, tự hỏi: chi tiết này có quan trọng cho cốt truyện không? Nếu không → bỏ qua. Chỉ viết CÁI GÌ xảy ra, không viết CẢM GIÁC thế nào (không mô tả tâm trạng, không trích dẫn lời thoại trực tiếp).</div>
+  </div>
+</section>
+
+<section class="chapter" id="p2">
+  <div class="chapter-head"><span class="chapter-num">§2</span><h2 class="chapter-title-de">Checkliste: Inhaltsangabe schreiben</h2><span class="lf-tag">Deutsch</span></div>
+  <p class="chapter-title-vi">Checklist đầy đủ từ tài liệu của bạn, có giải thích.</p>
+  <h3 class="sub">1. Vorbereitung</h3>
+  <div class="block"><div class="de">Text aufmerksam lesen (ggf. 2×)</div><div class="vi"><span class="tag">VI</span>Đọc kỹ văn bản (đọc 2 lần nếu cần)</div></div>
+  <div class="block"><div class="de">Wichtige Stellen markieren</div><div class="vi"><span class="tag">VI</span>Gạch chân/đánh dấu các đoạn quan trọng</div></div>
+  <div class="block"><div class="de">Unbekannte Wörter klären</div><div class="vi"><span class="tag">VI</span>Tra nghĩa các từ chưa biết</div></div>
+  <div class="block"><div class="de">Kernaussage des Textes finden und an den Seitenrand schreiben</div><div class="vi"><span class="tag">VI</span>Tìm ý chính của văn bản, ghi ra lề trang</div></div>
+  <div class="block"><div class="de">Text in Abschnitte gliedern</div><div class="vi"><span class="tag">VI</span>Chia văn bản thành các đoạn</div></div>
+
+  <h3 class="sub">2. Einleitung schreiben</h3>
+  <div class="block"><div class="de">Titel des Textes nennen</div><div class="vi"><span class="tag">VI</span>Nêu tên tác phẩm</div></div>
+  <div class="block"><div class="de">Autor/in angeben (wenn bekannt)</div><div class="vi"><span class="tag">VI</span>Ghi tác giả (nếu biết)</div></div>
+  <div class="block"><div class="de">Textart nennen (z. B. Kurzgeschichte, Artikel, Roman)</div><div class="vi"><span class="tag">VI</span>Nêu thể loại (truyện ngắn, bài báo, tiểu thuyết...)</div></div>
+  <div class="block"><div class="de">Worum es grob geht (1 Satz)</div><div class="vi"><span class="tag">VI</span>Nội dung chính là gì (1 câu)</div></div>
+  <div class="block"><div class="de">Präsens verwenden</div><div class="vi"><span class="tag">VI</span>Dùng thì hiện tại (Präsens)</div></div>
+
+  <h3 class="sub">3. Hauptteil</h3>
+  <div class="block"><div class="de">Wichtige Inhalte in eigenen Worten wiedergeben</div><div class="vi"><span class="tag">VI</span>Kể lại nội dung chính bằng lời của mình</div></div>
+  <div class="block"><div class="de">Nur das Wesentliche schreiben (keine Details)</div><div class="vi"><span class="tag">VI</span>Chỉ viết ý chính (không viết chi tiết nhỏ)</div></div>
+  <div class="block"><div class="de">Reihenfolge der Handlung beachten</div><div class="vi"><span class="tag">VI</span>Giữ đúng trình tự diễn biến</div></div>
+  <div class="block"><div class="de">Keine wörtliche Rede (oder nur indirekt)</div><div class="vi"><span class="tag">VI</span>Không trích lời thoại trực tiếp (chỉ dùng gián tiếp nếu cần)</div></div>
+  <div class="block"><div class="de">Keine eigene Meinung</div><div class="vi"><span class="tag">VI</span>Không viết ý kiến cá nhân</div></div>
+  <div class="block"><div class="de">Präsens verwenden</div><div class="vi"><span class="tag">VI</span>Dùng thì hiện tại</div></div>
+
+  <h3 class="sub">4. Schluss</h3>
+  <div class="block"><div class="de">Kurze Zusammenfassung der Kernaussage</div><div class="vi"><span class="tag">VI</span>Tóm tắt ngắn gọn ý nghĩa cốt lõi</div></div>
+  <div class="block"><div class="de">Keine persönliche Meinung (außer es wird verlangt)</div><div class="vi"><span class="tag">VI</span>Không nêu ý kiến cá nhân (trừ khi đề bài yêu cầu)</div></div>
+
+  <h3 class="sub">5. Sprache &amp; Form</h3>
+  <div class="block"><div class="de">Sachlich und neutral schreiben</div><div class="vi"><span class="tag">VI</span>Viết khách quan, trung lập</div></div>
+  <div class="block"><div class="de">Kurze, klare Sätze verwenden</div><div class="vi"><span class="tag">VI</span>Dùng câu ngắn, rõ ràng</div></div>
+  <div class="block"><div class="de">Präsens (Gegenwart) durchgehend nutzen</div><div class="vi"><span class="tag">VI</span>Dùng thì hiện tại xuyên suốt</div></div>
+  <div class="block"><div class="de">Eigene Worte verwenden (kein Abschreiben)</div><div class="vi"><span class="tag">VI</span>Dùng từ ngữ của mình (không chép nguyên văn)</div></div>
+  <div class="block"><div class="de">Keine Umgangssprache</div><div class="vi"><span class="tag">VI</span>Không dùng khẩu ngữ</div></div>
+</section>
+
+<section class="chapter" id="p3">
+  <div class="chapter-head"><span class="chapter-num">§3</span><h2 class="chapter-title-de">Sprachliche Werkzeuge</h2><span class="lf-tag">Deutsch</span></div>
+  <p class="chapter-title-vi">Công cụ ngôn ngữ: chuyển thì, nối câu, diễn đạt lại.</p>
+  <h3 class="sub">Präsens: Vergangenheit → Gegenwart umschreiben</h3>
+  <table>
+    <thead><tr><th>Originaltext (meist Präteritum)</th><th>In der Inhaltsangabe (Präsens)</th></tr></thead>
+    <tbody>
+      <tr><td>Dario Fontanella <strong>drückte</strong> Vanilleeis durch eine Spätzlepresse.</td><td>Dario Fontanella <strong>drückt</strong> Vanilleeis durch eine Spätzlepresse.</td></tr>
+      <tr><td>Die Dokumentarfilmer <strong>fuhren</strong> durch den Nationalpark.</td><td>Die Dokumentarfilmer <strong>fahren</strong> durch den Nationalpark.</td></tr>
+      <tr><td>Er <strong>hatte</strong> nicht viel Angst.</td><td>Er <strong>hat</strong> nicht viel Angst.</td></tr>
+    </tbody>
+  </table>
+  <div class="block"><div class="vi"><span class="tag">VI</span>Trong văn bản gốc thường dùng thì quá khứ (Präteritum), nhưng khi viết Inhaltsangabe, LUÔN chuyển sang thì hiện tại (Präsens) — kể cả khi kể về quá khứ trong truyện.</div></div>
+
+  <h3 class="sub">Eigene Worte: typische Umformulierungen</h3>
+  <table>
+    <thead><tr><th>Im Text steht …</th><th>In der Inhaltsangabe schreibst du …</th></tr></thead>
+    <tbody>
+      <tr><td>wörtliche Rede: „Ich habe Angst", sagte er.</td><td>indirekt: Er sagt, dass er Angst habe. / Er gibt an, Angst zu haben.</td></tr>
+      <tr><td>ausführliche Beschreibung (mehrere Sätze)</td><td>ein zusammenfassender Satz</td></tr>
+      <tr><td>Gefühlsschilderung (Stimmung, Gedanken im Detail)</td><td>nur knapp erwähnen, wenn handlungsrelevant</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sub">Nützliche Konnektoren (Satzverbindungen)</h3>
+  <table>
+    <thead><tr><th>Deutsch</th><th>Funktion</th><th>Tiếng Việt</th></tr></thead>
+    <tbody>
+      <tr><td>Zunächst / Zu Beginn</td><td>Anfang<span class="vi-cell">mở đầu</span></td><td>Trước tiên / Lúc đầu</td></tr>
+      <tr><td>Daraufhin / Anschließend / Danach</td><td>nächster Schritt<span class="vi-cell">bước tiếp theo</span></td><td>Sau đó / Tiếp theo</td></tr>
+      <tr><td>Dabei / Währenddessen</td><td>gleichzeitig<span class="vi-cell">đồng thời</span></td><td>Trong lúc đó</td></tr>
+      <tr><td>Plötzlich / Auf einmal</td><td>Wendepunkt<span class="vi-cell">bước ngoặt</span></td><td>Đột nhiên</td></tr>
+      <tr><td>Schließlich / Am Ende</td><td>Abschluss<span class="vi-cell">kết thúc</span></td><td>Cuối cùng</td></tr>
+      <tr><td>Dies zeigt, dass … / Damit wird deutlich, dass …</td><td>Schlusssatz / Kernaussage<span class="vi-cell">câu kết, nêu ý nghĩa</span></td><td>Điều này cho thấy …</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="chapter" id="p4">
+  <div class="chapter-head"><span class="chapter-num">§4</span><h2 class="chapter-title-de">Beispiel 1: Zeitungsartikel (Sachtext)</h2><span class="lf-tag">Deutsch</span></div>
+  <p class="chapter-title-vi">Ví dụ mẫu đã làm: bài báo “Das Eis, das aus der Spätzlepresse kam”.</p>
+  <h4 class="h4">Angaben zum Text</h4>
+  <div class="block">
+    <div class="de"><span class="tag">Angaben</span>Titel: „Das Eis, das aus der Spätzlepresse kam" · Autorin: Nicole Hess · Textart: Zeitungsbericht · Erschienen: 28.02.2014, Stuttgarter Zeitung</div>
+    <div class="vi"><span class="tag">VI</span>Tên bài: “Das Eis, das aus der Spätzlepresse kam” · Tác giả: Nicole Hess · Thể loại: bài báo · Đăng: 28.02.2014, báo Stuttgarter Zeitung</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">Einleitung</span>Der Artikel „Das Eis, das aus der Spätzlepresse kam" von Nicole Hess erschien am 28.02.2014 in der Stuttgarter Zeitung. Es handelt sich um einen Zeitungsbericht, der die Erfindung des Spaghettieises durch Dario Fontanella beschreibt.</div>
+    <div class="de" style="margin-top:8px"><span class="tag">Hauptteil</span>1969 hat Dario Fontanella in Mannheim die Idee, Vanilleeis durch eine Spätzlepresse zu drücken und mit Erdbeersoße sowie weißer Schokolade zu garnieren – so entsteht das erste Spaghettieis. Ursprünglich möchte er damit eine italienische Flagge aus Pistazien-, Zitronen- und Erdbeereis nachbilden, doch sein Vater lehnt dies ab, sodass nur die Vanillevariante bleibt.<br><br>Heute ist Fontanella 62 Jahre alt und gilt als Erfinder des Spaghettieises. Er betreibt mehrere Eisdielen und eine Eismanufaktur in Mannheim, wurde mit dem Bloomaulorden ausgezeichnet und wirbt sogar für Baden-Württemberg. Er bedauert jedoch, seine Erfindung nie patentieren lassen zu haben, da ihm dadurch finanzielle Vorteile und ein rechtlicher Nachweis entgangen sind.</div>
+    <div class="vi"><span class="tag">VI</span>Mở bài nêu đủ 5 yếu tố (tên bài – tác giả – thể loại – ngày đăng – chủ đề). Thân bài kể lại theo trình tự thời gian: 1969 nảy ra ý tưởng → bị cha phản đối ý tưởng ban đầu → hiện tại ông nổi tiếng nhưng tiếc vì chưa đăng ký bằng sáng chế.</div>
+  </div>
+  <div class="example">
+    <span class="tag">Warum ist das ein gutes Beispiel?</span>
+    <div class="de">Die Einleitung nennt alle Pflichtangaben in einem Satz. Der Hauptteil ist chronologisch (1969 → heute) und enthält nur die wichtigsten Fakten, keine wörtliche Rede aus dem Original. Alles ist im Präsens geschrieben, obwohl der Artikel selbst im Perfekt/Präteritum berichtet.</div>
+    <div class="vi">Mở bài nêu đủ thông tin bắt buộc trong 1 câu. Thân bài theo đúng trình tự thời gian (1969 → hiện tại), chỉ giữ sự kiện quan trọng, không trích nguyên văn lời thoại từ bài gốc. Toàn bộ viết ở thì hiện tại dù bài báo gốc dùng thì quá khứ.</div>
+  </div>
+</section>
+
+<section class="chapter" id="p5">
+  <div class="chapter-head"><span class="chapter-num">§5</span><h2 class="chapter-title-de">Beispiel 2: Kurzgeschichte (literarischer Text)</h2><span class="lf-tag">Deutsch</span></div>
+  <p class="chapter-title-vi">Ví dụ mẫu: truyện ngắn “Trachtenmode” của Elke Heidenreich.</p>
+  <h4 class="h4">Angaben zum Text</h4>
+  <div class="block">
+    <div class="de"><span class="tag">Angaben</span>Titel: „Trachtenmode" · Autorin: Elke Heidenreich · Textart: Kurzgeschichte · Jahr: 2005 · Quelle: Elke Heidenreich: Männer in Kamelhaarmänteln. Kurze Geschichten über Kleider und Leute. Berlin: Hanser Verlag, 2020.</div>
+    <div class="vi"><span class="tag">VI</span>Tên truyện: “Trachtenmode” · Tác giả: Elke Heidenreich · Thể loại: truyện ngắn · Năm: 2005 · Nguồn: như trên.</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">Einleitung</span>In der Kurzgeschichte „Trachtenmode" von Elke Heidenreich (2005) geht es um deutsche Dokumentarfilmer in Australien, die einen Scherz mit einem Känguru machen. Der Scherz endet anders als geplant.</div>
+    <div class="de" style="margin-top:8px"><span class="tag">Hauptteil</span>Eine Gruppe von Dokumentarfilmern aus München macht am Abend ihre erste Fahrt mit dem Jeep durch einen Nationalpark. Ein Känguru begleitet den Wagen, und einer der Männer filmt es. Dabei streift der Fahrer das Tier offenbar, und es bleibt regungslos liegen. Die Filmer sind entsetzt und lehnen das Känguru an einen Baum. Es atmet nicht mehr. Dann fahren die Frau und ein Mann zum Lager zurück. Der Kameramann und sein Freund Waldi bleiben bei dem Tier. Aus Übermut zieht Waldi dem Känguru seine Trachtenjacke an und setzt ihm seinen Hut auf. Der Kameramann filmt alles. Plötzlich wacht das Känguru auf und rennt mit großer Geschwindigkeit davon. In der Jacke sind alle Flugtickets und Waldis Papiere.</div>
+    <div class="de" style="margin-top:8px"><span class="tag">Schluss</span>Am Ende wartet man in Melbourne darauf, dass das Känguru mit der Jacke auftaucht. Die Geschichte zeigt, dass Übermut unerwartete Folgen haben kann.</div>
+    <div class="vi"><span class="tag">VI</span>Mở bài nêu tên truyện, tác giả, năm, tóm tắt chủ đề trong 1-2 câu ngắn. Thân bài kể theo trình tự: đoàn làm phim lái xe → đụng phải kangaroo → tưởng nó chết nên đùa nghịch mặc áo khoác truyền thống vào nó → kangaroo tỉnh dậy bỏ chạy mang theo cả giấy tờ. Kết bài nêu ý nghĩa: sự đùa cợt quá đà có thể gây hậu quả không lường trước.</div>
+  </div>
+  <div class="example">
+    <span class="tag">Warum ist das ein gutes Beispiel?</span>
+    <div class="de">Anders als beim Sachtext gibt es hier einen eigenen Schlusssatz mit der Kernaussage („Übermut kann unerwartete Folgen haben"). Details wie „Sepplhut mit Gamsbart" oder die genaue Beschreibung des Käfigs der Schnupftabakdose wurden weggelassen, weil sie nicht handlungsrelevant sind.</div>
+    <div class="vi">Khác với bài báo, truyện ngắn cần có câu kết nêu rõ ý nghĩa/bài học. Các chi tiết nhỏ như "mũ Sepplhut có lông dê" hay mô tả hộp thuốc lá hít đã được lược bỏ vì không quan trọng cho cốt truyện.</div>
+  </div>
+  <div class="warn">
+    <span class="tag">Hinweis zu deinem Entwurf</span>
+    <p class="de">In deiner Handschrift-Version steht „Gericht" statt „Gruppe" am Satzanfang — das ist wahrscheinlich ein Verschreiben beim schnellen Mitschreiben.</p>
+    <div class="vi">Trong bản viết tay của bạn, đầu câu ghi “Gericht” thay vì “Gruppe” — có lẽ là viết nhầm khi chép nhanh. Hãy kiểm tra lại khi chép vào bài thi.</div>
+  </div>
+</section>
+
+<section class="chapter" id="p6">
+  <div class="chapter-head"><span class="chapter-num">§6</span><h2 class="chapter-title-de">Übung: „Hauptsache weit" von Sibylle Berg</h2><span class="lf-tag">Deutsch</span></div>
+  <p class="chapter-title-vi">Luyện tập với truyện ngắn mới — tự viết Inhaltsangabe trước, sau đó xem lời giải mẫu.</p>
+  <h4 class="h4">Angaben zum Text</h4>
+  <div class="block">
+    <div class="de"><span class="tag">Angaben</span>Titel: „Hauptsache weit" · Autorin: Sibylle Berg · Textart: Kurzgeschichte · Quelle: Kopfermann, Thomas: Erfahrene Erfindungen. Deutschsprachige Kurzgeschichten seit 1989. Leipzig, 2004, S. 11f.</div>
+  </div>
+  <h3 class="sub">Schritt 1: Wichtige Stellen markieren</h3>
+  <div class="block">
+    <div class="de">Lies den Text noch einmal und markiere: Ausgangssituation, Handlung/Ereignisse, Gefühle der Einsamkeit, Wendepunkt/Kernaussage. Genau das wurde hier schon für dich vorbereitet.</div>
+    <div class="vi"><span class="tag">VI</span>Đọc lại văn bản và đánh dấu: tình huống ban đầu, hành động/sự kiện, cảm giác cô đơn, bước ngoặt/ý nghĩa cốt lõi. Phần này đã được chuẩn bị sẵn cho bạn ngay dưới đây.</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">Originaltext</span></div>
+    <div class="orig">
+      <p><strong>Und weg</strong>, hatte er gedacht. <mark class="m-sit">Die Schule war zu Ende, das Leben noch nicht, hatte noch nicht begonnen, das Leben.</mark> Er hatte nicht viel Angst davor, weil er noch keine Enttäuschungen kannte. Er war ein schöner Junge mit langen dunklen Haaren, er spielte Gitarre, komponierte am Computer und <mark class="m-sit">dachte, irgendwie werde ich wohl später nach London gehen, was Kreatives machen.</mark> Aber das war später. Und nun? Warum kommt der Spaß nicht?</p>
+      <p>Der Junge hockt in einem Zimmer, das Zimmer ist grün, wegen der Neonleuchte, es hat kein Fenster und der Ventilator ist sehr laut. Schatten huschen über den Betonboden, das Glück ist das nicht, eine Wolldecke auf dem Bett, auf der schon einige Kriege ausgetragen wurden. Magen gegen Tom Yam, Darm gegen Curry. Immer verloren, die Eingeweide. <mark class="m-ereig">Der Junge ist 18, und jetzt aber Asien, hatte er sich gedacht. Mit 1000 Dollar durch Thailand, Indien, Kambodscha, drei Monate unterwegs, und dann wieder heim, nach Deutschland.</mark> Das ist so eng, so langweilig, jetzt was erleben und vielleicht nie wieder zurück. Hast du keine Angst, hatten blasse Freunde zu Hause gefragt, so ganz alleine? Nein, hatte er geantwortet, man lernt ja so viele Leute kennen unterwegs. Bis jetzt hatte er hauptsächlich Mädchen kennengelernt, nett waren die schon, wenn man Leute mag, die einen bei jedem Satz anfassen. Mädchen, die aussahen wie dreißig und doch so alt waren wie er, seit Monaten unterwegs, die Mädchen, da werden sie komisch. Übermorgen würde er in Laos sein, da mag er jetzt gar nicht dran denken, in seinem hässlichen Pensionszimmer, muss Obacht geben, dass er sich nicht aufs Bett wirft und weint, auf die Decke, wo schon die anderen Dinge drauf sind. <mark class="m-gef">In dem kleinen Fernseher kommen nur Leute vor, die ihm völlig fremd sind, das ist das Zeichen, dass man einsam ist, wenn man die Fernsehstars eines Landes nicht kennt und die eigenen keine Bedeutung haben. Der Junge sehnt sich nach Stefan Raab, nach Harald Schmidt. Er merkt weiter, dass er gar nicht existiert, wenn er nichts hat, was er kennt.</mark> Wenn er keine Zeitung in seiner Sprache kaufen kann, keine Klatschgeschichten über einheimische Prominente lesen, wenn keiner anruft und fragt, wie es ihm geht. Dann gibt es ihn nicht. Denkt er. <mark class="m-ereig">Und ist unterdessen aus seinem Zimmer in die heiße Nacht gegangen,</mark> hat fremdes Essen vor sich, von einer fremdsprachigen Serviererin gebracht, die sich nicht für ihn interessiert, wie niemand hier. <mark class="m-gef">Das ist wie tot sein, denkt der Junge.</mark> Weit weg von zu Hause, um anderen beim Leben zuzusehen, könnte man umfallen und sterben in der tropischen Nacht und niemand würde weinen darum. <mark class="m-gef">Jetzt weint er doch,</mark> denkt an die lange Zeit, die er noch rumbekommen muss, alleine in heißen Ländern mit seinem Rucksack, und das stimmt so gar nicht mit den Bildern überein, die er zu Hause von sich hatte. Wie er entspannt mit Wasserbüffeln spielen wollte, in Straßencafés sitzen und cool sein. Was ist, ist einer mit Sonnenbrand und Heimweh nach den Stars zu Hause, die sind wie ein Geländer zum Festhalten.</p>
+      <p><mark class="m-ereig">Er geht durch die Nacht, selbst Tiere reden ausländisch, und dann sieht er etwas, sein Herz schlägt schneller. Ein Computer, ein Internet-Café. Und er setzt sich, schaltet den Computer an, liest seine E-Mails.</mark> Kleine Sätze von seinen Freunden, und denen antwortet er, dass es ihm gut gehe und alles großartig ist, und er schreibt und schreibt und es ist auf einmal völlig egal, dass zu seinen Füßen ausländische Insekten so groß wie Meerkatzen herumlaufen, dass das fremde Essen im Magen drückt. Er schreibt seinen Freunden über die kleinen Katastrophen, und die fremde Welt um ihn verschwimmt, <mark class="m-schluss">er ist nicht mehr allein, taucht in den Bildschirm ein, der ist wie ein weiches Bett;</mark> er denkt an Bill Gates und Fred Apple, er schickt eine Mail an Sat 1, und <mark class="m-schluss">für ein paar Stunden ist er wieder am Leben, in der heißen Nacht weit weg von zu Hause.</mark></p>
+    </div>
+  </div>
+  <div class="mark-legend">
+    <span><i style="background:#ffe58a"></i>Ausgangssituation (Einleitung)</span>
+    <span><i style="background:#aee3ff"></i>Handlung / Ereignisse (Hauptteil)</span>
+    <span><i style="background:#ffc9d6"></i>Einsamkeit / Gefühle</span>
+    <span><i style="background:#bdeec0"></i>Wendepunkt / Kernaussage (Schluss)</span>
+  </div>
+  <h3 class="sub">Schritt 2: Eigenen Entwurf schreiben</h3>
+  <div class="block">
+    <div class="de">Schreibe jetzt deine eigene Einleitung, deinen Hauptteil und deinen Schluss — nutze die Formel aus Abschnitt 1 und die markierten Stellen oben als Hilfe. Erst danach die Musterlösung ansehen!</div>
+    <div class="vi"><span class="tag">VI</span>Bây giờ hãy tự viết mở bài, thân bài, kết bài của riêng bạn — dùng công thức ở mục 1 và các đoạn đã tô màu ở trên làm gợi ý. Chỉ xem lời giải mẫu SAU KHI đã tự viết xong!</div>
+  </div>
+  <div class="aufgabe">
+    <span class="aufgabe-num">Musterlösung</span><span class="pts">zum Vergleichen, nicht zum Abschreiben</span>
+    <details class="q"><summary><span class="qnum">Lösung</span>Lösung anzeigen</summary><div class="ans">
+      <div class="block"><div class="de"><span class="tag">Einleitung</span>In der Kurzgeschichte „Hauptsache weit" von Sibylle Berg geht es um einen 18-jährigen Jungen, der nach der Schule allein durch Asien reist und dabei mit Einsamkeit und Heimweh kämpft.</div></div>
+      <div class="block"><div class="de"><span class="tag">Hauptteil</span>Die Schule ist gerade zu Ende, und der Junge möchte eigentlich später nach London gehen und etwas Kreatives machen. Vorher reist er aber mit 1000 Dollar drei Monate allein durch Thailand, Indien und Kambodscha. Freunde zu Hause hatten ihn gefragt, ob er keine Angst habe, so ganz allein, doch er hatte das verneint.<br><br>Nun sitzt er abends in einem einfachen, fensterlosen Pensionszimmer. Er fühlt sich fremd und einsam, weil er die Fernsehstars und die Sprache des Landes nicht kennt und niemand ihn anruft. Er hat das Gefühl, ohne diese vertrauten Bezugspunkte gar nicht mehr richtig zu existieren. Schließlich geht er in die heiße Nacht hinaus, isst fremdes Essen und fühlt sich wie tot. Er weint vor Heimweh und merkt, dass seine Vorstellungen von der Reise nicht der Wirklichkeit entsprechen.<br><br>Als er durch die Nacht geht, entdeckt er ein Internet-Café. Er setzt sich an einen Computer und liest die E-Mails seiner Freunde. Er schreibt ihnen, dass es ihm gut gehe und alles großartig sei, obwohl das nicht stimmt, und schreibt immer weiter.</div></div>
+      <div class="block"><div class="de"><span class="tag">Schluss</span>Durch den Kontakt zu seinen Freunden fühlt sich der Junge für einige Stunden wieder lebendig, mitten in der fremden, heißen Nacht. Die Geschichte zeigt, wie stark Heimweh und das Bedürfnis nach vertrauten Bezugspunkten das Erleben einer Reise beeinflussen können.</div></div>
+      <div class="block"><div class="vi"><span class="tag">VI</span>So sánh với bản tự viết của bạn: mở bài có đủ 4 yếu tố không (tên – tác giả – thể loại – chủ đề)? Thân bài có giữ đúng trình tự và chỉ giữ ý chính không? Kết bài có nêu được ý nghĩa (nỗi nhớ nhà, nhu cầu gắn kết với điều quen thuộc) không?</div></div>
+    </div></details>
+  </div>
+  <div class="warn">
+    <span class="tag">Typische Fehler bei diesem Text</span>
+    <p class="de">Viele Schüler übernehmen zu viele Bilder aus dem Text wörtlich (z. B. „Magen gegen Tom Yam, Darm gegen Curry") — diese blumigen Formulierungen gehören zur literarischen Sprache des Originals und sollten in der Inhaltsangabe mit eigenen, neutralen Worten wiedergegeben werden.</p>
+    <div class="vi">Nhiều học sinh chép nguyên những hình ảnh ẩn dụ từ văn bản gốc (ví dụ “dạ dày chống lại Tom Yum, ruột chống lại cà ri”) — đây là ngôn ngữ văn học của bản gốc, trong bài tóm tắt nên diễn đạt lại bằng lời trung lập của riêng mình.</div>
+  </div>
+</section>
+
+<section class="chapter" id="quiz">
+  <div class="chapter-head"><span class="chapter-num">§?</span><h2 class="chapter-title-de">Quick-Quiz</h2><span class="lf-tag">Selbsttest</span></div>
+  <p class="chapter-title-vi">10 câu trắc nghiệm để kiểm tra lại kiến thức.</p>
+  <div id="quizBox"></div>
+  <div id="score">Punkte: 0 / 10</div>
+</section>
+</main>
+
+<footer>
+  <div class="de">Zusammengestellt aus deiner Checkliste, den Musterbeispielen (Spaghettieis-Artikel, „Trachtenmode") und der Übungskurzgeschichte „Hauptsache weit".</div>
+  <div class="vi">Tổng hợp từ checklist, các bài mẫu đã làm (bài báo kem spaghetti, truyện “Trachtenmode”) và truyện luyện tập “Hauptsache weit”. Hãy đối chiếu lại với bài mẫu của giáo viên trước khi thi.</div>
+</footer>
+
+<script>
+var quiz=[
+ {q:"Welches Tempus wird in der ganzen Inhaltsangabe verwendet?",v:"Thì nào được dùng xuyên suốt bài Inhaltsangabe?",o:["Präteritum","Präsens","Perfekt"],a:1,w:"Immer Präsens, auch wenn der Originaltext im Präteritum steht."},
+ {q:"Was gehört NICHT in den Hauptteil?",v:"Thứ gì KHÔNG thuộc phần thân bài?",o:["Die wichtigsten Handlungsschritte","Die eigene Meinung des Schreibers","Die Reihenfolge der Ereignisse"],a:1,w:"Keine eigene Meinung im Hauptteil (und auch nicht im Schluss, außer verlangt)."},
+ {q:"Wie wird wörtliche Rede in der Inhaltsangabe wiedergegeben?",v:"Lời thoại trực tiếp được xử lý thế nào trong bài tóm tắt?",o:["Genau wie im Original zitiert","Gar nicht erwähnt","In indirekter Rede oder zusammengefasst"],a:2,w:"Keine wörtliche Rede – stattdessen indirekt oder zusammenfassend."},
+ {q:"Was muss die Einleitung enthalten?",v:"Mở bài cần có những gì?",o:["Titel, Autor, Textart, Thema","Nur den Titel","Die komplette Handlung"],a:0,w:"Titel – Autor/in – Textart – Thema in 1 Satz."},
+ {q:"Wo steht die Kernaussage/Botschaft des Textes?",v:"Ý nghĩa/thông điệp của văn bản nằm ở đâu trong bài tóm tắt?",o:["In der Einleitung","Im Hauptteil","Im Schluss"],a:2,w:"Der Schluss fasst die Kernaussage zusammen."},
+ {q:"„Er hatte Angst“ – wie steht das im Präsens?",v:"“Er hatte Angst” ở thì hiện tại là gì?",o:["Er hat Angst","Er hätte Angst","Er wird Angst haben"],a:0,w:"hatte (Präteritum) → hat (Präsens)."},
+ {q:"Welchen Sprachstil braucht eine Inhaltsangabe?",v:"Bài tóm tắt cần phong cách ngôn ngữ nào?",o:["Umgangssprachlich und locker","Sachlich und neutral","Sehr emotional"],a:1,w:"Sachlich, neutral, keine Umgangssprache."},
+ {q:"In „Hauptsache weit“: Warum geht der Junge ins Internetcafé?",v:"Trong truyện “Hauptsache weit”: vì sao chàng trai vào quán net?",o:["Um Geld zu wechseln","Um Kontakt zu seinen Freunden zu haben und sich weniger einsam zu fühlen","Um ein Hotel zu buchen"],a:1,w:"Er liest E-Mails und schreibt Freunden, um sich weniger einsam zu fühlen."},
+ {q:"Was ist der Unterschied zwischen Sachtext- und Kurzgeschichten-Inhaltsangabe?",v:"Khác biệt giữa tóm tắt bài báo và tóm tắt truyện ngắn?",o:["Keiner, beide sind identisch","Bei der Kurzgeschichte gibt es meist einen eigenen Schlusssatz mit der Kernaussage/Botschaft","Sachtexte brauchen keine Einleitung"],a:1,w:"Literarische Texte haben oft eine Botschaft, die im Schluss herausgearbeitet wird."},
+ {q:"Was sollte man bei der Vorbereitung zuerst tun?",v:"Bước đầu tiên khi chuẩn bị là gì?",o:["Sofort die Einleitung schreiben","Den Text aufmerksam lesen und wichtige Stellen markieren","Die Handlung auswendig lernen"],a:1,w:"Text lesen, markieren, Kernaussage finden, in Abschnitte gliedern."}
+];
+var score=0, answered=0, qb=document.getElementById('quizBox');
+quiz.forEach(function(it,i){
+  var d=document.createElement('div'); d.className='mc';
+  d.innerHTML='<h4>'+(i+1)+'. '+it.q+'</h4><span class="vi">'+it.v+'</span><div class="opts"></div><p class="why">'+it.w+'</p>';
+  var box=d.querySelector('.opts');
+  it.o.forEach(function(t,j){
+    var bt=document.createElement('button'); bt.type='button'; bt.textContent=t;
+    bt.addEventListener('click',function(){
+      if(d.classList.contains('done'))return;
+      d.classList.add('done'); answered++;
+      var all=box.querySelectorAll('button');
+      all[it.a].classList.add('right');
+      if(j===it.a){score++}else{bt.classList.add('wrong')}
+      document.getElementById('score').textContent='Punkte: '+score+' / '+quiz.length+(answered===quiz.length?' – fertig':'');
+    });
+    box.appendChild(bt);
+  });
+  qb.appendChild(d);
+});
+function toggleVi(){
+  document.body.classList.toggle('hide-vi');
+  var b=document.getElementById('viToggle');
+  var hidden=document.body.classList.contains('hide-vi');
+  b.innerHTML = hidden
+    ? '<span style="font-family:\'IBM Plex Mono\',monospace;font-weight:600;font-size:.72rem;background:var(--slate);color:var(--paper);padding:2px 6px;border-radius:3px;margin-right:6px">VI</span>Tiếng Việt: TẮT'
+    : '<span style="font-family:\'IBM Plex Mono\',monospace;font-weight:600;font-size:.72rem;background:var(--wax);color:var(--paper);padding:2px 6px;border-radius:3px;margin-right:6px">VI</span>Tiếng Việt: BẬT';
+}
+</script>
+</body>
+</html>

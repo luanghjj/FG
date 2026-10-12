@@ -5189,9 +5189,9 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 <script src="./faecher/bfk1/bfk1-data.js?v=20"></script>
 <script src="./faecher/bfk1/bfk1-quiz.js?v=15"></script>
 <script src="./faecher/bfk2/bfk2-quiz.js?v=4"></script>
-<script src="./faecher/deutsch/deutsch-quiz.js?v=2"></script>
+<script src="./faecher/deutsch/deutsch-quiz.js?v=3"></script>
 <script src="./faecher/gk/gk-gle-data.js?v=2"></script>
-<script src="./js/faecher.js?v=18"></script>
+<script src="./js/faecher.js?v=19"></script>
 <script src="./js/search-pages-data.js?v=1"></script>
 <script src="./faecher/gk/gk-uebungen.js?v=4"></script>
 <script>
@@ -5734,7 +5734,7 @@ const EXAMS = [
     date:"2026-07-16", teacher:"Herrn Kling",
     icon:"<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M6 3v18'/><path d='M6 4h11l-2.6 3.6L17 11.2H6z'/></svg>", accent:"#B45309", soft:"#FDF8EE",
     route:"#/exam/deutsch", studyRoute:"#/fach/deutsch",
-    topics:["Visualisierung","Mindmap","Diagramme","Text → Grafik"],
+    topics:["Visualisierung","Mindmap","Diagramme","Text → Grafik","Inhaltsangabe (Sachtext & Kurzgeschichte)"],
   },
   {
     id:"bfk1", code:"BfK-1", name:"Klassenarbeit BfK-1",
@@ -7713,8 +7713,8 @@ const SUBJECT_GROUPS = [
         desc:"Duales System · BBiG · Arbeitsschutz · Kündigung · Betriebsrat · Lohn & Steuern.",
         topics:["Duales System","BBiG","Arbeitsschutz","Kündigung","Betriebsrat","Tarifvertrag","Lohn","Kaufvertrag"], meta:"Fr. Leyh & RM (Remsing)"},
       {code:"D", name:"Deutsch", icon:"<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M4 19.5A2.5 2.5 0 0 1 6.5 17H20'/><path d='M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z'/></svg>", accent:"#9A4607", soft:"#FDF8EE", ready:true, route:"#/fach/deutsch",
-        desc:"Visualisierung · Mindmap · Diagramme · Text → Grafik.",
-        topics:["Mindmap","Diagrammtypen","Text → Grafik","Muster-KA"], meta:"Herrn Kling", examDate:"2026-07-16"},
+        desc:"Visualisierung · Mindmap · Diagramme · Text → Grafik · Inhaltsangabe.",
+        topics:["Mindmap","Diagrammtypen","Text → Grafik","Inhaltsangabe","Muster-KA"], meta:"Herrn Kling", examDate:"2026-07-16"},
       {code:"GK", name:"Gemeinschaftskunde", icon:"<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M3 9 12 4l9 5'/><path d='M4.5 9.5v7'/><path d='M9 9.5v7'/><path d='M15 9.5v7'/><path d='M19.5 9.5v7'/><path d='M3 20h18'/></svg>", accent:"#34C759", soft:"#E3F7E8", ready:true, route:"#/fach/gk",
         desc:"Partizipation · Demokratie GG · Gewaltenteilung · Karikatur.",
         topics:["Partizipation","Direkte Demokratie","Gewaltenteilung","Vertrauensfrage","Grundrechte"], meta:"BS (Buß-Schroeder)", examDate:"2026-07-22"},
@@ -8333,13 +8333,17 @@ ABSCHLUSS_THEMEN.forEach(t=>{
 // BFK Quiz (Fragen werden nach QUIZ-Definition indexiert)
 idx("BFK Quiz","Multiple-Choice Fleisch · Gerichte · Gewebe · Ernährung","Quiz","#/bfk/2/quiz",()=>{ if(!window._quizStarted) quizIntro(); },"test fragen üben");
 
-// Deutsch / Visualisierung
+// Deutsch / Visualisierung & Inhaltsangabe
 [
-  ["Deutsch · Visualisierung","KA 16.07.26 · Mindmap · Diagramme · Quiz","#/fach/deutsch","deutsch visualisierung ka"],
+  ["Deutsch · Visualisierung & Inhaltsangabe","KA 16.07.26 · Mindmap · Diagramme · Inhaltsangabe · Quiz","#/fach/deutsch","deutsch visualisierung inhaltsangabe ka"],
   ["Mindmap & Diagrammtypen","6 Grundformen · Zweck, Regeln & Hirnhälften","#/fach/deutsch/theme/mindmap-diagramme","mindmap ideensammlung diagramme kurve säule kreis tabelle strukturbild"],
   ["Text → Grafik: 4 Schritte","Lesen · Kernaussagen filtern · Form wählen · Teufelskreis","#/fach/deutsch/theme/text-zu-grafik","schritte visualisieren kernaussagen teufelskreis kausalität"],
   ["Muster-Klassenarbeit (Herrn Kling)","Fleischkonsum in Deutschland · Mindmap · Checkliste","#/fach/deutsch/theme/muster-ka","fleischkonsum ka muster mindmap kling checkliste"],
+  ["Inhaltsangabe: Formel, Aufbau & Checkliste","TATTE-Formel · Einleitungssatz · Präsens · 5 Todsünden","#/fach/deutsch/theme/inhaltsangabe-formel","inhaltsangabe formel tatte einleitungssatz regeln todsuenden praesens kurzgeschichte sachtext"],
+  ["Mustertexte: Spaghettieis & Trachtenmode","Spaghettieis Dario Fontanella · Trachtenmode Elke Heidenreich","#/fach/deutsch/theme/inhaltsangabe-muster","mustertexte spaghettieis dario fontanella trachtenmode elke heidenreich kaenguru inhaltsangabe"],
+  ["Übung: „Hauptsache weit“ (Sibylle Berg)","Kurzgeschichte Asienreise · 5 Sinnabschnitte · Aufgabenstellung KA","#/fach/deutsch/theme/inhaltsangabe-uebung","uebung hauptsache weit sibylle berg kurzgeschichte thailand asien heimweh inhaltsangabe"],
   ["Deutsch-App (Interaktive Vollansicht)","Theorie, Zuordnen, Matching & KA-Simulation","klassenarbeiten/deutsch.html","deutsch app vollansicht interaktiv klassenarbeit"],
+  ["Inhaltsangabe schreiben (Übungsmaterial DE/VI)","Formel TATTE, Checkliste, Musterbeispiele & Übung","klassenarbeiten/deutsch-inhaltsangabe.html","inhaltsangabe schreiben uebungsmaterial deutsch klassenarbeit interaktiv de vi"],
 ].forEach(([t,s,route,extra])=>idx(t,"Deutsch · "+s,"DE",route,null,extra));
 
 // Prüfungen BFK

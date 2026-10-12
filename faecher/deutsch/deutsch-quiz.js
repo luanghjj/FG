@@ -1,4 +1,4 @@
-/* Deutsch · Visualisierung Quiz (shared with index exam hub) */
+/* Deutsch · Visualisierung & Inhaltsangabe Quiz (shared with index exam hub) */
 (function (w) {
   "use strict";
   w.DEUTSCH_QUIZ = [
@@ -742,6 +742,186 @@
     ],
     "a": 1,
     "ex": "Bewertet werden Erfassen der wesentlichen Kernaspekte, hierarchische Mindmap-Struktur, Beschränkung auf Stichworte und Übersichtlichkeit."
+  },
+  {
+    "theme": "inhaltsangabe-formel",
+    "cat": "Grammatik",
+    "q": "Welches Tempus wird in der ganzen Inhaltsangabe durchgehend verwendet?",
+    "opts": [
+      "Präteritum (Vergangenheit)",
+      "Präsens (Gegenwart)",
+      "Perfekt (vollendete Gegenwart)"
+    ],
+    "a": 1,
+    "ex": "In einer Inhaltsangabe wird immer Präsens verwendet – auch wenn der Originaltext im Präteritum steht."
+  },
+  {
+    "theme": "inhaltsangabe-formel",
+    "cat": "Hauptteil",
+    "q": "Was gehört NICHT in den Hauptteil einer Inhaltsangabe?",
+    "opts": [
+      "Die wichtigsten Handlungsschritte in chronologischer Reihenfolge",
+      "Die persönliche Meinung des Schreibers",
+      "Das Wesentliche in eigenen Worten"
+    ],
+    "a": 1,
+    "ex": "Keine eigene Meinung im Hauptteil (und auch nicht im Schluss, außer es wird ausdrücklich verlangt). Sachlich und neutral bleiben!"
+  },
+  {
+    "theme": "inhaltsangabe-formel",
+    "cat": "Sprache",
+    "q": "Wie wird wörtliche Rede aus dem Originaltext in der Inhaltsangabe wiedergegeben?",
+    "opts": [
+      "Genau wie im Original wörtlich mit Anführungszeichen zitiert",
+      "Vollständig weggelassen ohne jeden Sinnbezug",
+      "In indirekter Rede oder knapp mit eigenen Worten zusammengefasst"
+    ],
+    "a": 2,
+    "ex": "Keine wörtliche Rede – stattdessen indirekte Rede (Konjunktiv) oder sachlich zusammenfassend formulieren."
+  },
+  {
+    "theme": "inhaltsangabe-formel",
+    "cat": "Einleitung",
+    "q": "Was muss ein vollständiger Einleitungssatz (Basissatz) enthalten?",
+    "opts": [
+      "Titel, Autor/in, Textart, Erscheinungsjahr/-ort und Thema in einem Satz",
+      "Nur den Titel und die eigene Note",
+      "Die komplette Handlung vom Anfang bis zum Ende"
+    ],
+    "a": 0,
+    "ex": "Formel für die Einleitung: Titel – Autor/in – Textart – Erscheinungsjahr/-ort – Thema in 1 prägnanten Satz."
+  },
+  {
+    "theme": "inhaltsangabe-formel",
+    "cat": "Schluss",
+    "q": "Wo steht die Kernaussage / Botschaft des Textes in einer Inhaltsangabe?",
+    "opts": [
+      "In der Einleitung",
+      "Im Hauptteil",
+      "Im Schlussteil (1–2 Sätze)"
+    ],
+    "a": 2,
+    "ex": "Der Schlussteil fasst die Kernaussage / Botschaft des Autors in 1–2 Sätzen prägnant zusammen."
+  },
+  {
+    "theme": "inhaltsangabe-formel",
+    "cat": "Grammatik",
+    "q": "Original: „Er hatte Angst.“ – Wie lautet die korrekte Formulierung in der Inhaltsangabe?",
+    "opts": [
+      "Er hat Angst.",
+      "Er hätte Angst.",
+      "Er wird Angst haben."
+    ],
+    "a": 0,
+    "ex": "hatte (Präteritum) wird im Präsens zu „hat“."
+  },
+  {
+    "theme": "inhaltsangabe-formel",
+    "cat": "Sprachstil",
+    "q": "Welcher Sprachstil ist für eine gelungene Inhaltsangabe vorgeschrieben?",
+    "opts": [
+      "Umgangssprachlich, emotional und locker",
+      "Sachlich, neutral und in eigenen Worten (keine Umgangssprache)",
+      "Hochpoetisch mit vielen Reimen und Metaphern"
+    ],
+    "a": 1,
+    "ex": "Inhaltsangaben erfordern einen sachlichen, neutralen Stil mit kurzen, klaren Sätzen ohne Umgangssprache."
+  },
+  {
+    "theme": "inhaltsangabe-uebung",
+    "cat": "Hauptsache weit",
+    "q": "In der Kurzgeschichte „Hauptsache weit“: Warum geht der 18-jährige Junge ins Internetcafé?",
+    "opts": [
+      "Um Geld bei einer Bank zu wechseln",
+      "Um Kontakt zu Freunden zu haben, E-Mails zu schreiben und sich weniger einsam zu fühlen",
+      "Um einen Rückflug nach Frankfurt zu buchen"
+    ],
+    "a": 1,
+    "ex": "Er liest und schreibt E-Mails, um die Verbindung zu vertrauten Menschen herzustellen und das drückende Heimweh zu lindern."
+  },
+  {
+    "theme": "inhaltsangabe-muster",
+    "cat": "Textarten",
+    "q": "Was ist ein wesentlicher Unterschied zwischen der Inhaltsangabe eines Sachtextes und einer Kurzgeschichte?",
+    "opts": [
+      "Es gibt überhaupt keinen Unterschied",
+      "Bei der Kurzgeschichte (literarischer Text) wird im Schluss meist die Kernaussage / moralische Botschaft herausgearbeitet",
+      "Sachtexte dürfen keine Einleitung haben"
+    ],
+    "a": 1,
+    "ex": "Literarische Texte transportieren oft eine übergeordnete Botschaft oder Lebensweisheit, die im Schlussteil formuliert wird."
+  },
+  {
+    "theme": "inhaltsangabe-formel",
+    "cat": "Vorbereitung",
+    "q": "Was sollte man bei der Vorbereitung einer Inhaltsangabe als ersten Schritt tun?",
+    "opts": [
+      "Sofort drauflosschreiben",
+      "Den Text aufmerksam lesen (ggf. 2×), wichtige Stellen markieren und in Abschnitte gliedern",
+      "Die Handlung auswendig lernen"
+    ],
+    "a": 1,
+    "ex": "Schritte der Vorbereitung: Aufmerksam lesen, Unbekanntes klären, Kernaussagen markieren und Text in Sinnabschnitte gliedern."
+  },
+  {
+    "theme": "inhaltsangabe-muster",
+    "cat": "Spaghettieis",
+    "q": "Artikel „Das Eis, das aus der Spätzlepresse kam“: Was bedauert Erfinder Dario Fontanella heute?",
+    "opts": [
+      "Dass er das Eis mit Erdbeersoße garniert hat",
+      "Dass er seine Erfindung nie patentieren ließ und ihm dadurch finanzielle Vorteile entgingen",
+      "Dass sein Vater den Bloomaulorden abgelehnt hat"
+    ],
+    "a": 1,
+    "ex": "Er bedauert, das Spaghettieis nie patentiert zu haben, wodurch ihm finanzielle Vorteile und ein rechtlicher Nachweis entgingen."
+  },
+  {
+    "theme": "inhaltsangabe-muster",
+    "cat": "Trachtenmode",
+    "q": "Kurzgeschichte „Trachtenmode“: Welche Kernaussage / Botschaft vermittelt das Ende der Erzählung?",
+    "opts": [
+      "Dass Kängurus gerne Hüte tragen",
+      "Dass unüberlegter Übermut und leichtfertige Scherze unerwartete negative Folgen haben können",
+      "Dass man in Australien keinen Jeep fahren sollte"
+    ],
+    "a": 1,
+    "ex": "Die Geschichte zeigt, dass Übermut und unbedachte Streiche gravierende, unerwartete Konsequenzen nach sich ziehen können (Verlust aller Papiere)."
+  },
+  {
+    "theme": "inhaltsangabe-formel",
+    "cat": "Konnektoren",
+    "q": "Welcher Satzanschluss (Konnektor) eignet sich besonders für die Formulierung der Kernaussage im Schlussteil?",
+    "opts": [
+      "„Plötzlich und unerwartet …“",
+      "„Dies zeigt, dass …“ / „Damit wird deutlich, dass …“",
+      "„Ganz am Anfang geschah es, dass …“"
+    ],
+    "a": 1,
+    "ex": "„Dies zeigt, dass …“ oder „Damit wird deutlich, dass …“ leitet sachlich und präzise die Deutung der Kernaussage ein."
+  },
+  {
+    "theme": "inhaltsangabe-uebung",
+    "cat": "Hauptsache weit",
+    "q": "„Hauptsache weit“: Welche Diskrepanz (Widerspruch) erkennt der Junge bei seiner Rucksackreise in Asien?",
+    "opts": [
+      "Dass 1000 Dollar viel zu viel Geld sind",
+      "Dass seine Vorstellung von Abenteuer und Coolness nicht mit der Realität von Einsamkeit und Heimweh übereinstimmt",
+      "Dass London viel heißer als Bangkok ist"
+    ],
+    "a": 1,
+    "ex": "Seine Erwartungen (mit Wasserbüffeln spielen, cool sein) passen nicht zur Realität: Sonnenbrand, schlechtes Essen, Sprachlosigkeit und Heimweh."
+  },
+  {
+    "theme": "inhaltsangabe-formel",
+    "cat": "Vorbereitung",
+    "q": "Was bedeutet es, eine Kernaussage an den Seitenrand zu notieren?",
+    "opts": [
+      "Den gesamten Text Wort für Wort am Rand abschreiben",
+      "Den Hauptgedanken jedes Sinnabschnitts in wenigen prägnanten Stichworten festhalten",
+      "Eine Zeichnung des Autors malen"
+    ],
+    "a": 1,
+    "ex": "Randnotizen gliedern den Text und erleichtern das spätere Verfassen des chronologischen Hauptteils in eigenen Worten."
   }
 ];
 })(typeof window !== "undefined" ? window : global);

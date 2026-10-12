@@ -1,5 +1,5 @@
 /* Service Worker – AzubiHub (offline shell + static assets) */
-const CACHE = 'azubihub-v162';
+const CACHE = 'azubihub-v163';
 const PRECACHE = [
   './',
   './js/wissen.js',
@@ -24,6 +24,7 @@ const PRECACHE = [
   './lid/lid-exam.js',
   './lid/lid-app.js',
   './klassenarbeiten/deutsch.html',
+  './klassenarbeiten/deutsch-inhaltsangabe.html',
   './admin.html',
   './challenge.html',
   './js/challenge.js',
