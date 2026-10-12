@@ -718,6 +718,338 @@
     ],
     "a": 1,
     "ex": "Cross-Selling = bán sản phẩm bổ sung phù hợp (ví dụ: vang kèm món chính, Espresso/Digestif sau bữa ăn)."
+  },
+  {
+    "theme": "fisch-einteilung",
+    "cat": "Einteilung",
+    "q": "Nach welchen 5 Kriterien werden Fische in der Gastronomie eingeteilt?",
+    "opts": [
+      "Herkunft/Lebensraum · Wanderverhalten · Körperform · Fang/Zucht · Fettgehalt",
+      "Farbe · Größe · Gewicht · Preis · Alter",
+      "Fluss · See · Teich · Ozean · Aquarium",
+      "Frisch · Gefroren · Geräuchert · Gesalzen · Getrocknet"
+    ],
+    "a": 0,
+    "ex": "Fische werden nach 5 Kriterien eingeteilt: Lebensraum, Wanderverhalten, Körperform, Fang/Zucht und Fettgehalt."
+  },
+  {
+    "theme": "fisch-einteilung",
+    "cat": "Wanderfische",
+    "q": "Wohin wandert der Flussaal zum Laichen?",
+    "opts": [
+      "Vom Meer in den Oberlauf von Flüssen",
+      "Vom Süßwasser ins Meer (Salzwasser)",
+      "Er wandert überhaupt nicht",
+      "In flache Gebirgsbäche"
+    ],
+    "a": 1,
+    "ex": "Der Flussaal wächst im Süßwasser auf und wandert zum Laichen ins Meer (Süß → Salz)."
+  },
+  {
+    "theme": "fisch-einteilung",
+    "cat": "Wanderfische",
+    "q": "Welches Wanderverhalten zeigt der Lachs?",
+    "opts": [
+      "Er wächst im Meer auf und laicht im Meer",
+      "Schlüpft im Süßwasser, wächst im Meer heran und wandert flussaufwärts ins Süßwasser zum Laichen",
+      "Er bleibt zeitlebens nur im Süßwasser",
+      "Er wandert nur zwischen warmen und kalten Meeresströmungen"
+    ],
+    "a": 1,
+    "ex": "Der Lachs schlüpft im Süßwasser, wandert als Junglachs ins Meer und schwimmt zum Laichen flussaufwärts ins Süßwasser zurück."
+  },
+  {
+    "theme": "fisch-einteilung",
+    "cat": "Körperform",
+    "q": "Welches Merkmal kennzeichnet echte Plattfische (z. B. Scholle, Seezunge)?",
+    "opts": [
+      "Runder spindelförmiger Körper mit je einem Auge pro Seite",
+      "Flacher asymmetrischer Körper, beide Augen auf einer Seite, leben am Meeresboden",
+      "Knorpeliges Skelett ohne Flossen",
+      "Besonders lange Bartfäden am Maul"
+    ],
+    "a": 1,
+    "ex": "Plattfische sind flach und asymmetrisch, tragen beide Augen auf einer Körperseite und schwimmen seitlich liegend am Meeresboden."
+  },
+  {
+    "theme": "fisch-einteilung",
+    "cat": "Merkmale",
+    "q": "Woran erkennt man Hecht, Karpfen und Zander eindeutig?",
+    "opts": [
+      "Hecht: lange Schnauze · Karpfen: Bartfäden · Zander: kleiner Dorn am Kiemendeckel",
+      "Hecht: Bartfäden · Karpfen: scharfe Zähne · Zander: flache Augen",
+      "Hecht: Dorn am Kiemendeckel · Karpfen: lange Schnauze · Zander: Bartfäden",
+      "Alle drei Fische sehen vollkommen identisch aus"
+    ],
+    "a": 0,
+    "ex": "Merkhilfe: Hecht = lange Schnauze, Karpfen = Bartfäden am Maul, Zander = kleiner Dorn am Kiemendeckel."
+  },
+  {
+    "type": "fill",
+    "theme": "fisch-einteilung",
+    "cat": "Wanderfische",
+    "q": "Wohin wandert der Flussaal, um zu laichen?",
+    "answers": ["ins meer", "meer", "salzwasser", "im meer"],
+    "answer": "ins Meer (Salzwasser)",
+    "ex": "Der Aal wächst im Süßwasser auf und wandert zum Laichen ins Meer."
+  },
+  {
+    "type": "fill",
+    "theme": "fisch-einteilung",
+    "cat": "Merkmale",
+    "q": "Welches Tastorgan tragen Karpfen beidseits des Mauls?",
+    "answers": ["bartfäden", "bartfaeden", "bartfaden", "die bartfäden"],
+    "answer": "Bartfäden",
+    "ex": "Karpfen erkennt man leicht an den Bartfäden beidseits des Mauls."
+  },
+  {
+    "theme": "fisch-inhaltsstoffe",
+    "cat": "Fettgehalt",
+    "q": "Ab welchem Fettgehalt wird ein Fisch lebensmittelrechtlich als 'Fettfisch' eingestuft?",
+    "opts": [
+      "Über 10 % Fett",
+      "Über 2 % Fett",
+      "Über 25 % Fett",
+      "Über 50 % Fett"
+    ],
+    "a": 0,
+    "ex": "Fettfisch = über 10 % Fett (z. B. Aal, Makrele, Hering, Lachs). Magerfisch = unter 10 % (oft < 2 %)."
+  },
+  {
+    "theme": "fisch-inhaltsstoffe",
+    "cat": "Fettfische",
+    "q": "Welche der folgenden Fische zählen alle zu den Fettfischen (> 10 % Fett)?",
+    "opts": [
+      "Kabeljau, Zander, Hecht",
+      "Scholle, Seezunge, Seelachs",
+      "Makrele, Hering, Aal, Lachs, Thunfisch",
+      "Flunder, Schellfisch, Forelle"
+    ],
+    "a": 2,
+    "ex": "Fettfische (>10 %): Makrele, Hering, Aal, Lachs, Thunfisch, Sardine."
+  },
+  {
+    "theme": "fisch-inhaltsstoffe",
+    "cat": "Nährstoffe",
+    "q": "Was ist der wesentliche Unterschied im Nährstoffgehalt zwischen Fett und Eiweiß beim Fisch?",
+    "opts": [
+      "Fettgehalt schwankt stark (0,5–25 %), Eiweißgehalt bleibt stabil (15–23 %)",
+      "Eiweiß schwankt extrem, Fett bleibt absolut konstant",
+      "Fisch enthält mehr Kohlenhydrate als Eiweiß",
+      "Fisch enthält überhaupt kein Fett"
+    ],
+    "a": 0,
+    "ex": "Prüfungsfalle: Fett schwankt je nach Art und Jahreszeit stark (0,5–25 %), Eiweiß bleibt relativ stabil bei 15–23 %."
+  },
+  {
+    "theme": "fisch-inhaltsstoffe",
+    "cat": "Mineralstoffe",
+    "q": "Welches lebenswichtige Spurenelement liefert Seefisch in besonders hohem Maße?",
+    "opts": [
+      "Jod (bis zu 330 µg pro 100 g)",
+      "Calcium (über 2000 mg)",
+      "Natriumchlorid als Hauptbestandteil",
+      "Eisen in höherer Konzentration als Rindfleisch"
+    ],
+    "a": 0,
+    "ex": "Seefisch ist die wichtigste natürliche Quelle für Jod (bis zu 330 µg / 100 g), essenziell für die Schilddrüsenfunktion."
+  },
+  {
+    "theme": "fisch-inhaltsstoffe",
+    "cat": "Kohlenhydrate",
+    "q": "Wie hoch ist der Kohlenhydratanteil im frischen Fischfleisch?",
+    "opts": [
+      "Unter 1 % (praktisch keine Kohlenhydrate)",
+      "ca. 10–15 %",
+      "ca. 20–25 %",
+      "Über 40 %"
+    ],
+    "a": 0,
+    "ex": "Fisch enthält praktisch keine Kohlenhydrate (< 1 %)."
+  },
+  {
+    "type": "fill",
+    "theme": "fisch-inhaltsstoffe",
+    "cat": "Fettgehalt",
+    "q": "Ab wie viel Prozent Fettanteil gilt ein Fisch als Fettfisch (Zahl angeben)?",
+    "answers": ["10", "10%", "10 %", "über 10%", "über 10 %", ">10%", "> 10%"],
+    "answer": "10 %",
+    "ex": "Fettfisch: Fettgehalt > 10 % (z. B. Makrele, Hering, Lachs, Aal)."
+  },
+  {
+    "type": "fill",
+    "theme": "fisch-inhaltsstoffe",
+    "cat": "Fettsäuren",
+    "q": "Welche gesunden, mehrfach ungesättigten Fettsäuren sind in Seefisch und Fettfisch besonders reichlich enthalten?",
+    "answers": ["omega-3", "omega 3", "omega-3-fettsäuren", "omega 3 fettsäuren", "omega3"],
+    "answer": "Omega-3 (Fettsäuren)",
+    "ex": "Fettfische sind reich an wertvollen ungesättigten Omega-3-Fettsäuren."
+  },
+  {
+    "theme": "fisch-konservierung",
+    "cat": "Räuchern",
+    "q": "Was versteht man in der Warenkunde unter einem 'Bückling'?",
+    "opts": [
+      "Einen ganzen, ausgenommenen Hering mit Kopf, gesalzen und heiß geräuchert",
+      "Einen kalt geräucherten Lachs ohne Kopf",
+      "Einen getrockneten Kabeljau ohne Salz",
+      "Eingelegtes Heringsfilet mit Zwiebeln"
+    ],
+    "a": 0,
+    "ex": "Bückling = ganzer, ausgenommener Hering mit Kopf, gesalzen und heiß geräuchert."
+  },
+  {
+    "theme": "fisch-konservierung",
+    "cat": "Räuchern",
+    "q": "Aus welchem Fisch und welchem Teil werden 'Schillerlocken' hergestellt?",
+    "opts": [
+      "Aus den Bauchlappen des Dornhais (Seeaal), gesalzen und heiß geräuchert",
+      "Aus der Schwanzflosse des Lachses",
+      "Aus dem Filet der Forelle",
+      "Aus dem Rogen des Störs"
+    ],
+    "a": 0,
+    "ex": "Schillerlocken = Bauchlappen des Dornhais (Seeaal), gesalzen, gerollt und heiß geräuchert."
+  },
+  {
+    "theme": "fisch-konservierung",
+    "cat": "Trocknen",
+    "q": "Was ist der Unterschied zwischen Stockfisch und Klippfisch?",
+    "opts": [
+      "Stockfisch wird ohne Salz getrocknet, Klippfisch wird erst gesalzen und dann getrocknet",
+      "Stockfisch ist aus Lachs, Klippfisch aus Hering",
+      "Klippfisch wird heiß geräuchert, Stockfisch in Essig eingelegt",
+      "Es gibt keinen Unterschied, beides ist identisch"
+    ],
+    "a": 0,
+    "ex": "Beide bestehen aus Kabeljau/Dorsch: Stockfisch wird ohne Salz getrocknet, Klippfisch erst gesalzen und dann getrocknet."
+  },
+  {
+    "theme": "fisch-konservierung",
+    "cat": "Salzen",
+    "q": "Welches Konservierungsprinzip bewirkt das Salzen von Fisch (z. B. Matjes)?",
+    "opts": [
+      "Osmotischer Druck entzieht den Zellen Wasser und hemmt Mikroorganismen",
+      "Das Salz kocht den Fisch durch chemische Hitze",
+      "Salz senkt den pH-Wert unter 3,0",
+      "Salz zerstört nur die Fettzellen"
+    ],
+    "a": 0,
+    "ex": "Salz entzieht dem Fischgewebe durch osmotischen Druck Wasser, wodurch Mikroorganismen die Lebensgrundlage entzogen wird."
+  },
+  {
+    "theme": "fisch-konservierung",
+    "cat": "Kaviar",
+    "q": "Nur der Rogen welcher Fischart darf als 'echter Kaviar' bezeichnet werden?",
+    "opts": [
+      "Nur vom Stör",
+      "Von jedem Seefisch",
+      "Ausschließlich vom Lachs",
+      "Vom Hecht und Karpfen"
+    ],
+    "a": 0,
+    "ex": "Gesetzlich geschützt: Nur der Rogen des Störs (Acipenseridae) darf als echter Kaviar bezeichnet werden."
+  },
+  {
+    "type": "fill",
+    "theme": "fisch-konservierung",
+    "cat": "Trocknen",
+    "q": "Wie nennt man den luftgetrockneten Kabeljau, der OHNE Salz getrocknet wird?",
+    "answers": ["stockfisch", "der stockfisch"],
+    "answer": "Stockfisch",
+    "ex": "Stockfisch = luftgetrockneter Kabeljau ohne Salz (Klippfisch = erst gesalzen, dann getrocknet)."
+  },
+  {
+    "type": "fill",
+    "theme": "fisch-konservierung",
+    "cat": "Kaviar",
+    "q": "Von welcher Fischart stammt echter Kaviar ausschließlich?",
+    "answers": ["stör", "stoer", "der stör", "vom stör"],
+    "answer": "Stör",
+    "ex": "Nur der Rogen vom Stör darf als echter Kaviar bezeichnet werden."
+  },
+  {
+    "theme": "fisch-gerichte-praxis",
+    "cat": "Zubereitung",
+    "q": "Was zeichnet die klassische Zubereitung 'Müllerin Art' (z. B. Forelle Müllerin Art) aus?",
+    "opts": [
+      "Der Fisch wird in Mehl gewendet und in Butter gebraten",
+      "Der Fisch wird in Salzkruste im Ofen gebacken",
+      "Der Fisch wird roh mariniert mit Limettensaft",
+      "Der Fisch wird im Essigsud pochiert"
+    ],
+    "a": 0,
+    "ex": "Müllerin Art: Fisch in Mehl wenden, in schäumender Butter braten, mit Zitrone und Petersilie servieren."
+  },
+  {
+    "theme": "fisch-gerichte-praxis",
+    "cat": "Zubereitung",
+    "q": "Wie wird 'Forelle blau' zubereitet und warum wird sie blau?",
+    "opts": [
+      "Im siedenden Essigsud pochiert; Essig reagiert mit dem Schleim der intakten Haut bläulich",
+      "Mit Blauschimmelkäse gratiniert",
+      "In Rotwein 2 Stunden geschmort",
+      "Mit Lebensmittelfarbe mariniert"
+    ],
+    "a": 0,
+    "ex": "Forelle blau: Fangfrisch, ungeschuppt im Essigsud gegart. Die Schleimschicht färbt sich durch die Säure silbrig-blau."
+  },
+  {
+    "theme": "fisch-gerichte-praxis",
+    "cat": "Gerichte",
+    "q": "Welcher Fisch wird für die Sauce des klassischen Gerichtes 'Vitello tonnato' püriert?",
+    "opts": [
+      "Thunfisch",
+      "Lachs",
+      "Kabeljau",
+      "Forelle"
+    ],
+    "a": 0,
+    "ex": "Vitello tonnato = dünne Scheiben kaltes Kalbfleisch in einer cremigen Thunfischsauce mit Kapern."
+  },
+  {
+    "theme": "fisch-gerichte-praxis",
+    "cat": "Weinempfehlung",
+    "q": "Welche Weißweinsorten werden im Lernskript besonders zu Fischgerichten empfohlen?",
+    "opts": [
+      "Müller-Thurgau, Weißburgunder, Chardonnay, Viognier",
+      "Schwerer Dornfelder und Cabernet Sauvignon",
+      "Ausschließlich süßer Glühwein",
+      "Portwein und Sherry Pedro Ximénez"
+    ],
+    "a": 0,
+    "ex": "Klassische Weinempfehlungen zu Fisch: Müller-Thurgau, Weißburgunder, Chardonnay und Viognier."
+  },
+  {
+    "theme": "fisch-gerichte-praxis",
+    "cat": "Fischangebot",
+    "q": "Welcher der folgenden Speisefische ist ein Plattfisch?",
+    "opts": [
+      "Heilbutt",
+      "Zander",
+      "Knurrhahn",
+      "Wolfsbarsch"
+    ],
+    "a": 0,
+    "ex": "Heilbutt (sowie Scholle, Seezunge, Steinbutt, Flunder) ist ein Plattfisch. Zander, Knurrhahn und Wolfsbarsch sind Rundfische."
+  },
+  {
+    "type": "fill",
+    "theme": "fisch-gerichte-praxis",
+    "cat": "Zubereitung",
+    "q": "In welchem säuerlichen Sud wird eine Forelle bei der Zubereitung 'blau' pochiert?",
+    "answers": ["essigsud", "essig-sud", "essigwasser", "essigbrühe"],
+    "answer": "Essigsud",
+    "ex": "Forelle blau wird im Essigsud gegart, wodurch die Haut sich silbrig-blau färbt."
+  },
+  {
+    "type": "fill",
+    "theme": "fisch-gerichte-praxis",
+    "cat": "Gerichte",
+    "q": "Welche Beilage wird klassisch zu geräucherter Bodensee-Renke serviert?",
+    "answers": ["meerrettichsahne", "meerrettich-sahne", "sahne-meerrettich", "sahnemeerrettich"],
+    "answer": "Meerrettichsahne",
+    "ex": "Geräucherte Bodensee-Renke wird traditionell mit Meerrettichsahne serviert."
   }
 ];
 })(window);

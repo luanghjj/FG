@@ -143,7 +143,7 @@
         teacher: "Fr. Herrmann / BfK2-ED",
         examDate: "2026-07-14",
         ready: true,
-        desc: "Năm 1: LF1 Beruf/Kommunikation · LF5 Service, Getränke, Bier/Wein, POS, Buffet | Năm 2: Fleisch & Produkte",
+        desc: "Năm 1: LF1 Beruf/Kommunikation · LF5 Service, Getränke, Bier/Wein, POS, Buffet | Năm 2: Fleisch & Küche · Fisch (Warenkunde & Zubereitung)",
         legacyRoutes: {
           hub: "#/bfk/2"
         },
@@ -564,6 +564,259 @@
   <tr><td>Soja</td><td>84</td></tr>
 </table>
 <div class="note"> Ergänzungswert: Kombination hebt BW (z.B. Kartoffel + Ei, Getreide + Milch).</div>`
+              }
+            ]
+          },
+          {
+            id: "fisch-warenkunde",
+            badge: "Năm 2 · Warenkunde",
+            title: "Năm 2 · Fisch — Warenkunde & Zubereitung",
+            items: [
+              {
+                id: "fisch-einteilung",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 12c.94-3.46 4.94-6 8.5-6 3.56 0 6.06 2.54 7 6-.94 3.46-3.44 6-7 6-3.56 0-7.56-2.54-8.5-6z"/><path d="M18 10v4"/><path d="M2 16l4.5-4L2 8"/></svg>',
+                name: "Einteilung der Fische & Merkmale",
+                desc: "5 Kriterien · Wanderfische (Aal vs. Lachs) · Platt- & Rundfische · Merkmale (Hecht, Karpfen, Zander)",
+                vokabeln: [
+                  { de: "Wanderfische", vi: "cá di cư" },
+                  { de: "Flussaal", vi: "lươn sông" },
+                  { de: "Laichen", vi: "đẻ trứng (cá)" },
+                  { de: "Plattfische", vi: "cá thân bẹt (hai mắt cùng 1 bên)" },
+                  { de: "Rundfische", vi: "cá thân tròn / hình thoi" },
+                  { de: "Hecht", vi: "cá măng sông (mõm dài)" },
+                  { de: "Karpfen", vi: "cá chép (có râu mép)" },
+                  { de: "Bartfäden", vi: "râu mép cá chép" },
+                  { de: "Zander", vi: "cá vược sông (gai nắp mang)" },
+                  { de: "Kiemendeckel", vi: "nắp mang cá" }
+                ],
+                content: `<h2>§1 &amp; §3 Einteilung der Fische &amp; Merkmale</h2>
+<div class="hint">Warenkunde · 5 Kriterien · Wanderverhalten · Platt- vs. Rundfische · Erkennungsmerkmale</div>
+
+<h3 class="sub">1. 5 Kriterien der Fischeinteilung (5 Tiêu chí Phân loại Cá)</h3>
+<p>Trong ngành ẩm thực và thương mại (<span class="term" data-de="Warenkunde" data-vi="ngành hàng thực phẩm / hàng hóa học">Warenkunde</span>), cá được phân loại theo <b>5 tiêu chí cơ bản</b>:</p>
+<table>
+  <tr><th>Tiêu chí</th><th>Phân loại &amp; Ý nghĩa</th></tr>
+  <tr><td><strong>a) Herkunft &amp; Lebensraum</strong></td><td><span class="term" data-de="Süßwasserfische" data-vi="cá nước ngọt">Süßwasserfische</span> (nước ngọt) vs. <span class="term" data-de="Salzwasserfische" data-vi="cá nước mặn">Salzwasserfische / Seefische</span> (nước mặn / biển)</td></tr>
+  <tr><td><strong>b) Wanderverhalten</strong></td><td><span class="term" data-de="Wanderfische" data-vi="cá di cư">Wanderfische</span> (di cư sinh sản: Aal vs. Lachs) vs. Cá định cư tại chỗ</td></tr>
+  <tr><td><strong>c) Körperform</strong></td><td><span class="term" data-de="Plattfische" data-vi="cá thân bẹt">Plattfische</span> (thân bẹt, sống đáy) vs. <span class="term" data-de="Rundfische" data-vi="cá thân tròn">Rundfische</span> (thân tròn, bơi tự do)</td></tr>
+  <tr><td><strong>d) Fang oder Zucht</strong></td><td><span class="term" data-de="Wildfisch" data-vi="cá đánh bắt tự nhiên">Wildfisch</span> (đánh bắt tự nhiên) vs. <span class="term" data-de="Zuchtfisch" data-vi="cá nuôi trang trại">Zuchtfisch</span> (nuôi trong trại/Aquakultur)</td></tr>
+  <tr><td><strong>e) Fettgehalt</strong></td><td><span class="term" data-de="Fettfisch" data-vi="cá béo">Fettfisch</span> (&gt; 10 % chất béo) vs. <span class="term" data-de="Magerfisch" data-vi="cá nạc">Magerfisch</span> (&lt; 10 % chất béo)</td></tr>
+</table>
+
+<h3 class="sub">2. Phân loại theo Nước ngọt &amp; Nước mặn</h3>
+<table>
+  <tr><th>Nhóm cá</th><th>Các loài tiêu biểu</th></tr>
+  <tr><td><b>Süßwasserfische</b> (Nước ngọt)</td><td><span class="term" data-de="Forelle" data-vi="cá hồi suối">Forelle</span>, Pangasius, <span class="term" data-de="Zander" data-vi="cá vược sông">Zander</span>, Barsch, <span class="term" data-de="Karpfen" data-vi="cá chép">Karpfen</span>, <span class="term" data-de="Hecht" data-vi="cá măng sông">Hecht</span>, <span class="term" data-de="Flussaal" data-vi="lươn sông">Flussaal</span>, Saibling, Wels.</td></tr>
+  <tr><td><b>Seefische / Salzwasserfische</b> (Nước mặn)</td><td><span class="term" data-de="Scholle" data-vi="cá bơn sao">Scholle</span>, <span class="term" data-de="Seelachs" data-vi="cá tuyết đen">Seelachs</span>, <span class="term" data-de="Hering" data-vi="cá trích">Hering</span>, <span class="term" data-de="Seezunge" data-vi="cá bơn lưỡi trâu">Seezunge</span>, <span class="term" data-de="Makrele" data-vi="cá thu">Makrele</span>, <span class="term" data-de="Heilbutt" data-vi="cá bơn lớn">Heilbutt</span>, <span class="term" data-de="Kabeljau" data-vi="cá tuyết Đại Tây Dương">Kabeljau / Dorsch</span>, <span class="term" data-de="Thunfisch" data-vi="cá ngừ">Thunfisch</span>, <span class="term" data-de="Steinbutt" data-vi="cá bơn turbot">Steinbutt</span>, <span class="term" data-de="Rotbarsch" data-vi="cá vược đỏ">Rotbarsch</span>, <span class="term" data-de="Schellfisch" data-vi="cá tuyết chấm đen">Schellfisch</span>, <span class="term" data-de="Stör" data-vi="cá tầm">Stör</span>, <span class="term" data-de="Knurrhahn" data-vi="cá chào mào biển">Knurrhahn</span>, <span class="term" data-de="Rochen" data-vi="cá đuối">Rochen</span>, <span class="term" data-de="Seeteufel" data-vi="cá mặt quỷ">Seeteufel</span>.</td></tr>
+</table>
+
+<h3 class="sub">3. Wanderfische — Cá Di cư (Aal vs. Lachs)</h3>
+<p>Cá di cư là loài sinh sống ở một môi trường nước nhưng di chuyển đến môi trường nước khác để <span class="term" data-de="Laichen" data-vi="đẻ trứng (cá)">laichen</span> (đẻ trứng):</p>
+<ul>
+  <li><b>Flussaal (Lươn sông — Süßwasser → Meer):</b> Sinh ra ở biển (vùng biển Sargasso) dưới dạng <span class="term" data-de="Glasaal" data-vi="cá chình con dạng thủy tinh">Glasaal</span> → bơi ngược vào các con sông thành <span class="term" data-de="Steigaal" data-vi="cá chình di cư vào sông">Steigaal</span> → sống và phát triển 4–10 năm ở nước ngọt → khi trưởng thành di cư <b>ra biển để đẻ trứng</b> rồi chết.</li>
+  <li><b>Lachs (Cá hồi — Meer → Süßwasser):</b> Nở ở đầu nguồn sông suối nước ngọt → khi còn là cá con (<span class="term" data-de="Junglachs" data-vi="cá hồi trẻ">Junglachs</span>) bơi ra biển lớn, tăng cân rất nhanh → khi trưởng thành bơi <b>ngược dòng sông về nước ngọt để đẻ trứng</b>. Cá <span class="term" data-de="Lachsforelle" data-vi="cá hồi suối di cư">Lachsforelle</span> cũng có tập tính di cư tương tự.</li>
+</ul>
+<div class="warn"><strong>Merksatz thi bắt buộc:</strong><br>• <b>Flussaal:</b> Ngọt → Mặn (sinh trưởng ở sông, <b>đẻ trứng ở biển / laicht im Meer</b>).<br>• <b>Lachs:</b> Mặn → Ngọt (sinh trưởng ở biển, <b>đẻ trứng ở sông / laicht im Fluss</b>).</div>
+
+<h3 class="sub">4. Körperform: Plattfische vs. Rundfische</h3>
+<table>
+  <tr><th>Đặc điểm</th><th>Plattfische (Cá thân bẹt)</th><th>Rundfische (Cá thân tròn)</th></tr>
+  <tr><td><b>Hình dáng</b></td><td>Thân phẳng dẹt, bất đối xứng, thích nghi sống ở đáy biển (<span class="term" data-de="Bodenfische" data-vi="cá đáy">Bodenfische</span>).</td><td>Thân tròn hoặc hình thoi (<span class="term" data-de="spindelförmig" data-vi="hình thoi">spindelförmig</span>), đối xứng hai bên.</td></tr>
+  <tr><td><b>Mắt</b></td><td><strong>Cả hai mắt cùng nằm trên một mặt</strong> (mặt hướng lên trên).</td><td><strong>Mỗi bên thân có một mắt</strong>.</td></tr>
+  <tr><td><b>Vận động</b></td><td>Bơi nằm nghiêng sát đáy biển.</td><td>Bơi tự do ở các tầng nước (<span class="term" data-de="freischwimmend" data-vi="bơi tự do">freischwimmend</span>).</td></tr>
+  <tr><td><b>Ví dụ</b></td><td>Scholle, Seezunge, Flunder, Steinbutt, Heilbutt, Rotzunge.</td><td>Forelle, Hecht, Zander, Kabeljau, Lachs, Hering, Makrele, Thunfisch.</td></tr>
+</table>
+
+<h3 class="sub">5. Erkennungsmerkmale einzelner Süßwasser- &amp; Raubfische (§3)</h3>
+<table>
+  <tr><th>Loài cá</th><th>Đặc điểm nhận biết then chốt (Merkmale)</th><th>Ứng dụng bếp</th></tr>
+  <tr><td><b>Hecht</b> (Cá măng sông)</td><td>Cá săn mồi (<span class="term" data-de="Raubfisch" data-vi="cá săn mồi">Raubfisch</span>) với <strong>lange Schnauze</strong> (mõm dài dẹt như mỏ vịt, nhiều răng nhọn). Cá 1 tuổi gọi là <i>Grashecht</i>.</td><td>Thịt trắng, nạc, thích hợp làm chả cá xay (<span class="term" data-de="Farce" data-vi="nhân thịt xay / chả xay">Farcen</span>), Hechtklößchen.</td></tr>
+  <tr><td><b>Karpfen</b> (Cá chép)</td><td>Đặc trưng rõ rệt bởi <strong>Bartfäden</strong> (2 râu mép dài + 2 râu ngắn) ở hai bên khóe miệng. Dạng vảy: Spiegelkarpfen (vảy gương), Lederkarpfen (da trơn), Schuppenkarpfen (vảy đều).</td><td>Nấu kiểu Karpfen blau, chiên giòn, nướng truyền thống Giáng sinh/Năm mới.</td></tr>
+  <tr><td><b>Zander</b> (Cá vược sông)</td><td>Cá săn mồi quý, có <strong>kleiner Dorn am Kiemendeckel</strong> (gai nhọn nhỏ ở nắp mang). Thịt trắng tinh khiết, săn chắc không xương dăm.</td><td>Áp chảo da giòn (auf der Haut gebraten), hấp nấm, sốt bơ Riesling.</td></tr>
+</table>
+<div class="note"><strong>Mẹo nhớ siêu nhanh (Merkhilfe):</strong><br>• <b>Hecht</b> = lange Schnauze (mõm dài).<br>• <b>Karpfen</b> = Bartfäden (râu mép).<br>• <b>Zander</b> = Dorn am Kiemendeckel (gai ở nắp mang).</div>`
+              },
+              {
+                id: "fisch-inhaltsstoffe",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>',
+                name: "Inhaltsstoffe & Nährwerte des Fisches",
+                desc: "Fettfisch (>10%) vs. Magerfisch (<10%) · Eiweiß 15–23% · Jod bis 330 µg · Omega-3",
+                vokabeln: [
+                  { de: "Fettfisch", vi: "cá béo (> 10 % chất béo)" },
+                  { de: "Magerfisch", vi: "cá nạc (< 10 % chất béo)" },
+                  { de: "Eiweißanteil", vi: "hàm lượng đạm (protein)" },
+                  { de: "Fettanteil", vi: "hàm lượng chất béo" },
+                  { de: "Jod", vi: "khoáng chất i-ốt" },
+                  { de: "Omega-3", vi: "axit béo omega-3 không bão hòa" }
+                ],
+                content: `<h2>§2 Inhaltsstoffe des Fisches &amp; Fettgehalt</h2>
+<div class="hint">Thành phần dinh dưỡng · Nährwerttabelle · Phân loại Fettfisch vs. Magerfisch · Omega-3 & Khoáng chất</div>
+
+<h3 class="sub">1. Thành phần Dinh dưỡng Chuẩn (Nährwerte im Überblick)</h3>
+<p>Cá là nguồn thực phẩm giàu đạm quý giá, dễ tiêu hóa hơn thịt gia súc do cấu trúc sợi cơ ngắn và mô liên kết mềm mại:</p>
+<table>
+  <tr><th>Thành phần</th><th>Tỷ lệ (% hoặc hàm lượng)</th><th>Ý nghĩa &amp; Lưu ý thi</th></tr>
+  <tr><td><b>Fettanteil</b> (Chất béo)</td><td><strong>0,5 – 25 %</strong></td><td><strong>Schwankt stark</strong> (dao động rất mạnh tùy loài cá, độ tuổi, thức ăn và mùa sinh sản).</td></tr>
+  <tr><td><b>Eiweißanteil</b> (Đạm)</td><td><strong>15 – 23 %</strong></td><td><strong>Relativ gleichbleibend</strong> (khá ổn định), có giá trị sinh học cao (<span class="term" data-de="biologische Wertigkeit" data-vi="giá trị sinh học">biologische Wertigkeit</span>).</td></tr>
+  <tr><td><b>Kohlenhydrate</b> (Carb)</td><td><strong>&lt; 1 %</strong></td><td>Hầu như không có (<span class="term" data-de="Glykogen" data-vi="glycogen">Glykogen</span> trong cơ phân giải nhanh sau khi đánh bắt).</td></tr>
+  <tr><td><b>Mineralstoffe</b> (Khoáng)</td><td>Jod bis <strong>330 µg / 100 g</strong></td><td>Cá biển là nguồn <span class="term" data-de="Jod" data-vi="khoáng chất i-ốt">Jod</span> tự nhiên dồi dào nhất, bên cạnh selen, fluor và photpho.</td></tr>
+  <tr><td><b>Fettsäuren</b> (Axit béo)</td><td>Reich an <span class="term" data-de="Omega-3" data-vi="axit béo omega-3">Omega-3</span></td><td>Nhiều axit béo không bão hòa đa (EPA, DHA), bảo vệ tim mạch và phát triển trí não.</td></tr>
+  <tr><td><b>Vitamine</b></td><td>Vit. A, D, B-Gruppe</td><td>Vitamin tan trong dầu (A, D) tập trung ở mỡ và gan cá (Fischlebertran).</td></tr>
+</table>
+
+<div class="warn"><strong>Prüfungsfalle (Bẫy thi trắc nghiệm):</strong><br>• Lượng <b>chất béo (Fett)</b> biến động rất mạnh: từ 0,5 % (cá nạc) đến tận 25 % (cá béo).<br>• Lượng <b>chất đạm (Eiweiß)</b> luôn giữ ổn định ở mức 15–23 %.</div>
+
+<h3 class="sub">2. Phân loại Cá theo Hàm lượng Chất béo (Fettgehalt)</h3>
+<p>Quy chuẩn phân định ranh giới là <b>mốc 10 % chất béo</b>:</p>
+<table>
+  <tr><th>Nhóm</th><th>Hàm lượng mỡ</th><th>Các loài cá tiêu biểu</th><th>Đặc điểm nấu nướng</th></tr>
+  <tr><td><b>Fettfische</b> (Cá béo)</td><td><strong>&gt; 10 % Fett</strong></td><td><span class="term" data-de="Makrele" data-vi="cá thu">Makrele</span>, <span class="term" data-de="Hering" data-vi="cá trích">Hering</span>, <span class="term" data-de="Aal" data-vi="lươn">Aal</span>, <span class="term" data-de="Lachs" data-vi="cá hồi">Lachs</span>, <span class="term" data-de="Thunfisch" data-vi="cá ngừ">Thunfisch</span>, <span class="term" data-de="Sardine" data-vi="cá mòi">Sardine</span>.</td><td>Thịt đậm đà, chịu nhiệt tốt, rất hợp hun khói nóng (<span class="term" data-de="Heißräuchern" data-vi="hun khói nóng">Heißräuchern</span>), nướng than (<span class="term" data-de="Grillen" data-vi="nướng vỉ">Grillen</span>), áp chảo.</td></tr>
+  <tr><td><b>Magerfische</b> (Cá nạc)</td><td><strong>&lt; 10 % Fett</strong> (nhiều loài &lt; 2 %)</td><td><span class="term" data-de="Kabeljau" data-vi="cá tuyết">Kabeljau / Dorsch</span>, <span class="term" data-de="Seelachs" data-vi="cá tuyết đen">Seelachs</span>, <span class="term" data-de="Zander" data-vi="cá vược sông">Zander</span>, <span class="term" data-de="Schellfisch" data-vi="cá tuyết chấm đen">Schellfisch</span>, <span class="term" data-de="Hecht" data-vi="cá măng sông">Hecht</span>, <span class="term" data-de="Scholle" data-vi="cá bơn sao">Scholle</span>, <span class="term" data-de="Seezunge" data-vi="cá bơn lưỡi trâu">Seezunge</span>, <span class="term" data-de="Steinbutt" data-vi="cá bơn turbot">Steinbutt</span>, <span class="term" data-de="Forelle" data-vi="cá hồi suối">Forelle</span>.</td><td>Thịt thanh nhẹ, ít năng lượng, dễ bị khô nếu quá nhiệt; thích hợp hấp (<span class="term" data-de="Dämpfen" data-vi="hấp chín">Dämpfen</span>), luộc nhẹ (<span class="term" data-de="Pochieren" data-vi="chần / luộc nhỏ lửa">Pochieren</span>), tẩm bột chiên bơ (Müllerin Art).</td></tr>
+</table>
+
+<div class="note"><strong>Ernährungsphysiologie:</strong> Omega-3-Fettsäuren làm giảm nguy cơ xơ vữa động mạch và hạ triglyceride máu. Khuyến nghị dinh dưỡng DGE: nên ăn cá từ 1–2 lần mỗi tuần, trong đó có ít nhất một bữa cá béo.</div>`
+              },
+              {
+                id: "fisch-konservierung",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>',
+                name: "Fischerzeugnisse, Konservierung & Kaviar",
+                desc: "Räuchern (Bückling, Schillerlocken) · Salzen (Matjes) · Trocknen (Stock- vs. Klippfisch) · Säuern · Echter Kaviar vs. Ersatz",
+                vokabeln: [
+                  { de: "Halbkonserven", vi: "bán đồ hộp" },
+                  { de: "Vollkonserven", vi: "đồ hộp hoàn toàn" },
+                  { de: "Bückling", vi: "cá trích nguyên con có đầu hun nóng" },
+                  { de: "Schillerlocken", vi: "lườn bụng cá nhám cuộn hun nóng" },
+                  { de: "osmotischer Druck", vi: "áp suất thẩm thấu" },
+                  { de: "Matjeshering", vi: "cá trích trẻ muối nhẹ lên men lactic" },
+                  { de: "Stockfisch", vi: "cá tuyết phơi khô không muối" },
+                  { de: "Klippfisch", vi: "cá tuyết muối trước rồi phơi khô" },
+                  { de: "Bismarckhering", vi: "phi lê cá trích ngâm giấm" },
+                  { de: "Rollmops", vi: "cá trích cuộn dưa chuột ngâm giấm" },
+                  { de: "Stör", vi: "cá tầm (sản xuất Kaviar thật)" },
+                  { de: "Kaviar", vi: "trứng cá tầm muối" }
+                ],
+                content: `<h2>§4 &amp; §5 Fischerzeugnisse, Konservierung &amp; Kaviar</h2>
+<div class="hint">Phương pháp bảo quản · Nguyên lý sinh hóa · Đặc sản cá · Phân biệt trứng cá tầm thật và Kaviarersatz</div>
+
+<h3 class="sub">1. Nguyên tắc Bảo quản &amp; Độ bền (Haltbarkeit)</h3>
+<p>Thịt cá rất nhanh hỏng do hàm lượng nước tự do cao, lớp da nhớt dễ nhiễm vi khuẩn chịu lạnh (<span class="term" data-de="psychrophile Bakterien" data-vi="vi khuẩn ưa lạnh">psychrophile Bakterien</span>). Do đó ngành công nghiệp chế biến cá tạo ra nhiều dạng sản phẩm:</p>
+<table>
+  <tr><th>Dạng đồ hộp / bảo quản</th><th>Hạn sử dụng</th><th>Điều kiện bảo quản &amp; Ví dụ</th></tr>
+  <tr><td><span class="term" data-de="Halbkonserven" data-vi="bán đồ hộp">Halbkonserven</span> (Bán đồ hộp)</td><td>Vài ngày đến vài tuần (Tage bis Wochen)</td><td>Bắt buộc giữ lạnh (&lt; 7 °C); chưa tiệt trùng hoàn toàn. Ví dụ: Bismarckhering, Rollmops, Matjes, Anchosen.</td></tr>
+  <tr><td><span class="term" data-de="Vollkonserven" data-vi="đồ hộp hoàn toàn">Vollkonserven</span> (Đồ hộp tiệt trùng)</td><td>Nhiều tháng đến nhiều năm (Monate bis Jahre)</td><td>Được đóng kín và tiệt trùng nhiệt độ cao (&gt; 100 °C trong nồi áp suất Autoklav). Bảo quản nhiệt độ phòng. Ví dụ: Thunfisch in Öl, Ölsardinen.</td></tr>
+</table>
+
+<h3 class="sub">2. 4 Phương pháp Bảo quản Chính &amp; Sản phẩm Kinh điển</h3>
+<ol>
+  <li><strong>Räuchern (Hun khói):</strong>
+    <ul>
+      <li><span class="term" data-de="Bückling" data-vi="cá trích hun khói nóng nguyên con có đầu">Bückling</span>: Cá trích nguyên con đã mổ ruột nhưng <b>giữ nguyên đầu (mit Kopf)</b>, ướp muối và <b>hun khói nóng (heiß geräuchert)</b> ở nhiệt độ 60–85 °C.</li>
+      <li><span class="term" data-de="Schillerlocken" data-vi="lườn bụng cá nhám cuộn hun khói">Schillerlocken</span>: Dải lườn bụng bóc da của cá nhám góc (<span class="term" data-de="Dornhai" data-vi="cá nhám góc / Seeaal">Dornhai / Seeaal</span>), ướp muối, khi hun khói nóng sẽ tự cuộn xoắn tròn lại như bím tóc của đại thi hào Friedrich Schiller.</li>
+      <li><span class="term" data-de="Räucherlachs" data-vi="cá hồi hun khói lạnh">Räucherlachs</span>: Phi lê cá hồi muối rồi <b>hun khói lạnh (<span class="term" data-de="Kalträuchern" data-vi="hun khói lạnh">Kalträuchern</span>)</b> dưới 30 °C để thịt vẫn giữ được độ tươi mềm, béo ngậy.</li>
+    </ul>
+  </li>
+  <li><strong>Salzen (Ướp muối):</strong>
+    <p><b>Nguyên lý sinh hóa:</b> Muối hút kiệt nước tự do ra khỏi tế bào cá nhờ <span class="term" data-de="osmotischer Druck" data-vi="áp suất thẩm thấu">áp suất thẩm thấu (osmotischer Druck)</span>. Vi sinh vật bị mất nước, không thể nhân đôi và phát triển.</p>
+    <ul>
+      <li><span class="term" data-de="Matjeshering" data-vi="cá trích non muối nhẹ">Matjeshering</span>: Cá trích trẻ đánh bắt vào cuối xuân/đầu hè <b>trước khi đến tuổi đẻ trứng (vor der Laichreife)</b>, mỡ cao, ướp muối nhẹ và ủ lên men lactic tự nhiên nhờ enzyme có sẵn trong ruột và tụy cá.</li>
+      <li><span class="term" data-de="Salzhering" data-vi="cá trích muối đậm">Salzhering</span>: Cá trích ướp muối hạt đậm (stark gesalzen); khi dùng phải ngâm nước lạnh khử bớt mặn.</li>
+    </ul>
+  </li>
+  <li><strong>Trocknen (Phơi khô / Sấy khô):</strong>
+    <p><b>Nguyên lý:</b> Làm bay hơi nước (<span class="term" data-de="Lufttrocknung" data-vi="phơi khô tự nhiên">Lufttrocknung</span>), triệt tiêu môi trường sống của vi khuẩn gây ôi thiu.</p>
+    <ul>
+      <li><span class="term" data-de="Stockfisch" data-vi="cá tuyết phơi khô không muối">Stockfisch</span>: Cá tuyết (<span class="term" data-de="Kabeljau" data-vi="cá tuyết">Kabeljau</span>) mổ đôi, phơi khô trên giàn gỗ tự nhiên ngoài trời gió lạnh, <b>hoàn toàn KHÔNG ướp muối (ohne Salz)</b>.</li>
+      <li><span class="term" data-de="Klippfisch" data-vi="cá tuyết ướp muối rồi mới phơi khô">Klippfisch</span>: Cá tuyết <b>được ướp muối đậm trước (erst gesalzen)</b>, sau đó mới đem phơi khô trên các mỏm đá hoặc giàn sấy.</li>
+    </ul>
+  </li>
+  <li><strong>Säuern &amp; Marinieren (Ngâm chua / Giấm gia vị):</strong>
+    <p><b>Nguyên lý:</b> Axit axetic trong giấm làm <b>hạ độ pH (<span class="term" data-de="pH-Wert" data-vi="chỉ số pH">pH-Wert sinkt</span>)</b> xuống dưới 4,5; môi trường axit ức chế vi khuẩn thối rữa và làm mềm xương dăm.</p>
+    <ul>
+      <li><span class="term" data-de="Bismarckhering" data-vi="phi lê cá trích ngâm giấm">Bismarckhering</span>: Phi lê cá trích bỏ xương dăm, ngâm trong dung dịch giấm, muối và hạt tiêu/gia vị.</li>
+      <li><span class="term" data-de="Rollmops" data-vi="cá trích cuộn dưa chuột ngâm giấm">Rollmops</span>: Phi lê cá trích cuộn tròn bên trong miếng dưa chuột muối và hành tây, ghim que tăm gỗ nhỏ, ngâm trong nước giấm chua cay.</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 class="sub">3. Echter Kaviar &amp; Kaviarersatz (§5)</h3>
+<table>
+  <tr><th>Tên gọi</th><th>Nguồn gốc loài cá</th><th>Đặc điểm nhận dạng</th></tr>
+  <tr><td><b>Echter Kaviar</b> (Trứng cá tầm thật)</td><td>Chỉ duy nhất từ trứng của loài <strong>Stör (Cá tầm)</strong> (Beluga, Osietra, Sevruga).</td><td>Hạt trứng bóng bẩy, màu xám đen đến vàng ánh nâu hổ phách, béo ngậy tan chảy, giá thành đắt đỏ bậc nhất thế giới.</td></tr>
+  <tr><td><b>Lachskaviar</b></td><td>Trứng cá hồi (<span class="term" data-de="Lachs" data-vi="cá hồi">Lachs</span>)</td><td>Hạt to tròn, mọng nước, có màu <strong>orange-rot (cam đỏ)</strong> rực rỡ.</td></tr>
+  <tr><td><b>Keta-Kaviar</b></td><td>Trứng cá hồi Keta biển Thái Bình Dương</td><td>Hạt to đều, vỏ trứng dai nhẹ, vị thơm ngậy đặc trưng.</td></tr>
+  <tr><td><b>Deutscher Kaviar</b></td><td>Trứng cá mái đá (<span class="term" data-de="Seehase" data-vi="cá seehase">Seehase / Lumpfisch</span>)</td><td>Trứng hạt nhỏ, được <strong>schwarz gefärbt (nhuộm màu đen)</strong> nhân tạo để mô phỏng trứng cá tầm thật.</td></tr>
+  <tr><td><b>Tobiko</b></td><td>Trứng cá chuồn (<span class="term" data-de="Flugfisch" data-vi="cá chuồn">Flugfisch</span>)</td><td>Hạt giòn tanh tách, dùng phổ biến trong món Sushi và ẩm thực Nhật Bản.</td></tr>
+</table>
+
+<div class="warn"><strong>Tóm tắt so sánh hay thi:</strong><br>• <b>Bückling:</b> Hering hun nóng <b>có đầu</b>.<br>• <b>Stockfisch:</b> Cá tuyết phơi <b>không muối</b>.<br>• <b>Klippfisch:</b> Cá tuyết <b>có ướp muối trước</b> rồi mới phơi.<br>• <b>Echter Kaviar:</b> <b>Chỉ duy nhất từ cá tầm (Stör)</b>.</div>`
+              },
+              {
+                id: "fisch-gerichte-praxis",
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 22h8"/><path d="M12 11v11"/><path d="M6 2h12v3a6 6 0 0 1-12 0V2z"/></svg>',
+                name: "Fischgerichte, Weinempfehlung & Bildtafel",
+                desc: "Müllerin Art · Forelle blau · Bodensee-Renke · Vitello tonnato · Weißweine · Seefische & Süßwasserfische erkennen",
+                vokabeln: [
+                  { de: "Müllerin Art", vi: "kiểu bà chủ cối xay (lăn bột mì chiên bơ)" },
+                  { de: "Forelle blau", vi: "cá hồi luộc nước giấm nhẹ giữ màu xanh bạc" },
+                  { de: "Renke", vi: "cá Renke hồ Bodensee" },
+                  { de: "Vitello tonnato", vi: "thịt bê lát lạnh sốt cá ngừ" },
+                  { de: "Müller-Thurgau", vi: "rượu vang trắng Müller-Thurgau" },
+                  { de: "Weißburgunder", vi: "rượu vang trắng Pinot Blanc" },
+                  { de: "Chardonnay", vi: "rượu vang trắng Chardonnay" },
+                  { de: "Viognier", vi: "rượu vang trắng Viognier" },
+                  { de: "Knurrhahn", vi: "cá chào mào biển" },
+                  { de: "Rochen", vi: "cá đuối" },
+                  { de: "Seelachs", vi: "cá tuyết đen" },
+                  { de: "Kabeljau", vi: "cá tuyết Đại Tây Dương" },
+                  { de: "Rotbarsch", vi: "cá vược đỏ" },
+                  { de: "Schellfisch", vi: "cá tuyết chấm đen" },
+                  { de: "Seeteufel", vi: "cá mặt quỷ" }
+                ],
+                content: `<h2>§6 &amp; §7 Fischgerichte, Weinempfehlung &amp; Bildtafel</h2>
+<div class="hint">Thực đơn nhà hàng · Phương pháp nấu cá kinh điển · Rượu vang trắng đi kèm · Bảng nhận diện cá</div>
+
+<h3 class="sub">1. Các Món Cá Kinh điển Trong Nhà hàng (§6)</h3>
+<table>
+  <tr><th>Món ăn</th><th>Mô tả cách chế biến &amp; Điểm đặc trưng</th><th>Đồ ăn kèm (Beilagen)</th></tr>
+  <tr><td><b>Renke aus dem Bodensee geräuchert</b></td><td>Cá <span class="term" data-de="Renke" data-vi="cá Renke đặc sản hồ Bodensee">Renke</span> đặc sản của hồ Bodensee (thuộc họ cá hồi cá hồi trắng), được hun khói mềm mịn, thơm mùi gỗ sồi.</td><td>Ăn kèm kem cải ngựa cay nồng dịu (<span class="term" data-de="Meerrettichsahne" data-vi="kem cải ngựa">Meerrettichsahne</span>) và bánh mì nâu.</td></tr>
+  <tr><td><b>Renke / Forelle Müllerin Art</b></td><td>Kiểu “bà chủ cối xay bột” (<i>À la Meunière</i>): Cá làm sạch, tẩm qua một lớp bột mì mỏng (<span class="term" data-de="Mehl" data-vi="bột mì">in Mehl gewendet</span>), rán vàng đều trong bơ tươi (<span class="term" data-de="in Butter gebraten" data-vi="chiên trong bơ">in Butter gebraten</span>), rưới bơ nâu thơm hạt dẻ (braune Butter) và nước cốt chanh tươi.</td><td><span class="term" data-de="Petersilienkartoffeln" data-vi="khoai tây luộc xóc rau mùi tây">Petersilienkartoffeln</span> (khoai tây xóc bơ mùi tây).</td></tr>
+  <tr><td><b>Forelle blau</b></td><td>Kiểu “cá hồi xanh”: Cá hồi tươi sống vừa bắt, không cạo vảy để giữ lớp nhớt tự nhiên, chần nhẹ trong nước giấm gia vị lăn tăn sủi tăm (<span class="term" data-de="Essigsud" data-vi="nước giấm luộc cá">Essigsud</span>). Axit trong giấm phản ứng với lớp chất nhầy trên da làm da cá chuyển màu <b>xanh ánh bạc (silbrig-blau)</b> lấp lánh.</td><td><span class="term" data-de="Salzkartoffeln" data-vi="khoai tây luộc muối">Salzkartoffeln</span> và bơ đun chảy (<span class="term" data-de="zerlassene Butter" data-vi="bơ nấu chảy">zerlassene Butter</span>).</td></tr>
+  <tr><td><b>Lachs-Steak</b></td><td>Lát cá hồi cắt khúc nướng hoặc áp chảo vàng óng, mềm ngậy bên trong.</td><td>Sốt kem cam cà ri (Orange-Curry-Creme), cơm hương lài (Jasminreis) và salad dầu giấm mè.</td></tr>
+  <tr><td><b>Vitello tonnato</b></td><td>Khai vị truyền thống Ý: Thịt bê luộc mềm thái lát mỏng manh, phục vụ nguội lạnh phủ đẫm sốt kem cá ngừ (<span class="term" data-de="Thunfischsoße" data-vi="sốt kem cá ngừ">Thunfischsoße</span>, cá cơm xay nhuyễn và nụ bạch hoa Kapern).</td><td>Bánh mì Ciabatta hoặc Grissini giòn.</td></tr>
+</table>
+
+<h3 class="sub">2. 13 Loại Cá Thường Thấy Trong Thực đơn Nhà hàng</h3>
+<div class="note"><strong>13 Speisefische im Restaurant „Zum goldenen Karpfen“:</strong><br>
+Kabeljau (cá tuyết), Forelle (cá hồi suối), Heilbutt (cá bơn lớn), Zander (cá vược sông), Seelachs (cá tuyết đen), Scholle (cá bơn sao), Thunfisch (cá ngừ), Seezunge (cá bơn lưỡi trâu), Makrele (cá thu), Karpfen (cá chép), Aal (lươn), Wolfsbarsch (cá vược biển), Lachs (cá hồi).</div>
+
+<h3 class="sub">3. Weinempfehlung zu Fisch (Gợi ý Rượu vang Trắng)</h3>
+<p>Quy tắc cơ bản: Vị thanh ngọt, mềm và đạm nhạy cảm của cá kết hợp hoàn hảo nhất với <b>rượu vang trắng khô (trockene Weißweine)</b> có độ axit hài hòa:</p>
+<ul>
+  <li><b>Müller-Thurgau (Rivaner):</b> Vang trắng tươi mát, hương hoa quả nhẹ nhàng, nồng độ cồn vừa phải; rất hợp với cá luộc (Forelle blau), cá hấp thanh đạm.</li>
+  <li><b>Weißburgunder (Pinot Blanc):</b> Hương vị cân bằng, tròn trịa, tao nhã; cực kỳ phù hợp với cá áp chảo bơ, cá sốt bơ chanh (Müllerin Art).</li>
+  <li><b>Chardonnay:</b> Cấu trúc đậm đà, hương quả chín mọng và thoảng hương gỗ sồi vani; rất hợp với cá béo (Lachs, Aal) hoặc cá sốt kem béo ngậy.</li>
+  <li><b>Viognier:</b> Vang trắng thơm nồng nàn hương hoa nhài và quả mơ đào; kết hợp xuất sắc với các món cá có nước sốt cari cam hoặc sốt gia vị thơm.</li>
+</ul>
+
+<h3 class="sub">4. Bildtafel: Bảng Nhận Diện Các Loài Cá (§7)</h3>
+<p>Danh sách các loài cá biển và nước ngọt quan trọng cần nhận biết mặt hình dáng trong kỳ thi nghề:</p>
+<table>
+  <tr><th>Nhóm</th><th>Loài cá (Deutsch)</th><th>Tên tiếng Việt &amp; Dấu hiệu nhận dạng đặc trưng</th></tr>
+  <tr><td rowspan="8"><b>Seefische (Cá biển)</b></td><td><span class="term" data-de="Knurrhahn" data-vi="cá chào mào biển">Knurrhahn</span></td><td>Cá chào mào biển: đầu to bọc giáp xương cứng, vây ngực xòe rộng như cánh quạt nhiều màu sắc rực rỡ.</td></tr>
+  <tr><td><span class="term" data-de="Rochen" data-vi="cá đuối">Rochen</span></td><td>Cá đuối: thân dẹt phẳng hình thoi, cánh vây rộng uyển chuyển, đuôi dài mảnh như roi.</td></tr>
+  <tr><td><span class="term" data-de="Seelachs" data-vi="cá tuyết đen">Seelachs</span></td><td>Cá tuyết đen (Pollock): lưng xanh đen sẫm, bụng trắng bạc, thịt dai ngon giá thành hợp lý.</td></tr>
+  <tr><td><span class="term" data-de="Kabeljau" data-vi="cá tuyết">Kabeljau / Dorsch</span></td><td>Cá tuyết: có một sợi râu cằm đặc trưng (<span class="term" data-de="Kinnfaden" data-vi="râu cằm">Kinnfaden</span>), đường bên hông màu sáng rõ rệt.</td></tr>
+  <tr><td><span class="term" data-de="Lengfisch" data-vi="cá ling">Lengfisch</span></td><td>Cá ling: thân dài như con lươn, vây lưng và vây hậu môn rất dài.</td></tr>
+  <tr><td><span class="term" data-de="Rotbarsch" data-vi="cá vược đỏ">Rotbarsch</span></td><td>Cá vược đỏ: toàn thân màu đỏ lửa hoặc hồng cam, mắt to tròn lồi, vây lưng có tia gai nhọn.</td></tr>
+  <tr><td><span class="term" data-de="Schellfisch" data-vi="cá tuyết chấm đen">Schellfisch</span></td><td>Cá tuyết đốm đen: đặc trưng bởi <b>một đốm đen lớn trên vây ngực</b> (gọi là “dấu tay Thánh Peter”).</td></tr>
+  <tr><td><span class="term" data-de="Seeteufel" data-vi="cá mặt quỷ">Seeteufel</span></td><td>Cá mặt quỷ (Anglerfish): đầu khổng lồ bè bẹt, miệng rộng ngoác đầy răng nhọn, thịt đuôi giòn như tôm hùm.</td></tr>
+  <tr><td rowspan="6"><b>Süßwasserfische (Cá nước ngọt)</b></td><td><span class="term" data-de="Forelle" data-vi="cá hồi suối">Forelle / Saibling</span></td><td>Họ cá hồi nước ngọt: thân hình thoi thon gọn, có vây mỡ (<span class="term" data-de="Fettflosse" data-vi="vây mỡ">Fettflosse</span>), nhiều đốm chấm đen/đỏ trên thân.</td></tr>
+  <tr><td><span class="term" data-de="Flussbarsch" data-vi="cá rô sông">Flussbarsch</span></td><td>Cá rô sông châu Âu: các sọc vằn đen dọc thân như da hổ, vây bụng và vây đuôi màu đỏ cam tươi.</td></tr>
+  <tr><td><span class="term" data-de="Zander" data-vi="cá vược sông">Zander</span></td><td>Cá vược sông: mắt đục phản quang trong bóng tối, có gai nhỏ nắp mang, răng nanh sắc.</td></tr>
+  <tr><td><span class="term" data-de="Hecht" data-vi="cá măng sông">Hecht</span></td><td>Cá măng sông: thân thuôn dài, mõm bẹt dài như mỏ vịt, vây lưng lùi sát về phía đuôi để phóng nhanh.</td></tr>
+  <tr><td><span class="term" data-de="Wels" data-vi="cá da trơn">Wels</span></td><td>Cá nheo khổng lồ: đầu bẹt, thân da trơn bóng không vảy, 2 râu mép rất dài ở hàm trên và 4 râu nhỏ hàm dưới.</td></tr>
+  <tr><td><span class="term" data-de="Karpfen" data-vi="cá chép">Karpfen</span></td><td>Cá chép: thân dày gù cao, 4 sợi râu mép (Bartfäden) rõ ràng quanh miệng.</td></tr>
+</table>`
               }
             ]
           }
