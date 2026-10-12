@@ -4567,55 +4567,279 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 <section class="view abschluss-scope" id="v-abschluss">
   <div class="back" onclick="go('#/')">← Fächer</div>
   <div class="section-head">
-    <h2>🎯 Abschlussprüfung</h2>
-    <p>Fachkraft für Gastronomie · Aufbau der Prüfung und alle Lernthemen an einem Ort.</p>
+    <h2>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;vertical-align:text-bottom;margin-right:6px;" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+      Abschluss- &amp; Zwischenprüfung (IHK)
+    </h2>
+    <p>Fachkraft für Gastronomie (2-jährige Ausbildung) · Quy chế thi chính thức theo GastroAusbV (áp dụng từ 01.08.2022)</p>
   </div>
   <div class="tabs">
-    <div class="tab active" data-atab="struktur">📋 Struktur</div>
-    <div class="tab" data-atab="themen">📚 Themen</div>
+    <div class="tab active" data-atab="struktur">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;margin-right:4px;" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Struktur &amp; Bestehen
+    </div>
+    <div class="tab" data-atab="bereiche">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;margin-right:4px;" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      3 Prüfungsbereiche
+    </div>
+    <div class="tab" data-atab="zwischen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;margin-right:4px;" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Zwischenprüfung (12 M)
+    </div>
+    <div class="tab" data-atab="themen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;margin-right:4px;" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Lernthemen &amp; App
+    </div>
   </div>
 
-  <!-- STRUKTUR -->
+  <!-- TAB 1: STRUKTUR & BESTEHENSREGELN -->
   <div class="apanel active" id="a-struktur">
     <div class="card">
-      <h2>📋 Gestreckte Abschlussprüfung (GAP)</h2>
-      <div class="hint">Die Prüfung besteht aus zwei zeitlich getrennten Teilen. Teil 1 findet in der Mitte der Ausbildung statt, Teil 2 am Ende.</div>
+      <h2>IHK-Prüfungsmodell: Fachkraft für Gastronomie</h2>
+      <div class="hint">Quy chế đào tạo mới theo <strong>GastroAusbV</strong> (thay thế nghề cũ <em>Fachkraft im Gastgewerbe</em>).</div>
+      <p style="margin:8px 0;line-height:1.6;">
+        Nghề <strong>Fachkraft für Gastronomie</strong> kéo dài <strong>2 năm (24 tháng)</strong>. Khác với các nghề 3 năm (như Koch hay Fachmann für Restaurants...), nghề này <strong>KHÔNG</strong> thi tích lũy điểm theo hình thức <em>Gestreckte Abschlussprüfung (GAP)</em> mà thi theo mô hình truyền thống gồm 2 kỳ thi riêng biệt:
+      </p>
       <table>
-        <tr><th>Teil</th><th>Zeitpunkt</th><th>Form</th><th>Gewichtung</th></tr>
-        <tr><td><strong>Teil 1</strong></td><td>Mitte der Ausbildung (ca. nach dem 1. Jahr)</td><td>schriftlich + praktisch</td><td>ca. 25 %</td></tr>
-        <tr><td><strong>Teil 2</strong></td><td>Ende der Ausbildung</td><td>schriftlich + praktisch</td><td>ca. 75 %</td></tr>
+        <tr><th>Kỳ thi</th><th>Thời điểm</th><th>Hình thức</th><th>Tính điểm tốt nghiệp</th></tr>
+        <tr>
+          <td><strong>Zwischenprüfung</strong><br><span class="muted">Thi giữa kỳ</span></td>
+          <td>Học kỳ 3 (sau 12–18 tháng)</td>
+          <td>60 phút viết + 60 phút thực hành<br>(Môn: <em>Wirtschaftsdienst</em>)</td>
+          <td><span class="pill soon">0 %</span> (Đánh giá học lực, bắt buộc phải thi)</td>
+        </tr>
+        <tr>
+          <td><strong>Abschlussprüfung</strong><br><span class="muted">Thi tốt nghiệp</span></td>
+          <td>Cuối năm 2 (sau 24 tháng)</td>
+          <td>Thực hành (90p) + 2 bài viết (90p + 60p)<br>(Gồm 3 Prüfungsbereiche)</td>
+          <td><span class="pill ready">100 %</span> (Quyết định kết quả tốt nghiệp)</td>
+        </tr>
       </table>
-      <div class="note">⚠️ Prozentwerte, Dauer und genaue Prüfungsbereiche bitte mit deiner <strong>IHK</strong> bzw. dem <strong>Ausbildungsrahmenplan (GastAusbV)</strong> abgleichen — je nach Fachrichtung unterschiedlich. Wir aktualisieren die Zahlen, sobald du sie hast.</div>
     </div>
 
     <div class="card">
-      <h2>🧭 Fachrichtungen</h2>
-      <div class="hint">Die Fachkraft für Gastronomie wird in einer von zwei Fachrichtungen geprüft.</div>
+      <h2>3 Prüfungsbereiche der Abschlussprüfung (Trọng số 60% – 30% – 10%)</h2>
+      <div class="hint">Căn cứ theo § 14 đến § 18 GastroAusbV (Gastronomieberufeausbildungsverordnung).</div>
+      <table>
+        <tr><th>Prüfungsbereich (Lĩnh vực thi)</th><th>Hình thức</th><th>Thời gian</th><th>Gewichtung</th></tr>
+        <tr>
+          <td><strong>1. Produktion und Service</strong><br><span class="muted">Sản xuất món ăn &amp; Phục vụ bàn</span></td>
+          <td>Thực hành nhiệm vụ thực tế + phỏng vấn tình huống (<em>situatives Fachgespräch</em> tối đa 10p)</td>
+          <td>⏱ <strong>90 phút</strong></td>
+          <td><strong>60 %</strong></td>
+        </tr>
+        <tr>
+          <td><strong>2. Gasterlebnis, Verkaufsförderung und Warenlagerung</strong><br><span class="muted">Trải nghiệm khách, Thúc đẩy bán hàng &amp; Quản lý kho</span></td>
+          <td>Thi viết (trắc nghiệm + tự luận theo đề AkA/IHK chuẩn hóa)</td>
+          <td>⏱ <strong>90 phút</strong></td>
+          <td><strong>30 %</strong></td>
+        </tr>
+        <tr>
+          <td><strong>3. Wirtschafts- und Sozialkunde (WiSo)</strong><br><span class="muted">Kinh tế &amp; Xã hội (Luật lao động, Bảo hiểm xã hội)</span></td>
+          <td>Thi viết trắc nghiệm/tự luận chuẩn toàn quốc</td>
+          <td>⏱ <strong>60 phút</strong></td>
+          <td><strong>10 %</strong></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>2 Chuyên ngành đào tạo (Schwerpunkte)</h2>
+      <div class="hint">Nội dung bài thi thực hành và đề thi viết được cá nhân hóa theo chuyên ngành của doanh nghiệp bạn học:</div>
       <div class="grid2">
-        <div class="mini"><h4>🍽️ Restaurantservice</h4><p>Gäste empfangen &amp; beraten, Speisen und Getränke servieren, Veranstaltungen begleiten.</p></div>
-        <div class="mini"><h4>⚙️ Systemgastronomie</h4><p>Standardisierte Abläufe, Warenwirtschaft, Gästekommunikation im Systembetrieb.</p></div>
+        <div class="mini">
+          <h4>Schwerpunkt Restaurantservice</h4>
+          <p>Tập trung vào kỹ năng phục vụ bàn kiểu truyền thống: Mise en place, bưng bê 3 đĩa, rót rượu/nước, tư vấn món ăn đồ uống tại bàn ăn, phục vụ tiệc và phong thái giao tiếp với khách.</p>
+        </div>
+        <div class="mini">
+          <h4>Schwerpunkt Systemgastronomie</h4>
+          <p>Tập trung vào tiêu chuẩn hóa quy trình (SOP), vận hành máy móc thiết bị bán tự động của chuỗi nhà hàng, tốc độ ra món, kiểm soát độ đồng nhất, đóng gói và phục vụ tại quầy/bàn.</p>
+        </div>
       </div>
     </div>
 
     <div class="card">
-      <h2>🗂️ Prüfungsbereiche (Übersicht)</h2>
-      <div class="hint">Typische Bereiche der GAP — Details folgen beim schrittweisen Ausbau.</div>
-      <table>
-        <tr><th>Prüfungsbereich</th><th>Inhalt (Beispiele)</th></tr>
-        <tr><td><strong>Arbeiten in der Gastronomie</strong></td><td>Warenannahme, Lagerung, Hygiene (HACCP), Arbeitssicherheit</td></tr>
-        <tr><td><strong>Speisen &amp; Getränke</strong></td><td>Zubereitung, Garverfahren, Produktkunde, Service</td></tr>
-        <tr><td><strong>Gäste beraten &amp; betreuen</strong></td><td>Kommunikation, Verkauf, Reklamation</td></tr>
-        <tr><td><strong>Wirtschafts- &amp; Sozialkunde</strong></td><td>Kaufvertrag, Rechte &amp; Pflichten, Arbeitsrecht</td></tr>
+      <h2>Bestehensregeln: 3 Điều kiện đỗ tốt nghiệp (§ 18 Abs. 2)</h2>
+      <div class="hint">Thang điểm 100 của IHK (tối thiểu 50 điểm = Note 4 "ausreichend" để đạt).</div>
+      <div class="formula"><b>Công thức tính điểm tổng:</b> Gesamtergebnis = (Produktion &amp; Service × 0,60) + (Gasterlebnis... × 0,30) + (WiSo × 0,10)</div>
+      <ul style="margin:12px 0 12px 20px;line-height:1.75;">
+        <li><strong>Điều kiện 1:</strong> Điểm tổng kết chung (<em>Gesamtergebnis</em>) phải đạt từ <strong>50 điểm trở lên</strong> (&ge; 50/100, tức tối thiểu Note 4).</li>
+        <li><strong>Điều kiện 2:</strong> Phải có <strong>ít nhất 2 trong 3 môn thi</strong> đạt từ <strong>50 điểm trở lên</strong>. (Vì môn Thực hành chiếm 60%, nếu trượt Thực hành thì hầu như không thể đạt tổng điểm 50).</li>
+        <li><strong>Điều kiện 3 (Chống điểm liệt):</strong> <strong>KHÔNG ĐƯỢC CÓ BẤT KỲ MÔN NÀO DƯỚI 30 ĐIỂM</strong> (&lt; 30 điểm = Note 6 <em>ungenügend</em>). Nếu có 1 môn bị Note 6 thì bị trượt toàn bộ kỳ thi ngay lập tức.</li>
+      </ul>
+      <div class="note"><strong>Quy chế thi gỡ điểm vấn đáp (§ 19 GastroAusbV):</strong> Nếu bị điểm kém (Note 5: 30–49 điểm) ở 1 trong 2 môn thi viết làm đe dọa kết quả tốt nghiệp, bạn được quyền nộp đơn xin <strong>thi vấn đáp bổ sung 15 phút</strong> (<em>Mündliche Ergänzungsprüfung</em>). Điểm mới tính theo tỷ lệ <strong>2 viết cũ : 1 vấn đáp mới</strong>: [ (Viết × 2) + Vấn đáp ] ÷ 3.</div>
+    </div>
+
+    <div class="card">
+      <h2>Lộ trình học tiếp sau tốt nghiệp (Durchstieg lên nghề 3 năm)</h2>
+      <div class="hint">Quy chế mới thiết kế liên thông trực tiếp giúp Azubi không bị mất thời gian:</div>
+      <p style="margin:8px 0;line-height:1.6;">
+        Sau khi thi đỗ bằng 2 năm <strong>Fachkraft für Gastronomie</strong>, nếu có nguyện vọng nâng cao trình độ, bạn và doanh nghiệp có thể ký tiếp phụ lục hợp đồng để <strong>học thẳng lên năm thứ 3</strong> của nghề 3 năm tương ứng:
+      </p>
+      <ul>
+        <li>Học chuyên ngành <em>Restaurantservice</em> &rarr; chuyển tiếp lên <strong>Fachmann / Fachfrau für Restaurants und Veranstaltungsgastronomie</strong>.</li>
+        <li>Học chuyên ngành <em>Systemgastronomie</em> &rarr; chuyển tiếp lên <strong>Fachmann / Fachfrau für Systemgastronomie</strong>.</li>
+      </ul>
+      <p style="margin-top:8px;font-size:.9em;color:var(--muted);">Toàn bộ 24 tháng đã học được IHK công nhận 100%, không phải học lại từ đầu!</p>
+    </div>
+  </div>
+
+  <!-- TAB 2: 3 PRÜFUNGSBEREICHE IM DETAIL -->
+  <div class="apanel" id="a-bereiche">
+    <div class="card">
+      <h2>1. Produktion und Service (60 % · 90 phút thực hành &amp; vấn đáp)</h2>
+      <div class="hint">Phần thi chiếm trọng số cao nhất (§ 15 GastroAusbV). Gồm bài thực hành thao tác tại chỗ và 10 phút phỏng vấn tình huống.</div>
+      <table style="margin-top:10px;">
+        <tr><th>Nội dung thao tác</th><th>Yêu cầu cụ thể từ giám khảo IHK</th></tr>
+        <tr>
+          <td><strong>Chuẩn bị &amp; Vệ sinh (Mise en place)</strong></td>
+          <td>Lên kế hoạch các bước làm việc khoa học, set-up đồ nghề ngăn nắp, tuân thủ tiêu chuẩn an toàn thực phẩm (HACCP) và vệ sinh cá nhân/khu vực.</td>
+        </tr>
+        <tr>
+          <td><strong>Tư vấn &amp; Bán hàng</strong></td>
+          <td>Tiếp nhận order của khách, tư vấn món ăn đồ uống đơn giản, kỹ năng gợi ý món thêm (Up-selling &amp; Cross-selling), ghi nhận yêu cầu riêng.</td>
+        </tr>
+        <tr>
+          <td><strong>Chế biến &amp; Trình bày</strong></td>
+          <td>Chế biến hoặc hoàn thiện các món ăn/thức uống đơn giản theo đúng công thức chuẩn (<em>Standardrezeptur</em>), đảm bảo chất lượng cảm quan và định lượng.</td>
+        </tr>
+        <tr>
+          <td><strong>Kỹ thuật phục vụ</strong></td>
+          <td>• <em>Restaurantservice:</em> Quy tắc phục vụ bên phải (đĩa ăn, rót rượu/nước), bên trái (bánh mì, dọn nĩa), bưng bê nhiều đĩa, phong thái lịch sự.<br>• <em>Systemgastronomie:</em> Thao tác chuẩn hóa (SOP), tốc độ, đóng gói mang về, kiểm soát chất lượng đồng nhất, xử lý đơn tại quầy.</td>
+        </tr>
+        <tr>
+          <td><strong>Phỏng vấn tình huống (Fachgespräch &le; 10p)</strong></td>
+          <td>Giám khảo hỏi trực tiếp: Giải thích 14 nhóm chất gây dị ứng (<em>Allergene</em>), chế độ ăn đặc biệt (vegan, vegetarisch, không gluten...), phương pháp chế biến và xử lý tình huống phát sinh với khách.</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>2. Gasterlebnis, Verkaufsförderung &amp; Warenlagerung (30 % · 90 phút viết)</h2>
+      <div class="hint">Phần thi lý thuyết chuyên ngành (§ 16 GastroAusbV). Đề thi trắc nghiệm và tình huống thực tế.</div>
+      <table style="margin-top:10px;">
+        <tr><th>Chủ đề chính</th><th>Kiến thức trọng tâm cần ôn</th></tr>
+        <tr>
+          <td><strong>Gasterlebnis &amp; Service</strong><br><span class="muted">Trải nghiệm &amp; Chăm sóc khách</span></td>
+          <td>• Quy trình đón tiếp, tâm lý khách hàng, giao tiếp lịch sự.<br>• Quy trình 5 bước giải quyết phàn nàn/khiếu nại (<em>Reklamationsmanagement</em>): Lắng nghe &rarr; Thông cảm &rarr; Xin lỗi &rarr; Đưa giải pháp &rarr; Cảm ơn.</td>
+        </tr>
+        <tr>
+          <td><strong>Verkaufsförderung</strong><br><span class="muted">Thúc đẩy bán hàng</span></td>
+          <td>• Các biện pháp kích cầu trực tiếp (tư vấn khéo léo, giới thiệu món đặc biệt trong ngày).<br>• Công cụ kỹ thuật số: Màn hình quảng cáo, kiosk gọi món, app tích điểm, voucher, mạng xã hội.<br>• Cách bài trí món ăn và quầy kệ kích thích thị giác.</td>
+        </tr>
+        <tr>
+          <td><strong>Warenlagerung &amp; Warenwirtschaft</strong><br><span class="muted">Quản lý kho bãi &amp; Hàng hóa</span></td>
+          <td>• Quy trình nhận hàng: Kiểm tra cảm quan, đo nhiệt độ thịt cá tươi (&le; +4°C), đồ đông lạnh (&le; -18°C), đối chiếu phiếu giao hàng (<em>Lieferschein</em>).<br>• Nguyên tắc lưu kho: <strong>FIFO</strong> (First In, First Out), phân loại kho khô, kho mát, kho đông, kiểm soát hạn sử dụng (<em>MHD</em>).<br>• Kiểm kê định kỳ (<em>Inventur</em>) và biện pháp chống thất thoát, hư hỏng.</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>3. Wirtschafts- und Sozialkunde (10 % · 60 phút viết)</h2>
+      <div class="hint">Phần thi lý thuyết kinh tế &amp; xã hội (§ 17 GastroAusbV). Đề thi thống nhất toàn quốc của AkA.</div>
+      <table style="margin-top:10px;">
+        <tr><th>Lĩnh vực</th><th>Kiến thức trọng tâm</th></tr>
+        <tr>
+          <td><strong>Hợp đồng học nghề &amp; Luật lao động</strong></td>
+          <td>• Quyền và nghĩa vụ của người học nghề (Azubi) và chủ sử dụng lao động theo BBiG.<br>• Thời gian thử việc (1 đến 4 tháng), quy định chấm dứt hợp đồng.<br>• Luật bảo vệ lao động vị thành niên (JArbSchG): tối đa 8h/ngày, 40h/tuần, thời gian nghỉ giữa ca.<br>• Luật thời gian làm việc (ArbZG), luật nghỉ phép (BUrlG), luật chống sa thải (KSchG).</td>
+        </tr>
+        <tr>
+          <td><strong>5 Trụ cột bảo hiểm xã hội Đức</strong></td>
+          <td>• Bảo hiểm y tế (<em>Krankenversicherung</em>).<br>• Bảo hiểm điều dưỡng (<em>Pflegeversicherung</em>).<br>• Bảo hiểm hưu trí (<em>Rentenversicherung</em>).<br>• Bảo hiểm thất nghiệp (<em>Arbeitslosenversicherung</em>).<br>• Bảo hiểm tai nạn lao động (<em>Unfallversicherung</em> - do chủ đóng 100%).</td>
+        </tr>
+        <tr>
+          <td><strong>Tổ chức lao động &amp; Doanh nghiệp</strong></td>
+          <td>• Hội đồng đại diện nhân viên (<em>Betriebsrat</em>), tổ chức công đoàn và thỏa ước tập thể (<em>Tarifvertrag</em>).<br>• Các hình thức doanh nghiệp, thị trường và hệ thống kinh tế thị trường định hướng xã hội tại CHLB Đức.</td>
+        </tr>
       </table>
     </div>
   </div>
 
-  <!-- THEMEN -->
+  <!-- TAB 3: ZWISCHENPRÜFUNG -->
+  <div class="apanel" id="a-zwischen">
+    <div class="card">
+      <h2>Kỳ thi giữa kỳ: Prüfungsbereich „Wirtschaftsdienst“</h2>
+      <div class="hint">Diễn ra vào học kỳ 3 (sau 12–18 tháng đào tạo) · Gồm 2 phần thi độc lập, mỗi phần chiếm 50 % điểm giữa kỳ.</div>
+      <p style="margin:10px 0;line-height:1.6;">
+        Mặc dù điểm kỳ thi này không tính vào điểm tốt nghiệp cuối khóa, nhưng kết quả thi phản ánh chính xác kiến thức năm 1 và việc tham gia là <strong>bắt buộc</strong> để được thi tốt nghiệp.
+      </p>
+      <table>
+        <tr><th>Phần thi</th><th>Thời gian</th><th>Nội dung chi tiết</th></tr>
+        <tr>
+          <td><strong>Teil 1: Lý thuyết viết</strong><br><span class="muted">Schriftliche Prüfung (50 %)</span></td>
+          <td>⏱ <strong>60 phút</strong></td>
+          <td>• <strong>Chăm sóc &amp; Vệ sinh:</strong> Tầm quan trọng của việc lau dọn, khử khuẩn phòng khách và dụng cụ.<br>• <strong>Bền vững &amp; Môi trường:</strong> Yêu cầu làm sạch khu vực phụ trợ (<em>Wirtschaftsräume</em>) tiết kiệm năng lượng, hóa chất an toàn (<em>Nachhaltigkeit</em>).<br>• <strong>Xử lý rác:</strong> Phân loại, tái chế và giảm thiểu rác thải (<em>Abfallvermeidung &amp; Entsorgung</em>).<br>• <strong>An toàn lao động:</strong> Quy định bảo hộ, phòng chống trượt ngã, bỏng, cắt cứa trong bếp và kho.</td>
+        </tr>
+        <tr>
+          <td><strong>Teil 2: Thực hành thao tác</strong><br><span class="muted">Praktische Arbeitsaufgabe (50 %)</span></td>
+          <td>⏱ <strong>60 phút</strong></td>
+          <td>• <strong>Nhận diện nguyên liệu (Warenerkennung):</strong> Quan sát, gọi tên chính xác các loại thực phẩm, rau củ quả, gia vị và nêu ứng dụng chế biến.<br>• <strong>Chọn dụng cụ theo dịp tiệc:</strong> Phân loại đúng đĩa sâu, đĩa phẳng, đĩa bánh mì; dao nĩa khai vị, món chính; ly vang đỏ, vang trắng, ly nước.<br>• <strong>Làm sạch &amp; Set up phòng khách:</strong> Vệ sinh, sắp xếp và kê đặt lại bàn ăn theo thực đơn mẫu chuẩn.</td>
+        </tr>
+      </table>
+      <div style="margin-top:16px;">
+        <button class="btn primary" onclick="go('#/zwischen')" style="display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border-radius:10px;font-weight:600;cursor:pointer;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          Mở bộ đề &amp; bài tập luyện thi Zwischenprüfung trong App
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 4: THEMEN & LỘ TRÌNH HỌC -->
   <div class="apanel" id="a-themen">
     <div class="card">
-      <h2>📚 Lernthemen</h2>
-      <div class="hint">Sammlung aller prüfungsrelevanten Themen. Inhalte werden Schritt für Schritt ergänzt.</div>
-      <div class="grid" id="abschlussThemen"></div>
+      <h2>Học liệu &amp; Bộ đề ôn thi tương ứng trong AzubiHub</h2>
+      <div class="hint">Bấm vào từng chuyên đề để mở bài học lý thuyết, flashcard và trắc nghiệm tương ứng trong App:</div>
+      <div class="grid" style="margin-top:14px;">
+        <div class="tile" onclick="go('#/fach/bfk1')">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
+          <h3>LF 2: Beschaffung &amp; Lagerung</h3>
+          <p>Nhận hàng, kiểm tra nhiệt độ lạnh, chứng từ, lưu kho FIFO, hao hụt.</p>
+          <div class="meta"><span class="pill ready">Học ngay →</span></div>
+        </div>
+        <div class="tile" onclick="go('#/fach/bfk1')">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 14.14 14.14"/></svg></div>
+          <h3>LF 6: Speisen &amp; Menüs</h3>
+          <p>Món ăn, dinh dưỡng, thực đơn, 14 chất gây dị ứng (Allergene), vegan.</p>
+          <div class="meta"><span class="pill ready">Học ngay →</span></div>
+        </div>
+        <div class="tile" onclick="go('#/fach/bfk1')">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
+          <h3>LF 9: Zahlungen &amp; Recht</h3>
+          <p>Thanh toán, hóa đơn, Bewirtungsvertrag, Zechprellerei, thuế VAT.</p>
+          <div class="meta"><span class="pill ready">Học ngay →</span></div>
+        </div>
+        <div class="tile" onclick="go('#/bfk/2/fleisch')">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="13" r="7"/><circle cx="11" cy="13" r="2.6"/><path d="M18 13h4"/></svg></div>
+          <h3>Fleisch &amp; Produktkunde</h3>
+          <p>Các phần thịt bò, heo, bê, gia cầm; phương pháp làm chín (Garverfahren).</p>
+          <div class="meta"><span class="pill ready">Học ngay →</span></div>
+        </div>
+        <div class="tile" onclick="go('#/bfk/2/kueche')">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a8 8 0 0 0-8 8c0 5 8 12 8 12s8-7 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <h3>Küche &amp; Ernährung</h3>
+          <p>Giá trị sinh học, trứng, tinh bột, chất béo, bảo quản và an toàn HACCP.</p>
+          <div class="meta"><span class="pill ready">Học ngay →</span></div>
+        </div>
+        <div class="tile" onclick="go('#/zwischen')">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <h3>Gedeck &amp; Tischkultur</h3>
+          <p>Cách bày bàn tiệc, thứ tự dao nĩa, phân loại ly cốc, nguyên tắc phục vụ.</p>
+          <div class="meta"><span class="pill ready">Luyện ngay →</span></div>
+        </div>
+        <div class="tile" onclick="go('#/fach/wiko')">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5v17"/><path d="M6 6.5h12"/><path d="M6 6.5 3 13.5h6z"/><path d="M18 6.5 15 13.5h6z"/><path d="M8.5 20.5h7"/></svg></div>
+          <h3>WiSo: Kinh tế &amp; Xã hội</h3>
+          <p>Hợp đồng học nghề, luật lao động, 5 bảo hiểm xã hội, quyền lợi Azubi.</p>
+          <div class="meta"><span class="pill ready">Học ngay →</span></div>
+        </div>
+        <div class="tile" onclick="go('#/fach/bfk1')">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+          <h3>Đề thi mẫu Klassenarbeiten</h3>
+          <p>Kho đề thi thử 50 điểm có lời giải chi tiết theo chuẩn khảo thí IHK.</p>
+          <div class="meta"><span class="pill ready">Làm đề →</span></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
