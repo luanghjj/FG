@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>§ Abschlussprüfung Sommer 2024 — Produktion und Service (DE/VI)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1B1F2A; --paper:#F1ECDE; --paper2:#EAE3D0; --wax:#7A2E2E;
+  --brass:#9C7A3C; --slate:#48586B; --line:#D8CFB8; --slateline:#c7d0da;
+  --green:#5b7a52;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--paper);
+  background-image:repeating-linear-gradient(0deg, rgba(0,0,0,0.012) 0px, rgba(0,0,0,0.012) 1px, transparent 1px, transparent 3px);
+  color:var(--ink); font-family:"Source Serif 4",Georgia,serif; line-height:1.65; font-size:17px;
+}
+::selection{background:#d9c9a3;}
+.top-bar{background:var(--ink); color:var(--paper); padding:10px 18px; display:flex; justify-content:space-between; align-items:center; font-family:"IBM Plex Mono",monospace; font-size:.78rem; position:relative; z-index:30;}
+.top-bar a{color:var(--paper); text-decoration:none; opacity:.85; display:inline-flex; align-items:center; gap:6px;}
+.top-bar a:hover{opacity:1; color:#EFC9A0;}
+.top-bar .badge-pro{background:#8944AB; color:#fff; border-radius:4px; padding:2px 8px; font-size:.7rem; font-weight:600;}
+header.cover{padding:50px 24px 38px; text-align:center; border-bottom:3px double var(--brass);
+  background:linear-gradient(180deg, var(--paper2), var(--paper));}
+header.cover .kicker{font-family:"IBM Plex Mono",monospace; letter-spacing:.18em; font-size:.72rem;
+  text-transform:uppercase; color:var(--brass); margin-bottom:14px;}
+header.cover h1{font-family:"Fraunces",serif; font-weight:600; font-size:clamp(1.8rem,5vw,2.9rem);
+  margin:0 0 10px; color:var(--ink); letter-spacing:-.01em;}
+header.cover h1 em{font-style:italic; color:var(--wax); font-weight:500;}
+header.cover .subtitle-de{font-size:1.02rem; margin:4px 0;}
+header.cover .subtitle-vi{font-family:"IBM Plex Sans",sans-serif; font-size:.92rem; color:var(--slate); margin:2px 0 0;}
+header.cover .subtitle-vi:before{content:"VI · "; font-weight:600; opacity:.7;}
+header.cover .exam-meta{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:18px;
+  font-family:"IBM Plex Mono",monospace; font-size:.72rem;}
+header.cover .exam-meta span{border:1px solid var(--brass); color:var(--wax); padding:4px 12px; border-radius:20px; letter-spacing:.04em;}
+.legend{max-width:820px; margin:22px auto 0; display:flex; gap:18px; justify-content:center; flex-wrap:wrap;
+  align-items:center; font-family:"IBM Plex Sans",sans-serif; font-size:.82rem;}
+.legend .item{display:flex; align-items:center; gap:8px;}
+.legend .swatch{width:16px; height:16px; border-radius:2px; flex-shrink:0;}
+.legend .swatch.de{background:var(--wax);} .legend .swatch.vi{background:var(--slate);}
+.toggle-btn{cursor:pointer; font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.05em;
+  background:var(--ink); color:var(--paper); border:none; padding:8px 14px; border-radius:6px; text-transform:uppercase;}
+.toggle-btn:hover{background:var(--wax);}
+
+nav.spine{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); display:flex; justify-content:space-between; align-items:center;
+  padding:0 10px; box-shadow:0 2px 10px rgba(0,0,0,.15);}
+.spine-nav-scroll{display:flex; gap:0; overflow-x:auto; white-space:nowrap; align-items:center; flex:1; min-width:0;}
+.spine-nav-scroll a{color:var(--paper); text-decoration:none; font-family:"IBM Plex Mono",monospace; font-size:.74rem;
+  letter-spacing:.03em; padding:13px 12px; border-right:1px solid rgba(255,255,255,.12); opacity:.72;}
+.spine-nav-scroll a:hover{opacity:1; background:rgba(255,255,255,.06); color:#EFC9A0;}
+.spine-nav-scroll .grp{font-family:"IBM Plex Mono",monospace; font-size:.64rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--brass); padding:13px 8px 13px 10px; align-self:center;}
+
+.spine-timer{display:flex; align-items:center; gap:8px; padding:4px 0 4px 10px; border-left:1px solid rgba(255,255,255,.15); flex-shrink:0;}
+.spine-clock{font-family:"IBM Plex Mono",monospace; font-size:.88rem; font-weight:700; color:#EFC9A0; letter-spacing:.06em;
+  padding:4px 8px; border-radius:4px; background:rgba(255,255,255,.08); display:inline-flex; align-items:center; gap:5px;}
+.spine-clock.warning{color:#ffcf56;}
+.spine-clock.urgent{color:#ff6b6b; animation:pulseUrgent 1s infinite alternate;}
+.spine-btn{cursor:pointer; font-family:"IBM Plex Mono",monospace; font-size:.7rem; font-weight:600;
+  background:rgba(255,255,255,.14); color:var(--paper); border:1px solid rgba(255,255,255,.2);
+  padding:5px 9px; border-radius:4px; transition:all .15s ease; white-space:nowrap;}
+.spine-btn:hover{background:var(--wax); border-color:var(--wax); color:#fff;}
+.spine-btn.finish{background:#2e6b36; border-color:#2e6b36; color:#fff;}
+.spine-btn.finish:hover{background:#3b8a45;}
+
+.timer-progress-track{position:absolute; bottom:0; left:0; width:100%; height:3px; background:rgba(255,255,255,.1); pointer-events:none;}
+.timer-progress-fill{height:100%; width:0%; background:var(--brass); transition:width .3s ease, background-color .3s ease;}
+.timer-progress-fill.warning{background:#d48b11;}
+.timer-progress-fill.urgent{background:var(--wax);}
+
+/* HERO TIMER CARD */
+.timer-hero{max-width:580px; margin:22px auto 0; background:rgba(255,255,255,.75); border:2px solid var(--brass);
+  border-radius:12px; padding:18px 20px; box-shadow:0 4px 16px rgba(0,0,0,.06); text-align:center;}
+.timer-hero-kicker{font-family:"IBM Plex Mono",monospace; font-size:.72rem; font-weight:600;
+  letter-spacing:.08em; text-transform:uppercase; color:var(--wax); margin-bottom:4px;}
+.timer-hero-clock{font-family:"IBM Plex Mono",monospace; font-weight:700; font-size:2.8rem;
+  line-height:1.15; color:var(--ink); margin:6px 0 10px; letter-spacing:.04em;}
+.timer-hero-clock.warning{color:#b37400;}
+.timer-hero-clock.urgent{color:var(--wax); animation:pulseUrgent 1s infinite alternate;}
+@keyframes pulseUrgent{0%{transform:scale(1); opacity:1;} 100%{transform:scale(1.03); opacity:.85;}}
+.timer-hero-actions{display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-bottom:8px;}
+.timer-hero-btn{cursor:pointer; font-family:"IBM Plex Mono",monospace; font-size:.8rem; letter-spacing:.04em;
+  font-weight:600; text-transform:uppercase; border:none; padding:10px 18px; border-radius:6px;
+  transition:all .18s ease; display:inline-flex; align-items:center; gap:6px;}
+.timer-hero-btn.primary{background:var(--wax); color:var(--paper);}
+.timer-hero-btn.primary:hover{background:#943838; transform:translateY(-1px);}
+.timer-hero-btn.sub{background:transparent; color:var(--ink); border:1px solid var(--line); font-weight:500;}
+.timer-hero-btn.sub:hover{background:var(--paper2); border-color:var(--brass);}
+.timer-hero-btn.finish{background:#2e6b36; color:#fff;}
+.timer-hero-btn.finish:hover{background:#24542a;}
+.timer-hero-note{font-size:.82rem; color:var(--slate); font-family:"IBM Plex Sans",sans-serif; margin:0;}
+.autosave-badge{display:inline-block; font-size:.7rem; font-family:"IBM Plex Mono",monospace;
+  color:#2e6b36; background:#eaf5ec; border:1px solid #b7deb9; padding:2px 8px; border-radius:12px; margin-top:6px;}
+
+main{max-width:860px; margin:0 auto; padding:10px 24px 100px;}
+section.chapter{padding:50px 0 20px; border-bottom:1px solid var(--line); scroll-margin-top:54px;}
+section.chapter:last-of-type{border-bottom:none;}
+.chapter-head{display:flex; align-items:baseline; gap:16px; margin-bottom:6px;}
+.chapter-num{font-family:"Fraunces",serif; font-weight:700; font-size:2.5rem; color:var(--brass); line-height:1; flex-shrink:0;}
+.chapter-title-de{font-family:"Fraunces",serif; font-weight:600; font-size:1.5rem; margin:0;}
+.chapter-title-vi{font-family:"IBM Plex Sans",sans-serif; font-size:.95rem; color:var(--slate); margin:4px 0 0 60px;}
+.chapter-title-vi:before{content:"VI · "; font-weight:600; opacity:.7;}
+body.hide-vi .vi, body.hide-vi .vi-sub, body.hide-vi .chapter-title-vi, body.hide-vi .subtitle-vi{display:none !important;}
+p.vi{font-family:"IBM Plex Sans",sans-serif; font-size:.9rem; color:var(--slate); margin:8px 0 2px;
+  padding-left:12px; border-left:3px solid var(--slateline);}
+.task{background:#fff; border:1px solid var(--line); border-left:6px solid var(--wax); border-radius:10px;
+  padding:16px 18px; margin:18px 0;}
+.task .task-head{font-family:"IBM Plex Mono",monospace; font-size:.72rem; font-weight:600; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--wax); display:block; margin-bottom:8px;}
+.task .sub{font-weight:600; color:var(--ink); margin:12px 0 4px; font-size:1rem;}
+table.exam{border-collapse:collapse; width:100%; margin:12px 0; font-size:.92rem; background:#fff;}
+table.exam th, table.exam td{border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top;}
+table.exam th{background:var(--paper2); font-family:"IBM Plex Sans",sans-serif; font-size:.82rem;}
+.menu-cat{font-family:"Fraunces",serif; font-weight:600; color:var(--wax); margin:14px 0 2px; font-size:1.05rem;}
+ul.tight li{margin:3px 0;}
+ol.hinweise li{margin:8px 0;}
+.kv{background:var(--paper2); border:1px solid var(--line); border-radius:8px; padding:12px 16px; margin:14px 0; font-size:.95rem;}
+.kv b{color:var(--wax);}
+footer{text-align:center; padding:44px 20px 70px; font-family:"IBM Plex Sans",sans-serif; font-size:.82rem;
+  color:var(--slate); border-top:1px solid var(--line);}
+@media(max-width:640px){
+  .chapter-title-vi{margin-left:0;}
+  .timer-hero-clock{font-size:2.2rem;}
+  .spine-clock{font-size:.78rem; padding:3px 6px;}
+  .spine-btn{padding:4px 6px; font-size:.65rem;}
+}
+@media print{nav.spine,.toggle-btn,.top-bar{display:none;}body{font-size:12pt;background:#fff;}}
+.answer-area{margin:14px 0 4px;}
+.answer-area label{font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--slate); display:block; margin-bottom:6px; font-weight:600;}
+.answer-area textarea{width:100%; min-height:96px; border:1px solid var(--line); border-radius:8px;
+  padding:10px 12px; font-family:"Source Serif 4",Georgia,serif; font-size:.95rem;
+  background:#fffdf8; color:var(--ink); resize:vertical;}
+.answer-area textarea:focus{outline:2px solid var(--brass); border-color:var(--brass);}
+details.loesung{margin:10px 0 4px; border:1px dashed var(--brass); border-radius:8px; background:rgba(156,122,60,.07);}
+details.loesung summary{cursor:pointer; font-family:"IBM Plex Mono",monospace; font-size:.74rem;
+  letter-spacing:.05em; text-transform:uppercase; color:var(--wax); padding:10px 14px; font-weight:600; list-style:none;}
+details.loesung summary::-webkit-details-marker{display:none;}
+details.loesung summary:before{content:"▸ ";}
+details.loesung[open] summary:before{content:"▾ ";}
+details.loesung .loesung-body{padding:2px 14px 12px; font-size:.94rem;}
+details.loesung .loesung-body ul, details.loesung .loesung-body ol{margin:6px 0;}
+details.loesung .loesung-body table.exam{font-size:.85rem;}
+</style>
+</head>
+<body>
+<div class="top-bar">
+  <a href="index.html#/abschluss">← Về AzubiHub · Abschlussprüfung</a>
+  <div>
+    <span class="badge-pro">PRO ONLY</span>
+    <span style="margin-left:8px">IHK-Prüfungsnummer: 6132</span>
+  </div>
+</div>
+
+<header class="cover">
+  <div class="kicker">IHK · Fachkraft für Gastronomie (AO 2022) · Prüfungsnummer 6132</div>
+  <h1>§ Abschlussprüfung <em>Sommer 2024</em></h1>
+  <p class="subtitle-de">1. Prüfungstag — Produktion und Service · Schwerpunkt Restaurantservice</p>
+  <p class="subtitle-vi">Đề thi tốt nghiệp IHK mùa hè 2024 — Phần 1: Sản xuất và Phục vụ · Chuyên sâu phục vụ nhà hàng</p>
+  <div class="exam-meta">
+    <span>23. April 2024</span><span>4 Aufgaben</span><span>60 Minuten</span><span>100 Punkte</span>
+  </div>
+  <div class="legend">
+    <div class="item"><span class="swatch de"></span> Deutsch (đọc trước)</div>
+    <div class="item"><span class="swatch vi"></span> Tiếng Việt (đọc sau)</div>
+    <button class="toggle-btn" id="viToggle" onclick="toggleVi()">🇻🇳 Tiếng Việt: AN</button>
+  </div>
+
+  <!-- BẢNG ĐIỀU KHIỂN ĐẾM GIỜ LÀM BÀI THI -->
+  <div class="timer-hero" id="timerHero">
+    <div class="timer-hero-kicker">⏱️ Đồng hồ tính giờ làm bài · Prüfungszeit: 60 Minuten</div>
+    <div class="timer-hero-clock" id="timerHeroClock">60:00</div>
+    <div class="timer-hero-actions">
+      <button class="timer-hero-btn primary" id="timerHeroBtn" onclick="toggleExamTimer()">
+        <span id="timerHeroBtnIcon">▶</span> <span id="timerHeroBtnText">Bắt đầu làm bài (60 phút)</span>
+      </button>
+      <button class="timer-hero-btn sub" id="timerResetBtn" onclick="resetExamTimer()" style="display:none">
+        ↺ Đặt lại
+      </button>
+      <button class="timer-hero-btn finish" id="timerFinishBtn" onclick="finishExamTimer()" style="display:none">
+        🏁 Nộp bài / Xem đáp án
+      </button>
+    </div>
+    <p class="timer-hero-note" id="timerHeroNote">Bấm nút để bắt đầu tính giờ làm bài thi 60 phút theo đúng quy chuẩn IHK.</p>
+    <div id="autosaveNotice" class="autosave-badge" style="display:none">✓ Bài làm tự động lưu</div>
+  </div>
+</header>
+
+<nav class="spine">
+  <div class="spine-nav-scroll">
+    <span class="grp">Đề thi</span>
+    <a href="#info">Info</a>
+    <a href="#hinweise">Hinweise</a>
+    <a href="#betrieb">Betrieb</a>
+    <a href="#a1">Aufgabe 1</a>
+    <a href="#a2">Aufgabe 2</a>
+    <a href="#a3">Aufgabe 3</a>
+    <a href="#a4">Aufgabe 4</a>
+  </div>
+  <div class="spine-timer">
+    <div class="spine-clock" id="spineClock" title="Thời gian còn lại">⏱️ 60:00</div>
+    <button class="spine-btn" id="spineTimerBtn" onclick="toggleExamTimer()">▶ Bắt đầu</button>
+    <button class="spine-btn finish" id="spineFinishBtn" onclick="finishExamTimer()" style="display:none">🏁 Nộp bài</button>
+  </div>
+  <div class="timer-progress-track">
+    <div class="timer-progress-fill" id="timerProgressFill"></div>
+  </div>
+</nav>
+
+<main>
+<section class="chapter" id="info">
+  <div class="chapter-head"><span class="chapter-num">§1</span>
+    <h2 class="chapter-title-de">Prüfungsinfo</h2></div>
+  <p class="chapter-title-vi">Thông tin đề thi</p>
+  <div class="kv">
+    <b>Abschlussprüfung Sommer 2024</b> · Fachkraft für Gastronomie, Schwerpunkt Restaurantservice (AO 2022) · Nr. 6132<br>
+    <b>1. Prüfungstag:</b> Dienstag, 23. April 2024<br>
+    <b>Prüfungsbereich:</b> 1. Produktion und Service<br>
+    <b>Umfang:</b> 4 ungebundene Aufgaben · 60 Minuten Prüfungszeit · 100 Punkte
+    <p class="vi">Kỳ thi tốt nghiệp mùa hè 2024 · Nghề Nhân viên chuyên ngành ẩm thực, chuyên sâu phục vụ nhà hàng (quy chế 2022) · Mã đề 6132. Ngày thi thứ nhất: Thứ Ba, 23.04.2024. Phần thi: 1. Sản xuất và Phục vụ. Gồm 4 câu tự luận · 60 phút · 100 điểm.</p>
+  </div>
+</section>
+
+<section class="chapter" id="hinweise">
+  <div class="chapter-head"><span class="chapter-num">§2</span>
+    <h2 class="chapter-title-de">Bearbeitungshinweise</h2></div>
+  <p class="chapter-title-vi">Hướng dẫn làm bài (8 điểm lưu ý trong đề)</p>
+  <ol class="hinweise">
+    <li>Bevor Sie mit der Bearbeitung beginnen, prüfen Sie bitte, ob dieser Aufgabensatz vollständig ist. Wenden Sie sich bei Unstimmigkeiten sofort an die Aufsicht!
+      <p class="vi">Trước khi làm bài, kiểm tra xem đề có đầy đủ không. Nếu thiếu/sai, báo ngay cho giám thị!</p></li>
+    <li>Füllen Sie als Erstes die Kopfleiste des Aufgabensatzes vollständig aus!
+      <p class="vi">Đầu tiên, điền đầy đủ phần thông tin thí sinh (Kopfleiste) trên đầu đề thi!</p></li>
+    <li>Lesen Sie bitte den Text der Aufgaben ganz durch, bevor Sie mit der Bearbeitung beginnen. Die bei den Aufgaben angegebene Bearbeitungszeit ist als Hinweis zu verstehen und soll Ihnen helfen, sich die Prüfungszeit richtig einzuteilen.
+      <p class="vi">Đọc kỹ toàn bộ đề trước khi làm. Thời gian ghi ở mỗi câu chỉ là gợi ý để phân bổ thời gian hợp lý.</p></li>
+    <li>Berücksichtigen Sie, dass mit diesen Aufgaben Situationen der Betriebspraxis dargestellt werden. Die Bearbeitung sollte deshalb auch entsprechend den betrieblichen Gepflogenheiten erfolgen.
+      <p class="vi">Các câu hỏi mô tả tình huống thực tế trong doanh nghiệp — trả lời theo đúng tập quán nghề.</p></li>
+    <li>Halten Sie sich bei der Bearbeitung der Aufgaben genau an die Vorgaben zur Beantwortung der Fragen. Wenn z. B. vier Angaben gefordert werden und sechs Angaben anführen, werden nur die ersten vier Angaben bewertet.
+      <p class="vi">Trả lời đúng số lượng yêu cầu. Ví dụ: hỏi 4 ý mà ghi 6 ý thì chỉ chấm 4 ý đầu.</p></li>
+    <li>Als Hilfsmittel ist grundsätzlich ein nicht programmierter, netzunabhängiger Taschenrechner ohne Kommunikationsmöglichkeit mit Dritten zugelassen.
+      <p class="vi">Được mang máy tính bỏ túi không lập trình được, không nối mạng, không liên lạc với người khác.</p></li>
+    <li>Schreiben Sie deutlich und geben Sie bei Rechenaufgaben Ihren Rechenweg an, da Ihnen sonst Punkte verloren gehen können. Sofern nicht ausdrücklich ein Brief oder eine Formulierung in ganzen Sätzen gefordert werden, ist eine stichwortartige Beantwortung zulässig.
+      <p class="vi">Viết rõ ràng; bài tính phải ghi cách tính nếu không sẽ mất điểm. Trừ khi yêu cầu viết thư/câu hoàn chỉnh, được trả lời dạng gạch đầu dòng.</p></li>
+    <li>Für Hilfsaufzeichnungen können Sie das in der Tasche beigelegte Konzeptpapier verwenden. Bewertet werden jedoch grundsätzlich nur Ihre Eintragungen in diesem Aufgabensatz.
+      <p class="vi">Được dùng giấy nháp kèm theo để ghi chú, nhưng chỉ bài làm trong đề thi mới được chấm.</p></li>
+  </ol>
+</section>
+
+<section class="chapter" id="betrieb">
+  <div class="chapter-head"><span class="chapter-num">§3</span>
+    <h2 class="chapter-title-de">Unternehmensbeschreibung</h2></div>
+  <p class="chapter-title-vi">Mô tả doanh nghiệp (tình huống chung cho câu 1–3)</p>
+  <div class="kv">
+    Sie sind Mitarbeiter/Mitarbeiterin im <b>Restaurant FRIENDS</b>, Rechtsform GmbH, Sonnenstraße 1, 10115 Berlin,
+    Telefon 030 233245, Geschäftsführer: Thomas und Lia Ammer.<br>
+    E-Mail: restaurant@friends.de, Homepage: www.restaurant-friends.de
+    <p class="vi">Bạn là nhân viên nhà hàng FRIENDS (công ty TNHH), địa chỉ Sonnenstraße 1, 10115 Berlin, điện thoại 030 233245, giám đốc: Thomas và Lia Ammer. Email: restaurant@friends.de, website: www.restaurant-friends.de</p>
+  </div>
+  <p><b>Angaben zur 1. bis 3. Aufgabe:</b> Am 12. Mai 2024 soll ein Muttertagsbuffet im Restaurant FRIENDS ausgerichtet werden.</p>
+  <p class="vi"><b>Thông tin chung cho câu 1 đến câu 3:</b> Ngày 12.05.2024, nhà hàng FRIENDS tổ chức tiệc buffet Ngày của Mẹ.</p>
+</section>
+
+<section class="chapter" id="a1">
+  <div class="chapter-head"><span class="chapter-num">§4</span>
+    <h2 class="chapter-title-de">1. Aufgabe</h2></div>
+  <p class="chapter-title-vi">Câu 1</p>
+  <div class="task">
+    <span class="task-head">1. Aufgabe · 10 Punkte · ca. 5 Minuten Bearbeitungszeit</span>
+    <p>Sie sind im Wirtschaftsdienst tätig und beginnen Ihren Frühdienst um 7:00 Uhr mit den Vorbereitungsarbeiten im Restaurant-Service. Notieren Sie <b>5</b> Arbeiten, die Sie zu erledigen haben!</p>
+    <p class="vi">Bạn làm ở bộ phận kinh tế (Wirtschaftsdienst), ca sáng bắt đầu lúc 7:00 với công việc chuẩn bị ở khu vực phục vụ nhà hàng. Ghi ra <b>5</b> công việc bạn phải làm!</p>
+    <div class="answer-area">
+      <label for="a1">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="a1" placeholder="Hier schreiben …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <ul>
+          <li>Tische eindecken (Besteck, Gläser, Servietten)</li>
+          <li>Bestuhlung prüfen und ordentlich stellen</li>
+          <li>Getränke auffüllen, Kühlschränke kontrollieren</li>
+          <li>Kaffeemaschine einschalten und vorbereiten</li>
+          <li>Speisekarten auslegen, Licht/Musik einschalten, Sauberkeit kontrollieren</li>
+        </ul>
+        <p class="vi">Kê bàn (dao nĩa, ly, khăn ăn); kiểm tra &amp; sắp ghế; châm đồ uống, kiểm tra tủ lạnh; bật &amp; chuẩn bị máy cà phê; đặt menu, bật đèn/nhạc, kiểm tra vệ sinh.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section class="chapter" id="a2">
+  <div class="chapter-head"><span class="chapter-num">§5</span>
+    <h2 class="chapter-title-de">2. Aufgabe — Muttertagsbuffet</h2></div>
+  <p class="chapter-title-vi">Câu 2 — Tiệc buffet Ngày của Mẹ</p>
+  <div class="task">
+    <span class="task-head">2. Aufgabe · 49 Punkte · ca. 30 Minuten Bearbeitungszeit</span>
+    <p><b>Situation:</b> Sie bieten folgendes Muttertagsbuffet an:</p>
+    <p class="vi"><b>Tình huống:</b> Nhà hàng phục vụ thực đơn buffet Ngày của Mẹ như sau:</p>
+    <p class="menu-cat">Muttertagsbuffet</p>
+    <p class="menu-cat">Vorspeisen</p>
+    <ul class="tight">
+      <li>Ziegenkäse im Speckmantel mit karamellisierten Balsamico-Zwiebeln, Spargelsalat</li>
+      <li>Kräutercrêpes mit gebeiztem Lachs, Bärlauch-Frischkäse</li>
+      <li>Spargel im Schinken-Blätterteigmantel mit holländischer Sauce</li>
+      <li>Spinatsalat mit Avocado und kandierten Nüssen</li>
+    </ul>
+    <p class="vi"><b>Khai vị:</b> Phô mai dê bọc thịt xông khói với hành tây balsamic caramen, salad măng tây; Bánh crêpe rau thơm với cá hồi muối, phô mai tươi tỏi gấu; Măng tây cuộn thịt nguội trong vỏ bánh ngàn lớp với sốt hollandaise; Salad rau chân vịt với bơ và hạt caramen.</p>
+    <p class="menu-cat">Suppen</p>
+    <ul class="tight">
+      <li>Rinderkraftbrühe mit Eierstich</li>
+      <li>Radieschenschaumsuppe mit Bärlauchcroûtons</li>
+    </ul>
+    <p class="vi"><b>Súp:</b> Nước dùng bò trong với trứng hấp; Súp kem củ cải đỏ với bánh mì nướng giòn tỏi gấu.</p>
+    <p class="menu-cat">Hauptgänge</p>
+    <ul class="tight">
+      <li>Lachs-Spinat-Lasagne</li>
+      <li>Kross gebratene Maischolle, Schinkenwürfel, Bratkartoffeln, Gurkensalat</li>
+      <li>Gegrilltes Schweinekotelett, Burgundersauce, Brokkoli, Schlosskartoffeln</li>
+      <li>Gebratener Lammrücken, Tomatenbutter, Ratatouille, Kartoffelkroketten</li>
+      <li>Süßkartoffel-Kichererbsen-Curry mit Basmatireis</li>
+    </ul>
+    <p class="vi"><b>Món chính:</b> Lasagne cá hồi rau chân vịt; Cá bơn chiên giòn, thịt nguội thái hạt lựu, khoai tây áp chảo, salad dưa chuột; Sườn heo nướng, sốt vang đỏ Burgunder, bông cải xanh, khoai tây bi; Thăn cừu áp chảo, bơ cà chua, rau củ hầm ratatouille, khoai tây chiên xù; Cà ri khoai lang đậu gà với cơm basmati.</p>
+    <p class="menu-cat">Dessert</p>
+    <ul class="tight"><li>Vanilleeis mit Erdbeerragout</li></ul>
+    <p class="vi"><b>Tráng miệng:</b> Kem vani với sốt dâu tây.</p>
+  </div>
+
+  <div class="task">
+    <span class="task-head">2.1 · 4 Punkte</span>
+    <p>Ein Gast wünscht vegetarische Speisen. Empfehlen Sie ein vegetarisches 3-Gänge-Menü aus dem Muttertagsbuffet! Wählen Sie dazu noch 2 geeignete Gänge aus!</p>
+    <p>1. Gang: ___<br>2. Gang: ___<br>3. Gang: Vanilleeis mit Erdbeerragout</p>
+    <p class="vi">Một vị khách muốn ăn chay. Hãy đề xuất thực đơn chay 3 món từ buffet Ngày của Mẹ! Chọn thêm 2 món phù hợp! Món 1: ___ · Món 2: ___ · Món 3: Kem vani với sốt dâu tây.</p>
+    <div class="answer-area">
+      <label for="a21">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="a21" placeholder="1. Gang: …&#10;2. Gang: …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <ul>
+          <li>1. Gang: Radieschenschaumsuppe mit Bärlauchcroûtons</li>
+          <li>2. Gang: Süßkartoffel-Kichererbsen-Curry mit Basmatireis</li>
+          <li>3. Gang: Vanilleeis mit Erdbeerragout (vorgegeben)</li>
+        </ul>
+        <p>Alternative für den 1. Gang: Spinatsalat mit Avocado und kandierten Nüssen.</p>
+        <p class="vi">Món 1: Súp kem củ cải đỏ với bánh mì tỏi gấu (hoặc salad rau chân vịt với bơ); Món 2: Cà ri khoai lang đậu gà với cơm basmati; Món 3 đã cho sẵn. Lưu ý: các món có Speck, Schinken, Lachs, Rind đều KHÔNG chay.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="task">
+    <span class="task-head">2.2 · 6 Punkte</span>
+    <p>Die Gäste von Tisch 12 wünschen eine Weinempfehlung zum Lammrücken. Empfehlen Sie den Gästen <b>2</b> unterschiedliche Weine! (Keine Wiederholungen in Rebsorte und Anbaugebiet!)</p>
+    <p class="vi">Khách bàn 12 muốn được tư vấn rượu vang dùng kèm thăn cừu. Đề xuất <b>2</b> loại vang khác nhau! (Không trùng giống nho và vùng trồng!)</p>
+    <table class="exam">
+      <tr><th>Name/Herkunftsbezeichnung</th><th>Rebsorte</th><th>Qualitätsstufe</th><th>Geschmacksangabe</th><th>Anbaugebiet</th><th>Abfüller/Erzeuger</th></tr>
+      <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td></tr>
+    </table>
+    <p class="vi">Bảng: Tên/Xuất xứ · Giống nho · Cấp chất lượng · Vị · Vùng trồng · Nhà đóng chai/sản xuất (2 dòng).</p>
+    <div class="answer-area">
+      <label for="a22">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="a22" placeholder="Hier schreiben …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <p>Beispiel (zum Lammrücken passt kräftiger Rotwein, trocken):</p>
+        <table class="exam">
+          <tr><th>Name</th><th>Rebsorte</th><th>Qualitätsstufe</th><th>Geschmack</th><th>Anbaugebiet</th><th>Abfüller</th></tr>
+          <tr><td>Durbacher Kochberg Spätburgunder Spätlese</td><td>Spätburgunder</td><td>Spätlese</td><td>trocken</td><td>Baden</td><td>Winzergenossenschaft Durbach</td></tr>
+          <tr><td>Fellbacher Lemberger</td><td>Lemberger</td><td>Qualitätswein</td><td>trocken</td><td>Württemberg</td><td>Weingut Aldinger</td></tr>
+        </table>
+        <p class="vi">Đáp án mẫu — mọi cặp vang đỏ Đức hợp với thịt cừu đều được, miễn khác giống nho và khác vùng trồng.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="task">
+    <span class="task-head">2.3 · 3 Punkte</span>
+    <p>Nennen Sie <b>3</b> bestimmte Weinanbaugebiete für Qualitätsweine in Deutschland! <b>Keine Wiederholung zu 2.2!</b></p>
+    <p class="vi">Kể tên <b>3</b> vùng trồng nho cụ thể cho vang chất lượng ở Đức! <b>Không được trùng với câu 2.2!</b></p>
+    <div class="answer-area">
+      <label for="a23">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="a23" placeholder="Hier schreiben …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <ul><li>Mosel</li><li>Rheingau</li><li>Pfalz</li></ul>
+        <p class="vi">Mosel, Rheingau, Pfalz — không trùng Baden và Württemberg ở câu 2.2 (các vùng khác như Franken, Nahe, Rheinhessen cũng được).</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="task">
+    <span class="task-head">2.4 · 4 Punkte</span>
+    <p>Ein Hauptgericht soll als Hauptkomponente Lammrücken enthalten. Ihr Küchenchef geht pro Portion von 120 Gramm servierfertigem Lammrücken aus. Erfahrungsgemäß ist mit einem Garverlust von 25&nbsp;% zu rechnen. Es sollen 50 Portionen vorbereitet werden. Wie viel kg Lammrücken muss für das Buffet mindestens eingekauft werden? Der Rechenweg ist anzugeben.</p>
+    <p class="vi">Món chính có thành phần chính là thăn cừu. Bếp trưởng tính mỗi suất cần 120 g thăn cừu đã chế biến xong. Theo kinh nghiệm, hao hụt khi nấu là 25%. Cần chuẩn bị 50 suất. Hỏi phải mua tối thiểu bao nhiêu kg thăn cừu cho buffet? Phải ghi rõ cách tính.</p>
+    <div class="answer-area">
+      <label for="a24">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="a24" placeholder="Rechenweg hier …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <p>50 Portionen × 120 g = 6 000 g = 6 kg (servierfertig)<br>
+        Garverlust 25 % → 6 kg ≙ 75 %<br>
+        6 kg ÷ 75 × 100 = <b>8 kg</b></p>
+        <p>Antwort: Es müssen mindestens <b>8 kg</b> Lammrücken eingekauft werden.</p>
+        <p class="vi">50 suất × 120 g = 6 kg (thành phẩm); hao hụt 25% → 6 kg tương ứng 75% → cần mua tối thiểu <b>8 kg</b> thăn cừu.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="task">
+    <span class="task-head">2.5 · 4 Punkte</span>
+    <p>Bei der Vorbereitung des Gemüses fallen Abschnitte an. Geben Sie <b>2</b> Möglichkeiten an, wie Sie die Abschnitte verarbeiten können!</p>
+    <p class="vi">Khi sơ chế rau củ có phát sinh phần cắt bỏ (Abschnitte). Nêu <b>2</b> cách tận dụng phần cắt bỏ!</p>
+    <div class="answer-area">
+      <label for="a25">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="a25" placeholder="Hier schreiben …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <ul>
+          <li>Zu Gemüsefonds/Brühen oder Suppen verarbeiten</li>
+          <li>Für Saucen, Pürees oder als Suppeneinlage verwenden</li>
+        </ul>
+        <p class="vi">Nấu nước dùng/súp; làm sốt, rau nghiền hoặc nhân súp.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="task">
+    <span class="task-head">2.6 · 8 Punkte</span>
+    <p>Sie sind in der Küche eingesetzt und sollen das Mise en place für die Zubereitung von Salaten vorbereiten.</p>
+    <p class="sub">2.6.1</p>
+    <p>Erklären Sie, was man unter Mise en place versteht!</p>
+    <p class="sub">2.6.2</p>
+    <p>Notieren Sie <b>3</b> Mise en place-Tätigkeiten für die Zubereitung von Salaten!</p>
+    <p class="vi">Bạn được phân công ở bếp, chuẩn bị Mise en place để làm salad. 2.6.1 Giải thích Mise en place là gì! 2.6.2 Ghi <b>3</b> công việc Mise en place để chuẩn bị làm salad!</p>
+    <div class="answer-area">
+      <label for="a26">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="a26" placeholder="2.6.1 …&#10;2.6.2 …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <p><b>2.6.1:</b> Mise en place (frz. „an den richtigen Platz stellen") = alle Vorbereitungsarbeiten <i>vor</i> dem eigentlichen Arbeiten: Alle Zutaten, Geräte und Arbeitsmittel werden am Arbeitsplatz bereitgestellt — für einen reibungslosen Ablauf.</p>
+        <p><b>2.6.2:</b></p>
+        <ul>
+          <li>Salat und Gemüse waschen und putzen</li>
+          <li>Gemüse schneiden / Gurken hobeln</li>
+          <li>Dressing (Vinaigrette) anrühren und bereitstellen</li>
+        </ul>
+        <p class="vi"><b>2.6.1:</b> Mise en place = mọi công việc chuẩn bị <i>trước</i> khi làm chính: chuẩn bị sẵn nguyên liệu, dụng cụ tại chỗ làm để quy trình trôi chảy. <b>2.6.2:</b> Rửa &amp; nhặt rau; thái rau/bào dưa chuột; pha sẵn nước sốt.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="task">
+    <span class="task-head">2.7 · 10 Punkte</span>
+    <p>Sie sollen einen Gurkensalat herstellen. Notieren Sie <b>5</b> Arbeitsschritte zur Herstellung!</p>
+    <p class="vi">Bạn phải làm món salad dưa chuột. Ghi <b>5</b> bước thực hiện!</p>
+    <div class="answer-area">
+      <label for="a27">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="a27" placeholder="1. …&#10;2. …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <ol>
+          <li>Gurken waschen</li>
+          <li>Gurken schälen und in feine Scheiben hobeln</li>
+          <li>Dressing aus Essig, Öl, Salz, Pfeffer, Zucker und Dill anrühren</li>
+          <li>Gurkenscheiben mit dem Dressing mischen und kurz ziehen lassen</li>
+          <li>Anrichten und mit Dill garnieren</li>
+        </ol>
+        <p class="vi">Rửa dưa chuột → gọt vỏ, bào lát mỏng → pha sốt (giấm, dầu, muối, tiêu, đường, thì là) → trộn &amp; để ngấm → bày ra đĩa, trang trí thì là.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="task">
+    <span class="task-head">2.8 · 10 Punkte</span>
+    <p>Nennen Sie <b>5</b> Maßnahmen der Produkthygiene in Bezug auf Fleisch/Fisch!</p>
+    <p class="vi">Nêu <b>5</b> biện pháp vệ sinh sản phẩm đối với thịt/cá!</p>
+    <div class="answer-area">
+      <label for="a28">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="a28" placeholder="Hier schreiben …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <ul>
+          <li>Kühlkette einhalten (max. +4 °C)</li>
+          <li>Getrennte Bretter und Messer für Fleisch/Fisch (keine Kreuzkontamination)</li>
+          <li>Hände vor und nach der Verarbeitung waschen/desinfizieren</li>
+          <li>Nur im Kühlschrank auftauen; Auftauwasser entsorgen</li>
+          <li>Verbrauchsdatum kontrollieren, FIFO beachten</li>
+        </ul>
+        <p class="vi">Giữ chuỗi lạnh (tối đa +4°C); dùng thớt/dao riêng cho thịt/cá; rửa tay trước &amp; sau khi chế biến; rã đông trong tủ lạnh, bỏ nước rã đông; kiểm tra hạn dùng, nhập trước–dùng trước.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section class="chapter" id="a3">
+  <div class="chapter-head"><span class="chapter-num">§6</span>
+    <h2 class="chapter-title-de">3. Aufgabe — Heißgetränke &amp; Kasse</h2></div>
+  <p class="chapter-title-vi">Câu 3 — Đồ uống nóng & thu ngân</p>
+  <div class="task">
+    <span class="task-head">3. Aufgabe · 31 Punkte · ca. 20 Minuten Bearbeitungszeit</span>
+    <p class="sub">3.1 · 12 Punkte</p>
+    <p>Zum Buffet bieten Sie Heißgetränke an. Sie bereiten sich auf die Gästeberatung vor. Erklären Sie die nachfolgenden Heißgetränke! Füllen Sie dazu die Tabelle vollständig aus!</p>
+    <p class="vi">Trong buffet có phục vụ đồ uống nóng. Bạn chuẩn bị tư vấn cho khách. Giải thích các đồ uống nóng sau! Điền đầy đủ bảng!</p>
+    <table class="exam">
+      <tr><th>Heißgetränk</th><th>Erklärung</th></tr>
+      <tr><td>Cappuccino</td><td></td></tr>
+      <tr><td>Latte macchiato</td><td></td></tr>
+      <tr><td>Kaffee Crema</td><td></td></tr>
+      <tr><td>Darjeeling</td><td></td></tr>
+      <tr><td>Pfefferminztee</td><td></td></tr>
+      <tr><td>Heiße Schokolade</td><td></td></tr>
+    </table>
+    <p class="vi">Bảng: Đồ uống nóng · Giải thích — Cappuccino, Latte macchiato, Kaffee Crema, Darjeeling (trà), Trà bạc hà, Sô-cô-la nóng.</p>
+    <div class="answer-area">
+      <label for="a31">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="a31" placeholder="Cappuccino: …&#10;Latte macchiato: …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <ul>
+          <li><b>Cappuccino:</b> Espresso mit heißer Milch und Milchschaum (je ca. ein Drittel), mit Kakao bestäubt.</li>
+          <li><b>Latte macchiato:</b> heiße Milch mit Milchschaum, dazu Espresso („gefleckte Milch"), im Glas schichtweise serviert.</li>
+          <li><b>Kaffee Crema:</b> verlängerter Kaffee aus der Espressomaschine mit mehr Wasser und feiner Crema (Schaumschicht).</li>
+          <li><b>Darjeeling:</b> schwarzer Tee aus Darjeeling (Indien), fein und aromatisch.</li>
+          <li><b>Pfefferminztee:</b> Kräutertee aus Pfefferminze, koffeinfrei, erfrischend.</li>
+          <li><b>Heiße Schokolade:</b> heiße Milch mit geschmolzener Schokolade bzw. Kakao.</li>
+        </ul>
+        <p class="vi">Cappuccino: espresso + sữa nóng + bọt sữa (mỗi thứ ~1/3), rắc cacao. Latte macchiato: sữa nóng + bọt sữa rồi cho espresso vào ("sữa lốm đốm"), phục vụ trong ly thủy tinh. Kaffee Crema: cà phê pha loãng từ máy espresso, nhiều nước hơn, lớp crema mịn. Darjeeling: trà đen vùng Darjeeling (Ấn Độ), thơm nhẹ. Trà bạc hà: trà thảo mộc, không caffeine, mát. Sô-cô-la nóng: sữa nóng với sô-cô-la tan chảy/bột cacao.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="task">
+    <span class="task-head">3.2 · 3 Punkte</span>
+    <p>[Abbildung: Kaffeepackung „Kaffeebohnen, ganz — Inhalt: 1 kg"] Für die Zubereitung einer Tasse Kaffee benötigen Sie 7 Gramm Kaffeepulver. Wie viele Tassen Kaffee erhalten Sie aus der abgebildeten Kaffeepackung? Der Rechenweg ist anzugeben!</p>
+    <p class="vi">[Hình: túi cà phê hạt „Kaffeebohnen, ganz — 1 kg"] Để pha một tách cà phê cần 7 g bột cà phê. Hỏi túi cà phê trong hình pha được bao nhiêu tách? Phải ghi rõ cách tính!</p>
+    <div class="answer-area">
+      <label for="a32">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="a32" placeholder="Rechenweg hier …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <p>1 kg = 1000 g<br>1000 g ÷ 7 g/Tasse = 142,85… → <b>142 Tassen</b></p>
+        <p class="vi">1000 g ÷ 7 g = 142,85… → pha được <b>142 tách</b> (làm tròn xuống).</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="task">
+    <span class="task-head">3.3 · 3 Punkte</span>
+    <p>Sie schenken aus einem 30-Liter-Fass Bier wie folgt aus:<br>
+    – 42 Gläser mit je 0,5 Liter<br>
+    – 28 Gläser mit je 0,3 Liter<br>
+    Ermitteln Sie den Schankverlust in Prozent. Der Rechenweg ist anzugeben!</p>
+    <p class="vi">Bạn rót bia từ thùng 30 lít như sau: 42 cốc mỗi cốc 0,5 lít; 28 cốc mỗi cốc 0,3 lít. Tính hao hụt khi rót (Schankverlust) theo phần trăm. Phải ghi rõ cách tính!</p>
+    <div class="answer-area">
+      <label for="a33">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="a33" placeholder="Rechenweg hier …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <p>Ausgeschenkt: 42 × 0,5 l = 21 l; 28 × 0,3 l = 8,4 l → gesamt 29,4 l<br>
+        Verlust: 30 l − 29,4 l = 0,6 l<br>
+        0,6 l ÷ 30 l × 100 = <b>2 %</b></p>
+        <p>Antwort: Der Schankverlust beträgt <b>2 %</b>.</p>
+        <p class="vi">Đã rót: 21 + 8,4 = 29,4 lít; hao hụt: 0,6 lít → <b>2%</b>.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="task">
+    <span class="task-head">3.4 · 3 Punkte</span>
+    <p>Beim Zapfen von Bier kommt es zu übermäßiger Schaumbildung. Nennen Sie <b>3</b> mögliche Gründe!</p>
+    <p class="vi">Khi rót bia bị nổi bọt quá nhiều. Nêu <b>3</b> nguyên nhân có thể!</p>
+    <div class="answer-area">
+      <label for="a34">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="a34" placeholder="Hier schreiben …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <ul>
+          <li>Falscher CO₂-Druck (zu hoch oder zu niedrig)</li>
+          <li>Bier oder Gläser zu warm</li>
+          <li>Verschmutzte Gläser (Spülmittel- oder Fettreste)</li>
+        </ul>
+        <p class="vi">Áp suất CO₂ sai; bia hoặc cốc quá ấm; cốc bẩn (cặn nước rửa/chất béo).</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="task">
+    <span class="task-head">3.5 · 10 Punkte</span>
+    <p>Sie überprüfen Ihr Kassensystem. Ihnen liegt die nachfolgende Abbildung Ihres aktuellen Kassenbildschirms und die Heißgetränkekarte vor. Kontrollieren Sie den Kassenbildschirm in Bezug auf die Heißgetränkekarte auf Richtigkeit und Vollständigkeit! Geben Sie <b>5</b> Fehler an!</p>
+    <p class="vi">Bạn kiểm tra hệ thống thu ngân. Bạn có hình màn hình thu ngân hiện tại và thực đơn đồ uống nóng. Kiểm tra màn hình thu ngân so với thực đơn về tính đúng và đầy đủ! Chỉ ra <b>5</b> lỗi!</p>
+    <p class="sub">Kassenbildschirm (Aktuell):</p>
+    <ul class="tight">
+      <li>Glas Pfeffertee — € 3,20</li>
+      <li>Kännchen Latte macchiato — € 4,00</li>
+      <li>Kännchen Filterkaffee — € 8,00</li>
+      <li>Tasse Kaffee Crema — € 3,00</li>
+      <li>Tasse Milchkaffee — € 3,80</li>
+      <li>Becher Heiße Schokolade — € 0,00</li>
+      <li>Tasse Espresso macchiato — € 2,80</li>
+      <li>Tasse Kaffee Crema — € 3,00 (doppelt)</li>
+      <li>Tasse Espresso — € 2,50</li>
+      <li>Mineralwasser 0,25l — € 3,00</li>
+      <li>Eistee — € 3,00</li>
+      <li>Buffet — € 25,00</li>
+    </ul>
+    <p class="sub">Heißgetränkekarte FRIENDS:</p>
+    <ul class="tight">
+      <li>Tasse Cappuccino — 3,60 €</li>
+      <li>Glas Latte macchiato — 4,00 €</li>
+      <li>Tasse Kaffee Crema — 3,00 €</li>
+      <li>Tasse Espresso — 2,50 €</li>
+      <li>Tasse Espresso macchiato — 2,80 €</li>
+      <li>Tasse Milchkaffee — 3,80 €</li>
+      <li>Kännchen Filterkaffee — 5,60 €</li>
+      <li>Glas Pfefferminztee — 3,20 €</li>
+      <li>Becher Heiße Schokolade — 4,80 €</li>
+    </ul>
+    <p class="vi">So sánh 2 bảng trên để tìm 5 lỗi về giá/tên món còn thiếu hoặc sai trên màn hình thu ngân.</p>
+    <div class="answer-area">
+      <label for="a35">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="a35" placeholder="1. …&#10;2. …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <ol>
+          <li>„Glas Pfeffertee" — falsche Bezeichnung, richtig: <b>„Glas Pfefferminztee"</b>.</li>
+          <li>„Kännchen Latte macchiato" — falsch, laut Karte: <b>„Glas Latte macchiato"</b>.</li>
+          <li>„Kännchen Filterkaffee € 8,00" — falscher Preis, laut Karte <b>5,60 €</b>.</li>
+          <li>„Becher Heiße Schokolade € 0,00" — falscher Preis, laut Karte <b>4,80 €</b>.</li>
+          <li>„Tasse Cappuccino" <b>fehlt</b> auf dem Kassenbildschirm (Karte: 3,60 €). <i>(Alternativ: „Tasse Kaffee Crema" ist doppelt vorhanden.)</i></li>
+        </ol>
+        <p class="vi">5 lỗi: tên "Pfeffertee" sai (phải là Pfefferminztee); "Kännchen Latte macchiato" sai (phải là Glas); giá Kännchen Filterkaffee sai (8,00 → 5,60 €); giá Heiße Schokolade sai (0,00 → 4,80 €); thiếu nút "Tasse Cappuccino" (3,60 €). (Hoặc: "Tasse Kaffee Crema" bị trùng 2 lần.)</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section class="chapter" id="a4">
+  <div class="chapter-head"><span class="chapter-num">§7</span>
+    <h2 class="chapter-title-de">4. Aufgabe — Umwelt</h2></div>
+  <p class="chapter-title-vi">Câu 4 — Môi trường</p>
+  <div class="task">
+    <span class="task-head">4. Aufgabe · 10 Punkte · ca. 5 Minuten Bearbeitungszeit</span>
+    <p>In Ihrem Betrieb sollen Umweltbelastungen vermieden und Umweltaspekte berücksichtigt werden. Schlagen Sie <b>5</b> geeignete Maßnahmen vor!</p>
+    <p class="vi">Trong doanh nghiệp cần tránh gây hại môi trường và chú ý các khía cạnh môi trường. Đề xuất <b>5</b> biện pháp phù hợp!</p>
+    <div class="answer-area">
+      <label for="a4">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="a4" placeholder="Hier schreiben …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <ul>
+          <li>Müll trennen und recyceln</li>
+          <li>Energie sparen (LED, Geräte ausschalten)</li>
+          <li>Wasser sparen (Spararmaturen, sparsamer Umgang)</li>
+          <li>Regionale und saisonale Produkte einkaufen (kurze Wege)</li>
+          <li>Einwegplastik vermeiden, Mehrweg verwenden</li>
+        </ul>
+        <p class="vi">Phân loại rác &amp; tái chế; tiết kiệm điện (đèn LED, tắt thiết bị); tiết kiệm nước; mua nguyên liệu địa phương theo mùa; tránh nhựa dùng một lần, dùng đồ tái sử dụng.</p>
+      </div>
+    </details>
+  </div>
+  <div class="kv">
+    <b>PRÜFUNGSZEIT – NICHT BESTANDTEIL DER PRÜFUNG!</b><br>
+    Wie beurteilen Sie nach der Bearbeitung der Aufgaben die zur Verfügung stehende Prüfungszeit?<br>
+    1. Sie hätte kürzer sein können. · 2. Sie war angemessen. · 3. Sie hätte länger sein müssen.<br>
+    ☐ Bitte Kennziffer hier eintragen!
+    <p class="vi"><b>THỜI GIAN THI – KHÔNG TÍNH VÀO ĐIỂM!</b> Sau khi làm bài, bạn đánh giá thời gian thi thế nào? 1. Lẽ ra có thể ngắn hơn. · 2. Vừa đủ. · 3. Lẽ ra phải dài hơn. ☐ Điền số vào ô!</p>
+  </div>
+  <p class="vi" style="font-size:.8rem;">Nguồn: IHK Abschlussprüfung Sommer 2024, Nr. 6132 — viết lại để tự ôn tập cá nhân.</p>
+</section>
+</main>
+
+<footer>
+  <div class="de">Abschlussprüfung Sommer 2024 · 6132 · Produktion und Service · DE/VI-Lernfassung</div>
+</footer>
+
+<script src="./js/supabase.js?v=18"></script>
+<script src="./js/access.js?v=5"></script>
+<script>
+// Kiểm tra quyền Pro trước khi xem
+(async function checkPro(){
+  if(window.Access){
+    try {
+      var ok = Access.atLeast('paid');
+      if(!ok){
+        var user = localStorage.getItem('learn_player') || '';
+        if(user){
+          await Access.loadTier(user);
+          ok = Access.atLeast('paid');
+        }
+      }
+      if(!ok){
+        alert('Đề thi này chỉ dành cho tài khoản Pro. Đang chuyển về trang chủ...');
+        window.location.href = 'index.html#/abschluss';
+      }
+    }catch(_){}
+  }
+})();
+
+function toggleVi(){
+  document.body.classList.toggle('hide-vi');
+  var b=document.getElementById('viToggle');
+  var hidden=document.body.classList.contains('hide-vi');
+  b.textContent = hidden ? '🇩🇪 Tiếng Việt: TẮT' : '🇻🇳 Tiếng Việt: AN';
+}
+
+/* ========================================================
+   HỆ THỐNG ĐẾM GIỜ LÀM BÀI THI IHK (PRÜFUNGSZEIT: 60 PHÚT)
+   ======================================================== */
+var EXAM_TIMER = (function(){
+  var TOTAL_SEC = 60 * 60; // 60 phút = 3600 giây
+  var remaining = TOTAL_SEC;
+  var intervalId = null;
+  var isRunning = false;
+  var isFinished = false;
+  var STORAGE_KEY = 'ihk_s24_timer_state';
+  var DRAFTS_KEY = 'ihk_s24_drafts';
+
+  function pad(n){ return n < 10 ? '0' + n : '' + n; }
+
+  function formatTime(sec){
+    var m = Math.floor(sec / 60);
+    var s = sec % 60;
+    return pad(m) + ':' + pad(s);
+  }
+
+  function updateUI(){
+    var timeStr = formatTime(remaining);
+    var heroClock = document.getElementById('timerHeroClock');
+    var spineClock = document.getElementById('spineClock');
+    var heroBtnIcon = document.getElementById('timerHeroBtnIcon');
+    var heroBtnText = document.getElementById('timerHeroBtnText');
+    var spineBtn = document.getElementById('spineTimerBtn');
+    var resetBtn = document.getElementById('timerResetBtn');
+    var finishBtn = document.getElementById('timerFinishBtn');
+    var spineFinishBtn = document.getElementById('spineFinishBtn');
+    var fill = document.getElementById('timerProgressFill');
+    var heroNote = document.getElementById('timerHeroNote');
+
+    if(heroClock) heroClock.textContent = timeStr;
+    if(spineClock) spineClock.textContent = '⏱️ ' + timeStr;
+
+    var isWarning = remaining <= 600 && remaining > 300;
+    var isUrgent = remaining <= 300 && remaining > 0;
+
+    [heroClock, spineClock].forEach(function(el){
+      if(!el) return;
+      el.classList.toggle('warning', isWarning);
+      el.classList.toggle('urgent', isUrgent);
+    });
+
+    if(fill){
+      var pct = Math.min(100, Math.max(0, ((TOTAL_SEC - remaining) / TOTAL_SEC) * 100));
+      fill.style.width = pct + '%';
+      fill.classList.toggle('warning', isWarning);
+      fill.classList.toggle('urgent', isUrgent);
+    }
+
+    if(isFinished){
+      if(heroBtnIcon) heroBtnIcon.textContent = '✓';
+      if(heroBtnText) heroBtnText.textContent = 'Đã kết thúc bài thi';
+      if(spineBtn) spineBtn.textContent = '✓ Kết thúc';
+      if(resetBtn) resetBtn.style.display = 'inline-block';
+      if(finishBtn) finishBtn.style.display = 'none';
+      if(spineFinishBtn) spineFinishBtn.style.display = 'none';
+      if(heroNote) heroNote.textContent = 'Bạn đã hoàn tất bài thi. Đã mở toàn bộ phần đáp án mẫu phía dưới.';
+      return;
+    }
+
+    if(isRunning){
+      if(heroBtnIcon) heroBtnIcon.textContent = '⏸';
+      if(heroBtnText) heroBtnText.textContent = 'Tạm dừng';
+      if(spineBtn) spineBtn.textContent = '⏸ Tạm dừng';
+      if(resetBtn) resetBtn.style.display = 'inline-block';
+      if(finishBtn) finishBtn.style.display = 'inline-block';
+      if(spineFinishBtn) spineFinishBtn.style.display = 'inline-block';
+      if(heroNote) heroNote.textContent = 'Đang tính giờ làm bài... Tập trung làm bài và kiểm tra các câu hỏi bên dưới.';
+    } else {
+      if(remaining === TOTAL_SEC){
+        if(heroBtnIcon) heroBtnIcon.textContent = '▶';
+        if(heroBtnText) heroBtnText.textContent = 'Bắt đầu làm bài (60 phút)';
+        if(spineBtn) spineBtn.textContent = '▶ Bắt đầu';
+        if(resetBtn) resetBtn.style.display = 'none';
+        if(finishBtn) finishBtn.style.display = 'none';
+        if(spineFinishBtn) spineFinishBtn.style.display = 'none';
+        if(heroNote) heroNote.textContent = 'Bấm nút để bắt đầu tính giờ làm bài thi 60 phút theo đúng quy chuẩn IHK.';
+      } else {
+        if(heroBtnIcon) heroBtnIcon.textContent = '▶';
+        if(heroBtnText) heroBtnText.textContent = 'Tiếp tục làm bài';
+        if(spineBtn) spineBtn.textContent = '▶ Tiếp tục';
+        if(resetBtn) resetBtn.style.display = 'inline-block';
+        if(finishBtn) finishBtn.style.display = 'inline-block';
+        if(spineFinishBtn) spineFinishBtn.style.display = 'inline-block';
+        if(heroNote) heroNote.textContent = 'Đang tạm dừng. Bấm tiếp tục để không lỡ thời gian làm bài.';
+      }
+    }
+  }
+
+  function saveState(){
+    try{
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify({
+        remaining: remaining,
+        isRunning: isRunning,
+        isFinished: isFinished,
+        timestamp: Date.now()
+      }));
+    }catch(_){}
+  }
+
+  function loadState(){
+    try{
+      var raw = sessionStorage.getItem(STORAGE_KEY);
+      if(!raw) return;
+      var data = JSON.parse(raw);
+      if(data && typeof data.remaining === 'number'){
+        remaining = data.remaining;
+        isFinished = !!data.isFinished;
+        if(data.isRunning && !isFinished){
+          var elapsed = Math.floor((Date.now() - (data.timestamp || Date.now())) / 1000);
+          remaining = Math.max(0, remaining - Math.max(0, elapsed));
+          if(remaining > 0){
+            start();
+          } else {
+            timeUp();
+          }
+        }
+      }
+    }catch(_){}
+  }
+
+  function tick(){
+    if(remaining > 0){
+      remaining--;
+      updateUI();
+      saveState();
+    } else {
+      timeUp();
+    }
+  }
+
+  function start(){
+    if(intervalId) clearInterval(intervalId);
+    isRunning = true;
+    intervalId = setInterval(tick, 1000);
+    updateUI();
+    saveState();
+  }
+
+  function pause(){
+    if(intervalId) clearInterval(intervalId);
+    intervalId = null;
+    isRunning = false;
+    updateUI();
+    saveState();
+  }
+
+  function timeUp(){
+    if(intervalId) clearInterval(intervalId);
+    intervalId = null;
+    isRunning = false;
+    isFinished = true;
+    remaining = 0;
+    updateUI();
+    saveState();
+    alert('⏰ ĐÃ HẾT THỜI GIAN LÀM BÀI (60 PHÚT)!\n\nBạn hãy dừng bút và kiểm tra lại câu trả lời hoặc đối chiếu với phần đáp án mẫu (Musterlösung) bên dưới.');
+    openAllSolutions();
+  }
+
+  function openAllSolutions(){
+    document.querySelectorAll('details.loesung').forEach(function(d){
+      d.open = true;
+    });
+  }
+
+  function toggle(){
+    if(isFinished){
+      if(confirm('Bài thi đã kết thúc. Bạn có muốn đặt lại thời gian để làm lại bài từ đầu?')){
+        reset();
+      }
+      return;
+    }
+    if(isRunning){
+      pause();
+    } else {
+      var isFirst = (remaining === TOTAL_SEC);
+      start();
+      if(isFirst){
+        var target = document.getElementById('betrieb') || document.getElementById('a1');
+        if(target){
+          setTimeout(function(){
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 300);
+        }
+      }
+    }
+  }
+
+  function reset(){
+    if(!confirm('Bạn có chắc chắn muốn đặt lại đồng hồ về 60:00?')) return;
+    if(intervalId) clearInterval(intervalId);
+    intervalId = null;
+    isRunning = false;
+    isFinished = false;
+    remaining = TOTAL_SEC;
+    updateUI();
+    saveState();
+  }
+
+  function finish(){
+    if(!confirm('Bạn có chắc chắn muốn nộp bài / kết thúc bài làm ngay bây giờ?')) return;
+    if(intervalId) clearInterval(intervalId);
+    intervalId = null;
+    isRunning = false;
+    isFinished = true;
+    var usedSec = TOTAL_SEC - remaining;
+    var usedM = Math.floor(usedSec / 60);
+    var usedS = usedSec % 60;
+    updateUI();
+    saveState();
+    openAllSolutions();
+    alert('🏁 Chúc mừng bạn đã hoàn thành bài thi!\n\n• Thời gian làm bài: ' + usedM + ' phút ' + usedS + ' giây.\n• Hệ thống đã tự động mở tất cả đáp án mẫu (Musterlösung) phía dưới để bạn chấm điểm.');
+  }
+
+  function initAutosave(){
+    var areas = document.querySelectorAll('textarea');
+    var badge = document.getElementById('autosaveNotice');
+    
+    try{
+      var saved = localStorage.getItem(DRAFTS_KEY);
+      if(saved){
+        var drafts = JSON.parse(saved);
+        areas.forEach(function(ta){
+          if(ta.id && drafts[ta.id]){
+            ta.value = drafts[ta.id];
+          }
+        });
+        if(badge) badge.style.display = 'inline-block';
+      }
+    }catch(_){}
+
+    areas.forEach(function(ta){
+      ta.addEventListener('input', function(){
+        try{
+          var drafts = {};
+          areas.forEach(function(item){
+            if(item.id && item.value.trim()){
+              drafts[item.id] = item.value;
+            }
+          });
+          localStorage.setItem(DRAFTS_KEY, JSON.stringify(drafts));
+          if(badge){
+            badge.style.display = 'inline-block';
+            badge.textContent = '✓ Đã lưu bài làm (' + new Date().toLocaleTimeString('vi-VN', {hour:'2-digit', minute:'2-digit'}) + ')';
+          }
+        }catch(_){}
+      });
+    });
+  }
+
+  function init(){
+    loadState();
+    updateUI();
+    initAutosave();
+  }
+
+  return {
+    init: init,
+    toggle: toggle,
+    reset: reset,
+    finish: finish
+  };
+})();
+
+window.toggleExamTimer = function(){ EXAM_TIMER.toggle(); };
+window.resetExamTimer = function(){ EXAM_TIMER.reset(); };
+window.finishExamTimer = function(){ EXAM_TIMER.finish(); };
+
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', function(){ EXAM_TIMER.init(); });
+} else {
+  EXAM_TIMER.init();
+}
+</script>
+</body>
+</html>
