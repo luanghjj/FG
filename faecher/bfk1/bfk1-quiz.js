@@ -113,8 +113,14 @@
   function quizAllowed(q){
     if(!q) return false;
     const group=(W.bfk1GroupOf&&W.bfk1GroupOf(q.theme))||null;
-    if(group && group.id==='extra' && W.Access && !W.Access.can('theme:full')) return false;
-    if(q.bank==='excel' && W.Access && !W.Access.can('questionbank:excel')) return false;
+    const isExtra = group && group.id==='extra';
+    const isExcel = isExtra || q.bank==='excel' || /fk[_ -]?exel/i.test(String(q.source||''));
+    if(isExcel){
+      if(W.Access && typeof W.Access.isExcelAllowed === 'function'){
+        return W.Access.isExcelAllowed();
+      }
+      if(W.Access && (!W.Access.can('theme:full') || !W.Access.can('questionbank:excel'))) return false;
+    }
     return true;
   }
 

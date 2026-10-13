@@ -5655,9 +5655,23 @@ function bfk1AllItems(){
     return out;
   }catch(e){ return []; }
 }
-/* Extra (Abschlussprüfung Gast + Produktion) chỉ mở cho Pro/Admin. */
+/* Extra (Abschlussprüfung Gast + Produktion): chỉ mở cho học viên được chỉ định (Excel Whitelist) hoặc Super Admin. */
 function bfk1CanExtra(){
-  try{ return !window.Access || Access.can('theme:full'); }catch(e){ return true; }
+  try{
+    if(!window.Access) return true;
+    if(typeof Access.isExcelAllowed === 'function') {
+      return Access.isExcelAllowed();
+    }
+    return Access.can('theme:full');
+  }catch(e){ return true; }
+}
+/* Thông báo khóa tài liệu/bài học Excel khi chưa được chỉ định */
+function excelLockedNotice(title){
+  return '<div class="card" style="border:1px dashed var(--line);text-align:center;padding:26px 16px;background:var(--card);border-radius:14px;margin:12px 0">'
+    + '<div style="font-size:2.2em;margin-bottom:8px">🔒</div>'
+    + '<div style="font-weight:600;font-size:1.05em;margin-bottom:6px">'+(title||'Bài học từ tài liệu Excel')+'</div>'
+    + '<div class="muted" style="font-size:.88em;line-height:1.5">Bài học từ tài liệu Excel — Cần được giáo viên/Admin chỉ định riêng mới có thể mở.</div>'
+    + '</div>';
 }
 /* true nếu themeId thuộc nhóm Extra. */
 function bfk1IsExtraTheme(themeId){
@@ -7420,8 +7434,22 @@ function renderBfk1Hub(){
     if(!g) return;
     const items=g.items||[];
     const gid=g.id||"";
-    // Basic: ẩn hoàn toàn Extra (Abschlussprüfung Gast + Produktion).
-    if(gid==="extra" && extraLocked) return;
+    // Nhóm Extra (19 bài học từ tài liệu Excel): cần được chỉ định riêng
+    if(gid==="extra" && extraLocked){
+      html += '<div class="lf-block" style="border-left:3px solid var(--muted);opacity:.92">'
+        + '<h3><span class="lf-badge" style="background:#E5E5EA;color:#6C6C70">'+(g.badge||"Extra")+'</span> '+(g.title||"")
+        + ' <span class="tag" style="background:#FFF0F0;color:#C4342B;margin-left:6px">🔒 Chỉ định riêng</span></h3>'
+        + excelLockedNotice('19 bài học từ tài liệu Excel')
+        + '<div class="theme-list">' + items.map((it,i)=>{
+            return '<div class="theme-item" style="opacity:.7;cursor:pointer" onclick="toast(\'Bài học từ tài liệu Excel — Cần được giáo viên/Admin chỉ định riêng mới có thể mở.\',\'bad\')">'
+              + '<div class="num">'+(i+1)+'</div>'
+              + '<div class="tt"><b>🔒 '+(it.icon||"")+' '+it.name+'</b><span class="muted">Cần được Admin chỉ định riêng</span></div>'
+              + '<span style="font-size:1.1em;color:var(--muted)">🔒</span>'
+              + '</div>';
+          }).join("") + '</div>'
+        + '</div>';
+      return;
+    }
     const pr=bfk1GroupPercent(g);
     html += '<div class="lf-block">'
       + '<h3><span class="lf-badge">'+(g.badge||"")+'</span> '+(g.title||"")
@@ -7492,22 +7520,25 @@ function bfk1QaHtml(item){
   const excelQa=qa.filter(q=>isExcelQaQuestion(q,item));
   const otherQa=qa.filter(q=>!isExcelQaQuestion(q,item));
   // Ngân hàng Q&A Excel có quyền riêng; không đưa nội dung bị khóa vào DOM.
-  if(excelQa.length && window.Access && !Access.can('questionbank:excel')){
-    if(!otherQa.length) return lockedCard('questionbank:excel');
+  const isExcelAllowed = (window.Access && typeof Access.isExcelAllowed === 'function')
+    ? Access.isExcelAllowed()
+    : (!window.Access || Access.can('questionbank:excel'));
+  const excelLocked = excelQa.length && !isExcelAllowed;
+  if(excelLocked && !otherQa.length){
+    return excelLockedNotice('Câu hỏi từ tài liệu Excel');
   }
-  const visibleQa=(window.Access && !Access.can('questionbank:excel'))?otherQa:qa;
+  const visibleQa = excelLocked ? otherQa : qa;
   let html="";
-  const excelLocked=excelQa.length && window.Access && !Access.can('questionbank:excel');
   if(item.qaNote && !excelLocked){
     html += '<div class="hint" style="margin-bottom:12px">'+bfk1EscHtml(item.qaNote)+'</div>';
   }
   if(!visibleQa.length){
-    if(excelLocked) return lockedCard('questionbank:excel');
+    if(excelLocked) return excelLockedNotice('Câu hỏi từ tài liệu Excel');
     if(!item.qaNote) html += '<div class="hint">Noch keine Übungsfragen für diesen Abschnitt.</div>';
     return html;
   }
   if(excelLocked){
-    html += lockedCard('questionbank:excel');
+    html += excelLockedNotice('Câu hỏi từ tài liệu Excel');
   }
   visibleQa.forEach((q,i)=>{
     html += '<div class="qa-item">'
@@ -7581,10 +7612,12 @@ function renderBfk1Theme(themeId){
   const body=document.getElementById("bfk1ThemeBody");
   if(!item){ go("#/bfk/1"); return; }
   const grp=(window.bfk1GroupOf&&window.bfk1GroupOf(themeId))||null;
-  // Extra (Abschlussprüfung) chỉ cho Pro/Admin: Basic vào thẳng route → về hub + paywall.
+  // Extra (19 bài học từ tài liệu Excel) chỉ cho học viên được chỉ định riêng:
   if(grp && grp.id==="extra" && !bfk1CanExtra()){
-    go("#/bfk/1");
-    try{ if(window.openPaywall) openPaywall('theme:full'); }catch(e){}
+    if(title) title.innerHTML=(item.icon||"")+" "+item.name;
+    if(sub) sub.textContent="BfK-1 · "+(grp.title||"Abschlussprüfung")+" (Chỉ định riêng)";
+    if(body) body.innerHTML = excelLockedNotice(item.name);
+    toast('Bài học từ tài liệu Excel — Cần được giáo viên/Admin chỉ định riêng mới có thể mở.','bad');
     return;
   }
   const lfLabel=grp?(grp.label||grp.title||""):"";
@@ -9060,6 +9093,7 @@ function unlockApp(player){
   renderUserChip(player);
   loadHomeHistory(player);
   if(window.Access && Access.loadKaWhitelist) Access.loadKaWhitelist();
+  if(window.Access && Access.loadExcelWhitelist) Access.loadExcelWhitelist();
 
   try {
     if (/[?&]choose=1\b/.test(location.search)) {

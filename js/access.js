@@ -26,6 +26,8 @@
   var AUDIT_PREFIX = 'learn:audit:';
   var KA_WHITELIST_KEY = 'learn:access:ka_whitelist';
   var _kaWhitelist = null;
+  var EXCEL_WHITELIST_KEY = 'learn:access:excel_whitelist';
+  var _excelWhitelist = null;
 
   // Session-Cache (sessionStorage → sống trong 1 tab, không lưu lâu dài)
   var SS_TIER = 'learn_tier';
@@ -325,6 +327,122 @@
     return nextList;
   }
 
+  /* ---------- Excel / BfK-Extra Zugriffsschutz (Whitelist) ---------- */
+  async function loadExcelWhitelist() {
+    var D = db();
+    var localList = [];
+    try {
+      var rawLocal = localStorage.getItem('azubi_excel_whitelist');
+      if (rawLocal) localList = JSON.parse(rawLocal);
+    } catch (_) {}
+
+    if (!D || !D.getConfig) {
+      _excelWhitelist = Array.isArray(localList) ? localList : [];
+      return _excelWhitelist;
+    }
+
+    try {
+      var row = await D.getConfig(EXCEL_WHITELIST_KEY);
+      if (row && row.value && Array.isArray(row.value.list)) {
+        _excelWhitelist = row.value.list.map(clean).filter(Boolean);
+        localStorage.setItem('azubi_excel_whitelist', JSON.stringify(_excelWhitelist));
+        return _excelWhitelist;
+      }
+    } catch (_) {}
+
+    _excelWhitelist = Array.isArray(localList) ? localList : [];
+    return _excelWhitelist;
+  }
+
+  function getExcelWhitelist() {
+    if (_excelWhitelist) return _excelWhitelist;
+    try {
+      var rawLocal = localStorage.getItem('azubi_excel_whitelist');
+      if (rawLocal) _excelWhitelist = JSON.parse(rawLocal);
+    } catch (_) {}
+    return _excelWhitelist || [];
+  }
+
+  function isExcelAllowed(player) {
+    var p = clean(player || _player || (db() && db().getPlayer && db().getPlayer()));
+    if (!p) return false;
+    // Super-Admin hat immer Zugriff
+    if (tier() === 'super' || isSuperVerified()) return true;
+    var list = getExcelWhitelist();
+    return list.includes(p);
+  }
+
+  async function canAccessExcel(player) {
+    var p = clean(player || _player || (db() && db().getPlayer && db().getPlayer()));
+    if (!p) return false;
+    if (tier() === 'super' || isSuperVerified()) return true;
+    await loadExcelWhitelist();
+    return isExcelAllowed(p);
+  }
+
+  async function setExcelAllowed(player, allowed, by) {
+    var D = db();
+    var p = clean(player);
+    if (!p) throw new Error('Nickname fehlt');
+    await loadExcelWhitelist();
+    var set = new Set(_excelWhitelist || []);
+    if (allowed) {
+      set.add(p);
+    } else {
+      set.delete(p);
+    }
+    var nextList = Array.from(set);
+    _excelWhitelist = nextList;
+    try {
+      localStorage.setItem('azubi_excel_whitelist', JSON.stringify(nextList));
+    } catch (_) {}
+
+    if (D && D.upsertConfig) {
+      await D.upsertConfig(EXCEL_WHITELIST_KEY, {
+        list: nextList,
+        updated_by: by || 'super',
+        updated_at: new Date().toISOString()
+      });
+      try {
+        var cur = await getRole(p);
+        if (cur) {
+          cur.excel_allowed = !!allowed;
+          await D.upsertConfig(roleKey(p), cur);
+        }
+      } catch (_) {}
+    }
+    audit('excel_whitelist.set', by, { player: p, allowed: !!allowed });
+    return nextList;
+  }
+
+  async function batchSetExcelAllowed(players, allowed, by) {
+    var D = db();
+    await loadExcelWhitelist();
+    var set = new Set(_excelWhitelist || []);
+    (players || []).forEach(function(pl) {
+      var p = clean(pl);
+      if (p) {
+        if (allowed) set.add(p);
+        else set.delete(p);
+      }
+    });
+    var nextList = Array.from(set);
+    _excelWhitelist = nextList;
+    try {
+      localStorage.setItem('azubi_excel_whitelist', JSON.stringify(nextList));
+    } catch (_) {}
+
+    if (D && D.upsertConfig) {
+      await D.upsertConfig(EXCEL_WHITELIST_KEY, {
+        list: nextList,
+        updated_by: by || 'super',
+        updated_at: new Date().toISOString()
+      });
+    }
+    audit('excel_whitelist.batch_set', by, { count: (players || []).length, allowed: !!allowed });
+    return nextList;
+  }
+
   /* ---------- Freischaltcode (tầng 2) ---------- */
   async function loadPaidCode() {
     if (_paidCode != null) return _paidCode;
@@ -470,6 +588,8 @@
     var p = String(player || '').trim();
     _player = p;
     await loadManifest();
+    try { await loadKaWhitelist(); } catch(_) {}
+    try { await loadExcelWhitelist(); } catch(_) {}
     var rec = await getRole(p);
     var raw = rec ? normTier(rec.tier) : 'free';
     var needsSuperPass = false;
@@ -508,6 +628,9 @@
     return TIERS[tier()] >= TIERS[normTier(t)];
   }
   function can(feature) {
+    if (feature === 'questionbank:excel') {
+      return isExcelAllowed();
+    }
     var need = manifest()[feature];
     if (!need) return true; // không khai báo → mở
     return atLeast(need);
@@ -627,6 +750,13 @@
     canAccessKlassenarbeit: canAccessKlassenarbeit,
     setKaAllowed: setKaAllowed,
     batchSetKaAllowed: batchSetKaAllowed,
+    // Excel Whitelist (BfK-Extra & Q&A)
+    loadExcelWhitelist: loadExcelWhitelist,
+    getExcelWhitelist: getExcelWhitelist,
+    isExcelAllowed: isExcelAllowed,
+    canAccessExcel: canAccessExcel,
+    setExcelAllowed: setExcelAllowed,
+    batchSetExcelAllowed: batchSetExcelAllowed,
     // Freischaltcode
     getPaidCode: getPaidCode,
     setPaidCode: setPaidCode,

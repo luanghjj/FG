@@ -398,6 +398,49 @@ table.mx tbody tr:hover .mx-namecol{background:#EAF3FF}
         </div>
       </div>
 
+      <!-- ===== EXCEL & BFK-EXTRA ZUGRIFF ===== -->
+      <div class="card" style="border-left:4px solid #107C41;">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:6px">
+          <h2>📊 Excel- &amp; BfK-Extra-Zugriff</h2>
+          <span class="tag" style="background:#E3F7E8;color:#107C41;border:none">📗 19 Thema Extra &amp; Q&amp;A</span>
+        </div>
+        <p class="muted" style="margin-bottom:14px">
+          Quản lý quyền mở <b>19 bài học Extra (BfK-1 Abschlussprüfung)</b>, câu hỏi <b>Q&amp;A từ Excel</b> và câu hỏi Quiz từ Excel. <b>Chỉ những tài khoản có đánh dấu [✓ FREIGEGEBEN] dưới đây mới được phép xem và làm bài.</b>
+        </p>
+
+        <div class="tier-form" style="margin-bottom:12px">
+          <div style="flex:1 1 220px;min-width:0">
+            <label class="muted" for="excelQuickNick">Nickname cấp quyền Excel</label>
+            <input id="excelQuickNick" type="text" list="nickList" placeholder="Nickname eingeben (z. B. linh, phuc…)" autocomplete="off">
+          </div>
+          <button type="button" id="btnExcelQuickGrant" onclick="quickAddExcelGrant()" style="background:#107C41">✅ Cấp quyền Excel ngay</button>
+          <button type="button" class="ghost" id="btnExcelGrantAll" onclick="batchExcelGrant(true)">Cấp tất cả</button>
+          <button type="button" class="ghost" id="btnExcelRevokeAll" onclick="batchExcelGrant(false)" style="color:var(--bad)">Khóa tất cả</button>
+        </div>
+        <div class="err" id="excelErr"></div>
+        <div class="muted" id="excelMsg" style="margin-bottom:8px"></div>
+
+        <div class="row-actions" style="margin-top:10px;margin-bottom:10px">
+          <button type="button" class="mini active" id="excelFilterAll" onclick="filterExcelList('all')">Tất cả (<span id="excelCountAll">0</span>)</button>
+          <button type="button" class="mini ghost" id="excelFilterAllowed" onclick="filterExcelList('allowed')">✅ Đã cấp quyền (<span id="excelCountAllowed">0</span>)</button>
+          <button type="button" class="mini ghost" id="excelFilterLocked" onclick="filterExcelList('locked')">🔒 Đang khóa (<span id="excelCountLocked">0</span>)</button>
+        </div>
+
+        <div class="tscroll" style="max-height:360px">
+          <table>
+            <thead>
+              <tr>
+                <th>Nickname</th>
+                <th>Quyền Excel &amp; BfK-Extra</th>
+                <th>Stufe</th>
+                <th>Aktion</th>
+              </tr>
+            </thead>
+            <tbody id="excelBody"></tbody>
+          </table>
+        </div>
+      </div>
+
       <!-- ===== Zugriffsstufen ===== -->
       <div class="card">
         <h2>Zugriffsstufen</h2>
@@ -537,6 +580,7 @@ async function load(){
     // Zugriffsstufen: Nickname-Vorschläge + Rollen-Tabelle + Code + Matrix
     await loadRoles(s.players || []);
     await loadKaWhitelistUI(s.players || []);
+    await loadExcelWhitelistUI(s.players || []);
     await loadPaidCode();
     await loadManifestUI();
 
@@ -1207,6 +1251,143 @@ async function batchKaGrant(allowed){
     showKaMsg(allowed ? '✅ Klassenarbeit für alle freigegeben!' : '🔒 Klassenarbeit für alle gesperrt!');
   }catch(e){
     showKaErr(e.message || String(e));
+  }
+}
+
+/* ===== EXCEL / BFK-EXTRA ACCESS CONTROL UI ===== */
+let _excelWhitelistSet = new Set();
+let _excelFilterMode = 'all';
+
+function showExcelErr(m){
+  const el = document.getElementById('excelErr');
+  if(!el) return;
+  if(!m){ el.classList.remove('show'); el.textContent = ''; return; }
+  el.textContent = m; el.classList.add('show');
+}
+function showExcelMsg(m){
+  const el = document.getElementById('excelMsg');
+  if(el){ el.textContent = m; setTimeout(() => { if(el.textContent===m) el.textContent=''; }, 3500); }
+}
+
+async function loadExcelWhitelistUI(players){
+  if(!window.Access) return;
+  try{
+    const list = await Access.loadExcelWhitelist();
+    _excelWhitelistSet = new Set((list || []).map(s => String(s).toLowerCase()));
+  }catch(_){}
+  _allPlayersList = players || _allPlayersList || [];
+  renderExcelTable();
+}
+
+function filterExcelList(mode){
+  _excelFilterMode = mode;
+  document.getElementById('excelFilterAll')?.classList.toggle('active', mode === 'all');
+  document.getElementById('excelFilterAll')?.classList.toggle('ghost', mode !== 'all');
+  document.getElementById('excelFilterAllowed')?.classList.toggle('active', mode === 'allowed');
+  document.getElementById('excelFilterAllowed')?.classList.toggle('ghost', mode !== 'allowed');
+  document.getElementById('excelFilterLocked')?.classList.toggle('active', mode === 'locked');
+  document.getElementById('excelFilterLocked')?.classList.toggle('ghost', mode !== 'locked');
+  renderExcelTable();
+}
+
+function renderExcelTable(){
+  const body = document.getElementById('excelBody');
+  if(!body) return;
+
+  const known = new Set();
+  const allNicks = [];
+
+  (_allPlayersList || []).forEach(p => {
+    const nick = String(p.player || '').trim();
+    if(nick && !known.has(nick.toLowerCase())){
+      known.add(nick.toLowerCase());
+      allNicks.push(nick);
+    }
+  });
+  _excelWhitelistSet.forEach(nick => {
+    if(nick && !known.has(nick.toLowerCase())){
+      known.add(nick.toLowerCase());
+      allNicks.push(nick);
+    }
+  });
+
+  const total = allNicks.length;
+  const allowedCount = allNicks.filter(n => _excelWhitelistSet.has(n.toLowerCase())).length;
+  const lockedCount = total - allowedCount;
+
+  const elAll = document.getElementById('excelCountAll');
+  const elAllowed = document.getElementById('excelCountAllowed');
+  const elLocked = document.getElementById('excelCountLocked');
+  if(elAll) elAll.textContent = total;
+  if(elAllowed) elAllowed.textContent = allowedCount;
+  if(elLocked) elLocked.textContent = lockedCount;
+
+  let filtered = allNicks;
+  if(_excelFilterMode === 'allowed'){
+    filtered = allNicks.filter(n => _excelWhitelistSet.has(n.toLowerCase()));
+  } else if(_excelFilterMode === 'locked'){
+    filtered = allNicks.filter(n => !_excelWhitelistSet.has(n.toLowerCase()));
+  }
+
+  if(!filtered.length){
+    body.innerHTML = '<tr><td colspan="4" class="muted" style="text-align:center;padding:16px">Chưa có tài khoản nào phù hợp</td></tr>';
+    return;
+  }
+
+  body.innerHTML = filtered.map(nick => {
+    const isAllowed = _excelWhitelistSet.has(nick.toLowerCase());
+    const tier = (_roleMap && _roleMap[nick.toLowerCase()]) || 'free';
+    const statusBadge = isAllowed
+      ? '<span class="tag" style="background:#E3F7E8;color:#107C41;border:1px solid #107C41">✅ ĐÃ CẤP QUYỀN</span>'
+      : '<span class="tag" style="background:#FFF0F0;color:#C4342B;border:1px solid #FFD1D1">🔒 ĐÃ KHÓA</span>';
+
+    const toggleBtn = isAllowed
+      ? `<button type="button" class="mini ghost" style="color:var(--bad);border-color:var(--bad);font-weight:600" onclick="toggleExcelAccess('${escH(nick)}', false)">🔒 Khóa quyền</button>`
+      : `<button type="button" class="mini" style="background:#107C41;color:#fff;font-weight:600" onclick="toggleExcelAccess('${escH(nick)}', true)">✅ Cấp quyền</button>`;
+
+    return `<tr>
+      <td><b>${escH(nick)}</b></td>
+      <td>${statusBadge}</td>
+      <td>${tierTag(tier)}</td>
+      <td>${toggleBtn}</td>
+    </tr>`;
+  }).join('');
+}
+
+async function toggleExcelAccess(player, allowed){
+  showExcelErr('');
+  try{
+    await Access.setExcelAllowed(player, allowed, 'admin:dashboard');
+    if(allowed) _excelWhitelistSet.add(player.toLowerCase());
+    else _excelWhitelistSet.delete(player.toLowerCase());
+    renderExcelTable();
+    showExcelMsg(allowed ? `✅ Đã cấp quyền bài học/dữ liệu Excel cho "${player}"` : `🔒 Đã khóa quyền Excel của "${player}"`);
+  }catch(e){
+    showExcelErr(e.message || String(e));
+  }
+}
+
+async function quickAddExcelGrant(){
+  const inp = document.getElementById('excelQuickNick');
+  const nick = (inp ? inp.value : '').trim();
+  if(!nick){ showExcelErr('Vui lòng nhập Nickname'); return; }
+  await toggleExcelAccess(nick, true);
+  if(inp) inp.value = '';
+}
+
+async function batchExcelGrant(allowed){
+  const action = allowed ? 'Cấp quyền bài học & dữ liệu Excel cho TẤT CẢ người dùng?' : 'Khóa quyền Excel của TẤT CẢ người dùng?';
+  if(!confirm(action)) return;
+  showExcelErr('');
+  try{
+    const nicks = (_allPlayersList || []).map(p => p.player);
+    await Access.batchSetExcelAllowed(nicks, allowed, 'admin:dashboard');
+    if(allowed) nicks.forEach(n => _excelWhitelistSet.add(n.toLowerCase()));
+    else _excelWhitelistSet.clear();
+    renderExcelTable();
+    showExcelMsg(allowed ? '✅ Đã cấp quyền Excel cho tất cả!' : '🔒 Đã khóa quyền Excel cho tất cả!');
+  }catch(e){
+    showExcelErr(e.message || String(e));
   }
 }
 
