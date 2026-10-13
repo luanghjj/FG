@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>§ Abschlussprüfung Sommer 2025 — Produktion und Service (DE/VI)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1B1F2A; --paper:#F1ECDE; --paper2:#EAE3D0; --wax:#7A2E2E;
+  --brass:#9C7A3C; --slate:#48586B; --line:#D8CFB8; --slateline:#c7d0da;
+  --green:#5b7a52;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--paper);
+  background-image:repeating-linear-gradient(0deg, rgba(0,0,0,0.012) 0px, rgba(0,0,0,0.012) 1px, transparent 1px, transparent 3px);
+  color:var(--ink); font-family:"Source Serif 4",Georgia,serif; line-height:1.65; font-size:17px;
+}
+::selection{background:#d9c9a3;}
+.top-bar{background:var(--ink); color:var(--paper); padding:10px 18px; display:flex; justify-content:space-between; align-items:center; font-family:"IBM Plex Mono",monospace; font-size:.78rem; position:relative; z-index:30;}
+.top-bar a{color:var(--paper); text-decoration:none; opacity:.85; display:inline-flex; align-items:center; gap:6px;}
+.top-bar a:hover{opacity:1; color:#EFC9A0;}
+.top-bar .badge-pro{background:#8944AB; color:#fff; border-radius:4px; padding:2px 8px; font-size:.7rem; font-weight:600;}
+header.cover{padding:50px 24px 38px; text-align:center; border-bottom:3px double var(--brass);
+  background:linear-gradient(180deg, var(--paper2), var(--paper));}
+header.cover .kicker{font-family:"IBM Plex Mono",monospace; letter-spacing:.18em; font-size:.72rem;
+  text-transform:uppercase; color:var(--brass); margin-bottom:14px;}
+header.cover h1{font-family:"Fraunces",serif; font-weight:600; font-size:clamp(1.8rem,5vw,2.9rem);
+  margin:0 0 10px; color:var(--ink); letter-spacing:-.01em;}
+header.cover h1 em{font-style:italic; color:var(--wax); font-weight:500;}
+header.cover .subtitle-de{font-size:1.02rem; margin:4px 0;}
+header.cover .subtitle-vi{font-family:"IBM Plex Sans",sans-serif; font-size:.92rem; color:var(--slate); margin:2px 0 0;}
+header.cover .subtitle-vi:before{content:"VI · "; font-weight:600; opacity:.7;}
+header.cover .exam-meta{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:18px;
+  font-family:"IBM Plex Mono",monospace; font-size:.72rem;}
+header.cover .exam-meta span{border:1px solid var(--brass); color:var(--wax); padding:4px 12px; border-radius:20px; letter-spacing:.04em;}
+.legend{max-width:820px; margin:22px auto 0; display:flex; gap:18px; justify-content:center; flex-wrap:wrap;
+  align-items:center; font-family:"IBM Plex Sans",sans-serif; font-size:.82rem;}
+.legend .item{display:flex; align-items:center; gap:8px;}
+.legend .swatch{width:16px; height:16px; border-radius:2px; flex-shrink:0;}
+.legend .swatch.de{background:var(--wax);} .legend .swatch.vi{background:var(--slate);}
+.toggle-btn{cursor:pointer; font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.05em;
+  background:var(--ink); color:var(--paper); border:none; padding:8px 14px; border-radius:6px; text-transform:uppercase;}
+.toggle-btn:hover{background:var(--wax);}
+
+nav.spine{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); display:flex; justify-content:space-between; align-items:center;
+  padding:0 10px; box-shadow:0 2px 10px rgba(0,0,0,.15); position:sticky;}
+.spine-nav-scroll{display:flex; gap:0; overflow-x:auto; white-space:nowrap; align-items:center; flex:1; min-width:0;}
+.spine-nav-scroll a{color:var(--paper); text-decoration:none; font-family:"IBM Plex Mono",monospace; font-size:.74rem;
+  letter-spacing:.03em; padding:13px 12px; border-right:1px solid rgba(255,255,255,.12); opacity:.72;}
+.spine-nav-scroll a:hover{opacity:1; background:rgba(255,255,255,.06); color:#EFC9A0;}
+.spine-nav-scroll .grp{font-family:"IBM Plex Mono",monospace; font-size:.64rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--brass); padding:13px 8px 13px 10px; align-self:center;}
+
+.spine-timer{display:flex; align-items:center; gap:8px; padding:4px 0 4px 10px; border-left:1px solid rgba(255,255,255,.15); flex-shrink:0;}
+.spine-clock{font-family:"IBM Plex Mono",monospace; font-size:.88rem; font-weight:700; color:#EFC9A0; letter-spacing:.06em;
+  padding:4px 8px; border-radius:4px; background:rgba(255,255,255,.08); display:inline-flex; align-items:center; gap:5px;}
+.spine-clock.warning{color:#ffcf56;}
+.spine-clock.urgent{color:#ff6b6b; animation:pulseUrgent 1s infinite alternate;}
+.spine-btn{cursor:pointer; font-family:"IBM Plex Mono",monospace; font-size:.7rem; font-weight:600;
+  background:rgba(255,255,255,.14); color:var(--paper); border:1px solid rgba(255,255,255,.2);
+  padding:5px 9px; border-radius:4px; transition:all .15s ease; white-space:nowrap;}
+.spine-btn:hover{background:var(--wax); border-color:var(--wax); color:#fff;}
+.spine-btn.finish{background:#2e6b36; border-color:#2e6b36; color:#fff;}
+.spine-btn.finish:hover{background:#3b8a45;}
+
+.timer-progress-track{position:absolute; bottom:0; left:0; width:100%; height:3px; background:rgba(255,255,255,.1); pointer-events:none;}
+.timer-progress-fill{height:100%; width:0%; background:var(--brass); transition:width .3s ease, background-color .3s ease;}
+.timer-progress-fill.warning{background:#d48b11;}
+.timer-progress-fill.urgent{background:var(--wax);}
+
+/* HERO TIMER CARD */
+.timer-hero{max-width:580px; margin:22px auto 0; background:rgba(255,255,255,.75); border:2px solid var(--brass);
+  border-radius:12px; padding:18px 20px; box-shadow:0 4px 16px rgba(0,0,0,.06); text-align:center;}
+.timer-hero-kicker{font-family:"IBM Plex Mono",monospace; font-size:.72rem; font-weight:600;
+  letter-spacing:.08em; text-transform:uppercase; color:var(--wax); margin-bottom:4px;}
+.timer-hero-clock{font-family:"IBM Plex Mono",monospace; font-weight:700; font-size:2.8rem;
+  line-height:1.15; color:var(--ink); margin:6px 0 10px; letter-spacing:.04em;}
+.timer-hero-clock.warning{color:#b37400;}
+.timer-hero-clock.urgent{color:var(--wax); animation:pulseUrgent 1s infinite alternate;}
+@keyframes pulseUrgent{0%{transform:scale(1); opacity:1;} 100%{transform:scale(1.03); opacity:.85;}}
+.timer-hero-actions{display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-bottom:8px;}
+.timer-hero-btn{cursor:pointer; font-family:"IBM Plex Mono",monospace; font-size:.8rem; letter-spacing:.04em;
+  font-weight:600; text-transform:uppercase; border:none; padding:10px 18px; border-radius:6px;
+  transition:all .18s ease; display:inline-flex; align-items:center; gap:6px;}
+.timer-hero-btn.primary{background:var(--wax); color:var(--paper);}
+.timer-hero-btn.primary:hover{background:#943838; transform:translateY(-1px);}
+.timer-hero-btn.sub{background:transparent; color:var(--ink); border:1px solid var(--line); font-weight:500;}
+.timer-hero-btn.sub:hover{background:var(--paper2); border-color:var(--brass);}
+.timer-hero-btn.finish{background:#2e6b36; color:#fff;}
+.timer-hero-btn.finish:hover{background:#24542a;}
+.timer-hero-note{font-size:.82rem; color:var(--slate); font-family:"IBM Plex Sans",sans-serif; margin:0;}
+.autosave-badge{display:inline-block; font-size:.7rem; font-family:"IBM Plex Mono",monospace;
+  color:#2e6b36; background:#eaf5ec; border:1px solid #b7deb9; padding:2px 8px; border-radius:12px; margin-top:6px;}
+
+main{max-width:860px; margin:0 auto; padding:10px 24px 100px;}
+section.chapter{padding:50px 0 20px; border-bottom:1px solid var(--line); scroll-margin-top:54px;}
+section.chapter:last-of-type{border-bottom:none;}
+.chapter-head{display:flex; align-items:baseline; gap:16px; margin-bottom:6px;}
+.chapter-num{font-family:"Fraunces",serif; font-weight:700; font-size:2.5rem; color:var(--brass); line-height:1; flex-shrink:0;}
+.chapter-title-de{font-family:"Fraunces",serif; font-weight:600; font-size:1.5rem; margin:0;}
+.chapter-title-vi{font-family:"IBM Plex Sans",sans-serif; font-size:.95rem; color:var(--slate); margin:4px 0 0 60px;}
+.chapter-title-vi:before{content:"VI · "; font-weight:600; opacity:.7;}
+body.hide-vi .vi, body.hide-vi .vi-sub, body.hide-vi .chapter-title-vi, body.hide-vi .subtitle-vi{display:none !important;}
+p.vi{font-family:"IBM Plex Sans",sans-serif; font-size:.9rem; color:var(--slate); margin:8px 0 2px;
+  padding-left:12px; border-left:3px solid var(--slateline);}
+.task{background:#fff; border:1px solid var(--line); border-left:6px solid var(--wax); border-radius:10px;
+  padding:16px 18px; margin:18px 0;}
+.task .task-head{font-family:"IBM Plex Mono",monospace; font-size:.72rem; font-weight:600; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--wax); display:block; margin-bottom:8px;}
+.task .sub{font-weight:600; color:var(--ink); margin:12px 0 4px; font-size:1rem;}
+table.exam{border-collapse:collapse; width:100%; margin:12px 0; font-size:.92rem; background:#fff;}
+table.exam th, table.exam td{border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top;}
+table.exam th{background:var(--paper2); font-family:"IBM Plex Sans",sans-serif; font-size:.82rem;}
+ul.tight li{margin:3px 0;}
+ol.hinweise li{margin:8px 0;}
+.kv{background:var(--paper2); border:1px solid var(--line); border-radius:8px; padding:12px 16px; margin:14px 0; font-size:.95rem;}
+.kv b{color:var(--wax);}
+.answer-area{margin:14px 0 4px;}
+.answer-area label{font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--slate); display:block; margin-bottom:6px; font-weight:600;}
+.answer-area textarea{width:100%; min-height:96px; border:1px solid var(--line); border-radius:8px;
+  padding:10px 12px; font-family:"Source Serif 4",Georgia,serif; font-size:.95rem;
+  background:#fffdf8; color:var(--ink); resize:vertical;}
+.answer-area textarea:focus{outline:2px solid var(--brass); border-color:var(--brass);}
+details.loesung{margin:10px 0 4px; border:1px dashed var(--brass); border-radius:8px; background:rgba(156,122,60,.07);}
+details.loesung summary{cursor:pointer; font-family:"IBM Plex Mono",monospace; font-size:.74rem;
+  letter-spacing:.05em; text-transform:uppercase; color:var(--wax); padding:10px 14px; font-weight:600; list-style:none;}
+details.loesung summary::-webkit-details-marker{display:none;}
+details.loesung summary:before{content:"▸ ";}
+details.loesung[open] summary:before{content:"▾ ";}
+details.loesung .loesung-body{padding:2px 14px 12px; font-size:.94rem;}
+details.loesung .loesung-body ul, details.loesung .loesung-body ol{margin:6px 0;}
+details.loesung .loesung-body table.exam{font-size:.85rem;}
+
+/* Symbole / Etiketten */
+.ghs{width:72px; height:72px; flex-shrink:0;}
+.ghs-sm{width:52px; height:52px; flex-shrink:0; vertical-align:middle;}
+.sym-row{display:flex; align-items:center; gap:12px; margin:8px 0;}
+.rein-etikett{background:#fff; border:2px solid var(--ink); border-radius:4px; margin:12px 0; max-width:560px;
+  font-family:"IBM Plex Sans",sans-serif; font-size:.88rem;}
+.rein-etikett .re-row{display:flex; border-bottom:1px solid var(--ink);}
+.rein-etikett .re-row:last-child{border-bottom:none;}
+.rein-etikett .re-cell{padding:8px 12px; flex:1;}
+.rein-etikett .re-cell + .re-cell{border-left:1px solid var(--ink);}
+.rein-etikett .re-syms{display:flex; gap:14px; justify-content:center; align-items:center; padding:10px;}
+.notiz{background:#fffdf6; border:1.5px solid var(--ink); border-radius:0 18px 0 0; padding:12px 16px; margin:12px 0;
+  max-width:520px; font-size:.93rem;}
+.notiz .n-head{display:flex; justify-content:space-between; font-weight:600; margin-bottom:8px;}
+.abb-box{background:#fff; border:1.5px solid var(--line); border-radius:8px; padding:12px 16px; margin:12px 0; font-size:.9rem;}
+.abb-box .abb-cap{font-family:"IBM Plex Mono",monospace; font-size:.72rem; color:var(--slate); margin-bottom:6px;}
+.sekt-etikett{background:#3a3f4a; color:#f0ead8; border-radius:4px; padding:22px 18px; margin:12px 0;
+  max-width:300px; text-align:center; font-family:"IBM Plex Sans",sans-serif;}
+.sekt-etikett .s1{font-family:"Fraunces",serif; letter-spacing:.35em; font-size:1.5rem; font-weight:600;}
+.sekt-etikett .s2{letter-spacing:.3em; font-size:.8rem; margin-top:8px;}
+
+footer{text-align:center; padding:44px 20px 70px; font-family:"IBM Plex Sans",sans-serif; font-size:.82rem;
+  color:var(--slate); border-top:1px solid var(--line);}
+@media(max-width:640px){
+  .chapter-title-vi{margin-left:0;}
+  .timer-hero-clock{font-size:2.2rem;}
+  .spine-clock{font-size:.78rem; padding:3px 6px;}
+  .spine-btn{padding:4px 6px; font-size:.65rem;}
+}
+@media print{nav.spine,.toggle-btn,.top-bar{display:none;}body{font-size:12pt;background:#fff;}}
+</style>
+</head>
+<body>
+<div class="top-bar">
+  <a href="index.html#/abschluss">← Về AzubiHub · Abschlussprüfung</a>
+  <div>
+    <span class="badge-pro">PRO ONLY</span>
+    <span style="margin-left:8px">IHK-Prüfungsnummer: 6132</span>
+  </div>
+</div>
+
+<header class="cover">
+  <div class="kicker">IHK · Fachkraft für Gastronomie (AO 2022) · Prüfungsnummer 6132</div>
+  <h1>§ Abschlussprüfung <em>Sommer 2025</em></h1>
+  <p class="subtitle-de">1. Prüfungstag — Produktion und Service · Schwerpunkt Restaurantservice</p>
+  <p class="subtitle-vi">Đề thi tốt nghiệp IHK mùa hè 2025 — Phần 1: Sản xuất và Phục vụ · Chuyên sâu phục vụ nhà hàng</p>
+  <div class="exam-meta">
+    <span>6. Mai 2025</span><span>3 Aufgaben</span><span>60 Minuten</span><span>100 Punkte</span>
+  </div>
+  <div class="legend">
+    <div class="item"><span class="swatch de"></span> Deutsch (đọc trước)</div>
+    <div class="item"><span class="swatch vi"></span> Tiếng Việt (đọc sau)</div>
+    <button class="toggle-btn" id="viToggle" onclick="toggleVi()">🇻🇳 Tiếng Việt: AN</button>
+  </div>
+
+  <!-- BẢNG ĐIỀU KHIỂN ĐẾM GIỜ LÀM BÀI THI -->
+  <div class="timer-hero" id="timerHero">
+    <div class="timer-hero-kicker">⏱️ Đồng hồ tính giờ làm bài · Prüfungszeit: 60 Minuten</div>
+    <div class="timer-hero-clock" id="timerHeroClock">60:00</div>
+    <div class="timer-hero-actions">
+      <button class="timer-hero-btn primary" id="timerHeroBtn" onclick="toggleExamTimer()">
+        <span id="timerHeroBtnIcon">▶</span> <span id="timerHeroBtnText">Bắt đầu làm bài (60 phút)</span>
+      </button>
+      <button class="timer-hero-btn sub" id="timerResetBtn" onclick="resetExamTimer()" style="display:none">
+        ↺ Đặt lại
+      </button>
+      <button class="timer-hero-btn finish" id="timerFinishBtn" onclick="finishExamTimer()" style="display:none">
+        🏁 Nộp bài / Xem đáp án
+      </button>
+    </div>
+    <p class="timer-hero-note" id="timerHeroNote">Bấm nút để bắt đầu tính giờ làm bài thi 60 phút theo đúng quy chuẩn IHK.</p>
+    <div id="autosaveNotice" class="autosave-badge" style="display:none">✓ Bài làm tự động lưu</div>
+  </div>
+</header>
+
+<nav class="spine">
+  <div class="spine-nav-scroll">
+    <span class="grp">Đề thi</span>
+    <a href="#info">Info</a>
+    <a href="#hinweise">Hinweise</a>
+    <a href="#betrieb">Betrieb</a>
+    <a href="#a1">Aufgabe 1</a>
+    <a href="#a2">Aufgabe 2</a>
+    <a href="#a3">Aufgabe 3</a>
+  </div>
+  <div class="spine-timer">
+    <div class="spine-clock" id="spineClock" title="Thời gian còn lại">⏱️ 60:00</div>
+    <button class="spine-btn" id="spineTimerBtn" onclick="toggleExamTimer()">▶ Bắt đầu</button>
+    <button class="spine-btn finish" id="spineFinishBtn" onclick="finishExamTimer()" style="display:none">🏁 Nộp bài</button>
+  </div>
+  <div class="timer-progress-track">
+    <div class="timer-progress-fill" id="timerProgressFill"></div>
+  </div>
+</nav>
+
+<main>
+<section class="chapter" id="info">
+  <div class="chapter-head"><span class="chapter-num">§1</span>
+    <h2 class="chapter-title-de">Prüfungsinfo</h2></div>
+  <p class="chapter-title-vi">Thông tin đề thi</p>
+  <div class="kv">
+    <b>Abschlussprüfung Sommer 2025</b> · Fachkraft für Gastronomie, Schwerpunkt Restaurantservice (AO 2022) · Nr. 6132<br>
+    <b>1. Prüfungstag:</b> Dienstag, 6. Mai 2025<br>
+    <b>Prüfungsbereich:</b> 1. Produktion und Service<br>
+    <b>Umfang:</b> 3 ungebundene Aufgaben · 60 Minuten Prüfungszeit · 100 Punkte
+    <p class="vi">Kỳ thi tốt nghiệp mùa hè 2025 · Nghề Nhân viên chuyên ngành ẩm thực, chuyên sâu phục vụ nhà hàng (quy chế 2022) · Mã đề 6132. Ngày thi thứ nhất: Thứ Ba, 06.05.2025. Phần thi: 1. Sản xuất và Phục vụ. Gồm 3 câu tự luận · 60 phút · 100 điểm.</p>
+  </div>
+</section>
+
+<section class="chapter" id="hinweise">
+  <div class="chapter-head"><span class="chapter-num">§2</span>
+    <h2 class="chapter-title-de">Bearbeitungshinweise</h2></div>
+  <p class="chapter-title-vi">Hướng dẫn làm bài (8 điểm lưu ý trong đề)</p>
+  <ol class="hinweise">
+    <li>Bevor Sie mit der Bearbeitung beginnen, prüfen Sie bitte, ob dieser Aufgabensatz vollständig ist. Wenden Sie sich bei Unstimmigkeiten sofort an die Aufsicht!
+      <p class="vi">Trước khi làm bài, kiểm tra xem đề có đầy đủ không. Nếu thiếu/sai, báo ngay cho giám thị!</p></li>
+    <li>Füllen Sie als Erstes die Kopfleiste des Aufgabensatzes vollständig aus!
+      <p class="vi">Đầu tiên, điền đầy đủ phần thông tin thí sinh (Kopfleiste) trên đầu đề thi!</p></li>
+    <li>Lesen Sie bitte den Text der Aufgaben ganz durch, bevor Sie mit der Bearbeitung beginnen. Die bei den Aufgaben angegebene Bearbeitungszeit ist als Hinweis zu verstehen und soll Ihnen helfen, sich die Prüfungszeit richtig einzuteilen.
+      <p class="vi">Đọc kỹ toàn bộ đề trước khi làm. Thời gian ghi ở mỗi câu chỉ là gợi ý để phân bổ thời gian hợp lý.</p></li>
+    <li>Berücksichtigen Sie, dass mit diesen Aufgaben Situationen der Betriebspraxis dargestellt werden. Die Bearbeitung sollte deshalb auch entsprechend den betrieblichen Gepflogenheiten erfolgen.
+      <p class="vi">Các câu hỏi mô tả tình huống thực tế trong doanh nghiệp — trả lời theo đúng tập quán nghề.</p></li>
+    <li>Halten Sie sich bei der Bearbeitung der Aufgaben genau an die Vorgaben zur Beantwortung der Fragen. Wenn z. B. vier Angaben gefordert werden und sechs Angaben anführen, werden nur die ersten vier Angaben bewertet.
+      <p class="vi">Trả lời đúng số lượng yêu cầu. Ví dụ: hỏi 4 ý mà ghi 6 ý thì chỉ chấm 4 ý đầu.</p></li>
+    <li>Als Hilfsmittel ist grundsätzlich ein nicht programmierter, netzunabhängiger Taschenrechner ohne Kommunikationsmöglichkeit mit Dritten zugelassen.
+      <p class="vi">Được mang máy tính bỏ túi không lập trình được, không nối mạng, không liên lạc với người khác.</p></li>
+    <li>Schreiben Sie deutlich und geben Sie bei Rechenaufgaben Ihren Rechenweg an, da Ihnen sonst Punkte verloren gehen können. Sofern nicht ausdrücklich ein Brief oder eine Formulierung in ganzen Sätzen gefordert werden, ist eine stichwortartige Beantwortung zulässig.
+      <p class="vi">Viết rõ ràng; bài tính phải ghi cách tính nếu không sẽ mất điểm. Trừ khi yêu cầu viết thư/câu hoàn chỉnh, được trả lời dạng gạch đầu dòng.</p></li>
+    <li>Für Hilfsaufzeichnungen können Sie das in der Tasche beigelegte Konzeptpapier verwenden. Bewertet werden jedoch grundsätzlich nur Ihre Eintragungen in diesem Aufgabensatz.
+      <p class="vi">Được dùng giấy nháp kèm theo để ghi chú, nhưng chỉ bài làm trong đề thi mới được chấm.</p></li>
+  </ol>
+</section>
+
+<section class="chapter" id="betrieb">
+  <div class="chapter-head"><span class="chapter-num">§3</span>
+    <h2 class="chapter-title-de">Unternehmensbeschreibung</h2></div>
+  <p class="chapter-title-vi">Mô tả doanh nghiệp (tình huống chung cho câu 1–3)</p>
+  <div class="kv">
+    Sie sind Mitarbeiter/Mitarbeiterin im <b>Restaurant FRIENDS</b>, Rechtsform GmbH, Sonnenstr. 1, 10115 Berlin,
+    Telefon: 030 233245, Geschäftsführer: Thomas und Lia Ammerer.<br>
+    E-Mail: restaurant@friends.de, Homepage: www.restaurant-friends.de
+    <p class="vi">Bạn là nhân viên nhà hàng FRIENDS (công ty TNHH), địa chỉ Sonnenstr. 1, 10115 Berlin, điện thoại: 030 233245, giám đốc: Thomas và Lia Ammerer. Email: restaurant@friends.de, website: www.restaurant-friends.de</p>
+  </div>
+  <p><b>Angaben zur 1. bis 3. Aufgabe:</b> Am Pfingstwochenende (6. Juni 2025 – 9. Juni 2025) finden im Restaurant FRIENDS Veranstaltungen statt.</p>
+  <p class="vi"><b>Thông tin chung cho câu 1 đến câu 3:</b> Dịp cuối tuần lễ Pfingsten (06.06.2025 – 09.06.2025), nhà hàng FRIENDS tổ chức các sự kiện.</p>
+</section>
+
+<section class="chapter" id="a1">
+  <div class="chapter-head"><span class="chapter-num">§4</span>
+    <h2 class="chapter-title-de">1. Aufgabe — Wirtschaftsdienst</h2></div>
+  <p class="chapter-title-vi">Câu 1 — Bộ phận kinh tế (dọn dẹp, chất tẩy rửa, rác thải)</p>
+  <div class="task">
+    <span class="task-head">1. Aufgabe · 22 Punkte · ca. 15 Minuten Bearbeitungszeit</span>
+    <p><i>Wahrnehmung der grundlegenden Aufgaben im Wirtschaftsdienst</i></p>
+    <p class="sub">1.1 · 8 Punkte</p>
+    <p>Sie arbeiten im Restaurant und sind mit der Reinigung und Vorbereitung beauftragt worden. Im Restaurant FRIENDS fand am Vorabend eine Familienfeier der Stammgast-Familie Roberts statt. Ihr Kollege aus dem Spätdienst hinterließ Ihnen folgende Notiz/Information im Übergabebuch:</p>
+    <div class="notiz">
+      <div class="n-head"><span>Notiz/Information</span><span>06.06.2025</span></div>
+      <p>Familie Roberts war gestern Abend bis 23:30 Uhr bei uns zu Gast. Der hintere Bereich des Restaurants von Tisch 21 bis 33 muss noch aufgeräumt und gereinigt werden. Bitte übernehmen Sie das für mich.</p>
+      <p>Vielen Dank!<br>Peter</p>
+      <p>Ich wünsche Ihnen einen ruhigen Dienst.</p>
+    </div>
+    <p class="vi">Bạn được giao dọn dẹp và chuẩn bị nhà hàng. Tối qua gia đình khách quen Roberts tổ chức tiệc gia đình. Đồng nghiệp ca tối để lại lời nhắn trong sổ bàn giao (06.06.2025): gia đình Roberts ở đến 23:30, khu vực phía sau từ bàn 21 đến 33 vẫn chưa dọn và vệ sinh, nhờ bạn làm giúp.</p>
+    <div class="abb-box">
+      <div class="abb-cap">Abbildung zu 1.1 — Gastraum nach der Feier (Quelle: stock.adobe.com/AKA)</div>
+      <p>Zu sehen: Bartheke mit umgeworfener Flasche; Karton auf dem Boden; Besteck auf dem Boden; benutzte Tische mit Tellern, Gläsern und Vasen; ein umgefallenes Glas mit Fleck (rot markiert) sowie ein Fleck unter dem Tisch (rot markiert).</p>
+      <p class="vi">Hình minh họa: quầy bar có chai bị đổ; thùng carton dưới sàn; dao nĩa rơi dưới sàn; các bàn đã dùng còn bát đĩa, ly, lọ hoa; một chiếc ly bị đổ kèm vết bẩn (khoanh đỏ) và một vết bẩn dưới gầm bàn (khoanh đỏ).</p>
+    </div>
+    <p>Sie sollen das auf der nächsten Seite abgebildete Restaurant fachgerecht aufräumen/reinigen!<br>
+    Nennen Sie <b>8</b> notwendige Aufräum-/Reinigungstätigkeiten!</p>
+    <p class="vi">Bạn phải dọn dẹp/vệ sinh nhà hàng trong hình đúng chuyên môn! Nêu <b>8</b> công việc dọn dẹp/vệ sinh cần thiết!</p>
+    <div class="answer-area">
+      <label for="b11">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="b11" placeholder="1. …&#10;2. …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <ul>
+          <li>Tische abräumen (Geschirr, Gläser, Besteck, Vasen)</li>
+          <li>Tische abwischen und reinigen</li>
+          <li>Stühle reinigen und gerade rücken</li>
+          <li>Umgeworfene Flasche auf der Bartheke entfernen, Theke reinigen</li>
+          <li>Karton und Abfall vom Boden entfernen</li>
+          <li>Besteck vom Boden aufheben und spülen</li>
+          <li>Umgefallenes Glas entfernen, Flecken (rot markiert) beseitigen</li>
+          <li>Boden fegen und wischen</li>
+        </ul>
+        <p class="vi">Dọn bát đĩa, ly, dao nĩa, lọ hoa khỏi bàn; lau bàn; lau ghế &amp; xếp ngay ngắn; dọn chai đổ trên quầy bar, lau quầy; nhặt thùng carton &amp; rác dưới sàn; nhặt dao nĩa rơi đem rửa; dọn ly đổ &amp; lau vết bẩn (đã khoanh đỏ); quét &amp; lau sàn.</p>
+      </div>
+    </details>
+    <p class="sub">1.2 · 8 Punkte — Gefahrensymbole auf dem Etikett</p>
+    <p>Für die Reinigung des Gastraumes nutzen Sie ein Reinigungsmittel, das wie nachfolgend auszugsweise abgebildet etikettiert ist!</p>
+    <div class="rein-etikett">
+      <div class="re-row">
+        <div class="re-cell" style="text-align:center;"><b>Premium-Qualität</b><br><i>*geruchsneutral*</i><br><b>Spiritus<br>Ethylalkohol</b></div>
+        <div class="re-cell" style="text-align:center;"><b>1 Liter&nbsp;&nbsp;&nbsp;94%Vol.</b><br><br>
+          <svg class="ghs-sm" viewBox="0 0 80 80" role="img" aria-label="Grüner Punkt"><circle cx="40" cy="40" r="30" fill="#2e7d32"/><path d="M40 18 a22 22 0 0 1 19 11" fill="none" stroke="#fff" stroke-width="5"/><path d="M40 62 a22 22 0 0 1 -19 -11" fill="none" stroke="#fff" stroke-width="5"/><path d="M59 29 l-6 1 4 5z" fill="#fff"/><path d="M21 51 l6 -1 -4 -5z" fill="#fff"/></svg>
+        </div>
+      </div>
+      <div class="re-row">
+        <div class="re-cell re-syms">
+          <svg class="ghs" viewBox="0 0 80 80" role="img" aria-label="GHS Flamme: entzündbar">
+            <rect x="15" y="15" width="50" height="50" transform="rotate(45 40 40)" fill="#fff" stroke="#c62828" stroke-width="5"/>
+            <path d="M40 22 C33 30 28 35 28 44 a12 12 0 0 0 24 0 c0 -4 -2 -7 -4 -10 c-1 2.5 -2.5 4 -4 5 c1 -5 -1.5 -11 -4 -17z" fill="#1B1F2A"/>
+            <path d="M40 34 c-3 3.5 -5.5 6 -5.5 10 a5.5 5.5 0 0 0 11 0 c0 -2.5 -1.5 -4.5 -2.8 -6.2 c-.7 1.4 -1.4 2.2 -2.7 2.7z" fill="#fff"/>
+          </svg>
+          <svg class="ghs" viewBox="0 0 80 80" role="img" aria-label="GHS Ausrufezeichen: reizend">
+            <rect x="15" y="15" width="50" height="50" transform="rotate(45 40 40)" fill="#fff" stroke="#c62828" stroke-width="5"/>
+            <rect x="36.5" y="24" width="7" height="20" fill="#1B1F2A"/>
+            <circle cx="40" cy="53" r="4.5" fill="#1B1F2A"/>
+          </svg>
+        </div>
+        <div class="re-cell">Mischungsverhältnis <b>1:200</b> in kaltes Wasser.<br>Zur punktuellen Reinigung unverdünnt auf ein feuchtes Tuch geben und anschließend nachwischen.</div>
+      </div>
+    </div>
+    <p class="vi">Nhãn chất tẩy rửa (Spiritus/Ethylalkohol 94%): có 2 ký hiệu nguy hiểm GHS — <b>ngọn lửa</b> (dễ cháy) và <b>dấu chấm than</b> (gây kích ứng); tỉ lệ pha 1:200 với nước lạnh.</p>
+    <p class="sub">1.2.1</p>
+    <p>Nennen Sie <b>3</b> Arbeitssicherheitsmaßnahmen, die Sie bei Verwendung des Reinigungsmittels beachten müssen!</p>
+    <p class="sub">1.2.2</p>
+    <p>Berechnen Sie, wie viel Milliliter (ml) Reinigungsmittel Sie auf einen Eimer mit 12 Liter Wasser benötigen!<br>
+    Beachten Sie das angegebene Mischungsverhältnis auf dem Etikett! Der Rechenweg ist anzugeben!</p>
+    <p class="vi"><b>1.2.1</b> Nêu <b>3</b> biện pháp an toàn lao động khi dùng chất tẩy rửa này! <b>1.2.2</b> Tính cần bao nhiêu ml chất tẩy cho một xô 12 lít nước, theo tỉ lệ pha trên nhãn! Phải ghi rõ cách tính!</p>
+    <div class="answer-area">
+      <label for="b12">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="b12" placeholder="1.2.1 …&#10;1.2.2 …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <p><b>1.2.1 — Bedeutung der Symbole:</b></p>
+        <div class="sym-row">
+          <svg class="ghs-sm" viewBox="0 0 80 80"><rect x="15" y="15" width="50" height="50" transform="rotate(45 40 40)" fill="#fff" stroke="#c62828" stroke-width="5"/><path d="M40 22 C33 30 28 35 28 44 a12 12 0 0 0 24 0 c0 -4 -2 -7 -4 -10 c-1 2.5 -2.5 4 -4 5 c1 -5 -1.5 -11 -4 -17z" fill="#1B1F2A"/><path d="M40 34 c-3 3.5 -5.5 6 -5.5 10 a5.5 5.5 0 0 0 11 0 c0 -2.5 -1.5 -4.5 -2.8 -6.2 c-.7 1.4 -1.4 2.2 -2.7 2.7z" fill="#fff"/></svg>
+          <span><b>Flamme:</b> entzündbar — von Zündquellen fernhalten, nicht rauchen</span>
+        </div>
+        <div class="sym-row">
+          <svg class="ghs-sm" viewBox="0 0 80 80"><rect x="15" y="15" width="50" height="50" transform="rotate(45 40 40)" fill="#fff" stroke="#c62828" stroke-width="5"/><rect x="36.5" y="24" width="7" height="20" fill="#1B1F2A"/><circle cx="40" cy="53" r="4.5" fill="#1B1F2A"/></svg>
+          <span><b>Ausrufezeichen:</b> reizend/gesundheitsschädlich — Haut- und Augenkontakt vermeiden</span>
+        </div>
+        <p><b>3 Arbeitssicherheitsmaßnahmen:</b></p>
+        <ul>
+          <li>Von offenen Flammen und Zündquellen fernhalten (entzündbar)</li>
+          <li>Schutzhandschuhe tragen, Haut-/Augenkontakt vermeiden</li>
+          <li>Für gute Belüftung sorgen</li>
+        </ul>
+        <p><b>1.2.2:</b> Mischungsverhältnis 1:200 → 12 l Wasser = 12000 ml<br>
+        12000 ml ÷ 200 = <b>60 ml</b> Reinigungsmittel</p>
+        <p class="vi"><b>Ý nghĩa ký hiệu:</b> Ngọn lửa = dễ cháy (tránh xa lửa/nguồn nhiệt, không hút thuốc); dấu chấm than = gây kích ứng (tránh tiếp xúc da/mắt). <b>3 biện pháp an toàn:</b> tránh xa lửa; đeo găng tay, tránh chạm da/mắt; đảm bảo thông gió tốt. <b>Cách tính:</b> tỉ lệ 1:200 → 12 lít = 12000 ml → 12000 ÷ 200 = <b>60 ml</b> chất tẩy.</p>
+      </div>
+    </details>
+    <p class="sub">1.3 · 6 Punkte</p>
+    <p>Sie sollen in Ihrem Betrieb beim Einkauf sowie bei der Verwendung von Reinigungsmitteln Abfall vermeiden.<br>
+    Nennen Sie <b>3</b> Maßnahmen, die dazu beitragen!</p>
+    <p class="vi">Bạn phải tránh rác thải khi mua và khi dùng chất tẩy rửa trong doanh nghiệp. Nêu <b>3</b> biện pháp!</p>
+    <div class="answer-area">
+      <label for="b13">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="b13" placeholder="Hier schreiben …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <ul>
+          <li>Konzentrate/Großgebinde einkaufen (weniger Verpackungsmüll)</li>
+          <li>Korrekte Dosierung mit Dosierhilfen (Überdosierung vermeiden)</li>
+          <li>Nachfüllpackungen verwenden / leere Gebinde dem Recycling zuführen</li>
+        </ul>
+        <p class="vi">Mua dung dịch đậm đặc/bình lớn (ít bao bì); định lượng đúng bằng dụng cụ (tránh dùng quá liều); dùng túi châm thêm / đưa bình rỗng đi tái chế.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section class="chapter" id="a2">
+  <div class="chapter-head"><span class="chapter-num">§5</span>
+    <h2 class="chapter-title-de">2. Aufgabe — Küche/Produktion &amp; Service</h2></div>
+  <p class="chapter-title-vi">Câu 2 — Bếp/Sản xuất &amp; Phục vụ (thực đơn Pfingsten, brunch)</p>
+  <div class="task">
+    <span class="task-head">2. Aufgabe · 55 Punkte · ca. 30 Minuten Bearbeitungszeit</span>
+    <p><i>Wahrnehmung der grundlegenden Aufgaben in der Küche oder in der Produktion /<br>Wahrnehmung der grundlegenden Aufgaben im Service</i></p>
+    <p><b>Situation zur Aufgabe 2.1 und 2.2:</b><br>
+    Familie Schubert hat für Pfingstsamstag/Pfingstsonnabend folgendes 3-Gänge-Menü für 16 Personen bei Ihnen bestellt:</p>
+    <div class="kv" style="text-align:center;">
+      Spargelcremesuppe mit Wildkräutern, Käsecroutons<br>
+      ***<br>
+      Rosa gebratener Lammrücken, Rotweinsauce<br>
+      glasierte Karotten, Kartoffelstampf<br>
+      ***<br>
+      Orangen-Törtchen mit marinierten Orangenfilets, gehackte Pistazien
+    </div>
+    <p class="vi"><b>Tình huống cho câu 2.1 và 2.2:</b> Gia đình Schubert đặt thực đơn 3 món cho 16 người vào thứ Bảy lễ Pfingsten: súp kem măng tây với thảo mộc &amp; bánh mì phô mai; thịt cừu nướng hồng với sốt vang đỏ, cà rốt, khoai tây nghiền; bánh tart cam với cam ướp &amp; hạt dẻ cười.</p>
+    <p class="sub">2.1 · 5 Punkte</p>
+    <p>Für das Pfingstmenü möchten Sie Lammrücken einkaufen. Es liegen Ihnen die 2 nachfolgend abgebildeten Angebote vor.<br>
+    Führen Sie einen Angebotsvergleich für 10 kg Lammrücken durch und entscheiden Sie sich für das preisgünstigste Angebot!<br>
+    Der Rechenweg ist anzugeben!</p>
+    <p class="vi">Bạn cần mua thịt thăn cừu cho thực đơn Pfingsten. Có 2 báo giá dưới đây. So sánh giá cho 10 kg thăn cừu và chọn báo giá rẻ nhất! Phải ghi rõ cách tính!</p>
+    <table class="exam">
+      <tr><th>Lieferant</th><th>Lieferant Lecker</th><th>Lieferant Schmecker</th></tr>
+      <tr><td>Listenpreis je 10 kg</td><td>390,00 €</td><td>362,00 €</td></tr>
+      <tr><td>− Rabatt</td><td>2 %</td><td>5 %</td></tr>
+      <tr><td>+ Verpackungs-/Transportkosten pro Lieferung</td><td>10,00 €</td><td>15,00 €</td></tr>
+    </table>
+    <p><b>Preisgünstigstes Angebot bei:</b> ___</p>
+    <div class="answer-area">
+      <label for="b21">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="b21" placeholder="Rechenweg hier …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <p><b>Lieferant Lecker:</b> 390,00 € − 2 % = 390,00 × 0,98 = 382,20 €; + 10,00 € = <b>392,20 €</b><br>
+        <b>Lieferant Schmecker:</b> 362,00 € − 5 % = 362,00 × 0,95 = 343,90 €; + 15,00 € = <b>358,90 €</b></p>
+        <p><b>Preisgünstigstes Angebot bei: Lieferant Schmecker</b></p>
+        <p class="vi">Lecker: 390 × 0,98 + 10 = <b>392,20 €</b>. Schmecker: 362 × 0,95 + 15 = <b>358,90 €</b>. → Chọn <b>Schmecker</b> rẻ hơn.</p>
+      </div>
+    </details>
+    <p class="sub">2.2 · 8 Punkte</p>
+    <p>Sie stellen die Rohstoffe für die Zubereitung des Desserts bereit. Bevor Sie mit der Verarbeitung der Rohstoffe beginnen, kontrollieren Sie die folgenden Zutaten auf mögliche Warenmängel:</p>
+    <div class="abb-box">
+      <div class="abb-cap">Abbildung — Rohstoffe für das Dessert (Quelle: stock.adobe.com)</div>
+      <p>🥛 Milch · 🌾 Mehl (Premium Class, 1000 g) · 🍊 Orangen (im Netz) · 🥚 Eier (im Karton)</p>
+    </div>
+    <p>Nennen Sie zu <b>jedem Produkt einen</b> möglichen Warenmangel, auf den Sie das Produkt prüfen müssen (<b>keine Wiederholungen!</b>)!</p>
+    <p><b>Milch:</b> ___<br><b>Mehl:</b> ___<br><b>Orangen:</b> ___<br><b>Eier:</b> ___</p>
+    <p class="vi">Bạn chuẩn bị nguyên liệu làm món tráng miệng. Trước khi chế biến, kiểm tra các nguyên liệu xem có lỗi hàng hóa không (hình: sữa, bột mì, cam, trứng). Với <b>mỗi sản phẩm nêu 1</b> lỗi có thể có (<b>không được trùng!</b>).</p>
+    <div class="answer-area">
+      <label for="b22">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="b22" placeholder="Milch: …&#10;Mehl: …&#10;Orangen: …&#10;Eier: …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <ul>
+          <li><b>Milch:</b> MHD überschritten / sauer geworden</li>
+          <li><b>Mehl:</b> Schädlingsbefall (z. B. Mehlmotten)</li>
+          <li><b>Orangen:</b> Druckstellen / Schimmel</li>
+          <li><b>Eier:</b> angeschlagene oder verschmutzte Schale</li>
+        </ul>
+        <p class="vi"><b>Sữa:</b> quá hạn / bị chua. <b>Bột mì:</b> có sâu mọt. <b>Cam:</b> bị dập / mốc. <b>Trứng:</b> vỏ nứt hoặc bẩn.</p>
+      </div>
+    </details>
+    <p class="sub">2.3 · 4 Punkte</p>
+    <p>Das Restaurant FRIENDS hat sich dazu entschlossen, in Zukunft verstärkt auf eine regionale und saisonale Rohstoffauswahl zu achten.<br>
+    Nennen Sie <b>2</b> mögliche Gründe, die zu dieser Entscheidung geführt haben können!</p>
+    <p class="vi">Nhà hàng FRIENDS quyết định chú trọng hơn đến nguyên liệu vùng miền và theo mùa. Nêu <b>2</b> lý do có thể dẫn đến quyết định này!</p>
+    <div class="answer-area">
+      <label for="b23">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="b23" placeholder="Hier schreiben …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <ul>
+          <li>Kürzere Transportwege → Umweltschutz, geringerer CO₂-Ausstoß</li>
+          <li>Frische und bessere Qualität der Rohstoffe</li>
+        </ul>
+        <p class="vi">Quãng đường vận chuyển ngắn → bảo vệ môi trường; nguyên liệu tươi &amp; chất lượng tốt hơn. (Hoặc: hỗ trợ nhà sản xuất địa phương; đúng mùa nên ngon &amp; rẻ hơn.)</p>
+      </div>
+    </details>
+    <p><b>Situation zur Aufgabe 2.4 bis 2.8:</b><br>
+    Sie bereiten den Brunch zum Pfingstsonntag vor.</p>
+    <p class="vi"><b>Tình huống cho câu 2.4 đến 2.8:</b> Bạn chuẩn bị brunch cho Chủ nhật lễ Pfingsten.</p>
+    <p class="sub">2.4 · 4 Punkte</p>
+    <p>Sie sind damit beauftragt worden, für den Brunch zum Pfingstsonntag die Eierspeisen zu planen.<br>
+    Notieren Sie <b>4 weitere</b> Eierspeisen, die Sie zum Brunch anbieten können!</p>
+    <p>- pochierte Eier<br>- Omeletts</p>
+    <p class="vi">Bạn được giao lên kế hoạch món trứng cho brunch. Ghi thêm <b>4</b> món trứng có thể phục vụ! (Đã có: trứng chần, trứng ốp la cuộn.)</p>
+    <div class="answer-area">
+      <label for="b24">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="b24" placeholder="Hier schreiben …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <ul>
+          <li>Rührei</li>
+          <li>Spiegelei</li>
+          <li>Gekochte Eier</li>
+          <li>Eiersalat</li>
+        </ul>
+        <p class="vi">Trứng bác; trứng ốp la; trứng luộc; salad trứng.</p>
+      </div>
+    </details>
+    <p class="sub">2.5 · 6 Punkte</p>
+    <p>Sie haben sich unter anderem für die Zubereitung eines Omeletts aus frischen Eiern entschieden.<br>
+    Notieren Sie <b>6</b> Arbeitsschritte zur Zubereitung eines servierfertigen Omeletts!</p>
+    <p class="vi">Bạn chọn làm món trứng cuộn (Omelett) từ trứng tươi. Ghi <b>6</b> bước chế biến món trứng cuộn!</p>
+    <div class="answer-area">
+      <label for="b25">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="b25" placeholder="1. …&#10;2. …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <ol>
+          <li>Eier aufschlagen und verquirlen, würzen</li>
+          <li>Butter/Öl in der Pfanne erhitzen</li>
+          <li>Eimasse in die Pfanne geben</li>
+          <li>Bei mittlerer Hitze stocken lassen, ggf. wenden</li>
+          <li>Nach Wunsch füllen (z. B. Käse, Kräuter)</li>
+          <li>Zusammenklappen, anrichten und servieren</li>
+        </ol>
+        <p class="vi">Đập &amp; đánh trứng, nêm gia vị → đun nóng bơ/dầu trong chảo → đổ trứng vào → để đông trên lửa vừa, lật nếu cần → cho nhân tùy thích (phô mai, thảo mộc) → gập lại, bày &amp; phục vụ.</p>
+      </div>
+    </details>
+    <p class="sub">2.6 · 6 Punkte</p>
+    <p>Bei der Planung des Brunchs sollen Sie zu folgenden Produkten eine vegane Alternative vorschlagen.<br>
+    Nennen Sie zu jedem Lebensmittel <b>eine</b> konkrete vegane Alternative! Füllen Sie dazu die nachfolgende Tabelle vollständig aus!</p>
+    <p class="vi">Khi lên kế hoạch brunch, bạn đề xuất món thay thế thuần chay cho các sản phẩm sau. Mỗi loại thực phẩm nêu <b>1</b> món thay thế thuần chay cụ thể! Điền đầy đủ bảng!</p>
+    <table class="exam">
+      <tr><th>Lebensmittel</th><th>Vegane Alternative</th></tr>
+      <tr><td>Milch</td><td>&nbsp;</td></tr>
+      <tr><td>Butter</td><td>&nbsp;</td></tr>
+      <tr><td>Nürnberger Bratwürstchen</td><td>&nbsp;</td></tr>
+    </table>
+    <div class="answer-area">
+      <label for="b26">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="b26" placeholder="Milch → …&#10;Butter → …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <table class="exam">
+          <tr><th>Lebensmittel</th><th>Vegane Alternative</th></tr>
+          <tr><td>Milch</td><td>Haferdrink</td></tr>
+          <tr><td>Butter</td><td>Pflanzliche Margarine</td></tr>
+          <tr><td>Nürnberger Bratwürstchen</td><td>Vegane Bratwürstchen (z. B. auf Erbsen-/Sojabasis)</td></tr>
+        </table>
+        <p class="vi">Sữa → sữa yến mạch; bơ → bơ thực vật (margarine); xúc xích Nürnberg → xúc xích thuần chay.</p>
+      </div>
+    </details>
+    <p class="sub">2.7 · 4 Punkte</p>
+    <p>Auch glutenfreie Produkte werden häufig von den Gästen nachgefragt.<br>
+    Nennen Sie <b>2</b> glutenfreie Alternativen für Weizen!</p>
+    <p class="vi">Khách cũng thường hỏi sản phẩm không gluten. Nêu <b>2</b> món thay thế lúa mì không chứa gluten!</p>
+    <div class="answer-area">
+      <label for="b27">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="b27" placeholder="Hier schreiben …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <ul>
+          <li>Reis</li>
+          <li>Mais</li>
+        </ul>
+        <p class="vi">Gạo; ngô. (Hoặc: kê, kiều mạch, quinoa, khoai tây.)</p>
+      </div>
+    </details>
+    <p class="sub">2.8 · 8 Punkte</p>
+    <p>Der Brunch wird in Form eines Buffets angeboten.<br>
+    Nennen Sie <b>4</b> Vorteile eines Buffets aus Sicht des Gastes und <b>4</b> Vorteile eines Buffets aus Sicht des Restaurants FRIENDS!</p>
+    <p class="vi">Brunch được phục vụ dạng buffet. Nêu <b>4</b> ưu điểm của buffet đối với khách và <b>4</b> ưu điểm đối với nhà hàng FRIENDS!</p>
+    <div class="answer-area">
+      <label for="b28">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="b28" placeholder="Gast: …&#10;Restaurant: …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <p><b>4 Vorteile aus Sicht des Gastes:</b></p>
+        <ul>
+          <li>Freie Auswahl aus großem Angebot</li>
+          <li>Portionsgröße selbst bestimmbar</li>
+          <li>Keine Wartezeiten auf das Essen</li>
+          <li>Festpreis — planbare Kosten</li>
+        </ul>
+        <p><b>4 Vorteile aus Sicht des Restaurants FRIENDS:</b></p>
+        <ul>
+          <li>Weniger Servicepersonal nötig</li>
+          <li>Gute Planbarkeit / Kalkulation</li>
+          <li>Effiziente Zubereitung größerer Mengen</li>
+          <li>Attraktives Angebot für Gruppen und Feiern</li>
+        </ul>
+        <p class="vi"><b>Đối với khách:</b> tự do chọn món; tự quyết khẩu phần; không phải chờ món; giá cố định dễ tính. <b>Đối với nhà hàng:</b> cần ít nhân viên phục vụ; dễ lên kế hoạch &amp; tính giá; chế biến số lượng lớn hiệu quả; hấp dẫn cho nhóm &amp; tiệc.</p>
+      </div>
+    </details>
+    <p class="sub">2.9 · 2 Punkte</p>
+    <p>Heute bietet das Restaurant FRIENDS den Pfingst-Brunch als Buffet an.<br>
+    Nennen Sie <b>2 weitere</b> Anlässe, zu denen ein Buffet angeboten werden kann!</p>
+    <p class="vi">Hôm nay nhà hàng phục vụ brunch lễ Pfingsten dạng buffet. Nêu <b>2</b> dịp khác có thể phục vụ buffet!</p>
+    <div class="answer-area">
+      <label for="b29">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="b29" placeholder="Hier schreiben …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <ul>
+          <li>Hochzeit</li>
+          <li>Geburtstag</li>
+        </ul>
+        <p class="vi">Đám cưới; sinh nhật. (Hoặc: tiệc công ty, tiệc Giáng sinh, lễ thêm sức.)</p>
+      </div>
+    </details>
+    <p class="sub">2.10 · 8 Punkte</p>
+    <p>Sie sollen Lebensmittelverschwendung und Müll am Brunch-Buffet vermeiden.<br>
+    Nennen Sie <b>4</b> geeignete Maßnahmen!</p>
+    <p class="vi">Bạn phải tránh lãng phí thực phẩm và rác thải ở buffet brunch. Nêu <b>4</b> biện pháp phù hợp!</p>
+    <div class="answer-area">
+      <label for="b210">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="b210" placeholder="Hier schreiben …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <ul>
+          <li>Bedarfsgerecht produzieren und kleine Portionen nachlegen</li>
+          <li>Übrige Speisen für Mitarbeiteressen verwenden</li>
+          <li>Lebensmittel an Tafeln/soziale Einrichtungen spenden</li>
+          <li>Müll trennen und Verpackungen vermeiden</li>
+        </ul>
+        <p class="vi">Chế biến vừa đủ nhu cầu, châm món từng ít một; dùng món thừa cho bữa ăn nhân viên; tặng thực phẩm cho tổ chức từ thiện; phân loại rác &amp; hạn chế bao bì.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section class="chapter" id="a3">
+  <div class="chapter-head"><span class="chapter-num">§6</span>
+    <h2 class="chapter-title-de">3. Aufgabe — Service (Geburtstagsfeier)</h2></div>
+  <p class="chapter-title-vi">Câu 3 — Phục vụ (tiệc sinh nhật gia đình Wagner)</p>
+  <div class="task">
+    <span class="task-head">3. Aufgabe · 23 Punkte · ca. 15 Minuten Bearbeitungszeit</span>
+    <p><i>Wahrnehmung der grundlegenden Aufgaben im Service</i></p>
+    <p><b>Situation:</b><br>
+    Herr und Frau Wagner feiern am Abend des 08.06.2025 einen Geburtstag mit 35 Erwachsenen und 5 Kindern im Restaurant FRIENDS.</p>
+    <p class="vi"><b>Tình huống:</b> Tối 08.06.2025, ông bà Wagner tổ chức sinh nhật với 35 người lớn và 5 trẻ em tại nhà hàng FRIENDS.</p>
+    <p class="sub">3.1 · 3 Punkte</p>
+    <p>Zum Empfang der Gäste soll jedem der 35 Erwachsenen 0,1 l Sekt ausgeschenkt werden.<br>
+    Berechnen Sie die Anzahl der benötigten Flaschen Sekt à 0,75 l! Der Schankverlust wird <b>nicht</b> berücksichtigt!<br>
+    Der Rechenweg ist anzugeben!</p>
+    <p class="vi">Đón khách, mỗi người trong 35 người lớn được rót 0,1 lít Sekt. Tính số chai Sekt 0,75 lít cần dùng! <b>Không</b> tính hao hụt khi rót! Phải ghi rõ cách tính!</p>
+    <div class="answer-area">
+      <label for="b31">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="b31" placeholder="Rechenweg hier …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <p>35 × 0,1 l = 3,5 l<br>
+        3,5 l ÷ 0,75 l = 4,67 → <b>5 Flaschen</b></p>
+        <p class="vi">35 × 0,1 = 3,5 lít; 3,5 ÷ 0,75 = 4,67 → cần <b>5 chai</b> Sekt.</p>
+      </div>
+    </details>
+    <p class="sub">3.2 · 2 Punkte</p>
+    <p>Beim Öffnen des wie nebenstehend etikettierten Sekts fällt Ihnen auf, dass sich die Flasche sehr warm anfühlt.<br>
+    Schaumweine sollen in Ihrem Restaurant wie folgt temperiert sein:</p>
+    <table class="exam">
+      <tr><th>Schaumweine</th></tr>
+      <tr><td>6 – 8 °C halbtrockene oder milde Schaumweine</td></tr>
+      <tr><td>8 – 10 °C trockene, qualitativ höherwertige Schaumweine</td></tr>
+      <tr><td>10 – 12 °C Jahrgangsschaumweine</td></tr>
+    </table>
+    <div class="sekt-etikett">
+      <div class="s1">VON BUHL</div>
+      <div class="s2">RIESLING BRUT 2019</div>
+    </div>
+    <p class="vi">Nhãn chai Sekt: VON BUHL — RIESLING BRUT 2019 (Sekt niên vụ, khô, chất lượng cao).</p>
+    <p>Nennen Sie den richtigen Temperaturbereich des zu servierenden Schaumweines!</p>
+    <p class="vi">Nêu khoảng nhiệt độ đúng để phục vụ loại vang sủi này!</p>
+    <div class="answer-area">
+      <label for="b32">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="b32" placeholder="Hier schreiben …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <p><b>10 – 12 °C</b> (Jahrgangsschaumweine)</p>
+        <p class="vi"><b>10–12°C</b> — vì đây là Sekt niên vụ (Jahrgang 2019). Chai đang quá ấm, cần làm lạnh trước khi phục vụ.</p>
+      </div>
+    </details>
+    <p class="sub">3.3 · 6 Punkte</p>
+    <p>Die Gäste möchten gerne zum Essen ein Wasser bestellen. Sie bieten unterschiedliche Wässer auf der Getränkekarte an.<br>
+    Nennen Sie zu folgenden Wasserarten <b>jeweils 2</b> Merkmale! Keine Wiederholungen!</p>
+    <p class="vi">Khách muốn gọi nước uống kèm bữa ăn. Thực đơn có nhiều loại nước khác nhau. Với mỗi loại nước dưới đây nêu <b>2</b> đặc điểm! Không được trùng!</p>
+    <table class="exam">
+      <tr><th>Wasserarten</th><th>Merkmale</th></tr>
+      <tr><td>Tafelwasser</td><td>-<br>-</td></tr>
+      <tr><td>Natürliches Mineralwasser</td><td>-<br>-</td></tr>
+      <tr><td>Heilwasser</td><td>-<br>-</td></tr>
+    </table>
+    <div class="answer-area">
+      <label for="b33">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="b33" placeholder="Tafelwasser: …&#10;Mineralwasser: …&#10;Heilwasser: …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <ul>
+          <li><b>Tafelwasser:</b> aus Trinkwasser hergestellt; keine amtliche Anerkennung erforderlich</li>
+          <li><b>Natürliches Mineralwasser:</b> aus unterirdischen, vor Verunreinigung geschützten Quellen; amtlich anerkannt</li>
+          <li><b>Heilwasser:</b> nachgewiesene Heilwirkung; als Arzneimittel zugelassen</li>
+        </ul>
+        <p class="vi"><b>Nước uống đóng chai (Tafelwasser):</b> làm từ nước máy; không cần công nhận chính thức. <b>Nước khoáng tự nhiên:</b> từ nguồn ngầm được bảo vệ; được công nhận chính thức. <b>Nước chữa bệnh:</b> có tác dụng chữa bệnh đã chứng minh; được cấp phép như dược phẩm.</p>
+      </div>
+    </details>
+    <p class="sub">3.4 · 3 Punkte</p>
+    <p>Herr Wagner bestellt für seinen 14-jährigen Sohn ein Glas Bier.<br>
+    Wie handeln Sie rechtlich richtig, wenn Sie sich auf das Jugendschutzgesetz beziehen? Begründen Sie Ihre Antwort!</p>
+    <p class="vi">Ông Wagner gọi một ly bia cho con trai 14 tuổi. Theo Luật Bảo vệ Thanh thiếu niên, bạn xử lý đúng luật thế nào? Giải thích!</p>
+    <div class="answer-area">
+      <label for="b34">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="b34" placeholder="Hier schreiben …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <p><b>Kein Bier ausschenken.</b> Begründung: Bier darf erst ab 16 Jahren abgegeben werden (§ 9 Jugendschutzgesetz).</p>
+        <p class="vi"><b>Không được rót bia.</b> Bia chỉ được phục vụ từ 16 tuổi trở lên (Điều 9 Luật Bảo vệ Thanh thiếu niên Đức).</p>
+      </div>
+    </details>
+    <p class="sub">3.5 · 4 Punkte</p>
+    <p>Frau Isolde Wagner bestellt bei Ihnen: „Bringen Sie mir bitte einen Grünen Tee. Achten Sie darauf, dass der Tee bei der Zubereitung nicht bitter wird."<br>
+    Geben Sie <b>2</b> Besonderheiten bei der Zubereitung von Grünem Tee an!</p>
+    <p class="vi">Bà Isolde Wagner gọi: "Cho tôi một ly trà xanh. Lưu ý pha sao cho trà không bị đắng." Nêu <b>2</b> điểm đặc biệt khi pha trà xanh!</p>
+    <div class="answer-area">
+      <label for="b35">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="b35" placeholder="Hier schreiben …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <ul>
+          <li>Wassertemperatur ca. 70–80 °C (nicht kochend aufgießen)</li>
+          <li>Kurze Ziehzeit (ca. 1–3 Minuten)</li>
+        </ul>
+        <p class="vi">Nước khoảng 70–80°C (không dùng nước sôi); hãm ngắn (1–3 phút) để trà không đắng.</p>
+      </div>
+    </details>
+    <p class="sub">3.6 · 5 Punkte</p>
+    <p>Die Menüs werden wie folgt berechnet:<br>
+    35 Erwachsene&nbsp;&nbsp;&nbsp;Menü à 39,00 € Inklusivpreis<br>
+    5 Kinder&nbsp;&nbsp;&nbsp;Menü à 25,00 € Inklusivpreis</p>
+    <p class="vi">Tính tiền thực đơn: 35 người lớn × 39,00 € (giá đã gồm thuế); 5 trẻ em × 25,00 €.</p>
+    <p><b>3.6.1</b> Berechnen Sie in € den Gesamtpreis der Menüs (brutto)! Der Rechenweg ist anzugeben!</p>
+    <p><b>3.6.2</b> Berechnen Sie in € die Umsatzsteuer, die in <b>einem</b> Menü für 39,00 € enthalten ist! Der Rechenweg ist anzugeben!</p>
+    <p class="vi"><b>3.6.1</b> Tính tổng tiền thực đơn (giá gộp)! <b>3.6.2</b> Tính thuế GTGT có trong <b>một</b> suất 39,00 €! Phải ghi rõ cách tính!</p>
+    <div class="answer-area">
+      <label for="b36">Deine Antwort · Câu trả lời của bạn</label>
+      <textarea id="b36" placeholder="3.6.1 …&#10;3.6.2 …"></textarea>
+    </div>
+    <details class="loesung">
+      <summary>Musterlösung anzeigen · Xem đáp án mẫu</summary>
+      <div class="loesung-body">
+        <p><b>3.6.1:</b> 35 × 39,00 € = 1365,00 €; 5 × 25,00 € = 125,00 €<br>
+        Gesamtpreis (brutto): 1365,00 € + 125,00 € = <b>1490,00 €</b></p>
+        <p><b>3.6.2:</b> Inklusivpreis 39,00 €, Steuersatz 19 %<br>
+        39,00 € ÷ 119 × 19 = <b>6,23 €</b> Umsatzsteuer</p>
+        <p class="vi"><b>3.6.1:</b> 35 × 39 + 5 × 25 = 1365 + 125 = <b>1490,00 €</b>. <b>3.6.2:</b> thuế trong giá 39 € (thuế suất 19%): 39 ÷ 119 × 19 = <b>6,23 €</b>.</p>
+      </div>
+    </details>
+  </div>
+  <div class="kv">
+    <b>PRÜFUNGSZEIT – NICHT BESTANDTEIL DER PRÜFUNG!</b><br>
+    Wie beurteilen Sie nach der Bearbeitung der Aufgaben die zur Verfügung stehende Prüfungszeit?<br>
+    1. Sie hätte kürzer sein können. · 2. Sie war angemessen. · 3. Sie hätte länger sein müssen.<br>
+    ☐ Bitte Kennziffer hier eintragen!
+    <p class="vi"><b>THỜI GIAN THI – KHÔNG TÍNH VÀO ĐIỂM!</b> Sau khi làm bài, bạn đánh giá thời gian thi thế nào? 1. Lẽ ra có thể ngắn hơn. · 2. Vừa đủ. · 3. Lẽ ra phải dài hơn. ☐ Điền số vào ô!</p>
+  </div>
+  <p class="vi" style="font-size:.8rem;">Nguồn: IHK Abschlussprüfung Sommer 2025, Nr. 6132 — viết lại để tự ôn tập cá nhân. (Trang 11–12 của đề gốc chỉ là giấy nháp Konzeptpapier, không có câu hỏi.)</p>
+</section>
+</main>
+
+<footer>
+  <div class="de">Abschlussprüfung Sommer 2025 · 6132 · Produktion und Service · DE/VI-Lernfassung</div>
+</footer>
+
+<script src="./js/supabase.js?v=18"></script>
+<script src="./js/access.js?v=5"></script>
+<script>
+// Kiểm tra quyền Pro trước khi xem
+(async function checkPro(){
+  if(window.Access){
+    try {
+      var ok = Access.atLeast('paid');
+      if(!ok){
+        var user = localStorage.getItem('learn_player') || '';
+        if(user){
+          await Access.loadTier(user);
+          ok = Access.atLeast('paid');
+        }
+      }
+      if(!ok){
+        alert('Đề thi này chỉ dành cho tài khoản Pro. Đang chuyển về trang chủ...');
+        window.location.href = 'index.html#/abschluss';
+      }
+    }catch(_){}
+  }
+})();
+
+function toggleVi(){
+  document.body.classList.toggle('hide-vi');
+  var b=document.getElementById('viToggle');
+  var hidden=document.body.classList.contains('hide-vi');
+  b.textContent = hidden ? '🇩🇪 Tiếng Việt: TẮT' : '🇻🇳 Tiếng Việt: AN';
+}
+
+/* ========================================================
+   HỆ THỐNG ĐẾM GIỜ LÀM BÀI THI IHK (PRÜFUNGSZEIT: 60 PHÚT)
+   ======================================================== */
+var EXAM_TIMER = (function(){
+  var TOTAL_SEC = 60 * 60; // 60 phút = 3600 giây
+  var remaining = TOTAL_SEC;
+  var intervalId = null;
+  var isRunning = false;
+  var isFinished = false;
+  var STORAGE_KEY = 'ihk_s25_timer_state';
+  var DRAFTS_KEY = 'ihk_s25_drafts';
+
+  function pad(n){ return n < 10 ? '0' + n : '' + n; }
+
+  function formatTime(sec){
+    var m = Math.floor(sec / 60);
+    var s = sec % 60;
+    return pad(m) + ':' + pad(s);
+  }
+
+  function updateUI(){
+    var timeStr = formatTime(remaining);
+    var heroClock = document.getElementById('timerHeroClock');
+    var spineClock = document.getElementById('spineClock');
+    var heroBtnIcon = document.getElementById('timerHeroBtnIcon');
+    var heroBtnText = document.getElementById('timerHeroBtnText');
+    var spineBtn = document.getElementById('spineTimerBtn');
+    var resetBtn = document.getElementById('timerResetBtn');
+    var finishBtn = document.getElementById('timerFinishBtn');
+    var spineFinishBtn = document.getElementById('spineFinishBtn');
+    var fill = document.getElementById('timerProgressFill');
+    var heroNote = document.getElementById('timerHeroNote');
+
+    if(heroClock) heroClock.textContent = timeStr;
+    if(spineClock) spineClock.textContent = '⏱️ ' + timeStr;
+
+    var isWarning = remaining <= 600 && remaining > 300;
+    var isUrgent = remaining <= 300 && remaining > 0;
+
+    [heroClock, spineClock].forEach(function(el){
+      if(!el) return;
+      el.classList.toggle('warning', isWarning);
+      el.classList.toggle('urgent', isUrgent);
+    });
+
+    if(fill){
+      var pct = Math.min(100, Math.max(0, ((TOTAL_SEC - remaining) / TOTAL_SEC) * 100));
+      fill.style.width = pct + '%';
+      fill.classList.toggle('warning', isWarning);
+      fill.classList.toggle('urgent', isUrgent);
+    }
+
+    if(isFinished){
+      if(heroBtnIcon) heroBtnIcon.textContent = '✓';
+      if(heroBtnText) heroBtnText.textContent = 'Đã kết thúc bài thi';
+      if(spineBtn) spineBtn.textContent = '✓ Kết thúc';
+      if(resetBtn) resetBtn.style.display = 'inline-block';
+      if(finishBtn) finishBtn.style.display = 'none';
+      if(spineFinishBtn) spineFinishBtn.style.display = 'none';
+      if(heroNote) heroNote.textContent = 'Bạn đã hoàn tất bài thi. Đã mở toàn bộ phần đáp án mẫu phía dưới.';
+      return;
+    }
+
+    if(isRunning){
+      if(heroBtnIcon) heroBtnIcon.textContent = '⏸';
+      if(heroBtnText) heroBtnText.textContent = 'Tạm dừng';
+      if(spineBtn) spineBtn.textContent = '⏸ Tạm dừng';
+      if(resetBtn) resetBtn.style.display = 'inline-block';
+      if(finishBtn) finishBtn.style.display = 'inline-block';
+      if(spineFinishBtn) spineFinishBtn.style.display = 'inline-block';
+      if(heroNote) heroNote.textContent = 'Đang tính giờ làm bài... Tập trung làm bài và kiểm tra các câu hỏi bên dưới.';
+    } else {
+      if(remaining === TOTAL_SEC){
+        if(heroBtnIcon) heroBtnIcon.textContent = '▶';
+        if(heroBtnText) heroBtnText.textContent = 'Bắt đầu làm bài (60 phút)';
+        if(spineBtn) spineBtn.textContent = '▶ Bắt đầu';
+        if(resetBtn) resetBtn.style.display = 'none';
+        if(finishBtn) finishBtn.style.display = 'none';
+        if(spineFinishBtn) spineFinishBtn.style.display = 'none';
+        if(heroNote) heroNote.textContent = 'Bấm nút để bắt đầu tính giờ làm bài thi 60 phút theo đúng quy chuẩn IHK.';
+      } else {
+        if(heroBtnIcon) heroBtnIcon.textContent = '▶';
+        if(heroBtnText) heroBtnText.textContent = 'Tiếp tục làm bài';
+        if(spineBtn) spineBtn.textContent = '▶ Tiếp tục';
+        if(resetBtn) resetBtn.style.display = 'inline-block';
+        if(finishBtn) finishBtn.style.display = 'inline-block';
+        if(spineFinishBtn) spineFinishBtn.style.display = 'inline-block';
+        if(heroNote) heroNote.textContent = 'Đang tạm dừng. Bấm tiếp tục để không lỡ thời gian làm bài.';
+      }
+    }
+  }
+
+  function saveState(){
+    try{
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify({
+        remaining: remaining,
+        isRunning: isRunning,
+        isFinished: isFinished,
+        timestamp: Date.now()
+      }));
+    }catch(_){}
+  }
+
+  function loadState(){
+    try{
+      var raw = sessionStorage.getItem(STORAGE_KEY);
+      if(!raw) return;
+      var data = JSON.parse(raw);
+      if(data && typeof data.remaining === 'number'){
+        remaining = data.remaining;
+        isFinished = !!data.isFinished;
+        if(data.isRunning && !isFinished){
+          var elapsed = Math.floor((Date.now() - (data.timestamp || Date.now())) / 1000);
+          remaining = Math.max(0, remaining - Math.max(0, elapsed));
+          if(remaining > 0){
+            start();
+          } else {
+            timeUp();
+          }
+        }
+      }
+    }catch(_){}
+  }
+
+  function tick(){
+    if(remaining > 0){
+      remaining--;
+      updateUI();
+      saveState();
+    } else {
+      timeUp();
+    }
+  }
+
+  function start(){
+    if(intervalId) clearInterval(intervalId);
+    isRunning = true;
+    intervalId = setInterval(tick, 1000);
+    updateUI();
+    saveState();
+  }
+
+  function pause(){
+    if(intervalId) clearInterval(intervalId);
+    intervalId = null;
+    isRunning = false;
+    updateUI();
+    saveState();
+  }
+
+  function timeUp(){
+    if(intervalId) clearInterval(intervalId);
+    intervalId = null;
+    isRunning = false;
+    isFinished = true;
+    remaining = 0;
+    updateUI();
+    saveState();
+    alert('⏰ ĐÃ HẾT THỜI GIAN LÀM BÀI (60 PHÚT)!\n\nBạn hãy dừng bút và kiểm tra lại câu trả lời hoặc đối chiếu với phần đáp án mẫu (Musterlösung) bên dưới.');
+    openAllSolutions();
+  }
+
+  function openAllSolutions(){
+    document.querySelectorAll('details.loesung').forEach(function(d){
+      d.open = true;
+    });
+  }
+
+  function toggle(){
+    if(isFinished){
+      if(confirm('Bài thi đã kết thúc. Bạn có muốn đặt lại thời gian để làm lại bài từ đầu?')){
+        reset();
+      }
+      return;
+    }
+    if(isRunning){
+      pause();
+    } else {
+      var isFirst = (remaining === TOTAL_SEC);
+      start();
+      if(isFirst){
+        var target = document.getElementById('betrieb') || document.getElementById('a1');
+        if(target){
+          setTimeout(function(){
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 300);
+        }
+      }
+    }
+  }
+
+  function reset(){
+    if(!confirm('Bạn có chắc chắn muốn đặt lại đồng hồ về 60:00?')) return;
+    if(intervalId) clearInterval(intervalId);
+    intervalId = null;
+    isRunning = false;
+    isFinished = false;
+    remaining = TOTAL_SEC;
+    updateUI();
+    saveState();
+  }
+
+  function finish(){
+    if(!confirm('Bạn có chắc chắn muốn nộp bài / kết thúc bài làm ngay bây giờ?')) return;
+    if(intervalId) clearInterval(intervalId);
+    intervalId = null;
+    isRunning = false;
+    isFinished = true;
+    var usedSec = TOTAL_SEC - remaining;
+    var usedM = Math.floor(usedSec / 60);
+    var usedS = usedSec % 60;
+    updateUI();
+    saveState();
+    openAllSolutions();
+    alert('🏁 Chúc mừng bạn đã hoàn thành bài thi!\n\n• Thời gian làm bài: ' + usedM + ' phút ' + usedS + ' giây.\n• Hệ thống đã tự động mở tất cả đáp án mẫu (Musterlösung) phía dưới để bạn chấm điểm.');
+  }
+
+  function initAutosave(){
+    var areas = document.querySelectorAll('textarea');
+    var badge = document.getElementById('autosaveNotice');
+    
+    try{
+      var saved = localStorage.getItem(DRAFTS_KEY);
+      if(saved){
+        var drafts = JSON.parse(saved);
+        areas.forEach(function(ta){
+          if(ta.id && drafts[ta.id]){
+            ta.value = drafts[ta.id];
+          }
+        });
+        if(badge) badge.style.display = 'inline-block';
+      }
+    }catch(_){}
+
+    areas.forEach(function(ta){
+      ta.addEventListener('input', function(){
+        try{
+          var drafts = {};
+          areas.forEach(function(item){
+            if(item.id && item.value.trim()){
+              drafts[item.id] = item.value;
+            }
+          });
+          localStorage.setItem(DRAFTS_KEY, JSON.stringify(drafts));
+          if(badge){
+            badge.style.display = 'inline-block';
+            badge.textContent = '✓ Đã lưu bài làm (' + new Date().toLocaleTimeString('vi-VN', {hour:'2-digit', minute:'2-digit'}) + ')';
+          }
+        }catch(_){}
+      });
+    });
+  }
+
+  function init(){
+    loadState();
+    updateUI();
+    initAutosave();
+  }
+
+  return {
+    init: init,
+    toggle: toggle,
+    reset: reset,
+    finish: finish
+  };
+})();
+
+window.toggleExamTimer = function(){ EXAM_TIMER.toggle(); };
+window.resetExamTimer = function(){ EXAM_TIMER.reset(); };
+window.finishExamTimer = function(){ EXAM_TIMER.finish(); };
+
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', function(){ EXAM_TIMER.init(); });
+} else {
+  EXAM_TIMER.init();
+}
+</script>
+</body>
+</html>
