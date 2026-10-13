@@ -155,6 +155,7 @@ table.mx tbody tr:hover .mx-namecol{background:#EAF3FF}
       <button type="button" class="main-tab active" data-tab="deutsch">🇩🇪 Deutsch A1–B1 (Disziplin &amp; Prüfungstraining)</button>
       <button type="button" class="main-tab" data-tab="gastronomie">🍽️ Gastronomie (Azubi-Beruf)</button>
       <button type="button" class="main-tab" data-tab="roles">👥 Rollen &amp; Pro-Code</button>
+      <button type="button" class="main-tab" data-tab="excel" style="background:#E3F7E8;color:#107C41;border-color:#107C41">📊 Phân quyền Excel</button>
     </div>
 
     <!-- ==================== PANE 1: DEUTSCH A1-B1 HUB ==================== -->
@@ -398,47 +399,13 @@ table.mx tbody tr:hover .mx-namecol{background:#EAF3FF}
         </div>
       </div>
 
-      <!-- ===== EXCEL & BFK-EXTRA ZUGRIFF ===== -->
-      <div class="card" style="border-left:4px solid #107C41;">
-        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:6px">
-          <h2>📊 Excel- &amp; BfK-Extra-Zugriff</h2>
-          <span class="tag" style="background:#E3F7E8;color:#107C41;border:none">📗 19 Thema Extra &amp; Q&amp;A</span>
+      <!-- ===== EXCEL QUICK ACCESS BANNER ===== -->
+      <div class="card" style="border-left:4px solid #107C41;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:16px 18px;margin-bottom:14px">
+        <div>
+          <h3 style="font-size:1.05em;margin-bottom:3px;color:#107C41">📊 Phân quyền 19 bài học &amp; Dữ liệu Excel</h3>
+          <p class="muted" style="margin:0;font-size:.86em">Chỉ định từng học viên (Nickname) được mở bài học Extra BfK-1, Q&amp;A và Quiz từ Excel.</p>
         </div>
-        <p class="muted" style="margin-bottom:14px">
-          Quản lý quyền mở <b>19 bài học Extra (BfK-1 Abschlussprüfung)</b>, câu hỏi <b>Q&amp;A từ Excel</b> và câu hỏi Quiz từ Excel. <b>Chỉ những tài khoản có đánh dấu [✓ FREIGEGEBEN] dưới đây mới được phép xem và làm bài.</b>
-        </p>
-
-        <div class="tier-form" style="margin-bottom:12px">
-          <div style="flex:1 1 220px;min-width:0">
-            <label class="muted" for="excelQuickNick">Nickname cấp quyền Excel</label>
-            <input id="excelQuickNick" type="text" list="nickList" placeholder="Nickname eingeben (z. B. linh, phuc…)" autocomplete="off">
-          </div>
-          <button type="button" id="btnExcelQuickGrant" onclick="quickAddExcelGrant()" style="background:#107C41">✅ Cấp quyền Excel ngay</button>
-          <button type="button" class="ghost" id="btnExcelGrantAll" onclick="batchExcelGrant(true)">Cấp tất cả</button>
-          <button type="button" class="ghost" id="btnExcelRevokeAll" onclick="batchExcelGrant(false)" style="color:var(--bad)">Khóa tất cả</button>
-        </div>
-        <div class="err" id="excelErr"></div>
-        <div class="muted" id="excelMsg" style="margin-bottom:8px"></div>
-
-        <div class="row-actions" style="margin-top:10px;margin-bottom:10px">
-          <button type="button" class="mini active" id="excelFilterAll" onclick="filterExcelList('all')">Tất cả (<span id="excelCountAll">0</span>)</button>
-          <button type="button" class="mini ghost" id="excelFilterAllowed" onclick="filterExcelList('allowed')">✅ Đã cấp quyền (<span id="excelCountAllowed">0</span>)</button>
-          <button type="button" class="mini ghost" id="excelFilterLocked" onclick="filterExcelList('locked')">🔒 Đang khóa (<span id="excelCountLocked">0</span>)</button>
-        </div>
-
-        <div class="tscroll" style="max-height:360px">
-          <table>
-            <thead>
-              <tr>
-                <th>Nickname</th>
-                <th>Quyền Excel &amp; BfK-Extra</th>
-                <th>Stufe</th>
-                <th>Aktion</th>
-              </tr>
-            </thead>
-            <tbody id="excelBody"></tbody>
-          </table>
-        </div>
+        <button type="button" class="mini" style="background:#107C41;color:#fff;font-weight:600;padding:10px 16px;border-radius:10px" onclick="document.querySelector('[data-tab=excel]').click()">👉 Mở bảng phân quyền Excel</button>
       </div>
 
       <!-- ===== Zugriffsstufen ===== -->
@@ -509,15 +476,59 @@ table.mx tbody tr:hover .mx-namecol{background:#EAF3FF}
         <p class="muted" style="margin-bottom:10px">Mindeststufe pro Bereich. Änderungen gelten sofort für alle.</p>
         <div id="manifestBox" class="mani-grid"></div>
         <button type="button" id="btnSaveManifest" style="margin-top:12px">Matrix speichern</button>
-        <div class="muted" id="maniMsg" style="margin-top:6px"></div>
+      </div>
+    </div>
+
+    <!-- ==================== PANE 4: EXCEL & BFK-EXTRA ==================== -->
+    <div class="sec-pane" id="pane-excel">
+      <div class="card" style="border-left:4px solid #107C41;">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:6px">
+          <h2>📊 Phân quyền 19 bài học &amp; Dữ liệu Excel (BfK-1 Extra)</h2>
+          <span class="tag" style="background:#E3F7E8;color:#107C41;border:none">📗 Whitelist theo Nickname</span>
+        </div>
+        <p class="muted" style="margin-bottom:14px">
+          Quản lý quyền mở <b>19 bài học Extra (BfK-1 Abschlussprüfung)</b>, câu hỏi <b>Q&amp;A từ Excel</b> và câu hỏi Quiz từ Excel. <b>Chỉ những tài khoản có đánh dấu [✓ FREIGEGEBEN] dưới đây mới được phép xem và làm bài.</b>
+        </p>
+
+        <div class="tier-form" style="margin-bottom:12px">
+          <div style="flex:1 1 220px;min-width:0">
+            <label class="muted" for="excelQuickNick">Nickname cấp quyền Excel</label>
+            <input id="excelQuickNick" type="text" list="nickList" placeholder="Nickname eingeben (z. B. linh, phuc…)" autocomplete="off">
+          </div>
+          <button type="button" id="btnExcelQuickGrant" onclick="quickAddExcelGrant()" style="background:#107C41">✅ Cấp quyền Excel ngay</button>
+          <button type="button" class="ghost" id="btnExcelGrantAll" onclick="batchExcelGrant(true)">Cấp tất cả</button>
+          <button type="button" class="ghost" id="btnExcelRevokeAll" onclick="batchExcelGrant(false)" style="color:var(--bad)">Khóa tất cả</button>
+        </div>
+        <div class="err" id="excelErr"></div>
+        <div class="muted" id="excelMsg" style="margin-bottom:8px"></div>
+
+        <div class="row-actions" style="margin-top:10px;margin-bottom:10px">
+          <button type="button" class="mini active" id="excelFilterAll" onclick="filterExcelList('all')">Tất cả (<span id="excelCountAll">0</span>)</button>
+          <button type="button" class="mini ghost" id="excelFilterAllowed" onclick="filterExcelList('allowed')">✅ Đã cấp quyền (<span id="excelCountAllowed">0</span>)</button>
+          <button type="button" class="mini ghost" id="excelFilterLocked" onclick="filterExcelList('locked')">🔒 Đang khóa (<span id="excelCountLocked">0</span>)</button>
+        </div>
+
+        <div class="tscroll" style="max-height:460px">
+          <table>
+            <thead>
+              <tr>
+                <th>Nickname</th>
+                <th>Quyền Excel &amp; BfK-Extra</th>
+                <th>Stufe</th>
+                <th>Aktion</th>
+              </tr>
+            </thead>
+            <tbody id="excelBody"></tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<script src="./pwa.js?v=3" defer></script>
-<script src="./js/supabase.js?v=17"></script>
-<script src="./js/access.js?v=2"></script>
+<script src="./pwa.js?v=4" defer></script>
+<script src="./js/supabase.js?v=18"></script>
+<script src="./js/access.js?v=5"></script>
 <script src="./js/icons.js?v=1"></script>
 <script src="./faecher/bfk1/bfk1-catalog.js?v=1"></script>
 <script>
@@ -1078,7 +1089,14 @@ document.getElementById('btnSaveDeSettings').onclick = async () => {
 function unlock(){
   document.getElementById('loginBox').style.display='none';
   document.getElementById('dash').style.display='block';
-  document.getElementById('btnRefresh').style.display='inline-block';
+  const btnRef = document.getElementById('btnRefresh');
+  btnRef.style.display='inline-block';
+  btnRef.onclick = () => {
+    btnRef.textContent = 'Lädt…';
+    load();
+    loadDeutschStats();
+    setTimeout(() => { btnRef.textContent = '↻ Aktualisieren'; }, 800);
+  };
   initTabs();
   load();
   loadDeutschStats();
