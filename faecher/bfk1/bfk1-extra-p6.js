@@ -1,6 +1,5 @@
-/* BfK-1 · Extra · Đề thi IHK thật (Winter 2024/25, Sommer 2024, Winter 2023/24) · nguồn: fk_exel KT bắt buộc Sheet 4 */
-window.__EXTRA = (window.__EXTRA||[]).concat(
-[
+/* Abschlussprüfung · Đề thi IHK thật (Winter 2024/25, Sommer 2024, Winter 2023/24) · nguồn: fk_exel KT bắt buộc Sheet 4 */
+window.__IHK_EXAMS = [
   {
     "id": "extra-ihk-w2425",
     "icon": "🏆",
@@ -208,5 +207,4 @@ window.__EXTRA = (window.__EXTRA||[]).concat(
     "quiz": [],
     "vokabeln": []
   }
-]
-);
+];

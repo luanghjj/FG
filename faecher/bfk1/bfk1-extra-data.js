@@ -8,7 +8,8 @@
  */
 window.BFK1_EXTRA = {
   id: "extra", label: "Abschlussprüfung", badge: "Extra",
-  title: "Abschlussprüfung · Gast + Produktion",
-  titleVi: "Ôn thi cuối · học song song",
+  title: "Abschlussprüfung · Gast + Produktion (Thema 1–19)",
+  titleVi: "19 chuyên đề lý thuyết & bài tập",
   items: (window.__EXTRA || [])
 };
+window.ABSCHLUSS_IHK = (window.__IHK_EXAMS || []);

@@ -39,11 +39,15 @@
     window.BFK1_GROUPS.forEach(function (g) {
       (g && g.items ? g.items : []).forEach(function (it) { out.push(it); });
     });
+    (window.__IHK_EXAMS || []).forEach(function (it) { out.push(it); });
     return out;
   };
 
   // Nhóm chứa một item (để hiện "Lernfeld …" trên trang Thema)
   window.bfk1GroupOf = function bfk1GroupOf(themeId) {
+    if (String(themeId || '').indexOf('extra-ihk-') === 0) {
+      return { id: "abschluss", label: "Abschlussprüfung", badge: "IHK", title: "Abschlussprüfung (IHK)", titleVi: "Đề thi thật tốt nghiệp" };
+    }
     var found = null;
     window.BFK1_GROUPS.forEach(function (g) {
       if (found) return;

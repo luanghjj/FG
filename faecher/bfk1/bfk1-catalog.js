@@ -331,24 +331,6 @@ window.BFK1_CATALOG = [
         "icon": "💶",
         "name": "Thema 19 · Personalverwaltung & -beschaffung II",
         "nameVi": "Nhân sự II (Vertrag, Lohn, Sozialversicherung)"
-      },
-      {
-        "id": "extra-ihk-w2425",
-        "icon": "🏆",
-        "name": "IHK-Prüfung · Winter 2024/2025",
-        "nameVi": "Đề thi IHK thật · Đông 2024/2025 (mới nhất)"
-      },
-      {
-        "id": "extra-ihk-s24",
-        "icon": "🥈",
-        "name": "IHK-Prüfung · Sommer 2024",
-        "nameVi": "Đề thi IHK thật · Hè 2024 (năm ngoái)"
-      },
-      {
-        "id": "extra-ihk-w2324",
-        "icon": "🥉",
-        "name": "IHK-Prüfung · Winter 2023/2024",
-        "nameVi": "Đề thi IHK thật · Đông 2023/2024 (đề khó)"
       }
     ]
   }
