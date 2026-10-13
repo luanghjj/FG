@@ -4865,25 +4865,34 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
       </p>
 
       <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:10px">
-        <div class="tile" style="cursor:pointer;border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--card);transition:all .2s ease" onclick="go('#/bfk/1/theme/extra-ihk-w2425')">
+        <div class="tile" style="cursor:pointer;border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--card);transition:all .2s ease" onclick="openIhkExam('#/bfk/1/theme/extra-ihk-w2425')">
           <div style="font-size:1.8em;margin-bottom:8px">🏆</div>
-          <h3 style="font-size:1.05em;margin-bottom:4px">IHK-Prüfung · Winter 2024/2025</h3>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+            <h3 style="font-size:1.05em;margin-bottom:4px">IHK-Prüfung · Winter 2024/2025</h3>
+            <span class="tag" style="background:#F6EDFC;color:#8944AB;font-weight:600">🔒 Pro</span>
+          </div>
           <p class="muted" style="font-size:.86em;margin-bottom:10px">Đề thi thật Đông 2024/2025 (Gast) · Mới nhất. Đầy đủ câu hỏi thực hành &amp; đáp án mẫu.</p>
-          <div class="meta"><span class="pill ready" style="background:#E3F7E8;color:#248A3D">Vào làm đề →</span></div>
+          <div class="meta"><span class="pill ready" style="background:#E3F7E8;color:#248A3D">Vào làm đề (Pro) →</span></div>
         </div>
 
-        <div class="tile" style="cursor:pointer;border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--card);transition:all .2s ease" onclick="go('#/bfk/1/theme/extra-ihk-s24')">
+        <div class="tile" style="cursor:pointer;border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--card);transition:all .2s ease" onclick="openIhkExam('#/bfk/1/theme/extra-ihk-s24')">
           <div style="font-size:1.8em;margin-bottom:8px">🥈</div>
-          <h3 style="font-size:1.05em;margin-bottom:4px">IHK-Prüfung · Sommer 2024</h3>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+            <h3 style="font-size:1.05em;margin-bottom:4px">IHK-Prüfung · Sommer 2024</h3>
+            <span class="tag" style="background:#F6EDFC;color:#8944AB;font-weight:600">🔒 Pro</span>
+          </div>
           <p class="muted" style="font-size:.86em;margin-bottom:10px">Đề thi thật Hè 2024 (Gast). Kiểm tra quy trình, thực đơn, vệ sinh &amp; tính toán chi phí.</p>
-          <div class="meta"><span class="pill ready" style="background:#E3F7E8;color:#248A3D">Vào làm đề →</span></div>
+          <div class="meta"><span class="pill ready" style="background:#E3F7E8;color:#248A3D">Vào làm đề (Pro) →</span></div>
         </div>
 
-        <div class="tile" style="cursor:pointer;border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--card);transition:all .2s ease" onclick="go('#/bfk/1/theme/extra-ihk-w2324')">
+        <div class="tile" style="cursor:pointer;border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--card);transition:all .2s ease" onclick="openIhkExam('#/bfk/1/theme/extra-ihk-w2324')">
           <div style="font-size:1.8em;margin-bottom:8px">🥉</div>
-          <h3 style="font-size:1.05em;margin-bottom:4px">IHK-Prüfung · Winter 2023/2024</h3>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+            <h3 style="font-size:1.05em;margin-bottom:4px">IHK-Prüfung · Winter 2023/2024</h3>
+            <span class="tag" style="background:#F6EDFC;color:#8944AB;font-weight:600">🔒 Pro</span>
+          </div>
           <p class="muted" style="font-size:.86em;margin-bottom:10px">Đề thi thật Đông 2023/2024 (Wirtschaftsdienst). Đề phân loại nâng cao kèm đáp án.</p>
-          <div class="meta"><span class="pill ready" style="background:#E3F7E8;color:#248A3D">Vào làm đề →</span></div>
+          <div class="meta"><span class="pill ready" style="background:#E3F7E8;color:#248A3D">Vào làm đề (Pro) →</span></div>
         </div>
       </div>
     </div>
@@ -5719,6 +5728,14 @@ function excelLockedNotice(title){
     + '<div style="font-weight:600;font-size:1.05em;margin-bottom:6px">'+(title||'Bài học từ tài liệu Excel')+'</div>'
     + '<div class="muted" style="font-size:.88em;line-height:1.5">Bài học từ tài liệu Excel — Cần được giáo viên/Admin chỉ định riêng mới có thể mở.</div>'
     + '</div>';
+}
+/* Mở đề thi thật IHK (yêu cầu cấp độ Pro) */
+function openIhkExam(route){
+  if(window.Access && !Access.atLeast('paid')){
+    try{ openPaywall('pruefungen'); }catch(e){}
+    return;
+  }
+  go(route);
 }
 /* true nếu themeId thuộc nhóm Extra. */
 function bfk1IsExtraTheme(themeId){
@@ -7659,6 +7676,12 @@ function renderBfk1Theme(themeId){
   const body=document.getElementById("bfk1ThemeBody");
   if(!item){ go("#/bfk/1"); return; }
   const grp=(window.bfk1GroupOf&&window.bfk1GroupOf(themeId))||null;
+  // Đề thi tốt nghiệp IHK thật: chỉ tài khoản Pro/Admin mới được xem
+  if(String(themeId||'').indexOf('extra-ihk-') === 0 && window.Access && !Access.atLeast('paid')){
+    go("#/abschluss");
+    try{ openPaywall('pruefungen'); }catch(e){}
+    return;
+  }
   // Extra (19 bài học từ tài liệu Excel) chỉ cho học viên được chỉ định riêng:
   if(grp && grp.id==="extra" && !bfk1CanExtra()){
     if(title) title.innerHTML=(item.icon||"")+" "+item.name;
