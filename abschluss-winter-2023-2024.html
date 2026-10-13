@@ -46,13 +46,55 @@ header.cover .exam-meta span{border:1px solid var(--brass); color:var(--wax); pa
 .toggle-btn{cursor:pointer; font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.05em;
   background:var(--ink); color:var(--paper); border:none; padding:8px 14px; border-radius:6px; text-transform:uppercase;}
 .toggle-btn:hover{background:var(--wax);}
-nav.spine{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); display:flex; gap:0;
-  overflow-x:auto; white-space:nowrap; padding:0 10px; box-shadow:0 2px 10px rgba(0,0,0,.15);}
-nav.spine a{color:var(--paper); text-decoration:none; font-family:"IBM Plex Mono",monospace; font-size:.74rem;
-  letter-spacing:.03em; padding:13px 14px; border-right:1px solid rgba(255,255,255,.12); opacity:.72;}
-nav.spine a:hover{opacity:1; background:rgba(255,255,255,.06); color:#EFC9A0;}
-nav.spine .grp{font-family:"IBM Plex Mono",monospace; font-size:.64rem; letter-spacing:.1em; text-transform:uppercase;
-  color:var(--brass); padding:13px 8px 13px 14px; align-self:center;}
+nav.spine{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper); display:flex; justify-content:space-between; align-items:center;
+  padding:0 10px; box-shadow:0 2px 10px rgba(0,0,0,.15); position:sticky;}
+.spine-nav-scroll{display:flex; gap:0; overflow-x:auto; white-space:nowrap; align-items:center; flex:1; min-width:0;}
+.spine-nav-scroll a{color:var(--paper); text-decoration:none; font-family:"IBM Plex Mono",monospace; font-size:.74rem;
+  letter-spacing:.03em; padding:13px 12px; border-right:1px solid rgba(255,255,255,.12); opacity:.72;}
+.spine-nav-scroll a:hover{opacity:1; background:rgba(255,255,255,.06); color:#EFC9A0;}
+.spine-nav-scroll .grp{font-family:"IBM Plex Mono",monospace; font-size:.64rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--brass); padding:13px 8px 13px 10px; align-self:center;}
+
+.spine-timer{display:flex; align-items:center; gap:8px; padding:4px 0 4px 10px; border-left:1px solid rgba(255,255,255,.15); flex-shrink:0;}
+.spine-clock{font-family:"IBM Plex Mono",monospace; font-size:.88rem; font-weight:700; color:#EFC9A0; letter-spacing:.06em;
+  padding:4px 8px; border-radius:4px; background:rgba(255,255,255,.08); display:inline-flex; align-items:center; gap:5px;}
+.spine-clock.warning{color:#ffcf56;}
+.spine-clock.urgent{color:#ff6b6b; animation:pulseUrgent 1s infinite alternate;}
+.spine-btn{cursor:pointer; font-family:"IBM Plex Mono",monospace; font-size:.7rem; font-weight:600;
+  background:rgba(255,255,255,.14); color:var(--paper); border:1px solid rgba(255,255,255,.2);
+  padding:5px 9px; border-radius:4px; transition:all .15s ease; white-space:nowrap;}
+.spine-btn:hover{background:var(--wax); border-color:var(--wax); color:#fff;}
+.spine-btn.finish{background:#2e6b36; border-color:#2e6b36; color:#fff;}
+.spine-btn.finish:hover{background:#3b8a45;}
+
+.timer-progress-track{position:absolute; bottom:0; left:0; width:100%; height:3px; background:rgba(255,255,255,.1); pointer-events:none;}
+.timer-progress-fill{height:100%; width:0%; background:var(--brass); transition:width .3s ease, background-color .3s ease;}
+.timer-progress-fill.warning{background:#d48b11;}
+.timer-progress-fill.urgent{background:var(--wax);}
+
+/* HERO TIMER CARD */
+.timer-hero{max-width:580px; margin:22px auto 0; background:rgba(255,255,255,.75); border:2px solid var(--brass);
+  border-radius:12px; padding:18px 20px; box-shadow:0 4px 16px rgba(0,0,0,.06); text-align:center;}
+.timer-hero-kicker{font-family:"IBM Plex Mono",monospace; font-size:.72rem; font-weight:600;
+  letter-spacing:.08em; text-transform:uppercase; color:var(--wax); margin-bottom:4px;}
+.timer-hero-clock{font-family:"IBM Plex Mono",monospace; font-weight:700; font-size:2.8rem;
+  line-height:1.15; color:var(--ink); margin:6px 0 10px; letter-spacing:.04em;}
+.timer-hero-clock.warning{color:#b37400;}
+.timer-hero-clock.urgent{color:var(--wax); animation:pulseUrgent 1s infinite alternate;}
+@keyframes pulseUrgent{0%{transform:scale(1); opacity:1;} 100%{transform:scale(1.03); opacity:.85;}}
+.timer-hero-actions{display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-bottom:8px;}
+.timer-hero-btn{cursor:pointer; font-family:"IBM Plex Mono",monospace; font-size:.8rem; letter-spacing:.04em;
+  font-weight:600; text-transform:uppercase; border:none; padding:10px 18px; border-radius:6px;
+  transition:all .18s ease; display:inline-flex; align-items:center; gap:6px;}
+.timer-hero-btn.primary{background:var(--wax); color:var(--paper);}
+.timer-hero-btn.primary:hover{background:#943838; transform:translateY(-1px);}
+.timer-hero-btn.sub{background:transparent; color:var(--ink); border:1px solid var(--line); font-weight:500;}
+.timer-hero-btn.sub:hover{background:var(--paper2); border-color:var(--brass);}
+.timer-hero-btn.finish{background:#2e6b36; color:#fff;}
+.timer-hero-btn.finish:hover{background:#24542a;}
+.timer-hero-note{font-size:.82rem; color:var(--slate); font-family:"IBM Plex Sans",sans-serif; margin:0;}
+.autosave-badge{display:inline-block; font-size:.7rem; font-family:"IBM Plex Mono",monospace;
+  color:#2e6b36; background:#eaf5ec; border:1px solid #b7deb9; padding:2px 8px; border-radius:12px; margin-top:6px;}
 main{max-width:860px; margin:0 auto; padding:10px 24px 100px;}
 section.chapter{padding:50px 0 20px; border-bottom:1px solid var(--line); scroll-margin-top:54px;}
 section.chapter:last-of-type{border-bottom:none;}
@@ -96,7 +138,12 @@ details.loesung .loesung-body ul, details.loesung .loesung-body ol{margin:6px 0;
 details.loesung .loesung-body table.exam{font-size:.85rem;}
 footer{text-align:center; padding:44px 20px 70px; font-family:"IBM Plex Sans",sans-serif; font-size:.82rem;
   color:var(--slate); border-top:1px solid var(--line);}
-@media(max-width:640px){.chapter-title-vi{margin-left:0;}}
+@media(max-width:640px){
+  .chapter-title-vi{margin-left:0;}
+  .timer-hero-clock{font-size:2.2rem;}
+  .spine-clock{font-size:.78rem; padding:3px 6px;}
+  .spine-btn{padding:4px 6px; font-size:.65rem;}
+}
 @media print{nav.spine,.toggle-btn,.top-bar{display:none;}body{font-size:12pt;background:#fff;}}
 </style>
 </head>
@@ -122,16 +169,45 @@ footer{text-align:center; padding:44px 20px 70px; font-family:"IBM Plex Sans",sa
     <div class="item"><span class="swatch vi"></span> Tiếng Việt (đọc sau)</div>
     <button class="toggle-btn" id="viToggle" onclick="toggleVi()">🇻🇳 Tiếng Việt: AN</button>
   </div>
+
+  <!-- BẢNG ĐIỀU KHIỂN ĐẾM GIỜ LÀM BÀI THI -->
+  <div class="timer-hero" id="timerHero">
+    <div class="timer-hero-kicker">⏱️ Đồng hồ tính giờ làm bài · Prüfungszeit: 60 Minuten</div>
+    <div class="timer-hero-clock" id="timerHeroClock">60:00</div>
+    <div class="timer-hero-actions">
+      <button class="timer-hero-btn primary" id="timerHeroBtn" onclick="toggleExamTimer()">
+        <span id="timerHeroBtnIcon">▶</span> <span id="timerHeroBtnText">Bắt đầu làm bài (60 phút)</span>
+      </button>
+      <button class="timer-hero-btn sub" id="timerResetBtn" onclick="resetExamTimer()" style="display:none">
+        ↺ Đặt lại
+      </button>
+      <button class="timer-hero-btn finish" id="timerFinishBtn" onclick="finishExamTimer()" style="display:none">
+        🏁 Nộp bài / Xem đáp án
+      </button>
+    </div>
+    <p class="timer-hero-note" id="timerHeroNote">Bấm nút để bắt đầu tính giờ làm bài thi 60 phút theo đúng quy chuẩn IHK.</p>
+    <div id="autosaveNotice" class="autosave-badge" style="display:none">✓ Bài làm tự động lưu</div>
+  </div>
 </header>
 
 <nav class="spine">
-  <span class="grp">Đề thi</span>
-  <a href="#info">Info</a>
-  <a href="#hinweise">Hinweise</a>
-  <a href="#betrieb">Betrieb</a>
-  <a href="#a1">Aufgabe 1</a>
-  <a href="#a2">Aufgabe 2</a>
-  <a href="#a3">Aufgabe 3</a>
+  <div class="spine-nav-scroll">
+    <span class="grp">Đề thi</span>
+    <a href="#info">Info</a>
+    <a href="#hinweise">Hinweise</a>
+    <a href="#betrieb">Betrieb</a>
+    <a href="#a1">Aufgabe 1</a>
+    <a href="#a2">Aufgabe 2</a>
+    <a href="#a3">Aufgabe 3</a>
+  </div>
+  <div class="spine-timer">
+    <div class="spine-clock" id="spineClock" title="Thời gian còn lại">⏱️ 60:00</div>
+    <button class="spine-btn" id="spineTimerBtn" onclick="toggleExamTimer()">▶ Bắt đầu</button>
+    <button class="spine-btn finish" id="spineFinishBtn" onclick="finishExamTimer()" style="display:none">🏁 Nộp bài</button>
+  </div>
+  <div class="timer-progress-track">
+    <div class="timer-progress-fill" id="timerProgressFill"></div>
+  </div>
 </nav>
 
 <main>
@@ -693,6 +769,284 @@ function toggleVi(){
   var b=document.getElementById('viToggle');
   var hidden=document.body.classList.contains('hide-vi');
   b.textContent = hidden ? '🇩🇪 Tiếng Việt: TẮT' : '🇻🇳 Tiếng Việt: AN';
+}
+
+/* ========================================================
+   HỆ THỐNG ĐẾM GIỜ LÀM BÀI THI IHK (PRÜFUNGSZEIT: 60 PHÚT)
+   ======================================================== */
+var EXAM_TIMER = (function(){
+  var TOTAL_SEC = 60 * 60; // 60 phút = 3600 giây
+  var remaining = TOTAL_SEC;
+  var intervalId = null;
+  var isRunning = false;
+  var isFinished = false;
+  var STORAGE_KEY = 'ihk_6132_timer_state';
+  var DRAFTS_KEY = 'ihk_6132_drafts';
+
+  function pad(n){ return n < 10 ? '0' + n : '' + n; }
+
+  function formatTime(sec){
+    var m = Math.floor(sec / 60);
+    var s = sec % 60;
+    return pad(m) + ':' + pad(s);
+  }
+
+  function updateUI(){
+    var timeStr = formatTime(remaining);
+    var heroClock = document.getElementById('timerHeroClock');
+    var spineClock = document.getElementById('spineClock');
+    var heroBtnIcon = document.getElementById('timerHeroBtnIcon');
+    var heroBtnText = document.getElementById('timerHeroBtnText');
+    var spineBtn = document.getElementById('spineTimerBtn');
+    var resetBtn = document.getElementById('timerResetBtn');
+    var finishBtn = document.getElementById('timerFinishBtn');
+    var spineFinishBtn = document.getElementById('spineFinishBtn');
+    var fill = document.getElementById('timerProgressFill');
+    var heroNote = document.getElementById('timerHeroNote');
+
+    if(heroClock) heroClock.textContent = timeStr;
+    if(spineClock) spineClock.textContent = '⏱️ ' + timeStr;
+
+    // Cảnh báo thời gian: vàng khi <= 10 phút, đỏ nhấp nháy khi <= 5 phút
+    var isWarning = remaining <= 600 && remaining > 300;
+    var isUrgent = remaining <= 300 && remaining > 0;
+
+    [heroClock, spineClock].forEach(function(el){
+      if(!el) return;
+      el.classList.toggle('warning', isWarning);
+      el.classList.toggle('urgent', isUrgent);
+    });
+
+    if(fill){
+      var pct = Math.min(100, Math.max(0, ((TOTAL_SEC - remaining) / TOTAL_SEC) * 100));
+      fill.style.width = pct + '%';
+      fill.classList.toggle('warning', isWarning);
+      fill.classList.toggle('urgent', isUrgent);
+    }
+
+    if(isFinished){
+      if(heroBtnIcon) heroBtnIcon.textContent = '✓';
+      if(heroBtnText) heroBtnText.textContent = 'Đã kết thúc bài thi';
+      if(spineBtn) spineBtn.textContent = '✓ Kết thúc';
+      if(resetBtn) resetBtn.style.display = 'inline-block';
+      if(finishBtn) finishBtn.style.display = 'none';
+      if(spineFinishBtn) spineFinishBtn.style.display = 'none';
+      if(heroNote) heroNote.textContent = 'Bạn đã hoàn tất bài thi. Đã mở toàn bộ phần đáp án mẫu phía dưới.';
+      return;
+    }
+
+    if(isRunning){
+      if(heroBtnIcon) heroBtnIcon.textContent = '⏸';
+      if(heroBtnText) heroBtnText.textContent = 'Tạm dừng';
+      if(spineBtn) spineBtn.textContent = '⏸ Tạm dừng';
+      if(resetBtn) resetBtn.style.display = 'inline-block';
+      if(finishBtn) finishBtn.style.display = 'inline-block';
+      if(spineFinishBtn) spineFinishBtn.style.display = 'inline-block';
+      if(heroNote) heroNote.textContent = 'Đang tính giờ làm bài... Tập trung làm bài và kiểm tra các câu hỏi bên dưới.';
+    } else {
+      if(remaining === TOTAL_SEC){
+        if(heroBtnIcon) heroBtnIcon.textContent = '▶';
+        if(heroBtnText) heroBtnText.textContent = 'Bắt đầu làm bài (60 phút)';
+        if(spineBtn) spineBtn.textContent = '▶ Bắt đầu';
+        if(resetBtn) resetBtn.style.display = 'none';
+        if(finishBtn) finishBtn.style.display = 'none';
+        if(spineFinishBtn) spineFinishBtn.style.display = 'none';
+        if(heroNote) heroNote.textContent = 'Bấm nút để bắt đầu tính giờ làm bài thi 60 phút theo đúng quy chuẩn IHK.';
+      } else {
+        if(heroBtnIcon) heroBtnIcon.textContent = '▶';
+        if(heroBtnText) heroBtnText.textContent = 'Tiếp tục làm bài';
+        if(spineBtn) spineBtn.textContent = '▶ Tiếp tục';
+        if(resetBtn) resetBtn.style.display = 'inline-block';
+        if(finishBtn) finishBtn.style.display = 'inline-block';
+        if(spineFinishBtn) spineFinishBtn.style.display = 'inline-block';
+        if(heroNote) heroNote.textContent = 'Đang tạm dừng. Bấm tiếp tục để không lỡ thời gian làm bài.';
+      }
+    }
+  }
+
+  function saveState(){
+    try{
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify({
+        remaining: remaining,
+        isRunning: isRunning,
+        isFinished: isFinished,
+        timestamp: Date.now()
+      }));
+    }catch(_){}
+  }
+
+  function loadState(){
+    try{
+      var raw = sessionStorage.getItem(STORAGE_KEY);
+      if(!raw) return;
+      var data = JSON.parse(raw);
+      if(data && typeof data.remaining === 'number'){
+        remaining = data.remaining;
+        isFinished = !!data.isFinished;
+        if(data.isRunning && !isFinished){
+          var elapsed = Math.floor((Date.now() - (data.timestamp || Date.now())) / 1000);
+          remaining = Math.max(0, remaining - Math.max(0, elapsed));
+          if(remaining > 0){
+            start();
+          } else {
+            timeUp();
+          }
+        }
+      }
+    }catch(_){}
+  }
+
+  function tick(){
+    if(remaining > 0){
+      remaining--;
+      updateUI();
+      saveState();
+    } else {
+      timeUp();
+    }
+  }
+
+  function start(){
+    if(intervalId) clearInterval(intervalId);
+    isRunning = true;
+    intervalId = setInterval(tick, 1000);
+    updateUI();
+    saveState();
+  }
+
+  function pause(){
+    if(intervalId) clearInterval(intervalId);
+    intervalId = null;
+    isRunning = false;
+    updateUI();
+    saveState();
+  }
+
+  function timeUp(){
+    if(intervalId) clearInterval(intervalId);
+    intervalId = null;
+    isRunning = false;
+    isFinished = true;
+    remaining = 0;
+    updateUI();
+    saveState();
+    alert('⏰ ĐÃ HẾT THỜI GIAN LÀM BÀI (60 PHÚT)!\n\nBạn hãy dừng bút và kiểm tra lại câu trả lời hoặc đối chiếu với phần đáp án mẫu (Musterlösung) bên dưới.');
+    openAllSolutions();
+  }
+
+  function openAllSolutions(){
+    document.querySelectorAll('details.loesung').forEach(function(d){
+      d.open = true;
+    });
+  }
+
+  function toggle(){
+    if(isFinished){
+      if(confirm('Bài thi đã kết thúc. Bạn có muốn đặt lại thời gian để làm lại bài từ đầu?')){
+        reset();
+      }
+      return;
+    }
+    if(isRunning){
+      pause();
+    } else {
+      var isFirst = (remaining === TOTAL_SEC);
+      start();
+      if(isFirst){
+        var target = document.getElementById('betrieb') || document.getElementById('a1');
+        if(target){
+          setTimeout(function(){
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 300);
+        }
+      }
+    }
+  }
+
+  function reset(){
+    if(!confirm('Bạn có chắc chắn muốn đặt lại đồng hồ về 60:00?')) return;
+    if(intervalId) clearInterval(intervalId);
+    intervalId = null;
+    isRunning = false;
+    isFinished = false;
+    remaining = TOTAL_SEC;
+    updateUI();
+    saveState();
+  }
+
+  function finish(){
+    if(!confirm('Bạn có chắc chắn muốn nộp bài / kết thúc bài làm ngay bây giờ?')) return;
+    if(intervalId) clearInterval(intervalId);
+    intervalId = null;
+    isRunning = false;
+    isFinished = true;
+    var usedSec = TOTAL_SEC - remaining;
+    var usedM = Math.floor(usedSec / 60);
+    var usedS = usedSec % 60;
+    updateUI();
+    saveState();
+    openAllSolutions();
+    alert('🏁 Chúc mừng bạn đã hoàn thành bài thi!\n\n• Thời gian làm bài: ' + usedM + ' phút ' + usedS + ' giây.\n• Hệ thống đã tự động mở tất cả đáp án mẫu (Musterlösung) phía dưới để bạn chấm điểm.');
+  }
+
+  function initAutosave(){
+    var areas = document.querySelectorAll('textarea');
+    var badge = document.getElementById('autosaveNotice');
+    
+    try{
+      var saved = localStorage.getItem(DRAFTS_KEY);
+      if(saved){
+        var drafts = JSON.parse(saved);
+        areas.forEach(function(ta){
+          if(ta.id && drafts[ta.id]){
+            ta.value = drafts[ta.id];
+          }
+        });
+        if(badge) badge.style.display = 'inline-block';
+      }
+    }catch(_){}
+
+    areas.forEach(function(ta){
+      ta.addEventListener('input', function(){
+        try{
+          var drafts = {};
+          areas.forEach(function(item){
+            if(item.id && item.value.trim()){
+              drafts[item.id] = item.value;
+            }
+          });
+          localStorage.setItem(DRAFTS_KEY, JSON.stringify(drafts));
+          if(badge){
+            badge.style.display = 'inline-block';
+            badge.textContent = '✓ Đã lưu bài làm (' + new Date().toLocaleTimeString('vi-VN', {hour:'2-digit', minute:'2-digit'}) + ')';
+          }
+        }catch(_){}
+      });
+    });
+  }
+
+  function init(){
+    loadState();
+    updateUI();
+    initAutosave();
+  }
+
+  return {
+    init: init,
+    toggle: toggle,
+    reset: reset,
+    finish: finish
+  };
+})();
+
+window.toggleExamTimer = function(){ EXAM_TIMER.toggle(); };
+window.resetExamTimer = function(){ EXAM_TIMER.reset(); };
+window.finishExamTimer = function(){ EXAM_TIMER.finish(); };
+
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', function(){ EXAM_TIMER.init(); });
+} else {
+  EXAM_TIMER.init();
 }
 </script>
 </body>
