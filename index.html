@@ -641,26 +641,35 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 /* ===== Search sheet (Tối ưu mobile chống tràn) ===== */
 .search-toggle{display:none;border:1px solid var(--line);background:var(--surface);border-radius:999px;width:38px;height:38px;
   align-items:center;justify-content:center;cursor:pointer;font-size:1em;flex-shrink:0;-webkit-tap-highlight-color:transparent}
-#searchSheet{position:fixed;inset:0;z-index:260;background:rgba(0,0,0,.45);backdrop-filter:blur(4px);display:none;padding:max(12px,var(--safe-top)) 12px 12px;box-sizing:border-box}
+#searchSheet{position:fixed;inset:0;top:0;left:0;right:0;bottom:0;width:100vw;height:100dvh;z-index:999999;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:none;padding:max(12px,var(--safe-top)) 12px 12px;box-sizing:border-box}
 #searchSheet.show{display:flex;align-items:flex-start;justify-content:center}
 #searchSheet .sheet{background:var(--surface);border-radius:18px;max-width:640px;width:100%;max-height:min(90vh,760px);
   display:flex;flex-direction:column;overflow:hidden;box-shadow:var(--shadow);animation:popIn .22s ease;box-sizing:border-box}
-#searchSheet .sheet-head{display:flex;gap:10px;align-items:center;padding:12px 14px;border-bottom:1px solid var(--line);background:var(--surface);box-sizing:border-box}
+#searchSheet .sheet-head{display:flex;gap:10px;align-items:center;padding:12px 14px;border-bottom:1.5px solid var(--line);background:var(--surface);box-sizing:border-box;flex-shrink:0}
 #searchSheet .sheet-input-wrap{position:relative;flex:1;min-width:0;display:flex;align-items:center}
-#searchSheet .sheet-input-mag{position:absolute;left:10px;font-size:.9em;opacity:.5;pointer-events:none}
-#searchSheet input{width:100%;min-width:0;border:1.5px solid var(--line);border-radius:12px;padding:10px 32px 10px 32px;
+#searchSheet .sheet-input-mag{position:absolute;left:10px;font-size:.9em;opacity:.55;pointer-events:none}
+#searchSheet input{width:100%;min-width:0;height:42px;border:1.5px solid var(--line);border-radius:12px;padding:0 32px 0 32px;
   font:inherit;font-size:16px !important;color:var(--ink);background:var(--bg);box-sizing:border-box;-webkit-appearance:none;appearance:none}
 #searchSheet input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(180,83,9,.15);background:var(--surface)}
-#searchSheet .sheet-clear-btn{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:none;background:none;color:var(--muted);font-size:1.1em;cursor:pointer;padding:4px;display:none;line-height:1}
-#searchSheet .sheet-close{border:none;background:var(--accent-soft);border-radius:10px;padding:10px 14px;font:inherit;cursor:pointer;font-weight:600;color:var(--accent);white-space:nowrap;flex-shrink:0;-webkit-tap-highlight-color:transparent}
+#searchSheet .sheet-clear-btn{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:none;background:var(--line);color:var(--surface);font-size:.9em;cursor:pointer;width:24px;height:24px;border-radius:999px;display:none;align-items:center;justify-content:center;line-height:1}
+#searchSheet .sheet-close{border:1.5px solid var(--line);background:var(--accent-soft);border-radius:10px;padding:0 14px;height:42px;font:inherit;cursor:pointer;font-weight:600;color:var(--accent);white-space:nowrap;flex-shrink:0;-webkit-tap-highlight-color:transparent}
 #searchSheet .sheet-close:hover{background:var(--accent);color:#fff}
-#searchSheet .sheet-body{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;padding:6px 0 max(14px,var(--safe-bottom));flex:1;box-sizing:border-box}
+#searchSheet .sheet-body{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;padding:6px 0 max(16px,var(--safe-bottom));flex:1;box-sizing:border-box;background:var(--surface)}
+
+#searchSheet .res{display:flex;align-items:center;gap:10px;padding:11px 14px;cursor:pointer;border-bottom:1px solid var(--line);width:100%;max-width:100%;box-sizing:border-box;transition:background .12s;-webkit-tap-highlight-color:rgba(180,83,9,.1)}
+#searchSheet .res:last-child{border-bottom:none}
+#searchSheet .res:hover,#searchSheet .res:active{background:var(--accent-soft)}
+#searchSheet .res .badge{flex-shrink:0;font-size:.68em;font-weight:700;padding:2px 7px;border-radius:6px;background:var(--bg);color:var(--accent);border:1px solid var(--line);white-space:nowrap;text-transform:uppercase;letter-spacing:.03em}
+#searchSheet .res .txt{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;overflow:hidden}
+#searchSheet .res .t{font-weight:600;font-size:.92em;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+#searchSheet .res .s{font-size:.77em;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+#searchSheet mark.sh-mark{background:#FFD580;color:#7A3E00;font-weight:700;padding:0 2px;border-radius:3px}
 
 @media (max-width:640px){
-  #searchSheet{padding:0}
-  #searchSheet .sheet{border-radius:0 !important;border:none !important;max-width:100%;width:100%;height:100%;max-height:100dvh;box-shadow:none !important}
-  #searchSheet .sheet-head{padding:calc(10px + var(--safe-top)) 12px 10px;border-bottom:1px solid var(--line)}
-  #searchSheet .sheet-body{padding-bottom:calc(24px + var(--safe-bottom))}
+  #searchSheet{padding:0 !important;margin:0 !important}
+  #searchSheet .sheet{border-radius:0 !important;border:none !important;max-width:100% !important;width:100% !important;height:100% !important;max-height:100dvh !important;min-height:100dvh !important;box-shadow:none !important;margin:0 !important}
+  #searchSheet .sheet-head{padding:calc(10px + var(--safe-top)) 12px 10px !important;border-bottom:1.5px solid var(--line) !important}
+  #searchSheet .sheet-body{padding-bottom:calc(28px + var(--safe-bottom)) !important}
 }
 
 
@@ -1299,12 +1308,12 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 .track-switch[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:12px}
 
 </style>
-<script src="./pwa.js?v=7" defer></script>
+<script src="./pwa.js?v=205" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./css/statute-theme.css?v=200">
-<link rel="stylesheet" href="./css/elite-theme.css?v=200">
+<link rel="stylesheet" href="./css/statute-theme.css?v=205">
+<link rel="stylesheet" href="./css/elite-theme.css?v=205">
 </head>
 <body>
 <div id="offlineBanner" role="status"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-right:6px"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Offline-Modus — Lektionen &amp; Prüfungen bleiben verfügbar!</span></div>
@@ -9062,6 +9071,9 @@ function initSearchSheet(){
     sheet.classList.add('show');
     sheet.setAttribute('aria-hidden','false');
     document.body.style.overflow='hidden';
+    const pb = document.getElementById('pwaBanner');
+    if(pb) pb.style.display='none';
+    document.querySelectorAll('.timer-bubble').forEach(b=>{ b.dataset.prevDisp=b.style.display; b.style.display='none'; });
     setTimeout(()=>{ try{ input.focus(); }catch(_){} }, 60);
     renderSheetResults(input.value);
   };
@@ -9069,6 +9081,9 @@ function initSearchSheet(){
     sheet.classList.remove('show');
     sheet.setAttribute('aria-hidden','true');
     document.body.style.overflow='';
+    const pb = document.getElementById('pwaBanner');
+    if(pb && pb.classList.contains('show')) pb.style.display='block';
+    document.querySelectorAll('.timer-bubble').forEach(b=>{ b.style.display=b.dataset.prevDisp||''; });
     input.value='';
     if(clearBtn) clearBtn.style.display='none';
   };
@@ -9087,7 +9102,7 @@ function initSearchSheet(){
   }
 
   input.addEventListener('input', ()=>{
-    if(clearBtn) clearBtn.style.display = input.value ? 'block' : 'none';
+    if(clearBtn) clearBtn.style.display = input.value ? 'flex' : 'none';
     renderSheetResults(input.value);
   });
 
@@ -9102,16 +9117,17 @@ function initSearchSheet(){
       let quickHtml = '<div class="sh-quick" style="border:none;background:transparent;padding:14px 16px">';
       if(recents.length > 0){
         quickHtml += '<div class="sh-section" style="margin-bottom:14px">'
-          + '<div class="sh-head"><span>🕒 Gần đây</span><button type="button" class="sh-clear" id="mClearRecents">Xóa</button></div>'
-          + '<div class="sh-chips">'
-          + recents.map(r => `<span class="sh-chip" data-mq="${escHtml(r)}">🕒 ${escHtml(r)}</span>`).join('')
+          + '<div class="sh-head" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;font-size:.82em;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em">'
+          + '<span>🕒 Gần đây</span><button type="button" class="sh-clear" id="mClearRecents" style="border:none;background:none;color:var(--accent);font-size:.9em;cursor:pointer">Xóa</button></div>'
+          + '<div class="sh-chips" style="display:flex;flex-wrap:wrap;gap:8px">'
+          + recents.map(r => `<span class="sh-chip" data-mq="${escHtml(r)}" style="display:inline-flex;align-items:center;padding:6px 12px;background:var(--bg);border:1px solid var(--line);border-radius:999px;font-size:.84em;color:var(--ink);cursor:pointer">🕒 ${escHtml(r)}</span>`).join('')
           + '</div></div>';
       }
       if(Array.isArray(window.HOT_TAGS) && window.HOT_TAGS.length > 0){
         quickHtml += '<div class="sh-section">'
-          + '<div class="sh-head"><span>🔥 Chủ đề học nhanh</span></div>'
-          + '<div class="sh-chips">'
-          + window.HOT_TAGS.map(t => `<span class="sh-chip" data-mq="${escHtml(t.q)}">${t.icon} ${escHtml(t.label)}</span>`).join('')
+          + '<div class="sh-head" style="margin-bottom:8px;font-size:.82em;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em"><span>🔥 Chủ đề học nhanh</span></div>'
+          + '<div class="sh-chips" style="display:flex;flex-wrap:wrap;gap:8px">'
+          + window.HOT_TAGS.map(t => `<span class="sh-chip" data-mq="${escHtml(t.q)}" style="display:inline-flex;align-items:center;padding:6px 12px;background:var(--bg);border:1px solid var(--line);border-radius:999px;font-size:.84em;color:var(--ink);cursor:pointer">${t.icon} ${escHtml(t.label)}</span>`).join('')
           + '</div></div>';
       }
       quickHtml += '</div>';
@@ -9129,7 +9145,7 @@ function initSearchSheet(){
         chip.addEventListener('click', ()=>{
           const qVal = chip.getAttribute('data-mq') || '';
           input.value = qVal;
-          if(clearBtn) clearBtn.style.display = 'block';
+          if(clearBtn) clearBtn.style.display = 'flex';
           input.focus();
           renderSheetResults(qVal);
         });
@@ -9147,21 +9163,22 @@ function initSearchSheet(){
       .map(x=>x.it);
 
     if(!hits.length){
-      body.innerHTML='<div class="empty-state" style="padding:28px 16px;text-align:center"><div class="big-ic">😕</div>Không tìm thấy kết quả cho „'+escHtml(q0)+'“.</div>';
+      body.innerHTML='<div class="empty-state" style="padding:36px 16px;text-align:center;color:var(--muted)"><div class="big-ic" style="font-size:2em;margin-bottom:8px">😕</div>Không tìm thấy kết quả cho „'+escHtml(q0)+'“.</div>';
       return;
     }
 
-    const hitCountHtml = '<div style="padding:8px 14px 4px;font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em">'
+    const hitCountHtml = '<div style="padding:10px 14px 6px;font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid var(--line);background:var(--surface)">'
       + hits.length + ' kết quả' + (hits.length>=80?' (Top 80)':'') + '</div>';
 
     body.innerHTML = hitCountHtml + hits.map((h,i)=>{
-      const tHl = (typeof highlightMatch==='function') ? highlightMatch(escHtml(h.title), terms) : escHtml(h.title);
-      const sHl = (typeof highlightMatch==='function') ? highlightMatch(escHtml(h.sub), terms) : escHtml(h.sub);
-      return '<div class="res" data-si="'+i+'">'
-        + '<span class="badge">'+escHtml(h.badge)+'</span>'
-        + '<div class="txt">'
-        + '<div class="t">'+tHl+'</div>'
-        + '<div class="s">'+sHl+'</div>'
+      const tHl = (typeof highlightMatch==='function') ? highlightMatch(escHtml(h.title||''), terms) : escHtml(h.title||'');
+      const sHl = (typeof highlightMatch==='function') ? highlightMatch(escHtml(h.sub||''), terms) : escHtml(h.sub||'');
+      const badgeText = escHtml(h.badge || 'LERNEN');
+      return '<div class="res" data-si="'+i+'" style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line);width:100%;box-sizing:border-box;color:var(--ink);background:var(--surface);cursor:pointer">'
+        + '<span class="badge" style="flex-shrink:0;font-size:.7em;font-weight:700;padding:2.5px 7px;border-radius:6px;background:var(--bg);color:var(--accent);border:1px solid var(--line);white-space:nowrap;text-transform:uppercase;letter-spacing:.03em">'+badgeText+'</span>'
+        + '<div class="txt" style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;overflow:hidden">'
+        + '<div class="t" style="font-weight:600;font-size:.94em;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%">'+tHl+'</div>'
+        + (sHl ? '<div class="s" style="font-size:.78em;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%">'+sHl+'</div>' : '')
         + '</div>'
         + '</div>';
     }).join('');

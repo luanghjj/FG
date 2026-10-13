@@ -124,7 +124,30 @@
         : './sw.js';
     navigator.serviceWorker.register(swUrl).then((reg) => {
       try { reg.update(); } catch (_) {}
+      // Tự động kích hoạt bản mới ngay khi tải xong
+      reg.addEventListener('updatefound', () => {
+        const newWorker = reg.installing;
+        if (!newWorker) return;
+        newWorker.addEventListener('statechange', () => {
+          if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+            newWorker.postMessage({ type: 'SKIP_WAITING' });
+          }
+        });
+      });
+      // Nếu có worker đang waiting từ trước
+      if (reg.waiting) {
+        reg.waiting.postMessage({ type: 'SKIP_WAITING' });
+      }
     }).catch(() => {});
+
+    // Khi Service Worker mới tiếp quản, tự động reload để nhận code mới
+    let isRefreshing = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (isRefreshing) return;
+      isRefreshing = true;
+      window.location.reload();
+    });
+
     // delay install prompt a bit so login is not blocked
     setTimeout(() => {
       if (isStandalone() || dismissed()) return;

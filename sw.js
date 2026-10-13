@@ -1,10 +1,14 @@
 /* Service Worker – AzubiHub (offline shell + static assets) */
-const CACHE = 'azubihub-v163';
+const CACHE = 'azubihub-v205';
 const PRECACHE = [
   './',
   './js/wissen.js',
   './js/chatbox.js',
   './index.html',
+  './abschluss-winter-2023-2024.html',
+  './abschluss-sommer-2024.html',
+  './abschluss-winter-2024-2025.html',
+  './abschluss-sommer-2025.html',
   './deutsch-a1-c1/',
   './deutsch-a1-c1/index.html',
   './fuererschein/',
@@ -116,6 +120,12 @@ self.addEventListener('install', (event) => {
   );
 });
 
+self.addEventListener('message', (event) => {
+  if (event.data && (event.data.type === 'SKIP_WAITING' || event.data === 'skipWaiting')) {
+    self.skipWaiting();
+  }
+});
+
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
@@ -132,13 +142,15 @@ self.addEventListener('fetch', (event) => {
   // Don't cache Supabase / cross-origin API
   if (url.origin !== self.location.origin) return;
 
-  // HTML: network-first so updates appear quickly
+  // HTML: network-first so updates appear quickly, always fetch fresh from network
   if (req.mode === 'navigate' || (req.headers.get('accept') || '').includes('text/html')) {
     event.respondWith(
-      fetch(req)
+      fetch(req, { cache: 'no-cache' })
         .then((res) => {
-          const copy = res.clone();
-          caches.open(CACHE).then((c) => c.put(req, copy));
+          if (res && res.status === 200) {
+            const copy = res.clone();
+            caches.open(CACHE).then((c) => c.put(req, copy));
+          }
           return res;
         })
         .catch(() =>
