@@ -183,6 +183,18 @@ window.BFK1_CATALOG = [
         "icon": "⚖️",
         "name": "LS15 · Rechtliche Vorschriften Speisekarten",
         "nameVi": "Quy định pháp lý cho thẻ menu"
+      },
+      {
+        "id": "lf6-wein",
+        "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M8 22h8\"/><path d=\"M12 15v7\"/><path d=\"M12 15a5 5 0 0 0 5-5c0-2-.5-4-2-8H9c-1.5 4-2 6-2 8a5 5 0 0 0 5 5z\"/></svg>",
+        "name": "LS03 · Weine aus nah und fern",
+        "nameVi": "Rượu vang trong nước & quốc tế — Sản xuất, Luật 2021 & 13 Vùng"
+      },
+      {
+        "id": "lf6-bier",
+        "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M17 11h1a3 3 0 0 1 0 6h-1\"/><path d=\"M5 6h12v12a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V6z\"/><path d=\"M5 10h12\"/><path d=\"M5 14h12\"/></svg>",
+        "name": "LS02 · Bier — Zusammenfassung & Einteilung",
+        "nameVi": "Kiến thức trọn bộ về Bia — 4 Tiêu chí, 7 Bước sản xuất, Rót bia & JuSchG"
       }
     ]
   },

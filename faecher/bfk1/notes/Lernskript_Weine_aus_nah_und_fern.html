@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>§ Weine aus nah und fern – LF 07, LS03 (DE/VI)</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+/* ===== DESIGN TOKENS =====
+  ink    #1B1F2A  primary text / spine
+  paper  #F1ECDE  parchment ground
+  wax    #7A2E2E  paragraph seal / DE accent
+  brass  #9C7A3C  rule / numerals
+  slate  #48586B  VI translation voice
+  line   #D8CFB8  hairline
+*/
+:root{
+  --ink:#1B1F2A; --paper:#F1ECDE; --paper2:#EAE3D0; --wax:#7A2E2E;
+  --brass:#9C7A3C; --slate:#48586B; --line:#D8CFB8; --slateline:#c7d0da;
+  --green:#5b7a52; --greenbg:#eef3ea;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--paper);
+  background-image:
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.012) 0px, rgba(0,0,0,0.012) 1px, transparent 1px, transparent 3px);
+  color:var(--ink); font-family:"Source Serif 4",Georgia,serif; line-height:1.65;
+  font-size:17px;
+}
+::selection{background:#d9c9a3;}
+a{color:var(--wax);}
+
+/* ---- Header: title block like a statute cover page ---- */
+header.cover{
+  padding:60px 24px 42px; text-align:center; position:relative;
+  border-bottom:3px double var(--brass);
+  background:linear-gradient(180deg, var(--paper2), var(--paper));
+}
+header.cover .kicker{
+  font-family:"IBM Plex Mono",monospace; letter-spacing:.18em; font-size:.72rem;
+  text-transform:uppercase; color:var(--brass); margin-bottom:14px;
+}
+header.cover h1{
+  font-family:"Fraunces",serif; font-weight:600; font-size:clamp(1.9rem,5vw,3.1rem);
+  margin:0 0 10px; color:var(--ink); letter-spacing:-.01em;
+}
+header.cover h1 em{font-style:italic; color:var(--wax); font-weight:500;}
+header.cover .subtitle-de{font-size:1.02rem; color:var(--ink); margin:4px 0;}
+header.cover .subtitle-vi{
+  font-family:"IBM Plex Sans",sans-serif; font-size:.92rem; color:var(--slate);
+  margin:2px 0 0; font-style:normal;
+}
+header.cover .subtitle-vi:before{content:"VI · "; font-weight:600; letter-spacing:.03em; color:var(--slate); opacity:.7;}
+header.cover .exam-meta{
+  display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:18px;
+  font-family:"IBM Plex Mono",monospace; font-size:.72rem;
+}
+header.cover .exam-meta span{
+  border:1px solid var(--brass); color:var(--wax); padding:4px 12px; border-radius:20px;
+  letter-spacing:.04em;
+}
+
+/* ---- Legend + controls ---- */
+.legend{
+  max-width:820px; margin:22px auto 0; display:flex; gap:18px; justify-content:center;
+  flex-wrap:wrap; align-items:center; font-family:"IBM Plex Sans",sans-serif; font-size:.82rem; color:var(--ink);
+}
+.legend .item{display:flex; align-items:center; gap:8px;}
+.legend .swatch{width:16px; height:16px; border-radius:2px; flex-shrink:0;}
+.legend .swatch.de{background:var(--wax);}
+.legend .swatch.vi{background:var(--slate);}
+.toggle-btn{
+  cursor:pointer; font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.05em;
+  background:var(--ink); color:var(--paper); border:none; padding:8px 14px; border-radius:6px;
+  text-transform:uppercase; transition:.15s;
+}
+.toggle-btn:hover{background:var(--wax);}
+
+/* ---- Sticky paragraph nav ---- */
+nav.spine{
+  position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper);
+  display:flex; gap:0; overflow-x:auto; white-space:nowrap; padding:0 10px;
+  box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+nav.spine a{
+  color:var(--paper); text-decoration:none; font-family:"IBM Plex Mono",monospace;
+  font-size:.74rem; letter-spacing:.03em; padding:13px 14px; border-right:1px solid rgba(255,255,255,.12);
+  opacity:.72; transition:.15s;
+}
+nav.spine a:hover{opacity:1; background:rgba(255,255,255,.06); color:#EFC9A0;}
+nav.spine a.exam{color:#EFC9A0; opacity:.9;}
+nav.spine .grp{
+  font-family:"IBM Plex Mono",monospace; font-size:.64rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--brass); padding:13px 8px 13px 14px; align-self:center; opacity:.9;
+}
+
+main{max-width:840px; margin:0 auto; padding:10px 24px 100px;}
+
+/* ---- Section shell: like a numbered § chapter ---- */
+section.chapter{padding:50px 0 20px; border-bottom:1px solid var(--line); scroll-margin-top:54px;}
+section.chapter:last-of-type{border-bottom:none;}
+.chapter-head{display:flex; align-items:baseline; gap:16px; margin-bottom:6px;}
+.chapter-num{
+  font-family:"Fraunces",serif; font-weight:700; font-size:2.5rem; color:var(--brass);
+  line-height:1; flex-shrink:0;
+}
+.chapter-title-de{font-family:"Fraunces",serif; font-weight:600; font-size:1.5rem; color:var(--ink); margin:0;}
+.chapter-title-vi{
+  font-family:"IBM Plex Sans",sans-serif; font-size:.95rem; color:var(--slate); margin:4px 0 0 60px;
+}
+.chapter-title-vi:before{content:"VI · "; font-weight:600; opacity:.7;}
+.lf-tag{
+  font-family:"IBM Plex Mono",monospace; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase;
+  background:var(--wax); color:var(--paper); padding:3px 9px; border-radius:4px; margin-left:auto; align-self:center;
+}
+
+h3.sub{
+  font-family:"Fraunces",serif; font-weight:600; font-size:1.16rem; color:var(--wax);
+  margin:32px 0 4px; padding-left:14px; border-left:3px solid var(--wax);
+}
+h3.sub .vi-sub{
+  display:block; font-family:"IBM Plex Sans",sans-serif; font-weight:500; font-size:.82rem;
+  color:var(--slate); margin-top:3px; border-left:none; padding-left:0; letter-spacing:0;
+}
+h4.h4{font-family:'IBM Plex Sans',sans-serif; color:var(--ink); margin:24px 0 6px; font-size:1rem;}
+h4.h4 .vi-sub{display:block; color:var(--slate); font-weight:400; font-size:.82rem; margin-top:2px;}
+
+/* ---- The core DE→VI stacked block ---- */
+.block{margin:16px 0 22px;}
+.de{
+  position:relative; padding:14px 18px 14px 20px; background:rgba(122,46,46,.045);
+  border-left:3px solid var(--wax); border-radius:0 6px 6px 0; font-size:1rem;
+}
+.de .tag{
+  font-family:"IBM Plex Mono",monospace; font-size:.66rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--wax); display:block; margin-bottom:5px; opacity:.85;
+}
+.vi{
+  font-family:"IBM Plex Sans",sans-serif; font-size:.9rem; color:var(--slate);
+  padding:10px 18px 4px 20px; border-left:3px solid var(--slateline); margin-top:-4px;
+}
+.vi .tag{
+  font-family:"IBM Plex Mono",monospace; font-size:.64rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--slate); display:block; margin-bottom:4px; opacity:.75;
+}
+/* Vietnamese hide toggle */
+body.hide-vi .vi{display:none !important;}
+body.hide-vi .vi-sub{display:none !important;}
+body.hide-vi .vi-cell{display:none !important;}
+body.hide-vi .vi-mini{display:none !important;}
+body.hide-vi .chapter-title-vi{display:none !important;}
+
+ul,ol{margin:10px 0; padding-left:26px;}
+li{margin:5px 0;}
+li.de{border-radius:0 6px 6px 0; margin:7px 0;}
+
+.para-code{
+  font-family:"IBM Plex Mono",monospace; font-size:.7rem; font-weight:600; color:#fff;
+  background:var(--brass); padding:2px 8px; border-radius:10px; margin-left:6px; letter-spacing:.02em;
+  display:inline-block;
+}
+b,strong{color:var(--ink);}
+.vi b,.vi strong{color:#324150;}
+
+table{width:100%; border-collapse:collapse; margin:16px 0; font-size:.9rem; background:#fff;}
+th,td{border:1px solid var(--line); padding:9px 11px; text-align:left; vertical-align:top;}
+th{background:var(--ink); color:var(--paper); font-family:"IBM Plex Sans",sans-serif; font-weight:600; font-size:.78rem; letter-spacing:.03em; text-transform:uppercase;}
+tr:nth-child(even) td{background:var(--paper2);}
+td.vi-cell{color:var(--slate); font-family:"IBM Plex Sans",sans-serif; font-size:.82rem;}
+.vi-cell{color:var(--slate); font-family:"IBM Plex Sans",sans-serif; font-size:.82rem; display:block; margin-top:3px;}
+
+.example{
+  background:var(--greenbg); border-left:4px solid var(--green); border-radius:0 6px 6px 0;
+  padding:10px 16px; margin:12px 0; font-size:.92rem;
+}
+.example .tag{font-family:"IBM Plex Mono",monospace; font-size:.65rem; letter-spacing:.1em; color:#3f5c39; text-transform:uppercase; display:block; margin-bottom:4px;}
+.example .vi{border:none; padding:4px 0 0; margin:0;}
+
+.warn{
+  background:#f7e9df; border-left:4px solid var(--wax); border-radius:0 6px 6px 0;
+  padding:10px 16px; margin:12px 0; font-size:.92rem;
+}
+.warn .tag{font-family:"IBM Plex Mono",monospace; font-size:.65rem; letter-spacing:.1em; color:var(--wax); text-transform:uppercase; display:block; margin-bottom:4px;}
+.warn .vi{border:none; padding:4px 0 0; margin:0;}
+
+.timeline{
+  display:flex; justify-content:space-between; margin:26px 0 8px; padding:16px 10px;
+  border:1px solid var(--line); border-radius:8px; background:#fff;
+  font-family:"IBM Plex Mono",monospace; font-size:.78rem; text-align:center; color:var(--ink);
+}
+.timeline div{flex:1;}
+.timeline .vi-mini{display:block; font-family:"IBM Plex Sans",sans-serif; font-size:.68rem; color:var(--slate); margin-top:2px;}
+
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+@media(max-width:640px){.grid2{grid-template-columns:1fr;} .chapter-title-vi{margin-left:0;}}
+
+.badge-set{
+  font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.05em; text-transform:uppercase;
+  background:var(--ink); color:var(--paper); padding:5px 12px; border-radius:4px; display:inline-block; margin-bottom:14px;
+}
+.pill{display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:.66rem; font-weight:600;
+  padding:2px 9px; border-radius:12px; letter-spacing:.03em; text-transform:uppercase;}
+.pill.ok{background:#e2efdb; color:#3f5c39; border:1px solid #a9c39b;}
+.pill.no{background:#f4ddd6; color:#8a3324; border:1px solid #d3a294;}
+.pill.al{background:#f4ddd6; color:#7A2E2E; border:1px solid #d3a294;}
+
+/* ---- Q&A / Lösung accordion ---- */
+details.q{border:1px solid var(--line); border-radius:8px; margin:14px 0; overflow:hidden; background:#fff;}
+details.q summary{
+  cursor:pointer; list-style:none; padding:14px 18px; font-family:"IBM Plex Sans",sans-serif;
+  font-weight:600; font-size:.95rem; color:var(--ink); position:relative; padding-right:40px;
+}
+details.q summary::-webkit-details-marker{display:none;}
+details.q summary:after{
+  content:"+"; position:absolute; right:16px; top:50%; transform:translateY(-50%);
+  font-size:1.3rem; color:var(--brass); font-weight:400;
+}
+details.q[open] summary:after{content:"–";}
+details.q[open] summary{background:rgba(122,46,46,.04); border-bottom:1px dashed var(--line);}
+details.q summary .qnum{
+  font-family:"IBM Plex Mono",monospace; color:var(--brass); font-weight:600; margin-right:8px;
+}
+details.q .ans{padding:2px 18px 16px;}
+details.q .ans .de{margin-top:12px;}
+details.q .ans .vi{margin-bottom:6px;}
+
+/* ---- Math / calculation card ---- */
+.calc{
+  font-family:"IBM Plex Mono",monospace; font-size:.86rem; background:var(--ink); color:var(--paper);
+  border-radius:8px; padding:16px 18px; margin:14px 0; line-height:1.9;
+}
+.calc .op{color:var(--brass);}
+.calc .val{color:#EFC9A0;}
+.calc .res{color:#a9d39b; border-top:1px dashed rgba(255,255,255,.25); padding-top:4px; margin-top:4px; display:block;}
+
+/* ---- Exam sheet ---- */
+.exam-intro{
+  background:var(--paper2); border:1px solid var(--line); border-radius:8px;
+  padding:14px 18px; margin:16px 0; font-size:.94rem;
+}
+.aufgabe{margin:22px 0; padding-left:16px; border-left:3px solid var(--brass);}
+.aufgabe-num{font-family:"IBM Plex Sans",sans-serif; font-weight:600; color:var(--wax); font-size:1rem; display:block; margin-bottom:4px;}
+.pts{float:right; font-family:"IBM Plex Mono",monospace; color:var(--brass); font-size:.78rem;}
+kbd{font-family:"IBM Plex Mono",monospace; background:var(--paper2); border:1px solid var(--line); border-radius:4px; padding:1px 6px; font-size:.78rem; color:var(--ink);}
+code{font-family:"IBM Plex Mono",monospace; background:var(--paper2); border:1px solid var(--line); border-radius:4px; padding:1px 6px; font-size:.86em;}
+
+footer{
+  text-align:center; padding:44px 20px 70px; font-family:"IBM Plex Sans",sans-serif;
+  font-size:.82rem; color:var(--slate); border-top:1px solid var(--line);
+}
+footer .de{background:none; border:none; padding:0;}
+footer .vi{border:none; padding:0; margin-top:4px;}
+
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+@media print{
+  nav.spine, .toggle-btn{display:none;}
+  body{font-size:12pt; background:#fff;}
+  details.q, details.q .ans{display:block !important;}
+  details.q[open] summary:after,details.q summary:after{content:"";}
+  section.chapter{page-break-inside:auto;}
+}
+
+:root{--wine:#7A2E2E;--olive:#6f7d1c;--olive-soft:#eef1d2}
+/* ---- Karten (Karteikarten) ---- */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;border-top:6px solid var(--olive);box-shadow:0 1px 6px rgba(0,0,0,.06)}
+.card.rot{border-top-color:var(--wine)}
+.card header{padding:10px 14px 0;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.card header h3{margin:0;font-size:1.2rem;font-family:"Fraunces",serif;border:none;padding:0}
+.card .tag{font-size:.78rem;padding:2px 10px;border-radius:999px;background:var(--olive-soft);color:var(--olive);white-space:nowrap;font-family:"IBM Plex Sans",sans-serif}
+.card.rot .tag{background:#f3dfe5;color:var(--wine)}
+.cbody{padding:2px 14px 12px}
+.cbody h4{color:var(--ink);font-size:.85rem;font-family:"IBM Plex Sans",sans-serif;margin:12px 0 2px;text-transform:uppercase;letter-spacing:.05em}
+.cbody p.de{margin:2px 0 0;font-size:.95rem;font-weight:600;color:var(--ink)}
+.cbody p.vi{font-size:.88rem;color:var(--slate);font-family:"IBM Plex Sans",sans-serif;margin:2px 0 6px;padding-left:10px;border-left:3px solid var(--slateline)}
+.card .note{font-size:.85rem;background:#f7e9df;border-radius:6px;padding:6px 10px;margin:10px 0 0;color:#6b3500;font-family:"IBM Plex Sans",sans-serif}
+.card.extra{border-style:dashed}
+.card.extra .tag::after{content:" (bổ sung)"}
+.quiz .card{cursor:pointer}
+.quiz .card:not(.open) .cbody{display:none}
+.quiz .card:not(.open) header::after{content:"bấm để lật";font-size:.8rem;color:var(--slate);font-family:"IBM Plex Sans",sans-serif}
+/* ---- Aufgabenliste ---- */
+ol.tasks{counter-reset:t;list-style:none;padding:0;margin:14px 0}
+ol.tasks>li{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 16px 10px 58px;margin:10px 0;position:relative}
+ol.tasks>li::before{counter-increment:t;content:counter(t);position:absolute;left:14px;top:14px;width:30px;height:30px;border-radius:50%;background:var(--wax);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Fraunces",serif;font-weight:700}
+ol.tasks a{color:var(--wax);font-weight:600}
+/* ---- Ablauf-Lanes ---- */
+.lanes{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:14px 0}
+@media(max-width:760px){.lanes{grid-template-columns:1fr}}
+.lane h3{margin:0 0 10px;padding:10px 14px;border-radius:8px;color:#fff;background:var(--olive);font-family:"IBM Plex Sans",sans-serif;font-size:1rem;border:none}
+.lane.rot h3{background:var(--wax)}
+.step{position:relative;background:#fff;border:1px solid var(--line);border-left:5px solid var(--olive);border-radius:8px;padding:10px 14px 6px;margin:0 0 24px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.lane.rot .step{border-left-color:var(--wax)}
+.step::after{content:"▼";position:absolute;left:50%;bottom:-21px;transform:translateX(-50%);color:var(--brass);font-size:.8rem}
+.step:last-child::after{display:none}
+.step.opt{border-style:dashed;border-left-style:solid}
+.step .sn{font-weight:600;font-family:"Fraunces",serif;font-size:1.05rem;color:var(--ink)}
+.step .sn .vi{display:inline-block;margin:0 0 0 8px;font-weight:400;font-size:.8rem;padding:2px 10px;font-family:"IBM Plex Sans",sans-serif;color:var(--slate);background:var(--paper2);border-radius:10px;border:none}
+.step p.de{margin:6px 0 0;font-size:.95rem}
+.step p.vi{font-size:.88rem;color:var(--slate);font-family:"IBM Plex Sans",sans-serif;margin:2px 0 6px;padding-left:10px;border-left:3px solid var(--slateline)}
+.opt-tag{font-size:.78rem;color:var(--wax);margin-left:6px;font-family:"IBM Plex Sans",sans-serif}
+/* ---- Pyramiden ---- */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0}
+@media(max-width:760px){.two{grid-template-columns:1fr}}
+.two .box{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.two .box h4{font-family:"IBM Plex Sans",sans-serif;font-size:.9rem;margin:0 0 8px;color:var(--ink)}
+.pyr{display:flex;flex-direction:column;align-items:center;gap:4px;margin:12px 0}
+.pyr div{padding:8px 10px;color:#fff;text-align:center;border-radius:4px;font-size:.9rem;font-family:"IBM Plex Sans",sans-serif}
+.pyr div small{display:block;opacity:.92;font-size:.78rem}
+.p1{width:100%;background:#a9a2ad}.p2{width:78%;background:#7d4f65}.p3{width:56%;background:var(--wax)}
+.l1{width:100%;background:#8c8a4a}.l2{width:74%;background:#6e7021}.l3{width:48%;background:#475006}
+.l4{width:30%;background:#2d3304}
+/* ---- Prädikat-Leiter ---- */
+.ladder{display:grid;gap:8px;margin:12px 0}
+.lad{display:grid;grid-template-columns:34px 1fr;gap:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px;position:relative;overflow:hidden}
+.lad::before{content:"";position:absolute;left:0;bottom:0;height:5px;background:var(--wax);width:var(--w)}
+.lad .n{width:30px;height:30px;border-radius:50%;border:2px solid var(--wax);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--wax);font-family:"Fraunces",serif}
+.lad strong{font-family:"Fraunces",serif;font-size:1.1rem}
+.lad .meta{font-size:.8rem;color:var(--slate);font-family:"IBM Plex Sans",sans-serif;margin-left:8px}
+.lad p.de{margin:6px 0 0;font-size:.95rem}
+.lad p.vi{font-size:.88rem;color:var(--slate);font-family:"IBM Plex Sans",sans-serif;margin:2px 0 4px;padding-left:10px;border-left:3px solid var(--slateline)}
+/* ---- JS-generierte Tabellen: vietnamesische Spans kompakt ---- */
+td .vi{display:block;font-size:.8rem;color:var(--slate);font-family:"IBM Plex Sans",sans-serif;margin-top:3px;padding:0;border:none}
+</style>
+</head>
+<body>
+<header class="cover">
+  <div class="kicker">Lernfeld 07 · LS03 · Lernskript</div>
+  <h1>§ <em>Weine aus nah und fern</em></h1>
+  <p class="subtitle-de">Lernfeld 07 · LS03 · Nationale und internationale Weine und deren Herstellung darstellen (BFK)</p>
+  <p class="subtitle-vi">Rượu vang trong nước và quốc tế, và quy trình sản xuất. Tài liệu ôn tập song ngữ Đức–Việt, tổng hợp từ Anlage 1–7 và các bảng trong bài.</p>
+  <div class="exam-meta">
+    <span>Situation: „It's Wine Time“ im Hotel Bären</span><span>LF 07 · LS03</span><span>DE / VI zweisprachig</span>
+  </div>
+  <div class="legend">
+    <div class="item"><span class="swatch de"></span> Deutsch (Original — luôn đọc trước)</div>
+    <div class="item"><span class="swatch vi"></span> Tiếng Việt (bản dịch — đọc sau để hiểu)</div>
+    <button class="toggle-btn" id="viToggle" onclick="toggleVi()">VI: BẬT</button>
+  </div>
+</header>
+<nav class="spine">
+  <span class="grp">Aufträge</span>
+  <a href="#start">Überblick</a>
+  <a href="#rebsorten">1 · Rebsorten</a>
+  <a href="#herstellung">2 · Herstellung</a>
+  <a href="#gesetz">3 · Weingesetz</a>
+  <a href="#alkoholfrei">4 · Alkoholfrei</a>
+  <a href="#etikett">5 · Etikett</a>
+  <span class="grp">Wissen</span>
+  <a href="#gebiete">13 Anbaugebiete</a>
+  <a href="#test" class="exam">Selbsttest</a>
+</nav>
+<main>
+
+<!-- ÜBERBLICK -->
+<section class="chapter" id="start"><div class="chapter-head"><span class="chapter-num">§</span><h2 class="chapter-title-de">Überblick: Situation und Aufträge</h2><span class="lf-tag">LF 07 · LS03</span></div><p class="chapter-title-vi">Tổng quan: tình huống và 5 nhiệm vụ của bài.</p><h4 class="h4">Situation</h4><div class="block"><div class="de"><span class="tag">Situation</span>Das Hotel Bären veranstaltet jedes Jahr das Event „Weine aus nah und fern".</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Khách sạn Bären tổ chức mỗi năm sự kiện “Rượu vang từ gần đến xa”.</div></div><div class="block"><div class="de">Die Gäste sollen in entspannter Atmosphäre die Welt der Weine kennenlernen.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Khách được làm quen với thế giới rượu vang trong không khí thoải mái.</div></div><div class="block"><div class="de">Die Auszubildenden planen und führen das Event durch und erarbeiten Informationen und Übersichten zu den Weinen.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Học viên (Auszubildende) lên kế hoạch, tổ chức sự kiện và soạn thông tin, bảng tóm tắt về các loại rượu.</div></div><ol class="tasks">
+<li><a href="#rebsorten">Auftrag 1: Karteikarten Rebsorten</a>
+<div class="de">Erstelle Karteikarten mit den wichtigsten Informationen der Rebsorten auf der Weinkarte (Anlage 1+2).</div>
+<div class="vi"><span class="tag">VI</span>Làm thẻ ghi nhớ về các giống nho quan trọng có trong thực đơn rượu vang.</div></li>
+<li><a href="#herstellung">Auftrag 2: Fließschema und Begriffe</a>
+<div class="de">Vervollständige das Fließschema der Rotwein- und Weißweinherstellung (Anlage 3+4) und erstelle eine Liste mit Begriffserklärungen.</div>
+<div class="vi"><span class="tag">VI</span>Hoàn thiện sơ đồ quy trình làm vang đỏ và vang trắng, rồi lập danh sách giải thích thuật ngữ.</div></li>
+<li><a href="#gesetz">Auftrag 3: Weingesetz 2021 und Prädikatsweine</a>
+<div class="de">Ergänze die Tischvorlage zu den Qualitätsstufen mit den Informationen aus der Schulung (Anlage 5+6).</div>
+<div class="vi"><span class="tag">VI</span>Bổ sung bảng về các cấp chất lượng theo luật rượu vang mới (có hiệu lực từ 2021).</div></li>
+<li><a href="#alkoholfrei">Auftrag 4: Alkoholfreier Wein</a>
+<div class="de">Erstelle eine Übersicht zum Verfahren der Herstellung von alkoholfreiem Wein (Internetrecherche).</div>
+<div class="vi"><span class="tag">VI</span>Làm bản tổng hợp về cách sản xuất rượu vang không cồn (tra cứu trên mạng).</div></li>
+<li><a href="#etikett">Auftrag 5: Weinetikett</a>
+<div class="de">Kennzeichne die Angaben auf dem Weinetikett (Anlage 7).</div>
+<div class="vi"><span class="tag">VI</span>Đánh dấu và giải thích các thông tin trên nhãn chai rượu.</div></li>
+</ol><h4 class="h4">So lernst du damit</h4><div class="block"><div class="de"><span class="tag">So lernst du damit</span>Mit dem Knopf oben rechts blendest du die vietnamesischen Erklärungen aus und testest dich selbst.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Nút ở góc trên bên phải giúp ẩn phần tiếng Việt để bạn tự kiểm tra.</div></div><div class="block"><div class="de">Bei den Karteikarten gibt es außerdem einen Lernmodus zum Umdrehen.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Ở phần thẻ ghi nhớ còn có chế độ lật thẻ để ôn.</div></div></section>
+<!-- 1 REBSORTEN -->
+<section class="chapter" id="rebsorten"><div class="chapter-head"><span class="chapter-num">§1</span><h2 class="chapter-title-de">Rebsorten (Anlage 1+2)</h2><span class="lf-tag">LF 07 · LS03</span></div><p class="chapter-title-vi">Giống nho: đặc điểm (Charakteristik) và hương chính (Hauptaromen).</p><h3 class="sub">Weinkarte des Hotel Bären (Anlage 2)</h3><div class="block"><div class="de">Die Weinkarte zeigt, welche Rebsorten aus welchem Anbaugebiet angeboten werden.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Thực đơn rượu cho biết giống nho nào, từ vùng nào đang được bán.</div></div><table id="weinkarte"></table><div class="block"><div class="de">Erste Lage, Großes Gewächs, VDP.Gutswein und VDP.Ortswein sind Herkunfts- und Qualitätsbezeichnungen (siehe Weingesetz).</div></div><div class="block"><div class="vi"><span class="tag">VI</span>“Erste Lage”, “Großes Gewächs”, “VDP.Gutswein”, “VDP.Ortswein” là các cách gọi theo nguồn gốc và chất lượng (xem phần Weingesetz).</div></div><div class="block"><div class="de">„Schwäbischer Landwein" ist ein Wein mit geschützter geografischer Angabe (g.g.A.).</div></div><div class="block"><div class="vi"><span class="tag">VI</span>“Schwäbischer Landwein” là rượu có chỉ dẫn địa lý được bảo hộ (g.g.A.).</div></div><h3 class="sub">Karteikarten</h3><div class="block"><div class="de">Jede Karte nennt Farbe, Charakteristik und Hauptaromen der Rebsorte.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Mỗi thẻ ghi màu (đỏ/trắng), đặc điểm và hương chính của giống nho.</div></div><p><button aria-pressed="false" class="toggle-btn" id="flipMode" type="button">Bật chế độ lật thẻ</button></p><h3 class="sub" style="color:var(--white)">Weißweinsorten</h3><div class="cards" id="cardsWeiss"></div><h3 class="sub" style="color:var(--wine)">Rotweinsorten</h3><div class="cards" id="cardsRot"></div><div class="warn">
+<span class="tag">Zum Nachprüfen in deinen Karten</span>
+<p>Silvaner ist eine Weißweinsorte und steht auch so auf der Weinkarte.</p>
+<div class="vi">Silvaner là giống nho trắng (cũng nằm trong mục Weißweine của thực đơn). Trong thẻ của bạn đang tick “Rot”, hãy sửa thành “Weiß”.</div>
+<p>Die Aromen bei Blauer Portugieser sind identisch mit denen beim Silvaner.</p>
+<div class="vi">Phần hương của Blauer Portugieser giống hệt Silvaner (grüne Noten, Blumenwiese, Stachelbeere, weißer Pfeffer). Hãy đối chiếu lại với sách giáo khoa.</div>
+<p>Bei Spätburgunder und Lemberger ist der Text am Rand abgeschnitten.</p>
+<div class="vi">Câu mô tả của Spätburgunder và Lemberger bị cắt ở mép ảnh, nên mình chỉ ghi phần đọc được.</div>
+<p>Kerner und Blauer Portugieser stehen nicht auf der Weinkarte, Chardonnay, Sauvignon blanc, Gewürztraminer und Cabernet Sauvignon schon.</p>
+<div class="vi">Kerner và Portugieser không có trong thực đơn, còn Chardonnay, Sauvignon blanc, Gewürztraminer, Cabernet Sauvignon thì có. Vì vậy mình thêm 4 thẻ bổ sung (nét đứt) từ kiến thức chung.</div>
+</div></section>
+<!-- 2 HERSTELLUNG -->
+<section class="chapter" id="herstellung"><div class="chapter-head"><span class="chapter-num">§2</span><h2 class="chapter-title-de">Weinherstellung (Anlage 3+4)</h2><span class="lf-tag">LF 07 · LS03</span></div><p class="chapter-title-vi">Quy trình sản xuất rượu vang trắng và đỏ, kèm giải thích thuật ngữ.</p><h4 class="h4">Der Unterschied auf einen Blick</h4><div class="block"><div class="de"><span class="w">Weißwein:</span> Pressen → Gärung (ohne Schalen).</div><div class="vi"><span class="tag">VI</span>Vang trắng: ép trước, rồi mới lên men (không có vỏ nho).</div></div><div class="block"><div class="de"><span class="r">Rosé:</span> kurzer Kontakt mit den Schalen → Pressen → Gärung.</div><div class="vi"><span class="tag">VI</span>Vang hồng: tiếp xúc ngắn với vỏ nho → ép → lên men.</div></div><div class="block"><div class="de"><span class="r">Rotwein:</span> Maischegärung → Pressen.</div><div class="vi"><span class="tag">VI</span>Vang đỏ: lên men cả bã nho (Maische) trước → rồi mới ép.</div></div><div class="block"><div class="de"><span class="tag">Der Unterschied auf einen Blick</span>Beim Rotwein stecken Farb- und Geschmacksstoffe in der Schale der dunklen Beeren, deshalb muss die Maische vergären.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Ở vang đỏ, màu và hương vị nằm trong vỏ của nho sẫm, nên phải lên men cả bã nho để chiết ra.</div></div><div class="lanes">
+<div class="lane weiss">
+<h3>Weißweinherstellung</h3>
+<div class="step"><div class="sn">Traubenlese<span class="vi">thu hoạch nho</span></div>
+<p class="de">Die Trauben werden geerntet.</p><p class="vi">Nho được thu hoạch.</p></div>
+<div class="step"><div class="sn">Entrappen<span class="vi">tách cuống nho</span></div>
+<p class="de">Die Beeren werden von Stielen und Kämmen befreit.</p><p class="vi">Quả nho được tách khỏi cuống và chùm.</p>
+<p class="de">So gelangen keine Gerbstoffe aus den Stielen in den Wein.</p><p class="vi">Nhờ vậy tannin từ cuống không lọt vào rượu.</p></div>
+<div class="step"><div class="sn">Mahlen zur Maische<span class="vi">nghiền nho thành Maische</span></div>
+<p class="de">Die Beeren werden gemahlen oder gequetscht, die Zellen öffnen sich und geben den Saft frei.</p><p class="vi">Nho được nghiền/ép dập, tế bào vỡ ra và nước nho chảy ra.</p>
+<p class="de">Die Maische besteht aus Fruchtfleisch, Kernen, Schalen und Saft.</p><p class="vi">Maische gồm thịt quả, hạt, vỏ và nước nho.</p>
+<p class="de">Sie wird meist geschwefelt, um sie zu konservieren und zu stabilisieren.</p><p class="vi">Thường được xông/thêm lưu huỳnh để bảo quản và ổn định.</p></div>
+<div class="step"><div class="sn">Pressen<span class="vi">ép</span></div>
+<p class="de">Aus der Maische wird der Most (= Saft) abgepresst.</p><p class="vi">Từ Maische, nước nho (Most) được ép ra.</p>
+<p class="de">Der Most wird bei Bedarf erneut geschwefelt.</p><p class="vi">Nếu cần, Most được xử lý lưu huỳnh lần nữa.</p></div>
+<div class="step"><div class="sn">Weißer Most<span class="vi">dịch nho trắng</span></div>
+<p class="de">Der weiße Most ist der frisch gepresste Traubensaft.</p><p class="vi">Weißer Most là nước nho vừa ép xong.</p></div>
+<div class="step"><div class="sn">Vorklärung<span class="vi">làm trong sơ bộ</span></div>
+<p class="de">Der Most wird von Trübstoffen befreit.</p><p class="vi">Dịch nho được loại bỏ các chất đục.</p></div>
+<div class="step opt"><div class="sn">ggf. Anreicherung<span class="vi">nếu cần: làm giàu</span></div>
+<p class="de">Reicht der Zuckergehalt nicht aus, wird Zucker oder Mostkonzentrat zugegeben.</p><p class="vi">Nếu lượng đường không đủ, thêm đường hoặc cô đặc dịch nho.</p>
+<p class="de">Das erhöht den Alkohol- oder Restzuckergehalt.</p><p class="vi">Việc này tăng độ cồn hoặc lượng đường dư.</p></div>
+<div class="step"><div class="sn">Mostgärung<span class="vi">lên men dịch nho</span></div>
+<p class="de">Hefe wandelt Zucker in Alkohol und Kohlensäure um.</p><p class="vi">Men chuyển đường thành cồn và khí CO₂ (Kohlensäure).</p></div>
+<div class="step"><div class="sn">Jungwein<span class="vi">rượu vang non</span></div>
+<p class="de">Aus der Gärung entsteht der weiße Jungwein.</p><p class="vi">Sau lên men ta có vang trắng non.</p></div>
+<div class="step"><div class="sn">Abstich &amp; Filtration<span class="vi">rút cặn và lọc</span></div>
+<p class="de">Beim Abstich wird der Wein von der Hefe abgezogen.</p><p class="vi">Abstich là rút rượu ra khỏi lớp men lắng.</p>
+<p class="de">Weitere Trübstoffe werden durch Filtration entfernt.</p><p class="vi">Các chất đục còn lại được lọc bỏ.</p></div>
+<div class="step"><div class="sn">Schönung &amp; Stabilisierung<span class="vi">làm trong và ổn định rượu</span></div>
+<p class="de">Unerwünschte Eigenschaften des Weins werden entfernt.</p><p class="vi">Những đặc tính không mong muốn của rượu được loại bỏ.</p></div>
+<div class="step"><div class="sn">Ausbau / Reifung<span class="vi">hoàn thiện / ủ trưởng thành</span></div>
+<p class="de">Der Wein reift in Edelstahlfässern, teilweise auch in Holzfässern.</p><p class="vi">Rượu ủ trong thùng inox, một phần trong thùng gỗ.</p>
+<p class="de">Erst dabei entwickelt sich das volle Aroma.</p><p class="vi">Chính lúc này hương thơm đầy đủ mới hình thành.</p></div>
+<div class="step"><div class="sn">Flaschenfüllung<span class="vi">đóng chai</span></div>
+<p class="de">Die gereiften Weine werden in Anlagen in Flaschen abgefüllt.</p><p class="vi">Rượu đã ủ xong được đóng chai bằng dây chuyền.</p></div>
+</div>
+<div class="lane rot">
+<h3>Rotweinherstellung</h3>
+<div class="step"><div class="sn">Traubenlese<span class="vi">thu hoạch nho</span></div>
+<p class="de">Die dunklen Trauben werden geerntet.</p><p class="vi">Nho sẫm màu được thu hoạch.</p></div>
+<div class="step"><div class="sn">Entrappen<span class="vi">tách cuống nho</span></div>
+<p class="de">Die Beeren werden von den Stielen befreit, damit keine Gerbstoffe aus den Stielen in den Wein kommen.</p><p class="vi">Tách quả khỏi cuống để tannin từ cuống không vào rượu.</p></div>
+<div class="step"><div class="sn">Mahlen zur Maische<span class="vi">nghiền nho thành Maische</span></div>
+<p class="de">Die Beeren werden gemahlen, man erhält die Maische aus Fruchtfleisch, Kernen, Schalen und Saft.</p><p class="vi">Nho được nghiền thành Maische gồm thịt quả, hạt, vỏ và nước.</p>
+<p class="de">Die Maische wird meist geschwefelt.</p><p class="vi">Maische thường được xử lý lưu huỳnh.</p></div>
+<div class="step opt"><div class="sn">ggf. Anreicherung<span class="vi">nếu cần: làm giàu</span></div>
+<p class="de">Vor der Gärung kann die Maische mit Zucker oder Mostkonzentrat angereichert werden.</p><p class="vi">Trước khi lên men có thể thêm đường hoặc cô đặc dịch nho vào Maische.</p></div>
+<div class="step"><div class="sn">Maischegärung<span class="vi">lên men bã nho (+ men)</span></div>
+<p class="de">Mit Hefe gärt die Maische samt Schalen.</p><p class="vi">Maische được lên men cùng vỏ, có thêm men.</p>
+<p class="de">Der entstehende Alkohol löst die erwünschten Farb- und Geschmacksstoffe aus den Schalen.</p><p class="vi">Cồn sinh ra hòa tan màu và hương vị cần thiết từ vỏ nho.</p></div>
+<div class="step"><div class="sn">Pressen<span class="vi">ép</span></div>
+<p class="de">Die vergorene Maische wird abgepresst.</p><p class="vi">Bã nho đã lên men được ép.</p>
+<p class="de">So erhält man den roten Jungwein.</p><p class="vi">Nhờ vậy có được vang đỏ non.</p></div>
+<div class="step"><div class="sn">Jungwein<span class="vi">rượu vang non</span></div>
+<p class="de">Der rote Jungwein enthält noch Hefe und Trübstoffe.</p><p class="vi">Vang đỏ non vẫn còn men và chất đục.</p></div>
+<div class="step"><div class="sn">Abstich &amp; Filtration<span class="vi">rút cặn và lọc</span></div>
+<p class="de">Wie beim Weißwein werden Hefe und Trübstoffe entfernt.</p><p class="vi">Giống vang trắng: loại bỏ men và chất đục.</p></div>
+<div class="step"><div class="sn">Schönung &amp; Stabilisierung<span class="vi">làm trong và ổn định rượu</span></div>
+<p class="de">Unerwünschte Eigenschaften werden durch Schönung und Stabilisierung entfernt.</p><p class="vi">Đặc tính không mong muốn được loại bỏ bằng Schönung và Stabilisierung.</p></div>
+<div class="step"><div class="sn">Ausbau / Reifung<span class="vi">hoàn thiện / ủ trưởng thành</span></div>
+<p class="de">Rotwein reift in Edelstahlbehältern oder in Holzfässern (Barrique).</p><p class="vi">Vang đỏ ủ trong bồn inox hoặc thùng gỗ (Barrique).</p>
+<p class="de">Dadurch wird er erst harmonisch.</p><p class="vi">Nhờ đó rượu mới trở nên hài hòa.</p></div>
+<div class="step"><div class="sn">Flaschenfüllung<span class="vi">đóng chai</span></div>
+<p class="de">Zuletzt wird der Wein in Anlagen in Flaschen abgefüllt.</p><p class="vi">Cuối cùng rượu được đóng chai bằng dây chuyền.</p></div>
+</div>
+</div><div class="warn">
+<span class="tag">Reihenfolge prüfen</span>
+<p>Laut Informationstext (Anlage 4) kommt erst „Abstich &amp; Filtration", danach „Schönung &amp; Stabilisierung".</p>
+<div class="vi">Theo bài đọc (Anlage 4), thứ tự là Abstich &amp; Filtration trước, rồi mới đến Schönung &amp; Stabilisierung.</div>
+<p>In deinem Schema stehen die beiden Kästchen umgekehrt.</p>
+<div class="vi">Trong sơ đồ của bạn hai ô này đang bị đảo ngược. Hãy kiểm tra lại với giáo viên/đáp án.</div>
+<p>Die gestrichelten Kästchen (ggf. Anreicherung) sind nur bei Bedarf nötig.</p>
+<div class="vi">Các ô nét đứt (ggf. Anreicherung) chỉ thực hiện khi cần.</div>
+</div><h3 class="sub">Liste mit Begriffserklärungen</h3><div class="block"><div class="de">Diese Begriffe musst du in eigenen Worten erklären können.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Bạn cần giải thích được các thuật ngữ này bằng lời của mình.</div></div><table id="glossar"></table></section>
+<!-- 3 WEINGESETZ -->
+<section class="chapter" id="gesetz"><div class="chapter-head"><span class="chapter-num">§3</span><h2 class="chapter-title-de">Weingesetz 2021 (Anlage 5+6)</h2><span class="lf-tag">LF 07 · LS03</span></div><p class="chapter-title-vi">Luật rượu vang mới 2021: chất lượng gắn với nguồn gốc. Cùng với các cấp Prädikat.</p><div class="block"><div class="de">2021 ist das neue Weingesetz in Kraft getreten.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Năm 2021 luật rượu vang mới có hiệu lực.</div></div><div class="block"><div class="de">Der Qualitätsfokus liegt stärker auf der Herkunft der Weine.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Trọng tâm chất lượng nay đặt nhiều hơn vào nguồn gốc xuất xứ của rượu.</div></div><div class="block"><div class="de"><strong>Je enger die Herkunft, desto höher die Qualität.</strong></div></div><div class="block"><div class="vi"><span class="tag">VI</span>Nguồn gốc càng hẹp (cụ thể), chất lượng càng cao.</div></div><h3 class="sub">Die Qualitätspyramiden</h3><div class="two">
+<div class="box">
+<h4>Qualitätsstufen (Hauptpyramide)</h4>
+<div class="pyr">
+<div class="p3">Qualitätswein / Prädikatswein<small>Wein mit geschützter Ursprungsbezeichnung (g.U.)</small></div>
+<div class="p2">Landwein<small>Wein mit geschützter geografischer Angabe (g.g.A.)</small></div>
+<div class="p1" style="color:#241820">Deutscher Wein<small>Wein ohne geschützte Herkunft</small></div>
+</div>
+<p class="vi">Từ dưới lên: Deutscher Wein (không có nguồn gốc được bảo hộ) → Landwein (chỉ dẫn địa lý được bảo hộ) → Qualitäts-/Prädikatswein (xuất xứ được bảo hộ).</p>
+</div>
+<div class="box">
+<h4>Herkunft innerhalb der Qualitätsweine</h4>
+<div class="pyr">
+<div class="l4">Lage</div>
+<div class="l3">Ort</div>
+<div class="l2">Region</div>
+<div class="l1">Anbaugebiet (13)</div>
+</div>
+<p class="vi">Từ rộng đến hẹp: vùng trồng nho (13 vùng) → khu vực (Region) → làng/thị trấn (Ort) → thửa vườn nho (Lage).</p>
+<h4>Lagenweine</h4>
+<div class="pyr">
+<div class="l4" style="width:46%">Großes Gewächs</div>
+<div class="l3" style="width:70%">Erstes Gewächs</div>
+<div class="l1" style="width:100%">Einzellage</div>
+</div>
+<p class="vi">Rượu theo thửa vườn: Einzellage (vườn riêng lẻ) → Erstes Gewächs → Großes Gewächs (cao nhất).</p>
+</div>
+</div><h3 class="sub">Qualitätsstufen innerhalb der EU im Vergleich</h3><table>
+<tr><th>EU-Bezeichnung</th><th>Deutschland</th><th>Italien</th><th>Spanien</th></tr>
+<tr><td>Wein ohne geschützte Herkunft
+      <span class="vi-cell">Rượu không có nguồn gốc được bảo hộ</span></td><td>Deutscher Wein</td><td>Vino</td><td>Vino</td></tr>
+<tr><td>Weine mit geschützten geografischen Angaben (g.g.A.)
+      <span class="vi-cell">Rượu có chỉ dẫn địa lý được bảo hộ</span></td><td>Landwein</td><td>IGP (früher IGT)</td><td>IGP</td></tr>
+<tr><td>Weine mit geschützter Ursprungsbezeichnung (g.U.)
+      <span class="vi-cell">Rượu có tên gọi xuất xứ được bảo hộ</span></td><td>Qualitätswein / Prädikatswein</td><td class="x">DOP (DOC / DOCG) *</td><td class="x">DOP (DO / DOCa) *</td></tr>
+</table><div class="block"><div class="vi"><span class="tag">VI</span>* Hai ô Ý và Tây Ban Nha ở hàng cuối bị trống trong đề; mình điền bổ sung từ kiến thức chung (DOP). Ở ô Tây Ban Nha của bạn đang viết “SGP”, đúng là IGP.</div></div><h3 class="sub">Prädikatsweine (Anlage 6)</h3><div class="block"><div class="de">Prädikatsweine sind deutsche Weine mit höchster Qualität.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Prädikatswein là rượu Đức có chất lượng cao nhất.</div></div><div class="block"><div class="de">Die Einordnung hängt ab vom Mostgewicht (= Zuckergehalt des Traubenmostes), vom Erntezeitpunkt, vom Reifegrad und von der Leseart der Trauben (maschinell oder handverlesen).</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Cách xếp hạng phụ thuộc vào: Mostgewicht (= lượng đường trong dịch nho), thời điểm thu hoạch, độ chín, và cách hái (bằng máy hay bằng tay).</div></div><div class="block"><div class="de"><strong>Je später der Lesezeitpunkt, desto höher der Extraktgehalt (z. B. Zucker) der Weinbeeren und das Prädikat.</strong></div></div><div class="block"><div class="vi"><span class="tag">VI</span>Hái càng muộn thì hàm lượng chiết xuất (ví dụ đường) của quả nho càng cao và Prädikat càng cao.</div></div><div class="ladder">
+<div class="lad" style="--w:16%"><div class="n">1</div><div><strong>Kabinett</strong> <span class="meta">Hauptlese, Ende September</span>
+<p class="de">Leichte Weine mit geringem Alkoholgehalt aus reifen Trauben.</p>
+<p class="vi">Rượu nhẹ, độ cồn thấp, làm từ nho chín. Thu hoạch chính vụ, cuối tháng 9.</p></div></div>
+<div class="lad" style="--w:32%"><div class="n">2</div><div><strong>Spätlese</strong>
+<p class="de">Gehaltvolle Weine aus vollreifen Trauben, die in später Lese geerntet werden.</p>
+<p class="vi">Rượu đậm đà từ nho chín hẳn, được thu hoạch muộn.</p></div></div>
+<div class="lad" style="--w:48%"><div class="n">3</div><div><strong>Auslese</strong>
+<p class="de">Lese von vollreifen oder edelfaulen Trauben; kranke und unreife Trauben werden aussortiert.</p>
+<p class="vi">Hái nho chín hẳn hoặc nho “mốc quý” (edelfaul); nho bệnh và nho chưa chín bị loại.</p></div></div>
+<div class="lad" style="--w:64%"><div class="n">4</div><div><strong>Beerenauslese</strong> <span class="meta">Handlese ist vorgeschrieben</span>
+<p class="de">Volle, fruchtige Weine aus edelfaulen oder überreifen Beeren.</p>
+<p class="vi">Rượu đầy đặn, nhiều trái cây, từ quả nho mốc quý hoặc chín quá. Bắt buộc hái bằng tay.</p></div></div>
+<div class="lad" style="--w:82%"><div class="n">5</div><div><strong>Trockenbeerenauslese</strong> <span class="meta">Handlese ist vorgeschrieben</span>
+<p class="de">Hochkonzentrierte Weine aus edelfaulen, rosinenartig eingeschrumpften Beeren.</p>
+<p class="vi">Rượu cực đậm đặc, từ quả mốc quý bị teo lại như nho khô. Bắt buộc hái tay.</p></div></div>
+<div class="lad" style="--w:100%"><div class="n">6</div><div><strong>Eiswein</strong> <span class="meta">später Erntezeitpunkt, Dezember</span>
+<p class="de">In gefrorenem Zustand (unter −7 °C) gelesene und gekelterte Trauben.</p>
+<p class="vi">Nho được hái khi đang đóng băng (dưới −7 °C) và ép ngay khi còn đông lạnh. Thu hoạch muộn nhất, khoảng tháng 12.</p></div></div>
+</div></section>
+<!-- 4 ALKOHOLFREI -->
+<section class="chapter" id="alkoholfrei"><div class="chapter-head"><span class="chapter-num">§4</span><h2 class="chapter-title-de">Alkoholfreier Wein</h2><span class="lf-tag">LF 07 · LS03</span></div><p class="chapter-title-vi">Rượu vang không cồn được làm thế nào.</p><div class="warn">
+<span class="tag">Hinweis</span>
+<p>In deinen Fotos gibt es zu diesem Auftrag keine Unterlagen, deshalb steht hier Allgemeinwissen.</p>
+<div class="vi">Trong ảnh bạn gửi không có tài liệu cho nhiệm vụ này, nên phần này viết từ kiến thức chung. Bạn nên đối chiếu với nguồn tra cứu (Internetrecherche) trước khi nộp.</div>
+</div><h3 class="sub">Der Ablauf</h3><div class="lanes" style="grid-template-columns:1fr">
+<div class="lane">
+<div class="step"><div class="sn">1 Normale Weinherstellung<span class="vi">sản xuất vang bình thường</span></div>
+<p class="de">Zuerst wird ganz normal Wein hergestellt, also vergoren und ausgebaut.</p>
+<p class="vi">Trước tiên rượu được làm như bình thường: lên men và ủ.</p></div>
+<div class="step"><div class="sn">2 Entalkoholisierung<span class="vi">tách cồn</span></div>
+<p class="de">Danach wird dem fertigen Wein der Alkohol schonend entzogen.</p>
+<p class="vi">Sau đó cồn được tách nhẹ nhàng khỏi rượu thành phẩm.</p></div>
+<div class="step"><div class="sn">3 Abfüllung<span class="vi">đóng chai</span></div>
+<p class="de">Der alkoholfreie Wein wird abgefüllt, oft gekühlt oder mit Kohlensäure versetzt.</p>
+<p class="vi">Vang không cồn được đóng chai, thường để lạnh hoặc thêm khí CO₂.</p></div>
+</div>
+</div><h3 class="sub">Die drei wichtigsten Verfahren</h3><table>
+<tr><th>Verfahren</th><th>So funktioniert es</th></tr>
+<tr><td><strong>Vakuumdestillation</strong><span class="vi-cell">Chưng cất chân không</span></td>
+<td>Im Vakuum siedet Alkohol schon bei ca. 30–40 °C, der Wein wird also nicht heiß.
+        <span class="vi-cell">Trong chân không, cồn sôi ở khoảng 30–40 °C nên rượu không bị nóng.</span>
+        Der Alkohol verdampft und wird abgetrennt, die Aromen werden möglichst erhalten.
+        <span class="vi-cell">Cồn bốc hơi và được tách ra, hương thơm được giữ lại tối đa.</span></td></tr>
+<tr><td><strong>Umkehrosmose</strong><span class="vi-cell">Thẩm thấu ngược</span></td>
+<td>Der Wein wird durch eine feine Membran gedrückt, Wasser und Alkohol gehen durch, die Geschmacksstoffe bleiben zurück.
+        <span class="vi-cell">Rượu được ép qua màng lọc rất mịn: nước và cồn đi qua, chất tạo vị ở lại.</span>
+        Das Wasser wird anschließend wieder zugegeben.
+        <span class="vi-cell">Sau đó nước được thêm trở lại.</span></td></tr>
+<tr><td><strong>Schleuderkegelkolonne</strong> (Spinning Cone)<span class="vi-cell">Cột nón quay</span></td>
+<td>Der Wein läuft im Vakuum über rotierende Kegel, Aromen und Alkohol werden nacheinander abgetrennt.
+        <span class="vi-cell">Rượu chảy trong chân không qua các nón quay, hương thơm và cồn lần lượt được tách ra.</span>
+        Die Aromen kommen am Ende zurück in den Wein.
+        <span class="vi-cell">Cuối cùng hương thơm được trả lại vào rượu.</span></td></tr>
+</table><h4 class="h4">Gut zu wissen</h4><div class="block"><div class="de"><span class="tag">Gut zu wissen</span>Alkoholfreier Wein darf nach EU-Recht höchstens 0,5 % vol Alkohol enthalten.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Theo quy định EU, vang “không cồn” chứa tối đa 0,5 % vol cồn (nên đối chiếu lại nguồn hiện hành).</div></div><div class="block"><div class="de">Alkoholfreier Wein ist nicht dasselbe wie Traubensaft, denn er wurde zuerst vergoren.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Vang không cồn khác nước nho, vì nó đã được lên men trước.</div></div><div class="block"><div class="de">Er ist ein Angebot für Autofahrer, Schwangere und alle, die keinen Alkohol trinken möchten.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Đây là lựa chọn cho người lái xe, phụ nữ mang thai và ai không muốn uống cồn.</div></div></section>
+<!-- 5 ETIKETT -->
+<section class="chapter" id="etikett"><div class="chapter-head"><span class="chapter-num">§5</span><h2 class="chapter-title-de">Das Weinetikett (Anlage 7)</h2><span class="lf-tag">LF 07 · LS03</span></div><p class="chapter-title-vi">Các thông tin trên nhãn chai: bắt buộc, tự nguyện, bổ sung.</p><div class="block"><div class="de"><span class="w" style="color:#b0305c">Pflichtangabe</span> = muss auf dem Etikett stehen.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Pflichtangabe = bắt buộc phải có trên nhãn.</div></div><div class="block"><div class="de"><span style="color:#1d5bd1;font-weight:700">Freiwillige Angabe</span> = kann auf dem Etikett stehen.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Freiwillige Angabe = có thể có trên nhãn.</div></div><div class="block"><div class="de"><span style="color:#9a7a00;font-weight:700">Zusätzliche Angabe</span> = freiwillig (z. B. Logo).</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Zusätzliche Angabe = tự nguyện, bổ sung (ví dụ logo).</div></div><table id="etikettTab"></table><div class="warn">
+<span class="tag">Zur Einordnung</span>
+<p>Die Einteilung in Pflicht und freiwillig folgt deinem Arbeitsblatt.</p>
+<div class="vi">Cách phân loại bắt buộc/tự nguyện ở trên theo đúng bài tập của bạn, cứ dùng nó cho bài.</div>
+<p>Nach dem EU-Recht gelten Jahrgang und Erzeugerabfüllung eigentlich als freiwillig, dafür sind zum Beispiel der Hinweis „enthält Sulfite" und das Herkunftsland Pflicht.</p>
+<div class="vi">Theo luật EU, Jahrgang và Erzeugerabfüllung thực ra là tự nguyện, còn dòng “enthält Sulfite” (chứa sulfit) và nước xuất xứ lại là bắt buộc. Nếu giáo viên hỏi thêm, hãy hỏi lại thầy/cô xem theo đáp án nào.</div>
+</div></section>
+<!-- 13 ANBAUGEBIETE -->
+<section class="chapter" id="gebiete"><div class="chapter-head"><span class="chapter-num">§13</span><h2 class="chapter-title-de">Die 13 Weinanbaugebiete in Deutschland</h2><span class="lf-tag">LF 07 · LS03</span></div><p class="chapter-title-vi">13 vùng trồng nho cho rượu Qualitäts- và Prädikatswein.</p><div class="block"><div class="de">In Deutschland gedeihen Reben nur in besonders bevorzugten Lagen, meist in Flusstälern.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Ở Đức nho chỉ phát triển tốt ở những vị trí thuận lợi, thường là thung lũng sông.</div></div><div class="block"><div class="de">Der Rhein wirkt klimaregulierend, deshalb liegen sechs der 13 Gebiete am Rhein.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Sông Rhein điều hòa khí hậu, nên 6 trong 13 vùng nằm dọc sông Rhein.</div></div><div class="block"><div class="de">Am Rhein, flussabwärts gesehen: Baden, Pfalz, Hessische Bergstraße, Rheinhessen, Rheingau, Mittelrhein.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Dọc sông Rhein, theo chiều dòng chảy: Baden, Pfalz, Hessische Bergstraße, Rheinhessen, Rheingau, Mittelrhein.</div></div><div class="block"><div class="de">Fünf Gebiete liegen an Nebenflüssen: Württemberg (Neckar), Franken (Main), Nahe, Mosel, Ahr.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>5 vùng nằm ở các nhánh sông: Württemberg (sông Neckar), Franken (sông Main), Nahe, Mosel, Ahr.</div></div><div class="block"><div class="de">Die letzten zwei sind Saale-Unstrut (in Sachsen-Anhalt und Thüringen) und Sachsen, das kleinste Gebiet, elbabwärts von Dresden.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>Hai vùng còn lại: Saale-Unstrut (Sachsen-Anhalt và Thüringen) và Sachsen, vùng nhỏ nhất, nằm ven sông Elbe, phía hạ lưu Dresden.</div></div><h3 class="sub">Zuordnung auf der Karte</h3><div class="block"><div class="vi"><span class="tag">VI</span>Đáp án điền số trên bản đồ (khớp với chú giải màu bạn đã đánh số).</div></div><table>
+<tr><th>Nr.</th><th>Gebiet</th><th>Nr.</th><th>Gebiet</th></tr>
+<tr><td>1</td><td>Baden</td><td>8</td><td>Mosel</td></tr>
+<tr><td>2</td><td>Pfalz</td><td>9</td><td>Nahe</td></tr>
+<tr><td>3</td><td>Hessische Bergstraße</td><td>10</td><td>Franken</td></tr>
+<tr><td>4</td><td>Rheinhessen</td><td>11</td><td>Württemberg</td></tr>
+<tr><td>5</td><td>Rheingau</td><td>12</td><td>Sachsen</td></tr>
+<tr><td>6</td><td>Mittelrhein</td><td>13</td><td>Saale-Unstrut</td></tr>
+<tr><td>7</td><td>Ahr</td><td></td><td></td></tr>
+</table><h3 class="sub">Hauptrebsorten und Besonderheiten</h3><div class="block"><div class="de">W = Weißwein, R = Rotwein.</div></div><div class="block"><div class="vi"><span class="tag">VI</span>W = vang trắng, R = vang đỏ. Hover/đọc từng dòng để thấy bản dịch.</div></div><table id="gebieteTab"></table></section>
+<!-- SELBSTTEST -->
+<section class="chapter" id="test"><div class="chapter-head"><span class="chapter-num">?</span><h2 class="chapter-title-de">Selbsttest</h2><span class="lf-tag">LF 07 · LS03</span></div><p class="chapter-title-vi">Tự kiểm tra: bấm vào câu hỏi để xem đáp án.</p><details class="q"><summary>Welche Rebsorte hat eine geringe Säure und wird jung getrunken?</summary>
+<div class="ans"><div class="de">Der Silvaner.</div><div class="vi"><span class="tag">VI</span>Câu hỏi: giống nho nào ít chua và nên uống khi còn trẻ? Đáp án: Silvaner.</div></div></details><details class="q"><summary>Welche Rebsorte steht für rassige Säure und Steinobst-Aromen?</summary>
+<div class="ans"><div class="de">Der Riesling.</div><div class="vi"><span class="tag">VI</span>Giống nho nào có vị chua mạnh và hương quả hạch? Riesling.</div></div></details><details class="q"><summary>Welche Rotweinsorte ist tannin- und säurearm und eher leicht?</summary>
+<div class="ans"><div class="de">Der Blaue Portugieser.</div><div class="vi"><span class="tag">VI</span>Giống vang đỏ nào ít tannin, ít axit và khá nhẹ? Blauer Portugieser.</div></div></details><details class="q"><summary>Was passiert beim Entrappen und warum?</summary>
+
+<div class="ans"><div class="de">Die Beeren werden von den Stielen befreit, damit keine Gerbstoffe aus den Stielen in den Wein gelangen.</div><div class="vi"><span class="tag">VI</span>Tách quả khỏi cuống để tannin từ cuống không vào rượu.</div></div></details><details class="q"><summary>Was ist der Unterschied zwischen Abstich und Filtration?</summary>
+
+<div class="ans"><div class="de">Beim Abstich wird der Wein von der Hefe abgezogen, bei der Filtration werden weitere Trübstoffe entfernt.</div><div class="vi"><span class="tag">VI</span>Abstich: rút rượu khỏi men lắng. Filtration: lọc bỏ các chất đục còn lại.</div></div></details><details class="q"><summary>Wie unterscheidet sich die Rotwein- von der Weißweinherstellung?</summary>
+
+<div class="ans"><div class="de">Rotwein: Maischegärung, dann Pressen. Weißwein: erst Pressen, dann Gärung ohne Schalen.</div><div class="vi"><span class="tag">VI</span>Vang đỏ: lên men bã nho rồi mới ép. Vang trắng: ép trước, lên men không có vỏ.</div></div></details><details class="q"><summary>Was gilt seit dem Weingesetz 2021 für Herkunft und Qualität?</summary>
+
+<div class="ans"><div class="de">Je enger die Herkunft, desto höher die Qualität.</div><div class="vi"><span class="tag">VI</span>Nguồn gốc càng hẹp thì chất lượng càng cao.</div></div></details><details class="q"><summary>Nenne die Prädikate in aufsteigender Reihenfolge.</summary>
+
+<div class="ans"><div class="de">Kabinett, Spätlese, Auslese, Beerenauslese, Trockenbeerenauslese, Eiswein.</div><div class="vi"><span class="tag">VI</span>Sáu cấp Prädikat từ thấp đến cao. Mẹo nhớ: càng hái muộn càng đậm đặc, Eiswein ở trên cùng.</div></div></details><details class="q"><summary>Ab welcher Temperatur wird Eiswein gelesen?</summary>
+
+<div class="ans"><div class="de">Bei mindestens −7 °C, also bei −7 °C oder kälter.</div><div class="vi"><span class="tag">VI</span>Hái ở −7 °C hoặc lạnh hơn.</div></div></details><details class="q"><summary>Welche Gebiete liegen am Rhein?</summary>
+
+<div class="ans"><div class="de">Baden, Pfalz, Hessische Bergstraße, Rheinhessen, Rheingau, Mittelrhein.</div><div class="vi"><span class="tag">VI</span>Sáu vùng dọc sông Rhein.</div></div></details><details class="q"><summary>Welches ist das größte, welches das kleinste deutsche Anbaugebiet?</summary>
+
+<div class="ans"><div class="de">Das größte ist Rheinhessen, das kleinste Sachsen.</div><div class="vi"><span class="tag">VI</span>Lớn nhất: Rheinhessen. Nhỏ nhất: Sachsen.</div></div></details><details class="q"><summary>Welche drei Angaben auf dem Etikett sind im Arbeitsblatt freiwillig?</summary>
+
+<div class="ans"><div class="de">Rebsorte, engere Herkunftsbezeichnung (Lage) und Geschmacksrichtung.</div><div class="vi"><span class="tag">VI</span>Ba thông tin tự nguyện: giống nho, nguồn gốc hẹp (Lage), hương vị (độ ngọt/khô).</div></div></details></section>
+
+</main>
+<footer>
+  <div class="de">Zusammengestellt aus deinen Arbeitsblättern (Anlage 1–7, Anbaugebiete-Tabelle), ergänzt aus allgemeinem Weinwissen — im §-Design.</div>
+  <div class="vi">Tổng hợp từ các bài tập của bạn và bổ sung bằng kiến thức rượu vang chung — đã chuyển sang thiết kế §. Chúc bạn ôn thi hiệu quả!</div>
+</footer>
+<script>
+
+/* ---------- Daten ---------- */
+var karten = [
+ {n:"Riesling",c:"w",
+  de:["Hellgelb, trocken, fruchtig, elegant, spritzig, rassige Säure.","Steinobst (Pfirsich, Aprikose), Zitrone, Honig, exotische Früchte."],
+  vi:["Vàng nhạt, khô, nhiều trái cây, thanh lịch, sảng khoái, vị chua mạnh mẽ.","Quả hạch (đào, mơ), chanh, mật ong, trái cây nhiệt đới."]},
+ {n:"Silvaner",c:"w",
+  de:["Fruchtig bis würzig; die Weine haben wenig Säure und sind daher jung zu trinken.","Grüne Noten, Blumenwiese, Stachelbeere, weißer Pfeffer."],
+  vi:["Trái cây đến hơi gia vị; rượu ít chua nên uống khi còn trẻ.","Hương xanh, đồng hoa, lý gai, tiêu trắng."],
+  note:"Trong thẻ gốc của bạn đang tick “Rot”, đúng ra là “Weiß”."},
+ {n:"Grauburgunder",c:"w",
+  de:["Blassgelb mit Kupferschimmer; kräftige, körperreiche Weine mit ausgewogener Säure.","Mandeln, Honig, Netzmelone, Biskuit."],
+  vi:["Vàng nhạt ánh đồng; rượu mạnh, đậm đà, độ chua cân bằng.","Hạnh nhân, mật ong, dưa lưới, bánh bông lan."]},
+ {n:"Weißburgunder",c:"w",
+  de:["Gelbgrün, dezent, elegant, universeller Speisenbegleiter.","Gelbe Frucht (z. B. Ananas, Quitten, Birnen), Nüsse, Lindenblüten."],
+  vi:["Vàng xanh, nhẹ nhàng, thanh lịch, hợp với nhiều món ăn.","Trái cây vàng (dứa, mộc qua, lê), các loại hạt, hoa đoạn (Linde)."]},
+ {n:"Müller-Thurgau",c:"w",
+  de:["Hellgelb, leicht, duftig, feine Säure, meist als Jungwein eingesetzt.","Muskat, zarte Frucht (z. B. Holunder)."],
+  vi:["Vàng nhạt, nhẹ, thơm, chua tinh tế, thường dùng làm rượu trẻ.","Nhục đậu khấu (Muskat), trái cây nhẹ (ví dụ quả cơm cháy)."]},
+ {n:"Kerner",c:"w",
+  de:["Hell- bis gelbgrün, fruchtig, ertragreiche Sorte.","Grüner Apfel, Johannisbeeren, Eisbonbon."],
+  vi:["Vàng nhạt đến vàng xanh, nhiều trái cây, giống cho năng suất cao.","Táo xanh, lý chua, kẹo ngậm mát (Eisbonbon)."]},
+ {n:"Chardonnay",c:"w",x:1,
+  de:["Je nach Ausbau frisch und fruchtig oder voll und cremig, oft im Holzfass ausgebaut.","Grüner Apfel, Zitrus, tropische Früchte, bei Holzausbau Butter und Vanille."],
+  vi:["Tùy cách ủ: tươi và nhiều trái cây hoặc đầy đặn, béo mịn; thường ủ trong thùng gỗ.","Táo xanh, cam chanh, trái cây nhiệt đới; ủ gỗ thì có bơ và vani."]},
+ {n:"Sauvignon blanc",c:"w",x:1,
+  de:["Frisch, kräuterig, mit lebendiger Säure.","Stachelbeere, Holunder, frisch gemähtes Gras, Paprika."],
+  vi:["Tươi mát, vị thảo mộc, chua sống động.","Lý gai, quả cơm cháy, cỏ mới cắt, ớt chuông."]},
+ {n:"Gewürztraminer",c:"w",x:1,
+  de:["Sehr aromatisch, kräftig, mit wenig Säure.","Rosenblüten, Litschi, Gewürze."],
+  vi:["Rất thơm, mạnh mẽ, ít chua.","Cánh hoa hồng, vải, gia vị."]},
+
+ {n:"Dornfelder",c:"r",
+  de:["Dunkelrot, ergibt fruchtige Weine mit weichen Tanninen.","Sauerkirsche, Pflaume, Brombeere."],
+  vi:["Đỏ sẫm, cho rượu nhiều trái cây, tannin mềm.","Anh đào chua, mận, mâm xôi đen."]},
+ {n:"Spätburgunder",c:"r",
+  de:["Rubin, extrakt- und alkoholreich, elegant, zart, samtig, würzig; sehr alte Sorte, die in gemäßigten …","Himbeere, Erdbeere, Sauerkirsche, Bittermandeln."],
+  vi:["Đỏ ruby, đậm chiết xuất và cồn, thanh lịch, mềm, mượt, hơi gia vị; giống rất cổ, phát triển ở vùng khí hậu ôn hòa… (câu bị cắt trong ảnh).","Mâm xôi đỏ, dâu tây, anh đào chua, hạnh nhân đắng."]},
+ {n:"Lemberger",c:"r",
+  de:["Rubinrot bis bläulich rot, leicht bis gehaltvoll; markante Säure, würzig, tanninreich, hervorragender …","Dunkle Beeren (z. B. Brombeere), Kirsche, Kräuter."],
+  vi:["Đỏ ruby đến đỏ ngả xanh, từ nhẹ đến đậm; chua rõ nét, gia vị, nhiều tannin, nổi bật… (câu bị cắt trong ảnh).","Quả mọng sẫm (vd. mâm xôi đen), anh đào, thảo mộc."]},
+ {n:"Blauer Trollinger",c:"r",
+  de:["Hellrot, würzig, herzhaft, hohe Säure (rassig).","Floral, Wildkirsche, etwas Muskat."],
+  vi:["Đỏ nhạt, gia vị, đậm đà, chua cao (mạnh mẽ).","Hương hoa, anh đào dại, chút nhục đậu khấu."]},
+ {n:"Blauer Portugieser",c:"r",
+  de:["Hell- bis dunkelrot; tannin- und säurearm, ergibt leichte Weine, die jung zu trinken sind.","Grüne Noten, Blumenwiese, Stachelbeere, weißer Pfeffer."],
+  vi:["Đỏ nhạt đến đỏ sẫm; ít tannin, ít axit, cho rượu nhẹ nên uống khi còn trẻ.","Hương xanh, đồng hoa, lý gai, tiêu trắng."],
+  note:"Phần hương này trùng với Silvaner, hãy kiểm tra lại."},
+ {n:"Schwarzriesling",c:"r",
+  de:["Samtig, feingliedrig, rubin- bis ziegelrot.","Rote Beeren, schwarzer Tee."],
+  vi:["Mượt, thanh mảnh, đỏ ruby đến đỏ gạch.","Quả mọng đỏ, trà đen."]},
+ {n:"Cabernet Sauvignon",c:"r",x:1,
+  de:["Tiefdunkel, kräftig, tanninreich und gut lagerfähig.","Schwarze Johannisbeere (Cassis), Brombeere, Paprika, Zedernholz."],
+  vi:["Rất sẫm màu, mạnh, nhiều tannin, để được lâu.","Lý chua đen (cassis), mâm xôi đen, ớt chuông, gỗ tuyết tùng."]}
+];
+
+var weinkarte = [
+ ["2024","Grauburgunder Ihringer Winklerberg Erste Lage","Dr. Heger","Baden","45"],
+ ["2025","Silvaner S. Escherndorfer Lump Erste Lage","Horst Sauer","Franken","62"],
+ ["2024","Riesling Scharzhofberger Großes Gewächs","Wiltingen","Saar","88"],
+ ["2021","Weißburgunder Unteröwisheim Kirchberg","Klumpp","Baden","95"],
+ ["2022","Chardonnay Oberrotweiler Kirchberg","Franz Keller","Baden","100"],
+ ["2024","Müller-Thurgau trocken","Georg-Müller-Stiftung","Pfalz","60"],
+ ["2021","Sauvignon blanc „Johannes“","Johannes Aufricht","Baden","80"],
+ ["2024","Gewürztraminer Iphofen Kalb VDP.Erste Lage","Wirsching","Franken","64"],
+ ["2023","Spätburgunder Enselberg Großes Gewächs","Franz Keller, Oberbergen","Baden","65"],
+ ["2024","Trollinger Alte Reben trocken VDP.Gutswein","Schnaitmann","Württemberg","48"],
+ ["2023","Lemberger Fellbach Lämmler Großes Gewächs","Schnaitmann","Württemberg","110"],
+ ["2020","Schwarzriesling Schwäbischer Landwein","Drautz-Able","Württemberg","75"],
+ ["2013","Dornfelder „Barrique“ trocken VDP.Ortswein","Schloss Proschwitz","Sachsen","65"],
+ ["2019","Cabernet Sauvignon Reserve trocken","Philipp Kuhn","Pfalz","66"]
+];
+
+var glossar = [
+ ["Entrappen","Die Beeren werden von Stielen und Kämmen getrennt.","Tách quả nho khỏi cuống và chùm."],
+ ["Maische","Zerquetschte Trauben, bestehend aus Schalen, Fruchtfleisch, Kernen und Saft.","Nho đã nghiền, gồm vỏ, thịt quả, hạt và nước nho."],
+ ["Schwefeln","Zugabe von Schwefel (SO₂), um Most, Maische oder Wein zu konservieren und zu stabilisieren.","Thêm lưu huỳnh (SO₂) để bảo quản và làm ổn định dịch nho, Maische hoặc rượu."],
+ ["Most","Der aus der Maische gepresste Traubensaft.","Nước nho được ép ra từ Maische."],
+ ["Vorklärung","Der Most wird vor der Gärung von Trübstoffen befreit.","Dịch nho được loại chất đục trước khi lên men."],
+ ["Anreicherung","Zugabe von z. B. Zucker oder Mostkonzentrat, um den Alkohol- oder Restzuckergehalt zu erhöhen.","Thêm đường hoặc cô đặc dịch nho để tăng độ cồn hoặc đường dư."],
+ ["Mostgärung","Hefe wandelt den Zucker im Most in Alkohol und Kohlensäure um.","Men biến đường trong dịch nho thành cồn và CO₂."],
+ ["Maischegärung","Die Maische vergärt samt Schalen, damit Farb- und Geschmacksstoffe gelöst werden (Rotwein).","Bã nho lên men cùng vỏ để chiết màu và hương vị (vang đỏ)."],
+ ["Pressen","Trennen von Flüssigkeit (Most oder Jungwein) und festen Bestandteilen.","Tách phần lỏng (Most hoặc vang non) khỏi phần rắn."],
+ ["Jungwein","Der frisch vergorene Wein, noch mit Hefe und Trübstoffen.","Rượu vừa lên men xong, còn men và chất đục."],
+ ["Abstich","Das Abziehen des Weins von der abgesetzten Hefe.","Rút rượu ra khỏi lớp men đã lắng."],
+ ["Filtration","Weitere Trübstoffe werden durch Filter entfernt. (Filtration = lọc, làm trong.)","Loại các chất đục còn lại bằng bộ lọc."],
+ ["Schönung","Entfernung von unerwünschten Bestandteilen aus dem Wein.","Loại bỏ các thành phần không mong muốn khỏi rượu."],
+ ["Stabilisierung","Der Wein wird haltbar gemacht, damit er in der Flasche klar und stabil bleibt.","Làm rượu bền, để trong chai vẫn trong và ổn định."],
+ ["Ausbau / Reifung","Lagerung im Edelstahltank oder Holzfass, wodurch der Wein sein volles Aroma entwickelt.","Ủ trong bồn inox hoặc thùng gỗ để rượu phát triển hương thơm đầy đủ."],
+ ["Barrique","Kleines Holzfass (meist Eiche) für den Ausbau.","Thùng gỗ nhỏ (thường gỗ sồi) dùng để ủ rượu."]
+];
+
+var etikett = [
+ ["Jahrgang","2001","p","Das Erntejahr der Trauben.","Năm thu hoạch nho."],
+ ["Prädikat","Kabinett","p","Die Prädikatsstufe zeigt Reife und Mostgewicht.","Cấp Prädikat cho biết độ chín và Mostgewicht."],
+ ["Qualitätsstufe","Qualitätswein mit Prädikat","p","Die gesetzliche Qualitätsstufe des Weins.","Cấp chất lượng theo luật của rượu."],
+ ["Alkoholgehalt","alc. 11,5 % by vol.","p","Der Alkoholgehalt in Volumenprozent.","Độ cồn tính theo phần trăm thể tích."],
+ ["Weinbaugebiet","Mittelrhein","p","Das Anbaugebiet, aus dem die Trauben kommen.","Vùng trồng nho nơi nho được thu hoạch."],
+ ["Weingut / Erzeuger","Dr. Randolf Kauer","p","Der Betrieb, der den Wein erzeugt.","Cơ sở sản xuất rượu."],
+ ["Amtliche Prüfungsnummer (A. P. Nr.)","1698 216 202","p","Beweist, dass der Wein amtlich geprüft wurde.","Chứng minh rượu đã được cơ quan nhà nước kiểm định."],
+ ["Erzeugerabfüllung","Erzeugerabfüllung","p","Der Winzer hat den Wein selbst abgefüllt.","Người làm rượu tự đóng chai."],
+ ["Anschrift des Erzeugers","D-55422 Bacharach, Mainzer Straße 21","p","Adresse des Erzeugers oder Abfüllers.","Địa chỉ của nhà sản xuất hoặc nơi đóng chai."],
+ ["Füllmenge","750 ml","p","Der Inhalt der Flasche.","Dung tích chai."],
+ ["Rebsorte","Riesling","f","Die verwendete Rebsorte.","Giống nho được dùng."],
+ ["Engere Herkunftsbezeichnung / Lage","Bacharacher Wolfshöhle","f","Die Einzellage, aus der der Wein stammt.","Thửa vườn nho cụ thể nơi rượu xuất xứ."],
+ ["Geschmacksrichtung","Trocken","f","Gibt an, wie süß oder trocken der Wein schmeckt.","Cho biết rượu ngọt hay khô."],
+ ["Öko-Kontrollstelle","DE-039","z","Die Kontrollstelle für Bio-Betriebe (mit Logo ECO VIN).","Cơ quan kiểm soát cho cơ sở hữu cơ (kèm logo ECO VIN)."]
+];
+
+var gebiete = [
+ ["Nahe",["Riesling / Silvaner","Müller-Thurgau"],["Dornfelder","Spätburgunder"],"Sehr abwechslungsreiches Anbaugebiet mit vielen verschiedenen Bodenarten. Ca. ¼ der Reben sind rote Sorten.","Vùng rất đa dạng với nhiều loại đất. Khoảng ¼ số nho là giống đỏ."],
+ ["Baden",["Müller-Thurgau","Gutedel / Grauburgunder","Weißburgunder"],["Spätburgunder"],"Eine der wärmsten Regionen Deutschlands. Viele verschiedenartige Weine werden gekeltert. Spezialität ist der Badisch Rotgold.","Một trong những vùng ấm nhất nước Đức. Làm nhiều loại rượu khác nhau. Đặc sản: Badisch Rotgold."],
+ ["Württemberg",["Riesling / Kerner","Müller-Thurgau"],["Trollinger","Lemberger","Schwarzriesling / Spätburgunder"],"Größte Rotweinproduktion, viele Weingärtnergenossenschaften. Spezialität ist der Schillerwein.","Sản lượng vang đỏ lớn nhất, nhiều hợp tác xã trồng nho. Đặc sản: Schillerwein."],
+ ["Ahr",["Riesling","Müller-Thurgau"],["Spätburgunder","Frühburgunder","Portugieser"],"Überwiegend rote Rebsorten, eines der nördlichsten Gebiete. Spezialität ist der Frühburgunder.","Chủ yếu giống đỏ, một trong những vùng cực bắc. Đặc sản: Frühburgunder."],
+ ["Hessische Bergstraße",["Riesling","Grauburgunder","Müller-Thurgau"],["Spätburgunder"],"Eines der kleinsten Gebiete. Riesling ist typisch. Überwiegend Direktvermarktung.","Một trong những vùng nhỏ nhất. Riesling là điển hình. Chủ yếu bán trực tiếp."],
+ ["Mittelrhein",["Riesling / Kerner","Silvaner / Müller-Thurgau"],["Spätburgunder"],"Idyllisches, kleines Gebiet, überwiegend Steillagen.","Vùng nhỏ, thơ mộng, chủ yếu là sườn dốc."],
+ ["Mosel",["Riesling / Elbling","Müller-Thurgau"],["Rote Sorten haben kaum Bedeutung"],"Traditionelles Riesling-Anbaugebiet mit hohem Bekanntheitsgrad. Die Römer bauten hier den ersten Wein in Deutschland an.","Vùng Riesling truyền thống, rất nổi tiếng. Người La Mã trồng nho làm rượu đầu tiên ở Đức tại đây."],
+ ["Sachsen",["Müller-Thurgau / Riesling","Weißburgunder / Scheurebe","Traminer"],["Spätburgunder / Roter Traminer","Dornfelder"],"Kleines Gebiet mit überzeugenden Weißweinen, Kontinentalklima. Spezialität ist der Goldriesling.","Vùng nhỏ, vang trắng rất tốt, khí hậu lục địa. Đặc sản: Goldriesling."],
+ ["Pfalz",["Riesling / Grauburgunder","Müller-Thurgau"],["Dornfelder / Portugieser","Spätburgunder"],"Zweitgrößtes Gebiet, 25 % der deutschen Weinproduktion. Vielfältige, erlesene Weine mit hoher Qualität. Erfolgreich in Fachhandel und Gastronomie.","Vùng lớn thứ hai, 25 % sản lượng rượu Đức. Rượu đa dạng, tinh tuyển, chất lượng cao. Thành công ở cửa hàng chuyên và nhà hàng."],
+ ["Rheingau",["Riesling","Weißburgunder"],["Spätburgunder"],"Konzentriert sich vorrangig auf zwei Rebsorten und exportiert viele Weine.","Tập trung chủ yếu vào hai giống nho và xuất khẩu nhiều."],
+ ["Rheinhessen",["Müller-Thurgau / Riesling","Silvaner / Kerner / Grauburgunder","Scheurebe"],["Dornfelder / Spätburgunder","Portugieser"],"Größtes deutsches Weinbaugebiet. Die Weine gehören zum Kernsortiment in Handel und Gastronomie. Exportorientiert.","Vùng trồng nho lớn nhất nước Đức. Rượu thuộc nhóm chủ lực của thương mại và nhà hàng. Hướng xuất khẩu."],
+ ["Saale-Unstrut",["Müller-Thurgau","Weißburgunder / Riesling"],["Dornfelder / Portugieser"],"Nördlichstes Anbaugebiet Deutschlands. Dank geringer Erträge werden besonders feine Weine gewonnen.","Vùng cực bắc của Đức. Nhờ sản lượng thấp nên cho rượu đặc biệt tinh tế."],
+ ["Franken",["Müller-Thurgau","Silvaner","Bacchus"],["Domina","Spätburgunder","Dornfelder"],"Der Bocksbeutel ist ein Markenzeichen. Heimat von überwiegend weißen Rebsorten.","Chai Bocksbeutel là biểu tượng. Quê hương của chủ yếu giống nho trắng."]
+];
+
+/* ---------- Rendern ---------- */
+function esc(s){return s}
+(function(){
+  var cw=document.getElementById('cardsWeiss'), cr=document.getElementById('cardsRot');
+  karten.forEach(function(k){
+    var el=document.createElement('article');
+    el.className='card '+(k.c==='r'?'rot':'weiss')+(k.x?' extra':'');
+    el.innerHTML='<header><h3>'+k.n+'</h3><span class="tag">'+(k.c==='r'?'Rotwein':'Weißwein')+'</span></header>'+
+      '<div class="cbody">'+
+      '<h4>Charakteristik</h4><p class="de">'+k.de[0]+'</p><p class="vi">'+k.vi[0]+'</p>'+
+      '<h4>Hauptaromen</h4><p class="de">'+k.de[1]+'</p><p class="vi">'+k.vi[1]+'</p>'+
+      (k.note?'<p class="note">'+k.note+'</p>':'')+'</div>';
+    el.addEventListener('click',function(){el.classList.toggle('open')});
+    (k.c==='r'?cr:cw).appendChild(el);
+  });
+
+  var wk='<tr><th>Jahr</th><th>Wein</th><th>Erzeuger</th><th>Gebiet</th><th>Preis</th></tr>';
+  weinkarte.forEach(function(r){wk+='<tr><td>'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td><td>'+r[3]+'</td><td>'+r[4]+' €</td></tr>'});
+  document.getElementById('weinkarte').innerHTML=wk;
+
+  var g='<tr><th>Begriff</th><th>Erklärung</th></tr>';
+  glossar.forEach(function(r){g+='<tr><td><strong>'+r[0]+'</strong></td><td>'+r[1]+'<span class="vi">'+r[2]+'</span></td></tr>'});
+  document.getElementById('glossar').innerHTML=g;
+
+  var lab={p:['Pflichtangabe','#b0305c'],f:['Freiwillige Angabe','#1d5bd1'],z:['Zusätzliche Angabe','#9a7a00']};
+  var e='<tr><th>Angabe</th><th>Auf dem Etikett</th><th>Art</th><th>Bedeutung</th></tr>';
+  etikett.forEach(function(r){
+    e+='<tr><td><strong>'+r[0]+'</strong></td><td>'+r[1]+'</td><td style="color:'+lab[r[2]][1]+';font-weight:700">'+lab[r[2]][0]+'</td><td>'+r[3]+'<span class="vi">'+r[4]+'</span></td></tr>';
+  });
+  document.getElementById('etikettTab').innerHTML=e;
+
+  var t='<tr><th>Gebiet</th><th>Weißwein (W)</th><th>Rotwein (R)</th><th>Besonderheiten</th></tr>';
+  gebiete.forEach(function(r){
+    t+='<tr><td><strong>'+r[0]+'</strong></td><td class="w" style="font-weight:400">'+r[1].join('<br>')+'</td><td class="r" style="font-weight:400">'+r[2].join('<br>')+'</td><td>'+r[3]+'<span class="vi">'+r[4]+'</span></td></tr>';
+  });
+  document.getElementById('gebieteTab').innerHTML=t;
+})();
+
+/* ---------- Schalter ---------- */
+function toggleVi(){
+  document.body.classList.toggle('hide-vi');
+  var b=document.getElementById('viToggle');
+  var hidden=document.body.classList.contains('hide-vi');
+  b.textContent = hidden ? 'VI: TẮT' : 'VI: BẬT';
+}
+var fm=document.getElementById('flipMode');
+fm.addEventListener('click',function(){
+  var on=document.getElementById('rebsorten').classList.toggle('quiz');
+  fm.textContent=on?'Tắt chế độ lật thẻ':'Bật chế độ lật thẻ';
+  fm.setAttribute('aria-pressed',on);
+  if(!on){document.querySelectorAll('.card.open').forEach(function(c){c.classList.remove('open')})}
+});
+
+</script>
+</body>
+</html>

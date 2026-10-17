@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>§ Bier — Zusammenfassung (DE/VI)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== DESIGN TOKENS =====
+  ink    #1B1F2A  primary text / spine
+  paper  #F1ECDE  parchment ground
+  wax    #7A2E2E  paragraph seal / DE accent
+  brass  #9C7A3C  rule / numerals
+  slate  #48586B  VI translation voice
+  line   #D8CFB8  hairline
+*/
+:root{
+  --ink:#1B1F2A; --paper:#F1ECDE; --paper2:#EAE3D0; --wax:#7A2E2E;
+  --brass:#9C7A3C; --slate:#48586B; --line:#D8CFB8; --slateline:#c7d0da;
+  --green:#5b7a52; --greenbg:#eef3ea;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--paper);
+  background-image:
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.012) 0px, rgba(0,0,0,0.012) 1px, transparent 1px, transparent 3px);
+  color:var(--ink); font-family:"Source Serif 4",Georgia,serif; line-height:1.65;
+  font-size:17px;
+}
+::selection{background:#d9c9a3;}
+a{color:var(--wax);}
+
+/* ---- Header: title block like a statute cover page ---- */
+header.cover{
+  padding:60px 24px 42px; text-align:center; position:relative;
+  border-bottom:3px double var(--brass);
+  background:linear-gradient(180deg, var(--paper2), var(--paper));
+}
+header.cover .kicker{
+  font-family:"IBM Plex Mono",monospace; letter-spacing:.18em; font-size:.72rem;
+  text-transform:uppercase; color:var(--brass); margin-bottom:14px;
+}
+header.cover h1{
+  font-family:"Fraunces",serif; font-weight:600; font-size:clamp(1.9rem,5vw,3.1rem);
+  margin:0 0 10px; color:var(--ink); letter-spacing:-.01em;
+}
+header.cover h1 em{font-style:italic; color:var(--wax); font-weight:500;}
+header.cover .subtitle-de{font-size:1.02rem; color:var(--ink); margin:4px 0;}
+header.cover .subtitle-vi{
+  font-family:"IBM Plex Sans",sans-serif; font-size:.92rem; color:var(--slate);
+  margin:2px 0 0; font-style:normal;
+}
+header.cover .subtitle-vi:before{content:"VI · "; font-weight:600; letter-spacing:.03em; color:var(--slate); opacity:.7;}
+header.cover .exam-meta{
+  display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:18px;
+  font-family:"IBM Plex Mono",monospace; font-size:.72rem;
+}
+header.cover .exam-meta span{
+  border:1px solid var(--brass); color:var(--wax); padding:4px 12px; border-radius:20px;
+  letter-spacing:.04em;
+}
+
+/* ---- Legend + controls ---- */
+.legend{
+  max-width:820px; margin:22px auto 0; display:flex; gap:18px; justify-content:center;
+  flex-wrap:wrap; align-items:center; font-family:"IBM Plex Sans",sans-serif; font-size:.82rem; color:var(--ink);
+}
+.legend .item{display:flex; align-items:center; gap:8px;}
+.legend .swatch{width:16px; height:16px; border-radius:2px; flex-shrink:0;}
+.legend .swatch.de{background:var(--wax);}
+.legend .swatch.vi{background:var(--slate);}
+.toggle-btn{
+  cursor:pointer; font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.05em;
+  background:var(--ink); color:var(--paper); border:none; padding:8px 14px; border-radius:6px;
+  text-transform:uppercase; transition:.15s;
+}
+.toggle-btn:hover{background:var(--wax);}
+
+/* ---- Sticky paragraph nav ---- */
+nav.spine{
+  position:sticky; top:0; z-index:20; background:var(--ink); color:var(--paper);
+  display:flex; gap:0; overflow-x:auto; white-space:nowrap; padding:0 10px;
+  box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+nav.spine a{
+  color:var(--paper); text-decoration:none; font-family:"IBM Plex Mono",monospace;
+  font-size:.74rem; letter-spacing:.03em; padding:13px 14px; border-right:1px solid rgba(255,255,255,.12);
+  opacity:.72; transition:.15s;
+}
+nav.spine a:hover{opacity:1; background:rgba(255,255,255,.06); color:#EFC9A0;}
+nav.spine a.exam{color:#EFC9A0; opacity:.9;}
+nav.spine .grp{
+  font-family:"IBM Plex Mono",monospace; font-size:.64rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--brass); padding:13px 8px 13px 14px; align-self:center; opacity:.9;
+}
+
+main{max-width:840px; margin:0 auto; padding:10px 24px 100px;}
+
+/* ---- Section shell: like a numbered § chapter ---- */
+section.chapter{padding:50px 0 20px; border-bottom:1px solid var(--line); scroll-margin-top:54px;}
+section.chapter:last-of-type{border-bottom:none;}
+.chapter-head{display:flex; align-items:baseline; gap:16px; margin-bottom:6px;}
+.chapter-num{
+  font-family:"Fraunces",serif; font-weight:700; font-size:2.5rem; color:var(--brass);
+  line-height:1; flex-shrink:0;
+}
+.chapter-title-de{font-family:"Fraunces",serif; font-weight:600; font-size:1.5rem; color:var(--ink); margin:0;}
+.chapter-title-vi{
+  font-family:"IBM Plex Sans",sans-serif; font-size:.95rem; color:var(--slate); margin:4px 0 0 60px;
+}
+.chapter-title-vi:before{content:"VI · "; font-weight:600; opacity:.7;}
+.lf-tag{
+  font-family:"IBM Plex Mono",monospace; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase;
+  background:var(--wax); color:var(--paper); padding:3px 9px; border-radius:4px; margin-left:auto; align-self:center;
+}
+
+h3.sub{
+  font-family:"Fraunces",serif; font-weight:600; font-size:1.16rem; color:var(--wax);
+  margin:32px 0 4px; padding-left:14px; border-left:3px solid var(--wax);
+}
+h3.sub .vi-sub{
+  display:block; font-family:"IBM Plex Sans",sans-serif; font-weight:500; font-size:.82rem;
+  color:var(--slate); margin-top:3px; border-left:none; padding-left:0; letter-spacing:0;
+}
+h4.h4{font-family:'IBM Plex Sans',sans-serif; color:var(--ink); margin:24px 0 6px; font-size:1rem;}
+h4.h4 .vi-sub{display:block; color:var(--slate); font-weight:400; font-size:.82rem; margin-top:2px;}
+
+/* ---- The core DE→VI stacked block ---- */
+.block{margin:16px 0 22px;}
+.de{
+  position:relative; padding:14px 18px 14px 20px; background:rgba(122,46,46,.045);
+  border-left:3px solid var(--wax); border-radius:0 6px 6px 0; font-size:1rem;
+}
+.de .tag{
+  font-family:"IBM Plex Mono",monospace; font-size:.66rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--wax); display:block; margin-bottom:5px; opacity:.85;
+}
+.vi{
+  font-family:"IBM Plex Sans",sans-serif; font-size:.9rem; color:var(--slate);
+  padding:10px 18px 4px 20px; border-left:3px solid var(--slateline); margin-top:-4px;
+}
+.vi .tag{
+  font-family:"IBM Plex Mono",monospace; font-size:.64rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--slate); display:block; margin-bottom:4px; opacity:.75;
+}
+/* Vietnamese hide toggle */
+body.hide-vi .vi{display:none !important;}
+body.hide-vi .vi-sub{display:none !important;}
+body.hide-vi .vi-cell{display:none !important;}
+body.hide-vi .vi-mini{display:none !important;}
+body.hide-vi .chapter-title-vi{display:none !important;}
+
+ul,ol{margin:10px 0; padding-left:26px;}
+li{margin:5px 0;}
+li.de{border-radius:0 6px 6px 0; margin:7px 0;}
+
+.para-code{
+  font-family:"IBM Plex Mono",monospace; font-size:.7rem; font-weight:600; color:#fff;
+  background:var(--brass); padding:2px 8px; border-radius:10px; margin-left:6px; letter-spacing:.02em;
+  display:inline-block;
+}
+b,strong{color:var(--ink);}
+.vi b,.vi strong{color:#324150;}
+
+table{width:100%; border-collapse:collapse; margin:16px 0; font-size:.9rem; background:#fff;}
+th,td{border:1px solid var(--line); padding:9px 11px; text-align:left; vertical-align:top;}
+th{background:var(--ink); color:var(--paper); font-family:"IBM Plex Sans",sans-serif; font-weight:600; font-size:.78rem; letter-spacing:.03em; text-transform:uppercase;}
+tr:nth-child(even) td{background:var(--paper2);}
+td.vi-cell{color:var(--slate); font-family:"IBM Plex Sans",sans-serif; font-size:.82rem;}
+.vi-cell{color:var(--slate); font-family:"IBM Plex Sans",sans-serif; font-size:.82rem; display:block; margin-top:3px;}
+
+.example{
+  background:var(--greenbg); border-left:4px solid var(--green); border-radius:0 6px 6px 0;
+  padding:10px 16px; margin:12px 0; font-size:.92rem;
+}
+.example .tag{font-family:"IBM Plex Mono",monospace; font-size:.65rem; letter-spacing:.1em; color:#3f5c39; text-transform:uppercase; display:block; margin-bottom:4px;}
+.example .vi{border:none; padding:4px 0 0; margin:0;}
+
+.warn{
+  background:#f7e9df; border-left:4px solid var(--wax); border-radius:0 6px 6px 0;
+  padding:10px 16px; margin:12px 0; font-size:.92rem;
+}
+.warn .tag{font-family:"IBM Plex Mono",monospace; font-size:.65rem; letter-spacing:.1em; color:var(--wax); text-transform:uppercase; display:block; margin-bottom:4px;}
+.warn .vi{border:none; padding:4px 0 0; margin:0;}
+
+.timeline{
+  display:flex; justify-content:space-between; margin:26px 0 8px; padding:16px 10px;
+  border:1px solid var(--line); border-radius:8px; background:#fff;
+  font-family:"IBM Plex Mono",monospace; font-size:.78rem; text-align:center; color:var(--ink);
+}
+.timeline div{flex:1;}
+.timeline .vi-mini{display:block; font-family:"IBM Plex Sans",sans-serif; font-size:.68rem; color:var(--slate); margin-top:2px;}
+
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+@media(max-width:640px){.grid2{grid-template-columns:1fr;} .chapter-title-vi{margin-left:0;}}
+
+.badge-set{
+  font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.05em; text-transform:uppercase;
+  background:var(--ink); color:var(--paper); padding:5px 12px; border-radius:4px; display:inline-block; margin-bottom:14px;
+}
+.pill{display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:.66rem; font-weight:600;
+  padding:2px 9px; border-radius:12px; letter-spacing:.03em; text-transform:uppercase;}
+.pill.ok{background:#e2efdb; color:#3f5c39; border:1px solid #a9c39b;}
+.pill.no{background:#f4ddd6; color:#8a3324; border:1px solid #d3a294;}
+.pill.al{background:#f4ddd6; color:#7A2E2E; border:1px solid #d3a294;}
+
+/* ---- Q&A / Lösung accordion ---- */
+details.q{border:1px solid var(--line); border-radius:8px; margin:14px 0; overflow:hidden; background:#fff;}
+details.q summary{
+  cursor:pointer; list-style:none; padding:14px 18px; font-family:"IBM Plex Sans",sans-serif;
+  font-weight:600; font-size:.95rem; color:var(--ink); position:relative; padding-right:40px;
+}
+details.q summary::-webkit-details-marker{display:none;}
+details.q summary:after{
+  content:"+"; position:absolute; right:16px; top:50%; transform:translateY(-50%);
+  font-size:1.3rem; color:var(--brass); font-weight:400;
+}
+details.q[open] summary:after{content:"–";}
+details.q[open] summary{background:rgba(122,46,46,.04); border-bottom:1px dashed var(--line);}
+details.q summary .qnum{
+  font-family:"IBM Plex Mono",monospace; color:var(--brass); font-weight:600; margin-right:8px;
+}
+details.q .ans{padding:2px 18px 16px;}
+details.q .ans .de{margin-top:12px;}
+details.q .ans .vi{margin-bottom:6px;}
+
+/* ---- Math / calculation card ---- */
+.calc{
+  font-family:"IBM Plex Mono",monospace; font-size:.86rem; background:var(--ink); color:var(--paper);
+  border-radius:8px; padding:16px 18px; margin:14px 0; line-height:1.9;
+}
+.calc .op{color:var(--brass);}
+.calc .val{color:#EFC9A0;}
+.calc .res{color:#a9d39b; border-top:1px dashed rgba(255,255,255,.25); padding-top:4px; margin-top:4px; display:block;}
+
+/* ---- Exam sheet ---- */
+.exam-intro{
+  background:var(--paper2); border:1px solid var(--line); border-radius:8px;
+  padding:14px 18px; margin:16px 0; font-size:.94rem;
+}
+.aufgabe{margin:22px 0; padding-left:16px; border-left:3px solid var(--brass);}
+.aufgabe-num{font-family:"IBM Plex Sans",sans-serif; font-weight:600; color:var(--wax); font-size:1rem; display:block; margin-bottom:4px;}
+.pts{float:right; font-family:"IBM Plex Mono",monospace; color:var(--brass); font-size:.78rem;}
+kbd{font-family:"IBM Plex Mono",monospace; background:var(--paper2); border:1px solid var(--line); border-radius:4px; padding:1px 6px; font-size:.78rem; color:var(--ink);}
+code{font-family:"IBM Plex Mono",monospace; background:var(--paper2); border:1px solid var(--line); border-radius:4px; padding:1px 6px; font-size:.86em;}
+
+footer{
+  text-align:center; padding:44px 20px 70px; font-family:"IBM Plex Sans",sans-serif;
+  font-size:.82rem; color:var(--slate); border-top:1px solid var(--line);
+}
+footer .de{background:none; border:none; padding:0;}
+footer .vi{border:none; padding:0; margin-top:4px;}
+
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+@media print{
+  nav.spine, .toggle-btn{display:none;}
+  body{font-size:12pt; background:#fff;}
+  details.q, details.q .ans{display:block !important;}
+  details.q[open] summary:after,details.q summary:after{content:"";}
+  section.chapter{page-break-inside:auto;}
+}
+
+/* Bier: Tabelle + Quiz-Antworten */
+table.bier{width:100%;border-collapse:collapse;margin:14px 0;font-family:"IBM Plex Sans",sans-serif;font-size:.86rem}
+table.bier th{background:var(--ink);color:var(--paper);text-align:left;padding:8px 10px;font-weight:600}
+table.bier td{border-bottom:1px solid var(--line);padding:8px 10px;vertical-align:top}
+table.bier tr:nth-child(even) td{background:var(--paper2)}
+.q{font-weight:600;margin-bottom:8px}
+.ans{background:var(--greenbg);border:1px solid var(--green);border-radius:8px;padding:10px 12px;margin:10px 0;font-family:"IBM Plex Sans",sans-serif;font-size:.9rem}
+
+</style>
+</head>
+<body>
+<header class="cover">
+  <div class="kicker">Getränke · Lernskript</div>
+  <h1>§ <em>Bier</em></h1>
+  <p class="subtitle-de">Biereinteilung, Herstellung, Biersorten, Zapfen, Jugendschutz — mit Prüfungs-Check + Bierdiplom</p>
+  <p class="subtitle-vi">Phân loại bia, sản xuất bia, các loại bia, cách rót, bảo vệ trẻ em — kèm tự kiểm tra + Bierdiplom</p>
+  <div class="exam-meta">
+    <span>IHK 6132 · Getränke</span><span>DE / VI zweisprachig</span>
+  </div>
+  <div class="legend">
+    <div class="item"><span class="swatch de"></span> Deutsch (Original — luôn đọc trước)</div>
+    <div class="item"><span class="swatch vi"></span> Tiếng Việt (bản dịch — đọc sau để hiểu)</div>
+    <button class="toggle-btn" id="viToggle" onclick="toggleVi()">VI: BẬT</button>
+  </div>
+</header>
+
+<nav class="spine">
+  <span class="grp">Kapitel</span>
+  <a href="#p1">1 · Überblick</a>
+  <a href="#p2">2 · Rohstoffe</a>
+  <a href="#p3">3 · Herstellung</a>
+  <a href="#p4">4 · Gärung</a>
+  <a href="#p5">5 · Biereinteilung</a>
+  <a href="#p6">6 · Biersorten</a>
+  <a href="#p7">7 · Zapfen</a>
+  <a href="#p8">8 · Bierpflege</a>
+  <a href="#p9">9 · Jugendschutz</a>
+  <span class="grp">Test</span>
+  <a href="#quiz" class="exam">Prüfungs-Check</a>
+  <a href="#bierdiplom" class="exam">Bierdiplom</a>
+</nav>
+
+<main>
+<section class="chapter" id="p1">
+  <div class="chapter-head">
+    <span class="chapter-num">§1</span>
+    <h2 class="chapter-title-de">Bier auf einen Blick</h2>
+    <span class="lf-tag">Getränke</span>
+  </div>
+  <p class="chapter-title-vi">Bia — tổng quan</p>
+
+  <div class="block">
+    <div class="de"><span class="tag">Geschichte</span>Bier ist eines der ältesten Getränke der Welt. Schon vor ca. 6.000 Jahren haben die Sumerer Bier gebraut.</div>
+    <div class="vi"><span class="tag">VI</span>Bia là một trong những đồ uống lâu đời nhất thế giới. Người Sumer đã nấu bia cách đây khoảng 6.000 năm.</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">Deutschland</span>Deutschland ist ein Bierland: über 1.500 Brauereien und über 5.000 Biersorten.</div>
+    <div class="vi"><span class="tag">VI</span>Đức là đất nước của bia: hơn 1.500 nhà máy bia và hơn 5.000 loại bia.</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">Reinheitsgebot 1516</span>Am 23. April 1516 hat Herzog Wilhelm IV. von Bayern das Reinheitsgebot erlassen: Bier darf nur aus <strong>Wasser, Malz und Hopfen</strong> bestehen.</div>
+    <div class="vi"><span class="tag">VI</span>Ngày 23.04.1516, Công tước Wilhelm IV xứ Bayern ban hành Luật tinh khiết của bia: bia chỉ được làm từ <strong>nước, mạch nha và hoa bia</strong>.</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">Hefe</span>Die Hefe kannte man 1516 noch nicht. Heute gehört sie als 4. Zutat dazu: <strong>Wasser, Malz, Hopfen, Hefe</strong>.</div>
+    <div class="vi"><span class="tag">VI</span>Năm 1516 người ta chưa biết đến men. Ngày nay men là nguyên liệu thứ 4: <strong>nước, mạch nha, hoa bia, men</strong>.</div>
+  </div>
+  <div class="warn">
+    <span class="tag">Merke</span>
+    Reinheitsgebot = 1516, Bayern, nur Wasser + Malz + Hopfen.
+    <div class="vi">Nhớ: Luật tinh khiết = 1516, Bayern, chỉ nước + mạch nha + hoa bia.</div>
+  </div>
+</section>
+
+<section class="chapter" id="p2">
+  <div class="chapter-head">
+    <span class="chapter-num">§2</span>
+    <h2 class="chapter-title-de">Die 4 Rohstoffe</h2>
+    <span class="lf-tag">Getränke</span>
+  </div>
+  <p class="chapter-title-vi">4 nguyên liệu làm bia</p>
+
+  <div class="block">
+    <div class="de"><span class="tag">1 · Wasser</span>Wasser ist ca. 90 % des Bieres. Es beeinflusst den Geschmack: weiches Wasser → mildes Bier, hartes Wasser → herbes Bier.</div>
+    <div class="vi"><span class="tag">VI</span>Nước chiếm khoảng 90% bia. Nước ảnh hưởng vị bia: nước mềm → bia dịu, nước cứng → bia đắng.</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">2 · Malz</span>Malz ist gekeimtes und gedarrtes (getrocknetes) Getreide, meist Gerste. Es gibt dem Bier Farbe, Körper und Alkohol: Aus der Stärke im Malz entsteht Zucker, aus Zucker wird Alkohol.</div>
+    <div class="vi"><span class="tag">VI</span>Mạch nha là ngũ cốc đã nảy mầm rồi sấy khô, thường là lúa mạch. Nó cho bia màu sắc, độ đậm và cồn: tinh bột trong mạch nha thành đường, đường thành cồn.</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">3 · Hopfen</span>Hopfen gibt dem Bier Bitterkeit und Aroma. Er macht das Bier auch haltbar (konserviert).</div>
+    <div class="vi"><span class="tag">VI</span>Hoa bia cho bia vị đắng và hương thơm. Nó còn giúp bia để được lâu (bảo quản).</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">4 · Hefe</span>Hefe wandelt Zucker in Alkohol und CO₂ um. Das nennt man Gärung.</div>
+    <div class="vi"><span class="tag">VI</span>Men biến đường thành cồn và khí CO₂. Quá trình này gọi là lên men.</div>
+  </div>
+</section>
+
+<section class="chapter" id="p3">
+  <div class="chapter-head">
+    <span class="chapter-num">§3</span>
+    <h2 class="chapter-title-de">Bierherstellung in 7 Schritten</h2>
+    <span class="lf-tag">Getränke</span>
+  </div>
+  <p class="chapter-title-vi">Sản xuất bia trong 7 bước</p>
+
+  <div class="block">
+    <div class="de"><span class="tag">1 · Malzen</span>Gerste waschen → einweichen → keimen lassen bei 12–15 °C (mit Sauerstoff, regelmäßig wenden). Dabei werden Enzyme aktiviert, die Stärke in Zucker umwandeln. Danach wird das Grünmalz gedarrt (mit heißer Luft getrocknet): helles Malz bei 75–80 °C, dunkles Malz bei 105–120 °C.</div>
+    <div class="vi"><span class="tag">VI</span>Rửa lúa mạch → ngâm nước → ủ nảy mầm ở 12–15 °C (cấp oxy, đảo đều). Enzyme được kích hoạt để biến tinh bột thành đường. Sau đó sấy khô malt xanh (Grünmalz) bằng khí nóng: malt sáng màu 75–80 °C, malt tối màu 105–120 °C.</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">2 · Schroten</span>Das Malz wird grob gemahlen. Das Ergebnis heißt Malzschrot.</div>
+    <div class="vi"><span class="tag">VI</span>Xay thô mạch nha. Kết quả gọi là bột mạch nha (Malzschrot).</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">3 · Maischen</span>Malzschrot + Brauwasser, erhitzt auf ca. 70 °C = Maische. Die Stärke wird in Malzzucker umgewandelt.</div>
+    <div class="vi"><span class="tag">VI</span>Bột mạch nha + nước nấu bia, nâng nhiệt lên khoảng 70 °C = hỗn hợp Maische. Tinh bột biến thành đường malt.</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">4 · Läutern</span>Die Maische wird gefiltert: Die klare Flüssigkeit ist die Würze. Der Rest heißt Treber.</div>
+    <div class="vi"><span class="tag">VI</span>Lọc hỗn hợp Maische: phần nước trong là dịch đường (Würze). Phần bã còn lại gọi là Treber.</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">5 · Würzekochen</span>Die Würze (noch ohne Hopfen) wird ca. 2 Stunden mit Hopfen gekocht.</div>
+    <div class="vi"><span class="tag">VI</span>Dịch đường (chưa có hoa bia) được đun sôi cùng hoa bia khoảng 2 giờ.</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">6 · Gärung</span>Die Würze wird abgekühlt und in Gärtanks gefüllt, dann kommt reine Hefe dazu. Alkoholische Gärung, ca. 7 Tage: Zucker + Hefe → Alkohol + CO₂. Ergebnis: Jungbier.</div>
+    <div class="vi"><span class="tag">VI</span>Làm nguội dịch đường, chuyển vào bể lên men, bổ sung men thuần chủng. Lên men rượu khoảng 7 ngày: Đường + Men → Cồn + CO₂. Kết quả: bia trẻ (Jungbier).</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">7 · Reifung / Nachgärung</span>Das Jungbier wird bei 0 °C gelagert — normales Bier bis 8 Wochen, andere Sorten bis 4 Monate. Danach Filtrieren (außer trübe Biere wie Zwickel, Hefe-Weißbier) und Abfüllen in Fass, Flasche oder Dose.</div>
+    <div class="vi"><span class="tag">VI</span>Bia trẻ được bảo quản ở 0 °C để ủ / lên men phụ — bia thường tối đa 8 tuần, các dòng khác tới 4 tháng. Sau đó lọc (trừ các dòng bia đục như Zwickel, Hefe-Weißbier) và đóng gói vào thùng, chai hoặc lon.</div>
+  </div>
+  <div class="warn">
+    <span class="tag">Merke</span>
+    Reihenfolge: Malzen → Schroten → Maischen → Läutern → Würzekochen → Gärung → Lagerung.
+    <div class="vi">Thứ tự: Malzen → Schroten → Maischen → Läutern → Würzekochen → Gärung → Lagerung.</div>
+  </div>
+</section>
+
+<section class="chapter" id="p4">
+  <div class="chapter-head">
+    <span class="chapter-num">§4</span>
+    <h2 class="chapter-title-de">Obergärig vs. untergärig</h2>
+    <span class="lf-tag">Getränke</span>
+  </div>
+  <p class="chapter-title-vi">Men nổi vs men chìm</p>
+
+  <div class="block">
+    <div class="de"><span class="tag">Obergärig</span>Die Hefe steigt nach oben. Gärtemperatur: 15–20 °C, Hauptgärung schneller: 4–6 Tage. Beispiele: Weizenbier, Kölsch, Alt, Berliner Weiße.</div>
+    <div class="vi"><span class="tag">VI</span>Men nổi lên trên. Nhiệt độ lên men: 15–20 °C, lên men chính nhanh hơn: 4–6 ngày. Ví dụ: bia lúa mì, Kölsch, Alt, Berliner Weiße.</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">Untergärig</span>Die Hefe sinkt nach unten. Gärtemperatur: 4–9 °C, Gärdauer: 7–10 Tage. Beispiele: Pils, Helles, Dunkles, Bock, Export.</div>
+    <div class="vi"><span class="tag">VI</span>Men chìm xuống dưới. Nhiệt độ lên men: 4–9 °C, thời gian: 7–10 ngày. Ví dụ: Pils, Helles, Dunkles, Bock, Export.</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">Spontangärung</span>Natürliche Gärung mit wilden Hefen aus der Luft. Beispiel: Lambic (Belgien).</div>
+    <div class="vi"><span class="tag">VI</span>Lên men tự nhiên bằng men dại có sẵn trong không khí. Ví dụ: bia Lambic (Bỉ).</div>
+  </div>
+  <div class="warn">
+    <span class="tag">Merke</span>
+    Die meisten deutschen Biere sind untergärig.
+    <div class="vi">Hầu hết bia Đức là men chìm (untergärig).</div>
+  </div>
+</section>
+
+<section class="chapter" id="p5">
+  <div class="chapter-head">
+    <span class="chapter-num">§5</span>
+    <h2 class="chapter-title-de">Biereinteilung — 4 Kriterien</h2>
+    <span class="lf-tag">Getränke</span>
+  </div>
+  <p class="chapter-title-vi">Phân loại bia — 4 tiêu chí</p>
+
+  <div class="block">
+    <div class="de"><span class="tag">A · Biergattung (Stammwürze)</span>Die Biergattung hängt vom Stammwürzegehalt ab. Stammwürze = Anteil der gelösten Stoffe aus Malz und Hopfen (Malzzucker, Aroma-, Bitterstoffe) in der Würze vor der Gärung. Je höher die Stammwürze, desto mehr Alkohol nach der Gärung.</div>
+    <div class="vi"><span class="tag">VI</span>Chủng loại bia phụ thuộc vào hàm lượng Stammwürze. Stammwürze là tỷ lệ chất hòa tan từ malt và hoa bia (đường malt, chất thơm, chất đắng) trong dịch đường trước khi lên men. Stammwürze càng cao thì cồn sau lên men càng lớn.</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">Schätzformel</span>Alkohol [%] ≈ Stammwürze [%] ÷ (3 × 0,8). Beispiel: Pils mit 11 % Stammwürze → 11 ÷ 2,4 ≈ 4,6 % (tatsächlich ca. 4,8 %).</div>
+    <div class="vi"><span class="tag">VI</span>Công thức ước tính: Cồn [%] ≈ Stammwürze [%] ÷ (3 × 0,8). Ví dụ: Pils 11% Stammwürze → 11 ÷ 2,4 ≈ 4,6% (thực tế khoảng 4,8%).</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">4 Biergattungen</span><strong>Bier mit niedrigem Stammwürzegehalt:</strong> unter 7 % (z. B. Süßbier). <strong>Schankbier:</strong> 7 % bis unter 11 % (z. B. Leichtbier, viele alkoholfreie Biere, Berliner Weiße). <strong>Vollbier:</strong> 11 % bis unter 16 % (die meisten deutschen Biere: Pils, Export, Märzen, Helles, Kölsch, Alt, Weizenbier). <strong>Starkbier:</strong> ab 16 % (z. B. Bockbier, Doppelbock, Weizenbock).</div>
+    <div class="vi"><span class="tag">VI</span><strong>4 nhóm chủng loại:</strong> Bia Stammwürze thấp: dưới 7% (ví dụ Süßbier). <strong>Schankbier:</strong> 7% đến dưới 11% (ví dụ Leichtbier, nhiều bia không cồn, Berliner Weiße). <strong>Vollbier:</strong> 11% đến dưới 16% (hầu hết bia Đức phổ biến: Pils, Export, Märzen, Helles, Kölsch, Alt, Weizenbier). <strong>Starkbier:</strong> từ 16% trở lên (ví dụ Bockbier, Doppelbock, Weizenbock).</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">B · Gärart</span>Siehe §4: untergärig (4–9 °C, 7–10 Tage), obergärig (15–20 °C, 4–6 Tage), Spontangärung (Lambic).</div>
+    <div class="vi"><span class="tag">VI</span>Xem §4: men chìm (4–9 °C, 7–10 ngày), men nổi (15–20 °C, 4–6 ngày), lên men tự nhiên (Lambic).</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">C · Farbe</span>Die Farbe hängt von der Farbe des Malzes ab — also von der Darrtemperatur. Je höher die Darrtemperatur, desto dunkler das Bier. <strong>Helles Bier:</strong> Malz bei 70–85 °C gedarrt → hellgelb, gelb oder bernsteinfarben/kupfern. <strong>Dunkles Bier:</strong> Malz bei 90–110 °C gedarrt; dunkle Farbe auch durch Farbmalz (150–200 °C gedarrt).</div>
+    <div class="vi"><span class="tag">VI</span>Màu bia phụ thuộc vào màu của malt — tức nhiệt độ sấy malt. Sấy càng nóng thì bia càng đậm màu. <strong>Bia sáng màu:</strong> malt sấy ở 70–85 °C → vàng nhạt, vàng hoặc hổ phách/đồng. <strong>Bia tối màu:</strong> malt sấy ở 90–110 °C; màu tối cũng có thể đạt được bằng malt màu (sấy ở 150–200 °C).</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">D · Getreideart</span><strong>Gerstenbier:</strong> hauptsächlich aus Gerstenmalz. <strong>Weizenbier:</strong> mindestens 50 % Weizenmalz (Rest: Gerste). <strong>Roggenbier:</strong> mindestens 50 % Roggenmalz. <strong>Dinkelbier:</strong> mindestens 50 % Dinkelmalz. <strong>Mais- oder Reisbier:</strong> mindestens 50 % Mais oder Reis (auch mit anderem Getreide).</div>
+    <div class="vi"><span class="tag">VI</span><strong>Bia đại mạch:</strong> chủ yếu từ malt đại mạch. <strong>Bia lúa mì:</strong> tối thiểu 50% malt lúa mì (còn lại là đại mạch). <strong>Bia lúa mạch đen:</strong> tối thiểu 50% malt lúa mạch đen. <strong>Bia lúa mì Dinkel:</strong> tối thiểu 50% malt Dinkel. <strong>Bia ngô/gạo:</strong> tối thiểu 50% ngô hoặc gạo (có thể kết hợp ngũ cốc khác).</div>
+  </div>
+</section>
+
+<section class="chapter" id="p6">
+  <div class="chapter-head">
+    <span class="chapter-num">§6</span>
+    <h2 class="chapter-title-de">Biersorten im Überblick</h2>
+    <span class="lf-tag">Getränke</span>
+  </div>
+  <p class="chapter-title-vi">Các loại bia — bảng tổng quan</p>
+
+  <div class="block">
+    <div class="de"><span class="tag">Stammwürze</span>Die Stammwürze ist der Zuckergehalt der Würze vor der Gärung, in °Plato: Pils ca. 11–12 °P, Bock ab 16 °P.</div>
+    <div class="vi"><span class="tag">VI</span>Stammwürze là hàm lượng đường của dịch đường trước khi lên men, tính bằng °Plato: Pils khoảng 11–12 °P, Bock từ 16 °P trở lên.</div>
+  </div>
+
+  <table class="bier">
+    <tr><th>Sorte</th><th>Stammwürze</th><th>Gärung</th><th>Geschmack / Farbe</th><th>Alkohol</th><th>Temperatur</th><th>Glas</th></tr>
+    <tr><td><strong>Pils</strong></td><td>ca. 11 %</td><td>untergärig</td><td>gold, herb-bitter, hopfenbetont; Name aus Pilsen (Tschechien)</td><td>ca. 4,8 %</td><td>6–8 °C</td><td>Pilsglas / Tulpe</td></tr>
+    <tr><td><strong>Helles</strong></td><td>Vollbier (11–&lt;16 %)</td><td>untergärig</td><td>gold, mild-malzig</td><td>ca. 4,8 %</td><td>6–8 °C</td><td>Humpen / Becher</td></tr>
+    <tr><td><strong>Dunkles</strong></td><td>Vollbier (11–&lt;16 %)</td><td>untergärig</td><td>braun, malzig-süßlich</td><td>ca. 5,0 %</td><td>8–10 °C</td><td>Becher</td></tr>
+    <tr><td><strong>Weizenbier</strong></td><td>Vollbier (11–&lt;16 %)</td><td>obergärig</td><td>trüb, fruchtig (Banane, Nelke), viel CO₂; mind. 50 % Weizenmalz</td><td>4,8–5,6 %</td><td>7–8 °C</td><td>Weizenbierglas</td></tr>
+    <tr><td><strong>Kölsch</strong></td><td>ca. 11,3 %</td><td>obergärig</td><td>hellgelb, klar, hopfenbetont, frisch; nur Köln + Umgebung (EU-Schutz)</td><td>ca. 4,8 %</td><td>8–10 °C</td><td>Stange (0,2 l)</td></tr>
+    <tr><td><strong>Alt</strong></td><td>ca. 11,5 %</td><td>obergärig</td><td>dunkelbraun, hopfenbitter + malzig; Spezialität Düsseldorf</td><td>ca. 4,8 %</td><td>8–10 °C</td><td>Becher</td></tr>
+    <tr><td><strong>Lager / Export</strong></td><td>12–14 %</td><td>untergärig</td><td>gold hell bis dunkel, malzig, weniger herb als Pils; beliebt in Süddeutschland</td><td>5,3–5,6 %</td><td>6–8 °C</td><td>Becher</td></tr>
+    <tr><td><strong>Märzen</strong></td><td>mind. 13 %</td><td>untergärig</td><td>mäßig bitter, malzig; Vollbier hell/dunkel, aus Bayern (im März gebraut)</td><td>über 5 %</td><td>6–8 °C</td><td>Becher</td></tr>
+    <tr><td><strong>Leichtbier</strong></td><td>7–11 %</td><td>untergärig</td><td>voller Geschmack, weniger Alkohol</td><td>1,5–3 %</td><td>6–8 °C</td><td>Becher</td></tr>
+    <tr><td><strong>Berliner Weiße</strong></td><td>Schankbier (7–&lt;11 %)</td><td>obergärig</td><td>hellgelb, leicht trüb, mild-sauer, erfrischend; mit Waldmeister- oder Himbeersirup</td><td>ca. 2,8 %*</td><td>6–8 °C</td><td>Pokal</td></tr>
+    <tr><td><strong>Bock / Doppelbock</strong></td><td>mind. 16 % / mind. 18 %</td><td>untergärig</td><td>etwas dunkel, kräftig</td><td>ca. 7 % / über 7,5 %</td><td>8–10 °C</td><td>Pokal / Becher</td></tr>
+    <tr><td><strong>Alkoholfreies Bier</strong></td><td>—</td><td>—</td><td>wie Pils / Weizen, max. 0,5 % vol</td><td>max. 0,5 %</td><td>6–8 °C</td><td>wie Pils / Weizen</td></tr>
+  </table>
+  <div class="vi">Bảng: loại bia — Stammwürze — kiểu lên men — vị/màu — độ cồn — nhiệt độ phục vụ — ly dùng. *Berliner Weiße: trong bản trích ghi „2–8 %" — có thể là lỗi đọc của 2,8 %.</div>
+
+  <div class="block">
+    <div class="de"><span class="tag">Alkoholfreies Bier — 3 Methoden</span><strong>1. Gestoppte Gärung:</strong> Die Gärung wird früh abgebrochen (bei ca. 0,5 % Alkohol). Mehr Restzucker → süßer. <strong>2. Spezielle Hefestämme:</strong> Die Hefe vergärt nur einen Teil des Zuckers → wenig Alkohol, leicht süß. <strong>3. Entzug des Alkohols:</strong> Normales Bier brauen, dann Alkohol entfernen — durch Vakuumdestillation oder Membranfiltration.</div>
+    <div class="vi"><span class="tag">VI</span><strong>3 cách làm bia không cồn:</strong> <strong>1. Dừng lên men sớm:</strong> kết thúc lên men sớm (khi cồn khoảng 0,5%). Đường còn lại nhiều hơn → ngọt hơn. <strong>2. Chủng men đặc biệt:</strong> men chỉ chuyển hóa một phần đường → ít cồn, vị ngọt nhẹ. <strong>3. Tách cồn:</strong> nấu bia bình thường trước, sau đó loại bỏ cồn bằng chưng cất chân không hoặc lọc màng.</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">Vorteile &amp; Fragen</span><strong>Vorteile:</strong> ca. halbe Kalorien, isotonisch (gleicht Wasser + Mineralstoffe aus), Polyphenole (Immunsystem, entzündungshemmend, Antioxidantien). <strong>Autofahren:</strong> ok, kaum Alkohol. <strong>Schwangerschaft:</strong> gelegentlich ok, besser Wasser oder Tee. <strong>Ex-Alkoholiker:</strong> individuell — Geschmack und Geruch können das Verlangen zurückbringen.</div>
+    <div class="vi"><span class="tag">VI</span><strong>Lợi ích:</strong> calo chỉ bằng khoảng một nửa bia thường, đẳng trương (cân bằng nước + khoáng chất), Polyphenol (hỗ trợ miễn dịch, chống viêm, chống oxy hóa). <strong>Lái xe:</strong> được, cồn cực kỳ nhỏ. <strong>Mang thai:</strong> thỉnh thoảng được, tốt nhất vẫn là nước lọc hoặc trà. <strong>Người đã cai rượu:</strong> tùy từng người — hương vị và mùi bia không cồn có thể kích thích cơn thèm quay lại.</div>
+  </div>
+</section>
+
+<section class="chapter" id="p7">
+  <div class="chapter-head">
+    <span class="chapter-num">§7</span>
+    <h2 class="chapter-title-de">Richtig zapfen &amp; servieren</h2>
+    <span class="lf-tag">Getränke</span>
+  </div>
+  <p class="chapter-title-vi">Rót bia đúng cách &amp; phục vụ</p>
+
+  <div class="block">
+    <div class="de"><span class="tag">Glas</span>Das Glas muss sauber, fettfrei und kalt gespült sein (mit kaltem Wasser ausspülen).</div>
+    <div class="vi"><span class="tag">VI</span>Ly phải sạch, không dính dầu mỡ, và tráng qua nước lạnh.</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">Zapfen</span>Glas schräg halten (45°), langsam einschenken, dann gerade stellen. Schaumkrone: ca. 2–3 cm (2–3 Finger breit).</div>
+    <div class="vi"><span class="tag">VI</span>Cầm ly nghiêng (45°), rót chậm, rồi dựng ly thẳng. Lớp bọt: khoảng 2–3 cm (rộng 2–3 ngón tay).</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">Pils: 7-Minuten-Regel</span>Ein Pils wird in 3 Ansätzen gezapft: zapfen → absetzen lassen → nachzapfen. Das dauert ca. 7 Minuten. So bleibt der Schaum stabil.</div>
+    <div class="vi"><span class="tag">VI</span>Rót Pils làm 3 lần: rót → để yên → rót thêm. Mất khoảng 7 phút ("quy tắc 7 phút"). Như vậy bọt bền, không xẹp.</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">Schaumkrone</span>Die Schaumkrone schützt vor CO₂-Verlust und Aroma-Verlust — und sieht gut aus.</div>
+    <div class="vi"><span class="tag">VI</span>Lớp bọt giữ khí CO₂ và hương thơm không bay mất — và trông đẹp mắt.</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">Temperaturen</span>Die meisten Biere: 6–8 °C. Starkbiere (Bock): 8–10 °C. Zu kalt = kein Aroma. Zu warm = schal.</div>
+    <div class="vi"><span class="tag">VI</span>Hầu hết bia: 6–8 °C. Bia mạnh (Bock): 8–10 °C. Quá lạnh = mất hương. Quá ấm = bia nhạt, xì hơi.</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">Gläser</span>Pilsglas / Tulpe (Pils) · Weizenbierglas (Weizen) · Stange 0,2 l (Kölsch) · Becher (Alt, Helles, Dunkles) · Humpen / Maßkrug (Helles, Festbier) · Pokal (Bock, Starkbier).</div>
+    <div class="vi"><span class="tag">VI</span>Ly Pils / Tulpe (Pils) · Ly bia lúa mì (Weizen) · Ly Stange 0,2 l (Kölsch) · Cốc Becher (Alt, Helles, Dunkles) · Cốc lớn Humpen / Maßkrug (Helles, bia lễ hội) · Ly Pokal (Bock, bia mạnh).</div>
+  </div>
+</section>
+
+<section class="chapter" id="p8">
+  <div class="chapter-head">
+    <span class="chapter-num">§8</span>
+    <h2 class="chapter-title-de">Bierpflege &amp; Schankverlust</h2>
+    <span class="lf-tag">Getränke</span>
+  </div>
+  <p class="chapter-title-vi">Bảo quản bia &amp; hao hụt khi rót</p>
+
+  <div class="block">
+    <div class="de"><span class="tag">Pflege</span>Bierleitungen regelmäßig reinigen (nach Vorschrift), Zapfanlage pflegen, Kühlung 6–8 °C, CO₂-Druck prüfen. Fässer: First in, first out (FIFO) — das älteste Fass zuerst.</div>
+    <div class="vi"><span class="tag">VI</span>Vệ sinh đường ống bia thường xuyên (theo quy định), chăm sóc hệ thống rót, giữ lạnh 6–8 °C, kiểm tra áp suất CO₂. Thùng bia: vào trước ra trước (FIFO) — dùng thùng cũ nhất trước.</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">Schankverlust</span>Schankverlust entsteht z. B. durch Überschäumen, Verschütten und Restmengen. Formel: Schankverlust (%) = Verlust ÷ Gesamtmenge × 100.</div>
+    <div class="vi"><span class="tag">VI</span>Hao hụt khi rót do: tràn bọt, đổ ra ngoài, bia còn lại trong thùng/chai. Công thức: Schankverlust (%) = lượng hao hụt ÷ tổng lượng × 100.</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">Tipp</span>Beim Bestellen: benötigte Menge = Ausschankmenge ÷ (1 − Verlustquote). Nicht +5 % dazu rechnen, sondern durch 0,95 teilen (bei 5 % Verlust).</div>
+    <div class="vi"><span class="tag">VI</span>Mẹo khi đặt hàng: lượng cần mua = lượng cần rót ÷ (1 − tỉ lệ hao hụt). Không cộng 5% vào, mà chia cho 0,95 (khi hao hụt 5%).</div>
+  </div>
+</section>
+
+<section class="chapter" id="p9">
+  <div class="chapter-head">
+    <span class="chapter-num">§9</span>
+    <h2 class="chapter-title-de">Jugendschutz (§9 JuSchG)</h2>
+    <span class="lf-tag">Getränke</span>
+  </div>
+  <p class="chapter-title-vi">Bảo vệ trẻ em — bia uống từ mấy tuổi?</p>
+
+  <div class="block">
+    <div class="de"><span class="tag">Bier / Wein</span>Bier und Wein: ab 16 Jahren erlaubt.</div>
+    <div class="vi"><span class="tag">VI</span>Bia và rượu vang: từ 16 tuổi được uống.</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">Spirituosen</span>Spirituosen (z. B. Schnaps, Wodka): ab 18 Jahren.</div>
+    <div class="vi"><span class="tag">VI</span>Rượu mạnh (ví dụ Schnaps, Vodka): từ 18 tuổi.</div>
+  </div>
+  <div class="block">
+    <div class="de"><span class="tag">Ausnahme</span>14–15 Jahre + mit den Eltern (begleitetes Trinken): Bier und Wein erlaubt.</div>
+    <div class="vi"><span class="tag">VI</span>Ngoại lệ: 14–15 tuổi + đi cùng bố mẹ (uống có người lớn đi kèm): được uống bia và rượu vang.</div>
+  </div>
+  <div class="warn">
+    <span class="tag">Im Service</span>
+    Alter prüfen (Ausweis). Im Zweifel nicht ausschenken.
+    <div class="vi">Khi phục vụ: kiểm tra tuổi (giấy tờ). Nghi ngờ thì không rót.</div>
+  </div>
+</section>
+
+<section class="chapter" id="quiz">
+  <div class="chapter-head">
+    <span class="chapter-num">✎</span>
+    <h2 class="chapter-title-de">Prüfungs-Check — Selbsttest</h2>
+    <span class="lf-tag">8 Fragen</span>
+  </div>
+  <p class="chapter-title-vi">Tự kiểm tra — 8 câu</p>
+
+  <div class="block">
+    <div class="q"><strong>1.</strong> Nenne die 4 Rohstoffe des Bieres.</div>
+    <button class="toggle-btn" onclick="toggleAns('a1')">Musterlösung anzeigen</button>
+    <div class="ans" id="a1" style="display:none">Wasser, Malz, Hopfen, Hefe.</div>
+  </div>
+  <div class="block">
+    <div class="q"><strong>2.</strong> Was sagt das Reinheitsgebot von 1516? (Jahr + Zutaten)</div>
+    <button class="toggle-btn" onclick="toggleAns('a2')">Musterlösung anzeigen</button>
+    <div class="ans" id="a2" style="display:none">1516, Bayern (Herzog Wilhelm IV.): Bier nur aus Wasser, Malz und Hopfen. Hefe kannte man damals noch nicht.</div>
+  </div>
+  <div class="block">
+    <div class="q"><strong>3.</strong> Obergärig vs. untergärig: Gärtemperatur + je 2 Beispiele.</div>
+    <button class="toggle-btn" onclick="toggleAns('a3')">Musterlösung anzeigen</button>
+    <div class="ans" id="a3" style="display:none">Obergärig: 15–20 °C, z. B. Weizenbier, Kölsch. Untergärig: 8–12 °C, z. B. Pils, Helles.</div>
+  </div>
+  <div class="block">
+    <div class="q"><strong>4.</strong> Nenne die 7 Schritte der Bierherstellung in der richtigen Reihenfolge.</div>
+    <button class="toggle-btn" onclick="toggleAns('a4')">Musterlösung anzeigen</button>
+    <div class="ans" id="a4" style="display:none">Malzen → Schroten → Maischen → Läutern → Würzekochen → Gärung → Lagerung.</div>
+  </div>
+  <div class="block">
+    <div class="q"><strong>5.</strong> Wie zapft man ein Pils richtig? (Glas, Schaumkrone, 7-Minuten-Regel)</div>
+    <button class="toggle-btn" onclick="toggleAns('a5')">Musterlösung anzeigen</button>
+    <div class="ans" id="a5" style="display:none">Glas schräg halten (45°), langsam einschenken, dann gerade stellen. Schaumkrone ca. 2–3 cm. Pils in 3 Ansätzen, ca. 7 Minuten.</div>
+  </div>
+  <div class="block">
+    <div class="q"><strong>6.</strong> Serviertemperatur: Pils? Bock?</div>
+    <button class="toggle-btn" onclick="toggleAns('a6')">Musterlösung anzeigen</button>
+    <div class="ans" id="a6" style="display:none">Pils: 6–8 °C. Bock: 8–10 °C.</div>
+  </div>
+  <div class="block">
+    <div class="q"><strong>7.</strong> Ein Gast (15 Jahre) möchte ein Bier. Seine Eltern sind dabei. Darfst du ausschenken? (§9 JuSchG)</div>
+    <button class="toggle-btn" onclick="toggleAns('a7')">Musterlösung anzeigen</button>
+    <div class="ans" id="a7" style="display:none">Ja — 14–15 Jahre + mit den Eltern (begleitetes Trinken): Bier und Wein erlaubt.</div>
+  </div>
+  <div class="block">
+    <div class="q"><strong>8.</strong> Was ist der Unterschied zwischen Pils und Weizenbier? (Gärung, Glas, Geschmack)</div>
+    <button class="toggle-btn" onclick="toggleAns('a8')">Musterlösung anzeigen</button>
+    <div class="ans" id="a8" style="display:none">Pils: untergärig, Pilsglas/Tulpe, gold, herb-bitter. Weizenbier: obergärig, Weizenbierglas, trüb, fruchtig (Banane, Nelke).</div>
+  </div>
+</section>
+
+<section class="chapter" id="bierdiplom">
+  <div class="chapter-head">
+    <span class="chapter-num">✎</span>
+    <h2 class="chapter-title-de">Bierdiplom — 10 Fragen</h2>
+    <span class="lf-tag">BFK 1 · LF07 LS02</span>
+  </div>
+  <p class="chapter-title-vi">Bằng bia — 10 câu hỏi (theo tài liệu BFK 1)</p>
+
+  <div class="block">
+    <div class="q"><strong>1.</strong> Woher kommt der Name „Pils"?</div>
+    <button class="toggle-btn" onclick="toggleAns('b1')">Musterlösung anzeigen</button>
+    <div class="ans" id="b1" style="display:none">Aus der Stadt Pilsen (Tschechien).</div>
+  </div>
+  <div class="block">
+    <div class="q"><strong>2.</strong> Nenne die 4 Zutaten nach dem Reinheitsgebot.</div>
+    <button class="toggle-btn" onclick="toggleAns('b2')">Musterlösung anzeigen</button>
+    <div class="ans" id="b2" style="display:none">Wasser, Malz, Hopfen, Hefe.</div>
+  </div>
+  <div class="block">
+    <div class="q"><strong>3.</strong> Was trägt der Hopfen zum Bier bei?</div>
+    <button class="toggle-btn" onclick="toggleAns('b3')">Musterlösung anzeigen</button>
+    <div class="ans" id="b3" style="display:none">Aroma, Bitterkeit, Schaumhaltigkeit (Schaum bleibt), Haltbarkeit.</div>
+  </div>
+  <div class="block">
+    <div class="q"><strong>4.</strong> Warum braucht man Gerste oder Weizen für die Bierherstellung?</div>
+    <button class="toggle-btn" onclick="toggleAns('b4')">Musterlösung anzeigen</button>
+    <div class="ans" id="b4" style="display:none">Das Malz liefert Stärke und Enzyme. Stärke → Zucker → Alkohol.</div>
+  </div>
+  <div class="block">
+    <div class="q"><strong>5.</strong> Was macht die Hefe?</div>
+    <button class="toggle-btn" onclick="toggleAns('b5')">Musterlösung anzeigen</button>
+    <div class="ans" id="b5" style="display:none">Sie wandelt Zucker in Alkohol + CO₂ um (Gärung).</div>
+  </div>
+  <div class="block">
+    <div class="q"><strong>6.</strong> Was ist der Stammwürzegehalt?</div>
+    <button class="toggle-btn" onclick="toggleAns('b6')">Musterlösung anzeigen</button>
+    <div class="ans" id="b6" style="display:none">Anteil der gelösten Stoffe (Malzzucker, Aroma-, Bitterstoffe) aus Malz und Hopfen in der Würze vor der Gärung. Er bestimmt den Alkoholgehalt. Schätzformel: Alkohol [%] ≈ Stammwürze [%] ÷ (3 × 0,8).</div>
+  </div>
+  <div class="block">
+    <div class="q"><strong>7.</strong> Was ist alkoholfreies Bier?</div>
+    <button class="toggle-btn" onclick="toggleAns('b7')">Musterlösung anzeigen</button>
+    <div class="ans" id="b7" style="display:none">Bier mit max. 0,5 % vol (auch 0,0 %). Herstellung: gestoppte Gärung, spezielle Hefe oder Alkoholentzug.</div>
+  </div>
+  <div class="block">
+    <div class="q"><strong>8.</strong> Welche Biere sind obergärig?</div>
+    <button class="toggle-btn" onclick="toggleAns('b8')">Musterlösung anzeigen</button>
+    <div class="ans" id="b8" style="display:none">Hefeweizen, Alt, Kölsch, Berliner Weiße.</div>
+  </div>
+  <div class="block">
+    <div class="q"><strong>9.</strong> Stammwürze-Bereiche: Schankbier? Vollbier? Starkbier?</div>
+    <button class="toggle-btn" onclick="toggleAns('b9')">Musterlösung anzeigen</button>
+    <div class="ans" id="b9" style="display:none">Schankbier: 7–&lt;11 %. Vollbier: 11–&lt;16 %. Starkbier: ab 16 %.</div>
+  </div>
+  <div class="block">
+    <div class="q"><strong>10.</strong> Wozu dient das Darren des Grünmalzes?</div>
+    <button class="toggle-btn" onclick="toggleAns('b10')">Musterlösung anzeigen</button>
+    <div class="ans" id="b10" style="display:none">Malz haltbar machen; Farbe und Aroma bilden (je nach Temperatur: hell bei 75–80 °C, dunkel bei 105–120 °C); Keimung stoppen.</div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="de">Zusammenfassung zum Lernen — keine offizielle IHK-Antwort. Quellen: BFK 1 (LF07, LS02) + IHK 6132.</div>
+  <div class="vi">Tài liệu tổng hợp để ôn thi — không phải đáp án chính thức của IHK. Nguồn: BFK 1 (LF07, LS02) + IHK 6132.</div>
+</footer>
+
+<script>
+function toggleVi(){
+  document.body.classList.toggle('hide-vi');
+  var b=document.getElementById('viToggle');
+  var hidden=document.body.classList.contains('hide-vi');
+  b.textContent = hidden ? 'VI: TẮT' : 'VI: BẬT';
+}
+function toggleAns(id){
+  var e=document.getElementById(id);
+  e.style.display = (e.style.display==='none') ? 'block' : 'none';
+}
+</script>
+</body>
+</html>
