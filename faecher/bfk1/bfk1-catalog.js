@@ -195,6 +195,18 @@ window.BFK1_CATALOG = [
         "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M17 11h1a3 3 0 0 1 0 6h-1\"/><path d=\"M5 6h12v12a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V6z\"/><path d=\"M5 10h12\"/><path d=\"M5 14h12\"/></svg>",
         "name": "LS02 · Bier — Zusammenfassung & Einteilung",
         "nameVi": "Kiến thức trọn bộ về Bia — 4 Tiêu chí, 7 Bước sản xuất, Rót bia & JuSchG"
+      },
+      {
+        "id": "lf6-schaumwein",
+        "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M8 22h8\"/><path d=\"M12 15v7\"/><path d=\"M12 15a5 5 0 0 0 5-5c0-2-.5-4-2-8H9c-1.5 4-2 6-2 8a5 5 0 0 0 5 5z\"/><circle cx=\"12\" cy=\"6\" r=\"0.5\"/><circle cx=\"10\" cy=\"9\" r=\"0.5\"/><circle cx=\"14\" cy=\"10\" r=\"0.5\"/></svg>",
+        "name": "LS04 · Schaumwein",
+        "nameVi": "Vang sủi: Sản xuất, Độ ngọt, Phân cấp 4 nước & Nhãn chai"
+      },
+      {
+        "id": "lf6-wein-empfehlen",
+        "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2\"/><path d=\"M7 2v20\"/><path d=\"M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7\"/></svg>",
+        "name": "LS07 & LS11 · Wein empfehlen",
+        "nameVi": "Tư vấn & Kết hợp rượu vang với món ăn, Thực đơn 4 món"
       }
     ]
   },
