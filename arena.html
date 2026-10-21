@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="apple-touch-icon" href="./images/icons/apple-touch-icon.png">
-<title>Prüfungs-Arena · AzubiHub</title>
+<title>Prüfungs-Arena · Tự luận chuẩn IHK · AzubiHub</title>
 <style>
 :root{
   --bg:#F7F4EE; --surface:#FFFDF9; --card:#FFFFFF; --ink:#2B2520; --muted:#7C7267; --line:#E6DFD3;
@@ -33,7 +33,7 @@ body{
 .nick-tag{font-size:.82em;font-weight:600;color:var(--accent);background:var(--accent-soft);border:1px solid var(--line);border-radius:999px;padding:4px 12px;cursor:pointer}
 
 .card{background:var(--surface);border:1.5px solid var(--line);border-radius:18px;padding:22px;margin-bottom:16px;box-shadow:var(--shadow)}
-h1{font-family:var(--font-serif);font-size:1.6em;font-weight:700;letter-spacing:-.01em;margin-bottom:6px;color:var(--ink)}
+h1{font-family:var(--font-serif);font-size:1.55em;font-weight:700;letter-spacing:-.01em;margin-bottom:6px;color:var(--ink)}
 h2{font-size:1.15em;font-weight:700;margin-bottom:10px;color:var(--ink)}
 h3{font-size:.95em;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin-bottom:8px}
 .muted{color:var(--muted);font-size:.88em}
@@ -69,7 +69,42 @@ label{font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercas
 .err{display:none;background:var(--badbg);color:var(--bad);border:1px solid rgba(153,27,27,.2);border-radius:12px;padding:10px 14px;font-size:.88em;margin:10px 0}
 .err.show{display:block}
 
-/* Exam Screen */
+/* Mode & Tab Switchers */
+.mode-switch{
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;background:var(--bg);padding:4px;border-radius:14px;border:1.5px solid var(--line);margin:16px 0 20px;
+}
+.mode-btn{
+  border:none;background:transparent;padding:10px 14px;font:inherit;font-weight:700;font-size:.9em;border-radius:10px;
+  cursor:pointer;color:var(--muted);display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:all .15s;
+}
+.mode-btn.active{background:var(--surface);color:var(--accent);box-shadow:0 2px 6px rgba(0,0,0,.06)}
+
+.tab-nav{display:flex;gap:6px;border-bottom:1.5px solid var(--line);margin-bottom:18px;overflow-x:auto}
+.tab-btn{
+  border:none;background:none;padding:10px 16px;font:inherit;font-weight:700;font-size:.9em;color:var(--muted);
+  border-bottom:2.5px solid transparent;cursor:pointer;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;transition:all .15s;
+}
+.tab-btn.active{color:var(--accent);border-bottom-color:var(--accent)}
+
+/* Checkbox Chips for LF selector */
+.lf-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));gap:10px;margin:12px 0 18px}
+.lf-chip{
+  background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer;
+  display:flex;align-items:center;gap:10px;user-select:none;transition:all .12s;
+}
+.lf-chip:hover{border-color:var(--accent)}
+.lf-chip.selected{background:var(--accent-soft);border-color:var(--accent)}
+.lf-chip input[type=checkbox]{accent-color:var(--accent);width:17px;height:17px}
+
+/* Exam Cards for IHK */
+.exam-card{
+  background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px;cursor:pointer;
+  transition:all .15s;display:flex;justify-content:space-between;align-items:center;gap:12px;
+}
+.exam-card:hover{border-color:var(--accent);box-shadow:var(--shadow)}
+.exam-card.selected{border-color:var(--accent);background:var(--accent-soft)}
+
+/* Live Exam */
 .timer-banner{
   position:sticky;top:0;z-index:100;background:var(--surface);border-bottom:1.5px solid var(--line);padding:10px 16px;
   display:flex;align-items:center;justify-content:space-between;gap:12px;margin:-22px -22px 18px;border-radius:16px 16px 0 0;
@@ -143,6 +178,10 @@ label{font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercas
       AzubiHub <span>· Prüfungs-Arena</span>
     </a>
     <div style="display:flex;align-items:center;gap:8px">
+      <button type="button" class="btn sm ghost" id="btnOpenFehlerbuch" title="Sổ tay lỗi sai & ôn tập">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Sổ tay (<span id="fehlerbuchBadgeCount">0</span>)
+      </button>
       <span class="nick-tag" id="nickDisplay" title="Tên người dùng">Azubi</span>
       <a href="./" class="back-link">← Fächer</a>
     </div>
@@ -150,46 +189,99 @@ label{font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercas
 
   <div id="errBox" class="err"></div>
 
-  <!-- VIEW 1: HUB (Tạo / Vào phòng thi) -->
+  <!-- VIEW 1: HUB (CẤU HÌNH & CHỌN ĐỀ THI) -->
   <section id="view-hub">
     <div class="card">
-      <span class="badge">Live Multiplayer</span>
-      <h1 style="margin-top:6px">Phòng thi tự luận chung</h1>
-      <p class="muted">Cùng nhau làm đề thi tự luận thật (*Klassenarbeit & IHK*), đếm ngược đồng bộ, đối chiếu đáp án mẫu chi tiết và xếp hạng vinh danh.</p>
+      <span class="badge">Prüfungs-Arena · Tự luận nghề Đức</span>
+      <h1 style="margin-top:6px">Phòng thi chung & Tự luyện tự luận</h1>
+      <p class="muted">Làm đề thi tự luận thật (*IHK Abschlussprüfung & Klassenarbeiten*), gõ đáp án tiếng Đức, tự đối chiếu barem điểm từ khóa và nhận phân tích chuyên sâu.</p>
 
-      <div style="margin:20px 0 16px">
-        <label for="examSelect">Chọn đề thi tự luận:</label>
-        <select id="examSelect"></select>
+      <!-- SWITCH CHẾ ĐỘ: SOLO VS MULTIPLAYER -->
+      <div class="mode-switch">
+        <button type="button" class="mode-btn active" id="modeSolo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          👤 Tự luyện Solo
+        </button>
+        <button type="button" class="mode-btn" id="modeMulti">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          👥 Phòng thi nhóm (PIN)
+        </button>
       </div>
 
-      <div class="row">
+      <!-- TABS CHỌN ĐỀ: LERNFELD VS ĐỀ IHK THẬT -->
+      <nav class="tab-nav">
+        <button type="button" class="tab-btn active" id="tabLernfeld">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          🎯 Luyện theo Lernfeld
+        </button>
+        <button type="button" class="tab-btn" id="tabIhk">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          🏛️ Đề thi tốt nghiệp IHK thật
+        </button>
+      </nav>
+
+      <!-- TAB PANEL 1: CHỌN THEO LERNFELD -->
+      <div id="panelLernfeld">
+        <div class="row">
+          <div style="flex:1;min-width:200px">
+            <label for="fachSelect">Môn học (Fach):</label>
+            <select id="fachSelect">
+              <option value="bfk1" selected>BfK-1 · Gastgewerbe & Service</option>
+              <option value="bfk2">BfK-2 · Küche & Warenkunde</option>
+              <option value="gk">GK · Wirtschafts- und Sozialkunde</option>
+            </select>
+          </div>
+          <div style="flex:1;min-width:200px">
+            <label for="lfQuestionCount">Số lượng câu hỏi:</label>
+            <select id="lfQuestionCount">
+              <option value="3">3 câu (Luyện nhanh)</option>
+              <option value="5" selected>5 câu (Tiêu chuẩn đề thi)</option>
+              <option value="8">8 câu (Chuyên sâu)</option>
+              <option value="all">Tất cả câu hỏi trong các LF</option>
+            </select>
+          </div>
+        </div>
+
+        <label style="margin-top:6px;display:block">Tích chọn các Lernfeld muốn ôn tập:</label>
+        <div class="lf-grid" id="lfChipsArea"></div>
+      </div>
+
+      <!-- TAB PANEL 2: CHỌN ĐỀ THI TỐT NGHIỆP IHK THẬT -->
+      <div id="panelIhk" class="hidden">
+        <label>Chọn bộ đề thi tốt nghiệp IHK / Klassenarbeit:</label>
+        <div id="ihkExamListArea" style="margin-top:8px"></div>
+      </div>
+
+      <!-- CẤU HÌNH THỜI GIAN & TÊN THÍ SINH -->
+      <div class="row" style="margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)">
         <div style="flex:1;min-width:200px">
           <label for="durationSelect">Thời gian làm bài:</label>
           <select id="durationSelect">
             <option value="15">⏱️ 15 phút (Luyện tập nhanh)</option>
             <option value="30" selected>⏱️ 30 phút (Tiêu chuẩn đề thi)</option>
             <option value="45">⏱️ 45 phút (Đầy đủ theo trường)</option>
-            <option value="60">⏱️ 60 phút (Chuyên sâu)</option>
+            <option value="60">⏱️ 60 phút (IHK Abschlussprüfung)</option>
+            <option value="90">⏱️ 90 phút (Thời gian chuẩn tốt nghiệp)</option>
           </select>
         </div>
         <div style="flex:1;min-width:200px">
-          <label for="nicknameInput">Tên của bạn:</label>
-          <input type="text" id="nicknameInput" placeholder="Nhập tên / Nickname..." maxlength="20">
+          <label for="nicknameInput">Tên / Biệt danh của bạn:</label>
+          <input type="text" id="nicknameInput" placeholder="Nhập tên..." maxlength="20">
         </div>
       </div>
 
-      <div class="row" style="margin-top:8px">
-        <button type="button" class="btn" id="btnCreateRoom" style="flex:1.5">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          Tạo phòng thi mới (Host)
+      <!-- NÚT BẮT ĐẦU -->
+      <div class="row" style="margin-top:10px">
+        <button type="button" class="btn block" id="btnMainAction" style="font-size:1.05em;padding:14px">
+          🚀 BẮT ĐẦU LÀM BÀI (SOLO)
         </button>
       </div>
     </div>
 
-    <!-- BOX VÀO PHÒNG CÓ SẴN BẰNG PIN -->
-    <div class="card">
+    <!-- BOX VÀO PHÒNG BẰNG PIN (CHỈ HIỂN THỊ TRONG CHẾ ĐỘ MULTIPLAYER) -->
+    <div class="card" id="boxJoinMulti" style="display:none">
       <h2>Vào phòng thi của bạn bè</h2>
-      <p class="muted">Nhập mã phòng 5 chữ số do Host chia sẻ để cùng tham gia thi.</p>
+      <p class="muted">Nhập mã PIN 5 ký tự do Host chia sẻ để cùng thi đua realtime.</p>
       <div class="row" style="margin-top:10px">
         <input type="text" id="joinCodeInput" placeholder="Mã PIN (Ví dụ: 8K9B2)" maxlength="8" style="text-transform:uppercase;font-weight:700;letter-spacing:.1em;margin-bottom:0">
         <button type="button" class="btn ghost" id="btnJoinRoom">Vào phòng →</button>
@@ -197,7 +289,7 @@ label{font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercas
     </div>
   </section>
 
-  <!-- VIEW 2: LOBBY (Sảnh chờ thí sinh) -->
+  <!-- VIEW 2: LOBBY (SẢNH CHỜ MULTIPLAYER) -->
   <section id="view-lobby" class="hidden">
     <div class="card" style="text-align:center">
       <span class="badge">Sảnh chờ thí sinh</span>
@@ -221,7 +313,7 @@ label{font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercas
     </div>
   </section>
 
-  <!-- VIEW 3: LIVE EXAM (Bàn làm bài tự luận) -->
+  <!-- VIEW 3: LIVE EXAM (BÀN LÀM BÀI TỰ LUẬN) -->
   <section id="view-exam" class="hidden">
     <div class="card">
       <div class="timer-banner">
@@ -279,7 +371,7 @@ label{font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercas
         <div style="font-size:1.1em;font-weight:700">Tổng điểm tự đánh giá: <span id="reviewTotalScore" style="color:var(--accent);font-size:1.4em">0</span> / <span id="reviewMaxScore">35</span> P.</div>
         <p class="muted" style="font-size:.82em;margin-top:4px">Bấm nút bên dưới để chốt kết quả và chuyển tới Bảng Xếp Hạng của phòng thi.</p>
         <button type="button" class="btn block" id="btnConfirmScore" style="margin-top:14px;font-size:1em">
-          🏆 XÁC NHẬN ĐIỂM & XEM BẢNG XẾP HẠNG →
+          🏆 XÁC NHẬN ĐIỂM & XEM KẾT QUẢ →
         </button>
       </div>
     </div>
@@ -288,30 +380,43 @@ label{font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercas
   <!-- VIEW 5: PODIUM & LEADERBOARD -->
   <section id="view-podium" class="hidden">
     <div class="card" style="text-align:center">
-      <span class="badge">Ergebnisse · Rangliste</span>
-      <h1 style="margin:8px 0 4px">Bảng Xếp Hạng Phòng Thi</h1>
+      <span class="badge" id="podiumBadge">Ergebnisse · Rangliste</span>
+      <h1 style="margin:8px 0 4px" id="podiumHeading">Bảng Xếp Hạng Phòng Thi</h1>
       <p class="muted" id="podiumSubText">Kết quả hoàn thành bài thi tự luận</p>
 
-      <!-- PODIUM TOP 3 -->
-      <div class="podium" id="podiumArea"></div>
+      <!-- KHỐI VINH DANH BỤC TOP 3 (CHO MULTIPLAYER) HOẶC THẺ SOLO -->
+      <div id="multiLeaderboardArea">
+        <div class="podium" id="podiumArea"></div>
+        <table class="rank-table" id="rankTable">
+          <thead>
+            <tr>
+              <th>Hạng</th>
+              <th>Thí sinh</th>
+              <th>Điểm số</th>
+              <th>Điểm Đức</th>
+              <th>Thời gian</th>
+              <th>Bài làm</th>
+            </tr>
+          </thead>
+          <tbody id="rankTableBody"></tbody>
+        </table>
+      </div>
 
-      <!-- BẢNG TỔNG SẮP -->
-      <table class="rank-table" id="rankTable">
-        <thead>
-          <tr>
-            <th>Hạng</th>
-            <th>Thí sinh</th>
-            <th>Điểm số</th>
-            <th>Điểm Đức</th>
-            <th>Thời gian</th>
-            <th>Bài làm</th>
-          </tr>
-        </thead>
-        <tbody id="rankTableBody"></tbody>
-      </table>
+      <!-- KHỐI KẾT QUẢ CHO THI SOLO -->
+      <div id="soloResultArea" style="display:none;margin:24px 0">
+        <div style="background:var(--bg);border-radius:16px;padding:22px;border:1.5px solid var(--line);max-width:420px;margin:0 auto">
+          <div style="font-size:2.8em;margin-bottom:4px" id="soloEmoji">🎯</div>
+          <div style="font-size:1.8em;font-weight:800;color:var(--accent)" id="soloScoreText">0 / 0 P.</div>
+          <div style="margin:8px 0">
+            <span class="note-badge note-1" id="soloIhkBadge" style="font-size:1.05em;padding:4px 12px">Note 1 · Sehr gut</span>
+          </div>
+          <p class="muted" id="soloCommentText" style="margin-top:10px;line-height:1.5">Xuất sắc! Bạn đã nắm rất vững kiến thức nghiệp vụ tự luận chuẩn IHK.</p>
+        </div>
+      </div>
 
       <div class="row" style="margin-top:20px">
         <button type="button" class="btn ghost" id="btnBackHub">Thi đề khác</button>
+        <button type="button" class="btn ghost" id="btnRetakeExam">Làm lại đề này</button>
         <a href="./" class="btn">Về AzubiHub</a>
       </div>
     </div>
@@ -330,8 +435,19 @@ label{font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercas
   </div>
 </div>
 
+<!-- MODAL SỔ TAY LỖI SAI (FEHLERBUCH) -->
+<div id="fehlerbuchModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;backdrop-filter:blur(4px);padding:16px;align-items:center;justify-content:center">
+  <div style="background:var(--surface);border-radius:18px;max-width:740px;width:100%;max-height:85vh;overflow-y:auto;padding:22px;border:1.5px solid var(--line);box-shadow:var(--shadow)">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;border-bottom:1px solid var(--line);padding-bottom:10px">
+      <h2 style="margin:0">📖 Sổ tay câu hỏi cần ôn lại (Fehlerbuch)</h2>
+      <button type="button" class="btn sm ghost" onclick="document.getElementById('fehlerbuchModal').style.display='none'">Đóng ✕</button>
+    </div>
+    <div id="fehlerbuchContent"></div>
+  </div>
+</div>
+
 <script src="./js/supabase.js?v=21"></script>
-<script src="./js/arena-data.js?v=1"></script>
+<script src="./js/arena-data.js?v=2"></script>
 <script>
 (function(){
   "use strict";
@@ -340,6 +456,10 @@ label{font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercas
   const $ = (id) => document.getElementById(id);
   const errBox = $("errBox");
 
+  // State
+  let currentMode = 'solo'; // 'solo' | 'multi'
+  let currentTab = 'lernfeld'; // 'lernfeld' | 'ihk'
+  let selectedIhkExamId = 'ihk-sommer-2024';
   let curRoom = null;
   let curExam = null;
   let unsubRoom = null;
@@ -378,38 +498,178 @@ label{font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercas
     }
   }
 
-  // Khởi tạo HUB
+  // Quản lý Sổ tay lỗi sai (Fehlerbuch)
+  function getFehlerbuch(){
+    try{
+      return JSON.parse(localStorage.getItem('azubi_arena_fehlerbuch') || '[]');
+    }catch(_){ return []; }
+  }
+
+  function saveFehlerbuch(arr){
+    try{
+      localStorage.setItem('azubi_arena_fehlerbuch', JSON.stringify(arr));
+      updateFehlerbuchBadge();
+    }catch(_){}
+  }
+
+  function updateFehlerbuchBadge(){
+    const list = getFehlerbuch();
+    const b = $("fehlerbuchBadgeCount");
+    if(b) b.textContent = list.length;
+  }
+
+  window.toggleBookmarkQuestion = function(qId){
+    let list = getFehlerbuch();
+    const idx = list.indexOf(qId);
+    if(idx >= 0){
+      list.splice(idx, 1);
+    } else {
+      list.push(qId);
+    }
+    saveFehlerbuch(list);
+    // Cập nhật lại UI nút bookmark trong review nếu có
+    const btn = $(`btnBm_${qId}`);
+    if(btn){
+      const isSaved = list.includes(qId);
+      btn.innerHTML = isSaved ? '⭐ Đã lưu vào Sổ tay' : '☆ Lưu vào Sổ tay ôn tập';
+      btn.classList.toggle('ok', isSaved);
+    }
+  };
+
+  // Khởi tạo Hub
   function initHub(){
     const me = getMe();
     $("nicknameInput").value = me;
     $("nickDisplay").textContent = me;
+    updateFehlerbuchBadge();
 
-    const list = ARENA_DATA.listExams();
-    const sel = $("examSelect");
-    sel.innerHTML = list.map(x => `<option value="${x.id}">${x.badge} · ${x.title} (${x.points} P.)</option>`).join('');
+    // Mode switch
+    $("modeSolo").onclick = () => setMode('solo');
+    $("modeMulti").onclick = () => setMode('multi');
+
+    // Tab switch
+    $("tabLernfeld").onclick = () => setTab('lernfeld');
+    $("tabIhk").onclick = () => setTab('ihk');
+
+    // Fach select
+    $("fachSelect").onchange = renderLfChips;
+
+    renderLfChips();
+    renderIhkExams();
   }
 
-  // Tạo phòng thi
-  $("btnCreateRoom").onclick = async () => {
+  function setMode(mode){
+    currentMode = mode;
+    $("modeSolo").classList.toggle('active', mode === 'solo');
+    $("modeMulti").classList.toggle('active', mode === 'multi');
+    $("boxJoinMulti").style.display = (mode === 'multi') ? 'block' : 'none';
+
+    if(mode === 'solo'){
+      $("btnMainAction").textContent = "🚀 BẮT ĐẦU LÀM BÀI (SOLO)";
+    } else {
+      $("btnMainAction").textContent = "👥 TẠO PHÒNG THI MỚI (HOST)";
+    }
+  }
+
+  function setTab(tab){
+    currentTab = tab;
+    $("tabLernfeld").classList.toggle('active', tab === 'lernfeld');
+    $("tabIhk").classList.toggle('active', tab === 'ihk');
+    $("panelLernfeld").classList.toggle('hidden', tab !== 'lernfeld');
+    $("panelIhk").classList.toggle('hidden', tab !== 'ihk');
+  }
+
+  function renderLfChips(){
+    const currentFach = $("fachSelect").value;
+    const catalog = ARENA_DATA.LF_CATALOG || [];
+    const filtered = catalog.filter(c => c.fach === currentFach);
+
+    $("lfChipsArea").innerHTML = filtered.map((c, i) => {
+      const isDefaultChecked = (i === 0 || i === 1);
+      return `<label class="lf-chip ${isDefaultChecked ? 'selected' : ''}" data-lfid="${c.id}">
+        <input type="checkbox" name="lfSelect" value="${c.id}" ${isDefaultChecked ? 'checked' : ''} onchange="this.parentElement.classList.toggle('selected', this.checked)">
+        <div style="flex:1">
+          <div style="font-weight:700;font-size:.92em">${c.title}</div>
+          <div class="muted" style="font-size:.78em">${c.count} câu hỏi tự luận chuẩn</div>
+        </div>
+      </label>`;
+    }).join('');
+  }
+
+  function renderIhkExams(){
+    const exams = ARENA_DATA.listIhkExams();
+    $("ihkExamListArea").innerHTML = exams.map(e => {
+      const isSelected = (e.id === selectedIhkExamId);
+      return `<div class="exam-card ${isSelected ? 'selected' : ''}" data-examid="${e.id}">
+        <div>
+          <span class="badge">${e.badge}</span>
+          <div style="font-weight:700;font-size:1.02em;margin:4px 0 2px">${e.title}</div>
+          <div class="muted" style="font-size:.84em">${e.subtitle}</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-weight:800;font-size:1.15em;color:var(--accent)">${e.points} P.</div>
+          <div class="muted" style="font-size:.78em">${e.questionsCount} câu · ${e.defaultMinutes}p</div>
+        </div>
+      </div>`;
+    }).join('');
+
+    $("ihkExamListArea").querySelectorAll('.exam-card').forEach(card => {
+      card.onclick = () => {
+        selectedIhkExamId = card.dataset.examid;
+        $("ihkExamListArea").querySelectorAll('.exam-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        const examObj = ARENA_DATA.getExam(selectedIhkExamId);
+        if(examObj && examObj.defaultMinutes){
+          $("durationSelect").value = String(examObj.defaultMinutes);
+        }
+      };
+    });
+  }
+
+  // Hành động nút chính (Bắt đầu Solo HOẶC Host Multiplayer)
+  $("btnMainAction").onclick = async () => {
     try{
       showErr('');
       const name = $("nicknameInput").value.trim();
       if(!name) throw new Error("Vui lòng nhập tên của bạn");
       setMe(name);
 
-      const examId = $("examSelect").value;
       const duration = Number($("durationSelect").value) || 30;
 
-      $("btnCreateRoom").disabled = true;
-      $("btnCreateRoom").textContent = "Đang tạo phòng...";
+      // Chuẩn bị đề thi (Exam Object)
+      let examObj = null;
+      if(currentTab === 'lernfeld'){
+        const checkedLfs = Array.from(document.querySelectorAll('input[name="lfSelect"]:checked')).map(el => el.value);
+        if(!checkedLfs.length) throw new Error("Vui lòng tích chọn ít nhất 1 Lernfeld để tạo đề thi");
+        const count = $("lfQuestionCount").value;
+        const fach = $("fachSelect").value;
+        examObj = ARENA_DATA.generateExamFromLfs({ fach, lfs: checkedLfs, questionCount: count, timeMinutes: duration });
+      } else {
+        examObj = ARENA_DATA.getExam(selectedIhkExamId);
+        if(!examObj) throw new Error("Không tìm thấy đề thi đã chọn");
+      }
 
-      const room = await LearnDB.createArenaRoom({ host: name, examId, durationMinutes: duration });
-      enterLobby(room);
+      if(currentMode === 'solo'){
+        // Chế độ Solo: bắt đầu trực tiếp ngay
+        startSoloExam(examObj, duration);
+      } else {
+        // Chế độ Multiplayer: Gọi Supabase tạo phòng
+        $("btnMainAction").disabled = true;
+        $("btnMainAction").textContent = "Đang tạo phòng...";
+        const room = await LearnDB.createArenaRoom({ host: name, examId: examObj.id, durationMinutes: duration });
+        // Gắn đề thi tạm thời vào bộ nhớ
+        ARENA_DATA.IHK_EXAMS[room.examId] = examObj;
+        enterLobby(room);
+      }
     }catch(e){
       showErr(e.message || e);
     }finally{
-      $("btnCreateRoom").disabled = false;
-      $("btnCreateRoom").textContent = "Tạo phòng thi mới (Host)";
+      $("btnMainAction").disabled = false;
+      if(currentMode === 'solo'){
+        $("btnMainAction").textContent = "🚀 BẮT ĐẦU LÀM BÀI (SOLO)";
+      } else {
+        $("btnMainAction").textContent = "👥 TẠO PHÒNG THI MỚI (HOST)";
+      }
     }
   };
 
@@ -434,7 +694,7 @@ label{font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercas
     }
   };
 
-  // Vào Lobby
+  // Sảnh chờ Lobby (Multiplayer)
   function enterLobby(room){
     curRoom = room;
     curExam = ARENA_DATA.getExam(room.examId);
@@ -451,7 +711,6 @@ label{font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercas
 
     renderLobbyPlayers(room);
 
-    // Bắt đầu lắng nghe Realtime phòng thi
     if(unsubRoom) unsubRoom();
     unsubRoom = LearnDB.subscribeArenaRoom(room.code, (val) => {
       if(!val) return;
@@ -459,9 +718,6 @@ label{font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercas
       renderLobbyPlayers(val);
       if(val.status === 'running' && $("view-exam").classList.contains('hidden')){
         startLiveExam(val);
-      }
-      if(val.status === 'finished' && $("view-podium").classList.contains('hidden') && !$("view-review").classList.contains('hidden')){
-        // host or others finished
       }
     });
   }
@@ -472,13 +728,12 @@ label{font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercas
     $("playerCount").textContent = keys.length;
     $("lobbyPlayerList").innerHTML = keys.map(k => {
       const u = parts[k];
-      return `<span class="chip on" style="display:inline-flex;align-items:center;gap:6px">
+      return `<span class="badge" style="display:inline-flex;align-items:center;gap:6px;padding:6px 10px;font-size:.82em">
         <span>👤</span> <b>${u.name}</b> ${u.isHost ? '<i class="badge" style="font-size:.65em">Host</i>' : ''}
       </span>`;
     }).join('');
   }
 
-  // Host bấm Start Exam
   $("btnStartExam").onclick = async () => {
     try{
       $("btnStartExam").disabled = true;
@@ -489,24 +744,39 @@ label{font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercas
     }
   };
 
-  // Bắt đầu thi Live
+  // Khởi động thi Solo
+  function startSoloExam(exam, minutes){
+    curRoom = null;
+    curExam = exam;
+    myAnswers = {};
+    myReviewScores = {};
+    curQIndex = 0;
+
+    showView('exam');
+    $("examLiveBadge").textContent = `👤 Solo · ${curExam.badge}`;
+    $("examSituationText").textContent = curExam.situation || '';
+
+    examTotalSeconds = minutes * 60;
+    examSecondsLeft = examTotalSeconds;
+
+    startExamTimer();
+    renderQNav();
+    loadQuestion(0);
+  }
+
+  // Khởi động thi Multiplayer
   function startLiveExam(room){
     curRoom = room;
     curExam = ARENA_DATA.getExam(room.examId);
-    showView('exam');
+    myAnswers = {};
+    myReviewScores = {};
+    curQIndex = 0;
 
-    $("examLiveBadge").textContent = curExam.badge;
+    showView('exam');
+    $("examLiveBadge").textContent = `👥 ${curRoom.code} · ${curExam.badge}`;
     $("examSituationText").textContent = curExam.situation || '';
 
-    // Phục hồi bài nháp từ LocalStorage nếu có
-    const cacheKey = `arena_draft_${room.code}_${getMe()}`;
-    try{
-      const saved = JSON.parse(localStorage.getItem(cacheKey) || '{}');
-      if(saved && typeof saved === 'object') myAnswers = saved;
-    }catch(_){}
-
     examTotalSeconds = (room.durationMinutes || 30) * 60;
-    // Tính thời gian đã trôi qua dựa theo startedAt của room
     const elapsed = room.startedAt ? Math.floor((Date.now() - new Date(room.startedAt).getTime()) / 1000) : 0;
     examSecondsLeft = Math.max(0, examTotalSeconds - elapsed);
 
@@ -523,7 +793,7 @@ label{font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercas
       $("examTimer").textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
       if(examSecondsLeft <= 0){
         clearInterval(timerInterval);
-        alert("⏰ Đã hết thời gian làm bài! Hệ thống chuyển sang màn hình chấm bài.");
+        alert("⏰ Đã hết thời gian làm bài! Hệ thống chuyển sang màn hình đối chiếu & tự chấm điểm.");
         finishExamAndReview();
       }
       examSecondsLeft--;
@@ -573,13 +843,11 @@ label{font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercas
     myAnswers[qId] = val;
 
     // Lưu nháp LocalStorage
-    const cacheKey = `arena_draft_${curRoom ? curRoom.code : 'tmp'}_${getMe()}`;
+    const cacheKey = `arena_draft_${curRoom ? curRoom.code : 'solo'}_${getMe()}`;
     try{ localStorage.setItem(cacheKey, JSON.stringify(myAnswers)); }catch(_){}
 
-    // Đếm số câu đã hoàn thành
-    const filledCount = Object.values(myAnswers).filter(x => x && x.trim().length > 0).length;
-    // Đồng bộ tiến độ nhẹ về Supabase (không block)
     if(curRoom && window.LearnDB){
+      const filledCount = Object.values(myAnswers).filter(x => x && x.trim().length > 0).length;
       LearnDB.updateArenaProgress(curRoom.code, getMe(), filledCount, myAnswers).catch(()=>{});
     }
   }
@@ -622,11 +890,10 @@ label{font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercas
     if(timerInterval) clearInterval(timerInterval);
     saveCurrentInput();
     showView('review');
-
     renderReviewStage();
   }
 
-  // Tính độ trùng khớp từ khóa sơ bộ (Keyword Matcher)
+  // Thuật toán so khớp từ khóa cơ bản (Keyword Matcher)
   function autoScoreQuestion(q, ansText){
     const normAns = (ansText||'').toLowerCase()
       .replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss");
@@ -646,15 +913,16 @@ label{font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercas
     if(!curExam) return;
     $("reviewMaxScore").textContent = curExam.totalPoints;
 
+    const savedBookmarks = getFehlerbuch();
     let totalScore = 0;
-    const html = curExam.questions.map((q, idx) => {
+
+    const html = curExam.questions.map((q) => {
       const myAns = myAnswers[q.id] || '(Chưa điền câu trả lời)';
       const autoPts = autoScoreQuestion(q, myAns);
       myReviewScores[q.id] = autoPts;
       totalScore += autoPts;
 
       const normAns = (myAns||'').toLowerCase();
-      // Highlight các từ khóa tìm thấy
       const keywordsChecklist = (q.keywords||[]).map((kw, ki) => {
         const allTerms = [kw.term].concat(kw.alt || []);
         const isMatched = allTerms.some(t => normAns.includes(t.toLowerCase()));
@@ -667,11 +935,17 @@ label{font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercas
       }).join('');
 
       const exp = q.explanation || {};
+      const isBookmarked = savedBookmarks.includes(q.id);
 
       return `<div class="card" style="margin-bottom:20px;border-left:4px solid var(--accent)">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
           <h3>Câu ${q.no} · ${q.title}</h3>
-          <span class="badge">${q.points} P. tối đa</span>
+          <div style="display:flex;align-items:center;gap:6px">
+            <button type="button" class="btn sm ghost ${isBookmarked?'ok':''}" id="btnBm_${q.id}" onclick="window.toggleBookmarkQuestion('${q.id}')">
+              ${isBookmarked ? '⭐ Đã lưu vào Sổ tay' : '☆ Lưu vào Sổ tay ôn tập'}
+            </button>
+            <span class="badge">${q.points} P. tối đa</span>
+          </div>
         </div>
         <p style="font-weight:600;font-size:.92em;margin-bottom:10px">${q.questionDe} <br><i class="muted">${q.questionVi}</i></p>
 
@@ -736,11 +1010,11 @@ label{font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercas
     $("reviewTotalScore").textContent = sum;
   }
 
-  // Xác nhận điểm và mở Bảng xếp hạng
+  // Xác nhận điểm và mở Bảng xếp hạng / Kết quả
   $("btnConfirmScore").onclick = async () => {
     try{
       $("btnConfirmScore").disabled = true;
-      $("btnConfirmScore").textContent = "Đang lưu và đồng bộ bảng điểm...";
+      $("btnConfirmScore").textContent = "Đang lưu kết quả...";
 
       const totalScore = Object.values(myReviewScores).reduce((a,b)=>a+b, 0);
       const timeSpent = examTotalSeconds - examSecondsLeft;
@@ -760,107 +1034,129 @@ label{font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercas
       showErr(e.message || e);
     }finally{
       $("btnConfirmScore").disabled = false;
-      $("btnConfirmScore").textContent = "🏆 XÁC NHẬN ĐIỂM & XEM BẢNG XẾP HẠNG →";
+      $("btnConfirmScore").textContent = "🏆 XÁC NHẬN ĐIỂM & XEM KẾT QUẢ →";
     }
   };
 
-  // Tính điểm hệ Đức (IHK-Note 1 đến 6)
   function getIhkNote(pct){
-    if(pct >= 92) return { note: 'Note 1', label: 'Sehr gut', cls: 'note-1' };
-    if(pct >= 81) return { note: 'Note 2', label: 'Gut', cls: 'note-2' };
-    if(pct >= 67) return { note: 'Note 3', label: 'Befriedigend', cls: 'note-3' };
-    if(pct >= 50) return { note: 'Note 4', label: 'Ausreichend', cls: 'note-4' };
-    if(pct >= 30) return { note: 'Note 5', label: 'Mangelhaft', cls: 'note-4' };
-    return { note: 'Note 6', label: 'Ungenügend', cls: 'note-4' };
+    if(pct >= 92) return { note: 'Note 1', label: 'Sehr gut', cls: 'note-1', comment: 'Xuất sắc! Nắm rất vững kiến thức nghiệp vụ và thuật ngữ tiếng Đức chuẩn IHK.' };
+    if(pct >= 81) return { note: 'Note 2', label: 'Gut', cls: 'note-2', comment: 'Tốt! Đạt tiêu chuẩn cao của kỳ thi tốt nghiệp nghề.' };
+    if(pct >= 67) return { note: 'Note 3', label: 'Befriedigend', cls: 'note-3', comment: 'Khá! Cần lưu ý thêm một số bẫy từ khóa và chi tiết quy trình.' };
+    if(pct >= 50) return { note: 'Note 4', label: 'Ausreichend', cls: 'note-4', comment: 'Đạt yêu cầu tối thiểu qua môn. Cần ôn kỹ lại các câu hỏi trong Sổ tay lỗi sai.' };
+    if(pct >= 30) return { note: 'Note 5', label: 'Mangelhaft', cls: 'note-4', comment: 'Chưa đạt! Cần luyện thêm để tránh bị trượt kỳ thi IHK.' };
+    return { note: 'Note 6', label: 'Ungenügend', cls: 'note-4', comment: 'Chưa đạt yêu cầu! Hãy xem lại đáp án mẫu và làm lại đề thi.' };
   }
 
   function showPodiumView(){
     showView('podium');
 
-    const render = (room) => {
-      const parts = room.participants || {};
-      const users = Object.values(parts).map(u => {
-        const sc = (u.score !== null) ? u.score : (u.name === getMe() ? Object.values(myReviewScores).reduce((a,b)=>a+b, 0) : 0);
-        const max = u.maxScore || (curExam ? curExam.totalPoints : 35);
-        const pct = Math.round((sc / max) * 100);
-        return {
-          name: u.name,
-          score: sc,
-          maxScore: max,
-          pct: pct,
-          timeSpent: u.timeSpentSec || 0,
-          answers: u.answers || {},
-          breakdown: u.breakdown || {}
-        };
-      });
+    const totalScore = Object.values(myReviewScores).reduce((a,b)=>a+b, 0);
+    const max = curExam ? curExam.totalPoints : 35;
+    const pct = Math.round((totalScore / max) * 100);
+    const ihk = getIhkNote(pct);
 
-      // Sắp xếp: Điểm cao hơn trước, nếu bằng nhau thì thời gian ít hơn xếp trên
-      users.sort((a,b) => {
-        if(b.score !== a.score) return b.score - a.score;
-        return a.timeSpent - b.timeSpent;
-      });
+    if(!curRoom){
+      // THI SOLO
+      $("podiumBadge").textContent = "Ergebnis · Solo Training";
+      $("podiumHeading").textContent = "Kết Quả Bài Thi Tự Luận";
+      $("podiumSubText").textContent = `${curExam ? curExam.title : 'Đề thi tự luận'}`;
+      $("multiLeaderboardArea").style.display = 'none';
+      $("soloResultArea").style.display = 'block';
 
-      // Render Podium Top 3
-      const top1 = users[0];
-      const top2 = users[1];
-      const top3 = users[2];
+      $("soloScoreText").textContent = `${totalScore} / ${max} P. (${pct}%)`;
+      $("soloIhkBadge").className = `note-badge ${ihk.cls}`;
+      $("soloIhkBadge").textContent = `${ihk.note} · ${ihk.label}`;
+      $("soloCommentText").textContent = ihk.comment;
 
-      let podHtml = '';
-      if(top2){
-        podHtml += `<div class="pod-step pod-2">
-          <div style="font-size:1.5em">🥈</div>
-          <div class="pod-name">${top2.name}</div>
-          <div class="pod-score">${top2.score} P.</div>
-          <div class="pod-block"><div class="pod-rank">#2</div></div>
-        </div>`;
-      }
-      if(top1){
-        podHtml += `<div class="pod-step pod-1">
-          <div style="font-size:2em">👑</div>
-          <div class="pod-name" style="font-size:1.05em">${top1.name}</div>
-          <div class="pod-score" style="color:var(--accent);font-weight:700">${top1.score} / ${top1.maxScore} P.</div>
-          <div class="pod-block"><div class="pod-rank">#1</div></div>
-        </div>`;
-      }
-      if(top3){
-        podHtml += `<div class="pod-step pod-3">
-          <div style="font-size:1.4em">🥉</div>
-          <div class="pod-name">${top3.name}</div>
-          <div class="pod-score">${top3.score} P.</div>
-          <div class="pod-block"><div class="pod-rank">#3</div></div>
-        </div>`;
-      }
-      $("podiumArea").innerHTML = podHtml;
+      if(pct >= 81) $("soloEmoji").textContent = "👑";
+      else if(pct >= 50) $("soloEmoji").textContent = "🎯";
+      else $("soloEmoji").textContent = "💪";
+    } else {
+      // THI MULTIPLAYER
+      $("podiumBadge").textContent = "Ergebnisse · Rangliste";
+      $("podiumHeading").textContent = "Bảng Xếp Hạng Phòng Thi";
+      $("podiumSubText").textContent = `Phòng: ${curRoom.code} · ${curExam ? curExam.title : ''}`;
+      $("soloResultArea").style.display = 'none';
+      $("multiLeaderboardArea").style.display = 'block';
 
-      // Render Bảng xếp hạng chi tiết
-      $("rankTableBody").innerHTML = users.map((u, i) => {
-        const ihk = getIhkNote(u.pct);
-        const m = Math.floor(u.timeSpent / 60);
-        const s = u.timeSpent % 60;
-        const timeStr = `${m}m ${s}s`;
-        const hasPapers = Object.keys(u.answers||{}).length > 0;
-        return `<tr>
-          <td style="font-weight:800;font-size:1.1em;color:${i===0?'var(--accent)':'var(--ink)'}">#${i+1}</td>
-          <td><b>${u.name}</b> ${u.name===getMe()?'<i class="badge" style="font-size:.65em">Bạn</i>':''}</td>
-          <td><b>${u.score}</b> / ${u.maxScore} <span class="muted">(${u.pct}%)</span></td>
-          <td><span class="note-badge ${ihk.cls}">${ihk.note} · ${ihk.label}</span></td>
-          <td>${timeStr}</td>
-          <td>
-            ${hasPapers ? `<button type="button" class="btn sm ghost" onclick="window._openPaperModal('${u.name}')">📄 Xem bài</button>` : '<span class="muted">—</span>'}
-          </td>
-        </tr>`;
-      }).join('');
-    };
+      const render = (room) => {
+        const parts = room.participants || {};
+        const users = Object.values(parts).map(u => {
+          const sc = (u.score !== null) ? u.score : (u.name === getMe() ? totalScore : 0);
+          const uMax = u.maxScore || max;
+          const uPct = Math.round((sc / uMax) * 100);
+          return {
+            name: u.name,
+            score: sc,
+            maxScore: uMax,
+            pct: uPct,
+            timeSpent: u.timeSpentSec || 0,
+            answers: u.answers || {},
+            breakdown: u.breakdown || {}
+          };
+        });
 
-    render(curRoom || { participants: { [getMe()]: { name: getMe(), score: Object.values(myReviewScores).reduce((a,b)=>a+b, 0) } } });
+        users.sort((a,b) => {
+          if(b.score !== a.score) return b.score - a.score;
+          return a.timeSpent - b.timeSpent;
+        });
 
-    // Tiếp tục lắng nghe bảng xếp hạng realtime khi các bạn khác nộp bài
-    if(curRoom){
+        const top1 = users[0];
+        const top2 = users[1];
+        const top3 = users[2];
+
+        let podHtml = '';
+        if(top2){
+          podHtml += `<div class="pod-step pod-2">
+            <div style="font-size:1.5em">🥈</div>
+            <div class="pod-name">${top2.name}</div>
+            <div class="pod-score">${top2.score} P.</div>
+            <div class="pod-block"><div class="pod-rank">#2</div></div>
+          </div>`;
+        }
+        if(top1){
+          podHtml += `<div class="pod-step pod-1">
+            <div style="font-size:2em">👑</div>
+            <div class="pod-name" style="font-size:1.05em">${top1.name}</div>
+            <div class="pod-score" style="color:var(--accent);font-weight:700">${top1.score} / ${top1.maxScore} P.</div>
+            <div class="pod-block"><div class="pod-rank">#1</div></div>
+          </div>`;
+        }
+        if(top3){
+          podHtml += `<div class="pod-step pod-3">
+            <div style="font-size:1.4em">🥉</div>
+            <div class="pod-name">${top3.name}</div>
+            <div class="pod-score">${top3.score} P.</div>
+            <div class="pod-block"><div class="pod-rank">#3</div></div>
+          </div>`;
+        }
+        $("podiumArea").innerHTML = podHtml;
+
+        $("rankTableBody").innerHTML = users.map((u, i) => {
+          const noteObj = getIhkNote(u.pct);
+          const m = Math.floor(u.timeSpent / 60);
+          const s = u.timeSpent % 60;
+          const timeStr = `${m}m ${s}s`;
+          const hasPapers = Object.keys(u.answers||{}).length > 0;
+          return `<tr>
+            <td style="font-weight:800;font-size:1.1em;color:${i===0?'var(--accent)':'var(--ink)'}">#${i+1}</td>
+            <td><b>${u.name}</b> ${u.name===getMe()?'<i class="badge" style="font-size:.65em">Bạn</i>':''}</td>
+            <td><b>${u.score}</b> / ${u.maxScore} <span class="muted">(${u.pct}%)</span></td>
+            <td><span class="note-badge ${noteObj.cls}">${noteObj.note} · ${noteObj.label}</span></td>
+            <td>${timeStr}</td>
+            <td>
+              ${hasPapers ? `<button type="button" class="btn sm ghost" onclick="window._openPaperModal('${u.name}')">📄 Xem bài</button>` : '<span class="muted">—</span>'}
+            </td>
+          </tr>`;
+        }).join('');
+      };
+
+      render(curRoom);
       LearnDB.getArenaRoom(curRoom.code).then(r => { if(r && r.value) render(r.value); });
     }
   }
 
-  // Mở modal đọc bài của thí sinh
+  // Mở modal xem bài viết của thí sinh khác
   window._openPaperModal = function(name){
     if(!curRoom || !curRoom.participants) return;
     const u = curRoom.participants[name];
@@ -871,7 +1167,7 @@ label{font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercas
 
     const content = curExam.questions.map(q => {
       const userText = ans[q.id] || '(Không làm câu này)';
-      return `<div style="margin-bottom:16px;padding:12px;border:1px solid var(--line);border-radius:10px;background:#fff">
+      return `<div style="margin-bottom:16px;padding:12px;border:1.5px solid var(--line);border-radius:12px;background:#fff">
         <div style="font-weight:700;font-size:.88em;color:var(--accent);margin-bottom:4px">Câu ${q.no} · ${q.title}</div>
         <div style="font-size:.84em;color:var(--muted);margin-bottom:8px">${q.questionDe}</div>
         <div style="white-space:pre-wrap;font-size:.9em;line-height:1.6">${userText.replace(/</g,'&lt;')}</div>
@@ -880,6 +1176,69 @@ label{font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercas
 
     $("modalPaperContent").innerHTML = content;
     $("paperModal").style.display = 'flex';
+  };
+
+  // Mở modal Sổ tay lỗi sai (Fehlerbuch)
+  $("btnOpenFehlerbuch").onclick = () => {
+    const list = getFehlerbuch();
+    const container = $("fehlerbuchContent");
+
+    if(!list.length){
+      container.innerHTML = `<div style="text-align:center;padding:36px 16px;color:var(--muted)">
+        <div style="font-size:2.4em;margin-bottom:8px">📖</div>
+        <b>Sổ tay hiện đang trống!</b>
+        <p style="font-size:.88em;margin-top:4px">Khi làm bài tự luận và đối chiếu đáp án, hãy bấm nút <b>☆ Lưu vào Sổ tay ôn tập</b> để lưu lại các câu bạn muốn rèn luyện thêm.</p>
+      </div>`;
+    } else {
+      // Tìm câu hỏi trong LF_BANK
+      const allQuestions = [];
+      Object.keys(ARENA_DATA.LF_BANK).forEach(lfKey => {
+        allQuestions.push(...ARENA_DATA.LF_BANK[lfKey]);
+      });
+      // Tìm thêm trong các bộ đề IHK
+      Object.keys(ARENA_DATA.IHK_EXAMS).forEach(eKey => {
+        allQuestions.push(...ARENA_DATA.IHK_EXAMS[eKey].questions);
+      });
+
+      const matched = list.map(id => allQuestions.find(q => q.id === id)).filter(Boolean);
+
+      container.innerHTML = `<div style="margin-bottom:14px;font-size:.86em;color:var(--muted)">
+        Danh sách <b>${matched.length} câu hỏi</b> bạn đã đánh dấu để ôn lại:
+      </div>` + matched.map(q => {
+        const exp = q.explanation || {};
+        return `<div class="card" style="margin-bottom:16px;border-left:4px solid var(--accent)">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            <span class="badge">${q.no || 'Frage'} · ${q.points} P.</span>
+            <button type="button" class="btn sm ghost" onclick="window.toggleBookmarkQuestion('${q.id}');document.getElementById('btnOpenFehlerbuch').click();">
+              ✕ Xóa khỏi sổ tay
+            </button>
+          </div>
+          <div style="font-weight:700;font-size:.95em;margin-bottom:4px">${q.title}</div>
+          <p style="font-size:.9em;margin-bottom:10px">${q.questionDe} <br><i class="muted">${q.questionVi}</i></p>
+
+          <div style="background:var(--bg);padding:12px;border-radius:10px;margin-bottom:10px;font-size:.88em;line-height:1.6">
+            <b>Musterlösung:</b> <span style="color:#065F46;white-space:pre-wrap">${q.musterloesungDe}</span>
+          </div>
+
+          <div class="exp-card why-right" style="margin-top:6px;padding:10px;font-size:.84em">
+            <b>🟢 Vì sao đúng:</b> ${exp.whyCorrect || ''}
+          </div>
+          <div class="exp-card why-wrong" style="margin-top:6px;padding:10px;font-size:.84em">
+            <b>🔴 Bẫy thường gặp:</b> ${exp.whyWrong || ''}
+          </div>
+        </div>`;
+      }).join('');
+    }
+
+    $("fehlerbuchModal").style.display = 'flex';
+  };
+
+  // Làm lại đề này
+  $("btnRetakeExam").onclick = () => {
+    if(curExam){
+      const duration = Number($("durationSelect").value) || 30;
+      startSoloExam(curExam, duration);
+    }
   };
 
   $("btnBackHub").onclick = () => {
