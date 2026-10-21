@@ -8254,30 +8254,80 @@ function stripHtml(html){
     .replace(/&nbsp;/g," ").replace(/&amp;/g,"&").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&quot;/g,'"').replace(/&#0?39;/g,"'")
     .replace(/\s+/g," ").trim();
 }
+function extractHtmlSections(html){
+  if(!html) return [];
+  const sections = [];
+  const regex = /<h([2-4])[^>]*>([\s\S]*?)<\/h\1>([\s\S]*?)(?=<h[2-4]|$)/gi;
+  let m;
+  while((m = regex.exec(html)) !== null){
+    const hText = stripHtml(m[2]);
+    const bodyText = stripHtml(m[3]);
+    if(hText.length >= 3){
+      sections.push({ title: hText, text: bodyText });
+    }
+  }
+  return sections;
+}
 function idxBfk1Deep(){
   (bfk1AllItems()||[]).forEach(t=>{
     const group=(window.bfk1GroupOf&&window.bfk1GroupOf(t.id))||null;
     const route = "#/bfk/1/theme/"+t.id;
-    const html = t.content || "";
+    const html = t.content || t.theory || "";
     const plain = stripHtml(html);
+    const grpBadge = (group && (group.label || group.title)) ? (group.label || group.title).split(" ")[0] : "BfK-1";
+
+    // 1. Toàn bộ Thema (Chủ đề chính)
+    idx(t.name, "BfK-1 · "+(t.desc||""), grpBadge, route, ()=>{
+      if(typeof bfk1ThemeSetTab==='function') bfk1ThemeSetTab("theory");
+    }, "bfk1 lf6 lf9 "+t.id+" "+t.name+" "+(t.desc||"")+" "+plain,
+    group&&group.id==='extra'?['theme:full']:[]);
+
+    // 2. Từng mục con / Heading chi tiết trong bài học
+    const sections = extractHtmlSections(html);
+    sections.forEach(sec=>{
+      idx(sec.title, "Mục bài · BfK-1 · "+t.name, grpBadge, route, ()=>{
+        if(typeof bfk1ThemeSetTab==='function') bfk1ThemeSetTab("theory");
+      }, t.name+" "+sec.title+" "+sec.text,
+      group&&group.id==='extra'?['theme:full']:[]);
+    });
+
+    // 3. Toàn bộ câu hỏi Q&A (học hiểu, tình huống)
+    (t.qa||[]).forEach(q=>{
+      const isExcel = isExcelQaQuestion(q,t);
+      const qTitle = q.q || t.name;
+      const qSub = (q.qVi ? (q.qVi + " · ") : "") + "BfK-1 · " + t.name;
+      idx(qTitle, qSub, isExcel ? 'Excel-Q&A' : 'Frage', route, ()=>{
+        if(typeof bfk1ThemeSetTab==='function') bfk1ThemeSetTab("qa");
+      }, (q.q||'')+' '+(q.qVi||'')+' '+(q.a||'')+' '+(q.aVi||'')+' '+(q.why||'')+' '+(q.src||'')+' '+t.name,
+      isExcel ? (group&&group.id==='extra'?['theme:full','questionbank:excel']:['questionbank:excel']) : (group&&group.id==='extra'?['theme:full']:[]));
+    });
+
+    // 4. Từ vựng chuyên ngành Vokabeln (DE ↔ VI)
+    (t.vokabeln||[]).forEach(v=>{
+      if(!v.de) return;
+      idx(v.de, (v.vi?("VI: "+v.vi):"") + " · "+t.name, "Begriff", route, ()=>{
+        if(typeof bfk1ThemeSetTab==='function') bfk1ThemeSetTab("vokabeln");
+      }, v.de+" "+(v.vi||"")+" "+t.name+" vokabeln glossar",
+      group&&group.id==='extra'?['theme:full']:[]);
+      if(v.vi){
+        idx(v.vi, "DE: "+v.de+" · "+t.name, "Begriff", route, ()=>{
+          if(typeof bfk1ThemeSetTab==='function') bfk1ThemeSetTab("vokabeln");
+        }, v.vi+" "+v.de+" "+t.name+" dich",
+        group&&group.id==='extra'?['theme:full']:[]);
+      }
+    });
+
+    // 5. DE/VI-Begriffe từ data-de / data-vi nếu có
     const des = [...html.matchAll(/data-de="([^"]+)"/g)].map(m=>m[1]);
     const vis = [...html.matchAll(/data-vi="([^"]+)"/g)].map(m=>m[1]);
-    // Thema + voller Lehrtext (alle Stichworte suchbar)
-    idx(t.name, "BfK-1 · "+(t.desc||""), "BfK-1", route, null,
-      "bfk1 lf6 lf9 "+t.id+" "+t.name+" "+(t.desc||"")+" "+plain+" "+des.join(" ")+" "+vis.join(" "),
-      group&&group.id==='extra'?['theme:full']:[]);
-    // Excel-Q&A separat indexieren; per Manifest vor Basic/Pro verbergen.
-    (t.qa||[]).forEach(q=>{
-      if(!isExcelQaQuestion(q,t)) return;
-      idx(q.q||t.name, q.qVi||('BfK-1 · '+t.name), 'Excel-Q&A', route, null,
-        (q.q||'')+' '+(q.qVi||'')+' '+(q.a||'')+' '+(q.aVi||'')+' '+(q.why||'')+' '+(q.src||''),
-        group&&group.id==='extra'?['theme:full','questionbank:excel']:['questionbank:excel']);
-    });
-    // DE/VI-Begriffe
     des.forEach((de,i)=>{
       const vi = vis[i] || "";
-      idx(de, vi?("VI: "+vi):("BfK-1 · "+t.name), "Begriff", route, null, de+" "+vi+" "+t.name+" glossar");
-      if(vi) idx(vi, "DE: "+de, "Begriff", route, null, vi+" "+de+" dich");
+      idx(de, vi?("VI: "+vi):("BfK-1 · "+t.name), "Begriff", route, ()=>{
+        if(typeof bfk1ThemeSetTab==='function') bfk1ThemeSetTab("theory");
+      }, de+" "+vi+" "+t.name+" glossar");
+      if(vi) idx(vi, "DE: "+de, "Begriff", route, ()=>{
+        if(typeof bfk1ThemeSetTab==='function') bfk1ThemeSetTab("theory");
+      }, vi+" "+de+" dich");
     });
   });
 }
@@ -8318,7 +8368,7 @@ EXAMS.forEach(ex=>{
 // BfK-1: Themen + voller Inhalt + DE/VI-Begriffe
 idxBfk1Deep();
 
-// Standard-Form: alle Fächer / Themen / Begriffe / Quiz
+// Standard-Form: alle Fächer / Themen / Abschnitte / Begriffe / Quiz
 try{
   ensureFachRegistry();
   (window.FachForm.FAECHER||[]).filter(f=>!f.hidden).forEach(fach=>{
@@ -8326,15 +8376,55 @@ try{
       fach.code+" "+fach.name+" "+(fach.teacher||"")+" "+(fach.desc||"")+" fach");
     window.FachForm.allThemes(fach).forEach(t=>{
       const route = t.route || fachRoute(fach,'theme',t.id);
-      const plain=stripHtml(t.content||t.theory||"")+" "+((t.qa||[]).map(q=>[q.q,q.qVi,q.a,q.aVi,q.why].join(" ")).join(" "))+" "+(t.source||"")+" "+(t.desc||"");
-      const des=[...(t.content||"").matchAll(/data-de="([^"]+)"/g)].map(m=>m[1]);
-      const vis=[...(t.content||"").matchAll(/data-vi="([^"]+)"/g)].map(m=>m[1]);
-      idx(t.name, fach.code+" · "+(t.desc||""), fach.code, route, null,
-        fach.code+" "+t.name+" "+plain+" "+des.join(" ")+" "+vis.join(" "));
+      const html = t.content || t.theory || "";
+      const plain = stripHtml(html)+" "+((t.qa||[]).map(q=>[q.q,q.qVi,q.a,q.aVi,q.why].join(" ")).join(" "))+" "+(t.source||"")+" "+(t.desc||"");
+
+      // 1. Toàn bộ Thema
+      idx(t.name, fach.code+" · "+(t.desc||""), fach.code, route, ()=>{
+        if(typeof fachThemeSetTab==='function') fachThemeSetTab("theory");
+      }, fach.code+" "+t.name+" "+plain);
+
+      // 2. Từng mục con / Heading trong Thema
+      const sections = extractHtmlSections(html);
+      sections.forEach(sec=>{
+        idx(sec.title, "Mục bài · "+fach.code+" · "+t.name, fach.code, route, ()=>{
+          if(typeof fachThemeSetTab==='function') fachThemeSetTab("theory");
+        }, fach.code+" "+t.name+" "+sec.title+" "+sec.text);
+      });
+
+      // 3. Toàn bộ câu hỏi Q&A
+      (t.qa||[]).forEach(q=>{
+        const qTitle = q.q || t.name;
+        const qSub = (q.qVi ? (q.qVi + " · ") : "") + fach.code + " · " + (t.name||"");
+        idx(qTitle, qSub, 'Frage', route, ()=>{
+          if(typeof fachThemeSetTab==='function') fachThemeSetTab("qa");
+        }, (q.q||'')+' '+(q.qVi||'')+' '+(q.a||'')+' '+(q.aVi||'')+' '+(q.why||'')+' '+(q.src||'')+' '+fach.code);
+      });
+
+      // 4. Từ vựng chuyên ngành Vokabeln (DE ↔ VI)
+      (t.vokabeln||[]).forEach(v=>{
+        if(!v.de) return;
+        idx(v.de, (v.vi?("VI: "+v.vi):"") + " · " + fach.code + " · " + t.name, "Begriff", route, ()=>{
+          if(typeof fachThemeSetTab==='function') fachThemeSetTab("vokabeln");
+        }, v.de+" "+(v.vi||"")+" "+fach.code+" "+t.name+" vokabeln");
+        if(v.vi){
+          idx(v.vi, "DE: "+v.de+" · " + fach.code + " · " + t.name, "Begriff", route, ()=>{
+            if(typeof fachThemeSetTab==='function') fachThemeSetTab("vokabeln");
+          }, v.vi+" "+v.de+" "+fach.code+" "+t.name+" dich");
+        }
+      });
+
+      // 5. DE/VI Begriffe từ data-de / data-vi
+      const des=[...html.matchAll(/data-de="([^"]+)"/g)].map(m=>m[1]);
+      const vis=[...html.matchAll(/data-vi="([^"]+)"/g)].map(m=>m[1]);
       des.forEach((de,i)=>{
         const vi=vis[i]||"";
-        idx(de, vi?("VI: "+vi):(fach.code+" · "+t.name), "Begriff", route, null, de+" "+vi+" "+fach.code);
-        if(vi) idx(vi, "DE: "+de, "Begriff", route, null, vi+" "+de);
+        idx(de, vi?("VI: "+vi):(fach.code+" · "+t.name), "Begriff", route, ()=>{
+          if(typeof fachThemeSetTab==='function') fachThemeSetTab("theory");
+        }, de+" "+vi+" "+fach.code);
+        if(vi) idx(vi, "DE: "+de, "Begriff", route, ()=>{
+          if(typeof fachThemeSetTab==='function') fachThemeSetTab("theory");
+        }, vi+" "+de);
       });
     });
     (fach.quiz||[]).forEach(q=>{
@@ -8550,49 +8640,91 @@ function scoreHit(it, terms, q){
   return sc;
 }
 
-/* Deep-scroll helper: after navigating, scroll to first element containing the keyword and highlight */
-function deepScrollToKeyword(terms){
-  if(!terms||!terms.length) return;
-  let tries=0;
-  const tryScroll=()=>{
+/* Deep-scroll helper: sau khi chuyển trang, cuộn mượt đến đúng mục/từ khóa và highlight vàng */
+function deepScrollToKeyword(terms, targetTitle){
+  if((!terms || !terms.length) && !targetTitle) return;
+  const nTarget = norm(targetTitle || "");
+  let tries = 0;
+
+  const tryScroll = () => {
     tries++;
-    const view=document.querySelector('.view.active')||document.body;
-    const walker=document.createTreeWalker(view,NodeFilter.SHOW_TEXT,null,false);
-    let found=null;
-    while(walker.nextNode()){
-      const n=walker.currentNode;
-      const p=n.parentElement;
-      if(!p || ['SCRIPT','STYLE','NOSCRIPT','TEMPLATE'].includes(p.tagName)) continue;
-      const txt=norm(n.textContent||"");
-      if(terms.some(t=>t.length>=2 && txt.includes(t))){
-        found=p;
-        break;
+    const activeView = document.querySelector('.view.active');
+    // Ưu tiên tìm trong vùng nội dung bài học, tránh menu/header/breadcrumb ở trên
+    const container = (activeView && (
+      activeView.querySelector('#b1TabPanel') ||
+      activeView.querySelector('#fachTabPanel') ||
+      activeView.querySelector('.theme-body') ||
+      activeView.querySelector('.content') ||
+      activeView.querySelector('.card') ||
+      activeView
+    )) || document.body;
+
+    let found = null;
+
+    // Chiến lược 1: Tìm theo tiêu đề mục con / heading / hàng bảng / thẻ câu hỏi
+    if(nTarget && nTarget.length >= 3){
+      const candidates = container.querySelectorAll('h1, h2, h3, h4, h5, tr, th, td, dt, dd, b, strong, summary, .qa-q, .card');
+      for(const el of candidates){
+        const txt = norm(el.textContent || "");
+        if(txt && (txt.includes(nTarget) || (nTarget.includes(txt) && txt.length >= 6))){
+          found = el;
+          break;
+        }
       }
     }
+
+    // Chiến lược 2: Duyệt tìm đoạn văn chứa các từ khóa trong vùng nội dung
+    if(!found && terms && terms.length){
+      const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, null, false);
+      while(walker.nextNode()){
+        const n = walker.currentNode;
+        const p = n.parentElement;
+        if(!p || ['SCRIPT','STYLE','NOSCRIPT','TEMPLATE','BUTTON'].includes(p.tagName)) continue;
+        if(p.closest('#crumbs') || p.closest('.header') || p.closest('.theme-status-bar') || p.closest('.tabs')) continue;
+        const txt = norm(n.textContent || "");
+        if(terms.some(t => t.length >= 2 && txt.includes(t))){
+          found = p;
+          break;
+        }
+      }
+    }
+
     if(found){
-      const dt=found.closest('details');
-      if(dt) dt.open=true;
-      document.querySelectorAll('._dshl').forEach(el=>{
+      // Tự mở details nếu đang bị ẩn
+      const dt = found.closest('details');
+      if(dt) dt.open = true;
+
+      // Xóa highlight cũ
+      document.querySelectorAll('._dshl').forEach(el => {
         el.classList.remove('_dshl');
         el.style.removeProperty('background');
+        el.style.removeProperty('box-shadow');
         el.style.removeProperty('border-radius');
-        el.style.removeProperty('outline');
         el.style.removeProperty('transition');
       });
+
+      // Highlight màu vàng ấm Parchment nổi bật và cuộn vào giữa màn hình
       found.classList.add('_dshl');
-      found.style.background='rgba(255,213,128,0.55)';
-      found.style.borderRadius='4px';
-      found.style.outline='2px solid rgba(180,83,9,0.4)';
-      found.style.transition='background 1s ease, outline 1s ease';
-      found.scrollIntoView({behavior:'smooth',block:'center'});
-      setTimeout(()=>{
-        if(found){ found.style.background=''; found.style.outline=''; found.classList.remove('_dshl'); }
-      },3000);
+      found.style.background = 'rgba(255, 213, 128, 0.65)';
+      found.style.boxShadow = '0 0 0 3px rgba(180, 83, 9, 0.45)';
+      found.style.borderRadius = '6px';
+      found.style.transition = 'background 1.5s ease, box-shadow 1.5s ease';
+      found.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      setTimeout(() => {
+        if(found){
+          found.style.background = '';
+          found.style.boxShadow = '';
+          found.classList.remove('_dshl');
+        }
+      }, 3500);
       return;
     }
-    if(tries<7) setTimeout(tryScroll,300);
+
+    if(tries < 8) setTimeout(tryScroll, 250);
   };
-  setTimeout(tryScroll,250);
+
+  setTimeout(tryScroll, 180);
 }
 
 /* Volltext: statische Seiten (Views) + externe HTML-Seiten (js/search-pages-data.js) */
@@ -8764,13 +8896,14 @@ function pickHit(i){
   if(qVal) saveRecentSearch(qVal);
   sBox.classList.remove("show"); sInput.blur();
   const terms=norm(qVal).split(/\s+/).filter(Boolean);
+  const targetTitle = h.title || qVal;
   const doDeepScroll=()=>{
-    if(typeof deepScrollToKeyword==='function') deepScrollToKeyword(terms);
+    if(typeof deepScrollToKeyword==='function') deepScrollToKeyword(terms, targetTitle);
   };
   if(h.route && !String(h.route).startsWith("#")){ location.href=h.route; return; }
   go(h.route);
-  if(h.action) setTimeout(()=>{ h.action(); setTimeout(doDeepScroll,400); },180);
-  else setTimeout(doDeepScroll,400);
+  if(h.action) setTimeout(()=>{ h.action(); setTimeout(doDeepScroll,300); },180);
+  else setTimeout(doDeepScroll,350);
 }
 sInput.addEventListener("input",()=>runSearch(sInput.value));
 sInput.addEventListener("keydown",e=>{
@@ -9318,13 +9451,15 @@ function initSearchSheet(){
         const i=+el.getAttribute('data-si'); const h=hits[i]; if(!h) return;
         if(typeof saveRecentSearch==='function') saveRecentSearch(q0.trim());
         hide();
+        const terms = norm(q0).split(/\s+/).filter(Boolean);
+        const targetTitle = h.title || q0;
         const doDeepScroll=()=>{
-          if(typeof deepScrollToKeyword==='function') deepScrollToKeyword(terms);
+          if(typeof deepScrollToKeyword==='function') deepScrollToKeyword(terms, targetTitle);
         };
         if(h.route&&!String(h.route).startsWith('#')){ location.href=h.route; return; }
         go(h.route);
-        if(h.action) setTimeout(()=>{ h.action(); setTimeout(doDeepScroll,400); },180);
-        else setTimeout(doDeepScroll,400);
+        if(h.action) setTimeout(()=>{ h.action(); setTimeout(doDeepScroll,300); },180);
+        else setTimeout(doDeepScroll,350);
       });
     });
   }
