@@ -664,6 +664,10 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 #searchSheet .res .t{font-weight:600;font-size:.92em;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 #searchSheet .res .s{font-size:.77em;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 #searchSheet mark.sh-mark{background:#FFD580;color:#7A3E00;font-weight:700;padding:0 2px;border-radius:3px}
+#searchSheet .sh-filter-bar{display:flex;flex-wrap:wrap;gap:6px;padding:10px 14px 8px;border-bottom:1px solid var(--line);background:var(--surface);flex-shrink:0}
+#searchSheet .sh-filter-chip{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border:1.5px solid var(--line);border-radius:999px;font-size:.76em;font-weight:600;color:var(--muted);background:var(--bg);cursor:pointer;transition:all .15s;-webkit-tap-highlight-color:transparent;white-space:nowrap}
+#searchSheet .sh-filter-chip.active{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+#searchSheet .sh-filter-chip:hover{border-color:var(--accent);color:var(--accent)}
 
 @media (max-width:640px){
   #searchSheet{padding:0 !important;margin:0 !important}
@@ -5218,6 +5222,12 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
       </div>
       <button type="button" class="sheet-close" id="searchSheetClose">Schließen</button>
     </div>
+    <div class="sh-filter-bar" id="searchSheetFilterBar" style="display:none">
+      <button type="button" class="sh-filter-chip active" data-filter="all">Tất cả</button>
+      <button type="button" class="sh-filter-chip" data-filter="fach">📚 Nội dung</button>
+      <button type="button" class="sh-filter-chip" data-filter="quiz">📝 Quiz</button>
+      <button type="button" class="sh-filter-chip" data-filter="begriff">🔤 Từ vựng</button>
+    </div>
     <div class="sheet-body" id="searchSheetBody">
       <div class="empty-state"><div class="big-ic">🔍</div>Tippe einen Begriff, um alles zu durchsuchen.</div>
     </div>
@@ -8532,7 +8542,53 @@ function scoreHit(it, terms, q){
   });
   // prefer shorter exact-ish titles
   sc += Math.max(0, 20 - Math.min(20, title.length/3));
+  // Deprioritize pure Quiz, boost content types
+  const badge=(it.badge||"").toLowerCase();
+  if(badge==="quiz") sc -= 20;
+  if(badge==="begriff") sc += 8;
+  if(["bfk-1","bfk-2","lf1","lf2","lf3","lf4","lf5","lf6","lf7","lf8","lf9","lf10","seite","ka","gap","pr\u00FCfung"].includes(badge)) sc += 10;
   return sc;
+}
+
+/* Deep-scroll helper: after navigating, scroll to first element containing the keyword and highlight */
+function deepScrollToKeyword(terms){
+  if(!terms||!terms.length) return;
+  let tries=0;
+  const tryScroll=()=>{
+    tries++;
+    const view=document.querySelector('.view.active')||document.body;
+    const walker=document.createTreeWalker(view,NodeFilter.SHOW_TEXT,null,false);
+    let found=null;
+    while(walker.nextNode()){
+      const n=walker.currentNode;
+      const txt=norm(n.textContent||"");
+      if(terms.some(t=>t.length>=3&&txt.includes(t))){
+        found=n.parentElement;
+        break;
+      }
+    }
+    if(found){
+      document.querySelectorAll('._dshl').forEach(el=>{
+        el.classList.remove('_dshl');
+        el.style.removeProperty('background');
+        el.style.removeProperty('border-radius');
+        el.style.removeProperty('outline');
+        el.style.removeProperty('transition');
+      });
+      found.classList.add('_dshl');
+      found.style.background='rgba(255,213,128,0.55)';
+      found.style.borderRadius='4px';
+      found.style.outline='2px solid rgba(180,83,9,0.4)';
+      found.style.transition='background 1s ease, outline 1s ease';
+      found.scrollIntoView({behavior:'smooth',block:'center'});
+      setTimeout(()=>{
+        if(found){ found.style.background=''; found.style.outline=''; found.classList.remove('_dshl'); }
+      },3000);
+      return;
+    }
+    if(tries<7) setTimeout(tryScroll,300);
+  };
+  setTimeout(tryScroll,250);
 }
 
 /* Volltext: statische Seiten (Views) + externe HTML-Seiten (js/search-pages-data.js) */
@@ -9067,13 +9123,56 @@ function initSearchSheet(){
   const body=document.getElementById('searchSheetBody');
   const close=document.getElementById('searchSheetClose');
   const clearBtn=document.getElementById('searchSheetClear');
+  const filterBar=document.getElementById('searchSheetFilterBar');
   if(!toggle||!sheet||!input||!body) return;
+
+  // Filter state: set of active filters, empty = all
+  let activeFilters=new Set(); // empty = show all
+
+  function getFilteredHits(allHits){
+    if(!activeFilters.size) return allHits;
+    return allHits.filter(h=>{
+      const badge=(h.badge||"").toLowerCase();
+      if(activeFilters.has('quiz')) return badge==='quiz';
+      if(activeFilters.has('begriff')) return badge==='begriff'||badge==='excel-q&a';
+      if(activeFilters.has('fach')) return badge!=='quiz'&&badge!=='begriff'&&badge!=='excel-q&a';
+      return true;
+    });
+  }
+
+  function updateFilterChips(){
+    if(!filterBar) return;
+    filterBar.querySelectorAll('.sh-filter-chip').forEach(chip=>{
+      const f=chip.getAttribute('data-filter');
+      if(f==='all'){
+        chip.classList.toggle('active',!activeFilters.size);
+      } else {
+        chip.classList.toggle('active',activeFilters.has(f));
+      }
+    });
+  }
+
+  if(filterBar){
+    filterBar.querySelectorAll('.sh-filter-chip').forEach(chip=>{
+      chip.addEventListener('click',()=>{
+        const f=chip.getAttribute('data-filter');
+        if(f==='all'){
+          activeFilters.clear();
+        } else {
+          if(activeFilters.has(f)) activeFilters.delete(f);
+          else { activeFilters.clear(); activeFilters.add(f); }
+        }
+        updateFilterChips();
+        renderSheetResults(input.value);
+      });
+    });
+  }
 
   const open=()=>{
     sheet.classList.add('show');
     sheet.setAttribute('aria-hidden','false');
     document.body.style.overflow='hidden';
-    const pb = document.getElementById('pwaBanner');
+    const pb=document.getElementById('pwaBanner');
     if(pb) pb.style.display='none';
     document.querySelectorAll('.timer-bubble').forEach(b=>{ b.dataset.prevDisp=b.style.display; b.style.display='none'; });
     setTimeout(()=>{ try{ input.focus(); }catch(_){} }, 60);
@@ -9083,15 +9182,16 @@ function initSearchSheet(){
     sheet.classList.remove('show');
     sheet.setAttribute('aria-hidden','true');
     document.body.style.overflow='';
-    const pb = document.getElementById('pwaBanner');
-    if(pb && pb.classList.contains('show')) pb.style.display='block';
+    const pb=document.getElementById('pwaBanner');
+    if(pb&&pb.classList.contains('show')) pb.style.display='block';
     document.querySelectorAll('.timer-bubble').forEach(b=>{ b.style.display=b.dataset.prevDisp||''; });
     input.value='';
     if(clearBtn) clearBtn.style.display='none';
+    if(filterBar) filterBar.style.display='none';
   };
 
   toggle.addEventListener('click', open);
-  close && close.addEventListener('click', hide);
+  close&&close.addEventListener('click', hide);
   sheet.addEventListener('click', e=>{ if(e.target===sheet) hide(); });
 
   if(clearBtn){
@@ -9104,7 +9204,7 @@ function initSearchSheet(){
   }
 
   input.addEventListener('input', ()=>{
-    if(clearBtn) clearBtn.style.display = input.value ? 'flex' : 'none';
+    if(clearBtn) clearBtn.style.display=input.value?'flex':'none';
     renderSheetResults(input.value);
   });
 
@@ -9115,39 +9215,39 @@ function initSearchSheet(){
   function renderSheetResults(q0){
     const q=norm(q0).trim();
     if(!q){
-      const recents = (typeof getRecentSearches==='function') ? getRecentSearches() : [];
-      let quickHtml = '<div class="sh-quick" style="border:none;background:transparent;padding:14px 16px">';
-      if(recents.length > 0){
-        quickHtml += '<div class="sh-section" style="margin-bottom:14px">'
-          + '<div class="sh-head" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;font-size:.82em;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em">'
-          + '<span>🕒 Gần đây</span><button type="button" class="sh-clear" id="mClearRecents" style="border:none;background:none;color:var(--accent);font-size:.9em;cursor:pointer">Xóa</button></div>'
-          + '<div class="sh-chips" style="display:flex;flex-wrap:wrap;gap:8px">'
-          + recents.map(r => `<span class="sh-chip" data-mq="${escHtml(r)}" style="display:inline-flex;align-items:center;padding:6px 12px;background:var(--bg);border:1px solid var(--line);border-radius:999px;font-size:.84em;color:var(--ink);cursor:pointer">🕒 ${escHtml(r)}</span>`).join('')
-          + '</div></div>';
+      if(filterBar) filterBar.style.display='none';
+      const recents=(typeof getRecentSearches==='function')?getRecentSearches():[];
+      let quickHtml='<div class="sh-quick" style="border:none;background:transparent;padding:14px 16px">';
+      if(recents.length>0){
+        quickHtml+='<div class="sh-section" style="margin-bottom:14px">'
+          +'<div class="sh-head" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;font-size:.82em;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em">'
+          +'<span>🕒 Gần đây</span><button type="button" class="sh-clear" id="mClearRecents" style="border:none;background:none;color:var(--accent);font-size:.9em;cursor:pointer">Xóa</button></div>'
+          +'<div class="sh-chips" style="display:flex;flex-wrap:wrap;gap:8px">'
+          +recents.map(r=>`<span class="sh-chip" data-mq="${escHtml(r)}" style="display:inline-flex;align-items:center;padding:6px 12px;background:var(--bg);border:1px solid var(--line);border-radius:999px;font-size:.84em;color:var(--ink);cursor:pointer">🕒 ${escHtml(r)}</span>`).join('')
+          +'</div></div>';
       }
-      if(Array.isArray(window.HOT_TAGS) && window.HOT_TAGS.length > 0){
-        quickHtml += '<div class="sh-section">'
-          + '<div class="sh-head" style="margin-bottom:8px;font-size:.82em;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em"><span>🔥 Chủ đề học nhanh</span></div>'
-          + '<div class="sh-chips" style="display:flex;flex-wrap:wrap;gap:8px">'
-          + window.HOT_TAGS.map(t => `<span class="sh-chip" data-mq="${escHtml(t.q)}" style="display:inline-flex;align-items:center;padding:6px 12px;background:var(--bg);border:1px solid var(--line);border-radius:999px;font-size:.84em;color:var(--ink);cursor:pointer">${t.icon} ${escHtml(t.label)}</span>`).join('')
-          + '</div></div>';
+      if(Array.isArray(window.HOT_TAGS)&&window.HOT_TAGS.length>0){
+        quickHtml+='<div class="sh-section">'
+          +'<div class="sh-head" style="margin-bottom:8px;font-size:.82em;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em"><span>🔥 Chủ đề học nhanh</span></div>'
+          +'<div class="sh-chips" style="display:flex;flex-wrap:wrap;gap:8px">'
+          +window.HOT_TAGS.map(t=>`<span class="sh-chip" data-mq="${escHtml(t.q)}" style="display:inline-flex;align-items:center;padding:6px 12px;background:var(--bg);border:1px solid var(--line);border-radius:999px;font-size:.84em;color:var(--ink);cursor:pointer">${t.icon} ${escHtml(t.label)}</span>`).join('')
+          +'</div></div>';
       }
-      quickHtml += '</div>';
-      body.innerHTML = quickHtml;
-
-      const clearBtnEl = body.querySelector('#mClearRecents');
+      quickHtml+='</div>';
+      body.innerHTML=quickHtml;
+      const clearBtnEl=body.querySelector('#mClearRecents');
       if(clearBtnEl){
-        clearBtnEl.addEventListener('click', (e)=>{
+        clearBtnEl.addEventListener('click',(e)=>{
           e.stopPropagation();
           try{ localStorage.removeItem('azubi_recent_searches'); }catch(_){}
           renderSheetResults('');
         });
       }
       body.querySelectorAll('.sh-chip[data-mq]').forEach(chip=>{
-        chip.addEventListener('click', ()=>{
-          const qVal = chip.getAttribute('data-mq') || '';
-          input.value = qVal;
-          if(clearBtn) clearBtn.style.display = 'flex';
+        chip.addEventListener('click',()=>{
+          const qVal=chip.getAttribute('data-mq')||'';
+          input.value=qVal;
+          if(clearBtn) clearBtn.style.display='flex';
           input.focus();
           renderSheetResults(qVal);
         });
@@ -9155,34 +9255,43 @@ function initSearchSheet(){
       return;
     }
 
+    // Show filter bar when there are search results
+    if(filterBar) filterBar.style.display='flex';
+
     const terms=q.split(/\s+/).filter(Boolean);
-    const hits=INDEX
+    const allHits=INDEX
       .filter(it=>!(it.features||[]).some(f=>window.Access&&!Access.can(f)))
-      .filter(it=>terms.every(t=>(it.hay||'').includes(t) || norm(it.raw||'').includes(t)))
-      .map(it=>({it, sc:scoreHit(it,terms,q)}))
+      .filter(it=>terms.every(t=>(it.hay||'').includes(t)||norm(it.raw||'').includes(t)))
+      .map(it=>({it,sc:scoreHit(it,terms,q)}))
       .sort((a,b)=>b.sc-a.sc)
-      .slice(0,80)
+      .slice(0,120)
       .map(x=>x.it);
+
+    const hits=getFilteredHits(allHits);
 
     if(!hits.length){
       body.innerHTML='<div class="empty-state" style="padding:36px 16px;text-align:center;color:var(--muted)"><div class="big-ic" style="font-size:2em;margin-bottom:8px">😕</div>Không tìm thấy kết quả cho „'+escHtml(q0)+'“.</div>';
       return;
     }
 
-    const hitCountHtml = '<div style="padding:10px 14px 6px;font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid var(--line);background:var(--surface)">'
-      + hits.length + ' kết quả' + (hits.length>=80?' (Top 80)':'') + '</div>';
+    const totalAll=allHits.length;
+    const hitCountHtml='<div style="padding:10px 14px 6px;font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid var(--line);background:var(--surface)">'
+      +hits.length+' kết quả'+(totalAll>=120?' (Top 120)':'')+'</div>';
 
-    body.innerHTML = hitCountHtml + hits.map((h,i)=>{
-      const tHl = (typeof highlightMatch==='function') ? highlightMatch(escHtml(h.title||''), terms) : escHtml(h.title||'');
-      const sHl = (typeof highlightMatch==='function') ? highlightMatch(escHtml(h.sub||''), terms) : escHtml(h.sub||'');
-      const badgeText = escHtml(h.badge || 'LERNEN');
-      return '<div class="res" data-si="'+i+'" style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line);width:100%;box-sizing:border-box;color:var(--ink);background:var(--surface);cursor:pointer">'
-        + '<span class="badge" style="flex-shrink:0;font-size:.7em;font-weight:700;padding:2.5px 7px;border-radius:6px;background:var(--bg);color:var(--accent);border:1px solid var(--line);white-space:nowrap;text-transform:uppercase;letter-spacing:.03em">'+badgeText+'</span>'
-        + '<div class="txt" style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;overflow:hidden">'
-        + '<div class="t" style="font-weight:600;font-size:.94em;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%">'+tHl+'</div>'
-        + (sHl ? '<div class="s" style="font-size:.78em;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%">'+sHl+'</div>' : '')
-        + '</div>'
-        + '</div>';
+    body.innerHTML=hitCountHtml+hits.map((h,i)=>{
+      const tHl=(typeof highlightMatch==='function')?highlightMatch(escHtml(h.title||''),terms):escHtml(h.title||'');
+      const sHl=(typeof highlightMatch==='function')?highlightMatch(escHtml(h.sub||''),terms):escHtml(h.sub||'');
+      const sn=(typeof makeSnippet==='function')?makeSnippet(h,terms):'';
+      const snHtml=sn?'<div style="font-size:.8em;color:var(--muted);margin-top:3px;white-space:normal;line-height:1.4;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical">'+(typeof highlightMatch==='function'?highlightMatch(escHtml(sn),terms):escHtml(sn))+'</div>':'';
+      const badgeText=escHtml(h.badge||'LERNEN');
+      return '<div class="res" data-si="'+i+'" style="display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line);width:100%;box-sizing:border-box;color:var(--ink);background:var(--surface);cursor:pointer">'
+        +'<span class="badge" style="flex-shrink:0;margin-top:2px;font-size:.7em;font-weight:700;padding:2.5px 7px;border-radius:6px;background:var(--bg);color:var(--accent);border:1px solid var(--line);white-space:nowrap;text-transform:uppercase;letter-spacing:.03em">'+badgeText+'</span>'
+        +'<div class="txt" style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;overflow:hidden">'
+        +'<div class="t" style="font-weight:600;font-size:.94em;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%">'+tHl+'</div>'
+        +(sHl?'<div class="s" style="font-size:.78em;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%">'+sHl+'</div>':'')
+        +snHtml
+        +'</div>'
+        +'</div>';
     }).join('');
 
     body.querySelectorAll('.res[data-si]').forEach(el=>{
@@ -9190,9 +9299,13 @@ function initSearchSheet(){
         const i=+el.getAttribute('data-si'); const h=hits[i]; if(!h) return;
         if(typeof saveRecentSearch==='function') saveRecentSearch(q0.trim());
         hide();
-        if(h.route && !String(h.route).startsWith('#')){ location.href=h.route; return; }
+        const doDeepScroll=()=>{
+          if(typeof deepScrollToKeyword==='function') deepScrollToKeyword(terms);
+        };
+        if(h.route&&!String(h.route).startsWith('#')){ location.href=h.route; return; }
         go(h.route);
-        if(h.action) setTimeout(h.action,180);
+        if(h.action) setTimeout(()=>{ h.action(); setTimeout(doDeepScroll,400); },180);
+        else setTimeout(doDeepScroll,400);
       });
     });
   }
