@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#B45309">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./images/icons/apple-touch-icon.png">
+<title>Prüfungs-Arena · AzubiHub</title>
+<style>
+:root{
+  --bg:#F7F4EE; --surface:#FFFDF9; --card:#FFFFFF; --ink:#2B2520; --muted:#7C7267; --line:#E6DFD3;
+  --accent:#B45309; --accent-soft:rgba(180,83,9,0.08); --ok:#2D7A46; --okbg:#EDF7EE; --bad:#991B1B; --badbg:#FEF2F2;
+  --warn:#D97706; --warnbg:#FFFBEB;
+  --shadow:0 1px 3px rgba(43,37,32,.04),0 8px 24px rgba(43,37,32,.07);
+  --safe-top:env(safe-area-inset-top,0px);
+  --safe-bottom:env(safe-area-inset-bottom,0px);
+  --font-serif:"Charter","Bitstream Charter","Iowan Old Style","Georgia",serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.55;min-height:100vh;-webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:880px;margin:0 auto;padding:calc(16px + var(--safe-top)) 16px calc(36px + var(--safe-bottom))}
+.top-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.brand{font-weight:700;display:flex;align-items:center;gap:8px;font-size:1.05em;color:var(--ink);text-decoration:none}
+.brand span{color:var(--accent)}
+.back-link{color:var(--muted);font-size:.86em;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:4px}
+.back-link:hover{color:var(--accent)}
+.nick-tag{font-size:.82em;font-weight:600;color:var(--accent);background:var(--accent-soft);border:1px solid var(--line);border-radius:999px;padding:4px 12px;cursor:pointer}
+
+.card{background:var(--surface);border:1.5px solid var(--line);border-radius:18px;padding:22px;margin-bottom:16px;box-shadow:var(--shadow)}
+h1{font-family:var(--font-serif);font-size:1.6em;font-weight:700;letter-spacing:-.01em;margin-bottom:6px;color:var(--ink)}
+h2{font-size:1.15em;font-weight:700;margin-bottom:10px;color:var(--ink)}
+h3{font-size:.95em;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin-bottom:8px}
+.muted{color:var(--muted);font-size:.88em}
+.btn{
+  border:none;background:var(--accent);color:#fff;border-radius:12px;padding:12px 18px;font:inherit;font-weight:600;
+  cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:all .15s;-webkit-tap-highlight-color:transparent;
+}
+.btn:hover{filter:brightness(1.08)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn.ghost{background:var(--surface);color:var(--ink);border:1.5px solid var(--line)}
+.btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn.block{width:100%}
+.btn.ok{background:var(--ok)}
+.btn.sm{padding:7px 12px;font-size:.84em;border-radius:8px}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.row .btn{flex:1;min-width:140px}
+
+input[type=text], select{
+  width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;font:inherit;background:#fff;color:var(--ink);margin:6px 0 14px;
+}
+input:focus, select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(180,83,9,.12)}
+label{font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+
+.code-box{
+  font-size:2.2em;font-weight:800;letter-spacing:.18em;text-align:center;padding:14px;background:var(--accent-soft);
+  border:1.5px dashed var(--accent);border-radius:14px;margin:12px 0;color:var(--accent);user-select:all;
+}
+.badge{
+  display:inline-flex;align-items:center;padding:3px 8px;border-radius:6px;font-size:.7em;font-weight:700;
+  background:var(--bg);border:1px solid var(--line);color:var(--accent);text-transform:uppercase;letter-spacing:.03em;
+}
+.hidden{display:none!important}
+.err{display:none;background:var(--badbg);color:var(--bad);border:1px solid rgba(153,27,27,.2);border-radius:12px;padding:10px 14px;font-size:.88em;margin:10px 0}
+.err.show{display:block}
+
+/* Exam Screen */
+.timer-banner{
+  position:sticky;top:0;z-index:100;background:var(--surface);border-bottom:1.5px solid var(--line);padding:10px 16px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;margin:-22px -22px 18px;border-radius:16px 16px 0 0;
+}
+.timer-digits{font-family:monospace;font-size:1.35em;font-weight:800;color:var(--accent);display:inline-flex;align-items:center;gap:6px}
+.q-nav{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 16px}
+.q-pill{
+  width:36px;height:36px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);font-size:.85em;font-weight:700;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .12s;color:var(--muted);
+}
+.q-pill.active{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.q-pill.filled{border-color:var(--ok);color:var(--ok);background:var(--okbg)}
+.q-pill.marked{border-color:var(--warn);color:var(--warn);background:var(--warnbg)}
+
+.q-box{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:18px;margin-bottom:16px}
+.q-title{font-size:1.05em;font-weight:700;margin-bottom:8px;color:var(--ink);line-height:1.4}
+.q-vi{font-size:.88em;color:var(--muted);font-style:italic;margin-bottom:14px;line-height:1.5}
+.q-textarea{
+  width:100%;min-height:140px;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;font:inherit;line-height:1.6;
+  resize:vertical;background:#fff;box-sizing:border-box;color:var(--ink);
+}
+.q-textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(180,83,9,.12)}
+.word-counter{font-size:.78em;color:var(--muted);text-align:right;margin-top:4px}
+
+/* Review / Comparison Split View */
+.split-view{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+@media (max-width: 640px){.split-view{grid-template-columns:1fr}}
+.split-col{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:14px;box-sizing:border-box}
+.split-head{font-size:.8em;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--muted);margin-bottom:8px;display:flex;justify-content:space-between}
+.ans-text{font-size:.92em;line-height:1.65;white-space:pre-wrap;color:var(--ink)}
+
+/* Explanation Modules */
+.exp-card{border-radius:12px;padding:14px;margin-top:12px;font-size:.9em;line-height:1.6}
+.exp-card.why-right{background:var(--okbg);border:1.5px solid rgba(45,122,70,.25);color:#1c4d2d}
+.exp-card.why-wrong{background:var(--badbg);border:1.5px solid rgba(153,27,27,.25);color:#701212}
+.exp-card.takeaway{background:var(--warnbg);border:1.5px solid rgba(217,119,6,.25);color:#78350f}
+.exp-head{font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+
+/* Podium & Leaderboard */
+.podium{display:flex;align-items:flex-end;justify-content:center;gap:12px;margin:28px 0 20px;padding:0 10px}
+.pod-step{display:flex;flex-direction:column;align-items:center;flex:1;max-width:140px;text-align:center}
+.pod-block{width:100%;background:var(--surface);border:1.5px solid var(--line);border-bottom:none;border-radius:14px 14px 0 0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 6px;box-shadow:var(--shadow)}
+.pod-1 .pod-block{height:140px;background:linear-gradient(to top, rgba(255,213,128,0.2), #fff);border-color:var(--accent)}
+.pod-2 .pod-block{height:105px}
+.pod-3 .pod-block{height:80px}
+.pod-rank{font-size:1.6em;font-weight:800;color:var(--accent)}
+.pod-name{font-weight:700;font-size:.88em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;margin-top:2px}
+.pod-score{font-size:.8em;color:var(--muted);font-weight:600}
+
+.rank-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.9em}
+.rank-table th{text-align:left;padding:10px 12px;border-bottom:2px solid var(--line);font-size:.78em;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.rank-table td{padding:12px;border-bottom:1px solid var(--line);vertical-align:middle}
+.rank-table tr:hover td{background:var(--accent-soft)}
+.note-badge{padding:2px 8px;border-radius:6px;font-weight:700;font-size:.82em;display:inline-block}
+.note-1{background:#D1FAE5;color:#065F46}
+.note-2{background:#DBEAFE;color:#1E40AF}
+.note-3{background:#FEF3C7;color:#92400E}
+.note-4{background:#FEE2E2;color:#991B1B}
+
+.checklist-item{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px dashed var(--line);cursor:pointer;user-select:none;font-size:.88em}
+.checklist-item:last-child{border-bottom:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- TOP BAR -->
+  <header class="top-bar">
+    <a href="./" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      AzubiHub <span>· Prüfungs-Arena</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:8px">
+      <span class="nick-tag" id="nickDisplay" title="Tên người dùng">Azubi</span>
+      <a href="./" class="back-link">← Fächer</a>
+    </div>
+  </header>
+
+  <div id="errBox" class="err"></div>
+
+  <!-- VIEW 1: HUB (Tạo / Vào phòng thi) -->
+  <section id="view-hub">
+    <div class="card">
+      <span class="badge">Live Multiplayer</span>
+      <h1 style="margin-top:6px">Phòng thi tự luận chung</h1>
+      <p class="muted">Cùng nhau làm đề thi tự luận thật (*Klassenarbeit & IHK*), đếm ngược đồng bộ, đối chiếu đáp án mẫu chi tiết và xếp hạng vinh danh.</p>
+
+      <div style="margin:20px 0 16px">
+        <label for="examSelect">Chọn đề thi tự luận:</label>
+        <select id="examSelect"></select>
+      </div>
+
+      <div class="row">
+        <div style="flex:1;min-width:200px">
+          <label for="durationSelect">Thời gian làm bài:</label>
+          <select id="durationSelect">
+            <option value="15">⏱️ 15 phút (Luyện tập nhanh)</option>
+            <option value="30" selected>⏱️ 30 phút (Tiêu chuẩn đề thi)</option>
+            <option value="45">⏱️ 45 phút (Đầy đủ theo trường)</option>
+            <option value="60">⏱️ 60 phút (Chuyên sâu)</option>
+          </select>
+        </div>
+        <div style="flex:1;min-width:200px">
+          <label for="nicknameInput">Tên của bạn:</label>
+          <input type="text" id="nicknameInput" placeholder="Nhập tên / Nickname..." maxlength="20">
+        </div>
+      </div>
+
+      <div class="row" style="margin-top:8px">
+        <button type="button" class="btn" id="btnCreateRoom" style="flex:1.5">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Tạo phòng thi mới (Host)
+        </button>
+      </div>
+    </div>
+
+    <!-- BOX VÀO PHÒNG CÓ SẴN BẰNG PIN -->
+    <div class="card">
+      <h2>Vào phòng thi của bạn bè</h2>
+      <p class="muted">Nhập mã phòng 5 chữ số do Host chia sẻ để cùng tham gia thi.</p>
+      <div class="row" style="margin-top:10px">
+        <input type="text" id="joinCodeInput" placeholder="Mã PIN (Ví dụ: 8K9B2)" maxlength="8" style="text-transform:uppercase;font-weight:700;letter-spacing:.1em;margin-bottom:0">
+        <button type="button" class="btn ghost" id="btnJoinRoom">Vào phòng →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIEW 2: LOBBY (Sảnh chờ thí sinh) -->
+  <section id="view-lobby" class="hidden">
+    <div class="card" style="text-align:center">
+      <span class="badge">Sảnh chờ thí sinh</span>
+      <h1 id="lobbyExamTitle" style="margin:8px 0 4px">Klassenarbeit</h1>
+      <p id="lobbyExamSub" class="muted">Đang đợi các thí sinh vào phòng...</p>
+
+      <div class="code-box" id="lobbyRoomCode">-----</div>
+      <p class="muted" style="font-size:.82em">Chia sẻ mã PIN này cho bạn cùng lớp để vào thi chung</p>
+
+      <div style="margin:20px 0 16px;text-align:left">
+        <label>Thí sinh trong phòng (<span id="playerCount">1</span>):</label>
+        <div id="lobbyPlayerList" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px"></div>
+      </div>
+
+      <div class="row mt" style="margin-top:24px">
+        <button type="button" class="btn block" id="btnStartExam" style="display:none;font-size:1.05em">
+          🚀 BẮT ĐẦU THI (START EXAM)
+        </button>
+        <p id="waitingHostNotice" class="muted" style="width:100%;text-align:center">Đang chờ Host bấm bắt đầu...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIEW 3: LIVE EXAM (Bàn làm bài tự luận) -->
+  <section id="view-exam" class="hidden">
+    <div class="card">
+      <div class="timer-banner">
+        <div>
+          <span class="badge" id="examLiveBadge">BfK-1</span>
+          <span style="font-size:.82em;font-weight:600;margin-left:6px" id="examProgressCount">Câu 1 / 10</span>
+        </div>
+        <div class="timer-digits">
+          <span>⏱️</span>
+          <span id="examTimer">30:00</span>
+        </div>
+        <button type="button" class="btn sm ghost" id="btnSubmitEarly">Nộp bài →</button>
+      </div>
+
+      <!-- Tình huống bài thi -->
+      <div style="background:var(--bg);border-radius:12px;padding:12px 14px;margin-bottom:14px;font-size:.88em;line-height:1.5">
+        <b>📋 Tình huống đề bài:</b> <span id="examSituationText">—</span>
+      </div>
+
+      <!-- Thanh chọn nhanh câu hỏi -->
+      <label>Danh sách câu hỏi:</label>
+      <div class="q-nav" id="examQNav"></div>
+
+      <!-- Khung câu hỏi hiện tại -->
+      <div class="q-box" id="curQBox">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+          <div class="q-title" id="curQTitle">1.1 Frage</div>
+          <span class="badge" id="curQPts">3 P.</span>
+        </div>
+        <div class="q-vi" id="curQVi">Nghĩa tiếng Việt</div>
+        <textarea class="q-textarea" id="curQAnswer" placeholder="Schreiben Sie Ihre Antwort hier auf Deutsch... (Gõ câu trả lời bằng tiếng Đức)"></textarea>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px">
+          <button type="button" class="btn sm ghost" id="btnMarkReview" style="padding:4px 8px;font-size:.78em">🚩 Đánh dấu xem lại</button>
+          <div class="word-counter" id="curQWordCount">0 Wörter</div>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top:16px">
+        <button type="button" class="btn ghost" id="btnPrevQ">← Câu trước</button>
+        <button type="button" class="btn" id="btnNextQ">Câu tiếp theo →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIEW 4: REVIEW & CHẤM ĐIỂM CHI TIẾT -->
+  <section id="view-review" class="hidden">
+    <div class="card">
+      <span class="badge">Tự chấm & Đối chiếu đáp án</span>
+      <h1 style="margin-top:6px">Đối chiếu bài làm & Barem điểm</h1>
+      <p class="muted">Hệ thống gợi ý từ khóa đạt được. Bạn kiểm tra lại với đáp án chuẩn (*Musterlösung*) và xác nhận số điểm đạt được.</p>
+
+      <div id="reviewQuestionsArea" style="margin-top:20px"></div>
+
+      <div style="margin-top:24px;padding:18px;background:var(--bg);border-radius:14px;border:1.5px solid var(--line);text-align:center">
+        <div style="font-size:1.1em;font-weight:700">Tổng điểm tự đánh giá: <span id="reviewTotalScore" style="color:var(--accent);font-size:1.4em">0</span> / <span id="reviewMaxScore">35</span> P.</div>
+        <p class="muted" style="font-size:.82em;margin-top:4px">Bấm nút bên dưới để chốt kết quả và chuyển tới Bảng Xếp Hạng của phòng thi.</p>
+        <button type="button" class="btn block" id="btnConfirmScore" style="margin-top:14px;font-size:1em">
+          🏆 XÁC NHẬN ĐIỂM & XEM BẢNG XẾP HẠNG →
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIEW 5: PODIUM & LEADERBOARD -->
+  <section id="view-podium" class="hidden">
+    <div class="card" style="text-align:center">
+      <span class="badge">Ergebnisse · Rangliste</span>
+      <h1 style="margin:8px 0 4px">Bảng Xếp Hạng Phòng Thi</h1>
+      <p class="muted" id="podiumSubText">Kết quả hoàn thành bài thi tự luận</p>
+
+      <!-- PODIUM TOP 3 -->
+      <div class="podium" id="podiumArea"></div>
+
+      <!-- BẢNG TỔNG SẮP -->
+      <table class="rank-table" id="rankTable">
+        <thead>
+          <tr>
+            <th>Hạng</th>
+            <th>Thí sinh</th>
+            <th>Điểm số</th>
+            <th>Điểm Đức</th>
+            <th>Thời gian</th>
+            <th>Bài làm</th>
+          </tr>
+        </thead>
+        <tbody id="rankTableBody"></tbody>
+      </table>
+
+      <div class="row" style="margin-top:20px">
+        <button type="button" class="btn ghost" id="btnBackHub">Thi đề khác</button>
+        <a href="./" class="btn">Về AzubiHub</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- MODAL XEM BÀI VIẾT CỦA BẠN KHÁC -->
+<div id="paperModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;backdrop-filter:blur(4px);padding:16px;align-items:center;justify-content:center">
+  <div style="background:var(--surface);border-radius:18px;max-width:680px;width:100%;max-height:85vh;overflow-y:auto;padding:22px;border:1.5px solid var(--line);box-shadow:var(--shadow)">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;border-bottom:1px solid var(--line);padding-bottom:10px">
+      <h2 id="modalPlayerName" style="margin:0">Bài làm của thí sinh</h2>
+      <button type="button" class="btn sm ghost" onclick="document.getElementById('paperModal').style.display='none'">Đóng ✕</button>
+    </div>
+    <div id="modalPaperContent"></div>
+  </div>
+</div>
+
+<script src="./js/supabase.js?v=21"></script>
+<script src="./js/arena-data.js?v=1"></script>
+<script>
+(function(){
+  "use strict";
+
+  // Elements
+  const $ = (id) => document.getElementById(id);
+  const errBox = $("errBox");
+
+  let curRoom = null;
+  let curExam = null;
+  let unsubRoom = null;
+  let myAnswers = {}; // { qId: text }
+  let myReviewScores = {}; // { qId: points }
+  let curQIndex = 0;
+  let timerInterval = null;
+  let examSecondsLeft = 0;
+  let examTotalSeconds = 0;
+
+  function showErr(msg){
+    if(!errBox) return;
+    if(!msg){ errBox.classList.remove('show'); errBox.textContent = ''; return; }
+    errBox.textContent = msg;
+    errBox.classList.add('show');
+  }
+
+  function showView(name){
+    ['hub','lobby','exam','review','podium'].forEach(v => {
+      const el = $("view-" + v);
+      if(el) el.classList.toggle('hidden', v !== name);
+    });
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  function getMe(){
+    return (window.LearnDB && LearnDB.getPlayer()) || localStorage.getItem('learn_player_name') || 'Azubi';
+  }
+
+  function setMe(name){
+    const clean = String(name||'').trim();
+    if(clean){
+      if(window.LearnDB) LearnDB.setPlayer(clean);
+      localStorage.setItem('learn_player_name', clean);
+      $("nickDisplay").textContent = clean;
+    }
+  }
+
+  // Khởi tạo HUB
+  function initHub(){
+    const me = getMe();
+    $("nicknameInput").value = me;
+    $("nickDisplay").textContent = me;
+
+    const list = ARENA_DATA.listExams();
+    const sel = $("examSelect");
+    sel.innerHTML = list.map(x => `<option value="${x.id}">${x.badge} · ${x.title} (${x.points} P.)</option>`).join('');
+  }
+
+  // Tạo phòng thi
+  $("btnCreateRoom").onclick = async () => {
+    try{
+      showErr('');
+      const name = $("nicknameInput").value.trim();
+      if(!name) throw new Error("Vui lòng nhập tên của bạn");
+      setMe(name);
+
+      const examId = $("examSelect").value;
+      const duration = Number($("durationSelect").value) || 30;
+
+      $("btnCreateRoom").disabled = true;
+      $("btnCreateRoom").textContent = "Đang tạo phòng...";
+
+      const room = await LearnDB.createArenaRoom({ host: name, examId, durationMinutes: duration });
+      enterLobby(room);
+    }catch(e){
+      showErr(e.message || e);
+    }finally{
+      $("btnCreateRoom").disabled = false;
+      $("btnCreateRoom").textContent = "Tạo phòng thi mới (Host)";
+    }
+  };
+
+  // Vào phòng bằng mã PIN
+  $("btnJoinRoom").onclick = async () => {
+    try{
+      showErr('');
+      const name = $("nicknameInput").value.trim();
+      if(!name) throw new Error("Vui lòng nhập tên của bạn");
+      setMe(name);
+
+      const code = $("joinCodeInput").value.trim().toUpperCase();
+      if(!code) throw new Error("Vui lòng nhập mã phòng");
+
+      $("btnJoinRoom").disabled = true;
+      const res = await LearnDB.joinArenaRoom(code, name);
+      enterLobby(res);
+    }catch(e){
+      showErr(e.message || e);
+    }finally{
+      $("btnJoinRoom").disabled = false;
+    }
+  };
+
+  // Vào Lobby
+  function enterLobby(room){
+    curRoom = room;
+    curExam = ARENA_DATA.getExam(room.examId);
+    showView('lobby');
+
+    $("lobbyRoomCode").textContent = room.code;
+    $("lobbyExamTitle").textContent = curExam ? curExam.title : 'Klassenarbeit';
+    $("lobbyExamSub").textContent = `${curExam ? curExam.subtitle : ''} · Thời gian: ${room.durationMinutes} phút`;
+
+    const me = getMe();
+    const isHost = (room.host === me);
+    $("btnStartExam").style.display = isHost ? 'block' : 'none';
+    $("waitingHostNotice").style.display = isHost ? 'none' : 'block';
+
+    renderLobbyPlayers(room);
+
+    // Bắt đầu lắng nghe Realtime phòng thi
+    if(unsubRoom) unsubRoom();
+    unsubRoom = LearnDB.subscribeArenaRoom(room.code, (val) => {
+      if(!val) return;
+      curRoom = val;
+      renderLobbyPlayers(val);
+      if(val.status === 'running' && $("view-exam").classList.contains('hidden')){
+        startLiveExam(val);
+      }
+      if(val.status === 'finished' && $("view-podium").classList.contains('hidden') && !$("view-review").classList.contains('hidden')){
+        // host or others finished
+      }
+    });
+  }
+
+  function renderLobbyPlayers(room){
+    const parts = room.participants || {};
+    const keys = Object.keys(parts);
+    $("playerCount").textContent = keys.length;
+    $("lobbyPlayerList").innerHTML = keys.map(k => {
+      const u = parts[k];
+      return `<span class="chip on" style="display:inline-flex;align-items:center;gap:6px">
+        <span>👤</span> <b>${u.name}</b> ${u.isHost ? '<i class="badge" style="font-size:.65em">Host</i>' : ''}
+      </span>`;
+    }).join('');
+  }
+
+  // Host bấm Start Exam
+  $("btnStartExam").onclick = async () => {
+    try{
+      $("btnStartExam").disabled = true;
+      await LearnDB.startArenaRoom(curRoom.code);
+    }catch(e){
+      showErr(e.message || e);
+      $("btnStartExam").disabled = false;
+    }
+  };
+
+  // Bắt đầu thi Live
+  function startLiveExam(room){
+    curRoom = room;
+    curExam = ARENA_DATA.getExam(room.examId);
+    showView('exam');
+
+    $("examLiveBadge").textContent = curExam.badge;
+    $("examSituationText").textContent = curExam.situation || '';
+
+    // Phục hồi bài nháp từ LocalStorage nếu có
+    const cacheKey = `arena_draft_${room.code}_${getMe()}`;
+    try{
+      const saved = JSON.parse(localStorage.getItem(cacheKey) || '{}');
+      if(saved && typeof saved === 'object') myAnswers = saved;
+    }catch(_){}
+
+    examTotalSeconds = (room.durationMinutes || 30) * 60;
+    // Tính thời gian đã trôi qua dựa theo startedAt của room
+    const elapsed = room.startedAt ? Math.floor((Date.now() - new Date(room.startedAt).getTime()) / 1000) : 0;
+    examSecondsLeft = Math.max(0, examTotalSeconds - elapsed);
+
+    startExamTimer();
+    renderQNav();
+    loadQuestion(0);
+  }
+
+  function startExamTimer(){
+    if(timerInterval) clearInterval(timerInterval);
+    const updateDisplay = () => {
+      const m = Math.floor(examSecondsLeft / 60);
+      const s = examSecondsLeft % 60;
+      $("examTimer").textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+      if(examSecondsLeft <= 0){
+        clearInterval(timerInterval);
+        alert("⏰ Đã hết thời gian làm bài! Hệ thống chuyển sang màn hình chấm bài.");
+        finishExamAndReview();
+      }
+      examSecondsLeft--;
+    };
+    updateDisplay();
+    timerInterval = setInterval(updateDisplay, 1000);
+  }
+
+  function renderQNav(){
+    if(!curExam) return;
+    $("examQNav").innerHTML = curExam.questions.map((q, idx) => {
+      const hasAns = (myAnswers[q.id] && myAnswers[q.id].trim().length > 0);
+      const isCur = (idx === curQIndex);
+      return `<button type="button" class="q-pill ${isCur?'active':''} ${hasAns?'filled':''}" data-qidx="${idx}">${idx+1}</button>`;
+    }).join('');
+
+    $("examQNav").querySelectorAll('.q-pill').forEach(btn => {
+      btn.onclick = () => {
+        saveCurrentInput();
+        loadQuestion(Number(btn.dataset.qidx));
+      };
+    });
+  }
+
+  function loadQuestion(idx){
+    if(!curExam || !curExam.questions[idx]) return;
+    curQIndex = idx;
+    const q = curExam.questions[idx];
+
+    $("examProgressCount").textContent = `Câu ${idx+1} / ${curExam.questions.length}`;
+    $("curQTitle").textContent = `${q.no} · ${q.title} (${q.questionDe})`;
+    $("curQVi").textContent = q.questionVi || '';
+    $("curQPts").textContent = `${q.points} P.`;
+
+    const txt = myAnswers[q.id] || '';
+    $("curQAnswer").value = txt;
+    $("curQAnswer").placeholder = q.placeholderDe || 'Gõ câu trả lời bằng tiếng Đức...';
+    updateWordCount(txt);
+
+    renderQNav();
+  }
+
+  function saveCurrentInput(){
+    if(!curExam || !curExam.questions[curQIndex]) return;
+    const qId = curExam.questions[curQIndex].id;
+    const val = $("curQAnswer").value;
+    myAnswers[qId] = val;
+
+    // Lưu nháp LocalStorage
+    const cacheKey = `arena_draft_${curRoom ? curRoom.code : 'tmp'}_${getMe()}`;
+    try{ localStorage.setItem(cacheKey, JSON.stringify(myAnswers)); }catch(_){}
+
+    // Đếm số câu đã hoàn thành
+    const filledCount = Object.values(myAnswers).filter(x => x && x.trim().length > 0).length;
+    // Đồng bộ tiến độ nhẹ về Supabase (không block)
+    if(curRoom && window.LearnDB){
+      LearnDB.updateArenaProgress(curRoom.code, getMe(), filledCount, myAnswers).catch(()=>{});
+    }
+  }
+
+  function updateWordCount(txt){
+    const words = (txt || '').trim().split(/\s+/).filter(Boolean);
+    $("curQWordCount").textContent = `${words.length} từ (Wörter)`;
+  }
+
+  $("curQAnswer").oninput = (e) => {
+    updateWordCount(e.target.value);
+    saveCurrentInput();
+  };
+
+  $("btnNextQ").onclick = () => {
+    saveCurrentInput();
+    if(curQIndex < curExam.questions.length - 1){
+      loadQuestion(curQIndex + 1);
+    } else {
+      if(confirm("Bạn đã đến câu cuối cùng. Bạn có muốn nộp bài để đối chiếu đáp án không?")){
+        finishExamAndReview();
+      }
+    }
+  };
+
+  $("btnPrevQ").onclick = () => {
+    saveCurrentInput();
+    if(curQIndex > 0) loadQuestion(curQIndex - 1);
+  };
+
+  $("btnSubmitEarly").onclick = () => {
+    saveCurrentInput();
+    if(confirm("Bạn có chắc chắn muốn nộp bài sớm không?")){
+      finishExamAndReview();
+    }
+  };
+
+  // Nộp bài và sang màn hình Đối chiếu tự chấm
+  function finishExamAndReview(){
+    if(timerInterval) clearInterval(timerInterval);
+    saveCurrentInput();
+    showView('review');
+
+    renderReviewStage();
+  }
+
+  // Tính độ trùng khớp từ khóa sơ bộ (Keyword Matcher)
+  function autoScoreQuestion(q, ansText){
+    const normAns = (ansText||'').toLowerCase()
+      .replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss");
+    let pts = 0;
+    (q.keywords||[]).forEach(kw => {
+      const allTerms = [kw.term].concat(kw.alt || []);
+      const matched = allTerms.some(t => {
+        const normTerm = t.toLowerCase().replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss");
+        return normAns.includes(normTerm);
+      });
+      if(matched) pts += kw.points;
+    });
+    return Math.min(q.points, pts);
+  }
+
+  function renderReviewStage(){
+    if(!curExam) return;
+    $("reviewMaxScore").textContent = curExam.totalPoints;
+
+    let totalScore = 0;
+    const html = curExam.questions.map((q, idx) => {
+      const myAns = myAnswers[q.id] || '(Chưa điền câu trả lời)';
+      const autoPts = autoScoreQuestion(q, myAns);
+      myReviewScores[q.id] = autoPts;
+      totalScore += autoPts;
+
+      const normAns = (myAns||'').toLowerCase();
+      // Highlight các từ khóa tìm thấy
+      const keywordsChecklist = (q.keywords||[]).map((kw, ki) => {
+        const allTerms = [kw.term].concat(kw.alt || []);
+        const isMatched = allTerms.some(t => normAns.includes(t.toLowerCase()));
+        return `<div class="checklist-item" data-qid="${q.id}" data-pts="${kw.points}">
+          <input type="checkbox" id="ck_${q.id}_${ki}" ${isMatched?'checked':''} onchange="window._onChecklistChange('${q.id}')">
+          <label for="ck_${q.id}_${ki}" style="cursor:pointer;flex:1">
+            <b>${kw.term}</b> (${kw.vi}) <span class="badge" style="float:right">+${kw.points} P.</span>
+          </label>
+        </div>`;
+      }).join('');
+
+      const exp = q.explanation || {};
+
+      return `<div class="card" style="margin-bottom:20px;border-left:4px solid var(--accent)">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <h3>Câu ${q.no} · ${q.title}</h3>
+          <span class="badge">${q.points} P. tối đa</span>
+        </div>
+        <p style="font-weight:600;font-size:.92em;margin-bottom:10px">${q.questionDe} <br><i class="muted">${q.questionVi}</i></p>
+
+        <!-- SPLIT VIEW ĐỐI CHIẾU -->
+        <div class="split-view">
+          <div class="split-col">
+            <div class="split-head">Bài làm của bạn:</div>
+            <div class="ans-text">${myAns.replace(/</g,'&lt;')}</div>
+          </div>
+          <div class="split-col" style="background:var(--bg)">
+            <div class="split-head">Đáp án chuẩn (Musterlösung):</div>
+            <div class="ans-text" style="color:#065F46"><b>${q.musterloesungDe}</b>\n\n<i class="muted">${q.musterloesungVi}</i></div>
+          </div>
+        </div>
+
+        <!-- BAREM TIÊU CHÍ ĐIỂM -->
+        <div style="background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:12px;margin-top:12px">
+          <div style="font-weight:700;font-size:.82em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Barem từ khóa & tiêu chí đạt điểm:</div>
+          ${keywordsChecklist}
+          <div style="text-align:right;font-size:.88em;font-weight:700;margin-top:8px">
+            Điểm câu này: <span id="scoreDisplay_${q.id}" style="color:var(--accent);font-size:1.15em">${autoPts}</span> / ${q.points} P.
+          </div>
+        </div>
+
+        <!-- MODULE GIẢI THÍCH CHUYÊN SÂU -->
+        <div class="exp-card why-right">
+          <div class="exp-head">🟢 Vì sao đáp án này đúng? (Fachliche Begründung)</div>
+          <div>${(exp.whyCorrect||'').replace(/\n/g,'<br>')}</div>
+        </div>
+        <div class="exp-card why-wrong">
+          <div class="exp-head">🔴 Bẫy đề thi & Vì sao hay bị trừ điểm? (Häufige Fallen)</div>
+          <div>${(exp.whyWrong||'').replace(/\n/g,'<br>')}</div>
+        </div>
+        ${exp.keyTakeaway ? `<div class="exp-card takeaway"><div class="exp-head">⭐ Mẹo ăn điểm IHK (Công thức cốt lõi)</div><div>${exp.keyTakeaway}</div></div>` : ''}
+      </div>`;
+    }).join('');
+
+    $("reviewQuestionsArea").innerHTML = html;
+    updateTotalReviewScore();
+  }
+
+  window._onChecklistChange = function(qId){
+    const container = $("reviewQuestionsArea");
+    const items = container.querySelectorAll(`.checklist-item[data-qid="${qId}"]`);
+    let qPts = 0;
+    items.forEach(it => {
+      const ck = it.querySelector('input[type=checkbox]');
+      if(ck && ck.checked){
+        qPts += Number(it.dataset.pts) || 0;
+      }
+    });
+    const qObj = curExam.questions.find(x => x.id === qId);
+    if(qObj) qPts = Math.min(qObj.points, qPts);
+    myReviewScores[qId] = qPts;
+    const disp = $(`scoreDisplay_${qId}`);
+    if(disp) disp.textContent = qPts;
+    updateTotalReviewScore();
+  };
+
+  function updateTotalReviewScore(){
+    const sum = Object.values(myReviewScores).reduce((a,b)=>a+b, 0);
+    $("reviewTotalScore").textContent = sum;
+  }
+
+  // Xác nhận điểm và mở Bảng xếp hạng
+  $("btnConfirmScore").onclick = async () => {
+    try{
+      $("btnConfirmScore").disabled = true;
+      $("btnConfirmScore").textContent = "Đang lưu và đồng bộ bảng điểm...";
+
+      const totalScore = Object.values(myReviewScores).reduce((a,b)=>a+b, 0);
+      const timeSpent = examTotalSeconds - examSecondsLeft;
+
+      if(curRoom && window.LearnDB){
+        await LearnDB.submitArenaAnswer(curRoom.code, getMe(), {
+          answers: myAnswers,
+          score: totalScore,
+          maxScore: curExam.totalPoints,
+          breakdown: myReviewScores,
+          timeSpentSec: timeSpent
+        });
+      }
+
+      showPodiumView();
+    }catch(e){
+      showErr(e.message || e);
+    }finally{
+      $("btnConfirmScore").disabled = false;
+      $("btnConfirmScore").textContent = "🏆 XÁC NHẬN ĐIỂM & XEM BẢNG XẾP HẠNG →";
+    }
+  };
+
+  // Tính điểm hệ Đức (IHK-Note 1 đến 6)
+  function getIhkNote(pct){
+    if(pct >= 92) return { note: 'Note 1', label: 'Sehr gut', cls: 'note-1' };
+    if(pct >= 81) return { note: 'Note 2', label: 'Gut', cls: 'note-2' };
+    if(pct >= 67) return { note: 'Note 3', label: 'Befriedigend', cls: 'note-3' };
+    if(pct >= 50) return { note: 'Note 4', label: 'Ausreichend', cls: 'note-4' };
+    if(pct >= 30) return { note: 'Note 5', label: 'Mangelhaft', cls: 'note-4' };
+    return { note: 'Note 6', label: 'Ungenügend', cls: 'note-4' };
+  }
+
+  function showPodiumView(){
+    showView('podium');
+
+    const render = (room) => {
+      const parts = room.participants || {};
+      const users = Object.values(parts).map(u => {
+        const sc = (u.score !== null) ? u.score : (u.name === getMe() ? Object.values(myReviewScores).reduce((a,b)=>a+b, 0) : 0);
+        const max = u.maxScore || (curExam ? curExam.totalPoints : 35);
+        const pct = Math.round((sc / max) * 100);
+        return {
+          name: u.name,
+          score: sc,
+          maxScore: max,
+          pct: pct,
+          timeSpent: u.timeSpentSec || 0,
+          answers: u.answers || {},
+          breakdown: u.breakdown || {}
+        };
+      });
+
+      // Sắp xếp: Điểm cao hơn trước, nếu bằng nhau thì thời gian ít hơn xếp trên
+      users.sort((a,b) => {
+        if(b.score !== a.score) return b.score - a.score;
+        return a.timeSpent - b.timeSpent;
+      });
+
+      // Render Podium Top 3
+      const top1 = users[0];
+      const top2 = users[1];
+      const top3 = users[2];
+
+      let podHtml = '';
+      if(top2){
+        podHtml += `<div class="pod-step pod-2">
+          <div style="font-size:1.5em">🥈</div>
+          <div class="pod-name">${top2.name}</div>
+          <div class="pod-score">${top2.score} P.</div>
+          <div class="pod-block"><div class="pod-rank">#2</div></div>
+        </div>`;
+      }
+      if(top1){
+        podHtml += `<div class="pod-step pod-1">
+          <div style="font-size:2em">👑</div>
+          <div class="pod-name" style="font-size:1.05em">${top1.name}</div>
+          <div class="pod-score" style="color:var(--accent);font-weight:700">${top1.score} / ${top1.maxScore} P.</div>
+          <div class="pod-block"><div class="pod-rank">#1</div></div>
+        </div>`;
+      }
+      if(top3){
+        podHtml += `<div class="pod-step pod-3">
+          <div style="font-size:1.4em">🥉</div>
+          <div class="pod-name">${top3.name}</div>
+          <div class="pod-score">${top3.score} P.</div>
+          <div class="pod-block"><div class="pod-rank">#3</div></div>
+        </div>`;
+      }
+      $("podiumArea").innerHTML = podHtml;
+
+      // Render Bảng xếp hạng chi tiết
+      $("rankTableBody").innerHTML = users.map((u, i) => {
+        const ihk = getIhkNote(u.pct);
+        const m = Math.floor(u.timeSpent / 60);
+        const s = u.timeSpent % 60;
+        const timeStr = `${m}m ${s}s`;
+        const hasPapers = Object.keys(u.answers||{}).length > 0;
+        return `<tr>
+          <td style="font-weight:800;font-size:1.1em;color:${i===0?'var(--accent)':'var(--ink)'}">#${i+1}</td>
+          <td><b>${u.name}</b> ${u.name===getMe()?'<i class="badge" style="font-size:.65em">Bạn</i>':''}</td>
+          <td><b>${u.score}</b> / ${u.maxScore} <span class="muted">(${u.pct}%)</span></td>
+          <td><span class="note-badge ${ihk.cls}">${ihk.note} · ${ihk.label}</span></td>
+          <td>${timeStr}</td>
+          <td>
+            ${hasPapers ? `<button type="button" class="btn sm ghost" onclick="window._openPaperModal('${u.name}')">📄 Xem bài</button>` : '<span class="muted">—</span>'}
+          </td>
+        </tr>`;
+      }).join('');
+    };
+
+    render(curRoom || { participants: { [getMe()]: { name: getMe(), score: Object.values(myReviewScores).reduce((a,b)=>a+b, 0) } } });
+
+    // Tiếp tục lắng nghe bảng xếp hạng realtime khi các bạn khác nộp bài
+    if(curRoom){
+      LearnDB.getArenaRoom(curRoom.code).then(r => { if(r && r.value) render(r.value); });
+    }
+  }
+
+  // Mở modal đọc bài của thí sinh
+  window._openPaperModal = function(name){
+    if(!curRoom || !curRoom.participants) return;
+    const u = curRoom.participants[name];
+    if(!u) return;
+
+    $("modalPlayerName").textContent = `Bài làm của ${name} (${u.score || 0} P.)`;
+    const ans = u.answers || {};
+
+    const content = curExam.questions.map(q => {
+      const userText = ans[q.id] || '(Không làm câu này)';
+      return `<div style="margin-bottom:16px;padding:12px;border:1px solid var(--line);border-radius:10px;background:#fff">
+        <div style="font-weight:700;font-size:.88em;color:var(--accent);margin-bottom:4px">Câu ${q.no} · ${q.title}</div>
+        <div style="font-size:.84em;color:var(--muted);margin-bottom:8px">${q.questionDe}</div>
+        <div style="white-space:pre-wrap;font-size:.9em;line-height:1.6">${userText.replace(/</g,'&lt;')}</div>
+      </div>`;
+    }).join('');
+
+    $("modalPaperContent").innerHTML = content;
+    $("paperModal").style.display = 'flex';
+  };
+
+  $("btnBackHub").onclick = () => {
+    if(unsubRoom) unsubRoom();
+    showView('hub');
+  };
+
+  // Khởi động
+  initHub();
+})();
+</script>
+</body>
+</html>

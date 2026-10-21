@@ -1449,6 +1449,199 @@ function clean(s) {
     };
   }
 
+  /* ===== Freitext Exam Arena (Realtime multiplayer exam rooms) ===== */
+  const ARENA_ROOM_PREFIX = 'learn:arena:room:';
+
+  function arenaRoomKey(code) {
+    return ARENA_ROOM_PREFIX + String(code || '').toUpperCase().trim();
+  }
+
+  function makeArenaCode() {
+    const chars = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ';
+    let s = '';
+    for (let i = 0; i < 5; i++) s += chars.charAt(Math.floor(Math.random() * chars.length));
+    return s;
+  }
+
+  async function getArenaRoom(code) {
+    const key = arenaRoomKey(code);
+    return await getConfig(key);
+  }
+
+  async function saveArenaRoom(code, room) {
+    const key = arenaRoomKey(code);
+    room.updated_at = new Date().toISOString();
+    room.v = (Number(room.v) || 0) + 1;
+    return await upsertConfig(key, room);
+  }
+
+  async function withArenaRoom(code, mutator) {
+    let row = await getArenaRoom(code);
+    if (!row || !row.value) throw new Error('Không tìm thấy phòng thi');
+    for (let i = 0; i < 5; i++) {
+      const room = row.value;
+      const patch = mutator(room);
+      if (patch === false) return room;
+      const saved = await saveArenaRoom(code, room);
+      if (saved) return saved;
+      row = await getArenaRoom(code);
+      if (!row || !row.value) return room;
+    }
+    const last = await getArenaRoom(code);
+    return last && last.value ? last.value : row.value;
+  }
+
+  async function createArenaRoom({ host, examId, durationMinutes }) {
+    const player = String(host || getPlayer() || '').trim();
+    if (!player) throw new Error('Vui lòng nhập Nickname');
+    let code = '';
+    let tries = 0;
+    while (tries < 8) {
+      code = makeArenaCode();
+      const ex = await getArenaRoom(code);
+      if (!ex) break;
+      tries++;
+    }
+    const now = new Date().toISOString();
+    const room = {
+      code: code,
+      host: player,
+      status: 'lobby', // lobby | running | review | finished
+      examId: examId || 'bfk1-ka3',
+      durationMinutes: Number(durationMinutes) || 30,
+      startedAt: null,
+      created_at: now,
+      updated_at: now,
+      v: 1,
+      participants: {
+        [player]: {
+          name: player,
+          isHost: true,
+          joinedAt: now,
+          status: 'ready', // ready | working | submitted
+          progress: 0,
+          answers: {},
+          score: null,
+          maxScore: 35,
+          breakdown: {},
+          submittedAt: null,
+          timeSpentSec: 0
+        }
+      }
+    };
+    await upsertConfig(arenaRoomKey(code), room);
+    return room;
+  }
+
+  async function joinArenaRoom(code, player) {
+    const p = String(player || getPlayer() || '').trim();
+    if (!p) throw new Error('Vui lòng nhập tên');
+    return await withArenaRoom(code, (room) => {
+      if (!room.participants) room.participants = {};
+      if (!room.participants[p]) {
+        room.participants[p] = {
+          name: p,
+          isHost: false,
+          joinedAt: new Date().toISOString(),
+          status: 'ready',
+          progress: 0,
+          answers: {},
+          score: null,
+          maxScore: 35,
+          breakdown: {},
+          submittedAt: null,
+          timeSpentSec: 0
+        };
+      }
+    });
+  }
+
+  async function startArenaRoom(code) {
+    const now = new Date().toISOString();
+    return await withArenaRoom(code, (room) => {
+      room.status = 'running';
+      room.startedAt = now;
+      Object.keys(room.participants || {}).forEach((k) => {
+        room.participants[k].status = 'working';
+      });
+    });
+  }
+
+  async function updateArenaProgress(code, player, progress, answers) {
+    const p = String(player || getPlayer() || '').trim();
+    return await withArenaRoom(code, (room) => {
+      if (room.participants && room.participants[p]) {
+        room.participants[p].progress = Number(progress) || 0;
+        if (answers) room.participants[p].answers = answers;
+      }
+    });
+  }
+
+  async function submitArenaAnswer(code, player, { answers, score, maxScore, breakdown, timeSpentSec }) {
+    const p = String(player || getPlayer() || '').trim();
+    const now = new Date().toISOString();
+    const res = await withArenaRoom(code, (room) => {
+      if (room.participants && room.participants[p]) {
+        const u = room.participants[p];
+        u.status = 'submitted';
+        u.answers = answers || u.answers;
+        u.score = Number(score) || 0;
+        u.maxScore = Number(maxScore) || 35;
+        u.breakdown = breakdown || {};
+        u.submittedAt = now;
+        u.timeSpentSec = Number(timeSpentSec) || 0;
+      }
+      const allSub = Object.values(room.participants || {}).every(
+        (x) => x.status === 'submitted'
+      );
+      if (allSub) {
+        room.status = 'finished';
+      }
+    });
+
+    try {
+      await saveQuizScore({
+        subject: 'ARENA',
+        quiz: String(code).toUpperCase(),
+        correct: Math.round(Number(score) || 0),
+        total: Math.round(Number(maxScore) || 35),
+        player: p
+      });
+    } catch (_) {}
+
+    return res;
+  }
+
+  function subscribeArenaRoom(code, onUpdate, pollMs) {
+    const c = String(code || '').toUpperCase();
+    let stopped = false;
+    let timer = null;
+    let lastJson = '';
+
+    async function pull() {
+      if (stopped) return;
+      try {
+        const row = await getArenaRoom(c);
+        const val = row && row.value ? row.value : null;
+        const j = JSON.stringify(val);
+        if (j !== lastJson) {
+          lastJson = j;
+          if (onUpdate) onUpdate(val, row);
+        }
+      } catch (_) {}
+    }
+
+    const ms = Math.max(1000, Number(pollMs) || 1600);
+    timer = setInterval(pull, ms);
+    pull();
+
+    return function unsubscribe() {
+      stopped = true;
+      if (timer) clearInterval(timer);
+      timer = null;
+    };
+  }
+
   /* ===== Chat rooms (realtime chat) ===== */
   const CHAT_ROOM_PREFIX = 'learn:chat:room:';
   const CHAT_MSG_PREFIX = 'learn:chat:msg:';
@@ -2021,6 +2214,15 @@ function clean(s) {
     finishChallengeRoom,
     saveChallengeResult,
     subscribeChallengeRoom,
+    // arena (freitext exam arena)
+    createArenaRoom,
+    joinArenaRoom,
+    getArenaRoom,
+    saveArenaRoom,
+    startArenaRoom,
+    updateArenaProgress,
+    submitArenaAnswer,
+    subscribeArenaRoom,
     // chat
     chatEnsureDefaults,
     chatListRooms,
