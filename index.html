@@ -664,10 +664,10 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 #searchSheet .res .t{font-weight:600;font-size:.92em;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 #searchSheet .res .s{font-size:.77em;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 #searchSheet mark.sh-mark{background:#FFD580;color:#7A3E00;font-weight:700;padding:0 2px;border-radius:3px}
-#searchSheet .sh-filter-bar{display:flex;flex-wrap:wrap;gap:6px;padding:10px 14px 8px;border-bottom:1px solid var(--line);background:var(--surface);flex-shrink:0}
-#searchSheet .sh-filter-chip{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border:1.5px solid var(--line);border-radius:999px;font-size:.76em;font-weight:600;color:var(--muted);background:var(--bg);cursor:pointer;transition:all .15s;-webkit-tap-highlight-color:transparent;white-space:nowrap}
-#searchSheet .sh-filter-chip.active{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
-#searchSheet .sh-filter-chip:hover{border-color:var(--accent);color:var(--accent)}
+.sh-filter-bar{display:flex;flex-wrap:wrap;gap:6px;padding:10px 14px 8px;border-bottom:1px solid var(--line);background:var(--surface);flex-shrink:0}
+.sh-filter-chip{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border:1.5px solid var(--line);border-radius:999px;font-size:.76em;font-weight:600;color:var(--muted);background:var(--bg);cursor:pointer;transition:all .15s;-webkit-tap-highlight-color:transparent;white-space:nowrap}
+.sh-filter-chip.active{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.sh-filter-chip:hover{border-color:var(--accent);color:var(--accent)}
 
 @media (max-width:640px){
   #searchSheet{padding:0 !important;margin:0 !important}
@@ -8561,13 +8561,17 @@ function deepScrollToKeyword(terms){
     let found=null;
     while(walker.nextNode()){
       const n=walker.currentNode;
+      const p=n.parentElement;
+      if(!p || ['SCRIPT','STYLE','NOSCRIPT','TEMPLATE'].includes(p.tagName)) continue;
       const txt=norm(n.textContent||"");
-      if(terms.some(t=>t.length>=3&&txt.includes(t))){
-        found=n.parentElement;
+      if(terms.some(t=>t.length>=2 && txt.includes(t))){
+        found=p;
         break;
       }
     }
     if(found){
+      const dt=found.closest('details');
+      if(dt) dt.open=true;
       document.querySelectorAll('._dshl').forEach(el=>{
         el.classList.remove('_dshl');
         el.style.removeProperty('background');
@@ -8685,73 +8689,88 @@ function makeSnippet(it, terms){
   const a=Math.max(0,at-8), b=Math.min(words.length,at+16);
   return (a>0?"… ":"")+words.slice(a,b).join(" ")+(b<words.length?" …":"");
 }
+let deskSearchFilter = 'all';
+
+function filterSearchHits(hits, filter){
+  if(!filter || filter === 'all') return hits;
+  return hits.filter(h => {
+    const b = (h.badge || "").toLowerCase();
+    if(filter === 'quiz') return b === 'quiz';
+    if(filter === 'begriff') return b === 'begriff' || b === 'excel-q&a';
+    if(filter === 'fach') return b !== 'quiz' && b !== 'begriff' && b !== 'excel-q&a';
+    return true;
+  });
+}
+
 function runSearch(q0){
   const q=norm(q0).trim();
   if(!q){ showQuickSuggestions(); return; }
   const terms=q.split(/\s+/).filter(Boolean);
-  sHits=INDEX
+  const rawHits=INDEX
     .filter(it=>!(it.features||[]).some(f=>window.Access&&!Access.can(f)))
     .filter(it=>terms.every(t=>(it.hay||"").includes(t) || norm(it.raw||"").includes(t)))
     .map(it=>({it, sc:scoreHit(it,terms,q)}))
     .sort((a,b)=>b.sc-a.sc)
-    .slice(0,80)
+    .slice(0,120)
     .map(x=>x.it);
+
+  sHits=filterSearchHits(rawHits, deskSearchFilter);
   sActive=-1;
+
+  const filterBarHtml = '<div class="sh-filter-bar" id="deskFilterBar" style="display:flex;gap:6px;padding:8px 12px;border-bottom:1px solid var(--line);background:var(--surface);position:sticky;top:0;z-index:2">'
+    + '<button type="button" class="sh-filter-chip '+(deskSearchFilter==='all'?'active':'')+'" data-df="all">Tất cả</button>'
+    + '<button type="button" class="sh-filter-chip '+(deskSearchFilter==='fach'?'active':'')+'" data-df="fach">📚 Nội dung</button>'
+    + '<button type="button" class="sh-filter-chip '+(deskSearchFilter==='quiz'?'active':'')+'" data-df="quiz">📝 Quiz</button>'
+    + '<button type="button" class="sh-filter-chip '+(deskSearchFilter==='begriff'?'active':'')+'" data-df="begriff">🔤 Từ vựng</button>'
+    + '</div>';
+
   if(!sHits.length){
-    sBox.innerHTML='<div class="res"><span class="empty">Keine Treffer für „'+q0.replace(/[<>&]/g,"")+'“.</span></div>';
-    sBox.classList.add("show"); return;
+    sBox.innerHTML=filterBarHtml + '<div class="res"><span class="empty">Không tìm thấy kết quả cho „'+q0.replace(/[<>&]/g,"")+'“.</span></div>';
+    sBox.classList.add("show");
+    bindDeskFilterEvents(q0);
+    return;
   }
+
   sBox.innerHTML =
-    '<div class="res" style="pointer-events:none;opacity:.75"><span class="empty">'+sHits.length+' Treffer'+(sHits.length>=80?' (Top 80)':'')+'</span></div>'+
+    filterBarHtml +
+    '<div class="res" style="pointer-events:none;opacity:.75;padding:8px 13px 4px"><span class="empty" style="padding:0;text-align:left;font-size:.76em;font-weight:700;text-transform:uppercase;letter-spacing:.03em">'+sHits.length+' kết quả'+(rawHits.length>=120?' (Top 120)':'')+'</span></div>'+
     sHits.map((h,i)=> {
       const tHighlighted = highlightMatch(h.title, terms);
       const sn = makeSnippet(h, terms);
-      const sHighlighted = highlightMatch(h.sub, terms) + (sn ? '<div class="sh-snip" style="opacity:.8;font-size:.92em;margin-top:2px">'+highlightMatch(escHtmlS(sn), terms)+'</div>' : "");
+      const sHighlighted = highlightMatch(h.sub, terms) + (sn ? '<div class="sh-snip" style="opacity:.8;font-size:.82em;margin-top:2px;line-height:1.35">'+highlightMatch(escHtmlS(sn), terms)+'</div>' : "");
       return '<div class="res" data-i="'+i+'"><span class="badge">'+h.badge+'</span><div class="txt"><div class="t">'+tHighlighted+'</div><div class="s">'+sHighlighted+'</div></div></div>';
     }).join("");
   sBox.classList.add("show");
+  bindDeskFilterEvents(q0);
   sBox.querySelectorAll(".res[data-i]").forEach(el=>{ const i=+el.getAttribute("data-i"); if(!isNaN(i)) el.addEventListener("click",()=>pickHit(i)); });
 }
 
-const origPickHit = pickHit;
-pickHit = function(i){
-  if(sInput.value.trim()) saveRecentSearch(sInput.value.trim());
-  origPickHit(i);
-};
-
-sInput.addEventListener("focus", () => {
-  if(!sInput.value.trim()) showQuickSuggestions();
-});
-
-/* function oldRunSearch(q0){ */
-function _unused_runSearch(q0){
-  const q=norm(q0).trim();
-  if(!q){ sBox.classList.remove("show"); sBox.innerHTML=""; return; }
-  const terms=q.split(/\s+/).filter(Boolean);
-  sHits=INDEX
-    .filter(it=>!(it.features||[]).some(f=>window.Access&&!Access.can(f)))
-    .filter(it=>terms.every(t=>(it.hay||"").includes(t) || norm(it.raw||"").includes(t)))
-    .map(it=>({it, sc:scoreHit(it,terms,q)}))
-    .sort((a,b)=>b.sc-a.sc)
-    .slice(0,80)
-    .map(x=>x.it);
-  sActive=-1;
-  if(!sHits.length){
-    sBox.innerHTML='<div class="res"><span class="empty">Keine Treffer für „'+q0.replace(/[<>&]/g,"")+'“.</span></div>';
-    sBox.classList.add("show"); return;
-  }
-  sBox.innerHTML =
-    '<div class="res" style="pointer-events:none;opacity:.75"><span class="empty">'+sHits.length+' Treffer'+(sHits.length>=40?' (Top 40)':'')+'</span></div>'+
-    sHits.map((h,i)=>'<div class="res" data-i="'+i+'"><span class="badge">'+h.badge+'</span><div class="txt"><div class="t">'+h.title+'</div><div class="s">'+h.sub+'</div></div></div>').join("");
-  sBox.classList.add("show");
-  sBox.querySelectorAll(".res[data-i]").forEach(el=>{ const i=+el.getAttribute("data-i"); if(!isNaN(i)) el.addEventListener("click",()=>pickHit(i)); });
+function bindDeskFilterEvents(q0){
+  const bar = sBox.querySelector("#deskFilterBar");
+  if(!bar) return;
+  bar.querySelectorAll(".sh-filter-chip[data-df]").forEach(btn=>{
+    btn.addEventListener("click",(e)=>{
+      e.stopPropagation();
+      deskSearchFilter = btn.getAttribute("data-df") || "all";
+      runSearch(q0);
+      sInput.focus();
+    });
+  });
 }
+
 function pickHit(i){
   const h=sHits[i]; if(!h) return;
-  sBox.classList.remove("show"); sInput.value=""; sInput.blur();
+  const qVal=sInput.value.trim();
+  if(qVal) saveRecentSearch(qVal);
+  sBox.classList.remove("show"); sInput.blur();
+  const terms=norm(qVal).split(/\s+/).filter(Boolean);
+  const doDeepScroll=()=>{
+    if(typeof deepScrollToKeyword==='function') deepScrollToKeyword(terms);
+  };
   if(h.route && !String(h.route).startsWith("#")){ location.href=h.route; return; }
   go(h.route);
-  if(h.action) setTimeout(h.action,180);
+  if(h.action) setTimeout(()=>{ h.action(); setTimeout(doDeepScroll,400); },180);
+  else setTimeout(doDeepScroll,400);
 }
 sInput.addEventListener("input",()=>runSearch(sInput.value));
 sInput.addEventListener("keydown",e=>{
