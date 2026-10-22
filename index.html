@@ -1484,31 +1484,16 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
   <div id="subjectGroups"></div>
 
   <div class="fach-label">Heute üben</div>
-  <div class="today-grid">
-    <div class="today-card" onclick="go('#/bfk/2/quiz');setTimeout(()=>{try{quizStart('quick')}catch(e){}},120)">
-      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 3 5 13h5l-1 8 8-11h-5z"/></svg></div>
-      <b>BfK-2 · Quiz</b>
-      <span>10 Fragen · Fleisch</span>
-    </div>
-    <div class="today-card" onclick="go('#/fach/deutsch')">
-      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
-      <b>Deutsch</b>
-      <span>Visualisierung &amp; KA</span>
-    </div>
-    <div class="today-card" onclick="go('#/bfk/1')">
-      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="13" r="7"/><circle cx="11" cy="13" r="2.6"/><path d="M18 13h4"/></svg></div>
-      <b>BfK-1</b>
-      <span>LF6 · LF9</span>
-    </div>
-    <div class="today-card" id="tcArena" onclick="location.href='arena.html'" style="border-left:3px solid var(--accent)">
-      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-      <b>Arena</b>
-      <span>Thi tự luận chung</span>
-    </div>
-    <div class="today-card" id="tcChallenge" onclick="if(requireTier('challenge')) location.href='challenge.html'">
-      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5 14.5 11.5l-3 3-8-8z"/><path d="M17.5 3.5 9.5 11.5l3 3 8-8z"/><path d="M4 20l3-3"/><path d="M20 20l-3-3"/></svg></div>
-      <b>Challenge</b>
-      <span>Klassen-Duell</span>
+  <div class="today-grid" style="grid-template-columns:1fr!important">
+    <div class="today-card" id="tcArena" onclick="location.href='arena.html'" style="border-left:4px solid var(--accent);display:flex;align-items:center;gap:14px;padding:15px 16px!important">
+      <div class="ic" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;background:var(--accent-soft);border-radius:12px;color:var(--accent);flex-shrink:0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:24px;height:24px"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <div style="flex:1;min-width:0">
+        <b style="font-size:1.02em;margin-bottom:3px;color:var(--ink)">Prüfungs-Arena · Thi tự luận chung</b>
+        <span style="font-size:.82em;color:var(--muted)">Luyện đề tự luận IHK thật &amp; Lernfeld, đối chiếu Musterlösung, bảng xếp hạng</span>
+      </div>
+      <div style="color:var(--accent);font-weight:700;font-size:1.2em;flex-shrink:0;padding-right:4px">→</div>
     </div>
   </div>
 
