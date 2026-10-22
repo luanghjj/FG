@@ -1,5 +1,5 @@
 /* Service Worker – AzubiHub (offline shell + static assets) */
-const CACHE = 'azubihub-v215';
+const CACHE = 'azubihub-v216';
 const PRECACHE = [
   './',
   './arena.html',
