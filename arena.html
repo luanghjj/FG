@@ -242,7 +242,13 @@ label{font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercas
           </div>
         </div>
 
-        <label style="margin-top:6px;display:block">Tích chọn các Lernfeld muốn ôn tập:</label>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+          <label style="margin:0">Tích chọn các Lernfeld muốn ôn tập:</label>
+          <div style="display:flex;gap:6px">
+            <button type="button" class="btn sm ghost" id="btnSelectAllLf" style="padding:2px 8px;font-size:.76em">✓ Chọn tất cả</button>
+            <button type="button" class="btn sm ghost" id="btnDeselectAllLf" style="padding:2px 8px;font-size:.76em">✕ Bỏ chọn</button>
+          </div>
+        </div>
         <div class="lf-grid" id="lfChipsArea"></div>
       </div>
 
@@ -553,6 +559,23 @@ label{font-size:.76em;font-weight:700;color:var(--muted);text-transform:uppercas
 
     // Fach select
     $("fachSelect").onchange = renderLfChips;
+
+    if($("btnSelectAllLf")){
+      $("btnSelectAllLf").onclick = () => {
+        document.querySelectorAll('input[name="lfSelect"]').forEach(ck => {
+          ck.checked = true;
+          ck.parentElement.classList.add('selected');
+        });
+      };
+    }
+    if($("btnDeselectAllLf")){
+      $("btnDeselectAllLf").onclick = () => {
+        document.querySelectorAll('input[name="lfSelect"]').forEach(ck => {
+          ck.checked = false;
+          ck.parentElement.classList.remove('selected');
+        });
+      };
+    }
 
     renderLfChips();
     renderIhkExams();
