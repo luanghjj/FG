@@ -5420,6 +5420,379 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
     }
   ]
 },
+    {
+      id: "bfk5",
+      code: "BfK-5",
+      name: "Service Praxis",
+      icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 17a6.5 6.5 0 0 1 13 0"/><path d="M3 17h18"/><path d="M12 7.3V6"/><circle cx="12" cy="5" r="1"/><path d="M3.5 20h17"/></svg>',
+      accent: "#AF52DE",
+      soft: "#F6EDFC",
+      teacher: "BSI (Brunnenkant)",
+      ready: true,
+      desc: "Service-Praxis: Serviceablauf, Gedeck, Gästekommunikation & Menüservice — Theorie, Fragen & Quiz.",
+      groups: [
+        {
+          id: "serviceablauf",
+          badge: "Thema 1",
+          title: "Serviceablauf",
+          items: [
+            {
+              id: "bfk5-begruessung",
+              icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6"/><path d="M22 11h-6"/></svg>',
+              name: "Begrüßung, Empfang & Platzierung",
+              desc: "Gäste willkommen heißen, Garderobe & zum Tisch begleiten.",
+              content: `<h2>Begrüßung, Empfang & Platzierung</h2>
+    <div class="hint">Thema 1 · Serviceablauf — Schritt 1–3: Der erste Eindruck entscheidet.</div>
+    <h3 class="sub">1. Vorbereitung (Mise en place)</h3>
+    <p>Vor Servicebeginn: Tische eingedeckt, <span class="term" data-de="Mise en place" data-vi="công tác chuẩn bị trước giờ phục vụ">Mise en place</span> kontrolliert (Besteck, Gläser, Servietten, Karten), Kleidung &amp; Erscheinungsbild prüfen.</p>
+    <p>→ Chuẩn bị trước giờ mở cửa: bàn đã trải, kiểm tra dao nĩa/ly/khăn giấy/thực đơn, trang phục chỉnh tề.</p>
+    <h3 class="sub">2. Begrüßung &amp; Empfang</h3>
+    <ul>
+      <li>Gäste <b>sofort</b> beim Betreten begrüßen — <span class="term" data-de="Blickkontakt" data-vi="giao tiếp bằng mắt">Blickkontakt</span>, Lächeln, freundliche Anrede.</li>
+      <li><span class="term" data-de="Garderobe" data-vi="quầy giữ áo khoác / mũ nón">Garderobe</span> (Mantel, Jacke) abnehmen und sicher verwahren.</li>
+      <li>Nach Reservierung fragen: <i>„Haben Sie reserviert? Auf welchen Namen?"</i> — einladender: <i>„Sind Sie spontan zu uns gekommen?"</i></li>
+    </ul>
+    <p>📞 <b>Telefon-Reservierung:</b> Höchstens <b>3× läuten</b> lassen; Formel: <i>Betriebsname + eigener Name</i>. Notieren: Tag, Datum, Uhrzeit, Personenanzahl, Name + Telefonnummer, Sonderwünsche. Tisch <b>15–20 Minuten</b> freihalten.</p>
+    <p>→ Đặt bàn qua điện thoại: để chuông reo tối đa 3 lần; công thức chào: tên quán + tên mình. Ghi: ngày, giờ, số khách, tên + SĐT, yêu cầu đặc biệt. Giữ bàn 15–20 phút.</p>
+    <p>→ Chào khách ngay khi bước vào, cười, nhìn vào mắt khách. Nhận giữ áo khoác. Hỏi khách có đặt bàn trước không.</p>
+    <h3 class="sub">3. Platzierung — Reihenfolge beachten</h3>
+    <p>Zum Tisch begleiten und Stühle anbieten. Reihenfolge: <b>Damen zuerst</b>, dann ältere Gäste, dann Herren — der <span class="term" data-de="Gastgeber" data-vi="chủ tiệc / người mời">Gastgeber</span> (Einladende) zuletzt.</p>
+    <p>→ Dẫn khách vào bàn, kéo ghế mời ngồi. Thứ tự: phụ nữ trước, khách lớn tuổi, rồi đến nam giới — chủ tiệc ngồi cuối cùng.</p>
+    <div class="hint">⚠️ HỌC THUỘC: Begrüßung sofort · Damen zuerst · Gastgeber zuletzt.</div>`,
+              qa: [
+                { q: "In welcher Reihenfolge werden Gäste platziert?", qVi: "Thứ tự xếp chỗ ngồi cho khách như thế nào?", a: "Damen zuerst, dann ältere Gäste, dann Herren — der Gastgeber zuletzt.", aVi: "Phụ nữ trước, rồi khách lớn tuổi, rồi nam giới — chủ tiệc cuối cùng.", why: "Höflichkeitsregel im Service; der Gastgeber als Einladender nimmt zuletzt Platz.", src: "DEHOGA Service-Grundlagen" },
+                { q: "Was gehört zur Vorbereitung (Mise en place) vor dem Service?", qVi: "Chuẩn bị trước giờ phục vụ gồm những gì?", a: "Tische eindecken, Besteck/Gläser/Servietten/Karten prüfen, Erscheinungsbild kontrollieren.", aVi: "Trải bàn, kiểm tra dao nĩa/ly/khăn/thực đơn, trang phục chỉnh tề.", why: "Ohne Mise en place kein reibungsloser Service.", src: "IHK Ausbildungsrahmenplan" },
+              ],
+            },
+            {
+              id: "bfk5-bestellaufnahme",
+              icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>',
+              name: "Bestellaufnahme & Bonieren",
+              desc: "Karten überreichen, Beratung, Bestellung notieren & weitergeben.",
+              content: `<h2>Bestellaufnahme &amp; Bonieren</h2>
+    <div class="hint">Thema 1 · Serviceablauf — Schritt 4–6: Karten, Beratung, Bestellung.</div>
+    <h3 class="sub">1. Karten überreichen</h3>
+    <p><span class="term" data-de="Speisekarte" data-vi="thực đơn món ăn">Speisekarte</span> und <span class="term" data-de="Getränkekarte" data-vi="thực đơn đồ uống">Getränkekarte</span> überreichen, Zeit zum Auswählen lassen. <span class="term" data-de="Aperitif" data-vi="đồ uống khai vị">Aperitif</span> empfehlen: <i>„Darf ich Ihnen einen Aperitif empfehlen?"</i></p>
+    <p>→ Đưa thực đơn món ăn và đồ uống, để khách có thời gian chọn. Gợi ý đồ uống khai vị.</p>
+    <h3 class="sub">2. Bestellung aufnehmen — Reihenfolge!</h3>
+    <p>Reihenfolge (Ausbildungsrahmenplan: <i>„Ehrengäste · Ladies first · alt vor jung"</i>): <b>Ehrengast zuerst</b>, dann Damen (alt vor jung), dann Herren — <b>Gastgeber zuletzt</b>. Kinder am Tisch zuerst. Bestellung <b>wiederholen/zusammenfassen</b>, <span class="term" data-de="Sonderwünsche" data-vi="yêu cầu đặc biệt">Sonderwünsche</span> und <span class="term" data-de="Allergien" data-vi="dị ứng">Allergien</span> notieren. Üblich: erst Getränke-, dann Speisenbestellung.</p>
+    <p>→ Nhận order theo thứ tự: nữ trước, nam sau, chủ tiệc cuối. Nhắc lại order để xác nhận, ghi chú yêu cầu đặc biệt và dị ứng. Thường nhận order đồ uống trước, món ăn sau.</p>
+    <h3 class="sub">3. Bonieren</h3>
+    <p>Bestellung sofort an Küche/Bar weitergeben — per <span class="term" data-de="Bon" data-vi="phiếu order (bon)">Bon</span> oder Kassensystem. Getränke kommen zuerst an den Tisch.</p>
+    <p>→ Chuyển order ngay cho bếp/bar qua phiếu bon hoặc máy tính tiền. Đồ uống ra bàn trước.</p>
+    <div class="hint">⚠️ HỌC THUỘC: Ehrengast → Damen (alt vor jung) → Herren → Gastgeber · Wiederholen · Allergien notieren.</div>`,
+              qa: [
+                { q: "In welcher Reihenfolge wird die Bestellung aufgenommen?", qVi: "Thứ tự nhận order như thế nào?", a: "Zuerst Damen, dann Herren, der Gastgeber zuletzt.", aVi: "Nữ trước, nam sau, chủ tiệc cuối cùng.", why: "Höflichkeitsregel — gilt für Platzierung und Bestellaufnahme.", src: "DEHOGA Service-Grundlagen" },
+                { q: "Was bedeutet 'Bonieren'?", qVi: "'Bonieren' nghĩa là gì?", a: "Die Bestellung per Bon/Kassensystem an Küche und Bar weitergeben.", aVi: "Chuyển order qua phiếu bon/máy tính tiền cho bếp và bar.", why: "Ohne Bon keine Produktion in Küche/Bar.", src: "IHK Ausbildungsrahmenplan" },
+              ],
+            },
+            {
+              id: "bfk5-servieren",
+              icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 17a6.5 6.5 0 0 1 13 0"/><path d="M3 17h18"/><path d="M12 7.3V6"/><circle cx="12" cy="5" r="1"/><path d="M3.5 20h17"/></svg>',
+              name: "Servieren & Nachservice",
+              desc: "Von rechts servieren, Damen zuerst, Nachfragen nicht vergessen.",
+              content: `<h2>Servieren &amp; Nachservice</h2>
+    <div class="hint">Thema 1 · Serviceablauf — Schritt 7–8: Die Hauptregeln des Servierens.</div>
+    <h3 class="sub">1. Servierregeln (Deutschland)</h3>
+    <ul>
+      <li><b>Von rechts servieren</b> — Teller/Getränke werden von der rechten Seite des Gastes angereicht.</li>
+      <li><b>Damen zuerst</b>, dann Herren, Gastgeber zuletzt (Ehrengast zuerst).</li>
+      <li>Ankündigen, was serviert wird: <i>„Zum Wohl — Ihr Schnitzel."</i></li>
+      <li>Gläser am <span class="term" data-de="Stiel" data-vi="chân ly">Stiel</span> anfassen, nie am Kelchrand.</li>
+    </ul>
+    <p>→ Phục vụ từ <b>bên phải</b> khách, nữ trước nam sau. Báo tên món khi dọn. Cầm ly ở chân ly, không chạm vành ly.</p>
+    <h3 class="sub">2. Seitenregel — links vs. rechts</h3>
+    <p><b>Von rechts:</b> Teller einsetzen, abräumen, einschenken. <b>Von links:</b> Vorlegen von Platten sowie alles, was <b>links vom Gast</b> steht (Brotteller, Salat, Beilagen) — um den Gast nicht zu stören.</p>
+    <p>→ Dọn/rót từ <b>bên phải</b>; gắp đồ từ khay chung và những món ở bên trái khách (đĩa bánh mì, salad) thì phục vụ từ <b>bên trái</b>.</p>
+    <h3 class="sub">3. Weinservice (wichtig!)</h3>
+    <ul>
+      <li><b>Probeschluck</b> zuerst für den <b>Gastgeber</b> (Degustieren); danach alle Gäste: älteste Dame → jüngste Dame → ältester Herr → jüngster Herr; <b>Gastgeber zuletzt</b>.</li>
+      <li>Von <b>rechts einschenken</b>, Glas bleibt auf dem Tisch stehen; Flasche schräg halten, <b>Etikett zum Gast</b>.</li>
+      <li>Gläser nur bis zur <b>Hälfte</b> füllen; Weinflasche immer <b>am Tisch</b> vor den Gästen öffnen.</li>
+    </ul>
+    <p>🖼️ <a href="https://gmbh.vorarlberg.travel/wp-content/uploads/2023/07/Service-Wein-einschenken-bei-gedecktem-Tisch-mit-Hirschpfeffer-c-Angela-Lamprecht-Vorarlberg-Tourismus-Webqualitaet-1920x600.jpg" target="_blank" rel="noopener">Bild: Weinservice — Einschenken am gedeckten Tisch</a></p>
+    <h3 class="sub">4. Nachservice</h3>
+    <p>Nach kurzer Zeit nachfragen: <i>„Hat es Ihnen geschmeckt? Darf es noch etwas sein?"</i> Getränke <span class="term" data-de="nachschenken" data-vi="rót thêm">nachschenken</span>, leere Gläser/Teller im Blick behalten.</p>
+    <p>→ Sau một lúc hỏi thăm khách có hài lòng không, rót thêm đồ uống, để ý ly đĩa đã hết.</p>
+    <div class="hint">⚠️ HỌC THUỘC: Von RECHTS servieren · Damen zuerst · Nachfragen: „Hat es geschmeckt?"</div>`,
+              qa: [
+                { q: "Von welcher Seite wird in Deutschland serviert?", qVi: "Ở Đức phục vụ từ phía nào?", a: "Von rechts — Speisen und Getränke werden von der rechten Seite angereicht.", aVi: "Từ bên phải — dọn món và đồ uống từ phía bên phải của khách.", why: "Deutsche Servierregel (in anderen Ländern teils von links).", src: "DEHOGA Service-Grundlagen" },
+                { q: "Was gehört zum Nachservice?", qVi: "Nachservice gồm những gì?", a: "Nachfragen ob es geschmeckt hat, nachschenken, leere Gläser beachten.", aVi: "Hỏi khách có ngon không, rót thêm, để ý ly đã hết.", why: "Aktiver Service statt nur Abwarten.", src: "IHK Ausbildungsrahmenplan" },
+              ],
+            },
+            {
+              id: "bfk5-abraumen",
+              icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>',
+              name: "Abräumen, Kassieren & Verabschiedung",
+              desc: "Von rechts abräumen, Rechnung auf Wunsch, herzlich verabschieden.",
+              content: `<h2>Abräumen, Kassieren &amp; Verabschiedung</h2>
+    <div class="hint">Thema 1 · Serviceablauf — Schritt 9–11: Abschluss des Gästebesuchs.</div>
+    <h3 class="sub">1. Abräumen</h3>
+    <p><b>Von rechts abräumen</b> — und erst, wenn <b>alle Gäste am Tisch</b> mit dem Gang fertig sind. Nie einzelne Teller vorzeitig wegnehmen.</p>
+    <p>→ Dọn đĩa từ bên phải, chỉ dọn khi <b>tất cả</b> khách trong bàn đã ăn xong món đó.</p>
+    <h3 class="sub">2. Bestecksignale des Gastes</h3>
+    <p><b>Pause:</b> Besteck ungekreuzt auf dem Teller, Gabelrücken nach oben → <b>nicht</b> abräumen! <b>Fertig:</b> Bestecke parallel, Griffe nach rechts unten, Gabelrücken nach unten, Messerschneide zur Gabel → abräumen. Benutztes Besteck nie zurück aufs Tischtuch legen.</p>
+    <p>→ Khách để dao nĩa <b>song song, cán hướng xuống phải</b> = đã ăn xong → dọn. Để <b>chéo/ngửa</b> = đang nghỉ → đừng dọn.</p>
+    <h3 class="sub">3. Abräum-Reihenfolge</h3>
+    <p>Zuerst <b>Platten, Beilagenteller, Beischüsseln</b>, dann <b>Teller und Bestecke</b>. Im exklusiven Service max. <b>4 Gedecke</b> pro Gang; Wein- und Wassergläser bleiben bis zum Menüende stehen.</p>
+    <h3 class="sub">4. Kassieren</h3>
+    <p>Rechnung <b>nur auf Wunsch</b> bringen (<i>„Zahlen, bitte."</i>). <span class="term" data-de="Wechselgeld" data-vi="tiền thối">Wechselgeld</span> korrekt herausgeben, <span class="term" data-de="Beleg" data-vi="hóa đơn/biên lai">Beleg</span> anbieten (Belegausgabepflicht seit 2020).</p>
+    <p>→ Chỉ mang hóa đơn khi khách yêu cầu. Thối tiền chính xác, đưa biên lai (nghĩa vụ xuất biên lai từ 2020).</p>
+    <h3 class="sub">5. Verabschiedung</h3>
+    <p>Herzlich verabschieden, Garderobe überreichen: <i>„Vielen Dank für Ihren Besuch — auf Wiedersehen!"</i> Zum Wiederkommen einladen.</p>
+    <p>→ Chào tạm biệt niềm nở, trả áo khoác, mời khách quay lại.</p>
+    <div class="hint">⚠️ HỌC THUỘC: Abräumen von rechts · erst wenn ALLE fertig · Rechnung nur auf Wunsch.</div>`,
+              qa: [
+                { q: "Wann darf abgeräumt werden?", qVi: "Khi nào được dọn đĩa?", a: "Von rechts — erst wenn alle Gäste am Tisch mit dem Gang fertig sind.", aVi: "Dọn từ bên phải — chỉ khi mọi khách trong bàn đã xong món.", why: "Vorzeitiges Abräumen wirkt unhöflich und drängt die Gäste.", src: "DEHOGA Service-Grundlagen" },
+                { q: "Wann wird die Rechnung gebracht?", qVi: "Khi nào mang hóa đơn ra?", a: "Nur auf Wunsch des Gastes ('Zahlen, bitte.').", aVi: "Chỉ khi khách yêu cầu thanh toán.", why: "Unaufgefordertes Kassieren wirkt wie Hinauswerfen.", src: "IHK Ausbildungsrahmenplan" },
+              ],
+            },
+          ],
+        },
+        {
+          id: "gedeck",
+          badge: "Thema 2",
+          title: "Gedeck",
+          items: [
+            {
+              id: "bfk5-gedeck-grundlagen",
+              icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg>',
+              name: "Gedeck-Grundlagen & Besteckpositionen",
+              desc: "Messer rechts, Gabel links — die festen Positionen.",
+              content: `<h2>Gedeck-Grundlagen &amp; Besteckpositionen</h2>
+    <div class="hint">Thema 2 · Gedeck — Das Grundgerüst jedes eingedeckten Tisches.</div>
+    <h3 class="sub">1. Die festen Positionen</h3>
+    <table>
+    <tr><th>Teil</th><th>Position</th><th>Merksatz</th></tr>
+    <tr><td><span class="term" data-de="Platzteller" data-vi="đĩa lót">Platzteller</span></td><td>Mitte des Gedecks</td><td>trung tâm</td></tr>
+    <tr><td><span class="term" data-de="Messer" data-vi="dao">Messer</span></td><td><b>rechts</b> vom Teller, <span class="term" data-de="Schneide" data-vi="lưỡi dao">Schneide</span> nach innen (zum Teller)</td><td>dao phải, lưỡi hướng vào đĩa</td></tr>
+    <tr><td><span class="term" data-de="Gabel" data-vi="nĩa">Gabel</span></td><td><b>links</b> vom Teller</td><td>nĩa trái</td></tr>
+    <tr><td><span class="term" data-de="Löffel" data-vi="thìa">Löffel</span></td><td>rechts vom Messer (bei Suppe)</td><td>thìa bên phải dao</td></tr>
+    <tr><td>Dessertbesteck</td><td>oberhalb des Tellers (Gabel-Griff links, Löffel-Griff rechts)</td><td>dao nĩa tráng miệng phía trên đĩa</td></tr>
+    <tr><td><span class="term" data-de="Serviette" data-vi="khăn ăn">Serviette</span></td><td>links neben der Gabel oder auf dem Teller</td><td>khăn ăn bên trái nĩa hoặc trên đĩa</td></tr>
+    </table>
+    <h3 class="sub">2. Grundregeln</h3>
+    <ul>
+      <li>Besteck wird <b>von außen nach innen</b> benutzt.</li>
+      <li>Abstand pro Gedeck: <b>60–70 cm</b> (Gedeckmitte zu Gedeckmitte).</li>
+      <li>Alles sauber, fleckenfrei und poliert.</li>
+    </ul>
+    <p><b>Reihenfolge beim Eindecken:</b> Geschirr → Besteck → Gläser → Servietten. Besteck nur an den Griffen anfassen (idealerweise mit Handschuhen); im Uhrzeigersinn um den Tisch gehen.</p>
+    <p>→ Thứ tự trải bàn: đĩa → dao nĩa → ly → khăn ăn. Chỉ cầm cán dao nĩa, đồ phải sạch bóng.</p>
+    <p>🖼️ <a href="https://www.schoenstezeit.de/wp-content/uploads/2019/04/eindecken-haushirt.jpg" target="_blank" rel="noopener">Bild: Eindecken eines Restauranttischs</a> · 🎬 <a href="https://www.youtube.com/watch?v=nAHGmqA3p3s" target="_blank" rel="noopener">Video: Tisch richtig eindecken (HilfreichTV)</a></p>
+    <div class="hint">⚠️ HỌC THUỘC: Messer RECHTS (Schneide innen) · Gabel LINKS · von außen nach innen.</div>`,
+              qa: [
+                { q: "Wo liegen Messer und Gabel im Gedeck?", qVi: "Dao và nĩa đặt ở đâu?", a: "Messer rechts (Schneide nach innen), Gabel links vom Teller.", aVi: "Dao bên phải (lưỡi hướng vào đĩa), nĩa bên trái đĩa.", why: "Feste internationale Gedeck-Regel.", src: "DEHOGA Service-Grundlagen" },
+                { q: "In welcher Reihenfolge wird das Besteck benutzt?", qVi: "Dùng dao nĩa theo thứ tự nào?", a: "Von außen nach innen.", aVi: "Từ ngoài vào trong.", why: "Äußeres Besteck gehört zum ersten Gang.", src: "IHK Ausbildungsrahmenplan" },
+              ],
+            },
+            {
+              id: "bfk5-gedeck-arten",
+              icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3l1 6a2.6 2.6 0 0 0 5 0l1-6z"/><path d="M11.5 11.6v6"/><path d="M9 20.5h5"/></svg>',
+              name: "Gedeck-Arten, Gläser & Brotteller",
+              desc: "Einfaches vs. Menügedeck, Glaspositionen oben rechts.",
+              content: `<h2>Gedeck-Arten, Gläser &amp; Brotteller</h2>
+    <div class="hint">Thema 2 · Gedeck — Vom einfachen Gedeck bis zum Menügedeck.</div>
+    <h3 class="sub">1. Gedeck-Arten</h3>
+    <ul>
+      <li><b>Einfaches Gedeck:</b> Teller, Messer + Gabel, Glas, Serviette — für einfache Gerichte.</li>
+      <li><b>Menügedeck (erweitertes Gedeck):</b> mehrere Bestecke/Gänge, mehrere Gläser, Dessertbesteck oben.</li>
+      <li>Besteck <b>rechts max. 4 Teile</b> (innen → außen: Tafelmesser, Menümesser, Fischmesser, Suppenlöffel), <b>links max. 3</b> (Tafelgabel, Menügabel, Fischgabel); Dessertbesteck ca. 1 cm über dem Teller.</li>
+    </ul>
+    <h3 class="sub">2. Gläser — oben rechts</h3>
+    <p>Gläser stehen <b>oben rechts</b> in diagonaler Linie über dem Messer: <span class="term" data-de="Wasserglas" data-vi="ly nước">Wasserglas</span> dem Teller am nächsten, dann Weißweinglas, dann Rotweinglas (größtes Glas ganz oben). Das <b>Richtglas</b> (Wein des Hauptgangs) steht genau über dem Hauptgangmesser. Max. 4 Gläser pro Gast — nur am Stiel anfassen.</p>
+    <p>→ Ly đặt phía <b>trên bên phải</b> theo đường chéo: ly nước gần đĩa nhất, rồi ly vang trắng, rồi ly vang đỏ (ly to nhất ở trên cùng). Tối đa 4 ly/khách, chỉ cầm chân ly.</p>
+    <h3 class="sub">3. Brotteller</h3>
+    <p><span class="term" data-de="Brotteller" data-vi="đĩa bánh mì">Brotteller</span> <b>links oben</b> mit <span class="term" data-de="Buttermesser" data-vi="dao phết bơ">Buttermesser</span> darauf.</p>
+    <p>→ Đĩa bánh mì ở trên bên trái, có dao phết bơ đặt trên.</p>
+    <div class="hint">⚠️ HỌC THUỘC: Gläser OBEN RECHTS · Brotteller OBEN LINKS.</div>`,
+              qa: [
+                { q: "Wo stehen die Gläser im Gedeck?", qVi: "Ly đặt ở đâu?", a: "Oben rechts in diagonaler Linie — Wasserglas dem Teller am nächsten, dann Weißwein, dann Rotwein.", aVi: "Trên bên phải theo đường chéo — ly nước gần đĩa nhất, rồi vang trắng, rồi vang đỏ.", why: "Feste Gedeck-Regel; größtes Glas (Rotwein) ganz oben.", src: "DEHOGA Service-Grundlagen" },
+                { q: "Wo liegt der Brotteller?", qVi: "Đĩa bánh mì đặt ở đâu?", a: "Links oben, mit Buttermesser darauf.", aVi: "Trên bên trái, có dao phết bơ đặt trên.", why: "Links = Brotseite (Eselsbrücke: 'Brot links').", src: "IHK Ausbildungsrahmenplan" },
+              ],
+            },
+          ],
+        },
+        {
+          id: "gaestekommunikation",
+          badge: "Thema 3",
+          title: "Gästekommunikation",
+          items: [
+            {
+              id: "bfk5-kommunikation",
+              icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
+              name: "Begrüßung, Beratung & Zusatzverkauf",
+              desc: "Aktives Zuhören, Empfehlungen, dezentes Upselling.",
+              content: `<h2>Begrüßung, Beratung &amp; Zusatzverkauf</h2>
+    <div class="hint">Thema 3 · Gästekommunikation — Der Gast ist König, aber ehrlich beraten.</div>
+    <h3 class="sub">1. Grundlagen der Kommunikation</h3>
+    <ul>
+      <li>Lächeln, <span class="term" data-de="Blickkontakt" data-vi="giao tiếp bằng mắt">Blickkontakt</span>, aufrechte <span class="term" data-de="Körpersprache" data-vi="ngôn ngữ cơ thể">Körpersprache</span>.</li>
+
+      <li><span class="term" data-de="Aktives Zuhören" data-vi="lắng nghe chủ động">Aktives Zuhören</span>: ausreden lassen, nicht unterbrechen, nachfragen.</li>
+      <li>Offene Fragen stellen: <i>„Was darf ich Ihnen empfehlen?"</i></li>
+      <li>Namen merken und verwenden, wenn bekannt.</li>
+    </ul>
+    <h3 class="sub">2. Beratung &amp; <span class="term" data-de="Zusatzverkauf" data-vi="bán thêm (upselling)">Zusatzverkauf</span></h3>
+    <p>Speisen/Getränke ehrlich empfehlen (Tageskarte, Saisonales). Zusatzverkauf <b>dezent</b>: Aperitif, Dessert, Kaffee/Digestif anbieten — nie aufdringlich.</p>
+    <p>→ Tư vấn trung thực (món trong ngày, món theo mùa). Bán thêm một cách tinh tế: gợi ý khai vị, tráng miệng, cà phê — không chèo kéo.</p>
+    <p><b>Zwei-Alternativen-Technik</b> (statt Ja/Nein-Frage): <i>„Darf ich Ihnen den Espresso mit einer Praline servieren oder lieber unseren Eierlikörkuchen?"</i> — Empfehlung konkret aussprechen: <i>„Zu Ihrem Essen passt besonders gut der …"</i></p>
+    <p>→ Kỹ thuật đưa <b>2 lựa chọn</b> thay vì hỏi có/không. Gợi ý cụ thể: „Món này hợp nhất với …"</p>
+    <p>🎬 <a href="https://www.youtube.com/watch?v=YtxTeLji5Lg" target="_blank" rel="noopener">Video: 1000 wichtige Sätze für Kellner:innen (sprichdeutsch)</a></p>
+    <div class="hint">⚠️ HỌC THUỘC: Zuhören → Beraten → dezent verkaufen (nie aufdringlich).</div>`,
+              qa: [
+                { q: "Was bedeutet 'aktives Zuhören' im Service?", qVi: "'Lắng nghe chủ động' trong phục vụ là gì?", a: "Ausreden lassen, nicht unterbrechen, nachfragen, Verständnis zeigen.", aVi: "Để khách nói hết, không ngắt lời, hỏi lại, thể hiện sự thấu hiểu.", why: "Basis für Beratung und Reklamationsbehandlung.", src: "DEHOGA Service-Grundlagen" },
+                { q: "Wie soll Zusatzverkauf sein?", qVi: "Bán thêm nên như thế nào?", a: "Dezent und ehrlich — Empfehlungen geben, nie aufdringlich verkaufen.", aVi: "Tinh tế và trung thực — gợi ý chứ không chèo kéo.", why: "Aufdringlichkeit verärgert Gäste und schadet dem Ruf.", src: "IHK Ausbildungsrahmenplan" },
+              ],
+            },
+            {
+              id: "bfk5-reklamation",
+              icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
+              name: "Reklamationsbehandlung",
+              desc: "Beschwerden ernst nehmen — die 5 Schritte.",
+              content: `<h2>Reklamationsbehandlung</h2>
+    <div class="hint">Thema 3 · Gästekommunikation — Eine gut gelöste Reklamation bindet Gäste.</div>
+    <h3 class="sub">Die 5 Schritte der Reklamationsbehandlung</h3>
+    <table>
+    <tr><th>#</th><th>Schritt</th><th>Nghĩa</th></tr>
+    <tr><td>1</td><td><b>Zuhören</b> — ausreden lassen, nicht unterbrechen</td><td>lắng nghe, không ngắt lời</td></tr>
+    <tr><td>2</td><td><b>Verständnis zeigen &amp; entschuldigen</b></td><td>thấu hiểu &amp; xin lỗi</td></tr>
+    <tr><td>3</td><td><b>Lösung anbieten</b> (Ersatzgericht, neues Getränk, Nachlass)</td><td>đề xuất giải pháp</td></tr>
+    <tr><td>4</td><td><b>Danken</b> — für den Hinweis ehrlich bedanken</td><td>cảm ơn vì đã góp ý</td></tr>
+    <tr><td>5</td><td><b>Nachfassen &amp; dokumentieren</b> — zufrieden? intern notieren</td><td>hỏi lại &amp; ghi chép</td></tr>
+    </table>
+    <h3 class="sub">Grundsätze</h3>
+    <ul>
+      <li>Reklamation <b>immer ernst nehmen</b> — nie mit dem Gast streiten, keine Schuld zuweisen.</li>
+      <li>Ruhig und freundlich bleiben, auch bei schwierigen Gästen.</li>
+      <li>Beschwerde als <b>Chance</b> sehen — ein gut gelöster Fehler bindet stärker als ein Abend ohne Fehler.</li>
+      <li>Bei Beleidigung/Bedrohung: <b>keine</b> Entschuldigung — Kollegen/Vorgesetzten einbeziehen.</li>
+      <li>Beispiel-Formulierung: <i>„Entschuldigung. Sie erhalten natürlich sofort ein neues Gericht in der gewünschten Garstufe."</i></li>
+    </ul>
+    <div class="hint">⚠️ HỌC THUỘC: Zuhören → Entschuldigen → Lösen → Danken → Nachfassen. Nie streiten!</div>`,
+              qa: [
+                { q: "Nennen Sie die Schritte der Reklamationsbehandlung.", qVi: "Nêu các bước xử lý khiếu nại.", a: "Zuhören, Verständnis zeigen & entschuldigen, Lösung anbieten, danken, nachfassen & dokumentieren.", aVi: "Lắng nghe, thấu hiểu & xin lỗi, đề xuất giải pháp, cảm ơn, hỏi lại & ghi chép.", why: "Standardablauf (5 Schritte) im Beschwerdemanagement.", src: "DEHOGA Service-Grundlagen" },
+                { q: "Was darf man bei einer Reklamation niemals tun?", qVi: "Khi bị khiếu nại tuyệt đối không được làm gì?", a: "Nie mit dem Gast streiten oder ihm die Schuld zuweisen.", aVi: "Không bao giờ cãi nhau với khách hay đổ lỗi cho khách.", why: "Der Gast muss sich ernst genommen fühlen.", src: "IHK Ausbildungsrahmenplan" },
+              ],
+            },
+          ],
+        },
+        {
+          id: "menueservice",
+          badge: "Thema 4",
+          title: "Menüservice",
+          items: [
+            {
+              id: "bfk5-menuefolge",
+              icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
+              name: "Menüfolge — klassische Reihenfolge",
+              desc: "Vom Aperitif bis zum Digestif: die klassische Gangfolge.",
+              content: `<h2>Menüfolge — klassische Reihenfolge</h2>
+    <div class="hint">Thema 4 · Menüservice — Die festgelegte Abfolge eines klassischen Menüs.</div>
+    <h3 class="sub">Klassische <span class="term" data-de="Menüfolge" data-vi="trình tự các món trong thực đơn">Menüfolge</span></h3>
+    <table>
+    <tr><th>#</th><th>Gang</th><th>Ví dụ</th></tr>
+    <tr><td>1</td><td><span class="term" data-de="Aperitif" data-vi="đồ uống khai vị">Aperitif</span></td><td>Sekt, Sherry</td></tr>
+    <tr><td>2</td><td>Kalte <span class="term" data-de="Vorspeise" data-vi="món khai vị">Vorspeise</span></td><td>Räucherlachs, Carpaccio</td></tr>
+    <tr><td>3</td><td><span class="term" data-de="Suppe" data-vi="súp">Suppe</span></td><td>Kraftbrühe, Cremesuppe</td></tr>
+    <tr><td>4</td><td>Warme <span class="term" data-de="Vorspeise" data-vi="món khai vị">Vorspeise</span></td><td>Strudel, Pasta</td></tr>
+    <tr><td>5</td><td><span class="term" data-de="Fisch" data-vi="món cá">Fisch</span></td><td>gebratenes Fischfilet</td></tr>
+    <tr><td>6</td><td><span class="term" data-de="Sorbet" data-vi="kem trái cây (làm sạch vị)">Sorbet</span> (zur Erfrischung)</td><td>Zitronensorbet</td></tr>
+    <tr><td>7</td><td><span class="term" data-de="Hauptgang" data-vi="món chính">Hauptgang</span> (Fleisch)</td><td>Rinderfilet, Ente</td></tr>
+    <tr><td>8</td><td>(Warmes) <span class="term" data-de="Dessert" data-vi="món tráng miệng">Dessert</span></td><td>Mousse, Eis</td></tr>
+    <tr><td>9</td><td><span class="term" data-de="Käse" data-vi="phô mai">Käse</span></td><td>Käseplatte</td></tr>
+    <tr><td>10</td><td>Kaffee / <span class="term" data-de="Digestif" data-vi="rượu tiêu hóa (sau ăn)">Digestif</span></td><td>Espresso, Cognac</td></tr>
+    </table>
+    <p>→ Thứ tự kinh điển: khai vị lạnh → súp → khai vị nóng → cá → sorbet làm sạch vị → món chính (thịt) → tráng miệng → phô mai → cà phê/rượu tiêu hóa. Modern verkürzt: Vorspeise/Suppe → Hauptgang → Dessert/Käse.</p>
+    <div class="hint">⚠️ HỌC THUỘC: Fisch VOR Fleisch · Sorbet in der Mitte · Dessert VOR Käse.</div>`,
+              qa: [
+                { q: "Nennen Sie die klassische Menüfolge.", qVi: "Nêu trình tự thực đơn kinh điển.", a: "Aperitif, kalte Vorspeise, Suppe, warme Vorspeise, Fisch, Sorbet, Hauptgang, (warmes) Dessert, Käse, Kaffee/Digestif.", aVi: "Khai vị lạnh, súp, khai vị nóng, cá, sorbet, món chính, tráng miệng, phô mai, cà phê/rượu tiêu hóa.", why: "Feste Reihenfolge im klassischen Menüservice.", src: "DEHOGA Service-Grundlagen" },
+                { q: "Wozu dient das Sorbet im Menü?", qVi: "Sorbet trong thực đơn có tác dụng gì?", a: "Zur Erfrischung/Neutralisierung des Gaumens zwischen den Gängen.", aVi: "Làm sạch/làm mới vị giác giữa các món.", why: "Vorbereitung auf den Hauptgang.", src: "IHK Ausbildungsrahmenplan" },
+              ],
+            },
+            {
+              id: "bfk5-tragen",
+              icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v4"/><path d="M5 8h14l-1.5 12.5a1 1 0 0 1-1-.5z"/></svg>',
+              name: "Tragen, Servierregeln & Ausdecken",
+              desc: "Teller tragen, Eindecken/Ausdecken, Cloche.",
+              content: `<h2>Tragen, Servierregeln &amp; Ausdecken</h2>
+    <div class="hint">Thema 4 · Menüservice — Technik und Regeln am Tisch.</div>
+    <h3 class="sub">1. Tragen</h3>
+    <ul>
+      <li>Teller auf dem <b>linken Unterarm</b> / der linken Hand tragen — mit <b>rechts</b> servieren.</li>
+      <li>Maximal <b>2–3 Teller</b> gleichzeitig (nie stapeln!).</li>
+      <li>Tablett mit der linken Hand tragen, mit rechts anbieten.</li>
+    </ul>
+    <p>→ Bưng đĩa bằng <b>tay trái</b> (cẳng tay trái), dọn bằng <b>tay phải</b>. Tối đa 2–3 đĩa một lúc, không chồng đĩa lên nhau.</p>
+    <p><b>3-Teller-Technik:</b> 1. Teller mit der linken Hand am Tellerrand (Daumen/Zeigefinger), 2. Teller auf Daumenballen &amp; Handgelenk, 3. Teller in der rechten Hand. Abstellen in umgekehrter Reihenfolge. <b>Nie</b> Teller wie einen Turm aufeinander stapeln.</p>
+    <p>🎬 <a href="https://www.youtube.com/watch?v=nMXwJ05tLZk" target="_blank" rel="noopener">Video: Wie trägt man drei Teller richtig?</a> · <a href="https://www.youtube.com/watch?v=bFExAOpzPoo" target="_blank" rel="noopener">Video: 3 Teller tragen — Anleitung</a></p>
+    <h3 class="sub">2. <span class="term" data-de="Eindecken" data-vi="trải thêm dao nĩa cho món tiếp theo">Eindecken</span> &amp; <span class="term" data-de="Ausdecken" data-vi="dọn bớt dao nĩa/đĩa đã dùng">Ausdecken</span></h3>
+    <p>Zwischen den Gängen: benutztes Geschirr/Besteck <b>ausdecken</b> (abräumen), Besteck für den nächsten Gang <b>eindecken</b> (auflegen).</p>
+    <p>→ Giữa các món: dọn đĩa/dụng cụ đã dùng, trải thêm dao nĩa cho món tiếp theo.</p>
+    <h3 class="sub">3. <span class="term" data-de="Cloche" data-vi="nắp đậy đĩa (speiseglocke)">Cloche</span> (Speiseglocke)</h3>
+    <p>Bei mehreren Gästen die Cloche <b>gleichzeitig</b> vor allen Gästen abheben.</p>
+
+    <p>→ Khi nhiều khách, nhấc nắp đậy đĩa <b>đồng thời</b> trước mặt mọi người.</p>
+    <h3 class="sub">4. Einschenken</h3>
+    <p>Von <b>rechts einschenken</b>, <span class="term" data-de="Etikett" data-vi="nhãn chai">Etikett</span> der Flasche zum Gast zeigen.</p>
+    <div class="hint">⚠️ HỌC THUỘC: Links tragen · rechts servieren · max. 3 Teller · Cloche gleichzeitig.</div>`,
+              qa: [
+                { q: "Wie werden Teller getragen und serviert?", qVi: "Bưng và dọn đĩa như thế nào?", a: "Auf dem linken Unterarm tragen, mit rechts servieren — max. 2–3 Teller.", aVi: "Bưng bằng cẳng tay trái, dọn bằng tay phải — tối đa 2–3 đĩa.", why: "Rechte Hand bleibt frei zum Servieren von rechts.", src: "DEHOGA Service-Grundlagen" },
+                { q: "Was bedeuten Eindecken und Ausdecken?", qVi: "Eindecken và Ausdecken là gì?", a: "Ausdecken: benutztes Geschirr abräumen; Eindecken: Besteck für den nächsten Gang auflegen.", aVi: "Ausdecken: dọn đĩa đã dùng; Eindecken: trải dao nĩa cho món tiếp.", why: "Wechsel zwischen den Menügängen.", src: "IHK Ausbildungsrahmenplan" },
+              ],
+            },
+            {
+              id: "bfk5-servierarten",
+              icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 17a6.5 6.5 0 0 1 13 0"/><path d="M3 17h18"/><path d="M12 7.3V6"/><circle cx="12" cy="5" r="1"/><path d="M3.5 20h17"/></svg>',
+              name: "Servierarten: amerikanisch, englisch, französisch, deutsch",
+              desc: "Tellerservice vs. Plattenservice — die 4 klassischen Arten.",
+              content: `<h2>Servierarten</h2>
+    <div class="hint">Thema 4 · Menüservice — Ausbildungsrahmenplan: Full Service, Counterservice, Selbstbedienung, Außer-Haus-Verkauf.</div>
+    <table>
+    <tr><th>Art</th><th>Prinzip</th><th>Wo?</th></tr>
+    <tr><td><b>Amerikanisch</b> (Tellerservice)</td><td>Speisen in der Küche <b>fertig angerichtet</b>; Teller von rechts eingesetzt</td><td>Standard in Mittelklasse-Lokalen</td></tr>
+    <tr><td><b>Englisch</b> (Vorlegeservice)</td><td>Fleisch wird <b>am Tisch tranchiert</b> und vorgelegt; gegen den Uhrzeigersinn, von rechts</td><td>gehobene Lokale</td></tr>
+    <tr><td><b>Französisch</b></td><td>Anrichten &amp; Tranchieren am <span class="term" data-de="Guéridon" data-vi="xe đẩy phục vụ bên bàn">Guéridon</span> (Beistelltisch); aufwendigste Form</td><td>exklusive Restaurants</td></tr>
+    <tr><td><b>Deutsch</b> (Platten-/Schüsselservice)</td><td>Platten auf den Tisch, <b>Gast bedient sich selbst</b>; leerer Teller von rechts</td><td>größere Gesellschaften</td></tr>
+    </table>
+    <p>→ Mỹ: dọn đĩa đã bày sẵn từ bếp. Anh: xẻ thịt tại bàn. Pháp: bày/xẻ trên xe Guéridon. Đức: đặt khay lên bàn, khách tự lấy.</p>
+    <p><b>Gloschenservice:</b> Teller unter der <span class="term" data-de="Cloche" data-vi="nắp đậy đĩa">Cloche</span> (Speiseglocke) — synchronisiertes Servieren und Abheben vor dem Gast; Zeichen für Exklusivität.</p>
+    <p>🖼️ <a href="https://old.easterntabletop.com/Photos/Product/9410_2.jpg" target="_blank" rel="noopener">Bild: Cloche (Speiseglocke)</a></p>
+    <div class="hint">⚠️ HỌC THUỘC: Amerikanisch = Teller fertig · Englisch = Tranchieren am Tisch · Französisch = Guéridon · Deutsch = Gast bedient sich selbst.</div>`,
+              qa: [
+                { q: "Was ist der Unterschied zwischen amerikanischem und deutschem Service?", qVi: "Phục vụ kiểu Mỹ và kiểu Đức khác nhau thế nào?", a: "Amerikanisch: Teller in der Küche fertig angerichtet. Deutsch: Platten auf den Tisch — Gast bedient sich selbst.", aVi: "Mỹ: đĩa bày sẵn từ bếp. Đức: đặt khay lên bàn, khách tự lấy.", why: "Kernunterscheidung der Servierarten.", src: "DEHOGA Service-Grundlagen" },
+                { q: "Wo wird beim französischen Service tranchiert?", qVi: "Phục vụ kiểu Pháp xẻ thịt ở đâu?", a: "Am Guéridon — dem Beistelltisch im Gastraum.", aVi: "Trên xe Guéridon — bàn phụ trong phòng ăn.", why: "Französischer Service = aufwendigste Form mit Guéridon.", src: "IHK Ausbildungsrahmenplan" },
+              ],
+            },
+          ],
+        },
+      ],
+      quiz: [
+        { theme: "bfk5-begruessung", cat: "Serviceablauf", q: "In welcher Reihenfolge werden Gäste platziert?", opts: ["Herren zuerst, dann Damen", "Damen zuerst, dann Herren, Gastgeber zuletzt", "Gastgeber zuerst, dann alle anderen", "Nach Alter, ohne Regel"], a: 1, ex: "Damen zuerst, dann Herren — der Gastgeber zuletzt." },
+        { theme: "bfk5-begruessung", cat: "Serviceablauf", q: "Was gehört zur Mise en place vor dem Service?", opts: ["Nur die Kasse zählen", "Tische eindecken, Besteck/Gläser prüfen, Erscheinungsbild kontrollieren", "Nur die Speisekarte lesen", "Nichts — man beginnt direkt"], a: 1, ex: "Vollständige Vorbereitung: Gedecke, Karten, Erscheinungsbild." },
+        { theme: "bfk5-bestellaufnahme", cat: "Serviceablauf", q: "Was muss bei der Bestellaufnahme unbedingt notiert werden?", opts: ["Nur die Tischnummer", "Sonderwünsche und Allergien", "Nur die Uhrzeit", "Nichts — man merkt es sich"], a: 1, ex: "Sonderwünsche & Allergien notieren + Bestellung wiederholen." },
+        { theme: "bfk5-bestellaufnahme", cat: "Serviceablauf", q: "Was bedeutet 'Bonieren'?", opts: ["Trinkgeld kassieren", "Bestellung an Küche/Bar weitergeben", "Tisch reservieren", "Rechnung schreiben"], a: 1, ex: "Per Bon/Kassensystem an Küche und Bar weitergeben." },
+        { theme: "bfk5-servieren", cat: "Serviceablauf", q: "Von welcher Seite wird in Deutschland serviert?", opts: ["Von links", "Von rechts", "Von vorne", "Egal"], a: 1, ex: "Deutsche Regel: von rechts servieren." },
+        { theme: "bfk5-servieren", cat: "Serviceablauf", q: "Was gehört zum Nachservice?", opts: ["Sofort kassieren", "Nachfragen ob es geschmeckt hat, nachschenken", "Tisch neu eindecken", "Nichts mehr tun"], a: 1, ex: "'Hat es Ihnen geschmeckt?' + nachschenken." },
+        { theme: "bfk5-abraumen", cat: "Serviceablauf", q: "Wann darf abgeräumt werden?", opts: ["Sobald ein Gast fertig ist", "Erst wenn alle am Tisch fertig sind — von rechts", "Vor dem Dessert", "Nie"], a: 1, ex: "Von rechts, erst wenn ALLE fertig sind." },
+        { theme: "bfk5-abraumen", cat: "Serviceablauf", q: "Wann wird die Rechnung gebracht?", opts: ["Sofort nach dem Hauptgang", "Nur auf Wunsch des Gastes", "Mit dem Dessert", "Vor der Bestellung"], a: 1, ex: "Nur auf Wunsch ('Zahlen, bitte.')." },
+        { theme: "bfk5-gedeck-grundlagen", cat: "Gedeck", q: "Wo liegen Messer und Gabel?", opts: ["Messer links, Gabel rechts", "Messer rechts (Schneide innen), Gabel links", "Beide rechts", "Beide links"], a: 1, ex: "Messer rechts, Schneide zum Teller; Gabel links." },
+        { theme: "bfk5-gedeck-grundlagen", cat: "Gedeck", q: "In welcher Reihenfolge wird Besteck benutzt?", opts: ["Von innen nach außen", "Von außen nach innen", "Beliebig", "Nur ein Besteck"], a: 1, ex: "Von außen nach innen — äußeres Besteck = erster Gang." },
+        { theme: "bfk5-gedeck-arten", cat: "Gedeck", q: "Wo stehen die Gläser?", opts: ["Oben links", "Oben rechts", "In der Tischmitte", "Unterm Tisch"], a: 1, ex: "Oben rechts über dem Messer." },
+        { theme: "bfk5-gedeck-arten", cat: "Gedeck", q: "Wo liegt der Brotteller?", opts: ["Rechts oben", "Links oben, mit Buttermesser", "In der Mitte", "Gibt es nicht"], a: 1, ex: "Links oben + Buttermesser darauf." },
+        { theme: "bfk5-kommunikation", cat: "Gästekommunikation", q: "Was ist 'aktives Zuhören'?", opts: ["Schnell antworten", "Ausreden lassen, nicht unterbrechen, nachfragen", "Notizen machen ohne hinzuhören", "Den Gast ignorieren"], a: 1, ex: "Ausreden lassen, nachfragen, Verständnis zeigen." },
+        { theme: "bfk5-kommunikation", cat: "Gästekommunikation", q: "Wie soll Zusatzverkauf sein?", opts: ["Aufdringlich und laut", "Dezent und ehrlich", "Gar nicht", "Nur bei Stammgästen"], a: 1, ex: "Dezent empfehlen — nie aufdringlich." },
+        { theme: "bfk5-reklamation", cat: "Gästekommunikation", q: "Was ist der erste Schritt bei einer Reklamation?", opts: ["Sofort widersprechen", "Zuhören — ausreden lassen", "Den Chef rufen", "Den Gast ignorieren"], a: 1, ex: "Zuhören ohne zu unterbrechen." },
+        { theme: "bfk5-reklamation", cat: "Gästekommunikation", q: "Was darf man bei einer Reklamation niemals tun?", opts: ["Sich entschuldigen", "Mit dem Gast streiten / Schuld zuweisen", "Eine Lösung anbieten", "Dokumentieren"], a: 1, ex: "Nie streiten, nie Schuld zuweisen." },
+        { theme: "bfk5-menuefolge", cat: "Menüservice", q: "Was kommt im klassischen Menü nach der Suppe?", opts: ["Dessert", "Warme Vorspeise / Fisch", "Käse", "Kaffee"], a: 1, ex: "Reihenfolge: Suppe → warme Vorspeise/Fisch → Sorbet → Hauptgang." },
+        { theme: "bfk5-menuefolge", cat: "Menüservice", q: "Wozu dient das Sorbet?", opts: ["Als Dessert", "Zur Erfrischung des Gaumens", "Als Vorspeise", "Keine Funktion"], a: 1, ex: "Neutralisiert den Gaumen vor dem Hauptgang." },
+        { theme: "bfk5-tragen", cat: "Menüservice", q: "Wie werden Teller getragen?", opts: ["Auf dem Kopf", "Linker Unterarm, mit rechts servieren, max. 2–3 Teller", "Gestapelt zu fünft", "Nur mit Tablett"], a: 1, ex: "Links tragen, rechts servieren, max. 2–3 Teller." },
+        { theme: "bfk5-tragen", cat: "Menüservice", q: "Was ist 'Ausdecken'?", opts: ["Tisch abwischen", "Benutztes Geschirr/Besteck zwischen Gängen abräumen", "Neu eindecken morgens", "Stühle stapeln"], a: 1, ex: "Ausdecken = abräumen; Eindecken = neu auflegen." },
+        { theme: "bfk5-servierarten", cat: "Menüservice", q: "Beim amerikanischen Service werden die Speisen …", opts: ["am Tisch tranchiert", "in der Küche fertig auf dem Teller angerichtet", "vom Gast selbst vom Tablett genommen", "am Guéridon angerichtet"], a: 1, ex: "Amerikanisch = Tellerservice: Küche richtet an, Teller von rechts." },
+        { theme: "bfk5-servierarten", cat: "Menüservice", q: "Was ist der Guéridon beim französischen Service?", opts: ["Ein Weinkühler", "Der Beistelltisch zum Anrichten/Tranchieren im Gastraum", "Eine Suppenart", "Der Kassentresen"], a: 1, ex: "Guéridon = Beistelltisch; aufwendigste Serviceform." },
+        { theme: "bfk5-abraumen", cat: "Serviceablauf", q: "Wie signalisiert der Gast 'Ich bin fertig'?", opts: ["Besteck kreuzweise auf dem Teller", "Bestecke parallel, Griffe nach rechts unten", "Besteck aufs Tischtuch legen", "Serviette auf den Teller"], a: 1, ex: "Parallel, Griffe rechts unten = fertig; ungekreuzt = Pause." },
+      ],
+    },
     ];
   }
 

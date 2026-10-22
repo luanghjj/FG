@@ -5838,7 +5838,7 @@ const BFK_LEVELS = [
     ],
   },
   {
-    id:"5", code:"BfK-5", icon:"<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M5 3v7a2 2 0 0 0 4 0V3'/><path d='M7 10v11'/><path d='M17 3c-1.5 0-2.5 2-2.5 5s1 4 2.5 4 2.5-1 2.5-4-1-5-2.5-5z'/><path d='M17 12v9'/></svg>", accent:"#AF52DE", soft:"#F6EDFC", ready:false,
+    id:"5", code:"BfK-5", icon:"<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M5 3v7a2 2 0 0 0 4 0V3'/><path d='M7 10v11'/><path d='M17 3c-1.5 0-2.5 2-2.5 5s1 4 2.5 4 2.5-1 2.5-4-1-5-2.5-5z'/><path d='M17 12v9'/></svg>", accent:"#AF52DE", soft:"#F6EDFC", ready:true,
     name:"BfK-5 · Service Praxis",
     desc:"Service-Praxis mit BSI – Gerichte & Getränke servieren.",
     teacher:"BSI (Brunnenkant)",
@@ -8046,7 +8046,7 @@ const ROUTES = {
   "#/bfk/1/quiz":  {view:"v-bfk1-quiz", crumbs:[["BfK","#/bfk"],["BfK-1","#/bfk/1"],["Quiz","#/bfk/1/quiz"]], bfk1quiz:true},
   "#/bfk/1/pruefungen":{view:"v-fach-pruefungen",crumbs:[], redirect:"#/fach/bfk1/pruefungen"},
   "#/bfk/2":       {view:"v-bfk-level", crumbs:[["BfK","#/bfk"],["BfK-2","#/bfk/2"]], level:"2"},
-  "#/bfk/5":       {view:"v-placeholder", crumbs:[["BfK","#/bfk"],["BfK-5","#/bfk/5"]], placeholder:true},
+  "#/bfk/5":       {view:"v-fach", crumbs:[["BfK","#/bfk"],["BfK-5","#/bfk/5"]], redirect:"#/fach/bfk5"},
   "#/bfk/6":       {view:"v-placeholder", crumbs:[["BfK","#/bfk"],["BfK-6","#/bfk/6"]], placeholder:true},
   "#/bfk/s":       {view:"v-placeholder", crumbs:[["BfK","#/bfk"],["BfK-S","#/bfk/s"]], placeholder:true},
   "#/bfk/2/fleisch": {view:"v-fleisch",crumbs:[["BfK","#/bfk"],["BfK-2","#/bfk/2"],["Fleisch","#/bfk/2/fleisch"]]},
