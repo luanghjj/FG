@@ -1,10 +1,10 @@
 /* Prüfungsplan Winter 2026 · Abschlussprüfung Fachkraft für Gastronomie (BW)
-   Feste Tagesphasen 27.10.–10.11.2026: erst lernen, dann üben, zum Schluss Probeprüfungen mit Timer.
+   Feste Tagesphasen 28.10.–10.11.2026: zuerst BfK, GK/WK kurz vor der Prüfung; erst lernen, dann üben, zum Schluss Probeprüfungen mit Timer.
    Route #/plan · View #v-plan · Fortschritt in localStorage. */
 (function () {
   'use strict';
 
-  const DONE_KEY = 'pruefungsplan_w2026_done_v1';
+  const DONE_KEY = 'pruefungsplan_w2026_done_v2';
   const TIMER_KEY = 'pruefungsplan_timer_v1';
 
   // Bausteine
@@ -33,65 +33,69 @@
 
   const themes = (f, ids) => ids.map((id) => th(f, id));
 
+  // Reihenfolge: zuerst BfK (GVW), dann Deutsch, GK und WK erst kurz vor dem 10.11., damit sie frisch im Kopf sind.
+  const WK_GRUND_A = WK_GRUND.slice(0, 7);
+  const WK_GRUND_B = WK_GRUND.slice(7);
+  const WK_ALL = WK_GRUND.concat(WK_FS1);
+  const GK_A = GK_THEMEN.slice(0, 6);
+  const GK_B = GK_THEMEN.slice(6);
+
   // kind: lernen · ueben · wiederholen · pruefung · pause · termin
   const DAYS = [
-    { date: '2026-10-27', title: 'WK Grundstufe', sub: 'Ausbildung, Arbeitsrecht, Lohn, Steuer & Sozialversicherung', mode: 'frei', blocks: [
-      { von: '09:00', bis: '11:30', kind: 'lernen', title: 'Themen lesen', note: 'Đọc bản tiếng Đức trước, chỉ mở tiếng Việt khi bí. Ghi bảng con số (Fristen, %) ra giấy.', actions: themes('wiko', WK_GRUND) },
-      { von: '13:30', bis: '15:00', kind: 'ueben', title: 'Quiz WK Grundstufe', note: 'Làm hết một lượt, câu sai tự vào Fehlerbuch.', actions: [quiz('wiko', WK_GRUND, 'Quiz starten')] },
-      { von: '16:30', bis: '17:30', kind: 'wiederholen', title: 'Fehlerbuch WK', note: 'Làm lại câu sai đến khi Fehlerbuch trống.', actions: [fehler('wiko')] },
-    ] },
-    { date: '2026-10-28', title: 'WK Fachstufe I', sub: 'Rechtsgeschäfte, Kaufvertrag, Verbraucherschutz, Geld, Kredit, Bürgschaft, Überschuldung', mode: 'frei', blocks: [
-      { von: '09:00', bis: '11:30', kind: 'lernen', title: 'Themen lesen', note: 'Trọng tâm: Geschäftsfähigkeit, Kaufvertrag-Störungen, Widerruf 14 Tage, Zinsformel.', actions: themes('wiko', WK_FS1) },
-      { von: '13:30', bis: '15:00', kind: 'ueben', title: 'Quiz WK Fachstufe I', note: 'Tự tính tay 2 bài Zinsrechnung trên giấy.', actions: [quiz('wiko', WK_FS1, 'Quiz starten')] },
-      { von: '16:30', bis: '17:30', kind: 'wiederholen', title: 'Fehlerbuch + Grundstufe kurz', note: '10 câu nhanh Grundstufe để không quên phần hôm qua.', actions: [fehler('wiko'), quiz('wiko', WK_GRUND, '10 Fragen Grundstufe', 'quick')] },
-    ] },
-    { date: '2026-10-29', title: 'GVW · Warenlagerung', sub: 'Beschaffung, Bestellung, Warenannahme, Lagerung, Inventur, Warenwirtschaft', mode: 'frei', blocks: [
+    { date: '2026-10-28', title: 'GVW · Warenlagerung', sub: 'Beschaffung, Bestellung, Warenannahme, Lagerung, Inventur, Warenwirtschaft', mode: 'frei', blocks: [
       { von: '09:00', bis: '11:30', kind: 'lernen', title: 'LF2 Beschaffung & Lagerung', note: 'Học thuộc công thức: Meldebestand, Lagerkennzahlen, Lagerdauer, Umschlagshäufigkeit.', actions: themes('bfk1', GVW_LAGER).concat(themes('bfk1', GVW_WW)) },
       { von: '13:30', bis: '15:00', kind: 'ueben', title: 'Quiz Warenlagerung', note: 'Sau quiz, làm 2 câu tự luận LF2 trong Arena.', actions: [quiz('bfk1', GVW_LAGER, 'Quiz LF2'), url('arena.html', 'Arena · Freitext')] },
       { von: '16:30', bis: '17:30', kind: 'wiederholen', title: 'Fehlerbuch BfK-1', note: 'Error deck BfK-1 là Fehlerbuch của phần GVW.', actions: [fehler('bfk1', 'Error deck BfK-1')] },
     ] },
-    { date: '2026-10-30', title: 'GVW · Gasterlebnis & Verkaufsförderung', sub: 'Umgang mit Gästen, Marketing, Beratung, Reklamation', mode: 'frei', blocks: [
+    { date: '2026-10-29', title: 'GVW · Gasterlebnis & Verkaufsförderung', sub: 'Umgang mit Gästen, Marketing, Beratung, Reklamation', mode: 'frei', blocks: [
       { von: '09:00', bis: '11:30', kind: 'lernen', title: 'Gast & Marketing', note: 'Marketing-Mix 4P, AIDA, Verkaufsgespräch, Reklamation (L-E-A-R-N).', actions: themes('bfk1', GVW_GAST).concat([th('bfk2', 'bfk2-verkaufsfoerderung'), th('bfk2', 'bfk2-kommunikation'), th('bfk5', 'bfk5-kommunikation'), th('bfk5', 'bfk5-reklamation')]) },
       { von: '13:30', bis: '15:00', kind: 'ueben', title: 'Quiz Gast & Marketing', note: '', actions: [quiz('bfk1', ['extra-t1', 'extra-t8', 'extra-t9', 'lf9-ls04'], 'Quiz BfK-1'), quiz('bfk2', ['bfk2-verkaufsfoerderung', 'bfk2-kommunikation', 'bfk2-gastgeber-team'], 'Quiz BfK-2'), quiz('bfk5', ['bfk5-kommunikation', 'bfk5-reklamation', 'bfk5-begruessung'], 'Quiz BfK-5')] },
       { von: '16:30', bis: '17:30', kind: 'wiederholen', title: 'GVW gemischt', note: '10 câu trộn cả Lagerung lẫn Marketing.', actions: [quiz('bfk1', GVW_QUIZ, '10 Fragen gemischt', 'quick'), fehler('bfk1', 'Error deck BfK-1')] },
     ] },
-    { date: '2026-10-31', title: 'Gemeinschaftskunde', sub: 'Wahlen, Grundgesetz, Partizipation, Gesellschaft im Wandel', mode: 'frei', blocks: [
-      { von: '09:00', bis: '11:30', kind: 'lernen', title: 'Demokratie & Wahlen', note: 'Wahlgrundsätze, Erst-/Zweitstimme, 5-%-Hürde, Gewaltenteilung, Grundrechte.', actions: themes('gk', GK_THEMEN) },
-      { von: '13:30', bis: '15:00', kind: 'ueben', title: 'Quiz GK + Gesellschaft', note: 'Đọc nhanh Demografie, Migration, Strukturwandel, Sozialstaat rồi làm quiz.', actions: themes('gk', GK_GLE).concat([quiz('gk', GK_THEMEN, 'Quiz GK')]) },
-      { von: '16:30', bis: '17:30', kind: 'wiederholen', title: 'Fehlerbuch GK + Karikatur', note: 'Tập 1 Karikatur theo 3 bước: beschreiben, deuten, beurteilen.', actions: [fehler('gk'), th('gk', 'karikatur-methode')] },
+    { date: '2026-10-30', title: 'Probeprüfung GVW', sub: 'Erster Test unter Zeitdruck', mode: 'frei', blocks: [
+      { von: '09:00', bis: '09:30', kind: 'pruefung', title: 'GVW · 25 Fragen / 25 Min', note: 'Không mở bài học trong lúc làm. Kết quả lưu vào bảng bên dưới.', actions: [exam('bfk1', GVW_QUIZ, 25, 25, 'Probeprüfung GVW')] },
+      { von: '10:00', bis: '11:30', kind: 'wiederholen', title: 'Lücken schließen', note: 'Đọc lại đúng những Thema có câu sai, rồi làm lại Error deck.', actions: [fehler('bfk1', 'Error deck BfK-1'), th('bfk1', 'lf2-ls04')] },
+      { von: '13:30', bis: '15:00', kind: 'ueben', title: 'Freitext GVW', note: 'Viết 2 câu tự luận (1 Lagerung, 1 Gast/Marketing) trong Arena.', actions: [url('arena.html', 'Arena · Freitext')] },
     ] },
-    { date: '2026-11-01', title: 'Deutsch', sub: 'Teil 1 Textverständnis 25 P · Teil 2 Schreibaufgabe 25 P', mode: 'frei', blocks: [
+    { date: '2026-10-31', title: 'Deutsch', sub: 'Teil 1 Textverständnis 25 P · Teil 2 Schreibaufgabe 25 P', mode: 'frei', blocks: [
       { von: '09:00', bis: '11:00', kind: 'lernen', title: 'Prüfungsformat & Textarbeit', note: 'Teil 1: A1 4 Aussagen, A2 8 ableitbare Aussagen, A3 5 Textstellen, A4 Lückentext 16 Lücken (a/b/c). Gạch chân từ khóa trong câu hỏi trước khi đọc bài.', actions: [th('deutsch', 'muster-ka'), th('deutsch', 'text-zu-grafik'), th('gk', 'redemittel'), quiz('deutsch', null, 'Quiz Deutsch')] },
-      { von: '13:30', bis: '14:30', kind: 'ueben', title: 'Schreibaufgabe auf Papier', note: 'Bài viết cho lời kêu gọi đăng bài trên mạng: chọn 3/4 ý, có Zwischenüberschriften, tối đa 2 trang. Bấm giờ 60 phút.', actions: [timer(60, 'Schreibaufgabe')] },
+      { von: '13:30', bis: '14:30', kind: 'pruefung', title: 'Schreibaufgabe · 60 Min', note: 'Bài viết cho lời kêu gọi đăng bài trên mạng: chọn 3/4 ý, có Zwischenüberschriften, tối đa 2 trang.', actions: [timer(60, 'Schreibaufgabe')] },
       { von: '16:00', bis: '17:00', kind: 'wiederholen', title: 'Text kontrollieren', note: 'Tự soát: Anrede/Einleitung, 3 Punkte, Absätze, Schluss, Rechtschreibung (được dùng từ điển).', actions: [] },
     ] },
-    { date: '2026-11-02', title: 'Probeprüfung WK', sub: 'Schule · nur abends', mode: 'abend', blocks: [
-      { von: '19:00', bis: '19:45', kind: 'pruefung', title: 'WK · 30 Fragen / 30 Min', note: 'Không mở bài học trong lúc làm. Kết quả lưu vào bảng bên dưới.', actions: [exam('wiko', WK_GRUND.concat(WK_FS1), 30, 30, 'Probeprüfung WK')] },
-      { von: '19:50', bis: '20:30', kind: 'wiederholen', title: 'Fehlerbuch WK', note: '', actions: [fehler('wiko')] },
+    { date: '2026-11-01', title: 'Generalprobe GVW', sub: 'BfK abschließen · Prüfungszeit nachspielen', mode: 'frei', blocks: [
+      { von: '09:00', bis: '10:30', kind: 'pruefung', title: 'GVW · Generalprobe 90 Min', note: '30 Min quiz, sau đó 60 Min tự luận (Arena) đúng như giờ thi thật.', actions: [exam('bfk1', GVW_QUIZ, 25, 30, 'Generalprobe GVW'), timer(60, 'GVW Freitext'), url('arena.html', 'Arena · Freitext')] },
+      { von: '13:30', bis: '14:30', kind: 'wiederholen', title: 'Error deck BfK-1', note: 'Làm đến khi trống. Từ mai BfK chỉ còn 10 câu ôn nhẹ.', actions: [fehler('bfk1', 'Error deck BfK-1')] },
+      { von: '16:00', bis: '16:45', kind: 'wiederholen', title: 'Deutsch Lückentext', note: '', actions: [quiz('deutsch', null, '10 Fragen Deutsch', 'quick')] },
     ] },
-    { date: '2026-11-03', title: 'Probeprüfung GVW', sub: 'Schule · nur abends', mode: 'abend', blocks: [
-      { von: '19:00', bis: '19:30', kind: 'pruefung', title: 'GVW · 25 Fragen / 25 Min', note: '', actions: [exam('bfk1', GVW_QUIZ, 25, 25, 'Probeprüfung GVW')] },
-      { von: '19:35', bis: '20:30', kind: 'wiederholen', title: 'Error deck + 1 Freitext', note: 'Viết 1 câu tự luận về Lagerung trong Arena.', actions: [fehler('bfk1', 'Error deck BfK-1'), url('arena.html', 'Arena · Freitext')] },
+    { date: '2026-11-02', title: 'GK · Demokratie & Wahlen', sub: 'Schule · nur abends', mode: 'abend', blocks: [
+      { von: '18:30', bis: '19:45', kind: 'lernen', title: 'Themen lesen', note: 'Wahlgrundsätze, Erst-/Zweitstimme, 5-%-Hürde, Gewaltenteilung, Grundrechte.', actions: themes('gk', GK_A) },
+      { von: '19:50', bis: '20:30', kind: 'ueben', title: 'Quiz GK Teil 1', note: 'Câu sai tự vào Fehlerbuch.', actions: [quiz('gk', GK_A, 'Quiz starten')] },
+    ] },
+    { date: '2026-11-03', title: 'GK · Staat & Gesellschaft', sub: 'Schule · nur abends', mode: 'abend', blocks: [
+      { von: '18:30', bis: '19:45', kind: 'lernen', title: 'Themen lesen', note: 'Vertrauensfrage, Misstrauensvotum, Partizipation, Medien. Đọc nhanh Demografie, Migration, Strukturwandel, Sozialstaat.', actions: themes('gk', GK_B).concat(themes('gk', GK_GLE)) },
+      { von: '19:50', bis: '20:30', kind: 'ueben', title: 'Quiz GK Teil 2', note: '', actions: [quiz('gk', GK_B, 'Quiz starten'), fehler('gk')] },
     ] },
     { date: '2026-11-04', title: 'Probeprüfung GK', sub: 'Schule · nur abends', mode: 'abend', blocks: [
-      { von: '19:00', bis: '19:35', kind: 'pruefung', title: 'GK · 25 Fragen / 30 Min', note: '', actions: [exam('gk', GK_THEMEN, 25, 30, 'Probeprüfung GK')] },
-      { von: '19:40', bis: '20:30', kind: 'wiederholen', title: 'Fehlerbuch GK', note: '', actions: [fehler('gk')] },
+      { von: '19:00', bis: '19:35', kind: 'pruefung', title: 'GK · 25 Fragen / 30 Min', note: 'Không mở bài học trong lúc làm.', actions: [exam('gk', GK_THEMEN, 25, 30, 'Probeprüfung GK')] },
+      { von: '19:40', bis: '20:30', kind: 'wiederholen', title: 'Fehlerbuch GK + Karikatur', note: 'Tập 1 Karikatur theo 3 bước: beschreiben, deuten, beurteilen.', actions: [fehler('gk'), th('gk', 'karikatur-methode')] },
     ] },
-    { date: '2026-11-05', title: 'Deutsch Schreibaufgabe', sub: 'Schule · nur abends', mode: 'abend', blocks: [
-      { von: '19:00', bis: '20:00', kind: 'pruefung', title: 'Schreibaufgabe · 60 Min', note: 'Đề tự chọn: ví dụ “Arbeiten in der Gastronomie – was junge Leute wissen sollten”. Chọn 3/4 ý.', actions: [timer(60, 'Schreibaufgabe')] },
-      { von: '20:00', bis: '20:30', kind: 'wiederholen', title: 'Lückentext & Redemittel', note: '', actions: [quiz('deutsch', null, '10 Fragen Deutsch', 'quick'), th('gk', 'redemittel')] },
+    { date: '2026-11-05', title: 'WK · Ausbildung & Arbeitsrecht', sub: 'Schule · nur abends', mode: 'abend', blocks: [
+      { von: '18:30', bis: '19:45', kind: 'lernen', title: 'Themen lesen', note: 'Ghi bảng con số (Fristen, Probezeit, Urlaub, Kündigung) ra giấy.', actions: themes('wiko', WK_GRUND_A) },
+      { von: '19:50', bis: '20:30', kind: 'ueben', title: 'Quiz WK Teil 1', note: '', actions: [quiz('wiko', WK_GRUND_A, 'Quiz starten')] },
     ] },
-    { date: '2026-11-06', title: 'Fehlerbuch-Abend', sub: 'Schule · nur abends · früh schlafen', mode: 'abend', blocks: [
-      { von: '19:00', bis: '20:15', kind: 'wiederholen', title: 'Alle Fehlerbücher leeren', note: 'Mỗi môn 15–20 phút. Không học bài mới.', actions: [fehler('bfk1', 'Error deck BfK-1'), fehler('wiko', 'Fehlerbuch WK'), fehler('gk', 'Fehlerbuch GK'), fehler('deutsch', 'Fehlerbuch Deutsch')] },
+    { date: '2026-11-06', title: 'WK · Mitbestimmung, Lohn & Steuer', sub: 'Schule · nur abends', mode: 'abend', blocks: [
+      { von: '18:30', bis: '19:45', kind: 'lernen', title: 'Themen lesen', note: 'Betriebsrat, JAV, Tarifvertrag, Lohnabrechnung, Steuerklassen, Altersvorsorge.', actions: themes('wiko', WK_GRUND_B) },
+      { von: '19:50', bis: '20:30', kind: 'ueben', title: 'Quiz WK Teil 2', note: '', actions: [quiz('wiko', WK_GRUND_B, 'Quiz starten'), fehler('wiko')] },
     ] },
-    { date: '2026-11-07', title: 'Generalprobe', sub: 'Prüfungszeiten nachspielen', mode: 'frei', blocks: [
-      { von: '09:00', bis: '10:30', kind: 'pruefung', title: 'GVW · Generalprobe 90 Min', note: '30 Min quiz, sau đó 60 Min tự luận (Arena) đúng như giờ thi thật.', actions: [exam('bfk1', GVW_QUIZ, 25, 30, 'Generalprobe GVW'), timer(60, 'GVW Freitext'), url('arena.html', 'Arena · Freitext')] },
-      { von: '13:30', bis: '14:30', kind: 'pruefung', title: 'WK · Generalprobe 60 Min', note: '', actions: [exam('wiko', WK_GRUND.concat(WK_FS1), 40, 60, 'Generalprobe WK')] },
-      { von: '16:00', bis: '17:00', kind: 'wiederholen', title: 'Fehlerbücher', note: '', actions: [fehler('bfk1', 'Error deck BfK-1'), fehler('wiko', 'Fehlerbuch WK')] },
+    { date: '2026-11-07', title: 'WK Fachstufe I', sub: 'Rechtsgeschäfte, Kaufvertrag, Verbraucherschutz, Geld, Kredit, Bürgschaft, Überschuldung', mode: 'frei', blocks: [
+      { von: '09:00', bis: '11:30', kind: 'lernen', title: 'Themen lesen', note: 'Trọng tâm: Geschäftsfähigkeit, Kaufvertrag-Störungen, Widerruf 14 Tage, Zinsformel.', actions: themes('wiko', WK_FS1) },
+      { von: '13:30', bis: '15:00', kind: 'ueben', title: 'Quiz WK Fachstufe I', note: 'Tự tính tay 2 bài Zinsrechnung trên giấy.', actions: [quiz('wiko', WK_FS1, 'Quiz starten')] },
+      { von: '16:30', bis: '17:30', kind: 'wiederholen', title: 'Fehlerbuch WK + GK kurz', note: '10 câu GK để không quên phần đầu tuần.', actions: [fehler('wiko'), quiz('gk', GK_THEMEN, '10 Fragen GK', 'quick')] },
     ] },
-    { date: '2026-11-08', title: 'Ruhig wiederholen', sub: 'Kein neuer Stoff', mode: 'frei', blocks: [
-      { von: '10:00', bis: '11:30', kind: 'wiederholen', title: 'GVW kurz', note: 'Chỉ 10 câu nhanh và đọc lại công thức Lager.', actions: [quiz('bfk1', GVW_QUIZ, '10 Fragen GVW', 'quick'), th('bfk1', 'lf2-ls04')] },
-      { von: '14:00', bis: '17:00', kind: 'pause', title: 'Pause', note: 'Đi dạo, nghỉ ngơi. Không học.', actions: [] },
+    { date: '2026-11-08', title: 'Probeprüfung WK · GVW auffrischen', sub: 'Kein neuer Stoff', mode: 'frei', blocks: [
+      { von: '09:00', bis: '10:00', kind: 'pruefung', title: 'WK · 40 Fragen / 60 Min', note: 'Giống giờ thi thật 13:30 ngày 10.11.', actions: [exam('wiko', WK_ALL, 40, 60, 'Probeprüfung WK')] },
+      { von: '10:15', bis: '11:00', kind: 'wiederholen', title: 'Fehlerbuch WK', note: '', actions: [fehler('wiko')] },
+      { von: '14:00', bis: '15:30', kind: 'wiederholen', title: 'GVW für morgen', note: 'Đọc lại công thức Lager, làm 10 câu nhanh và Error deck.', actions: [th('bfk1', 'lf2-ls04'), quiz('bfk1', GVW_QUIZ, '10 Fragen GVW', 'quick'), fehler('bfk1', 'Error deck BfK-1')] },
       { von: '19:00', bis: '19:30', kind: 'termin', title: 'Tasche packen', note: 'Ausweis, Einladung, 2 Kugelschreiber, Taschenrechner, Rechtschreibwörterbuch (Deutsch). Ngủ sớm.', actions: [] },
     ] },
     { date: '2026-11-09', title: 'Prüfung GVW', sub: 'Gasterlebnis, Verkaufsförderung, Warenlagerung', mode: 'pruefung', blocks: [
