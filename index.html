@@ -801,6 +801,19 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 .qa-avi{white-space:pre-line;color:#3a3a3c;margin-bottom:6px}
 .qa-why{background:var(--warnbg);border-radius:10px;padding:8px 12px;font-size:.9em;color:#6b5400;margin-bottom:6px}
 .qa-src{font-size:.8em;color:var(--muted);border-top:1px dashed var(--line);padding-top:6px;margin-top:6px}
+/* Lang-Split: Deutsch zuerst, Tiếng Việt per Klick (js/lang-split.js) */
+.lang-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 14px}
+.lang-toggle{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 14px;font:inherit;font-size:.86em;font-weight:600;cursor:pointer}
+.lang-toggle svg{width:16px;height:16px}
+.lang-toggle[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.lang-hint{font-size:.76em;color:var(--muted)}
+.lang-de .vi-seg:not(.open),.lang-de .vi-par,.lang-de .vi-col,.lang-de .qa-vi,.lang-de .qa-avi{display:none !important}
+.lang-vi .vi-pill{display:none}
+.vi-seg{color:var(--muted)}
+span.vi-seg.open,.lang-vi span.vi-seg{display:inline}
+.vi-par{color:var(--muted)}
+.vi-pill{display:inline-flex;align-items:center;vertical-align:1px;margin:0 4px;border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:6px;padding:0 6px;font:inherit;font-size:.68em;font-weight:700;letter-spacing:.03em;line-height:1.6;cursor:pointer}
+.vi-pill.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
 /* Theme-Quiz (inline) */
 .tq-list{display:flex;flex-direction:column;gap:14px}
 .tq-item{border:1px solid var(--line);border-radius:14px;padding:14px 15px;background:var(--surface)}
@@ -5219,16 +5232,19 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 <script src="./js/supabase.js?v=17"></script>
 <script src="./js/access.js?v=2"></script>
 <script src="./js/vocab.js?v=26"></script>
+<script src="./js/lang-split.js?v=8"></script>
 <script src="./faecher/bfk1/bfk1-lf2-p1.js?v=2"></script>
 <script src="./faecher/bfk1/bfk1-lf2-p2.js?v=2"></script>
 <script src="./faecher/bfk1/bfk1-lf2-p3.js?v=2"></script>
 <script src="./faecher/bfk1/bfk1-lf2-p4.js?v=1"></script>
 <script src="./faecher/bfk1/bfk1-lf2-p5.js?v=1"></script>
+<script src="./faecher/bfk1/bfk1-lf2-p6.js?v=2"></script>
 <script src="./faecher/bfk1/bfk1-lf2-data.js?v=2"></script>
 <script src="./faecher/bfk1/bfk1-lf3-p1.js?v=1"></script>
 <script src="./faecher/bfk1/bfk1-lf3-p2.js?v=1"></script>
 <script src="./faecher/bfk1/bfk1-lf3-p3.js?v=1"></script>
 <script src="./faecher/bfk1/bfk1-lf3-p4.js?v=1"></script>
+<script src="./faecher/bfk1/bfk1-lf3-p6.js?v=2"></script>
 <script src="./faecher/bfk1/bfk1-lf3-p5.js?v=1"></script>
 <script src="./faecher/bfk1/bfk1-lf3-data.js?v=1"></script>
 <script src="./faecher/bfk1/bfk1-lf6-p1.js?v=1"></script>
@@ -5245,6 +5261,7 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 <script src="./faecher/bfk1/bfk1-lf9-p1.js?v=1"></script>
 <script src="./faecher/bfk1/bfk1-lf9-p2.js?v=1"></script>
 <script src="./faecher/bfk1/bfk1-lf9-p3.js?v=1"></script>
+<script src="./faecher/bfk1/bfk1-lf9-p5.js?v=2"></script>
 <script src="./faecher/bfk1/bfk1-lf9-p4.js?v=1"></script>
 <script src="./faecher/bfk1/bfk1-lf9-data.js?v=1"></script>
 <script src="./faecher/bfk1/bfk1-extra-p1.js?v=2"></script>
@@ -5254,8 +5271,8 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 <script src="./faecher/bfk1/bfk1-extra-p5.js?v=2"></script>
 <script src="./faecher/bfk1/bfk1-extra-p6.js?v=1"></script>
 <script src="./faecher/bfk1/bfk1-extra-data.js?v=1"></script>
-<script src="./faecher/bfk1/bfk1-data.js?v=21"></script>
-<script src="./faecher/bfk1/bfk1-quiz.js?v=17"></script>
+<script src="./faecher/bfk1/bfk1-data.js?v=22"></script>
+<script src="./faecher/bfk1/bfk1-quiz.js?v=18"></script>
 <script src="./faecher/bfk2/bfk2-quiz.js?v=4"></script>
 <script src="./faecher/deutsch/deutsch-quiz.js?v=3"></script>
 <script src="./faecher/gk/gk-gle-data.js?v=2"></script>
@@ -7766,6 +7783,10 @@ function bfk1ThemeSetTab(tabId){
   else if(tabId==="quiz")html=bfk1ThemeQuizHtml(item);
   else if(tabId==="vokabeln") html=bfk1VokabelnHtml(item);
   panel.innerHTML=html;
+  panel.classList.remove('lang-de','lang-vi');
+  if(tabId==="theory"||tabId==="qa"){
+    try{ if(window.LangSplit) LangSplit.mount(panel); }catch(e){}
+  }
   if(tabId==="theory"){
     try{ if(window.enableVocabOn) enableVocabOn(panel); else if(window.bindTerms) bindTerms(panel); }catch(e){}
   }

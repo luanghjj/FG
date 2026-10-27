@@ -65,6 +65,12 @@ window.BFK1_CATALOG = [
         "icon": "📋",
         "name": "LS10 · Warenbestand erfassen (Inventur)",
         "nameVi": "Kiểm kê kho (Inventur)"
+      },
+      {
+        "id": "lf2-ls11",
+        "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><ellipse cx=\"12\" cy=\"14\" rx=\"4\" ry=\"6\"/><path d=\"M12 8V4\"/><path d=\"M9 3l3 1 3-1\"/><path d=\"M8 12H4\"/><path d=\"M8 16H4\"/><path d=\"M16 12h4\"/><path d=\"M16 16h4\"/></svg>",
+        "name": "LS11 · Warenpflege und Schädlingsbefall",
+        "nameVi": "Chăm sóc hàng lưu kho & sinh vật gây hại"
       }
     ]
   },
@@ -77,13 +83,13 @@ window.BFK1_CATALOG = [
       {
         "id": "lf3-ls01",
         "icon": "🧼",
-        "name": "LS01/03 · Hygienebereiche & HACCP",
+        "name": "LS01/03 · Personal-, Betriebs- & Produkthygiene, HACCP",
         "nameVi": "3 Lĩnh vực vệ sinh, HACCP & Xử lý rác"
       },
       {
         "id": "lf3-ls02",
         "icon": "🧪",
-        "name": "LS02 · Reinigungsmittel & Arbeitsschutz",
+        "name": "LS02 · Reinigungs- & Desinfektionsmittel, Arbeitsschutz",
         "nameVi": "Chất tẩy rửa, Piktogramm & An toàn lao động"
       },
       {
@@ -121,6 +127,12 @@ window.BFK1_CATALOG = [
         "icon": "🍳",
         "name": "LS10 · Küchentechnologische Wirkung von Eiern",
         "nameVi": "Tác dụng kỹ thuật bếp của trứng"
+      },
+      {
+        "id": "lf3-ls14",
+        "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"5\" y=\"4\" width=\"14\" height=\"17\" rx=\"2\"/><path d=\"M9 4V3h6v1\"/><path d=\"M9 10h6\"/><path d=\"M9 14h6\"/><path d=\"M9 18h3\"/></svg>",
+        "name": "LS14 · Arbeitsablaufplan für einfache Speisen",
+        "nameVi": "Lập kế hoạch quy trình chế biến món đơn giản"
       },
       {
         "id": "lf3-ls15",
@@ -233,6 +245,42 @@ window.BFK1_CATALOG = [
         "icon": "😤",
         "name": "LS04 · Reklamationen bei der Zahlung",
         "nameVi": "Xử lý khiếu nại khi thanh toán"
+      },
+      {
+        "id": "lf9-ls05",
+        "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M6 2h12v20l-3-2-3 2-3-2-3 2z\"/><path d=\"M9 7h6\"/><path d=\"M9 11h6\"/><path d=\"M9 15h3\"/></svg>",
+        "name": "LS05 · Rechnungserstellung & Preise inkl. USt",
+        "nameVi": "Lập hóa đơn & tính giá gồm thuế GTGT"
+      },
+      {
+        "id": "k2-p6",
+        "icon": "😤",
+        "name": "KA2 · §6 · Reklamationen bei der Zahlung",
+        "nameVi": "Xử lý khiếu nại trong quá trình thanh toán"
+      },
+      {
+        "id": "k2-p7",
+        "icon": "🧭",
+        "name": "KA2 · §7 · L-E-A-R-N — 10 Schritte",
+        "nameVi": "Quy trình 10 bước xử lý phàn nàn theo mô hình L-E-A-R-N"
+      },
+      {
+        "id": "k2-p8",
+        "icon": "🧾",
+        "name": "KA2 · §8 · Rechnung erstellen",
+        "nameVi": "Lập hóa đơn — các thành phần bắt buộc"
+      },
+      {
+        "id": "k2-p9",
+        "icon": "💶",
+        "name": "KA2 · §9 · Preise & Umsatzsteuer berechnen",
+        "nameVi": "Tính giá, thuế GTGT, chiết khấu & thanh toán nhanh"
+      },
+      {
+        "id": "k2-p10",
+        "icon": "🧮",
+        "name": "KA2 · §10 · Rechenfall: Volker Meier",
+        "nameVi": "Bài toán mẫu có lời giải từng bước"
       }
     ]
   },

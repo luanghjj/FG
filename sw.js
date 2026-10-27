@@ -1,5 +1,5 @@
 /* Service Worker – AzubiHub (offline shell + static assets) */
-const CACHE = 'azubihub-v216';
+const CACHE = 'azubihub-v217';
 const PRECACHE = [
   './',
   './arena.html',
@@ -39,6 +39,7 @@ const PRECACHE = [
   './js/access.js',
   './js/guard.js',
   './js/vocab.js',
+  './js/lang-split.js',
   './js/diagrams.js',
   './js/faecher.js',
   './css/statute-theme.css',
@@ -51,11 +52,13 @@ const PRECACHE = [
   './faecher/bfk1/bfk1-lf2-p3.js',
   './faecher/bfk1/bfk1-lf2-p4.js',
   './faecher/bfk1/bfk1-lf2-p5.js',
+  './faecher/bfk1/bfk1-lf2-p6.js',
   './faecher/bfk1/bfk1-lf2-data.js',
   './faecher/bfk1/bfk1-lf3-p1.js',
   './faecher/bfk1/bfk1-lf3-p2.js',
   './faecher/bfk1/bfk1-lf3-p3.js',
   './faecher/bfk1/bfk1-lf3-p4.js',
+  './faecher/bfk1/bfk1-lf3-p6.js',
   './faecher/bfk1/bfk1-lf3-p5.js',
   './faecher/bfk1/bfk1-lf3-data.js',
   './faecher/bfk1/bfk1-lf6-p1.js',
@@ -72,6 +75,7 @@ const PRECACHE = [
   './faecher/bfk1/bfk1-lf9-p1.js',
   './faecher/bfk1/bfk1-lf9-p2.js',
   './faecher/bfk1/bfk1-lf9-p3.js',
+  './faecher/bfk1/bfk1-lf9-p5.js',
   './faecher/bfk1/bfk1-lf9-p4.js',
   './faecher/bfk1/bfk1-lf9-data.js',
   './faecher/bfk1/bfk1-extra-p1.js',
