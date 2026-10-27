@@ -178,6 +178,8 @@ body{
 .nav{background:rgba(226,216,194,.92)}
 /* Pro-Badge auf allen Fach-Karten (nur wenn freigeschaltet) */
 .pro-flag{display:none}
+.admin-only{display:none!important}
+body.tier-super .admin-only{display:flex!important}
 body.tier-paid .pro-flag,body.tier-super .pro-flag{
   display:inline-flex;align-items:center;gap:3px;
   background:#F7E6CC;color:#9A4607;border-radius:999px;
@@ -296,6 +298,76 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 .btn.ghost:hover{background:var(--accent-soft)}
 .quiz-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:.85em;color:var(--muted);font-weight:500}
 .quiz-bar .score{color:var(--ink);font-weight:600}
+.quiz-bar .fq-timer{font-variant-numeric:tabular-nums;background:#F2F2F7;padding:3px 9px;border-radius:999px}
+.quiz-bar .fq-timer.low{color:#FF3B30;background:#FFEBEA}
+.btn:disabled,.btn[disabled]{opacity:.45;cursor:not-allowed}
+/* Prüfungsplan */
+#planArea{display:flex;flex-direction:column;gap:14px}
+.pp-label{font-size:.72em;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.pp-head{display:flex;gap:16px;align-items:flex-end;justify-content:space-between;flex-wrap:wrap}
+.pp-head h2{margin:2px 0 6px}
+.pp-head p{margin:0;color:var(--muted);max-width:560px;line-height:1.5}
+.pp-count{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px 16px;display:flex;flex-direction:column;min-width:170px}
+.pp-count b{font-size:1.5em;color:var(--accent);font-variant-numeric:tabular-nums}
+.pp-count span{font-size:.82em;color:var(--muted)}
+.pp-timer{display:flex;align-items:center;gap:12px;background:var(--accent-soft);border:1px solid var(--accent);border-radius:16px;padding:12px 14px}
+.pp-timer>svg{width:26px;height:26px;color:var(--accent);flex:none}
+.pp-timer>div{flex:1;display:flex;flex-direction:column}
+.pp-timer b{font-size:1.4em;font-variant-numeric:tabular-nums}
+.pp-timer span{font-size:.82em;color:var(--muted)}
+.pp-timer.over{background:#FFF0F0;border-color:#C4342B}
+.pp-timer.over b,.pp-timer.over>svg{color:#C4342B}
+.pp-timer .btn{padding:8px 14px}
+.pp-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px}
+.pp-row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.pp-fehler{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px;margin-top:8px}
+.pp-fb{display:flex;flex-direction:column;align-items:flex-start;gap:2px;background:var(--accent-soft);border:1px solid var(--line);border-radius:12px;padding:10px;cursor:pointer;font-family:inherit;color:var(--ink);text-align:left}
+.pp-fb b{font-size:1.25em;color:var(--accent)}
+.pp-fb span{font-size:.78em;color:var(--muted)}
+.pp-fb.empty{background:transparent;opacity:.6}
+.pp-fb.empty b{color:var(--muted)}
+.pp-log{width:100%;border-collapse:collapse;margin-top:6px;font-size:.88em}
+.pp-log td{padding:6px 4px;border-bottom:1px solid var(--line)}
+.pp-log td.ok{color:var(--ok);font-weight:600}
+.pp-log td.no{color:#C4342B;font-weight:600}
+.pp-days{display:flex;flex-direction:column;gap:8px}
+.pp-day{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.pp-day.past{opacity:.72}
+.pp-day.today{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
+.pp-day.exam .pp-date b{color:#AF52DE}
+.pp-dhead{width:100%;display:flex;align-items:center;gap:12px;padding:12px 14px;background:none;border:none;cursor:pointer;font-family:inherit;color:var(--ink);text-align:left}
+.pp-date{display:flex;flex-direction:column;min-width:72px}
+.pp-date b{font-size:.95em}
+.pp-date span,.pp-dtitle span{font-size:.76em;color:var(--muted)}
+.pp-dtitle{flex:1;display:flex;flex-direction:column;min-width:0}
+.pp-dstat{font-size:.8em;color:var(--muted);font-variant-numeric:tabular-nums}
+.pp-dstat.full{color:var(--ok);font-weight:600}
+.pp-chev{display:flex;transition:transform .2s;color:var(--muted)}
+.pp-chev svg{width:18px;height:18px}
+.pp-day.open .pp-chev{transform:rotate(90deg)}
+.pp-blocks{display:flex;flex-direction:column;gap:8px;padding:0 12px 12px}
+.pp-block{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--bg)}
+.pp-block.done{opacity:.6}
+.pp-block.done .pp-btitle{text-decoration:line-through}
+.pp-btop{display:flex;align-items:center;gap:8px}
+.pp-time{font-size:.82em;font-weight:600;font-variant-numeric:tabular-nums}
+.pp-kind{font-size:.72em;font-weight:600;padding:2px 8px;border-radius:999px}
+.pp-tick{margin-left:auto;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);color:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
+.pp-tick svg{width:16px;height:16px}
+.pp-tick.on{background:var(--ok);border-color:var(--ok);color:#fff}
+.pp-btitle{display:block;margin:8px 0 2px}
+.pp-note{margin:4px 0 0;font-size:.86em;color:var(--muted);line-height:1.45}
+.pp-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.pp-act{display:inline-flex;align-items:center;gap:6px;padding:7px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-family:inherit;font-size:.84em;cursor:pointer;text-align:left}
+.pp-act svg{width:15px;height:15px;flex:none;color:var(--accent)}
+.pp-act em{font-style:normal;font-size:.85em;color:var(--muted);margin-left:2px}
+.pp-act.a-quiz{border-color:var(--accent)}
+.pp-act.a-exam{background:var(--accent);border-color:var(--accent);color:#fff}
+.pp-act.a-exam svg,.pp-act.a-exam em{color:#fff}
+.pp-seen{display:inline-flex;color:var(--ok)}
+.pp-seen svg{width:13px;height:13px;color:var(--ok)}
+.pp-foot{font-size:.8em;color:var(--muted);margin:0}
+@media (max-width:600px){.pp-count{min-width:0;width:100%}.pp-date{min-width:58px}.pp-dhead{padding:12px}}
 .progress{height:6px;background:var(--accent-soft);border-radius:10px;overflow:hidden;margin-bottom:18px}
 .progress > div{height:100%;background:var(--accent);transition:width .3s;width:0}
 
@@ -1440,6 +1512,17 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
   </div>
 
 
+
+  <!-- Banner Prüfungsplan Winter 2026 -->
+  <div class="exam-banner admin-only" onclick="go('#/plan')">
+    <div class="exam-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="M9 15l2 2 4-4"/></svg></div>
+    <div class="exam-txt">
+      <div class="exam-kicker">09.–10.11.2026</div>
+      <h2>Prüfungsplan Winter 2026</h2>
+      <p>Lịch học theo ngày · Fehlerbuch · Probeprüfungen có bấm giờ.</p>
+    </div>
+    <div class="exam-go">Los →</div>
+  </div>
 
   <!-- Banner Zwischenprüfung -->
   <div class="exam-banner" onclick="go('#/zwischen')">
@@ -4568,6 +4651,11 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 </section>
 
 <!-- ===== THEME: ABSCHLUSSPRÜFUNG ===== -->
+<section class="view abschluss-scope" id="v-plan">
+  <div class="back" onclick="go('#/')">← Fächer</div>
+  <div id="planArea"></div>
+</section>
+
 <section class="view abschluss-scope" id="v-abschluss">
   <div class="back" onclick="go('#/')">← Fächer</div>
   <div class="section-head">
@@ -5230,7 +5318,7 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 </div>
 
 <script src="./js/supabase.js?v=17"></script>
-<script src="./js/access.js?v=2"></script>
+<script src="./js/access.js?v=3"></script>
 <script src="./js/vocab.js?v=26"></script>
 <script src="./js/lang-split.js?v=8"></script>
 <script src="./faecher/bfk1/bfk1-lf2-p1.js?v=2"></script>
@@ -5276,7 +5364,9 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 <script src="./faecher/bfk2/bfk2-quiz.js?v=4"></script>
 <script src="./faecher/deutsch/deutsch-quiz.js?v=3"></script>
 <script src="./faecher/gk/gk-gle-data.js?v=2"></script>
-<script src="./js/faecher.js?v=21"></script>
+<script src="./faecher/wiko/wiko-pruefung-data.js?v=1"></script>
+<script src="./js/faecher.js?v=22"></script>
+<script src="./js/pruefungsplan.js?v=1"></script>
 <script src="./js/search-pages-data.js?v=1"></script>
 <script src="./faecher/gk/gk-uebungen.js?v=4"></script>
 <script>
@@ -6845,7 +6935,46 @@ function fachTickTheme(fachId, themeId){
 }
 
 /* Generic quiz (same UX as BfK-1) */
-let fQuiz={fachId:null, pool:[], order:[], index:0, score:0, wrong:[], started:false};
+let fQuiz={fachId:null, pool:[], order:[], index:0, score:0, wrong:[], started:false, mode:'all', deadline:0, timer:null, timeUp:false};
+
+/* Fehlerbuch: falsch beantwortete Fach-Fragen bleiben gespeichert, bis sie einmal richtig beantwortet werden */
+const FEHLER_KEY='fach_fehlerbuch_v1';
+function fehlerLoad(){ try{ return JSON.parse(localStorage.getItem(FEHLER_KEY)||'{}')||{}; }catch(e){ return {}; } }
+function fehlerSave(d){ try{ localStorage.setItem(FEHLER_KEY, JSON.stringify(d)); }catch(e){} }
+function fehlerKey(q){ return (q.theme||'')+'::'+q.q; }
+function fehlerMark(fachId, q, ok){
+  const d=fehlerLoad(); const m=d[fachId]||(d[fachId]={}); const k=fehlerKey(q);
+  if(ok){ if(!m[k]) return; delete m[k]; }
+  else m[k]={n:((m[k]&&m[k].n)||0)+1, t:Date.now()};
+  fehlerSave(d);
+}
+function fehlerQuestions(fach){
+  const m=(fehlerLoad()[fach.id])||{};
+  return (fach.quiz||[]).filter(q=>m[fehlerKey(q)]);
+}
+function fehlerCount(fachId){
+  ensureFachRegistry();
+  const fach=window.FachForm.findFach(fachId);
+  return fach?fehlerQuestions(fach).length:0;
+}
+
+/* Prüfungssimulation: Ergebnisse für den Prüfungsplan merken */
+const EXAM_LOG_KEY='fach_exam_log_v1';
+function examLogLoad(){ try{ return JSON.parse(localStorage.getItem(EXAM_LOG_KEY)||'[]')||[]; }catch(e){ return []; } }
+function examLogAdd(entry){
+  const log=examLogLoad(); log.push(entry);
+  try{ localStorage.setItem(EXAM_LOG_KEY, JSON.stringify(log.slice(-60))); }catch(e){}
+}
+function fachTimerStop(){ if(fQuiz.timer){ clearInterval(fQuiz.timer); fQuiz.timer=null; } }
+function fachTimerTick(){
+  const view=document.getElementById('v-fach-quiz');
+  if(!fQuiz.started || !view || !view.classList.contains('active')){ fachTimerStop(); return; }
+  const left=Math.max(0, fQuiz.deadline-Date.now());
+  const s=Math.ceil(left/1000);
+  const el=document.getElementById('fqTimer');
+  if(el){ el.textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); el.classList.toggle('low', s<=60); }
+  if(left<=0){ fachTimerStop(); fQuiz.timeUp=true; fachQuizResult(); }
+}
 
 function fachQuizIntro(fachId, preselect){
   ensureFachRegistry();
@@ -6856,7 +6985,7 @@ function fachQuizIntro(fachId, preselect){
   if(back){ back.onclick=()=>go(fachRoute(fach,'hub')); back.textContent='← '+(fach?fach.code:'Fach'); }
   if(title) title.textContent='📝 '+(fach?fach.code+' · ':'')+'Quiz';
   if(!area||!fach) return;
-  fQuiz.started=false; fQuiz.fachId=fach.id;
+  fachTimerStop(); fQuiz.started=false; fQuiz.fachId=fach.id;
   const quiz=fach.quiz||[];
   if(!quiz.length){
     area.innerHTML='<p class="muted">Für dieses Fach gibt es noch keine Quiz-Fragen. Themen-Form ist vorbereitet.</p>';
@@ -6879,32 +7008,61 @@ function fachQuizIntro(fachId, preselect){
   });
   html+='</div><div class="quiz-actions">';
   html+='<button type="button" class="btn" id="fqStart">▶ Gemischt starten</button>';
-  html+='<button type="button" class="btn ghost" id="fqQuick">⚡ 10 Fragen</button></div></div>';
+  html+='<button type="button" class="btn ghost" id="fqQuick">⚡ 10 Fragen</button>';
+  const fehlerN=fehlerQuestions(fach).length;
+  html+='<button type="button" class="btn ghost" id="fqFehlerBtn"'+(fehlerN?'':' disabled')+'>Fehlerbuch ('+fehlerN+')</button>';
+  html+='<button type="button" class="btn ghost" id="fqExam">Prüfung · 20 Fragen / 20 Min</button></div></div>';
   area.innerHTML=html;
   const pick=()=>[...area.querySelectorAll('#fqPick input:checked')].map(x=>x.value);
   document.getElementById('fqAll').onclick=()=>area.querySelectorAll('#fqPick input').forEach(i=>i.checked=true);
   document.getElementById('fqNone').onclick=()=>area.querySelectorAll('#fqPick input').forEach(i=>i.checked=false);
   document.getElementById('fqStart').onclick=()=>fachQuizStart(fach.id, pick(), 'all');
   document.getElementById('fqQuick').onclick=()=>fachQuizStart(fach.id, pick(), 'quick');
+  document.getElementById('fqFehlerBtn').onclick=()=>fachQuizStart(fach.id, null, 'fehler');
+  document.getElementById('fqExam').onclick=()=>fachQuizStart(fach.id, pick(), 'exam', {n:20, min:20, label:fach.code+' Probe'});
 }
-function fachQuizStart(fachId, themeIds, mode){
+/* mode: 'all' | 'quick' (10) | 'fehler' (Fehlerbuch) | 'exam' (opts:{n, min, label} → Timer, Feedback erst am Ende) */
+function fachQuizStart(fachId, themeIds, mode, opts){
   ensureFachRegistry();
   const fach=window.FachForm.findFach(fachId);
   if(!fach) return;
+  mode=mode||'all'; opts=opts||{};
   const ids=themeIds&&themeIds.length?themeIds:Object.keys(window.FachForm.themeMeta(fach));
   if((location.hash||'') !== fachRoute(fach,'quiz')){
-    window._fachQPending={fachId:fach.id, ids, mode:mode||'all'};
+    window._fachQPending={fachId:fach.id, ids, mode, opts};
     go(fachRoute(fach,'quiz')); return;
   }
-  const pool=window.FachForm.quizByThemes(fach, ids).slice();
-  if(!pool.length){ if(window.toast) toast('Keine Fragen','info'); return; }
+  let pool=window.FachForm.quizByThemes(fach, ids).slice();
+  if(mode==='fehler') pool=fehlerQuestions(fach);
+  if(!pool.length){
+    if(window.toast) toast(mode==='fehler'?'Fehlerbuch ist leer':'Keine Fragen','info');
+    if(mode==='fehler') fachQuizIntro(fach.id);
+    return;
+  }
+  fachTimerStop();
   fQuiz.fachId=fach.id;
   fQuiz.pool=pool;
+  fQuiz.mode=mode; fQuiz.label=opts.label||''; fQuiz.timeUp=false; fQuiz.deadline=0; fQuiz.examMin=opts.min||0;
   fQuiz.order=shuffle(pool.map((_,i)=>i));
   if(mode==='quick') fQuiz.order=fQuiz.order.slice(0, Math.min(10,fQuiz.order.length));
+  if(mode==='exam' && opts.n) fQuiz.order=fQuiz.order.slice(0, Math.min(opts.n,fQuiz.order.length));
   fQuiz.order=limitQuizOrder(fQuiz.order);
   fQuiz.index=0; fQuiz.score=0; fQuiz.wrong=[]; fQuiz.started=true;
+  if(mode==='exam' && opts.min){
+    fQuiz.deadline=Date.now()+opts.min*60000;
+    fQuiz.timer=setInterval(fachTimerTick, 1000);
+  }
   fachRenderQuestion();
+}
+function fachQuizBar(meta, q, extra){
+  let h='<div class="quiz-bar"><span>'+(meta.icon||'')+' '+(meta.name||q.cat)+' · '+(fQuiz.index+1)+'/'+fQuiz.order.length+(extra||'')+'</span>';
+  if(fQuiz.mode==='exam' && fQuiz.deadline) h+='<span class="score fq-timer" id="fqTimer">–:––</span>';
+  else h+='<span class="score">'+fQuiz.score+' richtig</span>';
+  return h+'</div>';
+}
+function fachCorrectText(q){
+  if(q.opts) return q.opts[q.a];
+  return (typeof b1CorrectText==='function') ? b1CorrectText(q) : (q.answer||((q.answers&&q.answers[0])||''));
 }
 function fachRenderQuestion(){
   const area=document.getElementById('fachQuizArea');
@@ -6917,9 +7075,9 @@ function fachRenderQuestion(){
   const isFill = (typeof b1IsFill==='function') ? b1IsFill(q) : (q.type==='fill' || (!q.opts && (q.answer||q.answers)));
 
   // ── Freitext / Lückentext (type:"fill") ──
+  const exam=fQuiz.mode==='exam';
   if(isFill){
-    let fhtml='<div class="quiz-bar"><span>'+(meta.icon||'')+' '+(meta.name||q.cat)+' · '+(fQuiz.index+1)+'/'+fQuiz.order.length+' · Freitext</span>';
-    fhtml+='<span class="score">'+fQuiz.score+' richtig</span></div>';
+    let fhtml=fachQuizBar(meta, q, ' · Freitext');
     fhtml+='<div class="progress"><div style="width:'+pct+'%"></div></div>';
     fhtml+='<div class="q-cat">'+(q.cat||fach.code)+' · ✍️ Freitext</div>';
     fhtml+='<div class="q-text">'+q.q+'</div>';
@@ -6935,15 +7093,18 @@ function fachRenderQuestion(){
       if(fLocked) return; fLocked=true;
       const user=(document.getElementById('fqFill')||{}).value||'';
       const ok=(typeof b1CheckAnswer==='function') ? b1CheckAnswer(q, user) : false;
-      const correct=(typeof b1CorrectText==='function') ? b1CorrectText(q) : (q.answer||((q.answers&&q.answers[0])||''));
+      const correct=fachCorrectText(q);
+      fehlerMark(fQuiz.fachId, q, ok);
+      if(ok) fQuiz.score++; else fQuiz.wrong.push(q);
+      if(exam){ fQuiz.index++; fachRenderQuestion(); return; }
       const fb=document.getElementById('fqFb');
-      if(ok){ fQuiz.score++; fb.className='q-feedback show ok'; fb.textContent='✓ Richtig. '+(q.ex||''); }
-      else { fQuiz.wrong.push(q); fb.className='q-feedback show no'; fb.textContent='✗ Falsch. Richtig: '+correct+'. '+(q.ex||''); }
+      if(ok){ fb.className='q-feedback show ok'; fb.textContent='✓ Richtig. '+(q.ex||''); }
+      else { fb.className='q-feedback show no'; fb.textContent='✗ Falsch. Richtig: '+correct+'. '+(q.ex||''); }
       if(input) input.disabled=true;
       document.getElementById('fqNav').style.display='block';
     };
     const chk=document.getElementById('fqCheck'); if(chk) chk.onclick=finish;
-    const sk=document.getElementById('fqSkip'); if(sk) sk.onclick=()=>{ fQuiz.wrong.push(q); fQuiz.index++; fachRenderQuestion(); };
+    const sk=document.getElementById('fqSkip'); if(sk) sk.onclick=()=>{ fehlerMark(fQuiz.fachId, q, false); fQuiz.wrong.push(q); fQuiz.index++; fachRenderQuestion(); };
     if(input) input.addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); finish(); }});
     document.getElementById('fqNext').onclick=()=>{ fQuiz.index++; fachRenderQuestion(); };
     return;
@@ -6951,8 +7112,7 @@ function fachRenderQuestion(){
 
   const order=b1Shuffle([0,1,2,3].filter(i=>q.opts && q.opts[i]!=null));
   const correctPos=order.indexOf(q.a);
-  let html='<div class="quiz-bar"><span>'+(meta.icon||'')+' '+(meta.name||q.cat)+' · '+(fQuiz.index+1)+'/'+fQuiz.order.length+'</span>';
-  html+='<span class="score">'+fQuiz.score+' richtig</span></div>';
+  let html=fachQuizBar(meta, q, '');
   html+='<div class="progress"><div style="width:'+pct+'%"></div></div>';
   html+='<div class="q-cat">'+(q.cat||fach.code)+'</div>';
   html+='<div class="q-text">'+q.q+'</div><div class="q-opts">';
@@ -6970,6 +7130,8 @@ function fachRenderQuestion(){
       if(locked) return; locked=true;
       const di=+btn.getAttribute('data-i');
       const ok=di===correctPos;
+      fehlerMark(fQuiz.fachId, q, ok);
+      if(exam){ if(ok) fQuiz.score++; else fQuiz.wrong.push(q); fQuiz.index++; fachRenderQuestion(); return; }
       area.querySelectorAll('.opt').forEach((b,i)=>{
         b.classList.add('locked');
         if(i===correctPos) b.classList.add('correct');
@@ -6986,23 +7148,38 @@ function fachRenderQuestion(){
 function fachQuizResult(){
   const area=document.getElementById('fachQuizArea');
   if(!area) return;
+  fachTimerStop();
+  const wasStarted=fQuiz.started; fQuiz.started=false;
   const total=fQuiz.order.length;
+  const exam=fQuiz.mode==='exam';
+  const answered=Math.min(fQuiz.index, total);
+  // Bei Zeitablauf zählen unbeantwortete Fragen als falsch
+  if(exam && fQuiz.timeUp) fQuiz.order.slice(answered).forEach(i=>fQuiz.wrong.push(fQuiz.pool[i]));
   const pct=total?Math.round((fQuiz.score/total)*100):0;
+  if(exam && wasStarted) examLogAdd({fachId:fQuiz.fachId, label:fQuiz.label||'', date:new Date().toISOString(), score:fQuiz.score, total, pct, timeUp:!!fQuiz.timeUp});
   let html='<div class="quiz-result"><div class="big">'+pct+'%</div>';
-  html+='<div class="msg">'+fQuiz.score+' / '+total+' richtig</div><div class="quiz-actions">';
+  html+='<div class="msg">'+fQuiz.score+' / '+total+' richtig';
+  if(exam) html+=' · '+(pct>=50?'bestanden (≥ 50 %)':'nicht bestanden (< 50 %)')+(fQuiz.timeUp?' · Zeit abgelaufen, '+(total-answered)+' offen':'');
+  html+='</div>';
+  const fehlerN=fehlerCount(fQuiz.fachId);
+  html+='<div class="quiz-actions">';
   html+='<button type="button" class="btn" id="fqAgain">Nochmal</button>';
+  if(fehlerN) html+='<button type="button" class="btn ghost" id="fqFehler">Fehlerbuch ('+fehlerN+')</button>';
   html+='<button type="button" class="btn ghost" id="fqPick">Themen wählen</button>';
   html+='<button type="button" class="btn ghost" id="fqBack">← Fach</button></div>';
   if(fQuiz.wrong.length){
     html+='<div class="wrong-list" style="margin-top:16px">';
-    fQuiz.wrong.slice(0,12).forEach(q=>{ html+='<div class="wi"><b>'+q.q+'</b><span class="ans">→ '+q.opts[q.a]+'</span></div>'; });
+    fQuiz.wrong.slice(0, exam?60:12).forEach(q=>{ html+='<div class="wi"><b>'+q.q+'</b><span class="ans">→ '+fachCorrectText(q)+'</span>'+(exam&&q.ex?'<span class="muted" style="display:block;font-size:13px;margin-top:2px">'+q.ex+'</span>':'')+'</div>'; });
     html+='</div>';
   }
   html+='</div>';
   area.innerHTML=html;
   const last=[...new Set(fQuiz.pool.map(q=>q.theme))];
   const fachId=fQuiz.fachId;
-  document.getElementById('fqAgain').onclick=()=>fachQuizStart(fachId,last,'all');
+  const lastMode=fQuiz.mode, lastLabel=fQuiz.label;
+  const lastOpts=exam?{n:total, min:Math.round((fQuiz.examMin||0)), label:lastLabel}:{};
+  document.getElementById('fqAgain').onclick=()=>fachQuizStart(fachId,last,lastMode==='fehler'?'fehler':lastMode,lastOpts);
+  const fe=document.getElementById('fqFehler'); if(fe) fe.onclick=()=>fachQuizStart(fachId,null,'fehler');
   document.getElementById('fqPick').onclick=()=>fachQuizIntro(fachId,last);
   document.getElementById('fqBack').onclick=()=>go(fachRoute(window.FachForm.findFach(fachId),'hub'));
 }
@@ -8036,6 +8213,7 @@ const ROUTES = {
   "#/bfk/pruefungen":{view:"v-pruefungen",crumbs:[["BfK","#/bfk"],["BfK-2","#/bfk/2"],["Prüfungen","#/bfk/2/pruefungen"]], redirect:"#/bfk/2/pruefungen"},
   "#/zwischen":  {view:"v-zwischen",crumbs:[["Zwischenprüfung","#/zwischen"]]},
   "#/abschluss":   {view:"v-abschluss",crumbs:[["Abschlussprüfung","#/abschluss"]]},
+  "#/plan":        {view:"v-plan",crumbs:[["Prüfungsplan","#/plan"]]},
   "#/fach/wiko":   {view:"v-placeholder", crumbs:[["WiKO","#/fach/wiko"]], placeholder:true},
   "#/fach/e":      {view:"v-placeholder", crumbs:[["Englisch","#/fach/e"]], placeholder:true}, // alias → router uses FachForm for englisch
 };
@@ -8114,7 +8292,7 @@ function router(){
       if(cb) cb.innerHTML='<a onclick="go(\'#/\')">Start</a><span class="sep">›</span><a onclick="go(\'#/fach/'+fachId+'\')">'+(fach?fach.code:fachId)+'</a><span class="sep">›</span><span>Quiz</span>';
       if(window._fachQPending && window._fachQPending.fachId===fachId){
         const p=window._fachQPending; window._fachQPending=null;
-        setTimeout(()=>fachQuizStart(p.fachId,p.ids,p.mode||"all"),0);
+        setTimeout(()=>fachQuizStart(p.fachId,p.ids,p.mode||"all",p.opts),0);
       } else fachQuizIntro(fachId);
       setBottomNav(hash); window.scrollTo({top:0,behavior:"smooth"}); return;
     }
@@ -8203,6 +8381,11 @@ function router(){
   if(r.view==="v-on-thi" || r.exams) renderFullExams();
   if(r.view==="v-exam-detail" && r.examId) renderExamDetail(r.examId);
   if(r.view==="v-placeholder" || r.placeholder) showPlaceholder(hash);
+  if(r.view==="v-plan"){
+    const pa=document.getElementById("planArea");
+    if(window.Access && !Access.can('pruefungsplan')){ if(pa) pa.innerHTML=lockedCard('pruefungsplan'); }
+    else if(window.Pruefungsplan) Pruefungsplan.render();
+  }
   setBottomNav(hash);
   // DE→VI vocabulary on every Fach/view
   try{
@@ -8213,6 +8396,7 @@ function router(){
   window.scrollTo({top:0,behavior:"smooth"});
 }
 window.addEventListener("hashchange",router);
+window.addEventListener("learn-tier",()=>{ if(location.hash==="#/plan") router(); });
 
 
 /* ============ DE terms → VI on tap ============ */
@@ -9813,6 +9997,7 @@ const PAYWALL_TEXT = {
   'zusammenfassung': ['Zusammenfassung','Kompakte Lernzettel zu jedem Fach.'],
   'pruefungen':      ['Prüfungsbögen + Lösungen','Alte Klassenarbeiten mit Musterlösung.'],
   'challenge':       ['Challenge-Modus','Gegen Mitschüler antreten.'],
+  'pruefungsplan':   ['Prüfungsplan','Persönlicher Lernplan – nur für Admin.'],
 };
 /** Ganzseitige Sperre (statt Inhalt) für Pro-Bereiche */
 function lockedCard(feature){

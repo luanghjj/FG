@@ -63,6 +63,7 @@
     'zusammenfassung': 'paid',
     'pruefungen': 'paid', // đề KA + Lösung
     'challenge': 'paid',
+    'pruefungsplan': 'super', // Prüfungsplan Winter 2026 – chỉ admin
     // Quản trị
     'admin': 'super',
   };

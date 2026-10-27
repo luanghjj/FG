@@ -4666,7 +4666,7 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
   "accent": "#0ea5e9",
   "soft": "#e0f2fe",
   "teacher": "Fr. Leyh & RM (Remsing) / WiKO-Leyh",
-  "examDate": null,
+  "examDate": "2026-11-10",
   "ready": true,
   "desc": "Giáo trình Wiko-Leyh (Trang 01–48 / LF 1 Năm 1) & Modul Kaufvertrag (Năm 2)",
   "groups": [
@@ -5906,6 +5906,10 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
       }
       if (f.id === "deutsch" && (!f.quiz || !f.quiz.length) && w.DEUTSCH_QUIZ) {
         f.quiz = w.DEUTSCH_QUIZ.slice();
+      }
+      if (f.id === "wiko" && w.WIKO_EXTRA_GROUPS && !f.groups.some((g) => g.id === "wk-fachstufe1")) {
+        f.groups = f.groups.concat(w.WIKO_EXTRA_GROUPS);
+        f.quiz = (f.quiz || []).concat(w.WIKO_EXTRA_QUIZ || []);
       }
       FAECHER.push(applyExamMeta(f));
     });
