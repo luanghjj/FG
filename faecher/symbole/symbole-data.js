@@ -718,7 +718,6 @@
             icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L2 12l10 10 10-10L12 2z"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>',
             name: "1. GHS-Gefahrensymbole für Chemikalien",
             desc: "Physikalische Gefahren · Gesundheitsgefahren · Umweltgefahren · Signalwörter Gefahr & Achtung",
-            pages: { folder: "images/scans/symbole", from: 1, to: 3, prefix: "symbole" },
             content: ghsContent,
             qa: [
               {
@@ -764,7 +763,6 @@
             icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>',
             name: "2. Anwendungssymbole für die Entsorgung",
             desc: "Hausmüll (Restmüll) · Sondermüll / Problemstoff · Verbot der Beseitigung über die Kanalisation",
-            pages: { folder: "images/scans/symbole", from: 1, to: 1, prefix: "symbole" },
             content: entsorgungContent,
             qa: [
               {
@@ -807,7 +805,6 @@
             icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>',
             name: "3. Verbots-, Gebots-, Rettungs- & Brandschutzzeichen",
             desc: "16 Sicherheitszeichen: Rot-Rund (Verbot) · Blau-Rund (Gebot) · Grün-Quadrat (Rettung) · Rot-Quadrat (Brandschutz)",
-            pages: { folder: "images/scans/symbole", from: 2, to: 3, prefix: "symbole" },
             content: arbeitsschutzContent,
             qa: [
               {
@@ -854,7 +851,6 @@
             icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6l3 14h12l3-14"/><path d="M3 10c2.5 1.5 5.5 1.5 9 0s6.5-1.5 9 0"/></svg>',
             name: "4. Symbole für die Pflegebehandlung von Textilien",
             desc: "28 Symbole: Waschen (30–95 °C, Schonwaschgang, Handwäsche) · Bleichen · Tumbler-Trocknung · Bügeln · Chemischreinigung (P, F)",
-            pages: { folder: "images/scans/symbole", from: 4, to: 4, prefix: "symbole" },
             content: textilpflegeContent,
             qa: [
               {
