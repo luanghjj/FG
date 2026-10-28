@@ -6712,6 +6712,35 @@ function fachSetStatus(fachId, id, val){
 function fachCycleStatus(fachId, id){
   const cur=fachStatus(fachId, id); fachSetStatus(fachId, id, cur+1); return fachStatus(fachId, id);
 }
+/* Khôi phục tiến trình Thema (Offen/Lernt/Gelernt) từ Supabase vào localStorage của máy này,
+ * vì markThemeProgress() chỉ đẩy lên mà chưa có chiều ngược lại khi đăng nhập ở máy mới.
+ * bfk1/bfk2 dùng key riêng (bfk1_progress/bfk2_progress), các Fach khác dùng fachLoadProgress(). */
+function applyCloudThemeProgress(themesMap){
+  if(!themesMap) return;
+  const STATUS_FROM_CLOUD={seen:0, learning:1, done:2};
+  const byFach={};
+  Object.keys(themesMap).forEach(tk=>{
+    const entry=themesMap[tk]||{};
+    const fachId=entry.fach || tk.split(':')[0];
+    const themeId=entry.theme || tk.split(':').slice(1).join(':');
+    if(!fachId || !themeId) return;
+    const v=STATUS_FROM_CLOUD[entry.status]|0;
+    (byFach[fachId]=byFach[fachId]||{})[themeId]=v;
+  });
+  const LOADERS={ bfk1:[bfk1LoadProgress,bfk1SaveProgress], bfk2:[bfk2LoadProgress,bfk2SaveProgress] };
+  Object.keys(byFach).forEach(fachId=>{
+    const pair=LOADERS[fachId];
+    const load=pair?pair[0]:()=>fachLoadProgress(fachId);
+    const save=pair?pair[1]:(p)=>fachSaveProgress(fachId,p);
+    const local=load();
+    let changed=false;
+    Object.keys(byFach[fachId]).forEach(themeId=>{
+      const cloudV=byFach[fachId][themeId];
+      if(cloudV>(local[themeId]|0)){ local[themeId]=cloudV; changed=true; }
+    });
+    if(changed) save(local);
+  });
+}
 function fachGroupPercent(fachId, group){
   const items=(group&&group.items)||[];
   if(!items.length) return { done:0, total:0, pct:0 };
@@ -9885,6 +9914,7 @@ async function doLogin(){
   try{
     const res=await LearnDB.loginOrRegister(nick);
     renderLoginHistory(res.history);
+    try{ applyCloudThemeProgress(res.history && res.history.profile && res.history.profile.themes); }catch(_){}
     // Stufe (free / paid / super) laden
     let info={tier:'free',needsSuperPass:false};
     try{ if(window.Access) info=await Access.loadTier(res.player); }catch(_){}
