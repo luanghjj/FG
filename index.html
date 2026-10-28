@@ -6716,7 +6716,7 @@ function fachCycleStatus(fachId, id){
  * vì markThemeProgress() chỉ đẩy lên mà chưa có chiều ngược lại khi đăng nhập ở máy mới.
  * bfk1/bfk2 dùng key riêng (bfk1_progress/bfk2_progress), các Fach khác dùng fachLoadProgress(). */
 function applyCloudThemeProgress(themesMap){
-  if(!themesMap) return;
+  if(!themesMap) return false;
   const STATUS_FROM_CLOUD={seen:0, learning:1, done:2};
   const byFach={};
   Object.keys(themesMap).forEach(tk=>{
@@ -6728,6 +6728,7 @@ function applyCloudThemeProgress(themesMap){
     (byFach[fachId]=byFach[fachId]||{})[themeId]=v;
   });
   const LOADERS={ bfk1:[bfk1LoadProgress,bfk1SaveProgress], bfk2:[bfk2LoadProgress,bfk2SaveProgress] };
+  let anyChanged=false;
   Object.keys(byFach).forEach(fachId=>{
     const pair=LOADERS[fachId];
     const load=pair?pair[0]:()=>fachLoadProgress(fachId);
@@ -6738,8 +6739,9 @@ function applyCloudThemeProgress(themesMap){
       const cloudV=byFach[fachId][themeId];
       if(cloudV>(local[themeId]|0)){ local[themeId]=cloudV; changed=true; }
     });
-    if(changed) save(local);
+    if(changed){ save(local); anyChanged=true; }
   });
+  return anyChanged;
 }
 function fachGroupPercent(fachId, group){
   const items=(group&&group.items)||[];
@@ -9914,7 +9916,10 @@ async function doLogin(){
   try{
     const res=await LearnDB.loginOrRegister(nick);
     renderLoginHistory(res.history);
-    try{ applyCloudThemeProgress(res.history && res.history.profile && res.history.profile.themes); }catch(_){}
+    try{
+      const updated=applyCloudThemeProgress(res.history && res.history.profile && res.history.profile.themes);
+      if(updated && !/\/quiz(\/|$)/.test(location.hash||'')) router();
+    }catch(_){}
     // Stufe (free / paid / super) laden
     let info={tier:'free',needsSuperPass:false};
     try{ if(window.Access) info=await Access.loadTier(res.player); }catch(_){}

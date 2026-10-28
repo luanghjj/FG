@@ -93,11 +93,11 @@ function clean(s) {
       localStorage.removeItem('tb_today_sec');
       localStorage.removeItem('tb_today_date');
       localStorage.removeItem('tb_player');
-      // remove any tb_done_<day> flags
+      // remove any tb_done_<day> flags and per-Fach local progress (<fachId>_progress)
       const toDel = [];
       for (let i = 0; i < localStorage.length; i++) {
         const k = localStorage.key(i);
-        if (k && k.indexOf('tb_done_') === 0) toDel.push(k);
+        if (k && (k.indexOf('tb_done_') === 0 || /_progress$/.test(k))) toDel.push(k);
       }
       toDel.forEach((k) => localStorage.removeItem(k));
     } catch (_) {}
@@ -705,7 +705,7 @@ function clean(s) {
         const toDel = [];
         for (let i = 0; i < localStorage.length; i++) {
           const k = localStorage.key(i);
-          if (k && k.indexOf('tb_done_') === 0) toDel.push(k);
+          if (k && (k.indexOf('tb_done_') === 0 || /_progress$/.test(k))) toDel.push(k);
         }
         toDel.forEach((k) => localStorage.removeItem(k));
       }
