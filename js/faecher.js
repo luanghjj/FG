@@ -5913,6 +5913,9 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
       }
       FAECHER.push(applyExamMeta(f));
     });
+    if (w.SYMBOLE_FACH && !FAECHER.some((x) => x.id === "symbole")) {
+      FAECHER.push(applyExamMeta(w.SYMBOLE_FACH));
+    }
     return FAECHER;
   }
 

@@ -1396,6 +1396,29 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 .next-exam-chip[tabindex]:focus-visible,.back[tabindex]:focus-visible,.brand[tabindex]:focus-visible,
 .track-switch[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:12px}
 
+/* 10. SYMBOLE & PIKTOGRAMME BILDTAFEL */
+.sym-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:14px;margin:14px 0 22px}
+.sym-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow)}
+.sym-img-box{background:#fff;border-bottom:1px solid var(--line);padding:16px;display:flex;align-items:center;justify-content:center;min-height:132px}
+.sym-img-box img{max-width:108px;max-height:108px;width:auto;height:auto;object-fit:contain;display:block}
+.sym-card.serv-card .sym-img-box{padding:8px;min-height:142px;background:#fff}
+.sym-card.serv-card .sym-img-box img{max-width:100%;max-height:136px;width:100%;height:auto;object-fit:contain;border-radius:8px}
+.sym-body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.sym-badge{align-self:flex-start;font-size:.7em;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent);border:1px solid var(--line)}
+.sym-title{font-weight:700;font-size:.98em;color:var(--ink);line-height:1.3}
+.sym-de{font-size:.86em;color:var(--ink);line-height:1.48}
+.sym-body .vi{font-size:.84em;color:var(--muted);line-height:1.45;border-top:1px dashed var(--line);padding-top:6px;margin-top:2px}
+.tq-img,.q-sym-img{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;margin:0 0 10px;display:flex;justify-content:center;align-items:center}
+.tq-img img,.q-sym-img img{max-width:220px;max-height:130px;width:auto;height:auto;object-fit:contain;display:block;border-radius:6px}
+@media (max-width:520px){
+  .sym-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .sym-img-box{padding:12px;min-height:110px}
+  .sym-img-box img{max-width:88px;max-height:88px}
+  .sym-body{padding:10px 11px 12px}
+  .sym-title{font-size:.9em}
+  .sym-de,.sym-body .vi{font-size:.8em}
+}
+
 </style>
 <script src="./pwa.js?v=205" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -5365,7 +5388,8 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 <script src="./faecher/deutsch/deutsch-quiz.js?v=3"></script>
 <script src="./faecher/gk/gk-gle-data.js?v=2"></script>
 <script src="./faecher/wiko/wiko-pruefung-data.js?v=1"></script>
-<script src="./js/faecher.js?v=22"></script>
+<script src="./faecher/symbole/symbole-data.js?v=2"></script>
+<script src="./js/faecher.js?v=23"></script>
 <script src="./js/pruefungsplan.js?v=1"></script>
 <script src="./js/search-pages-data.js?v=1"></script>
 <script src="./faecher/gk/gk-uebungen.js?v=4"></script>
@@ -7114,7 +7138,8 @@ function fachRenderQuestion(){
   if(isFill){
     let fhtml=fachQuizBar(meta, q, ' · Freitext');
     fhtml+='<div class="progress"><div style="width:'+pct+'%"></div></div>';
-    fhtml+='<div class="q-cat">'+(q.cat||fach.code)+' · ✍️ Freitext</div>';
+    fhtml+='<div class="q-cat">'+(q.cat||fach.code)+' · Freitext</div>';
+    if(q.img) fhtml+='<div class="q-sym-img"><img src="'+q.img+'" alt="Symbol"></div>';
     fhtml+='<div class="q-text">'+q.q+'</div>';
     fhtml+='<div class="q-opts"><input class="fill-input" id="fqFill" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Antwort eingeben… (Groß/Klein egal)">';
     fhtml+='<div class="fill-actions"><button type="button" class="btn" id="fqCheck">Prüfen</button><button type="button" class="btn ghost" id="fqSkip">Überspringen</button></div></div>';
@@ -7150,6 +7175,7 @@ function fachRenderQuestion(){
   let html=fachQuizBar(meta, q, '');
   html+='<div class="progress"><div style="width:'+pct+'%"></div></div>';
   html+='<div class="q-cat">'+(q.cat||fach.code)+'</div>';
+  if(q.img) html+='<div class="q-sym-img"><img src="'+q.img+'" alt="Symbol"></div>';
   html+='<div class="q-text">'+q.q+'</div><div class="q-opts">';
   order.forEach((oi, displayIdx)=>{
     html+='<button type="button" class="opt" data-i="'+displayIdx+'">'+q.opts[oi]+'</button>';
@@ -7869,15 +7895,19 @@ function bfk1QaHtml(item){
 
 /* Tab 📝 Quiz (trắc nghiệm inline) */
 function bfk1ThemeQuizHtml(item){
-  const quiz=item.quiz||[];
+  const quiz=(item.quiz||[]).filter(q=>q && q.type!=="fill" && (q.options||q.opts));
   if(!quiz.length) return '<div class="hint">Noch keine Quizfragen für diesen Abschnitt.</div>';
   let html='<div class="tq-list">';
   quiz.forEach((q,qi)=>{
-    html += '<div class="tq-item" data-answer="'+(q.answer|0)+'"><div class="tq-q"><b>'+(qi+1)+'.</b> '+bfk1EscHtml(q.q||"")+'</div><div class="tq-opts">';
-    (q.options||[]).forEach((op,oi)=>{
+    const opts=q.options||q.opts||[];
+    const ans=(q.answer!=null?q.answer:q.a)|0;
+    const ex=q.explain||q.ex||"";
+    const imgHtml=q.img?'<div class="tq-img"><img src="'+bfk1EscHtml(q.img)+'" alt="Symbol" loading="lazy"></div>':'';
+    html += '<div class="tq-item" data-answer="'+ans+'">'+imgHtml+'<div class="tq-q"><b>'+(qi+1)+'.</b> '+bfk1EscHtml(q.q||"")+'</div><div class="tq-opts">';
+    opts.forEach((op,oi)=>{
       html += '<button type="button" class="tq-opt" onclick="bfk1ThemeQuizPick(this,'+oi+')">'+bfk1EscHtml(op)+'</button>';
     });
-    html += '</div>'+(q.explain?'<div class="tq-explain">💡 '+bfk1EscHtml(q.explain)+'</div>':'')+'</div>';
+    html += '</div>'+(ex?'<div class="tq-explain">'+bfk1EscHtml(ex)+'</div>':'')+'</div>';
   });
   html += '</div>';
   return html;
@@ -8074,6 +8104,9 @@ const SUBJECT_GROUPS = [
       {code:"E", name:"Englisch", icon:"<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M6 3v18'/><path d='M6 4h11l-2.6 3.6L17 11.2H6z'/></svg>", accent:"#AF52DE", soft:"#F6EDFC", ready:true, route:"#/fach/englisch",
         desc:"Telephoning · Complaints · Quantifiers · Tenses.",
         topics:["Telephoning","Restaurant complaints","much/many/a few","Present & future"], meta:"HAL (Hoffmann)", examDate:"2026-07-21"},
+      {code:"SYM", name:"Symbole & Servietten", icon:"<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M12 2L2 12l10 10 10-10L12 2z'/><line x1='12' y1='8' x2='12' y2='13'/><line x1='12' y1='16' x2='12.01' y2='16'/></svg>", accent:"#B45309", soft:"#FDF8EE", ready:true, route:"#/fach/symbole",
+        desc:"GHS-Gefahrensymbole · Entsorgung · Arbeitsschutzzeichen · Textilpflegesymbole · 14 Servietten-Falttechniken & Knigge.",
+        topics:["GHS-Piktogramme","Entsorgung","Verbotszeichen","Gebotszeichen","Rettungszeichen","Brandschutzzeichen","Textilpflege","14 Servietten-Faltungen"], meta:"Hygiene · Arbeitsschutz · Textilpflege · Service"},
     ],
   },
 ];

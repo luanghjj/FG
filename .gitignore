@@ -4,6 +4,8 @@
 # Ảnh scan tài liệu (nặng, chỉ dùng làm nguồn OCR — không cần cho web)
 *.jpg
 *.jpeg
+!images/symbole/*.jpg
+!images/scans/symbole/*.jpg
 !fuererschein/images/theory/*.jpg
 !furerschein/public/images/theory/*.jpg
 !furerschein/furerschein-app/public/images/theory/*.jpg
