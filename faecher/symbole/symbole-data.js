@@ -706,7 +706,7 @@
     soft: "#FDF8EE",
     teacher: "Hygiene · Arbeitsschutz · Wirtschaftsdienst",
     ready: true,
-    desc: "Alle prüfungsrelevanten Symbole einzeln ausgeschnitten & erklärt: GHS-Gefahrensymbole, Entsorgung, Verbots-/Gebots-/Rettungs-/Brandschutzzeichen & Textilpflege.",
+    desc: "Alle prüfungsrelevanten Symbole einzeln ausgeschnitten & erklärt: GHS-Gefahrensymbole, Entsorgung, Verbots-/Gebots-/Rettungs-/Brandschutzzeichen, Textilpflege, Servietten & Dekoration nach Jahreszeit/Anlass.",
     groups: [
       {
         id: "ghs-entsorgung",
@@ -1145,6 +1145,186 @@
               { de: "primäre aromatische Amine (PAA)", vi: "amin thơm bậc một (chất có thể thôi nhiễm từ khăn giấy in màu)" },
               { de: "auf den Schoß legen", vi: "trải khăn ăn lên đùi" },
               { de: "die Lippen abtupfen", vi: "chấm nhẹ môi trước khi uống" }
+            ]
+          }
+        ]
+      },
+      {
+        id: "dekoration",
+        badge: "Teil 5 · Dekoration & Anlass",
+        title: "Dekoration nach Jahreszeit & Anlass (Abschlussprüfung)",
+        items: [
+          {
+            id: "sym-dekoration",
+            icon: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 22V12\"/><path d=\"M12 12c0-4 2-7 6-8 0 4-2 7-6 8z\"/><path d=\"M12 14c0-3-2-5-5-5 0 3 2 5 5 5z\"/></svg>",
+            name: "6. Tischdekoration nach Jahreszeit & Anlass",
+            desc: "Grundregeln · Frühling / Sommer / Herbst / Winter · Valentinstag, Ostern, Muttertag, Hochzeit, Geburtstag, Geschäftsessen, Gala · Gedeck & Bewertungskriterien",
+            content: `
+<div class="note">
+  <b>Prüfungsrelevanz:</b> In der praktischen Abschlussprüfung (Restaurant / Service) muss das Gedeck und die <span class="term" data-de="Tischdekoration" data-vi="trang trí bàn">Tischdekoration</span> zum vorgegebenen <b>Anlass</b> und zur <b>Jahreszeit</b> passen. Bewertet werden Hygiene, fachgerechte Ausführung, Anlassbezug &amp; Kreativität, Zweckmäßigkeit und Auftreten / Begründung im Gespräch.
+  <div class="vi">Trong thi thực hành Abschluss, bàn ăn và phần trang trí phải phù hợp <b>dịp (Anlass)</b> và <b>mùa</b> đề bài đưa ra. Giám khảo chấm: vệ sinh, thao tác đúng chuẩn, sự phù hợp với dịp + sáng tạo, tính thực dụng, và khả năng giải thích lựa chọn của bạn.</div>
+</div>
+
+<h3>A. Grundregeln – gelten für jede Dekoration</h3>
+<table>
+  <tr><th>Regel</th><th>Inhalt</th><th>Tiếng Việt</th></tr>
+  <tr><td><b>Sichtkontakt</b></td><td>Blumen und Kerzen dürfen den Blickkontakt zwischen den Gästen nicht versperren: entweder <b>niedrig (ca. 15–20 cm)</b> oder hoch mit schlankem Stiel.</td><td>Hoa/nến không che tầm nhìn giữa các khách: thấp (khoảng 15–20 cm) hoặc cao nhưng thân mảnh.</td></tr>
+  <tr><td><b>Kein starker Duft</b></td><td>Keine stark duftenden Blumen (z. B. Lilien, viele Hyazinthen) und keine Duftkerzen: Sie verfälschen den Geruch von Speisen und Wein.</td><td>Không dùng hoa nồng mùi (ly, nhiều hyacinth) và nến thơm vì làm lệch mùi món ăn, rượu.</td></tr>
+  <tr><td><b>Hygiene</b></td><td>Alles sauber, staub- und fusselfrei; keine abfallenden Blätter oder Pollen; keine Trockenblumen, keine giftigen Pflanzen; kein Kerzenwachs auf Tischtuch oder Besteck.</td><td>Sạch, không bụi, không rụng lá/phấn hoa, không hoa khô, không cây độc, không để sáp nến dính khăn/dao nĩa.</td></tr>
+  <tr><td><b>Zweckmäßigkeit</b></td><td>Genug Platz für Teller, Gläser, Brotkorb und Vorlegen. Die Deko darf den Service nicht behindern.</td><td>Đủ chỗ cho đĩa, ly, rổ bánh mì và thao tác phục vụ; trang trí không cản Service.</td></tr>
+  <tr><td><b>Sicherheit</b></td><td>Kerzen standsicher im Halter, Abstand zu Serviette und trockenem Grün; nur rußfreie, ungeduftete Kerzen.</td><td>Nến đứng vững trong giá, tránh xa khăn ăn và cành khô; chỉ dùng nến không khói, không mùi.</td></tr>
+  <tr><td><b>Gesamtbild</b></td><td>Farbe, Serviettenbruch, Tischwäsche, Menükarte und Blumen bilden eine stimmige Einheit.</td><td>Màu sắc, kiểu gấp khăn, khăn bàn, menu và hoa phải hài hoà thành một thể.</td></tr>
+  <tr><td><b>Weniger ist mehr</b></td><td>Der Tisch darf nicht überladen wirken.</td><td>Không dồn quá nhiều đồ lên bàn.</td></tr>
+</table>
+
+<h3>B. Dekoration nach Jahreszeit</h3>
+<table>
+  <tr><th>Jahreszeit</th><th>Farben</th><th>Dekoelemente</th><th>Tiếng Việt</th></tr>
+  <tr>
+    <td><b>Frühling</b></td>
+    <td>Pastell: Mintgrün, zartes Gelb, Flieder, Rosa, Weiß</td>
+    <td>Tulpen, Narzissen, Hyazinthen, Ranunkeln, Muscari; Forsythienzweige; kleine Kräutertöpfe (Minze, Rosmarin, Thymian); helle Tischläufer.</td>
+    <td><b>Mùa xuân:</b> màu pastel (xanh bạc hà, vàng nhạt, tím lilac, hồng, trắng); hoa tulip, thuỷ tiên, cẩm tú cầu nhỏ; cành Forsythia; chậu thảo mộc nhỏ; khăn chạy bàn sáng màu.</td>
+  </tr>
+  <tr>
+    <td><b>Sommer</b></td>
+    <td>Sonnengelb, Himmelblau, Koralle, Sand, Wiesengrün</td>
+    <td>Wiesenblumen, Sonnenblumen, Lavendel, Rosen; ganze Zitronen/Limetten in Glasvasen; Windlichter, LED-Kerzen, Lichterketten auf der Terrasse; dezente Muscheln bei Fisch-/Mittelmeerthema.</td>
+    <td><b>Mùa hè:</b> vàng nắng, xanh trời, san hô, màu cát, xanh cỏ; hoa đồng nội, hướng dương, oải hương; chanh/chanh xanh trong bình thuỷ tinh; đèn gió, đèn LED, dây đèn ngoài sân; vỏ sò nhẹ nhàng cho chủ đề hải sản/Địa Trung Hải.</td>
+  </tr>
+  <tr>
+    <td><b>Herbst</b></td>
+    <td>Rostrot, Orange, Ocker, Braun, Olivgrün</td>
+    <td>Zierkürbisse, Ahornblätter, kleine Äpfel, Nüsse, Kastanien, Eicheln, Zapfen; Holzscheiben als Untersetzer; Tischläufer aus Leinen/Filz; Windlichter mit Stumpenkerzen.</td>
+    <td><b>Mùa thu:</b> đỏ gỉ sắt, cam, vàng đất, nâu, xanh ô liu; bí trang trí, lá phong, táo nhỏ, hạt, hạt dẻ, quả sồi, quả thông; đế lót bằng lát gỗ; khăn chạy vải lanh/nỉ; đèn gió với nến trụ.</td>
+  </tr>
+  <tr>
+    <td><b>Winter / Weihnachten</b></td>
+    <td>Rot, Tannengrün, Silber, Gold, Weiß, Eisblau, Nachtblau</td>
+    <td>Tannenzweige, Eukalyptus, Zapfen; Zimtstangen und getrocknete Orangenscheiben; dezenter Christbaumschmuck; Stabkerzen in edlen Leuchtern; Servietten mit Gold-/Silberprägung.</td>
+    <td><b>Mùa đông / Giáng sinh:</b> đỏ, xanh thông, bạc, vàng kim, trắng, xanh băng, xanh đêm; cành thông, bạch đàn, quả thông; quế và cam sấy khô; đồ trang trí cây thông tiết chế; nến thon trong chân đèn đẹp; khăn ăn dập nổi vàng/bạc.</td>
+  </tr>
+</table>
+
+<h3>C. Dekoration nach Anlass</h3>
+<table>
+  <tr><th>Anlass</th><th>Stil</th><th>Umsetzung</th><th>Tiếng Việt</th></tr>
+  <tr>
+    <td><b>Valentinstag</b> (14. Februar)</td>
+    <td>Romantisch, intim, elegant</td>
+    <td>Rote oder rosé Servietten (z. B. Herz-Faltung); einzelne rote Rose im schmalen Glas; Teelichter; gedimmtes Licht.</td>
+    <td><b>Valentine:</b> lãng mạn, ấm cúng; khăn ăn đỏ/hồng gấp hình Herz; một bông hồng đỏ trong ống thuỷ tinh hẹp; nến tealight; ánh sáng dịu.</td>
+  </tr>
+  <tr>
+    <td><b>Ostern</b></td>
+    <td>Verspielt, natürlich, fröhlich</td>
+    <td>Bemalte oder Holz-/Keramikeier in Pastell; Osternest aus Moos oder Heu; Servietten als Hase gefaltet (bei Familien).</td>
+    <td><b>Phục sinh:</b> vui tươi, tự nhiên; trứng sơn/gỗ/gốm màu pastel; tổ trứng bằng rêu hoặc cỏ khô; khăn ăn gấp Hase (cho gia đình có trẻ em).</td>
+  </tr>
+  <tr>
+    <td><b>Muttertag</b> (Mai)</td>
+    <td>Herzlich, wertschätzend, floral</td>
+    <td>Schwerpunkt Blumen: Pfingstrosen oder Pastellrosen; kleine Willkommenskarte oder Praliné auf dem Teller.</td>
+    <td><b>Ngày của Mẹ:</b> trìu mến, nhiều hoa; mẫu đơn hoặc hồng pastel; thiệp chào mừng nhỏ hoặc một viên Praliné trên đĩa.</td>
+  </tr>
+  <tr>
+    <td><b>Hochzeit / Jubiläum</b></td>
+    <td>Romantisch, festlich, hochwertig</td>
+    <td>Weiß, Creme, Rosé oder Silber; viel Kerzenschein; niedrige florale Gestecke; aufwendigere Serviettenfaltung (z. B. Bischofsmütze, Lilie, Rose); Platzteller; Gedeck für 3–5 Gänge.</td>
+    <td><b>Đám cưới / Kỷ niệm:</b> lãng mạn, trang trọng; trắng, kem, hồng nhạt hoặc bạc; nhiều ánh nến; hoa cắm thấp; khăn ăn gấp cầu kỳ hơn; Platzteller; bộ Gedeck cho menu 3–5 món.</td>
+  </tr>
+  <tr>
+    <td><b>Geburtstag</b></td>
+    <td>Herzlich, persönlich, farbenfroher</td>
+    <td>Farben nach Geschmack des Gastes; Gedeck passend zu Kaffeetrinken oder Abendessen und genau auf die bestellten Speisen abgestimmt.</td>
+    <td><b>Sinh nhật:</b> thân mật, nhiều màu hơn; màu theo sở thích khách; Gedeck khớp với món đã đặt (trà chiều hay bữa tối).</td>
+  </tr>
+  <tr>
+    <td><b>Geschäftsessen</b></td>
+    <td>Elegant, schlicht, dezent</td>
+    <td>Gedeckte Farben (Weiß, Anthrazit, Bordeaux); keine klobige oder duftende Deko; schlichte Serviettenform (Tafelspitz, Marquée).</td>
+    <td><b>Tiệc công việc:</b> thanh lịch, tối giản; màu trầm (trắng, xám than, đỏ đô); không hoa cồng kềnh/có mùi; khăn gấp đơn giản.</td>
+  </tr>
+  <tr>
+    <td><b>Themen- / Galadinner</b> (Silvester, Frühlingsgala)</td>
+    <td>Streng nach Motto</td>
+    <td>Eyecatcher passend zum Thema (Menükartenhalter, Streuartikel), solange hygienisch und ohne Behinderung des Service.</td>
+    <td><b>Tiệc chủ đề / Gala:</b> bám sát chủ đề; điểm nhấn (giá menu, đồ rải bàn) miễn là hợp vệ sinh và không cản phục vụ.</td>
+  </tr>
+</table>
+
+<h3>D. Gedeck &amp; Bewertung in der Abschlussprüfung</h3>
+<table>
+  <tr><th>Thema</th><th>Merkpunkte</th><th>Tiếng Việt</th></tr>
+  <tr><td><b>Mise en place</b></td><td>Tisch auf Standfestigkeit prüfen; Molton und Tischdecke faltenfrei auflegen; der <b>Hauptbruch</b> zeigt zum Licht (Fenster) oder Haupteingang.</td><td>Kiểm tra bàn chắc chắn; trải Molton và khăn bàn phẳng; đường gấp chính (Hauptbruch) hướng về cửa sổ hoặc cửa chính.</td></tr>
+  <tr><td><b>Abstände</b></td><td>Gedeck ca. 1–2 cm von der Tischkante; Gabeln links, Messer rechts (Klinge zum Teller); Besteck nach Menüfolge von außen nach innen.</td><td>Gedeck cách mép bàn khoảng 1–2 cm; dĩa bên trái, dao bên phải (lưỡi hướng vào đĩa); dao nĩa xếp theo thứ tự món, từ ngoài vào trong.</td></tr>
+  <tr><td><b>Gläser</b></td><td>Richtglas an der Spitze des Hauptgangmessers (ca. 1 cm Abstand); weitere Gläser in Linie, Dreieck oder Bogen.</td><td>Ly chuẩn (Richtglas) đặt ở mũi dao món chính (cách khoảng 1 cm); các ly khác xếp thành hàng, tam giác hoặc cung.</td></tr>
+  <tr><td><b>Gästeberatung</b></td><td>Bedarf klären (Personenzahl, Budget, Stil, Tageszeit); Menü- und Getränkefolge zum Anlass empfehlen; freundlich, sicher, höflich.</td><td>Hỏi nhu cầu (số người, ngân sách, phong cách, thời điểm); gợi ý menu và đồ uống hợp dịp; thân thiện, tự tin, lịch sự.</td></tr>
+  <tr><td><b>Bewertungskriterien</b></td><td>1) Hygiene &amp; Arbeitssicherheit · 2) Fachgerechte Ausführung · 3) Anlassbezug &amp; Kreativität · 4) Zweckmäßigkeit · 5) Auftreten &amp; Beratung.</td><td>1) Vệ sinh & an toàn lao động · 2) Thao tác đúng chuẩn · 3) Phù hợp dịp & sáng tạo · 4) Tính thực dụng · 5) Phong thái & tư vấn.</td></tr>
+</table>
+
+<div class="note">
+  <b>Mustersatz für das Prüfungsgespräch:</b> „Passend zum Frühlingsbeginn und zum leichten Spargelmenü habe ich Pastelltöne und frische Tulpen gewählt; die Gestecke sind niedrig, damit sich die Gäste sehen können.“
+  <div class="vi">Câu mẫu khi bảo vệ lựa chọn: "Phù hợp đầu xuân và menu măng tây nhẹ, tôi chọn tông pastel và hoa tulip tươi; hoa cắm thấp để khách nhìn thấy nhau."</div>
+</div>
+`,
+            qa: [
+              {
+                q: "Welche Regeln gelten für die Höhe und den Duft von Tischdekoration im Restaurant?",
+                qVi: "Quy tắc về chiều cao và mùi hương của đồ trang trí bàn trong nhà hàng là gì?",
+                a: "Gestecke und Kerzen müssen niedrig (ca. 15–20 cm) oder sehr schlank sein, damit der Blickkontakt zwischen den Gästen frei bleibt. Keine stark duftenden Blumen (z. B. Lilien) und keine Duftkerzen, weil sie den Geruch von Speisen und Wein verfälschen.",
+                aVi: "Hoa và nến phải thấp (khoảng 15–20 cm) hoặc thân rất mảnh để khách nhìn thấy nhau. Không dùng hoa nồng mùi (như ly) và nến thơm vì làm lệch mùi món ăn và rượu.",
+                why: "Lỗi trang trí kinh điển bị trừ điểm trong thi Abschluss.",
+                src: "Tischkultur · IHK-Prüfung Restaurant"
+              },
+              {
+                q: "Welche Farben und Dekoelemente passen zum Herbst?",
+                qVi: "Màu sắc và đồ trang trí nào phù hợp với mùa thu?",
+                a: "Warme Erdtöne (Rostrot, Orange, Ocker, Braun, Olivgrün) mit Zierkürbissen, Ahornblättern, Äpfeln, Nüssen, Kastanien, Zapfen, Holzscheiben als Untersetzer und Windlichtern mit Stumpenkerzen.",
+                aVi: "Tông đất ấm (đỏ gỉ sắt, cam, vàng đất, nâu, xanh ô liu) với bí trang trí, lá phong, táo, hạt, hạt dẻ, quả thông, lát gỗ làm đế lót và đèn gió với nến trụ.",
+                why: "Chọn đúng bộ màu theo mùa là điểm cộng Anlassbezug.",
+                src: "Tischkultur · IHK-Prüfung Restaurant"
+              },
+              {
+                q: "Wie gestaltet man einen Tisch für eine Hochzeit?",
+                qVi: "Trang trí bàn cho tiệc cưới như thế nào?",
+                a: "Romantisch, festlich und hochwertig: Weiß, Creme, Rosé oder Silber, viel Kerzenschein, niedrige florale Gestecke, aufwendigere Serviettenfaltung (z. B. Bischofsmütze, Lilie), Platzteller und Gedeck für ein 3- bis 5-Gänge-Menü.",
+                aVi: "Lãng mạn, trang trọng, cao cấp: trắng, kem, hồng nhạt hoặc bạc, nhiều ánh nến, hoa cắm thấp, khăn ăn gấp cầu kỳ hơn, Platzteller và Gedeck cho menu 3–5 món.",
+                why: "Tình huống Anlass hay gặp trong đề thực hành.",
+                src: "Tischkultur · IHK-Prüfung Restaurant"
+              },
+              {
+                q: "Welche Dekoration ist für ein Geschäftsessen angemessen?",
+                qVi: "Trang trí nào phù hợp cho một bữa tiệc công việc (Geschäftsessen)?",
+                a: "Elegant, schlicht und dezent: gedeckte Farben (Weiß, Anthrazit, Bordeaux), keine klobige oder duftende Deko und schlichte Serviettenformen wie Tafelspitz oder Marquée.",
+                aVi: "Thanh lịch, tối giản, kín đáo: màu trầm (trắng, xám than, đỏ đô), không trang trí cồng kềnh hay có mùi, khăn ăn gấp đơn giản như Tafelspitz hoặc Marquée.",
+                why: "Trong bữa tiệc công việc, cuộc trò chuyện là trọng tâm.",
+                src: "Tischkultur · IHK-Prüfung Restaurant"
+              },
+              {
+                q: "Nach welchen fünf Kriterien wird die Tischdekoration bzw. das Eindecken in der Prüfung bewertet?",
+                qVi: "Việc trang trí/bày bàn trong kỳ thi được chấm theo 5 tiêu chí nào?",
+                a: "1) Hygiene und Arbeitssicherheit, 2) fachgerechte Ausführung (Mise en place), 3) Anlassbezug und Kreativität, 4) Zweckmäßigkeit, 5) Auftreten und Beratung.",
+                aVi: "1) Vệ sinh và an toàn lao động, 2) thao tác đúng chuẩn (Mise en place), 3) phù hợp dịp và sáng tạo, 4) tính thực dụng, 5) phong thái và tư vấn.",
+                why: "Học thuộc 5 tiêu chí để cấu trúc câu trả lời.",
+                src: "Tischkultur · IHK-Prüfung Restaurant"
+              }
+            ],
+            vokabeln: [
+              { de: "die Tischdekoration", vi: "trang trí bàn" },
+              { de: "der Platzteller", vi: "đĩa lót trang trí đặt dưới đĩa chính" },
+              { de: "der Tischläufer", vi: "khăn chạy giữa bàn" },
+              { de: "das Windlicht", vi: "đèn gió (nến trong thuỷ tinh)" },
+              { de: "das Gesteck", vi: "bó hoa cắm (cắm hoa)" },
+              { de: "das Molton", vi: "lớp đệm lót dưới khăn bàn" },
+              { de: "der Hauptbruch", vi: "đường gấp chính của khăn bàn" },
+              { de: "der Menükartenhalter", vi: "giá giữ thẻ menu" },
+              { de: "die Stumpenkerze", vi: "nến trụ" },
+              { de: "die Stabkerze", vi: "nến thon dài" },
+              { de: "der Anlass", vi: "dịp / sự kiện" },
+              { de: "die Jahreszeit", vi: "mùa trong năm" },
+              { de: "das Gedeck", vi: "bộ dụng cụ ăn của một khách" },
+              { de: "der Zierkürbis", vi: "bí trang trí" }
             ]
           }
         ]
@@ -1607,6 +1787,119 @@
         answers: ["deckserviette", "mitteldecke", "napperon", "die deckserviette", "die mitteldecke"],
         answer: "Deckserviette / Mitteldecke (Napperon)",
         ex: "Die Deckserviette bzw. Mitteldecke schützt das Tischtuch und lässt sich beim Gästewechsel schnell austauschen."
+      },
+      {
+        theme: "sym-dekoration",
+        cat: "Dekoration & Regeln",
+        q: "Wie hoch dürfen Blumengestecke auf einem Restauranttisch höchstens sein, damit der Blickkontakt frei bleibt?",
+        opts: ["Ca. 15–20 cm (oder sehr schlank und hoch)", "Mindestens 50 cm", "So hoch wie die Gläser, mindestens 40 cm", "Höhe spielt keine Rolle"],
+        a: 0,
+        ex: "Die Dekoration darf den Sichtkontakt zwischen den Gästen nicht versperren."
+      },
+      {
+        theme: "sym-dekoration",
+        cat: "Dekoration & Regeln",
+        q: "Warum verwendet man auf dem Tisch keine Duftkerzen und keine stark duftenden Blumen?",
+        opts: ["Sie verfälschen den Geruch und Genuss von Speisen und Wein", "Sie sind teurer als normale Kerzen", "Sie brennen zu schnell ab", "Sie sind gesetzlich verboten"],
+        a: 0,
+        ex: "Eigengeruch von Speisen und Wein soll nicht überdeckt werden (z. B. Lilien, viele Hyazinthen vermeiden)."
+      },
+      {
+        theme: "sym-dekoration",
+        cat: "Jahreszeit",
+        q: "Welche Farbwelt passt zur Herbstdekoration?",
+        opts: ["Rostrot, Orange, Ocker, Braun, Olivgrün", "Mintgrün, Flieder, zartes Gelb", "Eisblau, Silber, Weiß", "Neonpink und Neongrün"],
+        a: 0,
+        ex: "Herbst = warme Erdtöne mit Kürbissen, Blättern, Kastanien, Zapfen."
+      },
+      {
+        theme: "sym-dekoration",
+        cat: "Jahreszeit",
+        q: "Welche Dekoration passt am besten zum Frühling?",
+        opts: ["Tulpen, Narzissen und Kräutertöpfe in Pastelltönen", "Zierkürbisse und Kastanien", "Tannenzweige und Zimtstangen", "Dicke rote Stabkerzen"],
+        a: 0,
+        ex: "Frühling = Pastell, Frühlingsblüher, Forsythien und kleine Kräutertöpfe."
+      },
+      {
+        theme: "sym-dekoration",
+        cat: "Jahreszeit",
+        q: "Welche Elemente gehören typischerweise zur Weihnachtsdekoration im Restaurant?",
+        opts: ["Tannenzweige, Zimtstangen, getrocknete Orangenscheiben, Stabkerzen", "Sonnenblumen und Lavendel", "Ahornblätter und Eicheln", "Osternester aus Moos"],
+        a: 0,
+        ex: "Rot, Tannengrün, Silber, Gold – festlich, aber stilvoll statt Kitsch."
+      },
+      {
+        theme: "sym-dekoration",
+        cat: "Anlass",
+        q: "Welche Serviettenfaltung und Dekoration passt zum Valentinstag?",
+        opts: ["Rote oder rosé Servietten in Herzform, Teelichter, gedimmtes Licht", "Hasenohren und bemalte Eier", "Zierkürbisse und Eicheln", "Gold-silberne Tannenzweige"],
+        a: 0,
+        ex: "Valentinstag: romantisch, intim, elegant."
+      },
+      {
+        theme: "sym-dekoration",
+        cat: "Anlass",
+        q: "Welche Faltung eignet sich besonders für Ostern bzw. Familien mit Kindern?",
+        opts: ["Hase (Hasenohren)", "Tafelspitz", "Marquée", "Bestecktasche"],
+        a: 0,
+        ex: "Verspielte Figuren wie Hase passen zu Ostern und Familienfeiern, nicht zu offiziellen Anlässen."
+      },
+      {
+        theme: "sym-dekoration",
+        cat: "Anlass",
+        q: "Welches Gestaltungskonzept passt zu einem Geschäftsessen?",
+        opts: ["Elegant, schlicht, gedeckte Farben (Weiß, Anthrazit, Bordeaux)", "Bunt, verspielt, viele Streuartikel", "Hohe, stark duftende Blumengestecke", "Themendeko mit Hasen und Eiern"],
+        a: 0,
+        ex: "Beim Business-Lunch steht das Gespräch im Vordergrund – Deko dezent halten."
+      },
+      {
+        theme: "sym-dekoration",
+        cat: "Anlass",
+        q: "Welche Merkmale hat eine passende Tischdekoration für eine Hochzeit?",
+        opts: ["Weiß/Creme/Rosé/Silber, viel Kerzenschein, niedrige Gestecke, Platzteller", "Neonfarben und große Luftballons", "Nur Papierservietten ohne Menükarte", "Hohe Gestecke, die die Sicht versperren"],
+        a: 0,
+        ex: "Romantisch, festlich, hochwertig – mit erweitertem Gedeck für 3–5 Gänge."
+      },
+      {
+        theme: "sym-dekoration",
+        cat: "Gedeck & Bewertung",
+        q: "Wie weit ist das Gedeck ungefähr von der Tischkante entfernt?",
+        opts: ["Ca. 1–2 cm (ein Daumen breit)", "Ca. 10 cm", "Ca. 5 cm", "Es steht direkt auf der Kante"],
+        a: 0,
+        ex: "Der Abstand von 1–2 cm gehört zu den fachgerechten Maßen beim Eindecken."
+      },
+      {
+        theme: "sym-dekoration",
+        cat: "Gedeck & Bewertung",
+        q: "Wohin zeigt der Hauptbruch der Tischdecke?",
+        opts: ["Zum Licht (Fenster) oder Haupteingang", "Zur Küche", "Zur Wand", "Zum Gast, der als erster sitzt"],
+        a: 0,
+        ex: "Der Hauptbruch (Mittelfalte) wird so ausgerichtet, dass er zum Licht bzw. zum Haupteingang zeigt."
+      },
+      {
+        theme: "sym-dekoration",
+        cat: "Gedeck & Bewertung",
+        q: "Wo steht das Richtglas?",
+        opts: ["An der Spitze des Hauptgangmessers (ca. 1 cm Abstand)", "Links neben dem Brotteller", "Mitten auf dem Teller", "Hinter der Menükarte"],
+        a: 0,
+        ex: "Weitere Gläser werden in Linie, Dreieck oder Bogen ergänzt."
+      },
+      {
+        theme: "sym-dekoration",
+        cat: "Gedeck & Bewertung",
+        q: "Welche Aussage zu Kerzen auf dem Tisch ist richtig?",
+        opts: ["Standsicher im Halter, ungeduftet, rußfrei und weit weg von Servietten und trockenem Grün", "Duftkerzen sind erlaubt, wenn sie teuer sind", "Kerzen dürfen direkt auf dem Tischtuch stehen", "Kerzen müssen die Gäste überragen"],
+        a: 0,
+        ex: "Sicherheit und Hygiene: Kein Kerzenwachs auf Tischtuch oder Besteck."
+      },
+      {
+        type: "fill",
+        theme: "sym-dekoration",
+        cat: "Gedeck & Bewertung",
+        q: "Wie nennt man die Mittelfalte der Tischdecke, die zum Licht oder Haupteingang zeigen soll?",
+        answers: ["hauptbruch", "der hauptbruch"],
+        answer: "Hauptbruch",
+        ex: "Der Hauptbruch ist die Mittelfalte der Tischdecke und wird zum Licht bzw. Haupteingang ausgerichtet."
       }
     ]
   };
