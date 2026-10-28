@@ -8290,6 +8290,8 @@ function router(){
       const view=document.getElementById("v-fach-quiz");
       if(view) view.classList.add("active");
       if(cb) cb.innerHTML='<a onclick="go(\'#/\')">Start</a><span class="sep">›</span><a onclick="go(\'#/fach/'+fachId+'\')">'+(fach?fach.code:fachId)+'</a><span class="sep">›</span><span>Quiz</span>';
+      const fqBackEl=document.getElementById('fachQuizBack');
+      if(fqBackEl){ fqBackEl.onclick=()=>go(fachHubRoute(fachId)); fqBackEl.textContent='← '+(fach?fach.code:'Fach'); }
       if(window._fachQPending && window._fachQPending.fachId===fachId){
         const p=window._fachQPending; window._fachQPending=null;
         setTimeout(()=>fachQuizStart(p.fachId,p.ids,p.mode||"all",p.opts),0);
