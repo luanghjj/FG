@@ -6057,7 +6057,7 @@ function examCardHTML(ex, compact){
     +'<div class="ka-body">'
     +'<div class="top"><span class="code">'+ex.icon+' '+ex.code+'</span></div>'
     +'<div class="name">'+ex.name+'</div>'
-    +'<div class="teacher">'+ex.teacher+' · '+formatDeDateLong(ex.date)+'</div>'
+    +'<div class="teacher">'+formatDeDateLong(ex.date)+'</div>'
     +(topics?'<div class="topics-preview">'+topics+'</div>':'')
     +'</div>'
     +'<div class="ka-side"><span class="ka-countdown '+(cd.cls||'')+'">'+cd.text+'</span></div>'
@@ -6078,7 +6078,7 @@ function renderHomeExams(){
   if(dayEl) dayEl.textContent=String(dt.getDate()).padStart(2,"0");
   if(monEl) monEl.textContent=dt.toLocaleDateString("de-DE",{month:"short"});
   if(titleEl) titleEl.innerHTML=next.icon+" "+next.code+" · KA";
-  if(subEl) subEl.textContent=next.teacher+" · "+formatDeDateLong(next.date)+(upcoming.length>1?(" · +"+(upcoming.length-1)+" weitere"):"");
+  if(subEl) subEl.textContent=formatDeDateLong(next.date)+(upcoming.length>1?(" · +"+(upcoming.length-1)+" weitere"):"");
   if(cdEl){ cdEl.textContent=cd.text; cdEl.className="cd "+(cd.cls||""); }
   const chip=document.getElementById("homeExamChip");
   if(chip) chip.onclick=()=>go(next.route||"#/on-thi");
@@ -6267,7 +6267,7 @@ function renderTraining(fachId){
   const sub=document.getElementById('fachTrainingSub');
   const body=document.getElementById('fachTrainingBody');
   if(title) title.textContent='🎯 Training · '+(fach.code||'');
-  let ss=(fach.teacher||'');
+  let ss='';
   if(fach.examDate){ const cd=countdownLabel(fach.examDate); ss+=(ss?' · ':'')+'KA '+formatDeDate(fach.examDate)+' ('+cd.text+')'; }
   if(sub) sub.textContent=ss;
 
@@ -6418,7 +6418,7 @@ function renderGkUebung(setId){
       html+='<div class="ueb-set">';
       html+='<div class="ueb-top"><div><h3>'+(i+1)+'. '+(set.title||'Übungsaufgaben')+'</h3>';
       html+='<div class="meta">'+(set.subtitle||'')+'</div>';
-      html+='<div class="meta">'+(set.teacher||'')+(set.source?(' · '+set.source):'')+' · '+nBlocks+' Aufgabe(n) · <b>'+set.totalPoints+'</b> Punkte</div></div>';
+      html+='<div class="meta">'+(set.source?(set.source+' · '):'')+nBlocks+' Aufgabe(n) · <b>'+set.totalPoints+'</b> Punkte</div></div>';
       html+='<span class="pts">'+set.totalPoints+'</span></div>';
       html+='<div class="practice-actions"><button type="button" class="btn" data-open-ueb="'+set.id+'">Aufgabe öffnen →</button>';
       html+='<button type="button" class="btn ghost" data-open-ueb-sol="'+set.id+'">Musterlösung anzeigen</button></div></div>';
@@ -6436,7 +6436,7 @@ function renderGkUebung(setId){
   const set=(window.GkUebung&&GkUebung.findSet? GkUebung.findSet(setId): list.find(s=>s.id===setId));
   if(!set){ go('#/exam/gk/uebung'); return; }
   if(title) title.textContent='✍️ '+(set.title||'Übungsaufgaben');
-  if(sub) sub.textContent=(set.teacher||'Gk / FS 1')+(set.subtitle?(' · '+set.subtitle):'')+' · '+set.totalPoints+' Punkte';
+  if(sub) sub.textContent=(set.subtitle?(set.subtitle+' · '):'')+set.totalPoints+' Punkte';
 
   // Build paper form like PDF
   let html='';
@@ -6447,7 +6447,7 @@ function renderGkUebung(setId){
   html+='</div>';
 
   html+='<div class="ueb-paper">';
-  html+='<div class="sheet-head"><div class="teacher">'+(set.teacher||'Buß-Schroeder - Gk / FS 1')+'</div><div class="datum">Datum: ________</div></div>';
+  html+='<div class="sheet-head"><div class="teacher">'+'Gk / FS 1'+'</div><div class="datum">Datum: ________</div></div>';
   html+='<div class="sheet-title">'+(set.title||'Übungsaufgaben')+'</div>';
   html+='<p class="hinweis"><b>Hinweis:</b><br>'+(set.hint||'Alle Aufgaben sind, sofern nicht anders angegeben, in ganzen Sätzen zu beantworten.')+'</p>';
   html+='<div class="total-pts">'+set.totalPoints+'</div>';
@@ -6556,7 +6556,7 @@ function renderExamDetail(examId){
   const descEl=document.getElementById("examDetailDesc");
   const body=document.getElementById("examDetailBody");
   if(dateEl) dateEl.textContent=formatDeDate(ex.date)+" · "+cd.text;
-  if(metaEl) metaEl.textContent=ex.teacher+" · "+formatDeDateLong(ex.date);
+  if(metaEl) metaEl.textContent=formatDeDateLong(ex.date);
   if(titleEl) titleEl.innerHTML=ex.icon+" "+ex.name;
   if(descEl) descEl.textContent="Prüfungstraining · "+ex.code+" · Übungsform wählen";
   if(!body) return;
@@ -6599,7 +6599,7 @@ function renderExamDetail(examId){
       const n=(set.blocks||[]).length;
       html+='<div class="ueb-set" style="margin-bottom:10px">';
       html+='<div class="ueb-top"><div><h3 style="font-size:.95em">'+(set.title||'Übungsaufgaben')+(set.subtitle?(' · '+set.subtitle):'')+'</h3>';
-      html+='<div class="meta">'+(set.teacher||'FS1')+' · '+n+' Aufgabe(n) · '+set.totalPoints+' Punkte</div></div>';
+      html+='<div class="meta">'+n+' Aufgabe(n) · '+set.totalPoints+' Punkte</div></div>';
       html+='<span class="pts">'+set.totalPoints+'</span></div>';
       html+='<div class="practice-actions"><button type="button" class="btn" data-ueb="'+set.id+'">Aufgabe öffnen →</button></div>';
       html+='</div>';
@@ -6790,7 +6790,7 @@ function renderFachHub(fachId){
   const groups=document.getElementById('fachHubGroups');
   if(title) title.innerHTML=(fach.icon||'')+' '+(fach.code||'')+' · '+(fach.name||'');
   if(sub){
-    let s=(fach.teacher||'');
+    let s='';
     if(fach.examDate) s += (s?' · ':'')+'KA '+formatDeDate(fach.examDate);
     if(fach.desc) s += (s?' · ':'')+fach.desc;
     sub.textContent=s;
@@ -6942,7 +6942,7 @@ function renderFachTheme(fachId, themeId){
   if(back){ back.onclick=()=>go(fachRoute(fach,'hub')); back.textContent='← '+(fach?fach.code:'Fach'); }
   if(!fach||!theme){ go(fach?fachRoute(fach,'hub'):'#/'); return; }
   if(title) title.innerHTML=(theme.icon||'')+' '+theme.name;
-  if(sub) sub.textContent=(fach.code||'')+' · '+(theme.groupBadge||theme.badge||'')+(fach.teacher?(' · '+fach.teacher):'');
+  if(sub) sub.textContent=(fach.code||'')+' · '+(theme.groupBadge||theme.badge||'')+'';
   if(!body) return;
 
   _fachCurFachId = fachId;
@@ -8118,7 +8118,7 @@ BFK_LEVELS.forEach(l=>{
   if(!l.ready){
     PLACEHOLDERS["#/bfk/"+l.id] = {
       title:l.code+" · "+l.name.replace(/^BfK-\w+ · /,""),
-      desc:l.desc+" · Lehrkraft: "+l.teacher,
+      desc:l.desc,
       topics:l.topics,
       note:"BfK-Stufe laut Stundenplan. Inhalte werden schrittweise ergänzt. BfK-1 und BfK-2 sind bereits verfügbar.",
     };
@@ -8132,7 +8132,7 @@ PLACEHOLDERS["#/fach/deutsch"] = {title:"D · Deutsch", desc:"Visualisierung · 
 function subjectCardHTML(s){
   const style='--tile-accent:'+s.accent+';--tile-soft:'+s.soft;
   const cls='subject-card'+(s.ready?'':' soon');
-  const teacher=s.meta || s.teacher || '';
+  const teacher='';
   const title=String(s.name||s.code).replace(/^BfK-\w+ · /,'');
   const proFlag='<span class="pro-flag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l3.5-9 3.5 5 2.5-6 2.5 6 3.5-5 3 9z"/></svg>Pro</span>';
   const chev='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>';
@@ -8180,7 +8180,7 @@ function renderBfkLevel(levelId){
       const grid=document.getElementById("bfkLevelGrid");
       if(grid) grid.className = ""; // remove grid layout to render vertical list like bfk1
       if(title) title.textContent = fach.code + " · " + fach.name;
-      if(desc) desc.textContent = (fach.teacher? fach.teacher + " · " : "") + fach.desc;
+      if(desc) desc.textContent = fach.desc;
       if(!grid) return;
 
       let html = '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;width:100%">'
@@ -8225,7 +8225,7 @@ function renderBfkLevel(levelId){
   const desc=document.getElementById("bfkLevelDesc");
   const grid=document.getElementById("bfkLevelGrid");
   if(title) title.textContent = level.code+" · "+level.name.replace(/^BfK-\w+ · /,'');
-  if(desc) desc.textContent = level.desc + (level.teacher?(" · "+level.teacher):"");
+  if(desc) desc.textContent = level.desc;
   if(!grid) return;
   if(level.ready && level.themes){
     grid.innerHTML = level.themes.map(t=>
@@ -8593,7 +8593,7 @@ try{(ABSCHLUSS_THEMEN||[]).forEach(t=>{
 
 // KA-Termine + jedes Thema der Prüfung
 EXAMS.forEach(ex=>{
-  idx(ex.name, ex.teacher+" · "+formatDeDateLong(ex.date), "KA", ex.route, null,
+  idx(ex.name, formatDeDateLong(ex.date), "KA", ex.route, null,
     ex.code+" "+(ex.topics||[]).join(" ")+" klassenarbeit "+(ex.studyRoute||"")+" "+(ex.teacher||""));
   (ex.topics||[]).forEach(topic=>{
     idx(topic, ex.code+" · "+ex.name, "KA", ex.studyRoute||ex.route, null, ex.code+" thema topic "+topic);
@@ -8718,7 +8718,7 @@ idx("Zusammenfassung KA2","LF2 Waren & Lieferung · LF3","Prüfung","klassenarbe
 // BFK-Themen
 // BfK-Stufen + Themen von BfK-2
 BFK_LEVELS.forEach(l=>{
-  idx(l.code+" · "+l.name, l.desc+" · "+(l.teacher||""), "BfK", "#/bfk/"+l.id, null, "bfk stufe "+l.code+" "+(l.topics||[]).join(" "));
+  idx(l.code+" · "+l.name, l.desc, "BfK", "#/bfk/"+l.id, null, "bfk stufe "+l.code+" "+(l.topics||[]).join(" "));
   (l.themes||[]).forEach(t=>idx(t.name, l.code+" · "+t.desc, "BfK-2", t.route, null, "bfk thema "+t.name));
 });
 
@@ -9449,11 +9449,11 @@ function openFachSheet(){
     html+='<div class="group-label">'+g.title+'</div>';
     (g.items||[]).forEach(s=>{
       const pill=s.ready?'<span class="pill ready">OK</span>':'<span class="pill soon">Bald</span>';
-      const teacher=s.meta||s.teacher||'';
+      const teacher='';
       const style='--soft:'+(s.soft||'#FDF8EE');
       html+='<button type="button" class="fach-item" data-route="'+s.route+'" data-external="'+(s.external?1:0)+'" style="'+style+'">'
         +'<div class="ic" style="background:'+(s.soft||'#FDF8EE')+';color:'+(s.accent||'#B45309')+'">'+s.icon+'</div>'
-        +'<div class="txt"><div class="code">'+s.code+'</div><div class="teacher">'+(teacher||s.name)+'</div></div>'
+        +'<div class="txt"><div class="code">'+s.code+'</div><div class="teacher">'+s.name+'</div></div>'
         +pill
         +'</button>';
     });
