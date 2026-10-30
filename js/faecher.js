@@ -5259,6 +5259,1012 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
           "content": "<h2>Rechtsgeschäfte · Fall-Übung — Alles zusammen</h2>\n<div class=\"hint\">Gesetzbuch zum Lernen (DE–VI) · BGB</div>\n<details class=\"q\"><summary><b>Fall A</b> Frank (35) kauft ein Haus von Alexandra (88) und vermietet es an Peter (21). Alle sind geistig voll gesund. Analysieren Sie den Fall vollständig.</summary>\n    <div class=\"ans\">\n      <div class=\"de\"><b>Lösung</b> \n        <ul>\n          <li><b>Rechtsfähig?</b> Alle drei — jeder Mensch ist rechtsfähig.</li>\n          <li><b>Geschäftsfähig?</b> Alle drei <b>voll geschäftsfähig</b> (über 18, geistig gesund).</li>\n          <li><b>Rechtsgeschäfte:</b> Kaufvertrag (Frank–Alexandra), Mietvertrag (Frank–Peter).</li>\n          <li><b>Ein-/mehrseitig?</b> Beide <b>zweiseitig</b> (Antrag + Annahme).</li>\n          <li><b>Wirksam?</b> Ja, beide <b>voll gültig</b> (kein Mangel).</li>\n          <li><b>Anfechtbar?</b> Nein — kein Irrtum, keine Täuschung, keine Drohung.</li>\n          <li><b>Formzwang?</b> Grundstückskauf → <b>notarielle Beurkundung</b>. Mietvertrag → formfrei (üblich: Schriftform).</li>\n          <li><b>Eigentümer/Besitzer?</b> <b>Frank = Eigentümer</b>, <b>Peter = Besitzer</b>.</li>\n        </ul>\n      </div>\n      <div class=\"vi\">\n        <b>Đáp án dịch</b> \n        <ul>\n          <li>Có năng lực pháp luật? Cả 3 đều có.</li>\n          <li>Có năng lực hành vi? Cả 3 đều đầy đủ (trên 18 tuổi, minh mẫn).</li>\n          <li>Giao dịch hình thành: hợp đồng mua bán (Frank–Alexandra), hợp đồng thuê (Frank–Peter).</li>\n          <li>Đơn/nhiều bên? Cả hai đều nhiều bên (đề nghị + chấp nhận).</li>\n          <li>Có hiệu lực? Có, cả hai đều hợp lệ đầy đủ.</li>\n          <li>Có thể hủy? Không — không có nhầm lẫn, lừa dối, đe dọa.</li>\n          <li>Hình thức bắt buộc? Mua đất → công chứng. Hợp đồng thuê → tự do (thực tế thường bằng văn bản).</li>\n          <li>Chủ sở hữu/chiếm hữu? Frank là chủ sở hữu, Peter là người chiếm hữu.</li>\n        </ul>\n      </div>\n    </div>\n  </details>\n\n  <details class=\"q\"><summary><b>Fall B</b> Alexandra (20) kauft ein Auto für 20.000 € mit einem Bankkredit. Ihre Schwester Anja (17) möchte ebenfalls per Kredit ein Auto kaufen, darf aber nicht — deshalb leiht Alexandra ihr ihr eigenes Auto. Analysieren Sie den Fall vollständig.</summary>\n    <div class=\"ans\">\n      <div class=\"de\"><b>Lösung</b> \n        <ul>\n          <li><b>Rechtsfähig?</b> Beide rechtsfähig.</li>\n          <li><b>Geschäftsfähig?</b> Alexandra (20) → voll geschäftsfähig. Anja (17) → beschränkt geschäftsfähig.</li>\n          <li><b>Drei Rechtsgeschäfte:</b> 1) Kaufvertrag (Alexandra–Händler); 2) Darlehensvertrag (Alexandra–Bank); 3) Leihvertrag (Alexandra–Anja).</li>\n          <li><b>Ein-/mehrseitig?</b> Alle drei <b>zweiseitig</b>.</li>\n          <li><b>Wirksam?</b> Ja, alle drei. Beim Leihvertrag erhält Anja nur einen <b>rechtlichen Vorteil</b> <span class=\"para-code\">§107</span> (kostenlose Nutzung, keine Pflicht) → keine Zustimmung der Eltern nötig.</li>\n          <li><b>Anfechtbar?</b> Nein.</li>\n          <li><b>Formzwang?</b> Kaufvertrag → formfrei. Darlehensvertrag (Verbraucherkredit) → <b>Schriftform</b> <span class=\"para-code\">§492</span>. Leihvertrag → formfrei.</li>\n          <li><b>Eigentümer/Besitzer des Autos?</b> <b>Alexandra = Eigentümerin</b>. <b>Anja = Besitzerin</b> während der Leihzeit.</li>\n        </ul>\n      </div>\n      <div class=\"vi\">\n        <b>Đáp án dịch</b> \n        <ul>\n          <li>Có năng lực pháp luật? Cả hai đều có.</li>\n          <li>Có năng lực hành vi? Alexandra (20) đầy đủ. Anja (17) hạn chế.</li>\n          <li>Ba giao dịch: 1) mua bán (Alexandra–đại lý); 2) vay tiền (Alexandra–ngân hàng); 3) cho mượn (Alexandra–Anja).</li>\n          <li>Đơn/nhiều bên? Cả ba đều nhiều bên.</li>\n          <li>Có hiệu lực? Có cả ba. Với hợp đồng cho mượn, Anja chỉ nhận lợi ích pháp lý thuần túy (dùng miễn phí, không nghĩa vụ) → không cần cha mẹ đồng ý.</li>\n          <li>Có thể hủy? Không.</li>\n          <li>Hình thức bắt buộc? Mua xe → tự do. Vay ngân hàng → bắt buộc văn bản. Cho mượn → tự do.</li>\n          <li>Chủ sở hữu/chiếm hữu xe? Alexandra là chủ sở hữu. Anja là người chiếm hữu trong thời gian mượn.</li>\n        </ul>\n      </div>\n    </div>\n  </details>\n\n  <div class=\"block\">\n    <div class=\"de\" style=\"border-radius:8px;\"><b>Merktipp für Fallaufgaben</b> \n      1) Rechtsfähig? — immer \"ja\". 2) Geschäftsfähigkeit prüfen (Alter). 3) Rechtsgeschäft(e) benennen. 4) Ein- oder zweiseitig? 5) Wie kam die WE zustande? 6) Wirksam? Wann nichtig? 7) Anfechtbar? 8) Formzwang? 9) Eigentümer vs. Besitzer?\n    </div>\n    <div class=\"vi\"><b>Mẹo làm bài tình huống</b> \n      1) Năng lực pháp luật? — luôn \"có\". 2) Kiểm tra năng lực hành vi (tuổi). 3) Xác định giao dịch pháp lý. 4) Đơn hay nhiều bên? 5) Tuyên bố ý chí hình thành thế nào? 6) Có hiệu lực? Khi nào vô hiệu? 7) Có thể hủy? 8) Hình thức bắt buộc? 9) Ai là chủ sở hữu, ai là người chiếm hữu?\n    </div>\n  </div>"
         }
       ]
+    },
+    {
+      "id": "wiso-theorie",
+      "badge": "WiSo (Theorie)",
+      "title": "WiSo (Theorie) · 9 Themen – Tổng hợp từ file Excel 04-250925",
+      "items": [
+        {
+          "id": "wiso-thema-1",
+          "icon": "",
+          "name": "WiSo Thema 1 · Ausbildungsbetrieb (Doanh nghiệp đào tạo)",
+          "desc": "Aufgaben des Ausbildungsbetriebs · Rechte und Pflichten der Auszubildenden · Rechte und Pflichten der Ausbilder · Organisation und Struktur des Betriebs · Zusammenarbeit im Betrieb",
+          "content": "<h2>WiSo Thema 1 · Ausbildungsbetrieb</h2>\n<div class=\"hint\">Doanh nghiệp đào tạo · Quelle: Fach Wiso (Theorie) · 5 Punkte, je 3 Theorie-Inhalte + Beispiele</div>\n<h3>A. Theorie &amp; Beispiele (5 Punkte)</h3>\n<table><tr><th>Punkt</th><th>Theorie – Lý thuyết</th><th>Beispiel – Ví dụ</th></tr>\n<tr><td><b>1. Aufgaben des Ausbildungsbetriebs</b><br><i>Nhiệm vụ của doanh nghiệp đào tạo</i></td><td>1. Fachwissen vermitteln<br><i>Truyền đạt kiến thức nghề.</i><br>2. Praktische Fertigkeiten trainieren<br><i>Rèn luyện kỹ năng thực hành.</i><br>3. Soziale Kompetenzen fördern<br><i>Phát triển kỹ năng xã hội.</i></td><td>1. „Azubi lernt Hygienevorschriften.“<br><i>Học viên học quy định vệ sinh.</i><br>2. „Azubi bereitet Sandwiches unter Anleitung zu.“<br><i>Học viên làm bánh mì dưới sự hướng dẫn.</i><br>3. „Teamarbeit im Service üben.“<br><i>Luyện kỹ năng làm việc nhóm trong phục vụ.</i></td></tr>\n<tr><td><b>2. Rechte und Pflichten der Auszubildenden</b><br><i>Quyền &amp; nghĩa vụ của học viên</i></td><td>1. Recht auf Ausbildung<br><i>Có quyền được đào tạo.</i><br>2. Pflicht zur Lernbereitschaft<br><i>Nghĩa vụ học tập nghiêm túc.</i><br>3. Betriebsordnung einhalten<br><i>Tuân thủ nội quy doanh nghiệp.</i></td><td>1. „Azubi bekommt Ausbildungsplan.“<br><i>Học viên nhận kế hoạch đào tạo.</i><br>2. „Berichtsheft regelmäßig schreiben.“<br><i>Viết sổ nhật ký nghề thường xuyên.</i><br>3. „Arbeitskleidung tragen.“<br><i>Mặc đồng phục khi làm việc.</i></td></tr>\n<tr><td><b>3. Rechte und Pflichten der Ausbilder</b><br><i>Quyền &amp; nghĩa vụ của người đào tạo</i></td><td>1. Recht auf Respekt<br><i>Có quyền được tôn trọng.</i><br>2. Pflicht zur Fürsorge<br><i>Có nghĩa vụ quan tâm &amp; bảo vệ học viên.</i><br>3. Pflicht zur Wissensvermittlung<br><i>Nghĩa vụ truyền đạt kiến thức.</i></td><td>1. „Azubi respektiert Anweisungen des Ausbilders.“<br><i>Học viên tôn trọng hướng dẫn của người đào tạo.</i><br>2. „Ausbilder sorgt für Arbeitssicherheit.“<br><i>Người đào tạo đảm bảo an toàn lao động.</i><br>3. „Ausbilder erklärt HACCP-Regeln.“<br><i>Người đào tạo giảng giải quy tắc HACCP.</i></td></tr>\n<tr><td><b>4. Organisation und Struktur des Betriebs</b><br><i>Cấu trúc &amp; tổ chức doanh nghiệp</i></td><td>1. Hierarchie kennen<br><i>Hiểu hệ thống cấp bậc.</i><br>2. Abteilungen unterscheiden<br><i>Biết các bộ phận khác nhau.</i><br>3. Kommunikationswege nutzen<br><i>Sử dụng kênh giao tiếp.</i></td><td>1. „Filialleiter über Teamleiter → Mitarbeiter.“<br><i>Quản lý → trưởng nhóm → nhân viên.</i><br>2. „Abteilungen: Küche, Service, Verwaltung.“<br><i>Bộ phận: bếp, phục vụ, quản lý.</i><br>3. „Azubi meldet Problem an Schichtleiter.“<br><i>Học viên báo sự cố cho trưởng ca.</i></td></tr>\n<tr><td><b>5. Zusammenarbeit im Betrieb</b><br><i>Hợp tác trong doanh nghiệp</i></td><td>1. Teamarbeit fördern<br><i>Khuyến khích làm việc nhóm.</i><br>2. Konflikte lösen<br><i>Giải quyết xung đột.</i><br>3. Respekt und Kommunikation pflegen<br><i>Duy trì tôn trọng &amp; giao tiếp.</i></td><td>1. „Azubi hilft Kollegen im Stoßgeschäft.“<br><i>Học viên hỗ trợ đồng nghiệp lúc cao điểm.</i><br>2. „Konflikt zwischen Küche &amp; Service klären.“<br><i>Giải quyết xung đột giữa bếp &amp; phục vụ.</i><br>3. „Feedback-Runden im Team durchführen.“<br><i>Tổ chức vòng phản hồi trong nhóm.</i></td></tr>\n</table>\n<h3>B. Wichtige Hinweise – Điểm lưu ý quan trọng</h3>\n<table><tr><th>Deutsch</th><th>Tiếng Việt</th><th>Ghi chú</th></tr>\n<tr><td>Der Ausbildungsbetrieb vermittelt Theorie und Praxis.</td><td>Doanh nghiệp đào tạo truyền đạt cả lý thuyết và thực hành.</td><td>Azubi lernt Fachwissen + praktische Arbeit. Học viên học kiến thức + thực hành công việc.</td></tr>\n<tr><td>Azubis haben Rechte und Pflichten.</td><td>Học viên có cả quyền và nghĩa vụ.</td><td>Recht: Ausbildung, Vergütung. Pflicht: Lernen, Regeln einhalten. Quyền: được đào tạo, có lương. Nghĩa vụ: học tập, tuân thủ nội quy.</td></tr>\n<tr><td>Ausbilder haben Fürsorge- und Ausbildungspflicht.</td><td>Người đào tạo có nghĩa vụ chăm lo và giảng dạy.</td><td>Ausbilder sorgt für Sicherheit + erklärt Inhalte. Người đào tạo đảm bảo an toàn + truyền đạt nội dung.</td></tr>\n<tr><td>Organisation im Betrieb schafft Klarheit.</td><td>Tổ chức trong doanh nghiệp tạo sự rõ ràng.</td><td>Hierarchie: Filialleiter → Teamleiter → Mitarbeiter. Cấp bậc: quản lý → trưởng nhóm → nhân viên.</td></tr>\n<tr><td>Zusammenarbeit ist Schlüssel zum Erfolg.</td><td>Hợp tác là chìa khóa thành công.</td><td>Teamarbeit, Kommunikation, Konfliktlösung. Làm việc nhóm, giao tiếp, giải quyết xung đột.</td></tr>\n<tr><td>Dokumentation ist Pflicht.</td><td>Ghi chép là bắt buộc.</td><td>Berichtsheft = Ausbildungsnachweis. Sổ báo cáo = chứng từ đào tạo.</td></tr>\n<tr><td>Motivation entsteht am ersten Tag.</td><td>Động lực bắt đầu từ ngày đầu tiên.</td><td>Guter Start = mehr Engagement im Betrieb. Khởi đầu tốt = gắn bó hơn trong doanh nghiệp.</td></tr>\n</table>",
+          "qa": [
+            {
+              "q": "Thema 1 – Aufgaben des Ausbildungsbetriebs: Welche Inhalte gehören dazu?",
+              "qVi": "Nhiệm vụ của doanh nghiệp đào tạo: gồm những nội dung nào?",
+              "a": "1. Fachwissen vermitteln\n2. Praktische Fertigkeiten trainieren\n3. Soziale Kompetenzen fördern",
+              "aVi": "1. Truyền đạt kiến thức nghề.\n2. Rèn luyện kỹ năng thực hành.\n3. Phát triển kỹ năng xã hội.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Aufgaben des Ausbildungsbetriebs",
+              "qVi": "Nêu một ví dụ thực tế cho: Nhiệm vụ của doanh nghiệp đào tạo",
+              "a": "1. „Azubi lernt Hygienevorschriften.“\n2. „Azubi bereitet Sandwiches unter Anleitung zu.“\n3. „Teamarbeit im Service üben.“",
+              "aVi": "1. Học viên học quy định vệ sinh.\n2. Học viên làm bánh mì dưới sự hướng dẫn.\n3. Luyện kỹ năng làm việc nhóm trong phục vụ.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 1 – Rechte und Pflichten der Auszubildenden: Welche Inhalte gehören dazu?",
+              "qVi": "Quyền & nghĩa vụ của học viên: gồm những nội dung nào?",
+              "a": "1. Recht auf Ausbildung\n2. Pflicht zur Lernbereitschaft\n3. Betriebsordnung einhalten",
+              "aVi": "1. Có quyền được đào tạo.\n2. Nghĩa vụ học tập nghiêm túc.\n3. Tuân thủ nội quy doanh nghiệp.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Rechte und Pflichten der Auszubildenden",
+              "qVi": "Nêu một ví dụ thực tế cho: Quyền & nghĩa vụ của học viên",
+              "a": "1. „Azubi bekommt Ausbildungsplan.“\n2. „Berichtsheft regelmäßig schreiben.“\n3. „Arbeitskleidung tragen.“",
+              "aVi": "1. Học viên nhận kế hoạch đào tạo.\n2. Viết sổ nhật ký nghề thường xuyên.\n3. Mặc đồng phục khi làm việc.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 1 – Rechte und Pflichten der Ausbilder: Welche Inhalte gehören dazu?",
+              "qVi": "Quyền & nghĩa vụ của người đào tạo: gồm những nội dung nào?",
+              "a": "1. Recht auf Respekt\n2. Pflicht zur Fürsorge\n3. Pflicht zur Wissensvermittlung",
+              "aVi": "1. Có quyền được tôn trọng.\n2. Có nghĩa vụ quan tâm & bảo vệ học viên.\n3. Nghĩa vụ truyền đạt kiến thức.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Rechte und Pflichten der Ausbilder",
+              "qVi": "Nêu một ví dụ thực tế cho: Quyền & nghĩa vụ của người đào tạo",
+              "a": "1. „Azubi respektiert Anweisungen des Ausbilders.“\n2. „Ausbilder sorgt für Arbeitssicherheit.“\n3. „Ausbilder erklärt HACCP-Regeln.“",
+              "aVi": "1. Học viên tôn trọng hướng dẫn của người đào tạo.\n2. Người đào tạo đảm bảo an toàn lao động.\n3. Người đào tạo giảng giải quy tắc HACCP.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 1 – Organisation und Struktur des Betriebs: Welche Inhalte gehören dazu?",
+              "qVi": "Cấu trúc & tổ chức doanh nghiệp: gồm những nội dung nào?",
+              "a": "1. Hierarchie kennen\n2. Abteilungen unterscheiden\n3. Kommunikationswege nutzen",
+              "aVi": "1. Hiểu hệ thống cấp bậc.\n2. Biết các bộ phận khác nhau.\n3. Sử dụng kênh giao tiếp.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Organisation und Struktur des Betriebs",
+              "qVi": "Nêu một ví dụ thực tế cho: Cấu trúc & tổ chức doanh nghiệp",
+              "a": "1. „Filialleiter über Teamleiter → Mitarbeiter.“\n2. „Abteilungen: Küche, Service, Verwaltung.“\n3. „Azubi meldet Problem an Schichtleiter.“",
+              "aVi": "1. Quản lý → trưởng nhóm → nhân viên.\n2. Bộ phận: bếp, phục vụ, quản lý.\n3. Học viên báo sự cố cho trưởng ca.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 1 – Zusammenarbeit im Betrieb: Welche Inhalte gehören dazu?",
+              "qVi": "Hợp tác trong doanh nghiệp: gồm những nội dung nào?",
+              "a": "1. Teamarbeit fördern\n2. Konflikte lösen\n3. Respekt und Kommunikation pflegen",
+              "aVi": "1. Khuyến khích làm việc nhóm.\n2. Giải quyết xung đột.\n3. Duy trì tôn trọng & giao tiếp.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Zusammenarbeit im Betrieb",
+              "qVi": "Nêu một ví dụ thực tế cho: Hợp tác trong doanh nghiệp",
+              "a": "1. „Azubi hilft Kollegen im Stoßgeschäft.“\n2. „Konflikt zwischen Küche & Service klären.“\n3. „Feedback-Runden im Team durchführen.“",
+              "aVi": "1. Học viên hỗ trợ đồng nghiệp lúc cao điểm.\n2. Giải quyết xung đột giữa bếp & phục vụ.\n3. Tổ chức vòng phản hồi trong nhóm.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            }
+          ],
+          "vokabeln": [
+            {
+              "de": "Aufgaben des Ausbildungsbetriebs",
+              "vi": "Nhiệm vụ của doanh nghiệp đào tạo"
+            },
+            {
+              "de": "Rechte und Pflichten der Auszubildenden",
+              "vi": "Quyền & nghĩa vụ của học viên"
+            },
+            {
+              "de": "Rechte und Pflichten der Ausbilder",
+              "vi": "Quyền & nghĩa vụ của người đào tạo"
+            },
+            {
+              "de": "Organisation und Struktur des Betriebs",
+              "vi": "Cấu trúc & tổ chức doanh nghiệp"
+            },
+            {
+              "de": "Zusammenarbeit im Betrieb",
+              "vi": "Hợp tác trong doanh nghiệp"
+            }
+          ]
+        },
+        {
+          "id": "wiso-thema-2",
+          "icon": "",
+          "name": "WiSo Thema 2 · Berufsausbildungs- und Arbeitsverhältnis (Quan hệ đào tạo nghề & lao động)",
+          "desc": "Inhalte des Ausbildungsvertrags · Dauer der Ausbildung · Arbeitszeitregelungen · Vergütung und Urlaub · Beendigung und Kündigung",
+          "content": "<h2>WiSo Thema 2 · Berufsausbildungs- und Arbeitsverhältnis</h2>\n<div class=\"hint\">Quan hệ đào tạo nghề &amp; lao động · Quelle: Fach Wiso (Theorie) · 5 Punkte, je 3 Theorie-Inhalte + Beispiele</div>\n<h3>A. Theorie &amp; Beispiele (5 Punkte)</h3>\n<table><tr><th>Punkt</th><th>Theorie – Lý thuyết</th><th>Beispiel – Ví dụ</th></tr>\n<tr><td><b>1. Inhalte des Ausbildungsvertrags</b><br><i>Nội dung hợp đồng đào tạo</i></td><td>1. Vertragsparteien<br><i>Các bên tham gia hợp đồng.</i><br>2. Ausbildungsdauer<br><i>Thời gian đào tạo.</i><br>3. Vergütung und Urlaub<br><i>Lương &amp; ngày nghỉ.</i></td><td>1. „Vertrag zwischen Azubi und Betrieb.“<br><i>Hợp đồng giữa học viên và doanh nghiệp.</i><br>2. „Ausbildung dauert 2 Jahre.“<br><i>Đào tạo kéo dài 2 năm.</i><br>3. „Azubi bekommt 24 Urlaubstage.“<br><i>Học viên có 24 ngày phép.</i></td></tr>\n<tr><td><b>2. Dauer der Ausbildung</b><br><i>Thời gian đào tạo</i></td><td>1. Regelausbildungszeit<br><i>Thời gian tiêu chuẩn.</i><br>2. Verkürzung möglich<br><i>Có thể rút ngắn.</i><br>3. Verlängerung bei Bedarf<br><i>Có thể kéo dài nếu cần.</i></td><td>1. „Systemgastronomie = 2 Jahre.“<br><i>Ngành Systemgastronomie = 2 năm.</i><br>2. „Verkürzung bei guten Noten möglich.“<br><i>Có thể rút ngắn nếu điểm tốt.</i><br>3. „Verlängerung bei Krankheit.“<br><i>Có thể kéo dài khi bị bệnh.</i></td></tr>\n<tr><td><b>3. Arbeitszeitregelungen</b><br><i>Quy định giờ làm việc</i></td><td>1. Jugendarbeitsschutz beachten<br><i>Luật bảo vệ lao động trẻ.</i><br>2. Maximalstunden/Tag<br><i>Số giờ làm tối đa/ngày.</i><br>3. Pausenregelung<br><i>Quy định nghỉ ngơi.</i></td><td>1. „Azubi unter 18: max. 40 Std./Woche.“<br><i>Học viên &lt;18 tuổi: tối đa 40 giờ/tuần.</i><br>2. „Nicht mehr als 10 Std./Tag.“<br><i>Không quá 10 giờ/ngày.</i><br>3. „Nach 6 Std. Arbeit → 30 Min. Pause.“<br><i>Sau 6 giờ làm → nghỉ 30 phút.</i></td></tr>\n<tr><td><b>4. Vergütung und Urlaub</b><br><i>Lương &amp; ngày nghỉ</i></td><td>1. Tarifvertrag beachten<br><i>Tuân thủ hợp đồng lao động tập thể.</i><br>2. Mindestlohnregelung<br><i>Quy định lương tối thiểu.</i><br>3. Urlaubsanspruch<br><i>Quyền nghỉ phép.</i></td><td>1. „Azubi erhält 800 €/Monat.“<br><i>Học viên nhận 800 €/tháng.</i><br>2. „Lohn darf Mindestlohn nicht unterschreiten.“<br><i>Lương không được thấp hơn mức tối thiểu.</i><br>3. „Urlaub: 24 Tage pro Jahr.“<br><i>Nghỉ phép: 24 ngày/năm.</i></td></tr>\n<tr><td><b>5. Beendigung und Kündigung</b><br><i>Kết thúc &amp; chấm dứt hợp đồng</i></td><td>1. Ende mit Bestehen der Prüfung<br><i>Kết thúc khi thi đỗ.</i><br>2. Kündigung in Probezeit<br><i>Có thể chấm dứt trong thời gian thử việc.</i><br>3. Außerordentliche Kündigung<br><i>Chấm dứt đặc biệt (lý do nghiêm trọng).</i></td><td>1. „Vertrag endet nach Abschlussprüfung.“<br><i>Hợp đồng kết thúc sau kỳ thi.</i><br>2. „Probezeit: 4 Monate kündbar.“<br><i>Thử việc: 4 tháng có thể nghỉ.</i><br>3. „Fristlose Kündigung bei Diebstahl.“<br><i>Chấm dứt ngay khi ăn cắp.</i></td></tr>\n</table>\n<h3>B. Wichtige Hinweise – Điểm lưu ý quan trọng</h3>\n<table><tr><th>Deutsch</th><th>Tiếng Việt</th><th>Ghi chú</th></tr>\n<tr><td>Der Ausbildungsvertrag ist die Grundlage.</td><td>Hợp đồng đào tạo là nền tảng.</td><td>Ohne Vertrag keine Ausbildung. Không có hợp đồng thì không có đào tạo.</td></tr>\n<tr><td>Dauer der Ausbildung kann variieren.</td><td>Thời gian đào tạo có thể thay đổi.</td><td>Verkürzung bei guten Leistungen, Verlängerung bei Krankheit. Có thể rút ngắn khi học tốt, kéo dài nếu bệnh.</td></tr>\n<tr><td>Arbeitszeit ist gesetzlich geregelt.</td><td>Giờ làm việc được quy định bởi luật.</td><td>Jugendarbeitsschutz beachten (unter 18: max. 40 Std./Woche). Luật bảo vệ lao động trẻ (&lt;18 tuổi: tối đa 40h/tuần).</td></tr>\n<tr><td>Vergütung und Urlaub sind Rechte des Azubis.</td><td>Lương &amp; ngày nghỉ là quyền của học viên.</td><td>Mindestens tariflich geregelt, Urlaub mind. 24 Tage. Theo hợp đồng tập thể, nghỉ phép ít nhất 24 ngày.</td></tr>\n<tr><td>Probezeit ist entscheidend.</td><td>Thời gian thử việc rất quan trọng.</td><td>Dauert bis 4 Monate, Kündigung jederzeit möglich. Kéo dài đến 4 tháng, có thể nghỉ bất cứ lúc nào.</td></tr>\n<tr><td>Kündigung nach Probezeit nur mit Gründen.</td><td>Sau thử việc chỉ được chấm dứt khi có lý do.</td><td>Ordentliche oder außerordentliche Kündigung. Chấm dứt thông thường hoặc đặc biệt.</td></tr>\n<tr><td>Rechte und Pflichten beider Seiten müssen im Gleichgewicht sein.</td><td>Quyền và nghĩa vụ của cả hai bên phải cân bằng.</td><td>Nur so ist die Ausbildung erfolgreich. Chỉ như vậy đào tạo mới thành công.</td></tr>\n</table>",
+          "qa": [
+            {
+              "q": "Thema 2 – Inhalte des Ausbildungsvertrags: Welche Inhalte gehören dazu?",
+              "qVi": "Nội dung hợp đồng đào tạo: gồm những nội dung nào?",
+              "a": "1. Vertragsparteien\n2. Ausbildungsdauer\n3. Vergütung und Urlaub",
+              "aVi": "1. Các bên tham gia hợp đồng.\n2. Thời gian đào tạo.\n3. Lương & ngày nghỉ.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Inhalte des Ausbildungsvertrags",
+              "qVi": "Nêu một ví dụ thực tế cho: Nội dung hợp đồng đào tạo",
+              "a": "1. „Vertrag zwischen Azubi und Betrieb.“\n2. „Ausbildung dauert 2 Jahre.“\n3. „Azubi bekommt 24 Urlaubstage.“",
+              "aVi": "1. Hợp đồng giữa học viên và doanh nghiệp.\n2. Đào tạo kéo dài 2 năm.\n3. Học viên có 24 ngày phép.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 2 – Dauer der Ausbildung: Welche Inhalte gehören dazu?",
+              "qVi": "Thời gian đào tạo: gồm những nội dung nào?",
+              "a": "1. Regelausbildungszeit\n2. Verkürzung möglich\n3. Verlängerung bei Bedarf",
+              "aVi": "1. Thời gian tiêu chuẩn.\n2. Có thể rút ngắn.\n3. Có thể kéo dài nếu cần.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Dauer der Ausbildung",
+              "qVi": "Nêu một ví dụ thực tế cho: Thời gian đào tạo",
+              "a": "1. „Systemgastronomie = 2 Jahre.“\n2. „Verkürzung bei guten Noten möglich.“\n3. „Verlängerung bei Krankheit.“",
+              "aVi": "1. Ngành Systemgastronomie = 2 năm.\n2. Có thể rút ngắn nếu điểm tốt.\n3. Có thể kéo dài khi bị bệnh.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 2 – Arbeitszeitregelungen: Welche Inhalte gehören dazu?",
+              "qVi": "Quy định giờ làm việc: gồm những nội dung nào?",
+              "a": "1. Jugendarbeitsschutz beachten\n2. Maximalstunden/Tag\n3. Pausenregelung",
+              "aVi": "1. Luật bảo vệ lao động trẻ.\n2. Số giờ làm tối đa/ngày.\n3. Quy định nghỉ ngơi.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Arbeitszeitregelungen",
+              "qVi": "Nêu một ví dụ thực tế cho: Quy định giờ làm việc",
+              "a": "1. „Azubi unter 18: max. 40 Std./Woche.“\n2. „Nicht mehr als 10 Std./Tag.“\n3. „Nach 6 Std. Arbeit → 30 Min. Pause.“",
+              "aVi": "1. Học viên <18 tuổi: tối đa 40 giờ/tuần.\n2. Không quá 10 giờ/ngày.\n3. Sau 6 giờ làm → nghỉ 30 phút.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 2 – Vergütung und Urlaub: Welche Inhalte gehören dazu?",
+              "qVi": "Lương & ngày nghỉ: gồm những nội dung nào?",
+              "a": "1. Tarifvertrag beachten\n2. Mindestlohnregelung\n3. Urlaubsanspruch",
+              "aVi": "1. Tuân thủ hợp đồng lao động tập thể.\n2. Quy định lương tối thiểu.\n3. Quyền nghỉ phép.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Vergütung und Urlaub",
+              "qVi": "Nêu một ví dụ thực tế cho: Lương & ngày nghỉ",
+              "a": "1. „Azubi erhält 800 €/Monat.“\n2. „Lohn darf Mindestlohn nicht unterschreiten.“\n3. „Urlaub: 24 Tage pro Jahr.“",
+              "aVi": "1. Học viên nhận 800 €/tháng.\n2. Lương không được thấp hơn mức tối thiểu.\n3. Nghỉ phép: 24 ngày/năm.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 2 – Beendigung und Kündigung: Welche Inhalte gehören dazu?",
+              "qVi": "Kết thúc & chấm dứt hợp đồng: gồm những nội dung nào?",
+              "a": "1. Ende mit Bestehen der Prüfung\n2. Kündigung in Probezeit\n3. Außerordentliche Kündigung",
+              "aVi": "1. Kết thúc khi thi đỗ.\n2. Có thể chấm dứt trong thời gian thử việc.\n3. Chấm dứt đặc biệt (lý do nghiêm trọng).",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Beendigung und Kündigung",
+              "qVi": "Nêu một ví dụ thực tế cho: Kết thúc & chấm dứt hợp đồng",
+              "a": "1. „Vertrag endet nach Abschlussprüfung.“\n2. „Probezeit: 4 Monate kündbar.“\n3. „Fristlose Kündigung bei Diebstahl.“",
+              "aVi": "1. Hợp đồng kết thúc sau kỳ thi.\n2. Thử việc: 4 tháng có thể nghỉ.\n3. Chấm dứt ngay khi ăn cắp.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            }
+          ],
+          "vokabeln": [
+            {
+              "de": "Inhalte des Ausbildungsvertrags",
+              "vi": "Nội dung hợp đồng đào tạo"
+            },
+            {
+              "de": "Dauer der Ausbildung",
+              "vi": "Thời gian đào tạo"
+            },
+            {
+              "de": "Arbeitszeitregelungen",
+              "vi": "Quy định giờ làm việc"
+            },
+            {
+              "de": "Vergütung und Urlaub",
+              "vi": "Lương & ngày nghỉ"
+            },
+            {
+              "de": "Beendigung und Kündigung",
+              "vi": "Kết thúc & chấm dứt hợp đồng"
+            }
+          ]
+        },
+        {
+          "id": "wiso-thema-3",
+          "icon": "",
+          "name": "WiSo Thema 3 · Betriebliche Mitbestimmung (Sự tham gia trong doanh nghiệp)",
+          "desc": "Rechte des Betriebsrats · Aufgaben des Betriebsrats · Jugend- und Auszubildendenvertretung (JAV) · Mitbestimmung bei Arbeitszeit · Mitbestimmung bei Kündigung",
+          "content": "<h2>WiSo Thema 3 · Betriebliche Mitbestimmung</h2>\n<div class=\"hint\">Sự tham gia trong doanh nghiệp · Quelle: Fach Wiso (Theorie) · 5 Punkte, je 3 Theorie-Inhalte + Beispiele</div>\n<h3>A. Theorie &amp; Beispiele (5 Punkte)</h3>\n<table><tr><th>Punkt</th><th>Theorie – Lý thuyết</th><th>Beispiel – Ví dụ</th></tr>\n<tr><td><b>1. Rechte des Betriebsrats</b><br><i>Quyền của hội đồng nhân viên</i></td><td>1. Mitbestimmung bei Arbeitszeit<br><i>Tham gia quyết định giờ làm.</i><br>2. Mitbestimmung bei Kündigungen<br><i>Tham gia quyết định việc chấm dứt hợp đồng.</i><br>3. Informationsrecht<br><i>Quyền được cung cấp thông tin.</i></td><td>1. „Betriebsrat stimmt Dienstplanänderung zu.“<br><i>Hội đồng nhân viên đồng ý thay đổi lịch làm.</i><br>2. „Betriebsrat muss bei Kündigung informiert werden.“<br><i>Hội đồng phải được thông báo khi sa thải.</i><br>3. „Chef informiert Betriebsrat über Neueinstellungen.“<br><i>Sếp báo cho hội đồng về tuyển dụng mới.</i></td></tr>\n<tr><td><b>2. Aufgaben des Betriebsrats</b><br><i>Nhiệm vụ của hội đồng nhân viên</i></td><td>1. Interessen der Mitarbeiter vertreten<br><i>Đại diện quyền lợi nhân viên.</i><br>2. Sozialpläne mitgestalten<br><i>Tham gia xây dựng kế hoạch xã hội.</i><br>3. Beschwerden aufnehmen<br><i>Tiếp nhận khiếu nại.</i></td><td>1. „Betriebsrat fordert bessere Pausenregelung.“<br><i>Hội đồng yêu cầu quy định nghỉ ngơi tốt hơn.</i><br>2. „Betriebsrat wirkt bei Arbeitszeitmodell mit.“<br><i>Tham gia vào mô hình giờ làm.</i><br>3. „Mitarbeiter beschwert sich über Überstunden.“<br><i>Nhân viên khiếu nại vì làm thêm giờ.</i></td></tr>\n<tr><td><b>3. Jugend- und Auszubildendenvertretung (JAV)</b><br><i>Đại diện học viên &amp; thanh niên</i></td><td>1. Vertretung für Azubis unter 25<br><i>Đại diện cho học viên dưới 25 tuổi.</i><br>2. Probleme der Azubis ansprechen<br><i>Nêu vấn đề của học viên.</i><br>3. Enge Zusammenarbeit mit Betriebsrat<br><i>Phối hợp chặt chẽ với hội đồng nhân viên.</i></td><td>1. „JAV kümmert sich um Azubi-Anliegen.“<br><i>JAV chăm lo cho vấn đề của học viên.</i><br>2. „Azubis melden Probleme mit Ausbilder.“<br><i>Học viên báo vấn đề với người đào tạo.</i><br>3. „JAV und Betriebsrat arbeiten zusammen.“<br><i>JAV và hội đồng nhân viên phối hợp.</i></td></tr>\n<tr><td><b>4. Mitbestimmung bei Arbeitszeit</b><br><i>Tham gia quyết định giờ làm</i></td><td>1. Einführung neuer Schichtmodelle<br><i>Áp dụng mô hình ca làm mới.</i><br>2. Überstundenregelung<br><i>Quy định làm thêm giờ.</i><br>3. Urlaubsplanung<br><i>Lập kế hoạch nghỉ phép.</i></td><td>1. „Betriebsrat stimmt Schichtsystem zu.“<br><i>Hội đồng đồng ý hệ thống ca làm.</i><br>2. „Überstunden nur mit Zustimmung.“<br><i>Chỉ làm thêm khi được đồng ý.</i><br>3. „Urlaubsplan wird mit Betriebsrat abgestimmt.“<br><i>Kế hoạch nghỉ phép được thống nhất với hội đồng.</i></td></tr>\n<tr><td><b>5. Mitbestimmung bei Kündigung</b><br><i>Tham gia quyết định chấm dứt hợp đồng</i></td><td>1. Zustimmungspflicht<br><i>Yêu cầu sự đồng ý.</i><br>2. Prüfung der Kündigungsgründe<br><i>Kiểm tra lý do sa thải.</i><br>3. Schutz vor Willkür<br><i>Bảo vệ nhân viên khỏi bị sa thải tùy tiện.</i></td><td>1. „Kündigung ohne Betriebsrat nicht gültig.“<br><i>Sa thải không có hội đồng thì không hợp lệ.</i><br>2. „Betriebsrat prüft Kündigungsgrund.“<br><i>Hội đồng kiểm tra lý do sa thải.</i><br>3. „Mitarbeiter vor ungerechter Kündigung geschützt.“<br><i>Nhân viên được bảo vệ khỏi sa thải bất công.</i></td></tr>\n</table>\n<h3>B. Wichtige Hinweise – Điểm lưu ý quan trọng</h3>\n<table><tr><th>Deutsch</th><th>Tiếng Việt</th><th>Ghi chú</th></tr>\n<tr><td>Der Betriebsrat ist die Stimme der Mitarbeiter.</td><td>Hội đồng nhân viên là tiếng nói của nhân viên.</td><td>Vertretung bei Arbeitszeit, Kündigung, Sozialfragen. Đại diện trong giờ làm, sa thải, vấn đề xã hội.</td></tr>\n<tr><td>JAV ist speziell für Azubis wichtig.</td><td>JAV đặc biệt quan trọng cho học viên.</td><td>Vertretung für Azubis &lt; 25 Jahre. Đại diện cho học viên dưới 25 tuổi.</td></tr>\n<tr><td>Arbeitszeit und Kündigung sind zentrale Mitbestimmungsrechte.</td><td>Giờ làm và chấm dứt hợp đồng là quyền tham gia quan trọng nhất.</td><td>Betriebsrat muss zustimmen oder informiert werden. Hội đồng phải đồng ý hoặc được thông báo.</td></tr>\n<tr><td>Mitbestimmung schützt vor Willkür.</td><td>Tham gia quyết định giúp chống lại sự tùy tiện.</td><td>Ohne Betriebsrat: Kündigung oft ungerecht. Không có hội đồng: sa thải dễ bất công.</td></tr>\n<tr><td>Zusammenarbeit zwischen Betriebsrat, JAV und Chef ist entscheidend.</td><td>Sự phối hợp giữa hội đồng, JAV và sếp là yếu tố then chốt.</td><td>Regelmäßige Sitzungen verbessern Zusammenarbeit. Họp thường xuyên giúp phối hợp tốt hơn.</td></tr>\n<tr><td>Alle Mitarbeiter sollten ihre Rechte kennen.</td><td>Mọi nhân viên cần biết quyền của mình.</td><td>Wichtig für Fairness im Betrieb. Quan trọng để đảm bảo công bằng trong doanh nghiệp.</td></tr>\n<tr><td>Mitbestimmung fördert Motivation und Fairness.</td><td>Tham gia quyết định giúp tăng động lực và công bằng.</td><td>Mitarbeiter fühlen sich ernst genommen. Nhân viên cảm thấy mình được coi trọng.</td></tr>\n</table>",
+          "qa": [
+            {
+              "q": "Thema 3 – Rechte des Betriebsrats: Welche Inhalte gehören dazu?",
+              "qVi": "Quyền của hội đồng nhân viên: gồm những nội dung nào?",
+              "a": "1. Mitbestimmung bei Arbeitszeit\n2. Mitbestimmung bei Kündigungen\n3. Informationsrecht",
+              "aVi": "1. Tham gia quyết định giờ làm.\n2. Tham gia quyết định việc chấm dứt hợp đồng.\n3. Quyền được cung cấp thông tin.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Rechte des Betriebsrats",
+              "qVi": "Nêu một ví dụ thực tế cho: Quyền của hội đồng nhân viên",
+              "a": "1. „Betriebsrat stimmt Dienstplanänderung zu.“\n2. „Betriebsrat muss bei Kündigung informiert werden.“\n3. „Chef informiert Betriebsrat über Neueinstellungen.“",
+              "aVi": "1. Hội đồng nhân viên đồng ý thay đổi lịch làm.\n2. Hội đồng phải được thông báo khi sa thải.\n3. Sếp báo cho hội đồng về tuyển dụng mới.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 3 – Aufgaben des Betriebsrats: Welche Inhalte gehören dazu?",
+              "qVi": "Nhiệm vụ của hội đồng nhân viên: gồm những nội dung nào?",
+              "a": "1. Interessen der Mitarbeiter vertreten\n2. Sozialpläne mitgestalten\n3. Beschwerden aufnehmen",
+              "aVi": "1. Đại diện quyền lợi nhân viên.\n2. Tham gia xây dựng kế hoạch xã hội.\n3. Tiếp nhận khiếu nại.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Aufgaben des Betriebsrats",
+              "qVi": "Nêu một ví dụ thực tế cho: Nhiệm vụ của hội đồng nhân viên",
+              "a": "1. „Betriebsrat fordert bessere Pausenregelung.“\n2. „Betriebsrat wirkt bei Arbeitszeitmodell mit.“\n3. „Mitarbeiter beschwert sich über Überstunden.“",
+              "aVi": "1. Hội đồng yêu cầu quy định nghỉ ngơi tốt hơn.\n2. Tham gia vào mô hình giờ làm.\n3. Nhân viên khiếu nại vì làm thêm giờ.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 3 – Jugend- und Auszubildendenvertretung (JAV): Welche Inhalte gehören dazu?",
+              "qVi": "Đại diện học viên & thanh niên: gồm những nội dung nào?",
+              "a": "1. Vertretung für Azubis unter 25\n2. Probleme der Azubis ansprechen\n3. Enge Zusammenarbeit mit Betriebsrat",
+              "aVi": "1. Đại diện cho học viên dưới 25 tuổi.\n2. Nêu vấn đề của học viên.\n3. Phối hợp chặt chẽ với hội đồng nhân viên.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Jugend- und Auszubildendenvertretung (JAV)",
+              "qVi": "Nêu một ví dụ thực tế cho: Đại diện học viên & thanh niên",
+              "a": "1. „JAV kümmert sich um Azubi-Anliegen.“\n2. „Azubis melden Probleme mit Ausbilder.“\n3. „JAV und Betriebsrat arbeiten zusammen.“",
+              "aVi": "1. JAV chăm lo cho vấn đề của học viên.\n2. Học viên báo vấn đề với người đào tạo.\n3. JAV và hội đồng nhân viên phối hợp.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 3 – Mitbestimmung bei Arbeitszeit: Welche Inhalte gehören dazu?",
+              "qVi": "Tham gia quyết định giờ làm: gồm những nội dung nào?",
+              "a": "1. Einführung neuer Schichtmodelle\n2. Überstundenregelung\n3. Urlaubsplanung",
+              "aVi": "1. Áp dụng mô hình ca làm mới.\n2. Quy định làm thêm giờ.\n3. Lập kế hoạch nghỉ phép.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Mitbestimmung bei Arbeitszeit",
+              "qVi": "Nêu một ví dụ thực tế cho: Tham gia quyết định giờ làm",
+              "a": "1. „Betriebsrat stimmt Schichtsystem zu.“\n2. „Überstunden nur mit Zustimmung.“\n3. „Urlaubsplan wird mit Betriebsrat abgestimmt.“",
+              "aVi": "1. Hội đồng đồng ý hệ thống ca làm.\n2. Chỉ làm thêm khi được đồng ý.\n3. Kế hoạch nghỉ phép được thống nhất với hội đồng.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 3 – Mitbestimmung bei Kündigung: Welche Inhalte gehören dazu?",
+              "qVi": "Tham gia quyết định chấm dứt hợp đồng: gồm những nội dung nào?",
+              "a": "1. Zustimmungspflicht\n2. Prüfung der Kündigungsgründe\n3. Schutz vor Willkür",
+              "aVi": "1. Yêu cầu sự đồng ý.\n2. Kiểm tra lý do sa thải.\n3. Bảo vệ nhân viên khỏi bị sa thải tùy tiện.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Mitbestimmung bei Kündigung",
+              "qVi": "Nêu một ví dụ thực tế cho: Tham gia quyết định chấm dứt hợp đồng",
+              "a": "1. „Kündigung ohne Betriebsrat nicht gültig.“\n2. „Betriebsrat prüft Kündigungsgrund.“\n3. „Mitarbeiter vor ungerechter Kündigung geschützt.“",
+              "aVi": "1. Sa thải không có hội đồng thì không hợp lệ.\n2. Hội đồng kiểm tra lý do sa thải.\n3. Nhân viên được bảo vệ khỏi sa thải bất công.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            }
+          ],
+          "vokabeln": [
+            {
+              "de": "Rechte des Betriebsrats",
+              "vi": "Quyền của hội đồng nhân viên"
+            },
+            {
+              "de": "Aufgaben des Betriebsrats",
+              "vi": "Nhiệm vụ của hội đồng nhân viên"
+            },
+            {
+              "de": "Jugend- und Auszubildendenvertretung (JAV)",
+              "vi": "Đại diện học viên & thanh niên"
+            },
+            {
+              "de": "Mitbestimmung bei Arbeitszeit",
+              "vi": "Tham gia quyết định giờ làm"
+            },
+            {
+              "de": "Mitbestimmung bei Kündigung",
+              "vi": "Tham gia quyết định chấm dứt hợp đồng"
+            }
+          ]
+        },
+        {
+          "id": "wiso-thema-4",
+          "icon": "",
+          "name": "WiSo Thema 4 · Entwicklung der Arbeitswelt (Sự phát triển của thế giới lao động)",
+          "desc": "Wandel durch Digitalisierung · Strukturwandel in der Gastronomie · Arbeitsmarkt und Berufe · Fachkräftemangel · Lebenslanges Lernen",
+          "content": "<h2>WiSo Thema 4 · Entwicklung der Arbeitswelt</h2>\n<div class=\"hint\">Sự phát triển của thế giới lao động · Quelle: Fach Wiso (Theorie) · 5 Punkte, je 3 Theorie-Inhalte + Beispiele</div>\n<h3>A. Theorie &amp; Beispiele (5 Punkte)</h3>\n<table><tr><th>Punkt</th><th>Theorie – Lý thuyết</th><th>Beispiel – Ví dụ</th></tr>\n<tr><td><b>1. Wandel durch Digitalisierung</b><br><i>Thay đổi do số hóa</i></td><td>1. Neue Technologien einsetzen<br><i>Ứng dụng công nghệ mới.</i><br>2. Online-Bestellungen ermöglichen<br><i>Cho phép đặt hàng online.</i><br>3. Digitale Kommunikation nutzen<br><i>Dùng giao tiếp kỹ thuật số.</i></td><td>1. „Bestellungen per Tablet aufnehmen.“<br><i>Nhận đơn bằng máy tính bảng.</i><br>2. „Kunde bestellt Sandwich über App.“<br><i>Khách đặt bánh mì qua ứng dụng.</i><br>3. „Team kommuniziert per WhatsApp-Gruppe.“<br><i>Nhóm trao đổi qua WhatsApp.</i></td></tr>\n<tr><td><b>2. Strukturwandel in der Gastronomie</b><br><i>Chuyển đổi trong ngành ẩm thực</i></td><td>1. Systemgastronomie wächst<br><i>Ngành ẩm thực hệ thống phát triển.</i><br>2. Klassische Restaurants verändern sich<br><i>Nhà hàng truyền thống thay đổi.</i><br>3. Mehr Lieferdienste<br><i>Dịch vụ giao hàng tăng.</i></td><td>1. „Subway expandiert in vielen Städten.“<br><i>Subway mở rộng ở nhiều thành phố.</i><br>2. „Traditionelles Restaurant bietet auch Takeaway.“<br><i>Nhà hàng truyền thống thêm món mang đi.</i><br>3. „Lieferando bringt Essen nach Hause.“<br><i>Lieferando giao đồ ăn tận nhà.</i></td></tr>\n<tr><td><b>3. Arbeitsmarkt und Berufe</b><br><i>Thị trường lao động &amp; nghề nghiệp</i></td><td>1. Neue Berufsbilder entstehen<br><i>Xuất hiện nghề mới.</i><br>2. Mehr Flexibilität gefordert<br><i>Yêu cầu linh hoạt hơn.</i><br>3. Internationale Arbeitskräfte wichtig<br><i>Lao động quốc tế quan trọng.</i></td><td>1. „Job: Fachkraft für Systemgastronomie.“<br><i>Nghề: Nhân viên ngành ẩm thực hệ thống.</i><br>2. „Mitarbeiter wechseln zwischen Küche und Service.“<br><i>Nhân viên luân chuyển giữa bếp và phục vụ.</i><br>3. „Viele Azubis kommen aus dem Ausland.“<br><i>Nhiều học viên đến từ nước ngoài.</i></td></tr>\n<tr><td><b>4. Fachkräftemangel</b><br><i>Thiếu hụt lao động có tay nghề</i></td><td>1. Ursachen analysieren<br><i>Phân tích nguyên nhân.</i><br>2. Attraktivität der Branche erhöhen<br><i>Tăng sức hấp dẫn ngành.</i><br>3. Azubis fördern<br><i>Đào tạo và hỗ trợ học viên.</i></td><td>1. „Viele verlassen Gastronomie wegen Arbeitszeiten.“<br><i>Nhiều người rời ngành vì giờ làm.</i><br>2. „Betrieb bietet höhere Löhne.“<br><i>Doanh nghiệp trả lương cao hơn.</i><br>3. „Mehr Ausbildungsplätze schaffen.“<br><i>Tạo thêm chỗ học nghề.</i></td></tr>\n<tr><td><b>5. Lebenslanges Lernen</b><br><i>Học tập suốt đời</i></td><td>1. Fortbildungen besuchen<br><i>Tham gia đào tạo nâng cao.</i><br>2. Neue Trends lernen<br><i>Học xu hướng mới.</i><br>3. Anpassung an Veränderungen<br><i>Thích nghi thay đổi.</i></td><td>1. „Kurs über neue Kassensysteme.“<br><i>Khóa học về hệ thống thu ngân mới.</i><br>2. „Seminar über vegane Ernährung.“<br><i>Hội thảo về dinh dưỡng thuần chay.</i><br>3. „Team passt sich an Lieferservice an.“<br><i>Nhóm thích nghi với dịch vụ giao hàng.</i></td></tr>\n</table>\n<h3>B. Wichtige Hinweise – Điểm lưu ý quan trọng</h3>\n<table><tr><th>Deutsch</th><th>Tiếng Việt</th><th>Ghi chú</th></tr>\n<tr><td>Digitalisierung verändert alle Berufe.</td><td>Số hóa thay đổi mọi ngành nghề.</td><td>Neue Kassensysteme, Online-Bestellungen. Hệ thống thu ngân mới, đặt hàng online.</td></tr>\n<tr><td>Strukturwandel betrifft Gastronomie stark.</td><td>Ngành ẩm thực chịu tác động lớn của chuyển đổi.</td><td>Mehr Systemgastronomie, mehr Lieferdienste. Ẩm thực hệ thống phát triển, dịch vụ giao hàng tăng.</td></tr>\n<tr><td>Flexibilität ist Voraussetzung auf dem Arbeitsmarkt.</td><td>Linh hoạt là điều kiện tiên quyết trên thị trường lao động.</td><td>Mitarbeiter wechseln zwischen Küche &amp; Service. Nhân viên có thể luân chuyển giữa bếp và phục vụ.</td></tr>\n<tr><td>Fachkräftemangel ist eine große Herausforderung.</td><td>Thiếu hụt lao động có tay nghề là thách thức lớn.</td><td>Viele verlassen Gastronomie wegen Arbeitszeiten. Nhiều người rời ngành vì giờ làm.</td></tr>\n<tr><td>Lebenslanges Lernen ist Pflicht, nicht Wahl.</td><td>Học tập suốt đời là bắt buộc, không phải tùy chọn.</td><td>Fortbildungen über neue Trends (z. B. vegane Ernährung). Đào tạo nâng cao về xu hướng mới (ví dụ: ăn chay).</td></tr>\n<tr><td>Internationale Arbeitskräfte sind notwendig.</td><td>Lao động quốc tế là cần thiết.</td><td>Viele Azubis kommen aus dem Ausland. Nhiều học viên đến từ nước ngoài.</td></tr>\n<tr><td>Anpassungsfähigkeit entscheidet über Erfolg.</td><td>Khả năng thích nghi quyết định thành công.</td><td>Betriebe, die Trends anpassen, bleiben wettbewerbsfähig. Doanh nghiệp nào thích nghi xu hướng thì duy trì cạnh tranh.</td></tr>\n</table>",
+          "qa": [
+            {
+              "q": "Thema 4 – Wandel durch Digitalisierung: Welche Inhalte gehören dazu?",
+              "qVi": "Thay đổi do số hóa: gồm những nội dung nào?",
+              "a": "1. Neue Technologien einsetzen\n2. Online-Bestellungen ermöglichen\n3. Digitale Kommunikation nutzen",
+              "aVi": "1. Ứng dụng công nghệ mới.\n2. Cho phép đặt hàng online.\n3. Dùng giao tiếp kỹ thuật số.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Wandel durch Digitalisierung",
+              "qVi": "Nêu một ví dụ thực tế cho: Thay đổi do số hóa",
+              "a": "1. „Bestellungen per Tablet aufnehmen.“\n2. „Kunde bestellt Sandwich über App.“\n3. „Team kommuniziert per WhatsApp-Gruppe.“",
+              "aVi": "1. Nhận đơn bằng máy tính bảng.\n2. Khách đặt bánh mì qua ứng dụng.\n3. Nhóm trao đổi qua WhatsApp.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 4 – Strukturwandel in der Gastronomie: Welche Inhalte gehören dazu?",
+              "qVi": "Chuyển đổi trong ngành ẩm thực: gồm những nội dung nào?",
+              "a": "1. Systemgastronomie wächst\n2. Klassische Restaurants verändern sich\n3. Mehr Lieferdienste",
+              "aVi": "1. Ngành ẩm thực hệ thống phát triển.\n2. Nhà hàng truyền thống thay đổi.\n3. Dịch vụ giao hàng tăng.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Strukturwandel in der Gastronomie",
+              "qVi": "Nêu một ví dụ thực tế cho: Chuyển đổi trong ngành ẩm thực",
+              "a": "1. „Subway expandiert in vielen Städten.“\n2. „Traditionelles Restaurant bietet auch Takeaway.“\n3. „Lieferando bringt Essen nach Hause.“",
+              "aVi": "1. Subway mở rộng ở nhiều thành phố.\n2. Nhà hàng truyền thống thêm món mang đi.\n3. Lieferando giao đồ ăn tận nhà.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 4 – Arbeitsmarkt und Berufe: Welche Inhalte gehören dazu?",
+              "qVi": "Thị trường lao động & nghề nghiệp: gồm những nội dung nào?",
+              "a": "1. Neue Berufsbilder entstehen\n2. Mehr Flexibilität gefordert\n3. Internationale Arbeitskräfte wichtig",
+              "aVi": "1. Xuất hiện nghề mới.\n2. Yêu cầu linh hoạt hơn.\n3. Lao động quốc tế quan trọng.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Arbeitsmarkt und Berufe",
+              "qVi": "Nêu một ví dụ thực tế cho: Thị trường lao động & nghề nghiệp",
+              "a": "1. „Job: Fachkraft für Systemgastronomie.“\n2. „Mitarbeiter wechseln zwischen Küche und Service.“\n3. „Viele Azubis kommen aus dem Ausland.“",
+              "aVi": "1. Nghề: Nhân viên ngành ẩm thực hệ thống.\n2. Nhân viên luân chuyển giữa bếp và phục vụ.\n3. Nhiều học viên đến từ nước ngoài.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 4 – Fachkräftemangel: Welche Inhalte gehören dazu?",
+              "qVi": "Thiếu hụt lao động có tay nghề: gồm những nội dung nào?",
+              "a": "1. Ursachen analysieren\n2. Attraktivität der Branche erhöhen\n3. Azubis fördern",
+              "aVi": "1. Phân tích nguyên nhân.\n2. Tăng sức hấp dẫn ngành.\n3. Đào tạo và hỗ trợ học viên.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Fachkräftemangel",
+              "qVi": "Nêu một ví dụ thực tế cho: Thiếu hụt lao động có tay nghề",
+              "a": "1. „Viele verlassen Gastronomie wegen Arbeitszeiten.“\n2. „Betrieb bietet höhere Löhne.“\n3. „Mehr Ausbildungsplätze schaffen.“",
+              "aVi": "1. Nhiều người rời ngành vì giờ làm.\n2. Doanh nghiệp trả lương cao hơn.\n3. Tạo thêm chỗ học nghề.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 4 – Lebenslanges Lernen: Welche Inhalte gehören dazu?",
+              "qVi": "Học tập suốt đời: gồm những nội dung nào?",
+              "a": "1. Fortbildungen besuchen\n2. Neue Trends lernen\n3. Anpassung an Veränderungen",
+              "aVi": "1. Tham gia đào tạo nâng cao.\n2. Học xu hướng mới.\n3. Thích nghi thay đổi.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Lebenslanges Lernen",
+              "qVi": "Nêu một ví dụ thực tế cho: Học tập suốt đời",
+              "a": "1. „Kurs über neue Kassensysteme.“\n2. „Seminar über vegane Ernährung.“\n3. „Team passt sich an Lieferservice an.“",
+              "aVi": "1. Khóa học về hệ thống thu ngân mới.\n2. Hội thảo về dinh dưỡng thuần chay.\n3. Nhóm thích nghi với dịch vụ giao hàng.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            }
+          ],
+          "vokabeln": [
+            {
+              "de": "Wandel durch Digitalisierung",
+              "vi": "Thay đổi do số hóa"
+            },
+            {
+              "de": "Strukturwandel in der Gastronomie",
+              "vi": "Chuyển đổi trong ngành ẩm thực"
+            },
+            {
+              "de": "Arbeitsmarkt und Berufe",
+              "vi": "Thị trường lao động & nghề nghiệp"
+            },
+            {
+              "de": "Fachkräftemangel",
+              "vi": "Thiếu hụt lao động có tay nghề"
+            },
+            {
+              "de": "Lebenslanges Lernen",
+              "vi": "Học tập suốt đời"
+            }
+          ]
+        },
+        {
+          "id": "wiso-thema-5",
+          "icon": "",
+          "name": "WiSo Thema 5 · Sozialversicherung (Bảo hiểm xã hội)",
+          "desc": "Krankenversicherung · Rentenversicherung · Arbeitslosenversicherung · Pflegeversicherung · Unfallversicherung",
+          "content": "<h2>WiSo Thema 5 · Sozialversicherung</h2>\n<div class=\"hint\">Bảo hiểm xã hội · Quelle: Fach Wiso (Theorie) · 5 Punkte, je 3 Theorie-Inhalte + Beispiele</div>\n<h3>A. Theorie &amp; Beispiele (5 Punkte)</h3>\n<table><tr><th>Punkt</th><th>Theorie – Lý thuyết</th><th>Beispiel – Ví dụ</th></tr>\n<tr><td><b>1. Krankenversicherung</b><br><i>Bảo hiểm y tế</i></td><td>1. Kostenübernahme bei Arztbesuch<br><i>Chi trả khi đi khám bác sĩ.</i><br>2. Medikamente und Behandlungen<br><i>Thuốc và điều trị được hỗ trợ.</i><br>3. Pflichtversicherung für Arbeitnehmer<br><i>Bảo hiểm bắt buộc cho người lao động.</i></td><td>1. „Azubi geht zum Arzt, Krankenkasse zahlt.“<br><i>Học viên đi khám, bảo hiểm y tế chi trả.</i><br>2. „Medizin für Grippe wird übernommen.“<br><i>Thuốc cảm cúm được hỗ trợ.</i><br>3. „Azubi wird automatisch versichert.“<br><i>Học viên được tự động tham gia bảo hiểm.</i></td></tr>\n<tr><td><b>2. Rentenversicherung</b><br><i>Bảo hiểm hưu trí</i></td><td>1. Beiträge während der Arbeit<br><i>Đóng góp trong thời gian làm việc.</i><br>2. Anspruch im Alter<br><i>Quyền nhận lương hưu khi về già.</i><br>3. Solidarprinzip<br><i>Nguyên tắc đoàn kết (thế hệ trẻ nuôi thế hệ già).</i></td><td>1. „Monatlich wird Beitrag vom Lohn abgezogen.“<br><i>Hàng tháng trích lương để đóng.</i><br>2. „Nach 40 Jahren Arbeit → Rente.“<br><i>Sau 40 năm làm việc → nhận lương hưu.</i><br>3. „Junge zahlen für die Alten.“<br><i>Người trẻ đóng cho người già.</i></td></tr>\n<tr><td><b>3. Arbeitslosenversicherung</b><br><i>Bảo hiểm thất nghiệp</i></td><td>1. Unterstützung bei Jobverlust<br><i>Hỗ trợ khi mất việc.</i><br>2. Arbeitslosengeld I<br><i>Tiền trợ cấp thất nghiệp loại I.</i><br>3. Vermittlung durch Arbeitsagentur<br><i>Giới thiệu việc làm qua cơ quan lao động.</i></td><td>1. „Mitarbeiter verliert Job → ALG I.“<br><i>Nhân viên mất việc → nhận trợ cấp I.</i><br>2. „Höhe abhängig vom letzten Gehalt.“<br><i>Số tiền phụ thuộc vào lương cũ.</i><br>3. „Agentur hilft bei Jobsuche.“<br><i>Cơ quan lao động hỗ trợ tìm việc.</i></td></tr>\n<tr><td><b>4. Pflegeversicherung</b><br><i>Bảo hiểm chăm sóc</i></td><td>1. Unterstützung bei Pflegebedürftigkeit<br><i>Hỗ trợ khi cần chăm sóc.</i><br>2. Pflegestufen definieren Leistungen<br><i>Mức độ chăm sóc quyết định quyền lợi.</i><br>3. Entlastung für Angehörige<br><i>Giảm gánh nặng cho gia đình.</i></td><td>1. „Alter Mensch bekommt Pflegegeld.“<br><i>Người già nhận tiền chăm sóc.</i><br>2. „Pflegestufe 3 = mehr Unterstützung.“<br><i>Mức chăm sóc 3 = nhiều hỗ trợ hơn.</i><br>3. „Familie wird finanziell entlastet.“<br><i>Gia đình được giảm gánh nặng tài chính.</i></td></tr>\n<tr><td><b>5. Unfallversicherung</b><br><i>Bảo hiểm tai nạn</i></td><td>1. Schutz bei Arbeitsunfällen<br><i>Bảo vệ khi tai nạn lao động.</i><br>2. Wegeunfälle eingeschlossen<br><i>Bao gồm cả tai nạn trên đường đi làm.</i><br>3. Finanzielle Absicherung<br><i>Đảm bảo tài chính khi bị tai nạn.</i></td><td>1. „Azubi verletzt sich in Küche, Versicherung zahlt.“<br><i>Học viên bị thương trong bếp, bảo hiểm chi trả.</i><br>2. „Unfall auf dem Arbeitsweg = versichert.“<br><i>Tai nạn trên đường đi làm = được bảo hiểm.</i><br>3. „Kosten für Reha übernommen.“<br><i>Chi phí phục hồi chức năng được chi trả.</i></td></tr>\n</table>\n<h3>B. Wichtige Hinweise – Điểm lưu ý quan trọng</h3>\n<table><tr><th>Deutsch</th><th>Tiếng Việt</th><th>Ghi chú</th></tr>\n<tr><td>Sozialversicherung besteht aus 5 Säulen.</td><td>Bảo hiểm xã hội có 5 trụ cột.</td><td>Kranken-, Renten-, Arbeitslosen-, Pflege-, Unfallversicherung. Gồm: Y tế, hưu trí, thất nghiệp, chăm sóc, tai nạn.</td></tr>\n<tr><td>Jede Versicherung schützt vor speziellen Risiken.</td><td>Mỗi loại bảo hiểm bảo vệ trước một rủi ro riêng.</td><td>Beispiel: Krankenversicherung bei Krankheit. Ví dụ: bảo hiểm y tế khi ốm bệnh.</td></tr>\n<tr><td>Beiträge werden automatisch vom Lohn abgezogen.</td><td>Khoản đóng được tự động trừ từ lương.</td><td>Arbeitgeber + Arbeitnehmer zahlen zusammen. Người lao động + chủ doanh nghiệp cùng đóng.</td></tr>\n<tr><td>Versicherung ist Pflicht für alle Arbeitnehmer.</td><td>Bảo hiểm là bắt buộc cho mọi người lao động.</td><td>Ausnahme: bestimmte Minijobs. Ngoại lệ: một số việc làm nhỏ (Minijob).</td></tr>\n<tr><td>Ohne Versicherung → keine finanzielle Sicherheit.</td><td>Không có bảo hiểm → không có an toàn tài chính.</td><td>Hohe Kosten bei Unfall oder Krankheit. Chi phí cao khi tai nạn hoặc bệnh tật.</td></tr>\n<tr><td>Arbeitgeber und Arbeitnehmer teilen Beiträge.</td><td>Người lao động và chủ doanh nghiệp cùng đóng.</td><td>Ca. 50:50, je nach Versicherung. Khoảng 50:50, tùy loại bảo hiểm.</td></tr>\n<tr><td>Kenntnisse der Sozialversicherung sind prüfungsrelevant.</td><td>Hiểu biết về bảo hiểm xã hội rất quan trọng trong kỳ thi.</td><td>Fragen dazu kommen oft in WISO-Prüfung. Các câu hỏi này thường xuất hiện trong kỳ thi WISO.</td></tr>\n</table>",
+          "qa": [
+            {
+              "q": "Thema 5 – Krankenversicherung: Welche Inhalte gehören dazu?",
+              "qVi": "Bảo hiểm y tế: gồm những nội dung nào?",
+              "a": "1. Kostenübernahme bei Arztbesuch\n2. Medikamente und Behandlungen\n3. Pflichtversicherung für Arbeitnehmer",
+              "aVi": "1. Chi trả khi đi khám bác sĩ.\n2. Thuốc và điều trị được hỗ trợ.\n3. Bảo hiểm bắt buộc cho người lao động.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Krankenversicherung",
+              "qVi": "Nêu một ví dụ thực tế cho: Bảo hiểm y tế",
+              "a": "1. „Azubi geht zum Arzt, Krankenkasse zahlt.“\n2. „Medizin für Grippe wird übernommen.“\n3. „Azubi wird automatisch versichert.“",
+              "aVi": "1. Học viên đi khám, bảo hiểm y tế chi trả.\n2. Thuốc cảm cúm được hỗ trợ.\n3. Học viên được tự động tham gia bảo hiểm.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 5 – Rentenversicherung: Welche Inhalte gehören dazu?",
+              "qVi": "Bảo hiểm hưu trí: gồm những nội dung nào?",
+              "a": "1. Beiträge während der Arbeit\n2. Anspruch im Alter\n3. Solidarprinzip",
+              "aVi": "1. Đóng góp trong thời gian làm việc.\n2. Quyền nhận lương hưu khi về già.\n3. Nguyên tắc đoàn kết (thế hệ trẻ nuôi thế hệ già).",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Rentenversicherung",
+              "qVi": "Nêu một ví dụ thực tế cho: Bảo hiểm hưu trí",
+              "a": "1. „Monatlich wird Beitrag vom Lohn abgezogen.“\n2. „Nach 40 Jahren Arbeit → Rente.“\n3. „Junge zahlen für die Alten.“",
+              "aVi": "1. Hàng tháng trích lương để đóng.\n2. Sau 40 năm làm việc → nhận lương hưu.\n3. Người trẻ đóng cho người già.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 5 – Arbeitslosenversicherung: Welche Inhalte gehören dazu?",
+              "qVi": "Bảo hiểm thất nghiệp: gồm những nội dung nào?",
+              "a": "1. Unterstützung bei Jobverlust\n2. Arbeitslosengeld I\n3. Vermittlung durch Arbeitsagentur",
+              "aVi": "1. Hỗ trợ khi mất việc.\n2. Tiền trợ cấp thất nghiệp loại I.\n3. Giới thiệu việc làm qua cơ quan lao động.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Arbeitslosenversicherung",
+              "qVi": "Nêu một ví dụ thực tế cho: Bảo hiểm thất nghiệp",
+              "a": "1. „Mitarbeiter verliert Job → ALG I.“\n2. „Höhe abhängig vom letzten Gehalt.“\n3. „Agentur hilft bei Jobsuche.“",
+              "aVi": "1. Nhân viên mất việc → nhận trợ cấp I.\n2. Số tiền phụ thuộc vào lương cũ.\n3. Cơ quan lao động hỗ trợ tìm việc.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 5 – Pflegeversicherung: Welche Inhalte gehören dazu?",
+              "qVi": "Bảo hiểm chăm sóc: gồm những nội dung nào?",
+              "a": "1. Unterstützung bei Pflegebedürftigkeit\n2. Pflegestufen definieren Leistungen\n3. Entlastung für Angehörige",
+              "aVi": "1. Hỗ trợ khi cần chăm sóc.\n2. Mức độ chăm sóc quyết định quyền lợi.\n3. Giảm gánh nặng cho gia đình.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Pflegeversicherung",
+              "qVi": "Nêu một ví dụ thực tế cho: Bảo hiểm chăm sóc",
+              "a": "1. „Alter Mensch bekommt Pflegegeld.“\n2. „Pflegestufe 3 = mehr Unterstützung.“\n3. „Familie wird finanziell entlastet.“",
+              "aVi": "1. Người già nhận tiền chăm sóc.\n2. Mức chăm sóc 3 = nhiều hỗ trợ hơn.\n3. Gia đình được giảm gánh nặng tài chính.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 5 – Unfallversicherung: Welche Inhalte gehören dazu?",
+              "qVi": "Bảo hiểm tai nạn: gồm những nội dung nào?",
+              "a": "1. Schutz bei Arbeitsunfällen\n2. Wegeunfälle eingeschlossen\n3. Finanzielle Absicherung",
+              "aVi": "1. Bảo vệ khi tai nạn lao động.\n2. Bao gồm cả tai nạn trên đường đi làm.\n3. Đảm bảo tài chính khi bị tai nạn.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Unfallversicherung",
+              "qVi": "Nêu một ví dụ thực tế cho: Bảo hiểm tai nạn",
+              "a": "1. „Azubi verletzt sich in Küche, Versicherung zahlt.“\n2. „Unfall auf dem Arbeitsweg = versichert.“\n3. „Kosten für Reha übernommen.“",
+              "aVi": "1. Học viên bị thương trong bếp, bảo hiểm chi trả.\n2. Tai nạn trên đường đi làm = được bảo hiểm.\n3. Chi phí phục hồi chức năng được chi trả.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            }
+          ],
+          "vokabeln": [
+            {
+              "de": "Krankenversicherung",
+              "vi": "Bảo hiểm y tế"
+            },
+            {
+              "de": "Rentenversicherung",
+              "vi": "Bảo hiểm hưu trí"
+            },
+            {
+              "de": "Arbeitslosenversicherung",
+              "vi": "Bảo hiểm thất nghiệp"
+            },
+            {
+              "de": "Pflegeversicherung",
+              "vi": "Bảo hiểm chăm sóc"
+            },
+            {
+              "de": "Unfallversicherung",
+              "vi": "Bảo hiểm tai nạn"
+            }
+          ]
+        },
+        {
+          "id": "wiso-thema-6",
+          "icon": "",
+          "name": "WiSo Thema 6 · Soziale Sicherung, Berufs- und Lebensplanung (An sinh xã hội, nghề nghiệp & kế hoạch cuộc sống)",
+          "desc": "Private Vorsorge · Betriebliche Altersvorsorge · Weiterbildung · Karriereplanung · Work-Life-Balance",
+          "content": "<h2>WiSo Thema 6 · Soziale Sicherung, Berufs- und Lebensplanung</h2>\n<div class=\"hint\">An sinh xã hội, nghề nghiệp &amp; kế hoạch cuộc sống · Quelle: Fach Wiso (Theorie) · 5 Punkte, je 3 Theorie-Inhalte + Beispiele</div>\n<h3>A. Theorie &amp; Beispiele (5 Punkte)</h3>\n<table><tr><th>Punkt</th><th>Theorie – Lý thuyết</th><th>Beispiel – Ví dụ</th></tr>\n<tr><td><b>1. Private Vorsorge</b><br><i>Dự phòng cá nhân</i></td><td>1. Zusatzversicherung abschließen<br><i>Tham gia bảo hiểm bổ sung.</i><br>2. Sparpläne einrichten<br><i>Thiết lập kế hoạch tiết kiệm.</i><br>3. Eigenverantwortung zeigen<br><i>Thể hiện trách nhiệm cá nhân.</i></td><td>1. „Azubi schließt Zahnzusatzversicherung ab.“<br><i>Học viên mua bảo hiểm nha khoa bổ sung.</i><br>2. „Monatlich 50 € sparen.“<br><i>Tiết kiệm 50 € mỗi tháng.</i><br>3. „Mitarbeiter legt Geld für Notfälle zurück.“<br><i>Nhân viên để dành tiền cho tình huống khẩn cấp.</i></td></tr>\n<tr><td><b>2. Betriebliche Altersvorsorge</b><br><i>Lương hưu doanh nghiệp</i></td><td>1. Arbeitgeber bietet Zusatzrente<br><i>Chủ doanh nghiệp hỗ trợ lương hưu thêm.</i><br>2. Steuervorteile nutzen<br><i>Hưởng lợi về thuế.</i><br>3. Langfristige Sicherheit<br><i>Đảm bảo lâu dài.</i></td><td>1. „Firma zahlt in Rentenkasse ein.“<br><i>Công ty đóng góp vào quỹ hưu.</i><br>2. „Beiträge steuerlich absetzbar.“<br><i>Khoản đóng được khấu trừ thuế.</i><br>3. „Azubi baut Zusatzrente auf.“<br><i>Học viên tích lũy lương hưu bổ sung.</i></td></tr>\n<tr><td><b>3. Weiterbildung</b><br><i>Đào tạo nâng cao</i></td><td>1. Fachliche Kurse besuchen<br><i>Tham gia khóa chuyên môn.</i><br>2. Soft Skills entwickeln<br><i>Phát triển kỹ năng mềm.</i><br>3. Lebenslanges Lernen fördern<br><i>Khuyến khích học suốt đời.</i></td><td>1. „Azubi besucht Hygiene-Seminar.“<br><i>Học viên tham dự hội thảo vệ sinh.</i><br>2. „Mitarbeiter trainiert Kommunikation.“<br><i>Nhân viên luyện kỹ năng giao tiếp.</i><br>3. „Team nimmt an Digital-Kurs teil.“<br><i>Nhóm tham gia khóa học số hóa.</i></td></tr>\n<tr><td><b>4. Karriereplanung</b><br><i>Lập kế hoạch nghề nghiệp</i></td><td>1. Ziele definieren<br><i>Xác định mục tiêu.</i><br>2. Fortbildungsschritte planen<br><i>Lập kế hoạch học tập tiếp theo.</i><br>3. Mentoren nutzen<br><i>Nhờ sự cố vấn từ người đi trước.</i></td><td>1. „Azubi möchte später Filialleiter werden.“<br><i>Học viên muốn trở thành quản lý chi nhánh.</i><br>2. „Besuch eines Meisterkurses geplant.“<br><i>Dự định tham gia khóa học Meister.</i><br>3. „Azubi fragt Ausbilder um Rat.“<br><i>Học viên xin lời khuyên từ người đào tạo.</i></td></tr>\n<tr><td><b>5. Work-Life-Balance</b><br><i>Cân bằng công việc &amp; cuộc sống</i></td><td>1. Gesundheit erhalten<br><i>Duy trì sức khỏe.</i><br>2. Freizeit gestalten<br><i>Tận hưởng thời gian rảnh.</i><br>3. Stress abbauen<br><i>Giảm căng thẳng.</i></td><td>1. „Mitarbeiter treibt regelmäßig Sport.“<br><i>Nhân viên tập thể dục thường xuyên.</i><br>2. „Azubi geht ins Kino am Wochenende.“<br><i>Học viên đi xem phim cuối tuần.</i><br>3. „Team macht gemeinsame Ausflüge.“<br><i>Nhóm tổ chức đi chơi chung.</i></td></tr>\n</table>\n<h3>B. Wichtige Hinweise – Điểm lưu ý quan trọng</h3>\n<table><tr><th>Deutsch</th><th>Tiếng Việt</th><th>Ghi chú</th></tr>\n<tr><td>Soziale Sicherung ist mehr als Pflichtversicherung.</td><td>An sinh xã hội không chỉ là bảo hiểm bắt buộc.</td><td>Auch private Vorsorge zählt. Bao gồm cả dự phòng cá nhân.</td></tr>\n<tr><td>Betriebliche Altersvorsorge lohnt sich langfristig.</td><td>Lương hưu doanh nghiệp có lợi về lâu dài.</td><td>Steuervorteile + zusätzliche Rente. Vừa giảm thuế vừa có thêm hưu trí.</td></tr>\n<tr><td>Weiterbildung erhöht Karrierechancen.</td><td>Đào tạo nâng cao giúp tăng cơ hội nghề nghiệp.</td><td>Häufiges Prüfungsthema in WISO. Thường xuất hiện trong đề thi WISO.</td></tr>\n<tr><td>Klare Karriereplanung motiviert.</td><td>Lập kế hoạch nghề nghiệp rõ ràng tạo động lực.</td><td>Azubis sollen Ziele formulieren. Học viên nên xác định mục tiêu.</td></tr>\n<tr><td>Work-Life-Balance ist Voraussetzung für Gesundheit.</td><td>Cân bằng công việc &amp; cuộc sống là điều kiện để khỏe mạnh.</td><td>Stressabbau = weniger Krankmeldungen. Giảm stress → ít nghỉ bệnh hơn.</td></tr>\n<tr><td>Arbeitgeber profitieren von motivierten Mitarbeitern.</td><td>Doanh nghiệp hưởng lợi khi nhân viên có động lực.</td><td>Weniger Fluktuation, mehr Produktivität. Ít nghỉ việc, năng suất cao hơn.</td></tr>\n<tr><td>Sozial- und Lebensplanung gehört ins Prüfungsthema.</td><td>An sinh &amp; kế hoạch cuộc sống nằm trong nội dung thi.</td><td>Fragen oft in mündlicher Prüfung. Thường có trong phần thi nói.</td></tr>\n</table>",
+          "qa": [
+            {
+              "q": "Thema 6 – Private Vorsorge: Welche Inhalte gehören dazu?",
+              "qVi": "Dự phòng cá nhân: gồm những nội dung nào?",
+              "a": "1. Zusatzversicherung abschließen\n2. Sparpläne einrichten\n3. Eigenverantwortung zeigen",
+              "aVi": "1. Tham gia bảo hiểm bổ sung.\n2. Thiết lập kế hoạch tiết kiệm.\n3. Thể hiện trách nhiệm cá nhân.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Private Vorsorge",
+              "qVi": "Nêu một ví dụ thực tế cho: Dự phòng cá nhân",
+              "a": "1. „Azubi schließt Zahnzusatzversicherung ab.“\n2. „Monatlich 50 € sparen.“\n3. „Mitarbeiter legt Geld für Notfälle zurück.“",
+              "aVi": "1. Học viên mua bảo hiểm nha khoa bổ sung.\n2. Tiết kiệm 50 € mỗi tháng.\n3. Nhân viên để dành tiền cho tình huống khẩn cấp.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 6 – Betriebliche Altersvorsorge: Welche Inhalte gehören dazu?",
+              "qVi": "Lương hưu doanh nghiệp: gồm những nội dung nào?",
+              "a": "1. Arbeitgeber bietet Zusatzrente\n2. Steuervorteile nutzen\n3. Langfristige Sicherheit",
+              "aVi": "1. Chủ doanh nghiệp hỗ trợ lương hưu thêm.\n2. Hưởng lợi về thuế.\n3. Đảm bảo lâu dài.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Betriebliche Altersvorsorge",
+              "qVi": "Nêu một ví dụ thực tế cho: Lương hưu doanh nghiệp",
+              "a": "1. „Firma zahlt in Rentenkasse ein.“\n2. „Beiträge steuerlich absetzbar.“\n3. „Azubi baut Zusatzrente auf.“",
+              "aVi": "1. Công ty đóng góp vào quỹ hưu.\n2. Khoản đóng được khấu trừ thuế.\n3. Học viên tích lũy lương hưu bổ sung.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 6 – Weiterbildung: Welche Inhalte gehören dazu?",
+              "qVi": "Đào tạo nâng cao: gồm những nội dung nào?",
+              "a": "1. Fachliche Kurse besuchen\n2. Soft Skills entwickeln\n3. Lebenslanges Lernen fördern",
+              "aVi": "1. Tham gia khóa chuyên môn.\n2. Phát triển kỹ năng mềm.\n3. Khuyến khích học suốt đời.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Weiterbildung",
+              "qVi": "Nêu một ví dụ thực tế cho: Đào tạo nâng cao",
+              "a": "1. „Azubi besucht Hygiene-Seminar.“\n2. „Mitarbeiter trainiert Kommunikation.“\n3. „Team nimmt an Digital-Kurs teil.“",
+              "aVi": "1. Học viên tham dự hội thảo vệ sinh.\n2. Nhân viên luyện kỹ năng giao tiếp.\n3. Nhóm tham gia khóa học số hóa.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 6 – Karriereplanung: Welche Inhalte gehören dazu?",
+              "qVi": "Lập kế hoạch nghề nghiệp: gồm những nội dung nào?",
+              "a": "1. Ziele definieren\n2. Fortbildungsschritte planen\n3. Mentoren nutzen",
+              "aVi": "1. Xác định mục tiêu.\n2. Lập kế hoạch học tập tiếp theo.\n3. Nhờ sự cố vấn từ người đi trước.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Karriereplanung",
+              "qVi": "Nêu một ví dụ thực tế cho: Lập kế hoạch nghề nghiệp",
+              "a": "1. „Azubi möchte später Filialleiter werden.“\n2. „Besuch eines Meisterkurses geplant.“\n3. „Azubi fragt Ausbilder um Rat.“",
+              "aVi": "1. Học viên muốn trở thành quản lý chi nhánh.\n2. Dự định tham gia khóa học Meister.\n3. Học viên xin lời khuyên từ người đào tạo.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 6 – Work-Life-Balance: Welche Inhalte gehören dazu?",
+              "qVi": "Cân bằng công việc & cuộc sống: gồm những nội dung nào?",
+              "a": "1. Gesundheit erhalten\n2. Freizeit gestalten\n3. Stress abbauen",
+              "aVi": "1. Duy trì sức khỏe.\n2. Tận hưởng thời gian rảnh.\n3. Giảm căng thẳng.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Work-Life-Balance",
+              "qVi": "Nêu một ví dụ thực tế cho: Cân bằng công việc & cuộc sống",
+              "a": "1. „Mitarbeiter treibt regelmäßig Sport.“\n2. „Azubi geht ins Kino am Wochenende.“\n3. „Team macht gemeinsame Ausflüge.“",
+              "aVi": "1. Nhân viên tập thể dục thường xuyên.\n2. Học viên đi xem phim cuối tuần.\n3. Nhóm tổ chức đi chơi chung.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            }
+          ],
+          "vokabeln": [
+            {
+              "de": "Private Vorsorge",
+              "vi": "Dự phòng cá nhân"
+            },
+            {
+              "de": "Betriebliche Altersvorsorge",
+              "vi": "Lương hưu doanh nghiệp"
+            },
+            {
+              "de": "Weiterbildung",
+              "vi": "Đào tạo nâng cao"
+            },
+            {
+              "de": "Karriereplanung",
+              "vi": "Lập kế hoạch nghề nghiệp"
+            },
+            {
+              "de": "Work-Life-Balance",
+              "vi": "Cân bằng công việc & cuộc sống"
+            }
+          ]
+        },
+        {
+          "id": "wiso-thema-7",
+          "icon": "",
+          "name": "WiSo Thema 7 · Unternehmen und Verbraucher (Doanh nghiệp & người tiêu dùng)",
+          "desc": "Rechte der Verbraucher · Pflichten der Unternehmen · Vertragsabschluss · Produkthaftung · Werbung und Marketing",
+          "content": "<h2>WiSo Thema 7 · Unternehmen und Verbraucher</h2>\n<div class=\"hint\">Doanh nghiệp &amp; người tiêu dùng · Quelle: Fach Wiso (Theorie) · 5 Punkte, je 3 Theorie-Inhalte + Beispiele</div>\n<h3>A. Theorie &amp; Beispiele (5 Punkte)</h3>\n<table><tr><th>Punkt</th><th>Theorie – Lý thuyết</th><th>Beispiel – Ví dụ</th></tr>\n<tr><td><b>1. Rechte der Verbraucher</b><br><i>Quyền của người tiêu dùng</i></td><td>1. Widerrufsrecht<br><i>Quyền hủy đơn hàng.</i><br>2. Garantie und Gewährleistung<br><i>Bảo hành &amp; bảo đảm chất lượng.</i><br>3. Transparenz bei Preisen<br><i>Minh bạch về giá cả.</i></td><td>1. „Kunde kann Online-Bestellung innerhalb 14 Tage stornieren.“<br><i>Khách có thể hủy đơn online trong 14 ngày.</i><br>2. „Defektes Produkt wird ersetzt.“<br><i>Sản phẩm hỏng được thay thế.</i><br>3. „Preise müssen klar auf Speisekarte stehen.“<br><i>Giá phải ghi rõ trong menu.</i></td></tr>\n<tr><td><b>2. Pflichten der Unternehmen</b><br><i>Nghĩa vụ của doanh nghiệp</i></td><td>1. Informationspflicht<br><i>Nghĩa vụ cung cấp thông tin.</i><br>2. Produktsicherheit gewährleisten<br><i>Bảo đảm an toàn sản phẩm.</i><br>3. Einhaltung von Verträgen<br><i>Tuân thủ hợp đồng.</i></td><td>1. „Subway informiert über Allergene.“<br><i>Subway cung cấp thông tin về chất gây dị ứng.</i><br>2. „Nur sichere Zutaten verwenden.“<br><i>Chỉ dùng nguyên liệu an toàn.</i><br>3. „Lieferant muss pünktlich liefern.“<br><i>Nhà cung cấp phải giao đúng hạn.</i></td></tr>\n<tr><td><b>3. Vertragsabschluss</b><br><i>Ký kết hợp đồng</i></td><td>1. Angebot und Annahme<br><i>Đề nghị &amp; chấp nhận.</i><br>2. Formfreiheit<br><i>Tự do về hình thức.</i><br>3. Verbindlichkeit<br><i>Tính ràng buộc.</i></td><td>1. „Kunde bestellt Menü = Angebot angenommen.“<br><i>Khách đặt combo = chấp nhận đề nghị.</i><br>2. „Mündliche Vereinbarung ist gültig.“<br><i>Thỏa thuận miệng vẫn có hiệu lực.</i><br>3. „Liefervertrag ist bindend.“<br><i>Hợp đồng giao hàng có tính ràng buộc.</i></td></tr>\n<tr><td><b>4. Produkthaftung</b><br><i>Trách nhiệm sản phẩm</i></td><td>1. Unternehmen haftet für Fehler<br><i>Doanh nghiệp chịu trách nhiệm cho lỗi.</i><br>2. Schutz der Verbraucher<br><i>Bảo vệ người tiêu dùng.</i><br>3. Folgeschäden berücksichtigen<br><i>Cân nhắc thiệt hại phát sinh.</i></td><td>1. „Kunde erkrankt wegen verdorbenem Essen.“<br><i>Khách bị bệnh vì đồ ăn hỏng.</i><br>2. „Unternehmen zahlt Schadensersatz.“<br><i>Doanh nghiệp phải bồi thường.</i><br>3. „Produktrückruf bei Gefahr.“<br><i>Thu hồi sản phẩm khi có nguy cơ.</i></td></tr>\n<tr><td><b>5. Werbung und Marketing</b><br><i>Quảng cáo &amp; tiếp thị</i></td><td>1. Wahrheitspflicht<br><i>Nghĩa vụ trung thực.</i><br>2. Keine Täuschung<br><i>Không được lừa dối.</i><br>3. Jugendschutz beachten<br><i>Tuân thủ luật bảo vệ thanh thiếu niên.</i></td><td>1. „Aktion: 2 Sandwiches zum Preis von 1.“<br><i>Khuyến mãi: mua 2 bánh mì giá 1.</i><br>2. „Keine falschen Versprechen machen.“<br><i>Không được hứa sai sự thật.</i><br>3. „Keine Alkoholwerbung für Jugendliche.“<br><i>Không quảng cáo rượu cho thanh thiếu niên.</i></td></tr>\n</table>\n<h3>B. Wichtige Hinweise – Điểm lưu ý quan trọng</h3>\n<table><tr><th>Deutsch</th><th>Tiếng Việt</th><th>Ghi chú</th></tr>\n<tr><td>Verbraucherrechte sichern Fairness.</td><td>Quyền người tiêu dùng đảm bảo công bằng.</td><td>Wichtig: Widerrufsrecht, Garantie. Quan trọng: quyền hủy đơn, bảo hành.</td></tr>\n<tr><td>Unternehmen haben Informationspflicht.</td><td>Doanh nghiệp có nghĩa vụ cung cấp thông tin.</td><td>Z. B. Allergene im Essen. Ví dụ: thông tin dị ứng trong thực phẩm.</td></tr>\n<tr><td>Vertragsabschluss ist alltäglich.</td><td>Ký kết hợp đồng diễn ra hằng ngày.</td><td>Auch beim Kauf im Laden oder Restaurant. Ngay cả khi mua hàng tại cửa hàng/nhà hàng.</td></tr>\n<tr><td>Produkthaftung schützt den Kunden.</td><td>Trách nhiệm sản phẩm bảo vệ khách hàng.</td><td>Unternehmen haftet auch bei Folgeschäden. Doanh nghiệp chịu trách nhiệm cả với thiệt hại phát sinh.</td></tr>\n<tr><td>Werbung darf nicht täuschen.</td><td>Quảng cáo không được lừa dối.</td><td>Täuschung = Abmahnung, Strafe. Lừa dối = bị kiện, bị phạt.</td></tr>\n<tr><td>Jugendschutz ist zwingend einzuhalten.</td><td>Luật bảo vệ thanh thiếu niên bắt buộc tuân thủ.</td><td>Kein Alkohol, keine Tabakwerbung. Không quảng cáo rượu, thuốc lá.</td></tr>\n<tr><td>Thema oft in Prüfungen: Vertragsrecht + Verbraucherrechte.</td><td>Chủ đề thường ra thi: luật hợp đồng + quyền người tiêu dùng.</td><td>Besonders im WISO-Schriftteil. Thường xuất hiện trong phần thi viết WISO.</td></tr>\n</table>",
+          "qa": [
+            {
+              "q": "Thema 7 – Rechte der Verbraucher: Welche Inhalte gehören dazu?",
+              "qVi": "Quyền của người tiêu dùng: gồm những nội dung nào?",
+              "a": "1. Widerrufsrecht\n2. Garantie und Gewährleistung\n3. Transparenz bei Preisen",
+              "aVi": "1. Quyền hủy đơn hàng.\n2. Bảo hành & bảo đảm chất lượng.\n3. Minh bạch về giá cả.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Rechte der Verbraucher",
+              "qVi": "Nêu một ví dụ thực tế cho: Quyền của người tiêu dùng",
+              "a": "1. „Kunde kann Online-Bestellung innerhalb 14 Tage stornieren.“\n2. „Defektes Produkt wird ersetzt.“\n3. „Preise müssen klar auf Speisekarte stehen.“",
+              "aVi": "1. Khách có thể hủy đơn online trong 14 ngày.\n2. Sản phẩm hỏng được thay thế.\n3. Giá phải ghi rõ trong menu.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 7 – Pflichten der Unternehmen: Welche Inhalte gehören dazu?",
+              "qVi": "Nghĩa vụ của doanh nghiệp: gồm những nội dung nào?",
+              "a": "1. Informationspflicht\n2. Produktsicherheit gewährleisten\n3. Einhaltung von Verträgen",
+              "aVi": "1. Nghĩa vụ cung cấp thông tin.\n2. Bảo đảm an toàn sản phẩm.\n3. Tuân thủ hợp đồng.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Pflichten der Unternehmen",
+              "qVi": "Nêu một ví dụ thực tế cho: Nghĩa vụ của doanh nghiệp",
+              "a": "1. „Subway informiert über Allergene.“\n2. „Nur sichere Zutaten verwenden.“\n3. „Lieferant muss pünktlich liefern.“",
+              "aVi": "1. Subway cung cấp thông tin về chất gây dị ứng.\n2. Chỉ dùng nguyên liệu an toàn.\n3. Nhà cung cấp phải giao đúng hạn.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 7 – Vertragsabschluss: Welche Inhalte gehören dazu?",
+              "qVi": "Ký kết hợp đồng: gồm những nội dung nào?",
+              "a": "1. Angebot und Annahme\n2. Formfreiheit\n3. Verbindlichkeit",
+              "aVi": "1. Đề nghị & chấp nhận.\n2. Tự do về hình thức.\n3. Tính ràng buộc.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Vertragsabschluss",
+              "qVi": "Nêu một ví dụ thực tế cho: Ký kết hợp đồng",
+              "a": "1. „Kunde bestellt Menü = Angebot angenommen.“\n2. „Mündliche Vereinbarung ist gültig.“\n3. „Liefervertrag ist bindend.“",
+              "aVi": "1. Khách đặt combo = chấp nhận đề nghị.\n2. Thỏa thuận miệng vẫn có hiệu lực.\n3. Hợp đồng giao hàng có tính ràng buộc.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 7 – Produkthaftung: Welche Inhalte gehören dazu?",
+              "qVi": "Trách nhiệm sản phẩm: gồm những nội dung nào?",
+              "a": "1. Unternehmen haftet für Fehler\n2. Schutz der Verbraucher\n3. Folgeschäden berücksichtigen",
+              "aVi": "1. Doanh nghiệp chịu trách nhiệm cho lỗi.\n2. Bảo vệ người tiêu dùng.\n3. Cân nhắc thiệt hại phát sinh.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Produkthaftung",
+              "qVi": "Nêu một ví dụ thực tế cho: Trách nhiệm sản phẩm",
+              "a": "1. „Kunde erkrankt wegen verdorbenem Essen.“\n2. „Unternehmen zahlt Schadensersatz.“\n3. „Produktrückruf bei Gefahr.“",
+              "aVi": "1. Khách bị bệnh vì đồ ăn hỏng.\n2. Doanh nghiệp phải bồi thường.\n3. Thu hồi sản phẩm khi có nguy cơ.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 7 – Werbung und Marketing: Welche Inhalte gehören dazu?",
+              "qVi": "Quảng cáo & tiếp thị: gồm những nội dung nào?",
+              "a": "1. Wahrheitspflicht\n2. Keine Täuschung\n3. Jugendschutz beachten",
+              "aVi": "1. Nghĩa vụ trung thực.\n2. Không được lừa dối.\n3. Tuân thủ luật bảo vệ thanh thiếu niên.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Werbung und Marketing",
+              "qVi": "Nêu một ví dụ thực tế cho: Quảng cáo & tiếp thị",
+              "a": "1. „Aktion: 2 Sandwiches zum Preis von 1.“\n2. „Keine falschen Versprechen machen.“\n3. „Keine Alkoholwerbung für Jugendliche.“",
+              "aVi": "1. Khuyến mãi: mua 2 bánh mì giá 1.\n2. Không được hứa sai sự thật.\n3. Không quảng cáo rượu cho thanh thiếu niên.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            }
+          ],
+          "vokabeln": [
+            {
+              "de": "Rechte der Verbraucher",
+              "vi": "Quyền của người tiêu dùng"
+            },
+            {
+              "de": "Pflichten der Unternehmen",
+              "vi": "Nghĩa vụ của doanh nghiệp"
+            },
+            {
+              "de": "Vertragsabschluss",
+              "vi": "Ký kết hợp đồng"
+            },
+            {
+              "de": "Produkthaftung",
+              "vi": "Trách nhiệm sản phẩm"
+            },
+            {
+              "de": "Werbung und Marketing",
+              "vi": "Quảng cáo & tiếp thị"
+            }
+          ]
+        },
+        {
+          "id": "wiso-thema-8",
+          "icon": "",
+          "name": "WiSo Thema 8 · Rechtsgeschäfte (Giao dịch pháp lý)",
+          "desc": "Rechtsfähigkeit · Geschäftsfähigkeit · Vertragsschluss · Anfechtung · Nichtigkeit",
+          "content": "<h2>WiSo Thema 8 · Rechtsgeschäfte</h2>\n<div class=\"hint\">Giao dịch pháp lý · Quelle: Fach Wiso (Theorie) · 5 Punkte, je 3 Theorie-Inhalte + Beispiele</div>\n<h3>A. Theorie &amp; Beispiele (5 Punkte)</h3>\n<table><tr><th>Punkt</th><th>Theorie – Lý thuyết</th><th>Beispiel – Ví dụ</th></tr>\n<tr><td><b>1. Rechtsfähigkeit</b><br><i>Năng lực pháp luật</i></td><td>1. Jeder Mensch von Geburt an<br><i>Mọi người có năng lực pháp luật từ khi sinh ra.</i><br>2. Fähigkeit, Rechte und Pflichten zu haben<br><i>Có quyền &amp; nghĩa vụ.</i><br>3. Endet mit dem Tod<br><i>Kết thúc khi chết.</i></td><td>1. „Azubi darf Eigentum besitzen.“<br><i>Học viên có thể sở hữu tài sản.</i><br>2. „Mitarbeiter hat Anspruch auf Lohn.“<br><i>Nhân viên có quyền nhận lương.</i><br>3. „Nach Tod keine Rechtsfähigkeit mehr.“<br><i>Sau khi chết thì không còn năng lực pháp luật.</i></td></tr>\n<tr><td><b>2. Geschäftsfähigkeit</b><br><i>Năng lực hành vi dân sự</i></td><td>1. Volle Geschäftsfähigkeit ab 18<br><i>Đủ năng lực từ 18 tuổi.</i><br>2. Beschränkte Geschäftsfähigkeit: 7–17 Jahre<br><i>Năng lực hạn chế từ 7–17 tuổi.</i><br>3. Geschäftsunfähigkeit unter 7 Jahre<br><i>Không có năng lực dưới 7 tuổi.</i></td><td>1. „Azubi mit 19 schließt Vertrag selbst.“<br><i>Học viên 19 tuổi tự ký hợp đồng.</i><br>2. „16-Jähriger braucht Zustimmung Eltern.“<br><i>Người 16 tuổi cần cha mẹ đồng ý.</i><br>3. „Kind mit 6 darf keinen Vertrag schließen.“<br><i>Trẻ 6 tuổi không thể ký hợp đồng.</i></td></tr>\n<tr><td><b>3. Vertragsschluss</b><br><i>Giao kết hợp đồng</i></td><td>1. Angebot + Annahme<br><i>Đề nghị + chấp nhận.</i><br>2. Übereinstimmende Willenserklärung<br><i>Thỏa thuận ý chí.</i><br>3. Rechtsbindungswille<br><i>Ý chí ràng buộc pháp lý.</i></td><td>1. „Kunde bestellt Menü = Angebot angenommen.“<br><i>Khách đặt combo = chấp nhận đề nghị.</i><br>2. „Lieferant und Subway schließen Vertrag.“<br><i>Nhà cung cấp và Subway ký hợp đồng.</i><br>3. „Mitarbeiter akzeptiert Arbeitsvertrag.“<br><i>Nhân viên đồng ý hợp đồng lao động.</i></td></tr>\n<tr><td><b>4. Anfechtung</b><br><i>Hủy bỏ hợp đồng</i></td><td>1. Bei Irrtum möglich<br><i>Có thể khi nhầm lẫn.</i><br>2. Bei Täuschung möglich<br><i>Có thể khi bị lừa dối.</i><br>3. Frist muss eingehalten werden<br><i>Phải tuân thủ thời hạn.</i></td><td>1. „Preis falsch angegeben → Vertrag anfechtbar.“<br><i>Giá ghi sai → có thể hủy hợp đồng.</i><br>2. „Kunde wurde getäuscht.“<br><i>Khách bị lừa dối.</i><br>3. „Anfechtung innerhalb 14 Tage.“<br><i>Hủy hợp đồng trong vòng 14 ngày.</i></td></tr>\n<tr><td><b>5. Nichtigkeit</b><br><i>Vô hiệu hợp đồng</i></td><td>1. Gesetzeswidrig<br><i>Trái luật.</i><br>2. Sittenwidrig<br><i>Trái đạo đức xã hội.</i><br>3. Formmangel<br><i>Sai hình thức bắt buộc.</i></td><td>1. „Drogenhandel-Vertrag = nichtig.“<br><i>Hợp đồng buôn ma túy = vô hiệu.</i><br>2. „Wucherzinsen = sittenwidrig.“<br><i>Cho vay nặng lãi = trái đạo đức.</i><br>3. „Kaufvertrag ohne Schriftform (bei Pflicht) = nichtig.“<br><i>Hợp đồng mua bán không có văn bản (khi luật bắt buộc) = vô hiệu.</i></td></tr>\n</table>\n<h3>B. Wichtige Hinweise – Điểm lưu ý quan trọng</h3>\n<table><tr><th>Deutsch</th><th>Tiếng Việt</th><th>Ghi chú</th></tr>\n<tr><td>Rechtsfähigkeit hat jeder Mensch.</td><td>Mọi người đều có năng lực pháp luật.</td><td>Von Geburt bis Tod. Từ khi sinh đến khi chết.</td></tr>\n<tr><td>Geschäftsfähigkeit hängt vom Alter ab.</td><td>Năng lực hành vi phụ thuộc vào độ tuổi.</td><td>&lt; 7 = unfähig, 7–17 = beschränkt, ab 18 = voll. &lt;7 = không có, 7–17 = hạn chế, từ 18 = đầy đủ.</td></tr>\n<tr><td>Jeder Vertrag braucht Angebot + Annahme.</td><td>Mọi hợp đồng cần có đề nghị + chấp nhận.</td><td>Ohne Übereinstimmung = kein Vertrag. Không có đồng thuận = không có hợp đồng.</td></tr>\n<tr><td>Anfechtung schützt vor Fehlern und Täuschung.</td><td>Hủy hợp đồng bảo vệ khỏi sai sót &amp; lừa dối.</td><td>Nur innerhalb bestimmter Frist gültig. Chỉ có hiệu lực trong thời hạn nhất định.</td></tr>\n<tr><td>Nichtigkeit macht Vertrag von Anfang an ungültig.</td><td>Vô hiệu = hợp đồng không có giá trị từ đầu.</td><td>Z. B. Gesetzesverstoß, Formmangel. Ví dụ: trái luật, sai hình thức.</td></tr>\n<tr><td>Verträge sind Prüfungsstoff Nr. 1.</td><td>Hợp đồng là chủ đề số 1 trong thi WISO.</td><td>Oft in schriftlichen Aufgaben. Thường xuất hiện trong phần thi viết.</td></tr>\n<tr><td>Praxis: Arbeitsverträge, Kaufverträge, Lieferverträge.</td><td>Thực tế: hợp đồng lao động, mua bán, giao hàng.</td><td>Diese Beispiele kommen in Prüfungen oft. Các ví dụ này thường ra trong thi.</td></tr>\n</table>",
+          "qa": [
+            {
+              "q": "Thema 8 – Rechtsfähigkeit: Welche Inhalte gehören dazu?",
+              "qVi": "Năng lực pháp luật: gồm những nội dung nào?",
+              "a": "1. Jeder Mensch von Geburt an\n2. Fähigkeit, Rechte und Pflichten zu haben\n3. Endet mit dem Tod",
+              "aVi": "1. Mọi người có năng lực pháp luật từ khi sinh ra.\n2. Có quyền & nghĩa vụ.\n3. Kết thúc khi chết.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Rechtsfähigkeit",
+              "qVi": "Nêu một ví dụ thực tế cho: Năng lực pháp luật",
+              "a": "1. „Azubi darf Eigentum besitzen.“\n2. „Mitarbeiter hat Anspruch auf Lohn.“\n3. „Nach Tod keine Rechtsfähigkeit mehr.“",
+              "aVi": "1. Học viên có thể sở hữu tài sản.\n2. Nhân viên có quyền nhận lương.\n3. Sau khi chết thì không còn năng lực pháp luật.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 8 – Geschäftsfähigkeit: Welche Inhalte gehören dazu?",
+              "qVi": "Năng lực hành vi dân sự: gồm những nội dung nào?",
+              "a": "1. Volle Geschäftsfähigkeit ab 18\n2. Beschränkte Geschäftsfähigkeit: 7–17 Jahre\n3. Geschäftsunfähigkeit unter 7 Jahre",
+              "aVi": "1. Đủ năng lực từ 18 tuổi.\n2. Năng lực hạn chế từ 7–17 tuổi.\n3. Không có năng lực dưới 7 tuổi.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Geschäftsfähigkeit",
+              "qVi": "Nêu một ví dụ thực tế cho: Năng lực hành vi dân sự",
+              "a": "1. „Azubi mit 19 schließt Vertrag selbst.“\n2. „16-Jähriger braucht Zustimmung Eltern.“\n3. „Kind mit 6 darf keinen Vertrag schließen.“",
+              "aVi": "1. Học viên 19 tuổi tự ký hợp đồng.\n2. Người 16 tuổi cần cha mẹ đồng ý.\n3. Trẻ 6 tuổi không thể ký hợp đồng.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 8 – Vertragsschluss: Welche Inhalte gehören dazu?",
+              "qVi": "Giao kết hợp đồng: gồm những nội dung nào?",
+              "a": "1. Angebot + Annahme\n2. Übereinstimmende Willenserklärung\n3. Rechtsbindungswille",
+              "aVi": "1. Đề nghị + chấp nhận.\n2. Thỏa thuận ý chí.\n3. Ý chí ràng buộc pháp lý.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Vertragsschluss",
+              "qVi": "Nêu một ví dụ thực tế cho: Giao kết hợp đồng",
+              "a": "1. „Kunde bestellt Menü = Angebot angenommen.“\n2. „Lieferant und Subway schließen Vertrag.“\n3. „Mitarbeiter akzeptiert Arbeitsvertrag.“",
+              "aVi": "1. Khách đặt combo = chấp nhận đề nghị.\n2. Nhà cung cấp và Subway ký hợp đồng.\n3. Nhân viên đồng ý hợp đồng lao động.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 8 – Anfechtung: Welche Inhalte gehören dazu?",
+              "qVi": "Hủy bỏ hợp đồng: gồm những nội dung nào?",
+              "a": "1. Bei Irrtum möglich\n2. Bei Täuschung möglich\n3. Frist muss eingehalten werden",
+              "aVi": "1. Có thể khi nhầm lẫn.\n2. Có thể khi bị lừa dối.\n3. Phải tuân thủ thời hạn.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Anfechtung",
+              "qVi": "Nêu một ví dụ thực tế cho: Hủy bỏ hợp đồng",
+              "a": "1. „Preis falsch angegeben → Vertrag anfechtbar.“\n2. „Kunde wurde getäuscht.“\n3. „Anfechtung innerhalb 14 Tage.“",
+              "aVi": "1. Giá ghi sai → có thể hủy hợp đồng.\n2. Khách bị lừa dối.\n3. Hủy hợp đồng trong vòng 14 ngày.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 8 – Nichtigkeit: Welche Inhalte gehören dazu?",
+              "qVi": "Vô hiệu hợp đồng: gồm những nội dung nào?",
+              "a": "1. Gesetzeswidrig\n2. Sittenwidrig\n3. Formmangel",
+              "aVi": "1. Trái luật.\n2. Trái đạo đức xã hội.\n3. Sai hình thức bắt buộc.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Nichtigkeit",
+              "qVi": "Nêu một ví dụ thực tế cho: Vô hiệu hợp đồng",
+              "a": "1. „Drogenhandel-Vertrag = nichtig.“\n2. „Wucherzinsen = sittenwidrig.“\n3. „Kaufvertrag ohne Schriftform (bei Pflicht) = nichtig.“",
+              "aVi": "1. Hợp đồng buôn ma túy = vô hiệu.\n2. Cho vay nặng lãi = trái đạo đức.\n3. Hợp đồng mua bán không có văn bản (khi luật bắt buộc) = vô hiệu.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            }
+          ],
+          "vokabeln": [
+            {
+              "de": "Rechtsfähigkeit",
+              "vi": "Năng lực pháp luật"
+            },
+            {
+              "de": "Geschäftsfähigkeit",
+              "vi": "Năng lực hành vi dân sự"
+            },
+            {
+              "de": "Vertragsschluss",
+              "vi": "Giao kết hợp đồng"
+            },
+            {
+              "de": "Anfechtung",
+              "vi": "Hủy bỏ hợp đồng"
+            },
+            {
+              "de": "Nichtigkeit",
+              "vi": "Vô hiệu hợp đồng"
+            }
+          ]
+        },
+        {
+          "id": "wiso-thema-9",
+          "icon": "",
+          "name": "WiSo Thema 9 · Weltwirtschaftliche Verflechtungen (Liên kết kinh tế toàn cầu)",
+          "desc": "Globalisierung · Außenhandel · Europäische Union (EU) · Internationale Organisationen · Chancen und Risiken",
+          "content": "<h2>WiSo Thema 9 · Weltwirtschaftliche Verflechtungen</h2>\n<div class=\"hint\">Liên kết kinh tế toàn cầu · Quelle: Fach Wiso (Theorie) · 5 Punkte, je 3 Theorie-Inhalte + Beispiele</div>\n<h3>A. Theorie &amp; Beispiele (5 Punkte)</h3>\n<table><tr><th>Punkt</th><th>Theorie – Lý thuyết</th><th>Beispiel – Ví dụ</th></tr>\n<tr><td><b>1. Globalisierung</b><br><i>Toàn cầu hóa</i></td><td>1. Weltweite Vernetzung<br><i>Kết nối toàn cầu.</i><br>2. Waren- und Dienstleistungsaustausch<br><i>Trao đổi hàng hóa &amp; dịch vụ.</i><br>3. Internationale Arbeitsteilung<br><i>Phân công lao động quốc tế.</i></td><td>1. „Subway hat Filialen weltweit.“<br><i>Subway có chi nhánh toàn cầu.</i><br>2. „Kaffee wird aus Brasilien importiert.“<br><i>Cà phê nhập khẩu từ Brazil.</i><br>3. „Arbeitskleidung aus Asien hergestellt.“<br><i>Đồng phục được sản xuất ở châu Á.</i></td></tr>\n<tr><td><b>2. Außenhandel</b><br><i>Ngoại thương</i></td><td>1. Export von Waren<br><i>Xuất khẩu hàng hóa.</i><br>2. Import von Rohstoffen<br><i>Nhập khẩu nguyên liệu.</i><br>3. Handelsbilanz beachten<br><i>Lưu ý cán cân thương mại.</i></td><td>1. „Deutschland exportiert Maschinen.“<br><i>Đức xuất khẩu máy móc.</i><br>2. „Deutschland importiert Bananen.“<br><i>Đức nhập khẩu chuối.</i><br>3. „Mehr Export als Import = Überschuss.“<br><i>Xuất nhiều hơn nhập = thặng dư.</i></td></tr>\n<tr><td><b>3. Europäische Union (EU)</b><br><i>Liên minh châu Âu</i></td><td>1. Binnenmarkt ohne Grenzen<br><i>Thị trường chung không biên giới.</i><br>2. Freier Waren- und Personenverkehr<br><i>Tự do lưu thông hàng hóa &amp; con người.</i><br>3. Gemeinsame Währung (Euro)<br><i>Đồng tiền chung (Euro).</i></td><td>1. „Azubi kann in jedem EU-Land arbeiten.“<br><i>Học viên có thể làm việc ở bất kỳ nước EU nào.</i><br>2. „Waren frei zwischen Deutschland und Frankreich.“<br><i>Hàng hóa tự do giữa Đức và Pháp.</i><br>3. „Subway in EU rechnet in Euro ab.“<br><i>Subway tại EU tính bằng Euro.</i></td></tr>\n<tr><td><b>4. Internationale Organisationen</b><br><i>Tổ chức quốc tế</i></td><td>1. WTO: Freihandel fördern<br><i>WTO: thúc đẩy tự do thương mại.</i><br>2. ILO: Arbeitsrechte sichern<br><i>ILO: đảm bảo quyền lao động.</i><br>3. UNO: Globale Zusammenarbeit<br><i>LHQ: hợp tác toàn cầu.</i></td><td>1. „WTO senkt Zölle.“<br><i>WTO giảm thuế quan.</i><br>2. „ILO schützt Kinder vor Kinderarbeit.“<br><i>ILO bảo vệ trẻ em khỏi lao động trẻ em.</i><br>3. „UNO hilft bei Krisen weltweit.“<br><i>LHQ giúp đỡ trong khủng hoảng toàn cầu.</i></td></tr>\n<tr><td><b>5. Chancen und Risiken</b><br><i>Cơ hội &amp; rủi ro</i></td><td>1. Neue Märkte erschließen<br><i>Mở ra thị trường mới.</i><br>2. Konkurrenz steigt<br><i>Cạnh tranh tăng.</i><br>3. Abhängigkeit von anderen Ländern<br><i>Phụ thuộc vào quốc gia khác.</i></td><td>1. „Subway expandiert nach Asien.“<br><i>Subway mở rộng sang châu Á.</i><br>2. „Mehr Konkurrenz durch internationale Ketten.“<br><i>Cạnh tranh tăng do chuỗi quốc tế.</i><br>3. „Lieferprobleme bei Importwaren.“<br><i>Gặp vấn đề cung ứng khi nhập khẩu.</i></td></tr>\n</table>\n<h3>B. Wichtige Hinweise – Điểm lưu ý quan trọng</h3>\n<table><tr><th>Deutsch</th><th>Tiếng Việt</th><th>Ghi chú</th></tr>\n<tr><td>Globalisierung betrifft alle Branchen.</td><td>Toàn cầu hóa ảnh hưởng đến mọi ngành.</td><td>Besonders Gastronomie: Zutaten weltweit. Đặc biệt ngành ẩm thực: nguyên liệu từ khắp nơi.</td></tr>\n<tr><td>Außenhandel ist Grundlage für Wohlstand.</td><td>Ngoại thương là nền tảng cho sự thịnh vượng.</td><td>Deutschland exportiert viel, Import auch wichtig. Đức xuất khẩu nhiều, nhập khẩu cũng quan trọng.</td></tr>\n<tr><td>EU bedeutet Freiheit und gemeinsame Regeln.</td><td>EU mang lại tự do &amp; luật chung.</td><td>Binnenmarkt = keine Zölle, freier Verkehr. Thị trường chung = không thuế, tự do lưu thông.</td></tr>\n<tr><td>Internationale Organisationen fördern Stabilität.</td><td>Tổ chức quốc tế thúc đẩy ổn định.</td><td>WTO = Handel, ILO = Arbeit, UNO = Frieden. WTO = thương mại, ILO = lao động, LHQ = hòa bình.</td></tr>\n<tr><td>Chancen und Risiken immer abwägen.</td><td>Luôn cân nhắc cơ hội &amp; rủi ro.</td><td>Mehr Märkte = mehr Gewinn, aber auch mehr Konkurrenz. Nhiều thị trường = nhiều lợi nhuận, nhưng cũng nhiều cạnh tranh.</td></tr>\n<tr><td>Abhängigkeit ist gefährlich.</td><td>Phụ thuộc quá nhiều là nguy hiểm.</td><td>Lieferengpässe wie bei Corona-Krise. Ví dụ: đứt gãy chuỗi cung ứng trong dịch Corona.</td></tr>\n<tr><td>Thema sehr prüfungsrelevant.</td><td>Chủ đề này rất quan trọng trong kỳ thi.</td><td>Oft Fragen zu EU, WTO und Globalisierung. Thường có câu hỏi về EU, WTO và toàn cầu hóa.</td></tr>\n</table>",
+          "qa": [
+            {
+              "q": "Thema 9 – Globalisierung: Welche Inhalte gehören dazu?",
+              "qVi": "Toàn cầu hóa: gồm những nội dung nào?",
+              "a": "1. Weltweite Vernetzung\n2. Waren- und Dienstleistungsaustausch\n3. Internationale Arbeitsteilung",
+              "aVi": "1. Kết nối toàn cầu.\n2. Trao đổi hàng hóa & dịch vụ.\n3. Phân công lao động quốc tế.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Globalisierung",
+              "qVi": "Nêu một ví dụ thực tế cho: Toàn cầu hóa",
+              "a": "1. „Subway hat Filialen weltweit.“\n2. „Kaffee wird aus Brasilien importiert.“\n3. „Arbeitskleidung aus Asien hergestellt.“",
+              "aVi": "1. Subway có chi nhánh toàn cầu.\n2. Cà phê nhập khẩu từ Brazil.\n3. Đồng phục được sản xuất ở châu Á.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 9 – Außenhandel: Welche Inhalte gehören dazu?",
+              "qVi": "Ngoại thương: gồm những nội dung nào?",
+              "a": "1. Export von Waren\n2. Import von Rohstoffen\n3. Handelsbilanz beachten",
+              "aVi": "1. Xuất khẩu hàng hóa.\n2. Nhập khẩu nguyên liệu.\n3. Lưu ý cán cân thương mại.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Außenhandel",
+              "qVi": "Nêu một ví dụ thực tế cho: Ngoại thương",
+              "a": "1. „Deutschland exportiert Maschinen.“\n2. „Deutschland importiert Bananen.“\n3. „Mehr Export als Import = Überschuss.“",
+              "aVi": "1. Đức xuất khẩu máy móc.\n2. Đức nhập khẩu chuối.\n3. Xuất nhiều hơn nhập = thặng dư.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 9 – Europäische Union (EU): Welche Inhalte gehören dazu?",
+              "qVi": "Liên minh châu Âu: gồm những nội dung nào?",
+              "a": "1. Binnenmarkt ohne Grenzen\n2. Freier Waren- und Personenverkehr\n3. Gemeinsame Währung (Euro)",
+              "aVi": "1. Thị trường chung không biên giới.\n2. Tự do lưu thông hàng hóa & con người.\n3. Đồng tiền chung (Euro).",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Europäische Union (EU)",
+              "qVi": "Nêu một ví dụ thực tế cho: Liên minh châu Âu",
+              "a": "1. „Azubi kann in jedem EU-Land arbeiten.“\n2. „Waren frei zwischen Deutschland und Frankreich.“\n3. „Subway in EU rechnet in Euro ab.“",
+              "aVi": "1. Học viên có thể làm việc ở bất kỳ nước EU nào.\n2. Hàng hóa tự do giữa Đức và Pháp.\n3. Subway tại EU tính bằng Euro.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 9 – Internationale Organisationen: Welche Inhalte gehören dazu?",
+              "qVi": "Tổ chức quốc tế: gồm những nội dung nào?",
+              "a": "1. WTO: Freihandel fördern\n2. ILO: Arbeitsrechte sichern\n3. UNO: Globale Zusammenarbeit",
+              "aVi": "1. WTO: thúc đẩy tự do thương mại.\n2. ILO: đảm bảo quyền lao động.\n3. LHQ: hợp tác toàn cầu.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Internationale Organisationen",
+              "qVi": "Nêu một ví dụ thực tế cho: Tổ chức quốc tế",
+              "a": "1. „WTO senkt Zölle.“\n2. „ILO schützt Kinder vor Kinderarbeit.“\n3. „UNO hilft bei Krisen weltweit.“",
+              "aVi": "1. WTO giảm thuế quan.\n2. ILO bảo vệ trẻ em khỏi lao động trẻ em.\n3. LHQ giúp đỡ trong khủng hoảng toàn cầu.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Thema 9 – Chancen und Risiken: Welche Inhalte gehören dazu?",
+              "qVi": "Cơ hội & rủi ro: gồm những nội dung nào?",
+              "a": "1. Neue Märkte erschließen\n2. Konkurrenz steigt\n3. Abhängigkeit von anderen Ländern",
+              "aVi": "1. Mở ra thị trường mới.\n2. Cạnh tranh tăng.\n3. Phụ thuộc vào quốc gia khác.",
+              "why": "Điểm Theorie trong bảng tổng hợp WiSo (mỗi Punkt có 3 nội dung).",
+              "src": "Fach Wiso (Theorie)"
+            },
+            {
+              "q": "Nenne ein praktisches Beispiel zu: Chancen und Risiken",
+              "qVi": "Nêu một ví dụ thực tế cho: Cơ hội & rủi ro",
+              "a": "1. „Subway expandiert nach Asien.“\n2. „Mehr Konkurrenz durch internationale Ketten.“\n3. „Lieferprobleme bei Importwaren.“",
+              "aVi": "1. Subway mở rộng sang châu Á.\n2. Cạnh tranh tăng do chuỗi quốc tế.\n3. Gặp vấn đề cung ứng khi nhập khẩu.",
+              "why": "Ví dụ giúp trả lời câu hỏi tình huống trong thi WiSo.",
+              "src": "Fach Wiso (Theorie)"
+            }
+          ],
+          "vokabeln": [
+            {
+              "de": "Globalisierung",
+              "vi": "Toàn cầu hóa"
+            },
+            {
+              "de": "Außenhandel",
+              "vi": "Ngoại thương"
+            },
+            {
+              "de": "Europäische Union (EU)",
+              "vi": "Liên minh châu Âu"
+            },
+            {
+              "de": "Internationale Organisationen",
+              "vi": "Tổ chức quốc tế"
+            },
+            {
+              "de": "Chancen und Risiken",
+              "vi": "Cơ hội & rủi ro"
+            }
+          ]
+        }
+      ]
     }
   ],
   "quiz": [
@@ -5417,7 +6423,97 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
       ],
       "a": 1,
       "ex": "Angebot und Annahme."
-    }
+    },
+    {"theme": "wiso-thema-1", "cat": "WiSo Theorie", "q": "Thema 1 – Welcher Merksatz gehört zu „Aufgaben des Ausbildungsbetriebs“?", "opts": ["Zusammenarbeit ist Schlüssel zum Erfolg.", "Der Ausbildungsbetrieb vermittelt Theorie und Praxis.", "Dokumentation ist Pflicht.", "Motivation entsteht am ersten Tag."], "a": 1, "ex": "Der Ausbildungsbetrieb vermittelt Theorie und Praxis. – Doanh nghiệp đào tạo truyền đạt cả lý thuyết và thực hành."},
+    {"theme": "wiso-thema-1", "cat": "WiSo Theorie", "q": "Thema 1 – Welcher Merksatz gehört zu „Rechte und Pflichten der Auszubildenden“?", "opts": ["Dokumentation ist Pflicht.", "Zusammenarbeit ist Schlüssel zum Erfolg.", "Azubis haben Rechte und Pflichten.", "Ausbilder haben Fürsorge- und Ausbildungspflicht."], "a": 2, "ex": "Azubis haben Rechte und Pflichten. – Học viên có cả quyền và nghĩa vụ."},
+    {"theme": "wiso-thema-1", "cat": "WiSo Theorie", "q": "Thema 1 – Welcher Merksatz gehört zu „Rechte und Pflichten der Ausbilder“?", "opts": ["Der Ausbildungsbetrieb vermittelt Theorie und Praxis.", "Organisation im Betrieb schafft Klarheit.", "Azubis haben Rechte und Pflichten.", "Ausbilder haben Fürsorge- und Ausbildungspflicht."], "a": 3, "ex": "Ausbilder haben Fürsorge- und Ausbildungspflicht. – Người đào tạo có nghĩa vụ chăm lo và giảng dạy."},
+    {"theme": "wiso-thema-1", "cat": "WiSo Theorie", "q": "Thema 1 – Welcher Merksatz gehört zu „Organisation und Struktur des Betriebs“?", "opts": ["Zusammenarbeit ist Schlüssel zum Erfolg.", "Azubis haben Rechte und Pflichten.", "Dokumentation ist Pflicht.", "Organisation im Betrieb schafft Klarheit."], "a": 3, "ex": "Organisation im Betrieb schafft Klarheit. – Tổ chức trong doanh nghiệp tạo sự rõ ràng."},
+    {"theme": "wiso-thema-1", "cat": "WiSo Theorie", "q": "Thema 1 – Welcher Merksatz gehört zu „Zusammenarbeit im Betrieb“?", "opts": ["Azubis haben Rechte und Pflichten.", "Zusammenarbeit ist Schlüssel zum Erfolg.", "Motivation entsteht am ersten Tag.", "Der Ausbildungsbetrieb vermittelt Theorie und Praxis."], "a": 1, "ex": "Zusammenarbeit ist Schlüssel zum Erfolg. – Hợp tác là chìa khóa thành công."},
+    {"theme": "wiso-thema-1", "cat": "WiSo Beispiel", "q": "Thema 1 – Zu welchem Punkt passt das Beispiel: „Azubi lernt Hygienevorschriften.“?", "opts": ["Organisation und Struktur des Betriebs", "Aufgaben des Ausbildungsbetriebs", "Rechte und Pflichten der Ausbilder", "Zusammenarbeit im Betrieb"], "a": 1, "ex": "Aufgaben des Ausbildungsbetriebs (Nhiệm vụ của doanh nghiệp đào tạo)"},
+    {"theme": "wiso-thema-1", "cat": "WiSo Beispiel", "q": "Thema 1 – Zu welchem Punkt passt das Beispiel: „Azubi bekommt Ausbildungsplan.“?", "opts": ["Aufgaben des Ausbildungsbetriebs", "Rechte und Pflichten der Ausbilder", "Organisation und Struktur des Betriebs", "Rechte und Pflichten der Auszubildenden"], "a": 3, "ex": "Rechte und Pflichten der Auszubildenden (Quyền & nghĩa vụ của học viên)"},
+    {"theme": "wiso-thema-1", "cat": "WiSo Beispiel", "q": "Thema 1 – Zu welchem Punkt passt das Beispiel: „Azubi respektiert Anweisungen des Ausbilders.“?", "opts": ["Aufgaben des Ausbildungsbetriebs", "Rechte und Pflichten der Ausbilder", "Zusammenarbeit im Betrieb", "Organisation und Struktur des Betriebs"], "a": 1, "ex": "Rechte und Pflichten der Ausbilder (Quyền & nghĩa vụ của người đào tạo)"},
+    {"theme": "wiso-thema-1", "cat": "WiSo Beispiel", "q": "Thema 1 – Zu welchem Punkt passt das Beispiel: „Filialleiter über Teamleiter → Mitarbeiter.“?", "opts": ["Aufgaben des Ausbildungsbetriebs", "Zusammenarbeit im Betrieb", "Rechte und Pflichten der Ausbilder", "Organisation und Struktur des Betriebs"], "a": 3, "ex": "Organisation und Struktur des Betriebs (Cấu trúc & tổ chức doanh nghiệp)"},
+    {"theme": "wiso-thema-1", "cat": "WiSo Beispiel", "q": "Thema 1 – Zu welchem Punkt passt das Beispiel: „Azubi hilft Kollegen im Stoßgeschäft.“?", "opts": ["Rechte und Pflichten der Ausbilder", "Aufgaben des Ausbildungsbetriebs", "Rechte und Pflichten der Auszubildenden", "Zusammenarbeit im Betrieb"], "a": 3, "ex": "Zusammenarbeit im Betrieb (Hợp tác trong doanh nghiệp)"},
+    {"theme": "wiso-thema-2", "cat": "WiSo Theorie", "q": "Thema 2 – Welcher Merksatz gehört zu „Inhalte des Ausbildungsvertrags“?", "opts": ["Der Ausbildungsvertrag ist die Grundlage.", "Rechte und Pflichten beider Seiten müssen im Gleichgewicht sein.", "Arbeitszeit ist gesetzlich geregelt.", "Dauer der Ausbildung kann variieren."], "a": 0, "ex": "Der Ausbildungsvertrag ist die Grundlage. – Hợp đồng đào tạo là nền tảng."},
+    {"theme": "wiso-thema-2", "cat": "WiSo Theorie", "q": "Thema 2 – Welcher Merksatz gehört zu „Dauer der Ausbildung“?", "opts": ["Arbeitszeit ist gesetzlich geregelt.", "Dauer der Ausbildung kann variieren.", "Probezeit ist entscheidend.", "Der Ausbildungsvertrag ist die Grundlage."], "a": 1, "ex": "Dauer der Ausbildung kann variieren. – Thời gian đào tạo có thể thay đổi."},
+    {"theme": "wiso-thema-2", "cat": "WiSo Theorie", "q": "Thema 2 – Welcher Merksatz gehört zu „Arbeitszeitregelungen“?", "opts": ["Vergütung und Urlaub sind Rechte des Azubis.", "Rechte und Pflichten beider Seiten müssen im Gleichgewicht sein.", "Arbeitszeit ist gesetzlich geregelt.", "Der Ausbildungsvertrag ist die Grundlage."], "a": 2, "ex": "Arbeitszeit ist gesetzlich geregelt. – Giờ làm việc được quy định bởi luật."},
+    {"theme": "wiso-thema-2", "cat": "WiSo Theorie", "q": "Thema 2 – Welcher Merksatz gehört zu „Vergütung und Urlaub“?", "opts": ["Kündigung nach Probezeit nur mit Gründen.", "Der Ausbildungsvertrag ist die Grundlage.", "Dauer der Ausbildung kann variieren.", "Vergütung und Urlaub sind Rechte des Azubis."], "a": 3, "ex": "Vergütung und Urlaub sind Rechte des Azubis. – Lương & ngày nghỉ là quyền của học viên."},
+    {"theme": "wiso-thema-2", "cat": "WiSo Theorie", "q": "Thema 2 – Welcher Merksatz gehört zu „Beendigung und Kündigung“?", "opts": ["Dauer der Ausbildung kann variieren.", "Probezeit ist entscheidend.", "Kündigung nach Probezeit nur mit Gründen.", "Rechte und Pflichten beider Seiten müssen im Gleichgewicht sein."], "a": 1, "ex": "Probezeit ist entscheidend. – Thời gian thử việc rất quan trọng."},
+    {"theme": "wiso-thema-2", "cat": "WiSo Beispiel", "q": "Thema 2 – Zu welchem Punkt passt das Beispiel: „Vertrag zwischen Azubi und Betrieb.“?", "opts": ["Vergütung und Urlaub", "Beendigung und Kündigung", "Arbeitszeitregelungen", "Inhalte des Ausbildungsvertrags"], "a": 3, "ex": "Inhalte des Ausbildungsvertrags (Nội dung hợp đồng đào tạo)"},
+    {"theme": "wiso-thema-2", "cat": "WiSo Beispiel", "q": "Thema 2 – Zu welchem Punkt passt das Beispiel: „Systemgastronomie = 2 Jahre.“?", "opts": ["Arbeitszeitregelungen", "Beendigung und Kündigung", "Dauer der Ausbildung", "Inhalte des Ausbildungsvertrags"], "a": 2, "ex": "Dauer der Ausbildung (Thời gian đào tạo)"},
+    {"theme": "wiso-thema-2", "cat": "WiSo Beispiel", "q": "Thema 2 – Zu welchem Punkt passt das Beispiel: „Azubi unter 18: max. 40 Std./Woche.“?", "opts": ["Dauer der Ausbildung", "Beendigung und Kündigung", "Inhalte des Ausbildungsvertrags", "Arbeitszeitregelungen"], "a": 3, "ex": "Arbeitszeitregelungen (Quy định giờ làm việc)"},
+    {"theme": "wiso-thema-2", "cat": "WiSo Beispiel", "q": "Thema 2 – Zu welchem Punkt passt das Beispiel: „Azubi erhält 800 €/Monat.“?", "opts": ["Vergütung und Urlaub", "Inhalte des Ausbildungsvertrags", "Beendigung und Kündigung", "Dauer der Ausbildung"], "a": 0, "ex": "Vergütung und Urlaub (Lương & ngày nghỉ)"},
+    {"theme": "wiso-thema-2", "cat": "WiSo Beispiel", "q": "Thema 2 – Zu welchem Punkt passt das Beispiel: „Vertrag endet nach Abschlussprüfung.“?", "opts": ["Arbeitszeitregelungen", "Beendigung und Kündigung", "Vergütung und Urlaub", "Inhalte des Ausbildungsvertrags"], "a": 1, "ex": "Beendigung und Kündigung (Kết thúc & chấm dứt hợp đồng)"},
+    {"theme": "wiso-thema-3", "cat": "WiSo Theorie", "q": "Thema 3 – Welcher Merksatz gehört zu „Rechte des Betriebsrats“?", "opts": ["Der Betriebsrat ist die Stimme der Mitarbeiter.", "JAV ist speziell für Azubis wichtig.", "Mitbestimmung schützt vor Willkür.", "Alle Mitarbeiter sollten ihre Rechte kennen."], "a": 0, "ex": "Der Betriebsrat ist die Stimme der Mitarbeiter. – Hội đồng nhân viên là tiếng nói của nhân viên."},
+    {"theme": "wiso-thema-3", "cat": "WiSo Theorie", "q": "Thema 3 – Welcher Merksatz gehört zu „Aufgaben des Betriebsrats“?", "opts": ["Alle Mitarbeiter sollten ihre Rechte kennen.", "JAV ist speziell für Azubis wichtig.", "Zusammenarbeit zwischen Betriebsrat, JAV und Chef ist entscheidend.", "Arbeitszeit und Kündigung sind zentrale Mitbestimmungsrechte."], "a": 1, "ex": "JAV ist speziell für Azubis wichtig. – JAV đặc biệt quan trọng cho học viên."},
+    {"theme": "wiso-thema-3", "cat": "WiSo Theorie", "q": "Thema 3 – Welcher Merksatz gehört zu „Jugend- und Auszubildendenvertretung (JAV)“?", "opts": ["Mitbestimmung schützt vor Willkür.", "Arbeitszeit und Kündigung sind zentrale Mitbestimmungsrechte.", "JAV ist speziell für Azubis wichtig.", "Mitbestimmung fördert Motivation und Fairness."], "a": 1, "ex": "Arbeitszeit und Kündigung sind zentrale Mitbestimmungsrechte. – Giờ làm và chấm dứt hợp đồng là quyền tham gia quan trọng nhất."},
+    {"theme": "wiso-thema-3", "cat": "WiSo Theorie", "q": "Thema 3 – Welcher Merksatz gehört zu „Mitbestimmung bei Arbeitszeit“?", "opts": ["Mitbestimmung schützt vor Willkür.", "Alle Mitarbeiter sollten ihre Rechte kennen.", "JAV ist speziell für Azubis wichtig.", "Mitbestimmung fördert Motivation und Fairness."], "a": 0, "ex": "Mitbestimmung schützt vor Willkür. – Tham gia quyết định giúp chống lại sự tùy tiện."},
+    {"theme": "wiso-thema-3", "cat": "WiSo Theorie", "q": "Thema 3 – Welcher Merksatz gehört zu „Mitbestimmung bei Kündigung“?", "opts": ["Mitbestimmung schützt vor Willkür.", "Alle Mitarbeiter sollten ihre Rechte kennen.", "Zusammenarbeit zwischen Betriebsrat, JAV und Chef ist entscheidend.", "Der Betriebsrat ist die Stimme der Mitarbeiter."], "a": 2, "ex": "Zusammenarbeit zwischen Betriebsrat, JAV und Chef ist entscheidend. – Sự phối hợp giữa hội đồng, JAV và sếp là yếu tố then chốt."},
+    {"theme": "wiso-thema-3", "cat": "WiSo Beispiel", "q": "Thema 3 – Zu welchem Punkt passt das Beispiel: „Betriebsrat stimmt Dienstplanänderung zu.“?", "opts": ["Rechte des Betriebsrats", "Jugend- und Auszubildendenvertretung (JAV)", "Mitbestimmung bei Kündigung", "Aufgaben des Betriebsrats"], "a": 0, "ex": "Rechte des Betriebsrats (Quyền của hội đồng nhân viên)"},
+    {"theme": "wiso-thema-3", "cat": "WiSo Beispiel", "q": "Thema 3 – Zu welchem Punkt passt das Beispiel: „Betriebsrat fordert bessere Pausenregelung.“?", "opts": ["Mitbestimmung bei Arbeitszeit", "Aufgaben des Betriebsrats", "Mitbestimmung bei Kündigung", "Jugend- und Auszubildendenvertretung (JAV)"], "a": 1, "ex": "Aufgaben des Betriebsrats (Nhiệm vụ của hội đồng nhân viên)"},
+    {"theme": "wiso-thema-3", "cat": "WiSo Beispiel", "q": "Thema 3 – Zu welchem Punkt passt das Beispiel: „JAV kümmert sich um Azubi-Anliegen.“?", "opts": ["Rechte des Betriebsrats", "Jugend- und Auszubildendenvertretung (JAV)", "Mitbestimmung bei Kündigung", "Mitbestimmung bei Arbeitszeit"], "a": 1, "ex": "Jugend- und Auszubildendenvertretung (JAV) (Đại diện học viên & thanh niên)"},
+    {"theme": "wiso-thema-3", "cat": "WiSo Beispiel", "q": "Thema 3 – Zu welchem Punkt passt das Beispiel: „Betriebsrat stimmt Schichtsystem zu.“?", "opts": ["Rechte des Betriebsrats", "Jugend- und Auszubildendenvertretung (JAV)", "Mitbestimmung bei Kündigung", "Mitbestimmung bei Arbeitszeit"], "a": 3, "ex": "Mitbestimmung bei Arbeitszeit (Tham gia quyết định giờ làm)"},
+    {"theme": "wiso-thema-3", "cat": "WiSo Beispiel", "q": "Thema 3 – Zu welchem Punkt passt das Beispiel: „Kündigung ohne Betriebsrat nicht gültig.“?", "opts": ["Mitbestimmung bei Arbeitszeit", "Aufgaben des Betriebsrats", "Rechte des Betriebsrats", "Mitbestimmung bei Kündigung"], "a": 3, "ex": "Mitbestimmung bei Kündigung (Tham gia quyết định chấm dứt hợp đồng)"},
+    {"theme": "wiso-thema-4", "cat": "WiSo Theorie", "q": "Thema 4 – Welcher Merksatz gehört zu „Wandel durch Digitalisierung“?", "opts": ["Anpassungsfähigkeit entscheidet über Erfolg.", "Flexibilität ist Voraussetzung auf dem Arbeitsmarkt.", "Fachkräftemangel ist eine große Herausforderung.", "Digitalisierung verändert alle Berufe."], "a": 3, "ex": "Digitalisierung verändert alle Berufe. – Số hóa thay đổi mọi ngành nghề."},
+    {"theme": "wiso-thema-4", "cat": "WiSo Theorie", "q": "Thema 4 – Welcher Merksatz gehört zu „Strukturwandel in der Gastronomie“?", "opts": ["Fachkräftemangel ist eine große Herausforderung.", "Lebenslanges Lernen ist Pflicht, nicht Wahl.", "Flexibilität ist Voraussetzung auf dem Arbeitsmarkt.", "Strukturwandel betrifft Gastronomie stark."], "a": 3, "ex": "Strukturwandel betrifft Gastronomie stark. – Ngành ẩm thực chịu tác động lớn của chuyển đổi."},
+    {"theme": "wiso-thema-4", "cat": "WiSo Theorie", "q": "Thema 4 – Welcher Merksatz gehört zu „Arbeitsmarkt und Berufe“?", "opts": ["Fachkräftemangel ist eine große Herausforderung.", "Digitalisierung verändert alle Berufe.", "Anpassungsfähigkeit entscheidet über Erfolg.", "Flexibilität ist Voraussetzung auf dem Arbeitsmarkt."], "a": 3, "ex": "Flexibilität ist Voraussetzung auf dem Arbeitsmarkt. – Linh hoạt là điều kiện tiên quyết trên thị trường lao động."},
+    {"theme": "wiso-thema-4", "cat": "WiSo Theorie", "q": "Thema 4 – Welcher Merksatz gehört zu „Fachkräftemangel“?", "opts": ["Lebenslanges Lernen ist Pflicht, nicht Wahl.", "Flexibilität ist Voraussetzung auf dem Arbeitsmarkt.", "Fachkräftemangel ist eine große Herausforderung.", "Digitalisierung verändert alle Berufe."], "a": 2, "ex": "Fachkräftemangel ist eine große Herausforderung. – Thiếu hụt lao động có tay nghề là thách thức lớn."},
+    {"theme": "wiso-thema-4", "cat": "WiSo Theorie", "q": "Thema 4 – Welcher Merksatz gehört zu „Lebenslanges Lernen“?", "opts": ["Digitalisierung verändert alle Berufe.", "Flexibilität ist Voraussetzung auf dem Arbeitsmarkt.", "Fachkräftemangel ist eine große Herausforderung.", "Lebenslanges Lernen ist Pflicht, nicht Wahl."], "a": 3, "ex": "Lebenslanges Lernen ist Pflicht, nicht Wahl. – Học tập suốt đời là bắt buộc, không phải tùy chọn."},
+    {"theme": "wiso-thema-4", "cat": "WiSo Beispiel", "q": "Thema 4 – Zu welchem Punkt passt das Beispiel: „Bestellungen per Tablet aufnehmen.“?", "opts": ["Arbeitsmarkt und Berufe", "Fachkräftemangel", "Wandel durch Digitalisierung", "Strukturwandel in der Gastronomie"], "a": 2, "ex": "Wandel durch Digitalisierung (Thay đổi do số hóa)"},
+    {"theme": "wiso-thema-4", "cat": "WiSo Beispiel", "q": "Thema 4 – Zu welchem Punkt passt das Beispiel: „Subway expandiert in vielen Städten.“?", "opts": ["Arbeitsmarkt und Berufe", "Strukturwandel in der Gastronomie", "Wandel durch Digitalisierung", "Lebenslanges Lernen"], "a": 1, "ex": "Strukturwandel in der Gastronomie (Chuyển đổi trong ngành ẩm thực)"},
+    {"theme": "wiso-thema-4", "cat": "WiSo Beispiel", "q": "Thema 4 – Zu welchem Punkt passt das Beispiel: „Job: Fachkraft für Systemgastronomie.“?", "opts": ["Fachkräftemangel", "Lebenslanges Lernen", "Wandel durch Digitalisierung", "Arbeitsmarkt und Berufe"], "a": 3, "ex": "Arbeitsmarkt und Berufe (Thị trường lao động & nghề nghiệp)"},
+    {"theme": "wiso-thema-4", "cat": "WiSo Beispiel", "q": "Thema 4 – Zu welchem Punkt passt das Beispiel: „Viele verlassen Gastronomie wegen Arbeitszeiten.“?", "opts": ["Strukturwandel in der Gastronomie", "Fachkräftemangel", "Arbeitsmarkt und Berufe", "Lebenslanges Lernen"], "a": 1, "ex": "Fachkräftemangel (Thiếu hụt lao động có tay nghề)"},
+    {"theme": "wiso-thema-4", "cat": "WiSo Beispiel", "q": "Thema 4 – Zu welchem Punkt passt das Beispiel: „Kurs über neue Kassensysteme.“?", "opts": ["Wandel durch Digitalisierung", "Strukturwandel in der Gastronomie", "Lebenslanges Lernen", "Fachkräftemangel"], "a": 2, "ex": "Lebenslanges Lernen (Học tập suốt đời)"},
+    {"theme": "wiso-thema-5", "cat": "WiSo Theorie", "q": "Thema 5 – Welcher Merksatz gehört zu „Krankenversicherung“?", "opts": ["Jede Versicherung schützt vor speziellen Risiken.", "Sozialversicherung besteht aus 5 Säulen.", "Kenntnisse der Sozialversicherung sind prüfungsrelevant.", "Ohne Versicherung → keine finanzielle Sicherheit."], "a": 1, "ex": "Sozialversicherung besteht aus 5 Säulen. – Bảo hiểm xã hội có 5 trụ cột."},
+    {"theme": "wiso-thema-5", "cat": "WiSo Theorie", "q": "Thema 5 – Welcher Merksatz gehört zu „Rentenversicherung“?", "opts": ["Beiträge werden automatisch vom Lohn abgezogen.", "Jede Versicherung schützt vor speziellen Risiken.", "Kenntnisse der Sozialversicherung sind prüfungsrelevant.", "Versicherung ist Pflicht für alle Arbeitnehmer."], "a": 1, "ex": "Jede Versicherung schützt vor speziellen Risiken. – Mỗi loại bảo hiểm bảo vệ trước một rủi ro riêng."},
+    {"theme": "wiso-thema-5", "cat": "WiSo Theorie", "q": "Thema 5 – Welcher Merksatz gehört zu „Arbeitslosenversicherung“?", "opts": ["Beiträge werden automatisch vom Lohn abgezogen.", "Ohne Versicherung → keine finanzielle Sicherheit.", "Arbeitgeber und Arbeitnehmer teilen Beiträge.", "Versicherung ist Pflicht für alle Arbeitnehmer."], "a": 0, "ex": "Beiträge werden automatisch vom Lohn abgezogen. – Khoản đóng được tự động trừ từ lương."},
+    {"theme": "wiso-thema-5", "cat": "WiSo Theorie", "q": "Thema 5 – Welcher Merksatz gehört zu „Pflegeversicherung“?", "opts": ["Kenntnisse der Sozialversicherung sind prüfungsrelevant.", "Beiträge werden automatisch vom Lohn abgezogen.", "Versicherung ist Pflicht für alle Arbeitnehmer.", "Jede Versicherung schützt vor speziellen Risiken."], "a": 2, "ex": "Versicherung ist Pflicht für alle Arbeitnehmer. – Bảo hiểm là bắt buộc cho mọi người lao động."},
+    {"theme": "wiso-thema-5", "cat": "WiSo Theorie", "q": "Thema 5 – Welcher Merksatz gehört zu „Unfallversicherung“?", "opts": ["Beiträge werden automatisch vom Lohn abgezogen.", "Jede Versicherung schützt vor speziellen Risiken.", "Ohne Versicherung → keine finanzielle Sicherheit.", "Versicherung ist Pflicht für alle Arbeitnehmer."], "a": 2, "ex": "Ohne Versicherung → keine finanzielle Sicherheit. – Không có bảo hiểm → không có an toàn tài chính."},
+    {"theme": "wiso-thema-5", "cat": "WiSo Beispiel", "q": "Thema 5 – Zu welchem Punkt passt das Beispiel: „Azubi geht zum Arzt, Krankenkasse zahlt.“?", "opts": ["Arbeitslosenversicherung", "Rentenversicherung", "Unfallversicherung", "Krankenversicherung"], "a": 3, "ex": "Krankenversicherung (Bảo hiểm y tế)"},
+    {"theme": "wiso-thema-5", "cat": "WiSo Beispiel", "q": "Thema 5 – Zu welchem Punkt passt das Beispiel: „Monatlich wird Beitrag vom Lohn abgezogen.“?", "opts": ["Pflegeversicherung", "Krankenversicherung", "Rentenversicherung", "Arbeitslosenversicherung"], "a": 2, "ex": "Rentenversicherung (Bảo hiểm hưu trí)"},
+    {"theme": "wiso-thema-5", "cat": "WiSo Beispiel", "q": "Thema 5 – Zu welchem Punkt passt das Beispiel: „Mitarbeiter verliert Job → ALG I.“?", "opts": ["Arbeitslosenversicherung", "Unfallversicherung", "Rentenversicherung", "Pflegeversicherung"], "a": 0, "ex": "Arbeitslosenversicherung (Bảo hiểm thất nghiệp)"},
+    {"theme": "wiso-thema-5", "cat": "WiSo Beispiel", "q": "Thema 5 – Zu welchem Punkt passt das Beispiel: „Alter Mensch bekommt Pflegegeld.“?", "opts": ["Arbeitslosenversicherung", "Pflegeversicherung", "Unfallversicherung", "Krankenversicherung"], "a": 1, "ex": "Pflegeversicherung (Bảo hiểm chăm sóc)"},
+    {"theme": "wiso-thema-5", "cat": "WiSo Beispiel", "q": "Thema 5 – Zu welchem Punkt passt das Beispiel: „Azubi verletzt sich in Küche, Versicherung zahlt.“?", "opts": ["Arbeitslosenversicherung", "Unfallversicherung", "Rentenversicherung", "Pflegeversicherung"], "a": 1, "ex": "Unfallversicherung (Bảo hiểm tai nạn)"},
+    {"theme": "wiso-thema-6", "cat": "WiSo Theorie", "q": "Thema 6 – Welcher Merksatz gehört zu „Private Vorsorge“?", "opts": ["Sozial- und Lebensplanung gehört ins Prüfungsthema.", "Weiterbildung erhöht Karrierechancen.", "Soziale Sicherung ist mehr als Pflichtversicherung.", "Work-Life-Balance ist Voraussetzung für Gesundheit."], "a": 2, "ex": "Soziale Sicherung ist mehr als Pflichtversicherung. – An sinh xã hội không chỉ là bảo hiểm bắt buộc."},
+    {"theme": "wiso-thema-6", "cat": "WiSo Theorie", "q": "Thema 6 – Welcher Merksatz gehört zu „Betriebliche Altersvorsorge“?", "opts": ["Klare Karriereplanung motiviert.", "Arbeitgeber profitieren von motivierten Mitarbeitern.", "Weiterbildung erhöht Karrierechancen.", "Betriebliche Altersvorsorge lohnt sich langfristig."], "a": 3, "ex": "Betriebliche Altersvorsorge lohnt sich langfristig. – Lương hưu doanh nghiệp có lợi về lâu dài."},
+    {"theme": "wiso-thema-6", "cat": "WiSo Theorie", "q": "Thema 6 – Welcher Merksatz gehört zu „Weiterbildung“?", "opts": ["Work-Life-Balance ist Voraussetzung für Gesundheit.", "Klare Karriereplanung motiviert.", "Soziale Sicherung ist mehr als Pflichtversicherung.", "Weiterbildung erhöht Karrierechancen."], "a": 3, "ex": "Weiterbildung erhöht Karrierechancen. – Đào tạo nâng cao giúp tăng cơ hội nghề nghiệp."},
+    {"theme": "wiso-thema-6", "cat": "WiSo Theorie", "q": "Thema 6 – Welcher Merksatz gehört zu „Karriereplanung“?", "opts": ["Weiterbildung erhöht Karrierechancen.", "Klare Karriereplanung motiviert.", "Work-Life-Balance ist Voraussetzung für Gesundheit.", "Betriebliche Altersvorsorge lohnt sich langfristig."], "a": 1, "ex": "Klare Karriereplanung motiviert. – Lập kế hoạch nghề nghiệp rõ ràng tạo động lực."},
+    {"theme": "wiso-thema-6", "cat": "WiSo Theorie", "q": "Thema 6 – Welcher Merksatz gehört zu „Work-Life-Balance“?", "opts": ["Arbeitgeber profitieren von motivierten Mitarbeitern.", "Soziale Sicherung ist mehr als Pflichtversicherung.", "Work-Life-Balance ist Voraussetzung für Gesundheit.", "Klare Karriereplanung motiviert."], "a": 2, "ex": "Work-Life-Balance ist Voraussetzung für Gesundheit. – Cân bằng công việc & cuộc sống là điều kiện để khỏe mạnh."},
+    {"theme": "wiso-thema-6", "cat": "WiSo Beispiel", "q": "Thema 6 – Zu welchem Punkt passt das Beispiel: „Azubi schließt Zahnzusatzversicherung ab.“?", "opts": ["Karriereplanung", "Private Vorsorge", "Work-Life-Balance", "Betriebliche Altersvorsorge"], "a": 1, "ex": "Private Vorsorge (Dự phòng cá nhân)"},
+    {"theme": "wiso-thema-6", "cat": "WiSo Beispiel", "q": "Thema 6 – Zu welchem Punkt passt das Beispiel: „Firma zahlt in Rentenkasse ein.“?", "opts": ["Betriebliche Altersvorsorge", "Weiterbildung", "Karriereplanung", "Private Vorsorge"], "a": 0, "ex": "Betriebliche Altersvorsorge (Lương hưu doanh nghiệp)"},
+    {"theme": "wiso-thema-6", "cat": "WiSo Beispiel", "q": "Thema 6 – Zu welchem Punkt passt das Beispiel: „Azubi besucht Hygiene-Seminar.“?", "opts": ["Weiterbildung", "Betriebliche Altersvorsorge", "Karriereplanung", "Private Vorsorge"], "a": 0, "ex": "Weiterbildung (Đào tạo nâng cao)"},
+    {"theme": "wiso-thema-6", "cat": "WiSo Beispiel", "q": "Thema 6 – Zu welchem Punkt passt das Beispiel: „Azubi möchte später Filialleiter werden.“?", "opts": ["Work-Life-Balance", "Private Vorsorge", "Betriebliche Altersvorsorge", "Karriereplanung"], "a": 3, "ex": "Karriereplanung (Lập kế hoạch nghề nghiệp)"},
+    {"theme": "wiso-thema-6", "cat": "WiSo Beispiel", "q": "Thema 6 – Zu welchem Punkt passt das Beispiel: „Mitarbeiter treibt regelmäßig Sport.“?", "opts": ["Karriereplanung", "Private Vorsorge", "Betriebliche Altersvorsorge", "Work-Life-Balance"], "a": 3, "ex": "Work-Life-Balance (Cân bằng công việc & cuộc sống)"},
+    {"theme": "wiso-thema-7", "cat": "WiSo Theorie", "q": "Thema 7 – Welcher Merksatz gehört zu „Rechte der Verbraucher“?", "opts": ["Unternehmen haben Informationspflicht.", "Produkthaftung schützt den Kunden.", "Thema oft in Prüfungen: Vertragsrecht + Verbraucherrechte.", "Verbraucherrechte sichern Fairness."], "a": 3, "ex": "Verbraucherrechte sichern Fairness. – Quyền người tiêu dùng đảm bảo công bằng."},
+    {"theme": "wiso-thema-7", "cat": "WiSo Theorie", "q": "Thema 7 – Welcher Merksatz gehört zu „Pflichten der Unternehmen“?", "opts": ["Werbung darf nicht täuschen.", "Unternehmen haben Informationspflicht.", "Produkthaftung schützt den Kunden.", "Jugendschutz ist zwingend einzuhalten."], "a": 1, "ex": "Unternehmen haben Informationspflicht. – Doanh nghiệp có nghĩa vụ cung cấp thông tin."},
+    {"theme": "wiso-thema-7", "cat": "WiSo Theorie", "q": "Thema 7 – Welcher Merksatz gehört zu „Vertragsabschluss“?", "opts": ["Verbraucherrechte sichern Fairness.", "Unternehmen haben Informationspflicht.", "Werbung darf nicht täuschen.", "Vertragsabschluss ist alltäglich."], "a": 3, "ex": "Vertragsabschluss ist alltäglich. – Ký kết hợp đồng diễn ra hằng ngày."},
+    {"theme": "wiso-thema-7", "cat": "WiSo Theorie", "q": "Thema 7 – Welcher Merksatz gehört zu „Produkthaftung“?", "opts": ["Produkthaftung schützt den Kunden.", "Werbung darf nicht täuschen.", "Unternehmen haben Informationspflicht.", "Thema oft in Prüfungen: Vertragsrecht + Verbraucherrechte."], "a": 0, "ex": "Produkthaftung schützt den Kunden. – Trách nhiệm sản phẩm bảo vệ khách hàng."},
+    {"theme": "wiso-thema-7", "cat": "WiSo Theorie", "q": "Thema 7 – Welcher Merksatz gehört zu „Werbung und Marketing“?", "opts": ["Werbung darf nicht täuschen.", "Jugendschutz ist zwingend einzuhalten.", "Verbraucherrechte sichern Fairness.", "Produkthaftung schützt den Kunden."], "a": 0, "ex": "Werbung darf nicht täuschen. – Quảng cáo không được lừa dối."},
+    {"theme": "wiso-thema-7", "cat": "WiSo Beispiel", "q": "Thema 7 – Zu welchem Punkt passt das Beispiel: „Kunde kann Online-Bestellung innerhalb 14 Tage stornieren.“?", "opts": ["Rechte der Verbraucher", "Vertragsabschluss", "Werbung und Marketing", "Produkthaftung"], "a": 0, "ex": "Rechte der Verbraucher (Quyền của người tiêu dùng)"},
+    {"theme": "wiso-thema-7", "cat": "WiSo Beispiel", "q": "Thema 7 – Zu welchem Punkt passt das Beispiel: „Subway informiert über Allergene.“?", "opts": ["Pflichten der Unternehmen", "Vertragsabschluss", "Rechte der Verbraucher", "Werbung und Marketing"], "a": 0, "ex": "Pflichten der Unternehmen (Nghĩa vụ của doanh nghiệp)"},
+    {"theme": "wiso-thema-7", "cat": "WiSo Beispiel", "q": "Thema 7 – Zu welchem Punkt passt das Beispiel: „Kunde bestellt Menü = Angebot angenommen.“?", "opts": ["Rechte der Verbraucher", "Pflichten der Unternehmen", "Werbung und Marketing", "Vertragsabschluss"], "a": 3, "ex": "Vertragsabschluss (Ký kết hợp đồng)"},
+    {"theme": "wiso-thema-7", "cat": "WiSo Beispiel", "q": "Thema 7 – Zu welchem Punkt passt das Beispiel: „Kunde erkrankt wegen verdorbenem Essen.“?", "opts": ["Rechte der Verbraucher", "Produkthaftung", "Vertragsabschluss", "Werbung und Marketing"], "a": 1, "ex": "Produkthaftung (Trách nhiệm sản phẩm)"},
+    {"theme": "wiso-thema-7", "cat": "WiSo Beispiel", "q": "Thema 7 – Zu welchem Punkt passt das Beispiel: „Aktion: 2 Sandwiches zum Preis von 1.“?", "opts": ["Vertragsabschluss", "Produkthaftung", "Rechte der Verbraucher", "Werbung und Marketing"], "a": 3, "ex": "Werbung und Marketing (Quảng cáo & tiếp thị)"},
+    {"theme": "wiso-thema-8", "cat": "WiSo Theorie", "q": "Thema 8 – Welcher Merksatz gehört zu „Rechtsfähigkeit“?", "opts": ["Rechtsfähigkeit hat jeder Mensch.", "Praxis: Arbeitsverträge, Kaufverträge, Lieferverträge.", "Anfechtung schützt vor Fehlern und Täuschung.", "Nichtigkeit macht Vertrag von Anfang an ungültig."], "a": 0, "ex": "Rechtsfähigkeit hat jeder Mensch. – Mọi người đều có năng lực pháp luật."},
+    {"theme": "wiso-thema-8", "cat": "WiSo Theorie", "q": "Thema 8 – Welcher Merksatz gehört zu „Geschäftsfähigkeit“?", "opts": ["Geschäftsfähigkeit hängt vom Alter ab.", "Jeder Vertrag braucht Angebot + Annahme.", "Anfechtung schützt vor Fehlern und Täuschung.", "Nichtigkeit macht Vertrag von Anfang an ungültig."], "a": 0, "ex": "Geschäftsfähigkeit hängt vom Alter ab. – Năng lực hành vi phụ thuộc vào độ tuổi."},
+    {"theme": "wiso-thema-8", "cat": "WiSo Theorie", "q": "Thema 8 – Welcher Merksatz gehört zu „Vertragsschluss“?", "opts": ["Geschäftsfähigkeit hängt vom Alter ab.", "Nichtigkeit macht Vertrag von Anfang an ungültig.", "Rechtsfähigkeit hat jeder Mensch.", "Jeder Vertrag braucht Angebot + Annahme."], "a": 3, "ex": "Jeder Vertrag braucht Angebot + Annahme. – Mọi hợp đồng cần có đề nghị + chấp nhận."},
+    {"theme": "wiso-thema-8", "cat": "WiSo Theorie", "q": "Thema 8 – Welcher Merksatz gehört zu „Anfechtung“?", "opts": ["Verträge sind Prüfungsstoff Nr. 1.", "Rechtsfähigkeit hat jeder Mensch.", "Anfechtung schützt vor Fehlern und Täuschung.", "Praxis: Arbeitsverträge, Kaufverträge, Lieferverträge."], "a": 2, "ex": "Anfechtung schützt vor Fehlern und Täuschung. – Hủy hợp đồng bảo vệ khỏi sai sót & lừa dối."},
+    {"theme": "wiso-thema-8", "cat": "WiSo Theorie", "q": "Thema 8 – Welcher Merksatz gehört zu „Nichtigkeit“?", "opts": ["Verträge sind Prüfungsstoff Nr. 1.", "Rechtsfähigkeit hat jeder Mensch.", "Nichtigkeit macht Vertrag von Anfang an ungültig.", "Jeder Vertrag braucht Angebot + Annahme."], "a": 2, "ex": "Nichtigkeit macht Vertrag von Anfang an ungültig. – Vô hiệu = hợp đồng không có giá trị từ đầu."},
+    {"theme": "wiso-thema-8", "cat": "WiSo Beispiel", "q": "Thema 8 – Zu welchem Punkt passt das Beispiel: „Azubi darf Eigentum besitzen.“?", "opts": ["Geschäftsfähigkeit", "Rechtsfähigkeit", "Nichtigkeit", "Vertragsschluss"], "a": 1, "ex": "Rechtsfähigkeit (Năng lực pháp luật)"},
+    {"theme": "wiso-thema-8", "cat": "WiSo Beispiel", "q": "Thema 8 – Zu welchem Punkt passt das Beispiel: „Azubi mit 19 schließt Vertrag selbst.“?", "opts": ["Nichtigkeit", "Geschäftsfähigkeit", "Rechtsfähigkeit", "Vertragsschluss"], "a": 1, "ex": "Geschäftsfähigkeit (Năng lực hành vi dân sự)"},
+    {"theme": "wiso-thema-8", "cat": "WiSo Beispiel", "q": "Thema 8 – Zu welchem Punkt passt das Beispiel: „Kunde bestellt Menü = Angebot angenommen.“?", "opts": ["Rechtsfähigkeit", "Vertragsschluss", "Anfechtung", "Geschäftsfähigkeit"], "a": 1, "ex": "Vertragsschluss (Giao kết hợp đồng)"},
+    {"theme": "wiso-thema-8", "cat": "WiSo Beispiel", "q": "Thema 8 – Zu welchem Punkt passt das Beispiel: „Preis falsch angegeben → Vertrag anfechtbar.“?", "opts": ["Anfechtung", "Vertragsschluss", "Nichtigkeit", "Geschäftsfähigkeit"], "a": 0, "ex": "Anfechtung (Hủy bỏ hợp đồng)"},
+    {"theme": "wiso-thema-8", "cat": "WiSo Beispiel", "q": "Thema 8 – Zu welchem Punkt passt das Beispiel: „Drogenhandel-Vertrag = nichtig.“?", "opts": ["Geschäftsfähigkeit", "Rechtsfähigkeit", "Vertragsschluss", "Nichtigkeit"], "a": 3, "ex": "Nichtigkeit (Vô hiệu hợp đồng)"},
+    {"theme": "wiso-thema-9", "cat": "WiSo Theorie", "q": "Thema 9 – Welcher Merksatz gehört zu „Globalisierung“?", "opts": ["Außenhandel ist Grundlage für Wohlstand.", "EU bedeutet Freiheit und gemeinsame Regeln.", "Globalisierung betrifft alle Branchen.", "Internationale Organisationen fördern Stabilität."], "a": 2, "ex": "Globalisierung betrifft alle Branchen. – Toàn cầu hóa ảnh hưởng đến mọi ngành."},
+    {"theme": "wiso-thema-9", "cat": "WiSo Theorie", "q": "Thema 9 – Welcher Merksatz gehört zu „Außenhandel“?", "opts": ["Abhängigkeit ist gefährlich.", "Außenhandel ist Grundlage für Wohlstand.", "EU bedeutet Freiheit und gemeinsame Regeln.", "Chancen und Risiken immer abwägen."], "a": 1, "ex": "Außenhandel ist Grundlage für Wohlstand. – Ngoại thương là nền tảng cho sự thịnh vượng."},
+    {"theme": "wiso-thema-9", "cat": "WiSo Theorie", "q": "Thema 9 – Welcher Merksatz gehört zu „Europäische Union (EU)“?", "opts": ["Internationale Organisationen fördern Stabilität.", "Globalisierung betrifft alle Branchen.", "EU bedeutet Freiheit und gemeinsame Regeln.", "Außenhandel ist Grundlage für Wohlstand."], "a": 2, "ex": "EU bedeutet Freiheit und gemeinsame Regeln. – EU mang lại tự do & luật chung."},
+    {"theme": "wiso-thema-9", "cat": "WiSo Theorie", "q": "Thema 9 – Welcher Merksatz gehört zu „Internationale Organisationen“?", "opts": ["Abhängigkeit ist gefährlich.", "Außenhandel ist Grundlage für Wohlstand.", "Internationale Organisationen fördern Stabilität.", "Globalisierung betrifft alle Branchen."], "a": 2, "ex": "Internationale Organisationen fördern Stabilität. – Tổ chức quốc tế thúc đẩy ổn định."},
+    {"theme": "wiso-thema-9", "cat": "WiSo Theorie", "q": "Thema 9 – Welcher Merksatz gehört zu „Chancen und Risiken“?", "opts": ["Internationale Organisationen fördern Stabilität.", "Abhängigkeit ist gefährlich.", "Chancen und Risiken immer abwägen.", "Globalisierung betrifft alle Branchen."], "a": 2, "ex": "Chancen und Risiken immer abwägen. – Luôn cân nhắc cơ hội & rủi ro."},
+    {"theme": "wiso-thema-9", "cat": "WiSo Beispiel", "q": "Thema 9 – Zu welchem Punkt passt das Beispiel: „Subway hat Filialen weltweit.“?", "opts": ["Chancen und Risiken", "Globalisierung", "Internationale Organisationen", "Außenhandel"], "a": 1, "ex": "Globalisierung (Toàn cầu hóa)"},
+    {"theme": "wiso-thema-9", "cat": "WiSo Beispiel", "q": "Thema 9 – Zu welchem Punkt passt das Beispiel: „Deutschland exportiert Maschinen.“?", "opts": ["Chancen und Risiken", "Globalisierung", "Europäische Union (EU)", "Außenhandel"], "a": 3, "ex": "Außenhandel (Ngoại thương)"},
+    {"theme": "wiso-thema-9", "cat": "WiSo Beispiel", "q": "Thema 9 – Zu welchem Punkt passt das Beispiel: „Azubi kann in jedem EU-Land arbeiten.“?", "opts": ["Internationale Organisationen", "Europäische Union (EU)", "Chancen und Risiken", "Außenhandel"], "a": 1, "ex": "Europäische Union (EU) (Liên minh châu Âu)"},
+    {"theme": "wiso-thema-9", "cat": "WiSo Beispiel", "q": "Thema 9 – Zu welchem Punkt passt das Beispiel: „WTO senkt Zölle.“?", "opts": ["Globalisierung", "Chancen und Risiken", "Internationale Organisationen", "Europäische Union (EU)"], "a": 2, "ex": "Internationale Organisationen (Tổ chức quốc tế)"},
+    {"theme": "wiso-thema-9", "cat": "WiSo Beispiel", "q": "Thema 9 – Zu welchem Punkt passt das Beispiel: „Subway expandiert nach Asien.“?", "opts": ["Internationale Organisationen", "Außenhandel", "Chancen und Risiken", "Europäische Union (EU)"], "a": 2, "ex": "Chancen und Risiken (Cơ hội & rủi ro)"}
   ]
 },
     {

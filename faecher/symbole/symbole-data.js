@@ -706,7 +706,7 @@
     soft: "#FDF8EE",
     teacher: "Hygiene · Arbeitsschutz · Wirtschaftsdienst",
     ready: true,
-    desc: "Alle prüfungsrelevanten Symbole einzeln ausgeschnitten & erklärt: GHS-Gefahrensymbole, Entsorgung, Verbots-/Gebots-/Rettungs-/Brandschutzzeichen, Textilpflege, Servietten & Dekoration nach Jahreszeit/Anlass.",
+    desc: "Alle prüfungsrelevanten Symbole einzeln ausgeschnitten & erklärt: GHS-Gefahrensymbole, Entsorgung, Verbots-/Gebots-/Rettungs-/Brandschutzzeichen, Textilpflege, Servietten, Dekoration nach Jahreszeit/Anlass & Gläserkunde.",
     groups: [
       {
         id: "ghs-entsorgung",
@@ -1328,6 +1328,134 @@
             ]
           }
         ]
+      },
+      {
+        id: "glaeser",
+        badge: "Teil 6 · Getränke & Service",
+        title: "Gläserkunde – Weingläser, Schaumweingläser, Biergläser & Spirituosengläser",
+        items: [
+          {
+            id: "sym-glaeser",
+            icon: "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 3h10l-1 7a4 4 0 0 1-8 0L7 3z\"/><path d=\"M12 14v7\"/><path d=\"M8 21h8\"/></svg>",
+            name: "7. Gläserkunde: 17 Gläser mit Ausschankmengen",
+            desc: "Rotweinglas · Weißweinglas · Roséweinglas · Dessertweinglas · Sektflöte · Sektkelch · Sektspitz · Biertulpe · Willibecher · Weizenbierglas · Bierstange · Henkelglas · Berliner Weiße · Cognacschwenker · Likörkelch · Martiniglas · Grappaglas",
+            content: `
+<div class="note">
+  <b>Grundregel:</b> Das Glas richtet sich nach dem Getränk (Form, Größe, Temperatur, Aroma) und nach der <b>Ausschankmenge</b>. Gläser stehen am Gedeck <b>rechts oben</b>, das <b>Richtglas</b> an der Spitze des Hauptgangmessers.
+  <div class="vi">Chọn ly theo đồ uống (hình dáng, dung tích, nhiệt độ, hương) và theo <b>Ausschankmenge</b> (lượng rót). Ly đặt <b>phía trên bên phải</b> Gedeck, <b>Richtglas</b> đặt ở mũi dao món chính.</div>
+</div>
+
+<h3>A. Weingläser</h3>
+<div class="sym-grid">
+  ${symCard("./images/symbole/glas-rotwein.png", "Weinglas", "Rotweinglas", "Ly vang đỏ", "Großer, bauchiger Kelch mit weiter Öffnung: Der Rotwein kann viel Sauerstoff aufnehmen und sein Aroma (Bouquet) entfaltet sich. Beispiele: Bordeaux-Rotweinglas, Burgunder-Rotweinglas.", "Ly lớn, thân phình, miệng rộng: rượu tiếp xúc nhiều oxy nên hương (bouquet) nở ra. Ví dụ: ly Bordeaux, ly Burgunder.")}
+  ${symCard("./images/symbole/glas-weisswein.png", "Weinglas", "Weißweinglas", "Ly vang trắng", "Schlankerer, kleinerer Kelch als beim Rotwein: Hält die kühle Serviertemperatur länger und bewahrt Frische und Fruchtigkeit.", "Ly thon, nhỏ hơn ly vang đỏ: giữ độ lạnh lâu hơn và giữ được vị tươi, trái cây.")}
+  ${symCard("./images/symbole/glas-rose.png", "Weinglas", "Roséweinglas", "Ly vang hồng", "Tulpenförmiger Kelch, der leicht nach oben einzieht: Kompromiss zwischen Rot- und Weißweinglas, bündelt das Aroma.", "Ly dáng hoa tulip, miệng hơi thu lại: dung hoà giữa ly vang đỏ và vang trắng, tập trung hương thơm.")}
+  ${symCard("./images/symbole/glas-dessert.png", "Weinglas", "Dessertweinglas", "Ly vang tráng miệng", "Kleiner, schmaler Kelch für süße, intensive Weine (Dessertweine). Verwandt: Sherryglas und Südweinglas für kleine Mengen.", "Ly nhỏ, hẹp cho vang ngọt, đậm (vang tráng miệng). Họ hàng: ly Sherry và ly vang vùng Nam (Südwein) cho lượng nhỏ.")}
+</div>
+<table>
+  <tr><th>Beispiele</th><th>Ausschankmenge</th><th>Tiếng Việt</th></tr>
+  <tr><td>Bordeaux-Rotweinglas · Weißweinglas · Burgunder-Rotweinglas · Roséweinglas · Dessertweinglas · Römerglas</td><td><b>0,2 l</b> · <b>0,25 l</b></td><td>Ly vang đỏ Bordeaux / vang trắng / Burgunder / vang hồng / tráng miệng / Römer: rót 0,2 l hoặc 0,25 l.</td></tr>
+  <tr><td>Sherryglas · Südweinglas</td><td><b>5 cl</b></td><td>Ly Sherry / ly vang vùng Nam: rót 5 cl.</td></tr>
+</table>
+
+<h3>B. Schaumweingläser</h3>
+<div class="sym-grid">
+  ${symCard("./images/symbole/glas-sektfloete.png", "Schaumweinglas", "Sektflöte", "Ly sâm panh dạng sáo", "Hoher, schmaler Kelch: Die Kohlensäure steigt lange in feinen Perlen auf, das Prickeln bleibt erhalten.", "Ly cao, hẹp: bọt khí dâng lên lâu thành chuỗi hạt nhỏ, giữ được độ sủi.")}
+  ${symCard("./images/symbole/glas-sektkelch.png", "Schaumweinglas", "Sektkelch", "Ly sâm panh dạng kelch", "Etwas breiterer, schlanker Kelch mit Stiel: Klassisches Glas für Sekt und Champagner (auch Champagnerkelch genannt).", "Ly thon, hơi rộng hơn dạng sáo, có chân: ly kinh điển cho Sekt và Champagner (còn gọi là Champagnerkelch).")}
+  ${symCard("./images/symbole/glas-sektspitz.png", "Schaumweinglas", "Sektspitz", "Ly sâm panh đáy nhọn", "Schmal zulaufende, spitze V-Form: Perlage sammelt sich im Spitz, sehr elegant für Empfänge.", "Hình chữ V thon nhọn: bọt khí tụ ở đáy nhọn, rất sang trọng cho tiệc chào mừng.")}
+</div>
+<table>
+  <tr><th>Beispiele</th><th>Ausschankmenge</th><th>Tiếng Việt</th></tr>
+  <tr><td>Champagnerkelch · Sektflöte · Sektkelch · Sektspitz</td><td><b>8 – 16 cl</b></td><td>Ly Champagner / Sektflöte / Sektkelch / Sektspitz: rót 8 – 16 cl.</td></tr>
+</table>
+
+<h3>C. Biergläser</h3>
+<div class="sym-grid">
+  ${symCard("./images/symbole/glas-biertulpe.png", "Bierglas", "Biertulpe", "Ly bia dáng tulip", "Gestielter, tulpenförmiger Kelch: Hält den Schaum stabil und lenkt das Aroma zur Nase (z. B. für Pils).", "Ly có chân, dáng tulip: giữ lớp bọt ổn định và đưa hương lên mũi (ví dụ cho Pils).")}
+  ${symCard("./images/symbole/glas-willibecher.png", "Bierglas", "Bierbecher / Willibecher", "Cốc bia Willibecher", "Schlichter, leicht tailliert zulaufender Becher ohne Stiel: Praktisches Standardglas für Schankbier.", "Cốc đơn giản, hơi thắt eo, không chân: ly tiêu chuẩn tiện dụng cho bia tươi.")}
+  ${symCard("./images/symbole/glas-weizenbier.png", "Bierglas", "Weizenbierglas", "Ly bia lúa mì", "Hohes, nach oben weiter werdendes Glas: Platz für die dicke Schaumkrone des Weizenbiers.", "Ly cao, loe dần lên miệng: đủ chỗ cho lớp bọt dày của bia lúa mì.")}
+  ${symCard("./images/symbole/glas-bierstange.png", "Bierglas", "Bierstange", "Ly bia dạng ống (Stange)", "Schlankes, zylindrisches Glas (teils mit kleinem Fuß): Typisch für Kölsch und Altbier, kleine Mengen bleiben länger frisch.", "Ly thon, hình trụ (đôi khi có chân nhỏ): đặc trưng cho Kölsch, Altbier; lượng nhỏ nên giữ bia lạnh lâu.")}
+  ${symCard("./images/symbole/glas-henkelglas.png", "Bierglas", "Henkelglas", "Ly bia có quai", "Dickwandiger Humpen mit Henkel: Hand wärmt das Bier nicht auf, robust für rustikale Gaststätten.", "Cốc thành dày có quai: tay không làm ấm bia, bền chắc cho quán kiểu truyền thống.")}
+  ${symCard("./images/symbole/glas-berliner.png", "Bierglas", "Berliner Weiße Glas", "Ly Berliner Weiße", "Weite, schalenartige Kelchform: Für die Berliner Weiße (säuerliches Weißbier, oft mit Sirup).", "Ly rộng dạng bát có chân: dùng cho Berliner Weiße (bia trắng vị chua, thường pha siro).")}
+</div>
+<table>
+  <tr><th>Beispiele</th><th>Ausschankmenge</th><th>Tiếng Việt</th></tr>
+  <tr><td>Bierbecher / Willibecher · Biertulpe · Bierstange · Henkelglas · Weizenbierglas · Berliner Weiße Glas</td><td><b>0,1 l · 0,15 l · 0,2 l · 0,25 l · 0,3 l · 0,4 l · 0,5 l</b></td><td>Các loại ly bia: lượng rót từ 0,1 l đến 0,5 l tuỳ loại ly và loại bia.</td></tr>
+</table>
+
+<h3>D. Spirituosen- &amp; Cocktailgläser</h3>
+<div class="sym-grid">
+  ${symCard("./images/symbole/glas-cognac.png", "Spirituosenglas", "Cognacschwenker", "Ly Cognac (Schwenker)", "Bauchiger, nach oben verengter Schwenker: In der Hand erwärmen und schwenken, das Aroma sammelt sich im Glas.", "Ly phình, thu hẹp lên miệng: cầm tay làm ấm, lắc nhẹ để hương tụ lại trong ly.")}
+  ${symCard("./images/symbole/glas-likoer.png", "Spirituosenglas", "Likörkelch", "Ly rượu mùi", "Kleiner Stielkelch für Liköre und süße Digestifs in kleinen Mengen.", "Ly nhỏ có chân cho rượu mùi (Likör) và digestif ngọt với lượng nhỏ.")}
+  ${symCard("./images/symbole/glas-martini.png", "Cocktailglas", "Martiniglas / Cocktailschale", "Ly Martini / ly cocktail", "Konisches V-Glas mit langem Stiel: Hände wärmen den Drink nicht an; für Martini und gerührte oder geschüttelte Cocktails ohne Eis.", "Ly hình nón chữ V, chân dài: tay không làm ấm đồ uống; dùng cho Martini và cocktail lắc/khuấy không đá.")}
+  ${symCard("./images/symbole/glas-grappa.png", "Spirituosenglas", "Grappaglas", "Ly Grappa", "Schlanker, hoher Stielkelch mit leicht eingezogenem Rand: Konzentriert den intensiven Duft des Tresterbrands.", "Ly cao thon có chân, miệng hơi thu: tập trung hương mạnh của rượu Grappa (rượu bã nho).")}
+</div>
+<table>
+  <tr><th>Beispiele</th><th>Ausschankmenge</th><th>Tiếng Việt</th></tr>
+  <tr><td>Cognacschwenker · Likörkelch · Grappaglas · Schnapsglas</td><td><b>1 cl · 2 cl · 4 cl</b></td><td>Ly Cognac / rượu mùi / Grappa / Schnaps: rót 1, 2 hoặc 4 cl.</td></tr>
+  <tr><td>Cocktailglas · Cocktailschale · großer und kleiner Tumbler · Martiniglas</td><td><b>5 – 38 cl</b></td><td>Ly cocktail / Tumbler lớn nhỏ / Martini: rót 5 – 38 cl.</td></tr>
+</table>
+`,
+            qa: [
+              {
+                q: "Welche Ausschankmengen gelten bei Weingläsern?",
+                qVi: "Lượng rót chuẩn của ly vang là bao nhiêu?",
+                a: "Rot-, Weiß-, Rosé-, Burgunder-, Dessertwein- und Römerglas: 0,2 l oder 0,25 l. Sherryglas und Südweinglas: 5 cl.",
+                aVi: "Ly vang đỏ, trắng, hồng, Burgunder, tráng miệng, Römer: 0,2 l hoặc 0,25 l. Ly Sherry và ly vang vùng Nam: 5 cl.",
+                why: "Con số cần thuộc cho thi Getränkekunde / Service.",
+                src: "Getränkekunde · Gläserübersicht"
+              },
+              {
+                q: "Welche Schaumweingläser gibt es und welche Ausschankmenge ist üblich?",
+                qVi: "Có những loại ly sâm panh nào và lượng rót thường là bao nhiêu?",
+                a: "Sektflöte, Sektkelch (Champagnerkelch) und Sektspitz; Ausschankmenge 8 – 16 cl.",
+                aVi: "Sektflöte, Sektkelch (Champagnerkelch) và Sektspitz; lượng rót 8 – 16 cl.",
+                why: "Phân biệt 3 dáng ly qua hình dạng.",
+                src: "Getränkekunde · Gläserübersicht"
+              },
+              {
+                q: "Welche Biergläser gibt es?",
+                qVi: "Có những loại ly bia nào?",
+                a: "Biertulpe, Bierbecher/Willibecher, Weizenbierglas, Bierstange, Henkelglas und Berliner Weiße Glas; Ausschankmengen von 0,1 l bis 0,5 l.",
+                aVi: "Biertulpe, Bierbecher/Willibecher, Weizenbierglas, Bierstange, Henkelglas và Berliner Weiße Glas; lượng rót từ 0,1 l đến 0,5 l.",
+                why: "Câu hỏi nhận diện ly qua hình ảnh.",
+                src: "Getränkekunde · Gläserübersicht"
+              },
+              {
+                q: "Welche Ausschankmengen gelten bei Spirituosen- und Cocktailgläsern?",
+                qVi: "Lượng rót của ly rượu mạnh và ly cocktail là bao nhiêu?",
+                a: "Spirituosen (Cognacschwenker, Likörkelch, Grappaglas, Schnapsglas): 1 cl, 2 cl oder 4 cl. Cocktailgläser (Cocktailglas, Cocktailschale, Tumbler, Martiniglas): 5 – 38 cl.",
+                aVi: "Rượu mạnh (ly Cognac, rượu mùi, Grappa, Schnaps): 1, 2 hoặc 4 cl. Ly cocktail (cocktail, Tumbler, Martini): 5 – 38 cl.",
+                why: "Số liệu hay bị hỏi trong bài kiểm tra.",
+                src: "Getränkekunde · Gläserübersicht"
+              }
+            ],
+            vokabeln: [
+              { de: "das Rotweinglas", vi: "ly vang đỏ" },
+              { de: "das Weißweinglas", vi: "ly vang trắng" },
+              { de: "das Roséweinglas", vi: "ly vang hồng" },
+              { de: "das Dessertweinglas", vi: "ly vang tráng miệng" },
+              { de: "das Sherryglas", vi: "ly Sherry" },
+              { de: "das Südweinglas", vi: "ly vang vùng Nam" },
+              { de: "das Römerglas", vi: "ly Römer (ly vang truyền thống)" },
+              { de: "die Sektflöte", vi: "ly sâm panh dạng sáo" },
+              { de: "der Sektkelch", vi: "ly sâm panh dạng kelch" },
+              { de: "der Sektspitz", vi: "ly sâm panh đáy nhọn" },
+              { de: "die Biertulpe", vi: "ly bia dáng tulip" },
+              { de: "der Willibecher", vi: "cốc bia Willibecher" },
+              { de: "die Bierstange", vi: "ly bia dạng ống" },
+              { de: "das Henkelglas", vi: "ly bia có quai" },
+              { de: "das Weizenbierglas", vi: "ly bia lúa mì" },
+              { de: "das Berliner Weiße Glas", vi: "ly Berliner Weiße" },
+              { de: "der Cognacschwenker", vi: "ly Cognac" },
+              { de: "der Likörkelch", vi: "ly rượu mùi" },
+              { de: "das Martiniglas", vi: "ly Martini" },
+              { de: "das Grappaglas", vi: "ly Grappa" },
+              { de: "der Tumbler", vi: "ly thấp (cocktail/nước)" },
+              { de: "die Ausschankmenge", vi: "lượng rót (đồ uống)" }
+            ]
+          }
+        ]
       }
     ],
     quiz: [
@@ -1900,6 +2028,208 @@
         answers: ["hauptbruch", "der hauptbruch"],
         answer: "Hauptbruch",
         ex: "Der Hauptbruch ist die Mittelfalte der Tischdecke und wird zum Licht bzw. Haupteingang ausgerichtet."
+      },
+      {
+        theme: "sym-glaeser",
+        cat: "Weinglas",
+        img: "./images/symbole/glas-rotwein.png",
+        q: "Wie heißt dieses Glas?",
+        opts: ["Sektflöte", "Rotweinglas", "Grappaglas", "Henkelglas"],
+        a: 1,
+        ex: "Rotweinglas: Großer bauchiger Kelch für Rotwein."
+      },
+      {
+        theme: "sym-glaeser",
+        cat: "Weinglas",
+        img: "./images/symbole/glas-weisswein.png",
+        q: "Wie heißt dieses Glas?",
+        opts: ["Sektkelch", "Bierbecher / Willibecher", "Dessertweinglas", "Weißweinglas"],
+        a: 3,
+        ex: "Weißweinglas: Schlankerer, kleinerer Kelch für Weißwein."
+      },
+      {
+        theme: "sym-glaeser",
+        cat: "Weinglas",
+        img: "./images/symbole/glas-rose.png",
+        q: "Wie heißt dieses Glas?",
+        opts: ["Berliner Weiße Glas", "Cognacschwenker", "Grappaglas", "Roséweinglas"],
+        a: 3,
+        ex: "Roséweinglas: Tulpenförmiger Kelch für Roséwein."
+      },
+      {
+        theme: "sym-glaeser",
+        cat: "Weinglas",
+        img: "./images/symbole/glas-dessert.png",
+        q: "Wie heißt dieses Glas?",
+        opts: ["Bierbecher / Willibecher", "Dessertweinglas", "Sektspitz", "Sektflöte"],
+        a: 1,
+        ex: "Dessertweinglas: Kleiner schmaler Kelch für Dessertwein."
+      },
+      {
+        theme: "sym-glaeser",
+        cat: "Schaumweinglas",
+        img: "./images/symbole/glas-sektfloete.png",
+        q: "Wie heißt dieses Glas?",
+        opts: ["Roséweinglas", "Sektflöte", "Weißweinglas", "Cognacschwenker"],
+        a: 1,
+        ex: "Sektflöte: Hoher schmaler Kelch, die Perlen steigen lange auf."
+      },
+      {
+        theme: "sym-glaeser",
+        cat: "Schaumweinglas",
+        img: "./images/symbole/glas-sektkelch.png",
+        q: "Wie heißt dieses Glas?",
+        opts: ["Sektkelch", "Rotweinglas", "Henkelglas", "Dessertweinglas"],
+        a: 0,
+        ex: "Sektkelch: Schlanker Kelch mit Stiel für Sekt/Champagner."
+      },
+      {
+        theme: "sym-glaeser",
+        cat: "Schaumweinglas",
+        img: "./images/symbole/glas-sektspitz.png",
+        q: "Wie heißt dieses Glas?",
+        opts: ["Biertulpe", "Bierbecher / Willibecher", "Sektspitz", "Bierstange"],
+        a: 2,
+        ex: "Sektspitz: Spitz zulaufende V-Form."
+      },
+      {
+        theme: "sym-glaeser",
+        cat: "Bierglas",
+        img: "./images/symbole/glas-biertulpe.png",
+        q: "Wie heißt dieses Glas?",
+        opts: ["Weißweinglas", "Likörkelch", "Biertulpe", "Martiniglas"],
+        a: 2,
+        ex: "Biertulpe: Gestielter tulpenförmiger Kelch für Bier."
+      },
+      {
+        theme: "sym-glaeser",
+        cat: "Bierglas",
+        img: "./images/symbole/glas-willibecher.png",
+        q: "Wie heißt dieses Glas?",
+        opts: ["Bierbecher / Willibecher", "Cognacschwenker", "Martiniglas", "Sektkelch"],
+        a: 0,
+        ex: "Bierbecher / Willibecher: Schlichter Becher ohne Stiel für Schankbier."
+      },
+      {
+        theme: "sym-glaeser",
+        cat: "Bierglas",
+        img: "./images/symbole/glas-weizenbier.png",
+        q: "Wie heißt dieses Glas?",
+        opts: ["Weizenbierglas", "Grappaglas", "Rotweinglas", "Weißweinglas"],
+        a: 0,
+        ex: "Weizenbierglas: Hohes, oben weites Glas mit Platz für die Schaumkrone."
+      },
+      {
+        theme: "sym-glaeser",
+        cat: "Bierglas",
+        img: "./images/symbole/glas-bierstange.png",
+        q: "Wie heißt dieses Glas?",
+        opts: ["Roséweinglas", "Cognacschwenker", "Bierstange", "Weißweinglas"],
+        a: 2,
+        ex: "Bierstange: Schlankes zylindrisches Glas, typisch für Kölsch."
+      },
+      {
+        theme: "sym-glaeser",
+        cat: "Bierglas",
+        img: "./images/symbole/glas-henkelglas.png",
+        q: "Wie heißt dieses Glas?",
+        opts: ["Henkelglas", "Weißweinglas", "Roséweinglas", "Bierbecher / Willibecher"],
+        a: 0,
+        ex: "Henkelglas: Dickwandiger Humpen mit Henkel."
+      },
+      {
+        theme: "sym-glaeser",
+        cat: "Bierglas",
+        img: "./images/symbole/glas-berliner.png",
+        q: "Wie heißt dieses Glas?",
+        opts: ["Sektspitz", "Martiniglas", "Berliner Weiße Glas", "Sektkelch"],
+        a: 2,
+        ex: "Berliner Weiße Glas: Weite Schale mit Stiel für Berliner Weiße."
+      },
+      {
+        theme: "sym-glaeser",
+        cat: "Spirituosenglas",
+        img: "./images/symbole/glas-cognac.png",
+        q: "Wie heißt dieses Glas?",
+        opts: ["Cognacschwenker", "Rotweinglas", "Grappaglas", "Biertulpe"],
+        a: 0,
+        ex: "Cognacschwenker: Bauchiger Schwenker, in der Hand erwärmt."
+      },
+      {
+        theme: "sym-glaeser",
+        cat: "Spirituosenglas",
+        img: "./images/symbole/glas-likoer.png",
+        q: "Wie heißt dieses Glas?",
+        opts: ["Sektkelch", "Cognacschwenker", "Likörkelch", "Weizenbierglas"],
+        a: 2,
+        ex: "Likörkelch: Kleiner Stielkelch für Liköre."
+      },
+      {
+        theme: "sym-glaeser",
+        cat: "Cocktailglas",
+        img: "./images/symbole/glas-martini.png",
+        q: "Wie heißt dieses Glas?",
+        opts: ["Martiniglas", "Grappaglas", "Likörkelch", "Cognacschwenker"],
+        a: 0,
+        ex: "Martiniglas: Konisches V-Glas mit langem Stiel."
+      },
+      {
+        theme: "sym-glaeser",
+        cat: "Spirituosenglas",
+        img: "./images/symbole/glas-grappa.png",
+        q: "Wie heißt dieses Glas?",
+        opts: ["Rotweinglas", "Sektspitz", "Dessertweinglas", "Grappaglas"],
+        a: 3,
+        ex: "Grappaglas: Schlanker hoher Stielkelch für Grappa."
+      },
+      {
+        theme: "sym-glaeser",
+        cat: "Ausschankmenge",
+        q: "Welche Ausschankmenge gilt üblicherweise für Sherryglas und Südweinglas?",
+        opts: ["5 cl", "0,2 l", "0,5 l", "16 cl"],
+        a: 0,
+        ex: "Sherry- und Südweinglas: 5 cl."
+      },
+      {
+        theme: "sym-glaeser",
+        cat: "Ausschankmenge",
+        q: "Welche Ausschankmenge gilt bei Schaumweingläsern (Sektflöte, Sektkelch, Sektspitz)?",
+        opts: ["8 – 16 cl", "0,5 l", "1 – 4 cl", "5 – 38 cl"],
+        a: 0,
+        ex: "Schaumweingläser: 8 – 16 cl."
+      },
+      {
+        theme: "sym-glaeser",
+        cat: "Ausschankmenge",
+        q: "Welche Ausschankmengen gelten bei Rot- und Weißweingläsern?",
+        opts: ["0,2 l oder 0,25 l", "5 cl oder 2 cl", "8 – 16 cl", "0,5 l oder 1 l"],
+        a: 0,
+        ex: "Wein im Glas: 0,2 l oder 0,25 l."
+      },
+      {
+        theme: "sym-glaeser",
+        cat: "Ausschankmenge",
+        q: "Welche Ausschankmengen gelten bei Spirituosengläsern (Cognacschwenker, Likörkelch, Grappaglas, Schnapsglas)?",
+        opts: ["1 cl, 2 cl oder 4 cl", "0,2 l", "8 – 16 cl", "0,3 l"],
+        a: 0,
+        ex: "Spirituosen: 1 cl, 2 cl oder 4 cl."
+      },
+      {
+        theme: "sym-glaeser",
+        cat: "Ausschankmenge",
+        q: "Welche Ausschankmenge gilt bei Cocktailgläsern (Cocktailglas, Tumbler, Martiniglas)?",
+        opts: ["5 – 38 cl", "1 cl", "0,5 l", "8 – 16 cl"],
+        a: 0,
+        ex: "Cocktailgläser: 5 – 38 cl."
+      },
+      {
+        type: "fill",
+        theme: "sym-glaeser",
+        cat: "Gläserkunde",
+        q: "Wie nennt man das hohe, schmale Glas mit Stiel für Sekt, in dem die Kohlensäure lange aufsteigt?",
+        answers: ["sektflöte", "sektfloete", "die sektflöte", "sektflote"],
+        answer: "Sektflöte",
+        ex: "Die Sektflöte ist hoch und schmal, die Perlen steigen lange auf."
       }
     ]
   };
