@@ -10,7 +10,7 @@
  *   icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="15" r="5.5"/><path d="M15 15h6"/><path d="M8 15l2.5-3"/></svg>',
  *   accent: "#2563eb",
  *   soft: "#eff6ff",
- *   teacher: "Fr. Schuster",
+ *   teacher: "",
  *   examDate: "2026-07-20",     // optional ISO
  *   ready: true,
  *   desc: "Kurzbeschreibung",
@@ -113,7 +113,7 @@
       icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="15" r="5.5"/><path d="M15 15h6"/><path d="M8 15l2.5-3"/></svg>',
       accent: "#2563eb",
       soft: "#eff6ff",
-      teacher: "Fr. Schuster (SLA)",
+      teacher: "",
       examDate: "2026-07-20",
       ready: true,
       desc: "LF2 Beschaffung/Lagerung · LF6 Speisen/Menüs · LF9 Zahlung/Recht",
@@ -136,447 +136,711 @@
       {
         id: "bfk2",
         code: "BfK-2",
-        name: "Service & Vận hành Nhà hàng (BfK2-ED)",
+        name: "Service, Getränke & Warenkunde (BfK-2)",
         icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>',
         accent: "#dc2626",
         soft: "#fef2f2",
-        teacher: "Fr. Herrmann / BfK2-ED",
+        teacher: "",
         examDate: "2026-07-14",
         ready: true,
-        desc: "Năm 1: LF1 Beruf/Kommunikation · LF5 Service, Getränke, Bier/Wein, POS, Buffet | Năm 2: Fleisch & Küche · Fisch (Warenkunde & Zubereitung)",
+        desc: "1. Ausbildungsjahr: LF 1 Beruf & Kommunikation · LF 5 Service, Getränke, Bier/Wein, POS, Buffet | 2. Ausbildungsjahr: Fleisch, Küche, Fisch & Milch/Käse (LF 10)",
         legacyRoutes: {
           hub: "#/bfk/2"
         },
         groups: [
           {
             id: "lf1-orientierung",
-            badge: "LF 1 (Năm 1)",
+            badge: "LF 1 · 1. Jahr",
             title: "Orientierung & Kommunikation",
             items: [
               {
                 id: "bfk2-berufsbilder",
                 icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12.01" y2="8"/><line x1="12" y1="11" x2="12" y2="16"/></svg>',
                 name: "LS01 · Berufsbilder im Gastgewerbe",
-                desc: "7 Chân dung nghề 2022 · Fachkraft für Gastronomie · Key facts",
-                content: `<h2> Berufsbilder im Gastgewerbe (Trang 04 - 11)</h2>
-<div class="hint">LS01 · 7 Chân dung nghề nghiệp Gastronomie (2022) · Fachkraft für Gastronomie · Key facts</div>
-<h3 class="sub">1. Tình huống học tập (Lernsituation)</h3>
-<p>Bạn là học viên (Azubi) tại <strong>Hotel &amp; Restaurant Schwarzwaldblick</strong> (Bad Wildbad). Nhân dịp <em>Tag der offenen Tür</em>, bạn có nhiệm vụ thiết kế Poster/Profile giới thiệu 7 khối nghề đào tạo Gastronomie cho học sinh sắp tốt nghiệp.</p>
-<h3 class="sub">2. 7 Chân dung Nghề nghiệp trong Ngành (2022)</h3>
+                desc: "7 Ausbildungsberufe (GastroAusbV 2022) · Fachkraft für Gastronomie · Anforderungsprofil",
+                content: `<h2>Berufsbilder im Gastgewerbe (S. 04–11)</h2>
+<div class="hint">LS01 · 7 Ausbildungsberufe im Gastgewerbe (Neuordnung 2022) · Fachkraft für Gastronomie</div>
+<h3 class="sub">1. Lernsituation</h3>
+<p>Sie absolvieren Ihre Ausbildung im <strong>Hotel &amp; Restaurant Schwarzwaldblick</strong> (Bad Wildbad). Für den <em>Tag der offenen Tür</em> erstellen Sie Steckbriefe der 7 Ausbildungsberufe im Gastgewerbe, um Schulabgängerinnen und Schulabgänger zu informieren.</p>
+<div class="vi"><b>Tình huống học tập:</b> Bạn là học viên (Azubi) tại <b>Hotel &amp; Restaurant Schwarzwaldblick</b> (Bad Wildbad). Nhân dịp <i>Tag der offenen Tür</i>, bạn thiết kế hồ sơ giới thiệu 7 ngành nghề đào tạo trong lĩnh vực Gastronomie cho học sinh sắp tốt nghiệp.</div>
+
+<h3 class="sub">2. Die 7 Ausbildungsberufe im Gastgewerbe (seit 2022)</h3>
 <ul>
-  <li><strong>Gruppe 1:</strong> <span class="term" data-de="Fachkraft für Gastronomie" data-vi="chuyên viên dịch vụ ẩm thực (2 năm)">Fachkraft für Gastronomie</span> (hệ 2 năm)</li>
-  <li><strong>Gruppe 2:</strong> <span class="term" data-de="Fachmann/-frau für Systemgastronomie" data-vi="chuyên viên ẩm thực hệ thống/chuỗi">Fachmann/-frau für Systemgastronomie</span></li>
-  <li><strong>Gruppe 3:</strong> <span class="term" data-de="Fachmann/-frau für Restaurants und Veranstaltungsgastronomie" data-vi="chuyên viên nhà hàng &amp; sự kiện">Fachmann/-frau für Restaurants und Veranstaltungsgastronomie</span></li>
-  <li><strong>Gruppe 4:</strong> <span class="term" data-de="Fachkraft Küche" data-vi="chuyên viên bếp (2 năm)">Fachkraft Küche</span> (hệ 2 năm)</li>
-  <li><strong>Gruppe 5:</strong> <span class="term" data-de="Koch/Köchin" data-vi="đầu bếp chuyên nghiệp (3 năm)">Koch/Köchin</span> (hệ 3 năm)</li>
-  <li><strong>Gruppe 6:</strong> <span class="term" data-de="Hotelfachmann/-frau" data-vi="chuyên viên quản trị khách sạn">Hotelfachmann/-frau</span></li>
-  <li><strong>Gruppe 7:</strong> <span class="term" data-de="Kaufmann/-frau für Hotelmanagement" data-vi="chuyên viên quản lý kinh doanh khách sạn">Kaufmann/-frau für Hotelmanagement</span></li>
+  <li><strong>Gruppe 1:</strong> <span class="term" data-de="Fachkraft für Gastronomie" data-vi="chuyên viên dịch vụ ẩm thực (2 năm)">Fachkraft für Gastronomie</span> (2-jährige Ausbildung: Schwerpunkt Restaurantservice oder Systemgastronomie)</li>
+  <li><strong>Gruppe 2:</strong> <span class="term" data-de="Fachmann/-frau für Systemgastronomie" data-vi="chuyên viên ẩm thực hệ thống/chuỗi">Fachmann/-frau für Systemgastronomie</span> (3-jährig)</li>
+  <li><strong>Gruppe 3:</strong> <span class="term" data-de="Fachmann/-frau für Restaurants und Veranstaltungsgastronomie" data-vi="chuyên viên nhà hàng &amp; sự kiện">Fachmann/-frau für Restaurants und Veranstaltungsgastronomie</span> (3-jährig)</li>
+  <li><strong>Gruppe 4:</strong> <span class="term" data-de="Fachkraft Küche" data-vi="chuyên viên bếp (2 năm)">Fachkraft Küche</span> (2-jährige Ausbildung)</li>
+  <li><strong>Gruppe 5:</strong> <span class="term" data-de="Koch/Köchin" data-vi="đầu bếp chuyên nghiệp (3 năm)">Koch/Köchin</span> (3-jährig)</li>
+  <li><strong>Gruppe 6:</strong> <span class="term" data-de="Hotelfachmann/-frau" data-vi="chuyên viên quản trị khách sạn">Hotelfachmann/-frau</span> (3-jährig)</li>
+  <li><strong>Gruppe 7:</strong> <span class="term" data-de="Kaufmann/-frau für Hotelmanagement" data-vi="chuyên viên quản lý kinh doanh khách sạn">Kaufmann/-frau für Hotelmanagement</span> (3-jährig)</li>
 </ul>
-<h3 class="sub">3. Chi tiết nghề "Fachkraft für Gastronomie"</h3>
+<div class="vi"><b>7 Ngành nghề đào tạo (GastroAusbV 2022):</b> Gồm 2 nghề hệ 2 năm (<i>Fachkraft für Gastronomie</i>, <i>Fachkraft Küche</i>) và 5 nghề hệ 3 năm (<i>Systemgastronomie, Restaurants und Veranstaltungsgastronomie, Koch/Köchin, Hotelfachmann/-frau, Hotelmanagement</i>).</div>
+
+<h3 class="sub">3. Steckbrief: Fachkraft für Gastronomie</h3>
 <table>
-  <tr><th>Tiêu chí</th><th>Thông tin chi tiết</th></tr>
-  <tr><td><span class="term" data-de="Berufsbild" data-vi="mô tả nghề nghiệp">Berufsbild</span></td><td>Chào đón, tư vấn khách, phục vụ đồ ăn/thức uống, <span class="term" data-de="kassieren" data-vi="thu tiền / thanh toán">kassieren</span> — là gương mặt và giọng nói đại diện cho doanh nghiệp.</td></tr>
-  <tr><td><span class="term" data-de="Beschäftigungsbetrieb" data-vi="nơi làm việc">Beschäftigungsbetrieb</span></td><td>Nhà hàng, quán café, Gasthof, Systemgastronomie, Khách sạn, Catering, Kantine.</td></tr>
-  <tr><td><span class="term" data-de="Ausbildungsdauer" data-vi="thời gian đào tạo">Ausbildungsdauer</span></td><td><strong>2 năm</strong> (có thể học thêm 1 năm chuyển tiếp lên bằng 3 năm).</td></tr>
-  <tr><td><span class="term" data-de="Anforderungsprofil" data-vi="hồ sơ yêu cầu năng lực">Anforderungsprofil</span></td><td>Thân thiện, thích làm việc nhóm, giao tiếp &amp; bán hàng tốt, có kỹ năng tổ chức.</td></tr>
+  <tr><th>Kriterium</th><th>Beschreibung</th></tr>
+  <tr><td><span class="term" data-de="Berufsbild" data-vi="mô tả nghề nghiệp">Berufsbild</span></td><td>Gäste empfangen, beraten, Speisen und Getränke servieren sowie <span class="term" data-de="kassieren" data-vi="thu tiền / thanh toán">kassieren</span> — Visitenkarte und Gesicht des Betriebs.</td></tr>
+  <tr><td><span class="term" data-de="Beschäftigungsbetrieb" data-vi="nơi làm việc">Beschäftigungsbetrieb</span></td><td>Restaurants, Cafés, Gasthöfe, Systemgastronomie, Hotels, Catering-Betriebe und Kantinen.</td></tr>
+  <tr><td><span class="term" data-de="Ausbildungsdauer" data-vi="thời gian đào tạo">Ausbildungsdauer</span></td><td><strong>2 Jahre</strong> (mit Möglichkeit zur Fortsetzung im 3. Ausbildungsjahr zum 3-jährigen Abschluss).</td></tr>
+  <tr><td><span class="term" data-de="Anforderungsprofil" data-vi="hồ sơ yêu cầu năng lực">Anforderungsprofil</span></td><td>Gastfreundlichkeit, Teamfähigkeit, Kommunikations- und Verkaufsstärke, Organisationsgeschick, Belastbarkeit.</td></tr>
 </table>
-<div class="note"><b>Das Gastronomie-Einmaleins:</b> Kiến thức nền tảng bắt buộc gồm phục vụ, tư vấn và thanh toán hóa đơn.</div>
-<h3 class="sub">4. Bảng từ vựng LS01 (Phần 1)</h3>
-<table>
-  <tr><th>Thuật ngữ Đức</th><th>Ý nghĩa Việt</th></tr>
-  <tr><td><span class="term" data-de="die Fachkraft, "-e" data-vi="chuyên viên / nhân lực lành nghề">die Fachkraft</span></td><td>Nhân viên đã qua đào tạo chuyên môn</td></tr>
-  <tr><td><span class="term" data-de="das Gastgewerbe" data-vi="ngành dịch vụ khách sạn &amp; nhà hàng">das Gastgewerbe</span></td><td>Ngành hospitality nói chung</td></tr>
-  <tr><td><span class="term" data-de="die Systemgastronomie" data-vi="ẩm thực hệ thống (chuẩn hóa)">die Systemgastronomie</span></td><td>Chuỗi nhà hàng chuẩn hóa (Vapiano, McDonald's...)</td></tr>
-  <tr><td><span class="term" data-de="die Veranstaltungsgastronomie" data-vi="ẩm thực sự kiện / tiệc mừng">die Veranstaltungsgastronomie</span></td><td>Dịch vụ catering tiệc cưới, hội nghị</td></tr>
-  <tr><td><span class="term" data-de="das Einmaleins" data-vi="bảng cửu chương / kiến thức cơ bản">das Einmaleins</span></td><td>Kiến thức nền tảng bắt buộc</td></tr>
-  <tr><td><span class="term" data-de="der Nachwuchskraft, "-e" data-vi="nhân lực trẻ tiềm năng / Azubi">der Nachwuchskraft</span></td><td>Thế hệ học viên mới</td></tr>
-</table>`
+<div class="vi"><b>Hồ sơ nghề Fachkraft für Gastronomie:</b> Đón tiếp, tư vấn khách, phục vụ món ăn/đồ uống và thanh toán hóa đơn. Làm việc tại nhà hàng, quán café, khách sạn, chuỗi ẩm thực hệ thống. Đào tạo <b>2 năm</b> (có thể học liên thông năm thứ 3).</div>
+<div class="note"><b>Das Gastronomie-Einmaleins:</b> Grundfertigkeiten im Servieren, Beraten, Zubereiten einfacher Speisen und Kassieren.</div>`,
+                qa: [
+                  {
+                    q: "Wie lange dauert die Ausbildung zur Fachkraft für Gastronomie und welche Schwerpunkte gibt es?",
+                    qVi: "Thời gian đào tạo nghề Fachkraft für Gastronomie kéo dài bao lâu và có những chuyên ngành trọng tâm nào?",
+                    a: "Die Ausbildung dauert 2 Jahre (Stufenausbildung mit Übergangsmöglichkeit ins 3. Jahr) und umfasst die Schwerpunkte Restaurantservice sowie Systemgastronomie.",
+                    aVi: "Thời gian đào tạo kéo dài 2 năm (có thể học tiếp năm 3) với 2 chuyên ngành trọng tâm là Restaurantservice và Systemgastronomie."
+                  },
+                  {
+                    q: "Welche Hauptaufgaben gehören zum Berufsbild der Fachkraft für Gastronomie?",
+                    qVi: "Những nhiệm vụ chính nào thuộc về mô tả nghề nghiệp của Fachkraft für Gastronomie?",
+                    a: "Gäste empfangen und betreuen, Speisen und Getränke zubereiten und servieren, Verkaufsgespräche führen sowie Kassieren und Abrechnen.",
+                    aVi: "Đón tiếp và chăm sóc khách, chuẩn bị và phục vụ món ăn/đồ uống, tư vấn bán hàng cũng như thu ngân và thanh toán."
+                  }
+                ]
               },
               {
                 id: "bfk2-gastgeber-team",
                 icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
                 name: "LS01 · Rolle als Gastgeber & im Team",
-                desc: "Mindmap Anforderungen · Phản hồi đồng nghiệp · 5 Tình huống phục vụ",
-                content: `<h2> Yêu cầu Vai trò Gastgeber & im Team (Trang 12 - 16)</h2>
-<div class="hint">LS01 · Vai trò Gastgeber & Đồng đội · Mindmap · 5 Tình huống phục vụ thực tế</div>
-<h3 class="sub">1. Sơ đồ tư duy (Mindmap Anforderungen)</h3>
+                desc: "Mindmap Anforderungen · Aussagen der Mitarbeitenden · 5 Praxissituationen im Service",
+                content: `<h2>Rolle als Gastgeber &amp; im Team (S. 12–16)</h2>
+<div class="hint">LS01 · Anforderungen an Gastgeber und Teammitglieder · 5 Praxissituationen</div>
+<h3 class="sub">1. Mindmap der Kernanforderungen</h3>
 <table>
-  <tr><th>Vai trò</th><th>Yêu cầu năng lực cốt lõi</th></tr>
-  <tr><td><span class="term" data-de="als Gastgeber/in" data-vi="với vai trò chủ nhà">Als Gastgeber/in</span></td><td><span class="term" data-de="Freundlichkeit" data-vi="sự thân thiện">Freundlichkeit</span>, <span class="term" data-de="Kommunikation" data-vi="giao tiếp">Kommunikation</span>, <span class="term" data-de="Servicequalität" data-vi="chất lượng dịch vụ">Servicequalität</span>, <span class="term" data-de="Problemlösung" data-vi="giải quyết vấn đề">Problemlösung</span>.</td></tr>
-  <tr><td><span class="term" data-de="im Team" data-vi="trong đội ngũ đồng đội">Im Team</span></td><td><span class="term" data-de="Teamfähigkeit" data-vi="khả năng làm việc nhóm">Teamfähigkeit</span>, <span class="term" data-de="Zuverlässigkeit" data-vi="độ tin cậy">Zuverlässigkeit</span>, <span class="term" data-de="Respekt" data-vi="sự tôn trọng">Respekt</span>, <span class="term" data-de="Flexibilität" data-vi="sự linh hoạt">Flexibilität</span> &amp; Ordnung.</td></tr>
+  <tr><th>Rolle</th><th>Zentrale Kompetenzen</th></tr>
+  <tr><td><span class="term" data-de="als Gastgeber/in" data-vi="với vai trò chủ nhà">Als Gastgeber/in</span></td><td><span class="term" data-de="Freundlichkeit" data-vi="sự thân thiện">Freundlichkeit</span>, sichere <span class="term" data-de="Kommunikation" data-vi="giao tiếp">Kommunikation</span>, hohe <span class="term" data-de="Servicequalität" data-vi="chất lượng dịch vụ">Servicequalität</span>, souveräne <span class="term" data-de="Problemlösung" data-vi="giải quyết vấn đề">Problemlösung</span>.</td></tr>
+  <tr><td><span class="term" data-de="im Team" data-vi="trong đội ngũ đồng đội">Im Team</span></td><td><span class="term" data-de="Teamfähigkeit" data-vi="khả năng làm việc nhóm">Teamfähigkeit</span>, <span class="term" data-de="Zuverlässigkeit" data-vi="độ tin cậy">Zuverlässigkeit</span>, gegenseitiger <span class="term" data-de="Respekt" data-vi="sự tôn trọng">Respekt</span>, <span class="term" data-de="Flexibilität" data-vi="sự linh hoạt">Flexibilität</span> und Ordnungssinn.</td></tr>
 </table>
-<h3 class="sub">2. Góc nhìn từ Đồng nghiệp (Aussagen der Kolleg/innen)</h3>
+<div class="vi"><b>Yêu cầu cốt lõi:</b> Với vai trò chủ nhà (<i>Gastgeber</i>): thân thiện, giao tiếp tốt, chất lượng phục vụ cao và xử lý tình huống khéo léo. Trong đội ngũ (<i>im Team</i>): tinh thần đồng đội, đáng tin cậy, tôn trọng lẫn nhau và linh hoạt.</div>
+
+<h3 class="sub">2. Aussagen aus dem Kollegenkreis</h3>
 <ul>
-  <li><em>"Freundlichkeit und ein souveränes Auftreten sind das A und O."</em> (Thân thiện &amp; tự tin là cốt lõi).</li>
-  <li><em>"Ein gepflegtes Äußeres ist wichtig für die Gäste."</em> (Ngoại hình chỉn chu tươm tất).</li>
-  <li><em>"Kritikfähig sein und konstruktives Feedback anzunehmen."</em> (Tiếp thu góp ý xây dựng).</li>
-  <li><em>"In schwierigen Situationen diplomatisch und schlagfertig sein."</em> (Khéo léo &amp; ứng biến nhanh trí).</li>
-  <li><em>"Ohne Vertrauen geht es nicht. Abmachungen einhalten."</em> (Tin tưởng &amp; giữ đúng cam kết).</li>
+  <li><em>„Freundlichkeit und ein souveränes Auftreten sind das A und O.“</em></li>
+  <li><em>„Ein gepflegtes Äußeres und saubere Arbeitskleidung sind entscheidend für den ersten Eindruck.“</em></li>
+  <li><em>„Kritikfähig sein und konstruktives Feedback annehmen.“</em></li>
+  <li><em>„In schwierigen Situationen diplomatisch, ruhig und lösungsorientiert bleiben.“</em></li>
+  <li><em>„Ohne Vertrauen geht es nicht – Absprachen im Team müssen zuverlässig eingehalten werden.“</em></li>
 </ul>
-<h3 class="sub">3. 5 Tình huống Giải quyết Phục vụ Thực tế</h3>
+<div class="vi"><b>Kinh nghiệm từ đồng nghiệp:</b> Thân thiện và tự tin là cốt lõi; ngoại hình và đồng phục luôn chỉn chu; biết tiếp thu góp ý xây dựng; bình tĩnh và khéo léo trong tình huống khó; giữ chữ tín với đồng đội.</div>
+
+<h3 class="sub">3. Fünf typische Praxissituationen im Service</h3>
 <table>
-  <tr><th>Tình huống</th><th>Cách xử lý chuẩn (Gute Reaktion)</th></tr>
-  <tr><td><strong>1. Khách muốn nói chuyện phiếm lúc đông</strong></td><td>Trả lời ngắn gọn, giải thích nhà hàng đông, hẹn quay lại sau khi vơi việc.</td></tr>
-  <tr><td><strong>2. Hết phòng / xếp sai phòng khách đặt</strong></td><td>Chân thành xin lỗi, giải thích <span class="term" data-de="ausgebucht" data-vi="cháy phòng / kín chỗ">ausgebucht</span>, đền bù voucher/đồ uống miễn phí.</td></tr>
-  <tr><td><strong>3. Bếp trưởng chê xốt salad loãng (<span class="term" data-de="wässrig" data-vi="bị loãng / nhạt nhòa">wässrig</span>)</strong></td><td>Vui vẻ tiếp thu chỉ trích, xin lỗi và lập tức điều chỉnh/pha lại xốt mới.</td></tr>
-  <tr><td><strong>4. Đồng nghiệp bối rối trước khách giận</strong></td><td>Chủ động tới hỗ trợ, điềm tĩnh tiếp quản cuộc trò chuyện và xoa dịu khách.</td></tr>
-  <tr><td><strong>5. 2 Azubi tranh công việc dễ</strong></td><td>Trao đổi ngắn gọn, chia đôi công việc công bằng và cam kết luôn luôn luân chuyển ca sau.</td></tr>
+  <tr><th>Situation</th><th>Professionelle Reaktion</th></tr>
+  <tr><td><strong>1. Gast sucht langes Gespräch im Stoßgeschäft</strong></td><td>Freundlich und kurz antworten, auf den vollen Betrieb hinweisen und anbieten, später nochmals vorbeizuschauen.</td></tr>
+  <tr><td><strong>2. Überbuchung / falsches Zimmer vergeben</strong></td><td>Höflich entschuldigen, erklären, dass das Haus <span class="term" data-de="ausgebucht" data-vi="cháy phòng / kín chỗ">ausgebucht</span> ist, gleichwertige Alternative sowie Getränkegutschein anbieten.</td></tr>
+  <tr><td><strong>3. Küchenchef kritisiert zu <span class="term" data-de="wässrig" data-vi="bị loãng / nhạt nhòa">wässrige</span> Salatsauce</strong></td><td>Kritik sachlich annehmen, entschuldigen und das Dressing sofort nach Rezeptur korrigieren.</td></tr>
+  <tr><td><strong>4. Kollege ist mit verärgertem Gast überfordert</strong></td><td>Ruhig hinzutreten, Unterstützung anbieten, das Gespräch deeskalierend übernehmen und eine Lösung finden.</td></tr>
+  <tr><td><strong>5. Zwei Azubis streiten um beliebte Aufgaben</strong></td><td>Aufgaben fair aufteilen und einen festen Wechselplan für die nächsten Schichten vereinbaren.</td></tr>
 </table>
-<div class="note"><b>Merksatz:</b> Phân công trách nhiệm rõ ràng tạo nên vận hành trơn tru (reibungslose Zusammenarbeit).</div>`
+<div class="vi"><b>5 Tình huống thực tế:</b> (1) Khách muốn trò chuyện lâu lúc đông khách: trả lời lịch sự, ngắn gọn và hẹn quay lại sau; (2) Xếp nhầm phòng/kín chỗ: xin lỗi, đổi phương án tương đương + tặng đồ uống; (3) Bếp trưởng góp ý xốt salad bị loãng: tiếp thu và pha lại ngay; (4) Đồng nghiệp lúng túng trước khách giận: chủ động hỗ trợ hạ nhiệt; (5) Hai Azubi giành việc nhẹ: chia đều và luân phiên theo ca.</div>
+<div class="note"><b>Merksatz:</b> Klare Aufgabenverteilung und Respekt sichern eine reibungslose Zusammenarbeit zwischen Küche, Service und Empfang.</div>`,
+                qa: [
+                  {
+                    q: "Welche Eigenschaften zeichnen einen guten Gastgeber im Service aus?",
+                    qVi: "Những phẩm chất nào tạo nên một người chủ nhà (Gastgeber) tốt trong phục vụ?",
+                    a: "Freundlichkeit, gepflegtes Erscheinungsbild, Aufmerksamkeit, gute Kommunikationsfähigkeit und lösungsorientiertes Handeln bei Problemen.",
+                    aVi: "Sự thân thiện, ngoại hình chỉn chu, sự chu đáo, kỹ năng giao tiếp tốt và thái độ hướng tới giải pháp khi có sự cố."
+                  },
+                  {
+                    q: "Wie reagieren Sie professionell, wenn ein Gast während des Stoßgeschäfts ein langes Gespräch beginnen möchte?",
+                    qVi: "Bạn xử lý chuyên nghiệp như thế nào khi khách muốn trò chuyện lâu đúng vào giờ cao điểm?",
+                    a: "Ich antworte höflich und wertschätzend, weise freundlich auf die wartenden Gäste hin und biete an, zu einem ruhigeren Zeitpunkt noch einmal an den Tisch zu kommen.",
+                    aVi: "Trả lời lịch sự và trân trọng, khéo léo giải thích nhà hàng đang đông khách chờ và hẹn sẽ quay lại trò chuyện khi vơi việc."
+                  }
+                ]
               },
               {
                 id: "bfk2-kommunikation",
                 icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
                 name: "LS04 · Angemessen kommunizieren",
-                desc: "3 Dạng giao tiếp · Phương pháp Cornell · Xử lý nhiễu giao tiếp",
-                content: `<h2> Angemessen kommunizieren (Trang 17 - 20)</h2>
-<div class="hint">LS04 · 3 Dạng giao tiếp · Phương pháp ghi chú Cornell · Xử lý nhiễu giao tiếp</div>
-<h3 class="sub">1. 3 Dạng Giao tiếp trong Service</h3>
+                desc: "Verbale, paraverbale & nonverbale Kommunikation · Kommunikationsstörungen vermeiden",
+                content: `<h2>Angemessen kommunizieren (S. 17–20)</h2>
+<div class="hint">LS04 · Die 3 Ebenen der Kommunikation · Kommunikationsstörungen erkennen &amp; beheben</div>
+<h3 class="sub">1. Die drei Ebenen der Kommunikation im Service</h3>
 <table>
-  <tr><th>Hình thức</th><th>Nội dung &amp; Đặc điểm</th></tr>
-  <tr><td><span class="term" data-de="verbale Kommunikation" data-vi="giao tiếp bằng lời nói">Verbale Kommunikation</span></td><td>Từ ngữ phát ra, cấu trúc câu, vốn từ chuyên ngành lịch sự.</td></tr>
-  <tr><td><span class="term" data-de="paraverbale Kommunikation" data-vi="giao tiếp qua giọng điệu">Paraverbale Kommunikation</span></td><td>Ngữ điệu, âm lượng, <span class="term" data-de="das Sprechtempo" data-vi="tốc độ nói">Sprechtempo</span>, độ nhấn nhá. Giọng ấm tạo niềm tin.</td></tr>
-  <tr><td><span class="term" data-de="nonverbale Kommunikation" data-vi="giao tiếp phi ngôn ngữ">Nonverbale Kommunikation</span></td><td><span class="term" data-de="die Körpersprache" data-vi="ngôn ngữ cơ thể">Körpersprache</span>: Dáng đứng, nét mặt (Mimik), điệu bộ (Gestik), ánh mắt.</td></tr>
+  <tr><th>Ebene</th><th>Merkmale &amp; Bedeutung</th></tr>
+  <tr><td><span class="term" data-de="verbale Kommunikation" data-vi="giao tiếp bằng lời nói">Verbale Kommunikation</span></td><td>Gesprochenes Wort, Wortwahl, Satzbau, höfliche Fachsprache gegenüber dem Gast.</td></tr>
+  <tr><td><span class="term" data-de="paraverbale Kommunikation" data-vi="giao tiếp qua giọng điệu">Paraverbale Kommunikation</span></td><td>Tonfall, Stimmlage, Lautstärke, Betonung und <span class="term" data-de="das Sprechtempo" data-vi="tốc độ nói">Sprechtempo</span>. Eine ruhige, warme Stimme schafft Vertrauen.</td></tr>
+  <tr><td><span class="term" data-de="nonverbale Kommunikation" data-vi="giao tiếp phi ngôn ngữ">Nonverbale Kommunikation</span></td><td><span class="term" data-de="die Körpersprache" data-vi="ngôn ngữ cơ thể">Körpersprache</span>: Körperhaltung, Gesichtsausdruck (Mimik), Gestik, Blickkontakt und Lächeln.</td></tr>
 </table>
-<h3 class="sub">2. Nhiễu Giao tiếp (<span class="term" data-de="die Kommunikationsstörung" data-vi="sự nhiễu / rủi ro giao tiếp">Kommunikationsstörung</span>)</h3>
+<div class="vi"><b>3 Cấp độ giao tiếp:</b> (1) <b>Verbal</b> (ngôn từ, câu chữ lịch sự); (2) <b>Paraverbal</b> (ngữ điệu, âm lượng, tốc độ nói ấm áp); (3) <b>Nonverbal</b> (ngôn ngữ cơ thể: dáng đứng, nét mặt, nụ cười, giao tiếp bằng mắt).</div>
+
+<h3 class="sub">2. Kommunikationsstörungen (<span class="term" data-de="die Kommunikationsstörung" data-vi="sự nhiễu / rủi ro giao tiếp">Kommunikationsstörungen</span>)</h3>
 <ul>
-  <li><strong>Nguyên nhân:</strong> Nói mập mờ, tiếng ồn nhà bếp/khách sạn, áp lực thời gian, rào cản ngôn ngữ, tâm lý mệt mỏi/giận dữ.</li>
-  <li><strong>Biện pháp khắc phục:</strong> Nói rõ ràng ngắn gọn, thực hiện <span class="term" data-de="aktives Zuhören" data-vi="lắng nghe chủ động">aktives Zuhören</span> (gật đầu, ghi chép), đặt <span class="term" data-de="die Rückfrage, -n" data-vi="câu hỏi xác nhận lại">Rückfragen</span> xác nhận đơn hàng, giữ thái độ <span class="term" data-de="die Wertschätzung" data-vi="sự tôn trọng khách hàng">Wertschätzung</span>.</li>
+  <li><strong>Ursachen:</strong> Undeutliche Aussprache, Lärm in Küche oder Gastraum, Zeitdruck, Sprachbarrieren, Stress oder unaufmerksames Zuhören.</li>
+  <li><strong>Gegenmaßnahmen:</strong> Deutlich und strukturiert sprechen, <span class="term" data-de="aktives Zuhören" data-vi="lắng nghe chủ động">aktives Zuhören</span> (Blickkontakt, Nicken, Notizen), gezielte <span class="term" data-de="die Rückfrage, -n" data-vi="câu hỏi xác nhận lại">Rückfragen</span> zur Bestellbestätigung sowie gegenseitige <span class="term" data-de="die Wertschätzung" data-vi="sự tôn trọng khách hàng">Wertschätzung</span>.</li>
 </ul>
-<div class="formula">Giao tiếp hoàn hảo = Lời nói chuẩn + Ngữ điệu ấm + Thân thể cởi mở</div>`
+<div class="vi"><b>Nhiễu giao tiếp &amp; Cách khắc phục:</b> Nguyên nhân do tiếng ồn, áp lực thời gian, nói không rõ hoặc rào cản ngôn ngữ. Khắc phục bằng cách nói rõ ràng, lắng nghe chủ động (<i>aktives Zuhören</i>), đặt câu hỏi xác nhận lại order (<i>Rückfragen</i>) và giữ thái độ tôn trọng.</div>
+<div class="formula">Gelungene Gästekommunikation = Höfliche Wortwahl (verbal) + Ruhiger Tonfall (paraverbal) + Offene Körpersprache (nonverbal)</div>`,
+                qa: [
+                  {
+                    q: "Unterscheiden Sie verbale, paraverbale und nonverbale Kommunikation mit je einem Beispiel!",
+                    qVi: "Hãy phân biệt giao tiếp verbal, paraverbal và nonverbal kèm ví dụ!",
+                    a: "Verbal: das gesprochene Wort (z. B. höfliche Begrüßung). Paraverbal: Art des Sprechens (z. B. Stimmklang, Lautstärke, Sprechtempo). Nonverbal: Körpersprache ohne Worte (z. B. Lächeln, Blickkontakt, aufrechte Haltung).",
+                    aVi: "Verbal: lời nói, từ ngữ (VD: lời chào lịch sự). Paraverbal: cách phát âm (VD: tông giọng, âm lượng, tốc độ nói). Nonverbal: ngôn ngữ cơ thể không lời (VD: nụ cười, ánh mắt, tư thế đứng thẳng)."
+                  },
+                  {
+                    q: "Wie lassen sich Kommunikationsstörungen bei der Bestellaufnahme vermeiden?",
+                    qVi: "Làm thế nào để tránh nhiễu giao tiếp khi nhận order của khách?",
+                    a: "Durch aktives Zuhören, Blickkontakt, Mitschreiben der Bestellung, gezielte Rückfragen bei Unklarheiten und das abschließende Wiederholen der Bestellung.",
+                    aVi: "Bằng cách lắng nghe chủ động, nhìn vào mắt khách, ghi chép lại order, hỏi lại ngay khi chưa rõ và nhắc lại toàn bộ order để xác nhận."
+                  }
+                ]
               }
             ]
           },
           {
             id: "lf5-speisen-getraenke",
-            badge: "LF 5 (Năm 1)",
+            badge: "LF 5 · 1. Jahr",
             title: "Speisen & Getränke",
             items: [
               {
                 id: "bfk2-snacks",
                 icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h18"/><path d="M3 12a9 9 0 0 0 18 0"/></svg>',
                 name: "LS05 · Snacks und einfache Speisen",
-                desc: "3 Nhóm Snack · 5 Tiêu chuẩn chất lượng · Kühlkette & Allergen",
-                content: `<h2> Snacks und einfache Speisen zubereiten und servieren (Trang 21 - 24)</h2>
-<div class="hint">LS05 · 3 Nhóm Món ăn nhẹ · 5 Tiêu chuẩn chất lượng · Kühlkette & Allergen</div>
-<h3 class="sub">1. 3 Nhóm Món ăn nhẹ (Snack-Kategorien)</h3>
+                desc: "3 Snack-Kategorien · 5 Qualitätskriterien · Kühlkette & Allergenkennzeichnung",
+                content: `<h2>Snacks und einfache Speisen zubereiten und servieren (S. 21–24)</h2>
+<div class="hint">LS05 · 3 Snack-Gruppen · 5 Qualitätsanforderungen · Kühlkette &amp; Allergene</div>
+<h3 class="sub">1. Einteilung in drei Snack-Kategorien</h3>
 <table>
-  <tr><th>Nhóm</th><th>Ví dụ món ăn tiêu biểu</th></tr>
-  <tr><td><strong>Kalte Snacks</strong> (Món lạnh)</td><td>Belegte Brötchen, Sandwiches, Canapés, Wrap-Variationen, Salad hũ, <span class="term" data-de="das Fingerfood" data-vi="đồ ăn bốc tay">Fingerfood</span>.</td></tr>
-  <tr><td><strong>Warme Snacks</strong> (Món nóng)</td><td>Toast Hawaii, Strammer Max, Panini <span class="term" data-de="überbacken" data-vi="nướng phô mai / bỏ lò">überbacken</span>, Súp ngày, Flammkuchen.</td></tr>
-  <tr><td><strong>Süße Snacks</strong> (Món ngọt)</td><td>Waffeln/Crêpes tươi, Muffins, Blechkuchen, Sữa chua/Quark trái cây.</td></tr>
+  <tr><th>Kategorie</th><th>Typische Beispiele</th></tr>
+  <tr><td><strong>Kalte Snacks</strong></td><td>Belegte Brötchen, Sandwiches, Canapés, Wraps, Salat im Glas, <span class="term" data-de="das Fingerfood" data-vi="đồ ăn bốc tay">Fingerfood</span>.</td></tr>
+  <tr><td><strong>Warme Snacks</strong></td><td>Toast Hawaii, Strammer Max, <span class="term" data-de="überbacken" data-vi="nướng phô mai / bỏ lò">überbackene</span> Panini/Baguettes, Tagessuppe, Flammkuchen.</td></tr>
+  <tr><td><strong>Süße Snacks</strong></td><td>Frische Waffeln, Crêpes, Muffins, Blechkuchen, Joghurt- und Quarkspeisen mit Früchten.</td></tr>
 </table>
-<h3 class="sub">2. 5 Tiêu chuẩn chất lượng vàng của Snack</h3>
+<div class="vi"><b>3 Nhóm món ăn nhẹ (Snacks):</b> (1) <b>Kalte Snacks</b> (món lạnh: sandwich, canapé, salad, fingerfood); (2) <b>Warme Snacks</b> (món nóng: Toast Hawaii, Strammer Max, panini bỏ lò, súp, Flammkuchen); (3) <b>Süße Snacks</b> (món ngọt: Waffeln, Crêpes, Muffin, bánh ngọt, sữa chua trái cây).</div>
+
+<h3 class="sub">2. Fünf Qualitätskriterien für erfolgreiche Snacks</h3>
 <ul>
-  <li><strong>Zubereitungszeit:</strong> Chế biến cực nhanh (5 – 10 phút).</li>
-  <li><strong>Frische &amp; Qualität:</strong> Nguyên liệu tươi ngon, trình bày bắt mắt.</li>
-  <li><strong>Kalkulierbarkeit:</strong> Định lượng chuẩn xác, dễ chuẩn bị trước (Mise en place).</li>
-  <li><strong>Handhabung:</strong> Khách dễ ăn nhanh (dùng tay hoặc dụng cụ đơn giản).</li>
-  <li><strong>Hygiene &amp; Sicherheit:</strong> Tuân thủ strictly quy tắc an toàn thực phẩm HACCP.</li>
+  <li><strong>Kurze Zubereitungszeit:</strong> Schnelle Fertigstellung à la minute (ca. 5–10 Minuten).</li>
+  <li><strong>Frische &amp; Optik:</strong> Knackige Zutaten, appetitliche Garnitur und sauberes Anrichten.</li>
+  <li><strong>Kalkulierbarkeit:</strong> Standardisierte Rezepturen und gute Vorbereitbarkeit (Mise en place).</li>
+  <li><strong>Einfache Handhabung:</strong> Unkompliziert zu verzehren (auch im Stehen oder unterwegs).</li>
+  <li><strong>Hygiene &amp; Lebensmittelsicherheit:</strong> Strikte Einhaltung der HACCP-Vorgaben.</li>
 </ul>
-<h3 class="sub">3. Bảo quản lạnh &amp; Khái niệm Dị ứng</h3>
-<p>Luôn duy trì <span class="term" data-de="die Kühlkette" data-vi="chuỗi lạnh (bảo quản lạnh)">Kühlkette</span> liên tục (2°C – 7°C đối với thịt, sữa, trứng). Đảm bảo <span class="term" data-de="die Allergenkennzeichnung" data-vi="ghi nhãn chất gây dị ứng">Allergenkennzeichnung</span> cho 14 nhóm dị ứng bắt buộc trên thực đơn.</p>`
+<div class="vi"><b>5 Tiêu chuẩn chất lượng của Snack:</b> Chế biến nhanh (5–10 phút); nguyên liệu tươi ngon &amp; trình bày đẹp; định lượng chuẩn xác dễ chuẩn bị trước (Mise en place); dễ cầm ăn; đảm bảo vệ sinh an toàn thực phẩm HACCP.</div>
+
+<h3 class="sub">3. Kühlkette &amp; Allergenkennzeichnung</h3>
+<p>Bei leicht verderblichen Zutaten (Fleisch, Fisch, Milchprodukte, Ei) darf <span class="term" data-de="die Kühlkette" data-vi="chuỗi lạnh (bảo quản lạnh)">die Kühlkette</span> (+2 °C bis +7 °C) nicht unterbrochen werden. Zudem gilt die gesetzliche <span class="term" data-de="die Allergenkennzeichnung" data-vi="ghi nhãn chất gây dị ứng">Allergenkennzeichnung</span> für die 14 Hauptallergene (z. B. Gluten, Laktose, Ei, Schalenfrüchte, Sellerie, Senf).</p>
+<div class="vi"><b>Bảo quản lạnh &amp; Dị ứng:</b> Luôn duy trì chuỗi lạnh (<i>Kühlkette</i> +2 °C đến +7 °C) đối với thực phẩm dễ hỏng và ghi nhãn đầy đủ 14 nhóm chất gây dị ứng bắt buộc (<i>Allergenkennzeichnung</i>) trên thực đơn.</div>`,
+                qa: [
+                  {
+                    q: "In welche drei Kategorien werden Snacks eingeteilt? Nennen Sie je zwei Beispiele!",
+                    qVi: "Snacks được chia thành 3 nhóm nào? Nêu 2 ví dụ cho mỗi nhóm!",
+                    a: "1. Kalte Snacks (z. B. Canapés, Wraps). 2. Warme Snacks (z. B. Toast Hawaii, Flammkuchen). 3. Süße Snacks (z. B. Waffeln, Muffins).",
+                    aVi: "1. Món lạnh (Kalte Snacks: Canapés, Wraps). 2. Món nóng (Warme Snacks: Toast Hawaii, Flammkuchen). 3. Món ngọt (Süße Snacks: Waffeln, Muffins)."
+                  },
+                  {
+                    q: "Welche fünf Anforderungen muss ein guter Snack in der Gastronomie erfüllen?",
+                    qVi: "Một món Snack đạt chuẩn trong nhà hàng cần đáp ứng 5 yêu cầu nào?",
+                    a: "Kurze Zubereitungszeit (5–10 Min.), hohe Frische und ansprechende Optik, gute Kalkulier- und Vorbereitbarkeit, einfache Handhabung beim Verzehr sowie einwandfreie Hygiene (Kühlkette/HACCP).",
+                    aVi: "Thời gian chế biến nhanh (5–10 phút), tươi ngon và bắt mắt, dễ định lượng và chuẩn bị trước, dễ ăn và đảm bảo vệ sinh HACCP/chuỗi lạnh."
+                  }
+                ]
               },
               {
                 id: "bfk2-kaltgetraenke",
                 icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11h13v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M17 11h2a3 3 0 0 1 0 6h-2"/></svg>',
                 name: "LS06 · Alkoholfreie Kaltgetränke",
-                desc: "Mineralwasser, Quellwasser, Tafelwasser · Fruchtsaft & Schorle",
-                content: `<h2> Alkoholfreie Kaltgetränke bereitstellen (Trang 25 - 27)</h2>
-<div class="hint">LS06 · Phân loại Nước khoáng & Nước hoa quả · Quy tắc phục vụ</div>
-<h3 class="sub">1. Phân loại Nước khoáng & Nước uống</h3>
+                desc: "Mineral-, Quell-, Tafel- & Heilwasser · Fruchtsaft, Nektar & Schorle · Servierregeln",
+                content: `<h2>Alkoholfreie Kaltgetränke bereitstellen (S. 25–27)</h2>
+<div class="hint">LS06 · Wasserarten · Fruchtsaftgetränke nach Fruchtgehalt · Servierregeln</div>
+<h3 class="sub">1. Unterscheidung der Wasserarten</h3>
 <table>
-  <tr><th>Loại nước</th><th>Đặc điểm pháp lý &amp; Sản xuất</th></tr>
-  <tr><td><span class="term" data-de="das Mineralwasser" data-vi="nước khoáng">Mineralwasser</span></td><td>Nguồn ngầm bảo vệ, thành phần khoáng ổn định, đóng chai tại nguồn, <span class="term" data-de="amtlich anerkannt" data-vi="được nhà nước kiểm định chứng nhận">amtlich anerkannt</span>.</td></tr>
-  <tr><td><span class="term" data-de="das Tafelwasser" data-vi="nước uống pha chế công nghiệp">Tafelwasser</span></td><td>Pha chế công nghiệp từ nước máy + khoáng/muối/CO2, chiết từ vòi kẹp.</td></tr>
-  <tr><td>Quellwasser / Heilwasser</td><td>Nước nguồn thiên nhiên / Nước chữa bệnh tuân theo Luật Dược phẩm.</td></tr>
+  <tr><th>Wasserart</th><th>Rechtliche Merkmale &amp; Gewinnung</th></tr>
+  <tr><td><span class="term" data-de="das Mineralwasser" data-vi="nước khoáng">Natürliches Mineralwasser</span></td><td>Unterirdisches, vor Verunreinigungen geschütztes Vorkommen, konstante Mineralstoffzusammensetzung, direkt an der Quelle abgefüllt, einziges Lebensmittel mit <span class="term" data-de="amtlich anerkannt" data-vi="được nhà nước kiểm định chứng nhận">amtlicher Anerkennung</span>.</td></tr>
+  <tr><td><span class="term" data-de="das Quellwasser" data-vi="nước suối nguồn tự nhiên">Quellwasser</span></td><td>Aus unterirdischen Wasservorkommen an der Quelle abgefüllt; keine amtliche Anerkennung nötig, entspricht Trinkwasserverordnung.</td></tr>
+  <tr><td><span class="term" data-de="das Tafelwasser" data-vi="nước uống pha chế công nghiệp">Tafelwasser</span></td><td>Industriell hergestelltes Gemisch aus Trinkwasser, Mineralstoffen, Salz und Kohlensäure; darf überall abgefüllt oder gezapft werden.</td></tr>
+  <tr><td><span class="term" data-de="das Heilwasser" data-vi="nước khoáng trị liệu">Heilwasser</span></td><td>Natürliches Wasser mit nachgewiesener vorbeugender oder heilender Wirkung; unterliegt dem Arzneimittelgesetz.</td></tr>
 </table>
-<h3 class="sub">2. Nước trái cây &amp; Đồ uống hoa quả</h3>
+<div class="vi"><b>Phân loại nước uống:</b> (1) <b>Mineralwasser</b>: nước khoáng thiên nhiên đóng chai ngay tại nguồn ngầm và là thực phẩm duy nhất phải được nhà nước công nhận chính thức (<i>amtlich anerkannt</i>); (2) <b>Quellwasser</b>: nước nguồn tự nhiên; (3) <b>Tafelwasser</b>: nước pha chế công nghiệp từ nước uống + khoáng + CO₂; (4) <b>Heilwasser</b>: nước khoáng trị liệu theo Luật Dược phẩm.</div>
+
+<h3 class="sub">2. Fruchtsaft, Fruchtnektar &amp; Fruchtsaftschorle</h3>
 <table>
-  <tr><th>Loại đồ uống</th><th>Tỷ lệ trái cây (Fruchtgehalt)</th><th>Đặc điểm</th></tr>
-  <tr><td><span class="term" data-de="der Direktsaft" data-vi="nước ép trực tiếp 100%">Fruchtsaft (Direktsaft)</span></td><td><strong>100%</strong></td><td>Ép tươi trực tiếp, không pha nước, không thêm đường.</td></tr>
-  <tr><td>Fruchtnektar</td><td><strong>25% – 50%</strong></td><td>Dành cho quả nhiều axit/xốp, pha thêm nước &amp; đường (tối đa 20%).</td></tr>
-  <tr><td><span class="term" data-de="die Fruchtsaftschorle" data-vi="nước ép trái cây pha sủi soda">Fruchtsaftschorle</span></td><td><strong>ca. 50% Saft + 50% Wasser</strong></td><td>Hỗn hợp nước ép quả + nước khoáng sủi (Apfelschorle).</td></tr>
+  <tr><th>Getränk</th><th>Fruchtgehalt</th><th>Besonderheiten</th></tr>
+  <tr><td><span class="term" data-de="der Fruchtsaft" data-vi="nước ép trái cây 100%">Fruchtsaft</span> (Direktsaft / aus Konzentrat)</td><td><strong>100 %</strong></td><td>Kein Zusatz von Zucker, Farb- oder Konservierungsstoffen erlaubt.</td></tr>
+  <tr><td><span class="term" data-de="der Fruchtnektar" data-vi="nước trái cây nektar (25–50%)">Fruchtnektar</span></td><td><strong>25 % – 50 %</strong></td><td>Für säurereiche oderfruchtfleischreiche Früchte (z. B. Sauerkirsche, Johannisbeere, Banane, Maracuja); Zusatz von Wasser und bis zu 20 % Zucker erlaubt.</td></tr>
+  <tr><td><span class="term" data-de="das Fruchtsaftgetränk" data-vi="nước giải khát hương trái cây">Fruchtsaftgetränk</span></td><td><strong>mind. 6 % – 30 %</strong></td><td>6 % bei Zitrusfrüchten, 10 % bei Kernobst, 30 % bei Steinobst.</td></tr>
+  <tr><td><span class="term" data-de="die Fruchtsaftschorle" data-vi="nước ép trái cây pha sủi soda">Fruchtsaftschorle</span></td><td><strong>ca. 50 % Saft + 50 % Mineralwasser</strong></td><td>Erfrischende Mischung aus Fruchtsaft und kohlensäurehaltigem Wasser (z. B. Apfelschorle).</td></tr>
 </table>
-<div class="note"><b>Servierregel:</b> Nhiệt độ phục vụ chuẩn 8°C – 10°C. Chai nguyên tem phải mở trước mặt khách (vor dem Gast öffnen).</div>`
+<div class="vi"><b>Phân biệt theo tỷ lệ trái cây (Fruchtgehalt):</b> <b>Fruchtsaft</b> = 100 % nguyên chất không thêm đường; <b>Fruchtnektar</b> = 25–50 % (dùng cho quả quá chua hoặc đặc như chanh dây, chuối, anh đào chua, được phép pha nước và tối đa 20 % đường); <b>Fruchtsaftgetränk</b> = 6–30 %; <b>Fruchtsaftschorle</b> = khoảng 50 % nước ép + 50 % nước khoáng có ga.</div>
+<div class="note"><b>Servierregel:</b> Serviertemperatur für Kaltgetränke: <b>8 °C – 10 °C</b>. Originalverschlossene Flaschen werden stets rechts vor dem Gast geöffnet und eingeschenkt.</div>`,
+                qa: [
+                  {
+                    q: "Worin unterscheiden sich natürliches Mineralwasser und Tafelwasser?",
+                    qVi: "Nước khoáng tự nhiên (Mineralwasser) và nước uống pha chế (Tafelwasser) khác nhau như thế nào?",
+                    a: "Natürliches Mineralwasser stammt aus einer geschützten unterirdischen Quelle, muss direkt vor Ort abgefüllt werden und ist amtlich anerkannt. Tafelwasser wird industriell aus Trinkwasser und Zutaten gemischt und darf überall abgefüllt oder gezapft werden.",
+                    aVi: "Mineralwasser lấy từ nguồn ngầm tự nhiên, bắt buộc đóng chai tại nguồn và được nhà nước chứng nhận. Tafelwasser được pha chế công nghiệp từ nước uống và khoáng chất, có thể đóng chai hoặc chiết vòi ở bất kỳ đâu."
+                  },
+                  {
+                    q: "Welchen Fruchtgehalt haben Fruchtsaft und Fruchtnektar?",
+                    qVi: "Tỷ lệ trái cây (Fruchtgehalt) của Fruchtsaft và Fruchtnektar là bao nhiêu?",
+                    a: "Fruchtsaft hat immer 100 % Fruchtgehalt ohne Zuckerzusatz. Fruchtnektar hat je nach Fruchtart mindestens 25 % bis 50 % Fruchtgehalt und enthält Wasser sowie ggf. Zucker.",
+                    aVi: "Fruchtsaft luôn có 100 % trái cây nguyên chất không thêm đường. Fruchtnektar có từ 25 % đến 50 % tùy loại quả, phần còn lại là nước và đường."
+                  }
+                ]
               },
               {
                 id: "bfk2-heissgetraenke",
                 icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11h13v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M17 11h2a3 3 0 0 1 0 6h-2"/></svg>',
                 name: "LS07 · Alkoholfreie Heißgetränke",
-                desc: "Arabica vs Robusta · Kakao & Heiße Schokolade · Tee Fermentation & Ziehzeit",
-                content: `<h2> Alkoholfreie Heißgetränke (Trang 28 - 38)</h2>
-<div class="hint">LS07 · Cà phê Arabica/Robusta · Ca cao & Socola nóng · Trà Fermentation & Ziehzeit</div>
-<h3 class="sub">1. Cà phê: Arabica vs. Robusta</h3>
+                desc: "Kaffee (Arabica vs. Robusta) · Kakao & Heiße Schokolade · Tee (Fermentation & Ziehzeit)",
+                content: `<h2>Alkoholfreie Heißgetränke zubereiten und servieren (S. 28–38)</h2>
+<div class="hint">LS07 · Kaffeebohnen Arabica &amp; Robusta · Kakao · Tee-Herstellung, Blattgrade &amp; Ziehzeit</div>
+<h3 class="sub">1. Kaffee: Arabica vs. Robusta</h3>
 <table>
-  <tr><th>Tiêu chí</th><th>Arabica (Coffea Arabica)</th><th>Robusta (Coffea Canephora)</th></tr>
-  <tr><td>Độ cao &amp; Vùng trồng</td><td>600m – 2000m (Brasilien, Kolumbien)</td><td>Dưới 600m (Vietnam - xuất khẩu #1 thế giới)</td></tr>
-  <tr><td>Hương vị &amp; Koffein</td><td>Thơm ngậy, chua thanh (feine Säure), 1-1,5% Koffein</td><td>Đậm đà, đắng thanh (erdig, kräftig), 2-4,5% Koffein</td></tr>
+  <tr><th>Merkmal</th><th>Arabica (Coffea arabica)</th><th>Robusta (Coffea canephora)</th></tr>
+  <tr><td>Anbauhöhe &amp; Herkunft</td><td>Hochland: 600 m – 2.000 m (z. B. Brasilien, Kolumbien, Äthiopien)</td><td>Tiefland: unter 600 m (z. B. Vietnam – weltweit größter Robusta-Exporteur)</td></tr>
+  <tr><td>Geschmack &amp; Koffeingehalt</td><td>Mild, aromatisch, feine Säure · <strong>1,0 – 1,5 % Koffein</strong></td><td>Kräftig, erdig, schöne Crema · <strong>2,0 – 4,5 % Koffein</strong></td></tr>
+  <tr><td>Bohnenform</td><td>Länglich-oval mit geschwungener S-Naht</td><td>Rundlich-klein mit gerader Naht</td></tr>
 </table>
-<p>Rang cà phê (Röstung): 200°C – 250°C tạo hơn 800 hợp chất hương thơm. Pha Espresso chuẩn dùng <span class="term" data-de="die Dampfdruckverfahren" data-vi="phương pháp ép áp suất hơi nước">Dampfdruckverfahren</span>.</p>
+<p>Durch die <strong>Röstung</strong> (bei 200 °C – 250 °C) entstehen über 800 Aromastoffe. Für Espresso wird das <span class="term" data-de="das Druckbrühverfahren" data-vi="phương pháp pha ép áp suất cao">Druckbrühverfahren</span> (ca. 9 bar, 88–92 °C, 25–30 Sekunden Durchlaufzeit) genutzt.</p>
+<div class="vi"><b>So sánh hạt cà phê Arabica &amp; Robusta:</b> <b>Arabica</b> trồng ở vùng cao (600–2000 m), hạt bầu dục rãnh chữ S, hương thơm dịu, chua thanh, ít caffein (1–1,5 %). <b>Robusta</b> trồng ở vùng thấp (&lt; 600 m, Việt Nam xuất khẩu số 1 thế giới), hạt tròn nhỏ rãnh thẳng, vị đậm đắng, nhiều lớp bọt Crema và hàm lượng caffein cao (2–4,5 %).</div>
 
-<h3 class="sub">2. Ca cao vs. Socola nóng</h3>
-<p>Ca cao chứa <span class="term" data-de="Theobromin" data-vi="chất kích thích dịu êm theobromin">Theobromin</span> kích thích nhẹ nhàng. Kakaogetränk pha từ bột ca cao + sữa; <strong>Heiße Schokolade</strong> chế biến bằng cách đun chảy socola miếng vào sữa nóng.</p>
+<h3 class="sub">2. Kakao vs. Heiße Schokolade</h3>
+<p>Kakaobohnen enthalten den mild anregenden Wirkstoff <span class="term" data-de="Theobromin" data-vi="chất kích thích dịu êm theobromin">Theobromin</span>. Ein <strong>Kakaogetränk</strong> wird aus Kakaopulver, Zucker und heißer Milch angerührt; für echte <strong>Heiße Schokolade</strong> wird feste Kuvertüre bzw. Schokolade in heißer Milch geschmolzen.</p>
+<div class="vi"><b>Ca cao &amp; Socola nóng:</b> Hạt ca cao chứa chất kích thích nhẹ <i>Theobromin</i>. <i>Kakaogetränk</i> pha từ bột ca cao với sữa, còn <i>Heiße Schokolade</i> đun chảy trực tiếp socola nguyên miếng trong sữa nóng.</div>
 
-<h3 class="sub">3. Trà (Tee): Lên men, Cấp độ lá &amp; Thời gian hãm</h3>
+<h3 class="sub">3. Tee: Fermentation, Blattgrade &amp; Ziehzeit</h3>
 <ul>
-  <li><span class="term" data-de="die Fermentation" data-vi="quá trình lên men trà">Fermentation</span>: Grüntee (nicht fermentiert), Oolong (halbfermentiert), Schwarztee (voll fermentiert).</li>
-  <li><span class="term" data-de="der Blattgrad" data-vi="cấp độ / kích thước lá trà">Blattgrad</span>: Blatt-Tee (nguyên lá), Broken [B] (lá gãy), Fannings [F] (trà vụn túi lọc), Dust [D] (bụi trà).</li>
-  <li><span class="term" data-de="die Ziehzeit" data-vi="thời gian hãm trà">Ziehzeit</span>: <strong>3 phút</strong> = <span class="term" data-de="anregend" data-vi="kích thích tỉnh táo">anregend</span> (giải phóng Koffein nhanh); <strong>5 phút</strong> = <span class="term" data-de="beruhigend" data-vi="thư giãn / dịu dạ dày">beruhigend</span> (giải phóng <span class="term" data-de="die Gerbstoffe" data-vi="chất chát Tanin">Gerbstoffe</span>).</li>
-</ul>`
+  <li><span class="term" data-de="die Fermentation" data-vi="quá trình lên men oxy hóa lá trà">Fermentation</span> (Oxidation des Zellsafts): <strong>Grüner Tee</strong> = nicht fermentiert (Blätter werden gedämpft/geröstet); <strong>Oolong-Tee</strong> = halbfermentiert; <strong>Schwarzer Tee</strong> = voll fermentiert.</li>
+  <li><span class="term" data-de="der Blattgrad" data-vi="cấp độ / kích thước lá trà">Blattgrade</span>: <strong>Blatt-Tee</strong> (ganze Blätter, z. B. Flowery Orange Pekoe FOP), <strong>Broken [B]</strong> (gebrochene Blätter, kräftiger), <strong>Fannings [F]</strong> und <strong>Dust [D]</strong> (feine Siebung für Aufgussbeutel).</li>
+  <li><span class="term" data-de="die Ziehzeit" data-vi="thời gian hãm trà">Ziehzeit &amp; Wirkung</span>: <strong>2–3 Minuten</strong> = <span class="term" data-de="anregend" data-vi="kích thích tỉnh táo">anregend</span> (Teein/Koffein löst sich zuerst); <strong>4–5 Minuten</strong> = <span class="term" data-de="beruhigend" data-vi="thư giãn / dịu dạ dày">beruhigend</span> für Magen und Darm (<span class="term" data-de="die Gerbstoffe" data-vi="chất chát Tanin">Gerbstoffe / Tannine</span> lösen sich und binden das Koffein).</li>
+</ul>
+<div class="vi"><b>Kiến thức về Trà (Tee):</b> (1) <b>Lên men (Fermentation)</b>: Trà xanh không lên men, Oolong bán lên men, Trà đen lên men hoàn toàn; (2) <b>Cấp độ lá (Blattgrad)</b>: Nguyên lá (Blatt-Tee) → Lá gãy (Broken) → Vụn nhỏ túi lọc (Fannings &amp; Dust); (3) <b>Thời gian hãm (Ziehzeit)</b>: Hãm 2–3 phút giúp tỉnh táo (<i>anregend</i> do giải phóng caffein trước); hãm 4–5 phút giúp dịu dạ dày (<i>beruhigend</i> do giải phóng chất chát <i>Gerbstoffe</i>).</div>`,
+                qa: [
+                  {
+                    q: "Nennen Sie drei Unterschiede zwischen Arabica- und Robusta-Kaffeebohnen!",
+                    qVi: "Hãy nêu 3 điểm khác biệt giữa hạt cà phê Arabica và Robusta!",
+                    a: "1. Anbauhöhe: Arabica im Hochland (600–2000 m), Robusta im Tiefland (< 600 m). 2. Koffeingehalt: Arabica 1–1,5 %, Robusta 2–4,5 %. 3. Geschmack & Aussehen: Arabica mild mit S-Naht, Robusta kräftig-erdig mit gerader Naht.",
+                    aVi: "1. Độ cao trồng: Arabica ở vùng cao (600–2000 m), Robusta ở vùng thấp (< 600 m). 2. Hàm lượng caffein: Arabica 1–1,5 %, Robusta 2–4,5 %. 3. Hương vị & hình dáng: Arabica thơm dịu, rãnh chữ S; Robusta đậm mạnh, rãnh thẳng."
+                  },
+                  {
+                    q: "Wie beeinflusst die Ziehzeit von schwarzem Tee seine Wirkung?",
+                    qVi: "Thời gian hãm trà đen (Ziehzeit) ảnh hưởng đến tác dụng của trà như thế nào?",
+                    a: "Kurze Ziehzeit (2–3 Minuten) wirkt anregend, da sich zuerst das Koffein (Teein) löst. Längere Ziehzeit (4–5 Minuten) wirkt beruhigend, da sich Gerbstoffe (Tannine) lösen, die das Koffein binden.",
+                    aVi: "Hãm ngắn (2–3 phút) có tác dụng kích thích tỉnh táo (anregend) vì caffein tan ra trước. Hãm lâu (4–5 phút) có tác dụng làm dịu (beruhigend) vì chất chát (Gerbstoffe) tiết ra kết hợp với caffein."
+                  }
+                ]
               }
             ]
           },
           {
             id: "lf5-bier-wein",
-            badge: "LF 5 (Năm 1)",
+            badge: "LF 5 · 1. Jahr",
             title: "Bierkunde & Weinkunde",
             items: [
               {
                 id: "bfk2-bierkunde",
                 icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11h13v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M17 11h2a3 3 0 0 1 0 6h-2"/></svg>',
                 name: "LS08 · Bierkunde und Bierausschank",
-                desc: "Reinheitsgebot 1516 · 4 Rohstoffe · Obergärig vs Untergärig · Zapfanlage",
-                content: `<h2> Bierkunde und Bierausschank (Trang 39 - 45)</h2>
-<div class="hint">LS08 · Reinheitsgebot 1516 · 4 Rohstoffe · Obergärig vs Untergärig · Zapfanlage</div>
-<h3 class="sub">1. Luật tinh khiết Đức (<span class="term" data-de="das Reinheitsgebot" data-vi="luật tinh khiết nấu bia 1516">Reinheitsgebot</span> von 1516)</h3>
-<p>Bia chỉ được phép nấu từ 4 nguyên liệu chính: <strong>Wasser (Nước)</strong>, <strong>Gerstenmalz (Mạch nha đại mạch)</strong>, <strong>Hopfen (Hoa bia)</strong> và <strong>Hefe (Men bia)</strong>.</p>
+                desc: "Reinheitsgebot 1516 · 4 Grundrohstoffe · Obergärig vs. untergärig · Bierausschank",
+                content: `<h2>Bierkunde und Bierausschank (S. 39–45)</h2>
+<div class="hint">LS08 · Reinheitsgebot von 1516 · Brauprozess · Obergärige &amp; untergärige Biere · Zapftechnik</div>
+<h3 class="sub">1. Das deutsche Reinheitsgebot von 1516</h3>
+<p>Nach dem <span class="term" data-de="das Reinheitsgebot" data-vi="luật tinh khiết nấu bia 1516">Reinheitsgebot</span> (Herzog Wilhelm IV. von Bayern, 1516) darf Bier in Deutschland ausschließlich aus vier Grundrohstoffen gebraut werden: <strong>Wasser</strong>, <strong>Malz</strong> (Gersten- oder Weizenmalz), <strong>Hopfen</strong> und <strong>Hefe</strong>.</p>
+<div class="vi"><b>Luật tinh khiết (Reinheitsgebot 1516):</b> Quy định bia Đức chỉ được nấu từ 4 nguyên liệu duy nhất: Nước (<i>Wasser</i>), Mạch nha (<i>Malz</i>), Hoa bia (<i>Hopfen</i>) và Men bia (<i>Hefe</i>).</div>
 
-<h3 class="sub">2. So sánh Men nổi (<span class="term" data-de="obergärig" data-vi="lên men nổi">obergärig</span>) vs Men chìm (<span class="term" data-de="untergärig" data-vi="lên men chìm">untergärig</span>)</h3>
+<h3 class="sub">2. Obergärige vs. untergärige Biere</h3>
 <table>
-  <tr><th>Tiêu chí</th><th>Lên men nổi (Obergärig)</th><th>Lên men chìm (Untergärig)</th></tr>
-  <tr><td>Nhiệt độ lên men</td><td>15°C – 22°C (Ấm)</td><td>6°C – 12°C (Mát/Lạnh)</td></tr>
-  <tr><td>Đặc tính hương vị</td><td>Hương hoa quả phong phú</td><td>Thanh khiết, đắng tròn vị</td></tr>
-  <tr><td>Dòng bia tiêu biểu</td><td>Weizenbier (<span class="term" data-de="hefetrüb" data-vi="đục tự nhiên do men">hefetrüb</span>), Altbier, Kölsch</td><td>Pils (Pilsener), Märzen, Bockbier</td></tr>
+  <tr><th>Kriterium</th><th><span class="term" data-de="obergärig" data-vi="lên men nổi">Obergärig</span></th><th><span class="term" data-de="untergärig" data-vi="lên men chìm">Untergärig</span></th></tr>
+  <tr><td>Verhalten der Hefe</td><td>Hefe steigt bei der Gärung an die Oberfläche</td><td>Hefe sinkt am Ende der Gärung auf den Gefäßboden</td></tr>
+  <tr><td>Gärtemperatur</td><td>Wärmer: <strong>15 °C – 22 °C</strong></td><td>Kühler: <strong>6 °C – 12 °C</strong></td></tr>
+  <tr><td>Geschmacksprofil</td><td>Fruchtig, vollmundig, aromatisch</td><td>Schlank, frisch, feinherb, längere Haltbarkeit</td></tr>
+  <tr><td>Typische Biersorten</td><td>Weizenbier / Weißbier (<span class="term" data-de="hefetrüb" data-vi="đục tự nhiên do men">hefetrüb</span> oder Kristall), Altbier, Kölsch, Berliner Weiße</td><td>Pils (Pilsener), Export, Helles, Märzen, Bockbier</td></tr>
 </table>
-<div class="formula">Nấu bia: Maische (mạch nha+nước) → Würze (dịch cốt đun hoa bia) → Gärung (lên men)</div>
-<p>Vận hành vòi rót tươi (<span class="term" data-de="die Zapfanlage, -n" data-vi="hệ thống vòi rót bia tươi">Zapfanlage</span>): Duy trì áp suất CO2 và vệ sinh định kỳ.</p>`
+<div class="vi"><b>So sánh bia lên men nổi (obergärig) và lên men chìm (untergärig):</b> <b>Obergärig</b> lên men ở 15–22 °C, men nổi lên bề mặt, hương trái cây (gồm <i>Weizenbier, Altbier, Kölsch, Berliner Weiße</i>). <b>Untergärig</b> lên men lạnh 6–12 °C, men lắng xuống đáy, vị thanh đắng dịu (gồm <i>Pils, Export, Helles, Märzen, Bockbier</i>).</div>
+
+<h3 class="sub">3. Brauprozess &amp; Bierausschank</h3>
+<div class="formula">Mälzen → Maischen (Malzschrot + Wasser) → Läutern → Würzekochen mit Hopfen → Gärung mit Hefe → Reifung &amp; Filtration</div>
+<p>Beim Zapfen an der <span class="term" data-de="die Zapfanlage, -n" data-vi="hệ thống vòi rót bia tươi">Zapfanlage</span> müssen Gläser kalt, fettfrei und kurz mit klarem Wasser vorgespült sein. Optimale Trinktemperatur für Fassbier: <strong>7 °C – 9 °C</strong>.</p>
+<div class="vi"><b>Quy trình nấu &amp; Rót bia:</b> Nảy mầm mạch nha (<i>Mälzen</i>) → Nấu dịch nha (<i>Maischen</i>) → Lọc bã (<i>Läutern</i>) → Đun sôi dịch đường với hoa bia (<i>Würzekochen</i>) → Lên men (<i>Gärung</i>). Khi rót bia tươi, ly phải sạch mỡ và tráng nước lạnh, nhiệt độ phục vụ chuẩn 7–9 °C.</div>`,
+                qa: [
+                  {
+                    q: "Welche vier Rohstoffe sind nach dem deutschen Reinheitsgebot von 1516 für das Bierbrauen erlaubt?",
+                    qVi: "Theo Luật tinh khiết Đức năm 1516, 4 nguyên liệu nào được phép dùng để nấu bia?",
+                    a: "Wasser, Malz (Gersten-/Weizenmalz), Hopfen und Hefe.",
+                    aVi: "Nước (Wasser), mạch nha (Malz), hoa bia (Hopfen) và men bia (Hefe)."
+                  },
+                  {
+                    q: "Unterscheiden Sie obergäriges und untergäriges Bier anhand der Gärtemperatur und nennen Sie je zwei Beispiele!",
+                    qVi: "Hãy phân biệt bia lên men nổi (obergärig) và lên men chìm (untergärig) theo nhiệt độ lên men và nêu 2 ví dụ mỗi loại!",
+                    a: "Obergärig: Gärung bei 15–22 °C, Hefe steigt nach oben (z. B. Weizenbier, Kölsch, Altbier). Untergärig: Gärung bei 6–12 °C, Hefe sinkt nach unten (z. B. Pils, Export, Helles, Bockbier).",
+                    aVi: "Obergärig: lên men ở 15–22 °C, men nổi lên trên (VD: Weizenbier, Kölsch, Altbier). Untergärig: lên men ở 6–12 °C, men lắng xuống đáy (VD: Pils, Export, Helles, Bockbier)."
+                  }
+                ]
               },
               {
                 id: "bfk2-weinkunde",
                 icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11h13v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M17 11h2a3 3 0 0 1 0 6h-2"/></svg>',
                 name: "LS09 · Weinarten darstellen und empfehlen",
-                desc: "Baden & Württemberg · Fließschema Gärung · Weißwein, Rosé, Rotwein · Weißherbst",
-                content: `<h2> Weinarten darstellen und empfehlen (Trang 46 - 55)</h2>
-<div class="hint">LS09 · Baden & Württemberg · Fließschema · Weißwein, Rosé, Rotwein · Weißherbst</div>
-<h3 class="sub">1. Hai Vùng trồng Nho trọng điểm</h3>
+                desc: "Anbaugebiete Baden & Württemberg · Weiß-, Rosé- & Rotweinbereitung · Weißherbst",
+                content: `<h2>Weinarten darstellen und empfehlen (S. 46–55)</h2>
+<div class="hint">LS09 · Weinbaugebiete Baden &amp; Württemberg · Mostgärung vs. Maischegärung · Weinarten</div>
+<h3 class="sub">1. Die regionalen Anbaugebiete Baden und Württemberg</h3>
 <ul>
-  <li><strong>Baden:</strong> Vùng dài nhất Đức, >50% diện tích trồng dòng Burgunder (Spätburgunder, Grauburgunder, Weißburgunder, Chardonnay). Nổi tiếng vùng Kaiserstuhl.</li>
-  <li><strong>Württemberg:</strong> Nổi tiếng vang đỏ (Trollinger, Lemberger, Schwarzriesling) và Riesling trắng. Vườn nho sườn dốc Steillagen.</li>
+  <li><strong>Baden:</strong> Südlichstes und wärmstes deutsches Weinanbaugebiet (z. B. Kaiserstuhl, Ortenau, Markgräflerland). Über 50 % der Rebfläche sind mit Burgundersorten bestockt: <em>Spätburgunder, Grauburgunder, Weißburgunder, Müller-Thurgau, Gutedel</em>.</li>
+  <li><strong>Württemberg:</strong> Bekannt als Rotweinland entlang des Neckars mit vielen Steillagen. Leitrebsorten: <em>Trollinger, Lemberger, Schwarzriesling, Spätburgunder</em> sowie <em>Riesling</em>.</li>
 </ul>
+<div class="vi"><b>Hai vùng rượu vang trọng điểm tại Baden-Württemberg:</b> <b>Baden</b> là vùng ấm nhất nước Đức, nổi tiếng với dòng nho Burgunder (<i>Spätburgunder, Grauburgunder, Weißburgunder</i>). <b>Württemberg</b> nổi tiếng với các giống nho đỏ trên sườn đồi dốc (<i>Trollinger, Lemberger, Schwarzriesling</i>) và nho trắng <i>Riesling</i>.</div>
 
-<h3 class="sub">2. Sơ đồ Sản xuất &amp; Phân loại Rượu vang</h3>
+<h3 class="sub">2. Weinbereitung und Weinarten im Überblick</h3>
 <table>
-  <tr><th>Loại rượu</th><th>Nguyên liệu nho</th><th>Quy trình sản xuất</th></tr>
-  <tr><td><strong>Weißwein</strong> (Vang trắng)</td><td>Nho trắng</td><td><span class="term" data-de="die Mostgärung" data-vi="lên men nước ép nho đã lọc">Mostgärung</span> (Lên men nước ép nho)</td></tr>
-  <tr><td><strong>Rotwein</strong> (Vang đỏ)</td><td>Nho đỏ</td><td><span class="term" data-de="die Maischegärung" data-vi="lên men cả vỏ và hạt nho">Maischegärung</span> (Lên men vỏ nho để chiết xuất màu &amp; tannin)</td></tr>
-  <tr><td><strong>Roséwein</strong> (Vang hồng)</td><td>Nho đỏ</td><td>Mostgärung hoặc Maischegärung ngắn vài giờ.</td></tr>
-  <tr><td><span class="term" data-de="der Rotling" data-vi="vang hồng lai">Rotling</span></td><td>Nho trắng + Nho đỏ ép chung</td><td>Ép chung cả 2 loại nho rồi lên men.</td></tr>
+  <tr><th>Weinart</th><th>Traubenmaterial</th><th>Herstellungsverfahren</th></tr>
+  <tr><td><strong>Weißwein</strong></td><td>Weiße Trauben (oder rote Trauben ohne Schalenkontakt: <em>Blanc de Noirs</em>)</td><td><span class="term" data-de="die Mostgärung" data-vi="lên men nước ép nho đã lọc">Mostgärung</span>: Trauben werden sofort abgepresst (gekeltert); nur der klare Traubenmost gärt.</td></tr>
+  <tr><td><strong>Rotwein</strong></td><td>Dunkle / blaue Trauben</td><td><span class="term" data-de="die Maischegärung" data-vi="lên men cả vỏ và hạt nho">Maischegärung</span> (oder Maischeocherhitzung): Gärung mit den Beerenschalen, um rote Farbstoffe und Tannine zu lösen.</td></tr>
+  <tr><td><strong>Roséwein</strong></td><td>Ausschließlich dunkle / blaue Trauben</td><td>Hell gekeltert wie Weißwein oder nach kurzer Standzeit auf der Maische abgepresst.</td></tr>
+  <tr><td><span class="term" data-de="der Rotling" data-vi="vang hồng pha trộn nho trắng và đỏ">Rotling</span> (z. B. Schillerwein)</td><td>Weiße + rote Trauben gemischt</td><td>Beide Traubenarten werden vor dem Keltern gemeinsam verarbeitet und vergoren.</td></tr>
 </table>
-<div class="note"><b>Weißherbst:</b> Roséwein làm từ 100% MỘT giống nho đỏ duy nhất, đạt chuẩn Qualitätswein/Prädikatswein.</div>`
+<div class="vi"><b>Phân biệt quy trình sản xuất các dòng vang:</b> <b>Weißwein</b> ép lấy nước nho ngay rồi mới lên men (<i>Mostgärung</i>); <b>Rotwein</b> lên men cả vỏ nho đỏ (<i>Maischegärung</i>) để lấy màu đỏ và chất chát Tannin; <b>Roséwein</b> làm từ nho đỏ nhưng ép sớm nên có màu hồng nhạt; <b>Rotling</b> ép chung cả nho trắng và nho đỏ.</div>
+<div class="note"><b>Weißherbst:</b> Ein deutscher Qualitäts- oder Prädikats-Roséwein, der zu <strong>100 % aus einer einzigen roten Rebsorte</strong> (meist Spätburgunder) aus demselben Anbaugebiet gekeltert wurde.</div>`,
+                qa: [
+                  {
+                    q: "Worin besteht der Hauptunterschied zwischen der Herstellung von Weißwein und Rotwein?",
+                    qVi: "Điểm khác biệt chính giữa quy trình sản xuất vang trắng (Weißwein) và vang đỏ (Rotwein) là gì?",
+                    a: "Weißwein entsteht durch Mostgärung (Trauben werden vor der Gärung abgepresst). Rotwein entsteht durch Maischegärung (die Trauben gären zusammen mit den roten Beerenschalen, in denen die Farbstoffe sitzen).",
+                    aVi: "Vang trắng sản xuất bằng Mostgärung (ép lấy nước nho trước rồi mới lên men). Vang đỏ sản xuất bằng Maischegärung (lên men cả xác vỏ nho để chiết xuất sắc tố đỏ và chất chát)."
+                  },
+                  {
+                    q: "Was ist der Unterschied zwischen einem Roséwein, einem Weißherbst und einem Rotling?",
+                    qVi: "Sự khác nhau giữa Roséwein, Weißherbst và Rotling là gì?",
+                    a: "Roséwein wird nur aus roten Trauben hell gekeltert. Weißherbst ist ein deutscher Qualitäts-Roséwein aus 100 % einer einzigen roten Rebsorte. Rotling entsteht durch gemeinsames Keltern von weißen und roten Trauben.",
+                    aVi: "Roséwein làm hoàn toàn từ nho đỏ nhưng ép lấy nước sớm. Weißherbst là vang hồng chất lượng cao của Đức làm từ 100 % một giống nho đỏ duy nhất. Rotling được ép chung từ cả nho trắng và nho đỏ."
+                  }
+                ]
               }
             ]
           },
           {
             id: "lf5-service-betrieb",
-            badge: "LF 5 (Năm 1)",
-            title: "Service, Buffet & POS",
+            badge: "LF 5 · 1. Jahr",
+            title: "Service, Buffet & Kassensysteme",
             items: [
               {
                 id: "bfk2-buffetregeln",
                 icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>',
-                name: "LS04 · Buffetregeln & Vệ sinh",
-                desc: "Sơ đồ bày bàn rechts nach links · Kühlkette <=7°C & Warmhalten >=65°C · Hustenschutz",
-                content: `<h2> Buffetregeln & Vệ sinh an toàn thực phẩm (Trang 56 - 59)</h2>
-<div class="hint">LS04 · Sơ đồ dựng bàn Buffet · Vệ sinh an toàn HACCP · Quy định Nhiệt độ 7°C / 65°C</div>
-<h3 class="sub">1. Quy tắc dựng bàn Buffet (Aufbau)</h3>
+                name: "LS04 · Buffetregeln & Hygiene",
+                desc: "Buffetaufbau nach Menüfolge · Kühlkette (≤ 7 °C) & Warmhalten (≥ 65 °C) · Hustenschutz",
+                content: `<h2>Buffetregeln &amp; Lebensmittelhygiene (S. 56–59)</h2>
+<div class="hint">LS04 · Aufbau eines Buffets · HACCP-Temperaturvorgaben (7 °C / 65 °C) · Spuckschutz</div>
+<h3 class="sub">1. Grundregeln für den Buffetaufbau</h3>
 <ul>
-  <li>Chiều sâu bàn tối thiểu <strong>70 cm</strong>; phủ khăn quây (<span class="term" data-de="das Skirting, -s" data-vi="vải quây chân bàn buffet">Skirting</span>) sát đất.</li>
-  <li>Trình tự món ăn (<span class="term" data-de="die Menüfolge" data-vi="trình tự món trong thực đơn">Menüfolge</span>) xếp từ <strong>PHẢI sang TRÁI (von rechts nach links)</strong>: Đĩa → Khai vị → Súp → Món chính lạnh → Món chính nóng → Tráng miệng → Bánh mì/Besteck.</li>
-  <li>Dụng cụ gắp (<span class="term" data-de="das Vorlagebesteck" data-vi="dụng cụ gắp thức ăn chung">Vorlagebesteck</span>) đặt ở mép dưới đĩa, cán hướng sang phải.</li>
+  <li>Tischtiefe mindestens <strong>70 cm</strong>; Verkleidung der Tischbeine mit bodenlangem <span class="term" data-de="das Skirting, -s" data-vi="vải quây chân bàn buffet">Skirting</span> und <span class="term" data-de="das Molton" data-vi="lớp vải lót mặt bàn chống trượt/ồn">Molton</span> als Unterlage.</li>
+  <li>Anordnung nach der klassischen <span class="term" data-de="die Menüfolge" data-vi="trình tự món trong thực đơn">Menüfolge</span> in Laufrichtung der Gäste: Teller → kalte Vorspeisen &amp; Salate → Suppen → warme Hauptgerichte mit Beilagen → Desserts &amp; Käse → Brot &amp; Besteck.</li>
+  <li><span class="term" data-de="das Vorlagebesteck" data-vi="dụng cụ gắp thức ăn chung">Vorlagebesteck</span> (Vorlegegabel und Vorlegelöffel) griffbereit am unteren Plattenrand platzieren; Schilder zur Speisen- und Allergenkennzeichnung aufstellen.</li>
 </ul>
+<div class="vi"><b>Quy tắc dựng bàn Buffet:</b> Bàn sâu tối thiểu 70 cm, có lót vải <i>Molton</i> và quây chân bàn bằng <i>Skirting</i>. Sắp xếp món theo đúng trình tự thực đơn (<i>Menüfolge</i>): Đĩa → Khai vị lạnh &amp; Salad → Súp → Món chính nóng → Tráng miệng &amp; Phô mai → Bánh mì &amp; Dao nĩa, kèm bảng tên món và nhãn dị ứng.</div>
 
-<h3 class="sub">2. Quy định Nhiệt độ &amp; An toàn Vệ sinh</h3>
+<h3 class="sub">2. Temperatur- und Hygienevorschriften am Buffet (HACCP)</h3>
 <table>
-  <tr><th>Tiêu chí</th><th>Quy định bắt buộc</th></tr>
-  <tr><td>Món lạnh (Kältebereich)</td><td>Giữ ở nhiệt độ <strong>&le; 7°C</strong>.</td></tr>
-  <tr><td>Món nóng (Warmhaltebereich)</td><td>Khay Chafing Dishes giữ liên tục <strong>&ge; 65°C</strong>.</td></tr>
-  <tr><td>Quy tắc 2 giờ</td><td>Thức ăn bày 2–3 tiếng ở nhiệt độ phòng bắt buộc phải <span class="term" data-de="entsorgen" data-vi="tiêu hủy / bỏ đi">entsorgen</span> (tiêu hủy).</td></tr>
-  <tr><td>Thiết bị chắn vi khuẩn</td><td>Bắt buộc lắp vách kính chắn ho (<span class="term" data-de="der Hustenschutz" data-vi="vách kính chắn ho / bắn vi khuẩn">Hustenschutz / Spuckschutz</span>).</td></tr>
-</table>`
+  <tr><th>Bereich</th><th>Verbindliche Vorgabe</th></tr>
+  <tr><td><strong>Kalte Speisen (Kühlbereich)</strong></td><td>Durchgehend bei <strong>&le; +7 °C</strong> kühlhalten (Hackfleisch/Fisch noch kühler auf Eis/Kühlplatten).</td></tr>
+  <tr><td><strong>Warme Speisen (Warmhaltebereich)</strong></td><td>Im Chafing Dish oder Bain-Marie konstant bei <strong>&ge; +65 °C</strong> für maximal 3 Stunden warmhalten.</td></tr>
+  <tr><td><strong>Standzeit &amp; Reste</strong></td><td>Ungekühlte Speisen nach spätestens 2–3 Stunden <span class="term" data-de="entsorgen" data-vi="tiêu hủy / bỏ đi">entsorgen</span>; alte Platten niemals auf frische Speisen umschütten!</td></tr>
+  <tr><td><strong>Infektionsschutz</strong></td><td>Offene Speisen am Buffet müssen durch einen <span class="term" data-de="der Hustenschutz" data-vi="vách kính chắn ho / bắn vi khuẩn">Hustenschutz / Spuckschutz</span> geschützt sein.</td></tr>
+</table>
+<div class="vi"><b>Quy định nhiệt độ &amp; vệ sinh tại quầy Buffet:</b> Món lạnh phải giữ <b>&le; +7 °C</b>; món nóng giữ liên tục <b>&ge; +65 °C</b> trong khay <i>Chafing Dish</i>. Thực phẩm đã mang ra quầy Buffet quá 2–3 giờ phải hủy bỏ (<i>entsorgen</i>), tuyệt đối không trộn đồ cũ vào khay mới, và phải có kính chắn giọt bắn (<i>Hustenschutz / Spuckschutz</i>).</div>`,
+                qa: [
+                  {
+                    q: "Welche Temperaturvorgaben gelten am Buffet für kalte und warme Speisen?",
+                    qVi: "Quy định nhiệt độ bắt buộc tại quầy Buffet đối với món lạnh và món nóng là bao nhiêu?",
+                    a: "Kalte Speisen müssen bei maximal +7 °C gekühlt werden; warme Speisen müssen durchgehend bei mindestens +65 °C warmgehalten werden.",
+                    aVi: "Món lạnh phải được bảo quản ở mức tối đa +7 °C; món nóng phải được giữ nóng liên tục ở mức tối thiểu +65 °C."
+                  },
+                  {
+                    q: "Welche Hygieneregeln gelten beim Nachlegen von Speisen am Buffet?",
+                    qVi: "Quy tắc vệ sinh nào áp dụng khi bổ sung thêm thức ăn ra quầy Buffet?",
+                    a: "Immer komplett frische Platten und sauberes Vorlagebesteck einsetzen; Reste alter Platten dürfen niemals auf frische Platten umgefüllt werden. Zudem ist ein Hustenschutz Pflicht.",
+                    aVi: "Luôn thay khay mới hoàn toàn kèm dụng cụ gắp sạch; tuyệt đối không đổ thức ăn thừa từ khay cũ sang khay mới và phải có kính chắn giọt bắn (Hustenschutz)."
+                  }
+                ]
               },
               {
                 id: "bfk2-kalkulation",
                 icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 6h8"/><path d="M8 10h.01"/><path d="M12 10h.01"/><path d="M16 10h.01"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg>',
                 name: "LS13 · Bedarfe und Materialkosten berechnen",
-                desc: "Tiệc Brunch 72 khách · Standardrezepturen · Faktor-Formel & Giá vốn",
-                content: `<h2> Bedarfe und Materialkosten berechnen (Trang 60 - 64)</h2>
-<div class="hint">LS13 · Tính toán lượng nguyên liệu & Chi phí cho Tiệc Buffet / Brunch 72 khách</div>
-<h3 class="sub">1. Tình huống &amp; Công thức tính Hệ số</h3>
-<p>Nhà hàng tổ chức <em>Sonntagsbrunch</em> cho <strong>72 khách</strong>. Tính lượng nguyên liệu dựa theo công thức tiêu chuẩn (<span class="term" data-de="die Standardrezeptur" data-vi="công thức chế biến tiêu chuẩn">Standardrezeptur</span>).</p>
+                desc: "Sonntagsbrunch für 72 Gäste · Standardrezepturen · Umrechnungsfaktor & Materialpreis",
+                content: `<h2>Bedarfe und Materialkosten berechnen (S. 60–64)</h2>
+<div class="hint">LS13 · Mengen- und Materialkostenberechnung für ein Brunch-Buffet (72 Personen)</div>
+<h3 class="sub">1. Umrechnungsfaktor für Standardrezepturen</h3>
+<p>Für einen <em>Sonntagsbrunch</em> mit <strong>72 Gästen</strong> werden die benötigten Rohstoffmengen anhand einer <span class="term" data-de="die Standardrezeptur" data-vi="công thức chế biến tiêu chuẩn">Standardrezeptur</span> (z. B. für 4, 6 oder 10 Personen) umgerechnet.</p>
 <div class="formula">
-  \text{Hệ số (Faktor)} = \frac{\text{Số khách thực tế (72)}}{\text{Số khách gốc trong công thức}}<br>
-  \text{Ví dụ cho 6 người} \rightarrow \text{Faktor} = \frac{72}{6} = 12
+  Umrechnungsfaktor = Gewünschte Portionszahl ÷ Portionszahl der Rezeptur<br>
+  Beispiel (Rezept für 6 Personen, Bedarf für 72 Gäste): Faktor = 72 ÷ 6 = 12
 </div>
+<div class="vi"><b>Công thức tính hệ số quy đổi (Umrechnungsfaktor):</b> Lấy số khách thực tế (72) chia cho số suất gốc trong công thức chuẩn (<i>Standardrezeptur</i>). Ví dụ công thức gốc cho 6 người → Hệ số = 72 ÷ 6 = 12 (nhân toàn bộ nguyên liệu lên 12 lần).</div>
 
-<h3 class="sub">2. Công thức tính Giá vốn 1 Suất ăn</h3>
+<h3 class="sub">2. Berechnung des Materialpreises (Wareneinsatz) je Portion</h3>
 <div class="formula">
-  <span class="term" data-de="der Materialpreis" data-vi="chi phí nguyên vật liệu / giá vốn">Materialpreis je Portion</span> = \frac{\text{Tổng chi phí nguyên liệu cho 72 khách}}{72}
+  <span class="term" data-de="der Materialpreis" data-vi="chi phí nguyên vật liệu / giá vốn">Materialpreis je Portion</span> = Gesamte Materialkosten (alle Zutaten) ÷ Anzahl der Portionen (72)
 </div>
-<p>Ví dụ các món ăn chuẩn: Rührei mit Speck (dùng <span class="term" data-de="der Schnittlauch" data-vi="hành hoa / hành lá">Schnittlauch</span>), <span class="term" data-de="die Kirschkaltschale" data-vi="súp anh đào chua lạnh">Kirschkaltschale</span>, <span class="term" data-de="der Rinderschmorbraten" data-vi="món thịt bò om kiểu Đức">Rinderschmorbraten</span>.</p>`
+<p>Typische Prüfungsgerichte im Kalkulationsbogen: <em>Rührei mit Speck und <span class="term" data-de="der Schnittlauch" data-vi="hành hoa / hành lá">Schnittlauch</span></em>, <em><span class="term" data-de="die Kirschkaltschale" data-vi="súp anh đào chua lạnh">Kirschkaltschale</span></em> sowie <em><span class="term" data-de="der Rinderschmorbraten" data-vi="món thịt bò om kiểu Đức">Rinderschmorbraten</span></em>.</p>
+<div class="vi"><b>Tính chi phí nguyên vật liệu (Materialpreis) cho 1 khẩu phần:</b> Cộng tổng tiền nguyên liệu của tất cả thành phần rồi chia cho tổng số suất (72).</div>`,
+                qa: [
+                  {
+                    q: "Eine Standardrezeptur ist für 6 Personen ausgelegt. Wie berechnen Sie die Zutatenmenge für 72 Brunch-Gäste?",
+                    qVi: "Một công thức chuẩn được viết cho 6 người. Làm thế nào để tính lượng nguyên liệu cho 72 khách?",
+                    a: "Man berechnet den Umrechnungsfaktor: 72 geteilt durch 6 ergibt den Faktor 12. Anschließend wird jede Zutat der Rezeptur mit 12 multipliziert.",
+                    aVi: "Tính hệ số quy đổi: 72 chia 6 bằng 12. Sau đó nhân khối lượng của từng nguyên liệu trong công thức với 12."
+                  },
+                  {
+                    q: "Wie berechnet man den Materialpreis (Wareneinsatz) für eine einzelne Portion?",
+                    qVi: "Làm thế nào để tính giá vốn nguyên liệu (Materialpreis) cho 1 suất ăn?",
+                    a: "Man addiert die Einkaufskosten aller benötigten Zutaten (Gesamtmaterialkosten) und teilt diese Summe durch die Anzahl der hergestellten Portionen.",
+                    aVi: "Cộng tổng chi phí mua tất cả nguyên liệu cần dùng (Gesamtmaterialkosten) rồi chia cho tổng số khẩu phần chế biến được."
+                  }
+                ]
               },
               {
                 id: "bfk2-kassensysteme",
                 icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>',
                 name: "LS10 · Kassensysteme im Gastgewerbe (POS)",
-                desc: "Stakeholder Anforderungen · Orderfix vs Gastrohero · TSE & Kassenbuch",
-                content: `<h2> Kassensysteme im Gastgewerbe / POS (Trang 65 - 67)</h2>
-<div class="hint">LS10 · Hệ thống máy tính tiền POS · Orderfix vs. Gastrohero · TSE & Kassenbuch</div>
-<h3 class="sub">1. Nhu cầu các bên (Stakeholder Requirements)</h3>
+                desc: "Anforderungen der Beteiligten · TSE-Pflicht & Belegausgabepflicht · Kassenbuch",
+                content: `<h2>Kassensysteme im Gastgewerbe / POS (S. 65–67)</h2>
+<div class="hint">LS10 · Point-of-Sale-Systeme (POS) · Anforderungen · TSE-Pflicht &amp; Kassenbuch</div>
+<h3 class="sub">1. Anforderungen an ein modernes POS-Kassensystem</h3>
 <ul>
-  <li><strong>Chefin:</strong> Xem báo cáo doanh thu tức thì.</li>
-  <li><strong>Küchenchef:</strong> Nhập đơn (<span class="term" data-de="die Bonierung" data-vi="việc nhập đơn hàng / in bon bếp">Bonierung</span>) nhanh &amp; chính xác xuống bếp.</li>
-  <li><strong>Finanzamt:</strong> Bắt buộc có thiết bị an toàn kỹ thuật <span class="term" data-de="die Technische Sicherheitseinrichtung (TSE)" data-vi="thiết bị an toàn kỹ thuật chống gian lận thuế">TSE</span>.</li>
-  <li><strong>Steuerberater:</strong> Xuất dữ liệu sổ quỹ điện tử (<span class="term" data-de="das Kassenbuch" data-vi="sổ quỹ tiền mặt">Kassenbuch</span>).</li>
+  <li><strong>Geschäftsführung:</strong> Tagesaktuelle Umsatzstatistiken, Renner-Penner-Analysen und Warenwirtschaftsanbindung.</li>
+  <li><strong>Service &amp; Küche:</strong> Schnelle mobile <span class="term" data-de="die Bonierung" data-vi="việc nhập đơn hàng / in bon bếp">Bonierung</span> am Tisch, Funkbonierung direkt an den <span class="term" data-de="der Küchenmonitor" data-vi="màn hình hiển thị order trong bếp">Küchenmonitor</span> oder Bondrucker, einfaches Rechnungssplitten.</li>
+  <li><strong>Finanzamt (Kassensicherungsverordnung):</strong> Manipulationssichere Aufzeichnung durch eine zertifizierte <span class="term" data-de="die Technische Sicherheitseinrichtung (TSE)" data-vi="thiết bị an toàn kỹ thuật chống gian lận thuế">Technische Sicherheitseinrichtung (TSE)</span> sowie Belegausgabepflicht.</li>
+  <li><strong>Steuerberatung &amp; Buchhaltung:</strong> Exportfähiges elektronisches <span class="term" data-de="das Kassenbuch" data-vi="sổ quỹ tiền mặt">Kassenbuch</span>, korrekte Umsatzsteuersätze (7 % / 19 %) und Arbeitszeiterfassung (<span class="term" data-de="die Zeiterfassung" data-vi="chấm công giờ làm việc">Zeiterfassung</span>).</li>
 </ul>
+<div class="vi"><b>Yêu cầu đối với hệ thống máy tính tiền POS:</b> Quản lý cần xem báo cáo doanh thu tức thời; Phục vụ &amp; Bếp cần nhập order di động (<i>Bonierung</i>), tách hóa đơn nhanh và truyền thẳng xuống màn hình bếp (<i>Küchenmonitor</i>); Cơ quan thuế (<i>Finanzamt</i>) bắt buộc phải có thiết bị bảo mật chống sửa dữ liệu <b>TSE</b> và xuất biên lai cho khách.</div>
 
-<h3 class="sub">2. So sánh POS Orderfix vs. Gastrohero</h3>
+<h3 class="sub">2. Systemvergleich im Unterricht (Orderfix vs. Gastrohero)</h3>
 <table>
-  <tr><th>Hệ thống</th><th>Điểm mạnh nổi bật</th></tr>
-  <tr><td><strong>Orderfix</strong></td><td>Order di động, tách hóa đơn bàn ăn, tích hợp điểm thưởng &amp; khuyến mãi coupons.</td></tr>
-  <tr><td><strong>Gastrohero</strong></td><td>Màn hình bếp (<span class="term" data-de="der Küchenmonitor" data-vi="màn hình hiển thị order trong bếp">Küchenmonitor</span>) real-time, chấm công <span class="term" data-de="die Zeiterfassung" data-vi="chấm công giờ làm việc">Zeiterfassung</span> nhân viên.</td></tr>
-</table>`
+  <tr><th>Kassensystem</th><th>Besondere Stärken</th></tr>
+  <tr><td><strong>Orderfix</strong></td><td>Mobiles Handterminal, schnelles Splitten von Rechnungen am Tisch, integrierte Gutschein- und Rabattverwaltung.</td></tr>
+  <tr><td><strong>Gastrohero</strong></td><td>Echtzeit-Küchenmonitor, integrierte Personal-<span class="term" data-de="die Zeiterfassung" data-vi="chấm công giờ làm việc">Zeiterfassung</span>, automatische Bestandsbuchung im Lager.</td></tr>
+</table>
+<div class="vi"><b>So sánh 2 hệ thống POS mẫu:</b> <b>Orderfix</b> mạnh về thiết bị cầm tay order tại bàn, tách hóa đơn và quản lý voucher; <b>Gastrohero</b> mạnh về màn hình bếp thời gian thực, chấm công nhân viên và trừ kho tự động.</div>`,
+                qa: [
+                  {
+                    q: "Was bedeutet die Abkürzung TSE bei Kassensystemen und warum ist sie gesetzlich vorgeschrieben?",
+                    qVi: "TSE trong hệ thống máy tính tiền là viết tắt của từ gì và tại sao pháp luật lại bắt buộc?",
+                    a: "TSE steht für Technische Sicherheitseinrichtung. Sie speichert alle Kassenvorgänge manipulationssicher für das Finanzamt, um Steuerhinterziehung zu verhindern.",
+                    aVi: "TSE là viết tắt của Technische Sicherheitseinrichtung (Thiết bị an toàn kỹ thuật). Thiết bị này lưu trữ mọi giao dịch không thể chỉnh sửa để cơ quan thuế kiểm tra, chống gian lận thuế."
+                  },
+                  {
+                    q: "Welche Vorteile bietet ein mobiles Funk-Kassensystem für den Serviceablauf?",
+                    qVi: "Hệ thống máy order cầm tay không dây mang lại những lợi ích gì cho quy trình phục vụ?",
+                    a: "Bestellungen werden direkt am Tisch aufgenommen und sofort an Küche und Schankbüfett übermittelt. Das spart Laufwege, verkürzt Wartezeiten, vermeidet Übertragungsfehler und erleichtert das Splitten der Rechnung.",
+                    aVi: "Đơn hàng được nhập ngay tại bàn và truyền tức thì xuống bếp/quầy bar, giúp tiết kiệm thời gian di chuyển, giảm thời gian chờ của khách, tránh nhầm lẫn và tách hóa đơn dễ dàng."
+                  }
+                ]
               },
               {
                 id: "bfk2-verkaufsfoerderung",
                 icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>',
                 name: "LS19 · Verkaufsfördernde Maßnahmen im Service",
-                desc: "Sales Promotion · Corporate Design · Eye-Catcher · Tischaufsteller & Digital",
-                content: `<h2> Verkaufsfördernde Maßnahmen im Service (Trang 68 - 69)</h2>
-<div class="hint">LS19 · Biện pháp xúc tiến bán hàng · Corporate Design · Eye-Catcher · Analog & Digital</div>
-<h3 class="sub">1. Khái niệm Xúc tiến Bán hàng (<span class="term" data-de="die Verkaufsförderung" data-vi="xúc tiến bán hàng / sales promotion">Verkaufsförderung</span>)</h3>
-<p>Các hoạt động ngắn hạn nhằm kích cầu doanh số nhà hàng (ví dụ: Tuần lễ món măng tây Spargel, Tuần lễ món chay <span class="term" data-de="die Aktionswoche" data-vi="tuần lễ chương trình khuyến mãi/chủ đề">Aktionswoche</span>, minigame dự thưởng <span class="term" data-de="das Gewinnspiel" data-vi="trò chơi dự thưởng / minigame">Gewinnspiel</span>).</p>
+                desc: "Verkaufsförderung (Sales Promotion) · Corporate Design · Eye-Catcher · Analog & Digital",
+                content: `<h2>Verkaufsfördernde Maßnahmen im Service (S. 68–69)</h2>
+<div class="hint">LS19 · Verkaufsförderung · Gestaltung von Werbemitteln · Tischaufsteller, Flyer &amp; Social Media</div>
+<h3 class="sub">1. Ziele der Verkaufsförderung (<span class="term" data-de="die Verkaufsförderung" data-vi="xúc tiến bán hàng / sales promotion">Verkaufsförderung</span>)</h3>
+<p>Zeitlich begrenzte Aktionen steigern den Umsatz, gewinnen Neugäste und erhöhen den Durchschnittsbon (z. B. saisonale <span class="term" data-de="die Aktionswoche" data-vi="tuần lễ chương trình khuyến mãi/chủ đề">Aktionswochen</span> wie Spargel- oder Wildwochen, Happy Hour, Degustationsmenüs oder ein <span class="term" data-de="das Gewinnspiel" data-vi="trò chơi dự thưởng / minigame">Gewinnspiel</span>).</p>
+<div class="vi"><b>Mục tiêu xúc tiến bán hàng (Verkaufsförderung):</b> Các chiến dịch ngắn hạn giúp kích cầu doanh số, thu hút khách mới và tăng giá trị hóa đơn trung bình (VD: tuần lễ món theo mùa <i>Aktionswoche</i>, <i>Happy Hour</i>, minigame trúng thưởng).</div>
 
-<h3 class="sub">2. 7 Nguyên tắc thiết kế Ấn phẩm Quảng cáo</h3>
+<h3 class="sub">2. Sieben Grundsätze für wirksame Werbemittel</h3>
 <ol>
-  <li><strong>Der Kern:</strong> Chủ đề chiến dịch phải là điểm nhấn thu hút (<span class="term" data-de="der Eye-Catcher" data-vi="điểm nhấn thu hút ánh nhìn">Eye-Catcher</span>) ngay trong vài giây đầu.</li>
-  <li><strong>Corporate Design:</strong> Đảm bảo bộ nhận diện màu sắc, logo của nhà hàng.</li>
-  <li><strong>Sprachstil &amp; Slogan:</strong> Chọn phông văn phong xưng hô "Du" hoặc "Sie" phù hợp.</li>
-  <li><strong>Analog vs. Digital:</strong> Kết hợp menu dựng bàn (<span class="term" data-de="der Tischaufsteller" data-vi="menu/biển quảng cáo dựng trên bàn">Tischaufsteller</span>), tờ rơi (<span class="term" data-de="der Flyer" data-vi="tờ rơi quảng cáo">Flyer</span>), nghệ thuật viết chữ bảng phấn (<span class="term" data-de="das Handlettering" data-vi="nghệ thuật viết chữ bằng tay">Handlettering</span>) với mã QR Code trực tuyến.</li>
-</ol>`
+  <li><strong>Der Kern (<span class="term" data-de="der Eye-Catcher" data-vi="điểm nhấn thu hút ánh nhìn">Eye-Catcher</span>):</strong> Die Hauptbotschaft muss in wenigen Sekunden Aufmerksamkeit wecken (AIDA-Formel: Attention – Interest – Desire – Action).</li>
+  <li><strong>Corporate Design:</strong> Einheitliche Verwendung von Logo, Hausfarben und Schriftarten des Betriebs.</li>
+  <li><strong>Zielgruppengerechte Ansprache:</strong> Passender Sprachstil („Sie“ im klassischen Restaurant, „Du“ im jungen Szenecafé) und kurzer Slogan.</li>
+  <li><strong>Analoge &amp; digitale Kanäle kombinieren:</strong> <span class="term" data-de="der Tischaufsteller" data-vi="menu/biển quảng cáo dựng trên bàn">Tischaufsteller</span>, <span class="term" data-de="der Flyer" data-vi="tờ rơi quảng cáo">Flyer</span>, Kreidetafeln mit <span class="term" data-de="das Handlettering" data-vi="nghệ thuật viết chữ bằng tay">Handlettering</span> sowie QR-Codes, Website und Social-Media-Posts.</li>
+</ol>
+<div class="vi"><b>Nguyên tắc thiết kế ấn phẩm quảng cáo:</b> (1) Có điểm nhấn thu hút ánh nhìn ngay lập tức (<i>Eye-Catcher</i> theo mô hình AIDA); (2) Đồng bộ nhận diện thương hiệu (<i>Corporate Design</i>: logo, màu sắc, phông chữ); (3) Ngôn từ phù hợp đối tượng khách hàng; (4) Kết hợp kênh truyền thống (<i>Tischaufsteller, Flyer, bảng phấn Handlettering</i>) với kênh số (QR-Code, mạng xã hội).</div>`,
+                qa: [
+                  {
+                    q: "Nennen Sie vier Beispiele für verkaufsfördernde Maßnahmen in einem Restaurant!",
+                    qVi: "Hãy nêu 4 ví dụ về các biện pháp xúc tiến bán hàng trong nhà hàng!",
+                    a: "1. Saisonale Aktionswochen (z. B. Spargelwochen). 2. Tischaufsteller und Kreidetafeln für Tagesempfehlungen. 3. Aktive Zusatzempfehlung durch den Service (Aperitif, Dessert, Espresso). 4. Social-Media-Aktionen oder Gutscheine.",
+                    aVi: "1. Tuần lễ ẩm thực theo mùa (Aktionswochen). 2. Biển dựng trên bàn (Tischaufsteller) và bảng phấn giới thiệu món đặc biệt trong ngày. 3. Nhân viên chủ động gợi ý bán thêm (khai vị, tráng miệng, cà phê). 4. Chương trình trên mạng xã hội hoặc phiếu giảm giá."
+                  },
+                  {
+                    q: "Worauf muss bei der optischen Gestaltung eines Tischaufstellers oder Flyers geachtet werden?",
+                    qVi: "Khi thiết kế hình thức cho biển để bàn (Tischaufsteller) hoặc tờ rơi (Flyer) cần lưu ý điều gì?",
+                    a: "Ein klarer Eye-Catcher, übersichtliche Struktur (wenig Text, große Schrift), Einhaltung des Corporate Designs (Logo, Farben, Schriftart) und zielgruppengerechte Sprache.",
+                    aVi: "Có điểm nhấn bắt mắt (Eye-Catcher), bố cục rõ ràng ngắn gọn dễ đọc, tuân thủ bộ nhận diện thương hiệu (Corporate Design) và ngôn ngữ phù hợp với tệp khách hàng."
+                  }
+                ]
               }
             ]
           },
           {
             id: "fleisch",
-            badge: "Modul (Năm 2)",
-            title: "Fleisch & Küche (Năm 2)",
+            badge: "2. Jahr · Modul",
+            title: "Fleisch & Küche",
             items: [
               {
                 id: "fleischteile",
                 icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="9" r="1.6"/><circle cx="12" cy="7" r="1.6"/><circle cx="17" cy="9" r="1.6"/><path d="M5.5 13.5c0-1.5 3-2.5 6.5-2.5s6.5 1 6.5 2.5c0 2-1.5 4-3 4.5-1.5.5-2.5 1-3.5 1s-2-.5-3.5-1c-1.5-.5-3-2.5-3-4.5z"/></svg>',
-                name: "Fleischteile",
-                desc: "Rind · Schwein · Schaf · Gerichte",
+                name: "Fleischteile & Garverfahren",
+                desc: "Rind · Schwein · Schaf/Lamm · Gewebearten · Klassische Fleischgerichte",
                 route: "#/bfk/2/fleisch",
-                content: `<h2> Fleischteile</h2>
-<div class="hint">Rind · Schwein · Schaf/Lamm · Gerichte · Gewebe. Interaktive Karten im Modul.</div>
+                content: `<h2>Fleischteile &amp; Garverfahren</h2>
+<div class="hint">Rind · Schwein · Schaf/Lamm · Gewebearten · Klassische Gerichte</div>
 <p><button class="btn" type="button" onclick="go('#/bfk/2/fleisch')">Interaktives Modul öffnen →</button></p>
-<h3 class="sub">1. Wichtige Rind-Teile</h3>
+<h3 class="sub">1. Wichtige Teilstücke vom Rind</h3>
 <table>
-  <tr><th>Teil</th><th>Eigenschaft / Verwendung</th></tr>
-  <tr><td><span class="term" data-de="Filet" data-vi="thăn nội">Filet</span></td><td>zartestes, bindegewebsärmstes Stück → Kurzbraten, Medaillons</td></tr>
-  <tr><td><span class="term" data-de="Roastbeef" data-vi="thăn ngoại / roastbeef">Roastbeef</span> (Rücken)</td><td>Steaks, Rostbraten</td></tr>
-  <tr><td><span class="term" data-de="Hesse" data-vi="bắp giò / ống chân">Hesse</span> (Beinscheibe)</td><td>viel Kollagen → Kraftbrühe, Schmoren, Osso-Buco-Art</td></tr>
+  <tr><th>Teilstück</th><th>Eigenschaft &amp; Verwendung</th></tr>
+  <tr><td><span class="term" data-de="Filet" data-vi="thăn nội">Filet</span> (Lende)</td><td>Zartestes, bindegewebsärmstes Teilstück → Kurzbraten, Grillen (Chateaubriand, Tournedos, Filetsteak, Medaillons).</td></tr>
+  <tr><td><span class="term" data-de="Roastbeef" data-vi="thăn ngoại / roastbeef">Roastbeef</span> (Rücken)</td><td>Sehr zart mit Fettrand → Kurzbraten (Rumpsteak, Entrecôte, Zwiebelrostbraten) oder Braten am Stück.</td></tr>
+  <tr><td><span class="term" data-de="Hesse" data-vi="bắp giò / ống chân">Hesse</span> (Beinscheibe)</td><td>Reich an Bindegewebe (Kollagen) → Kochen (Kraftbrühe) und Schmoren (Osso Buco vom Kalb).</td></tr>
 </table>
-<h3 class="sub">2. Gewebe & Garverfahren</h3>
+<div class="vi"><b>Các phần thịt bò quan trọng:</b> <b>Filet</b> (thăn nội) mềm nhất, ít mô liên kết nhất → áp chảo/nướng nhanh; <b>Roastbeef</b> (thăn ngoại) → làm steak hoặc Zwiebelrostbraten; <b>Hesse</b> (bắp giò) nhiều gân/kollagen → hầm nước dùng hoặc om (Osso Buco).</div>
+
+<h3 class="sub">2. Gewebearten &amp; passende Garverfahren</h3>
 <table>
-  <tr><th>Gewebe</th><th>Beim Erhitzen</th><th>Garen</th></tr>
-  <tr><td><span class="term" data-de="Muskelgewebe" data-vi="mô cơ">Muskelgewebe</span></td><td>Eiweiß gerinnt, Wasserverlust</td><td>Kurzbraten / Grillen (wenig Bindegewebe)</td></tr>
-  <tr><td><span class="term" data-de="Bindegewebe" data-vi="mô liên kết">Bindegewebe</span> (Kollagen)</td><td>Kollagen → <span class="term" data-de="Gelatine" data-vi="gelatin">Gelatine</span>; Elastin bleibt zäh</td><td>Schmoren / Kochen (langsam & feucht)</td></tr>
-  <tr><td><span class="term" data-de="Fettgewebe" data-vi="mô mỡ">Fettgewebe</span></td><td>schmilzt → saftig & aromatisch</td><td>Braten / Grillen</td></tr>
+  <tr><th>Gewebeart</th><th>Verhalten beim Erhitzen</th><th>Geeignetes Garverfahren</th></tr>
+  <tr><td><span class="term" data-de="Muskelgewebe" data-vi="mô cơ">Muskelgewebe</span></td><td>Eiweiß gerinnt ab ca. 60 °C, gibt Fleischsaft ab</td><td>Kurzbraten, Grillen, Braten (bei zarten Stücken mit wenig Bindegewebe)</td></tr>
+  <tr><td><span class="term" data-de="Bindegewebe" data-vi="mô liên kết">Bindegewebe</span> (Kollagen &amp; Elastin)</td><td>Kollagen quillt in feuchter Hitze und wandelt sich in weiche <span class="term" data-de="Gelatine" data-vi="gelatin">Gelatine</span> um; gelbes Elastin (Sehnen) bleibt zäh</td><td>Schmoren, Kochen, Dünsten (langsam &amp; mit Flüssigkeit)</td></tr>
+  <tr><td><span class="term" data-de="Fettgewebe" data-vi="mô mỡ">Fettgewebe</span> (Marmorierung)</td><td>Schmilzt beim Erhitzen → hält das Fleisch saftig und ist Geschmacksträger</td><td>Braten, Grillen, Schmoren</td></tr>
 </table>
-<div class="note"> Merksatz: <b>Viel Bindegewebe → langsam & feucht</b>. <b>Wenig Bindegewebe → schnell & heiß</b>.</div>
-<h3 class="sub">3. Zusammensetzung Schlachtfleisch</h3>
+<div class="note"><b>Merksatz:</b> <b>Viel Bindegewebe → langsam &amp; feucht garen</b> (Kochen, Schmoren). <b>Wenig Bindegewebe → schnell &amp; trocken garen</b> (Kurzbraten, Grillen).</div>
+<div class="vi"><b>Quy tắc chọn phương pháp chế biến theo mô thịt:</b> Thịt <b>nhiều mô liên kết (Bindegewebe)</b> phải nấu <b>chậm và có nước</b> (luộc, hầm, om) để Kollagen chuyển hóa thành Gelatine mềm. Thịt <b>ít mô liên kết (nhiều mô cơ mềm)</b> chế biến <b>nhanh bằng nhiệt khô</b> (áp chảo, nướng).</div>
+
+<h3 class="sub">3. Durchschnittliche Zusammensetzung von Schlachtfleisch</h3>
 <table>
-  <tr><th>Stoff</th><th>ca.</th></tr>
-  <tr><td>Wasser</td><td>70 %</td></tr>
-  <tr><td><span class="term" data-de="Eiweiß" data-vi="đạm / protein">Eiweiß</span></td><td>20 %</td></tr>
-  <tr><td>Fett</td><td>3–8 %</td></tr>
+  <tr><th>Inhaltsstoff</th><th>Anteil (ca.)</th></tr>
+  <tr><td>Wasser</td><td>ca. 70–75 %</td></tr>
+  <tr><td><span class="term" data-de="Eiweiß" data-vi="đạm / protein">Eiweiß</span> (Protein)</td><td>ca. 20 %</td></tr>
+  <tr><td>Fett</td><td>ca. 3–8 % (je nach Tierart und Teilstück)</td></tr>
+  <tr><td>Mineralstoffe (Eisen, Zink) &amp; B-Vitamine</td><td>ca. 1 %</td></tr>
 </table>
-<div class="formula">4 wichtigste Schlacht-Säugetiere DE: Rind, Schwein, Schaf, Ziege</div>
-<h3 class="sub">4. Gerichte (merken!)</h3>
+<div class="formula">Die 4 wichtigsten Schlachtsäugetiere in Deutschland: Rind, Schwein, Schaf, Ziege</div>
+
+<h3 class="sub">4. Klassische Fleischgerichte (Prüfungswissen)</h3>
 <ul>
-  <li><span class="term" data-de="Wiener Schnitzel" data-vi="schnitzel kiểu Wien">Wiener Schnitzel</span>: paniert Mehl–Ei–Semmelbrösel</li>
-  <li><span class="term" data-de="Cordon bleu" data-vi="cordon bleu">Cordon bleu</span>: gefüllt mit gekochtem Schinken + Käse</li>
-  <li><span class="term" data-de="Saltimbocca" data-vi="saltimbocca">Saltimbocca</span>: Parmaschinken + Salbei</li>
-  <li><span class="term" data-de="Osso Buco" data-vi="osso buco">Osso Buco</span>: geschmorte Kalbshaxenscheiben</li>
-  <li><span class="term" data-de="Vitello tonnato" data-vi="thịt bê sốt cá ngừ">Vitello tonnato</span>: kalt in Thunfischsoße</li>
-  <li><span class="term" data-de="Szegediner Gulasch" data-vi="gulasch Szeged">Szegediner Gulasch</span>: Sauerkraut + saure Sahne</li>
-  <li><span class="term" data-de="Irish Stew" data-vi="stew Ireland">Irish Stew</span>: Lamm + Zwiebeln + Kartoffel</li>
-  <li><span class="term" data-de="Moussaka" data-vi="moussaka">Moussaka</span>: Lammhack + Aubergine + Tomate</li>
+  <li><span class="term" data-de="Wiener Schnitzel" data-vi="schnitzel kiểu Wien">Wiener Schnitzel</span>: dünnes Kalbsschnitzel aus der Keule (Oberschale), klassisch paniert (Mehl – Ei – Semmelbrösel).</li>
+  <li><span class="term" data-de="Cordon bleu" data-vi="cordon bleu">Cordon bleu</span>: Kalbs- oder Schweineschnitzel, gefüllt mit gekochtem Schinken und schmelzendem Käse, paniert.</li>
+  <li><span class="term" data-de="Saltimbocca" data-vi="saltimbocca">Saltimbocca alla romana</span>: Kalbsschnitzel mit Parmaschinken und frischem Salbeiblatt, in Butter und Weißwein gebraten.</li>
+  <li><span class="term" data-de="Osso Buco" data-vi="osso buco">Osso Buco</span>: geschmorte Kalbshaxenscheiben mit Wurzelgemüse, Tomaten und Gremolata.</li>
+  <li><span class="term" data-de="Vitello tonnato" data-vi="thịt bê sốt cá ngừ">Vitello tonnato</span>: dünn aufgeschnittenes, gekochtes Kalbfleisch, kalt serviert mit Thunfisch-Kapern-Sauce.</li>
+  <li><span class="term" data-de="Szegediner Gulasch" data-vi="gulasch Szeged">Szegediner Gulasch</span>: Schweinegulasch mit Sauerkraut, Paprika und saurer Sahne.</li>
+  <li><span class="term" data-de="Irish Stew" data-vi="stew Ireland">Irish Stew</span>: Eintopf aus Lamm-/Hammelfleisch, Weißkohl, Kartoffeln und Zwiebeln.</li>
+  <li><span class="term" data-de="Moussaka" data-vi="moussaka">Moussaka</span>: griechischer Auflauf aus Lammhackfleisch, Auberginen, Kartoffeln, Tomaten und Béchamelsauce.</li>
 </ul>
-<h3 class="sub">5. Schaf – Alter</h3>
+<div class="vi"><b>Các món thịt kinh điển cần nhớ:</b> <i>Wiener Schnitzel</i> (thịt bê tẩm bột chiên); <i>Cordon bleu</i> (cuộn dăm bông + phô mai); <i>Saltimbocca</i> (thịt bê + đùi heo Parma + lá xô thơm Salbei); <i>Osso Buco</i> (bắp giò bê cắt khoanh hầm); <i>Vitello tonnato</i> (thịt bê nguội rưới xốt cá ngừ); <i>Szegediner Gulasch</i> (gulasch heo nấu dưa cải chua Sauerkraut + kem chua); <i>Irish Stew</i> (cừu hầm bắp cải và khoai tây); <i>Moussaka</i> (thịt cừu băm đút lò với cà tím).</div>
+
+<h3 class="sub">5. Alters- und Geschlechtsbezeichnungen beim Schaf</h3>
 <table>
-  <tr><th>Name</th><th>Bedeutung</th></tr>
-  <tr><td>Lamm</td><td>bis 1 Jahr</td></tr>
-  <tr><td>Schaf</td><td>weiblich, ab 1 Jahr</td></tr>
-  <tr><td>Bock</td><td>männlich, ab 1 Jahr</td></tr>
-  <tr><td><span class="term" data-de="Hammel" data-vi="cừu thiến">Hammel</span></td><td>kastriert / verschnitten</td></tr>
-</table>`
+  <tr><th>Bezeichnung</th><th>Bedeutung</th></tr>
+  <tr><td><strong>Milchlamm / Mastlamm</strong></td><td>Jungtier bis zu 6 bzw. 12 Monaten (besonders zartes Fleisch)</td></tr>
+  <tr><td><strong>Schaf</strong></td><td>Weibliches Tier ab 1 Jahr</td></tr>
+  <tr><td><strong>Bock (Widder)</strong></td><td>Männliches, unverschnittenes Tier ab 1 Jahr</td></tr>
+  <tr><td><span class="term" data-de="Hammel" data-vi="cừu đực thiến">Hammel</span></td><td>Kastriertes (verschnittenes) männliches Tier unter 2 Jahren</td></tr>
+</table>
+<div class="vi"><b>Phân loại cừu theo độ tuổi:</b> <b>Lamm</b> (cừu non dưới 1 năm tuổi), <b>Schaf</b> (cừu cái trên 1 năm), <b>Bock</b> (cừu đực giống), <b>Hammel</b> (cừu đực đã thiến).</div>`,
+                qa: [
+                  {
+                    q: "Warum müssen bindegewebsreiche Fleischstücke langsam und feucht gegart werden?",
+                    qVi: "Tại sao các phần thịt có nhiều mô liên kết (Bindegewebe) phải được nấu chậm trong môi trường ẩm?",
+                    a: "Weil das im Bindegewebe enthaltene Kollagen erst durch langes Erhitzen mit Flüssigkeit aufquillt und in wasserlösliche, weiche Gelatine umgewandelt wird, wodurch das Fleisch zart wird.",
+                    aVi: "Vì chất Kollagen trong mô liên kết chỉ trương nở và chuyển hóa thành Gelatine mềm khi được đun lâu cùng chất lỏng, nhờ đó miếng thịt mới mềm ngon."
+                  },
+                  {
+                    q: "Woraus bestehen ein klassisches Wiener Schnitzel, ein Saltimbocca und ein Vitello tonnato?",
+                    qVi: "Món Wiener Schnitzel, Saltimbocca và Vitello tonnato cổ điển được làm từ nguyên liệu gì?",
+                    a: "Wiener Schnitzel: paniertes Kalbsschnitzel (Mehl, Ei, Semmelbrösel). Saltimbocca: Kalbsschnitzel mit Parmaschinken und Salbei. Vitello tonnato: kaltes, dünn geschnittenes Kalbfleisch mit Thunfisch-Kapern-Sauce.",
+                    aVi: "Wiener Schnitzel: thịt bê tẩm bột mì, trứng, vụn bánh mì chiên vàng. Saltimbocca: thịt bê áp chảo với thịt nguội Parma và lá xô thơm (Salbei). Vitello tonnato: thịt bê thái mỏng dùng lạnh với xốt cá ngừ và nụ bạch hoa."
+                  }
+                ]
               },
               {
                 id: "kueche",
                 icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="15" r="5.5"/><path d="M15 15h6"/><path d="M8 15l2.5-3"/></svg>',
                 name: "Küche & Ernährung",
-                desc: "Nährwert · Eiercode · Wertigkeit",
+                desc: "Physikalischer Brennwert · Eierkennzeichnung & Frische · Biologische Wertigkeit",
                 route: "#/bfk/2/kueche",
-                content: `<h2> Küche & Ernährung</h2>
-<div class="hint">Nährwert · Eiercode · biologische Wertigkeit</div>
-<p><button class="btn" type="button" onclick="go('#/bfk/2/kueche')">Modul öffnen →</button></p>
-<h3 class="sub">1. Brennwerte</h3>
+                content: `<h2>Küche &amp; Ernährung</h2>
+<div class="hint">Brennwertberechnung · Eiercode &amp; Lagerung · Biologische Wertigkeit von Eiweiß</div>
+<p><button class="btn" type="button" onclick="go('#/bfk/2/kueche')">Interaktives Modul öffnen →</button></p>
+<h3 class="sub">1. Energiegehalt der Nährstoffe (Brennwerte)</h3>
 <table>
-  <tr><th>Nährstoff</th><th>pro 1 g</th></tr>
-  <tr><td>Eiweiß / Kohlenhydrate</td><td><strong>17 kJ = 4 kcal</strong></td></tr>
-  <tr><td>Fett</td><td><strong>37 kJ = 9 kcal</strong></td></tr>
+  <tr><th>Energieliefernder Nährstoff</th><th>Brennwert pro 1 Gramm</th></tr>
+  <tr><td>Eiweiß (Proteine)</td><td><strong>17 kJ = 4 kcal</strong></td></tr>
+  <tr><td>Kohlenhydrate</td><td><strong>17 kJ = 4 kcal</strong></td></tr>
+  <tr><td>Fett (Lipide)</td><td><strong>37 kJ = 9 kcal</strong></td></tr>
 </table>
-<div class="formula">Energiewert (kJ) = (g EW × 17) + (g KH × 17) + (g Fett × 37)<br>1 kcal = 4,2 kJ</div>
-<h3 class="sub">2. Eiercode</h3>
-<p>Format: <b>Haltungsform – Land – Betriebsnr.</b> z.B. 2-DE-0812345</p>
+<div class="formula">Energiewert (kJ) = (g Eiweiß × 17) + (g Kohlenhydrate × 17) + (g Fett × 37)<br>Umrechnung: 1 kcal ≈ 4,2 kJ</div>
+<div class="vi"><b>Giá trị năng lượng (Brennwerte):</b> 1 g Đạm (Eiweiß) hoặc 1 g Tinh bột (Kohlenhydrate) cung cấp <b>17 kJ (4 kcal)</b>; 1 g Chất béo (Fett) cung cấp <b>37 kJ (9 kcal)</b>.</div>
+
+<h3 class="sub">2. Eierkennzeichnung (Erzeugercode) &amp; Umgang mit Eiern</h3>
+<p>Aufbau des Stempelcodes auf dem Ei: <b>Haltungsform – Herkunftsland – Betriebsnummer</b> (z. B. <code>1-DE-0812345</code>).</p>
 <table>
-  <tr><th>Ziffer</th><th>Haltung</th></tr>
-  <tr><td><strong>0</strong></td><td><span class="term" data-de="Bio / Ökologisch" data-vi="hữu cơ">Bio / Ökologisch</span></td></tr>
-  <tr><td><strong>1</strong></td><td><span class="term" data-de="Freilandhaltung" data-vi="nuôi thả vườn">Freilandhaltung</span></td></tr>
-  <tr><td><strong>2</strong></td><td><span class="term" data-de="Bodenhaltung" data-vi="nuôi trên nền">Bodenhaltung</span></td></tr>
-  <tr><td><strong>3</strong></td><td><span class="term" data-de="Kleingruppenhaltung" data-vi="nuôi nhóm nhỏ / lồng">Kleingruppenhaltung</span></td></tr>
+  <tr><th>Ziffer</th><th>Haltungsform</th></tr>
+  <tr><td><strong>0</strong></td><td><span class="term" data-de="Bio / Ökologisch" data-vi="chăn nuôi hữu cơ">Ökologische Erzeugung (Bio)</span></td></tr>
+  <tr><td><strong>1</strong></td><td><span class="term" data-de="Freilandhaltung" data-vi="chăn nuôi thả vườn">Freilandhaltung</span></td></tr>
+  <tr><td><strong>2</strong></td><td><span class="term" data-de="Bodenhaltung" data-vi="chăn nuôi trên nền chuồng">Bodenhaltung</span></td></tr>
+  <tr><td><strong>3</strong></td><td><span class="term" data-de="Kleingruppenhaltung" data-vi="chăn nuôi lồng nhóm nhỏ">Kleingruppenhaltung (Käfighaltung)</span></td></tr>
 </table>
 <ul>
-  <li>Lagerung ca. <b>5 °C</b> · MHD <b>28 Tage</b> nach Legedatum</li>
-  <li>Nach MHD nur <b>durcherhitzt</b> · Salmonellen: 5 Min. kochen</li>
+  <li><strong>Mindesthaltbarkeitsdatum (MHD):</strong> <b>28 Tage</b> ab dem Legedatum; Kühlung ab dem 18. Tag bei ca. <b>+5 °C bis +8 °C</b>.</li>
+  <li><strong>Nach Ablauf des MHD:</strong> Eier dürfen nur noch <b>vollständig durcherhitzt</b> (mind. 70 °C im Kern) zum Backen und Kochen verwendet werden (Schutz vor <em>Salmonellen</em>).</li>
 </ul>
-<h3 class="sub">3. Biologische Wertigkeit (BW)</h3>
-<div class="formula"><span class="term" data-de="Biologische Wertigkeit" data-vi="giá trị sinh học">Biologische Wertigkeit</span> = wie viel g Körpereiweiß aus 100 g Nahrungseiweiß</div>
+<div class="vi"><b>Mã số đóng dấu trên trứng gà (Eiercode):</b> Số đầu tiên chỉ hình thức nuôi: <b>0</b> = Hữu cơ (Bio), <b>1</b> = Thả vườn (Freiland), <b>2</b> = Nuôi trên nền chuồng (Bodenhaltung), <b>3</b> = Nuôi lồng nhóm nhỏ (Kleingruppenhaltung). Hạn sử dụng (MHD) là <b>28 ngày</b> kể từ ngày đẻ; sau hạn MHD chỉ được dùng khi nấu chín kỹ hoàn toàn để diệt khuẩn Salmonella.</div>
+
+<h3 class="sub">3. Biologische Wertigkeit (BW) von Proteinen</h3>
+<div class="formula"><span class="term" data-de="Biologische Wertigkeit" data-vi="giá trị sinh học của đạm">Biologische Wertigkeit (BW)</span> = Wie viel Gramm körpereigenes Eiweiß aus 100 g Nahrungseiweiß gebildet werden kann.</div>
 <table>
-  <tr><th>Lebensmittel</th><th>BW</th></tr>
-  <tr><td><span class="term" data-de="Hühnerei" data-vi="trứng gà">Hühnerei</span> (Referenz)</td><td><strong>100</strong></td></tr>
+  <tr><th>Lebensmittel</th><th>Biologische Wertigkeit (BW)</th></tr>
+  <tr><td><span class="term" data-de="Hühnerei" data-vi="trứng gà">Vollei / Hühnerei</span> (Referenzwert)</td><td><strong>100</strong></td></tr>
   <tr><td>Kartoffeln</td><td>95</td></tr>
   <tr><td>Rindfleisch</td><td>87</td></tr>
   <tr><td>Kuhmilch</td><td>86</td></tr>
-  <tr><td>Soja</td><td>84</td></tr>
+  <tr><td>Sojabohnen</td><td>84</td></tr>
 </table>
-<div class="note"> Ergänzungswert: Kombination hebt BW (z.B. Kartoffel + Ei, Getreide + Milch).</div>`
+<div class="note"><b>Ergänzungswert:</b> Durch geschickte Kombination tierischer und pflanzlicher Eiweiße steigt die biologische Wertigkeit über 100 (z. B. <b>Kartoffeln + Ei = BW 136</b>, Getreide + Milch, Bohnen + Mais).</div>
+<div class="vi"><b>Giá trị sinh học của đạm (Biologische Wertigkeit):</b> Cho biết từ 100 g đạm thực phẩm cơ thể tổng hợp được bao nhiêu gam đạm cơ thể. Trứng gà (<i>Hühnerei</i>) được lấy làm chuẩn = <b>100</b>. Khi kết hợp khoai tây + trứng gà, các axit amin bổ sung cho nhau giúp BW tăng lên tới <b>136</b>.</div>`,
+                qa: [
+                  {
+                    q: "Wie lauten die vier Ziffern der Haltungsformen beim Eiercode?",
+                    qVi: "4 chữ số ký hiệu hình thức chăn nuôi trong mã số trứng (Eiercode) có ý nghĩa gì?",
+                    a: "0 = Ökologische Erzeugung (Bio), 1 = Freilandhaltung, 2 = Bodenhaltung, 3 = Kleingruppenhaltung.",
+                    aVi: "0 = Chăn nuôi hữu cơ (Bio), 1 = Nuôi thả vườn (Freilandhaltung), 2 = Nuôi trên nền chuồng (Bodenhaltung), 3 = Nuôi lồng nhóm nhỏ (Kleingruppenhaltung)."
+                  },
+                  {
+                    q: "Was versteht man unter der biologischen Wertigkeit (BW) von Eiweiß und warum kombiniert man Kartoffeln mit Ei?",
+                    qVi: "Giá trị sinh học (Biologische Wertigkeit) của protein là gì và tại sao người ta kết hợp khoai tây với trứng?",
+                    a: "Die biologische Wertigkeit gibt an, wie viel Gramm Körpereiweiß der Mensch aus 100 g Nahrungseiweiß aufbauen kann (Referenz Vollei = 100). Durch die Kombination von Kartoffeln und Ei ergänzen sich die unentbehrlichen Aminosäuren optimal (Ergänzungswert: BW 136).",
+                    aVi: "Giá trị sinh học cho biết cơ thể tạo ra được bao nhiêu gam protein từ 100 g protein thực phẩm (chuẩn trứng gà = 100). Kết hợp khoai tây với trứng giúp các axit amin thiết yếu bổ khuyết cho nhau, nâng giá trị sinh học lên 136."
+                  }
+                ]
               }
             ]
           },
           {
             id: "fisch-warenkunde",
-            badge: "Năm 2 · Warenkunde",
-            title: "Năm 2 · Fisch — Warenkunde & Zubereitung",
+            badge: "2. Jahr · Warenkunde",
+            title: "Fisch — Warenkunde & Zubereitung",
             items: [
               {
                 id: "fisch-warenkunde",
+qa: [
+                  {
+                    q: "Wie unterscheidet man Rundfische und Plattfische nach dem Filetier-Ertrag?",
+                    qVi: "Phân biệt cá thân tròn (Rundfische) và cá thân dẹt (Plattfische) theo số lượng phi-lê thu được như thế nào?",
+                    a: "<b>Rundfische</b> (z. B. Lachs, Kabeljau, Forelle, Zander) liefern beim Filetieren <b>2 Filets</b> (links und rechts der Mittelgräte). <b>Plattfische</b> (z. B. Seezunge, Scholle, Steinbutt) liefern <b>4 Filets</b> (2 auf der dunklen Oberseite, 2 auf der hellen Blindseite).",
+                    aVi: "<b>Rundfische</b> (VD: cá hồi, cá tuyết, cá rô phi) khi phi-lê cho <b>2 miếng phi-lê</b>. <b>Plattfische</b> (VD: cá bơn Seezunge, Scholle, Steinbutt) cho <b>4 miếng phi-lê</b>."
+                  },
+                  {
+                    q: "Welche Frischemerkmale weist ein absolut frischer Speisefisch auf?",
+                    qVi: "Cá thực phẩm tươi sống hoàn hảo có những dấu hiệu nhận biết độ tươi nào?",
+                    a: "1. <b>Augen:</b> klar, prall und nach außen gewölbt.<br>2. <b>Kiemen:</b> leuchtend hellrot, feucht, ohne Schleim.<br>3. <b>Haut:</b> glänzend mit klarem Schleim, Schuppen sitzen fest.<br>4. <b>Fleisch:</b> fest und elastisch.<br>5. <b>Geruch:</b> frisch nach Meer oder Algen, niemals fischig oder nach Ammoniak.",
+                    aVi: "1. <b>Mắt:</b> trong suốt, căng phồng lồi ra ngoài.<br>2. <b>Mang:</b> đỏ tươi sáng, ẩm.<br>3. <b>Da:</b> sáng bóng, vảy bám chặt.<br>4. <b>Thịt:</b> săn chắc, đàn hồi.<br>5. <b>Mùi:</b> thơm mát mùi biển/tảo, không tanh khai."
+                  },
+                  {
+                    q: "Wie lauten die drei Schritte der klassischen 3-S-Regel bei der Fischvorbereitung?",
+                    qVi: "Ba bước trong quy tắc 3-S cổ điển khi sơ chế cá là gì?",
+                    a: "<b>Säubern</b> (Waschen, Schuppen, Ausnehmen) → <b>Säuern</b> (mit Zitronensaft beträufeln zur Eiweißfestigung und Geruchsbindung) → <b>Salzen</b> (erst unmittelbar vor dem Garen salzen, damit das Fischfleisch keinen Saft verliert).",
+                    aVi: "<b>Säubern</b> (Làm sạch) → <b>Säuern</b> (Ướp chanh làm săn và khử mùi) → <b>Salzen</b> (Muối ngay trước khi nấu để cá không chảy nước)."
+                  }
+                ],
                 icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 12c.94-3.46 4.94-6 8.5-6 3.56 0 6.06 2.54 7 6-.94 3.46-3.44 6-7 6-3.56 0-7.56-2.54-8.5-6z"/><path d="M18 10v4"/><path d="M2 16l4.5-4L2 8"/></svg>',
-                name: "Fisch — Warenkunde & Zubereitung (DE/VI)",
-                desc: "§1 Einteilung · §2 Inhaltsstoffe · §3 Merkmale · §4 Konservierung · §5 Kaviar · §6 Gerichte & Wein · §7 Bildtafel (15 loài cá có đủ ảnh) · Prüfungs-Check",
+                name: "Fisch — Warenkunde & Zubereitung",
+                desc: "§1 Einteilung · §2 Inhaltsstoffe · §3 Frischemerkmale · §4 Konservierung · §5 Kaviar · §6 Gerichte & Wein · §7 Bildtafel (15 Speisefische)",
                 vokabeln: [
           {
                     "de": "Wanderfische",
@@ -1694,13 +1958,27 @@ function toggleViFisch(){ var wrap=document.querySelector('.fisch-skript-wrap');
           },
           {
             id: "milch-kaese",
-            badge: "Năm 2 · LF 10",
-            title: "Năm 2 · Milch & Käse — Warenkunde & Service",
+            badge: "2. Jahr · LF 10",
+            title: "Milch & Käse — Warenkunde & Service (LF 10)",
             items: [
               {
                 id: "milch-kaese",
+qa: [
+                  {
+                    q: "Welche Wärmebehandlungsverfahren für Konsummilch gibt es und wie unterscheiden sie sich?",
+                    qVi: "Có những phương pháp xử lý nhiệt nào cho sữa tiêu dùng và chúng khác nhau ra sao?",
+                    a: "<ul><li><b>Pasteurisieren (Frischmilch):</b> 72–75 °C für 15–30 Sek.; gekühlt ca. 7–10 Tage haltbar.</li><li><b>ESL-Milch (Extended Shelf Life):</b> 127 °C für 2–4 Sek.; gekühlt ca. 3 Wochen haltbar.</li><li><b>Ultrahocherhitzen (H-Milch):</b> 135–150 °C für 2–4 Sek.; ungeöffnet mehrere Monate haltbar.</li><li><b>Sterilisieren:</b> 110–120 °C für 20–30 Min.; bis zu 1 Jahr haltbar.</li></ul>",
+                    aVi: "<ul><li><b>Thanh trùng Pasteur (Frischmilch):</b> 72–75 °C trong 15–30 giây; giữ lạnh 7–10 ngày.</li><li><b>Sữa ESL:</b> 127 °C trong 2–4 giây; giữ lạnh 3 tuần.</li><li><b>Tiệt trùng UHT (H-Milch):</b> 135–150 °C trong 2–4 giây; để nhiệt độ phòng được nhiều tháng.</li><li><b>Tiệt trùng Sterilisieren:</b> 110–120 °C trong 20–30 phút; để được 1 năm.</li></ul>"
+                  },
+                  {
+                    q: "Was bedeutet die Angabe „45 % Fett i. Tr.“ bei Käse?",
+                    qVi: "Ký hiệu „45 % Fett i. Tr.“ trên phô mai có nghĩa là gì?",
+                    a: "<b>Fett i. Tr.</b> bedeutet <b>Fett in der Trockenmasse</b> (Anteil des Fettes an der wasserfreien Käsemasse). Der absolute Fettgehalt im gesamten Käse ist deutlich geringer (bei Hartkäse ca. Fett i. Tr. × 0,7; bei Weichkäse × 0,5).",
+                    aVi: "<b>Fett i. Tr.</b> nghĩa là <b>Hàm lượng chất béo tính trên chất khô</b>. Hàm lượng béo thực tế thấp hơn nhiều (phô mai cứng × 0,7; phô mai mềm × 0,5)."
+                  }
+                ],
                 icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 21h10a2 2 0 0 0 2-2V9l-7-6-7 6v10a2 2 0 0 0 2 2z"/><circle cx="15.5" cy="15.5" r="1.5"/><circle cx="9.5" cy="16.5" r="1"/></svg>',
-                name: "Milch & Käse — Lernfeld 10 · LS 2–3 (DE/VI)",
+                name: "Milch & Käse — Lernfeld 10 (LS 2–3)",
                 desc: "§1 Milchprodukte · §2 6 Käsegruppen · §3 Sorten-Tabelle · §4 Herstellung · §5 Zusammensetzung · §6 Fettstufen · §7 Fett i. Tr. · §8 Verwendung · §9 Käseplatte · §10 Getränke · §11 Concept Map · Prüfungs-Check",
                 vokabeln: [
           {
@@ -2697,7 +2975,7 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
         icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
         accent: "#9A4607",
         soft: "#FDF8EE",
-        teacher: "Herrn Kling",
+        teacher: "",
         examDate: "2026-07-16",
         ready: true,
         desc: "Visualisierung · Mindmap · Diagramme · Text → Grafik",
@@ -2798,8 +3076,30 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
   <li><b>Lineal verwenden:</b> Achsen, Tabellenstriche und Rahmen immer sauber mit Lineal zeichnen!</li>
   <li><b>Achsenbeschriftung &amp; Einheiten:</b> Bei Diagrammen immer Achsen beschriften und Maßeinheiten (€, %, kg, Jahre) angeben.</li>
   <li><b>Groß- und Kleinschreibung:</b> Auch in Stichworten gilt: Nur Substantive und Satzanfänge großschreiben!</li>
-</ul>`,
+</ul>
+              <div class="vi"><b>Tóm tắt Tiếng Việt:</b><ul><li><b>Mindmap (Sơ đồ tư duy):</b> Chủ đề chính nằm ở chính giữa, các nhánh chính (Hauptäste) tỏa ra xung quanh kèm từ khóa ngắn gọn (Stichworte), giúp hệ thống hóa ý tưởng.</li><li><b>5 dạng biểu đồ quan trọng (Diagrammtypen):</b><ul><li><b>Säulendiagramm (Biểu đồ cột đứng):</b> So sánh các giá trị tại một thời điểm hoặc giữa các nhóm.</li><li><b>Balkendiagramm (Biểu đồ cột ngang):</b> Giống biểu đồ cột đứng nhưng nằm ngang, rất hợp cho bảng xếp hạng (Ranking).</li><li><b>Kreis- / Tortendiagramm (Biểu đồ tròn):</b> Thể hiện tỷ lệ phần trăm (%) trong một tổng thể 100%.</li><li><b>Liniendiagramm / Kurvendiagramm (Biểu đồ đường):</b> Thể hiện sự biến thiên, xu hướng phát triển theo thời gian (Jahren/Monaten).</li><li><b>Flussdiagramm (Lưu đồ quy trình):</b> Mô tả trình tự các bước hoặc quan hệ nhân quả (Ursache → Wirkung).</li></ul></li></ul></div>
+            `,
+            "qa": [
+              {
+                "q": "Wann verwendet man ein Kreisdiagramm (Tortendiagramm) und wann ein Liniendiagramm?",
+                "qVi": "Khi nào sử dụng biểu đồ tròn (Kreisdiagramm) và khi nào sử dụng biểu đồ đường (Liniendiagramm)?",
+                "a": "Ein <b>Kreisdiagramm</b> zeigt <b>Anteile an einem Ganzen (100 %)</b> zu einem festen Zeitpunkt. Ein <b>Liniendiagramm (Kurvendiagramm)</b> stellt eine <b>zeitliche Entwicklung oder einen Trend</b> über mehrere Jahre oder Monate dar.",
+                "aVi": "<b>Kreisdiagramm (Biểu đồ tròn)</b> thể hiện <b>tỷ lệ phần trăm của các thành phần trong một tổng thể (100%)</b> tại một thời điểm cố định. <b>Liniendiagramm (Biểu đồ đường)</b> thể hiện <b>sự phát triển hoặc xu hướng biến đổi theo thời gian</b> qua nhiều tháng/năm."
               },
+              {
+                "q": "Was ist der Unterschied zwischen einem Säulendiagramm und einem Balkendiagramm?",
+                "qVi": "Sự khác biệt giữa biểu đồ cột đứng (Säulendiagramm) và biểu đồ cột ngang (Balkendiagramm) là gì?",
+                "a": "Beim <b>Säulendiagramm</b> stehen die Werte als <b>senkrechte Säulen</b> nebeneinander. Beim <b>Balkendiagramm</b> verlaufen die Werte als <b>waagerechte Balken</b> untereinander (ideal für Ranglisten mit langen Beschriftungen).",
+                "aVi": "Ở <b>Säulendiagramm</b>, các giá trị được biểu diễn bằng <b>các cột thẳng đứng</b> đặt cạnh nhau. Ở <b>Balkendiagramm</b>, các giá trị chạy <b>ngang từ trái sang phải</b> xếp chồng lên nhau (rất lý tưởng cho bảng xếp hạng có tên mục dài)."
+              },
+              {
+                "q": "Welche Grundregeln gelten beim Erstellen einer Mindmap?",
+                "qVi": "Những quy tắc cơ bản nào cần tuân thủ khi lập sơ đồ tư duy (Mindmap)?",
+                "a": "Das <b>Zentralthema</b> steht in der Mitte des Querformats. Von dort gehen <b>Hauptäste</b> (Oberbegriffe) und <b>Nebenäste</b> (Details) ab. Es werden nur <b>Stichworte (Substantive/Schlüsselbegriffe)</b> statt ganzer Sätze notiert.",
+                "aVi": "<b>Chủ đề trung tâm (Zentralthema)</b> đặt ở chính giữa trang giấy ngang. Từ đó tỏa ra các <b>nhánh chính (Hauptäste - khái niệm lớn)</b> và <b>nhánh phụ (Nebenäste - chi tiết)</b>. Chỉ ghi <b>từ khóa ngắn gọn (Stichworte)</b> thay vì viết cả câu dài."
+              }
+            ]
+          },
               {
                 id: "text-zu-grafik",
                 icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>',
@@ -2864,8 +3164,24 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
     <li>Fehlende Überschrift: Jede Visualisierung muss sofort erkennen lassen, welches Thema behandelt wird.</li>
     <li>Freihand zeichnen: Achsen, Tabellenlinien und Kästen müssen immer mit Lineal gezeichnet werden.</li>
   </ul>
-</div>`,
+</div>
+              <div class="vi"><b>Tóm tắt Tiếng Việt — 5 bước chuyển văn bản thành biểu đồ & phân tích:</b><ol><li><b>Bước 1 (Lesen & Markieren):</b> Đọc kỹ văn bản, gạch chân số liệu, mốc thời gian, đơn vị (%, Euro, người) và nguồn.</li><li><b>Bước 2 (Diagrammtyp wählen):</b> Chọn đúng loại biểu đồ (100% → Kreisdiagramm; chuỗi thời gian → Liniendiagramm; so sánh nhóm → Säulen-/Balkendiagramm).</li><li><b>Bước 3 (Achsen & Legende):</b> Ghi rõ tiêu đề (Überschrift), trục hoành (x-Achse), trục tung (y-Achse), đơn vị và nguồn (Quelle).</li><li><b>Bước 4 (Grafikbeschreibung):</b> Viết bài mô tả theo cấu trúc: <b>Einleitung</b> (Chủ đề, nguồn, năm, loại biểu đồ) → <b>Hauptteil</b> (Giá trị cao nhất/thấp nhất, xu hướng tăng/giảm, so sánh nổi bật) → <b>Schluss</b> (Nhận xét tổng kết & nguyên nhân/hệ quả).</li></ol></div>
+            `,
+            "qa": [
+              {
+                "q": "Wie ist eine schriftliche Grafikbeschreibung im Fach Deutsch aufgebaut?",
+                "qVi": "Một bài viết mô tả biểu đồ (Grafikbeschreibung) trong môn Tiếng Đức có bố cục như thế nào?",
+                "a": "1. <b>Einleitung:</b> Thema, Quelle, Erscheinungsjahr, Erhebungszeitraum, Diagrammtyp und Einheit.<br>2. <b>Hauptteil:</b> Beschreibung der Extremwerte (Maximum/Minimum), Entwicklungen (Steigung/Rückgang) und auffälligen Vergleiche.<br>3. <b>Schluss:</b> Zusammenfassung der Kernaussage, mögliche Ursachen und Ausblick.",
+                "aVi": "1. <b>Mở bài (Einleitung):</b> Chủ đề, nguồn trích dẫn, năm công bố, giai đoạn khảo sát, loại biểu đồ và đơn vị tính.<br>2. <b>Thân bài (Hauptteil):</b> Mô tả giá trị cực đại/cực tiểu (Maximum/Minimum), xu hướng tăng/giảm và các phép so sánh nổi bật.<br>3. <b>Kết bài (Schluss):</b> Tóm tắt thông điệp chính, giải thích nguyên nhân và dự báo xu hướng."
               },
+              {
+                "q": "Welche Redemittel eignen sich für die Einleitung und den Hauptteil einer Grafikbeschreibung?",
+                "qVi": "Những mẫu câu (Redemittel) nào phù hợp cho phần Mở bài và Thân bài khi mô tả biểu đồ?",
+                "a": "<ul><li><b>Einleitung:</b> „Das vorliegende Säulendiagramm mit dem Titel … stammt aus … und zeigt … / Die Angaben erfolgen in Prozent.“</li><li><b>Hauptteil:</b> „An erster Stelle steht … mit … %“, „Den geringsten Anteil bildet …“, „Zwischen … und … ist die Zahl von … auf … gestiegen / gesunken.“</li></ul>",
+                "aVi": "<ul><li><b>Mở bài:</b> „Biểu đồ cột hiện tại có tiêu đề … trích từ … và thể hiện … / Các số liệu được tính bằng phần trăm.“</li><li><b>Thân bài:</b> „Đứng ở vị trí đầu tiên là … với … %“, „Chiếm tỷ lệ thấp nhất là …“, „Trong khoảng từ … đến …, con số đã tăng / giảm từ … lên/xuống …“</li></ul>"
+              }
+            ]
+          },
             ],
           },
           {
@@ -2920,8 +3236,24 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
     <li>Wurde die Gesamtzahl der geschriebenen Wörter am Rand notiert?</li>
     <li>Sind alle Substantive und Eigennamen korrekt großgeschrieben?</li>
   </ol>
-</div>`,
+</div>
+              <div class="vi"><b>Tóm tắt Tiếng Việt — Đề thi mẫu Klassenarbeit 1 (Mindmap & Biểu đồ):</b><ul><li><b>Phần A (Mindmap):</b> Đọc văn bản thông tin (VD: <i>Ausbildung im Gastgewerbe</i> hoặc <i>Nachhaltigkeit im Hotel</i>) và lập Mindmap gồm 4–5 nhánh chính (Aufgaben, Arbeitszeiten, Vorteile, Herausforderungen, Zukunftschancen).</li><li><b>Phần B (Diagramm zeichnen & beschreiben):</b> Từ bảng số liệu hoặc đoạn văn có chứa số liệu thống kê, vẽ biểu đồ thích hợp (ghi đủ tiêu đề, trục, đơn vị, nguồn) và viết đoạn văn 120–150 từ phân tích biểu đồ bằng thì <b>Präsens</b> (hoặc Perfekt/Präteritum cho số liệu quá khứ).</li></ul></div>
+            `,
+            "qa": [
+              {
+                "q": "Welche Pflichtangaben dürfen beim Zeichnen eines Diagramms in der Klassenarbeit niemals fehlen?",
+                "qVi": "Những thông tin bắt buộc nào không bao giờ được thiếu khi vẽ biểu đồ trong bài kiểm tra (Klassenarbeit)?",
+                "a": "1. <b>Aussagekräftige Überschrift (Titel)</b>.<br>2. <b>Achsenbeschriftung</b> (x-Achse und y-Achse mit <b>Maßeinheit</b> wie % oder Euro).<br>3. <b>Skalierung</b> in gleichmäßigen Abständen.<br>4. <b>Legende</b> (falls mehrere Datenreihen).<br>5. <b>Quellenangabe und Erhebungsjahr</b>.",
+                "aVi": "1. <b>Tiêu đề rõ ràng (Überschrift/Titel)</b>.<br>2. <b>Chú thích trục</b> (trục hoành x và trục tung y kèm <b>đơn vị đo</b> như % hoặc Euro).<br>3. <b>Chia vạch tỷ lệ (Skalierung)</b> đều nhau.<br>4. <b>Chú giải (Legende)</b> nếu có nhiều nhóm dữ liệu.<br>5. <b>Nguồn và năm thống kê (Quelle & Jahr)</b>."
               },
+              {
+                "q": "In welcher Zeitform (Tempus) schreibt man eine Grafikbeschreibung?",
+                "qVi": "Bài mô tả biểu đồ được viết ở thì (Tempus) nào?",
+                "a": "Grundsätzlich im <b>Präsens</b> (z. B. <i>„Das Diagramm zeigt…“, „An der Spitze liegt…“</i>). Vergangene Entwicklungen werden im <b>Präteritum</b> oder <b>Perfekt</b> dargestellt (z. B. <i>„Im Jahr 2020 sank der Wert auf… / ist der Wert auf … gesunken.“</i>).",
+                "aVi": "Về nguyên tắc dùng thì <b>Hiện tại đơn (Präsens)</b> (VD: <i>„Biểu đồ cho thấy…“, „Đứng đầu là…“</i>). Các diễn biến đã kết thúc trong quá khứ dùng thì <b>Präteritum</b> hoặc <b>Perfekt</b> (VD: <i>„Năm 2020 giá trị đã giảm xuống…“</i>)."
+              }
+            ]
+          },
             ],
           },
           {
@@ -2993,8 +3325,24 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
     <li>Ist der Ton sachlich, neutral und frei von persönlicher Meinung?</li>
     <li>Enthält der Schluss (falls gefordert) die Kernaussage bzw. Botschaft?</li>
   </ol>
-</div>`,
+</div>
+              <div class="vi"><b>Tóm tắt Tiếng Việt — Công thức viết Inhaltsangabe (Tóm tắt văn bản):</b><ul><li><b>5 Quy tắc vàng:</b> (1) Viết ở thì <b>Präsens</b> (sự việc xảy ra trước đó dùng <b>Perfekt</b>); (2) Ngôi thứ 3 khách quan (<b>sachlich</b>, không nêu ý kiến cá nhân ở mở bài/thân bài); (3) <b>Không trích dẫn trực tiếp (keine wörtliche Rede)</b> → chuyển sang câu gián tiếp (<b>Konjunktiv I</b> hoặc <i>dass</i>-Satz); (4) Dùng từ ngữ riêng (<b>eigene Worte</b>), chỉ giữ lại cốt truyện chính (W-Fragen: Wer? Wann? Wo? Was? Warum? Wie endet es?); (5) Độ dài khoảng 1/3 văn bản gốc.</li><li><b>Cấu trúc 3 phần:</b> <b>Einleitung (Basissatz)</b> (Textsorte, Titel, Autor, Erscheinungsjahr, Thema/Kernaussage) → <b>Hauptteil</b> (Các bước hành động chính theo trình tự logic, dùng từ nối <i>zunächst, daraufhin, schließlich</i>) → <b>Schluss</b> (Ý đồ tác giả / thông điệp bài học).</li></ul></div>
+            `,
+            "qa": [
+              {
+                "q": "Welche fünf Angaben gehören zwingend in den Einleitungssatz (Basissatz) einer Inhaltsangabe?",
+                "qVi": "5 thông tin nào bắt buộc phải có trong câu mở đầu (Basissatz) của một bài Inhaltsangabe?",
+                "a": "1. <b>Textsorte</b> (z. B. Kurzgeschichte, Fabel, Kalendergeschichte, Sachtext).<br>2. <b>Autor/in</b>.<br>3. <b>Titel</b> des Textes.<br>4. <b>Erscheinungsjahr / Quelle</b> (falls angegeben).<br>5. <b>Kernaussage / Thema</b> (Worum geht es im Kern?).",
+                "aVi": "1. <b>Thể loại văn bản (Textsorte)</b> (VD: truyện ngắn, ngụ ngôn, văn bản thông tin).<br>2. <b>Tác giả (Autor/in)</b>.<br>3. <b>Tiêu đề (Titel)</b>.<br>4. <b>Năm xuất bản / Nguồn (Erscheinungsjahr / Quelle)</b>.<br>5. <b>Chủ đề cốt lõi (Kernaussage / Thema)</b> (Văn bản nói về vấn đề chính gì?)."
               },
+              {
+                "q": "Welche sprachlichen Regeln gelten für den Hauptteil einer Inhaltsangabe?",
+                "qVi": "Những quy tắc ngôn ngữ nào áp dụng cho phần Thân bài (Hauptteil) của bài Inhaltsangabe?",
+                "a": "<ul><li><b>Tempus:</b> <b>Präsens</b> (Vorzeitigkeit im <b>Perfekt</b>).</li><li><b>Stil:</b> sachlich, neutral, in <b>eigenen Worten</b>, ohne Spannungsmacher und ohne Details/Ausschmückungen.</li><li><b>Rede:</b> <b>keine direkte Rede (keine Zitate)</b>, sondern <b>indirekte Rede (Konjunktiv I)</b>.</li></ul>",
+                "aVi": "<ul><li><b>Thì (Tempus):</b> <b>Hiện tại đơn (Präsens)</b> (hành động xảy ra trước đó dùng <b>Perfekt</b>).</li><li><b>Văn phong:</b> khách quan, trung lập, diễn đạt bằng <b>từ ngữ của chính mình</b>, bỏ các chi tiết rườm rà/gây kịch tính.</li><li><b>Lời thoại:</b> <b>cấm trích dẫn trực tiếp</b>, bắt buộc chuyển sang <b>câu gián tiếp (Konjunktiv I)</b>.</li></ul>"
+              }
+            ]
+          },
               {
                 id: "inhaltsangabe-muster",
                 icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>',
@@ -3036,8 +3384,24 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
 
   <p><b>Analyse der Qualität:</b><br>
   Der literarische Text besitzt einen deutlichen Wendepunkt (Känguru wacht auf), der chronologisch dargestellt wird. Unwichtige Details (Marken, Gamsbart) wurden weggelassen, die Kernaussage wird im Schlusssatz sachlich formuliert.</p>
-</div>`,
+</div>
+              <div class="vi"><b>Tóm tắt Tiếng Việt — Các bài mẫu Inhaltsangabe kinh điển:</b><ul><li>Tổng hợp phân tích và bài viết mẫu chuẩn IHK/Berufsschule cho các truyện ngắn thường gặp trong chương trình năm 2: <b>„Spaghetti für zwei“</b> (Federica de Cesco — định kiến và sự hiểu lầm hài hước tại quán ăn), <b>„Die Küchenuhr“</b> (Wolfgang Borchert — nỗi mất mát sau chiến tranh và giá trị của những điều bình dị), cùng các văn bản báo chí/chuyên ngành Gastronomie.</li><li>Mỗi bài mẫu đều chia rõ: <b>Basissatz</b> → <b>Sinnabschnitte (Chia đoạn ý)</b> → <b>Inhaltsangabe hoàn chỉnh ở thì Präsens</b> → <b>Deutung / Schluss (Nhận xét ý nghĩa)</b>.</li></ul></div>
+            `,
+            "qa": [
+              {
+                "q": "Wie lautet der Kerngedanke (Thema) der Kurzgeschichte „Spaghetti für zwei“ von Federica de Cesco?",
+                "qVi": "Tư tưởng cốt lõi (Chủ đề) của truyện ngắn „Spaghetti für zwei“ (Federica de Cesco) là gì?",
+                "a": "Die Kurzgeschichte handelt von <b>Vorurteilen, Rassismus und einem peinlichen Missverständnis</b> im Selbstbedienungsrestaurant: Der jugendliche Heinz hält einen dunkelhäutigen Tischgenossen für einen dreisten Dieb seines Essens, erkennt am Ende jedoch beschämt, dass sein eigener Teller unberührt am Nachbartisch steht und der Fremde sein Essen großzügig mit ihm geteilt hat.",
+                "aVi": "Truyện ngắn xoay quanh <b>định kiến, sự phân biệt đối xử và một hiểu lầm đáng xấu hổ</b> trong nhà hàng tự phục vụ: Cậu thiếu niên Heinz tưởng người đàn ông da màu ngồi cùng bàn ăn trộm đĩa mì của mình, nhưng cuối cùng bẽ bàng nhận ra đĩa mì của cậu vẫn nằm nguyên ở bàn bên cạnh và chính người lạ mặt đã hào phóng chia sẻ phần ăn cho cậu."
               },
+              {
+                "q": "Wie formuliert man die indirekte Rede im Konjunktiv I korrekt?",
+                "qVi": "Cách chia động từ ở câu gián tiếp (Konjunktiv I) chuẩn xác như thế nào?",
+                "a": "Man bildet den Konjunktiv I vom <b>Verbstamm + Endung -e</b> (3. Person Singular: <i>er sage, er habe, er sei, er könne, er wolle, er gehe</i>). Ist der Konjunktiv I identisch mit dem Indikativ (oft im Plural: <i>sie haben</i>), weicht man auf den <b>Konjunktiv II</b> (<i>sie hätten, sie würden…</i>) aus.",
+                "aVi": "Lập Konjunktiv I bằng <b>Gốc động từ + đuôi -e</b> ở ngôi thứ 3 số ít (<i>er sage, er habe, er sei, er könne, er wolle, er gehe</i>). Nếu dạng Konjunktiv I trùng với hiện tại thường (hay gặp ở ngôi số nhiều: <i>sie haben</i>) thì chuyển sang dùng <b>Konjunktiv II</b> (<i>sie hätten, sie würden…</i>)."
+              }
+            ]
+          },
               {
                 id: "inhaltsangabe-uebung",
                 icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>',
@@ -3090,8 +3454,24 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
 
   <p><b>Schluss:</b><br>
   Die Kurzgeschichte zeigt, dass das Streben nach exotischen Reisen und Selbstfindung oft an der Sehnsucht nach Vertrautheit und Heimat scheitert, wenn feste soziale Bindungen fehlen.</p>
-</div>`,
+</div>
+              <div class="vi"><b>Tóm tắt Tiếng Việt — Bài tập thực hành viết Inhaltsangabe & Sửa lỗi sai:</b><ul><li><b>Bài tập chuyển đổi câu:</b> Chuyển từ thì quá khứ (Präteritum) sang hiện tại (Präsens), chuyển lời thoại trực tiếp sang gián tiếp (Konjunktiv I), và rút gọn đoạn văn dài thành 1–2 câu súc tích bằng danh từ hóa (Nominalstil) hoặc mệnh đề phụ.</li><li><b>Checklist tự kiểm tra trước khi nộp bài:</b> Đã đủ 5 yếu tố trong Basissatz chưa? Có bị sót câu Präteritum hay dấu ngoặc kép trích dẫn nào không? Có lỡ chèn bình luận cá nhân vào Hauptteil không?</li></ul></div>
+            `,
+            "qa": [
+              {
+                "q": "Forme die direkte Rede in die indirekte Rede um: Der Küchenchef fragte den Azubi: „Hast du die Kühlhaus-Temperatur schon kontrolliert?“",
+                "qVi": "Chuyển câu trực tiếp sau sang câu gián tiếp: Bếp trưởng hỏi Azubi: „Em đã kiểm tra nhiệt độ kho lạnh chưa?“",
+                "a": "Der Küchenchef fragt den Auszubildenden, <b>ob er die Kühlhaus-Temperatur bereits kontrolliert habe</b>.",
+                "aVi": "Der Küchenchef fragt den Auszubildenden, <b>ob er die Kühlhaus-Temperatur bereits kontrolliert habe</b> (Câu hỏi Yes/No chuyển sang mệnh đề phụ bắt đầu bằng liên từ <b>ob</b> + động từ chia ở Perfekt Konjunktiv I <b>habe kontrolliert</b>)."
               },
+              {
+                "q": "Welche typischen Fehler führen in der Klassenarbeit zur Inhaltsangabe zum Punktabzug?",
+                "qVi": "Những lỗi điển hình nào dẫn đến bị trừ điểm trong bài kiểm tra viết Inhaltsangabe?",
+                "a": "1. Wechsel ins <b>Präteritum</b> (Nacherzählung statt Inhaltsangabe).<br>2. <b>Wörtliche Rede / Zitate</b> im Hauptteil.<br>3. <b>Eigene Meinung</b> schon in der Einleitung oder im Hauptteil.<br>4. Fehlende Angaben im <b>Basissatz</b> (z. B. Textsorte oder Thema vergessen).",
+                "aVi": "1. Dùng nhầm thì <b>Quá khứ Präteritum</b> (biến thành kể lại truyện Nacherzählung thay vì tóm tắt).<br>2. Dùng <b>lời thoại trực tiếp / trích dẫn</b> trong thân bài.<br>3. Đưa <b>ý kiến cá nhân</b> vào mở bài hoặc thân bài.<br>4. Thiếu thông tin trong câu <b>Basissatz</b> (quên thể loại hoặc chủ đề)."
+              }
+            ]
+          },
             ],
           },
         ],
@@ -3104,7 +3484,7 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
         icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 12h18"/></svg>',
         accent: "#7c3aed",
         soft: "#f5f3ff",
-        teacher: "HAL (Hoffmann)",
+        teacher: "",
         examDate: "2026-07-21",
         ready: true,
         desc: "Telephoning · Complaints · Quantifiers · Tenses",
@@ -3171,8 +3551,23 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
                   </ul>
                   <div class="formula">Answer → Identify → Help / Transfer → Message → Close</div>
                   <div class="note"> On the phone you represent yourself <b>and</b> the company — polite language = professional image.</div>
-                `
+              <div class="vi"><b>Tóm tắt Tiếng Việt — Giao tiếp điện thoại trong khách sạn & nhà hàng (Telephoning):</b><ul><li><b>Chào hỏi & Xưng danh:</b> <i>„Good morning/afternoon, Hotel …, [Name] speaking. How may I help you?“</i></li><li><b>Hỏi tên & Đánh vần (Spelling):</b> <i>„May I have your name, please? — Could you spell that for me, please?“</i> (Sử dụng bảng chữ cái ICAO/NATO hoặc ví dụ rõ ràng).</li><li><b>Nối máy & Để lại lời nhắn:</b> <i>„Hold the line, please. I’ll put you through to…“ / „I’m afraid Mr/Ms … is not available at the moment. Would you like to leave a message?“</i></li><li><b>Nhận đặt bàn / đặt phòng:</b> Xác nhận ngày (Date), giờ (Time), số lượng khách (Number of guests/covers), khu vực ngồi (smoking/non-smoking, terrace, window table) và số điện thoại liên hệ.</li></ul></div>
+            `,
+            "qa": [
+              {
+                "q": "How do you politely answer the phone at a restaurant or hotel reception in English?",
+                "qVi": "Bạn trả lời điện thoại lịch sự tại quầy lễ tân khách sạn hoặc nhà hàng bằng tiếng Anh như thế nào?",
+                "a": "<b>“Good morning / Good afternoon / Good evening, [Restaurant/Hotel Name], [Your Name] speaking. How may I help you?”</b>",
+                "aVi": "<b>“Good morning / Good afternoon / Good evening, [Tên Nhà hàng/Khách sạn], [Tên bạn] speaking. How may I help you?”</b> (Xin chào, Nhà hàng/Khách sạn ..., tôi là ... đang nghe. Tôi có thể giúp gì cho quý khách?)."
               },
+              {
+                "q": "What phrases do you use when the person called is busy or unavailable?",
+                "qVi": "Bạn dùng những mẫu câu nào khi người được gọi đang bận hoặc không có mặt?",
+                "a": "<ul><li>“I’m sorry, the line is busy / engaged at the moment. Would you like to hold?”</li><li>“I’m afraid Ms Miller is not available right now. Can I take a message / ask her to call you back?”</li></ul>",
+                "aVi": "<ul><li>“Xin lỗi, hiện đường dây đang bận. Quý khách có muốn giữ máy chờ không?”</li><li>“Tôi e rằng cô Miller hiện không có mặt. Tôi có thể ghi lại lời nhắn hoặc nhắn cô ấy gọi lại cho quý khách không?”</li></ul>"
+              }
+            ]
+          },
               {
                 id: "present-future-tenses",
                 icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>',
@@ -3217,8 +3612,23 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
                     <tr><td>going to</td><td>intention / visible future</td><td>going to, next year</td></tr>
                   </table>
                   <div class="note"> Job talk: skills &amp; routines → simple present · current training/project → progressive.</div>
-                `
+              <div class="vi"><b>Tóm tắt Tiếng Việt — Các thì Hiện tại & Tương lai trong tiếng Anh ngành dịch vụ:</b><ul><li><b>Simple Present (V / V-s):</b> Thói quen, lịch trình cố định, giờ mở cửa (<i>„Breakfast is served from 6:30 to 10:30 a.m.“</i>).</li><li><b>Present Progressive (am/is/are + V-ing):</b> Hành động đang diễn ra ngay lúc nói hoặc kế hoạch đã thu xếp chắc chắn trong tương lai gần (<i>„The chef is preparing your steak right now.“</i>).</li><li><b>Will-Future (will + V):</b> Quyết định tức thời tại thời điểm nói (Spontaneous decision), lời hứa, đề nghị lịch sự trong phục vụ (<i>„I’ll bring you a fresh glass immediately.“</i>).</li><li><b>Going-to-Future (am/is/are going to + V):</b> Dự định có kế hoạch từ trước hoặc dự đoán có dấu hiệu rõ ràng (<i>„We are going to renovate the bar next month.“</i>).</li></ul></div>
+            `,
+            "qa": [
+              {
+                "q": "Why do waiters and receptionists use the Will-Future (“I’ll…”) when reacting to a guest’s request or complaint?",
+                "qVi": "Tại sao nhân viên phục vụ và lễ tân luôn dùng thì Will-Future (“I’ll…”) khi phản hồi yêu cầu hoặc phàn nàn của khách?",
+                "a": "Because it is a <b>spontaneous decision or promise made at the moment of speaking</b> (e.g., <i>“I’m sorry about that, Madam. I’ll bring you a clean fork right away.”</i>).",
+                "aVi": "Vì đó là một <b>quyết định tức thời hoặc lời hứa được đưa ra ngay tại thời điểm nói</b> để hỗ trợ khách (VD: <i>“Tôi rất xin lỗi bà về điều đó. Tôi sẽ mang cho bà một chiếc nĩa sạch ngay lập tức.”</i>)."
+              },
+              {
+                "q": "Which tense is used for fixed timetables and opening hours in hotels and restaurants?",
+                "qVi": "Thì nào được sử dụng cho lịch trình cố định và giờ mở cửa tại khách sạn, nhà hàng?",
+                "a": "The <b>Simple Present</b> (e.g., <i>“Our restaurant opens at 6 p.m.” / “Check-out is until 11 a.m.”</i>).",
+                "aVi": "Thì <b>Hiện tại đơn (Simple Present)</b> (VD: <i>“Nhà hàng chúng tôi mở cửa lúc 6 giờ chiều.” / “Giờ trả phòng là đến 11 giờ trưa.”</i>)."
               }
+            ]
+          }
             ]
           },
           {
@@ -3281,8 +3691,23 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
 
                   <div class="formula">Listen → Apologize → Solve (replace / fix / move) → Thank / follow-up</div>
                   <div class="note"> Never argue. Stay calm, polite, offer a clear solution.</div>
-                `
+              <div class="vi"><b>Tóm tắt Tiếng Việt — Xử lý phàn nàn tại nhà hàng & khách sạn (Dealing with Complaints):</b><ul><li><b>Quy trình 5 bước chuyên nghiệp (LEARN):</b> (1) <b>Listen</b> (Lắng nghe không ngắt lời) → (2) <b>Empathize & Apologize</b> (<i>„I am terribly sorry to hear that / Please accept my apologies“</i>) → (3) <b>Ask / Clarify</b> (Hỏi rõ chi tiết nếu cần) → (4) <b>Resolve / Offer a solution</b> (Đổi món mới, làm lại món, tặng đồ uống/tráng miệng hoặc giảm hóa đơn) → (5) <b>Notify & Follow up</b> (Báo bếp/quản lý và quay lại hỏi thăm khách).</li><li><b>Từ vựng lỗi món ăn/phục vụ thường gặp:</b> <i>overcooked / burnt</i> (quá lửa/cháy), <i>undercooked / raw</i> (chưa chín/sống), <i>tough</i> (dai), <i>cold</i> (nguội), <i>too salty / spicy</i> (quá mặn/cay), <i>chipped glass / dirty cutlery</i> (ly sứt / dao nĩa bẩn), <i>wrong order / bill mistake</i> (nhầm món / sai hóa đơn).</li></ul></div>
+            `,
+            "qa": [
+              {
+                "q": "What are the five professional steps for handling a guest complaint in English?",
+                "qVi": "5 bước chuyên nghiệp để xử lý phàn nàn của khách bằng tiếng Anh là gì?",
+                "a": "1. <b>Listen</b> carefully without interrupting.<br>2. <b>Apologize</b> sincerely (<i>“I’m terribly sorry about that…”</i>).<br>3. <b>Show empathy</b> and understanding.<br>4. <b>Offer an immediate solution</b> (replace the dish, offer a complimentary drink/coffee).<br>5. <b>Follow up</b> to make sure the guest is satisfied.",
+                "aVi": "1. <b>Lắng nghe</b> cẩn thận không ngắt lời.<br>2. <b>Xin lỗi</b> chân thành (<i>“I’m terribly sorry about that…”</i>).<br>3. <b>Thể hiện sự đồng cảm</b>.<br>4. <b>Đưa ra giải pháp ngay lập tức</b> (đổi món mới, mời đồ uống/cà phê miễn phí).<br>5. <b>Kiểm tra lại (Follow up)</b> để chắc chắn khách đã hài lòng."
+              },
+              {
+                "q": "How do you respond politely if a guest says: “Excuse me, my steak is completely overcooked – I ordered it medium rare!”?",
+                "qVi": "Bạn đáp lại lịch sự thế nào nếu khách nói: “Xin lỗi, miếng bít tết của tôi bị chín kỹ quá mức – tôi đã gọi tái vừa (medium rare)!”?",
+                "a": "<b>“Please accept my sincere apologies, Sir/Madam. I will take it back to the kitchen immediately and have the chef prepare a fresh medium-rare steak for you right away. May I offer you a complimentary drink while you wait?”</b>",
+                "aVi": "<b>“Xin quý khách nhận lời xin lỗi chân thành của tôi. Tôi sẽ mang đĩa về bếp ngay lập tức và báo bếp trưởng làm lại một phần bít tết tái vừa mới cho quý khách. Tôi có thể mời quý khách một ly đồ uống miễn phí trong lúc chờ đợi được không ạ?”</b>"
               }
+            ]
+          }
             ]
           },
           {
@@ -3316,8 +3741,23 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
                   </ul>
                   <div class="note"><b>few/little</b> alone often sounds negative (almost none). <b>a few / a little</b> = some (enough).</div>
                   <div class="formula">countable → many / a few · uncountable → much / a little</div>
-                `
+              <div class="vi"><b>Tóm tắt Tiếng Việt — Danh từ đếm được / không đếm được & Lượng từ (Quantifiers):</b><ul><li><b>Countable Nouns (Đếm được):</b> <i>table, reservation, bottle, glass, napkin, fork, complaint</i> → đi với <b>many, a few / few</b>.</li><li><b>Uncountable Nouns (Không đếm được):</b> <i>information, advice, luggage/baggage, furniture, cutlery, crockery, water, wine, milk, bread, money, time</i> → luôn chia động từ số ít, đi với <b>much, a little / little, a piece of / a glass of</b>.</li><li><b>Some vs. Any:</b> <b>Some</b> dùng trong câu khẳng định và câu mời/đề nghị lịch sự (<i>„Would you like some more wine / bread?“</i>); <b>Any</b> dùng trong câu phủ định và câu hỏi thông thường (<i>„Do you have any allergies?“</i>).</li></ul></div>
+            `,
+            "qa": [
+              {
+                "q": "When do we use “some” in questions instead of “any” in gastronomy?",
+                "qVi": "Khi nào chúng ta dùng “some” trong câu hỏi thay vì “any” trong ngành nhà hàng - khách sạn?",
+                "a": "We use <b>“some”</b> in polite <b>offers and requests</b> where we expect a positive answer (e.g., <i>“Would you like some coffee?” / “Could I have some more water, please?”</i>). For open information questions (e.g., <i>“Do you have any food allergies?”</i>) we use <b>“any”</b>.",
+                "aVi": "Dùng <b>“some”</b> trong các <b>lời mời và lời yêu cầu lịch sự</b> khi mong đợi câu trả lời đồng ý (VD: <i>“Quý khách có dùng thêm chút cà phê không ạ?” / “Cho tôi xin thêm chút nước được không?”</i>). Với câu hỏi thông tin thông thường (VD: <i>“Quý khách có bị dị ứng thực phẩm nào không?”</i>) thì dùng <b>“any”</b>."
+              },
+              {
+                "q": "Explain the difference between “much / many” and “a little / a few”.",
+                "qVi": "Giải thích sự khác biệt giữa “much / many” và “a little / a few”.",
+                "a": "<ul><li><b>many / a few</b> are used with <b>countable plural nouns</b> (<i>many guests, a few free tables</i>).</li><li><b>much / a little</b> are used with <b>uncountable nouns</b> (<i>not much time, a little milk, a little information</i>).</li></ul>",
+                "aVi": "<ul><li><b>many / a few</b> đi với <b>danh từ đếm được số nhiều</b> (<i>many guests – nhiều khách, a few free tables – một vài bàn trống</i>).</li><li><b>much / a little</b> đi với <b>danh từ không đếm được</b> (<i>not much time – không nhiều thời gian, a little milk – một chút sữa</i>).</li></ul>"
               }
+            ]
+          }
             ]
           }
         ],
@@ -3404,88 +3844,152 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
         icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="1"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M12 6h.01"/><path d="M16 6h.01"/><path d="M8 10h.01"/><path d="M12 10h.01"/><path d="M16 10h.01"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/></svg>',
         accent: "#16a34a",
         soft: "#f0fdf4",
-        teacher: "BS (Buß-Schroeder)",
+        teacher: "",
         examDate: "2026-07-22",
         ready: true,
-        desc: "Năm 1: GK-GLE 49 trang (Große - Stoltenberg) & KA 1 | Năm 2: 2-GK Partizipation, Grundgesetz, Gewaltenteilung",
+        desc: "1. Lehrjahr: GK-GLE (LS 01–49) & KA 1 · 2. Lehrjahr: Partizipation, Grundgesetz, Gewaltenteilung, Wahlen & Kalter Krieg",
         groups: [
           ...(window.GK_GLE_GROUPS || []),
           {
             id: "jahr1-ka1",
-            badge: "Năm 1 (KA 1)",
-            title: "Năm 1 · KA 1 Grundwissen & Schreibaufgaben",
+            badge: "1. Jahr · KA 1",
+            title: "1. Lehrjahr · KA 1 Grundwissen & Schreibaufgaben",
             items: [
+                        {
+            id: "gk-ka1-themen",
+            name: "1. Lehrjahr · 4 Formen der Einflussnahme & Grundrechte (KA 1)",
+            desc: "Bürgerbeteiligung, Grundrechte vs. Menschenrechte, Jugendgemeinderat, Muster-Schreibaufgaben",
+            keyPoints: [
+              "4 Formen: Wahlen, Bürgerinitiative (BI)/Demonstrationen, Parteien, Verbände/Gewerkschaften/NGOs",
+              "Menschenrechte (für alle Menschen) vs. Bürgerrechte/Deutschenrechte (Art. 8, 9, 11, 12 GG)",
+              "Einschränkung der Grundrechte nur durch Gesetz; Wesensgehalt ist unantastbar (Art. 19 GG)"
+            ],
+            content: `
+              <h2>1. Vier Möglichkeiten der politischen Einflussnahme</h2>
+              <p>In einer parlamentarischen Demokratie können Bürgerinnen und Bürger auf <b>vier Hauptwegen</b> Einfluss auf politische Entscheidungen nehmen:</p>
+              <table class="tbl">
+                <thead>
+                  <tr><th>Form der Einflussnahme</th><th>Merkmale &amp; Beispiele</th><th>Vorteile (+) / Grenzen (−)</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><b>1. Wahlen &amp; Abstimmungen</b><br><i>(Bundestag, Landtag, Kommunalwahl, Bürgerentscheid)</i></td>
+                    <td>Wahl von Abgeordneten auf Zeit; auf kommunaler Ebene auch direkte Sachentscheidungen (Bürgerbegehren / Bürgerentscheid).</td>
+                    <td><b>+</b> Geringer Zeitaufwand, hohe demokratische Legitimation.<br><b>−</b> Nur alle 4–5 Jahre; kein direkter Einfluss auf einzelne Gesetze im Bund.</td>
+                  </tr>
+                  <tr>
+                    <td><b>2. Parteien</b><br><i>(Art. 21 GG: Mitwirkung an der politischen Willensbildung)</i></td>
+                    <td>Mitgliedschaft in einer Partei oder Jugendorganisation (z. B. Jusos, Junge Union, Grüne Jugend), Aufstellung von Kandidaten, Wahlkampf.</td>
+                    <td><b>+</b> Langfristige Gestaltung vieler Politikfelder, direkter Zugang zu Parlamenten.<br><b>−</b> Hoher Zeitaufwand, Kompromisse und Parteidisziplin nötig.</td>
+                  </tr>
+                  <tr>
+                    <td><b>3. Bürgerinitiativen (BI) &amp; Demonstrationen</b><br><i>(Art. 8 GG Versammlungsfreiheit, Art. 17 GG Petitionsrecht)</i></td>
+                    <td>Zeitlich begrenzter Zusammenschluss von Bürgern zu einem konkreten lokalen Problem (z. B. Umgehungsstraße, Erhalt eines Jugendzentrums, Fridays for Future).</td>
+                    <td><b>+</b> Schnell gründbar, bürgernah, gezielter Druck auf Lokalpolitik und Medien.<br><b>−</b> Meist nur Einzelthema (Single-Issue); löst sich nach Erfolg/Misserfolg oft wieder auf.</td>
+                  </tr>
+                  <tr>
+                    <td><b>4. Verbände, Gewerkschaften &amp; NGOs</b><br><i>(Art. 9 GG Vereinigungs- und Koalitionsfreiheit)</i></td>
+                    <td>Interessenvertretung bestimmter Gruppen: Gewerkschaften (NGG, ver.di, IG Metall), Arbeitgeberverbände (DEHOGA), Umwelt- und Menschenrechtsorganisationen (BUND, Amnesty).</td>
+                    <td><b>+</b> Große Fachkompetenz, Finanzkraft und Verhandlungsmacht (z. B. Tarifverträge, Lobbyarbeit).<br><b>−</b> Vertritt primär Gruppeninteressen statt des gesamten Gemeinwohls.</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="vi">
+                <b>Giải thích Tiếng Việt (4 hình thức tham gia chính trị):</b>
+                <ul>
+                  <li><b>1. Bầu cử &amp; Trưng cầu dân ý (Wahlen &amp; Abstimmungen):</b> Bầu đại biểu quốc hội/địa phương định kỳ 4–5 năm; ở cấp xã/thành phố có thêm <i>Bürgerbegehren / Bürgerentscheid</i> (kiến nghị &amp; bỏ phiếu trực tiếp của dân). Ưu điểm: tốn ít thời gian; Nhược: chỉ diễn ra định kỳ.</li>
+                  <li><b>2. Đảng phái chính trị (Parteien – Điều 21 GG):</b> Tham gia đảng hoặc đoàn thanh niên của đảng, xây dựng cương lĩnh và ứng cử. Ưu điểm: ảnh hưởng lâu dài đến nhiều lĩnh vực; Nhược: tốn nhiều thời gian, phải thỏa hiệp theo kỷ luật đảng.</li>
+                  <li><b>3. Sáng kiến công dân &amp; Biểu tình (Bürgerinitiativen &amp; Demonstrationen – Điều 8, 17 GG):</b> Nhóm công dân tự tập hợp vì một vấn đề cụ thể tại địa phương (VD: phản đối chặt cây, giữ nhà văn hóa thanh niên). Ưu điểm: lập nhanh, sát thực tế; Nhược: chỉ giải quyết 1 chủ đề ngắn hạn.</li>
+                  <li><b>4. Hiệp hội, Công đoàn &amp; NGOs (Verbände &amp; Gewerkschaften – Điều 9 GG):</b> Đại diện quyền lợi nghề nghiệp/xã hội (Công đoàn ngành ẩm thực NGG, Hiệp hội khách sạn DEHOGA, tổ chức môi trường). Ưu điểm: chuyên môn sâu, sức mạnh đàm phán lớn.</li>
+                </ul>
+              </div>
+
+              <h2>2. Grundrechte im Grundgesetz (Art. 1–19 GG)</h2>
+              <table class="tbl">
+                <thead>
+                  <tr><th>Kategorie</th><th>Geltungsbereich</th><th>Wichtige Artikel im Grundgesetz</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><b>Menschenrechte</b><br><i>(Jedermannsrechte)</i></td>
+                    <td>Gelten für <b>alle Menschen</b> in Deutschland (unabhängig von der Staatsangehörigkeit).</td>
+                    <td>
+                      • <b>Art. 1 GG:</b> Schutz der Menschenwürde (unantastbar)<br>
+                      • <b>Art. 2 GG:</b> Freie Entfaltung der Persönlichkeit, Recht auf Leben und körperliche Unversehrtheit<br>
+                      • <b>Art. 3 GG:</b> Gleichheit vor dem Gesetz, Diskriminierungsverbot<br>
+                      • <b>Art. 4 GG:</b> Glaubens-, Gewissens- und Religionsfreiheit<br>
+                      • <b>Art. 5 GG:</b> Meinungs-, Presse-, Kunst- und Wissenschaftsfreiheit
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><b>Bürgerrechte</b><br><i>(Deutschenrechte)</i></td>
+                    <td>Gelten laut Grundgesetz für <b>deutsche Staatsbürgerinnen und Staatsbürger</b> (EU-Bürger sind vielfach gesetzlich gleichgestellt).</td>
+                    <td>
+                      • <b>Art. 8 GG:</b> Versammlungsfreiheit (friedlich und ohne Waffen)<br>
+                      • <b>Art. 9 GG:</b> Vereinigungs- und Koalitionsfreiheit<br>
+                      • <b>Art. 11 GG:</b> Freizügigkeit (freie Wahl des Wohnortes)<br>
+                      • <b>Art. 12 GG:</b> Berufsfreiheit (freie Wahl von Beruf und Ausbildungsstätte)
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="callout">
+                <b>Schranken der Grundrechte &amp; Ewigkeitsklausel:</b><br>
+                • Grundrechte sind <b>Abwehrrechte des Bürgers gegen den Staat</b>.<br>
+                • Sie dürfen nur auf Grundlage eines Gesetzes eingeschränkt werden, wenn die <b>Rechte anderer</b> oder die <b>verfassungsmäßige Ordnung</b> verletzt werden. Der <b>Wesensgehalt</b> eines Grundrechts darf niemals angetastet werden (<b>Art. 19 Abs. 2 GG</b>).<br>
+                • <b>Art. 79 Abs. 3 GG (Ewigkeitsklausel):</b> Art. 1 GG (Menschenwürde) und Art. 20 GG (Demokratie-, Rechts- und Sozialstaatsprinzip) dürfen auch durch eine Zweidrittelmehrheit niemals abgeschafft werden.
+              </div>
+              <div class="vi">
+                <b>Giải thích Tiếng Việt (Quyền cơ bản trong Hiến pháp Đức):</b>
+                <ul>
+                  <li><b>Menschenrechte (Nhân quyền):</b> Áp dụng cho <b>mọi con người</b> sống tại Đức bất kể quốc tịch (Điều 1: Nhân phẩm bất khả xâm phạm; Điều 2: Tự do cá nhân &amp; quyền sống; Điều 3: Bình đẳng trước pháp luật; Điều 4: Tự do tín ngưỡng; Điều 5: Tự do ngôn luận &amp; báo chí).</li>
+                  <li><b>Bürgerrechte (Quyền công dân Đức):</b> Dành cho người mang quốc tịch Đức (Điều 8: Tự do hội họp/biểu tình ôn hòa; Điều 9: Tự do lập hội/công đoàn; Điều 11: Tự do cư trú; Điều 12: Tự do lựa chọn nghề nghiệp &amp; nơi học nghề).</li>
+                  <li><b>Giới hạn quyền cơ bản (Art. 19 &amp; 79 GG):</b> Quyền cơ bản bảo vệ công dân trước sự lạm quyền của Nhà nước. Chỉ được giới hạn bằng luật khi xâm phạm quyền của người khác, nhưng <b>bản chất cốt lõi (Wesensgehalt)</b> và <b>Nhân phẩm (Art. 1 GG)</b> là bất khả xâm phạm vĩnh viễn (Ewigkeitsklausel).</li>
+                </ul>
+              </div>
+
+              <h2>3. Beteiligung von Jugendlichen: Jugendgemeinderat (JGR)</h2>
+              <ul>
+                <li><b>Aufgabe:</b> Überparteiliche Interessenvertretung der Jugendlichen in einer Stadt oder Gemeinde gegenüber dem Gemeinderat und dem Bürgermeister (§ 41a GemO BW).</li>
+                <li><b>Rechte im Gemeinderat:</b> <b>Rederecht</b> (Stellungnahme zu jugendrelevanten Themen), <b>Antragsrecht</b> (eigene Vorschläge einbringen) und ein <b>eigenes Budget</b> für Projekte (z. B. Skaterpark, Kulturveranstaltungen, Nachtbusse).</li>
+              </ul>
+              <div class="vi">
+                <b>Giải thích Tiếng Việt (Hội đồng thanh thiếu niên – Jugendgemeinderat):</b> Đại diện tiếng nói của giới trẻ tại thành phố/địa phương trước Hội đồng thành phố và Thị trưởng; có <b>quyền phát biểu (Rederecht)</b>, <b>quyền đệ trình kiến nghị (Antragsrecht)</b> và <b>ngân sách riêng</b> để tổ chức các dự án cho thanh thiếu niên.
+              </div>
+            `,
+            qa: [
               {
-                id: "gk-ka1-themen",
-                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
-                name: "Năm 1 · 4 Formen & Grundrechte (KA 1)",
-                desc: "4 Möglichkeiten · Instagram Vor/Nachteile · Grundrechte & Gleichberechtigung",
-                keyPoints: [
-                  "<b>4 Möglichkeiten der politischen Einflussnahme:</b> Wahlen, Demonstrationen, Partei, Petition.",
-                  "<b>Instagram / Social Media:</b> Vorteile (schnell, Reichweite) vs. Nachteile (Falschinformationen, nicht alle Nutzer).",
-                  "<b>Grundrechte:</b> Schützen Freiheit, Menschenwürde & Gleichheit vor staatlicher Willkür.",
-                  "<b>Gleichberechtigung:</b> Rechtlich gleich, aber Lohnlücke, Sorgearbeit & Führungspositionen.",
-                ],
-                content: `
-                  <h2> Năm 1 · KA 1 Grundwissen &amp; Schreibaufgaben</h2>
-                  <div class="hint">Năm 1 · Chú ý của cô Buß-Schroeder · 6 chủ đề KA + Mẫu trả lời FS1</div>
-
-                  <h3 class="sub">1. 4 Möglichkeiten der politischen Einflussnahme</h3>
-                  <p>Mỗi người dân có 4 phương thức chính để tham gia định hình chính trị:</p>
-                  <ol>
-                    <li><span class="term" data-de="Wahlen" data-vi="bầu cử">Wahlen</span>: Bầu cử đại biểu Quốc hội/Hội đồng để tham gia quyết định chính sách.</li>
-                    <li><span class="term" data-de="Demonstration" data-vi="biểu tình">Demonstrationen</span>: Tham gia biểu tình, tuần hành để công khai bày tỏ quan điểm.</li>
-                    <li><span class="term" data-de="Partei" data-vi="đảng chính trị">Partei</span>: Gia nhập một đảng chính trị để trực tiếp hoạt động và xây dựng đường lối.</li>
-                    <li><span class="term" data-de="Petition" data-vi="thỉnh nguyện / kiến nghị">Petition</span>: Ký thỉnh nguyện thư gửi cơ quan thẩm quyền để đề nghị thay đổi luật/chính sách.</li>
-                  </ol>
-
-                  <h3 class="sub">2. Instagram als Informationsquelle (Beurteilen)</h3>
-                  <p>Đánh giá việc lan truyền thông tin qua mạng xã hội (Instagram, TikTok):</p>
-                  <table>
-                    <tr><th>Vorteile (Ưu điểm)</th><th>Nachteile (Nhược điểm)</th></tr>
-                    <tr>
-                      <td>1. <span class="term" data-de="viele Menschen schnell erreichen" data-vi="tiếp cận nhiều người nhanh chóng">viele Menschen schnell erreichen</span>.<br>2. <span class="term" data-de="einfach geteilt werden" data-vi="chia sẻ thông tin dễ dàng">einfach geteilt werden</span>.</td>
-                      <td>1. <span class="term" data-de="falsche Informationen" data-vi="thông tin sai lệch / tin giả">falsche Informationen</span> verbreiten sich schnell.<br>2. <span class="term" data-de="nicht alle Menschen" data-vi="không phải ai cũng dùng">nicht alle Menschen</span> nutzen Instagram.</td>
-                    </tr>
-                  </table>
-
-                  <h3 class="sub">3. Wichtigkeit der Grundrechte &amp; Grenzen des Staates</h3>
-                  <ul>
-                    <li><strong>Tại sao Grundrechte quan trọng:</strong> Bảo vệ quyền tự do, nhân phẩm (<span class="term" data-de="Menschenwürde" data-vi="nhân phẩm con người">Menschenwürde</span>) và bình đẳng trước pháp luật, chống lại sự độc đoán của nhà nước (<span class="term" data-de="staatliche Willkür" data-vi="sự độc đoán của nhà nước">staatliche Willkür</span>).</li>
-                    <li><strong>Tại sao Nhà nước đặt ra giới hạn:</strong> Đảm bảo an ninh trật tự (<span class="term" data-de="Sicherheit" data-vi="an toàn / an ninh (tùy ngữ cảnh)">Sicherheit</span>), bảo vệ quyền lợi của người khác và ngăn chặn hành vi phạm tội (<span class="term" data-de="Straftaten und Missbrauch" data-vi="tội phạm và lạm dụng">Straftaten</span>).</li>
-                  </ul>
-
-                  <h3 class="sub">4. Gleichberechtigung von Frauen und Männern</h3>
-                  <p>Mặc dù bình đẳng về mặt pháp lý (<span class="term" data-de="rechtlich gleichberechtigt" data-vi="bình đẳng về mặt pháp lý">rechtlich gleichberechtigt</span>), thực tế vẫn còn tồn tại khoảng cách:</p>
-                  <ol>
-                    <li>Phụ nữ ở một số ngành nghề vẫn nhận lương thấp hơn nam giới (<span class="term" data-de="Gender Pay Gap" data-vi="khoảng cách chênh lệch tiền lương">Lohnlücke</span>).</li>
-                    <li>Phụ nữ thường đảm nhận nhiều công việc nhà và chăm sóc con cái hơn (<span class="term" data-de="Hausarbeit und Kinderbetreuung" data-vi="việc nhà và chăm sóc trẻ">Sorgearbeit</span>).</li>
-                    <li>Phụ nữ ít xuất hiện hơn ở các vị trí lãnh đạo (<span class="term" data-de="Führungspositionen" data-vi="vị trí lãnh đạo">Führungspositionen</span>).</li>
-                  </ol>
-                  <div class="formula"><b>2 Maßnahmen:</b> 1. Thêm chỗ chăm sóc trẻ (Kinderbetreuung) để cân bằng gia đình &amp; công việc. 2. Kiểm soát chặt chẽ trả lương bình đẳng (Lohngleichheit).</div>
-                `,
-                qa: [
-                  { q: "Nennen Sie vier Möglichkeiten der politischen Einflussnahme!", a: "1. An Wahlen teilnehmen. 2. An Demonstrationen teilnehmen. 3. Einer Partei beitreten. 4. Eine Petition unterschreiben." },
-                  { q: "Nennen Sie je zwei Vor- und Nachteile von Instagram zur Informationsverbreitung!", a: "Vorteile: 1. Viele Menschen schnell erreichen. 2. Informationen einfach teilen.\nNachteile: 1. Falsche Informationen (Fake News) verbreiten sich schnell. 2. Nicht alle Menschen nutzen Instagram." },
-                  { q: "Warum sind Grundrechte für ein demokratisches Zusammenleben wichtig?", a: "Grundrechte schützen die Freiheit und Menschenwürde aller Menschen, sichern die Gleichheit vor dem Gesetz und schützen vor staatlicher Willkür." },
-                  { q: "Warum setzt der Staat Grenzen für Grundrechte?", a: "Der Staat setzt Grenzen, um die Sicherheit zu gewährleisten, die Rechte anderer Menschen zu schützen und Straftaten sowie Missbrauch zu verhindern." }
-                ],
-                vokabeln: [
-                  { de: "politische Einflussnahme", vi: "sự ảnh hưởng / tham gia chính trị" },
-                  { de: "Petition", vi: "kiến nghị / thỉnh nguyện thư" },
-                  { de: "Demonstration", vi: "cuộc biểu tình" },
-                  { de: "staatliche Willkür", vi: "sự độc đoán của nhà nước" },
-                  { de: "Gleichberechtigung", vi: "bình đẳng quyền" },
-                  { de: "Lohnlücke", vi: "chênh lệch tiền lương (Gender Pay Gap)" },
-                  { de: "Führungsposition", vi: "vị trí lãnh đạo" }
-                ]
+                q: "Nenne die vier Möglichkeiten der politischen Einflussnahme für Bürgerinnen und Bürger und gib jeweils ein Beispiel an.",
+                qVi: "Nêu 4 hình thức tham gia gây ảnh hưởng chính trị của công dân và cho ví dụ mỗi hình thức.",
+                a: "1. <b>Wahlen &amp; Abstimmungen</b> (z. B. Bundestagswahl, kommunaler Bürgerentscheid).<br>2. <b>Mitarbeit in Parteien</b> (z. B. Eintritt in SPD, CDU, Grüne oder deren Jugendorganisationen).<br>3. <b>Bürgerinitiativen (BI) &amp; Demonstrationen</b> (z. B. BI gegen eine geplante Umgehungsstraße, Demonstration nach Art. 8 GG).<br>4. <b>Verbände, Gewerkschaften &amp; NGOs</b> (z. B. Gewerkschaft NGG, DEHOGA, BUND, Amnesty International).",
+                aVi: "1. <b>Bầu cử &amp; Bỏ phiếu (Wahlen &amp; Abstimmungen)</b>.<br>2. <b>Tham gia Đảng phái chính trị (Parteien)</b>.<br>3. <b>Sáng kiến công dân &amp; Biểu tình (Bürgerinitiativen &amp; Demonstrationen)</b>.<br>4. <b>Hiệp hội, Công đoàn &amp; Tổ chức phi chính phủ (Verbände, Gewerkschaften &amp; NGOs)</b>."
+              },
+              {
+                q: "Was ist der Unterschied zwischen einer Partei und einer Bürgerinitiative (BI)?",
+                qVi: "Sự khác biệt giữa Đảng chính trị (Partei) và Sáng kiến công dân (Bürgerinitiative - BI) là gì?",
+                a: "Eine <b>Partei</b> ist auf Dauer angelegt, hat ein umfassendes Parteiprogramm für alle Politikbereiche und tritt bei Wahlen an, um Mandate im Parlament zu gewinnen (Art. 21 GG). Eine <b>Bürgerinitiative</b> ist meist <b>zeitlich begrenzt</b>, konzentriert sich auf <b>ein konkretes Einzelthema</b> (oft lokal) und tritt nicht bei Parlamentswahlen an.",
+                aVi: "<b>Đảng chính trị (Partei)</b> hoạt động lâu dài, có cương lĩnh toàn diện cho mọi lĩnh vực và tranh cử vào nghị viện (Điều 21 GG). <b>Sáng kiến công dân (BI)</b> chỉ hoạt động <b>ngắn hạn</b>, tập trung vào <b>một vấn đề cụ thể tại địa phương</b> và không tham gia tranh cử nghị viện."
+              },
+              {
+                q: "Wie unterscheiden sich Menschenrechte und Bürgerrechte im Grundgesetz? Nenne je zwei Beispiele.",
+                qVi: "Nhân quyền (Menschenrechte) và Quyền công dân (Bürgerrechte) trong Hiến pháp Đức khác nhau thế nào? Cho 2 ví dụ mỗi loại.",
+                a: "<b>Menschenrechte (Jedermannsrechte)</b> gelten für alle Menschen unabhängig von ihrer Staatsangehörigkeit (z. B. Art. 1 GG Menschenwürde, Art. 2 GG Recht auf Leben, Art. 5 GG Meinungsfreiheit). <b>Bürgerrechte (Deutschenrechte)</b> gelten laut Grundgesetz nur für deutsche Staatsangehörige (z. B. Art. 8 GG Versammlungsfreiheit, Art. 12 GG Berufsfreiheit).",
+                aVi: "<b>Menschenrechte (Nhân quyền)</b> áp dụng cho tất cả mọi người không phân biệt quốc tịch (VD: Điều 1 Nhân phẩm, Điều 2 Quyền sống, Điều 5 Tự do ngôn luận). <b>Bürgerrechte (Quyền công dân)</b> theo Hiến pháp chỉ áp dụng cho công dân có quốc tịch Đức (VD: Điều 8 Tự do hội họp, Điều 12 Tự do nghề nghiệp)."
+              },
+              {
+                q: "Dürfen Grundrechte in Deutschland eingeschränkt oder abgeschafft werden?",
+                qVi: "Các quyền cơ bản ở Đức có thể bị giới hạn hoặc bãi bỏ không?",
+                a: "Grundrechte dürfen nur durch oder aufgrund eines Gesetzes eingeschränkt werden, soweit die Rechte anderer geschützt werden müssen. Ihr <b>Wesensgehalt darf in keinem Fall angetastet werden (Art. 19 Abs. 2 GG)</b>. Zudem schützt die <b>Ewigkeitsklausel (Art. 79 Abs. 3 GG)</b> die Menschenwürde (Art. 1 GG) und die Staatsstrukturprinzipien (Art. 20 GG) vor jeder Abschaffung.",
+                aVi: "Quyền cơ bản chỉ có thể bị giới hạn dựa trên một đạo luật nhằm bảo vệ quyền của người khác. Tuy nhiên <b>bản chất cốt lõi của quyền cơ bản tuyệt đối không được xâm phạm (Điều 19 khoản 2 GG)</b>, và <b>Điều khoản vĩnh cửu (Điều 79 khoản 3 GG)</b> cấm mọi hành vi xóa bỏ Nhân phẩm (Điều 1) hay chế độ Dân chủ (Điều 20)."
               }
+            ]
+          }
             ]
           },
           {
             id: "jahr2-partizipation",
-            badge: "Năm 2 (2-GK)",
-            title: "Năm 2 · Partizipation & Direkte Demokratie",
+            badge: "2. Jahr · 2-GK",
+            title: "2. Lehrjahr · Partizipation & Direkte Demokratie",
             items: [
               {
                 id: "partizipation",
@@ -3617,7 +4121,22 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
                   direkte Formen ergänzen.</div>
                   <div class="note"> Mehr Vokabeln: Teilhabe · Willensbildung · Volksinitiative · Volksbegehren · Referendum · Populismus</div>
                   <div class="note" style="background:#fef2f2;border-left-color:#dc2626;color:#b91c1c"><b>Häufiger Fehler:</b> In Deutschland gibt es <b>keinen bundesweiten Volksentscheid</b> über Sachfragen wie in der Schweiz — direkte Abstimmungen nur auf <b>Kommunal-</b> und <b>Landesebene</b>. Reihenfolge merken: <b>Volksinitiative → Volksbegehren → Volksentscheid</b>.<br><span style="font-size:.92em"> Ở Đức <b>không có</b> trưng cầu dân ý toàn liên bang như Thụy Sĩ — chỉ ở cấp địa phương/bang. Nhớ thứ tự: sáng kiến → thỉnh nguyện → trưng cầu.</span></div>
-                `
+              <div class="vi"><b>Tóm tắt Tiếng Việt — Tham gia chính trị & Dân chủ trực tiếp (Partizipation):</b><ul><li><b>4 hình thức tham gia chính (Konventionell & Unkonventionell):</b> Bầu cử (Wahlen), Đảng phái (Parteien), Sáng kiến công dân & Biểu tình (Bürgerinitiativen & Demonstrationen), Hiệp hội & Công đoàn (Verbände & Gewerkschaften).</li><li><b>Dân chủ trực tiếp ở cấp xã/thành phố (Kommunale Ebene):</b> <b>Bürgerbegehren</b> (Đơn kiến nghị thu thập chữ ký của công dân để yêu cầu bỏ phiếu) → nếu đủ chữ ký hợp lệ sẽ dẫn tới <b>Bürgerentscheid</b> (Cuộc bỏ phiếu trực tiếp của công dân có giá trị ràng buộc như nghị quyết của Hội đồng thành phố).</li><li><b>Dân chủ đại diện vs. Dân chủ trực tiếp:</b> Cộng hòa Liên bang Đức theo mô hình <b>Dân chủ đại diện (repräsentative Demokratie)</b> ở cấp Liên bang (rút kinh nghiệm lịch sử từ Cộng hòa Weimar), kết hợp các yếu tố <b>Dân chủ trực tiếp (plebiszitäre Elemente)</b> ở cấp tiểu bang và địa phương.</li></ul></div>
+            `,
+            "qa": [
+              {
+                "q": "Was ist der Unterschied zwischen einem Bürgerbegehren und einem Bürgerentscheid auf kommunaler Ebene?",
+                "qVi": "Sự khác biệt giữa Kiến nghị công dân (Bürgerbegehren) và Quyết định công dân (Bürgerentscheid) ở cấp địa phương là gì?",
+                "a": "Das <b>Bürgerbegehren</b> ist der <b>Antrag mit Unterschriftensammlung</b> der Bürgerinnen und Bürger, um eine Abstimmung über eine kommunale Sachfrage zu erzwingen. Ist das Bürgerbegehren zulässig, folgt der <b>Bürgerentscheid</b>: die <b>verbindliche Abstimmung aller Wahlberechtigten</b>, die einem Beschluss des Gemeinderats gleichsteht.",
+                "aVi": "<b>Bürgerbegehren</b> là <b>đơn kiến nghị kèm thu thập chữ ký</b> của công dân nhằm yêu cầu mở cuộc bỏ phiếu về một vấn đề của địa phương. Nếu kiến nghị hợp lệ, bước tiếp theo là <b>Bürgerentscheid</b>: <b>cuộc bỏ phiếu trực tiếp có giá trị ràng buộc pháp lý</b> tương đương nghị quyết của Hội đồng thành phố."
+              },
+              {
+                "q": "Welche Vor- und Nachteile hat die direkte (plebiszitäre) Demokratie gegenüber der repräsentativen Demokratie?",
+                "qVi": "Dân chủ trực tiếp (plebiszitäre Demokratie) có ưu điểm và nhược điểm gì so với dân chủ đại diện (repräsentative Demokratie)?",
+                "a": "<b>Vorteile:</b> Höhere Bürgernähe, direkte Mitbestimmung bei konkreten Sachfragen, geringere Politikverdrossenheit.<br><b>Nachteile:</b> Gefahr von Populismus und emotionalen Stimmungsentscheidungen, Vereinfachung hochkomplexer Gesetze auf Ja/Nein-Fragen, geringere Beteiligung bildungsferner Schichten.",
+                "aVi": "<b>Ưu điểm:</b> Gần dân hơn, người dân được quyết định trực tiếp các vấn đề cụ thể, giảm sự thờ ơ chính trị.<br><b>Nhược điểm:</b> Nguy cơ dân粹 (Populismus) và quyết định theo cảm tính nhất thời, đơn giản hóa các vấn đề phức tạp thành Có/Không."
+              }
+            ]
               },
               {
                 id: "karikatur-methode",
@@ -3698,14 +4217,29 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
                     <li><span class="term" data-de="Ich stimme der Aussage (nicht) zu, weil …" data-vi="Tôi (không) đồng ý với luận điểm, vì …">Ich stimme der Aussage (nicht) zu, weil …</span></li>
                     <li><span class="term" data-de="Abschließend lässt sich sagen, dass …" data-vi="Cuối cùng có thể nói rằng …">Abschließend lässt sich sagen, dass …</span></li>
                   </ul>
-                `
+              <div class="vi"><b>Tóm tắt Tiếng Việt — Phương pháp 3 bước phân tích tranh biếm họa chính trị (Karikaturanalyse):</b><ol><li><b>Bước 1 – Beschreibung (Mô tả khách quan):</b> Nêu thông tin cơ bản (tác giả, ngày/năm, tiêu đề) và mô tả chi tiết những gì nhìn thấy ở tiền cảnh (Vordergrund), trung cảnh (Mittelgrund), hậu cảnh (Hintergrund), nhân vật, biểu cảm, chữ viết (Sprechblase/Unterschrift) — <b>chưa giải thích ý nghĩa</b>.</li><li><b>Bước 2 – Deutung / Erklärung (Giải mã ý nghĩa & bối cảnh chính trị):</b> Giải thích các biểu tượng (Symbole), phép phóng đại/mỉa mai (Übertreibung/Ironie), liên hệ với sự kiện chính trị thực tế và chỉ ra thông điệp phê phán của họa sĩ (Aussageabsicht des Karikaturisten).</li><li><b>Bước 3 – Bewertung / Stellungnahme (Đánh giá & nêu quan điểm cá nhân):</b> Nhận xét xem bức tranh có thuyết phục hay phiến diện không và trình bày lập luận cá nhân có dẫn chứng.</li></ol></div>
+            `,
+            "qa": [
+              {
+                "q": "Aus welchen drei Schritten besteht eine vollständige Karikaturanalyse im Fach Gemeinschaftskunde?",
+                "qVi": "Một bài phân tích tranh biếm họa (Karikaturanalyse) hoàn chỉnh trong môn GK gồm 3 bước nào?",
+                "a": "1. <b>Beschreibung (Deskription):</b> Sachliche Bestandsaufnahme aller Bildelemente (Vorder-/Hintergrund, Personen, Text) im Präsens ohne Deutung.<br>2. <b>Deutung (Interpretation):</b> Entschlüsselung der Symbole, Darstellungsmittel (Ironie, Übertreibung) und des politischen Hintergrunds sowie Formulierung der Kernaussage.<br>3. <b>Bewertung (Beurteilung):</b> Kritische Stellungnahme zur Aussage des Zeichners mit eigener Begründung.",
+                "aVi": "1. <b>Mô tả (Beschreibung):</b> Liệt kê khách quan mọi chi tiết hình ảnh (tiền cảnh, hậu cảnh, nhân vật, chữ viết) ở thì Präsens mà chưa suy diễn.<br>2. <b>Giải mã (Deutung):</b> Giải thích các biểu tượng, thủ pháp châm biếm/phóng đại, bối cảnh chính trị và thông điệp cốt lõi của tác giả.<br>3. <b>Đánh giá (Bewertung):</b> Bày tỏ quan điểm phản biện cá nhân kèm lập luận."
+              },
+              {
+                "q": "Welche sprachlichen Wendungen (Redemittel) passen für Schritt 1 (Beschreibung) und Schritt 2 (Deutung)?",
+                "qVi": "Những mẫu câu (Redemittel) nào phù hợp cho Bước 1 (Mô tả) và Bước 2 (Giải mã)?",
+                "a": "<ul><li><b>Schritt 1:</b> „Die Karikatur von … aus dem Jahr … trägt den Titel …“, „Im Vordergrund / Im Mittelpunkt sieht man …“</li><li><b>Schritt 2:</b> „Das Symbol … steht für …“, „Damit kritisiert der Karikaturist den Missstand, dass …“</li></ul>",
+                "aVi": "<ul><li><b>Bước 1:</b> „Bức biếm họa của … năm … có tiêu đề …“, „Ở tiền cảnh / Ở trung tâm ta thấy …“</li><li><b>Bước 2:</b> „Biểu tượng … đại diện cho …“, „Qua đó họa sĩ phê phán thực trạng rằng …“</li></ul>"
+              }
+            ]
               }
             ]
           },
           {
             id: "staat-gg",
-            badge: "Năm 2 (GG)",
-            title: "Năm 2 · Demokratie nach dem Grundgesetz",
+            badge: "2. Jahr · GG",
+            title: "2. Lehrjahr · Demokratie nach dem Grundgesetz",
             items: [
               {
                 id: "gewaltenteilung",
@@ -3791,7 +4325,22 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
                     <td><span class="term" data-de="Bundesverfassungsgericht" data-vi="Tòa án Hiến pháp Liên bang">Bundesverfassungsgericht</span></td></tr>
                   </table>
                   <div class="note"> Merksatz: Gewaltenteilung sichert Demokratie — Kontrolle statt Machtkonzentration.</div>
-                `
+              <div class="vi"><b>Tóm tắt Tiếng Việt — Tam quyền phân lập & Các cơ quan hiến định (Gewaltenteilung):</b><ul><li><b>3 nhánh quyền lực ngang hàng (Horizontale Gewaltenteilung):</b><ul><li><b>Legislative (Lập pháp – Làm luật):</b> <b>Bundestag</b> (Quốc hội Liên bang do dân bầu trực tiếp) & <b>Bundesrat</b> (Hội đồng Liên bang đại diện cho chính phủ 16 tiểu bang).</li><li><b>Exekutive (Hành pháp – Thi hành luật):</b> <b>Bundesregierung</b> (Chính phủ Liên bang gồm <b>Bundeskanzler/in</b> + <b>Bundesminister</b>), <b>Bundespräsident</b> (Tổng thống Liên bang – nguyên thủ quốc gia), Cảnh sát & Hành chính công.</li><li><b>Judikative (Tư pháp – Xét xử & Bảo hiến):</b> <b>Bundesverfassungsgericht (BVerfG)</b> tại Karlsruhe và hệ thống Tòa án độc lập.</li></ul></li><li><b>Phân quyền theo chiều dọc (Vertikale Gewaltenteilung / Föderalismus):</b> Chia sẻ quyền lực giữa Liên bang (Bund), 16 Tiểu bang (Länder) và Địa phương (Kommunen).</li></ul></div>
+            `,
+            "qa": [
+              {
+                "q": "Welche drei Staatsgewalten bilden die horizontale Gewaltenteilung und welche Verfassungsorgane gehören jeweils dazu?",
+                "qVi": "Ba nhánh quyền lực nhà nước nào tạo nên sự phân quyền theo chiều ngang (horizontale Gewaltenteilung) và gồm những cơ quan hiến định nào?",
+                "a": "1. <b>Legislative (gesetzgebende Gewalt):</b> Bundestag und Bundesrat.<br>2. <b>Exekutive (ausführende / vollziehende Gewalt):</b> Bundesregierung (Bundeskanzler und Bundesminister), Bundespräsident sowie Verwaltung und Polizei.<br>3. <b>Judikative (rechtsprechende Gewalt):</b> Bundesverfassungsgericht und unabhängige Gerichte.",
+                "aVi": "1. <b>Legislative (Quyền lập pháp – làm luật):</b> Hạ viện Liên bang (Bundestag) và Thượng viện/Hội đồng Liên bang (Bundesrat).<br>2. <b>Exekutive (Quyền hành pháp – thi hành luật):</b> Chính phủ Liên bang (Thủ tướng & các Bộ trưởng), Tổng thống Liên bang, cơ quan hành chính và cảnh sát.<br>3. <b>Judikative (Quyền tư pháp – xét xử):</b> Tòa án Hiến pháp Liên bang và các tòa án độc lập."
+              },
+              {
+                "q": "Warum ist die Gewaltenteilung ein unverzichtbares Merkmal des demokratischen Rechtsstaates?",
+                "qVi": "Tại sao tam quyền phân lập là đặc trưng không thể thiếu của nhà nước pháp quyền dân chủ?",
+                "a": "Sie verhindert den <b>Machtmissbrauch und eine Diktatur</b>, indem die staatliche Macht auf verschiedene Organe verteilt wird, die sich gegenseitig <b>kontrollieren und begrenzen (Gewaltenverschränkung / Checks and Balances)</b>, und sichert so die Freiheit und Grundrechte der Bürger.",
+                "aVi": "Nó ngăn chặn <b>sự lạm quyền và chế độ độc tài</b> bằng cách phân chia quyền lực nhà nước cho nhiều cơ quan khác nhau để <b>kiểm soát và kiềm chế lẫn nhau (Checks and Balances)</b>, qua đó bảo vệ tự do và quyền cơ bản của công dân."
+              }
+            ]
               },
               {
                 id: "vertrauensfrage-misstrauen",
@@ -3850,7 +4399,22 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
                     <li><b>Art. 68 (Vertrauensfrage):</b> 2005 stellte <span class="term" data-de="Gerhard Schröder" data-vi="Gerhard Schröder (Thủ tướng SPD)">Gerhard Schröder</span> die Vertrauensfrage und verlor sie <b>absichtlich</b> → <span class="term" data-de="Neuwahlen" data-vi="bầu cử lại / bầu cử sớm">Neuwahlen</span>. 2024 tat <span class="term" data-de="Olaf Scholz" data-vi="Olaf Scholz (Thủ tướng SPD)">Olaf Scholz</span> dasselbe → Neuwahlen 2025.</li>
                   </ul>
                   <div class="note" style="background:#fef2f2;border-left-color:#dc2626;color:#b91c1c"><b>Nicht verwechseln:</b> Die <b>Vertrauensfrage</b> stellt der <b>Kanzler selbst</b> (Art. 68). Das <b>Misstrauensvotum</b> geht vom <b>Parlament/der Opposition</b> aus (Art. 67).<br><span style="font-size:.92em"> Vertrauensfrage do <b>chính Thủ tướng</b> đặt ra; Misstrauensvotum do <b>Quốc hội / phe đối lập</b> khởi xướng.</span></div>
-                `
+              <div class="vi"><b>Tóm tắt Tiếng Việt — Bỏ phiếu bất tín nhiệm mang tính xây dựng (Art. 67 GG) vs. Bỏ phiếu tín nhiệm (Art. 68 GG):</b><ul><li><b>Konstruktives Misstrauensvotum (Điều 67 GG):</b> Khởi phát từ <b>Bundestag</b> nhằm lật đổ Thủ tướng đương nhiệm. Quốc hội chỉ có thể phế truất Thủ tướng nếu bầu được <b>một Thủ tướng kế nhiệm mới với đa số tuyệt đối (> 50% tổng số nghị sĩ)</b> → Tránh khủng hoảng chính phủ không người đứng đầu như thời Weimar (Ví dụ lịch sử: 1982 Helmut Kohl thay Helmut Schmidt).</li><li><b>Vertrauensfrage (Điều 68 GG):</b> Khởi phát từ chính <b>Bundeskanzler</b> đề nghị Quốc hội bỏ phiếu tín nhiệm mình (thường gắn với một dự luật quan trọng hoặc để mở đường giải tán Quốc hội bầu cử sớm). Nếu không đạt đa số tuyệt đối (> 50%), Tổng thống Liên bang có thể giải tán Quốc hội trong vòng 21 ngày theo đề nghị của Thủ tướng (Ví dụ: 1982, 2005 Gerhard Schröder, 2024 Olaf Scholz).</li></ul></div>
+            `,
+            "qa": [
+              {
+                "q": "Worin besteht der Unterschied zwischen dem konstruktiven Misstrauensvotum (Art. 67 GG) und der Vertrauensfrage (Art. 68 GG)?",
+                "qVi": "Sự khác biệt giữa Bỏ phiếu bất tín nhiệm mang tính xây dựng (Điều 67 GG) và Bỏ phiếu tín nhiệm (Điều 68 GG) là gì?",
+                "a": "<ul><li>Beim <b>konstruktiven Misstrauensvotum (Art. 67 GG)</b> geht die Initiative vom <b>Bundestag</b> aus: Er kann den Kanzler nur stürzen, indem er gleichzeitig mit der Mehrheit seiner Mitglieder (Kanzlermehrheit) einen <b>neuen Nachfolger wählt</b>.</li><li>Bei der <b>Vertrauensfrage (Art. 68 GG)</b> geht die Initiative vom <b>Bundeskanzler selbst</b> aus: Er beantragt im Bundestag, ihm das Vertrauen auszusprechen. Verfehlt er die Kanzlermehrheit, kann der Bundespräsident auf Vorschlag des Kanzlers binnen 21 Tagen den Bundestag auflösen.</li></ul>",
+                "aVi": "<ul><li><b>Konstruktives Misstrauensvotum (Điều 67 GG)</b> do <b>Quốc hội (Bundestag)</b> khởi xướng: Quốc hội chỉ có thể phế truất Thủ tướng khi đồng thời <b>bầu được một Thủ tướng mới</b> với đa số tuyệt đối (> 50% tổng số nghị sĩ).</li><li><b>Vertrauensfrage (Điều 68 GG)</b> do chính <b>Thủ tướng (Bundeskanzler)</b> khởi xướng: Thủ tướng yêu cầu Quốc hội bỏ phiếu tín nhiệm mình. Nếu không đạt trên 50%, Tổng thống Liên bang có thể giải tán Quốc hội trong 21 ngày để tổ chức bầu cử sớm.</li></ul>"
+              },
+              {
+                "q": "Warum haben die Mütter und Väter des Grundgesetzes das Misstrauensvotum „konstruktiv“ gestaltet?",
+                "qVi": "Tại sao những người soạn thảo Hiến pháp Đức lại thiết kế cơ chế bất tín nhiệm mang tính „xây dựng“ (konstruktiv)?",
+                "a": "Als Lehre aus dem Scheitern der <b>Weimarer Republik</b>: Damals konnten extremistische Parteien (NSDAP und KPD) gemeinsam Regierungen durch ein einfaches („destruktives“) Misstrauensvotum stürzen, ohne sich auf einen neuen Kanzler einigen zu können. Art. 67 GG verhindert ein solches Machtvakuum.",
+                "aVi": "Đó là bài học xương máu từ sự sụp đổ của <b>Cộng hòa Weimar</b>: Thời đó các đảng cực đoan có thể hợp sức bỏ phiếu lật đổ Chính phủ nhưng lại không bầu được người thay thế, gây tê liệt đất nước. Điều 67 GG ngăn chặn khoảng trống quyền lực này."
+              }
+            ]
               },
               {
                 id: "medien-vierte-gewalt",
@@ -3885,7 +4449,22 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
                   <div class="note"> Medien ersetzen keine Staatsgewalt — sie üben öffentliche Kontrolle und Information aus
                   (<span class="term" data-de="Pressefreiheit" data-vi="tự do báo chí">Pressefreiheit</span>
                   <span class="term" data-de="Art. 5 GG" data-vi="Điều 5 Luật cơ bản">Art. 5 GG</span>).</div>
-                `
+              <div class="vi"><b>Tóm tắt Tiếng Việt — Truyền thông với vai trò „Quyền lực thứ tư“ (Medien als 4. Gewalt):</b><ul><li><b>4 Chức năng chính của báo chí – truyền thông trong nền dân chủ (Art. 5 GG):</b> (1) <b>Information</b> (Cung cấp thông tin khách quan, đa chiều); (2) <b>Meinungsbildung</b> (Giúp công dân hình thành quan điểm chính trị); (3) <b>Kritik & Kontrolle („Wachhund“ / 4. Gewalt)</b> (Giám sát, phanh phui bê bối tham nhũng/lạm quyền của nhà nước); (4) <b>Artikulation</b> (Diễn đàn phản ánh tiếng nói của người dân).</li><li><b>Nguy cơ & Thách thức hiện đại:</b> <b>Fake News / Desinformation</b>, <b>Filterblasen & Echokammern</b> (Thuật toán mạng xã hội chỉ hiển thị nội dung đồng quan điểm gây phân cực xã hội), và sự lệ thuộc kinh tế/chính trị của truyền thông.</li></ul></div>
+            `,
+            "qa": [
+              {
+                "q": "Welche vier Hauptfunktionen erfüllen freie Medien („Vierte Gewalt“) in einer Demokratie?",
+                "qVi": "Bốn chức năng chính của truyền thông tự do („Quyền lực thứ tư“) trong nền dân chủ là gì?",
+                "a": "1. <b>Informationsfunktion:</b> Umfassende, sachliche Unterrichtung der Bürger.<br>2. <b>Meinungsbildungsfunktion:</b> Bereitstellung vielfältiger Kommentare und Perspektiven.<br>3. <b>Kritik- und Kontrollfunktion:</b> Aufdecken von Skandalen und Machtmissbrauch in Politik und Wirtschaft.<br>4. <b>Artikulationsfunktion:</b> Sprachrohr für Anliegen der Bürgerinnen und Bürger.",
+                "aVi": "1. <b>Chức năng thông tin (Information):</b> Cung cấp thông tin đầy đủ, khách quan.<br>2. <b>Chức năng định hình quan điểm (Meinungsbildung):</b> Đưa ra nhiều góc nhìn đa chiều.<br>3. <b>Chức năng phê bình và giám sát (Kritik & Kontrolle):</b> Phanh phui bê bối và sự lạm quyền.<br>4. <b>Chức năng biểu đạt (Artikulation):</b> Diễn đàn phản ánh tiếng nói của công dân."
+              },
+              {
+                "q": "Welche Gefahren entstehen durch Filterblasen (Filter Bubbles), Echokammern und Fake News in sozialen Medien?",
+                "qVi": "Những nguy cơ nào phát sinh từ bong bóng bộ lọc (Filterblasen), buồng vang thông tin (Echokammern) và tin giả (Fake News) trên mạng xã hội?",
+                "a": "Algorithmen zeigen Nutzern bevorzugt Inhalte, die ihre bestehende Sichtweise bestätigen (<b>Filterblase / Echokammer</b>). Dadurch gehen der offene demokratische Diskurs und die Kompromissfähigkeit verloren; <b>Desinformation (Fake News)</b> manipuliert Wähler und fördert gesellschaftliche Polarisierung.",
+                "aVi": "Thuật toán ưu tiên hiển thị nội dung củng cố định kiến sẵn có của người dùng (<b>Filterblase / Echokammer</b>), làm mất đi sự tranh luận đa chiều và khả năng thỏa hiệp dân chủ; đồng thời <b>tin giả (Fake News)</b> thao túng cử tri và gây chia rẽ, cực đoan hóa xã hội."
+              }
+            ]
               },
               {
                 id: "demokratie-gg",
@@ -3927,7 +4506,22 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
                   <span class="term" data-de="Grundgesetz" data-vi="Luật cơ bản / Hiến pháp CHLB Đức">Grundgesetz</span></p>
                   <div class="formula">Volk besitzt Macht → wählt Vertreter → Mehrheit entscheidet · Würde schützt jeden Menschen</div>
                   <div class="note"> DE = vor allem repräsentative Demokratie; direkte Elemente ergänzen (v. a. Länder/Kommunen).</div>
-                `
+              <div class="vi"><b>Tóm tắt Tiếng Việt — Các nguyên tắc hiến định tại Điều 20 Hiến pháp Đức (Art. 20 GG):</b><ul><li><b>1. Demokratie (Nhà nước dân chủ):</b> Mọi quyền lực nhà nước xuất phát từ nhân dân (Volkssouveränität) thông qua bầu cử tự do, định kỳ và sự cạnh tranh đa đảng.</li><li><b>2. Rechtsstaat (Nhà nước pháp quyền):</b> Mọi cơ quan nhà nước đều bị ràng buộc bởi Hiến pháp và pháp luật; tam quyền phân lập; tòa án độc lập; bảo vệ quyền cơ bản.</li><li><b>3. Sozialstaat (Nhà nước phúc lợi xã hội):</b> Nhà nước bảo đảm mức sống tối thiểu xứng đáng với nhân phẩm (Existenzminimum, Bürgergeld), an sinh xã hội (5 trụ cột bảo hiểm) và công bằng xã hội.</li><li><b>4. Bundesstaat / Föderalismus (Nhà nước Liên bang):</b> Gồm Liên bang và 16 Tiểu bang có hiến pháp, nghị viện và chính phủ riêng.</li><li><b>5. Republik (Cộng hòa):</b> Nguyên thủ quốc gia là Tổng thống Liên bang được bầu theo nhiệm kỳ (không có vua/nữ hoàng cha truyền con nối).</li></ul></div>
+            `,
+            "qa": [
+              {
+                "q": "Welche Staatsstrukturprinzipien (Verfassungsprinzipien) sind in Artikel 20 des Grundgesetzes verankert?",
+                "qVi": "Những nguyên tắc cấu trúc nhà nước nào được hiến định tại Điều 20 Hiến pháp Đức (Art. 20 GG)?",
+                "a": "1. <b>Demokratieprinzip</b> (Volkssouveränität – alle Staatsgewalt geht vom Volke aus).<br>2. <b>Rechtsstaatsprinzip</b> (Gewaltenteilung, Bindung an Recht und Gesetz).<br>3. <b>Sozialstaatsprinzip</b> (soziale Sicherheit und Gerechtigkeit).<br>4. <b>Bundesstaatsprinzip / Föderalismus</b> (Gliederung in Bund und 16 Länder).<br>5. <b>Republikprinzip</b> (gewähltes Staatsoberhaupt auf Zeit statt Monarchie).",
+                "aVi": "1. <b>Nguyên tắc Dân chủ (Demokratie)</b>: Chủ quyền thuộc về nhân dân.<br>2. <b>Nguyên tắc Nhà nước pháp quyền (Rechtsstaat)</b>: Tam quyền phân lập, thượng tôn pháp luật.<br>3. <b>Nguyên tắc Nhà nước phúc lợi xã hội (Sozialstaat)</b>: Đảm bảo an sinh và công bằng xã hội.<br>4. <b>Nguyên tắc Nhà nước Liên bang (Bundesstaat / Föderalismus)</b>: Chia thành Liên bang và 16 Tiểu bang.<br>5. <b>Nguyên tắc Cộng hòa (Republik)</b>: Nguyên thủ quốc gia do bầu cử theo nhiệm kỳ, không có quân chủ."
+              },
+              {
+                "q": "Was besagt das Widerstandsrecht nach Art. 20 Abs. 4 GG?",
+                "qVi": "Quyền kháng cự theo Điều 20 khoản 4 Hiến pháp Đức (Art. 20 Abs. 4 GG) quy định điều gì?",
+                "a": "Gegen jeden, der es unternimmt, die freiheitlich-demokratische Grundordnung (Art. 20 Abs. 1–3 GG) zu beseitigen, haben alle Deutschen das <b>Recht zum Widerstand, wenn andere Abhilfe (z. B. durch Polizei oder Gerichte) nicht möglich ist</b> (Ultima Ratio).",
+                "aVi": "Chống lại bất kỳ kẻ nào tìm cách lật đổ trật tự cơ bản dân chủ tự do (Điều 20 khoản 1–3 GG), mọi công dân Đức đều có <b>quyền kháng cự nếu không còn biện pháp cứu vãn hợp pháp nào khác (như thông qua cảnh sát hay tòa án)</b>."
+              }
+            ]
               },
               {
                 id: "grundrechte",
@@ -3988,7 +4582,22 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
                   (<span class="term" data-de="Art. 1 Abs. 3 GG" data-vi="Điều 1 khoản 3 Luật cơ bản">Art. 1 Abs. 3 GG</span>).</div>
 
                   <div class="note" style="background:#fef2f2;border-left-color:#dc2626;color:#b91c1c"><b>Nicht verwechseln:</b> Am <b>Wortlaut</b> erkennen — <b>Menschenrechte</b> stehen für <b>alle</b> („Jeder…“, „Niemand…“, „Alle Menschen…“), <b>Bürgerrechte</b> nur für Deutsche („Alle Deutschen…“, z. B. Art. 8, 11, 12). Grundrechte gelten <b>auch für Menschen, die die Demokratie ablehnen</b> — sie sind nicht an „richtiges“ Verhalten geknüpft.<br><span style="font-size:.92em"> Nhìn <b>cách diễn đạt</b>: „Jeder/Alle Menschen“ = nhân quyền (cho mọi người); „Alle Deutschen“ = quyền công dân (chỉ người Đức). Quyền cơ bản áp dụng cho <b>cả</b> người phản đối dân chủ.</span></div>
-                `
+              <div class="vi"><b>Tóm tắt Tiếng Việt — Hệ thống Quyền cơ bản chuyên sâu (Art. 1–19 GG):</b><ul><li><b>Art. 1 Abs. 1 GG:</b> <i>„Die Würde des Menschen ist unantastbar.“</i> — Nhân phẩm con người là bất khả xâm phạm; con người không bao giờ bị biến thành công cụ/đối tượng thuần túy của nhà nước.</li><li><b>Xung đột giữa các quyền cơ bản (Grundrechtskollision):</b> Khi quyền của người này va chạm với quyền của người khác (VD: Tự do báo chí Art. 5 vs. Quyền riêng tư Art. 2; Tự do biểu tình Art. 8 vs. Bảo vệ sức khỏe cộng đồng Art. 2), Tòa án Hiến pháp áp dụng nguyên tắc <b>Verhältnismäßigkeit / Praktische Konkordanz</b> (Cân bằng hợp lý để cả hai quyền đều phát huy hiệu lực tối đa).</li></ul></div>
+            `,
+            "qa": [
+              {
+                "q": "Was bedeutet der Satz „Die Würde des Menschen ist unantastbar“ (Art. 1 Abs. 1 GG) konkret?",
+                "qVi": "Câu „Nhân phẩm của con người là bất khả xâm phạm“ (Điều 1 khoản 1 GG) cụ thể có ý nghĩa gì?",
+                "a": "Jeder Mensch besitzt allein kraft seines Menschseins einen <b>unverlierbaren Eigenwert</b>. Der Staat muss die Menschenwürde achten (z. B. Verbot von Folter, Todesstrafe und erniedrigender Behandlung) und schützen (z. B. Sicherung des menschenwürdigen Existenzminimums).",
+                "aVi": "Mỗi con người ngay từ khi sinh ra đã có <b>giá trị tự thân không thể tước đoạt</b>. Nhà nước có nghĩa vụ tôn trọng (cấm tra tấn, cấm án tử hình, cấm đối xử hạ nhục) và bảo vệ nhân phẩm (đảm bảo mức sống tối thiểu xứng đáng với con người)."
+              },
+              {
+                "q": "Wie wird ein Konflikt zwischen zwei Grundrechten (Grundrechtskollision) im Rechtsstaat gelöst?",
+                "qVi": "Xung đột giữa hai quyền cơ bản (Grundrechtskollision) được giải quyết như thế nào trong nhà nước pháp quyền?",
+                "a": "Durch eine <b>Güterabwägung nach dem Grundsatz der Verhältnismäßigkeit (praktische Konkordanz)</b>: Beide Grundrechte müssen so in Ausgleich gebracht werden, dass jedes von ihnen möglichst weitgehend wirksam bleibt.",
+                "aVi": "Thông qua việc <b>cân nhắc lợi ích theo nguyên tắc tương xứng (Verhältnismäßigkeit / praktische Konkordanz)</b>: Cả hai quyền cơ bản phải được điều hòa sao cho mỗi quyền đều giữ được hiệu lực tối đa có thể."
+              }
+            ]
               }
             ]
           },
@@ -4081,14 +4690,29 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
                   <span class="term" data-de="im Gegensatz dazu" data-vi="trái lại">im Gegensatz dazu</span></p>
 
                   <div class="note"> Tipp: In der KA immer <b>in ganzen Sätzen</b> antworten und die Redemittel passend zum <b>Operator</b> wählen (Erläutern ≠ Beurteilen).</div>
-                `
+              <div class="vi"><b>Tóm tắt Tiếng Việt — Kho mẫu câu học thuật (Redemittel) ăn điểm tối đa trong bài thi GK:</b><ul><li><b>Phân tích biểu đồ / Thống kê (Statistik):</b> <i>„Das vorliegende Diagramm veranschaulicht…“, „Auf den ersten Blick fällt auf, dass…“, „Der Anteil hat sich im Zeitraum von … bis … fast verdoppelt / halbiert.“</i></li><li><b>Phân tích tranh biếm họa (Karikatur):</b> <i>„Im Vordergrund / Hintergrund ist … dargestellt“, „Überspitzt dargestellt wird hierbei…“, „Der Zeichner kritisiert damit…“</i></li><li><b>Nghị luận / Tranh biện Pro & Contra (Erörterung / Stellungnahme):</b> <i>„Ein gewichtiges Argument dafür/dagegen ist…“, „Dem lässt sich jedoch entgegenhalten, dass…“, „Abschließend komme ich zu dem Ergebnis, dass…“</i></li></ul></div>
+            `,
+            "qa": [
+              {
+                "q": "Wie gliedert man eine begründete Stellungnahme (Pro-Contra-Argumentation) in einer GK-Klassenarbeit?",
+                "qVi": "Cách triển khai một đoạn văn nêu quan điểm có lập luận (Pro-Contra-Argumentation) trong bài kiểm tra GK như thế nào?",
+                "a": "1. <b>Einleitung:</b> Streitfrage / Problem kurz benennen.<br>2. <b>Hauptteil (Sanduhr-Prinzip):</b> Zuerst die Argumente der Gegenseite mit Beispielen darlegen, dann die stärkeren Argumente der eigenen Position (jeweils <b>Behauptung → Begründung → Beispiel</b>).<br>3. <b>Schluss (Fazit):</b> Abwägendes Gesamturteil und eigener Lösungsvorschlag.",
+                "aVi": "1. <b>Mở đoạn:</b> Nêu ngắn gọn vấn đề tranh luận.<br>2. <b>Thân đoạn (Nguyên tắc đồng hồ cát):</b> Nêu các luận điểm của phía đối lập trước, sau đó đưa ra các luận điểm mạnh hơn của phía mình (mỗi ý đều theo công thức: <b>Luận điểm → Lý lẽ giải thích → Ví dụ thực tế</b>).<br>3. <b>Kết đoạn:</b> Đưa ra phán đoán tổng kết và đề xuất giải pháp."
+              },
+              {
+                "q": "Nenne drei überzeugende Redemittel für das Abwägen von Argumenten.",
+                "qVi": "Nêu 3 mẫu câu (Redemittel) thuyết phục dùng để cân nhắc các lập luận.",
+                "a": "<ul><li>„Zwar wird häufig argumentiert, dass …, doch dabei wird übersehen, dass …“</li><li>„Ein entscheidendes Argument, das für / gegen … spricht, ist …“</li><li>„Wägt man die genannten Vor- und Nachteile gegeneinander ab, überwiegt der Aspekt, dass …“</li></ul>",
+                "aVi": "<ul><li>„Tuy người ta thường lập luận rằng …, nhưng điều đó lại bỏ qua thực tế rằng …“</li><li>„Một luận điểm quyết định ủng hộ / phản đối … là …“</li><li>„Khi cân nhắc các ưu và nhược điểm nêu trên, khía cạnh vượt trội hơn là …“</li></ul>"
+              }
+            ]
               }
             ]
           },
           {
             id: "jahr2-wahlen-geschichte",
             badge: "KA 12.10.26",
-            title: "Năm 2 · Wahlen, Macht & Geschichte (KA 12.10.2026)",
+            title: "2. Lehrjahr · Wahlen, Macht & Geschichte (KA 12.10.2026)",
             items: [
               {
                 id: "wahlgrundsaetze",
@@ -4112,7 +4736,7 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
                   <p>Für den <span class="term" data-de="Bundestag" data-vi="Quốc hội liên bang Đức">Bundestag</span> und die <span class="term" data-de="Landtag" data-vi="Nghị viện bang">Landtage</span> gelten dieselben fünf Grundsätze:</p>
 
                   <table>
-                    <tr><th>Grundsatz</th><th>Bedeutung (Định nghĩa)</th><th>Verstoß (Hành vi vi phạm)</th></tr>
+                    <tr><th>Grundsatz</th><th>Bedeutung (Định nghĩa)</th><th>Verstoß</th></tr>
                     <tr>
                       <td><b>allgemein</b><br><span class="muted">phổ thông</span></td>
                       <td>Jede Person, die die Wahlvoraussetzungen erfüllt, darf wählen – unabhängig von Religion, Bildung, Geschlecht, Einkommen oder Beruf.</td>
@@ -4150,12 +4774,23 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
 
                   <div class="note"><b>Keine Wahlpflicht in Deutschland:</b> Eine gesetzliche Wahlpflicht widerspräche dem Grundsatz „frei“, da jeder Bürger auch das Recht hat, nicht zur Wahl zu gehen.</div>
                   <div class="formula">Bundestagswahl: alle <b>4 Jahre</b> · Landtagswahl (z. B. Baden-Württemberg): alle <b>5 Jahre</b> (in BW ab 16 Jahren wahlberechtigt).</div>
-                `,
-                qa: [
-                  { q: "Nennen Sie die fünf Wahlrechtsgrundsätze in Deutschland!", a: "Allgemein, unmittelbar, frei, gleich und geheim (Merkwort: A-U-F-G-G)." },
-                  { q: "Erklären Sie den Grundsatz „unmittelbar“ mit einem Beispiel, das dagegen verstößt!", a: "Unmittelbar bedeutet, dass die Wähler ihre Vertreter direkt wählen. Ein Verstoß läge vor, wenn Wahlmänner zwischengeschaltet wären, die stellvertretend entscheiden." },
-                  { q: "Warum gibt es in Deutschland keine gesetzliche Wahlpflicht?", a: "Weil der Grundsatz der freien Wahl garantiert, dass jeder Bürger frei und ohne Zwang entscheiden darf, ob er überhaupt wählt oder der Wahl fernbleibt." }
-                ],
+              <div class="vi"><b>Tóm tắt Tiếng Việt — 5 Nguyên tắc bầu cử theo Điều 38 Hiến pháp Đức (Art. 38 Abs. 1 GG):</b><ul><li><b>1. Allgemein (Phổ thông):</b> Mọi công dân Đức từ đủ 18 tuổi (ở một số cuộc bầu cử tiểu bang/địa phương/EU là từ 16 tuổi) đều có quyền bầu cử và ứng cử, không phân biệt giới tính, tài sản, tôn giáo hay trình độ học vấn.</li><li><b>2. Unmittelbar (Trực tiếp):</b> Cử tri bầu trực tiếp các ứng cử viên và đảng phái, không qua đại cử tri trung gian (Wahlmänner).</li><li><b>3. Frei (Tự do):</b> Không ai bị ép buộc phải đi bầu hoặc phải bầu cho một đảng nhất định; không được mua chuộc hay đe dọa cử tri.</li><li><b>4. Gleich (Bình đẳng):</b> Mỗi lá phiếu đều có <b>cùng một giá trị đếm (Zählwertgleichheit)</b> và cơ hội tác động ngang nhau.</li><li><b>5. Geheim (Bỏ phiếu kín):</b> Không ai được biết cử tri đã gạch phiếu cho ai (bắt buộc dùng buồng bỏ phiếu kín Wahlkabine và thùng phiếu niêm phong).</li></ul></div>
+            `,
+            "qa": [
+              {
+                "q": "Wie lauten die fünf demokratischen Wahlgrundsätze nach Art. 38 Abs. 1 GG und was bedeuten sie?",
+                "qVi": "5 nguyên tắc bầu cử dân chủ theo Điều 38 khoản 1 Hiến pháp Đức (Art. 38 Abs. 1 GG) là gì và có ý nghĩa gì?",
+                "a": "1. <b>Allgemein:</b> Alle Staatsbürger ab dem Wahlalter dürfen wählen und gewählt werden.<br>2. <b>Unmittelbar:</b> Direkte Wahl der Abgeordneten/Parteien ohne Wahlmänner.<br>3. <b>Frei:</b> Kein Zwang, kein Druck bei der Stimmabgabe.<br>4. <b>Gleich:</b> Jede Stimme zählt exakt gleich viel (gleicher Zählwert).<br>5. <b>Geheim:</b> Die Stimmabgabe ist anonym und unbeobachtet (Wahlkabine).",
+                "aVi": "1. <b>Allgemein (Phổ thông):</b> Mọi công dân đủ tuổi đều có quyền bầu cử và ứng cử.<br>2. <b>Unmittelbar (Trực tiếp):</b> Bầu trực tiếp đại biểu/đảng phái không qua đại cử tri.<br>3. <b>Frei (Tự do):</b> Không cưỡng ép, không gây áp lực khi bỏ phiếu.<br>4. <b>Gleich (Bình đẳng):</b> Mỗi lá phiếu có giá trị ngang nhau.<br>5. <b>Geheim (Bỏ phiếu kín):</b> Việc đánh dấu phiếu hoàn toàn bí mật trong buồng kín."
+              },
+              {
+                "q": "Welcher Wahlgrundsatz wird verletzt, wenn ein Ehepaar gemeinsam in eine Wahlkabine geht oder jemand seinen ausgefüllten Stimmzettel im Wahllokal fotografiert?",
+                "qVi": "Nguyên tắc bầu cử nào bị vi phạm nếu hai vợ chồng cùng vào chung một buồng bỏ phiếu hoặc có người chụp ảnh phiếu bầu đã đánh dấu trong phòng bỏ phiếu?",
+                "a": "Der Grundsatz der <b>geheimen Wahl</b> (und mittelbar der <b>freien Wahl</b>), da das Wahlgeheimnis auch den Wähler selbst vor sozialem Druck oder Kontrolle durch Dritte schützen muss.",
+                "aVi": "Nguyên tắc <b>Bỏ phiếu kín (geheime Wahl)</b> (và gián tiếp là nguyên tắc <b>Bầu cử tự do</b>), vì bí mật lá phiếu còn nhằm bảo vệ chính cử tri khỏi sức ép hoặc sự kiểm soát của người khác."
+              }
+            ],
+                
                 vokabeln: [
                   { de: "Wahlrechtsgrundsätze", vi: "các nguyên tắc bầu cử" },
                   { de: "unmittelbar", vi: "trực tiếp (không qua đại cử tri)" },
@@ -4185,7 +4820,7 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
 
                   <h3 class="sub">1. Vergleich Erststimme vs. Zweitstimme</h3>
                   <table>
-                    <tr><th>Merkmal</th><th>Erststimme (Phiếu thứ nhất)</th><th>Zweitstimme (Phiếu thứ hai)</th></tr>
+                    <tr><th>Merkmal</th><th>Erststimme (Direktmandat)</th><th>Zweitstimme (Phiếu thứ hai)</th></tr>
                     <tr><td><b>Was wählt man?</b></td><td>Einen konkreten Kandidaten (Person) im eigenen Wahlkreis</td><td>Eine politische Partei über deren <span class="term" data-de="Landesliste" data-vi="danh sách ứng viên của bang">Landesliste</span></td></tr>
                     <tr><td><b>Wahlsystem</b></td><td><span class="term" data-de="Mehrheitswahl" data-vi="bầu cử theo đa số">Mehrheitswahl</span> (Einfache Mehrheit im Wahlkreis)</td><td><span class="term" data-de="Verhältniswahl" data-vi="bầu cử theo tỷ lệ">Verhältniswahl</span> (Prozentsatz der Stimmen)</td></tr>
                     <tr><td><b>Ergebnis</b></td><td>Der Sieger im Wahlkreis erhält ein <span class="term" data-de="Direktmandat" data-vi="ghế nghị sĩ trực tiếp">Direktmandat</span></td><td>Bestimmt maßgeblich die Zahl der Gesamtsitze der Partei im Bundestag</td></tr>
@@ -4209,13 +4844,23 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
                     </li>
                   </ul>
                   <div class="note"><b>Wahlrechtsreform 2023:</b> Feste Bundestagsgröße von 630 Sitzen, Abschaffung von Überhang- und Ausgleichsmandaten (Zweitstimmendeckung erforderlich).</div>
-                `,
-                qa: [
-                  { q: "Was entscheidet die Zweitstimme bei der Bundestagswahl?", a: "Sie entscheidet über die prozentuale Stärke einer Partei und damit über die Gesamtzahl ihrer Sitze im Bundestag. Sie ist die maßgebliche Stimme." },
-                  { q: "Was versteht man unter einem Direktmandat?", a: "Ein Mandat, das der Bewerber gewinnt, der in seinem Wahlkreis die einfache Mehrheit der Erststimmen erzielt hat (299 Wahlkreise insgesamt)." },
-                  { q: "Warum wird das deutsche Wahlsystem als „personalisierte Verhältniswahl“ bezeichnet?", a: "Weil die Sitzverteilung im Parlament proportional nach den Zweitstimmen erfolgt, aber durch die direkte Personenwahl der Erststimme personalisiert wird." },
-                  { q: "Was bedeutet Stimmensplitting?", a: "Der Wähler gibt seine Erststimme und seine Zweitstimme an zwei unterschiedliche Parteien ab." }
-                ],
+              <div class="vi"><b>Tóm tắt Tiếng Việt — Hệ thống bầu cử Quốc hội Liên bang: Phiếu thứ nhất (Erststimme) & Phiếu thứ hai (Zweitstimme):</b><ul><li>Hệ thống bầu cử của Đức là <b>Personalisierte Verhältniswahl</b> (Bầu cử đại diện tỷ lệ có yếu tố cá nhân hóa), tổng số ghế cố định là <b>630 nghị sĩ</b> (theo Luật bầu cử cải cách 2023).</li><li><b>Erststimme (Phiếu thứ nhất – Cột bên trái):</b> Bầu cho <b>1 ứng cử viên trực tiếp (Direktkandidat/in)</b> tại khu vực bầu cử địa phương (299 Wahlkreise) → giúp mỗi vùng đều có đại diện trong Quốc hội (được trao ghế nếu đảng có đủ thị phần Zweitstimmendeckig).</li><li><b>Zweitstimme (Phiếu thứ hai – Cột bên phải – QUAN TRỌNG NHẤT):</b> Bầu cho <b>danh sách tiểu bang của một Đảng (Landesliste einer Partei)</b> → Quyết định <b>tỷ lệ phần trăm (%) tổng số ghế của mỗi đảng trong Bundestag</b> và quyết định liên minh nào đủ đa số bầu Thủ tướng.</li></ul></div>
+            `,
+            "qa": [
+              {
+                "q": "Welche der beiden Stimmen bei der Bundestagswahl ist die wichtigere und warum?",
+                "qVi": "Trong hai phiếu bầu tại cuộc bầu cử Quốc hội Liên bang (Bundestagswahl), phiếu nào quan trọng hơn và tại sao?",
+                "a": "Die <b>Zweitstimme</b> ist die entscheidende Stimme: Mit ihr wählt man die <b>Landesliste einer Partei</b>. Sie allein bestimmt das <b>prozentuale Kräfteverhältnis (die Sitzverteilung) der Parteien im Bundestag</b> (630 Sitze) und damit die Mehrheit für die Wahl des Bundeskanzlers.",
+                "aVi": "<b>Phiếu thứ hai (Zweitstimme)</b> là phiếu quyết định quan trọng nhất: Dùng để bầu cho <b>danh sách ứng cử viên của một Đảng (Landesliste)</b>. Chính phiếu này quyết định <b>tỷ lệ phần trăm số ghế của các đảng trong Quốc hội (630 ghế)</b> và đa số để bầu Thủ tướng."
+              },
+              {
+                "q": "Wen wählt man mit der Erststimme und welchem Zweck dient sie?",
+                "qVi": "Cử tri bầu cho ai bằng Phiếu thứ nhất (Erststimme) và phiếu này có mục đích gì?",
+                "a": "Mit der <b>Erststimme</b> wählt man eine <b>Person (Direktkandidatin / Direktkandidaten)</b> im eigenen Wahlkreis (299 Wahlkreise). Sie sorgt dafür, dass die Regionen personell im Bundestag vertreten sind (seit der Wahlrechtsreform 2023 ziehen Wahlkreissieger ein, sofern ihre Partei über genügend Zweitstimmendeckung verfügt).",
+                "aVi": "Với <b>Erststimme</b>, cử tri bầu trực tiếp cho <b>một cá nhân ứng cử viên (Direktkandidat)</b> tại đơn vị bầu cử địa phương của mình (299 đơn vị). Nó đảm bảo các vùng miền đều có đại diện cá nhân tại Quốc hội (theo luật bầu cử mới 2023, ứng viên thắng cuộc nhận ghế nếu nằm trong tổng số ghế Zweitstimme của đảng mình)."
+              }
+            ],
+                
                 vokabeln: [
                   { de: "Erststimme", vi: "phiếu thứ nhất (bầu ứng viên trực tiếp)" },
                   { de: "Zweitstimme", vi: "phiếu thứ hai (bầu danh sách đảng)" },
@@ -4279,12 +4924,23 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
                   </table>
 
                   <div class="note"><b>Wichtige Klausurfalle:</b> Bei der Bundestagswahl zählt das bundesweite Gesamtergebnis. Ein Ergebnis von 4,1 % in einem Bundesland bedeutet nicht, dass eine Partei draußen ist, wenn sie bundesweit über 5 % liegt!</div>
-                `,
-                qa: [
-                  { q: "Unter welcher Bedingung zieht eine Partei mit 4,6 % der Zweitstimmen dennoch als Fraktion in den Bundestag ein?", a: "Wenn sie mindestens drei Direktmandate über die Erststimme gewonnen hat (Grundmandatsklausel)." },
-                  { q: "Was geschieht mit einer Partei, die 4,2 % der Zweitstimmen und 2 Direktmandate erhält?", a: "Nur die 2 direkt gewählten Kandidaten ziehen als Abgeordnete ein; alle Zweitstimmen verfallen und die Partei erhält keine weiteren Sitze." },
-                  { q: "Welches historische Ereignis führte zur Einführung der 5 %-Hürde?", a: "Die Instabilität der Weimarer Republik, in der zahlreiche Splitterparteien die Bildung stabiler Regierungen unmöglich machten und den Aufstieg des Nationalsozialismus begünstigten." }
-                ],
+              <div class="vi"><b>Tóm tắt Tiếng Việt — Ngưỡng 5% (5-%-Sperrklausel / Fünf-Prozent-Hürde):</b><ul><li><b>Quy định:</b> Một đảng chỉ được tham gia chia ghế trong Bundestag nếu đạt <b>tối thiểu 5% tổng số phiếu Zweitstimme hợp lệ trên toàn quốc</b> (hoặc thắng ít nhất <b>3 Direktmandate</b> theo điều khoản Grundmandatsklausel).</li><li><b>Mục đích (Tại sao cần có?):</b> Ngăn chặn <b>sự phân mảnh Quốc hội thành quá nhiều đảng nhỏ lẻ (Zersplitterung des Parlaments)</b> như thời Cộng hòa Weimar, đảm bảo Quốc hội có thể thành lập được <b>chính phủ liên minh ổn định, có khả năng hành động (stabile und handlungsfähige Regierung)</b>.</li><li><b>Mặt trái:</b> Các phiếu bầu cho những đảng dưới 5% không được quy đổi thành ghế trong Quốc hội.</li></ul></div>
+            `,
+            "qa": [
+              {
+                "q": "Was besagt die 5-%-Sperrklausel (Fünf-Prozent-Hürde) und warum wurde sie eingeführt?",
+                "qVi": "Ngưỡng 5% (5-%-Sperrklausel) quy định điều gì và tại sao nó được đưa vào áp dụng?",
+                "a": "Eine Partei zieht nur dann in den Bundestag ein, wenn sie mindestens <b>5 % der gültigen Zweitstimmen</b> im Wahlgebiet (oder mindestens 3 Direktmandate) erreicht. Sie verhindert eine <b>Parteienzersplitterung</b> wie in der Weimarer Republik und sichert <b>stabile, regierungsfähige Mehrheiten</b> im Parlament.",
+                "aVi": "Một đảng chỉ được vào Quốc hội Liên bang nếu giành được tối thiểu <b>5% tổng số phiếu Zweitstimme hợp lệ</b> (hoặc tối thiểu 3 ghế trực tiếp). Quy định này nhằm ngăn chặn <b>tình trạng Quốc hội bị chia năm xẻ bảy bởi quá nhiều đảng nhỏ</b> như thời Cộng hòa Weimar, giúp đảm bảo <b>chính phủ ổn định và hiệu quả</b>."
+              },
+              {
+                "q": "Inwiefern steht die 5-%-Hürde in einem Spannungsverhältnis zu den Wahlgrundsätzen?",
+                "qVi": "Ngưỡng 5% có sự xung đột nhất định với nguyên tắc bầu cử nào?",
+                "a": "Sie schränkt die <b>Erfolgswertgleichheit</b> (Teil der <b>gleichen Wahl</b>) ein, da die Stimmen für Kleinparteien unter 5 % bei der Sitzverteilung im Bundestag unberücksichtigt bleiben. Das Bundesverfassungsgericht hält diesen Eingriff jedoch zum Schutz der Funktionsfähigkeit des Parlaments für gerechtfertigt.",
+                "aVi": "Nó hạn chế <b>sự bình đẳng về giá trị hiệu quả của lá phiếu (Erfolgswertgleichheit)</b> thuộc nguyên tắc <b>Bầu cử bình đẳng</b>, vì phiếu bầu cho các đảng nhỏ dưới 5% không chuyển thành ghế nghị sĩ. Tuy nhiên Tòa án Hiến pháp công nhận điều này là hợp hiến để bảo vệ khả năng vận hành của Quốc hội."
+              }
+            ],
+                
                 vokabeln: [
                   { de: "Sperrklausel", vi: "điều khoản ngăn chặn (rào cản)" },
                   { de: "5 %-Hürde", vi: "rào cản 5 % phiếu bầu" },
@@ -4327,12 +4983,23 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
                     <li><b>1982:</b> Helmut Schmidt (SPD) verlor die FDP als Koalitionspartner. Helmut Kohl (CDU) wurde durch ein konstruktives Misstrauensvotum neuer Bundeskanzler.</li>
                     <li><b>Dezember 2024:</b> Olaf Scholz (SPD) stellte nach dem Bruch der Ampel-Koalition die Vertrauensfrage und verlor sie. Bundespräsident Frank-Walter Steinmeier leitete die <span class="term" data-de="Auflösung des Bundestages" data-vi="giải tán Quốc hội">Auflösung des Bundestages</span> ein &rarr; Neuwahlen im Februar 2025.</li>
                   </ul>
-                `,
-                qa: [
-                  { q: "Wer stellt die Vertrauensfrage und wer initiiert das konstruktive Misstrauensvotum?", a: "Die Vertrauensfrage stellt der Bundeskanzler (Art. 68 GG); das konstruktive Misstrauensvotum geht vom Bundestag aus (Art. 67 GG)." },
-                  { q: "Warum heißt das Misstrauensvotum im deutschen Grundgesetz „konstruktiv“?", a: "Weil der Bundestag den amtierenden Kanzler nur stürzen kann, wenn er in derselben Abstimmung mit absoluter Mehrheit einen neuen Bundeskanzler wählt. So entsteht kein führungs- und regierungsloser Zustand." },
-                  { q: "Welche verfassungsrechtliche Möglichkeit hat der Bundeskanzler, wenn er die Vertrauensfrage verliert?", a: "Er kann dem Bundespräsidenten vorschlagen, den Bundestag aufzulösen, woraufhin innerhalb von 60 Tagen Neuwahlen stattfinden müssen." }
-                ],
+              <div class="vi"><b>Tóm tắt Tiếng Việt — So sánh toàn diện Vertrauensfrage (Art. 68 GG) & Konstruktives Misstrauensvotum (Art. 67 GG):</b><ul><li>Bảng đối chiếu chi tiết dùng cho kỳ thi KA ngày 12.10: Ai là người khởi xướng (Kanzler vs. Bundestag), mục tiêu chính trị (kiểm tra sự ủng hộ của liên minh hoặc mở đường giải tán Quốc hội bầu cử sớm vs. thay thế Thủ tướng ngay tại nghị trường), đa số phiếu cần thiết (<b>Kanzlermehrheit</b> = trên 50% tổng số nghị sĩ Bundestag) và hệ quả pháp lý.</li></ul></div>
+            `,
+            "qa": [
+              {
+                "q": "Was versteht man unter der „Kanzlermehrheit“ im Grundgesetz?",
+                "qVi": "Khái niệm „Kanzlermehrheit“ (Đa số Thủ tướng) trong Hiến pháp Đức nghĩa là gì?",
+                "a": "Die <b>absolute Mehrheit der gesetzlichen Mitglieder des Bundestages</b> (also mehr als 50 % aller Abgeordneten, bei 630 Sitzen mindestens <b>316 Stimmen</b> – nicht bloß die Mehrheit der zufällig Anwesenden). Sie ist für die Kanzlerwahl (Art. 63), das konstruktive Misstrauensvotum (Art. 67) und die Vertrauensfrage (Art. 68) erforderlich.",
+                "aVi": "Là <b>đa số tuyệt đối trên tổng số nghị sĩ theo luật định của Quốc hội Liên bang</b> (hơn 50% tổng số ghế, tức tối thiểu <b>316/630 phiếu</b> chứ không chỉ tính trên số nghị sĩ có mặt tại phiên họp). Đa số này áp dụng khi bầu Thủ tướng (Điều 63), bỏ phiếu bất tín nhiệm (Điều 67) và bỏ phiếu tín nhiệm (Điều 68)."
+              },
+              {
+                "q": "Was passiert, wenn eine Vertrauensfrage des Bundeskanzlers nach Art. 68 GG keine Mehrheit findet?",
+                "qVi": "Chuyện gì xảy ra nếu cuộc bỏ phiếu tín nhiệm của Thủ tướng theo Điều 68 GG không đạt được đa số?",
+                "a": "Der Bundeskanzler muss nicht zurücktreten, kann aber dem <b>Bundespräsidenten</b> vorschlagen, den <b>Bundestag innerhalb von 21 Tagen aufzulösen</b>, sodass es innerhalb von 60 Tagen zu <b>Neuwahlen</b> kommt (sofern der Bundestag nicht zwischenzeitlich mit Kanzlermehrheit einen neuen Kanzler wählt).",
+                "aVi": "Thủ tướng không bắt buộc phải từ chức, nhưng có thể đề nghị <b>Tổng thống Liên bang giải tán Quốc hội trong vòng 21 ngày</b> để tổ chức <b>bầu cử Quốc hội mới</b> trong vòng 60 ngày (trừ khi Quốc hội bầu được một Thủ tướng mới trong thời gian đó)."
+              }
+            ],
+                
                 vokabeln: [
                   { de: "Vertrauensfrage", vi: "cuộc bỏ phiếu tín nhiệm (Thủ tướng yêu cầu)" },
                   { de: "konstruktives Misstrauensvotum", vi: "bỏ phiếu bất tín nhiệm mang tính xây dựng" },
@@ -4396,11 +5063,23 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
                     <li><b>Analyse:</b> Mit 30,6 % erzielte die CDU/CSU das mit Abstand stärkste Ergebnis. Die AfD folgt mit 19,8 % auf Rang zwei und liegt damit deutlich vor SPD (14,2 %) und Grünen (13,8 %), die nahezu gleichauf liegen. Linke (6,8 %) und FDP (5,6 %) überwinden die 5 %-Hürde knapp, während das BSW mit 4,1 % das schwächste Ergebnis verzeichnet und scheitert.</li>
                     <li><b>Fazit:</b> Zusammenfassend behauptet die CDU ihre Vormachtstellung in BW, während Oppositionsparteien zulegen konnten. Mögliche Gründe könnten sein, dass viele Wähler Stabilität suchen oder Unmut über die Wirtschaftslage ausdrücken wollten.</li>
                   </ul>
-                `,
-                qa: [
-                  { q: "Aus welchen drei Abschnitten besteht eine korrekte Statistikanalyse?", a: "1. Einleitung (Thema, Darstellungsform, Einheit, Quelle, Erhebungszeitraum), 2. Analyse (höchste/niedrigste Werte, Vergleiche mit konkreten Zahlen), 3. Fazit (Gesamtfazit und vorsichtig formulierte Ursachen)." },
-                  { q: "Warum darf im Analyseteil keine persönliche Meinung stehen?", a: "Weil die Analyse eine reine, objektive Beschreibung der vorliegenden Zahlen und Fakten sein muss. Wertungen und Begründungen gehören ausschließlich in das Fazit." }
-                ],
+              <div class="vi"><b>Tóm tắt Tiếng Việt — Phương pháp 3 bước phân tích bảng biểu & số liệu thống kê trong môn GK:</b><ol><li><b>Bước 1 – Beschreibung (Mô tả hình thức & nội dung):</b> Nêu chủ đề (Thema), nguồn phát hành (Herausgeber/Quelle), năm khảo sát (Erhebungszeitraum), đối tượng/cỡ mẫu (Befragte), loại biểu đồ (Diagrammtyp), đơn vị tính (Prozent, absolute Zahlen) và các giá trị cực đại/cực tiểu (Maximum/Minimum) cùng xu hướng chính.</li><li><b>Bước 2 – Erklärung / Deutung (Giải thích nguyên nhân chính trị – xã hội):</b> Kết nối các con số với kiến thức GK (tại sao tỷ lệ đi bầu thay đổi, tại sao giới trẻ hoặc nhóm thu nhập thấp ít đi bầu hơn...).</li><li><b>Bước 3 – Bewertung / Kritische Prüfung (Đánh giá độ tin cậy & hệ quả):</b> Kiểm tra xem nguồn có khách quan không, trục biểu đồ có bị cắt xén gây hiểu lầm (Manipulation) không, và rút ra kết luận chính trị.</li></ol></div>
+            `,
+            "qa": [
+              {
+                "q": "Wie kann eine Statistik oder ein Diagramm optisch manipuliert sein, um den Betrachter zu täuschen?",
+                "qVi": "Một thống kê hoặc biểu đồ có thể bị thao túng thị giác như thế nào để đánh lừa người xem?",
+                "a": "<ul><li><b>Verkürzte oder nicht bei null beginnende y-Achse:</b> Kleine Unterschiede wirken dadurch dramatisch groß.</li><li><b>Unregelmäßige Zeitabstände</b> auf der x-Achse oder <b>einseitige Auswahl des Vergleichszeitraums</b>.</li><li><b>Verschweigen der Befragtenzahl (Stichprobe)</b> oder unklare Bezugsgrößen (Prozent vs. Prozentpunkte).</li></ul>",
+                "aVi": "<ul><li><b>Trục tung (y-Achse) bị cắt bớt không bắt đầu từ số 0:</b> Khiến những chênh lệch rất nhỏ trông có vẻ cực kỳ lớn.</li><li><b>Khoảng cách thời gian không đều</b> trên trục hoành hoặc <b>chọn mốc thời gian so sánh có chủ đích</b>.</li><li><b>Giấu cỡ mẫu khảo sát</b> hoặc đánh tráo giữa phần trăm (%) và điểm phần trăm (Prozentpunkte).</li></ul>"
+              },
+              {
+                "q": "Was ist der Unterschied zwischen „Prozent (%)“ und „Prozentpunkten“?",
+                "qVi": "Sự khác biệt giữa „Phần trăm (%)“ và „Điểm phần trăm (Prozentpunkte)“ là gì?",
+                "a": "Steigt der Stimmenanteil einer Partei von <b>10 % auf 15 %</b>, so ist das ein Anstieg um <b>5 Prozentpunkte</b> (absolute Differenz der Prozentwerte), aber relativ gesehen ein Zuwachs um <b>50 Prozent</b>.",
+                "aVi": "Nếu tỷ lệ phiếu của một đảng tăng từ <b>10% lên 15%</b>, mức tăng tuyệt đối giữa hai con số phần trăm là <b>5 điểm phần trăm (5 Prozentpunkte)</b>, còn xét tương đối thì số phiếu đã tăng thêm <b>50 phần trăm (50%)</b>."
+              }
+            ],
+                
                 vokabeln: [
                   { de: "Statistikanalyse", vi: "phân tích số liệu thống kê" },
                   { de: "Balkendiagramm", vi: "biểu đồ thanh ngang / cột" },
@@ -4458,12 +5137,23 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
                     <tr><td><b>03. Oktober 1990</b></td><td>Wiedervereinigung</td><td>Beitritt der DDR zur BRD; Nationalfeiertag (Tag der Deutschen Einheit).</td></tr>
                     <tr><td><b>02. Dezember 1990</b></td><td>Erste gesamtdeutsche Wahl</td><td>Helmut Kohl bleibt Bundeskanzler des wiedervereinigten Deutschlands.</td></tr>
                   </table>
-                `,
-                qa: [
-                  { q: "Definieren Sie den Begriff „Kalter Krieg“ in zwei bis drei Sätzen!", a: "Der Kalte Krieg war der weltweite Macht- und Systemkonflikt zwischen den Supermächten USA (Demokratie, Kapitalismus) und UdSSR (Diktatur, Sozialismus) von 1945 bis 1990. Er wurde nicht direkt militärisch ausgetragen, sondern durch Wettrüsten, Propaganda und Stellvertreterkriege." },
-                  { q: "Was versteht man unter dem „Gleichgewicht des Schreckens“?", a: "Die Situation, in der beide Supermächte über ausreichend Atomwaffen verfügten, um die jeweils andere Seite mehrfach vollständig zu vernichten. Diese nukleare Abschreckung verhinderte einen direkten Krieg." },
-                  { q: "Nennen Sie drei historische Schlüsseldaten der deutschen Geschichte zwischen 1949 und 1990!", a: "23. Mai 1949 (Gründung der BRD), 13. August 1961 (Bau der Berliner Mauer) und 3. Oktober 1990 (Deutsche Wiedervereinigung)." }
-                ],
+              <div class="vi"><b>Tóm tắt Tiếng Việt — Chiến tranh Lạnh (Kalter Krieg 1945/47–1989/91) & Sự chia cắt nước Đức:</b><ul><li><b>Thế giới lưỡng cực (Bipolarität):</b> Đối đầu toàn diện về hệ tư tưởng, chính trị, kinh tế và quân sự giữa <b>Khối phương Tây (USA & NATO – Dân chủ tự do + Kinh tế thị trường tư bản)</b> và <b>Khối phía Đông (Liên Xô UdSSR & Khối Hiệp ước Warszawa – Độc đảng XHCN + Kinh tế kế hoạch tập trung)</b> mà không xảy ra chiến tranh trực tiếp bằng vũ khí hạt nhân giữa hai siêu cường (nhưng có các cuộc chiến tranh ủy nhiệm <i>Stellvertreterkriege</i> như Triều Tiên, Việt Nam, Afghanistan).</li><li><b>Các mốc lịch sử trọng tâm:</b> Phong tỏa Berlin & Cầu hàng không (1948/49) → Thành lập BRD & DDR (1949) → Xây dựng Bức tường Berlin (13.08.1961) → Khủng hoảng tên lửa Cuba (1962) → Sụp đổ Bức tường Berlin (09.11.1989) & Tái thống nhất nước Đức (03.10.1990).</li></ul></div>
+            `,
+            "qa": [
+              {
+                "q": "Warum bezeichnet man den Konflikt zwischen den USA und der UdSSR (1947–1989/91) als „Kalten Krieg“?",
+                "qVi": "Tại sao cuộc đối đầu giữa Mỹ (USA) và Liên Xô (UdSSR) giai đoạn 1947–1989/91 được gọi là „Chiến tranh Lạnh“ (Kalter Krieg)?",
+                "a": "Weil sich die beiden nuklearen Supermächte <b>USA (NATO)</b> und <b>UdSSR (Warschauer Pakt)</b> zwar politisch, ideologisch, wirtschaftlich und durch Wettrüsten feindlich gegenüberstanden, es aber aus Angst vor der gegenseitigen atomaren Vernichtung (<b>Gleichgewicht des Schreckens</b>) zu <b>keiner direkten militärischen Konfrontation („heißer Krieg“)</b> zwischen ihnen kam, sondern zu <b>Stellvertreterkriegen</b> (z. B. Korea, Vietnam, Afghanistan).",
+                "aVi": "Vì hai siêu cường hạt nhân <b>Mỹ (NATO)</b> và <b>Liên Xô (Khối Warszawa)</b> đối đầu gay gắt về chính trị, hệ tư tưởng, kinh tế và chạy đua vũ trang, nhưng do sự răn đe hủy diệt hạt nhân lẫn nhau (<b>Cân bằng khủng bố</b>) nên <b>không nổ ra chiến tranh quân sự trực tiếp („chiến tranh nóng“)</b> giữa hai nước, mà diễn ra qua các <b>cuộc chiến tranh ủy nhiệm (Stellvertreterkriege)</b>."
+              },
+              {
+                "q": "In welchen zentralen Punkten unterschieden sich das westliche System (USA/BRD) und das östliche System (UdSSR/DDR)?",
+                "qVi": "Hệ thống phương Tây (Mỹ/Tây Đức BRD) và hệ thống phương Đông (Liên Xô/Đông Đức DDR) khác biệt nhau ở những điểm cốt lõi nào?",
+                "a": "<ul><li><b>Westblock (USA / BRD):</b> Parlamentarische Mehrparteiendemokratie, Rechtsstaat und Grundrechte, <b>kapitalistische / soziale Marktwirtschaft</b> (Privateigentum, freier Wettbewerb), Militärbündnis <b>NATO</b>.</li><li><b>Ostblock (UdSSR / DDR):</b> Sozialistische <b>Einparteienherrschaft (Zentralismus)</b>, <b>Zentralverwaltungswirtschaft (Planwirtschaft</b> mit Staatseigentum und Fünfjahresplänen), Militärbündnis <b>Warschauer Pakt</b>.</li></ul>",
+                "aVi": "<ul><li><b>Khối phương Tây (Mỹ / Tây Đức BRD):</b> Dân chủ nghị viện đa đảng, nhà nước pháp quyền bảo vệ quyền cơ bản, <b>kinh tế thị trường tư bản / xã hội</b> (sở hữu tư nhân, cạnh tranh tự do), liên minh quân sự <b>NATO</b>.</li><li><b>Khối phía Đông (Liên Xô / Đông Đức DDR):</b> Chế độ <b>độc đảng XHCN tập quyền</b>, <b>kinh tế kế hoạch hóa tập trung (Planwirtschaft</b> với sở hữu nhà nước và kế hoạch 5 năm), liên minh quân sự <b>Hiệp ước Warszawa</b>.</li></ul>"
+              }
+            ],
+                
                 vokabeln: [
                   { de: "Kalter Krieg", vi: "Chiến tranh Lạnh (1945–1990)" },
                   { de: "Wettrüsten", vi: "chạy đua vũ trang" },
@@ -4509,12 +5199,23 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
                     <tr><td><b>Grundrechte</b></td><td>Umfassender Grundrechtekatalog; einklagbar vor unabhängigen Gerichten.</td><td>Menschenrechte werden missachtet; Zensur, Willkür, Verfolgung Andersdenkender.</td></tr>
                     <tr><td><b>Partizipation</b></td><td>Freie, geheime, gleiche, unmittelbare und allgemeine Wahlen; Opposition existiert.</td><td>Scheinwahlen oder Wahlverbot; keine legale Opposition geduldet.</td></tr>
                   </table>
-                `,
-                qa: [
-                  { q: "Erklären Sie den Unterschied zwischen Zentralismus und Dezentralisierung!", a: "Im Zentralismus liegt die gesamte Entscheidungsmacht bei einer zentralen Führung in der Hauptstadt. Bei der Dezentralisierung (Föderalismus) werden Entscheidungsrechte und Aufgaben auf regionale Einheiten (Länder und Gemeinden) verteilt." },
-                  { q: "Nennen Sie ein konkretes Beispiel für Dezentralisierung in der Bundesrepublik Deutschland!", a: "Die Kulturhoheit der Länder: Die Schul- und Bildungspolitik sowie das Polizeiwesen werden eigenständig von den 16 Bundesländern gestaltet." },
-                  { q: "Welche Merkmale kennzeichnen eine freiheitliche Demokratie im Gegensatz zur Diktatur?", a: "Gewaltenteilung, Achtung der Grundrechte, freie und geheime Wahlen, Schutz der Opposition und die Bindung aller staatlichen Organe an das Recht." }
-                ],
+              <div class="vi"><b>Tóm tắt Tiếng Việt — Đối chiếu Chế độ Tập quyền độc đảng (Zentralismus / Diktatur) vs. Dân chủ Liên bang (Föderale Demokratie):</b><ul><li><b>Zentralismus / Demokratischer Zentralismus (VD: Đông Đức DDR / Liên Xô):</b> Quyền lực tập trung tuyệt đối vào một đảng duy nhất (SED/KPdSU) từ trên xuống dưới (<i>von oben nach unten</i>); xóa bỏ các tiểu bang (1952 chia thành 14 Bezirke phụ thuộc trung ương Đông Berlin); không có tam quyền phân lập, tòa án và báo chí chịu sự chỉ đạo của Đảng; bầu cử theo danh sách thống nhất (Einheitsliste) không có đối lập thực sự.</li><li><b>Föderale Demokratie (Cộng hòa Liên bang Đức BRD):</b> Quyền lực từ nhân dân đi lên (<i>von unten nach oben</i>); đa đảng cạnh tranh tự do; tam quyền phân lập ngang & dọc (Liên bang – 16 Tiểu bang); tòa án và báo chí độc lập.</li></ul></div>
+            `,
+            "qa": [
+              {
+                "q": "Was versteht man unter „Zentralismus“ im Gegensatz zum „Föderalismus“ und zur „Demokratie“?",
+                "qVi": "„Tập quyền (Zentralismus)“ có nghĩa là gì khi đặt đối lập với „Chế độ Liên bang (Föderalismus)“ và „Dân chủ (Demokratie)“?",
+                "a": "Im <b>Zentralismus</b> (insbesondere im „demokratischen Zentralismus“ sozialistischer Staaten wie der DDR) liegt alle politische und staatliche Macht bei einer <b>einzigen zentralen Führung (Einheitspartei)</b>; Entscheidungen erfolgen <b>von oben nach unten</b>, ohne Gewaltenteilung, ohne freie Opposition und ohne eigenständige Bundesländer. In der <b>föderalen Demokratie</b> geht die Macht durch freie Wahlen <b>von unten nach oben</b> und ist auf Bund, Länder und getrennte Staatsgewalten verteilt.",
+                "aVi": "Trong chế độ <b>Tập quyền (Zentralismus)</b> (đặc biệt là tập trung dân chủ ở Đông Đức DDR), toàn bộ quyền lực nhà nước nằm trong tay <b>một ban lãnh đạo trung ương duy nhất (độc đảng)</b>; quyết định truyền <b>từ trên xuống dưới</b>, không có tam quyền phân lập, không có phe đối lập tự do và không có các tiểu bang tự chủ. Ngược lại, trong <b>Dân chủ Liên bang</b>, quyền lực đi <b>từ dưới lên trên</b> qua bầu cử tự do và được phân chia giữa Liên bang, Tiểu bang cùng 3 nhánh quyền lực độc lập."
+              },
+              {
+                "q": "Wie unterschieden sich Wahlen in einer zentralistischen Einparteiendiktatur (z. B. DDR) von demokratischen Wahlen in der Bundesrepublik?",
+                "qVi": "Bầu cử trong chế độ độc đảng tập quyền (VD: Đông Đức DDR) khác với bầu cử dân chủ tại Cộng hòa Liên bang Đức như thế nào?",
+                "a": "In der DDR gab es sogenannte <b>Scheinwahlen mit einer Einheitsliste</b> der Nationalen Front ohne echte Auswahl zwischen konkurrierenden Parteien und mit starkem gesellschaftlichem Druck zum „Falten“ ohne Kabine (keine freie und geheime Wahl). In der BRD garantieren <b>Art. 38 GG</b> eine echte Auswahl zwischen mehreren Parteien sowie eine freie, gleiche und geheime Stimmabgabe.",
+                "aVi": "Ở Đông Đức DDR là <b>bầu cử hình thức với một danh sách ứng viên thống nhất (Einheitsliste)</b>, không có sự cạnh tranh thực sự giữa các đảng đối lập và cử tri chịu áp lực xã hội không vào buồng kín (vi phạm nguyên tắc tự do và bỏ phiếu kín). Ở Tây Đức BRD, <b>Điều 38 GG</b> bảo đảm sự lựa chọn thực sự giữa nhiều đảng phái và lá phiếu tự do, bình đẳng, bí mật."
+              }
+            ],
+                
                 vokabeln: [
                   { de: "Zentralismus", vi: "chế độ tập quyền" },
                   { de: "Dezentralisierung", vi: "sự phân quyền / phi tập trung hóa" },
@@ -4661,533 +5362,508 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
       {
   "id": "wiko",
   "code": "WiKO",
-  "name": "Wirtschaftskompetenz (Kinh tế & Luật Lao động)",
+  "name": "Wirtschaftskompetenz (WiKO / WiSo)",
   "icon": "",
   "accent": "#0ea5e9",
   "soft": "#e0f2fe",
-  "teacher": "Fr. Leyh & RM (Remsing) / WiKO-Leyh",
+  "teacher": "",
   "examDate": "2026-11-10",
   "ready": true,
-  "desc": "Giáo trình Wiko-Leyh (Trang 01–48 / LF 1 Năm 1) & Modul Kaufvertrag (Năm 2)",
+  "desc": "Berufsausbildung (LF 1) · Arbeitsrecht · Betriebsrat & Tarifrecht · Sozialversicherung & Steuern · Kaufvertrag & Rechtsgeschäfte (BGB)",
   "groups": [
     {
       "id": "lf1-duales-system",
-      "badge": "LF 1 (Năm 1)",
-      "title": "LF 1 (Năm 1) · Duales System & Đào tạo nghề (LS01–LS05, LS11–LS12)",
+      "badge": "LF 1",
+      "title": "LF 1 · Duales System & Berufsausbildung (LS01–05, LS11–12)",
       "items": [
-        {
+                {
           "id": "wiko-duales-system",
           "icon": "",
           "name": "LS01 · Das duale System der Berufsausbildung",
-          "desc": "Ausbildungsbetrieb (BBiG) vs. Berufsschule (Schulgesetz) · Ưu điểm 2 bên",
-          "content": "<h2> LS01 · Das duale System der Berufsausbildung (Hệ thống đào tạo kép)</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 01 / LF 01-LS01) · Mô hình kết hợp Trường - Doanh nghiệp</div>\n            <h3>1. 2 Địa điểm đào tạo (Lernorte)</h3>\n            <ul>\n              <li><b>Der Ausbildungsbetrieb (Doanh nghiệp đào tạo):</b> Đào tạo kỹ năng thực hành nghề (<i>praktische Ausbildung</i>). Cơ sở pháp lý: Luật <span class=\"term\" data-de=\"Berufsbildungsgesetz (BBiG)\" data-vi=\"Luật đào tạo nghề\">BBiG</span> & Quy chế <span class=\"term\" data-de=\"Ausbildungsordnung\" data-vi=\"Quy chế đào tạo\">Ausbildungsordnung</span>. Doanh nghiệp chi trả <span class=\"term\" data-de=\"Ausbildungsvergütung\" data-vi=\"Lương trợ cấp học nghề\">Ausbildungsvergütung</span>.</li>\n              <li><b>Die Berufsschule (Trường nghề):</b> Giảng dạy lý thuyết chuyên môn (<i>fachtheoretische Ausbildung</i>) & Kiến thức chung (Wirtschaft, Deutsch, Englisch). Cơ sở pháp lý: Luật giáo dục của Bang (<i>Schulgesetz des Bundeslandes</i>).</li>\n            </ul>\n            <h3>2. Ưu điểm của Hệ thống kép (Vorteile)</h3>\n            <ul>\n              <li><b>Cho Azubi:</b> Nhận lương trợ cấp hàng tháng, va chạm thực tế ngay từ đầu, cơ hội được nhận làm chính thức (<i>Übernahme</i>) cao.</li>\n              <li><b>Cho Doanh nghiệp:</b> Đào tạo nhân sự theo đúng tiêu chuẩn và văn hóa công ty, chủ động nguồn lao động tay nghề cao.</li>\n            </ul>",
+          "desc": "Ausbildungsbetrieb (BBiG) vs. Berufsschule (Schulgesetz) · Lernorte & Vorteile",
+          "content": "<h2>LS01 · Das duale System der Berufsausbildung</h2>\n<div class=\"hint\">Lernortkooperation Betrieb &amp; Berufsschule · Berufsbildungsgesetz (BBiG) · Rahmenlehrplan</div>\n<h3 class=\"sub\">1. Zwei Lernorte im Überblick</h3>\n<table class=\"tbl\">\n  <thead>\n    <tr><th>Merkmal</th><th>Ausbildungsbetrieb</th><th>Berufsschule</th></tr>\n  </thead>\n  <tbody>\n    <tr><td><b>Hauptaufgabe</b></td><td>Praktische Ausbildung: Vermittlung von Fertigkeiten, Kenntnissen und beruflichen Handlungskompetenzen im Echtbetrieb.</td><td>Fachtheoretische Ausbildung und Vertiefung der Allgemeinbildung (Deutsch, Englisch, Gemeinschaftskunde, WiKO).</td></tr>\n    <tr><td><b>Gesetzliche Grundlage</b></td><td><b>Berufsbildungsgesetz (BBiG)</b> und bundeseinheitliche <b>Ausbildungsordnung</b>.</td><td><b>Schulgesetz des jeweiligen Bundeslandes</b> und <b>Rahmenlehrplan der Kultusministerkonferenz (KMK)</b>.</td></tr>\n    <tr><td><b>Zuständigkeit</b></td><td>Betrieb (Arbeitgeber); Überwachung durch die zuständige Kammer (<b>IHK / HWK</b>).</td><td>Bundesland (Kultusministerium) und kommunaler Schulträger.</td></tr>\n    <tr><td><b>Finanzierung</b></td><td>Finanzierung durch den Betrieb; Zahlung einer monatlichen <b>Ausbildungsvergütung</b>.</td><td>Öffentliche Finanzierung durch Steuergelder des Landes und der Kommunen.</td></tr>\n  </tbody>\n</table>\n<h3 class=\"sub\">2. Vorteile des dualen Systems</h3>\n<ul>\n  <li><b>Für Auszubildende:</b> Praxisnahe Qualifikation ab dem ersten Tag, finanzielle Unabhängigkeit durch monatliche Vergütung, hohe Übernahmechancen und anerkannter Berufsabschluss.</li>\n  <li><b>Für Unternehmen:</b> Passgenaue Ausbildung des eigenen Fachkräftenachwuchses; Einsparung von Rekrutierungs- und Einarbeitungskosten.</li>\n  <li><b>Für Gesellschaft und Wirtschaft:</b> Sehr niedrige Jugendarbeitslosigkeit und hohe internationale Wettbewerbsfähigkeit des Standorts Deutschland.</li>\n</ul>\n<div class=\"vi\">\n  <b>Tóm tắt Tiếng Việt — Hệ thống đào tạo kép (Duales System):</b>\n  <ul>\n    <li><b>2 Địa điểm đào tạo:</b>\n      <ul>\n        <li><b>Ausbildungsbetrieb (Doanh nghiệp đào tạo):</b> Đào tạo kỹ năng thực hành nghề. Cơ sở pháp lý: Luật BBiG và Quy chế đào tạo liên bang (Ausbildungsordnung). Doanh nghiệp trả lương học nghề hàng tháng và chịu sự giám sát của IHK/HWK.</li>\n        <li><b>Berufsschule (Trường dạy nghề):</b> Giảng dạy lý thuyết chuyên ngành và các môn đại cương (Đức, Anh, GK, WiKO). Cơ sở pháp lý: Luật giáo dục của từng Bang (Schulgesetz); kinh phí từ ngân sách nhà nước.</li>\n      </ul>\n    </li>\n    <li><b>Ưu điểm:</b> Học viên được trả lương, không phải đóng học phí, tay nghề vững vàng và cơ hội ở lại làm việc chính thức rất cao.</li>\n  </ul>\n</div>",
           "qa": [
-            {
-              "q": "Mô hình đào tạo kép (Duales System) kết hợp 2 địa điểm nào?",
-              "a": "Ausbildungsbetrieb (thực hành) và Berufsschule (lý thuyết)."
-            },
-            {
-              "q": "Cơ sở pháp lý điều chỉnh việc đào tạo tại Doanh nghiệp là gì?",
-              "a": "Luật Đào tạo Nghề (BBiG) và Quy chế đào tạo (Ausbildungsordnung)."
-            },
-            {
-              "q": "Ai là bên chi trả lương trợ cấp học nghề (Ausbildungsvergütung)?",
-              "a": "Doanh nghiệp đào tạo (Ausbildungsbetrieb)."
-            },
-            {
-              "q": "[IHK Exam] Cơ quan nào quản lý và ban hành Luật giáo dục tại Trường nghề?",
-              "a": "Bộ Giáo dục và Luật Giáo dục của từng Tiểu bang (Bundesland / Schulgesetz).",
-              "src": "fk_exel"
-            },
-            {
-              "q": "[IHK Exam] Mục đích chính của Ausbildungsordnung là gì?",
-              "a": "Quy định khung chương trình đào tạo chuẩn quốc gia cho từng ngành nghề.",
-              "src": "fk_exel"
-            }
+                    {
+                              "q": "Welche beiden Lernorte bilden das duale Ausbildungssystem in Deutschland?",
+                              "qVi": "Mô hình đào tạo kép (Duales System) kết hợp 2 địa điểm nào?",
+                              "a": "Der <b>Ausbildungsbetrieb</b> (praktische Ausbildung) und die <b>Berufsschule</b> (theoretische Fachausbildung und Allgemeinbildung).",
+                              "aVi": "<b>Ausbildungsbetrieb (thực hành)</b> và <b>Berufsschule (lý thuyết chuyên môn)</b>.",
+                              "src": "IHK / Berufsschule"
+                    },
+                    {
+                              "q": "Auf welcher rechtlichen Grundlage basiert die betriebliche Ausbildung im Unterschied zur Berufsschule?",
+                              "qVi": "Cơ sở pháp lý điều chỉnh việc đào tạo tại Doanh nghiệp khác gì so với Trường nghề?",
+                              "a": "Für den Betrieb gilt das bundeseinheitliche <b>Berufsbildungsgesetz (BBiG)</b> und die Ausbildungsordnung; für die Berufsschule gilt das <b>Schulgesetz des jeweiligen Bundeslandes</b>.",
+                              "aVi": "Tại Doanh nghiệp áp dụng <b>Luật BBiG và Quy chế Ausbildungsordnung</b> của Liên bang; tại Trường nghề áp dụng <b>Luật Giáo dục (Schulgesetz)</b> của từng Tiểu bang.",
+                              "src": "IHK / Berufsschule"
+                    },
+                    {
+                              "q": "Wer trägt die Kosten für die monatliche Ausbildungsvergütung?",
+                              "qVi": "Ai là bên chi trả lương trợ cấp học nghề (Ausbildungsvergütung)?",
+                              "a": "Der <b>Ausbildungsbetrieb</b> zahlt die Ausbildungsvergütung an den Auszubildenden (§ 17 BBiG).",
+                              "aVi": "<b>Doanh nghiệp đào tạo (Ausbildungsbetrieb)</b> chi trả 100% lương trợ cấp cho học viên.",
+                              "src": "IHK / Berufsschule"
+                    },
+                    {
+                              "q": "Welchen Hauptzweck verfolgt die bundeseinheitliche Ausbildungsordnung?",
+                              "qVi": "Mục đích chính của Ausbildungsordnung là gì?",
+                              "a": "Sie sichert einheitliche <b>Mindeststandards, Berufsbezeichnungen, Ausbildungsdauer und Prüfungsinhalte</b> für den jeweiligen Ausbildungsberuf in ganz Deutschland.",
+                              "aVi": "Quy định khung chương trình chuẩn quốc gia, bảo đảm chất lượng và nội dung thi cử đồng đều trên toàn nước Đức.",
+                              "src": "IHK / Berufsschule"
+                    }
           ]
-        },
-        {
+},
+                {
           "id": "wiko-rechte-pflichten",
           "icon": "",
           "name": "LS02 · Rechte und Pflichten des Auszubildenden",
-          "desc": "Nghĩa vụ Azubi (Lernpflicht, Berichtsheft) vs. Quyền lợi (Freistellung, Fürsorge)",
-          "content": "<h2> LS02 · Rechte und Pflichten des Auszubildenden (Quyền & Nghĩa vụ)</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 02 / LF 01-LS02) · BBiG § 13 & § 14</div>\n            <h3>1. Nghĩa vụ của Học viên (Pflichten des Azubis)</h3>\n            <ul>\n              <li><span class=\"term\" data-de=\"Lernpflicht\" data-vi=\"Nghĩa vụ học tập\">Lernpflicht</span>: Nỗ lực học tập đạt mục tiêu khóa học.</li>\n              <li><span class=\"term\" data-de=\"Berufsschulbesuch\" data-vi=\"Đi học trường nghề\">Berufsschulbesuch</span>: Bắt buộc tham gia đầy đủ tiết học.</li>\n              <li><span class=\"term\" data-de=\"Berichtsheftführung\" data-vi=\"Ghi nhật ký học nghề\">Berichtsheftführung</span>: Viết báo cáo học nghề thường xuyên (điều kiện dự thi).</li>\n              <li><span class=\"term\" data-de=\"Schweigepflicht\" data-vi=\"Nghĩa vụ bảo mật\">Schweigepflicht</span> & <span class=\"term\" data-de=\"Sorgfaltspflicht\" data-vi=\"Nghĩa vụ cẩn trọng\">Sorgfaltspflicht</span>: Bảo mật thông tin kinh doanh & giữ gìn dụng cụ.</li>\n              <li><span class=\"term\" data-de=\"Benachrichtigungspflicht\" data-vi=\"Nghĩa vụ thông báo nghỉ\">Benachrichtigungspflicht</span>: Báo ngay cho công ty khi ốm và nộp giấy AU.</li>\n            </ul>\n            <h3>2. Quyền của Azubi / Nghĩa vụ Doanh nghiệp</h3>\n            <ul>\n              <li><span class=\"term\" data-de=\"Ausbildungspflicht\" data-vi=\"Nghĩa vụ đào tạo\">Ausbildungspflicht</span>: Phân công Ausbilder có bằng cấp đào tạo đúng chuyên môn.</li>\n              <li><span class=\"term\" data-de=\"Freistellung\" data-vi=\"Cho phép nghỉ đi học/thi\">Freistellung</span>: Cho phép nghỉ làm đến trường nghề/đi thi vẫn hưởng nguyên lương.</li>\n              <li><span class=\"term\" data-de=\"Ausbildungsmittel\" data-vi=\"Dụng cụ đào tạo miễn phí\">Ausbildungsmittel</span>: Cung cấp miễn phí dụng cụ, trang thiết bị bảo hộ.</li>\n              <li><span class=\"term\" data-de=\"Fürsorgepflicht\" data-vi=\"Nghĩa vụ chăm sóc an toàn\">Fürsorgepflicht</span>: Đảm bảo an toàn lao động và sức khỏe cho Azubi.</li>\n            </ul>",
+          "desc": "BBiG § 13–15 · Lernpflicht & Fürsorgepflicht · Berichtsheft & Freistellung",
+          "content": "<h2>LS02 · Rechte und Pflichten des Auszubildenden</h2>\n<div class=\"hint\">Berufsbildungsgesetz §§ 13–15 · Reziproke Rechte und Pflichten im Ausbildungsverhältnis</div>\n<h3 class=\"sub\">1. Pflichten des Auszubildenden (§ 13 BBiG)</h3>\n<ul>\n  <li><b>Lernpflicht:</b> Pflicht, sich planmäßig zu bemühen, die berufliche Handlungsfähigkeit zu erwerben und das Ausbildungsziel zu erreichen.</li>\n  <li><b>Sorgfaltspflicht:</b> Aufgetragene Arbeiten ordentlich, gewissenhaft und termingerecht ausführen; Werkzeuge und Maschinen schonend behandeln.</li>\n  <li><b>Weisungsgebundenheit (Gehorsamspflicht):</b> Den arbeitsbezogenen Weisungen des Ausbilders und weisungsberechtigter Personen Folge leisten.</li>\n  <li><b>Führung des Berichtshefts (Ausbildungsnachweis):</b> Regelmäßige, wahrheitsgemäße Dokumentation; Zulassungsvoraussetzung zur IHK-/HWK-Abschlussprüfung! Darf während der betrieblichen Arbeitszeit geführt werden (§ 14 Abs. 2 BBiG).</li>\n  <li><b>Schweigepflicht:</b> Stillschweigen über Betriebs- und Geschäftsgeheimnisse wahren.</li>\n  <li><b>Benachrichtigungspflicht bei Arbeitsunfähigkeit:</b> Den Betrieb unverzüglich vor Dienstbeginn über eine Erkrankung informieren; AU-Bescheinigung spätestens am 4. Kalendertag vorlegen (Arbeitgeber kann sie ab Tag 1 verlangen).</li>\n</ul>\n<h3 class=\"sub\">2. Pflichten des Ausbildenden (§§ 14, 15 BBiG) / Rechte des Azubis</h3>\n<ul>\n  <li><b>Ausbildungspflicht:</b> Planmäßige Vermittlung aller Ausbildungsinhalte gemäß Ausbildungsrahmenplan.</li>\n  <li><b>Verbot ausbildungsfremder Tätigkeiten:</b> Keine ausbildungsfremden Arbeiten (wie private Besorgungen für den Chef) oder gesundheitsgefährdende Aufgaben übertragen.</li>\n  <li><b>Kostenlose Ausbildungsmittel:</b> Fachliteratur, Werkzeuge und Schutzkleidung (Sicherheitsschuhe) müssen kostenlos bereitgestellt werden.</li>\n  <li><b>Freistellungspflicht (§ 15 BBiG):</b> Freistellung für den Berufsschulunterricht und Prüfungen unter Fortzahlung der Vergütung.</li>\n  <li><b>Zahlung der Ausbildungsvergütung:</b> Pünktliche monatliche Überweisung der vertraglich vereinbarten Vergütung.</li>\n  <li><b>Zeugnisausstellung:</b> Pflicht zur Erteilung eines schriftlichen Ausbildungszeugnisses bei Beendigung.</li>\n</ul>\n<div class=\"vi\">\n  <b>Tóm tắt Tiếng Việt — Quyền &amp; Nghĩa vụ trong đào tạo nghề:</b>\n  <ul>\n    <li><b>Nghĩa vụ học viên (BBiG § 13):</b> Học tập nghiêm túc, làm việc cẩn thận, chấp hành chỉ đạo, viết Berichtsheft đầy đủ (điều kiện để đi thi tốt nghiệp, được viết trong giờ làm), giữ bí mật kinh doanh, báo ốm ngay trước giờ làm và nộp AU đúng hạn.</li>\n    <li><b>Nghĩa vụ doanh nghiệp (BBiG §§ 14, 15):</b> Dạy nghề đúng giáo trình, cấm giao việc vặt riêng tư, phát miễn phí đồ bảo hộ và dụng cụ học, cho nghỉ đi học trường nghề vẫn trả đủ lương, trả lương đúng hạn và cấp bằng/chứng chỉ tốt nghiệp.</li>\n  </ul>\n</div>",
           "qa": [
-            {
-              "q": "Học viên học nghề có bắt buộc phải viết Berichtsheft (Sổ báo cáo) không?",
-              "a": "Có, viết Berichtsheft là nghĩa vụ bắt buộc và là điều kiện để được dự thi tốt nghiệp IHK/HWK."
-            },
-            {
-              "q": "Doanh nghiệp có được phép bắt Azubi tự mua trang thiết bị bảo hộ lao động không?",
-              "a": "Không, doanh nghiệp có nghĩa vụ cung cấp miễn phí dụng cụ và thiết bị bảo hộ (Ausbildungsmittel)."
-            },
-            {
-              "q": "Khi bị ốm, Azubi có nghĩa vụ gì?",
-              "a": "Benachrichtigungspflicht: Báo ngay cho công ty trước giờ làm và nộp giấy khám bệnh (AU) đúng thời hạn."
-            },
-            {
-              "q": "[IHK Exam] Doanh nghiệp giao việc làm nhà riêng cho Azubi có vi phạm luật không?",
-              "a": "Có, vi phạm BBiG § 14 (Ausbildungsfremde Tätigkeiten - cấm giao việc không liên quan đến mục tiêu đào tạo).",
-              "src": "fk_exel"
-            },
-            {
-              "q": "[IHK Exam] Doanh nghiệp có được trừ tiền lương khi Azubi nghỉ đi học Berufsschule không?",
-              "a": "Không, doanh nghiệp có nghĩa vụ Freistellung (cho nghỉ đi học vẫn trả nguyên lương).",
-              "src": "fk_exel"
-            }
+                    {
+                              "q": "Ist das Führen des Berichtshefts (Ausbildungsnachweises) verpflichtend und darf es in der Arbeitszeit erfolgen?",
+                              "qVi": "Học viên học nghề có bắt buộc phải viết Berichtsheft (Sổ báo cáo) không và có được làm trong giờ làm không?",
+                              "a": "<b>Ja, es ist gesetzliche Pflicht (§ 13 BBiG) und Zulassungsvoraussetzung zur Abschlussprüfung.</b> Es darf während der regulären betrieblichen Ausbildungszeit geführt werden.",
+                              "aVi": "<b>Có, bắt buộc theo luật (§ 13 BBiG) và là điều kiện để được dự thi tốt nghiệp.</b> Doanh nghiệp phải tạo điều kiện cho viết trong giờ làm.",
+                              "src": "IHK / Berufsschule"
+                    },
+                    {
+                              "q": "Darf ein Betrieb vom Azubi verlangen, Schutzkleidung und Fachliteratur selbst zu bezahlen?",
+                              "qVi": "Doanh nghiệp có được phép bắt Azubi tự mua trang thiết bị bảo hộ lao động và sách vở không?",
+                              "a": "<b>Nein.</b> Der Betrieb muss alle für die Ausbildung erforderlichen Ausbildungsmittel und Schutzkleidungen <b>kostenlos zur Verfügung stellen (§ 14 BBiG)</b>.",
+                              "aVi": "<b>Không được.</b> Doanh nghiệp có nghĩa vụ cung cấp miễn phí mọi thiết bị bảo hộ và đồ dùng học tập cần thiết.",
+                              "src": "IHK / Berufsschule"
+                    },
+                    {
+                              "q": "Wie muss sich der Auszubildende bei einer Erkrankung verhalten?",
+                              "qVi": "Khi bị ốm, Azubi có nghĩa vụ gì?",
+                              "a": "Er muss den Betrieb <b>unverzüglich vor Dienstbeginn informieren</b> und bei einer Dauer von mehr als 3 Tagen (bzw. auf Verlangen ab Tag 1) eine <b>ärztliche Arbeitsunfähigkeitsbescheinigung (AU)</b> vorlegen.",
+                              "aVi": "Báo ngay cho công ty trước giờ vào ca và nộp giấy khám bệnh AU đúng hạn quy định.",
+                              "src": "IHK / Berufsschule"
+                    },
+                    {
+                              "q": "Darf der Ausbildungsbetrieb den Lohn kürzen, wenn der Azubi die Berufsschule besucht?",
+                              "qVi": "Doanh nghiệp có được trừ tiền lương khi Azubi nghỉ đi học Berufsschule không?",
+                              "a": "<b>Nein.</b> Nach § 15 BBiG besteht eine gesetzliche <b>Freistellungspflicht unter Fortzahlung der vollen Vergütung</b>.",
+                              "aVi": "<b>Không.</b> Doanh nghiệp có nghĩa vụ Freistellung (cho nghỉ đi học vẫn trả nguyên lương).",
+                              "src": "IHK / Berufsschule"
+                    }
           ]
-        },
-        {
+},
+                {
           "id": "wiko-ausbildungsvertrag",
           "icon": "",
           "name": "LS03 · Der Berufsausbildungsvertrag (BAV)",
-          "desc": "Hình thức Schriftform · 10 nội dung bắt buộc BBiG § 11 · Giám hộ (<18t)",
-          "content": "<h2> LS03 · Der Berufsausbildungsvertrag (Hợp đồng đào tạo nghề)</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 03 / LF 01-LS03) · BBiG § 10 - § 12</div>\n            <h3>1. Hình thức & Ký kết</h3>\n            <ul>\n              <li>Bắt buộc bằng <b>văn bản (Schriftform)</b> và phải ký <b>trước khi bắt đầu đào tạo</b>.</li>\n              <li>Nếu Azubi dưới 18 tuổi: Bắt buộc có chữ ký của <span class=\"term\" data-de=\"gesetzlicher Vertreter\" data-vi=\"người giám hộ hợp pháp\">gesetzlicher Vertreter</span> (cha/mẹ/người giám hộ).</li>\n            </ul>\n            <h3>2. 10 Nội dung tối thiểu bắt buộc (Mindestinhalte BBiG § 11)</h3>\n            <ol>\n              <li>Chuyên ngành & kế hoạch lộ trình đào tạo (Gliederung).</li>\n              <li>Ngày bắt đầu & thời gian khóa học (thường 3 - 3.5 năm).</li>\n              <li>Địa điểm & các đợt đào tạo ngoài doanh nghiệp.</li>\n              <li>Thời gian làm việc hàng ngày/tuần.</li>\n              <li>Thời gian thử việc (<b>Probezeit: tối thiểu 1 tháng, tối đa 4 tháng</b>).</li>\n              <li>Mức lương trợ cấp (Ausbildungsvergütung) & thời hạn trả.</li>\n              <li>Số ngày nghỉ phép năm (Urlaub).</li>\n              <li>Điều kiện hủy hợp đồng (Kündigung).</li>\n              <li>Quy chiếu thỏa ước tập thể (Tarifvertrag / Betriebsvereinbarung).</li>\n              <li>Hình thức ghi nhật ký học nghề (Berichtsheft).</li>\n            </ol>",
+          "desc": "Schriftform (§ 11 BBiG) · Mindestinhalte · Rechte Minderjähriger",
+          "content": "<h2>LS03 · Der Berufsausbildungsvertrag (BAV)</h2>\n<div class=\"hint\">Berufsbildungsgesetz §§ 10, 11 · Vertragsschluss, Formvorschrift &amp; Mindestinhalte</div>\n<h3 class=\"sub\">1. Formvorschrift und Wirksamkeit (§§ 10, 11 BBiG)</h3>\n<ul>\n  <li><b>Schriftformgebot:</b> Der Ausbildungsvertrag muss zwingend <b>vor Beginn der Ausbildung</b> schriftlich niedergelegt werden.</li>\n  <li><b>Unterschriften:</b> Der Vertrag muss eigenhändig unterschrieben werden vom <b>Ausbildenden</b>, vom <b>Auszubildenden</b> sowie bei Minderjährigen (unter 18 Jahren) zwingend von den <b>gesetzlichen Vertretern (Eltern)</b> nach § 107 BGB.</li>\n  <li><b>Registrierung:</b> Der Betrieb muss den Vertrag unverzüglich zur <b>Eintragung in das Verzeichnis der Berufsausbildungsverhältnisse</b> bei der zuständigen Kammer (IHK / HWK) einreichen.</li>\n</ul>\n<h3 class=\"sub\">2. Wichtige gesetzliche Pflichtinhalte (§ 11 BBiG)</h3>\n<p>Im Vertrag müssen unter anderem zwingend geregelt sein: Art und Ziel der Ausbildung, Beginn und Dauer, tägliche Arbeitszeit, Dauer der Probezeit (1 bis 4 Monate), Höhe der Ausbildungsvergütung, Urlaubsanspruch, Kündigungsbedingungen sowie Hinweis auf geltende Tarifverträge.</p>\n<div class=\"vi\">\n  <b>Tóm tắt Tiếng Việt — Hợp đồng đào tạo nghề (BAV):</b>\n  <ul>\n    <li>Bắt buộc lập thành <b>văn bản giấy (Schriftform)</b> trước khi bắt đầu khóa học.</li>\n    <li>Có chữ ký của đại diện doanh nghiệp, học viên và <b>cha mẹ/người giám hộ hợp pháp</b> nếu học viên dưới 18 tuổi.</li>\n    <li>Doanh nghiệp có nghĩa vụ nộp hợp đồng lên IHK/HWK để đăng ký vào sổ quản lý nghề.</li>\n    <li>Nội dung bắt buộc: Tên nghề, thời hạn, thời gian làm việc, thử việc (1–4 tháng), lương trợ cấp, ngày phép, điều kiện sa thải.</li>\n  </ul>\n</div>",
           "qa": [
-            {
-              "q": "Thời gian thử việc (Probezeit) trong Hợp đồng đào tạo nghề là bao lâu?",
-              "a": "Tối thiểu 1 tháng và tối đa 4 tháng."
-            },
-            {
-              "q": "Nếu Azubi chưa đủ 18 tuổi, hợp đồng nghề cần chữ ký của ai?",
-              "a": "Chữ ký của người đại diện doanh nghiệp, Azubi và người giám hộ hợp pháp (gesetzlicher Vertreter)."
-            },
-            {
-              "q": "[IHK Exam] Hợp đồng đào tạo nghề ký bằng lời nói (mündlich) có hiệu lực không?",
-              "a": "Không, BBiG § 11 quy định hợp đồng nghề bắt buộc phải lập bằng văn bản (Schriftform).",
-              "src": "fk_exel"
-            },
-            {
-              "q": "[IHK Exam] Thỏa thuận phạt tiền khi Azubi bỏ học nghề trước thời hạn có hợp pháp không?",
-              "a": "Không, BBiG § 12 quy định mọi thỏa thuận phạt tiền hoặc hạn chế nghề nghiệp sau học nghề đều vô hiệu.",
-              "src": "fk_exel"
-            }
+                    {
+                              "q": "Welche gesetzliche Formvorschrift gilt für den Berufsausbildungsvertrag nach § 11 BBiG?",
+                              "qVi": "Hợp đồng đào tạo nghề bắt buộc phải tuân thủ hình thức nào theo luật?",
+                              "a": "Die <b>Schriftform mit eigenhändiger Unterschrift</b> vor Beginn der Ausbildung. Bei Minderjährigen müssen auch die gesetzlichen Vertreter unterschreiben.",
+                              "aVi": "Bắt buộc bằng <b>văn bản giấy có chữ ký tay (Schriftform)</b> trước khi bắt đầu học nghề; dưới 18 tuổi cần chữ ký cha mẹ.",
+                              "src": "IHK / Berufsschule"
+                    },
+                    {
+                              "q": "Wie viele Monate darf die Probezeit in einem Berufsausbildungsvertrag maximal dauern?",
+                              "qVi": "Thời gian thử việc trong hợp đồng học nghề được kéo dài tối đa bao lâu?",
+                              "a": "Sie muss <b>mindestens einen Monat und darf höchstens vier Monate</b> betragen (§ 20 BBiG).",
+                              "aVi": "Từ <b>tối thiểu 1 tháng đến tối đa 4 tháng</b> (§ 20 BBiG).",
+                              "src": "IHK / Berufsschule"
+                    }
           ]
-        },
-        {
+},
+                {
           "id": "wiko-probezeit-ueberwachung",
           "icon": "",
-          "name": "LS04 & LS12 · Probezeit & Giám sát IHK/HWK",
-          "desc": "Thử việc (Kündigung ohne Frist) · 6 nhiệm vụ giám sát của IHK/HWK",
-          "content": "<h2> LS04 & LS12 · Probezeit & Überwachung durch die zuständige Stelle</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 04 & 12 / LF 01-LS04, LS12) · Vai trò IHK/HWK</div>\n            <h3>1. Kündigung in der Probezeit (Trong thử việc)</h3>\n            <ul>\n              <li>Có thể hủy hợp đồng bất kỳ lúc nào.</li>\n              <li><b>Không cần thời hạn báo trước (ohne Frist)</b> và <b>không cần nêu lý do (ohne Angabe von Gründen)</b>.</li>\n              <li>Bắt buộc phải lập bằng <b>văn bản (schriftlich)</b>.</li>\n            </ul>\n            <h3>2. Kündigung nach der Probezeit (Sau thử việc)</h3>\n            <ul>\n              <li><b>Fristlose Kündigung aus wichtigem Grund:</b> Sa thải ngay lập tức vì lý do đặc biệt nghiêm trọng (trộm cắp, bạo lực, cố ý phá hoại). Phải thông báo bằng văn bản trong 2 tuần từ khi phát hiện.</li>\n              <li><b>Ordentliche Kündigung durch Azubi:</b> Azubi muốn bỏ hẳn nghề báo trước <b>4 tuần (Frist von 4 Wochen)</b>.</li>\n            </ul>\n            <h3>3. 6 Nhiệm vụ giám sát của IHK / HWK (Zuständige Stelle - LS12)</h3>\n            <ol>\n              <li>Quản lý danh sách & lưu trữ hợp đồng nghề (Führung des Verzeichnisses).</li>\n              <li>Duyệt đơn rút ngắn / kéo dài thời gian học (Kürzung / Verlängerung).</li>\n              <li>Kiểm tra cơ sở vật chất & bằng cấp của Ausbilder.</li>\n              <li>Giám sát doanh nghiệp đào tạo đúng khung Ausbildungsordnung.</li>\n              <li>Thành lập hội đồng thi & tổ chức kỳ thi (Zwischen- & Abschlussprüfung).</li>\n              <li>Tổ chức các khóa đào tạo nâng cao chuyên môn (Fortbildung).</li>\n            </ol>",
+          "name": "LS04 & LS12 · Probezeit & Überwachung durch die Kammer",
+          "desc": "Dauer (§ 20 BBiG) · Fristlose Kündigung · Überwachungsaufgaben von IHK & HWK",
+          "content": "<h2>LS04 &amp; LS12 · Probezeit &amp; Überwachung durch IHK/HWK</h2>\n<div class=\"hint\">Berufsbildungsgesetz §§ 20, 22 Abs. 1, 71 ff. · Schutzrechte und Kontrollfunktion der Kammern</div>\n<h3 class=\"sub\">1. Probezeit im Ausbildungsverhältnis (§ 20 BBiG)</h3>\n<ul>\n  <li><b>Dauer:</b> Mindestens 1 Monat bis höchstens 4 Monate.</li>\n  <li><b>Kündigung in der Probezeit (§ 22 Abs. 1 BBiG):</b> Beide Seiten können das Ausbildungsverhältnis <b>jederzeit, ohne Einhaltung einer Frist und ohne Angabe von Gründen schriftlich kündigen</b>.</li>\n</ul>\n<h3 class=\"sub\">2. Überwachungsaufgaben der Kammer (IHK / HWK)</h3>\n<ul>\n  <li>Prüfung der fachlichen und persönlichen Eignung von Ausbildungsstätte und Ausbilder.</li>\n  <li>Führung des Verzeichnisses der Ausbildungsverhältnisse und Schlichtung bei Streitigkeiten (§ 111 ArbGG).</li>\n  <li>Organisation und Abnahme der Zwischen- und Abschlussprüfungen.</li>\n</ul>\n<div class=\"vi\">\n  <b>Tóm tắt Tiếng Việt — Thời gian thử việc &amp; Giám sát IHK/HWK:</b>\n  <ul>\n    <li>Thử việc: 1 đến 4 tháng. Trong thời gian này sa thải hoặc xin nghỉ <b>bất kỳ lúc nào, không cần báo trước, không cần nêu lý do</b>, nhưng phải bằng văn bản.</li>\n    <li>IHK/HWK kiểm tra tư cách dạy nghề của công ty, đăng ký hợp đồng, tổ chức thi tốt nghiệp và giải quyết tranh chấp thông qua Hội đồng hòa giải.</li>\n  </ul>\n</div>",
           "qa": [
-            {
-              "q": "Trong thời gian thử việc, việc sa thải/thôi học diễn ra như thế nào?",
-              "a": "Bất kỳ lúc nào, không cần báo trước, không cần nêu lý do, nhưng bắt buộc lập bằng văn bản."
-            },
-            {
-              "q": "Sau thời gian thử việc, nếu Azubi muốn chủ động đổi sang học nghề khác thì phải báo trước bao lâu?",
-              "a": "Phải báo trước 4 tuần (Frist von 4 Wochen) bằng văn bản và nêu rõ lý do."
-            },
-            {
-              "q": "[IHK Exam] Cơ quan nào chịu trách nhiệm lưu trữ hợp đồng và tổ chức kỳ thi tốt nghiệp nghề?",
-              "a": "Phòng Thương mại & Công nghiệp (IHK) hoặc Phòng Thủ công nghiệp (HWK).",
-              "src": "fk_exel"
-            },
-            {
-              "q": "[IHK Exam] Thời hạn tối đa để thông báo sa thải fristlos kể từ khi phát hiện lý do nghiêm trọng là bao lâu?",
-              "a": "Trong vòng 2 tuần (2-Wochen-Frist nach § 626 Abs. 2 BGB).",
-              "src": "fk_exel"
-            }
+                    {
+                              "q": "Wie kann ein Ausbildungsverhältnis während der Probezeit gekündigt werden?",
+                              "qVi": "Trong thời gian thử việc, việc chấm dứt hợp đồng học nghề diễn ra như thế nào?",
+                              "a": "Jederzeit <b>ohne Einhaltung einer Kündigungsfrist und ohne Angabe von Gründen</b> schriftlich (§ 22 Abs. 1 BBiG).",
+                              "aVi": "Bất kỳ lúc nào <b>không cần thời hạn báo trước và không cần nêu lý do</b>, nhưng bắt buộc bằng văn bản.",
+                              "src": "IHK / Berufsschule"
+                    },
+                    {
+                              "q": "Welche Institution überwacht die Eignung der Ausbilder und führt die Abschlussprüfung durch?",
+                              "qVi": "Cơ quan nào kiểm tra tư cách người dạy nghề và tổ chức kỳ thi tốt nghiệp?",
+                              "a": "Die <b>zuständige Stelle (IHK oder HWK)</b> nach dem Berufsbildungsgesetz.",
+                              "aVi": "<b>Phòng Thương mại và Công nghiệp (IHK) hoặc HWK</b> theo luật BBiG.",
+                              "src": "IHK / Berufsschule"
+                    }
           ]
-        },
-        {
+},
+                {
           "id": "wiko-fall-klara",
           "icon": "",
-          "name": "LS05 & LS11 · Tình huống vi phạm & Lịch sử BBiG",
-          "desc": "Fallbeispiel Klara Korte (Metzgerei Wolf) · So sánh HĐLĐ 1864 vs. BBiG hiện đại",
-          "content": "<h2> LS05 & LS11 · Tình huống Klara Korte & Sự tiến hóa của BBiG</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 05 & 11 / LF 01-LS05, LS11)</div>\n            <h3>1. Tình huống Klara Korte (Metzgerei Wolf)</h3>\n            <p>Học viên Klara Korte bị chủ tiệm thịt giao làm việc dọn dẹp nhà riêng và không cho nghỉ đi học trường nghề → Vi phạm BBiG § 14 (Ausbildungsfremde Tätigkeiten) và nghĩa vụ Freistellung.</p>\n            <h3>2. So sánh Hợp đồng học nghề năm 1864 vs. Luật BBiG hiện đại (LS11)</h3>\n            <ul>\n              <li><b>Năm 1864 (Lịch sử):</b> Học viên phải nộp tiền học cho chủ (Lehrgeld), bị đánh đập, không có ngày nghỉ phép, làm việc không giới hạn giờ.</li>\n              <li><b>Hiện đại (BBiG):</b> Được nhận lương (Ausbildungsvergütung), cấm trừng phạt thể xác, có ngày nghỉ phép (Urlaub), được bảo hộ giờ làm việc (Arbeitszeitgesetz / JArbSchG).</li>\n            </ul>",
+          "name": "LS05 & LS11 · Fallbeispiel Klara Korte & Geschichte des BBiG",
+          "desc": "Ausbildungsfremde Tätigkeiten (§ 14 BBiG) · Historischer Wandel seit 1864",
+          "content": "<h2>LS05 &amp; LS11 · Fall Klara Korte &amp; Historische Entwicklung des BBiG</h2>\n<div class=\"hint\">BBiG § 14 Abs. 3 · Schutz vor Ausbeutung · Entwicklung vom Lehrlingswesen zum modernen Bildungsrecht</div>\n<h3 class=\"sub\">1. Fall Klara Korte (Ausbildungsfremde Arbeiten)</h3>\n<p>Das Zuweisen von Arbeiten wie privatem Hausputz oder Botengängen für die Familie des Chefs verstößt gegen § 14 Abs. 3 BBiG. Auszubildende dürfen diese Tätigkeiten verweigern.</p>\n<h3 class=\"sub\">2. Historischer Vergleich</h3>\n<p>Im 19. Jahrhundert (Lehrvertrag 1864) mussten Lehrlinge oft Lehrgeld zahlen, arbeiteten bis zu 16 Stunden ohne Schutz. Heute sichert das BBiG Schutzrechte, Arbeitszeitgrenzen und gesetzliche Vergütung.</p>\n<div class=\"vi\">\n  <b>Tóm tắt Tiếng Việt — Tình huống Klara Korte &amp; Lịch sử BBiG:</b>\n  <ul>\n    <li>Giao việc riêng tư gia đình sếp là vi phạm BBiG § 14 (Ausbildungsfremde Tätigkeiten). Azubi có quyền từ chối làm.</li>\n    <li>Lịch sử: Trước đây học việc không có lương, bị bóc lột; ngày nay BBiG bảo vệ toàn diện về tiền lương, giờ làm và điều kiện học tập.</li>\n  </ul>\n</div>",
           "qa": [
-            {
-              "q": "Điểm khác biệt căn bản giữa Hợp đồng học nghề năm 1864 và Luật BBiG hiện đại là gì?",
-              "a": "Học nghề năm 1864 học viên phải trả tiền Lehrgeld và không được bảo vệ; BBiG hiện đại Azubi được nhận lương và được bảo vệ toàn diện."
-            },
-            {
-              "q": "[IHK Exam] Việc chủ doanh nghiệp ép Azubi làm việc nhà riêng bị cấm theo điều khoản nào của BBiG?",
-              "a": "BBiG § 14 (Cấm giao việc không phục vụ mục tiêu đào tạo nghề - Ausbildungsfremde Tätigkeiten).",
-              "src": "fk_exel"
-            }
+                    {
+                              "q": "Darf ein Betrieb dem Auszubildenden ausbildungsfremde Arbeiten (wie private Besorgungen) auftragen?",
+                              "qVi": "Doanh nghiệp giao việc làm nhà riêng cho Azubi có vi phạm luật không?",
+                              "a": "<b>Nein.</b> Das ist nach <b>§ 14 Abs. 3 BBiG verboten</b>. Der Azubi darf diese Arbeiten verweigern.",
+                              "aVi": "<b>Vi phạm luật.</b> Theo § 14 BBiG cấm giao việc không phục vụ đào tạo; Azubi có quyền từ chối.",
+                              "src": "IHK / Berufsschule"
+                    }
           ]
-        }
+}
       ]
     },
     {
       "id": "lf1-arbeitsschutz",
-      "badge": "LF 1 (Năm 1)",
-      "title": "LF 1 (Năm 1) · Bảo hộ Lao động & Luật Lao động (LS06–LS10, LS13–LS16)",
+      "badge": "LF 1",
+      "title": "LF 1 · Arbeitsschutz, Bewerbung & Arbeitsvertrag (LS06–10, LS13–16)",
       "items": [
-        {
+                {
           "id": "wiko-arbeitsschutz",
           "icon": "",
-          "name": "LS06 · Arbeitsschutzgesetz & Sozialer Arbeitsschutz",
-          "desc": "Technischer vs. Sozialer Arbeitsschutz · Arbeitszeit, BUrlG, JArbSchG (<18t), Mutterschutz",
-          "content": "<h2> LS06 · Arbeitsschutzgesetz & Sozialer Arbeitsschutz</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 06 / LF 01-LS06) · Bảo hộ kỹ thuật vs. Bảo hộ xã hội</div>\n            <h3>1. Phân loại Luật Bảo hộ Lao động</h3>\n            <ul>\n              <li><b>Technischer Arbeitsschutz (Kỹ thuật):</b> Ngăn ngừa tai nạn máy móc, an toàn vệ sinh (UVV, Arbeitssicherheitsgesetz, Arbeitsstättenverordnung).</li>\n              <li><b>Sozialer Arbeitsschutz (Xã hội):</b> Bảo vệ con người về giờ làm, nghỉ phép, thai sản, vị thành niên.</li>\n            </ul>\n            <h3>2. Các đạo luật bảo hộ xã hội cốt lõi</h3>\n            <ul>\n              <li><b>Arbeitszeitgesetz (Giờ làm việc):</b> Tối đa <b>8h/ngày</b> (tối đa 10h nếu trung bình 6 tháng vẫn đạt 8h). Thời gian nghỉ giữa 2 ca (<span class=\"term\" data-de=\"Ruhezeit\" data-vi=\"Nghỉ giữa 2 ca\">Ruhezeit</span>) tối thiểu <b>11 giờ</b>. Nghỉ giải lao (<span class=\"term\" data-de=\"Ruhepause\" data-vi=\"Nghỉ giải lao\">Ruhepause</span>): 30 phút (ca 6-9h), 45 phút (ca > 9h).</li>\n              <li><b>Bundesurlaubsgesetz (Nghỉ phép):</b> Tối thiểu <b>24 ngày làm việc (Werktage)</b>/năm (tính tuần 6 ngày) = 20 ngày (tính tuần 5 ngày).</li>\n              <li><b>Mutterschutzgesetz (Thai sản):</b> Cấm làm việc (<span class=\"term\" data-de=\"Beschäftigungsverbot\" data-vi=\"Cấm lao động\">Beschäftigungsverbot</span>) <b>6 tuần trước sinh</b> và <b>8 tuần sau sinh</b>.</li>\n              <li><b>Jugendarbeitsschutzgesetz (JArbSchG - Dưới 18 tuổi):</b> Tối đa <b>8h/ngày, 40h/tuần, 5 ngày/tuần</b>. Ruhezeit tối thiểu <b>12 giờ</b>. Cấm làm ca đêm sau 20:00 (Gastronomie trên 16t được làm đến 22:00). Nộp giấy khám sức khỏe định kỳ (Erstuntersuchung).</li>\n            </ul>",
+          "name": "LS06 · Gesetzlicher Arbeitsschutz",
+          "desc": "Technischer & sozialer Arbeitsschutz · ArbZG · JArbSchG · MuSchG · BUrlG",
+          "content": "<h2>LS06 · Gesetzlicher Arbeitsschutz</h2>\n<div class=\"hint\">Arbeitszeitgesetz (ArbZG) · Jugendarbeitsschutzgesetz (JArbSchG) · Bundesurlaubsgesetz (BUrlG)</div>\n<h3 class=\"sub\">1. Technischer vs. Sozialer Arbeitsschutz</h3>\n<ul>\n  <li><b>Technischer Arbeitsschutz:</b> Verhütung von Arbeitsunfällen und Berufskrankheiten (Arbeitsschutzgesetz, Berufsgenossenschaft, Sicherheitskleidung, Maschinenschutz).</li>\n  <li><b>Sozialer Arbeitsschutz:</b> Schutz von Arbeitszeit, Urlaub und besonders schutzbedürftigen Personengruppen.</li>\n</ul>\n<h3 class=\"sub\">2. Kernregelungen der Schutzgesetze</h3>\n<table class=\"tbl\">\n  <thead><tr><th>Gesetz</th><th>Wichtigste Schutzvorschriften</th></tr></thead>\n  <tbody>\n    <tr><td><b>Arbeitszeitgesetz (ArbZG)</b></td><td>Regelarbeitszeit max. 8 Stunden/Werktag (Verlängerung auf 10h möglich); <b>mindestens 11 Stunden ununterbrochene Ruhezeit</b> (§ 5 ArbZG).</td></tr>\n    <tr><td><b>Jugendarbeitsschutzgesetz (JArbSchG)</b></td><td>Für Jugendliche unter 18 Jahren: Max. 8h/Tag, 40h/Woche, 5-Tage-Woche; Ruhepause 30 Min (bei 4,5–6h) bzw. 60 Min (bei >6h); Mindesturlaub 30/27/25 Werktage (nach Alter 15/16/17).</td></tr>\n    <tr><td><b>Mutterschutzgesetz (MuSchG)</b></td><td>Schutzfrist 6 Wochen vor und 8 Wochen nach der Entbindung (Beschäftigungsverbot unter Fortzahlung des Mutterschaftsgeldes).</td></tr>\n    <tr><td><b>Bundesurlaubsgesetz (BUrlG)</b></td><td>Gesetzlicher Mindesturlaub für Erwachsene: <b>24 Werktage</b> bei einer 6-Tage-Woche (bzw. 20 Arbeitstage bei 5-Tage-Woche).</td></tr>\n  </tbody>\n</table>\n<div class=\"vi\">\n  <b>Tóm tắt Tiếng Việt — Luật Bảo hộ Lao động (Arbeitsschutz):</b>\n  <ul>\n    <li><b>ArbZG (Luật Giờ làm việc):</b> Tối đa 8 giờ/ngày (ngoại lệ 10 giờ); <b>nghỉ giữa 2 ca tối thiểu 11 giờ liên tục</b>.</li>\n    <li><b>JArbSchG (Bảo hộ thanh thiếu niên &lt; 18 tuổi):</b> Tối đa 8h/ngày, 40h/tuần, tuần làm 5 ngày; nghỉ giữa ca 30–60 phút; nghỉ phép 30/27/25 ngày làm việc theo độ tuổi.</li>\n    <li><b>MuSchG (Nghỉ thai sản):</b> Cấm làm việc 6 tuần trước sinh và 8 tuần sau sinh, vẫn hưởng nguyên thu nhập.</li>\n    <li><b>BUrlG (Nghỉ phép năm):</b> Tối thiểu 24 ngày làm việc/năm (cho tuần 6 ngày) hoặc 20 ngày (cho tuần 5 ngày).</li>\n  </ul>\n</div>",
           "qa": [
-            {
-              "q": "Thời gian nghỉ giữa 2 ca làm việc (Ruhezeit) theo Luật Arbeitszeitgesetz tối thiểu là bao nhiêu?",
-              "a": "Tối thiểu 11 giờ liên tục."
-            },
-            {
-              "q": "Mức nghỉ phép tối thiểu theo Luật Bundesurlaubsgesetz cho tuần làm việc 5 ngày là bao nhiêu?",
-              "a": "20 ngày làm việc (Arbeitstage) mỗi năm."
-            },
-            {
-              "q": "Thời gian cấm làm việc theo Luật Bảo vệ Thai sản (Mutterschutzgesetz) là bao lâu?",
-              "a": "6 tuần trước khi sinh và 8 tuần sau khi sinh."
-            },
-            {
-              "q": "[IHK Exam] Giới hạn giờ làm việc tối đa một tuần đối với thanh thiếu niên (dưới 18 tuổi) theo JArbSchG là bao nhiêu?",
-              "a": "Tối đa 40 giờ/tuần và tối đa 5 ngày/tuần.",
-              "src": "fk_exel"
-            },
-            {
-              "q": "[IHK Exam] Đi học Berufsschule trên 5 tiết được tính tương đương bao nhiêu giờ làm việc cho Azubi dưới 18t?",
-              "a": "Được tính tương đương 1 ngày làm việc đầy đủ (1 Arbeitstag).",
-              "src": "fk_exel"
-            }
+                    {
+                              "q": "Wie lang ist die gesetzliche ununterbrochene Mindestruhezeit zwischen zwei Schichten nach § 5 ArbZG?",
+                              "qVi": "Thời gian nghỉ giữa 2 ca làm việc (Ruhezeit) theo Luật Arbeitszeitgesetz tối thiểu là bao nhiêu?",
+                              "a": "Sie beträgt <b>mindestens 11 Stunden ununterbrochene Ruhezeit</b>.",
+                              "aVi": "<b>Tối thiểu 11 giờ liên tục</b> (§ 5 ArbZG).",
+                              "src": "IHK / Berufsschule"
+                    },
+                    {
+                              "q": "Welche maximale Arbeitszeit gilt für Jugendliche unter 18 Jahren nach dem JArbSchG?",
+                              "qVi": "Thời gian làm việc tối đa của thanh thiếu niên dưới 18 tuổi theo JArbSchG là bao nhiêu?",
+                              "a": "Höchstens <b>8 Stunden täglich</b> und <b>40 Stunden wöchentlich</b> bei einer <b>5-Tage-Woche</b> (§ 8 JArbSchG).",
+                              "aVi": "Tối đa <b>8 giờ/ngày</b> và <b>40 giờ/tuần</b> trong tuần làm việc 5 ngày.",
+                              "src": "IHK / Berufsschule"
+                    }
           ]
-        },
-        {
+},
+                {
           "id": "wiko-bewerbung-vorstellung",
           "icon": "",
-          "name": "LS07, LS08 & LS10 · Hồ sơ Xin việc & Phỏng vấn",
-          "desc": "Anschreiben, CV, Zeugnisse, IfSG § 43 · 6 Phasen des Vorstellungsgesprächs",
-          "content": "<h2> LS07, LS08 & LS10 · Hồ sơ Xin việc & Phỏng vấn tuyển dụng</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 07, 08, 10 / LF 01-LS07, LS08, LS10)</div>\n            <h3>1. Bộ hồ sơ xin việc tiêu chuẩn (Bewerbungsunterlagen)</h3>\n            <ol>\n              <li><b>Das Anschreiben:</b> Thư xin việc (1 trang A4 thể hiện động lực & sự phù hợp).</li>\n              <li><b>Der Lebenslauf:</b> Sơ yếu lý lịch trình bày dạng bảng (CV).</li>\n              <li><b>Die Zeugnisse:</b> Bằng tốt nghiệp phổ thông/nghề, chứng nhận làm việc cũ (Arbeitszeugnis).</li>\n              <li><b>Nachweise & Zertifikate:</b> Chứng nhận thực tập, kỹ năng.</li>\n              <li><b>Gesundheitszeugnis (§ 43 IfSG):</b> Giấy khám sức khỏe / Vệ sinh an toàn thực phẩm (Gastronomie).</li>\n            </ol>\n            <h3>2. 6 Giai đoạn của Buổi phỏng vấn (Die 6 Phasen - LS08)</h3>\n            <ul>\n              <li><b>1. Einstieg:</b> Smalltalk, chào hỏi, tư thế, ngôn ngữ cơ thể.</li>\n              <li><b>2. Fachliche Kompetenz:</b> Trình bày CV, kinh nghiệm, năng lực thực tế.</li>\n              <li><b>3. Unternehmensdarstellung:</b> Nhà tuyển dụng giới thiệu vị trí công việc.</li>\n              <li><b>4. Fragen des Bewerbers:</b> Ứng viên đặt câu hỏi thể hiện sự chủ động.</li>\n              <li><b>5. Konditionen:</b> Trao đổi mức lương, ngày bắt đầu, ca làm việc.</li>\n              <li><b>6. Abschluss:</b> Thống nhất bước tiếp theo, chào tạm biệt lịch sự.</li>\n            </ul>",
+          "name": "LS07, LS08 & LS10 · Bewerbung & Vorstellungsgespräch",
+          "desc": "Bewerbungsunterlagen · Phasen des Vorstellungsgesprächs · Vorbereitung",
+          "content": "<h2>LS07, LS08 &amp; LS10 · Bewerbung &amp; Vorstellungsgespräch</h2>\n<div class=\"hint\">Bewerbungsmappe nach DIN 5008 · Vorstellungsgespräch Phasen 1–6 · Gastronomie-Voraussetzungen</div>\n<h3 class=\"sub\">1. Bestandteile einer vollständigen Bewerbungsmappe</h3>\n<ul>\n  <li><b>Anschreiben (Bewerbungsschreiben):</b> Auf 1 DIN-A4-Seite gegliedert (Briefkopf, Betreffzeile, Motivation, bisherige Qualifikationen, Stärken und Schlusssatz mit Gesprächswunsch).</li>\n  <li><b>Tabellarischer Lebenslauf:</b> Lückenlose Übersicht (Persönliche Daten, Schulbildung, Praktika, Sprach- und EDV-Kenntnisse, Hobbys/Engagement, Datum und eigenhändige Unterschrift).</li>\n  <li><b>Anlagen:</b> Aktuelle Schulzeugnisse, Praktikumsbeurteilungen, Zertifikate und in der Gastronomie die Bescheinigung über die Erstbelehrung nach <b>§ 43 Infektionsschutzgesetz (IfSG / Rote Karte)</b>.</li>\n</ul>\n<h3 class=\"sub\">2. Die 6 Phasen des Vorstellungsgesprächs</h3>\n<ol>\n  <li><b>Smalltalk &amp; Begrüßung:</b> Eisbrechen, Blickkontakt, freundlicher erster Eindruck.</li>\n  <li><b>Vorstellung des Unternehmens:</b> Der Arbeitgeber präsentiert den Betrieb und die Ausbildungsstelle.</li>\n  <li><b>Selbstpräsentation des Bewerbers:</b> Kurze Zusammenfassung des Werdegangs, der Stärken und der Motivation für den Beruf.</li>\n  <li><b>Fragen des Arbeitgebers:</b> Vertiefung von Fachkenntnissen, Belastbarkeit, Teamfähigkeit und Motivation.</li>\n  <li><b>Eigene Rückfragen des Bewerbers:</b> Interesse zeigen (z. B. nach Ausbildungsablauf, Mentorensystem).</li>\n  <li><b>Abschluss &amp; Verabschiedung:</b> Vereinbarung über das weitere Vorgehen und den Zeithorizont für die Entscheidung.</li>\n</ol>\n<div class=\"vi\">\n  <b>Tóm tắt Tiếng Việt — Hồ sơ xin việc &amp; Phỏng vấn:</b>\n  <ul>\n    <li><b>Hồ sơ (Bewerbungsmappe):</b> Đơn xin việc (Anschreiben 1 trang), Sơ yếu lý lịch bảng biểu (Lebenslauf), Học bạ/chứng chỉ và Giấy khám an toàn vệ sinh thực phẩm (IfSG § 43 / Rote Karte).</li>\n    <li><b>6 Giai đoạn phỏng vấn:</b> 1. Chào hỏi &amp; trò chuyện xã giao → 2. Công ty giới thiệu → 3. Ứng viên tự giới thiệu bản thân → 4. Phỏng vấn chuyên sâu → 5. Ứng viên đặt câu hỏi lại → 6. Tạm biệt và hẹn ngày thông báo kết quả.</li>\n  </ul>\n</div>",
           "qa": [
-            {
-              "q": "Bộ hồ sơ xin việc tiêu chuẩn tại Đức bao gồm những thành phần chính nào?",
-              "a": "Anschreiben (Thư xin việc), Lebenslauf (CV), Zeugnisse (Bằng cấp) và các chứng chỉ liên quan."
-            },
-            {
-              "q": "Trong ngành Gastronomie, chứng chỉ an toàn vệ sinh nào là bắt buộc khi đi làm?",
-              "a": "Belehrung nach § 43 Infektionsschutzgesetz (IfSG - Vệ sinh an toàn thực phẩm)."
-            },
-            {
-              "q": "[IHK Exam] Mục đích chính của phần Smalltalk (Einstieg) trong phỏng vấn là gì?",
-              "a": "Tạo không khí cởi mở, đánh giá thái độ giao tiếp và sự tự tin ban đầu của ứng viên.",
-              "src": "fk_exel"
-            }
+                    {
+                              "q": "Welcher behördliche Nachweis ist für eine Tätigkeit in der Gastronomie und Lebensmittelverarbeitung zwingend erforderlich?",
+                              "qVi": "Chứng chỉ vệ sinh nào bắt buộc phải có khi làm việc trong ngành ẩm thực?",
+                              "a": "Die Bescheinigung über die Belehrung nach <b>§ 43 Infektionsschutzgesetz (IfSG)</b> durch das Gesundheitsamt (umgangssprachlich 'Rote Karte').",
+                              "aVi": "Chứng chỉ tập huấn theo <b>Điều 43 Luật Bảo vệ Chống Nhiễm khuẩn (IfSG)</b> do Sở Y tế cấp (Rote Karte).",
+                              "src": "IHK / Berufsschule"
+                    }
           ]
-        },
-        {
+},
+                {
           "id": "wiko-fragen-agg",
           "icon": "",
-          "name": "LS09 · Zulässige & Unzulässige Fragen (AGG)",
-          "desc": "Luật bình đẳng AGG · Quyền được nói dối (Recht zur Lüge) · Stellenrelevanz",
-          "content": "<h2> LS09 · Zulässige & Unzulässige Fragen im Vorstellungsgespräch</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 09 / LF 01-LS09) · Luật AGG & Quyền bảo vệ ứng viên</div>\n            <h3>1. Nguyên tắc vàng về Câu hỏi phỏng vấn</h3>\n            <ul>\n              <li><span class=\"term\" data-de=\"Recht zur Lüge\" data-vi=\"Quyền được nói dối\">Recht zur Lüge</span>: Nếu nhà tuyển dụng đặt câu hỏi bị cấm (<i>nicht zulässige Frage</i>), ứng viên <b>được quyền nói dối mà không chịu bất kỳ hậu quả pháp lý nào</b>.</li>\n              <li>Nếu nhà tuyển dụng đặt câu hỏi hợp pháp mà ứng viên khai gian dối: Nhà tuyển dụng có quyền hủy HĐLĐ do lừa dối cố ý (<i>Anfechtung wegen arglistiger Täuschung</i>).</li>\n            </ul>\n            <h3>2. Danh mục câu hỏi BỊ CẤM vs. HỢP PHÁP</h3>\n            <ul>\n              <li><b>CÂU HỎI BỊ CẤM (Được nói dối):</b> Mang thai/kế hoạch sinh con (Schwangerschaft), Tôn giáo (Religion), Xu hướng giới tính, Tình trạng hôn nhân, Quan điểm chính trị, Tài chính nợ nần cá nhân, Nguồn gốc chủng tộc.</li>\n              <li><b>CÂU HỎI HỢP PHÁP (Phải trả lời thật):</b> Chỉ hợp pháp khi liên quan trực tiếp đến vị trí công việc (<i>Stellenrelevanz</i>) — ví dụ: Tiền án tiền sự (Vorstrafen) đối với vị trí Thu ngân/Thủ quỹ; Bệnh truyền nhiễm đối với Đầu bếp/Nhân viên nhà hàng.</li>\n            </ul>",
+          "name": "LS09 · Zulässige & unzulässige Fragen (AGG)",
+          "desc": "Allgemeines Gleichbehandlungsgesetz · Recht zur Lüge · Fragerecht des Arbeitgebers",
+          "content": "<h2>LS09 · Zulässige &amp; unzulässige Fragen (AGG)</h2>\n<div class=\"hint\">Allgemeines Gleichbehandlungsgesetz (AGG) § 1 · Fragerecht des Arbeitgebers &amp; Recht zur Notlüge</div>\n<h3 class=\"sub\">1. Fragerecht des Arbeitgebers</h3>\n<p>Der Arbeitgeber darf nur Fragen stellen, an denen er ein <b>berechtigtes, billigenswertes und schutzwürdiges Interesse</b> für den konkreten Arbeitsplatz hat (Stellenrelevanz).</p>\n<table class=\"tbl\">\n  <thead><tr><th>Zulässige Fragen (müssen wahrheitsgemäß beantwortet werden)</th><th>Unzulässige Fragen (Recht zur Lüge greift)</th></tr></thead>\n  <tbody>\n    <tr><td>• Bisherige Ausbildung, Qualifikationen und Zeugnisse</td><td>• Bestehende Schwangerschaft oder Kinderwunsch</td></tr>\n    <tr><td>• Fachspezifische Kenntnisse und Berufserfahrung</td><td>• Heiratsabsichten, Partnerschaft und Familienplanung</td></tr>\n    <tr><td>• Relevante Vorstrafen (z. B. Vermögensdelikte bei Kassierern)</td><td>• Religionszugehörigkeit oder Weltanschauung</td></tr>\n    <tr><td>• Bestehende Wettbewerbsverbote oder Wehr-/Zivildienst</td><td>• Parteimitgliedschaft oder Gewerkschaftszugehörigkeit</td></tr>\n    <tr><td>• Krankheiten, die die Eignung dauerhaft ausschließen oder Dritte gefährden (z. B. ansteckende Infektionen in der Küche)</td><td>• Sexuelle Orientierung oder ethnische Herkunft</td></tr>\n  </tbody>\n</table>\n<h3 class=\"sub\">2. Das „Recht zur Lüge“ (Notlüge)</h3>\n<p>Stellt der Arbeitgeber eine <b>unzulässige Frage</b>, darf der Bewerber die Frage <b>bewusst wahrheitswidrig (mit einer Lüge) beantworten</b>, ohne dass der Arbeitgeber den Vertrag später wegen arglistiger Täuschung anfechten oder kündigen darf (§§ 1, 7 AGG).</p>\n<div class=\"vi\">\n  <b>Tóm tắt Tiếng Việt — Câu hỏi phỏng vấn &amp; Luật Bình đẳng (AGG):</b>\n  <ul>\n    <li><b>Câu hỏi được phép:</b> Trình độ, bằng cấp, kinh nghiệm, tiền án liên quan trực tiếp đến vị trí (như tội trộm cắp khi ứng tuyển thu ngân). Phải trả lời thành thật.</li>\n    <li><b>Câu hỏi bị cấm:</b> Mang thai, kế hoạch sinh con, kết hôn, tôn giáo, đảng phái chính trị, công đoàn, xu hướng tính dục.</li>\n    <li><b>Quyền được nói dối (Recht zur Lüge):</b> Nếu nhà tuyển dụng hỏi câu hỏi bị cấm, ứng viên có quyền <b>nói dối hợp pháp</b> mà sau này không bị sa thải hay kiện tụng vì gian dối.</li>\n  </ul>\n</div>",
           "qa": [
-            {
-              "q": "Nếu nhà tuyển dụng hỏi ứng viên nữ: 'Bạn có kế hoạch sinh con trong 2 năm tới không?', ứng viên có quyền gì?",
-              "a": "Được quyền nói dối (Recht zur Lüge) vì đây là câu hỏi vi phạm Luật AGG."
-            },
-            {
-              "q": "Khi nào câu hỏi về tiền án tiền sự (Vorstrafen) lại trở thành hợp pháp trong phỏng vấn?",
-              "a": "Khi tiền án liên quan trực tiếp đến vị trí ứng tuyển (Stellenrelevanz), ví dụ tội trộm cắp khi ứng tuyển vị trí Thu ngân."
-            },
-            {
-              "q": "[IHK Exam] Luật AGG bảo vệ người lao động chống lại sự phân biệt đối xử dựa trên những yếu tố nào?",
-              "a": "Chủng tộc, giới tính, tôn giáo, khuyết tật, tuổi tác và xu hướng giới tính.",
-              "src": "fk_exel"
-            }
+                    {
+                              "q": "Welches Recht hat ein Bewerber bei unzulässigen Fragen im Vorstellungsgespräch (z. B. nach Schwangerschaft oder Familienplanung)?",
+                              "qVi": "Nếu nhà tuyển dụng hỏi câu hỏi bị cấm (như mang thai, gia đình), ứng viên có quyền gì theo AGG?",
+                              "a": "Ein <b>Recht zur Lüge (Notlüge)</b>: Der Bewerber darf die Frage wahrheitswidrig beantworten, ohne rechtliche Nachteile oder eine spätere Kündigung befürchten zu müssen.",
+                              "aVi": "<b>Quyền được nói dối (Recht zur Lüge)</b> mà không sợ bị hủy hợp đồng hay sa thải sau này.",
+                              "src": "IHK / Berufsschule"
+                    }
           ]
-        },
-        {
+},
+                {
           "id": "wiko-arbeitsvertrag",
           "icon": "",
-          "name": "LS13 & LS16 · Der Arbeitsvertrag & Loại hình HĐLĐ",
-          "desc": "Hợp đồng cá nhân · Nachweisgesetz (4 tuần) · Befristet (Thời hạn) & Teilzeit (Bán thời gian)",
-          "content": "<h2> LS13 & LS16 · Der Arbeitsvertrag & Loại hình HĐLĐ</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 13 & 16 / LF 01-LS13, LS16)</div>\n            <h3>1. Hình thức của Hợp đồng Lao động</h3>\n            <ul>\n              <li>Hợp đồng lao động cá nhân (Einzelarbeitsvertrag) có thể được giao kết bằng lời nói (<i>mündlich</i>) hoặc văn bản.</li>\n              <li><b>Luật Nachweisgesetz (1995):</b> Chủ lao động bắt buộc phải lập văn bản tóm tắt các điều khoản chính và trao cho NLĐ chậm nhất <b>4 tuần (1 tháng)</b> kể từ ngày bắt đầu làm việc.</li>\n            </ul>\n            <h3>2. Các loại hình Hợp đồng đặc thù (LS16)</h3>\n            <ul>\n              <li><b>Befristeter Arbeitsvertrag (HĐ xác định thời hạn):</b> Tự động kết thúc khi hết hạn mà không cần sa thải (Kündigung). Tối đa 2 năm không cần lý do (mit/ohne Sachgrund).</li>\n              <li><b>Teilzeitarbeitsvertrag (HĐ bán thời gian):</b> Làm việc ít giờ hơn ca chuẩn fulltime. Bình đẳng quyền lợi theo Teilzeit- und Befristungsgesetz (TzBfG).</li>\n            </ul>",
+          "name": "LS13 & LS16 · Der Arbeitsvertrag & Vertragsarten",
+          "desc": "Form und Nachweisgesetz · Unbefristet vs. befristet (TzBfG) · Teilzeit & Minijob",
+          "content": "<h2>LS13 &amp; LS16 · Der Arbeitsvertrag &amp; Vertragsarten</h2>\n<div class=\"hint\">BGB §§ 611a ff. · Nachweisgesetz · Teilzeit- und Befristungsgesetz (TzBfG)</div>\n<h3 class=\"sub\">1. Zustandekommen und Nachweisgesetz</h3>\n<p>Ein Arbeitsvertrag ist grundsätzlich <b>formfrei</b> (auch mündlich wirksam). Allerdings verpflichtet das <b>Nachweisgesetz (NachwG)</b> den Arbeitgeber, die wesentlichen Vertragsbedingungen (Arbeitszeit, Gehalt, Urlaub, Kündigungsfrist) spätestens einen Monat nach Beginn schriftlich niederzulegen und dem Arbeitnehmer auszuhändigen.</p>\n<h3 class=\"sub\">2. Vertragsarten im Arbeitsrecht</h3>\n<ul>\n  <li><b>Unbefristeter Arbeitsvertrag:</b> Der gesetzliche Regelfall; endet nur durch Kündigung, Aufhebungsvertrag oder Renteneintritt.</li>\n  <li><b>Befristeter Arbeitsvertrag (TzBfG):</b> Endet automatisch mit Zeitablauf ohne Kündigung. Zulässig mit Sachgrund (z. B. Elternzeitvertretung, Saisonspitze) oder sachgrundlos bis zu <b>maximal 2 Jahren</b> (innerhalb dieser Zeit max. 3-mal verlängerbar).</li>\n  <li><b>Teilzeitbeschäftigung:</b> Regelmäßige Wochenarbeitszeit kürzer als bei vergleichbaren Vollzeitkräften; Diskriminierungsverbot.</li>\n  <li><b>Geringfügige Beschäftigung (Minijob):</b> Verdienstgrenze bis zu 538 € monatlich; für den Arbeitnehmer steuer- und sozialversicherungsfrei (Rentenversicherungspflicht mit Befreiungsoption).</li>\n</ul>\n<div class=\"vi\">\n  <b>Tóm tắt Tiếng Việt — Hợp đồng lao động &amp; Các loại hợp đồng:</b>\n  <ul>\n    <li><b>Hình thức:</b> Có thể thỏa thuận miệng, nhưng Luật Nachweisgesetz bắt buộc chủ phải gửi bản cam kết bằng văn bản có đủ điều kiện làm việc trong vòng 1 tháng.</li>\n    <li><b>Hợp đồng không thời hạn (Unbefristet):</b> Phổ biến nhất, chỉ kết thúc khi sa thải/nghỉ việc.</li>\n    <li><b>Hợp đồng có thời hạn (Befristet - TzBfG):</b> Tự động chấm dứt khi hết hạn; không cần lý do thì tối đa 2 năm.</li>\n    <li><b>Minijob (538 €/tháng):</b> Không phải đóng thuế và bảo hiểm xã hội (có thể chọn miễn đóng quỹ hưu).</li>\n  </ul>\n</div>",
           "qa": [
-            {
-              "q": "Hợp đồng lao động cá nhân giao kết bằng lời nói (mündlich) có hiệu lực không?",
-              "a": "Có hiệu lực, nhưng theo Luật Nachweisgesetz chủ lao động phải trao văn bản tóm tắt điều khoản trong vòng 4 tuần."
-            },
-            {
-              "q": "Hợp đồng xác định thời hạn (Befristeter Arbeitsvertrag) kết thúc như thế nào?",
-              "a": "Tự động chấm dứt khi hết thời hạn ghi trong hợp đồng mà không cần ra quyết định sa thải (Kündigung)."
-            },
-            {
-              "q": "[IHK Exam] Thời gian thử việc tối đa đối với Hợp đồng lao động thông thường theo § 622 BGB là bao lâu?",
-              "a": "Tối đa 6 tháng (Probezeit max 6 Monate).",
-              "src": "fk_exel"
-            }
+                    {
+                              "q": "Wie lange darf ein befristeter Arbeitsvertrag ohne Sachgrund nach dem TzBfG maximal befristet werden?",
+                              "qVi": "Hợp đồng lao động có thời hạn không cần lý do (sachgrundlos) được kéo dài tối đa bao lâu theo TzBfG?",
+                              "a": "Maximal bis zu <b>zwei Jahren</b>; innerhalb dieser Zeitspanne darf der Vertrag höchstens dreimal verlängert werden (§ 14 Abs. 2 TzBfG).",
+                              "aVi": "Tối đa <b>2 năm</b>, và trong khoảng thời gian đó chỉ được phép gia hạn tối đa 3 lần.",
+                              "src": "IHK / Berufsschule"
+                    }
           ]
-        },
-        {
+},
+                {
           "id": "wiko-arbeitszeugnis",
           "icon": "",
           "name": "LS14 & LS15 · Das Arbeitszeugnis & Zeugnissprache",
-          "desc": "Einfaches vs. Qualifiziertes Zeugnis · Wohlwollensgebot · Thang điểm mã hóa 1–6",
-          "content": "<h2> LS14 & LS15 · Das Arbeitszeugnis: Einfaches vs. Qualifiziertes</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 14 & 15 / LF 01-LS14, LS15) · Mã hóa nhận xét</div>\n            <h3>1. Phân loại Chứng nhận làm việc (LS14)</h3>\n            <ul>\n              <li><b>Einfaches Arbeitszeugnis:</b> Chỉ xác nhận Loại công việc (Art) và Thời gian làm việc (Dauer). Không chứa lời nhận xét.</li>\n              <li><b>Qualifiziertes Arbeitszeugnis:</b> Bao gồm Art + Dauer + Nhận xét Thái độ/Ứng xử (Führung/Verhalten) + Nhận xét Hiệu suất công việc (Leistung).</li>\n            </ul>\n            <h3>2. Thang điểm mã hóa (Zeugnissprache - LS15)</h3>\n            <ul>\n              <li><b>Note 1 (Sehr gut):</b> <i>\"...stets zur vollsten Zufriedenheit erledigt.\"</i></li>\n              <li><b>Note 2 (Gut):</b> <i>\"...stets zur vollen Zufriedenheit erledigt.\"</i></li>\n              <li><b>Note 3 (Befriedigend):</b> <i>\"...zur vollen Zufriedenheit erledigt.\"</i></li>\n              <li><b>Note 4 (Ausreichend):</b> <i>\"...zur Zufriedenheit erledigt.\"</i></li>\n              <li><b>Note 5 (Mangelhaft):</b> <i>\"...im Großen und Ganzen zur Zufriedenheit erledigt.\"</i></li>\n              <li><b>Note 6 (Ungenügend):</b> <i>\"...hat sich bemüht, die Aufgaben zu unserer Zufriedenheit zu erledigen.\"</i> (Có cố gắng nhưng thất bại).</li>\n            </ul>",
+          "desc": "Einfaches vs. qualifiziertes Zeugnis · Grundsätze der Wahrheit & des Wohlwollens · Codierte Noten",
+          "content": "<h2>LS14 &amp; LS15 · Das Arbeitszeugnis &amp; Zeugnissprache</h2>\n<div class=\"hint\">Gewerbeordnung (GewO) § 109 · Einfaches vs. qualifiziertes Zeugnis · Wohlwollensgebot &amp; Zeugniscode</div>\n<h3 class=\"sub\">1. Arten des Arbeitszeugnisses (§ 109 GewO)</h3>\n<ul>\n  <li><b>Einfaches Zeugnis:</b> Enthält lediglich Angaben zur Person, Art der Tätigkeit und genaue Dauer des Beschäftigungsverhältnisses (keine Leistungs- oder Verhaltensbewertung).</li>\n  <li><b>Qualifiziertes Zeugnis:</b> Enthält zusätzlich eine ausführliche Beurteilung von <b>Leistung</b> (Arbeitsbereitschaft, Fachwissen, Arbeitsweise, Erfolge) und <b>Verhalten</b> (Führung gegenüber Vorgesetzten, Kollegen und Gästen).</li>\n</ul>\n<h3 class=\"sub\">2. Zeugnisgrundsätze und Decodierung der Formulierungen</h3>\n<p>Ein Arbeitszeugnis muss der <b>Wahrheit</b> entsprechen, aber gleichzeitig <b>wohlwollend</b> formuliert sein, um das berufliche Fortkommen des Arbeitnehmers nicht unberechtigt zu behindern. Daher entstand der sogenannte „Zeugniscode“:</p>\n<table class=\"tbl\">\n  <thead><tr><th>Note</th><th>Standardformulierung im Zeugniscode</th></tr></thead>\n  <tbody>\n    <tr><td><b>Sehr gut (Note 1)</b></td><td>„… erledigte Aufgaben <b>stets zur vollsten Zufriedenheit</b>.“</td></tr>\n    <tr><td><b>Gut (Note 2)</b></td><td>„… erledigte Aufgaben <b>stets zur vollen Zufriedenheit</b>.“ / „… zur vollsten Zufriedenheit.“</td></tr>\n    <tr><td><b>Befriedigend (Note 3)</b></td><td>„… erledigte Aufgaben <b>zur vollen Zufriedenheit</b>.“</td></tr>\n    <tr><td><b>Ausreichend (Note 4)</b></td><td>„… erledigte Aufgaben <b>zur Zufriedenheit</b>.“</td></tr>\n    <tr><td><b>Mangelhaft (Note 5)</b></td><td>„… hat sich <b>bemüht</b>, die Aufgaben zur Zufriedenheit zu erledigen.“</td></tr>\n  </tbody>\n</table>\n<div class=\"vi\">\n  <b>Tóm tắt Tiếng Việt — Bằng chứng nhận làm việc (Arbeitszeugnis):</b>\n  <ul>\n    <li><b>Einfaches Zeugnis:</b> Chỉ ghi thông tin cá nhân, vị trí làm việc và thời gian làm việc.</li>\n    <li><b>Qualifiziertes Zeugnis:</b> Ghi thêm đánh giá về năng lực làm việc (Leistung) và thái độ ứng xử (Verhalten).</li>\n    <li><b>Nguyên tắc:</b> Trung thực (Wahrheit) nhưng phải thiện chí (Wohlwollen). Do cấm dùng từ ngữ xúc phạm trực tiếp nên các công ty dùng bộ mã ngôn từ (Zeugniscode): từ „stets zur vollsten Zufriedenheit“ (loại 1 xuất sắc) đến „hat sich bemüht“ (loại 5 yếu kém).</li>\n  </ul>\n</div>",
           "qa": [
-            {
-              "q": "Sự khác biệt giữa Einfaches Arbeitszeugnis và Qualifiziertes Arbeitszeugnis là gì?",
-              "a": "Qualifiziertes Zeugnis có thêm phần đánh giá thái độ (Führung) và hiệu suất công việc (Leistung)."
-            },
-            {
-              "q": "Cụm từ mã hóa 'hat sich bemüht...' trong Arbeitszeugnis tương đương với Note mấy?",
-              "a": "Note 6 (Ungenügend - Kém/Thất bại)."
-            },
-            {
-              "q": "[IHK Exam] Nguyên tắc Wohlwollensgebot bắt buộc nhà tuyển dụng phải viết Arbeitszeugnis như thế nào?",
-              "a": "Phải viết tích cực, thiện chí, không dùng từ ngữ xúc phạm làm cản trở sự nghiệp tương lai của NLĐ.",
-              "src": "fk_exel"
-            }
+                    {
+                              "q": "Was unterscheidet ein einfaches Arbeitszeugnis von einem qualifizierten Arbeitszeugnis?",
+                              "qVi": "Sự khác biệt giữa chứng nhận làm việc đơn giản (einfach) và chuyên sâu (qualifiziert) là gì?",
+                              "a": "Das einfache Zeugnis enthält nur Angaben zu Art und Dauer der Tätigkeit; das <b>qualifizierte Zeugnis bewertet zusätzlich Leistung und Führungsverhalten</b> (§ 109 GewO).",
+                              "aVi": "Einfaches Zeugnis chỉ ghi thời gian và chức danh; Qualifiziertes Zeugnis có thêm <b>đánh giá kết quả làm việc và thái độ ứng xử</b>.",
+                              "src": "IHK / Berufsschule"
+                    },
+                    {
+                              "q": "Welcher Schulnote entspricht im Zeugniscode die Formulierung: „Er erledigte seine Aufgaben stets zur vollsten Zufriedenheit“?",
+                              "qVi": "Cụm từ „stets zur vollsten Zufriedenheit“ tương đương điểm số mấy trong hệ thống điểm Đức?",
+                              "a": "Sie entspricht der <b>Note 1 (sehr gut)</b>.",
+                              "aVi": "Tương đương <b>điểm 1 (xuất sắc - sehr gut)</b>.",
+                              "src": "IHK / Berufsschule"
+                    }
           ]
-        }
+}
       ]
     },
     {
       "id": "lf1-kuendigung",
-      "badge": "LF 1 (Năm 1)",
-      "title": "LF 1 (Năm 1) · Sa thải & Bảo vệ Chống Sa thải (LS17–LS20)",
+      "badge": "LF 1",
+      "title": "LF 1 · Kündigungsrecht & Kündigungsschutz (LS17–20)",
       "items": [
-        {
+                {
           "id": "wiko-kuendigung-frist",
           "icon": "",
           "name": "LS17 · Ordentliche Kündigung & Kündigungsfristen",
-          "desc": "§ 622 BGB · Thời hạn báo trước 4 tuần · Điều kiện văn bản Schriftform § 623 BGB",
-          "content": "<h2> LS17 · Ordentliche Kündigung & Kündigungsfristen (§ 622 BGB)</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 17 / LF 01-LS17) · Thôi việc thông thường</div>\n            <h3>1. Thời hạn báo trước khi thôi việc (Kündigungsfristen)</h3>\n            <ul>\n              <li><b>Quy định chung cho NLĐ & Chủ:</b> Báo trước <b>4 tuần</b> tính đến ngày 15 hoặc cuối tháng dương lịch.</li>\n              <li><b>Trong thử việc (Probezeit max 6 tháng):</b> Báo trước <b>2 tuần</b> bất kỳ ngày nào.</li>\n              <li><b>Thời hạn báo của Chủ lao động gia tăng theo thâm niên:</b> 2 năm (1 tháng), 5 năm (2 tháng), 8 năm (3 tháng), 10 năm (4 tháng), 12 năm (5 tháng), 15 năm (6 tháng), 20 năm thâm niên (7 tháng tính đến cuối tháng).</li>\n            </ul>\n            <h3>2. Điều kiện hình thức bắt buộc</h3>\n            <ol>\n              <li><b>Schriftform (§ 623 BGB):</b> Văn bản giấy có chữ ký tay. Email/SMS/Fax đều vô hiệu.</li>\n              <li><b>Zugang:</b> Đã giao đến tay/hòm thư người nhận.</li>\n              <li><b>Anhörung des Betriebsrates (§ 102 BetrVG):</b> Bắt buộc tham vấn Hội đồng công nhân trước khi phát đơn.</li>\n            </ol>",
+          "desc": "§ 622 BGB · Gesetzliche Kündigungsfrist · Schriftform (§ 623 BGB)",
+          "content": "<h2>LS17 · Ordentliche Kündigung &amp; Kündigungsfristen</h2>\n<div class=\"hint\">BGB §§ 622, 623 · Kündigungsfristen, Termine &amp; Formvorschrift</div>\n<h3 class=\"sub\">1. Zwingende Schriftform (§ 623 BGB)</h3>\n<p>Jede Kündigung eines Arbeitsverhältnisses bedarf zwingend der <b>Schriftform mit eigenhändiger Unterschrift</b>. Eine Kündigung per E-Mail, SMS, Fax oder mündlich ist nach § 125 BGB <b>nichtig</b>!</p>\n<h3 class=\"sub\">2. Gesetzliche Kündigungsfristen nach § 622 BGB</h3>\n<ul>\n  <li><b>Grundkündigungsfrist (§ 622 Abs. 1 BGB):</b> <b>4 Wochen zum 15. oder zum Ende eines Kalendermonats</b>. Gilt für Kündigungen durch den Arbeitnehmer und während der ersten 2 Jahre auch für den Arbeitgeber.</li>\n  <li><b>Probezeit im Arbeitsvertrag (§ 622 Abs. 3 BGB):</b> Während einer vereinbarten Probezeit (max. 6 Monate) beträgt die Frist <b>2 Wochen zu jedem Tag</b>.</li>\n  <li><b>Verlängerte Fristen bei Betriebszugehörigkeit (§ 622 Abs. 2 BGB):</b> Bei Kündigung <b>durch den Arbeitgeber</b> verlängert sich die Frist gestaffelt nach Betriebszugehörigkeit (z. B. nach 5 Jahren: 2 Monate zum Monatsende; nach 10 Jahren: 4 Monate zum Monatsende).</li>\n</ul>\n<div class=\"vi\">\n  <b>Tóm tắt Tiếng Việt — Sa thải định kỳ &amp; Thời hạn báo trước (Ordentliche Kündigung):</b>\n  <ul>\n    <li><b>Hình thức:</b> Bắt buộc lập thành <b>văn bản giấy có chữ ký tay (§ 623 BGB)</b>; cấm gửi qua email/tin nhắn.</li>\n    <li><b>Thời hạn báo trước (§ 622 BGB):</b> Tiêu chuẩn là <b>4 tuần báo trước vào ngày 15 hoặc cuối tháng</b>. Trong thử việc (tối đa 6 tháng) thời hạn là 2 tuần vào bất kỳ ngày nào. Người làm việc lâu năm thì thời hạn chủ phải báo trước sẽ tăng dần theo thâm niên.</li>\n  </ul>\n</div>",
           "qa": [
-            {
-              "q": "Thời hạn báo trước khi thôi việc thông thường theo § 622 BGB là bao lâu?",
-              "a": "4 tuần tính đến ngày 15 hoặc cuối tháng dương lịch."
-            },
-            {
-              "q": "Thông báo sa thải qua Email hay Tin nhắn SMS có hiệu lực pháp lý không?",
-              "a": "Vô hiệu hoàn toàn (§ 623 BGB bắt buộc văn bản giấy có chữ ký tay)."
-            },
-            {
-              "q": "[IHK Exam] Nếu người lao động có 10 năm thâm niên tại công ty, chủ lao động muốn sa thải phải báo trước bao lâu?",
-              "a": "Phải báo trước 4 tháng tính đến cuối tháng.",
-              "src": "fk_exel"
-            }
+                    {
+                              "q": "Welche gesetzliche Formvorschrift gilt zwingend für die Kündigung von Arbeitsverhältnissen?",
+                              "qVi": "Hình thức thông báo sa thải hợp pháp theo § 623 BGB bắt buộc phải là gì?",
+                              "a": "Die <b>Schriftform mit eigenhändiger Namensunterschrift</b> auf Papier (§ 623 BGB).",
+                              "aVi": "<b>Văn bản giấy có chữ ký tay (Schriftform)</b> theo Điều 623 BGB.",
+                              "src": "IHK / Berufsschule"
+                    },
+                    {
+                              "q": "Wie lautet die gesetzliche Grundkündigungsfrist für Arbeitnehmer nach § 622 Abs. 1 BGB?",
+                              "qVi": "Thời hạn báo trước tiêu chuẩn theo luật là bao lâu?",
+                              "a": "<b>4 Wochen zum 15. oder zum Ende eines Kalendermonats</b>.",
+                              "aVi": "<b>4 tuần trước ngày 15 hoặc trước ngày cuối tháng</b>.",
+                              "src": "IHK / Berufsschule"
+                    }
           ]
-        },
-        {
+},
+                {
           "id": "wiko-kuendigungsschutz",
           "icon": "",
-          "name": "LS18 & LS19 · Kündigungsschutzgesetz (KSchG) & Tòa lao động",
-          "desc": "Nhóm đối tượng cấm sa thải · 3 lý do sa thải hợp pháp · Klagefrist 3 tuần",
-          "content": "<h2> LS18 & LS19 · Kündigungsschutzgesetz (KSchG) & Klage vor dem Arbeitsgericht</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 18 & 19 / LF 01-LS18, LS19) · Bảo vệ sa thải chung & đặc biệt</div>\n            <h3>1. Besonderer Kündigungsschutz (Cấm sa thải thông thường - LS18)</h3>\n            <ul>\n              <li>Thành viên Hội đồng công nhân (Betriebsrat / JAV).</li>\n              <li>Phụ nữ mang thai & 4 tháng sau sinh (Mutterschutz).</li>\n              <li>Cha mẹ trong thời gian nghỉ nuôi con (Elternzeit).</li>\n              <li>Người khuyết tật nặng (Schwerbehinderte - phải qua Integrationsamt).</li>\n              <li>Học viên học nghề (Azubi) sau thời gian thử việc.</li>\n            </ul>\n            <h3>2. Allgemeiner Kündigungsschutz (§ 1 KSchG) & 3 Lý do Sa thải (LS19)</h3>\n            <ul>\n              <li>Áp dụng khi làm việc > 6 tháng VÀ công ty > 10 nhân viên.</li>\n              <li><b>3 lý do sa thải hợp pháp:</b>\n                <br>1. <i>Personenbedingt:</i> Lý do cá nhân/sức khỏe mãn tính (\"Er/Sie will, kann aber nicht\").\n                <br>2. <i>Verhaltensbedingt:</i> Vi phạm kỷ luật/đi muộn/cãi chỉ đạo (\"Er/Sie kann, will aber nicht\") -> Cần Cảnh cáo (Abmahnung) trước.\n                <br>3. <i>Betriebsbedingt:</i> Cắt giảm vị trí do vận hành -> Bắt buộc chọn lọc xã hội (<span class=\"term\" data-de=\"Sozialauswahl\" data-vi=\"Lựa chọn xã hội\">Sozialauswahl</span>: tuổi, thâm niên, nghĩa vụ nuôi con).\n              </li>\n            </ul>\n            <h3>3. Thời hạn khởi kiện (Klagefrist § 4 KSchG)</h3>\n            <p>Bắt buộc nộp đơn kiện lên Tòa án Lao động (Arbeitsgericht) trong vòng <b>3 tuần</b> kể từ khi nhận đơn sa thải bằng văn bản!</p>",
+          "name": "LS18 & LS19 · Kündigungsschutzgesetz & Arbeitsgericht",
+          "desc": "Allgemeiner Kündigungsschutz (§ 1 KSchG) · Besonderer Kündigungsschutz · 3-Wochen-Klagefrist",
+          "content": "<h2>LS18 &amp; LS19 · Kündigungsschutzgesetz (KSchG) &amp; Arbeitsgericht</h2>\n<div class=\"hint\">Kündigungsschutzgesetz §§ 1 ff. · Sozial ungerechtfertigte Kündigung · 3-Wochen-Frist</div>\n<h3 class=\"sub\">1. Voraussetzungen des allgemeinen Kündigungsschutzes</h3>\n<p>Das Kündigungsschutzgesetz greift, wenn der Betrieb <b>mehr als 10 Arbeitnehmer</b> beschäftigt und das Arbeitsverhältnis <b>länger als 6 Monate ohne Unterbrechung</b> bestanden hat (Wartezeit).</p>\n<h3 class=\"sub\">2. Die drei sozial gerechtfertigten Kündigungsgründe (§ 1 Abs. 2 KSchG)</h3>\n<ul>\n  <li><b>Personenbedingte Kündigung:</b> Gründe in der Person (z. B. dauerhafte schwere Krankheit mit negativer Gesundheitsprognose und betrieblicher Beeinträchtigung). Keine vorherige Abmahnung nötig.</li>\n  <li><b>Verhaltensbedingte Kündigung:</b> Steuerbares Fehlverhalten des Arbeitnehmers (z. B. wiederholte Unpünktlichkeit, Arbeitsverweigerung). Erfordert zwingend eine <b>vorherige einschlägige Abmahnung</b>!</li>\n  <li><b>Betriebsbedingte Kündigung:</b> Dringende betriebliche Erfordernisse (z. B. Schließung einer Abteilung, Auftragsrückgang). Erfordert eine ordnungsgemäße <b>Sozialauswahl</b> nach 4 Kriterien: Lebensalter, Betriebszugehörigkeit, Unterhaltspflichten, Schwerbehinderung.</li>\n</ul>\n<h3 class=\"sub\">3. Besonderer Kündigungsschutz &amp; Klagefrist</h3>\n<p>Absolutes bzw. behördlich genehmigungspflichtiges Kündigungsverbot gilt für: Schwangere (MuSchG), Elternzeitler (BEEG), Schwerbehinderte (SGB IX), Betriebsratsmitglieder, JAV und Azubis nach der Probezeit.</p>\n<p><b>Klagefrist:</b> Will der Arbeitnehmer die Unwirksamkeit geltend machen, muss er <b>innerhalb von 3 Wochen nach Zugang der schriftlichen Kündigung Kündigungsschutzklage beim Arbeitsgericht</b> einreichen (§ 4 KSchG)!</p>\n<div class=\"vi\">\n  <b>Tóm tắt Tiếng Việt — Luật Bảo vệ Chống Sa thải (KSchG) &amp; Tòa Lao động:</b>\n  <ul>\n    <li><b>Điều kiện áp dụng KSchG:</b> Doanh nghiệp có trên 10 nhân viên và người lao động đã làm việc trên 6 tháng.</li>\n    <li><b>3 Lý do sa thải hợp pháp:</b>\n      <ul>\n        <li><b>Personenbedingt (Do yếu tố cá nhân):</b> Ốm đau dài hạn không có khả năng hồi phục.</li>\n        <li><b>Verhaltensbedingt (Do hành vi):</b> Vi phạm kỷ luật, đi muộn nhiều lần (bắt buộc phải có thư cảnh cáo Abmahnung trước đó).</li>\n        <li><b>Betriebsbedingt (Do kinh tế/cơ cấu):</b> Cắt giảm biên chế, bắt buộc phải chọn lọc theo tiêu chí xã hội (tuổi tác, thâm niên, con nhỏ, khuyết tật).</li>\n      </ul>\n    </li>\n    <li><b>Thời hạn khởi kiện:</b> Phải nộp đơn lên Tòa án Lao động (Arbeitsgericht) trong vòng <b>3 tuần kể từ ngày nhận thông báo sa thải</b>; quá 3 tuần thì đơn sa thải tự động có hiệu lực hợp pháp.</li>\n  </ul>\n</div>",
           "qa": [
-            {
-              "q": "Thời hạn bắt buộc để người lao động nộp đơn kiện sa thải lên Tòa án Lao động (Arbeitsgericht) là bao lâu?",
-              "a": "Trong vòng 3 tuần (3-Wochen-Frist nach § 4 KSchG)."
-            },
-            {
-              "q": "Những nhóm đối tượng nào thuộc diện Bảo vệ sa thải đặc biệt (Besonderer Kündigungsschutz)?",
-              "a": "Thành viên Betriebsrat/JAV, phụ nữ mang thai (Mutterschutz), cha mẹ nghỉ Elternzeit, người khuyết tật nặng, Azubi sau thử việc."
-            },
-            {
-              "q": "[IHK Exam] Quy trình Sozialauswahl trong sa thải betriebsbedingt dựa trên các tiêu chí nào?",
-              "a": "Thâm niên công tác, tuổi đời, nghĩa vụ nuôi dưỡng người phụ thuộc và mức độ khuyết tật.",
-              "src": "fk_exel"
-            }
+                    {
+                              "q": "Innerhalb welcher Frist muss nach Erhalt einer Kündigung Klage beim Arbeitsgericht erhoben werden?",
+                              "qVi": "Thời hạn nộp đơn kiện sa thải lên Tòa án Lao động (Arbeitsgericht) là bao lâu?",
+                              "a": "Innerhalb von <b>drei Wochen nach Zugang der schriftlichen Kündigung</b> (§ 4 KSchG).",
+                              "aVi": "Trong vòng <b>3 tuần kể từ khi nhận đơn sa thải bằng văn bản</b> (§ 4 KSchG).",
+                              "src": "IHK / Berufsschule"
+                    },
+                    {
+                              "q": "Welche vier sozialen Kriterien müssen bei einer betriebsbedingten Kündigung in der Sozialauswahl berücksichtigt werden?",
+                              "qVi": "Bốn tiêu chí xã hội nào bắt buộc phải xem xét khi sa thải vì lý do kinh tế (Sozialauswahl)?",
+                              "a": "1. <b>Dauer der Betriebszugehörigkeit</b>, 2. <b>Lebensalter</b>, 3. <b>Unterhaltspflichten</b> (z. B. Kinder/Ehepartner), 4. <b>Schwerbehinderung</b>.",
+                              "aVi": "1. Thâm niên công tác, 2. Độ tuổi, 3. Nghĩa vụ nuôi dưỡng (con cái, vợ/chồng), 4. Tình trạng khuyết tật.",
+                              "src": "IHK / Berufsschule"
+                    }
           ]
-        },
-        {
+},
+                {
           "id": "wiko-kuendigung-fristlos",
           "icon": "",
-          "name": "LS20 · Außerordentliche Kündigung (Fristlos § 626 BGB)",
-          "desc": "Sa thải ngay lập tức · Wichtiger Grund · 2-Wochen-Erklärungsfrist",
-          "content": "<h2> LS20 · Außerordentliche Kündigung (Fristlos § 626 BGB)</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 20 / LF 01-LS20) · Sa thải bất thường aus wichtigem Grund</div>\n            <h3>1. Điều kiện cốt lõi (Wichtiger Grund)</h3>\n            <ul>\n              <li>Bắt buộc phải có lý do đặc biệt nghiêm trọng khiến hai bên không thể tiếp tục hợp đồng dù chỉ 1 ngày.</li>\n              <li><b>Lý do từ phía Chủ:</b> Trộm cắp (Diebstahl), hành hung/bạo lực (Tätlichkeiten), cố ý bỏ việc (Arbeitsverweigerung), giả ốm (erschlichene Krankmeldung), gian lận giờ làm.</li>\n              <li><b>Lý do từ phía NLĐ:</b> Nợ lương kéo dài (Nichtzahlung des Lohns), quấy rối tình dục (sexuelle Belästigung), ép làm việc phạm pháp.</li>\n            </ul>\n            <h3>2. Điều kiện hình thức đặc thù</h3>\n            <ol>\n              <li><b>2-Wochen-Frist (§ 626 Abs. 2 BGB):</b> Đơn sa thải phải được phát trong vòng <b>2 tuần kể từ khi phát hiện vi phạm</b>.</li>\n              <li><b>Schriftform (§ 623 BGB):</b> Bắt buộc văn bản giấy chữ ký tay.</li>\n              <li><b>Anhörung des Betriebsrates:</b> Phải tham vấn Hội đồng công nhân.</li>\n            </ol>",
+          "name": "LS20 · Außerordentliche (fristlose) Kündigung",
+          "desc": "§ 626 BGB · Wichtiger Grund · 2-Wochen-Erklärungsfrist · Abmahnung",
+          "content": "<h2>LS20 · Außerordentliche (fristlose) Kündigung (§ 626 BGB)</h2>\n<div class=\"hint\">BGB § 626 · Fristlose Kündigung aus wichtigem Grund · Ausschlussfrist von 2 Wochen</div>\n<h3 class=\"sub\">1. Voraussetzungen nach § 626 Abs. 1 BGB</h3>\n<p>Eine außerordentliche Kündigung beendet das Arbeitsverhältnis <b>ohne Einhaltung einer Kündigungsfrist</b>. Sie ist nur wirksam, wenn ein <b>wichtiger Grund</b> vorliegt, durch den dem Kündigenden die Fortsetzung des Arbeitsverhältnisses selbst bis zum Ablauf der regulären Kündigungsfrist unzumutbar ist.</p>\n<p><b>Typische wichtige Gründe:</b> Diebstahl oder Unterschlagung am Arbeitsplatz, tätliche Angriffe oder schwere Beleidigungen, beharrliche Arbeitsverweigerung, schwerer Spesen- oder Arbeitszeitbetrug.</p>\n<h3 class=\"sub\">2. Die 2-Wochen-Ausschlussfrist (§ 626 Abs. 2 BGB)</h3>\n<p>Die Kündigung kann nur <b>innerhalb von zwei Wochen</b> erfolgen, nachdem der Kündigungsberechtigte von den maßgebenden Tatsachen für den Kündigungsgrund Kenntnis erlangt hat. Verstreicht diese Frist, ist eine fristlose Kündigung aus diesem Vorfall unwirksam.</p>\n<div class=\"vi\">\n  <b>Tóm tắt Tiếng Việt — Sa thải ngay lập tức / Không báo trước (Fristlose Kündigung):</b>\n  <ul>\n    <li>Áp dụng khi có <b>lý do đặc biệt nghiêm trọng (Wichtiger Grund)</b> khiến không thể tiếp tục làm việc cùng nhau dù chỉ một ngày (như trộm cắp, đánh nhau, gian lận giờ làm việc).</li>\n    <li><b>Thời hạn 2 tuần (§ 626 Abs. 2 BGB):</b> Kể từ thời điểm phát hiện ra hành vi vi phạm, công ty chỉ có tối đa 2 tuần để ra quyết định sa thải; quá 2 tuần thì mất quyền sa thải không báo trước vì lý do đó.</li>\n  </ul>\n</div>",
           "qa": [
-            {
-              "q": "Thời hạn tối đa để chủ lao động đưa ra quyết định sa thải fristlos kể từ khi phát hiện hành vi vi phạm là bao lâu?",
-              "a": "Trong vòng 2 tuần (2-Wochen-Frist § 626 Abs. 2 BGB)."
-            },
-            {
-              "q": "Hành vi trộm cắp tài sản công ty hay giả ốm đi làm việc khác sẽ dẫn đến hình thức sa thải nào?",
-              "a": "Sa thải bất thường ngay lập tức (Außerordentliche fristlose Kündigung aus wichtigem Grund)."
-            },
-            {
-              "q": "[IHK Exam] Nếu chủ lao động không tham vấn Betriebsrat trước khi sa thải fristlos thì quyết định sa thải có hiệu lực không?",
-              "a": "Hoàn toàn vô hiệu (unwirksam nach § 102 BetrVG).",
-              "src": "fk_exel"
-            }
+                    {
+                              "q": "Innerhalb welcher Frist muss eine außerordentliche (fristlose) Kündigung nach Bekanntwerden des Kündigungsgrundes ausgesprochen werden?",
+                              "qVi": "Thời hạn đưa ra thông báo sa thải không báo trước là bao lâu kể từ khi phát hiện sai phạm?",
+                              "a": "Innerhalb von <b>zwei Wochen</b> ab Kenntnis der maßgebenden Tatsachen (§ 626 Abs. 2 BGB).",
+                              "aVi": "Trong vòng <b>2 tuần</b> kể từ khi người có thẩm quyền biết được sự việc (§ 626 BGB).",
+                              "src": "IHK / Berufsschule"
+                    }
           ]
-        }
+}
       ]
     },
     {
       "id": "lf1-betriebsrat-tarif",
-      "badge": "LF 1 (Năm 1)",
-      "title": "LF 1 (Năm 1) · Betriebsrat, JAV & Tarifrecht (LS21–LS34)",
+      "badge": "LF 1",
+      "title": "LF 1 · Betriebsrat, JAV & Tarifvertragsrecht (LS21–34)",
       "items": [
-        {
+                {
           "id": "wiko-betriebsrat-mitbestimmung",
           "icon": "",
           "name": "LS21, LS22 & LS23 · Betriebsrat & Mitbestimmung",
-          "desc": "BetrVG · 4 Stufen der Mitbestimmung (Information, Anhörung, Echte Mitbestimmung)",
-          "content": "<h2> LS21, LS22 & LS23 · Betriebsverfassungsgesetz & Mitbestimmung des Betriebsrates</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 21, 22, 23 / LF 01-LS21, LS22, LS23)</div>\n            <h3>1. Điều kiện thành lập Hội đồng công nhân (Betriebsrat)</h3>\n            <p>Được thành lập tại doanh nghiệp có ít nhất <b>5 nhân viên thường xuyên có quyền bầu cử</b>.</p>\n            <h3>2. 4 Cấp độ Mitbestimmung của Betriebsrat (LS22 & LS23)</h3>\n            <ol>\n              <li><b>Reine Information:</b> Doanh nghiệp thông tin kịp thời (quy hoạch nhân sự, kinh tế).</li>\n              <li><b>Mitwirkung / Anhörung:</b> Tham vấn lắng nghe ý kiến (bắt buộc trước mỗi quyết định sa thải Kündigung).</li>\n              <li><b>Zustimmungsverweigerung:</b> Từ chối chốt nhân sự (tuyển dụng Einstellung, chuyển công tác Versetzung).</li>\n              <li><b>Echte Mitbestimmung:</b> Bắt buộc đồng quyết định 2 bên mới có hiệu lực (lịch làm việc Dienstplan, lịch nghỉ phép Urlaubsplan, lắp camera giám sát).</li>\n            </ol>",
+          "desc": "Betriebsverfassungsgesetz (BetrVG) · 4 Mitbestimmungsstufen · Aufgaben & Rechte",
+          "content": "<h2>LS21, LS22 &amp; LS23 · Betriebsrat &amp; Mitbestimmung</h2>\n<div class=\"hint\">Betriebsverfassungsgesetz (BetrVG) · 4 Stufen der Beteiligungsrechte · Betriebsvereinbarung</div>\n<h3 class=\"sub\">1. Wahl und Organisation (§ 1 BetrVG)</h3>\n<p>In Betrieben mit in der Regel <b>mindestens 5 ständigen wahlberechtigten Arbeitnehmern</b> (davon mindestens 3 wählbar) kann ein Betriebsrat gewählt werden. Die Amtszeit beträgt <b>4 Jahre</b>.</p>\n<h3 class=\"sub\">2. Die 4 Stufen der Mitbestimmung</h3>\n<table class=\"tbl\">\n  <thead><tr><th>Stufe</th><th>Beteiligungsrecht</th><th>Typische Praxisbeispiele</th></tr></thead>\n  <tbody>\n    <tr><td><b>1. Information</b></td><td>Recht auf rechtzeitige und umfassende Unterrichtung.</td><td>Wirtschaftliche Lage des Betriebs, Personalplanung, geplante Umbauten.</td></tr>\n    <tr><td><b>2. Anhörung &amp; Beratung</b></td><td>Arbeitgeber muss den Betriebsrat vor Maßnahmen anhören und beraten.</td><td>Anhörung vor <b>jeder Kündigung (§ 102 BetrVG)</b>; eine Kündigung ohne vorherige Anhörung ist nichtig!</td></tr>\n    <tr><td><b>3. Mitwirkung / Widerspruch</b></td><td>Betriebsrat kann unter gesetzlichen Gründen die Zustimmung verweigern.</td><td>Personelle Einzelmaßnahmen: Einstellungen, Ein- und Umgruppierungen, Versetzungen (§ 99 BetrVG).</td></tr>\n    <tr><td><b>4. Echte Mitbestimmung</b></td><td>Maßnahme ist ohne Einigung mit dem Betriebsrat unwirksam; Einigungsstelle entscheidet bei Konflikten.</td><td><b>Arbeitszeiten, Schicht- und Dienstpläne, Überstunden</b> (§ 87 BetrVG), Urlaubsregelungen, Gesundheitsschutz, Zeiterfassung.</td></tr>\n  </tbody>\n</table>\n<div class=\"vi\">\n  <b>Tóm tắt Tiếng Việt — Hội đồng Nhân viên &amp; Quyền Đồng quyết định (Betriebsrat):</b>\n  <ul>\n    <li>Thành lập tại doanh nghiệp có từ 5 nhân viên đủ điều kiện bầu cử trở lên; nhiệm kỳ 4 năm.</li>\n    <li><b>4 Cấp độ tham gia:</b>\n      <ul>\n        <li>1. Thông tin (Information): Được biết tình hình kinh doanh, quy hoạch nhân sự.</li>\n        <li>2. Lắng nghe ý kiến (Anhörung): Bắt buộc trước mỗi quyết định sa thải nhân viên (§ 102 BetrVG).</li>\n        <li>3. Phản đối/Đồng thuận (Mitwirkung): Tuyển dụng mới, thuyên chuyển công tác.</li>\n        <li>4. <b>Đồng quyết định bắt buộc (Echte Mitbestimmung § 87 BetrVG):</b> Lịch làm việc (Dienstplan), chia ca, tăng ca, kế hoạch nghỉ phép. Không có chữ ký của Betriebsrat thì quy định đó không có hiệu lực.</li>\n      </ul>\n    </li>\n  </ul>\n</div>",
           "qa": [
-            {
-              "q": "Doanh nghiệp có ít nhất bao nhiêu nhân viên thì có quyền thành lập Betriebsrat?",
-              "a": "Ít nhất 5 nhân viên thường xuyên có quyền bầu cử."
-            },
-            {
-              "q": "Quy định xếp lịch làm việc (Dienstplan) thuộc cấp độ Mitbestimmung nào của Betriebsrat?",
-              "a": "Echte Mitbestimmung (Đồng quyết định bắt buộc)."
-            },
-            {
-              "q": "[IHK Exam] Nếu chủ doanh nghiệp đơn phương thông báo sa thải nhân viên mà không Anhörung Betriebsrat trước thì sao?",
-              "a": "Quyết định sa thải hoàn toàn vô hiệu theo § 102 BetrVG.",
-              "src": "fk_exel"
-            }
+                    {
+                              "q": "Welche Mitbestimmungsstufe des Betriebsrats gilt nach § 87 BetrVG für die Festlegung von Dienstplänen und Überstunden?",
+                              "qVi": "Quy định xếp lịch làm việc (Dienstplan) và tăng ca thuộc cấp độ Mitbestimmung nào của Betriebsrat?",
+                              "a": "Die <b>echte Mitbestimmung</b> (§ 87 Abs. 1 Nr. 2 BetrVG): Ohne Zustimmung des Betriebsrats darf der Arbeitgeber die Maßnahme nicht anordnen.",
+                              "aVi": "<b>Echte Mitbestimmung (Đồng quyết định bắt buộc)</b>: Chủ không được tự ý ban hành nếu Betriebsrat chưa đồng ý.",
+                              "src": "IHK / Berufsschule"
+                    },
+                    {
+                              "q": "Was passiert mit einer Kündigung, wenn der Arbeitgeber den Betriebsrat vor Ausspruch der Kündigung nicht angehört hat?",
+                              "qVi": "Quyết định sa thải có giá trị pháp lý không nếu chủ chưa hỏi ý kiến của Betriebsrat?",
+                              "a": "Die Kündigung ist <b>nach § 102 Abs. 1 Satz 3 BetrVG unwirksam (nichtig)</b>.",
+                              "aVi": "Quyết định sa thải đó bị <b>vô hiệu hoàn toàn (nichtig)</b> theo § 102 BetrVG.",
+                              "src": "IHK / Berufsschule"
+                    }
           ]
-        },
-        {
+},
+                {
           "id": "wiko-jav",
           "icon": "",
           "name": "LS24 · Jugend- und Auszubildendenvertretung (JAV)",
-          "desc": "Đại diện thanh thiếu niên < 18t & Azubi < 25t · Phối hợp với Betriebsrat",
-          "content": "<h2> LS24 · Jugend- und Auszubildendenvertretung (JAV)</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 24 / LF 01-LS24) · Đại diện Azubi & Thanh thiếu niên</div>\n            <h3>1. Điều kiện thành lập JAV</h3>\n            <p>Tại doanh nghiệp có ít nhất <b>5 nhân viên dưới 18 tuổi</b> hoặc <b>học viên học nghề (Azubi) dưới 25 tuổi</b>, và đã có Betriebsrat.</p>\n            <h3>2. Nhiệm vụ & Quyền hạn của JAV</h3>\n            <ul>\n              <li>Đại diện quyền lợi học tập, làm việc và an toàn cho Azubi.</li>\n              <li>Đề xuất các biện pháp cải thiện điều kiện đào tạo lên Betriebsrat.</li>\n              <li>Có quyền cử đại diện tham dự các phiên họp của Betriebsrat khi bàn thảo vấn đề liên quan đến Azubi.</li>\n            </ul>",
+          "desc": "Interessenvertretung der Jugendlichen & Azubis · Aufgaben nach BetrVG",
+          "content": "<h2>LS24 · Jugend- und Auszubildendenvertretung (JAV)</h2>\n<div class=\"hint\">Betriebsverfassungsgesetz §§ 60 ff. · Schutzrechte junger Beschäftigter · Übernahmeanspruch</div>\n<h3 class=\"sub\">1. Wahl und Voraussetzungen</h3>\n<p>Eine JAV wird in Betrieben mit Betriebsrat gewählt, die mindestens <b>5 Jugendliche unter 18 Jahren</b> oder <b>Auszubildende unter 25 Jahren</b> beschäftigen. Wahlberechtigt sind alle Beschäftigten unter 18 sowie alle Azubis unter 25. Wählbar sind alle Beschäftigten unter 25 Jahren.</p>\n<h3 class=\"sub\">2. Aufgaben und Übernahmeanspruch (§ 78a BetrVG)</h3>\n<ul>\n  <li>Wahrnehmung der Belange von Jugendlichen und Azubis gegenüber dem Betriebsrat.</li>\n  <li>Überwachung der Einhaltung von Schutzgesetzen (JArbSchG, BBiG, Unfallverhütung).</li>\n  <li>Teilnahme an Betriebsratssitzungen mit vollem Stimmrecht bei Angelegenheiten, die Jugendliche/Azubis betreffen.</li>\n  <li><b>Schutz bei Ausbildungsende (§ 78a BetrVG):</b> JAV-Mitglieder haben das Recht, innerhalb der letzten 3 Monate der Ausbildung die Weiterbeschäftigung in einem unbefristeten Arbeitsverhältnis schriftlich zu verlangen.</li>\n</ul>\n<div class=\"vi\">\n  <b>Tóm tắt Tiếng Việt — Ban đại diện thanh niên &amp; học nghề (JAV):</b>\n  <ul>\n    <li>Bảo vệ quyền lợi cho thanh thiếu niên &lt; 18 tuổi và học viên học nghề &lt; 25 tuổi.</li>\n    <li>Giám sát thực thi luật bảo hộ lao động và luật BBiG; dự họp Hội đồng nhân viên.</li>\n    <li>Thành viên JAV được luật bảo vệ đặc biệt: có quyền yêu cầu được nhận làm nhân viên chính thức không xác định thời hạn sau khi học xong (§ 78a BetrVG).</li>\n  </ul>\n</div>",
           "qa": [
-            {
-              "q": "JAV đại diện cho nhóm đối tượng nào trong doanh nghiệp?",
-              "a": "Nhân viên dưới 18 tuổi và học viên học nghề (Azubi) dưới 25 tuổi."
-            },
-            {
-              "q": "[IHK Exam] JAV có thể hoạt động độc lập không cần Betriebsrat không?",
-              "a": "Không, JAV hoạt động phối hợp chặt chẽ và gửi đề xuất lên Betriebsrat.",
-              "src": "fk_exel"
-            }
+                    {
+                              "q": "Wer ist für die Jugend- und Auszubildendenvertretung (JAV) wahlberechtigt?",
+                              "qVi": "Những ai có quyền đi bầu cử Ban đại diện JAV?",
+                              "a": "Alle Arbeitnehmer <b>unter 18 Jahren</b> sowie alle <b>Auszubildenden unter 25 Jahren</b> (§ 60 BetrVG).",
+                              "aVi": "Tất cả nhân viên <b>dưới 18 tuổi</b> và tất cả học viên học nghề <b>dưới 25 tuổi</b>.",
+                              "src": "IHK / Berufsschule"
+                    }
           ]
-        },
-        {
+},
+                {
           "id": "wiko-tarifvertrag",
           "icon": "",
-          "name": "LS25, LS26, LS27, LS28 & LS31 · Luật Thỏa ước tập thể",
-          "desc": "Manteltarif vs. Lohntarif · 4 Grundsätze · Günstigkeitsprinzip § 4 Abs. 3 TVG",
-          "content": "<h2> LS25, LS26, LS27, LS28 & LS31 · Tarifvertrag & Tarifautonomie</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 25, 26, 27, 28, 31 / LF 01-LS25 đến LS31)</div>\n            <h3>1. Đơn vị ký kết & Tarifautonomie (LS25)</h3>\n            <ul>\n              <li>Ký kết giữa <b>Công đoàn (Gewerkschaft - z.B. NGG)</b> và <b>Hiệp hội chủ (Arbeitgeberverband - z.B. DEHOGA)</b>.</li>\n              <li><span class=\"term\" data-de=\"Tarifautonomie\" data-vi=\"Tự chủ thỏa ước\">Tarifautonomie</span> (Art. 9 Abs. 3 GG): Quyền tự do đàm phán thù lao & điều kiện làm việc <b>không có sự can thiệp của Nhà nước</b>.</li>\n            </ul>\n            <h3>2. Phân loại Tarifvertrag (LS26)</h3>\n            <ul>\n              <li><b>Manteltarifvertrag (Thỏa ước khung):</b> Điều kiện làm việc chung (giờ làm, phép năm, thời hạn sa thải). Hiệu lực dài hạn (nhiều năm).</li>\n              <li><b>Lohntarifvertrag (Thỏa ước lương):</b> Chi tiết mức lương từng bậc (Lohngruppen). Hiệu lực ngắn hạn (1-2 năm).</li>\n            </ul>\n            <h3>3. 4 Nguyên tắc vàng của Luật Thỏa ước (LS27, LS31)</h3>\n            <ol>\n              <li><i>Tarifautonomie:</i> Tự do đàm phán.</li>\n              <li><i>Unabdingbarkeit:</i> Mức chuẩn thỏa ước là tiêu chuẩn tối thiểu bắt buộc.</li>\n              <li><i>Günstigkeitsprinzip (§ 4 Abs. 3 TVG):</i> HĐLĐ cá nhân chỉ được khác Tarif nếu <b>có lợi hơn cho NLĐ</b>.</li>\n              <li><i>Friedenspflicht:</i> Nghĩa vụ hòa bình (cấm đình công khi thỏa ước còn hiệu lực).</li>\n            </ol>",
+          "name": "LS25–28 & LS31 · Tarifvertragsrecht & Tarifautonomie",
+          "desc": "Mantel- vs. Entgelttarifvertrag · Friedenspflicht · Günstigkeitsprinzip (§ 4 TVG)",
+          "content": "<h2>LS25–28 &amp; LS31 · Tarifvertragsrecht &amp; Tarifautonomie</h2>\n<div class=\"hint\">Tarifvertragsgesetz (TVG) · Grundgesetz Art. 9 Abs. 3 (Tarifautonomie) · Günstigkeitsprinzip</div>\n<h3 class=\"sub\">1. Tarifvertragsparteien &amp; Tarifautonomie</h3>\n<p>Tarifverträge werden zwischen <b>Gewerkschaften</b> (z. B. NGG im Gastgewerbe) und <b>Arbeitgeberverbänden</b> (z. B. DEHOGA) oder einzelnen Arbeitgebern ausgehandelt. Nach <b>Art. 9 Abs. 3 GG (Koalitionsfreiheit / Tarifautonomie)</b> regeln die Tarifpartner Löhne und Arbeitsbedingungen eigenverantwortlich ohne Einmischung des Staates.</p>\n<h3 class=\"sub\">2. Arten von Tarifverträgen</h3>\n<ul>\n  <li><b>Manteltarifvertrag (MTV):</b> Regelt die allgemeinen Rahmenbedingungen des Arbeitsverhältnisses (wöchentliche Arbeitszeit, Urlaubstage, Kündigungsfristen, Zuschläge für Nacht- und Feiertagsarbeit). Laufzeit: meist 2 bis 5 Jahre.</li>\n  <li><b>Entgelt-/Lohntarifvertrag:</b> Regelt die konkrete Bezahlung in verschiedenen Entgeltgruppen sowie die Ausbildungsvergütungen. Laufzeit: meist 12 Monate.</li>\n</ul>\n<h3 class=\"sub\">3. Wichtige Tarifgrundsätze</h3>\n<ul>\n  <li><b>Friedenspflicht:</b> Während der Laufzeit eines Tarifvertrags darf über die geregelten Punkte nicht gestreikt werden.</li>\n  <li><b>Günstigkeitsprinzip (§ 4 Abs. 3 TVG):</b> Einzelarbeitsverträge dürfen von Tarifverträgen nur dann abweichen, wenn die Regelung für den Arbeitnehmer <b>günstiger</b> ist (z. B. mehr Urlaub, höherer Lohn).</li>\n</ul>\n<div class=\"vi\">\n  <b>Tóm tắt Tiếng Việt — Luật Thỏa ước Lao động Tập thể (Tarifvertrag):</b>\n  <ul>\n    <li>Ký giữa Công đoàn (NGG) và Hiệp hội giới chủ (DEHOGA). Nhà nước không can thiệp vào đàm phán lương (Tarifautonomie - Điều 9 GG).</li>\n    <li><b>Manteltarifvertrag (Thỏa ước khung):</b> Quy định ngày phép, giờ làm việc tuần, phụ cấp ca đêm, thời hạn báo trước sa thải (hiệu lực 2–5 năm).</li>\n    <li><b>Entgelttarifvertrag (Thỏa ước tiền lương):</b> Quy định mức lương theo bậc và trợ cấp học nghề (hiệu lực 1 năm).</li>\n    <li><b>Günstigkeitsprinzip (§ 4 Abs. 3 TVG):</b> Hợp đồng cá nhân chỉ được khác thỏa ước tập thể khi có lợi hơn cho người lao động.</li>\n  </ul>\n</div>",
           "qa": [
-            {
-              "q": "Nguyên tắc Günstigkeitsprinzip quy định điều gì khi so sánh HĐLĐ cá nhân và Thỏa ước tập thể?",
-              "a": "HĐLĐ cá nhân được phép khác Thỏa ước tập thể CHỈ KHÍ điều khoản đó có lợi hơn cho người lao động."
-            },
-            {
-              "q": "Công đoàn đại diện cho ngành Gastronomie & Hotellerie tại Đức là gì?",
-              "a": "NGG (Gewerkschaft Nahrung-Genuss-Gaststätten)."
-            },
-            {
-              "q": "Hiệp hội chủ lao động ngành Nhà hàng - Khách sạn tại Đức là gì?",
-              "a": "DEHOGA (Deutscher Hotel- und Gaststättenverband)."
-            },
-            {
-              "q": "[IHK Exam] Sự khác biệt giữa Manteltarifvertrag và Lohntarifvertrag là gì?",
-              "a": "Manteltarif quy định điều kiện làm việc chung (dài hạn); Lohntarif quy định bảng lương chi tiết (ngắn hạn 1-2 năm).",
-              "src": "fk_exel"
-            }
+                    {
+                              "q": "Was besagt das Günstigkeitsprinzip im Tarifvertragsrecht (§ 4 Abs. 3 TVG)?",
+                              "qVi": "Nguyên tắc Günstigkeitsprinzip (§ 4 Abs. 3 TVG) cho phép điều gì?",
+                              "a": "Abweichungen vom Tarifvertrag im Einzelarbeitsvertrag sind <b>nur zulässig, wenn sie für den Arbeitnehmer günstiger sind</b> (z. B. höherer Lohn oder mehr Urlaubstage).",
+                              "aVi": "Hợp đồng cá nhân <b>chỉ được khác thỏa ước tập thể khi có lợi hơn cho người lao động</b>.",
+                              "src": "IHK / Berufsschule"
+                    },
+                    {
+                              "q": "Worin unterscheiden sich Manteltarifvertrag und Entgelttarifvertrag?",
+                              "qVi": "Thỏa ước khung (Manteltarif) và Thỏa ước tiền lương (Entgelttarif) khác nhau thế nào?",
+                              "a": "Der <b>Manteltarifvertrag</b> regelt allgemeine Arbeitsbedingungen (Arbeitszeit, Urlaub, Kündigungsfristen, Mehrarbeitszuschläge); der <b>Entgelttarifvertrag</b> legt die Höhe der Löhne, Gehälter und Ausbildungsvergütungen fest.",
+                              "aVi": "<b>Manteltarif</b> quy định khung điều kiện làm việc (giờ làm, phép, phụ cấp); <b>Entgelttarif</b> quy định mức tiền lương và trợ cấp cụ thể.",
+                              "src": "IHK / Berufsschule"
+                    }
           ]
-        },
-        {
+},
+                {
           "id": "wiko-arbeitskampf",
           "icon": "",
-          "name": "LS29, LS30, LS32, LS33 & LS34 · Đấu tranh lao động",
-          "desc": "NGG vs. DEHOGA · Schlichtung · Urabstimmung (>= 75%) · Streik vs. Aussperrung · Wilder Streik",
-          "content": "<h2> LS29, LS30, LS32, LS33 & LS34 · Schlichtung, Streik & Arbeitskampf</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 29, 30, 32, 33, 34 / LF 01-LS29 đến LS34)</div>\n            <h3>1. Quy trình giải quyết bế tắc đàm phán</h3>\n            <p>Bế tắc (Scheitern) → Hòa giải (Schlichtung) → Bỏ phiếu trưng cầu (Urabstimmung >= 75%) → Đình công (Streik) / Bãi công (Aussperrung) → Thỏa thuận mới.</p>\n            <h3>2. Chi tiết các hình thức Đấu tranh lao động</h3>\n            <ul>\n              <li><b>Schlichtung (Hòa giải):</b> Trọng tài độc lập đứng ra tìm giải pháp trung hòa.</li>\n              <li><b>Urabstimmung (Bỏ phiếu):</b> Cần ít nhất <b>75% đoàn viên công đoàn</b> bỏ phiếu đồng ý để khởi động đình công.</li>\n              <li><b>Streik (Đình công):</b> NLĐ ngừng làm việc tập thể do Công đoàn tổ chức. Công đoàn chi trả tiền hỗ trợ (<span class=\"term\" data-de=\"Streikgeld\" data-vi=\"Tiền hỗ trợ đình công\">Streikgeld</span>).</li>\n              <li><b>Aussperrung (Bãi công / Khóa cửa):</b> Biện pháp đáp trả của Chủ (tạm thời không cho NLĐ vào làm và không trả lương).</li>\n              <li><span class=\"term\" data-de=\"Wilder Streik\" data-vi=\"Đình công tự phát\">Wilder Streik</span>: Đình công không do Công đoàn tổ chức  <b>TRÁI PHÁP LUẬT</b> -> NLĐ có thể bị sa thải fristlos ngay lập tức!</li>\n            </ul>",
+          "name": "LS29–34 · Arbeitskampf & Streikrecht",
+          "desc": "Ablauf der Tarifverhandlung · Schlichtung · Urabstimmung (75 %) · Streik vs. Aussperrung",
+          "content": "<h2>LS29–34 · Arbeitskampf &amp; Streikrecht</h2>\n<div class=\"hint\">Art. 9 Abs. 3 GG · Phasen des Tarifkonflikts · Friedenspflicht, Warnstreik &amp; Urabstimmung</div>\n<h3 class=\"sub\">1. Ablauf einer Tarifauseinandersetzung</h3>\n<ol>\n  <li><b>Kündigung des Tarifvertrags</b> durch die Gewerkschaft und Aufstellung von Forderungen.</li>\n  <li><b>Tarifverhandlungen:</b> Währenddessen gilt die Friedenspflicht. Scheitern die Verhandlungen, endet die Friedenspflicht.</li>\n  <li><b>Warnstreiks:</b> Kurze befristete Arbeitsniederlegungen zur Druckerhöhung ohne Urabstimmung zulässig.</li>\n  <li><b>Schlichtungsverfahren:</b> Versuch einer Einigung durch einen unabhängigen Schlichter.</li>\n  <li><b>1. Urabstimmung:</b> Gewerkschaftsmitglieder stimmen ab; mindestens <b>75 % Zustimmung</b> für den Streik nötig.</li>\n  <li><b>Streik (Hauptarbeitskampf):</b> Planmäßige Arbeitsniederlegung; Arbeitgeber können mit <b>Aussperrung</b> reagieren. Streikende erhalten kein Gehalt, aber <b>Streikgeld</b> von der Gewerkschaft.</li>\n  <li><b>2. Urabstimmung:</b> Mindestens <b>25 % Zustimmung</b> genügen zur Annahme des neuen Verhandlungsergebnisses.</li>\n</ol>\n<h3 class=\"sub\">2. Wilder Streik</h3>\n<p>Ein Streik ohne Aufruf und Organisation durch eine Gewerkschaft ist ein <b>wilder Streik</b>. Er ist <b>rechtswidrig</b> und berechtigt den Arbeitgeber zur fristlosen Kündigung der Beteiligten!</p>\n<div class=\"vi\">\n  <b>Tóm tắt Tiếng Việt — Đấu tranh lao động &amp; Quyền đình công (Arbeitskampf):</b>\n  <ul>\n    <li>Đình công chỉ hợp pháp khi do <b>Công đoàn chính thức phát động</b> sau khi đàm phán thất bại và bỏ phiếu Urabstimmung đạt trên <b>75% đồng thuận</b>.</li>\n    <li>Đình công tự phát không qua công đoàn (Wilder Streik) là <b>bất hợp pháp</b> và có thể bị sa thải ngay lập tức.</li>\n    <li>Trong lúc đình công, công ty không trả lương nhưng thành viên công đoàn nhận tiền hỗ trợ đình công (Streikgeld). Giới chủ có thể đáp trả bằng đóng cửa xưởng không cho làm việc (Aussperrung).</li>\n  </ul>\n</div>",
           "qa": [
-            {
-              "q": "Cần bao nhiêu % đoàn viên công đoàn bỏ phiếu đồng ý trong cuộc Urabstimmung để khởi động đình công?",
-              "a": "Ít nhất 75% số đoàn viên bỏ phiếu đồng ý."
-            },
-            {
-              "q": "Đình công tự phát (Wilder Streik) không do Công đoàn tổ chức có hợp pháp không?",
-              "a": "Trái pháp luật hoàn toàn, người tham gia có thể bị sa thải ngay lập tức (fristlos)."
-            },
-            {
-              "q": "[IHK Exam] Tiền trả thay lương cho công nhân trong thời gian đình công hợp pháp do ai chi trả?",
-              "a": "Do Công đoàn (Gewerkschaft) chi trả dưới dạng Streikgeld.",
-              "src": "fk_exel"
-            }
+                    {
+                              "q": "Wie viel Prozent der Gewerkschaftsmitglieder müssen in der 1. Urabstimmung für einen Streik stimmen?",
+                              "qVi": "Trong cuộc bỏ phiếu Urabstimmung lần 1, cần bao nhiêu % phiếu đồng ý để được đình công hợp pháp?",
+                              "a": "Mindestens <b>75 % der wahlberechtigten Gewerkschaftsmitglieder</b> müssen für den Streik stimmen.",
+                              "aVi": "Tối thiểu <b>75% số thành viên công đoàn</b> tham gia bỏ phiếu đồng ý.",
+                              "src": "IHK / Berufsschule"
+                    },
+                    {
+                              "q": "Was versteht man unter einem 'wilden Streik' und welche Folgen hat er?",
+                              "qVi": "Đình công tự phát (Wilder Streik) là gì và có hậu quả gì?",
+                              "a": "Ein Streik ohne Gewerkschaftsaufruf. Er ist <b>rechtswidrig</b> und kann zu Schadenersatzforderungen und <b>fristlosen Kündigungen</b> führen.",
+                              "aVi": "Là cuộc đình công do người lao động tự ý tổ chức không thông qua công đoàn, là hành vi <b>bất hợp pháp</b> và có thể bị sa thải ngay lập tức.",
+                              "src": "IHK / Berufsschule"
+                    }
           ]
-        }
+}
       ]
     },
     {
       "id": "lf1-lohn-steuern",
-      "badge": "LF 1 (Năm 1)",
-      "title": "LF 1 (Năm 1) · Lohnabrechnung, BHXH & Thuế (LS35–LS48)",
+      "badge": "LF 1",
+      "title": "LF 1 · Lohnabrechnung, Sozialversicherung & Steuern (LS35–48)",
       "items": [
-        {
+                {
           "id": "wiko-lohnabrechnung-sozial",
           "icon": "",
-          "name": "LS35–LS41 & LS43 · Lohnabrechnung & Sozialversicherung",
-          "desc": "5 Säulen der Sozialversicherung · Tỷ lệ đóng 50/50 · Pflege 2025 · Brutto zu Netto (Leo Scienca & Frau Wolters)",
-          "content": "<h2> LS35–LS41 & LS43 · Lohnabrechnung & 5 Säulen der Sozialversicherung</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 35–41, 43 / LF 01-LS35 đến LS43) · Tỷ lệ đóng BHXH 50/50</div>\n            <h3>1. 5 Trụ cột Bảo hiểm Xã hội (Sozialversicherung)</h3>\n            <ol>\n              <li><b>Krankenversicherung (BH Y tế):</b> Chi trả khám chữa bệnh.</li>\n              <li><b>Pflegeversicherung (BH Chăm sóc dài hạn):</b> Chi trả khi tàn tật/già yếu (Cập nhật quy định 2025 theo số con).</li>\n              <li><b>Rentenversicherung (BH Hưu trí):</b> Trả lương hưu khi về già.</li>\n              <li><b>Arbeitslosenversicherung (BH Thất nghiệp):</b> Hỗ trợ tài chính khi mất việc.</li>\n              <li><b>Unfallversicherung (BH Tai nạn lao động):</b> 100% do Chủ chi trả (Berufsgenossenschaft).</li>\n            </ol>\n            <p><i>Lưu ý: 4 quỹ đầu đóng chia đều 50/50 giữa Chủ và NLĐ. Quỹ Unfallversicherung do Chủ trả 100%.</i></p>\n            <h3>2. Khấu trừ Lương (Brutto zu Netto - Bài tập Leo Scienca LS40/41 & Frau Wolters LS43)</h3>\n            <p>Bruttolohn  (Lohnsteuer + Solidaritätszuschlag + Kirchensteuer)  Sozialversicherungsbeiträge = <b>Nettolohn</b>.</p>",
+          "name": "LS35–41 & LS43 · Lohnabrechnung & Sozialversicherung",
+          "desc": "5 Zweige der Sozialversicherung · Brutto-Netto-Ermittlung · Gesetzliche Abzüge",
+          "content": "<h2>LS35–41 &amp; LS43 · Lohnabrechnung &amp; Sozialversicherung</h2>\n<div class=\"hint\">5 Säulen der gesetzlichen Sozialversicherung · Paritätische Finanzierung · Brutto zu Netto</div>\n<h3 class=\"sub\">1. Die 5 Säulen der gesetzlichen Sozialversicherung</h3>\n<table class=\"tbl\">\n  <thead><tr><th>Versicherungszweig</th><th>Beitragssatz (ca.)</th><th>Finanzierung</th><th>Träger / Aufgabe</th></tr></thead>\n  <tbody>\n    <tr><td><b>Krankenversicherung</b></td><td>14,6 % + Zusatzbeitrag</td><td>50 % AN / 50 % AG</td><td>Gesetzliche Krankenkassen (AOK, TK, Barmer); Heilbehandlung, Krankengeld.</td></tr>\n    <tr><td><b>Pflegeversicherung</b></td><td>4,0 % (Kinderlose +0,6 %)</td><td>Paritätisch (Zuschlag zahlt AN)</td><td>Pflegekassen bei den Krankenkassen; Unterstützung bei Pflegebedürftigkeit.</td></tr>\n    <tr><td><b>Rentenversicherung</b></td><td>18,6 %</td><td>50 % AN / 50 % AG</td><td>Deutsche Rentenversicherung; Altersrente, Erwerbsminderungsrente, Reha.</td></tr>\n    <tr><td><b>Arbeitslosenversicherung</b></td><td>2,6 %</td><td>50 % AN / 50 % AG</td><td>Bundesagentur für Arbeit; Arbeitslosengeld I, Berufsberatung, Umschulung.</td></tr>\n    <tr><td><b>Unfallversicherung</b></td><td>Nach Gefahrenklasse</td><td><b>100 % Arbeitgeber</b></td><td>Berufsgenossenschaften (z. B. BGN im Gastgewerbe); Arbeitsunfälle, Wegeunfälle.</td></tr>\n  </tbody>\n</table>\n<h3 class=\"sub\">2. Berechnungsschema: Vom Brutto zum Netto</h3>\n<div class=\"formula\">\n  <b>Bruttolohn</b><br>\n  − Steuern (Lohnsteuer + Solidaritätszuschlag + ggf. Kirchensteuer)<br>\n  − Sozialversicherungsbeiträge (Arbeitnehmeranteile KV, PV, RV, AV)<br>\n  <b>= Gesetzliches Nettoentgelt (Nettolohn)</b>\n</div>\n<div class=\"vi\">\n  <b>Tóm tắt Tiếng Việt — Tính lương &amp; 5 Trụ cột Bảo hiểm Xã hội:</b>\n  <ul>\n    <li>5 Quỹ bảo hiểm bắt buộc: BHYT (Kranken), Điều dưỡng (Pflege), Hưu trí (Renten), Thất nghiệp (Arbeitslosen), Tai nạn lao động (Unfall).</li>\n    <li><b>Nguyên tắc chia đôi 50/50 (Parität):</b> 4 quỹ đầu tiên do công ty và người lao động đóng chia đều 50/50. <b>Riêng Bảo hiểm Tai nạn (Unfallversicherung) do Berufsgenossenschaft quản lý thì CHỦ TRẢ 100%</b>.</li>\n    <li>Lương Netto nhận về = Lương Brutto − Tiền thuế (Lohnsteuer, Kirchensteuer) − Tiền bảo hiểm xã hội (phần người lao động).</li>\n  </ul>\n</div>",
           "qa": [
-            {
-              "q": "5 Trụ cột của Bảo hiểm Xã hội (Sozialversicherung) tại Đức là gì?",
-              "a": "Kranken-, Pflege-, Renten-, Arbeitslosen- và Unfallversicherung."
-            },
-            {
-              "q": "Quỹ bảo hiểm xã hội nào do Chủ doanh nghiệp chi trả 100% kinh phí?",
-              "a": "Unfallversicherung (Bảo hiểm tai nạn lao động qua Berufsgenossenschaft)."
-            },
-            {
-              "q": "[IHK Exam] Tỷ lệ đóng 4 quỹ bảo hiểm xã hội chung (Y tế, Hưu trí, Thất nghiệp, Chăm sóc) giữa Chủ và NLĐ là bao nhiêu?",
-              "a": "Đóng chia đều 50 / 50 (paritätische Finanzierung).",
-              "src": "fk_exel"
-            }
+                    {
+                              "q": "Welcher Zweig der gesetzlichen Sozialversicherung wird zu 100 % allein vom Arbeitgeber finanziert?",
+                              "qVi": "Quỹ bảo hiểm xã hội nào do Chủ doanh nghiệp chi trả 100% kinh phí?",
+                              "a": "Die <b>gesetzliche Unfallversicherung</b> (über die Berufsgenossenschaften wie die BGN).",
+                              "aVi": "<b>Bảo hiểm Tai nạn lao động (Unfallversicherung)</b> thông qua Berufsgenossenschaft do chủ trả 100%.",
+                              "src": "IHK / Berufsschule"
+                    },
+                    {
+                              "q": "Welche fünf Säulen bilden die gesetzliche Sozialversicherung in Deutschland?",
+                              "qVi": "Năm trụ cột của bảo hiểm xã hội bắt buộc tại Đức là gì?",
+                              "a": "1. Krankenversicherung, 2. Pflegeversicherung, 3. Rentenversicherung, 4. Arbeitslosenversicherung, 5. Unfallversicherung.",
+                              "aVi": "1. Bảo hiểm Y tế, 2. Bảo hiểm Điều dưỡng, 3. Bảo hiểm Hưu trí, 4. Bảo hiểm Thất nghiệp, 5. Bảo hiểm Tai nạn lao động.",
+                              "src": "IHK / Berufsschule"
+                    }
           ]
-        },
-        {
+},
+                {
           "id": "wiko-steuerklassen",
           "icon": "",
-          "name": "LS42 & LS44–LS48 · Steuerklassen & Lạm phát",
-          "desc": "6 Steuerklassen · Lựa chọn IV/IV vs. III/V · Lạm phát (Inflation) & Bài tập tra bảng thuế",
-          "content": "<h2> LS42 & LS44–LS48 · Die 6 Steuerklassen in Deutschland & Inflation</h2>\n            <div class=\"hint\">Giáo trình Wiko-Leyh (Trang 42, 44–48 / LF 01-LS42, LS44 đến LS48)</div>\n            <h3>1. Bảng phân loại 6 Bậc Thuế (Steuerklassen - LS44)</h3>\n            <ul>\n              <li><b>Steuerklasse I:</b> Độc thân (Ledig), ly hôn, sống ly thân.</li>\n              <li><b>Steuerklasse II:</b> Bố/mẹ đơn thân nuôi con (Alleinerziehend).</li>\n              <li><b>Steuerklasse III:</b> Đã kết hôn, người có thu nhập cao hơn chọn (vợ/chồng làm lớp V).</li>\n              <li><b>Steuerklasse IV:</b> Đã kết hôn, hai vợ chồng có thu nhập ngang nhau.</li>\n              <li><b>Steuerklasse V:</b> Đã kết hôn, người có thu nhập thấp hơn chọn (vợ/chồng làm lớp III).</li>\n              <li><b>Steuerklasse VI:</b> Người làm công việc thứ 2 (Zweitjob / Công việc làm thêm thứ hai).</li>\n            </ul>\n            <h3>2. Khái niệm Lạm phát (Inflation - LS42)</h3>\n            <p>Lạm phát là sự gia tăng mức giá chung kéo dài làm giảm sức mua (Kaufkraftverlust) của tiền tệ. Các loại lạm phát: Nachfrageinflation (do cầu tăng), Kostendruckinflation (do chi phí đầu vào tăng).</p>",
+          "name": "LS42 & LS44–48 · Lohnsteuerklassen & Kaufkraft",
+          "desc": "6 Steuerklassen im Überblick · Steuerklassenwechsel III/V vs. IV/IV · Inflation",
+          "content": "<h2>LS42 &amp; LS44–48 · Steuerklassen &amp; Lạm phát / Kaufkraft</h2>\n<div class=\"hint\">Lohnsteuerklassen I bis VI · Steuerklassenwahl bei Ehegatten · Inflation &amp; Reallohn</div>\n<h3 class=\"sub\">1. Übersicht der 6 Lohnsteuerklassen</h3>\n<table class=\"tbl\">\n  <thead><tr><th>Klasse</th><th>Zielgruppe / Familienstand</th><th>Besonderheit / Freibeträge</th></tr></thead>\n  <tbody>\n    <tr><td><b>I</b></td><td>Ledige, Geschiedene, dauernd getrennt Lebende.</td><td>Voller Grundfreibetrag, Arbeitnehmerpauschale.</td></tr>\n    <tr><td><b>II</b></td><td>Alleinerziehende mit mindestens einem kindergeldberechtigten Kind.</td><td>Zusätzlicher Entlastungsbetrag für Alleinerziehende.</td></tr>\n    <tr><td><b>III</b></td><td>Verheiratete/Verpartnerte, wenn Partner Steuerklasse V wählt.</td><td>Doppelter Grundfreibetrag; sehr geringe Steuerabzüge (ideal für Hauptverdiener).</td></tr>\n    <tr><td><b>IV</b></td><td>Verheiratete/Verpartnerte, wenn beide Partner etwa gleich viel verdienen.</td><td>Einfacher Grundfreibetrag für beide (Standard nach Heirat).</td></tr>\n    <tr><td><b>V</b></td><td>Verheiratete/Verpartnerte, wenn Partner Steuerklasse III gewählt hat.</td><td>Kein Grundfreibetrag; hohe monatliche Abzüge (für Zweitverdiener).</td></tr>\n    <tr><td><b>VI</b></td><td>Arbeitnehmer mit Zweitjob oder Nebenbeschäftigung über die Minijob-Grenze.</td><td>Keinerlei Freibeträge; höchste monatliche Steuerabzüge.</td></tr>\n  </tbody>\n</table>\n<h3 class=\"sub\">2. Kaufkraft und Inflation</h3>\n<p><b>Inflation</b> bezeichnet den dauerhaften Anstieg des allgemeinen Preisniveaus, wodurch die Kaufkraft des Geldes sinkt. Steigen die Löhne (Nominallohn) langsamer als die Preise, sinkt der <b>Reallohn</b> der Beschäftigten.</p>\n<div class=\"vi\">\n  <b>Tóm tắt Tiếng Việt — 6 Bậc Thuế &amp; Lạm phát / Sức mua:</b>\n  <ul>\n    <li>Bậc I: Độc thân, ly hôn.</li>\n    <li>Bậc II: Bố/mẹ đơn thân nuôi con (được cộng thêm tiền miễn trừ Entlastungsbetrag).</li>\n    <li>Bậc III &amp; V: Vợ chồng có thu nhập chênh lệch lớn (người kiếm nhiều chọn bậc III đóng thuế rất ít, người kiếm ít chọn bậc V đóng thuế cao).</li>\n    <li>Bậc IV: Vợ chồng có thu nhập ngang nhau.</li>\n    <li>Bậc VI: Người làm thêm công việc thứ hai (Zweitjob); không có mức giảm trừ gia cảnh nào, thuế khấu trừ cao nhất.</li>\n    <li>Lạm phát (Inflation): Làm tiền mất giá; nếu lương tăng chậm hơn lạm phát thì lương thực tế (Reallohn) bị giảm sút.</li>\n  </ul>\n</div>",
           "qa": [
-            {
-              "q": "Người làm thêm công việc thứ 2 (Zweitjob) tại Đức bắt buộc phải chịu bậc thuế nào?",
-              "a": "Steuerklasse VI (Bậc thuế 6 - mức khấu trừ cao nhất)."
-            },
-            {
-              "q": "Người bố/mẹ đơn thân nuôi con tại Đức thuộc bậc thuế nào?",
-              "a": "Steuerklasse II."
-            },
-            {
-              "q": "[IHK Exam] Cặp vợ chồng có mức thu nhập chênh lệch rất lớn (chồng 4000€, vợ 1000€) nên chọn kết hợp bậc thuế nào để tối ưu thuế hàng tháng?",
-              "a": "Nên chọn kết hợp Steuerklasse III (người thu nhập cao) và Steuerklasse V (người thu nhập thấp).",
-              "src": "fk_exel"
-            }
+                    {
+                              "q": "Welche Steuerklasse gilt für einen Arbeitnehmer, der einen zweiten sozialversicherungspflichtigen Job ausübt?",
+                              "qVi": "Bậc thuế nào áp dụng cho người đi làm thêm công việc thứ hai ngoài công việc chính?",
+                              "a": "Die <b>Steuerklasse VI</b> (hier gelten keinerlei Grundfreibeträge).",
+                              "aVi": "<b>Bậc thuế VI (Steuerklasse VI)</b>, không có mức miễn trừ gia cảnh nào.",
+                              "src": "IHK / Berufsschule"
+                    },
+                    {
+                              "q": "Welche Steuerklassenkombination wählen Ehegatten typischerweise, wenn einer deutlich mehr verdient als der andere?",
+                              "qVi": "Cặp vợ chồng có mức thu nhập chênh lệch lớn thường chọn kết hợp bậc thuế nào?",
+                              "a": "Die Kombination <b>Steuerklasse III (für den Besserverdienenden) und Steuerklasse V (für den Geringerverdienenden)</b>.",
+                              "aVi": "Kết hợp <b>Bậc III (người kiếm nhiều) và Bậc V (người kiếm ít)</b>.",
+                              "src": "IHK / Berufsschule"
+                    }
           ]
-        }
+}
       ]
     },
     {
       "id": "modul-nam2-kaufvertrag",
-      "badge": "Modul Năm 2",
-      "title": "Modul Năm 2 · Kaufvertrag, Mängel & Leistungsstörungen",
+      "badge": "LF 1",
+      "title": "Kaufvertrag, Mängel & Leistungsstörungen",
       "items": [
-        {
+                {
           "id": "kaufvertrag",
           "icon": "",
-          "name": "Kaufvertrag, Mängel & Leistungsstörungen (Năm 2)",
-          "desc": "Angebot & Annahme · Sachmangel vs. Rechtsmangel · Nacherfüllung & Minderung · Lieferverzug",
-          "content": "<h2> Kaufvertrag, Mängel & Leistungsstörungen (Chủ đề Năm 2)</h2>\n            <div class=\"hint\">Cơ sở pháp lý Hợp đồng mua bán (§ 433 BGB) & Xử lý vi phạm/hàng lỗi (Chủ đề Năm 2)</div>\n            <h3>1. Sự hình thành Kaufvertrag</h3>\n            <p>Hình thành khi có <b>2 Tuyên bố ý chí phù hợp (zwei übereinstimmende Willenserklärungen)</b>: <span class=\"term\" data-de=\"Angebot\" data-vi=\"Chào hàng / Đề nghị\">Angebot</span> + <span class=\"term\" data-de=\"Annahme\" data-vi=\"Chấp nhận\">Annahme</span>.</p>\n            <h3>2. Nghĩa vụ hai bên (§ 433 BGB)</h3>\n            <ul>\n              <li><b>Verkäufer (Người bán):</b> Giao hàng đúng hạn, không có lỗi (mängelfrei), chuyển giao sở hữu.</li>\n              <li><b>Käufer (Người mua):</b> Nhận hàng (Abnahme) và trả tiền đúng thỏa thuận (Zahlung des Kaufpreises).</li>\n            </ul>\n            <h3>3. Quyền của Người mua khi hàng bị lỗi (Mangel)</h3>\n            <ol>\n              <li><b>Nacherfüllung (Ưu tiên số 1):</b> Yêu cầu sửa chữa (Nachbesserung) hoặc giao hàng mới thay thế (Neulieferung).</li>\n              <li><b>Nếu Nacherfüllung thất bại (sau 2 lần sửa không được):</b> Có quyền Giảm giá (Minderung), Hủy hợp đồng trả hàng (Rücktritt), hoặc Yêu cầu bồi thường thiệt hại (Schadensersatz).</li>\n            </ol>",
+          "name": "Kaufvertrag, Mängel & Leistungsstörungen",
+          "desc": "Zustandekommen (§ 433 BGB) · Sachmangel & Rechtsmangel · Nacherfüllung · Lieferungsverzug",
+          "content": "<h2>Kaufvertrag, Mängel &amp; Leistungsstörungen</h2>\n<div class=\"hint\">BGB §§ 433, 434, 437, 439 · Zustandekommen, Mängelrüge &amp; Rechte des Käufers</div>\n<h3 class=\"sub\">1. Zustandekommen des Kaufvertrags (§ 433 BGB)</h3>\n<p>Ein Kaufvertrag entsteht durch <b>zwei übereinstimmende Willenserklärungen</b>: <b>Antrag (Angebot)</b> und <b>Annahme</b>.</p>\n<ul>\n  <li><b>Angebot:</b> Verbindliche Erklärung an eine bestimmte Person mit allen wesentlichen Vertragsbestandteilen (Ware, Menge, Preis).</li>\n  <li><b>invitatio ad offerendum:</b> Unverbindliche Aufforderung zur Abgabe eines Angebots (z. B. Schaufensterauslage, Speisekarte, Flyer, Webshop).</li>\n</ul>\n<h3 class=\"sub\">2. Pflichten beim Kaufvertrag (§ 433 BGB)</h3>\n<ul>\n  <li><b>Verkäufer:</b> Übergabe und Eigentumsverschaffung an der mangelfreien Ware; Annahme des Kaufpreises.</li>\n  <li><b>Käufer:</b> Zahlung des vereinbarten Kaufpreises; Abnahme der gekauften Ware.</li>\n</ul>\n<h3 class=\"sub\">3. Mängelarten &amp; Rechte des Käufers (§§ 434, 437 BGB)</h3>\n<ul>\n  <li><b>Sachmangel:</b> Ware ist beschädigt, fehlerhaft montiert, falsche Ware (Falschlieferung) oder zu geringe Menge geliefert.</li>\n  <li><b>Rechtsmangel:</b> Ein Dritter hat Rechte an der Sache (z. B. gestohlene Ware, Pfandrechte).</li>\n  <li><b>1. Vorrangiges Recht (Nacherfüllung § 439 BGB):</b> Der Käufer kann nach seiner Wahl <b>Beseitigung des Mangels (Nachbesserung)</b> oder <b>Lieferung einer mangelfreien Sache (Neulieferung)</b> verlangen.</li>\n  <li><b>2. Nachrangige Rechte:</b> Nach erfolglosem Ablauf einer angemessenen Frist zur Nacherfüllung (in der Regel nach 2 erfolglosen Nachbesserungsversuchen): <b>Rücktritt vom Vertrag</b> (Geld zurück) oder <b>Minderung</b> (Kaufpreisherabsetzung) und eventuell <b>Schadenersatz</b>.</li>\n</ul>\n<div class=\"vi\">\n  <b>Tóm tắt Tiếng Việt — Hợp đồng Mua bán &amp; Xử lý hàng lỗi:</b>\n  <ul>\n    <li>Hợp đồng xác lập khi có <b>2 tuyên bố ý chí thống nhất (Angebot + Annahme)</b>. Hàng bày trong tủ kính hay menu chỉ là lời mời chào giá (invitatio ad offerendum).</li>\n    <li>Nghĩa vụ: Người bán giao hàng không lỗi và sang tên quyền sở hữu; Người mua trả tiền và nhận hàng.</li>\n    <li>Khi hàng bị lỗi (Mangel):\n      <ul>\n        <li><b>Quyền ưu tiên số 1 (Nacherfüllung):</b> Yêu cầu đổi mới (Neulieferung) hoặc sửa chữa miễn phí (Nachbesserung).</li>\n        <li><b>Quyền thứ cấp (khi Nacherfüllung bất thành sau 2 lần sửa):</b> Hủy hợp đồng lấy lại tiền (Rücktritt) hoặc Giảm giá (Minderung) và bồi thường thiệt hại.</li>\n      </ul>\n    </li>\n  </ul>\n</div>",
           "qa": [
-            {
-              "q": "Hợp đồng mua bán (Kaufvertrag) được hình thành như thế nào?",
-              "a": "Hình thành khi có 2 tuyên bố ý chí phù hợp nhau (Angebot và Annahme)."
-            },
-            {
-              "q": "Quyền ưu tiên hàng đầu của người mua khi nhận phải hàng bị lỗi (Mangel) là gì?",
-              "a": "Nacherfüllung (Yêu cầu sửa chữa Nachbesserung hoặc đổi sản phẩm mới Neulieferung)."
-            },
-            {
-              "q": "[IHK Exam] Khi bên bán giao hàng muộn (Lieferungsverzug), bên mua cần làm gì trước khi hủy hợp đồng?",
-              "a": "Phải đặt một thời hạn gia hạn hợp lý (Angemessene Nachfrist setzen).",
-              "src": "fk_exel"
-            },
-            {
-              "q": "[IHK Exam] Sự khác biệt giữa Sachmangel (lỗi vật lý) và Rechtsmangel (lỗi pháp lý) là gì?",
-              "a": "Sachmangel là hàng bị hỏng/vỡ/sai mẫu; Rechtsmangel là hàng bị quyền sở hữu của bên thứ ba tranh chấp (hàng ăn trộm/cầm cố).",
-              "src": "fk_exel"
-            }
+                    {
+                              "q": "Wie kommt ein Kaufvertrag rechtlich zustande?",
+                              "qVi": "Một hợp đồng mua bán được xác lập về mặt pháp lý như thế nào?",
+                              "a": "Durch <b>zwei übereinstimmende Willenserklärungen</b>: Antrag (Angebot) und Annahme (§ 433 BGB).",
+                              "aVi": "Thông qua <b>hai tuyên bố ý chí phù hợp nhau (Angebot và Annahme)</b>.",
+                              "src": "IHK / Berufsschule"
+                    },
+                    {
+                              "q": "Welches vorrangige Recht hat der Käufer bei Lieferung einer mangelhaften Sache?",
+                              "qVi": "Quyền ưu tiên hàng đầu của người mua khi nhận phải hàng bị lỗi (Mangel) là gì?",
+                              "a": "Das Recht auf <b>Nacherfüllung (§ 439 BGB)</b>: Der Käufer kann wahlweise Nachbesserung (Reparatur) oder Neulieferung einer mangelfreien Sache verlangen.",
+                              "aVi": "<b>Nacherfüllung</b>: Người mua có quyền chọn yêu cầu sửa chữa (Nachbesserung) hoặc đổi sản phẩm mới (Neulieferung).",
+                              "src": "IHK / Berufsschule"
+                    },
+                    {
+                              "q": "Was ist der Unterschied zwischen einem Sachmangel und einem Rechtsmangel?",
+                              "qVi": "Sự khác biệt giữa Sachmangel (lỗi vật lý) và Rechtsmangel (lỗi pháp lý) là gì?",
+                              "a": "Ein <b>Sachmangel</b> betrifft die Beschaffenheit der Ware (z. B. defekt, falsch, zu wenig geliefert); ein <b>Rechtsmangel</b> liegt vor, wenn ein Dritter Rechte an der Sache geltend machen kann (z. B. gestohlene Ware oder Pfandrecht).",
+                              "aVi": "<b>Sachmangel</b> là hàng bị hỏng, sai mẫu hoặc thiếu; <b>Rechtsmangel</b> là hàng bị quyền sở hữu của bên thứ ba tranh chấp (hàng ăn trộm, cầm cố).",
+                              "src": "IHK / Berufsschule"
+                    }
           ]
-        }
+}
       ]
     },
     {
@@ -5199,78 +5875,196 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
           "id": "wiko-rg-p1",
           "icon": "",
           "name": "Rechtsgeschäfte · Rechtsfähigkeit & Geschäftsfähigkeit",
-          "desc": "Năng lực pháp luật & Năng lực hành vi",
-          "content": "<h2>Rechtsgeschäfte · Rechtsfähigkeit & Geschäftsfähigkeit</h2>\n<div class=\"hint\">Gesetzbuch zum Lernen (DE–VI) · BGB</div>\n<h3 class=\"sub\">1.1 Rechtsfähigkeit <i>— Năng lực pháp luật</i></h3>\n\n  <div class=\"block\">\n    <div class=\"de\"><b>Definition</b> \n      Rechtsfähigkeit ist die Fähigkeit von Personen, Träger von Rechten und Pflichten sein zu können.\n    </div>\n    <div class=\"vi\"><b>Übersetzung</b> \n      Năng lực pháp luật là khả năng của một người trở thành chủ thể mang các quyền và nghĩa vụ.\n    </div>\n  </div>\n\n  <div class=\"de\">Rechtsfähig sind <b>natürliche Personen</b> und <b>juristische Personen</b>.</div>\n  <div class=\"vi\">Có năng lực pháp luật gồm <b>tự nhiên nhân</b> (con người) và <b>pháp nhân</b>.</div>\n\n  <h4 style=\"font-family:&#39;IBM Plex Sans&#39;,sans-serif; color:var(--ink); margin-top:24px; font-size:1rem;\">a) Natürliche Personen</h4>\n  <ul>\n    <li class=\"de\">Das sind <b>alle Menschen</b> <span class=\"para-code\">§1 BGB</span></li>\n    <li class=\"de\">Beginn: mit der Vollendung der Geburt</li>\n    <li class=\"de\">Ende: mit dem Tod</li>\n    <li class=\"de\">Jeder Mensch ist rechtsfähig — unabhängig vom Alter.</li>\n  </ul>\n  <div class=\"vi\" style=\"margin-top:-8px;\"><b>Übersetzung</b> Đó là <b>tất cả con người</b> (§1 BGB). Bắt đầu khi sinh ra hoàn tất, kết thúc khi chết. Mọi người đều có năng lực pháp luật, không phân biệt tuổi tác.</div>\n\n  <div class=\"example\"><b>Beispiel · Ví dụ</b> \n    <span class=\"de\">Das Erbrecht eines neugeborenen Kindes.</span><br>\n    <span class=\"vi\" style=\"border:none; padding:4px 0 0;\">Quyền thừa kế của một đứa trẻ mới sinh.</span>\n  </div>\n\n  <h4 style=\"font-family:&#39;IBM Plex Sans&#39;,sans-serif; color:var(--ink); margin-top:24px; font-size:1rem;\">b) Juristische Personen</h4>\n  <div class=\"de\">\"Künstliche Personen\", denen der Staat kraft Gesetzes Rechtsfähigkeit verleiht.</div>\n  <div class=\"vi\">\"Con người nhân tạo\", được nhà nước trao tư cách chủ thể pháp luật bằng luật.</div>\n\n  <div class=\"grid2\" style=\"margin-top:14px;\">\n    <div class=\"block\" style=\"margin:0;\">\n      <div class=\"de\" style=\"border-radius:6px;\"><b>Privates Recht</b> \n        z. B. GmbH, AG, eingetragener Verein.<br>Rechtsfähig ab <b>Eintragung ins Register</b> bis zur <b>Löschung</b>.\n      </div>\n      <div class=\"vi\"><b>Luật tư</b> VD: GmbH, AG, hội đăng ký. Có tư cách pháp nhân từ khi đăng ký vào sổ đăng bạ đến khi bị xóa tên.</div>\n    </div>\n    <div class=\"block\" style=\"margin:0;\">\n      <div class=\"de\" style=\"border-radius:6px;\"><b>Öffentliches Recht</b> \n        z. B. Länder, Gemeinden, Handwerkskammer.<br>Rechtsfähig durch <b>staatliche Verleihung</b> bis zum <b>Entzug</b>.\n      </div>\n      <div class=\"vi\"><b>Luật công</b> VD: các Bang, xã/phường, phòng thủ công. Có tư cách pháp nhân qua sự ban cấp của nhà nước đến khi bị thu hồi.</div>\n    </div>\n  </div>\n\n  <h3 class=\"sub\">1.2 Geschäftsfähigkeit <i>— Năng lực hành vi dân sự</i></h3>\n\n  <div class=\"block\">\n    <div class=\"de\"><b>Definition</b> \n      Geschäftsfähigkeit ist die Fähigkeit von Personen, Willenserklärungen rechtswirksam abzugeben, entgegenzunehmen und zu widerrufen, d. h. vollgültige Rechtsgeschäfte zu tätigen.\n    </div>\n    <div class=\"vi\"><b>Übersetzung</b> \n      Là khả năng tự mình đưa ra, tiếp nhận và rút lại tuyên bố ý chí một cách hợp pháp, tức là tự thực hiện các giao dịch có hiệu lực đầy đủ.\n    </div>\n  </div>\n\n  <div class=\"timeline\">\n    <div>Geburt<span class=\"vi-mini\">sinh ra</span></div>\n    <div>→</div>\n    <div>7 Jahre</div>\n    <div>→</div>\n    <div>18 Jahre</div>\n    <div>→</div>\n    <div>Tod<span class=\"vi-mini\">chết</span></div>\n  </div>\n\n  <h4 style=\"font-family:&#39;IBM Plex Sans&#39;,sans-serif; color:var(--ink); margin-top:24px; font-size:1rem;\">1) Geschäftsunfähigkeit <span class=\"para-code\">§104 BGB</span></h4>\n  <div class=\"de\">Kinder <b>unter 7 Jahren</b> sind geschäftsunfähig. Personen mit dauernder krankhafter Störung der Geistestätigkeit gelten ebenso als geschäftsunfähig.</div>\n  <div class=\"vi\">Trẻ em <b>dưới 7 tuổi</b> mất năng lực hành vi. Người bị rối loạn tâm thần lâu dài cũng được xem như trẻ em (mất năng lực hành vi).</div>\n\n  <div class=\"note\"><b>Rechtsfolge · Hậu quả pháp lý</b> \n    <span class=\"de\">Willenserklärungen sind unwirksam. Verträge sind immer <b>nichtig</b>. <span class=\"para-code\">§105 BGB</span> Es ist ein gesetzlicher Vertreter (i. d. R. die Eltern) nötig.</span><br><br>\n    <span class=\"vi\" style=\"border:none; padding:0;\">Tuyên bố ý chí không có hiệu lực. Hợp đồng luôn <b>vô hiệu</b>. Cần người đại diện hợp pháp (thường là cha mẹ) thực hiện thay.</span>\n  </div>\n\n  <h4 style=\"font-family:&#39;IBM Plex Sans&#39;,sans-serif; color:var(--ink); margin-top:24px; font-size:1rem;\">2) Beschränkte Geschäftsfähigkeit <span class=\"para-code\">§106 BGB</span></h4>\n  <div class=\"de\">Minderjährige <b>von 7 bis unter 18 Jahren</b>. Rechtsgeschäfte benötigen die Zustimmung des gesetzlichen Vertreters.</div>\n  <div class=\"vi\">Người vị thành niên <b>từ 7 đến dưới 18 tuổi</b>. Giao dịch cần sự đồng ý của người đại diện hợp pháp.</div>\n\n  <ul style=\"margin-top:14px;\">\n    <li class=\"de\"><b>Einwilligung</b> — Zustimmung <i>vorab</i>, bevor das Geschäft geschlossen wird.</li>\n    <li class=\"de\"><b>Genehmigung</b> — Zustimmung <i>danach</i>, nachdem das Geschäft geschlossen wurde.</li>\n  </ul>\n  <div class=\"vi\" style=\"margin-top:-8px;\"><b>Einwilligung</b> (chấp thuận trước): đồng ý trước khi giao dịch diễn ra. <b>Genehmigung</b> (phê chuẩn sau): đồng ý sau khi giao dịch đã diễn ra.</div>\n\n  <div class=\"warn\" style=\"margin-top:16px;\"><b>Rechtsfolge · Hậu quả pháp lý</b> \n    <span class=\"de\">Bis zur Entscheidung des Vertreters ist der Vertrag <b>schwebend unwirksam</b>. Bei Verweigerung: von Anfang an unwirksam. Bei Genehmigung: von Anfang an wirksam.</span><br><br>\n    <span class=\"vi\" style=\"border:none; padding:0;\">Chừng nào chưa có quyết định của người đại diện, hợp đồng ở trạng thái <b>\"treo\"</b> — chưa có hiệu lực. Nếu bị từ chối: vô hiệu từ đầu. Nếu được phê chuẩn: có hiệu lực từ đầu.</span>\n  </div>\n\n  <h5 style=\"font-family:&#39;IBM Plex Sans&#39;,sans-serif; color:var(--wax); margin-top:22px; font-size:.92rem;\">Ausnahmen — keine Zustimmung nötig<span style=\"display:block; color:var(--slate); font-weight:400; font-size:.85rem; margin-top:2px;\">Ngoại lệ — không cần sự đồng ý</span></h5>\n  <ul>\n    <li class=\"de\"><b>Lediglich rechtlicher Vorteil</b> <span class=\"para-code\">§107 BGB</span> — z. B. eine Schenkung annehmen.\n      <div class=\"vi\" style=\"border:none; padding:4px 0 0 0; margin:0;\">Lợi ích pháp lý thuần túy — VD: nhận quà tặng.</div>\n    </li>\n    <li class=\"de\" style=\"margin-top:12px;\"><b>Taschengeldparagraph</b> <span class=\"para-code\">§110 BGB</span> — Geschäfte, die mit eigenen Mitteln sofort bezahlt werden.\n      <div class=\"vi\" style=\"border:none; padding:4px 0 0 0; margin:0;\">Điều khoản \"tiền tiêu vặt\" — giao dịch được thanh toán ngay bằng tiền của chính mình.</div>\n      <div class=\"warn\" style=\"margin-top:8px;\"><b>Achtung · Lưu ý</b> \n        <span class=\"de\">Gilt <b>nicht</b> für Ratenkäufe oder Handyverträge.</span><br>\n        <span class=\"vi\" style=\"border:none; padding:0;\">KHÔNG áp dụng cho mua trả góp hoặc hợp đồng điện thoại.</span>\n      </div>\n    </li>\n    <li class=\"de\" style=\"margin-top:12px;\"><b>Arbeitsverhältnis</b> <span class=\"para-code\">§113 BGB</span> — wenn der gesetzliche Vertreter zugestimmt hat.\n      <div class=\"vi\" style=\"border:none; padding:4px 0 0 0; margin:0;\">Quan hệ lao động — khi người đại diện hợp pháp đã đồng ý (không tính Ausbildung/học nghề).</div>\n    </li>\n  </ul>\n\n  <h4 style=\"font-family:&#39;IBM Plex Sans&#39;,sans-serif; color:var(--ink); margin-top:24px; font-size:1rem;\">3) Unbeschränkte Geschäftsfähigkeit <span class=\"para-code\">§2 BGB</span></h4>\n  <div class=\"de\">Personen <b>ab 18 Jahren</b> (außer bei dauernder Geistesstörung).</div>\n  <div class=\"vi\">Người <b>từ đủ 18 tuổi trở lên</b> (trừ trường hợp rối loạn tâm thần lâu dài).</div>\n  <div class=\"note\"><b>Rechtsfolge · Hậu quả pháp lý</b> \n    <span class=\"de\">Alle Rechtsgeschäfte sind voll rechtsgültig, ohne Zustimmung nötig.</span><br>\n    <span class=\"vi\" style=\"border:none; padding:0;\">Mọi giao dịch pháp lý có hiệu lực đầy đủ, không cần sự đồng ý của ai.</span>\n  </div>\n\n  <table>\n    <tbody><tr><th>Alter<span style=\"display:block;font-weight:400;font-size:.7rem;\">Độ tuổi</span></th><th>Stufe<span style=\"display:block;font-weight:400;font-size:.7rem;\">Mức độ</span></th><th>Rechtsfolge<span style=\"display:block;font-weight:400;font-size:.7rem;\">Hậu quả</span></th></tr>\n    <tr><td>Unter 7 Jahren</td><td>Geschäftsunfähig</td><td>Nichtig</td></tr>\n    <tr><td>7 – unter 18 Jahren</td><td>Beschränkt geschäftsfähig</td><td>Schwebend unwirksam</td></tr>\n    <tr><td>Ab 18 Jahren</td><td>Unbeschränkt geschäftsfähig</td><td>Voll gültig</td></tr>\n  </tbody></table>"
+          "desc": "Rechtsfähigkeit (§ 1 BGB) vs. Geschäftsfähigkeit (§§ 104 ff. BGB)",
+          "content": "<h2>Rechtsgeschäfte · Rechtsfähigkeit & Geschäftsfähigkeit</h2>\n<div class=\"hint\">Gesetzbuch zum Lernen (DE–VI) · BGB</div>\n<h3 class=\"sub\">1.1 Rechtsfähigkeit <span class=\'vi-sub\'>— Năng lực pháp luật</span></h3>\n\n  <div class=\"block\">\n    <div class=\"de\"><b>Definition</b> \n      Rechtsfähigkeit ist die Fähigkeit von Personen, Träger von Rechten und Pflichten sein zu können.\n    </div>\n    <div class=\"vi\"><b>Übersetzung</b> \n      Năng lực pháp luật là khả năng của một người trở thành chủ thể mang các quyền và nghĩa vụ.\n    </div>\n  </div>\n\n  <div class=\"de\">Rechtsfähig sind <b>natürliche Personen</b> und <b>juristische Personen</b>.</div>\n  <div class=\"vi\">Có năng lực pháp luật gồm <b>tự nhiên nhân</b> (con người) và <b>pháp nhân</b>.</div>\n\n  <h4 style=\"font-family:&#39;IBM Plex Sans&#39;,sans-serif; color:var(--ink); margin-top:24px; font-size:1rem;\">a) Natürliche Personen</h4>\n  <ul>\n    <li class=\"de\">Das sind <b>alle Menschen</b> <span class=\"para-code\">§1 BGB</span></li>\n    <li class=\"de\">Beginn: mit der Vollendung der Geburt</li>\n    <li class=\"de\">Ende: mit dem Tod</li>\n    <li class=\"de\">Jeder Mensch ist rechtsfähig — unabhängig vom Alter.</li>\n  </ul>\n  <div class=\"vi\" style=\"margin-top:-8px;\"><b>Übersetzung</b> Đó là <b>tất cả con người</b> (§1 BGB). Bắt đầu khi sinh ra hoàn tất, kết thúc khi chết. Mọi người đều có năng lực pháp luật, không phân biệt tuổi tác.</div>\n\n  <div class=\"example\"><b>Beispiel · Ví dụ</b> \n    <span class=\"de\">Das Erbrecht eines neugeborenen Kindes.</span><br>\n    <span class=\"vi\" style=\"border:none; padding:4px 0 0;\">Quyền thừa kế của một đứa trẻ mới sinh.</span>\n  </div>\n\n  <h4 style=\"font-family:&#39;IBM Plex Sans&#39;,sans-serif; color:var(--ink); margin-top:24px; font-size:1rem;\">b) Juristische Personen</h4>\n  <div class=\"de\">\"Künstliche Personen\", denen der Staat kraft Gesetzes Rechtsfähigkeit verleiht.</div>\n  <div class=\"vi\">\"Con người nhân tạo\", được nhà nước trao tư cách chủ thể pháp luật bằng luật.</div>\n\n  <div class=\"grid2\" style=\"margin-top:14px;\">\n    <div class=\"block\" style=\"margin:0;\">\n      <div class=\"de\" style=\"border-radius:6px;\"><b>Privates Recht</b> \n        z. B. GmbH, AG, eingetragener Verein.<br>Rechtsfähig ab <b>Eintragung ins Register</b> bis zur <b>Löschung</b>.\n      </div>\n      <div class=\"vi\"><b>Luật tư</b> VD: GmbH, AG, hội đăng ký. Có tư cách pháp nhân từ khi đăng ký vào sổ đăng bạ đến khi bị xóa tên.</div>\n    </div>\n    <div class=\"block\" style=\"margin:0;\">\n      <div class=\"de\" style=\"border-radius:6px;\"><b>Öffentliches Recht</b> \n        z. B. Länder, Gemeinden, Handwerkskammer.<br>Rechtsfähig durch <b>staatliche Verleihung</b> bis zum <b>Entzug</b>.\n      </div>\n      <div class=\"vi\"><b>Luật công</b> VD: các Bang, xã/phường, phòng thủ công. Có tư cách pháp nhân qua sự ban cấp của nhà nước đến khi bị thu hồi.</div>\n    </div>\n  </div>\n\n  <h3 class=\"sub\">1.2 Geschäftsfähigkeit <span class=\'vi-sub\'>— Năng lực hành vi dân sự</span></h3>\n\n  <div class=\"block\">\n    <div class=\"de\"><b>Definition</b> \n      Geschäftsfähigkeit ist die Fähigkeit von Personen, Willenserklärungen rechtswirksam abzugeben, entgegenzunehmen und zu widerrufen, d. h. vollgültige Rechtsgeschäfte zu tätigen.\n    </div>\n    <div class=\"vi\"><b>Übersetzung</b> \n      Là khả năng tự mình đưa ra, tiếp nhận và rút lại tuyên bố ý chí một cách hợp pháp, tức là tự thực hiện các giao dịch có hiệu lực đầy đủ.\n    </div>\n  </div>\n\n  <div class=\"timeline\">\n    <div>Geburt<span class=\"vi-mini\">sinh ra</span></div>\n    <div>→</div>\n    <div>7 Jahre</div>\n    <div>→</div>\n    <div>18 Jahre</div>\n    <div>→</div>\n    <div>Tod<span class=\"vi-mini\">chết</span></div>\n  </div>\n\n  <h4 style=\"font-family:&#39;IBM Plex Sans&#39;,sans-serif; color:var(--ink); margin-top:24px; font-size:1rem;\">1) Geschäftsunfähigkeit <span class=\"para-code\">§104 BGB</span></h4>\n  <div class=\"de\">Kinder <b>unter 7 Jahren</b> sind geschäftsunfähig. Personen mit dauernder krankhafter Störung der Geistestätigkeit gelten ebenso als geschäftsunfähig.</div>\n  <div class=\"vi\">Trẻ em <b>dưới 7 tuổi</b> mất năng lực hành vi. Người bị rối loạn tâm thần lâu dài cũng được xem như trẻ em (mất năng lực hành vi).</div>\n\n  <div class=\"note\"><b>Rechtsfolge · Hậu quả pháp lý</b> \n    <span class=\"de\">Willenserklärungen sind unwirksam. Verträge sind immer <b>nichtig</b>. <span class=\"para-code\">§105 BGB</span> Es ist ein gesetzlicher Vertreter (i. d. R. die Eltern) nötig.</span><br><br>\n    <span class=\"vi\" style=\"border:none; padding:0;\">Tuyên bố ý chí không có hiệu lực. Hợp đồng luôn <b>vô hiệu</b>. Cần người đại diện hợp pháp (thường là cha mẹ) thực hiện thay.</span>\n  </div>\n\n  <h4 style=\"font-family:&#39;IBM Plex Sans&#39;,sans-serif; color:var(--ink); margin-top:24px; font-size:1rem;\">2) Beschränkte Geschäftsfähigkeit <span class=\"para-code\">§106 BGB</span></h4>\n  <div class=\"de\">Minderjährige <b>von 7 bis unter 18 Jahren</b>. Rechtsgeschäfte benötigen die Zustimmung des gesetzlichen Vertreters.</div>\n  <div class=\"vi\">Người vị thành niên <b>từ 7 đến dưới 18 tuổi</b>. Giao dịch cần sự đồng ý của người đại diện hợp pháp.</div>\n\n  <ul style=\"margin-top:14px;\">\n    <li class=\"de\"><b>Einwilligung</b> — Zustimmung <i>vorab</i>, bevor das Geschäft geschlossen wird.</li>\n    <li class=\"de\"><b>Genehmigung</b> — Zustimmung <i>danach</i>, nachdem das Geschäft geschlossen wurde.</li>\n  </ul>\n  <div class=\"vi\" style=\"margin-top:-8px;\"><b>Einwilligung</b> (chấp thuận trước): đồng ý trước khi giao dịch diễn ra. <b>Genehmigung</b> (phê chuẩn sau): đồng ý sau khi giao dịch đã diễn ra.</div>\n\n  <div class=\"warn\" style=\"margin-top:16px;\"><b>Rechtsfolge · Hậu quả pháp lý</b> \n    <span class=\"de\">Bis zur Entscheidung des Vertreters ist der Vertrag <b>schwebend unwirksam</b>. Bei Verweigerung: von Anfang an unwirksam. Bei Genehmigung: von Anfang an wirksam.</span><br><br>\n    <span class=\"vi\" style=\"border:none; padding:0;\">Chừng nào chưa có quyết định của người đại diện, hợp đồng ở trạng thái <b>\"treo\"</b> — chưa có hiệu lực. Nếu bị từ chối: vô hiệu từ đầu. Nếu được phê chuẩn: có hiệu lực từ đầu.</span>\n  </div>\n\n  <h5 style=\"font-family:&#39;IBM Plex Sans&#39;,sans-serif; color:var(--wax); margin-top:22px; font-size:.92rem;\">Ausnahmen — keine Zustimmung nötig<span style=\"display:block; color:var(--slate); font-weight:400; font-size:.85rem; margin-top:2px;\">Ngoại lệ — không cần sự đồng ý</span></h5>\n  <ul>\n    <li class=\"de\"><b>Lediglich rechtlicher Vorteil</b> <span class=\"para-code\">§107 BGB</span> — z. B. eine Schenkung annehmen.\n      <div class=\"vi\" style=\"border:none; padding:4px 0 0 0; margin:0;\">Lợi ích pháp lý thuần túy — VD: nhận quà tặng.</div>\n    </li>\n    <li class=\"de\" style=\"margin-top:12px;\"><b>Taschengeldparagraph</b> <span class=\"para-code\">§110 BGB</span> — Geschäfte, die mit eigenen Mitteln sofort bezahlt werden.\n      <div class=\"vi\" style=\"border:none; padding:4px 0 0 0; margin:0;\">Điều khoản \"tiền tiêu vặt\" — giao dịch được thanh toán ngay bằng tiền của chính mình.</div>\n      <div class=\"warn\" style=\"margin-top:8px;\"><b>Achtung · Lưu ý</b> \n        <span class=\"de\">Gilt <b>nicht</b> für Ratenkäufe oder Handyverträge.</span><br>\n        <span class=\"vi\" style=\"border:none; padding:0;\">KHÔNG áp dụng cho mua trả góp hoặc hợp đồng điện thoại.</span>\n      </div>\n    </li>\n    <li class=\"de\" style=\"margin-top:12px;\"><b>Arbeitsverhältnis</b> <span class=\"para-code\">§113 BGB</span> — wenn der gesetzliche Vertreter zugestimmt hat.\n      <div class=\"vi\" style=\"border:none; padding:4px 0 0 0; margin:0;\">Quan hệ lao động — khi người đại diện hợp pháp đã đồng ý (không tính Ausbildung/học nghề).</div>\n    </li>\n  </ul>\n\n  <h4 style=\"font-family:&#39;IBM Plex Sans&#39;,sans-serif; color:var(--ink); margin-top:24px; font-size:1rem;\">3) Unbeschränkte Geschäftsfähigkeit <span class=\"para-code\">§2 BGB</span></h4>\n  <div class=\"de\">Personen <b>ab 18 Jahren</b> (außer bei dauernder Geistesstörung).</div>\n  <div class=\"vi\">Người <b>từ đủ 18 tuổi trở lên</b> (trừ trường hợp rối loạn tâm thần lâu dài).</div>\n  <div class=\"note\"><b>Rechtsfolge · Hậu quả pháp lý</b> \n    <span class=\"de\">Alle Rechtsgeschäfte sind voll rechtsgültig, ohne Zustimmung nötig.</span><br>\n    <span class=\"vi\" style=\"border:none; padding:0;\">Mọi giao dịch pháp lý có hiệu lực đầy đủ, không cần sự đồng ý của ai.</span>\n  </div>\n\n  <table>\n    <tbody><tr><th>Alter<span style=\"display:block;font-weight:400;font-size:.7rem;\">Độ tuổi</span></th><th>Stufe<span style=\"display:block;font-weight:400;font-size:.7rem;\">Mức độ</span></th><th>Rechtsfolge<span style=\"display:block;font-weight:400;font-size:.7rem;\">Hậu quả</span></th></tr>\n    <tr><td>Unter 7 Jahren</td><td>Geschäftsunfähig</td><td>Nichtig</td></tr>\n    <tr><td>7 – unter 18 Jahren</td><td>Beschränkt geschäftsfähig</td><td>Schwebend unwirksam</td></tr>\n    <tr><td>Ab 18 Jahren</td><td>Unbeschränkt geschäftsfähig</td><td>Voll gültig</td></tr>\n  </tbody></table>"
+        ,
+          "qa": [
+            {
+                        "q": "Wann beginnt und wann endet die Rechtsfähigkeit einer natürlichen Person nach dem BGB?",
+                        "qVi": "Năng lực pháp luật của một tự nhiên nhân bắt đầu và kết thúc khi nào theo BGB?",
+                        "a": "Die Rechtsfähigkeit einer natürlichen Person beginnt mit der <b>Vollendung der Geburt (§ 1 BGB)</b> und endet mit dem <b>Tod</b>.",
+                        "aVi": "Bắt đầu từ khi <b>sinh ra hoàn tất (§ 1 BGB)</b> và chấm dứt khi <b>chết</b>.",
+                        "src": "IHK / Berufsschule"
+            },
+            {
+                        "q": "In welche drei Stufen wird die Geschäftsfähigkeit im BGB eingeteilt?",
+                        "qVi": "Năng lực hành vi dân sự được chia thành 3 mức độ nào trong BGB?",
+                        "a": "1. <b>Geschäftsunfähigkeit</b> (0 bis unter 7 Jahre sowie dauerhaft geistig Behinderte; Willenserklärungen sind nichtig nach § 104 BGB).<br>2. <b>Beschränkte Geschäftsfähigkeit</b> (7 bis unter 18 Jahre; Rechtsgeschäfte sind schwebend unwirksam bis zur Zustimmung der Eltern nach §§ 106, 107 BGB, Ausnahme Taschengeldparagraph § 110 BGB).<br>3. <b>Volle Geschäftsfähigkeit</b> (ab Vollendung des 18. Lebensjahres nach § 2 BGB).",
+                        "aVi": "1. <b>Geschäftsunfähigkeit:</b> Trẻ dưới 7 tuổi và người mất trí; giao dịch vô hiệu.<br>2. <b>Beschränkte Geschäftsfähigkeit:</b> Từ 7 đến dưới 18 tuổi; giao dịch treo chờ cha mẹ đồng ý (trừ điều khoản tiền tiêu vặt § 110 BGB).<br>3. <b>Volle Geschäftsfähigkeit:</b> Từ đủ 18 tuổi trở lên.",
+                        "src": "IHK / Berufsschule"
+            }
+]
         },
         {
           "id": "wiko-rg-p2",
           "icon": "",
           "name": "Rechtsgeschäfte · Rechtsgeschäfte",
-          "desc": "Giao dịch pháp lý",
-          "content": "<h2>Rechtsgeschäfte · Rechtsgeschäfte</h2>\n<div class=\"hint\">Gesetzbuch zum Lernen (DE–VI) · BGB</div>\n<h3 class=\"sub\">2.1 Willenserklärung <i>— Tuyên bố ý chí</i></h3>\n  <div class=\"block\">\n    <div class=\"de\"><b>Definition</b> Willenserklärungen sind Äußerungen einer Person, die mit der Absicht vorgenommen werden, eine rechtliche Wirkung herbeizuführen. Sie besteht aus <b>Wille</b> und <b>Erklärung</b>.</div>\n    <div class=\"vi\"><b>Übersetzung</b> Là hành vi/tuyên bố của một người nhằm mục đích tạo ra hậu quả pháp lý. Gồm <b>ý chí</b> (mong muốn) và <b>sự thể hiện</b> ý chí đó.</div>\n  </div>\n\n  <ul>\n    <li class=\"de\"><b>Unmittelbare Handlungen</b> — mündlich, telefonisch, schriftlich, per E-Mail.\n      <div class=\"vi\" style=\"border:none; padding:4px 0 0 0; margin:0;\">Hành động trực tiếp: nói, gọi điện, viết, email.</div>\n    </li>\n    <li class=\"de\" style=\"margin-top:10px;\"><b>Schlüssige Handlungen</b> — Einsteigen in die Straßenbahn, Münzeinwurf, Kopfnicken.\n      <div class=\"vi\" style=\"border:none; padding:4px 0 0 0; margin:0;\">Hành vi ngụ ý: lên tàu điện, bỏ xu vào máy, gật đầu.</div>\n    </li>\n    <li class=\"de\" style=\"margin-top:10px;\"><b>Ausnahmsweise Schweigen</b> — nur, wenn vertraglich vereinbart.\n      <div class=\"vi\" style=\"border:none; padding:4px 0 0 0; margin:0;\">Im lặng (ngoại lệ): chỉ khi đã thỏa thuận trước trong hợp đồng.</div>\n    </li>\n  </ul>\n\n  <h3 class=\"sub\">2.2 Einseitige Rechtsgeschäfte <i>— Giao dịch đơn phương</i></h3>\n  <div class=\"de\">Es wird nur <b>eine</b> Willenserklärung benötigt.</div>\n  <div class=\"vi\">Chỉ cần <b>một</b> tuyên bố ý chí.</div>\n\n  <div class=\"grid2\" style=\"margin-top:14px;\">\n    <div class=\"block\" style=\"margin:0;\">\n      <div class=\"de\" style=\"border-radius:6px;\"><b>Nicht empfangsbedürftig</b><br>Wirksam sofort bei Abgabe.</div>\n      <div class=\"vi\">Không cần người nhận — có hiệu lực ngay khi đưa ra.</div>\n      <div class=\"example\"><b>Beispiel · Ví dụ</b> <span class=\"de\">Testament</span> — <span class=\"vi\" style=\"border:none; padding:0;\">di chúc, có hiệu lực ngay khi viết xong.</span></div>\n    </div>\n    <div class=\"block\" style=\"margin:0;\">\n      <div class=\"de\" style=\"border-radius:6px;\"><b>Empfangsbedürftig</b><br>Wirksam erst bei Zugang.</div>\n      <div class=\"vi\">Cần người nhận — chỉ có hiệu lực khi đến tay người nhận.</div>\n      <div class=\"example\"><b>Beispiel · Ví dụ</b> <span class=\"de\">Kündigung</span> — <span class=\"vi\" style=\"border:none; padding:0;\">thông báo chấm dứt hợp đồng.</span></div>\n    </div>\n  </div>\n\n  <ul style=\"margin-top:16px;\">\n    <li class=\"de\"><b>Unter Anwesenden</b> — wirksam sofort bei Abgabe.\n      <div class=\"vi\" style=\"border:none; padding:4px 0 0 0; margin:0;\">Giữa người có mặt: có hiệu lực ngay khi đưa ra.</div>\n    </li>\n    <li class=\"de\" style=\"margin-top:10px;\"><b>Unter Abwesenden</b> — wirksam bei Zugang (wenn der Empfänger unter normalen Umständen Kenntnis nehmen könnte).\n      <div class=\"vi\" style=\"border:none; padding:4px 0 0 0; margin:0;\">Giữa người vắng mặt: có hiệu lực khi đến nơi (người nhận có thể biết trong điều kiện bình thường).</div>\n    </li>\n  </ul>\n\n  <h3 class=\"sub\">2.3 Zweiseitige (mehrseitige) Rechtsgeschäfte <i>— Giao dịch nhiều bên</i></h3>\n  <div class=\"de\">Mindestens <b>zwei</b> übereinstimmende Willenserklärungen → <b>Verträge</b>: <b>Antrag</b> + <b>Annahme</b>.</div>\n  <div class=\"vi\">Cần ít nhất <b>hai</b> tuyên bố ý chí trùng khớp → gọi là <b>hợp đồng</b>: Đề nghị + Chấp nhận.</div>\n\n  <div class=\"example\"><b>Beispiel · Ví dụ</b> \n    <span class=\"de\"><b>Einseitig verpflichtend:</b> Schenkungsvertrag. <b>Zweiseitig verpflichtend:</b> Kaufvertrag, Mietvertrag, Berufsausbildungsvertrag.</span><br>\n    <span class=\"vi\" style=\"border:none; padding:4px 0 0 0;\">Ràng buộc 1 bên: hợp đồng tặng cho. Ràng buộc 2 bên: hợp đồng mua bán, thuê nhà, học nghề.</span>\n  </div>\n\n  <h3 class=\"sub\">2.4 Formfreiheit &amp; Formzwang <i>— Tự do hình thức &amp; Bắt buộc hình thức</i></h3>\n  <div class=\"block\">\n    <div class=\"de\"><b>Formfreiheit</b> Rechtsgeschäfte können in <b>jeder Form</b> geschlossen werden — mündlich, telefonisch, schriftlich, per E-Mail, schlüssig, ausnahmsweise durch Schweigen.</div>\n    <div class=\"vi\"><b>Tự do hình thức</b> Giao dịch có thể được thực hiện dưới bất kỳ hình thức nào.</div>\n  </div>\n\n  <div class=\"de\">Formzwang dient der <b>Beweissicherung</b>, dem <b>Schutz vor voreiligen Verpflichtungen</b> und der <b>genauen Abgrenzung</b> zwischen Verhandlung und Bindung.</div>\n  <div class=\"vi\">Bắt buộc hình thức nhằm đảm bảo chứng cứ, bảo vệ khỏi cam kết vội vàng, và phân định rõ ràng giữa đàm phán và cam kết ràng buộc.</div>\n\n  <table style=\"margin-top:18px;\">\n    <tbody><tr><th>Form<span style=\"display:block;font-weight:400;font-size:.7rem;\">Hình thức</span></th><th>Anforderung<span style=\"display:block;font-weight:400;font-size:.7rem;\">Yêu cầu</span></th><th>Beispiel<span style=\"display:block;font-weight:400;font-size:.7rem;\">Ví dụ</span></th></tr>\n    <tr>\n      <td><b>Schriftform</b><br><span class=\"para-code\">§126</span></td>\n      <td>Handschriftliche Unterschrift aller Beteiligten.</td>\n      <td>Kündigung, Testament, Verbraucherdarlehen<div class=\"vi-cell\">Đơn nghỉ việc, di chúc, tín dụng tiêu dùng</div></td>\n    </tr>\n    <tr>\n      <td><b>Elektronische Form</b><br><span class=\"para-code\">§126a</span></td>\n      <td>Qualifizierte elektronische Signatur.</td>\n      <td>Online-Banking, Pay-TV<div class=\"vi-cell\">Ngân hàng trực tuyến, truyền hình trả phí</div></td>\n    </tr>\n    <tr>\n      <td><b>Textform</b><br><span class=\"para-code\">§126b</span></td>\n      <td>Lesbare Erklärung, keine Unterschrift nötig.</td>\n      <td>Widerrufsbelehrung, Garantieerklärung<div class=\"vi-cell\">Hướng dẫn hủy hợp đồng, giấy bảo hành</div></td>\n    </tr>\n    <tr>\n      <td><b>Öffentliche Beglaubigung</b><br><span class=\"para-code\">§129</span></td>\n      <td>Notar bestätigt die Echtheit der Unterschrift.</td>\n      <td>Eintrag ins Handelsregister<div class=\"vi-cell\">Đăng ký vào sổ đăng ký thương mại</div></td>\n    </tr>\n    <tr>\n      <td><b>Notarielle Beurkundung</b><br><span class=\"para-code\">§128</span></td>\n      <td>Notar bestätigt Unterschrift und Inhalt.</td>\n      <td>Ehevertrag, Grundstückskauf<div class=\"vi-cell\">Hợp đồng hôn nhân, mua bán đất đai</div></td>\n    </tr>\n  </tbody></table>\n\n  <div class=\"note\"><b>Besonderheit · Lưu ý đặc biệt</b> \n    <span class=\"de\">Ein privates Testament muss <b>vollständig handschriftlich</b> verfasst und unterschrieben sein — getippt und nur unterschrieben ist formwidrig und <b>nichtig</b>.</span><br>\n    <span class=\"vi\" style=\"border:none; padding:0;\">Di chúc riêng phải viết tay hoàn toàn và ký tên — nếu đánh máy dù có ký tay vẫn vi phạm hình thức và vô hiệu.</span>\n  </div>\n  <div class=\"note\"><b>Rechtsfolge · Hậu quả pháp lý</b> \n    <span class=\"de\">Verstoß gegen Formzwang → das Rechtsgeschäft ist <b>nichtig</b>. <span class=\"para-code\">§125 BGB</span></span><br>\n    <span class=\"vi\" style=\"border:none; padding:0;\">Vi phạm hình thức bắt buộc → giao dịch vô hiệu.</span>\n  </div>\n\n  <h3 class=\"sub\">2.5 Anfechtbare Rechtsgeschäfte <i>— Giao dịch có thể bị hủy bỏ</i></h3>\n  <div class=\"block\">\n    <div class=\"de\"><b>Definition</b> Die <b>Anfechtung</b> ist eine Willenserklärung, die ein Rechtsgeschäft rückwirkend unwirksam macht. Bis zur Anfechtung ist das Geschäft voll rechtswirksam; danach ist es von Anfang an nichtig.</div>\n    <div class=\"vi\"><b>Übersetzung</b> Là tuyên bố ý chí làm cho một giao dịch vô hiệu hồi tố. Trước khi bị hủy, giao dịch vẫn có hiệu lực đầy đủ; sau khi hủy, vô hiệu từ đầu.</div>\n  </div>\n\n  <ol>\n    <li class=\"de\"><b>Irrtum</b> — Erklärungsirrtum oder falsche Übermittlung.\n      <div class=\"vi\" style=\"border:none; padding:4px 0 0 0; margin:0;\">Nhầm lẫn — sai sót khi tuyên bố hoặc truyền đạt sai.</div>\n      <div class=\"example\"><b>Beispiel · Ví dụ</b> <span class=\"de\">Ein Handwerker verschreibt sich beim Preis: 840 € statt 740 €.</span><br><span class=\"vi\" style=\"border:none; padding:0;\">Thợ thủ công viết nhầm giá 740€ thay vì 840€.</span></div>\n    </li>\n    <li class=\"de\" style=\"margin-top:14px;\"><b>Arglistige Täuschung</b> — Vorspiegeln falscher oder Unterdrücken wahrer Tatsachen.\n      <div class=\"vi\" style=\"border:none; padding:4px 0 0 0; margin:0;\">Lừa dối cố ý — đưa thông tin sai hoặc che giấu sự thật.</div>\n      <div class=\"example\"><b>Beispiel · Ví dụ</b> <span class=\"de\">Ein Verkäufer bezeichnet Parkett \"2. Wahl\" als \"1. Wahl\".</span><br><span class=\"vi\" style=\"border:none; padding:0;\">Người bán gọi sàn gỗ \"hạng 2\" là \"hạng 1\".</span></div>\n    </li>\n    <li class=\"de\" style=\"margin-top:14px;\"><b>Widerrechtliche Drohung</b> — Androhung eines Übels bei Weigerung.\n      <div class=\"vi\" style=\"border:none; padding:4px 0 0 0; margin:0;\">Đe dọa trái pháp luật — đe dọa gây hại nếu từ chối.</div>\n    </li>\n  </ol>\n\n  <div class=\"note\"><b>Nicht anfechtbar · Không thể hủy</b> \n    <span class=\"de\"><b>Motivirrtum</b> — Irrtum über Beweggründe oder das erwartete Ergebnis.</span><br>\n    <span class=\"vi\" style=\"border:none; padding:0;\">Nhầm lẫn về động cơ hoặc kết quả mong muốn không xảy ra — VD: Karl tặng nhẫn cho Karin, Karin không thích, Karl không thể hủy hợp đồng mua bán vì lý do này.</span>\n  </div>\n\n  <h3 class=\"sub\">2.6 Nichtige Rechtsgeschäfte <i>— Giao dịch vô hiệu ngay từ đầu</i></h3>\n  <div class=\"de\">Rechtsgeschäfte, die von Anfang an unwirksam sind — ohne dass eine Anfechtung nötig ist.</div>\n  <div class=\"vi\">Giao dịch vô hiệu tuyệt đối ngay từ đầu, không cần ai tuyên bố hủy.</div>\n\n  <table>\n    <tbody><tr><th>Mangel<span style=\"display:block;font-weight:400;font-size:.7rem;\">Khiếm khuyết</span></th><th>Beispiel<span style=\"display:block;font-weight:400;font-size:.7rem;\">Ví dụ</span></th></tr>\n    <tr><td><b>Mangel der Geschäftsfähigkeit</b><br><span class=\"para-code\">§105</span></td><td>Geschäft eines Geschäftsunfähigen<div class=\"vi-cell\">Giao dịch của người mất năng lực hành vi</div></td></tr>\n    <tr><td><b>Schein-/Scherzgeschäft</b><br><span class=\"para-code\">§117, §118</span></td><td>Kaufpreis im Vertrag falsch angegeben (Steuerhinterziehung); \"Verkauf\" eines Autos für 9,99 € im Spaß<div class=\"vi-cell\">Ghi sai giá để trốn thuế; \"bán\" xe giá 9,99€ trong lúc đùa</div></td></tr>\n    <tr><td><b>Verstoß gegen gesetzliches Verbot</b><br><span class=\"para-code\">§134</span></td><td>Drogen-, Waffenhandel<div class=\"vi-cell\">Buôn ma túy, vũ khí</div></td></tr>\n    <tr><td><b>Verstoß gegen Formvorschrift</b><br><span class=\"para-code\">§125</span></td><td>Mündlicher Verbraucherkredit; Grundstückskauf ohne Notar<div class=\"vi-cell\">Tín dụng tiêu dùng chỉ thỏa thuận miệng; mua đất không qua công chứng</div></td></tr>\n    <tr><td><b>Sittenwidrigkeit</b><br><span class=\"para-code\">§138</span></td><td>Kredit mit 45–50 % Zinsen<div class=\"vi-cell\">Vay với lãi suất 45-50%</div></td></tr>\n  </tbody></table>\n\n  <table>\n    <tbody><tr><th></th><th>Anfechtbar</th><th>Nichtig</th></tr>\n    <tr><td>Anfängliche Wirkung<div class=\"vi-cell\">Hiệu lực ban đầu</div></td><td>Voll gültig bis zur Anfechtung</td><td>Von Anfang an unwirksam</td></tr>\n    <tr><td>Nach Entdeckung<div class=\"vi-cell\">Sau khi phát hiện</div></td><td>Anfechtung nötig (rückwirkend)</td><td>Automatisch nichtig</td></tr>\n    <tr><td>Ursache<div class=\"vi-cell\">Nguyên nhân</div></td><td>Irrtum, Täuschung, Drohung</td><td>Geschäftsunfähigkeit, Schein-/Scherzgeschäft, Formmangel, Sittenwidrigkeit</td></tr>\n  </tbody></table>"
+          "desc": "Willenserklärungen, ein- & mehrseitige Rechtsgeschäfte, Formvorschriften & Anfechtung",
+          "content": "<h2>Rechtsgeschäfte · Rechtsgeschäfte</h2>\n<div class=\"hint\">Gesetzbuch zum Lernen (DE–VI) · BGB</div>\n<h3 class=\"sub\">2.1 Willenserklärung <span class=\'vi-sub\'>— Tuyên bố ý chí</span></h3>\n  <div class=\"block\">\n    <div class=\"de\"><b>Definition</b> Willenserklärungen sind Äußerungen einer Person, die mit der Absicht vorgenommen werden, eine rechtliche Wirkung herbeizuführen. Sie besteht aus <b>Wille</b> und <b>Erklärung</b>.</div>\n    <div class=\"vi\"><b>Übersetzung</b> Là hành vi/tuyên bố của một người nhằm mục đích tạo ra hậu quả pháp lý. Gồm <b>ý chí</b> (mong muốn) và <b>sự thể hiện</b> ý chí đó.</div>\n  </div>\n\n  <ul>\n    <li class=\"de\"><b>Unmittelbare Handlungen</b> — mündlich, telefonisch, schriftlich, per E-Mail.\n      <div class=\"vi\" style=\"border:none; padding:4px 0 0 0; margin:0;\">Hành động trực tiếp: nói, gọi điện, viết, email.</div>\n    </li>\n    <li class=\"de\" style=\"margin-top:10px;\"><b>Schlüssige Handlungen</b> — Einsteigen in die Straßenbahn, Münzeinwurf, Kopfnicken.\n      <div class=\"vi\" style=\"border:none; padding:4px 0 0 0; margin:0;\">Hành vi ngụ ý: lên tàu điện, bỏ xu vào máy, gật đầu.</div>\n    </li>\n    <li class=\"de\" style=\"margin-top:10px;\"><b>Ausnahmsweise Schweigen</b> — nur, wenn vertraglich vereinbart.\n      <div class=\"vi\" style=\"border:none; padding:4px 0 0 0; margin:0;\">Im lặng (ngoại lệ): chỉ khi đã thỏa thuận trước trong hợp đồng.</div>\n    </li>\n  </ul>\n\n  <h3 class=\"sub\">2.2 Einseitige Rechtsgeschäfte <span class=\'vi-sub\'>— Giao dịch đơn phương</span></h3>\n  <div class=\"de\">Es wird nur <b>eine</b> Willenserklärung benötigt.</div>\n  <div class=\"vi\">Chỉ cần <b>một</b> tuyên bố ý chí.</div>\n\n  <div class=\"grid2\" style=\"margin-top:14px;\">\n    <div class=\"block\" style=\"margin:0;\">\n      <div class=\"de\" style=\"border-radius:6px;\"><b>Nicht empfangsbedürftig</b><br>Wirksam sofort bei Abgabe.</div>\n      <div class=\"vi\">Không cần người nhận — có hiệu lực ngay khi đưa ra.</div>\n      <div class=\"example\"><b>Beispiel · Ví dụ</b> <span class=\"de\">Testament</span> — <span class=\"vi\" style=\"border:none; padding:0;\">di chúc, có hiệu lực ngay khi viết xong.</span></div>\n    </div>\n    <div class=\"block\" style=\"margin:0;\">\n      <div class=\"de\" style=\"border-radius:6px;\"><b>Empfangsbedürftig</b><br>Wirksam erst bei Zugang.</div>\n      <div class=\"vi\">Cần người nhận — chỉ có hiệu lực khi đến tay người nhận.</div>\n      <div class=\"example\"><b>Beispiel · Ví dụ</b> <span class=\"de\">Kündigung</span> — <span class=\"vi\" style=\"border:none; padding:0;\">thông báo chấm dứt hợp đồng.</span></div>\n    </div>\n  </div>\n\n  <ul style=\"margin-top:16px;\">\n    <li class=\"de\"><b>Unter Anwesenden</b> — wirksam sofort bei Abgabe.\n      <div class=\"vi\" style=\"border:none; padding:4px 0 0 0; margin:0;\">Giữa người có mặt: có hiệu lực ngay khi đưa ra.</div>\n    </li>\n    <li class=\"de\" style=\"margin-top:10px;\"><b>Unter Abwesenden</b> — wirksam bei Zugang (wenn der Empfänger unter normalen Umständen Kenntnis nehmen könnte).\n      <div class=\"vi\" style=\"border:none; padding:4px 0 0 0; margin:0;\">Giữa người vắng mặt: có hiệu lực khi đến nơi (người nhận có thể biết trong điều kiện bình thường).</div>\n    </li>\n  </ul>\n\n  <h3 class=\"sub\">2.3 Zweiseitige (mehrseitige) Rechtsgeschäfte <span class=\'vi-sub\'>— Giao dịch nhiều bên</span></h3>\n  <div class=\"de\">Mindestens <b>zwei</b> übereinstimmende Willenserklärungen → <b>Verträge</b>: <b>Antrag</b> + <b>Annahme</b>.</div>\n  <div class=\"vi\">Cần ít nhất <b>hai</b> tuyên bố ý chí trùng khớp → gọi là <b>hợp đồng</b>: Đề nghị + Chấp nhận.</div>\n\n  <div class=\"example\"><b>Beispiel · Ví dụ</b> \n    <span class=\"de\"><b>Einseitig verpflichtend:</b> Schenkungsvertrag. <b>Zweiseitig verpflichtend:</b> Kaufvertrag, Mietvertrag, Berufsausbildungsvertrag.</span><br>\n    <span class=\"vi\" style=\"border:none; padding:4px 0 0 0;\">Ràng buộc 1 bên: hợp đồng tặng cho. Ràng buộc 2 bên: hợp đồng mua bán, thuê nhà, học nghề.</span>\n  </div>\n\n  <h3 class=\"sub\">2.4 Formfreiheit &amp; Formzwang <span class=\'vi-sub\'>— Tự do hình thức &amp; Bắt buộc hình thức</span></h3>\n  <div class=\"block\">\n    <div class=\"de\"><b>Formfreiheit</b> Rechtsgeschäfte können in <b>jeder Form</b> geschlossen werden — mündlich, telefonisch, schriftlich, per E-Mail, schlüssig, ausnahmsweise durch Schweigen.</div>\n    <div class=\"vi\"><b>Tự do hình thức</b> Giao dịch có thể được thực hiện dưới bất kỳ hình thức nào.</div>\n  </div>\n\n  <div class=\"de\">Formzwang dient der <b>Beweissicherung</b>, dem <b>Schutz vor voreiligen Verpflichtungen</b> und der <b>genauen Abgrenzung</b> zwischen Verhandlung und Bindung.</div>\n  <div class=\"vi\">Bắt buộc hình thức nhằm đảm bảo chứng cứ, bảo vệ khỏi cam kết vội vàng, và phân định rõ ràng giữa đàm phán và cam kết ràng buộc.</div>\n\n  <table style=\"margin-top:18px;\">\n    <tbody><tr><th>Form<span style=\"display:block;font-weight:400;font-size:.7rem;\">Hình thức</span></th><th>Anforderung<span style=\"display:block;font-weight:400;font-size:.7rem;\">Yêu cầu</span></th><th>Beispiel<span style=\"display:block;font-weight:400;font-size:.7rem;\">Ví dụ</span></th></tr>\n    <tr>\n      <td><b>Schriftform</b><br><span class=\"para-code\">§126</span></td>\n      <td>Handschriftliche Unterschrift aller Beteiligten.</td>\n      <td>Kündigung, Testament, Verbraucherdarlehen<div class=\"vi-cell\">Đơn nghỉ việc, di chúc, tín dụng tiêu dùng</div></td>\n    </tr>\n    <tr>\n      <td><b>Elektronische Form</b><br><span class=\"para-code\">§126a</span></td>\n      <td>Qualifizierte elektronische Signatur.</td>\n      <td>Online-Banking, Pay-TV<div class=\"vi-cell\">Ngân hàng trực tuyến, truyền hình trả phí</div></td>\n    </tr>\n    <tr>\n      <td><b>Textform</b><br><span class=\"para-code\">§126b</span></td>\n      <td>Lesbare Erklärung, keine Unterschrift nötig.</td>\n      <td>Widerrufsbelehrung, Garantieerklärung<div class=\"vi-cell\">Hướng dẫn hủy hợp đồng, giấy bảo hành</div></td>\n    </tr>\n    <tr>\n      <td><b>Öffentliche Beglaubigung</b><br><span class=\"para-code\">§129</span></td>\n      <td>Notar bestätigt die Echtheit der Unterschrift.</td>\n      <td>Eintrag ins Handelsregister<div class=\"vi-cell\">Đăng ký vào sổ đăng ký thương mại</div></td>\n    </tr>\n    <tr>\n      <td><b>Notarielle Beurkundung</b><br><span class=\"para-code\">§128</span></td>\n      <td>Notar bestätigt Unterschrift und Inhalt.</td>\n      <td>Ehevertrag, Grundstückskauf<div class=\"vi-cell\">Hợp đồng hôn nhân, mua bán đất đai</div></td>\n    </tr>\n  </tbody></table>\n\n  <div class=\"note\"><b>Besonderheit · Lưu ý đặc biệt</b> \n    <span class=\"de\">Ein privates Testament muss <b>vollständig handschriftlich</b> verfasst und unterschrieben sein — getippt und nur unterschrieben ist formwidrig und <b>nichtig</b>.</span><br>\n    <span class=\"vi\" style=\"border:none; padding:0;\">Di chúc riêng phải viết tay hoàn toàn và ký tên — nếu đánh máy dù có ký tay vẫn vi phạm hình thức và vô hiệu.</span>\n  </div>\n  <div class=\"note\"><b>Rechtsfolge · Hậu quả pháp lý</b> \n    <span class=\"de\">Verstoß gegen Formzwang → das Rechtsgeschäft ist <b>nichtig</b>. <span class=\"para-code\">§125 BGB</span></span><br>\n    <span class=\"vi\" style=\"border:none; padding:0;\">Vi phạm hình thức bắt buộc → giao dịch vô hiệu.</span>\n  </div>\n\n  <h3 class=\"sub\">2.5 Anfechtbare Rechtsgeschäfte <span class=\'vi-sub\'>— Giao dịch có thể bị hủy bỏ</span></h3>\n  <div class=\"block\">\n    <div class=\"de\"><b>Definition</b> Die <b>Anfechtung</b> ist eine Willenserklärung, die ein Rechtsgeschäft rückwirkend unwirksam macht. Bis zur Anfechtung ist das Geschäft voll rechtswirksam; danach ist es von Anfang an nichtig.</div>\n    <div class=\"vi\"><b>Übersetzung</b> Là tuyên bố ý chí làm cho một giao dịch vô hiệu hồi tố. Trước khi bị hủy, giao dịch vẫn có hiệu lực đầy đủ; sau khi hủy, vô hiệu từ đầu.</div>\n  </div>\n\n  <ol>\n    <li class=\"de\"><b>Irrtum</b> — Erklärungsirrtum oder falsche Übermittlung.\n      <div class=\"vi\" style=\"border:none; padding:4px 0 0 0; margin:0;\">Nhầm lẫn — sai sót khi tuyên bố hoặc truyền đạt sai.</div>\n      <div class=\"example\"><b>Beispiel · Ví dụ</b> <span class=\"de\">Ein Handwerker verschreibt sich beim Preis: 840 € statt 740 €.</span><br><span class=\"vi\" style=\"border:none; padding:0;\">Thợ thủ công viết nhầm giá 740€ thay vì 840€.</span></div>\n    </li>\n    <li class=\"de\" style=\"margin-top:14px;\"><b>Arglistige Täuschung</b> — Vorspiegeln falscher oder Unterdrücken wahrer Tatsachen.\n      <div class=\"vi\" style=\"border:none; padding:4px 0 0 0; margin:0;\">Lừa dối cố ý — đưa thông tin sai hoặc che giấu sự thật.</div>\n      <div class=\"example\"><b>Beispiel · Ví dụ</b> <span class=\"de\">Ein Verkäufer bezeichnet Parkett \"2. Wahl\" als \"1. Wahl\".</span><br><span class=\"vi\" style=\"border:none; padding:0;\">Người bán gọi sàn gỗ \"hạng 2\" là \"hạng 1\".</span></div>\n    </li>\n    <li class=\"de\" style=\"margin-top:14px;\"><b>Widerrechtliche Drohung</b> — Androhung eines Übels bei Weigerung.\n      <div class=\"vi\" style=\"border:none; padding:4px 0 0 0; margin:0;\">Đe dọa trái pháp luật — đe dọa gây hại nếu từ chối.</div>\n    </li>\n  </ol>\n\n  <div class=\"note\"><b>Nicht anfechtbar · Không thể hủy</b> \n    <span class=\"de\"><b>Motivirrtum</b> — Irrtum über Beweggründe oder das erwartete Ergebnis.</span><br>\n    <span class=\"vi\" style=\"border:none; padding:0;\">Nhầm lẫn về động cơ hoặc kết quả mong muốn không xảy ra — VD: Karl tặng nhẫn cho Karin, Karin không thích, Karl không thể hủy hợp đồng mua bán vì lý do này.</span>\n  </div>\n\n  <h3 class=\"sub\">2.6 Nichtige Rechtsgeschäfte <span class=\'vi-sub\'>— Giao dịch vô hiệu ngay từ đầu</span></h3>\n  <div class=\"de\">Rechtsgeschäfte, die von Anfang an unwirksam sind — ohne dass eine Anfechtung nötig ist.</div>\n  <div class=\"vi\">Giao dịch vô hiệu tuyệt đối ngay từ đầu, không cần ai tuyên bố hủy.</div>\n\n  <table>\n    <tbody><tr><th>Mangel<span style=\"display:block;font-weight:400;font-size:.7rem;\">Khiếm khuyết</span></th><th>Beispiel<span style=\"display:block;font-weight:400;font-size:.7rem;\">Ví dụ</span></th></tr>\n    <tr><td><b>Mangel der Geschäftsfähigkeit</b><br><span class=\"para-code\">§105</span></td><td>Geschäft eines Geschäftsunfähigen<div class=\"vi-cell\">Giao dịch của người mất năng lực hành vi</div></td></tr>\n    <tr><td><b>Schein-/Scherzgeschäft</b><br><span class=\"para-code\">§117, §118</span></td><td>Kaufpreis im Vertrag falsch angegeben (Steuerhinterziehung); \"Verkauf\" eines Autos für 9,99 € im Spaß<div class=\"vi-cell\">Ghi sai giá để trốn thuế; \"bán\" xe giá 9,99€ trong lúc đùa</div></td></tr>\n    <tr><td><b>Verstoß gegen gesetzliches Verbot</b><br><span class=\"para-code\">§134</span></td><td>Drogen-, Waffenhandel<div class=\"vi-cell\">Buôn ma túy, vũ khí</div></td></tr>\n    <tr><td><b>Verstoß gegen Formvorschrift</b><br><span class=\"para-code\">§125</span></td><td>Mündlicher Verbraucherkredit; Grundstückskauf ohne Notar<div class=\"vi-cell\">Tín dụng tiêu dùng chỉ thỏa thuận miệng; mua đất không qua công chứng</div></td></tr>\n    <tr><td><b>Sittenwidrigkeit</b><br><span class=\"para-code\">§138</span></td><td>Kredit mit 45–50 % Zinsen<div class=\"vi-cell\">Vay với lãi suất 45-50%</div></td></tr>\n  </tbody></table>\n\n  <table>\n    <tbody><tr><th></th><th>Anfechtbar</th><th>Nichtig</th></tr>\n    <tr><td>Anfängliche Wirkung<div class=\"vi-cell\">Hiệu lực ban đầu</div></td><td>Voll gültig bis zur Anfechtung</td><td>Von Anfang an unwirksam</td></tr>\n    <tr><td>Nach Entdeckung<div class=\"vi-cell\">Sau khi phát hiện</div></td><td>Anfechtung nötig (rückwirkend)</td><td>Automatisch nichtig</td></tr>\n    <tr><td>Ursache<div class=\"vi-cell\">Nguyên nhân</div></td><td>Irrtum, Täuschung, Drohung</td><td>Geschäftsunfähigkeit, Schein-/Scherzgeschäft, Formmangel, Sittenwidrigkeit</td></tr>\n  </tbody></table>"
+        ,
+          "qa": [
+            {
+                        "q": "Was ist der Unterschied zwischen einem einseitigen und einem zweiseitigen Rechtsgeschäft?",
+                        "qVi": "Sự khác biệt giữa giao dịch pháp lý đơn phương và giao dịch hai/nhiều bên là gì?",
+                        "a": "Ein <b>einseitiges Rechtsgeschäft</b> erfordert nur <b>eine Willenserklärung</b> (z. B. Kündigung, Testament, Mahnung, Anfechtung). Ein <b>zweiseitiges Rechtsgeschäft (Vertrag)</b> erfordert <b>zwei übereinstimmende Willenserklärungen</b> (Antrag und Annahme, z. B. Kaufvertrag, Mietvertrag, Arbeitsvertrag).",
+                        "aVi": "<b>Giao dịch đơn phương:</b> Chỉ cần <b>một tuyên bố ý chí</b> (sa thải, di chúc). <b>Giao dịch hai bên:</b> Cần <b>hai tuyên bố ý chí phù hợp nhau</b> (hợp đồng mua bán, thuê nhà, việc làm).",
+                        "src": "IHK / Berufsschule"
+            },
+            {
+                        "q": "Was bedeutet der Begriff 'Anfechtbarkeit' im Gegensatz zur 'Nichtigkeit' eines Rechtsgeschäfts?",
+                        "qVi": "Khái niệm 'giao dịch có thể bị hủy (Anfechtbar)' khác gì với 'giao dịch vô hiệu (Nichtig)'?",
+                        "a": "Ein <b>nichtiges Rechtsgeschäft</b> ist von Anfang an <b>vollkommen unwirksam</b> (§§ 105, 134, 138 BGB). Ein <b>anfechtbares Rechtsgeschäft</b> ist zunächst <b>voll wirksam</b>, wird aber durch eine erfolgreiche Anfechtung (z. B. wegen Irrtums § 119 BGB oder arglistiger Täuschung / Drohung § 123 BGB) rückwirkend von Anfang an (ex tunc) nichtig.",
+                        "aVi": "<b>Nichtig:</b> Vô hiệu hoàn toàn ngay từ đầu. <b>Anfechtbar:</b> Ban đầu có hiệu lực, nhưng nếu khiếu nại hủy hợp pháp (do nhầm lẫn hoặc lừa dối) thì sẽ trở nên vô hiệu hồi tố từ đầu.",
+                        "src": "IHK / Berufsschule"
+            }
+]
         },
         {
           "id": "wiko-rg-p3",
           "icon": "",
           "name": "Rechtsgeschäfte · Eigentum & Besitz",
-          "desc": "Quyền sở hữu & Quyền chiếm hữu",
-          "content": "<h2>Rechtsgeschäfte · Eigentum & Besitz</h2>\n<div class=\"hint\">Gesetzbuch zum Lernen (DE–VI) · BGB</div>\n<div class=\"grid2\">\n    <div class=\"block\" style=\"margin:0;\">\n      <div class=\"de\" style=\"border-radius:6px;\"><b>Besitz</b> <span class=\"para-code\">§854</span><br>Tatsächliche Gewalt über eine Sache.</div>\n      <div class=\"vi\">Nắm giữ thực tế và được phép sử dụng đồ vật.</div>\n    </div>\n    <div class=\"block\" style=\"margin:0;\">\n      <div class=\"de\" style=\"border-radius:6px;\"><b>Eigentum</b><br>Rechtliche Verfügungsgewalt einer Person über Sachen.</div>\n      <div class=\"vi\">Quyền định đoạt hợp pháp — được phép bán, thay đổi đồ vật.</div>\n    </div>\n  </div>\n\n  <div class=\"de\" style=\"margin-top:16px;\">Besitz und Eigentum können <b>auseinanderfallen</b>.</div>\n  <div class=\"vi\">Chiếm hữu và sở hữu có thể tách rời nhau.</div>\n\n  <div class=\"example\"><b>Beispiel · Ví dụ</b> \n    <span class=\"de\">Herr Fuchs vermietet das Haus an Herrn Vogel → <b>Vogel = Besitzer</b>, <b>Fuchs = Eigentümer</b>.</span><br>\n    <span class=\"vi\" style=\"border:none; padding:4px 0 0 0;\">Ông Fuchs cho ông Vogel thuê nhà → Vogel là người chiếm hữu (sử dụng thực tế), Fuchs là chủ sở hữu hợp pháp.</span>\n  </div>\n\n  <h3 class=\"sub\">3.1 Eigentumsübergang <i>— Chuyển giao quyền sở hữu</i></h3>\n  <div class=\"grid2\">\n    <div class=\"block\" style=\"margin:0;\">\n      <div class=\"de\" style=\"border-radius:6px;\"><b>Bewegliche Sachen</b><br>Durch <b>Einigung</b> + <b>Übergabe</b>. <span class=\"para-code\">§929</span></div>\n      <div class=\"vi\">Động sản: qua thỏa thuận + giao đồ vật.</div>\n    </div>\n    <div class=\"block\" style=\"margin:0;\">\n      <div class=\"de\" style=\"border-radius:6px;\"><b>Unbewegliche Sachen</b><br>Durch <b>Auflassung</b> (Notar) + <b>Eintragung ins Grundbuch</b>.</div>\n      <div class=\"vi\">Bất động sản: qua thỏa thuận trước công chứng + đăng ký vào sổ địa chính.</div>\n    </div>\n  </div>\n\n  <table style=\"margin-top:18px;\">\n    <tbody><tr><th>Situation<span style=\"display:block;font-weight:400;font-size:.7rem;\">Tình huống</span></th><th>Übergang durch<span style=\"display:block;font-weight:400;font-size:.7rem;\">Chuyển giao qua</span></th></tr>\n    <tr><td>Sache beim Verkäufer<div class=\"vi-cell\">Hàng ở chỗ người bán</div></td><td>Einigung + Übergabe</td></tr>\n    <tr><td>Sache schon beim Käufer<div class=\"vi-cell\">Hàng đã ở chỗ người mua</div></td><td>Nur Einigung</td></tr>\n    <tr><td>Käufer wird Eigentümer, Verkäufer bleibt im Besitz (Besitzkonstitut)<div class=\"vi-cell\">Người bán vẫn giữ đồ</div></td><td>Einigung + Besitzmittlungsverhältnis</td></tr>\n    <tr><td>Sache bei einem Dritten<div class=\"vi-cell\">Đồ ở nơi bên thứ ba</div></td><td>Einigung + Abtretung des Herausgabeanspruchs</td></tr>\n  </tbody></table>\n\n  <h3 class=\"sub\">3.2 Eigentumsvorbehalt <i>— Bảo lưu quyền sở hữu</i></h3>\n  <div class=\"de\">Der Käufer wird sofort <b>Besitzer</b>, der Verkäufer bleibt bis zur vollständigen Zahlung <b>Eigentümer</b>.</div>\n  <div class=\"vi\">Người mua nhận đồ ngay (trở thành người chiếm hữu), nhưng người bán vẫn là chủ sở hữu cho đến khi được thanh toán đầy đủ.</div>\n\n  <div class=\"de\" style=\"margin-top:14px;\">Der Eigentumsvorbehalt erlischt bei: vollständiger Zahlung, Verarbeitung der Ware, Rücktritt vom Vertrag, oder Weitergabe an einen gutgläubigen Dritten.</div>\n  <div class=\"vi\">Bảo lưu quyền sở hữu hết hiệu lực khi: thanh toán đủ, hàng bị chế biến, hủy hợp đồng, hoặc chuyển cho bên thứ ba ngay tình.</div>\n\n  <h3 class=\"sub\">3.3 Gutgläubiger Erwerb <i>— Mua bán ngay tình (thiện chí)</i></h3>\n  <div class=\"block\">\n    <div class=\"de\"><b>§932 BGB</b> Konnte der Erwerber nicht wissen, dass die Sache nicht im Eigentum des Veräußerers stand, wird er trotzdem Eigentümer.</div>\n    <div class=\"vi\"><b>Übersetzung</b> Nếu người mua không thể biết rằng người bán không phải chủ sở hữu thực sự, người mua vẫn trở thành chủ sở hữu hợp pháp.</div>\n  </div>\n  <div class=\"note\"><b>Ausnahme · Ngoại lệ</b> \n    <span class=\"de\">Gilt <b>nicht</b> bei gestohlenen, verlorenen oder abhandengekommenen Sachen. <span class=\"para-code\">§935</span></span><br>\n    <span class=\"vi\" style=\"border:none; padding:0;\">Không áp dụng đối với đồ bị trộm cắp, thất lạc hoặc bị mất ngoài ý muốn — dù người mua có ngay tình đến đâu.</span>\n  </div>"
+          "desc": "Eigentumsübergang (§ 929 BGB), Eigentumsvorbehalt & gutgläubiger Erwerb",
+          "content": "<h2>Rechtsgeschäfte · Eigentum & Besitz</h2>\n<div class=\"hint\">Gesetzbuch zum Lernen (DE–VI) · BGB</div>\n<div class=\"grid2\">\n    <div class=\"block\" style=\"margin:0;\">\n      <div class=\"de\" style=\"border-radius:6px;\"><b>Besitz</b> <span class=\"para-code\">§854</span><br>Tatsächliche Gewalt über eine Sache.</div>\n      <div class=\"vi\">Nắm giữ thực tế và được phép sử dụng đồ vật.</div>\n    </div>\n    <div class=\"block\" style=\"margin:0;\">\n      <div class=\"de\" style=\"border-radius:6px;\"><b>Eigentum</b><br>Rechtliche Verfügungsgewalt einer Person über Sachen.</div>\n      <div class=\"vi\">Quyền định đoạt hợp pháp — được phép bán, thay đổi đồ vật.</div>\n    </div>\n  </div>\n\n  <div class=\"de\" style=\"margin-top:16px;\">Besitz und Eigentum können <b>auseinanderfallen</b>.</div>\n  <div class=\"vi\">Chiếm hữu và sở hữu có thể tách rời nhau.</div>\n\n  <div class=\"example\"><b>Beispiel · Ví dụ</b> \n    <span class=\"de\">Herr Fuchs vermietet das Haus an Herrn Vogel → <b>Vogel = Besitzer</b>, <b>Fuchs = Eigentümer</b>.</span><br>\n    <span class=\"vi\" style=\"border:none; padding:4px 0 0 0;\">Ông Fuchs cho ông Vogel thuê nhà → Vogel là người chiếm hữu (sử dụng thực tế), Fuchs là chủ sở hữu hợp pháp.</span>\n  </div>\n\n  <h3 class=\"sub\">3.1 Eigentumsübergang <span class=\'vi-sub\'>— Chuyển giao quyền sở hữu</span></h3>\n  <div class=\"grid2\">\n    <div class=\"block\" style=\"margin:0;\">\n      <div class=\"de\" style=\"border-radius:6px;\"><b>Bewegliche Sachen</b><br>Durch <b>Einigung</b> + <b>Übergabe</b>. <span class=\"para-code\">§929</span></div>\n      <div class=\"vi\">Động sản: qua thỏa thuận + giao đồ vật.</div>\n    </div>\n    <div class=\"block\" style=\"margin:0;\">\n      <div class=\"de\" style=\"border-radius:6px;\"><b>Unbewegliche Sachen</b><br>Durch <b>Auflassung</b> (Notar) + <b>Eintragung ins Grundbuch</b>.</div>\n      <div class=\"vi\">Bất động sản: qua thỏa thuận trước công chứng + đăng ký vào sổ địa chính.</div>\n    </div>\n  </div>\n\n  <table style=\"margin-top:18px;\">\n    <tbody><tr><th>Situation<span style=\"display:block;font-weight:400;font-size:.7rem;\">Tình huống</span></th><th>Übergang durch<span style=\"display:block;font-weight:400;font-size:.7rem;\">Chuyển giao qua</span></th></tr>\n    <tr><td>Sache beim Verkäufer<div class=\"vi-cell\">Hàng ở chỗ người bán</div></td><td>Einigung + Übergabe</td></tr>\n    <tr><td>Sache schon beim Käufer<div class=\"vi-cell\">Hàng đã ở chỗ người mua</div></td><td>Nur Einigung</td></tr>\n    <tr><td>Käufer wird Eigentümer, Verkäufer bleibt im Besitz (Besitzkonstitut)<div class=\"vi-cell\">Người bán vẫn giữ đồ</div></td><td>Einigung + Besitzmittlungsverhältnis</td></tr>\n    <tr><td>Sache bei einem Dritten<div class=\"vi-cell\">Đồ ở nơi bên thứ ba</div></td><td>Einigung + Abtretung des Herausgabeanspruchs</td></tr>\n  </tbody></table>\n\n  <h3 class=\"sub\">3.2 Eigentumsvorbehalt <span class=\'vi-sub\'>— Bảo lưu quyền sở hữu</span></h3>\n  <div class=\"de\">Der Käufer wird sofort <b>Besitzer</b>, der Verkäufer bleibt bis zur vollständigen Zahlung <b>Eigentümer</b>.</div>\n  <div class=\"vi\">Người mua nhận đồ ngay (trở thành người chiếm hữu), nhưng người bán vẫn là chủ sở hữu cho đến khi được thanh toán đầy đủ.</div>\n\n  <div class=\"de\" style=\"margin-top:14px;\">Der Eigentumsvorbehalt erlischt bei: vollständiger Zahlung, Verarbeitung der Ware, Rücktritt vom Vertrag, oder Weitergabe an einen gutgläubigen Dritten.</div>\n  <div class=\"vi\">Bảo lưu quyền sở hữu hết hiệu lực khi: thanh toán đủ, hàng bị chế biến, hủy hợp đồng, hoặc chuyển cho bên thứ ba ngay tình.</div>\n\n  <h3 class=\"sub\">3.3 Gutgläubiger Erwerb <span class=\'vi-sub\'>— Mua bán ngay tình (thiện chí)</span></h3>\n  <div class=\"block\">\n    <div class=\"de\"><b>§932 BGB</b> Konnte der Erwerber nicht wissen, dass die Sache nicht im Eigentum des Veräußerers stand, wird er trotzdem Eigentümer.</div>\n    <div class=\"vi\"><b>Übersetzung</b> Nếu người mua không thể biết rằng người bán không phải chủ sở hữu thực sự, người mua vẫn trở thành chủ sở hữu hợp pháp.</div>\n  </div>\n  <div class=\"note\"><b>Ausnahme · Ngoại lệ</b> \n    <span class=\"de\">Gilt <b>nicht</b> bei gestohlenen, verlorenen oder abhandengekommenen Sachen. <span class=\"para-code\">§935</span></span><br>\n    <span class=\"vi\" style=\"border:none; padding:0;\">Không áp dụng đối với đồ bị trộm cắp, thất lạc hoặc bị mất ngoài ý muốn — dù người mua có ngay tình đến đâu.</span>\n  </div>"
+        ,
+          "qa": [
+            {
+                        "q": "Wie unterscheiden sich Besitz und Eigentum nach dem Bürgerlichen Gesetzbuch (BGB)?",
+                        "qVi": "Quyền chiếm hữu (Besitz) và Quyền sở hữu (Eigentum) khác nhau thế nào theo BGB?",
+                        "a": "<b>Besitz (§ 854 BGB)</b> ist die <b>tatsächliche Herrschaft</b> über eine Sache (wer die Sache gerade hat, z. B. Mieter, Entleiher). <b>Eigentum (§ 903 BGB)</b> ist die <b>rechtliche Herrschaft</b> über eine Sache (wem die Sache rechtlich gehört; der Eigentümer darf nach Belieben mit der Sache verfahren).",
+                        "aVi": "<b>Besitz (§ 854 BGB):</b> Nắm giữ thực tế đồ vật (người đang cầm/thuê). <b>Eigentum (§ 903 BGB):</b> Quyền sở hữu hợp pháp theo luật (chủ thực sự có toàn quyền định đoạt).",
+                        "src": "IHK / Berufsschule"
+            },
+            {
+                        "q": "Was regelt ein Eigentumsvorbehalt (§ 449 BGB) beim Kaufvertrag?",
+                        "qVi": "Điều khoản bảo lưu quyền sở hữu (§ 449 BGB) trong hợp đồng mua bán quy định điều gì?",
+                        "a": "Die Ware wird dem Käufer sofort übergeben (er wird Besitzer), das <b>Eigentum geht aber erst mit der vollständigen Bezahlung des Kaufpreises auf den Käufer über</b>.",
+                        "aVi": "Hàng được giao ngay cho người mua (người mua là Besitzer), nhưng <b>quyền sở hữu (Eigentum) chỉ chuyển giao khi người mua đã trả hết 100% tiền hàng</b>.",
+                        "src": "IHK / Berufsschule"
+            }
+]
         },
         {
           "id": "wiko-rg-bt1",
           "icon": "",
           "name": "Rechtsgeschäfte · Übung — Geschäftsfähigkeit",
-          "desc": "Bài tập — Năng lực hành vi",
+          "desc": "Übungsfälle zur Geschäftsfähigkeit (Geschäftsunfähigkeit, beschränkte & volle Geschäftsfähigkeit)",
           "content": "<h2>Rechtsgeschäfte · Übung — Geschäftsfähigkeit</h2>\n<div class=\"hint\">Gesetzbuch zum Lernen (DE–VI) · BGB</div>\n<details class=\"q\"><summary><b>01</b> Unterscheiden Sie zwischen Rechtsfähigkeit und Geschäftsfähigkeit.</summary>\n    <div class=\"ans\">\n      <div class=\"de\"><b>Antwort</b> <b>Rechtsfähigkeit</b> = die Fähigkeit, Träger von Rechten und Pflichten zu sein (alle Menschen, von Geburt bis Tod). <b>Geschäftsfähigkeit</b> = die Fähigkeit, selbstständig und rechtswirksam Rechtsgeschäfte zu tätigen (abhängig von Alter/Geisteszustand).</div>\n      <div class=\"vi\"><b>Đáp án</b> <b>Năng lực pháp luật</b> = khả năng trở thành chủ thể quyền và nghĩa vụ (mọi người, từ sinh ra đến chết). <b>Năng lực hành vi</b> = khả năng tự mình thực hiện giao dịch pháp lý có hiệu lực (phụ thuộc tuổi/tình trạng tâm thần).</div>\n    </div>\n  </details>\n\n  <details class=\"q\"><summary><b>02</b> Ordnen Sie zu: a) 20 Jahre  b) 6 Jahre  c) 16 Jahre</summary>\n    <div class=\"ans\">\n      <div class=\"de\"><b>Antwort</b> a) 20 Jahre → <b>unbeschränkt geschäftsfähig</b>. b) 6 Jahre → <b>geschäftsunfähig</b>. c) 16 Jahre → <b>beschränkt geschäftsfähig</b>.</div>\n      <div class=\"vi\"><b>Đáp án</b> a) 20 tuổi → năng lực đầy đủ. b) 6 tuổi → mất năng lực hành vi. c) 16 tuổi → năng lực hạn chế.</div>\n    </div>\n  </details>\n\n  <details class=\"q\"><summary><b>03</b> Welche Geschäfte darf ein Beschränkt-Geschäftsfähiger ohne Zustimmung tätigen? Nennen Sie Beispiele.</summary>\n    <div class=\"ans\">\n      <div class=\"de\"><b>Antwort</b> \n        1) Geschäfte mit <b>lediglich rechtlichem Vorteil</b> <span class=\"para-code\">§107</span> — z. B. ein Geschenk annehmen.<br>\n        2) Geschäfte mit <b>eigenen Mitteln (Taschengeld)</b> <span class=\"para-code\">§110</span> — z. B. ein Buch für 20 € kaufen (nicht bei Ratenkäufen).<br>\n        3) Geschäfte im Rahmen eines <b>zugestimmten Arbeitsverhältnisses</b> <span class=\"para-code\">§113</span>.\n      </div>\n      <div class=\"vi\"><b>Đáp án</b> 1) Giao dịch chỉ mang lợi ích pháp lý thuần túy (§107) — VD: nhận quà tặng. 2) Giao dịch dùng tiền riêng/tiền tiêu vặt (§110) — VD: mua sách 20€ (không áp dụng mua trả góp). 3) Giao dịch trong quan hệ lao động đã được đồng ý (§113).</div>\n    </div>\n  </details>\n\n  <details class=\"q\"><summary><b>04</b> Welche Rechtsfolge hat eine Willenserklärung je nach Stufe der Geschäftsfähigkeit?</summary>\n    <div class=\"ans\">\n      <div class=\"de\"><b>Antwort</b> Geschäftsunfähig → <b>nichtig</b>. Beschränkt geschäftsfähig → <b>schwebend unwirksam</b>. Voll geschäftsfähig → <b>voll wirksam</b>.</div>\n      <div class=\"vi\"><b>Đáp án</b> Mất năng lực hành vi → vô hiệu. Năng lực hạn chế → \"treo\" chờ phê duyệt. Năng lực đầy đủ → có hiệu lực đầy đủ.</div>\n    </div>\n  </details>\n\n  <details class=\"q\"><summary><b>05a</b> Anna (6 Jahre) nimmt 10 € aus ihrem Sparschwein und kauft eine Puppe. Ist der Kaufvertrag gültig?</summary>\n    <div class=\"ans\">\n      <div class=\"de\"><b>Antwort</b> <b>Nein — nichtig.</b> Anna ist unter 7 Jahren, also geschäftsunfähig <span class=\"para-code\">§104</span>; ihre Willenserklärungen sind unwirksam <span class=\"para-code\">§105 BGB</span>.</div>\n      <div class=\"vi\"><b>Đáp án</b> <b>Không hợp lệ — vô hiệu.</b> Anna dưới 7 tuổi nên mất năng lực hành vi, mọi tuyên bố ý chí của cô bé đều vô hiệu.</div>\n    </div>\n  </details>\n\n  <details class=\"q\"><summary><b>05b</b> Martina (16) kauft einen MP3-Player für 45 € von ihrem Taschengeld. (1) Ist der Vertrag gültig? (2) Was, wenn sie in Raten zahlt?</summary>\n    <div class=\"ans\">\n      <div class=\"de\"><b>Antwort</b> (1) <b>Ja, gültig</b> — Taschengeldparagraph <span class=\"para-code\">§110</span>, da sofort mit eigenem Geld bezahlt.<br>(2) <b>Nein</b> — §110 gilt nicht für Ratenkäufe. Der Vertrag ist <b>schwebend unwirksam</b> <span class=\"para-code\">§106</span> und braucht die Zustimmung der Eltern.</div>\n      <div class=\"vi\"><b>Đáp án</b> (1) Hợp lệ — áp dụng điều khoản tiền tiêu vặt, vì trả ngay bằng tiền riêng. (2) Không hợp lệ — §110 không áp dụng cho mua trả góp. Hợp đồng ở trạng thái \"treo\", cần cha mẹ đồng ý.</div>\n    </div>\n  </details>\n\n  <details class=\"q\"><summary><b>05c</b> Anton (17) kauft einen Computer für 750 €, ohne dass die Eltern es wissen. Welche Rechtswirkung hat der Vertrag?</summary>\n    <div class=\"ans\">\n      <div class=\"de\"><b>Antwort</b> <b>Schwebend unwirksam</b> <span class=\"para-code\">§106, §108 BGB</span> — abhängig von der Genehmigung der Eltern.</div>\n      <div class=\"vi\"><b>Đáp án</b> Ở trạng thái \"treo\" — phụ thuộc vào việc cha mẹ có phê chuẩn hay không.</div>\n    </div>\n  </details>\n\n  <details class=\"q\"><summary><b>05d</b> Kurt (14) kauft eine Musikanlage stark reduziert (250 € statt 780 €) und meint, wegen des großen Rabatts brauche er keine Zustimmung. Stimmt das?</summary>\n    <div class=\"ans\">\n      <div class=\"de\"><b>Antwort</b> <b>Nein.</b> Trotz des niedrigen Preises bleibt es eine Zahlungsverpflichtung, kein rechtlicher Vorteil. Der Vertrag ist <b>schwebend unwirksam</b> — keine Ausnahme (§107, §110) greift hier.</div>\n      <div class=\"vi\"><b>Đáp án</b> <b>Không đúng.</b> Dù giá rẻ, đây vẫn là nghĩa vụ thanh toán, không phải lợi ích pháp lý thuần túy. Hợp đồng \"treo\" — không có ngoại lệ nào áp dụng.</div>\n    </div>\n  </details>"
+        ,
+          "qa": [
+            {
+                        "q": "Fall: Ein 6-jähriges Kind kauft im Kiosk eine Packung Kaugummis für 1 €. Ist der Kaufvertrag wirksam?",
+                        "qVi": "Tình huống: Trẻ em 6 tuổi tự mua kẹo cao su 1 € tại quầy báo. Hợp đồng mua bán có hiệu lực không?",
+                        "a": "<b>Nein.</b> Kinder unter 7 Jahren sind <b>geschäftsunfähig (§ 104 BGB)</b>. Ihre Willenserklärungen sind <b>nichtig (§ 105 BGB)</b>; der Vertrag ist von Anfang an unwirksam.",
+                        "aVi": "<b>Không.</b> Trẻ dưới 7 tuổi là người <b>chưa có năng lực hành vi (§ 104 BGB)</b>; hợp đồng vô hiệu ngay từ đầu.",
+                        "src": "IHK / Berufsschule"
+            },
+            {
+                        "q": "Fall: Eine 16-jährige Auszubildende kauft ein Smartphone für 800 € auf Raten ohne Wissen ihrer Eltern. Ist der Vertrag gültig?",
+                        "qVi": "Tình huống: Học viên 16 tuổi mua điện thoại trả góp 800 € không cho cha mẹ biết. Hợp đồng có hiệu lực không?",
+                        "a": "Der Vertrag ist <b>schwebend unwirksam (§§ 106, 108 BGB)</b>. Der Taschengeldparagraph (§ 110 BGB) gilt nicht für Ratenkredite.",
+                        "aVi": "Hợp đồng ở trạng thái <b>chưa có hiệu lực dứt khoát (schwebend unwirksam)</b>. Tiền tiêu vặt § 110 BGB không áp dụng cho trả góp.",
+                        "src": "IHK / Berufsschule"
+            }
+]
         },
         {
           "id": "wiko-rg-bt2",
           "icon": "",
           "name": "Rechtsgeschäfte · Übung — Willenserklärung & Rechtsgeschäfte",
-          "desc": "Bài tập — Tuyên bố ý chí & Giao dịch một/nhiều bên",
+          "desc": "Übungsfälle zu Willenserklärungen und einseitigen/mehrseitigen Rechtsgeschäften",
           "content": "<h2>Rechtsgeschäfte · Übung — Willenserklärung & Rechtsgeschäfte</h2>\n<div class=\"hint\">Gesetzbuch zum Lernen (DE–VI) · BGB</div>\n<h4 style=\"font-family:&#39;IBM Plex Sans&#39;,sans-serif; color:var(--ink); margin-top:24px; font-size:1rem;\">Nr. 1 — Liegt eine Willenserklärung vor? In welcher Form?</h4>\n\n  <details class=\"q\"><summary><b>a</b> Sie werden von Ihrem Onkel zu einer Reise eingeladen.</summary>\n    <div class=\"ans\">\n      <div class=\"de\"><b>Antwort</b> <b>Nein</b> — eine Gefälligkeit ohne Rechtsbindungswillen.</div>\n      <div class=\"vi\"><b>Đáp án</b> Không phải — đây là lời mời mang tính thiện chí, không có ý định tạo ràng buộc pháp lý.</div>\n    </div>\n  </details>\n\n  <details class=\"q\"><summary><b>b</b> Sie steigen mit gültigem Fahrschein in die Straßenbahn in Stuttgart ein.</summary>\n    <div class=\"ans\">\n      <div class=\"de\"><b>Antwort</b> <b>Ja</b> — durch <b>schlüssiges Handeln</b> (Einsteigen = Annahme des Beförderungsvertrags). Form: formfrei.</div>\n      <div class=\"vi\"><b>Đáp án</b> Có — qua hành vi ngụ ý (lên tàu = chấp nhận hợp đồng vận chuyển). Hình thức: tự do.</div>\n    </div>\n  </details>\n\n  <details class=\"q\"><summary><b>c</b> Sie winken ein Taxi heran, steigen ein und nennen Ihre Adresse.</summary>\n    <div class=\"ans\">\n      <div class=\"de\"><b>Antwort</b> <b>Ja</b> — schlüssiges Handeln (Winken) kombiniert mit unmittelbarer (mündlicher) Handlung (Adresse nennen).</div>\n      <div class=\"vi\"><b>Đáp án</b> Có — hành vi ngụ ý (giơ tay) kết hợp với hành động trực tiếp (nói địa chỉ).</div>\n    </div>\n  </details>\n\n  <details class=\"q\"><summary><b>d</b> Sie nehmen Waren im Selbstbedienungsladen und legen sie aufs Kassenband.</summary>\n    <div class=\"ans\">\n      <div class=\"de\"><b>Antwort</b> <b>Ja</b> — schlüssiges Handeln.</div>\n      <div class=\"vi\"><b>Đáp án</b> Có — qua hành vi ngụ ý (không cần lời nói).</div>\n    </div>\n  </details>\n\n  <h4 style=\"font-family:&#39;IBM Plex Sans&#39;,sans-serif; color:var(--ink); margin-top:24px; font-size:1rem;\">Nr. 2 — Einseitig oder mehrseitig? Welche Form?</h4>\n\n  <details class=\"q\"><summary><b>a</b> Der Vermieter schließt mit Ihren Eltern einen Mietvertrag.</summary>\n    <div class=\"ans\">\n      <div class=\"de\"><b>Antwort</b> <b>Zweiseitig</b> — Mietvertrag, meist in <b>Schriftform</b> (grundsätzlich formfrei, aber üblich).</div>\n      <div class=\"vi\"><b>Đáp án</b> Nhiều bên — hợp đồng thuê nhà, thường bằng văn bản (về nguyên tắc tự do, nhưng thực tế phổ biến dùng văn bản).</div>\n    </div>\n  </details>\n\n  <details class=\"q\"><summary><b>b</b> Nele Kaiser bestellt eine DVD bei amazon.de.</summary>\n    <div class=\"ans\">\n      <div class=\"de\"><b>Antwort</b> <b>Zweiseitig</b> — Kaufvertrag, elektronische Form.</div>\n      <div class=\"vi\"><b>Đáp án</b> Nhiều bên — hợp đồng mua bán, hình thức điện tử.</div>\n    </div>\n  </details>\n\n  <details class=\"q\"><summary><b>c</b> Max Lehmann kündigt sein Arbeitsverhältnis.</summary>\n    <div class=\"ans\">\n      <div class=\"de\"><b>Antwort</b> <b>Einseitig</b> (empfangsbedürftig) — Kündigung, zwingend <b>Schriftform</b> <span class=\"para-code\">§623 BGB</span>.</div>\n      <div class=\"vi\"><b>Đáp án</b> Đơn phương (cần người nhận) — bắt buộc bằng văn bản.</div>\n    </div>\n  </details>\n\n  <details class=\"q\"><summary><b>d</b> Alexander Thein verliert seinen wertvollen Ring und lobt öffentlich 150 € für den Finder aus (Auslobung).</summary>\n    <div class=\"ans\">\n      <div class=\"de\"><b>Antwort</b> <b>Einseitig</b> (nicht empfangsbedürftig) — wirksam sofort bei Bekanntmachung, formfrei.</div>\n      <div class=\"vi\"><b>Đáp án</b> Đơn phương (không cần người nhận) — có hiệu lực ngay khi công bố, hình thức tự do.</div>\n    </div>\n  </details>\n\n  <details class=\"q\"><summary><b>e</b> Ein Unternehmen nimmt eine ohne Bestellung gelieferte Maschine in Betrieb.</summary>\n    <div class=\"ans\">\n      <div class=\"de\"><b>Antwort</b> <b>Zweiseitig</b> — Kaufvertrag entsteht durch <b>Schweigen</b> (Ausnahme: Nutzung gilt als Annahme).</div>\n      <div class=\"vi\"><b>Đáp án</b> Nhiều bên — hợp đồng mua bán hình thành qua im lặng (trường hợp ngoại lệ: việc sử dụng được xem là chấp nhận).</div>\n    </div>\n  </details>"
+        ,
+          "qa": [
+            {
+                        "q": "Ordne zu: Handelt es sich bei einer Kündigung um ein einseitiges oder zweiseitiges Rechtsgeschäft?",
+                        "qVi": "Phân loại: Việc sa thải (Kündigung) là giao dịch đơn phương hay hai bên?",
+                        "a": "Es ist ein <b>einseitiges empfangsbedürftiges Rechtsgeschäft</b>: Die Kündigung wird bereits mit dem Zugang beim Empfänger wirksam, ohne dass dieser zustimmen muss.",
+                        "aVi": "Là <b>giao dịch đơn phương cần tiếp nhận</b>: Có hiệu lực ngay khi đến tay người nhận mà không cần người đó đồng ý.",
+                        "src": "IHK / Berufsschule"
+            }
+]
         },
         {
           "id": "wiko-rg-bt3",
           "icon": "",
           "name": "Rechtsgeschäfte · Übung — Form der Rechtsgeschäfte",
-          "desc": "Bài tập — Hình thức của giao dịch pháp lý",
+          "desc": "Übungsfälle zu Formvorschriften (Schriftform, notarielle Beurkundung)",
           "content": "<h2>Rechtsgeschäfte · Übung — Form der Rechtsgeschäfte</h2>\n<div class=\"hint\">Gesetzbuch zum Lernen (DE–VI) · BGB</div>\n<details class=\"q\"><summary><b>01</b> Ordnen Sie den drei Formgruppen (Schriftform / Öffentliche Beglaubigung / Notarielle Beurkundung) passende Beispiele zu.</summary>\n    <div class=\"ans\">\n      <table>\n        <tbody><tr><th>Gruppe<span style=\"display:block;font-weight:400;font-size:.7rem;\">Nhóm</span></th><th>Beispiel<span style=\"display:block;font-weight:400;font-size:.7rem;\">Ví dụ</span></th></tr>\n        <tr><td><b>Schriftform</b></td><td>Kündigung von Arbeitsverträgen, Ratenkaufvertrag<div class=\"vi-cell\">Đơn nghỉ việc, hợp đồng mua trả góp</div></td></tr>\n        <tr><td><b>Öffentliche Beglaubigung</b></td><td>Anträge auf Eintrag ins Handelsregister<div class=\"vi-cell\">Đăng ký vào sổ đăng ký thương mại</div></td></tr>\n        <tr><td><b>Notarielle Beurkundung</b></td><td>Grundstückskauf, Eheverträge, Ausschlagung einer Erbschaft<div class=\"vi-cell\">Mua bán đất, hợp đồng hôn nhân, từ chối di sản</div></td></tr>\n      </tbody></table>\n      <div class=\"note\"><b>Rechtsfolge · Hậu quả</b> <span class=\"de\">Formverstoß → das Geschäft ist <b>eventuell nichtig</b>.</span><br><span class=\"vi\" style=\"border:none; padding:0;\">Vi phạm hình thức → giao dịch có thể vô hiệu.</span></div>\n    </div>\n  </details>\n\n  <details class=\"q\"><summary><b>02</b> Welche Form ist für die folgenden Geschäfte vorgeschrieben?</summary>\n    <div class=\"ans\">\n      <table>\n        <tbody><tr><th>Geschäft<span style=\"display:block;font-weight:400;font-size:.7rem;\">Giao dịch</span></th><th>Form<span style=\"display:block;font-weight:400;font-size:.7rem;\">Hình thức</span></th></tr>\n        <tr><td>Frau Putzig kauft eine Spülmaschine auf Raten<div class=\"vi-cell\">Mua máy rửa bát trả góp</div></td><td>Schriftform</td></tr>\n        <tr><td>Karl Protz zahlt sein Motorrad in bar<div class=\"vi-cell\">Trả tiền mặt mua xe máy</div></td><td>Formfrei</td></tr>\n        <tr><td>Bauer Kohl verkauft ein Grundstück an den Nachbarn<div class=\"vi-cell\">Bán đất cho hàng xóm</div></td><td>Notarielle Beurkundung</td></tr>\n        <tr><td>Ein Verein trägt sich ins Vereinsregister ein<div class=\"vi-cell\">Đăng ký vào sổ hội</div></td><td>Schriftform + Öffentliche Beglaubigung</td></tr>\n        <tr><td>Martin Stift unterschreibt einen Ausbildungsvertrag<div class=\"vi-cell\">Ký hợp đồng học nghề</div></td><td>Schriftform</td></tr>\n        <tr><td>Herr Burger verbürgt sich für den Kredit seiner Tochter<div class=\"vi-cell\">Bảo lãnh khoản vay cho con gái</div></td><td>Schriftform</td></tr>\n        <tr><td>Frau Schenker verspricht ihrem Enkel 10.000 € zum 18. Geburtstag<div class=\"vi-cell\">Hứa tặng cháu 10.000€ khi 18 tuổi</div></td><td>Notarielle Beurkundung <span class=\"para-code\">§518</span></td></tr>\n      </tbody></table>\n    </div>\n  </details>"
+        ,
+          "qa": [
+            {
+                        "q": "Welche Rechtsfolge hat die Nichteinhaltung einer gesetzlich vorgeschriebenen Form (z. B. mündliche Kündigung eines Arbeitsvertrags)?",
+                        "qVi": "Vi phạm quy định hình thức bắt buộc theo luật dẫn tới hậu quả pháp lý gì?",
+                        "a": "Das Rechtsgeschäft ist <b>nach § 125 BGB nichtig (völlig unwirksam)</b>.",
+                        "aVi": "Giao dịch đó bị <b>vô hiệu hoàn toàn (nichtig)</b> theo Điều 125 BGB.",
+                        "src": "IHK / Berufsschule"
+            }
+]
         },
         {
           "id": "wiko-rg-bt4",
           "icon": "",
           "name": "Rechtsgeschäfte · Übung — Anfechtbare & Nichtige Rechtsgeschäfte",
-          "desc": "Bài tập — Giao dịch có thể hủy & giao dịch vô hiệu",
+          "desc": "Übungsfälle zu nichtigen und anfechtbaren Rechtsgeschäften (§§ 119, 123 BGB)",
           "content": "<h2>Rechtsgeschäfte · Übung — Anfechtbare & Nichtige Rechtsgeschäfte</h2>\n<div class=\"hint\">Gesetzbuch zum Lernen (DE–VI) · BGB</div>\n<h4 style=\"font-family:&#39;IBM Plex Sans&#39;,sans-serif; color:var(--ink); margin-top:24px; font-size:1rem;\">Nr. 1 — Welche Fälle sind Nichtigkeit?</h4>\n  <details class=\"q\"><summary><b>a-e</b> a) Formverstoß  b) Verkauf von selbst angebautem Cannabis  c) Erklärungsirrtum  d) Arglistige Täuschung  e) Widerrechtliche Drohung</summary>\n    <div class=\"ans\">\n      <div class=\"de\"><b>Antwort</b> a) <b>nichtig</b> <span class=\"para-code\">§125</span>  b) <b>nichtig</b> <span class=\"para-code\">§134</span>  c) <b>anfechtbar</b>  d) <b>anfechtbar</b>  e) <b>anfechtbar</b></div>\n      <div class=\"vi\"><b>Đáp án</b> a) vô hiệu (§125)  b) vô hiệu (§134, vi phạm luật cấm)  c) có thể hủy  d) có thể hủy  e) có thể hủy</div>\n    </div>\n  </details>\n\n  <h4 style=\"font-family:&#39;IBM Plex Sans&#39;,sans-serif; color:var(--ink); margin-top:24px; font-size:1rem;\">Nr. 2 — Ist der Kaufvertrag anfechtbar?</h4>\n  <details class=\"q\"><summary><b>a-e</b> a) Verspätete Lieferung  b) Preiserhöhung  c) Preis versehentlich 150 € statt 510 €  d) Verkäufer ahnt finanzielle Schwierigkeiten des Käufers  e) Nur mündliche Vereinbarung</summary>\n    <div class=\"ans\">\n      <div class=\"de\"><b>Antwort</b> \n        a) <b>Nicht anfechtbar</b> (kein Anfechtungsgrund)<br>\n        b) <b>Nicht anfechtbar</b><br>\n        c) <b>Anfechtbar</b> — Irrtum in der Erklärungshandlung<br>\n        d) <b>Nicht anfechtbar</b> (kein Willensmangel)<br>\n        e) <b>Nicht anfechtbar</b> (Formfrage, kein Anfechtungsgrund)\n      </div>\n      <div class=\"vi\"><b>Đáp án</b> \n        a) Không thể hủy (giao hàng trễ không phải lý do hủy)<br>\n        b) Không thể hủy<br>\n        c) Có thể hủy — nhầm lẫn khi ghi giá<br>\n        d) Không thể hủy (không liên quan khiếm khuyết ý chí)<br>\n        e) Không thể hủy (là vấn đề hình thức, không phải lý do hủy)\n      </div>\n    </div>\n  </details>\n\n  <h4 style=\"font-family:&#39;IBM Plex Sans&#39;,sans-serif; color:var(--ink); margin-top:24px; font-size:1rem;\">Nr. 3 — Voll gültig / nichtig / anfechtbar / schwebend unwirksam?</h4>\n  <details class=\"q\"><summary><b>a</b> Zahlendreher: 58 € statt 85 €.</summary>\n    <div class=\"ans\"><div class=\"de\"><b>Antwort</b> <b>Anfechtbar</b> — Erklärungsirrtum.</div><div class=\"vi\"><b>Đáp án</b> Có thể hủy — nhầm lẫn khi viết số.</div></div>\n  </details>\n  <details class=\"q\"><summary><b>b</b> Rebecca (16) abonniert eine Zeitschrift für 18,50 €/Monat.</summary>\n    <div class=\"ans\"><div class=\"de\"><b>Antwort</b> <b>Schwebend unwirksam</b> — Rebecca ist beschränkt geschäftsfähig; ein Dauerabonnement fällt nicht unter §110, da es keine einmalige Sofortzahlung mit eigenen Mitteln ist.</div><div class=\"vi\"><b>Đáp án</b> \"Treo\" chờ phê duyệt — Rebecca 16 tuổi (năng lực hạn chế), việc đăng ký thuê bao định kỳ không thuộc §110 vì không phải thanh toán một lần ngay bằng tiền riêng.</div></div>\n  </details>\n  <details class=\"q\"><summary><b>c</b> Ein Handwerker kauft auf Empfehlung eines Freundes Aktien, deren Kurs am nächsten Tag fällt.</summary>\n    <div class=\"ans\"><div class=\"de\"><b>Antwort</b> <b>Voll gültig</b> — das ist ein Motivirrtum, nicht anfechtbar.</div><div class=\"vi\"><b>Đáp án</b> Có hiệu lực đầy đủ — đây là nhầm lẫn về động cơ, không thể hủy.</div></div>\n  </details>\n  <details class=\"q\"><summary><b>d</b> Lehmann (17, Eltern haben dem Arbeitsverhältnis zugestimmt) kündigt selbstständig seine Stelle.</summary>\n    <div class=\"ans\"><div class=\"de\"><b>Antwort</b> <b>Voll gültig</b> — die Eltern haben dem Arbeitsverhältnis zugestimmt <span class=\"para-code\">§113</span>, die Kündigung liegt im Rahmen dieser Zustimmung.</div><div class=\"vi\"><b>Đáp án</b> Có hiệu lực đầy đủ — cha mẹ đã đồng ý cho tham gia quan hệ lao động, việc chấm dứt hợp đồng nằm trong phạm vi đã ủy quyền.</div></div>\n  </details>\n  <details class=\"q\"><summary><b>e</b> Eine Baufirma addiert falsch: 18,2 Mio. € statt 20 Mio. €.</summary>\n    <div class=\"ans\"><div class=\"de\"><b>Antwort</b> <b>Anfechtbar</b> — Erklärungsirrtum (Rechenfehler bei der Abgabe der Erklärung).</div><div class=\"vi\"><b>Đáp án</b> Có thể hủy — nhầm lẫn khi tuyên bố (lỗi tính toán).</div></div>\n  </details>\n\n  <h4 style=\"font-family:&#39;IBM Plex Sans&#39;,sans-serif; color:var(--ink); margin-top:24px; font-size:1rem;\">Nr. 4 — Zwölf Fälle im Überblick</h4>\n  <details class=\"q\"><summary><b>04</b> Vollständige Lösungstabelle ansehen</summary>\n    <div class=\"ans\">\n      <table>\n        <tbody><tr><th>Fall<span style=\"display:block;font-weight:400;font-size:.7rem;\">Tình huống</span></th><th>Ergebnis</th><th>Grund<span style=\"display:block;font-weight:400;font-size:.7rem;\">Lý do</span></th></tr>\n        <tr><td>Obstverkäufer bezeichnet Ware stets als \"Bioware\"<div class=\"vi-cell\">Bán hoa quả thường nói \"hàng hữu cơ\"</div></td><td>Anfechtbar</td><td>Arglistige Täuschung</td></tr>\n        <tr><td>Chef droht der Sekretärin mit Kündigung, falls sie seinen Sohn nicht heiratet<div class=\"vi-cell\">Đe dọa sa thải nếu không kết hôn với con trai chủ</div></td><td>Anfechtbar</td><td>Widerrechtliche Drohung</td></tr>\n        <tr><td>Guru verspricht 800 € bei \"richtigem Glauben\"<div class=\"vi-cell\">Hứa 800€ nếu theo đúng tín ngưỡng</div></td><td>Nichtig</td><td>Sittenwidrigkeit</td></tr>\n        <tr><td>Hans Vogel \"verkauft\" im Spaß sein Sportauto für 9,99 €<div class=\"vi-cell\">\"Bán\" xe thể thao giá 9,99€ trong lúc đùa</div></td><td>Nichtig</td><td>Scherzgeschäft</td></tr>\n        <tr><td>Kredit mit 45 % Zinsen<div class=\"vi-cell\">Vay lãi suất 45%</div></td><td>Nichtig</td><td>Sittenwidrigkeit (Wucher)</td></tr>\n        <tr><td>Handel mit 1,2 kg Drogen<div class=\"vi-cell\">Buôn 1,2kg ma túy</div></td><td>Nichtig</td><td>Verstoß gegen gesetzliches Verbot</td></tr>\n        <tr><td>40 m²-Wohnung für 2.000 € in einer Notlage vermietet<div class=\"vi-cell\">Thuê nhà 40m² giá 2.000€ khi túng quẫn</div></td><td>Nichtig</td><td>Sittenwidrigkeit</td></tr>\n        <tr><td>Getipptes Testament nur handschriftlich unterschrieben<div class=\"vi-cell\">Di chúc đánh máy, chỉ ký tay</div></td><td>Nichtig</td><td>Verstoß gegen Formvorschrift</td></tr>\n        <tr><td>Tina (6) verkauft ihren Puppenwagen für 10 €<div class=\"vi-cell\">Bé Tina 6 tuổi bán xe đẩy búp bê 10€</div></td><td>Nichtig</td><td>Mangel der Geschäftsfähigkeit</td></tr>\n        <tr><td>Rechnung über 1.000 € statt echter 30.000 € (Steuerhinterziehung)<div class=\"vi-cell\">Ghi hóa đơn 1.000€ thay vì 30.000€ thực tế để trốn thuế</div></td><td>Nichtig</td><td>Scheingeschäft</td></tr>\n        <tr><td>Halbblinder Teppichhändler verkauft echten Perserteppich als Industrieware<div class=\"vi-cell\">Người bán thảm nửa mù bán thảm Ba Tư thật nói là hàng công nghiệp</div></td><td>Anfechtbar</td><td>Irrtum in der Erklärungshandlung</td></tr>\n        <tr><td>Verkäufer nutzt Blindheit des Kunden aus, verkauft unmodischen Anzug<div class=\"vi-cell\">Lợi dụng khách mù, bán vest lỗi mốt</div></td><td>Anfechtbar</td><td>Arglistige Täuschung</td></tr>\n      </tbody></table>\n    </div>\n  </details>"
+        ,
+          "qa": [
+            {
+                        "q": "Binnen welcher Frist muss ein Rechtsgeschäft wegen arglistiger Täuschung angefochten werden (§ 124 BGB)?",
+                        "qVi": "Thời hạn khiếu nại hủy hợp đồng do bị lừa dối (arglistige Täuschung § 124 BGB) là bao lâu?",
+                        "a": "Binnen <b>eines Jahres</b> ab dem Zeitpunkt, in dem der Getäuschte die Täuschung entdeckt.",
+                        "aVi": "Trong vòng <b>1 năm</b> kể từ ngày người bị lừa phát hiện ra sự gian dối.",
+                        "src": "IHK / Berufsschule"
+            }
+]
         },
         {
           "id": "wiko-rg-bt5",
           "icon": "",
           "name": "Rechtsgeschäfte · Übung — Besitz & Eigentum",
-          "desc": "Bài tập — Chiếm hữu & Sở hữu",
+          "desc": "Übungsfälle zu Besitz und Eigentum im Alltag",
           "content": "<h2>Rechtsgeschäfte · Übung — Besitz & Eigentum</h2>\n<div class=\"hint\">Gesetzbuch zum Lernen (DE–VI) · BGB</div>\n<details class=\"q\"><summary><b>01</b> Herr Fuchs wohnt in seinem eigenen Haus und vermietet ein geerbtes Haus an Herrn Vogel. Wer ist Besitzer, wer Eigentümer des vermieteten Hauses?</summary>\n    <div class=\"ans\"><div class=\"de\"><b>Antwort</b> <b>Besitzer = Vogel</b> (Mieter, tatsächliche Nutzung). <b>Eigentümer = Fuchs</b>.</div><div class=\"vi\"><b>Đáp án</b> Người chiếm hữu = Vogel (người thuê, sử dụng thực tế). Chủ sở hữu = Fuchs.</div></div>\n  </details>\n\n  <details class=\"q\"><summary><b>02</b> Was unterscheidet Besitz von Eigentum?</summary>\n    <div class=\"ans\"><div class=\"de\"><b>Antwort</b> <b>Besitz</b>: tatsächliche Gewalt, darf die Sache nutzen. <b>Eigentum</b>: rechtliche Verfügungsgewalt, darf die Sache verkaufen/verändern.</div><div class=\"vi\"><b>Đáp án</b> Chiếm hữu: quyền lực thực tế, được sử dụng đồ vật. Sở hữu: quyền định đoạt hợp pháp, được bán/thay đổi đồ vật.</div></div>\n  </details>\n\n  <details class=\"q\"><summary><b>03</b> Wie erfolgt der Eigentumsübergang bei beweglichen und unbeweglichen Sachen?</summary>\n    <div class=\"ans\"><div class=\"de\"><b>Antwort</b> Bewegliche Sachen: Einigung + Übergabe. Unbewegliche Sachen: Auflassung (Notar) + Eintragung ins Grundbuch.</div><div class=\"vi\"><b>Đáp án</b> Động sản: thỏa thuận + giao hàng. Bất động sản: thỏa thuận trước công chứng + đăng ký sổ địa chính.</div></div>\n  </details>\n\n  <details class=\"q\"><summary><b>04a</b> Herr Vogel bestellt einen Schrank; der Vertrag enthält einen Eigentumsvorbehalt. Was bedeutet das?</summary>\n    <div class=\"ans\"><div class=\"de\"><b>Antwort</b> Herr Vogel wird sofort <b>Besitzer</b>, das Möbelhaus bleibt <b>Eigentümer</b> bis zur vollständigen Zahlung.</div><div class=\"vi\"><b>Đáp án</b> Ông Vogel trở thành người chiếm hữu ngay, hãng nội thất vẫn là chủ sở hữu cho đến khi được thanh toán đầy đủ.</div></div>\n  </details>\n\n  <details class=\"q\"><summary><b>04b</b> Herr Vogel verkauft seinen alten Fernseher (noch unter Eigentumsvorbehalt) an Frau Wolf, die davon nichts weiß. Wird sie neue Eigentümerin?</summary>\n    <div class=\"ans\"><div class=\"de\"><b>Antwort</b> <b>Ja</b> — gutgläubiger Erwerb <span class=\"para-code\">§932 BGB</span>, da sie nichts vom Eigentumsvorbehalt wusste oder wissen musste.</div><div class=\"vi\"><b>Đáp án</b> Có — mua bán ngay tình, vì bà không biết và không có nghĩa vụ phải biết về việc bảo lưu quyền sở hữu.</div></div>\n  </details>\n\n  <details class=\"q\"><summary><b>05</b> Ein Dieb baut die Felgen von Herrn Vogels Auto aus und verkauft sie an den ahnungslosen Herrn Sorglos. Wird Herr Sorglos neuer Eigentümer?</summary>\n    <div class=\"ans\"><div class=\"de\"><b>Antwort</b> <b>Nein.</b> Die Felgen sind gestohlen (abhandengekommen), gutgläubiger Erwerb ist ausgeschlossen <span class=\"para-code\">§935 BGB</span>.</div><div class=\"vi\"><b>Đáp án</b> Không. Vì la-zăng bị đánh cắp, mua bán ngay tình không áp dụng dù người mua có ngay tình.</div></div>\n  </details>"
+        ,
+          "qa": [
+            {
+                        "q": "Gast A vergisst seinen Regenschirm im Restaurant. Kellner B nimmt ihn an sich und stellt ihn hinter den Tresen. Wer ist Besitzer und wer Eigentümer?",
+                        "qVi": "Khách A để quên ô tại nhà hàng. Bồi bàn B cất ô sau quầy thu ngân. Ai là người chiếm hữu và ai là người sở hữu?",
+                        "a": "Gast A bleibt der <b>Eigentümer</b> des Schirms. Kellner B (bzw. der Restaurantinhaber) ist der <b>Besitzer</b>, da er die tatsächliche Sachherrschaft ausübt.",
+                        "aVi": "Khách A vẫn là <b>chủ sở hữu (Eigentümer)</b>. Bồi bàn B là <b>người chiếm hữu (Besitzer)</b> vì đang nắm giữ trực tiếp.",
+                        "src": "IHK / Berufsschule"
+            }
+]
         },
         {
           "id": "wiko-rg-bt6",
           "icon": "",
           "name": "Rechtsgeschäfte · Fall-Übung — Alles zusammen",
-          "desc": "Bài tập tổng hợp — Áp dụng toàn bộ kiến thức",
+          "desc": "Komplexe Fallstudie zu Rechtsgeschäften und Eigentumsübertragung",
           "content": "<h2>Rechtsgeschäfte · Fall-Übung — Alles zusammen</h2>\n<div class=\"hint\">Gesetzbuch zum Lernen (DE–VI) · BGB</div>\n<details class=\"q\"><summary><b>Fall A</b> Frank (35) kauft ein Haus von Alexandra (88) und vermietet es an Peter (21). Alle sind geistig voll gesund. Analysieren Sie den Fall vollständig.</summary>\n    <div class=\"ans\">\n      <div class=\"de\"><b>Lösung</b> \n        <ul>\n          <li><b>Rechtsfähig?</b> Alle drei — jeder Mensch ist rechtsfähig.</li>\n          <li><b>Geschäftsfähig?</b> Alle drei <b>voll geschäftsfähig</b> (über 18, geistig gesund).</li>\n          <li><b>Rechtsgeschäfte:</b> Kaufvertrag (Frank–Alexandra), Mietvertrag (Frank–Peter).</li>\n          <li><b>Ein-/mehrseitig?</b> Beide <b>zweiseitig</b> (Antrag + Annahme).</li>\n          <li><b>Wirksam?</b> Ja, beide <b>voll gültig</b> (kein Mangel).</li>\n          <li><b>Anfechtbar?</b> Nein — kein Irrtum, keine Täuschung, keine Drohung.</li>\n          <li><b>Formzwang?</b> Grundstückskauf → <b>notarielle Beurkundung</b>. Mietvertrag → formfrei (üblich: Schriftform).</li>\n          <li><b>Eigentümer/Besitzer?</b> <b>Frank = Eigentümer</b>, <b>Peter = Besitzer</b>.</li>\n        </ul>\n      </div>\n      <div class=\"vi\">\n        <b>Đáp án dịch</b> \n        <ul>\n          <li>Có năng lực pháp luật? Cả 3 đều có.</li>\n          <li>Có năng lực hành vi? Cả 3 đều đầy đủ (trên 18 tuổi, minh mẫn).</li>\n          <li>Giao dịch hình thành: hợp đồng mua bán (Frank–Alexandra), hợp đồng thuê (Frank–Peter).</li>\n          <li>Đơn/nhiều bên? Cả hai đều nhiều bên (đề nghị + chấp nhận).</li>\n          <li>Có hiệu lực? Có, cả hai đều hợp lệ đầy đủ.</li>\n          <li>Có thể hủy? Không — không có nhầm lẫn, lừa dối, đe dọa.</li>\n          <li>Hình thức bắt buộc? Mua đất → công chứng. Hợp đồng thuê → tự do (thực tế thường bằng văn bản).</li>\n          <li>Chủ sở hữu/chiếm hữu? Frank là chủ sở hữu, Peter là người chiếm hữu.</li>\n        </ul>\n      </div>\n    </div>\n  </details>\n\n  <details class=\"q\"><summary><b>Fall B</b> Alexandra (20) kauft ein Auto für 20.000 € mit einem Bankkredit. Ihre Schwester Anja (17) möchte ebenfalls per Kredit ein Auto kaufen, darf aber nicht — deshalb leiht Alexandra ihr ihr eigenes Auto. Analysieren Sie den Fall vollständig.</summary>\n    <div class=\"ans\">\n      <div class=\"de\"><b>Lösung</b> \n        <ul>\n          <li><b>Rechtsfähig?</b> Beide rechtsfähig.</li>\n          <li><b>Geschäftsfähig?</b> Alexandra (20) → voll geschäftsfähig. Anja (17) → beschränkt geschäftsfähig.</li>\n          <li><b>Drei Rechtsgeschäfte:</b> 1) Kaufvertrag (Alexandra–Händler); 2) Darlehensvertrag (Alexandra–Bank); 3) Leihvertrag (Alexandra–Anja).</li>\n          <li><b>Ein-/mehrseitig?</b> Alle drei <b>zweiseitig</b>.</li>\n          <li><b>Wirksam?</b> Ja, alle drei. Beim Leihvertrag erhält Anja nur einen <b>rechtlichen Vorteil</b> <span class=\"para-code\">§107</span> (kostenlose Nutzung, keine Pflicht) → keine Zustimmung der Eltern nötig.</li>\n          <li><b>Anfechtbar?</b> Nein.</li>\n          <li><b>Formzwang?</b> Kaufvertrag → formfrei. Darlehensvertrag (Verbraucherkredit) → <b>Schriftform</b> <span class=\"para-code\">§492</span>. Leihvertrag → formfrei.</li>\n          <li><b>Eigentümer/Besitzer des Autos?</b> <b>Alexandra = Eigentümerin</b>. <b>Anja = Besitzerin</b> während der Leihzeit.</li>\n        </ul>\n      </div>\n      <div class=\"vi\">\n        <b>Đáp án dịch</b> \n        <ul>\n          <li>Có năng lực pháp luật? Cả hai đều có.</li>\n          <li>Có năng lực hành vi? Alexandra (20) đầy đủ. Anja (17) hạn chế.</li>\n          <li>Ba giao dịch: 1) mua bán (Alexandra–đại lý); 2) vay tiền (Alexandra–ngân hàng); 3) cho mượn (Alexandra–Anja).</li>\n          <li>Đơn/nhiều bên? Cả ba đều nhiều bên.</li>\n          <li>Có hiệu lực? Có cả ba. Với hợp đồng cho mượn, Anja chỉ nhận lợi ích pháp lý thuần túy (dùng miễn phí, không nghĩa vụ) → không cần cha mẹ đồng ý.</li>\n          <li>Có thể hủy? Không.</li>\n          <li>Hình thức bắt buộc? Mua xe → tự do. Vay ngân hàng → bắt buộc văn bản. Cho mượn → tự do.</li>\n          <li>Chủ sở hữu/chiếm hữu xe? Alexandra là chủ sở hữu. Anja là người chiếm hữu trong thời gian mượn.</li>\n        </ul>\n      </div>\n    </div>\n  </details>\n\n  <div class=\"block\">\n    <div class=\"de\" style=\"border-radius:8px;\"><b>Merktipp für Fallaufgaben</b> \n      1) Rechtsfähig? — immer \"ja\". 2) Geschäftsfähigkeit prüfen (Alter). 3) Rechtsgeschäft(e) benennen. 4) Ein- oder zweiseitig? 5) Wie kam die WE zustande? 6) Wirksam? Wann nichtig? 7) Anfechtbar? 8) Formzwang? 9) Eigentümer vs. Besitzer?\n    </div>\n    <div class=\"vi\"><b>Mẹo làm bài tình huống</b> \n      1) Năng lực pháp luật? — luôn \"có\". 2) Kiểm tra năng lực hành vi (tuổi). 3) Xác định giao dịch pháp lý. 4) Đơn hay nhiều bên? 5) Tuyên bố ý chí hình thành thế nào? 6) Có hiệu lực? Khi nào vô hiệu? 7) Có thể hủy? 8) Hình thức bắt buộc? 9) Ai là chủ sở hữu, ai là người chiếm hữu?\n    </div>\n  </div>"
+        ,
+          "qa": [
+            {
+                        "q": "Kann jemand an einer gestohlenen Sache gutgläubig Eigentum erwerben?",
+                        "qVi": "Một người mua ngay tình có thể trở thành chủ sở hữu của món đồ bị trộm cắp không?",
+                        "a": "<b>Nein.</b> An gestohlenen oder abhandengekommenen Sachen ist ein <b>gutgläubiger Erwerb nach § 935 Abs. 1 BGB gesetzlich ausgeschlossen</b>.",
+                        "aVi": "<b>Tuyệt đối không.</b> Theo § 935 BGB, đồ vật bị trộm cắp thì <b>không ai có thể xác lập quyền sở hữu ngay tình</b>.",
+                        "src": "IHK / Berufsschule"
+            }
+]
         }
       ]
     },
     {
       "id": "wiso-theorie",
       "badge": "WiSo (Theorie)",
-      "title": "WiSo (Theorie) · 9 Themen – Tổng hợp từ file Excel 04-250925",
+      "title": "WiSo (Theorie) · 9 Prüfungsthemen im Überblick",
       "items": [
         {
           "id": "wiso-thema-1",
           "icon": "",
-          "name": "WiSo Thema 1 · Ausbildungsbetrieb (Doanh nghiệp đào tạo)",
+          "name": "WiSo Thema 1 · Ausbildungsbetrieb",
           "desc": "Aufgaben des Ausbildungsbetriebs · Rechte und Pflichten der Auszubildenden · Rechte und Pflichten der Ausbilder · Organisation und Struktur des Betriebs · Zusammenarbeit im Betrieb",
-          "content": "<h2>WiSo Thema 1 · Ausbildungsbetrieb</h2>\n<div class=\"hint\">Doanh nghiệp đào tạo · Quelle: Fach Wiso (Theorie) · 5 Punkte, je 3 Theorie-Inhalte + Beispiele</div>\n<h3>A. Theorie &amp; Beispiele (5 Punkte)</h3>\n<table><tr><th>Punkt</th><th>Theorie – Lý thuyết</th><th>Beispiel – Ví dụ</th></tr>\n<tr><td><b>1. Aufgaben des Ausbildungsbetriebs</b><br><i>Nhiệm vụ của doanh nghiệp đào tạo</i></td><td>1. Fachwissen vermitteln<br><i>Truyền đạt kiến thức nghề.</i><br>2. Praktische Fertigkeiten trainieren<br><i>Rèn luyện kỹ năng thực hành.</i><br>3. Soziale Kompetenzen fördern<br><i>Phát triển kỹ năng xã hội.</i></td><td>1. „Azubi lernt Hygienevorschriften.“<br><i>Học viên học quy định vệ sinh.</i><br>2. „Azubi bereitet Sandwiches unter Anleitung zu.“<br><i>Học viên làm bánh mì dưới sự hướng dẫn.</i><br>3. „Teamarbeit im Service üben.“<br><i>Luyện kỹ năng làm việc nhóm trong phục vụ.</i></td></tr>\n<tr><td><b>2. Rechte und Pflichten der Auszubildenden</b><br><i>Quyền &amp; nghĩa vụ của học viên</i></td><td>1. Recht auf Ausbildung<br><i>Có quyền được đào tạo.</i><br>2. Pflicht zur Lernbereitschaft<br><i>Nghĩa vụ học tập nghiêm túc.</i><br>3. Betriebsordnung einhalten<br><i>Tuân thủ nội quy doanh nghiệp.</i></td><td>1. „Azubi bekommt Ausbildungsplan.“<br><i>Học viên nhận kế hoạch đào tạo.</i><br>2. „Berichtsheft regelmäßig schreiben.“<br><i>Viết sổ nhật ký nghề thường xuyên.</i><br>3. „Arbeitskleidung tragen.“<br><i>Mặc đồng phục khi làm việc.</i></td></tr>\n<tr><td><b>3. Rechte und Pflichten der Ausbilder</b><br><i>Quyền &amp; nghĩa vụ của người đào tạo</i></td><td>1. Recht auf Respekt<br><i>Có quyền được tôn trọng.</i><br>2. Pflicht zur Fürsorge<br><i>Có nghĩa vụ quan tâm &amp; bảo vệ học viên.</i><br>3. Pflicht zur Wissensvermittlung<br><i>Nghĩa vụ truyền đạt kiến thức.</i></td><td>1. „Azubi respektiert Anweisungen des Ausbilders.“<br><i>Học viên tôn trọng hướng dẫn của người đào tạo.</i><br>2. „Ausbilder sorgt für Arbeitssicherheit.“<br><i>Người đào tạo đảm bảo an toàn lao động.</i><br>3. „Ausbilder erklärt HACCP-Regeln.“<br><i>Người đào tạo giảng giải quy tắc HACCP.</i></td></tr>\n<tr><td><b>4. Organisation und Struktur des Betriebs</b><br><i>Cấu trúc &amp; tổ chức doanh nghiệp</i></td><td>1. Hierarchie kennen<br><i>Hiểu hệ thống cấp bậc.</i><br>2. Abteilungen unterscheiden<br><i>Biết các bộ phận khác nhau.</i><br>3. Kommunikationswege nutzen<br><i>Sử dụng kênh giao tiếp.</i></td><td>1. „Filialleiter über Teamleiter → Mitarbeiter.“<br><i>Quản lý → trưởng nhóm → nhân viên.</i><br>2. „Abteilungen: Küche, Service, Verwaltung.“<br><i>Bộ phận: bếp, phục vụ, quản lý.</i><br>3. „Azubi meldet Problem an Schichtleiter.“<br><i>Học viên báo sự cố cho trưởng ca.</i></td></tr>\n<tr><td><b>5. Zusammenarbeit im Betrieb</b><br><i>Hợp tác trong doanh nghiệp</i></td><td>1. Teamarbeit fördern<br><i>Khuyến khích làm việc nhóm.</i><br>2. Konflikte lösen<br><i>Giải quyết xung đột.</i><br>3. Respekt und Kommunikation pflegen<br><i>Duy trì tôn trọng &amp; giao tiếp.</i></td><td>1. „Azubi hilft Kollegen im Stoßgeschäft.“<br><i>Học viên hỗ trợ đồng nghiệp lúc cao điểm.</i><br>2. „Konflikt zwischen Küche &amp; Service klären.“<br><i>Giải quyết xung đột giữa bếp &amp; phục vụ.</i><br>3. „Feedback-Runden im Team durchführen.“<br><i>Tổ chức vòng phản hồi trong nhóm.</i></td></tr>\n</table>\n<h3>B. Wichtige Hinweise – Điểm lưu ý quan trọng</h3>\n<table><tr><th>Deutsch</th><th>Tiếng Việt</th><th>Ghi chú</th></tr>\n<tr><td>Der Ausbildungsbetrieb vermittelt Theorie und Praxis.</td><td>Doanh nghiệp đào tạo truyền đạt cả lý thuyết và thực hành.</td><td>Azubi lernt Fachwissen + praktische Arbeit. Học viên học kiến thức + thực hành công việc.</td></tr>\n<tr><td>Azubis haben Rechte und Pflichten.</td><td>Học viên có cả quyền và nghĩa vụ.</td><td>Recht: Ausbildung, Vergütung. Pflicht: Lernen, Regeln einhalten. Quyền: được đào tạo, có lương. Nghĩa vụ: học tập, tuân thủ nội quy.</td></tr>\n<tr><td>Ausbilder haben Fürsorge- und Ausbildungspflicht.</td><td>Người đào tạo có nghĩa vụ chăm lo và giảng dạy.</td><td>Ausbilder sorgt für Sicherheit + erklärt Inhalte. Người đào tạo đảm bảo an toàn + truyền đạt nội dung.</td></tr>\n<tr><td>Organisation im Betrieb schafft Klarheit.</td><td>Tổ chức trong doanh nghiệp tạo sự rõ ràng.</td><td>Hierarchie: Filialleiter → Teamleiter → Mitarbeiter. Cấp bậc: quản lý → trưởng nhóm → nhân viên.</td></tr>\n<tr><td>Zusammenarbeit ist Schlüssel zum Erfolg.</td><td>Hợp tác là chìa khóa thành công.</td><td>Teamarbeit, Kommunikation, Konfliktlösung. Làm việc nhóm, giao tiếp, giải quyết xung đột.</td></tr>\n<tr><td>Dokumentation ist Pflicht.</td><td>Ghi chép là bắt buộc.</td><td>Berichtsheft = Ausbildungsnachweis. Sổ báo cáo = chứng từ đào tạo.</td></tr>\n<tr><td>Motivation entsteht am ersten Tag.</td><td>Động lực bắt đầu từ ngày đầu tiên.</td><td>Guter Start = mehr Engagement im Betrieb. Khởi đầu tốt = gắn bó hơn trong doanh nghiệp.</td></tr>\n</table>",
+          "content": "<h2>WiSo Thema 1 · Ausbildungsbetrieb</h2>\n<div class=\"hint\">Themenüberblick · Quelle: Fach Wiso (Theorie) · 5 Punkte, je 3 Theorie-Inhalte + Beispiele</div>\n<h3>A. Theorie &amp; Beispiele (5 Punkte)</h3>\n<table><tr><th>Punkt</th><th>Theorie</th><th>Beispiel</th></tr>\n<tr><td><b>1. Aufgaben des Ausbildungsbetriebs</b><div class=\'vi-sub\'>Nhiệm vụ của doanh nghiệp đào tạo</div></td><td>1. Fachwissen vermitteln<div class=\'vi-sub\'>Truyền đạt kiến thức nghề.</div><br>2. Praktische Fertigkeiten trainieren<div class=\'vi-sub\'>Rèn luyện kỹ năng thực hành.</div><br>3. Soziale Kompetenzen fördern<div class=\'vi-sub\'>Phát triển kỹ năng xã hội.</div></td><td>1. „Azubi lernt Hygienevorschriften.“<div class=\'vi-sub\'>Học viên học quy định vệ sinh.</div><br>2. „Azubi bereitet Sandwiches unter Anleitung zu.“<div class=\'vi-sub\'>Học viên làm bánh mì dưới sự hướng dẫn.</div><br>3. „Teamarbeit im Service üben.“<div class=\'vi-sub\'>Luyện kỹ năng làm việc nhóm trong phục vụ.</div></td></tr>\n<tr><td><b>2. Rechte und Pflichten der Auszubildenden</b><div class=\'vi-sub\'>Quyền &amp; nghĩa vụ của học viên</div></td><td>1. Recht auf Ausbildung<div class=\'vi-sub\'>Có quyền được đào tạo.</div><br>2. Pflicht zur Lernbereitschaft<div class=\'vi-sub\'>Nghĩa vụ học tập nghiêm túc.</div><br>3. Betriebsordnung einhalten<div class=\'vi-sub\'>Tuân thủ nội quy doanh nghiệp.</div></td><td>1. „Azubi bekommt Ausbildungsplan.“<div class=\'vi-sub\'>Học viên nhận kế hoạch đào tạo.</div><br>2. „Berichtsheft regelmäßig schreiben.“<div class=\'vi-sub\'>Viết sổ nhật ký nghề thường xuyên.</div><br>3. „Arbeitskleidung tragen.“<div class=\'vi-sub\'>Mặc đồng phục khi làm việc.</div></td></tr>\n<tr><td><b>3. Rechte und Pflichten der Ausbilder</b><div class=\'vi-sub\'>Quyền &amp; nghĩa vụ của người đào tạo</div></td><td>1. Recht auf Respekt<div class=\'vi-sub\'>Có quyền được tôn trọng.</div><br>2. Pflicht zur Fürsorge<div class=\'vi-sub\'>Có nghĩa vụ quan tâm &amp; bảo vệ học viên.</div><br>3. Pflicht zur Wissensvermittlung<div class=\'vi-sub\'>Nghĩa vụ truyền đạt kiến thức.</div></td><td>1. „Azubi respektiert Anweisungen des Ausbilders.“<div class=\'vi-sub\'>Học viên tôn trọng hướng dẫn của người đào tạo.</div><br>2. „Ausbilder sorgt für Arbeitssicherheit.“<div class=\'vi-sub\'>Người đào tạo đảm bảo an toàn lao động.</div><br>3. „Ausbilder erklärt HACCP-Regeln.“<div class=\'vi-sub\'>Người đào tạo giảng giải quy tắc HACCP.</div></td></tr>\n<tr><td><b>4. Organisation und Struktur des Betriebs</b><div class=\'vi-sub\'>Cấu trúc &amp; tổ chức doanh nghiệp</div></td><td>1. Hierarchie kennen<div class=\'vi-sub\'>Hiểu hệ thống cấp bậc.</div><br>2. Abteilungen unterscheiden<div class=\'vi-sub\'>Biết các bộ phận khác nhau.</div><br>3. Kommunikationswege nutzen<div class=\'vi-sub\'>Sử dụng kênh giao tiếp.</div></td><td>1. „Filialleiter über Teamleiter → Mitarbeiter.“<div class=\'vi-sub\'>Quản lý → trưởng nhóm → nhân viên.</div><br>2. „Abteilungen: Küche, Service, Verwaltung.“<div class=\'vi-sub\'>Bộ phận: bếp, phục vụ, quản lý.</div><br>3. „Azubi meldet Problem an Schichtleiter.“<div class=\'vi-sub\'>Học viên báo sự cố cho trưởng ca.</div></td></tr>\n<tr><td><b>5. Zusammenarbeit im Betrieb</b><div class=\'vi-sub\'>Hợp tác trong doanh nghiệp</div></td><td>1. Teamarbeit fördern<div class=\'vi-sub\'>Khuyến khích làm việc nhóm.</div><br>2. Konflikte lösen<div class=\'vi-sub\'>Giải quyết xung đột.</div><br>3. Respekt und Kommunikation pflegen<div class=\'vi-sub\'>Duy trì tôn trọng &amp; giao tiếp.</div></td><td>1. „Azubi hilft Kollegen im Stoßgeschäft.“<div class=\'vi-sub\'>Học viên hỗ trợ đồng nghiệp lúc cao điểm.</div><br>2. „Konflikt zwischen Küche &amp; Service klären.“<div class=\'vi-sub\'>Giải quyết xung đột giữa bếp &amp; phục vụ.</div><br>3. „Feedback-Runden im Team durchführen.“<div class=\'vi-sub\'>Tổ chức vòng phản hồi trong nhóm.</div></td></tr>\n</table>\n<h3>B. Wichtige Hinweise – Điểm lưu ý quan trọng</h3>\n<table><tr><th>Deutsch</th><th>Tiếng Việt</th><th>Ghi chú</th></tr>\n<tr><td>Der Ausbildungsbetrieb vermittelt Theorie und Praxis.</td><td>Doanh nghiệp đào tạo truyền đạt cả lý thuyết và thực hành.</td><td>Azubi lernt Fachwissen + praktische Arbeit. Học viên học kiến thức + thực hành công việc.</td></tr>\n<tr><td>Azubis haben Rechte und Pflichten.</td><td>Học viên có cả quyền và nghĩa vụ.</td><td>Recht: Ausbildung, Vergütung. Pflicht: Lernen, Regeln einhalten. Quyền: được đào tạo, có lương. Nghĩa vụ: học tập, tuân thủ nội quy.</td></tr>\n<tr><td>Ausbilder haben Fürsorge- und Ausbildungspflicht.</td><td>Người đào tạo có nghĩa vụ chăm lo và giảng dạy.</td><td>Ausbilder sorgt für Sicherheit + erklärt Inhalte. Người đào tạo đảm bảo an toàn + truyền đạt nội dung.</td></tr>\n<tr><td>Organisation im Betrieb schafft Klarheit.</td><td>Tổ chức trong doanh nghiệp tạo sự rõ ràng.</td><td>Hierarchie: Filialleiter → Teamleiter → Mitarbeiter. Cấp bậc: quản lý → trưởng nhóm → nhân viên.</td></tr>\n<tr><td>Zusammenarbeit ist Schlüssel zum Erfolg.</td><td>Hợp tác là chìa khóa thành công.</td><td>Teamarbeit, Kommunikation, Konfliktlösung. Làm việc nhóm, giao tiếp, giải quyết xung đột.</td></tr>\n<tr><td>Dokumentation ist Pflicht.</td><td>Ghi chép là bắt buộc.</td><td>Berichtsheft = Ausbildungsnachweis. Sổ báo cáo = chứng từ đào tạo.</td></tr>\n<tr><td>Motivation entsteht am ersten Tag.</td><td>Động lực bắt đầu từ ngày đầu tiên.</td><td>Guter Start = mehr Engagement im Betrieb. Khởi đầu tốt = gắn bó hơn trong doanh nghiệp.</td></tr>\n</table>",
           "qa": [
             {
               "q": "Thema 1 – Aufgaben des Ausbildungsbetriebs: Welche Inhalte gehören dazu?",
@@ -5379,9 +6173,9 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
         {
           "id": "wiso-thema-2",
           "icon": "",
-          "name": "WiSo Thema 2 · Berufsausbildungs- und Arbeitsverhältnis (Quan hệ đào tạo nghề & lao động)",
+          "name": "WiSo Thema 2 · Berufsausbildungs- und Arbeitsverhältnis",
           "desc": "Inhalte des Ausbildungsvertrags · Dauer der Ausbildung · Arbeitszeitregelungen · Vergütung und Urlaub · Beendigung und Kündigung",
-          "content": "<h2>WiSo Thema 2 · Berufsausbildungs- und Arbeitsverhältnis</h2>\n<div class=\"hint\">Quan hệ đào tạo nghề &amp; lao động · Quelle: Fach Wiso (Theorie) · 5 Punkte, je 3 Theorie-Inhalte + Beispiele</div>\n<h3>A. Theorie &amp; Beispiele (5 Punkte)</h3>\n<table><tr><th>Punkt</th><th>Theorie – Lý thuyết</th><th>Beispiel – Ví dụ</th></tr>\n<tr><td><b>1. Inhalte des Ausbildungsvertrags</b><br><i>Nội dung hợp đồng đào tạo</i></td><td>1. Vertragsparteien<br><i>Các bên tham gia hợp đồng.</i><br>2. Ausbildungsdauer<br><i>Thời gian đào tạo.</i><br>3. Vergütung und Urlaub<br><i>Lương &amp; ngày nghỉ.</i></td><td>1. „Vertrag zwischen Azubi und Betrieb.“<br><i>Hợp đồng giữa học viên và doanh nghiệp.</i><br>2. „Ausbildung dauert 2 Jahre.“<br><i>Đào tạo kéo dài 2 năm.</i><br>3. „Azubi bekommt 24 Urlaubstage.“<br><i>Học viên có 24 ngày phép.</i></td></tr>\n<tr><td><b>2. Dauer der Ausbildung</b><br><i>Thời gian đào tạo</i></td><td>1. Regelausbildungszeit<br><i>Thời gian tiêu chuẩn.</i><br>2. Verkürzung möglich<br><i>Có thể rút ngắn.</i><br>3. Verlängerung bei Bedarf<br><i>Có thể kéo dài nếu cần.</i></td><td>1. „Systemgastronomie = 2 Jahre.“<br><i>Ngành Systemgastronomie = 2 năm.</i><br>2. „Verkürzung bei guten Noten möglich.“<br><i>Có thể rút ngắn nếu điểm tốt.</i><br>3. „Verlängerung bei Krankheit.“<br><i>Có thể kéo dài khi bị bệnh.</i></td></tr>\n<tr><td><b>3. Arbeitszeitregelungen</b><br><i>Quy định giờ làm việc</i></td><td>1. Jugendarbeitsschutz beachten<br><i>Luật bảo vệ lao động trẻ.</i><br>2. Maximalstunden/Tag<br><i>Số giờ làm tối đa/ngày.</i><br>3. Pausenregelung<br><i>Quy định nghỉ ngơi.</i></td><td>1. „Azubi unter 18: max. 40 Std./Woche.“<br><i>Học viên &lt;18 tuổi: tối đa 40 giờ/tuần.</i><br>2. „Nicht mehr als 10 Std./Tag.“<br><i>Không quá 10 giờ/ngày.</i><br>3. „Nach 6 Std. Arbeit → 30 Min. Pause.“<br><i>Sau 6 giờ làm → nghỉ 30 phút.</i></td></tr>\n<tr><td><b>4. Vergütung und Urlaub</b><br><i>Lương &amp; ngày nghỉ</i></td><td>1. Tarifvertrag beachten<br><i>Tuân thủ hợp đồng lao động tập thể.</i><br>2. Mindestlohnregelung<br><i>Quy định lương tối thiểu.</i><br>3. Urlaubsanspruch<br><i>Quyền nghỉ phép.</i></td><td>1. „Azubi erhält 800 €/Monat.“<br><i>Học viên nhận 800 €/tháng.</i><br>2. „Lohn darf Mindestlohn nicht unterschreiten.“<br><i>Lương không được thấp hơn mức tối thiểu.</i><br>3. „Urlaub: 24 Tage pro Jahr.“<br><i>Nghỉ phép: 24 ngày/năm.</i></td></tr>\n<tr><td><b>5. Beendigung und Kündigung</b><br><i>Kết thúc &amp; chấm dứt hợp đồng</i></td><td>1. Ende mit Bestehen der Prüfung<br><i>Kết thúc khi thi đỗ.</i><br>2. Kündigung in Probezeit<br><i>Có thể chấm dứt trong thời gian thử việc.</i><br>3. Außerordentliche Kündigung<br><i>Chấm dứt đặc biệt (lý do nghiêm trọng).</i></td><td>1. „Vertrag endet nach Abschlussprüfung.“<br><i>Hợp đồng kết thúc sau kỳ thi.</i><br>2. „Probezeit: 4 Monate kündbar.“<br><i>Thử việc: 4 tháng có thể nghỉ.</i><br>3. „Fristlose Kündigung bei Diebstahl.“<br><i>Chấm dứt ngay khi ăn cắp.</i></td></tr>\n</table>\n<h3>B. Wichtige Hinweise – Điểm lưu ý quan trọng</h3>\n<table><tr><th>Deutsch</th><th>Tiếng Việt</th><th>Ghi chú</th></tr>\n<tr><td>Der Ausbildungsvertrag ist die Grundlage.</td><td>Hợp đồng đào tạo là nền tảng.</td><td>Ohne Vertrag keine Ausbildung. Không có hợp đồng thì không có đào tạo.</td></tr>\n<tr><td>Dauer der Ausbildung kann variieren.</td><td>Thời gian đào tạo có thể thay đổi.</td><td>Verkürzung bei guten Leistungen, Verlängerung bei Krankheit. Có thể rút ngắn khi học tốt, kéo dài nếu bệnh.</td></tr>\n<tr><td>Arbeitszeit ist gesetzlich geregelt.</td><td>Giờ làm việc được quy định bởi luật.</td><td>Jugendarbeitsschutz beachten (unter 18: max. 40 Std./Woche). Luật bảo vệ lao động trẻ (&lt;18 tuổi: tối đa 40h/tuần).</td></tr>\n<tr><td>Vergütung und Urlaub sind Rechte des Azubis.</td><td>Lương &amp; ngày nghỉ là quyền của học viên.</td><td>Mindestens tariflich geregelt, Urlaub mind. 24 Tage. Theo hợp đồng tập thể, nghỉ phép ít nhất 24 ngày.</td></tr>\n<tr><td>Probezeit ist entscheidend.</td><td>Thời gian thử việc rất quan trọng.</td><td>Dauert bis 4 Monate, Kündigung jederzeit möglich. Kéo dài đến 4 tháng, có thể nghỉ bất cứ lúc nào.</td></tr>\n<tr><td>Kündigung nach Probezeit nur mit Gründen.</td><td>Sau thử việc chỉ được chấm dứt khi có lý do.</td><td>Ordentliche oder außerordentliche Kündigung. Chấm dứt thông thường hoặc đặc biệt.</td></tr>\n<tr><td>Rechte und Pflichten beider Seiten müssen im Gleichgewicht sein.</td><td>Quyền và nghĩa vụ của cả hai bên phải cân bằng.</td><td>Nur so ist die Ausbildung erfolgreich. Chỉ như vậy đào tạo mới thành công.</td></tr>\n</table>",
+          "content": "<h2>WiSo Thema 2 · Berufsausbildungs- und Arbeitsverhältnis</h2>\n<div class=\"hint\">Themenüberblick · Quelle: Fach Wiso (Theorie) · 5 Punkte, je 3 Theorie-Inhalte + Beispiele</div>\n<h3>A. Theorie &amp; Beispiele (5 Punkte)</h3>\n<table><tr><th>Punkt</th><th>Theorie</th><th>Beispiel</th></tr>\n<tr><td><b>1. Inhalte des Ausbildungsvertrags</b><div class=\'vi-sub\'>Nội dung hợp đồng đào tạo</div></td><td>1. Vertragsparteien<div class=\'vi-sub\'>Các bên tham gia hợp đồng.</div><br>2. Ausbildungsdauer<div class=\'vi-sub\'>Thời gian đào tạo.</div><br>3. Vergütung und Urlaub<div class=\'vi-sub\'>Lương &amp; ngày nghỉ.</div></td><td>1. „Vertrag zwischen Azubi und Betrieb.“<div class=\'vi-sub\'>Hợp đồng giữa học viên và doanh nghiệp.</div><br>2. „Ausbildung dauert 2 Jahre.“<div class=\'vi-sub\'>Đào tạo kéo dài 2 năm.</div><br>3. „Azubi bekommt 24 Urlaubstage.“<div class=\'vi-sub\'>Học viên có 24 ngày phép.</div></td></tr>\n<tr><td><b>2. Dauer der Ausbildung</b><div class=\'vi-sub\'>Thời gian đào tạo</div></td><td>1. Regelausbildungszeit<div class=\'vi-sub\'>Thời gian tiêu chuẩn.</div><br>2. Verkürzung möglich<div class=\'vi-sub\'>Có thể rút ngắn.</div><br>3. Verlängerung bei Bedarf<div class=\'vi-sub\'>Có thể kéo dài nếu cần.</div></td><td>1. „Systemgastronomie = 2 Jahre.“<div class=\'vi-sub\'>Ngành Systemgastronomie = 2 năm.</div><br>2. „Verkürzung bei guten Noten möglich.“<div class=\'vi-sub\'>Có thể rút ngắn nếu điểm tốt.</div><br>3. „Verlängerung bei Krankheit.“<div class=\'vi-sub\'>Có thể kéo dài khi bị bệnh.</div></td></tr>\n<tr><td><b>3. Arbeitszeitregelungen</b><div class=\'vi-sub\'>Quy định giờ làm việc</div></td><td>1. Jugendarbeitsschutz beachten<div class=\'vi-sub\'>Luật bảo vệ lao động trẻ.</div><br>2. Maximalstunden/Tag<div class=\'vi-sub\'>Số giờ làm tối đa/ngày.</div><br>3. Pausenregelung<div class=\'vi-sub\'>Quy định nghỉ ngơi.</div></td><td>1. „Azubi unter 18: max. 40 Std./Woche.“<div class=\'vi-sub\'>Học viên &lt;18 tuổi: tối đa 40 giờ/tuần.</div><br>2. „Nicht mehr als 10 Std./Tag.“<div class=\'vi-sub\'>Không quá 10 giờ/ngày.</div><br>3. „Nach 6 Std. Arbeit → 30 Min. Pause.“<div class=\'vi-sub\'>Sau 6 giờ làm → nghỉ 30 phút.</div></td></tr>\n<tr><td><b>4. Vergütung und Urlaub</b><div class=\'vi-sub\'>Lương &amp; ngày nghỉ</div></td><td>1. Tarifvertrag beachten<div class=\'vi-sub\'>Tuân thủ hợp đồng lao động tập thể.</div><br>2. Mindestlohnregelung<div class=\'vi-sub\'>Quy định lương tối thiểu.</div><br>3. Urlaubsanspruch<div class=\'vi-sub\'>Quyền nghỉ phép.</div></td><td>1. „Azubi erhält 800 €/Monat.“<div class=\'vi-sub\'>Học viên nhận 800 €/tháng.</div><br>2. „Lohn darf Mindestlohn nicht unterschreiten.“<div class=\'vi-sub\'>Lương không được thấp hơn mức tối thiểu.</div><br>3. „Urlaub: 24 Tage pro Jahr.“<div class=\'vi-sub\'>Nghỉ phép: 24 ngày/năm.</div></td></tr>\n<tr><td><b>5. Beendigung und Kündigung</b><div class=\'vi-sub\'>Kết thúc &amp; chấm dứt hợp đồng</div></td><td>1. Ende mit Bestehen der Prüfung<div class=\'vi-sub\'>Kết thúc khi thi đỗ.</div><br>2. Kündigung in Probezeit<div class=\'vi-sub\'>Có thể chấm dứt trong thời gian thử việc.</div><br>3. Außerordentliche Kündigung<div class=\'vi-sub\'>Chấm dứt đặc biệt (lý do nghiêm trọng).</div></td><td>1. „Vertrag endet nach Abschlussprüfung.“<div class=\'vi-sub\'>Hợp đồng kết thúc sau kỳ thi.</div><br>2. „Probezeit: 4 Monate kündbar.“<div class=\'vi-sub\'>Thử việc: 4 tháng có thể nghỉ.</div><br>3. „Fristlose Kündigung bei Diebstahl.“<div class=\'vi-sub\'>Chấm dứt ngay khi ăn cắp.</div></td></tr>\n</table>\n<h3>B. Wichtige Hinweise – Điểm lưu ý quan trọng</h3>\n<table><tr><th>Deutsch</th><th>Tiếng Việt</th><th>Ghi chú</th></tr>\n<tr><td>Der Ausbildungsvertrag ist die Grundlage.</td><td>Hợp đồng đào tạo là nền tảng.</td><td>Ohne Vertrag keine Ausbildung. Không có hợp đồng thì không có đào tạo.</td></tr>\n<tr><td>Dauer der Ausbildung kann variieren.</td><td>Thời gian đào tạo có thể thay đổi.</td><td>Verkürzung bei guten Leistungen, Verlängerung bei Krankheit. Có thể rút ngắn khi học tốt, kéo dài nếu bệnh.</td></tr>\n<tr><td>Arbeitszeit ist gesetzlich geregelt.</td><td>Giờ làm việc được quy định bởi luật.</td><td>Jugendarbeitsschutz beachten (unter 18: max. 40 Std./Woche). Luật bảo vệ lao động trẻ (&lt;18 tuổi: tối đa 40h/tuần).</td></tr>\n<tr><td>Vergütung und Urlaub sind Rechte des Azubis.</td><td>Lương &amp; ngày nghỉ là quyền của học viên.</td><td>Mindestens tariflich geregelt, Urlaub mind. 24 Tage. Theo hợp đồng tập thể, nghỉ phép ít nhất 24 ngày.</td></tr>\n<tr><td>Probezeit ist entscheidend.</td><td>Thời gian thử việc rất quan trọng.</td><td>Dauert bis 4 Monate, Kündigung jederzeit möglich. Kéo dài đến 4 tháng, có thể nghỉ bất cứ lúc nào.</td></tr>\n<tr><td>Kündigung nach Probezeit nur mit Gründen.</td><td>Sau thử việc chỉ được chấm dứt khi có lý do.</td><td>Ordentliche oder außerordentliche Kündigung. Chấm dứt thông thường hoặc đặc biệt.</td></tr>\n<tr><td>Rechte und Pflichten beider Seiten müssen im Gleichgewicht sein.</td><td>Quyền và nghĩa vụ của cả hai bên phải cân bằng.</td><td>Nur so ist die Ausbildung erfolgreich. Chỉ như vậy đào tạo mới thành công.</td></tr>\n</table>",
           "qa": [
             {
               "q": "Thema 2 – Inhalte des Ausbildungsvertrags: Welche Inhalte gehören dazu?",
@@ -5490,9 +6284,9 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
         {
           "id": "wiso-thema-3",
           "icon": "",
-          "name": "WiSo Thema 3 · Betriebliche Mitbestimmung (Sự tham gia trong doanh nghiệp)",
+          "name": "WiSo Thema 3 · Betriebliche Mitbestimmung",
           "desc": "Rechte des Betriebsrats · Aufgaben des Betriebsrats · Jugend- und Auszubildendenvertretung (JAV) · Mitbestimmung bei Arbeitszeit · Mitbestimmung bei Kündigung",
-          "content": "<h2>WiSo Thema 3 · Betriebliche Mitbestimmung</h2>\n<div class=\"hint\">Sự tham gia trong doanh nghiệp · Quelle: Fach Wiso (Theorie) · 5 Punkte, je 3 Theorie-Inhalte + Beispiele</div>\n<h3>A. Theorie &amp; Beispiele (5 Punkte)</h3>\n<table><tr><th>Punkt</th><th>Theorie – Lý thuyết</th><th>Beispiel – Ví dụ</th></tr>\n<tr><td><b>1. Rechte des Betriebsrats</b><br><i>Quyền của hội đồng nhân viên</i></td><td>1. Mitbestimmung bei Arbeitszeit<br><i>Tham gia quyết định giờ làm.</i><br>2. Mitbestimmung bei Kündigungen<br><i>Tham gia quyết định việc chấm dứt hợp đồng.</i><br>3. Informationsrecht<br><i>Quyền được cung cấp thông tin.</i></td><td>1. „Betriebsrat stimmt Dienstplanänderung zu.“<br><i>Hội đồng nhân viên đồng ý thay đổi lịch làm.</i><br>2. „Betriebsrat muss bei Kündigung informiert werden.“<br><i>Hội đồng phải được thông báo khi sa thải.</i><br>3. „Chef informiert Betriebsrat über Neueinstellungen.“<br><i>Sếp báo cho hội đồng về tuyển dụng mới.</i></td></tr>\n<tr><td><b>2. Aufgaben des Betriebsrats</b><br><i>Nhiệm vụ của hội đồng nhân viên</i></td><td>1. Interessen der Mitarbeiter vertreten<br><i>Đại diện quyền lợi nhân viên.</i><br>2. Sozialpläne mitgestalten<br><i>Tham gia xây dựng kế hoạch xã hội.</i><br>3. Beschwerden aufnehmen<br><i>Tiếp nhận khiếu nại.</i></td><td>1. „Betriebsrat fordert bessere Pausenregelung.“<br><i>Hội đồng yêu cầu quy định nghỉ ngơi tốt hơn.</i><br>2. „Betriebsrat wirkt bei Arbeitszeitmodell mit.“<br><i>Tham gia vào mô hình giờ làm.</i><br>3. „Mitarbeiter beschwert sich über Überstunden.“<br><i>Nhân viên khiếu nại vì làm thêm giờ.</i></td></tr>\n<tr><td><b>3. Jugend- und Auszubildendenvertretung (JAV)</b><br><i>Đại diện học viên &amp; thanh niên</i></td><td>1. Vertretung für Azubis unter 25<br><i>Đại diện cho học viên dưới 25 tuổi.</i><br>2. Probleme der Azubis ansprechen<br><i>Nêu vấn đề của học viên.</i><br>3. Enge Zusammenarbeit mit Betriebsrat<br><i>Phối hợp chặt chẽ với hội đồng nhân viên.</i></td><td>1. „JAV kümmert sich um Azubi-Anliegen.“<br><i>JAV chăm lo cho vấn đề của học viên.</i><br>2. „Azubis melden Probleme mit Ausbilder.“<br><i>Học viên báo vấn đề với người đào tạo.</i><br>3. „JAV und Betriebsrat arbeiten zusammen.“<br><i>JAV và hội đồng nhân viên phối hợp.</i></td></tr>\n<tr><td><b>4. Mitbestimmung bei Arbeitszeit</b><br><i>Tham gia quyết định giờ làm</i></td><td>1. Einführung neuer Schichtmodelle<br><i>Áp dụng mô hình ca làm mới.</i><br>2. Überstundenregelung<br><i>Quy định làm thêm giờ.</i><br>3. Urlaubsplanung<br><i>Lập kế hoạch nghỉ phép.</i></td><td>1. „Betriebsrat stimmt Schichtsystem zu.“<br><i>Hội đồng đồng ý hệ thống ca làm.</i><br>2. „Überstunden nur mit Zustimmung.“<br><i>Chỉ làm thêm khi được đồng ý.</i><br>3. „Urlaubsplan wird mit Betriebsrat abgestimmt.“<br><i>Kế hoạch nghỉ phép được thống nhất với hội đồng.</i></td></tr>\n<tr><td><b>5. Mitbestimmung bei Kündigung</b><br><i>Tham gia quyết định chấm dứt hợp đồng</i></td><td>1. Zustimmungspflicht<br><i>Yêu cầu sự đồng ý.</i><br>2. Prüfung der Kündigungsgründe<br><i>Kiểm tra lý do sa thải.</i><br>3. Schutz vor Willkür<br><i>Bảo vệ nhân viên khỏi bị sa thải tùy tiện.</i></td><td>1. „Kündigung ohne Betriebsrat nicht gültig.“<br><i>Sa thải không có hội đồng thì không hợp lệ.</i><br>2. „Betriebsrat prüft Kündigungsgrund.“<br><i>Hội đồng kiểm tra lý do sa thải.</i><br>3. „Mitarbeiter vor ungerechter Kündigung geschützt.“<br><i>Nhân viên được bảo vệ khỏi sa thải bất công.</i></td></tr>\n</table>\n<h3>B. Wichtige Hinweise – Điểm lưu ý quan trọng</h3>\n<table><tr><th>Deutsch</th><th>Tiếng Việt</th><th>Ghi chú</th></tr>\n<tr><td>Der Betriebsrat ist die Stimme der Mitarbeiter.</td><td>Hội đồng nhân viên là tiếng nói của nhân viên.</td><td>Vertretung bei Arbeitszeit, Kündigung, Sozialfragen. Đại diện trong giờ làm, sa thải, vấn đề xã hội.</td></tr>\n<tr><td>JAV ist speziell für Azubis wichtig.</td><td>JAV đặc biệt quan trọng cho học viên.</td><td>Vertretung für Azubis &lt; 25 Jahre. Đại diện cho học viên dưới 25 tuổi.</td></tr>\n<tr><td>Arbeitszeit und Kündigung sind zentrale Mitbestimmungsrechte.</td><td>Giờ làm và chấm dứt hợp đồng là quyền tham gia quan trọng nhất.</td><td>Betriebsrat muss zustimmen oder informiert werden. Hội đồng phải đồng ý hoặc được thông báo.</td></tr>\n<tr><td>Mitbestimmung schützt vor Willkür.</td><td>Tham gia quyết định giúp chống lại sự tùy tiện.</td><td>Ohne Betriebsrat: Kündigung oft ungerecht. Không có hội đồng: sa thải dễ bất công.</td></tr>\n<tr><td>Zusammenarbeit zwischen Betriebsrat, JAV und Chef ist entscheidend.</td><td>Sự phối hợp giữa hội đồng, JAV và sếp là yếu tố then chốt.</td><td>Regelmäßige Sitzungen verbessern Zusammenarbeit. Họp thường xuyên giúp phối hợp tốt hơn.</td></tr>\n<tr><td>Alle Mitarbeiter sollten ihre Rechte kennen.</td><td>Mọi nhân viên cần biết quyền của mình.</td><td>Wichtig für Fairness im Betrieb. Quan trọng để đảm bảo công bằng trong doanh nghiệp.</td></tr>\n<tr><td>Mitbestimmung fördert Motivation und Fairness.</td><td>Tham gia quyết định giúp tăng động lực và công bằng.</td><td>Mitarbeiter fühlen sich ernst genommen. Nhân viên cảm thấy mình được coi trọng.</td></tr>\n</table>",
+          "content": "<h2>WiSo Thema 3 · Betriebliche Mitbestimmung</h2>\n<div class=\"hint\">Themenüberblick · Quelle: Fach Wiso (Theorie) · 5 Punkte, je 3 Theorie-Inhalte + Beispiele</div>\n<h3>A. Theorie &amp; Beispiele (5 Punkte)</h3>\n<table><tr><th>Punkt</th><th>Theorie</th><th>Beispiel</th></tr>\n<tr><td><b>1. Rechte des Betriebsrats</b><div class=\'vi-sub\'>Quyền của hội đồng nhân viên</div></td><td>1. Mitbestimmung bei Arbeitszeit<div class=\'vi-sub\'>Tham gia quyết định giờ làm.</div><br>2. Mitbestimmung bei Kündigungen<div class=\'vi-sub\'>Tham gia quyết định việc chấm dứt hợp đồng.</div><br>3. Informationsrecht<div class=\'vi-sub\'>Quyền được cung cấp thông tin.</div></td><td>1. „Betriebsrat stimmt Dienstplanänderung zu.“<div class=\'vi-sub\'>Hội đồng nhân viên đồng ý thay đổi lịch làm.</div><br>2. „Betriebsrat muss bei Kündigung informiert werden.“<div class=\'vi-sub\'>Hội đồng phải được thông báo khi sa thải.</div><br>3. „Chef informiert Betriebsrat über Neueinstellungen.“<div class=\'vi-sub\'>Sếp báo cho hội đồng về tuyển dụng mới.</div></td></tr>\n<tr><td><b>2. Aufgaben des Betriebsrats</b><div class=\'vi-sub\'>Nhiệm vụ của hội đồng nhân viên</div></td><td>1. Interessen der Mitarbeiter vertreten<div class=\'vi-sub\'>Đại diện quyền lợi nhân viên.</div><br>2. Sozialpläne mitgestalten<div class=\'vi-sub\'>Tham gia xây dựng kế hoạch xã hội.</div><br>3. Beschwerden aufnehmen<div class=\'vi-sub\'>Tiếp nhận khiếu nại.</div></td><td>1. „Betriebsrat fordert bessere Pausenregelung.“<div class=\'vi-sub\'>Hội đồng yêu cầu quy định nghỉ ngơi tốt hơn.</div><br>2. „Betriebsrat wirkt bei Arbeitszeitmodell mit.“<div class=\'vi-sub\'>Tham gia vào mô hình giờ làm.</div><br>3. „Mitarbeiter beschwert sich über Überstunden.“<div class=\'vi-sub\'>Nhân viên khiếu nại vì làm thêm giờ.</div></td></tr>\n<tr><td><b>3. Jugend- und Auszubildendenvertretung (JAV)</b><div class=\'vi-sub\'>Đại diện học viên &amp; thanh niên</div></td><td>1. Vertretung für Azubis unter 25<div class=\'vi-sub\'>Đại diện cho học viên dưới 25 tuổi.</div><br>2. Probleme der Azubis ansprechen<div class=\'vi-sub\'>Nêu vấn đề của học viên.</div><br>3. Enge Zusammenarbeit mit Betriebsrat<div class=\'vi-sub\'>Phối hợp chặt chẽ với hội đồng nhân viên.</div></td><td>1. „JAV kümmert sich um Azubi-Anliegen.“<div class=\'vi-sub\'>JAV chăm lo cho vấn đề của học viên.</div><br>2. „Azubis melden Probleme mit Ausbilder.“<div class=\'vi-sub\'>Học viên báo vấn đề với người đào tạo.</div><br>3. „JAV und Betriebsrat arbeiten zusammen.“<div class=\'vi-sub\'>JAV và hội đồng nhân viên phối hợp.</div></td></tr>\n<tr><td><b>4. Mitbestimmung bei Arbeitszeit</b><div class=\'vi-sub\'>Tham gia quyết định giờ làm</div></td><td>1. Einführung neuer Schichtmodelle<div class=\'vi-sub\'>Áp dụng mô hình ca làm mới.</div><br>2. Überstundenregelung<div class=\'vi-sub\'>Quy định làm thêm giờ.</div><br>3. Urlaubsplanung<div class=\'vi-sub\'>Lập kế hoạch nghỉ phép.</div></td><td>1. „Betriebsrat stimmt Schichtsystem zu.“<div class=\'vi-sub\'>Hội đồng đồng ý hệ thống ca làm.</div><br>2. „Überstunden nur mit Zustimmung.“<div class=\'vi-sub\'>Chỉ làm thêm khi được đồng ý.</div><br>3. „Urlaubsplan wird mit Betriebsrat abgestimmt.“<div class=\'vi-sub\'>Kế hoạch nghỉ phép được thống nhất với hội đồng.</div></td></tr>\n<tr><td><b>5. Mitbestimmung bei Kündigung</b><div class=\'vi-sub\'>Tham gia quyết định chấm dứt hợp đồng</div></td><td>1. Zustimmungspflicht<div class=\'vi-sub\'>Yêu cầu sự đồng ý.</div><br>2. Prüfung der Kündigungsgründe<div class=\'vi-sub\'>Kiểm tra lý do sa thải.</div><br>3. Schutz vor Willkür<div class=\'vi-sub\'>Bảo vệ nhân viên khỏi bị sa thải tùy tiện.</div></td><td>1. „Kündigung ohne Betriebsrat nicht gültig.“<div class=\'vi-sub\'>Sa thải không có hội đồng thì không hợp lệ.</div><br>2. „Betriebsrat prüft Kündigungsgrund.“<div class=\'vi-sub\'>Hội đồng kiểm tra lý do sa thải.</div><br>3. „Mitarbeiter vor ungerechter Kündigung geschützt.“<div class=\'vi-sub\'>Nhân viên được bảo vệ khỏi sa thải bất công.</div></td></tr>\n</table>\n<h3>B. Wichtige Hinweise – Điểm lưu ý quan trọng</h3>\n<table><tr><th>Deutsch</th><th>Tiếng Việt</th><th>Ghi chú</th></tr>\n<tr><td>Der Betriebsrat ist die Stimme der Mitarbeiter.</td><td>Hội đồng nhân viên là tiếng nói của nhân viên.</td><td>Vertretung bei Arbeitszeit, Kündigung, Sozialfragen. Đại diện trong giờ làm, sa thải, vấn đề xã hội.</td></tr>\n<tr><td>JAV ist speziell für Azubis wichtig.</td><td>JAV đặc biệt quan trọng cho học viên.</td><td>Vertretung für Azubis &lt; 25 Jahre. Đại diện cho học viên dưới 25 tuổi.</td></tr>\n<tr><td>Arbeitszeit und Kündigung sind zentrale Mitbestimmungsrechte.</td><td>Giờ làm và chấm dứt hợp đồng là quyền tham gia quan trọng nhất.</td><td>Betriebsrat muss zustimmen oder informiert werden. Hội đồng phải đồng ý hoặc được thông báo.</td></tr>\n<tr><td>Mitbestimmung schützt vor Willkür.</td><td>Tham gia quyết định giúp chống lại sự tùy tiện.</td><td>Ohne Betriebsrat: Kündigung oft ungerecht. Không có hội đồng: sa thải dễ bất công.</td></tr>\n<tr><td>Zusammenarbeit zwischen Betriebsrat, JAV und Chef ist entscheidend.</td><td>Sự phối hợp giữa hội đồng, JAV và sếp là yếu tố then chốt.</td><td>Regelmäßige Sitzungen verbessern Zusammenarbeit. Họp thường xuyên giúp phối hợp tốt hơn.</td></tr>\n<tr><td>Alle Mitarbeiter sollten ihre Rechte kennen.</td><td>Mọi nhân viên cần biết quyền của mình.</td><td>Wichtig für Fairness im Betrieb. Quan trọng để đảm bảo công bằng trong doanh nghiệp.</td></tr>\n<tr><td>Mitbestimmung fördert Motivation und Fairness.</td><td>Tham gia quyết định giúp tăng động lực và công bằng.</td><td>Mitarbeiter fühlen sich ernst genommen. Nhân viên cảm thấy mình được coi trọng.</td></tr>\n</table>",
           "qa": [
             {
               "q": "Thema 3 – Rechte des Betriebsrats: Welche Inhalte gehören dazu?",
@@ -5601,9 +6395,9 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
         {
           "id": "wiso-thema-4",
           "icon": "",
-          "name": "WiSo Thema 4 · Entwicklung der Arbeitswelt (Sự phát triển của thế giới lao động)",
+          "name": "WiSo Thema 4 · Entwicklung der Arbeitswelt",
           "desc": "Wandel durch Digitalisierung · Strukturwandel in der Gastronomie · Arbeitsmarkt und Berufe · Fachkräftemangel · Lebenslanges Lernen",
-          "content": "<h2>WiSo Thema 4 · Entwicklung der Arbeitswelt</h2>\n<div class=\"hint\">Sự phát triển của thế giới lao động · Quelle: Fach Wiso (Theorie) · 5 Punkte, je 3 Theorie-Inhalte + Beispiele</div>\n<h3>A. Theorie &amp; Beispiele (5 Punkte)</h3>\n<table><tr><th>Punkt</th><th>Theorie – Lý thuyết</th><th>Beispiel – Ví dụ</th></tr>\n<tr><td><b>1. Wandel durch Digitalisierung</b><br><i>Thay đổi do số hóa</i></td><td>1. Neue Technologien einsetzen<br><i>Ứng dụng công nghệ mới.</i><br>2. Online-Bestellungen ermöglichen<br><i>Cho phép đặt hàng online.</i><br>3. Digitale Kommunikation nutzen<br><i>Dùng giao tiếp kỹ thuật số.</i></td><td>1. „Bestellungen per Tablet aufnehmen.“<br><i>Nhận đơn bằng máy tính bảng.</i><br>2. „Kunde bestellt Sandwich über App.“<br><i>Khách đặt bánh mì qua ứng dụng.</i><br>3. „Team kommuniziert per WhatsApp-Gruppe.“<br><i>Nhóm trao đổi qua WhatsApp.</i></td></tr>\n<tr><td><b>2. Strukturwandel in der Gastronomie</b><br><i>Chuyển đổi trong ngành ẩm thực</i></td><td>1. Systemgastronomie wächst<br><i>Ngành ẩm thực hệ thống phát triển.</i><br>2. Klassische Restaurants verändern sich<br><i>Nhà hàng truyền thống thay đổi.</i><br>3. Mehr Lieferdienste<br><i>Dịch vụ giao hàng tăng.</i></td><td>1. „Subway expandiert in vielen Städten.“<br><i>Subway mở rộng ở nhiều thành phố.</i><br>2. „Traditionelles Restaurant bietet auch Takeaway.“<br><i>Nhà hàng truyền thống thêm món mang đi.</i><br>3. „Lieferando bringt Essen nach Hause.“<br><i>Lieferando giao đồ ăn tận nhà.</i></td></tr>\n<tr><td><b>3. Arbeitsmarkt und Berufe</b><br><i>Thị trường lao động &amp; nghề nghiệp</i></td><td>1. Neue Berufsbilder entstehen<br><i>Xuất hiện nghề mới.</i><br>2. Mehr Flexibilität gefordert<br><i>Yêu cầu linh hoạt hơn.</i><br>3. Internationale Arbeitskräfte wichtig<br><i>Lao động quốc tế quan trọng.</i></td><td>1. „Job: Fachkraft für Systemgastronomie.“<br><i>Nghề: Nhân viên ngành ẩm thực hệ thống.</i><br>2. „Mitarbeiter wechseln zwischen Küche und Service.“<br><i>Nhân viên luân chuyển giữa bếp và phục vụ.</i><br>3. „Viele Azubis kommen aus dem Ausland.“<br><i>Nhiều học viên đến từ nước ngoài.</i></td></tr>\n<tr><td><b>4. Fachkräftemangel</b><br><i>Thiếu hụt lao động có tay nghề</i></td><td>1. Ursachen analysieren<br><i>Phân tích nguyên nhân.</i><br>2. Attraktivität der Branche erhöhen<br><i>Tăng sức hấp dẫn ngành.</i><br>3. Azubis fördern<br><i>Đào tạo và hỗ trợ học viên.</i></td><td>1. „Viele verlassen Gastronomie wegen Arbeitszeiten.“<br><i>Nhiều người rời ngành vì giờ làm.</i><br>2. „Betrieb bietet höhere Löhne.“<br><i>Doanh nghiệp trả lương cao hơn.</i><br>3. „Mehr Ausbildungsplätze schaffen.“<br><i>Tạo thêm chỗ học nghề.</i></td></tr>\n<tr><td><b>5. Lebenslanges Lernen</b><br><i>Học tập suốt đời</i></td><td>1. Fortbildungen besuchen<br><i>Tham gia đào tạo nâng cao.</i><br>2. Neue Trends lernen<br><i>Học xu hướng mới.</i><br>3. Anpassung an Veränderungen<br><i>Thích nghi thay đổi.</i></td><td>1. „Kurs über neue Kassensysteme.“<br><i>Khóa học về hệ thống thu ngân mới.</i><br>2. „Seminar über vegane Ernährung.“<br><i>Hội thảo về dinh dưỡng thuần chay.</i><br>3. „Team passt sich an Lieferservice an.“<br><i>Nhóm thích nghi với dịch vụ giao hàng.</i></td></tr>\n</table>\n<h3>B. Wichtige Hinweise – Điểm lưu ý quan trọng</h3>\n<table><tr><th>Deutsch</th><th>Tiếng Việt</th><th>Ghi chú</th></tr>\n<tr><td>Digitalisierung verändert alle Berufe.</td><td>Số hóa thay đổi mọi ngành nghề.</td><td>Neue Kassensysteme, Online-Bestellungen. Hệ thống thu ngân mới, đặt hàng online.</td></tr>\n<tr><td>Strukturwandel betrifft Gastronomie stark.</td><td>Ngành ẩm thực chịu tác động lớn của chuyển đổi.</td><td>Mehr Systemgastronomie, mehr Lieferdienste. Ẩm thực hệ thống phát triển, dịch vụ giao hàng tăng.</td></tr>\n<tr><td>Flexibilität ist Voraussetzung auf dem Arbeitsmarkt.</td><td>Linh hoạt là điều kiện tiên quyết trên thị trường lao động.</td><td>Mitarbeiter wechseln zwischen Küche &amp; Service. Nhân viên có thể luân chuyển giữa bếp và phục vụ.</td></tr>\n<tr><td>Fachkräftemangel ist eine große Herausforderung.</td><td>Thiếu hụt lao động có tay nghề là thách thức lớn.</td><td>Viele verlassen Gastronomie wegen Arbeitszeiten. Nhiều người rời ngành vì giờ làm.</td></tr>\n<tr><td>Lebenslanges Lernen ist Pflicht, nicht Wahl.</td><td>Học tập suốt đời là bắt buộc, không phải tùy chọn.</td><td>Fortbildungen über neue Trends (z. B. vegane Ernährung). Đào tạo nâng cao về xu hướng mới (ví dụ: ăn chay).</td></tr>\n<tr><td>Internationale Arbeitskräfte sind notwendig.</td><td>Lao động quốc tế là cần thiết.</td><td>Viele Azubis kommen aus dem Ausland. Nhiều học viên đến từ nước ngoài.</td></tr>\n<tr><td>Anpassungsfähigkeit entscheidet über Erfolg.</td><td>Khả năng thích nghi quyết định thành công.</td><td>Betriebe, die Trends anpassen, bleiben wettbewerbsfähig. Doanh nghiệp nào thích nghi xu hướng thì duy trì cạnh tranh.</td></tr>\n</table>",
+          "content": "<h2>WiSo Thema 4 · Entwicklung der Arbeitswelt</h2>\n<div class=\"hint\">Themenüberblick · Quelle: Fach Wiso (Theorie) · 5 Punkte, je 3 Theorie-Inhalte + Beispiele</div>\n<h3>A. Theorie &amp; Beispiele (5 Punkte)</h3>\n<table><tr><th>Punkt</th><th>Theorie</th><th>Beispiel</th></tr>\n<tr><td><b>1. Wandel durch Digitalisierung</b><div class=\'vi-sub\'>Thay đổi do số hóa</div></td><td>1. Neue Technologien einsetzen<div class=\'vi-sub\'>Ứng dụng công nghệ mới.</div><br>2. Online-Bestellungen ermöglichen<div class=\'vi-sub\'>Cho phép đặt hàng online.</div><br>3. Digitale Kommunikation nutzen<div class=\'vi-sub\'>Dùng giao tiếp kỹ thuật số.</div></td><td>1. „Bestellungen per Tablet aufnehmen.“<div class=\'vi-sub\'>Nhận đơn bằng máy tính bảng.</div><br>2. „Kunde bestellt Sandwich über App.“<div class=\'vi-sub\'>Khách đặt bánh mì qua ứng dụng.</div><br>3. „Team kommuniziert per WhatsApp-Gruppe.“<div class=\'vi-sub\'>Nhóm trao đổi qua WhatsApp.</div></td></tr>\n<tr><td><b>2. Strukturwandel in der Gastronomie</b><div class=\'vi-sub\'>Chuyển đổi trong ngành ẩm thực</div></td><td>1. Systemgastronomie wächst<div class=\'vi-sub\'>Ngành ẩm thực hệ thống phát triển.</div><br>2. Klassische Restaurants verändern sich<div class=\'vi-sub\'>Nhà hàng truyền thống thay đổi.</div><br>3. Mehr Lieferdienste<div class=\'vi-sub\'>Dịch vụ giao hàng tăng.</div></td><td>1. „Subway expandiert in vielen Städten.“<div class=\'vi-sub\'>Subway mở rộng ở nhiều thành phố.</div><br>2. „Traditionelles Restaurant bietet auch Takeaway.“<div class=\'vi-sub\'>Nhà hàng truyền thống thêm món mang đi.</div><br>3. „Lieferando bringt Essen nach Hause.“<div class=\'vi-sub\'>Lieferando giao đồ ăn tận nhà.</div></td></tr>\n<tr><td><b>3. Arbeitsmarkt und Berufe</b><div class=\'vi-sub\'>Thị trường lao động &amp; nghề nghiệp</div></td><td>1. Neue Berufsbilder entstehen<div class=\'vi-sub\'>Xuất hiện nghề mới.</div><br>2. Mehr Flexibilität gefordert<div class=\'vi-sub\'>Yêu cầu linh hoạt hơn.</div><br>3. Internationale Arbeitskräfte wichtig<div class=\'vi-sub\'>Lao động quốc tế quan trọng.</div></td><td>1. „Job: Fachkraft für Systemgastronomie.“<div class=\'vi-sub\'>Nghề: Nhân viên ngành ẩm thực hệ thống.</div><br>2. „Mitarbeiter wechseln zwischen Küche und Service.“<div class=\'vi-sub\'>Nhân viên luân chuyển giữa bếp và phục vụ.</div><br>3. „Viele Azubis kommen aus dem Ausland.“<div class=\'vi-sub\'>Nhiều học viên đến từ nước ngoài.</div></td></tr>\n<tr><td><b>4. Fachkräftemangel</b><div class=\'vi-sub\'>Thiếu hụt lao động có tay nghề</div></td><td>1. Ursachen analysieren<div class=\'vi-sub\'>Phân tích nguyên nhân.</div><br>2. Attraktivität der Branche erhöhen<div class=\'vi-sub\'>Tăng sức hấp dẫn ngành.</div><br>3. Azubis fördern<div class=\'vi-sub\'>Đào tạo và hỗ trợ học viên.</div></td><td>1. „Viele verlassen Gastronomie wegen Arbeitszeiten.“<div class=\'vi-sub\'>Nhiều người rời ngành vì giờ làm.</div><br>2. „Betrieb bietet höhere Löhne.“<div class=\'vi-sub\'>Doanh nghiệp trả lương cao hơn.</div><br>3. „Mehr Ausbildungsplätze schaffen.“<div class=\'vi-sub\'>Tạo thêm chỗ học nghề.</div></td></tr>\n<tr><td><b>5. Lebenslanges Lernen</b><div class=\'vi-sub\'>Học tập suốt đời</div></td><td>1. Fortbildungen besuchen<div class=\'vi-sub\'>Tham gia đào tạo nâng cao.</div><br>2. Neue Trends lernen<div class=\'vi-sub\'>Học xu hướng mới.</div><br>3. Anpassung an Veränderungen<div class=\'vi-sub\'>Thích nghi thay đổi.</div></td><td>1. „Kurs über neue Kassensysteme.“<div class=\'vi-sub\'>Khóa học về hệ thống thu ngân mới.</div><br>2. „Seminar über vegane Ernährung.“<div class=\'vi-sub\'>Hội thảo về dinh dưỡng thuần chay.</div><br>3. „Team passt sich an Lieferservice an.“<div class=\'vi-sub\'>Nhóm thích nghi với dịch vụ giao hàng.</div></td></tr>\n</table>\n<h3>B. Wichtige Hinweise – Điểm lưu ý quan trọng</h3>\n<table><tr><th>Deutsch</th><th>Tiếng Việt</th><th>Ghi chú</th></tr>\n<tr><td>Digitalisierung verändert alle Berufe.</td><td>Số hóa thay đổi mọi ngành nghề.</td><td>Neue Kassensysteme, Online-Bestellungen. Hệ thống thu ngân mới, đặt hàng online.</td></tr>\n<tr><td>Strukturwandel betrifft Gastronomie stark.</td><td>Ngành ẩm thực chịu tác động lớn của chuyển đổi.</td><td>Mehr Systemgastronomie, mehr Lieferdienste. Ẩm thực hệ thống phát triển, dịch vụ giao hàng tăng.</td></tr>\n<tr><td>Flexibilität ist Voraussetzung auf dem Arbeitsmarkt.</td><td>Linh hoạt là điều kiện tiên quyết trên thị trường lao động.</td><td>Mitarbeiter wechseln zwischen Küche &amp; Service. Nhân viên có thể luân chuyển giữa bếp và phục vụ.</td></tr>\n<tr><td>Fachkräftemangel ist eine große Herausforderung.</td><td>Thiếu hụt lao động có tay nghề là thách thức lớn.</td><td>Viele verlassen Gastronomie wegen Arbeitszeiten. Nhiều người rời ngành vì giờ làm.</td></tr>\n<tr><td>Lebenslanges Lernen ist Pflicht, nicht Wahl.</td><td>Học tập suốt đời là bắt buộc, không phải tùy chọn.</td><td>Fortbildungen über neue Trends (z. B. vegane Ernährung). Đào tạo nâng cao về xu hướng mới (ví dụ: ăn chay).</td></tr>\n<tr><td>Internationale Arbeitskräfte sind notwendig.</td><td>Lao động quốc tế là cần thiết.</td><td>Viele Azubis kommen aus dem Ausland. Nhiều học viên đến từ nước ngoài.</td></tr>\n<tr><td>Anpassungsfähigkeit entscheidet über Erfolg.</td><td>Khả năng thích nghi quyết định thành công.</td><td>Betriebe, die Trends anpassen, bleiben wettbewerbsfähig. Doanh nghiệp nào thích nghi xu hướng thì duy trì cạnh tranh.</td></tr>\n</table>",
           "qa": [
             {
               "q": "Thema 4 – Wandel durch Digitalisierung: Welche Inhalte gehören dazu?",
@@ -5712,9 +6506,9 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
         {
           "id": "wiso-thema-5",
           "icon": "",
-          "name": "WiSo Thema 5 · Sozialversicherung (Bảo hiểm xã hội)",
+          "name": "WiSo Thema 5 · Sozialversicherung",
           "desc": "Krankenversicherung · Rentenversicherung · Arbeitslosenversicherung · Pflegeversicherung · Unfallversicherung",
-          "content": "<h2>WiSo Thema 5 · Sozialversicherung</h2>\n<div class=\"hint\">Bảo hiểm xã hội · Quelle: Fach Wiso (Theorie) · 5 Punkte, je 3 Theorie-Inhalte + Beispiele</div>\n<h3>A. Theorie &amp; Beispiele (5 Punkte)</h3>\n<table><tr><th>Punkt</th><th>Theorie – Lý thuyết</th><th>Beispiel – Ví dụ</th></tr>\n<tr><td><b>1. Krankenversicherung</b><br><i>Bảo hiểm y tế</i></td><td>1. Kostenübernahme bei Arztbesuch<br><i>Chi trả khi đi khám bác sĩ.</i><br>2. Medikamente und Behandlungen<br><i>Thuốc và điều trị được hỗ trợ.</i><br>3. Pflichtversicherung für Arbeitnehmer<br><i>Bảo hiểm bắt buộc cho người lao động.</i></td><td>1. „Azubi geht zum Arzt, Krankenkasse zahlt.“<br><i>Học viên đi khám, bảo hiểm y tế chi trả.</i><br>2. „Medizin für Grippe wird übernommen.“<br><i>Thuốc cảm cúm được hỗ trợ.</i><br>3. „Azubi wird automatisch versichert.“<br><i>Học viên được tự động tham gia bảo hiểm.</i></td></tr>\n<tr><td><b>2. Rentenversicherung</b><br><i>Bảo hiểm hưu trí</i></td><td>1. Beiträge während der Arbeit<br><i>Đóng góp trong thời gian làm việc.</i><br>2. Anspruch im Alter<br><i>Quyền nhận lương hưu khi về già.</i><br>3. Solidarprinzip<br><i>Nguyên tắc đoàn kết (thế hệ trẻ nuôi thế hệ già).</i></td><td>1. „Monatlich wird Beitrag vom Lohn abgezogen.“<br><i>Hàng tháng trích lương để đóng.</i><br>2. „Nach 40 Jahren Arbeit → Rente.“<br><i>Sau 40 năm làm việc → nhận lương hưu.</i><br>3. „Junge zahlen für die Alten.“<br><i>Người trẻ đóng cho người già.</i></td></tr>\n<tr><td><b>3. Arbeitslosenversicherung</b><br><i>Bảo hiểm thất nghiệp</i></td><td>1. Unterstützung bei Jobverlust<br><i>Hỗ trợ khi mất việc.</i><br>2. Arbeitslosengeld I<br><i>Tiền trợ cấp thất nghiệp loại I.</i><br>3. Vermittlung durch Arbeitsagentur<br><i>Giới thiệu việc làm qua cơ quan lao động.</i></td><td>1. „Mitarbeiter verliert Job → ALG I.“<br><i>Nhân viên mất việc → nhận trợ cấp I.</i><br>2. „Höhe abhängig vom letzten Gehalt.“<br><i>Số tiền phụ thuộc vào lương cũ.</i><br>3. „Agentur hilft bei Jobsuche.“<br><i>Cơ quan lao động hỗ trợ tìm việc.</i></td></tr>\n<tr><td><b>4. Pflegeversicherung</b><br><i>Bảo hiểm chăm sóc</i></td><td>1. Unterstützung bei Pflegebedürftigkeit<br><i>Hỗ trợ khi cần chăm sóc.</i><br>2. Pflegestufen definieren Leistungen<br><i>Mức độ chăm sóc quyết định quyền lợi.</i><br>3. Entlastung für Angehörige<br><i>Giảm gánh nặng cho gia đình.</i></td><td>1. „Alter Mensch bekommt Pflegegeld.“<br><i>Người già nhận tiền chăm sóc.</i><br>2. „Pflegestufe 3 = mehr Unterstützung.“<br><i>Mức chăm sóc 3 = nhiều hỗ trợ hơn.</i><br>3. „Familie wird finanziell entlastet.“<br><i>Gia đình được giảm gánh nặng tài chính.</i></td></tr>\n<tr><td><b>5. Unfallversicherung</b><br><i>Bảo hiểm tai nạn</i></td><td>1. Schutz bei Arbeitsunfällen<br><i>Bảo vệ khi tai nạn lao động.</i><br>2. Wegeunfälle eingeschlossen<br><i>Bao gồm cả tai nạn trên đường đi làm.</i><br>3. Finanzielle Absicherung<br><i>Đảm bảo tài chính khi bị tai nạn.</i></td><td>1. „Azubi verletzt sich in Küche, Versicherung zahlt.“<br><i>Học viên bị thương trong bếp, bảo hiểm chi trả.</i><br>2. „Unfall auf dem Arbeitsweg = versichert.“<br><i>Tai nạn trên đường đi làm = được bảo hiểm.</i><br>3. „Kosten für Reha übernommen.“<br><i>Chi phí phục hồi chức năng được chi trả.</i></td></tr>\n</table>\n<h3>B. Wichtige Hinweise – Điểm lưu ý quan trọng</h3>\n<table><tr><th>Deutsch</th><th>Tiếng Việt</th><th>Ghi chú</th></tr>\n<tr><td>Sozialversicherung besteht aus 5 Säulen.</td><td>Bảo hiểm xã hội có 5 trụ cột.</td><td>Kranken-, Renten-, Arbeitslosen-, Pflege-, Unfallversicherung. Gồm: Y tế, hưu trí, thất nghiệp, chăm sóc, tai nạn.</td></tr>\n<tr><td>Jede Versicherung schützt vor speziellen Risiken.</td><td>Mỗi loại bảo hiểm bảo vệ trước một rủi ro riêng.</td><td>Beispiel: Krankenversicherung bei Krankheit. Ví dụ: bảo hiểm y tế khi ốm bệnh.</td></tr>\n<tr><td>Beiträge werden automatisch vom Lohn abgezogen.</td><td>Khoản đóng được tự động trừ từ lương.</td><td>Arbeitgeber + Arbeitnehmer zahlen zusammen. Người lao động + chủ doanh nghiệp cùng đóng.</td></tr>\n<tr><td>Versicherung ist Pflicht für alle Arbeitnehmer.</td><td>Bảo hiểm là bắt buộc cho mọi người lao động.</td><td>Ausnahme: bestimmte Minijobs. Ngoại lệ: một số việc làm nhỏ (Minijob).</td></tr>\n<tr><td>Ohne Versicherung → keine finanzielle Sicherheit.</td><td>Không có bảo hiểm → không có an toàn tài chính.</td><td>Hohe Kosten bei Unfall oder Krankheit. Chi phí cao khi tai nạn hoặc bệnh tật.</td></tr>\n<tr><td>Arbeitgeber und Arbeitnehmer teilen Beiträge.</td><td>Người lao động và chủ doanh nghiệp cùng đóng.</td><td>Ca. 50:50, je nach Versicherung. Khoảng 50:50, tùy loại bảo hiểm.</td></tr>\n<tr><td>Kenntnisse der Sozialversicherung sind prüfungsrelevant.</td><td>Hiểu biết về bảo hiểm xã hội rất quan trọng trong kỳ thi.</td><td>Fragen dazu kommen oft in WISO-Prüfung. Các câu hỏi này thường xuất hiện trong kỳ thi WISO.</td></tr>\n</table>",
+          "content": "<h2>WiSo Thema 5 · Sozialversicherung</h2>\n<div class=\"hint\">Themenüberblick · Quelle: Fach Wiso (Theorie) · 5 Punkte, je 3 Theorie-Inhalte + Beispiele</div>\n<h3>A. Theorie &amp; Beispiele (5 Punkte)</h3>\n<table><tr><th>Punkt</th><th>Theorie</th><th>Beispiel</th></tr>\n<tr><td><b>1. Krankenversicherung</b><div class=\'vi-sub\'>Bảo hiểm y tế</div></td><td>1. Kostenübernahme bei Arztbesuch<div class=\'vi-sub\'>Chi trả khi đi khám bác sĩ.</div><br>2. Medikamente und Behandlungen<div class=\'vi-sub\'>Thuốc và điều trị được hỗ trợ.</div><br>3. Pflichtversicherung für Arbeitnehmer<div class=\'vi-sub\'>Bảo hiểm bắt buộc cho người lao động.</div></td><td>1. „Azubi geht zum Arzt, Krankenkasse zahlt.“<div class=\'vi-sub\'>Học viên đi khám, bảo hiểm y tế chi trả.</div><br>2. „Medizin für Grippe wird übernommen.“<div class=\'vi-sub\'>Thuốc cảm cúm được hỗ trợ.</div><br>3. „Azubi wird automatisch versichert.“<div class=\'vi-sub\'>Học viên được tự động tham gia bảo hiểm.</div></td></tr>\n<tr><td><b>2. Rentenversicherung</b><div class=\'vi-sub\'>Bảo hiểm hưu trí</div></td><td>1. Beiträge während der Arbeit<div class=\'vi-sub\'>Đóng góp trong thời gian làm việc.</div><br>2. Anspruch im Alter<div class=\'vi-sub\'>Quyền nhận lương hưu khi về già.</div><br>3. Solidarprinzip<div class=\'vi-sub\'>Nguyên tắc đoàn kết (thế hệ trẻ nuôi thế hệ già).</div></td><td>1. „Monatlich wird Beitrag vom Lohn abgezogen.“<div class=\'vi-sub\'>Hàng tháng trích lương để đóng.</div><br>2. „Nach 40 Jahren Arbeit → Rente.“<div class=\'vi-sub\'>Sau 40 năm làm việc → nhận lương hưu.</div><br>3. „Junge zahlen für die Alten.“<div class=\'vi-sub\'>Người trẻ đóng cho người già.</div></td></tr>\n<tr><td><b>3. Arbeitslosenversicherung</b><div class=\'vi-sub\'>Bảo hiểm thất nghiệp</div></td><td>1. Unterstützung bei Jobverlust<div class=\'vi-sub\'>Hỗ trợ khi mất việc.</div><br>2. Arbeitslosengeld I<div class=\'vi-sub\'>Tiền trợ cấp thất nghiệp loại I.</div><br>3. Vermittlung durch Arbeitsagentur<div class=\'vi-sub\'>Giới thiệu việc làm qua cơ quan lao động.</div></td><td>1. „Mitarbeiter verliert Job → ALG I.“<div class=\'vi-sub\'>Nhân viên mất việc → nhận trợ cấp I.</div><br>2. „Höhe abhängig vom letzten Gehalt.“<div class=\'vi-sub\'>Số tiền phụ thuộc vào lương cũ.</div><br>3. „Agentur hilft bei Jobsuche.“<div class=\'vi-sub\'>Cơ quan lao động hỗ trợ tìm việc.</div></td></tr>\n<tr><td><b>4. Pflegeversicherung</b><div class=\'vi-sub\'>Bảo hiểm chăm sóc</div></td><td>1. Unterstützung bei Pflegebedürftigkeit<div class=\'vi-sub\'>Hỗ trợ khi cần chăm sóc.</div><br>2. Pflegestufen definieren Leistungen<div class=\'vi-sub\'>Mức độ chăm sóc quyết định quyền lợi.</div><br>3. Entlastung für Angehörige<div class=\'vi-sub\'>Giảm gánh nặng cho gia đình.</div></td><td>1. „Alter Mensch bekommt Pflegegeld.“<div class=\'vi-sub\'>Người già nhận tiền chăm sóc.</div><br>2. „Pflegestufe 3 = mehr Unterstützung.“<div class=\'vi-sub\'>Mức chăm sóc 3 = nhiều hỗ trợ hơn.</div><br>3. „Familie wird finanziell entlastet.“<div class=\'vi-sub\'>Gia đình được giảm gánh nặng tài chính.</div></td></tr>\n<tr><td><b>5. Unfallversicherung</b><div class=\'vi-sub\'>Bảo hiểm tai nạn</div></td><td>1. Schutz bei Arbeitsunfällen<div class=\'vi-sub\'>Bảo vệ khi tai nạn lao động.</div><br>2. Wegeunfälle eingeschlossen<div class=\'vi-sub\'>Bao gồm cả tai nạn trên đường đi làm.</div><br>3. Finanzielle Absicherung<div class=\'vi-sub\'>Đảm bảo tài chính khi bị tai nạn.</div></td><td>1. „Azubi verletzt sich in Küche, Versicherung zahlt.“<div class=\'vi-sub\'>Học viên bị thương trong bếp, bảo hiểm chi trả.</div><br>2. „Unfall auf dem Arbeitsweg = versichert.“<div class=\'vi-sub\'>Tai nạn trên đường đi làm = được bảo hiểm.</div><br>3. „Kosten für Reha übernommen.“<div class=\'vi-sub\'>Chi phí phục hồi chức năng được chi trả.</div></td></tr>\n</table>\n<h3>B. Wichtige Hinweise – Điểm lưu ý quan trọng</h3>\n<table><tr><th>Deutsch</th><th>Tiếng Việt</th><th>Ghi chú</th></tr>\n<tr><td>Sozialversicherung besteht aus 5 Säulen.</td><td>Bảo hiểm xã hội có 5 trụ cột.</td><td>Kranken-, Renten-, Arbeitslosen-, Pflege-, Unfallversicherung. Gồm: Y tế, hưu trí, thất nghiệp, chăm sóc, tai nạn.</td></tr>\n<tr><td>Jede Versicherung schützt vor speziellen Risiken.</td><td>Mỗi loại bảo hiểm bảo vệ trước một rủi ro riêng.</td><td>Beispiel: Krankenversicherung bei Krankheit. Ví dụ: bảo hiểm y tế khi ốm bệnh.</td></tr>\n<tr><td>Beiträge werden automatisch vom Lohn abgezogen.</td><td>Khoản đóng được tự động trừ từ lương.</td><td>Arbeitgeber + Arbeitnehmer zahlen zusammen. Người lao động + chủ doanh nghiệp cùng đóng.</td></tr>\n<tr><td>Versicherung ist Pflicht für alle Arbeitnehmer.</td><td>Bảo hiểm là bắt buộc cho mọi người lao động.</td><td>Ausnahme: bestimmte Minijobs. Ngoại lệ: một số việc làm nhỏ (Minijob).</td></tr>\n<tr><td>Ohne Versicherung → keine finanzielle Sicherheit.</td><td>Không có bảo hiểm → không có an toàn tài chính.</td><td>Hohe Kosten bei Unfall oder Krankheit. Chi phí cao khi tai nạn hoặc bệnh tật.</td></tr>\n<tr><td>Arbeitgeber und Arbeitnehmer teilen Beiträge.</td><td>Người lao động và chủ doanh nghiệp cùng đóng.</td><td>Ca. 50:50, je nach Versicherung. Khoảng 50:50, tùy loại bảo hiểm.</td></tr>\n<tr><td>Kenntnisse der Sozialversicherung sind prüfungsrelevant.</td><td>Hiểu biết về bảo hiểm xã hội rất quan trọng trong kỳ thi.</td><td>Fragen dazu kommen oft in WISO-Prüfung. Các câu hỏi này thường xuất hiện trong kỳ thi WISO.</td></tr>\n</table>",
           "qa": [
             {
               "q": "Thema 5 – Krankenversicherung: Welche Inhalte gehören dazu?",
@@ -5823,9 +6617,9 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
         {
           "id": "wiso-thema-6",
           "icon": "",
-          "name": "WiSo Thema 6 · Soziale Sicherung, Berufs- und Lebensplanung (An sinh xã hội, nghề nghiệp & kế hoạch cuộc sống)",
+          "name": "WiSo Thema 6 · Soziale Sicherung, Berufs- und Lebensplanung",
           "desc": "Private Vorsorge · Betriebliche Altersvorsorge · Weiterbildung · Karriereplanung · Work-Life-Balance",
-          "content": "<h2>WiSo Thema 6 · Soziale Sicherung, Berufs- und Lebensplanung</h2>\n<div class=\"hint\">An sinh xã hội, nghề nghiệp &amp; kế hoạch cuộc sống · Quelle: Fach Wiso (Theorie) · 5 Punkte, je 3 Theorie-Inhalte + Beispiele</div>\n<h3>A. Theorie &amp; Beispiele (5 Punkte)</h3>\n<table><tr><th>Punkt</th><th>Theorie – Lý thuyết</th><th>Beispiel – Ví dụ</th></tr>\n<tr><td><b>1. Private Vorsorge</b><br><i>Dự phòng cá nhân</i></td><td>1. Zusatzversicherung abschließen<br><i>Tham gia bảo hiểm bổ sung.</i><br>2. Sparpläne einrichten<br><i>Thiết lập kế hoạch tiết kiệm.</i><br>3. Eigenverantwortung zeigen<br><i>Thể hiện trách nhiệm cá nhân.</i></td><td>1. „Azubi schließt Zahnzusatzversicherung ab.“<br><i>Học viên mua bảo hiểm nha khoa bổ sung.</i><br>2. „Monatlich 50 € sparen.“<br><i>Tiết kiệm 50 € mỗi tháng.</i><br>3. „Mitarbeiter legt Geld für Notfälle zurück.“<br><i>Nhân viên để dành tiền cho tình huống khẩn cấp.</i></td></tr>\n<tr><td><b>2. Betriebliche Altersvorsorge</b><br><i>Lương hưu doanh nghiệp</i></td><td>1. Arbeitgeber bietet Zusatzrente<br><i>Chủ doanh nghiệp hỗ trợ lương hưu thêm.</i><br>2. Steuervorteile nutzen<br><i>Hưởng lợi về thuế.</i><br>3. Langfristige Sicherheit<br><i>Đảm bảo lâu dài.</i></td><td>1. „Firma zahlt in Rentenkasse ein.“<br><i>Công ty đóng góp vào quỹ hưu.</i><br>2. „Beiträge steuerlich absetzbar.“<br><i>Khoản đóng được khấu trừ thuế.</i><br>3. „Azubi baut Zusatzrente auf.“<br><i>Học viên tích lũy lương hưu bổ sung.</i></td></tr>\n<tr><td><b>3. Weiterbildung</b><br><i>Đào tạo nâng cao</i></td><td>1. Fachliche Kurse besuchen<br><i>Tham gia khóa chuyên môn.</i><br>2. Soft Skills entwickeln<br><i>Phát triển kỹ năng mềm.</i><br>3. Lebenslanges Lernen fördern<br><i>Khuyến khích học suốt đời.</i></td><td>1. „Azubi besucht Hygiene-Seminar.“<br><i>Học viên tham dự hội thảo vệ sinh.</i><br>2. „Mitarbeiter trainiert Kommunikation.“<br><i>Nhân viên luyện kỹ năng giao tiếp.</i><br>3. „Team nimmt an Digital-Kurs teil.“<br><i>Nhóm tham gia khóa học số hóa.</i></td></tr>\n<tr><td><b>4. Karriereplanung</b><br><i>Lập kế hoạch nghề nghiệp</i></td><td>1. Ziele definieren<br><i>Xác định mục tiêu.</i><br>2. Fortbildungsschritte planen<br><i>Lập kế hoạch học tập tiếp theo.</i><br>3. Mentoren nutzen<br><i>Nhờ sự cố vấn từ người đi trước.</i></td><td>1. „Azubi möchte später Filialleiter werden.“<br><i>Học viên muốn trở thành quản lý chi nhánh.</i><br>2. „Besuch eines Meisterkurses geplant.“<br><i>Dự định tham gia khóa học Meister.</i><br>3. „Azubi fragt Ausbilder um Rat.“<br><i>Học viên xin lời khuyên từ người đào tạo.</i></td></tr>\n<tr><td><b>5. Work-Life-Balance</b><br><i>Cân bằng công việc &amp; cuộc sống</i></td><td>1. Gesundheit erhalten<br><i>Duy trì sức khỏe.</i><br>2. Freizeit gestalten<br><i>Tận hưởng thời gian rảnh.</i><br>3. Stress abbauen<br><i>Giảm căng thẳng.</i></td><td>1. „Mitarbeiter treibt regelmäßig Sport.“<br><i>Nhân viên tập thể dục thường xuyên.</i><br>2. „Azubi geht ins Kino am Wochenende.“<br><i>Học viên đi xem phim cuối tuần.</i><br>3. „Team macht gemeinsame Ausflüge.“<br><i>Nhóm tổ chức đi chơi chung.</i></td></tr>\n</table>\n<h3>B. Wichtige Hinweise – Điểm lưu ý quan trọng</h3>\n<table><tr><th>Deutsch</th><th>Tiếng Việt</th><th>Ghi chú</th></tr>\n<tr><td>Soziale Sicherung ist mehr als Pflichtversicherung.</td><td>An sinh xã hội không chỉ là bảo hiểm bắt buộc.</td><td>Auch private Vorsorge zählt. Bao gồm cả dự phòng cá nhân.</td></tr>\n<tr><td>Betriebliche Altersvorsorge lohnt sich langfristig.</td><td>Lương hưu doanh nghiệp có lợi về lâu dài.</td><td>Steuervorteile + zusätzliche Rente. Vừa giảm thuế vừa có thêm hưu trí.</td></tr>\n<tr><td>Weiterbildung erhöht Karrierechancen.</td><td>Đào tạo nâng cao giúp tăng cơ hội nghề nghiệp.</td><td>Häufiges Prüfungsthema in WISO. Thường xuất hiện trong đề thi WISO.</td></tr>\n<tr><td>Klare Karriereplanung motiviert.</td><td>Lập kế hoạch nghề nghiệp rõ ràng tạo động lực.</td><td>Azubis sollen Ziele formulieren. Học viên nên xác định mục tiêu.</td></tr>\n<tr><td>Work-Life-Balance ist Voraussetzung für Gesundheit.</td><td>Cân bằng công việc &amp; cuộc sống là điều kiện để khỏe mạnh.</td><td>Stressabbau = weniger Krankmeldungen. Giảm stress → ít nghỉ bệnh hơn.</td></tr>\n<tr><td>Arbeitgeber profitieren von motivierten Mitarbeitern.</td><td>Doanh nghiệp hưởng lợi khi nhân viên có động lực.</td><td>Weniger Fluktuation, mehr Produktivität. Ít nghỉ việc, năng suất cao hơn.</td></tr>\n<tr><td>Sozial- und Lebensplanung gehört ins Prüfungsthema.</td><td>An sinh &amp; kế hoạch cuộc sống nằm trong nội dung thi.</td><td>Fragen oft in mündlicher Prüfung. Thường có trong phần thi nói.</td></tr>\n</table>",
+          "content": "<h2>WiSo Thema 6 · Soziale Sicherung, Berufs- und Lebensplanung</h2>\n<div class=\"hint\">Themenüberblick · Quelle: Fach Wiso (Theorie) · 5 Punkte, je 3 Theorie-Inhalte + Beispiele</div>\n<h3>A. Theorie &amp; Beispiele (5 Punkte)</h3>\n<table><tr><th>Punkt</th><th>Theorie</th><th>Beispiel</th></tr>\n<tr><td><b>1. Private Vorsorge</b><div class=\'vi-sub\'>Dự phòng cá nhân</div></td><td>1. Zusatzversicherung abschließen<div class=\'vi-sub\'>Tham gia bảo hiểm bổ sung.</div><br>2. Sparpläne einrichten<div class=\'vi-sub\'>Thiết lập kế hoạch tiết kiệm.</div><br>3. Eigenverantwortung zeigen<div class=\'vi-sub\'>Thể hiện trách nhiệm cá nhân.</div></td><td>1. „Azubi schließt Zahnzusatzversicherung ab.“<div class=\'vi-sub\'>Học viên mua bảo hiểm nha khoa bổ sung.</div><br>2. „Monatlich 50 € sparen.“<div class=\'vi-sub\'>Tiết kiệm 50 € mỗi tháng.</div><br>3. „Mitarbeiter legt Geld für Notfälle zurück.“<div class=\'vi-sub\'>Nhân viên để dành tiền cho tình huống khẩn cấp.</div></td></tr>\n<tr><td><b>2. Betriebliche Altersvorsorge</b><div class=\'vi-sub\'>Lương hưu doanh nghiệp</div></td><td>1. Arbeitgeber bietet Zusatzrente<div class=\'vi-sub\'>Chủ doanh nghiệp hỗ trợ lương hưu thêm.</div><br>2. Steuervorteile nutzen<div class=\'vi-sub\'>Hưởng lợi về thuế.</div><br>3. Langfristige Sicherheit<div class=\'vi-sub\'>Đảm bảo lâu dài.</div></td><td>1. „Firma zahlt in Rentenkasse ein.“<div class=\'vi-sub\'>Công ty đóng góp vào quỹ hưu.</div><br>2. „Beiträge steuerlich absetzbar.“<div class=\'vi-sub\'>Khoản đóng được khấu trừ thuế.</div><br>3. „Azubi baut Zusatzrente auf.“<div class=\'vi-sub\'>Học viên tích lũy lương hưu bổ sung.</div></td></tr>\n<tr><td><b>3. Weiterbildung</b><div class=\'vi-sub\'>Đào tạo nâng cao</div></td><td>1. Fachliche Kurse besuchen<div class=\'vi-sub\'>Tham gia khóa chuyên môn.</div><br>2. Soft Skills entwickeln<div class=\'vi-sub\'>Phát triển kỹ năng mềm.</div><br>3. Lebenslanges Lernen fördern<div class=\'vi-sub\'>Khuyến khích học suốt đời.</div></td><td>1. „Azubi besucht Hygiene-Seminar.“<div class=\'vi-sub\'>Học viên tham dự hội thảo vệ sinh.</div><br>2. „Mitarbeiter trainiert Kommunikation.“<div class=\'vi-sub\'>Nhân viên luyện kỹ năng giao tiếp.</div><br>3. „Team nimmt an Digital-Kurs teil.“<div class=\'vi-sub\'>Nhóm tham gia khóa học số hóa.</div></td></tr>\n<tr><td><b>4. Karriereplanung</b><div class=\'vi-sub\'>Lập kế hoạch nghề nghiệp</div></td><td>1. Ziele definieren<div class=\'vi-sub\'>Xác định mục tiêu.</div><br>2. Fortbildungsschritte planen<div class=\'vi-sub\'>Lập kế hoạch học tập tiếp theo.</div><br>3. Mentoren nutzen<div class=\'vi-sub\'>Nhờ sự cố vấn từ người đi trước.</div></td><td>1. „Azubi möchte später Filialleiter werden.“<div class=\'vi-sub\'>Học viên muốn trở thành quản lý chi nhánh.</div><br>2. „Besuch eines Meisterkurses geplant.“<div class=\'vi-sub\'>Dự định tham gia khóa học Meister.</div><br>3. „Azubi fragt Ausbilder um Rat.“<div class=\'vi-sub\'>Học viên xin lời khuyên từ người đào tạo.</div></td></tr>\n<tr><td><b>5. Work-Life-Balance</b><div class=\'vi-sub\'>Cân bằng công việc &amp; cuộc sống</div></td><td>1. Gesundheit erhalten<div class=\'vi-sub\'>Duy trì sức khỏe.</div><br>2. Freizeit gestalten<div class=\'vi-sub\'>Tận hưởng thời gian rảnh.</div><br>3. Stress abbauen<div class=\'vi-sub\'>Giảm căng thẳng.</div></td><td>1. „Mitarbeiter treibt regelmäßig Sport.“<div class=\'vi-sub\'>Nhân viên tập thể dục thường xuyên.</div><br>2. „Azubi geht ins Kino am Wochenende.“<div class=\'vi-sub\'>Học viên đi xem phim cuối tuần.</div><br>3. „Team macht gemeinsame Ausflüge.“<div class=\'vi-sub\'>Nhóm tổ chức đi chơi chung.</div></td></tr>\n</table>\n<h3>B. Wichtige Hinweise – Điểm lưu ý quan trọng</h3>\n<table><tr><th>Deutsch</th><th>Tiếng Việt</th><th>Ghi chú</th></tr>\n<tr><td>Soziale Sicherung ist mehr als Pflichtversicherung.</td><td>An sinh xã hội không chỉ là bảo hiểm bắt buộc.</td><td>Auch private Vorsorge zählt. Bao gồm cả dự phòng cá nhân.</td></tr>\n<tr><td>Betriebliche Altersvorsorge lohnt sich langfristig.</td><td>Lương hưu doanh nghiệp có lợi về lâu dài.</td><td>Steuervorteile + zusätzliche Rente. Vừa giảm thuế vừa có thêm hưu trí.</td></tr>\n<tr><td>Weiterbildung erhöht Karrierechancen.</td><td>Đào tạo nâng cao giúp tăng cơ hội nghề nghiệp.</td><td>Häufiges Prüfungsthema in WISO. Thường xuất hiện trong đề thi WISO.</td></tr>\n<tr><td>Klare Karriereplanung motiviert.</td><td>Lập kế hoạch nghề nghiệp rõ ràng tạo động lực.</td><td>Azubis sollen Ziele formulieren. Học viên nên xác định mục tiêu.</td></tr>\n<tr><td>Work-Life-Balance ist Voraussetzung für Gesundheit.</td><td>Cân bằng công việc &amp; cuộc sống là điều kiện để khỏe mạnh.</td><td>Stressabbau = weniger Krankmeldungen. Giảm stress → ít nghỉ bệnh hơn.</td></tr>\n<tr><td>Arbeitgeber profitieren von motivierten Mitarbeitern.</td><td>Doanh nghiệp hưởng lợi khi nhân viên có động lực.</td><td>Weniger Fluktuation, mehr Produktivität. Ít nghỉ việc, năng suất cao hơn.</td></tr>\n<tr><td>Sozial- und Lebensplanung gehört ins Prüfungsthema.</td><td>An sinh &amp; kế hoạch cuộc sống nằm trong nội dung thi.</td><td>Fragen oft in mündlicher Prüfung. Thường có trong phần thi nói.</td></tr>\n</table>",
           "qa": [
             {
               "q": "Thema 6 – Private Vorsorge: Welche Inhalte gehören dazu?",
@@ -5934,9 +6728,9 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
         {
           "id": "wiso-thema-7",
           "icon": "",
-          "name": "WiSo Thema 7 · Unternehmen und Verbraucher (Doanh nghiệp & người tiêu dùng)",
+          "name": "WiSo Thema 7 · Unternehmen und Verbraucher",
           "desc": "Rechte der Verbraucher · Pflichten der Unternehmen · Vertragsabschluss · Produkthaftung · Werbung und Marketing",
-          "content": "<h2>WiSo Thema 7 · Unternehmen und Verbraucher</h2>\n<div class=\"hint\">Doanh nghiệp &amp; người tiêu dùng · Quelle: Fach Wiso (Theorie) · 5 Punkte, je 3 Theorie-Inhalte + Beispiele</div>\n<h3>A. Theorie &amp; Beispiele (5 Punkte)</h3>\n<table><tr><th>Punkt</th><th>Theorie – Lý thuyết</th><th>Beispiel – Ví dụ</th></tr>\n<tr><td><b>1. Rechte der Verbraucher</b><br><i>Quyền của người tiêu dùng</i></td><td>1. Widerrufsrecht<br><i>Quyền hủy đơn hàng.</i><br>2. Garantie und Gewährleistung<br><i>Bảo hành &amp; bảo đảm chất lượng.</i><br>3. Transparenz bei Preisen<br><i>Minh bạch về giá cả.</i></td><td>1. „Kunde kann Online-Bestellung innerhalb 14 Tage stornieren.“<br><i>Khách có thể hủy đơn online trong 14 ngày.</i><br>2. „Defektes Produkt wird ersetzt.“<br><i>Sản phẩm hỏng được thay thế.</i><br>3. „Preise müssen klar auf Speisekarte stehen.“<br><i>Giá phải ghi rõ trong menu.</i></td></tr>\n<tr><td><b>2. Pflichten der Unternehmen</b><br><i>Nghĩa vụ của doanh nghiệp</i></td><td>1. Informationspflicht<br><i>Nghĩa vụ cung cấp thông tin.</i><br>2. Produktsicherheit gewährleisten<br><i>Bảo đảm an toàn sản phẩm.</i><br>3. Einhaltung von Verträgen<br><i>Tuân thủ hợp đồng.</i></td><td>1. „Subway informiert über Allergene.“<br><i>Subway cung cấp thông tin về chất gây dị ứng.</i><br>2. „Nur sichere Zutaten verwenden.“<br><i>Chỉ dùng nguyên liệu an toàn.</i><br>3. „Lieferant muss pünktlich liefern.“<br><i>Nhà cung cấp phải giao đúng hạn.</i></td></tr>\n<tr><td><b>3. Vertragsabschluss</b><br><i>Ký kết hợp đồng</i></td><td>1. Angebot und Annahme<br><i>Đề nghị &amp; chấp nhận.</i><br>2. Formfreiheit<br><i>Tự do về hình thức.</i><br>3. Verbindlichkeit<br><i>Tính ràng buộc.</i></td><td>1. „Kunde bestellt Menü = Angebot angenommen.“<br><i>Khách đặt combo = chấp nhận đề nghị.</i><br>2. „Mündliche Vereinbarung ist gültig.“<br><i>Thỏa thuận miệng vẫn có hiệu lực.</i><br>3. „Liefervertrag ist bindend.“<br><i>Hợp đồng giao hàng có tính ràng buộc.</i></td></tr>\n<tr><td><b>4. Produkthaftung</b><br><i>Trách nhiệm sản phẩm</i></td><td>1. Unternehmen haftet für Fehler<br><i>Doanh nghiệp chịu trách nhiệm cho lỗi.</i><br>2. Schutz der Verbraucher<br><i>Bảo vệ người tiêu dùng.</i><br>3. Folgeschäden berücksichtigen<br><i>Cân nhắc thiệt hại phát sinh.</i></td><td>1. „Kunde erkrankt wegen verdorbenem Essen.“<br><i>Khách bị bệnh vì đồ ăn hỏng.</i><br>2. „Unternehmen zahlt Schadensersatz.“<br><i>Doanh nghiệp phải bồi thường.</i><br>3. „Produktrückruf bei Gefahr.“<br><i>Thu hồi sản phẩm khi có nguy cơ.</i></td></tr>\n<tr><td><b>5. Werbung und Marketing</b><br><i>Quảng cáo &amp; tiếp thị</i></td><td>1. Wahrheitspflicht<br><i>Nghĩa vụ trung thực.</i><br>2. Keine Täuschung<br><i>Không được lừa dối.</i><br>3. Jugendschutz beachten<br><i>Tuân thủ luật bảo vệ thanh thiếu niên.</i></td><td>1. „Aktion: 2 Sandwiches zum Preis von 1.“<br><i>Khuyến mãi: mua 2 bánh mì giá 1.</i><br>2. „Keine falschen Versprechen machen.“<br><i>Không được hứa sai sự thật.</i><br>3. „Keine Alkoholwerbung für Jugendliche.“<br><i>Không quảng cáo rượu cho thanh thiếu niên.</i></td></tr>\n</table>\n<h3>B. Wichtige Hinweise – Điểm lưu ý quan trọng</h3>\n<table><tr><th>Deutsch</th><th>Tiếng Việt</th><th>Ghi chú</th></tr>\n<tr><td>Verbraucherrechte sichern Fairness.</td><td>Quyền người tiêu dùng đảm bảo công bằng.</td><td>Wichtig: Widerrufsrecht, Garantie. Quan trọng: quyền hủy đơn, bảo hành.</td></tr>\n<tr><td>Unternehmen haben Informationspflicht.</td><td>Doanh nghiệp có nghĩa vụ cung cấp thông tin.</td><td>Z. B. Allergene im Essen. Ví dụ: thông tin dị ứng trong thực phẩm.</td></tr>\n<tr><td>Vertragsabschluss ist alltäglich.</td><td>Ký kết hợp đồng diễn ra hằng ngày.</td><td>Auch beim Kauf im Laden oder Restaurant. Ngay cả khi mua hàng tại cửa hàng/nhà hàng.</td></tr>\n<tr><td>Produkthaftung schützt den Kunden.</td><td>Trách nhiệm sản phẩm bảo vệ khách hàng.</td><td>Unternehmen haftet auch bei Folgeschäden. Doanh nghiệp chịu trách nhiệm cả với thiệt hại phát sinh.</td></tr>\n<tr><td>Werbung darf nicht täuschen.</td><td>Quảng cáo không được lừa dối.</td><td>Täuschung = Abmahnung, Strafe. Lừa dối = bị kiện, bị phạt.</td></tr>\n<tr><td>Jugendschutz ist zwingend einzuhalten.</td><td>Luật bảo vệ thanh thiếu niên bắt buộc tuân thủ.</td><td>Kein Alkohol, keine Tabakwerbung. Không quảng cáo rượu, thuốc lá.</td></tr>\n<tr><td>Thema oft in Prüfungen: Vertragsrecht + Verbraucherrechte.</td><td>Chủ đề thường ra thi: luật hợp đồng + quyền người tiêu dùng.</td><td>Besonders im WISO-Schriftteil. Thường xuất hiện trong phần thi viết WISO.</td></tr>\n</table>",
+          "content": "<h2>WiSo Thema 7 · Unternehmen und Verbraucher</h2>\n<div class=\"hint\">Themenüberblick · Quelle: Fach Wiso (Theorie) · 5 Punkte, je 3 Theorie-Inhalte + Beispiele</div>\n<h3>A. Theorie &amp; Beispiele (5 Punkte)</h3>\n<table><tr><th>Punkt</th><th>Theorie</th><th>Beispiel</th></tr>\n<tr><td><b>1. Rechte der Verbraucher</b><div class=\'vi-sub\'>Quyền của người tiêu dùng</div></td><td>1. Widerrufsrecht<div class=\'vi-sub\'>Quyền hủy đơn hàng.</div><br>2. Garantie und Gewährleistung<div class=\'vi-sub\'>Bảo hành &amp; bảo đảm chất lượng.</div><br>3. Transparenz bei Preisen<div class=\'vi-sub\'>Minh bạch về giá cả.</div></td><td>1. „Kunde kann Online-Bestellung innerhalb 14 Tage stornieren.“<div class=\'vi-sub\'>Khách có thể hủy đơn online trong 14 ngày.</div><br>2. „Defektes Produkt wird ersetzt.“<div class=\'vi-sub\'>Sản phẩm hỏng được thay thế.</div><br>3. „Preise müssen klar auf Speisekarte stehen.“<div class=\'vi-sub\'>Giá phải ghi rõ trong menu.</div></td></tr>\n<tr><td><b>2. Pflichten der Unternehmen</b><div class=\'vi-sub\'>Nghĩa vụ của doanh nghiệp</div></td><td>1. Informationspflicht<div class=\'vi-sub\'>Nghĩa vụ cung cấp thông tin.</div><br>2. Produktsicherheit gewährleisten<div class=\'vi-sub\'>Bảo đảm an toàn sản phẩm.</div><br>3. Einhaltung von Verträgen<div class=\'vi-sub\'>Tuân thủ hợp đồng.</div></td><td>1. „Subway informiert über Allergene.“<div class=\'vi-sub\'>Subway cung cấp thông tin về chất gây dị ứng.</div><br>2. „Nur sichere Zutaten verwenden.“<div class=\'vi-sub\'>Chỉ dùng nguyên liệu an toàn.</div><br>3. „Lieferant muss pünktlich liefern.“<div class=\'vi-sub\'>Nhà cung cấp phải giao đúng hạn.</div></td></tr>\n<tr><td><b>3. Vertragsabschluss</b><div class=\'vi-sub\'>Ký kết hợp đồng</div></td><td>1. Angebot und Annahme<div class=\'vi-sub\'>Đề nghị &amp; chấp nhận.</div><br>2. Formfreiheit<div class=\'vi-sub\'>Tự do về hình thức.</div><br>3. Verbindlichkeit<div class=\'vi-sub\'>Tính ràng buộc.</div></td><td>1. „Kunde bestellt Menü = Angebot angenommen.“<div class=\'vi-sub\'>Khách đặt combo = chấp nhận đề nghị.</div><br>2. „Mündliche Vereinbarung ist gültig.“<div class=\'vi-sub\'>Thỏa thuận miệng vẫn có hiệu lực.</div><br>3. „Liefervertrag ist bindend.“<div class=\'vi-sub\'>Hợp đồng giao hàng có tính ràng buộc.</div></td></tr>\n<tr><td><b>4. Produkthaftung</b><div class=\'vi-sub\'>Trách nhiệm sản phẩm</div></td><td>1. Unternehmen haftet für Fehler<div class=\'vi-sub\'>Doanh nghiệp chịu trách nhiệm cho lỗi.</div><br>2. Schutz der Verbraucher<div class=\'vi-sub\'>Bảo vệ người tiêu dùng.</div><br>3. Folgeschäden berücksichtigen<div class=\'vi-sub\'>Cân nhắc thiệt hại phát sinh.</div></td><td>1. „Kunde erkrankt wegen verdorbenem Essen.“<div class=\'vi-sub\'>Khách bị bệnh vì đồ ăn hỏng.</div><br>2. „Unternehmen zahlt Schadensersatz.“<div class=\'vi-sub\'>Doanh nghiệp phải bồi thường.</div><br>3. „Produktrückruf bei Gefahr.“<div class=\'vi-sub\'>Thu hồi sản phẩm khi có nguy cơ.</div></td></tr>\n<tr><td><b>5. Werbung und Marketing</b><div class=\'vi-sub\'>Quảng cáo &amp; tiếp thị</div></td><td>1. Wahrheitspflicht<div class=\'vi-sub\'>Nghĩa vụ trung thực.</div><br>2. Keine Täuschung<div class=\'vi-sub\'>Không được lừa dối.</div><br>3. Jugendschutz beachten<div class=\'vi-sub\'>Tuân thủ luật bảo vệ thanh thiếu niên.</div></td><td>1. „Aktion: 2 Sandwiches zum Preis von 1.“<div class=\'vi-sub\'>Khuyến mãi: mua 2 bánh mì giá 1.</div><br>2. „Keine falschen Versprechen machen.“<div class=\'vi-sub\'>Không được hứa sai sự thật.</div><br>3. „Keine Alkoholwerbung für Jugendliche.“<div class=\'vi-sub\'>Không quảng cáo rượu cho thanh thiếu niên.</div></td></tr>\n</table>\n<h3>B. Wichtige Hinweise – Điểm lưu ý quan trọng</h3>\n<table><tr><th>Deutsch</th><th>Tiếng Việt</th><th>Ghi chú</th></tr>\n<tr><td>Verbraucherrechte sichern Fairness.</td><td>Quyền người tiêu dùng đảm bảo công bằng.</td><td>Wichtig: Widerrufsrecht, Garantie. Quan trọng: quyền hủy đơn, bảo hành.</td></tr>\n<tr><td>Unternehmen haben Informationspflicht.</td><td>Doanh nghiệp có nghĩa vụ cung cấp thông tin.</td><td>Z. B. Allergene im Essen. Ví dụ: thông tin dị ứng trong thực phẩm.</td></tr>\n<tr><td>Vertragsabschluss ist alltäglich.</td><td>Ký kết hợp đồng diễn ra hằng ngày.</td><td>Auch beim Kauf im Laden oder Restaurant. Ngay cả khi mua hàng tại cửa hàng/nhà hàng.</td></tr>\n<tr><td>Produkthaftung schützt den Kunden.</td><td>Trách nhiệm sản phẩm bảo vệ khách hàng.</td><td>Unternehmen haftet auch bei Folgeschäden. Doanh nghiệp chịu trách nhiệm cả với thiệt hại phát sinh.</td></tr>\n<tr><td>Werbung darf nicht täuschen.</td><td>Quảng cáo không được lừa dối.</td><td>Täuschung = Abmahnung, Strafe. Lừa dối = bị kiện, bị phạt.</td></tr>\n<tr><td>Jugendschutz ist zwingend einzuhalten.</td><td>Luật bảo vệ thanh thiếu niên bắt buộc tuân thủ.</td><td>Kein Alkohol, keine Tabakwerbung. Không quảng cáo rượu, thuốc lá.</td></tr>\n<tr><td>Thema oft in Prüfungen: Vertragsrecht + Verbraucherrechte.</td><td>Chủ đề thường ra thi: luật hợp đồng + quyền người tiêu dùng.</td><td>Besonders im WISO-Schriftteil. Thường xuất hiện trong phần thi viết WISO.</td></tr>\n</table>",
           "qa": [
             {
               "q": "Thema 7 – Rechte der Verbraucher: Welche Inhalte gehören dazu?",
@@ -6045,9 +6839,9 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
         {
           "id": "wiso-thema-8",
           "icon": "",
-          "name": "WiSo Thema 8 · Rechtsgeschäfte (Giao dịch pháp lý)",
+          "name": "WiSo Thema 8 · Rechtsgeschäfte",
           "desc": "Rechtsfähigkeit · Geschäftsfähigkeit · Vertragsschluss · Anfechtung · Nichtigkeit",
-          "content": "<h2>WiSo Thema 8 · Rechtsgeschäfte</h2>\n<div class=\"hint\">Giao dịch pháp lý · Quelle: Fach Wiso (Theorie) · 5 Punkte, je 3 Theorie-Inhalte + Beispiele</div>\n<h3>A. Theorie &amp; Beispiele (5 Punkte)</h3>\n<table><tr><th>Punkt</th><th>Theorie – Lý thuyết</th><th>Beispiel – Ví dụ</th></tr>\n<tr><td><b>1. Rechtsfähigkeit</b><br><i>Năng lực pháp luật</i></td><td>1. Jeder Mensch von Geburt an<br><i>Mọi người có năng lực pháp luật từ khi sinh ra.</i><br>2. Fähigkeit, Rechte und Pflichten zu haben<br><i>Có quyền &amp; nghĩa vụ.</i><br>3. Endet mit dem Tod<br><i>Kết thúc khi chết.</i></td><td>1. „Azubi darf Eigentum besitzen.“<br><i>Học viên có thể sở hữu tài sản.</i><br>2. „Mitarbeiter hat Anspruch auf Lohn.“<br><i>Nhân viên có quyền nhận lương.</i><br>3. „Nach Tod keine Rechtsfähigkeit mehr.“<br><i>Sau khi chết thì không còn năng lực pháp luật.</i></td></tr>\n<tr><td><b>2. Geschäftsfähigkeit</b><br><i>Năng lực hành vi dân sự</i></td><td>1. Volle Geschäftsfähigkeit ab 18<br><i>Đủ năng lực từ 18 tuổi.</i><br>2. Beschränkte Geschäftsfähigkeit: 7–17 Jahre<br><i>Năng lực hạn chế từ 7–17 tuổi.</i><br>3. Geschäftsunfähigkeit unter 7 Jahre<br><i>Không có năng lực dưới 7 tuổi.</i></td><td>1. „Azubi mit 19 schließt Vertrag selbst.“<br><i>Học viên 19 tuổi tự ký hợp đồng.</i><br>2. „16-Jähriger braucht Zustimmung Eltern.“<br><i>Người 16 tuổi cần cha mẹ đồng ý.</i><br>3. „Kind mit 6 darf keinen Vertrag schließen.“<br><i>Trẻ 6 tuổi không thể ký hợp đồng.</i></td></tr>\n<tr><td><b>3. Vertragsschluss</b><br><i>Giao kết hợp đồng</i></td><td>1. Angebot + Annahme<br><i>Đề nghị + chấp nhận.</i><br>2. Übereinstimmende Willenserklärung<br><i>Thỏa thuận ý chí.</i><br>3. Rechtsbindungswille<br><i>Ý chí ràng buộc pháp lý.</i></td><td>1. „Kunde bestellt Menü = Angebot angenommen.“<br><i>Khách đặt combo = chấp nhận đề nghị.</i><br>2. „Lieferant und Subway schließen Vertrag.“<br><i>Nhà cung cấp và Subway ký hợp đồng.</i><br>3. „Mitarbeiter akzeptiert Arbeitsvertrag.“<br><i>Nhân viên đồng ý hợp đồng lao động.</i></td></tr>\n<tr><td><b>4. Anfechtung</b><br><i>Hủy bỏ hợp đồng</i></td><td>1. Bei Irrtum möglich<br><i>Có thể khi nhầm lẫn.</i><br>2. Bei Täuschung möglich<br><i>Có thể khi bị lừa dối.</i><br>3. Frist muss eingehalten werden<br><i>Phải tuân thủ thời hạn.</i></td><td>1. „Preis falsch angegeben → Vertrag anfechtbar.“<br><i>Giá ghi sai → có thể hủy hợp đồng.</i><br>2. „Kunde wurde getäuscht.“<br><i>Khách bị lừa dối.</i><br>3. „Anfechtung innerhalb 14 Tage.“<br><i>Hủy hợp đồng trong vòng 14 ngày.</i></td></tr>\n<tr><td><b>5. Nichtigkeit</b><br><i>Vô hiệu hợp đồng</i></td><td>1. Gesetzeswidrig<br><i>Trái luật.</i><br>2. Sittenwidrig<br><i>Trái đạo đức xã hội.</i><br>3. Formmangel<br><i>Sai hình thức bắt buộc.</i></td><td>1. „Drogenhandel-Vertrag = nichtig.“<br><i>Hợp đồng buôn ma túy = vô hiệu.</i><br>2. „Wucherzinsen = sittenwidrig.“<br><i>Cho vay nặng lãi = trái đạo đức.</i><br>3. „Kaufvertrag ohne Schriftform (bei Pflicht) = nichtig.“<br><i>Hợp đồng mua bán không có văn bản (khi luật bắt buộc) = vô hiệu.</i></td></tr>\n</table>\n<h3>B. Wichtige Hinweise – Điểm lưu ý quan trọng</h3>\n<table><tr><th>Deutsch</th><th>Tiếng Việt</th><th>Ghi chú</th></tr>\n<tr><td>Rechtsfähigkeit hat jeder Mensch.</td><td>Mọi người đều có năng lực pháp luật.</td><td>Von Geburt bis Tod. Từ khi sinh đến khi chết.</td></tr>\n<tr><td>Geschäftsfähigkeit hängt vom Alter ab.</td><td>Năng lực hành vi phụ thuộc vào độ tuổi.</td><td>&lt; 7 = unfähig, 7–17 = beschränkt, ab 18 = voll. &lt;7 = không có, 7–17 = hạn chế, từ 18 = đầy đủ.</td></tr>\n<tr><td>Jeder Vertrag braucht Angebot + Annahme.</td><td>Mọi hợp đồng cần có đề nghị + chấp nhận.</td><td>Ohne Übereinstimmung = kein Vertrag. Không có đồng thuận = không có hợp đồng.</td></tr>\n<tr><td>Anfechtung schützt vor Fehlern und Täuschung.</td><td>Hủy hợp đồng bảo vệ khỏi sai sót &amp; lừa dối.</td><td>Nur innerhalb bestimmter Frist gültig. Chỉ có hiệu lực trong thời hạn nhất định.</td></tr>\n<tr><td>Nichtigkeit macht Vertrag von Anfang an ungültig.</td><td>Vô hiệu = hợp đồng không có giá trị từ đầu.</td><td>Z. B. Gesetzesverstoß, Formmangel. Ví dụ: trái luật, sai hình thức.</td></tr>\n<tr><td>Verträge sind Prüfungsstoff Nr. 1.</td><td>Hợp đồng là chủ đề số 1 trong thi WISO.</td><td>Oft in schriftlichen Aufgaben. Thường xuất hiện trong phần thi viết.</td></tr>\n<tr><td>Praxis: Arbeitsverträge, Kaufverträge, Lieferverträge.</td><td>Thực tế: hợp đồng lao động, mua bán, giao hàng.</td><td>Diese Beispiele kommen in Prüfungen oft. Các ví dụ này thường ra trong thi.</td></tr>\n</table>",
+          "content": "<h2>WiSo Thema 8 · Rechtsgeschäfte</h2>\n<div class=\"hint\">Themenüberblick · Quelle: Fach Wiso (Theorie) · 5 Punkte, je 3 Theorie-Inhalte + Beispiele</div>\n<h3>A. Theorie &amp; Beispiele (5 Punkte)</h3>\n<table><tr><th>Punkt</th><th>Theorie</th><th>Beispiel</th></tr>\n<tr><td><b>1. Rechtsfähigkeit</b><div class=\'vi-sub\'>Năng lực pháp luật</div></td><td>1. Jeder Mensch von Geburt an<div class=\'vi-sub\'>Mọi người có năng lực pháp luật từ khi sinh ra.</div><br>2. Fähigkeit, Rechte und Pflichten zu haben<div class=\'vi-sub\'>Có quyền &amp; nghĩa vụ.</div><br>3. Endet mit dem Tod<div class=\'vi-sub\'>Kết thúc khi chết.</div></td><td>1. „Azubi darf Eigentum besitzen.“<div class=\'vi-sub\'>Học viên có thể sở hữu tài sản.</div><br>2. „Mitarbeiter hat Anspruch auf Lohn.“<div class=\'vi-sub\'>Nhân viên có quyền nhận lương.</div><br>3. „Nach Tod keine Rechtsfähigkeit mehr.“<div class=\'vi-sub\'>Sau khi chết thì không còn năng lực pháp luật.</div></td></tr>\n<tr><td><b>2. Geschäftsfähigkeit</b><div class=\'vi-sub\'>Năng lực hành vi dân sự</div></td><td>1. Volle Geschäftsfähigkeit ab 18<div class=\'vi-sub\'>Đủ năng lực từ 18 tuổi.</div><br>2. Beschränkte Geschäftsfähigkeit: 7–17 Jahre<div class=\'vi-sub\'>Năng lực hạn chế từ 7–17 tuổi.</div><br>3. Geschäftsunfähigkeit unter 7 Jahre<div class=\'vi-sub\'>Không có năng lực dưới 7 tuổi.</div></td><td>1. „Azubi mit 19 schließt Vertrag selbst.“<div class=\'vi-sub\'>Học viên 19 tuổi tự ký hợp đồng.</div><br>2. „16-Jähriger braucht Zustimmung Eltern.“<div class=\'vi-sub\'>Người 16 tuổi cần cha mẹ đồng ý.</div><br>3. „Kind mit 6 darf keinen Vertrag schließen.“<div class=\'vi-sub\'>Trẻ 6 tuổi không thể ký hợp đồng.</div></td></tr>\n<tr><td><b>3. Vertragsschluss</b><div class=\'vi-sub\'>Giao kết hợp đồng</div></td><td>1. Angebot + Annahme<div class=\'vi-sub\'>Đề nghị + chấp nhận.</div><br>2. Übereinstimmende Willenserklärung<div class=\'vi-sub\'>Thỏa thuận ý chí.</div><br>3. Rechtsbindungswille<div class=\'vi-sub\'>Ý chí ràng buộc pháp lý.</div></td><td>1. „Kunde bestellt Menü = Angebot angenommen.“<div class=\'vi-sub\'>Khách đặt combo = chấp nhận đề nghị.</div><br>2. „Lieferant und Subway schließen Vertrag.“<div class=\'vi-sub\'>Nhà cung cấp và Subway ký hợp đồng.</div><br>3. „Mitarbeiter akzeptiert Arbeitsvertrag.“<div class=\'vi-sub\'>Nhân viên đồng ý hợp đồng lao động.</div></td></tr>\n<tr><td><b>4. Anfechtung</b><div class=\'vi-sub\'>Hủy bỏ hợp đồng</div></td><td>1. Bei Irrtum möglich<div class=\'vi-sub\'>Có thể khi nhầm lẫn.</div><br>2. Bei Täuschung möglich<div class=\'vi-sub\'>Có thể khi bị lừa dối.</div><br>3. Frist muss eingehalten werden<div class=\'vi-sub\'>Phải tuân thủ thời hạn.</div></td><td>1. „Preis falsch angegeben → Vertrag anfechtbar.“<div class=\'vi-sub\'>Giá ghi sai → có thể hủy hợp đồng.</div><br>2. „Kunde wurde getäuscht.“<div class=\'vi-sub\'>Khách bị lừa dối.</div><br>3. „Anfechtung innerhalb 14 Tage.“<div class=\'vi-sub\'>Hủy hợp đồng trong vòng 14 ngày.</div></td></tr>\n<tr><td><b>5. Nichtigkeit</b><div class=\'vi-sub\'>Vô hiệu hợp đồng</div></td><td>1. Gesetzeswidrig<div class=\'vi-sub\'>Trái luật.</div><br>2. Sittenwidrig<div class=\'vi-sub\'>Trái đạo đức xã hội.</div><br>3. Formmangel<div class=\'vi-sub\'>Sai hình thức bắt buộc.</div></td><td>1. „Drogenhandel-Vertrag = nichtig.“<div class=\'vi-sub\'>Hợp đồng buôn ma túy = vô hiệu.</div><br>2. „Wucherzinsen = sittenwidrig.“<div class=\'vi-sub\'>Cho vay nặng lãi = trái đạo đức.</div><br>3. „Kaufvertrag ohne Schriftform (bei Pflicht) = nichtig.“<div class=\'vi-sub\'>Hợp đồng mua bán không có văn bản (khi luật bắt buộc) = vô hiệu.</div></td></tr>\n</table>\n<h3>B. Wichtige Hinweise – Điểm lưu ý quan trọng</h3>\n<table><tr><th>Deutsch</th><th>Tiếng Việt</th><th>Ghi chú</th></tr>\n<tr><td>Rechtsfähigkeit hat jeder Mensch.</td><td>Mọi người đều có năng lực pháp luật.</td><td>Von Geburt bis Tod. Từ khi sinh đến khi chết.</td></tr>\n<tr><td>Geschäftsfähigkeit hängt vom Alter ab.</td><td>Năng lực hành vi phụ thuộc vào độ tuổi.</td><td>&lt; 7 = unfähig, 7–17 = beschränkt, ab 18 = voll. &lt;7 = không có, 7–17 = hạn chế, từ 18 = đầy đủ.</td></tr>\n<tr><td>Jeder Vertrag braucht Angebot + Annahme.</td><td>Mọi hợp đồng cần có đề nghị + chấp nhận.</td><td>Ohne Übereinstimmung = kein Vertrag. Không có đồng thuận = không có hợp đồng.</td></tr>\n<tr><td>Anfechtung schützt vor Fehlern und Täuschung.</td><td>Hủy hợp đồng bảo vệ khỏi sai sót &amp; lừa dối.</td><td>Nur innerhalb bestimmter Frist gültig. Chỉ có hiệu lực trong thời hạn nhất định.</td></tr>\n<tr><td>Nichtigkeit macht Vertrag von Anfang an ungültig.</td><td>Vô hiệu = hợp đồng không có giá trị từ đầu.</td><td>Z. B. Gesetzesverstoß, Formmangel. Ví dụ: trái luật, sai hình thức.</td></tr>\n<tr><td>Verträge sind Prüfungsstoff Nr. 1.</td><td>Hợp đồng là chủ đề số 1 trong thi WISO.</td><td>Oft in schriftlichen Aufgaben. Thường xuất hiện trong phần thi viết.</td></tr>\n<tr><td>Praxis: Arbeitsverträge, Kaufverträge, Lieferverträge.</td><td>Thực tế: hợp đồng lao động, mua bán, giao hàng.</td><td>Diese Beispiele kommen in Prüfungen oft. Các ví dụ này thường ra trong thi.</td></tr>\n</table>",
           "qa": [
             {
               "q": "Thema 8 – Rechtsfähigkeit: Welche Inhalte gehören dazu?",
@@ -6156,9 +6950,9 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
         {
           "id": "wiso-thema-9",
           "icon": "",
-          "name": "WiSo Thema 9 · Weltwirtschaftliche Verflechtungen (Liên kết kinh tế toàn cầu)",
+          "name": "WiSo Thema 9 · Weltwirtschaftliche Verflechtungen",
           "desc": "Globalisierung · Außenhandel · Europäische Union (EU) · Internationale Organisationen · Chancen und Risiken",
-          "content": "<h2>WiSo Thema 9 · Weltwirtschaftliche Verflechtungen</h2>\n<div class=\"hint\">Liên kết kinh tế toàn cầu · Quelle: Fach Wiso (Theorie) · 5 Punkte, je 3 Theorie-Inhalte + Beispiele</div>\n<h3>A. Theorie &amp; Beispiele (5 Punkte)</h3>\n<table><tr><th>Punkt</th><th>Theorie – Lý thuyết</th><th>Beispiel – Ví dụ</th></tr>\n<tr><td><b>1. Globalisierung</b><br><i>Toàn cầu hóa</i></td><td>1. Weltweite Vernetzung<br><i>Kết nối toàn cầu.</i><br>2. Waren- und Dienstleistungsaustausch<br><i>Trao đổi hàng hóa &amp; dịch vụ.</i><br>3. Internationale Arbeitsteilung<br><i>Phân công lao động quốc tế.</i></td><td>1. „Subway hat Filialen weltweit.“<br><i>Subway có chi nhánh toàn cầu.</i><br>2. „Kaffee wird aus Brasilien importiert.“<br><i>Cà phê nhập khẩu từ Brazil.</i><br>3. „Arbeitskleidung aus Asien hergestellt.“<br><i>Đồng phục được sản xuất ở châu Á.</i></td></tr>\n<tr><td><b>2. Außenhandel</b><br><i>Ngoại thương</i></td><td>1. Export von Waren<br><i>Xuất khẩu hàng hóa.</i><br>2. Import von Rohstoffen<br><i>Nhập khẩu nguyên liệu.</i><br>3. Handelsbilanz beachten<br><i>Lưu ý cán cân thương mại.</i></td><td>1. „Deutschland exportiert Maschinen.“<br><i>Đức xuất khẩu máy móc.</i><br>2. „Deutschland importiert Bananen.“<br><i>Đức nhập khẩu chuối.</i><br>3. „Mehr Export als Import = Überschuss.“<br><i>Xuất nhiều hơn nhập = thặng dư.</i></td></tr>\n<tr><td><b>3. Europäische Union (EU)</b><br><i>Liên minh châu Âu</i></td><td>1. Binnenmarkt ohne Grenzen<br><i>Thị trường chung không biên giới.</i><br>2. Freier Waren- und Personenverkehr<br><i>Tự do lưu thông hàng hóa &amp; con người.</i><br>3. Gemeinsame Währung (Euro)<br><i>Đồng tiền chung (Euro).</i></td><td>1. „Azubi kann in jedem EU-Land arbeiten.“<br><i>Học viên có thể làm việc ở bất kỳ nước EU nào.</i><br>2. „Waren frei zwischen Deutschland und Frankreich.“<br><i>Hàng hóa tự do giữa Đức và Pháp.</i><br>3. „Subway in EU rechnet in Euro ab.“<br><i>Subway tại EU tính bằng Euro.</i></td></tr>\n<tr><td><b>4. Internationale Organisationen</b><br><i>Tổ chức quốc tế</i></td><td>1. WTO: Freihandel fördern<br><i>WTO: thúc đẩy tự do thương mại.</i><br>2. ILO: Arbeitsrechte sichern<br><i>ILO: đảm bảo quyền lao động.</i><br>3. UNO: Globale Zusammenarbeit<br><i>LHQ: hợp tác toàn cầu.</i></td><td>1. „WTO senkt Zölle.“<br><i>WTO giảm thuế quan.</i><br>2. „ILO schützt Kinder vor Kinderarbeit.“<br><i>ILO bảo vệ trẻ em khỏi lao động trẻ em.</i><br>3. „UNO hilft bei Krisen weltweit.“<br><i>LHQ giúp đỡ trong khủng hoảng toàn cầu.</i></td></tr>\n<tr><td><b>5. Chancen und Risiken</b><br><i>Cơ hội &amp; rủi ro</i></td><td>1. Neue Märkte erschließen<br><i>Mở ra thị trường mới.</i><br>2. Konkurrenz steigt<br><i>Cạnh tranh tăng.</i><br>3. Abhängigkeit von anderen Ländern<br><i>Phụ thuộc vào quốc gia khác.</i></td><td>1. „Subway expandiert nach Asien.“<br><i>Subway mở rộng sang châu Á.</i><br>2. „Mehr Konkurrenz durch internationale Ketten.“<br><i>Cạnh tranh tăng do chuỗi quốc tế.</i><br>3. „Lieferprobleme bei Importwaren.“<br><i>Gặp vấn đề cung ứng khi nhập khẩu.</i></td></tr>\n</table>\n<h3>B. Wichtige Hinweise – Điểm lưu ý quan trọng</h3>\n<table><tr><th>Deutsch</th><th>Tiếng Việt</th><th>Ghi chú</th></tr>\n<tr><td>Globalisierung betrifft alle Branchen.</td><td>Toàn cầu hóa ảnh hưởng đến mọi ngành.</td><td>Besonders Gastronomie: Zutaten weltweit. Đặc biệt ngành ẩm thực: nguyên liệu từ khắp nơi.</td></tr>\n<tr><td>Außenhandel ist Grundlage für Wohlstand.</td><td>Ngoại thương là nền tảng cho sự thịnh vượng.</td><td>Deutschland exportiert viel, Import auch wichtig. Đức xuất khẩu nhiều, nhập khẩu cũng quan trọng.</td></tr>\n<tr><td>EU bedeutet Freiheit und gemeinsame Regeln.</td><td>EU mang lại tự do &amp; luật chung.</td><td>Binnenmarkt = keine Zölle, freier Verkehr. Thị trường chung = không thuế, tự do lưu thông.</td></tr>\n<tr><td>Internationale Organisationen fördern Stabilität.</td><td>Tổ chức quốc tế thúc đẩy ổn định.</td><td>WTO = Handel, ILO = Arbeit, UNO = Frieden. WTO = thương mại, ILO = lao động, LHQ = hòa bình.</td></tr>\n<tr><td>Chancen und Risiken immer abwägen.</td><td>Luôn cân nhắc cơ hội &amp; rủi ro.</td><td>Mehr Märkte = mehr Gewinn, aber auch mehr Konkurrenz. Nhiều thị trường = nhiều lợi nhuận, nhưng cũng nhiều cạnh tranh.</td></tr>\n<tr><td>Abhängigkeit ist gefährlich.</td><td>Phụ thuộc quá nhiều là nguy hiểm.</td><td>Lieferengpässe wie bei Corona-Krise. Ví dụ: đứt gãy chuỗi cung ứng trong dịch Corona.</td></tr>\n<tr><td>Thema sehr prüfungsrelevant.</td><td>Chủ đề này rất quan trọng trong kỳ thi.</td><td>Oft Fragen zu EU, WTO und Globalisierung. Thường có câu hỏi về EU, WTO và toàn cầu hóa.</td></tr>\n</table>",
+          "content": "<h2>WiSo Thema 9 · Weltwirtschaftliche Verflechtungen</h2>\n<div class=\"hint\">Themenüberblick · Quelle: Fach Wiso (Theorie) · 5 Punkte, je 3 Theorie-Inhalte + Beispiele</div>\n<h3>A. Theorie &amp; Beispiele (5 Punkte)</h3>\n<table><tr><th>Punkt</th><th>Theorie</th><th>Beispiel</th></tr>\n<tr><td><b>1. Globalisierung</b><div class=\'vi-sub\'>Toàn cầu hóa</div></td><td>1. Weltweite Vernetzung<div class=\'vi-sub\'>Kết nối toàn cầu.</div><br>2. Waren- und Dienstleistungsaustausch<div class=\'vi-sub\'>Trao đổi hàng hóa &amp; dịch vụ.</div><br>3. Internationale Arbeitsteilung<div class=\'vi-sub\'>Phân công lao động quốc tế.</div></td><td>1. „Subway hat Filialen weltweit.“<div class=\'vi-sub\'>Subway có chi nhánh toàn cầu.</div><br>2. „Kaffee wird aus Brasilien importiert.“<div class=\'vi-sub\'>Cà phê nhập khẩu từ Brazil.</div><br>3. „Arbeitskleidung aus Asien hergestellt.“<div class=\'vi-sub\'>Đồng phục được sản xuất ở châu Á.</div></td></tr>\n<tr><td><b>2. Außenhandel</b><div class=\'vi-sub\'>Ngoại thương</div></td><td>1. Export von Waren<div class=\'vi-sub\'>Xuất khẩu hàng hóa.</div><br>2. Import von Rohstoffen<div class=\'vi-sub\'>Nhập khẩu nguyên liệu.</div><br>3. Handelsbilanz beachten<div class=\'vi-sub\'>Lưu ý cán cân thương mại.</div></td><td>1. „Deutschland exportiert Maschinen.“<div class=\'vi-sub\'>Đức xuất khẩu máy móc.</div><br>2. „Deutschland importiert Bananen.“<div class=\'vi-sub\'>Đức nhập khẩu chuối.</div><br>3. „Mehr Export als Import = Überschuss.“<div class=\'vi-sub\'>Xuất nhiều hơn nhập = thặng dư.</div></td></tr>\n<tr><td><b>3. Europäische Union (EU)</b><div class=\'vi-sub\'>Liên minh châu Âu</div></td><td>1. Binnenmarkt ohne Grenzen<div class=\'vi-sub\'>Thị trường chung không biên giới.</div><br>2. Freier Waren- und Personenverkehr<div class=\'vi-sub\'>Tự do lưu thông hàng hóa &amp; con người.</div><br>3. Gemeinsame Währung (Euro)<div class=\'vi-sub\'>Đồng tiền chung (Euro).</div></td><td>1. „Azubi kann in jedem EU-Land arbeiten.“<div class=\'vi-sub\'>Học viên có thể làm việc ở bất kỳ nước EU nào.</div><br>2. „Waren frei zwischen Deutschland und Frankreich.“<div class=\'vi-sub\'>Hàng hóa tự do giữa Đức và Pháp.</div><br>3. „Subway in EU rechnet in Euro ab.“<div class=\'vi-sub\'>Subway tại EU tính bằng Euro.</div></td></tr>\n<tr><td><b>4. Internationale Organisationen</b><div class=\'vi-sub\'>Tổ chức quốc tế</div></td><td>1. WTO: Freihandel fördern<div class=\'vi-sub\'>WTO: thúc đẩy tự do thương mại.</div><br>2. ILO: Arbeitsrechte sichern<div class=\'vi-sub\'>ILO: đảm bảo quyền lao động.</div><br>3. UNO: Globale Zusammenarbeit<div class=\'vi-sub\'>LHQ: hợp tác toàn cầu.</div></td><td>1. „WTO senkt Zölle.“<div class=\'vi-sub\'>WTO giảm thuế quan.</div><br>2. „ILO schützt Kinder vor Kinderarbeit.“<div class=\'vi-sub\'>ILO bảo vệ trẻ em khỏi lao động trẻ em.</div><br>3. „UNO hilft bei Krisen weltweit.“<div class=\'vi-sub\'>LHQ giúp đỡ trong khủng hoảng toàn cầu.</div></td></tr>\n<tr><td><b>5. Chancen und Risiken</b><div class=\'vi-sub\'>Cơ hội &amp; rủi ro</div></td><td>1. Neue Märkte erschließen<div class=\'vi-sub\'>Mở ra thị trường mới.</div><br>2. Konkurrenz steigt<div class=\'vi-sub\'>Cạnh tranh tăng.</div><br>3. Abhängigkeit von anderen Ländern<div class=\'vi-sub\'>Phụ thuộc vào quốc gia khác.</div></td><td>1. „Subway expandiert nach Asien.“<div class=\'vi-sub\'>Subway mở rộng sang châu Á.</div><br>2. „Mehr Konkurrenz durch internationale Ketten.“<div class=\'vi-sub\'>Cạnh tranh tăng do chuỗi quốc tế.</div><br>3. „Lieferprobleme bei Importwaren.“<div class=\'vi-sub\'>Gặp vấn đề cung ứng khi nhập khẩu.</div></td></tr>\n</table>\n<h3>B. Wichtige Hinweise – Điểm lưu ý quan trọng</h3>\n<table><tr><th>Deutsch</th><th>Tiếng Việt</th><th>Ghi chú</th></tr>\n<tr><td>Globalisierung betrifft alle Branchen.</td><td>Toàn cầu hóa ảnh hưởng đến mọi ngành.</td><td>Besonders Gastronomie: Zutaten weltweit. Đặc biệt ngành ẩm thực: nguyên liệu từ khắp nơi.</td></tr>\n<tr><td>Außenhandel ist Grundlage für Wohlstand.</td><td>Ngoại thương là nền tảng cho sự thịnh vượng.</td><td>Deutschland exportiert viel, Import auch wichtig. Đức xuất khẩu nhiều, nhập khẩu cũng quan trọng.</td></tr>\n<tr><td>EU bedeutet Freiheit und gemeinsame Regeln.</td><td>EU mang lại tự do &amp; luật chung.</td><td>Binnenmarkt = keine Zölle, freier Verkehr. Thị trường chung = không thuế, tự do lưu thông.</td></tr>\n<tr><td>Internationale Organisationen fördern Stabilität.</td><td>Tổ chức quốc tế thúc đẩy ổn định.</td><td>WTO = Handel, ILO = Arbeit, UNO = Frieden. WTO = thương mại, ILO = lao động, LHQ = hòa bình.</td></tr>\n<tr><td>Chancen und Risiken immer abwägen.</td><td>Luôn cân nhắc cơ hội &amp; rủi ro.</td><td>Mehr Märkte = mehr Gewinn, aber auch mehr Konkurrenz. Nhiều thị trường = nhiều lợi nhuận, nhưng cũng nhiều cạnh tranh.</td></tr>\n<tr><td>Abhängigkeit ist gefährlich.</td><td>Phụ thuộc quá nhiều là nguy hiểm.</td><td>Lieferengpässe wie bei Corona-Krise. Ví dụ: đứt gãy chuỗi cung ứng trong dịch Corona.</td></tr>\n<tr><td>Thema sehr prüfungsrelevant.</td><td>Chủ đề này rất quan trọng trong kỳ thi.</td><td>Oft Fragen zu EU, WTO und Globalisierung. Thường có câu hỏi về EU, WTO và toàn cầu hóa.</td></tr>\n</table>",
           "qa": [
             {
               "q": "Thema 9 – Globalisierung: Welche Inhalte gehören dazu?",
@@ -6268,149 +7062,149 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
     }
   ],
   "quiz": [
-    {
+        {
       "theme": "wiko-duales-system",
       "cat": "WiKO",
-      "q": "Mô hình Duales System kết hợp 2 địa điểm đào tạo nào?",
+      "q": "Welche beiden Lernorte kombiniert das duale System der Berufsausbildung?",
       "opts": [
-        "Trường đại học và Công ty",
-        "Ausbildungsbetrieb và Berufsschule",
-        "Bộ Lao động và IHK",
-        "Trường phổ thông và Trung tâm dạy nghề"
+            "Universität und Wirtschaftsministerium",
+            "Ausbildungsbetrieb und Berufsschule",
+            "Arbeitsagentur und Handwerkskammer",
+            "Allgemeinbildende Schule und Weiterbildungszentrum"
       ],
       "a": 1,
-      "ex": "Ausbildungsbetrieb (thực hành) và Berufsschule (lý thuyết)."
-    },
-    {
+      "ex": "Ausbildungsbetrieb (praktische Ausbildung) und Berufsschule (fachtheoretische Ausbildung)."
+},
+        {
       "theme": "wiko-rechte-pflichten",
       "cat": "WiKO",
-      "q": "Viết Berichtsheft (Sổ nhật ký học nghề) thuộc về nghĩa vụ nào?",
+      "q": "Zu welchen Pflichten gehört die Führung des Ausbildungsnachweises (Berichtsheft)?",
       "opts": [
-        "Nghĩa vụ doanh nghiệp",
-        "Nghĩa vụ học tập bắt buộc của Azubi",
-        "Không bắt buộc",
-        "Nghĩa vụ của IHK"
+            "Freiwillige Zusatzaufgabe des Betriebs",
+            "Gesetzliche Pflicht des Auszubildenden (§ 13 BBiG)",
+            "Alleinige Aufgabe des Ausbilders",
+            "Verpflichtung der Berufsschullehrer"
       ],
       "a": 1,
-      "ex": "Berichtsheftführung là nghĩa vụ bắt buộc của Azubi để được dự thi tốt nghiệp."
-    },
-    {
+      "ex": "Die Führung des Berichtshefts ist gesetzliche Pflicht des Azubis und Zulassungsvoraussetzung zur Abschlussprüfung."
+},
+        {
       "theme": "wiko-ausbildungsvertrag",
       "cat": "WiKO",
-      "q": "Thời gian thử việc (Probezeit) trong Hợp đồng đào tạo nghề theo BBiG là bao lâu?",
+      "q": "Wie lange dauert die gesetzliche Probezeit im Berufsausbildungsverhältnis nach § 20 BBiG?",
       "opts": [
-        "Tối đa 6 tháng",
-        "Từ 1 đến 4 tháng",
-        "Không có thử việc",
-        "Tối đa 1 năm"
+            "Maximal 6 Monate",
+            "Mindestens 1 Monat bis höchstens 4 Monate",
+            "Keine Probezeit zulässig",
+            "Mindestens 6 Monate bis maximal 1 Jahr"
       ],
       "a": 1,
-      "ex": "Mindestens 1 bis höchstens 4 Monate (§ 20 BBiG)."
-    },
-    {
+      "ex": "Die Probezeit muss mindestens 1 Monat und darf höchstens 4 Monate betragen (§ 20 BBiG)."
+},
+        {
       "theme": "wiko-probezeit-ueberwachung",
       "cat": "WiKO",
-      "q": "Trong thời gian thử việc, việc sa thải/thôi học diễn ra như thế nào?",
+      "q": "Wie kann das Berufsausbildungsverhältnis während der Probezeit gekündigt werden?",
       "opts": [
-        "Báo trước 4 tuần",
-        "Bất kỳ lúc nào, không cần thời hạn báo trước và không cần nêu lý do",
-        "Phải qua Tòa lao động",
-        "Phải được IHK đồng ý"
+            "Mit einer Frist von 4 Wochen zum Monatsende",
+            "Jederzeit ohne Kündigungsfrist und ohne Angabe von Gründen schriftlich",
+            "Nur mit vorheriger Zustimmung des Arbeitsgerichts",
+            "Nur mit Genehmigung der zuständigen Kammer (IHK)"
       ],
       "a": 1,
-      "ex": "Probezeit: Ohne Einhaltung einer Frist und ohne Angabe von Gründen."
-    },
-    {
+      "ex": "Während der Probezeit kann jederzeit ohne Einhaltung einer Frist und ohne Angabe von Gründen gekündigt werden (§ 22 BBiG)."
+},
+        {
       "theme": "wiko-arbeitsschutz",
       "cat": "WiKO",
-      "q": "Thời gian nghỉ giữa 2 ca làm việc (Ruhezeit) theo Luật Arbeitszeitgesetz tối thiểu là bao nhiêu?",
+      "q": "Wie lang ist die ununterbrochene Mindestruhezeit zwischen zwei Arbeitsschichten nach § 5 ArbZG?",
       "opts": [
-        "8 giờ",
-        "10 giờ",
-        "11 giờ liên tục",
-        "12 giờ"
+            "Mindestens 8 Stunden",
+            "Mindestens 10 Stunden",
+            "Mindestens 11 Stunden ununterbrochen",
+            "Mindestens 12 Stunden"
       ],
       "a": 2,
-      "ex": "Mindestens 11 Stunden ununterbrochene Ruhezeit (§ 5 ArbZG)."
-    },
-    {
+      "ex": "Nach Beendigung der täglichen Arbeitszeit müssen Arbeitnehmer mindestens 11 Stunden ununterbrochene Ruhezeit haben (§ 5 ArbZG)."
+},
+        {
       "theme": "wiko-fragen-agg",
       "cat": "WiKO",
-      "q": "Nếu nhà tuyển dụng hỏi câu hỏi bị cấm (như mang thai, tôn giáo), ứng viên có quyền gì theo AGG?",
+      "q": "Welches Recht hat ein Bewerber bei unzulässigen Fragen im Vorstellungsgespräch (z. B. nach Schwangerschaft oder Familienplanung)?",
       "opts": [
-        "Bắt buộc trả lời thật",
-        "Quyền được nói dối (Recht zur Lüge)",
-        "Bị hủy phỏng vấn",
-        "Phải nộp phạt"
+            "Pflicht zur wahrheitsgemäßen Antwort",
+            "Recht zur Lüge (Notlüge ohne Kündigungsrisiko)",
+            "Ausschluss aus dem Bewerbungsverfahren",
+            "Pflicht zur Zahlung von Schadenersatz"
       ],
       "a": 1,
-      "ex": "Recht zur Lüge bei unzulässigen Fragen."
-    },
-    {
+      "ex": "Bei unzulässigen Fragen greift das Recht zur Lüge; der Arbeitgeber darf deswegen später nicht kündigen."
+},
+        {
       "theme": "wiko-kuendigung-frist",
       "cat": "WiKO",
-      "q": "Hình thức thông báo sa thải hợp pháp theo § 623 BGB bắt buộc phải là gì?",
+      "q": "Welche Formvorschrift gilt zwingend für die Kündigung eines Arbeitsverhältnisses nach § 623 BGB?",
       "opts": [
-        "Email",
-        "SMS/Zalo",
-        "Văn bản giấy có chữ ký tay (Schriftform)",
-        "Nói bằng lời"
+            "E-Mail mit Lesebestätigung",
+            "SMS oder WhatsApp-Nachricht",
+            "Schriftform mit eigenhändiger Namensunterschrift auf Papier",
+            "Mündliche Erklärung vor zwei Zeugen"
       ],
       "a": 2,
-      "ex": "Schriftform mit eigenhändiger Unterschrift (§ 623 BGB)."
-    },
-    {
+      "ex": "Kündigungen bedürfen zu ihrer Wirksamkeit der Schriftform (§ 623 BGB); elektronische Form ist ausgeschlossen."
+},
+        {
       "theme": "wiko-kuendigungsschutz",
       "cat": "WiKO",
-      "q": "Thời hạn nộp đơn kiện sa thải lên Tòa án Lao động (Arbeitsgericht) là bao lâu?",
+      "q": "Innerhalb welcher Frist muss nach Erhalt einer schriftlichen Kündigung Kündigungsschutzklage erhoben werden?",
       "opts": [
-        "1 tuần",
-        "2 tuần",
-        "3 tuần kể từ khi nhận đơn sa thải bằng văn bản",
-        "1 tháng"
+            "Innerhalb von 1 Woche",
+            "Innerhalb von 2 Wochen",
+            "Innerhalb von 3 Wochen nach Zugang der Kündigung",
+            "Innerhalb von 1 Monat zum Monatsende"
       ],
       "a": 2,
-      "ex": "3-Wochen-Klagefrist nach § 4 KSchG."
-    },
-    {
+      "ex": "Die Kündigungsschutzklage muss innerhalb von 3 Wochen nach Zugang beim Arbeitsgericht erhoben werden (§ 4 KSchG)."
+},
+        {
       "theme": "wiko-betriebsrat-mitbestimmung",
       "cat": "WiKO",
-      "q": "Quy định xếp lịch làm việc (Dienstplan) thuộc cấp độ Mitbestimmung nào của Betriebsrat?",
+      "q": "Welche Beteiligungsstufe hat der Betriebsrat nach § 87 BetrVG bei der Aufstellung von Dienstplänen?",
       "opts": [
-        "Reine Information",
-        "Anhörung",
-        "Echte Mitbestimmung (Đồng quyết định bắt buộc)",
-        "Không có quyền"
+            "Reine Information",
+            "Einfache Anhörung",
+            "Echte Mitbestimmung (Zustimmung zwingend erforderlich)",
+            "Keinerlei Mitwirkungsrechte"
       ],
       "a": 2,
-      "ex": "Echte Mitbestimmung bei Arbeitszeit und Dienstplänen (§ 87 BetrVG)."
-    },
-    {
+      "ex": "Bei Beginn und Ende der täglichen Arbeitszeit sowie Dienstplänen gilt echte Mitbestimmung nach § 87 Abs. 1 Nr. 2 BetrVG."
+},
+        {
       "theme": "wiko-tarifvertrag",
       "cat": "WiKO",
-      "q": "Nguyên tắc Günstigkeitsprinzip (§ 4 Abs. 3 TVG) cho phép điều gì?",
+      "q": "Was besagt das Günstigkeitsprinzip im Tarifvertragsrecht (§ 4 Abs. 3 TVG)?",
       "opts": [
-        "HĐLĐ cá nhân luôn đè lên Tarifvertrag",
-        "HĐLĐ cá nhân chỉ được khác Tarifvertrag khi có lợi hơn cho NLĐ",
-        "Tarifvertrag không có hiệu lực",
-        "Chính phủ quyết định mức lương"
+            "Der Einzelarbeitsvertrag bricht in jedem Fall den Tarifvertrag",
+            "Abweichungen vom Tarifvertrag sind nur zugunsten des Arbeitnehmers zulässig",
+            "Tarifverträge haben nur unverbindlichen Empfehlungscharakter",
+            "Der Arbeitgeber kann tarifliche Mindestlöhne frei unterschreiten"
       ],
       "a": 1,
-      "ex": "Günstigkeitsprinzip: Abweichungen nur zugunsten des Arbeitnehmers."
-    },
-    {
+      "ex": "Günstigkeitsprinzip: Regelungen im Arbeitsvertrag dürfen nur abweichen, wenn sie für den Arbeitnehmer vorteilhafter sind."
+},
+        {
       "theme": "wiko-lohnabrechnung-sozial",
       "cat": "WiKO",
-      "q": "Quỹ bảo hiểm xã hội nào do Chủ doanh nghiệp chi trả 100% kinh phí?",
+      "q": "Welcher Zweig der gesetzlichen Sozialversicherung wird zu 100 % allein vom Arbeitgeber getragen?",
       "opts": [
-        "Krankenversicherung",
-        "Rentenversicherung",
-        "Unfallversicherung",
-        "Arbeitslosenversicherung"
+            "Gesetzliche Krankenversicherung",
+            "Gesetzliche Rentenversicherung",
+            "Gesetzliche Unfallversicherung (Berufsgenossenschaft)",
+            "Gesetzliche Arbeitslosenversicherung"
       ],
       "a": 2,
-      "ex": "Unfallversicherung do Berufsgenossenschaft quản lý do chủ trả 100%."
-    },
+      "ex": "Die Beiträge zur gesetzlichen Unfallversicherung zahlt der Arbeitgeber zu 100 % allein an die Berufsgenossenschaft."
+},
     {
       "theme": "kaufvertrag",
       "cat": "WiKO",
@@ -6523,7 +7317,7 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
       icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 17a6.5 6.5 0 0 1 13 0"/><path d="M3 17h18"/><path d="M12 7.3V6"/><circle cx="12" cy="5" r="1"/><path d="M3.5 20h17"/></svg>',
       accent: "#AF52DE",
       soft: "#F6EDFC",
-      teacher: "BSI (Brunnenkant)",
+      teacher: "",
       ready: true,
       desc: "Service-Praxis: Serviceablauf, Gedeck, Gästekommunikation & Menüservice — Theorie, Fragen & Quiz.",
       groups: [
@@ -6548,13 +7342,13 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
       <li><span class="term" data-de="Garderobe" data-vi="quầy giữ áo khoác / mũ nón">Garderobe</span> (Mantel, Jacke) abnehmen und sicher verwahren.</li>
       <li>Nach Reservierung fragen: <i>„Haben Sie reserviert? Auf welchen Namen?"</i> — einladender: <i>„Sind Sie spontan zu uns gekommen?"</i></li>
     </ul>
-    <p>📞 <b>Telefon-Reservierung:</b> Höchstens <b>3× läuten</b> lassen; Formel: <i>Betriebsname + eigener Name</i>. Notieren: Tag, Datum, Uhrzeit, Personenanzahl, Name + Telefonnummer, Sonderwünsche. Tisch <b>15–20 Minuten</b> freihalten.</p>
+    <p><b>Telefon-Reservierung:</b> Höchstens <b>3× läuten</b> lassen; Formel: <i>Betriebsname + eigener Name</i>. Notieren: Tag, Datum, Uhrzeit, Personenanzahl, Name + Telefonnummer, Sonderwünsche. Tisch <b>15–20 Minuten</b> freihalten.</p>
     <p>→ Đặt bàn qua điện thoại: để chuông reo tối đa 3 lần; công thức chào: tên quán + tên mình. Ghi: ngày, giờ, số khách, tên + SĐT, yêu cầu đặc biệt. Giữ bàn 15–20 phút.</p>
     <p>→ Chào khách ngay khi bước vào, cười, nhìn vào mắt khách. Nhận giữ áo khoác. Hỏi khách có đặt bàn trước không.</p>
     <h3 class="sub">3. Platzierung — Reihenfolge beachten</h3>
     <p>Zum Tisch begleiten und Stühle anbieten. Reihenfolge: <b>Damen zuerst</b>, dann ältere Gäste, dann Herren — der <span class="term" data-de="Gastgeber" data-vi="chủ tiệc / người mời">Gastgeber</span> (Einladende) zuletzt.</p>
     <p>→ Dẫn khách vào bàn, kéo ghế mời ngồi. Thứ tự: phụ nữ trước, khách lớn tuổi, rồi đến nam giới — chủ tiệc ngồi cuối cùng.</p>
-    <div class="hint">⚠️ HỌC THUỘC: Begrüßung sofort · Damen zuerst · Gastgeber zuletzt.</div>`,
+    <div class="hint">Merksatz: Begrüßung sofort · Damen zuerst · Gastgeber zuletzt.</div>`,
               qa: [
                 { q: "In welcher Reihenfolge werden Gäste platziert?", qVi: "Thứ tự xếp chỗ ngồi cho khách như thế nào?", a: "Damen zuerst, dann ältere Gäste, dann Herren — der Gastgeber zuletzt.", aVi: "Phụ nữ trước, rồi khách lớn tuổi, rồi nam giới — chủ tiệc cuối cùng.", why: "Höflichkeitsregel im Service; der Gastgeber als Einladender nimmt zuletzt Platz.", src: "DEHOGA Service-Grundlagen" },
                 { q: "Was gehört zur Vorbereitung (Mise en place) vor dem Service?", qVi: "Chuẩn bị trước giờ phục vụ gồm những gì?", a: "Tische eindecken, Besteck/Gläser/Servietten/Karten prüfen, Erscheinungsbild kontrollieren.", aVi: "Trải bàn, kiểm tra dao nĩa/ly/khăn/thực đơn, trang phục chỉnh tề.", why: "Ohne Mise en place kein reibungsloser Service.", src: "IHK Ausbildungsrahmenplan" },
@@ -6576,7 +7370,7 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
     <h3 class="sub">3. Bonieren</h3>
     <p>Bestellung sofort an Küche/Bar weitergeben — per <span class="term" data-de="Bon" data-vi="phiếu order (bon)">Bon</span> oder Kassensystem. Getränke kommen zuerst an den Tisch.</p>
     <p>→ Chuyển order ngay cho bếp/bar qua phiếu bon hoặc máy tính tiền. Đồ uống ra bàn trước.</p>
-    <div class="hint">⚠️ HỌC THUỘC: Ehrengast → Damen (alt vor jung) → Herren → Gastgeber · Wiederholen · Allergien notieren.</div>`,
+    <div class="hint">Merksatz: Ehrengast → Damen (alt vor jung) → Herren → Gastgeber · Wiederholen · Allergien notieren.</div>`,
               qa: [
                 { q: "In welcher Reihenfolge wird die Bestellung aufgenommen?", qVi: "Thứ tự nhận order như thế nào?", a: "Zuerst Damen, dann Herren, der Gastgeber zuletzt.", aVi: "Nữ trước, nam sau, chủ tiệc cuối cùng.", why: "Höflichkeitsregel — gilt für Platzierung und Bestellaufnahme.", src: "DEHOGA Service-Grundlagen" },
                 { q: "Was bedeutet 'Bonieren'?", qVi: "'Bonieren' nghĩa là gì?", a: "Die Bestellung per Bon/Kassensystem an Küche und Bar weitergeben.", aVi: "Chuyển order qua phiếu bon/máy tính tiền cho bếp và bar.", why: "Ohne Bon keine Produktion in Küche/Bar.", src: "IHK Ausbildungsrahmenplan" },
@@ -6606,11 +7400,11 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
       <li>Von <b>rechts einschenken</b>, Glas bleibt auf dem Tisch stehen; Flasche schräg halten, <b>Etikett zum Gast</b>.</li>
       <li>Gläser nur bis zur <b>Hälfte</b> füllen; Weinflasche immer <b>am Tisch</b> vor den Gästen öffnen.</li>
     </ul>
-    <p>🖼️ <a href="https://gmbh.vorarlberg.travel/wp-content/uploads/2023/07/Service-Wein-einschenken-bei-gedecktem-Tisch-mit-Hirschpfeffer-c-Angela-Lamprecht-Vorarlberg-Tourismus-Webqualitaet-1920x600.jpg" target="_blank" rel="noopener">Bild: Weinservice — Einschenken am gedeckten Tisch</a></p>
+    <p><a href="https://gmbh.vorarlberg.travel/wp-content/uploads/2023/07/Service-Wein-einschenken-bei-gedecktem-Tisch-mit-Hirschpfeffer-c-Angela-Lamprecht-Vorarlberg-Tourismus-Webqualitaet-1920x600.jpg" target="_blank" rel="noopener">Bild: Weinservice — Einschenken am gedeckten Tisch</a></p>
     <h3 class="sub">4. Nachservice</h3>
     <p>Nach kurzer Zeit nachfragen: <i>„Hat es Ihnen geschmeckt? Darf es noch etwas sein?"</i> Getränke <span class="term" data-de="nachschenken" data-vi="rót thêm">nachschenken</span>, leere Gläser/Teller im Blick behalten.</p>
     <p>→ Sau một lúc hỏi thăm khách có hài lòng không, rót thêm đồ uống, để ý ly đĩa đã hết.</p>
-    <div class="hint">⚠️ HỌC THUỘC: Von RECHTS servieren · Damen zuerst · Nachfragen: „Hat es geschmeckt?"</div>`,
+    <div class="hint">Merksatz: Von RECHTS servieren · Damen zuerst · Nachfragen: „Hat es geschmeckt?"</div>`,
               qa: [
                 { q: "Von welcher Seite wird in Deutschland serviert?", qVi: "Ở Đức phục vụ từ phía nào?", a: "Von rechts — Speisen und Getränke werden von der rechten Seite angereicht.", aVi: "Từ bên phải — dọn món và đồ uống từ phía bên phải của khách.", why: "Deutsche Servierregel (in anderen Ländern teils von links).", src: "DEHOGA Service-Grundlagen" },
                 { q: "Was gehört zum Nachservice?", qVi: "Nachservice gồm những gì?", a: "Nachfragen ob es geschmeckt hat, nachschenken, leere Gläser beachten.", aVi: "Hỏi khách có ngon không, rót thêm, để ý ly đã hết.", why: "Aktiver Service statt nur Abwarten.", src: "IHK Ausbildungsrahmenplan" },
@@ -6637,7 +7431,7 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
     <h3 class="sub">5. Verabschiedung</h3>
     <p>Herzlich verabschieden, Garderobe überreichen: <i>„Vielen Dank für Ihren Besuch — auf Wiedersehen!"</i> Zum Wiederkommen einladen.</p>
     <p>→ Chào tạm biệt niềm nở, trả áo khoác, mời khách quay lại.</p>
-    <div class="hint">⚠️ HỌC THUỘC: Abräumen von rechts · erst wenn ALLE fertig · Rechnung nur auf Wunsch.</div>`,
+    <div class="hint">Merksatz: Abräumen von rechts · erst wenn ALLE fertig · Rechnung nur auf Wunsch.</div>`,
               qa: [
                 { q: "Wann darf abgeräumt werden?", qVi: "Khi nào được dọn đĩa?", a: "Von rechts — erst wenn alle Gäste am Tisch mit dem Gang fertig sind.", aVi: "Dọn từ bên phải — chỉ khi mọi khách trong bàn đã xong món.", why: "Vorzeitiges Abräumen wirkt unhöflich und drängt die Gäste.", src: "DEHOGA Service-Grundlagen" },
                 { q: "Wann wird die Rechnung gebracht?", qVi: "Khi nào mang hóa đơn ra?", a: "Nur auf Wunsch des Gastes ('Zahlen, bitte.').", aVi: "Chỉ khi khách yêu cầu thanh toán.", why: "Unaufgefordertes Kassieren wirkt wie Hinauswerfen.", src: "IHK Ausbildungsrahmenplan" },
@@ -6675,8 +7469,8 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
     </ul>
     <p><b>Reihenfolge beim Eindecken:</b> Geschirr → Besteck → Gläser → Servietten. Besteck nur an den Griffen anfassen (idealerweise mit Handschuhen); im Uhrzeigersinn um den Tisch gehen.</p>
     <p>→ Thứ tự trải bàn: đĩa → dao nĩa → ly → khăn ăn. Chỉ cầm cán dao nĩa, đồ phải sạch bóng.</p>
-    <p>🖼️ <a href="https://www.schoenstezeit.de/wp-content/uploads/2019/04/eindecken-haushirt.jpg" target="_blank" rel="noopener">Bild: Eindecken eines Restauranttischs</a> · 🎬 <a href="https://www.youtube.com/watch?v=nAHGmqA3p3s" target="_blank" rel="noopener">Video: Tisch richtig eindecken (HilfreichTV)</a></p>
-    <div class="hint">⚠️ HỌC THUỘC: Messer RECHTS (Schneide innen) · Gabel LINKS · von außen nach innen.</div>`,
+    <p><a href="https://www.schoenstezeit.de/wp-content/uploads/2019/04/eindecken-haushirt.jpg" target="_blank" rel="noopener">Bild: Eindecken eines Restauranttischs</a> · <a href="https://www.youtube.com/watch?v=nAHGmqA3p3s" target="_blank" rel="noopener">Video: Tisch richtig eindecken (HilfreichTV)</a></p>
+    <div class="hint">Merksatz: Messer RECHTS (Schneide innen) · Gabel LINKS · von außen nach innen.</div>`,
               qa: [
                 { q: "Wo liegen Messer und Gabel im Gedeck?", qVi: "Dao và nĩa đặt ở đâu?", a: "Messer rechts (Schneide nach innen), Gabel links vom Teller.", aVi: "Dao bên phải (lưỡi hướng vào đĩa), nĩa bên trái đĩa.", why: "Feste internationale Gedeck-Regel.", src: "DEHOGA Service-Grundlagen" },
                 { q: "In welcher Reihenfolge wird das Besteck benutzt?", qVi: "Dùng dao nĩa theo thứ tự nào?", a: "Von außen nach innen.", aVi: "Từ ngoài vào trong.", why: "Äußeres Besteck gehört zum ersten Gang.", src: "IHK Ausbildungsrahmenplan" },
@@ -6701,7 +7495,7 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
     <h3 class="sub">3. Brotteller</h3>
     <p><span class="term" data-de="Brotteller" data-vi="đĩa bánh mì">Brotteller</span> <b>links oben</b> mit <span class="term" data-de="Buttermesser" data-vi="dao phết bơ">Buttermesser</span> darauf.</p>
     <p>→ Đĩa bánh mì ở trên bên trái, có dao phết bơ đặt trên.</p>
-    <div class="hint">⚠️ HỌC THUỘC: Gläser OBEN RECHTS · Brotteller OBEN LINKS.</div>`,
+    <div class="hint">Merksatz: Gläser OBEN RECHTS · Brotteller OBEN LINKS.</div>`,
               qa: [
                 { q: "Wo stehen die Gläser im Gedeck?", qVi: "Ly đặt ở đâu?", a: "Oben rechts in diagonaler Linie — Wasserglas dem Teller am nächsten, dann Weißwein, dann Rotwein.", aVi: "Trên bên phải theo đường chéo — ly nước gần đĩa nhất, rồi vang trắng, rồi vang đỏ.", why: "Feste Gedeck-Regel; größtes Glas (Rotwein) ganz oben.", src: "DEHOGA Service-Grundlagen" },
                 { q: "Wo liegt der Brotteller?", qVi: "Đĩa bánh mì đặt ở đâu?", a: "Links oben, mit Buttermesser darauf.", aVi: "Trên bên trái, có dao phết bơ đặt trên.", why: "Links = Brotseite (Eselsbrücke: 'Brot links').", src: "IHK Ausbildungsrahmenplan" },
@@ -6734,8 +7528,8 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
     <p>→ Tư vấn trung thực (món trong ngày, món theo mùa). Bán thêm một cách tinh tế: gợi ý khai vị, tráng miệng, cà phê — không chèo kéo.</p>
     <p><b>Zwei-Alternativen-Technik</b> (statt Ja/Nein-Frage): <i>„Darf ich Ihnen den Espresso mit einer Praline servieren oder lieber unseren Eierlikörkuchen?"</i> — Empfehlung konkret aussprechen: <i>„Zu Ihrem Essen passt besonders gut der …"</i></p>
     <p>→ Kỹ thuật đưa <b>2 lựa chọn</b> thay vì hỏi có/không. Gợi ý cụ thể: „Món này hợp nhất với …"</p>
-    <p>🎬 <a href="https://www.youtube.com/watch?v=YtxTeLji5Lg" target="_blank" rel="noopener">Video: 1000 wichtige Sätze für Kellner:innen (sprichdeutsch)</a></p>
-    <div class="hint">⚠️ HỌC THUỘC: Zuhören → Beraten → dezent verkaufen (nie aufdringlich).</div>`,
+    <p><a href="https://www.youtube.com/watch?v=YtxTeLji5Lg" target="_blank" rel="noopener">Video: 1000 wichtige Sätze für Kellner:innen (sprichdeutsch)</a></p>
+    <div class="hint">Merksatz: Zuhören → Beraten → dezent verkaufen (nie aufdringlich).</div>`,
               qa: [
                 { q: "Was bedeutet 'aktives Zuhören' im Service?", qVi: "'Lắng nghe chủ động' trong phục vụ là gì?", a: "Ausreden lassen, nicht unterbrechen, nachfragen, Verständnis zeigen.", aVi: "Để khách nói hết, không ngắt lời, hỏi lại, thể hiện sự thấu hiểu.", why: "Basis für Beratung und Reklamationsbehandlung.", src: "DEHOGA Service-Grundlagen" },
                 { q: "Wie soll Zusatzverkauf sein?", qVi: "Bán thêm nên như thế nào?", a: "Dezent und ehrlich — Empfehlungen geben, nie aufdringlich verkaufen.", aVi: "Tinh tế và trung thực — gợi ý chứ không chèo kéo.", why: "Aufdringlichkeit verärgert Gäste und schadet dem Ruf.", src: "IHK Ausbildungsrahmenplan" },
@@ -6750,7 +7544,7 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
     <div class="hint">Thema 3 · Gästekommunikation — Eine gut gelöste Reklamation bindet Gäste.</div>
     <h3 class="sub">Die 5 Schritte der Reklamationsbehandlung</h3>
     <table>
-    <tr><th>#</th><th>Schritt</th><th>Nghĩa</th></tr>
+    <tr><th>#</th><th>Schritt</th><th>Bedeutung</th></tr>
     <tr><td>1</td><td><b>Zuhören</b> — ausreden lassen, nicht unterbrechen</td><td>lắng nghe, không ngắt lời</td></tr>
     <tr><td>2</td><td><b>Verständnis zeigen &amp; entschuldigen</b></td><td>thấu hiểu &amp; xin lỗi</td></tr>
     <tr><td>3</td><td><b>Lösung anbieten</b> (Ersatzgericht, neues Getränk, Nachlass)</td><td>đề xuất giải pháp</td></tr>
@@ -6765,7 +7559,7 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
       <li>Bei Beleidigung/Bedrohung: <b>keine</b> Entschuldigung — Kollegen/Vorgesetzten einbeziehen.</li>
       <li>Beispiel-Formulierung: <i>„Entschuldigung. Sie erhalten natürlich sofort ein neues Gericht in der gewünschten Garstufe."</i></li>
     </ul>
-    <div class="hint">⚠️ HỌC THUỘC: Zuhören → Entschuldigen → Lösen → Danken → Nachfassen. Nie streiten!</div>`,
+    <div class="hint">Merksatz: Zuhören → Entschuldigen → Lösen → Danken → Nachfassen. Nie streiten!</div>`,
               qa: [
                 { q: "Nennen Sie die Schritte der Reklamationsbehandlung.", qVi: "Nêu các bước xử lý khiếu nại.", a: "Zuhören, Verständnis zeigen & entschuldigen, Lösung anbieten, danken, nachfassen & dokumentieren.", aVi: "Lắng nghe, thấu hiểu & xin lỗi, đề xuất giải pháp, cảm ơn, hỏi lại & ghi chép.", why: "Standardablauf (5 Schritte) im Beschwerdemanagement.", src: "DEHOGA Service-Grundlagen" },
                 { q: "Was darf man bei einer Reklamation niemals tun?", qVi: "Khi bị khiếu nại tuyệt đối không được làm gì?", a: "Nie mit dem Gast streiten oder ihm die Schuld zuweisen.", aVi: "Không bao giờ cãi nhau với khách hay đổ lỗi cho khách.", why: "Der Gast muss sich ernst genommen fühlen.", src: "IHK Ausbildungsrahmenplan" },
@@ -6787,7 +7581,7 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
     <div class="hint">Thema 4 · Menüservice — Die festgelegte Abfolge eines klassischen Menüs.</div>
     <h3 class="sub">Klassische <span class="term" data-de="Menüfolge" data-vi="trình tự các món trong thực đơn">Menüfolge</span></h3>
     <table>
-    <tr><th>#</th><th>Gang</th><th>Ví dụ</th></tr>
+    <tr><th>#</th><th>Gang</th><th>Beispiel</th></tr>
     <tr><td>1</td><td><span class="term" data-de="Aperitif" data-vi="đồ uống khai vị">Aperitif</span></td><td>Sekt, Sherry</td></tr>
     <tr><td>2</td><td>Kalte <span class="term" data-de="Vorspeise" data-vi="món khai vị">Vorspeise</span></td><td>Räucherlachs, Carpaccio</td></tr>
     <tr><td>3</td><td><span class="term" data-de="Suppe" data-vi="súp">Suppe</span></td><td>Kraftbrühe, Cremesuppe</td></tr>
@@ -6800,7 +7594,7 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
     <tr><td>10</td><td>Kaffee / <span class="term" data-de="Digestif" data-vi="rượu tiêu hóa (sau ăn)">Digestif</span></td><td>Espresso, Cognac</td></tr>
     </table>
     <p>→ Thứ tự kinh điển: khai vị lạnh → súp → khai vị nóng → cá → sorbet làm sạch vị → món chính (thịt) → tráng miệng → phô mai → cà phê/rượu tiêu hóa. Modern verkürzt: Vorspeise/Suppe → Hauptgang → Dessert/Käse.</p>
-    <div class="hint">⚠️ HỌC THUỘC: Fisch VOR Fleisch · Sorbet in der Mitte · Dessert VOR Käse.</div>`,
+    <div class="hint">Merksatz: Fisch VOR Fleisch · Sorbet in der Mitte · Dessert VOR Käse.</div>`,
               qa: [
                 { q: "Nennen Sie die klassische Menüfolge.", qVi: "Nêu trình tự thực đơn kinh điển.", a: "Aperitif, kalte Vorspeise, Suppe, warme Vorspeise, Fisch, Sorbet, Hauptgang, (warmes) Dessert, Käse, Kaffee/Digestif.", aVi: "Khai vị lạnh, súp, khai vị nóng, cá, sorbet, món chính, tráng miệng, phô mai, cà phê/rượu tiêu hóa.", why: "Feste Reihenfolge im klassischen Menüservice.", src: "DEHOGA Service-Grundlagen" },
                 { q: "Wozu dient das Sorbet im Menü?", qVi: "Sorbet trong thực đơn có tác dụng gì?", a: "Zur Erfrischung/Neutralisierung des Gaumens zwischen den Gängen.", aVi: "Làm sạch/làm mới vị giác giữa các món.", why: "Vorbereitung auf den Hauptgang.", src: "IHK Ausbildungsrahmenplan" },
@@ -6821,7 +7615,7 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
     </ul>
     <p>→ Bưng đĩa bằng <b>tay trái</b> (cẳng tay trái), dọn bằng <b>tay phải</b>. Tối đa 2–3 đĩa một lúc, không chồng đĩa lên nhau.</p>
     <p><b>3-Teller-Technik:</b> 1. Teller mit der linken Hand am Tellerrand (Daumen/Zeigefinger), 2. Teller auf Daumenballen &amp; Handgelenk, 3. Teller in der rechten Hand. Abstellen in umgekehrter Reihenfolge. <b>Nie</b> Teller wie einen Turm aufeinander stapeln.</p>
-    <p>🎬 <a href="https://www.youtube.com/watch?v=nMXwJ05tLZk" target="_blank" rel="noopener">Video: Wie trägt man drei Teller richtig?</a> · <a href="https://www.youtube.com/watch?v=bFExAOpzPoo" target="_blank" rel="noopener">Video: 3 Teller tragen — Anleitung</a></p>
+    <p><a href="https://www.youtube.com/watch?v=nMXwJ05tLZk" target="_blank" rel="noopener">Video: Wie trägt man drei Teller richtig?</a> ·<a href="https://www.youtube.com/watch?v=bFExAOpzPoo" target="_blank" rel="noopener">Video: 3 Teller tragen — Anleitung</a></p>
     <h3 class="sub">2. <span class="term" data-de="Eindecken" data-vi="trải thêm dao nĩa cho món tiếp theo">Eindecken</span> &amp; <span class="term" data-de="Ausdecken" data-vi="dọn bớt dao nĩa/đĩa đã dùng">Ausdecken</span></h3>
     <p>Zwischen den Gängen: benutztes Geschirr/Besteck <b>ausdecken</b> (abräumen), Besteck für den nächsten Gang <b>eindecken</b> (auflegen).</p>
     <p>→ Giữa các món: dọn đĩa/dụng cụ đã dùng, trải thêm dao nĩa cho món tiếp theo.</p>
@@ -6831,7 +7625,7 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
     <p>→ Khi nhiều khách, nhấc nắp đậy đĩa <b>đồng thời</b> trước mặt mọi người.</p>
     <h3 class="sub">4. Einschenken</h3>
     <p>Von <b>rechts einschenken</b>, <span class="term" data-de="Etikett" data-vi="nhãn chai">Etikett</span> der Flasche zum Gast zeigen.</p>
-    <div class="hint">⚠️ HỌC THUỘC: Links tragen · rechts servieren · max. 3 Teller · Cloche gleichzeitig.</div>`,
+    <div class="hint">Merksatz: Links tragen · rechts servieren · max. 3 Teller · Cloche gleichzeitig.</div>`,
               qa: [
                 { q: "Wie werden Teller getragen und serviert?", qVi: "Bưng và dọn đĩa như thế nào?", a: "Auf dem linken Unterarm tragen, mit rechts servieren — max. 2–3 Teller.", aVi: "Bưng bằng cẳng tay trái, dọn bằng tay phải — tối đa 2–3 đĩa.", why: "Rechte Hand bleibt frei zum Servieren von rechts.", src: "DEHOGA Service-Grundlagen" },
                 { q: "Was bedeuten Eindecken und Ausdecken?", qVi: "Eindecken và Ausdecken là gì?", a: "Ausdecken: benutztes Geschirr abräumen; Eindecken: Besteck für den nächsten Gang auflegen.", aVi: "Ausdecken: dọn đĩa đã dùng; Eindecken: trải dao nĩa cho món tiếp.", why: "Wechsel zwischen den Menügängen.", src: "IHK Ausbildungsrahmenplan" },
@@ -6853,8 +7647,8 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
     </table>
     <p>→ Mỹ: dọn đĩa đã bày sẵn từ bếp. Anh: xẻ thịt tại bàn. Pháp: bày/xẻ trên xe Guéridon. Đức: đặt khay lên bàn, khách tự lấy.</p>
     <p><b>Gloschenservice:</b> Teller unter der <span class="term" data-de="Cloche" data-vi="nắp đậy đĩa">Cloche</span> (Speiseglocke) — synchronisiertes Servieren und Abheben vor dem Gast; Zeichen für Exklusivität.</p>
-    <p>🖼️ <a href="https://old.easterntabletop.com/Photos/Product/9410_2.jpg" target="_blank" rel="noopener">Bild: Cloche (Speiseglocke)</a></p>
-    <div class="hint">⚠️ HỌC THUỘC: Amerikanisch = Teller fertig · Englisch = Tranchieren am Tisch · Französisch = Guéridon · Deutsch = Gast bedient sich selbst.</div>`,
+    <p><a href="https://old.easterntabletop.com/Photos/Product/9410_2.jpg" target="_blank" rel="noopener">Bild: Cloche (Speiseglocke)</a></p>
+    <div class="hint">Merksatz: Amerikanisch = Teller fertig · Englisch = Tranchieren am Tisch · Französisch = Guéridon · Deutsch = Gast bedient sich selbst.</div>`,
               qa: [
                 { q: "Was ist der Unterschied zwischen amerikanischem und deutschem Service?", qVi: "Phục vụ kiểu Mỹ và kiểu Đức khác nhau thế nào?", a: "Amerikanisch: Teller in der Küche fertig angerichtet. Deutsch: Platten auf den Tisch — Gast bedient sich selbst.", aVi: "Mỹ: đĩa bày sẵn từ bếp. Đức: đặt khay lên bàn, khách tự lấy.", why: "Kernunterscheidung der Servierarten.", src: "DEHOGA Service-Grundlagen" },
                 { q: "Wo wird beim französischen Service tranchiert?", qVi: "Phục vụ kiểu Pháp xẻ thịt ở đâu?", a: "Am Guéridon — dem Beistelltisch im Gastraum.", aVi: "Trên xe Guéridon — bàn phụ trong phòng ăn.", why: "Französischer Service = aufwendigste Form mit Guéridon.", src: "IHK Ausbildungsrahmenplan" },
@@ -6889,6 +7683,379 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
         { theme: "bfk5-abraumen", cat: "Serviceablauf", q: "Wie signalisiert der Gast 'Ich bin fertig'?", opts: ["Besteck kreuzweise auf dem Teller", "Bestecke parallel, Griffe nach rechts unten", "Besteck aufs Tischtuch legen", "Serviette auf den Teller"], a: 1, ex: "Parallel, Griffe rechts unten = fertig; ungekreuzt = Pause." },
       ],
     },
+    {
+      id: "bfk6",
+      code: "BfK-6",
+      name: "Getränke & Ausschank",
+      icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>',
+      accent: "#0284c7",
+      soft: "#e0f2fe",
+      teacher: "",
+      ready: true,
+      desc: "Getränkekunde, Weinservice, Bierzapfen, Heißgetränke & Schankanlagentechnik.",
+      legacyRoutes: {
+        hub: "#/bfk/6"
+      },
+      groups: [
+        {
+          id: "getraenkekunde",
+          badge: "Getränke",
+          title: "Getränkekunde, Gläser & Ausschank",
+          items: [
+            {
+              id: "bfk6-glaeser",
+              icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h10l-1 7a4 4 0 0 1-8 0L7 3z"/><path d="M12 14v7"/><path d="M8 21h8"/></svg>',
+              name: "Gläserkunde & Ausschankmaße",
+              desc: "17 Gläserarten nach DIN · Eichstrich · Handhabung & Gläserpflege",
+              content: `<h2>Gläserkunde &amp; Ausschankmaße</h2>
+<div class="hint">Gläserwahl nach Getränkeart · Eichstrich (Füllstrich) · Sensorik &amp; Pflege</div>
+<h3 class="sub">1. Die vier Hauptglasgruppen</h3>
+<ul>
+  <li><b>Weingläser (Ausschankmaß 0,2 l / 0,25 l):</b> Rotweinglas (großer, bauchiger Kelch für Sauerstoffkontakt), Weißweinglas (schlankerer Kelch zur Bewahrung kühler Frische), Roséweinglas und Dessertweinglas (kleiner Kelch, 5 cl z. B. für Sherry/Portwein).</li>
+  <li><b>Schaumweingläser (Ausschankmaß 8–16 cl):</b> Sektflöte (hoher schlanker Körper mit Moussierpunkt am Boden), Sektkelch und Sektspitz.</li>
+  <li><b>Biergläser (Ausschankmaß 0,2 l bis 0,5 l):</b> Biertulpe (Pils), Willibecher (Universal-Bierglas), Weizenbierglas (hoher, geschwungener Körper für dichte Schaumkrone), Bierstange (Kölsch) und Henkelglas (Bierkrug).</li>
+  <li><b>Spirituosen- &amp; Cocktailgläser (Ausschankmaß 2 cl / 4 cl / 5–38 cl):</b> Cognacschwenker (bauchig zur Handwärmeübertragung), Grappaglas (Kaminform), Likörkelch, Martiniglas (Spitzkelch) und Tumbler.</li>
+</ul>
+<h3 class="sub">2. Gesetzliche Ausschankmaße &amp; Eichstrich</h3>
+<p>In der Gastronomie müssen Gläser für gewerblichen Getränkeausschank mit einem amtlichen <b>Eichstrich (Füllstrich)</b> und dem Nennvolumen versehen sein (Mess- und Eichgesetz). Das Getränk muss beim Servieren bis exakt an den Strich reichen (ohne Schaumkrone).</p>
+<div class="vi">
+  <b>Tóm tắt Tiếng Việt — Phân loại Ly &amp; Định lượng rót (Gläserkunde):</b>
+  <ul>
+    <li><b>Ly rượu vang (0,2 l / 0,25 l):</b> Ly vang đỏ (bầu tròn rộng để tiếp xúc oxy giải phóng hương bouquet), Ly vang trắng (thân thon gọn giữ độ lạnh), Ly vang ngọt/Sherry (5 cl).</li>
+    <li><b>Ly sủi bọt Sekt/Champagner (8–16 cl):</b> Dáng ống thon dài (Sektflöte), đáy có điểm sủi bọt (Moussierpunkt) giúp bọt khí sủi tăm đều lên trên.</li>
+    <li><b>Ly bia (0,2 l đến 0,5 l):</b> Biertulpe (bia Pils), Willibecher (bia thông dụng), Weizenbierglas (thân cao lượn sóng giữ lớp bọt dày), Bierstange (bia Kölsch), Henkelglas (ly có quai).</li>
+    <li><b>Ly rượu mạnh &amp; Cocktail (2 cl / 4 cl / 5–38 cl):</b> Ly Cognac (bầu tròn áp lòng bàn tay làm ấm rượu), Ly Grappa (dáng hoa tulip), Ly Martini (tam giác), Tumbler (ly đáy dày).</li>
+    <li><b>Vạch định mức (Eichstrich):</b> Bắt buộc theo luật đo lường của Đức để bảo vệ khách hàng nhận đúng lượng đồ uống đã trả tiền.</li>
+  </ul>
+</div>`,
+              qa: [
+                {
+                  q: "Warum hat ein Rotweinglas einen deutlich größeren und bauchigeren Kelch als ein Weißweinglas?",
+                  qVi: "Tại sao ly vang đỏ có bầu ly to và phình tròn hơn hẳn so với ly vang trắng?",
+                  a: "Der bauchige Kelch bietet eine <b>große Oberfläche für den Sauerstoffkontakt</b>, wodurch der Rotwein „atmen“ kann und sich seine komplexen Aromen und Tannine optimal entfalten. Weißwein hingegen soll kühl bleiben und wird daher in schlankeren Kelchen serviert.",
+                  "aVi": "Bầu ly phình to giúp tăng <b>diện tích tiếp xúc với oxy</b>, giúp rượu vang đỏ thở và bung tỏa hết các tầng hương cùng vị chát tannin. Còn vang trắng cần giữ lạnh nên phục vụ trong ly thon nhỏ hơn."
+                },
+                {
+                  q: "Welchem Zweck dient der Moussierpunkt am Boden eines Schaumweinglases?",
+                  "qVi": "Điểm sủi bọt (Moussierpunkt) ở đáy ly vang sủi bọt có tác dụng gì?",
+                  a: "Der <b>Moussierpunkt</b> ist eine mikroskopisch aufgeraute Stelle am Glasboden, an der sich die im Schaumwein gelöste Kohlensäure sammelt und in <b>gleichmäßigen, feinen Perlenketten nach oben steigt</b>.",
+                  "aVi": "Là một điểm nhám siêu nhỏ ở đáy ly giúp khí CO2 hòa tan giải phóng liên tục thành <b>những chuỗi tăm bọt mịn màng dâng đều lên miệng ly</b>."
+                }
+              ]
+            },
+            {
+              id: "bfk6-bier",
+              icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 11h1a3 3 0 0 1 0 6h-1"/><path d="M9 12v6"/><path d="M13 12v6"/><path d="M5 7h12v11a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3Z"/><path d="M5 7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2"/></svg>',
+              name: "Biersorten, Ausschank & Schankanlage",
+              desc: "Unter- vs. obergärig · Zapftechnik in 3 Schritten · Schankanlagenhygiene",
+              content: `<h2>Biersorten, Ausschank &amp; Schankanlagentechnik</h2>
+<div class="hint">Gärungsarten · Deutsches Reinheitsgebot 1516 · Der perfekte Zapfvorgang</div>
+<h3 class="sub">1. Gärungsarten und Biersorten</h3>
+<ul>
+  <li><b>Untergärige Biere (Gärtemperatur 4–9 °C, Hefe sinkt ab):</b> Pilsener (feinherb, stark gehopft), Helles / Export (malzbetont, mild), Märzen, Bockbier.</li>
+  <li><b>Obergärige Biere (Gärtemperatur 15–20 °C, Hefe steigt auf):</b> Weizenbier / Weißbier (fruchtig, hefetrüb), Kölsch, Altbier, Berliner Weiße.</li>
+  <li><b>Deutsches Reinheitsgebot (1516):</b> Nur 4 Zutaten sind erlaubt: <b>Wasser, Gerstenmalz, Hopfen und Hefe</b>.</li>
+</ul>
+<h3 class="sub">2. Der professionelle Bierzapfvorgang</h3>
+<ol>
+  <li>Glas vor dem Zapfen mit kaltem, klarem Wasser vorsichtig <b>ausspülen</b> (kühl, staubfrei, vermindert Schaumbildung).</li>
+  <li>Glas im <b>45-Grad-Winkel</b> an den Zapfhahn halten; Zapfhahn <b>voll öffnen</b> und das Bier an der Glaswand einlaufen lassen, bis das Glas zu zwei Dritteln gefüllt ist.</li>
+  <li>Kurz absetzen lassen, dann gerade nachzapfen und eine <b>feste, feinporige Schaumkrone („Blume“)</b> aufsetzen. Nicht mit dem Hahn in den Schaum eintauchen!</li>
+</ol>
+<div class="vi">
+  <b>Tóm tắt Tiếng Việt — Các loại bia &amp; Kỹ thuật rót bia (Bierservice):</b>
+  <ul>
+    <li><b>Untergärig (Lên men chìm 4–9 °C):</b> Men chìm xuống đáy bồn; gồm Pils (đắng thanh đậm vị hoa bia), Helles/Export (vị êm dịu), Bockbier.</li>
+    <li><b>Obergärig (Lên men nổi 15–20 °C):</b> Men nổi lên bề mặt; gồm Weizenbier (bia lúa mì thơm mùi chuối/đinh hương), Kölsch, Altbier.</li>
+    <li><b>Đạo luật Tinh khiết bia Đức 1516:</b> Chỉ dùng đúng 4 nguyên liệu: <b>Nước, Mạch nha lúa mạch, Hoa bia (Hopfen) và Men bia (Hefe)</b>.</li>
+    <li><b>Kỹ thuật rót bia chuẩn:</b> Tráng ly bằng nước lạnh → Nghiêng ly 45 độ, mở hết cỡ vòi rót dọc theo thành ly → Đặt ly xuống vài giây rồi rót dựng đứng tạo chóp bọt mịn (Blume). Cấm nhúng vòi rót vào trong bọt bia.</li>
+  </ul>
+</div>`,
+              qa: [
+                {
+                  q: "Welche vier Rohstoffe sind nach dem deutschen Reinheitsgebot von 1516 für das Bierbrauen zugelassen?",
+                  "qVi": "4 nguyên liệu nào được phép dùng để nấu bia theo Đạo luật Tinh khiết 1516 của Đức?",
+                  a: "<b>Wasser, Malz (Gerstenmalz), Hopfen und Hefe</b>.",
+                  "aVi": "<b>Nước, Mạch nha, Hoa bia (Hopfen) và Men bia (Hefe)</b>."
+                },
+                {
+                  q: "Worin besteht der Unterschied zwischen untergärigen und obergärigen Bieren?",
+                  "qVi": "Sự khác biệt giữa bia lên men chìm (untergärig) và bia lên men nổi (obergärig) là gì?",
+                  a: "Untergärige Hefe arbeitet bei <b>kühlen Temperaturen (4–9 °C)</b> und setzt sich am <b>Boden</b> ab (z. B. Pils, Export). Obergärige Hefe benötigt <b>wärmere Temperaturen (15–20 °C)</b> und steigt während der Gärung an die <b>Oberfläche</b> (z. B. Weizenbier, Kölsch).",
+                  "aVi": "Men chìm hoạt động ở <b>nhiệt độ lạnh 4–9 °C</b> và lắng xuống <b>đáy</b> (như bia Pils, Helles). Men nổi hoạt động ở <b>nhiệt độ ấm hơn 15–20 °C</b> và nổi lên trên <b>mặt</b> (như Weizenbier, Kölsch)."
+                }
+              ]
+            },
+            {
+              id: "bfk6-wein",
+              icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 22h8"/><path d="M12 15v7"/><path d="M12 15a5 5 0 0 0 5-5c0-2-.5-4-2-8H9c-1.5 4-2 6-2 8a5 5 0 0 0 5 5Z"/></svg>',
+              name: "Weinservice & Weinsensorik",
+              desc: "Serviertemperaturen · Weinservice am Tisch · Dekantieren vs. Karaffieren",
+              content: `<h2>Weinservice &amp; Weinbehandlung</h2>
+<div class="hint">Serviertemperaturen · Flaschenöffnung · Probeschluck · Dekantieren vs. Karaffieren</div>
+<h3 class="sub">1. Richtige Serviertemperaturen</h3>
+<table class="tbl">
+  <thead><tr><th>Weinart</th><th>Empfohlene Serviertemperatur</th><th>Beispiele</th></tr></thead>
+  <tbody>
+    <tr><td><b>Sekt &amp; Champagner</b></td><td>6–8 °C</td><td>Deutscher Winzersekt, Prosecco, Champagne.</td></tr>
+    <tr><td><b>Leichte Weißweine &amp; Rosé</b></td><td>8–10 °C</td><td>Riesling trocken, Weißburgunder, Sauvignon Blanc.</td></tr>
+    <tr><td><b>Körperreiche Weißweine</b></td><td>10–12 °C</td><td>Grauburgunder im Barrique, Chardonnay.</td></tr>
+    <tr><td><b>Leichte Rotweine</b></td><td>14–16 °C</td><td>Spätburgunder (Pinot Noir), Trollinger.</td></tr>
+    <tr><td><b>Schwere, kräftige Rotweine</b></td><td>16–18 °C</td><td>Bordeaux, Cabernet Sauvignon, Barolo.</td></tr>
+  </tbody>
+</table>
+<h3 class="sub">2. Dekantieren vs. Karaffieren</h3>
+<ul>
+  <li><b>Dekantieren:</b> Trennen eines <b>alten Weines vom Bodensatz (Depot / Weinstein)</b>. Die Flasche wird vorsichtig über einer Lichtquelle (Kerze) in die Dekantierkaraffe umgefüllt; sobald das trübe Depot im Flaschenhals erscheint, wird gestoppt.</li>
+  <li><b>Karaffieren:</b> Zuführen von <b>Sauerstoff bei jungen, tanninreichen Rotweinen</b> in einer breitbauchigen Karaffe, damit sich Aromen öffnen und der Wein runder schmeckt.</li>
+</ul>
+<div class="vi">
+  <b>Tóm tắt Tiếng Việt — Phục vụ Rượu vang &amp; Xử lý vang (Weinservice):</b>
+  <ul>
+    <li><b>Nhiệt độ phục vụ chuẩn:</b> Sekt/Champagner: 6–8 °C; Vang trắng &amp; Rosé: 8–10 °C; Vang đỏ nhẹ: 14–16 °C; Vang đỏ đậm: 16–18 °C.</li>
+    <li><b>Dekantieren (Gạn cặn):</b> Dành cho vang lâu năm để <b>tách nước rượu trong ra khỏi cặn lắng (Depot)</b> ở đáy chai bằng cách rót từ từ qua ánh nến.</li>
+    <li><b>Karaffieren (Thở vang):</b> Rót vang trẻ nhiều tannin vào bình thở đáy rộng để <b>tiếp xúc oxy</b> giúp rượu mềm mại, bớt gắt và bung tỏa hương thơm.</li>
+  </ul>
+</div>`,
+              qa: [
+                {
+                  q: "Was ist der fachliche Unterschied zwischen Dekantieren und Karaffieren eines Weines?",
+                  "qVi": "Sự khác biệt chuyên môn giữa gạn lắng (Dekantieren) và cho vang thở (Karaffieren) là gì?",
+                  a: "Beim <b>Dekantieren</b> wird ein älterer Wein behutsam vom <b>Bodensatz (Depot)</b> getrennt. Beim <b>Karaffieren</b> wird ein junger Wein mit viel <b>Sauerstoff</b> in Verbindung gebracht, um seine Aromen zu belüften und Tannine zu harmonisieren.",
+                  "aVi": "<b>Dekantieren</b> là tách rượu cũ khỏi <b>cặn lắng (Depot)</b>. <b>Karaffieren</b> là cho rượu trẻ tiếp xúc với <b>oxy</b> để mở hương và làm dịu vị chát tannin."
+                }
+              ]
+            },
+            {
+              id: "bfk6-heissgetraenke",
+              icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4Z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>',
+              name: "Kaffee, Tee & Heißgetränke",
+              desc: "Siebträgermaschine · 5 M des Espresso · Teezubereitung & Ziehzeiten",
+              content: `<h2>Kaffee, Tee &amp; Heißgetränke</h2>
+<div class="hint">Kaffee-Extraktion · Die 5 M des perfekten Espresso · Tee-Kunde &amp; Ziehzeiten</div>
+<h3 class="sub">1. Die „5 M“ des perfekten Espresso</h3>
+<ul>
+  <li><b>Mischung:</b> Hochwertige Bohnen (Arabica für feine Säure/Aroma, Robusta für dichte Crema und Körper).</li>
+  <li><b>Mühle:</b> Exakter Mahlgrad (nicht zu fein → überextrahiert/bitter; nicht zu grob → unterextrahiert/wässrig).</li>
+  <li><b>Menge:</b> Ca. 7–9 g Kaffeepulver für einen einfachen Espresso (ca. 25–30 ml Extrakt in 25 Sekunden).</li>
+  <li><b>Maschine:</b> Brühdruck ca. 9 bar, Wassertemperatur ca. 90–94 °C; saubere Brühgruppe und Siebträger.</li>
+  <li><b>Mensch:</b> Das handwerkliche Geschick des Baristas (gleichmäßiges Tampen mit ca. 15 kg Anpressdruck).</li>
+</ul>
+<h3 class="sub">2. Teekunde &amp; Ziehzeiten</h3>
+<table class="tbl">
+  <thead><tr><th>Teeart</th><th>Wassertemperatur</th><th>Ziehzeit</th><th>Wirkung / Besonderheit</th></tr></thead>
+  <tbody>
+    <tr><td><b>Schwarzer Tee</b></td><td>100 °C (sprudelnd kochend)</td><td>2–3 Min. anregend; 4–5 Min. beruhigend</td><td>Vollständig fermentiert (z. B. Darjeeling, Assam, Earl Grey).</td></tr>
+    <tr><td><b>Grüner Tee</b></td><td>70–80 °C (nicht kochend!)</td><td>1,5–2,5 Min.</td><td>Unfermentiert; bei kochendem Wasser wird er bitter.</td></tr>
+    <tr><td><b>Kräuter- &amp; Früchtetee</b></td><td>100 °C</td><td>5–8 Min.</td><td>Muss aus hygienischen Gründen immer mit sprudelnd kochendem Wasser aufgegossen werden!</td></tr>
+  </tbody>
+</table>
+<div class="vi">
+  <b>Tóm tắt Tiếng Việt — Cà phê &amp; Trà chuyên nghiệp (Heißgetränke):</b>
+  <ul>
+    <li><b>Quy tắc 5M pha Espresso hoàn hảo:</b> Mischung (Phối hạt Arabica/Robusta), Mühle (Độ mịn máy xay), Menge (Lượng cà phê 7–9g chiết xuất 25–30ml trong 25 giây), Maschine (Áp suất 9 bar, nhiệt độ nước 90–94 °C), Mensch (Kỹ thuật nén tamper 15kg phẳng đều).</li>
+    <li><b>Pha trà đúng chuẩn:</b>
+      <ul>
+        <li>Trà đen: Nước sôi 100 °C; hãm 2–3 phút tạo hưng phấn, hãm 4–5 phút giúp tĩnh tâm.</li>
+        <li>Trà xanh: Nước 70–80 °C (không dùng nước sôi sùng sục vì làm trà bị đắng chát); hãm 1,5–2,5 phút.</li>
+        <li>Trà thảo mộc &amp; Trái cây: Bắt buộc dùng nước sôi 100 °C để diệt khuẩn, ngâm 5–8 phút.</li>
+      </ul>
+    </li>
+  </ul>
+</div>`,
+              qa: [
+                {
+                  q: "Warum darf grüner Tee niemals mit sprudelnd kochendem Wasser (100 °C) aufgegossen werden?",
+                  qVi: "Tại sao trà xanh không bao giờ được pha bằng nước sôi 100 °C?",
+                  a: "Weil bei 100 °C die empfindlichen Gerbstoffe und Bitterstoffe zerstört bzw. zu schnell gelöst werden, wodurch der grüne Tee <b>unangenehm bitter und herb</b> schmeckt. Die ideale Wassertemperatur liegt bei <b>70–80 °C</b>.",
+                  "aVi": "Vì nước sôi 100 °C giải phóng quá nhanh các chất chát tannin làm trà bị <b>đắng ngắt và mất hương thơm thanh khiết</b>. Nhiệt độ lý tưởng là <b>70–80 °C</b>."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      quiz: [
+        { theme: "bfk6-glaeser", cat: "Getränke", q: "Welches Glas verwendet man klassisch für einen schweren Rotwein?", opts: ["Sektflöte", "Bauchiges Rotweinglas mit weiter Öffnung", "Kleiner Tumbler", "Bierstange"], a: 1, ex: "Bauchige Gläser bieten Sauerstoffkontakt zur Aromaentfaltung." },
+        { theme: "bfk6-glaeser", cat: "Getränke", q: "Was bedeutet der Füllstrich (Eichstrich) auf Gastronomiegläsern?", opts: ["Mindesthöhe für Schaum", "Gesetzlich vorgeschriebenes Nennvolumen", "Verzierung des Glasherstellers", "Hitzegrenze"], a: 1, ex: "Der Eichstrich sichert die gesetzlich vorgeschriebene Ausschankmenge." },
+        { theme: "bfk6-bier", cat: "Getränke", q: "Welche vier Zutaten erlaubt das Reinheitsgebot von 1516?", opts: ["Wasser, Malz, Zucker, Hefe", "Wasser, Gerstenmalz, Hopfen, Hefe", "Wasser, Weizen, Früchte, Hopfen", "Wasser, Hefe, Aromen, Gerste"], a: 1, ex: "Wasser, Malz, Hopfen und Hefe." },
+        { theme: "bfk6-bier", cat: "Getränke", q: "Wie wird das Glas zu Beginn des Bierzapfens gehalten?", opts: ["Senkrecht unter den Hahn", "Im 45-Grad-Winkel schräg", "Über Kopf", "Mit dem Hahn im Schaum"], a: 1, ex: "Im 45-Grad-Winkel an der Glaswand einlaufen lassen." },
+        { theme: "bfk6-wein", cat: "Getränke", q: "Bei welcher Temperatur wird ein klassischer trockener Weißwein serviert?", opts: ["16–18 °C", "8–10 °C", "0–2 °C", "20–22 °C"], a: 1, ex: "Weißwein schmeckt bei 8–10 °C erfrischend und aromatisch." },
+        { theme: "bfk6-wein", cat: "Getränke", q: "Wozu dient das Dekantieren bei einem gereiften Rotwein?", opts: ["Zum Kühlen des Weines", "Zur Trennung vom ungenießbaren Bodensatz (Depot)", "Zur Vermischung mit Wasser", "Zur Kohlensäureanreicherung"], a: 1, ex: "Dekantieren trennt den klaren Wein vom festen Depot." },
+        { theme: "bfk6-heissgetraenke", cat: "Getränke", q: "Welche Brühwassertemperatur ist für die Zubereitung von grünem Tee ideal?", opts: ["100 °C sprudelnd kochend", "70–80 °C abgekühlt", "50 °C lauwarm", "120 °C unter Dampf"], a: 1, ex: "70–80 °C verhindern ein Bitterwerden des Tees." }
+      ]
+    },
+
+    {
+      id: "bfks",
+      code: "BfK-S",
+      name: "Service Schwerpunkt",
+      icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>',
+      accent: "#d97706",
+      soft: "#fef3c7",
+      teacher: "",
+      ready: true,
+      desc: "Vertiefte Gästebetreuung, Menügestaltung, Tranchieren, Filetieren & Beschwerdemanagement.",
+      legacyRoutes: {
+        hub: "#/bfk/s"
+      },
+      groups: [
+        {
+          id: "service-spezial",
+          badge: "Service",
+          title: "Gehobener Restaurantservice & Tischzubereitung",
+          items: [
+            {
+              id: "bfks-tranchieren",
+              icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 10 7-7"/><path d="m20 10-7-7"/><path d="M3 21l9-9"/><path d="M9 21l9-9"/></svg>',
+              name: "Tranchieren & Filetieren am Tisch",
+              desc: "Geflügel & Fisch am Guéridon · Fachbesteck · Schnittführung & Hygiene",
+              content: `<h2>Tranchieren &amp; Filetieren am Tisch des Gastes</h2>
+<div class="hint">Tischservice am Guéridon · Fachgerechte Zerlegung · Arbeitsablauf &amp; Präsentation</div>
+<h3 class="sub">1. Arbeitsplatz &amp; Mise en place am Guéridon</h3>
+<ul>
+  <li>Beistelltisch (<b>Guéridon</b>) rechts neben dem Gästetisch platzieren mit freier Sicht für den Gast.</li>
+  <li>Schneidebrett mit Saftrille, vorgewärmte Servierplatten, Tranchierbesteck (Tranchiermesser, Tranchiergabel) und Fischvorlegebesteck.</li>
+  <li>Rechaud (Warmhalteplatte) zum Warmhalten der vorgewärmten Teller und Speisenkomponenten.</li>
+</ul>
+<h3 class="sub">2. Tranchieren von Geflügel (z. B. Ente, Poularde)</h3>
+<ol>
+  <li>Präsentation des ganzen Geflügels auf der Platte vor dem Gast.</li>
+  <li>Keulen durch leichten Druck nach außen abspreizen, Gelenk ertasten und mit einem sauberen Schnitt durchtrennen.</li>
+  <li>Brustfilets entlang des Brustbeins (Kiel) links und rechts in dünnen, gleichmäßigen Tranchen schräg herunterschneiden.</li>
+  <li>Fleischteile auf der vorgewärmten Servierplatte anrichten, Beilagen und Saucenteil dekorativ komplettieren.</li>
+</ol>
+<div class="vi">
+  <b>Tóm tắt Tiếng Việt — Xẻ thịt &amp; Lọc phi-lê tại bàn khách (Tranchieren &amp; Filetieren):</b>
+  <ul>
+    <li>Thực hiện trên xe đẩy phục vụ (Guéridon) đặt bên phải bàn khách để khách chiêm ngưỡng kỹ nghệ của nhân viên phục vụ.</li>
+    <li><b>Tranchieren Geflügel (Xẻ thịt gia cầm):</b> Trình bày cả con vịt/gà trước mặt khách → Cắt rời 2 đùi tại khớp xương → Rạch dọc xương ức để lạng 2 miếng ức phi-lê thành từng lát xéo đẹp mắt → Bày đĩa giữ nóng trên Rechaud và rưới sốt.</li>
+    <li><b>Filetieren Fisch (Lọc phi-lê cá):</b> Dùng dao và nĩa chuyên dụng gạt vây lưng, vây bụng, rạch dọc sống lưng lấy 2 miếng phi-lê trên, nhấc bỏ toàn bộ xương sống rồi lấy tiếp 2 miếng phi-lê dưới.</li>
+  </ul>
+</div>`,
+              qa: [
+                {
+                  q: "Von welcher Seite wird der Beistelltisch (Guéridon) zum Tranchieren am Gästetisch platziert?",
+                  "qVi": "Xe đẩy phục vụ Guéridon được đặt ở vị trí nào cạnh bàn của khách?",
+                  a: "Der Guéridon wird <b>rechts vom Tisch bzw. in Sichtweite der Gäste</b> so platziert, dass die Gäste den handwerklichen Vorgang aufmerksam verfolgen können und der Servierablauf nicht behindert wird.",
+                  "aVi": "Đặt ở <b>phía bên phải hoặc nơi khách dễ quan sát nhất</b> để khách chiêm ngưỡng kỹ năng phục vụ mà không làm vướng lối đi."
+                }
+              ]
+            },
+            {
+              id: "bfks-flambieren",
+              icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>',
+              name: "Flambieren am Gast",
+              desc: "Crepes Suzette & Pfeffersteak · Rechaud · Alkoholika & Sicherheitsregeln",
+              content: `<h2>Flambieren am Gast</h2>
+<div class="hint">Show-Element der klassischen Gastronomie · Brandgefahr · Typische Gerichte</div>
+<h3 class="sub">1. Sicherheitsregeln beim Flambieren</h3>
+<ul>
+  <li>Sicherer Abstand zu brennbaren Materialien (Tischdecken, Gardinen, Deko) und zu den Gästen (insbesondere Haare und Kleidung).</li>
+  <li>Spirituosen niemals direkt aus der Flasche in die heiße Pfanne gießen (<b>Rückschlaggefahr!</b>). Immer einen Portionsgießer oder Schöpflöffel verwenden.</li>
+  <li>Einen passenden Pfannendeckel griffbereit halten, um eventuelle Flammen im Notfall sofort durch Sauerstoffentzug zu ersticken.</li>
+</ul>
+<h3 class="sub">2. Klassische Gerichte</h3>
+<ul>
+  <li><b>Süßspeisen:</b> <b>Crêpes Suzette</b> (flambiert mit Grand Marnier / Cointreau und Orangenkaramell).</li>
+  <li><b>Fleischgerichte:</b> <b>Flambiertes Pfeffersteak</b> (flambiert mit Cognac / Weinbrand).</li>
+</ul>
+<div class="vi">
+  <b>Tóm tắt Tiếng Việt — Nghệ thuật đốt rượu biểu diễn tại bàn (Flambieren):</b>
+  <ul>
+    <li><b>Quy tắc an toàn sống còn:</b> Tuyệt đối <b>không rót rượu trực tiếp từ chai vào chảo đang nóng</b> (nguy cơ lửa bén ngược nổ chai); luôn đong qua muôi hoặc ly rót nhỏ. Luôn để sẵn nắp vung để dập lửa khi cần.</li>
+    <li><b>Món ăn kinh điển:</b> Bánh Crêpes Suzette (sốt cam đốt bằng rượu mùi Grand Marnier) và Bít tết tiêu đen (đốt bằng rượu mạnh Cognac).</li>
+  </ul>
+</div>`,
+              qa: [
+                {
+                  q: "Warum darf beim Flambieren niemals Spirituose direkt aus der Originalflasche in die Pfanne gegossen werden?",
+                  "qVi": "Tại sao khi đốt rượu tuyệt đối không được rót trực tiếp từ chai vào chảo?",
+                  a: "Es besteht akute <b>Rückschlag- und Explosionsgefahr</b>: Die Flamme kann über den Alkoholstrahl in das Innere der Flasche schlagen und die Glasflasche zersprengen.",
+                  "aVi": "Nguy cơ <b>lửa bắt ngược vào chai gây nổ vỡ chai thủy tinh</b> và bỏng nặng cho nhân viên cùng khách."
+                }
+              ]
+            },
+            {
+              id: "bfks-beschwerdemanagement",
+              icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
+              name: "Professionelles Beschwerdemanagement",
+              desc: "Die LEARN-Methode · Deeskalation · Kulanz & Wiedergutmachung",
+              content: `<h2>Professionelles Beschwerdemanagement im Service</h2>
+<div class="hint">Umgang mit schwierigen Situationen · Deeskalation · Kundenbindung durch Kulanz</div>
+<h3 class="sub">1. Die LEARN-Methode bei Gästereklamationen</h3>
+<ol>
+  <li><b>L – Listen (Aktiv zuhören):</b> Den Gast ausreden lassen, nicht ins Wort fallen, Blickkontakt halten und durch Nicken Aufmerksamkeit signalisieren.</li>
+  <li><b>E – Empathize (Verständnis zeigen):</b> Sich in die Situation des Gastes hineinversetzen (<i>„Ich verstehe vollkommen, dass Sie verärgert sind...“</i>).</li>
+  <li><b>A – Apologize (Entschuldigen):</b> Aufrichtig im Namen des Hauses um Entschuldigung bitten – ohne Ausreden oder Schuldzuweisungen an Kollegen.</li>
+  <li><b>R – Resolve (Sofortige Lösung bieten):</b> Schnelle Abhilfe schaffen (Gericht austauschen, neues Getränk bringen, Kaffee aufs Haus anbieten).</li>
+  <li><b>N – Notify / Follow-up (Nachfragen &amp; Informieren):</b> Nach wenigen Minuten diskret nachfragen, ob alles zur Zufriedenheit ist; Vorfall intern dokumentieren.</li>
+</ol>
+<div class="vi">
+  <b>Tóm tắt Tiếng Việt — Xử lý phàn nàn &amp; khiếu nại chuyên nghiệp (LEARN):</b>
+  <ul>
+    <li><b>Listen (Lắng nghe):</b> Để khách nói hết bức xúc, không cãi lại, không đổ lỗi cho bộ phận bếp.</li>
+    <li><b>Empathize (Đồng cảm):</b> Thấu hiểu cảm xúc của khách, thể hiện sự chia sẻ.</li>
+    <li><b>Apologize (Xin lỗi):</b> Chân thành xin lỗi đại diện cho nhà hàng.</li>
+    <li><b>Resolve (Giải quyết):</b> Đổi món mới ngay lập tức, mời tráng miệng/cà phê miễn phí.</li>
+    <li><b>Notify (Hỏi thăm &amp; Lưu lại):</b> Quay lại bàn hỏi thăm xem khách đã hài lòng với đĩa mới chưa và báo cáo quản lý để cải tiến quy trình.</li>
+  </ul>
+</div>`,
+              qa: [
+                {
+                  q: "Wofür stehen die Buchstaben der LEARN-Methode bei einer Gästereklamation?",
+                  "qVi": "Các chữ cái trong phương pháp xử lý phàn nàn LEARN đại diện cho điều gì?",
+                  a: "<b>L</b>isten (Zuhören), <b>E</b>mpathize (Verständnis zeigen), <b>A</b>pologize (Entschuldigen), <b>R</b>esolve (Lösung anbieten), <b>N</b>otify / Follow-up (Nachfragen und Weiterleiten).",
+                  "aVi": "<b>L</b>ắng nghe, <b>E</b> Đồng cảm, <b>A</b> Xin lỗi, <b>R</b> Đưa ra giải pháp, <b>N</b> Hỏi thăm kiểm tra lại."
+                }
+              ]
+            },
+            {
+              id: "bfks-menueberatung",
+              icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
+              name: "Speisen- & Getränkekorrespondenz",
+              desc: "Klassische Menüregeln · Weinbegleitung · Harmonie der Speisenfolgen",
+              content: `<h2>Speisen- und Getränkekorrespondenz</h2>
+<div class="hint">Klassische Menügesetze · Korrespondenz von Speise und Wein · Verkaufsfördernde Empfehlungen</div>
+<h3 class="sub">1. Klassische Menüregeln</h3>
+<ul>
+  <li>Keine Wiederholung von Grundstoffen, Zubereitungsarten (z. B. nicht zweimal frittiert) oder Saucengrundlagen im selben Menü.</li>
+  <li>Steigerung im Menüverlauf: <b>Vom Leichten zum Schweren</b>, <b>von kalt nach warm</b>, <b>von hell nach dunkel</b>.</li>
+</ul>
+<h3 class="sub">2. Grundregeln der Weinbegleitung</h3>
+<ul>
+  <li>Weißwein vor Rotwein (Ausnahme: edelsüße Dessertweine am Schluss).</li>
+  <li>Leichte, trockene Weine vor schweren, gehaltvollen Weinen.</li>
+  <li>Junge, fruchtige Weine vor gereiften, älteren Weinen.</li>
+  <li>Die Säure im Wein sollte mit der Säure im Essen harmonieren; fettreiche Speisen vertragen säurebetontere oder tanninhaltige Weine.</li>
+</ul>
+<div class="vi">
+  <b>Tóm tắt Tiếng Việt — Kết hợp Món ăn &amp; Đồ uống (Speisen- &amp; Weinkorrespondenz):</b>
+  <ul>
+    <li><b>Quy tắc thực đơn:</b> Không lặp lại nguyên liệu chính và cách chế biến trong một bữa ăn; trình tự từ món nhẹ đến món đậm đà, từ món lạnh đến món nóng.</li>
+    <li><b>Quy tắc chọn rượu vang:</b> Vang trắng trước vang đỏ, vang nhẹ trước vang nặng, vang trẻ trước vang ủ lâu năm. Món ăn nhiều mỡ hợp với vang có độ chua thanh hoặc tannin đậm để cân bằng vị giác.</li>
+  </ul>
+</div>`,
+              qa: [
+                {
+                  q: "Welche Grundregeln gelten für die Reihenfolge der Weine bei einem mehrgängigen Menü?",
+                  "qVi": "Những quy tắc cơ bản nào áp dụng cho thứ tự phục vụ rượu vang trong thực đơn nhiều món?",
+                  a: "1. <b>Weißwein vor Rotwein</b>.<br>2. <b>Leichte Weine vor schweren Weinen</b>.<br>3. <b>Trockene Weine vor süßen Weinen</b> (süße Weine erst zum Dessert).",
+                  "aVi": "1. <b>Vang trắng trước vang đỏ</b>.<br>2. <b>Vang nhẹ trước vang đậm đà</b>.<br>3. <b>Vang chát/khô trước vang ngọt</b> (vang ngọt phục vụ cùng món tráng miệng)."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      quiz: [
+        { theme: "bfks-tranchieren", cat: "Service", q: "Auf welcher Seite des Gastes wird der Guéridon platziert?", opts: ["Links", "Rechts bzw. in Sichtweite", "Hinter dem Rücken des Gastes", "Im Küchenbereich"], a: 1, ex: "Der Guéridon steht rechts in guter Sichtweite des Gastes." },
+        { theme: "bfks-flambieren", cat: "Service", q: "Was darf man beim Flambieren niemals tun?", opts: ["Eine Pfanne benutzen", "Alkohol direkt aus der Flasche in die heiße Pfanne gießen", "Den Gast informieren", "Einen Rechaud verwenden"], a: 1, ex: "Wegen Rückschlag- und Explosionsgefahr niemals aus der Flasche gießen." },
+        { theme: "bfks-beschwerdemanagement", cat: "Service", q: "Was ist der erste Schritt der LEARN-Methode?", opts: ["Sofort widersprechen", "Listen – Aufmerksam und aktiv zuhören", "Rechnung stornieren", "Die Küche beschuldigen"], a: 1, ex: "Listen: Den Gast ausreden lassen und aktiv zuhören." },
+        { theme: "bfks-menueberatung", cat: "Service", q: "In welcher Reihenfolge werden Weine im Menü serviert?", opts: ["Rotwein vor Weißwein", "Weißwein vor Rotwein, trocken vor süß", "Süßwein zu Beginn", "Nur ein Wein für alle Gänge"], a: 1, ex: "Vom Leichten zum Schweren: Weiß vor Rot, trocken vor süß." }
+      ]
+    },
+
     ];
   }
 

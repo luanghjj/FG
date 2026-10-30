@@ -21,7 +21,7 @@
   var NOTEXT = { STYLE:1, SCRIPT:1, TEMPLATE:1, NOSCRIPT:1 };
   var SKIP = '.vi-seg,.vi-par,.vi-col,.src-pages,button,script,style,svg,code,.formula';
   // Class tiếng Việt có sẵn trong dữ liệu (Lernskript, KA2…)
-  var VI_CLASSES = '.vi-cell,.vi-sub,.vi-mini,.subtitle-vi,.chapter-title-vi';
+  var VI_CLASSES = '.vi-cell,.vi-sub,.vi-mini,.subtitle-vi,.chapter-title-vi,span.vi';
   var DELIMS = ':=/–—|→;';
 
   // à á è é cũng có trong từ mượn Pháp (Café, Crème, à la carte) → chỉ tính khi viết thường và không phải từ mượn

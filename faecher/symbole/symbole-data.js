@@ -704,7 +704,7 @@
     icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L2 12l10 10 10-10L12 2z"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>',
     accent: "#B45309",
     soft: "#FDF8EE",
-    teacher: "Hygiene · Arbeitsschutz · Wirtschaftsdienst",
+    teacher: "",
     ready: true,
     desc: "Alle prüfungsrelevanten Symbole einzeln ausgeschnitten & erklärt: GHS-Gefahrensymbole, Entsorgung, Verbots-/Gebots-/Rettungs-/Brandschutzzeichen, Textilpflege, Servietten, Dekoration nach Jahreszeit/Anlass & Gläserkunde.",
     groups: [
