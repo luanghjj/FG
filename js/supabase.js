@@ -2164,9 +2164,15 @@ function clean(s) {
 
   // --- Feedback Management ---
   const FEEDBACK_PREFIX = 'feedback:';
+  let _lastFbSubmitTime = 0;
 
   async function saveFeedback(fb) {
     if (!fb || !fb.comment) return { ok: false, error: 'Empty feedback' };
+    const now = Date.now();
+    if (now - _lastFbSubmitTime < 15000) {
+      return { ok: false, error: 'Vui lòng chờ ít nhất 15 giây trước khi gửi tiếp góp ý.' };
+    }
+    _lastFbSubmitTime = now;
     const id = Date.now() + '_' + Math.random().toString(36).slice(2, 7);
     const key = FEEDBACK_PREFIX + id;
     const payload = {
