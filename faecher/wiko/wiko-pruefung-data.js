@@ -1,9 +1,10 @@
 /**
  * wiko-pruefung-data.js
- * WK-Ergänzung für die Abschlussprüfung Winter 2026 (WK 10.11.2026)
- * - Grundstufe: Steuererklärung, Altersvorsorge, Solidaritätsprinzip
- * - Fachstufe I: Kaufvertrag (vertieft), Verbraucherschutz, Geld, Kredit, Bürgschaft, Überschuldung
- * Wird in js/faecher.js (buildRegistry) an das Fach "wiko" angehängt.
+ * Cấu trúc chuẩn theo Giáo trình "Themen in Wirtschafts- und Sozialkunde" (RM)
+ * - GRUNDSTUFE (9 cụm chuyên đề chính)
+ * - FACHSTUFE I (10 cụm chuyên đề chính)
+ * - PRÜFUNGSTRAINING (WiSo tổng hợp & Bài tập tình huống)
+ * Tự động đồng bộ và tái cấu trúc Fach WiKo trong js/faecher.js qua buildWikoFach().
  */
 (function () {
   'use strict';
@@ -14,11 +15,214 @@
   const IC_USERS = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg>';
   const IC_DOC = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>';
   const IC_ALERT = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>';
+  const IC_SCALE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>';
+  const IC_COIN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="m7 6 2 4"/><path d="m17 14 2 4"/></svg>';
 
   const T = (de, vi) => '<span class="term" data-de="' + de + '" data-vi="' + vi + '">' + de + '</span>';
 
   const C = {};
 
+  // =========================================================================
+  // BỔ SUNG NỘI DUNG CHO GRUNDSTUFE
+  // =========================================================================
+
+  // Mở rộng wiko-arbeitsschutz (thêm Mutterschutz & Elternzeit sâu)
+  C.arbeitsschutz_ext = `
+<hr style="margin:24px 0; border:0; border-top:1px dashed #cbd5e1;">
+<h3 class="sub">3. Mutterschutz &amp; Elternzeit (Chuyên sâu)</h3>
+<table class="tbl">
+  <thead><tr><th>Gesetz</th><th>Schutzfristen &amp; Regelungen</th><th>Finanzielle Absicherung</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><b>${T('Mutterschutzgesetz', 'Luật bảo vệ thai sản')} (MuSchG)</b></td>
+      <td>
+        • <b>6 Wochen vor der Entbindung:</b> Schutzfrist (Beschäftigungsverbot, es sei denn, die werdende Mutter erklärt sich ausdrücklich arbeitsbereit).<br>
+        • <b>8 Wochen nach der Entbindung:</b> Absolutes Beschäftigungsverbot (Arbeitsverbot gilt zwingend). Bei Früh- oder Mehrlingsgeburten verlängert auf <b>12 Wochen</b>.<br>
+        • <b>${T('Kündigungsschutz', 'bảo vệ chống sa thải')}:</b> Absolutes Kündigungsverbot während der gesamten Schwangerschaft und bis zu <b>4 Monate</b> nach der Entbindung (§ 17 MuSchG).
+      </td>
+      <td>
+        <b>${T('Mutterschaftsgeld', 'tiền trợ cấp thai sản')}:</b> Krankenkasse zahlt bis zu 13 € pro Kalendertag; der Arbeitgeber zahlt den Zuschuss bis zum vollen durchschnittlichen Nettoentgelt.
+      </td>
+    </tr>
+    <tr>
+      <td><b>${T('Elternzeit', 'thời gian nghỉ nuôi con')} (BEEG)</b></td>
+      <td>
+        • <b>Rechtsanspruch:</b> Bis zur Vollendung des <b>3. Lebensjahres</b> des Kindes (36 Monate) für jeden Elternteil.<br>
+        • <b>Anmeldefrist:</b> Spätestens <b>7 Wochen</b> vor Antritt schriftlich beim Arbeitgeber verlangen.<br>
+        • <b>Kündigungsschutz (§ 18 BEEG):</b> Beginn ab Anmeldung (frühestens 8 Wochen vor Antritt) und während der gesamten Elternzeit.
+      </td>
+      <td>
+        <b>${T('Elterngeld', 'tiền trợ cấp nuôi con của nhà nước')}:</b> Staatliche Lohnersatzleistung für 12 bis maximal 14 Monate (bei Partnermonaten). Beträgt ca. <b>65 % bis 67 %</b> des letzten Nettoeinkommens (mindestens 300 €, maximal 1.800 € monatlich).
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="vi">
+  <b>Tóm tắt Tiếng Việt — Chế độ Thai sản (MuSchG) &amp; Nghỉ nuôi con (Elternzeit):</b>
+  <ul>
+    <li><b>MuSchG:</b> Nghỉ 6 tuần trước sinh (trừ khi tự nguyện làm) và 8 tuần sau sinh (bắt buộc nghỉ tuyệt đối, sinh đôi/sinh non là 12 tuần). Cấm sa thải tuyệt đối trong thai kỳ và 4 tháng sau sinh. Nhận đủ 100% lương (BHYT chi tối đa 13€/ngày, chủ bù phần còn lại).</li>
+    <li><b>Elternzeit:</b> Quyền luật định được nghỉ nuôi con tối đa 3 năm (36 tháng). Phải báo trước cho công ty ít nhất 7 tuần. Được bảo vệ tuyệt đối không bị sa thải. Nhận trợ cấp Elterngeld từ Nhà nước 12–14 tháng, mức 65–67% lương net (300€ – 1.800€/tháng).</li>
+  </ul>
+</div>
+`;
+
+  // Mở rộng wiko-betriebsrat-mitbestimmung (thêm Aktives/Passives Wahlrecht & Aufgaben)
+  C.betriebsrat_ext = `
+<hr style="margin:24px 0; border:0; border-top:1px dashed #cbd5e1;">
+<h3 class="sub">3. Wahlrecht: Aktives vs. Passives Wahlrecht (§§ 7, 8 BetrVG)</h3>
+<table class="tbl">
+  <thead><tr><th>Merkmal</th><th>${T('Aktives Wahlrecht', 'quyền bầu cử (đi bỏ phiếu)')} (§ 7 BetrVG)</th><th>${T('Passives Wahlrecht', 'quyền ứng cử (được bầu làm đại diện)')} (§ 8 BetrVG)</th></tr></thead>
+  <tbody>
+    <tr><td><b>Bedeutung</b></td><td>Wer darf den Betriebsrat <b>wählen</b>?</td><td>Wer darf als Mitglied des Betriebsrats <b>gewählt werden</b>?</td></tr>
+    <tr><td><b>Voraussetzung</b></td><td>Alle Arbeitnehmer des Betriebs, die das <b>16. Lebensjahr vollendet</b> haben (ab 16 Jahre). Auch Azubis, Teilzeitkräfte und Leiharbeiter (ab 3 Monaten).</td><td>Alle Wahlberechtigten, die das <b>18. Lebensjahr vollendet</b> haben (ab 18 Jahre) <b>UND</b> mindestens <b>6 Monate</b> im Betrieb beschäftigt sind.</td></tr>
+  </tbody>
+</table>
+<h3 class="sub">4. Aufgaben &amp; Handlungsmöglichkeiten des Betriebsrats</h3>
+<ul>
+  <li><b>Überwachung:</b> Kontrolle der Einhaltung von Gesetzen, Tarifverträgen, Arbeitsschutz und Betriebsvereinbarungen.</li>
+  <li><b>Interessenvertretung:</b> Verhandlung mit dem Arbeitgeber im Sinne der Belegschaft; Schutz benachteiligter Gruppen.</li>
+  <li><b>4 Beteiligungsstufen:</b>
+    <ol>
+      <li><b>Information (§ 80 BetrVG):</b> Recht auf umfassende und rechtzeitige Unterrichtung durch den Arbeitgeber (z. B. Wirtschaftsdaten, Personalplanung).</li>
+      <li><b>Anhörung &amp; Beratung (§ 102 BetrVG):</b> Zwingende Anhörung <b>vor jeder Kündigung</b>! Kündigung ohne Betriebsratsanhörung ist <b>unwirksam (nichtig)</b>!</li>
+      <li><b>Mitwirkung (§ 99 BetrVG):</b> Zustimmungsverweigerungsrecht bei Einstellungen, Versetzungen und Eingruppierungen.</li>
+      <li><b>Echte Mitbestimmung (§ 87 BetrVG):</b> Volles Mitbestimmungsrecht bei Beginn und Ende der täglichen Arbeitszeit, Pausen, Urlaubsplan, Einführung von Überwachungskameras. Keine Einigung → Entscheidung durch die <b>${T('Einigungsstelle', 'ủy ban hòa giải lao động')}</b>.</li>
+    </ol>
+  </li>
+</ul>
+<div class="vi">
+  <b>Tóm tắt Tiếng Việt — Quyền Bầu cử &amp; Quyền hạn của Betriebsrat (Hội đồng nhân viên):</b>
+  <ul>
+    <li><b>Aktives Wahlrecht (Quyền đi bầu):</b> Từ đủ 16 tuổi trở lên là được bỏ phiếu (kể cả Azubi, thợ bán thời gian).</li>
+    <li><b>Passives Wahlrecht (Quyền ứng cử):</b> Phải từ đủ 18 tuổi VÀ có thâm niên làm việc tại doanh nghiệp tối thiểu 6 tháng.</li>
+    <li><b>Quyền tham gia 4 cấp độ:</b> Thông tin → Tham vấn (bắt buộc phải hỏi ý kiến Hội đồng trước khi sa thải bất kỳ ai, nếu không sa thải bị vô hiệu) → Cùng tham gia xét duyệt tuyển dụng/thuyên chuyển → Đồng quyết định tối cao (giờ làm, ca kíp, an toàn, camera giám sát; chủ không được tự ý quyết định).</li>
+  </ul>
+</div>
+`;
+
+  // Mở rộng wiko-tarifvertrag (thêm Sozialpartner & Rahmenentgelttarifvertrag)
+  C.tarifvertrag_ext = `
+<hr style="margin:24px 0; border:0; border-top:1px dashed #cbd5e1;">
+<h3 class="sub">3. Die Sozialpartner &amp; Tarifvertragsarten im Detail</h3>
+<p>Die <b>${T('Sozialpartner', 'các đối tác xã hội / đại diện 2 giới')}</b> sind die Gewerkschaften (z. B. <b>NGG</b> im Gastgewerbe) und die Arbeitgeberverbände (z. B. <b>DEHOGA</b>). Sie verhandeln auf Augenhöhe unter dem Schutz der im Grundgesetz verankerten <b>${T('Tarifautonomie', 'quyền tự chủ đàm phán thỏa ước (Điều 9 Khoản 3 Hiến pháp)')}</b> (kein staatlicher Eingriff).</p>
+<table class="tbl">
+  <thead><tr><th>Tarifvertragsart</th><th>Gegenstand / Inhalt</th><th>Laufzeit</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><b>${T('Entgelttarifvertrag', 'thỏa ước tiền lương cụ thể')} (Lohntarifvertrag)</b></td>
+      <td>Regelt die konkrete Euro-Höhe der Stundenlöhne, Monatsgehälter und Ausbildungsvergütungen.</td>
+      <td><b>Kurz:</b> meist 1 bis 2 Jahre.</td>
+    </tr>
+    <tr>
+      <td><b>${T('Rahmenentgelttarifvertrag', 'thỏa ước khung phân ngạch lương')}</b></td>
+      <td>Regelt die Kriterien zur Eingruppierung der Beschäftigten in Entgeltgruppen (nach Tätigkeitsmerkmalen, Qualifikation, Verantwortung).</td>
+      <td><b>Mittel:</b> meist 3 bis 5 Jahre.</td>
+    </tr>
+    <tr>
+      <td><b>${T('Manteltarifvertrag', 'thỏa ước lao động khung tổng thể')}</b></td>
+      <td>Regelt allgemeine Arbeitsbedingungen: Wochenarbeitszeit, Urlaubsanspruch, Kündigungsfristen, Mehrarbeits- und Feiertagszuschläge.</td>
+      <td><b>Lang:</b> meist mehrere Jahre.</td>
+    </tr>
+  </tbody>
+</table>
+<div class="hint"><b>${T('Günstigkeitsprinzip', 'nguyên tắc ưu tiên điều khoản có lợi hơn')} (§ 4 Abs. 3 TVG):</b> Einzelvertragliche Abmachungen zwischen Arbeitgeber und Arbeitnehmer sind nur gültig, wenn sie für den Arbeitnehmer <b>günstiger</b> sind als der Tarifvertrag (z. B. 32 Tage Urlaub statt 30 tariflichen Tagen).</div>
+<div class="vi">
+  <b>Tóm tắt Tiếng Việt — Sozialpartner &amp; 3 Loại Thỏa ước Lao động:</b>
+  <ul>
+    <li><b>Sozialpartner:</b> Là 2 bên công đoàn (Gewerkschaft - bảo vệ người lao động) và hội giới chủ (Arbeitgeberverband - bảo vệ doanh nghiệp). Họ đàm phán độc lập theo nguyên tắc Tarifautonomie không để Nhà nước can thiệp.</li>
+    <li><b>3 Loại Tarifvertrag:</b>
+      <ul>
+        <li><b>Entgelttarifvertrag:</b> Quy định bảng lương bằng số tiền cụ thể (€). Thời hạn ngắn (1–2 năm).</li>
+        <li><b>Rahmenentgelttarifvertrag:</b> Quy định tiêu chuẩn xếp bậc ngạch lương theo tay nghề/trách nhiệm. Thời hạn 3–5 năm.</li>
+        <li><b>Manteltarifvertrag:</b> Quy định điều kiện làm việc chung (giờ làm tuần, ngày nghỉ phép, phụ cấp ca đêm). Thời hạn dài nhiều năm.</li>
+      </ul>
+    </li>
+    <li><b>Günstigkeitsprinzip:</b> Hợp đồng cá nhân luôn có thể tốt hơn Tarifvertrag, nhưng tuyệt đối không được kém hơn mức tối thiểu trong thỏa ước.</li>
+  </ul>
+</div>
+`;
+
+  // Mở rộng wiko-steuerklassen (thêm Lohnabrechnung: Brutto - Netto - Ausbezahlter Lohn)
+  C.lohnabrechnung_ext = `
+<hr style="margin:24px 0; border:0; border-top:1px dashed #cbd5e1;">
+<h3 class="sub">3. Lohnabrechnung: Bruttolohn – Nettolohn – Ausbezahlter Lohn</h3>
+<table class="tbl">
+  <thead><tr><th>Lohnstufe</th><th>Zusammensetzung / Berechnung</th><th>Erläuterung &amp; Beispiele</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><b>1. ${T('Bruttolohn', 'tổng lương trước thuế')}</b></td>
+      <td>Grundgehalt / tarifliche Ausbildungsvergütung<br>+ Überstundenvergütung<br>+ Zuschläge (Sonntags-, Feiertags-, Nachtarbeit)</td>
+      <td>Das vertraglich vereinbarte Gesamteinkommen vor jeglichen steuerlichen oder sozialversicherungsrechtlichen Abzügen.</td>
+    </tr>
+    <tr>
+      <td><b>Abzüge (Steuern &amp; SV)</b></td>
+      <td>
+        <b>- Steuern:</b> Lohnsteuer (nach Steuerklasse I–VI) + ggf. Kirchensteuer (8–9 %) + ggf. Solidaritätszuschlag.<br>
+        <b>- Sozialversicherung (ca. 20–21 %):</b> KV + PV + RV + AV (Arbeitnehmeranteil).
+      </td>
+      <td>Gesetzliche Zwangsabzüge, die der Arbeitgeber direkt an das Finanzamt und die Einzugsstelle der Krankenkasse abführt.</td>
+    </tr>
+    <tr>
+      <td><b>2. ${T('Nettolohn', 'lương ròng sau thuế và bảo hiểm')}</b></td>
+      <td><b>Bruttolohn − Steuern − SV-Beiträge</b></td>
+      <td>Das gesetzlich verbleibende Nettoeinkommen des Beschäftigten.</td>
+    </tr>
+    <tr>
+      <td><b>3. ${T('Ausbezahlter Lohn', 'lương thực nhận chuyển khoản')} (Auszahlungsbetrag)</b></td>
+      <td>
+        <b>Nettolohn</b><br>
+        <b>+ Zuzahlungen:</b> Arbeitgeberanteil zu ${T('VWL', 'trợ cấp tích lũy tài sản')} (vermögenswirksame Leistungen), steuerfreie Fahrgelder, Spesen.<br>
+        <b>− Abzüge:</b> Gesamter VWL-Sparbetrag, Gehaltsvorschuss-Rückzahlung, ${T('Lohnpfändung', 'trích khấu trừ thi hành án')}, Sachbezüge (Kantine/Wohnung).
+      </td>
+      <td><b>Der Betrag, der tatsächlich auf das Girokonto des Arbeitnehmers überwiesen wird.</b> (Nettolohn ≠ Auszahlungsbetrag, sobald VWL oder Vorschüsse vorliegen!)</td>
+    </tr>
+  </tbody>
+</table>
+<div class="vi">
+  <b>Tóm tắt Tiếng Việt — Phân biệt 3 Mức Lương trên Bảng lương (Lohnabrechnung):</b>
+  <ul>
+    <li><b>1. Bruttolohn (Lương gộp):</b> Tổng thu nhập thỏa thuận theo hợp đồng trước khi trừ thuế/bảo hiểm (gồm lương cơ bản + tăng ca + phụ cấp đêm/chủ nhật).</li>
+    <li><b>2. Nettolohn (Lương ròng):</b> Lấy Bruttolohn trừ đi tiền Thuế (Lohnsteuer, KiSt) và tiền Bảo hiểm xã hội 5 Säulen (KV, PV, RV, AV).</li>
+    <li><b>3. Ausbezahlter Lohn / Auszahlungsbetrag (Số tiền thực nhận vào tài khoản):</b> Lấy Nettolohn CỘNG các khoản công ty hỗ trợ thêm (trợ cấp tích lũy tài sản VWL, phụ cấp đi lại Fahrgeld) và TRỪ các khoản cá nhân (khoản trích tiết kiệm VWL chuyển thẳng vào quỹ, trừ tiền ứng lương Vorschuss, trừ nợ thi hành án Lohnpfändung). Đây là số tiền thực tế đổ về tài khoản ngân hàng!</li>
+  </ul>
+</div>
+`;
+
+  // Mở rộng wiko-rg-p1 (thêm Juristische Personen des Privatrechts vs Öffentlichen Rechts)
+  C.rechtsfaehigkeit_ext = `
+<hr style="margin:24px 0; border:0; border-top:1px dashed #cbd5e1;">
+<h3 class="sub">1.3 Juristische Personen im Detail (§§ 21 ff., 89 BGB)</h3>
+<table class="tbl">
+  <thead><tr><th>Kategorie</th><th>${T('Juristische Personen des Privatrechts', 'pháp nhân luật tư (doanh nghiệp, hội đoàn)')}</th><th>${T('Juristische Personen des öffentlichen Rechts', 'pháp nhân luật công (nhà nước, cơ quan công quyền)')}</th></tr></thead>
+  <tbody>
+    <tr><td><b>Entstehung</b></td><td>Durch staatliche Verleihung bzw. <b>Eintragung in ein öffentliches Register</b> (Handelsregister, Vereinsregister).</td><td>Durch <b>Gesetz</b> oder staatlichen Gründungsakt.</td></tr>
+    <tr><td><b>Beispiele</b></td><td>
+      • <b>e.V.:</b> Eingetragener Verein<br>
+      • <b>GmbH:</b> Gesellschaft mit beschränkter Haftung<br>
+      • <b>AG:</b> Aktiengesellschaft<br>
+      • <b>UG:</b> Unternehmergesellschaft (haftungsbeschränkt)
+    </td><td>
+      • <b>Gebietskörperschaften:</b> Bund, Bundesländer, Landkreise, Gemeinden.<br>
+      • <b>Selbstverwaltungskörperschaften:</b> IHK (Industrie- und Handelskammer), HWK (Handwerkskammer), Gesetzliche Krankenkassen (AOK, TK), Berufsgenossenschaften (BGN).<br>
+      • <b>Anstalten:</b> Öffentlich-rechtliche Universitäten, Rundfunkanstalten (ARD/ZDF).
+    </td></tr>
+    <tr><td><b>Ende</b></td><td>Mit der <b>Löschung</b> aus dem Register (nach Liquidation oder Insolvenz).</td><td>Durch staatliches Aufhebungsgesetz.</td></tr>
+  </tbody>
+</table>
+<div class="vi">
+  <b>Tóm tắt Tiếng Việt — Phân loại Pháp nhân (Juristische Personen):</b>
+  <ul>
+    <li><b>Pháp nhân luật tư (des Privatrechts):</b> Do các cá nhân/doanh nghiệp thành lập, có tư cách pháp nhân kể từ khi <b>đăng ký vào sổ bộ nhà nước</b> (Eintragung ins Handelsregister / Vereinsregister) như công ty GmbH, tập đoàn AG, hội đoàn e.V. Kết thúc khi bị xóa sổ (Löschung).</li>
+    <li><b>Pháp nhân luật công (des öffentlichen Rechts):</b> Do <b>Đạo luật nhà nước</b> thành lập để thực hiện chức năng công quyền như Nhà nước liên bang, các Bang, UBND thành phố, trường đại học công lập, các Phòng Thương mại IHK, HWK và các Quỹ bảo hiểm công AOK/TK.</li>
+  </ul>
+</div>
+`;
+
+  // =========================================================================
+  // NỘI DUNG CÁC BÀI FACHSTUFE I VÀ BỔ SUNG MỚI
+  // =========================================================================
+
+  // Steuererklärung
   C.steuer = `<h2>Einkommensteuererklärung</h2>
 <div class="hint">WK Grundstufe · Lohnsteuer wird monatlich vom Arbeitgeber einbehalten – die Steuererklärung rechnet am Jahresende genau ab.</div>
 <h3 class="sub">1. Lohnsteuer vs. Einkommensteuer</h3>
@@ -30,61 +234,59 @@
 <td>Alle anderen Arbeitnehmer – rückwirkend bis zu <b>4 Jahre</b>. Lohnt sich oft für Azubis (Ausbildungsbeginn im Laufe des Jahres, Werbungskosten).</td></tr></table>
 <p>→ Bắt buộc khai: nhiều chủ cùng lúc (bậc VI), vợ chồng III/V, nhận trợ cấp thay lương hoặc thu nhập phụ trên 410 €. Người khác khai tự nguyện, được khai lùi tối đa 4 năm.</p>
 <p><b>Frist:</b> Pflichtveranlagung bis <b>31. Juli</b> des Folgejahres (mit Steuerberater länger). Abgabe elektronisch über ${T('ELSTER', 'cổng khai thuế điện tử')}.</p>
-<h3 class="sub">3. Was mindert die Steuer?</h3>
+<h3 class="sub">3. Was mindert die Steuer? (Steuermindernde Faktoren)</h3>
 <ul>
 <li>${T('Werbungskosten', 'chi phí liên quan đến công việc')}: Kosten für den Beruf – Fahrtkosten (${T('Entfernungspauschale', 'trợ cấp quãng đường đi làm')} je Entfernungskilometer), Arbeitskleidung, Fachbücher, Bewerbungskosten. Ohne Nachweis gilt der <b>Arbeitnehmer-Pauschbetrag 1.230 €</b>.</li>
 <li>${T('Sonderausgaben', 'chi phí đặc biệt được khấu trừ')}: z. B. Vorsorgeaufwendungen (Kranken-, Rentenversicherung), Kirchensteuer, Spenden.</li>
-<li>${T('Außergewöhnliche Belastungen', 'gánh nặng bất thường')}: z. B. hohe Krankheitskosten, Pflege.</li>
+<li>${T('Außergewöhnliche Belastungen', 'gánh nặng bất thường')}: z. B. hohe Krankheitskosten, Pflegeaufwendungen.</li>
 <li>${T('Grundfreibetrag', 'mức thu nhập miễn thuế')}: Einkommen bis zu diesem Betrag (2025: 12.096 €) bleibt steuerfrei.</li>
 </ul>
-<p>→ Chi phí đi làm, đồ nghề, sách chuyên môn (Werbungskosten), bảo hiểm, quyên góp (Sonderausgaben), chi phí bệnh tật lớn (außergewöhnliche Belastungen) làm giảm thuế.</p>
-<h3 class="sub">4. Steuerbescheid & Einspruch</h3>
-<p>Das Finanzamt schickt den ${T('Steuerbescheid', 'quyết định thuế')}: Erstattung oder Nachzahlung. Ist er falsch, kann man innerhalb von <b>1 Monat</b> schriftlich ${T('Einspruch', 'khiếu nại')} einlegen.</p>
-<h3 class="sub">5. Wofür zahlt der Staat Steuern aus?</h3>
-<p>Steuern sind Abgaben <b>ohne direkte Gegenleistung</b> (anders als Gebühren oder Beiträge). Sie finanzieren Schulen, Straßen, Polizei, Sozialleistungen. Direkte Steuern (Einkommensteuer) zahlt der Steuerpflichtige selbst, indirekte Steuern (Umsatzsteuer) werden über den Preis weitergegeben.</p>
-<p>→ Thuế không có đối ứng trực tiếp. Thuế trực thu (thuế thu nhập) do người nộp tự chịu; thuế gián thu (VAT) nằm trong giá hàng.</p>
-<div class="hint">Merksatz: Pflicht bei VI / III-V / >410 € · freiwillig 4 Jahre rückwirkend · Pauschbetrag 1.230 € · Einspruch 1 Monat.</div>
+<div class="hint">Merksatz: Zu viel gezahlt? → Freiwillig abgeben! Bis zu 4 Jahre rückwirkend. Pauschbetrag 1.230 € ohne Belege.</div>
 <div class="vi">
   <b>Tóm tắt Tiếng Việt — Tờ khai thuế thu nhập (Einkommensteuererklärung):</b>
   <ul>
-    <li><b>Bắt buộc nộp (Pflichtveranlagung):</b> Khi có thu nhập phụ > 410 €/năm, làm cùng lúc 2 công ty (Steuerklasse VI), vợ chồng chọn bậc thuế III/V, hoặc nhận trợ cấp thay thế tiền lương > 410 € (Kurzarbeitergeld, Elterngeld). Hạn nộp: ngày 31.07 năm sau.</li>
-    <li><b>Tự nguyện nộp (Antragsveranlagung):</b> Có thể nộp hồi tố tối đa <b>4 năm</b> (VD: 2026 nộp cho các năm 2022–2025). Rất có lợi cho Azubi và người đi làm để nhận lại tiền thuế dư (trung bình > 1.000 €).</li>
-    <li><b>Chi phí trừ thuế:</b> <b>Werbungskosten</b> (Chi phí phát sinh cho công việc: đi lại 0,30 €/km, sách vở, trang phục bảo hộ; mức khoán Pauschale 1.230 €), <b>Sonderausgaben</b> (Bảo hiểm, quyên góp, học phí; Pauschale 36 €), <b>Außergewöhnliche Belastungen</b> (Viện phí phát sinh bất khả kháng vượt mức gánh chịu hợp lý).</li>
-    <li><b>Thời hạn khiếu nại (Einspruchsfrist):</b> <b>1 tháng</b> kể từ khi nhận thông báo thuế (Steuerbescheid).</li>
+    <li><b>Các yếu tố giảm trừ thuế:</b>
+      <ul>
+        <li><b>Werbungskosten (Chi phí phục vụ công việc):</b> Tiền xăng xe đi làm (Entfernungspauschale), mua đồng phục lao động, sách học nghề, đồ nghề làm bếp... Mặc định được trừ <b>1.230 €</b> (Pauschbetrag) mà không cần hóa đơn.</li>
+        <li><b>Sonderausgaben:</b> Tiền đóng bảo hiểm y tế, hưu trí, thuế nhà thờ, tiền quyên góp từ thiện.</li>
+        <li><b>Außergewöhnliche Belastungen:</b> Tiền viện phí lớn ngoài khả năng chi trả của BHYT, tiền nuôi dưỡng người thân tàn tật.</li>
+        <li><b>Grundfreibetrag:</b> Mức thu nhập tối thiểu miễn thuế hoàn toàn (trên 12.000 €/năm).</li>
+      </ul>
+    </li>
+    <li><b>Lợi ích cho Azubi:</b> Azubi thường chỉ làm việc từ tháng 8 hoặc 9, tổng thu nhập năm đầu dưới ngưỡng chịu thuế, nếu điền tờ khai tự nguyện (Antragsveranlagung) sẽ được <b>hoàn lại 100% số tiền thuế đã bị trừ</b>! Được nộp lùi tới 4 năm.</li>
   </ul>
 </div>
 `;
 
-  C.rente = `<h2>Altersvorsorge · 3-Säulen-Modell</h2>
-<div class="hint">WK Grundstufe · Die gesetzliche Rente allein reicht meist nicht – deshalb gibt es drei Säulen.</div>
-<h3 class="sub">1. Die drei Säulen</h3>
-<table><tr><th>Säule</th><th>Beispiele</th><th>Wer zahlt?</th></tr>
-<tr><td><b>1. Gesetzliche Rentenversicherung</b></td><td>Altersrente, Erwerbsminderungsrente, Hinterbliebenenrente</td><td>Pflicht · 18,6 % vom Brutto, je <b>9,3 %</b> Arbeitnehmer und Arbeitgeber</td></tr>
+  // Altersvorsorge & Private Zusatzversicherungen
+  C.altersvorsorge = `<h2>Altersvorsorge &amp; Private Zusatzversicherungen</h2>
+<div class="hint">WK Grundstufe · Das 3-Säulen-Modell der Altersvorsorge &amp; private Zusatzabsicherungen.</div>
+<h3 class="sub">1. Das 3-Säulen-Modell der Altersvorsorge</h3>
+<table><tr><th>Säule</th><th>Träger / Form</th><th>Finanzierung</th></tr>
+<tr><td><b>1. Gesetzliche Rente</b></td><td>Deutsche Rentenversicherung; ${T('Generationenvertrag', 'hợp đồng thế hệ / người trẻ nuôi người già')} (${T('Umlageverfahren', 'phương thức lấy thu bù chi ngay')})</td><td>Beitrag 18,6 % (2025), je <b>9,3 %</b> Arbeitnehmer und Arbeitgeber</td></tr>
 <tr><td><b>2. Betriebliche Altersvorsorge</b> (bAV)</td><td>Direktversicherung, Pensionskasse; ${T('Entgeltumwandlung', 'trích một phần lương để tích lũy hưu')}</td><td>Arbeitnehmer hat Anspruch auf Entgeltumwandlung; Arbeitgeber gibt mind. 15 % Zuschuss</td></tr>
 <tr><td><b>3. Private Vorsorge</b></td><td>${T('Riester-Rente', 'quỹ hưu Riester (nhà nước trợ cấp)')}, private Rentenversicherung, Fondssparplan, Immobilie</td><td>Freiwillig · Riester: staatliche Zulagen</td></tr></table>
-<p>→ Trụ 1: bảo hiểm hưu trí bắt buộc (18,6 %, chia đôi). Trụ 2: hưu trí qua công ty. Trụ 3: tự tiết kiệm (Riester, bảo hiểm tư, quỹ, nhà).</p>
-<h3 class="sub">2. Warum reicht die gesetzliche Rente nicht?</h3>
+<h3 class="sub">2. Warum reicht die gesetzliche Rente nicht? (Demografischer Wandel)</h3>
 <p>Das ${T('Rentenniveau', 'mức lương hưu so với lương trung bình')} liegt bei etwa <b>48 %</b> des Durchschnittslohns. Gründe: ${T('demografischer Wandel', 'thay đổi cơ cấu dân số')} – weniger Beitragszahler, mehr Rentner, längere Lebenserwartung. Die Lücke heißt ${T('Versorgungslücke', 'khoảng thiếu hụt thu nhập khi về hưu')}.</p>
-<p>→ Lương hưu nhà nước chỉ khoảng 48 % lương trung bình vì ít người đóng, nhiều người hưởng, tuổi thọ tăng. Phần thiếu gọi là Versorgungslücke.</p>
-<h3 class="sub">3. Wichtige Begriffe</h3>
+<h3 class="sub">3. Private Zusatzversicherungen (Bảo hiểm bổ sung tư nhân)</h3>
+<p>Da die gesetzlichen Sozialversicherungen nur eine <b>Grundversorgung (Regelleistungen)</b> abdecken, sind private Zusatzversicherungen sinnvoll:</p>
 <ul>
-<li><b>Regelaltersgrenze:</b> steigt schrittweise auf <b>67 Jahre</b> (für Jahrgänge ab 1964).</li>
-<li><b>Umlageverfahren:</b> Die heutigen Beiträge werden sofort an die heutigen Rentner ausgezahlt (kein Sparkonto).</li>
-<li><b>Riester-Zulage:</b> Grundzulage 175 € pro Jahr, Kinderzulage bis 300 €; Berufseinsteiger unter 25 einmalig 200 € Bonus.</li>
-<li>Für Azubis lohnt sich früher Beginn: ${T('Zinseszins', 'lãi kép')} – kleine Beträge über viele Jahre wachsen stark.</li>
+  <li><b>${T('Berufsunfähigkeitsversicherung', 'bảo hiểm mất sức lao động')} (BU):</b> Existenzsichernd! Zahlt monatliche Rente, wenn man seinen erlernten Beruf krankheits- oder unfallbedingt zu mind. 50 % dauerhaft nicht mehr ausüben kann.</li>
+  <li><b>${T('Zahnzusatzversicherung', 'bảo hiểm răng hàm mặt bổ sung')}:</b> Übernimmt hohe Zuzahlungen bei Zahnersatz (Kronen, Implantate), die die gesetzliche Kasse nicht voll zahlt.</li>
+  <li><b>${T('Auslandskrankenversicherung', 'bảo hiểm du lịch khám chữa bệnh ở nước ngoài')}:</b> Zahlt Behandlungskosten und medizinischen Rücktransport außerhalb Deutschlands.</li>
+  <li><b>${T('Private Pflegezusatzversicherung', 'bảo hiểm điều dưỡng tư nhân bổ sung')}:</b> Schließt die hohe Eigenanteil-Lücke bei stationärer Pflege im Alter.</li>
 </ul>
-<div class="hint">Merksatz: 3 Säulen = gesetzlich · betrieblich · privat · RV 18,6 % (9,3/9,3) · Umlageverfahren · Rente mit 67.</div>
+<div class="hint">Merksatz: 3 Säulen = gesetzlich · betrieblich · privat · BU-Versicherung ist der wichtigste Schutz vor Armut bei Erwerbsunfähigkeit!</div>
 <div class="vi">
-  <b>Tóm tắt Tiếng Việt — Mô hình 3 trụ cột hưu trí (3-Säulen-Modell der Altersvorsorge):</b>
+  <b>Tóm tắt Tiếng Việt — Hưu trí 3 Trụ Cột &amp; Bảo hiểm Bổ sung Tư nhân:</b>
   <ul>
-    <li><b>Trụ cột 1 – Gesetzliche Rentenversicherung (Hưu trí bắt buộc của Nhà nước):</b> Nguyên tắc <b>Umlageverfahren (Hợp đồng thế hệ / Generationenvertrag)</b>: Tiền đóng góp của người đang đi làm hôm nay được chi trả ngay lập tức cho người hưu trí hiện tại (không tích lũy thành quỹ riêng). Mức đóng: 18,6% (chủ và thợ chia đôi 9,3% / 9,3%).</li>
-    <li><b>Trụ cột 2 – Betriebliche Altersversorgung (Hưu trí doanh nghiệp):</b> Doanh nghiệp lập quỹ hoặc trích lương trước thuế (Entgeltumwandlung), chủ DN hỗ trợ thêm tối thiểu 15%.</li>
-    <li><b>Trụ cột 3 – Private Altersvorsorge (Hưu trí tư nhân):</b> Cá nhân tự gửi tiết kiệm hoặc mua bảo hiểm tích lũy quỹ đầu tư (như Riester-Rente có trợ cấp nhà nước, Rürup-Rente, quỹ ETF).</li>
-    <li><b>Vấn đề nhân khẩu học (Demografischer Wandel):</b> Xã hội già hóa (người già tăng, tỷ lệ sinh giảm) dẫn đến mức lương hưu sụt giảm và nguy cơ nghèo tuổi già (Altersarmut) → Bắt buộc phải kết hợp cả 3 trụ cột.</li>
+    <li><b>3 Trụ Cột Hưu trí:</b> (1) Hưu trí bắt buộc nhà nước (18,6%, chia đôi); (2) Hưu trí qua công ty (chủ bù thêm tối thiểu 15%); (3) Tự tiết kiệm cá nhân (Riester, ETF, nhà đất). Do dân số già hóa (Demografischer Wandel), lương hưu nhà nước chỉ còn khoảng 48% mức lương cũ, bắt buộc phải có trụ cột 2 và 3.</li>
+    <li><b>Bảo hiểm bổ sung tư nhân quan trọng:</b> Bảo hiểm mất sức lao động (Berufsunfähigkeit - BU, cực kỳ thiết yếu trong nghề bếp/khách sạn dễ mắc bệnh xương khớp), bảo hiểm nha khoa (Zahnzusatz), bảo hiểm du lịch nước ngoài.</li>
   </ul>
 </div>
 `;
 
+  // Solidaritätsprinzip
   C.soli = `<h2>Sozialversicherung · Solidaritätsprinzip</h2>
 <div class="hint">WK Grundstufe · Die Prinzipien hinter den 5 Säulen der Sozialversicherung.</div>
 <h3 class="sub">1. Die fünf Zweige</h3>
@@ -97,470 +299,782 @@
 <h3 class="sub">2. Die Prinzipien</h3>
 <ul>
 <li><b>${T('Solidaritätsprinzip', 'nguyên tắc tương trợ')}:</b> Alle zahlen nach ihrem <b>Einkommen</b> ein, alle bekommen Leistungen nach ihrem <b>Bedarf</b>. Gesunde zahlen für Kranke, Junge für Alte, Gutverdiener mehr als Geringverdiener. In der KV sind Kinder und Ehepartner ohne Einkommen kostenlos ${T('familienversichert', 'được bảo hiểm theo gia đình')}.</li>
-<li><b>${T('Versicherungspflicht', 'nghĩa vụ tham gia bảo hiểm')}:</b> Arbeitnehmer müssen Mitglied sein (Ausnahme KV: über der Versicherungspflichtgrenze kann man privat versichert sein).</li>
-<li><b>${T('Generationenvertrag', 'hợp đồng giữa các thế hệ')}:</b> Die arbeitende Generation finanziert die Renten der älteren Generation und erwartet dasselbe später von der nächsten (Umlageverfahren).</li>
-<li><b>${T('Subsidiaritätsprinzip', 'nguyên tắc bổ trợ')}:</b> Zuerst hilft man sich selbst bzw. die Familie; der Staat hilft erst, wenn das nicht reicht (z. B. Bürgergeld).</li>
-<li><b>${T('Selbstverwaltung', 'tự quản')}:</b> Die Versicherungsträger werden von Vertretern der Arbeitgeber und Versicherten geleitet (Sozialwahl).</li>
+<li><b>${T('Generationenvertrag', 'hợp đồng thế hệ')}:</b> Die arbeitende Generation finanziert die Renten der aktuellen Ruheständler.</li>
+<li><b>${T('Versicherungspflicht', 'nghĩa vụ tham gia bảo hiểm')}:</b> Arbeitnehmer müssen Mitglied sein.</li>
+<li><b>${T('Subsidiaritätsprinzip', 'nguyên tắc bổ trợ')}:</b> Zuerst hilft der Einzelne sich selbst und die Familie; der Staat springt erst ein, wenn die eigenen Kräfte nicht reichen.</li>
 </ul>
-<p>→ Tương trợ: đóng theo thu nhập, hưởng theo nhu cầu. Người khỏe trả cho người ốm, người trẻ trả cho người già. Generationenvertrag: thế hệ đang đi làm trả lương hưu cho thế hệ trước. Subsidiarität: tự lo trước, nhà nước giúp sau.</p>
-<h3 class="sub">3. Gegensatz: Äquivalenzprinzip</h3>
-<p>In der <b>privaten</b> Versicherung richtet sich der Beitrag nach dem <b>Risiko</b> (Alter, Gesundheit), nicht nach dem Einkommen. Das heißt ${T('Äquivalenzprinzip', 'nguyên tắc tương đương (phí theo rủi ro)')}.</p>
-<h3 class="sub">4. Probleme</h3>
-<p>Der demografische Wandel belastet vor allem RV und PV: Immer weniger Beitragszahler finanzieren immer mehr Leistungsempfänger → steigende Beiträge oder sinkende Leistungen.</p>
-<div class="hint">Merksatz: Solidarität = Beitrag nach Einkommen, Leistung nach Bedarf · UV zahlt nur der AG · Generationenvertrag = Umlage · privat = Äquivalenzprinzip.</div>
 <div class="vi">
-  <b>Tóm tắt Tiếng Việt — Nguyên tắc Đoàn kết & 5 Trụ cột Bảo hiểm Xã hội:</b>
+  <b>Tóm tắt Tiếng Việt — 5 Trụ Cột An Sinh Xã Hội &amp; Nguyên Tắc Đoàn Kết:</b>
   <ul>
-    <li><b>Nguyên tắc Đoàn kết (Solidaritätsprinzip):</b> Đóng góp theo khả năng tài chính (% trên thu nhập), nhưng được hưởng quyền lợi theo nhu cầu thực tế (không phân biệt người giàu hay nghèo khi ốm đau, người khỏe san sẻ cho người ốm, người độc thân san sẻ cho người có gia đình).</li>
-    <li><b>5 Trụ cột An sinh Xã hội:</b> (1) Krankenversicherung (BHYT); (2) Rentenversicherung (Hưu trí); (3) Arbeitslosenversicherung (Thất nghiệp); (4) Pflegeversicherung (Chăm sóc điều dưỡng); (5) <b>Unfallversicherung (Tai nạn lao động – DO CHỦ DOANH NGHIỆP TRẢ 100%)</b>.</li>
-    <li><b>Trần tính phí (Beitragsbemessungsgrenze):</b> Ngưỡng thu nhập tối đa phải tính phần trăm đóng bảo hiểm xã hội; phần thu nhập vượt quá ngưỡng này không phải đóng thêm BHXH.</li>
+    <li><b>5 Trụ Cột:</b> BHYT (KV), Chăm sóc điều dưỡng (PV), Hưu trí (RV), Thất nghiệp (AV) — cả 4 loại này chủ và thợ chia đôi; Tai nạn lao động (UV) — 100% chủ DN đóng cho Berufsgenossenschaft (BGN).</li>
+    <li><b>Solidaritätsprinzip (Nguyên tắc tương trợ):</b> Đóng theo năng lực thu nhập, hưởng theo nhu cầu thực tế khi gặp rủi ro (người khỏe gánh người ốm, người giàu đóng nhiều hơn).</li>
   </ul>
 </div>
 `;
 
-  C.kauf = `<h2>Kaufvertrag vertieft · Störungen</h2>
-<div class="hint">WK Fachstufe I · § 433 BGB · Zustandekommen, Kaufarten, Mängel, Verzug.</div>
-<h3 class="sub">1. Zustandekommen: Antrag + Annahme</h3>
-<p>Ein Kaufvertrag entsteht durch zwei übereinstimmende ${T('Willenserklärungen', 'tuyên bố ý chí')}: ${T('Antrag', 'đề nghị (giao kết)')} (Angebot) und ${T('Annahme', 'chấp nhận')}. Wer zuerst erklärt, ist egal (Verkäufer bietet an oder Käufer bestellt).</p>
+  // Kaufvertrag vertieft, Mängel & Verjährung von Forderungen
+  C.kaufvertrag = `<h2>Kaufvertrag · Mängelhaftung &amp; Verjährung</h2>
+<div class="hint">WK Fachstufe I · Rechte bei mangelhafter Lieferung &amp; Verjährungsfristen nach BGB.</div>
+<h3 class="sub">1. Zustandekommen &amp; Pflichten</h3>
+<p>Ein Kaufvertrag entsteht durch zwei übereinstimmende Willenserklärungen: <b>${T('Antrag', 'lời đề nghị')} (Angebot)</b> und <b>${T('Annahme', 'sự chấp nhận')}</b>. Pflichten: Verkäufer muss Ware mangelfrei übergeben und Eigentum übertragen; Käufer muss rechtzeitig zahlen und Ware annehmen.</p>
+<h3 class="sub">2. Mängelarten</h3>
+<table><tr><th>Sachmangel (Lỗi vật chất)</th><th>Rechtsmangel (Lỗi pháp lý)</th></tr>
+<tr><td>Fehler in der Beschaffenheit (Fleisch verdorben) · falsche Sache geliefert (Geflügel statt Rind) · zu geringe Menge · Montagefehler / fehlerhafte Montageanleitung ("IKEA-Klausel")</td>
+<td>Verkäufer ist nicht Eigentümer (gestohlene Ware); Ware ist mit Rechten Dritter belastet (z. B. Pfandrecht).</td></tr></table>
+<h3 class="sub">3. Gewährleistung vs. Garantie</h3>
+<table><tr><th>${T('Gesetzliche Gewährleistung', 'trách nhiệm bảo hành theo luật')}</th><th>${T('Freiwillige Garantie', 'bảo hành tự nguyện')}</th></tr>
+<tr><td><b>Gesetzlich vorgeschrieben</b> (BGB) · <b>2 Jahre</b> bei neuen Waren · Haftung für Mängel, die bereits beim Kauf vorlagen (mit ${T('Beweislastumkehr', 'đảo ngược nghĩa vụ chứng minh')} in den ersten <b>12 Monaten</b> zugunsten des Verbrauchers).</td>
+<td><b>Freiwillige Zusage</b> des Herstellers oder Händlers · Dauer und Bedingungen bestimmt der Garantiegeber (z. B. 5 Jahre Garantie auf Durchrostung).</td></tr></table>
+<h3 class="sub">4. Rechte des Käufers bei Mängeln</h3>
+<ol>
+<li><b>1. Vorrangige Rechte (${T('Nacherfüllung', 'bổ sung thực hiện hợp đồng')}):</b> Käufer hat das Wahlrecht zwischen <b>${T('Nachbesserung', 'sửa chữa lỗi')}</b> (Reparatur) oder <b>${T('Nachlieferung', 'đổi sản phẩm mới')}</b> (neue Ware). Verkäufer trägt alle Kosten (Transport, Arbeitszeit, Material).</li>
+<li><b>2. Nachrangige Rechte (erst nach erfolglosem Ablauf einer angemessenen Nachfrist):</b>
 <ul>
-<li><b>Kein Angebot</b> ist die ${T('Anpreisung', 'quảng cáo / lời mời chào')}: Schaufenster, Katalog, Werbung, Speisekarte im Aushang, Onlineshop = Aufforderung, ein Angebot abzugeben.</li>
-<li><b>Bindung:</b> unter Anwesenden/am Telefon nur <b>sofort</b>; unter Abwesenden (Brief, E-Mail) so lange, wie man unter normalen Umständen eine Antwort erwarten kann.</li>
-<li>${T('Freizeichnungsklauseln', 'điều khoản miễn ràng buộc')}: „freibleibend", „unverbindlich", „solange Vorrat reicht" → Angebot ganz oder teilweise unverbindlich.</li>
-<li>Verspätete oder veränderte Annahme = <b>neuer Antrag</b>.</li>
-</ul>
-<p>→ Tủ kính, catalô, quảng cáo chỉ là lời mời chào, chưa phải đề nghị. Đề nghị qua lời nói chỉ ràng buộc ngay lúc đó. Chấp nhận trễ hoặc sửa đổi = đề nghị mới.</p>
-<h3 class="sub">2. Pflichten & Abstraktionsprinzip</h3>
-<table><tr><th>Verkäufer</th><th>Käufer</th></tr>
-<tr><td>Sache mangelfrei übergeben, Eigentum verschaffen</td><td>Kaufpreis zahlen, Sache annehmen (abnehmen)</td></tr></table>
-<p>${T('Verpflichtungsgeschäft', 'giao dịch phát sinh nghĩa vụ')} (Kaufvertrag) und ${T('Erfüllungsgeschäft', 'giao dịch thực hiện')} (Übergabe + Einigung über Eigentum, Zahlung) sind rechtlich getrennt. Beim Kauf im Laden fallen beide zeitlich zusammen.</p>
-<h3 class="sub">3. Kaufarten</h3>
+<li>${T('Rücktritt vom Kaufvertrag', 'hủy bỏ hợp đồng mua bán')} (Geld zurück gegen Rückgabe der Ware).</li>
+<li>${T('Minderung', 'giảm giá bán')} des Kaufpreises (Ware behalten, Preisnachlass verlangen).</li>
+<li>${T('Schadensersatz', 'bồi thường thiệt hại')} neben oder statt der Leistung (bei Verschulden des Verkäufers).</li>
+</ul></li>
+</ol>
+<h3 class="sub">5. Verjährung von Forderungen (Thời hiệu khiếu nại &amp; đòi nợ - §§ 194 ff. BGB)</h3>
+<table class="tbl">
+  <thead><tr><th>Frist</th><th>Dauer &amp; Beginn</th><th>Anwendungsbereich &amp; Beispiele</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><b>${T('Regelmäßige Verjährung', 'thời hiệu đòi nợ thông thường')} (§ 195 BGB)</b></td>
+      <td><b>3 Jahre</b><br>Beginnt mit dem Schluss des Jahres (<b>31.12. um 24:00 Uhr</b>), in dem der Anspruch entstanden ist (${T('Ultimo-Prinzip', 'nguyên tắc tính từ cuối năm')}).</td>
+      <td>Offene Rechnungen (z. B. Kaufpreis, Handwerkerrechnung, Restaurantrechnung).<br><i>Beispiel:</i> Rechnung vom 15.04.2023 → Fristbeginn: 31.12.2023 → Verjährungsende: <b>31.12.2026 um 24:00 Uhr</b>.</td>
+    </tr>
+    <tr>
+      <td><b>Mängelansprüche beim Kauf (§ 438 BGB)</b></td>
+      <td><b>2 Jahre</b> ab Übergabe der Sache (bei Bauwerken 5 Jahre).</td>
+      <td>Reklamationen von Sachmängeln bei Neuwaren.</td>
+    </tr>
+    <tr>
+      <td><b>Rechtskräftig titulierte Forderungen (§ 197 BGB)</b></td>
+      <td><b>30 Jahre</b> ab Rechtskraft des Titels.</td>
+      <td>Gerichtliches Urteil, Vollstreckungsbescheid.</td>
+    </tr>
+  </tbody>
+</table>
+<h4 style="margin-top:14px;">Hemmung vs. Neubeginn der Verjährung</h4>
 <ul>
-<li>Nach Beteiligten: <b>Verbrauchsgüterkauf</b> (Unternehmer → Verbraucher, stärkster Schutz) · <b>bürgerlicher Kauf</b> (privat ↔ privat) · <b>zweiseitiger Handelskauf</b> (Kaufmann ↔ Kaufmann).</li>
-<li>Nach Zahlung: Barkauf · ${T('Zielkauf', 'mua trả chậm (có hạn thanh toán)')} (z. B. „zahlbar in 30 Tagen") · Ratenkauf.</li>
-<li>Nach Lieferzeit: Sofortkauf · Terminkauf · ${T('Fixkauf', 'mua có thời hạn giao cố định')} (Liefertermin ist wesentlich, z. B. Hochzeitstorte).</li>
-<li>Sonstige: Kauf auf Probe · Kauf nach Probe · Kauf zur Probe · Stückkauf vs. Gattungskauf.</li>
+  <li><b>${T('Hemmung', 'tạm dừng thời hiệu')} (§ 203 ff. BGB):</b> Der Ablauf der Frist wird angehalten ("Uhr bleibt stehen"). Die Zeit der Hemmung wird nicht eingerechnet (z. B. bei Verhandlungen zwischen Gläubiger und Schuldner, Beantragung eines gerichtlichen Mahnbescheids oder Klageerhebung). Sobald der Grund wegfällt, läuft die Uhr weiter.</li>
+  <li><b>${T('Neubeginn', 'bắt đầu lại thời hiệu từ đầu')} (§ 212 BGB - früher Unterbrechung):</b> Die Frist beginnt wieder bei Tag 1 in voller Länge (3 Jahre)! Tritt ein, wenn der Schuldner den Anspruch anerkennt (z. B. durch <b>Teilzahlung, Zinszahlung, Bitte um Stundung</b>) oder bei gerichtlichen Vollstreckungsmaßnahmen.</li>
 </ul>
-<p>${T('Eigentumsvorbehalt', 'bảo lưu quyền sở hữu')}: Der Verkäufer bleibt Eigentümer, bis der Kaufpreis vollständig bezahlt ist. Der Käufer ist nur ${T('Besitzer', 'người chiếm hữu')}.</p>
-<h3 class="sub">4. Mangelhafte Lieferung (Schlechtleistung)</h3>
-<p><b>Mangelarten:</b> Qualitätsmangel (beschädigt, verdorben) · Quantitätsmangel (zu wenig) · Falschlieferung (Art) · fehlerhafte Montage/Anleitung · Werbeversprechen nicht erfüllt · ${T('Rechtsmangel', 'khuyết tật pháp lý')} (Sache gehört einem Dritten).</p>
-<p><b>Erkennbarkeit:</b> offener Mangel · versteckter Mangel · arglistig verschwiegener Mangel.</p>
-<p><b>Rügefrist:</b> Verbraucher: Gewährleistung <b>2 Jahre</b> ab Übergabe. Zweiseitiger Handelskauf: <b>unverzüglich</b> prüfen und rügen (§ 377 HGB), versteckte Mängel unverzüglich nach Entdeckung.</p>
-<p><b>Rechte des Käufers:</b></p>
-<ol><li><b>Vorrangig:</b> ${T('Nacherfüllung', 'yêu cầu khắc phục')} – nach Wahl des Käufers Nachbesserung (Reparatur) oder Ersatzlieferung.</li>
-<li><b>Nachrangig</b> (wenn Nacherfüllung fehlschlägt, verweigert wird oder Frist abläuft): ${T('Rücktritt', 'hủy hợp đồng')} (nicht bei geringfügigem Mangel) oder ${T('Minderung', 'giảm giá')} – zusätzlich ${T('Schadensersatz', 'bồi thường thiệt hại')} bei Verschulden.</li></ol>
-<h3 class="sub">5. Lieferungsverzug (Nicht-rechtzeitig-Lieferung)</h3>
-<p>Voraussetzungen: Lieferung <b>fällig</b> + <b>Mahnung</b> (nicht nötig, wenn der Termin kalendermäßig bestimmt ist, z. B. „Lieferung am 15.11.", oder beim Fixkauf) + für Schadensersatz <b>Verschulden</b> des Verkäufers.</p>
-<p>Rechte: Lieferung verlangen (+ Verzugsschaden) · nach angemessener ${T('Nachfrist', 'thời hạn gia hạn')} Rücktritt und/oder Schadensersatz statt der Leistung. Beim Fixkauf Rücktritt ohne Nachfrist.</p>
-<h3 class="sub">6. Zahlungsverzug & Annahmeverzug</h3>
-<p>${T('Zahlungsverzug', 'chậm thanh toán')}: spätestens <b>30 Tage</b> nach Fälligkeit und Zugang der Rechnung (beim Verbraucher nur, wenn auf der Rechnung darauf hingewiesen wurde). Verzugszinsen: Verbraucher <b>Basiszins + 5 Prozentpunkte</b>, Unternehmen <b>+ 9 Prozentpunkte</b>.</p>
-<p>${T('Annahmeverzug', 'chậm nhận hàng')}: Der Käufer nimmt die ordnungsgemäß angebotene Ware nicht an → Verkäufer kann die Ware einlagern (auf Kosten des Käufers) und auf Abnahme klagen oder einen ${T('Selbsthilfeverkauf', 'tự bán hàng để bù đắp')} durchführen.</p>
-<div class="hint">Merksatz: Schaufenster = kein Angebot · erst Nacherfüllung, dann Rücktritt/Minderung · Verzug = fällig + Mahnung (+ Verschulden) · Zahlungsverzug 30 Tage.</div>
 <div class="vi">
-  <b>Tóm tắt Tiếng Việt — Hợp đồng Mua bán, Lỗi sản phẩm & Vi phạm hợp đồng:</b>
+  <b>Tóm tắt Tiếng Việt — Hợp đồng Mua bán, Bảo hành &amp; Thời hiệu Đòi nợ:</b>
   <ul>
-    <li><b>Giao kết hợp đồng (Vertragsschluss):</b> Hình thành từ <b>hai tuyên bố ý chí thống nhất</b> (Angebot + Annahme). Hàng trưng bày trong tủ kính hoặc quảng cáo chỉ là <i>invitatio ad offerendum</i> (lời mời trả giá), chưa phải là chào hàng ràng buộc pháp lý.</li>
-    <li><b>Quyền của người mua khi hàng bị lỗi (Mängelrüge):</b> (1) <b>Quyền ưu tiên số 1: Nacherfüllung</b> (Đổi hàng mới Neulieferung hoặc sửa chữa Nachbesserung); (2) <b>Chỉ khi Nacherfüllung thất bại (sau 2 lần sửa không thành)</b>: được phép <b>Rücktritt</b> (Hủy hợp đồng lấy lại tiền) hoặc <b>Minderung</b> (Giảm giá) hoặc <b>Schadensersatz</b> (Bồi thường thiệt hại).</li>
-    <li><b>Bảo lưu quyền sở hữu (Eigentumsvorbehalt):</b> Người mua chỉ nhận quyền chiếm hữu (Besitz), người bán vẫn giữ quyền sở hữu (Eigentum) cho đến khi người mua thanh toán hết 100% tiền hàng.</li>
+    <li><b>Gewährleistung 2 năm:</b> Luật định bắt buộc, người bán phải chịu trách nhiệm về lỗi ẩn tàng từ trước. Trong <b>12 tháng đầu</b> có sự đảo ngược nghĩa vụ chứng minh (mặc định lỗi do khâu sản xuất, người bán phải tự chứng minh nếu nghi khách làm hỏng).</li>
+    <li><b>Thứ tự đòi quyền lợi:</b> Bắt buộc phải đòi <b>Nacherfüllung (Ưu tiên số 1: Đổi mới hoặc Sửa chữa)</b> trước. Nếu người bán sửa quá 2 lần thất bại hoặc từ chối, người mua mới được dùng quyền số 2: Trả hàng lấy lại tiền (Rücktritt), Giảm giá (Minderung), hoặc Đòi bồi thường (Schadensersatz).</li>
+    <li><b>Thời hiệu đòi nợ (Verjährung):</b> Thông thường là <b>3 năm</b> tính từ ngày 31.12 của năm phát sinh nợ. Khi đòi nợ qua tòa (Mahnbescheid) thì thời hiệu bị tạm dừng (Hemmung). Nếu con nợ trả một phần tiền hoặc xin khất nợ thì thời hiệu bị xóa về 0 và tính lại từ đầu đủ 3 năm (Neubeginn)!</li>
   </ul>
 </div>
 `;
 
-  C.verbraucher = `<h2>Verbraucherschutz</h2>
-<div class="hint">WK Fachstufe I · Der Verbraucher ist gegenüber Unternehmen meist schwächer – das Gesetz gleicht das aus.</div>
-<h3 class="sub">1. Widerrufsrecht (14 Tage)</h3>
-<p>Bei ${T('Fernabsatzverträgen', 'hợp đồng từ xa (online, điện thoại)')} (Internet, Telefon, Katalog) und Verträgen <b>außerhalb von Geschäftsräumen</b> (Haustür, Kaffeefahrt) kann der Verbraucher innerhalb von <b>14 Tagen ohne Begründung</b> widerrufen. Die Frist beginnt mit Erhalt der Ware und einer korrekten Belehrung; ohne Belehrung verlängert sie sich auf max. 12 Monate + 14 Tage.</p>
-<p><b>Ausnahmen:</b> verderbliche Lebensmittel, nach Kundenwunsch angefertigte Waren, entsiegelte Hygieneartikel, geöffnete Software/CDs, Zeitungen, Reise-/Restaurantbuchungen zu einem festen Termin.</p>
-<p><b>Wichtig:</b> Beim Kauf im Laden gibt es <b>kein</b> gesetzliches Widerrufsrecht. Umtausch ist dort ${T('Kulanz', 'thiện chí (không bắt buộc)')} des Händlers.</p>
-<p>→ Mua online/qua điện thoại/tại nhà: được rút lại trong 14 ngày không cần lý do. Mua tại cửa hàng: không có quyền này, đổi hàng chỉ do cửa hàng thiện chí.</p>
-<h3 class="sub">2. Gewährleistung vs. Garantie</h3>
-<table><tr><th></th><th>Gewährleistung (Mängelhaftung)</th><th>Garantie</th></tr>
-<tr><td>Grundlage</td><td>Gesetz (BGB), Pflicht</td><td>freiwillig (Vertrag)</td></tr>
-<tr><td>Wer haftet?</td><td>Verkäufer</td><td>meist Hersteller</td></tr>
-<tr><td>Dauer</td><td>2 Jahre (gebraucht: mind. 1 Jahr)</td><td>wie zugesagt</td></tr>
-<tr><td>Beweislast</td><td>1. Jahr: es wird vermutet, dass der Mangel schon bei Übergabe da war (${T('Beweislastumkehr', 'đảo ngược nghĩa vụ chứng minh')})</td><td>nach Garantiebedingungen</td></tr></table>
-<h3 class="sub">3. AGB – Allgemeine Geschäftsbedingungen</h3>
-<p>${T('AGB', 'điều kiện kinh doanh chung')} sind vorformulierte Vertragsbedingungen („Kleingedrucktes"). Sie gelten nur, wenn deutlich darauf hingewiesen wurde. <b>Unwirksam</b> sind ${T('überraschende Klauseln', 'điều khoản bất ngờ')} und Klauseln, die den Kunden unangemessen benachteiligen (z. B. Ausschluss der Gewährleistung beim Verbrauchsgüterkauf). ${T('Individualabreden', 'thỏa thuận riêng')} haben Vorrang vor AGB.</p>
-<h3 class="sub">4. Weitere Schutzregeln</h3>
+  // Verbraucherberatung, UWG & Leistungsstörungen
+  C.verbraucherschutz = `<h2>Verbraucherberatung, UWG &amp; Leistungsstörungen</h2>
+<div class="hint">WK Fachstufe I · Verbraucherschutzgesetze, Schutz vor unlauterem Wettbewerb &amp; Verzug.</div>
+<h3 class="sub">1. Verbraucherschutzgesetze &amp; Verbraucherzentralen</h3>
+<p>Verbraucher sind gegenüber gewerblichen Unternehmern oft in der schwächeren Position (Informationsvorsprung, finanzielle Macht). ${T('Verbraucherzentralen', 'trung tâm bảo vệ người tiêu dùng')} bieten unabhängige Beratung, warnen vor Abzocke und mahnen unzulässige AGB-Klauseln ab.</p>
+<h3 class="sub">2. Gesetz gegen den unlauteren Wettbewerb (UWG)</h3>
+<p>Das ${T('UWG', 'Luật chống cạnh tranh không lành mạnh')} schützt Mitbewerber, Verbraucher und sonstige Marktteilnehmer vor unfairen Geschäftspraktiken:</p>
+<table class="tbl">
+  <thead><tr><th>Verbotstatbestand</th><th>Gesetzliche Regelung</th><th>Praxisbeispiele</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><b>${T('Irreführende Werbung', 'quảng cáo lừa dối')} (§ 5 UWG)</b></td>
+      <td>Verbot unwahrer Angaben über Preisvorteile, wesentliche Beschaffenheit oder Herkunft.</td>
+      <td>Erfundene Rabatte ("Mondpreise"), falsches Bio-Siegel auf Speisekarten, angebliche Testergebnisse.</td>
+    </tr>
+    <tr>
+      <td><b>${T('Unzumutbare Belästigung', 'quấy rối vô lý / quảng cáo làm phiền')} (§ 7 UWG)</b></td>
+      <td>Verbot von Werbung ohne vorherige ausdrückliche Einwilligung des Verbrauchers.</td>
+      <td><b>${T('Cold Calling', 'gọi điện thoại tiếp thị khi chưa được đồng ý')}</b>, Werbe-Mails/SMS ohne Opt-In, unerwünschte Vertreterbesuche an der Haustür.</td>
+    </tr>
+    <tr>
+      <td><b>${T('Aggressive geschäftliche Handlungen', 'bán hàng hung hăng, ép buộc')} (§ 4a UWG)</b></td>
+      <td>Ausnutzung von Machtpositionen, Bedrohung, Nötigung oder unzulässige Beeinflussung.</td>
+      <td>Kaffeefahrten mit psychischem Verkaufsdruck, Einschüchterung betagter Menschen.</td>
+    </tr>
+  </tbody>
+</table>
+<h3 class="sub">3. Fernabsatzverträge (§ 312c BGB)</h3>
+<p>Verträge, die ausschließlich über Fernkommunikationsmittel (Internet, E-Mail, Telefon, Katalog) zwischen einem Unternehmer und einem Verbraucher geschlossen werden:</p>
 <ul>
-<li><b>Button-Lösung:</b> Online-Bestellbutton muss eindeutig sein, z. B. „zahlungspflichtig bestellen".</li>
-<li><b>Kündigungsbutton:</b> Online abgeschlossene Abos müssen online kündbar sein. Laufzeitverträge: max. 2 Jahre Erstlaufzeit, danach monatlich kündbar.</li>
-<li><b>Preisangabenverordnung:</b> Endpreise inkl. MwSt.; Grundpreis (z. B. je kg/Liter). In der Gastronomie: Preise inkl. Bedienung und MwSt. (Inklusivpreise).</li>
-<li><b>Produkthaftungsgesetz:</b> Der Hersteller haftet für Schäden durch fehlerhafte Produkte – auch ohne Verschulden.</li>
-<li><b>Lebensmittelrecht (LMIV):</b> Kennzeichnung der 14 Hauptallergene, Zutaten, MHD.</li>
+  <li><b>${T('Widerrufsrecht', 'quyền rút lại / hủy hợp đồng')} (§ 355 BGB):</b> <b>14 Tage</b> Frist ab Erhalt der Ware und ordnungsgemäßer Belehrung. Ohne Begründung.</li>
+  <li><b>Ausnahmen vom Widerrufsrecht:</b> Leicht verderbliche Lebensmittel (z. B. gelieferte Speisen/Sushi), versiegelte Waren aus Hygiene-/Gesundheitsgründen nach Entsiegelung, maßgefertigte Waren.</li>
 </ul>
-<h3 class="sub">5. Hilfe für Verbraucher</h3>
-<p>${T('Verbraucherzentrale', 'trung tâm bảo vệ người tiêu dùng')} (Beratung, Abmahnungen, Musterbriefe) · Stiftung Warentest (Produkttests) · Schlichtungsstellen · Schuldnerberatung.</p>
-<div class="hint">Merksatz: Widerruf 14 Tage nur Fernabsatz/Haustür · Gewährleistung 2 Jahre = Pflicht des Verkäufers · Garantie = freiwillig · Individualabrede vor AGB.</div>
+<h3 class="sub">4. Leistungsstörungen: Lieferungs-, Annahme- &amp; Zahlungsverzug</h3>
+<table class="tbl">
+  <thead><tr><th>Art des Verzugs</th><th>Voraussetzungen</th><th>Rechte der Gegenseite</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><b>${T('Lieferungsverzug', 'chậm trễ giao hàng')}</b> (Verkäufer)</td>
+      <td>Fälligkeit der Lieferung + Mahnung (Mahnung entbehrlich bei Fixkauf oder vertraglich genauem Kalendertermin) + Verschulden des Verkäufers.</td>
+      <td>• Ohne Nachfrist: Lieferung verlangen + ggf. Verzugsschaden.<br>• Nach angemessener Nachfrist: Rücktritt vom Vertrag oder Schadensersatz statt der Leistung.</td>
+    </tr>
+    <tr>
+      <td><b>${T('Zahlungsverzug', 'chậm trễ thanh toán tiền')}</b> (Käufer)</td>
+      <td>Fälligkeit des Kaufpreises + Mahnung. <b>Automatisch nach 30 Tagen</b> nach Zugang der Rechnung (bei Verbrauchern nur bei Hinweis auf der Rechnung!).</td>
+      <td>• Zahlung verlangen + ${T('Verzugszinsen', 'tiền lãi phạt chậm trả')}:<br>&nbsp;&nbsp;- Verbraucher: <b>5 %-Punkte über Basiszinssatz</b>.<br>&nbsp;&nbsp;- Geschäftskunden (B2B): <b>9 %-Punkte über Basiszinssatz</b>.<br>• Mahngebühren, Inkasso, gerichtliches Mahnverfahren.</td>
+    </tr>
+    <tr>
+      <td><b>${T('Annahmeverzug', 'từ chối nhận hàng')}</b> (Gläubigerverzug)</td>
+      <td>Verkäufer bietet die Ware ordnungsgemäß und pünktlich an, aber der Käufer nimmt sie nicht an.</td>
+      <td>Verkäufer haftet nur noch für grobe Fahrlässigkeit; Recht auf Einlagerung auf Kosten des Käufers oder ${T('Selbsthilfeverkauf', 'tự bán đấu giá hàng cứu vãn chi phí')} (öffentliche Versteigerung).</td>
+    </tr>
+  </tbody>
+</table>
 <div class="vi">
-  <b>Tóm tắt Tiếng Việt — Bảo vệ người tiêu dùng (Verbraucherschutz):</b>
+  <b>Tóm tắt Tiếng Việt — Bảo vệ Người tiêu dùng, Chống Cạnh tranh Bẩn &amp; Chậm trễ:</b>
   <ul>
-    <li><b>Quyền hủy hợp đồng trong 14 ngày (Widerrufsrecht 14 Tage):</b> Chỉ áp dụng cho giao dịch mua sắm từ xa (Fernabsatz: qua mạng, điện thoại, catalog) và giao dịch ký ngoài cơ sở kinh doanh (Haustürgeschäft). <b>KHÔNG ÁP DỤNG</b> cho mua sắm trực tiếp tại cửa hàng truyền thống (Ladenkauf).</li>
-    <li><b>Bảo hành theo luật (Gewährleistung 2 Jahre):</b> Nghĩa vụ bắt buộc của bên bán theo Bộ luật Dân sự BGB; <b>12 tháng đầu tiên</b> có sự đảo ngược nghĩa vụ chứng minh (Beweislastumkehr: mặc định hàng đã bị lỗi từ trước khi bán).</li>
-    <li><b>Bảo hành tự nguyện (Garantie):</b> Cam kết tự nguyện về chất lượng của nhà sản xuất hoặc người bán, có điều kiện đi kèm.</li>
+    <li><b>Luật UWG:</b> Cấm quảng cáo lừa dối gian lận (giảm giá ảo, dán nhãn sinh học giả), cấm gọi điện thoại chèo kéo tiếp thị khi khách chưa cho phép (Cold Calling).</li>
+    <li><b>Fernabsatz (Mua hàng từ xa):</b> Mua hàng online/qua mạng có quyền đổi trả <b>14 ngày</b> không cần lý do. Ngoại lệ: Đồ ăn tươi sống nấu sẵn, đồ vệ sinh cá nhân đã bóc niêm phong.</li>
+    <li><b>Các loại Verzug:</b>
+      <ul>
+        <li><b>Lieferungsverzug (Chậm giao hàng):</b> Khách có quyền bắt giao hàng, hoặc gia hạn thời hạn cuối rồi hủy hợp đồng và đòi bồi thường.</li>
+        <li><b>Zahlungsverzug (Chậm trả tiền):</b> Sau 30 ngày tự động bị tính là chậm trả. Bị phạt lãi suất: người tiêu dùng chịu <b>lãi suất cơ bản + 5%</b>; doanh nghiệp B2B chịu <b>lãi suất cơ bản + 9%</b>, cộng phí đòi nợ Inkasso.</li>
+        <li><b>Annahmeverzug (Không chịu nhận hàng):</b> Bên bán được phép gửi hàng vào kho tính phí hoặc phát mại bán đấu giá.</li>
+      </ul>
+    </li>
   </ul>
 </div>
 `;
 
-  C.geld = `<h2>Geld & Zahlungsverkehr</h2>
-<div class="hint">WK Fachstufe I · Funktionen des Geldes, Geldarten und bargeldlose Zahlung.</div>
+  // Umgang mit Geld & Zahlungsverkehr
+  C.geld = `<h2>Geld &amp; Zahlungsverkehr</h2>
+<div class="hint">WK Fachstufe I · Formen des Zahlungsverkehrs · SEPA · Karten.</div>
 <h3 class="sub">1. Funktionen des Geldes</h3>
-<table><tr><th>Funktion</th><th>Bedeutung</th></tr>
-<tr><td>${T('Tauschmittel', 'phương tiện trao đổi')} / Zahlungsmittel</td><td>Man kann damit Waren und Dienstleistungen kaufen (kein direkter Tausch Ware gegen Ware nötig).</td></tr>
-<tr><td>${T('Wertaufbewahrungsmittel', 'phương tiện cất giữ giá trị')}</td><td>Man kann Geld sparen und später ausgeben. Inflation mindert diese Funktion.</td></tr>
-<tr><td>${T('Wertmaßstab', 'thước đo giá trị')} / Recheneinheit</td><td>Preise machen Güter vergleichbar.</td></tr>
-<tr><td>Wertübertragungsmittel</td><td>Schenken, Vererben, Kredite.</td></tr></table>
-<p>→ Tiền dùng để trao đổi, cất giữ giá trị, đo giá trị (so sánh giá) và chuyển giao giá trị.</p>
-<h3 class="sub">2. Geldarten</h3>
 <ul>
-<li>${T('Bargeld', 'tiền mặt')}: Münzen und Banknoten – Euro-Banknoten sind das einzige unbeschränkte gesetzliche Zahlungsmittel.</li>
-<li>${T('Buchgeld', 'tiền ghi sổ / tiền trong tài khoản')} (Giralgeld): Guthaben auf dem Girokonto.</li>
-<li>E-Geld: z. B. Guthaben bei PayPal oder auf Prepaid-Karten.</li>
+<li>${T('Tausch- und Zahlungsmittel', 'phương tiện trao đổi và thanh toán')}: ermöglicht den Kauf von Waren ohne Naturaltausch.</li>
+<li>${T('Wertmaßstab und Recheneinheit', 'thước đo giá trị và đơn vị tính toán')}: macht Preise vergleichbar (z. B. Menü 28 € vs. Steak 35 €).</li>
+<li>${T('Wertaufbewahrungsmittel', 'phương tiện cất giữ giá trị')}: Ersparnisse für die Zukunft (Gefahr: Inflation mindert die Kaufkraft).</li>
 </ul>
-<p>Die <b>EZB</b> (Europäische Zentralbank) sorgt für ${T('Preisniveaustabilität', 'ổn định mức giá')}: Ziel ca. <b>2 % Inflation</b> pro Jahr. Steigt das Preisniveau, sinkt die ${T('Kaufkraft', 'sức mua')} des Geldes.</p>
-<h3 class="sub">3. Bargeldloser Zahlungsverkehr</h3>
-<table><tr><th>Instrument</th><th>Merkmal</th></tr>
-<tr><td>${T('Überweisung', 'chuyển khoản')}</td><td>Zahler beauftragt seine Bank; IBAN des Empfängers nötig. Echtzeitüberweisung in Sekunden.</td></tr>
-<tr><td>${T('Dauerauftrag', 'lệnh chuyển khoản định kỳ')}</td><td>Gleicher Betrag, gleicher Empfänger, regelmäßig (Miete).</td></tr>
-<tr><td>${T('Lastschrift', 'ghi nợ trực tiếp (người nhận rút tiền)')} (SEPA)</td><td>Der <b>Empfänger</b> zieht den Betrag ein, wechselnde Beträge (Strom, Handy). Mit Mandat: Rückgabe innerhalb von <b>8 Wochen</b> ohne Begründung.</td></tr>
-<tr><td>Girocard / Debitkarte</td><td>Betrag wird sofort vom Konto abgebucht, PIN oder kontaktlos.</td></tr>
-<tr><td>${T('Kreditkarte', 'thẻ tín dụng')}</td><td>Umsätze werden gesammelt und später abgerechnet → kurzfristiger Kredit; Gebühren und hohe Zinsen bei Teilzahlung.</td></tr>
-<tr><td>Mobiles Bezahlen</td><td>Smartphone/Smartwatch (Apple Pay, Google Pay) – technisch meist Debit- oder Kreditkarte.</td></tr></table>
-<p><b>Girokonto:</b> Grundlage für Gehaltseingang. Jeder hat Anspruch auf ein ${T('Basiskonto', 'tài khoản cơ bản')} (auch ohne festen Wohnsitz, auch bei schlechter SCHUFA). ${T('Dispositionskredit', 'hạn mức thấu chi')}: Konto darf bis zu einer Grenze überzogen werden – sehr teuer.</p>
-<p>→ Chuyển khoản: người trả chủ động. Lastschrift: người nhận rút tiền, có thể đòi lại trong 8 tuần. Thẻ ghi nợ trừ tiền ngay; thẻ tín dụng trả sau.</p>
-<div class="hint">Merksatz: Funktionen = Tausch · Wertaufbewahrung · Wertmaßstab · Lastschrift 8 Wochen zurück · EZB-Ziel 2 %.</div>
-<div class="vi">
-  <b>Tóm tắt Tiếng Việt — Tiền tệ & Phương thức thanh toán (Geld & Zahlungsverkehr):</b>
-  <ul>
-    <li><b>3 Chức năng cốt lõi của tiền tệ:</b> (1) <b>Tausch- und Zahlungsmittel</b> (Phương tiện trao đổi và thanh toán); (2) <b>Wertaufbewahrungsmittel</b> (Phương tiện cất trữ giá trị); (3) <b>Wertmaßstab und Recheneinheit</b> (Thước đo giá trị và đơn vị tính toán).</li>
-    <li><b>Phương thức thanh toán không dùng tiền mặt:</b> <b>Überweisung</b> (Chuyển khoản – người mua chủ động chuyển), <b>Lastschrift (SEPA-Basislastschrift)</b> (Trừ tiền tự động – người bán chủ động rút từ tài khoản người mua; người mua có quyền đòi lại tiền trong vòng <b>8 tuần</b> vô điều kiện), <b>Dauerauftrag</b> (Ủy nhiệm chi định kỳ cùng số tiền như tiền nhà), <b>Girocard / Debitkarte vs. Kreditkarte</b>.</li>
-  </ul>
-</div>
-`;
-
-  C.kredit = `<h2>Kredit & Kreditsicherheiten</h2>
-<div class="hint">WK Fachstufe I · Kredit = Geld auf Zeit gegen Zinsen. Vorher prüfen: Brauche ich das wirklich? Kann ich die Raten sicher zahlen?</div>
-<h3 class="sub">1. Kreditarten für Verbraucher</h3>
-<table><tr><th>Kreditart</th><th>Merkmal</th></tr>
-<tr><td>${T('Dispositionskredit', 'hạn mức thấu chi')} („Dispo")</td><td>Überziehung des Girokontos bis zu einem Rahmen; flexibel, aber sehr hohe Zinsen (oft 10–15 %).</td></tr>
-<tr><td>${T('Ratenkredit', 'vay trả góp')} (Konsumentenkredit)</td><td>Fester Betrag, feste monatliche Raten, feste Laufzeit (Auto, Möbel).</td></tr>
-<tr><td>Null-Prozent-Finanzierung</td><td>Händler + Bank; oft Kosten versteckt (Restschuldversicherung, höherer Preis).</td></tr>
-<tr><td>Baufinanzierung (Hypothekendarlehen)</td><td>Große Beträge, lange Laufzeit, gesichert durch Grundschuld.</td></tr>
-<tr><td>Leasing</td><td>„Mieten" statt kaufen; Leasinggeber bleibt Eigentümer.</td></tr></table>
-<h3 class="sub">2. Zinsen vergleichen</h3>
-<p>${T('Sollzins', 'lãi suất danh nghĩa')} = reiner Zins. ${T('Effektiver Jahreszins', 'lãi suất thực tế hàng năm')} = Zins <b>plus alle Kosten</b> (Gebühren) pro Jahr → nur dieser Wert eignet sich zum Vergleich von Angeboten.</p>
-<p><b>Zinsformel (kaufmännisch):</b> Zinsen = Kapital × Zinssatz × Tage ÷ (100 × 360)</p>
-<p>Beispiel: 2.400 € Dispo, 12 %, 90 Tage → 2.400 × 12 × 90 ÷ 36.000 = <b>72 €</b> Zinsen.</p>
-<h3 class="sub">3. Kreditwürdigkeit (Bonität)</h3>
-<p>Die Bank prüft, ob der Kunde zahlen kann und will: Einkommen, feste Ausgaben, Arbeitsverhältnis, vorhandene Schulden. Auskunft gibt die ${T('SCHUFA', 'cơ quan dữ liệu tín dụng')} (Schutzgemeinschaft für allgemeine Kreditsicherung): Sie speichert Konten, Kredite, Handyverträge und Zahlungsausfälle. Jeder hat 1× pro Jahr Anspruch auf eine <b>kostenlose Selbstauskunft</b>.</p>
-<h3 class="sub">4. Verbraucherdarlehensvertrag</h3>
-<ul><li><b>Schriftform</b> mit Pflichtangaben (Nettodarlehensbetrag, effektiver Jahreszins, Laufzeit, Raten).</li>
-<li><b>Widerrufsrecht 14 Tage</b>.</li>
-<li>Vorzeitige Rückzahlung ist jederzeit möglich (ggf. Vorfälligkeitsentschädigung).</li></ul>
-<h3 class="sub">5. Kreditsicherheiten</h3>
-<table><tr><th>Personalsicherheit</th><th>Realsicherheiten (Sachen/Rechte)</th></tr>
-<tr><td>${T('Bürgschaft', 'bảo lãnh')}: eine weitere Person haftet für die Schuld.</td>
-<td>${T('Sicherungsübereignung', 'chuyển quyền sở hữu để bảo đảm')} (Auto: Bank wird Eigentümer, Kunde bleibt Besitzer und nutzt es) · ${T('Pfandrecht', 'quyền cầm cố')} (Schmuck, Wertpapiere – Bank wird Besitzer) · ${T('Grundschuld', 'thế chấp bất động sản')} (Immobilie, Eintrag im Grundbuch) · Abtretung von Lohnansprüchen · Eigentumsvorbehalt (beim Ratenkauf)</td></tr></table>
-<p>→ Sicherungsübereignung: ngân hàng là chủ sở hữu, người vay vẫn dùng xe. Pfand: ngân hàng giữ vật. Grundschuld: thế chấp nhà đất.</p>
-<div class="hint">Merksatz: Vergleich nur über effektiven Jahreszins · Z = K·p·t / (100·360) · Dispo am teuersten · Sicherungsübereignung = Bank Eigentümer, Kunde Besitzer.</div>
-<div class="vi">
-  <b>Tóm tắt Tiếng Việt — Tín dụng & Biện pháp bảo đảm tiền vay:</b>
-  <ul>
-    <li><b>Lãi suất hiệu dụng (Effektiver Jahreszins):</b> Phản ánh toàn bộ chi phí thực tế hàng năm của khoản vay (gồm lãi suất danh nghĩa, phí xử lý, bảo hiểm); là căn cứ duy nhất để so sánh các gói vay theo Luật bảo vệ người tiêu dùng.</li>
-    <li><b>Công thức tính lãi đơn:</b> \(Z = rac{K \cdot p \cdot t}{100 \cdot 360}\) (trong ngành tài chính Đức quy ước 1 năm = 360 ngày, 1 tháng = 30 ngày).</li>
-    <li><b>Các biện pháp bảo đảm tiền vay (Kreditsicherheiten):</b> Cá nhân (Personalsicherheiten: Bürgschaft – bảo lãnh), Hiện vật/Bất động sản (Realsicherheiten: Sicherungsübereignung – chuyển quyền sở hữu bảo đảm xe cộ; Grundschuld / Hypothek – thế chấp bất động sản vào sổ địa chính).</li>
-  </ul>
-</div>
-`;
-
-  C.buerg = `<h2>Bürgschaft</h2>
-<div class="hint">WK Fachstufe I · §§ 765 ff. BGB · Ein Dritter verspricht dem Gläubiger, für die Schuld eines anderen einzustehen.</div>
-<h3 class="sub">1. Beteiligte</h3>
-<p>${T('Gläubiger', 'chủ nợ')} (z. B. Bank) – ${T('Hauptschuldner', 'người nợ chính')} (Kreditnehmer) – ${T('Bürge', 'người bảo lãnh')} (z. B. Eltern). Der Bürge schließt den Bürgschaftsvertrag mit dem <b>Gläubiger</b>.</p>
-<p>→ Người bảo lãnh ký hợp đồng với chủ nợ (ngân hàng), cam kết trả nợ thay nếu người vay không trả.</p>
-<h3 class="sub">2. Form</h3>
-<p>Die Bürgschaftserklärung muss <b>schriftlich</b> (eigenhändig unterschrieben) erfolgen – E-Mail reicht nicht. Ausnahme: Für Kaufleute im Rahmen ihres Handelsgeschäfts genügt die mündliche Form (§ 350 HGB).</p>
-<h3 class="sub">3. Arten</h3>
-<table><tr><th>Ausfallbürgschaft</th><th>Selbstschuldnerische Bürgschaft</th></tr>
-<tr><td>Der Bürge hat die ${T('Einrede der Vorausklage', 'quyền yêu cầu chủ nợ kiện con nợ trước')}: Der Gläubiger muss erst erfolglos gegen den Hauptschuldner vollstrecken (Zwangsvollstreckung), bevor er den Bürgen in Anspruch nimmt.</td>
-<td>Der Bürge <b>verzichtet</b> auf die Einrede der Vorausklage. Er haftet <b>sofort wie der Hauptschuldner</b>, sobald dieser nicht zahlt. Banken verlangen fast immer diese Form; bei Kaufleuten ist sie die Regel.</td></tr></table>
-<p>Weitere: ${T('Höchstbetragsbürgschaft', 'bảo lãnh có giới hạn số tiền')} (Haftung nur bis zu einer festen Summe) · Zeitbürgschaft (befristet) · Mietbürgschaft.</p>
-<h3 class="sub">4. Rechte und Risiken des Bürgen</h3>
+<h3 class="sub">2. Formen des Zahlungsverkehrs</h3>
+<table><tr><th>Form</th><th>Beispiele</th></tr>
+<tr><td><b>Barzahlung</b></td><td>Münzen und Banknoten; Quittung als Zahlungsnachweis.</td></tr>
+<tr><td><b>Halbbare Zahlung</b></td><td>Einzahler bar auf fremdes Konto (Zahlschein) oder Barabhebung per Scheck.</td></tr>
+<tr><td><b>Bargeldlose Zahlung</b></td><td>Überweisung, Dauerauftrag, Lastschrift, Kartenzahlung, Online-Banking.</td></tr></table>
+<h3 class="sub">3. Bargeldlose Instrumente</h3>
 <ul>
-<li>Zahlt der Bürge, geht die Forderung auf ihn über → ${T('Rückgriff', 'quyền đòi lại (truy đòi)')} gegen den Hauptschuldner (oft wertlos, weil dieser ja zahlungsunfähig ist).</li>
-<li>Der Bürge haftet mit seinem <b>ganzen Vermögen</b> – Bürgschaft kann selbst in die Überschuldung führen.</li>
-<li>Sittenwidrig und damit nichtig kann eine Bürgschaft sein, wenn ein naher Angehöriger mit sehr geringem Einkommen krass finanziell überfordert wird.</li>
+<li>${T('Überweisung', 'chuyển khoản')}: Der Zahler beauftragt seine Bank, Geld auf das Konto des Empfängers zu übertragen. Einmalig, wechselnde Beträge.</li>
+<li>${T('Dauerauftrag', 'lệnh chuyển tiền định kỳ cố định')}: Fester Betrag, fester Termin, gleicher Empfänger (z. B. Miete, Ausbildungsvergütung). Ausführung automatisch durch die Bank.</li>
+<li>${T('SEPA-Basislastschrift', 'ủy nhiệm thu tiền tự động')}: Der Empfänger bucht vom Konto des Zahlers ab (nach erteiltem Mandat). Vorteil für Zahler: <b>Widerspruchsrecht 8 Wochen</b> (bei unberechtigter Abbuchung 13 Monate). Für wechselnde Beträge (Strom, Telefon).</li>
+<li>${T('Girocard', 'thẻ ghi nợ trực tiếp')} (Debitkarte): Belastung erfolgt sofort/zeitnah auf dem Girokonto. PIN oder Unterschrift.</li>
+<li>${T('Kreditkarte', 'thẻ tín dụng')}: Beträge werden gesammelt und einmal monatlich abgebucht (Kredit bis zur Abrechnung). Weltweit einsetzbar, oft Jahresgebühr.</li>
 </ul>
-<p>→ Tip: Chỉ bảo lãnh khi thật sự tin tưởng và đủ khả năng tự trả toàn bộ khoản nợ.</p>
-<div class="hint">Merksatz: Schriftform · Ausfallbürgschaft = Einrede der Vorausklage · selbstschuldnerisch = sofort haften · Bürge → Rückgriff auf Hauptschuldner.</div>
+<h3 class="sub">4. SEPA (Single Euro Payments Area)</h3>
+<p>Einheitlicher europäischer Zahlungsverkehrsraum. Wichtige Angaben: ${T('IBAN', 'số tài khoản chuẩn quốc tế')} (in DE: 22 Stellen: DE + 2 Prüfziffern + 8 Bankleitzahl + 10 Kontonummer) und ${T('BIC', 'mã định danh ngân hàng')} (internationaler Bankcode).</p>
 <div class="vi">
-  <b>Tóm tắt Tiếng Việt — Hợp đồng bảo lãnh (Bürgschaft):</b>
+  <b>Tóm tắt Tiếng Việt — Tiền tệ &amp; Giao dịch Thanh toán:</b>
   <ul>
-    <li><b>Hình thức bắt buộc:</b> Hợp đồng bảo lãnh của cá nhân không làm kinh doanh bắt buộc phải lập thành <b>văn bản giấy có chữ ký tay (Schriftform § 766 BGB)</b>; cấm bảo lãnh qua email/điện thoại.</li>
-    <li><b>Bảo lãnh thông thường (Ausfallbürgschaft):</b> Người bảo lãnh có quyền từ chối trả nợ trước (<b>Einrede der Vorausklage</b>), buộc chủ nợ phải kiện và cưỡng chế thi hành án con nợ chính trước; chỉ khi con nợ chính thực sự khánh kiệt mới phải trả thay.</li>
-    <li><b>Bảo lãnh tự nguyện liên đới (Selbstschuldnerische Bürgschaft):</b> Người bảo lãnh từ bỏ quyền từ chối; ngay khi con nợ chính chậm thanh toán, chủ nợ có thể đòi tiền người bảo lãnh ngay lập tức.</li>
+    <li><b>3 Hình thức thanh toán:</b> Tiền mặt (Bar), Nửa tiền mặt (Halbbar - nộp tiền mặt vào tài khoản người khác), Không dùng tiền mặt (Bargeldlos - chuyển khoản, quẹt thẻ).</li>
+    <li><b>Công cụ thanh toán:</b>
+      <ul>
+        <li><b>Überweisung:</b> Chuyển khoản thông thường từng lần.</li>
+        <li><b>Dauerauftrag:</b> Lệnh định kỳ cố định ngày và số tiền (tiền nhà, tiền internet).</li>
+        <li><b>Lastschrift:</b> Ủy quyền cho bên bán tự động rút tiền (hóa đơn điện thoại, tiền điện); người mua có quyền đòi lại tiền trong vòng <b>8 tuần</b> nếu không đồng ý.</li>
+        <li><b>Girocard (Debit):</b> Quẹt thẻ tiền trừ ngay lập tức trong tài khoản; <b>Kreditkarte (Credit):</b> Chi tiêu trước, cuối tháng thanh toán 1 lần.</li>
+      </ul>
+    </li>
   </ul>
 </div>
 `;
 
-  C.schulden = `<h2>Überschuldung & Verbraucherinsolvenz</h2>
-<div class="hint">WK Fachstufe I · Verschuldung ist normal (Kredit). Überschuldung heißt: Die Einnahmen reichen dauerhaft nicht mehr für Lebenshaltung + Raten.</div>
-<h3 class="sub">1. Ursachen</h3>
-<p>Arbeitslosigkeit · Trennung/Scheidung · Krankheit · gescheiterte Selbstständigkeit · unwirtschaftliche Haushaltsführung (Konsum, Handyverträge, Online-Shopping mit „Buy now, pay later") · fehlende Finanzkenntnisse · Bürgschaft.</p>
-<p>→ Nguyên nhân chính: mất việc, ly hôn, bệnh, kinh doanh thất bại, tiêu xài quá mức, thiếu hiểu biết tài chính.</p>
-<h3 class="sub">2. Vorbeugen</h3>
-<p>${T('Haushaltsplan', 'kế hoạch ngân sách gia đình')} führen (Einnahmen – feste Ausgaben – variable Ausgaben), Rücklagen bilden (ca. 3 Netto-Monatsgehälter), Dispo nicht dauerhaft nutzen, Verträge prüfen, früh zur Schuldnerberatung.</p>
-<h3 class="sub">3. Vom Zahlungsverzug zur Pfändung</h3>
+  // CHUYÊN ĐỀ MỚI: Geldanlagemöglichkeiten
+  C.geldanlage = `<h2>Geldanlagemöglichkeiten</h2>
+<div class="hint">WK Fachstufe I · Sparbuch, Termingeld, Tagesgeld, Wertpapiere, Aktien, Fonds &amp; Magisches Dreieck.</div>
+<h3 class="sub">1. Klassische Bankeinlagen im Überblick</h3>
+<table class="tbl">
+  <thead><tr><th>Anlageform</th><th>Merkmale &amp; Verfügbarkeit</th><th>Verzinsung &amp; Sicherheit</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><b>${T('Sparbuch', 'sổ tiết kiệm truyền thống')} (Spareinlage)</b></td>
+      <td>Urkunde über Spareinlage. Gesetzliche Kündigungsfrist: <b>3 Monate</b> für Beträge über 2.000 € pro Kalendermonat. Für kleinere Notgroschen.</td>
+      <td>Sehr geringe Verzinsung (Gefahr des Kaufkraftverlusts durch Inflation). Sehr hohe Sicherheit (${T('Einlagensicherung', 'bảo hiểm tiền gửi')} bis 100.000 €).</td>
+    </tr>
+    <tr>
+      <td><b>${T('Tagesgeld', 'tiền gửi linh hoạt hàng ngày')}</b></td>
+      <td>Täglich fälliges Konto ohne feste Laufzeit. <b>Täglich voll verfügbar</b> (hohe Liquidität). Kein Zahlungsverkehr möglich (nur Verrechnungskonto).</td>
+      <td>Variabler Zinssatz, meist höher als beim Girokonto/Sparbuch. Gesetzliche Einlagensicherung bis 100.000 € je Kunde und Bank.</td>
+    </tr>
+    <tr>
+      <td><b>${T('Termingeld / Festgeld', 'tiền gửi kỳ hạn cố định')}</b></td>
+      <td>Feste Laufzeit (z. B. 6, 12, 24 oder 36 Monate) und fester Anlagebetrag. <b>Keine vorzeitige Verfügung</b> während der Laufzeit möglich.</td>
+      <td>Fester Zinssatz über die gesamte Laufzeit (Planungssicherheit). Keine Kursverluste, Einlagensicherung bis 100.000 €.</td>
+    </tr>
+  </tbody>
+</table>
+<h3 class="sub">2. Wertpapiere: Aktien vs. Anleihen</h3>
+<table class="tbl">
+  <thead><tr><th>Kriterium</th><th>${T('Aktie', 'cổ phiếu (vốn chủ sở hữu)')} (Teilhaberpapier)</th><th>${T('Anleihe / Rentenpapier', 'trái phiếu (vốn vay)')} (Gläubigerpapier)</th></tr></thead>
+  <tbody>
+    <tr><td><b>Rechtsstellung</b></td><td>Anleger wird <b>Miteigentümer</b> an der Aktiengesellschaft (AG).</td><td>Anleger wird <b>Gläubiger</b> (Kreditgeber für Staat oder Unternehmen).</td></tr>
+    <tr><td><b>Ertrag</b></td><td>Erfolgsabhängige ${T('Dividende', 'cổ tức')} + mögliche ${T('Kursgewinne', 'lãi chênh lệch giá')}.</td><td>Fester Zinsanspruch (${T('Kupon', 'lãi suất trái phiếu')}) unabhängig vom Unternehmenserfolg.</td></tr>
+    <tr><td><b>Rückzahlung</b></td><td>Kein Anspruch auf Rückzahlung des Kapitals durch die AG (Verkauf an der Börse zum aktuellen Kurswert).</td><td>Rückzahlung zum Nennwert am Ende der vereinbarten Laufzeit.</td></tr>
+    <tr><td><b>Risiko</b></td><td><b>Hoch:</b> Kursverluste, Dividendenkürzung, bei Insolvenz Totalverlust möglich.</td><td><b>Gering bis mittel:</b> Bonitätsrisiko des Ausstellers (Staatsanleihen DE sehr sicher).</td></tr>
+  </tbody>
+</table>
+<h3 class="sub">3. Investmentfonds &amp; ETFs</h3>
+<ul>
+  <li><b>${T('Aktiver Investmentfonds', 'quỹ đầu tư chủ động')}:</b> Viele Anleger zahlen in einen Topf ein. Ein professioneller <b>Fondsmanager</b> wählt Aktien/Anleihen aus. Vorteil: Risikostreuung (${T('Diversifikation', 'đa dạng hóa danh mục')}). Nachteil: Hoher Ausgabeaufschlag (3–5 %) und jährliche Verwaltungsgebühren.</li>
+  <li><b>${T('ETF', 'quỹ hoán đổi danh mục thụ động')} (Exchange Traded Fund):</b> Bildet einen festen Börsenindex exakt nach (z. B. <b>MSCI World</b> mit über 1.500 Unternehmen weltweit oder <b>DAX</b>). Kein teurer Fondsmanager nötig → <b>extrem niedrige laufende Kosten (oft nur 0,1–0,2 % p. a.)</b>. Ideal für langfristigen Vermögensaufbau mit Sparplänen ab 25 €/Monat.</li>
+</ul>
+<h3 class="sub">4. Das Magische Dreieck der Geldanlage</h3>
+<p>Bei jeder Geldanlage konkurrieren drei Ziele miteinander:</p>
 <ol>
-<li><b>Mahnung</b> durch den Gläubiger (außergerichtlich), ggf. Inkassobüro.</li>
-<li><b>Gerichtliches Mahnverfahren:</b> ${T('Mahnbescheid', 'lệnh nhắc nợ của tòa')} → Schuldner kann innerhalb von <b>2 Wochen Widerspruch</b> einlegen. Ohne Widerspruch: ${T('Vollstreckungsbescheid', 'lệnh cưỡng chế thi hành')} → <b>2 Wochen Einspruch</b>. Danach ist er ein ${T('Vollstreckungstitel', 'chứng thư thi hành')}.</li>
-<li><b>Zwangsvollstreckung:</b> ${T('Gerichtsvollzieher', 'nhân viên thi hành án')} pfändet Sachen (nicht: lebensnotwendige Dinge wie Bett, Kühlschrank, Arbeitsmittel) oder Lohn/Konto (${T('Lohnpfändung', 'khấu trừ lương để trả nợ')}). Vermögensauskunft unter Eid.</li>
+  <li><b>${T('Rentabilität', 'khả năng sinh lời')} (Rendite):</b> Wie viel Gewinn/Zins bringt die Anlage?</li>
+  <li><b>${T('Sicherheit', 'mức độ an toàn vốn')}:</b> Wie sicher ist mein eingezahltes Geld vor Verlusten?</li>
+  <li><b>${T('Liquidität', 'tính thanh khoản / tốc độ rút tiền')}:</b> Wie schnell kann ich die Anlage wieder in Bargeld umwandeln?</li>
 </ol>
-<p>Ein ${T('Pfändungsschutzkonto', 'tài khoản được bảo vệ khỏi bị tịch thu')} (P-Konto) schützt einen monatlichen Grundfreibetrag (rund 1.550 € pro Monat, wird jedes Jahr zum 1. Juli angepasst und erhöht sich bei Unterhaltspflichten). Jedes Girokonto kann kostenlos in ein P-Konto umgewandelt werden.</p>
-<h3 class="sub">4. Verbraucherinsolvenzverfahren</h3>
-<ol>
-<li>Außergerichtlicher Einigungsversuch mit allen Gläubigern (mit Schuldnerberatungsstelle).</li>
-<li>Antrag beim Insolvenzgericht (Amtsgericht).</li>
-<li>${T('Wohlverhaltensphase', 'giai đoạn hành xử tốt')} – <b>3 Jahre</b>: pfändbares Einkommen geht an einen Treuhänder, Schuldner muss arbeiten bzw. sich um Arbeit bemühen.</li>
-<li>${T('Restschuldbefreiung', 'được xóa phần nợ còn lại')}: übrige Schulden werden erlassen (nicht: Geldstrafen, Schulden aus vorsätzlichen Straftaten, Unterhaltsrückstände bei Pflichtverletzung).</li>
-</ol>
-<p><b>Verjährung:</b> Regelmäßige Verjährungsfrist <b>3 Jahre</b>, beginnt am Ende des Jahres, in dem die Forderung entstanden ist. Titulierte Forderungen verjähren erst nach 30 Jahren.</p>
-<p>→ Nợ thông thường hết hiệu lực đòi sau 3 năm (tính từ cuối năm phát sinh). Có lệnh tòa: 30 năm. Phá sản cá nhân: 3 năm hành xử tốt, sau đó được xóa nợ.</p>
-<div class="hint">Merksatz: Mahnbescheid → 2 Wochen Widerspruch · Vollstreckungsbescheid → 2 Wochen Einspruch · P-Konto · Insolvenz: 3 Jahre → Restschuldbefreiung · Verjährung 3 Jahre.</div>
+<div class="hint"><b>Grundregel:</b> Kein Produkt kann alle drei Ziele maximieren! Hohe Rendite geht immer zu Lasten von Sicherheit oder Liquidität. Hohe Sicherheit und tägliche Verfügbarkeit (Tagesgeld) bringen nur niedrige Zinsen.</div>
 <div class="vi">
-  <b>Tóm tắt Tiếng Việt — Vỡ nợ cá nhân & Quy trình phá sản tiêu dùng:</b>
+  <b>Tóm tắt Tiếng Việt — Các Hình Thức Đầu Tư &amp; Tam Giác Tài Chính (Magisches Dreieck):</b>
   <ul>
-    <li><b>Trình tự đòi nợ tư pháp (Gerichtliches Mahnverfahren):</b> Mahnbescheid (Đơn đòi nợ của Tòa – con nợ có <b>2 tuần</b> để phản đối Widerspruch) → Vollstreckungsbescheid (Quyết định thi hành án – có <b>2 tuần</b> để kháng cáo Einspruch) → Sau đó trở thành án lệnh thi hành có hiệu lực trong <b>30 năm</b> (Vollstreckungstitel).</li>
-    <li><b>Tài khoản chống phong tỏa (P-Konto / Pfändungsschutzkonto):</b> Bảo vệ mức sinh hoạt tối thiểu theo luật (khoảng 1.500 €/tháng) không bị chủ nợ phong tỏa hay rút mất tiền ăn.</li>
+    <li><b>Sparbuch / Tagesgeld / Festgeld:</b> Rất an toàn (được Nhà nước bảo hiểm tiền gửi 100.000 €/ngân hàng). Tagesgeld rút linh hoạt bất kỳ lúc nào; Festgeld gửi có kỳ hạn cố định được lãi suất cao hơn.</li>
+    <li><b>Cổ phiếu (Aktie) vs. Trái phiếu (Anleihe):</b> Cổ phiếu là sở hữu 1 phần doanh nghiệp, ăn chia cổ tức và chênh lệch giá, rủi ro cao; Trái phiếu là cho vay nhận lãi cố định, ít rủi ro hơn.</li>
+    <li><b>Quỹ ETF:</b> Hình thức đầu tư hiện đại thông minh nhất hiện nay cho người trẻ. Mô phỏng chỉ số thế giới (MSCI World), tự động chia nhỏ tiền mua hàng ngàn công ty (không bao giờ sợ mất trắng), chi phí vận hành cực rẻ.</li>
+    <li><b>Tam giác tài chính kỳ diệu:</b> Luôn có xung đột giữa <b>Lợi nhuận - An toàn - Thanh khoản</b>. Không bao giờ có món đầu tư nào vừa lãi khủng, vừa an toàn 100% lại vừa muốn rút lúc nào cũng được!</li>
+  </ul>
+</div>
+`;
+
+  // Kreditarten & Kreditvergleiche
+  C.kredit = `<h2>Kreditarten &amp; Kreditvergleiche</h2>
+<div class="hint">WK Fachstufe I · Kreditfähigkeit vs. Kreditwürdigkeit · Kreditarten &amp; SCHUFA.</div>
+<h3 class="sub">1. Kreditfähigkeit vs. Kreditwürdigkeit (Bonität)</h3>
+<table class="tbl">
+  <thead><tr><th>Begriff</th><th>Bedeutung / Kriterien</th><th>Wer erfüllt die Voraussetzung?</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><b>${T('Kreditfähigkeit', 'năng lực pháp lý được vay tiền')}</b></td>
+      <td>Rechtliche Fähigkeit, rechtswirksam einen Darlehensvertrag abzuschließen. Hängt an der <b>Geschäftsfähigkeit</b>.</td>
+      <td>Alle <b>voll geschäftsfähigen Personen</b> (ab 18 Jahre) sowie juristische Personen (vertreten durch Vorstand/Geschäftsführer). Minderjährige sind <b>nicht</b> kreditfähig.</td>
+    </tr>
+    <tr>
+      <td><b>${T('Kreditwürdigkeit', 'độ uy tín và khả năng chi trả tài chính')} (Bonität)</b></td>
+      <td>Wirtschaftliche und persönliche Zuverlässigkeit, das Darlehen inklusive Zinsen vertragsgemäß zurückzuzahlen.</td>
+      <td>Prüfung durch die Bank anhand von: Einkommensnachweisen, festem Arbeitsvertrag, monatlichen Ausgaben, vorhandenen Vermögenswerten sowie Auskunft der <b>${T('SCHUFA', 'cơ quan xếp hạng tín nhiệm tín dụng Đức')}</b>.</td>
+    </tr>
+  </tbody>
+</table>
+<h3 class="sub">2. Kreditarten im Vergleich</h3>
+<table><tr><th>Kreditart</th><th>Laufzeit / Merkmal</th><th>Verwendung &amp; Zinsniveau</th></tr>
+<tr><td><b>${T('Dispositionskredit', 'hạn mức thấu chi tài khoản')} (Dispo)</b></td><td>Sehr kurzfristig · Überziehung des Girokontos bis zu einem vereinbarten Rahmen (z. B. 2–3 Nettogehälter).</td><td>Für kurzfristige Engpässe. <b>Sehr hohe Zinsen</b> (oft 10 bis 14 % p. a.!). Sollte schnellstmöglich getilgt werden.</td></tr>
+<tr><td><b>${T('Ratenkredit', 'khoản vay trả góp định kỳ')} (Konsumentenkredit)</b></td><td>Mittelfristig (12 bis 84 Monate) · Fester Zinssatz, Auszahlung in einer Summe, Rückzahlung in gleichbleibenden monatlichen Raten.</td><td>Anschaffung von Konsumgütern (Auto, Möbel, Elektronik). Deutlich günstiger als der Dispo.</td></tr>
+<tr><td><b>${T('Annuitätendarlehen', 'khoản vay trả góp cố định cả gốc và lãi')}</b></td><td>Langfristig (10 bis 30 Jahre) · Gleichbleibende Jahres-/Monatsrate (${T('Annuität', 'số tiền trả góp cố định')}).</td><td>Immobilienfinanzierung. Mit jeder Tilgung sinkt der Zinsanteil, und der Tilgungsanteil steigt innerhalb der Rate.</td></tr>
+<tr><td><b>${T('Fälligkeitsdarlehen', 'khoản vay trả lãi định kỳ, gốc trả 1 lần cuối kỳ')}</b></td><td>Während der Laufzeit werden nur die Zinsen gezahlt; die gesamte Darlehenssumme wird am Ende auf einen Schlag getilgt.</td><td>Oft kombiniert mit Lebensversicherungen oder Bausparverträgen zur Endtilgung.</td></tr></table>
+<div class="vi">
+  <b>Tóm tắt Tiếng Việt — Phân loại Tín dụng &amp; Uy tín vay tiền:</b>
+  <ul>
+    <li><b>Kreditfähigkeit:</b> Năng lực pháp lý theo luật dân sự (phải đủ 18 tuổi). Trẻ vị thành niên không được phép vay nợ.</li>
+    <li><b>Kreditwürdigkeit (Bonität):</b> Khả năng tài chính và uy tín trả nợ (thu nhập ổn định, bảng lương, điểm số tín nhiệm SCHUFA sạch sẽ không nợ xấu).</li>
+    <li><b>Các loại vay:</b> Dispokredit là vay thấu chi tài khoản thẻ, lãi cực kỳ đắt đỏ; Ratenkredit là vay tiêu dùng trả góp hàng tháng; Annuitätendarlehen là vay mua nhà đất với số tiền trả cố định (gốc tăng dần, lãi giảm dần).</li>
+  </ul>
+</div>
+`;
+
+  // CHUYÊN ĐỀ MỚI: Verbraucherdarlehen & Effektivverzinsung
+  C.darlehen = `<h2>Verbraucherdarlehen &amp; Effektivverzinsung</h2>
+<div class="hint">WK Fachstufe I · Gesetzliche Verbraucherschutzvorschriften bei Darlehen (§§ 491 ff. BGB) &amp; Effektivzinsvergleich.</div>
+<h3 class="sub">1. Gesetzliche Vorgaben für Verbraucherdarlehen (§§ 491 ff. BGB)</h3>
+<ul>
+  <li><b>Zwingende ${T('Schriftform', 'hình thức văn bản bắt buộc')} (§ 492 BGB):</b> Verträge über Verbraucherdarlehen (ab 200 € Nettodarlehensbetrag) bedürfen der Schriftform oder einer qualifizierten elektronischen Signatur. Mündliche Kredite sind unwirksam!</li>
+  <li><b>Gesetzliche Pflichtangaben:</b> Nettodarlehensbetrag, Sollzinssatz, effektiver Jahreszins, Vertragslaufzeit, Höhe und Fälligkeit der Monatsraten, Gesamtkosten und Kündigungsbedingungen.</li>
+  <li><b>${T('Vorvertragliche Information', 'bảng thông tin trước hợp đồng')}:</b> Banken müssen dem Kunden rechtzeitig vor Abschluss die "Europäischen Standardinformationen für Verbraucherkredite" (SEKK) aushändigen.</li>
+  <li><b>${T('Widerrufsrecht', 'quyền hủy hợp đồng')} (§ 495 BGB):</b> Der Verbraucher kann den Darlehensvertrag innerhalb von <b>14 Tagen</b> ohne Angabe von Gründen schriftlich widerrufen.</li>
+  <li><b>Pflicht zur ${T('Kreditwürdigkeitsprüfung', 'nghĩa vụ kiểm tra khả năng trả nợ')} (§ 505a BGB):</b> Die Bank muss zwingend prüfen, ob der Verbraucher den Kredit voraussichtlich vertragsgemäß bedienen kann.</li>
+</ul>
+<h3 class="sub">2. Sollzins vs. Effektiver Jahreszins (Effektivverzinsung)</h3>
+<table class="tbl">
+  <thead><tr><th>Merkmal</th><th>${T('Sollzinssatz', 'lãi suất danh nghĩa')} (Nominalzins)</th><th>${T('Effektiver Jahreszins', 'lãi suất thực tế hàng năm')} (${T('Effektivzins', 'lãi suất hiệu dụng')})</th></tr></thead>
+  <tbody>
+    <tr><td><b>Definition</b></td><td>Der reine Zinssatz für das geliehene Kapital pro Jahr ohne Nebenkosten.</td><td>Die <b>Gesamtkosten des Kredits</b> bezogen auf ein Jahr in Prozent.</td></tr>
+    <tr><td><b>Enthaltene Kosten</b></td><td>Nur der reine Zins.</td><td><b>Sollzins + Bearbeitungsgebühren + Tilgungsverrechnung + Zahlungsweise (Monat/Quartal) + evtl. Vermittlungskosten.</b></td></tr>
+    <tr><td><b>Bedeutung beim Kreditvergleich</b></td><td>Ungeeignet zum Vergleich, da versteckte Nebenkosten fehlen!</td><td><b>Der einzige objektive Vergleichsmaßstab!</b> Die Preisangabenverordnung (PAngV) verpflichtet alle Banken, den effektiven Jahreszins gut sichtbar auszuweisen.</td></tr>
+  </tbody>
+</table>
+<h3 class="sub">3. Beispielrechnung Effektivzins-Falle</h3>
+<div class="note">
+  <b>Vergleich zweier Angebote über 10.000 € Kredit (Laufzeit 36 Monate):</b><br>
+  • <b>Bank A:</b> Sollzins 4,5 % p. a., aber mit 300 € Bearbeitungsgebühr und quartalsweiser Verrechnung → <b>Effektiver Jahreszins = 6,2 %</b>.<br>
+  • <b>Bank B:</b> Sollzins 5,0 % p. a. ohne jegliche Zusatzgebühren und mit sofortiger monatlicher Tilgungsverrechnung → <b>Effektiver Jahreszins = 5,1 %</b>.<br>
+  <b>Ergebnis:</b> Obwohl Bank A mit einem scheinbar niedrigeren "Sollzins" wirbt, ist <b>Bank B im Endeffekt deutlich günstiger!</b> Achte immer auf den effektiven Jahreszins!
+</div>
+<div class="vi">
+  <b>Tóm tắt Tiếng Việt — Hợp đồng Vay Tiêu dùng &amp; Lãi suất Thực tế (Effektivzins):</b>
+  <ul>
+    <li><b>Quy định bảo vệ người vay (BGB § 491):</b> Bắt buộc phải ký hợp đồng bằng văn bản, ngân hàng phải minh bạch bảng chi phí chuẩn Châu Âu, khách hàng có <b>14 ngày</b> để hủy hợp đồng (Widerrufsrecht) không mất phí.</li>
+    <li><b>Phân biệt Lãi suất Danh nghĩa (Sollzins) vs. Lãi suất Thực tế (Effektivzins):</b>
+      <ul>
+        <li><b>Sollzins:</b> Chỉ là con số lãi danh nghĩa mà ngân hàng quảng cáo giật tít, chưa tính các khoản phí phụ.</li>
+        <li><b>Effektiver Jahreszins:</b> Là tổng toàn bộ chi phí thực sự mà bạn phải trả trong 1 năm (gồm lãi + các loại phí dịch vụ + chu kỳ tính lãi).</li>
+      </ul>
+    </li>
+    <li><b>Quy tắc vàng khi đi vay ngân hàng:</b> Tuyệt đối không nhìn vào Sollzins. BẮT BUỘC phải dùng <b>Effektiver Jahreszins</b> để so sánh ngân hàng nào rẻ hơn!</li>
+  </ul>
+</div>
+`;
+
+  // Bürgschaft
+  C.buergschaft = `<h2>Bürgschaft als Kreditsicherheit</h2>
+<div class="hint">WK Fachstufe I · Personensicherheit · Selbstschuldnerische Bürgschaft vs. Ausfallbürgschaft.</div>
+<h3 class="sub">1. Das Prinzip</h3>
+<p>Ein Dritter (${T('Bürge', 'người bảo lãnh')}) verpflichtet sich gegenüber dem Gläubiger (Bank), für die Erfüllung der Verbindlichkeiten des Hauptschuldners einzustehen (§ 765 BGB).</p>
+<p><b>${T('Schriftform', 'hình thức văn bản bắt buộc')} (§ 766 BGB):</b> Die Bürgschaftserklärung einer Privatperson muss schriftlich erteilt werden (Schutz vor Übereilung!). Elektronische Form ist ausgeschlossen.</p>
+<h3 class="sub">2. Die beiden Arten</h3>
+<table><tr><th>${T('Ausfallbürgschaft', 'bảo lãnh bồi hoàn / bảo lãnh thông thường')} (einfache Bürgschaft)</th><th>${T('Selbstschuldnerische Bürgschaft', 'bảo lãnh liên đới tự chịu trách nhiệm')}</th></tr>
+<tr><td>Der Bürge hat die <b>${T('Einrede der Vorausklage', 'quyền yêu cầu khởi kiện con nợ chính trước')}</b> (§ 771 BGB). Die Bank muss zuerst erfolglos gegen den Hauptschuldner vollstrecken (Zwangsvollstreckung), bevor sie an den Bürgen herantreten darf.</td>
+<td>Der Bürge <b>verzichtet auf die Einrede der Vorausklage</b> (§ 773 BGB). Sobald der Hauptschuldner bei Fälligkeit nicht zahlt (z. B. eine Rate platzt), kann die Bank <b>sofort direkt den Bürgen</b> zur Kasse bitten! Standardform der Banken.</td></tr></table>
+<div class="hint">Achtung Azubis: Unterschreibe niemals leichtfertig eine selbstschuldnerische Bürgschaft! Du haftest wie der Hauptschuldner mit deinem gesamten Vermögen und Einkommen!</div>
+<div class="vi">
+  <b>Tóm tắt Tiếng Việt — Bảo lãnh Tín dụng (Bürgschaft):</b>
+  <ul>
+    <li><b>Hình thức:</b> Bắt buộc phải ký bằng văn bản trên giấy (Schriftform), không chấp nhận bảo lãnh miệng hay qua email/điện thoại.</li>
+    <li><b>Ausfallbürgschaft:</b> Ngân hàng phải khởi kiện và cưỡng chế thi hành án con nợ chính thất bại rồi mới được quay sang đòi tiền người bảo lãnh.</li>
+    <li><b>Selbstschuldnerische Bürgschaft:</b> Người bảo lãnh từ bỏ quyền yêu cầu khởi kiện con nợ trước. Ngay khi con nợ chính chậm trả 1 kỳ, ngân hàng có quyền đè người bảo lãnh ra đòi tiền ngay lập tức! (Rủi ro cực kỳ nguy hiểm).</li>
+  </ul>
+</div>
+`;
+
+  // CHUYÊN ĐỀ MỚI: Dingliche Sicherheiten der Banken
+  C.banksicherheiten_dinglich = `<h2>Dingliche Sicherheiten der Banken</h2>
+<div class="hint">WK Fachstufe I · Sicherungsübereignung · Verpfändung · Grundpfandrechte (Hypothek &amp; Grundschuld).</div>
+<h3 class="sub">1. Übersicht: Personensicherheiten vs. Realsicherheiten</h3>
+<ul>
+  <li><b>Personensicherheiten:</b> Haftung einer Person mit ihrem persönlichen Vermögen (z. B. ${T('Bürgschaft', 'bảo lãnh cá nhân')}, Schuldbeitritt).</li>
+  <li><b>Realsicherheiten (Dingliche Sicherheiten):</b> Haftung bestimmter Vermögensgegenstände (Sachen oder Rechte) zur Absicherung des Darlehens.</li>
+</ul>
+<h3 class="sub">2. Sicherungsübereignung vs. Verpfändung (Bewegliche Sachen)</h3>
+<table class="tbl">
+  <thead><tr><th>Merkmal</th><th>${T('Sicherungsübereignung', 'chuyển quyền sở hữu bảo đảm')}</th><th>${T('Verpfändung', 'cầm cố tài sản')} (${T('Pfandrecht', 'quyền cầm cố')} § 1204 BGB)</th></tr></thead>
+  <tbody>
+    <tr><td><b>Gegenstand</b></td><td>Bewegliche Sachen (z. B. Lieferwagen, Küchenmaschinen, Warenlager).</td><td>Bewegliche Sachen (Schmuck, Gold) oder Rechte (Wertpapiere, Sparkonto).</td></tr>
+    <tr><td><b>Wer hat den Besitz?</b></td><td><b>Der Kunde (Schuldner) bleibt Besitzer!</b> Er kann die Maschine weiter nutzen und damit Geld verdienen (${T('Besitzkonstitut', 'thỏa thuận giữ lại quyền chiếm hữu')} § 930 BGB).</td><td><b>Die Bank wird unmittelbarer Besitzer!</b> Der Gegenstand muss der Bank tatsächlich übergeben werden (${T('Faustpfandprinzip', 'nguyên tắc cầm cố trao tay')}).</td></tr>
+    <tr><td><b>Wer hat das Eigentum?</b></td><td><b>Die Bank wird Eigentümerin</b> (bis zur vollständigen Tilgung des Kredits).</td><td>Der Kunde bleibt Eigentümer; die Bank hat ein Verwertungsrecht bei Nichtzahlung.</td></tr>
+  </tbody>
+</table>
+<h3 class="sub">3. Grundpfandrechte an Immobilien: Hypothek vs. Grundschuld</h3>
+<p>Kredite für Grundstücke oder Gebäude werden durch Eintragung in das <b>${T('Grundbuch', 'sổ địa chính bất động sản')} (Abteilung III)</b> notariell beurkundet besichert:</p>
+<table class="tbl">
+  <thead><tr><th>Merkmal</th><th>${T('Hypothek', 'thế chấp phụ thuộc')} (§ 1113 BGB)</th><th>${T('Grundschuld', 'thế chấp độc lập')} (§ 1191 BGB)</th></tr></thead>
+  <tbody>
+    <tr><td><b>Bindung an das Darlehen</b></td><td><b>Streng an eine bestimmte Forderung gebunden</b> (${T('Akzessorietät', 'tính phụ thuộc')}). Verringert sich die Kreditschuld durch Tilgung, sinkt auch automatisch die Hypothek.</td><td><b>Völlig unabhängig von der persönlichen Forderung</b> (abstrakt).</td></tr>
+    <tr><td><b>Wiederverwendbarkeit</b></td><td>Erlischt mit vollständiger Tilgung des Kredits. Für einen neuen Kredit muss eine neue Hypothek teuer beim Notar bestellt werden.</td><td><b>Beliebig wiederverwendbar!</b> Nach Abbezahlen bleibt die Grundschuld im Grundbuch stehen und kann für spätere Kredite ohne neue Notarkosten erneut als Sicherheit dienen.</td></tr>
+    <tr><td><b>Praxis der Banken</b></td><td>Wird heute von Banken kaum noch verwendet.</td><td><b>Standardform in der modernen Bankpraxis!</b></td></tr>
+  </tbody>
+</table>
+<div class="vi">
+  <b>Tóm tắt Tiếng Việt — Các Biện Pháp Đảm Bảo Bằng Tài Sản (Realsicherheiten):</b>
+  <ul>
+    <li><b>Sicherungsübereignung (Chuyển quyền sở hữu bảo đảm):</b> Khách vay mua xe tải, máy làm bếp... Ngân hàng giữ quyền sở hữu (Eigentum) trên giấy tờ đăng ký xe, nhưng khách vẫn được trực tiếp giữ và sử dụng xe (Besitz) để kiếm tiền trả nợ.</li>
+    <li><b>Verpfändung (Cầm cố):</b> Phải trao đồ vật (vàng, trang sức, sổ tiết kiệm) tận tay cho ngân hàng giữ trực tiếp. Ngân hàng nắm quyền sở hữu và chiếm hữu đồ.</li>
+    <li><b>Hypothek vs. Grundschuld (Thế chấp bất động sản vào Grundbuch Abt. III):</b> Cả hai đều phải làm trước công chứng viên Notar. Hypothek phụ thuộc chặt vào khoản nợ (trả hết nợ là mất hiệu lực); Grundschuld độc lập với khoản nợ nên sau khi trả hết nợ vẫn có thể tái sử dụng để vay khoản khác mà không tốn thêm tiền công chứng. Do đó 100% ngân hàng ngày nay đều dùng Grundschuld!</li>
+  </ul>
+</div>
+`;
+
+  // Überschuldung & Verbraucherinsolvenz
+  C.ueberschuldung = `<h2>Überschuldung &amp; Verbraucherinsolvenz</h2>
+<div class="hint">WK Fachstufe I · Ursachen · Mahnverfahren · Pfändungsschutz · Restschuldbefreiung.</div>
+<h3 class="sub">1. Verschuldung vs. Überschuldung</h3>
+<ul>
+<li>${T('Verschuldung', 'vay nợ thông thường')}: Man hat Schulden (z. B. Kredit fürs Auto), kann aber die Raten regelmäßig aus dem Einkommen bezahlen. Normaler wirtschaftlicher Vorgang.</li>
+<li>${T('Überschuldung', 'vỡ nợ / mất khả năng thanh toán')}: Das Einkommen reicht über längere Zeit <b>nicht mehr aus</b>, um die laufenden Lebenshaltungskosten und fälligen Schulden zu decken.</li>
+<li><b>Hauptursachen:</b> Arbeitslosigkeit, Scheidung/Trennung, schwere Krankheit/Sucht, gescheiterte Selbstständigkeit, unüberlegtes Konsumverhalten (Ratenkäufe, Dispo).</li>
+</ul>
+<h3 class="sub">2. Wege aus der Schuldenfalle</h3>
+<ol>
+<li><b>Ausgaben stoppen:</b> Haushaltsbuch führen, Verträge kündigen, keine neuen Schulden.</li>
+<li><b>${T('Schuldnerberatung', 'tư vấn gỡ nợ chuyên nghiệp')}:</b> Kostenlose gemeinnützige Beratungsstellen (Caritas, Diakonie, Stadt). Verhandelt mit Gläubigern über einen ${T('Schuldenbereinigungsplan', 'kế hoạch dàn xếp trả nợ')}.</li>
+<li><b>${T('P-Konto', 'tài khoản ngân hàng bảo vệ chống kê biên')} (Pfändungsschutzkonto):</b> Jedes Girokonto kann bei der Bank in ein P-Konto umgewandelt werden. Sichert einen monatlichen <b>Grundfreibetrag</b> (gesetzlich geschützt vor Pfändung für Miete, Lebensmittel, Strom).</li>
+</ol>
+<h3 class="sub">3. Das gerichtliche Mahnverfahren</h3>
+<p>Schnelles, automatisiertes Verfahren des Gläubigers, um einen ${T('Vollstreckungstitel', 'bản án thi hành án có hiệu lực 30 năm')} zu erhalten:</p>
+<ol>
+<li>Gläubiger beantragt ${T('Mahnbescheid', 'trát đòi nợ của tòa án')} beim Mahngericht → Schuldner hat <b>2 Wochen Frist für Widerspruch</b>.</li>
+<li>Erfolgt kein Widerspruch → Gläubiger beantragt ${T('Vollstreckungsbescheid', 'quyết định cưỡng chế thi hành án')} → Schuldner hat <b>2 Wochen Frist für Einspruch</b>.</li>
+<li>Wird kein Einspruch eingelegt → Titel ist rechtskräftig (30 Jahre vollstreckbar durch den Gerichtsvollzieher: Kontopfändung, Sachpfändung, Lohnpfändung).</li>
+</ol>
+<h3 class="sub">4. Die Verbraucherinsolvenz (Privatinsolvenz)</h3>
+<p>Wenn die außergerichtliche Einigung scheitert, kann der Schuldner beim Insolvenzgericht das Insolvenzverfahren eröffnen:</p>
+<ul>
+<li>${T('Wohlverhaltensphase', 'giai đoạn thử thách thiện chí')}: Dauert in der Regel <b>3 Jahre</b>. Der Schuldner muss einer Erwerbstätigkeit nachgehen; der pfändbare Teil des Einkommens geht an einen Treuhänder zur gleichmäßigen Verteilung an die Gläubiger.</li>
+<li>${T('Restschuldbefreiung', 'quyết định xóa sạch toàn bộ số nợ còn lại')}: Nach Ablauf der 3 Jahre erlässt das Gericht alle verbleibenden Schulden! Der Schuldner ist wieder schuldenfrei und kann wirtschaftlich neu anfangen.</li>
+</ul>
+<div class="vi">
+  <b>Tóm tắt Tiếng Việt — Vỡ Nợ &amp; Quy Trình Phá Sản Cá Nhân (Privatinsolvenz):</b>
+  <ul>
+    <li><b>Tài khoản P-Konto:</b> Khi bị đòi nợ, phải lập tức yêu cầu ngân hàng chuyển tài khoản sang P-Konto để giữ lại mức sinh hoạt tối thiểu theo luật (tiền ăn, tiền nhà không ai được phép siết).</li>
+    <li><b>Trát tòa (Mahnbescheid):</b> Khi nhận được trát đòi nợ từ tòa, luôn có thời hạn <b>2 tuần</b> để kháng nghị (Widerspruch). Nếu im lặng, quyết định sẽ có hiệu lực thi hành án suốt 30 năm!</li>
     <li><b>Quy trình phá sản tiêu dùng (Verbraucherinsolvenz):</b> Hòa giải ngoài tòa án bất thành → Nộp đơn xin phá sản lên Tòa án → Giai đoạn thiện chí giao nộp phần lương trên mức tối thiểu trong vòng <b>3 năm</b> để được <b>xóa sạch toàn bộ nợ còn lại (Restschuldbefreiung)</b>.</li>
   </ul>
 </div>
 `;
 
-  window.WIKO_EXTRA_GROUPS = [
-    {
-      id: 'wk-grundstufe-plus',
-      badge: 'WK Grundstufe',
-      title: 'WK Grundstufe · Steuererklärung, Altersvorsorge & Solidaritätsprinzip',
-      items: [
-        { id: 'wk-steuererklaerung', icon: IC_DOC, name: 'Einkommensteuererklärung', desc: 'Pflicht vs. freiwillig · Werbungskosten · Steuerbescheid & Einspruch', content: C.steuer,
-          qa: [
-          {
-            "q": "Wann ist ein Arbeitnehmer gesetzlich zur Abgabe einer Einkommensteuererklärung verpflichtet (Pflichtveranlagung)?",
-            "qVi": "Khi nào người lao động bắt buộc phải nộp tờ khai thuế thu nhập cá nhân theo luật định (Pflichtveranlagung)?",
-            "a": "Unter anderem bei <b>mehreren Arbeitgebern gleichzeitig (Steuerklasse VI)</b>, bei Ehegatten mit der <b>Kombination Steuerklasse III und V</b>, bei <b>Lohnersatzleistungen über 410 € im Jahr</b> (z. B. Kurzarbeitergeld, Elterngeld, Krankengeld) oder wenn <b>weitere Nebeneinkünfte über 410 €</b> erzielt wurden.",
-            "aVi": "Khi làm việc tại <b>nhiều công ty cùng lúc (Bậc thuế VI)</b>, vợ chồng chọn kết hợp <b>bậc thuế III và V</b>, nhận <b>trợ cấp thay thế lương trên 410 €/năm</b> (tiền nghỉ việc vì thiếu việc Kurzarbeitergeld, tiền thai sản Elterngeld, tiền ốm đau) hoặc có <b>thu nhập phụ khác trên 410 €/năm</b>."
-          },
-          {
-            "q": "Wie viele Jahre rückwirkend kann eine freiwillige Steuererklärung (Antragsveranlagung) abgegeben werden?",
-            "qVi": "Một tờ khai thuế tự nguyện (Antragsveranlagung) có thể nộp hồi tố tối đa bao nhiêu năm?",
-            "a": "Bis zu <b>vier Jahre rückwirkend</b> (Beispiel: Im Jahr 2026 kann die Steuererklärung noch rückwirkend für die Jahre 2025, 2024, 2023 und 2022 eingereicht werden).",
-            "aVi": "Lên tới <b>4 năm hồi tố</b> (Ví dụ: Trong năm 2026 vẫn có thể nộp bổ sung cho các năm 2025, 2024, 2023 và 2022 để nhận lại tiền thuế dư)."
-          },
-          {
-            "q": "Was sind Werbungskosten und wie hoch ist der Arbeitnehmer-Pauschbetrag?",
-            "qVi": "Werbungskosten là chi phí gì và mức khoán cho người lao động (Pauschbetrag) là bao nhiêu?",
-            "a": "Werbungskosten sind alle <b>beruflich veranlassten Ausgaben</b> zur Erwerbung, Sicherung und Erhaltung der Einnahmen (z. B. Pendlerpauschale für Fahrten zur Arbeit, Arbeitskleidung, Fachliteratur, Bewerbungskosten). Das Finanzamt berücksichtigt automatisch den <b>Arbeitnehmer-Pauschbetrag von 1.230 € pro Jahr</b> (höhere Kosten müssen durch Belege nachgewiesen werden).",
-            "aVi": "Werbungskosten là toàn bộ <b>chi phí phát sinh phục vụ cho công việc</b> (tiền xăng xe đi lại 0,30 €/km, đồng phục bảo hộ, sách chuyên ngành, chi phí xin việc). Cơ quan thuế tự động trừ mức khoán <b>1.230 €/năm</b> mà không cần hóa đơn (nếu chi phí thực tế cao hơn thì xuất trình chứng từ để trừ thêm)."
-          }
-        ] },
-        { id: 'wk-altersvorsorge', icon: IC_EURO, name: 'Altersvorsorge · 3-Säulen-Modell', desc: 'Gesetzliche Rente · Betriebsrente · Riester & private Vorsorge', content: C.rente,
-          qa: [
-          {
-            "q": "Aus welchen drei Säulen setzt sich das deutsche System der Altersvorsorge zusammen?",
-            "qVi": "Hệ thống bảo đảm hưu trí của Đức được cấu thành từ 3 trụ cột nào?",
-            "a": "1. <b>Gesetzliche Rentenversicherung (1. Säule):</b> Pflichtversicherung nach dem Umlageverfahren.<br>2. <b>Betriebliche Altersversorgung (2. Säule):</b> Betriebsrente / Entgeltumwandlung über den Arbeitgeber.<br>3. <b>Private Altersvorsorge (3. Säule):</b> Staatlich geförderte Vorsorge (Riester-, Rürup-Rente) und private Sparverträge / Wertpapier-Sparpläne.",
-            "aVi": "1. <b>Bảo hiểm hưu trí nhà nước (Trụ cột 1):</b> Bắt buộc, vận hành theo cơ chế đóng trả ngay Umlageverfahren.<br>2. <b>Hưu trí doanh nghiệp (Trụ cột 2):</b> Quỹ hưu do công ty hỗ trợ trích lương.<br>3. <b>Hưu trí tư nhân (Trụ cột 3):</b> Gói tiết kiệm/đầu tư cá nhân (Riester, Rürup, chứng chỉ quỹ)."
-          },
-          {
-            "q": "Wie funktioniert das Umlageverfahren (Generationenvertrag) in der gesetzlichen Rentenversicherung?",
-            "qVi": "Cơ chế đóng trả ngay (Umlageverfahren / Hợp đồng thế hệ) trong bảo hiểm hưu trí nhà nước hoạt động như thế nào?",
-            "a": "Die aktuellen Beiträge der erwerbstätigen Generation werden <b>nicht auf einem Sparkonto angespart</b>, sondern <b>unmittelbar zur Finanzierung der laufenden Renten der heutigen Ruheständler</b> verwendet. Die Einzahler erwerben im Gegenzug einen Rentenanspruch gegen die nachfolgende Generation.",
-            "aVi": "Tiền đóng bảo hiểm của thế hệ đang đi làm hôm nay <b>không được cất vào sổ tiết kiệm</b>, mà được <b>dùng để chi trả ngay lập tức lương hưu cho thế hệ người cao tuổi hiện tại</b>. Đổi lại, người đóng có quyền hưởng lương hưu do thế hệ kế tiếp chi trả trong tương lai."
-          }
-        ] },
-        { id: 'wk-solidaritaet', icon: IC_USERS, name: 'Sozialversicherung · Solidaritätsprinzip', desc: 'Solidarität · Generationenvertrag · Versicherungspflicht · Subsidiarität', content: C.soli,
-          qa: [
-          {
-            "q": "Was besagt das Solidaritätsprinzip in der gesetzlichen Kranken- und Sozialversicherung?",
-            "qVi": "Nguyên tắc đoàn kết (Solidaritätsprinzip) trong bảo hiểm y tế và an sinh xã hội quy định điều gì?",
-            "a": "Die Beiträge richten sich nach der <b>finanziellen Leistungsfähigkeit (Einkommen)</b> des Versicherten, die Leistungen werden jedoch allein nach dem <b>tatsächlichen Bedarf (Krankheit/Hilfebedürftigkeit)</b> erbracht – Gesunde zahlen für Kranke, Besserverdienende für Geringverdiener und Alleinstehende für Familien.",
-            "aVi": "Mức đóng bảo hiểm dựa theo <b>khả năng tài chính (thu nhập)</b> của mỗi người, nhưng quyền lợi được hưởng hoàn toàn dựa theo <b>nhu cầu thực tế khi gặp ốm đau rủi ro</b> – người khỏe mạnh san sẻ cho người bệnh, người thu nhập cao hỗ trợ người thu nhập thấp, người độc thân san sẻ cho các gia đình đông con."
-          },
-          {
-            "q": "Welcher Zweig der gesetzlichen Sozialversicherung wird abweichend vom Grundsatz der Parität zu 100 % allein vom Arbeitgeber bezahlt?",
-            "qVi": "Trụ cột bảo hiểm xã hội nào không theo nguyên tắc chia đôi 50/50 mà do chủ doanh nghiệp chi trả 100% kinh phí?",
-            "a": "Die <b>gesetzliche Unfallversicherung (Berufsgenossenschaft)</b>. Sie übernimmt die Kosten für Arbeitsunfälle, Unfälle auf dem Arbeitsweg und Berufskrankheiten vollständig auf Kosten des Unternehmers.",
-            "aVi": "<b>Bảo hiểm tai nạn lao động bắt buộc (Berufsgenossenschaft)</b>. Doanh nghiệp chịu 100% chi phí để bảo hiểm cho các tai nạn trong giờ làm, tai nạn trên đường đi làm về và bệnh nghề nghiệp."
-          }
-        ] },
-      ],
-    },
-    {
-      id: 'wk-fachstufe1',
-      badge: 'WK Fachstufe I',
-      title: 'WK Fachstufe I · Kaufvertrag, Verbraucher, Geld & Kredit',
-      items: [
-        { id: 'wk-kaufvertrag', icon: IC_DOC, name: 'Kaufvertrag vertieft · Störungen', desc: 'Angebot/Anpreisung · Kaufarten · Mängel · Verzug · Eigentumsvorbehalt', content: C.kauf,
-          qa: [
-          {
-            "q": "Kommt durch die Auszeichnung einer Ware im Schaufenster oder auf einer Speisekarte bereits ein Kaufvertrag zustande?",
-            "qVi": "Việc niêm yết giá hàng hóa trong tủ kính trưng bày hoặc trên thực đơn đã tạo nên một hợp đồng mua bán ràng buộc chưa?",
-            "a": "<b>Nein.</b> Das ist rechtlich lediglich eine unverbindliche <b>Aufforderung zur Abgabe eines Angebots (invitatio ad offerendum)</b>. Erst wenn der Kunde die Bestellung abgibt (Angebot) und der Betrieb diese annimmt (z. B. durch Zubereitung, Kassieren oder Nicken), entsteht der Kaufvertrag.",
-            "aVi": "<b>Chưa.</b> Về mặt pháp lý đó chỉ là <b>lời mời người mua đưa ra đề nghị mua (invitatio ad offerendum)</b>. Chỉ khi khách hàng order/yêu cầu mua (Angebot) và cửa hàng chấp nhận (bằng cách chế biến, tính tiền hoặc gật đầu Annahme) thì hợp đồng mới chính thức được xác lập."
-          },
-          {
-            "q": "Welche Rechte hat ein Käufer bei Lieferung einer mangelhaften Sache und in welcher Rangfolge?",
-            "qVi": "Người mua có những quyền gì khi nhận phải hàng hóa bị lỗi và theo thứ tự ưu tiên nào?",
-            "a": "<b>1. Vorrangiges Recht (Nacherfüllung):</b> Wahlrecht des Käufers zwischen <b>Mangelbeseitigung (Nachbesserung/Reparatur)</b> oder <b>Lieferung einer mangelfreien Sache (Neulieferung)</b>.<br><b>2. Nachrangige Rechte (erst nach erfolglosem Ablauf einer angemessenen Nachfrist bzw. nach 2 Fehlversuchen):</b> <b>Rücktritt vom Kaufvertrag</b> (Geld zurück), <b>Minderung</b> (Herabsetzung des Kaufpreises) oder <b>Schadenersatz</b>.",
-            "aVi": "<b>1. Quyền ưu tiên số 1 (Nacherfüllung):</b> Người mua được quyền chọn giữa <b>sửa chữa lỗi (Nachbesserung)</b> hoặc <b>đổi sản phẩm mới nguyên vẹn (Neulieferung)</b>.<br><b>2. Quyền thứ cấp (chỉ được thực hiện khi hết thời hạn gia hạn hợp lý hoặc sau 2 lần sửa chữa bất thành):</b> <b>Rút khỏi hợp đồng (Rücktritt - trả hàng lấy lại tiền)</b>, <b>giảm giá (Minderung)</b> hoặc <b>yêu cầu bồi thường thiệt hại (Schadenersatz)</b>."
-          }
-        ] },
-        { id: 'wk-verbraucherschutz', icon: IC_SHIELD, name: 'Verbraucherschutz', desc: 'Widerrufsrecht · Gewährleistung vs. Garantie · AGB · Verbraucherzentrale', content: C.verbraucher,
-          qa: [
-          {
-            "q": "Gilt das gesetzliche 14-tägige Widerrufsrecht auch beim Kauf im Ladengeschäft?",
-            "qVi": "Quyền hủy hợp đồng trong 14 ngày theo luật có áp dụng khi mua hàng trực tiếp tại cửa hàng không?",
-            "a": "<b>Nein.</b> Ein gesetzliches 14-tägiges Widerrufsrecht (§ 355 BGB) gibt es nur bei <b>Fernabsatzverträgen</b> (Internet, Telefon, Katalog) und <b>außerhalb von Geschäftsräumen geschlossenen Verträgen (Haustürgeschäften)</b>. Im stationären Handel beruht ein Umtausch auf reiner <b>Kulanz</b> des Händlers.",
-            "aVi": "<b>Không.</b> Quyền hủy hợp đồng 14 ngày chỉ áp dụng cho <b>mua sắm từ xa qua mạng/điện thoại</b> hoặc <b>hợp đồng ký tận cửa nhà/ngoài cơ sở kinh doanh</b>. Việc đổi trả tại cửa hàng truyền thống hoàn toàn do chính sách thiện chí (Kulanz) của người bán chứ luật không bắt buộc."
-          },
-          {
-            "q": "Was ist der Unterschied zwischen der gesetzlichen Gewährleistung und einer Herstellergarantie?",
-            "qVi": "Sự khác biệt giữa Bảo hành theo luật (Gewährleistung) và Cam kết bảo hành của nhà sản xuất (Garantie) là gì?",
-            "a": "Die <b>Gewährleistung (2 Jahre ab Übergabe)</b> ist eine <b>gesetzliche Pflicht des Verkäufers</b> für Mängel, die bereits beim Kauf vorlagen (mit Beweislastumkehr zugunsten des Verbrauchers in den ersten 12 Monaten). Eine <b>Garantie</b> ist eine <b>freiwillige vertragliche Zusage</b> des Herstellers oder Händlers zu bestimmten Funktionsbedingungen.",
-            "aVi": "<b>Gewährleistung (2 năm kể từ khi bàn giao)</b> là <b>nghĩa vụ pháp lý bắt buộc của bên bán</b> đối với các khuyết tật đã tồn tại từ lúc mua (12 tháng đầu tiên mặc định hàng có lỗi từ trước). Còn <b>Garantie</b> là <b>cam kết tự nguyện</b> của nhà sản xuất về độ bền và chất lượng."
-          }
-        ] },
-        { id: 'wk-geld', icon: IC_EURO, name: 'Geld & Zahlungsverkehr', desc: 'Funktionen des Geldes · Geldarten · Überweisung · Lastschrift · Karten', content: C.geld,
-          qa: [
-          {
-            "q": "Welche drei ökonomischen Grundfunktionen erfüllt das Geld in einer Volkswirtschaft?",
-            "qVi": "Tiền tệ thực hiện ba chức năng kinh tế cơ bản nào trong một nền kinh tế quốc dân?",
-            "a": "1. <b>Tausch- und Zahlungsmittel:</b> Ermöglicht den reibungslosen Austausch von Gütern und Dienstleistungen ohne Naturaltausch.<br>2. <b>Wertmaßstab und Recheneinheit:</b> Macht Preise und Werte von Waren vergleichbar.<br>3. <b>Wertaufbewahrungsmittel:</b> Ermöglicht Sparen und den Transfer von Kaufkraft in die Zukunft.",
-            "aVi": "1. <b>Phương tiện trao đổi và thanh toán:</b> Giúp lưu thông hàng hóa và dịch vụ trơn tru.<br>2. <b>Thước đo giá trị và đơn vị tính toán:</b> Giúp so sánh giá cả và giá trị của các sản phẩm.<br>3. <b>Phương tiện cất trữ giá trị:</b> Cho phép tích lũy tiết kiệm và bảo toàn sức mua cho tương lai."
-          },
-          {
-            "q": "Innerhalb welcher Frist kann eine SEPA-Basislastschrift ohne Angabe von Gründen von der Bank zurückgebucht werden?",
-            "qVi": "Trong thời hạn bao lâu một lệnh trừ tiền tự động SEPA-Basislastschrift có thể bị yêu cầu hoàn tiền vô điều kiện?",
-            "a": "Innerhalb von <b>8 Wochen</b> ab dem Buchungsdatum kann der Kontoinhaber eine autorisierte Lastschrift ohne Angabe von Gründen zurückfordern. Bei einer <b>unberechtigten (nicht autorisierten)</b> Abbuchung beträgt die Frist sogar <b>13 Monate</b>.",
-            "aVi": "Trong vòng <b>8 tuần</b> kể từ ngày trừ tiền, chủ tài khoản có quyền yêu cầu ngân hàng đòi lại tiền mà không cần nêu lý do. Nếu là trường hợp <b>bị trừ tiền trái phép (không có ủy quyền)</b> thì thời hạn lên tới <b>13 tháng</b>."
-          }
-        ] },
-        { id: 'wk-kredit', icon: IC_BOOK, name: 'Kredit & Kreditsicherheiten', desc: 'Kreditarten · Effektivzins · SCHUFA · Zinsrechnung · Sicherheiten', content: C.kredit,
-          qa: [
-          {
-            "q": "Warum ist der effektive Jahreszins für Kreditnehmer die wichtigste Vergleichsgröße?",
-            "qVi": "Tại sao lãi suất hiệu dụng hàng năm (Effektiver Jahreszins) lại là con số so sánh quan trọng nhất đối với người vay tiền?",
-            "a": "Weil der <b>effektive Jahreszins</b> im Gegensatz zum Nominal- oder Sollzins die <b>tatsächlichen Gesamtkosten des Kredits pro Jahr</b> einschließlich Bearbeitungsgebühren, Auszahlungskurs und Verrechnungszeitpunkten transparent abbildet (PAngV).",
-            "aVi": "Vì <b>lãi suất hiệu dụng</b> phản ánh <b>toàn bộ chi phí thực tế hàng năm của khoản vay</b> (bao gồm cả phí xử lý hồ sơ, tỷ lệ giải ngân và cách tính lãi dồn), là căn cứ duy nhất để người tiêu dùng so sánh chính xác giữa các ngân hàng."
-          },
-          {
-            "q": "Berechne die Zinsen: Ein Barkredit über 6.000 € wird für 90 Tage zu einem Zinssatz von 8 % p. a. aufgenommen. (Deutsche Zinsmethode: 360 Tage/Jahr).",
-            "qVi": "Tính tiền lãi: Một khoản vay 6.000 € trong 90 ngày với lãi suất 8%/năm. (Quy ước tính lãi của Đức: 1 năm = 360 ngày).",
-            "a": "Formel: <b>Z = (K × p × t) / (100 × 360)</b><br>Rechnung: Z = (6.000 × 8 × 90) / 36.000 = 4.320.000 / 36.000 = <b>120 €</b> Zinsen.",
-            "aVi": "Công thức: <b>Z = (K × p × t) / (100 × 360)</b><br>Tính toán: Z = (6.000 × 8 × 90) / 36.000 = 4.320.000 / 36.000 = <b>120 €</b> tiền lãi."
-          }
-        ] },
-        { id: 'wk-buergschaft', icon: IC_USERS, name: 'Bürgschaft', desc: 'Ausfall- vs. selbstschuldnerische Bürgschaft · Schriftform · Risiken', content: C.buerg,
-          qa: [
-          {
-            "q": "Welche gesetzliche Formvorschrift gilt zwingend für die Bürgschaftserklärung einer Privatperson nach § 766 BGB?",
-            "qVi": "Quy định hình thức bắt buộc nào áp dụng cho cam kết bảo lãnh của một cá nhân theo § 766 BGB?",
-            "a": "Die <b>Schriftform mit eigenhändiger Namensunterschrift</b> auf Papier. Eine Bürgschaftserklärung per E-Mail, Fax, SMS oder mündlich ist <b>nichtig</b> (§ 125 BGB). Zweck ist die <b>Warnfunktion</b> vor existenzbedrohenden Schulden.",
-            "aVi": "Bắt buộc phải lập bằng <b>văn bản giấy có chữ ký tay (Schriftform)</b>. Cam kết bảo lãnh qua email, fax, tin nhắn hay bằng lời nói đều bị <b>vô hiệu</b>. Mục đích là để <b>cảnh báo (Warnfunktion)</b> người bảo lãnh trước rủi ro tài chính nghiêm trọng."
-          },
-          {
-            "q": "Worin besteht der wesentliche Unterschied zwischen einer einfachen Ausfallbürgschaft und einer selbstschuldnerischen Bürgschaft?",
-            "qVi": "Sự khác biệt cốt lõi giữa bảo lãnh thông thường (Ausfallbürgschaft) và bảo lãnh tự nguyện liên đới (selbstschuldnerische Bürgschaft) là gì?",
-            "a": "Bei der <b>Ausfallbürgschaft</b> steht dem Bürgen die <b>Einrede der Vorausklage</b> zu: Die Bank muss erst erfolglos die Zwangsvollstreckung beim Hauptschuldner betreiben. Bei der <b>selbstschuldnerischen Bürgschaft</b> verzichtet der Bürge darauf: Zahlt der Hauptschuldner bei Fälligkeit nicht, kann sich der Gläubiger <b>sofort direkt an den Bürgen halten</b>.",
-            "aVi": "Ở <b>Ausfallbürgschaft</b>, người bảo lãnh có quyền <b>yêu cầu chủ nợ kiện và cưỡng chế con nợ chính trước (Einrede der Vorausklage)</b>. Còn ở <b>selbstschuldnerische Bürgschaft</b>, người bảo lãnh từ bỏ quyền này: nếu con nợ chính chậm trả nợ, ngân hàng có thể <b>đòi tiền trực tiếp ngay từ người bảo lãnh</b>."
-          }
-        ] },
-        { id: 'wk-ueberschuldung', icon: IC_ALERT, name: 'Überschuldung & Verbraucherinsolvenz', desc: 'Ursachen · Mahnverfahren · Pfändung · P-Konto · Restschuldbefreiung', content: C.schulden,
-          qa: [
-          {
-            "q": "Aus welchen Schritten besteht das gerichtliche Mahnverfahren bis zum Vollstreckungstitel?",
-            "qVi": "Quy trình đòi nợ tư pháp (Gerichtliches Mahnverfahren) gồm các bước nào cho đến khi có án lệnh thi hành án?",
-            "a": "1. Gläubiger beantragt beim Mahngericht den <b>Mahnbescheid</b>.<br>2. Schuldner hat <b>2 Wochen Frist für einen Widerspruch</b>.<br>3. Bei ausbleibendem Widerspruch beantragt der Gläubiger den <b>Vollstreckungsbescheid</b>.<br>4. Schuldner hat erneut <b>2 Wochen Frist für einen Einspruch</b>.<br>5. Ohne Einspruch wird der Vollstreckungsbescheid rechtskräftig und gilt als <b>Vollstreckungstitel (30 Jahre vollstreckbar)</b>.",
-            "aVi": "1. Chủ nợ nộp đơn xin Tòa ban hành <b>Lệnh nhắc nợ (Mahnbescheid)</b>.<br>2. Con nợ có <b>2 tuần để phản đối (Widerspruch)</b>.<br>3. Nếu không phản đối, chủ nợ xin ban hành <b>Quyết định thi hành án (Vollstreckungsbescheid)</b>.<br>4. Con nợ có tiếp <b>2 tuần để kháng cáo (Einspruch)</b>.<br>5. Nếu không kháng cáo, quyết định trở thành <b>Án lệnh thi hành án (có hiệu lực đòi nợ trong 30 năm)</b>."
-          },
-          {
-            "q": "Welchen Schutz bietet ein Pfändungsschutzkonto (P-Konto) und wie lange dauert das Verbraucherinsolvenzverfahren bis zur Restschuldbefreiung?",
-            "qVi": "Tài khoản chống phong tỏa (P-Konto) mang lại sự bảo vệ gì và thủ tục phá sản tiêu dùng kéo dài bao lâu để được xóa sạch nợ?",
-            "a": "Das <b>P-Konto</b> sichert den gesetzlichen <b>Grundfreibetrag (ca. 1.500 €/Monat)</b> automatisch vor einer Kontopfändung für Miete, Lebensmittel und Lebensunterhalt. Nach der Insolvenzrechtsreform erhalten redliche Schuldner nach genau <b>3 Jahren</b> die <b>Restschuldbefreiung</b>, wodurch alle verbleibenden Schulden erlassen werden.",
-            "aVi": "<b>Tài khoản P-Konto</b> tự động bảo vệ <b>mức sinh hoạt tối thiểu theo luật (khoảng 1.500 €/tháng)</b> không bị ngân hàng phong tỏa để con nợ duy trì tiền ăn ở. Thủ tục phá sản tiêu dùng hiện nay chỉ kéo dài đúng <b>3 năm</b> là con nợ được <b>xóa sạch toàn bộ số nợ còn lại (Restschuldbefreiung)</b>."
-          }
-        ] },
-      ],
-    },
-  ];
-
+  // =========================================================================
+  // BỘ CÂU HỎI QUIZ MỚI BỔ SUNG CHO TẤT CẢ CÁC CHỦ ĐỀ
+  // =========================================================================
   const Q = (theme, q, opts, a, ex) => ({ theme, cat: 'WK', q, opts, a, ex });
 
-  window.WIKO_EXTRA_QUIZ = [
+  const ALL_EXTRA_QUIZ = [
     // Steuererklärung
     Q('wk-steuererklaerung', 'Wann ist ein Arbeitnehmer verpflichtet, eine Einkommensteuererklärung abzugeben?', ['Immer, wenn er Lohnsteuer zahlt', 'Wenn er gleichzeitig bei zwei Arbeitgebern arbeitet (Steuerklasse VI)', 'Nur wenn er Kinder hat', 'Nur bei einem Einkommen über 50.000 €'], 1, 'Steuerklasse VI (Zweitjob), III/V oder Lohnersatzleistungen über 410 € → Pflicht. Bậc VI là bắt buộc khai.'),
     Q('wk-steuererklaerung', 'Wie viele Jahre rückwirkend kann ein Azubi freiwillig eine Steuererklärung abgeben?', ['1 Jahr', '2 Jahre', '4 Jahre', '10 Jahre'], 2, 'Antragsveranlagung: bis zu 4 Jahre rückwirkend. Khai tự nguyện lùi tối đa 4 năm.'),
     Q('wk-steuererklaerung', 'Welche Ausgabe zählt zu den Werbungskosten?', ['Miete der Privatwohnung', 'Fahrtkosten zur Ausbildungsstätte', 'Urlaubsreise', 'Kfz-Steuer des Privatautos'], 1, 'Werbungskosten = Kosten für den Beruf: Fahrtkosten (Entfernungspauschale), Arbeitskleidung, Fachbücher.'),
     Q('wk-steuererklaerung', 'Wie hoch ist der Arbeitnehmer-Pauschbetrag, der ohne Nachweis abgezogen wird?', ['410 €', '1.000 €', '1.230 €', '2.400 €'], 2, 'Seit 2023: 1.230 € pro Jahr.'),
-    Q('wk-steuererklaerung', 'Innerhalb welcher Frist kann man gegen einen falschen Steuerbescheid Einspruch einlegen?', ['2 Wochen', '1 Monat', '3 Monate', '1 Jahr'], 1, 'Einspruch: 1 Monat nach Bekanntgabe, schriftlich oder über ELSTER.'),
-    Q('wk-steuererklaerung', 'Was unterscheidet Steuern von Gebühren?', ['Steuern sind freiwillig', 'Steuern werden ohne direkte Gegenleistung erhoben', 'Steuern zahlen nur Unternehmen', 'Gebühren zahlt man an die Krankenkasse'], 1, 'Steuer = keine direkte Gegenleistung. Gebühr = Entgelt für eine konkrete Leistung (z. B. Reisepass).'),
-    // Altersvorsorge
-    Q('wk-altersvorsorge', 'Welche drei Säulen hat die Altersvorsorge in Deutschland?', ['Kranken-, Pflege-, Rentenversicherung', 'Gesetzliche, betriebliche und private Vorsorge', 'Bund, Länder, Gemeinden', 'Lohn, Gehalt, Prämie'], 1, '1. gesetzliche RV · 2. betriebliche Altersvorsorge · 3. private Vorsorge.'),
-    Q('wk-altersvorsorge', 'Wie wird die gesetzliche Rentenversicherung finanziert?', ['Kapitaldeckungsverfahren: jeder spart für sich', 'Umlageverfahren: Beiträge der Arbeitenden zahlen die heutigen Renten', 'Nur aus Steuern', 'Nur durch den Arbeitgeber'], 1, 'Umlageverfahren = Generationenvertrag. Tiền đóng hôm nay trả lương hưu hôm nay.'),
-    Q('wk-altersvorsorge', 'Wie hoch ist der Beitragssatz zur Rentenversicherung und wie wird er verteilt?', ['14,6 %, nur Arbeitnehmer', '18,6 %, je 9,3 % Arbeitnehmer und Arbeitgeber', '2,6 %, je 1,3 %', '18,6 %, nur Arbeitgeber'], 1, 'RV 18,6 % – paritätisch 9,3 / 9,3.'),
-    Q('wk-altersvorsorge', 'Was versteht man unter der „Versorgungslücke"?', ['Die Zeit zwischen Ausbildung und Job', 'Den Unterschied zwischen letztem Einkommen und gesetzlicher Rente', 'Fehlende Beiträge zur Krankenkasse', 'Die Wartezeit auf die erste Rente'], 1, 'Gesetzliche Rente ≈ 48 % des Durchschnittslohns → Lücke muss privat/betrieblich geschlossen werden.'),
-    Q('wk-altersvorsorge', 'Welche Form der Altersvorsorge wird vom Staat mit Zulagen gefördert?', ['Sparbuch', 'Riester-Rente', 'Bausparvertrag ohne Förderung', 'Girokonto'], 1, 'Riester: Grundzulage 175 €/Jahr + Kinderzulage, Berufseinsteiger-Bonus 200 €.'),
-    Q('wk-altersvorsorge', 'Warum gerät die gesetzliche Rente unter Druck?', ['Weil die Löhne sinken', 'Wegen des demografischen Wandels: weniger Beitragszahler, mehr Rentner', 'Weil die Arbeitgeber keine Beiträge zahlen', 'Weil es zu viele Azubis gibt'], 1, 'Geburtenrückgang + höhere Lebenserwartung.'),
+    // Altersvorsorge & Private Zusatzversicherung
+    Q('wk-altersvorsorge', 'Welche drei Säulen bilden das deutsche Alterssicherungssystem?', ['Sparbuch, Aktien, Gold', 'Gesetzliche Rente, betriebliche Altersvorsorge, private Vorsorge', 'Krankenkasse, Unfallkasse, Pflegekasse', 'Staat, Familie, Freunde'], 1, '3 Säulen: gesetzlich, betrieblich, privat.'),
+    Q('wk-altersvorsorge', 'Wie wird die gesetzliche Rentenversicherung finanziert?', ['Kapitaldeckungsverfahren', 'Umlageverfahren (Generationenvertrag)', 'Ausschließlich aus Steuern', 'Durch Kredite der Bundesbank'], 1, 'Umlageverfahren: Heutige Beiträge zahlen heutige Renten.'),
+    Q('wk-altersvorsorge', 'Welche private Zusatzversicherung ist für Berufstätige besonders wichtig zur Existenzsicherung?', ['Handyversicherung', 'Berufsunfähigkeitsversicherung (BU)', 'Brillenversicherung', 'Reiserücktrittsversicherung'], 1, 'BU-Versicherung sichert das Einkommen ab, wenn man krankheitsbedingt seinen Beruf nicht mehr ausüben kann.'),
     // Solidarität
-    Q('wk-solidaritaet', 'Was bedeutet das Solidaritätsprinzip in der gesetzlichen Sozialversicherung?', ['Jeder zahlt den gleichen Betrag', 'Beitrag nach Einkommen, Leistung nach Bedarf', 'Beitrag nach Gesundheitsrisiko', 'Nur Kranke zahlen Beiträge'], 1, 'Gesunde für Kranke, Junge für Alte, Gutverdiener zahlen mehr.'),
-    Q('wk-solidaritaet', 'Wer zahlt die Beiträge zur gesetzlichen Unfallversicherung?', ['Arbeitnehmer allein', 'Arbeitgeber und Arbeitnehmer je zur Hälfte', 'Arbeitgeber allein', 'Der Staat'], 2, 'UV (Berufsgenossenschaft, Gastgewerbe: BGN) zahlt nur der Arbeitgeber.'),
-    Q('wk-solidaritaet', 'Welches Prinzip gilt in der privaten Krankenversicherung?', ['Solidaritätsprinzip', 'Äquivalenzprinzip: Beitrag nach Risiko', 'Subsidiaritätsprinzip', 'Umlageprinzip'], 1, 'Privat: Beitrag richtet sich nach Alter und Gesundheit (Risiko).'),
-    Q('wk-solidaritaet', 'Was besagt das Subsidiaritätsprinzip?', ['Der Staat hilft immer zuerst', 'Erst Selbsthilfe/Familie, der Staat hilft nur, wenn das nicht reicht', 'Alle zahlen gleich viel', 'Arbeitgeber haften für alle Risiken'], 1, 'Tự lo trước, nhà nước hỗ trợ sau (z. B. Bürgergeld).'),
-    Q('wk-solidaritaet', 'Welcher Träger ist für die Arbeitslosenversicherung zuständig?', ['Deutsche Rentenversicherung', 'Berufsgenossenschaft', 'Bundesagentur für Arbeit', 'Finanzamt'], 2, 'AV 2,6 % (je 1,3 %) – Träger: Bundesagentur für Arbeit.'),
-    // Kaufvertrag
-    Q('wk-kaufvertrag', 'Ein Restaurant zeigt im Schaukasten seine Speisekarte mit Preisen. Rechtlich ist das …', ['ein verbindliches Angebot', 'eine Anpreisung (Aufforderung zur Abgabe eines Angebots)', 'eine Annahme', 'ein Kaufvertrag'], 1, 'Schaufenster, Werbung, ausgehängte Karte = Anpreisung. Bestellt der Gast, gibt er den Antrag ab.'),
-    Q('wk-kaufvertrag', 'Ein Lieferant nimmt eine Bestellung mit geänderter Menge an. Welche Rechtsfolge?', ['Kaufvertrag zur ursprünglichen Menge', 'Die veränderte Annahme gilt als neuer Antrag', 'Der Vertrag ist nichtig', 'Der Kunde muss zahlen'], 1, 'Veränderte oder verspätete Annahme = neuer Antrag (§ 150 BGB).'),
-    Q('wk-kaufvertrag', 'Welches Recht muss der Käufer bei einer mangelhaften Lieferung zuerst geltend machen?', ['Rücktritt', 'Minderung', 'Nacherfüllung (Nachbesserung oder Ersatzlieferung)', 'Schadensersatz'], 2, 'Vorrang der Nacherfüllung. Rücktritt/Minderung erst, wenn diese fehlschlägt.'),
-    Q('wk-kaufvertrag', 'Wann kommt ein Lieferant ohne Mahnung in Lieferungsverzug?', ['Nie', 'Wenn der Liefertermin kalendermäßig genau bestimmt ist', 'Immer nach 30 Tagen', 'Wenn der Kunde Kaufmann ist'], 1, 'Kalendermäßig bestimmter Termin (z. B. „am 15.11.") oder Fixkauf → Mahnung entbehrlich.'),
-    Q('wk-kaufvertrag', 'Die Hochzeitstorte wird einen Tag nach der Hochzeit geliefert. Welche Kaufart liegt vor?', ['Zielkauf', 'Fixkauf', 'Kauf auf Probe', 'Gattungskauf'], 1, 'Fixkauf: Termin ist wesentlich → Rücktritt ohne Nachfrist.'),
-    Q('wk-kaufvertrag', 'Was bedeutet „Eigentumsvorbehalt"?', ['Der Käufer wird sofort Eigentümer', 'Der Verkäufer bleibt Eigentümer bis zur vollständigen Bezahlung', 'Die Ware darf nicht benutzt werden', 'Der Käufer kann den Preis mindern'], 1, 'Käufer ist bis zur Zahlung nur Besitzer.'),
-    Q('wk-kaufvertrag', 'Ein Unternehmer verkauft an einen privaten Kunden. Wie heißt diese Kaufart?', ['Bürgerlicher Kauf', 'Zweiseitiger Handelskauf', 'Verbrauchsgüterkauf', 'Fixkauf'], 2, 'Unternehmer → Verbraucher = Verbrauchsgüterkauf (stärkster Schutz).'),
-    Q('wk-kaufvertrag', 'Ein Gast zahlt eine Rechnung nicht. Wann ist er als Verbraucher spätestens im Zahlungsverzug?', ['Sofort', '30 Tage nach Fälligkeit und Zugang der Rechnung, wenn darauf hingewiesen wurde', 'Nach 2 Jahren', 'Erst nach Mahnbescheid'], 1, '§ 286 Abs. 3 BGB: 30 Tage; beim Verbraucher nur mit Hinweis auf der Rechnung.'),
-    // Verbraucherschutz
-    Q('wk-verbraucherschutz', 'Lisa kauft eine Jacke im Laden. Zu Hause gefällt sie ihr nicht mehr. Welche Aussage stimmt?', ['Sie hat 14 Tage Widerrufsrecht', 'Sie hat kein gesetzliches Widerrufsrecht; Umtausch nur aus Kulanz', 'Sie kann 2 Jahre umtauschen', 'Der Händler muss den Preis mindern'], 1, 'Widerrufsrecht nur bei Fernabsatz und außerhalb von Geschäftsräumen.'),
-    Q('wk-verbraucherschutz', 'Wie lange beträgt das Widerrufsrecht bei einem Online-Kauf?', ['7 Tage', '14 Tage', '30 Tage', '2 Jahre'], 1, '14 Tage ohne Begründung, ab Erhalt der Ware und Belehrung.'),
-    Q('wk-verbraucherschutz', 'Was unterscheidet die Garantie von der Gewährleistung?', ['Die Garantie ist gesetzlich vorgeschrieben', 'Die Garantie ist eine freiwillige Zusage, meist des Herstellers', 'Die Gewährleistung gibt nur der Hersteller', 'Es gibt keinen Unterschied'], 1, 'Gewährleistung = gesetzlich, Verkäufer, 2 Jahre. Garantie = freiwillig.'),
-    Q('wk-verbraucherschutz', 'Bei welchem Online-Kauf besteht KEIN Widerrufsrecht?', ['Kleidung', 'Ein nach Kundenwunsch bedrucktes T-Shirt', 'Bücher', 'Ein Handy'], 1, 'Ausnahmen: individuell angefertigte Ware, verderbliche Lebensmittel, entsiegelte Hygieneartikel.'),
-    Q('wk-verbraucherschutz', 'Eine Klausel in den AGB widerspricht einer mündlichen Einzelabsprache. Was gilt?', ['Die AGB', 'Die Individualabrede', 'Keines von beiden', 'Das entscheidet der Verkäufer'], 1, 'Individualabreden haben Vorrang vor AGB (§ 305b BGB).'),
-    Q('wk-verbraucherschutz', 'Wie lange gilt die gesetzliche Gewährleistung bei neuen Waren für Verbraucher?', ['6 Monate', '1 Jahr', '2 Jahre', '5 Jahre'], 2, '2 Jahre ab Übergabe; im 1. Jahr Beweislastumkehr zugunsten des Verbrauchers.'),
-    // Geld
-    Q('wk-geld', 'Welche Funktion des Geldes ist gemeint: „Mit Preisen kann man Güter vergleichen"?', ['Tauschmittel', 'Wertaufbewahrungsmittel', 'Wertmaßstab / Recheneinheit', 'Wertübertragungsmittel'], 2, 'Wertmaßstab: Preise machen Güter vergleichbar.'),
-    Q('wk-geld', 'Welche Funktion des Geldes wird durch hohe Inflation besonders geschwächt?', ['Tauschmittel', 'Wertaufbewahrungsmittel', 'Recheneinheit', 'Keine'], 1, 'Inflation senkt die Kaufkraft → Sparen verliert an Wert.'),
-    Q('wk-geld', 'Was ist Buchgeld?', ['Münzen', 'Guthaben auf einem Girokonto', 'Banknoten', 'Gutscheine'], 1, 'Buchgeld (Giralgeld) = Kontoguthaben.'),
-    Q('wk-geld', 'Für die monatlich wechselnde Handyrechnung eignet sich am besten …', ['der Dauerauftrag', 'die SEPA-Lastschrift', 'die Barzahlung', 'der Scheck'], 1, 'Lastschrift: Empfänger zieht wechselnde Beträge ein. Dauerauftrag nur für gleiche Beträge.'),
-    Q('wk-geld', 'Innerhalb welcher Frist kann eine SEPA-Lastschrift ohne Begründung zurückgegeben werden?', ['2 Wochen', '8 Wochen', '6 Monate', 'Gar nicht'], 1, '8 Wochen ohne Begründung (mit erteiltem Mandat).'),
-    Q('wk-geld', 'Welches Ziel verfolgt die Europäische Zentralbank (EZB) vorrangig?', ['Vollbeschäftigung', 'Preisniveaustabilität (ca. 2 % Inflation)', 'Hohe Aktienkurse', 'Niedrige Steuern'], 1, 'EZB-Ziel: Inflation mittelfristig 2 %.'),
-    // Kredit
-    Q('wk-kredit', 'Welche Angabe eignet sich am besten, um Kreditangebote zu vergleichen?', ['Sollzins', 'Effektiver Jahreszins', 'Monatsrate', 'Laufzeit'], 1, 'Effektiver Jahreszins enthält Zins + alle Kosten.'),
-    Q('wk-kredit', 'Ein Azubi überzieht sein Konto um 2.400 € für 90 Tage bei 12 % Zinsen. Wie hoch sind die Zinsen?', ['24 €', '72 €', '288 €', '720 €'], 1, '2.400 × 12 × 90 ÷ 36.000 = 72 €.'),
-    Q('wk-kredit', 'Welcher Kredit ist für Verbraucher meist am teuersten?', ['Baufinanzierung', 'Dispositionskredit', 'Ratenkredit', 'Bausparkredit'], 1, 'Dispo-Zinsen oft 10–15 %.'),
-    Q('wk-kredit', 'Was speichert die SCHUFA?', ['Krankheiten', 'Informationen über Konten, Kredite und Zahlungsausfälle', 'Steuerbescheide', 'Arbeitszeugnisse'], 1, 'SCHUFA = Auskunftei zur Kreditwürdigkeit; Selbstauskunft 1× jährlich kostenlos.'),
-    Q('wk-kredit', 'Bei der Sicherungsübereignung eines Autos …', ['wird der Kunde Eigentümer, die Bank Besitzer', 'wird die Bank Eigentümer, der Kunde bleibt Besitzer und fährt das Auto', 'wird das Auto verkauft', 'geht das Auto an die SCHUFA'], 1, 'Bank = Eigentümer (Sicherheit), Kunde = Besitzer (Nutzung).'),
-    Q('wk-kredit', 'Welche Kreditsicherheit wird bei einer Immobilie im Grundbuch eingetragen?', ['Bürgschaft', 'Grundschuld', 'Pfandrecht an Schmuck', 'Eigentumsvorbehalt'], 1, 'Grundschuld = Realsicherheit an Grundstücken.'),
-    Q('wk-kredit', 'Wie lange kann ein Verbraucher einen Kreditvertrag widerrufen?', ['Gar nicht', '7 Tage', '14 Tage', '1 Monat'], 2, 'Verbraucherdarlehen: Widerrufsrecht 14 Tage.'),
-    // Bürgschaft
-    Q('wk-buergschaft', 'In welcher Form muss eine private Person eine Bürgschaft erklären?', ['Mündlich', 'Per E-Mail', 'Schriftlich mit eigenhändiger Unterschrift', 'Notariell beurkundet'], 2, '§ 766 BGB: Schriftform. Nur Kaufleute im Handelsgeschäft auch mündlich.'),
-    Q('wk-buergschaft', 'Was kennzeichnet die selbstschuldnerische Bürgschaft?', ['Der Bürge haftet erst nach erfolgloser Zwangsvollstreckung beim Schuldner', 'Der Bürge verzichtet auf die Einrede der Vorausklage und haftet sofort', 'Der Bürge haftet nur bis 1.000 €', 'Der Bürge haftet nie'], 1, 'Selbstschuldnerisch = sofort wie der Hauptschuldner.'),
-    Q('wk-buergschaft', 'Mit wem schließt der Bürge den Bürgschaftsvertrag?', ['Mit dem Hauptschuldner', 'Mit dem Gläubiger', 'Mit dem Gericht', 'Mit der SCHUFA'], 1, 'Vertrag Bürge ↔ Gläubiger (z. B. Bank).'),
-    Q('wk-buergschaft', 'Was kann der Bürge tun, nachdem er die Schuld bezahlt hat?', ['Nichts', 'Rückgriff auf den Hauptschuldner nehmen', 'Die Bank verklagen', 'Den Kredit kündigen'], 1, 'Die Forderung geht auf den Bürgen über (§ 774 BGB).'),
-    Q('wk-buergschaft', 'Bei der Ausfallbürgschaft muss der Gläubiger …', ['sofort den Bürgen in Anspruch nehmen', 'zuerst erfolglos gegen den Hauptschuldner vollstrecken', 'den Bürgen nicht informieren', 'auf seine Forderung verzichten'], 1, 'Einrede der Vorausklage (§ 771 BGB).'),
+    Q('wk-solidaritaet', 'Was bedeutet das Solidaritätsprinzip in der Sozialversicherung?', ['Jeder bekommt exakt das heraus, was er eingezahlt hat', 'Beiträge richten sich nach dem Einkommen, Leistungen nach dem Bedarf', 'Der Staat zahlt alle Kosten', 'Reiche müssen nicht einzahlen'], 1, 'Solidarität: Gesunde für Kranke, Gutverdiener mehr als Geringverdiener.'),
+    Q('wk-solidaritaet', 'Welcher Zweig der Sozialversicherung wird allein vom Arbeitgeber bezahlt?', ['Krankenversicherung', 'Rentenversicherung', 'Gesetzliche Unfallversicherung (BG)', 'Pflegeversicherung'], 2, 'Unfallversicherung zahlt zu 100 % der Arbeitgeber.'),
+    // Kaufvertrag & Verjährung
+    Q('wk-kaufvertrag', 'Welches Recht hat der Käufer bei einem Sachmangel VORRANGIG?', ['Rücktritt vom Kaufvertrag', 'Minderung des Kaufpreises', 'Nacherfüllung (Nachbesserung oder Nachlieferung)', 'Schadensersatz'], 2, 'Vorrangig: Nacherfüllung (§ 439 BGB). Nachrangig erst nach Fristablauf.'),
+    Q('wk-kaufvertrag', 'Wie lang ist die regelmäßige Verjährungsfrist für Geldforderungen nach § 195 BGB?', ['1 Jahr', '2 Jahre', '3 Jahre ab Jahresende', '10 Jahre'], 2, '§ 195 BGB: 3 Jahre ab Schluss des Jahres (Ultimo-Prinzip).'),
+    Q('wk-kaufvertrag', 'Was passiert mit der Verjährungsfrist bei einem Neubeginn nach § 212 BGB (z. B. durch Teilzahlung)?', ['Die Frist wird um 6 Monate verlängert', 'Die Frist beginnt wieder in voller Länge (3 Jahre) von vorn', 'Die Frist wird halbiert', 'Die Forderung erlischt sofort'], 1, 'Neubeginn: Die Frist startet wieder komplett von vorn.'),
+    // Verbraucherschutz & UWG
+    Q('wk-verbraucherschutz', 'Was ist nach dem UWG als "unzumutbare Belästigung" ausdrücklich verboten?', ['Werbung im Fernsehen zur Hauptsendezeit', 'Unerbetene Werbeanrufe ohne vorherige Einwilligung (Cold Calling)', 'Gedruckte Prospekte im Briefkasten mit Werbestopp-Aufkleber', 'Plakatwerbung an Bushaltestellen'], 1, '§ 7 UWG: Telefonwerbung ohne ausdrückliche Einwilligung (Cold Calling) ist verboten.'),
+    Q('wk-verbraucherschutz', 'Wie lange kann ein Verbraucher einen Fernabsatzvertrag (Online-Kauf) widerrufen?', ['7 Tage', '14 Tage', '1 Monat', '100 Tage'], 1, '§ 355 BGB: Widerrufsfrist 14 Tage ab Warenerhalt.'),
+    Q('wk-verbraucherschutz', 'Wie hoch sind die gesetzlichen Verzugszinsen bei Rechtsgeschäften mit Verbrauchern?', ['2 % über Basiszinssatz', '5 %-Punkte über Basiszinssatz', '9 %-Punkte über Basiszinssatz', 'Pauschal 10 %'], 1, '§ 288 BGB: 5 %-Punkte über Basiszinssatz bei Verbrauchern (bei B2B: 9 %-Punkte).'),
+    // Geld & Zahlungsverkehr
+    Q('wk-geld', 'Welche Frist gilt für den Widerspruch bei einer autorisierten SEPA-Basislastschrift?', ['2 Tage', '2 Wochen', '8 Wochen', '13 Monate'], 2, '8 Wochen ohne Begründung; 13 Monate bei unberechtigter Abbuchung.'),
+    Q('wk-geld', 'Welche Angabe identifiziert das Bankkonto im SEPA-Raum europaweit?', ['BLZ', 'IBAN', 'PIN', 'TAN'], 1, 'IBAN (in DE: 22 Stellen).'),
+    // Geldanlagen (MỚI)
+    Q('wk-geldanlage', 'Welche drei Ziele stehen im "Magischen Dreieck der Geldanlage" in Konkurrenz zueinander?', ['Gold, Aktien, Immobilien', 'Rentabilität, Sicherheit, Liquidität', 'Zinsen, Steuern, Inflation', 'Bank, Börse, Staat'], 1, 'Magisches Dreieck: Rentabilität (Rendite) vs. Sicherheit vs. Liquidität (Verfügbarkeit).'),
+    Q('wk-geldanlage', 'Bis zu welchem Betrag schützt die gesetzliche Einlagensicherung Bankguthaben (z. B. Tagesgeld/Festgeld) je Kunde und Bank?', ['10.000 €', '50.000 €', '100.000 €', 'Unbegrenzt'], 2, 'Gesetzliche Einlagensicherung in der EU: 100.000 € pro Kunde und Bank.'),
+    Q('wk-geldanlage', 'Was ist der wesentliche Vorteil eines passiven ETF gegenüber einem aktiven Investmentfonds?', ['Garantierter Gewinn von mind. 10 %', 'Keine Kursschwankungen', 'Deutlich geringere laufende Kosten und breite Risikostreuung', 'Täglicher Zinseszins'], 2, 'ETFs bilden einen Index (z. B. MSCI World) ohne teures Fondsmanagement nach; extrem niedrige Gebühren.'),
+    // Kredit & Darlehen
+    Q('wk-kredit', 'Worin besteht der Unterschied zwischen Kreditfähigkeit und Kreditwürdigkeit?', ['Kreditfähigkeit ist das Alter, Kreditwürdigkeit das Geschlecht', 'Kreditfähigkeit ist die rechtliche Fähigkeit (Volljährigkeit); Kreditwürdigkeit ist die finanzielle Zuverlässigkeit (Bonität/SCHUFA)', 'Es gibt keinen Unterschied', 'Kreditwürdigkeit entscheidet das Gericht'], 1, 'Kreditfähigkeit = rechtlich voll geschäftsfähig; Kreditwürdigkeit = wirtschaftlich zahlungsfähig (SCHUFA).'),
+    Q('wk-darlehen-effektivzins', 'Welche Angabe eignet sich am besten für den objektiven Vergleich verschiedener Kreditangebote?', ['Sollzinssatz (Nominalzins)', 'Effektiver Jahreszins', 'Laufzeit des Kredits', 'Name der Bank'], 1, 'Der effektive Jahreszins enthält alle Nebenkosten und Gebühren und ist der einzig vergleichbare Maßstab.'),
+    Q('wk-darlehen-effektivzins', 'Welche gesetzliche Schutzfrist gilt beim Verbraucherdarlehensvertrag für den Widerruf?', ['Gar kein Widerrufsrecht', '7 Tage', '14 Tage ab Vertragsschluss und Belehrung', '1 Monat'], 2, '§ 495 BGB: 14 Tage Widerrufsrecht für Verbraucher.'),
+    // Sicherheiten der Banken
+    Q('wk-banksicherheiten-dinglich', 'Wer ist bei einer Sicherungsübereignung eines Firmenwagens der Besitzer und wer der Eigentümer?', ['Kunde = Eigentümer, Bank = Besitzer', 'Bank = Eigentümerin, Kunde = Besitzer (nutzt das Fahrzeug weiter)', 'Beide sind Miteigentümer', 'Das Autohaus bleibt Eigentümer'], 1, 'Bank wird Eigentümerin (Sicherheit); Kunde bleibt Besitzer und fährt das Auto weiter.'),
+    Q('wk-banksicherheiten-dinglich', 'Was unterscheidet die Grundschuld von der Hypothek bei der Immobilienfinanzierung?', ['Die Grundschuld ist abstrakt (unabhängig vom Darlehen) und wiederverwendbar; die Hypothek ist streng an das Darlehen gebunden', 'Die Hypothek ist für Autos, die Grundschuld für Häuser', 'Die Grundschuld wird nicht ins Grundbuch eingetragen', 'Es gibt keinen Unterschied'], 0, 'Grundschuld ist abstrakt und wiederverwendbar; Hypothek ist akzessorisch.'),
+    Q('wk-buergschaft', 'Warum ist eine selbstschuldnerische Bürgschaft für den Bürgen besonders riskant?', ['Weil der Bürge doppelt zahlen muss', 'Weil die Bank sofort an den Bürgen herantreten kann, ohne vorher den Hauptschuldner verklagen zu müssen', 'Weil der Vertrag nur mündlich gilt', 'Weil man automatisch vorbestraft wird'], 1, 'Verzicht auf die Einrede der Vorausklage: Bank kann sofort den Bürgen belangen.'),
     // Überschuldung
-    Q('wk-ueberschuldung', 'Wann spricht man von Überschuldung?', ['Wenn man einen Kredit hat', 'Wenn Einnahmen dauerhaft nicht für Lebenshaltung und Ratenzahlungen reichen', 'Wenn man einen Dispo nutzt', 'Wenn man eine Kreditkarte besitzt'], 1, 'Verschuldung ≠ Überschuldung.'),
-    Q('wk-ueberschuldung', 'Innerhalb welcher Frist kann man gegen einen Mahnbescheid Widerspruch einlegen?', ['3 Tage', '2 Wochen', '1 Monat', '3 Monate'], 1, 'Mahnbescheid → 2 Wochen Widerspruch; Vollstreckungsbescheid → 2 Wochen Einspruch.'),
-    Q('wk-ueberschuldung', 'Was schützt ein P-Konto?', ['Das ganze Guthaben', 'Einen monatlichen Grundfreibetrag vor Pfändung', 'Nur Kindergeld', 'Nichts'], 1, 'Pfändungsschutzkonto: Grundfreibetrag bleibt verfügbar.'),
-    Q('wk-ueberschuldung', 'Wie lange dauert die Wohlverhaltensphase bis zur Restschuldbefreiung in der Regel?', ['1 Jahr', '3 Jahre', '6 Jahre', '10 Jahre'], 1, 'Seit 2020/2021: 3 Jahre.'),
-    Q('wk-ueberschuldung', 'Was ist der erste Schritt im Verbraucherinsolvenzverfahren?', ['Antrag beim Gericht', 'Außergerichtlicher Einigungsversuch mit den Gläubigern', 'Pfändung', 'Restschuldbefreiung'], 1, 'Erst außergerichtlich (mit Schuldnerberatung), dann Antrag.'),
-    Q('wk-ueberschuldung', 'Wie lang ist die regelmäßige Verjährungsfrist für Forderungen?', ['1 Jahr', '3 Jahre', '10 Jahre', '30 Jahre'], 1, '3 Jahre ab Jahresende; titulierte Forderungen 30 Jahre.'),
-    Q('wk-ueberschuldung', 'Welche Sache darf der Gerichtsvollzieher NICHT pfänden?', ['Zweitfernseher', 'Bett und Kühlschrank', 'Schmuck', 'Sportwagen'], 1, 'Unpfändbar: Dinge für bescheidene Lebensführung und Berufsausübung.'),
+    Q('wk-ueberschuldung', 'Wie lange dauert die Wohlverhaltensphase bis zur Restschuldbefreiung im Verbraucherinsolvenzverfahren in der Regel?', ['1 Jahr', '3 Jahre', '6 Jahre', '10 Jahre'], 1, 'Seit der Gesetzesreform 2020/2021: 3 Jahre.'),
+    Q('wk-ueberschuldung', 'Welche Funktion hat ein Pfändungsschutzkonto (P-Konto)?', ['Es verhindert jede Kontoüberweisung', 'Es schützt ein gesetzliches Grundguthaben (Existenzminimum) vor Kontopfändungen', 'Es tilgt automatisch die Schulden', 'Es verdoppelt das Gehalt'], 1, 'P-Konto sichert den gesetzlichen Grundfreibetrag vor Pfändung für Miete und Lebensmittel.')
   ];
+
+  // =========================================================================
+  // HÀM TÁI CẤU TRÚC TOÀN DIỆN MÔN WIKO (THEMEN IN WIRTSCHAFTS- UND SOZIALKUNDE)
+  // =========================================================================
+  window.buildWikoFach = function (baseWiko) {
+    if (!baseWiko) return baseWiko;
+
+    // 1. Thu thập tất cả các items hiện có
+    const itemsMap = new Map();
+    (baseWiko.groups || []).forEach(function (g) {
+      (g.items || []).forEach(function (it) {
+        itemsMap.set(it.id, it);
+      });
+    });
+
+    // 2. Nâng cấp các items hiện có với nội dung chuyên sâu
+    if (itemsMap.has('wiko-arbeitsschutz')) {
+      const it = itemsMap.get('wiko-arbeitsschutz');
+      if (!it.content.includes('Mutterschutz &amp; Elternzeit (Chuyên sâu)')) {
+        it.content += C.arbeitsschutz_ext;
+      }
+      it.desc = 'JArbSchG · ArbZG · BUrlG · MuSchG · Elternzeit (BEEG)';
+    }
+
+    if (itemsMap.has('wiko-betriebsrat-mitbestimmung')) {
+      const it = itemsMap.get('wiko-betriebsrat-mitbestimmung');
+      if (!it.content.includes('Aktives vs. Passives Wahlrecht')) {
+        it.content += C.betriebsrat_ext;
+      }
+      it.desc = 'Voraussetzungen · Aktives (ab 16) & passives (ab 18) Wahlrecht · 4 Beteiligungsstufen';
+    }
+
+    if (itemsMap.has('wiko-tarifvertrag')) {
+      const it = itemsMap.get('wiko-tarifvertrag');
+      if (!it.content.includes('Die Sozialpartner &amp; Tarifvertragsarten')) {
+        it.content += C.tarifvertrag_ext;
+      }
+      it.desc = 'Sozialpartner · Tarifautonomie (Art. 9 GG) · Entgelt-, Rahmenentgelt- & Manteltarifvertrag';
+    }
+
+    if (itemsMap.has('wiko-steuerklassen')) {
+      const it = itemsMap.get('wiko-steuerklassen');
+      if (!it.content.includes('Bruttolohn – Nettolohn – Ausbezahlter Lohn')) {
+        it.content += C.lohnabrechnung_ext;
+      }
+      it.name = 'Lohnabrechnung & Lohnsteuerklassen';
+      it.desc = 'Brutto → Netto → Ausbezahlter Lohn (Auszahlungsbetrag) · 6 Lohnsteuerklassen';
+    }
+
+    if (itemsMap.has('wiko-rg-p1')) {
+      const it = itemsMap.get('wiko-rg-p1');
+      if (!it.content.includes('Juristische Personen im Detail')) {
+        it.content += C.rechtsfaehigkeit_ext;
+      }
+      it.name = 'Rechtsfähigkeit (Natürliche & Juristische Personen)';
+      it.desc = 'Natürliche Personen (ab Geburt) vs. Juristische Personen (des Privatrechts & öffentlichen Rechts)';
+    }
+
+    // 3. Tạo các items mới hoặc lấy từ C
+    const itemSteuer = itemsMap.get('wk-steuererklaerung') || {
+      id: 'wk-steuererklaerung', icon: IC_DOC, name: 'Einkommensteuererklärung',
+      desc: 'Pflicht vs. freiwillig (Antragsveranlagung) · Werbungskosten · Sonderausgaben',
+      content: C.steuer
+    };
+    itemSteuer.content = C.steuer;
+
+    const itemAltersvorsorge = itemsMap.get('wk-altersvorsorge') || {
+      id: 'wk-altersvorsorge', icon: IC_USERS, name: 'Altersvorsorge & Private Zusatzversicherungen',
+      desc: '3-Säulen-Modell · Demografischer Wandel · BU-Versicherung & Zahnzusatz',
+      content: C.altersvorsorge
+    };
+    itemAltersvorsorge.content = C.altersvorsorge;
+
+    const itemSoli = itemsMap.get('wk-solidaritaet') || {
+      id: 'wk-solidaritaet', icon: IC_SHIELD, name: 'Sozialversicherung · Solidaritätsprinzip',
+      desc: 'Solidarität · Generationenvertrag · 5 Zweige · Subsidiarität',
+      content: C.soli
+    };
+    itemSoli.content = C.soli;
+
+    const itemKaufvertragVertieft = itemsMap.get('wk-kaufvertrag') || {
+      id: 'wk-kaufvertrag', icon: IC_SCALE, name: 'Mängelhaftung & Verjährung von Forderungen',
+      desc: 'Gewährleistung vs. Garantie · Vorrangige & nachrangige Rechte · Verjährung (3 Jahre, Hemmung, Neubeginn)',
+      content: C.kaufvertrag
+    };
+    itemKaufvertragVertieft.content = C.kaufvertrag;
+
+    const itemVerbraucherschutz = itemsMap.get('wk-verbraucherschutz') || {
+      id: 'wk-verbraucherschutz', icon: IC_SHIELD, name: 'Verbraucherberatung, UWG & Leistungsstörungen',
+      desc: 'Verbraucherschutzgesetze · Gesetz gegen den unlauteren Wettbewerb (UWG) · Lieferungs-, Annahme- & Zahlungsverzug',
+      content: C.verbraucherschutz
+    };
+    itemVerbraucherschutz.content = C.verbraucherschutz;
+
+    const itemGeld = itemsMap.get('wk-geld') || {
+      id: 'wk-geld', icon: IC_EURO, name: 'Geld & Zahlungsverkehr',
+      desc: 'Zahlungsformen · SEPA · Überweisung · Lastschrift · Girocard & Kreditkarte',
+      content: C.geld
+    };
+    itemGeld.content = C.geld;
+
+    const itemGeldanlage = itemsMap.get('wk-geldanlage') || {
+      id: 'wk-geldanlage', icon: IC_COIN, name: 'Geldanlagemöglichkeiten & Magisches Dreieck',
+      desc: 'Sparbuch, Termingeld, Tagesgeld · Aktien & Anleihen · Fonds & ETFs · Magisches Dreieck',
+      content: C.geldanlage
+    };
+    itemGeldanlage.content = C.geldanlage;
+
+    const itemKredit = itemsMap.get('wk-kredit') || {
+      id: 'wk-kredit', icon: IC_EURO, name: 'Kreditarten & Kreditvergleiche',
+      desc: 'Kreditfähigkeit vs. Kreditwürdigkeit (Bonität) · Dispo, Ratenkredit, Annuitätendarlehen · SCHUFA',
+      content: C.kredit
+    };
+    itemKredit.content = C.kredit;
+
+    const itemDarlehen = itemsMap.get('wk-darlehen-effektivzins') || {
+      id: 'wk-darlehen-effektivzins', icon: IC_DOC, name: 'Verbraucherdarlehen & Effektivverzinsung',
+      desc: 'BGB § 491 ff. · Schriftform & 14 Tage Widerruf · Sollzins vs. Effektiver Jahreszins',
+      content: C.darlehen
+    };
+    itemDarlehen.content = C.darlehen;
+
+    const itemBuergschaft = itemsMap.get('wk-buergschaft') || {
+      id: 'wk-buergschaft', icon: IC_DOC, name: 'Personensicherheiten · Bürgschaft',
+      desc: 'Ausfallbürgschaft (Einrede der Vorausklage) vs. Selbstschuldnerische Bürgschaft',
+      content: C.buergschaft
+    };
+    itemBuergschaft.content = C.buergschaft;
+
+    const itemBanksicherheitenDinglich = itemsMap.get('wk-banksicherheiten-dinglich') || {
+      id: 'wk-banksicherheiten-dinglich', icon: IC_SCALE, name: 'Dingliche Kreditsicherheiten der Banken',
+      desc: 'Sicherungsübereignung · Verpfändung (Pfandrecht) · Grundpfandrechte: Hypothek vs. Grundschuld',
+      content: C.banksicherheiten_dinglich
+    };
+    itemBanksicherheitenDinglich.content = C.banksicherheiten_dinglich;
+
+    const itemUeberschuldung = itemsMap.get('wk-ueberschuldung') || {
+      id: 'wk-ueberschuldung', icon: IC_ALERT, name: 'Überschuldung & Verbraucherinsolvenz',
+      desc: 'Schuldnerberatung · P-Konto · Gerichtliches Mahnverfahren · 3 Jahre Wohlverhaltensphase & Restschuldbefreiung',
+      content: C.ueberschuldung
+    };
+    itemUeberschuldung.content = C.ueberschuldung;
+
+    // Đưa tất cả vào itemsMap
+    [itemSteuer, itemAltersvorsorge, itemSoli, itemKaufvertragVertieft, itemVerbraucherschutz,
+     itemGeld, itemGeldanlage, itemKredit, itemDarlehen, itemBuergschaft, itemBanksicherheitenDinglich, itemUeberschuldung].forEach(function (it) {
+      itemsMap.set(it.id, it);
+    });
+
+    const getItems = function () {
+      const res = [];
+      for (let i = 0; i < arguments.length; i++) {
+        const id = arguments[i];
+        if (itemsMap.has(id)) res.push(itemsMap.get(id));
+      }
+      return res;
+    };
+
+    // =========================================================================
+    // 4. SẮP XẾP LẠI TOÀN BỘ GROUPS CHUẨN FORM GIÁO TRÌNH RM (GRUNDSTUFE & FACHSTUFE I)
+    // =========================================================================
+    baseWiko.groups = [
+      // -----------------------------------------------------------------------
+      // PHẦN I: GRUNDSTUFE (9 Cụm chuyên đề chính)
+      // -----------------------------------------------------------------------
+      {
+        id: 'wk-g-duale-ausbildung',
+        badge: 'Grundstufe',
+        title: '1. Duale Berufsausbildung',
+        items: getItems('wiko-duales-system')
+      },
+      {
+        id: 'wk-g-ausbildungsvertrag',
+        badge: 'Grundstufe',
+        title: '2. Ausbildungsvertrag',
+        items: getItems('wiko-ausbildungsvertrag', 'wiko-probezeit-ueberwachung', 'wiko-rechte-pflichten', 'wiko-fall-klara')
+      },
+      {
+        id: 'wk-g-arbeitsschutz',
+        badge: 'Grundstufe',
+        title: '3. Schutzvorschriften in der Arbeitswelt',
+        items: getItems('wiko-arbeitsschutz')
+      },
+      {
+        id: 'wk-g-arbeitsvertrag',
+        badge: 'Grundstufe',
+        title: '4. Arbeitsvertrag & Kündigung',
+        items: getItems('wiko-bewerbung-vorstellung', 'wiko-fragen-agg', 'wiko-arbeitsvertrag', 'wiko-arbeitszeugnis', 'wiko-kuendigung-frist', 'wiko-kuendigungsschutz', 'wiko-kuendigung-fristlos')
+      },
+      {
+        id: 'wk-g-betriebsrat',
+        badge: 'Grundstufe',
+        title: '5. Betriebsrat & Mitbestimmung',
+        items: getItems('wiko-betriebsrat-mitbestimmung', 'wiko-jav')
+      },
+      {
+        id: 'wk-g-tarifvertrag',
+        badge: 'Grundstufe',
+        title: '6. Tarifverträge & Arbeitskampf',
+        items: getItems('wiko-tarifvertrag', 'wiko-arbeitskampf')
+      },
+      {
+        id: 'wk-g-sozialversicherungen',
+        badge: 'Grundstufe',
+        title: '7. Grundzüge der Sozialversicherungen',
+        items: getItems('wk-solidaritaet', 'wiko-lohnabrechnung-sozial', 'wk-altersvorsorge')
+      },
+      {
+        id: 'wk-g-lohnabrechnung',
+        badge: 'Grundstufe',
+        title: '8. Lohnabrechnungen',
+        items: getItems('wiko-steuerklassen')
+      },
+      {
+        id: 'wk-g-steuererklaerung',
+        badge: 'Grundstufe',
+        title: '9. Steuererklärung',
+        items: getItems('wk-steuererklaerung')
+      },
+
+      // -----------------------------------------------------------------------
+      // PHẦN II: FACHSTUFE I (10 Cụm chuyên đề chính)
+      // -----------------------------------------------------------------------
+      {
+        id: 'wk-f1-rechtsfaehigkeit',
+        badge: 'Fachstufe I',
+        title: '1. Rechtsfähigkeit',
+        items: getItems('wiko-rg-p1')
+      },
+      {
+        id: 'wk-f1-geschaeftsfaehigkeit',
+        badge: 'Fachstufe I',
+        title: '2. Geschäftsfähigkeit & Rechtsfolgen',
+        items: getItems('wiko-rg-bt1')
+      },
+      {
+        id: 'wk-f1-willenserklaerungen',
+        badge: 'Fachstufe I',
+        title: '3. Abgabe von Willenserklärungen & Rechtsgeschäfte',
+        items: getItems('wiko-rg-p2', 'wiko-rg-bt2', 'wiko-rg-bt3', 'wiko-rg-bt4')
+      },
+      {
+        id: 'wk-f1-kaufvertrag',
+        badge: 'Fachstufe I',
+        title: '4. Kaufvertrag · Erfüllung · Mängel · Verjährung',
+        items: getItems('kaufvertrag', 'wiko-rg-p3', 'wk-kaufvertrag', 'wiko-rg-bt5')
+      },
+      {
+        id: 'wk-f1-verbraucherberatung',
+        badge: 'Fachstufe I',
+        title: '5. Verbraucherberatung · UWG · Verzug',
+        items: getItems('wk-verbraucherschutz')
+      },
+      {
+        id: 'wk-f1-umgang-mit-geld',
+        badge: 'Fachstufe I',
+        title: '6. Umgang mit Geld & Geldanlagemöglichkeiten',
+        items: getItems('wk-geld', 'wk-geldanlage')
+      },
+      {
+        id: 'wk-f1-kreditarten',
+        badge: 'Fachstufe I',
+        title: '7. Kreditarten, Kreditvergleiche & SCHUFA',
+        items: getItems('wk-kredit')
+      },
+      {
+        id: 'wk-f1-darlehen',
+        badge: 'Fachstufe I',
+        title: '8. Verbraucherdarlehen & Effektivverzinsung',
+        items: getItems('wk-darlehen-effektivzins')
+      },
+      {
+        id: 'wk-f1-banksicherheiten',
+        badge: 'Fachstufe I',
+        title: '9. Sicherungen der Banken (Personen- & Realsicherheiten)',
+        items: getItems('wk-buergschaft', 'wk-banksicherheiten-dinglich')
+      },
+      {
+        id: 'wk-f1-ueberschuldung',
+        badge: 'Fachstufe I',
+        title: '10. Überschuldung & Verbraucherinsolvenz',
+        items: getItems('wk-ueberschuldung')
+      },
+
+      // -----------------------------------------------------------------------
+      // PHẦN III: PRÜFUNGSTRAINING (Tổng hợp ôn thi & Tình huống thực tế)
+      // -----------------------------------------------------------------------
+      {
+        id: 'wiso-theorie',
+        badge: 'WiSo Prüfung',
+        title: 'WiSo Prüfung · 9 Themen im Gesamtüberblick',
+        items: getItems('wiso-thema-1', 'wiso-thema-2', 'wiso-thema-3', 'wiso-thema-4', 'wiso-thema-5', 'wiso-thema-6', 'wiso-thema-7', 'wiso-thema-8', 'wiso-thema-9')
+      },
+      {
+        id: 'wk-falluebungen',
+        badge: 'Fall-Übungen',
+        title: 'Fall-Übungen · BGB & Arbeitsrecht Fälle',
+        items: getItems('wiko-rg-bt6')
+      }
+    ];
+
+    // 5. Hợp nhất Quiz: giữ quiz gốc + bổ sung ALL_EXTRA_QUIZ (tránh trùng)
+    const existingQKeys = new Set((baseWiko.quiz || []).map(function (q) { return q.theme + '|' + q.q; }));
+    const mergedQuiz = (baseWiko.quiz || []).slice();
+    ALL_EXTRA_QUIZ.forEach(function (q) {
+      const key = q.theme + '|' + q.q;
+      if (!existingQKeys.has(key)) {
+        existingQKeys.add(key);
+        mergedQuiz.push(q);
+      }
+    });
+    baseWiko.quiz = mergedQuiz;
+
+    return baseWiko;
+  };
+
+  // Giữ lại các biến tương thích ngược
+  window.WIKO_EXTRA_GROUPS = [];
+  window.WIKO_EXTRA_QUIZ = ALL_EXTRA_QUIZ;
+
 })();

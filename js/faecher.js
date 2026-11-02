@@ -8170,7 +8170,9 @@ function toggleViKaese(){ var wrap=document.querySelector('.kaese-skript-wrap');
       if (f.id === "deutsch" && (!f.quiz || !f.quiz.length) && w.DEUTSCH_QUIZ) {
         f.quiz = w.DEUTSCH_QUIZ.slice();
       }
-      if (f.id === "wiko" && w.WIKO_EXTRA_GROUPS && !f.groups.some((g) => g.id === "wk-fachstufe1")) {
+      if (f.id === "wiko" && typeof w.buildWikoFach === "function") {
+        f = w.buildWikoFach(f);
+      } else if (f.id === "wiko" && w.WIKO_EXTRA_GROUPS && !f.groups.some((g) => g.id === "wk-fachstufe1")) {
         f.groups = f.groups.concat(w.WIKO_EXTRA_GROUPS);
         f.quiz = (f.quiz || []).concat(w.WIKO_EXTRA_QUIZ || []);
       }
