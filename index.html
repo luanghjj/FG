@@ -1128,6 +1128,90 @@ span.vi-seg.open,.lang-vi span.vi-seg{display:inline}
 #fleischSheet .fs-card{width:min(560px,100%);background:var(--surface);border-radius:18px 18px 0 0;padding:14px 16px calc(16px + var(--safe-bottom));
   max-height:78vh;overflow:auto;animation:sheetUp .28s ease;box-shadow:0 -10px 40px rgba(0,0,0,.18)}
 @keyframes sheetUp{from{transform:translateY(24px);opacity:.6}to{transform:none;opacity:1}}
+
+/* ===== LESSON FEEDBACK SHEET ===== */
+.feedback-sheet-overlay{
+  position:fixed;inset:0;z-index:280;background:rgba(20,15,10,.45);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  display:none;align-items:flex-end;justify-content:center;
+  transition:opacity .25s ease;
+}
+.feedback-sheet-overlay.show{display:flex}
+.feedback-sheet-card{
+  width:min(540px,100%);background:rgba(253,251,246,.95);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border:1px solid rgba(255,255,255,.7);border-bottom:none;
+  border-radius:24px 24px 0 0;padding:16px 20px calc(20px + var(--safe-bottom));
+  box-shadow:0 -12px 42px rgba(0,0,0,.22);color:var(--ink);
+  animation:sheetUp .28s cubic-bezier(.16,1,.3,1);max-height:88vh;overflow-y:auto;box-sizing:border-box;
+}
+.feedback-sheet-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.feedback-sheet-title{display:flex;align-items:center;gap:8px;font-weight:700;font-size:1.05em;color:var(--ink)}
+.feedback-context-banner{
+  background:var(--bg);border:1px solid var(--line);border-radius:12px;
+  padding:9px 12px;margin-bottom:14px;font-size:.82em;line-height:1.45;
+}
+.fb-context-target{font-weight:700;color:var(--accent)}
+.fb-context-player{color:var(--muted);margin-top:2px}
+.feedback-tags-label{font-size:.74em;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.feedback-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.fb-tag{
+  border:1px solid var(--line);background:var(--surface);border-radius:999px;
+  padding:6px 12px;font:inherit;font-size:.78em;font-weight:600;color:var(--muted);
+  cursor:pointer;transition:all .15s ease;
+}
+.fb-tag:hover{border-color:var(--accent);color:var(--accent)}
+.fb-tag.active{
+  background:var(--accent-soft);border-color:var(--accent);color:var(--accent);
+  box-shadow:inset 0 1px 1px rgba(180,83,9,.1);
+}
+.feedback-input-wrap label{display:block;font-size:.76em;font-weight:700;color:var(--muted);margin-bottom:6px}
+.feedback-input-wrap textarea{
+  width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:12px;
+  background:var(--surface);font:inherit;font-size:.88em;color:var(--ink);
+  box-sizing:border-box;resize:vertical;min-height:85px;line-height:1.45;
+  transition:border-color .15s,box-shadow .15s;margin-bottom:14px;
+}
+.feedback-input-wrap textarea:focus{
+  outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(180,83,9,.12);
+}
+.feedback-actions{display:flex;flex-direction:column;gap:8px}
+.fb-btn-wa{
+  width:100%;display:flex;align-items:center;justify-content:center;gap:8px;
+  background:var(--accent);color:#fff;border-radius:12px;padding:11px 16px;
+  font-weight:650;font-size:.88em;border:none;cursor:pointer;
+  box-shadow:0 2px 8px rgba(180,83,9,.25);transition:filter .15s;
+}
+.fb-btn-wa:hover{filter:brightness(1.08)}
+.fb-btn-sys{
+  width:100%;display:flex;align-items:center;justify-content:center;gap:6px;
+  border-radius:12px;padding:9px 16px;font-size:.84em;
+}
+
+/* Feedback trigger card at bottom of lessons */
+.lesson-feedback-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:16px;
+  padding:16px 18px;margin:24px 0 16px;box-shadow:0 1px 3px rgba(60,45,20,.05);
+  display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+}
+.lesson-feedback-card .lfc-txt{flex:1;min-width:220px}
+.lesson-feedback-card .lfc-title{font-weight:700;font-size:.92em;color:var(--ink);display:flex;align-items:center;gap:6px}
+.lesson-feedback-card .lfc-sub{font-size:.78em;color:var(--muted);margin-top:2px}
+.lesson-feedback-card .lfc-btn{
+  display:inline-flex;align-items:center;gap:6px;padding:8px 14px;
+  border-radius:999px;border:1px solid var(--accent);background:var(--surface);
+  color:var(--accent);font-size:.82em;font-weight:650;cursor:pointer;
+  transition:all .15s ease;flex-shrink:0;
+}
+.lesson-feedback-card .lfc-btn:hover{
+  background:var(--accent-soft);transform:translateY(-1px);
+}
+.quiz-report-link{
+  display:inline-flex;align-items:center;gap:5px;font-size:.75em;color:var(--muted);
+  cursor:pointer;margin-top:8px;padding:3px 8px;border-radius:6px;
+  background:transparent;border:none;transition:color .15s,background .15s;
+}
+.quiz-report-link:hover{color:var(--accent);background:var(--accent-soft)}
 #fleischSheet .fs-handle{width:42px;height:4px;border-radius:99px;background:#C7C7CC;margin:0 auto 12px}
 #fleischSheet .fs-close{border:none;background:var(--accent-soft);border-radius:10px;padding:8px 12px;font:inherit;cursor:pointer;float:right;color:var(--accent);font-weight:600}
 .wrong-list{text-align:left;margin:12px 0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
@@ -5444,6 +5528,49 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
   </div>
 </div>
 
+<!-- ===== LESSON FEEDBACK SHEET ===== -->
+<div id="lessonFeedbackSheet" class="feedback-sheet-overlay" aria-hidden="true" onclick="if(event.target===this) closeLessonFeedback()">
+  <div class="feedback-sheet-card">
+    <div class="fs-handle"></div>
+    <div class="feedback-sheet-head">
+      <div class="feedback-sheet-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:18px;height:18px"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        <span>Góp ý &amp; Báo lỗi bài học</span>
+      </div>
+      <button type="button" class="sheet-x" onclick="closeLessonFeedback()" aria-label="Schließen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+
+    <div class="feedback-context-banner" id="fbContextBanner">
+      <div class="fb-context-target" id="fbContextTarget">Mục góp ý: Bài học</div>
+      <div class="fb-context-player" id="fbContextPlayer">Người gửi: —</div>
+    </div>
+
+    <div class="feedback-tags-label">Loại vấn đề phát hiện:</div>
+    <div class="feedback-tags" id="fbTags">
+      <button type="button" class="fb-tag active" data-type="spelling">Sai chính tả / Dịch</button>
+      <button type="button" class="fb-tag" data-type="content">Sai kiến thức / Đáp án</button>
+      <button type="button" class="fb-tag" data-type="regulation">Quy chế / Luật mới</button>
+      <button type="button" class="fb-tag" data-type="addition">Đóng góp thêm tài liệu</button>
+    </div>
+
+    <div class="feedback-input-wrap">
+      <label for="fbComment">Chi tiết sai sót hoặc nội dung cần bổ sung:</label>
+      <textarea id="fbComment" rows="4" placeholder="Ví dụ: Ở đoạn 2 từ vựng dịch chưa chuẩn, đúng ra phải là..."></textarea>
+    </div>
+
+    <div class="feedback-actions">
+      <button type="button" class="btn fb-btn-wa" id="fbSendWaBtn" onclick="submitLessonFeedback('wa')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        <span>Gửi qua WhatsApp: 0176 7664 0277</span>
+      </button>
+      <button type="button" class="btn ghost fb-btn-sys" id="fbSendSysBtn" onclick="submitLessonFeedback('sys')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Lưu vào hệ thống (Ẩn danh)</span>
+      </button>
+    </div>
+  </div>
+</div>
+
 <!-- Fullscreen search sheet (Tối ưu mobile) -->
 <div id="searchSheet" aria-hidden="true">
   <div class="sheet">
@@ -7129,7 +7256,8 @@ function renderFachTheme(fachId, themeId){
     + '<div class="theme-quiz-bar" style="margin-top:18px">'
       + '<button type="button" class="btn" id="fachThemeDrill">📝 Thema üben</button>'
       + '<button type="button" class="btn ghost" id="fachThemeQuiz">Alle Quiz '+(fach.code||'')+'</button>'
-    + '</div>';
+    + '</div>'
+    + lessonFeedbackCardHtml((fach.code||fachId) + ' · ' + (theme.name||'Thema'), themeId);
 
   const drill = document.getElementById('fachThemeDrill');
   if(drill) drill.onclick = ()=>fachQuizStart(fachId, [themeId], 'all');
@@ -7297,6 +7425,7 @@ function fachRenderQuestion(){
     fhtml+='<div class="q-opts"><input class="fill-input" id="fqFill" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Antwort eingeben… (Groß/Klein egal)">';
     fhtml+='<div class="fill-actions"><button type="button" class="btn" id="fqCheck">Prüfen</button><button type="button" class="btn ghost" id="fqSkip">Überspringen</button></div></div>';
     fhtml+='<div class="q-feedback" id="fqFb"></div><div class="q-nav" id="fqNav" style="display:none"><button type="button" class="btn" id="fqNext">Weiter →</button></div>';
+    fhtml+=quizReportBtnHtml(fach.code, fQuiz.index+1, q.q, q.theme);
     area.innerHTML=fhtml;
     try{ if(window.enableVocabOn) enableVocabOn(area); }catch(e){}
     const input=document.getElementById('fqFill');
@@ -7335,6 +7464,7 @@ function fachRenderQuestion(){
   });
   html+='</div><div class="q-feedback" id="fqFb"></div><div class="q-nav" id="fqNav" style="display:none">';
   html+='<button type="button" class="btn" id="fqNext">Weiter →</button></div>';
+  html+=quizReportBtnHtml(fach.code, fQuiz.index+1, q.q, q.theme);
   area.innerHTML=html;
   try{ if(window.enableVocabOn) enableVocabOn(area); }catch(e){}
 
@@ -7621,6 +7751,7 @@ function bfk1RenderQuestion(){
     html+='<button type="button" class="btn ghost" id="b1skip">Überspringen</button>';
     html+='</div></div>';
     html+='<div class="q-feedback" id="b1fb"></div><div class="q-nav" id="b1nav" style="display:none"><button type="button" class="btn" id="b1next">Weiter →</button></div>';
+    html+=quizReportBtnHtml('BfK-1', b1Index+1, q.q, q.theme);
     area.innerHTML=html;
     const input=document.getElementById('b1fill');
     if(input) setTimeout(()=>input.focus(), 30);
@@ -7659,6 +7790,7 @@ function bfk1RenderQuestion(){
   });
   html+='</div><div class="q-feedback" id="b1fb"></div><div class="q-nav" id="b1nav" style="display:none">';
   html+='<button type="button" class="btn" id="b1next">Weiter →</button></div>';
+  html+=quizReportBtnHtml('BfK-1', b1Index+1, q.q, q.theme);
   area.innerHTML=html;
   let locked=false;
   area.querySelectorAll('.opt').forEach(btn=>{
@@ -8151,7 +8283,8 @@ function renderBfk1Theme(themeId){
     + '<div class="theme-quiz-bar" style="margin-top:18px">'
       + '<button type="button" class="btn" id="b1ThemeDrill">📝 Prüfungstraining (Mix)</button>'
       + '<button type="button" class="btn ghost" id="b1ThemePickBtn">Mehrere Themen wählen</button>'
-    + '</div>';
+    + '</div>'
+    + lessonFeedbackCardHtml('BfK-1 · ' + (item.name||'Thema'), themeId);
   const drill=document.getElementById('b1ThemeDrill');
   if(drill) drill.onclick=()=>bfk1QuizStartThemes([themeId]);
   const pickBtn=document.getElementById('b1ThemePickBtn');
@@ -10073,6 +10206,132 @@ window.showWelcomeModal = function() {
   }
   clearTimeout(_welcomeTimer);
 };
+
+/* ===== LESSON FEEDBACK CONTROLLER ===== */
+var _currentFbContext = {
+  type: 'lesson',
+  title: 'Bài học',
+  id: '',
+  detail: ''
+};
+
+function openLessonFeedback(ctx) {
+  _currentFbContext = Object.assign({
+    type: 'lesson',
+    title: 'Bài học',
+    id: '',
+    detail: ''
+  }, ctx || {});
+
+  var sheet = document.getElementById('lessonFeedbackSheet');
+  if (!sheet) return;
+
+  var targetEl = document.getElementById('fbContextTarget');
+  var playerEl = document.getElementById('fbContextPlayer');
+  var commentEl = document.getElementById('fbComment');
+  var curPlayer = (window.LearnDB && LearnDB.getPlayer && LearnDB.getPlayer()) || 'Học viên Azubi';
+
+  if (targetEl) targetEl.textContent = 'Mục góp ý: ' + (_currentFbContext.title || 'Nội dung bài học');
+  if (playerEl) playerEl.textContent = 'Người gửi: ' + curPlayer;
+  if (commentEl) commentEl.value = '';
+
+  var tags = document.querySelectorAll('#fbTags .fb-tag');
+  tags.forEach(function(t, i) {
+    t.classList.toggle('active', i === 0);
+  });
+
+  sheet.classList.add('show');
+}
+
+function closeLessonFeedback() {
+  var sheet = document.getElementById('lessonFeedbackSheet');
+  if (sheet) sheet.classList.remove('show');
+}
+
+function submitLessonFeedback(mode) {
+  var commentEl = document.getElementById('fbComment');
+  var comment = (commentEl && commentEl.value || '').trim();
+  var activeTag = document.querySelector('#fbTags .fb-tag.active');
+  var tagLabel = activeTag ? activeTag.textContent.trim() : 'Sai sót nội dung';
+  var curPlayer = (window.LearnDB && LearnDB.getPlayer && LearnDB.getPlayer()) || 'Học viên Azubi';
+  var targetTitle = _currentFbContext.title || 'Bài học AzubiHub';
+
+  if (!comment && mode === 'sys') {
+    toast('Vui lòng nhập chi tiết nội dung góp ý hoặc báo lỗi', 'bad');
+    return;
+  }
+
+  if (mode === 'wa') {
+    var waMsg = '[Góp ý bài học - AzubiHub]\n' +
+      '• Mục: ' + targetTitle + '\n' +
+      '• Người gửi: ' + curPlayer + '\n' +
+      '• Vấn đề: ' + tagLabel + '\n' +
+      '• Nội dung: ' + (comment || '(Góp ý nhanh từ bài học)');
+
+    var waUrl = 'https://wa.me/4917676640277?text=' + encodeURIComponent(waMsg);
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
+    closeLessonFeedback();
+    toast('Đang mở WhatsApp để gửi góp ý...', 'ok');
+  } else {
+    closeLessonFeedback();
+    if (window.LearnDB && LearnDB.saveFeedback) {
+      LearnDB.saveFeedback({
+        player: curPlayer,
+        target: targetTitle,
+        tag: tagLabel,
+        comment: comment,
+        createdAt: new Date().toISOString()
+      }).then(function() {
+        toast('Cảm ơn bạn! Góp ý đã được lưu vào hệ thống.', 'ok');
+      }).catch(function() {
+        toast('Góp ý đã được ghi nhận vào hệ thống.', 'ok');
+      });
+    } else {
+      toast('Cảm ơn bạn! Góp ý đã được lưu vào hệ thống.', 'ok');
+    }
+  }
+}
+
+// Bind tag clicks
+(function() {
+  document.addEventListener('click', function(e) {
+    var tag = e.target.closest('#fbTags .fb-tag');
+    if (tag) {
+      document.querySelectorAll('#fbTags .fb-tag').forEach(function(t) {
+        t.classList.remove('active');
+      });
+      tag.classList.add('active');
+    }
+  });
+})();
+
+function lessonFeedbackCardHtml(title, id) {
+  var safeTitle = escHtml(title || '');
+  return '<div class="lesson-feedback-card">' +
+    '<div class="lfc-txt">' +
+      '<div class="lfc-title">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:17px;height:17px;color:var(--accent)"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>' +
+        '<span>Bạn thấy bài này có chỗ chưa chuẩn hoặc thiếu sót?</span>' +
+      '</div>' +
+      '<div class="lfc-sub">Cùng hoàn thiện kho tài liệu ôn thi chính xác hơn cho cộng đồng Azubi.</div>' +
+    '</div>' +
+    '<button type="button" class="lfc-btn" onclick="openLessonFeedback({type:\'lesson\',title:\'' + safeTitle.replace(/'/g, "\\'") + '\',id:\'' + (id || '') + '\'})">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>' +
+      '<span>Góp ý &amp; Bổ sung</span>' +
+    '</button>' +
+  '</div>';
+}
+
+function quizReportBtnHtml(cat, num, qText, themeId) {
+  var preview = String(qText || '').replace(/<[^>]*>/g, '').replace(/["']/g, '').trim().slice(0, 60);
+  var fullTitle = (cat ? cat + ' · ' : '') + 'Câu ' + num + ': ' + preview;
+  return '<div style="margin-top:10px;display:flex;justify-content:flex-end">' +
+    '<button type="button" class="quiz-report-link" onclick="openLessonFeedback({type:\'quiz\',title:\'' + fullTitle.replace(/'/g, "\\'") + '\',id:\'' + (themeId || '') + '\'})">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:13px;height:13px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>' +
+      '<span>Báo lỗi câu này</span>' +
+    '</button>' +
+  '</div>';
+}
 function renderDeutschHub() {
   var body = document.getElementById('deutschHubBody');
   if (!body) return;

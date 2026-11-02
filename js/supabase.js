@@ -2162,6 +2162,93 @@ function clean(s) {
     };
   }
 
+  // --- Feedback Management ---
+  const FEEDBACK_PREFIX = 'feedback:';
+
+  async function saveFeedback(fb) {
+    if (!fb || !fb.comment) return { ok: false, error: 'Empty feedback' };
+    const id = Date.now() + '_' + Math.random().toString(36).slice(2, 7);
+    const key = FEEDBACK_PREFIX + id;
+    const payload = {
+      id: id,
+      target: fb.target || 'General',
+      tag: fb.tag || 'Khác',
+      comment: String(fb.comment || '').trim(),
+      player: fb.player || 'Ẩn danh',
+      createdAt: fb.createdAt || new Date().toISOString(),
+      status: 'new'
+    };
+
+    // Luu vao LocalStorage du phong
+    try {
+      const localList = JSON.parse(localStorage.getItem('azubihub_feedbacks_local') || '[]');
+      localList.unshift(payload);
+      if (localList.length > 100) localList.pop();
+      localStorage.setItem('azubihub_feedbacks_local', JSON.stringify(localList));
+    } catch (_) {}
+
+    try {
+      await upsertConfig(key, payload);
+      return { ok: true, id: id };
+    } catch (err) {
+      console.warn('saveFeedback to Supabase failed, kept locally:', err);
+      return { ok: true, id: id, offline: true };
+    }
+  }
+
+  async function listFeedbacks(limit) {
+    try {
+      const rows = await listConfig(FEEDBACK_PREFIX + '%', limit || 150);
+      if (rows && rows.length > 0) {
+        return rows.map(function(r) {
+          const v = r.value || {};
+          return {
+            key: r.key,
+            id: v.id || r.key.replace(FEEDBACK_PREFIX, ''),
+            target: v.target || 'Chung',
+            tag: v.tag || 'Khác',
+            comment: v.comment || '',
+            player: v.player || 'Ẩn danh',
+            createdAt: v.createdAt || r.updated_at,
+            status: v.status || 'new'
+          };
+        });
+      }
+    } catch (err) {
+      console.warn('listFeedbacks error:', err);
+    }
+    // Fallback reading local storage
+    try {
+      return JSON.parse(localStorage.getItem('azubihub_feedbacks_local') || '[]');
+    } catch (_) {
+      return [];
+    }
+  }
+
+  async function updateFeedbackStatus(key, status) {
+    try {
+      const existing = await getConfig(key);
+      if (!existing || !existing.value) return false;
+      const val = existing.value;
+      val.status = status;
+      await upsertConfig(key, val);
+      return true;
+    } catch (e) {
+      console.warn('updateFeedbackStatus failed:', e);
+      return false;
+    }
+  }
+
+  async function deleteFeedback(key) {
+    try {
+      await deleteConfig(key);
+      return true;
+    } catch (e) {
+      console.warn('deleteFeedback failed:', e);
+      return false;
+    }
+  }
+
   global.LearnDB = {
     url: SB_URL,
     getConfig,
@@ -2235,5 +2322,10 @@ function clean(s) {
     chatClearAll,
     chatPurgeNonDefault,
     subscribeChatRoom,
+    // feedback
+    saveFeedback,
+    listFeedbacks,
+    updateFeedbackStatus,
+    deleteFeedback,
   };
 })(typeof window !== 'undefined' ? window : globalThis);

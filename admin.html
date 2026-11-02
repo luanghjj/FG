@@ -156,6 +156,7 @@ table.mx tbody tr:hover .mx-namecol{background:#EAF3FF}
       <button type="button" class="main-tab" data-tab="gastronomie">🍽️ Gastronomie (Azubi-Beruf)</button>
       <button type="button" class="main-tab" data-tab="roles">👥 Rollen &amp; Pro-Code</button>
       <button type="button" class="main-tab" data-tab="excel" style="background:#E3F7E8;color:#107C41;border-color:#107C41">📊 Phân quyền Excel</button>
+      <button type="button" class="main-tab" data-tab="feedback" style="background:#FFF3CD;color:#856404;border-color:#FFEEBA">Góp ý &amp; Báo lỗi (<span id="fbTabCount">0</span>)</button>
     </div>
 
     <!-- ==================== PANE 1: DEUTSCH A1-B1 HUB ==================== -->
@@ -523,6 +524,44 @@ table.mx tbody tr:hover .mx-namecol{background:#EAF3FF}
         </div>
       </div>
     </div>
+
+    <!-- ==================== PANE 5: FEEDBACKS ==================== -->
+    <div class="sec-pane" id="pane-feedback">
+      <div class="card" style="border-left:4px solid #F59E0B;">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:6px">
+          <h2>Quản lý Góp ý &amp; Báo lỗi bài học</h2>
+          <span class="tag" style="background:#FFF3CD;color:#856404;border:none">Từ học viên (Ẩn danh &amp; Trực tiếp)</span>
+        </div>
+        <p class="muted" style="margin-bottom:14px">
+          Các phản ánh về nội dung bài học, lỗi chính tả, dịch thuật hoặc câu hỏi trắc nghiệm được học viên gửi từ ứng dụng.
+        </p>
+
+        <div class="row-actions" style="margin-top:10px;margin-bottom:12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+          <button type="button" class="mini active" id="fbFilterAll" onclick="filterFeedbackList('all')">Tất cả (<span id="fbCountAll">0</span>)</button>
+          <button type="button" class="mini ghost" id="fbFilterNew" onclick="filterFeedbackList('new')">Mới (<span id="fbCountNew">0</span>)</button>
+          <button type="button" class="mini ghost" id="fbFilterResolved" onclick="filterFeedbackList('resolved')">Đã xử lý (<span id="fbCountResolved">0</span>)</button>
+          <button type="button" class="mini ghost" onclick="loadFeedbackList(true)" style="margin-left:auto">Tải lại</button>
+        </div>
+
+        <div class="tscroll" style="max-height:520px">
+          <table>
+            <thead>
+              <tr>
+                <th style="min-width:130px">Thời gian</th>
+                <th style="min-width:180px">Vị trí / Bài học</th>
+                <th style="min-width:130px">Phân loại</th>
+                <th style="min-width:280px">Nội dung góp ý</th>
+                <th style="min-width:100px">Người gửi</th>
+                <th style="min-width:140px">Thao tác</th>
+              </tr>
+            </thead>
+            <tbody id="feedbackBody">
+              <tr><td colspan="6" style="text-align:center;padding:24px;color:var(--muted)">Đang tải danh sách góp ý...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -679,6 +718,8 @@ async function load(){
       const status = open ? '<span class="tag">offen</span>' : '<span class="tag">beendet</span>';
       return `<tr><td>${escH(v.player||'')}</td><td>${fmt(v.started_at||v.at)}</td><td>${fmt(v.ended_at||v.last_seen)}</td><td><b>${fd(v.duration_sec)}</b></td><td>${status}</td></tr>`;
     }).join('') || '<tr><td colspan="5" class="muted">Noch keine Besuche</td></tr>';
+
+    try{ loadFeedbackList(false); }catch(_){}
   }catch(e){
     g.innerHTML='<div class="stat"><div class="l" style="color:var(--bad)">Fehler: '+(e.message||e)+'</div></div>';
   }
@@ -922,6 +963,7 @@ function initTabs(){
       document.querySelectorAll('.sec-pane').forEach(p => p.classList.remove('active'));
       const activePane = document.getElementById('pane-' + tab);
       if(activePane) activePane.classList.add('active');
+      if(tab === 'feedback') loadFeedbackList();
     };
   });
 }
@@ -1406,6 +1448,106 @@ async function batchExcelGrant(allowed){
     showExcelMsg(allowed ? '✅ Đã cấp quyền Excel cho tất cả!' : '🔒 Đã khóa quyền Excel cho tất cả!');
   }catch(e){
     showExcelErr(e.message || String(e));
+  }
+}
+
+/* ===== Quản lý Góp ý & Báo lỗi ===== */
+let _allFeedbacks = [];
+let _fbFilter = 'all';
+
+async function loadFeedbackList(force) {
+  const tbody = document.getElementById('feedbackBody');
+  if (!tbody) return;
+  if (force) tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:20px;color:var(--muted)">Đang tải dữ liệu mới...</td></tr>';
+  try {
+    if (window.LearnDB && LearnDB.listFeedbacks) {
+      _allFeedbacks = await LearnDB.listFeedbacks(150);
+    } else {
+      _allFeedbacks = [];
+    }
+    renderFeedbackTable();
+  } catch (e) {
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:20px;color:var(--bad)">Lỗi tải dữ liệu: ' + escH(e.message || e) + '</td></tr>';
+  }
+}
+
+function filterFeedbackList(status) {
+  _fbFilter = status;
+  ['all', 'new', 'resolved'].forEach(s => {
+    const b = document.getElementById('fbFilter' + s.charAt(0).toUpperCase() + s.slice(1));
+    if (b) {
+      b.classList.toggle('active', s === status);
+      b.classList.toggle('ghost', s !== status);
+    }
+  });
+  renderFeedbackTable();
+}
+
+function renderFeedbackTable() {
+  const tbody = document.getElementById('feedbackBody');
+  if (!tbody) return;
+  const total = _allFeedbacks.length;
+  const newCount = _allFeedbacks.filter(f => f.status === 'new').length;
+  const resCount = _allFeedbacks.filter(f => f.status === 'resolved').length;
+
+  const cAll = document.getElementById('fbCountAll');
+  const cNew = document.getElementById('fbCountNew');
+  const cRes = document.getElementById('fbCountResolved');
+  const tabBadge = document.getElementById('fbTabCount');
+  if (cAll) cAll.textContent = total;
+  if (cNew) cNew.textContent = newCount;
+  if (cRes) cRes.textContent = resCount;
+  if (tabBadge) tabBadge.textContent = newCount;
+
+  const list = _allFeedbacks.filter(f => {
+    if (_fbFilter === 'new') return f.status === 'new';
+    if (_fbFilter === 'resolved') return f.status === 'resolved';
+    return true;
+  });
+
+  if (list.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:28px;color:var(--muted)">Không có góp ý nào phù hợp.</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = list.map(f => {
+    const isRes = f.status === 'resolved';
+    const statusBadge = isRes 
+      ? '<span class="tag" style="background:#E3F7E8;color:#107C41;border:none">Đã xử lý</span>'
+      : '<span class="tag" style="background:#FFF3CD;color:#856404;border:none">Mới</span>';
+    
+    return '<tr>' +
+      '<td style="white-space:nowrap;font-size:0.85em">' + fmt(f.createdAt) + '</td>' +
+      '<td><strong>' + escH(f.target) + '</strong></td>' +
+      '<td><span class="tag" style="background:#F2F2F7;border:1px solid #D1D1D6">' + escH(f.tag) + '</span></td>' +
+      '<td style="line-height:1.4">' + escH(f.comment) + '</td>' +
+      '<td>' + escH(f.player) + '</td>' +
+      '<td style="white-space:nowrap">' +
+        statusBadge + ' ' +
+        (!isRes 
+          ? '<button type="button" class="mini" onclick="setFbStatus(\'' + escH(f.key) + '\', \'resolved\')">Đã sửa</button> ' 
+          : '<button type="button" class="mini ghost" onclick="setFbStatus(\'' + escH(f.key) + '\', \'new\')">Mở lại</button> ') +
+        '<button type="button" class="mini ghost" style="color:var(--bad)" onclick="delFb(\'' + escH(f.key) + '\')">Xoá</button>' +
+      '</td>' +
+    '</tr>';
+  }).join('');
+}
+
+async function setFbStatus(key, status) {
+  if (window.LearnDB && LearnDB.updateFeedbackStatus) {
+    await LearnDB.updateFeedbackStatus(key, status);
+    const target = _allFeedbacks.find(f => f.key === key);
+    if (target) target.status = status;
+    renderFeedbackTable();
+  }
+}
+
+async function delFb(key) {
+  if (!confirm('Bạn có chắc muốn xoá góp ý này khỏi hệ thống?')) return;
+  if (window.LearnDB && LearnDB.deleteFeedback) {
+    await LearnDB.deleteFeedback(key);
+    _allFeedbacks = _allFeedbacks.filter(f => f.key !== key);
+    renderFeedbackTable();
   }
 }
 
