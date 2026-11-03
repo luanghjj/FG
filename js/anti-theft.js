@@ -164,13 +164,34 @@
       showCopyWarning('Nội dung bài học được bảo vệ bản quyền.');
     });
 
-    // Chặn các tổ hợp phím sao chép, lưu trang, xem mã nguồn, inspect
-    document.addEventListener('keydown', function (e) {
+    // Chặn các tổ hợp phím sao chép, lưu trang, xem mã nguồn, inspect, chụp màn hình (Capture Phase = 0ms)
+    window.addEventListener('keydown', function (e) {
       var isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
       var cmdKey = isMac ? e.metaKey : e.ctrlKey;
       var key = (e.key || '').toLowerCase();
       var tag = (document.activeElement && document.activeElement.tagName ? document.activeElement.tagName : '').toLowerCase();
       var isInput = tag === 'input' || tag === 'textarea' || (document.activeElement && document.activeElement.isContentEditable);
+
+      // 1. CHẶN CHỤP MÀN HÌNH MAC (Cmd + Shift + 3/4/5):
+      // Ngay khoảnh khắc ngón tay chạm phím Command (Meta) hoặc Shift+Meta (trước khi kịp bấm phím 3/4/5),
+      // bật màn chắn 0ms ngay lập tức để macOS chỉ chụp được màn chắn bản quyền!
+      if (e.key === 'Meta' || e.metaKey || (e.ctrlKey && e.shiftKey)) {
+        if (!isInput) {
+          triggerScreenshotShield();
+        }
+      }
+
+      // PrintScreen (Windows/Linux)
+      if (e.key === 'PrintScreen' || e.keyCode === 44) {
+        e.preventDefault();
+        triggerScreenshotShield('Chụp màn hình đã bị khóa để bảo vệ bản quyền đề thi.');
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText('Nội dung thuộc bản quyền AzubiHub (' + AUTHOR_NAME + ' - ' + OFFICIAL_PHONE + ').');
+          }
+        } catch (_) {}
+        return;
+      }
 
       // F12 -> Mở DevTools
       if (e.key === 'F12') {
@@ -207,27 +228,9 @@
         return;
       }
 
-      // PrintScreen (Windows/Linux) hoặc Cmd + Shift + 3/4/5 (macOS Screenshot)
-      if (e.key === 'PrintScreen' || e.keyCode === 44) {
-        e.preventDefault();
-        triggerScreenshotShield('Chụp màn hình đã bị hạn chế để bảo vệ bản quyền đề thi.');
-        try {
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText('Nội dung thuộc bản quyền AzubiHub (' + AUTHOR_NAME + ' - ' + OFFICIAL_PHONE + ').');
-          }
-        } catch (_) {}
-        return;
-      }
-
-      // Phát hiện tổ hợp phím chụp màn hình trên macOS: Cmd + Shift (+ 3/4/5/S) hoặc Windows: Win + Shift + S
-      if ((e.metaKey && e.shiftKey) || (e.ctrlKey && e.shiftKey && (key === 's' || key === '3' || key === '4' || key === '5'))) {
-        triggerScreenshotShield('Phát hiện thao tác chụp màn hình — Nội dung tự động làm mờ bảo vệ bản quyền.');
-      }
-
       // Ctrl/Cmd + C -> Sao chép nội dung bài học
       if (cmdKey && key === 'c') {
         if (!isInput) {
-          // Kiểm tra xem có đang chọn chữ trong bài học không
           var selection = window.getSelection ? window.getSelection().toString() : '';
           if (selection && selection.length > 5) {
             e.preventDefault();
@@ -235,22 +238,34 @@
           }
         }
       }
-    });
+    }, true);
 
-    // Bắt thêm sự kiện keyup cho PrintScreen và nhả phím Cmd/Shift
-    document.addEventListener('keyup', function (e) {
+    // Khi nhả phím Command/Shift hoặc di chuột trở lại trang -> mở lại màn hình ngay
+    window.addEventListener('keyup', function (e) {
       if (e.key === 'PrintScreen' || e.keyCode === 44) {
-        triggerScreenshotShield('Chụp màn hình đã bị hạn chế để bảo vệ bản quyền đề thi.');
+        triggerScreenshotShield('Chụp màn hình đã bị khóa để bảo vệ bản quyền đề thi.');
         try {
           if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText('Nội dung thuộc bản quyền AzubiHub (' + AUTHOR_NAME + ').');
           }
         } catch (_) {}
+        return;
       }
-      if (!e.metaKey && !e.shiftKey && _shieldActive) {
-        clearScreenshotShield(350);
+      if (!e.metaKey && !e.shiftKey && _shieldActive && document.hasFocus()) {
+        clearScreenshotShield(80);
       }
+    }, true);
+
+    // Khi công cụ chụp vùng (Cmd+Shift+4/5, Snipping Tool, CleanShot...) chiếm tiêu điểm cửa sổ -> che ngay lập tức
+    window.addEventListener('blur', function () {
+      triggerScreenshotShield();
     });
+    window.addEventListener('focus', function () {
+      clearScreenshotShield(60);
+    });
+    document.addEventListener('mousedown', function () {
+      if (_shieldActive) clearScreenshotShield(0);
+    }, true);
 
     // Chặn quay màn hình trực tiếp từ tab trình duyệt (getDisplayMedia)
     try {
@@ -262,7 +277,7 @@
       }
     } catch (_) {}
 
-    // Tự động chèn CSS chống bôi đen văn bản hàng loạt + Chặn in PDF (@media print) + Hiệu ứng làm mờ chống chụp
+    // Tự động chèn CSS chống bôi đen văn bản hàng loạt + Chặn in PDF (@media print) + Màn chắn 0ms
     var style = document.createElement('style');
     style.id = 'azubihubContentGuardStyles';
     style.innerHTML =
@@ -278,17 +293,36 @@
       '  -ms-user-select: text !important;' +
       '  user-select: text !important;' +
       '}' +
-      'body.azubi-ss-shield > *:not(#azubihubGuardToast):not(#azubihubWatermarkLayer) {' +
-      '  filter: blur(22px) brightness(0.92) !important;' +
-      '  transition: filter 0.02s ease !important;' +
+      '#azubihubSsCurtain {' +
+      '  position: fixed; inset: 0; z-index: 2147483646;' +
+      '  background: #E2D8C2; color: #0F172A;' +
+      '  display: none; flex-direction: column; align-items: center; justify-content: center;' +
+      '  text-align: center; padding: 24px; font-family: -apple-system, BlinkMacSystemFont, sans-serif;' +
+      '  transition: none !important; animation: none !important;' +
+      '}' +
+      'body.azubi-ss-shield #azubihubSsCurtain {' +
+      '  display: flex !important;' +
       '}' +
       '@media print {' +
       '  html, body { display: none !important; visibility: hidden !important; }' +
       '}';
     document.head.appendChild(style);
+
+    // Tạo sẵn màn chắn chống chụp màn hình trong DOM để bật trong 0ms (không tốn thời gian khởi tạo)
+    if (document.body && !document.getElementById('azubihubSsCurtain')) {
+      var curtain = document.createElement('div');
+      curtain.id = 'azubihubSsCurtain';
+      curtain.innerHTML =
+        '<div style="max-width:440px;background:#FDFBF6;border:2px solid #B45309;border-radius:16px;padding:28px 24px;box-shadow:0 12px 32px rgba(0,0,0,.16)">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:42px;height:42px;color:#B45309;margin-bottom:10px"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>' +
+        '<div style="font-weight:800;font-size:1.15em;color:#9A4607;margin-bottom:6px">CHẾ ĐỘ CHỐNG CHỤP MÀN HÌNH</div>' +
+        '<div style="font-size:0.88em;color:#5A5344;line-height:1.55">Nội dung đề thi &amp; bài học thuộc bản quyền <b>AzubiHub (' + AUTHOR_NAME + ')</b>.<br>Nhả phím tắt hoặc bấm chuột vào màn hình để tiếp tục học.</div>' +
+        '</div>';
+      document.body.appendChild(curtain);
+    }
   }
 
-  // 4B. LÁ CHẮN LÀM MỜ CHỐNG CHỤP MÀN HÌNH & VÂN NƯỚC ĐỊNH DANH TÀI KHOẢN
+  // 4B. LÁ CHẮN MÀN CHẮN 0MS & VÂN NƯỚC ĐỊNH DANH TÀI KHOẢN
   var _shieldActive = false;
   var _shieldTimer = null;
 
@@ -299,17 +333,24 @@
     if (msg) showCopyWarning(msg);
     clearTimeout(_shieldTimer);
     _shieldTimer = setTimeout(function () {
-      _shieldActive = false;
-      if (document.body) document.body.classList.remove('azubi-ss-shield');
-    }, 1800);
+      if (document.hasFocus()) {
+        _shieldActive = false;
+        if (document.body) document.body.classList.remove('azubi-ss-shield');
+      }
+    }, 1500);
   }
 
   function clearScreenshotShield(delayMs) {
     clearTimeout(_shieldTimer);
+    if (!delayMs) {
+      _shieldActive = false;
+      if (document.body) document.body.classList.remove('azubi-ss-shield');
+      return;
+    }
     _shieldTimer = setTimeout(function () {
       _shieldActive = false;
       if (document.body) document.body.classList.remove('azubi-ss-shield');
-    }, delayMs || 200);
+    }, delayMs);
   }
 
   function initDynamicWatermark() {
