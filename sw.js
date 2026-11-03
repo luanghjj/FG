@@ -1,12 +1,17 @@
 /* Service Worker – AzubiHub (offline shell + static assets) */
-const CACHE = 'azubihub-v230';
+const CACHE = 'azubihub-v235';
 const PRECACHE = [
   './',
+  './pwa.js',
+  './js/anti-theft.js',
+  './js/exam-sim.js',
+  './js/icons.js',
   './arena.html',
   './js/arena-data.js',
   './js/wissen.js',
-  './js/chatbox.js',
   './index.html',
+  './zwischenpruefung.html',
+  './Klassenarbeit_2_BFK1_Lernfeld_6_9.html',
   './abschluss-winter-2023-2024.html',
   './abschluss-sommer-2024.html',
   './abschluss-winter-2024-2025.html',
@@ -127,9 +132,29 @@ const PRECACHE = [
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE).then((cache) => cache.addAll(PRECACHE)).then(() => self.skipWaiting())
+    caches.open(CACHE).then((cache) =>
+      Promise.allSettled(PRECACHE.map((u) => cache.add(u)))
+    ).then(() => self.skipWaiting())
   );
 });
+
+function fetchWithTimeout(req, ms, opts) {
+  if (typeof navigator !== 'undefined' && navigator.onLine === false) {
+    return Promise.reject(new Error('offline'));
+  }
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => reject(new Error('timeout')), ms || 2200);
+    fetch(req, opts)
+      .then((res) => {
+        clearTimeout(timer);
+        resolve(res);
+      })
+      .catch((err) => {
+        clearTimeout(timer);
+        reject(err);
+      });
+  });
+}
 
 self.addEventListener('message', (event) => {
   if (event.data && (event.data.type === 'SKIP_WAITING' || event.data === 'skipWaiting')) {
@@ -153,10 +178,10 @@ self.addEventListener('fetch', (event) => {
   // Don't cache Supabase / cross-origin API
   if (url.origin !== self.location.origin) return;
 
-  // HTML: network-first so updates appear quickly, always fetch fresh from network
+  // HTML: network-first with 2.2s timeout so offline / weak Wi-Fi loads immediately from cache
   if (req.mode === 'navigate' || (req.headers.get('accept') || '').includes('text/html')) {
     event.respondWith(
-      fetch(req, { cache: 'no-cache' })
+      fetchWithTimeout(req, 2200, { cache: 'no-cache' })
         .then((res) => {
           if (res && res.status === 200) {
             const copy = res.clone();
@@ -165,21 +190,22 @@ self.addEventListener('fetch', (event) => {
           return res;
         })
         .catch(() =>
-          caches.match(req).then((r) => {
+          caches.match(req, { ignoreSearch: true }).then((r) => {
             if (r) return r;
-            if (req.url.includes('/deutsch-a1-c1/')) return caches.match('./deutsch-a1-c1/index.html');
-            if (req.url.includes('/fuererschein/')) return caches.match('./fuererschein/index.html');
-            return caches.match('./index.html');
+            if (req.url.includes('/deutsch-a1-c1/')) return caches.match('./deutsch-a1-c1/index.html', { ignoreSearch: true });
+            if (req.url.includes('/fuererschein/')) return caches.match('./fuererschein/index.html', { ignoreSearch: true });
+            if (req.url.includes('/lid/')) return caches.match('./lid/index.html', { ignoreSearch: true });
+            return caches.match('./index.html', { ignoreSearch: true });
           })
         )
     );
     return;
   }
 
-  // JS/CSS: network-first so API updates (e.g. LearnDB challenge methods) are not stuck
+  // JS/CSS: network-first with 2.2s timeout, instant fallback to precached assets (ignoreSearch: true)
   if (url.pathname.endsWith('.js') || url.pathname.endsWith('.css') || url.pathname.endsWith('.webmanifest')) {
     event.respondWith(
-      fetch(req)
+      fetchWithTimeout(req, 2200)
         .then((res) => {
           if (res && res.status === 200) {
             const copy = res.clone();
@@ -187,10 +213,6 @@ self.addEventListener('fetch', (event) => {
           }
           return res;
         })
-        // ignoreSearch so a precached bare URL (./supabase.js) still serves a
-        // versioned request (./supabase.js?v=7) when offline and that exact
-        // version was never fetched — keeps the offline shell working across
-        // releases instead of failing with no cache hit.
         .catch(() => caches.match(req, { ignoreSearch: true }).then((r) => r || Response.error()))
     );
     return;

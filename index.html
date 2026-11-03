@@ -11,7 +11,7 @@
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="apple-touch-icon" href="./images/icons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="192x192" href="./images/icons/icon-192.png">
-<script src="./js/anti-theft.js?v=1"></script>
+<script src="./js/anti-theft.js?v=2"></script>
 <title>AzubiHub · Fachkraft für Gastronomie</title>
 <style>
 :root{
@@ -5686,8 +5686,8 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
   <div class="tb-tooltip" id="tbTooltip">Lernzeit heute</div>
 </div>
 
-<script src="./js/supabase.js?v=17"></script>
-<script src="./js/access.js?v=3"></script>
+<script src="./js/supabase.js?v=18"></script>
+<script src="./js/access.js?v=4"></script>
 <script src="./js/vocab.js?v=26"></script>
 <script src="./js/lang-split.js?v=8"></script>
 <script src="./faecher/bfk1/bfk1-lf2-p1.js?v=2"></script>
@@ -9468,7 +9468,6 @@ function runSearch(q0){
   if(!q){ showQuickSuggestions(); return; }
   const terms=q.split(/\s+/).filter(Boolean);
   const rawHits=INDEX
-    .filter(it=>!(it.features||[]).some(f=>window.Access&&!Access.can(f)))
     .filter(it=>terms.every(t=>(it.hay||"").includes(t) || norm(it.raw||"").includes(t)))
     .map(it=>({it, sc:scoreHit(it,terms,q)}))
     .sort((a,b)=>b.sc-a.sc)
@@ -10041,7 +10040,6 @@ function initSearchSheet(){
 
     const terms=q.split(/\s+/).filter(Boolean);
     const allHits=INDEX
-      .filter(it=>!(it.features||[]).some(f=>window.Access&&!Access.can(f)))
       .filter(it=>terms.every(t=>(it.hay||'').includes(t)||norm(it.raw||'').includes(t)))
       .map(it=>({it,sc:scoreHit(it,terms,q)}))
       .sort((a,b)=>b.sc-a.sc)
@@ -10598,7 +10596,13 @@ async function doLogin(){
       unlockApp(res.player);
     }
   }catch(e){
-    showLoginError(e.message||String(e));
+    const msg = e && e.message ? e.message : String(e);
+    if (nick.length >= 2 && (navigator.onLine === false || /fetch|network|offline/i.test(msg))) {
+      try { if (window.LearnDB && LearnDB.setPlayer) LearnDB.setPlayer(nick); } catch (_) {}
+      unlockApp(nick);
+      return;
+    }
+    showLoginError(msg);
     if(btn){ btn.disabled=false; btn.innerHTML="Los geht's <span class=\"arrow\">→</span>"; }
   }
 }

@@ -315,28 +315,41 @@ function clean(s) {
   async function loadPlayerHistory(player) {
     const p = String(player || getPlayer() || '').trim();
     if (!p) return { profile: null, quizzes: [] };
-    const profile = await getPlayerProfile(p);
-    // all quiz keys for this player
-    const rows = await listConfig(PREFIX + '%:' + clean(p), 100);
-    // filter exact player suffix match
-    const quizzes = (rows || [])
-      .map((r) => {
-        const v = r.value || {};
-        return {
-          key: r.key,
-          subject: v.subject || '',
-          quiz: v.quiz || '',
-          correct: Number(v.correct) || 0,
-          total: Number(v.total) || 0,
-          pct: Number(v.pct) || 0,
-          at: v.at || r.updated_at || '',
-          attempts: Number(v.attempts) || (Array.isArray(v.history) ? v.history.length : 0),
-          history: Array.isArray(v.history) ? v.history : [],
-        };
-      })
-      .filter((q) => clean(q.key.split(':').slice(-1)[0]) === clean(p))
-      .sort((a, b) => String(b.at).localeCompare(String(a.at)));
-    return { profile: profile, quizzes: quizzes };
+    const cacheKey = 'learn_cached_hist_' + clean(p);
+    try {
+      const profile = await getPlayerProfile(p);
+      // all quiz keys for this player
+      const rows = await listConfig(PREFIX + '%:' + clean(p), 100);
+      // filter exact player suffix match
+      const quizzes = (rows || [])
+        .map((r) => {
+          const v = r.value || {};
+          return {
+            key: r.key,
+            subject: v.subject || '',
+            quiz: v.quiz || '',
+            correct: Number(v.correct) || 0,
+            total: Number(v.total) || 0,
+            pct: Number(v.pct) || 0,
+            at: v.at || r.updated_at || '',
+            attempts: Number(v.attempts) || (Array.isArray(v.history) ? v.history.length : 0),
+            history: Array.isArray(v.history) ? v.history : [],
+          };
+        })
+        .filter((q) => clean(q.key.split(':').slice(-1)[0]) === clean(p))
+        .sort((a, b) => String(b.at).localeCompare(String(a.at)));
+      const result = { profile: profile, quizzes: quizzes };
+      try {
+        localStorage.setItem(cacheKey, JSON.stringify(result));
+      } catch (_) {}
+      return result;
+    } catch (_) {
+      try {
+        const cached = localStorage.getItem(cacheKey);
+        if (cached) return JSON.parse(cached);
+      } catch (__) {}
+      return { profile: { player: p, visits: 1, app: 'on-thi' }, quizzes: [] };
+    }
   }
 
   async function touchPlayerQuiz(player, attempt) {
@@ -749,14 +762,17 @@ function clean(s) {
       profile.visits = (Number(profile.visits) || 0) + 1;
     }
     if (profile.total_duration_sec == null) profile.total_duration_sec = 0;
-    await upsertConfig(key, profile);
+    try {
+      await upsertConfig(key, profile);
+    } catch (_) {}
 
     if (sameOpenSession) {
       _activeVisit = active;
       bindVisitLifecycle();
       startHeartbeat();
       try { await heartbeat('relogin-resume'); } catch (e) { console.warn('heartbeat relogin-resume failed:', e); }
-      const history = await loadPlayerHistory(p);
+      let history = { profile: profile, quizzes: [] };
+      try { history = await loadPlayerHistory(p); } catch (_) {}
       return { player: p, isNew: isNew, profile: profile, history: history, visitKey: active.key, resumed: true };
     }
 

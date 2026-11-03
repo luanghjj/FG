@@ -207,6 +207,23 @@
         return;
       }
 
+      // PrintScreen (Windows/Linux) hoặc Cmd + Shift + 3/4/5 (macOS Screenshot)
+      if (e.key === 'PrintScreen' || e.keyCode === 44) {
+        e.preventDefault();
+        triggerScreenshotShield('Chụp màn hình đã bị hạn chế để bảo vệ bản quyền đề thi.');
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText('Nội dung thuộc bản quyền AzubiHub (' + AUTHOR_NAME + ' - ' + OFFICIAL_PHONE + ').');
+          }
+        } catch (_) {}
+        return;
+      }
+
+      // Phát hiện tổ hợp phím chụp màn hình trên macOS: Cmd + Shift (+ 3/4/5/S) hoặc Windows: Win + Shift + S
+      if ((e.metaKey && e.shiftKey) || (e.ctrlKey && e.shiftKey && (key === 's' || key === '3' || key === '4' || key === '5'))) {
+        triggerScreenshotShield('Phát hiện thao tác chụp màn hình — Nội dung tự động làm mờ bảo vệ bản quyền.');
+      }
+
       // Ctrl/Cmd + C -> Sao chép nội dung bài học
       if (cmdKey && key === 'c') {
         if (!isInput) {
@@ -220,7 +237,32 @@
       }
     });
 
-    // Tự động chèn CSS chống bôi đen văn bản hàng loạt
+    // Bắt thêm sự kiện keyup cho PrintScreen và nhả phím Cmd/Shift
+    document.addEventListener('keyup', function (e) {
+      if (e.key === 'PrintScreen' || e.keyCode === 44) {
+        triggerScreenshotShield('Chụp màn hình đã bị hạn chế để bảo vệ bản quyền đề thi.');
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText('Nội dung thuộc bản quyền AzubiHub (' + AUTHOR_NAME + ').');
+          }
+        } catch (_) {}
+      }
+      if (!e.metaKey && !e.shiftKey && _shieldActive) {
+        clearScreenshotShield(350);
+      }
+    });
+
+    // Chặn quay màn hình trực tiếp từ tab trình duyệt (getDisplayMedia)
+    try {
+      if (navigator.mediaDevices && navigator.mediaDevices.getDisplayMedia) {
+        navigator.mediaDevices.getDisplayMedia = function () {
+          showCopyWarning('Quay màn hình trình duyệt đã bị khóa để bảo vệ bản quyền.');
+          return Promise.reject(new Error('Screen recording blocked by AzubiHub Guard'));
+        };
+      }
+    } catch (_) {}
+
+    // Tự động chèn CSS chống bôi đen văn bản hàng loạt + Chặn in PDF (@media print) + Hiệu ứng làm mờ chống chụp
     var style = document.createElement('style');
     style.id = 'azubihubContentGuardStyles';
     style.innerHTML =
@@ -235,8 +277,73 @@
       '  -moz-user-select: text !important;' +
       '  -ms-user-select: text !important;' +
       '  user-select: text !important;' +
+      '}' +
+      'body.azubi-ss-shield > *:not(#azubihubGuardToast):not(#azubihubWatermarkLayer) {' +
+      '  filter: blur(22px) brightness(0.92) !important;' +
+      '  transition: filter 0.02s ease !important;' +
+      '}' +
+      '@media print {' +
+      '  html, body { display: none !important; visibility: hidden !important; }' +
       '}';
     document.head.appendChild(style);
+  }
+
+  // 4B. LÁ CHẮN LÀM MỜ CHỐNG CHỤP MÀN HÌNH & VÂN NƯỚC ĐỊNH DANH TÀI KHOẢN
+  var _shieldActive = false;
+  var _shieldTimer = null;
+
+  function triggerScreenshotShield(msg) {
+    if (!document.body) return;
+    _shieldActive = true;
+    document.body.classList.add('azubi-ss-shield');
+    if (msg) showCopyWarning(msg);
+    clearTimeout(_shieldTimer);
+    _shieldTimer = setTimeout(function () {
+      _shieldActive = false;
+      if (document.body) document.body.classList.remove('azubi-ss-shield');
+    }, 1800);
+  }
+
+  function clearScreenshotShield(delayMs) {
+    clearTimeout(_shieldTimer);
+    _shieldTimer = setTimeout(function () {
+      _shieldActive = false;
+      if (document.body) document.body.classList.remove('azubi-ss-shield');
+    }, delayMs || 200);
+  }
+
+  function initDynamicWatermark() {
+    if (!document.body || document.getElementById('azubihubWatermarkLayer')) return;
+    var wm = document.createElement('div');
+    wm.id = 'azubihubWatermarkLayer';
+    wm.setAttribute('aria-hidden', 'true');
+    wm.setAttribute(
+      'style',
+      'position:fixed;inset:0;z-index:99990;pointer-events:none;overflow:hidden;' +
+        'user-select:none;-webkit-user-select:none;opacity:0.038;'
+    );
+    document.body.appendChild(wm);
+
+    function renderWatermarkTiles() {
+      var player = 'Azubi';
+      try {
+        player = localStorage.getItem('learn_player_name') || localStorage.getItem('tb_player') || 'Khách';
+      } catch (_) {}
+      var stamp = 'AzubiHub · ' + escapeHtml(player) + ' · ' + OFFICIAL_PHONE;
+      var html = '<div style="width:160%;height:160%;margin-left:-30%;margin-top:-30%;display:flex;flex-wrap:wrap;' +
+        'align-content:space-around;justify-content:space-around;transform:rotate(-24deg);">';
+      for (var i = 0; i < 36; i++) {
+        html += '<span style="font-family:monospace;font-size:13px;font-weight:700;color:#0F172A;' +
+          'padding:34px 42px;white-space:nowrap;letter-spacing:0.04em;">' + stamp + '</span>';
+      }
+      html += '</div>';
+      wm.innerHTML = html;
+    }
+
+    renderWatermarkTiles();
+    window.addEventListener('storage', renderWatermarkTiles);
+    window.addEventListener('learn-tier', renderWatermarkTiles);
+    setInterval(renderWatermarkTiles, 15000);
   }
 
   // 5. PHÁT HIỆN MỞ DEVTOOLS BẰNG OBJECT GETTER TRAP
@@ -281,10 +388,12 @@
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', function () {
         initContentProtection();
+        initDynamicWatermark();
         initDevToolsTrap();
       });
     } else {
       initContentProtection();
+      initDynamicWatermark();
       initDevToolsTrap();
     }
   }

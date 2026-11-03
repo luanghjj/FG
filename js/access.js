@@ -160,11 +160,27 @@
   /* ---------- Rolle lesen / setzen ---------- */
   async function getRole(player) {
     var D = db();
-    if (!D || !D.getConfig || !clean(player)) return null;
+    var pClean = clean(player);
+    if (!D || !D.getConfig || !pClean) return null;
     try {
       var row = await D.getConfig(roleKey(player));
-      return row && row.value ? row.value : null;
+      if (row && row.value) {
+        try {
+          localStorage.setItem('azubi_cached_tier_' + pClean, normTier(row.value.tier));
+        } catch (_) {}
+        return row.value;
+      }
+      try {
+        localStorage.setItem('azubi_cached_tier_' + pClean, 'free');
+      } catch (_) {}
+      return null;
     } catch (_) {
+      try {
+        var cachedTier = localStorage.getItem('azubi_cached_tier_' + pClean);
+        if (cachedTier) {
+          return { player: player, tier: normTier(cachedTier), _offlineCache: true };
+        }
+      } catch (__) {}
       return null;
     }
   }
@@ -570,6 +586,9 @@
     ss(SS_TIER, _tier);
     ss(SS_TIER_PLAYER, clean(_player));
     try {
+      if (_player && _tier !== 'super') {
+        localStorage.setItem('azubi_cached_tier_' + clean(_player), _tier);
+      }
       if (global.document && document.body) {
         document.body.dataset.tier = _tier;
         document.body.classList.toggle('tier-free', _tier === 'free');
@@ -619,6 +638,15 @@
     if (cached && who && cur && who === cur) {
       _tier = normTier(cached);
       return _tier;
+    }
+    if (cur) {
+      try {
+        var lsTier = localStorage.getItem('azubi_cached_tier_' + cur);
+        if (lsTier && lsTier !== 'super') {
+          _tier = normTier(lsTier);
+          return _tier;
+        }
+      } catch (_) {}
     }
     return 'free';
   }
