@@ -10137,7 +10137,10 @@ function renderUserChip(player){
 function pickTrack(which) {
   var g = document.getElementById('trackGate');
   if (g) g.classList.add('hidden');
-  try { localStorage.setItem('azubi_track', which); } catch (_) {}
+  try {
+    localStorage.setItem('azubi_track', which);
+    sessionStorage.setItem('azubi_track_session_picked', '1');
+  } catch (_) {}
   if (which === 'deutsch') {
     // Mở thẳng vào app Deutsch (subfolder) thay vì launcher hub
     location.href = './deutsch-a1-c1/';
@@ -10148,7 +10151,9 @@ function pickTrack(which) {
     // Mở app LiD standalone (subfolder)
     location.href = './lid/';
   } else {
-    go('#/');
+    if (!location.hash || location.hash === '#/' || location.hash === '#') {
+      go('#/');
+    }
   }
 }
 function showTrackGate() {
@@ -10178,6 +10183,7 @@ function showTrackGate() {
 function hideTrackGate() {
   var g = document.getElementById('trackGate');
   if (g) g.classList.add('hidden');
+  try { sessionStorage.setItem('azubi_track_session_picked', '1'); } catch (_) {}
 }
 var _welcomeTimer = null;
 var _helloIndex = 0;
@@ -10420,7 +10426,10 @@ function renderDeutschHub() {
     + '<p class="muted" style="margin-top:12px">Die vertiefte Deutsch-Lern-App liegt im Unterordner dieser Website.</p>'
     + '</div>';
 }
-function unlockApp(player){
+var _appUnlockedOnce = false;
+function unlockApp(player, opts){
+  const isSilent = (opts && opts.silent) || _appUnlockedOnce;
+  _appUnlockedOnce = true;
   const gate=document.getElementById('loginGate');
   const page=document.getElementById('appPage');
   if(gate) gate.classList.add('hidden');
@@ -10432,6 +10441,8 @@ function unlockApp(player){
   loadHomeHistory(player);
   if(window.Access && Access.loadKaWhitelist) Access.loadKaWhitelist();
   if(window.Access && Access.loadExcelWhitelist) Access.loadExcelWhitelist();
+
+  if (isSilent) return;
 
   try {
     if (/[?&]choose=1\b/.test(location.search)) {
@@ -10579,8 +10590,8 @@ async function doLogin(){
     let info={tier:'free',needsSuperPass:false};
     try{ if(window.Access) info=await Access.loadTier(res.player); }catch(_){}
     if(info.needsSuperPass){ showSuperStep(res.player); return; }
-    // short pause so user can glance history if returning
-    if(!res.isNew && res.history && res.history.quizzes && res.history.quizzes.length){
+    // short pause so user can glance history if returning (only when loginGate is still visible)
+    if(!_appUnlockedOnce && !res.isNew && res.history && res.history.quizzes && res.history.quizzes.length){
       if(btn) btn.innerHTML='Willkommen zurück, '+res.player+'!';
       setTimeout(()=>unlockApp(res.player), 700);
     }else{
