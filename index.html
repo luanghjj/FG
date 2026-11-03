@@ -1213,6 +1213,19 @@ span.vi-seg.open,.lang-vi span.vi-seg{display:inline}
   background:transparent;border:none;transition:color .15s,background .15s;
 }
 .quiz-report-link:hover{color:var(--accent);background:var(--accent-soft)}
+.bw-exam-notice{
+  display:flex;align-items:flex-start;gap:11px;
+  background:var(--accent-soft);border:1px solid var(--line);border-left:3.5px solid var(--accent);
+  border-radius:12px;padding:12px 14px;margin:0 0 14px;font-size:.84em;line-height:1.55;color:var(--ink);
+}
+.bw-exam-notice .bw-ic{
+  flex:0 0 28px;height:28px;border-radius:8px;background:var(--surface);color:var(--accent);
+  border:1px solid var(--line);display:flex;align-items:center;justify-content:center;margin-top:1px;
+}
+.bw-exam-notice .bw-ic svg{width:16px;height:16px;display:block}
+.bw-exam-notice .bw-body{flex:1;min-width:0}
+.bw-exam-notice .bw-title{font-weight:700;color:var(--accent);display:block;margin-bottom:2px;font-size:.96em}
+.bw-exam-notice .bw-desc{color:var(--ink);opacity:.9}
 #fleischSheet .fs-handle{width:42px;height:4px;border-radius:99px;background:#C7C7CC;margin:0 auto 12px}
 #fleischSheet .fs-close{border:none;background:var(--accent-soft);border-radius:10px;padding:8px 12px;font:inherit;cursor:pointer;float:right;color:var(--accent);font-weight:600}
 .wrong-list{text-align:left;margin:12px 0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
@@ -2907,6 +2920,13 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 
   <!-- ==================== TAB 5: KHO ĐỀ THI MẪU ==================== -->
   <div class="zpanel" id="z-dethimau">
+    <div class="bw-exam-notice" role="note">
+      <div class="bw-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+      <div class="bw-body">
+        <span class="bw-title">Lưu ý cấu trúc đề thi · Schwerpunkt Baden-Württemberg</span>
+        <span class="bw-desc">Nội dung kiến thức chuyên môn (<i>GastroAusbV 2022</i>) là giống nhau trên toàn nước Đức, nhưng cấu trúc các bộ đề thi tại đây hiện đang hỗ trợ theo chuẩn trường nghề &amp; IHK bang <b>Baden-Württemberg</b>. Các bạn ở bang khác vẫn hoàn toàn dùng để ôn luyện kiến thức và dạng câu hỏi!</span>
+      </div>
+    </div>
     <div class="card">
       <h2>📝 5. KHO ĐỀ THI MẪU &amp; LUYỆN TẬP TỔNG HỢP (WIRTSCHAFTSDIENST)</h2>
       <p class="hint">Tuyển tập 4 bộ đề thi hoàn chỉnh bám sát 100% cấu trúc, thời gian và dạng bài thi thực tế (Thời gian: 60 phút · Dạng bài: Trắc nghiệm, Điền số, Ghép nối, Thứ tự &amp; Tính toán). Tích hợp chế độ giải chi tiết song ngữ Đức - Việt.</p>
@@ -5204,6 +5224,13 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 
   <!-- TAB 5: ECHTE IHK-PRÜFUNGEN -->
   <div class="apanel" id="a-ihk">
+    <div class="bw-exam-notice" role="note">
+      <div class="bw-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+      <div class="bw-body">
+        <span class="bw-title">Lưu ý cấu trúc đề thi · Schwerpunkt Baden-Württemberg</span>
+        <span class="bw-desc">Nội dung kiến thức chuyên môn (<i>GastroAusbV 2022</i>) là giống nhau trên toàn nước Đức, nhưng cấu trúc các bộ đề thi tại đây hiện đang hỗ trợ theo chuẩn trường nghề &amp; IHK bang <b>Baden-Württemberg</b>. Các bạn ở bang khác vẫn hoàn toàn dùng để ôn luyện kiến thức và dạng câu hỏi!</span>
+      </div>
+    </div>
     <div class="card">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px">
         <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;vertical-align:-3px;margin-right:6px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>Echte IHK-Prüfungsaufgaben (Đề thi thật có lời giải mẫu)</h2>
@@ -5275,6 +5302,13 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
     <h2>🗂️ Prüfungen</h2>
     <p>Musterprüfung, Lösungsbogen und Zusammenfassung der KA2.</p>
   </div>
+  <div class="bw-exam-notice" role="note">
+    <div class="bw-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+    <div class="bw-body">
+      <span class="bw-title">Lưu ý cấu trúc đề thi · Schwerpunkt Baden-Württemberg</span>
+      <span class="bw-desc">Nội dung kiến thức học là giống nhau trên toàn nước Đức, nhưng cấu trúc các đề thi &amp; Klassenarbeiten tại đây hiện đang hỗ trợ theo chuẩn trường nghề bang <b>Baden-Württemberg</b>.</span>
+    </div>
+  </div>
   <div class="grid">
     <a class="tile" href="klassenarbeiten/kiemtra_mau.html"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12h6"/><path d="M9 16h5"/></svg></div><h3>Musterprüfung</h3><p>Musterprüfung Klassenarbeit Nr. 2.</p><div class="meta">Öffnen →</div></a>
     <a class="tile" href="klassenarbeiten/loiGiai_mau.html"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.6 2.6L16 9.5"/></svg></div><h3>Lösungsbogen</h3><p>Lösungsbogen zur Musterprüfung.</p><div class="meta">Öffnen →</div></a>
@@ -5316,6 +5350,13 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
   <div class="section-head">
     <h2>🎯 Prüfungstraining</h2>
     <p>Klassenarbeit wählen · passende Themen üben</p>
+  </div>
+  <div class="bw-exam-notice" role="note">
+    <div class="bw-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+    <div class="bw-body">
+      <span class="bw-title">Lưu ý cấu trúc đề thi · Schwerpunkt Baden-Württemberg</span>
+      <span class="bw-desc">Nội dung kiến thức chuyên môn (<i>GastroAusbV 2022</i>) là giống nhau trên toàn nước Đức, nhưng cấu trúc các đề thi &amp; Klassenarbeiten trong mục này hiện đang hỗ trợ theo chuẩn trường nghề &amp; IHK bang <b>Baden-Württemberg</b>. Các bạn ở bang khác vẫn hoàn toàn dùng để ôn luyện kiến thức và dạng câu hỏi!</span>
+    </div>
   </div>
   <div class="luyen-tabs" id="luyenTabs" role="tablist" aria-label="Prüfungen filtern">
     <button type="button" class="active" data-filter="all">Alle</button>
@@ -5385,6 +5426,13 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
     <h2>🗂️ BfK-1 · Prüfungen</h2>
     <p>3 Klassenarbeiten (LF6 + LF9) · mit Lösungsbogen</p>
   </div>
+  <div class="bw-exam-notice" role="note">
+    <div class="bw-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+    <div class="bw-body">
+      <span class="bw-title">Lưu ý cấu trúc đề thi · Schwerpunkt Baden-Württemberg</span>
+      <span class="bw-desc">Nội dung kiến thức học là giống nhau trên toàn nước Đức, nhưng cấu trúc các đề thi &amp; Klassenarbeiten tại đây hiện đang hỗ trợ theo chuẩn trường nghề bang <b>Baden-Württemberg</b>.</span>
+    </div>
+  </div>
   <div class="hint" style="margin-bottom:14px">Jede Prüfung deckt Lernfeld 6 (Speisen/Menüs) und Lernfeld 9 (Zahlung/Recht) ab. Anlagen sind inline in der Prüfung enthalten. Lösungsbogen DE + VI zur Selbstkontrolle.</div>
   <div class="grid">
     <a class="tile" href="klassenarbeiten/bfk1-ka3.html"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12h6"/><path d="M9 16h5"/></svg></div><h3>KA Nr. 3</h3><p>Froher Seeblick · Gästebewertungen, Obst, Systemgastronomie, Beleg.</p><div class="meta">35 P. · Öffnen →</div></a>
@@ -5402,6 +5450,13 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
   <div class="section-head">
     <h2>🗂️ GK · Prüfungen</h2>
     <p>3 Übungsaufgaben (FS1-Form) im Stil von Buß-Schroeder · mit Lösungsbogen</p>
+  </div>
+  <div class="bw-exam-notice" role="note">
+    <div class="bw-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+    <div class="bw-body">
+      <span class="bw-title">Lưu ý cấu trúc đề thi · Schwerpunkt Baden-Württemberg</span>
+      <span class="bw-desc">Nội dung kiến thức học là giống nhau trên toàn nước Đức, nhưng cấu trúc các đề thi &amp; bài tập tại đây hiện đang hỗ trợ theo chuẩn trường nghề bang <b>Baden-Württemberg</b>.</span>
+    </div>
   </div>
   <div class="hint" style="margin-bottom:14px">Wie im Prüfungsbogen: Aufgabe lesen → in ganzen Sätzen selbst schreiben → erst dann Lösungsbogen öffnen. Themen: Partizipation, Grundgesetz, Gewaltenteilung, direkte Demokratie, Karikatur, Grundrechte. Lösungen DE + VI (Begriffe antippen).</div>
   <div class="grid">
@@ -5463,6 +5518,13 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
     <h2 id="fachTrainingTitle">🎯 Training</h2>
     <p id="fachTrainingSub"></p>
   </div>
+  <div class="bw-exam-notice" role="note">
+    <div class="bw-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+    <div class="bw-body">
+      <span class="bw-title">Lưu ý cấu trúc đề thi · Schwerpunkt Baden-Württemberg</span>
+      <span class="bw-desc">Nội dung kiến thức học là giống nhau trên toàn nước Đức, nhưng cấu trúc các đề thi &amp; Klassenarbeiten tại đây hiện đang hỗ trợ theo chuẩn trường nghề bang <b>Baden-Württemberg</b>.</span>
+    </div>
+  </div>
   <div id="fachTrainingBody"></div>
 </section>
 
@@ -5472,6 +5534,13 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
   <div class="section-head">
     <h2 id="fachPruefTitle">🗂️ Prüfungen</h2>
     <p id="fachPruefSub"></p>
+  </div>
+  <div class="bw-exam-notice" role="note">
+    <div class="bw-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+    <div class="bw-body">
+      <span class="bw-title">Lưu ý cấu trúc đề thi · Schwerpunkt Baden-Württemberg</span>
+      <span class="bw-desc">Nội dung kiến thức học là giống nhau trên toàn nước Đức, nhưng cấu trúc các đề thi &amp; Klassenarbeiten tại đây hiện đang hỗ trợ theo chuẩn trường nghề bang <b>Baden-Württemberg</b>.</span>
+    </div>
   </div>
   <div id="fachPruefBody"></div>
 </section>
