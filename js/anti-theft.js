@@ -353,40 +353,6 @@
     }, delayMs);
   }
 
-  function initDynamicWatermark() {
-    if (!document.body || document.getElementById('azubihubWatermarkLayer')) return;
-    var wm = document.createElement('div');
-    wm.id = 'azubihubWatermarkLayer';
-    wm.setAttribute('aria-hidden', 'true');
-    wm.setAttribute(
-      'style',
-      'position:fixed;inset:0;z-index:99990;pointer-events:none;overflow:hidden;' +
-        'user-select:none;-webkit-user-select:none;opacity:0.038;'
-    );
-    document.body.appendChild(wm);
-
-    function renderWatermarkTiles() {
-      var player = 'Azubi';
-      try {
-        player = localStorage.getItem('learn_player_name') || localStorage.getItem('tb_player') || 'Khách';
-      } catch (_) {}
-      var stamp = 'AzubiHub · ' + escapeHtml(player) + ' · ' + OFFICIAL_PHONE;
-      var html = '<div style="width:160%;height:160%;margin-left:-30%;margin-top:-30%;display:flex;flex-wrap:wrap;' +
-        'align-content:space-around;justify-content:space-around;transform:rotate(-24deg);">';
-      for (var i = 0; i < 36; i++) {
-        html += '<span style="font-family:monospace;font-size:13px;font-weight:700;color:#0F172A;' +
-          'padding:34px 42px;white-space:nowrap;letter-spacing:0.04em;">' + stamp + '</span>';
-      }
-      html += '</div>';
-      wm.innerHTML = html;
-    }
-
-    renderWatermarkTiles();
-    window.addEventListener('storage', renderWatermarkTiles);
-    window.addEventListener('learn-tier', renderWatermarkTiles);
-    setInterval(renderWatermarkTiles, 15000);
-  }
-
   // 5. PHÁT HIỆN MỞ DEVTOOLS BẰNG OBJECT GETTER TRAP
   function initDevToolsTrap() {
     var isDevOpen = false;
@@ -429,12 +395,10 @@
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', function () {
         initContentProtection();
-        initDynamicWatermark();
         initDevToolsTrap();
       });
     } else {
       initContentProtection();
-      initDynamicWatermark();
       initDevToolsTrap();
     }
   }
