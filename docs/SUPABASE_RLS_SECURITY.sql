@@ -1,61 +1,41 @@
--- ==============================================================================
--- AZUBIHUB - BẢO MẬT ROW LEVEL SECURITY (RLS) CHO SUPABASE
--- Tác giả: Nguyễn Chí Linh (nguyenmisa333@gmail.com) - WhatsApp: +49 176 76640277
--- ------------------------------------------------------------------------------
--- HƯỚNG DẪN SỬ DỤNG:
--- 1. Đăng nhập vào https://supabase.com -> Chọn Project AzubiHub của bạn.
--- 2. Vào mục "SQL Editor" ở thanh menu bên trái.
--- 3. Bấm "New Query", dán toàn bộ nội dung script này vào và bấm "Run".
--- ==============================================================================
-
--- 1. BẬT TÍNH NĂNG ROW LEVEL SECURITY (RLS) CHO BẢNG CONFIG
+/* Bật Row Level Security */
 ALTER TABLE IF EXISTS public.config ENABLE ROW LEVEL SECURITY;
 
--- 2. XÓA CÁC POLICY CŨ NẾU ĐÃ TỒN TẠI ĐỂ TRÁNH TRÙNG LẶP
+/* Xóa các policy cũ để tránh trùng lặp */
 DROP POLICY IF EXISTS "Cho phép đọc dữ liệu công khai" ON public.config;
 DROP POLICY IF EXISTS "Cho phép gửi góp ý ẩn danh" ON public.config;
 DROP POLICY IF EXISTS "Cho phép lưu tiến độ học viên" ON public.config;
 DROP POLICY IF EXISTS "Chặn xóa cấu hình hệ thống" ON public.config;
+DROP POLICY IF EXISTS "Allow anon read all except private feedback" ON public.config;
+DROP POLICY IF EXISTS "Allow anon insert feedback" ON public.config;
+DROP POLICY IF EXISTS "Allow anon manage learning data" ON public.config;
 
--- 3. POLICY: CHO PHÉP MỌI NGƯỜI ĐỌC DỮ LIỆU CÔNG KHAI (Trừ góp ý nhạy cảm)
--- Cho phép đọc profile, quiz, đề thi, nhưng ẩn danh sách feedback của người khác
-CREATE POLICY "Cho phép đọc dữ liệu công khai"
+/* 1. Cho phép đọc dữ liệu bài học, quiz, điểm số (trừ feedback ẩn danh) */
+CREATE POLICY "Allow anon read all except private feedback"
 ON public.config
 FOR SELECT
+TO anon, authenticated
 USING (
-  -- Cho phép đọc tất cả các key ngoại trừ các bản ghi góp ý nhạy cảm (feedback:*)
-  -- Chỉ Admin mới được đọc feedback (thông qua service role hoặc RPC)
-  key NOT LIKE 'feedback:%' OR auth.role() = 'service_role'
+  key NOT LIKE 'feedback:%'
 );
 
--- 4. POLICY: CHO PHÉP HỌC VIÊN GỬI GÓP Ý ẨN DANH (Chỉ được INSERT)
--- Học viên có thể gửi góp ý vào hệ thống mà không cần đăng nhập tài khoản Supabase
-CREATE POLICY "Cho phép gửi góp ý ẩn danh"
+/* 2. Cho phép gửi góp ý ẩn danh (Chỉ được INSERT) */
+CREATE POLICY "Allow anon insert feedback"
 ON public.config
 FOR INSERT
+TO anon, authenticated
 WITH CHECK (
   key LIKE 'feedback:%'
 );
 
--- 5. POLICY: CHO PHÉP HỌC VIÊN CẬP NHẬT ĐIỂM VÀ TIẾN ĐỘ HỌC TẬP CỦA MÌNH
-CREATE POLICY "Cho phép lưu tiến độ học viên"
+/* 3. Cho phép học viên lưu điểm, tiến độ, profile và tin nhắn chat */
+CREATE POLICY "Allow anon manage learning data"
 ON public.config
 FOR ALL
+TO anon, authenticated
 USING (
-  key LIKE 'profile:%' OR 
-  key LIKE 'visit:%' OR 
-  key LIKE 'chat:%' OR 
-  key LIKE 'room:%'
+  key NOT LIKE 'feedback:%'
 )
 WITH CHECK (
-  key LIKE 'profile:%' OR 
-  key LIKE 'visit:%' OR 
-  key LIKE 'chat:%' OR 
-  key LIKE 'room:%'
+  key NOT LIKE 'feedback:%'
 );
-
--- 6. THÔNG BÁO HOÀN TẤT
--- Khi chạy xong, hệ thống của bạn sẽ được bảo vệ:
--- • Kẻ xấu không thể xóa bảng config của hệ thống.
--- • Kẻ xấu không thể đọc trộm danh sách góp ý ẩn danh của học viên khác.
--- • Học viên vẫn gửi góp ý và lưu điểm hoàn toàn bình thường.
