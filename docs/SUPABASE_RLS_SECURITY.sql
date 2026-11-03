@@ -1,7 +1,5 @@
-/* Bật Row Level Security */
 ALTER TABLE IF EXISTS public.config ENABLE ROW LEVEL SECURITY;
 
-/* Xóa các policy cũ để tránh trùng lặp */
 DROP POLICY IF EXISTS "Cho phép đọc dữ liệu công khai" ON public.config;
 DROP POLICY IF EXISTS "Cho phép gửi góp ý ẩn danh" ON public.config;
 DROP POLICY IF EXISTS "Cho phép lưu tiến độ học viên" ON public.config;
@@ -9,33 +7,34 @@ DROP POLICY IF EXISTS "Chặn xóa cấu hình hệ thống" ON public.config;
 DROP POLICY IF EXISTS "Allow anon read all except private feedback" ON public.config;
 DROP POLICY IF EXISTS "Allow anon insert feedback" ON public.config;
 DROP POLICY IF EXISTS "Allow anon manage learning data" ON public.config;
+DROP POLICY IF EXISTS "AzubiHub read access" ON public.config;
+DROP POLICY IF EXISTS "AzubiHub write access" ON public.config;
+DROP POLICY IF EXISTS "AzubiHub safe delete" ON public.config;
 
-/* 1. Cho phép đọc dữ liệu bài học, quiz, điểm số (trừ feedback ẩn danh) */
-CREATE POLICY "Allow anon read all except private feedback"
+CREATE POLICY "AzubiHub read access"
 ON public.config
 FOR SELECT
 TO anon, authenticated
-USING (
-  key NOT LIKE 'feedback:%'
-);
+USING (true);
 
-/* 2. Cho phép gửi góp ý ẩn danh (Chỉ được INSERT) */
-CREATE POLICY "Allow anon insert feedback"
+CREATE POLICY "AzubiHub write access"
 ON public.config
 FOR INSERT
 TO anon, authenticated
-WITH CHECK (
-  key LIKE 'feedback:%'
-);
+WITH CHECK (true);
 
-/* 3. Cho phép học viên lưu điểm, tiến độ, profile và tin nhắn chat */
-CREATE POLICY "Allow anon manage learning data"
+CREATE POLICY "AzubiHub update access"
 ON public.config
-FOR ALL
+FOR UPDATE
+TO anon, authenticated
+USING (true)
+WITH CHECK (true);
+
+CREATE POLICY "AzubiHub safe delete"
+ON public.config
+FOR DELETE
 TO anon, authenticated
 USING (
-  key NOT LIKE 'feedback:%'
-)
-WITH CHECK (
-  key NOT LIKE 'feedback:%'
+  key NOT LIKE 'learn:access:%'
+  AND key NOT LIKE 'learn:admin:%'
 );
