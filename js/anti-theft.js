@@ -256,16 +256,26 @@
       }
     }, true);
 
-    // Khi công cụ chụp vùng (Cmd+Shift+4/5, Snipping Tool, CleanShot...) chiếm tiêu điểm cửa sổ -> che ngay lập tức
+    // Khi công cụ chụp vùng (Cmd+Shift+4/5, Snipping Tool, CleanShot, iOS Control Center...) chiếm tiêu điểm cửa sổ -> che ngay lập tức
     window.addEventListener('blur', function () {
       triggerScreenshotShield();
     });
     window.addEventListener('focus', function () {
       clearScreenshotShield(60);
     });
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'hidden') {
+        triggerScreenshotShield();
+      } else {
+        clearScreenshotShield(60);
+      }
+    });
     document.addEventListener('mousedown', function () {
       if (_shieldActive) clearScreenshotShield(0);
     }, true);
+    document.addEventListener('touchstart', function () {
+      if (_shieldActive) clearScreenshotShield(0);
+    }, { capture: true, passive: true });
 
     // Chặn quay màn hình trực tiếp từ tab trình duyệt (getDisplayMedia)
     try {
@@ -282,6 +292,7 @@
     style.id = 'azubihubContentGuardStyles';
     style.innerHTML =
       'body, .themen-detail, .lesson-card, .quiz-card, .fc-card, .content-box, .subject-card {' +
+      '  -webkit-touch-callout: none;' +
       '  -webkit-user-select: none;' +
       '  -moz-user-select: none;' +
       '  -ms-user-select: none;' +
