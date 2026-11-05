@@ -945,7 +945,7 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 .bfk1-hub-tools{display:flex;justify-content:flex-end;margin-top:6px}
 .bfk1-hub-tools .btn.link{background:none;border:none;color:var(--muted);font-size:.8em;cursor:pointer;padding:4px 6px;text-decoration:underline}
 /* ===== BfK-1: Theme-Tabs Inhalte ===== */
-.src-note{background:var(--accent-soft);border:1px solid #CDE3FF;border-radius:12px;padding:10px 13px;margin-bottom:16px;font-size:.83em;color:#0058B0;line-height:1.5}
+.src-note{display:none!important;background:var(--accent-soft);border:1px solid #CDE3FF;border-radius:12px;padding:10px 13px;margin-bottom:16px;font-size:.83em;color:#0058B0;line-height:1.5}
 .b1tab-panel{min-height:60px}
 /* Q&A */
 .qa-item{border:1px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden;background:var(--surface)}
@@ -1556,6 +1556,13 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
 
 /* 4. FONT SIZE ADJUSTER TOOLBAR */
 .font-bar{display:inline-flex;align-items:center;gap:3px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:2px 4px}
+/* Khung trắng có lề cho trang bài học */
+#v-bfk1-theme.active,#v-fach-theme.active{background:var(--surface,#fffdf8);border:1px solid var(--line);border-radius:18px;padding:22px 32px 30px;margin:18px auto 24px;max-width:920px;box-shadow:0 4px 18px rgba(60,40,10,.06);box-sizing:border-box}
+#v-bfk1-theme>.card,#v-fach-theme>.card{border:none;box-shadow:none;background:transparent;padding-left:0;padding-right:0}
+@media(max-width:640px){#v-bfk1-theme.active,#v-fach-theme.active{padding:14px 14px 20px;margin:10px 0 16px;border-radius:14px}}
+mark.srch-hit{background:rgba(255,213,128,.75);color:inherit;font-weight:800;border-radius:3px;padding:0 1px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+mark.srch-hit.cur{background:rgba(245,170,60,.9);box-shadow:0 0 0 2px rgba(180,83,9,.6)}
+._dshl{background:rgba(255,213,128,.65)!important;box-shadow:0 0 0 3px rgba(180,83,9,.45);border-radius:6px}
 .font-btn{border:none;background:transparent;color:var(--muted);border-radius:999px;padding:3px 8px;font-size:.78em;font-weight:700;cursor:pointer;transition:.15s}
 .font-btn:hover,.font-btn.active{background:var(--accent);color:#fff}
 body.font-sm{--font-scale:.92;font-size:14px}
@@ -1753,13 +1760,6 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
     <div class="crumbs" id="crumbs"></div>
     <span class="user-chip" id="userChip" title="Nickname wechseln" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px"><circle cx="12" cy="8" r="3.4"/><path d="M5 20a7 7 0 0 1 14 0"/></svg> —</span>
     <a class="track-switch" onclick="showTrackGate()" title="Lernbereich wechseln (Fachkraft · Deutsch · Führerschein · Leben in Deutschland)" role="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px"><path d="m16 3 4 4-4 4"/><path d="M20 7H4"/><path d="m8 21-4-4 4-4"/><path d="M4 17h16"/></svg><span class="ts-label">Bereich</span></a>
-    <button type="button" class="sound-toggle" id="soundToggle" onclick="SoundFX.toggle()" title="Ton ein/aus" aria-label="Ton umschalten"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></button>
-    <div class="font-bar" title="Schriftgröße" role="group" aria-label="Schriftgröße">
-      <button type="button" class="font-btn" data-size="sm" onclick="FontScaler.set('sm')" aria-label="Schrift kleiner">A-</button>
-      <button type="button" class="font-btn active" data-size="md" onclick="FontScaler.set('md')" aria-label="Schrift normal">A</button>
-      <button type="button" class="font-btn" data-size="lg" onclick="FontScaler.set('lg')" aria-label="Schrift größer">A+</button>
-      <button type="button" class="font-btn" data-size="xl" onclick="FontScaler.set('xl')" aria-label="Schrift sehr groß">A++</button>
-    </div>
     <button type="button" class="search-toggle" id="searchToggle" aria-label="Suche öffnen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
     <div class="search">
       <span class="mag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
@@ -5708,7 +5708,7 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 <script src="./faecher/bfk1/bfk1-lf6-p2.js?v=1"></script>
 <script src="./faecher/bfk1/bfk1-lf6-p3.js?v=1"></script>
 <script src="./faecher/bfk1/bfk1-lf6-p4.js?v=1"></script>
-<script src="./faecher/bfk1/bfk1-lf6-p5.js?v=1"></script>
+<script src="./faecher/bfk1/bfk1-lf6-p5.js?v=2"></script>
 <script src="./faecher/bfk1/bfk1-lf6-p6.js?v=1"></script>
 <script src="./faecher/bfk1/bfk1-lf6-p7.js?v=1"></script>
 <script src="./faecher/bfk1/bfk1-lf6-p8.js?v=1"></script>
@@ -8178,9 +8178,6 @@ function bfk1NlBr(s){ return bfk1EscHtml(s).replace(/\n/g,"<br>"); }
 /* Tab 📖 Theorie */
 function bfk1TheoryHtml(item){
   let html="";
-  if(item.source){
-    html += '<div class="src-note">📄 <b>Quelle:</b> '+bfk1EscHtml(item.source)+'</div>';
-  }
   html += (item.theory || item.content || ("<p>"+bfk1EscHtml(item.desc||"")+"</p>"));
   const pages = (window.bfk1PageList && item.pages) ? window.bfk1PageList(item.pages) : [];
   if(pages.length){
@@ -9249,110 +9246,206 @@ function norm(s){
     .replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss").replace(/đ/g,"d")
     .normalize("NFD").replace(/[̀-ͯ]/g,"");
 }
+function _escRe(t){ return String(t).replace(/[-/\\^$*+?.()|[\]{}]/g,'\\$&'); }
 function scoreHit(it, terms, q){
   let sc=0;
   const title=norm(it.title), sub=norm(it.sub), hay=it.hay||"";
+  if(title===q) sc+=120;
   if(title.startsWith(q)) sc+=50;
   if(title.includes(q)) sc+=25;
+  if(terms.length>1 && hay.includes(q)) sc+=18; // ganze Phrase im Text
   terms.forEach(t=>{
+    const wb=new RegExp('(^|[^a-z0-9])'+_escRe(t)+'([^a-z0-9]|$)');
     if(title.includes(t)) sc+=12;
+    if(wb.test(title)) sc+=20;           // ganzes Wort im Titel
     if(sub.includes(t)) sc+=6;
     if(hay.includes(t)) sc+=3;
+    if(wb.test(hay)) sc+=6;              // ganzes Wort im Text
+    // Häufigkeit im Text (max +10)
+    let n=0, pos=hay.indexOf(t); while(pos>=0 && n<10){ n++; pos=hay.indexOf(t,pos+t.length); }
+    sc+=n;
   });
-  // prefer shorter exact-ish titles
   sc += Math.max(0, 20 - Math.min(20, title.length/3));
-  // Deprioritize pure Quiz, boost content types
   const badge=(it.badge||"").toLowerCase();
   if(badge==="quiz") sc -= 20;
   if(badge==="begriff") sc += 8;
   if(["bfk-1","bfk-2","lf1","lf2","lf3","lf4","lf5","lf6","lf7","lf8","lf9","lf10","seite","ka","gap","pr\u00FCfung"].includes(badge)) sc += 10;
+  if(it._fuzzy) sc -= 30;
   return sc;
 }
 
-/* Deep-scroll helper: sau khi chuyển trang, cuộn mượt đến đúng mục/từ khóa và highlight vàng */
+/* Levenshtein mit Abbruch (für Tippfehler-Toleranz) */
+function _lev(a,b,max){
+  if(Math.abs(a.length-b.length)>max) return max+1;
+  let prev=new Array(b.length+1); for(let j=0;j<=b.length;j++) prev[j]=j;
+  for(let i=1;i<=a.length;i++){
+    const cur=[i]; let rowMin=i;
+    for(let j=1;j<=b.length;j++){
+      cur[j]=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+(a[i-1]===b[j-1]?0:1));
+      if(cur[j]<rowMin) rowMin=cur[j];
+    }
+    if(rowMin>max) return max+1;
+    prev=cur;
+  }
+  return prev[b.length];
+}
+function _itemWords(it){
+  if(!it._words) it._words=Array.from(new Set((it.hay||"").split(/[^a-z0-9]+/).filter(w=>w.length>=3)));
+  return it._words;
+}
+function _fuzzyTerm(it,t){
+  if(t.length<4) return false;
+  const max=t.length>=8?2:1;
+  const ws=_itemWords(it);
+  for(const w of ws){
+    if(w.startsWith(t.slice(0,Math.max(3,t.length-1)))) return true;
+    if(_lev(t,w.length>t.length+2?w.slice(0,t.length+1):w,max)<=max) return true;
+  }
+  return false;
+}
+/* Zentrale Suche: exakt + Ganzwort + Phrase, Fallback mit Tippfehler-Toleranz */
+function searchIndex(q){
+  const terms=q.split(/\s+/).filter(Boolean);
+  let hits=[];
+  INDEX.forEach(it=>{
+    it._fuzzy=false;
+    const h=it.hay||"";
+    if(terms.every(t=>h.includes(t))) hits.push(it);
+  });
+  if(hits.length<5){
+    const seen=new Set(hits);
+    INDEX.forEach(it=>{
+      if(seen.has(it)) return;
+      const h=it.hay||"";
+      if(terms.every(t=>h.includes(t)||_fuzzyTerm(it,t))){ it._fuzzy=true; hits.push(it); }
+    });
+  }
+  return hits.map(it=>({it,sc:scoreHit(it,terms,q)})).sort((a,b)=>b.sc-a.sc).slice(0,120).map(x=>x.it);
+}
+
+/* Normalisierte Treffer-Bereiche in Originaltext (umlaut-/akzent-tolerant) */
+function _normMap(text){
+  let ns="", map=[];
+  for(let i=0;i<text.length;i++){
+    const n=norm(text[i]);
+    for(let k=0;k<n.length;k++){ ns+=n[k]; map.push(i); }
+  }
+  return {ns,map};
+}
+function findMatchRanges(text, terms){
+  if(!text||!terms||!terms.length) return [];
+  const {ns,map}=_normMap(text);
+  let r=[];
+  terms.forEach(t=>{
+    if(!t||t.length<2) return;
+    let pos=ns.indexOf(t);
+    while(pos>=0){
+      r.push([map[pos], map[pos+t.length-1]+1]);
+      pos=ns.indexOf(t,pos+t.length);
+    }
+  });
+  if(!r.length) return r;
+  r.sort((a,b)=>a[0]-b[0]);
+  const out=[r[0]];
+  for(let i=1;i<r.length;i++){
+    const l=out[out.length-1];
+    if(r[i][0]<=l[1]) l[1]=Math.max(l[1],r[i][1]); else out.push(r[i]);
+  }
+  return out;
+}
+
+/* Deep-scroll: đến đúng chỗ, bôi đậm + tô sáng MỌI vị trí từ khóa trong bài */
+function clearSearchMarks(){
+  document.querySelectorAll('mark.srch-hit').forEach(m=>{
+    const p=m.parentNode; if(!p) return;
+    p.replaceChild(document.createTextNode(m.textContent), m);
+    p.normalize();
+  });
+}
+window.addEventListener('hashchange', ()=>setTimeout(()=>{ if(!window._srchNavigating) clearSearchMarks(); },50));
 function deepScrollToKeyword(terms, targetTitle){
   if((!terms || !terms.length) && !targetTitle) return;
   const nTarget = norm(targetTitle || "");
   let tries = 0;
+  window._srchNavigating = true;
+  setTimeout(()=>{ window._srchNavigating=false; }, 1500);
 
   const tryScroll = () => {
     tries++;
     const activeView = document.querySelector('.view.active');
-    // Ưu tiên tìm trong vùng nội dung bài học, tránh menu/header/breadcrumb ở trên
     const container = (activeView && (
       activeView.querySelector('#b1TabPanel') ||
       activeView.querySelector('#fachTabPanel') ||
       activeView.querySelector('.theme-body') ||
       activeView.querySelector('.content') ||
-      activeView.querySelector('.card') ||
       activeView
     )) || document.body;
 
-    let found = null;
+    clearSearchMarks();
 
-    // Chiến lược 1: Tìm theo tiêu đề mục con / heading / hàng bảng / thẻ câu hỏi
+    // 1) Mục con/heading trùng tiêu đề kết quả
+    let anchor = null;
     if(nTarget && nTarget.length >= 3){
-      const candidates = container.querySelectorAll('h1, h2, h3, h4, h5, tr, th, td, dt, dd, b, strong, summary, .qa-q, .card');
-      for(const el of candidates){
+      const cands = container.querySelectorAll('h1, h2, h3, h4, h5, summary, th, dt, .qa-q, tr, b, strong');
+      for(const el of cands){
         const txt = norm(el.textContent || "");
-        if(txt && (txt.includes(nTarget) || (nTarget.includes(txt) && txt.length >= 6))){
-          found = el;
-          break;
-        }
+        if(txt && (txt===nTarget || txt.includes(nTarget) || (nTarget.includes(txt) && txt.length >= 6))){ anchor = el; break; }
       }
     }
 
-    // Chiến lược 2: Duyệt tìm đoạn văn chứa các từ khóa trong vùng nội dung
-    if(!found && terms && terms.length){
+    // 2) Bọc mọi từ khóa bằng <mark> (bôi đậm)
+    const marks = [];
+    const useTerms = (terms||[]).filter(t=>t.length>=2);
+    if(useTerms.length){
       const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, null, false);
+      const nodes = [];
       while(walker.nextNode()){
-        const n = walker.currentNode;
-        const p = n.parentElement;
-        if(!p || ['SCRIPT','STYLE','NOSCRIPT','TEMPLATE','BUTTON'].includes(p.tagName)) continue;
-        if(p.closest('#crumbs') || p.closest('.header') || p.closest('.theme-status-bar') || p.closest('.tabs')) continue;
-        const txt = norm(n.textContent || "");
-        if(terms.some(t => t.length >= 2 && txt.includes(t))){
-          found = p;
-          break;
-        }
+        const n = walker.currentNode, p = n.parentElement;
+        if(!p || ['SCRIPT','STYLE','NOSCRIPT','TEMPLATE','BUTTON','INPUT','TEXTAREA','MARK'].includes(p.tagName)) continue;
+        if(p.closest('#crumbs, .header, .theme-status-bar, .tabs, .search')) continue;
+        if(!n.nodeValue || n.nodeValue.trim().length<2) continue;
+        nodes.push(n);
+      }
+      for(const n of nodes){
+        if(marks.length>400) break;
+        const text = n.nodeValue;
+        const rs = findMatchRanges(text, useTerms);
+        if(!rs.length) continue;
+        const frag = document.createDocumentFragment();
+        let last = 0;
+        rs.forEach(([s0,e0])=>{
+          if(s0>last) frag.appendChild(document.createTextNode(text.slice(last,s0)));
+          const m = document.createElement('mark');
+          m.className = 'srch-hit';
+          m.textContent = text.slice(s0,e0);
+          frag.appendChild(m); marks.push(m);
+          last = e0;
+        });
+        if(last<text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+        n.parentNode.replaceChild(frag, n);
       }
     }
 
-    if(found){
-      // Tự mở details nếu đang bị ẩn
-      const dt = found.closest('details');
-      if(dt) dt.open = true;
+    // 3) Chọn vị trí đích: từ khóa đầu tiên trong/sau mục tiêu đề, ngược lại từ khóa đầu tiên
+    let target = null;
+    if(anchor && marks.length){
+      target = marks.find(m => anchor.contains(m) || (anchor.compareDocumentPosition(m) & Node.DOCUMENT_POSITION_FOLLOWING));
+    }
+    if(!target) target = marks[0] || anchor;
 
-      // Xóa highlight cũ
-      document.querySelectorAll('._dshl').forEach(el => {
-        el.classList.remove('_dshl');
-        el.style.removeProperty('background');
-        el.style.removeProperty('box-shadow');
-        el.style.removeProperty('border-radius');
-        el.style.removeProperty('transition');
-      });
-
-      // Highlight màu vàng ấm Parchment nổi bật và cuộn vào giữa màn hình
-      found.classList.add('_dshl');
-      found.style.background = 'rgba(255, 213, 128, 0.65)';
-      found.style.boxShadow = '0 0 0 3px rgba(180, 83, 9, 0.45)';
-      found.style.borderRadius = '6px';
-      found.style.transition = 'background 1.5s ease, box-shadow 1.5s ease';
-      found.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-      setTimeout(() => {
-        if(found){
-          found.style.background = '';
-          found.style.boxShadow = '';
-          found.classList.remove('_dshl');
-        }
-      }, 3500);
+    if(target){
+      const dt = target.closest('details'); if(dt) dt.open = true;
+      if(target.classList.contains('srch-hit')) target.classList.add('cur');
+      else {
+        target.classList.add('_dshl');
+        setTimeout(()=>target.classList.remove('_dshl'), 3500);
+      }
+      target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if(marks.length > 1 && window.toast) toast(marks.length + ' Treffer im Text markiert', 'info');
       return;
     }
-
     if(tries < 8) setTimeout(tryScroll, 250);
   };
-
   setTimeout(tryScroll, 180);
 }
 
@@ -9428,13 +9521,16 @@ window.applySearchTag = function(q){
 
 function highlightMatch(text, terms){
   if(!text) return "";
-  let res = text;
-  terms.forEach(t => {
-    if(t.length < 2) return;
-    const regex = new RegExp('('+t.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')+')', 'gi');
-    res = res.replace(regex, '<mark class="sh-mark">$1</mark>');
+  const rs=findMatchRanges(text, terms);
+  if(!rs.length) return text;
+  let out="", last=0;
+  rs.forEach(([s0,e0])=>{
+    // nicht innerhalb von HTML-Entities/Tags markieren
+    const before=text.slice(0,s0), ia=before.lastIndexOf('&'), isc=before.lastIndexOf(';'), lt=before.lastIndexOf('<'), gt=before.lastIndexOf('>');
+    if((ia>isc) || (lt>gt)) return;
+    out+=text.slice(last,s0)+'<mark class="sh-mark">'+text.slice(s0,e0)+'</mark>'; last=e0;
   });
-  return res;
+  return out+text.slice(last);
 }
 
 function escHtmlS(x){ return String(x).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
@@ -9445,7 +9541,8 @@ function makeSnippet(it, terms){
   if(terms.every(t=>ft.includes(t))) return "";
   const words=text.split(/\s+/);
   let at=-1;
-  for(let i=0;i<words.length;i++){ const w=norm(words[i]); if(terms.some(t=>w.includes(t))){ at=i; break; } }
+  for(let i=0;i<words.length;i++){ const w=norm(words[i]); if(terms.some(t=>w===t||w.replace(/[^a-z0-9]/g,'')===t)){ at=i; break; } }
+  if(at<0) for(let i=0;i<words.length;i++){ const w=norm(words[i]); if(terms.some(t=>w.includes(t))){ at=i; break; } }
   if(at<0) return "";
   const a=Math.max(0,at-8), b=Math.min(words.length,at+16);
   return (a>0?"… ":"")+words.slice(a,b).join(" ")+(b<words.length?" …":"");
@@ -9467,12 +9564,7 @@ function runSearch(q0){
   const q=norm(q0).trim();
   if(!q){ showQuickSuggestions(); return; }
   const terms=q.split(/\s+/).filter(Boolean);
-  const rawHits=INDEX
-    .filter(it=>terms.every(t=>(it.hay||"").includes(t) || norm(it.raw||"").includes(t)))
-    .map(it=>({it, sc:scoreHit(it,terms,q)}))
-    .sort((a,b)=>b.sc-a.sc)
-    .slice(0,120)
-    .map(x=>x.it);
+  const rawHits=searchIndex(q);
 
   sHits=filterSearchHits(rawHits, deskSearchFilter);
   sActive=-1;
@@ -10039,12 +10131,7 @@ function initSearchSheet(){
     if(filterBar) filterBar.style.display='flex';
 
     const terms=q.split(/\s+/).filter(Boolean);
-    const allHits=INDEX
-      .filter(it=>terms.every(t=>(it.hay||'').includes(t)||norm(it.raw||'').includes(t)))
-      .map(it=>({it,sc:scoreHit(it,terms,q)}))
-      .sort((a,b)=>b.sc-a.sc)
-      .slice(0,120)
-      .map(x=>x.it);
+    const allHits=searchIndex(q);
 
     const hits=getFilteredHits(allHits);
 

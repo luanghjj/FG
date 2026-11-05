@@ -1,5 +1,5 @@
 /* Service Worker – AzubiHub (offline shell + static assets) */
-const CACHE = 'azubihub-v238';
+const CACHE = 'azubihub-v239';
 const PRECACHE = [
   './',
   './pwa.js',
@@ -128,6 +128,7 @@ const PRECACHE = [
   './klassenarbeiten/englisch-ka2-loesung.html',
   './klassenarbeiten/englisch-ka3.html',
   './klassenarbeiten/englisch-ka3-loesung.html',
+  './images/scans/getreide-mahlgrad-korn.jpg',
 ];
 
 self.addEventListener('install', (event) => {

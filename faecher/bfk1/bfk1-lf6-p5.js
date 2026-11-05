@@ -99,6 +99,7 @@ window.__LF6 = (window.__LF6||[]).concat([
   <li><b>Niedriger</b> Ausmahlungsgrad → <b>länger haltbar</b> und <b>bessere Backeigenschaften</b> (mehr Gluten). → độ nghiền thấp bảo quản lâu hơn, nướng tốt hơn (nhiều gluten hơn).</li>
 </ul>
 <h3>4 Mahlgrade / 4 độ nghiền (thô → mịn) ⚠️</h3>
+<figure style="margin:12px 0 16px;text-align:center"><img src="./images/scans/getreide-mahlgrad-korn.jpg" alt="Mahlgrade Schrot, Grieß, Dunst, Mehl nach Anteil der Randschichten und Inhaltsstoffe des Getreidekorns" loading="lazy" style="max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff"><figcaption style="font-size:.82em;color:var(--muted);margin-top:6px">Mahlgrade &amp; Anteil der Randschichten · Inhaltsstoffe des Getreidekorns</figcaption></figure>
 <table>
   <tr><th>Mahlgrad</th><th>Verwendung</th><th>Tiếng Việt</th></tr>
   <tr><td><b>Schrot</b></td><td>Schrotbrot</td><td>hạt nghiền bể thô → bánh mì nguyên hạt</td></tr>

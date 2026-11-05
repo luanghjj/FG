@@ -5,6 +5,7 @@
 *.jpg
 *.jpeg
 !images/symbole/*.jpg
+!images/scans/*.jpg
 !fuererschein/images/theory/*.jpg
 !furerschein/public/images/theory/*.jpg
 !furerschein/furerschein-app/public/images/theory/*.jpg
