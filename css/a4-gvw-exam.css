@@ -1,0 +1,647 @@
+/* ============================================================================
+   a4-gvw-exam.css — Giao diện trang giấy A4 chuẩn đề thi FA 531/1
+   "Gasterlebnis, Verkaufsförderung und Warenlagerung" (Baden-Württemberg)
+   Giữ nguyên bố cục form IHK/Berufsschule, font chữ sans-serif chuẩn đề in,
+   tích hợp ô điền trực tiếp, bật/tắt Tiếng Việt và đáp án Musterlösung.
+   ============================================================================ */
+
+:root {
+  --desk-bg: #E2DCD0;
+  --a4-paper: #FFFDF9;
+  --a4-ink: #141413;
+  --a4-muted: #4A4843;
+  --a4-border: #222220;
+  --a4-grid: #444440;
+  --a4-bar: #D6D3CD;
+  --wax: #7A2E2E;
+  --brass: #9C7A3C;
+  --vi-color: #2B4C6F;
+  --vi-bg: #F2F6FA;
+  --sol-bg: #EDF7ED;
+  --sol-border: #2E6B36;
+  --sol-ink: #15421B;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--desk-bg);
+  background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 0);
+  background-size: 16px 16px;
+  color: var(--a4-ink);
+  font-family: Arial, Helvetica, "IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14.5px;
+  line-height: 1.48;
+}
+
+/* ── Thanh điều khiển cố định phía trên (Top Control Spine) ── */
+.gvw-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #1B1F2A;
+  color: #F1ECDE;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.22);
+  font-size: 13px;
+}
+
+.gvw-topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.gvw-back {
+  color: #F1ECDE;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s;
+}
+
+.gvw-back:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #EFC9A0;
+}
+
+.gvw-exam-switcher {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.gvw-switch-link {
+  color: #D8CFB8;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid transparent;
+  transition: all 0.15s;
+}
+
+.gvw-switch-link:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+
+.gvw-switch-link.active {
+  background: #9C7A3C;
+  color: #fff;
+  border-color: #EFC9A0;
+}
+
+.gvw-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.gvw-timer-pill {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 700;
+  font-size: 15px;
+  color: #EFC9A0;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 4px 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.gvw-btn {
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 11px;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.12);
+  color: #F1ECDE;
+  transition: all 0.15s;
+}
+
+.gvw-btn:hover {
+  background: #7A2E2E;
+  border-color: #7A2E2E;
+  color: #fff;
+}
+
+.gvw-btn.sol-active {
+  background: #2E6B36;
+  border-color: #52A45C;
+  color: #fff;
+}
+
+/* ── Thanh nhảy nhanh giữa các tờ giấy A4 (Quick Sheet Nav) ── */
+.gvw-subnav {
+  background: #2A2F3D;
+  color: #EAE3D0;
+  padding: 6px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  white-space: nowrap;
+  font-size: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gvw-subnav a {
+  color: #EAE3D0;
+  text-decoration: none;
+  padding: 3px 9px;
+  border-radius: 4px;
+  opacity: 0.85;
+}
+
+.gvw-subnav a:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.12);
+  color: #EFC9A0;
+}
+
+/* ── Khung chứa các tờ giấy A4 (A4 Document Stack) ── */
+.a4-workspace {
+  padding: 28px 14px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.a4-page {
+  width: 210mm;
+  min-height: 297mm;
+  background: var(--a4-paper);
+  color: var(--a4-ink);
+  padding: 18mm 18mm 20mm 24mm;
+  position: relative;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.12),
+    0 10px 28px rgba(0, 0, 0, 0.15);
+  border: 1px solid #C8C2B4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Hai lỗ đục bìa còng chuẩn Đức bên lề trái tờ A4 */
+.a4-page::before,
+.a4-page::after {
+  content: "";
+  position: absolute;
+  left: 8mm;
+  width: 5.5mm;
+  height: 5.5mm;
+  border-radius: 50%;
+  background: var(--desk-bg);
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.35);
+  border: 1px solid #B5AEA0;
+  pointer-events: none;
+}
+
+.a4-page::before {
+  top: 105mm;
+}
+
+.a4-page::after {
+  top: 185mm;
+}
+
+/* ── Đầu trang chuẩn FA 531/1 (3 cột: FA 531/1 | Kỳ thi & Số trang | GVW) ── */
+.a4-running-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.2fr;
+  align-items: start;
+  font-size: 13.5px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  line-height: 1.3;
+}
+
+.a4-running-head .rh-left {
+  text-align: left;
+}
+
+.a4-running-head .rh-center {
+  text-align: center;
+}
+
+.a4-running-head .rh-right {
+  text-align: right;
+}
+
+.a4-running-head .rh-points-label {
+  margin-top: 10px;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+/* ── Trang bìa (Deckblatt FA 531/1) ── */
+.deckblatt-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 13.5px;
+  font-weight: 700;
+  line-height: 1.35;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--a4-ink);
+  margin-bottom: 32px;
+}
+
+.deckblatt-top .db-right {
+  text-align: right;
+}
+
+.deckblatt-beruf {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 28px;
+}
+
+.deckblatt-beruf h1 {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.deckblatt-beruf .fa-code {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.deckblatt-fachbox {
+  border: 2.5px solid var(--a4-ink);
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 26px;
+}
+
+.deckblatt-fachbox .fb-title {
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.deckblatt-fachbox .fb-time {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.deckblatt-meta-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.deckblatt-meta-table td {
+  padding: 6px 4px;
+  vertical-align: top;
+}
+
+.deckblatt-meta-table td.lbl {
+  width: 120px;
+  font-weight: 700;
+}
+
+.deckblatt-meta-table ul {
+  margin: 4px 0 8px 18px;
+  padding: 0;
+}
+
+.deckblatt-meta-table ul ul {
+  list-style-type: circle;
+  margin: 2px 0 6px 22px;
+}
+
+.deckblatt-schuelerbox {
+  margin-top: 28px;
+  border: 2px solid var(--a4-ink);
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.deckblatt-schuelerbox td {
+  border: 1px solid var(--a4-ink);
+  padding: 8px 10px;
+}
+
+/* ── Cấu trúc Câu hỏi (Aufgabe & Teilaufgaben có cột Punkte bên phải) ── */
+.aufgabe-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-weight: 700;
+  font-size: 15px;
+  margin: 8px 0 10px;
+}
+
+.aufgabe-context {
+  margin-left: 68px;
+  margin-right: 48px;
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+
+.teilaufgabe-row {
+  display: grid;
+  grid-template-columns: 68px 1fr 48px;
+  align-items: start;
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+
+.ta-nr {
+  font-weight: 400;
+}
+
+.ta-body p {
+  margin: 0 0 6px;
+}
+
+.ta-body ul {
+  margin: 4px 0 6px 18px;
+  padding: 0;
+}
+
+.ta-pts {
+  text-align: right;
+  font-weight: 700;
+}
+
+/* ── Thanh tiêu đề xám của Vorgabe / Vorlage / Anlage ── */
+.abgabe-hinweis {
+  text-align: right;
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.name-klasse-line {
+  display: flex;
+  justify-content: flex-end;
+  gap: 18px;
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+
+.name-klasse-line input {
+  border: none;
+  border-bottom: 1.5px solid var(--a4-ink);
+  background: transparent;
+  font-family: inherit;
+  font-size: 13px;
+  padding: 1px 4px;
+}
+
+.vorgabe-bar {
+  background: var(--a4-bar);
+  padding: 4px 10px;
+  font-weight: 700;
+  font-size: 13.5px;
+  display: flex;
+  gap: 28px;
+  margin-bottom: 14px;
+  border-left: 4px solid var(--a4-ink);
+}
+
+/* ── Bảng biểu trong Vorgabe / Anlage (Tables) ── */
+table.a4-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  margin-bottom: 12px;
+}
+
+table.a4-table th,
+table.a4-table td {
+  border: 1.2px solid var(--a4-border);
+  padding: 6px 8px;
+  vertical-align: middle;
+}
+
+table.a4-table th {
+  background: #EFECE6;
+  font-weight: 700;
+  text-align: center;
+}
+
+table.a4-table.left-th th {
+  text-align: left;
+}
+
+/* Ô nhập liệu trực tiếp trên tờ giấy A4 */
+.a4-input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px dashed #888;
+  background: rgba(254, 243, 199, 0.28);
+  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-size: 13.5px;
+  color: #111;
+  padding: 4px 6px;
+  transition: background 0.15s;
+}
+
+.a4-input:focus {
+  outline: none;
+  background: #FEF3C7;
+  border-bottom: 1.5px solid var(--wax);
+}
+
+.a4-textarea {
+  width: 100%;
+  min-height: 68px;
+  border: 1px dashed #888;
+  background: rgba(254, 243, 199, 0.22);
+  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: #111;
+  padding: 6px 8px;
+  resize: vertical;
+}
+
+.a4-textarea:focus {
+  outline: none;
+  background: #FEF3C7;
+  border-color: var(--wax);
+}
+
+/* ── Bản dịch Tiếng Việt (.vi) và Khung Đáp án Musterlösung (.loesung) ── */
+.vi-box {
+  font-size: 12.8px;
+  color: var(--vi-color);
+  background: var(--vi-bg);
+  border-left: 3px solid #6B90B2;
+  padding: 5px 10px;
+  margin: 5px 0 8px;
+  border-radius: 0 4px 4px 0;
+}
+
+body.hide-vi .vi-box {
+  display: none !important;
+}
+
+details.a4-loesung {
+  margin: 8px 0 12px;
+  border: 1.5px dashed var(--sol-border);
+  border-radius: 6px;
+  background: var(--sol-bg);
+  color: var(--sol-ink);
+  font-size: 13px;
+}
+
+details.a4-loesung summary {
+  cursor: pointer;
+  padding: 6px 12px;
+  font-weight: 700;
+  list-style: none;
+  user-select: none;
+}
+
+details.a4-loesung summary::-webkit-details-marker {
+  display: none;
+}
+
+details.a4-loesung summary::before {
+  content: "▸ Đáp án chuẩn IHK (Musterlösung DE/VI) — ";
+}
+
+details.a4-loesung[open] summary::before {
+  content: "▾ Ẩn đáp án chuẩn (Musterlösung DE/VI) — ";
+}
+
+.a4-loesung-body {
+  padding: 6px 12px 10px;
+  border-top: 1px dashed rgba(46, 107, 54, 0.3);
+  line-height: 1.5;
+}
+
+/* ── Khung đặc biệt: Menükarte, Kisten/Lager, Sensoranzeige ── */
+.menuekarte-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1.8px solid var(--a4-ink);
+  min-height: 460px;
+}
+
+.menuekarte-col {
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menuekarte-col + .menuekarte-col {
+  border-left: 1.5px solid var(--a4-ink);
+  text-align: center;
+}
+
+.sensor-display {
+  border: 2.5px solid var(--a4-ink);
+  border-radius: 32px;
+  padding: 24px;
+  max-width: 480px;
+  margin: 24px auto;
+}
+
+.sensor-inner {
+  border: 1.5px solid var(--a4-ink);
+  border-radius: 22px;
+  background: #EAE8E3;
+  padding: 26px 32px;
+  text-align: center;
+}
+
+.a4-footer-note {
+  margin-top: 16px;
+  padding-top: 8px;
+  border-top: 1px solid #D5CFC2;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11.5px;
+  color: var(--a4-muted);
+}
+
+/* ── Responsive trên màn hình nhỏ ── */
+@media (max-width: 840px) {
+  .a4-page {
+    width: 100%;
+    min-height: auto;
+    padding: 16px 14px 20px 22px;
+  }
+  .a4-page::before,
+  .a4-page::after {
+    display: none;
+  }
+  .aufgabe-context {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .teilaufgabe-row {
+    grid-template-columns: 42px 1fr 38px;
+  }
+  .menuekarte-grid {
+    grid-template-columns: 1fr;
+  }
+  .menuekarte-col + .menuekarte-col {
+    border-left: none;
+    border-top: 1.5px solid var(--a4-ink);
+  }
+}
+
+/* ── Chế độ In chuẩn giấy A4 ── */
+@media print {
+  body {
+    background: #fff;
+  }
+  .gvw-topbar,
+  .gvw-subnav,
+  .no-print {
+    display: none !important;
+  }
+  .a4-workspace {
+    padding: 0;
+    gap: 0;
+  }
+  .a4-page {
+    width: 210mm;
+    min-height: 297mm;
+    box-shadow: none;
+    border: none;
+    page-break-after: always;
+    margin: 0;
+  }
+}

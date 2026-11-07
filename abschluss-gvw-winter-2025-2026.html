@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FA 531/1 · Winter 2025/26 — Gasterlebnis, Verkaufsförderung und Warenlagerung (A4)</title>
+  <link rel="stylesheet" href="css/a4-gvw-exam.css">
+</head>
+<body>
+
+  <!-- Thanh điều khiển trên cùng -->
+  <header class="gvw-topbar no-print">
+    <div class="gvw-topbar-left">
+      <a href="index.html#/abschluss" class="gvw-back">← Abschluss (30% GVW)</a>
+      <nav class="gvw-exam-switcher" aria-label="Bộ đề FA 531/1">
+        <a href="abschluss-gvw-winter-2025-2026.html" class="gvw-switch-link active">Winter 2025/26</a>
+        <a href="abschluss-gvw-winter-2024-2025.html" class="gvw-switch-link">Winter 2024/25</a>
+        <a href="abschluss-gvw-sommer-2025.html" class="gvw-switch-link">Sommer 2025</a>
+        <a href="abschluss-gvw-sommer-2026.html" class="gvw-switch-link">Sommer 2026</a>
+      </nav>
+    </div>
+    <div class="gvw-topbar-right">
+      <span class="gvw-timer-pill" id="gvw-timer">90:00</span>
+      <button type="button" class="gvw-btn" id="btn-timer" onclick="toggleGvwTimer()">Bắt đầu (90p)</button>
+      <button type="button" class="gvw-btn" onclick="resetGvwTimer()">Reset</button>
+      <button type="button" class="gvw-btn" id="btn-fill-sol" onclick="toggleFillSampleAnswers()">Điền mẫu vào giấy A4</button>
+      <button type="button" class="gvw-btn" id="btn-sol" onclick="toggleAllSolutions()">Hiện toàn bộ lời giải</button>
+      <button type="button" class="gvw-btn" id="btn-vi" onclick="toggleVi()">Ẩn dịch VI</button>
+      <button type="button" class="gvw-btn" onclick="clearSavedAnswers()">Xóa bài làm</button>
+      <button type="button" class="gvw-btn" onclick="window.print()">In A4</button>
+    </div>
+  </header>
+
+  <!-- Thanh nhảy nhanh giữa 12 tờ A4 -->
+  <nav class="gvw-subnav no-print" aria-label="Chuyển nhanh trang A4">
+    <a href="#blatt-1">Deckblatt</a>
+    <a href="#blatt-2">Seite 1 · Aufg. 1</a>
+    <a href="#blatt-3">Seite 2 · Aufg. 2</a>
+    <a href="#blatt-4">Vorgabe A (Glühwein)</a>
+    <a href="#blatt-5">Vorgabe B (Beschwerde)</a>
+    <a href="#blatt-6">Vorgabe C (Deko)</a>
+    <a href="#blatt-7">Vorgabe D (Mise en place)</a>
+    <a href="#blatt-8">Vorgabe E (Inventur)</a>
+    <a href="#blatt-9">Vorgabe F (Lagerdatei)</a>
+    <a href="#blatt-10">Anlage 1 &amp; 2</a>
+    <a href="#blatt-11">Anlage 3 (Menükarte)</a>
+    <a href="#blatt-12">Anlage 4–6 (Lager)</a>
+  </nav>
+
+  <main class="a4-workspace">
+
+    <!-- ==================== TỜ 1: DECKBLATT (TRANG BÌA) ==================== -->
+    <section class="a4-page" id="blatt-1">
+      <div>
+        <div class="deckblatt-top">
+          <div>
+            Gemeinsame Prüfungsaufgaben der<br>
+            Berufsschulen und der Industrie- und<br>
+            Handelskammern in Baden-Württemberg
+          </div>
+          <div class="db-right">
+            Schriftliche Abschlussprüfung an<br>
+            Berufsschulen in<br>
+            Baden-Württemberg<br>
+            Winter 2025/2026
+          </div>
+        </div>
+
+        <div class="deckblatt-beruf">
+          <h1>Fachkraft für Gastronomie<br>Schwerpunkt Restaurantservice</h1>
+          <div class="fa-code">FA 531/1</div>
+        </div>
+
+        <div class="deckblatt-fachbox">
+          <div class="fb-title">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+          <div class="fb-time">Zeit: 90 Minuten</div>
+        </div>
+
+        <div class="vi-box">
+          <strong>Đề thi tốt nghiệp viết tại trường nghề (Berufsschule Baden-Württemberg — chiếm 30% tổng điểm Abschluss):</strong> Môn <em>Gasterlebnis, Verkaufsförderung und Warenlagerung (FA 531/1)</em> · Kỳ thi Mùa Đông 2025/2026 · Thời gian: 90 phút · Tổng điểm: <strong>72 Punkte</strong>.
+        </div>
+
+        <table class="deckblatt-meta-table">
+          <tr>
+            <td class="lbl">Zugelassene Hilfsmittel:</td>
+            <td>Netzunabhängiger, nicht programmierbarer Taschenrechner</td>
+          </tr>
+          <tr>
+            <td class="lbl">Bearbeitungshinweise:</td>
+            <td>
+              Der Aufgabensatz besteht aus
+              <ul>
+                <li>dem Deckblatt</li>
+                <li>2 Seiten mit den Aufgaben 1 und 2</li>
+                <li>
+                  6 Seiten mit den Vorgaben A bis F
+                  <ul>
+                    <li>Vorgabe A zur Aufgabe 1.1</li>
+                    <li>Vorgabe B zur Aufgabe 1.5</li>
+                    <li>Vorgabe C zur Aufgabe 2.1</li>
+                    <li>Vorgabe D zur Aufgabe 2.2</li>
+                    <li>Vorgabe E zur Aufgabe 2.3</li>
+                    <li>Vorgabe F zur Aufgabe 2.4</li>
+                  </ul>
+                </li>
+                <li>3 Seiten mit den Anlagen 1 bis 6</li>
+              </ul>
+              <p>Kontrollieren Sie bitte vor Beginn der Prüfung, ob der Aufgabensatz vollständig ist.</p>
+              <p>Es sind alle Aufgaben zu bearbeiten.</p>
+              <p>Unterschreiben Sie die Vorgaben nicht mit Ihrem Namen, sondern mit dem in der jeweiligen Aufgabe genannten Namen.</p>
+              <p>Am Ende der Prüfung sind die ausgefüllten Vorgaben A bis F mit den Lösungsblättern abzugeben.</p>
+              <p><strong>Nicht abzugeben sind der Aufgabensatz und die Anlagen 1 bis 6.</strong></p>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div>
+        <table class="deckblatt-schuelerbox">
+          <tr>
+            <td style="width:50%;"><strong>Name, Vorname Prüfling:</strong><br><input type="text" class="a4-input" placeholder="Họ và tên thí sinh..."></td>
+            <td style="width:25%;"><strong>Klasse:</strong><br><input type="text" class="a4-input" placeholder="Lớp..."></td>
+            <td style="width:25%;"><strong>Erreichte Punkte:</strong><br><span style="font-size:15px;font-weight:700;">____ / 72 P.</span></td>
+          </tr>
+        </table>
+        <div class="a4-footer-note">
+          <span>FA 531/1 · Winter 2025/26 · Deckblatt</span>
+          <span>AzubiHub A4 Original-Formular</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 2: SEITE 1 — AUFGABE 1 ==================== -->
+    <section class="a4-page" id="blatt-2">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Winter 2025/26<br>Seite 1</div>
+          <div class="rh-right">
+            Gasterlebnis, Verkaufsförderung<br>und Warenlagerung
+            <div class="rh-points-label">Punkte</div>
+          </div>
+        </div>
+
+        <div class="aufgabe-title-row">
+          <span>Aufgabe 1</span>
+          <span>(32 Punkte)</span>
+        </div>
+
+        <div class="aufgabe-context">
+          Sie sind Fachkraft für Gastronomie im Restaurant Bergblick in Villingen.<br>
+          Eine örtliche Firma hat für ihre Weihnachtsfeier reserviert. Es werden 40 Gäste erwartet.
+          <div class="vi-box">
+            <strong>Bối cảnh Aufgabe 1:</strong> Bạn là nhân viên chuyên trách ngành nhà hàng (<em>Fachkraft für Gastronomie</em>) tại nhà hàng <strong>Bergblick</strong> ở Villingen. Một công ty địa phương đã đặt tiệc Giáng sinh cho <strong>40 khách</strong>.
+          </div>
+        </div>
+
+        <!-- 1.1 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">1.1</div>
+          <div class="ta-body">
+            <p>Laut Veranstaltungsabsprache wird für die 40 Gäste als Aperitif je ein Glas (0,2 L) selbstgemachter Glühwein gereicht. Berechnen Sie mithilfe des Rezeptes aus der <strong>Anlage 1</strong> den Bedarf an Zutaten und übertragen Sie die Ergebnisse in die <strong>Vorgabe A</strong>.</p>
+            <div class="vi-box">1.1 Theo thỏa thuận sự kiện, 40 khách sẽ được phục vụ mỗi người 1 ly (0,2 L) rượu vang nóng <em>Glühwein</em> tự nấu làm khai vị. Hãy tính lượng nguyên liệu cần dùng dựa vào công thức ở <strong>Anlage 1</strong> (cho 5 ly) và điền kết quả vào bảng <strong>Vorgabe A</strong> (trang 4).</div>
+          </div>
+          <div class="ta-pts">4</div>
+        </div>
+
+        <!-- 1.2 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">1.2</div>
+          <div class="ta-body">
+            <p>Aus dem Glühweinbehälter mit 50 Litern Inhalt konnten während der Veranstaltung 240 Gläser mit je 0,2 Liter ausgeschenkt werden. Berechnen Sie den Schankverlust in Litern und in Prozent. Geben Sie den Rechenweg an.</p>
+            <div class="vi-box">1.2 Từ bình ủ Glühwein dung tích 50 lít, trong suốt buổi tiệc đã rót được 240 ly, mỗi ly 0,2 lít. Hãy tính hao hụt khi rót (<em>Schankverlust</em>) bằng Lít và bằng phần trăm (%). Ghi rõ phép tính.</div>
+            <textarea class="a4-textarea" placeholder="Rechenweg &amp; Ergebnis zu 1.2 hier eintragen..." data-sol="Ausgeschenkte Menge = 240 Gläser × 0,2 l = 48,0 Liter.&#10;Schankverlust in Litern = 50,0 l − 48,0 l = 2,0 Liter.&#10;Schankverlust in Prozent = (2,0 l ÷ 50,0 l) × 100 = 4,0 %."></textarea>
+            <details class="a4-loesung">
+              <summary>Aufgabe 1.2 (4 Punkte)</summary>
+              <div class="a4-loesung-body">
+                <strong>Rechenweg (DE):</strong><br>
+                • Tatsächlich ausgeschenkte Menge: <code>240 Gläser × 0,2 L = 48,0 Liter</code><br>
+                • Schankverlust in Litern: <code>50,0 L − 48,0 L = 2,0 Liter</code><br>
+                • Schankverlust in Prozent: <code>(2,0 L ÷ 50,0 L) × 100 = 4 %</code><br>
+                <em>(Giải thích VI: Lượng rót thực tế = 48 L → Hao hụt = 50 − 48 = <strong>2,0 Lít</strong>, tương đương <strong>4 %</strong>).</em>
+              </div>
+            </details>
+          </div>
+          <div class="ta-pts">4</div>
+        </div>
+
+        <!-- 1.3 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">1.3</div>
+          <div class="ta-body">
+            <p>Erläutern Sie anhand von zwei Beispielen, wie Schankverluste beim Ausschenken von Getränken vermieden werden können.</p>
+            <div class="vi-box">1.3 Giải thích thông qua 2 ví dụ cách phòng tránh hao hụt khi rót đồ uống (<em>Schankverluste vermeiden</em>).</div>
+            <textarea class="a4-textarea" placeholder="1. Beispiel ...&#10;2. Beispiel ..." data-sol="1. Exaktes Einhalten des Eichstrichs (Füllstrichs) bzw. Verwendung von Schankmaßen/Dosierhilfen, damit kein unbezahlter Überlauf entsteht.&#10;2. Glühwein nur bei 70–75 °C heiß halten (nicht kochen lassen, um Verdunstung zu vermeiden) sowie vorsichtiges Zapfen mit Tropfblech gegen Verschütten."></textarea>
+            <details class="a4-loesung">
+              <summary>Aufgabe 1.3 (3 Punkte)</summary>
+              <div class="a4-loesung-body">
+                <strong>Musterlösung (2 Beispiele mit Erläuterung):</strong><br>
+                1. <strong>Eichstrich / Füllstrich exakt beachten &amp; Dosierhilfen nutzen:</strong> Jedes Glas genau bis zum Eichstrich (0,2 l) befüllen, damit durch Überfüllen keine unbezahlten Mengen verloren gehen.<br>
+                2. <strong>Richtige Temperaturführung &amp; sorgfältiges Zapfen:</strong> Den Glühwein im Behälter geschlossen bei ca. 70–75 °C halten (nicht kochen lassen, da sonst Flüssigkeit verdunstet) und beim Zapfen ein Tropfblech verwenden, um Verschütten/Nachtropfen zu verhindern.
+              </div>
+            </details>
+          </div>
+          <div class="ta-pts">3</div>
+        </div>
+
+        <!-- 1.4 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">1.4</div>
+          <div class="ta-body">
+            <p>Entwickeln Sie als Alternative für den Glühwein ein Rezept für 5 Gläser (je 0,2 Liter) eines alkoholfreien Getränkes. Entnehmen Sie der <strong>Anlage 2</strong> fünf Zutaten, geben Sie die Mengen an und formulieren Sie einen kartengerechten Namen für das Getränk.</p>
+            <div class="vi-box">1.4 Thiết kế một công thức đồ uống không cồn thay thế Glühwein cho <strong>5 ly (mỗi ly 0,2 L = tổng 1,0 L)</strong>. Chọn <strong>5 nguyên liệu từ Anlage 2</strong> (trang 10), ghi rõ định lượng từng món và đặt một tên gọi chuẩn thực đơn (<em>kartengerechter Name</em>).</div>
+            <textarea class="a4-textarea" style="min-height:92px;" placeholder="Kartengerechter Name + 5 Zutaten aus Anlage 2 mit Mengenangaben (Gesamtmenge 1,0 Liter für 5 Gläser à 0,2 l)..." data-sol="Kartengerechter Name: „Bergblicks Heißer Wintertraum (alkoholfrei)“ – Fruchtiger Winterpunsch (0,2 l)&#10;Zutaten für 5 Gläser (1,0 Liter Gesamtmenge):&#10;1. 0,35 l Traubensaft (rot)&#10;2. 0,25 l Apfelsaft (naturtrüb)&#10;3. 0,20 l Orangensaft (Direktsaft)&#10;4. 0,20 l Kirschsaft (oder Johannisbeernektar schwarz)&#10;5. 2–3 Beutel Früchtetee (Hibiskus, Hagebutte) zum Ziehenlassen"></textarea>
+            <details class="a4-loesung">
+              <summary>Aufgabe 1.4 (10 Punkte)</summary>
+              <div class="a4-loesung-body">
+                <strong>Kartengerechter Name:</strong> <em>„Bergblicks Heißer Winterpunsch (alkoholfrei) — Fruchtiger Heißgetränk-Genuss aus rotem Traubensaft, naturtrübem Apfelsaft, Direktsaft-Orange, Kirschsaft und feinem Hibiskus-Hagebutten-Tee“</em><br>
+                <strong>Rezeptur für 5 Gläser à 0,2 l (= 1,0 Liter Gesamtmenge, 5 Zutaten aus Anlage 2):</strong><br>
+                • <code>0,35 l</code> Traubensaft (rot)<br>
+                • <code>0,25 l</code> Apfelsaft (naturtrüb)<br>
+                • <code>0,20 l</code> Orangensaft (Direktsaft)<br>
+                • <code>0,20 l</code> Kirschsaft (alternativ: Johannisbeernektar schwarz)<br>
+                • <code>2–3 Beutel</code> Früchtetee (Hibiskus, Hagebutte) oder Rooibostee (heiß in der Saftmischung ziehen lassen).
+              </div>
+            </details>
+          </div>
+          <div class="ta-pts">10</div>
+        </div>
+
+        <!-- 1.5 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">1.5</div>
+          <div class="ta-body">
+            <p>Nach dem Ausschenken des Glühweins beschwert sich ein Gast über Lippenstiftreste am Glas. Erstellen Sie als Schulungsgrundlage für das Verhalten bei Gästebeschwerden eine Handlungsanweisung mit vier weiteren Schritten und je einer Erklärung in sinnvoller Reihenfolge. Nutzen Sie dazu die <strong>Vorgabe B</strong>.</p>
+            <div class="vi-box">1.5 Sau khi phục vụ Glühwein, một vị khách phàn nàn về vết son môi còn dính trên miệng ly. Hãy lập quy trình hướng dẫn xử lý khiếu nại gồm 4 bước tiếp theo kèm giải thích theo đúng thứ tự hợp lý vào bảng <strong>Vorgabe B</strong> (trang 5).</div>
+          </div>
+          <div class="ta-pts">8</div>
+        </div>
+
+        <!-- 1.6 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">1.6</div>
+          <div class="ta-body">
+            <p>Am Ende der Veranstaltung erstellen Sie die Rechnung und übergeben diese dem Gastgeber. Dieser bittet Sie, ihm folgende Begriffe zu erklären:</p>
+            <ul>
+              <li>Brutto</li>
+              <li>Mehrwertsteuer</li>
+              <li>Rabatt</li>
+            </ul>
+            <p>Formulieren Sie jeweils eine Erklärung.</p>
+            <div class="vi-box">1.6 Cuối buổi tiệc, bạn lập hóa đơn và trao cho chủ tiệc. Khách nhờ bạn giải thích 3 thuật ngữ trên hóa đơn: <strong>Brutto</strong> (Giá gộp), <strong>Mehrwertsteuer</strong> (Thuế GTGT), <strong>Rabatt</strong> (Chiết khấu/Giảm giá).</div>
+            <textarea class="a4-textarea" style="min-height:86px;" placeholder="• Brutto: ...&#10;• Mehrwertsteuer: ...&#10;• Rabatt: ..." data-sol="• Brutto (Bruttobetrag): Der Endpreis inklusive der gesetzlichen Mehrwertsteuer (Nettobetrag + MwSt.), den der Gast tatsächlich bezahlt.&#10;• Mehrwertsteuer (MwSt. / Umsatzsteuer): Gesetzliche Steuer auf Speisen (7 % bzw. 19 %) und Getränke (19 %), die der Betrieb einzieht und an das Finanzamt abführt.&#10;• Rabatt: Ein Preisnachlass (in Prozent oder Euro), der dem Kunden z. B. als Großkunden-, Gruppen- oder Treuenachlass vom regulären Preis abgezogen wird."></textarea>
+            <details class="a4-loesung">
+              <summary>Aufgabe 1.6 (3 Punkte)</summary>
+              <div class="a4-loesung-body">
+                • <strong>Brutto:</strong> Der Gesamt- bzw. Endbetrag inklusive der gesetzlichen Mehrwertsteuer (<code>Nettobetrag + Mehrwertsteuer = Bruttobetrag</code>).<br>
+                • <strong>Mehrwertsteuer (MwSt.):</strong> Eine gesetzliche Verbrauchssteuer (in der Gastronomie 19 % auf Getränke, 7 %/19 % auf Speisen), die im Bruttopreis enthalten ist und vom Betrieb an das Finanzamt abgeführt wird.<br>
+                • <strong>Rabatt:</strong> Ein gewährter Preisnachlass (prozentual oder als fester Geldbetrag), der vom ursprünglichen Rechnungsbetrag abgezogen wird (z. B. Firmen- oder Mengenrabatt).
+              </div>
+            </details>
+          </div>
+          <div class="ta-pts">3</div>
+        </div>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Winter 2025/26 · Seite 1</span>
+        <span>Aufgabe 1 (32 Punkte)</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 3: SEITE 2 — AUFGABE 2 ==================== -->
+    <section class="a4-page" id="blatt-3">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Winter 2025/26<br>Seite 2</div>
+          <div class="rh-right">
+            Gasterlebnis, Verkaufsförderung<br>und Warenlagerung
+            <div class="rh-points-label">Punkte</div>
+          </div>
+        </div>
+
+        <div class="aufgabe-title-row">
+          <span>Aufgabe 2</span>
+          <span>(40 Punkte)</span>
+        </div>
+
+        <div class="aufgabe-context">
+          Sie sind Fachkraft für Gastronomie im Restaurant Schönblick am Bodensee.<br>
+          Für das kommende Jahr sollen Thementage geplant und durchgeführt werden.
+          <div class="vi-box">
+            <strong>Bối cảnh Aufgabe 2:</strong> Bạn là nhân viên chuyên trách tại nhà hàng <strong>Schönblick</strong> bên hồ Bodensee. Nhà hàng đang lên kế hoạch tổ chức các ngày chủ đề (<em>Thementage</em>) cho dịp cuối năm và năm mới.
+          </div>
+        </div>
+
+        <!-- 2.1 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">2.1</div>
+          <div class="ta-body">
+            <p>Die Restaurantleiterin, Frau Meier, bittet Sie um Dekorationsvorschläge für das Restaurant an den Thementagen „Weihnachtszeit“ und „Silvester“. Verfassen Sie eine vollständige interne Mitteilung und schlagen Sie für die beiden Thementage jeweils vier passende Dekorationselemente vor. Nutzen Sie hierzu die <strong>Vorgabe C</strong>.</p>
+            <div class="vi-box">2.1 Quản lý nhà hàng — bà <strong>Frau Meier</strong> — nhờ bạn đề xuất ý tưởng trang trí cho 2 chủ đề <strong>„Weihnachtszeit“</strong> (Mùa Giáng sinh) và <strong>„Silvester“</strong> (Đêm Giao thừa). Hãy viết một thông báo nội bộ hoàn chỉnh (<em>Interne Mitteilung</em>) và gợi ý <strong>mỗi dịp 4 vật dụng trang trí phù hợp</strong> vào bảng <strong>Vorgabe C</strong> (trang 6).</div>
+          </div>
+          <div class="ta-pts">8</div>
+        </div>
+
+        <!-- 2.2 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">2.2</div>
+          <div class="ta-body">
+            <p>Zu den Vorbereitungen für das Weihnachtsmenü soll ein Mustertisch für vier Personen eingedeckt werden. Bei dem Tisch handelt es sich um einen rechteckigen Tisch mit den Maßen 200 cm × 100 cm. Erstellen Sie mithilfe der Menükarte aus der <strong>Anlage 3</strong> die Materialanforderungsliste auf der <strong>Vorgabe D</strong>.</p>
+            <div class="vi-box">2.2 Để chuẩn bị cho thực đơn Giáng sinh, bạn cần bày một bàn mẫu (<em>Mustertisch</em>) cho <strong>4 khách</strong> trên bàn chữ nhật kích thước 200 cm × 100 cm. Dựa vào thực đơn 4 món ở <strong>Anlage 3</strong> (trang 11), hãy lập danh sách dụng cụ cần chuẩn bị vào bảng <strong>Vorgabe D</strong> (trang 7).</div>
+          </div>
+          <div class="ta-pts">8</div>
+        </div>
+
+        <!-- 2.3 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">2.3</div>
+          <div class="ta-body">
+            <p>Über die Feiertage wird ein erhöhter Verbrauch an Champagner (0,75 L) erwartet. Ermitteln Sie den aktuellen Lagerbestand und den Gesamtwert in Euro und füllen Sie die Inventurliste auf der <strong>Vorgabe E</strong> mithilfe der <strong>Anlagen 4 und 5</strong> vollständig aus.</p>
+            <p>Prüfen Sie außerdem mithilfe der <strong>Anlage 6</strong>, ob der Meldebestand erreicht ist.</p>
+            <div class="vi-box">2.3 Trong dịp lễ, lượng tiêu thụ Champagner (0,75 L) dự kiến tăng cao. Hãy tính tổng tồn kho hiện tại và tổng giá trị bằng Euro, điền đầy đủ vào bảng kiểm kê <strong>Vorgabe E</strong> (trang 8) dựa theo <strong>Anlage 4 &amp; 5</strong> (trang 12).<br>Ngoài ra, hãy kiểm tra dựa vào <strong>Anlage 6</strong> xem tồn kho đã chạm mức báo đặt hàng (<em>Meldebestand</em>) hay chưa (trả lời ngay bên dưới hoặc trên Vorgabe E).</div>
+          </div>
+          <div class="ta-pts">7<br><br>3</div>
+        </div>
+
+        <!-- 2.4 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">2.4</div>
+          <div class="ta-body">
+            <p>Vervollständigen Sie die Lagerdatei für den Champagner vom 16. Dezember bis zum 1. Januar auf der <strong>Vorgabe F</strong> mithilfe der <strong>Anlagen 5 und 6</strong>. Berücksichtigen Sie den angegebenen Meldebestand und die Lieferbedingungen.</p>
+            <div class="vi-box">2.4 Hoàn thành thẻ kho (<em>Lagerdatei</em>) cho mặt hàng Champagner từ ngày 16.12 đến 01.01 trên bảng <strong>Vorgabe F</strong> (trang 9) dựa vào <strong>Anlage 5 và 6</strong>. Lưu ý đúng mức <em>Meldebestand</em>, thời gian giao hàng 3 ngày và lượng tiêu thụ thêm đêm Silvester.</div>
+          </div>
+          <div class="ta-pts">10</div>
+        </div>
+
+        <!-- 2.5 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">2.5</div>
+          <div class="ta-body">
+            <p>Vor dem Weihnachtsgeschäft findet eine Mitarbeiterbesprechung statt. Sie wurden gebeten, das Getränk Champagner vorzustellen. Nennen Sie drei Merkmale von Champagner.</p>
+            <div class="vi-box">2.5 Trước mùa kinh doanh Giáng sinh có một cuộc họp nhân viên. Bạn được giao giới thiệu về rượu <strong>Champagner</strong>. Hãy nêu <strong>3 đặc điểm tiêu biểu của Champagner</strong>.</div>
+            <textarea class="a4-textarea" style="min-height:92px;" placeholder="1. Merkmal: ...&#10;2. Merkmal: ...&#10;3. Merkmal: ..." data-sol="1. Geschützte Herkunftsbezeichnung (AOP/AOC): Darf ausschließlich aus dem festgelegten Weinbaugebiet Champagne in Frankreich stammen.&#10;2. Zugelassene Rebsorten: Wird klassisch aus den drei Hauptrebsorten Chardonnay (weiß), Pinot Noir (rot) und Pinot Meunier / Schwarzriesling (rot) gekeltert.&#10;3. Herstellungsverfahren: Traditionelle Flaschengärung (Méthode Champenoise) mit mindestens 15 Monaten Hefelagerung (bei Jahrgangschampagner mind. 36 Monate) und anschließender Abrüttelung (Remuage) und Degorgieren."></textarea>
+            <details class="a4-loesung">
+              <summary>Aufgabe 2.5 (4 Punkte)</summary>
+              <div class="a4-loesung-body">
+                <strong>Drei Merkmale von Champagner:</strong><br>
+                1. <strong>Geschützte Herkunft (AOC/AOP):</strong> Die Trauben müssen ausschließlich im abgegrenzten Anbaugebiet <em>Champagne</em> (Frankreich) gelesen und dort verarbeitet werden.<br>
+                2. <strong>Klassische Rebsorten:</strong> Hergestellt vorwiegend aus <em>Chardonnay</em> (weiße Traube), <em>Pinot Noir</em> (Spätburgunder, blaue Traube) und <em>Pinot Meunier</em> (Schwarzriesling, blaue Traube).<br>
+                3. <strong>Traditionelle Flaschengärung (Méthode Champenoise):</strong> Zweite Gärung direkt in der Flasche mit mindestens 15 Monaten Reifung auf der Hefe (Jahrgangschampagner mind. 36 Monate), Rütteln (Remuage) und Enthefen (Degorgieren).
+              </div>
+            </details>
+          </div>
+          <div class="ta-pts">4</div>
+        </div>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Winter 2025/26 · Seite 2</span>
+        <span>Aufgabe 2 (40 Punkte) · Gesamt: 72 Punkte</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 4: VORGABE A (AUFGABE 1.1) ==================== -->
+    <section class="a4-page" id="blatt-4">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Winter 2025/26</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+        <div class="abgabe-hinweis">Mit den Lösungsblättern abzugeben!</div>
+        <div class="name-klasse-line">
+          <label>Name: <input type="text" placeholder="..."></label>
+          <label>Klasse: <input type="text" style="width:90px;" placeholder="..."></label>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Vorgabe A</span>
+          <span>zur Aufgabe 1.1</span>
+        </div>
+
+        <h2 style="font-size:16px;margin:10px 0 8px;">Materialanforderung</h2>
+        <div class="vi-box">
+          <strong>Hướng dẫn Vorgabe A (Aufgabe 1.1 — 4 Punkte):</strong> Công thức ở <em>Anlage 1</em> dành cho <strong>5 Gläser (0,2 L)</strong>. Buổi tiệc có <strong>40 Gäste</strong> (mỗi khách 1 ly 0,2 L) → Hệ số nhân (Umrechnungsfaktor) = <code>40 ÷ 5 = 8</code>. Nhân toàn bộ cột <em>Rezeptmenge</em> với <strong>8</strong> để điền vào cột <em>Materialanforderung</em>.
+        </div>
+
+        <table class="a4-table">
+          <thead>
+            <tr>
+              <th style="width:36%;text-align:left;">Zutaten</th>
+              <th style="width:32%;">Rezeptmenge<br><span style="font-weight:400;font-size:12px;">(für 5 Gläser à 0,2 L)</span></th>
+              <th style="width:32%;">Materialanforderung<br><span style="font-weight:400;font-size:12px;">(für 40 Gäste à 0,2 L)</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Rotwein</td>
+              <td><input type="text" class="a4-input" data-sol="1 L" placeholder="Rezeptmenge..."></td>
+              <td><input type="text" class="a4-input" data-sol="8 L" placeholder="Bedarf für 40 Gäste..."></td>
+            </tr>
+            <tr>
+              <td>Orangen (Bio)</td>
+              <td><input type="text" class="a4-input" data-sol="2 Stück" placeholder="Rezeptmenge..."></td>
+              <td><input type="text" class="a4-input" data-sol="16 Stück" placeholder="Bedarf für 40 Gäste..."></td>
+            </tr>
+            <tr>
+              <td>Zitrone (Bio)</td>
+              <td><input type="text" class="a4-input" data-sol="1 Stück" placeholder="Rezeptmenge..."></td>
+              <td><input type="text" class="a4-input" data-sol="8 Stück" placeholder="Bedarf für 40 Gäste..."></td>
+            </tr>
+            <tr>
+              <td>Mandarine (Bio)</td>
+              <td><input type="text" class="a4-input" data-sol="1 Stück" placeholder="Rezeptmenge..."></td>
+              <td><input type="text" class="a4-input" data-sol="8 Stück" placeholder="Bedarf für 40 Gäste..."></td>
+            </tr>
+            <tr>
+              <td>Honig (20 g pro EL)</td>
+              <td><input type="text" class="a4-input" data-sol="3 EL (60 g)" placeholder="Rezeptmenge..."></td>
+              <td><input type="text" class="a4-input" data-sol="24 EL (480 g)" placeholder="Bedarf für 40 Gäste..."></td>
+            </tr>
+            <tr>
+              <td>Zimtstange</td>
+              <td><input type="text" class="a4-input" data-sol="2 Stangen" placeholder="Rezeptmenge..."></td>
+              <td><input type="text" class="a4-input" data-sol="16 Stangen" placeholder="Bedarf für 40 Gäste..."></td>
+            </tr>
+            <tr>
+              <td>Nelke</td>
+              <td><input type="text" class="a4-input" data-sol="4 Stück" placeholder="Rezeptmenge..."></td>
+              <td><input type="text" class="a4-input" data-sol="32 Stück" placeholder="Bedarf für 40 Gäste..."></td>
+            </tr>
+            <tr>
+              <td>Sternanis</td>
+              <td><input type="text" class="a4-input" data-sol="3 Stück" placeholder="Rezeptmenge..."></td>
+              <td><input type="text" class="a4-input" data-sol="24 Stück" placeholder="Bedarf für 40 Gäste..."></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <details class="a4-loesung">
+          <summary>Vorgabe A — Materialanforderung Glühwein (4 Punkte)</summary>
+          <div class="a4-loesung-body">
+            <strong>Umrechnungsfaktor:</strong> <code>40 Gläser ÷ 5 Gläser = Faktor 8</code><br>
+            • <strong>Rotwein:</strong> Rezept <code>1 L</code> → Anforderung: <strong>8 L</strong><br>
+            • <strong>Orangen (Bio):</strong> Rezept <code>2 Stück</code> → Anforderung: <strong>16 Stück</strong><br>
+            • <strong>Zitrone (Bio):</strong> Rezept <code>1 Stück</code> → Anforderung: <strong>8 Stück</strong><br>
+            • <strong>Mandarine (Bio):</strong> Rezept <code>1 Stück</code> → Anforderung: <strong>8 Stück</strong><br>
+            • <strong>Honig (20 g pro EL):</strong> Rezept <code>3 EL (60 g)</code> → Anforderung: <strong>24 EL (bzw. 480 g)</strong><br>
+            • <strong>Zimtstange:</strong> Rezept <code>2 Stangen</code> → Anforderung: <strong>16 Stangen</strong><br>
+            • <strong>Nelke:</strong> Rezept <code>4 Stück</code> → Anforderung: <strong>32 Stück</strong><br>
+            • <strong>Sternanis:</strong> Rezept <code>3 Stück</code> → Anforderung: <strong>24 Stück</strong>
+          </div>
+        </details>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Winter 2025/26 · Vorgabe A</span>
+        <span>Aufgabe 1.1 (4 Punkte)</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 5: VORGABE B (AUFGABE 1.5) ==================== -->
+    <section class="a4-page" id="blatt-5">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Winter 2025/26</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+        <div class="abgabe-hinweis">Mit den Lösungsblättern abzugeben!</div>
+        <div class="name-klasse-line">
+          <label>Name: <input type="text" placeholder="..."></label>
+          <label>Klasse: <input type="text" style="width:90px;" placeholder="..."></label>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Vorgabe B</span>
+          <span>zur Aufgabe 1.5</span>
+        </div>
+
+        <div class="vi-box">
+          <strong>Hướng dẫn Vorgabe B (Aufgabe 1.5 — 8 Punkte):</strong> Điền 4 bước tiếp theo trong quy trình xử lý phàn nàn của khách (vết son môi trên ly) kèm lời giải thích cụ thể ở cột bên phải.
+        </div>
+
+        <table class="a4-table">
+          <thead>
+            <tr>
+              <th colspan="2" style="text-align:left;font-size:15px;padding:10px;">Handlungsanweisung bei Beschwerden durch den Gast</th>
+            </tr>
+            <tr>
+              <th style="width:38%;text-align:left;">Handlungsanweisung</th>
+              <th style="width:62%;text-align:left;">Erklärung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. z. B. Ruhe bewahren</strong></td>
+              <td>Nicht persönlich nehmen, sondern die Beschwerde als Chance zur Verbesserung sehen.</td>
+            </tr>
+            <tr>
+              <td><textarea class="a4-textarea" style="min-height:95px;" data-sol="2. Aktiv zuhören und den Gast ausreden lassen" placeholder="2. Schritt der Handlungsanweisung..."></textarea></td>
+              <td><textarea class="a4-textarea" style="min-height:95px;" data-sol="Blickkontakt halten, aufmerksam nicken und den Gast nicht unterbrechen, damit er merkt, dass sein Anliegen ernst genommen wird." placeholder="Erklärung zu Schritt 2..."></textarea></td>
+            </tr>
+            <tr>
+              <td><textarea class="a4-textarea" style="min-height:95px;" data-sol="3. Verständnis zeigen und sich höflich entschuldigen" placeholder="3. Schritt der Handlungsanweisung..."></textarea></td>
+              <td><textarea class="a4-textarea" style="min-height:95px;" data-sol="Sich im Namen des Hauses für das Versehen entschuldigen, ohne Ausreden zu suchen oder Kollegen/Spülküche vor dem Gast zu beschuldigen." placeholder="Erklärung zu Schritt 3..."></textarea></td>
+            </tr>
+            <tr>
+              <td><textarea class="a4-textarea" style="min-height:95px;" data-sol="4. Sofortige Abhilfe schaffen (Glas umgehend austauschen)" placeholder="4. Schritt der Handlungsanweisung..."></textarea></td>
+              <td><textarea class="a4-textarea" style="min-height:95px;" data-sol="Das verschmutzte Glas sofort abräumen und dem Gast unverzüglich ein neues Getränk in einem geprüften, makellos sauberen Glas servieren." placeholder="Erklärung zu Schritt 4..."></textarea></td>
+            </tr>
+            <tr>
+              <td><textarea class="a4-textarea" style="min-height:95px;" data-sol="5. Wiedergutmachung anbieten &amp; Nachkontrolle im Team" placeholder="5. Schritt der Handlungsanweisung..."></textarea></td>
+              <td><textarea class="a4-textarea" style="min-height:95px;" data-sol="Nachfragen, ob nun alles in Ordnung ist, ggf. eine kleine Geste (z. B. Kaffee/Getränk aufs Haus) anbieten und das Problem intern am Buffet/Spülbereich klären." placeholder="Erklärung zu Schritt 5..."></textarea></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <details class="a4-loesung">
+          <summary>Vorgabe B — Handlungsanweisung bei Beschwerden (8 Punkte)</summary>
+          <div class="a4-loesung-body">
+            • <strong>Schritt 2: Aktiv zuhören und ausreden lassen</strong> — Blickkontakt halten, den Gast nicht unterbrechen und signalisieren, dass die Kritik ernst genommen wird.<br>
+            • <strong>Schritt 3: Verständnis zeigen und sich höflich entschuldigen</strong> — Sich professionell im Namen des Betriebs entschuldigen, keine Ausreden suchen und keine Schuld auf Kollegen schieben.<br>
+            • <strong>Schritt 4: Sofortige Abhilfe schaffen (Ersatz liefern)</strong> — Das Glas mit Lippenstiftresten sofort abräumen und umgehend frischen Glühwein in einem kontrollierten, sauberen Glas servieren.<br>
+            • <strong>Schritt 5: Zufriedenheit prüfen, Wiedergutmachung &amp; Ursachenbehebung</strong> — Nachfragen, ob der Gast zufrieden ist, ggf. eine kleine Aufmerksamkeit anbieten und das Team an der Schanktheke/Spülmaschine informieren.
+          </div>
+        </details>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Winter 2025/26 · Vorgabe B</span>
+        <span>Aufgabe 1.5 (8 Punkte)</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 6: VORGABE C (AUFGABE 2.1) ==================== -->
+    <section class="a4-page" id="blatt-6">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Winter 2025/26</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+        <div class="abgabe-hinweis">Mit den Lösungsblättern abzugeben!</div>
+        <div class="name-klasse-line">
+          <label>Name: <input type="text" placeholder="..."></label>
+          <label>Klasse: <input type="text" style="width:90px;" placeholder="..."></label>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Vorgabe C</span>
+          <span>zur Aufgabe 2.1</span>
+        </div>
+
+        <div class="vi-box">
+          <strong>Hướng dẫn Vorgabe C (Aufgabe 2.1 — 8 Punkte):</strong> Điền đầy đủ các trường thông tin của phiếu <em>Interne Mitteilung</em> (Gửi <strong>Frau Meier — Restaurantleitung</strong>) và nêu mỗi chủ đề (<strong>Weihnachtszeit</strong> &amp; <strong>Silvester</strong>) <strong>4 vật dụng trang trí phù hợp</strong>.
+        </div>
+
+        <table class="a4-table">
+          <tr>
+            <th colspan="2" style="text-align:left;font-size:16px;padding:10px;background:#D6D3CD;">Interne Mitteilung</th>
+          </tr>
+          <tr>
+            <td style="width:50%;"><strong>Von:</strong><br><input type="text" class="a4-input" data-sol="Fachkraft für Gastronomie (Service-Team)" placeholder="Von (Abteilung/Funktion)..."></td>
+            <td style="width:50%;"><strong>Datum:</strong><br><input type="text" class="a4-input" data-sol="25.11.2025" placeholder="Datum..."></td>
+          </tr>
+          <tr>
+            <td><strong>An:</strong><br><input type="text" class="a4-input" data-sol="Frau Meier (Restaurantleiterin)" placeholder="An..."></td>
+            <td><strong>Betreff:</strong><br><input type="text" class="a4-input" data-sol="Dekorationsvorschläge für die Thementage „Weihnachtszeit“ und „Silvester“" placeholder="Betreff..."></td>
+          </tr>
+          <tr>
+            <td colspan="2" style="padding:10px;">
+              <textarea class="a4-textarea" style="min-height:300px;" data-sol="Sehr geehrte Frau Meier,&#10;&#10;gerne unterbreite ich Ihnen wie gewünscht jeweils vier passende Dekorationsvorschläge für unsere kommenden Thementage im Restaurant Schönblick:&#10;&#10;1. Thementage „Weihnachtszeit“:&#10;• Frische Tannenzweige, Kiefernzapfen und ein klassischer Adventskranz im Eingangsbereich&#10;• Dunkelrote Stumpenkerzen bzw. warme Tisch-Windlichter auf den Gästetischen&#10;• Geschmückter Weihnachtsbaum mit goldenen und dunkelroten Christbaumkugeln im Gastraum&#10;• Dezente Holzsterne, Zimtstangen-Gestecke und warmweiße Fenster-Lichterketten&#10;&#10;2. Thementag „Silvester“:&#10;• Festliche Tischläufer und Serviettenringe in Gold- und Silberoptik&#10;• Traditionelle Glückssymbole als Tischdekoration (kleine Schornsteinfeger, Hufeisen, vierblättrige Kleeblätter, Glücksschweinchen aus Marzipan)&#10;• Elegante Luftschlangen, Konfetti-Sterne (Jahreszahl) und gold-schwarze Folienballons im Buffet-/Barbereich&#10;• Speziell gestaltete Silvester-Menükarten mit Champagnerglas-Motiv und Wunderkerzen für Mitternacht&#10;&#10;Für Rückfragen oder die Bestellung der Dekorationsartikel stehe ich Ihnen gerne zur Verfügung.&#10;&#10;Mit freundlichen Grüßen&#10;Ihre Fachkraft für Gastronomie" placeholder="Nachrichtentext mit jeweils 4 Dekorationsvorschlägen für „Weihnachtszeit“ und „Silvester“ sowie Grußformel..."></textarea>
+            </td>
+          </tr>
+        </table>
+
+        <details class="a4-loesung">
+          <summary>Vorgabe C — Interne Mitteilung Dekorationsvorschläge (8 Punkte)</summary>
+          <div class="a4-loesung-body">
+            • <strong>Formale Angaben (2 P.):</strong> Von: <em>Fachkraft für Gastronomie</em> | Datum: <em>aktuelles Prüfungsdatum</em> | An: <em>Frau Meier (Restaurantleiterin)</em> | Betreff: <em>Dekorationsvorschläge für „Weihnachtszeit“ und „Silvester“</em> + Anrede &amp; Grußformel.<br>
+            • <strong>4 Dekorationselemente „Weihnachtszeit“ (3 P.):</strong> 1. Tannenzweige / Adventskranz mit Tannenzapfen; 2. Dunkelrote Kerzen / Windlichter; 3. Geschmückter Weihnachtsbaum mit Christbaumkugeln; 4. Holzsterne / Lichterketten / weihnachtliche Stoffservietten.<br>
+            • <strong>4 Dekorationselemente „Silvester“ (3 P.):</strong> 1. Gold- und silberfarbene Tischläufer / Kerzenleuchter; 2. Glückssymbole (Kleeblätter, Schornsteinfeger, Hufeisen, Glücksschweinchen); 3. Luftschlangen / Folienballons mit Jahreszahl / Konfetti-Sterne; 4. Festliche Silvester-Menükarten / Wunderkerzen.
+          </div>
+        </details>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Winter 2025/26 · Vorgabe C</span>
+        <span>Aufgabe 2.1 (8 Punkte)</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 7: VORGABE D (AUFGABE 2.2) ==================== -->
+    <section class="a4-page" id="blatt-7">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Winter 2025/26</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+        <div class="abgabe-hinweis">Mit den Lösungsblättern abzugeben!</div>
+        <div class="name-klasse-line">
+          <label>Name: <input type="text" placeholder="..."></label>
+          <label>Klasse: <input type="text" style="width:90px;" placeholder="..."></label>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Vorgabe D</span>
+          <span>zur Aufgabe 2.2</span>
+        </div>
+
+        <h2 style="font-size:15.5px;margin:6px 0;">Materialanforderungsliste</h2>
+        <div class="vi-box">
+          <strong>Hướng dẫn Vorgabe D (Aufgabe 2.2 — 8 Punkte):</strong> Bàn mẫu chữ nhật 200 × 100 cm cho <strong>4 khách</strong> ăn thực đơn 4 món Giáng sinh (<em>Anlage 3</em>: 1. <em>Hirschpastete</em> → Mittelbesteck + Brotteller/Buttermesser; 2. <em>Maronenrahmsuppe</em> → Suppenlöffel; 3. <em>Zweierlei vom Reh</em> → großes Menübesteck; 4. <em>Schokoladenmousse</em> → Dessertgabel &amp; Dessertlöffel; Đồ uống: <em>2024 Grauburgunder</em> → Weißweinglas, <em>2019 Spätburgunder</em> → Rotweinglas, <em>Tafelwasser</em> → Wasserglas).
+        </div>
+
+        <table class="a4-table" style="font-size:12.8px;">
+          <thead>
+            <tr>
+              <th style="width:12%;">Position</th>
+              <th style="width:16%;">Anzahl</th>
+              <th style="width:72%;text-align:left;">Gegenstand</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td style="text-align:center;">1</td><td style="text-align:center;">1</td><td>Menagen (nur Salzmühle)</td></tr>
+            <tr><td style="text-align:center;">2</td><td style="text-align:center;">1</td><td>Blumendekoration weihnachtlich</td></tr>
+            <tr><td style="text-align:center;">3</td><td style="text-align:center;">1</td><td>Kerze dunkelrot (inkl. Kerzenleuchter)</td></tr>
+            <tr><td style="text-align:center;">4</td><td><input type="text" class="a4-input" data-sol="1"></td><td><input type="text" class="a4-input" data-sol="Tischmolton (Untertuch, passend für 200 × 100 cm)"></td></tr>
+            <tr><td style="text-align:center;">5</td><td><input type="text" class="a4-input" data-sol="1"></td><td><input type="text" class="a4-input" data-sol="Tischdecke / Tafeltuch (ca. 260 × 160 cm)"></td></tr>
+            <tr><td style="text-align:center;">6</td><td><input type="text" class="a4-input" data-sol="4"></td><td><input type="text" class="a4-input" data-sol="Stoffservietten (Mundservietten)"></td></tr>
+            <tr><td style="text-align:center;">7</td><td><input type="text" class="a4-input" data-sol="4"></td><td><input type="text" class="a4-input" data-sol="Platzteller"></td></tr>
+            <tr><td style="text-align:center;">8</td><td><input type="text" class="a4-input" data-sol="4"></td><td><input type="text" class="a4-input" data-sol="Brotteller"></td></tr>
+            <tr><td style="text-align:center;">9</td><td><input type="text" class="a4-input" data-sol="4"></td><td><input type="text" class="a4-input" data-sol="Buttermesser (oder kleine Messer)"></td></tr>
+            <tr><td style="text-align:center;">10</td><td><input type="text" class="a4-input" data-sol="4"></td><td><input type="text" class="a4-input" data-sol="Vorspeisengabeln / Mittelgabeln (für Hirschpastete)"></td></tr>
+            <tr><td style="text-align:center;">11</td><td><input type="text" class="a4-input" data-sol="4"></td><td><input type="text" class="a4-input" data-sol="Vorspeisenmesser / Mittelmesser (für Hirschpastete)"></td></tr>
+            <tr><td style="text-align:center;">12</td><td><input type="text" class="a4-input" data-sol="4"></td><td><input type="text" class="a4-input" data-sol="Suppenlöffel / Mittellöffel (für Maronenrahmsuppe)"></td></tr>
+            <tr><td style="text-align:center;">13</td><td><input type="text" class="a4-input" data-sol="4"></td><td><input type="text" class="a4-input" data-sol="Menügabeln / große Gabeln (für Zweierlei vom Reh)"></td></tr>
+            <tr><td style="text-align:center;">14</td><td><input type="text" class="a4-input" data-sol="4"></td><td><input type="text" class="a4-input" data-sol="Menümesser / große Messer (für Zweierlei vom Reh)"></td></tr>
+            <tr><td style="text-align:center;">15</td><td><input type="text" class="a4-input" data-sol="4"></td><td><input type="text" class="a4-input" data-sol="Dessertgabeln / kleine Gabeln (für Schokoladenmousse)"></td></tr>
+            <tr><td style="text-align:center;">16</td><td><input type="text" class="a4-input" data-sol="4"></td><td><input type="text" class="a4-input" data-sol="Dessertlöffel / kleine Löffel (für Schokoladenmousse)"></td></tr>
+            <tr><td style="text-align:center;">17</td><td><input type="text" class="a4-input" data-sol="4"></td><td><input type="text" class="a4-input" data-sol="Weißweingläser (für 2024 Grauburgunder trocken)"></td></tr>
+            <tr><td style="text-align:center;">18</td><td><input type="text" class="a4-input" data-sol="4"></td><td><input type="text" class="a4-input" data-sol="Rotweingläser / Richtgläser (für 2019 Spätburgunder trocken)"></td></tr>
+            <tr><td style="text-align:center;">19</td><td><input type="text" class="a4-input" data-sol="4"></td><td><input type="text" class="a4-input" data-sol="Wassergläser (für Tafelwasser)"></td></tr>
+            <tr><td style="text-align:center;">20</td><td><input type="text" class="a4-input" data-sol="2 (bzw. 4)"></td><td><input type="text" class="a4-input" data-sol="Menükarten (sowie 1 Pfeffermühle / Tischnummer)"></td></tr>
+          </tbody>
+        </table>
+
+        <details class="a4-loesung">
+          <summary>Vorgabe D — Materialanforderungsliste für 4 Personen (8 Punkte)</summary>
+          <div class="a4-loesung-body">
+            • <strong>Tischwäsche:</strong> <code>1</code> Tischmolton, <code>1</code> Tischdecke, <code>4</code> Stoffservietten.<br>
+            • <strong>Porzellan:</strong> <code>4</code> Platzteller, <code>4</code> Brotteller.<br>
+            • <strong>Bestecke (je 4 Stück):</strong> <code>4</code> Buttermesser, <code>4</code> Mittelgabeln + <code>4</code> Mittelmesser (Vorspeise: Hirschpastete), <code>4</code> Suppenlöffel (Maronenrahmsuppe), <code>4</code> Menügabeln + <code>4</code> Menümesser (Hauptgang: Reh), <code>4</code> Dessertgabeln + <code>4</code> Dessertlöffel (Dessert: Schokoladenmousse mit Kompott).<br>
+            • <strong>Gläser (je 4 Stück) &amp; Sonstiges:</strong> <code>4</code> Weißweingläser (Richtglas), <code>4</code> Rotweingläser, <code>4</code> Wassergläser, <code>2–4</code> Menükarten (plus <code>1</code> Pfeffermühle zur Ergänzung der Salzmühle).
+          </div>
+        </details>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Winter 2025/26 · Vorgabe D</span>
+        <span>Aufgabe 2.2 (8 Punkte)</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 8: VORGABE E (AUFGABE 2.3) ==================== -->
+    <section class="a4-page" id="blatt-8">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Winter 2025/26</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+        <div class="abgabe-hinweis">Mit den Lösungsblättern abzugeben!</div>
+        <div class="name-klasse-line">
+          <label>Name: <input type="text" placeholder="..."></label>
+          <label>Klasse: <input type="text" style="width:90px;" placeholder="..."></label>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Vorgabe E</span>
+          <span>zur Aufgabe 2.3</span>
+        </div>
+
+        <h2 style="font-size:16px;margin:10px 0 8px;">Inventurliste</h2>
+        <div class="vi-box">
+          <strong>Hướng dẫn Vorgabe E (Aufgabe 2.3 — 7 + 3 = 10 Punkte):</strong><br>
+          • <em>Anlage 4:</em> Getränkekeller = <code>4 Kartons × 6 Fl. + 2 Fl. = 26 Flaschen</code> | Buffetkühlschrank = <code>2 volle Flaschen</code> (1 chai đã mở nắp <em>angefangene Flasche</em> không tính vào tồn kho nguyên chai, hoặc ghi chú riêng) | Weinkühlschrank = <code>6 Flaschen Champagner</code> (Chú ý bẫy: không cộng 3 Sekt, 2 Prosecco, 10 Weißwein!). Tổng cộng = <strong>34 Flaschen</strong>.<br>
+          • <em>Anlage 5:</em> <code>Champagner Chandon et Moor Brut Imperial (Art.-Nr. 458.21796)</code>, 1 Karton (6 Fl.) = 215,40 € → 1 Flasche = <code>215,40 € ÷ 6 = 35,90 €</code>.
+        </div>
+
+        <table class="a4-table">
+          <tbody>
+            <tr>
+              <th style="width:45%;text-align:left;">Artikelnummer</th>
+              <td style="width:55%;"><input type="text" class="a4-input" data-sol="458.21796" placeholder="Art.-Nr. aus Anlage 5..."></td>
+            </tr>
+            <tr>
+              <th style="text-align:left;">Artikelbezeichnung</th>
+              <td><input type="text" class="a4-input" data-sol="Champagner Chandon et Moor Brut Imperial (0,75 L)" placeholder="Artikelbezeichnung aus Anlage 5..."></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="a4-table" style="margin-top:16px;">
+          <thead>
+            <tr>
+              <th style="width:45%;text-align:left;">Lagerort</th>
+              <th style="width:55%;">Anzahl der Flaschen</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Getränkekeller</strong></td>
+              <td><input type="text" class="a4-input" data-sol="26 Flaschen (4 Kartons à 6 Fl. + 2 Einzelflaschen)" placeholder="Flaschen im Getränkekeller..."></td>
+            </tr>
+            <tr>
+              <td><strong>Buffetkühlschrank</strong></td>
+              <td><input type="text" class="a4-input" data-sol="2 Flaschen (ohne die 1 angefangene Flasche)" placeholder="Flaschen im Buffetkühlschrank..."></td>
+            </tr>
+            <tr>
+              <td><strong>Weinkühlschrank</strong></td>
+              <td><input type="text" class="a4-input" data-sol="6 Flaschen (nur Champagner, ohne Sekt/Prosecco/Weißwein)" placeholder="Flaschen im Weinkühlschrank..."></td>
+            </tr>
+            <tr>
+              <td><strong>Gesamtanzahl der Flaschen</strong></td>
+              <td><input type="text" class="a4-input" data-sol="34 Flaschen" placeholder="Summe Flaschen..."></td>
+            </tr>
+            <tr>
+              <td><strong>Einkaufspreis je Flasche in Euro</strong></td>
+              <td><input type="text" class="a4-input" data-sol="35,90 € (215,40 € ÷ 6 Flaschen)" placeholder="Einzelpreis je Flasche in €..."></td>
+            </tr>
+            <tr>
+              <td><strong>Gesamtwert in Euro</strong></td>
+              <td><input type="text" class="a4-input" data-sol="1.220,60 € (34 Flaschen × 35,90 €)" placeholder="Gesamtwert in €..."></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="margin-top:18px;">
+          <strong>Prüfung Meldebestand (Teilaufgabe 2.3b — 3 Punkte, mithilfe Anlage 6):</strong>
+          <textarea class="a4-textarea" style="min-height:84px;margin-top:6px;" data-sol="Mindestbestand = 3 Kartons × 6 Fl. = 18 Flaschen.&#10;Tagesverbrauch = 2 Flaschen/Tag; Lieferzeit = 3 Tage.&#10;Meldebestand = (Tagesverbrauch × Lieferzeit) + Mindestbestand = (2 × 3) + 18 = 24 Flaschen (4 Kartons).&#10;Ergebnis: Da aktuell 34 Flaschen auf Lager sind (34 > 24), ist der Meldebestand noch NICHT erreicht." placeholder="Berechnung des Meldebestands und Vergleich mit dem aktuellen Lagerbestand..."></textarea>
+        </div>
+
+        <details class="a4-loesung">
+          <summary>Vorgabe E — Inventurliste &amp; Meldebestand (7 + 3 = 10 Punkte)</summary>
+          <div class="a4-loesung-body">
+            1. <strong>Artikeldaten:</strong> Art.-Nr. <code>458.21796</code> · <em>Champagner Chandon et Moor Brut Imperial (0,75 l)</em>.<br>
+            2. <strong>Bestand nach Lagerorten:</strong><br>
+            • Getränkekeller: <code>4 × 6 + 2 = 26 Flaschen</code><br>
+            • Buffetkühlschrank: <code>2 volle Flaschen</code> <em>(Hinweis: Falls die 1 angefangene Flasche mitgezählt wird = 3 Fl., Gesamt 35 Fl. = 1.256,50 €; fachlich korrekt werden bei der Inventur ganzer Gebinde nur die 2 verschlossenen Flaschen gezählt = 34 Fl.)</em><br>
+            • Weinkühlschrank: <code>6 Flaschen</code> (Sekt, Prosecco und Weißwein gehören nicht zum Artikel Champagner!)<br>
+            • <strong>Gesamtanzahl:</strong> <code>34 Flaschen</code> × <code>35,90 €</code> = <strong>1.220,60 €</strong>.<br>
+            3. <strong>Prüfung Meldebestand (Anlage 6):</strong><br>
+            • <code>Mindestbestand = 3 Kartons × 6 Fl. = 18 Flaschen</code><br>
+            • <code>Meldebestand = (2 Fl./Tag × 3 Tage Lieferzeit) + 18 Fl. = 24 Flaschen (4 Kartons)</code><br>
+            • Aktueller Bestand (34 Flaschen) &gt; Meldebestand (24 Flaschen) ⇒ <strong>Der Meldebestand ist noch nicht erreicht.</strong>
+          </div>
+        </details>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Winter 2025/26 · Vorgabe E</span>
+        <span>Aufgabe 2.3 (10 Punkte)</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 9: VORGABE F (AUFGABE 2.4) ==================== -->
+    <section class="a4-page" id="blatt-9">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Winter 2025/26</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+        <div class="abgabe-hinweis">Mit den Lösungsblättern abzugeben!</div>
+        <div class="name-klasse-line">
+          <label>Name: <input type="text" placeholder="..."></label>
+          <label>Klasse: <input type="text" style="width:90px;" placeholder="..."></label>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Vorgabe F</span>
+          <span>zur Aufgabe 2.4</span>
+        </div>
+
+        <h2 style="font-size:15.5px;margin:6px 0;">Lagerdatei Restaurant Schönblick</h2>
+        <div class="vi-box">
+          <strong>Hướng dẫn Vorgabe F (Aufgabe 2.4 — 10 Punkte):</strong> Mỗi ngày tiêu thụ <strong>2 Flaschen = 71,80 €</strong>. Khi tồn kho cuối ngày chạm <strong>Meldebestand = 24 Flaschen</strong> (vào ngày <strong>24.12.</strong>), đặt hàng ngay. Thời gian giao hàng là <strong>3 ngày</strong> → Hàng về vào ngày <strong>27.12.</strong> (Đặt đủ 4 Kartons = 24 Fl. + 7 Kartons cho đêm Silvester = <strong>11 Kartons = 66 Flaschen = 2.369,40 €</strong>, hoặc đặt tách 24 Fl. + 42 Fl.). Đêm <strong>31.12.</strong> tiêu thụ thêm 7 Kartons (42 Fl.) + 2 Fl. thường ngày = <strong>44 Flaschen (1.579,60 €)</strong>.
+        </div>
+
+        <table class="a4-table" style="font-size:12.2px;margin-bottom:8px;">
+          <tr>
+            <td style="width:18%;"><strong>Artikel:</strong></td>
+            <td style="width:32%;"><input type="text" class="a4-input" data-sol="Champagner Chandon et Moor Brut Imperial"></td>
+            <td style="width:22%;"><strong>Gebindegröße:</strong></td>
+            <td style="width:28%;"><input type="text" class="a4-input" data-sol="Karton à 6 Flaschen (0,75 l)"></td>
+          </tr>
+          <tr>
+            <td><strong>Artikel-Nr.:</strong></td>
+            <td><input type="text" class="a4-input" data-sol="458.21796"></td>
+            <td><strong>Mindestbestand:</strong></td>
+            <td><input type="text" class="a4-input" data-sol="18 Flaschen (3 Kartons)"></td>
+          </tr>
+          <tr>
+            <td><strong>Preis/Flasche:</strong></td>
+            <td><input type="text" class="a4-input" data-sol="35,90 €"></td>
+            <td><strong>Meldebestand:</strong></td>
+            <td><input type="text" class="a4-input" data-sol="24 Flaschen (4 Kartons)"></td>
+          </tr>
+        </table>
+
+        <table class="a4-table" style="font-size:11.8px;">
+          <thead>
+            <tr>
+              <th rowspan="2" style="width:11%;">Datum</th>
+              <th colspan="2">Anfangsbestand</th>
+              <th colspan="2">Zugang</th>
+              <th colspan="2">Abgang</th>
+              <th colspan="2">Endbestand</th>
+            </tr>
+            <tr>
+              <th>Flaschen</th><th>Wert (€)</th>
+              <th>Flaschen</th><th>Wert (€)</th>
+              <th>Flaschen</th><th>Wert (€)</th>
+              <th>Flaschen</th><th>Wert (€)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>15.12.</strong></td><td style="text-align:center;">44</td><td style="text-align:right;">1.579,60 €</td><td style="text-align:center;">-</td><td style="text-align:center;">-</td><td style="text-align:center;">2</td><td style="text-align:right;">71,80 €</td><td style="text-align:center;">42</td><td style="text-align:right;">1.507,80 €</td></tr>
+            <tr><td><strong>16.12.</strong></td><td><input class="a4-input" data-sol="42"></td><td><input class="a4-input" data-sol="1.507,80 €"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="2"></td><td><input class="a4-input" data-sol="71,80 €"></td><td><input class="a4-input" data-sol="40"></td><td><input class="a4-input" data-sol="1.436,00 €"></td></tr>
+            <tr><td><strong>17.12.</strong></td><td><input class="a4-input" data-sol="40"></td><td><input class="a4-input" data-sol="1.436,00 €"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="2"></td><td><input class="a4-input" data-sol="71,80 €"></td><td><input class="a4-input" data-sol="38"></td><td><input class="a4-input" data-sol="1.364,20 €"></td></tr>
+            <tr><td><strong>18.12.</strong></td><td><input class="a4-input" data-sol="38"></td><td><input class="a4-input" data-sol="1.364,20 €"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="2"></td><td><input class="a4-input" data-sol="71,80 €"></td><td><input class="a4-input" data-sol="36"></td><td><input class="a4-input" data-sol="1.292,40 €"></td></tr>
+            <tr><td><strong>19.12.</strong></td><td><input class="a4-input" data-sol="36"></td><td><input class="a4-input" data-sol="1.292,40 €"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="2"></td><td><input class="a4-input" data-sol="71,80 €"></td><td><input class="a4-input" data-sol="34"></td><td><input class="a4-input" data-sol="1.220,60 €"></td></tr>
+            <tr><td><strong>20.12.</strong></td><td><input class="a4-input" data-sol="34"></td><td><input class="a4-input" data-sol="1.220,60 €"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="2"></td><td><input class="a4-input" data-sol="71,80 €"></td><td><input class="a4-input" data-sol="32"></td><td><input class="a4-input" data-sol="1.148,80 €"></td></tr>
+            <tr><td><strong>21.12.</strong></td><td><input class="a4-input" data-sol="32"></td><td><input class="a4-input" data-sol="1.148,80 €"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="2"></td><td><input class="a4-input" data-sol="71,80 €"></td><td><input class="a4-input" data-sol="30"></td><td><input class="a4-input" data-sol="1.077,00 €"></td></tr>
+            <tr><td><strong>22.12.</strong></td><td><input class="a4-input" data-sol="30"></td><td><input class="a4-input" data-sol="1.077,00 €"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="2"></td><td><input class="a4-input" data-sol="71,80 €"></td><td><input class="a4-input" data-sol="28"></td><td><input class="a4-input" data-sol="1.005,20 €"></td></tr>
+            <tr><td><strong>23.12.</strong></td><td><input class="a4-input" data-sol="28"></td><td><input class="a4-input" data-sol="1.005,20 €"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="2"></td><td><input class="a4-input" data-sol="71,80 €"></td><td><input class="a4-input" data-sol="26"></td><td><input class="a4-input" data-sol="933,40 €"></td></tr>
+            <tr style="background:#FFF8E6;"><td><strong>24.12.</strong></td><td><input class="a4-input" data-sol="26"></td><td><input class="a4-input" data-sol="933,40 €"></td><td><input class="a4-input" data-sol="- (Bestellung!)"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="2"></td><td><input class="a4-input" data-sol="71,80 €"></td><td><input class="a4-input" data-sol="24 (Meldebest.)"></td><td><input class="a4-input" data-sol="861,60 €"></td></tr>
+            <tr><td><strong>25.12.</strong></td><td><input class="a4-input" data-sol="24"></td><td><input class="a4-input" data-sol="861,60 €"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="2"></td><td><input class="a4-input" data-sol="71,80 €"></td><td><input class="a4-input" data-sol="22"></td><td><input class="a4-input" data-sol="789,80 €"></td></tr>
+            <tr><td><strong>26.12.</strong></td><td><input class="a4-input" data-sol="22"></td><td><input class="a4-input" data-sol="789,80 €"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="2"></td><td><input class="a4-input" data-sol="71,80 €"></td><td><input class="a4-input" data-sol="20"></td><td><input class="a4-input" data-sol="718,00 €"></td></tr>
+            <tr style="background:#EDF7ED;"><td><strong>27.12.</strong></td><td><input class="a4-input" data-sol="20"></td><td><input class="a4-input" data-sol="718,00 €"></td><td><input class="a4-input" data-sol="66 (11 Kart.)"></td><td><input class="a4-input" data-sol="2.369,40 €"></td><td><input class="a4-input" data-sol="2"></td><td><input class="a4-input" data-sol="71,80 €"></td><td><input class="a4-input" data-sol="84"></td><td><input class="a4-input" data-sol="3.015,60 €"></td></tr>
+            <tr><td><strong>28.12.</strong></td><td><input class="a4-input" data-sol="84"></td><td><input class="a4-input" data-sol="3.015,60 €"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="2"></td><td><input class="a4-input" data-sol="71,80 €"></td><td><input class="a4-input" data-sol="82"></td><td><input class="a4-input" data-sol="2.943,80 €"></td></tr>
+            <tr><td><strong>29.12.</strong></td><td><input class="a4-input" data-sol="82"></td><td><input class="a4-input" data-sol="2.943,80 €"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="2"></td><td><input class="a4-input" data-sol="71,80 €"></td><td><input class="a4-input" data-sol="80"></td><td><input class="a4-input" data-sol="2.872,00 €"></td></tr>
+            <tr><td><strong>30.12.</strong></td><td><input class="a4-input" data-sol="80"></td><td><input class="a4-input" data-sol="2.872,00 €"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="2"></td><td><input class="a4-input" data-sol="71,80 €"></td><td><input class="a4-input" data-sol="78"></td><td><input class="a4-input" data-sol="2.800,20 €"></td></tr>
+            <tr style="background:#FFF8E6;"><td><strong>31.12.</strong></td><td><input class="a4-input" data-sol="78"></td><td><input class="a4-input" data-sol="2.800,20 €"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="44 (2+42)"></td><td><input class="a4-input" data-sol="1.579,60 €"></td><td><input class="a4-input" data-sol="34"></td><td><input class="a4-input" data-sol="1.220,60 €"></td></tr>
+            <tr><td><strong>01.01.</strong></td><td><input class="a4-input" data-sol="34"></td><td><input class="a4-input" data-sol="1.220,60 €"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="-"></td><td><input class="a4-input" data-sol="2"></td><td><input class="a4-input" data-sol="71,80 €"></td><td><input class="a4-input" data-sol="32"></td><td><input class="a4-input" data-sol="1.148,80 €"></td></tr>
+          </tbody>
+        </table>
+
+        <details class="a4-loesung">
+          <summary>Vorgabe F — Erläuterung zur Lagerdatei (10 Punkte)</summary>
+          <div class="a4-loesung-body">
+            • <strong>24.12.:</strong> Endbestand erreicht exakt den <strong>Meldebestand von 24 Flaschen (861,60 €)</strong> → Bestellung wird ausgelöst.<br>
+            • <strong>27.12. (Lieferung nach 3 Tagen):</strong> Der Bestand ist bis dahin auf 18 Fl. (Mindestbestand) gesunken. Zugang z. B. <strong>11 Kartons = 66 Flaschen (2.369,40 €)</strong> [4 Kartons Normalbedarf + 7 Kartons Silvesterbedarf]. <em>(Hinweis: Auch eine getrennte Bestellung von 4 Kartons = 24 Fl. am 24.12. und 7 Kartons = 42 Fl. vor Silvester wird in der IHK-Korrektur voll bepunktet, sofern der Mindestbestand von 18 Flaschen nie unterschritten wird!)</em><br>
+            • <strong>31.12. (Silvester):</strong> Abgang = <code>2 Fl. Tagesverbrauch + 42 Fl. (7 Kartons Silvester) = 44 Flaschen (1.579,60 €)</code>.
+          </div>
+        </details>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Winter 2025/26 · Vorgabe F</span>
+        <span>Aufgabe 2.4 (10 Punkte)</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 10: ANLAGE 1 & ANLAGE 2 ==================== -->
+    <section class="a4-page" id="blatt-10">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Winter 2025/26</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Anlage 1</span>
+          <span>zur Aufgabe 1.1</span>
+        </div>
+
+        <div style="border:2px solid var(--a4-ink);padding:16px 20px;margin-bottom:24px;">
+          <h3 style="margin:0 0 10px;font-size:17px;">Rezept für 5 Gläser Glühwein (0,2 L)</h3>
+          <p style="margin:0 0 6px;"><strong>Zutaten:</strong></p>
+          <ul style="margin:0 0 12px 20px;">
+            <li>1 L Rotwein</li>
+            <li>2 Bio-Orangen</li>
+            <li>1 Bio-Zitrone</li>
+            <li>1 Bio-Mandarine</li>
+            <li>3 EL Honig (20 g pro EL)</li>
+            <li>2 Zimtstangen</li>
+            <li>4 Nelken</li>
+            <li>3 Sternanis</li>
+          </ul>
+          <p style="margin:0;"><strong>Zubereitung:</strong><br>
+          Den Rotwein in einen großen Topf gießen und langsam erhitzen (nicht kochen!). Die Orangen, Zitrone und Mandarine heiß abwaschen, in Scheiben schneiden und in den Topf geben. Die Zimtstangen, Nelken und den Sternanis hinzufügen. Den Honig einrühren. Den Glühwein bei niedriger Hitze etwa 30 Minuten ziehen lassen. Vor dem Servieren die Gewürze und Fruchtscheiben durch ein Sieb abgießen.</p>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Anlage 2</span>
+          <span>zur Aufgabe 1.4</span>
+        </div>
+
+        <h3 style="margin:8px 0;font-size:16px;">Bestandsliste Alkoholfreie Getränke</h3>
+        <table class="a4-table" style="font-size:12.8px;">
+          <thead>
+            <tr>
+              <th style="width:12%;">Position</th>
+              <th style="width:88%;text-align:left;">Artikel</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td style="text-align:center;">1</td><td>Mineralwasser (still, medium)</td></tr>
+            <tr><td style="text-align:center;">2</td><td>Apfelsaft (naturtrüb)</td></tr>
+            <tr><td style="text-align:center;">3</td><td>Orangensaft (Direktsaft)</td></tr>
+            <tr><td style="text-align:center;">4</td><td>Traubensaft (weiß, rot)</td></tr>
+            <tr><td style="text-align:center;">5</td><td>Johannisbeernektar (schwarz)</td></tr>
+            <tr><td style="text-align:center;">6</td><td>Grapefruitsaft, Ananassaft, Kirschsaft, Rhabarbersaft, Tomatensaft</td></tr>
+            <tr><td style="text-align:center;">7</td><td>Apfelschorle, Johannisbeerschorle, Rhabarberschorle, Holunderblütenschorle</td></tr>
+            <tr><td style="text-align:center;">8</td><td>Cola, Cola Zero</td></tr>
+            <tr><td style="text-align:center;">9</td><td>Limonade (Orange, Zitrone)</td></tr>
+            <tr><td style="text-align:center;">10</td><td>Eistee (Pfirsich, Zitrone)</td></tr>
+            <tr><td style="text-align:center;">11</td><td>Bitter Lemon, Tonic Water, Ginger Ale</td></tr>
+            <tr><td style="text-align:center;">12</td><td>Ingwerbier (alkoholfrei)</td></tr>
+            <tr><td style="text-align:center;">13</td><td>Grüner Tee, Schwarzer Tee (Assam, Darjeeling), Earl Grey</td></tr>
+            <tr><td style="text-align:center;">14</td><td>Kräutertee (Pfefferminze, Melisse), Kamillentee, Rooibostee</td></tr>
+            <tr><td style="text-align:center;">15</td><td>Früchtetee (Hibiskus, Hagebutte)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Winter 2025/26 · Anlage 1 &amp; 2</span>
+        <span>Nicht abzugeben</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 11: ANLAGE 3 (MENÜKARTE) ==================== -->
+    <section class="a4-page" id="blatt-11">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Winter 2025/26</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Anlage 3</span>
+          <span>zur Aufgabe 2.2</span>
+        </div>
+
+        <h3 style="margin:10px 0 14px;font-size:16px;">Menükarte</h3>
+
+        <div class="menuekarte-grid">
+          <div class="menuekarte-col">
+            <div>
+              <h4 style="font-size:18px;margin:0 0 16px;text-decoration:underline;">Getränke</h4>
+              <p style="margin:0 0 18px;font-size:15px;">
+                <strong>2024 Grauburgunder</strong><br>
+                Qualitätswein trocken<br>
+                Weingut Kress, Bodensee
+              </p>
+              <p style="margin:0 0 18px;font-size:15px;">
+                <strong>2019 Spätburgunder</strong><br>
+                Spätlese trocken<br>
+                Weingut Kress, Bodensee
+              </p>
+              <p style="margin:0;font-size:15px;">
+                <strong>Tafelwasser</strong>
+              </p>
+            </div>
+            <div style="margin-top:32px;font-style:italic;color:var(--a4-muted);">
+              Restaurant Schönblick<br>Am Bodensee
+            </div>
+          </div>
+
+          <div class="menuekarte-col">
+            <h4 style="font-size:20px;margin:0 0 18px;letter-spacing:0.04em;">Menü</h4>
+            <p style="margin:0 0 14px;font-size:15px;">
+              Hirschpastete mit Preiselbeersauce,<br>
+              Feldsalat und Walnuss-Crumble<br>
+              <strong>***</strong>
+            </p>
+            <p style="margin:0 0 14px;font-size:15px;">
+              Maronenrahmsuppe<br>
+              mit frittierten Kräutern<br>
+              <strong>***</strong>
+            </p>
+            <p style="margin:0 0 14px;font-size:15px;">
+              Zweierlei vom Reh<br>
+              mit Feigenrotkraut und<br>
+              Kartoffel-Majoranknödel<br>
+              <strong>***</strong>
+            </p>
+            <p style="margin:0;font-size:15px;">
+              Schokoladenmousse<br>
+              mit Cranberry-Kompott
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Winter 2025/26 · Anlage 3</span>
+        <span>Nicht abzugeben</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 12: ANLAGE 4, 5 & 6 ==================== -->
+    <section class="a4-page" id="blatt-12">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Winter 2025/26</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Anlage 4</span>
+          <span>zur Aufgabe 2.3</span>
+        </div>
+
+        <table class="a4-table" style="margin-bottom:18px;">
+          <thead>
+            <tr>
+              <th style="width:33%;">Getränkekeller</th>
+              <th style="width:33%;">Buffetkühlschrank</th>
+              <th style="width:34%;">Weinkühlschrank</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="vertical-align:top;">
+                • 4 Kartons Champagner (je 6 Flaschen)<br>
+                • 2 einzelne Flaschen Champagner
+              </td>
+              <td style="vertical-align:top;">
+                • 2 volle Flaschen Champagner<br>
+                • 1 angefangene Flasche Champagner
+              </td>
+              <td style="vertical-align:top;">
+                • 6 Flaschen Champagner<br>
+                • 3 Flaschen Sekt<br>
+                • 2 Flaschen Prosecco<br>
+                • 10 Flaschen Weißwein
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="vorgabe-bar">
+          <span>Anlage 5</span>
+          <span>zu den Aufgaben 2.3 und 2.4</span>
+        </div>
+
+        <h3 style="margin:6px 0 8px;font-size:15px;">Auszug aus der Artikelliste des Lieferanten</h3>
+        <table class="a4-table" style="margin-bottom:18px;">
+          <thead>
+            <tr>
+              <th>Artikelnummer</th>
+              <th style="text-align:left;">Artikelbezeichnung</th>
+              <th>Gebindegröße</th>
+              <th>Preis je Gebinde (netto)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align:center;">458.21564</td>
+              <td>Prosecco Spumante DOC (0,75 L)</td>
+              <td style="text-align:center;">Karton (6 Flaschen)</td>
+              <td style="text-align:right;">47,40 €</td>
+            </tr>
+            <tr>
+              <td style="text-align:center;">458.21602</td>
+              <td>Winzersekt Riesling Brut (0,75 L)</td>
+              <td style="text-align:center;">Karton (6 Flaschen)</td>
+              <td style="text-align:right;">71,40 €</td>
+            </tr>
+            <tr style="background:#FFF8E6;font-weight:700;">
+              <td style="text-align:center;">458.21796</td>
+              <td>Champagner Chandon et Moor Brut Imperial (0,75 L)</td>
+              <td style="text-align:center;">Karton (6 Flaschen)</td>
+              <td style="text-align:right;">215,40 €</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="vorgabe-bar">
+          <span>Anlage 6</span>
+          <span>zu den Aufgaben 2.3 und 2.4</span>
+        </div>
+
+        <div style="border:2px solid var(--a4-ink);padding:14px 18px;">
+          <h3 style="margin:0 0 8px;font-size:15.5px;">Vorgaben für die Bestellung von Champagner</h3>
+          <ul style="margin:0 0 0 20px;line-height:1.6;">
+            <li><strong>Mindestbestand:</strong> 3 Kartons (je 6 Flaschen = 18 Flaschen)</li>
+            <li><strong>Durchschnittlicher Verbrauch:</strong> 2 Flaschen pro Tag</li>
+            <li><strong>Lieferzeit:</strong> 3 Tage (Lieferung erfolgt am 3. Tag nach der Bestellung)</li>
+            <li><strong>Zusätzlicher Bedarf an Silvester (31.12.):</strong> 7 Kartons (= 42 Flaschen)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Winter 2025/26 · Anlage 4, 5 &amp; 6</span>
+        <span>Nicht abzugeben</span>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/a4-gvw-exam.js"></script>
+</body>
+</html>

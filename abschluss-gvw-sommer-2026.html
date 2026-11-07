@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FA 531/1 · Sommer 2026 — Gasterlebnis, Verkaufsförderung und Warenlagerung (A4)</title>
+  <link rel="stylesheet" href="css/a4-gvw-exam.css">
+</head>
+<body>
+
+  <!-- Thanh điều khiển trên cùng -->
+  <header class="gvw-topbar no-print">
+    <div class="gvw-topbar-left">
+      <a href="index.html#/abschluss" class="gvw-back">← Abschluss (30% GVW)</a>
+      <nav class="gvw-exam-switcher" aria-label="Bộ đề FA 531/1">
+        <a href="abschluss-gvw-winter-2025-2026.html" class="gvw-switch-link">Winter 2025/26</a>
+        <a href="abschluss-gvw-winter-2024-2025.html" class="gvw-switch-link">Winter 2024/25</a>
+        <a href="abschluss-gvw-sommer-2025.html" class="gvw-switch-link">Sommer 2025</a>
+        <a href="abschluss-gvw-sommer-2026.html" class="gvw-switch-link active">Sommer 2026</a>
+      </nav>
+    </div>
+    <div class="gvw-topbar-right">
+      <span class="gvw-timer-pill" id="gvw-timer">90:00</span>
+      <button type="button" class="gvw-btn" id="btn-timer" onclick="toggleGvwTimer()">Bắt đầu (90p)</button>
+      <button type="button" class="gvw-btn" onclick="resetGvwTimer()">Reset</button>
+      <button type="button" class="gvw-btn" id="btn-fill-sol" onclick="toggleFillSampleAnswers()">Điền mẫu vào giấy A4</button>
+      <button type="button" class="gvw-btn" id="btn-sol" onclick="toggleAllSolutions()">Hiện toàn bộ lời giải</button>
+      <button type="button" class="gvw-btn" id="btn-vi" onclick="toggleVi()">Ẩn dịch VI</button>
+      <button type="button" class="gvw-btn" onclick="clearSavedAnswers()">Xóa bài làm</button>
+      <button type="button" class="gvw-btn" onclick="window.print()">In A4</button>
+    </div>
+  </header>
+
+  <!-- Thanh nhảy nhanh giữa 12 tờ A4 -->
+  <nav class="gvw-subnav no-print" aria-label="Chuyển nhanh trang A4">
+    <a href="#blatt-1">Deckblatt</a>
+    <a href="#blatt-2">Seite 1 · Aufg. 1</a>
+    <a href="#blatt-3">Seite 2 · Aufg. 2</a>
+    <a href="#blatt-4">Vorgabe A (Lieferschein)</a>
+    <a href="#blatt-5">Vorgabe B (Schädlinge)</a>
+    <a href="#blatt-6">Vorgabe C (Gästeumfrage)</a>
+    <a href="#blatt-7">Vorgabe D (Gästetypen)</a>
+    <a href="#blatt-8">Anlage 1 (Bestellung)</a>
+    <a href="#blatt-9">Anlage 2 (Kühlhaus-Sensor)</a>
+    <a href="#blatt-10">Anlage 3 (Online-Bewertungen)</a>
+  </nav>
+
+  <main class="a4-workspace">
+
+    <!-- ==================== TỜ 1: DECKBLATT ==================== -->
+    <section class="a4-page" id="blatt-1">
+      <div>
+        <div class="deckblatt-top">
+          <div>
+            Gemeinsame Prüfungsaufgaben der<br>
+            Berufsschulen und der Industrie- und<br>
+            Handelskammern in Baden-Württemberg
+          </div>
+          <div class="db-right">
+            Schriftliche Abschlussprüfung an<br>
+            Berufsschulen in<br>
+            Baden-Württemberg<br>
+            Sommer 2026
+          </div>
+        </div>
+
+        <div class="deckblatt-beruf">
+          <h1>Fachkraft für Gastronomie<br>Schwerpunkt Restaurantservice</h1>
+          <div class="fa-code">FA 531/1</div>
+        </div>
+
+        <div class="deckblatt-fachbox">
+          <div class="fb-title">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+          <div class="fb-time">Zeit: 90 Minuten</div>
+        </div>
+
+        <div class="vi-box">
+          <strong>Đề thi tốt nghiệp viết tại trường nghề (Berufsschule Baden-Württemberg — chiếm 30% tổng điểm Abschluss):</strong> Môn <em>Gasterlebnis, Verkaufsförderung und Warenlagerung (FA 531/1)</em> · Kỳ thi Mùa Hè 2026 · Thời gian: 90 phút · Tổng điểm: <strong>62 Punkte</strong>.
+        </div>
+
+        <table class="deckblatt-meta-table">
+          <tr>
+            <td class="lbl">Zugelassene Hilfsmittel:</td>
+            <td>Netzunabhängiger, nicht programmierbarer Taschenrechner</td>
+          </tr>
+          <tr>
+            <td class="lbl">Bearbeitungshinweise:</td>
+            <td>
+              Der Aufgabensatz besteht aus
+              <ul>
+                <li>dem Deckblatt</li>
+                <li>2 Seiten mit den Aufgaben 1 und 2</li>
+                <li>
+                  4 Seiten mit den Vorgaben A bis D
+                  <ul>
+                    <li>Vorgabe A zur Aufgabe 1.1</li>
+                    <li>Vorgabe B zur Aufgabe 1.6</li>
+                    <li>Vorgabe C zur Aufgabe 2.1</li>
+                    <li>Vorgabe D zur Aufgabe 2.2</li>
+                  </ul>
+                </li>
+                <li>3 Seiten mit den Anlagen 1 bis 3</li>
+              </ul>
+              <p>Kontrollieren Sie bitte vor Beginn der Prüfung, ob der Aufgabensatz vollständig ist.</p>
+              <p>Es sind alle Aufgaben zu bearbeiten.</p>
+              <p>Unterschreiben Sie die Vorgaben nicht mit Ihrem Namen, sondern mit dem in der jeweiligen Aufgabe genannten Namen.</p>
+              <p>Am Ende der Prüfung sind die ausgefüllten Vorgaben A bis D mit den Lösungsblättern abzugeben.</p>
+              <p><strong>Nicht abzugeben sind der Aufgabensatz und die Anlagen 1 bis 3.</strong></p>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div>
+        <table class="deckblatt-schuelerbox">
+          <tr>
+            <td style="width:50%;"><strong>Name, Vorname Prüfling:</strong><br><input type="text" class="a4-input" placeholder="Họ und tên thí sinh..."></td>
+            <td style="width:25%;"><strong>Klasse:</strong><br><input type="text" class="a4-input" placeholder="Lớp..."></td>
+            <td style="width:25%;"><strong>Erreichte Punkte:</strong><br><span style="font-size:15px;font-weight:700;">____ / 62 P.</span></td>
+          </tr>
+        </table>
+        <div class="a4-footer-note">
+          <span>FA 531/1 · Sommer 2026 · Deckblatt</span>
+          <span>AzubiHub A4 Original-Formular</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 2: SEITE 1 — AUFGABE 1 ==================== -->
+    <section class="a4-page" id="blatt-2">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Sommer 2026<br>Seite 1</div>
+          <div class="rh-right">
+            Gasterlebnis, Verkaufsförderung<br>und Warenlagerung
+            <div class="rh-points-label">Punkte</div>
+          </div>
+        </div>
+
+        <div class="aufgabe-title-row">
+          <span>Aufgabe 1 &nbsp; Warenannahme und Lagerhaltung</span>
+          <span>(35 Punkte)</span>
+        </div>
+
+        <div class="aufgabe-context">
+          Sie arbeiten als Fachkraft für Gastronomie im Restaurant „Glas und Gabel“ in Calw.<br>
+          Heute nehmen Sie die Lieferung der Firma „Schwabenfrisch“ entgegen.
+          <div class="vi-box">
+            <strong>Bối cảnh Aufgabe 1:</strong> Bạn làm việc tại nhà hàng <strong>„Glas und Gabel“</strong> ở Calw. Hôm nay bạn nhận lô hàng từ nhà cung cấp <strong>„Schwabenfrisch“</strong>.
+          </div>
+        </div>
+
+        <!-- 1.1 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">1.1</div>
+          <div class="ta-body">
+            <p>Überprüfen Sie die Lieferung anhand des Bestellformulars (<strong>Anlage 1</strong>) und füllen Sie den Lieferschein auf der <strong>Vorgabe A</strong> vollständig aus (Prüfvermerke, Feststellungen/Mängel, Annahmevermerk, geliefertes Leergut und Unterschrift als „A. Muster“).</p>
+            <div class="vi-box">1.1 Đối chiếu hàng giao trên <strong>Vorgabe A (Lieferschein)</strong> (trang 4) với đơn đặt hàng ở <strong>Anlage 1</strong> (trang 8). Điền đầy đủ dấu kiểm tra, ghi chú lỗi thiếu 5 cây <em>Eisbergsalat</em> (đặt 15 giao 10), tích chọn nhận hàng kèm khiếu nại, điền số vỏ thùng giao đến (<code>Fässer: 3</code>, <code>Kisten: 5</code>) và ký tên <code>A. Muster</code>.</div>
+          </div>
+          <div class="ta-pts">6</div>
+        </div>
+
+        <!-- 1.2 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">1.2</div>
+          <div class="ta-body">
+            <p>Verfassen Sie eine vollständige E-Mail (Mängelrüge) an den Lieferanten „Schwabenfrisch“, in der Sie alle festgestellten Mängel reklamieren und eine konkrete Forderung stellen.</p>
+            <div class="vi-box">1.2 Viết một bức E-Mail khiếu nại hoàn chỉnh (<em>Mängelrüge</em>) gửi nhà cung cấp „Schwabenfrisch“ (<code>info@schwabenfrisch.de</code>) về cả 2 lỗi (2 túi yến mạch <em>Haferflocken</em> bị rách bao bì + thiếu 5 cây xà lách <em>Eisbergsalat</em>) và nêu yêu cầu giải quyết.</div>
+            <textarea class="a4-textarea" style="min-height:110px;" placeholder="An: info@schwabenfrisch.de&#10;Betreff: ...&#10;E-Mail-Text Mängelrüge..." data-sol="An: info@schwabenfrisch.de&#10;Betreff: Reklamation / Mängelrüge zur heutigen Lieferung (Lieferschein-Nr. 2026-418 / Bestell-Nr. 105)&#10;&#10;Sehr geehrte Damen und Herren,&#10;&#10;vielen Dank für Ihre heutige Warenlieferung an unser Restaurant „Glas und Gabel“ in Calw.&#10;Bei der sofortigen Wareneingangskontrolle mussten wir leider folgende zwei Mängel feststellen:&#10;1. Haferflocken (Pos. 2, Art.-Nr. 1045): Bei 2 von 10 gelieferten Packungen (à 1 kg) war die Verpackung aufgerissen (Qualitäts-/Verpackungsmangel). Diese 2 Packungen haben wir dem Fahrer direkt wieder mitgegeben.&#10;2. Eisbergsalat (Pos. 7, Art.-Nr. 3012): Bestellt waren 15 Stück (3 Kisten à 5 Stück), geliefert wurden jedoch nur 10 Stück / 2 Kisten (Quantitätsmangel / Unterlieferung von 5 Stück).&#10;&#10;Wir bitten Sie um eine kostenfreie Nachlieferung der 2 Packungen Haferflocken sowie der fehlenden 5 Stück Eisbergsalat bis spätestens morgen Vormittag (alternativ um eine entsprechende Gutschrift auf der Rechnung).&#10;&#10;Mit freundlichen Grüßen&#10;Restaurant „Glas und Gabel“ Calw&#10;i. A. A. Muster"></textarea>
+            <details class="a4-loesung">
+              <summary>Aufgabe 1.2 — E-Mail Mängelrüge (8 Punkte)</summary>
+              <div class="a4-loesung-body">
+                • <strong>Empfänger &amp; Betreff (2 P.):</strong> <code>info@schwabenfrisch.de</code> · Bezug auf Lieferschein/Bestellung.<br>
+                • <strong>Beide Mängel exakt benannt (3 P.):</strong> 1. <code>2 Packungen Haferflocken</code> Verpackung aufgerissen (Qualitätsmangel); 2. <code>5 Stück Eisbergsalat</code> fehlen (10 statt 15 Stück geliefert = Quantitätsmangel).<br>
+                • <strong>Rechtliche Forderung &amp; Form (3 P.):</strong> Kostenfreie Ersatz-/Nachlieferung bzw. Rechnungskorrektur (Gutschrift) + höfliche Anrede und Grußformel (<em>i. A. A. Muster</em>).
+              </div>
+            </details>
+          </div>
+          <div class="ta-pts">8</div>
+        </div>
+
+        <!-- 1.3 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">1.3</div>
+          <div class="ta-body">
+            <p>Nach der Warenannahme müssen die neun gelieferten Artikel eingelagert werden. Bringen Sie die Artikel in eine fachlich sinnvolle Reihenfolge für die Einlagerung und begründen Sie Ihre Vorgehensweise.</p>
+            <div class="vi-box">1.3 Sau khi nhận hàng, bạn cần cất 9 mặt hàng vừa giao vào kho. Hãy sắp xếp thứ tự ưu tiên cất hàng đúng chuẩn nghiệp vụ (<em>Einlagerungsreihenfolge</em>) và giải thích lý do.</div>
+            <textarea class="a4-textarea" style="min-height:98px;" placeholder="Reihenfolge der Einlagerung (1. bis 6./7.) + fachliche Begründung..." data-sol="Reihenfolge der Einlagerung:&#10;1. TK-Himbeeren (Tiefkühlware, mind. -18 °C)&#10;2. Rinderhackfleisch, frisch (sehr leicht verderblich, max. +2 °C bis +4 °C)&#10;3. Frische Vollmilch (Kühlware / Molkereiprodukte, +4 °C bis +8 °C)&#10;4. Eisbergsalat &amp; Äpfel (Obst-/Gemüsekühlraum, +6 °C bis +10 °C)&#10;5. Haferflocken &amp; Tellerlinsen (Trockenlager, kühl &amp; trocken bei 15–18 °C)&#10;6. Pils-Bierfässer (Getränkekeller, dunkel bei 8–12 °C)&#10;7. Allzweckreiniger (separates Reinigungsmittellager, strikt getrennt von Lebensmitteln!)&#10;&#10;Begründung: Die Kühlkette (insbesondere bei Tiefkühlware und leicht verderblichem Hackfleisch/Milch) darf nach HACCP keinesfalls unterbrochen werden, um Keimvermehrung und Verderb zu verhindern. Chemische Reinigungsmittel müssen aus Sicherheits- und Hygienegründen räumlich getrennt von Lebensmitteln gelagert werden."></textarea>
+            <details class="a4-loesung">
+              <summary>Aufgabe 1.3 (7 Punkte)</summary>
+              <div class="a4-loesung-body">
+                <strong>Fachlich korrekte Reihenfolge (nach Empfindlichkeit / Kühlkette):</strong><br>
+                1. <strong>TK-Himbeeren</strong> (Tiefkühllager −18 °C → höchste Priorität gegen Antauen)<br>
+                2. <strong>Frisches Rinderhackfleisch</strong> (Fleischkühlung +2 °C bis +4 °C → extrem leicht verderblich)<br>
+                3. <strong>Frische Vollmilch</strong> (Molkereikühlung +4 °C bis +8 °C)<br>
+                4. <strong>Eisbergsalat &amp; Äpfel</strong> (Gemüsekühlhaus +6 °C bis +10 °C)<br>
+                5. <strong>Haferflocken &amp; Tellerlinsen</strong> (Trockenlager)<br>
+                6. <strong>Bierfässer</strong> (Getränkekeller)<br>
+                7. <strong>Allzweckreiniger</strong> (separates Chemikalien-/Reinigungsmittellager, getrennt von Lebensmitteln).
+              </div>
+            </details>
+          </div>
+          <div class="ta-pts">7</div>
+        </div>
+
+        <!-- 1.4 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">1.4</div>
+          <div class="ta-body">
+            <p>Beim Einräumen des Gemüsekühlraums leuchtet auf dem Display ein Warnsignal (<strong>Anlage 2</strong>). Beurteilen Sie die angezeigten Werte für Temperatur und Luftfeuchtigkeit und geben Sie an, wie diese korrigiert werden müssen (inkl. Zielwerte).</p>
+            <div class="vi-box">1.4 Khi cất rau củ vào kho lạnh, màn hình cảm biến ở <strong>Anlage 2</strong> (trang 9) phát tín hiệu cảnh báo (<code>11,6 °C | 52 % Luftfeuchte</code>). Hãy nhận xét 2 chỉ số này và nêu cách điều chỉnh kèm ngưỡng chuẩn.</div>
+            <textarea class="a4-textarea" placeholder="Beurteilung &amp; Korrektur (Temperatur &amp; Luftfeuchtigkeit)..." data-sol="1. Temperatur (aktuell 11,6 °C): Ist für einen Obst- und Gemüsekühlraum zu hoch (Gefahr von schnellem Verderb). Sie muss gesenkt werden auf den Zielbereich von +6 °C bis +10 °C (optimal ca. +7 °C bis +9 °C).&#10;2. Luftfeuchtigkeit (aktuell 52 %): Ist viel zu niedrig (Gefahr, dass Salat und Gemüse welken und austrocknen). Sie muss erhöht werden auf den Zielbereich von 85 % bis 95 % relativer Luftfeuchtigkeit."></textarea>
+            <details class="a4-loesung">
+              <summary>Aufgabe 1.4 (4 Punkte)</summary>
+              <div class="a4-loesung-body">
+                • <strong>Temperatur (11,6 °C):</strong> Zu warm! Muss <strong>gesenkt werden auf ca. +6 °C bis +10 °C</strong>.<br>
+                • <strong>Luftfeuchtigkeit (52 %):</strong> Zu trocken (Gemüse/Salat welkt)! Muss <strong>erhöht werden auf ca. 85 % bis 95 %</strong>.
+              </div>
+            </details>
+          </div>
+          <div class="ta-pts">4</div>
+        </div>
+
+        <!-- 1.5 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">1.5</div>
+          <div class="ta-body">
+            <p>Im Trockenlager kontrollieren Sie die Bestände auch auf Schädlingsbefall. Nennen Sie vier typische Anzeichen, an denen Sie einen Schädlingsbefall im Lager erkennen können.</p>
+            <div class="vi-box">1.5 Trong kho khô, bạn kiểm tra dấu hiệu côn trùng/chuột hại (<em>Schädlingsbefall</em>). Hãy nêu <strong>4 dấu hiệu nhận biết</strong> kho đang bị sinh vật gây hại xâm nhập.</div>
+            <textarea class="a4-textarea" placeholder="4 Anzeichen für Schädlingsbefall..." data-sol="1. Fraßspuren bzw. angefressene/beschädigte Verpackungen (Löcher in Säcken/Kartons) und verstreute Lebensmittelreste.&#10;2. Kotspuren (z. B. Mäuse- oder Rattenkot) sowie Urinspuren/Schmierspuren an Wänden und Regalen.&#10;3. Lebende oder tote Schädlinge (Insekten, Käfer, Motten, Nagetiere) sowie Larven, Puppen oder Häutungsreste.&#10;4. Gespinste / Verklumpungen in Mehl oder Getreide (z. B. durch Lebensmittelmotten) sowie unangenehmer, muffiger Geruch oder Laufspuren im Staub."></textarea>
+            <details class="a4-loesung">
+              <summary>Aufgabe 1.5 (4 Punkte)</summary>
+              <div class="a4-loesung-body">
+                1. <strong>Fraßspuren &amp; angefressene Verpackungen</strong> (Löcher in Kartons, Papiersäcken, Folien).<br>
+                2. <strong>Kot-, Urin- und Schmierspuren</strong> auf Regalen oder am Boden.<br>
+                3. <strong>Lebende oder tote Tiere</strong>, Larven, Eigelege oder Häutungsreste.<br>
+                4. <strong>Gespinste / Fäden / Verklumpungen</strong> (z. B. bei Mehl/Haferflocken durch Lebensmittelmotten) oder Kratz-/Trippelgeräusche.
+              </div>
+            </details>
+          </div>
+          <div class="ta-pts">4</div>
+        </div>
+
+        <!-- 1.6 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">1.6</div>
+          <div class="ta-body">
+            <p>Vervollständigen Sie die Arbeitsanweisung „Lagerpflege – Schutz vor Schädlingen“ auf der <strong>Vorgabe B</strong> (vier vorbeugende Maßnahmen unter Punkt 3 und drei Sofortmaßnahmen bei Befall unter Punkt 5).</p>
+            <div class="vi-box">1.6 Hoàn thành quy trình hướng dẫn công việc <em>„Lagerpflege – Schutz vor Schädlingen“</em> trên <strong>Vorgabe B</strong> (trang 5): Nêu <strong>4 biện pháp phòng ngừa</strong> ở mục 3 và <strong>3 biện pháp xử lý ngay khi phát hiện</strong> ở mục 5.</div>
+          </div>
+          <div class="ta-pts">6</div>
+        </div>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Sommer 2026 · Seite 1</span>
+        <span>Aufgabe 1 (35 Punkte)</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 3: SEITE 2 — AUFGABE 2 ==================== -->
+    <section class="a4-page" id="blatt-3">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Sommer 2026<br>Seite 2</div>
+          <div class="rh-right">
+            Gasterlebnis, Verkaufsförderung<br>und Warenlagerung
+            <div class="rh-points-label">Punkte</div>
+          </div>
+        </div>
+
+        <div class="aufgabe-title-row">
+          <span>Aufgabe 2 &nbsp; Gestaltung des Gasterlebnisses</span>
+          <span>(27 Punkte)</span>
+        </div>
+
+        <div class="aufgabe-context">
+          Sie arbeiten im Restaurant „Panoramablick“. Der Geschäftsführer Herr Lindberg möchte die Gästezufriedenheit verbessern.
+          <div class="vi-box">
+            <strong>Bối cảnh Aufgabe 2:</strong> Bạn làm việc tại nhà hàng <strong>„Panoramablick“</strong>. Giám đốc — ông <strong>Herr Lindberg</strong> — muốn nâng cao mức độ hài lòng của thực khách.
+          </div>
+        </div>
+
+        <!-- 2.1 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">2.1</div>
+          <div class="ta-body">
+            <p>Es wurde eine Gästeumfrage bei 10 Gästen nach dem Schulnotensystem (1 = sehr gut bis 6 = ungenügend) durchgeführt:</p>
+            <ul>
+              <li>Berechnen Sie auf der <strong>Vorgabe C</strong> die Durchschnittsnote je Kriterium sowie die Gesamtdurchschnittsnote.</li>
+              <li>Verfassen Sie eine interne Mitteilung an Herrn Lindberg, in der Sie auf Basis der Umfrage (<strong>Vorgabe C</strong>) und der Online-Bewertungen (<strong>Anlage 3</strong>) fünf konkrete Verbesserungsvorschläge unterbreiten.</li>
+            </ul>
+            <div class="vi-box">2.1 Nhà hàng đã khảo sát 10 vị khách theo thang điểm trường học Đức (1 = rất tốt đến 6 = kém):<br>
+            • Tính điểm trung bình từng tiêu chí và điểm trung bình tổng trên <strong>Vorgabe C</strong> (trang 6).<br>
+            • Viết thông báo nội bộ (<em>Interne Mitteilung</em>) gửi ông <strong>Herr Lindberg</strong> đề xuất <strong>5 giải pháp cải thiện cụ thể</strong> dựa trên kết quả khảo sát (Vorgabe C) và 4 đánh giá trên mạng (<strong>Anlage 3</strong>, trang 10).</div>
+            <textarea class="a4-textarea" style="min-height:130px;" placeholder="Interne Mitteilung an Herrn Lindberg mit 5 konkreten Verbesserungsvorschlägen..." data-sol="Interne Mitteilung&#10;Von: Fachkraft für Gastronomie | An: Herrn Lindberg (Geschäftsführung) | Datum: 15.05.2026&#10;Betreff: Auswertung der Gästeumfrage &amp; Online-Bewertungen – 5 Verbesserungsvorschläge&#10;&#10;Sehr geehrter Herr Lindberg,&#10;die Auswertung unserer Gästeumfrage ergab eine Gesamtnote von 3,1 (Schwachstellen vor allem bei Sauberkeit: 4,1 und Fachkompetenz: 3,6). Zusammen mit den aktuellen Online-Bewertungen schlage ich folgende fünf Maßnahmen vor:&#10;1. Sauberkeit Gastraum &amp; Toiletten (Note 4,1): Einführung fester Reinigungs- und Kontrollintervalle (stündliche WC-Kontrollliste, sofortiges Abwischen klebriger Tische und Speisekarten).&#10;2. Fachkompetenz des Servicepersonals (Note 3,6): Regelmäßige Mitarbeiterschulungen zu Speisen, Weinen und Allergenen vor Servicebeginn (Tagesbriefing).&#10;3. Speisenqualität &amp; Temperatur (Note 3,0 / Kritik an lauwarmen Speisen): Einsatz von vorgewärmten Tellern und Wärmebrücken am Küchenpass sowie zügiger Servicelauf.&#10;4. Wartezeiten &amp; Aufmerksamkeit im Service (Note 2,8): Klare Stationszuteilung im Gastraum, damit Gäste beim Bestellen und Bezahlen nicht lange warten müssen.&#10;5. Atmosphäre &amp; Raumgestaltung (Note 3,3): Angenehmere Beleuchtung, leisere Hintergrundmusik und frischer Tischschmuck zur Steigerung des Wohlfühlfaktors.&#10;&#10;Mit freundlichen Grüßen&#10;Ihre Fachkraft für Gastronomie"></textarea>
+            <details class="a4-loesung">
+              <summary>Aufgabe 2.1 — Interne Mitteilung &amp; 5 Maßnahmen (11 Punkte inkl. Vorgabe C)</summary>
+              <div class="a4-loesung-body">
+                • <strong>Durchschnittsnoten auf Vorgabe C (4 P.):</strong> Speisen <code>3,0</code> | Getränke <code>1,6</code> | Freundlichkeit <code>2,8</code> | Fachkompetenz <code>3,6</code> | Sauberkeit <code>4,1</code> | Atmosphäre <code>3,3</code> ⇒ <strong>Gesamtnote: 3,07 (bzw. 3,1)</strong>.<br>
+                • <strong>Interne Mitteilung an Herrn Lindberg mit 5 konkreten Vorschlägen (7 P.):</strong><br>
+                1. <em>Sauberkeit (Note 4,1):</em> Stündliche WC-Checks mit Unterschriftenliste, gründliche Tisch-/Menükartenreinigung.<br>
+                2. <em>Fachkompetenz (Note 3,6):</em> Produktschulungen zu Speise-/Weinkarte und Allergenen.<br>
+                3. <em>Speisentemperatur (Note 3,0):</em> Teller vorwärmen, bessere Abstimmung zwischen Küche und Service.<br>
+                4. <em>Servicegeschwindigkeit / Aufmerksamkeit:</em> Feste Servicestationen einteilen, rasche Rechnungslegung.<br>
+                5. <em>Atmosphäre (Note 3,3):</em> Optimierung von Musiklautstärke, Licht und Tischdekoration.
+              </div>
+            </details>
+          </div>
+          <div class="ta-pts">11</div>
+        </div>
+
+        <!-- 2.2 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">2.2</div>
+          <div class="ta-body">
+            <p>Um auf unterschiedliche Gäste optimal einzugehen, erstellen Sie ein Merkblatt für neue Auszubildende. Ergänzen Sie die Tabelle auf der <strong>Vorgabe D</strong> vollständig für alle vier Gästetypen/Zielgruppen.</p>
+            <div class="vi-box">2.2 Để phục vụ từng đối tượng khách hàng chu đáo nhất, bạn lập tờ hướng dẫn cho thực tập sinh mới. Hãy điền đầy đủ bảng <strong>Vorgabe D</strong> (trang 7) cho 4 nhóm khách: <strong>1. Familien (mit Kindern)</strong>, <strong>2. Senioren / Gäste mit Rollator</strong>, <strong>3. Stammgäste</strong>, <strong>4. Geschäftsleute / Firmenkunden</strong>.</div>
+          </div>
+          <div class="ta-pts">13</div>
+        </div>
+
+        <!-- 2.3 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">2.3</div>
+          <div class="ta-body">
+            <p>In einer Online-Bewertung wurde auch der unprofessionelle Service einer Flasche Mineralwasser bemängelt. Nennen Sie drei Regeln für das fachgerechte Servieren einer Flasche Mineralwasser am Tisch des Gastes.</p>
+            <div class="vi-box">2.3 Trong một đánh giá trên mạng, khách phàn nàn nhân viên phục vụ chai nước khoáng (<em>Mineralwasser-Service</em>) thiếu chuyên nghiệp. Hãy nêu <strong>3 quy tắc chuẩn nghiệp vụ khi phục vụ một chai nước khoáng tại bàn khách</strong>.</div>
+            <textarea class="a4-textarea" placeholder="1. Regel: ...&#10;2. Regel: ...&#10;3. Regel: ..." data-sol="1. Die Mineralwasserflasche wohltemperiert (gekühlt bei ca. 6–8 °C) und originalverschlossen zusammen mit einem sauberen Wasserglas auf dem Tablett (mit Untersetzer) zum Tisch bringen.&#10;2. Die Flasche von rechts präsentieren (Etikett zeigt zum Gast) und erst direkt am Tisch vor den Augen des Gastes öffnen.&#10;3. Das Wasserglas von rechts vorsichtig bis knapp unter den Eichstrich / zu ca. zwei Dritteln einschenken (Flaschenhals darf das Glas nicht berühren) und die Flasche mit dem Etikett zum Gast rechts neben das Glas stellen."></textarea>
+            <details class="a4-loesung">
+              <summary>Aufgabe 2.3 (3 Punkte)</summary>
+              <div class="a4-loesung-body">
+                <strong>Drei Regeln für den fachgerechten Mineralwasser-Service:</strong><br>
+                1. <strong>Originalverschlossen &amp; richtig temperiert (6–8 °C):</strong> Die verschlossene Flasche auf einem Tablett mit passendem Wasserglas zum Tisch tragen.<br>
+                2. <strong>Präsentieren &amp; Öffnen am Tisch:</strong> Von der rechten Seite des Gastes präsentieren und die Flasche erst vor den Augen des Gastes öffnen.<br>
+                3. <strong>Fachgerechtes Einschenken von rechts:</strong> Von rechts einschenken (ohne das Glas mit der Flasche zu berühren) und die Flasche mit dem Etikett zum Gast auf dem Tisch abstellen.
+              </div>
+            </details>
+          </div>
+          <div class="ta-pts">3</div>
+        </div>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Sommer 2026 · Seite 2</span>
+        <span>Aufgabe 2 (27 Punkte) · Gesamt: 62 Punkte</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 4: VORGABE A (LIEFERSCHEIN SCHWABENFRISCH) ==================== -->
+    <section class="a4-page" id="blatt-4">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Sommer 2026</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+        <div class="abgabe-hinweis">Mit den Lösungsblättern abzugeben!</div>
+        <div class="name-klasse-line">
+          <label>Name: <input type="text" placeholder="..."></label>
+          <label>Klasse: <input type="text" style="width:90px;" placeholder="..."></label>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Vorgabe A</span>
+          <span>zur Aufgabe 1.1</span>
+        </div>
+
+        <div class="vi-box">
+          <strong>Hướng dẫn Vorgabe A (Aufgabe 1.1 — 6 Punkte):</strong> Đối chiếu với đơn đặt hàng ở <strong>Anlage 1</strong> (trang 8). Pos. 7 <em>Eisbergsalat</em> đặt 15 Stück nhưng chỉ giao 10 Stück → ghi <code>Fehlmenge: 5 Stück fehlen (nur 10 statt 15 Stück)</code>. Đánh dấu <code>✓</code> cho các mục đạt. Tích chọn nhận hàng kèm khiếu nại, điền Leergut giao đến (<code>Fässer: 3</code>, <code>Kisten: 5</code> [2 Kisten Salat + 1 Kiste Äpfel + 2 Kisten Vollmilch]) và ký tên <code>A. Muster</code>.
+        </div>
+
+        <div style="border:1.8px solid var(--a4-ink);padding:14px 18px;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:10px;">
+            <div>
+              <strong>Schwabenfrisch Großhandel GmbH</strong><br>
+              Industriestraße 8 · 71063 Sindelfingen · <code>info@schwabenfrisch.de</code>
+            </div>
+            <div style="text-align:right;">
+              <strong>Lieferschein Nr. 2026-418</strong><br>
+              Bestell-Nr.: 105 · Datum: 14.05.2026
+            </div>
+          </div>
+
+          <table class="a4-table" style="font-size:12.2px;">
+            <thead>
+              <tr>
+                <th style="width:6%;">Pos.</th>
+                <th style="width:12%;">Art.-Nr.</th>
+                <th style="width:28%;text-align:left;">Artikelbezeichnung</th>
+                <th style="width:18%;">Gelieferte Menge</th>
+                <th style="width:10%;">Geprüft</th>
+                <th style="width:26%;text-align:left;">Feststellungen / Mängel</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="text-align:center;">1</td>
+                <td style="text-align:center;">1012</td>
+                <td>Tellerlinsen (1 kg)</td>
+                <td style="text-align:center;">5 Packungen</td>
+                <td><input class="a4-input" data-sol="✓"></td>
+                <td><input class="a4-input" data-sol="in Ordnung"></td>
+              </tr>
+              <tr style="background:#FFF8E6;">
+                <td style="text-align:center;">2</td>
+                <td style="text-align:center;">1045</td>
+                <td>Haferflocken, zart (1 kg)</td>
+                <td style="text-align:center;">10 Packungen</td>
+                <td style="text-align:center;font-weight:700;">✓</td>
+                <td><strong>2 Packungen aufgerissen (zurückgegeben)</strong></td>
+              </tr>
+              <tr>
+                <td style="text-align:center;">3</td>
+                <td style="text-align:center;">2018</td>
+                <td>Frische Vollmilch 3,5 % (1 l)</td>
+                <td style="text-align:center;">24 Pack. (2 Kisten)</td>
+                <td><input class="a4-input" data-sol="✓"></td>
+                <td><input class="a4-input" data-sol="in Ordnung"></td>
+              </tr>
+              <tr>
+                <td style="text-align:center;">4</td>
+                <td style="text-align:center;">2089</td>
+                <td>Rinderhackfleisch, frisch</td>
+                <td style="text-align:center;">5 kg</td>
+                <td><input class="a4-input" data-sol="✓"></td>
+                <td><input class="a4-input" data-sol="in Ordnung (+2,5 °C)"></td>
+              </tr>
+              <tr>
+                <td style="text-align:center;">5</td>
+                <td style="text-align:center;">4011</td>
+                <td>TK-Himbeeren (2,5 kg)</td>
+                <td style="text-align:center;">4 Kartons</td>
+                <td><input class="a4-input" data-sol="✓"></td>
+                <td><input class="a4-input" data-sol="in Ordnung (-19 °C)"></td>
+              </tr>
+              <tr>
+                <td style="text-align:center;">6</td>
+                <td style="text-align:center;">3005</td>
+                <td>Äpfel „Elstar“</td>
+                <td style="text-align:center;">10 kg (1 Kiste)</td>
+                <td><input class="a4-input" data-sol="✓"></td>
+                <td><input class="a4-input" data-sol="in Ordnung"></td>
+              </tr>
+              <tr style="background:#FFF8E6;">
+                <td style="text-align:center;">7</td>
+                <td style="text-align:center;">3012</td>
+                <td>Eisbergsalat (5 Stück/Kiste)</td>
+                <td style="text-align:center;font-weight:700;">10 Stück (2 Kisten)</td>
+                <td><input class="a4-input" data-sol="✓"></td>
+                <td><input class="a4-input" data-sol="5 Stück (1 Kiste) fehlen! Bestellt waren 15 Stück."></td>
+              </tr>
+              <tr>
+                <td style="text-align:center;">8</td>
+                <td style="text-align:center;">6020</td>
+                <td>Pils-Bier (Fass à 30 l)</td>
+                <td style="text-align:center;">3 Fässer</td>
+                <td><input class="a4-input" data-sol="✓"></td>
+                <td><input class="a4-input" data-sol="in Ordnung"></td>
+              </tr>
+              <tr>
+                <td style="text-align:center;">9</td>
+                <td style="text-align:center;">9014</td>
+                <td>Allzweckreiniger (5 l)</td>
+                <td style="text-align:center;">2 Kanister</td>
+                <td><input class="a4-input" data-sol="✓"></td>
+                <td><input class="a4-input" data-sol="in Ordnung"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:12px;margin-top:10px;font-size:12.5px;">
+            <div style="border:1px solid var(--a4-ink);padding:8px;">
+              <strong>Warenannahme-Vermerk:</strong><br>
+              <label><input type="checkbox"> Ware vollständig und ohne Mängel erhalten</label><br>
+              <label><input type="checkbox" checked> <strong>Ware unter Vorbehalt / mit oben genannten Mängeln erhalten</strong></label>
+            </div>
+            <div style="border:1px solid var(--a4-ink);padding:8px;">
+              <strong>Geliefertes Leergut (Pfand):</strong><br>
+              Fässer: <input class="a4-input" style="width:70px;display:inline-block;" data-sol="3"> &nbsp;
+              Kisten: <input class="a4-input" style="width:70px;display:inline-block;" data-sol="5">
+            </div>
+          </div>
+
+          <div style="margin-top:10px;display:flex;justify-content:space-between;align-items:center;font-size:13px;">
+            <span>Datum: <strong>14.05.2026</strong></span>
+            <span>Unterschrift Warenannahme: <input class="a4-input" style="width:180px;display:inline-block;" data-sol="A. Muster" placeholder="Unterschrift lt. Aufgabe..."></span>
+          </div>
+        </div>
+
+        <details class="a4-loesung">
+          <summary>Vorgabe A — Lösung Lieferschein-Kontrolle (6 Punkte)</summary>
+          <div class="a4-loesung-body">
+            • <strong>Prüfvermerke (✓):</strong> Alle Positionen kontrolliert.<br>
+            • <strong>Pos. 7 Eisbergsalat:</strong> Bestellt laut Anlage 1 waren <code>15 Stück (3 Kisten)</code>, geliefert wurden nur <code>10 Stück (2 Kisten)</code> ⇒ Vermerk: <strong>„Fehlmenge: 5 Stück (1 Kiste) fehlen“</strong>.<br>
+            • <strong>Annahmevermerk:</strong> Kreuz bei <em>„Ware unter Vorbehalt / mit oben genannten Mängeln erhalten“</em>.<br>
+            • <strong>Geliefertes Leergut:</strong> <code>Fässer: 3</code> (Pos. 8), <code>Kisten: 5</code> (2 Kisten Vollmilch + 1 Kiste Äpfel + 2 Kisten Eisbergsalat).<br>
+            • <strong>Unterschrift:</strong> <code>A. Muster</code>.
+          </div>
+        </details>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Sommer 2026 · Vorgabe A</span>
+        <span>Aufgabe 1.1 (6 Punkte)</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 5: VORGABE B (ARBEITSANWEISUNG SCHÄDLINGE) ==================== -->
+    <section class="a4-page" id="blatt-5">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Sommer 2026</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+        <div class="abgabe-hinweis">Mit den Lösungsblättern abzugeben!</div>
+        <div class="name-klasse-line">
+          <label>Name: <input type="text" placeholder="..."></label>
+          <label>Klasse: <input type="text" style="width:90px;" placeholder="..."></label>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Vorgabe B</span>
+          <span>zur Aufgabe 1.6</span>
+        </div>
+
+        <div class="vi-box">
+          <strong>Hướng dẫn Vorgabe B (Aufgabe 1.6 — 6 Punkte):</strong> Điền <strong>4 biện pháp phòng ngừa côn trùng/chuột hại</strong> vào mục 3 và <strong>3 biện pháp xử lý nội bộ ngay khi phát hiện</strong> vào mục 5.
+        </div>
+
+        <div style="border:2px solid var(--a4-ink);padding:16px 20px;">
+          <h2 style="margin:0 0 12px;font-size:17px;border-bottom:2px solid var(--a4-ink);padding-bottom:6px;">
+            Arbeitsanweisung: Lagerpflege – Schutz vor Schädlingen
+          </h2>
+
+          <p style="margin:0 0 8px;"><strong>1. Geltungsbereich:</strong> Alle Lebensmittel- und Getränkelager des Restaurants „Glas und Gabel“.</p>
+          <p style="margin:0 0 8px;"><strong>2. Ziel:</strong> Vermeidung von Schädlingsbefall und Sicherstellung der Lebensmittelhygiene nach HACCP.</p>
+
+          <p style="margin:10px 0 4px;"><strong>3. Vorbeugende Maßnahmen (Prävention — 4 Maßnahmen nennen):</strong></p>
+          <textarea class="a4-textarea" style="min-height:140px;margin-bottom:12px;" data-sol="• Fenster und Lüftungsöffnungen mit engmaschigen Fliegengittern sichern; Türen zum Lager stets geschlossen halten.&#10;• Offene Trockenwaren (Mehl, Zucker, Haferflocken, Hülsenfrüchte) sofort in fest verschließbare Behälter (Glas/Kunststoff/Edelstahl) umfüllen und niemals direkt auf dem Boden lagern (Bodenfreiheit mind. 15 cm).&#10;• Gründliche Wareneingangskontrolle durchführen, damit keine Schädlinge über gelieferte Kartons/Paletten eingeschleppt werden; Umverpackungen vor dem Einlagern entfernen.&#10;• Regelmäßige Reinigung nach Reinigungsplan, sofortiges Beseitigen von Lebensmittelresten und Aufstellen von Monitoring-Fallen (Köderboxen/Klebefallen)." placeholder="1. Vorbeugende Maßnahme ...&#10;2. Vorbeugende Maßnahme ...&#10;3. Vorbeugende Maßnahme ...&#10;4. Vorbeugende Maßnahme ..."></textarea>
+
+          <p style="margin:0 0 8px;"><strong>4. Kontrolle:</strong> Tägliche Sichtkontrolle bei der Warenentnahme sowie wöchentliche Dokumentation im HACCP-Ordner.</p>
+
+          <p style="margin:10px 0 4px;"><strong>5. Sofortmaßnahmen im Betrieb bei festgestelltem Befall (3 Maßnahmen nennen):</strong></p>
+          <textarea class="a4-textarea" style="min-height:125px;" data-sol="• Befallene (und unmittelbar benachbarte) Lebensmittel sofort separieren, kennzeichnen/sperren und fachgerecht außerhalb des Lagers entsorgen.&#10;• Sofortige Meldung an den Vorgesetzten / Küchenchef bzw. die Betriebsleitung.&#10;• Betroffenen Lagerbereich gründlich reinigen und desinfizieren sowie einen professionellen Schädlingsbekämpfer (Kammerjäger) beauftragen." placeholder="1. Sofortmaßnahme ...&#10;2. Sofortmaßnahme ...&#10;3. Sofortmaßnahme ..."></textarea>
+        </div>
+
+        <details class="a4-loesung">
+          <summary>Vorgabe B — Arbeitsanweisung Schutz vor Schädlingen (6 Punkte)</summary>
+          <div class="a4-loesung-body">
+            <strong>Zu 3. Vorbeugende Maßnahmen (4 Punkte):</strong><br>
+            1. Fliegengitter an Fenstern/Lüftungen anbringen, Türen geschlossen halten, bauliche Ritzen abdichten.<br>
+            2. Angebrochene Trockenwaren in dicht schließenden Behältern und mit Bodenabstand lagern.<br>
+            3. Wareneingangskontrolle auf Schädlinge; Transportkartons nicht ins Hauptlager mitnehmen.<br>
+            4. Strikte Sauberkeit nach Reinigungsplan, verschüttete Vorräte sofort entfernen, Monitoring-Fallen kontrollieren.<br><br>
+            <strong>Zu 5. Sofortmaßnahmen bei Befall (2–3 Punkte):</strong><br>
+            1. Befallene Ware sofort isolieren, sperren und entsorgen.<br>
+            2. Unverzüglich den Vorgesetzten / die Geschäftsleitung informieren.<br>
+            3. Professionellen Schädlingsbekämpfer einschalten und Lagerbereich gründlich reinigen/desinfizieren.
+          </div>
+        </details>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Sommer 2026 · Vorgabe B</span>
+        <span>Aufgabe 1.6 (6 Punkte)</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 6: VORGABE C (GÄSTEUMFRAGE) ==================== -->
+    <section class="a4-page" id="blatt-6">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Sommer 2026</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+        <div class="abgabe-hinweis">Mit den Lösungsblättern abzugeben!</div>
+        <div class="name-klasse-line">
+          <label>Name: <input type="text" placeholder="..."></label>
+          <label>Klasse: <input type="text" style="width:90px;" placeholder="..."></label>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Vorgabe C</span>
+          <span>zur Aufgabe 2.1</span>
+        </div>
+
+        <h2 style="font-size:16px;margin:8px 0;">Auswertung der Gästeumfrage (10 befragte Gäste · Schulnoten 1 bis 6)</h2>
+        <div class="vi-box">
+          <strong>Hướng dẫn Vorgabe C (Aufgabe 2.1):</strong> Cộng điểm của 10 vị khách ở từng dòng rồi chia cho 10 để ra <em>Durchschnittsnote</em>. Sau đó cộng 6 điểm trung bình lại chia 6 để ra <em>Gesamtdurchschnittsnote</em> (<code>18,4 ÷ 6 = 3,07 ≈ 3,1</code>).
+        </div>
+
+        <table class="a4-table" style="font-size:12.5px;">
+          <thead>
+            <tr>
+              <th style="text-align:left;width:28%;">Kriterium</th>
+              <th>G1</th><th>G2</th><th>G3</th><th>G4</th><th>G5</th><th>G6</th><th>G7</th><th>G8</th><th>G9</th><th>G10</th>
+              <th style="width:20%;">Durchschnitts-<br>note</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Qualität der Speisen</strong></td>
+              <td style="text-align:center;">3</td><td style="text-align:center;">2</td><td style="text-align:center;">4</td><td style="text-align:center;">3</td><td style="text-align:center;">3</td><td style="text-align:center;">2</td><td style="text-align:center;">4</td><td style="text-align:center;">3</td><td style="text-align:center;">3</td><td style="text-align:center;">3</td>
+              <td><input class="a4-input" data-sol="3,0 (30 ÷ 10)"></td>
+            </tr>
+            <tr>
+              <td><strong>Qualität der Getränke</strong></td>
+              <td style="text-align:center;">1</td><td style="text-align:center;">2</td><td style="text-align:center;">2</td><td style="text-align:center;">1</td><td style="text-align:center;">2</td><td style="text-align:center;">1</td><td style="text-align:center;">2</td><td style="text-align:center;">2</td><td style="text-align:center;">1</td><td style="text-align:center;">2</td>
+              <td><input class="a4-input" data-sol="1,6 (16 ÷ 10)"></td>
+            </tr>
+            <tr>
+              <td><strong>Freundlichkeit des Personals</strong></td>
+              <td style="text-align:center;">2</td><td style="text-align:center;">3</td><td style="text-align:center;">3</td><td style="text-align:center;">2</td><td style="text-align:center;">4</td><td style="text-align:center;">3</td><td style="text-align:center;">3</td><td style="text-align:center;">2</td><td style="text-align:center;">3</td><td style="text-align:center;">3</td>
+              <td><input class="a4-input" data-sol="2,8 (28 ÷ 10)"></td>
+            </tr>
+            <tr style="background:#FFF8E6;">
+              <td><strong>Fachkompetenz des Personals</strong></td>
+              <td style="text-align:center;">4</td><td style="text-align:center;">3</td><td style="text-align:center;">4</td><td style="text-align:center;">4</td><td style="text-align:center;">3</td><td style="text-align:center;">4</td><td style="text-align:center;">3</td><td style="text-align:center;">4</td><td style="text-align:center;">4</td><td style="text-align:center;">3</td>
+              <td><input class="a4-input" data-sol="3,6 (36 ÷ 10)"></td>
+            </tr>
+            <tr style="background:#FFF8E6;">
+              <td><strong>Sauberkeit (Gastraum/WC)</strong></td>
+              <td style="text-align:center;">4</td><td style="text-align:center;">5</td><td style="text-align:center;">4</td><td style="text-align:center;">4</td><td style="text-align:center;">4</td><td style="text-align:center;">3</td><td style="text-align:center;">5</td><td style="text-align:center;">4</td><td style="text-align:center;">4</td><td style="text-align:center;">4</td>
+              <td><input class="a4-input" data-sol="4,1 (41 ÷ 10)"></td>
+            </tr>
+            <tr>
+              <td><strong>Atmosphäre / Ambiente</strong></td>
+              <td style="text-align:center;">3</td><td style="text-align:center;">3</td><td style="text-align:center;">4</td><td style="text-align:center;">3</td><td style="text-align:center;">3</td><td style="text-align:center;">4</td><td style="text-align:center;">3</td><td style="text-align:center;">3</td><td style="text-align:center;">4</td><td style="text-align:center;">3</td>
+              <td><input class="a4-input" data-sol="3,3 (33 ÷ 10)"></td>
+            </tr>
+            <tr style="background:#EFECE6;font-weight:700;">
+              <td colspan="11" style="text-align:right;">Gesamtdurchschnittsnote:</td>
+              <td><input class="a4-input" data-sol="3,07 (bzw. 3,1)"></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <details class="a4-loesung">
+          <summary>Vorgabe C — Berechnung der Durchschnittsnoten (4 Punkte)</summary>
+          <div class="a4-loesung-body">
+            • Qualität der Speisen: <code>30 ÷ 10 = 3,0</code><br>
+            • Qualität der Getränke: <code>16 ÷ 10 = 1,6</code><br>
+            • Freundlichkeit des Personals: <code>28 ÷ 10 = 2,8</code><br>
+            • Fachkompetenz des Personals: <code>36 ÷ 10 = 3,6</code><br>
+            • Sauberkeit: <code>41 ÷ 10 = 4,1</code><br>
+            • Atmosphäre: <code>33 ÷ 10 = 3,3</code><br>
+            • <strong>Gesamtdurchschnittsnote:</strong> <code>(3,0 + 1,6 + 2,8 + 3,6 + 4,1 + 3,3) ÷ 6 = 18,4 ÷ 6 = 3,07 (gerundet 3,1)</code>.
+          </div>
+        </details>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Sommer 2026 · Vorgabe C</span>
+        <span>Aufgabe 2.1</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 7: VORGABE D (MERKBLATT GÄSTETYPEN) ==================== -->
+    <section class="a4-page" id="blatt-7">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Sommer 2026</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+        <div class="abgabe-hinweis">Mit den Lösungsblättern abzugeben!</div>
+        <div class="name-klasse-line">
+          <label>Name: <input type="text" placeholder="..."></label>
+          <label>Klasse: <input type="text" style="width:90px;" placeholder="..."></label>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Vorgabe D</span>
+          <span>zur Aufgabe 2.2</span>
+        </div>
+
+        <h2 style="font-size:15.5px;margin:6px 0;">Merkblatt zu verschiedenen Gästetypen / Zielgruppen</h2>
+        <div class="vi-box">
+          <strong>Hướng dẫn Vorgabe D (Aufgabe 2.2 — 13 Punkte):</strong> Điền tên nhóm khách (cột 1), đặc điểm/nhu cầu (cột 2) và biện pháp phục vụ phù hợp (cột 3) cho cả 4 dòng.
+        </div>
+
+        <table class="a4-table" style="font-size:12.5px;">
+          <thead>
+            <tr>
+              <th style="width:24%;text-align:left;">Gästetyp / Zielgruppe</th>
+              <th style="width:36%;text-align:left;">Besondere Bedürfnisse / Merkmale</th>
+              <th style="width:40%;text-align:left;">Umgang / Maßnahmen im Service</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Familien (mit Kindern)</strong></td>
+              <td><textarea class="a4-textarea" style="min-height:95px;" data-sol="• Kinder sind oft ungeduldig und haben schnell Hunger/Durst.&#10;• Benötigen Platz für Kinderwagen bzw. erhöhte Sitzmöglichkeit.&#10;• Wünschen kleinere, kindgerechte Portionen." placeholder="Bedürfnisse von Familien mit Kindern..."></textarea></td>
+              <td><textarea class="a4-textarea" style="min-height:95px;" data-sol="• Kinderstuhl/Sitzerhöhung, Kinderkarte, Kinderbesteck sowie Malsachen/Buntstifte direkt anbieten.&#10;• Kindergerichte und Getränke bevorzugt und schnell vorweg servieren.&#10;• Heiße Teller/Messer außer Reichweite von Kleinkindern abstellen." placeholder="Maßnahmen im Service..."></textarea></td>
+            </tr>
+            <tr>
+              <td><textarea class="a4-textarea" style="min-height:95px;" data-sol="2. Senioren / ältere Gäste (mit Gehhilfe)" placeholder="Gästetyp 2 benennen..."></textarea></td>
+              <td>• Oft eingeschränkte Mobilität (z. B. mit Rollator oder Gehstock).<br>• Teilweise vermindertes Seh- oder Hörvermögen.<br>• Bevorzugen kleinere Portionen und ruhige Plätze ohne Zugluft.</td>
+              <td><textarea class="a4-textarea" style="min-height:95px;" data-sol="• Barrierefreien, gut erreichbaren Tisch (nahe Eingang/WC) zuweisen und den Rollator sicher in der Nähe abstellen.&#10;• Deutlich, ruhig und respektvoll sprechen; bei Bedarf Gerichte auf der Karte vorlesen oder Lesebrille anbieten.&#10;• Seniorenportionen / kleinere Portionen aktiv empfehlen." placeholder="Maßnahmen im Service..."></textarea></td>
+            </tr>
+            <tr>
+              <td><textarea class="a4-textarea" style="min-height:95px;" data-sol="3. Stammgäste" placeholder="Gästetyp 3 benennen..."></textarea></td>
+              <td><textarea class="a4-textarea" style="min-height:95px;" data-sol="• Kommen regelmäßig ins Restaurant und kennen das Haus gut.&#10;• Erwarten persönliche Wertschätzung, Wiedererkennung und konstante Qualität." placeholder="Bedürfnisse von Stammgästen..."></textarea></td>
+              <td>• Mit Namen begrüßen und zum gewohnten Lieblingstisch begleiten.<br>• Persönliche Vorlieben (z. B. Lieblingsaperitif oder Stammgericht) kennen und aktiv anbieten.</td>
+            </tr>
+            <tr>
+              <td><strong>4. Geschäftsleute / Firmenkunden</strong></td>
+              <td><textarea class="a4-textarea" style="min-height:95px;" data-sol="• Haben meist wenig Zeit (z. B. in der Mittagspause) oder führen vertrauliche Gespräche.&#10;• Benötigen ruhige Atmosphäre und korrekte Abrechnung für das Finanzamt." placeholder="Bedürfnisse von Geschäftsleuten..."></textarea></td>
+              <td><textarea class="a4-textarea" style="min-height:95px;" data-sol="• Ruhigen Tisch mit ausreichend Abstand zu Nachbartischen zuweisen; diskreter, zügiger Service.&#10;• Schnelle Mittagsmenüs (Business-Lunch) empfehlen und einen ordnungsgemäßen Bewirtungsbeleg (inkl. MwSt.-Ausweis) vorbereiten." placeholder="Maßnahmen im Service..."></textarea></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <details class="a4-loesung">
+          <summary>Vorgabe D — Merkblatt Gästetypen (13 Punkte)</summary>
+          <div class="a4-loesung-body">
+            • <strong>Zeile 1 — Familien mit Kindern:</strong> Ungeduld/Bewegungsdrang der Kinder, Platzbedarf ⇒ Kinderstuhl, Malsachen, Kinderkarte/Kinderbesteck, Kindergerichte zuerst servieren.<br>
+            • <strong>Zeile 2 — Senioren / Gäste mit Rollator:</strong> Barrierefreier Tisch ohne Stufen/Zugluft, Rollator sicher abstellen, deutlich sprechen, Seniorenportionen anbieten.<br>
+            • <strong>Zeile 3 — Stammgäste:</strong> Regelmäßige Besucher, wünschen persönliche Anerkennung und gewohnte Standards.<br>
+            • <strong>Zeile 4 — Geschäftsleute:</strong> Zeitdruck / Diskretionswunsch ⇒ Zügiger, unaufdringlicher Service, ruhiger Tisch, korrekter Bewirtungsbeleg.
+          </div>
+        </details>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Sommer 2026 · Vorgabe D</span>
+        <span>Aufgabe 2.2 (13 Punkte)</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 8: ANLAGE 1 (BESTELLFORMULAR SCHWABENFRISCH) ==================== -->
+    <section class="a4-page" id="blatt-8">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Sommer 2026</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Anlage 1</span>
+          <span>zu den Aufgaben 1.1 und 1.2</span>
+        </div>
+
+        <div style="border:1.8px solid var(--a4-ink);padding:18px 22px;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:14px;">
+            <div>
+              <strong>Restaurant „Glas und Gabel“</strong><br>
+              Marktplatz 4 · 75365 Calw
+            </div>
+            <div style="text-align:right;">
+              <strong>Bestellformular Nr. 105</strong><br>
+              Bestelldatum: 12.05.2026<br>
+              Liefertermin: 14.05.2026
+            </div>
+          </div>
+          <p style="margin:0 0 10px;"><strong>Lieferant:</strong> Schwabenfrisch Großhandel GmbH · E-Mail: <code>info@schwabenfrisch.de</code></p>
+
+          <table class="a4-table">
+            <thead>
+              <tr>
+                <th>Pos.</th>
+                <th>Art.-Nr.</th>
+                <th style="text-align:left;">Artikelbezeichnung</th>
+                <th>Bestellmenge</th>
+                <th>Gebinde / Einheit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td style="text-align:center;">1</td><td style="text-align:center;">1012</td><td>Tellerlinsen</td><td style="text-align:center;">5</td><td>Packungen à 1 kg</td></tr>
+              <tr><td style="text-align:center;">2</td><td style="text-align:center;">1045</td><td>Haferflocken, zart</td><td style="text-align:center;">10</td><td>Packungen à 1 kg</td></tr>
+              <tr><td style="text-align:center;">3</td><td style="text-align:center;">2018</td><td>Frische Vollmilch 3,5 %</td><td style="text-align:center;">24</td><td>Packungen à 1 l (2 Kisten)</td></tr>
+              <tr><td style="text-align:center;">4</td><td style="text-align:center;">2089</td><td>Rinderhackfleisch, frisch</td><td style="text-align:center;">5</td><td>kg</td></tr>
+              <tr><td style="text-align:center;">5</td><td style="text-align:center;">4011</td><td>TK-Himbeeren</td><td style="text-align:center;">4</td><td>Kartons à 2,5 kg</td></tr>
+              <tr><td style="text-align:center;">6</td><td style="text-align:center;">3005</td><td>Äpfel „Elstar“</td><td style="text-align:center;">10</td><td>kg (1 Kiste)</td></tr>
+              <tr style="background:#EDF7ED;"><td style="text-align:center;">7</td><td style="text-align:center;">3012</td><td>Eisbergsalat</td><td style="text-align:center;font-weight:700;">15</td><td><strong>Stück (3 Kisten à 5 Stück)</strong></td></tr>
+              <tr><td style="text-align:center;">8</td><td style="text-align:center;">6020</td><td>Pils-Bier</td><td style="text-align:center;">3</td><td>Fässer à 30 l</td></tr>
+              <tr><td style="text-align:center;">9</td><td style="text-align:center;">9014</td><td>Allzweckreiniger</td><td style="text-align:center;">2</td><td>Kanister à 5 l</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Sommer 2026 · Anlage 1</span>
+        <span>Nicht abzugeben</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 9: ANLAGE 2 (DISPLAY GEMÜSEKÜHLRAUM) ==================== -->
+    <section class="a4-page" id="blatt-9">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Sommer 2026</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Anlage 2</span>
+          <span>zur Aufgabe 1.4</span>
+        </div>
+
+        <h3 style="text-align:center;margin:18px 0 8px;font-size:17px;">Digitale Anzeige am Obst- und Gemüsekühlraum</h3>
+
+        <div class="sensor-display">
+          <div style="text-align:center;font-weight:700;font-size:14px;margin-bottom:10px;letter-spacing:0.06em;">
+            KÜHLZELLE 2 · OBST &amp; GEMÜSE — <span style="color:#7A2E2E;">⚠ ALARM</span>
+          </div>
+          <div class="sensor-inner">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center;">
+              <div style="border-right:1.5px solid #555;padding-right:16px;">
+                <div style="font-size:13px;font-weight:700;color:#444;">TEMPERATUR (IST)</div>
+                <div style="font-size:34px;font-weight:700;font-family:'Courier New',monospace;margin-top:6px;">+ 11,6 °C</div>
+              </div>
+              <div>
+                <div style="font-size:13px;font-weight:700;color:#444;">REL. LUFTFEUCHTE (IST)</div>
+                <div style="font-size:34px;font-weight:700;font-family:'Courier New',monospace;margin-top:6px;">52 %</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Sommer 2026 · Anlage 2</span>
+        <span>Nicht abzugeben</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 10: ANLAGE 3 (ONLINE-BEWERTUNGEN) ==================== -->
+    <section class="a4-page" id="blatt-10">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Sommer 2026</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Anlage 3</span>
+          <span>zu den Aufgaben 2.1 und 2.3</span>
+        </div>
+
+        <h3 style="margin:8px 0 14px;font-size:16px;">Aktuelle Online-Bewertungen für das Restaurant „Panoramablick“</h3>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+          <div style="border:1.8px solid var(--a4-ink);padding:14px;background:#FAF8F2;">
+            <div style="font-weight:700;margin-bottom:6px;">Gast „Genießer_74“ — ★★☆☆☆</div>
+            <p style="margin:0;font-size:13.5px;line-height:1.5;">
+              „Der Ausblick ist zwar schön, aber unser Tisch hat geklebt und auf den Toiletten fehlten Papierhandtücher und Seife. Auch die Speisekarten hatten Flecken. Bei den Preisen erwarte ich deutlich mehr Sauberkeit!“
+            </p>
+          </div>
+
+          <div style="border:1.8px solid var(--a4-ink);padding:14px;background:#FAF8F2;">
+            <div style="font-weight:700;margin-bottom:6px;">Gast „Sabine_M“ — ★★★☆☆</div>
+            <p style="margin:0;font-size:13.5px;line-height:1.5;">
+              „Die Getränke waren super, aber als ich den Kellner nach einer Weinempfehlung zum Fisch und nach Allergenen in der Sauce fragte, wusste er leider überhaupt nicht Bescheid. Außerdem wurde unsere Flasche Mineralwasser bereits geöffnet in der Hand (ohne Tablett) an den Tisch gebracht.“
+            </p>
+          </div>
+
+          <div style="border:1.8px solid var(--a4-ink);padding:14px;background:#FAF8F2;">
+            <div style="font-weight:700;margin-bottom:6px;">Gast „Thomas_K“ — ★★☆☆☆</div>
+            <p style="margin:0;font-size:13.5px;line-height:1.5;">
+              „Wir mussten fast 25 Minuten warten, bis überhaupt jemand unsere Bestellung aufgenommen hat, und am Ende noch einmal ewig auf die Rechnung. Mein Rumpsteak kam leider nur noch lauwarm auf einem eiskalten Teller am Tisch an.“
+            </p>
+          </div>
+
+          <div style="border:1.8px solid var(--a4-ink);padding:14px;background:#FAF8F2;">
+            <div style="font-weight:700;margin-bottom:6px;">Gast „Lisa_und_Jan“ — ★★★☆☆</div>
+            <p style="margin:0;font-size:13.5px;line-height:1.5;">
+              „Das Personal war zwar freundlich, aber im Gastraum war das Licht viel zu grell wie in einer Bahnhofshalle und im Hintergrund lief laute Radiowerbung. Gemütliche Restaurant-Atmosphäre sieht anders aus.“
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Sommer 2026 · Anlage 3</span>
+        <span>Nicht abzugeben</span>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/a4-gvw-exam.js"></script>
+</body>
+</html>

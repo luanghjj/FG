@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FA 531/1 · Winter 2024/25 — Gasterlebnis, Verkaufsförderung und Warenlagerung (A4)</title>
+  <link rel="stylesheet" href="css/a4-gvw-exam.css">
+</head>
+<body>
+
+  <!-- Thanh điều khiển trên cùng -->
+  <header class="gvw-topbar no-print">
+    <div class="gvw-topbar-left">
+      <a href="index.html#/abschluss" class="gvw-back">← Abschluss (30% GVW)</a>
+      <nav class="gvw-exam-switcher" aria-label="Bộ đề FA 531/1">
+        <a href="abschluss-gvw-winter-2025-2026.html" class="gvw-switch-link">Winter 2025/26</a>
+        <a href="abschluss-gvw-winter-2024-2025.html" class="gvw-switch-link active">Winter 2024/25</a>
+        <a href="abschluss-gvw-sommer-2025.html" class="gvw-switch-link">Sommer 2025</a>
+        <a href="abschluss-gvw-sommer-2026.html" class="gvw-switch-link">Sommer 2026</a>
+      </nav>
+    </div>
+    <div class="gvw-topbar-right">
+      <span class="gvw-timer-pill" id="gvw-timer">90:00</span>
+      <button type="button" class="gvw-btn" id="btn-timer" onclick="toggleGvwTimer()">Bắt đầu (90p)</button>
+      <button type="button" class="gvw-btn" onclick="resetGvwTimer()">Reset</button>
+      <button type="button" class="gvw-btn" id="btn-fill-sol" onclick="toggleFillSampleAnswers()">Điền mẫu vào giấy A4</button>
+      <button type="button" class="gvw-btn" id="btn-sol" onclick="toggleAllSolutions()">Hiện toàn bộ lời giải</button>
+      <button type="button" class="gvw-btn" id="btn-vi" onclick="toggleVi()">Ẩn dịch VI</button>
+      <button type="button" class="gvw-btn" onclick="clearSavedAnswers()">Xóa bài làm</button>
+      <button type="button" class="gvw-btn" onclick="window.print()">In A4</button>
+    </div>
+  </header>
+
+  <!-- Thanh nhảy nhanh giữa 12 tờ A4 -->
+  <nav class="gvw-subnav no-print" aria-label="Chuyển nhanh trang A4">
+    <a href="#blatt-1">Deckblatt</a>
+    <a href="#blatt-2">Seite 1 · Aufg. 1</a>
+    <a href="#blatt-3">Seite 2 · Aufg. 2</a>
+    <a href="#blatt-4">Vorlage A (Lagerliste)</a>
+    <a href="#blatt-5">Vorlage B (Mängelrüge)</a>
+    <a href="#blatt-6">Vorlage C (Tischaufsteller)</a>
+    <a href="#blatt-7">Anlage 1 (Gulaschsuppe)</a>
+    <a href="#blatt-8">Anlage 2 &amp; 3 (Lieferschein)</a>
+    <a href="#blatt-9">Anlage 4 (Bestellung)</a>
+    <a href="#blatt-10">Anlage 5 (Flip-Chart)</a>
+    <a href="#blatt-11">Anlage 6 (Salat-Buffet)</a>
+  </nav>
+
+  <main class="a4-workspace">
+
+    <!-- ==================== TỜ 1: DECKBLATT ==================== -->
+    <section class="a4-page" id="blatt-1">
+      <div>
+        <div class="deckblatt-top">
+          <div>
+            Gemeinsame Prüfungsaufgaben der<br>
+            Berufsschulen und der Industrie- und<br>
+            Handelskammern in Baden-Württemberg
+          </div>
+          <div class="db-right">
+            Schriftliche Abschlussprüfung an<br>
+            Berufsschulen in<br>
+            Baden-Württemberg<br>
+            Winter 2024/2025
+          </div>
+        </div>
+
+        <div class="deckblatt-beruf">
+          <h1>Fachkraft für Gastronomie<br>Schwerpunkt Restaurantservice</h1>
+          <div class="fa-code">FA 531/1</div>
+        </div>
+
+        <div class="deckblatt-fachbox">
+          <div class="fb-title">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+          <div class="fb-time">Zeit: 90 Minuten</div>
+        </div>
+
+        <div class="vi-box">
+          <strong>Đề thi tốt nghiệp viết tại trường nghề (Berufsschule Baden-Württemberg — chiếm 30% tổng điểm Abschluss):</strong> Môn <em>Gasterlebnis, Verkaufsförderung und Warenlagerung (FA 531/1)</em> · Kỳ thi Mùa Đông 2024/2025 · Thời gian: 90 phút · Tổng điểm: <strong>55 Punkte</strong>.
+        </div>
+
+        <table class="deckblatt-meta-table">
+          <tr>
+            <td class="lbl">Zugelassene Hilfsmittel:</td>
+            <td>Netzunabhängiger, nicht programmierbarer Taschenrechner</td>
+          </tr>
+          <tr>
+            <td class="lbl">Bearbeitungshinweise:</td>
+            <td>
+              Der Aufgabensatz besteht aus
+              <ul>
+                <li>dem Deckblatt</li>
+                <li>2 Seiten mit den Aufgaben 1 und 2</li>
+                <li>
+                  3 Seiten mit den Vorlagen A bis C
+                  <ul>
+                    <li>Vorlage A zu den Aufgaben 1.2 und 1.3</li>
+                    <li>Vorlage B zur Aufgabe 1.5</li>
+                    <li>Vorlage C zur Aufgabe 2.2</li>
+                  </ul>
+                </li>
+                <li>6 Seiten mit den Anlagen 1 bis 6</li>
+              </ul>
+              <p>Kontrollieren Sie bitte vor Beginn der Prüfung, ob der Aufgabensatz vollständig ist.</p>
+              <p>Es sind alle Aufgaben zu bearbeiten.</p>
+              <p>Unterschreiben Sie die Vorlagen nicht mit Ihrem Namen, sondern mit dem in der jeweiligen Aufgabe genannten Namen.</p>
+              <p>Am Ende der Prüfung sind die ausgefüllten Vorlagen A bis C mit den Lösungsblättern abzugeben.</p>
+              <p><strong>Nicht abzugeben sind der Aufgabensatz und die Anlagen 1 bis 6.</strong></p>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div>
+        <table class="deckblatt-schuelerbox">
+          <tr>
+            <td style="width:50%;"><strong>Name, Vorname Prüfling:</strong><br><input type="text" class="a4-input" placeholder="Họ và tên thí sinh..."></td>
+            <td style="width:25%;"><strong>Klasse:</strong><br><input type="text" class="a4-input" placeholder="Lớp..."></td>
+            <td style="width:25%;"><strong>Erreichte Punkte:</strong><br><span style="font-size:15px;font-weight:700;">____ / 55 P.</span></td>
+          </tr>
+        </table>
+        <div class="a4-footer-note">
+          <span>FA 531/1 · Winter 2024/25 · Deckblatt</span>
+          <span>AzubiHub A4 Original-Formular</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 2: SEITE 1 — AUFGABE 1 ==================== -->
+    <section class="a4-page" id="blatt-2">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Winter 2024/25<br>Seite 1</div>
+          <div class="rh-right">
+            Gasterlebnis, Verkaufsförderung<br>und Warenlagerung
+            <div class="rh-points-label">Punkte</div>
+          </div>
+        </div>
+
+        <div class="aufgabe-title-row">
+          <span>Aufgabe 1 &nbsp; Annahme und Lagerung von Waren</span>
+          <span>(33 Punkte)</span>
+        </div>
+
+        <div class="aufgabe-context">
+          Sie arbeiten im Restaurant „Glas &amp; Gabel“ in Fellbach als Fachkraft für Gastronomie. Am Ende des Geschäftsjahres soll eine Inventur durchgeführt werden.
+          <div class="vi-box">
+            <strong>Bối cảnh Aufgabe 1:</strong> Bạn làm việc tại nhà hàng <strong>„Glas &amp; Gabel“</strong> ở Fellbach. Cuối năm tài chính, nhà hàng tiến hành kiểm kê kho (<em>Inventur</em>).
+          </div>
+        </div>
+
+        <!-- 1.1 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">1.1</div>
+          <div class="ta-body">
+            <p>Erklären Sie den Begriff Inventur.</p>
+            <div class="vi-box">1.1 Giải thích khái niệm <strong>Inventur</strong> (Kiểm kê tài sản/hàng tồn kho).</div>
+            <textarea class="a4-textarea" placeholder="Erklärung des Begriffs Inventur..." data-sol="Die Inventur ist die regelmäßige (mindestens einmal jährlich vorgeschriebene) körperliche und buchmäßige Bestandsaufnahme aller Vermögensgegenstände (Waren, Vorräte, Inventar) und Schulden eines Betriebes nach Art, Menge und Wert zu einem bestimmten Stichtag (Abgleich von Soll- und Ist-Bestand)."></textarea>
+            <details class="a4-loesung">
+              <summary>Aufgabe 1.1 (2 Punkte)</summary>
+              <div class="a4-loesung-body">
+                <strong>Inventur:</strong> Die vollständige körperliche Bestandsaufnahme (durch Zählen, Messen, Wiegen) aller im Betrieb vorhandenen Waren, Vorräte und Vermögenswerte nach Art, Menge und Wert zu einem bestimmten Stichtag, um den tatsächlichen <em>Ist-Bestand</em> mit dem buchmäßigen <em>Soll-Bestand</em> abzugleichen.
+              </div>
+            </details>
+          </div>
+          <div class="ta-pts">2</div>
+        </div>
+
+        <!-- 1.2 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">1.2</div>
+          <div class="ta-body">
+            <p>Ergänzen Sie die Lagerliste auf der <strong>Vorlage A</strong>, indem Sie die Differenz in der jeweiligen Einheit und in Euro berechnen. Nennen Sie zwei mögliche Gründe, wie es zu einer Differenz zwischen Soll- und Ist-Bestand kommen kann.</p>
+            <div class="vi-box">1.2 Hoàn thành bảng kiểm kê kho trên <strong>Vorlage A</strong> (trang 4) bằng cách tính chênh lệch theo đơn vị (<code>Differenz = Ist − Soll</code>) và theo tiền Euro. Nêu <strong>2 nguyên nhân</strong> có thể dẫn đến chênh lệch giữa tồn kho sổ sách (<em>Soll-Bestand</em>) và tồn kho thực tế (<em>Ist-Bestand</em>).</div>
+            <textarea class="a4-textarea" placeholder="Zwei mögliche Gründe für Inventurdifferenzen..." data-sol="1. Nicht oder falsch gebuchte Warenentnahmen bzw. vergessene Abschreibungen bei Bruch, Verderb oder Schwund.&#10;2. Zählfehler bei der Inventur, unbemerkte Fehllieferungen beim Wareneingang oder Diebstahl durch Personal/Dritte."></textarea>
+            <details class="a4-loesung">
+              <summary>Aufgabe 1.2 — Gründe für Bestandsdifferenzen (13 Punkte inkl. Vorlage A)</summary>
+              <div class="a4-loesung-body">
+                <strong>Zwei mögliche Gründe für Differenzen zwischen Soll- und Ist-Bestand:</strong><br>
+                1. <strong>Fehlende oder fehlerhafte Buchungen:</strong> Waren wurden aus dem Lager entnommen oder sind verdorben/zu Bruch gegangen, ohne dass dies im Warenwirtschaftssystem / auf der Lagerkarte ausgetragen wurde.<br>
+                2. <strong>Diebstahl, Schwund oder Zähl-/Lieferfehler:</strong> Unbefugte Entnahme (Diebstahl), unbemerkte Fehlmengen bei der Warenannahme oder Verzählen bei der vorherigen/aktuellen Inventur.
+              </div>
+            </details>
+          </div>
+          <div class="ta-pts">13</div>
+        </div>
+
+        <!-- 1.3 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">1.3</div>
+          <div class="ta-body">
+            <p>Nach der anstrengenden Inventur soll es als Personalessen für neun Personen Gulaschsuppe geben. Berechnen Sie mithilfe des Rezeptes aus der <strong>Anlage 1</strong> die benötigten Mengen für neun Personen. Überprüfen Sie anhand der Lagerliste auf der <strong>Vorlage A</strong>, ob alle Zutaten in ausreichender Menge vorrätig sind und geben Sie die fehlenden Zutaten an.</p>
+            <div class="vi-box">1.3 Sau buổi kiểm kê vất vả, nhà hàng nấu món <em>Gulaschsuppe</em> làm bữa ăn nhân viên cho <strong>9 người</strong>. Hãy tính lượng nguyên liệu cần cho 9 người từ công thức 6 người ở <strong>Anlage 1</strong> (nhân 1,5), đối chiếu với tồn kho thực tế (<em>Ist-Bestand</em>) trên <strong>Vorlage A</strong> và chỉ ra những nguyên liệu nào còn thiếu.</div>
+            <textarea class="a4-textarea" style="min-height:98px;" placeholder="Mengenberechnung für 9 Personen (Faktor 1,5) + Abgleich mit Vorlage A (Fehlende Zutaten)..." data-sol="Umrechnungsfaktor: 9 Personen ÷ 6 Personen = 1,5&#10;Benötigte Mengen für 9 Personen:&#10;• Schweinefleisch: 500 g × 1,5 = 750 g (FEHLT auf der Lagerliste!)&#10;• Rindfleisch: 500 g × 1,5 = 750 g (FEHLT auf der Lagerliste!)&#10;• Paprikaschoten, bunt: 4 Stück × 1,5 = 6 Stück (FEHLEN auf der Lagerliste!)&#10;• Zwiebeln: 1.000 g × 1,5 = 1.500 g (1,5 kg) → vorrätig (Ist-Bestand = 6,5 kg)&#10;• Kartoffeln: 300 g × 1,5 = 450 g (0,45 kg) → vorrätig (Ist-Bestand = 108 kg)&#10;• Tomaten in Stücken: 3 Dosen × 1,5 = 4,5 Dosen (5 Dosen) → vorrätig (Ist-Bestand = 48 Dosen)&#10;(Auch Tomatenmark und Gemüsebrühe sind ausreichend auf Lager.)"></textarea>
+            <details class="a4-loesung">
+              <summary>Aufgabe 1.3 (5 Punkte)</summary>
+              <div class="a4-loesung-body">
+                <strong>Umrechnungsfaktor:</strong> <code>9 Personen ÷ 6 Personen = 1,5</code><br>
+                • <strong>Schweinefleisch:</strong> <code>500 g × 1,5 = 750 g</code> → <strong>nicht vorrätig (fehlt komplett)</strong><br>
+                • <strong>Rindfleisch:</strong> <code>500 g × 1,5 = 750 g</code> → <strong>nicht vorrätig (fehlt komplett)</strong><br>
+                • <strong>Paprikaschoten, bunt:</strong> <code>4 Stück × 1,5 = 6 Stück</code> → <strong>nicht vorrätig (fehlen komplett)</strong><br>
+                • <strong>Zwiebeln:</strong> <code>1.000 g × 1,5 = 1.500 g (1,5 kg)</code> → vorrätig (Ist-Bestand: 6,5 kg)<br>
+                • <strong>Kartoffeln:</strong> <code>300 g × 1,5 = 450 g (0,45 kg)</code> → vorrätig (Ist-Bestand: 108 kg)<br>
+                • <strong>Tomaten in Stücken:</strong> <code>3 Dosen × 1,5 = 4,5 Dosen (bzw. 5 Dosen)</code> → vorrätig (Ist-Bestand: 48 Dosen)
+              </div>
+            </details>
+          </div>
+          <div class="ta-pts">5</div>
+        </div>
+
+        <!-- 1.4 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">1.4</div>
+          <div class="ta-body">
+            <p>Nach der Inventur wurde für das Restaurant neue Ware bestellt. Bei der Warenannahme kontrollieren Sie die Lieferung. Überprüfen Sie mithilfe der <strong>Anlagen 2, 3 und 4</strong> die Lieferung und notieren Sie alle Mängel, die Sie feststellen.</p>
+            <div class="vi-box">1.4 Sau kiểm kê, nhà hàng đặt lô hàng mới. Khi nhận hàng ngày <strong>10.11.2024</strong>, bạn đối chiếu <strong>Anlage 2 (Lieferschein)</strong>, <strong>Anlage 3 (Nhãn thùng bơ)</strong> và <strong>Anlage 4 (Đơn đặt hàng)</strong>. Hãy ghi ra tất cả các lỗi (<em>Mängel</em>) phát hiện được.</div>
+            <textarea class="a4-textarea" style="min-height:84px;" placeholder="Festgestellte Mängel bei der Warenannahme..." data-sol="1. Äpfel (Art.-Nr. 45879): Bestellt wurden 10 kg, geliefert wurden jedoch 100 kg → Überlieferung / Quantitätsmangel (90 kg zu viel).&#10;2. Nusskernmischung (Art.-Nr. 98423, 5 Packungen à 1 kg): Wurde überhaupt nicht bestellt, aber geliefert → Falschlieferung (Aliud-Lieferung).&#10;3. Deutsche Markenbutter (Art.-Nr. 25687, 3 Kartons): Lieferdatum ist der 10.11.2024, laut Kartonaufdruck (Anlage 3) ist das Mindesthaltbarkeitsdatum (MHD) jedoch bereits am 06.10.2024 abgelaufen → Qualitätsmangel."></textarea>
+            <details class="a4-loesung">
+              <summary>Aufgabe 1.4 (6 Punkte)</summary>
+              <div class="a4-loesung-body">
+                <strong>Drei festgestellte Mängel beim Abgleich von Bestellung (Anlage 4), Lieferschein (Anlage 2) und Ware (Anlage 3):</strong><br>
+                1. <strong>Äpfel (Art.-Nr. 45879):</strong> Bestellt <code>10 kg</code>, geliefert <code>100 kg</code> ⇒ <strong>Quantitätsmangel / Überlieferung</strong> (90 kg zu viel geliefert).<br>
+                2. <strong>Nusskernmischung (Art.-Nr. 98423):</strong> <code>5 Packungen (je 1 kg)</code> geliefert, obwohl nicht bestellt ⇒ <strong>Falschlieferung</strong>.<br>
+                3. <strong>Deutsche Markenbutter (Art.-Nr. 25687):</strong> Lieferdatum ist der <code>10.11.2024</code>, aber das MHD auf dem Karton (Anlage 3) lautet <code>06.10.2024</code> ⇒ <strong>Qualitätsmangel (MHD seit über einem Monat abgelaufen)</strong>.
+              </div>
+            </details>
+          </div>
+          <div class="ta-pts">6</div>
+        </div>
+
+        <!-- 1.5 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">1.5</div>
+          <div class="ta-body">
+            <p>Formulieren Sie eine E-Mail an den Lieferanten, in der Sie die Mängel reklamieren. Verwenden Sie dazu die <strong>Vorlage B</strong>.</p>
+            <div class="vi-box">1.5 Soạn một bức E-Mail khiếu nại hàng lỗi (<em>Mängelrüge / Reklamation</em>) gửi nhà cung cấp trên biểu mẫu <strong>Vorlage B</strong> (trang 5).</div>
+          </div>
+          <div class="ta-pts">7</div>
+        </div>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Winter 2024/25 · Seite 1</span>
+        <span>Aufgabe 1 (33 Punkte)</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 3: SEITE 2 — AUFGABE 2 ==================== -->
+    <section class="a4-page" id="blatt-3">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Winter 2024/25<br>Seite 2</div>
+          <div class="rh-right">
+            Gasterlebnis, Verkaufsförderung<br>und Warenlagerung
+            <div class="rh-points-label">Punkte</div>
+          </div>
+        </div>
+
+        <div class="aufgabe-title-row">
+          <span>Aufgabe 2 &nbsp; Restaurantorganisation</span>
+          <span>(22 Punkte)</span>
+        </div>
+
+        <!-- 2.1 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">2.1</div>
+          <div class="ta-body">
+            <p>Im Restaurant „Glas &amp; Gabel“ gab es in letzter Zeit Probleme beim Empfang und bei der Platzierung der Gäste. In einer Teamsitzung wurden auf einem Flip-Chart (<strong>Anlage 5</strong>) Punkte gesammelt, die für einen gelungenen Empfang wichtig sind. Erstellen Sie mithilfe des Flip-Charts einen Leitfaden in sieben logischen Schritten vom Betreten des Restaurants bis zur ersten Bestellaufnahme.</p>
+            <div class="vi-box">2.1 Gần đây nhà hàng „Glas &amp; Gabel“ gặp một số trục trặc khi đón và xếp chỗ cho khách. Trong cuộc họp nhóm, các ý chính đã được ghi nhanh lên bảng Flip-Chart (<strong>Anlage 5</strong>, trang 10). Hãy sắp xếp và viết lại thành <strong>Quy trình hướng dẫn chuẩn gồm 7 bước theo thứ tự logic</strong> từ lúc khách bước vào nhà hàng đến khi nhận order đầu tiên.</div>
+            <textarea class="a4-textarea" style="min-height:140px;" placeholder="Leitfaden in 7 logischen Schritten (vom Betreten bis zur 1. Bestellaufnahme)..." data-sol="1. Blickkontakt aufnehmen, lächeln und die Gäste sofort freundlich mit Tageszeit und Namen (falls bekannt) begrüßen.&#10;2. Nach einer bestehenden Reservierung bzw. der Personenanzahl fragen und im Reservierungsbuch abgleichen.&#10;3. Den Gästen beim Ablegen der Garderobe (Mäntel/Jacken) behilflich sein.&#10;4. Den Gästen vorangehen und sie in angemessenem Tempo zum vorbereiteten Tisch begleiten.&#10;5. Beim Platznehmen helfen (Stühle zurechtrücken, ggf. Kinderstuhl anbieten oder überflüssige Gedecke abräumen).&#10;6. Die Speise- und Getränkekarten geöffnet von rechts überreichen und auf Tagesempfehlungen hinweisen.&#10;7. Direkt einen passenden Aperitif empfehlen und die erste Getränkebestellung aufnehmen."></textarea>
+            <details class="a4-loesung">
+              <summary>Aufgabe 2.1 — Leitfaden Gästeempfang in 7 Schritten (7 Punkte)</summary>
+              <div class="a4-loesung-body">
+                1. <strong>Blickkontakt &amp; Begrüßung:</strong> Gäste sofort beim Eintreten wahrnehmen, lächeln und höflich begrüßen.<br>
+                2. <strong>Reservierung klären:</strong> Nach Reservierung / Namen bzw. gewünschter Personenzahl fragen.<br>
+                3. <strong>Garderobe abnehmen:</strong> Beim Ablegen von Mänteln/Jacken helfen und diese an der Garderobe unterbringen.<br>
+                4. <strong>Zum Tisch geleiten:</strong> Den Gästen vorangehen (Rücksicht auf das Gehtempo der Gäste nehmen) und zum passenden Tisch führen.<br>
+                5. <strong>Platzieren am Tisch:</strong> Stühle vorziehen / beim Hinsetzen helfen und ggf. überzählige Gedecke entfernen.<br>
+                6. <strong>Karten überreichen:</strong> Speise- und Getränkekarten geöffnet überreichen.<br>
+                7. <strong>Aperitif empfehlen &amp; 1. Bestellung aufnehmen:</strong> Einen Aperitif aktiv anbieten und die erste Getränkebestellung aufnehmen.
+              </div>
+            </details>
+          </div>
+          <div class="ta-pts">7</div>
+        </div>
+
+        <!-- 2.2 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">2.2</div>
+          <div class="ta-body">
+            <p>Um den Verkauf von Aperitifs zu fördern, sollen Tischaufsteller gestaltet werden. Entwerfen Sie auf der <strong>Vorlage C</strong> einen Tischaufsteller:</p>
+            <ul>
+              <li>Formulieren Sie einen werbewirksamen Satz mit mindestens zwei Adjektiven (Feld ②).</li>
+              <li>Bieten Sie zwei verschiedene Sektmischgetränke mit allen gesetzlich vorgeschriebenen Angaben an (Feld ①).</li>
+            </ul>
+            <div class="vi-box">2.2 Để thúc đẩy doanh số bán đồ uống khai vị (<em>Verkaufsförderung Aperitifs</em>), nhà hàng thiết kế bảng đặt bàn (<em>Tischaufsteller</em>) trên <strong>Vorlage C</strong> (trang 6):<br>
+            • Ô ②: Viết một câu quảng cáo hấp dẫn có sử dụng <strong>ít nhất 2 tính từ (Adjektive)</strong>.<br>
+            • Ô ①: Giới thiệu <strong>2 món cocktail pha từ Sekt (Sektmischgetränke)</strong> kèm đầy đủ thông tin bắt buộc theo luật (Tên đồ uống + thành phần, định lượng <code>0,1 l</code> hoặc <code>0,2 l</code>, và giá bán Brutto đã gồm MwSt.).</div>
+          </div>
+          <div class="ta-pts">6</div>
+        </div>
+
+        <!-- 2.3 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">2.3</div>
+          <div class="ta-body">
+            <p>Durch die Verkaufsförderung wurden am Abend für die Sektmischgetränke insgesamt 2,3 Liter Sekt ausgeschenkt. Wie viele Flaschen Sekt (0,75 l) müssen im Kühlschrank nachgefüllt werden, wenn der Schankverlust 6 % beträgt? Geben Sie den Rechenweg an und runden Sie das Ergebnis sinnvoll auf ganze Flaschen.</p>
+            <div class="vi-box">2.3 Nhờ chương trình xúc tiến bán hàng, buổi tối đã rót tổng cộng <strong>2,3 lít Sekt</strong> cho các món Sektmischgetränke. Hỏi cần bổ sung bao nhiêu chai Sekt (loại <code>0,75 l</code>) vào tủ lạnh nếu hao hụt khi rót (<em>Schankverlust</em>) là <strong>6 %</strong>? Ghi rõ phép tính và làm tròn hợp lý lên số chai nguyên.</div>
+            <textarea class="a4-textarea" placeholder="Rechenweg &amp; Anzahl der nachzufüllenden Sektflaschen (0,75 l)..." data-sol="Ausgeschenkte Menge (Netto = 94 %) = 2,3 Liter.&#10;Tatsächlicher Verbrauch inkl. 6 % Schankverlust = 2,3 l ÷ 0,94 = 2,447 Liter (alternativ: 2,3 l × 1,06 = 2,438 Liter).&#10;Anzahl Flaschen (à 0,75 l) = 2,447 l ÷ 0,75 l = 3,26 Flaschen.&#10;Sinnvoll aufgerundet müssen 4 Flaschen Sekt (0,75 l) nachgefüllt werden."></textarea>
+            <details class="a4-loesung">
+              <summary>Aufgabe 2.3 (3 Punkte)</summary>
+              <div class="a4-loesung-body">
+                <strong>Rechenweg (beide Varianten werden von der IHK voll anerkannt):</strong><br>
+                • <em>Variante 1 (vom Hundert / 94 %):</em> <code>2,3 l ÷ 0,94 = 2,447 l</code> ⇒ <code>2,447 l ÷ 0,75 l = 3,26 Flaschen</code><br>
+                • <em>Variante 2 (Aufschlag 6 %):</em> <code>2,3 l × 1,06 = 2,438 l</code> ⇒ <code>2,438 l ÷ 0,75 l = 3,25 Flaschen</code><br>
+                • <strong>Ergebnis (sinnvoll gerundet):</strong> Es müssen <strong>4 Flaschen Sekt (0,75 l)</strong> nachgefüllt werden (da 3 Flaschen = 2,25 l nicht ausreichen).
+              </div>
+            </details>
+          </div>
+          <div class="ta-pts">3</div>
+        </div>
+
+        <!-- 2.4 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">2.4</div>
+          <div class="ta-body">
+            <p>Im Restaurant „Glas &amp; Gabel“ wird auch ein Salat-Buffet angeboten. Lesen Sie den Zeitungsartikel in der <strong>Anlage 6</strong> und erstellen Sie daraus eine Checkliste mit fünf Hygieneregeln für die Betreuung des Salat-Buffets.</p>
+            <div class="vi-box">2.4 Nhà hàng „Glas &amp; Gabel“ có phục vụ quầy <em>Salat-Buffet</em>. Hãy đọc bài báo ở <strong>Anlage 6</strong> (trang 11) và lập một <strong>Checkliste gồm 5 quy tắc vệ sinh</strong> khi chuẩn bị và phục vụ quầy Salat-Buffet.</div>
+            <textarea class="a4-textarea" style="min-height:110px;" placeholder="Checkliste: 5 Hygieneregeln für das Salat-Buffet..." data-sol="☐ 1. Gründliches Waschen: Rohkost und Blattsalate vor der Zubereitung gründlich unter fließendem Trinkwasser waschen.&#10;☐ 2. Strikte Trennung in der Küche: Eigene, saubere Schneidebretter und Messer für Salat nutzen (keine Bretter/Messer, die mit rohem Fleisch, Geflügel oder Fisch in Kontakt kamen – Schutz vor Kreuzkontamination).&#10;☐ 3. Durchgehende Kühlung am Buffet: Salate und Dressings am Buffet konstant gekühlt halten (max. +7 °C) und nur in kleineren Mengen nachlegen.&#10;☐ 4. Spuckschutz (Hustenschutz) &amp; Vorlegebesteck: Das Buffet mit einem Spuckschutz ausstatten und für jede Schüssel ein eigenes, sauberes Vorlegebesteck bereitstellen.&#10;☐ 5. Personalhygiene &amp; Nachfüllregel: Frischen Salat niemals auf alte Reste schütten, sondern Schüsseln komplett austauschen; Personal muss saubere Arbeitskleidung tragen und regelmäßig Hände waschen/desinfizieren."></textarea>
+            <details class="a4-loesung">
+              <summary>Aufgabe 2.4 — Checkliste Salat-Buffet (6 Punkte)</summary>
+              <div class="a4-loesung-body">
+                <strong>Checkliste — 5 Hygieneregeln für das Salat-Buffet (aus Anlage 6):</strong><br>
+                1. <strong>Rohkost gründlich waschen:</strong> Alle Salate und Gemüsesorten vor dem Schneiden sorgfältig unter fließendem Wasser reinigen.<br>
+                2. <strong>Kreuzkontamination verhindern:</strong> Separate Schneidebretter und Messer für Gemüse/Salat verwenden (strikte Trennung von rohem Fleisch, Geflügel und Eiern).<br>
+                3. <strong>Kühlkette am Buffet einhalten:</strong> Leicht verderbliche Salate und Dressings am Buffet durchgehend kühlen.<br>
+                4. <strong>Spuckschutz &amp; separates Vorlegebesteck:</strong> Einen Hustenschutz/Spuckschutz über dem Buffet anbringen und für jede Schale eigenes Vorlegebesteck auslegen.<br>
+                5. <strong>Frische Schüsseln statt Aufschütten:</strong> Neue Ware immer in frischen, gereinigten Gefäßen nachlegen (niemals frischen Salat mit alten Resten vermischen).
+              </div>
+            </details>
+          </div>
+          <div class="ta-pts">6</div>
+        </div>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Winter 2024/25 · Seite 2</span>
+        <span>Aufgabe 2 (22 Punkte) · Gesamt: 55 Punkte</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 4: VORLAGE A (LAGERLISTE) ==================== -->
+    <section class="a4-page" id="blatt-4">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Winter 2024/25</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+        <div class="abgabe-hinweis">Mit den Lösungsblättern abzugeben!</div>
+        <div class="name-klasse-line">
+          <label>Name: <input type="text" placeholder="..."></label>
+          <label>Klasse: <input type="text" style="width:90px;" placeholder="..."></label>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Vorlage A</span>
+          <span>zu den Aufgaben 1.2 und 1.3</span>
+        </div>
+
+        <h2 style="font-size:16px;margin:8px 0;">Lagerliste</h2>
+        <div class="vi-box">
+          <strong>Hướng dẫn Vorlage A (Aufgabe 1.2 — 11 Punkte cho bảng):</strong> Tính <code>Differenz je Einheit = Ist-Bestand − Soll-Bestand</code> (ghi rõ dấu <code>-</code> nếu thiếu hụt hoặc <code>+</code> nếu thừa) và <code>Differenz in € = Differenz je Einheit × Preis je Einheit</code>.
+        </div>
+
+        <table class="a4-table" style="font-size:12.5px;">
+          <thead>
+            <tr>
+              <th style="text-align:left;">Artikel</th>
+              <th>Einheit</th>
+              <th>Preis je<br>Einheit in €</th>
+              <th>Soll-<br>Bestand</th>
+              <th>Ist-<br>Bestand</th>
+              <th style="width:16%;">Differenz<br>je Einheit</th>
+              <th style="width:18%;">Differenz<br>in €</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Servietten</td>
+              <td style="text-align:center;">Packung</td>
+              <td style="text-align:right;">0,13</td>
+              <td style="text-align:center;">280</td>
+              <td style="text-align:center;">236</td>
+              <td><input class="a4-input" data-sol="-44"></td>
+              <td><input class="a4-input" data-sol="-5,72 €"></td>
+            </tr>
+            <tr>
+              <td>Stumpenkerzen, weiß</td>
+              <td style="text-align:center;">Stück</td>
+              <td style="text-align:right;">1,50</td>
+              <td style="text-align:center;">120</td>
+              <td style="text-align:center;">170</td>
+              <td><input class="a4-input" data-sol="+50"></td>
+              <td><input class="a4-input" data-sol="+75,00 €"></td>
+            </tr>
+            <tr>
+              <td>Stumpenkerzen, grün</td>
+              <td style="text-align:center;">Stück</td>
+              <td style="text-align:right;">1,60</td>
+              <td style="text-align:center;">70</td>
+              <td style="text-align:center;">70</td>
+              <td><input class="a4-input" data-sol="0"></td>
+              <td><input class="a4-input" data-sol="0,00 €"></td>
+            </tr>
+            <tr>
+              <td>Teelichter (100 Stück)</td>
+              <td style="text-align:center;">Beutel</td>
+              <td style="text-align:right;">10,50</td>
+              <td style="text-align:center;">4</td>
+              <td style="text-align:center;">5</td>
+              <td><input class="a4-input" data-sol="+1"></td>
+              <td><input class="a4-input" data-sol="+10,50 €"></td>
+            </tr>
+            <tr>
+              <td>Zwiebeln</td>
+              <td style="text-align:center;">kg</td>
+              <td style="text-align:right;">1,45</td>
+              <td style="text-align:center;">8</td>
+              <td style="text-align:center;">6,5</td>
+              <td><input class="a4-input" data-sol="-1,5"></td>
+              <td><input class="a4-input" data-sol="-2,18 € (-2,175 €)"></td>
+            </tr>
+            <tr>
+              <td>Tomatenmark</td>
+              <td style="text-align:center;">Tube</td>
+              <td style="text-align:right;">0,49</td>
+              <td style="text-align:center;">22</td>
+              <td style="text-align:center;">36</td>
+              <td><input class="a4-input" data-sol="+14"></td>
+              <td><input class="a4-input" data-sol="+6,86 €"></td>
+            </tr>
+            <tr>
+              <td>Gemüsebrühe</td>
+              <td style="text-align:center;">Glas</td>
+              <td style="text-align:right;">1,49</td>
+              <td style="text-align:center;">12</td>
+              <td style="text-align:center;">7</td>
+              <td><input class="a4-input" data-sol="-5"></td>
+              <td><input class="a4-input" data-sol="-7,45 €"></td>
+            </tr>
+            <tr>
+              <td>Spaghetti</td>
+              <td style="text-align:center;">Packung</td>
+              <td style="text-align:right;">0,79</td>
+              <td style="text-align:center;">126</td>
+              <td style="text-align:center;">115</td>
+              <td><input class="a4-input" data-sol="-11"></td>
+              <td><input class="a4-input" data-sol="-8,69 €"></td>
+            </tr>
+            <tr>
+              <td>Kartoffeln</td>
+              <td style="text-align:center;">kg</td>
+              <td style="text-align:right;">2,80</td>
+              <td style="text-align:center;">105</td>
+              <td style="text-align:center;">108</td>
+              <td><input class="a4-input" data-sol="+3"></td>
+              <td><input class="a4-input" data-sol="+8,40 €"></td>
+            </tr>
+            <tr>
+              <td>Tomaten, stückige</td>
+              <td style="text-align:center;">Dose</td>
+              <td style="text-align:right;">0,79</td>
+              <td style="text-align:center;">73</td>
+              <td style="text-align:center;">48</td>
+              <td><input class="a4-input" data-sol="-25"></td>
+              <td><input class="a4-input" data-sol="-19,75 €"></td>
+            </tr>
+            <tr>
+              <td>Kaffee, ganze Bohne</td>
+              <td style="text-align:center;">kg</td>
+              <td style="text-align:right;">12,48</td>
+              <td style="text-align:center;">42</td>
+              <td style="text-align:center;">50</td>
+              <td><input class="a4-input" data-sol="+8"></td>
+              <td><input class="a4-input" data-sol="+99,84 €"></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <details class="a4-loesung">
+          <summary>Vorlage A — Lösung Lagerliste (11 Punkte)</summary>
+          <div class="a4-loesung-body">
+            • <strong>Servietten:</strong> <code>-44 Packungen</code> | <code>-5,72 €</code><br>
+            • <strong>Stumpenkerzen, weiß:</strong> <code>+50 Stück</code> | <code>+75,00 €</code><br>
+            • <strong>Stumpenkerzen, grün:</strong> <code>0 Stück</code> | <code>0,00 €</code><br>
+            • <strong>Teelichter:</strong> <code>+1 Beutel</code> | <code>+10,50 €</code><br>
+            • <strong>Zwiebeln:</strong> <code>-1,5 kg</code> | <code>-2,18 €</code> (exakt -2,175 €)<br>
+            • <strong>Tomatenmark:</strong> <code>+14 Tuben</code> | <code>+6,86 €</code><br>
+            • <strong>Gemüsebrühe:</strong> <code>-5 Gläser</code> | <code>-7,45 €</code><br>
+            • <strong>Spaghetti:</strong> <code>-11 Packungen</code> | <code>-8,69 €</code><br>
+            • <strong>Kartoffeln:</strong> <code>+3 kg</code> | <code>+8,40 €</code><br>
+            • <strong>Tomaten, stückige:</strong> <code>-25 Dosen</code> | <code>-19,75 €</code><br>
+            • <strong>Kaffee, ganze Bohne:</strong> <code>+8 kg</code> | <code>+99,84 €</code>
+          </div>
+        </details>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Winter 2024/25 · Vorlage A</span>
+        <span>Aufgabe 1.2 &amp; 1.3</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 5: VORLAGE B (MÄNGELRÜGE E-MAIL) ==================== -->
+    <section class="a4-page" id="blatt-5">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Winter 2024/25</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+        <div class="abgabe-hinweis">Mit den Lösungsblättern abzugeben!</div>
+        <div class="name-klasse-line">
+          <label>Name: <input type="text" placeholder="..."></label>
+          <label>Klasse: <input type="text" style="width:90px;" placeholder="..."></label>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Vorlage B</span>
+          <span>zur Aufgabe 1.5</span>
+        </div>
+
+        <div class="vi-box">
+          <strong>Hướng dẫn Vorlage B (Aufgabe 1.5 — 7 Punkte):</strong> Viết E-Mail khiếu nại (<em>Mängelrüge</em>) gửi nhà cung cấp <code>info@frischeglueck.de</code> về đơn hàng số <code>1228</code> / phiếu giao hàng số <code>8221</code> ngày <code>10.11.2024</code> với đầy đủ 3 lỗi đã phát hiện ở câu 1.4 và yêu cầu phương án xử lý (nhận lại hàng thừa/sai, giao bù bơ mới).
+        </div>
+
+        <table class="a4-table">
+          <tr>
+            <td style="width:18%;"><strong>An:</strong></td>
+            <td><input type="text" class="a4-input" data-sol="info@frischeglueck.de" placeholder="E-Mail-Adresse des Lieferanten aus Anlage 2..."></td>
+          </tr>
+          <tr>
+            <td><strong>Betreff:</strong></td>
+            <td><input type="text" class="a4-input" data-sol="Reklamation / Mängelrüge zur Lieferung Nr. 8221 vom 10.11.2024 (Bestell-Nr. 1228)" placeholder="Betreffzeile..."></td>
+          </tr>
+          <tr>
+            <td colspan="2" style="padding:10px;">
+              <textarea class="a4-textarea" style="min-height:340px;" data-sol="Sehr geehrte Damen und Herren,&#10;&#10;vielen Dank für Ihre heutige Lieferung vom 10.11.2024 (Lieferschein-Nr. 8221 zu unserer Bestellung Nr. 1228 vom 07.11.2024, Kunden-Nr. 542).&#10;&#10;Leider mussten wir bei der sofortigen Wareneingangskontrolle folgende drei Mängel feststellen:&#10;&#10;1. Äpfel (Art.-Nr. 45879): Wir hatten 10 kg bestellt, geliefert wurden jedoch 100 kg (Überlieferung von 90 kg).&#10;2. Nusskernmischung (Art.-Nr. 98423, 5 Packungen à 1 kg): Dieser Artikel wurde von uns nicht bestellt (Falschlieferung).&#10;3. Deutsche Markenbutter (Art.-Nr. 25687, 3 Kartons): Das aufgedruckte Mindesthaltbarkeitsdatum (MHD 06.10.2024) ist bereits seit über einem Monat abgelaufen.&#10;&#10;Wir bitten Sie daher, umgehend eine kostenfreie Ersatzlieferung von 3 Kartons einwandfreier Deutscher Markenbutter zu veranlassen sowie die zu viel gelieferten 90 kg Äpfel, die 5 Packungen Nusskernmischung und die abgelaufene Butter wieder bei uns abzuholen bzw. auf der Rechnung gutzuschreiben.&#10;&#10;Mit freundlichen Grüßen&#10;&#10;Restaurant „Glas &amp; Gabel“&#10;i. A. Fachkraft für Gastronomie&#10;Bahnhofstraße 1, 70734 Fellbach" placeholder="E-Mail-Text zur Reklamation der 3 Mängel..."></textarea>
+            </td>
+          </tr>
+        </table>
+
+        <details class="a4-loesung">
+          <summary>Vorlage B — Bewertungspunkte Mängelrüge (7 Punkte)</summary>
+          <div class="a4-loesung-body">
+            • <strong>Empfänger &amp; Betreff (1 P.):</strong> <code>info@frischeglueck.de</code> | Bezug auf Lieferschein-Nr. <code>8221</code> / Bestell-Nr. <code>1228</code> vom <code>10.11.2024</code>.<br>
+            • <strong>Präzise Benennung aller 3 Mängel (3 P.):</strong> 1. Äpfel (90 kg zu viel); 2. Nusskernmischung (5 Packungen ohne Bestellung); 3. Deutsche Markenbutter (3 Kartons mit abgelaufenem MHD 06.10.2024).<br>
+            • <strong>Rechtliche Forderung / Lösungsvorschlag (2 P.):</strong> Rücknahme/Abholung der Fehlmengen &amp; abgelaufenen Ware, kostenfreie Ersatzlieferung der Butter bzw. Rechnungskorrektur.<br>
+            • <strong>Form (1 P.):</strong> Höfliche Anrede und Grußformel im Namen des Restaurants „Glas &amp; Gabel“.
+          </div>
+        </details>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Winter 2024/25 · Vorlage B</span>
+        <span>Aufgabe 1.5 (7 Punkte)</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 6: VORLAGE C (TISCHAUFSTELLER) ==================== -->
+    <section class="a4-page" id="blatt-6">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Winter 2024/25</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+        <div class="abgabe-hinweis">Mit den Lösungsblättern abzugeben!</div>
+        <div class="name-klasse-line">
+          <label>Name: <input type="text" placeholder="..."></label>
+          <label>Klasse: <input type="text" style="width:90px;" placeholder="..."></label>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Vorlage C</span>
+          <span>zur Aufgabe 2.2</span>
+        </div>
+
+        <h2 style="font-size:16px;margin:8px 0;">Tischaufsteller</h2>
+        <div class="vi-box">
+          <strong>Hướng dẫn Vorlage C (Aufgabe 2.2 — 6 Punkte):</strong><br>
+          • <strong>Ô ② (Slogan quảng cáo):</strong> Phải chứa ít nhất <strong>2 tính từ (Adjektive)</strong>, ví dụ: <em>prickelnd</em>, <em>fruchtig</em>, <em>erfrischend</em>, <em>perfekt</em>.<br>
+          • <strong>Ô ① (2 món Sektmischgetränke):</strong> Mỗi món phải có đủ <strong>tên + thành phần chính</strong>, <strong>định lượng (Mengenangabe, z. B. 0,1 l / 0,2 l)</strong> và <strong>giá tiền Euro (inkl. MwSt.)</strong>.
+        </div>
+
+        <div style="border:2.5px solid var(--a4-ink);padding:24px;max-width:480px;margin:16px auto;background:#FFFDF9;text-align:center;">
+          <div style="font-size:20px;font-weight:700;letter-spacing:0.04em;margin-bottom:14px;">
+            Restaurant „Glas &amp; Gabel“
+          </div>
+
+          <div style="text-align:left;font-weight:700;font-size:13px;margin-bottom:4px;">② Werbewirksamer Satz (mind. 2 Adjektive):</div>
+          <textarea class="a4-textarea" style="min-height:66px;text-align:center;font-weight:700;margin-bottom:18px;" data-sol="Starten Sie Ihren genussvollen Abend mit einem prickelnden, fruchtig-frischen Sekt-Aperitif!" placeholder="Werbewirksamer Satz mit mindestens 2 Adjektiven..."></textarea>
+
+          <div style="text-align:left;font-weight:700;font-size:13px;margin-bottom:4px;">① Zwei Sektmischgetränke (inkl. gesetzlicher Angaben: Bezeichnung, Menge, Preis):</div>
+          <textarea class="a4-textarea" style="min-height:170px;text-align:center;" data-sol="1. „Hugo Klassik“&#10;Trockener Winzersekt mit Holunderblütensirup, frischer Minze, Limette und Soda&#10;0,2 l — 6,90 €&#10;&#10;2. „Kir Royal“ (oder Aperol Spritz / Bellini)&#10;Prickelnder Sekt mit feinem Crème de Cassis (Schwarzer Johannisbeerlikör)&#10;0,1 l — 6,50 €&#10;&#10;(Alle Preise in Euro inkl. gesetzlicher MwSt. und Bedienung)" placeholder="1. Sektmischgetränk + Zutaten + Mengenangabe (z. B. 0,2 l) + Preis in €&#10;&#10;2. Sektmischgetränk + Zutaten + Mengenangabe (z. B. 0,1 l) + Preis in €"></textarea>
+        </div>
+
+        <details class="a4-loesung">
+          <summary>Vorlage C — Tischaufsteller Aperitifs (6 Punkte)</summary>
+          <div class="a4-loesung-body">
+            • <strong>Feld ② — Werbewirksamer Satz mit mind. 2 Adjektiven (2 P.):</strong> z. B. <em>„Genießen Sie zum Start in einen <u>unvergesslichen</u> Abend unsere <u>prickelnden</u>, <u>fruchtigen</u> Sekt-Kreationen!“</em><br>
+            • <strong>Feld ① — Zwei Sektmischgetränke mit gesetzlichen Pflichtangaben (4 P.):</strong><br>
+            1. <strong>Aperol Spritz / Hugo / Bellini / Mimosa / Kir Royal</strong> (Verkehrsbezeichnung / Hauptzutaten)<br>
+            2. <strong>Füllmenge (Eichmaß):</strong> z. B. <code>0,1 l</code> oder <code>0,2 l</code><br>
+            3. <strong>Endpreis (Bruttopreis):</strong> z. B. <code>6,50 €</code> bzw. <code>6,90 €</code> (inkl. MwSt., ggf. Hinweis auf Zusatzstoffe wie Farbstoff/Chininhaltig falls zutreffend).
+          </div>
+        </details>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Winter 2024/25 · Vorlage C</span>
+        <span>Aufgabe 2.2 (6 Punkte)</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 7: ANLAGE 1 (REZEPT GULASCHSUPPE) ==================== -->
+    <section class="a4-page" id="blatt-7">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Winter 2024/25</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Anlage 1</span>
+          <span>zur Aufgabe 1.3</span>
+        </div>
+
+        <div style="border:2px solid var(--a4-ink);padding:22px 26px;max-width:540px;margin:28px auto;">
+          <h3 style="margin:0 0 6px;font-size:20px;">Rezept Gulaschsuppe</h3>
+          <p style="margin:0 0 16px;font-weight:700;">Zutaten für 6 Personen:</p>
+          <table class="a4-table">
+            <tbody>
+              <tr><td style="width:40%;font-weight:700;">500 g</td><td>Schweinefleisch</td></tr>
+              <tr><td style="font-weight:700;">500 g</td><td>Rindfleisch</td></tr>
+              <tr><td style="font-weight:700;">4 Stück</td><td>Paprikaschoten, bunt</td></tr>
+              <tr><td style="font-weight:700;">1.000 g</td><td>Zwiebeln</td></tr>
+              <tr><td style="font-weight:700;">300 g</td><td>Kartoffeln</td></tr>
+              <tr><td style="font-weight:700;">3 Dosen</td><td>Tomaten in Stücken</td></tr>
+            </tbody>
+          </table>
+          <p style="font-size:13px;color:var(--a4-muted);margin:10px 0 0;">
+            (Gewürze, Tomatenmark und Gemüsebrühe nach Geschmack aus dem Lagerbestand.)
+          </p>
+        </div>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Winter 2024/25 · Anlage 1</span>
+        <span>Nicht abzugeben</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 8: ANLAGE 2 & ANLAGE 3 ==================== -->
+    <section class="a4-page" id="blatt-8">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Winter 2024/25</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Anlage 2</span>
+          <span>zur Aufgabe 1.4</span>
+        </div>
+
+        <div style="border:1.8px solid var(--a4-ink);padding:16px 20px;margin-bottom:22px;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:14px;">
+            <div>
+              <strong>Frischeglück GmbH</strong><br>
+              Großmarktstraße 12 · 70327 Stuttgart<br>
+              Tel.: 0711 / 987654-0 · E-Mail: <code>info@frischeglueck.de</code>
+            </div>
+            <div style="text-align:right;">
+              <strong>Lieferschein Nr. 8221</strong><br>
+              Lieferdatum: <strong>10.11.2024</strong><br>
+              Kunden-Nr.: 542
+            </div>
+          </div>
+          <p style="margin:0 0 10px;"><strong>Empfänger:</strong> Restaurant „Glas &amp; Gabel“, Bahnhofstraße 1, 70734 Fellbach</p>
+
+          <table class="a4-table">
+            <thead>
+              <tr>
+                <th>Pos.</th>
+                <th>Artikel-Nr.</th>
+                <th style="text-align:left;">Bezeichnung</th>
+                <th>Menge</th>
+                <th>Einheit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td style="text-align:center;">1</td><td style="text-align:center;">14582</td><td>Vollmilch 3,5 %</td><td style="text-align:center;">5</td><td style="text-align:center;">Karton</td></tr>
+              <tr><td style="text-align:center;">2</td><td style="text-align:center;">25687</td><td>Deutsche Markenbutter</td><td style="text-align:center;">3</td><td style="text-align:center;">Karton</td></tr>
+              <tr style="background:#FFF8E6;"><td style="text-align:center;">3</td><td style="text-align:center;">45879</td><td>Äpfel, regional</td><td style="text-align:center;font-weight:700;">100</td><td style="text-align:center;">kg</td></tr>
+              <tr><td style="text-align:center;">4</td><td style="text-align:center;">65874</td><td>Weizenmehl Type 405</td><td style="text-align:center;">20</td><td style="text-align:center;">Packung (je 1 kg)</td></tr>
+              <tr><td style="text-align:center;">5</td><td style="text-align:center;">78541</td><td>Zucker, fein</td><td style="text-align:center;">10</td><td style="text-align:center;">Packung (je 1 kg)</td></tr>
+              <tr style="background:#FFF8E6;"><td style="text-align:center;">6</td><td style="text-align:center;">98423</td><td>Nusskernmischung</td><td style="text-align:center;font-weight:700;">5</td><td style="text-align:center;">Packung (je 1 kg)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Anlage 3</span>
+          <span>zur Aufgabe 1.4</span>
+        </div>
+
+        <div style="border:2.5px solid var(--a4-ink);padding:20px;max-width:440px;margin:14px auto;text-align:center;background:#F6F3EC;">
+          <div style="font-size:18px;font-weight:700;margin-bottom:6px;">DEUTSCHE MARKENBUTTER</div>
+          <div style="font-size:14px;margin-bottom:10px;">mildgesäuert · 82 % Fett · Art.-Nr. 25687</div>
+          <div style="font-size:14px;margin-bottom:12px;">Inhalt: 40 × 250 g = 10 kg</div>
+          <div style="border:1.5px solid var(--a4-ink);padding:8px;background:#fff;font-weight:700;font-size:15px;">
+            Bei max. +8 °C mindestens haltbar bis:<br>
+            <span style="font-size:18px;color:#7A2E2E;">06.10.2024</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Winter 2024/25 · Anlage 2 &amp; 3</span>
+        <span>Nicht abzugeben</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 9: ANLAGE 4 (BESTELLUNG NR. 1228) ==================== -->
+    <section class="a4-page" id="blatt-9">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Winter 2024/25</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Anlage 4</span>
+          <span>zur Aufgabe 1.4</span>
+        </div>
+
+        <div style="border:1.8px solid var(--a4-ink);padding:18px 22px;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:16px;">
+            <div>
+              <strong>Restaurant „Glas &amp; Gabel“</strong><br>
+              Bahnhofstraße 1 · 70734 Fellbach
+            </div>
+            <div style="text-align:right;">
+              <strong>Bestellung Nr. 1228</strong><br>
+              Bestelldatum: 07.11.2024<br>
+              Gewünschter Liefertermin: 10.11.2024<br>
+              Kunden-Nr.: 542
+            </div>
+          </div>
+          <p style="margin:0 0 12px;"><strong>An Lieferant:</strong> Frischeglück GmbH, Großmarktstraße 12, 70327 Stuttgart</p>
+
+          <table class="a4-table">
+            <thead>
+              <tr>
+                <th>Pos.</th>
+                <th>Artikel-Nr.</th>
+                <th style="text-align:left;">Bezeichnung</th>
+                <th>Bestellmenge</th>
+                <th>Einheit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td style="text-align:center;">1</td><td style="text-align:center;">14582</td><td>Vollmilch 3,5 %</td><td style="text-align:center;">5</td><td style="text-align:center;">Karton</td></tr>
+              <tr><td style="text-align:center;">2</td><td style="text-align:center;">25687</td><td>Deutsche Markenbutter</td><td style="text-align:center;">3</td><td style="text-align:center;">Karton</td></tr>
+              <tr style="background:#EDF7ED;"><td style="text-align:center;">3</td><td style="text-align:center;">45879</td><td>Äpfel, regional</td><td style="text-align:center;font-weight:700;">10</td><td style="text-align:center;">kg</td></tr>
+              <tr><td style="text-align:center;">4</td><td style="text-align:center;">65874</td><td>Weizenmehl Type 405</td><td style="text-align:center;">20</td><td style="text-align:center;">Packung (je 1 kg)</td></tr>
+              <tr><td style="text-align:center;">5</td><td style="text-align:center;">78541</td><td>Zucker, fein</td><td style="text-align:center;">10</td><td style="text-align:center;">Packung (je 1 kg)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Winter 2024/25 · Anlage 4</span>
+        <span>Nicht abzugeben</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 10: ANLAGE 5 (FLIP-CHART) ==================== -->
+    <section class="a4-page" id="blatt-10">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Winter 2024/25</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Anlage 5</span>
+          <span>zur Aufgabe 2.1</span>
+        </div>
+
+        <div style="border:2.5px solid var(--a4-ink);border-radius:12px;padding:24px;max-width:520px;margin:20px auto;background:#FAF8F2;">
+          <h3 style="text-align:center;font-size:19px;margin:0 0 18px;text-decoration:underline;">
+            Flip-Chart Teamsitzung:<br>„Gelungener Gästeempfang im Glas &amp; Gabel“
+          </h3>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;font-size:14.5px;">
+            <div style="border:1.5px dashed #555;padding:10px;border-radius:8px;">• Speise- und Getränkekarten geöffnet überreichen</div>
+            <div style="border:1.5px dashed #555;padding:10px;border-radius:8px;">• Blickkontakt aufnehmen, lächeln &amp; freundlich begrüßen</div>
+            <div style="border:1.5px dashed #555;padding:10px;border-radius:8px;">• Beim Ablegen der Garderobe (Jacken/Mäntel) helfen</div>
+            <div style="border:1.5px dashed #555;padding:10px;border-radius:8px;">• Aperitif empfehlen &amp; erste Getränkebestellung aufnehmen</div>
+            <div style="border:1.5px dashed #555;padding:10px;border-radius:8px;">• Nach Reservierung / Personenzahl fragen</div>
+            <div style="border:1.5px dashed #555;padding:10px;border-radius:8px;">• Beim Platznehmen helfen (Stühle zurechtrücken, überflüssige Gedecke entfernen)</div>
+            <div style="border:1.5px dashed #555;padding:10px;border-radius:8px;grid-column:1 / -1;text-align:center;">• Den Gästen in angemessenem Tempo zum Tisch vorangehen</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Winter 2024/25 · Anlage 5</span>
+        <span>Nicht abzugeben</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 11: ANLAGE 6 (ZEITUNGSARTIKEL SALAT-BUFFET) ==================== -->
+    <section class="a4-page" id="blatt-11">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Winter 2024/25</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Anlage 6</span>
+          <span>zur Aufgabe 2.4</span>
+        </div>
+
+        <div style="border:2px solid var(--a4-ink);padding:20px 24px;background:#FCFBF7;">
+          <div style="font-size:12px;text-transform:uppercase;letter-spacing:0.08em;color:var(--a4-muted);border-bottom:1px solid #999;padding-bottom:4px;margin-bottom:10px;">
+            Gastronomie-Journal · Hygiene in der Praxis
+          </div>
+          <h3 style="font-size:20px;margin:0 0 12px;">Frisch und knackig oder Keimfalle? Worauf es am Salat-Buffet wirklich ankommt</h3>
+          <p style="line-height:1.6;margin:0 0 10px;">
+            Salat-Buffets sind bei Gästen äußerst beliebt – doch gerade rohes Gemüse, geschnittene Blattsalate und Dressings auf Milch- oder Ei-Basis bieten Mikroorganismen ideale Wachstumsbedingungen, wenn Hygieneregeln vernachlässigt werden.
+          </p>
+          <p style="line-height:1.6;margin:0 0 10px;">
+            Bereits in der Küche beginnt die Sicherheit: Alle Rohkostzutaten und Blattsalate müssen vor der Verarbeitung gründlich unter fließendem Trinkwasser gewaschen werden. Besonders wichtig ist die strikte Trennung bei der Vorbereitung: Für Salate müssen zwingend eigene, saubere Schneidebretter und Messer verwendet werden, die zuvor niemals mit rohem Fleisch, Geflügel oder Fisch in Berührung gekommen sind (Vermeidung von Kreuzkontamination).
+          </p>
+          <p style="line-height:1.6;margin:0 0 10px;">
+            Am Buffet selbst gilt: Die Kühlkette darf nicht unterbrochen werden. Salate und Dressings müssen durchgehend gekühlt präsentiert werden (maximal +7 °C). Ein funktionierender Spuckschutz (Hustenschutz) über den offenen Schalen schützt die Speisen vor Tröpfcheninfektionen durch die Gäste. Zudem muss für jede einzelne Salatschüssel ein eigenes, sauberes Vorlegebesteck bereitliegen.
+          </p>
+          <p style="line-height:1.6;margin:0;">
+            Beim Nachfüllen während des Service ist eine goldene Regel zu beachten: Frischer Salat darf niemals einfach auf alte Reste geschüttet werden! Stattdessen wird die fast leere Schüssel komplett gegen eine frische, gekühlte Schüssel ausgetauscht. Selbstverständlich achtet das Servicepersonal dabei auf tadellose Personalhygiene (saubere Kleidung, gründlich gewaschene und desinfizierte Hände).
+          </p>
+        </div>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Winter 2024/25 · Anlage 6</span>
+        <span>Nicht abzugeben</span>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/a4-gvw-exam.js"></script>
+</body>
+</html>

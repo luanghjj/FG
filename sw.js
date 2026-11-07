@@ -1,5 +1,5 @@
 /* Service Worker – AzubiHub (offline shell + static assets) */
-const CACHE = 'azubihub-v240';
+const CACHE = 'azubihub-v242';
 const PRECACHE = [
   './',
   './pwa.js',
@@ -16,6 +16,12 @@ const PRECACHE = [
   './abschluss-sommer-2024.html',
   './abschluss-winter-2024-2025.html',
   './abschluss-sommer-2025.html',
+  './css/a4-gvw-exam.css',
+  './js/a4-gvw-exam.js',
+  './abschluss-gvw-winter-2025-2026.html',
+  './abschluss-gvw-winter-2024-2025.html',
+  './abschluss-gvw-sommer-2025.html',
+  './abschluss-gvw-sommer-2026.html',
   './deutsch-a1-c1/',
   './deutsch-a1-c1/index.html',
   './fuererschein/',

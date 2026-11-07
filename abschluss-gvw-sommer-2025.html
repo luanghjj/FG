@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FA 531/1 · Sommer 2025 — Gasterlebnis, Verkaufsförderung und Warenlagerung (A4)</title>
+  <link rel="stylesheet" href="css/a4-gvw-exam.css">
+</head>
+<body>
+
+  <!-- Thanh điều khiển trên cùng -->
+  <header class="gvw-topbar no-print">
+    <div class="gvw-topbar-left">
+      <a href="index.html#/abschluss" class="gvw-back">← Abschluss (30% GVW)</a>
+      <nav class="gvw-exam-switcher" aria-label="Bộ đề FA 531/1">
+        <a href="abschluss-gvw-winter-2025-2026.html" class="gvw-switch-link">Winter 2025/26</a>
+        <a href="abschluss-gvw-winter-2024-2025.html" class="gvw-switch-link">Winter 2024/25</a>
+        <a href="abschluss-gvw-sommer-2025.html" class="gvw-switch-link active">Sommer 2025</a>
+        <a href="abschluss-gvw-sommer-2026.html" class="gvw-switch-link">Sommer 2026</a>
+      </nav>
+    </div>
+    <div class="gvw-topbar-right">
+      <span class="gvw-timer-pill" id="gvw-timer">90:00</span>
+      <button type="button" class="gvw-btn" id="btn-timer" onclick="toggleGvwTimer()">Bắt đầu (90p)</button>
+      <button type="button" class="gvw-btn" onclick="resetGvwTimer()">Reset</button>
+      <button type="button" class="gvw-btn" id="btn-fill-sol" onclick="toggleFillSampleAnswers()">Điền mẫu vào giấy A4</button>
+      <button type="button" class="gvw-btn" id="btn-sol" onclick="toggleAllSolutions()">Hiện toàn bộ lời giải</button>
+      <button type="button" class="gvw-btn" id="btn-vi" onclick="toggleVi()">Ẩn dịch VI</button>
+      <button type="button" class="gvw-btn" onclick="clearSavedAnswers()">Xóa bài làm</button>
+      <button type="button" class="gvw-btn" onclick="window.print()">In A4</button>
+    </div>
+  </header>
+
+  <!-- Thanh nhảy nhanh giữa 11 tờ A4 -->
+  <nav class="gvw-subnav no-print" aria-label="Chuyển nhanh trang A4">
+    <a href="#blatt-1">Deckblatt</a>
+    <a href="#blatt-2">Seite 1 · Aufg. 1</a>
+    <a href="#blatt-3">Seite 2 · Aufg. 2</a>
+    <a href="#blatt-4">Vorgabe A (Mustergedeck)</a>
+    <a href="#blatt-5">Vorgabe B (E-Mail Muttertag)</a>
+    <a href="#blatt-6">Vorgabe C (Reservierungsbuch)</a>
+    <a href="#blatt-7">Anlage 1 (Strawberry-Kiss)</a>
+    <a href="#blatt-8">Anlage 2 (Muttertags-Menü)</a>
+    <a href="#blatt-9">Anlage 3 (Weinkarte)</a>
+    <a href="#blatt-10">Anlage 4 (Tischplan)</a>
+  </nav>
+
+  <main class="a4-workspace">
+
+    <!-- ==================== TỜ 1: DECKBLATT ==================== -->
+    <section class="a4-page" id="blatt-1">
+      <div>
+        <div class="deckblatt-top">
+          <div>
+            Gemeinsame Prüfungsaufgaben der<br>
+            Berufsschulen und der Industrie- und<br>
+            Handelskammern in Baden-Württemberg
+          </div>
+          <div class="db-right">
+            Schriftliche Abschlussprüfung an<br>
+            Berufsschulen in<br>
+            Baden-Württemberg<br>
+            Sommer 2025
+          </div>
+        </div>
+
+        <div class="deckblatt-beruf">
+          <h1>Fachkraft für Gastronomie<br>Schwerpunkt Restaurantservice</h1>
+          <div class="fa-code">FA 531/1</div>
+        </div>
+
+        <div class="deckblatt-fachbox">
+          <div class="fb-title">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+          <div class="fb-time">Zeit: 90 Minuten</div>
+        </div>
+
+        <div class="vi-box">
+          <strong>Đề thi tốt nghiệp viết tại trường nghề (Berufsschule Baden-Württemberg — chiếm 30% tổng điểm Abschluss):</strong> Môn <em>Gasterlebnis, Verkaufsförderung und Warenlagerung (FA 531/1)</em> · Kỳ thi Mùa Hè 2025 · Thời gian: 90 phút · Tổng điểm: <strong>67 Punkte</strong>.
+        </div>
+
+        <table class="deckblatt-meta-table">
+          <tr>
+            <td class="lbl">Zugelassene Hilfsmittel:</td>
+            <td>Netzunabhängiger, nicht programmierbarer Taschenrechner</td>
+          </tr>
+          <tr>
+            <td class="lbl">Bearbeitungshinweise:</td>
+            <td>
+              Der Aufgabensatz besteht aus
+              <ul>
+                <li>dem Deckblatt</li>
+                <li>2 Seiten mit den Aufgaben 1 und 2</li>
+                <li>
+                  3 Seiten mit den Vorgaben A bis C
+                  <ul>
+                    <li>Vorgabe A zur Aufgabe 1.1</li>
+                    <li>Vorgabe B zur Aufgabe 2.3</li>
+                    <li>Vorgabe C zur Aufgabe 2.4</li>
+                  </ul>
+                </li>
+                <li>4 Seiten mit den Anlagen 1 bis 4</li>
+              </ul>
+              <p>Kontrollieren Sie bitte vor Beginn der Prüfung, ob der Aufgabensatz vollständig ist.</p>
+              <p>Es sind alle Aufgaben zu bearbeiten.</p>
+              <p>Unterschreiben Sie die Vorgaben nicht mit Ihrem Namen, sondern mit dem in der jeweiligen Aufgabe genannten Namen.</p>
+              <p>Am Ende der Prüfung sind die ausgefüllten Vorgaben A bis C mit den Lösungsblättern abzugeben.</p>
+              <p><strong>Nicht abzugeben sind der Aufgabensatz und die Anlagen 1 bis 4.</strong></p>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div>
+        <table class="deckblatt-schuelerbox">
+          <tr>
+            <td style="width:50%;"><strong>Name, Vorname Prüfling:</strong><br><input type="text" class="a4-input" placeholder="Họ và tên thí sinh..."></td>
+            <td style="width:25%;"><strong>Klasse:</strong><br><input type="text" class="a4-input" placeholder="Lớp..."></td>
+            <td style="width:25%;"><strong>Erreichte Punkte:</strong><br><span style="font-size:15px;font-weight:700;">____ / 67 P.</span></td>
+          </tr>
+        </table>
+        <div class="a4-footer-note">
+          <span>FA 531/1 · Sommer 2025 · Deckblatt</span>
+          <span>AzubiHub A4 Original-Formular</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 2: SEITE 1 — AUFGABE 1 ==================== -->
+    <section class="a4-page" id="blatt-2">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Sommer 2025<br>Seite 1</div>
+          <div class="rh-right">
+            Gasterlebnis, Verkaufsförderung<br>und Warenlagerung
+            <div class="rh-points-label">Punkte</div>
+          </div>
+        </div>
+
+        <div class="aufgabe-title-row">
+          <span>Aufgabe 1</span>
+          <span>(36 Punkte)</span>
+        </div>
+
+        <div class="aufgabe-context">
+          Sie sind Fachkraft für Gastronomie im Restaurant „Glas und Gabel“.<br>
+          Am 20.07.2025 findet ab 18:00 Uhr das Sommer-Event „Sommergenuss“ statt. Geplant ist ein 4-Gang-Menü mit korrespondierenden Weinen und Livemusik zum Preis von 49,00 EUR pro Person. Es werden 80 Gäste erwartet.
+          <div class="vi-box">
+            <strong>Bối cảnh Aufgabe 1:</strong> Bạn là nhân viên chuyên trách tại nhà hàng <strong>„Glas und Gabel“</strong>. Vào ngày <strong>20.07.2025 từ 18:00 giờ</strong> sẽ diễn ra sự kiện mùa hè <strong>„Sommergenuss“</strong> gồm thực đơn 4 món kèm rượu vang đi kèm và nhạc sống với giá <strong>49,00 EUR/người</strong>. Dự kiến đón <strong>80 khách</strong>.
+          </div>
+        </div>
+
+        <!-- 1.1 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">1.1</div>
+          <div class="ta-body">
+            <p>Für das Event wird folgendes 4-Gang-Menü serviert:</p>
+            <div style="border:1.5px solid var(--a4-ink);padding:8px 14px;margin:6px 0;text-align:center;font-size:13.5px;background:#FAF8F2;">
+              Gartensalat mit gebratenen Garnelen · Baguette und gesalzene Butter<br>***<br>
+              Geeiste Gurkensuppe<br>***<br>
+              Kalbsmedaillon an Sommergemüse und Rosmarinkartoffeln<br>***<br>
+              Zitronensorbet mit frischen Früchten<br>
+              <span style="font-size:12.5px;color:var(--a4-muted);">(Korrespondierende Getränke: Weißwein, Rotwein, Mineralwasser)</span>
+            </div>
+            <p>Zeichnen Sie auf der <strong>Vorgabe A</strong> ein vollständiges Mustergedeck für einen Gast, nummerieren Sie die 13 Gegenstände und benennen Sie diese in der Legende.</p>
+            <div class="vi-box">1.1 Dựa vào thực đơn 4 món trên, hãy hoàn thiện sơ đồ bàn ăn mẫu (<em>Mustergedeck</em>) gồm <strong>13 vị trí đánh số (1–13)</strong> và điền tên từng dụng cụ vào bảng chú giải trên <strong>Vorgabe A</strong> (trang 4).</div>
+          </div>
+          <div class="ta-pts">13</div>
+        </div>
+
+        <!-- 1.2 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">1.2</div>
+          <div class="ta-body">
+            <p>Nennen Sie sechs passende Elemente für den Tischschmuck zu diesem Sommer-Event mit Livemusik.</p>
+            <div class="vi-box">1.2 Nêu <strong>6 vật dụng trang trí bàn tiệc</strong> phù hợp với chủ đề Đêm nhạc Mùa hè („Sommergenuss“).</div>
+            <textarea class="a4-textarea" placeholder="6 passende Elemente für den Tischschmuck..." data-sol="1. Frische Sommerblumen in kleinen Tischvasen (z. B. Sonnenblumen, Margeriten, Lavendel)&#10;2. Sommerliche Stoffservietten und Tischläufer in Pastell- oder Sonnengelb-/Grüntönen&#10;3. Dekorative Windlichter / Schwimmkerzen im Glas&#10;4. Kleine Holz- oder Metall-Notenschlüssel / Musiknoten-Konfetti passend zur Livemusik&#10;5. Sommerlich gestaltete Menükarten mit Blumen-/Musikmotiv&#10;6. Frische Zitrusfrüchte-Deko oder Kräutertöpfchen (z. B. Rosmarin/Minze)"></textarea>
+            <details class="a4-loesung">
+              <summary>Aufgabe 1.2 (3 Punkte)</summary>
+              <div class="a4-loesung-body">
+                <strong>Sechs passende Elemente für den Tischschmuck (je 0,5 P.):</strong><br>
+                1. Sommerblumen-Arrangements (z. B. Sonnenblumen, Wiesenblumen, Lavendel); 2. Helle/pastellfarbene Stoffservietten &amp; Tischläufer; 3. Windlichter / Teelichter im Glas; 4. Kleine Deko-Notenschlüssel / Musiknoten (Bezug zur Livemusik); 5. Individuell gestaltete Sommer-Menükarten; 6. Zitronen-/Limetten-Deko oder kleine Kräutertöpfchen (Minze/Rosmarin).
+              </div>
+            </details>
+          </div>
+          <div class="ta-pts">3</div>
+        </div>
+
+        <!-- 1.3 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">1.3</div>
+          <div class="ta-body">
+            <p>Zur Begrüßung erhält jeder der 80 Gäste ein Glas des Aperitifs „Strawberry-Kiss“. Berechnen Sie mithilfe von <strong>Anlage 1</strong>, wie viele Flaschen Sekt und wie viele Kisten Erdbeeren eingekauft werden müssen. Berücksichtigen Sie den Schankverlust von 6 % beim Sekt und den Putzverlust von 19 % bei den Erdbeeren. Geben Sie den Rechenweg an und runden Sie sinnvoll.</p>
+            <div class="vi-box">1.3 Để đón 80 khách, mỗi người được mời 1 ly <em>„Strawberry-Kiss“</em>. Dựa vào công thức cho 4 ly ở <strong>Anlage 1</strong> (trang 7), hãy tính số chai Sekt (0,75 l) và số khay dâu tây (1,000 kg) cần mua, có tính <strong>6 % Schankverlust</strong> đối với Sekt và <strong>19 % Putzverlust</strong> đối với dâu tây. Ghi rõ phép tính và làm tròn lên đơn vị mua hàng.</div>
+            <textarea class="a4-textarea" style="min-height:110px;" placeholder="Rechenweg Sekt (Flaschen à 0,75 l) &amp; Erdbeeren (Kisten à 1,000 kg)..." data-sol="Umrechnungsfaktor: 80 Gläser ÷ 4 Gläser = 20&#10;1. Sekt:&#10;• Nettobedarf = 20 × 0,400 l = 8,000 Liter&#10;• Bruttobedarf inkl. 6 % Schankverlust = 8,000 l ÷ 0,94 = 8,511 l (bzw. 8,000 l × 1,06 = 8,480 l)&#10;• Anzahl Flaschen (à 0,75 l) = 8,511 l ÷ 0,75 l = 11,35 Flaschen → aufgerundet 12 Flaschen Sekt.&#10;2. Erdbeeren:&#10;• Nettobedarf = 20 × 0,100 kg = 2,000 kg&#10;• Bruttobedarf inkl. 19 % Putzverlust = 2,000 kg ÷ 0,81 = 2,469 kg (bzw. 2,000 kg × 1,19 = 2,380 kg)&#10;• Anzahl Kisten (à 1,000 kg) = 2,469 kg ÷ 1,000 kg = 2,47 Kisten → aufgerundet 3 Kisten Erdbeeren."></textarea>
+            <details class="a4-loesung">
+              <summary>Aufgabe 1.3 (9 Punkte)</summary>
+              <div class="a4-loesung-body">
+                <strong>Umrechnungsfaktor:</strong> <code>80 Gäste ÷ 4 Gläser = Faktor 20</code><br>
+                <strong>1. Berechnung Sekt (Flaschen à 0,75 l):</strong><br>
+                • Netto-Menge: <code>20 × 0,400 l = 8,000 Liter</code><br>
+                • Mit 6 % Schankverlust: <code>8,000 l ÷ 0,94 = 8,51 l</code> <em>(oder: <code>8,000 l × 1,06 = 8,48 l</code>)</em><br>
+                • Flaschenanzahl: <code>8,51 l ÷ 0,75 l = 11,35</code> ⇒ <strong>12 Flaschen Sekt (0,75 l)</strong><br>
+                <strong>2. Berechnung Erdbeeren (Kisten à 1,000 kg):</strong><br>
+                • Netto-Menge: <code>20 × 0,100 kg = 2,000 kg</code><br>
+                • Mit 19 % Putzverlust: <code>2,000 kg ÷ 0,81 = 2,47 kg</code> <em>(oder: <code>2,000 kg × 1,19 = 2,38 kg</code>)</em><br>
+                • Kistenanzahl: <code>2,47 kg ÷ 1,000 kg = 2,47</code> ⇒ <strong>3 Kisten Erdbeeren (à 1,000 kg)</strong>
+              </div>
+            </details>
+          </div>
+          <div class="ta-pts">9</div>
+        </div>
+
+        <!-- 1.4 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">1.4</div>
+          <div class="ta-body">
+            <p>Verfassen Sie einen werbewirksamen Text für die Social-Media-Kanäle des Restaurants, um das Event „Sommergenuss“ zu bewerben. Berücksichtigen Sie alle wichtigen Veranstaltungsdaten und Kontaktmöglichkeiten zur Reservierung.</p>
+            <div class="vi-box">1.4 Viết một bài đăng quảng cáo thu hút trên mạng xã hội (<em>Social-Media-Post</em>) để quảng bá sự kiện „Sommergenuss“ với đầy đủ thông tin (Tên sự kiện, ngày 20.07.2025, giờ 18:00, 4-Gang-Menü + rượu vang + nhạc sống, giá 49,00 EUR/người và thông tin liên hệ đặt bàn).</div>
+            <textarea class="a4-textarea" style="min-height:92px;" placeholder="Social-Media-Werbetext für das Event „Sommergenuss“..." data-sol="Erleben Sie unseren unvergesslichen Abend „Sommergenuss“ im Restaurant Glas und Gabel!&#10;Wann? Am Sonntag, den 20.07.2025 ab 18:00 Uhr.&#10;Freuen Sie sich auf unseren prickelnden Aperitif „Strawberry-Kiss“, ein sommerliches 4-Gang-Feinschmeckermenü inklusive korrespondierender Weine und stimmungsvoller Livemusik!&#10;Preis: 49,00 EUR pro Person (inkl. Menü, Weinbegleitung &amp; Livemusik).&#10;Die Plätze sind begrenzt – sichern Sie sich jetzt Ihren Tisch telefonisch unter 0711 / 123456 oder per E-Mail an info@glasundgabel.de! Wir freuen uns auf Sie!"></textarea>
+            <details class="a4-loesung">
+              <summary>Aufgabe 1.4 (8 Punkte)</summary>
+              <div class="a4-loesung-body">
+                <strong>Pflichtbestandteile des Social-Media-Textes:</strong><br>
+                • Ansprechende Überschrift / Call-to-Action &amp; Restaurantname („Glas und Gabel“)<br>
+                • Eventname: <strong>„Sommergenuss“</strong><br>
+                • Datum &amp; Uhrzeit: <strong>20.07.2025, ab 18:00 Uhr</strong><br>
+                • Leistungsumfang: <strong>4-Gang-Menü, korrespondierende Weine, Aperitif &amp; Livemusik</strong><br>
+                • Preisangabe: <strong>49,00 EUR pro Person</strong><br>
+                • Reservierungskontakt: <strong>Telefonnummer &amp; E-Mail-Adresse / Website</strong>.
+              </div>
+            </details>
+          </div>
+          <div class="ta-pts">8</div>
+        </div>
+
+        <!-- 1.5 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">1.5</div>
+          <div class="ta-body">
+            <p>Nennen Sie drei weitere Möglichkeiten (außer Social Media), um auf das Event aufmerksam zu machen.</p>
+            <div class="vi-box">1.5 Nêu <strong>3 kênh quảng bá khác</strong> (ngoài mạng xã hội) để giới thiệu sự kiện này tới khách hàng.</div>
+            <textarea class="a4-textarea" placeholder="1. ...&#10;2. ...&#10;3. ..." data-sol="1. Tischaufsteller, Plakate / Kundenstopper und Handzettel (Flyer) direkt im Restaurant bzw. als Beilage zur Speisekarte.&#10;2. Ankündigung auf der eigenen Restaurant-Website sowie Versand eines E-Mail-Newsletters an Stammgäste.&#10;3. Anzeige oder redaktioneller Veranstaltungshinweis in der lokalen Tageszeitung / im Stadtmagazin."></textarea>
+            <details class="a4-loesung">
+              <summary>Aufgabe 1.5 (3 Punkte)</summary>
+              <div class="a4-loesung-body">
+                1. <strong>Werbemittel im Restaurant:</strong> Tischaufsteller, Flyer an der Rezeption, Einleger in der Speisekarte, Plakat/Kundenstopper vor dem Eingang.<br>
+                2. <strong>Digitale Direktwerbung:</strong> Eigene Homepage/Website des Restaurants, E-Mail-Newsletter an Stammgäste.<br>
+                3. <strong>Print- &amp; Außenwerbung:</strong> Inserat in der regionalen Tageszeitung / im Veranstaltungskalender der Stadt, persönliches Ansprechen der Gäste durch das Servicepersonal.
+              </div>
+            </details>
+          </div>
+          <div class="ta-pts">3</div>
+        </div>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Sommer 2025 · Seite 1</span>
+        <span>Aufgabe 1 (36 Punkte)</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 3: SEITE 2 — AUFGABE 2 ==================== -->
+    <section class="a4-page" id="blatt-3">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Sommer 2025<br>Seite 2</div>
+          <div class="rh-right">
+            Gasterlebnis, Verkaufsförderung<br>und Warenlagerung
+            <div class="rh-points-label">Punkte</div>
+          </div>
+        </div>
+
+        <div class="aufgabe-title-row">
+          <span>Aufgabe 2</span>
+          <span>(31 Punkte)</span>
+        </div>
+
+        <div class="aufgabe-context">
+          Für den Muttertag am Sonntag, 11. Mai 2025, plant das Restaurant „Glas und Gabel“ ein besonderes Menü.
+          <div class="vi-box">
+            <strong>Bối cảnh Aufgabe 2:</strong> Nhân Ngày của Mẹ (<em>Muttertag</em>) vào Chủ nhật <strong>11.05.2025</strong>, nhà hàng „Glas und Gabel“ chuẩn bị một thực đơn đặc biệt.
+          </div>
+        </div>
+
+        <!-- 2.1 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">2.1</div>
+          <div class="ta-body">
+            <p>Der Küchenchef hat einen Menüentwurf (<strong>Anlage 2</strong>) vorgelegt. Überprüfen Sie diesen Entwurf nach den Grundsätzen der Menügestaltung:</p>
+            <ul>
+              <li>Nennen Sie drei positive Aspekte des Menüentwurfs.</li>
+              <li>Nennen Sie drei Kritikpunkte (Schwächen) und machen Sie jeweils einen konkreten Verbesserungsvorschlag.</li>
+            </ul>
+            <div class="vi-box">2.1 Bếp trưởng đưa ra bản thảo thực đơn Ngày của Mẹ ở <strong>Anlage 2</strong> (trang 8). Hãy đánh giá theo nguyên tắc xây dựng thực đơn (<em>Menüregeln</em>):<br>
+            • Nêu <strong>3 điểm tốt (positive Aspekte)</strong> của thực đơn.<br>
+            • Nêu <strong>3 điểm yếu/lỗi (Kritikpunkte)</strong> và đưa ra <strong>đề xuất sửa đổi cụ thể</strong> cho từng lỗi.</div>
+            <textarea class="a4-textarea" style="min-height:140px;" placeholder="3 positive Aspekte + 3 Kritikpunkte mit konkretem Verbesserungsvorschlag..." data-sol="Drei positive Aspekte (3 P.):&#10;1. Passender saisonaler Bezug zum Frühling/Mai (Spargel, Erdbeeren, Bärlauch).&#10;2. Abwechslung bei den Hauptkomponenten und Farben (Suppe, Salat, Fisch im Hauptgang, fruchtiges Dessert).&#10;3. Festlicher Anlass (Muttertag am 11. Mai) und vollständige 4-Gang-Menüstruktur sind erkennbar.&#10;&#10;Drei Kritikpunkte + Verbesserungsvorschläge (12 P.):&#10;1. Wort- und Rohstoffwiederholung „Spargel“ (Gang 1: Spargelcremesuppe UND Gang 3: Gebratener Spargel) → Vorschlag: Im 1. Gang z. B. eine „Karotten-Ingwer-Suppe“ oder „Bärlauch-Schaumsuppe“ servieren (oder im Hauptgang glasierte Frühlingskarotten/Zuckerschoten statt Spargel reichen).&#10;2. Falsche klassische Gangfolge (Gang 1 ist Suppe, Gang 2 ist kalter Frühlingssalat) → Vorschlag: Den „Frühlingssalat mit Bärlauch-Croûtons“ als 1. Gang (kalte Vorspeise) und die warme Suppe als 2. Gang servieren.&#10;3. Wiederholung fettreicher Milch-/Sahneprodukte bzw. unvollständige/fehlerhafte Deklaration (Creme-Suppe + Sahnedressing + Sahnehaube im Dessert; zudem fehlt beim Hauptgang die Sättigungsbeilage) → Vorschlag: Salat mit einer leichten Vinaigrette statt Sahnedressing anmachen und zum Lachsfilet z. B. neue Rosmarinkartoffeln oder Bandnudeln als Sättigungsbeilage ergänzen."></textarea>
+            <details class="a4-loesung">
+              <summary>Aufgabe 2.1 — Menüanalyse Muttertag (15 Punkte)</summary>
+              <div class="a4-loesung-body">
+                <strong>Drei positive Aspekte (je 1 P. = 3 P.):</strong><br>
+                1. Saisonale Frühlingsprodukte (Spargel, Bärlauch, Erdbeeren im Mai).<br>
+                2. Gute farbliche Abwechslung und leichter Fisch-Hauptgang (gegrilltes Lachsfilet).<br>
+                3. Übersichttliche 4-Gang-Struktur passend zum festlichen Muttertag.<br><br>
+                <strong>Drei Kritikpunkte + konkrete Verbesserungsvorschläge (je 4 P. = 12 P.):</strong><br>
+                1. <strong>Rohstoff-/Wortwiederholung „Spargel“</strong> im 1. Gang (<em>Spargelcremesuppe</em>) und 3. Gang (<em>gebratener Spargel</em>) ⇒ <em>Vorschlag:</em> Im 1. Gang durch eine <em>Tomaten-Basilikum-Essenz</em> oder <em>Erbsen-Minz-Suppe</em> ersetzen.<br>
+                2. <strong>Vertauschte Menüreihenfolge (Gang 1 Suppe vor Gang 2 Salat)</strong> ⇒ <em>Vorschlag:</em> Klassische Menüfolge einhalten: 1. Gang Kalte Vorspeise (<em>Frühlingssalat</em>), 2. Gang Suppe.<br>
+                3. <strong>Häufung von Sahne/Milchfett &amp; fehlende Sättigungsbeilage im Hauptgang</strong> (Cremesuppe + Sahnedressing + Sahnehaube; beim Lachsfilet mit Spargel fehlt die Sättigungsbeilage) ⇒ <em>Vorschlag:</em> Kräuter-Vinaigrette statt Sahnedressing wählen und im Hauptgang <em>Petersilienkartoffeln</em> oder <em>Tagliatelle</em> ergänzen.
+              </div>
+            </details>
+          </div>
+          <div class="ta-pts">15</div>
+        </div>
+
+        <!-- 2.2 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">2.2</div>
+          <div class="ta-body">
+            <p>Wählen Sie aus der Weinkarte (<strong>Anlage 3</strong>) einen passenden Wein zum Hauptgang (<em>Gegrilltes Lachsfilet auf gebratenem Spargel</em>) aus und begründen Sie Ihre Auswahl.</p>
+            <div class="vi-box">2.2 Chọn 1 loại rượu vang phù hợp nhất từ <strong>Anlage 3</strong> (trang 9) cho món chính (<em>Cá hồi nướng dùng kèm măng tây áp chảo</em>) và giải thích lý do chọn.</div>
+            <textarea class="a4-textarea" placeholder="Weinempfehlung aus Anlage 3 + fachliche Begründung..." data-sol="Empfehlung: 2023 Weißburgunder „Sonett“ trocken, Weingut Kiefer, Baden (alternativ: 2023 Chardonnay „Granit“ trocken, Weingut Vorgrimmler, Baden).&#10;Begründung: Der trockene, feinfruchtige Weißburgunder mit seiner dezenten, harmonischen Säure und seinem geschmeidigen Körper passt ideal zum fettreicheren, gegrillten Lachsfilet und überdeckt das feine Aroma des Spargels nicht."></textarea>
+            <details class="a4-loesung">
+              <summary>Aufgabe 2.2 (3 Punkte)</summary>
+              <div class="a4-loesung-body">
+                • <strong>Weinauswahl (1 P.):</strong> <em>2023 Weißburgunder „Sonett“ trocken (Baden)</em> oder <em>2023 Chardonnay „Granit“ trocken (Baden)</em>.<br>
+                • <strong>Begründung (2 P.):</strong> Ein trockener Burgunder-Weißwein mit milder, ausgewogener Säure und feinem Schmelz harmoniert hervorragend mit den Röstaromen des gegrillten Lachsfilets und begleitet den feinen Geschmack des gebratenen Spargels, ohne ihn zu erschlagen.
+              </div>
+            </details>
+          </div>
+          <div class="ta-pts">3</div>
+        </div>
+
+        <!-- 2.3 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">2.3</div>
+          <div class="ta-body">
+            <p>Frau Reiff möchte für den Muttertag am 11.05.2025 um 12:00 Uhr einen großen Tisch am Fenster für 10 Personen reservieren. Bestätigen Sie Frau Reiff die Reservierung per E-Mail auf der <strong>Vorgabe B</strong>.</p>
+            <div class="vi-box">2.3 Bà <strong>Frau Reiff</strong> muốn đặt một bàn lớn cạnh cửa sổ cho <strong>10 người</strong> vào Ngày của Mẹ <strong>11.05.2025 lúc 12:00 giờ</strong>. Hãy viết E-Mail xác nhận đặt bàn trên <strong>Vorgabe B</strong> (trang 5).</div>
+          </div>
+          <div class="ta-pts">7</div>
+        </div>
+
+        <!-- 2.4 -->
+        <div class="teilaufgabe-row">
+          <div class="ta-nr">2.4</div>
+          <div class="ta-body">
+            <p>Teilen Sie für den Muttertag die vorliegenden Reservierungen den passenden Tischen zu. Nutzen Sie dazu den Tischplan in der <strong>Anlage 4</strong> und tragen Sie die Tischnummern in das Reservierungsbuch auf der <strong>Vorgabe C</strong> ein.</p>
+            <div class="vi-box">2.4 Dựa vào sơ đồ bàn ăn ở <strong>Anlage 4</strong> (trang 10), hãy phân bổ số bàn (<em>Tischnummer</em>) hợp lý cho các đoàn khách đặt bàn vào sổ đặt bàn trên <strong>Vorgabe C</strong> (trang 6).</div>
+          </div>
+          <div class="ta-pts">6</div>
+        </div>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Sommer 2025 · Seite 2</span>
+        <span>Aufgabe 2 (31 Punkte) · Gesamt: 67 Punkte</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 4: VORGABE A (MUSTERGEDECK 1–13) ==================== -->
+    <section class="a4-page" id="blatt-4">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Sommer 2025</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+        <div class="abgabe-hinweis">Mit den Lösungsblättern abzugeben!</div>
+        <div class="name-klasse-line">
+          <label>Name: <input type="text" placeholder="..."></label>
+          <label>Klasse: <input type="text" style="width:90px;" placeholder="..."></label>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Vorgabe A</span>
+          <span>zur Aufgabe 1.1</span>
+        </div>
+
+        <h2 style="font-size:15.5px;margin:6px 0;">Mustergedeck (4-Gang-Menü „Sommergenuss“)</h2>
+        <div class="vi-box">
+          <strong>Hướng dẫn Vorgabe A (Aufgabe 1.1 — 13 Punkte):</strong> Sơ đồ chuẩn từ ngoài vào trong cho 4 món (1. <em>Gartensalat mit Garnelen, Baguette &amp; Butter</em> → Mittelgabel &amp; Mittelmesser ngoài cùng + Brotteller &amp; Buttermesser bên trái; 2. <em>Geeiste Gurkensuppe</em> → Suppenlöffel bên phải; 3. <em>Kalbsmedaillon</em> → Menügabel &amp; Menümesser sát đĩa; 4. <em>Zitronensorbet mit Früchten</em> → Dessertlöffel &amp; Dessertgabel phía trên; Ly: <em>Weißweinglas, Rotweinglas, Wasserglas</em>).
+        </div>
+
+        <!-- Sơ đồ trực quan Mustergedeck 1-13 trên giấy A4 -->
+        <div style="border:2px solid var(--a4-ink);padding:14px;background:#FAF8F2;margin-bottom:12px;">
+          <svg viewBox="0 0 640 270" style="width:100%;max-height:240px;display:block;margin:0 auto;">
+            <!-- Khung bàn -->
+            <rect x="6" y="6" width="628" height="258" fill="#FFFDF9" stroke="#222" stroke-width="1.5"/>
+            <!-- 11, 12, 13: Gläser oben rechts -->
+            <circle cx="495" cy="40" r="18" fill="#EFECE6" stroke="#222" stroke-width="1.5"/><text x="495" y="45" text-anchor="middle" font-weight="bold" font-size="13">13</text>
+            <circle cx="460" cy="68" r="20" fill="#EFECE6" stroke="#222" stroke-width="1.5"/><text x="460" y="73" text-anchor="middle" font-weight="bold" font-size="13">12</text>
+            <circle cx="505" cy="96" r="18" fill="#EFECE6" stroke="#222" stroke-width="1.5"/><text x="505" y="101" text-anchor="middle" font-weight="bold" font-size="13">11</text>
+            <!-- 9, 10: Dessertbesteck oben -->
+            <rect x="255" y="42" width="130" height="16" rx="6" fill="#EFECE6" stroke="#222" stroke-width="1.3"/><text x="320" y="54" text-anchor="middle" font-weight="bold" font-size="12">10 (oben) &larr;</text>
+            <rect x="255" y="64" width="130" height="16" rx="6" fill="#EFECE6" stroke="#222" stroke-width="1.3"/><text x="320" y="76" text-anchor="middle" font-weight="bold" font-size="12">&rarr; 9 (unten)</text>
+            <!-- 3, 4: Brotteller & Buttermesser links -->
+            <circle cx="110" cy="128" r="34" fill="#EFECE6" stroke="#222" stroke-width="1.5"/><text x="102" y="133" text-anchor="middle" font-weight="bold" font-size="13">3</text>
+            <rect x="122" y="98" width="14" height="60" rx="5" fill="#D6D3CD" stroke="#222" stroke-width="1.3"/><text x="129" y="132" text-anchor="middle" font-weight="bold" font-size="11">4</text>
+            <!-- 5, 6: Gabeln links vom Platzteller -->
+            <rect x="172" y="118" width="22" height="110" rx="6" fill="#EFECE6" stroke="#222" stroke-width="1.4"/><text x="183" y="176" text-anchor="middle" font-weight="bold" font-size="13">5</text>
+            <rect x="202" y="106" width="22" height="122" rx="6" fill="#EFECE6" stroke="#222" stroke-width="1.4"/><text x="213" y="172" text-anchor="middle" font-weight="bold" font-size="13">6</text>
+            <!-- 1, 2: Platzteller & Serviette Mitte -->
+            <circle cx="320" cy="168" r="68" fill="#FFF" stroke="#222" stroke-width="2"/>
+            <circle cx="320" cy="168" r="46" fill="#F5F1E7" stroke="#555" stroke-dasharray="4,3" stroke-width="1.2"/>
+            <text x="320" y="158" text-anchor="middle" font-weight="bold" font-size="14">1 (Platzteller)</text>
+            <text x="320" y="182" text-anchor="middle" font-weight="bold" font-size="13">2 (Serviette)</text>
+            <!-- 7, 8, 8b: Messer & Suppenlöffel rechts vom Platzteller -->
+            <rect x="416" y="106" width="22" height="122" rx="6" fill="#EFECE6" stroke="#222" stroke-width="1.4"/><text x="427" y="172" text-anchor="middle" font-weight="bold" font-size="13">7</text>
+            <rect x="446" y="122" width="22" height="106" rx="6" fill="#EFECE6" stroke="#222" stroke-width="1.4"/><text x="457" y="178" text-anchor="middle" font-weight="bold" font-size="13">8</text>
+            <rect x="476" y="118" width="22" height="110" rx="6" fill="#EFECE6" stroke="#222" stroke-width="1.4"/><text x="487" y="176" text-anchor="middle" font-weight="bold" font-size="11">8b*</text>
+          </svg>
+        </div>
+
+        <table class="a4-table" style="font-size:12.4px;">
+          <thead>
+            <tr>
+              <th style="width:8%;">Nr.</th>
+              <th style="width:42%;text-align:left;">Gegenstand</th>
+              <th style="width:8%;">Nr.</th>
+              <th style="width:42%;text-align:left;">Gegenstand</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align:center;font-weight:700;">1</td>
+              <td><input class="a4-input" data-sol="Platzteller"></td>
+              <td style="text-align:center;font-weight:700;">8</td>
+              <td><input class="a4-input" data-sol="Suppenlöffel / Mittellöffel (rechts außen: Mittelmesser für Salat)"></td>
+            </tr>
+            <tr>
+              <td style="text-align:center;font-weight:700;">2</td>
+              <td><input class="a4-input" data-sol="Stoffserviette (Mundserviette)"></td>
+              <td style="text-align:center;font-weight:700;">9</td>
+              <td><input class="a4-input" data-sol="Dessertgabel / kleine Gabel (Griff nach links)"></td>
+            </tr>
+            <tr>
+              <td style="text-align:center;font-weight:700;">3</td>
+              <td><input class="a4-input" data-sol="Brotteller"></td>
+              <td style="text-align:center;font-weight:700;">10</td>
+              <td><input class="a4-input" data-sol="Dessertlöffel / kleiner Löffel (Griff nach rechts)"></td>
+            </tr>
+            <tr>
+              <td style="text-align:center;font-weight:700;">4</td>
+              <td><input class="a4-input" data-sol="Buttermesser (kleines Messer)"></td>
+              <td style="text-align:center;font-weight:700;">11</td>
+              <td><input class="a4-input" data-sol="Weißweinglas (Richtglas über dem Menümesser)"></td>
+            </tr>
+            <tr>
+              <td style="text-align:center;font-weight:700;">5</td>
+              <td><input class="a4-input" data-sol="Mittelgabel / Vorspeisengabel (für Gartensalat mit Garnelen)"></td>
+              <td style="text-align:center;font-weight:700;">12</td>
+              <td><input class="a4-input" data-sol="Rotweinglas (links schräg über dem Weißweinglas)"></td>
+            </tr>
+            <tr>
+              <td style="text-align:center;font-weight:700;">6</td>
+              <td><input class="a4-input" data-sol="Menügabel / große Gabel (für Kalbsmedaillon)"></td>
+              <td style="text-align:center;font-weight:700;">13</td>
+              <td><input class="a4-input" data-sol="Wasserglas (rechts/oberhalb beim Weißweinglas)"></td>
+            </tr>
+            <tr>
+              <td style="text-align:center;font-weight:700;">7</td>
+              <td><input class="a4-input" data-sol="Menümesser / großes Messer (für Kalbsmedaillon)"></td>
+              <td style="text-align:center;font-weight:700;">*</td>
+              <td><span style="font-size:11.5px;color:var(--a4-muted);">Mittelmesser (8b) rechts außen neben dem Suppenlöffel</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <details class="a4-loesung">
+          <summary>Vorgabe A — Legende Mustergedeck (13 Punkte)</summary>
+          <div class="a4-loesung-body">
+            <code>1</code> Platzteller · <code>2</code> Stoffserviette · <code>3</code> Brotteller · <code>4</code> Buttermesser · <code>5</code> Mittelgabel (Vorspeisensalat) · <code>6</code> Menügabel (Hauptgang) · <code>7</code> Menümesser (Hauptgang) · <code>8</code> Suppenlöffel (+ Mittelmesser rechts außen) · <code>9</code> Dessertgabel · <code>10</code> Dessertlöffel · <code>11</code> Weißweinglas (Richtglas) · <code>12</code> Rotweinglas · <code>13</code> Wasserglas.
+          </div>
+        </details>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Sommer 2025 · Vorgabe A</span>
+        <span>Aufgabe 1.1 (13 Punkte)</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 5: VORGABE B (E-MAIL RESERVIERUNGSBESTÄTIGUNG) ==================== -->
+    <section class="a4-page" id="blatt-5">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Sommer 2025</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+        <div class="abgabe-hinweis">Mit den Lösungsblättern abzugeben!</div>
+        <div class="name-klasse-line">
+          <label>Name: <input type="text" placeholder="..."></label>
+          <label>Klasse: <input type="text" style="width:90px;" placeholder="..."></label>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Vorgabe B</span>
+          <span>zur Aufgabe 2.3</span>
+        </div>
+
+        <div class="vi-box">
+          <strong>Hướng dẫn Vorgabe B (Aufgabe 2.3 — 7 Punkte):</strong> Viết E-Mail xác nhận đặt bàn cho bà <strong>Frau Reiff</strong> vào Ngày của Mẹ (Chủ nhật <strong>11.05.2025</strong>, lúc <strong>12:00 Uhr</strong>, cho <strong>10 Personen</strong>, bàn lớn cạnh cửa sổ <em>Tisch am Fenster</em>) và giới thiệu thêm thực đơn Ngày của Mẹ.
+        </div>
+
+        <table class="a4-table">
+          <tr>
+            <td style="width:18%;"><strong>An:</strong></td>
+            <td><input type="text" class="a4-input" data-sol="m.reiff@web.de (Frau Reiff)" placeholder="E-Mail-Adresse von Frau Reiff..."></td>
+          </tr>
+          <tr>
+            <td><strong>Betreff:</strong></td>
+            <td><input type="text" class="a4-input" data-sol="Ihre Tischreservierung zum Muttertag am Sonntag, 11.05.2025 um 12:00 Uhr" placeholder="Betreffzeile..."></td>
+          </tr>
+          <tr>
+            <td colspan="2" style="padding:10px;">
+              <textarea class="a4-textarea" style="min-height:340px;" data-sol="Sehr geehrte Frau Reiff,&#10;&#10;herzlichen Dank für Ihre Reservierungsanfrage in unserem Restaurant „Glas und Gabel“.&#10;&#10;Gerne bestätigen wir Ihnen verbindlich Ihre Tischreservierung wie folgt:&#10;• Datum: Sonntag, 11. Mai 2025 (Muttertag)&#10;• Uhrzeit: 12:00 Uhr&#10;• Personenanzahl: 10 Personen&#10;• Tischwunsch: Großer Tisch am Fenster (Tisch 19)&#10;&#10;Am Muttertag verwöhnen wir Sie neben unserer regulären Speisekarte auch mit einem festlichen 4-Gang-Muttertagsmenü. Bitte teilen Sie uns kurz vorab mit, ob Kinderstühle benötigt werden oder besondere Allergien/Unverträglichkeiten zu berücksichtigen sind.&#10;&#10;Wir freuen uns sehr darauf, Sie und Ihre Familie am Muttertag bei uns begrüßen zu dürfen!&#10;&#10;Mit freundlichen Grüßen&#10;&#10;Ihr Team vom Restaurant „Glas und Gabel“&#10;i. A. Fachkraft für Gastronomie" placeholder="E-Mail-Text zur Reservierungsbestätigung an Frau Reiff..."></textarea>
+            </td>
+          </tr>
+        </table>
+
+        <details class="a4-loesung">
+          <summary>Vorgabe B — Reservierungsbestätigung Frau Reiff (7 Punkte)</summary>
+          <div class="a4-loesung-body">
+            • <strong>Betreff &amp; Höfliche Anrede / Grußformel (2 P.):</strong> <em>Sehr geehrte Frau Reiff, ... Mit freundlichen Grüßen</em><br>
+            • <strong>Alle 4 Reservierungsdaten vollständig genannt (4 P.):</strong> Datum (Sonntag, 11.05.2025 / Muttertag), Uhrzeit (12:00 Uhr), Personenzahl (10 Personen), Sonderwunsch (großer Tisch am Fenster).<br>
+            • <strong>Serviceorientierter Hinweis (1 P.):</strong> Hinweis auf das spezielle Muttertags-Menü bzw. Rückfrage nach Kinderstühlen/Unverträglichkeiten.
+          </div>
+        </details>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Sommer 2025 · Vorgabe B</span>
+        <span>Aufgabe 2.3 (7 Punkte)</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 6: VORGABE C (RESERVIERUNGSBUCH) ==================== -->
+    <section class="a4-page" id="blatt-6">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Sommer 2025</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+        <div class="abgabe-hinweis">Mit den Lösungsblättern abzugeben!</div>
+        <div class="name-klasse-line">
+          <label>Name: <input type="text" placeholder="..."></label>
+          <label>Klasse: <input type="text" style="width:90px;" placeholder="..."></label>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Vorgabe C</span>
+          <span>zur Aufgabe 2.4</span>
+        </div>
+
+        <h2 style="font-size:16px;margin:8px 0;">Auszug aus dem Reservierungsbuch — Sonntag, 11.05.2025 (Mittagsservice)</h2>
+        <div class="vi-box">
+          <strong>Hướng dẫn Vorgabe C (Aufgabe 2.4 — 6 Punkte):</strong> Đối chiếu số lượng khách + yêu cầu đặc biệt (<em>Bemerkung</em>) của từng đoàn với sơ đồ phòng ăn ở <strong>Anlage 4</strong> (trang 10) để điền đúng số bàn (<em>Tischnummer</em>). Lưu ý: Bàn đã xếp khách lúc 11:30 có thể đón tiếp lượt khách lúc 13:30/14:00 nếu cần, hoặc mỗi đoàn có đúng vị trí đặc thù trên sơ đồ.
+        </div>
+
+        <table class="a4-table" style="font-size:13px;">
+          <thead>
+            <tr>
+              <th style="width:14%;">Uhrzeit</th>
+              <th style="width:20%;text-align:left;">Name</th>
+              <th style="width:12%;">Personen</th>
+              <th style="width:36%;text-align:left;">Bemerkung / Gäste-Wunsch</th>
+              <th style="width:18%;">Tischnummer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align:center;">11:30 Uhr</td>
+              <td><strong>Müller</strong></td>
+              <td style="text-align:center;">4</td>
+              <td>mit Hund (ruhiger Eckplatz)</td>
+              <td><input class="a4-input" data-sol="Tisch 1 (oder Tisch 6)"></td>
+            </tr>
+            <tr>
+              <td style="text-align:center;">11:30 Uhr</td>
+              <td><strong>Schneider</strong></td>
+              <td style="text-align:center;">6</td>
+              <td>runder Tisch gewünscht</td>
+              <td><input class="a4-input" data-sol="Tisch 15 (oder Tisch 16 — 6er Rundtisch)"></td>
+            </tr>
+            <tr>
+              <td style="text-align:center;">12:00 Uhr</td>
+              <td><strong>Reiff</strong></td>
+              <td style="text-align:center;">10</td>
+              <td>großer Tisch am Fenster</td>
+              <td><input class="a4-input" data-sol="Tisch 19 (10er Tafel am Fenster)"></td>
+            </tr>
+            <tr>
+              <td style="text-align:center;">12:00 Uhr</td>
+              <td><strong>Weber</strong></td>
+              <td style="text-align:center;">2</td>
+              <td>am Fenster</td>
+              <td><input class="a4-input" data-sol="Tisch 11 (oder 12 / 13 — 2er am Fenster)"></td>
+            </tr>
+            <tr>
+              <td style="text-align:center;">12:00 Uhr</td>
+              <td><strong>Fischer</strong></td>
+              <td style="text-align:center;">4</td>
+              <td>mit Rollstuhl (barrierefrei, nahe Eingang/WC)</td>
+              <td><input class="a4-input" data-sol="Tisch 7 (oder Tisch 8 — 4er am breiten Gang)"></td>
+            </tr>
+            <tr>
+              <td style="text-align:center;">12:15 Uhr</td>
+              <td><strong>Wagner</strong></td>
+              <td style="text-align:center;">8</td>
+              <td>große Tafel im ruhigen Bereich</td>
+              <td><input class="a4-input" data-sol="Tisch 18 (8er Tafel)"></td>
+            </tr>
+            <tr>
+              <td style="text-align:center;">12:30 Uhr</td>
+              <td><strong>Becker</strong></td>
+              <td style="text-align:center;">6</td>
+              <td>mit 2 Kleinkindern / Kinderwagen (viel Platz)</td>
+              <td><input class="a4-input" data-sol="Tisch 16 (oder Tisch 17 — 6er mit viel Platz)"></td>
+            </tr>
+            <tr>
+              <td style="text-align:center;">12:30 Uhr</td>
+              <td><strong>Hoffmann</strong></td>
+              <td style="text-align:center;">2</td>
+              <td>ruhiger Zweiertisch (nicht am WC/Büfett)</td>
+              <td><input class="a4-input" data-sol="Tisch 12 (oder Tisch 13 / 14)"></td>
+            </tr>
+            <tr>
+              <td style="text-align:center;">13:00 Uhr</td>
+              <td><strong>Schäfer</strong></td>
+              <td style="text-align:center;">4</td>
+              <td>am Fenster</td>
+              <td><input class="a4-input" data-sol="Tisch 9 (oder Tisch 10 — 4er am Fenster)"></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <details class="a4-loesung">
+          <summary>Vorgabe C — Lösung Tischzuteilung nach Anlage 4 (6 Punkte)</summary>
+          <div class="a4-loesung-body">
+            • <strong>Müller (4 Pers., mit Hund):</strong> <code>Tisch 1</code> oder <code>Tisch 6</code> (4er-Tisch in ruhiger Ecke am Rand, Hund liegt nicht im Laufweg des Service).<br>
+            • <strong>Schneider (6 Pers., runder Tisch):</strong> <code>Tisch 15</code> oder <code>Tisch 16</code> (runder 6er-Tisch in der Raummitte).<br>
+            • <strong>Reiff (10 Pers., großer Tisch am Fenster):</strong> <code>Tisch 19</code> (einzige 10er-Tafel direkt an der Fensterfront).<br>
+            • <strong>Weber (2 Pers., am Fenster):</strong> <code>Tisch 11</code>, <code>12</code> oder <code>13</code> (2er-Tische an der Fensterseite).<br>
+            • <strong>Fischer (4 Pers., mit Rollstuhl):</strong> <code>Tisch 7</code> oder <code>Tisch 8</code> (4er-Tisch mit viel Bewegungsfreiheit nahe Eingang und barrierefreiem Zugang zu den Toiletten).<br>
+            • <strong>Wagner (8 Pers., ruhiger Bereich):</strong> <code>Tisch 18</code> (8er-Tafel im hinteren ruhigen Bereich).<br>
+            • <strong>Becker (6 Pers., Kinderwagen):</strong> <code>Tisch 16</code> oder <code>Tisch 17</code> (6er-Tisch mit Stellfläche für Kinderwagen).<br>
+            • <strong>Hoffmann (2 Pers., ruhig):</strong> <code>Tisch 12</code> / <code>13</code> / <code>14</code>.<br>
+            • <strong>Schäfer (4 Pers., am Fenster):</strong> <code>Tisch 9</code> oder <code>Tisch 10</code> (4er-Tisch am Fenster).
+          </div>
+        </details>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Sommer 2025 · Vorgabe C</span>
+        <span>Aufgabe 2.4 (6 Punkte)</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 7: ANLAGE 1 (STRAWBERRY-KISS) ==================== -->
+    <section class="a4-page" id="blatt-7">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Sommer 2025</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Anlage 1</span>
+          <span>zur Aufgabe 1.3</span>
+        </div>
+
+        <div style="border:2px solid var(--a4-ink);padding:20px 24px;max-width:520px;margin:24px auto;">
+          <h3 style="margin:0 0 10px;font-size:19px;">Rezept Aperitif „Strawberry-Kiss“ (für 4 Gläser)</h3>
+          <table class="a4-table" style="margin-bottom:16px;">
+            <thead>
+              <tr>
+                <th style="width:35%;">Menge (Netto)</th>
+                <th style="text-align:left;">Zutat</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td style="text-align:center;font-weight:700;">0,400 l</td><td>Sekt trocken</td></tr>
+              <tr><td style="text-align:center;font-weight:700;">0,100 kg</td><td>frische Erdbeeren (geputzt)</td></tr>
+              <tr><td style="text-align:center;font-weight:700;">8 Blätter</td><td>frische Minze</td></tr>
+            </tbody>
+          </table>
+
+          <h4 style="margin:12px 0 6px;font-size:15px;">Einkaufsgebinde &amp; Kalkulationsdaten:</h4>
+          <ul style="margin:0 0 0 20px;line-height:1.6;">
+            <li><strong>Sekt trocken:</strong> Flasche à <code>0,75 l</code> (Schankverlust: <strong>6 %</strong>)</li>
+            <li><strong>Erdbeeren frisch:</strong> Kiste à <code>1,000 kg</code> (Putzverlust: <strong>19 %</strong>)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Sommer 2025 · Anlage 1</span>
+        <span>Nicht abzugeben</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 8: ANLAGE 2 (MENÜENTWURF MUTTERTAG) ==================== -->
+    <section class="a4-page" id="blatt-8">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Sommer 2025</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Anlage 2</span>
+          <span>zur Aufgabe 2.1</span>
+        </div>
+
+        <div style="border:2.5px solid var(--a4-ink);padding:28px;max-width:480px;margin:24px auto;text-align:center;background:#FAF8F2;">
+          <h3 style="font-size:22px;margin:0 0 6px;">Muttertags-Menü</h3>
+          <p style="margin:0 0 20px;font-style:italic;">Sonntag, 11. Mai 2025 · Restaurant „Glas und Gabel“</p>
+
+          <p style="font-size:15.5px;margin:0 0 14px;">
+            <strong>Spargelcremesuppe</strong><br>
+            ***
+          </p>
+          <p style="font-size:15.5px;margin:0 0 14px;">
+            <strong>Kleiner Frühlingssalat mit Sahnedressing<br>und Bärlauch-Croûtons</strong><br>
+            ***
+          </p>
+          <p style="font-size:15.5px;margin:0 0 14px;">
+            <strong>Gegrilltes Lachsfilet<br>auf gebratenem Spargel und Sauce Hollandaise</strong><br>
+            ***
+          </p>
+          <p style="font-size:15.5px;margin:0;">
+            <strong>Frische Erdbeeren mit Vanilleeis<br>und Sahnehaube</strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Sommer 2025 · Anlage 2</span>
+        <span>Nicht abzugeben</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 9: ANLAGE 3 (AUSZUG WEINKARTE) ==================== -->
+    <section class="a4-page" id="blatt-9">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Sommer 2025</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Anlage 3</span>
+          <span>zur Aufgabe 2.2</span>
+        </div>
+
+        <h3 style="margin:8px 0 12px;font-size:16px;">Auszug aus der Weinkarte „Glas und Gabel“</h3>
+
+        <table class="a4-table">
+          <thead>
+            <tr>
+              <th style="width:28%;text-align:left;">Weinbezeichnung</th>
+              <th style="width:22%;text-align:left;">Weingut / Anbaugebiet</th>
+              <th style="width:50%;text-align:left;">Charakteristik / Sensorik</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#EDF7ED;">
+              <td><strong>2023 Weißburgunder „Sonett“</strong><br>Qualitätswein trocken</td>
+              <td>Weingut Kiefer,<br>Baden</td>
+              <td>Zarter Duft nach gelber Birne und Mandelblüte, milde und harmonische Säure, feiner Schmelz; idealer Begleiter zu gebratenem Fisch und Spargelgerichten.</td>
+            </tr>
+            <tr style="background:#EDF7ED;">
+              <td><strong>2023 Chardonnay „Granit“</strong><br>Qualitätswein trocken</td>
+              <td>Weingut Vorgrimmler,<br>Baden</td>
+              <td>Kräftiger, eleganter Körper mit feiner Mineralität, dezente Röstaromen und gut eingebundene Säure; passt hervorragend zu gegrilltem Fisch und hellen Saucen.</td>
+            </tr>
+            <tr>
+              <td><strong>2022 Riesling Auslese</strong><br>edelsüß</td>
+              <td>Weingut Dr. Loosen,<br>Mosel</td>
+              <td>Intensiv fruchtige Süße nach Pfirsich und Honigmelone, kräftige Säure; klassischer Dessertwein zu fruchtigen Süßspeisen oder Blauschimmelkäse.</td>
+            </tr>
+            <tr>
+              <td><strong>2020 Lemberger Barrique</strong><br>Qualitätswein trocken</td>
+              <td>Weingut Graf Adelmann,<br>Württemberg</td>
+              <td>Kräftiger, tanninreicher Rotwein mit intensiven Holz-, Brombeer- und Pfeffernoten; ideal zu dunklem Rindfleisch, Lamm und Wildgerichten.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Sommer 2025 · Anlage 3</span>
+        <span>Nicht abzugeben</span>
+      </div>
+    </section>
+
+    <!-- ==================== TỜ 10: ANLAGE 4 (TISCHPLAN) ==================== -->
+    <section class="a4-page" id="blatt-10">
+      <div>
+        <div class="a4-running-head">
+          <div class="rh-left">FA 531/1</div>
+          <div class="rh-center">Sommer 2025</div>
+          <div class="rh-right">Gasterlebnis, Verkaufsförderung<br>und Warenlagerung</div>
+        </div>
+
+        <div class="vorgabe-bar">
+          <span>Anlage 4</span>
+          <span>zur Aufgabe 2.4</span>
+        </div>
+
+        <h3 style="margin:6px 0 10px;font-size:16px;">Tischplan Restaurant „Glas und Gabel“ (Tisch 1 bis Tisch 19)</h3>
+
+        <div style="border:2px solid var(--a4-ink);padding:14px;background:#FAF8F2;">
+          <svg viewBox="0 0 680 420" style="width:100%;display:block;margin:0 auto;">
+            <!-- Außenwand -->
+            <rect x="10" y="10" width="660" height="400" fill="#FFFDF9" stroke="#222" stroke-width="2.5"/>
+            <!-- Fensterfront oben -->
+            <rect x="60" y="6" width="560" height="8" fill="#8AB4D8" stroke="#222" stroke-width="1"/>
+            <text x="340" y="28" text-anchor="middle" font-size="12" font-weight="bold">FENSTERFRONT (Blick in den Sommergarten)</text>
+
+            <!-- Fenster-Tische oben: Tisch 9, 10 (4er), Tisch 11, 12, 13 (2er), Tisch 19 (10er Tafel am Fenster rechts) -->
+            <rect x="30" y="42" width="75" height="48" fill="#EFECE6" stroke="#222" stroke-width="1.5"/><text x="67" y="64" text-anchor="middle" font-weight="bold" font-size="11">Tisch 9</text><text x="67" y="78" text-anchor="middle" font-size="10">(4 Pers.)</text>
+            <rect x="120" y="42" width="75" height="48" fill="#EFECE6" stroke="#222" stroke-width="1.5"/><text x="157" y="64" text-anchor="middle" font-weight="bold" font-size="11">Tisch 10</text><text x="157" y="78" text-anchor="middle" font-size="10">(4 Pers.)</text>
+
+            <rect x="215" y="42" width="52" height="48" fill="#EFECE6" stroke="#222" stroke-width="1.5"/><text x="241" y="64" text-anchor="middle" font-weight="bold" font-size="11">T 11</text><text x="241" y="78" text-anchor="middle" font-size="10">(2 P.)</text>
+            <rect x="280" y="42" width="52" height="48" fill="#EFECE6" stroke="#222" stroke-width="1.5"/><text x="306" y="64" text-anchor="middle" font-weight="bold" font-size="11">T 12</text><text x="306" y="78" text-anchor="middle" font-size="10">(2 P.)</text>
+            <rect x="345" y="42" width="52" height="48" fill="#EFECE6" stroke="#222" stroke-width="1.5"/><text x="371" y="64" text-anchor="middle" font-weight="bold" font-size="11">T 13</text><text x="371" y="78" text-anchor="middle" font-size="10">(2 P.)</text>
+
+            <rect x="420" y="38" width="230" height="58" fill="#FFF8E6" stroke="#222" stroke-width="2"/><text x="535" y="64" text-anchor="middle" font-weight="bold" font-size="12">Tisch 19 (Fenstertafel)</text><text x="535" y="80" text-anchor="middle" font-size="11">(10 Personen)</text>
+
+            <!-- Mittlere Reihe: Runde 6er Tische 15, 16, 17 + 2er Tisch 14 + 8er Tafel 18 -->
+            <circle cx="155" cy="185" r="38" fill="#EFECE6" stroke="#222" stroke-width="1.6"/><text x="155" y="182" text-anchor="middle" font-weight="bold" font-size="11">Tisch 15</text><text x="155" y="196" text-anchor="middle" font-size="10">(6 Pers. rund)</text>
+            <circle cx="275" cy="185" r="38" fill="#EFECE6" stroke="#222" stroke-width="1.6"/><text x="275" y="182" text-anchor="middle" font-weight="bold" font-size="11">Tisch 16</text><text x="275" y="196" text-anchor="middle" font-size="10">(6 Pers. rund)</text>
+            <rect x="345" y="155" width="85" height="58" fill="#EFECE6" stroke="#222" stroke-width="1.5"/><text x="387" y="182" text-anchor="middle" font-weight="bold" font-size="11">Tisch 17</text><text x="387" y="196" text-anchor="middle" font-size="10">(6 Pers.)</text>
+
+            <rect x="460" y="140" width="190" height="56" fill="#EFECE6" stroke="#222" stroke-width="1.8"/><text x="555" y="166" text-anchor="middle" font-weight="bold" font-size="12">Tisch 18 (Ruhige Ecke)</text><text x="555" y="182" text-anchor="middle" font-size="11">(8 Personen)</text>
+            <rect x="460" y="215" width="58" height="46" fill="#EFECE6" stroke="#222" stroke-width="1.5"/><text x="489" y="236" text-anchor="middle" font-weight="bold" font-size="11">T 14</text><text x="489" y="250" text-anchor="middle" font-size="10">(2 P.)</text>
+
+            <!-- Linke & Untere Reihe: Tische 1 bis 8 (4er Tische) -->
+            <rect x="30" y="145" width="68" height="48" fill="#EFECE6" stroke="#222" stroke-width="1.5"/><text x="64" y="167" text-anchor="middle" font-weight="bold" font-size="11">Tisch 1</text><text x="64" y="181" text-anchor="middle" font-size="10">(4 P. Ecke)</text>
+            <rect x="30" y="210" width="68" height="48" fill="#EFECE6" stroke="#222" stroke-width="1.5"/><text x="64" y="232" text-anchor="middle" font-weight="bold" font-size="11">Tisch 2</text><text x="64" y="246" text-anchor="middle" font-size="10">(4 Pers.)</text>
+            <rect x="30" y="275" width="68" height="48" fill="#EFECE6" stroke="#222" stroke-width="1.5"/><text x="64" y="297" text-anchor="middle" font-weight="bold" font-size="11">Tisch 3</text><text x="64" y="311" text-anchor="middle" font-size="10">(4 Pers.)</text>
+            <rect x="120" y="275" width="68" height="48" fill="#EFECE6" stroke="#222" stroke-width="1.5"/><text x="154" y="297" text-anchor="middle" font-weight="bold" font-size="11">Tisch 4</text><text x="154" y="311" text-anchor="middle" font-size="10">(4 Pers.)</text>
+            <rect x="210" y="275" width="68" height="48" fill="#EFECE6" stroke="#222" stroke-width="1.5"/><text x="244" y="297" text-anchor="middle" font-weight="bold" font-size="11">Tisch 5</text><text x="244" y="311" text-anchor="middle" font-size="10">(4 Pers.)</text>
+            <rect x="300" y="275" width="68" height="48" fill="#EFECE6" stroke="#222" stroke-width="1.5"/><text x="334" y="297" text-anchor="middle" font-weight="bold" font-size="11">Tisch 6</text><text x="334" y="311" text-anchor="middle" font-size="10">(4 P. Rand)</text>
+
+            <!-- Barrierefreie 4er Tische 7 & 8 nahe Eingang / WC -->
+            <rect x="400" y="285" width="80" height="50" fill="#EDF7ED" stroke="#222" stroke-width="1.6"/><text x="440" y="307" text-anchor="middle" font-weight="bold" font-size="11">Tisch 7</text><text x="440" y="322" text-anchor="middle" font-size="10">(4 P. breiter Gang)</text>
+            <rect x="500" y="285" width="80" height="50" fill="#EDF7ED" stroke="#222" stroke-width="1.6"/><text x="540" y="307" text-anchor="middle" font-weight="bold" font-size="11">Tisch 8</text><text x="540" y="322" text-anchor="middle" font-size="10">(4 P. barrierefrei)</text>
+
+            <!-- Funktionsbereiche unten -->
+            <rect x="25" y="355" width="160" height="42" fill="#D6D3CD" stroke="#222" stroke-width="1.5"/><text x="105" y="381" text-anchor="middle" font-weight="bold" font-size="12">THEKE / BUFFET</text>
+            <rect x="215" y="355" width="140" height="42" fill="#D6D3CD" stroke="#222" stroke-width="1.5"/><text x="285" y="381" text-anchor="middle" font-weight="bold" font-size="12">ZUGANG KÜCHE</text>
+            <rect x="395" y="355" width="120" height="42" fill="#EAE8E3" stroke="#222" stroke-width="1.5"/><text x="455" y="381" text-anchor="middle" font-weight="bold" font-size="12">EINGANG</text>
+            <rect x="535" y="355" width="120" height="42" fill="#EAE8E3" stroke="#222" stroke-width="1.5"/><text x="595" y="381" text-anchor="middle" font-weight="bold" font-size="12">WC (barrierefrei)</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="a4-footer-note">
+        <span>FA 531/1 · Sommer 2025 · Anlage 4</span>
+        <span>Nicht abzugeben</span>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/a4-gvw-exam.js"></script>
+</body>
+</html>
