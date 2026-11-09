@@ -1,244 +1,849 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="vi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#007AFF">
+<meta name="theme-color" content="#9A4607">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="apple-touch-icon" href="./images/icons/apple-touch-icon.png">
-<title>Admin · AzubiHub</title>
+<title>Quản trị Hệ thống · AzubiHub</title>
 <style>
 :root{
-  --bg:#F2F2F7; --card:#ffffff; --line:#E5E5EA; --ink:#000; --muted:#8E8E93;
-  --accent:#007AFF; --soft:#EAF3FF; --ok:#248A3D; --bad:#C4342B;
-  --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06);
+  --bg:#E2D8C2;
+  --surface:#FDFBF6;
+  --surface-card:#FDFBF6;
+  --sidebar:#F7F2E7;
+  --sidebar-active:#EFE7D5;
+  --ink:#0F172A;
+  --muted:#5A5344;
+  --line:#B5A27C;
+  --line-light:#E0D4BA;
+  --accent:#9A4607;
+  --accent-soft:#F7E6CC;
+  --accent-hover:#D97706;
+  --ok:#3F5C39;
+  --okbg:#EEF3EA;
+  --bad:#9A4607;
+  --badbg:#FDF3E3;
+  --warn:#B45309;
+  --warnbg:#FDF3E3;
+  --radius:12px;
+  --radius-sm:8px;
+  --shadow:0 2px 10px rgba(15,23,42,0.05);
   --safe-bottom:env(safe-area-inset-bottom,0px);
+  --font-ui:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  --font-head:"Playfair Display",Georgia,serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
-body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-.wrap{max-width:1100px;margin:0 auto;padding:20px 16px calc(48px + var(--safe-bottom));min-width:0}
-.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}
-.brand{font-weight:600;font-size:1.1em;display:flex;align-items:center;gap:8px;letter-spacing:-.01em}
-.brand a{color:var(--muted);font-size:.82em;font-weight:500;text-decoration:none}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:14px;box-shadow:none;
-  animation:aIn .4s cubic-bezier(.22,1,.36,1) both}
-.card h2{font-size:1em;margin-bottom:10px;font-weight:600}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:14px}
-.stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;
-  animation:aIn .45s cubic-bezier(.22,1,.36,1) both}
-.stat .n{font-size:1.55em;font-weight:500;color:var(--ink);letter-spacing:-.02em}
-.stat .l{font-size:.78em;color:var(--muted);margin-top:3px}
-.grid .stat:nth-child(2){animation-delay:.05s}.grid .stat:nth-child(3){animation-delay:.1s}
-.grid .stat:nth-child(4){animation-delay:.15s}.grid .stat:nth-child(5){animation-delay:.2s}
-.grid .stat:nth-child(6){animation-delay:.25s}
-@keyframes aIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-input,button{font:inherit}
-input[type=password],input[type=text]{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;
-  background:#fff;color:var(--ink);margin:8px 0 12px}
-input:focus{outline:none;border-color:#007AFF}
-button{border:none;background:var(--accent);color:#fff;font-weight:500;border-radius:12px;padding:12px 16px;cursor:pointer}
-button.ghost{background:#E5E5EA;color:var(--accent);border:none}
-button:hover{background:#0062CC}
-button.ghost:hover{background:var(--soft);color:var(--accent)}
-.err{display:none;background:#FFF0F0;color:var(--bad);border:none;border-radius:10px;padding:8px 10px;font-size:.86em;margin-bottom:10px}
+body{
+  font-family:var(--font-ui);
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.5;
+  min-height:100vh;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* App Shell Layout */
+.app-shell{
+  display:flex;
+  min-height:100vh;
+}
+.sidebar{
+  width:260px;
+  background:var(--sidebar);
+  border-right:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  flex-shrink:0;
+  position:sticky;
+  top:0;
+  height:100vh;
+  overflow-y:auto;
+  z-index:20;
+}
+.sidebar-header{
+  padding:16px 18px;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.brand{
+  font-family:var(--font-head);
+  font-weight:700;
+  font-size:1.12em;
+  color:var(--ink);
+  display:flex;
+  align-items:center;
+  gap:8px;
+  text-decoration:none;
+}
+.brand-live{
+  display:inline-block;
+  width:8px;
+  height:8px;
+  border-radius:999px;
+  background:var(--ok);
+  box-shadow:0 0 0 3px rgba(63,92,57,0.2);
+}
+.nav-group-title{
+  font-size:0.7em;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  color:var(--muted);
+  padding:14px 18px 6px;
+}
+.sidebar-nav{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  padding:0 10px;
+}
+.nav-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:9px 12px;
+  border-radius:var(--radius-sm);
+  font-size:0.86em;
+  font-weight:500;
+  color:var(--muted);
+  background:transparent;
+  border:none;
+  cursor:pointer;
+  text-align:left;
+  width:100%;
+  transition:all 0.15s ease;
+}
+.nav-item:hover{
+  background:var(--sidebar-active);
+  color:var(--ink);
+}
+.nav-item.active{
+  background:var(--accent);
+  color:#fff;
+  font-weight:600;
+}
+.nav-item svg{
+  width:18px;
+  height:18px;
+  flex-shrink:0;
+}
+.nav-badge{
+  margin-left:auto;
+  background:var(--accent);
+  color:#fff;
+  font-size:0.72em;
+  padding:1px 7px;
+  border-radius:999px;
+  font-weight:700;
+}
+.nav-item.active .nav-badge{
+  background:#fff;
+  color:var(--accent);
+}
+.sidebar-footer{
+  margin-top:auto;
+  padding:14px 16px;
+  border-top:1px solid var(--line);
+  font-size:0.76em;
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.sidebar-footer a{
+  color:var(--accent);
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* Main Area */
+.main-content{
+  flex:1;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  padding:20px 24px calc(48px + var(--safe-bottom));
+}
+.top-bar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:20px;
+  padding-bottom:14px;
+  border-bottom:1px solid var(--line);
+}
+.page-titles h1{
+  font-family:var(--font-head);
+  font-size:1.45em;
+  font-weight:700;
+  color:var(--ink);
+  letter-spacing:-0.01em;
+}
+.page-titles p{
+  font-size:0.84em;
+  color:var(--muted);
+  margin-top:2px;
+}
+.top-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.online-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:var(--okbg);
+  border:1px solid #B7C9B1;
+  color:var(--ok);
+  padding:5px 12px;
+  border-radius:999px;
+  font-size:0.78em;
+  font-weight:600;
+}
+.online-pulse{
+  width:7px;
+  height:7px;
+  border-radius:999px;
+  background:var(--ok);
+  display:inline-block;
+  box-shadow:0 0 0 2px rgba(63,92,57,0.25);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{
+  0%{transform:scale(0.95);box-shadow:0 0 0 0 rgba(63,92,57,0.5)}
+  70%{transform:scale(1);box-shadow:0 0 0 6px rgba(63,92,57,0)}
+  100%{transform:scale(0.95);box-shadow:0 0 0 0 rgba(63,92,57,0)}
+}
+
+/* Cards & UI Elements */
+.card{
+  background:var(--surface-card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:18px 20px;
+  margin-bottom:16px;
+  box-shadow:var(--shadow);
+}
+.card-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:12px;
+  flex-wrap:wrap;
+}
+.card-title{
+  font-family:var(--font-head);
+  font-size:1.06em;
+  font-weight:700;
+  color:var(--ink);
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.card-title svg{
+  width:18px;
+  height:18px;
+  color:var(--accent);
+}
+.card-sub{
+  font-size:0.82em;
+  color:var(--muted);
+  margin-top:2px;
+}
+
+/* Stats KPI Grid */
+.kpi-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:12px;
+  margin-bottom:16px;
+}
+.kpi-stat{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:16px;
+  box-shadow:var(--shadow);
+}
+.kpi-stat .lbl{
+  font-size:0.78em;
+  color:var(--muted);
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+}
+.kpi-stat .val{
+  font-size:1.65em;
+  font-weight:700;
+  color:var(--ink);
+  margin-top:4px;
+  line-height:1.2;
+}
+.kpi-stat .sub{
+  font-size:0.78em;
+  color:var(--muted);
+  margin-top:4px;
+}
+
+/* Tables */
+.tscroll{
+  max-height:440px;
+  overflow:auto;
+  -webkit-overflow-scrolling:touch;
+  border:1px solid var(--line);
+  border-radius:var(--radius-sm);
+  background:var(--surface);
+}
+table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:0.83em;
+  text-align:left;
+}
+th{
+  background:#FAF5E8;
+  color:var(--muted);
+  padding:9px 12px;
+  font-size:0.74em;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  font-weight:700;
+  border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  z-index:2;
+}
+td{
+  padding:10px 12px;
+  border-top:1px solid var(--line-light);
+  color:var(--ink);
+  vertical-align:middle;
+}
+tbody tr:hover{
+  background:#FAF6EE;
+}
+
+/* Tags & Badges */
+.tag{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  background:var(--accent-soft);
+  border:1px solid #E6C694;
+  border-radius:6px;
+  padding:2px 8px;
+  font-size:0.75em;
+  color:var(--accent);
+  font-weight:600;
+  line-height:1.3;
+}
+.tag-ok{
+  background:var(--okbg);
+  border-color:#B7C9B1;
+  color:var(--ok);
+}
+.tag-bad{
+  background:var(--badbg);
+  border-color:#E8B8B4;
+  color:var(--bad);
+}
+.tag-muted{
+  background:#EFECE4;
+  border-color:var(--line);
+  color:var(--muted);
+}
+.tag-tier{
+  border-radius:999px;
+  padding:2px 9px;
+  font-size:0.72em;
+  font-weight:700;
+}
+.tag-tier.free{background:#EFECE4;color:#6C6C70;border:1px solid #D1CDC4}
+.tag-tier.paid{background:var(--okbg);color:var(--ok);border:1px solid #B7C9B1}
+.tag-tier.super{background:#F6EDFC;color:#8944AB;border:1px solid #DFCAEA}
+
+/* Buttons & Inputs */
+input,select,button{font:inherit}
+input[type=password],input[type=text],input[type=number],select{
+  width:100%;
+  padding:9px 12px;
+  border:1px solid var(--line);
+  border-radius:var(--radius-sm);
+  background:#fff;
+  color:var(--ink);
+  margin-top:4px;
+  margin-bottom:10px;
+}
+input:focus,select:focus{
+  outline:none;
+  border-color:var(--accent);
+  box-shadow:0 0 0 2px rgba(154,70,7,0.15);
+}
+button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  border:none;
+  background:var(--accent);
+  color:#fff;
+  font-weight:600;
+  border-radius:var(--radius-sm);
+  padding:9px 14px;
+  font-size:0.84em;
+  cursor:pointer;
+  transition:all 0.15s ease;
+}
+button:hover{
+  background:var(--accent-hover);
+}
+button.ghost{
+  background:transparent;
+  border:1px solid var(--line);
+  color:var(--ink);
+}
+button.ghost:hover{
+  background:var(--sidebar-active);
+}
+button.mini{
+  padding:5px 9px;
+  font-size:0.78em;
+  border-radius:6px;
+}
+
+/* Quick Filter Pills */
+.filter-row{
+  display:flex;
+  gap:6px;
+  align-items:center;
+  flex-wrap:wrap;
+  margin-bottom:10px;
+}
+.pill-btn{
+  background:transparent;
+  border:1px solid var(--line);
+  color:var(--muted);
+  border-radius:999px;
+  padding:4px 12px;
+  font-size:0.78em;
+  font-weight:600;
+  cursor:pointer;
+}
+.pill-btn:hover{
+  background:var(--sidebar-active);
+  color:var(--ink);
+}
+.pill-btn.active{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:#fff;
+}
+
+/* Toggle Switch Pill */
+.toggle-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding:3px 9px;
+  border-radius:999px;
+  font-size:0.76em;
+  font-weight:700;
+  cursor:pointer;
+  border:1px solid var(--line);
+  background:transparent;
+}
+.toggle-btn.on{
+  background:var(--okbg);
+  border-color:var(--ok);
+  color:var(--ok);
+}
+.toggle-btn.off{
+  background:#FAF5E8;
+  border-color:var(--line);
+  color:var(--muted);
+}
+
+/* Progress bar */
+.pbar{
+  width:100%;
+  height:7px;
+  background:#E5DCC9;
+  border-radius:999px;
+  overflow:hidden;
+  margin-top:4px;
+}
+.pbar-fill{
+  height:100%;
+  background:var(--ok);
+  border-radius:999px;
+}
+.pbar-fill.warn{
+  background:var(--accent);
+}
+
+/* Charts / Day Bars */
+.day-bars{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  margin-top:8px;
+}
+.bar-row{
+  display:grid;
+  grid-template-columns:56px 1fr 40px;
+  gap:8px;
+  align-items:center;
+  font-size:0.8em;
+}
+.bar-track{
+  height:8px;
+  background:#E5DCC9;
+  border-radius:999px;
+  overflow:hidden;
+}
+.bar-fill{
+  height:100%;
+  background:var(--accent);
+  border-radius:999px;
+}
+
+/* Panes */
+.pane{
+  display:none;
+}
+.pane.active{
+  display:block;
+  animation:fadeIn 0.25s ease;
+}
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(6px)}
+  to{opacity:1;transform:none}
+}
+
+/* Login Modal / Box */
+#loginBox{
+  max-width:380px;
+  margin:12vh auto 0;
+  text-align:left;
+}
+.err{
+  display:none;
+  background:var(--badbg);
+  color:var(--bad);
+  border:1px solid #E8B8B4;
+  border-radius:var(--radius-sm);
+  padding:8px 12px;
+  font-size:0.82em;
+  margin-bottom:10px;
+}
 .err.show{display:block}
-table{width:100%;border-collapse:collapse;font-size:.84em;background:#F2F2F7;border-radius:10px;overflow:hidden}
-th,td{padding:9px 12px;text-align:left;vertical-align:top}
-th{background:#E5E5EA;color:#3C3C43;font-size:.72em;text-transform:uppercase;letter-spacing:.04em;font-weight:600}
-td{border-top:1px solid var(--line);color:var(--ink)}
-/* Tabelle auf ~5 Zeilen begrenzen, dann vertikal scrollen; Header bleibt beim Scrollen stehen. */
-.tscroll{max-height:236px;overflow:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:10px}
-.tscroll table{border-radius:0}
-.tscroll thead th{position:sticky;top:0;z-index:2}
-.muted{color:var(--muted);font-size:.86em}
-.tag{display:inline-block;background:var(--soft);border:none;border-radius:20px;padding:2px 10px;font-size:.72em;color:var(--accent);font-weight:600}
-.row-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
-#dash{display:none}
-#loginBox{max-width:400px;margin:10vh auto 0;text-align:left}
-#loginBox h2{font-weight:500;font-size:1.25em;letter-spacing:-.01em}
-.bars{display:flex;flex-direction:column;gap:8px;margin-top:8px}
-.bar-row{display:grid;grid-template-columns:72px 1fr 48px;gap:8px;align-items:center;font-size:.82em}
-.bar-track{height:8px;background:#E5E5EA;border-radius:99px;overflow:hidden}
-.bar-fill{height:100%;background:#007AFF;border-radius:99px}
-/* ===== Zugriffsstufen ===== */
-select{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;
-  color:var(--ink);font:inherit;margin:8px 0 12px;-webkit-appearance:none;appearance:none}
-select:focus{outline:none;border-color:#007AFF}
-.tier-form{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
-.tier-form>div{min-width:0}
-.tier-form button{flex:0 0 auto;margin-bottom:12px}
-.t-badge{display:inline-block;border-radius:999px;padding:2px 10px;font-size:.72em;font-weight:600}
-.t-badge.free{background:#E5E5EA;color:#6C6C70}
-.t-badge.paid{background:#E3F7E8;color:#248A3D}
-.t-badge.super{background:#F6EDFC;color:#8944AB}
-.mini{border:none;background:#E5E5EA;color:var(--accent);border-radius:9px;padding:6px 10px;
-  font-size:.86em;font-weight:500;cursor:pointer;min-height:0}
-.mini:hover{background:var(--soft)}
-.mani-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
-.mani-row{display:flex;align-items:center;gap:10px;background:#F2F2F7;border-radius:12px;padding:10px 12px}
-.mani-row .lbl{flex:1;min-width:0;font-size:.86em;line-height:1.35}
-.mani-row .lbl small{display:block;color:var(--muted);font-size:.86em}
-.mani-row select{width:104px;margin:0;padding:7px 9px;font-size:.86em}
-/* ===== Fortschritts-Matrix ===== */
-.mx-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
-.mx-tab{background:#E5E5EA;color:#3C3C43;border-radius:99px;padding:6px 14px;font-size:.82em;
-  font-weight:600;cursor:pointer;border:none;min-height:0}
-.mx-tab.active{background:var(--accent);color:#fff}
-.mx-legend{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:10px;font-size:.76em;color:var(--muted)}
-.mx-legend span{display:inline-flex;align-items:center;gap:5px}
-.mx-key{width:14px;height:14px;border-radius:4px;border:1px solid var(--line);display:inline-block}
-.mx-k-done{background:#248A3D}.mx-k-learn{background:#F0A020}.mx-k-seen{background:#BcD4F5;background:#BCD4F5}
-.mx-k-none{background:#F2F2F7}
-.mx-scroll{max-height:280px;overflow:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:12px}
-table.mx{border-collapse:separate;border-spacing:0;font-size:.8em;background:#fff;min-width:max-content}
+
+/* Matrix Table */
+.mx-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.mx-tab{
+  background:transparent;
+  border:1px solid var(--line);
+  color:var(--muted);
+  border-radius:999px;
+  padding:4px 12px;
+  font-size:0.78em;
+  font-weight:600;
+  cursor:pointer;
+}
+.mx-tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.mx-legend{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:10px;font-size:0.75em;color:var(--muted)}
+.mx-key{width:12px;height:12px;border-radius:3px;display:inline-block;vertical-align:middle;margin-right:4px}
+.mx-k-done{background:var(--ok)}
+.mx-k-learn{background:#D97706}
+.mx-k-seen{background:#8DA9C4}
+.mx-k-none{background:#E5DCC9}
+table.mx{border-collapse:separate;border-spacing:0;font-size:0.78em;background:#fff;min-width:max-content}
 table.mx th,table.mx td{padding:0;text-align:center;border:0}
-table.mx thead th{background:#fff;position:sticky;top:0;z-index:2;padding:6px 3px;font-size:.9em}
-table.mx thead th.mx-name{text-align:left}
-table.mx .mx-namecol{position:sticky;left:0;z-index:1;background:#fff;text-align:left;
-  padding:6px 10px;min-width:120px;max-width:150px;border-right:1px solid var(--line);
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-table.mx thead th.mx-namecol{z-index:3}
+table.mx thead th{background:#FAF5E8;position:sticky;top:0;z-index:2;padding:6px 4px;font-size:0.88em}
+table.mx .mx-namecol{position:sticky;left:0;z-index:1;background:#fff;text-align:left;padding:6px 10px;min-width:120px;max-width:150px;border-right:1px solid var(--line);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+table.mx thead th.mx-namecol{z-index:3;background:#FAF5E8}
 table.mx .mx-cell{width:26px;height:26px;min-width:26px}
-table.mx .mx-dot{width:20px;height:20px;border-radius:6px;margin:2px auto;display:block;border:1px solid rgba(0,0,0,.05)}
-.d-done{background:#248A3D}.d-learn{background:#F0A020}.d-seen{background:#BCD4F5}.d-none{background:#F2F2F7}
-table.mx tbody tr:nth-child(even) .mx-namecol{background:#FAFAFC}
-table.mx tbody tr:hover td{background:#F5F9FF}
-table.mx tbody tr:hover .mx-namecol{background:#EAF3FF}
-.mx-vh{font-size:.7em;color:var(--muted);writing-mode:vertical-rl;transform:rotate(180deg);
-  white-space:nowrap;max-height:120px;line-height:1.1;margin:0 auto}
-.mx-pct{font-weight:700;font-size:.78em}
-.mx-pct.hi{color:var(--ok)}.mx-pct.mid{color:#B26A00}.mx-pct.lo{color:var(--muted)}
-.mx-empty{padding:16px;text-align:center;color:var(--muted);font-size:.86em}
-/* ===== Main Section Switcher & Deutsch UI ===== */
-.main-tabs{display:flex;gap:8px;margin-bottom:16px;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch}
-.main-tab{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 18px;font:inherit;font-size:.88em;font-weight:600;color:var(--muted);cursor:pointer;white-space:nowrap;transition:all .2s ease}
-.main-tab.active{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 2px 8px rgba(0,122,255,.25)}
-.sec-pane{display:none}
-.sec-pane.active{display:block;animation:aIn .35s cubic-bezier(.22,1,.36,1)}
-.alert-card{background:#FFF5F5;border:1px solid #FFD1D1;border-radius:16px;padding:18px;margin-bottom:14px;animation:aIn .4s cubic-bezier(.22,1,.36,1) both}
-.alert-card h2{color:var(--bad);font-size:1em;margin-bottom:8px;font-weight:600}
-.pill-badge{display:inline-block;border-radius:99px;padding:3px 10px;font-size:.74em;font-weight:700}
-.pill-ok{background:#E3F7E8;color:#248A3D}
-.pill-bad{background:#FFF0F0;color:#C4342B}
-.pill-warn{background:#FFF9E6;color:#8A6D00}
-.pill-blue{background:#EAF3FF;color:#007AFF}
-@media (max-width:640px){
-  .wrap{padding:14px 12px calc(40px + var(--safe-bottom))}
-  .brand{font-size:1em}
-  table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
-  button{min-height:44px}
-  .bar-row{grid-template-columns:56px 1fr 40px}
+table.mx .mx-dot{width:18px;height:18px;border-radius:4px;margin:3px auto;display:block}
+.d-done{background:var(--ok)}.d-learn{background:#D97706}.d-seen{background:#8DA9C4}.d-none{background:#E5DCC9}
+.mx-vh{font-size:0.72em;color:var(--muted);writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;max-height:110px;line-height:1.1;margin:0 auto}
+
+/* Responsive */
+@media (max-width:860px){
+  .app-shell{flex-direction:column}
+  .sidebar{width:100%;height:auto;position:relative;border-right:none;border-bottom:1px solid var(--line)}
+  .sidebar-nav{flex-direction:row;overflow-x:auto;padding-bottom:10px}
+  .nav-group-title{display:none}
+  .nav-item{white-space:nowrap}
+  .main-content{padding:14px 12px calc(36px + var(--safe-bottom))}
 }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="top">
-    <div class="brand">Admin · AzubiHub <a href="index.html">← App</a></div>
-    <button class="ghost" id="btnRefresh" style="display:none" type="button">↻ Aktualisieren</button>
-  </div>
 
-  <div class="card" id="loginBox">
-    <h2>Admin-Login</h2>
-    <p class="muted">Besucher, Lernzeit und Quiz-Punkte anzeigen.</p>
-    <div class="err" id="err"></div>
-    <label class="muted" for="pass">Passwort</label>
-    <input id="pass" type="password" placeholder="Admin-Passwort" autocomplete="current-password">
-    <button type="button" id="btnLogin">Zum Dashboard</button>
+<!-- Login Form -->
+<div class="card" id="loginBox">
+  <div class="brand" style="margin-bottom:12px">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;color:var(--accent)"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    <span>AzubiHub · Quản trị</span>
   </div>
+  <p class="card-sub" style="margin-bottom:14px">Nhập mật khẩu Admin để vào bảng điều khiển và theo dõi học tập.</p>
+  <div class="err" id="err"></div>
+  <label style="font-size:0.8em;color:var(--muted);font-weight:600" for="pass">Mật khẩu Quản trị</label>
+  <input id="pass" type="password" placeholder="Nhập mật khẩu Admin" autocomplete="current-password">
+  <button type="button" id="btnLogin" style="width:100%;margin-top:6px">Vào Bảng Điều Khiển</button>
+  <div style="text-align:center;margin-top:14px">
+    <a href="index.html" style="font-size:0.8em;color:var(--muted);text-decoration:none">← Quay lại Ứng dụng Học tập</a>
+  </div>
+</div>
 
-  <div id="dash">
-    <!-- Main Navigation Switcher -->
-    <div class="main-tabs" id="mainTabs">
-      <button type="button" class="main-tab active" data-tab="deutsch">🇩🇪 Deutsch A1–B1 (Disziplin &amp; Prüfungstraining)</button>
-      <button type="button" class="main-tab" data-tab="gastronomie">🍽️ Gastronomie (Azubi-Beruf)</button>
-      <button type="button" class="main-tab" data-tab="roles">👥 Rollen &amp; Pro-Code</button>
-      <button type="button" class="main-tab" data-tab="excel" style="background:#E3F7E8;color:#107C41;border-color:#107C41">📊 Phân quyền Excel</button>
-      <button type="button" class="main-tab" data-tab="feedback" style="background:#FFF3CD;color:#856404;border-color:#FFEEBA">Góp ý &amp; Báo lỗi (<span id="fbTabCount">0</span>)</button>
+<!-- Main App Shell -->
+<div class="app-shell" id="dash" style="display:none">
+  <!-- Left Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="brand" title="Về trang chủ">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;color:var(--accent)"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        <span>AzubiHub</span>
+      </a>
+      <span class="brand-live" title="Supabase Kết nối Trực tiếp"></span>
     </div>
 
-    <!-- ==================== PANE 1: DEUTSCH A1-B1 HUB ==================== -->
-    <div class="sec-pane active" id="pane-deutsch">
-      <!-- Deutsch Stats Grid -->
-      <div class="grid" id="deStatsGrid"></div>
+    <div class="nav-group-title">Theo dõi học tập</div>
+    <nav class="sidebar-nav">
+      <button type="button" class="nav-item active" data-tab="overview">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+        <span>1. Tổng quan Hôm nay</span>
+      </button>
+      <button type="button" class="nav-item" data-tab="deutsch">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        <span>2. Deutsch (A1–B1)</span>
+      </button>
+      <button type="button" class="nav-item" data-tab="fach">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        <span>3. Fach (Gastronomie)</span>
+      </button>
+      <button type="button" class="nav-item" data-tab="lid">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+        <span>4. LiD &amp; Führerschein</span>
+      </button>
+    </nav>
 
-      <!-- Lern-Disziplin-Einstellungen -->
-      <div class="card">
-        <h2>⚙️ Lern-Disziplin (gilt für alle Nutzer)</h2>
-        <p class="muted" style="margin-bottom:12px">
-          Das System erzwingt wiederholtes Vokabel-Tippen und wiederholt Grammatik-Aufgaben, bis der Standard erreicht ist.
-        </p>
-        <div class="tier-form">
-          <div style="flex:1 1 140px;min-width:0">
-            <label class="muted" for="deMinRepeats">Pflicht-Wiederholungen pro Vokabel</label>
-            <input id="deMinRepeats" type="number" min="1" max="10" placeholder="3 (Standard: 3)">
-          </div>
-          <div style="flex:1 1 160px;min-width:0">
-            <label class="muted" for="deDailyVocab">Vokabel-Ziel / Tag</label>
-            <input id="deDailyVocab" type="number" min="5" max="100" placeholder="20 Vokabeln">
-          </div>
-          <div style="flex:1 1 160px;min-width:0">
-            <label class="muted" for="deDailyGrammar">Grammatik-Ziel / Tag</label>
-            <input id="deDailyGrammar" type="number" min="1" max="20" placeholder="5 Aufgaben">
-          </div>
-          <div style="flex:1 1 160px;min-width:0">
-            <label class="muted" for="dePassThreshold">Schwelle für neues Unit (%)</label>
-            <input id="dePassThreshold" type="number" min="50" max="100" placeholder="80%">
-          </div>
-          <button type="button" id="btnSaveDeSettings">Disziplin speichern</button>
+    <div class="nav-group-title">Quản trị hệ thống</div>
+    <nav class="sidebar-nav">
+      <button type="button" class="nav-item" data-tab="access">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span>5. Học viên &amp; Quyền</span>
+      </button>
+      <button type="button" class="nav-item" data-tab="feedback">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span>6. Góp ý &amp; Báo lỗi</span>
+        <span class="nav-badge" id="fbNavBadge">0</span>
+      </button>
+      <button type="button" class="nav-item" data-tab="settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span>7. Cấu hình</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <span id="berlinDateText">Berlin: —</span>
+      <a href="index.html">← Về App</a>
+    </div>
+  </aside>
+
+  <!-- Main Content Body -->
+  <main class="main-content">
+    <!-- Top Action Bar -->
+    <div class="top-bar">
+      <div class="page-titles">
+        <h1 id="paneTitle">1. Tổng quan Hôm nay</h1>
+        <p id="paneSubtitle">Kiểm tra học viên đang trực tuyến, thời lượng học và nội dung đã ôn luyện</p>
+      </div>
+      <div class="top-actions">
+        <div class="online-pill" id="onlinePill">
+          <span class="online-pulse"></span>
+          <span id="onlineCountText">0 đang online</span>
         </div>
-        <div class="muted" id="deSettingsMsg" style="margin-top:6px"></div>
+        <button type="button" class="ghost mini" id="btnRefresh">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>
+          <span id="refBtnText">Cập nhật</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ==================== PANE 1: TỔNG QUAN HÔM NAY ==================== -->
+    <div class="pane active" id="pane-overview">
+      <!-- 4 Hero KPI Cards -->
+      <div class="kpi-grid">
+        <div class="kpi-stat">
+          <div class="lbl">Học viên vào hôm nay</div>
+          <div class="val" id="kpiTodayCount">0 <small style="font-size:0.5em;color:var(--muted);font-weight:400" id="kpiTotalUsers">/ 0 HV</small></div>
+          <div class="sub" style="color:var(--ok);font-weight:600" id="kpiOnlineSub">● 0 đang mở app</div>
+        </div>
+        <div class="kpi-stat">
+          <div class="lbl">Tổng giờ học hôm nay</div>
+          <div class="val" id="kpiTodayHours">0m</div>
+          <div class="sub" id="kpiAvgDuration">Trung bình: 0m / học viên</div>
+        </div>
+        <div class="kpi-stat">
+          <div class="lbl">Đạt mục tiêu ngày (<span id="kpiGoalMin">60</span>p)</div>
+          <div class="val" style="color:var(--ok)" id="kpiMetGoal">0 / 0 đạt</div>
+          <div class="sub" style="color:var(--bad);font-weight:600" id="kpiUnderGoal">0 người chưa đủ giờ</div>
+        </div>
+        <div class="kpi-stat">
+          <div class="lbl">Hoạt động học hôm nay</div>
+          <div class="val" id="kpiQuizToday">0 Quiz · 0 Từ</div>
+          <div class="sub" id="kpiAccuracyToday">Tỷ lệ đúng trung bình: —</div>
+        </div>
       </div>
 
-      <!-- 🚨 Disziplin-Warnungen (Red Alert) -->
-      <div class="alert-card" id="deRedAlertCard">
-        <h2>🚨 Disziplin-Warnungen (Nutzer unter Tagesziel)</h2>
-        <div class="muted" id="deRedAlertMeta" style="margin-bottom:8px">Erkennt automatisch Nutzer, die heute ihre Vokabel-Wiederholung nicht abgeschlossen haben oder länger als 2 Tage inaktiv waren.</div>
+      <!-- Main Today Focus Table: Ai vào hôm nay, học bao lâu, học cái gì -->
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <div class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span>Học viên Hôm nay · Thời gian học &amp; Nội dung đã ôn luyện</span>
+            </div>
+            <div class="card-sub" id="todayTableSub">Tự động tổng hợp từ phiên truy cập, bài đọc và bài trắc nghiệm hôm nay (giờ Berlin)</div>
+          </div>
+          <div class="filter-row" style="margin:0">
+            <button type="button" class="pill-btn active" onclick="filterTodayTable('all')" id="ftAll">Tất cả hôm nay (<span id="cTodayAll">0</span>)</button>
+            <button type="button" class="pill-btn" onclick="filterTodayTable('online')" id="ftOnline">Đang online (<span id="cTodayOnline">0</span>)</button>
+            <button type="button" class="pill-btn" onclick="filterTodayTable('under')" id="ftUnder">Chưa đủ giờ (<span id="cTodayUnder">0</span>)</button>
+            <button type="button" class="pill-btn" onclick="filterTodayTable('absent')" id="ftAbsent">Vắng hôm nay (<span id="cTodayAbsent">0</span>)</button>
+          </div>
+        </div>
+
+        <div style="margin-bottom:10px">
+          <input type="text" id="todaySearchInp" placeholder="Tìm nhanh học viên theo Nickname..." oninput="renderTodayTable()" style="max-width:320px;margin:0">
+        </div>
+
+        <div class="tscroll" style="max-height:380px">
+          <table>
+            <thead>
+              <tr>
+                <th style="min-width:140px">Học viên</th>
+                <th style="min-width:140px">Thời gian học hôm nay</th>
+                <th style="min-width:280px">Hôm nay đã học cái gì (Môn / Bài học / Quiz / Từ vựng)</th>
+                <th style="min-width:150px">Thời điểm gần nhất</th>
+                <th style="min-width:110px">Trạng thái</th>
+              </tr>
+            </thead>
+            <tbody id="todayTableBody">
+              <tr><td colspan="5" style="text-align:center;padding:24px;color:var(--muted)">Đang tải dữ liệu học tập...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Trend Chart & Live Activity Feed (2 Columns) -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px">
+        <!-- 14 Days Activity -->
+        <div class="card" style="margin:0">
+          <div class="card-head">
+            <div class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              <span>Biểu đồ Truy cập (14 ngày gần nhất)</span>
+            </div>
+            <span class="card-sub">Lượt học mỗi ngày</span>
+          </div>
+          <div class="day-bars" id="dayBars"></div>
+        </div>
+
+        <!-- Recent Activities Feed -->
+        <div class="card" style="margin:0">
+          <div class="card-head">
+            <div class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10"/></svg>
+              <span>Nhật ký Hoạt động Vừa xong (Live Stream)</span>
+            </div>
+            <span class="card-sub">Phiên học &amp; Quiz mới</span>
+          </div>
+          <div class="tscroll" style="max-height:220px">
+            <table>
+              <thead><tr><th>Thời gian</th><th>Học viên</th><th>Hoạt động</th></tr></thead>
+              <tbody id="liveActivityBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== PANE 2: DEUTSCH (A1–B1 & TELC) ==================== -->
+    <div class="pane" id="pane-deutsch">
+      <!-- Deutsch Stats Grid -->
+      <div class="kpi-grid" id="deStatsGrid"></div>
+
+      <!-- Red Alert Discipline -->
+      <div class="card" id="deRedAlertCard" style="border-left:4px solid var(--bad)">
+        <div class="card-head">
+          <div class="card-title" style="color:var(--bad)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <span>Cảnh báo Kỷ luật (Dưới chỉ tiêu hoặc không học &gt; 2 ngày)</span>
+          </div>
+          <span class="card-sub" id="deRedAlertMeta">Tự động phát hiện học viên chưa hoàn thành bài</span>
+        </div>
         <div class="tscroll">
           <table>
-            <thead><tr><th>Nutzer</th><th>Vokabel-Ziel heute</th><th>Letzte Aktivität</th><th>Warnungsgrund</th></tr></thead>
+            <thead><tr><th>Học viên</th><th>Chỉ tiêu từ hôm nay</th><th>Lần học gần nhất</th><th>Lý do cảnh báo</th></tr></thead>
             <tbody id="deRedAlertBody"></tbody>
           </table>
         </div>
       </div>
 
-      <!-- ✍️ Vokabel-Tipp-Tracking -->
+      <!-- Typing Repetition Drill -->
       <div class="card">
-        <h2>✍️ Vokabel-Tipp-Fortschritt (Typing Repetition Drill)</h2>
-        <p class="muted" style="margin-bottom:10px">
-          Zeigt, wie viele Vokabeln ein Nutzer $N$ mal mit Artikel und Plural getippt hat.
-        </p>
+        <div class="card-head">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            <span>Tiến độ Gõ Lặp Từ Vựng (Typing Repetition Drill)</span>
+          </div>
+          <span class="card-sub">Học viên gõ lặp lại N lần kèm giống (der/die/das) và số nhiều</span>
+        </div>
         <div class="tscroll">
           <table>
-            <thead><tr><th>Nutzer</th><th>Gelernt</th><th>Heute getippt</th><th>Fehler</th><th>Tagesziel</th><th>Letzte Aktivität</th></tr></thead>
+            <thead><tr><th>Học viên</th><th>Đã thuộc</th><th>Hôm nay gõ</th><th>Số lỗi</th><th>Chỉ tiêu ngày</th><th>Lần học cuối</th></tr></thead>
             <tbody id="deVocabBody"></tbody>
           </table>
         </div>
       </div>
 
-      <!-- 📖 Grammatik-Tracking &amp; Schwächen -->
+      <!-- Grammar 100% & Weak Topics -->
       <div class="card">
-        <h2>📖 Grammatik-Wiederholung bis 100% &amp; häufigste Fehlerthemen</h2>
-        <p class="muted" style="margin-bottom:10px">
-          100%-Regel: Falsch beantwortete Aufgaben müssen so lange wiederholt werden, bis alles korrekt ist – erst dann gilt das Thema als abgeschlossen.
-        </p>
-        <div class="grid2">
+        <div class="card-head">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            <span>Ngữ pháp 100% &amp; Các chủ đề hay sai nhiều nhất</span>
+          </div>
+          <span class="card-sub">Quy tắc 100%: Phải làm lại bài sai cho đến khi đúng hoàn toàn</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px">
           <div>
-            <h3 style="font-size:.92em;margin-bottom:6px;font-weight:600">Fortschritt pro Nutzer</h3>
-            <div class="tscroll" style="max-height:200px">
+            <div style="font-weight:700;font-size:0.82em;margin-bottom:6px;color:var(--muted)">Tiến độ theo Học viên</div>
+            <div class="tscroll" style="max-height:220px">
               <table>
-                <thead><tr><th>Nutzer</th><th>Themen 100%</th><th>Wiederholungen</th></tr></thead>
+                <thead><tr><th>Học viên</th><th>Chủ đề 100%</th><th>Số lần làm lại</th></tr></thead>
                 <tbody id="deGrammarPlayerBody"></tbody>
               </table>
             </div>
           </div>
           <div>
-            <h3 style="font-size:.92em;margin-bottom:6px;font-weight:600">Top-Schwachstellen</h3>
-            <div class="tscroll" style="max-height:200px">
+            <div style="font-weight:700;font-size:0.82em;margin-bottom:6px;color:var(--muted)">Top Chủ đề hay sai (Schwachstellen)</div>
+            <div class="tscroll" style="max-height:220px">
               <table>
-                <thead><tr><th>Thema</th><th>Fehler gesamt</th><th>Wiederholungen</th></tr></thead>
+                <thead><tr><th>Chủ đề ngữ pháp</th><th>Tổng lỗi sai</th><th>Lượt làm lại</th></tr></thead>
                 <tbody id="deWeakTopicsBody"></tbody>
               </table>
             </div>
@@ -246,312 +851,223 @@ table.mx tbody tr:hover .mx-namecol{background:#EAF3FF}
         </div>
       </div>
 
-      <!-- 🏆 Ergebnisse TELC &amp; Goethe B1 -->
+      <!-- TELC & Goethe Exams -->
       <div class="card">
-        <h2>🏆 Prüfungsverlauf TELC B1 &amp; Goethe</h2>
-        <p class="muted" style="margin-bottom:8px">Statistik der Prüfungsergebnisse aller Nutzer.</p>
+        <div class="card-head">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+            <span>Kết quả Luyện Đề Thi TELC B1 &amp; Goethe</span>
+          </div>
+          <span class="card-sub">Bảng điểm thi thử của các học viên</span>
+        </div>
         <div class="tscroll">
           <table>
-            <thead><tr><th>Nutzer</th><th>Prüfung / Test</th><th>Können</th><th>Punkte</th><th>%</th><th>Versuche</th><th>Abgabe</th></tr></thead>
+            <thead><tr><th>Học viên</th><th>Bài thi</th><th>Phần thi</th><th>Điểm số</th><th>Tỷ lệ %</th><th>Số lần thi</th><th>Thời điểm nộp</th></tr></thead>
             <tbody id="deExamsBody"></tbody>
           </table>
         </div>
       </div>
     </div>
 
-    <!-- ==================== PANE 2: GASTRONOMIE (AZUBI) ==================== -->
-    <div class="sec-pane" id="pane-gastronomie">
-      <div class="grid" id="statsGrid"></div>
+    <!-- ==================== PANE 3: FACH (GASTRONOMIE) ==================== -->
+    <div class="pane" id="pane-fach">
+      <!-- Fach Stats -->
+      <div class="kpi-grid" id="statsGrid"></div>
 
+      <!-- Lern-Matrix -->
       <div class="card">
-        <h2>🎯 Tagesziel (für alle)</h2>
-        <div class="muted" id="goalMeta">Ziel pro Tag in Minuten — gilt für alle Nutzer.</div>
-        <div style="display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;margin-top:8px">
-          <div style="flex:0 0 180px">
-            <label class="muted" for="goalMin">Minuten / Tag</label>
-            <input id="goalMin" type="text" inputmode="numeric" placeholder="z.B. 60">
+        <div class="card-head">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            <span>Ma trận Tiến độ Bài học (Lern-Matrix · Học viên Pro)</span>
           </div>
-          <button type="button" id="btnSaveGoal">Speichern</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>📅 Aktivität (letzte 14 Tage)</h2>
-        <div class="bars" id="dayBars"></div>
-      </div>
-
-      <div class="card">
-        <div class="row-actions">
-          <h2 style="flex:1;margin:0">👥 Nutzer (Nickname)</h2>
-        </div>
-        <div class="muted" id="playersMeta"></div>
-        <div class="tscroll" style="margin-top:8px">
-          <table>
-            <thead><tr><th>Nickname</th><th>Stufe</th><th>Besuche</th><th>Quiz</th><th>Heute</th><th>Zeit gesamt</th><th>LS-Fortschritt</th><th>Gelernte Fächer</th><th>Letzte Session</th><th>Zuletzt</th></tr></thead>
-            <tbody id="playersBody"></tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- ===== Fortschritts-Matrix (Pro) ===== -->
-      <div class="card">
-        <h2>🗺️ Lern-Matrix · Pro-Nutzer</h2>
-        <p class="muted" style="margin-bottom:10px">
-          Jede Zeile = ein Pro-Nutzer, jede Spalte = ein LS/Thema. Farbe = Status.<br>
-          
-        </p>
-        <div class="mx-legend">
-          <span><i class="mx-key mx-k-done"></i> erledigt</span>
-          <span><i class="mx-key mx-k-learn"></i> lernt</span>
-          <span><i class="mx-key mx-k-seen"></i> gesehen</span>
-          <span><i class="mx-key mx-k-none"></i> offen</span>
+          <div class="mx-legend">
+            <span><i class="mx-key mx-k-done"></i> Đã xong</span>
+            <span><i class="mx-key mx-k-learn"></i> Đang học</span>
+            <span><i class="mx-key mx-k-seen"></i> Đã xem</span>
+            <span><i class="mx-key mx-k-none"></i> Chưa học</span>
+          </div>
         </div>
         <div class="mx-tabs" id="mxTabs"></div>
-        <div class="mx-scroll" id="mxScroll"><div class="mx-empty">Lädt…</div></div>
+        <div class="tscroll" id="mxScroll" style="max-height:300px"><div style="padding:16px;text-align:center;color:var(--muted)">Đang tải ma trận...</div></div>
       </div>
 
-      <div class="card" id="underGoalCard">
-        <h2>⚠️ Nutzer unter Ziel heute</h2>
-        <div class="muted" id="underGoalMeta" style="margin-bottom:8px">Aktiv heute (Berlin), aber noch nicht beim Tagesziel.</div>
-        <div class="tscroll">
-          <table>
-            <thead><tr><th>Nickname</th><th>Heute gelernt</th><th>Fehlt zum Ziel</th><th>Zuletzt gesehen</th></tr></thead>
-            <tbody id="underGoalBody"></tbody>
-          </table>
-        </div>
-      </div>
-
+      <!-- Fach Quizzes Points -->
       <div class="card">
-        <h2>📊 Quiz-Punkte (neueste)</h2>
-        <div class="muted" style="margin-bottom:8px">Klicke auf eine Zeile für Details.</div>
+        <div class="card-head">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            <span>Lịch sử Điểm Quiz &amp; Bài tập Chuyên ngành</span>
+          </div>
+          <span class="card-sub">Bấm vào dòng để xem chi tiết lịch sử các lần làm</span>
+        </div>
         <div class="tscroll">
           <table>
-            <thead><tr><th>Spieler</th><th>Fach</th><th>Quiz</th><th>Punkte</th><th>%</th><th>Versuche</th><th>Zeitpunkt</th></tr></thead>
+            <thead><tr><th>Học viên</th><th>Môn (Fach)</th><th>Bài Quiz</th><th>Điểm số</th><th>Tỷ lệ %</th><th>Số lần làm</th><th>Thời điểm</th></tr></thead>
             <tbody id="quizBody"></tbody>
           </table>
         </div>
       </div>
 
-      <div class="card">
-        <h2>📈 Übersicht nach Quiz</h2>
-        <div class="tscroll">
-          <table>
-            <thead><tr><th>Quiz</th><th>Personen</th><th>Versuche</th><th>Ø %</th></tr></thead>
-            <tbody id="aggBody"></tbody>
-          </table>
+      <!-- Aggregate by Quiz & All Visits -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px">
+        <div class="card" style="margin:0">
+          <div class="card-head">
+            <div class="card-title"><span>Tổng hợp theo Bài Quiz</span></div>
+          </div>
+          <div class="tscroll" style="max-height:260px">
+            <table>
+              <thead><tr><th>Bài Quiz</th><th>Số người</th><th>Lượt làm</th><th>Đúng TB</th></tr></thead>
+              <tbody id="aggBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card" style="margin:0">
+          <div class="card-head">
+            <div class="card-title"><span>Lịch sử Phiên Truy cập (Visits)</span></div>
+          </div>
+          <div class="tscroll" style="max-height:260px">
+            <table>
+              <thead><tr><th>Học viên</th><th>Bắt đầu</th><th>Thời lượng</th><th>Trạng thái</th></tr></thead>
+              <tbody id="visitBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== PANE 4: LID & FUEHRERSCHEIN ==================== -->
+    <div class="pane" id="pane-lid">
+      <div class="kpi-grid">
+        <div class="kpi-stat">
+          <div class="lbl">Lượt làm đề LiD (33 câu)</div>
+          <div class="val" id="kpiLidCount">0</div>
+          <div class="sub">Leben in Deutschland</div>
+        </div>
+        <div class="kpi-stat">
+          <div class="lbl">Luyện thi Bằng lái xe</div>
+          <div class="val" id="kpiFuehrerCount">0</div>
+          <div class="sub">Führerschein Klasse B</div>
+        </div>
+        <div class="kpi-stat">
+          <div class="lbl">Đấu trường Arena / Challenge</div>
+          <div class="val" id="kpiArenaCount">0</div>
+          <div class="sub">Thi đấu thời gian thực</div>
         </div>
       </div>
 
       <div class="card">
-        <h2>🚪 Letzte Besuche (mit Dauer)</h2>
-        <p class="muted" style="margin-bottom:8px">Dauer via Heartbeat (~30s) und pagehide.</p>
+        <div class="card-head">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+            <span>Kết quả Luyện thi LiD, Bằng lái &amp; Đấu trường Arena</span>
+          </div>
+          <span class="card-sub">Dữ liệu các bài thi ngoài chương trình Gastronomie</span>
+        </div>
         <div class="tscroll">
           <table>
-            <thead><tr><th>Spieler</th><th>Start</th><th>Ende / zuletzt</th><th>Dauer</th><th>Status</th></tr></thead>
-            <tbody id="visitBody"></tbody>
+            <thead><tr><th>Học viên</th><th>Phân hệ</th><th>Bài thi</th><th>Điểm số</th><th>Tỷ lệ %</th><th>Lần làm</th><th>Thời điểm</th></tr></thead>
+            <tbody id="lidTableBody"></tbody>
           </table>
         </div>
       </div>
     </div>
 
-    <!-- ==================== PANE 3: ROLES & PRO CODE ==================== -->
-    <div class="sec-pane" id="pane-roles">
-
-      <!-- ===== KLASSENARBEIT-ZUGRIFF ===== -->
-      <div class="card" style="border-left:4px solid #007AFF;">
-        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:6px">
-          <h2>🎯 Klassenarbeit-Zugriff</h2>
-          <span class="tag" style="background:#E3F7E8;color:#248A3D;border:none">🔒 Geräteschutz</span>
-        </div>
-        <p class="muted" style="margin-bottom:14px">
-          Klassenarbeiten sind nicht auf jedem Gerät frei zugänglich. <b>Nur Konten mit grüner Markierung [✓ FREIGEGEBEN] in der Liste unten dürfen Klassenarbeiten und Aufgaben öffnen.</b>
-        </p>
-
-        <div class="tier-form" style="margin-bottom:12px">
-          <div style="flex:1 1 220px;min-width:0">
-            <label class="muted" for="kaQuickNick">Nickname freigeben</label>
-            <input id="kaQuickNick" type="text" list="nickList" placeholder="Nickname eingeben (z. B. linh, phuc…)" autocomplete="off">
+    <!-- ==================== PANE 5: HỌC VIÊN & PHÂN QUYỀN (3 TRONG 1) ==================== -->
+    <div class="pane" id="pane-access">
+      <div class="card" style="border-left:4px solid var(--accent)">
+        <div class="card-head">
+          <div>
+            <div class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <span>Quản lý Phân Quyền Hợp Nhất (Cấp bậc · Klassenarbeit · 19 bài Excel)</span>
+            </div>
+            <div class="card-sub">Quản lý tập trung toàn bộ quyền hạn của học viên trên cùng 1 bảng duy nhất, thao tác bằng 1 cú nhấp chuột.</div>
           </div>
-          <button type="button" id="btnKaQuickGrant" onclick="quickAddKaGrant()">✅ Sofort freigeben</button>
-          <button type="button" class="ghost" id="btnKaGrantAll" onclick="batchKaGrant(true)">Alle freigeben</button>
-          <button type="button" class="ghost" id="btnKaRevokeAll" onclick="batchKaGrant(false)" style="color:var(--bad)">Alle sperren</button>
-        </div>
-        <div class="err" id="kaErr"></div>
-        <div class="muted" id="kaMsg" style="margin-bottom:8px"></div>
-
-        <div class="row-actions" style="margin-top:10px;margin-bottom:10px">
-          <button type="button" class="mini active" id="kaFilterAll" onclick="filterKaList('all')">Alle (<span id="kaCountAll">0</span>)</button>
-          <button type="button" class="mini ghost" id="kaFilterAllowed" onclick="filterKaList('allowed')">✅ Freigegeben (<span id="kaCountAllowed">0</span>)</button>
-          <button type="button" class="mini ghost" id="kaFilterLocked" onclick="filterKaList('locked')">🔒 Gesperrt (<span id="kaCountLocked">0</span>)</button>
+          <div class="filter-row" style="margin:0">
+            <button type="button" class="pill-btn active" onclick="filterAccessList('all')" id="afAll">Tất cả (<span id="cAccessAll">0</span>)</button>
+            <button type="button" class="pill-btn" onclick="filterAccessList('ka')" id="afKa">Có quyền KA (<span id="cAccessKa">0</span>)</button>
+            <button type="button" class="pill-btn" onclick="filterAccessList('excel')" id="afExcel">Có quyền Excel (<span id="cAccessExcel">0</span>)</button>
+            <button type="button" class="pill-btn" onclick="filterAccessList('pro')" id="afPro">Hạng Pro/Admin (<span id="cAccessPro">0</span>)</button>
+          </div>
         </div>
 
-        <div class="tscroll" style="max-height:360px">
-          <table>
-            <thead>
-              <tr>
-                <th>Nickname</th>
-                <th>Klassenarbeit-Recht</th>
-                <th>Stufe</th>
-                <th>Aktion</th>
-              </tr>
-            </thead>
-            <tbody id="kaBody"></tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- ===== EXCEL QUICK ACCESS BANNER ===== -->
-      <div class="card" style="border-left:4px solid #107C41;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:16px 18px;margin-bottom:14px">
-        <div>
-          <h3 style="font-size:1.05em;margin-bottom:3px;color:#107C41">📊 Phân quyền 19 bài học &amp; Dữ liệu Excel</h3>
-          <p class="muted" style="margin:0;font-size:.86em">Chỉ định từng học viên (Nickname) được mở bài học Extra BfK-1, Q&amp;A và Quiz từ Excel.</p>
-        </div>
-        <button type="button" class="mini" style="background:#107C41;color:#fff;font-weight:600;padding:10px 16px;border-radius:10px" onclick="document.querySelector('[data-tab=excel]').click()">👉 Mở bảng phân quyền Excel</button>
-      </div>
-
-      <!-- ===== Zugriffsstufen ===== -->
-      <div class="card">
-        <h2>Zugriffsstufen</h2>
-        <p class="muted" style="margin-bottom:12px">
-          <b>Basic</b> = alle Themen, nur Grundwissen · <b>Pro</b> = volle Inhalte, Quiz, Zusammenfassung, Prüfungen · <b>Admin</b> = alles + dieses Dashboard.
-        </p>
-
-        <div class="tier-form">
-          <div style="flex:1 1 200px;min-width:0">
-            <label class="muted" for="roleNick">Nickname</label>
-            <input id="roleNick" type="text" list="nickList" placeholder="z. B. linh" autocomplete="off">
+        <!-- Cấp quyền nhanh theo tên -->
+        <div style="background:#FAF5E8;border:1px solid var(--line);border-radius:var(--radius-sm);padding:12px;margin-bottom:14px;display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap">
+          <div style="flex:1 1 180px">
+            <label style="font-size:0.75em;color:var(--muted);font-weight:700" for="quickNick">Nickname học viên</label>
+            <input id="quickNick" type="text" list="nickList" placeholder="Nhập nickname (vd: linh, phuc...)" style="margin:2px 0 0">
             <datalist id="nickList"></datalist>
           </div>
           <div style="flex:0 0 130px">
-            <label class="muted" for="roleTier">Stufe</label>
-            <select id="roleTier">
-              <option value="free">Basic</option>
-              <option value="paid">Pro</option>
+            <label style="font-size:0.75em;color:var(--muted);font-weight:700" for="quickTier">Hạng</label>
+            <select id="quickTier" style="margin:2px 0 0">
+              <option value="free">Basic (Thường)</option>
+              <option value="paid" selected>Pro (Nâng cao)</option>
               <option value="super">Admin</option>
             </select>
           </div>
-          <div style="flex:1 1 160px;min-width:0">
-            <label class="muted" for="roleNote">Notiz (optional)</label>
-            <input id="roleNote" type="text" placeholder="z. B. bezahlt 07/26" autocomplete="off">
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <button type="button" id="btnQuickGrant" onclick="quickGrantUser()">Lưu &amp; Cấp quyền</button>
+            <button type="button" class="ghost" onclick="batchGrantAll(true)">Cấp KA cho tất cả</button>
+            <button type="button" class="ghost" onclick="batchGrantExcelAll(true)">Cấp Excel cho tất cả</button>
           </div>
-          <button type="button" id="btnSetRole">Speichern</button>
         </div>
-        <div class="err" id="roleErr"></div>
+        <div class="err" id="accessErr"></div>
+        <div style="font-size:0.82em;color:var(--ok);margin-bottom:8px;font-weight:600" id="accessMsg"></div>
 
-        <div class="tscroll" style="margin-top:14px">
-          <table>
-            <thead><tr><th>Nickname</th><th>Stufe</th><th>Vergeben von</th><th>Wann</th><th>Notiz</th><th>Aktion</th></tr></thead>
-            <tbody id="rolesBody"></tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- ===== Pro-Code + Admin-Passwort ===== -->
-      <div class="card">
-        <h2>Pro-Code &amp; Admin-Passwort</h2>
-        <p class="muted" style="margin-bottom:12px">
-          Wer den Pro-Code in der App eingibt, wird automatisch auf <b>Pro</b> gesetzt.<br>
-          <i>Wer den Code in der App eingibt, wird automatisch auf Pro gesetzt.</i>
-        </p>
-        <div class="tier-form">
-          <div style="flex:1 1 180px;min-width:0">
-            <label class="muted" for="paidCode">Pro-Code</label>
-            <input id="paidCode" type="text" placeholder="Code" autocomplete="off">
-          </div>
-          <button type="button" id="btnSavePaid">Code speichern</button>
-        </div>
-        <div class="tier-form" style="margin-top:4px">
-          <div style="flex:1 1 180px;min-width:0">
-            <label class="muted" for="newAdminPass">Neues Admin-Passwort</label>
-            <input id="newAdminPass" type="password" placeholder="mind. 4 Zeichen" autocomplete="new-password">
-          </div>
-          <button type="button" class="ghost" id="btnSavePass">Passwort ändern</button>
-        </div>
-        <div class="err" id="codeErr"></div>
-        <div class="muted" id="codeMsg" style="margin-top:6px"></div>
-      </div>
-
-      <!-- ===== Feature-Matrix ===== -->
-      <div class="card">
-        <h2>Welche Inhalte in welcher Stufe?</h2>
-        <p class="muted" style="margin-bottom:10px">Mindeststufe pro Bereich. Änderungen gelten sofort für alle.</p>
-        <div id="manifestBox" class="mani-grid"></div>
-        <button type="button" id="btnSaveManifest" style="margin-top:12px">Matrix speichern</button>
-      </div>
-    </div>
-
-    <!-- ==================== PANE 4: EXCEL & BFK-EXTRA ==================== -->
-    <div class="sec-pane" id="pane-excel">
-      <div class="card" style="border-left:4px solid #107C41;">
-        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:6px">
-          <h2>📊 Phân quyền 19 bài học &amp; Dữ liệu Excel (BfK-1 Extra)</h2>
-          <span class="tag" style="background:#E3F7E8;color:#107C41;border:none">📗 Whitelist theo Nickname</span>
-        </div>
-        <p class="muted" style="margin-bottom:14px">
-          Quản lý quyền mở <b>19 bài học Extra (BfK-1 Abschlussprüfung)</b>, câu hỏi <b>Q&amp;A từ Excel</b> và câu hỏi Quiz từ Excel. <b>Chỉ những tài khoản có đánh dấu [✓ FREIGEGEBEN] dưới đây mới được phép xem và làm bài.</b>
-        </p>
-
-        <div class="tier-form" style="margin-bottom:12px">
-          <div style="flex:1 1 220px;min-width:0">
-            <label class="muted" for="excelQuickNick">Nickname cấp quyền Excel</label>
-            <input id="excelQuickNick" type="text" list="nickList" placeholder="Nickname eingeben (z. B. linh, phuc…)" autocomplete="off">
-          </div>
-          <button type="button" id="btnExcelQuickGrant" onclick="quickAddExcelGrant()" style="background:#107C41">✅ Cấp quyền Excel ngay</button>
-          <button type="button" class="ghost" id="btnExcelGrantAll" onclick="batchExcelGrant(true)">Cấp tất cả</button>
-          <button type="button" class="ghost" id="btnExcelRevokeAll" onclick="batchExcelGrant(false)" style="color:var(--bad)">Khóa tất cả</button>
-        </div>
-        <div class="err" id="excelErr"></div>
-        <div class="muted" id="excelMsg" style="margin-bottom:8px"></div>
-
-        <div class="row-actions" style="margin-top:10px;margin-bottom:10px">
-          <button type="button" class="mini active" id="excelFilterAll" onclick="filterExcelList('all')">Tất cả (<span id="excelCountAll">0</span>)</button>
-          <button type="button" class="mini ghost" id="excelFilterAllowed" onclick="filterExcelList('allowed')">✅ Đã cấp quyền (<span id="excelCountAllowed">0</span>)</button>
-          <button type="button" class="mini ghost" id="excelFilterLocked" onclick="filterExcelList('locked')">🔒 Đang khóa (<span id="excelCountLocked">0</span>)</button>
+        <div style="margin-bottom:10px">
+          <input type="text" id="accessSearchInp" placeholder="Tìm theo tên học viên..." oninput="renderAccessTable()" style="max-width:300px;margin:0">
         </div>
 
-        <div class="tscroll" style="max-height:460px">
+        <!-- Unified Table -->
+        <div class="tscroll" style="max-height:480px">
           <table>
             <thead>
               <tr>
-                <th>Nickname</th>
-                <th>Quyền Excel &amp; BfK-Extra</th>
-                <th>Stufe</th>
-                <th>Aktion</th>
+                <th style="min-width:130px">Học viên</th>
+                <th style="min-width:130px">Hạng Tài Khoản</th>
+                <th style="min-width:160px">Quyền Klassenarbeit</th>
+                <th style="min-width:180px">Quyền 19 bài Excel BfK-Extra</th>
+                <th style="min-width:150px">Lần học cuối</th>
+                <th style="min-width:120px">Ghi chú</th>
               </tr>
             </thead>
-            <tbody id="excelBody"></tbody>
+            <tbody id="accessTableBody"></tbody>
           </table>
         </div>
       </div>
     </div>
 
-    <!-- ==================== PANE 5: FEEDBACKS ==================== -->
-    <div class="sec-pane" id="pane-feedback">
-      <div class="card" style="border-left:4px solid #F59E0B;">
-        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:6px">
-          <h2>Quản lý Góp ý &amp; Báo lỗi bài học</h2>
-          <span class="tag" style="background:#FFF3CD;color:#856404;border:none">Từ học viên (Ẩn danh &amp; Trực tiếp)</span>
+    <!-- ==================== PANE 6: GÓP Ý & BÁO LỖI ==================== -->
+    <div class="pane" id="pane-feedback">
+      <div class="card" style="border-left:4px solid var(--accent)">
+        <div class="card-head">
+          <div>
+            <div class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <span>Quản lý Góp ý &amp; Báo lỗi từ Học viên</span>
+            </div>
+            <div class="card-sub">Các phản ánh về nội dung, lỗi dịch thuật và câu hỏi trắc nghiệm gửi trực tiếp từ ứng dụng.</div>
+          </div>
+          <div class="filter-row" style="margin:0">
+            <button type="button" class="pill-btn active" id="fbFilterAll" onclick="filterFeedbackList('all')">Tất cả (<span id="fbCountAll">0</span>)</button>
+            <button type="button" class="pill-btn" id="fbFilterNew" onclick="filterFeedbackList('new')">Mới (<span id="fbCountNew">0</span>)</button>
+            <button type="button" class="pill-btn" id="fbFilterResolved" onclick="filterFeedbackList('resolved')">Đã xử lý (<span id="fbCountResolved">0</span>)</button>
+            <button type="button" class="ghost mini" onclick="loadFeedbackList(true)">Tải lại</button>
+          </div>
         </div>
-        <p class="muted" style="margin-bottom:14px">
-          Các phản ánh về nội dung bài học, lỗi chính tả, dịch thuật hoặc câu hỏi trắc nghiệm được học viên gửi từ ứng dụng.
-        </p>
 
-        <div class="row-actions" style="margin-top:10px;margin-bottom:12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
-          <button type="button" class="mini active" id="fbFilterAll" onclick="filterFeedbackList('all')">Tất cả (<span id="fbCountAll">0</span>)</button>
-          <button type="button" class="mini ghost" id="fbFilterNew" onclick="filterFeedbackList('new')">Mới (<span id="fbCountNew">0</span>)</button>
-          <button type="button" class="mini ghost" id="fbFilterResolved" onclick="filterFeedbackList('resolved')">Đã xử lý (<span id="fbCountResolved">0</span>)</button>
-          <button type="button" class="mini ghost" onclick="loadFeedbackList(true)" style="margin-left:auto">Tải lại</button>
-        </div>
-
-        <div class="tscroll" style="max-height:520px">
+        <div class="tscroll" style="max-height:500px">
           <table>
             <thead>
               <tr>
-                <th style="min-width:130px">Thời gian</th>
-                <th style="min-width:180px">Vị trí / Bài học</th>
-                <th style="min-width:130px">Phân loại</th>
+                <th style="min-width:120px">Thời gian</th>
+                <th style="min-width:150px">Vị trí / Bài học</th>
+                <th style="min-width:110px">Phân loại</th>
                 <th style="min-width:280px">Nội dung góp ý</th>
-                <th style="min-width:100px">Người gửi</th>
+                <th style="min-width:110px">Người gửi</th>
                 <th style="min-width:140px">Thao tác</th>
               </tr>
             </thead>
@@ -562,7 +1078,78 @@ table.mx tbody tr:hover .mx-namecol{background:#EAF3FF}
         </div>
       </div>
     </div>
-  </div>
+
+    <!-- ==================== PANE 7: CẤU HÌNH & MỤC TIÊU ==================== -->
+    <div class="pane" id="pane-settings">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px">
+        <!-- Goal & Discipline -->
+        <div class="card" style="margin:0">
+          <div class="card-head">
+            <div class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+              <span>Mục tiêu Thời gian &amp; Kỷ luật Deutsch</span>
+            </div>
+          </div>
+          <div style="margin-bottom:12px">
+            <label style="font-size:0.78em;color:var(--muted);font-weight:700" for="goalMin">Mục tiêu học mỗi ngày (Phút / ngày cho toàn bộ học viên)</label>
+            <div style="display:flex;gap:8px;margin-top:4px">
+              <input id="goalMin" type="number" placeholder="60" style="margin:0">
+              <button type="button" id="btnSaveGoal">Lưu mục tiêu</button>
+            </div>
+            <div class="card-sub" id="goalMeta" style="margin-top:4px">Mục tiêu hiện tại: 60 phút / ngày</div>
+          </div>
+
+          <div style="border-top:1px solid var(--line-light);padding-top:12px;margin-top:12px">
+            <label style="font-size:0.78em;color:var(--muted);font-weight:700" for="deDailyVocab">Chỉ tiêu Từ vựng tiếng Đức / ngày</label>
+            <input id="deDailyVocab" type="number" placeholder="20">
+
+            <label style="font-size:0.78em;color:var(--muted);font-weight:700" for="deMinRepeats">Số lần bắt buộc gõ lặp lại / từ</label>
+            <input id="deMinRepeats" type="number" placeholder="3">
+
+            <label style="font-size:0.78em;color:var(--muted);font-weight:700" for="dePassThreshold">Ngưỡng đạt yêu cầu mở bài mới (%)</label>
+            <input id="dePassThreshold" type="number" placeholder="80">
+
+            <button type="button" id="btnSaveDeSettings" style="width:100%;margin-top:6px">Lưu Cài đặt Kỷ luật</button>
+            <div class="card-sub" id="deSettingsMsg" style="margin-top:6px;color:var(--ok);font-weight:600"></div>
+          </div>
+        </div>
+
+        <!-- Pro-Code & Password -->
+        <div class="card" style="margin:0">
+          <div class="card-head">
+            <div class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <span>Mã Nâng Cấp Pro &amp; Mật khẩu Admin</span>
+            </div>
+          </div>
+          <p class="card-sub" style="margin-bottom:12px">Học viên nhập Pro-Code trong ứng dụng sẽ tự động được nâng cấp lên hạng Pro.</p>
+          
+          <label style="font-size:0.78em;color:var(--muted);font-weight:700" for="paidCode">Mã Pro-Code</label>
+          <div style="display:flex;gap:8px;margin-top:4px;margin-bottom:12px">
+            <input id="paidCode" type="text" placeholder="Nhập mã Pro-Code" style="margin:0">
+            <button type="button" id="btnSavePaid">Lưu mã</button>
+          </div>
+
+          <label style="font-size:0.78em;color:var(--muted);font-weight:700" for="newAdminPass">Đổi Mật khẩu Admin Mới</label>
+          <div style="display:flex;gap:8px;margin-top:4px">
+            <input id="newAdminPass" type="password" placeholder="Tối thiểu 4 ký tự" style="margin:0">
+            <button type="button" class="ghost" id="btnSavePass">Đổi mật khẩu</button>
+          </div>
+          <div class="err" id="codeErr"></div>
+          <div class="card-sub" id="codeMsg" style="margin-top:6px;color:var(--ok);font-weight:600"></div>
+
+          <div style="border-top:1px solid var(--line-light);padding-top:14px;margin-top:14px">
+            <div style="font-weight:700;font-size:0.84em;margin-bottom:6px">Ma trận Phân quyền Tính năng (Feature-Matrix)</div>
+            <p class="card-sub" style="margin-bottom:8px">Quy định tầng tối thiểu để mở từng khu vực.</p>
+            <div id="manifestBox" style="display:grid;grid-template-columns:1fr;gap:6px"></div>
+            <button type="button" id="btnSaveManifest" style="width:100%;margin-top:10px">Lưu Ma trận Tính năng</button>
+            <div class="card-sub" id="maniMsg" style="margin-top:4px;color:var(--ok)"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
 </div>
 
 <script src="./pwa.js?v=4" defer></script>
@@ -571,585 +1158,65 @@ table.mx tbody tr:hover .mx-namecol{background:#EAF3FF}
 <script src="./js/icons.js?v=1"></script>
 <script src="./faecher/bfk1/bfk1-catalog.js?v=1"></script>
 <script>
-const AUTH_KEY='learn_admin_ok';
-function showErr(m){
-  const el=document.getElementById('err');
-  if(!m){ el.classList.remove('show'); el.textContent=''; return; }
-  el.textContent=m; el.classList.add('show');
-}
+const AUTH_KEY = 'learn_admin_ok';
+const TIER_LABEL = { free: 'Basic', paid: 'Pro', super: 'Admin' };
+const ONLINE_THRESHOLD_MS = 3.5 * 60 * 1000; // 3.5 phút từ heartbeat cuối
+
+let _adminStats = null;
+let _deutschStats = null;
+let _roleMap = {};
+let _kaWhitelistSet = new Set();
+let _excelWhitelistSet = new Set();
+let _todayFilterMode = 'all';
+let _accessFilterMode = 'all';
+let _fbFilter = 'all';
+let _allFeedbacks = [];
+let _mxTab = 'all';
+
+function escH(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
 function fmt(ts){
   if(!ts) return '—';
-  try{ return new Date(ts).toLocaleString('de-DE'); }catch(_){ return String(ts).slice(0,19); }
-}
-function escH(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-function dayKey(iso){
-  if(!iso) return '';
-  return String(iso).slice(0,10);
-}
-function buildDayBars(visits){
-  const map={};
-  const now=new Date();
-  for(let i=13;i>=0;i--){
-    const d=new Date(now.getTime()-i*86400000);
-    const k=d.toISOString().slice(0,10);
-    map[k]=0;
-  }
-  (visits||[]).forEach(v=>{
-    const k=dayKey(v.started_at||v.at);
-    if(k in map) map[k]+=1;
-  });
-  const max=Math.max(1, ...Object.values(map));
-  const box=document.getElementById('dayBars');
-  box.innerHTML=Object.keys(map).map(k=>{
-    const n=map[k];
-    const pct=Math.round(n/max*100);
-    const label=k.slice(5); // MM-DD
-    return `<div class="bar-row"><span class="muted">${label}</span><div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div><span>${n}</span></div>`;
-  }).join('');
-}
-async function load(){
-  if(!window.LearnDB){ alert('supabase.js fehlt'); return; }
-  const g=document.getElementById('statsGrid');
-  g.innerHTML='<div class="stat"><div class="l">Lädt…</div></div>';
-  try{
-    // flush offline queue if any
-    if(LearnDB.flushScoreQueue) try{ await LearnDB.flushScoreQueue(); }catch(_){}
-    const s=await LearnDB.getAdminStats();
-    const fd = (sec)=> (LearnDB.formatDuration ? LearnDB.formatDuration(sec) : (sec||0)+'s');
-    g.innerHTML=`
-      <div class="stat"><div class="n">${s.unique_players}</div><div class="l">Nutzer</div></div>
-      <div class="stat"><div class="n">${s.total_visits}</div><div class="l">Besuche</div></div>
-      <div class="stat"><div class="n">${fd(s.total_duration_sec)}</div><div class="l">Lernzeit gesamt</div></div>
-      <div class="stat"><div class="n">${fd(s.avg_duration_sec)}</div><div class="l">Ø Dauer / Besuch</div></div>
-      <div class="stat"><div class="n">${s.total_quiz_rows}</div><div class="l">Quiz-Einträge</div></div>
-      <div class="stat"><div class="n">${s.total_quiz_attempts}</div><div class="l">Quiz-Versuche</div></div>
-    `;
-    buildDayBars(s.visits);
-    document.getElementById('playersMeta').textContent = s.players.length + ' Profile';
-
-    // Zugriffsstufen: Nickname-Vorschläge + Rollen-Tabelle + Code + Matrix
-    await loadRoles(s.players || []);
-    await loadKaWhitelistUI(s.players || []);
-    await loadExcelWhitelistUI(s.players || []);
-    await loadPaidCode();
-    await loadManifestUI();
-
-    // Tagesziel
-    const goalSec = Number(s.daily_goal_sec)||3600;
-    const goalMin = Math.round(goalSec/60);
-    const goalMeta=document.getElementById('goalMeta');
-    if(goalMeta) goalMeta.textContent='Aktuelles Ziel: '+goalMin+' Min/Tag ('+fd(goalSec)+') für alle Nutzer.';
-    const goalInput=document.getElementById('goalMin');
-    if(goalInput && !goalInput.value) goalInput.placeholder=String(goalMin);
-
-    // "Heute" pro Nutzer + Warnung unter Ziel
-    const berlinToday = (LearnDB.berlinDay ? LearnDB.berlinDay() : new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Berlin'}).format());
-    const seenToday = (iso)=>{ try{ return LearnDB.berlinDay ? (LearnDB.berlinDay(iso)===berlinToday) : (String(iso||'').slice(0,10)===berlinToday); }catch(_){ return false; } };
-
-    // Lern-Matrix (nur Pro/Admin) – braucht _roleMap aus loadRoles()
-    try{ renderMatrix(s.players||[]); }catch(_){}
-
-    document.getElementById('playersBody').innerHTML = s.players.map(p=>{
-      const subs = p.quizzes ? Object.keys(p.quizzes) : [];
-      const subList = subs.map(k => {
-        const q = p.quizzes[k];
-        const label = escH((q.subject || k).slice(0, 14));
-        const pct = q.best_pct != null ? q.best_pct + '%' : '';
-        return '<span class="tag" title="Bester Versuch: '+pct+', Versuche: '+(q.attempts||1)+'">'+label+'</span>';
-      }).join(' ') || '<span class="muted">—</span>';
-      const daily = Number(p.daily_duration_sec)||0;
-      const dailyCell = seenToday(p.last_seen)
-        ? (daily>=goalSec ? '<span class="tag" style="color:var(--ok);border-color:#E3F7E8">✓ '+fd(daily)+'</span>' : '<span style="color:var(--bad)">'+fd(daily)+'</span>')
-        : '<span class="muted">—</span>';
-      const tier = _roleMap[String(p.player||'').toLowerCase()] || 'free';
-      const tCell = tierTag(tier);
-      const lsCell = themeSummary(p.themes, tier);
-      return `<tr><td><b>${escH(p.player)}</b></td><td>${tCell}</td><td>${p.visits}</td><td>${p.quiz_attempts}</td><td>${dailyCell}</td><td>${fd(p.total_duration_sec)}</td><td style="max-width:230px;white-space:normal;word-break:break-word;line-height:1.7">${lsCell}</td><td style="max-width:200px;white-space:normal;word-break:break-word;line-height:1.6">${subList}</td><td>${fd(p.last_session_sec)}</td><td>${fmt(p.last_seen)}</td></tr>`;
-    }).join('') || '<tr><td colspan="10" class="muted">Noch keine Nutzer</td></tr>';
-
-    // ⚠️ Nutzer unter Ziel heute
-    const under = s.players
-      .filter(p => seenToday(p.last_seen) && (Number(p.daily_duration_sec)||0) < goalSec)
-      .sort((a,b)=>(Number(a.daily_duration_sec)||0)-(Number(b.daily_duration_sec)||0));
-    const underBody=document.getElementById('underGoalBody');
-    const underMeta=document.getElementById('underGoalMeta');
-    const underCard=document.getElementById('underGoalCard');
-    if(underMeta) underMeta.textContent='Ziel: '+goalMin+' Min/Tag · Berlin-Tag: '+berlinToday+' · '+under.length+' unter Ziel.';
-    if(!under.length){
-      underBody.innerHTML='<tr><td colspan="4" class="muted">✅ Alle heute aktiven Nutzer haben das Ziel erreicht (oder niemand war heute aktiv).</td></tr>';
-      if(underCard) underCard.style.opacity='.65';
-    } else {
-      if(underCard) underCard.style.opacity='1';
-      underBody.innerHTML = under.map(p=>{
-        const daily=Number(p.daily_duration_sec)||0;
-        const fehlt=Math.max(0, goalSec-daily);
-        return `<tr><td><b>${escH(p.player)}</b></td><td>${fd(daily)}</td><td><span style="color:var(--bad);font-weight:600">${fd(fehlt)}</span></td><td>${fmt(p.last_seen)}</td></tr>`;
-      }).join('');
-    }
-
-    document.getElementById('quizBody').innerHTML = s.quizzes.slice(0,80).map((q,i)=>{
-      const hasHist = q.history && q.history.length > 1;
-      const detailId = 'qd_'+i;
-      return `<tr class="qrow" data-idx="${i}" style="cursor:pointer">
-        <td>${escH(q.player||'')}</td>
-        <td><span class="tag">${escH(q.subject||'')}</span></td>
-        <td>${escH(q.quiz||'')}</td>
-        <td><b>${q.correct||0}/${q.total||0}</b></td>
-        <td>${q.pct||0}%</td>
-        <td>${q.attempts||1}</td>
-        <td>${fmt(q.at||q.updated_at)}</td>
-      </tr>${hasHist ? '<tr id="'+detailId+'" style="display:none"><td colspan="7" style="padding:4px 8px 12px"><div class="muted" style="font-size:.78em">Verlauf: '+q.history.map(h => h.pct+'% ('+h.correct+'/'+h.total+') am '+fmt(h.at)).join(' → ')+'</div></td></tr>' : ''}`;
-    }).join('') || '<tr><td colspan="7" class="muted">Noch keine Punkte</td></tr>';
-    // Click to toggle history
-    document.querySelectorAll('.qrow').forEach(el => {
-      el.addEventListener('click', ()=>{
-        const idx = el.dataset.idx;
-        const detail = document.getElementById('qd_'+idx);
-        if(detail) detail.style.display = detail.style.display === 'none' ? 'table-row' : 'none';
-      });
-    });
-
-    document.getElementById('aggBody').innerHTML = (s.quizAgg||[]).map(a=>
-      `<tr><td>${escH(a.label)}</td><td>${a.players}</td><td>${a.attempts}</td><td>${a.avgPct}%</td></tr>`
-    ).join('') || '<tr><td colspan="4" class="muted">—</td></tr>';
-
-    document.getElementById('visitBody').innerHTML = (s.visits||[]).slice(0,80).map(v=>{
-      const open = !v.ended_at;
-      const status = open ? '<span class="tag">offen</span>' : '<span class="tag">beendet</span>';
-      return `<tr><td>${escH(v.player||'')}</td><td>${fmt(v.started_at||v.at)}</td><td>${fmt(v.ended_at||v.last_seen)}</td><td><b>${fd(v.duration_sec)}</b></td><td>${status}</td></tr>`;
-    }).join('') || '<tr><td colspan="5" class="muted">Noch keine Besuche</td></tr>';
-
-    try{ loadFeedbackList(false); }catch(_){}
-  }catch(e){
-    g.innerHTML='<div class="stat"><div class="l" style="color:var(--bad)">Fehler: '+(e.message||e)+'</div></div>';
-  }
-}
-
-/* ===== Zugriffsstufen ===== */
-const TIER_LABEL={free:'Basic',paid:'Pro',super:'Admin'};
-let _roleMap={};   // nickname (lowercase) → tier
-/** LS-Fortschritt pro Nutzer. Pro/Admin: Detail je Fach (erledigt/gesehen).
- *  Basic: kein Detail – nur Lernzeit zählt (siehe eigene Spalte). */
-function themeSummary(themes, tier){
-  if(tier!=='paid' && tier!=='super') return '<span class="muted" title="Nur für Pro sichtbar">— nur Zeit</span>';
-  const list=themes?Object.keys(themes).map(k=>themes[k]):[];
-  if(!list.length) return '<span class="muted">—</span>';
-  // nach Fach gruppieren
-  const byFach={};
-  list.forEach(t=>{
-    const f=(t.fach||'?');
-    if(!byFach[f]) byFach[f]={done:0,seen:0};
-    if(t.status==='done') byFach[f].done++; else byFach[f].seen++;
-  });
-  return Object.keys(byFach).sort().map(f=>{
-    const g=byFach[f];
-    const total=g.done+g.seen;
-    const label=escH(f.toUpperCase());
-    return '<span class="tag" title="'+label+': '+g.done+' erledigt, '+g.seen+' nur gesehen">'
-      +label+' <b style="color:var(--ok)">✓'+g.done+'</b>/'+total+'</span>';
-  }).join(' ');
-}
-function tierTag(t){
-  t=TIER_LABEL[t]?t:'free';
-  const col=t==='super'?'#8944AB':t==='paid'?'#248A3D':'#6C6C70';
-  const bg=t==='super'?'#F6EDFC':t==='paid'?'#E3F7E8':'#E5E5EA';
-  return '<span class="tag" style="background:'+bg+';color:'+col+'">'+TIER_LABEL[t]+'</span>';
-}
-
-/* ===== Lern-Matrix (Pro) ===== */
-let _mxPlayers=[];      // [{player, themes}]
-let _mxTab='all';       // 'all' | group id
-const MX_STATUS_CLS={done:'mx-k-done',learning:'mx-k-learn',seen:'mx-k-seen'};
-const MX_STATUS_LBL={done:'erledigt',learning:'lernt',seen:'gesehen'};
-/** Status eines LS für einen Nutzer (aus profile.themes). fach fest = bfk1. */
-function mxStatusOf(themes, itemId){
-  if(!themes) return '';
-  const t=themes['bfk1:'+String(itemId).toLowerCase()] || themes['bfk1:'+itemId];
-  return (t && t.status) || '';
-}
-/** Sichtbare LS-Spalten je nach Tab. */
-function mxColumns(){
-  const cat=window.BFK1_CATALOG||[];
-  if(_mxTab==='all') { const out=[]; cat.forEach(g=>(g.items||[]).forEach(it=>out.push(Object.assign({_g:g.badge},it)))); return out; }
-  const g=cat.find(x=>x.id===_mxTab);
-  return g?(g.items||[]).map(it=>Object.assign({_g:g.badge},it)):[];
-}
-function mxRenderTabs(){
-  const cat=window.BFK1_CATALOG||[];
-  const tabs=[{id:'all',label:'Alle ('+cat.reduce((n,g)=>n+(g.items||[]).length,0)+')'}]
-    .concat(cat.map(g=>({id:g.id,label:g.badge+' ('+(g.items||[]).length+')'})));
-  const box=document.getElementById('mxTabs');
-  if(!box) return;
-  box.innerHTML=tabs.map(t=>'<button type="button" class="mx-tab'+(t.id===_mxTab?' active':'')+'" data-mxtab="'+t.id+'">'+escH(t.label)+'</button>').join('');
-  box.querySelectorAll('[data-mxtab]').forEach(b=>b.onclick=()=>{ _mxTab=b.getAttribute('data-mxtab'); mxRenderTabs(); mxRenderTable(); });
-}
-function mxRenderTable(){
-  const host=document.getElementById('mxScroll');
-  if(!host) return;
-  const cols=mxColumns();
-  if(!_mxPlayers.length){ host.innerHTML='<div class="mx-empty">Noch keine Pro-Nutzer mit Fortschritt.</div>'; return; }
-  if(!cols.length){ host.innerHTML='<div class="mx-empty">Keine LS in dieser Gruppe.</div>'; return; }
-  // Kopf
-  let head='<tr><th class="mx-namecol mx-name">Nutzer</th><th class="mx-pctcol">%</th>';
-  cols.forEach(c=>{
-    head+='<th class="mx-cell" title="'+escH(c.name)+'"><span class="mx-vh">'+escH((c.name||c.id).replace(/·.*$/,'').trim().slice(0,16))+'</span></th>';
-  });
-  head+='</tr>';
-  // Zeilen: nach % erledigt absteigend
-  const rows=_mxPlayers.map(p=>{
-    let done=0;
-    cols.forEach(c=>{ if(mxStatusOf(p.themes,c.id)==='done') done++; });
-    const pct=cols.length?Math.round(done/cols.length*100):0;
-    return {p,done,pct};
-  }).sort((a,b)=>b.pct-a.pct);
-  const body=rows.map(r=>{
-    const pctCls=r.pct>=67?'hi':r.pct>=34?'mid':'lo';
-    let tds='<td class="mx-namecol"><b>'+escH(r.p.player)+'</b></td>'
-      +'<td class="mx-pctcol"><span class="mx-pct '+pctCls+'">'+r.pct+'%</span><br><span class="muted" style="font-size:.68em">'+r.done+'/'+cols.length+'</span></td>';
-    cols.forEach(c=>{
-      const st=mxStatusOf(r.p.themes,c.id);
-      const cls=MX_STATUS_CLS[st]||'mx-k-none';
-      const lbl=MX_STATUS_LBL[st]||'offen';
-      tds+='<td class="mx-cell"><span class="mx-dot '+cls+'" title="'+escH(r.p.player)+' · '+escH(c.name)+' · '+lbl+'"></span></td>';
-    });
-    return '<tr>'+tds+'</tr>';
-  }).join('');
-  host.innerHTML='<table class="mx"><thead>'+head+'</thead><tbody>'+body+'</tbody></table>';
-}
-/** Aus getAdminStats-Spielern die Pro/Admin-Nutzer mit Themen ziehen. */
-function renderMatrix(players){
-  _mxPlayers=(players||[])
-    .filter(p=>{
-      const t=_roleMap[String(p.player||'').toLowerCase()]||'free';
-      return t==='paid'||t==='super';
-    })
-    .map(p=>({player:p.player, themes:p.themes||{}}));
-  mxRenderTabs();
-  mxRenderTable();
-}
-function showRoleErr(m){
-  const el=document.getElementById('roleErr');
-  if(!m){ el.classList.remove('show'); el.textContent=''; return; }
-  el.textContent=m; el.classList.add('show');
-}
-async function loadRoles(players){
-  if(!window.Access) return;
-  const body=document.getElementById('rolesBody');
-  const list=document.getElementById('nickList');
-  if(list && players){
-    list.innerHTML=players.map(p=>'<option value="'+escH(p.player)+'">').join('');
-  }
-  let roles=[];
-  try{ roles=await Access.listRoles(); }catch(_){}
-  // Nutzer ohne Rollen-Eintrag = Basic
-  const known=new Set(roles.map(r=>String(r.player||'').toLowerCase()));
-  const extra=(players||[])
-    .filter(p=>!known.has(String(p.player||'').toLowerCase()))
-    .map(p=>({player:p.player,tier:'free',granted_by:'—',granted_at:'',note:'(Standard)'}));
-  const all=roles.concat(extra).sort((a,b)=>{
-    const rank={super:0,paid:1,free:2};
-    const d=(rank[a.tier]??2)-(rank[b.tier]??2);
-    return d || String(a.player).localeCompare(String(b.player));
-  });
-  // Für die Nutzer-Tabelle: Nickname → Stufe
-  _roleMap={};
-  all.forEach(r=>{ _roleMap[String(r.player||'').toLowerCase()]=TIER_LABEL[r.tier]?r.tier:'free'; });
-  if(!body) return;
-  body.innerHTML=all.map(r=>{
-    const t=TIER_LABEL[r.tier]?r.tier:'free';
-    const act=t==='free'
-      ? '<button type="button" class="ghost mini" data-grant="'+escH(r.player)+'">→ Pro</button>'
-      : '<button type="button" class="ghost mini" data-revoke="'+escH(r.player)+'">→ Basic</button>';
-    return '<tr><td><b>'+escH(r.player)+'</b></td><td>'+tierTag(t)+'</td><td class="muted">'+escH(r.granted_by||'—')
-      +'</td><td class="muted">'+(r.granted_at?fmt(r.granted_at):'—')+'</td><td class="muted">'+escH(r.note||'')
-      +'</td><td>'+act+'</td></tr>';
-  }).join('') || '<tr><td colspan="6" class="muted">Noch keine Nutzer</td></tr>';
-  body.querySelectorAll('[data-grant]').forEach(b=>b.onclick=()=>quickRole(b.getAttribute('data-grant'),'paid'));
-  body.querySelectorAll('[data-revoke]').forEach(b=>b.onclick=()=>quickRole(b.getAttribute('data-revoke'),'free'));
-}
-async function quickRole(player,tier){
-  showRoleErr('');
-  try{
-    await Access.setRole(player,tier,'super:dashboard','');
-    await load();
-  }catch(e){ showRoleErr(e.message||String(e)); }
-}
-async function loadPaidCode(){
-  if(!window.Access) return;
-  try{
-    const c=await Access.getPaidCode();
-    const inp=document.getElementById('paidCode');
-    if(inp && !inp.value) inp.value=c||'';
-  }catch(_){}
-}
-const MANI_LABEL={
-  'theme:list':'Themenliste','theme:basic':'Grundwissen im Thema','theme:full':'Volle Inhalte im Thema',
-  'theme:pages':'Arbeitsblätter (Scans)','theme:flashcards':'Karteikarten',
-  'questionbank:excel':'Excel-Fragenbank',
-  'quiz:demo':'Quiz (Demo)','quiz:full':'Quiz (voll)','training':'Prüfungstraining',
-  'zusammenfassung':'Zusammenfassung','pruefungen':'Prüfungsbögen + Lösungen',
-  'challenge':'Challenge','admin':'Admin-Dashboard',
-};
-async function loadManifestUI(){
-  if(!window.Access) return;
-  try{ await Access.loadManifest(); }catch(_){}
-  const m=Access.manifest();
-  const box=document.getElementById('manifestBox');
-  if(!box) return;
-  box.innerHTML=Object.keys(Access.DEFAULT_MANIFEST).map(k=>{
-    const cur=m[k]||'free';
-    const dis=k==='admin'?' disabled':'';
-    return '<div class="mani-row"><span>'+escH(MANI_LABEL[k]||k)+'</span>'
-      +'<select data-mani="'+k+'"'+dis+'>'
-      +['free','paid','super'].map(t=>'<option value="'+t+'"'+(t===cur?' selected':'')+'>'+TIER_LABEL[t]+'</option>').join('')
-      +'</select></div>';
-  }).join('');
-}
-
-document.getElementById('btnSetRole').onclick=async()=>{
-  const nick=(document.getElementById('roleNick').value||'').trim();
-  const tier=document.getElementById('roleTier').value;
-  const note=(document.getElementById('roleNote').value||'').trim();
-  showRoleErr('');
-  if(!nick){ showRoleErr('Bitte Nickname eingeben'); return; }
-  const btn=document.getElementById('btnSetRole');
-  btn.disabled=true; btn.textContent='Speichert…';
-  try{
-    await Access.setRole(nick,tier,'super:dashboard',note);
-    document.getElementById('roleNote').value='';
-    await load();
-  }catch(e){ showRoleErr(e.message||String(e)); }
-  finally{ btn.disabled=false; btn.textContent='Speichern'; }
-};
-document.getElementById('btnSavePaid').onclick=async()=>{
-  const code=(document.getElementById('paidCode').value||'').trim();
-  const err=document.getElementById('codeErr');
-  const msg=document.getElementById('codeMsg');
-  err.classList.remove('show'); msg.textContent='';
-  try{
-    await Access.setPaidCode(code,'super:dashboard');
-    msg.textContent='Pro-Code gespeichert.';
-  }catch(e){ err.textContent=e.message||String(e); err.classList.add('show'); }
-};
-document.getElementById('btnSavePass').onclick=async()=>{
-  const pw=document.getElementById('newAdminPass').value||'';
-  const err=document.getElementById('codeErr');
-  const msg=document.getElementById('codeMsg');
-  err.classList.remove('show'); msg.textContent='';
-  try{
-    await Access.setSuperPassword(pw,'super:dashboard');
-    document.getElementById('newAdminPass').value='';
-    msg.textContent='Admin-Passwort geändert.';
-  }catch(e){ err.textContent=e.message||String(e); err.classList.add('show'); }
-};
-document.getElementById('btnSaveManifest').onclick=async()=>{
-  const msg=document.getElementById('maniMsg');
-  const patch={};
-  document.querySelectorAll('[data-mani]').forEach(s=>{ patch[s.getAttribute('data-mani')]=s.value; });
-  msg.textContent='Speichert…';
-  try{
-    await Access.saveManifest(patch,'super:dashboard');
-    const excelTier=patch['questionbank:excel']||'paid';
-    const excelName=excelTier==='free'?'Basic':excelTier==='super'?'Admin':'Pro';
-    msg.textContent='Matrix gespeichert · Excel-Fragenbank ab '+excelName+'.';
-  }catch(e){ msg.textContent='Fehler: '+(e.message||e); }
-};
-
-function initTabs(){
-  document.querySelectorAll('#mainTabs .main-tab').forEach(btn => {
-    btn.onclick = () => {
-      const tab = btn.getAttribute('data-tab');
-      document.querySelectorAll('#mainTabs .main-tab').forEach(b => b.classList.toggle('active', b === btn));
-      document.querySelectorAll('.sec-pane').forEach(p => p.classList.remove('active'));
-      const activePane = document.getElementById('pane-' + tab);
-      if(activePane) activePane.classList.add('active');
-      if(tab === 'feedback') loadFeedbackList();
-    };
-  });
-}
-
-async function loadDeutschStats(){
-  if(!window.LearnDB || !window.LearnDB.getDeutschAdminStats) return;
-  const grid = document.getElementById('deStatsGrid');
-  if(!grid) return;
-  grid.innerHTML = '<div class="stat"><div class="l">Deutsch-Daten werden geladen…</div></div>';
   try {
-    const ds = await LearnDB.getDeutschAdminStats();
-    const st = ds.settings || { minRepeats: 3, passThresholdPct: 80, dailyVocabGoal: 20, dailyGrammarGoal: 5 };
-    
-    // Populate discipline inputs
-    const minRepInp = document.getElementById('deMinRepeats');
-    const dVocabInp = document.getElementById('deDailyVocab');
-    const dGramInp = document.getElementById('deDailyGrammar');
-    const passInp = document.getElementById('dePassThreshold');
-    if(minRepInp && !minRepInp.value) minRepInp.value = st.minRepeats || 3;
-    if(dVocabInp && !dVocabInp.value) dVocabInp.value = st.dailyVocabGoal || 20;
-    if(dGramInp && !dGramInp.value) dGramInp.value = st.dailyGrammarGoal || 5;
-    if(passInp && !passInp.value) passInp.value = st.passThresholdPct || 80;
-
-    // Calculate totals
-    const totalVocabDrilled = (ds.players || []).reduce((acc, p) => acc + (p.vocabCompleted || 0), 0);
-    const totalVocabToday = (ds.players || []).reduce((acc, p) => acc + (p.vocabToday || 0), 0);
-    const totalGrammarMastered = (ds.players || []).reduce((acc, p) => acc + (p.grammarMastered || 0), 0);
-    const totalGrammarRetries = (ds.players || []).reduce((acc, p) => acc + (p.grammarRetries || 0), 0);
-    const totalTelcExams = (ds.players || []).reduce((acc, p) => acc + (p.telcExams ? p.telcExams.length : 0), 0);
-
-    grid.innerHTML = `
-      <div class="stat"><div class="n">${ds.totalStudents || 0}</div><div class="l">Deutsch-Nutzer</div></div>
-      <div class="stat"><div class="n">${totalVocabDrilled}</div><div class="l">Getippte Vokabeln</div></div>
-      <div class="stat"><div class="n" style="color:var(--ok)">${totalVocabToday}</div><div class="l">Heute getippte Vokabeln</div></div>
-      <div class="stat"><div class="n">${totalGrammarMastered}</div><div class="l">Grammatik-Themen 100%</div></div>
-      <div class="stat"><div class="n" style="color:var(--warn)">${totalGrammarRetries}</div><div class="l">Wiederholte Aufgaben</div></div>
-      <div class="stat"><div class="n">${totalTelcExams}</div><div class="l">Prüfungen TELC / Goethe</div></div>
-    `;
-
-    // Red Alerts Table
-    const redAlertBody = document.getElementById('deRedAlertBody');
-    const redAlertCard = document.getElementById('deRedAlertCard');
-    const redAlertMeta = document.getElementById('deRedAlertMeta');
-    if(!ds.redAlerts || !ds.redAlerts.length){
-      if(redAlertBody) redAlertBody.innerHTML = '<tr><td colspan="4" class="muted" style="text-align:center;padding:14px">✅ Super! Alle Nutzer haben ihr Tagesziel erreicht.</td></tr>';
-      if(redAlertCard) redAlertCard.style.opacity = '0.75';
-      if(redAlertMeta) redAlertMeta.textContent = 'Aktuell keine Nutzer mit roter Warnung.';
-    } else {
-      if(redAlertCard) redAlertCard.style.opacity = '1';
-      if(redAlertMeta) redAlertMeta.textContent = 'Achtung: ' + ds.redAlerts.length + ' Nutzer brauchen eine Erinnerung:';
-      if(redAlertBody) {
-        redAlertBody.innerHTML = ds.redAlerts.map(a => {
-          return `<tr>
-            <td><b style="color:var(--bad)">${escH(a.player)}</b></td>
-            <td><b>${a.vocabToday || 0}</b> / ${st.dailyVocabGoal || 20} Vokabeln</td>
-            <td>${fmt(a.last_seen)}</td>
-            <td><span class="pill-badge pill-bad">${escH(a.reasons.join(' · '))}</span></td>
-          </tr>`;
-        }).join('');
-      }
-    }
-
-    // Vocab Table
-    const vocabBody = document.getElementById('deVocabBody');
-    if(vocabBody){
-      vocabBody.innerHTML = (ds.players || []).map(p => {
-        const meetsGoal = (p.vocabToday || 0) >= (st.dailyVocabGoal || 20);
-        const goalBadge = meetsGoal
-          ? '<span class="pill-badge pill-ok">✓ erreicht (' + p.vocabToday + '/' + (st.dailyVocabGoal || 20) + ')</span>'
-          : '<span class="pill-badge pill-bad">nicht erreicht (' + (p.vocabToday || 0) + '/' + (st.dailyVocabGoal || 20) + ')</span>';
-        return `<tr>
-          <td><b>${escH(p.player)}</b></td>
-          <td><b style="color:var(--ok)">${p.vocabCompleted || 0}</b> Vokabeln</td>
-          <td><b>${p.vocabToday || 0}</b> Vokabeln</td>
-          <td><span style="color:${p.vocabMistakes > 0 ? 'var(--bad)' : 'var(--muted)'}">${p.vocabMistakes || 0}</span></td>
-          <td>${goalBadge}</td>
-          <td>${fmt(p.last_seen)}</td>
-        </tr>`;
-      }).join('') || '<tr><td colspan="6" class="muted">Noch keine Nutzer haben mit dem Vokabel-Tippen begonnen.</td></tr>';
-    }
-
-    // Grammar Player Table
-    const gramPlayerBody = document.getElementById('deGrammarPlayerBody');
-    if(gramPlayerBody){
-      gramPlayerBody.innerHTML = (ds.players || []).map(p => {
-        return `<tr>
-          <td><b>${escH(p.player)}</b></td>
-          <td><span class="pill-badge pill-ok">✓ ${p.grammarMastered || 0} Aufgaben</span></td>
-          <td><b style="color:var(--warn)">${p.grammarRetries || 0}</b> Wiederholungen</td>
-        </tr>`;
-      }).join('') || '<tr><td colspan="3" class="muted">Noch keine Daten</td></tr>';
-    }
-
-    // Weak Grammar Topics Table
-    const weakTopicsBody = document.getElementById('deWeakTopicsBody');
-    if(weakTopicsBody){
-      weakTopicsBody.innerHTML = (ds.weakGrammarTopics || []).slice(0, 10).map(t => {
-        return `<tr>
-          <td><b>${escH(t.title)}</b></td>
-          <td><span style="color:var(--bad);font-weight:600">${t.totalMistakes} Fehler</span></td>
-          <td><b>${t.totalRetries}</b> Wiederholungen</td>
-        </tr>`;
-      }).join('') || '<tr><td colspan="3" class="muted">Noch keine Fehlerthemen.</td></tr>';
-    }
-
-    // TELC Exams Table
-    const examsBody = document.getElementById('deExamsBody');
-    if(examsBody){
-      const allExams = [];
-      (ds.players || []).forEach(p => {
-        (p.telcExams || []).forEach(ex => {
-          allExams.push(Object.assign({ player: p.player }, ex));
-        });
-      });
-      allExams.sort((a, b) => new Date(b.at || b.updated_at || 0) - new Date(a.at || a.updated_at || 0));
-
-      examsBody.innerHTML = allExams.slice(0, 50).map(ex => {
-        const isPassed = (ex.pct || 0) >= (st.passThresholdPct || 80);
-        const passBadge = isPassed
-          ? '<span class="pill-badge pill-ok">Bestanden (' + ex.pct + '%)</span>'
-          : '<span class="pill-badge pill-bad">Nicht bestanden (' + (ex.pct || 0) + '%)</span>';
-        return `<tr>
-          <td><b>${escH(ex.player)}</b></td>
-          <td>${escH(ex.subject || 'TELC B1')}</td>
-          <td>${escH(ex.quiz || 'Gesamt')}</td>
-          <td><b>${ex.correct || 0}/${ex.total || 0}</b></td>
-          <td>${passBadge}</td>
-          <td>${ex.attempts || 1}</td>
-          <td>${fmt(ex.at || ex.updated_at)}</td>
-        </tr>`;
-      }).join('') || '<tr><td colspan="7" class="muted">Noch keine TELC/Goethe-Prüfungsversuche.</td></tr>';
-    }
-
-  } catch(e) {
-    if(grid) grid.innerHTML = '<div class="stat"><div class="l" style="color:var(--bad)">Fehler beim Laden: ' + (e.message || e) + '</div></div>';
-  }
+    const d = new Date(ts);
+    return d.toLocaleDateString('vi-VN', {day:'2-digit', month:'2-digit'}) + ' ' + d.toLocaleTimeString('vi-VN', {hour:'2-digit', minute:'2-digit'});
+  } catch(_){ return String(ts).slice(0, 16); }
 }
 
-document.getElementById('btnSaveDeSettings').onclick = async () => {
-  const minRepeats = Number(document.getElementById('deMinRepeats').value) || 3;
-  const dailyVocabGoal = Number(document.getElementById('deDailyVocab').value) || 20;
-  const dailyGrammarGoal = Number(document.getElementById('deDailyGrammar').value) || 5;
-  const passThresholdPct = Number(document.getElementById('dePassThreshold').value) || 80;
-  const msg = document.getElementById('deSettingsMsg');
-  const btn = document.getElementById('btnSaveDeSettings');
-  msg.textContent = 'Speichern…'; btn.disabled = true;
-  try {
-    await LearnDB.saveDisciplineSettings({
-      minRepeats,
-      dailyVocabGoal,
-      dailyGrammarGoal,
-      passThresholdPct,
-      strictLevelGate: true
-    });
-    msg.textContent = '✓ Disziplin-Einstellungen gespeichert!';
-    setTimeout(() => { msg.textContent = ''; }, 3000);
-    await loadDeutschStats();
-  } catch(e) {
-    msg.textContent = 'Speichern fehlgeschlagen: ' + (e.message || e);
-  } finally {
-    btn.disabled = false;
-  }
-};
+function fmtDur(sec){
+  const s = Math.max(0, Number(sec)||0);
+  const h = Math.floor(s / 3600);
+  const m = Math.floor((s % 3600) / 60);
+  if(h > 0) return h + 'h ' + String(m).padStart(2, '0') + 'm';
+  if(m > 0) return m + 'm';
+  return s + 's';
+}
 
+function getBerlinToday(){
+  if(window.LearnDB && LearnDB.berlinDay) return LearnDB.berlinDay();
+  return new Intl.DateTimeFormat('en-CA', {timeZone:'Europe/Berlin'}).format();
+}
+
+function showErr(m){
+  const el = document.getElementById('err');
+  if(!m){ el.classList.remove('show'); el.textContent = ''; return; }
+  el.textContent = m; el.classList.add('show');
+}
+
+/* ==================== AUTHENTICATION ==================== */
 function unlock(){
-  document.getElementById('loginBox').style.display='none';
-  document.getElementById('dash').style.display='block';
-  const btnRef = document.getElementById('btnRefresh');
-  btnRef.style.display='inline-block';
-  btnRef.onclick = () => {
-    btnRef.textContent = 'Lädt…';
-    load();
-    loadDeutschStats();
-    setTimeout(() => { btnRef.textContent = '↻ Aktualisieren'; }, 800);
-  };
-  initTabs();
-  load();
-  loadDeutschStats();
+  document.getElementById('loginBox').style.display = 'none';
+  document.getElementById('dash').style.display = 'flex';
+  initNavigation();
+  loadAllData();
 }
 
 document.getElementById('btnLogin').onclick = async () => {
   const pass = (document.getElementById('pass').value || '').trim();
   showErr('');
-  if(!pass){ showErr('Bitte Admin-Passwort eingeben'); return; }
+  if(!pass){ showErr('Vui lòng nhập mật khẩu Admin'); return; }
   const btn = document.getElementById('btnLogin');
-  btn.disabled = true; btn.textContent = 'Prüfen…';
+  btn.disabled = true; btn.textContent = 'Đang kiểm tra...';
   try {
     let ok = false;
     if(window.Access && Access.checkSuperPassword){
@@ -1160,397 +1227,1095 @@ document.getElementById('btnLogin').onclick = async () => {
       if(window.Access && Access.markSuperVerified) Access.markSuperVerified(true);
       unlock();
     } else {
-      showErr('Falsches Passwort. Standard-Passwort: admin');
+      showErr('Mật khẩu không chính xác.');
     }
   } catch(e) {
-    showErr('Fehler: ' + (e.message || e));
+    showErr('Lỗi: ' + (e.message || e));
   } finally {
-    btn.disabled = false; btn.textContent = 'Zum Dashboard';
+    btn.disabled = false; btn.textContent = 'Vào Bảng Điều Khiển';
   }
 };
+
 document.getElementById('pass').addEventListener('keydown', e => {
   if(e.key === 'Enter') document.getElementById('btnLogin').click();
 });
 
 try{
-  if(sessionStorage.getItem(AUTH_KEY)==='1') unlock();
+  if(sessionStorage.getItem(AUTH_KEY) === '1') unlock();
 }catch(_){}
 
-/* ===== KLASSENARBEIT ACCESS CONTROL UI ===== */
-let _allPlayersList = [];
-let _kaWhitelistSet = new Set();
-let _kaFilterMode = 'all';
+/* ==================== NAVIGATION ==================== */
+const NAV_META = {
+  overview: { title: '1. Tổng quan Hôm nay', sub: 'Kiểm tra học viên đang trực tuyến, thời lượng học và nội dung đã ôn luyện' },
+  deutsch: { title: '2. Deutsch (A1–B1 & TELC)', sub: 'Kỷ luật gõ từ vựng lặp lại, ngữ pháp 100%, cảnh báo đỏ và đề thi TELC/Goethe' },
+  fach: { title: '3. Fach (Gastronomie · BfK · WIKO · GK)', sub: 'Ma trận tiến độ bài học (Lern-Matrix), điểm Quiz chuyên ngành và các phiên truy cập' },
+  lid: { title: '4. LiD & Führerschein (Định cư & Lái xe)', sub: 'Kết quả làm bài Leben in Deutschland, Bằng lái xe và Đấu trường Arena/Challenge' },
+  access: { title: '5. Học viên & Phân quyền (3 trong 1)', sub: 'Quản lý tập trung hạng Basic/Pro/Admin, mở khóa Klassenarbeit và 19 bài Excel trên 1 bảng' },
+  feedback: { title: '6. Góp ý & Báo lỗi bài học', sub: 'Danh sách phản hồi từ học viên kèm bộ lọc Mới / Đã xử lý' },
+  settings: { title: '7. Cấu hình & Mục tiêu học tập', sub: 'Chỉnh số phút mục tiêu/ngày, kỷ luật từ vựng Deutsch, mã Pro-Code và mật khẩu Admin' }
+};
 
-function showKaErr(m){
-  const el = document.getElementById('kaErr');
-  if(!el) return;
-  if(!m){ el.classList.remove('show'); el.textContent = ''; return; }
-  el.textContent = m; el.classList.add('show');
-}
-function showKaMsg(m){
-  const el = document.getElementById('kaMsg');
-  if(el){ el.textContent = m; setTimeout(() => { if(el.textContent===m) el.textContent=''; }, 3500); }
-}
+function initNavigation(){
+  document.querySelectorAll('.sidebar-nav .nav-item').forEach(btn => {
+    btn.onclick = () => {
+      const tab = btn.getAttribute('data-tab');
+      document.querySelectorAll('.sidebar-nav .nav-item').forEach(b => b.classList.toggle('active', b === btn));
+      document.querySelectorAll('.pane').forEach(p => p.classList.remove('active'));
+      const activePane = document.getElementById('pane-' + tab);
+      if(activePane) activePane.classList.add('active');
 
-async function loadKaWhitelistUI(players){
-  if(!window.Access) return;
-  try{
-    const list = await Access.loadKaWhitelist();
-    _kaWhitelistSet = new Set((list || []).map(s => String(s).toLowerCase()));
-  }catch(_){}
-  _allPlayersList = players || _allPlayersList || [];
-  renderKaTable();
-}
+      const meta = NAV_META[tab] || { title: '', sub: '' };
+      document.getElementById('paneTitle').textContent = meta.title;
+      document.getElementById('paneSubtitle').textContent = meta.sub;
 
-function filterKaList(mode){
-  _kaFilterMode = mode;
-  document.getElementById('kaFilterAll')?.classList.toggle('active', mode === 'all');
-  document.getElementById('kaFilterAll')?.classList.toggle('ghost', mode !== 'all');
-  document.getElementById('kaFilterAllowed')?.classList.toggle('active', mode === 'allowed');
-  document.getElementById('kaFilterAllowed')?.classList.toggle('ghost', mode !== 'allowed');
-  document.getElementById('kaFilterLocked')?.classList.toggle('active', mode === 'locked');
-  document.getElementById('kaFilterLocked')?.classList.toggle('ghost', mode !== 'locked');
-  renderKaTable();
-}
-
-function renderKaTable(){
-  const body = document.getElementById('kaBody');
-  if(!body) return;
-
-  const known = new Set();
-  const allNicks = [];
-
-  (_allPlayersList || []).forEach(p => {
-    const nick = String(p.player || '').trim();
-    if(nick && !known.has(nick.toLowerCase())){
-      known.add(nick.toLowerCase());
-      allNicks.push(nick);
-    }
-  });
-  _kaWhitelistSet.forEach(nick => {
-    if(nick && !known.has(nick.toLowerCase())){
-      known.add(nick.toLowerCase());
-      allNicks.push(nick);
-    }
+      if(tab === 'feedback') loadFeedbackList();
+    };
   });
 
-  const total = allNicks.length;
-  const allowedCount = allNicks.filter(n => _kaWhitelistSet.has(n.toLowerCase())).length;
-  const lockedCount = total - allowedCount;
+  document.getElementById('btnRefresh').onclick = async () => {
+    const txt = document.getElementById('refBtnText');
+    txt.textContent = 'Đang tải...';
+    await loadAllData();
+    txt.textContent = 'Cập nhật';
+  };
+}
 
-  const elAll = document.getElementById('kaCountAll');
-  const elAllowed = document.getElementById('kaCountAllowed');
-  const elLocked = document.getElementById('kaCountLocked');
-  if(elAll) elAll.textContent = total;
-  if(elAllowed) elAllowed.textContent = allowedCount;
-  if(elLocked) elLocked.textContent = lockedCount;
+/* ==================== DATA LOADING ==================== */
+async function loadAllData(){
+  if(!window.LearnDB) return;
+  const bDay = getBerlinToday();
+  document.getElementById('berlinDateText').textContent = 'Berlin: ' + bDay;
 
-  let filtered = allNicks;
-  if(_kaFilterMode === 'allowed'){
-    filtered = allNicks.filter(n => _kaWhitelistSet.has(n.toLowerCase()));
-  } else if(_kaFilterMode === 'locked'){
-    filtered = allNicks.filter(n => !_kaWhitelistSet.has(n.toLowerCase()));
+  try {
+    if(LearnDB.flushScoreQueue) try{ await LearnDB.flushScoreQueue(); }catch(_){}
+
+    const [s, ds, roles, kaList, excelList] = await Promise.all([
+      LearnDB.getAdminStats(),
+      LearnDB.getDeutschAdminStats ? LearnDB.getDeutschAdminStats() : Promise.resolve(null),
+      window.Access && Access.listRoles ? Access.listRoles() : Promise.resolve([]),
+      window.Access && Access.loadKaWhitelist ? Access.loadKaWhitelist() : Promise.resolve([]),
+      window.Access && Access.loadExcelWhitelist ? Access.loadExcelWhitelist() : Promise.resolve([])
+    ]);
+
+    _adminStats = s;
+    _deutschStats = ds;
+    _kaWhitelistSet = new Set((kaList || []).map(x => String(x).toLowerCase()));
+    _excelWhitelistSet = new Set((excelList || []).map(x => String(x).toLowerCase()));
+
+    // Map Roles
+    _roleMap = {};
+    (roles || []).forEach(r => {
+      if(r.player) _roleMap[String(r.player).toLowerCase()] = r.tier || 'free';
+    });
+
+    // Populate Nickname Datalist
+    const nickList = document.getElementById('nickList');
+    if(nickList && s.players){
+      nickList.innerHTML = s.players.map(p => '<option value="' + escH(p.player) + '">').join('');
+    }
+
+    // Render Subsystems
+    renderOverview();
+    renderDeutsch();
+    renderFach();
+    renderLid();
+    renderAccessTable();
+    loadPaidCode();
+    loadManifestUI();
+    loadGoalSettings();
+    loadFeedbackList();
+
+  } catch(e) {
+    console.error('Lỗi khi tải dữ liệu Admin:', e);
+  }
+}
+
+/* ==================== 1. TỔNG QUAN HÔM NAY (OVERVIEW) ==================== */
+function isPlayerOnline(playerObj, visitsList){
+  const nowMs = Date.now();
+  const pName = String(playerObj.player || '').toLowerCase();
+  if(visitsList && visitsList.length){
+    const activeVisit = visitsList.find(v => String(v.player||'').toLowerCase() === pName && !v.ended_at && (nowMs - Date.parse(v.last_seen || v.started_at || 0) < ONLINE_THRESHOLD_MS));
+    if(activeVisit) return true;
+  }
+  if(playerObj.last_seen){
+    const diff = nowMs - Date.parse(playerObj.last_seen);
+    if(diff >= 0 && diff < ONLINE_THRESHOLD_MS) return true;
+  }
+  return false;
+}
+
+function getTodayActivities(playerObj, bDay, allQuizzes, dsPlayer){
+  const acts = [];
+  const pName = String(playerObj.player || '').toLowerCase();
+
+  // Themes
+  if(playerObj.themes){
+    Object.keys(playerObj.themes).forEach(tk => {
+      const t = playerObj.themes[tk];
+      const seenDay = String(t.seen_at || '').slice(0, 10);
+      const doneDay = String(t.done_at || '').slice(0, 10);
+      if(seenDay === bDay || doneDay === bDay){
+        const f = (t.fach || 'Fach').toUpperCase();
+        const nm = t.name || t.theme || '';
+        const st = t.status === 'done' ? 'Hoàn thành' : 'Đang học';
+        acts.push(`<span class="tag ${t.status==='done'?'tag-ok':''}">${f}: ${escH(nm.slice(0,18))} (${st})</span>`);
+      }
+    });
   }
 
-  if(!filtered.length){
-    body.innerHTML = '<tr><td colspan="4" class="muted" style="text-align:center;padding:16px">Keine passenden Konten</td></tr>';
+  // Quizzes today
+  (allQuizzes || []).forEach(q => {
+    if(String(q.player||'').toLowerCase() === pName && String(q.at || q.updated_at || '').slice(0, 10) === bDay){
+      const subj = (q.subject || 'Quiz').toUpperCase();
+      acts.push(`<span class="tag tag-ok">Quiz ${subj}: ${q.correct}/${q.total} (${q.pct}%)</span>`);
+    }
+  });
+
+  // Vocab today
+  if(dsPlayer && dsPlayer.vocabToday > 0){
+    acts.push(`<span class="tag tag-ok">Deutsch: ${dsPlayer.vocabToday} từ vựng</span>`);
+  }
+
+  if(!acts.length){
+    if(playerObj.daily_duration_sec > 0){
+      acts.push(`<span class="tag tag-muted">Đọc lý thuyết (${fmtDur(playerObj.daily_duration_sec)})</span>`);
+    } else {
+      acts.push(`<span class="tag tag-muted">Chưa có bài tập</span>`);
+    }
+  }
+  return acts.slice(0, 4).join(' ');
+}
+
+function renderOverview(){
+  if(!_adminStats) return;
+  const s = _adminStats;
+  const bDay = getBerlinToday();
+  const goalSec = Number(s.daily_goal_sec) || 3600;
+  const goalMin = Math.round(goalSec / 60);
+
+  const visitsList = s.visits_all || s.visits || [];
+  const players = s.players || [];
+
+  // Filter Today
+  const todayPlayers = players.filter(p => {
+    const isToday = (p.daily_day === bDay && p.daily_duration_sec > 0) || String(p.last_seen || '').slice(0, 10) === bDay;
+    return isToday;
+  });
+
+  // Online Players
+  const onlinePlayers = players.filter(p => isPlayerOnline(p, visitsList));
+  const onlineCount = onlinePlayers.length;
+
+  document.getElementById('onlineCountText').textContent = onlineCount + ' đang online';
+  document.getElementById('kpiOnlineSub').textContent = '● ' + onlineCount + ' người đang mở app';
+  document.getElementById('cTodayOnline').textContent = onlineCount;
+
+  // KPIs
+  document.getElementById('kpiTodayCount').innerHTML = todayPlayers.length + ' <small style="font-size:0.5em;color:var(--muted);font-weight:400">/ ' + players.length + ' HV</small>';
+  document.getElementById('kpiGoalMin').textContent = goalMin;
+
+  const totalTodaySec = todayPlayers.reduce((acc, p) => acc + (Number(p.daily_duration_sec) || 0), 0);
+  document.getElementById('kpiTodayHours').textContent = fmtDur(totalTodaySec);
+  const avgSec = todayPlayers.length ? Math.round(totalTodaySec / todayPlayers.length) : 0;
+  document.getElementById('kpiAvgDuration').textContent = 'Trung bình: ' + fmtDur(avgSec) + ' / học viên';
+
+  const metCount = todayPlayers.filter(p => (Number(p.daily_duration_sec) || 0) >= goalSec).length;
+  const underCount = todayPlayers.length - metCount;
+  document.getElementById('kpiMetGoal').textContent = metCount + ' / ' + todayPlayers.length + ' đạt';
+  document.getElementById('kpiUnderGoal').textContent = underCount + ' người chưa đủ mục tiêu';
+
+  document.getElementById('cTodayAll').textContent = todayPlayers.length;
+  document.getElementById('cTodayUnder').textContent = underCount;
+  document.getElementById('cTodayAbsent').textContent = players.length - todayPlayers.length;
+
+  // Quizzes today
+  const quizzesToday = (s.quizzes || []).filter(q => String(q.at || q.updated_at || '').slice(0, 10) === bDay);
+  const dsPlayersMap = {};
+  if(_deutschStats && _deutschStats.players){
+    _deutschStats.players.forEach(dp => { dsPlayersMap[String(dp.player||'').toLowerCase()] = dp; });
+  }
+  const vocabTodayTotal = Object.values(dsPlayersMap).reduce((acc, dp) => acc + (dp.vocabToday || 0), 0);
+  document.getElementById('kpiQuizToday').textContent = quizzesToday.length + ' Quiz · ' + vocabTodayTotal + ' Từ';
+
+  if(quizzesToday.length){
+    const avgPct = Math.round(quizzesToday.reduce((a, b) => a + (Number(b.pct)||0), 0) / quizzesToday.length);
+    document.getElementById('kpiAccuracyToday').textContent = 'Tỷ lệ đúng trung bình: ' + avgPct + '%';
+  } else {
+    document.getElementById('kpiAccuracyToday').textContent = 'Chưa có lượt nộp bài hôm nay';
+  }
+
+  renderTodayTable();
+  buildDayBars(s.visits_all || s.visits || []);
+  renderLiveActivities(s.quizzes, visitsList);
+}
+
+function filterTodayTable(mode){
+  _todayFilterMode = mode;
+  ['all', 'online', 'under', 'absent'].forEach(m => {
+    const el = document.getElementById('ft' + m.charAt(0).toUpperCase() + m.slice(1));
+    if(el) el.classList.toggle('active', m === mode);
+  });
+  renderTodayTable();
+}
+
+function renderTodayTable(){
+  if(!_adminStats) return;
+  const tbody = document.getElementById('todayTableBody');
+  if(!tbody) return;
+
+  const s = _adminStats;
+  const bDay = getBerlinToday();
+  const goalSec = Number(s.daily_goal_sec) || 3600;
+  const visitsList = s.visits_all || s.visits || [];
+  const search = (document.getElementById('todaySearchInp')?.value || '').trim().toLowerCase();
+
+  const dsPlayersMap = {};
+  if(_deutschStats && _deutschStats.players){
+    _deutschStats.players.forEach(dp => { dsPlayersMap[String(dp.player||'').toLowerCase()] = dp; });
+  }
+
+  let list = (s.players || []).map(p => {
+    const pName = String(p.player || '');
+    const isOnline = isPlayerOnline(p, visitsList);
+    const dailySec = Number(p.daily_duration_sec) || 0;
+    const isToday = (p.daily_day === bDay && dailySec > 0) || String(p.last_seen || '').slice(0, 10) === bDay;
+    const metGoal = dailySec >= goalSec;
+    const tier = _roleMap[pName.toLowerCase()] || 'free';
+    const acts = getTodayActivities(p, bDay, s.quizzes, dsPlayersMap[pName.toLowerCase()]);
+    return { p, pName, isOnline, dailySec, isToday, metGoal, tier, acts };
+  });
+
+  if(search){
+    list = list.filter(x => x.pName.toLowerCase().includes(search));
+  }
+
+  if(_todayFilterMode === 'all'){
+    list = list.filter(x => x.isToday);
+  } else if(_todayFilterMode === 'online'){
+    list = list.filter(x => x.isOnline);
+  } else if(_todayFilterMode === 'under'){
+    list = list.filter(x => x.isToday && !x.metGoal);
+  } else if(_todayFilterMode === 'absent'){
+    list = list.filter(x => !x.isToday);
+  }
+
+  if(!list.length){
+    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:24px;color:var(--muted)">Không có học viên nào phù hợp bộ lọc.</td></tr>';
     return;
   }
 
-  body.innerHTML = filtered.map(nick => {
-    const isAllowed = _kaWhitelistSet.has(nick.toLowerCase());
-    const tier = (_roleMap && _roleMap[nick.toLowerCase()]) || 'free';
-    const statusBadge = isAllowed
-      ? '<span class="tag" style="background:#E3F7E8;color:#248A3D;border:1px solid #248A3D">✅ FREIGEGEBEN</span>'
-      : '<span class="tag" style="background:#FFF0F0;color:#C4342B;border:1px solid #FFD1D1">🔒 GESPERRT</span>';
+  // Sort: online first, then by dailySec descending
+  list.sort((a, b) => (b.isOnline ? 1 : 0) - (a.isOnline ? 1 : 0) || b.dailySec - a.dailySec);
 
-    const toggleBtn = isAllowed
-      ? `<button type="button" class="mini ghost" style="color:var(--bad);border-color:var(--bad);font-weight:600" onclick="toggleKaAccess('${escH(nick)}', false)">🔒 Sperren</button>`
-      : `<button type="button" class="mini" style="background:#248A3D;color:#fff;font-weight:600" onclick="toggleKaAccess('${escH(nick)}', true)">✅ Freigeben</button>`;
+  tbody.innerHTML = list.map(item => {
+    const pct = Math.min(100, Math.round((item.dailySec / goalSec) * 100));
+    const isMet = item.dailySec >= goalSec;
+    const pbarCls = isMet ? '' : 'warn';
+
+    const onlineDot = item.isOnline
+      ? '<span class="online-pulse" title="Đang online"></span>'
+      : '<span style="display:inline-block;width:7px;height:7px;border-radius:99px;background:#B5A27C" title="Đã thoát"></span>';
+
+    const statusBadge = item.isOnline
+      ? '<span class="tag tag-ok">● Đang online</span>'
+      : (item.p.last_seen ? `<span class="tag tag-muted">Thoát ${fmt(item.p.last_seen).slice(-5)}</span>` : '<span class="tag tag-muted">Chưa vào</span>');
+
+    const tierBadge = `<span class="tag-tier ${item.tier}">${TIER_LABEL[item.tier]}</span>`;
 
     return `<tr>
-      <td><b>${escH(nick)}</b></td>
+      <td style="font-weight:700">
+        <div style="display:flex;align-items:center;gap:7px">
+          ${onlineDot}
+          <span>${escH(item.pName)}</span>
+          ${tierBadge}
+        </div>
+      </td>
+      <td>
+        <div style="font-weight:700;font-size:0.92em;color:${isMet?'var(--ok)':'var(--bad)'}">
+          ${fmtDur(item.dailySec)} <small style="font-size:0.75em;color:var(--muted);font-weight:400">/ ${fmtDur(goalSec)}</small>
+        </div>
+        <div class="pbar"><div class="pbar-fill ${pbarCls}" style="width:${pct}%"></div></div>
+      </td>
+      <td><div style="display:flex;flex-wrap:wrap;gap:4px">${item.acts}</div></td>
+      <td style="color:var(--muted);font-size:0.86em">${item.p.last_seen ? fmt(item.p.last_seen) : '—'}</td>
       <td>${statusBadge}</td>
-      <td>${tierTag(tier)}</td>
-      <td>${toggleBtn}</td>
     </tr>`;
   }).join('');
 }
 
-async function toggleKaAccess(player, allowed){
-  showKaErr('');
-  try{
-    await Access.setKaAllowed(player, allowed, 'admin:dashboard');
-    if(allowed) _kaWhitelistSet.add(player.toLowerCase());
-    else _kaWhitelistSet.delete(player.toLowerCase());
-    renderKaTable();
-    showKaMsg(allowed ? `✅ Klassenarbeit freigegeben für "${player}"` : `🔒 Klassenarbeit gesperrt für "${player}"`);
-  }catch(e){
-    showKaErr(e.message || String(e));
+function buildDayBars(visits){
+  const map = {};
+  const now = new Date();
+  for(let i = 13; i >= 0; i--){
+    const d = new Date(now.getTime() - i * 86400000);
+    const k = d.toISOString().slice(0, 10);
+    map[k] = 0;
+  }
+  (visits || []).forEach(v => {
+    const k = String(v.started_at || v.at || '').slice(0, 10);
+    if(k in map) map[k] += 1;
+  });
+  const max = Math.max(1, ...Object.values(map));
+  const box = document.getElementById('dayBars');
+  if(!box) return;
+  box.innerHTML = Object.keys(map).map(k => {
+    const n = map[k];
+    const pct = Math.round(n / max * 100);
+    const label = k.slice(5); // MM-DD
+    return `<div class="bar-row"><span style="color:var(--muted)">${label}</span><div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div><span style="font-weight:600">${n}</span></div>`;
+  }).join('');
+}
+
+function renderLiveActivities(quizzes, visits){
+  const tbody = document.getElementById('liveActivityBody');
+  if(!tbody) return;
+  const items = [];
+
+  (quizzes || []).slice(0, 25).forEach(q => {
+    items.push({
+      time: q.at || q.updated_at,
+      player: q.player,
+      action: `<span class="tag tag-ok">Quiz ${(q.subject||'').toUpperCase()}: ${q.correct}/${q.total} (${q.pct}%)</span>`
+    });
+  });
+
+  (visits || []).slice(0, 20).forEach(v => {
+    items.push({
+      time: v.started_at || v.at,
+      player: v.player,
+      action: `<span class="tag tag-muted">Bắt đầu học (${fmtDur(v.duration_sec)})</span>`
+    });
+  });
+
+  items.sort((a, b) => new Date(b.time || 0) - new Date(a.time || 0));
+
+  tbody.innerHTML = items.slice(0, 12).map(it => `<tr>
+    <td style="color:var(--muted);white-space:nowrap">${fmt(it.time)}</td>
+    <td style="font-weight:700">${escH(it.player)}</td>
+    <td>${it.action}</td>
+  </tr>`).join('') || '<tr><td colspan="3" style="text-align:center;padding:12px;color:var(--muted)">Chưa có hoạt động</td></tr>';
+}
+
+/* ==================== 2. DEUTSCH (A1–B1 & TELC) ==================== */
+function renderDeutsch(){
+  const ds = _deutschStats;
+  const grid = document.getElementById('deStatsGrid');
+  if(!ds || !grid) return;
+
+  const st = ds.settings || { minRepeats: 3, passThresholdPct: 80, dailyVocabGoal: 20, dailyGrammarGoal: 5 };
+  const dVocabInp = document.getElementById('deDailyVocab');
+  const dRepInp = document.getElementById('deMinRepeats');
+  const dPassInp = document.getElementById('dePassThreshold');
+  if(dVocabInp && !dVocabInp.value) dVocabInp.value = st.dailyVocabGoal || 20;
+  if(dRepInp && !dRepInp.value) dRepInp.value = st.minRepeats || 3;
+  if(dPassInp && !dPassInp.value) dPassInp.value = st.passThresholdPct || 80;
+
+  const totalVocab = (ds.players || []).reduce((a, p) => a + (p.vocabCompleted || 0), 0);
+  const totalToday = (ds.players || []).reduce((a, p) => a + (p.vocabToday || 0), 0);
+  const totalMastered = (ds.players || []).reduce((a, p) => a + (p.grammarMastered || 0), 0);
+  const totalRetries = (ds.players || []).reduce((a, p) => a + (p.grammarRetries || 0), 0);
+  const totalExams = (ds.players || []).reduce((a, p) => a + (p.telcExams ? p.telcExams.length : 0), 0);
+
+  grid.innerHTML = `
+    <div class="kpi-stat"><div class="lbl">Học viên tiếng Đức</div><div class="val">${ds.totalStudents || 0}</div></div>
+    <div class="kpi-stat"><div class="lbl">Tổng từ vựng đã gõ</div><div class="val">${totalVocab}</div></div>
+    <div class="kpi-stat"><div class="lbl">Từ gõ hôm nay</div><div class="val" style="color:var(--ok)">${totalToday}</div></div>
+    <div class="kpi-stat"><div class="lbl">Ngữ pháp 100%</div><div class="val">${totalMastered}</div></div>
+    <div class="kpi-stat"><div class="lbl">Bài tập lặp lại</div><div class="val" style="color:var(--warn)">${totalRetries}</div></div>
+    <div class="kpi-stat"><div class="lbl">Đề thi TELC / Goethe</div><div class="val">${totalExams}</div></div>
+  `;
+
+  // Red Alerts
+  const redBody = document.getElementById('deRedAlertBody');
+  const redCard = document.getElementById('deRedAlertCard');
+  const redMeta = document.getElementById('deRedAlertMeta');
+  if(!ds.redAlerts || !ds.redAlerts.length){
+    if(redBody) redBody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:14px;color:var(--ok)">Tất cả học viên đều đã hoàn thành mục tiêu.</td></tr>';
+    if(redCard) redCard.style.opacity = '0.75';
+    if(redMeta) redMeta.textContent = 'Hiện không có cảnh báo kỷ luật nào.';
+  } else {
+    if(redCard) redCard.style.opacity = '1';
+    if(redMeta) redMeta.textContent = 'Có ' + ds.redAlerts.length + ' học viên cần nhắc nhở:';
+    if(redBody){
+      redBody.innerHTML = ds.redAlerts.map(a => `<tr>
+        <td style="font-weight:700;color:var(--bad)">${escH(a.player)}</td>
+        <td><b>${a.vocabToday || 0}</b> / ${st.dailyVocabGoal || 20} từ</td>
+        <td>${fmt(a.last_seen)}</td>
+        <td><span class="tag tag-bad">${escH(a.reasons.join(' · '))}</span></td>
+      </tr>`).join('');
+    }
+  }
+
+  // Vocab Table
+  const vBody = document.getElementById('deVocabBody');
+  if(vBody){
+    vBody.innerHTML = (ds.players || []).map(p => {
+      const meets = (p.vocabToday || 0) >= (st.dailyVocabGoal || 20);
+      const badge = meets
+        ? `<span class="tag tag-ok">Đạt (${p.vocabToday}/${st.dailyVocabGoal || 20})</span>`
+        : `<span class="tag tag-bad">Chưa đạt (${p.vocabToday || 0}/${st.dailyVocabGoal || 20})</span>`;
+      return `<tr>
+        <td style="font-weight:700">${escH(p.player)}</td>
+        <td><b style="color:var(--ok)">${p.vocabCompleted || 0}</b> từ</td>
+        <td><b>${p.vocabToday || 0}</b> từ</td>
+        <td style="color:${p.vocabMistakes>0?'var(--bad)':'var(--muted)'}">${p.vocabMistakes || 0}</td>
+        <td>${badge}</td>
+        <td>${fmt(p.last_seen)}</td>
+      </tr>`;
+    }).join('') || '<tr><td colspan="6" style="text-align:center;padding:12px;color:var(--muted)">Chưa có dữ liệu từ vựng</td></tr>';
+  }
+
+  // Grammar Player
+  const gpBody = document.getElementById('deGrammarPlayerBody');
+  if(gpBody){
+    gpBody.innerHTML = (ds.players || []).map(p => `<tr>
+      <td style="font-weight:700">${escH(p.player)}</td>
+      <td><span class="tag tag-ok">${p.grammarMastered || 0} bài</span></td>
+      <td style="color:var(--warn);font-weight:700">${p.grammarRetries || 0} lần</td>
+    </tr>`).join('') || '<tr><td colspan="3" style="text-align:center;padding:12px;color:var(--muted)">Chưa có dữ liệu</td></tr>';
+  }
+
+  // Weak Topics
+  const wtBody = document.getElementById('deWeakTopicsBody');
+  if(wtBody){
+    wtBody.innerHTML = (ds.weakGrammarTopics || []).slice(0, 10).map(t => `<tr>
+      <td style="font-weight:700">${escH(t.title)}</td>
+      <td style="color:var(--bad);font-weight:700">${t.totalMistakes} lỗi</td>
+      <td><b>${t.totalRetries}</b> lần làm lại</td>
+    </tr>`).join('') || '<tr><td colspan="3" style="text-align:center;padding:12px;color:var(--muted)">Chưa có lỗi sai</td></tr>';
+  }
+
+  // Exams Table
+  const exBody = document.getElementById('deExamsBody');
+  if(exBody){
+    const allEx = [];
+    (ds.players || []).forEach(p => {
+      (p.telcExams || []).forEach(ex => allEx.push(Object.assign({ player: p.player }, ex)));
+    });
+    allEx.sort((a, b) => new Date(b.at || b.updated_at || 0) - new Date(a.at || a.updated_at || 0));
+
+    exBody.innerHTML = allEx.slice(0, 40).map(ex => {
+      const isPass = (ex.pct || 0) >= (st.passThresholdPct || 80);
+      const pBadge = isPass ? `<span class="tag tag-ok">Đạt (${ex.pct}%)</span>` : `<span class="tag tag-bad">Chưa đạt (${ex.pct||0}%)</span>`;
+      return `<tr>
+        <td style="font-weight:700">${escH(ex.player)}</td>
+        <td>${escH(ex.subject || 'TELC B1')}</td>
+        <td>${escH(ex.quiz || 'Tổng hợp')}</td>
+        <td><b>${ex.correct || 0}/${ex.total || 0}</b></td>
+        <td>${pBadge}</td>
+        <td>${ex.attempts || 1}</td>
+        <td>${fmt(ex.at || ex.updated_at)}</td>
+      </tr>`;
+    }).join('') || '<tr><td colspan="7" style="text-align:center;padding:14px;color:var(--muted)">Chưa có dữ liệu thi thử</td></tr>';
   }
 }
 
-async function quickAddKaGrant(){
-  const inp = document.getElementById('kaQuickNick');
-  const nick = (inp ? inp.value : '').trim();
-  if(!nick){ showKaErr('Bitte Nickname eingeben'); return; }
-  await toggleKaAccess(nick, true);
-  if(inp) inp.value = '';
-}
+document.getElementById('btnSaveDeSettings').onclick = async () => {
+  const minRepeats = Number(document.getElementById('deMinRepeats').value) || 3;
+  const dailyVocabGoal = Number(document.getElementById('deDailyVocab').value) || 20;
+  const passThresholdPct = Number(document.getElementById('dePassThreshold').value) || 80;
+  const msg = document.getElementById('deSettingsMsg');
+  const btn = document.getElementById('btnSaveDeSettings');
+  msg.textContent = 'Đang lưu...'; btn.disabled = true;
+  try {
+    await LearnDB.saveDisciplineSettings({
+      minRepeats,
+      dailyVocabGoal,
+      passThresholdPct,
+      strictLevelGate: true
+    });
+    msg.textContent = 'Đã lưu cài đặt kỷ luật tiếng Đức!';
+    setTimeout(() => { msg.textContent = ''; }, 3500);
+    await loadAllData();
+  } catch(e) {
+    msg.textContent = 'Lỗi: ' + (e.message || e);
+  } finally {
+    btn.disabled = false;
+  }
+};
 
-async function batchKaGrant(allowed){
-  const action = allowed ? 'Klassenarbeit für ALLE Nutzer freigeben?' : 'Klassenarbeit für ALLE Nutzer sperren?';
-  if(!confirm(action)) return;
-  showKaErr('');
-  try{
-    const nicks = (_allPlayersList || []).map(p => p.player);
-    await Access.batchSetKaAllowed(nicks, allowed, 'admin:dashboard');
-    if(allowed) nicks.forEach(n => _kaWhitelistSet.add(n.toLowerCase()));
-    else _kaWhitelistSet.clear();
-    renderKaTable();
-    showKaMsg(allowed ? '✅ Klassenarbeit für alle freigegeben!' : '🔒 Klassenarbeit für alle gesperrt!');
-  }catch(e){
-    showKaErr(e.message || String(e));
+/* ==================== 3. FACH (GASTRONOMIE) ==================== */
+function renderFach(){
+  if(!_adminStats) return;
+  const s = _adminStats;
+  const grid = document.getElementById('statsGrid');
+  if(!grid) return;
+
+  grid.innerHTML = `
+    <div class="kpi-stat"><div class="lbl">Tổng học viên</div><div class="val">${s.unique_players}</div></div>
+    <div class="kpi-stat"><div class="lbl">Tổng lượt truy cập</div><div class="val">${s.total_visits}</div></div>
+    <div class="kpi-stat"><div class="lbl">Tổng giờ học tích lũy</div><div class="val">${fmtDur(s.total_duration_sec)}</div></div>
+    <div class="kpi-stat"><div class="lbl">Lượt làm Quiz</div><div class="val">${s.total_quiz_attempts}</div></div>
+  `;
+
+  // Render Matrix
+  renderMatrix(s.players || []);
+
+  // Quizzes Table
+  const qBody = document.getElementById('quizBody');
+  if(qBody){
+    qBody.innerHTML = (s.quizzes || []).slice(0, 80).map((q, i) => {
+      const hasHist = q.history && q.history.length > 1;
+      const detailId = 'qhd_' + i;
+      return `<tr style="cursor:pointer" onclick="toggleRow('${detailId}')">
+        <td style="font-weight:700">${escH(q.player || '')}</td>
+        <td><span class="tag">${escH(q.subject || '')}</span></td>
+        <td>${escH(q.quiz || '')}</td>
+        <td><b>${q.correct || 0}/${q.total || 0}</b></td>
+        <td><span class="tag ${(q.pct||0)>=80?'tag-ok':'tag-bad'}">${q.pct || 0}%</span></td>
+        <td>${q.attempts || 1}</td>
+        <td>${fmt(q.at || q.updated_at)}</td>
+      </tr>${hasHist ? `<tr id="${detailId}" style="display:none"><td colspan="7" style="padding:6px 12px;background:#FAF5E8;font-size:0.86em;color:var(--muted)">Lịch sử: ${q.history.map(h => h.pct + '% (' + h.correct + '/' + h.total + ') lúc ' + fmt(h.at)).join(' → ')}</td></tr>` : ''}`;
+    }).join('') || '<tr><td colspan="7" style="text-align:center;padding:12px;color:var(--muted)">Chưa có điểm Quiz</td></tr>';
+  }
+
+  // Aggregated Quizzes
+  const aggBody = document.getElementById('aggBody');
+  if(aggBody){
+    aggBody.innerHTML = (s.quizAgg || []).map(a => `<tr>
+      <td style="font-weight:600">${escH(a.label)}</td>
+      <td>${a.players}</td>
+      <td>${a.attempts}</td>
+      <td><span class="tag ${a.avgPct>=80?'tag-ok':'tag-bad'}">${a.avgPct}%</span></td>
+    </tr>`).join('') || '<tr><td colspan="4" style="text-align:center;padding:12px;color:var(--muted)">Chưa có dữ liệu</td></tr>';
+  }
+
+  // Visits
+  const vBody = document.getElementById('visitBody');
+  if(vBody){
+    vBody.innerHTML = (s.visits || []).slice(0, 50).map(v => {
+      const isOpen = !v.ended_at;
+      const st = isOpen ? '<span class="tag tag-ok">Đang mở</span>' : '<span class="tag tag-muted">Đã xong</span>';
+      return `<tr>
+        <td style="font-weight:700">${escH(v.player || '')}</td>
+        <td>${fmt(v.started_at || v.at)}</td>
+        <td><b>${fmtDur(v.duration_sec)}</b></td>
+        <td>${st}</td>
+      </tr>`;
+    }).join('') || '<tr><td colspan="4" style="text-align:center;padding:12px;color:var(--muted)">Chưa có phiên truy cập</td></tr>';
   }
 }
 
-/* ===== EXCEL / BFK-EXTRA ACCESS CONTROL UI ===== */
-let _excelWhitelistSet = new Set();
-let _excelFilterMode = 'all';
-
-function showExcelErr(m){
-  const el = document.getElementById('excelErr');
-  if(!el) return;
-  if(!m){ el.classList.remove('show'); el.textContent = ''; return; }
-  el.textContent = m; el.classList.add('show');
-}
-function showExcelMsg(m){
-  const el = document.getElementById('excelMsg');
-  if(el){ el.textContent = m; setTimeout(() => { if(el.textContent===m) el.textContent=''; }, 3500); }
+function toggleRow(id){
+  const el = document.getElementById(id);
+  if(el) el.style.display = el.style.display === 'none' ? 'table-row' : 'none';
 }
 
-async function loadExcelWhitelistUI(players){
-  if(!window.Access) return;
-  try{
-    const list = await Access.loadExcelWhitelist();
-    _excelWhitelistSet = new Set((list || []).map(s => String(s).toLowerCase()));
-  }catch(_){}
-  _allPlayersList = players || _allPlayersList || [];
-  renderExcelTable();
+/* ==================== LERN-MATRIX ==================== */
+function mxStatusOf(themes, itemId){
+  if(!themes) return '';
+  const t = themes['bfk1:' + String(itemId).toLowerCase()] || themes['bfk1:' + itemId];
+  return (t && t.status) || '';
 }
 
-function filterExcelList(mode){
-  _excelFilterMode = mode;
-  document.getElementById('excelFilterAll')?.classList.toggle('active', mode === 'all');
-  document.getElementById('excelFilterAll')?.classList.toggle('ghost', mode !== 'all');
-  document.getElementById('excelFilterAllowed')?.classList.toggle('active', mode === 'allowed');
-  document.getElementById('excelFilterAllowed')?.classList.toggle('ghost', mode !== 'allowed');
-  document.getElementById('excelFilterLocked')?.classList.toggle('active', mode === 'locked');
-  document.getElementById('excelFilterLocked')?.classList.toggle('ghost', mode !== 'locked');
-  renderExcelTable();
+function mxColumns(){
+  const cat = window.BFK1_CATALOG || [];
+  if(_mxTab === 'all'){
+    const out = [];
+    cat.forEach(g => (g.items || []).forEach(it => out.push(Object.assign({ _g: g.badge }, it))));
+    return out;
+  }
+  const g = cat.find(x => x.id === _mxTab);
+  return g ? (g.items || []).map(it => Object.assign({ _g: g.badge }, it)) : [];
 }
 
-function renderExcelTable(){
-  const body = document.getElementById('excelBody');
-  if(!body) return;
+function renderMatrix(players){
+  const proPlayers = (players || []).filter(p => {
+    const t = _roleMap[String(p.player||'').toLowerCase()] || 'free';
+    return t === 'paid' || t === 'super';
+  }).map(p => ({ player: p.player, themes: p.themes || {} }));
+
+  const cat = window.BFK1_CATALOG || [];
+  const tabs = [{ id: 'all', label: 'Tất cả (' + cat.reduce((n, g) => n + (g.items || []).length, 0) + ')' }]
+    .concat(cat.map(g => ({ id: g.id, label: g.badge + ' (' + (g.items || []).length + ')' })));
+
+  const box = document.getElementById('mxTabs');
+  if(box){
+    box.innerHTML = tabs.map(t => `<button type="button" class="mx-tab ${t.id===_mxTab?'active':''}" onclick="setMxTab('${t.id}')">${escH(t.label)}</button>`).join('');
+  }
+
+  const host = document.getElementById('mxScroll');
+  if(!host) return;
+  const cols = mxColumns();
+  if(!proPlayers.length){ host.innerHTML = '<div style="padding:16px;text-align:center;color:var(--muted)">Chưa có học viên Pro có dữ liệu tiến độ.</div>'; return; }
+  if(!cols.length){ host.innerHTML = '<div style="padding:16px;text-align:center;color:var(--muted)">Không có bài học trong nhóm này.</div>'; return; }
+
+  let head = '<tr><th class="mx-namecol">Học viên</th><th style="padding:6px 8px">% Xong</th>';
+  cols.forEach(c => {
+    head += `<th class="mx-cell" title="${escH(c.name)}"><span class="mx-vh">${escH((c.name||c.id).replace(/·.*$/,'').trim().slice(0,16))}</span></th>`;
+  });
+  head += '</tr>';
+
+  const rows = proPlayers.map(p => {
+    let done = 0;
+    cols.forEach(c => { if(mxStatusOf(p.themes, c.id) === 'done') done++; });
+    const pct = cols.length ? Math.round(done / cols.length * 100) : 0;
+    return { p, done, pct };
+  }).sort((a, b) => b.pct - a.pct);
+
+  const MX_CLS = { done: 'd-done', learning: 'd-learn', seen: 'd-seen' };
+  const body = rows.map(r => {
+    let tds = `<td class="mx-namecol"><b>${escH(r.p.player)}</b></td><td style="padding:4px 8px;font-weight:700;color:${r.pct>=70?'var(--ok)':'var(--accent)'}">${r.pct}% <small style="color:var(--muted);font-weight:400">(${r.done}/${cols.length})</small></td>`;
+    cols.forEach(c => {
+      const st = mxStatusOf(r.p.themes, c.id);
+      const cls = MX_CLS[st] || 'd-none';
+      tds += `<td class="mx-cell"><span class="mx-dot ${cls}" title="${escH(r.p.player)} · ${escH(c.name)}"></span></td>`;
+    });
+    return `<tr>${tds}</tr>`;
+  }).join('');
+
+  host.innerHTML = `<table class="mx"><thead>${head}</thead><tbody>${body}</tbody></table>`;
+}
+
+function setMxTab(tId){
+  _mxTab = tId;
+  if(_adminStats) renderMatrix(_adminStats.players || []);
+}
+
+/* ==================== 4. LID & FUEHRERSCHEIN ==================== */
+function renderLid(){
+  if(!_adminStats) return;
+  const s = _adminStats;
+  const tbody = document.getElementById('lidTableBody');
+  if(!tbody) return;
+
+  const lidList = [];
+  let lidCount = 0;
+  let fuehrerCount = 0;
+  let arenaCount = 0;
+
+  (s.quizzes || []).forEach(q => {
+    const subj = String(q.subject || '').toLowerCase();
+    const isLid = subj.includes('lid') || subj.includes('leben');
+    const isFuehrer = subj.includes('fuehrer') || subj.includes('führerschein');
+    const isArena = subj.includes('arena') || subj.includes('challenge');
+
+    if(isLid || isFuehrer || isArena){
+      if(isLid) lidCount++;
+      if(isFuehrer) fuehrerCount++;
+      if(isArena) arenaCount++;
+
+      let typeTag = '<span class="tag tag-muted">Khác</span>';
+      if(isLid) typeTag = '<span class="tag tag-ok">LiD</span>';
+      else if(isFuehrer) typeTag = '<span class="tag">Bằng lái</span>';
+      else if(isArena) typeTag = '<span class="tag tag-bad">Arena</span>';
+
+      lidList.push({
+        player: q.player,
+        typeTag: typeTag,
+        quiz: q.quiz || 'Bài thi',
+        correct: q.correct || 0,
+        total: q.total || 0,
+        pct: q.pct || 0,
+        attempts: q.attempts || 1,
+        at: q.at || q.updated_at
+      });
+    }
+  });
+
+  document.getElementById('kpiLidCount').textContent = lidCount + ' lượt';
+  document.getElementById('kpiFuehrerCount').textContent = fuehrerCount + ' lượt';
+  document.getElementById('kpiArenaCount').textContent = arenaCount + ' lượt';
+
+  lidList.sort((a, b) => new Date(b.at || 0) - new Date(a.at || 0));
+
+  tbody.innerHTML = lidList.slice(0, 50).map(x => `<tr>
+    <td style="font-weight:700">${escH(x.player)}</td>
+    <td>${x.typeTag}</td>
+    <td>${escH(x.quiz)}</td>
+    <td><b>${x.correct}/${x.total}</b></td>
+    <td><span class="tag ${x.pct>=70?'tag-ok':'tag-bad'}">${x.pct}%</span></td>
+    <td>${x.attempts}</td>
+    <td>${fmt(x.at)}</td>
+  </tr>`).join('') || '<tr><td colspan="7" style="text-align:center;padding:16px;color:var(--muted)">Chưa có dữ liệu thi LiD hoặc Bằng lái</td></tr>';
+}
+
+/* ==================== 5. HỌC VIÊN & PHÂN QUYỀN (HỢP NHẤT 3 TRONG 1) ==================== */
+function filterAccessList(mode){
+  _accessFilterMode = mode;
+  ['all', 'ka', 'excel', 'pro'].forEach(m => {
+    const el = document.getElementById('af' + m.charAt(0).toUpperCase() + m.slice(1));
+    if(el) el.classList.toggle('active', m === mode);
+  });
+  renderAccessTable();
+}
+
+function renderAccessTable(){
+  const tbody = document.getElementById('accessTableBody');
+  if(!tbody || !_adminStats) return;
+
+  const search = (document.getElementById('accessSearchInp')?.value || '').trim().toLowerCase();
+  const players = _adminStats.players || [];
 
   const known = new Set();
   const allNicks = [];
 
-  (_allPlayersList || []).forEach(p => {
+  players.forEach(p => {
     const nick = String(p.player || '').trim();
     if(nick && !known.has(nick.toLowerCase())){
       known.add(nick.toLowerCase());
-      allNicks.push(nick);
+      allNicks.push({ player: nick, last_seen: p.last_seen });
+    }
+  });
+
+  _kaWhitelistSet.forEach(nick => {
+    if(nick && !known.has(nick.toLowerCase())){
+      known.add(nick.toLowerCase());
+      allNicks.push({ player: nick, last_seen: null });
     }
   });
   _excelWhitelistSet.forEach(nick => {
     if(nick && !known.has(nick.toLowerCase())){
       known.add(nick.toLowerCase());
-      allNicks.push(nick);
+      allNicks.push({ player: nick, last_seen: null });
     }
   });
 
-  const total = allNicks.length;
-  const allowedCount = allNicks.filter(n => _excelWhitelistSet.has(n.toLowerCase())).length;
-  const lockedCount = total - allowedCount;
+  let list = allNicks.map(item => {
+    const nLow = item.player.toLowerCase();
+    const tier = _roleMap[nLow] || 'free';
+    const isKa = _kaWhitelistSet.has(nLow);
+    const isExcel = _excelWhitelistSet.has(nLow);
+    return { player: item.player, last_seen: item.last_seen, tier, isKa, isExcel };
+  });
 
-  const elAll = document.getElementById('excelCountAll');
-  const elAllowed = document.getElementById('excelCountAllowed');
-  const elLocked = document.getElementById('excelCountLocked');
-  if(elAll) elAll.textContent = total;
-  if(elAllowed) elAllowed.textContent = allowedCount;
-  if(elLocked) elLocked.textContent = lockedCount;
+  document.getElementById('cAccessAll').textContent = list.length;
+  document.getElementById('cAccessKa').textContent = list.filter(x => x.isKa).length;
+  document.getElementById('cAccessExcel').textContent = list.filter(x => x.isExcel).length;
+  document.getElementById('cAccessPro').textContent = list.filter(x => x.tier === 'paid' || x.tier === 'super').length;
 
-  let filtered = allNicks;
-  if(_excelFilterMode === 'allowed'){
-    filtered = allNicks.filter(n => _excelWhitelistSet.has(n.toLowerCase()));
-  } else if(_excelFilterMode === 'locked'){
-    filtered = allNicks.filter(n => !_excelWhitelistSet.has(n.toLowerCase()));
+  if(search){
+    list = list.filter(x => x.player.toLowerCase().includes(search));
   }
 
-  if(!filtered.length){
-    body.innerHTML = '<tr><td colspan="4" class="muted" style="text-align:center;padding:16px">Chưa có tài khoản nào phù hợp</td></tr>';
+  if(_accessFilterMode === 'ka'){
+    list = list.filter(x => x.isKa);
+  } else if(_accessFilterMode === 'excel'){
+    list = list.filter(x => x.isExcel);
+  } else if(_accessFilterMode === 'pro'){
+    list = list.filter(x => x.tier === 'paid' || x.tier === 'super');
+  }
+
+  if(!list.length){
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:24px;color:var(--muted)">Chưa có tài khoản nào phù hợp.</td></tr>';
     return;
   }
 
-  body.innerHTML = filtered.map(nick => {
-    const isAllowed = _excelWhitelistSet.has(nick.toLowerCase());
-    const tier = (_roleMap && _roleMap[nick.toLowerCase()]) || 'free';
-    const statusBadge = isAllowed
-      ? '<span class="tag" style="background:#E3F7E8;color:#107C41;border:1px solid #107C41">✅ ĐÃ CẤP QUYỀN</span>'
-      : '<span class="tag" style="background:#FFF0F0;color:#C4342B;border:1px solid #FFD1D1">🔒 ĐÃ KHÓA</span>';
+  list.sort((a, b) => a.player.localeCompare(b.player));
 
-    const toggleBtn = isAllowed
-      ? `<button type="button" class="mini ghost" style="color:var(--bad);border-color:var(--bad);font-weight:600" onclick="toggleExcelAccess('${escH(nick)}', false)">🔒 Khóa quyền</button>`
-      : `<button type="button" class="mini" style="background:#107C41;color:#fff;font-weight:600" onclick="toggleExcelAccess('${escH(nick)}', true)">✅ Cấp quyền</button>`;
+  tbody.innerHTML = list.map(item => {
+    const kaBtn = item.isKa
+      ? `<button type="button" class="toggle-btn on" onclick="toggleKaAccess('${escH(item.player)}', false)">Đã mở khóa</button>`
+      : `<button type="button" class="toggle-btn off" onclick="toggleKaAccess('${escH(item.player)}', true)">Khóa</button>`;
+
+    const excelBtn = item.isExcel
+      ? `<button type="button" class="toggle-btn on" onclick="toggleExcelAccess('${escH(item.player)}', false)">Đã cấp Excel</button>`
+      : `<button type="button" class="toggle-btn off" onclick="toggleExcelAccess('${escH(item.player)}', true)">Khóa</button>`;
+
+    const tierBadge = `<span class="tag-tier ${item.tier}">${TIER_LABEL[item.tier]}</span>`;
+    const tierSwitch = item.tier === 'free'
+      ? `<button type="button" class="mini ghost" onclick="quickRole('${escH(item.player)}', 'paid')">→ Lên Pro</button>`
+      : `<button type="button" class="mini ghost" onclick="quickRole('${escH(item.player)}', 'free')">→ Về Basic</button>`;
 
     return `<tr>
-      <td><b>${escH(nick)}</b></td>
-      <td>${statusBadge}</td>
-      <td>${tierTag(tier)}</td>
-      <td>${toggleBtn}</td>
+      <td style="font-weight:700">${escH(item.player)}</td>
+      <td>
+        <div style="display:flex;align-items:center;gap:6px">
+          ${tierBadge}
+          ${tierSwitch}
+        </div>
+      </td>
+      <td>${kaBtn}</td>
+      <td>${excelBtn}</td>
+      <td style="color:var(--muted);font-size:0.86em">${item.last_seen ? fmt(item.last_seen) : '—'}</td>
+      <td style="color:var(--muted);font-size:0.86em">—</td>
     </tr>`;
   }).join('');
 }
 
+async function quickRole(player, tier){
+  showAccessErr('');
+  try {
+    await Access.setRole(player, tier, 'super:dashboard', '');
+    _roleMap[player.toLowerCase()] = tier;
+    renderAccessTable();
+    showAccessMsg(`Đã đổi hạng tài khoản "${player}" thành ${TIER_LABEL[tier]}!`);
+    loadAllData();
+  } catch(e){ showAccessErr(e.message || String(e)); }
+}
+
+async function toggleKaAccess(player, allowed){
+  showAccessErr('');
+  try {
+    await Access.setKaAllowed(player, allowed, 'admin:dashboard');
+    if(allowed) _kaWhitelistSet.add(player.toLowerCase());
+    else _kaWhitelistSet.delete(player.toLowerCase());
+    renderAccessTable();
+    showAccessMsg(allowed ? `Đã mở khóa Klassenarbeit cho "${player}"` : `Đã khóa Klassenarbeit của "${player}"`);
+  } catch(e){ showAccessErr(e.message || String(e)); }
+}
+
 async function toggleExcelAccess(player, allowed){
-  showExcelErr('');
-  try{
+  showAccessErr('');
+  try {
     await Access.setExcelAllowed(player, allowed, 'admin:dashboard');
     if(allowed) _excelWhitelistSet.add(player.toLowerCase());
     else _excelWhitelistSet.delete(player.toLowerCase());
-    renderExcelTable();
-    showExcelMsg(allowed ? `✅ Đã cấp quyền bài học/dữ liệu Excel cho "${player}"` : `🔒 Đã khóa quyền Excel của "${player}"`);
-  }catch(e){
-    showExcelErr(e.message || String(e));
-  }
+    renderAccessTable();
+    showAccessMsg(allowed ? `Đã cấp quyền bài học Excel cho "${player}"` : `Đã khóa quyền Excel của "${player}"`);
+  } catch(e){ showAccessErr(e.message || String(e)); }
 }
 
-async function quickAddExcelGrant(){
-  const inp = document.getElementById('excelQuickNick');
+async function quickGrantUser(){
+  const inp = document.getElementById('quickNick');
   const nick = (inp ? inp.value : '').trim();
-  if(!nick){ showExcelErr('Vui lòng nhập Nickname'); return; }
-  await toggleExcelAccess(nick, true);
-  if(inp) inp.value = '';
+  const tier = document.getElementById('quickTier').value;
+  showAccessErr('');
+  if(!nick){ showAccessErr('Vui lòng nhập Nickname học viên'); return; }
+
+  try {
+    await Access.setRole(nick, tier, 'super:dashboard', 'Cấp nhanh');
+    await Access.setKaAllowed(nick, true, 'admin:dashboard');
+    await Access.setExcelAllowed(nick, true, 'admin:dashboard');
+
+    _roleMap[nick.toLowerCase()] = tier;
+    _kaWhitelistSet.add(nick.toLowerCase());
+    _excelWhitelistSet.add(nick.toLowerCase());
+
+    inp.value = '';
+    renderAccessTable();
+    showAccessMsg(`Đã cấp đầy đủ quyền (Hạng ${TIER_LABEL[tier]} + Klassenarbeit + Excel) cho "${nick}"!`);
+  } catch(e){ showAccessErr(e.message || String(e)); }
 }
 
-async function batchExcelGrant(allowed){
-  const action = allowed ? 'Cấp quyền bài học & dữ liệu Excel cho TẤT CẢ người dùng?' : 'Khóa quyền Excel của TẤT CẢ người dùng?';
-  if(!confirm(action)) return;
-  showExcelErr('');
-  try{
-    const nicks = (_allPlayersList || []).map(p => p.player);
+async function batchGrantAll(allowed){
+  const act = allowed ? 'Mở khóa Klassenarbeit cho TẤT CẢ học viên?' : 'Khóa Klassenarbeit của TẤT CẢ học viên?';
+  if(!confirm(act)) return;
+  showAccessErr('');
+  try {
+    const nicks = (_adminStats.players || []).map(p => p.player);
+    await Access.batchSetKaAllowed(nicks, allowed, 'admin:dashboard');
+    if(allowed) nicks.forEach(n => _kaWhitelistSet.add(n.toLowerCase()));
+    else _kaWhitelistSet.clear();
+    renderAccessTable();
+    showAccessMsg(allowed ? 'Đã mở khóa Klassenarbeit cho tất cả học viên!' : 'Đã khóa Klassenarbeit toàn bộ!');
+  } catch(e){ showAccessErr(e.message || String(e)); }
+}
+
+async function batchGrantExcelAll(allowed){
+  const act = allowed ? 'Cấp quyền 19 bài Excel BfK-Extra cho TẤT CẢ học viên?' : 'Khóa quyền Excel của TẤT CẢ học viên?';
+  if(!confirm(act)) return;
+  showAccessErr('');
+  try {
+    const nicks = (_adminStats.players || []).map(p => p.player);
     await Access.batchSetExcelAllowed(nicks, allowed, 'admin:dashboard');
     if(allowed) nicks.forEach(n => _excelWhitelistSet.add(n.toLowerCase()));
     else _excelWhitelistSet.clear();
-    renderExcelTable();
-    showExcelMsg(allowed ? '✅ Đã cấp quyền Excel cho tất cả!' : '🔒 Đã khóa quyền Excel cho tất cả!');
-  }catch(e){
-    showExcelErr(e.message || String(e));
-  }
+    renderAccessTable();
+    showAccessMsg(allowed ? 'Đã cấp quyền Excel cho tất cả học viên!' : 'Đã khóa quyền Excel toàn bộ!');
+  } catch(e){ showAccessErr(e.message || String(e)); }
 }
 
-/* ===== Quản lý Góp ý & Báo lỗi ===== */
-let _allFeedbacks = [];
-let _fbFilter = 'all';
+function showAccessErr(m){
+  const el = document.getElementById('accessErr');
+  if(!el) return;
+  if(!m){ el.classList.remove('show'); el.textContent = ''; return; }
+  el.textContent = m; el.classList.add('show');
+}
 
-async function loadFeedbackList(force) {
+function showAccessMsg(m){
+  const el = document.getElementById('accessMsg');
+  if(el){ el.textContent = m; setTimeout(() => { if(el.textContent===m) el.textContent=''; }, 4000); }
+}
+
+/* ==================== 6. GÓP Ý & BÁO LỖI (FEEDBACK) ==================== */
+async function loadFeedbackList(force){
   const tbody = document.getElementById('feedbackBody');
-  if (!tbody) return;
-  if (force) tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:20px;color:var(--muted)">Đang tải dữ liệu mới...</td></tr>';
+  if(!tbody) return;
+  if(force) tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:20px;color:var(--muted)">Đang làm mới dữ liệu...</td></tr>';
   try {
-    if (window.LearnDB && LearnDB.listFeedbacks) {
+    if(window.LearnDB && LearnDB.listFeedbacks){
       _allFeedbacks = await LearnDB.listFeedbacks(150);
     } else {
       _allFeedbacks = [];
     }
     renderFeedbackTable();
-  } catch (e) {
-    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:20px;color:var(--bad)">Lỗi tải dữ liệu: ' + escH(e.message || e) + '</td></tr>';
+  } catch(e){
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:20px;color:var(--bad)">Lỗi: ' + escH(e.message || e) + '</td></tr>';
   }
 }
 
-function filterFeedbackList(status) {
+function filterFeedbackList(status){
   _fbFilter = status;
   ['all', 'new', 'resolved'].forEach(s => {
     const b = document.getElementById('fbFilter' + s.charAt(0).toUpperCase() + s.slice(1));
-    if (b) {
-      b.classList.toggle('active', s === status);
-      b.classList.toggle('ghost', s !== status);
-    }
+    if(b) b.classList.toggle('active', s === status);
   });
   renderFeedbackTable();
 }
 
-function renderFeedbackTable() {
+function renderFeedbackTable(){
   const tbody = document.getElementById('feedbackBody');
-  if (!tbody) return;
+  if(!tbody) return;
+
   const total = _allFeedbacks.length;
   const newCount = _allFeedbacks.filter(f => f.status === 'new').length;
   const resCount = _allFeedbacks.filter(f => f.status === 'resolved').length;
 
-  const cAll = document.getElementById('fbCountAll');
-  const cNew = document.getElementById('fbCountNew');
-  const cRes = document.getElementById('fbCountResolved');
-  const tabBadge = document.getElementById('fbTabCount');
-  if (cAll) cAll.textContent = total;
-  if (cNew) cNew.textContent = newCount;
-  if (cRes) cRes.textContent = resCount;
-  if (tabBadge) tabBadge.textContent = newCount;
+  document.getElementById('fbCountAll').textContent = total;
+  document.getElementById('fbCountNew').textContent = newCount;
+  document.getElementById('fbCountResolved').textContent = resCount;
+  document.getElementById('fbNavBadge').textContent = newCount;
 
   const list = _allFeedbacks.filter(f => {
-    if (_fbFilter === 'new') return f.status === 'new';
-    if (_fbFilter === 'resolved') return f.status === 'resolved';
+    if(_fbFilter === 'new') return f.status === 'new';
+    if(_fbFilter === 'resolved') return f.status === 'resolved';
     return true;
   });
 
-  if (list.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:28px;color:var(--muted)">Không có góp ý nào phù hợp.</td></tr>';
+  if(!list.length){
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:28px;color:var(--muted)">Không có phản hồi nào trong mục này.</td></tr>';
     return;
   }
 
   tbody.innerHTML = list.map(f => {
     const isRes = f.status === 'resolved';
-    const statusBadge = isRes 
-      ? '<span class="tag" style="background:#E3F7E8;color:#107C41;border:none">Đã xử lý</span>'
-      : '<span class="tag" style="background:#FFF3CD;color:#856404;border:none">Mới</span>';
-    
-    return '<tr>' +
-      '<td style="white-space:nowrap;font-size:0.85em">' + fmt(f.createdAt) + '</td>' +
-      '<td><strong>' + escH(f.target) + '</strong></td>' +
-      '<td><span class="tag" style="background:#F2F2F7;border:1px solid #D1D1D6">' + escH(f.tag) + '</span></td>' +
-      '<td style="line-height:1.4">' + escH(f.comment) + '</td>' +
-      '<td>' + escH(f.player) + '</td>' +
-      '<td style="white-space:nowrap">' +
-        statusBadge + ' ' +
-        (!isRes 
-          ? '<button type="button" class="mini" onclick="setFbStatus(\'' + escH(f.key) + '\', \'resolved\')">Đã sửa</button> ' 
-          : '<button type="button" class="mini ghost" onclick="setFbStatus(\'' + escH(f.key) + '\', \'new\')">Mở lại</button> ') +
-        '<button type="button" class="mini ghost" style="color:var(--bad)" onclick="delFb(\'' + escH(f.key) + '\')">Xoá</button>' +
-      '</td>' +
-    '</tr>';
+    const statusTag = isRes ? '<span class="tag tag-ok">Đã sửa</span>' : '<span class="tag tag-bad">Mới</span>';
+    const actBtn = !isRes
+      ? `<button type="button" class="mini" onclick="setFbStatus('${escH(f.key)}', 'resolved')">Đã sửa</button>`
+      : `<button type="button" class="mini ghost" onclick="setFbStatus('${escH(f.key)}', 'new')">Mở lại</button>`;
+
+    return `<tr>
+      <td style="white-space:nowrap;font-size:0.86em;color:var(--muted)">${fmt(f.createdAt)}</td>
+      <td><strong>${escH(f.target)}</strong></td>
+      <td><span class="tag">${escH(f.tag)}</span></td>
+      <td style="line-height:1.4">${escH(f.comment)}</td>
+      <td style="font-weight:700">${escH(f.player)}</td>
+      <td style="white-space:nowrap">
+        ${statusTag} ${actBtn}
+        <button type="button" class="mini ghost" style="color:var(--bad)" onclick="delFb('${escH(f.key)}')">Xoá</button>
+      </td>
+    </tr>`;
   }).join('');
 }
 
-async function setFbStatus(key, status) {
-  if (window.LearnDB && LearnDB.updateFeedbackStatus) {
+async function setFbStatus(key, status){
+  if(window.LearnDB && LearnDB.updateFeedbackStatus){
     await LearnDB.updateFeedbackStatus(key, status);
     const target = _allFeedbacks.find(f => f.key === key);
-    if (target) target.status = status;
+    if(target) target.status = status;
     renderFeedbackTable();
   }
 }
 
-async function delFb(key) {
-  if (!confirm('Bạn có chắc muốn xoá góp ý này khỏi hệ thống?')) return;
-  if (window.LearnDB && LearnDB.deleteFeedback) {
+async function delFb(key){
+  if(!confirm('Bạn có chắc muốn xoá phản hồi này khỏi hệ thống?')) return;
+  if(window.LearnDB && LearnDB.deleteFeedback){
     await LearnDB.deleteFeedback(key);
     _allFeedbacks = _allFeedbacks.filter(f => f.key !== key);
     renderFeedbackTable();
   }
 }
 
+/* ==================== 7. CẤU HÌNH & MỤC TIÊU (SETTINGS) ==================== */
+function loadGoalSettings(){
+  if(!_adminStats) return;
+  const goalSec = Number(_adminStats.daily_goal_sec) || 3600;
+  const goalMin = Math.round(goalSec / 60);
+  const inp = document.getElementById('goalMin');
+  if(inp && !inp.value) inp.value = goalMin;
+  const meta = document.getElementById('goalMeta');
+  if(meta) meta.textContent = `Mục tiêu hiện tại: ${goalMin} phút / ngày (${fmtDur(goalSec)}) cho toàn bộ học viên.`;
+}
+
+document.getElementById('btnSaveGoal').onclick = async () => {
+  const min = Number(document.getElementById('goalMin').value) || 60;
+  try {
+    await LearnDB.setAdminGoal(min * 60, 'admin:dashboard');
+    document.getElementById('goalMeta').textContent = `Mục tiêu hiện tại: ${min} phút / ngày.`;
+    alert('Đã lưu mục tiêu học tập ngày!');
+    await loadAllData();
+  } catch(e){ alert('Lỗi: ' + (e.message || e)); }
+};
+
+async function loadPaidCode(){
+  if(!window.Access) return;
+  try {
+    const c = await Access.getPaidCode();
+    const inp = document.getElementById('paidCode');
+    if(inp && !inp.value) inp.value = c || '';
+  } catch(_){}
+}
+
+document.getElementById('btnSavePaid').onclick = async () => {
+  const code = (document.getElementById('paidCode').value || '').trim();
+  const err = document.getElementById('codeErr');
+  const msg = document.getElementById('codeMsg');
+  err.classList.remove('show'); msg.textContent = '';
+  try {
+    await Access.setPaidCode(code, 'super:dashboard');
+    msg.textContent = 'Đã lưu mã Pro-Code!';
+  } catch(e){ err.textContent = e.message || String(e); err.classList.add('show'); }
+};
+
+document.getElementById('btnSavePass').onclick = async () => {
+  const pw = document.getElementById('newAdminPass').value || '';
+  const err = document.getElementById('codeErr');
+  const msg = document.getElementById('codeMsg');
+  err.classList.remove('show'); msg.textContent = '';
+  try {
+    await Access.setSuperPassword(pw, 'super:dashboard');
+    document.getElementById('newAdminPass').value = '';
+    msg.textContent = 'Mật khẩu Admin đã được đổi thành công!';
+  } catch(e){ err.textContent = e.message || String(e); err.classList.add('show'); }
+};
+
+const MANI_LABEL = {
+  'theme:list': 'Danh sách bài học (Themenliste)',
+  'theme:basic': 'Kiến thức cơ bản trong bài',
+  'theme:full': 'Toàn bộ nội dung sâu trong bài',
+  'theme:pages': 'Ảnh scan tài liệu & đề thi',
+  'theme:flashcards': 'Thẻ nhớ từ vựng (Flashcards)',
+  'questionbank:excel': 'Ngân hàng câu hỏi Excel',
+  'quiz:demo': 'Làm thử Quiz (Demo)',
+  'quiz:full': 'Làm đầy đủ toàn bộ Quiz',
+  'training': 'Luyện thi (Prüfungstraining)',
+  'zusammenfassung': 'Tóm tắt trọng tâm ôn thi',
+  'pruefungen': 'Đề thi & Hướng dẫn giải (Lösungen)',
+  'challenge': 'Đấu trường đối kháng (Challenge)',
+  'admin': 'Bảng điều khiển Admin'
+};
+
+async function loadManifestUI(){
+  if(!window.Access) return;
+  try { await Access.loadManifest(); }catch(_){}
+  const m = Access.manifest();
+  const box = document.getElementById('manifestBox');
+  if(!box) return;
+
+  box.innerHTML = Object.keys(Access.DEFAULT_MANIFEST).map(k => {
+    const cur = m[k] || 'free';
+    const dis = k === 'admin' ? ' disabled' : '';
+    return `<div style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#FAF5E8;border-radius:6px;font-size:0.84em">
+      <span>${escH(MANI_LABEL[k] || k)}</span>
+      <select data-mani="${k}" ${dis} style="width:110px;margin:0;padding:4px 6px;font-size:0.85em">
+        ${['free', 'paid', 'super'].map(t => `<option value="${t}" ${t===cur?'selected':''}>${TIER_LABEL[t]}</option>`).join('')}
+      </select>
+    </div>`;
+  }).join('');
+}
+
+document.getElementById('btnSaveManifest').onclick = async () => {
+  const msg = document.getElementById('maniMsg');
+  const patch = {};
+  document.querySelectorAll('[data-mani]').forEach(s => { patch[s.getAttribute('data-mani')] = s.value; });
+  msg.textContent = 'Đang lưu...';
+  try {
+    await Access.saveManifest(patch, 'super:dashboard');
+    msg.textContent = 'Đã cập nhật ma trận phân quyền tính năng!';
+  } catch(e){ msg.textContent = 'Lỗi: ' + (e.message || e); }
+};
 </script>
 </body>
 </html>

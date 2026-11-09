@@ -977,6 +977,8 @@ function clean(s) {
       players: playerList,
       quizzes: quizList,
       visits: visitList.slice(0, 100),
+      // Volle Visit-Liste (bis 1000) für Admin-Dashboard: Heute-Statistik, Online-Status, 14-Tage-Chart
+      visits_all: visitList,
       quizAgg: quizAgg,
     };
   }
