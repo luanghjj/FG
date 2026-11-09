@@ -52,6 +52,14 @@ body{
   display:flex;
   min-height:100vh;
 }
+.sidebar-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(15,23,42,0.4);
+  backdrop-filter:blur(2px);
+  z-index:29;
+}
 .sidebar{
   width:260px;
   background:var(--sidebar);
@@ -63,7 +71,8 @@ body{
   top:0;
   height:100vh;
   overflow-y:auto;
-  z-index:20;
+  z-index:30;
+  transition:transform 0.25s cubic-bezier(0.2,0,0,1);
 }
 .sidebar-header{
   padding:16px 18px;
@@ -181,6 +190,20 @@ body{
   padding-bottom:14px;
   border-bottom:1px solid var(--line);
 }
+.top-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.btn-menu{
+  display:none;
+  background:transparent;
+  border:1px solid var(--line);
+  padding:8px;
+  border-radius:var(--radius-sm);
+  color:var(--ink);
+  cursor:pointer;
+}
 .page-titles h1{
   font-family:var(--font-head);
   font-size:1.45em;
@@ -262,10 +285,10 @@ body{
   margin-top:2px;
 }
 
-/* Stats KPI Grid */
+/* TailAdmin Metric Cards (KPI) */
 .kpi-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:12px;
   margin-bottom:16px;
 }
@@ -273,18 +296,26 @@ body{
   background:var(--surface);
   border:1px solid var(--line);
   border-radius:var(--radius);
-  padding:16px;
+  padding:16px 18px;
   box-shadow:var(--shadow);
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+}
+.kpi-stat-info{
+  flex:1;
+  min-width:0;
 }
 .kpi-stat .lbl{
-  font-size:0.78em;
+  font-size:0.75em;
   color:var(--muted);
   font-weight:600;
   text-transform:uppercase;
   letter-spacing:0.04em;
 }
 .kpi-stat .val{
-  font-size:1.65em;
+  font-size:1.55em;
   font-weight:700;
   color:var(--ink);
   margin-top:4px;
@@ -294,6 +325,71 @@ body{
   font-size:0.78em;
   color:var(--muted);
   margin-top:4px;
+}
+.kpi-icon-box{
+  width:44px;
+  height:44px;
+  border-radius:10px;
+  background:var(--accent-soft);
+  color:var(--accent);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  border:1px solid #E6C694;
+}
+.kpi-icon-box.ok{
+  background:var(--okbg);
+  color:var(--ok);
+  border-color:#B7C9B1;
+}
+.kpi-icon-box.warn{
+  background:var(--warnbg);
+  color:var(--warn);
+  border-color:#E6C694;
+}
+.kpi-icon-box svg{
+  width:20px;
+  height:20px;
+}
+
+/* User Avatar Initial */
+.user-avatar{
+  width:28px;
+  height:28px;
+  border-radius:999px;
+  background:var(--accent-soft);
+  color:var(--accent);
+  font-weight:700;
+  font-size:0.78em;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-transform:uppercase;
+  border:1px solid #E6C694;
+  flex-shrink:0;
+}
+
+/* Search Box with SVG */
+.search-box{
+  position:relative;
+  display:inline-block;
+  width:100%;
+  max-width:320px;
+}
+.search-box svg{
+  position:absolute;
+  left:11px;
+  top:50%;
+  transform:translateY(-50%);
+  width:15px;
+  height:15px;
+  color:var(--muted);
+  pointer-events:none;
+}
+.search-box input{
+  padding-left:34px;
+  margin:0;
 }
 
 /* Tables */
@@ -580,11 +676,23 @@ table.mx .mx-dot{width:18px;height:18px;border-radius:4px;margin:3px auto;displa
 
 /* Responsive */
 @media (max-width:860px){
-  .app-shell{flex-direction:column}
-  .sidebar{width:100%;height:auto;position:relative;border-right:none;border-bottom:1px solid var(--line)}
-  .sidebar-nav{flex-direction:row;overflow-x:auto;padding-bottom:10px}
-  .nav-group-title{display:none}
-  .nav-item{white-space:nowrap}
+  .btn-menu{display:inline-flex}
+  .sidebar{
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    width:270px;
+    height:100vh;
+    transform:translateX(-100%);
+    box-shadow:4px 0 24px rgba(15,23,42,0.18);
+  }
+  .sidebar.open{
+    transform:translateX(0);
+  }
+  .sidebar-overlay.show{
+    display:block;
+  }
   .main-content{padding:14px 12px calc(36px + var(--safe-bottom))}
 }
 </style>
@@ -609,14 +717,22 @@ table.mx .mx-dot{width:18px;height:18px;border-radius:4px;margin:3px auto;displa
 
 <!-- Main App Shell -->
 <div class="app-shell" id="dash" style="display:none">
+  <!-- Mobile Overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar(false)"></div>
+
   <!-- Left Sidebar Navigation -->
-  <aside class="sidebar">
+  <aside class="sidebar" id="appSidebar">
     <div class="sidebar-header">
       <a href="index.html" class="brand" title="Về trang chủ">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;color:var(--accent)"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
         <span>AzubiHub</span>
       </a>
-      <span class="brand-live" title="Supabase Kết nối Trực tiếp"></span>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span class="brand-live" title="Supabase Kết nối Trực tiếp"></span>
+        <button type="button" class="btn-menu" onclick="toggleSidebar(false)" style="display:none" id="btnSidebarClose">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
     </div>
 
     <div class="nav-group-title">Theo dõi học tập</div>
@@ -666,9 +782,14 @@ table.mx .mx-dot{width:18px;height:18px;border-radius:4px;margin:3px auto;displa
   <main class="main-content">
     <!-- Top Action Bar -->
     <div class="top-bar">
-      <div class="page-titles">
-        <h1 id="paneTitle">1. Tổng quan Hôm nay</h1>
-        <p id="paneSubtitle">Kiểm tra học viên đang trực tuyến, thời lượng học và nội dung đã ôn luyện</p>
+      <div class="top-left">
+        <button type="button" class="btn-menu" id="btnMenuToggle" onclick="toggleSidebar(true)" title="Mở danh mục">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div class="page-titles">
+          <h1 id="paneTitle">1. Tổng quan Hôm nay</h1>
+          <p id="paneSubtitle">Kiểm tra học viên đang trực tuyến, thời lượng học và nội dung đã ôn luyện</p>
+        </div>
       </div>
       <div class="top-actions">
         <div class="online-pill" id="onlinePill">
@@ -684,27 +805,47 @@ table.mx .mx-dot{width:18px;height:18px;border-radius:4px;margin:3px auto;displa
 
     <!-- ==================== PANE 1: TỔNG QUAN HÔM NAY ==================== -->
     <div class="pane active" id="pane-overview">
-      <!-- 4 Hero KPI Cards -->
+      <!-- 4 Hero KPI Cards (TailAdmin Style) -->
       <div class="kpi-grid">
         <div class="kpi-stat">
-          <div class="lbl">Học viên vào hôm nay</div>
-          <div class="val" id="kpiTodayCount">0 <small style="font-size:0.5em;color:var(--muted);font-weight:400" id="kpiTotalUsers">/ 0 HV</small></div>
-          <div class="sub" style="color:var(--ok);font-weight:600" id="kpiOnlineSub">● 0 đang mở app</div>
+          <div class="kpi-stat-info">
+            <div class="lbl">Học viên vào hôm nay</div>
+            <div class="val" id="kpiTodayCount">0 <small style="font-size:0.5em;color:var(--muted);font-weight:400" id="kpiTotalUsers">/ 0 HV</small></div>
+            <div class="sub" style="color:var(--ok);font-weight:600" id="kpiOnlineSub">● 0 đang mở app</div>
+          </div>
+          <div class="kpi-icon-box ok">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
         </div>
         <div class="kpi-stat">
-          <div class="lbl">Tổng giờ học hôm nay</div>
-          <div class="val" id="kpiTodayHours">0m</div>
-          <div class="sub" id="kpiAvgDuration">Trung bình: 0m / học viên</div>
+          <div class="kpi-stat-info">
+            <div class="lbl">Tổng giờ học hôm nay</div>
+            <div class="val" id="kpiTodayHours">0m</div>
+            <div class="sub" id="kpiAvgDuration">Trung bình: 0m / học viên</div>
+          </div>
+          <div class="kpi-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
         </div>
         <div class="kpi-stat">
-          <div class="lbl">Đạt mục tiêu ngày (<span id="kpiGoalMin">60</span>p)</div>
-          <div class="val" style="color:var(--ok)" id="kpiMetGoal">0 / 0 đạt</div>
-          <div class="sub" style="color:var(--bad);font-weight:600" id="kpiUnderGoal">0 người chưa đủ giờ</div>
+          <div class="kpi-stat-info">
+            <div class="lbl">Đạt mục tiêu ngày (<span id="kpiGoalMin">60</span>p)</div>
+            <div class="val" style="color:var(--ok)" id="kpiMetGoal">0 / 0 đạt</div>
+            <div class="sub" style="color:var(--bad);font-weight:600" id="kpiUnderGoal">0 người chưa đủ giờ</div>
+          </div>
+          <div class="kpi-icon-box warn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
         </div>
         <div class="kpi-stat">
-          <div class="lbl">Hoạt động học hôm nay</div>
-          <div class="val" id="kpiQuizToday">0 Quiz · 0 Từ</div>
-          <div class="sub" id="kpiAccuracyToday">Tỷ lệ đúng trung bình: —</div>
+          <div class="kpi-stat-info">
+            <div class="lbl">Hoạt động học hôm nay</div>
+            <div class="val" id="kpiQuizToday">0 Quiz · 0 Từ</div>
+            <div class="sub" id="kpiAccuracyToday">Tỷ lệ đúng trung bình: —</div>
+          </div>
+          <div class="kpi-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
+          </div>
         </div>
       </div>
 
@@ -726,15 +867,18 @@ table.mx .mx-dot{width:18px;height:18px;border-radius:4px;margin:3px auto;displa
           </div>
         </div>
 
-        <div style="margin-bottom:10px">
-          <input type="text" id="todaySearchInp" placeholder="Tìm nhanh học viên theo Nickname..." oninput="renderTodayTable()" style="max-width:320px;margin:0">
+        <div style="margin-bottom:12px">
+          <div class="search-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="todaySearchInp" placeholder="Tìm nhanh học viên theo Nickname..." oninput="renderTodayTable()">
+          </div>
         </div>
 
         <div class="tscroll" style="max-height:380px">
           <table>
             <thead>
               <tr>
-                <th style="min-width:140px">Học viên</th>
+                <th style="min-width:150px">Học viên</th>
                 <th style="min-width:140px">Thời gian học hôm nay</th>
                 <th style="min-width:280px">Hôm nay đã học cái gì (Môn / Bài học / Quiz / Từ vựng)</th>
                 <th style="min-width:150px">Thời điểm gần nhất</th>
@@ -1017,8 +1161,11 @@ table.mx .mx-dot{width:18px;height:18px;border-radius:4px;margin:3px auto;displa
         <div class="err" id="accessErr"></div>
         <div style="font-size:0.82em;color:var(--ok);margin-bottom:8px;font-weight:600" id="accessMsg"></div>
 
-        <div style="margin-bottom:10px">
-          <input type="text" id="accessSearchInp" placeholder="Tìm theo tên học viên..." oninput="renderAccessTable()" style="max-width:300px;margin:0">
+        <div style="margin-bottom:12px">
+          <div class="search-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="accessSearchInp" placeholder="Tìm theo tên học viên..." oninput="renderAccessTable()">
+          </div>
         </div>
 
         <!-- Unified Table -->
@@ -1255,6 +1402,18 @@ const NAV_META = {
   settings: { title: '7. Cấu hình & Mục tiêu học tập', sub: 'Chỉnh số phút mục tiêu/ngày, kỷ luật từ vựng Deutsch, mã Pro-Code và mật khẩu Admin' }
 };
 
+function toggleSidebar(open){
+  const sb = document.getElementById('appSidebar');
+  const ov = document.getElementById('sidebarOverlay');
+  const closeBtn = document.getElementById('btnSidebarClose');
+  if(!sb || !ov) return;
+  const isCurrentlyOpen = sb.classList.contains('open');
+  const willOpen = open !== undefined ? open : !isCurrentlyOpen;
+  sb.classList.toggle('open', willOpen);
+  ov.classList.toggle('show', willOpen);
+  if(closeBtn) closeBtn.style.display = willOpen ? 'inline-flex' : 'none';
+}
+
 function initNavigation(){
   document.querySelectorAll('.sidebar-nav .nav-item').forEach(btn => {
     btn.onclick = () => {
@@ -1269,6 +1428,7 @@ function initNavigation(){
       document.getElementById('paneSubtitle').textContent = meta.sub;
 
       if(tab === 'feedback') loadFeedbackList();
+      if(window.innerWidth <= 860) toggleSidebar(false);
     };
   });
 
@@ -1522,13 +1682,19 @@ function renderTodayTable(){
       : (item.p.last_seen ? `<span class="tag tag-muted">Thoát ${fmt(item.p.last_seen).slice(-5)}</span>` : '<span class="tag tag-muted">Chưa vào</span>');
 
     const tierBadge = `<span class="tag-tier ${item.tier}">${TIER_LABEL[item.tier]}</span>`;
+    const initial = escH((item.pName || '?').charAt(0).toUpperCase());
 
     return `<tr>
       <td style="font-weight:700">
-        <div style="display:flex;align-items:center;gap:7px">
-          ${onlineDot}
-          <span>${escH(item.pName)}</span>
-          ${tierBadge}
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="user-avatar">${initial}</span>
+          <div style="min-width:0">
+            <div style="display:flex;align-items:center;gap:6px">
+              ${onlineDot}
+              <span>${escH(item.pName)}</span>
+            </div>
+            <div style="margin-top:2px">${tierBadge}</div>
+          </div>
         </div>
       </td>
       <td>
@@ -2018,8 +2184,15 @@ function renderAccessTable(){
       ? `<button type="button" class="mini ghost" onclick="quickRole('${escH(item.player)}', 'paid')">→ Lên Pro</button>`
       : `<button type="button" class="mini ghost" onclick="quickRole('${escH(item.player)}', 'free')">→ Về Basic</button>`;
 
+    const initial = escH((item.player || '?').charAt(0).toUpperCase());
+
     return `<tr>
-      <td style="font-weight:700">${escH(item.player)}</td>
+      <td style="font-weight:700">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="user-avatar">${initial}</span>
+          <span>${escH(item.player)}</span>
+        </div>
+      </td>
       <td>
         <div style="display:flex;align-items:center;gap:6px">
           ${tierBadge}
