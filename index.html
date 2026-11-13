@@ -1643,7 +1643,7 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./css/statute-theme.css?v=205">
+<link rel="stylesheet" href="./css/statute-theme.css?v=208">
 <link rel="stylesheet" href="./css/elite-theme.css?v=205">
 </head>
 <body>
@@ -1742,7 +1742,7 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
     <div class="welcome-timer-bar" aria-hidden="true"><div class="welcome-timer-fill" id="welcomeTimerFill"></div></div>
 
     <div class="welcome-actions">
-      <button type="button" class="welcome-btn-skip" onclick="hideWelcomeGate()">Bỏ qua (Tự động vào sau 7s)</button>
+      <button type="button" class="welcome-btn-skip" onclick="hideWelcomeGate()">Bỏ qua (Tự động vào sau 4s)</button>
       <button type="button" class="welcome-btn-go" onclick="hideWelcomeGate()">
         <span>Bắt đầu ngay</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -1780,6 +1780,8 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
     <h1 style="margin: 8px 0 6px">Fachkraft für Gastronomie</h1>
     <p style="margin-bottom: 0">Wähle ein Fach, um mit dem Lernen zu beginnen. Alle Lernfelder (BfK-1, BfK-2), Prüfungs-Trainings und Klassenarbeiten.</p>
   </div>
+
+  <div id="continueLearningSlot"></div>
 
 
 
@@ -1821,13 +1823,23 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 
   <div class="fach-label">Heute üben</div>
   <div class="today-grid" style="grid-template-columns:1fr!important">
-    <div class="today-card" id="tcArena" onclick="location.href='arena.html'" style="border-left:4px solid var(--accent);display:flex;align-items:center;gap:14px;padding:15px 16px!important">
-      <div class="ic" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;background:var(--accent-soft);border-radius:12px;color:var(--accent);flex-shrink:0">
+    <div class="today-card" id="tcQuickDrill" onclick="go('#/quick-drill')" style="border-left:4px solid var(--accent-2);display:flex;align-items:center;gap:14px;padding:15px 16px!important;flex-direction:row;text-align:left">
+      <div class="ic" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;background:var(--accent-soft);border-radius:12px;color:var(--accent);flex-shrink:0;margin-bottom:0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10"/></svg>
+      </div>
+      <div style="flex:1;min-width:0">
+        <b style="display:block;font-size:1.02em;margin-bottom:3px;color:var(--ink)">Quick Drill · 10 Fragen (5 Min)</b>
+        <span style="display:block;font-size:.82em;color:var(--muted)">Ôn nhanh 10 câu ngẫu nhiên mọi lúc (ưu tiên Fehlerbuch &amp; các môn đã học)</span>
+      </div>
+      <div style="color:var(--accent);font-weight:700;font-size:1.2em;flex-shrink:0;padding-right:4px">→</div>
+    </div>
+    <div class="today-card" id="tcArena" onclick="location.href='arena.html'" style="border-left:4px solid var(--accent);display:flex;align-items:center;gap:14px;padding:15px 16px!important;flex-direction:row;text-align:left">
+      <div class="ic" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;background:var(--accent-soft);border-radius:12px;color:var(--accent);flex-shrink:0;margin-bottom:0">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:24px;height:24px"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
       </div>
       <div style="flex:1;min-width:0">
-        <b style="font-size:1.02em;margin-bottom:3px;color:var(--ink)">Prüfungs-Arena · Thi tự luận chung</b>
-        <span style="font-size:.82em;color:var(--muted)">Luyện đề tự luận IHK thật &amp; Lernfeld, đối chiếu Musterlösung, bảng xếp hạng</span>
+        <b style="display:block;font-size:1.02em;margin-bottom:3px;color:var(--ink)">Prüfungs-Arena · Thi tự luận chung</b>
+        <span style="display:block;font-size:.82em;color:var(--muted)">Luyện đề tự luận IHK thật &amp; Lernfeld, đối chiếu Musterlösung, bảng xếp hạng</span>
       </div>
       <div style="color:var(--accent);font-weight:700;font-size:1.2em;flex-shrink:0;padding-right:4px">→</div>
     </div>
@@ -1843,6 +1855,19 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
       <div class="pstat"><div class="n" id="hpLast">—</div><div class="l">Letzte %</div></div>
     </div>
     <div id="homeProgressHint" class="muted" style="margin-top:10px;font-size:.82em">Nach dem Login erscheinen hier deine Daten.</div>
+    <div class="backup-bar">
+      <span class="backup-meta">Sicherung · Sao lưu tiến độ cục bộ</span>
+      <div class="backup-actions">
+        <button type="button" class="backup-btn" onclick="exportProgressBackup()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>Export (.json)</span>
+        </button>
+        <button type="button" class="backup-btn" onclick="triggerBackupImport()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <span>Import (.json)</span>
+        </button>
+      </div>
+    </div>
   </div>
 
   <div class="hist-panel" id="homeHistPanel" style="display:none">
@@ -2107,29 +2132,29 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 <section class="view zwischen-scope" id="v-zwischen">
   <div class="back" onclick="go('#/')">← Fächer</div>
   <div class="section-head">
-    <h2>🛡️ Zwischenprüfung: Fachkraft für Gastronomie (AO 2022)</h2>
+    <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;display:inline-block;vertical-align:-3px;margin-right:6px"><path d="M12 2 3 7v5c0 5 3.7 9 9 10 5.3-1 9-5 9-10V7z"/><path d="M8.5 12l2.3 2.3 4.7-4.7"/></svg>Zwischenprüfung: Fachkraft für Gastronomie (AO 2022)</h2>
     <p>Vollständiges Lernheft auf Deutsch · Prüfungsbereich: <strong>Wirtschaftsdienst</strong> · Wörter oder Buttons antippen, um den Lernmodus zu wechseln.</p>
   </div>
 
   <!-- TOOLBAR: CHẾ ĐỘ DỊCH & PHÁT ÂM TIẾNG ĐỨC -->
   <div class="zw-toolbar">
     <div class="zw-toggle-group">
-      <span style="font-size:.84em;font-weight:700;color:var(--muted);">📖 Lernmodus:</span>
-      <button class="zw-mode-btn active" id="zw-btn-click" onclick="setZwMode('click')">🇩🇪 100 % Deutsch (antippen zum Übersetzen)</button>
-      <button class="zw-mode-btn" id="zw-btn-bilingual" onclick="setZwMode('bilingual')">🇻🇳 Zweisprachig anzeigen</button>
+      <span style="font-size:.84em;font-weight:700;color:var(--muted);display:inline-flex;align-items:center;gap:5px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>Lernmodus:</span>
+      <button class="zw-mode-btn active" id="zw-btn-click" onclick="setZwMode('click')">100 % Deutsch (antippen zum Übersetzen)</button>
+      <button class="zw-mode-btn" id="zw-btn-bilingual" onclick="setZwMode('bilingual')">Zweisprachig anzeigen</button>
     </div>
     <div style="display:flex;align-items:center;gap:6px;">
-      <button onclick="speakDE('Willkommen zur Zwischenprüfung! Viel Erfolg beim Lernen!')" class="zw-mode-btn" style="background:#f0fdf4;color:#15803d;border-color:#bbf7d0;" title="Antippen für deutsche Aussprache">🔊 Aussprache anhören</button>
+      <button onclick="speakDE('Willkommen zur Zwischenprüfung! Viel Erfolg beim Lernen!')" class="zw-mode-btn" style="background:var(--okbg);color:var(--ok);border-color:var(--line);display:inline-flex;align-items:center;gap:6px;" title="Antippen für deutsche Aussprache"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px"><polygon points="6 4 20 12 6 20"/></svg>Aussprache anhören</button>
     </div>
   </div>
 
   <div class="tabs">
-    <div class="tab active" data-ztab="tongquan">📋 1. Überblick</div>
-    <div class="tab" data-ztab="lythuyet">🧹 2. Hygiene &amp; Reinigung</div>
-    <div class="tab" data-ztab="thuchanh">🍽️ 3. Service &amp; Tisch</div>
-    <div class="tab" data-ztab="hoctap">🃏 4. Lernkarten</div>
-    <div class="tab" data-ztab="dethimau">📝 5. Prüfungsaufgaben</div>
-    <div class="tab" data-ztab="praxis">🎯 6. Praktische Prüfung</div>
+    <div class="tab active" data-ztab="tongquan">1. Überblick</div>
+    <div class="tab" data-ztab="lythuyet">2. Hygiene &amp; Reinigung</div>
+    <div class="tab" data-ztab="thuchanh">3. Service &amp; Tisch</div>
+    <div class="tab" data-ztab="hoctap">4. Lernkarten</div>
+    <div class="tab" data-ztab="dethimau">5. Prüfungsaufgaben</div>
+    <div class="tab" data-ztab="praxis">6. Praktische Prüfung</div>
   </div>
 
   <!-- ==================== TAB 1: ÜBERBLICK ==================== -->
@@ -5580,7 +5605,7 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 <section class="view" id="v-fach-training">
   <div class="back" id="fachTrainingBack">← Fach</div>
   <div class="section-head">
-    <h2 id="fachTrainingTitle">🎯 Training</h2>
+    <h2 id="fachTrainingTitle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;display:inline-block;vertical-align:-3px;margin-right:6px"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>Training</h2>
     <p id="fachTrainingSub"></p>
   </div>
   <div class="bw-exam-notice" role="note">
@@ -5597,7 +5622,7 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 <section class="view" id="v-fach-pruefungen">
   <div class="back" id="fachPruefBack">← Fach</div>
   <div class="section-head">
-    <h2 id="fachPruefTitle">🗂️ Prüfungen</h2>
+    <h2 id="fachPruefTitle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;display:inline-block;vertical-align:-3px;margin-right:6px"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Prüfungen</h2>
     <p id="fachPruefSub"></p>
   </div>
   <div class="bw-exam-notice" role="note">
@@ -5617,6 +5642,7 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 </div>
 
 <div class="footer">🍀 AzubiHub · Fachkraft für Gastronomie · Viel Erfolg! 🍀</div>
+<input type="file" id="backupImportFile" accept=".json,application/json" tabindex="-1" aria-hidden="true" style="position:fixed;left:-9999px;width:1px;height:1px;opacity:0" onchange="handleBackupFileSelect(this)">
 </div>
 
 
@@ -6673,7 +6699,7 @@ function renderTraining(fachId){
     const bk=document.getElementById('fachTrainingBack');
     if(bk){ bk.onclick=()=>go(fachHubRoute(fachId)); bk.textContent='← '+(fach.code||'Fach'); }
     const ti=document.getElementById('fachTrainingTitle');
-    if(ti) ti.textContent='🎯 Training · '+(fach.code||'');
+    if(ti) ti.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;display:inline-block;vertical-align:-3px;margin-right:6px"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>Training · '+(fach.code||'');
     return;
   }
   const back=document.getElementById('fachTrainingBack');
@@ -6681,7 +6707,7 @@ function renderTraining(fachId){
   const title=document.getElementById('fachTrainingTitle');
   const sub=document.getElementById('fachTrainingSub');
   const body=document.getElementById('fachTrainingBody');
-  if(title) title.textContent='🎯 Training · '+(fach.code||'');
+  if(title) title.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;display:inline-block;vertical-align:-3px;margin-right:6px"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>Training · '+(fach.code||'');
   let ss='';
   if(fach.examDate){ const cd=countdownLabel(fach.examDate); ss+=(ss?' · ':'')+'KA '+formatDeDate(fach.examDate)+' ('+cd.text+')'; }
   if(sub) sub.textContent=ss;
@@ -7363,6 +7389,7 @@ function renderFachTheme(fachId, themeId){
   _fachCurFachId = fachId;
   _fachCurThemeId = themeId;
   _fachThemeTab = "theory";
+  saveLastStudy(theme.name, (fach.code||fachId) + (theme.groupBadge||theme.badge ? ' · ' + (theme.groupBadge||theme.badge) : ''), fachRoute(fach, 'theme', themeId));
 
   // Fortschritts-Status-Button (oben)
   const st = BFK1_STATUS[fachStatus(fachId, themeId)] || BFK1_STATUS[0];
@@ -7389,7 +7416,7 @@ function renderFachTheme(fachId, themeId){
   body.innerHTML = head + tabs
     + '<div class="b1tab-panel" id="fachTabPanel"></div>'
     + '<div class="theme-quiz-bar" style="margin-top:18px">'
-      + '<button type="button" class="btn" id="fachThemeDrill">📝 Thema üben</button>'
+      + '<button type="button" class="btn" id="fachThemeDrill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px;display:inline-block;vertical-align:-2px;margin-right:5px"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4Z"/></svg>Thema üben</button>'
       + '<button type="button" class="btn ghost" id="fachThemeQuiz">Alle Quiz '+(fach.code||'')+'</button>'
     + '</div>'
     + lessonFeedbackCardHtml((fach.code||fachId) + ' · ' + (theme.name||'Thema'), themeId);
@@ -7410,7 +7437,7 @@ function fachTickTheme(fachId, themeId){
 }
 
 /* Generic quiz (same UX as BfK-1) */
-let fQuiz={fachId:null, pool:[], order:[], index:0, score:0, wrong:[], started:false, mode:'all', deadline:0, timer:null, timeUp:false};
+let fQuiz={fachId:null, pool:[], order:[], index:0, score:0, wrong:[], flagged:{}, answered:{}, started:false, mode:'all', deadline:0, timer:null, timeUp:false};
 
 /* Fehlerbuch: falsch beantwortete Fach-Fragen bleiben gespeichert, bis sie einmal richtig beantwortet werden */
 const FEHLER_KEY='fach_fehlerbuch_v1';
@@ -7458,7 +7485,7 @@ function fachQuizIntro(fachId, preselect){
   const title=document.getElementById('fachQuizTitle');
   const back=document.getElementById('fachQuizBack');
   if(back){ back.onclick=()=>go(fachRoute(fach,'hub')); back.textContent='← '+(fach?fach.code:'Fach'); }
-  if(title) title.textContent='📝 '+(fach?fach.code+' · ':'')+'Quiz';
+  if(title) title.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;display:inline-block;vertical-align:-3px;margin-right:6px"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4Z"/></svg>'+(fach?fach.code+' · ':'')+'Quiz';
   if(!area||!fach) return;
   fachTimerStop(); fQuiz.started=false; fQuiz.fachId=fach.id;
   const quiz=fach.quiz||[];
@@ -7497,21 +7524,62 @@ function fachQuizIntro(fachId, preselect){
   document.getElementById('fqExam').onclick=()=>fachQuizStart(fach.id, pick(), 'exam', {n:20, min:20, label:fach.code+' Probe'});
 }
 /* mode: 'all' | 'quick' (10) | 'fehler' (Fehlerbuch) | 'exam' (opts:{n, min, label} → Timer, Feedback erst am Ende) */
+function buildQuickDrillPool(){
+  ensureFachRegistry();
+  const list=(window.FachForm && window.FachForm.FAECHER) ? window.FachForm.FAECHER : [];
+  const fehlerAll=[];
+  const generalAll=[];
+  list.forEach(f=>{
+    if(!f || !f.quiz || !f.quiz.length) return;
+    const fMap=(fehlerLoad()[f.id])||{};
+    f.quiz.forEach(q=>{
+      if(f.id==='bfk1' && window.bfk1QuestionAllowed && !window.bfk1QuestionAllowed(q)) return;
+      const item=Object.assign({}, q, { _srcFachId: f.id, cat: q.cat || f.code || f.id });
+      if(fMap[fehlerKey(q)]) fehlerAll.push(item);
+      else generalAll.push(item);
+    });
+  });
+  const picked=shuffle(fehlerAll).slice(0, 10);
+  if(picked.length < 10){
+    picked.push(...shuffle(generalAll).slice(0, 10 - picked.length));
+  }
+  return picked;
+}
+function startQuickDrill(){
+  const pool=buildQuickDrillPool();
+  if(!pool.length){
+    if(window.toast) toast('Chưa có câu hỏi để luyện tập.','info');
+    go('#/');
+    return;
+  }
+  const view=document.getElementById('v-fach-quiz');
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  if(view) view.classList.add('active');
+  const cb=document.getElementById('crumbs');
+  if(cb) cb.innerHTML='<a onclick="go(\'#/\')">Fächer</a><span class="sep">›</span><span>Quick Drill</span>';
+  const back=document.getElementById('fachQuizBack');
+  if(back){ back.onclick=()=>go('#/'); back.textContent='← Fächer'; }
+  const title=document.getElementById('fachQuizTitle');
+  if(title) title.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;display:inline-block;vertical-align:-3px;margin-right:6px"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10"/></svg>Quick Drill · 10 Fragen';
+  fachQuizStart('quick', null, 'quick-mix', { customPool: pool, label: 'Quick Drill' });
+}
 function fachQuizStart(fachId, themeIds, mode, opts){
   ensureFachRegistry();
-  const fach=window.FachForm.findFach(fachId);
+  opts=opts||{};
+  const isCustom=Array.isArray(opts.customPool);
+  const fach=(fachId==='quick') ? { id:'quick', code:'Quick Drill', name:'Quick Drill', themes:[], quiz:[] } : window.FachForm.findFach(fachId);
   if(!fach) return;
-  mode=mode||'all'; opts=opts||{};
+  mode=mode||'all';
   const ids=themeIds&&themeIds.length?themeIds:Object.keys(window.FachForm.themeMeta(fach));
-  if((location.hash||'') !== fachRoute(fach,'quiz')){
+  if(!isCustom && fachId!=='quick' && (location.hash||'') !== fachRoute(fach,'quiz')){
     window._fachQPending={fachId:fach.id, ids, mode, opts};
     go(fachRoute(fach,'quiz')); return;
   }
-  let pool=window.FachForm.quizByThemes(fach, ids).slice();
-  if(mode==='fehler') pool=fehlerQuestions(fach);
+  let pool=isCustom ? opts.customPool.slice() : window.FachForm.quizByThemes(fach, ids).slice();
+  if(!isCustom && mode==='fehler') pool=fehlerQuestions(fach);
   if(!pool.length){
     if(window.toast) toast(mode==='fehler'?'Fehlerbuch ist leer':'Keine Fragen','info');
-    if(mode==='fehler') fachQuizIntro(fach.id);
+    if(mode==='fehler' && fachId!=='quick') fachQuizIntro(fach.id);
     return;
   }
   fachTimerStop();
@@ -7522,7 +7590,7 @@ function fachQuizStart(fachId, themeIds, mode, opts){
   if(mode==='quick') fQuiz.order=fQuiz.order.slice(0, Math.min(10,fQuiz.order.length));
   if(mode==='exam' && opts.n) fQuiz.order=fQuiz.order.slice(0, Math.min(opts.n,fQuiz.order.length));
   fQuiz.order=limitQuizOrder(fQuiz.order);
-  fQuiz.index=0; fQuiz.score=0; fQuiz.wrong=[]; fQuiz.started=true;
+  fQuiz.index=0; fQuiz.score=0; fQuiz.wrong=[]; fQuiz.flagged={}; fQuiz.answered={}; fQuiz.started=true;
   if(mode==='exam' && opts.min){
     fQuiz.deadline=Date.now()+opts.min*60000;
     fQuiz.timer=setInterval(fachTimerTick, 1000);
@@ -7530,10 +7598,49 @@ function fachQuizStart(fachId, themeIds, mode, opts){
   fachRenderQuestion();
 }
 function fachQuizBar(meta, q, extra){
+  const isFlagged = !!(fQuiz.flagged && fQuiz.flagged[fQuiz.index]);
   let h='<div class="quiz-bar"><span>'+(meta.icon||'')+' '+(meta.name||q.cat)+' · '+(fQuiz.index+1)+'/'+fQuiz.order.length+(extra||'')+'</span>';
+  h+='<span class="fq-bar-right">';
+  h+='<button type="button" class="fq-flag-btn'+(isFlagged?' flagged':'')+'" id="fqFlagBtn" aria-pressed="'+(isFlagged?'true':'false')+'" title="Frage zur Wiederholung markieren"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg><span>'+(isFlagged?'Gemerkt':'Merken')+'</span></button>';
   if(fQuiz.mode==='exam' && fQuiz.deadline) h+='<span class="score fq-timer" id="fqTimer">–:––</span>';
   else h+='<span class="score">'+fQuiz.score+' richtig</span>';
+  return h+'</span></div>';
+}
+function fachNavStripHtml(){
+  if(!fQuiz.order || fQuiz.order.length < 2 || fQuiz.order.length > 40) return '';
+  let h='<div class="fq-nav-strip" role="navigation" aria-label="Fragen-Navigation">';
+  for(let i=0;i<fQuiz.order.length;i++){
+    const cls=['fq-dot'];
+    if(i===fQuiz.index) cls.push('cur');
+    if(fQuiz.flagged && fQuiz.flagged[i]) cls.push('flagged');
+    if(fQuiz.answered && fQuiz.answered[i]) cls.push(fQuiz.answered[i]);
+    h+='<button type="button" class="'+cls.join(' ')+'" data-qidx="'+i+'">'+(i+1)+'</button>';
+  }
   return h+'</div>';
+}
+function bindQuizChrome(area){
+  const fb=document.getElementById('fqFlagBtn');
+  if(fb){
+    fb.onclick=()=>{
+      if(!fQuiz.flagged) fQuiz.flagged={};
+      fQuiz.flagged[fQuiz.index]=!fQuiz.flagged[fQuiz.index];
+      const on=!!fQuiz.flagged[fQuiz.index];
+      fb.classList.toggle('flagged', on);
+      fb.setAttribute('aria-pressed', on?'true':'false');
+      const sp=fb.querySelector('span'); if(sp) sp.textContent=on?'Gemerkt':'Merken';
+      const dot=area.querySelector('.fq-dot[data-qidx="'+fQuiz.index+'"]');
+      if(dot) dot.classList.toggle('flagged', on);
+    };
+  }
+  area.querySelectorAll('.fq-dot').forEach(btn=>{
+    btn.onclick=()=>{
+      const idx=+btn.getAttribute('data-qidx');
+      if(!isNaN(idx) && idx>=0 && idx<fQuiz.order.length){
+        fQuiz.index=idx;
+        fachRenderQuestion();
+      }
+    };
+  });
 }
 function fachCorrectText(q){
   if(q.opts) return q.opts[q.a];
@@ -7544,36 +7651,48 @@ function fachRenderQuestion(){
   if(!area) return;
   if(fQuiz.index>=fQuiz.order.length) return fachQuizResult();
   const q=fQuiz.pool[fQuiz.order[fQuiz.index]];
-  const fach=window.FachForm.findFach(fQuiz.fachId);
-  const meta=window.FachForm.themeMeta(fach)[q.theme]||{};
+  const fach=(fQuiz.fachId==='quick') ? { id:'quick', code:'Quick Drill', name:'Quick Drill', themes:[] } : window.FachForm.findFach(fQuiz.fachId);
+  const meta=(fach && window.FachForm.themeMeta(fach)[q.theme])||{};
   const pct=Math.round((fQuiz.index/fQuiz.order.length)*100);
   const isFill = (typeof b1IsFill==='function') ? b1IsFill(q) : (q.type==='fill' || (!q.opts && (q.answer||q.answers)));
+  const nextLabel=(fQuiz.index===fQuiz.order.length-1)?'Ergebnis →':'Weiter →';
+  const markId=q._srcFachId||fQuiz.fachId;
 
   // ── Freitext / Lückentext (type:"fill") ──
   const exam=fQuiz.mode==='exam';
   if(isFill){
     let fhtml=fachQuizBar(meta, q, ' · Freitext');
     fhtml+='<div class="progress"><div style="width:'+pct+'%"></div></div>';
+    fhtml+=fachNavStripHtml();
     fhtml+='<div class="q-cat">'+(q.cat||fach.code)+' · Freitext</div>';
     if(q.img) fhtml+='<div class="q-sym-img"><img src="'+q.img+'" alt="Symbol"></div>';
     fhtml+='<div class="q-text">'+q.q+'</div>';
     fhtml+='<div class="q-opts"><input class="fill-input" id="fqFill" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Antwort eingeben… (Groß/Klein egal)">';
     fhtml+='<div class="fill-actions"><button type="button" class="btn" id="fqCheck">Prüfen</button><button type="button" class="btn ghost" id="fqSkip">Überspringen</button></div></div>';
-    fhtml+='<div class="q-feedback" id="fqFb"></div><div class="q-nav" id="fqNav" style="display:none"><button type="button" class="btn" id="fqNext">Weiter →</button></div>';
+    fhtml+='<div class="q-feedback" id="fqFb"></div><div class="q-nav" id="fqNav" style="display:none"><button type="button" class="btn" id="fqNext">'+nextLabel+'</button></div>';
     fhtml+=quizReportBtnHtml(fach.code, fQuiz.index+1, q.q, q.theme);
     area.innerHTML=fhtml;
+    bindQuizChrome(area);
     try{ if(window.enableVocabOn) enableVocabOn(area); }catch(e){}
     const input=document.getElementById('fqFill');
     if(input) setTimeout(()=>input.focus(),30);
-    let fLocked=false;
+    let fLocked=!!(fQuiz.answered && fQuiz.answered[fQuiz.index]);
+    if(fLocked && input){
+      input.disabled=true;
+      const navEl=document.getElementById('fqNav'); if(navEl) navEl.style.display='block';
+    }
     const finish=()=>{
       if(fLocked) return; fLocked=true;
       const user=(document.getElementById('fqFill')||{}).value||'';
       const ok=(typeof b1CheckAnswer==='function') ? b1CheckAnswer(q, user) : false;
       const correct=fachCorrectText(q);
-      fehlerMark(fQuiz.fachId, q, ok);
+      fehlerMark(markId, q, ok);
+      if(!fQuiz.answered) fQuiz.answered={};
+      fQuiz.answered[fQuiz.index]=exam?'done':(ok?'ok':'bad');
       if(ok) fQuiz.score++; else fQuiz.wrong.push(q);
       if(exam){ fQuiz.index++; fachRenderQuestion(); return; }
+      const dot=area.querySelector('.fq-dot[data-qidx="'+fQuiz.index+'"]');
+      if(dot) dot.classList.add(ok?'ok':'bad');
       const fb=document.getElementById('fqFb');
       if(ok){ fb.className='q-feedback show ok'; fb.textContent='✓ Richtig. '+(q.ex||''); }
       else { fb.className='q-feedback show no'; fb.textContent='✗ Falsch. Richtig: '+correct+'. '+(q.ex||''); }
@@ -7581,7 +7700,7 @@ function fachRenderQuestion(){
       document.getElementById('fqNav').style.display='block';
     };
     const chk=document.getElementById('fqCheck'); if(chk) chk.onclick=finish;
-    const sk=document.getElementById('fqSkip'); if(sk) sk.onclick=()=>{ fehlerMark(fQuiz.fachId, q, false); fQuiz.wrong.push(q); fQuiz.index++; fachRenderQuestion(); };
+    const sk=document.getElementById('fqSkip'); if(sk) sk.onclick=()=>{ if(!fLocked){ fehlerMark(markId, q, false); if(!fQuiz.answered) fQuiz.answered={}; fQuiz.answered[fQuiz.index]=exam?'done':'bad'; fQuiz.wrong.push(q); } fQuiz.index++; fachRenderQuestion(); };
     if(input) input.addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); finish(); }});
     document.getElementById('fqNext').onclick=()=>{ fQuiz.index++; fachRenderQuestion(); };
     return;
@@ -7591,6 +7710,7 @@ function fachRenderQuestion(){
   const correctPos=order.indexOf(q.a);
   let html=fachQuizBar(meta, q, '');
   html+='<div class="progress"><div style="width:'+pct+'%"></div></div>';
+  html+=fachNavStripHtml();
   html+='<div class="q-cat">'+(q.cat||fach.code)+'</div>';
   if(q.img) html+='<div class="q-sym-img"><img src="'+q.img+'" alt="Symbol"></div>';
   html+='<div class="q-text">'+q.q+'</div><div class="q-opts">';
@@ -7598,19 +7718,31 @@ function fachRenderQuestion(){
     html+='<button type="button" class="opt" data-i="'+displayIdx+'">'+q.opts[oi]+'</button>';
   });
   html+='</div><div class="q-feedback" id="fqFb"></div><div class="q-nav" id="fqNav" style="display:none">';
-  html+='<button type="button" class="btn" id="fqNext">Weiter →</button></div>';
+  html+='<button type="button" class="btn" id="fqNext">'+nextLabel+'</button></div>';
   html+=quizReportBtnHtml(fach.code, fQuiz.index+1, q.q, q.theme);
   area.innerHTML=html;
+  bindQuizChrome(area);
   try{ if(window.enableVocabOn) enableVocabOn(area); }catch(e){}
 
-  let locked=false;
+  let locked=!!(fQuiz.answered && fQuiz.answered[fQuiz.index]);
+  if(locked){
+    area.querySelectorAll('.opt').forEach((b,i)=>{
+      b.classList.add('locked');
+      if(i===correctPos) b.classList.add('correct');
+    });
+    const navEl=document.getElementById('fqNav'); if(navEl) navEl.style.display='block';
+  }
   area.querySelectorAll('.opt').forEach(btn=>{
     btn.onclick=()=>{
       if(locked) return; locked=true;
       const di=+btn.getAttribute('data-i');
       const ok=di===correctPos;
-      fehlerMark(fQuiz.fachId, q, ok);
+      fehlerMark(markId, q, ok);
+      if(!fQuiz.answered) fQuiz.answered={};
+      fQuiz.answered[fQuiz.index]=exam?'done':(ok?'ok':'bad');
       if(exam){ if(ok) fQuiz.score++; else fQuiz.wrong.push(q); fQuiz.index++; fachRenderQuestion(); return; }
+      const dot=area.querySelector('.fq-dot[data-qidx="'+fQuiz.index+'"]');
+      if(dot) dot.classList.add(ok?'ok':'bad');
       area.querySelectorAll('.opt').forEach((b,i)=>{
         b.classList.add('locked');
         if(i===correctPos) b.classList.add('correct');
@@ -7631,21 +7763,28 @@ function fachQuizResult(){
   const wasStarted=fQuiz.started; fQuiz.started=false;
   const total=fQuiz.order.length;
   const exam=fQuiz.mode==='exam';
-  const answered=Math.min(fQuiz.index, total);
+  const isQuick=fQuiz.fachId==='quick';
+  const answeredCnt=fQuiz.answered ? Object.keys(fQuiz.answered).length : Math.min(fQuiz.index, total);
   // Bei Zeitablauf zählen unbeantwortete Fragen als falsch
-  if(exam && fQuiz.timeUp) fQuiz.order.slice(answered).forEach(i=>fQuiz.wrong.push(fQuiz.pool[i]));
+  if(exam && fQuiz.timeUp){
+    fQuiz.order.forEach((pi, idx)=>{
+      if(!fQuiz.answered || !fQuiz.answered[idx]) fQuiz.wrong.push(fQuiz.pool[pi]);
+    });
+  }
   const pct=total?Math.round((fQuiz.score/total)*100):0;
   if(exam && wasStarted) examLogAdd({fachId:fQuiz.fachId, label:fQuiz.label||'', date:new Date().toISOString(), score:fQuiz.score, total, pct, timeUp:!!fQuiz.timeUp});
   let html='<div class="quiz-result"><div class="big">'+pct+'%</div>';
   html+='<div class="msg">'+fQuiz.score+' / '+total+' richtig';
-  if(exam) html+=' · '+(pct>=50?'bestanden (≥ 50 %)':'nicht bestanden (< 50 %)')+(fQuiz.timeUp?' · Zeit abgelaufen, '+(total-answered)+' offen':'');
+  if(exam) html+=' · '+(pct>=50?'bestanden (≥ 50 %)':'nicht bestanden (< 50 %)')+(fQuiz.timeUp?' · Zeit abgelaufen, '+Math.max(0, total-answeredCnt)+' offen':'');
   html+='</div>';
-  const fehlerN=fehlerCount(fQuiz.fachId);
+  const flaggedPool=fQuiz.order.filter((_, idx)=>fQuiz.flagged && fQuiz.flagged[idx]).map(pi=>fQuiz.pool[pi]);
+  const fehlerN=isQuick?0:fehlerCount(fQuiz.fachId);
   html+='<div class="quiz-actions">';
-  html+='<button type="button" class="btn" id="fqAgain">Nochmal</button>';
+  html+='<button type="button" class="btn" id="fqAgain">'+(isQuick?'Neue 10 Fragen':'Nochmal')+'</button>';
+  if(flaggedPool.length) html+='<button type="button" class="btn ghost" id="fqReviewFlagged">Gemerkt wiederholen ('+flaggedPool.length+')</button>';
   if(fehlerN) html+='<button type="button" class="btn ghost" id="fqFehler">Fehlerbuch ('+fehlerN+')</button>';
-  html+='<button type="button" class="btn ghost" id="fqPick">Themen wählen</button>';
-  html+='<button type="button" class="btn ghost" id="fqBack">← Fach</button></div>';
+  if(!isQuick) html+='<button type="button" class="btn ghost" id="fqPick">Themen wählen</button>';
+  html+='<button type="button" class="btn ghost" id="fqBack">'+(isQuick?'← Fächer':'← Fach')+'</button></div>';
   if(fQuiz.wrong.length){
     html+='<div class="wrong-list" style="margin-top:16px">';
     fQuiz.wrong.slice(0, exam?60:12).forEach(q=>{ html+='<div class="wi"><b>'+q.q+'</b><span class="ans">→ '+fachCorrectText(q)+'</span>'+(exam&&q.ex?'<span class="muted" style="display:block;font-size:13px;margin-top:2px">'+q.ex+'</span>':'')+'</div>'; });
@@ -7657,10 +7796,12 @@ function fachQuizResult(){
   const fachId=fQuiz.fachId;
   const lastMode=fQuiz.mode, lastLabel=fQuiz.label;
   const lastOpts=exam?{n:total, min:Math.round((fQuiz.examMin||0)), label:lastLabel}:{};
-  document.getElementById('fqAgain').onclick=()=>fachQuizStart(fachId,last,lastMode==='fehler'?'fehler':lastMode,lastOpts);
+  document.getElementById('fqAgain').onclick=()=>{ if(isQuick) startQuickDrill(); else fachQuizStart(fachId,last,lastMode==='fehler'?'fehler':lastMode,lastOpts); };
+  const rf=document.getElementById('fqReviewFlagged');
+  if(rf) rf.onclick=()=>fachQuizStart(fachId, last, 'flagged', { customPool: flaggedPool, label: 'Gemerkt' });
   const fe=document.getElementById('fqFehler'); if(fe) fe.onclick=()=>fachQuizStart(fachId,null,'fehler');
-  document.getElementById('fqPick').onclick=()=>fachQuizIntro(fachId,last);
-  document.getElementById('fqBack').onclick=()=>go(fachRoute(window.FachForm.findFach(fachId),'hub'));
+  const pk=document.getElementById('fqPick'); if(pk) pk.onclick=()=>fachQuizIntro(fachId,last);
+  document.getElementById('fqBack').onclick=()=>{ if(isQuick) go('#/'); else go(fachRoute(window.FachForm.findFach(fachId),'hub')); };
 }
 
 
@@ -8388,6 +8529,7 @@ function renderBfk1Theme(themeId){
   if(sub) sub.textContent="BfK-1"+(lfLabel?" · "+lfLabel:"")+(grp&&grp.titleVi?" · "+grp.titleVi:"");
   if(!body) return;
   window._bfk1CurTheme=themeId;
+  saveLastStudy(item.name, "BfK-1"+(lfLabel?" · "+lfLabel:""), "#/bfk/1/theme/"+themeId);
   _bfk1ThemeTab="theory";
 
   // LS öffnen = mindestens "gesehen" (kein Downgrade bei "Lernt"/"Gelernt").
@@ -8747,6 +8889,129 @@ function go(hash){
   if(hash && !hash.startsWith("#")){ location.href=hash; return; }
   if(location.hash===hash){ router(); } else { location.hash=hash; }
 }
+function saveLastStudy(title, sub, route){
+  if(!title || !route) return;
+  try{
+    localStorage.setItem('azubi_last_study', JSON.stringify({ title: String(title), sub: String(sub||''), route: String(route), ts: Date.now() }));
+  }catch(_){}
+}
+function clearLastStudy(e){
+  if(e) e.stopPropagation();
+  try{ localStorage.removeItem('azubi_last_study'); }catch(_){}
+  const slot=document.getElementById('continueLearningSlot');
+  if(slot) slot.innerHTML='';
+}
+function renderContinueCard(){
+  const slot=document.getElementById('continueLearningSlot');
+  if(!slot) return;
+  let data=null;
+  try{ data=JSON.parse(localStorage.getItem('azubi_last_study')||'null'); }catch(_){}
+  if(!data || !data.title || !data.route){ slot.innerHTML=''; return; }
+  const escStr=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  slot.innerHTML='<div class="continue-card" role="button" tabindex="0" onclick="go(\''+escStr(data.route)+'\')">'
+    + '<div class="continue-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>'
+    + '<div class="continue-body">'
+      + '<div class="continue-kicker">Weiterlernen · Tiếp tục học</div>'
+      + '<div class="continue-title">'+escStr(data.title)+'</div>'
+      + (data.sub ? '<div class="continue-sub">'+escStr(data.sub)+'</div>' : '')
+    + '</div>'
+    + '<div class="continue-actions">'
+      + '<span class="continue-go">Weiter →</span>'
+      + '<button type="button" class="continue-close" aria-label="Schließen" onclick="clearLastStudy(event)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>'
+    + '</div>'
+  + '</div>';
+}
+const BACKUP_EXACT_KEYS = new Set([
+  'fach_fehlerbuch_v1', 'fach_exam_log_v1', 'exam_history', 'bfk_quiz_wrong',
+  'zw_fc_mastered', 'zw_fc_learning', 'azubi_last_study', 'azubi_streak',
+  'azubi_last_active', 'azubi_track', 'azubi_font_size', 'azubi_theme',
+  'azubi_recent_searches', 'pruefungsplan_w2026_done_v2', 'pruefungsplan_timer_v1',
+  'lid-hist-v1', 'lid-land', 'fuhrerschein_view_mode', 'fuhrerschein_dark',
+  'tb_today_date', 'tb_today_sec'
+]);
+const BACKUP_PREFIXES = ['learn_vocab_drill_', 'learn_grammar_mastery_', 'dt:passed:', 'tb_done_'];
+function isStudyBackupKey(k){
+  if(!k || typeof k !== 'string') return false;
+  if(BACKUP_EXACT_KEYS.has(k)) return true;
+  if(/^[a-z0-9_-]+_progress$/.test(k)) return true;
+  return BACKUP_PREFIXES.some(p => k.indexOf(p) === 0);
+}
+function exportProgressBackup(){
+  const keys={};
+  try{
+    for(let i=0;i<localStorage.length;i++){
+      const k=localStorage.key(i);
+      if(isStudyBackupKey(k)) keys[k]=localStorage.getItem(k);
+    }
+  }catch(_){}
+  const count=Object.keys(keys).length;
+  if(!count){
+    if(window.toast) toast('Chưa có dữ liệu tiến độ nào để sao lưu.','info');
+    return;
+  }
+  const player=(window.LearnDB && LearnDB.getPlayer && LearnDB.getPlayer()) || '';
+  const payload={ app:'AzubiHub', version:1, exportedAt:new Date().toISOString(), player, count, keys };
+  const blob=new Blob([JSON.stringify(payload, null, 2)], { type:'application/json' });
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download='azubihub-backup-' + payload.exportedAt.slice(0,10) + '.json';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(()=>URL.revokeObjectURL(url), 1500);
+  if(window.toast) toast('Đã xuất file sao lưu (' + count + ' mục).','ok');
+}
+function triggerBackupImport(){
+  const inp=document.getElementById('backupImportFile');
+  if(!inp) return;
+  inp.value='';
+  inp.click();
+}
+function handleBackupFileSelect(inp){
+  const file=inp && inp.files && inp.files[0];
+  if(!file) return;
+  if(file.size > 2*1024*1024){
+    if(window.toast) toast('File quá lớn (> 2 MB). Vui lòng chọn đúng file backup JSON.','bad');
+    inp.value=''; return;
+  }
+  const reader=new FileReader();
+  reader.onload=()=>{
+    try{
+      const parsed=JSON.parse(String(reader.result||''));
+      if(!parsed || parsed.app!=='AzubiHub' || !parsed.keys || typeof parsed.keys!=='object' || Array.isArray(parsed.keys)){
+        throw new Error('Định dạng file không thuộc AzubiHub Backup');
+      }
+      const entries=Object.entries(parsed.keys).filter(([k,v])=>isStudyBackupKey(k) && typeof v==='string' && v.length<=250000);
+      if(!entries.length){
+        if(window.toast) toast('File không có dữ liệu tiến độ hợp lệ.','info');
+        inp.value=''; return;
+      }
+      const dateStr=typeof parsed.exportedAt==='string' ? parsed.exportedAt.slice(0,10) : '—';
+      const who=parsed.player ? ' · Tài khoản: ' + parsed.player : '';
+      if(!confirm('Khôi phục ' + entries.length + ' mục tiến độ từ bản sao lưu ngày ' + dateStr + who + '?\n(Dữ liệu học tập trên máy hiện tại sẽ được cập nhật.)')){
+        inp.value=''; return;
+      }
+      entries.forEach(([k,v])=>{ try{ localStorage.setItem(k, v); }catch(_){} });
+      inp.value='';
+      if(window.toast) toast('Đã khôi phục ' + entries.length + ' mục · Đang tải lại…','ok');
+      setTimeout(()=>location.reload(), 900);
+    }catch(e){
+      inp.value='';
+      if(window.toast) toast('Không thể đọc file backup: ' + (e.message||'JSON không hợp lệ'), 'bad');
+    }
+  };
+  reader.onerror=()=>{ inp.value=''; if(window.toast) toast('Lỗi khi đọc file.','bad'); };
+  reader.readAsText(file, 'UTF-8');
+}
+function replaceHashAndRoute(target){
+  if(history && history.replaceState){
+    history.replaceState(null, '', target);
+    router();
+  } else {
+    location.replace(target);
+  }
+}
 function router(){
   let hash=location.hash||"#/";
   // ===== KLASSENARBEIT ACCESS CONTROL GUARD =====
@@ -8767,7 +9032,7 @@ function router(){
         const pEl = document.getElementById("kaLockPlayer");
         if (pEl) pEl.textContent = curPlayer;
         const cb = document.getElementById("crumbs");
-        if (cb) cb.innerHTML = '<a onclick="go(\'#/\')">Start</a><span class="sep">›</span><span>Klassenarbeit (Gesperrt)</span>';
+        if (cb) cb.innerHTML = '<a onclick="go(\'#/\')">Fächer</a><span class="sep">›</span><span>Klassenarbeit (Gesperrt)</span>';
         setBottomNav(hash);
         window.scrollTo({top:0, behavior:"smooth"});
         return;
@@ -8775,6 +9040,13 @@ function router(){
     }
   }
 
+
+  // Quick Drill (10 Fragen gemischt): #/quick-drill
+  if(hash==="#/quick-drill"){
+    startQuickDrill();
+    restoreOrScroll(hash, true);
+    return;
+  }
 
   // GK Freitext Übungen: #/exam/gk/uebung[/:setId]
   if(hash.startsWith("#/exam/gk/uebung")){
@@ -8784,7 +9056,7 @@ function router(){
     const cb=document.getElementById("crumbs");
     const parts=hash.replace("#/","").split("/").filter(Boolean);
     const setId=parts[3]||null;
-    if(cb) cb.innerHTML='<a onclick="go(\'#/\')">Start</a><span class="sep">›</span><a onclick="go(\'#/on-thi\')">Prüfungstraining</a><span class="sep">›</span><a onclick="go(\'#/exam/gk\')">GK</a><span class="sep">›</span><span>Freitext FS1</span>';
+    if(cb) cb.innerHTML='<a onclick="go(\'#/\')">Fächer</a><span class="sep">›</span><a onclick="go(\'#/on-thi\')">Prüfungstraining</a><span class="sep">›</span><a onclick="go(\'#/exam/gk\')">GK</a><span class="sep">›</span><span>Freitext FS1</span>';
     renderGkUebung(setId);
     restoreOrScroll(hash, true); return;
   }
@@ -8795,11 +9067,11 @@ function router(){
     const parts=hash.replace("#/fach/","").split("/").filter(Boolean);
     const fachId=parts[0];
     const fach=window.FachForm && window.FachForm.findFach(fachId);
-    // legacy shortcuts
-    if(fach && fach.id==="bfk1" && parts.length===1){ location.hash="#/bfk/1"; return; }
-    if(fach && fach.id==="bfk1" && parts[1]==="quiz"){ location.hash="#/bfk/1/quiz"; return; }
-    if(fach && fach.id==="bfk1" && parts[1]==="theme" && parts[2]){ location.hash="#/bfk/1/theme/"+parts[2]; return; }
-    if(fach && fach.id==="bfk2" && parts.length===1){ location.hash="#/bfk/2"; return; }
+    // legacy shortcuts (replaceState tránh tạo history entry dư gây kẹt nút Back)
+    if(fach && fach.id==="bfk1" && parts.length===1){ replaceHashAndRoute("#/bfk/1"); return; }
+    if(fach && fach.id==="bfk1" && parts[1]==="quiz"){ replaceHashAndRoute("#/bfk/1/quiz"); return; }
+    if(fach && fach.id==="bfk1" && parts[1]==="theme" && parts[2]){ replaceHashAndRoute("#/bfk/1/theme/"+parts[2]); return; }
+    if(fach && fach.id==="bfk2" && parts.length===1){ replaceHashAndRoute("#/bfk/2"); return; }
     if(fach && fach.external && parts.length===1){ location.href=fach.external; return; }
 
     document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
@@ -8807,14 +9079,14 @@ function router(){
     if(parts[1]==="theme" && parts[2]){
       const view=document.getElementById("v-fach-theme");
       if(view) view.classList.add("active");
-      if(cb) cb.innerHTML='<a onclick="go(\'#/\')">Start</a><span class="sep">›</span><a onclick="go(\'#/fach/'+fachId+'\')">'+(fach?fach.code:fachId)+'</a><span class="sep">›</span><span>Thema</span>';
+      if(cb) cb.innerHTML='<a onclick="go(\'#/\')">Fächer</a><span class="sep">›</span><a onclick="go(\'#/fach/'+fachId+'\')">'+(fach?fach.code:fachId)+'</a><span class="sep">›</span><span>Thema</span>';
       renderFachTheme(fachId, parts[2]);
       restoreOrScroll(hash, true); return;
     }
     if(parts[1]==="quiz"){
       const view=document.getElementById("v-fach-quiz");
       if(view) view.classList.add("active");
-      if(cb) cb.innerHTML='<a onclick="go(\'#/\')">Start</a><span class="sep">›</span><a onclick="go(\'#/fach/'+fachId+'\')">'+(fach?fach.code:fachId)+'</a><span class="sep">›</span><span>Quiz</span>';
+      if(cb) cb.innerHTML='<a onclick="go(\'#/\')">Fächer</a><span class="sep">›</span><a onclick="go(\'#/fach/'+fachId+'\')">'+(fach?fach.code:fachId)+'</a><span class="sep">›</span><span>Quiz</span>';
       const fqBackEl=document.getElementById('fachQuizBack');
       if(fqBackEl){ fqBackEl.onclick=()=>go(fachHubRoute(fachId)); fqBackEl.textContent='← '+(fach?fach.code:'Fach'); }
       if(window._fachQPending && window._fachQPending.fachId===fachId){
@@ -8826,21 +9098,21 @@ function router(){
     if(parts[1]==="training"){
       const view=document.getElementById("v-fach-training");
       if(view) view.classList.add("active");
-      if(cb) cb.innerHTML='<a onclick="go(\'#/\')">Start</a><span class="sep">›</span><a onclick="go(\''+fachHubRoute(fachId)+'\')">'+(fach?fach.code:fachId)+'</a><span class="sep">›</span><span>Training</span>';
+      if(cb) cb.innerHTML='<a onclick="go(\'#/\')">Fächer</a><span class="sep">›</span><a onclick="go(\''+fachHubRoute(fachId)+'\')">'+(fach?fach.code:fachId)+'</a><span class="sep">›</span><span>Training</span>';
       renderTraining(fachId);
       restoreOrScroll(hash, true); return;
     }
     if(parts[1]==="pruefungen"){
       const view=document.getElementById("v-fach-pruefungen");
       if(view) view.classList.add("active");
-      if(cb) cb.innerHTML='<a onclick="go(\'#/\')">Start</a><span class="sep">›</span><a onclick="go(\''+fachHubRoute(fachId)+'\')">'+(fach?fach.code:fachId)+'</a><span class="sep">›</span><span>Prüfungen</span>';
+      if(cb) cb.innerHTML='<a onclick="go(\'#/\')">Fächer</a><span class="sep">›</span><a onclick="go(\''+fachHubRoute(fachId)+'\')">'+(fach?fach.code:fachId)+'</a><span class="sep">›</span><span>Prüfungen</span>';
       renderPruefungen(fachId);
       restoreOrScroll(hash, true); return;
     }
     // hub
     const view=document.getElementById("v-fach");
     if(view) view.classList.add("active");
-    if(cb) cb.innerHTML='<a onclick="go(\'#/\')">Start</a><span class="sep">›</span><span>'+(fach?fach.code:fachId)+'</span>';
+    if(cb) cb.innerHTML='<a onclick="go(\'#/\')">Fächer</a><span class="sep">›</span><span>'+(fach?fach.code:fachId)+'</span>';
     renderFachHub(fachId);
     restoreOrScroll(hash, false); return;
   }
@@ -8862,12 +9134,12 @@ function router(){
 
   if (hash.startsWith('#/deutsch')) {
     // Mọi route #/deutsch (kể cả cấp độ/unit/lektion cũ) → về launcher hub
-    if (hash !== '#/deutsch') { location.hash = '#/deutsch'; return; }
+    if (hash !== '#/deutsch') { replaceHashAndRoute('#/deutsch'); return; }
     document.querySelectorAll('.view').forEach(function (v) { v.classList.remove('active'); });
     var dv = document.getElementById('v-deutsch');
     if (dv) dv.classList.add('active');
     let cb = document.getElementById('crumbs');
-    if (cb) cb.innerHTML = '<a onclick="go(\'#/\')">Start</a><span class="sep">›</span><span>Deutsch A1–C1</span>';
+    if (cb) cb.innerHTML = '<a onclick="go(\'#/\')">Fächer</a><span class="sep">›</span><span>Deutsch A1–C1</span>';
     renderDeutschHub();
     restoreOrScroll(hash, false);
     return;
@@ -8879,7 +9151,7 @@ function router(){
   }
 
   let r=ROUTES[hash];
-  if(r && r.redirect){ location.hash=r.redirect; return; }
+  if(r && r.redirect){ replaceHashAndRoute(r.redirect); return; }
   r=r||ROUTES["#/"];
   document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
   const view=document.getElementById(r.view);
@@ -8918,6 +9190,7 @@ function router(){
     if(active && window.enableVocabOn) enableVocabOn(active);
     else if(window.enableVocabOn) enableVocabOn(document.body);
   }catch(e){}
+  if(r.view==="v-home") renderContinueCard();
   restoreOrScroll(hash, false);
 }
 window.addEventListener("hashchange",router);
@@ -10336,6 +10609,7 @@ function hideTrackGate() {
   try { sessionStorage.setItem('azubi_track_session_picked', '1'); } catch (_) {}
 }
 var _welcomeTimer = null;
+var _welcomeFromModal = false;
 var _helloIndex = 0;
 var _helloTimer = null;
 var HELLO_LANGUAGES = [
@@ -10390,6 +10664,7 @@ function updateWelcomeWaLink() {
 }
 
 function showWelcomeGate() {
+  _welcomeFromModal = false;
   var g = document.getElementById('welcomeGate');
   if (!g) { showTrackGate(); return; }
   updateWelcomeWaLink();
@@ -10400,14 +10675,14 @@ function showWelcomeGate() {
     fill.style.transition = 'none';
     fill.style.width = '0%';
     setTimeout(function() {
-      fill.style.transition = 'width 7s linear';
+      fill.style.transition = 'width 4s linear';
       fill.style.width = '100%';
     }, 50);
   }
   clearTimeout(_welcomeTimer);
   _welcomeTimer = setTimeout(function() {
     hideWelcomeGate();
-  }, 7000);
+  }, 4000);
 }
 
 function hideWelcomeGate() {
@@ -10416,10 +10691,21 @@ function hideWelcomeGate() {
   var g = document.getElementById('welcomeGate');
   if (g) g.classList.add('hidden');
   try { localStorage.setItem('azubihub_welcomed', '1'); } catch (_) {}
-  showTrackGate();
+  if (!_welcomeFromModal) {
+    var savedTrack = '';
+    try { savedTrack = localStorage.getItem('azubi_track') || ''; } catch (_) {}
+    if (!savedTrack) {
+      showTrackGate();
+    } else {
+      hideTrackGate();
+      if (typeof router === 'function') router();
+    }
+  }
+  _welcomeFromModal = false;
 }
 
 window.showWelcomeModal = function() {
+  _welcomeFromModal = true;
   var g = document.getElementById('welcomeGate');
   if (!g) return;
   updateWelcomeWaLink();
@@ -10604,17 +10890,25 @@ function unlockApp(player, opts){
   const lbl=(window.Access&&Access.tierLabel)?Access.tierLabel(t):'Basic';
   toast('Willkommen, '+player+'! ('+lbl+')','ok');
 
-  // Đăng nhập xong: Nếu URL đã trỏ thẳng tới một bài học/route cụ thể thì mở thẳng bài đó, không chặn bằng TrackGate
-  var hasDeepRoute = location.hash && location.hash !== '#' && location.hash !== '#/' && !/[?&]choose=1\b/.test(location.search);
+  // Đăng nhập xong: Nếu URL đã trỏ thẳng tới một bài học/route cụ thể hoặc đã từng chọn Lernbereich thì mở thẳng, không chặn bằng TrackGate
+  var forceChoose = /[?&]choose=1\b/.test(location.search);
+  var hasDeepRoute = location.hash && location.hash !== '#' && location.hash !== '#/' && !forceChoose;
   var hasWelcomed = false;
-  try { hasWelcomed = localStorage.getItem('azubihub_welcomed') === '1'; } catch (_) {}
+  var savedTrack = '';
+  try {
+    hasWelcomed = localStorage.getItem('azubihub_welcomed') === '1';
+    savedTrack = localStorage.getItem('azubi_track') || '';
+  } catch (_) {}
   if (hasDeepRoute) {
     hideTrackGate();
     router();
   } else if (!hasWelcomed) {
     showWelcomeGate();
-  } else {
+  } else if (!savedTrack || forceChoose) {
     showTrackGate();
+  } else {
+    hideTrackGate();
+    router();
   }
 
   // After login, gently remind to install PWA (if available)
@@ -10822,6 +11116,14 @@ function openAccountSheet(player){
     +'<a class="btn ghost" href="https://wa.me/4917676640277?text=' + encodeURIComponent('Chào Linh, mình là ' + (player || 'học viên Azubi') + ' (Nickname: ' + (player || 'chưa đặt') + '), mình có góp ý / bổ sung cho AzubiHub: ') + '" target="_blank" rel="noopener" style="width:100%;text-align:center;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:6px">'
     +'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>'
     +'<span>Góp ý qua WhatsApp' + (player ? ' (' + escHtml(player) + ')' : '') + ': 0176 7664 0277</span></a>'
+    +'<div class="acct-backup-row">'
+      +'<button type="button" class="btn ghost" onclick="exportProgressBackup()">'
+        +'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>'
+        +'<span>Export (.json)</span></button>'
+      +'<button type="button" class="btn ghost" onclick="triggerBackupImport()">'
+        +'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>'
+        +'<span>Import (.json)</span></button>'
+    +'</div>'
     +'<button type="button" class="btn ghost" onclick="showWelcomeModal();document.getElementById(\'acctSheet\').classList.remove(\'show\')" style="width:100%;margin-bottom:8px">Về dự án AzubiHub (Community)</button>'
     +'<button type="button" class="btn ghost" id="acctSwitch" style="width:100%">Nickname wechseln</button>'
     +'</div>';
