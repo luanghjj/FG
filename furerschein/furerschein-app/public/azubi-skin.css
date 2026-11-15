@@ -1,90 +1,293 @@
-/* AzubiHub skin cho app Führerschein
-   Ánh xạ bảng màu Tailwind sang giao diện "Statute" của AzubiHub (parchment · wax · brass · slate)
-   Chỉ ghi đè biến màu/font, không đụng logic. Nguồn palette: css/statute-theme.css */
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+/* ============================================================
+   AzubiHub · Führerschein Theme (LiD Parchment & Brass Standard)
+   Đồng bộ 100% giao diện theo chuẩn Leben in Deutschland:
+   (parchment · ivory paper · amber wax · brass hairline borders)
+   ============================================================ */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
 
-:root {
-  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-  --font-head: "Playfair Display", Georgia, serif;
+:root, html, body, #root {
+  --bg: #E2D8C2;
+  --surface: #FDFBF6;
+  --ink: #0F172A;
+  --muted: #5A5344;
+  --line: #B5A27C;
+  --accent: #9A4607;
+  --accent-soft: #F7E6CC;
+  --accent-2: #D97706;
+  --warn: #B45309;
+  --warnbg: #FDF3E3;
+  --ok: #3f5c39;
+  --okbg: #eef3ea;
+  --bad: #9A4607;
 
-  --color-white: #FFFFFF;
-  --color-black: #0F172A;
+  --color-white: #FDFBF6 !important;
+  --color-black: #0F172A !important;
 
-  /* gray → giấy da / mực */
-  --color-gray-50: #FBF9F5;
-  --color-gray-100: #EAE3D0;
-  --color-gray-200: #D9CFB6;
-  --color-gray-300: #DDD3C2;
-  --color-gray-400: #8F8670;
-  --color-gray-500: #5E6A78;
-  --color-gray-600: #475569;
-  --color-gray-700: #343D4A;
-  --color-gray-800: #26231E;
-  --color-gray-900: #1A1916;
-  --color-gray-950: #12110F;
+  --color-gray-50: #E2D8C2 !important;
+  --color-gray-100: #EAE3D0 !important;
+  --color-gray-200: #D9CFB6 !important;
+  --color-gray-300: #B5A27C !important;
+  --color-gray-400: #8F8670 !important;
+  --color-gray-500: #5A5344 !important;
+  --color-gray-600: #475569 !important;
+  --color-gray-700: #343D4A !important;
+  --color-gray-800: #0F172A !important;
+  --color-gray-900: #0F172A !important;
 
-  /* green / emerald → xanh "ok" dịu của AzubiHub */
-  --color-green-50: #eef3ea;  --color-green-100: #dde8d6; --color-green-200: #c3d6b9;
-  --color-green-300: #9db98f; --color-green-400: #7a9a6c; --color-green-500: #5f8052;
-  --color-green-600: #4d6c45; --color-green-700: #3f5c39; --color-green-800: #324a2e;
-  --color-green-900: #263a24; --color-green-950: #172316;
-  --color-emerald-50: #eef3ea;  --color-emerald-100: #dde8d6; --color-emerald-200: #c3d6b9;
-  --color-emerald-300: #9db98f; --color-emerald-400: #7a9a6c; --color-emerald-500: #5f8052;
-  --color-emerald-600: #4d6c45; --color-emerald-700: #3f5c39; --color-emerald-800: #324a2e;
-  --color-emerald-900: #263a24; --color-emerald-950: #172316;
-
-  /* red / rose → sáp đỏ */
-  --color-red-50: #F7E9DF;  --color-red-100: #F3E0D5; --color-red-200: #E6C3B5;
-  --color-red-300: #D39A88; --color-red-400: #B86B58; --color-red-500: #BE123C;
-  --color-red-600: #B45309; --color-red-700: #9F1239; --color-red-800: #571F1F;
-  --color-red-900: #451919; --color-red-950: #2a0f0f;
-  --color-rose-50: #F7E9DF; --color-rose-100: #F3E0D5; --color-rose-500: #BE123C;
-  --color-rose-600: #B45309; --color-rose-700: #9F1239;
-
-  /* blue / indigo / purple → slate */
-  --color-blue-50: #EEF0F3;  --color-blue-100: #DDE2E8; --color-blue-200: #BFC8D3;
-  --color-blue-300: #98A6B6; --color-blue-400: #71839A; --color-blue-500: #5A6B80;
-  --color-blue-600: #475569; --color-blue-700: #3A4757; --color-blue-800: #2E3945;
-  --color-blue-900: #232B34; --color-blue-950: #161B21;
-  --color-indigo-500: #5A6B80; --color-indigo-600: #475569;
-  --color-purple-50: #EEF0F3; --color-purple-100: #DDE2E8; --color-purple-500: #5A6B80;
-  --color-purple-600: #475569; --color-purple-700: #3A4757;
-
-  /* amber / orange / yellow → đồng thau */
-  --color-amber-50: #F8F1E0;  --color-amber-100: #F0E2BF; --color-amber-200: #E2CC96;
-  --color-amber-300: #F59E0B; --color-amber-400: #BE9A52; --color-amber-500: #D97706;
-  --color-amber-600: #876833; --color-amber-700: #6F5429; --color-amber-800: #5A4422;
-  --color-amber-900: #46351B; --color-amber-950: #2D2211;
-  --color-orange-50: #F8F1E0;  --color-orange-100: #F0E2BF; --color-orange-200: #E2CC96;
-  --color-orange-300: #F59E0B; --color-orange-400: #BE9A52; --color-orange-500: #D97706;
-  --color-orange-600: #876833; --color-orange-700: #6F5429; --color-orange-800: #5A4422;
-  --color-orange-900: #46351B; --color-orange-950: #2D2211;
-  --color-yellow-50: #F8F1E0;  --color-yellow-100: #F0E2BF; --color-yellow-200: #E2CC96;
-  --color-yellow-300: #F59E0B; --color-yellow-400: #BE9A52; --color-yellow-500: #D97706;
-  --color-yellow-600: #876833;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif !important;
+  --font-head: "Playfair Display", Georgia, serif !important;
 }
 
 body {
-  font-family: var(--font-sans);
-  background: #FBF9F5;
-  color: #0F172A;
+  background-color: #E2D8C2 !important;
+  color: #0F172A !important;
+  font-family: var(--font-sans) !important;
+  min-height: 100vh;
 }
-html.dark body { background: #1A1916; color: #EAE3D0; }
 
-h1, h2, h3 { font-family: var(--font-head); letter-spacing: -.005em; }
-
-/* Header giống thanh AzubiHub: sáp đỏ + viền đồng thau */
-header.sticky {
-  background: #B45309 !important;
+/* ===== 1. HEADER: WARM IVORY PARCHMENT (TÁCH BIỆT VỚI NỀN #E2D8C2) ===== */
+header,
+header.bg-gradient-to-r,
+header.from-green-700,
+header.via-green-600,
+header.to-emerald-700 {
+  background: rgba(246, 240, 226, 0.96) !important;
   background-image: none !important;
-  border-bottom: 2px solid #D97706;
-  box-shadow: 0 2px 8px rgba(27, 31, 42, .18) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-bottom: 1.5px solid #B5A27C !important;
+  box-shadow: 0 2px 10px rgba(27, 31, 42, 0.05) !important;
+  color: #0F172A !important;
 }
-html.dark header.sticky { background: #3a2412 !important; border-bottom-color: #F59E0B; }
-header.sticky .text-green-100 { color: #E8DCC0 !important; }
 
-/* Nút CTA dạng gradient xanh → sáp đỏ như nút chính của AzubiHub */
-.bg-gradient-to-r.from-green-600,
-.bg-gradient-to-r.from-green-700 {
+header h1 {
+  font-family: var(--font-head) !important;
+  font-weight: 700 !important;
+  color: #0F172A !important;
+  letter-spacing: -.01em !important;
+}
+
+header p, header .text-green-100 {
+  color: #5A5344 !important;
+}
+
+/* Logo icon box */
+header .w-8.h-8, header .w-10.h-10, header .bg-white\/20:has(svg) {
+  background: #F7E6CC !important;
+  border: 1.5px solid #B5A27C !important;
+}
+header .w-8.h-8 svg, header .w-10.h-10 svg, header .bg-white\/20 svg {
+  color: #9A4607 !important;
+}
+
+/* Header action buttons: Nickname, TV, Back */
+header button,
+header a[title="Quay lại AzubiHub"] {
+  border: 1.5px solid #B5A27C !important;
+  background: #FDFBF6 !important;
+  color: #0F172A !important;
+  font-weight: 600 !important;
+  border-radius: 999px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04) !important;
+  transition: all .15s ease !important;
+  text-decoration: none !important;
+}
+
+header button:hover,
+header a[title="Quay lại AzubiHub"]:hover {
+  background: #F7E6CC !important;
+  border-color: #9A4607 !important;
+  color: #9A4607 !important;
+  transform: translateY(-1px) !important;
+}
+
+header button svg,
+header a[title="Quay lại AzubiHub"] svg {
+  color: #9A4607 !important;
+}
+
+/* ===== 2. SUB-NAV TABS & MOBILE DOCK: CRISP IVORY (#FDFBF6) TÁCH BIỆT NỀN #E2D8C2 ===== */
+nav.sticky,
+.border-b.border-green-800\/20,
+div.border-b:has(> div > div > button),
+nav:has(button) {
+  background: rgba(253, 251, 246, 0.97) !important;
+  border-bottom: 1.5px solid #B5A27C !important;
+  box-shadow: 0 2px 10px rgba(27, 31, 42, 0.05) !important;
+}
+
+nav.fixed.bottom-0:has(button) {
+  background: rgba(253, 251, 246, 0.98) !important;
+  border-top: 1.5px solid #B5A27C !important;
+  border-bottom: none !important;
+  box-shadow: 0 -6px 24px rgba(27, 31, 42, 0.12) !important;
+}
+
+/* Active tab: Amber wax pill + bottom line rõ ràng */
+nav button.border-green-600,
+nav button.text-green-700,
+nav button.font-extrabold,
+nav button.text-green-600 {
+  color: #9A4607 !important;
+  background-color: #F7E6CC !important;
+  border-color: #9A4607 !important;
+  font-weight: 700 !important;
+}
+nav button.text-green-700 svg,
+nav button.text-green-600 svg,
+nav button svg.text-green-600 {
+  color: #9A4607 !important;
+}
+nav button span.bg-green-600 {
+  background-color: #9A4607 !important;
+}
+
+/* Inactive tabs */
+nav button:not(.text-green-700):not(.text-green-600):not(.border-green-600) {
+  color: #5A5344 !important;
+}
+nav button:hover {
+  color: #0F172A !important;
+  background-color: rgba(247, 230, 204, 0.45) !important;
+}
+
+/* ===== 3. HERO BANNER: CHUYỂN TỪ XANH SANG CERTIFICATE CARD CHUẨN LiD ===== */
+.bg-gradient-to-br.from-green-700,
+.bg-gradient-to-br.from-green-600,
+div.rounded-3xl:has(h1) {
+  background-image: none !important;
+  background-color: #FDFBF6 !important;
+  background: color-mix(in srgb, #FDFBF6 85%, #E2D8C2) !important;
+  border: 1.5px solid #B5A27C !important;
+  border-radius: 20px !important;
+  box-shadow: 0 4px 20px -3px rgba(27, 28, 26, 0.08) !important;
+  color: #0F172A !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Vạch sáp hổ phách 4px bên trái chuẩn LiD hero */
+.bg-gradient-to-br.from-green-700::before,
+div.rounded-3xl:has(h1)::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 4px !important;
+  background: #9A4607 !important;
+  border-radius: 4px 0 0 4px !important;
+}
+
+/* Hero Title */
+.bg-gradient-to-br.from-green-700 h1,
+div.rounded-3xl:has(h1) h1 {
+  font-family: var(--font-head) !important;
+  color: #0F172A !important;
+  font-weight: 700 !important;
+}
+
+/* Hero Description */
+.bg-gradient-to-br.from-green-700 p.text-green-100,
+div.rounded-3xl:has(h1) p.text-green-100,
+div.rounded-3xl:has(h1) p {
+  color: #5A5344 !important;
+}
+
+/* Hero Kicker Badge */
+.bg-gradient-to-br.from-green-700 .bg-white\/20,
+div.rounded-3xl:has(h1) .bg-white\/20 {
+  background: #F7E6CC !important;
+  border: 1px solid #B5A27C !important;
+  color: #9A4607 !important;
+  font-weight: 700 !important;
+}
+
+/* Hero Action Buttons */
+.bg-gradient-to-br.from-green-700 button,
+div.rounded-3xl:has(h1) button {
+  border-radius: 999px !important;
+  font-weight: 700 !important;
+}
+
+.bg-gradient-to-br.from-green-700 button:nth-child(1),
+div.rounded-3xl:has(h1) button:nth-child(1) {
   background-image: linear-gradient(135deg, #C2570C, #B45309) !important;
+  background-color: #B45309 !important;
+  border: 1px solid #8A3705 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 2px 8px rgba(154, 70, 7, 0.25) !important;
+}
+
+.bg-gradient-to-br.from-green-700 button:nth-child(2),
+div.rounded-3xl:has(h1) button:nth-child(2) {
+  background: #FDFBF6 !important;
+  color: #0F172A !important;
+  border: 1.5px solid #B5A27C !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04) !important;
+}
+
+.bg-gradient-to-br.from-green-700 button:nth-child(3),
+div.rounded-3xl:has(h1) button:nth-child(3),
+.bg-gradient-to-br.from-green-700 button:nth-child(4),
+div.rounded-3xl:has(h1) button:nth-child(4) {
+  background: #FDF3E3 !important;
+  color: #9A4607 !important;
+  border: 1.5px solid #B5A27C !important;
+}
+
+/* ===== 4. CARDS & SECTIONS: GIẤY NGÀ & VIỀN ĐỒNG THAU ===== */
+.bg-white {
+  background-color: #FDFBF6 !important;
+  border: 1.5px solid #B5A27C !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 18px -2px rgba(27, 28, 26, 0.06) !important;
+}
+
+.border-gray-100, .border-gray-200, .border-gray-300 {
+  border-color: #B5A27C !important;
+}
+
+/* Card titles */
+h1, h2, h3, h4 {
+  font-family: var(--font-head) !important;
+  letter-spacing: -.01em !important;
+  color: #0F172A !important;
+}
+
+/* Stat Cards & Category Badges */
+.bg-green-100 {
+  background-color: #eef3ea !important;
+  color: #3f5c39 !important;
+  border: 1px solid #B5A27C !important;
+}
+
+.bg-amber-100 {
+  background-color: #F7E6CC !important;
+  color: #9A4607 !important;
+  border: 1px solid #B5A27C !important;
+}
+
+/* Category cards: Grundstoff (G) & Zusatzstoff (B) badges */
+span.rounded-full:has(> svg),
+div.rounded-full:has(> svg),
+.text-teal-700, .bg-teal-100,
+.text-blue-700, .bg-blue-100 {
+  background-color: #F7E6CC !important;
+  color: #9A4607 !important;
+  border: 1px solid #B5A27C !important;
+}
+
+/* "Xem tất cả →" links */
+a.text-green-700,
+a.text-blue-700,
+button.text-green-700,
+.text-green-700 {
+  color: #9A4607 !important;
+  font-weight: 600 !important;
+}
+
+/* Progress bar */
+.bg-gray-100 {
+  background-color: #EAE3D0 !important;
 }

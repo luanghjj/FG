@@ -1,4 +1,4 @@
-import { BookOpen, GraduationCap, AlertTriangle, RotateCcw, Search, CheckCircle2, Star, Target, Award, ArrowRight, Sparkles, Trophy } from 'lucide-react'
+import { BookOpen, GraduationCap, AlertTriangle, RotateCcw, Search, CheckCircle2, Star, Target, Award, ArrowRight, Sparkles, Trophy, Compass } from 'lucide-react'
 
 export default function Dashboard({ questions, progress, onNavigate }) {
   const answered = progress.answered || {}
@@ -76,6 +76,13 @@ export default function Dashboard({ questions, progress, onNavigate }) {
             >
               <AlertTriangle className="w-4 h-4 text-yellow-300" />
               138 câu điểm liệt (5P)
+            </button>
+            <button
+              onClick={() => onNavigate('practical')}
+              className="px-5 py-2.5 rounded-xl bg-white/95 hover:bg-amber-50 text-amber-900 font-bold text-sm shadow-md transition-all flex items-center gap-2 cursor-pointer active:scale-95"
+            >
+              <Compass className="w-4 h-4 text-amber-800" />
+              41 hiệu lệnh thực hành
             </button>
           </div>
         </div>
@@ -232,7 +239,7 @@ export default function Dashboard({ questions, progress, onNavigate }) {
         <h3 className="text-base font-bold text-gray-900 mb-4 flex items-center gap-2">
           <Target className="w-4 h-4 text-green-600" /> Các chế độ ôn luyện
         </h3>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
           <button
             onClick={() => onNavigate('exam')}
             className="p-4 rounded-xl bg-gray-50 hover:bg-green-50 border border-gray-100 hover:border-green-200 transition-all text-left group cursor-pointer"
@@ -240,6 +247,15 @@ export default function Dashboard({ questions, progress, onNavigate }) {
             <GraduationCap className="w-6 h-6 text-green-600 mb-2 group-hover:scale-110 transition-transform" />
             <p className="text-sm font-bold text-gray-800 group-hover:text-green-800">Thi thử 30 câu</p>
             <p className="text-xs text-gray-500 mt-0.5">Chuẩn thời gian & điểm</p>
+          </button>
+
+          <button
+            onClick={() => onNavigate('practical')}
+            className="p-4 rounded-xl bg-gray-50 hover:bg-amber-50 border border-gray-100 hover:border-amber-200 transition-all text-left group cursor-pointer"
+          >
+            <Compass className="w-6 h-6 text-amber-700 mb-2 group-hover:scale-110 transition-transform" />
+            <p className="text-sm font-bold text-gray-800 group-hover:text-amber-900">Thực hành DEKRA/TÜV</p>
+            <p className="text-xs text-gray-500 mt-0.5">41 hiệu lệnh & kỹ thuật</p>
           </button>
 
           <button

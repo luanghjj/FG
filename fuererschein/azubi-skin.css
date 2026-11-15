@@ -45,18 +45,18 @@ body {
   min-height: 100vh;
 }
 
-/* ===== 1. HEADER: FROSTED GLASS PARCHMENT (KHÔNG DA CAM) ===== */
+/* ===== 1. HEADER: WARM IVORY PARCHMENT (TÁCH BIỆT VỚI NỀN #E2D8C2) ===== */
 header,
 header.bg-gradient-to-r,
 header.from-green-700,
 header.via-green-600,
 header.to-emerald-700 {
-  background: rgba(226, 216, 194, 0.92) !important;
+  background: rgba(246, 240, 226, 0.96) !important;
   background-image: none !important;
   backdrop-filter: blur(16px) !important;
   -webkit-backdrop-filter: blur(16px) !important;
   border-bottom: 1.5px solid #B5A27C !important;
-  box-shadow: 0 1px 8px rgba(27, 31, 42, 0.04) !important;
+  box-shadow: 0 2px 10px rgba(27, 31, 42, 0.05) !important;
   color: #0F172A !important;
 }
 
@@ -106,20 +106,31 @@ header a[title="Quay lại AzubiHub"] svg {
   color: #9A4607 !important;
 }
 
-/* ===== 2. SUB-NAV TABS (TRANG CHỦ, MẸO THI VÀNG, HỌC THEO CHỦ ĐỀ...) ===== */
+/* ===== 2. SUB-NAV TABS & MOBILE DOCK: CRISP IVORY (#FDFBF6) TÁCH BIỆT NỀN #E2D8C2 ===== */
 nav.sticky,
 .border-b.border-green-800\/20,
 div.border-b:has(> div > div > button),
 nav:has(button) {
-  background: rgba(226, 216, 194, 0.95) !important;
+  background: rgba(253, 251, 246, 0.97) !important;
   border-bottom: 1.5px solid #B5A27C !important;
+  box-shadow: 0 2px 10px rgba(27, 31, 42, 0.05) !important;
 }
 
-/* Active tab: Amber wax thay vì xanh lá */
+nav.fixed.bottom-0:has(button) {
+  background: rgba(253, 251, 246, 0.98) !important;
+  border-top: 1.5px solid #B5A27C !important;
+  border-bottom: none !important;
+  box-shadow: 0 -6px 24px rgba(27, 31, 42, 0.12) !important;
+}
+
+/* Active tab: Amber wax pill + bottom line rõ ràng */
+nav button.border-green-600,
 nav button.text-green-700,
 nav button.font-extrabold,
 nav button.text-green-600 {
   color: #9A4607 !important;
+  background-color: #F7E6CC !important;
+  border-color: #9A4607 !important;
   font-weight: 700 !important;
 }
 nav button.text-green-700 svg,
@@ -132,11 +143,12 @@ nav button span.bg-green-600 {
 }
 
 /* Inactive tabs */
-nav button:not(.text-green-700):not(.text-green-600) {
+nav button:not(.text-green-700):not(.text-green-600):not(.border-green-600) {
   color: #5A5344 !important;
 }
 nav button:hover {
   color: #0F172A !important;
+  background-color: rgba(247, 230, 204, 0.45) !important;
 }
 
 /* ===== 3. HERO BANNER: CHUYỂN TỪ XANH SANG CERTIFICATE CARD CHUẨN LiD ===== */
@@ -216,9 +228,11 @@ div.rounded-3xl:has(h1) button:nth-child(2) {
 }
 
 .bg-gradient-to-br.from-green-700 button:nth-child(3),
-div.rounded-3xl:has(h1) button:nth-child(3) {
+div.rounded-3xl:has(h1) button:nth-child(3),
+.bg-gradient-to-br.from-green-700 button:nth-child(4),
+div.rounded-3xl:has(h1) button:nth-child(4) {
   background: #FDF3E3 !important;
-  color: #B45309 !important;
+  color: #9A4607 !important;
   border: 1.5px solid #B5A27C !important;
 }
 

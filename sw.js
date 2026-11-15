@@ -1,6 +1,6 @@
 /* Service Worker – AzubiHub (App Shell precache + Runtime cache-on-visit) */
-const CACHE = 'azubihub-v245';
-const RUNTIME_CACHE = 'azubihub-runtime-v1';
+const CACHE = 'azubihub-v246';
+const RUNTIME_CACHE = 'azubihub-runtime-v2';
 
 // Chỉ Precache phần App Shell cốt lõi của index.html để cài đặt nhanh,
 // các phân hệ riêng (lid/, fuererschein/, deutsch-a1-c1/), đề HTML rời & ảnh scan

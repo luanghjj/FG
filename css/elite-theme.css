@@ -13,12 +13,12 @@ html body { line-height: 1.5; }
 
 /* ===== Header: frosted ivory + hairline ===== */
 .nav {
-  background: var(--bg) !important;
-  background: color-mix(in srgb, var(--bg) 86%, transparent) !important;
+  background: var(--surface) !important;
+  background: color-mix(in srgb, var(--surface) 92%, transparent) !important;
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--line) !important;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, .03);
+  border-bottom: 1.5px solid var(--line) !important;
+  box-shadow: 0 2px 10px rgba(27, 31, 42, .05);
 }
 .brand { font-size: 1.1em; letter-spacing: -.01em; }
 .brand .logo {
@@ -182,17 +182,23 @@ html body { line-height: 1.5; }
 /* ===== Buttons ===== */
 .btn, .eq-cta-btn { border-radius: 8px !important; font-weight: 600 !important; }
 
-/* ===== Bottom nav: frosted, icon + label ===== */
+/* ===== Bottom nav: frosted ivory, icon + label (tách hẳn nền --bg) ===== */
 .bottom-nav {
-  background: var(--bg) !important;
-  background: color-mix(in srgb, var(--bg) 90%, transparent) !important;
+  background: var(--surface) !important;
+  background: color-mix(in srgb, var(--surface) 95%, transparent) !important;
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
-  border: 1px solid var(--line) !important;
-  box-shadow: 0 -2px 12px rgba(0, 0, 0, .05) !important;
+  border: 1.5px solid var(--line) !important;
+  box-shadow: 0 10px 28px -6px rgba(27, 31, 42, .16), 0 2px 6px rgba(27, 31, 42, .08) !important;
 }
-.bottom-nav button { color: var(--muted) !important; }
-.bottom-nav button.active { color: var(--accent) !important; background: var(--accent-soft) !important; font-weight: 700; }
+.bottom-nav button { color: var(--muted) !important; border: 1px solid transparent; }
+.bottom-nav button:hover { color: var(--ink) !important; background: color-mix(in srgb, var(--bg) 55%, var(--surface)) !important; }
+.bottom-nav button.active {
+  color: var(--accent) !important;
+  background: var(--accent-soft) !important;
+  border-color: color-mix(in srgb, var(--accent) 30%, transparent) !important;
+  font-weight: 700;
+}
 
 /* ===== Subject rows (theo mẫu: ô mã · tên + giáo viên · pill ngày · chevron) ===== */
 .subject-grid { display: flex !important; flex-direction: column; gap: 8px !important; }

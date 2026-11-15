@@ -215,11 +215,12 @@ body.tier-paid .pro-flag,body.tier-super .pro-flag{
 .card .hint{color:var(--muted);font-size:.85em;margin-bottom:14px}
 
 /* Tabs (inside Fleisch/others) */
-.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
-.tab{background:var(--surface);border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:9px 15px;
-  font-weight:500;font-size:.88em;cursor:pointer;transition:.15s}
-.tab:hover{border-color:var(--accent);color:var(--ink)}
-.tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;padding:6px;border-radius:14px;
+  background:color-mix(in srgb,var(--bg) 72%,var(--surface));border:1.5px solid var(--line)}
+.tab{background:color-mix(in srgb,var(--surface) 62%,var(--bg));border:1px solid color-mix(in srgb,var(--line) 55%,transparent);color:var(--muted);border-radius:10px;padding:8px 14px;
+  font-weight:600;font-size:.86em;cursor:pointer;transition:.15s}
+.tab:hover{background:var(--surface);border-color:var(--accent);color:var(--ink)}
+.tab.active{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 2px 8px rgba(154,70,7,.22)}
 .panel{display:none}
 .panel.active{display:block;animation:fade .25s}
 .apanel{display:none}
@@ -639,26 +640,6 @@ h3.sub{font-size:1em;color:var(--ink);margin:14px 0 6px;font-weight:600}
 .track-switch:hover{background:var(--accent-soft);color:var(--ink);border-color:var(--accent)}
 .track-switch .ts-label{font-size:.78em}
 @media (max-width:420px){.track-switch .ts-label{display:none}.track-switch{padding:0}}
-
-/* Dark mode overrides for Track Gate */
-@media (max-width: 1px) {
-    background: #181613; border-color: #4D4335; color: #FFFFFF; box-shadow: 0 24px 70px rgba(0,0,0,.75)
-  }
-    background: #25201B; border-color: #4D4032; color: #FFFFFF; box-shadow: 0 3px 10px rgba(0,0,0,.35)
-  }
-    border-color: #E08A3C; background: #302A23; box-shadow: 0 8px 24px rgba(224,138,60,.24)
-  }
-    border-color: #E08A3C; background: #362417; box-shadow: 0 4px 22px rgba(224,138,60,.3)
-  }
-}
-  background: #181613; border-color: #4D4335; color: #FFFFFF; box-shadow: 0 24px 70px rgba(0,0,0,.75)
-}
-  background: #25201B; border-color: #4D4032; color: #FFFFFF; box-shadow: 0 3px 10px rgba(0,0,0,.35)
-}
-  border-color: #E08A3C; background: #302A23; box-shadow: 0 8px 24px rgba(224,138,60,.24)
-}
-  border-color: #E08A3C; background: #362417; box-shadow: 0 4px 22px rgba(224,138,60,.3)
-}
 
 /* ===== Tier / Zugriffsstufen ===== */
 .tier-badge{display:inline-flex;align-items:center;gap:4px;border-radius:999px;
@@ -1426,10 +1407,6 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
 /* ===== Dark mode: delegated to css/statute-theme.css (single source of truth) ===== */
 /* statute-theme.css owns --bg/--surface/--ink/--accent for light + dark + auto.
    Keep only non-variable tweaks here with proper data-theme guards. */
-@media (max-width: 1px){
-}
-@media (max-width: 1px){
-}
 @media (prefers-reduced-motion:no-preference){
   .view.active{animation:viewIn .38s cubic-bezier(.22,1,.36,1)}
 }
@@ -1543,8 +1520,6 @@ button svg{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex-
 .sh-chip{display:inline-flex;align-items:center;gap:4px;background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:4px 10px;font-size:.78em;font-weight:500;color:var(--ink);cursor:pointer;transition:.12s;-webkit-tap-highlight-color:transparent}
 .sh-chip:hover{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
 .sh-mark{background:#FEF08A;color:#854D0E;padding:0 2px;border-radius:3px;font-weight:600}
-@media (max-width: 1px){
-}
 
 /* 3. LIGHTBOX ZOOM CONTROLS */
 #pageLightbox .lb-controls{display:flex;align-items:center;gap:6px;background:rgba(30,41,59,.85);backdrop-filter:blur(8px);padding:6px 12px;border-radius:999px;margin-bottom:8px}
@@ -1575,14 +1550,10 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 .streak-main{display:flex;align-items:center;gap:12px}
 .streak-flame{font-size:2.2em;line-height:1;filter:drop-shadow(0 2px 8px rgba(255,149,0,.4));animation:softPulse 2s infinite}
 .streak-count{font-size:1.45em;font-weight:800;color:#D97706;line-height:1.1}
-@media (max-width: 1px){
-}
 .streak-label{font-size:.78em;color:var(--muted);font-weight:600;margin-top:2px}
 .streak-milestone{flex:1;max-width:260px}
 .streak-m-title{display:flex;justify-content:space-between;font-size:.74em;font-weight:700;color:var(--ink);margin-bottom:5px}
 .streak-bar{height:7px;background:rgba(0,0,0,.08);border-radius:999px;overflow:hidden}
-@media (max-width: 1px){
-}
 .streak-bar span{display:block;height:100%;border-radius:999px;background:#FF9500;transition:width .6s ease}
 
 /* 6. OFFLINE BANNER */
@@ -1601,12 +1572,6 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 
 @media (max-width:640px){
   #backToTop{bottom:calc(152px + var(--safe-bottom));right:14px;width:38px;height:38px}
-}
-
-/* 8. DARK-MODE HARDCODE FIXES (single source: statute vars; covers explicit + auto dark) */
-  background:var(--surface);border-color:var(--line);color:var(--ink)
-}
-@media (max-width: 1px){
 }
 
 /* 9. A11Y: visible focus + keyboard activation for clickable cards */
@@ -1643,8 +1608,8 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./css/statute-theme.css?v=208">
-<link rel="stylesheet" href="./css/elite-theme.css?v=205">
+<link rel="stylesheet" href="./css/statute-theme.css?v=209">
+<link rel="stylesheet" href="./css/elite-theme.css?v=206">
 </head>
 <body>
 <div id="offlineBanner" role="status"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-right:6px"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Offline-Modus — Lektionen &amp; Prüfungen bleiben verfügbar!</span></div>
@@ -1701,7 +1666,7 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
         <span class="track-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="4.93" y1="19.07" x2="9.88" y2="14.12"/><line x1="19.07" y1="19.07" x2="14.12" y2="14.12"/></svg></span>
         <div class="track-info">
           <span class="track-title">Luyện thi Lái xe (Führerschein)</span>
-          <span class="track-sub">Bằng B &amp; B197 · Đề thi thử · Mẹo thi vàng · Song ngữ Đức – Việt</span>
+          <span class="track-sub">Bằng B &amp; B197 · Đề thi thử · Mẹo thi vàng · Thực hành DEKRA/TÜV</span>
         </div>
       </button>
       <button type="button" class="track-btn" id="trackLid" onclick="pickTrack('lid')">

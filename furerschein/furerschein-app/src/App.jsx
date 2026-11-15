@@ -7,13 +7,15 @@ import QuestionCard from './components/QuestionCard'
 import QuestionList from './components/QuestionList'
 import Dashboard from './components/Dashboard'
 import TipsGuide from './components/TipsGuide'
-import { BookOpen, GraduationCap, AlertTriangle, RotateCcw, Search, Car, Sparkles, User, Image as ImageIcon, Star, Filter } from 'lucide-react'
+import PracticalGuide from './components/PracticalGuide'
+import { BookOpen, GraduationCap, AlertTriangle, RotateCcw, Search, Car, Sparkles, User, Image as ImageIcon, Star, Filter, Compass } from 'lucide-react'
 
 const TABS = [
   { id: 'dashboard', label: 'Trang chủ', labelDe: 'Start', icon: Car },
   { id: 'tips', label: 'Mẹo thi vàng', labelDe: 'Tipps', icon: Sparkles },
   { id: 'topics', label: 'Học theo chủ đề', labelDe: 'Themen', icon: BookOpen },
   { id: 'exam', label: 'Thi thử', labelDe: 'Prüfung', icon: GraduationCap },
+  { id: 'practical', label: 'Thực hành', labelDe: 'Praxis', icon: Compass },
   { id: 'high-points', label: 'Câu 5 điểm', labelDe: '5-Punkte', icon: AlertTriangle },
   { id: 'errors', label: 'Câu sai', labelDe: 'Fehler', icon: RotateCcw },
   { id: 'search', label: 'Tìm kiếm', labelDe: 'Suche', icon: Search },
@@ -66,7 +68,13 @@ function saveLocalProgress(progress, player) {
 }
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('dashboard')
+  const [activeTab, setActiveTab] = useState(() => {
+    try {
+      const h = (window.location.hash || '').replace(/^#\/?/, '').toLowerCase()
+      if (h === 'practical' || h === 'praxis') return 'practical'
+    } catch {}
+    return 'dashboard'
+  })
   const [player, setPlayer] = useState(getStoredPlayer)
   const [progress, setProgress] = useState(() => loadLocalProgress(player))
   const [isEditingPlayer, setIsEditingPlayer] = useState(false)
@@ -333,6 +341,14 @@ export default function App() {
           />
         )}
 
+        {activeTab === 'practical' && (
+          <PracticalGuide
+            key={player || 'anon'}
+            showVn={showVn}
+            player={player}
+          />
+        )}
+
         {activeTab === 'high-points' && (
           <div>
             <div className="mb-4 bg-red-50 border border-red-200 rounded-2xl p-4 text-red-950">
@@ -560,44 +576,50 @@ export default function App() {
 
       {/* Mobile Bottom Navigation Bar (Fixed at bottom for thumb-friendly ergonomics) */}
       <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg border-t border-gray-200/90 md:hidden safe-bottom shadow-2xl">
-        <div className="grid grid-cols-6 h-16 items-center px-1">
-          {TABS.filter(t => t.id !== 'high-points').map(tab => {
+        <div className="flex items-center overflow-x-auto scrollbar-none h-16 px-1 gap-0.5">
+          {TABS.map(tab => {
             const Icon = tab.icon
             const isActive = activeTab === tab.id
+            const isHighPts = tab.id === 'high-points'
             return (
               <button
                 key={tab.id}
                 onClick={() => { setActiveTab(tab.id); setSelectedTopic(null) }}
-                className={`flex flex-col items-center justify-center py-1 rounded-xl transition-all cursor-pointer relative ${isActive ? 'text-green-700 font-extrabold scale-105' : 'text-gray-400 hover:text-gray-700 font-medium'}`}
+                className={`flex-1 min-w-[54px] shrink-0 flex flex-col items-center justify-center py-1 rounded-xl transition-all cursor-pointer relative ${
+                  isActive
+                    ? isHighPts
+                      ? 'text-red-700 font-extrabold scale-105'
+                      : 'text-green-700 font-extrabold scale-105'
+                    : isHighPts
+                    ? 'text-gray-400 hover:text-red-600 font-medium'
+                    : 'text-gray-400 hover:text-gray-700 font-medium'
+                }`}
               >
                 <div className="relative">
-                  <Icon className={`w-5 h-5 ${isActive ? 'text-green-600 stroke-[2.5]' : 'text-gray-400'}`} />
+                  <Icon
+                    className={`w-5 h-5 ${
+                      isActive
+                        ? isHighPts
+                          ? 'text-red-600 stroke-[2.5]'
+                          : 'text-green-600 stroke-[2.5]'
+                        : 'text-gray-400'
+                    }`}
+                  />
                   {tab.id === 'errors' && errorIds.length > 0 && (
                     <span className="absolute -top-1.5 -right-2 bg-red-500 text-white text-[9px] font-bold rounded-full px-1 min-w-[15px] text-center shadow-xs">
                       {errorIds.length}
                     </span>
                   )}
                 </div>
-                <span className="text-[10px] mt-1 leading-none truncate max-w-[54px]">
-                  {tab.labelDe}
+                <span className="text-[10px] mt-1 leading-none truncate max-w-[52px]">
+                  {isHighPts ? '5-P' : tab.labelDe}
                 </span>
                 {isActive && (
-                  <span className="w-1 h-1 rounded-full bg-green-600 mt-1" />
+                  <span className={`w-1 h-1 rounded-full mt-1 ${isHighPts ? 'bg-red-600' : 'bg-green-600'}`} />
                 )}
               </button>
             )
           })}
-          {/* Direct link to 5-Punkte */}
-          <button
-            onClick={() => { setActiveTab('high-points'); setSelectedTopic(null) }}
-            className={`flex flex-col items-center justify-center py-1 rounded-xl transition-all cursor-pointer ${activeTab === 'high-points' ? 'text-red-700 font-extrabold scale-105' : 'text-gray-400 hover:text-red-600 font-medium'}`}
-          >
-            <AlertTriangle className={`w-5 h-5 ${activeTab === 'high-points' ? 'text-red-600 stroke-[2.5]' : 'text-gray-400'}`} />
-            <span className="text-[10px] mt-1 leading-none truncate max-w-[54px]">5-P</span>
-            {activeTab === 'high-points' && (
-              <span className="w-1 h-1 rounded-full bg-red-600 mt-1" />
-            )}
-          </button>
         </div>
       </nav>
 
