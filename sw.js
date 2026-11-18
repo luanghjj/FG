@@ -1,5 +1,5 @@
 /* Service Worker – AzubiHub (App Shell precache + Runtime cache-on-visit) */
-const CACHE = 'azubihub-v247';
+const CACHE = 'azubihub-v248';
 const RUNTIME_CACHE = 'azubihub-runtime-v2';
 
 // Chỉ Precache phần App Shell cốt lõi của index.html để cài đặt nhanh,

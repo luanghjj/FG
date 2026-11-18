@@ -48,13 +48,8 @@
   --surface-card: #FDFBF6;
 }
 
-/* Prevent tier-paid from overriding theme vars */
-body.tier-paid, body.tier-super {
-  --bg: var(--bg) !important;
-  --surface: var(--surface) !important;
-  --line: var(--line) !important;
-  --accent-soft: var(--accent-soft) !important;
-}
+/* tier-paid / tier-super dùng chung bảng màu :root — KHÔNG gán lại biến tự tham chiếu
+   (--bg: var(--bg) tạo vòng lặp custom property làm mất toàn bộ nền/viền). */
 
 /* Body and global elements */
 html body {
@@ -461,10 +456,10 @@ h1, h2, h3, h4, .hero h1, .exam-txt h2, .section-head h2, .card h2, .login-card 
   background: var(--accent) !important;
   color: #fff !important;
 }
-.bottom-nav button {
+.bottom-nav button:not(.nav-center) {
   color: var(--muted) !important;
 }
-.bottom-nav button.active {
+.bottom-nav button:not(.nav-center).active {
   color: var(--accent) !important;
   background: var(--accent-soft) !important;
 }
