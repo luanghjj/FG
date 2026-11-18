@@ -1,5 +1,5 @@
 /* Service Worker – AzubiHub (App Shell precache + Runtime cache-on-visit) */
-const CACHE = 'azubihub-v246';
+const CACHE = 'azubihub-v247';
 const RUNTIME_CACHE = 'azubihub-runtime-v2';
 
 // Chỉ Precache phần App Shell cốt lõi của index.html để cài đặt nhanh,
@@ -85,7 +85,7 @@ function targetCacheName(pathname) {
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE).then((cache) =>
-      Promise.allSettled(PRECACHE.map((u) => cache.add(u)))
+      Promise.allSettled(PRECACHE.map((u) => cache.add(new Request(u, { cache: 'reload' }))))
     ).then(() => self.skipWaiting())
   );
 });
