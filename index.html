@@ -2402,7 +2402,6 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
         </div>
       </div>
     </div>
-  </div>
 
     <div class="card">
       <h2>📚 THEORIE — SCHRIFTLICHE PRÜFUNG (WIRTSCHAFTSDIENST)</h2>
@@ -4949,6 +4948,10 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;margin-right:4px;" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
       Lernthemen &amp; App
     </div>
+    <div class="tab" data-atab="gvw" style="font-weight:600">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;margin-right:4px;" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+      Lộ trình BfK · GVW
+    </div>
     <div class="tab" data-atab="ihk" style="font-weight:600">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;margin-right:4px;color:#B45309" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
       🏆 Echte IHK-Prüfungen
@@ -5221,6 +5224,46 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
           <div class="meta"><span class="pill ready" style="background:#FDF8EE;color:#B45309">Làm đề thi →</span></div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- TAB 4B: LỘ TRÌNH ÔN THI TRỌNG ĐIỂM BFK & GVW (PHẦN A + PHẦN B) -->
+  <div class="apanel" id="a-gvw">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:6px">
+        <h2 style="margin:0;display:flex;align-items:center;gap:7px">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:19px;height:19px" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          Lộ trình ôn thi trọng điểm BfK &amp; GVW
+        </h2>
+        <span class="tag" style="background:var(--accent-soft);color:var(--accent);border-color:var(--line)">Bấm vào bài · Back quay lại danh sách</span>
+      </div>
+      <div class="hint" style="margin-bottom:12px">Chia làm 2 phần trọng điểm: <b>Phần A · GVW (30%)</b> và <b>Phần B · Produktion &amp; Service (60%)</b>. Học xong bấm nút Back sẽ quay thẳng lại đúng danh sách đang xem.</div>
+
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+        <button type="button" class="btn ghost" onclick="go('#/plan')" style="font-size:.86em;padding:7px 12px;display:inline-flex;align-items:center;gap:6px">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Lịch ôn Prüfungsplan
+        </button>
+        <a class="btn ghost" href="arena.html" style="font-size:.86em;padding:7px 12px;display:inline-flex;align-items:center;gap:6px;text-decoration:none">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          Arena Tự luận
+        </a>
+        <button type="button" class="btn ghost" onclick="go('#/bfk/1/quiz')" style="font-size:.86em;padding:7px 12px;display:inline-flex;align-items:center;gap:6px">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          Quiz BfK-1
+        </button>
+        <button type="button" class="btn ghost" onclick="go('#/bfk/2/quiz')" style="font-size:.86em;padding:7px 12px;display:inline-flex;align-items:center;gap:6px">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          Quiz BfK-2
+        </button>
+      </div>
+
+      <div class="luyen-tabs" id="gvwPartTabs" role="tablist" aria-label="Chọn phần lộ trình BfK" style="margin-bottom:14px">
+        <button type="button" class="active" data-gvwpart="A" onclick="renderAbschlussRoadmap('A')">Phần A · Trọng tâm GVW (38 bài)</button>
+        <button type="button" data-gvwpart="B" onclick="renderAbschlussRoadmap('B')">Phần B · Produktion &amp; Service (24 bài)</button>
+      </div>
+
+      <div id="gvwRoadmapList"></div>
     </div>
   </div>
 
@@ -5526,7 +5569,7 @@ body.font-xl{--font-scale:1.28;font-size:19.5px}
 
 <!-- ===== BFK-1 THEME DETAIL ===== -->
 <section class="view bfk-scope" id="v-bfk1-theme">
-  <div class="back" onclick="go('#/bfk/1')">← BfK-1</div>
+  <div class="back" id="bfk1ThemeBack" onclick="go('#/bfk/1')">← BfK-1</div>
   <div class="section-head">
     <h2 id="bfk1ThemeTitle">Thema</h2>
     <p id="bfk1ThemeSub">Lernfeld</p>
@@ -5932,11 +5975,229 @@ document.querySelectorAll('#v-abschluss .tab').forEach(t=>t.addEventListener("cl
   document.querySelectorAll('#v-abschluss .tab').forEach(x=>x.classList.remove("active"));
   document.querySelectorAll('#v-abschluss .apanel').forEach(x=>x.classList.remove("active"));
   t.classList.add("active");
-  document.getElementById("a-"+t.getAttribute("data-atab")).classList.add("active");
+  const atab=t.getAttribute("data-atab");
+  const panel=document.getElementById("a-"+atab);
+  if(panel) panel.classList.add("active");
+  if(atab==="gvw" && typeof renderAbschlussRoadmap==="function"){
+    renderAbschlussRoadmap(window._gvwRoadmapPart || "A");
+  }
 }));
 function abschlussShowTab(tab){
   const el=document.querySelector('#v-abschluss .tab[data-atab="'+tab+'"]');
   if(el) el.click();
+}
+
+/* ===== LỘ TRÌNH ÔN THI TRỌNG ĐIỂM BFK & GVW (TRONG TAB ABSCHLUSS) ===== */
+const ABSCHLUSS_GVW_ROADMAP = {
+  A: [
+    {
+      badge: "GVW · 1",
+      title: "Gasterlebnis (Trải nghiệm khách, Giao tiếp & Khiếu nại)",
+      items: [
+        { tag:"BfK-1 · Extra · Thema 1", name:"Umgang mit Gästen", vi:"Đón khách, tư vấn & bán hàng", route:"#/bfk/1/theme/extra-t1", fach:"bfk1", id:"extra-t1" },
+        { tag:"BfK-1 · LF 6 · LS01", name:"Gästebedarfe vergleichen", vi:"So sánh nhu cầu của khách", route:"#/bfk/1/theme/lf6-ls01", fach:"bfk1", id:"lf6-ls01" },
+        { tag:"BfK-1 · LF 6 · KA2 §4", name:"Gästerückmeldungen & Fragebogen erstellen", vi:"Khảo sát phản hồi khách", route:"#/bfk/1/theme/k2-p4", fach:"bfk1", id:"k2-p4" },
+        { tag:"BfK-1 · LF 9 · LS04", name:"Reklamationen bei der Zahlung", vi:"Xử lý khiếu nại khi thanh toán", route:"#/bfk/1/theme/lf9-ls04", fach:"bfk1", id:"lf9-ls04" },
+        { tag:"BfK-1 · LF 9 · KA2 §6", name:"Reklamationen bei der Zahlung (KA2)", vi:"Chi tiết xử lý khiếu nại KA2", route:"#/bfk/1/theme/k2-p6", fach:"bfk1", id:"k2-p6" },
+        { tag:"BfK-1 · LF 9 · KA2 §7", name:"L-E-A-R-N — 10 Schritte", vi:"Quy trình 10 bước xử lý phàn nàn", route:"#/bfk/1/theme/k2-p7", fach:"bfk1", id:"k2-p7" },
+        { tag:"BfK-2 · LF 1 · LS01", name:"Rolle als Gastgeber & im Team", vi:"Vai trò người đón tiếp & làm việc nhóm", route:"#/fach/bfk2/theme/bfk2-gastgeber-team", fach:"bfk2", id:"bfk2-gastgeber-team" },
+        { tag:"BfK-2 · LF 1 · LS04", name:"Angemessen kommunizieren", vi:"Verbale, paraverbale & nonverbale Kommunikation", route:"#/fach/bfk2/theme/bfk2-kommunikation", fach:"bfk2", id:"bfk2-kommunikation" },
+        { tag:"BfK-5 · Thema 1", name:"Begrüßung, Empfang & Platzierung", vi:"Chào đón, tiếp nhận & xếp chỗ", route:"#/fach/bfk5/theme/bfk5-begruessung", fach:"bfk5", id:"bfk5-begruessung" },
+        { tag:"BfK-5 · Thema 3", name:"Begrüßung, Beratung & Zusatzverkauf", vi:"Chào hỏi, tư vấn & bán thêm", route:"#/fach/bfk5/theme/bfk5-kommunikation", fach:"bfk5", id:"bfk5-kommunikation" },
+        { tag:"BfK-5 · Thema 3", name:"Reklamationsbehandlung", vi:"Xử lý phàn nàn trong phục vụ", route:"#/fach/bfk5/theme/bfk5-reklamation", fach:"bfk5", id:"bfk5-reklamation" },
+        { tag:"BfK-S", name:"Professionelles Beschwerdemanagement", vi:"Quản lý khiếu nại chuyên nghiệp", route:"#/fach/bfks/theme/bfks-beschwerdemanagement", fach:"bfks", id:"bfks-beschwerdemanagement" }
+      ]
+    },
+    {
+      badge: "GVW · 2",
+      title: "Verkaufsförderung (Thúc đẩy bán hàng, Marketing & Thực đơn)",
+      items: [
+        { tag:"BfK-1 · Extra · Thema 8", name:"Marketing I", vi:"Marketing-Mix 4P, Zielgruppe, Preis", route:"#/bfk/1/theme/extra-t8", fach:"bfk1", id:"extra-t8" },
+        { tag:"BfK-1 · Extra · Thema 9", name:"Marketing II", vi:"Werbung, Social Media, Verkaufsförderung, AIDA, Upselling / Cross-Selling / Bundle", route:"#/bfk/1/theme/extra-t9", fach:"bfk1", id:"extra-t9" },
+        { tag:"BfK-1 · LF 6 · LS13", name:"Regeln Gerichte & Menüs", vi:"Quy tắc soạn món & thực đơn", route:"#/bfk/1/theme/lf6-ls13", fach:"bfk1", id:"lf6-ls13" },
+        { tag:"BfK-1 · LF 6 · LS15", name:"Rechtliche Vorschriften Speisekarten", vi:"Quy định pháp lý cho thẻ menu", route:"#/bfk/1/theme/lf6-ls15", fach:"bfk1", id:"lf6-ls15" },
+        { tag:"BfK-1 · LF 6 · KA2 §1", name:"Rechtliche Vorschriften für Speise- & Menükarten", vi:"Quy định pháp lý khi lập thực đơn, bảng giá", route:"#/bfk/1/theme/k2-p1", fach:"bfk1", id:"k2-p1" },
+        { tag:"BfK-1 · LF 6 · KA2 §2", name:"Die 14 Allergene (LMIV)", vi:"14 nhóm chất gây dị ứng bắt buộc công bố", route:"#/bfk/1/theme/k2-p2", fach:"bfk1", id:"k2-p2" },
+        { tag:"BfK-1 · LF 6 · KA2 §3", name:"Sprachliche Gestaltung der Menükarte", vi:"Quy tắc dùng từ & chính tả trên thực đơn", route:"#/bfk/1/theme/k2-p3", fach:"bfk1", id:"k2-p3" },
+        { tag:"BfK-1 · LF 6 · KA2 §5", name:"Ersatzprodukte & Verkehrsbezeichnungen", vi:"Sản phẩm thay thế chay/thuần chay & tên gọi đúng luật", route:"#/bfk/1/theme/k2-p5", fach:"bfk1", id:"k2-p5" },
+        { tag:"BfK-2 · LF 5 · LS19", name:"Verkaufsfördernde Maßnahmen im Service", vi:"Sales Promotion, Corporate Design, Eye-Catcher, Analog & Digital", route:"#/fach/bfk2/theme/bfk2-verkaufsfoerderung", fach:"bfk2", id:"bfk2-verkaufsfoerderung" },
+        { tag:"BfK-S", name:"Speisen- & Getränkekorrespondenz", vi:"Verkaufsfördernde Empfehlungen", route:"#/fach/bfks/theme/bfks-menueberatung", fach:"bfks", id:"bfks-menueberatung" }
+      ]
+    },
+    {
+      badge: "GVW · 3",
+      title: "Warenlagerung & Warenwirtschaft (Thu mua, Nhập kho, Lưu kho & Kiểm kê)",
+      items: [
+        { tag:"BfK-1 · LF 2 · LS01", name:"Beschaffungs- und Lagerprozesse", vi:"Quy trình mua hàng & lưu kho", route:"#/bfk/1/theme/lf2-ls01", fach:"bfk1", id:"lf2-ls01" },
+        { tag:"BfK-1 · LF 2 · LS02", name:"Waren- und Lagerarten, Funktion des Lagers", vi:"Loại kho & chức năng kho", route:"#/bfk/1/theme/lf2-ls02", fach:"bfk1", id:"lf2-ls02" },
+        { tag:"BfK-1 · LF 2 · LS03", name:"Bezugsquellen recherchieren", vi:"Tìm nguồn cung cấp", route:"#/bfk/1/theme/lf2-ls03", fach:"bfk1", id:"lf2-ls03" },
+        { tag:"BfK-1 · LF 2 · LS04", name:"Warenbedarf & Bestellmenge, Lagerung", vi:"Meldebestand, công thức lưu kho", route:"#/bfk/1/theme/lf2-ls04", fach:"bfk1", id:"lf2-ls04" },
+        { tag:"BfK-1 · LF 2 · LS05", name:"Bestell- und Lieferzeitpunkte", vi:"Thời điểm đặt & giao hàng", route:"#/bfk/1/theme/lf2-ls05", fach:"bfk1", id:"lf2-ls05" },
+        { tag:"BfK-1 · LF 2 · LS06", name:"Waren bestellen", vi:"Đặt hàng hoá", route:"#/bfk/1/theme/lf2-ls06", fach:"bfk1", id:"lf2-ls06" },
+        { tag:"BfK-1 · LF 2 · LS07", name:"Warenannahme & Wareneinlagerung", vi:"Nhận hàng, nhiệt độ, Lieferschein & nhập kho", route:"#/bfk/1/theme/lf2-ls07", fach:"bfk1", id:"lf2-ls07" },
+        { tag:"BfK-1 · LF 2 · LS08", name:"Auf Schlechtleistung reagieren", vi:"Xử lý hàng giao bị lỗi - Mängelrüge", route:"#/bfk/1/theme/lf2-ls08", fach:"bfk1", id:"lf2-ls08" },
+        { tag:"BfK-1 · LF 2 · LS09", name:"Auf Nicht-Rechtzeitig-Lieferung reagieren", vi:"Xử lý khi giao hàng trễ - Lieferverzug", route:"#/bfk/1/theme/lf2-ls09", fach:"bfk1", id:"lf2-ls09" },
+        { tag:"BfK-1 · LF 2 · LS10", name:"Warenbestand erfassen (Inventur)", vi:"Kiểm kê kho", route:"#/bfk/1/theme/lf2-ls10", fach:"bfk1", id:"lf2-ls10" },
+        { tag:"BfK-1 · LF 2 · LS11", name:"Warenpflege und Schädlingsbefall", vi:"Chăm sóc hàng lưu kho & sinh vật gây hại", route:"#/bfk/1/theme/lf2-ls11", fach:"bfk1", id:"lf2-ls11" },
+        { tag:"BfK-1 · Extra · Thema 12", name:"Kostenkontrolle", vi:"Kiểm soát chi phí, Kalkulation, Budget", route:"#/bfk/1/theme/extra-t12", fach:"bfk1", id:"extra-t12" },
+        { tag:"BfK-1 · Extra · Thema 13", name:"Kennzahlen", vi:"Umsatz, Gewinn, Wareneinsatz, Lagerkennzahlen", route:"#/bfk/1/theme/extra-t13", fach:"bfk1", id:"extra-t13" },
+        { tag:"BfK-1 · Extra · Thema 14", name:"Warenwirtschaft I", vi:"Nhận hàng, MHD, Verbrauchsdatum, HACCP", route:"#/bfk/1/theme/extra-t14", fach:"bfk1", id:"extra-t14" },
+        { tag:"BfK-1 · Extra · Thema 15", name:"Warenwirtschaft II", vi:"FIFO, tính hao hụt, đặt hàng", route:"#/bfk/1/theme/extra-t15", fach:"bfk1", id:"extra-t15" },
+        { tag:"BfK-1 · Extra · Thema 16", name:"Warenwirtschaft III", vi:"Kalkulation, Inventur, Rabatt & Skonto", route:"#/bfk/1/theme/extra-t16", fach:"bfk1", id:"extra-t16" }
+      ]
+    }
+  ],
+  B: [
+    {
+      badge: "Phần B · 1",
+      title: "Kiến thức Bếp & Chế biến món ăn (Küche & Zubereitung)",
+      items: [
+        { tag:"BfK-1 · LF 3 · LS08", name:"Món trứng, mã code trứng & Vệ sinh trứng gà tươi", vi:"Quy trình làm Rührei, Spiegelei, giải mã mã in vỏ trứng 0-DE-..., phòng chống Salmonella", route:"#/bfk/1/theme/lf3-ls08", fach:"bfk1", id:"lf3-ls08" },
+        { tag:"BfK-1 · LF 3 · LS01", name:"Tiêu chuẩn vệ sinh cá nhân, thiết bị & Quy trình HACCP", vi:"Nhiệt độ kho mát/kho đông, chống nhiễm khuẩn chéo Kreuzkontamination, lưu mẫu thức ăn", route:"#/bfk/1/theme/lf3-ls01", fach:"bfk1", id:"lf3-ls01" },
+        { tag:"BfK-1 · LF 3 · LS14", name:"Lập kế hoạch quy trình làm việc (Arbeitsablaufplan)", vi:"Các bước chuẩn bị Mise en place, thứ tự thao tác khoa học để ra món đúng giờ", route:"#/bfk/1/theme/lf3-ls14", fach:"bfk1", id:"lf3-ls14" },
+        { tag:"BfK-1 · LF 6 · LS12", name:"Ngũ cốc, bột mì, bánh mì & Chế độ ăn không Gluten (Glutenfrei)", vi:"Độ xay xát hạt Schrot → Grieß → Dunst → Mehl, phân biệt Weizen, Roggen, Dinkel", route:"#/bfk/1/theme/lf6-ls12", fach:"bfk1", id:"lf6-ls12" },
+        { tag:"BfK-1 · LF 3 · LS04", name:"Rau củ quả & 3 loại khoai tây (Fest-, Vorwiegend fest-, Mehligkochend)", vi:"Chọn khoai tây phù hợp làm Püree, Bratkartoffeln, Herzoginkartoffeln", route:"#/bfk/1/theme/lf3-ls04", fach:"bfk1", id:"lf3-ls04" },
+        { tag:"BfK-1 · LF 6 · KA2 §2", name:"14 Nhóm chất gây dị ứng bắt buộc theo luật Châu Âu (14 Allergene)", vi:"Bảng tra cứu Gluten, giáp xác, cá, trứng, lạc, đậu nành, sữa lactose, cần tây, hạt vỏ cứng...", route:"#/bfk/1/theme/k2-p2", fach:"bfk1", id:"k2-p2" },
+        { tag:"BfK-2 · Fleischkunde", name:"Kiến thức chuyên sâu về Thịt (Fleischkunde) & Phương pháp làm chín (Garverfahren)", vi:"Các phần thịt Rind, Schwein, Kalb, Lamm, gia cầm; kỹ thuật Pochieren, Sautieren, Schmoren", route:"#/bfk/2/fleisch", fach:"bfk2", id:"fleischteile" }
+      ]
+    },
+    {
+      badge: "Phần B · 2",
+      title: "Kỹ thuật Phục vụ bàn, Quy tắc bàn tiệc & Symbole/Servietten",
+      items: [
+        { tag:"BfK-1 · LF 6 · LS02", name:"Thành phần món ăn & Quy tắc bài trí đĩa cổ điển (Klassische Telleranordnung)", vi:"Vị trí góc 6h đặt thịt/cá, góc 10h đặt rau củ, góc 2h đặt tinh bột, cách chan nước sốt", route:"#/bfk/1/theme/lf6-ls02", fach:"bfk1", id:"lf6-ls02" },
+        { tag:"BfK-1 · LF 6 · LS13", name:"Quy tắc xây dựng thực đơn & Menü 3 – 5 món", vi:"Thứ tự sắp xếp các món ăn, chọn bộ dao nĩa Menügedeck tương ứng cho từng món", route:"#/bfk/1/theme/lf6-ls13", fach:"bfk1", id:"lf6-ls13" },
+        { tag:"BfK-1 · LF 6 · LS15", name:"Rượu vang sủi (Sekt, Champagne) & Đọc nhãn rượu vang Đức (Weinetikett)", vi:"Độ ngọt Brut/Trocken/Halbtrocken, vùng trồng nho, phương pháp Flaschengärung", route:"#/bfk/1/theme/lf6-ls15", fach:"bfk1", id:"lf6-ls15" },
+        { tag:"BfK-1 · LF 9 · KA2 §7", name:"Quy trình 10 bước xử lý phàn nàn & khiếu nại (L-E-A-R-N Methode)", vi:"Xử lý khi khách chê súp nguội, làm đổ đồ uống vào áo khách, phát hiện lỗi phục vụ", route:"#/bfk/1/theme/k2-p7", fach:"bfk1", id:"k2-p7" },
+        { tag:"SYM · Đề thi có 2 bài", name:"Symbole & 14 kiểu gấp khăn Servietten", vi:"GHS, biển báo an toàn, ký hiệu giặt ủi & tên 14 kiểu gấp khăn Servietten hay ra thi", route:"#/fach/symbole", fach:"symbole", id:"symbole" }
+      ]
+    },
+    {
+      badge: "Phần B · 3",
+      title: "Nghiệp vụ tính toán & Quản lý kho hàng (Fachrechnen & Warenlagerung)",
+      items: [
+        { tag:"BfK-1 · LF 2 · LS07", name:"Quy trình nhận hàng & Đo nhiệt độ xe lạnh (Warenannahme)", vi:"Kiểm tra cảm quan, đối chiếu chứng từ giao hàng Lieferschein, nhiệt độ thịt cá tươi", route:"#/bfk/1/theme/lf2-ls07", fach:"bfk1", id:"lf2-ls07" },
+        { tag:"BfK-1 · LF 2 · LS08", name:"Lập biên bản hàng lỗi & Khiếu nại nhà cung cấp (Mängelrüge)", vi:"Các dạng lỗi giao hàng: thiếu số lượng, cận hạn sử dụng MHD, bao bì dập nát", route:"#/bfk/1/theme/lf2-ls08", fach:"bfk1", id:"lf2-ls08" },
+        { tag:"BfK-1 · LF 2 · LS10", name:"Kiểm kê kho hàng định kỳ (Inventur) & Nguyên tắc FIFO", vi:"So sánh sổ sách và thực tế Soll/Ist-Vergleich, xử lý hao hụt hư hại", route:"#/bfk/1/theme/lf2-ls10", fach:"bfk1", id:"lf2-ls10" },
+        { tag:"BfK-1 · LF 9 · KA2 §8", name:"Lập hóa đơn thanh toán hợp chuẩn (Rechnung / Bewirtungsbeleg)", vi:"Các thông tin bắt buộc trên hóa đơn GTGT để doanh nghiệp được khấu trừ thuế", route:"#/bfk/1/theme/k2-p8", fach:"bfk1", id:"k2-p8" },
+        { tag:"BfK-1 · LF 9 · KA2 §9", name:"Bài toán tính giá tiền, giảm giá & Thuế VAT 7% / 19% (Umsatzsteuer)", vi:"Công thức bóc tách thuế Netto/Brutto, bài tập tính tiền thực đơn có lời giải chi tiết", route:"#/bfk/1/theme/k2-p9", fach:"bfk1", id:"k2-p9" }
+      ]
+    },
+    {
+      badge: "Phần B · 4",
+      title: "Đề thi tốt nghiệp thật môn Produktion und Service (Có đáp án chi tiết)",
+      items: [
+        { tag:"IHK · Mã đề 6132", name:"Winter 2024/2025 (Đề thi thật)", vi:"Món trứng bác, Salmonella, buffet khách dị ứng Gluten/Lactose, tiệc sinh nhật Jonas, luật JuSchG § 9, tính hao hụt rượu 4%", route:"abschluss-winter-2024-2025.html", fach:"ihk", id:"ihk-w2425" },
+        { tag:"IHK · Mã đề 6132", name:"Sommer 2024 (Đề thi thật)", vi:"Buffet Ngày của Mẹ Muttertagsbuffet, tính toán đồ uống nóng, hóa đơn & thuế VAT", route:"abschluss-sommer-2024.html", fach:"ihk", id:"ihk-s24" },
+        { tag:"IHK · Mã đề 6132", name:"Sommer 2025 (Đề thi thật)", vi:"Đề thi tốt nghiệp mùa hè mới nhất kèm đồng hồ 60 phút", route:"abschluss-sommer-2025.html", fach:"ihk", id:"ihk-s25" },
+        { tag:"IHK · Mã đề 6132", name:"Winter 2023/2024 (Đề thi thật)", vi:"Nghiệp vụ bếp cơ bản, kỹ thuật phục vụ bàn và giải thích nguyên liệu", route:"abschluss-winter-2023-2024.html", fach:"ihk", id:"ihk-w2324" }
+      ]
+    },
+    {
+      badge: "Phần B · 5",
+      title: "Luyện bài tập trắc nghiệm & Đề thi thử lớn",
+      items: [
+        { tag:"Quiz · BfK-1", name:"Trắc nghiệm nhanh môn BfK-1 (LF 2, LF 3, LF 6, LF 9)", vi:"Chọn chủ đề & trộn câu hỏi ôn tập", route:"#/bfk/1/quiz", fach:"quiz", id:"q-bfk1" },
+        { tag:"Quiz · BfK-2", name:"Trắc nghiệm chuyên sâu môn BfK-2 (Produktkunde & Fleisch)", vi:"Luyện tập kiến thức sản phẩm, thịt, cá, sữa & phô mai", route:"#/bfk/2/quiz", fach:"quiz", id:"q-bfk2" },
+        { tag:"Đề thi thử lớn", name:"Klassenarbeit 2 (Tổng hợp LF 6 & LF 9)", vi:"Đề tổng hợp thực đơn, dị ứng, khiếu nại & thanh toán hóa đơn", route:"Klassenarbeit_2_BFK1_Lernfeld_6_9.html", fach:"ka", id:"ka2-lf69" }
+      ]
+    }
+  ]
+};
+
+window._gvwRoadmapPart = "A";
+function getAbschlussReturn(){
+  try{
+    const raw = sessionStorage.getItem("abschluss_roadmap_return");
+    return raw ? JSON.parse(raw) : null;
+  }catch(_){ return null; }
+}
+function clearAbschlussReturn(){
+  try{ sessionStorage.removeItem("abschluss_roadmap_return"); }catch(_){}
+}
+function openAbschlussRoadmapItem(route, part, fach){
+  try{
+    sessionStorage.setItem("abschluss_roadmap_return", JSON.stringify({
+      tab: "gvw",
+      part: part || "A",
+      scrollY: window.scrollY || 0
+    }));
+  }catch(_){}
+  if(fach === "ihk" && typeof openIhkExam === "function"){
+    openIhkExam(route);
+    return;
+  }
+  go(route);
+}
+function returnToAbschlussRoadmap(){
+  go("#/abschluss");
+}
+function applyAbschlussBackBtn(viewEl, fallbackText, fallbackRoute){
+  if(!viewEl) return;
+  const back = viewEl.querySelector(':scope > .back');
+  if(!back) return;
+  const absRet = getAbschlussReturn();
+  if(absRet){
+    back.textContent = "← Lộ trình Abschluss (Phần " + absRet.part + ")";
+    back.onclick = () => returnToAbschlussRoadmap();
+  } else {
+    if(fallbackText) back.textContent = fallbackText;
+    if(fallbackRoute) back.onclick = () => go(fallbackRoute);
+  }
+}
+function renderAbschlussRoadmap(part){
+  const p = (part === "B") ? "B" : "A";
+  window._gvwRoadmapPart = p;
+  const host = document.getElementById("gvwRoadmapList");
+  if(!host) return;
+
+  const countA = ABSCHLUSS_GVW_ROADMAP.A.reduce((s,g)=>s+g.items.length, 0);
+  const countB = ABSCHLUSS_GVW_ROADMAP.B.reduce((s,g)=>s+g.items.length, 0);
+  document.querySelectorAll('#gvwPartTabs button').forEach(btn=>{
+    const bp = btn.getAttribute("data-gvwpart");
+    btn.classList.toggle("active", bp === p);
+    if(bp === "A") btn.textContent = "Phần A · Trọng tâm GVW (" + countA + " bài)";
+    if(bp === "B") btn.textContent = "Phần B · Produktion & Service (" + countB + " bài)";
+  });
+
+  const groups = ABSCHLUSS_GVW_ROADMAP[p] || [];
+  let html = "";
+  groups.forEach(g=>{
+    let done = 0;
+    const trackable = g.items.filter(it => it.fach === "bfk1" || it.fach === "bfk2" || it.fach === "bfk5" || it.fach === "bfk6" || it.fach === "bfks").length;
+    const rows = g.items.map((it, idx)=>{
+      let v = 0;
+      const isTrack = (it.fach === "bfk1" || it.fach === "bfk2" || it.fach === "bfk5" || it.fach === "bfk6" || it.fach === "bfks");
+      if(isTrack){
+        try{
+          if(it.fach === "bfk1" && typeof bfk1Status === "function") v = bfk1Status(it.id);
+          else if(it.fach === "bfk2" && typeof bfk2Status === "function") v = bfk2Status(it.id);
+          else if(typeof fachStatus === "function") v = fachStatus(it.fach, it.id);
+        }catch(_){}
+        if(v === 2) done++;
+      }
+      const st = (typeof BFK1_STATUS !== "undefined" && BFK1_STATUS[v]) ? BFK1_STATUS[v] : { cls:"st-todo", icon:"", label:"Offen" };
+      const rightBadge = isTrack
+        ? '<span class="st-tick '+st.cls+'" title="'+st.label+'" style="pointer-events:none">'+st.icon+'</span>'
+        : '<span class="pill ready" style="font-size:.74em;white-space:nowrap">Mở →</span>';
+      return '<div class="theme-item" onclick="openAbschlussRoadmapItem(\''+it.route+'\',\''+p+'\',\''+it.fach+'\')">'
+        + '<div class="num">'+(idx+1)+'</div>'
+        + '<div class="tt"><b><span class="tag" style="margin-right:6px;font-size:.74em;vertical-align:1px">'+it.tag+'</span>'+it.name+'</b><span>'+it.vi+'</span></div>'
+        + rightBadge
+        + '</div>';
+    }).join("");
+    const pct = trackable ? Math.round(done / trackable * 100) : 0;
+    const progHtml = trackable
+      ? '<div class="lf-progress"><div class="lf-progress-bar"><span style="width:'+pct+'%"></span></div>'
+        + '<div class="lf-progress-txt">'+done+'/'+trackable+' · '+pct+'%</div></div>'
+      : '';
+    html += '<div class="lf-block">'
+      + '<h3><span class="lf-badge">'+g.badge+'</span> '+g.title+'</h3>'
+      + progHtml
+      + '<div class="theme-list">'+rows+'</div>'
+      + '</div>';
+  });
+  host.innerHTML = html;
 }
 /* Zwischenprüfung tabs */
 document.querySelectorAll('#v-zwischen .tab').forEach(t=>t.addEventListener("click",()=>{
@@ -7345,7 +7606,16 @@ function renderFachTheme(fachId, themeId){
   const sub=document.getElementById('fachThemeSub');
   const body=document.getElementById('fachThemeBody');
   const back=document.getElementById('fachThemeBack');
-  if(back){ back.onclick=()=>go(fachRoute(fach,'hub')); back.textContent='← '+(fach?fach.code:'Fach'); }
+  const absRet=typeof getAbschlussReturn==='function'?getAbschlussReturn():null;
+  if(back){
+    if(absRet){
+      back.onclick=()=>returnToAbschlussRoadmap();
+      back.textContent='← Lộ trình Abschluss (Phần '+absRet.part+')';
+    } else {
+      back.onclick=()=>go(fachRoute(fach,'hub'));
+      back.textContent='← '+(fach?fach.code:'Fach');
+    }
+  }
   if(!fach||!theme){ go(fach?fachRoute(fach,'hub'):'#/'); return; }
   if(title) title.innerHTML=(theme.icon||'')+' '+theme.name;
   if(sub) sub.textContent=(fach.code||'')+' · '+(theme.groupBadge||theme.badge||'')+'';
@@ -8473,6 +8743,17 @@ function renderBfk1Theme(themeId){
   const title=document.getElementById("bfk1ThemeTitle");
   const sub=document.getElementById("bfk1ThemeSub");
   const body=document.getElementById("bfk1ThemeBody");
+  const back=document.getElementById("bfk1ThemeBack");
+  const absRet=typeof getAbschlussReturn==='function'?getAbschlussReturn():null;
+  if(back){
+    if(absRet){
+      back.onclick=()=>returnToAbschlussRoadmap();
+      back.textContent='← Lộ trình Abschluss (Phần '+absRet.part+')';
+    } else {
+      back.onclick=()=>go('#/bfk/1');
+      back.textContent='← BfK-1';
+    }
+  }
   if(!item){ go("#/bfk/1"); return; }
   const grp=(window.bfk1GroupOf&&window.bfk1GroupOf(themeId))||null;
   // Đề thi tốt nghiệp IHK thật: chỉ tài khoản Pro/Admin mới được xem
@@ -9075,8 +9356,10 @@ function router(){
       restoreOrScroll(hash, true); return;
     }
     // hub
+    if(fachId !== "symbole" && typeof clearAbschlussReturn==="function") clearAbschlussReturn();
     const view=document.getElementById("v-fach");
     if(view) view.classList.add("active");
+    if(typeof applyAbschlussBackBtn==="function") applyAbschlussBackBtn(view, "← Start", "#/");
     if(cb) cb.innerHTML='<a onclick="go(\'#/\')">Fächer</a><span class="sep">›</span><span>'+(fach?fach.code:fachId)+'</span>';
     renderFachHub(fachId);
     restoreOrScroll(hash, false); return;
@@ -9126,10 +9409,28 @@ function router(){
   let html='<a onclick="go(\'#/\')">Fächer</a>';
   (r.crumbs||[]).forEach(c=>{ html+='<span class="sep">›</span><a onclick="go(\''+c[1]+'\')">'+c[0]+'</a>'; });
   cb.innerHTML=html;
-  if(r.view==="v-quiz" && !window._quizStarted) quizIntro();
-  if(r.view==="v-bfk-level" && r.level) renderBfkLevel(r.level);
-  if(r.view==="v-bfk1" || r.bfk1) renderBfk1Hub();
+  if(r.view==="v-fleisch" && typeof applyAbschlussBackBtn==="function") applyAbschlussBackBtn(view, "← BfK-2 Themen", "#/bfk/2");
+  if(r.view==="v-quiz"){ if(typeof applyAbschlussBackBtn==="function") applyAbschlussBackBtn(view, "← BfK-2 Themen", "#/bfk/2"); if(!window._quizStarted) quizIntro(); }
+  if(r.view==="v-bfk-level" && r.level){ if(typeof clearAbschlussReturn==="function") clearAbschlussReturn(); renderBfkLevel(r.level); }
+  if(r.view==="v-bfk1" || r.bfk1){ if(typeof clearAbschlussReturn==="function") clearAbschlussReturn(); renderBfk1Hub(); }
+  if(r.view==="v-abschluss"){
+    const absRet=typeof getAbschlussReturn==="function"?getAbschlussReturn():null;
+    if(absRet){
+      if(typeof abschlussShowTab==="function") abschlussShowTab(absRet.tab||"gvw");
+      if(typeof renderAbschlussRoadmap==="function") renderAbschlussRoadmap(absRet.part||"A");
+      const sy=Number(absRet.scrollY)||0;
+      if(typeof clearAbschlussReturn==="function") clearAbschlussReturn();
+      setTimeout(()=>window.scrollTo(0, sy), 40);
+      return;
+    } else {
+      const gvwPanel=document.getElementById("a-gvw");
+      if(gvwPanel && gvwPanel.classList.contains("active") && typeof renderAbschlussRoadmap==="function"){
+        renderAbschlussRoadmap(window._gvwRoadmapPart || "A");
+      }
+    }
+  }
   if(r.view==="v-bfk1-quiz" || r.bfk1quiz){
+    if(typeof applyAbschlussBackBtn==="function") applyAbschlussBackBtn(view, "← BfK-1", "#/bfk/1");
     const area=document.getElementById("bfk1QuizArea");
     if(window._b1Pending){
       const p=window._b1Pending; window._b1Pending=null;
@@ -9155,7 +9456,7 @@ function router(){
     if(active && window.enableVocabOn) enableVocabOn(active);
     else if(window.enableVocabOn) enableVocabOn(document.body);
   }catch(e){}
-  if(r.view==="v-home") renderContinueCard();
+  if(r.view==="v-home"){ if(typeof clearAbschlussReturn==="function") clearAbschlussReturn(); renderContinueCard(); }
   restoreOrScroll(hash, false);
 }
 window.addEventListener("hashchange",router);
